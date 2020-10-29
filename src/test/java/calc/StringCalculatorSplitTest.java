@@ -15,7 +15,7 @@ public class StringCalculatorSplitTest {
 
     @Test
     @DisplayName("양수만 있는 문자열 스플릿 테스트")
-    public void 양수만_있는_문자열_스플릿_테스트() {
+    public void oneSplitTest() {
 
         // given
         final String expression = removeWhiteSpace("1");
@@ -31,7 +31,7 @@ public class StringCalculatorSplitTest {
 
     @Test
     @DisplayName("음수만 있는 문자열 스플릿 테스트")
-    public void 음수만_있는_문자열_스플릿_테스트() {
+    public void minusOneSplitTest() {
 
         // given
         final String expression = removeWhiteSpace("- 1");
@@ -48,7 +48,7 @@ public class StringCalculatorSplitTest {
 
     @Test
     @DisplayName("부호가 1개 있는 문자열 스플릿 테스트")
-    public void 부호가_1개_있는_문자열_스플릿_테스트() {
+    public void hasOneOperatorSplitTest() {
 
         // given
         final String expression = removeWhiteSpace("1 + 2");
@@ -66,7 +66,7 @@ public class StringCalculatorSplitTest {
 
     @Test
     @DisplayName("부호가 여러 개 있는 문자열 스플릿 테스트")
-    public void 부호가_여러_개_있는_문자열_스플릿_테스트() {
+    public void hasManyOperatorSplitTest() {
 
         // given
         final String expression = removeWhiteSpace("1 + 2 - 3 * 4 / 5");
@@ -83,7 +83,7 @@ public class StringCalculatorSplitTest {
 
     @Test
     @DisplayName("처음 숫자가 음수이고 부호가 여러 개 있는 문자열 스플릿 테스트")
-    public void 처음_숫자가_음수이고_부호가_여러_개_있는_문자열_스플릿_테스트() {
+    public void startWithMinusHasManyOperatorSplitTest() {
 
         // given
         final String expression = removeWhiteSpace("- 1 + 2 - 3 * 4 / 5");
