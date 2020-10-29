@@ -178,11 +178,16 @@ public class CalculatorTest {
                     return lhs - getRightHandSize();
                 case "*":
                     return lhs * getRightHandSize();
-                case "/":
-                    return lhs / getRightHandSize();
-                default:
-                    throw new IllegalStateException("invalid operator");
             }
+
+            if (!operator.equals("/")) {
+                throw new IllegalStateException("invalid operator");
+            }
+            if (lhs % getRightHandSize() != 0) {
+                throw new IllegalArgumentException("나눗셈은 정수로 떨어져야 합니다.");
+            }
+
+            return lhs / getRightHandSize();
         }
 
     }
