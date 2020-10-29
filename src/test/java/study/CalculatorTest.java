@@ -2,8 +2,8 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.Objects;
@@ -32,15 +32,13 @@ public class CalculatorTest {
                 .isThrownBy(() -> calculate(input));
     }
 
-    @Test
-    void onePlusOne() {
-        assertThat(calculate("1 + 1")).isEqualTo(2);
+    @ParameterizedTest
+    @DisplayName("여러 자릿수에 다한 '+' 연산 테스트")
+    @CsvSource({"0 + 1,1", "1 + 1,2", "10 + 10,20", "123 + 32,155"})
+    void plusTest(String input, long expectResult) {
+        assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
-    @Test
-    void tenPlusTen() {
-        assertThat(calculate("10 + 10")).isEqualTo(22);
-    }
 
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
