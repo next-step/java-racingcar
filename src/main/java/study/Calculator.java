@@ -23,7 +23,7 @@ class Calculator {
         List<SubFormula> subFormulas = new ArrayList<>();
 
         while (!Objects.isNull(formula)) {
-            SubFormula subFormula = parse(formula);
+            SubFormula subFormula = SubFormula.create(formula);
             subFormulas.add(subFormula);
             formula = subFormula.remain;
         }
@@ -33,38 +33,6 @@ class Calculator {
             result = subFormula.calculateWith(result);
         }
         return result;
-    }
-
-    private SubFormula parse(String input) {
-        try {
-            String lhs = extractPrefixNumbers(input);
-            String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
-            String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
-            String remain = null;
-
-            String tmp = rhs;
-            if (isNotNumber(rhs)) {
-                rhs = extractPrefixNumbers(tmp);
-                remain = tmp.substring(rhs.length());
-            }
-
-
-            return new SubFormula(lhs, operator, rhs, remain);
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
-        }
-    }
-
-    private String extractPrefixNumbers(String input) {
-        String result = input.substring(0, input.indexOf(SPACE));
-        if (isNotNumber(result) && !result.isEmpty()) {
-            throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
-        }
-        return result;
-    }
-
-    private boolean isNotNumber(String input) {
-        return !Pattern.matches("\\d+", input);
     }
 
     static class SubFormula {
@@ -78,6 +46,38 @@ class Calculator {
             this.rhs = rhs;
             this.operator = operator;
             this.remain = remain;
+        }
+
+        public static SubFormula create(String formula) {
+            try {
+                String lhs = extractLeftHandSide(formula);
+                String operator = formula.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
+                String rhs = formula.substring(formula.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+                String remain = null;
+
+                String tmp = rhs;
+                if (isNotNumber(rhs)) {
+                    rhs = extractLeftHandSide(tmp);
+                    remain = tmp.substring(rhs.length());
+                }
+
+
+                return new SubFormula(lhs, operator, rhs, remain);
+            } catch (StringIndexOutOfBoundsException e) {
+                throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
+            }
+        }
+
+        private static String extractLeftHandSide(String input) {
+            String result = input.substring(0, input.indexOf(SPACE));
+            if (isNotNumber(result) && !result.isEmpty()) {
+                throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
+            }
+            return result;
+        }
+
+        private static boolean isNotNumber(String input) {
+            return !Pattern.matches("\\d+", input);
         }
 
         private Long getLeftHandSide() {
