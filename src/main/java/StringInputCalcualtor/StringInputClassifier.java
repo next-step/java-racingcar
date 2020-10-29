@@ -2,7 +2,6 @@ package StringInputCalcualtor;
 
 
 import lombok.Getter;
-import lombok.Setter;
 import utils.StringUtils;
 
 import java.math.BigDecimal;
@@ -16,7 +15,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 @Getter
-@Setter
 public class StringInputClassifier {
 
     private static final String BLANK_FOR_SPLIT = " ";
