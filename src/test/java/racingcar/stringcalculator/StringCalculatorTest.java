@@ -74,7 +74,7 @@ class StringCalculatorTest {
 
     @ParameterizedTest
     @DisplayName("사칙연산 기호가 아닌 경우")
-    @ValueSource(strings = {"+, -, *, /"})
+    @ValueSource(strings = {"!", "@", "#", "$", "%"})
     void givenNoOperator_thenThrowException(String s) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() ->
