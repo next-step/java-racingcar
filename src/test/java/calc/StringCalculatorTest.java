@@ -26,7 +26,7 @@ import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_LARGE_NUMBER;
 import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_MANY_OPERATOR;
 import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_ONE_OPERATOR;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringCalculatorTest {
 
@@ -52,9 +52,9 @@ public class StringCalculatorTest {
     public void invalidExpressionTest(String input) {
 
         // when, then
-        assertThatThrownBy(() -> StringCalculator.calculate(input))
-                .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageMatching(INVALID_EXPRESSION);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringCalculator.calculate(input))
+                .withMessage(INVALID_EXPRESSION);
     }
 
     @Test
@@ -62,8 +62,8 @@ public class StringCalculatorTest {
     public void nullTest() {
 
         // when, then
-        assertThatThrownBy(() -> StringCalculator.calculate(NULL))
-                .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageMatching(NOT_NULL);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringCalculator.calculate(NULL))
+                .withMessage(NOT_NULL);
     }
 }
