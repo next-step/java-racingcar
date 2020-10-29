@@ -90,6 +90,10 @@ public class CalculatorTest {
             if (parsed.isOperatorEquals("+")) {
                 result = lhs + parsed.getRightHandSize();
             }
+
+            if (parsed.isOperatorEquals("-")) {
+                result = lhs - parsed.getRightHandSize();
+            }
         }
         return result;
     }
