@@ -91,6 +91,13 @@ public class CalculatorTest {
                 .withMessage("나눗셈은 정수로 떨어져야 합니다.");
     }
 
+
+    @Test
+    @DisplayName("여러 연산이 같이 있는 경우 앞쪽 연산부터 수행한다")
+    void complexTest() {
+        assertThat(calculate("2 + 3 * 4 / 2")).isEqualTo(10);
+    }
+
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
             throw new IllegalArgumentException();
