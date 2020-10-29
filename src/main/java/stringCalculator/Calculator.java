@@ -19,6 +19,7 @@ public class Calculator {
         for (int i = 0; i < operator.length(); i++)
             validOperators.add(operator.charAt(i));
 
+        // input 검증
         checkInputValidity();
         parsedInput = input.split(" ");
         checkParsedInputValidity();
@@ -58,7 +59,6 @@ public class Calculator {
         return result;
     }
 
-
     int calculate() {
 
         int result = Integer.parseInt(parsedInput[0]);
@@ -68,14 +68,14 @@ public class Calculator {
             String operator = parsedInput[idx];
             String operand = parsedInput[idx + 1];
 
-            result = new_value(result, operator, operand);
+            result = calculateWithOperator(result, operator, operand);
 
         }
 
         return result;
     }
 
-    int new_value(int result, String operator, String operand) {
+    int calculateWithOperator(int result, String operator, String operand) {
         if (operator.equals("+")) {
             return result + Integer.parseInt(operand);
         } else if (operator.equals("-")) {
