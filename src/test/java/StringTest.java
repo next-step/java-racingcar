@@ -9,7 +9,7 @@ public class StringTest {
     void splitWithRestChar(){
         String[] splits = "1,2".split(",");
 
-        assertThat(splits).contains("1", "2");
+        assertThat(splits).containsExactly("1", "2");
     }
 
     @Test
