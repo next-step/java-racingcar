@@ -84,6 +84,14 @@ public class CalculatorTest {
     }
 
     @Test
+    @DisplayName("0으로 나누는 예외 확인")
+    void dividedByZeroException() {
+        Assertions.assertThatExceptionOfType(ArithmeticException.class) //
+                .isThrownBy(() -> new Calculator("1 / 0").calculate()) //
+                .withMessage("/ by zero");
+    }
+
+    @Test
     @DisplayName("사칙연산 연산자가 아닌경우 예외처리")
     void invalidOperator() {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
