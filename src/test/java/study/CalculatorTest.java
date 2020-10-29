@@ -37,6 +37,11 @@ public class CalculatorTest {
         assertThat(calculate("1 + 1")).isEqualTo(2);
     }
 
+    @Test
+    void tenPlusTen() {
+        assertThat(calculate("10 + 10")).isEqualTo(22);
+    }
+
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
             throw new IllegalArgumentException();
@@ -45,6 +50,7 @@ public class CalculatorTest {
         String lhs = input.substring(0, input.indexOf(SPACE));
         String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
         String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+
         if (operator.equals("+")) {
             return Long.parseLong(lhs) + Long.parseLong(rhs);
         }
