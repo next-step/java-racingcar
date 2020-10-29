@@ -24,7 +24,12 @@ public class StringTest {
     void charAt() {
         String input = "abc";
         assertThat(input.charAt(0)).isEqualTo('a');
+    }
 
+    @Test
+    @DisplayName("String#charAt 예외 학습테스트")
+    void charAtException() {
+        String input = "abc";
         assertThatThrownBy(() -> {
             input.charAt(input.length() + 1);
         }).isInstanceOf(StringIndexOutOfBoundsException.class) //
