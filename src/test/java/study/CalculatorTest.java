@@ -67,10 +67,15 @@ public class CalculatorTest {
         String remainInput = rhs;
         rhs = remainInput.substring(0, remainInput.indexOf(SPACE));
 
-        long result = Long.parseLong(lhs) + Long.parseLong(rhs);
+        long result = 0;
+        if (operator.equals("+")) {
+            result = Long.parseLong(lhs) + Long.parseLong(rhs);
+        }
+
+        parsed = parse(remainInput);
         lhs = String.valueOf(result);
-        operator = remainInput.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
-        rhs = remainInput.substring(remainInput.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+        operator = parsed[OPERATOR];
+        rhs = parsed[RHS];
 
         if (operator.equals("+")) {
             return Long.parseLong(lhs) + Long.parseLong(rhs);
