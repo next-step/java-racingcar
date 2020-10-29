@@ -22,11 +22,11 @@ class Calculator {
 
         List<Parsed> parsingResult = new ArrayList<>();
 
-        do {
+        while (!Objects.isNull(formula)) {
             Parsed parsed = parse(formula);
             parsingResult.add(parsed);
             formula = parsed.remain;
-        } while (!Objects.isNull(formula));
+        }
 
         long result = 0;
         for (Parsed parsed : parsingResult) {
