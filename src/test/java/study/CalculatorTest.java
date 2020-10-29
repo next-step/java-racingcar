@@ -74,10 +74,13 @@ public class CalculatorTest {
         assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("'/' 연산 테스트")
-    void divisionTest() {
-        assertThat(calculate("1 / 1")).isEqualTo(1);
+    @CsvSource({"0 / 1,0", "1 / 1,1", "2 / 1,2", "144 / 12,12", // 여러 자릿수
+            "0 / 1,0", "10 / 2 / 5,1", "300 / 3 / 10,10" // 여러 수
+    })
+    void divisionTest(String input, long expectResult) {
+        assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
     @Test
