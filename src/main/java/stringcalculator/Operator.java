@@ -2,7 +2,7 @@ package stringcalculator;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 enum Operator {
     PLUS("+", (num1, num2) -> num1 + num2),
@@ -19,9 +19,9 @@ enum Operator {
     }
 
     private final String strValue;
-    private final BiFunction<Integer, Integer, Integer> calculate;
+    private final BinaryOperator<Integer> calculate;
 
-    Operator(String strValue, BiFunction<Integer, Integer, Integer> calculate) {
+    Operator(String strValue, BinaryOperator<Integer> calculate) {
         this.strValue = strValue;
         this.calculate = calculate;
     }
