@@ -25,6 +25,10 @@ public class CalculatorTest {
     private static final String SPACE = " ";
     private static final int OPERATOR_LENGTH = 1;
 
+    private static final int LHS = 0;
+    private static final int OPERATOR = 1;
+    private static final int RHS = 2;
+
     @ParameterizedTest
     @DisplayName("null/empty string 입력시 예외가 발생한다.")
     @NullAndEmptySource
@@ -51,13 +55,15 @@ public class CalculatorTest {
             throw new IllegalArgumentException();
         }
 
-        String lhs = input.substring(0, input.indexOf(SPACE));
-        String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
-        String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+        String[] parsed = parse(input);
+        String lhs = parsed[LHS];
+        String operator = parsed[OPERATOR];
+        String rhs = parsed[RHS];
 
         if (!rhs.contains(SPACE) && operator.equals("+")) {
             return Long.parseLong(lhs) + Long.parseLong(rhs);
         }
+
         String remainInput = rhs;
         rhs = remainInput.substring(0, remainInput.indexOf(SPACE));
 
@@ -71,5 +77,12 @@ public class CalculatorTest {
         }
 
         throw new IllegalArgumentException();
+    }
+
+    private String[] parse(String input) {
+        String lhs = input.substring(0, input.indexOf(SPACE));
+        String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
+        String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+        return new String[]{lhs, operator, rhs};
     }
 }
