@@ -3,6 +3,7 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -39,6 +40,16 @@ public class CarRacingTest {
         });
         assertThatExceptionOfType(IllegalStateException.class) //
                 .isThrownBy(carRacing::start);
+    }
+
+    @Test
+    @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
+    void startRacing() {
+        CarRacing carRacing = new CarRacing(new RacingInfoProvider() {
+
+        });
+
+        assertThatCode(carRacing::start).doesNotThrowAnyException();
     }
 
     private static class CarRacing {
