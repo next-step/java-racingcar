@@ -67,5 +67,13 @@ class CalculatorTest {
                 .isThrownBy(() -> {
                     calculator.calculate("2 + 3 *");
                 }).withMessageMatching(Const.ODD_ERROR_MSG);
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.calculate("2 # 3 $ 4");
+                }).withMessageMatching(Const.BAD_OPERATOR_ERROR_MSG);
+        assertThatExceptionOfType(NumberFormatException.class)
+                .isThrownBy(() -> {
+                    calculator.calculate("a # b $ c");
+                });
     }
 }

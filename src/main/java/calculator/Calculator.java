@@ -25,7 +25,7 @@ public class Calculator {
         if (operatorStr.equals(Const.DIVISION)) {
             return operator.divide(operand1, operand2);
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(Const.BAD_OPERATOR_ERROR_MSG);
     }
 
     private void validateInput(String input) {
