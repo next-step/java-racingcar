@@ -22,7 +22,7 @@ class CalculatorTest {
     @DisplayName("calculate 함수의 Operator method 호출 횟수 테스트")
     void calcuateMocked() {
         Operator mockedOperator = Mockito.mock(Operator.class);
-        Calculator mockedCalc =  new Calculator(mockedOperator);
+        Calculator mockedCalc = new Calculator(mockedOperator);
 
         mockedCalc.calculate("2 + 3");
         Mockito.verify(mockedOperator, Mockito.times(1)).add(2, 3);
