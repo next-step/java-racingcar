@@ -48,7 +48,7 @@ public class StringTest {
             // When
             source.charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
-          .hasMessageContaining("String index out of range: 3");
+                .hasMessageContaining("String index out of range: 3");
 
     }
 
