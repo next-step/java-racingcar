@@ -19,4 +19,12 @@ public class StringTest {
 
         assertThat(split).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("(1,2)를 ()제거")
+    void removeBrackets() {
+        String bracketsRemoved = "(1,2)".substring(1, 4);
+
+        assertThat(bracketsRemoved).isEqualTo("1,2");
+    }
 }
