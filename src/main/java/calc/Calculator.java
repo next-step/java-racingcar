@@ -35,8 +35,8 @@ public class Calculator {
         return pre / post;
     }
 
-    public static int operate(int pre, int post, String operation) {
-        switch (operation) {
+    public static int operate(int pre, int post, String operator) {
+        switch (operator) {
             case PLUS:
                 return add(pre, post);
             case MINUS:

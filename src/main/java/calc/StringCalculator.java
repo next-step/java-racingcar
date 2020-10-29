@@ -21,29 +21,29 @@ public final class StringCalculator extends Calculator {
         final int[] numbers = convertToIntArray(expression);
 
         // 주어진 식에서 부호만 추출
-        final String[] operations = Separator.splitOperations(expression);
+        final String[] operators = Separator.splitOperators(expression);
 
         // 계산
-        return compute(numbers, operations);
+        return compute(numbers, operators);
     }
 
-    private static int compute(int[] numbers, String[] operations) {
+    private static int compute(int[] numbers, String[] operators) {
 
         // 하나의 숫자만 입력으로 받은 경우 바로 리턴한다
-        if (operations.length == 0) {
+        if (operators.length == 0) {
             return numbers[0];
         }
 
         // 첫 번째 숫자가 음수인지 확인한다
         // 두 배열의 길이가 같으면 첫 번째 숫자 앞에 부호가 달려있다
-        if (numbers.length == operations.length && operations[0].equals(MINUS)) {
+        if (numbers.length == operators.length && operators[0].equals(MINUS)) {
             numbers[0] *= -1;
         }
 
         for (int index = 0; index < numbers.length - 1; index++) {
 
             // 연산 부호는 항상 1번 인덱스부터 시작한다
-            numbers[index + 1] = operate(numbers[index], numbers[index + 1], operations[index + 1]);
+            numbers[index + 1] = operate(numbers[index], numbers[index + 1], operators[index + 1]);
         }
 
         return numbers[numbers.length - 1];

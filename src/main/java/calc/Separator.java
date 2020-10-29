@@ -2,7 +2,7 @@ package calc;
 
 public final class Separator {
 
-    private static final String OPERATION_REG = "[+\\-*/]";
+    private static final String OPERATOR_REG = "[+\\-*/]";
 
     private static final String NUMBER_REG = "\\d+";
 
@@ -11,11 +11,11 @@ public final class Separator {
 
     // 주어진 식을 숫자 배열로 스플릿합니다
     public static String[] splitNumbers(final String expression) {
-        return expression.split(OPERATION_REG);
+        return expression.split(OPERATOR_REG);
     }
 
     // 주어진 식을 사칙연산 배열로 스플릿합니다
-    public static String[] splitOperations(final String expression) {
+    public static String[] splitOperators(final String expression) {
         return expression.split(NUMBER_REG);
     }
 }

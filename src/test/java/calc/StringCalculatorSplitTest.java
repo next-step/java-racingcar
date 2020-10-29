@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
 
 import static calc.Separator.splitNumbers;
-import static calc.Separator.splitOperations;
+import static calc.Separator.splitOperators;
 import static calc.StringUtils.EMPTY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,11 +22,11 @@ public class StringCalculatorSplitTest {
 
         // when
         final String[] numbers = splitNumbers(expression);
-        final String[] operations = splitOperations(expression);
+        final String[] operators = splitOperators(expression);
 
         // then
         assertThat(numbers).containsExactly("1");
-        assertTrue(Arrays.isNullOrEmpty(operations));
+        assertTrue(Arrays.isNullOrEmpty(operators));
     }
 
     @Test
@@ -38,12 +38,12 @@ public class StringCalculatorSplitTest {
 
         // when
         final String[] numbers = splitNumbers(expression);
-        final String[] operations = splitOperations(expression);
+        final String[] operators = splitOperators(expression);
 
         // then
         // 사칙연산 정규표현식과 일치하는 첫 번째 문자열은 ""로 바뀐다
         assertThat(numbers).containsExactly("", "1");
-        assertThat(operations).containsExactly("-");
+        assertThat(operators).containsExactly("-");
     }
 
     @Test
@@ -55,13 +55,13 @@ public class StringCalculatorSplitTest {
 
         // when
         final String[] numbers = splitNumbers(expression);
-        final String[] operations = splitOperations(expression);
+        final String[] operators = splitOperators(expression);
 
         // then
         assertThat(numbers).containsExactly("1", "2");
 
         // 부호는 숫자를 기준으로 찾는다. 주어진 숫자는 2개이므로, 배열의 크기는 2이여야 한다.
-        assertThat(operations).containsExactly("", "+");
+        assertThat(operators).containsExactly("", "+");
     }
 
     @Test
@@ -73,12 +73,12 @@ public class StringCalculatorSplitTest {
 
         // when
         final String[] numbers = splitNumbers(expression);
-        final String[] operations = splitOperations(expression);
+        final String[] operators = splitOperators(expression);
 
 
         // then
         assertThat(numbers).containsExactly("1", "2", "3", "4", "5");
-        assertThat(operations).containsExactly("", "+", "-", "*", "/");
+        assertThat(operators).containsExactly("", "+", "-", "*", "/");
     }
 
     @Test
@@ -90,12 +90,12 @@ public class StringCalculatorSplitTest {
 
         // when
         final String[] numbers = splitNumbers(expression);
-        final String[] operations = splitOperations(expression);
+        final String[] operators = splitOperators(expression);
 
 
         // then
         assertThat(numbers).containsExactly("", "1", "2", "3", "4", "5");
-        assertThat(operations).containsExactly("-", "+", "-", "*", "/");
+        assertThat(operators).containsExactly("-", "+", "-", "*", "/");
     }
 
     private static String removeWhiteSpace(String expression) {
