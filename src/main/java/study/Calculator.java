@@ -20,22 +20,22 @@ class Calculator {
             throw new IllegalArgumentException("계산식이 존재하지 않습니다.");
         }
 
-        List<Parsed> parsingResult = new ArrayList<>();
+        List<SubFormula> subFormulas = new ArrayList<>();
 
         while (!Objects.isNull(formula)) {
-            Parsed parsed = parse(formula);
-            parsingResult.add(parsed);
-            formula = parsed.remain;
+            SubFormula subFormula = parse(formula);
+            subFormulas.add(subFormula);
+            formula = subFormula.remain;
         }
 
         long result = 0;
-        for (Parsed parsed : parsingResult) {
-            result = parsed.calculateWith(result);
+        for (SubFormula subFormula : subFormulas) {
+            result = subFormula.calculateWith(result);
         }
         return result;
     }
 
-    private Parsed parse(String input) {
+    private SubFormula parse(String input) {
         try {
             String lhs = extractPrefixNumbers(input);
             String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
@@ -49,7 +49,7 @@ class Calculator {
             }
 
 
-            return new Parsed(lhs, operator, rhs, remain);
+            return new SubFormula(lhs, operator, rhs, remain);
         } catch (StringIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
         }
@@ -67,13 +67,13 @@ class Calculator {
         return !Pattern.matches("\\d+", input);
     }
 
-    static class Parsed {
-        private String lhs;
-        private String rhs;
-        private String operator;
-        private String remain;
+    static class SubFormula {
+        private final String lhs;
+        private final String rhs;
+        private final String operator;
+        private final String remain;
 
-        public Parsed(String lhs, String operator, String rhs, String remain) {
+        public SubFormula(String lhs, String operator, String rhs, String remain) {
             this.lhs = lhs;
             this.rhs = rhs;
             this.operator = operator;
