@@ -25,4 +25,6 @@ public class StringTest {
             result.charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class);
     }
+
+    // 의존성주입이 안됩니다 ㅠ Strings <--
 }
