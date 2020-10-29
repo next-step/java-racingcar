@@ -113,27 +113,27 @@ public class CalculatorTest {
         }
 
         public long calculate() {
-            return 0;
-        }
-
-        public static long calculate(String input) {
-            if (Objects.isNull(input) || input.isEmpty()) {
+            if (Objects.isNull(formula) || formula.isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
             List<Parsed> parsingResult = new ArrayList<>();
 
             do {
-                Parsed parsed = parse(input);
+                Parsed parsed = parse(formula);
                 parsingResult.add(parsed);
-                input = parsed.remain;
-            } while (!Objects.isNull(input));
+                formula = parsed.remain;
+            } while (!Objects.isNull(formula));
 
             long result = 0;
             for (Parsed parsed : parsingResult) {
                 result = parsed.calculateWith(result);
             }
             return result;
+        }
+
+        public static long calculate(String formula) {
+            return new Calculator(formula).calculate();
         }
 
         private static Parsed parse(String input) {
