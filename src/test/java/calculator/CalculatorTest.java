@@ -54,18 +54,18 @@ class CalculatorTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     calculator.calculate(null);
-                }).withMessageMatching("입력 값이 null");
+                }).withMessageMatching(Const.NULL_ERROR_MSG);
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     calculator.calculate("");
-                }).withMessageMatching("입력 값이 빈 공백 문자");
+                }).withMessageMatching(Const.EMPTY_ERROR_MSG);
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     calculator.calculate("2");
-                }).withMessageMatching("array 의 길이는 3이상이어야 한다.");
+                }).withMessageMatching(Const.LESS_THAN_3_ERROR_MSG);
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     calculator.calculate("2 + 3 *");
-                }).withMessageMatching("array 의 길이는 홀수여야 한다.");
+                }).withMessageMatching(Const.ODD_ERROR_MSG);
     }
 }
