@@ -43,7 +43,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("세 숫자 더하기 테스트")
     void threeEquations() {
-        assertThat(calculate("1 + 1 + 1")).isEqualTo("3");
+        assertThat(calculate("1 + 1 + 1")).isEqualTo(3);
     }
 
     private long calculate(String input) {
@@ -54,6 +54,17 @@ public class CalculatorTest {
         String lhs = input.substring(0, input.indexOf(SPACE));
         String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
         String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+
+        if (!rhs.contains(SPACE) && operator.equals("+")) {
+            return Long.parseLong(lhs) + Long.parseLong(rhs);
+        }
+        String remainInput = rhs;
+        rhs = remainInput.substring(0, remainInput.indexOf(SPACE));
+
+        long result = Long.parseLong(lhs) + Long.parseLong(rhs);
+        lhs = String.valueOf(result);
+        operator = remainInput.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
+        rhs = remainInput.substring(remainInput.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
 
         if (operator.equals("+")) {
             return Long.parseLong(lhs) + Long.parseLong(rhs);
