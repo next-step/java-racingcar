@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
+
 /**
  * <pre>
  * * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -11,6 +13,13 @@ import org.junit.jupiter.api.Test;
  * * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
  * </pre>
  */
-public class RacingCarTest {
+public class CarRacingTest {
+    @Test
+    @DisplayName("자동차 경주 객체를 생성할 수 있다.")
+    void instantiation() {
+        assertThatCode(CarRacing::new).doesNotThrowAnyException();
+    }
 
+    private class CarRacing {
+    }
 }
