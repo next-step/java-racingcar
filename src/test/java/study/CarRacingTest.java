@@ -35,9 +35,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
     void errorWhenEmptyRacingInfo() {
-        CarRacing carRacing = new CarRacing(new RacingInfoProvider() {
-
-        });
+        CarRacing carRacing = new CarRacing(new StaticInfoProvider(0, 0));
         assertThatExceptionOfType(IllegalStateException.class) //
                 .isThrownBy(carRacing::start);
     }
@@ -45,24 +43,50 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
     void startRacing() {
-        CarRacing carRacing = new CarRacing(new RacingInfoProvider() {
-
-        });
+        CarRacing carRacing = new CarRacing(new StaticInfoProvider(1, 1));
 
         assertThatCode(carRacing::start).doesNotThrowAnyException();
     }
 
     private static class CarRacing {
-        public CarRacing(RacingInfoProvider racingInfoProvider) {
 
+        private int cars;
+        private int steps;
+
+        public CarRacing(RacingInfoProvider racingInfoProvider) {
+            cars = racingInfoProvider.countCars();
+            steps = racingInfoProvider.countSteps();
         }
 
         public void start() {
-            throw new IllegalStateException("레이싱 정보가 존재하지 않습니다.");
+            if (cars == 0 || steps == 0)
+                throw new IllegalStateException("레이싱 정보가 존재하지 않습니다.");
+        }
+    }
+
+    private static class StaticInfoProvider implements RacingInfoProvider {
+        private final int cars;
+        private final int steps;
+
+        public StaticInfoProvider(int cars, int steps) {
+            this.cars = cars;
+            this.steps = steps;
+        }
+
+        @Override
+        public int countCars() {
+            return cars;
+        }
+
+        @Override
+        public int countSteps() {
+            return steps;
         }
     }
 
     private interface RacingInfoProvider {
+        int countCars();
 
+        int countSteps();
     }
 }
