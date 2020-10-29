@@ -26,5 +26,5 @@ public class StringTest {
         }).isInstanceOf(IndexOutOfBoundsException.class);
     }
 
-    // 의존성주입이 안됩니다 ㅠ Strings <--
+    // 의존성주입이 안됩니다 ㅠ Strings <-- ㅠㅠ
 }
