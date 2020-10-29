@@ -2,15 +2,21 @@ package step3.domain;
 
 public class Car {
 
-
+    private static final int MOVE_CONDITION = 4;
     private int position;
 
-    private Car (){
+    public Car (){
         position = 0;
     }
 
-    public void move(){
-        this.position ++;
+    public void move(int movedNumber){
+        if(isMove(movedNumber)){
+            position++;
+        }
+
+    }
+    private boolean isMove(int movedNumber){
+        return movedNumber >= MOVE_CONDITION;
     }
 
     public int getCarPosition(){
@@ -18,7 +24,4 @@ public class Car {
     }
 
 
-    public static Car of(){
-        return new Car();
-    }
 }
