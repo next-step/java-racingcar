@@ -2,8 +2,11 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <pre>## stage2 요구사항
@@ -22,6 +25,11 @@ public class CalculatorTest {
     void nullAndEmptyInput(String input) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
                 .isThrownBy(() -> calculate(input));
+    }
+
+    @Test
+    void onePlusOne() {
+        assertThat(calculate("1 + 1")).isEqualTo(2);
     }
 
     private long calculate(String input) {
