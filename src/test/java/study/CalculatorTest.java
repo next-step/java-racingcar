@@ -91,6 +91,13 @@ public class CalculatorTest {
                 .withMessage("나눗셈은 정수로 떨어져야 합니다.");
     }
 
+    @Test
+    @DisplayName("사칙연산 연산자가 아닌경우 예외처리")
+    void invalidOperator() {
+        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
+                .isThrownBy(() -> calculate("3 ~ 2")) //
+                .withMessage("올바른 연산자가 아닙니다.");
+    }
 
     @Test
     @DisplayName("여러 연산이 같이 있는 경우 앞쪽 연산부터 수행한다")
@@ -191,7 +198,7 @@ public class CalculatorTest {
             }
 
             if (!operator.equals("/")) {
-                throw new IllegalStateException("invalid operator");
+                throw new IllegalArgumentException("올바른 연산자가 아닙니다.");
             }
             if (lhs % getRightHandSize() != 0) {
                 throw new IllegalArgumentException("나눗셈은 정수로 떨어져야 합니다.");
