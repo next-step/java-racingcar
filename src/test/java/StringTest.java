@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
     @Test
@@ -26,5 +27,12 @@ public class StringTest {
         String bracketsRemoved = "(1,2)".substring(1, 4);
 
         assertThat(bracketsRemoved).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("charAt()에서 위치값 벗어난 에러")
+    void failUsingCharAt_indexOutOfBounds() {
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> "abc".charAt(3));
     }
 }
