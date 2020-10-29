@@ -11,4 +11,12 @@ public class StringTest {
 
         assertThat(splits).contains("1", "2");
     }
+
+    @Test
+    @DisplayName("\"1\" 분리")
+    void splitWithRestChar_noRestChar(){
+        String[] split = "1".split(",");
+
+        assertThat(split).containsExactly("1");
+    }
 }
