@@ -28,11 +28,6 @@ public class CalculatorTest {
     private static final String SPACE = " ";
     private static final int OPERATOR_LENGTH = 1;
 
-    private static final int LHS = 0;
-    private static final int OPERATOR = 1;
-    private static final int RHS = 2;
-
-    private static final int REMAIN = 3;
 
     @ParameterizedTest
     @DisplayName("null/empty string 입력시 예외가 발생한다.")
@@ -70,29 +65,29 @@ public class CalculatorTest {
             throw new IllegalArgumentException();
         }
 
-        List<String[]> parsingResult = new ArrayList<>();
+        List<Parsed> parsingResult = new ArrayList<>();
 
         do {
-            String[] parsed = parse(input);
-            parsingResult.add(new String[]{parsed[LHS], parsed[OPERATOR], parsed[RHS]});
-            input = parsed[REMAIN];
+            Parsed parsed = parse(input);
+            parsingResult.add(parsed);
+            input = parsed.remain;
         } while (!Objects.isNull(input));
 
         long result = 0;
-        for (String[] parsed : parsingResult) {
+        for (Parsed parsed : parsingResult) {
             long lhs = result;
-            if (!parsed[LHS].isEmpty()) {
-                lhs = Long.parseLong(parsed[LHS]);
+            if (parsed.hasLHSValue()) {
+                lhs = parsed.getLeftHandSide();
             }
 
-            if (parsed[OPERATOR].equals("+")) {
-                result = lhs + Long.parseLong(parsed[RHS]);
+            if (parsed.isOperatorEquals("+")) {
+                result = lhs + parsed.getRightHandSize();
             }
         }
         return result;
     }
 
-    private String[] parse(String input) {
+    private Parsed parse(String input) {
         try {
             String lhs = input.substring(0, input.indexOf(SPACE));
             String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
@@ -105,7 +100,7 @@ public class CalculatorTest {
                 remain = tmp.substring(rhs.length());
             }
 
-            return new String[]{lhs, operator, rhs, remain};
+            return new Parsed(lhs, operator, rhs, remain);
         } catch (StringIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
         }
@@ -114,4 +109,35 @@ public class CalculatorTest {
     private boolean isNumber(String input) {
         return Pattern.matches("\\d+", input);
     }
+
+    static class Parsed {
+        private String lhs;
+        private String rhs;
+        private String operator;
+        private String remain;
+
+        public Parsed(String lhs, String operator, String rhs, String remain) {
+            this.lhs = lhs;
+            this.rhs = rhs;
+            this.operator = operator;
+            this.remain = remain;
+        }
+
+        public Long getLeftHandSide() {
+            return Long.valueOf(lhs);
+        }
+
+        public Long getRightHandSize() {
+            return Long.valueOf(rhs);
+        }
+
+        public boolean hasLHSValue() {
+            return !lhs.isEmpty();
+        }
+
+        public boolean isOperatorEquals(String sign) {
+            return operator.equals(sign);
+        }
+    }
 }
+
