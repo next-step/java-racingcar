@@ -4,13 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 public class SetTest {
 
@@ -49,4 +49,12 @@ public class SetTest {
         System.out.println(input);
         assertThat(numbers.contains(input)).isTrue();
     }
+
+    @ParameterizedTest
+    @DisplayName("1,2,3 을 넣으면 True 4,5 를 넣으면 False")
+    @CsvSource(value = {"1:True", "2:True", "3:True", "4:False", "5:False"}, delimiter = ':')
+    void contains2(Integer input, Boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
+    }
+
 }
