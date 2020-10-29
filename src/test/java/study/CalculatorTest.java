@@ -95,26 +95,7 @@ public class CalculatorTest {
 
         long result = 0;
         for (Parsed parsed : parsingResult) {
-            long lhs = result;
-            if (parsed.hasLeftHandSide()) {
-                lhs = parsed.getLeftHandSide();
-            }
-
-            if (parsed.isOperatorEquals("+")) {
-                result = lhs + parsed.getRightHandSize();
-            }
-
-            if (parsed.isOperatorEquals("-")) {
-                result = lhs - parsed.getRightHandSize();
-            }
-
-            if (parsed.isOperatorEquals("*")) {
-                result = lhs * parsed.getRightHandSize();
-            }
-
-            if (parsed.isOperatorEquals("/")) {
-                result = lhs / parsed.getRightHandSize();
-            }
+            result = parsed.calculateWith(result);
         }
         return result;
     }
@@ -164,20 +145,36 @@ public class CalculatorTest {
             this.remain = remain;
         }
 
-        public Long getLeftHandSide() {
+        private Long getLeftHandSide() {
             return Long.valueOf(lhs);
         }
 
-        public Long getRightHandSize() {
+        private Long getRightHandSize() {
             return Long.valueOf(rhs);
         }
 
-        public boolean hasLeftHandSide() {
+        private boolean hasLeftHandSide() {
             return !lhs.isEmpty();
         }
 
-        public boolean isOperatorEquals(String sign) {
-            return operator.equals(sign);
+        public long calculateWith(long defaultLhs) {
+            long lhs = defaultLhs;
+            if (hasLeftHandSide()) {
+                lhs = getLeftHandSide();
+            }
+
+            switch (operator) {
+                case "+":
+                    return lhs + getRightHandSize();
+                case "-":
+                    return lhs - getRightHandSize();
+                case "*":
+                    return lhs * getRightHandSize();
+                case "/":
+                    return lhs / getRightHandSize();
+                default:
+                    throw new IllegalStateException("invalid operator");
+            }
         }
     }
 }
