@@ -67,6 +67,13 @@ public class CalculatorTest {
         assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
+    @ParameterizedTest
+    @DisplayName("여러 수에 다한 '-' 연산 테스트")
+    @CsvSource({"1 - 0,1", "3 - 1 - 1,1", "10 - 1 - 2 - 3,4"})
+    void multiMinusEquations(String input, long expectResult) {
+        assertThat(calculate(input)).isEqualTo(expectResult);
+    }
+
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
             throw new IllegalArgumentException();
