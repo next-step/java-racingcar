@@ -66,20 +66,14 @@ class StringCalculatorTest {
     @DisplayName("입력 값이 null 이거나 빈 공백 문자")
     @CsvSource(value = {"null: "}, delimiter = ':')
     void givenNull_thenThrowException(String s1, String s2) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() ->
-                    sCal.divide(s1, s2)
-                );
+        assertThatIllegalArgumentException().isThrownBy(() -> sCal.divide(s1, s2));
     }
 
     @ParameterizedTest
     @DisplayName("사칙연산 기호가 아닌 경우")
     @ValueSource(strings = {"!", "@", "#", "$", "%"})
     void givenNoOperator_thenThrowException(String s) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() ->
-                    sCal.isOperator(s)
-                );
+        assertThatIllegalArgumentException().isThrownBy(() -> sCal.isOperator(s));
     }
 
     @ParameterizedTest
