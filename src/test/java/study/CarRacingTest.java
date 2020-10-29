@@ -46,10 +46,6 @@ public class CarRacingTest {
 
         }
 
-        public CarRacing() {
-            this(null);
-        }
-
         public void start() {
             throw new IllegalStateException("레이싱 정보가 존재하지 않습니다.");
         }
