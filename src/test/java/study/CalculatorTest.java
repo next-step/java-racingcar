@@ -136,7 +136,7 @@ public class CalculatorTest {
             return new Calculator(formula).calculate();
         }
 
-        private static Parsed parse(String input) {
+        private Parsed parse(String input) {
             try {
                 String lhs = extractPrefixNumbers(input);
                 String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
@@ -156,7 +156,7 @@ public class CalculatorTest {
             }
         }
 
-        private static String extractPrefixNumbers(String input) {
+        private String extractPrefixNumbers(String input) {
             String result = input.substring(0, input.indexOf(SPACE));
             if (isNotNumber(result) && !result.isEmpty()) {
                 throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
@@ -164,7 +164,7 @@ public class CalculatorTest {
             return result;
         }
 
-        private static boolean isNotNumber(String input) {
+        private boolean isNotNumber(String input) {
             return !Pattern.matches("\\d+", input);
         }
 
