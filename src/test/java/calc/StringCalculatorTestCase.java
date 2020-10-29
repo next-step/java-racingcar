@@ -8,10 +8,10 @@ public class StringCalculatorTestCase {
     public static final String PLUS_ONE = "+ 1#1"; // 1
     public static final String HAS_ONE_OPERATOR = "1 + 2#3"; // 3
     public static final String START_WITH_MINUS_HAS_ONE_OPERATOR = "- 1 + 2#1"; // 1
-    public static final String START_WITH_PLUS_HAS_ONE_OPERATIOR = "+ 1 + 2#3"; // 3
+    public static final String START_WITH_PLUS_HAS_ONE_OPERATOR = "+ 1 + 2#3"; // 3
     public static final String HAS_MANY_OPERATOR = "1 + 2 - 3 * 4 / 5#0"; // 0
-    public static final String START_WITH_MINUS_HAS_MANY_OPERATIOR = "- 1 + 2 - 3 * 4 / 5#-1"; // -1
-    public static final String START_WITH_PLUS_HAS_MANY_OPERATIOR = "+ 1 + 2 - 3 * 4 / 5#0"; // 0
+    public static final String START_WITH_MINUS_HAS_MANY_OPERATOR = "- 1 + 2 - 3 * 4 / 5#-1"; // -1
+    public static final String START_WITH_PLUS_HAS_MANY_OPERATOR = "+ 1 + 2 - 3 * 4 / 5#0"; // 0
     public static final String HAS_LARGE_NUMBER = "115 + 35 - 50 * 10 / 100#10"; // 10
     public static final String START_WITH_MINUS_HAS_LARGE_NUMBER = "- 115 + 15 - 50 * 10 / 100#-15"; // -15
     public static final String START_WITH_PLUS_HAS_LARGE_NUMBER = "+ 115 + 35 - 50 * 10 / 100#10"; // 10

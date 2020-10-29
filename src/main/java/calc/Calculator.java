@@ -2,6 +2,14 @@ package calc;
 
 public class Calculator {
 
+    public static final String PLUS = "+";
+
+    public static final String MINUS = "-";
+
+    public static final String TIMES = "*";
+
+    public static final String OBELUS = "/";
+
     public static int add(int pre, int post) {
         return pre + post;
     }
@@ -27,13 +35,13 @@ public class Calculator {
         }
 
         switch (operation) {
-            case "+":
+            case PLUS:
                 return add(pre, post);
-            case "-":
+            case MINUS:
                 return subtract(pre, post);
-            case "*":
+            case TIMES:
                 return multiply(pre, post);
-            case "/":
+            case OBELUS:
                 return divide(pre, post);
             default:
                 return 0;

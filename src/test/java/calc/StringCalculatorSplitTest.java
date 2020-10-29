@@ -5,14 +5,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
 
+import static calc.Separator.splitNumbers;
+import static calc.Separator.splitOperations;
+import static calc.StringUtils.EMPTY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringCalculatorSplitTest {
-
-    public static final String OPERATION_REG = "[+\\-*/]";
-
-    public static final String NUMBER_REG = "\\d";
 
     @Test
     @DisplayName("양수만 있는 문자열 스플릿 테스트")
@@ -99,17 +98,7 @@ public class StringCalculatorSplitTest {
         assertThat(operations).containsExactly("-", "+", "-", "*", "/");
     }
 
-    // 주어진 식을 숫자 배열로 스플릿합니다
-    private static String[] splitNumbers(final String expression) {
-        return expression.split(OPERATION_REG);
-    }
-
-    // 주어진 식을 사칙연산 배열로 스플릿합니다
-    private static String[] splitOperations(final String expression) {
-        return expression.split(NUMBER_REG);
-    }
-
     private static String removeWhiteSpace(String expression) {
-        return StringUtils.replaceWhitespaceCharacters(expression, "");
+        return StringUtils.replaceWhitespaceCharacters(expression, EMPTY);
     }
 }
