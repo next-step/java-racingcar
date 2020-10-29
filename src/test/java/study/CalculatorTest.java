@@ -2,10 +2,10 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -52,19 +52,12 @@ public class CalculatorTest {
         assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("연산자 사이에 빈공간이 없는 경우")
-    void noSpaceBetweenLettersAndNumbers() {
+    @ValueSource(strings = {"1+1", "1 + 1+1", "1 + 1+1 + 1"})
+    void noSpaceBetweenLettersAndNumbers(String input) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate("1+1")) //
-                .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
-    }
-
-    @Test
-    @DisplayName("마지막 연산자에 빈공간이 없는 경우")
-    void noSpaceLastOperatorAndNumbers() {
-        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate("1 + 1+1")) //
+                .isThrownBy(() -> calculate(input)) //
                 .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
     }
 
