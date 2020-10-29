@@ -21,6 +21,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class CalculatorTest {
 
+    private static final String SPACE = " ";
+    private static final int OPERATOR_LENGTH = 1;
+
     @ParameterizedTest
     @DisplayName("null/empty string 입력시 예외가 발생한다.")
     @NullAndEmptySource
@@ -39,11 +42,11 @@ public class CalculatorTest {
             throw new IllegalArgumentException();
         }
 
-        String left = input.substring(0, input.indexOf(" "));
-        String operator = input.substring(left.length() + 1, left.length() + 2); // operator 는 항상 length=1
-        String right = input.substring(input.indexOf(operator) + operator.length() + 1);
+        String lhs = input.substring(0, input.indexOf(SPACE));
+        String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
+        String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
         if (operator.equals("+")) {
-            return Long.parseLong(left) + Long.parseLong(right);
+            return Long.parseLong(lhs) + Long.parseLong(rhs);
         }
 
         throw new IllegalArgumentException();
