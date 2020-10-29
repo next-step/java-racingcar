@@ -21,6 +21,14 @@ public class CalculatorTest {
                 .isThrownBy(() -> calculate(null));
     }
 
+    @Test
+    @DisplayName("empty string 입력시 예외가 발생한다.")
+    void emptyInput() {
+        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
+                .isThrownBy(() -> calculate(""));
+    }
+
+
     private long calculate(String input) {
         throw new IllegalArgumentException();
     }
