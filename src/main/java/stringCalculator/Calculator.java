@@ -19,20 +19,10 @@ public class Calculator {
         for (int i = 0; i < operator.length(); i++)
             validOperators.add(operator.charAt(i));
 
-    }
-
-    int execute() {
-        int result;
-
         checkInputValidity();
-
         parsedInput = input.split(" ");
+        checkParsedInputValidity();
 
-        checkOperatorValidity();
-
-        result = calculate();
-
-        return result;
     }
 
     private void checkInputValidity() {
@@ -40,15 +30,34 @@ public class Calculator {
             throw new IllegalArgumentException("Input is invalid form");
     }
 
+    private void checkParsedInputValidity() {
+        checkOperatorValidity();
+        checkPair();
+    }
+
     private void checkOperatorValidity() {
         for (int idx = 1; idx < parsedInput.length; idx += 2)
             checkOperator(parsedInput[idx]);
     }
 
-    void checkOperator(String input) {
-        if (!(input.length() == 1 && validOperators.contains(input.charAt(0))))
-            throw new IllegalArgumentException("It is invalid operator");
+    private void checkPair() {
+        if (parsedInput.length % 2 == 0)
+            throw new IllegalArgumentException("Input doesn't match pair");
     }
+
+    private void checkOperator(String input) {
+        if (!(input.length() == 1 && validOperators.contains(input.charAt(0))))
+            throw new IllegalArgumentException();
+    }
+
+    int execute() {
+        int result;
+
+        result = calculate();
+
+        return result;
+    }
+
 
     int calculate() {
 
@@ -57,12 +66,25 @@ public class Calculator {
         for (int idx = 1; idx < parsedInput.length; idx += 2) {
 
             String operator = parsedInput[idx];
+            String operand = parsedInput[idx + 1];
 
-
+            result = new_value(result, operator, operand);
 
         }
 
         return result;
     }
 
+    int new_value(int result, String operator, String operand) {
+        if (operator.equals("+")) {
+            return result + Integer.parseInt(operand);
+        } else if (operator.equals("-")) {
+            return result - Integer.parseInt(operand);
+        } else if (operator.equals("*")) {
+            return result * Integer.parseInt(operand);
+        } else if (operator.equals("/")) {
+            return result / Integer.parseInt(operand);
+        }
+        return result;
+    }
 }
