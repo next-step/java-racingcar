@@ -30,5 +30,16 @@ public class CarRacingTest {
     }
 
     private static class CarRacing {
+        public CarRacing(RacingInfoProvider racingInfoProvider) {
+
+        }
+
+        public CarRacing() {
+            this(null);
+        }
+    }
+
+    private interface RacingInfoProvider {
+
     }
 }
