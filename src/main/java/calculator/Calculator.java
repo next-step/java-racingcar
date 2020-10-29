@@ -1,18 +1,29 @@
 package calculator;
 
 public class Calculator {
-    int calculate(int operand1, int operand2, String operator) {
-        if (operator.equals("+")) {
-            return Operator.add(operand1, operand2);
+
+    private Operator operator;
+
+    public Calculator() {
+        this.operator = Operator.getInstance();
+    }
+
+    public Calculator(Operator operator) {
+        this.operator = operator;
+    }
+
+    int calculate(int operand1, int operand2, String operatorStr) {
+        if (operatorStr.equals("+")) {
+            return operator.add(operand1, operand2);
         }
-        if (operator.equals("-")) {
-            return Operator.subtract(operand1, operand2);
+        if (operatorStr.equals("-")) {
+            return operator.subtract(operand1, operand2);
         }
-        if (operator.equals("*")) {
-            return Operator.multiply(operand1, operand2);
+        if (operatorStr.equals("*")) {
+            return operator.multiply(operand1, operand2);
         }
-        if (operator.equals("/")) {
-            return Operator.divide(operand1, operand2);
+        if (operatorStr.equals("/")) {
+            return operator.divide(operand1, operand2);
         }
         throw new IllegalArgumentException();
     }

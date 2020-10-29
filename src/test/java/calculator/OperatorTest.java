@@ -11,10 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class OperatorTest {
 
     private Random random;
+    private Operator operator;
 
     @BeforeEach
     void setUp() {
         random = new Random();
+        operator = Operator.getInstance();
     }
 
     @Test
@@ -22,7 +24,7 @@ class OperatorTest {
     void add() {
         int operand1 = random.nextInt();
         int operand2 = random.nextInt();
-        assertThat(Operator.add(operand1, operand2))
+        assertThat(operator.add(operand1, operand2))
                 .isEqualTo(operand1 + operand2);
 
     }
@@ -32,7 +34,7 @@ class OperatorTest {
     void subtract() {
         int operand1 = random.nextInt();
         int operand2 = random.nextInt();
-        assertThat(Operator.subtract(operand1, operand2))
+        assertThat(operator.subtract(operand1, operand2))
                 .isEqualTo(operand1 - operand2);
 
     }
@@ -42,7 +44,7 @@ class OperatorTest {
     void multiply() {
         int operand1 = random.nextInt();
         int operand2 = random.nextInt();
-        assertThat(Operator.multiply(operand1, operand2))
+        assertThat(operator.multiply(operand1, operand2))
                 .isEqualTo(operand1 * operand2);
 
     }
@@ -52,7 +54,7 @@ class OperatorTest {
     void divide() {
         int operand1 = random.nextInt();
         int operand2 = random.nextInt();
-        assertThat(Operator.divide(operand1, operand2))
+        assertThat(operator.divide(operand1, operand2))
                 .isEqualTo(operand1 / operand2);
 
     }
