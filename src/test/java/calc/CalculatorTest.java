@@ -14,24 +14,24 @@ public class CalculatorTest {
     @Test
     @DisplayName("더하기 테스트")
     public void addCalculator() {
-        assertThat(PRE + POST).isEqualTo(7);
+        assertThat(Calculator.operate(PRE, POST, Calculator.PLUS)).isEqualTo(7);
     }
 
     @Test
     @DisplayName("빼기 테스트")
     public void subtractCalculator() {
-        assertThat(PRE - POST).isEqualTo(-3);
+        assertThat(Calculator.operate(PRE, POST, Calculator.MINUS)).isEqualTo(-3);
     }
 
     @Test
     @DisplayName("곱하기 테스트")
     public void multiplyCalculator() {
-        assertThat(PRE * POST).isEqualTo(10);
+        assertThat(Calculator.operate(PRE, POST, Calculator.TIMES)).isEqualTo(10);
     }
 
     @Test
     @DisplayName("나누기 테스트")
     public void divideCalculator() {
-        assertThat(PRE / POST).isEqualTo(0);
+        assertThat(Calculator.operate(PRE, POST, Calculator.OBELUS)).isEqualTo(0);
     }
 }

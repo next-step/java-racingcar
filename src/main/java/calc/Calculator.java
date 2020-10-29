@@ -23,10 +23,6 @@ public class Calculator {
     }
 
     public static int divide(int pre, int post) {
-        return pre / post;
-    }
-
-    public static int operate(int pre, int post, String operation) {
 
         // pre 를 0 으로 나눌 경우 ArithmeticException 발생
         // 0 으로 나눌 경우 0 을 리턴
@@ -34,6 +30,10 @@ public class Calculator {
             return 0;
         }
 
+        return pre / post;
+    }
+
+    public static int operate(int pre, int post, String operation) {
         switch (operation) {
             case PLUS:
                 return add(pre, post);
