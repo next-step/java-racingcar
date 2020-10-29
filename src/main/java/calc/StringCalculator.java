@@ -3,6 +3,8 @@ package calc;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static calc.StringUtils.EMPTY;
+
 public final class StringCalculator extends Calculator {
 
     private StringCalculator() {}
@@ -34,7 +36,7 @@ public final class StringCalculator extends Calculator {
 
         // 첫 번째 숫자가 음수인지 확인한다
         // 두 배열의 길이가 같으면 첫 번째 숫자 앞에 부호가 달려있다
-        if (numbers.length == operations.length && operations[0].equals("-")) {
+        if (numbers.length == operations.length && operations[0].equals(MINUS)) {
             numbers[0] *= -1;
         }
 
@@ -50,7 +52,7 @@ public final class StringCalculator extends Calculator {
     private static int[] convertToIntArray(String expression) {
         String[] numbers = Separator.splitNumbers(expression);
         Stream<String> stream = Arrays.stream(numbers);
-        if (numbers[0].equals("")) {
+        if (numbers[0].equals(EMPTY)) {
             stream = stream.skip(1);
         }
 
