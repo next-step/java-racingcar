@@ -29,10 +29,12 @@ public class StringTest {
     @DisplayName("String#charAt 예외 학습테스트")
     void charAtException() {
         String input = "abc";
+        int outOfBoundIndex = input.length() + 1;
+
         assertThatThrownBy(() -> {
-            input.charAt(input.length() + 1);
+            input.charAt(outOfBoundIndex);
         }).isInstanceOf(StringIndexOutOfBoundsException.class) //
-                .hasMessage("String index out of range: 4");
+                .hasMessage("String index out of range: %d", outOfBoundIndex);
     }
 
     private String stripBracket(String input) {
