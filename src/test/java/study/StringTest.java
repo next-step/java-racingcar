@@ -22,13 +22,19 @@ public class StringTest {
     @Test
     @DisplayName("String#charAt 의 학습테스트")
     void charAt() {
+        assertThat("abc".charAt(0)).isEqualTo('a');
+    }
+
+    @Test
+    @DisplayName("String#charAt 예외 학습테스트")
+    void charAtException() {
         String input = "abc";
-        assertThat(input.charAt(0)).isEqualTo('a');
+        int outOfBoundIndex = input.length() + 1;
 
         assertThatThrownBy(() -> {
-            input.charAt(input.length() + 1);
+            input.charAt(outOfBoundIndex);
         }).isInstanceOf(StringIndexOutOfBoundsException.class) //
-                .hasMessage("String index out of range: 4");
+                .hasMessage("String index out of range: %d", outOfBoundIndex);
     }
 
     private String stripBracket(String input) {
