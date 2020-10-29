@@ -11,12 +11,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("2단계: 문자열 계산기")
 public class StringCalculatorTest {
-    StringCalculator calculator = new StringCalculator();
 
     @Test
     @DisplayName("더하기 연산")
     public void executePlus() {
-        Integer result = calculator.execute("1 + 2");
+        Integer result = StringCalculator.execute("1 + 2");
 
         assertThat(result).isEqualTo(3);
     }
@@ -25,7 +24,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("빼기 연산")
     public void executeMinus() {
-        Integer result = calculator.execute("1 - 2");
+        Integer result = StringCalculator.execute("1 - 2");
 
         assertThat(result).isEqualTo(-1);
     }
@@ -33,7 +32,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("곱하기 연산")
     public void executeMultiply() {
-        Integer result = calculator.execute("1 * 2");
+        Integer result = StringCalculator.execute("1 * 2");
 
         assertThat(result).isEqualTo(2);
     }
@@ -41,7 +40,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("나누기 연산")
     public void executeDivide() {
-        Integer result = calculator.execute("2 / 1");
+        Integer result = StringCalculator.execute("2 / 1");
 
         assertThat(result).isEqualTo(2);
     }
@@ -50,7 +49,7 @@ public class StringCalculatorTest {
     @DisplayName("사칙연산 골고루 사용한 계산")
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 - 3 / 2 + 5 * 2:8"}, delimiter = ':')
     public void complexExpression(String input, Integer expectedResult) {
-        Integer result = calculator.execute(input);
+        Integer result = StringCalculator.execute(input);
 
         assertThat(result).isEqualTo(expectedResult);
     }
@@ -60,7 +59,7 @@ public class StringCalculatorTest {
     @DisplayName("입력 값이 null이거나 empty일 경우 IllegalArgumentException throw")
     public void nullInput(String input) {
         assertThatThrownBy(() -> {
-            calculator.execute(input);
+            StringCalculator.execute(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
