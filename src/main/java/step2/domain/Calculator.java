@@ -10,17 +10,34 @@ public class Calculator {
     public int calculate(String input) {
         validNull(input);
         validEmpty(input);
-        String[] splits = splitBlank(input);
-        int loopSize = splits.length;
-        int operateResult = parseInt(splits[0]);
-        for (int i = 1; i < loopSize; i+=2) {
-            String operator = splits[i];
-            int nextNumber = parseInt(splits[i+1]);
-            operateResult = Operator.operate(getOperatedNumber(operateResult,nextNumber), operator);
+        return getOperateResult(splitBlank(input));
+    }
+
+    private int getOperateResult(String[] splits) {
+        int loopSize = getLoopSize(splits);
+        int operateResult = getNumber(splits[0]);
+        for (int i = 1; i < loopSize; i += 2) {
+            int nextNumber = getNumber(splits[i + 1]);
+            operateResult = Operator.operate(
+                            getOperatedNumber(operateResult, nextNumber),
+                            getOperator(splits[i]));
         }
         return operateResult;
     }
-    private OperatedNumber getOperatedNumber(int operateResult , int nextNumber){
+
+    private String getOperator(String operator) {
+        return operator;
+    }
+
+    private int getNumber(String splitNumber) {
+        return parseInt(splitNumber);
+    }
+
+    private int getLoopSize(String[] splits) {
+        return splits.length;
+    }
+
+    private OperatedNumber getOperatedNumber(int operateResult, int nextNumber) {
         return new OperatedNumber(operateResult, nextNumber);
     }
 
@@ -33,6 +50,7 @@ public class Calculator {
             throw new NullException();
         }
     }
+
     private static void validEmpty(String input) {
         if (input.isEmpty()) {
             throw new EmptyException();
