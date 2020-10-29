@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import java.util.Objects;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -33,6 +35,10 @@ public class CalculatorTest {
     }
 
     private long calculate(String input) {
+        if (Objects.isNull(input) || input.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
         String left = input.substring(0, input.indexOf(" "));
         String operator = input.substring(left.length() + 1, left.length() + 2); // operator 는 항상 length=1
         String right = input.substring(input.indexOf(operator) + operator.length() + 1);
