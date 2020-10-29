@@ -1,28 +1,26 @@
 package step3.domain;
 
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    private Car car ;
+
+    @BeforeEach
+    void setUp(){
+        car = new Car();
+    }
     @ParameterizedTest
-    @DisplayName("자동차가 움직여서 포지션이 맞는지 확인")
-    @ValueSource(ints = {1, 2, 3})
-    void getCarPosition(int moveCount) {
-        Car car = new Car();
-        Arrays.stream(new Integer[moveCount])
-                .forEach(i -> car.move());
-        assertThat(car.getCarPosition()).isEqualTo(moveCount);
+    @DisplayName("자동차가 일정 수준이상 넘으면 움직이는지 확인")
+    @CsvSource(value = { "1:0" , "2:0" , "3:0" , "4:1" , "5:1"} ,delimiter = ':')
+    void getCarPosition(int moveCondition , int expected) {
+        car.move(moveCondition);
+        assertThat(car.getCarPosition()).isEqualTo(expected);
     }
 
 }
