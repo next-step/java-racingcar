@@ -35,12 +35,12 @@ class ArithmeticExpression {
         throw new IllegalArgumentException("Invalid index. " + index);
     }
 
-    private boolean isNumberIndex(int i) {
-        return i % 2 == 0;
+    private boolean isNumberIndex(int index) {
+        return index % 2 == 0;
     }
 
-    private boolean isOperatorIndex(int i) {
-        return i % 2 != 0;
+    private boolean isOperatorIndex(int index) {
+        return index % 2 != 0;
     }
 
     Integer evaluate() {
@@ -63,7 +63,7 @@ class ArithmeticExpression {
             throw new IllegalStateException("There are no numbers in the expression.");
         }
 
-        if (numbers.size() != operators.size()  + 1) {
+        if (numbers.size() != operators.size() + 1) {
             throw new IllegalStateException("Number must be one more than operator.");
         }
     }

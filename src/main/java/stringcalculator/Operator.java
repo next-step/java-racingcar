@@ -14,23 +14,23 @@ enum Operator {
 
     static {
         for (Operator operator : Operator.values()) {
-            stringOperatorMap.put(operator.strValue, operator);
+            stringOperatorMap.put(operator.value, operator);
         }
     }
 
-    private final String strValue;
+    private final String value;
     private final BinaryOperator<Integer> calculate;
 
-    Operator(String strValue, BinaryOperator<Integer> calculate) {
-        this.strValue = strValue;
+    Operator(String value, BinaryOperator<Integer> calculate) {
+        this.value = value;
         this.calculate = calculate;
     }
 
-    static Operator findBy(String strValue) {
-        Operator operator = stringOperatorMap.get(strValue);
+    static Operator findBy(String value) {
+        Operator operator = stringOperatorMap.get(value);
 
         if (operator == null) {
-            throw new IllegalArgumentException("Unexpected strValue to find Operator '" + strValue + "'");
+            throw new IllegalArgumentException("Unexpected value to find Operator '" + value + "'");
         }
 
         return operator;
