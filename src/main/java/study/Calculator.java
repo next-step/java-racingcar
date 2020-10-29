@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 class Calculator {
     public static final String SPACE = " ";
-    public static final int OPERATOR_LENGTH = 1;
+    public static final int SIGN_LENGTH = 1;
 
     private String formula;
 
@@ -41,8 +41,8 @@ class Calculator {
         public static SubFormula create(String formula) {
             try {
                 String leftHandSide = extractLeftHandSide(formula);
-                String operator = formula.substring(leftHandSide.length() + SPACE.length(), leftHandSide.length() + SPACE.length() + OPERATOR_LENGTH);
-                String rightHandSide = formula.substring(formula.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+                String sign = formula.substring(leftHandSide.length() + SPACE.length(), leftHandSide.length() + SPACE.length() + SIGN_LENGTH);
+                String rightHandSide = formula.substring(formula.indexOf(sign) + SIGN_LENGTH + SPACE.length());
                 String remain = null;
 
                 String tmp = rightHandSide;
@@ -52,7 +52,7 @@ class Calculator {
                 }
 
 
-                return new SubFormula(leftHandSide, operator, rightHandSide, remain);
+                return new SubFormula(leftHandSide, sign, rightHandSide, remain);
             } catch (StringIndexOutOfBoundsException e) {
                 throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
             }
@@ -60,13 +60,13 @@ class Calculator {
 
         private final String leftHandSide;
         private final String rightHandSide;
-        private final String operator;
+        private final String sign;
         private final String remain;
 
-        public SubFormula(String leftHandSide, String operator, String rightHandSide, String remain) {
+        public SubFormula(String leftHandSide, String sign, String rightHandSide, String remain) {
             this.leftHandSide = leftHandSide;
             this.rightHandSide = rightHandSide;
-            this.operator = operator;
+            this.sign = sign;
             this.remain = remain;
         }
 
@@ -76,7 +76,7 @@ class Calculator {
                 leftHandSide = getLeftHandSide();
             }
 
-            return Operator.valueOfSign(operator).apply(leftHandSide, getRightHandSize());
+            return Operator.valueOfSign(sign).apply(leftHandSide, getRightHandSize());
         }
 
         private static String extractLeftHandSide(String input) {
