@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -59,6 +60,14 @@ public class CalculatorTest {
                 .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
     }
 
+    @Test
+    @DisplayName("마지막 연산자에 빈공간이 없는 경우")
+    void noSpaceLastOperatorAndNumbers() {
+        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
+                .isThrownBy(() -> calculate("1 + 1+1")) //
+                .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
+    }
+
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
             throw new IllegalArgumentException();
@@ -75,13 +84,17 @@ public class CalculatorTest {
             operator = parsed[OPERATOR];
             rhs = parsed[RHS];
 
-            if (!rhs.contains(SPACE) && operator.equals("+")) {
+            if (isNumber(rhs) && operator.equals("+")) {
                 return Long.parseLong(lhs) + Long.parseLong(rhs);
             }
 
             String tmp = rhs;
-            rhs = tmp.substring(0, tmp.indexOf(SPACE));
 
+            try {
+                rhs = tmp.substring(0, tmp.indexOf(SPACE));
+            } catch (StringIndexOutOfBoundsException e) {
+                throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
+            }
 
             if (operator.equals("+")) {
                 result = Long.parseLong(lhs) + Long.parseLong(rhs);
@@ -89,6 +102,10 @@ public class CalculatorTest {
 
             input = tmp.replaceFirst(rhs, String.valueOf(result));
         }
+    }
+
+    private boolean isNumber(String rhs) {
+        return Pattern.matches("\\d+", rhs);
     }
 
     private String[] parse(String input) {
