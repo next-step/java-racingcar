@@ -15,7 +15,7 @@ public final class StringCalculator extends Calculator {
         expression = StringUtils.replaceWhitespaceCharacters(expression);
 
         // 주어진 식이 올바른 형식의 식인지 확인
-        Matcher.matches(expression);
+        Validator.validate(expression);
 
         // 주어진 식에서 숫자만 추출
         final int[] numbers = convertToIntArray(expression);

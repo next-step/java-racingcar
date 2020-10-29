@@ -4,14 +4,14 @@ import java.util.regex.Pattern;
 
 import static calc.ErrorMessage.INVALID_EXPRESSION;
 
-public final class Matcher {
+public final class Validator {
 
     private static final Pattern EXPRESSION_PATTERN = Pattern.compile("^([+-]?[\\d]+)([+-/*]\\d+)*$");
 
-    private Matcher() {
+    private Validator() {
     }
 
-    public static void matches(String expression) {
+    public static void validate(String expression) {
         java.util.regex.Matcher matcher = EXPRESSION_PATTERN.matcher(expression);
 
         if (!matcher.matches()) {

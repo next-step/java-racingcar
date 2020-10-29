@@ -29,7 +29,7 @@ import static calc.StringUtils.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StringCalculatorMatchTest {
+public class ValidatorTest {
 
     private static final Pattern EXPRESSION_PATTERN =
             Pattern.compile("^([+-]?[\\d]+)([+-/*]\\d+)*$");
