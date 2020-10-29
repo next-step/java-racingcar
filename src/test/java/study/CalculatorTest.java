@@ -2,7 +2,6 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -44,10 +43,11 @@ public class CalculatorTest {
         assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
-    @Test
-    @DisplayName("세 숫자 더하기 테스트")
-    void threeEquations() {
-        assertThat(calculate("1 + 1 + 1")).isEqualTo(3);
+    @ParameterizedTest
+    @DisplayName("여러 수에 다한 '+' 연산 테스트")
+    @CsvSource({"1 + 1,2", "1 + 1 + 1,3", "1 + 1 + 1 + 1,4", "2 + 3 + 5 + 7 + 11,28"})
+    void multiEquations(String input, long expectResult) {
+        assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
     private long calculate(String input) {
