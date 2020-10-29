@@ -33,6 +33,13 @@ public class CalculatorTest {
     }
 
     private long calculate(String input) {
+        String left = input.substring(0, input.indexOf(" "));
+        String operator = input.substring(left.length() + 1, left.length() + 2); // operator 는 항상 length=1
+        String right = input.substring(input.indexOf(operator) + operator.length() + 1);
+        if (operator.equals("+")) {
+            return Long.parseLong(left) + Long.parseLong(right);
+        }
+
         throw new IllegalArgumentException();
     }
 }
