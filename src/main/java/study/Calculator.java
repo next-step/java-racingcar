@@ -17,7 +17,7 @@ class Calculator {
 
     public long calculate() {
         if (Objects.isNull(formula) || formula.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("계산식이 존재하지 않습니다.");
         }
 
         List<Parsed> parsingResult = new ArrayList<>();

@@ -26,7 +26,8 @@ public class CalculatorTest {
     @NullAndEmptySource
     void nullAndEmptyInput(String input) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> new Calculator(input).calculate());
+                .isThrownBy(() -> new Calculator(input).calculate()) //
+                .withMessage("계산식이 존재하지 않습니다.");
     }
 
     @ParameterizedTest
