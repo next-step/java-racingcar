@@ -1,14 +1,10 @@
 package step3;
 
-import step3.controller.InputController;
-import step3.controller.OutputController;
+import step3.service.RacingGame;
 
 public class App{
     public static void main(String[] args) {
-        int carCount = InputController.putCarCount();
-        int tryCount = InputController.putTryCount();
-
-        OutputController.runResult();
+        new RacingGame().run();
     }
 
 }
