@@ -38,31 +38,31 @@ class Calculator {
     static class SubFormula {
         public static SubFormula create(String formula) {
             try {
-                String lhs = extractLeftHandSide(formula);
-                String operator = formula.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
-                String rhs = formula.substring(formula.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+                String leftHandSide = extractLeftHandSide(formula);
+                String operator = formula.substring(leftHandSide.length() + SPACE.length(), leftHandSide.length() + SPACE.length() + OPERATOR_LENGTH);
+                String rightHandSide = formula.substring(formula.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
                 String remain = null;
 
-                String tmp = rhs;
-                if (isNotNumber(rhs)) {
-                    rhs = extractLeftHandSide(tmp);
-                    remain = tmp.substring(rhs.length());
+                String tmp = rightHandSide;
+                if (isNotNumber(rightHandSide)) {
+                    rightHandSide = extractLeftHandSide(tmp);
+                    remain = tmp.substring(rightHandSide.length());
                 }
 
 
-                return new SubFormula(lhs, operator, rhs, remain);
+                return new SubFormula(leftHandSide, operator, rightHandSide, remain);
             } catch (StringIndexOutOfBoundsException e) {
                 throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
             }
         }
-        private final String lhs;
-        private final String rhs;
+        private final String leftHandSide;
+        private final String rightHandSide;
         private final String operator;
         private final String remain;
 
-        public SubFormula(String lhs, String operator, String rhs, String remain) {
-            this.lhs = lhs;
-            this.rhs = rhs;
+        public SubFormula(String leftHandSide, String operator, String rightHandSide, String remain) {
+            this.leftHandSide = leftHandSide;
+            this.rightHandSide = rightHandSide;
             this.operator = operator;
             this.remain = remain;
         }
@@ -105,15 +105,15 @@ class Calculator {
         }
 
         private Long getLeftHandSide() {
-            return Long.valueOf(lhs);
+            return Long.valueOf(leftHandSide);
         }
 
         private Long getRightHandSize() {
-            return Long.valueOf(rhs);
+            return Long.valueOf(rightHandSide);
         }
 
         private boolean hasLeftHandSide() {
-            return !lhs.isEmpty();
+            return !leftHandSide.isEmpty();
         }
 
     }
