@@ -10,6 +10,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("Set Collection 테스트")
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -23,20 +24,20 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName("set의 사이즈 확인")
+    @DisplayName("사이즈 확인")
     void checkSetSize() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
-    @DisplayName("set에서 contains를 통한 값 존재 확인")
+    @DisplayName("contains를 통한 값 존재 확인")
     @ValueSource(ints = {1, 2, 3})
     void checkSetContaining(int numContaining) {
         assertThat(numbers.contains(numContaining)).isTrue();
     }
 
     @ParameterizedTest
-    @DisplayName("set에서 contains로 포함하지 않는 값까지 확인")
+    @DisplayName("contains로 포함하지 않는 값까지 확인")
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
     void checkSetContaining_withNumNotInSet(int num, boolean expected) {
         assertThat(numbers.contains(num)).isEqualTo(expected);
