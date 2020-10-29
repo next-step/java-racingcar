@@ -1,5 +1,6 @@
 package study;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,16 @@ public class CarRacingTest {
             new CarRacing(new RacingInfoProvider() {
             });
         }).doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
+    void errorWhenEmptyRacingInfo() {
+        CarRacing carRacing = new CarRacing(new RacingInfoProvider() {
+
+        });
+        Assertions.assertThatExceptionOfType(IllegalStateException.class) //
+                .isThrownBy(carRacing::start);
     }
 
     private static class CarRacing {
