@@ -2,6 +2,7 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -64,6 +65,11 @@ public class CalculatorTest {
         assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
+    @Test
+    @DisplayName("'*' 연산 테스트")
+    void multiplyTest() {
+        assertThat(calculate("2 * 1")).isEqualTo(2);
+    }
 
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
