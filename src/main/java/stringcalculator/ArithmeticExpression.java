@@ -19,9 +19,11 @@ class ArithmeticExpression {
         for (int i = 0; i < inputSplits.length; i++) {
             addArithmeticNode(inputSplits[i], i);
         }
+
+        validateArithmeticNodes();
     }
 
-    void addArithmeticNode(String inputSplit, int index) {
+    private void addArithmeticNode(String inputSplit, int index) {
         if (isNumberIndex(index)) {
             numbers.add(Integer.valueOf(inputSplit));
             return;
@@ -43,9 +45,17 @@ class ArithmeticExpression {
         return i % 2 != 0;
     }
 
-    Integer evaluate() {
-        validateArithmeticNodes();
+    private void validateArithmeticNodes() {
+        if (numbers.isEmpty()) {
+            throw new IllegalStateException("There are no numbers in the expression.");
+        }
 
+        if (numbers.size() != operators.size()  + 1) {
+            throw new IllegalStateException("Number must be one more than operator.");
+        }
+    }
+
+    Integer evaluate() {
         Iterator<Integer> numbersIterator = numbers.iterator();
         Iterator<Operator> operatorIterator = operators.iterator();
 
@@ -56,15 +66,5 @@ class ArithmeticExpression {
             result = operator.calculate(result, number);
         }
         return result;
-    }
-
-    private void validateArithmeticNodes() {
-        if (numbers.isEmpty()) {
-            throw new IllegalStateException("There are no numbers in the expression.");
-        }
-
-        if (numbers.size() != operators.size()  + 1) {
-            throw new IllegalStateException("Number must be one more than operator.");
-        }
     }
 }
