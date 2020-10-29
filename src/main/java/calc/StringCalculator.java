@@ -3,7 +3,9 @@ package calc;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-public class StringCalculator extends Calculator {
+public final class StringCalculator extends Calculator {
+
+    private StringCalculator() {}
 
     public static int calculate(String expression) {
 

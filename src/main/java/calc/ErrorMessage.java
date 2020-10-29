@@ -1,6 +1,6 @@
 package calc;
 
-public class ErrorMessage {
+public final class ErrorMessage {
 
     public static final String INVALID_EXPRESSION = "invalid expression";
 

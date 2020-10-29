@@ -10,6 +10,8 @@ public class Calculator {
 
     public static final String OBELUS = "/";
 
+    protected Calculator() {}
+
     public static int add(int pre, int post) {
         return pre + post;
     }
