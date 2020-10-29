@@ -80,6 +80,14 @@ public class CalculatorTest {
         assertThat(calculate("1 / 1")).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("'/' 연산 에서 정수로 떨어지지 않는 경우 예외처리")
+    void divideResultNotIntegerException() {
+        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
+                .isThrownBy(() -> calculate("3 / 2")) //
+                .withMessage("나눗셈은 정수로 떨어져야 합니다.");
+    }
+
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
             throw new IllegalArgumentException();
@@ -176,6 +184,7 @@ public class CalculatorTest {
                     throw new IllegalStateException("invalid operator");
             }
         }
+
     }
 }
 
