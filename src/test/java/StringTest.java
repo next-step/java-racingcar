@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringTest {
     @Test
-    @DisplayName("\"1,2\" 분리")
+    @DisplayName("1,2 ,로 분리")
     void splitWithRestChar(){
         String[] splits = "1,2".split(",");
 
@@ -13,7 +13,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("\"1\" 분리")
+    @DisplayName("1 ,로 분리")
     void splitWithRestChar_noRestChar(){
         String[] split = "1".split(",");
 
