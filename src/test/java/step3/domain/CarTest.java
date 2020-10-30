@@ -1,7 +1,9 @@
 package step3.domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -16,13 +18,26 @@ class CarTest {
     @BeforeEach
     void setUp(){
         car = new Car();
-        moveStrategy = new AdjustMoveStrategy();
     }
-    @ParameterizedTest
-    @DisplayName("자동차가 일정 수준이상 넘으면 움직이는지 확인")
-    @CsvSource(value = { "1:0" , "2:0" , "3:0" , "4:1" , "5:1"} ,delimiter = ':')
-    void getCarPosition(int moveCondition , int expected) {
-
+    @Test
+    @DisplayName("전략에 따라 차가 무조건 움직이는지 확인한다.")
+    void mustMoveCar() {
+        //given
+        moveStrategy = new MustMoveStrategy();
+        //when
+        car.move(moveStrategy);
+        //then
+        Assertions.assertThat(car.getCarPosition()).isEqualTo(1);
+    }
+    @Test
+    @DisplayName("전략에 따라 차가 안움직이는지 확인한다.")
+    void notMoveCar(){
+        //given
+        moveStrategy = new NotMoveStrategy();
+        //when
+        car.move(moveStrategy);
+        //then
+        Assertions.assertThat(car.getCarPosition()).isEqualTo(0);
     }
 
 }
