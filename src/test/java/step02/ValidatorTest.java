@@ -25,12 +25,11 @@ public class ValidatorTest {
 
     /*
     - public 으로 하는 이유는 junit 이 해당 메서드를 관찰(사용)할 수 있게 함인가?
-    - java 에서는 전역 변수를 어떻게 관리할까?
     - MethodSource @
     - Stream 의 메서드
     - test 와 실제 테스트 대상의 함수 이름의 통일성이 필요할 것 같다.
      */
-    @DisplayName("사칙연산 가호에 해당되지 않을 경우 예외 처리")
+    @DisplayName("사칙연산 기호에 해당되지 않을 경우 예외 처리")
     @ParameterizedTest
     @ValueSource(strings = "3 * 5 & 5")
     public void validateOperatorType(String inputData) {

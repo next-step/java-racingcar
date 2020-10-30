@@ -9,25 +9,15 @@ import java.util.Map;
 public class Calculator {
 
     /*
-    - private 으로 선언한 이유?
-        - 외부에서 사용할 일이 없음
-    - static 으로 선언한 이유?
-        - 모든 인스턴스가 공유함
-    - final 으로 선언한 이유?
-        - Map 자료형은 항상 final 로 선언하는가?
-    - 타입이 Map 인 이유?
+    - Map<String, Operation> 을 static 으로 선언한 이유? 모든 인스턴스가 공유함
+    - final 으로 선언한 이유? Map 자료형은 항상 final 로 선언하는가?
     - Map 의 자료형이 어떻게 생겼나? <> 안에 있는 것은 Genetic 인가?
-    - OPERATIONS 대문자로 선언한 이유는 final 이기 때문일 것
-    - HashMap 자료형이 무엇?
-    - Operation : 인터페이스는 인터페이스를 구현한 thing 의 자료형이 될 수 있는가?
-        - (Operator 연산자) ㅇ 피연산자(Operand)에 연산(Operation)을 가하도록하는 도구
+    - HashMap 자료형?
+    - Operator 연산자 : 피연산자(Operand)에 연산(Operation)을 가하도록하는 도구
      */
     private static final Map<String, Operation> OPERATIONS = new HashMap<>();
 
     /*
-    - 블록 앞에 static 을 선언하는 것은 무슨 문법인가?
-        - new 를 하여 인스턴스를 생성하지 않아도 실행되는 block 이라 인스턴스들이 공통적으로 가지고 있는 클래스의 블록인가?
-    - 블록안에 문을 선언한다는 것은 무슨 의미인가?
     - java 의 for 순회하는 것은 어떤 방식들이 있는가?
     - java 는 한 패키지 안에 자바에서 쓰이는 파일(?)들을 import 하지 않고 사용할 수 있다.
     - Operator.values() 는 열거형 들을 순회하는 것 일듯
