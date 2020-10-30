@@ -41,12 +41,12 @@ public class CarRacingTest {
         assertThat(car.isMoved()).isTrue();
     }
 
-    private CarRacing createRacing(int steps, int startingGridCars) {
+    private CarRacing createRacing(int laps, int startingGridCars) {
         Car[] cars = new Car[startingGridCars];
         for (int i = 0; i < startingGridCars; i++) {
             cars[i] = new NormalCar();
         }
-        return new CarRacing(new StaticInfoProvider(steps, cars));
+        return new CarRacing(new StaticInfoProvider(laps, cars));
     }
 
     private static class CarRacing {
