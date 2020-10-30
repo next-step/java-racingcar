@@ -38,14 +38,16 @@ public class Calculator {
     }
 
     private boolean isHasExpression(String operatorType) {
-        if (!OPERATIONS.containsKey(operatorType))
+        if (!OPERATIONS.containsKey(operatorType)) {
             throw new IllegalArgumentException("사칙연산 기호가 아닙니다");
+        }
         return true;
     }
 
     private void validateInputDataIsEmpty(String inputData) {
-        if (isNullOrEmpty(inputData) || isBlank(inputData))
+        if (isNullOrEmpty(inputData) || isBlank(inputData)) {
             throw new IllegalArgumentException("입력값이 비어있습니다");
+        }
     }
 
     private boolean isNullOrEmpty(String inputData) {
