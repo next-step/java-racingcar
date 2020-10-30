@@ -4,12 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import step3.controller.OutputController;
 import step3.domain.Cars;
 import step3.domain.MustMoveStrategy;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
