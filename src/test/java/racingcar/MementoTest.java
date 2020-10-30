@@ -58,7 +58,7 @@ class MementoTest {
     }
 
     @ParameterizedTest
-    @DisplayName(" 헤당 index 의 car 만 전진해야 한다.")
+    @DisplayName("해당 index 의 car 만 전진해야 한다.")
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void moveCar(int carIdx) {
         int carNum = 10;
