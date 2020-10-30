@@ -21,15 +21,14 @@ public class RacingGame {
     }
 
     // TODO: 테스트 코드 작성 필요
-    public void play(RandomGenerator random) {
+    public void play() {
         if (!this.checkNotGameOver()) {
             return;
         }
         this.memento.increaseCurrTry();
         int carNum = this.memento.getCarNum();
         for (int carIdx = 0; carIdx < carNum; carIdx++) {
-            int randomNum = random.getRandomNum();
-            this.memento.moveCar(carIdx, randomNum);
+            this.memento.moveCar(carIdx);
         }
     }
 

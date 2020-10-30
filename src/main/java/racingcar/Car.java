@@ -9,13 +9,15 @@ package racingcar;
 
 public class Car {
     private int position;
+    private MoveStrategy strategy;
 
-    public Car() {
+    public Car(MoveStrategy strategy) {
         this.position = 1;
+        this.strategy = strategy;
     }
 
-    public void move(int randomNum) {
-        if (randomNum >= 4) {
+    public void move() {
+        if (this.strategy.proceed()) {
             this.position++;
         }
     }

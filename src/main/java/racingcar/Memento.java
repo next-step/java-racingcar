@@ -19,11 +19,8 @@ public class Memento {
     private int currTry;
     private int maxTry;
 
-    public Memento(int carNum, int tryNum) {
-        this.carArr = new Car[carNum];
-        for (int i = 0; i < carNum; i++) {
-            this.carArr[i] = new Car();
-        }
+    public Memento(Car[] carArr, int tryNum) {
+        this.carArr = carArr;
 
         this.currTry = 0;
         this.maxTry = tryNum;
@@ -45,8 +42,8 @@ public class Memento {
         this.currTry++;
     }
 
-    public void moveCar(int carIdx, int randomNum) {
-        this.carArr[carIdx].move(randomNum);
+    public void moveCar(int carIdx) {
+        this.carArr[carIdx].move();
     }
 
     // FIXME: stream 을 활용할 수는 없을까
