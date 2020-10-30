@@ -23,7 +23,7 @@ public class RunCalculator {
     /**
      * 계산에 사용될 Text를 Check
      * @param paramText
-     * @return 정제된 문자열
+     * @return 정제된 문자열.
      */
     private static void paramTextCheck(final String paramText){
         nullOrEmptyCheck(paramText);

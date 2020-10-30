@@ -41,7 +41,7 @@ public class OperatorOrder {
     }
 
     /**
-     * char형의 문자를 숫자인지 영문인지 확인 후 list에 index와 함께 담기
+     * char형의 문자를 숫자인지 영문인지 확인 후 list에 index와 함께 담기.
      * @param paramNumber 숫자인지 영문인지
      * @param index 문자열에서 연산자 index
      * @param list
