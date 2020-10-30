@@ -1,19 +1,31 @@
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CalculatorTest {
-    @Test
-    @DisplayName("덧셈 테스트")
-    void calPlus() {
-        String expStr = "2 + 2";
-        int resultExpected = 4;
-
+    @ParameterizedTest
+    @DisplayName("사칙 연산 간단식 테스트")
+    @MethodSource
+    void calculateFourRule(String expStr, int resultExpected) {
         Expression e = new Expression(expStr);
         Calculator c = new Calculator(e);
         int result = c.calculate();
 
         assertThat(result).isEqualTo(resultExpected);
+    }
+
+    static Stream<Arguments> calculateFourRule() {
+        return Stream.of(
+                arguments("2 + 4", 6),
+                arguments("3 - 2", 1),
+                arguments("2 * 3", 6),
+                arguments("4 / 2", 2)
+        );
     }
 }

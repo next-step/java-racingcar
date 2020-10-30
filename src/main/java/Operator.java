@@ -2,13 +2,16 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 public enum Operator {
-    PLUS("+", p -> p.getLeft() + p.getRight());
+    PLUS("+", p -> p.getLeft() + p.getRight()),
+    MINUS("-", p -> p.getLeft() - p.getRight()),
+    MULTIPLY("*", p -> p.getLeft() * p.getRight()),
+    DIVIDE("/", p -> p.getLeft() / p.getRight());
 
     private final String opChar;
 
     private Function<Pair<Integer>, Integer> operate;
 
-    Operator(String opChar, Function<Pair<Integer>, java.lang.Integer> operate) {
+    Operator(String opChar, Function<Pair<Integer>, Integer> operate) {
         this.opChar = opChar;
         this.operate = operate;
     }
