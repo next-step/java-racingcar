@@ -1,5 +1,6 @@
 package study;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -14,17 +15,36 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+class TestingResultView extends ResultView {
+    private final StringBuilder stringBuilder;
+
+    public TestingResultView(StringBuilder stringBuilder) {
+        this.stringBuilder = stringBuilder;
+    }
+
+    @Override
+    protected void print(String content) {
+        stringBuilder.append(content);
+    }
+}
+
 public class ResultViewTest {
 
     public static final int ID = 0;
     public static final int IS_MOVED = 1;
+    private StringBuilder stringBuilder;
+    private ResultView resultView;
+
+    @BeforeEach
+    void setUp() {
+        stringBuilder = new StringBuilder();
+        resultView = new TestingResultView(stringBuilder);
+    }
 
     @ParameterizedTest
     @ArgumentsSource(OneCarRacingRecordArgumentProvider.class)
     @DisplayName("'ResultView'는 한대의 차가 움직인 결과를 출력할 수 있다.")
     void reportResultOneCarMove(String[] records, String expected) {
-
-        ResultView resultView = new ResultView();
 
         for (String lapRecord : records) {
             String[] split = lapRecord.split(":");
@@ -35,15 +55,13 @@ public class ResultViewTest {
 
         resultView.report();
 
-        assertThat(resultView.getReportContent()) //
+        assertThat(stringBuilder.toString()) //
                 .isEqualTo(expected);
     }
 
     @Test
     @DisplayName("'ResultView'는 두대의 차가 두번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarTwoMove() {
-
-        ResultView resultView = new ResultView();
 
         Set<LapResult> firstLap = new HashSet<>();
         firstLap.add(new LapResult(0L, false));
@@ -58,7 +76,7 @@ public class ResultViewTest {
         resultView.report();
 
         //@formatter:off
-        assertThat(resultView.getReportContent())
+        assertThat(stringBuilder.toString())
                 .isEqualTo(
                     line("실행결과") +
                     line("") +
@@ -73,8 +91,6 @@ public class ResultViewTest {
     @Test
     @DisplayName("'ResultView'는 두대의 차가 세번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarThreeMove() {
-
-        ResultView resultView = new ResultView();
 
         Set<LapResult> firstLap = new HashSet<>();
         firstLap.add(new LapResult(0L, false));
@@ -95,7 +111,7 @@ public class ResultViewTest {
         resultView.report();
 
         //@formatter:off
-        assertThat(resultView.getReportContent())
+        assertThat(stringBuilder.toString())
                 .isEqualTo(
                         line("실행결과") +
                                 line("") +
@@ -109,6 +125,7 @@ public class ResultViewTest {
                 );
         //@formatter:on
     }
+
     static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
 
         @Override

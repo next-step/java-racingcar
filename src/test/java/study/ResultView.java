@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 class ResultView {
     private final List<Set<LapResult>> results = new ArrayList<>();
-    private final StringBuilder reportContent = new StringBuilder();
 
     public boolean isCommitted() {
         return !results.isEmpty();
@@ -46,11 +45,7 @@ class ResultView {
         }
     }
 
-    private void print(String content) {
-        reportContent.append(content);
-    }
-
-    public String getReportContent() {
-        return reportContent.toString();
+    protected void print(String content) {
+        System.out.print(content);
     }
 }
