@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static java.lang.Integer.parseInt;
 import static step2.StringCalculator.calculate;
 
 public class StringCalculatorTest {
@@ -19,8 +18,8 @@ public class StringCalculatorTest {
             "5 / 1,5",
     })
     @ParameterizedTest
-    void basic(String expression, String result) {
-        assertThat(calculate(expression)).isEqualTo(parseInt(result));
+    void basic(String expression, int result) {
+        assertThat(calculate(expression)).isEqualTo(result);
     }
 
     @DisplayName("complex operation test")
@@ -30,8 +29,8 @@ public class StringCalculatorTest {
             "5 / 2 * -3 - 10 + 2,-14",
     })
     @ParameterizedTest
-    void complex(String expression, String result) {
-        assertThat(calculate(expression)).isEqualTo(parseInt(result));
+    void complex(String expression, int result) {
+        assertThat(calculate(expression)).isEqualTo(result);
     }
 
     @DisplayName("test for illegal expressions")
