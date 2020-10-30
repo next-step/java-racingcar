@@ -26,13 +26,16 @@ public class RacingGame {
 
     public void start() {
         for (int i = 0; i < round; i++) {
-            for (int i = 0; i < carCount; i++) {
-                if (roulette.spin() >= 4) {
-                    cars[i].move();
-                }
-            }
-
+            startRound();
             resultView.view();
+        }
+    }
+
+    private void startRound() {
+        for (int i = 0; i < carCount; i++) {
+            if (roulette.spin() >= 4) {
+                cars[i].move();
+            }
         }
     }
 }
