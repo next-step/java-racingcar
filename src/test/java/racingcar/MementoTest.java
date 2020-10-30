@@ -14,8 +14,6 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Memento 클래스의 테스트")
@@ -84,11 +82,11 @@ class MementoTest {
 
         int unMovedPosition = 1;
         int movedPosition = 2;
-        int[] expectedPositions = new int[carNum];
-        Arrays.fill(expectedPositions, unMovedPosition);
-        expectedPositions[carIdx] = movedPosition;
 
-        assertThat(memento.getCarPositions())
-                .isEqualTo(expectedPositions);
+        for (int i = 0; i < carNum; i++) {
+
+            assertThat(carArr[i].getPosition())
+                    .isEqualTo((carIdx == i) ? movedPosition : unMovedPosition);
+        }
     }
 }

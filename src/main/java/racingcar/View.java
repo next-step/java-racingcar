@@ -14,9 +14,10 @@ public class View {
         this.memento = memento;
     }
 
-    protected String convertCarPosition(int carPosition) {
+    protected String convertCar(Car car) {
+        int position = car.getPosition();
         StringBuilder sb = new StringBuilder();
-        for (int j = 0; j < carPosition; j++) {
+        for (int j = 0; j < position; j++) {
             sb.append("-");
         }
         return sb.toString();
@@ -24,10 +25,11 @@ public class View {
 
     @Override
     public String toString() {
-        int[] carPositions = this.memento.getCarPositions();
+        Car[] carArr = this.memento.getCarArr();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < carPositions.length; i++) {
-            sb.append(this.convertCarPosition(carPositions[i]));
+        for (int i = 0; i < carArr.length; i++) {
+            String carStr = this.convertCar(carArr[i]);
+            sb.append(carStr);
             sb.append("\n");
         }
         return sb.toString();

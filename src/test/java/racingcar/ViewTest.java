@@ -12,6 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,10 +29,23 @@ class ViewTest {
     }
 
     @ParameterizedTest
-    @DisplayName("입력된 carPosition 만큼 -가 출력되어야 한다.")
-    @CsvSource(value = {"1:-", "2:--", "3:---", "4:----", "5:-----", "6:------", "7:-------"}, delimiter = ':')
-    void convertCarPositions(int carPosition, String expectedResult) {
-        String result = this.view.convertCarPosition(carPosition);
+    @DisplayName("car 가 움직인만큼 -가 출력되어야 한다.")
+    @CsvSource(value = {"0:-", "1:--", "2:---", "3:----", "4:-----", "5:------", "6:-------"}, delimiter = ':')
+    void convertCarPositions(int loop, String expectedResult) {
+        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
+        Mockito.when(strategy.proceed()).thenAnswer(new Answer<Boolean>() {
+            @Override
+            public Boolean answer(InvocationOnMock invocation) {
+                return true;
+            }
+        });
+        Car car = new Car(strategy);
+
+        for (int i = 0; i < loop; i++) {
+            car.move();
+        }
+
+        String result = this.view.convertCar(car);
         assertThat(result)
                 .isEqualTo(expectedResult);
 

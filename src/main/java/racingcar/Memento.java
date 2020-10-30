@@ -46,13 +46,7 @@ public class Memento {
         this.carArr[carIdx].move();
     }
 
-    // FIXME: stream 을 활용할 수는 없을까
-    public int[] getCarPositions() {
-        int carNum = this.carArr.length;
-        int[] carPositions = new int[carNum];
-        for (int i = 0; i < carNum; i++) {
-            carPositions[i] = this.carArr[i].getPosition();
-        }
-        return carPositions;
+    public Car[] getCarArr() {
+        return this.carArr;
     }
 }
