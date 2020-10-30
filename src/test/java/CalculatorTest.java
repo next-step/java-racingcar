@@ -31,7 +31,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("사칙 연산 복잡식 테스트")
     @MethodSource
-    void caculateFourRule_complicatedExpression() {
+    void calculateFourRule_complicatedExpression() {
         String expStr = "2 + 3 * 4 / 2";
         int resultExpected = 10;
 
