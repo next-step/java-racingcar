@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static study.calculator.operator.Operand.toOperand;
+
 public class Calculator {
 
     List<Operator> operators = new ArrayList<>();
@@ -18,13 +20,9 @@ public class Calculator {
         this.operators.add(new Division());
     }
 
-    public int calculate(String expression) {
+    public int calculate(Expression expression) {
 
-        if (Objects.isNull(expression) || expression.trim().isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-
-        List<String> expressions = Arrays.asList(expression.split(" "));
+        List<String> expressions = expression.getSplittedStrings(" ");
 
         while (expressions.size() > 1) {
             SingleCalculation singleCalculation = new SingleCalculation(expressions);
@@ -43,17 +41,15 @@ public class Calculator {
         return resultExpressions;
     }
 
-    private Operand toOperand(String integerExp) {
-        return new Operand(Integer.parseInt(integerExp));
-    }
-
     private Operator findOperator(String operatorExp) {
-        for (Operator operator : operators) {
-            if (operator.isOperator(operatorExp)) {
-                return operator;
-            }
-        }
-        throw new IllegalArgumentException();
+
+        return operators.stream()
+                .filter(operator -> operator.isOperator(operatorExp))
+                .findFirst()
+                .orElseThrow(() -> {
+                    String message = String.format("연산자 Expression이 아닙니다. (operatorExp = %s)", operatorExp);
+                    return new IllegalArgumentException(message);
+                });
     }
 
     class SingleCalculation {
@@ -63,24 +59,22 @@ public class Calculator {
         Operator operator;
 
         public SingleCalculation(List<String> expressions) {
-            if (expressions.size() < 3) {
-                throw new IllegalArgumentException();
-            }
+
+            validate(expressions);
+
             this.firstArg = toOperand(expressions.get(0));
             this.operator = findOperator(expressions.get(1));
             this.secondArg = toOperand(expressions.get(2));
         }
 
-        public boolean isReadyForCalculate() {
-            return Objects.nonNull(firstArg)
-                    && Objects.nonNull(secondArg)
-                    && Objects.nonNull(operator);
+        private void validate(List<String> expressions) {
+            if (expressions.size() < 3) {
+                throw new IllegalArgumentException("연산에 필요한 Expression이 부족합니다.");
+            }
         }
 
         public Integer getResult() {
             return operator.operate(firstArg, secondArg);
         }
-
-
     }
 }
