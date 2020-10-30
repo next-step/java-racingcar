@@ -97,10 +97,9 @@ public class CarRacingTest {
                         + "-\n");
     }
 
-
     @Test
-    @DisplayName("'ResultView'는 한대의 차가 참여한 경주결과를 출력할 수 있다.")
-    void reportResult() {
+    @DisplayName("'ResultView'는 한대의 차가 한번의 기회에서 한번 움직인 경주결과를 출력할 수 있다.")
+    void reportResultOneCarOneStageOneMove() {
         this.resultView = new ResultView();
 
         Set<Object[]> firstLap = new HashSet<>();
@@ -112,6 +111,21 @@ public class CarRacingTest {
         assertThat(this.resultView.getReportContent()) //
                 .isEqualTo("실행결과\n" //
                         + "-\n");
+    }
+
+    @Test
+    @DisplayName("'ResultView'는 한대의 차가 한번의 기회에서 움직이지 않은 경주결과를 출력할 수 있다.")
+    void reportResultOneCarOneStageZeroMove() {
+        this.resultView = new ResultView();
+
+        Set<Object[]> firstLap = new HashSet<>();
+        firstLap.add(new Object[]{0L, false});
+        resultView.add(firstLap);
+
+        this.resultView.report();
+
+        assertThat(this.resultView.getReportContent()) //
+                .isEqualTo("실행결과\n");
     }
 
     private void setUpLapsAndCars(int laps, Car... cars) {
