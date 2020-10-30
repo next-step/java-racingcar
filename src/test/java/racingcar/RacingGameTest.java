@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("RacingGame 클래스 테스")
+@DisplayName("RacingGame 클래스 테스트")
 class RacingGameTest {
 
     @ParameterizedTest

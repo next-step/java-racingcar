@@ -8,7 +8,7 @@ package racingcar;
  */
 
 public class Memento {
-    private  Car[] carArr;
+    private Car[] carArr;
     private int currTry;
     private int maxTry;
 

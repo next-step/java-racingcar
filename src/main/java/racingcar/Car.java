@@ -9,11 +9,11 @@ public class Car {
 
     public void move(int randomNum) {
         if (randomNum >= 4) {
-            position++;
+            this.position++;
         }
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
     }
 }
