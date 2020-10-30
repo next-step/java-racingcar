@@ -1,3 +1,5 @@
+package step1;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,11 +38,7 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
     public void notContains(int number, boolean isHas){
-        if(number <= 3){
-            assertThat(isHas).isTrue();
-        } else {
-            assertThat(isHas).isFalse();
-        }
+        assertThat(numbers.contains(number)).isEqualTo(isHas);
 
     }
 }
