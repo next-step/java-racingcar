@@ -1,3 +1,10 @@
+/**
+ * 클래스 이름: MementoTest
+ * 버전 정보: 0.1
+ * 날짜: 2020.10.30
+ * 저작권 주의: 없음
+ */
+
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
@@ -5,9 +12,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Memento 클래스의 테스트")
 class MementoTest {

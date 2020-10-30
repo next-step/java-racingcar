@@ -1,10 +1,16 @@
-package racingcar;
+/**
+ * 클래스 이름: RacingGameTest
+ * 버전 정보: 0.1
+ * 날짜: 2020.10.30
+ * 저작권 주의: 없음
+ */
 
-import org.mockito.Mockito;
+package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,3 +1,10 @@
+/**
+ * 클래스 이름: ViewTest
+ * 버전 정보: 0.1
+ * 날짜: 2020.10.30
+ * 저작권 주의: 없음
+ */
+
 package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,14 +23,14 @@ class ViewTest {
     @BeforeEach
     void setUp() {
         Memento memento = Mockito.mock(Memento.class);
-        view = new View(memento);
+        this.view = new View(memento);
     }
 
     @ParameterizedTest
     @DisplayName("입력된 carPosition 만큼 -가 출력되어야 한다.")
     @CsvSource(value = {"1:-", "2:--", "3:---", "4:----", "5:-----", "6:------", "7:-------"}, delimiter = ':')
     void convertCarPositions(int carPosition, String expectedResult) {
-        String result = view.convertCarPosition(carPosition);
+        String result = this.view.convertCarPosition(carPosition);
         assertThat(result)
                 .isEqualTo(expectedResult);
 

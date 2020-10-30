@@ -1,3 +1,10 @@
+/**
+ * 클래스 이름: Memento
+ * 버전 정보: 0.1
+ * 날짜: 2020.10.30
+ * 저작권 주의: 없음
+ */
+
 package racingcar;
 
 /**
@@ -15,7 +22,7 @@ public class Memento {
     public Memento(int carNum, int tryNum) {
         this.carArr = new Car[carNum];
         for (int i = 0; i < carNum; i++) {
-            carArr[i] = new Car();
+            this.carArr[i] = new Car();
         }
 
         this.currTry = 0;
@@ -23,31 +30,31 @@ public class Memento {
     }
 
     public int getCarNum() {
-        return carArr.length;
+        return this.carArr.length;
     }
 
     public int getCurrTry() {
-        return currTry;
+        return this.currTry;
     }
 
     public int getMaxTry() {
-        return maxTry;
+        return this.maxTry;
     }
 
     public void increaseCurrTry() {
-        currTry++;
+        this.currTry++;
     }
 
     public void moveCar(int carIdx, int randomNum) {
-        carArr[carIdx].move(randomNum);
+        this.carArr[carIdx].move(randomNum);
     }
 
     // FIXME: stream 을 활용할 수는 없을까
     public int[] getCarPositions() {
-        int carNum = carArr.length;
+        int carNum = this.carArr.length;
         int[] carPositions = new int[carNum];
         for (int i = 0; i < carNum; i++) {
-            carPositions[i] = carArr[i].getPosition();
+            carPositions[i] = this.carArr[i].getPosition();
         }
         return carPositions;
     }
