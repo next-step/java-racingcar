@@ -29,5 +29,11 @@ public class Context {
         if ("-".equals(operator)) {
             result = result - number;
         }
+        if ("*".equals(operator)) {
+            result = result * number;
+        }
+        if ("/".equals(operator)) {
+            result = result / number;
+        }
     }
 }
