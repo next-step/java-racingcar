@@ -52,6 +52,16 @@ public class CarRacingTest {
         assertThat(car.isMoved()).isFalse();
     }
 
+    @Test
+    @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
+    void acceptableResultView() {
+        Car car = new NormalCar();
+        ResultView resultView = null;
+        new CarRacing(new StaticInfoProvider(1, car), resultView);
+
+        assertThat(resultView.isCommitted()).isFalse();
+    }
+
     private CarRacing createRacing(int laps, int startingGridCars) {
         Car[] cars = new Car[startingGridCars];
         for (int i = 0; i < startingGridCars; i++) {
