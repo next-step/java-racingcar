@@ -27,6 +27,6 @@ public class StringTest {
     void chatAt(){
         assertThatThrownBy(() ->{
             char result4 = "abc".charAt(3);
-        }).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("Index: 3, Size: 3");
+        }).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("String index out of range: 3");
     }
 }
