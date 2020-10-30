@@ -13,11 +13,6 @@ public class Operand implements Token {
         return true;
     }
 
-    @Override
-    public Token operation(Token operand1, Token operand2) {
-        throw new RuntimeException("저 숫자인데요.. 이거참 나오면 안되는데 ㅎㅎ");
-    }
-
     public int getValue() {
         return this.value;
     }
