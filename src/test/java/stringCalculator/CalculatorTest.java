@@ -15,24 +15,22 @@ public class CalculatorTest {
     @CsvSource(value = {"1 + 2 * 3 - 3 / 2:3", "3 * 3:9"}, delimiter = ':')
     @ParameterizedTest
     void onHappyPath(String input, int expected) {
-        Calculator calculator = new Calculator(input);
+        Calculator calculator = Calculator.Of(input);
 
-        int actual = calculator.execute();
+        int actual = calculator.calculate();
 
         assertThat(actual).isEqualTo(expected);
-
     }
 
     @DisplayName("단일 항에 대한 동작 테스트")
     @CsvSource(value = {"10:10", "-3:-3", "0:0"}, delimiter = ':')
     @ParameterizedTest
     void onSingleValue(String input, int expected) {
-        Calculator calculator = new Calculator(input);
+        Calculator calculator = Calculator.Of(input);
 
-        int actual = calculator.execute();
+        int actual = calculator.calculate();
 
         assertThat(actual).isEqualTo(expected);
-
     }
 
     @DisplayName("올바르지 않은 연산자를 포함한 입력에 대한 테스트")
@@ -43,10 +41,10 @@ public class CalculatorTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(
                         () -> {
-                            Calculator calculator = new Calculator(input);
+                            Calculator calculator = Calculator.Of(input);
+                            calculator.calculate();
                         }
                 );
-
     }
 
     @DisplayName("짝이 맞지 않는 식에 대한 테스트")
@@ -57,10 +55,10 @@ public class CalculatorTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(
                         () -> {
-                            Calculator calculator = new Calculator(input);
+                            Calculator calculator = Calculator.Of(input);
+                            calculator.calculate();
                         }
                 );
-
     }
 
 }
