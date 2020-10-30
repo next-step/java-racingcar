@@ -128,6 +128,27 @@ public class CarRacingTest {
                 .isEqualTo("실행결과\n");
     }
 
+    @Test
+    @DisplayName("'ResultView'는 한대의 차가 두번의 기회에서 한번 움직인 경주결과를 출력할 수 있다.")
+    void reportResultOneCarTwoStageOneMove() {
+        this.resultView = new ResultView();
+
+        Set<Object[]> firstLap = new HashSet<>();
+        firstLap.add(new Object[]{0L, true});
+        resultView.add(firstLap);
+
+        Set<Object[]> secondLap = new HashSet<>();
+        secondLap.add(new Object[]{0L, false});
+        resultView.add(secondLap);
+
+        this.resultView.report();
+
+        assertThat(this.resultView.getReportContent()) //
+                .isEqualTo("실행결과\n" + //
+                        "-\n" + //
+                        "-\n");
+    }
+
     private void setUpLapsAndCars(int laps, Car... cars) {
         this.laps = laps;
         this.cars = cars;
