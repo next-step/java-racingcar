@@ -1,6 +1,6 @@
 package study;
 
-import static study.operator.Operator.OperatorCompute;
+import static study.operator.Operator.operatorCompute;
 
 import study.collection.InputNumberArr;
 import study.collection.InputOperatorArr;
@@ -17,7 +17,7 @@ public class StringCalculator {
 
     for (int i = 1; i < inputNumberArr.size(); i++) {
       int number = inputNumberArr.get(i);
-      result = OperatorCompute(result, number, inputOperatorArr.get(i - 1));
+      result = operatorCompute(result, number, inputOperatorArr.get(i - 1));
     }
 
     return result;

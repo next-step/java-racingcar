@@ -17,7 +17,7 @@ class OperatorTest {
     int num1 = 10;
     int num2 = 2;
 
-    assertThat(Operator.OperatorCompute(num1, num2, operator)).isEqualTo(expected);
+    assertThat(Operator.operatorCompute(num1, num2, operator)).isEqualTo(expected);
   }
 
   @Test
