@@ -6,19 +6,21 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car ;
+    private Car car;
 
     private MoveStrategy moveStrategy;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         car = new Car();
     }
+
     @Test
     @DisplayName("전략에 따라 차가 무조건 움직이는지 확인한다.")
     void mustMoveCar() {
@@ -27,17 +29,32 @@ class CarTest {
         //when
         car.move(moveStrategy);
         //then
-        Assertions.assertThat(car.getCarPosition()).isEqualTo(1);
+        assertThat(car.getCarPosition()).isEqualTo(1);
     }
+
     @Test
     @DisplayName("전략에 따라 차가 안움직이는지 확인한다.")
-    void notMoveCar(){
+    void notMoveCar() {
         //given
         moveStrategy = new NotMoveStrategy();
         //when
         car.move(moveStrategy);
         //then
-        Assertions.assertThat(car.getCarPosition()).isEqualTo(0);
+        assertThat(car.getCarPosition()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = { 1,2,3,4})
+    @DisplayName("움직임 횟수에 따라 차의 포지션을 맞춥니다.")
+    void moveCarGetPosition(int moveCount) {
+        //given
+        moveStrategy = new MustMoveStrategy();
+        //when
+        for(int i=0; i<moveCount; i++){
+            car.move(moveStrategy);
+        }
+        //then
+        assertThat(car.getCarPosition()).isEqualTo(moveCount);
     }
 
 }
