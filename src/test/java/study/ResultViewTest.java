@@ -70,6 +70,45 @@ public class ResultViewTest {
         //@formatter:on
     }
 
+    @Test
+    @DisplayName("'ResultView'는 두대의 차가 세번 움직인 결과를 출력할 수 있다.")
+    void reportResultTwoCarThreeMove() {
+
+        ResultView resultView = new ResultView();
+
+        Set<LapResult> firstLap = new HashSet<>();
+        firstLap.add(new LapResult(0L, false));
+        firstLap.add(new LapResult(1L, true));
+        resultView.add(firstLap);
+
+        Set<LapResult> secondLap = new HashSet<>();
+        secondLap.add(new LapResult(0L, true));
+        secondLap.add(new LapResult(1L, true));
+        resultView.add(secondLap);
+
+
+        Set<LapResult> thirdLap = new HashSet<>();
+        thirdLap.add(new LapResult(0L, true));
+        thirdLap.add(new LapResult(1L, true));
+        resultView.add(thirdLap);
+
+        resultView.report();
+
+        //@formatter:off
+        assertThat(resultView.getReportContent())
+                .isEqualTo(
+                        line("실행결과") +
+                                line("") +
+                                line("-") +
+                                lineEmpty() +
+                                line("-") +
+                                line("--") +
+                                lineEmpty() +
+                                line("--") +
+                                line("---")
+                );
+        //@formatter:on
+    }
     static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
 
         @Override
