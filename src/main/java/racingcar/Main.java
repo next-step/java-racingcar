@@ -21,9 +21,9 @@ public class Main {
 
         System.out.println(Const.EXECUTION_RESULT_STR);
 
+        MoveStrategy strategy = new RandomMoveStrategy();
         Car[] carArr = new Car[carNum];
         for (int i = 0; i < carNum; i++) {
-            MoveStrategy strategy = new RandomMoveStrategy();
             carArr[i] = new Car(strategy);
         }
         Memento memento = new Memento(carArr, tryNum);
