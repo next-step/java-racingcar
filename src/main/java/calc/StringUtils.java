@@ -2,7 +2,7 @@ package calc;
 
 import java.util.regex.Pattern;
 
-import static calc.ErrorMessage.NOT_NULL;
+import static common.ErrorMessage.NOT_NULL;
 
 public class StringUtils {
 

@@ -6,8 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static calc.ErrorMessage.INVALID_EXPRESSION;
-import static calc.ErrorMessage.NOT_NULL;
+import static common.ErrorMessage.INVALID_VALUE;
+import static common.ErrorMessage.NOT_NULL;
 import static calc.StringCalculatorTestCase.BLANK;
 import static calc.StringCalculatorTestCase.DIVIDE_ZERO;
 import static calc.StringCalculatorTestCase.HAS_DOUBLE_OPERATOR;
@@ -54,7 +54,7 @@ public class StringCalculatorTest {
         // when, then
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> StringCalculator.calculate(input))
-                .withMessage(INVALID_EXPRESSION);
+                .withMessage(INVALID_VALUE);
     }
 
     @Test
