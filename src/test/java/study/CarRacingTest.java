@@ -3,6 +3,10 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -27,6 +31,15 @@ public class CarRacingTest {
     @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
     void startRacing() {
         assertThatCode(createRacing(1, 1)::start).doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("자동차 경주를 시작하면 자동차가 달린다.")
+    void carMoved() {
+        Car car = new NormalCar();
+        CarRacing racing = new CarRacing(new StaticInfoProvider(1, car));
+        racing.start();
+        assertThat(car.isMoved()).isTrue();
     }
 
     private CarRacing createRacing(int cars, int steps) {
@@ -73,5 +86,12 @@ public class CarRacingTest {
         int countCars();
 
         int countSteps();
+    }
+
+    private class NormalCar implements Car {
+        @Override
+        public boolean isMoved() {
+            return true;
+        }
     }
 }
