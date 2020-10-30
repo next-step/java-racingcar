@@ -41,6 +41,15 @@ public class CarRacingTest {
         assertThat(car.isMoved()).isTrue();
     }
 
+    @Test
+    @DisplayName("자동차 경주 시작전엔 자동차가 달리지 않는다.")
+    void carNotMoved() {
+        Car car = new NormalCar();
+        new CarRacing(new StaticInfoProvider(1, car));
+
+        assertThat(car.isMoved()).isFalse();
+    }
+
     private CarRacing createRacing(int laps, int startingGridCars) {
         Car[] cars = new Car[startingGridCars];
         for (int i = 0; i < startingGridCars; i++) {
