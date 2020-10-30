@@ -19,55 +19,65 @@ import static org.assertj.core.api.Assertions.*;
  */
 public class CarRacingTest {
 
+    private Car[] cars = new Car[0];
+    private int laps;
+    private CarRacing carRacing;
+    private ResultView resultView;
+
     @Test
     @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
     void errorWhenEmptyRacingInfo() {
+        setUpRacing();
         assertThatExceptionOfType(IllegalStateException.class) //
-                .isThrownBy(createRacing(0, 0)::start);
+                .isThrownBy(carRacing::start);
     }
 
     @Test
     @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
     void startRacing() {
-        assertThatCode(createRacing(1, 1)::start).doesNotThrowAnyException();
+        setUpLapsAndCars(1, new NormalCar());
+        setUpRacing();
+
+        assertThatCode(carRacing::start).doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("자동차 경주를 시작하면 자동차가 달린다.")
     void carMoved() {
-        Car car = new NormalCar();
-        CarRacing racing = new CarRacing(new StaticInfoProvider(1, car), new ResultView());
+        setUpLapsAndCars(1, new NormalCar());
+        setUpRacing();
 
-        racing.start();
+        carRacing.start();
 
-        assertThat(car.isMoved()).isTrue();
+        assertThat(cars[0].isMoved()).isTrue();
     }
 
     @Test
     @DisplayName("자동차 경주 시작전엔 자동차가 달리지 않는다.")
     void carNotMoved() {
-        Car car = new NormalCar();
-        new CarRacing(new StaticInfoProvider(1, car), new ResultView());
+        setUpLapsAndCars(1, new NormalCar());
+        setUpRacing();
 
-        assertThat(car.isMoved()).isFalse();
+        assertThat(cars[0].isMoved()).isFalse();
     }
 
     @Test
     @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
     void acceptableResultView() {
-        Car car = new NormalCar();
-        ResultView resultView = new ResultView();
-        new CarRacing(new StaticInfoProvider(1, car), resultView);
+        setUpLapsAndCars(1, new NormalCar());
+        setUpRacing();
 
         assertThat(resultView.isCommitted()).isFalse();
     }
 
-    private CarRacing createRacing(int laps, int startingGridCars) {
-        Car[] cars = new Car[startingGridCars];
-        for (int i = 0; i < startingGridCars; i++) {
-            cars[i] = new NormalCar();
-        }
-        return new CarRacing(new StaticInfoProvider(laps, cars), new ResultView());
+    private void setUpLapsAndCars(int laps, Car... cars) {
+        this.laps = laps;
+        this.cars = cars;
+    }
+
+    private void setUpRacing() {
+        this.resultView = new ResultView();
+        this.carRacing = new CarRacing(new StaticInfoProvider(laps, cars), resultView);
     }
 
     private static class CarRacing {
