@@ -36,7 +36,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
     void startRacing() {
-        setUpLapsAndCars(1, new NormalCar());
+        setUpLapsAndCars(1, new TestingCar());
         setUpRacing();
 
         assertThatCode(carRacing::start).doesNotThrowAnyException();
@@ -45,7 +45,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주를 시작하면 자동차가 달린다.")
     void carMoved() {
-        setUpLapsAndCars(1, new NormalCar());
+        setUpLapsAndCars(1, new TestingCar());
         setUpRacing();
 
         carRacing.start();
@@ -56,7 +56,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주 시작전엔 자동차가 달리지 않는다.")
     void carNotMoved() {
-        setUpLapsAndCars(1, new NormalCar());
+        setUpLapsAndCars(1, new TestingCar());
         setUpRacing();
 
         assertThat(cars[0].isMoved()).isFalse();
@@ -65,7 +65,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
     void acceptableResultView() {
-        setUpLapsAndCars(1, new NormalCar());
+        setUpLapsAndCars(1, new TestingCar());
         setUpRacing();
 
         assertThat(resultView.isCommitted()).isFalse();
@@ -74,7 +74,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
     void resultViewCommittedAfterStaring() {
-        setUpLapsAndCars(1, new NormalCar());
+        setUpLapsAndCars(1, new TestingCar());
         setUpRacing();
 
         carRacing.start();
@@ -149,7 +149,7 @@ public class CarRacingTest {
         int countSteps();
     }
 
-    private static class NormalCar implements Car {
+    private static class TestingCar implements Car {
         private boolean isMoved;
 
         @Override
