@@ -6,14 +6,14 @@ import java.util.Set;
 
 class ResultView {
     public static final int CAR_MOVED = 1;
-    private final List<Set<Object[]>> results = new ArrayList<>();
+    private final List<Set<LapResult>> results = new ArrayList<>();
     private final StringBuilder reportContent = new StringBuilder();
 
     public boolean isCommitted() {
         return !results.isEmpty();
     }
 
-    public void add(Set<Object[]> result) {
+    public void add(Set<LapResult> result) {
         results.add(result);
     }
 
@@ -26,21 +26,21 @@ class ResultView {
     }
 
     private void printRecord(int lastLap) {
-        List<Set<Object[]>> allCarsLapRecord = results.subList(0, lastLap + 1);
-        for (Set<Object[]> aCarLap : allCarsLapRecord) {
+        List<Set<LapResult>> allCarsLapRecord = results.subList(0, lastLap + 1);
+        for (Set<LapResult> aCarLap : allCarsLapRecord) {
             printCarLapResult(aCarLap);
         }
         print("\n");
     }
 
-    private void printCarLapResult(Set<Object[]> aCarLap) {
-        for (Object[] lap : aCarLap) {
+    private void printCarLapResult(Set<LapResult> aCarLap) {
+        for (LapResult lap : aCarLap) {
             printLap(lap);
         }
     }
 
-    private void printLap(Object[] lap) {
-        if ((Boolean) lap[CAR_MOVED]) {
+    private void printLap(LapResult lap) {
+        if (lap.isMoved()) {
             print("-");
         }
     }

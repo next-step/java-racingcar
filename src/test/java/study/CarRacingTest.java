@@ -131,10 +131,10 @@ public class CarRacingTest {
         }
 
         private void move() {
-            Set<Object[]> result = new HashSet<>();
+            Set<LapResult> result = new HashSet<>();
             for (Car car : cars) {
                 car.move();
-                result.add(new Object[]{car.getId(), car.isMoved()});
+                result.add(new LapResult(car.getId(), car.isMoved()));
             }
             resultView.add(result);
         }

@@ -14,6 +14,10 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultViewTest {
+
+    public static final int ID = 0;
+    public static final int IS_MOVED = 1;
+
     @ParameterizedTest
     @ArgumentsSource(OneCarRacingRecordArgumentProvider.class)
     @DisplayName("'ResultView'는 한대의 차가 움직인 결과를 출력할 수 있다.")
@@ -21,11 +25,10 @@ public class ResultViewTest {
 
         ResultView resultView = new ResultView();
 
-
         for (String lapRecord : records) {
             String[] split = lapRecord.split(":");
-            Set<Object[]> lap = new HashSet<>();
-            lap.add(new Object[]{split[0], Boolean.valueOf(split[1])});
+            Set<LapResult> lap = new HashSet<>();
+            lap.add(new LapResult(Long.parseLong(split[ID]), Boolean.valueOf(split[IS_MOVED])));
             resultView.add(lap);
         }
 
