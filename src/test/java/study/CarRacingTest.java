@@ -3,9 +3,7 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -97,10 +95,12 @@ public class CarRacingTest {
 
         private final Set<Car> cars;
         private final int steps;
+        private final ResultView resultView;
 
         public CarRacing(RacingInfoProvider racingInfoProvider, ResultView resultView) {
             cars = racingInfoProvider.getCars();
             steps = racingInfoProvider.countSteps();
+            this.resultView = resultView;
         }
 
         public void start() {
@@ -113,9 +113,12 @@ public class CarRacingTest {
         }
 
         private void move() {
+            Set<Object[]> result = new HashSet<>();
             for (Car car : cars) {
                 car.move();
+                result.add(new Object[]{car.getId(), car.isMoved()});
             }
+            resultView.add(result);
         }
     }
 
@@ -145,7 +148,7 @@ public class CarRacingTest {
         int countSteps();
     }
 
-    private class NormalCar implements Car {
+    private static class NormalCar implements Car {
         private boolean isMoved;
 
         @Override
@@ -157,11 +160,22 @@ public class CarRacingTest {
         public void move() {
             isMoved = true;
         }
+
+        @Override
+        public Long getId() {
+            return null;
+        }
     }
 
-    private class ResultView {
+    private static class ResultView {
+        private final List<Set<Object[]>> results = new ArrayList<>();
+
         public boolean isCommitted() {
-            return false;
+            return !results.isEmpty();
+        }
+
+        public void add(Set<Object[]> result) {
+            results.add(result);
         }
     }
 }
