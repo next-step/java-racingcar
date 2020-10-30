@@ -1,3 +1,5 @@
+package step1;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +38,7 @@ public class StringTest {
   public void stringIndexOutOfBoundsException() {
     String text = "abc";
     assertThatExceptionOfType(IndexOutOfBoundsException.class)
-            .isThrownBy(() ->
-                    text.charAt(text.length())).withMessage("String index out of range: %s", text.length());
+            .isThrownBy(() -> text.charAt(text.length()))
+            .withMessage("String index out of range: %s", text.length());
   }
 }
