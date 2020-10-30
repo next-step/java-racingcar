@@ -228,7 +228,12 @@ public class CarRacingTest {
 
         public void report() {
             print("실행결과\n");
-            print("-\n");
+            for (Object[] objects : results.get(0)) {
+                if ((Boolean) objects[1]) {
+                    print("-\n");
+                }
+            }
+
         }
 
         private void print(String content) {
