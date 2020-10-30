@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static study.calculator.operator.Operand.toOperand;
+
 public class Calculator {
 
     List<Operator> operators = new ArrayList<>();
@@ -37,10 +39,6 @@ public class Calculator {
             resultExpressions.add(expression);
         }
         return resultExpressions;
-    }
-
-    private Operand toOperand(String integerExp) {
-        return new Operand(Integer.parseInt(integerExp));
     }
 
     private Operator findOperator(String operatorExp) {
@@ -78,6 +76,5 @@ public class Calculator {
         public Integer getResult() {
             return operator.operate(firstArg, secondArg);
         }
-
     }
 }
