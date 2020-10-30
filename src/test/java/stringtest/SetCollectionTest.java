@@ -11,6 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetCollectionTest {
     private Set<Integer> numbers;
@@ -34,6 +35,14 @@ public class SetCollectionTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("요구사항 2 : set의 value 확인 테스트")
     void setContainTest(int num) {
+        assertThat(numbers.contains(num)).isTrue();
+        assertTrue(numbers.contains(num));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("요구사항 2 : set의 value 확인 테스트")
+    void setContainTest2(int num) {
         assertThat(numbers.contains(num)).isTrue();
     }
 }
