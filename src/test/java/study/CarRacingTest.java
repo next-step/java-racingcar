@@ -280,21 +280,22 @@ public class CarRacingTest {
             }
         }
 
-        private void printRecord(int lap) {
-            for (Set<Object[]> allCarsLap : results.subList(0, lap + 1)) {
-                printAllCarsLapResult(allCarsLap);
+        private void printRecord(int lastLap) {
+            List<Set<Object[]>> allCarsLapRecord = results.subList(0, lastLap + 1);
+            for (Set<Object[]> aCarLap : allCarsLapRecord) {
+                printCarLapResult(aCarLap);
             }
             print("\n");
         }
 
-        private void printAllCarsLapResult(Set<Object[]> allCarsLap) {
-            for (Object[] aCarLap : allCarsLap) {
-                printLap(aCarLap);
+        private void printCarLapResult(Set<Object[]> aCarLap) {
+            for (Object[] lap : aCarLap) {
+                printLap(lap);
             }
         }
 
-        private void printLap(Object[] aCarLap) {
-            if ((Boolean) aCarLap[CAR_MOVED]) {
+        private void printLap(Object[] lap) {
+            if ((Boolean) lap[CAR_MOVED]) {
                 print("-");
             }
         }
