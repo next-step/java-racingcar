@@ -18,7 +18,7 @@ public class StringCalculatorTest {
 
     @Test
     public void add() {
-        String input = "12 + 34";
+        String input = "12 +  34";
 
         assertThat(calc.run(input)).isEqualTo(46);
     }
@@ -48,6 +48,12 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"", " ", "            "})
     @NullSource
     public void nullOrEmptyInput_throwingException(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> calc.run(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 ^ 2", "1 & 2", "1 ( 2"})
+    public void strangeOperators_throwingException(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calc.run(input));
     }
 }

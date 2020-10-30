@@ -1,22 +1,22 @@
 
 public class StringCalculator {
 
-    Context context;
+    CalculatorContext calculatorContext;
 
     public StringCalculator() {
-        this.context = new Context();
+        this.calculatorContext = new CalculatorContext();
     }
 
     public Integer run(String input) {
         validateInput(input);
 
 
-        for (String rawToken : input.split(" ")) {
+        for (String rawToken : input.split(" +")) {
             Token token = new Token(rawToken);
-            context.take(token);
+            calculatorContext.take(token);
         }
 
-        return context.result;
+        return calculatorContext.result;
     }
 
     private void validateInput(String input) {

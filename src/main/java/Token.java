@@ -24,7 +24,14 @@ public class Token {
     }
 
     public boolean isOperator() {
-        return AVAILABLE_OPERATORS.contains(value);
+        if (isNumber()) {
+            return false;
+        }
+        if (AVAILABLE_OPERATORS.contains(value)) {
+            return true;
+        }
+
+        throw new IllegalArgumentException("숫자도 아니고 사칙연산도 아니고 이거 뭔가요 : " + value);
     }
 
     public String getOperator() {

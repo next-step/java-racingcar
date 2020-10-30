@@ -1,4 +1,4 @@
-public class Context {
+public class CalculatorContext {
 
     Integer result;
     String operator;
