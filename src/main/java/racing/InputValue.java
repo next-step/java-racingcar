@@ -17,10 +17,22 @@ public class InputValue {
 
         String carCount = scanner.nextLine();
         inputValidator.validate(carCount);
+
+        scanner.close();
+
         return Integer.parseInt(carCount);
     }
 
     public int setRound() {
-        return 0;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("시도할 회수는 몇 회 인가요?");
+
+        String round = scanner.nextLine();
+        inputValidator.validate(round);
+
+        scanner.close();
+
+        return Integer.parseInt(round);
     }
 }
