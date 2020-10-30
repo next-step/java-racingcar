@@ -7,31 +7,47 @@
 
 package racingcar;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Car 클래스의 테스트")
 class CarTest {
 
-    private Car car;
+    @Test
+    @DisplayName("proceed 가 true 일 경우만 전진해야 한다.")
+    void move() {
+        MoveStrategy proceedStrategy = Mockito.mock(MoveStrategy.class);
+        Mockito.when(proceedStrategy.proceed()).thenAnswer(new Answer<Boolean>() {
+            @Override
+            public Boolean answer(InvocationOnMock invocation) {
+                return true;
+            }
+        });
+        Car proceededCar = new Car(proceedStrategy);
 
-    @BeforeEach
-    void setUp() {
-        this.car = new Car();
-    }
+        MoveStrategy stopStrategy = Mockito.mock(MoveStrategy.class);
+        Mockito.when(stopStrategy.proceed()).thenAnswer(new Answer<Boolean>() {
+            @Override
+            public Boolean answer(InvocationOnMock invocation) {
+                return false;
+            }
+        });
+        Car stoppedCar = new Car(stopStrategy);
 
-    @ParameterizedTest
-    @DisplayName("move 함수에서 4이상의 경우에만 전진해야 한다.")
-    @CsvSource(value = {"0:1", "1:1", "2:1", "3:1", "4:2", "5:2", "6:2", "7:2", "8:2", "9:2"}, delimiter = ':')
-    void move(int randomNum, int movedPosition) {
-        assertThat(this.car.getPosition())
-                .isEqualTo(1);
-        this.car.move(randomNum);
-        assertThat(this.car.getPosition())
-                .isEqualTo(movedPosition);
+
+        proceededCar.move();
+        stoppedCar.move();
+
+        int proceededPosition = 2;
+        int stoppedPosition = 1;
+        assertThat(proceededCar.getPosition())
+                .isEqualTo(proceededPosition);
+        assertThat(stoppedCar.getPosition())
+                .isEqualTo(stoppedPosition);
     }
 }

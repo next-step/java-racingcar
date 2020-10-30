@@ -23,12 +23,16 @@ class RacingGameTest {
     void checkNotGameOver(int loop) {
         int carNum = 3;
         int tryNum = 5;
-        Memento memento = new Memento(carNum, tryNum);
+        Car[] carArr = new Car[carNum];
+        for (int i = 0; i < carNum; i++) {
+            carArr[i] = Mockito.mock(Car.class);
+        }
+
+        Memento memento = new Memento(carArr, tryNum);
         RacingGame game = new RacingGame(memento);
 
-        RandomGenerator random = Mockito.mock(RandomGenerator.class);
         for (int i = 0; i < loop; i++) {
-            game.play(random);
+            game.play();
         }
 
         boolean expectedGameOver = loop < tryNum;
