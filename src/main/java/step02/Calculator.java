@@ -17,6 +17,7 @@ public class Calculator {
     - OPERATIONS 대문자로 선언한 이유는 final 이기 때문일 것
     - HashMap 자료형이 무엇?
     - Operation : 인터페이스는 인터페이스를 구현한 thing 의 자료형이 될 수 있는가?
+        - (Operator 연산자) ㅇ 피연산자(Operand)에 연산(Operation)을 가하도록하는 도구
      */
     private static final Map<String, Operation> OPERATIONS = new HashMap<>();
 
@@ -55,7 +56,7 @@ public class Calculator {
      */
     private void validateInputDataIsEmpty(String inputData) {
         if (isNullOrEmpty(inputData) || isBlank(inputData))
-            throw new IllegalArgumentException("입력 값이 비어있습니다.");
+            throw new IllegalArgumentException(CalculatorError.ARGS_EMPTY);
     }
 
     /*
@@ -68,7 +69,7 @@ public class Calculator {
      */
     private void validateOperatorType(String operatorType) {
         if (!OPERATIONS.containsKey(operatorType))
-            throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+            throw new IllegalArgumentException(CalculatorError.INVALID_OPERATOR);
     }
 
     /*
