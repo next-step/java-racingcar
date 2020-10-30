@@ -7,7 +7,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 class ResultView {
-    public static final int CAR_MOVED = 1;
     private final List<Set<LapResult>> results = new ArrayList<>();
     private final StringBuilder reportContent = new StringBuilder();
 
