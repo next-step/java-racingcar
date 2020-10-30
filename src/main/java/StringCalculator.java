@@ -1,7 +1,7 @@
 
 public class StringCalculator {
 
-    CalculatorContext calculatorContext;
+    private CalculatorContext calculatorContext;
 
     public StringCalculator() {
         this.calculatorContext = new CalculatorContext();
@@ -10,20 +10,19 @@ public class StringCalculator {
     public Integer run(String input) {
         validateInput(input);
 
-
         for (String rawToken : input.split(" +")) {
             Token token = new Token(rawToken);
-            calculatorContext.take(token);
+            calculatorContext.takeNextToken(token);
         }
 
-        return calculatorContext.result;
+        return calculatorContext.getResult();
     }
 
     private void validateInput(String input) {
         if (input == null) {
             throw new IllegalArgumentException("입력이 null 이네요");
         }
-        if (input.replaceAll(" ", "").length() == 0) {
+        if (input.trim().equals("")) {
             throw new IllegalArgumentException("입력이 텅텅 비었네요");
         }
     }

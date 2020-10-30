@@ -1,9 +1,9 @@
 public class CalculatorContext {
 
-    Integer result;
-    String operator;
+    private Integer result;
+    private String operator;
 
-    public void take(Token token) {
+    public void takeNextToken(Token token) {
         if (hasNoInitialNumber()) {
             result = token.getNumber();
             return;
@@ -16,6 +16,10 @@ public class CalculatorContext {
             runOperation(token.getNumber());
             return;
         }
+    }
+
+    public int getResult() {
+        return result;
     }
 
     private boolean hasNoInitialNumber() {

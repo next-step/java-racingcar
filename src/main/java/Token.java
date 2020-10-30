@@ -1,7 +1,8 @@
 public class Token {
 
-    private String value;
     private static final String AVAILABLE_OPERATORS = "+ - * /";
+
+    private String value;
 
     public Token(String rawToken) {
         value = rawToken;
