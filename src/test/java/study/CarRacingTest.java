@@ -168,7 +168,6 @@ public class CarRacingTest {
         assertThat(this.resultView.getReportContent()) //
                 .isEqualTo("실행결과\n" + //
                         "-\n" + //
-                        "\n" + //
                         "--\n");
     }
 
@@ -282,6 +281,7 @@ public class CarRacingTest {
             for (Set<Object[]> allCarsLap : results.subList(0, lap + 1)) {
                 printAllCarsLapResult(allCarsLap);
             }
+            print("\n");
         }
 
         private void printAllCarsLapResult(Set<Object[]> allCarsLap) {
@@ -292,7 +292,7 @@ public class CarRacingTest {
 
         private void printLap(Object[] aCarLap) {
             if ((Boolean) aCarLap[CAR_MOVED]) {
-                print("-\n");
+                print("-");
             }
         }
 
