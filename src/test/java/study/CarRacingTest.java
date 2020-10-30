@@ -28,6 +28,7 @@ public class CarRacingTest {
     @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
     void errorWhenEmptyRacingInfo() {
         setUpRacing();
+
         assertThatExceptionOfType(IllegalStateException.class) //
                 .isThrownBy(carRacing::start);
     }
@@ -110,8 +111,8 @@ public class CarRacingTest {
         private final int steps;
         private final Set<Car> cars;
 
-        public StaticInfoProvider(int steps, Car... cars) {
-            this.steps = steps;
+        public StaticInfoProvider(int rename, Car... cars) {
+            this.steps = rename;
             this.cars = new HashSet<>(Arrays.asList(cars));
         }
 
