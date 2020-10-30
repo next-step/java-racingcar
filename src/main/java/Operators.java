@@ -16,5 +16,9 @@ public class Operators {
     public Operator poll() {
         return this.operators.poll();
     }
+
+    public boolean isEmpty() {
+        return operators.isEmpty();
+    }
 }
 

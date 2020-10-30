@@ -47,4 +47,12 @@ public class Expression {
                 .mapToObj(i -> splits[i])
                 .collect(Collectors.toList());
     }
+
+    public boolean isEmpty() {
+        return operands.isEmpty() || operators.isEmpty();
+    }
+
+    public void addOperand(int operand) {
+        operands.add(operand);
+    }
 }

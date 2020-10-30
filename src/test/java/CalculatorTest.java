@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -21,6 +22,19 @@ public class CalculatorTest {
     @DisplayName("사칙 연산 간단식 테스트")
     @MethodSource
     void calculateFourRule_simpleExpression(String expStr, int resultExpected) {
+        Expression e = new Expression(expStr);
+        int result = c.calculate(e);
+
+        assertThat(result).isEqualTo(resultExpected);
+    }
+
+    @Test
+    @DisplayName("사칙 연산 복잡식 테스트")
+    @MethodSource
+    void caculateFourRule_complicatedExpression() {
+        String expStr = "2 + 3 * 4 / 2";
+        int resultExpected = 10;
+
         Expression e = new Expression(expStr);
         int result = c.calculate(e);
 

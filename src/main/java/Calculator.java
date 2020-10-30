@@ -1,7 +1,12 @@
 public class Calculator {
     public int calculate(Expression e) {
-        SimpleExpression se = e.extractSimpleExpression();
-        return calSimpleExp(se);
+        Integer result = null;
+        while (!e.isEmpty()) {
+            SimpleExpression se = e.extractSimpleExpression();
+            result = calSimpleExp(se);
+            e.addOperand(result);
+        }
+        return result;
     }
 
     private int calSimpleExp(SimpleExpression se){
