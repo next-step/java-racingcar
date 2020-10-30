@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -33,16 +34,16 @@ public class SetCollectionTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    @DisplayName("요구사항 2 : set의 value 확인 테스트")
+    @DisplayName("요구사항 2 : set의 value 확인 테스트, ValueSource")
     void setContainTest(int num) {
         assertThat(numbers.contains(num)).isTrue();
         assertTrue(numbers.contains(num));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    @DisplayName("요구사항 2 : set의 value 확인 테스트")
-    void setContainTest2(int num) {
-        assertThat(numbers.contains(num)).isTrue();
+    @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+    @DisplayName("요구사항 3 : set의 value 확인 테스트, CsvSource")
+    void setContainTest2(int num, boolean result) {
+        assertThat(numbers.contains(num)).isEqualTo(result);
     }
 }
