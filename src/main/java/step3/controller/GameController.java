@@ -14,7 +14,7 @@ public class GameController {
 
         OutputController.endResult();
         RacingGame racingGame = new RacingGame(carCount);
-        for(int i =0 ; i < tryCount ; i++){
+        for (int i = 0; i < tryCount; i++) {
             OutputController.runResult(racingGame.getGameRoundResult());
         }
     }

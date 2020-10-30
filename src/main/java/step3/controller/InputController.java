@@ -9,7 +9,8 @@ public class InputController {
     private static final String CAR_COUNT = "자동차 대수는 몇 대 인가요?";
     private static final String TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    private InputController() {}
+    private InputController() {
+    }
 
     public static int putCarCount() {
         System.out.println(CAR_COUNT);

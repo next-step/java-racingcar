@@ -1,11 +1,9 @@
 package step3.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,13 +42,13 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = { 1,2,3,4})
+    @ValueSource(ints = {1, 2, 3, 4})
     @DisplayName("움직임 횟수에 따라 차의 포지션을 맞춥니다.")
     void moveCarGetPosition(int moveCount) {
         //given
         moveStrategy = new MustMoveStrategy();
         //when
-        for(int i=0; i<moveCount; i++){
+        for (int i = 0; i < moveCount; i++) {
             car.move(moveStrategy);
         }
         //then
