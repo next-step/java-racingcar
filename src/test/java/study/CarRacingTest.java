@@ -202,6 +202,7 @@ public class CarRacingTest {
 
     private static class ResultView {
         private final List<Set<Object[]>> results = new ArrayList<>();
+        private final StringBuilder reportContent = new StringBuilder();
 
         public boolean isCommitted() {
             return !results.isEmpty();
@@ -212,11 +213,16 @@ public class CarRacingTest {
         }
 
         public void report() {
+            print("실행결과\n");
+            print("-\n");
+        }
 
+        private void print(String content) {
+            reportContent.append(content);
         }
 
         public String getReportContent() {
-            return null;
+            return reportContent.toString();
         }
     }
 }
