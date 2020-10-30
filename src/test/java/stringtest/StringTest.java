@@ -31,13 +31,18 @@ public class StringTest {
     @DisplayName("요구사항 3을 충족한다.")
     void requirementTest3(){
         String str = "a,b,c";
-        assertThat(str.charAt(0)).isEqualTo("a");
-        assertThat(str.charAt(2)).isEqualTo("c");
+        assertThat(str.charAt(0)).isEqualTo('a');
+        assertThat(str.charAt(4)).isEqualTo('c');
 
+    }
+
+    @Test
+    @DisplayName("요구사항 3을 충족한다, Exception 처리")
+    void requirementTest4(){
+        String str = "a,b,c";
         assertThatThrownBy(()->{
-            assertThat(str.charAt(3)).isEqualTo("c");
+            assertThat(str.charAt(5)).isEqualTo('c');
         }).isInstanceOf(IndexOutOfBoundsException.class)
-        .hasMessageContaining("Index: 3, Size 2, index out of range");
-
+        .hasMessageContaining("Index: 5, Size 4, index out of range");
     }
 }
