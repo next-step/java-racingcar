@@ -1,14 +1,17 @@
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class Operands {
-    private final List<Operand> operands;
+    private final Queue<Operand> operands;
 
     public Operands(List<String> strs) {
         this.operands = strs.stream()
                 .map(Operand::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(LinkedList::new));
     }
+
 
     private static class Operand {
         private final int num;
