@@ -215,6 +215,7 @@ public class CarRacingTest {
     }
 
     private static class ResultView {
+        public static final int CAR_MOVED = 1;
         private final List<Set<Object[]>> results = new ArrayList<>();
         private final StringBuilder reportContent = new StringBuilder();
 
@@ -228,12 +229,19 @@ public class CarRacingTest {
 
         public void report() {
             print("실행결과\n");
-            for (Object[] objects : results.get(0)) {
-                if ((Boolean) objects[1]) {
-                    print("-\n");
-                }
-            }
+            printAllCarsLapResult(results.get(0));
+        }
 
+        private void printAllCarsLapResult(Set<Object[]> allCarsLap) {
+            for (Object[] aCarLap : allCarsLap) {
+                printLap(aCarLap);
+            }
+        }
+
+        private void printLap(Object[] aCarLap) {
+            if ((Boolean) aCarLap[CAR_MOVED]) {
+                print("-\n");
+            }
         }
 
         private void print(String content) {
