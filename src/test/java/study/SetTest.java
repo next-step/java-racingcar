@@ -42,7 +42,8 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1","2","3","4","5"})
     void eachContainsTest(Integer input){
-        assertTrue(input + " : " + numbers.contains(input),numbers.contains(input));
+        System.out.println(input + ":" + numbers.contains(input));
+        assertTrue("",numbers.contains(input));
     }
 
 }
