@@ -37,7 +37,9 @@ public class CarRacingTest {
     void carMoved() {
         Car car = new NormalCar();
         CarRacing racing = new CarRacing(new StaticInfoProvider(1, car));
+
         racing.start();
+
         assertThat(car.isMoved()).isTrue();
     }
 
