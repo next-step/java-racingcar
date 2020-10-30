@@ -10,8 +10,8 @@ public class StringCalculator {
     public Integer run(String input) {
         validateInput(input);
 
-        for (String rawToken : input.split(" +")) {
-            Token token = new Token(rawToken);
+        for (String rawValue: input.split(" +")) {
+            Token token = TokenFactory.buildToken(rawValue);
             calculatorContext.takeNextToken(token);
         }
 
