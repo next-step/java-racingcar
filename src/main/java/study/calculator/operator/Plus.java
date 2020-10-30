@@ -1,6 +1,6 @@
 package study.calculator.operator;
 
-public class Plus extends AbstractOperator {
+public class Plus implements Operator {
 
     @Override
     public boolean isOperator(String expression) {
@@ -8,7 +8,7 @@ public class Plus extends AbstractOperator {
     }
 
     @Override
-    public Integer operate(Operand firstArg, Operand secondArg) {
+    public int operate(Operand firstArg, Operand secondArg) {
         return firstArg.getValue() + secondArg.getValue();
     }
 

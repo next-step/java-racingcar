@@ -1,13 +1,13 @@
 package study.calculator.operator;
 
-public class Multiply extends AbstractOperator{
+public class Multiply implements Operator {
     @Override
     public boolean isOperator(String expression) {
         return expression.equals("*");
     }
 
     @Override
-    public Integer operate(Operand firstArg, Operand secondArg) {
+    public int operate(Operand firstArg, Operand secondArg) {
         return firstArg.getValue() * secondArg.getValue();
     }
 }

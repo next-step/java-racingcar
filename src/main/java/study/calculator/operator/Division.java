@@ -1,13 +1,13 @@
 package study.calculator.operator;
 
-public class Division extends AbstractOperator{
+public class Division implements Operator {
     @Override
     public boolean isOperator(String expression) {
         return expression.equals("/");
     }
 
     @Override
-    public Integer operate(Operand firstArg, Operand secondArg) {
+    public int operate(Operand firstArg, Operand secondArg) {
         return firstArg.getValue() / secondArg.getValue();
     }
 }
