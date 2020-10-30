@@ -1,5 +1,6 @@
 package step3.controller;
 
+import step3.domain.RandomMoveStrategy;
 import step3.exception.MinimumTryCountException;
 import step3.service.RacingGame;
 
@@ -13,7 +14,8 @@ public class GameController {
         validTryCount(tryCount);
 
         OutputController.endResult();
-        RacingGame racingGame = new RacingGame(carCount);
+
+        RacingGame racingGame = new RacingGame(carCount, new RandomMoveStrategy());
         for (int i = 0; i < tryCount; i++) {
             OutputController.runResult(racingGame.getGameRoundResult());
         }
