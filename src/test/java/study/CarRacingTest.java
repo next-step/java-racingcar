@@ -71,6 +71,18 @@ public class CarRacingTest {
         assertThat(resultView.isCommitted()).isFalse();
     }
 
+
+    @Test
+    @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
+    void resultViewCommittedAfterStaring() {
+        setUpLapsAndCars(1, new NormalCar());
+        setUpRacing();
+
+        carRacing.start();
+
+        assertThat(resultView.isCommitted()).isTrue();
+    }
+
     private void setUpLapsAndCars(int laps, Car... cars) {
         this.laps = laps;
         this.cars = cars;
