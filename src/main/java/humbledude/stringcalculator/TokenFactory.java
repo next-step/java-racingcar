@@ -1,3 +1,7 @@
+package humbledude.stringcalculator;
+
+import humbledude.stringcalculator.operators.*;
+
 public class TokenFactory {
 
     public static Token buildToken(String rawValue) {

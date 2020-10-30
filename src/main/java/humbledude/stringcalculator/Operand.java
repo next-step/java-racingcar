@@ -1,3 +1,5 @@
+package humbledude.stringcalculator;
+
 public class Operand implements Token {
 
     private int value;
@@ -13,7 +15,7 @@ public class Operand implements Token {
 
     @Override
     public Token operation(Token operand1, Token operand2) {
-        throw new RuntimeException("이거참 나오면 안되는데 ㅎㅎ");
+        throw new RuntimeException("저 숫자인데요.. 이거참 나오면 안되는데 ㅎㅎ");
     }
 
     public int getValue() {

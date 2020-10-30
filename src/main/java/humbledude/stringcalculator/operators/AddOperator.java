@@ -1,3 +1,8 @@
+package humbledude.stringcalculator.operators;
+
+import humbledude.stringcalculator.Operand;
+import humbledude.stringcalculator.Token;
+
 public class AddOperator implements Token {
 
     @Override
@@ -13,6 +18,6 @@ public class AddOperator implements Token {
 
     @Override
     public int getValue() {
-        throw new RuntimeException("이거 나오면 안되는데..");
+        throw new RuntimeException("저 연산자인데요.. 이거 나오면 안되는데..");
     }
 }

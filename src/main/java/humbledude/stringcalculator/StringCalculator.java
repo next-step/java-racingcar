@@ -1,3 +1,4 @@
+package humbledude.stringcalculator;
 
 public class StringCalculator {
 

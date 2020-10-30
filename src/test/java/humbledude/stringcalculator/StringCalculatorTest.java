@@ -1,3 +1,5 @@
+package humbledude.stringcalculator;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -54,6 +56,12 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1 ^ 2", "1 & 2", "1 ( 2"})
     public void strangeOperators_throwingException(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> calc.run(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 1 2", "1 * +", "1 * *"})
+    public void strangeInputs_throwingException(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calc.run(input));
     }
 }

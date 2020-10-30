@@ -1,3 +1,5 @@
+package humbledude.stringcalculator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class CalculatorContext {
     private void validateNextToken(Token token) {
         if (isNextShouldBeOperator() && token.isOperand()) {
             throw new IllegalArgumentException("숫자 담에는 연산자가 와야죠 : " + token.getValue());
+        }
+        if (!isNextShouldBeOperator() && !token.isOperand()) {
+            throw new IllegalArgumentException("연산자 담에는 숫자가 와야죠 : " + token.getClass().getSimpleName());
         }
     }
 

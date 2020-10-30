@@ -1,3 +1,5 @@
+package humbledude.stringcalculator;
+
 public interface Token {
 
     boolean isOperand();
