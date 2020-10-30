@@ -1,5 +1,6 @@
 package racinggame.rule;
 
-public class MoveRule {
+public interface MoveRule {
 
+  boolean isAbleToMove();
 }
