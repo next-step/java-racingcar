@@ -125,7 +125,7 @@ public class CarRacingTest {
         this.resultView.report();
 
         assertThat(this.resultView.getReportContent()) //
-                .isEqualTo("실행결과\n");
+                .isEqualTo("실행결과\n\n");
     }
 
     @Test
@@ -146,6 +146,7 @@ public class CarRacingTest {
         assertThat(this.resultView.getReportContent()) //
                 .isEqualTo("실행결과\n" + //
                         "-\n" + //
+                        "\n" + //
                         "-\n");
     }
 
@@ -168,6 +169,7 @@ public class CarRacingTest {
         assertThat(this.resultView.getReportContent()) //
                 .isEqualTo("실행결과\n" + //
                         "-\n" + //
+                        "\n" + //
                         "--\n");
     }
 
@@ -271,8 +273,9 @@ public class CarRacingTest {
         }
 
         public void report() {
-            print("실행결과\n");
+            print("실행결과");
             for (int i = 0; i < results.size(); i++) {
+                print("\n");
                 printRecord(i);
             }
         }
