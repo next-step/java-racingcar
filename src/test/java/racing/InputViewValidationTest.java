@@ -12,10 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class InputViewValidationTest {
 
-    public static final Pattern PATTERN = Pattern.compile("[1-9]\\d*");
+    // 1 이상 ~ 20 미만의 숫자만 입력할 수 있습니다
+    public static final Pattern PATTERN = Pattern.compile("^[1-9]|1\\d$");
 
     @ParameterizedTest
-    @ValueSource(strings = {"1", "5", "10", "152"})
+    @ValueSource(strings = {"1", "5", "10", "19"})
     @DisplayName("입력한 숫자가 정규표현식과 일치하는지 확인합니다")
     public void inputNumberTest(String input) {
         assertTrue(isMatch(input));
@@ -25,6 +26,13 @@ public class InputViewValidationTest {
     @ValueSource(strings = {"0"})
     @DisplayName("숫자 0이 정규표현식과 일치하는 않는지 확인합니다")
     public void inputZeroTest(String input) {
+        assertFalse(isMatch(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"20, 30, 100"})
+    @DisplayName("20 이상의 숫자가 정규표현식과 일치하는 않는지 확인합니다")
+    public void inputOverTwentyTest(String input) {
         assertFalse(isMatch(input));
     }
 
