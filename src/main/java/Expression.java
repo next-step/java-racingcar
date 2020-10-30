@@ -8,13 +8,29 @@ public class Expression {
     private final Operators operators;
 
     public Expression(String input) {
-        String[] splits = input.split(" ");
+        validateInput(input);
 
+        String[] splits = input.split(" ");
         List<String> operandStrs = getOpStrs(splits, Utils::isEven);
         List<String> operatorStrs = getOpStrs(splits, Utils::isOdd);
 
         this.operands = new Operands(operandStrs);
         this.operators = new Operators(operatorStrs);
+    }
+
+    private void validateInput(String input) {
+        checkIsNull(input);
+        checkIsBlank(input);
+    }
+
+    private void checkIsBlank(String input) {
+        if (input.replace(" ", "").isEmpty())
+            throw new IllegalArgumentException("input string: blank");
+    }
+
+    private void checkIsNull(String input) {
+        if (input == null)
+            throw new IllegalArgumentException("input string: null");
     }
 
     private List<String> getOpStrs(String[] splits, IntPredicate discriminator) {
