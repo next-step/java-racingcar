@@ -1,6 +1,7 @@
 package study;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -38,6 +39,37 @@ public class ResultViewTest {
                 .isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("'ResultView'는 두대의 차가 움직인 결과를 출력할 수 있다.")
+    void reportResultTwoCarMove() {
+
+        ResultView resultView = new ResultView();
+
+        Set<LapResult> firstLap = new HashSet<>();
+        firstLap.add(new LapResult(0L, false));
+        firstLap.add(new LapResult(1L, true));
+        resultView.add(firstLap);
+
+        Set<LapResult> secondLap = new HashSet<>();
+        secondLap.add(new LapResult(0L, true));
+        secondLap.add(new LapResult(1L, true));
+        resultView.add(secondLap);
+
+        resultView.report();
+
+        //@formatter:off
+        assertThat(resultView.getReportContent())
+                .isEqualTo(
+                    line("실행결과") +
+                    line("") +
+                    line("-") +
+                    lineEmpty() +
+                    line("-") +
+                    line("--")
+                );
+        //@formatter:on
+    }
+
     static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
 
         @Override
@@ -45,24 +77,24 @@ public class ResultViewTest {
             //@formatter:off
             return Stream.of(
                     Arguments.of(new String[]{"0:true"}, // 한대의 차가 한번 움직인 결과
-                            line("실행결과") +
+                                    line("실행결과") +
                                     line("-")
                     ),
 
                     Arguments.of(new String[]{"0:false"},
-                            line("실행결과") +
+                                    line("실행결과") +
                                     line("")
                     ),
 
                     Arguments.of(new String[]{"0:true", "0:false"},
-                            line("실행결과") +
+                                    line("실행결과") +
                                     line("-") +
                                     lineEmpty() +
                                     line("-")
                     ),
 
                     Arguments.of(new String[]{"0:true", "0:true"},
-                            line("실행결과") +
+                                    line("실행결과") +
                                     line("-") +
                                     lineEmpty() +
                                     line("--")
@@ -71,12 +103,13 @@ public class ResultViewTest {
             //@formatter:on
         }
 
-        private String lineEmpty() {
-            return line("");
-        }
+    }
 
-        private String line(String content) {
-            return content + "\n";
-        }
+    private static String lineEmpty() {
+        return line("");
+    }
+
+    private static String line(String content) {
+        return content + "\n";
     }
 }
