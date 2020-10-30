@@ -6,6 +6,8 @@ public class RacingGame {
 
     private Car[] cars;
 
+    private Roulette roulette;
+
     public RacingGame() {
         this.setting = new Setting();
     }
