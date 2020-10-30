@@ -7,6 +7,9 @@ import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class SetCollectionTest {
@@ -27,5 +30,10 @@ public class SetCollectionTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
-    
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("요구사항 2 : set의 value 확인 테스트")
+    void setContainTest(int num) {
+        assertThat(numbers.contains(num)).isTrue();
+    }
 }
