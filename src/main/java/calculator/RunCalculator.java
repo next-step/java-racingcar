@@ -15,7 +15,7 @@ public class RunCalculator {
         paramTextCheck(paramText);
         String refineText = paramText.replaceAll(" ", "");
         List<OperatorOrder> list = OperatorOrder.operatorDivision(refineText);
-        int returnValue = stepToCalculatorRun(refineText, list);
+        int returnValue = stepToCalculator(refineText, list);
 
         return returnValue;
     }
@@ -70,38 +70,48 @@ public class RunCalculator {
         return returnValue;
     }
 
-
-
     /**
-     * 단계를 나누어 계산
+     * 문자열을 받아 계산 시작
      */
-    public static int stepToCalculatorRun(final String paramText, final List<OperatorOrder> list ){
+    public static int stepToCalculator(final String paramText, final List<OperatorOrder> list ){
         int returnValue = 0;
 
         for (int i = 0; i < list.size(); i++) {
-            if (i == 0 ){
-                if (list.size() > 1){
-                    returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
-                            , Integer.valueOf(paramText.substring(0, list.get(i).getIndex()))
-                            , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, list.get(i+1).getIndex()))
-                    );
-                } else{
-                    returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
-                            , Integer.valueOf(paramText.substring(0, list.get(i).getIndex()))
-                            , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, paramText.length()))
-                    );
-                }
-            } else if(i < list.size() - 1){
-                returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
-                        , returnValue
-                        , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, list.get(i+1).getIndex()))
-                );
-            } else {
-                returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
-                        , returnValue
-                        , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, paramText.length()))
-                );
-            }
+            returnValue = oneStepCalculator(paramText, i, returnValue, list);
+        }
+
+        return returnValue;
+    }
+
+    private static int oneStepCalculator(final String paramText, int i, int returnValue, List<OperatorOrder> list){
+        if (i == 0 ){
+            returnValue = indexEqualsZero(paramText, i, returnValue, list);
+        } else if(i < list.size() - 1){
+            returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
+                    , returnValue
+                    , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, list.get(i+1).getIndex()))
+            );
+        } else {
+            returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
+                    , returnValue
+                    , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, paramText.length()))
+            );
+        }
+
+        return returnValue;
+    }
+
+    private static int indexEqualsZero(final String paramText, int i, int returnValue, List<OperatorOrder> list){
+        if (list.size() > 1){
+            returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
+                    , Integer.valueOf(paramText.substring(0, list.get(i).getIndex()))
+                    , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, list.get(i+1).getIndex()))
+            );
+        } else{
+            returnValue = RunCalculator.commonCalculate(list.get(i).getOperatorText()
+                    , Integer.valueOf(paramText.substring(0, list.get(i).getIndex()))
+                    , Integer.valueOf(paramText.substring(list.get(i).getIndex()+1, paramText.length()))
+            );
         }
 
         return returnValue;
