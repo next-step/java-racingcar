@@ -2,21 +2,16 @@ package racing;
 
 public class RacingGame {
 
-    private int carCount;
-
-    private int round;
+    private Setting setting;
 
     private Car[] cars;
 
-    private final InputValue inputValue;
-
     public RacingGame() {
-        this.inputValue = new InputValue();
+        this.setting = new Setting();
     }
 
     public void set() {
-        this.carCount = inputValue.setCarCount();
-        this.round = inputValue.setRound();
+        setting.set();
     }
 
     public void create() {
