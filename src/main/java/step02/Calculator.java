@@ -1,5 +1,8 @@
 package step02;
 
+import exception.EmptyException;
+import exception.InValidOperatorException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,34 +45,31 @@ public class Calculator {
         }
     }
 
-    private boolean isNullOrEmpty(String inputData) {
-        return inputData == null || inputData.length() == 0;
+    private boolean isNullOrEmpty(String input) {
+        return input == null || input.length() == 0;
     }
 
-    private boolean isBlank(String inputData) {
-        return inputData.trim().length() == 0;
+    private boolean isBlank(String input) {
+        return input.trim().length() == 0;
     }
 
     /*
     - isNullOrEmpty / isBlank
         - 함수의 역할을 확실하게 설명해 주는 이름인 것 같다
      */
-    private void validateInputDataIsEmpty(String inputData) {
-        if (isNullOrEmpty(inputData) || isBlank(inputData))
-            throw new IllegalArgumentException(CalculatorError.ARGS_EMPTY);
+    private void validateInputHasContents(String input) {
+        if (isNullOrEmpty(input) || isBlank(input)) {
+            throw new EmptyException();
+        }
     }
 
     /*
     - 클래스의 메인, 요구사항을 수행함
-    - final 로 선언한 이유는 inputData 가 불변성을 유지하는 것이 필요해서 인가?
-     */
-
-    /*
-
+    - final 로 선언한 이유는 input 가 불변성을 유지하는 것이 필요해서 인가?
      */
     private void validateOperatorType(String operatorType) {
         if (!OPERATIONS.containsKey(operatorType))
-            throw new IllegalArgumentException(CalculatorError.INVALID_OPERATOR);
+            throw new InValidOperatorException();
     }
 
     /*
@@ -77,11 +77,11 @@ public class Calculator {
     - validateIsCorrectOperatorType -> validateOperatorType 이름을 변경하였다.
     - Operation operator = OPERATIONS.get(operatorType); 대입으로 사용할 열거형을 바로 선택할 수 있나?
      */
-    public int calculate(final String inputData) {
+    public int calculate(final String input) {
 
-        validateInputDataIsEmpty(inputData);
+        validateInputHasContents(input);
 
-        String[] rowData = inputData.split(" ");
+        String[] rowData = input.split(" ");
 
         int calculateResult = Integer.parseInt(rowData[0]);
 

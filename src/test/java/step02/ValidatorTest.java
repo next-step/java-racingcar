@@ -1,5 +1,8 @@
 package step02;
 
+import exception.EmptyException;
+import exception.ErrorMessage;
+import exception.InValidOperatorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,10 +34,10 @@ public class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = "3 * 5 & 5")
     public void validateOperatorType(String inputData) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(InValidOperatorException.class)
                 .isThrownBy(() -> {
                     calculator.calculate(inputData);
-                }).withMessageMatching(CalculatorError.INVALID_OPERATOR);
+                }).withMessageMatching(ErrorMessage.INVALID_OPERATOR);
     }
 
     static Stream<String> blankStrings() {
@@ -46,10 +49,10 @@ public class ValidatorTest {
     @MethodSource("blankStrings")
     @NullAndEmptySource
     public void validateInputDataIsEmpty(String blankData) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(EmptyException.class)
                 .isThrownBy(() -> {
                     calculator.calculate(blankData);
-                }).withMessageMatching(CalculatorError.ARGS_EMPTY);
+                }).withMessageMatching(ErrorMessage.ARGS_EMPTY);
     }
 
 }
