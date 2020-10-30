@@ -71,6 +71,16 @@ public class CarRacingTest {
         public void start() {
             if (cars.isEmpty() || steps == 0)
                 throw new IllegalStateException("레이싱 정보가 존재하지 않습니다.");
+
+            for (int i = 0; i < steps; i++) {
+                move();
+            }
+        }
+
+        private void move() {
+            for (Car car : cars) {
+                car.move();
+            }
         }
     }
 
@@ -101,9 +111,15 @@ public class CarRacingTest {
     }
 
     private class NormalCar implements Car {
+        private boolean isMoved;
         @Override
         public boolean isMoved() {
-            return true;
+            return isMoved;
+        }
+
+        @Override
+        public void move() {
+            isMoved = true;
         }
     }
 }
