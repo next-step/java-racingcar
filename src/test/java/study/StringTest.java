@@ -20,15 +20,13 @@ public class StringTest {
     void substring(){
         String result3 = "(1,2)";
         result3 = result3.substring(result3.indexOf("(")+1, result3.indexOf(")"));
+        assertThat(result3).isEqualTo("1,2");
     }
-    @DisplayName("String charAt test")
+    @DisplayName("String charAt Test")
     @Test
     void chatAt(){
-        Throwable thrown = catchThrowable(() -> {
-            char result4 = "abc".charAt(2);
-        });
-        assertThat(thrown)
-                .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("Index: 3, Size: 3");
+        assertThatThrownBy(() ->{
+            char result4 = "abc".charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("Index: 3, Size: 3");
     }
 }
