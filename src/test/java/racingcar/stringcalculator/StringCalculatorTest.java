@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created : 2020-10-29 오후 1:09
@@ -70,10 +71,24 @@ class StringCalculatorTest {
     }
 
     @ParameterizedTest
+    @DisplayName("사칙연산 기호 정규식")
+    @ValueSource(strings = {"+", "-", "*", "/"})
+    void givenOperator_thenCheckPattern(String s) {
+        assertTrue(sCal.isOperator(s));
+    }
+
+    @ParameterizedTest
     @DisplayName("사칙연산 기호가 아닌 경우")
     @ValueSource(strings = {"!", "@", "#", "$", "%"})
     void givenNoOperator_thenThrowException(String s) {
         assertThatIllegalArgumentException().isThrownBy(() -> sCal.isOperator(s));
+    }
+
+    @ParameterizedTest
+    @DisplayName("숫자가 아닌 경우")
+    @ValueSource(strings = {"2 + i * 4 / 2 - 1"})
+    void givenNoNumber_thenThrowException(String s) {
+        assertThatIllegalArgumentException().isThrownBy(() -> sCal.isNumeric(s));
     }
 
     @ParameterizedTest
@@ -82,5 +97,6 @@ class StringCalculatorTest {
     void givenString_thenOperate(String s) {
         assertThat(sCal.calculate(s)).isEqualTo(9);
     }
+
 
 }

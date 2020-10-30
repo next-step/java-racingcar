@@ -1,5 +1,7 @@
 package racingcar.stringcalculator;
 
+import java.util.regex.Pattern;
+
 /**
  * Created : 2020-10-29 오후 2:33
  * Developer : Seo
@@ -23,37 +25,48 @@ public class StringCalculator {
     }
 
     public boolean isOperator(String s) {
-        if (!"+".equals(s) && !"-".equals(s) && !"*".equals(s) && !"/".equals(s)) {
-            throw new IllegalArgumentException();
+        if (!Pattern.matches("^([+]|[-]|[*]|[/])$", s)) {
+            throw new IllegalArgumentException("연산자가 아닙니다.");
         }
         return true;
     }
 
     public boolean isNumeric(String s) {
-        try {
-            Double.parseDouble(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+        if (!Pattern.matches("^([0-9]*)$", s)) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
         }
+        return true;
     }
 
     public int calculate(String s) {
         String[] arr = s.split(" ");
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (i == 0) {
-                sum = plus(String.valueOf(sum), arr[i]);
-                continue;
-            }
+            if (i % 2 != 0) {
+                isOperator(arr[i]);
+            } else {
+                isNumeric(arr[i]);
 
-            if (isNumeric(arr[i]) && isOperator(arr[i - 1])) {
+                if (i == 0) {
+                    sum = plus(String.valueOf(sum), arr[i]);
+                    continue;
+                }
+
                 switch (arr[i - 1]) {
-                    case "+" : sum = plus(String.valueOf(sum), arr[i]); break;
-                    case "-" : sum = minus(String.valueOf(sum), arr[i]); break;
-                    case "*" : sum = multiply(String.valueOf(sum), arr[i]); break;
-                    case "/" : sum = divide(String.valueOf(sum), arr[i]); break;
-                    default: break;
+                    case "+":
+                        sum = plus(String.valueOf(sum), arr[i]);
+                        break;
+                    case "-":
+                        sum = minus(String.valueOf(sum), arr[i]);
+                        break;
+                    case "*":
+                        sum = multiply(String.valueOf(sum), arr[i]);
+                        break;
+                    case "/":
+                        sum = divide(String.valueOf(sum), arr[i]);
+                        break;
+                    default:
+                        break;
                 }
             }
         }
