@@ -1,11 +1,5 @@
 public class Calculator {
-    private final Expression e;
-
-    public Calculator(Expression e) {
-        this.e = e;
-    }
-
-    public int calculate() {
+    public int calculate(Expression e) {
         SimpleExpression se = e.extractSimpleExpression();
         return calSimpleExp(se);
     }

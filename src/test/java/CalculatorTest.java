@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -9,18 +10,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class CalculatorTest {
+    private Calculator c;
+
+    @BeforeEach
+    void setUp() {
+        c = new Calculator();
+    }
+
     @ParameterizedTest
     @DisplayName("사칙 연산 간단식 테스트")
     @MethodSource
-    void calculateFourRule(String expStr, int resultExpected) {
+    void calculateFourRule_simpleExpression(String expStr, int resultExpected) {
         Expression e = new Expression(expStr);
-        Calculator c = new Calculator(e);
-        int result = c.calculate();
+        int result = c.calculate(e);
 
         assertThat(result).isEqualTo(resultExpected);
     }
 
-    static Stream<Arguments> calculateFourRule() {
+    static Stream<Arguments> calculateFourRule_simpleExpression() {
         return Stream.of(
                 arguments("2 + 4", 6),
                 arguments("3 - 2", 1),
