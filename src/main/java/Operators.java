@@ -24,7 +24,7 @@ public class Operators {
             return Arrays.stream(Operator.values())
                     .filter(o -> o.opChar.equals(opChar))
                     .findAny()
-                    .orElseThrow(IllegalArgumentException::new);
+                    .orElseThrow(() -> new IllegalArgumentException("Wrong operator: " + opChar));
         }
 
         @Override
