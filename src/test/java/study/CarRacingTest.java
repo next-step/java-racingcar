@@ -251,6 +251,8 @@ public class CarRacingTest {
         public void report() {
             print("실행결과\n");
             printAllCarsLapResult(results.get(0));
+            printAllCarsLapResult(results.get(0));
+            printAllCarsLapResult(results.get(1));
         }
 
         private void printAllCarsLapResult(Set<Object[]> allCarsLap) {
