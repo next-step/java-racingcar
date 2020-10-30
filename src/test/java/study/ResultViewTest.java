@@ -40,8 +40,8 @@ public class ResultViewTest {
     }
 
     @Test
-    @DisplayName("'ResultView'는 두대의 차가 움직인 결과를 출력할 수 있다.")
-    void reportResultTwoCarMove() {
+    @DisplayName("'ResultView'는 두대의 차가 두번 움직인 결과를 출력할 수 있다.")
+    void reportResultTwoCarTwoMove() {
 
         ResultView resultView = new ResultView();
 

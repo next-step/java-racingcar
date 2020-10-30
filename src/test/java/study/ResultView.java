@@ -2,7 +2,9 @@ package study;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 class ResultView {
     public static final int CAR_MOVED = 1;
@@ -26,17 +28,17 @@ class ResultView {
     }
 
     private void printRecord(int lastLap) {
-        List<Set<LapResult>> allCarsLapRecord = results.subList(0, lastLap + 1);
-        for (Set<LapResult> aCarLap : allCarsLapRecord) {
+        Map<Long, List<LapResult>> allCarsLapRecord = results.subList(0, lastLap + 1).stream().flatMap(Set::stream).collect(Collectors.groupingBy(LapResult::getId));
+        for (List<LapResult> aCarLap : allCarsLapRecord.values()) {
             printCarLapResult(aCarLap);
         }
-        print("\n");
     }
 
-    private void printCarLapResult(Set<LapResult> aCarLap) {
+    private void printCarLapResult(List<LapResult> aCarLap) {
         for (LapResult lap : aCarLap) {
             printLap(lap);
         }
+        print("\n");
     }
 
     private void printLap(LapResult lap) {
