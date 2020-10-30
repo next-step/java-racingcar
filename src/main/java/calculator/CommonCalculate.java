@@ -5,7 +5,7 @@ package calculator;
  */
 public class CommonCalculate {
     /**
-     * 뺄셈 연산
+     * 뺄셈 연산.
      * @param a
      * @param b
      * @return a - b
