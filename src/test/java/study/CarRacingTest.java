@@ -250,9 +250,11 @@ public class CarRacingTest {
 
         public void report() {
             print("실행결과\n");
-            printAllCarsLapResult(results.get(0));
-            printAllCarsLapResult(results.get(0));
-            printAllCarsLapResult(results.get(1));
+            for (int i = 0; i < results.size(); i++) {
+                for (Set<Object[]> allCarsLap : results.subList(0, i + 1)) {
+                    printAllCarsLapResult(allCarsLap);
+                }
+            }
         }
 
         private void printAllCarsLapResult(Set<Object[]> allCarsLap) {
