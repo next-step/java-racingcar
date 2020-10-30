@@ -2,7 +2,7 @@ package calculator;
 
 
 /**
- * 문자열 중에서 연산자가 존재하는 index와 해당되는 문자열을
+ * 문자열 중에서 연산자가 존재하는 index와 해당되는 문자열 저장하는 객체
  */
 public class OperatorOrder {
 
