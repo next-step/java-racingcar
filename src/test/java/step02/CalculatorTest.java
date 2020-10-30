@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,14 +21,11 @@ public class CalculatorTest {
     @CsvSource(value = {
             "3 + 5 / 2 * 5 + 10 - 5 = 25"
     }, delimiter = '=')
-    public void calculate(String input, int expected) {
+    public void 문자열계산기_테스트(String input, int expected) {
         int result = calculator.calculate(input);
         assertThat(result).isEqualTo(expected);
     }
 
-    /*
-    - CsvSource 의 기본 delimeter?
-     */
     @DisplayName("단일 계산 사칙연산 테스트")
     @ParameterizedTest
     @CsvSource(value = "10, 2")

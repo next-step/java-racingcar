@@ -25,16 +25,10 @@ public class ExceptionTest {
         calculator = new Calculator();
     }
 
-    /*
-    - public 으로 하는 이유는 junit 이 해당 메서드를 관찰(사용)할 수 있게 함인가?
-    - MethodSource @
-    - Stream 의 메서드
-    - test 와 실제 테스트 대상의 함수 이름의 통일성이 필요할 것 같다.
-     */
     @DisplayName("사칙연산 기호에 해당되지 않을 경우 예외 처리")
     @ParameterizedTest
     @ValueSource(strings = "3 * 5 & 5")
-    public void validateOperatorType(String inputData) {
+    public void 유효하지않은_제수_예외처리_테스트(String inputData) {
         assertThatExceptionOfType(InValidOperatorException.class)
                 .isThrownBy(() -> {
                     calculator.calculate(inputData);
@@ -49,7 +43,7 @@ public class ExceptionTest {
     @ParameterizedTest
     @MethodSource("blankStrings")
     @NullAndEmptySource
-    public void validateInputDataIsEmpty(String blankData) {
+    public void 빈_입력값_예외처리_테스트(String blankData) {
         assertThatExceptionOfType(EmptyException.class)
                 .isThrownBy(() -> {
                     calculator.calculate(blankData);

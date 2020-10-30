@@ -8,27 +8,8 @@ import java.util.Map;
 
 public class Calculator {
 
-    /*
-    - Map<String, Operation> 을 static 으로 선언한 이유? 모든 인스턴스가 공유함
-    - final 으로 선언한 이유? Map 자료형은 항상 final 로 선언하는가?
-    - Map 의 자료형이 어떻게 생겼나? <> 안에 있는 것은 Genetic 인가?
-    - HashMap 자료형?
-    - Operator 연산자 : 피연산자(Operand)에 연산(Operation)을 가하도록하는 도구
-     */
     private static final Map<String, Operation> OPERATIONS = new HashMap<>();
 
-    /*
-    - java 의 for 순회하는 것은 어떤 방식들이 있는가?
-    - java 는 한 패키지 안에 자바에서 쓰이는 파일(?)들을 import 하지 않고 사용할 수 있다.
-    - Operator.values() 는 열거형 들을 순회하는 것 일듯
-    - Operator 의 생성자 호출은 어디있지?
-    - Operator operator 의 operator 는 각 열거형 요소라고 생각했는데 getOperatorType 을 메서드로 호출하고 있다니 무슨일이지?
-    - operator 는 무엇일까? 찍어봐야겠다.
-        - System.out.println(operator);   // PLUS MINUS DIVIDE MULTIPLE
-        - System.out.println(operator.getOperatorType()); // + - / *
-        - 열거형 원소에서 열거형의 메서드를 사용할 수 있다.
-        - 열거형 원소에서 초기화가 이루어 진다? 이 때 열거형의 매개변수는 생성자의 매개 변수와 같다?
-     */
     static {
         for (Operator operator : Operator.values()) {
             OPERATIONS.put(operator.getOperatorType(), operator);
@@ -43,30 +24,17 @@ public class Calculator {
         return input.trim().length() == 0;
     }
 
-    /*
-    - isNullOrEmpty / isBlank
-        - 함수의 역할을 확실하게 설명해 주는 이름인 것 같다
-     */
     private void validateInputHasContents(String input) {
         if (isNullOrEmpty(input) || isBlank(input)) {
             throw new EmptyException();
         }
     }
 
-    /*
-    - 클래스의 메인, 요구사항을 수행함
-    - final 로 선언한 이유는 input 가 불변성을 유지하는 것이 필요해서 인가?
-     */
     private void validateOperatorType(String operatorType) {
         if (!OPERATIONS.containsKey(operatorType))
             throw new InValidOperatorException();
     }
 
-    /*
-    - 위에서 아래로 읽는 것이 가독성에 더 좋을 것 같아 원본에서 함수의 위치들을 calculate 함수 위로 모두 옮겼다
-    - validateIsCorrectOperatorType -> validateOperatorType 이름을 변경하였다.
-    - Operation operator = OPERATIONS.get(operatorType); 대입으로 사용할 열거형을 바로 선택할 수 있나?
-     */
     public int calculate(final String input) {
 
         validateInputHasContents(input);
