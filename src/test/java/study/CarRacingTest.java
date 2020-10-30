@@ -251,9 +251,13 @@ public class CarRacingTest {
         public void report() {
             print("실행결과\n");
             for (int i = 0; i < results.size(); i++) {
-                for (Set<Object[]> allCarsLap : results.subList(0, i + 1)) {
-                    printAllCarsLapResult(allCarsLap);
-                }
+                printRecord(i);
+            }
+        }
+
+        private void printRecord(int lap) {
+            for (Set<Object[]> allCarsLap : results.subList(0, lap + 1)) {
+                printAllCarsLapResult(allCarsLap);
             }
         }
 
