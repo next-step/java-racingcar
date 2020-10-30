@@ -42,6 +42,7 @@ public class Memento {
         carArr[carIdx].move(randomNum);
     }
 
+    // FIXME: stream 을 활용할 수는 없을까
     public int[] getCarPositions() {
         int carNum = carArr.length;
         int[] carPositions = new int[carNum];

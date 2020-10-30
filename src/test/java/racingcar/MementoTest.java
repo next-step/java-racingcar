@@ -16,7 +16,8 @@ class MementoTest {
     @DisplayName("생성자의 carNum 인자와 똑같이 carNum 이 나와야 한다.")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void getCarNum(int carNum) {
-        Memento memento = new Memento(carNum, 5);
+        int tryNum = 5;
+        Memento memento = new Memento(carNum, tryNum);
         assertThat(memento.getCarNum())
                 .isEqualTo(carNum);
     }
@@ -25,7 +26,8 @@ class MementoTest {
     @DisplayName("생성자의 tryNum 인자와 똑같이 maxTry 가 나와야 한다.")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void getMaxTry(int tryNum) {
-        Memento memento = new Memento(5, tryNum);
+        int carNum = 5;
+        Memento memento = new Memento(carNum, tryNum);
         assertThat(memento.getMaxTry())
                 .isEqualTo(tryNum);
     }
@@ -34,7 +36,9 @@ class MementoTest {
     @DisplayName("increaseCurrTry 를 한 만큼 currTry 가 증가해야 한다.")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void increaseCurrTry(int loop) {
-        Memento memento = new Memento(3, 5);
+        int carNum = 3;
+        int tryNum = 5;
+        Memento memento = new Memento(carNum, tryNum);
         int oldCurrTry = memento.getCurrTry();
         for (int i = 0; i < loop; i++) {
             memento.increaseCurrTry();
@@ -48,11 +52,13 @@ class MementoTest {
     @CsvSource(value = {"0:0:1", "1:1:1", "2:2:1", "3:3:1", "4:4:2", "5:5:2", "6:6:2", "7:7:2", "8:8:2", "9:9:2"}, delimiter = ':')
     void moveCar(int carIdx, int randomNum, int movedPosition) {
         int carNum = 10;
-        Memento memento = new Memento(carNum, 5);
+        int tryNum = 5;
+        Memento memento = new Memento(carNum, tryNum);
         memento.moveCar(carIdx, randomNum);
 
         int[] expectedPositions = new int[carNum];
-        Arrays.fill(expectedPositions, 1);
+        int unMovedPosition = 1;
+        Arrays.fill(expectedPositions, unMovedPosition);
         expectedPositions[carIdx] = movedPosition;
 
         assertThat(memento.getCarPositions())
