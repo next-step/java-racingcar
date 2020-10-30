@@ -9,7 +9,7 @@ import java.util.List;
 public class RunCalculator {
 
     /**
-     * 계산 시작.
+     * 계산 시작
      */
     public static int runCalculator(final String paramText){
         paramTextCheck(paramText);

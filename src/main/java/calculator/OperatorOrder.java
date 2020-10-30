@@ -27,7 +27,7 @@ public class OperatorOrder {
     /**
      * 문자열을 받아서 연산자의 index와 연산자를 return
      * @param param 문자열
-     * @return list - 연잔자 및 index의 list.
+     * @return list - 연잔자 및 index의 list
      */
     public static List<OperatorOrder> operatorDivision (final String param){
         List<OperatorOrder> list = new ArrayList<OperatorOrder>();
