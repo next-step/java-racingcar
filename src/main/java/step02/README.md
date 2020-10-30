@@ -10,6 +10,51 @@
 - @junilHwang 님
     - 상수 사용
     - 생성자 실행방지
+    - 인터페이스 -> 람다 
+        - 람다표현식과 BiFunction apply Interface Override
+    - Math::addExact
+        - :: 은 함수의 등록과 같은것  값으로 함수를 다룰 수 있는 것
+    - `BiFunction<Integer, Integer, Integer> operator`
+        - 열거형 `PLUS("+", Math::addExact)` 의 두번째 인자인 람다함수 `Math::addExact` 의 
+        - 첫번째 인자의타입, 두번째 인자의 타입, 마지막은 반환 타입을 나타낸다. 
+        - Operator.Class 의 calculate 메서드란 
+            ```java
+            public int calculate(int x, int y) {
+                return operator.apply(x, y);
+            }
+            ```
+        - operator 란 Math::addExact 를 의미하는데 인자 x, y 를 넣어 함수를 실행시킨다.
+        - apply 를 하는 이유는 BiFunction 의 인터페이스의 apply 를 통해 함수를 실행시킬 수 있기 때문이다.
+        - java 는 오지게 추상화가 되어있구나
+        - Operator 의 마지막 클래스 메서드는 executeOf 이다.
+            - type 에는 '+', '-', '*', '/' 이 올 것이고,
+            - x 와 y 는 연산할 숫자이다.
+            - stream 에 대해서는 잘 모르는데 순회할 수 있는 용도로 보인다.
+            - values() 는, 사실상 this.values() 인데, 자바 클래스에서는 this 를 생략할 수 있다고 한다. 
+            - 여기서 가리키는 this 는 열거형의 요소들이다.
+            - 따라서 다음 filter 에 들어가는 람다인자 operator 는 각각의 열거형 요소이다. 
+            - findFirst 는 앞 stream 에서 가장 첫 요소를 가져오는 것 같다.
+            - orElseThrow: 연산을 끝난 앞선 객체가 비어있다면 throw 를 한다. type 과 일치하는 operator 가 없는 경우
+            ```java
+                public static int executeOf(String type, int x, int y) {
+                    return Arrays.stream(values())
+                                 .filter(operator -> operator.operatorType.equals(type))
+                                 .findFirst()
+                                 .orElseThrow(InValidOperatorException::new)
+                                 .calculate(x, y);
+                }
+            ```
+          - `@MethodSource` 의 인자는 Stream
+          ```java
+            private static Stream<Arguments> provideOperatorAndOperandsAndResult () {
+                return Stream.of(
+                    Arguments.of(Operator.PLUS, 1, 2, 3),
+                    Arguments.of(Operator.MINUS, 1, 2, -1),
+                    Arguments.of(Operator.MULTIPLE, 1, 2, 2),
+                    Arguments.of(Operator.DIVIDE, 4, 2, 2)
+                );
+            }
+        ```
     
 - @oen142 님
     - 에러 커스텀

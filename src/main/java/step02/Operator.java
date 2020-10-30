@@ -1,5 +1,6 @@
 package step02;
 
+import exception.DividedByZero;
 import exception.InValidOperatorException;
 
 import java.util.Arrays;
@@ -10,7 +11,11 @@ public enum Operator {
     PLUS("+", Math::addExact),
     MINUS("-", Math::subtractExact),
     MULTIPLE("*", Math::multiplyExact),
-    DIVIDE("/", (x, y) -> x / y);
+    DIVIDE("/", (x, y) -> {
+        if (y == 0)
+            throw new DividedByZero();
+        return x / y;
+    });
 
     private final String operatorType;
     private final BiFunction<Integer, Integer, Integer> operator;

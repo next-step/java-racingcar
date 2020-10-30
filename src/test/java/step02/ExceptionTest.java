@@ -35,13 +35,8 @@ public class ExceptionTest {
                 }).withMessageMatching(ErrorMessage.INVALID_OPERATOR);
     }
 
-    static Stream<String> blankStrings() {
-        return Stream.of("", "   ", null);
-    }
-
     @DisplayName("입력값이 null 이거나 비었을 때 예외처리")
     @ParameterizedTest
-    @MethodSource("blankStrings")
     @NullAndEmptySource
     public void 빈_입력값_예외처리_테스트(String blankData) {
         assertThatExceptionOfType(EmptyException.class)
@@ -56,7 +51,7 @@ public class ExceptionTest {
     public void 나눗셈_0_테스트(int first, int second) {
         assertThatExceptionOfType(DividedByZero.class)
                 .isThrownBy(() -> {
-                    Operator.DIVIDE.calculate(first, second);
+                    Operator.executeOf("/", first, second);
                 }).withMessageMatching(ErrorMessage.DIVIDED_BY_ZERO);
     }
 

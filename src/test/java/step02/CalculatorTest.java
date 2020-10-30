@@ -3,7 +3,11 @@ package step02;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,13 +32,18 @@ public class CalculatorTest {
 
     @DisplayName("단일 계산 사칙연산 테스트")
     @ParameterizedTest
-    @CsvSource(value = "10, 2")
-    public void 단항연산자_테스트(int first, int second) {
-        assertThat(Operator.PLUS.calculate(first, second)).isEqualTo(first + second);
-        assertThat(Operator.MINUS.calculate(first, second)).isEqualTo(first - second);
-        assertThat(Operator.MULTIPLE.calculate(first, second)).isEqualTo(first * second);
-        assertThat(Operator.DIVIDE.calculate(first, second)).isEqualTo(first / second);
+    @MethodSource("provideOperatorAndOperandsAndResult")
+    public void 단항연산자_테스트(Operator operator, int first, int second, int expected) {
+        assertThat(operator.calculate(first, second)).isEqualTo(expected);
     }
 
+    private static Stream<Arguments> provideOperatorAndOperandsAndResult () {
+        return Stream.of(
+            Arguments.of(Operator.PLUS, 1, 2, 3),
+            Arguments.of(Operator.MINUS, 1, 2, -1),
+            Arguments.of(Operator.MULTIPLE, 1, 2, 2),
+            Arguments.of(Operator.DIVIDE, 4, 2, 2)
+        );
+    }
 
 }
