@@ -3,14 +3,10 @@ package study;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.ArgumentsProvider;
-import org.junit.jupiter.params.provider.ArgumentsSource;
 
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -103,69 +99,6 @@ public class CarRacingTest {
                         + "-\n");
     }
 
-    @ParameterizedTest
-    @ArgumentsSource(OneCarRacingRecordArgumentProvider.class)
-    @DisplayName("'ResultView'는 한대의 차가 움직인 결과를 출력할 수 있다.")
-    void reportResultOneCarMove(String[] records, String expected) {
-
-        this.resultView = new ResultView();
-
-
-        for (String lapRecord : records) {
-            String[] split = lapRecord.split(":");
-            Set<Object[]> lap = new HashSet<>();
-            lap.add(new Object[]{split[0], Boolean.valueOf(split[1])});
-            resultView.add(lap);
-        }
-
-        this.resultView.report();
-
-        assertThat(this.resultView.getReportContent()) //
-                .isEqualTo(expected);
-    }
-
-    static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
-
-        @Override
-        public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
-            //@formatter:off
-            return Stream.of(
-                    Arguments.of(new String[]{"0:true"}, // 한대의 차가 한번 움직인 결과
-                                    line("실행결과") +
-                                    line("-")
-                    ),
-
-                    Arguments.of(new String[]{"0:false"},
-                                    line("실행결과") +
-                                    line("")
-                    ),
-
-                    Arguments.of(new String[]{"0:true", "0:false"},
-                                    line("실행결과") +
-                                    line("-") +
-                                    lineEmpty() +
-                                    line("-")
-                    ),
-
-                    Arguments.of(new String[]{"0:true", "0:true"},
-                                    line("실행결과") +
-                                    line("-") +
-                                    lineEmpty() +
-                                    line("--")
-                    )
-            );
-            //@formatter:on
-        }
-
-        private String lineEmpty() {
-            return line("");
-        }
-
-        private String line(String content) {
-            return content + "\n";
-        }
-    }
-
     private void setUpLapsAndCars(int laps, Car... cars) {
         this.laps = laps;
         this.cars = cars;
@@ -252,53 +185,4 @@ public class CarRacingTest {
         }
     }
 
-    private static class ResultView {
-        public static final int CAR_MOVED = 1;
-        private final List<Set<Object[]>> results = new ArrayList<>();
-        private final StringBuilder reportContent = new StringBuilder();
-
-        public boolean isCommitted() {
-            return !results.isEmpty();
-        }
-
-        public void add(Set<Object[]> result) {
-            results.add(result);
-        }
-
-        public void report() {
-            print("실행결과");
-            for (int i = 0; i < results.size(); i++) {
-                print("\n");
-                printRecord(i);
-            }
-        }
-
-        private void printRecord(int lastLap) {
-            List<Set<Object[]>> allCarsLapRecord = results.subList(0, lastLap + 1);
-            for (Set<Object[]> aCarLap : allCarsLapRecord) {
-                printCarLapResult(aCarLap);
-            }
-            print("\n");
-        }
-
-        private void printCarLapResult(Set<Object[]> aCarLap) {
-            for (Object[] lap : aCarLap) {
-                printLap(lap);
-            }
-        }
-
-        private void printLap(Object[] lap) {
-            if ((Boolean) lap[CAR_MOVED]) {
-                print("-");
-            }
-        }
-
-        private void print(String content) {
-            reportContent.append(content);
-        }
-
-        public String getReportContent() {
-            return reportContent.toString();
-        }
-    }
 }
