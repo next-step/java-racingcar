@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class InputViewTest {
+public class InputViewValidationTest {
 
     public static final Pattern PATTERN = Pattern.compile("[1-9]\\d*");
 
