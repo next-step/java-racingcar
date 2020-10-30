@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -14,26 +13,8 @@ public class Operators {
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    private enum Operator {
-        PLUS("+");
-
-        private final String opChar;
-
-        Operator(String opChar) {
-            this.opChar = opChar;
-        }
-
-        public static Operator fromOpChar(String opChar) {
-            return Arrays.stream(Operator.values())
-                    .filter(o -> o.opChar.equals(opChar))
-                    .findAny()
-                    .orElseThrow(() -> new IllegalArgumentException("Wrong operator: " + opChar));
-        }
-
-        @Override
-        public String toString() {
-            return opChar;
-        }
+    public Operator poll() {
+        return this.operators.poll();
     }
 }
 
