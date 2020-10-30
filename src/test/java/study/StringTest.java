@@ -1,5 +1,6 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,6 +21,7 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("charAtTest")
     void request3(){
         String inputText = "abc";
         assertThatThrownBy(() -> {
