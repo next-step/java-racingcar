@@ -1,11 +1,13 @@
 package step02;
 
+import exception.DividedByZero;
 import exception.EmptyException;
 import exception.ErrorMessage;
 import exception.InValidOperatorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,7 +16,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
-public class ValidatorTest {
+public class ExceptionTest {
 
     private Calculator calculator;
 
@@ -52,6 +54,16 @@ public class ValidatorTest {
                 .isThrownBy(() -> {
                     calculator.calculate(blankData);
                 }).withMessageMatching(ErrorMessage.ARGS_EMPTY);
+    }
+
+    @DisplayName("0 으로 나눌 경우 테스트")
+    @ParameterizedTest
+    @CsvSource(value = "10, 0")
+    public void 나눗셈_0_테스트(int first, int second) {
+        assertThatExceptionOfType(DividedByZero.class)
+                .isThrownBy(() -> {
+                    Operator.DIVIDE.calculate(first, second);
+                }).withMessageMatching(ErrorMessage.DIVIDED_BY_ZERO);
     }
 
 }

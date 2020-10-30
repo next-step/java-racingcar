@@ -40,4 +40,5 @@ public class CalculatorTest {
         assertThat(Operator.DIVIDE.calculate(first, second)).isEqualTo(first / second);
     }
 
+
 }

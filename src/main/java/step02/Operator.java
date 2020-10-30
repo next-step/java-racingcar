@@ -1,5 +1,7 @@
 package step02;
 
+import exception.DividedByZero;
+
 /*
 - 코드를 보면서 알게된 자바의 열거형 사용방법
     - 구조: 생성자(최초 init setter), 열거형 타입(?), 열거형 getter 들
@@ -28,6 +30,9 @@ public enum Operator implements Operation {
     DIVIDE("/") {
         @Override
         public int calculate(int first, int second) {
+            if (second == 0) {
+                throw new DividedByZero();
+            }
             return first / second;
         }
     },
