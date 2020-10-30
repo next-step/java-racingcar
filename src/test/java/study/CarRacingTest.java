@@ -3,8 +3,14 @@ package study;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsProvider;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -97,80 +103,67 @@ public class CarRacingTest {
                         + "-\n");
     }
 
-    @Test
-    @DisplayName("'ResultView'는 한대의 차가 한번의 기회에서 한번 움직인 경주결과를 출력할 수 있다.")
-    void reportResultOneCarOneStageOneMove() {
+    @ParameterizedTest
+    @ArgumentsSource(OneCarRacingRecordArgumentProvider.class)
+    @DisplayName("'ResultView'는 한대의 차가 움직인 결과를 출력할 수 있다.")
+    void reportResultOneCarMove(String[] records, String expected) {
+
         this.resultView = new ResultView();
 
-        Set<Object[]> firstLap = new HashSet<>();
-        firstLap.add(new Object[]{0L, true});
-        resultView.add(firstLap);
+
+        for (String lapRecord : records) {
+            String[] split = lapRecord.split(":");
+            Set<Object[]> lap = new HashSet<>();
+            lap.add(new Object[]{split[0], Boolean.valueOf(split[1])});
+            resultView.add(lap);
+        }
 
         this.resultView.report();
 
         assertThat(this.resultView.getReportContent()) //
-                .isEqualTo("실행결과\n" //
-                        + "-\n");
+                .isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("'ResultView'는 한대의 차가 한번의 기회에서 움직이지 않은 경주결과를 출력할 수 있다.")
-    void reportResultOneCarOneStageZeroMove() {
-        this.resultView = new ResultView();
+    static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
 
-        Set<Object[]> firstLap = new HashSet<>();
-        firstLap.add(new Object[]{0L, false});
-        resultView.add(firstLap);
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+            //@formatter:off
+            return Stream.of(
+                    Arguments.of(new String[]{"0:true"}, // 한대의 차가 한번 움직인 결과
+                                    line("실행결과") +
+                                    line("-")
+                    ),
 
-        this.resultView.report();
+                    Arguments.of(new String[]{"0:false"},
+                                    line("실행결과") +
+                                    line("")
+                    ),
 
-        assertThat(this.resultView.getReportContent()) //
-                .isEqualTo("실행결과\n\n");
-    }
+                    Arguments.of(new String[]{"0:true", "0:false"},
+                                    line("실행결과") +
+                                    line("-") +
+                                    lineEmpty() +
+                                    line("-")
+                    ),
 
-    @Test
-    @DisplayName("'ResultView'는 한대의 차가 두번의 기회에서 한번 움직인 경주결과를 출력할 수 있다.")
-    void reportResultOneCarTwoStageOneMove() {
-        this.resultView = new ResultView();
+                    Arguments.of(new String[]{"0:true", "0:true"},
+                                    line("실행결과") +
+                                    line("-") +
+                                    lineEmpty() +
+                                    line("--")
+                    )
+            );
+            //@formatter:on
+        }
 
-        Set<Object[]> firstLap = new HashSet<>();
-        firstLap.add(new Object[]{0L, true});
-        resultView.add(firstLap);
+        private String lineEmpty() {
+            return line("");
+        }
 
-        Set<Object[]> secondLap = new HashSet<>();
-        secondLap.add(new Object[]{0L, false});
-        resultView.add(secondLap);
-
-        this.resultView.report();
-
-        assertThat(this.resultView.getReportContent()) //
-                .isEqualTo("실행결과\n" + //
-                        "-\n" + //
-                        "\n" + //
-                        "-\n");
-    }
-
-
-    @Test
-    @DisplayName("'ResultView'는 한대의 차가 두번의 기회에서 두번 움직인 경주결과를 출력할 수 있다.")
-    void reportResultOneCarTwoStageTwoMove() {
-        this.resultView = new ResultView();
-
-        Set<Object[]> firstLap = new HashSet<>();
-        firstLap.add(new Object[]{0L, true});
-        resultView.add(firstLap);
-
-        Set<Object[]> secondLap = new HashSet<>();
-        secondLap.add(new Object[]{0L, true});
-        resultView.add(secondLap);
-
-        this.resultView.report();
-
-        assertThat(this.resultView.getReportContent()) //
-                .isEqualTo("실행결과\n" + //
-                        "-\n" + //
-                        "\n" + //
-                        "--\n");
+        private String line(String content) {
+            return content + "\n";
+        }
     }
 
     private void setUpLapsAndCars(int laps, Car... cars) {
