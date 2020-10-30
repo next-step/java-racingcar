@@ -7,8 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * <pre>
@@ -42,37 +41,41 @@ public class CarRacingTest {
         assertThat(car.isMoved()).isTrue();
     }
 
-    private CarRacing createRacing(int cars, int steps) {
-        return new CarRacing(new StaticInfoProvider(cars, steps));
+    private CarRacing createRacing(int steps, int startingGridCars) {
+        Car[] cars = new Car[startingGridCars];
+        for (int i = 0; i < startingGridCars; i++) {
+            cars[i] = new NormalCar();
+        }
+        return new CarRacing(new StaticInfoProvider(steps, cars));
     }
 
     private static class CarRacing {
 
-        private int cars;
-        private int steps;
+        private final Set<Car> cars;
+        private final int steps;
 
         public CarRacing(RacingInfoProvider racingInfoProvider) {
-            cars = racingInfoProvider.countCars();
+            cars = racingInfoProvider.getCars();
             steps = racingInfoProvider.countSteps();
         }
 
         public void start() {
-            if (cars == 0 || steps == 0)
+            if (cars.isEmpty() || steps == 0)
                 throw new IllegalStateException("레이싱 정보가 존재하지 않습니다.");
         }
     }
 
     private static class StaticInfoProvider implements RacingInfoProvider {
-        private final int cars;
         private final int steps;
+        private final Set<Car> cars;
 
-        public StaticInfoProvider(int cars, int steps) {
-            this.cars = cars;
+        public StaticInfoProvider(int steps, Car... cars) {
             this.steps = steps;
+            this.cars = new HashSet<>(Arrays.asList(cars));
         }
 
         @Override
-        public int countCars() {
+        public Set<Car> getCars() {
             return cars;
         }
 
@@ -83,7 +86,7 @@ public class CarRacingTest {
     }
 
     private interface RacingInfoProvider {
-        int countCars();
+        Set<Car> getCars();
 
         int countSteps();
     }
