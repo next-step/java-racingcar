@@ -1,3 +1,4 @@
+
 import java.util.List;
 import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
@@ -16,6 +17,13 @@ public class Expression {
 
         this.operands = new Operands(operandStrs);
         this.operators = new Operators(operatorStrs);
+    }
+
+    public SimpleExpression extractSimpleExpression() {
+        Pair<Integer> p = new Pair<>(this.operands.poll(), this.operands.poll());
+        Operator operator = this.operators.poll();
+
+        return new SimpleExpression(p, operator);
     }
 
     private void validateInput(String input) {

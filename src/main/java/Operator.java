@@ -1,12 +1,20 @@
 import java.util.Arrays;
+import java.util.function.Function;
 
 public enum Operator {
-    PLUS("+");
+    PLUS("+", p -> p.getLeft() + p.getRight());
 
     private final String opChar;
 
-    Operator(String opChar) {
+    private Function<Pair<Integer>, Integer> operate;
+
+    Operator(String opChar, Function<Pair<Integer>, java.lang.Integer> operate) {
         this.opChar = opChar;
+        this.operate = operate;
+    }
+
+    public Integer operate(Pair<Integer> pair) {
+        return this.operate.apply(pair);
     }
 
     public static Operator fromOpChar(String opChar) {
@@ -15,6 +23,7 @@ public enum Operator {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("Wrong operator: " + opChar));
     }
+
 
     @Override
     public String toString() {
