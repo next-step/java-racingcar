@@ -63,15 +63,8 @@ public class ResultViewTest {
     @DisplayName("'ResultView'는 두대의 차가 두번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarTwoMove() {
 
-        Set<LapResult> firstLap = new HashSet<>();
-        firstLap.add(new LapResult(0L, false));
-        firstLap.add(new LapResult(1L, true));
-        resultView.add(firstLap);
-
-        Set<LapResult> secondLap = new HashSet<>();
-        secondLap.add(new LapResult(0L, true));
-        secondLap.add(new LapResult(1L, true));
-        resultView.add(secondLap);
+        addResult(new LapResult(0L, false), new LapResult(1L, true));
+        addResult(new LapResult(0L, true), new LapResult(1L, true));
 
         resultView.report();
 
@@ -92,21 +85,9 @@ public class ResultViewTest {
     @DisplayName("'ResultView'는 두대의 차가 세번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarThreeMove() {
 
-        Set<LapResult> firstLap = new HashSet<>();
-        firstLap.add(new LapResult(0L, false));
-        firstLap.add(new LapResult(1L, true));
-        resultView.add(firstLap);
-
-        Set<LapResult> secondLap = new HashSet<>();
-        secondLap.add(new LapResult(0L, true));
-        secondLap.add(new LapResult(1L, true));
-        resultView.add(secondLap);
-
-
-        Set<LapResult> thirdLap = new HashSet<>();
-        thirdLap.add(new LapResult(0L, true));
-        thirdLap.add(new LapResult(1L, true));
-        resultView.add(thirdLap);
+        addResult(new LapResult(0L, false), new LapResult(1L, true));
+        addResult(new LapResult(0L, true), new LapResult(1L, true));
+        addResult(new LapResult(0L, true), new LapResult(1L, true));
 
         resultView.report();
 
@@ -124,6 +105,13 @@ public class ResultViewTest {
                                 line("---")
                 );
         //@formatter:on
+    }
+
+    private void addResult(LapResult aCar, LapResult bCar) {
+        Set<LapResult> firstLap = new HashSet<>();
+        firstLap.add(aCar);
+        firstLap.add(bCar);
+        resultView.add(firstLap);
     }
 
     static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
