@@ -11,11 +11,11 @@ import static step2.StringCalculator.calculate;
 
 public class StringCalculatorTest {
     @DisplayName("basic operation test")
-    @CsvSource({
-            "1 + 5,6",
-            "1 - 5,-4",
-            "5 * 1,5",
-            "5 / 1,5",
+    @CsvSource(delimiter = '=', value = {
+            "1 + 5 = 6",
+            "1 - 5 = -4",
+            "5 * 1 = 5",
+            "5 / 1 = 5",
     })
     @ParameterizedTest
     void basic(String expression, int result) {
@@ -23,10 +23,10 @@ public class StringCalculatorTest {
     }
 
     @DisplayName("complex operation test")
-    @CsvSource({
-            "1 + 5 - 3 * 10 / 2,15",
-            "5 / 2 * 3 - 10 + 2,-2",
-            "5 / 2 * -3 - 10 + 2,-14",
+    @CsvSource(delimiter = '=', value = {
+            "1 + 5 - 3 * 10 / 2 = 15",
+            "5 / 2 * 3 - 10 + 2 = -2",
+            "5 / 2 * -3 - 10 + 2 = -14",
     })
     @ParameterizedTest
     void complex(String expression, int result) {
