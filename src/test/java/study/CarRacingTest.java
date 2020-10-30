@@ -36,7 +36,7 @@ public class CarRacingTest {
     @DisplayName("자동차 경주를 시작하면 자동차가 달린다.")
     void carMoved() {
         Car car = new NormalCar();
-        CarRacing racing = new CarRacing(new StaticInfoProvider(1, car));
+        CarRacing racing = new CarRacing(new StaticInfoProvider(1, car), new ResultView());
 
         racing.start();
 
@@ -47,7 +47,7 @@ public class CarRacingTest {
     @DisplayName("자동차 경주 시작전엔 자동차가 달리지 않는다.")
     void carNotMoved() {
         Car car = new NormalCar();
-        new CarRacing(new StaticInfoProvider(1, car));
+        new CarRacing(new StaticInfoProvider(1, car), new ResultView());
 
         assertThat(car.isMoved()).isFalse();
     }
@@ -56,7 +56,7 @@ public class CarRacingTest {
     @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
     void acceptableResultView() {
         Car car = new NormalCar();
-        ResultView resultView = null;
+        ResultView resultView = new ResultView();
         new CarRacing(new StaticInfoProvider(1, car), resultView);
 
         assertThat(resultView.isCommitted()).isFalse();
@@ -67,7 +67,7 @@ public class CarRacingTest {
         for (int i = 0; i < startingGridCars; i++) {
             cars[i] = new NormalCar();
         }
-        return new CarRacing(new StaticInfoProvider(laps, cars));
+        return new CarRacing(new StaticInfoProvider(laps, cars), new ResultView());
     }
 
     private static class CarRacing {
@@ -75,7 +75,7 @@ public class CarRacingTest {
         private final Set<Car> cars;
         private final int steps;
 
-        public CarRacing(RacingInfoProvider racingInfoProvider) {
+        public CarRacing(RacingInfoProvider racingInfoProvider, ResultView resultView) {
             cars = racingInfoProvider.getCars();
             steps = racingInfoProvider.countSteps();
         }
@@ -124,6 +124,7 @@ public class CarRacingTest {
 
     private class NormalCar implements Car {
         private boolean isMoved;
+
         @Override
         public boolean isMoved() {
             return isMoved;
@@ -132,6 +133,12 @@ public class CarRacingTest {
         @Override
         public void move() {
             isMoved = true;
+        }
+    }
+
+    private class ResultView {
+        public boolean isCommitted() {
+            return false;
         }
     }
 }
