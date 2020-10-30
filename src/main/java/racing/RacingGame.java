@@ -2,14 +2,15 @@ package racing;
 
 public class RacingGame {
 
-    private Setting setting;
+    private final Setting setting;
+
+    private final Roulette roulette;
 
     private Car[] cars;
 
-    private Roulette roulette;
-
     public RacingGame() {
         this.setting = new Setting();
+        this.roulette = new Roulette();
     }
 
     public void set() {
@@ -24,5 +25,14 @@ public class RacingGame {
     }
 
     public void start() {
+        for (int i = 0; i < round; i++) {
+            for (int i = 0; i < carCount; i++) {
+                if (roulette.spin() >= 4) {
+                    cars[i].move();
+                }
+            }
+
+            resultView.view();
+        }
     }
 }
