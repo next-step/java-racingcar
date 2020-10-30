@@ -44,7 +44,7 @@ public class StringCalculator {
     /**
      * 피연산자 생성
      */
-    protected static List<Integer> createOperands(String[] values) {
+    static List<Integer> createOperands(String[] values) {
         List<Integer> operands = new ArrayList<>();
 
         for (int i = 0; i < values.length; i++) {
@@ -59,7 +59,7 @@ public class StringCalculator {
     /**
      * 연산자 생성
      */
-    protected static List<String> createOperators(String[] values) {
+    static List<String> createOperators(String[] values) {
         List<String> operators = new ArrayList<>();
 
         for (int i = 0; i < values.length; i++) {
@@ -74,14 +74,14 @@ public class StringCalculator {
     /**
      * 문자열 split
      */
-    protected static String[] split(String str) {
+    static String[] split(String str) {
         return str.split(" ");
     }
 
     /**
      * 모든 검증
      */
-    protected static void validate(String str) {
+    private static void validate(String str) {
         validateNone(str);
         validateOperate(str);
     }
@@ -89,7 +89,7 @@ public class StringCalculator {
     /**
      * 문자열의 null, empty 예외
      */
-    protected static void validateNone(String str) {
+    static void validateNone(String str) {
         if (str == null) {
             throw new IllegalArgumentException("null은 사용할 수 없습니다.");
         }
@@ -102,7 +102,7 @@ public class StringCalculator {
     /**
      * 사칙연산의 기호가 아닌 경우 예외
      */
-    protected static void validateOperate(String str) {
+    static void validateOperate(String str) {
         String[] values = split(str);
         List<String> operators = createOperators(values);
 
