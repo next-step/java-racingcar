@@ -69,7 +69,6 @@ public class CarRacingTest {
         assertThat(resultView.isCommitted()).isFalse();
     }
 
-
     @Test
     @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
     void resultViewCommittedAfterStaring() {
@@ -79,6 +78,21 @@ public class CarRacingTest {
         carRacing.start();
 
         assertThat(resultView.isCommitted()).isTrue();
+    }
+
+    @Test
+    @DisplayName("경주 결과를 축력한다.")
+    void printResultView() {
+        setUpLapsAndCars(1, new NormalCar(), new NormalCar(), new NormalCar());
+        setUpRacing();
+
+        carRacing.start();
+
+        resultView.report();
+
+        assertThat(resultView.reportData()) //
+                .isEqualTo("실행결과\n" //
+                        + "-");
     }
 
     private void setUpLapsAndCars(int laps, Car... cars) {
