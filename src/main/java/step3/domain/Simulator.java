@@ -1,9 +1,9 @@
-package step3;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static step3.RandomGenerator.getLuckyNumber;
+import static step3.util.RandomGenerator.getLuckyNumber;
 
 public class Simulator {
     private List<SimulationStep> steps;

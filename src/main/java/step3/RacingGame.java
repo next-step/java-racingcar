@@ -1,10 +1,14 @@
 package step3;
 
+import step3.domain.GameEnvironment;
+import step3.domain.SimulationStep;
+import step3.domain.Simulator;
 import step3.view.InputView;
 import step3.view.ResultView;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final InputView inputView;
@@ -39,7 +43,7 @@ public class RacingGame {
     }
 
     private static void showSimulationResult() {
-        resultView.show(simulator.getSimulationResult());
+        resultView.show(simulator.getSimulationResult().stream().map(SimulationStep::toString).collect(Collectors.toList()));
     }
 
     private static void closeOutput() {

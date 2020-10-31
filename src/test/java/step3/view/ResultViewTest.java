@@ -2,14 +2,15 @@ package step3.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.Car;
-import step3.SimulationStep;
+import step3.domain.Car;
+import step3.domain.SimulationStep;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,7 +29,7 @@ public class ResultViewTest {
 
         StringWriter output = new StringWriter();
         ResultView resultView = new ResultView(new PrintWriter(output));
-        resultView.show(steps);
+        resultView.show(steps.stream().map(SimulationStep::toString).collect(Collectors.toList()));
 
         assertThat(output.toString()).isEqualTo("실행 결과\n" +
                 "-\n" +
