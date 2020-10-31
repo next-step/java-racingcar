@@ -17,7 +17,7 @@ public class Car {
     }
 
     public void move() {
-        if (this.strategy.proceed()) {
+        if (this.strategy.checkMovable()) {
             this.position++;
         }
     }

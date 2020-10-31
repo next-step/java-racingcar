@@ -19,7 +19,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     }
 
     @Override
-    public boolean proceed() {
+    public boolean checkMovable() {
         int bound = RandomConst.RANDOM_MAX;
         int biggerThan = RandomConst.RANDOM_BIGGER_THAN;
         int randomNum = this.random.nextInt(bound);

@@ -16,32 +16,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    @DisplayName("proceed 가 true 일 경우만 전진해야 한다.")
+    @DisplayName("movable 인 경우만 전진해야 한다.")
     void move() {
-        MoveStrategy proceedStrategy = new MoveStrategy() {
+        MoveStrategy movableStrategy = new MoveStrategy() {
             @Override
-            public boolean proceed() {
+            public boolean checkMovable() {
                 return true;
             }
         };
-        Car proceededCar = new Car(proceedStrategy);
+        Car movableCar = new Car(movableStrategy);
 
         MoveStrategy stopStrategy = new MoveStrategy() {
             @Override
-            public boolean proceed() {
+            public boolean checkMovable() {
                 return false;
             }
         };
         Car stoppedCar = new Car(stopStrategy);
 
 
-        proceededCar.move();
+        movableCar.move();
         stoppedCar.move();
 
-        int proceededPosition = 2;
+        int movedPosition = 2;
         int stoppedPosition = 1;
-        assertThat(proceededCar.getPosition())
-                .isEqualTo(proceededPosition);
+        assertThat(movableCar.getPosition())
+                .isEqualTo(movedPosition);
         assertThat(stoppedCar.getPosition())
                 .isEqualTo(stoppedPosition);
     }

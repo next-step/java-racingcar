@@ -9,6 +9,6 @@ package racingcar;
 
 public interface MoveStrategy {
 
-    boolean proceed();
+    boolean checkMovable();
 
 }

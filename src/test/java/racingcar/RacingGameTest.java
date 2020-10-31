@@ -65,7 +65,7 @@ class RacingGameTest {
 
         MoveStrategy strategy = new MoveStrategy() {
             @Override
-            public boolean proceed() {
+            public boolean checkMovable() {
                 return true;
             }
         };

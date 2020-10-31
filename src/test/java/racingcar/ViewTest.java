@@ -32,7 +32,7 @@ class ViewTest {
     void convertCarPositions(int loop, String expectedResult) {
         MoveStrategy strategy = new MoveStrategy() {
             @Override
-            public boolean proceed() {
+            public boolean checkMovable() {
                 return true;
             }
         };
