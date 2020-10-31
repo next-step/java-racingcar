@@ -28,7 +28,13 @@ public class InputView {
         System.out.println(message);
 
         final String input = scanner.nextLine();
-        InputValidator.validate(input);
+        ;
+        try {
+            InputValidator.validate(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            read(message);
+        }
 
         return Integer.parseInt(input);
     }
