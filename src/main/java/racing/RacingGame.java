@@ -4,18 +4,12 @@ public class RacingGame {
 
     private final InputView inputView;
 
-    private final ResultView resultView;
-
-    private final Roulette roulette;
-
     private RacingCars racingCars;
 
     private int round;
 
     public RacingGame() {
         this.inputView = new InputView();
-        this.resultView = new ResultView();
-        this.roulette = new Roulette();
     }
 
     public void set() {
@@ -34,17 +28,17 @@ public class RacingGame {
     public void race() {
         final RacingCars racingCars = this.racingCars;
 
-        resultView.viewMessage();
+        ResultView.viewMessage();
 
         for (int i = 0; i < round; i++) {
             startRound(racingCars);
-            resultView.viewRoundResult(racingCars);
+            ResultView.viewRoundResult(racingCars);
         }
     }
 
     private void startRound(final RacingCars racingCars) {
         for (final Car car : racingCars.getCars()) {
-            if (roulette.spin() >= 4) {
+            if (Roulette.spin() >= 4) {
                 car.move();
             }
         }
