@@ -17,5 +17,4 @@ class OperatorTest {
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }

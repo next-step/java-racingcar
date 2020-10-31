@@ -17,5 +17,4 @@ class OperandTest {
         })
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
