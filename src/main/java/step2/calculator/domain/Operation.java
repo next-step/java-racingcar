@@ -22,6 +22,9 @@ public enum Operation {
     }
 
     public int apply(final int x, final int y) {
+        if (this == DIVIDE && y == 0) {
+           throw new IllegalArgumentException("can't divide bu zero"); 
+        }
         return op.applyAsInt(x, y);
     }
 

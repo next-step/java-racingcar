@@ -61,20 +61,42 @@ class OperationTest {
             // then
             assertThat(result).isEqualTo(2);
         }
+        
+        @DisplayName("divide")
+        @Nested
+        class Divide {
+            @DisplayName("연산 결과로 정수 반환")
+            @Test
+            public void divide() {
+                // given
+                final int x = 1;
+                final int y = 2;
+                final Operation divideOp = Operation.DIVIDE;
 
-        @DisplayName("divide 연산 결과로 정수 반환")
-        @Test
-        public void divide() {
-            // given
-            final int x = 1;
-            final int y = 2;
-            final Operation divideOp = Operation.DIVIDE;
+                // when
+                final int result = divideOp.apply(x, y);
 
-            // when
-            final int result = divideOp.apply(x, y);
+                // then
+                assertThat(result).isEqualTo(0);
+            }
 
-            // then
-            assertThat(result).isEqualTo(0);
+            @DisplayName("0으로 나누는 연산인 경우 'IllegalArgumentException'을 throw")
+            @Test
+            public void throw_IllegalArgumentException_when_divide_by_zero() {
+                // given
+                final int x = 1;
+                final int y = 0;
+                final Operation divideOp = Operation.DIVIDE;
+
+                // when
+                final Throwable thrown = catchThrowable(() -> {
+                    divideOp.apply(x, y);
+                });
+
+                // then
+                assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("can't divide bu zero");
+            }
         }
     }
 
