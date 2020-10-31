@@ -9,7 +9,7 @@ import static common.ErrorMessage.NOT_NULL;
 public final class InputValidator {
 
     // 1 이상 ~ 20 미만의 숫자만 입력할 수 있습니다
-    public static final Pattern PATTERN = Pattern.compile("^[1-9]|1\\d$");
+    private static final Pattern PATTERN = Pattern.compile("^[1-9]|1\\d$");
 
     private InputValidator() {}
 

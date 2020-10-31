@@ -8,6 +8,10 @@ public final class RacingCars {
         this.cars = new Car[carCount];
     }
 
+    public Car[] getCars() {
+        return cars;
+    }
+
     public void ready() {
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
@@ -20,9 +24,5 @@ public final class RacingCars {
                 car.move();
             }
         }
-    }
-
-    public Car[] getCars() {
-        return cars;
     }
 }
