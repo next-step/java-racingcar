@@ -1,27 +1,22 @@
 package racing;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static common.ErrorMessage.INVALID_VALUE;
-import static common.ErrorMessage.NOT_NULL;
+import static common.ErrorMessage.NOT_BLANK;
+import static common.ErrorMessage.OUT_OF_RANGE;
 
 public final class InputValidator {
 
-    // 1 이상 ~ 20 미만의 숫자만 입력할 수 있습니다
-    private static final Pattern PATTERN = Pattern.compile("^[1-9]|1\\d$");
+    public static final String BLANK = " ";
 
     private InputValidator() {}
 
     public static void validate(final String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(NOT_NULL);
+        if (input == null || input.isEmpty() || input.equals(BLANK)) {
+            throw new IllegalArgumentException(NOT_BLANK);
         }
 
-        Matcher matcher = PATTERN.matcher(input);
-        
-        if (!matcher.matches()) {
-            throw new IllegalArgumentException(INVALID_VALUE);
+        final int inputNumber = Integer.parseInt(input);
+        if (inputNumber < 1 || inputNumber >= 20) {
+            throw new IllegalArgumentException(OUT_OF_RANGE);
         }
     }
 }
