@@ -6,11 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step2.validate.StringCalculatorValid;
 import sun.tools.jstat.Operator;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StringCalculatorTest {
 
@@ -57,7 +55,6 @@ public class StringCalculatorTest {
   @Test
   @DisplayName("사칙연산 기호가 아닌 경우 예외 처리")
   void 사칙연산_기호_유효성_테스트() {
-    StringCalculatorValid calculatorValid = new StringCalculatorValid();
     String operator = "&";
     assertThatIllegalArgumentException()
             .isThrownBy(() -> Operator.toOperator(operator))
