@@ -18,7 +18,7 @@ public class Calculator {
     }
 
     public int calc() {
-        if (expressionManager.hasNext()) {
+        while(expressionManager.hasNext()){
             SingleExpression nextSingleExpression = expressionManager.getNextSingleExpression();
             int calcResult = singleExpressionCalculator.calc(nextSingleExpression);
             expressionManager.addCalcResult(calcResult);
