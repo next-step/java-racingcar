@@ -38,7 +38,9 @@ public class StringTest {
     @Test
     @DisplayName("문자열 범위 초과 예외")
     void indexOutException () {
+
         String str = "abc";
+
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> str.charAt(3))
                 .withMessageMatching("String index out of range: \\d+");
