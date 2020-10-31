@@ -20,25 +20,15 @@ public class RacingGame {
     }
 
     public void ready() {
-        racingCars.enterCars();
+        this.racingCars.enterCars();
     }
 
     public void race() {
-        final RacingCars racingCars = this.racingCars;
-
         ResultView.viewMessage();
 
         for (int i = 0; i < round; i++) {
-            startRound(racingCars);
-            ResultView.viewRoundResult(racingCars);
-        }
-    }
-
-    private void startRound(final RacingCars racingCars) {
-        for (final Car car : racingCars.getCars()) {
-            if (Roulette.spin() >= 4) {
-                car.move();
-            }
+            this.racingCars.race();
+            ResultView.viewRoundResult(this.racingCars);
         }
     }
 }

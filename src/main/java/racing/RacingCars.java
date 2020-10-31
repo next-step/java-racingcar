@@ -17,6 +17,14 @@ public final class RacingCars {
         }
     }
 
+    public void race() {
+        for (final Car car : this.cars) {
+            if (Roulette.spin() >= 4) {
+                car.move();
+            }
+        }
+    }
+
     public Car[] getCars() {
         return cars;
     }
