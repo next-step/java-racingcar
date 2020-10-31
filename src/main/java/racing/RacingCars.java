@@ -1,12 +1,12 @@
 package racing;
 
-public class Entry {
+public class RacingCars {
 
     private Car[] cars;
 
     private final int carCount;
 
-    public Entry(int carCount) {
+    public RacingCars(final int carCount) {
         this.carCount = carCount;
     }
 

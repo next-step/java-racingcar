@@ -8,7 +8,7 @@ public class RacingGame {
 
     private final Roulette roulette;
 
-    private Entry entry;
+    private RacingCars racingCars;
 
     private int round;
 
@@ -20,7 +20,7 @@ public class RacingGame {
 
     public void set() {
         final int carCount = inputView.readCarCount();
-        this.entry = new Entry(carCount);
+        this.racingCars = new RacingCars(carCount);
 
         this.round = inputView.readRound();
 
@@ -28,20 +28,22 @@ public class RacingGame {
     }
 
     public void ready() {
-        entry.enterCars();
+        racingCars.enterCars();
     }
 
     public void race() {
-        final Entry entry = this.entry;
+        final RacingCars racingCars = this.racingCars;
+
         resultView.viewMessage();
+
         for (int i = 0; i < round; i++) {
-            startRound(entry);
-            resultView.viewRoundResult(entry);
+            startRound(racingCars);
+            resultView.viewRoundResult(racingCars);
         }
     }
 
-    private void startRound(final Entry entry) {
-        for (final Car car : entry.getCars()) {
+    private void startRound(final RacingCars racingCars) {
+        for (final Car car : racingCars.getCars()) {
             if (roulette.spin() >= 4) {
                 car.move();
             }
