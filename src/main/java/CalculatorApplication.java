@@ -19,5 +19,7 @@ public class CalculatorApplication {
         }
 
         System.out.println(result);
+
+        가나다라마바사
     }
 }
