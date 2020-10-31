@@ -10,8 +10,10 @@ public class Car {
         this.displacement = new StringBuilder();
     }
 
-    public void move() {
-        displacement.append(MOVEMENT);
+    public void move(boolean canMove) {
+        if (canMove) {
+            displacement.append(MOVEMENT);
+        }
     }
 
     public String getDisplacement() {

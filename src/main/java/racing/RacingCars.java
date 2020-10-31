@@ -20,9 +20,8 @@ public final class RacingCars {
 
     public void race() {
         for (final Car car : this.cars) {
-            if (Roulette.spin() >= 4) {
-                car.move();
-            }
+            boolean canMove = (Roulette.spin() >= 4);
+            car.move(canMove);
         }
     }
 }
