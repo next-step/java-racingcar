@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
@@ -17,14 +16,28 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void calculateTest(){
+    void calculateTest() throws Exception {
         assertThat(stringCalculator.calculate("1 + 2 - 3")).isEqualTo(0);
     }
 
     @Test
-    void calculateTest_ShouldReturnIllegalArgumentException(){
+    void calculateTest_ShouldReturnCustomizedException(){
+        assertThatExceptionOfType(Exception.class).isThrownBy(() -> {
+            stringCalculator.calculate("4 / 3 + 3");
+        }).withMessage("나눗셈의 경우. 결과 값이 정수로 떨어지는 경우로 한정됩니다.");
+    }
+
+    @Test
+    void calculateTest_WhenOperatorIsNullThenIllegalArgumentException(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            assertThat(stringCalculator.calculate(""));
+            assertThat(stringCalculator.calculate("1  2 + 3"));
+        });
+    }
+
+    @Test
+    void calculateTest_WhenOperatorNotExistsThenIllegalArgumentException(){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            assertThat(stringCalculator.calculate("1 ^ 2 + 3"));
         });
     }
 
@@ -39,52 +52,28 @@ public class StringCalculatorTest {
         assertThat(stringCalculator.isBlank(null)).isTrue();
     }
 
-    @ParameterizedTest
-    @CsvSource(value = "1,2")
-    void plusTest(int first, int second){
-        assertThat(stringCalculator.plus(first, second)).isEqualTo(3);
-    }
-
     @Test
     void splitByWhiteSpaceTest(){
         String[] expected = new String[]{"1","+","2","+","3"};
         assertThat(stringCalculator.splitByWhiteSpace("1 + 2 + 3")).isEqualTo(expected);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = "1,2")
-    void minusTest(int first, int second){
-        assertThat(stringCalculator.minus(first, second)).isEqualTo(-1);
+    @Test
+    void calculateByOperatorTest() throws Exception {
+        String[] input = new String[]{"1","+","2","/","3","-","1","*","100000"};
+        assertThat(stringCalculator.calculateByOperator(input)).isEqualTo(0);
     }
 
     @ParameterizedTest
-    @CsvSource(value = "3,6")
-    void multiplyTest(int first, int second){
-        assertThat(stringCalculator.multiply(first, second)).isEqualTo(18);
+    @CsvSource(value = {"+:PLUS", "-:MINUS", "*:MULTIPLY", "/:DIVIDE"}, delimiter = ':')
+    void convertStringToOperatorTest(String s, Operator o){
+        assertThat(stringCalculator.convertStringToOperator(s)).isEqualTo(o);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = "4,2")
-    void divideTest(int first, int second) throws Exception {
-        assertThat(stringCalculator.divide(first, second)).isEqualTo(2);
+    @Test
+    void convertStringToOperatorTest_ShouldReturnIllegalArgumentException(){
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            stringCalculator.convertStringToOperator("^");
+        });
     }
-
-    @ParameterizedTest
-    @CsvSource(value = "4,3")
-    void divideTest_ShouldReturnCustomizedException(int first, int second) {
-        assertThatExceptionOfType(Exception.class)
-                .isThrownBy(() -> {
-                    stringCalculator.divide(first, second);
-                }).withMessageMatching("나눗셈의 경우. 결과 값이 정수로 떨어지는 경우로 한정됩니다.");
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = "4,0")
-    void divideTest_ShouldReturnArithmeticException(int first, int second) {
-        assertThatExceptionOfType(ArithmeticException.class)
-                .isThrownBy(() -> {
-                    stringCalculator.divide(first, second);
-                });
-    }
-
 }

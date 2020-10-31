@@ -2,36 +2,13 @@ package study;
 
 public class StringCalculator {
 
-    public int plus(int first, int second) {
-        return first+second;
-    }
-
-    public int minus(int first, int second) {
-        return first-second;
-    }
-
-    public int multiply(int first, int second) {
-        return first*second;
-    }
-
-    public int divide(int first, int second) throws Exception{
-        if( first % second != 0 ) throw new Exception("나눗셈의 경우. 결과 값이 정수로 떨어지는 경우로 한정됩니다.");
-
-        return first / second ;
-    }
-
-    public int calculate(String input) {
+    public double calculate(String input) throws Exception{
         if(isBlank(input)) throw new IllegalArgumentException();
 
         String[] arr = splitByWhiteSpace(input);
+        double calculatedValue = calculateByOperator(arr);
 
-        for(int i = 1; i < arr.length - 2; i+=2) {
-            int first = Integer.parseInt(arr[i-1]);
-            int second = Integer.parseInt(arr[i+1]);
-        }
-
-
-        return 0;
+        return calculatedValue;
     }
 
     boolean isBlank(String str) {
@@ -42,4 +19,26 @@ public class StringCalculator {
         return input.split(" ");
     }
 
+    double calculateByOperator(String[] arr) throws Exception {
+        double result = 0;
+
+        for(int i = 1; i < arr.length - 1; i+=2) {
+            Operator o = convertStringToOperator(arr[i]);
+            double first = i == 1? Double.parseDouble(arr[i-1]) : result;
+            double second = Double.parseDouble(arr[i+1]);
+
+            result = o.operate(first, second);
+        }
+        return result;
+    }
+
+    Operator convertStringToOperator(String s) {
+        switch (s) {
+            case "+" : return Operator.PLUS;
+            case "-" : return Operator.MINUS;
+            case "*" : return Operator.MULTIPLY;
+            case "/" : return Operator.DIVIDE;
+        }
+        throw new IllegalArgumentException();
+    }
 }
