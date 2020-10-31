@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class SymbolStack {
-    final Stack<String> stack;
+    private final Stack<String> stack;
 
     public SymbolStack(final List<String> symbols) {
         this.stack = toStack(symbols);
