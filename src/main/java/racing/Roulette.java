@@ -1,12 +1,16 @@
 package racing;
 
-public final class Roulette {
+import java.util.Random;
 
-    private Roulette() {}
+public class Roulette {
 
-    public static int spin() {
+    private final Random random;
 
-        // 1 ~ 9 사이의 값을 리턴
-        return (int) (Math.random() * 9 + 1);
+    public Roulette() {
+        this.random = new Random();
+    }
+
+    public int spin() {
+        return random.nextInt(10);
     }
 }

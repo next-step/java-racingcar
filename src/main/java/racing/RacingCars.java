@@ -18,9 +18,9 @@ public final class RacingCars {
         }
     }
 
-    public void race() {
+    public void race(Roulette roulette) {
         for (final Car car : this.cars) {
-            boolean canMove = (Roulette.spin() >= 4);
+            boolean canMove = (roulette.spin() >= 4);
             car.move(canMove);
         }
     }

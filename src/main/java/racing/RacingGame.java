@@ -2,11 +2,15 @@ package racing;
 
 public class RacingGame {
 
+    private final Roulette roulette;
+
     private RacingCars racingCars;
 
     private int round;
 
-    public RacingGame() {}
+    public RacingGame() {
+        roulette = new Roulette();
+    }
 
     public void set() {
         InputView.openScanner();
@@ -27,7 +31,7 @@ public class RacingGame {
         ResultView.viewMessage();
 
         for (int i = 0; i < round; i++) {
-            this.racingCars.race();
+            this.racingCars.race(roulette);
             ResultView.viewRoundResult(this.racingCars);
         }
     }
