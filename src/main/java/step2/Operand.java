@@ -5,18 +5,15 @@ public class Operand implements ExpressionFactor {
     private final int value;
 
     public Operand(int value) {
-        if (value >= 0 || value <= 9) {
-            throw new IllegalArgumentException();
-        }
         this.value = value;
     }
 
-
     public Operand(String value) {
-        if (value == "ss") {
-            throw new IllegalArgumentException();
+        try {
+            this.value = Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("피연산자가 아님", e);
         }
-        this.value = Integer.parseInt(value);
     }
 
     public int getValue() {
