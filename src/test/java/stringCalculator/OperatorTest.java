@@ -31,7 +31,6 @@ public class OperatorTest {
         int result = operator.calculateWithOperator(1, "+", 2);
 
         assertThat(result).isEqualTo(expected);
-
     }
 
 }

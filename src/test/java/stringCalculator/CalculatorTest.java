@@ -33,32 +33,4 @@ public class CalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    @DisplayName("올바르지 않은 연산자를 포함한 입력에 대한 테스트")
-    @ValueSource(strings = {"1 & 3 * 2", "1 % 3 * 4"})
-    @ParameterizedTest
-    void containInvalidOperator(String input) {
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(
-                        () -> {
-                            Calculator calculator = Calculator.Of(input);
-                            calculator.calculate();
-                        }
-                );
-    }
-
-    @DisplayName("짝이 맞지 않는 식에 대한 테스트")
-    @ValueSource(strings = {"1 + 2 + ", "3 * 4 /"})
-    @ParameterizedTest
-    void unmatchedOperator(String input) {
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(
-                        () -> {
-                            Calculator calculator = Calculator.Of(input);
-                            calculator.calculate();
-                        }
-                );
-    }
-
 }
