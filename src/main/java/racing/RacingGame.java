@@ -20,7 +20,7 @@ public class RacingGame {
     }
 
     public void ready() {
-        this.racingCars.enterCars();
+        this.racingCars.ready();
     }
 
     public void race() {

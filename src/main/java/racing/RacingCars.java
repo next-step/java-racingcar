@@ -2,17 +2,14 @@ package racing;
 
 public final class RacingCars {
 
-    private Car[] cars;
-
-    private final int carCount;
+    private final Car[] cars;
 
     public RacingCars(final int carCount) {
-        this.carCount = carCount;
+        this.cars = new Car[carCount];
     }
 
-    public void enterCars() {
-        cars = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
+    public void ready() {
+        for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
         }
     }
