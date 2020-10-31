@@ -1,6 +1,6 @@
 package racing;
 
-public class Roulette {
+public final class Roulette {
 
     private Roulette() {}
 

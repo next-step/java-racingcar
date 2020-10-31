@@ -2,23 +2,21 @@ package racing;
 
 public class RacingGame {
 
-    private final InputView inputView;
-
     private RacingCars racingCars;
 
     private int round;
 
-    public RacingGame() {
-        this.inputView = new InputView();
-    }
+    public RacingGame() {}
 
     public void set() {
-        final int carCount = inputView.readCarCount();
+        InputView.openScanner();
+
+        final int carCount = InputView.readCarCount();
         this.racingCars = new RacingCars(carCount);
 
-        this.round = inputView.readRound();
+        this.round = InputView.readRound();
 
-        inputView.closeScanner();
+        InputView.closeScanner();
     }
 
     public void ready() {

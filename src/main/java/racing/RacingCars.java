@@ -1,6 +1,6 @@
 package racing;
 
-public class RacingCars {
+public final class RacingCars {
 
     private Car[] cars;
 
