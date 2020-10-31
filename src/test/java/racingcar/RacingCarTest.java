@@ -1,0 +1,28 @@
+package racingcar;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import racingcar.mock.MockAlwaysMaxValueRandomUtil;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class RacingCarTest {
+    private RacingCar racingCar;
+    private final int numberOfCountToTry = 5;
+
+    @BeforeEach
+    void init() {
+        racingCar = new RacingCar(new MockAlwaysMaxValueRandomUtil(), numberOfCountToTry);
+    }
+
+    @Test
+    @DisplayName("RacingCar가 전진에 모두 성공한다면 numberOfCountToTry와 racingCar.moveCount가 같아야한다.")
+    void test() {
+        for (int i = 0; i < numberOfCountToTry; i++) {
+            racingCar.tryToMove();
+        }
+
+        assertThat(racingCar.getMoveCount()).isEqualTo(numberOfCountToTry);
+    }
+}
