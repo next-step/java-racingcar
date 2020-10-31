@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 public class StringTest {
 
     @Test
+    @DisplayName("문자열 분리로 반환되는 배열 검증")
     public void split() {
         String[] result = "1,2".split(",");
         assertThat(result).contains("1");
@@ -15,12 +16,14 @@ public class StringTest {
     }
     
     @Test
+    @DisplayName("문자열 추출로 반환되는 값 검증")
     public void substring() {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
     
     @Test
+    @DisplayName("문자열 중 특정 위치의 문자 검증")
     public void chatAt() {
         assertThat("abc".charAt(0)).isEqualTo('a');
         assertThat("abc".charAt(1)).isEqualTo('b');
