@@ -2,9 +2,9 @@ package study;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 class ResultView {
     private final List<Set<LapResult>> results = new ArrayList<>();
@@ -26,10 +26,14 @@ class ResultView {
     }
 
     private void printRecord(int lastLap) {
-        Map<Long, List<LapResult>> allCarsLapRecord = results.subList(0, lastLap + 1).stream().flatMap(Set::stream).collect(Collectors.groupingBy(LapResult::getId));
-        for (List<LapResult> aCarLap : allCarsLapRecord.values()) {
-            printCarLapResult(aCarLap);
-        }
+        //@formatter:off
+        results.subList(0, lastLap + 1)
+                .stream()
+                .flatMap(Set::stream)
+                .collect(groupingBy(LapResult::getId))
+                .values()
+                .forEach(this::printCarLapResult);
+        //@formatter:on
     }
 
     private void printCarLapResult(List<LapResult> aCarLap) {
