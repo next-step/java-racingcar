@@ -16,6 +16,9 @@ public class InputHandler {
         inputView.print("시도할 회수는 몇 회 인가요?");
         int numberOfCountOfTry = inputDevice.getIntNumber();
 
-        return new Input(numberOfCar, numberOfCountOfTry);
+        return Input.builder()
+                .numberOfCar(numberOfCar)
+                .numberOfCountToTry(numberOfCountOfTry)
+                .build();
     }
 }
