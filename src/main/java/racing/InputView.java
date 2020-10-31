@@ -2,11 +2,11 @@ package racing;
 
 import java.util.Scanner;
 
-public class InputValue {
+public class InputView {
 
     private final InputValidator inputValidator;
 
-    public InputValue() {
+    public InputView() {
         this.inputValidator = new InputValidator();
     }
 
