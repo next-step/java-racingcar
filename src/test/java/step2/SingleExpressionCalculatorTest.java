@@ -30,4 +30,11 @@ class SingleExpressionCalculatorTest {
         assertThat(singleExpressionCalculator.minus(factor1, factor2)).isEqualTo(expect);
     }
 
+    @DisplayName("multiply 단위 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1:2:2", "0:2:0", "9:2:18"}, delimiter = ':')
+    public void multiTest(Integer factor1, Integer factor2, Integer expect) {
+        assertThat(singleExpressionCalculator.multiply(factor1, factor2)).isEqualTo(expect);
+    }
+
 }
