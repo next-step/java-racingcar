@@ -1,10 +1,3 @@
-/**
- * 클래스 이름: ViewTest
- * 버전 정보: 0.1
- * 날짜: 2020.10.30
- * 저작권 주의: 없음
- */
-
 package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
