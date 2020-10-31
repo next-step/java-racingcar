@@ -6,11 +6,18 @@ public class Entry {
 
     private int carCount;
 
-    public void enterCars() {
-        cars =
+    public Entry(int carCount) {
+        this.carCount = carCount;
     }
 
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
+    public void enterCars() {
+        cars = new Car[carCount];
+        for (int i = 0; i < carCount; i++) {
+            cars[i] = new Car();
+        }
+    }
+
+    public Car[] getCars() {
+        return cars;
     }
 }
