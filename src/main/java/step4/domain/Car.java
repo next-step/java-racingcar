@@ -4,6 +4,7 @@ public class Car {
 
     private int position;
     private String name;
+
     public Car(String name) {
         this.name = name;
         position = 0;
@@ -17,7 +18,7 @@ public class Car {
     }
 
     public int getCarPosition() {
-        return this.position;
+            return this.position;
     }
 
 

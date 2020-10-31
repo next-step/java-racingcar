@@ -43,7 +43,7 @@ public class RacingGame {
         return this.racingGameCondition.getTryCount();
     }
 
-    private String getRacingGameCarNames() {
+    public String getRacingGameCarNames() {
         return this.racingGameCondition.getCarNames();
     }
 
