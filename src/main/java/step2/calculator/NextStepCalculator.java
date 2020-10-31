@@ -2,7 +2,7 @@ package step2.calculator;
 
 public class NextStepCalculator {
     // 모든 연산은 x, y, operation symbol 이 필요함. ex) x + y
-    private static final int OPERABLE_MINIMUM_SIZE = 3;
+    private static final int OPERABLE_MINIMUM_STACK_SIZE = 3;
 
     public int calculate(final Expression ex) {
         final SymbolStack symbolStack = new SymbolStack(ex.getSymbols());
@@ -26,6 +26,6 @@ public class NextStepCalculator {
     }
 
     private boolean isOperable(final SymbolStack symbolStack) {
-        return symbolStack.size() >= OPERABLE_MINIMUM_SIZE;
+        return symbolStack.size() >= OPERABLE_MINIMUM_STACK_SIZE;
     }
 }
