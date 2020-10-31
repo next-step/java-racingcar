@@ -1,10 +1,10 @@
 package step3.dto;
 
-public class RacingGameDTO {
+public class RacingGameCondition {
     private int carCount;
     private int tryCount;
 
-    public RacingGameDTO(int carCount, int tryCount) {
+    public RacingGameCondition(int carCount, int tryCount) {
         this.carCount = carCount;
         this.tryCount = tryCount;
     }

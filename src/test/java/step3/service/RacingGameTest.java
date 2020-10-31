@@ -6,25 +6,50 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step3.domain.Cars;
 import step3.domain.MustMoveStrategy;
+import step3.dto.RacingGameCondition;
 
 import java.util.Collections;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 class RacingGameTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"1:1" , "2:2" , "3:3"} , delimiter = ':')
+    @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
     @DisplayName("게임이 잘 되는지 확인한다.")
-    void runGame(int carCount ,int gameRepeatCount) {
+    void runGame(int carCount, int tryCount) {
 
         List<Integer> carsPositions = Collections.emptyList();
-        RacingGame racingGame = new RacingGame(carCount, new MustMoveStrategy());
-        for (int i = 0; i < gameRepeatCount; i++) {
+        RacingGame racingGame = new RacingGame(new RacingGameCondition(carCount, tryCount), new MustMoveStrategy());
+        for (int i = 0; i < tryCount; i++) {
             Cars cars = racingGame.getGameRoundResult();
             carsPositions = cars.getCarsPosition();
         }
-        carsPositions.forEach(carPosition -> Assertions.assertThat(carPosition).isEqualTo(gameRepeatCount));
+        carsPositions.forEach(carPosition -> assertThat(carPosition).isEqualTo(tryCount));
 
+
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
+    @DisplayName("게임의 진행횟수를 확인한다.")
+    void validGameTryCount(int carCount, int tryCount) {
+
+        RacingGame racingGame = new RacingGame(new RacingGameCondition(carCount, tryCount), new MustMoveStrategy());
+        assertThat(racingGame.getRacingGameTryCount()).isEqualTo(tryCount);
+
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
+    @DisplayName("게임을 위한 자동차 갯수가 맞는지 확인한다.")
+    void validGameCarCount(int carCount, int tryCount) {
+
+        RacingGame racingGame = new RacingGame(new RacingGameCondition(carCount, tryCount), new MustMoveStrategy());
+        assertThat(racingGame.getGameRoundResult()
+                .getCarsPosition()
+                .size()).isEqualTo(tryCount);
 
     }
 }

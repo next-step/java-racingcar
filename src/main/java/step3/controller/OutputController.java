@@ -13,11 +13,9 @@ public class OutputController {
 
     public static void runResult(Cars cars) {
         List<Integer> carsPosition = cars.getCarsPosition();
-        carsPosition.forEach(position -> {
-            System.out.println(Arrays.stream(new String[position])
-                    .map(v -> RACING_PAINT)
-                    .collect(Collectors.joining("")));
-        });
+        carsPosition.forEach(position -> System.out.println(Arrays.stream(new String[position])
+                .map(v -> RACING_PAINT)
+                .collect(Collectors.joining(""))));
         System.out.println("");
     }
 

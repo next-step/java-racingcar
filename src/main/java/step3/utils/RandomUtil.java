@@ -4,14 +4,14 @@ import java.util.Random;
 
 public class RandomUtil {
 
-    private static Random random;
+    public final Random random;
     private final static int BOUND_CONDITION = 10;
 
     public RandomUtil() {
         random = new Random();
     }
 
-    public static int generateRandomNumber() {
+    public int generateRandomNumber() {
         return random.nextInt(BOUND_CONDITION);
     }
 }
