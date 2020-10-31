@@ -5,7 +5,6 @@ import java.util.List;
 
 public class GameEnvironment {
 
-    private Integer carCount;
     private Integer tryCount;
     private List<Car> cars = new ArrayList<>();
 
@@ -22,9 +21,8 @@ public class GameEnvironment {
 
     public void setCar(Integer carCountFromInput) {
         validateCount(carCountFromInput);
-        this.carCount = carCountFromInput;
         cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
+        for (int i = 0; i < carCountFromInput; i++) {
             cars.add(new Car());
         }
     }

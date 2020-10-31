@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class SimulationStep {
-    private String stepSnapshot;
+    private final String stepSnapshot;
 
     public SimulationStep(List<Car> cars) {
         StringBuilder sb = new StringBuilder();

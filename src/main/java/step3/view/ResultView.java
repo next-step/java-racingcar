@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class ResultView {
-    private PrintWriter output;
+    private final PrintWriter output;
 
     public ResultView(PrintWriter output) {
         this.output = output;

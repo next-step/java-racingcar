@@ -4,8 +4,8 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class InputView {
-    private Scanner scanner;
-    private PrintWriter output;
+    private final Scanner scanner;
+    private final PrintWriter output;
 
     public InputView(Scanner scanner, PrintWriter output) {
         this.scanner = scanner;
