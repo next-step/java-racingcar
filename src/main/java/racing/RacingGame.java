@@ -2,19 +2,24 @@ package racing;
 
 public class RacingGame {
 
-    private final Setting setting;
+    private final InputView inputView;
 
     private final Roulette roulette;
 
-    private Car[] cars;
+    private Entry entry;
+
+    private int round;
 
     public RacingGame() {
-        this.setting = new Setting();
+        this.inputView = new InputView();
         this.roulette = new Roulette();
     }
 
     public void set() {
-        setting.set();
+        int carCount = inputView.readCarCount();
+        this.entry.setCarCount(carCount);
+
+        this.round = inputView.readRound();
     }
 
     public void create() {
