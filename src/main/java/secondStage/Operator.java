@@ -45,7 +45,6 @@ public class Operator {
         operators.add(value);
     }
 
-
     public List<String> getOperators() {
         return operators;
     }
