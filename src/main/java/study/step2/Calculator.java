@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,7 @@ class Calculator {
     private static class SubFormula {
         static final String SPACE = " ";
         static final int SIGN_LENGTH = 1;
+
         public static SubFormula create(String formula) {
             try {
                 String leftHandSide = extractLeftHandSide(formula);

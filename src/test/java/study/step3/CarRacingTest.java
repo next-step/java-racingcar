@@ -1,0 +1,138 @@
+package study.step3;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import study.step3.Car;
+import study.step3.CarRacing;
+import study.step3.RacingInfoProvider;
+import study.step3.ResultView;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.*;
+
+/**
+ * <pre>
+ * * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+ * * 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+ * * 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
+ * * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
+ * </pre>
+ */
+public class CarRacingTest {
+
+    private Car[] cars = new Car[0];
+    private int laps;
+    private CarRacing carRacing;
+    private ResultView resultView;
+
+    @Test
+    @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
+    void errorWhenEmptyRacingInfo() {
+        setUpRacing();
+
+        assertThatExceptionOfType(IllegalStateException.class) //
+                .isThrownBy(carRacing::start);
+    }
+
+    @Test
+    @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
+    void startRacing() {
+        setUpLapsAndCars(1, new TestingCar());
+        setUpRacing();
+
+        assertThatCode(carRacing::start).doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("자동차 경주를 시작하면 자동차가 달린다.")
+    void carMoved() {
+        setUpLapsAndCars(1, new TestingCar());
+        setUpRacing();
+
+        carRacing.start();
+
+        assertThat(cars[0].isMoved()).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차 경주 시작전엔 자동차가 달리지 않는다.")
+    void carNotMoved() {
+        setUpLapsAndCars(1, new TestingCar());
+        setUpRacing();
+
+        assertThat(cars[0].isMoved()).isFalse();
+    }
+
+    @Test
+    @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
+    void acceptableResultView() {
+        setUpLapsAndCars(1, new TestingCar());
+        setUpRacing();
+
+        assertThat(resultView.isCommitted()).isFalse();
+    }
+
+    @Test
+    @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
+    void resultViewCommittedAfterStaring() {
+        setUpLapsAndCars(1, new TestingCar());
+        setUpRacing();
+
+        carRacing.start();
+
+        assertThat(resultView.isCommitted()).isTrue();
+    }
+
+    private void setUpLapsAndCars(int laps, Car... cars) {
+        this.laps = laps;
+        this.cars = cars;
+    }
+
+    private void setUpRacing() {
+        this.resultView = new ResultView();
+        this.carRacing = new CarRacing(new StaticInfoProvider(laps, cars), resultView);
+    }
+
+    static class StaticInfoProvider implements RacingInfoProvider {
+        private final int steps;
+        private final Set<Car> cars;
+
+        public StaticInfoProvider(int rename, Car... cars) {
+            this.steps = rename;
+            this.cars = new HashSet<>(Arrays.asList(cars));
+        }
+
+        @Override
+        public Set<Car> getCars() {
+            return cars;
+        }
+
+        @Override
+        public int countSteps() {
+            return steps;
+        }
+    }
+
+    private static class TestingCar implements Car {
+        private boolean isMoved;
+
+        @Override
+        public boolean isMoved() {
+            return isMoved;
+        }
+
+        @Override
+        public void move() {
+            isMoved = true;
+        }
+
+        @Override
+        public Long getId() {
+            return null;
+        }
+    }
+
+}
