@@ -20,7 +20,7 @@ class ResultView {
     public void report() {
         print("실행결과");
         for (int i = 0; i < results.size(); i++) {
-            print("\n");
+            printNewline();
             printRecord(i);
         }
     }
@@ -36,7 +36,7 @@ class ResultView {
         for (LapResult lap : aCarLap) {
             printLap(lap);
         }
-        print("\n");
+        printNewline();
     }
 
     private void printLap(LapResult lap) {
@@ -47,5 +47,9 @@ class ResultView {
 
     protected void print(String content) {
         System.out.print(content);
+    }
+
+    private void printNewline() {
+        print(System.lineSeparator());
     }
 }

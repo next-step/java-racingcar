@@ -154,6 +154,6 @@ public class ResultViewTest {
     }
 
     private static String line(String content) {
-        return content + "\n";
+        return content + System.lineSeparator();
     }
 }
