@@ -12,18 +12,6 @@ public class SingleExpression {
         this.operand2 = (Operand) operand2;
     }
 
-    public Operand getOperand1() {
-        return operand1;
-    }
-
-    public Operator getOperator() {
-        return operator;
-    }
-
-    public Operand getOperand2() {
-        return operand2;
-    }
-
     public int operate() {
         return operator.operate(operand1.getValue(), operand2.getValue());
     }
