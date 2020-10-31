@@ -30,7 +30,11 @@ public enum Operator {
     DIVIDE("/") {
         @Override
         public int operate(int lhs, int rhs) {
-            return lhs / rhs;
+            try {
+                return lhs / rhs;
+            } catch(ArithmeticException ex) {
+                throw new IllegalArgumentException(ex);
+            }
         }
     };
 

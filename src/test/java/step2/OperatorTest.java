@@ -59,7 +59,7 @@ public class OperatorTest {
     @DisplayName("test for `division(/)` with exception case")
     @Test
     void divideException() {
-        assertThatExceptionOfType(ArithmeticException.class)
+        assertThatIllegalArgumentException()
                 .isThrownBy(() -> Operator.DIVIDE.operate(5, 0))
                 .withMessageMatching(".* by zero$");
     }
