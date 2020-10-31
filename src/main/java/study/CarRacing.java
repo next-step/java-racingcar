@@ -16,8 +16,9 @@ class CarRacing {
     }
 
     public void start() {
-        if (cars.isEmpty() || steps <= 0)
+        if (cars.isEmpty() || steps <= 0) {
             throw new IllegalStateException("레이싱 정보가 존재하지 않습니다.");
+        }
 
         for (int i = 0; i < steps; i++) {
             move();
