@@ -1,19 +1,16 @@
 package racing;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static racing.InputValidator.isMatch;
+import static racing.InputValidator.isNull;
 
 public class InputViewValidationTest {
-
-    // 1 이상 ~ 20 미만의 숫자만 입력할 수 있습니다
-    public static final Pattern PATTERN = Pattern.compile("^[1-9]|1\\d$");
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "5", "10", "19"})
@@ -57,8 +54,9 @@ public class InputViewValidationTest {
         assertFalse(isMatch(input));
     }
 
-    private static boolean isMatch(String input) {
-        Matcher matcher = PATTERN.matcher(input);
-        return matcher.matches();
+    @Test
+    @DisplayName("null 체크가 제대로 동작하는지 확인합니다")
+    public void isNullTest() {
+        assertTrue(isNull(null));
     }
 }
