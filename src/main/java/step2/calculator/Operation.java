@@ -13,17 +13,17 @@ public enum Operation {
     ;
 
     private final String symbol;
-//    private final IntBinaryOperator op;
+    private final IntBinaryOperator op;
 
     //TODO:: Operator 로직 검증은 계산기 구현시 이어서 진행하기
     Operation(final String symbol, final IntBinaryOperator op) {
         this.symbol = symbol;
-//        this.op = op;
+        this.op = op;
     }
 
-//    public int apply(final int x, final int y) {
-//        return op.applyAsInt(x, y);
-//    }
+    public int apply(final int x, final int y) {
+        return op.applyAsInt(x, y);
+    }
 
     public static Operation symbolOf(final String symbol) {
         for (final Operation op : Operation.values()) {
