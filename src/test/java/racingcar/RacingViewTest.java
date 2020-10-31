@@ -9,14 +9,14 @@ import org.mockito.Mockito;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("View 클래스 테스트")
-class ViewTest {
+class RacingViewTest {
 
-    View view;
+    RacingView racingView;
 
     @BeforeEach
     void setUp() {
         RacingGame game = Mockito.mock(RacingGame.class);
-        this.view = new View(game);
+        this.racingView = new RacingView(game);
     }
 
     @ParameterizedTest
@@ -35,7 +35,7 @@ class ViewTest {
             car.move();
         }
 
-        String result = this.view.convertCar(car);
+        String result = this.racingView.convertCar(car);
         assertThat(result)
                 .isEqualTo(expectedResult);
 

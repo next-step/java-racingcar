@@ -1,9 +1,9 @@
 package racingcar;
 
-public class View {
+public class RacingView {
     public RacingGame game;
 
-    public View(RacingGame game) {
+    public RacingView(RacingGame game) {
         this.game = game;
     }
 

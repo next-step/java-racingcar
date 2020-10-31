@@ -11,10 +11,10 @@ public class Main {
         MoveStrategy strategy = new RandomMoveStrategy();
         CarCollection collection = new CarCollection(carNum, strategy);
         RacingGame game = new RacingGame(collection, tryNum);
-        View view = new View(game);
+        RacingView racingView = new RacingView(game);
 
         while (game.checkNotGameOver()) {
-            view.print();
+            racingView.print();
             game.play();
         }
     }
