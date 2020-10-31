@@ -4,6 +4,8 @@ public class RacingGame {
 
     private final InputView inputView;
 
+    private final ResultView resultView;
+
     private final Roulette roulette;
 
     private Entry entry;
@@ -12,6 +14,7 @@ public class RacingGame {
 
     public RacingGame() {
         this.inputView = new InputView();
+        this.resultView = new ResultView();
         this.roulette = new Roulette();
     }
 
@@ -27,17 +30,20 @@ public class RacingGame {
     }
 
     public void race() {
+        Entry entry = this.entry;
         for (int i = 0; i < round; i++) {
-            startRound();
-            resultView.view();
+            entry = startRound(entry);
+            resultView.view(entry);
         }
     }
 
-    private void startRound() {
+    private Entry startRound(Entry entry) {
         for (Car car : entry.getCars()) {
             if (roulette.spin() >= 4) {
                 car.move();
             }
         }
+
+        return entry;
     }
 }
