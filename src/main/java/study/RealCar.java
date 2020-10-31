@@ -22,12 +22,11 @@ public class RealCar implements Car {
         moved = guessMove();
     }
 
-    private boolean guessMove() {
-        return random.nextInt(10) >= 4;
-    }
-
     @Override
     public Long getId() {
         return id;
+    }
+    private boolean guessMove() {
+        return random.nextInt(10) >= 4;
     }
 }
