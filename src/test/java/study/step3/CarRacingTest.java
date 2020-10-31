@@ -1,7 +1,11 @@
-package study;
+package study.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.step3.Car;
+import study.step3.CarRacing;
+import study.step3.RacingInfoProvider;
+import study.step3.ResultView;
 
 import java.util.Arrays;
 import java.util.HashSet;

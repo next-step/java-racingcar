@@ -1,4 +1,4 @@
-package study;
+package study.step3;
 
 public interface Car {
     boolean isMoved();

@@ -1,4 +1,4 @@
-package study;
+package study.step3;
 
 class LapResult {
     private final Long id;
