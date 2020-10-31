@@ -21,20 +21,20 @@ public class RacingCar {
     }
 
     public void tryToMove() {
-        int i = randomUtil.getInt(RANDOM_BOUND);
+        int randomNumber = randomUtil.getInt(RANDOM_BOUND);
 
         if (moveCount >= numberOfCountToTry) {
             return;
         }
 
-        if (i >= MIN_MOVABLE_NUM) {
+        if (randomNumber >= MIN_MOVABLE_NUM) {
             moveCount++;
         }
     }
 
-    public void printProcess(StringBuilder sb) {
+    public void printProcess(StringBuilder stringBuilder) {
         for (int i = 0; i < moveCount; i++) {
-            sb.append("-");
+            stringBuilder.append("-");
         }
     }
 }

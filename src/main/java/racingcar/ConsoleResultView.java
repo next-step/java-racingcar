@@ -5,13 +5,13 @@ import java.util.List;
 public class ConsoleResultView implements ResultView {
     @Override
     public void print(List<RacingCar> cars) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         for (RacingCar car : cars) {
-            car.printProcess(sb);
-            sb.append("\n");
+            car.printProcess(stringBuilder);
+            stringBuilder.append("\n");
         }
 
-        System.out.println(sb.toString());
+        System.out.println(stringBuilder.toString());
     }
 }
