@@ -34,13 +34,15 @@ public enum Operator {
         }
     };
 
-    final String symbol;
-    public abstract int operate(int lhs, int rhs);
-
     final static Map<String, Operator> symbolMapping =
             Arrays.stream(values()).collect(
                     Collectors.toUnmodifiableMap(op -> op.symbol, Function.identity())
             );
+    final String symbol;
+
+    Operator(String symbol) {
+        this.symbol = symbol;
+    }
 
     public static Operator parseOperator(String symbol) {
         Operator res = symbolMapping.get(symbol);
@@ -48,7 +50,5 @@ public enum Operator {
         return res;
     }
 
-    Operator(String symbol) {
-        this.symbol = symbol;
-    }
+    public abstract int operate(int lhs, int rhs);
 }

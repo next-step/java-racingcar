@@ -8,16 +8,16 @@ import static step2.Operator.parseOperator;
 public class StringCalculator {
     final StringTokenizer tokenizer;
 
-    // convenience method
-    public static int calculate(String expression) {
-        return new StringCalculator(expression).calculate();
-    }
-
     StringCalculator(String expression) {
         if(expression == null || expression.isBlank()) {
             throw new IllegalArgumentException();
         }
         tokenizer = new StringTokenizer(expression, " ");
+    }
+
+    // convenience method
+    public static int calculate(String expression) {
+        return new StringCalculator(expression).calculate();
     }
 
     int calculate() {
