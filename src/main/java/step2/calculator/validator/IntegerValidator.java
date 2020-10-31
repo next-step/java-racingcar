@@ -1,6 +1,10 @@
 package step2.calculator.validator;
 
 public class IntegerValidator {
+    private IntegerValidator() {
+        throw new AssertionError();
+    }
+    
     public static boolean isInvalid(final String symbol) {
         return !isValid(symbol);
     }

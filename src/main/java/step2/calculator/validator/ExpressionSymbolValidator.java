@@ -5,6 +5,9 @@ import step2.calculator.util.ExpressionSeparator;
 import java.util.List;
 
 public class ExpressionSymbolValidator {
+    private ExpressionSymbolValidator() {
+        throw new AssertionError();
+    }
     
     public static boolean isValid(final String expression) {
         return !isInvalid(expression);
