@@ -15,7 +15,7 @@ public class CalculatorTest {
     @CsvSource(value = {"1 + 2 * 3 - 3 / 2:3", "3 * 3:9"}, delimiter = ':')
     @ParameterizedTest
     void onHappyPath(String input, int expected) {
-        Calculator calculator = Calculator.Of(input);
+        Calculator calculator = Calculator.of(input);
 
         int actual = calculator.calculate();
 
@@ -26,7 +26,7 @@ public class CalculatorTest {
     @CsvSource(value = {"10:10", "-3:-3", "0:0"}, delimiter = ':')
     @ParameterizedTest
     void onSingleValue(String input, int expected) {
-        Calculator calculator = Calculator.Of(input);
+        Calculator calculator = Calculator.of(input);
 
         int actual = calculator.calculate();
 

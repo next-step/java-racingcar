@@ -14,16 +14,16 @@ public class InputParserTest {
     private Operator operator;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         this.operator = new Operator();
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"3 + 4 * 2", "3 - 1 * 4"})
     @DisplayName("일반적인 상황에서의 테스트")
-    void onHappyPath(String input){
-        String[] expected =  input.split(" ");
-        InputParser inputParser = new InputParser(input, this.operator);
+    void onHappyPath(String input) {
+        String[] expected = input.split(" ");
+        InputParser inputParser = InputParser.of(input, this.operator);
         String[] result = inputParser.parseInput();
 
         assertThat(result).isEqualTo(expected);
@@ -33,8 +33,8 @@ public class InputParserTest {
     @ParameterizedTest
     @ValueSource(strings = {"3 + 4 -", "5 * 2 -"})
     @DisplayName("짝이 맞지 않는 식의 테스트")
-    void unpairTest(String input){
-        InputParser inputParser = new InputParser(input, this.operator);
+    void unpairTest(String input) {
+        InputParser inputParser = InputParser.of(input, this.operator);
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
                 () -> {
@@ -48,7 +48,7 @@ public class InputParserTest {
     @ValueSource(strings = {"1 & 3 * 2", "1 % 3 * 4"})
     @ParameterizedTest
     void containInvalidOperator(String input) {
-        InputParser inputParser = new InputParser(input, this.operator);
+        InputParser inputParser = InputParser.of(input, this.operator);
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(
