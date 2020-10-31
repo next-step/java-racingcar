@@ -16,15 +16,12 @@ public class Main {
         inputView.printResultMsg();
 
         MoveStrategy strategy = new RandomMoveStrategy();
-        Car[] carArr = new Car[carNum];
-        for (int i = 0; i < carNum; i++) {
-            carArr[i] = new Car(strategy);
-        }
-        RacingGame game = new RacingGame(carArr, tryNum);
+        CarCollection collection = new CarCollection(carNum, strategy);
+        RacingGame game = new RacingGame(collection, tryNum);
         View view = new View(game);
 
         while (game.checkNotGameOver()) {
-            System.out.println(view);
+            view.print();
             game.play();
         }
     }

@@ -14,6 +14,7 @@ public class View {
         this.game = game;
     }
 
+    // NOTE: Car 보다 작은 단위로 convert 하지 않도록 한다.
     protected String convertCar(Car car) {
         int position = car.getPosition();
         StringBuilder sb = new StringBuilder();
@@ -23,15 +24,11 @@ public class View {
         return sb.toString();
     }
 
-    @Override
-    public String toString() {
-        Car[] carArr = this.game.getCarArr();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < carArr.length; i++) {
-            String carStr = this.convertCar(carArr[i]);
-            sb.append(carStr);
-            sb.append("\n");
-        }
-        return sb.toString();
+    public void print() {
+        this.game.printCars(car -> {
+            String convertedCar = this.convertCar(car);
+            System.out.println(convertedCar);
+        });
+        System.out.println();
     }
 }

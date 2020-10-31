@@ -7,44 +7,26 @@
 
 package racingcar;
 
+import java.util.function.Consumer;
+
 public class RacingGame {
-    private Car[] carArr;
+    private CarCollection collection;
     private int currTry;
     private int maxTry;
 
-    public RacingGame(Car[] carArr, int tryNum) {
-        this.carArr = carArr;
+    public RacingGame(CarCollection carCollection, int tryNum) {
+        this.collection = carCollection;
 
         this.currTry = 0;
         this.maxTry = tryNum;
     }
 
-    public int getCarNum() {
-        return this.carArr.length;
-    }
-
-    public int getCurrTry() {
-        return this.currTry;
-    }
-
-    public int getMaxTry() {
-        return this.maxTry;
-    }
-
-    public void increaseCurrTry() {
-        this.currTry++;
-    }
-
-    public void moveCar(int carIdx) {
-        this.carArr[carIdx].move();
-    }
-
-    public Car[] getCarArr() {
-        return this.carArr;
-    }
-
     public boolean checkNotGameOver() {
         return this.currTry < this.maxTry;
+    }
+
+    public void printCars(Consumer<Car> printMethod) {
+        this.collection.print(printMethod);
     }
 
     public void play() {
@@ -52,8 +34,9 @@ public class RacingGame {
             return;
         }
         this.currTry++;
-        for (int carIdx = 0; carIdx < this.carArr.length; carIdx++) {
-            this.carArr[carIdx].move();
+        int carNum = this.collection.getCarNum();
+        for (int carIdx = 0; carIdx < carNum; carIdx++) {
+            this.collection.moveCar(carIdx);
         }
     }
 }
