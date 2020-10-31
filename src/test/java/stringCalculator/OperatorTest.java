@@ -14,7 +14,7 @@ public class OperatorTest {
 
     @BeforeEach
     void setUp() {
-        this.operator = new Operator();
+        this.operator = Operator.getInstance();
     }
 
     @DisplayName("지원하는 연산자에 대한 테스트")

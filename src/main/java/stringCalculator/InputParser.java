@@ -6,6 +6,10 @@ import calculatorException.IllegalOperatorSymbol;
 
 public class InputParser {
 
+    private static final int NEXT_OPERATOR_INDEX = 2;
+    private static final int FIRST_OPERATOR_LOCATION = 1;
+    private static final int EVEN = 0;
+
     private String input;
     private Operator operator;
 
@@ -16,7 +20,7 @@ public class InputParser {
 
     static public InputParser of(String input) {
         validateInput(input);
-        Operator operator = new Operator();
+        Operator operator = Operator.getInstance();
 
         return of(input, operator);
     }
@@ -43,8 +47,9 @@ public class InputParser {
     }
 
     private void validateOperator(String[] parsedInput) {
-        for (int idx = 1; idx < parsedInput.length; idx += 2)
+        for (int idx = FIRST_OPERATOR_LOCATION; idx < parsedInput.length; idx += NEXT_OPERATOR_INDEX) {
             validateSymbol(parsedInput[idx]);
+        }
     }
 
     private void validateSymbol(String symbol) {
@@ -53,7 +58,7 @@ public class InputParser {
     }
 
     private void validateExpresion(String[] parsedInput) {
-        if (parsedInput.length % 2 == 0)
+        if (parsedInput.length % 2 == EVEN)
             throw new IllegalExpresion();
     }
 
