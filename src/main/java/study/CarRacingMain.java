@@ -1,10 +1,7 @@
 package study;
 
 
-import java.util.HashSet;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class CarRacingMain {
     public static void main(String[] args) {
@@ -28,21 +25,21 @@ public class CarRacingMain {
         }
 
         private static int requestInput(String message) {
-            Integer input = null;
-            while (input == null) {
+            Optional<Integer> input = Optional.empty();
+            while (!input.isPresent()) {
                 input = requestInputInternal(message);
             }
-            return input;
+            return input.get();
         }
 
-        private static Integer requestInputInternal(String message) {
+        private static Optional<Integer> requestInputInternal(String message) {
             try {
                 System.out.println(message);
-                return new Scanner(System.in).nextInt();
+                return Optional.of(new Scanner(System.in).nextInt());
             } catch (InputMismatchException e) {
                 System.err.println("숫자만 입력 가능합니다.");
             }
-            return null;
+            return Optional.empty();
         }
 
         private final int steps;
