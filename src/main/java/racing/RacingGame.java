@@ -31,19 +31,18 @@ public class RacingGame {
 
     public void race() {
         Entry entry = this.entry;
+        resultView.viewMessage();
         for (int i = 0; i < round; i++) {
-            entry = startRound(entry);
-            resultView.view(entry);
+            startRound(entry);
+            resultView.viewRoundResult(entry);
         }
     }
 
-    private Entry startRound(Entry entry) {
+    private void startRound(Entry entry) {
         for (Car car : entry.getCars()) {
             if (roulette.spin() >= 4) {
                 car.move();
             }
         }
-
-        return entry;
     }
 }
