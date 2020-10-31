@@ -8,10 +8,10 @@
 package racingcar;
 
 public class View {
-    public Memento memento;
+    public RacingGame game;
 
-    public View(Memento memento) {
-        this.memento = memento;
+    public View(RacingGame game) {
+        this.game = game;
     }
 
     protected String convertCar(Car car) {
@@ -25,7 +25,7 @@ public class View {
 
     @Override
     public String toString() {
-        Car[] carArr = this.memento.getCarArr();
+        Car[] carArr = this.game.getCarArr();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < carArr.length; i++) {
             String carStr = this.convertCar(carArr[i]);

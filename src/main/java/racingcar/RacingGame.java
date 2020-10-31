@@ -8,28 +8,52 @@
 package racingcar;
 
 public class RacingGame {
-    private Memento memento;
+    private Car[] carArr;
+    private int currTry;
+    private int maxTry;
 
-    public RacingGame(Memento memento) {
-        this.memento = memento;
+    public RacingGame(Car[] carArr, int tryNum) {
+        this.carArr = carArr;
+
+        this.currTry = 0;
+        this.maxTry = tryNum;
+    }
+
+    public int getCarNum() {
+        return this.carArr.length;
+    }
+
+    public int getCurrTry() {
+        return this.currTry;
+    }
+
+    public int getMaxTry() {
+        return this.maxTry;
+    }
+
+    public void increaseCurrTry() {
+        this.currTry++;
+    }
+
+    public void moveCar(int carIdx) {
+        this.carArr[carIdx].move();
+    }
+
+    public Car[] getCarArr() {
+        return this.carArr;
     }
 
     public boolean checkNotGameOver() {
-        int currTry = this.memento.getCurrTry();
-        int maxTry = this.memento.getMaxTry();
-        return currTry < maxTry;
+        return this.currTry < this.maxTry;
     }
 
-    // TODO: 테스트 코드 작성 필요
     public void play() {
         if (!this.checkNotGameOver()) {
             return;
         }
-        this.memento.increaseCurrTry();
-        int carNum = this.memento.getCarNum();
-        for (int carIdx = 0; carIdx < carNum; carIdx++) {
-            this.memento.moveCar(carIdx);
+        this.currTry++;
+        for (int carIdx = 0; carIdx < this.carArr.length; carIdx++) {
+            this.carArr[carIdx].move();
         }
     }
-
 }

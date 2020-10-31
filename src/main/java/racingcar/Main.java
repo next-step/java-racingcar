@@ -26,9 +26,8 @@ public class Main {
         for (int i = 0; i < carNum; i++) {
             carArr[i] = new Car(strategy);
         }
-        Memento memento = new Memento(carArr, tryNum);
-        RacingGame game = new RacingGame(memento);
-        View view = new View(memento);
+        RacingGame game = new RacingGame(carArr, tryNum);
+        View view = new View(game);
 
         while (game.checkNotGameOver()) {
             System.out.println(view);

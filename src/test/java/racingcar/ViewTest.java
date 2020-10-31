@@ -24,8 +24,8 @@ class ViewTest {
 
     @BeforeEach
     void setUp() {
-        Memento memento = Mockito.mock(Memento.class);
-        this.view = new View(memento);
+        RacingGame game = Mockito.mock(RacingGame.class);
+        this.view = new View(game);
     }
 
     @ParameterizedTest
