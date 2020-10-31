@@ -73,6 +73,14 @@ public class calculator {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"1 ~ 1", "1 ! 2"})
+    void calculateSymbolCheckTest(String input){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculate(input);
+        });
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "12 * 3 + 4 / 2:20", "1 + 1 + 1 + 1:4", "4 * 4:16"}, delimiter = ':')
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, int result) {
         assertThat(calculate(input)).isEqualTo(result);
