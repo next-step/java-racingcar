@@ -3,6 +3,7 @@ package study.step2;
 public class StringCalculator {
 
     public long calculateStringInput(String inputString) {
+        validateInput(inputString);
         String[] splitStrings = inputString.split(" ");
         long calculatedNumber = 0;
         long operandNumber = 0;
@@ -22,5 +23,13 @@ public class StringCalculator {
             }
         }
         return calculatedNumber;
+    }
+
+    private void validateInput(String inputString) throws IllegalArgumentException {
+
+        if (inputString.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
     }
 }
