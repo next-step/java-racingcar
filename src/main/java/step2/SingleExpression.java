@@ -23,4 +23,8 @@ public class SingleExpression {
     public Operand getOperand2() {
         return operand2;
     }
+
+    public int operate() {
+        return operator.operate(operand1.getValue(), operand2.getValue());
+    }
 }

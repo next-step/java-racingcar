@@ -3,7 +3,6 @@ package step2;
 public class Calculator {
 
     private ExpressionManager expressionManager = null;
-    private final SingleExpressionCalculator singleExpressionCalculator = new SingleExpressionCalculator();
     private final String splitToken = " ";
 
     public Calculator(String expression) {
@@ -25,7 +24,7 @@ public class Calculator {
     public int calc() {
         while (expressionManager.hasNext()) {
             SingleExpression nextSingleExpression = expressionManager.getNextSingleExpression();
-            int calcResult = singleExpressionCalculator.calc(nextSingleExpression);
+            int calcResult = nextSingleExpression.operate();
             expressionManager.addCalcResult(calcResult);
         }
         return expressionManager.getResult();
