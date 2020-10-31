@@ -32,7 +32,9 @@ public class RacingCar {
         }
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public void printProcess(StringBuilder sb) {
+        for (int i = 0; i < moveCount; i++) {
+            sb.append("-");
+        }
     }
 }

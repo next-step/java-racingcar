@@ -8,9 +8,7 @@ public class ConsoleResultView implements ResultView {
         StringBuilder sb = new StringBuilder();
 
         for (RacingCar car : cars) {
-            for (int i = 0; i < car.getMoveCount(); i++) {
-                sb.append("-");
-            }
+            car.printProcess(sb);
             sb.append("\n");
         }
 
