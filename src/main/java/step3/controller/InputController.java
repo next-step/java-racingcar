@@ -25,7 +25,6 @@ public class InputController {
 
     private static int getNumber() {
         int number = scanner.nextInt();
-        System.out.println(number + "");
         return number;
     }
 
