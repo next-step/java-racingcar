@@ -23,4 +23,11 @@ class SingleExpressionCalculatorTest {
         assertThat(singleExpressionCalculator.add(factor1, factor2)).isEqualTo(expect);
     }
 
+    @DisplayName("minus 단위 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1:2:-1", "0:2:-2", "9:2:7"}, delimiter = ':')
+    public void minusTest(Integer factor1, Integer factor2, Integer expect) {
+        assertThat(singleExpressionCalculator.minus(factor1, factor2)).isEqualTo(expect);
+    }
+
 }
