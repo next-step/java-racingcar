@@ -28,7 +28,7 @@ public class StringCalculator {
     private void validateInput(String inputString) throws IllegalArgumentException {
 
         if (inputString.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
 
     }
