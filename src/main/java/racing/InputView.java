@@ -6,10 +6,7 @@ public class InputView {
 
     private final Scanner scanner;
 
-    private final InputValidator inputValidator;
-
     public InputView() {
-        this.inputValidator = new InputValidator();
         this.scanner = new Scanner(System.in);
     }
 
@@ -25,7 +22,7 @@ public class InputView {
         System.out.println(message);
 
         final String input = scanner.nextLine();
-        inputValidator.validate(input);
+        InputValidator.validate(input);
 
         return Integer.parseInt(input);
     }
