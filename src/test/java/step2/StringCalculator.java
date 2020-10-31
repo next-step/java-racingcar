@@ -1,5 +1,6 @@
 package step2;
 
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.IntBinaryOperator;
@@ -9,13 +10,16 @@ public class StringCalculator {
     private static final String OPERATOR_PATTERN = "[+\\-*/]";
     private static final String NUMBER_PATTERN = "(^\\d*)$";
     private static final Map<String, IntBinaryOperator> functionByOperator = new HashMap<String, IntBinaryOperator>() {{
+
         put("+", Integer::sum);
         put("-", (i, j) -> i - j);
         put("*", (i, j) -> i * j);
         put("/", (i, j) -> i / j);
     }};
+
     private static final Function<Integer, Boolean> isEven = (i)-> i % 2 == 0;
     private static final Function<Integer, Boolean> isOdd = (i)-> i % 2 == 1;
+
 
 
     /**
@@ -24,6 +28,7 @@ public class StringCalculator {
      */
     protected Integer calculate(String input) {
         isEmpty(input);
+
         List<Integer> numbers = new ArrayList<>();
         Queue<String> operators = new LinkedList<>();
         String[] strings = input.split(" ");
@@ -55,6 +60,7 @@ public class StringCalculator {
     }
 
     private void isValid(String input) {
+
         isEmpty(input);
         if (!isOperator(input) && !isNumber(input)) {
             throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");

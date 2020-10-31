@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -38,11 +39,13 @@ public class StringCalculatorTest {
     @NullAndEmptySource
     @DisplayName("사칙연산 예외 테스트")
     public void calculateExceptionTest(String input) {
+
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
                     stringCalculator.calculate(input);
                 })
                 .withMessageStartingWith("입력");
+
     }
 
 }
