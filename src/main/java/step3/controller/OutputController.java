@@ -18,7 +18,7 @@ public class OutputController {
                     .map(v -> RACING_PAINT)
                     .collect(Collectors.joining("")));
         });
-        System.out.println("다음게임");
+        System.out.println("");
     }
 
     public static void endResult() {
