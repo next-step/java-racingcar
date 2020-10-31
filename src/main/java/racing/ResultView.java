@@ -6,8 +6,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void viewRoundResult(Entry entry) {
-        for (Car car : entry.getCars()) {
+    public void viewRoundResult(final Entry entry) {
+        for (final Car car : entry.getCars()) {
             System.out.println(car.getDisplacement());
         }
 

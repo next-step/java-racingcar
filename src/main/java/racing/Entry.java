@@ -4,7 +4,7 @@ public class Entry {
 
     private Car[] cars;
 
-    private int carCount;
+    private final int carCount;
 
     public Entry(int carCount) {
         this.carCount = carCount;

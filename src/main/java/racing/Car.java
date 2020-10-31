@@ -4,7 +4,7 @@ public class Car {
 
     private static final String MOVEMENT = "-";
 
-    private StringBuilder displacement;
+    private final StringBuilder displacement;
 
     public Car() {
         this.displacement = new StringBuilder();

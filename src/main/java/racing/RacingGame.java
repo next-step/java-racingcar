@@ -19,7 +19,7 @@ public class RacingGame {
     }
 
     public void set() {
-        int carCount = inputView.readCarCount();
+        final int carCount = inputView.readCarCount();
         this.entry = new Entry(carCount);
 
         this.round = inputView.readRound();
@@ -32,7 +32,7 @@ public class RacingGame {
     }
 
     public void race() {
-        Entry entry = this.entry;
+        final Entry entry = this.entry;
         resultView.viewMessage();
         for (int i = 0; i < round; i++) {
             startRound(entry);
@@ -40,8 +40,8 @@ public class RacingGame {
         }
     }
 
-    private void startRound(Entry entry) {
-        for (Car car : entry.getCars()) {
+    private void startRound(final Entry entry) {
+        for (final Car car : entry.getCars()) {
             if (roulette.spin() >= 4) {
                 car.move();
             }

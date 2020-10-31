@@ -21,10 +21,10 @@ public class InputView {
         return read("시도할 회수는 몇 회 인가요?");
     }
 
-    private int read(String message) {
+    private int read(final String message) {
         System.out.println(message);
 
-        String input = scanner.nextLine();
+        final String input = scanner.nextLine();
         inputValidator.validate(input);
 
         return Integer.parseInt(input);
