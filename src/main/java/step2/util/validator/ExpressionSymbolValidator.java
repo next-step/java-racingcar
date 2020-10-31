@@ -1,15 +1,18 @@
 package step2.util.validator;
 
-public class ExpressionSymbolValidator {
-    private static final String SEPARATOR = " ";
+import step2.util.ExpressionSeparator;
 
+import java.util.List;
+
+public class ExpressionSymbolValidator {
+    
     public static boolean isValid(final String expression) {
         return !isInvalid(expression);
     }
 
     public static boolean isInvalid(final String expression) {
-        final String[] symbols = expression.split(SEPARATOR);
-        if (symbols.length == 0) {
+        final List<String> symbols = ExpressionSeparator.split(expression);
+        if (symbols.size() == 0) {
             return true;
         }
 
