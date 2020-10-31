@@ -7,16 +7,22 @@
 
 package racingcar;
 
+import java.util.Random;
+
 public class RandomMoveStrategy implements MoveStrategy {
-    RandomGenerator random;
+    private static Random random;
 
     public RandomMoveStrategy() {
-        this.random = RandomGenerator.getInstance();
+        if (this.random == null) {
+            this.random = new Random();
+        }
     }
 
     @Override
     public boolean proceed() {
-        int randomNum = this.random.getRandomNum();
-        return randomNum >= 4;
+        int bound = RandomConst.RANDOM_MAX;
+        int biggerThan = RandomConst.RANDOM_BIGGER_THAN;
+        int randomNum = this.random.nextInt(bound);
+        return randomNum >= biggerThan;
     }
 }
