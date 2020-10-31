@@ -1,6 +1,8 @@
 package racingcar;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
@@ -31,18 +33,21 @@ class CarCollectionTest {
             }
         };
 
-
         CarCollection collection = new CarCollection(carNum, strategy);
         collection.moveCar(carIdx);
 
         int unMovedPosition = 1;
         int movedPosition = 2;
 
+        Executable[] executables = new Executable[carNum];
         for (int i = 0; i < carNum; i++) {
             int position = collection.getCarPosition(i);
             int expectedPosition = (carIdx == i) ? movedPosition : unMovedPosition;
-            assertThat(position)
-                    .isEqualTo(expectedPosition);
+            executables[i] = () -> {
+                assertThat(position)
+                        .isEqualTo(expectedPosition);
+            };
         }
+        Assertions.assertAll(executables);
     }
 }
