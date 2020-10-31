@@ -1,6 +1,6 @@
-package step2.util.validator;
+package step2.calculator.validator;
 
-import step2.util.ExpressionSeparator;
+import step2.calculator.util.ExpressionSeparator;
 
 import java.util.List;
 

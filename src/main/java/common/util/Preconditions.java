@@ -1,4 +1,4 @@
-package step2.util;
+package common.util;
 
 public class Preconditions {
     public static void checkArgument(final boolean expression, final Object errorMessage) {

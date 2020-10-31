@@ -1,4 +1,4 @@
-package step2.util.validator;
+package step2.calculator.validator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

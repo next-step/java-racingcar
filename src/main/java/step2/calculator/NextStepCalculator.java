@@ -1,5 +1,9 @@
 package step2.calculator;
 
+import step2.calculator.domain.Expression;
+import step2.calculator.domain.Operation;
+import step2.calculator.domain.SymbolStack;
+
 public class NextStepCalculator {
     public int calculate(final Expression ex) {
         final SymbolStack symbolStack = new SymbolStack(ex.getSymbols());

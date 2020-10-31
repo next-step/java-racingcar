@@ -1,4 +1,4 @@
-package step2.util.validator;
+package step2.calculator.validator;
 
 public class IntegerValidator {
     public static boolean isInvalid(final String symbol) {

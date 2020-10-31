@@ -1,10 +1,10 @@
-package step2.calculator;
+package step2.calculator.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static step2.util.Preconditions.checkArgument;
+import static common.util.Preconditions.checkArgument;
 
 public class SymbolStack {
     // 모든 연산은 x, y, operation symbol 이 필요함. ex) x + y

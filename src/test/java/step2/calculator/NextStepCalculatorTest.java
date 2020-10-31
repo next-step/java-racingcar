@@ -3,8 +3,7 @@ package step2.calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step2.calculator.Expression;
-import step2.calculator.NextStepCalculator;
+import step2.calculator.domain.Expression;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

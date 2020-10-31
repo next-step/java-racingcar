@@ -1,4 +1,4 @@
-package step2.calculator;
+package step2.calculator.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

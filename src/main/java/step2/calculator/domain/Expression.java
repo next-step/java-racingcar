@@ -1,12 +1,12 @@
-package step2.calculator;
+package step2.calculator.domain;
 
-import step2.util.ExpressionSeparator;
-import step2.util.validator.ExpressionSymbolValidator;
+import step2.calculator.util.ExpressionSeparator;
+import step2.calculator.validator.ExpressionSymbolValidator;
 
 import java.util.List;
 import java.util.Objects;
 
-import static step2.util.Preconditions.checkArgument;
+import static common.util.Preconditions.checkArgument;
 
 public class Expression {
     private final List<String> symbols;
