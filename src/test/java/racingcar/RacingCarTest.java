@@ -18,7 +18,7 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("RacingCar가 전진에 모두 성공한다면 진행상황의 길이와 numberOfCountToTry가 같아야 한다.")
-    void test() {
+    void testRacingCar_moveToTry() {
         for (int i = 0; i < numberOfCountToTry; i++) {
             racingCar.tryToMove();
         }
