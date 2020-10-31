@@ -1,4 +1,4 @@
-package secondStage.exception;
+package stringCalculator.exception;
 
 public class EmptyException extends IllegalArgumentException {
 

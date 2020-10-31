@@ -1,4 +1,4 @@
-package secondStage;
+package stringCalculator;
 
 
 import org.junit.jupiter.api.DisplayName;

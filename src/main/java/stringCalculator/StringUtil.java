@@ -1,7 +1,7 @@
-package secondStage;
+package stringCalculator;
 
-import secondStage.exception.EmptyException;
-import secondStage.exception.NullException;
+import stringCalculator.exception.EmptyException;
+import stringCalculator.exception.NullException;
 
 /**
  * split하는 클래스

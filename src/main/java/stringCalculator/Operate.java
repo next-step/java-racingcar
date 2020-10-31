@@ -1,4 +1,4 @@
-package secondStage;
+package stringCalculator;
 
 import java.util.List;
 

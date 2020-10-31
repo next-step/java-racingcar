@@ -1,6 +1,6 @@
-package secondStage;
+package stringCalculator;
 
-import secondStage.exception.OperatorException;
+import stringCalculator.exception.OperatorException;
 
 import java.util.ArrayList;
 import java.util.List;
