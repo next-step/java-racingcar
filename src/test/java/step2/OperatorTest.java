@@ -10,7 +10,7 @@ class OperatorTest {
 
     @DisplayName("연산자 유효성 검증 단위테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"1", "as", "x", "!"})
+    @ValueSource(strings = {"1", "as", "x", "!", " "})
     public void test(String factor) {
         assertThatThrownBy(() -> {
             new Operator(factor);
