@@ -43,4 +43,14 @@ class SingleExpressionCalculatorTest {
     public void divideTest(Integer factor1, Integer factor2, Integer expect) {
         assertThat(singleExpressionCalculator.divide(factor1, factor2)).isEqualTo(expect);
     }
+
+    @DisplayName("calc 단위 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1:+:2:3","1:-:2:-1","3:*:2:6","3:/:2:1"}, delimiter = ':')
+    public void divideTest(String factor1, String operand, String factor2, Integer expect) {
+
+        SingleExpression singleExpression = new SingleExpression(new Operand(factor1), new Operator(operand), new Operand(factor2));
+
+        assertThat(singleExpressionCalculator.calc(singleExpression)).isEqualTo(expect);
+    }
 }
