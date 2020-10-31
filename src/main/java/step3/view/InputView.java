@@ -1,4 +1,4 @@
-package step3;
+package step3.view;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
