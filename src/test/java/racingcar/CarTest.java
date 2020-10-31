@@ -9,9 +9,6 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,22 +18,20 @@ class CarTest {
     @Test
     @DisplayName("proceed 가 true 일 경우만 전진해야 한다.")
     void move() {
-        MoveStrategy proceedStrategy = Mockito.mock(MoveStrategy.class);
-        Mockito.when(proceedStrategy.proceed()).thenAnswer(new Answer<Boolean>() {
+        MoveStrategy proceedStrategy = new MoveStrategy() {
             @Override
-            public Boolean answer(InvocationOnMock invocation) {
+            public boolean proceed() {
                 return true;
             }
-        });
+        };
         Car proceededCar = new Car(proceedStrategy);
 
-        MoveStrategy stopStrategy = Mockito.mock(MoveStrategy.class);
-        Mockito.when(stopStrategy.proceed()).thenAnswer(new Answer<Boolean>() {
+        MoveStrategy stopStrategy = new MoveStrategy() {
             @Override
-            public Boolean answer(InvocationOnMock invocation) {
+            public boolean proceed() {
                 return false;
             }
-        });
+        };
         Car stoppedCar = new Car(stopStrategy);
 
 

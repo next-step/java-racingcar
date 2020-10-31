@@ -11,8 +11,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -65,13 +63,12 @@ class RacingGameTest {
         int tryNum = 5;
         Car[] carArr = new Car[carNum];
 
-        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        Mockito.when(strategy.proceed()).thenAnswer(new Answer<Boolean>() {
+        MoveStrategy strategy = new MoveStrategy() {
             @Override
-            public Boolean answer(InvocationOnMock invocation) {
+            public boolean proceed() {
                 return true;
             }
-        });
+        };
 
         for (int i = 0; i < carNum; i++) {
             carArr[i] = new Car(strategy);
