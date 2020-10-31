@@ -6,13 +6,14 @@ import static java.lang.Integer.parseInt;
 import static step2.Operator.parseOperator;
 
 public class StringCalculator {
+    final static String EXPRESSION_DELIMITERS = " ";
     final StringTokenizer tokenizer;
 
     StringCalculator(String expression) {
         if(expression == null || expression.isBlank()) {
             throw new IllegalArgumentException();
         }
-        tokenizer = new StringTokenizer(expression, " ");
+        tokenizer = new StringTokenizer(expression, EXPRESSION_DELIMITERS);
     }
 
     // convenience method
