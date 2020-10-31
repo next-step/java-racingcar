@@ -3,6 +3,8 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 
+import static step3.RandomGenerator.getLuckyNumber;
+
 public class Simulator {
     private List<SimulationStep> steps;
     private GameEnvironment gameEnvironment;
@@ -30,12 +32,8 @@ public class Simulator {
 
     private void executeStep() {
         for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(getRandomMoney());
+            cars.get(i).move(getLuckyNumber());
         }
-    }
-
-    private int getRandomMoney() {
-        return (int) (Math.random() * 10);
     }
 
     private void saveStep() {
