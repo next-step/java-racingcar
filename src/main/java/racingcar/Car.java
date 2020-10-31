@@ -12,7 +12,7 @@ public class Car {
     private MoveStrategy strategy;
 
     public Car(MoveStrategy strategy) {
-        this.position = 1;
+        this.position = NumConst.START_POSITION;
         this.strategy = strategy;
     }
 
