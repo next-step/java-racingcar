@@ -13,14 +13,14 @@ public class StringCalculator {
         return new StringCalculator(expression).calculate();
     }
 
-    public StringCalculator(String expression) {
+    StringCalculator(String expression) {
         if(expression == null || expression.isBlank()) {
             throw new IllegalArgumentException();
         }
         tokenizer = new StringTokenizer(expression, " ");
     }
 
-    public int calculate() {
+    int calculate() {
         // leftmost derivation { lhs = ( (lhs op1 rhs1) op2 rhs2 ) ... }
         int lhs = parseInt(nextToken());
         while(tokenizer.hasMoreElements()) {
