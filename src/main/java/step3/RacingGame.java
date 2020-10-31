@@ -1,32 +1,49 @@
 package step3;
 
+import step3.view.InputView;
+import step3.view.ResultView;
+
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class RacingGame {
-    private static InputView inputView = new InputView(new Scanner(System.in), new PrintWriter(System.out, true));
-    private static Integer carCount;
-    private static Integer tryCount;
-    private static Simulator simulator = new Simulator();
+    private static final InputView inputView;
+    private static final Simulator simulator;
+    private static final PrintWriter output;
+    private static final ResultView resultView;
+    private static final GameEnvironment gameEnvironment;
 
+    static {
+        output = new PrintWriter(System.out, true);
+        inputView = new InputView(new Scanner(System.in), output);
+        simulator = new Simulator();
+        resultView = new ResultView(output);
+        gameEnvironment = new GameEnvironment();
+    }
 
     public static void main(String[] args) {
         loadGameEnvironmentFromInputView();
         simulateGame();
-        printSimulationResult();
+        showSimulationResult();
+        closeOutput();
     }
 
     private static void loadGameEnvironmentFromInputView() {
-        carCount = inputView.getCarCountFromInput();
-        tryCount = inputView.getTryCountFromInput();
+        gameEnvironment.setCar(inputView.getCarCountFromInput());
+        gameEnvironment.setTry(inputView.getTryCountFromInput());
     }
 
     private static void simulateGame() {
-        simulator.execute(carCount, tryCount);
+        simulator.setGameEnvironment(gameEnvironment);
+        simulator.execute();
     }
 
-    private static void printSimulationResult() {
-        simulator.printResult();
+    private static void showSimulationResult() {
+        resultView.show(simulator.getSimulationResult());
+    }
+
+    private static void closeOutput() {
+        output.close();
     }
 
 }
