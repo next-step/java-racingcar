@@ -1,6 +1,6 @@
 package step02;
 
-import exception.DividedByZero;
+import exception.DividedByZeroException;
 import exception.EmptyException;
 import exception.ErrorMessage;
 import exception.InValidOperatorException;
@@ -8,11 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
@@ -49,7 +46,7 @@ public class ExceptionTest {
     @ParameterizedTest
     @CsvSource(value = "10, 0")
     public void 나눗셈_0_테스트(int first, int second) {
-        assertThatExceptionOfType(DividedByZero.class)
+        assertThatExceptionOfType(DividedByZeroException.class)
                 .isThrownBy(() -> {
                     Operator.executeOf("/", first, second);
                 }).withMessageMatching(ErrorMessage.DIVIDED_BY_ZERO);

@@ -1,6 +1,6 @@
 package step02;
 
-import exception.DividedByZero;
+import exception.DividedByZeroException;
 import exception.InValidOperatorException;
 
 import java.util.Arrays;
@@ -13,7 +13,7 @@ public enum Operator {
     MULTIPLE("*", Math::multiplyExact),
     DIVIDE("/", (x, y) -> {
         if (y == 0)
-            throw new DividedByZero();
+            throw new DividedByZeroException();
         return x / y;
     });
 
