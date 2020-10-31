@@ -8,7 +8,7 @@ public enum OperatorFunction {
     MINUS("-", (first, second) -> first - second),
     DIVIDE("/", (first, second) -> {
         if (second == 0) {
-            throw new IllegalArgumentException("나눗셈은 정수로 떨어져야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.DO_NOT_DIVIDE_ZERO);
         }
         return first / second;
     }),
@@ -21,7 +21,7 @@ public enum OperatorFunction {
         return Arrays.stream(values())
                 .filter(v -> factor.equals(v.value))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.IS_NOT_OPERATOR));
     }
 
     OperatorFunction(String value, BiFunction<Integer, Integer, Integer> operate) {

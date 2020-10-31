@@ -12,7 +12,7 @@ public class Operand implements ExpressionFactor {
         try {
             this.value = Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("피연산자가 아님", e);
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_OPERAND, e);
         }
     }
 

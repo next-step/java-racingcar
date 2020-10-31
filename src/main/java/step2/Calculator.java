@@ -11,12 +11,12 @@ public class Calculator {
 
     private void read(String expression) {
         if (expression == null || expression.trim().length() == 0) {
-            throw new IllegalArgumentException("수식이 유효하지 않음 - null or empty");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_EXPRESSION);
         }
         String[] split = expression.split(splitToken);
 
         if (split.length % 2 == 0) {
-            throw new IllegalArgumentException("수식이 유효하지 않음");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_EXPRESSION);
         }
         expressionManager = new ExpressionManager(split);
     }
