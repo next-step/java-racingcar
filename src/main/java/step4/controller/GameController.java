@@ -8,13 +8,13 @@ public class GameController {
 
 
     public void startRacingGame() {
-        int carCount = InputController.putCarCount();
+        String carNames = InputController.putCarCount();
         int tryCount = InputController.putTryCount();
 
 
         OutputController.endResult();
 
-        RacingGame racingGame = new RacingGame(new RacingGameCondition(carCount,tryCount), new RandomMoveStrategy());
+        RacingGame racingGame = new RacingGame(new RacingGameCondition(carNames,tryCount), new RandomMoveStrategy());
         for (int i = 0; i < tryCount; i++) {
             OutputController.runResult(racingGame.getGameRoundResult());
         }

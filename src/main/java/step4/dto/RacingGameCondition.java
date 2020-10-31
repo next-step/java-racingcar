@@ -1,16 +1,16 @@
 package step4.dto;
 
 public class RacingGameCondition {
-    private int carCount;
+    private String carNames;
     private int tryCount;
 
-    public RacingGameCondition(int carCount, int tryCount) {
-        this.carCount = carCount;
+    public RacingGameCondition(String carNames, int tryCount) {
+        this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String getCarNames() {
+        return carNames;
     }
 
     public int getTryCount() {
