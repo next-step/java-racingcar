@@ -8,15 +8,19 @@ public class ExpressionManager {
 
     public ExpressionManager(String[] expression) {
         for (int i = expression.length - 1; i >= 0; i--) {
-            ExpressionFactor expressionFactor = null;
-            if (i % 2 == 0) {
-                expressionFactor = new Operand(expression[i]);
-            }
-            if (i % 2 == 1) {
-                expressionFactor = new Operator(expression[i]);
-            }
-            expressionStack.push(expressionFactor);
+            addFactorToExpressionStack(expression, i);
         }
+    }
+
+    private void addFactorToExpressionStack(String[] expression, int i) {
+        ExpressionFactor expressionFactor = null;
+        if (i % 2 == 0) {
+            expressionFactor = new Operand(expression[i]);
+        }
+        if (i % 2 == 1) {
+            expressionFactor = new Operator(expression[i]);
+        }
+        expressionStack.push(expressionFactor);
     }
 
     public boolean hasNext() {
