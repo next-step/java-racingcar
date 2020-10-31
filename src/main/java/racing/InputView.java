@@ -4,35 +4,33 @@ import java.util.Scanner;
 
 public class InputView {
 
+    private final Scanner scanner;
+
     private final InputValidator inputValidator;
 
     public InputView() {
         this.inputValidator = new InputValidator();
+        this.scanner = new Scanner(System.in);
     }
 
     public int readCarCount() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("자동차 대수는 몇 대 인가요?");
-
-        String carCount = scanner.nextLine();
-        inputValidator.validate(carCount);
-
-        scanner.close();
-
-        return Integer.parseInt(carCount);
+        return read("자동차 대수는 몇 대 인가요?");
     }
 
     public int readRound() {
-        Scanner scanner = new Scanner(System.in);
+        return read("시도할 회수는 몇 회 인가요?");
+    }
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
+    private int read(String message) {
+        System.out.println(message);
 
-        String round = scanner.nextLine();
-        inputValidator.validate(round);
+        String input = scanner.nextLine();
+        inputValidator.validate(input);
 
+        return Integer.parseInt(input);
+    }
+
+    public void closeScanner() {
         scanner.close();
-
-        return Integer.parseInt(round);
     }
 }

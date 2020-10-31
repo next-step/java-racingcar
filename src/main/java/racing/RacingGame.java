@@ -23,6 +23,8 @@ public class RacingGame {
         this.entry = new Entry(carCount);
 
         this.round = inputView.readRound();
+
+        inputView.closeScanner();
     }
 
     public void ready() {
