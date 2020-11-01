@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SingleExpressionCalculatorTest {
+class OperatorFunctionTest {
 
     @DisplayName("add 단위 테스트")
     @ParameterizedTest
