@@ -1,10 +1,11 @@
 package step4.dto;
 
-public class RacingGameCondition {
+public class RacingGameConditionDTO {
     private String carNames;
     private int tryCount;
 
-    public RacingGameCondition(String carNames, int tryCount) {
+
+    public RacingGameConditionDTO(String carNames, int tryCount) {
         this.carNames = carNames;
         this.tryCount = tryCount;
     }

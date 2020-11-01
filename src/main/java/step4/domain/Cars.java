@@ -24,10 +24,8 @@ public class Cars {
         cars.forEach(car -> car.move(moveStrategy));
     }
 
-    public List<Integer> getCarsPosition() {
-        return cars.stream()
-                .map(Car::getCarPosition)
-                .collect(Collectors.toList());
+    public List<Car> getCarsStatus() {
+        return cars;
     }
 
 }

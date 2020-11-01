@@ -1,5 +1,6 @@
 package step4.controller;
 
+import step4.domain.Car;
 import step4.domain.Cars;
 
 import java.util.Arrays;
@@ -12,10 +13,13 @@ public class OutputController {
     private static final String RACING_PAINT = "-";
 
     public static void runResult(Cars cars) {
-        List<Integer> carsPosition = cars.getCarsPosition();
-        carsPosition.forEach(position -> System.out.println(Arrays.stream(new String[position])
-                .map(v -> RACING_PAINT)
-                .collect(Collectors.joining(""))));
+        List<Car> carsStatus = cars.getCarsStatus();
+        carsStatus.forEach(car -> {
+            String carPositionPaint = Arrays.stream(new String[car.getCarPosition()])
+                    .map(v -> RACING_PAINT)
+                    .collect(Collectors.joining(""));
+            System.out.println(car.getName() + " : " + carPositionPaint);
+        });
         System.out.println("");
     }
 

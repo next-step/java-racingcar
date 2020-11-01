@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step4.domain.Cars;
 import step4.domain.MustMoveStrategy;
-import step4.dto.RacingGameCondition;
+import step4.dto.RacingGameConditionDTO;
 import step4.utils.CarNameSplitter;
 
 import java.util.Collections;
@@ -21,7 +21,7 @@ class RacingGameTest {
     void runGame(String carNames, int tryCount) {
 
         List<Integer> carsPositions = Collections.emptyList();
-        RacingGame racingGame = new RacingGame(new RacingGameCondition(carNames, tryCount), new MustMoveStrategy());
+        RacingGame racingGame = new RacingGame(new RacingGameConditionDTO(carNames, tryCount), new MustMoveStrategy());
         for (int i = 0; i < tryCount; i++) {
             Cars cars = racingGame.getGameRoundResult();
             carsPositions = cars.getCarsPosition();
@@ -36,7 +36,7 @@ class RacingGameTest {
     @DisplayName("게임의 진행횟수를 확인한다.")
     void validGameTryCount(String carNames, int tryCount) {
 
-        RacingGame racingGame = new RacingGame(new RacingGameCondition(carNames, tryCount), new MustMoveStrategy());
+        RacingGame racingGame = new RacingGame(new RacingGameConditionDTO(carNames, tryCount), new MustMoveStrategy());
         assertThat(racingGame.getRacingGameTryCount()).isEqualTo(tryCount);
 
     }
@@ -46,7 +46,7 @@ class RacingGameTest {
     @DisplayName("게임을 위한 자동차 수가 맞는지 확인한다.")
     void validGameCarCount(String carNames, int carCount) {
         int tryCount = 1;
-        RacingGame racingGame = new RacingGame(new RacingGameCondition(carNames, tryCount), new MustMoveStrategy());
+        RacingGame racingGame = new RacingGame(new RacingGameConditionDTO(carNames, tryCount), new MustMoveStrategy());
         assertThat(CarNameSplitter.splitter(
                 racingGame.getRacingGameCarNames()).length).isEqualTo(carCount);
 
