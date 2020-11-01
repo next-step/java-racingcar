@@ -16,7 +16,7 @@ public class RacingCarGame {
         this.resultView = resultView;
     }
 
-    public void game() {
+    public void start() {
         Input input = inputHandler.getInput();
         List<RacingCar> racingCars = input.toRacingCars();
 
