@@ -119,18 +119,9 @@ public class InputViewTest {
             consoleInput.add(laps);
         }
 
-        public String recentErrorMessage() {
-            return errorMessage;
-        }
-
         @Override
         protected String nextLine() {
             return consoleInput.poll();
-        }
-
-        @Override
-        protected void printError(String message) {
-            this.errorMessage = message;
         }
     }
 
@@ -173,10 +164,6 @@ public class InputViewTest {
             }
 
             return names;
-        }
-
-        protected void printError(String message) {
-
         }
 
         protected String nextLine() {
