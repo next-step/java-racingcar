@@ -94,7 +94,7 @@ public class Calculator {
     private double operate(double a, double b) {
         double result = 0;
 
-        String operator = getOperate();
+        String operator = getOperator();
 
         switch(operator) {
             case "+":
@@ -113,7 +113,7 @@ public class Calculator {
         return result;
     }
 
-    private String getOperate() {
+    private String getOperator() {
         String operator = operatorList.get(0);
         operatorList.remove(0);
         return operator;
