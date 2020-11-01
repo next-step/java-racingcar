@@ -13,7 +13,7 @@ public class ConsoleResultView implements ResultView {
 
         for (RacingCar car : cars) {
             car.repeatAsMoveCount(() -> stringBuilder.append(PROGRESS_BAR));
-            stringBuilder.append("\n");
+            stringBuilder.append(System.lineSeparator());
         }
 
         System.out.println(stringBuilder.toString());
