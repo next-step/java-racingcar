@@ -10,14 +10,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class SetCollectionTest {
 
     private Set<Integer> numbers;
-
-    //Set의 size() 메소드를 활용해 Set의 크기를 확인하는 학습테스트를 구현한다.
-
 
     @BeforeEach
     void setUp() {
@@ -43,6 +39,7 @@ public class SetCollectionTest {
     @ParameterizedTest
     @CsvSource({"1,true", "4,false", "5,false"})
     public void test3(int number, boolean expectedResult) {
-        assertThat(numbers.contains(number)).isEqualTo(expectedResult);
+        boolean actualResult = numbers.contains(number);
+        assertThat(actualResult).isEqualTo(expectedResult);
     }
 }
