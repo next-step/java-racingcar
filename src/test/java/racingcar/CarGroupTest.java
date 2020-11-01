@@ -7,6 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarGroupTest {
@@ -23,11 +28,10 @@ class CarGroupTest {
     }
 
     @ParameterizedTest
-    @DisplayName("carIndex 의 car 만 전진해야 한다.")
+    @DisplayName("carIdx 의 car 만 전진해야 한다.")
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void moveCar(int carIdx) {
-        String carCsv = "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10";
-        int carNum = carCsv.length();
+        String carCsv = "0,1,2,3,4,5,6,7,8,9";
         MoveStrategy strategy = new MoveStrategy() {
             @Override
             public boolean checkMovable() {
@@ -41,15 +45,19 @@ class CarGroupTest {
         int unMovedPosition = 1;
         int movedPosition = 2;
 
-        Executable[] executables = new Executable[carNum];
-        for (int i = 0; i < carNum; i++) {
-            int position = cars.getCarPosition(i);
-            int expectedPosition = (carIdx == i) ? movedPosition : unMovedPosition;
-            executables[i] = () -> {
-                assertThat(position)
-                        .isEqualTo(expectedPosition);
-            };
-        }
+        int carNum = cars.getCarNum();
+        int[] expectedPositions = new int[carNum];
+        Arrays.fill(expectedPositions, unMovedPosition);
+        expectedPositions[carIdx] = movedPosition;
+        IntStream expectedStream = Arrays.stream(expectedPositions);
+        Iterator expectedItr = expectedStream.iterator();
+
+
+        // FIXME: 두 Stream 을 비교하는 더 효과적인 방법은 없을까?
+        Stream<Executable> executables = cars.getCarStream().<Executable>map(car -> () -> {
+            assertThat(car.getPosition())
+                    .isEqualTo(expectedItr.next());
+        });
         Assertions.assertAll(executables);
     }
 }

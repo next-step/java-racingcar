@@ -1,7 +1,7 @@
 package racingcar;
 
 import java.util.Arrays;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public class CarGroup {
 
@@ -27,16 +27,11 @@ public class CarGroup {
         return this.carArr.length;
     }
 
-    public int getCarPosition(int carIdx) {
-        Car car = this.carArr[carIdx];
-        return car.getPosition();
-    }
-
     public void moveCar(int carIdx) {
         this.carArr[carIdx].move();
     }
 
-    public void print(Consumer<Car> printMethod) {
-        Arrays.stream(this.carArr).forEach(printMethod);
+    public Stream<Car> getCarStream() {
+        return Arrays.stream(this.carArr);
     }
 }

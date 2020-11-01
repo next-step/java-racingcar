@@ -34,7 +34,7 @@ class CarTest {
                 return true;
             }
         };
-        String movableName = "움직이는 차량";
+        String movableName = "move";
         Car movableCar = new Car(movableName, movableStrategy);
 
         MoveStrategy stopStrategy = new MoveStrategy() {
@@ -43,7 +43,7 @@ class CarTest {
                 return false;
             }
         };
-        String stoppedName = "정지된 차량";
+        String stoppedName = "stop";
         Car stoppedCar = new Car(stoppedName, stopStrategy);
 
 

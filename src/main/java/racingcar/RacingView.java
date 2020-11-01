@@ -10,9 +10,12 @@ public class RacingView {
     // NOTE: Car 보다 작은 단위로 convert 하지 않도록 한다.
     protected String convertCar(Car car) {
         int position = car.getPosition();
+        String name = car.getName();
         StringBuilder sb = new StringBuilder();
+        sb.append(name);
+        sb.append(ViewConst.SEPARATOR);
         for (int j = 0; j < position; j++) {
-            sb.append("-");
+            sb.append(ViewConst.PLAYER_TOKEN);
         }
         return sb.toString();
     }

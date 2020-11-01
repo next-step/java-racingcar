@@ -19,7 +19,8 @@ public class RacingGame {
     }
 
     public void printCars(Consumer<Car> printMethod) {
-        this.cars.print(printMethod);
+        this.cars.getCarStream()
+                .forEach(printMethod);
     }
 
     public void play() {
