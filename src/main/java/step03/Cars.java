@@ -26,10 +26,10 @@ public class Cars {
     }
 
     public static Cars of (int numberOfCars) {
-        final String carKind = "-";
+        final String defaultCarKind = "-";
         return of(Stream.iterate(0, n -> n + 1)
                 .limit(numberOfCars)
-                .map(n -> Car.of(carKind))
+                .map(n -> Car.of(defaultCarKind))
                 .collect(Collectors.toList()));
     }
 

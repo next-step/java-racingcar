@@ -14,8 +14,8 @@
     - RandomGenerator::ZeroToPositiveIntGenerate 0 에서 입력한 값 사이에서 정수 random 값을 반환하는 기능
 1. MoveStrategy 인터페이스, extends 한 랜덤으로 이동을 하는 RandomMoveStrategy 클래스 
 1. Car 클래스
-   - '-' 를 나타내는 position 멤버변수
    - of 생성자
+   - 자동차의 종류 carKind 를 생성자로 저장한다.
    - this::move 단일 자동차를 움직여 position 에 '-' 를 더하는 기능
    - this::position position 을 반환하는 인스턴스 메서드
 1. Cars 클래스 
@@ -30,6 +30,7 @@
     - this::operate, 경기회차마다 자동차를 이동시키는 기능 
 1. Main 클래스
     - 앱을 실행하는 기능
+    - 경기 시작전 자동차의 종류를 선택할 수 있다.
 
 ## Main
 1. 자동차 대수, 이동 횟수 입력 하는 기능(InputView)
