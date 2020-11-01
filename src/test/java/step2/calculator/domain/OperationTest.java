@@ -130,7 +130,7 @@ class OperationTest {
 
             // then
             assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                    .hasNoCause();
+                    .hasMessageContaining("can't find matched Operation");
         }
     }
 

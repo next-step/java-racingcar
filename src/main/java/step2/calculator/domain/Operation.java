@@ -33,7 +33,7 @@ public enum Operation {
                 return op;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("can't find matched Operation");
     }
 
     public static List<String> getSupportedSymbols() {
