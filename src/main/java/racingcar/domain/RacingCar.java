@@ -3,6 +3,8 @@ package racingcar.domain;
 import racingcar.util.JavaUtilRandom;
 import racingcar.util.RandomUtil;
 
+import java.util.function.Consumer;
+
 public class RacingCar {
     public static final int AVAILABLE_MAX_NAME_LENGTH = 5;
     private static final int RANDOM_BOUND = 10;
@@ -38,6 +40,10 @@ public class RacingCar {
     private boolean isMovable() {
         int randomNumber = randomUtil.getInt(RANDOM_BOUND);
         return randomNumber >= MIN_MOVABLE_NUM;
+    }
+
+    public void labelName(Consumer<String> consumer) {
+        consumer.accept(name);
     }
 
     public void repeatAsMoveCount(Runnable runnable) {
