@@ -1,4 +1,4 @@
-package step03;
+package step03.view;
 
 import java.util.Scanner;
 
