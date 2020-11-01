@@ -20,7 +20,7 @@ public class GameManagerTest {
         List<Car> cars = gameManager.readyCars(carNum, () -> movementExpected);
         List<Integer> initialPositions = cars.stream().map(Car::getPosition).collect(Collectors.toList());
 
-        gameManager.play();
+        gameManager.play(cars);
         List<Integer> movements = IntStream.range(0, cars.size())
                 .mapToObj(i -> cars.get(i).getPosition() - initialPositions.get(i))
                 .collect(Collectors.toList());

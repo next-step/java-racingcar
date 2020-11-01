@@ -18,7 +18,7 @@ public class RacingGame {
         GameRound gameRound = new GameRound(gameRoundNum);
 
         while (!gameRound.isGameEnd()) {
-            gameManager.play();
+            gameManager.play(cars);
             outputView.showResult(cars);
             gameRound.endRound();
         }
