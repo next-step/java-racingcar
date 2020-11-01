@@ -1,10 +1,12 @@
 package study.step3;
 
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
+import java.util.List;
 import java.util.Queue;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,6 +47,18 @@ public class InputViewTest {
         inputView.request();
 
         assertThat(inputView.recentErrorMessage()).isEqualTo("이름은 5자를 넘을 수 없습니다.");
+    }
+
+    @Test
+    @DisplayName("쉽표로 구분된 입력을 분석하여 자동차 객체로 반환한다.")
+    public void parsingCarNames() {
+        inputView.setConsoleInput("red,gold,white,blue");
+
+        Circuit circuit = inputView.request();
+
+        assertThat(circuit.getCars()) //
+                .hasSize(4) //
+                .containsExactly(new RealCar("red"), new RealCar("gold"), new RealCar("white"), new RealCar("blue"));
     }
 
     private static class TestingInputView extends InputView {
