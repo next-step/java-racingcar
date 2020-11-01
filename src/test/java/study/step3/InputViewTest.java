@@ -138,15 +138,7 @@ public class InputViewTest {
         public Circuit request() {
             String names = requestNames();
 
-
-            Set<Car> cars = Arrays.stream(names.split(",")) //
-                    .peek(name -> {
-                        if (name.length() > 5) {
-                            throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
-                        }
-                    })
-                    .map(RealCar::new) //
-                    .collect(toSet());
+            Set<Car> cars = parseNames(names);
 
             int laps = requestLaps();
             return new Circuit(cars, laps);
@@ -191,6 +183,16 @@ public class InputViewTest {
             return null;
         }
 
+        private Set<Car> parseNames(String names) {
+            return Arrays.stream(names.split(",")) //
+                    .peek(name -> {
+                        if (name.length() > 5) {
+                            throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
+                        }
+                    })
+                    .map(RealCar::new) //
+                    .collect(toSet());
+        }
     }
 
     private static class Circuit {
