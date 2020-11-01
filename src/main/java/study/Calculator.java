@@ -43,19 +43,19 @@ public class Calculator {
 
     // null, 빈 공백 체크
     // 입력이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-    void checkIsBlank() {
+    private void checkIsBlank() {
         if (input == null || removeWhitespace(input).isEmpty()) {
             throw new IllegalArgumentException("IllegalArgumentException");
         }
     }
 
     // 공백제거
-    String removeWhitespace(String string) {
+    private String removeWhitespace(String string) {
         return string.replaceAll(" ", "");
     }
 
     // 숫자, 문자 구분
-    void setNumberAndOperatorList() {
+    private void setNumberAndOperatorList() {
         String[] arrInputSplit = input.split(" ");
         for (String inputSplit : arrInputSplit) {
             try {
@@ -68,7 +68,7 @@ public class Calculator {
     }
 
     // 기호체크
-    void checkOperator() {
+    private void checkOperator() {
         // 기호가 하나이상 입력되어있거나, 사칙연산이 아닌경우
         for (String operator : operatorList) {
             if (operator.toCharArray().length > 1
@@ -84,14 +84,14 @@ public class Calculator {
         return numberList.stream().reduce(firstNumber, (a, b) -> operate(a, b));
     }
 
-    Double getFirstNumber() {
+    private Double getFirstNumber() {
         double firstNumber = numberList.get(0);
         numberList.remove(0);
         return firstNumber;
     }
 
     // 연산
-    double operate(double a, double b) {
+    private double operate(double a, double b) {
         double result = 0;
 
         String operator = getOperate();
@@ -113,7 +113,7 @@ public class Calculator {
         return result;
     }
 
-    String getOperate() {
+    private String getOperate() {
         String operator = operatorList.get(0);
         operatorList.remove(0);
         return operator;
