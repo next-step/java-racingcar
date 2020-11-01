@@ -1,51 +1,26 @@
 public class StringCalculator {
-    public int addition (int a, int b) {
-        return a + b;
+    public void isNotBlank (String blank) {
+        if ("".equals(blank) || " ".equals(blank) || blank == null) {
+            throw new IllegalArgumentException("연산자가 빈값 또는 null입니다.");
+        }
     }
 
-    public int subtraction (int a, int b) {
-        return a - b;
+    public Double calculator (Double leftNumber, String operator, Double rightNumber) {
+        return Operator.of(operator).calculator(leftNumber, rightNumber);
     }
 
-    public int multiply (int a, int b) {
-        return a * b;
+    public String getOperator (String[] expressionArray, int index) {
+        return expressionArray[index];
     }
 
-    public int division (int a, int b) {
-        return a / b;
+    public String getRightNumber (String[] expressionArray, int index) {
+        return expressionArray[index + 1];
     }
 
-    public boolean isNotBlank (String blank) {
-        if ("".equals(blank) || " ".equals(blank)) {
-            throw new IllegalArgumentException();
+    public Double isDigit (String number) {
+        if (!Character.isDigit(number.charAt(0))) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
         }
-
-        return true;
-    }
-
-    public boolean isOperator (String operator) {
-        if (!"+".equals(operator) && !"-".equals(operator) && !"*".equals(operator) && !"/".equals(operator)) {
-            throw new IllegalArgumentException();
-        }
-        return true;
-    }
-
-    public int calculator (int a, String operator, int b) {
-        int result = 0;
-
-        if ("+".equals(operator)) {
-            result = addition(a, b);
-        }
-        if ("-".equals(operator)) {
-            result = subtraction(a, b);
-        }
-        if ("*".equals(operator)) {
-            result = multiply(a, b);
-        }
-        if ("/".equals(operator)) {
-            result = division(a, b);
-        }
-
-        return result;
+        return Double.valueOf(number);
     }
 }
