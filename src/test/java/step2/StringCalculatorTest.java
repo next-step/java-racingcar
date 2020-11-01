@@ -47,8 +47,26 @@ class StringCalculatorTest {
                 () -> calculator.divide(4, 0));
     }
 
-//    @ParameterizedTest
-//    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-//    @DisplayName("요구사항 3 - 1, 2, 3 값은 contains 메소드 실행결과 true, 4, 5 값을 넣으면 false 가 반환되는 테스트를 " +
+    @Test
+    @DisplayName("입력값 null 테스트")
+    void checkInputNullTest() {
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculate(null));
+    }
+
+    @Test
+    @DisplayName("입력값이 없는 테스트")
+    void checkEmptyInputTest() {
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculate(""));
+    }
+
+    @Test
+    @DisplayName("입력값이 빈 공백 테스트")
+    void checkOnlyWhitespaceInputTest() {
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculate(" "));
+    }
+
 
 }

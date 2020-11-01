@@ -2,7 +2,17 @@ package step2;
 
 public class StringCalculator {
 
+    public int calculate(String data) {
+        checkInputValidation(data);
 
+        return 0;
+    }
+
+    private void checkInputValidation(String data) {
+        if(data == null || data.trim().isEmpty()) {
+            throw new IllegalArgumentException("입력값이 없습니다.");
+        }
+    }
 
     public int plus(int first, int second) {
         return first + second;
