@@ -18,7 +18,7 @@ public class GameManager {
                 .collect(Collectors.toList());
     }
 
-    public void play(List<Car> cars) {
+    public void playOneRound(List<Car> cars) {
         cars.stream().forEach(c -> {
             if (ruleStrategy.checkRule())
                 c.move();

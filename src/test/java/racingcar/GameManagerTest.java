@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GameManagerTest {
 
     @Test
-    @DisplayName("게임 한 턴 플레이 테스트")
+    @DisplayName("게임 한 라운드 플레이")
     void play_everyCarOneMovement() {
         int carNum = 3;
         int movementExpected = 1;
@@ -20,7 +20,7 @@ public class GameManagerTest {
         List<Car> cars = gameManager.readyCars(carNum, () -> movementExpected);
         List<Integer> initialPositions = cars.stream().map(Car::getPosition).collect(Collectors.toList());
 
-        gameManager.play(cars);
+        gameManager.playOneRound(cars);
         List<Integer> movements = IntStream.range(0, cars.size())
                 .mapToObj(i -> cars.get(i).getPosition() - initialPositions.get(i))
                 .collect(Collectors.toList());
