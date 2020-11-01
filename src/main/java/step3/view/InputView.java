@@ -13,12 +13,23 @@ public class InputView {
     }
 
     public Integer getCarCountFromInput() {
-        output.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+        return getCountFromInput("자동차 대수는 몇 대 인가요?");
     }
 
     public Integer getTryCountFromInput() {
-        output.println("시도할 회수는 몇 회 인가요?");
-        return scanner.nextInt();
+        return getCountFromInput("시도할 회수는 몇 회 인가요?");
+    }
+
+    private Integer getCountFromInput(String message) {
+        output.println(message);
+        Integer count = scanner.nextInt();
+        validateCount(count);
+        return count;
+    }
+
+    private void validateCount(Integer count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("invalid count");
+        }
     }
 }

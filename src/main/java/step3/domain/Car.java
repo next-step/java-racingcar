@@ -3,30 +3,11 @@ package step3.domain;
 public class Car {
     private Integer position;
 
-    public Car() {
-        position = 0;
+    public Car(Integer position) {
+        this.position = position;
     }
 
-    public boolean move(Integer luckyNumber) {
-        validateLuckyNumber(luckyNumber);
-        if (canMove(luckyNumber)) {
-            increasePosition();
-            return true;
-        }
-        return false;
-    }
-
-    private void validateLuckyNumber(Integer luckyNumber) {
-        if (luckyNumber < 0 || luckyNumber > 9) {
-            throw new IllegalArgumentException("invalid luck for car");
-        }
-    }
-
-    private boolean canMove(Integer luckyNumber) {
-        return luckyNumber >= 4;
-    }
-
-    private void increasePosition() {
+    public void move() {
         position += 1;
     }
 

@@ -3,19 +3,15 @@ package step3.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import static step3.util.RandomGenerator.getLuckyNumber;
-
 public class Simulator {
-    private List<SimulationStep> steps;
-    private GameEnvironment gameEnvironment;
-    private List<Car> cars = new ArrayList<>();
+    private final GameEnvironment gameEnvironment;
+    private final Cars cars;
+    private List<List<Integer>> records;
 
-    public Simulator() {
-    }
-
-    public void setGameEnvironment(GameEnvironment gameEnvironment) {
+    public Simulator(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.cars = gameEnvironment.getCars();
+        this.records = new ArrayList<>();
     }
 
     public void execute() {
@@ -23,7 +19,7 @@ public class Simulator {
     }
 
     private void executeSteps() {
-        steps = new ArrayList<>();
+        records = new ArrayList<>();
         for (int i = 0; i < gameEnvironment.getTryCount(); i++) {
             executeStep();
             saveStep();
@@ -31,16 +27,14 @@ public class Simulator {
     }
 
     private void executeStep() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(getLuckyNumber());
-        }
+        cars.move();
     }
 
     private void saveStep() {
-        steps.add(new SimulationStep(cars));
+        records.add(cars.getPositions());
     }
 
-    public List<SimulationStep> getSimulationResult() {
-        return steps;
+    public List<List<Integer>> getSimulationResult() {
+        return records;
     }
 }

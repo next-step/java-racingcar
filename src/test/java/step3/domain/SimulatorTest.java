@@ -6,10 +6,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -26,21 +22,13 @@ public class SimulatorTest {
     @Test
     public void simulateCarMovement() {
         Integer tryCount = 3;
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            Car car = mock(Car.class);
-            cars.add(car);
-        }
+        Cars cars = mock(Cars.class);
         when(gameEnvironment.getTryCount()).thenReturn(tryCount);
         when(gameEnvironment.getCars()).thenReturn(cars);
 
-        Simulator simulator = new Simulator();
-        simulator.setGameEnvironment(gameEnvironment);
+        Simulator simulator = new Simulator(gameEnvironment);
         simulator.execute();
 
-        for (int i = 0; i < 2; i++) {
-            Car car = cars.get(i);
-            verify(car, times(tryCount)).move(anyInt());
-        }
+        verify(cars, times(tryCount)).move();
     }
 }
