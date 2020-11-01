@@ -1,7 +1,7 @@
-package step03.exception;
+package exception;
 
 public class NotPositiveIntegerException extends IllegalArgumentException {
     public NotPositiveIntegerException() {
-        super(ExceptionMessage.INVALID_NUMBER_OF_CARS);
+        super(ExceptionMessage.INVALID_POSITIVE_INTEGER);
     }
 }
