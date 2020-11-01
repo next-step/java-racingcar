@@ -1,6 +1,10 @@
 package racingcar;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private CarGroup cars;
@@ -21,6 +25,18 @@ public class RacingGame {
     public void printCars(Consumer<Car> printMethod) {
         this.cars.getCarStream()
                 .forEach(printMethod);
+    }
+
+    public List<Car> getWinners() {
+        return this.cars.getCarStream()
+                .collect(
+                        Collectors.groupingBy(Car::getPosition)
+                ).entrySet()
+                .stream()
+                .max(
+                        Comparator.comparing(Map.Entry::getKey)
+                ).get()
+                .getValue();
     }
 
     public void play() {

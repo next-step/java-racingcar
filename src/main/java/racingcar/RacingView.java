@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class RacingView {
     public RacingGame game;
 
@@ -26,5 +29,19 @@ public class RacingView {
             System.out.println(convertedCar);
         });
         System.out.println();
+    }
+
+    protected String convertWinnerList(List<Car> winnerList) {
+        List<String> winners = winnerList
+                .stream()
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
+        return String.join(", ", winners) + MsgConst.WINNER;
+    }
+
+    public void printWinners() {
+        List<Car> winnerList = this.game.getWinners();
+        String winnerStr = this.convertWinnerList(winnerList);
+        System.out.println(winnerStr);
     }
 }

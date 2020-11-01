@@ -6,6 +6,7 @@ public class MsgConst {
     public final static String EXECUTION_RESULT = "실행 결과";
 
     public final static String MAX_NAME_LENGTH_EXCEEDED = "자동차 이름은 5자를 초과할 수 없습니다.";
+    public final static String WINNER = "가 최종 우승했습니다.";
 
     private MsgConst() {}
 }

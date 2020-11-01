@@ -17,5 +17,7 @@ public class Main {
             racingView.print();
             game.play();
         }
+
+        racingView.printWinners();
     }
 }
