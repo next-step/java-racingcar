@@ -129,7 +129,19 @@ public class InputViewTest {
 
         private int requestLaps() {
             String laps = nextLine();
+            if (!isInteger(laps)) {
+                printError("횟수는 0 이상의 정수로 입력해 주세요.");
+            }
             return Integer.parseInt(laps);
+        }
+
+        private boolean isInteger(String input) {
+            try {
+                Integer.parseInt(input);
+                return true;
+            } catch (NumberFormatException e) {
+                return false;
+            }
         }
 
         private String requestNames() {
