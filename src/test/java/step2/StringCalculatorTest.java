@@ -23,25 +23,25 @@ public class StringCalculatorTest {
  @Test
  @DisplayName("덧셈 연산")
  void 덧셈_테스트() {
-  assertThat(Calculator.ADD.calculate("+", 1, 2)).isEqualTo(3);
+  assertThat(Calculator.calculate("+", 1, 2)).isEqualTo(3);
  }
 
  @Test
  @DisplayName("뺄셈 연산")
  void 뺄셈_테스트() {
-  assertThat(Calculator.SUBTRACT.calculate("-", 10, 4)).isEqualTo(6);
+  assertThat(Calculator.calculate("-", 10, 4)).isEqualTo(6);
  }
 
  @Test
  @DisplayName("곱셈 연산")
  void 곱셈_테스트() {
-  assertThat(Calculator.MULTIPLY.calculate("*", 2, 4)).isEqualTo(8);
+  assertThat(Calculator.calculate("*", 2, 4)).isEqualTo(8);
  }
 
  @Test
  @DisplayName("나눗셈")
  void 나눗셈_테스트() {
-  assertThat(Calculator.DIVISION.calculate("/", 4, 2)).isEqualTo(2);
+  assertThat(Calculator.calculate("/", 4, 2)).isEqualTo(2);
  }
 
  @ParameterizedTest
