@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
-    public int numberOfCar;
-    public int numberOfCountToTry;
+    public final int numberOfCar;
+    public final int numberOfCountToTry;
 
     private Input(int numberOfCar, int numberOfCountToTry) {
         this.numberOfCar = numberOfCar;
