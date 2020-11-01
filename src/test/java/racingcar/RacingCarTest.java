@@ -10,22 +10,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
     private RacingCar racingCar;
-    private final int numberOfCountToTry = 5;
 
     @BeforeEach
     void init() {
-        racingCar = new RacingCar(new MockAlwaysMaxValueRandomUtil(), numberOfCountToTry);
+        racingCar = new RacingCar(new MockAlwaysMaxValueRandomUtil());
     }
 
     @Test
     @DisplayName("RacingCar가 전진에 모두 성공한다면 진행상황의 길이와 numberOfCountToTry가 같아야 한다.")
     void testRacingCar_moveToTry() {
+        //given
+        int numberOfCountToTry = 5;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        //when
         for (int i = 0; i < numberOfCountToTry; i++) {
             racingCar.tryToMove();
         }
-        StringBuilder stringBuilder = new StringBuilder();
         racingCar.repeatAsMoveCount(() -> stringBuilder.append("-"));
 
+        //then
         assertThat(stringBuilder.toString().length()).isEqualTo(numberOfCountToTry);
     }
 }
