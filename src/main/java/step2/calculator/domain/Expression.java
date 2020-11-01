@@ -3,18 +3,20 @@ package step2.calculator.domain;
 import step2.calculator.util.ExpressionSeparator;
 import step2.calculator.validator.ExpressionSymbolValidator;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import static common.util.Preconditions.checkArgument;
 
 public class Expression {
-    private final List<String> symbols;
     private static final String BLANK = "";
+    
+    private final List<String> symbols;
 
     public Expression(final String expression) {
         validateExpression(expression);
-        this.symbols = ExpressionSeparator.split(expression);
+        this.symbols = Collections.unmodifiableList(ExpressionSeparator.split(expression));
     }
 
     public List<String> getSymbols() {
