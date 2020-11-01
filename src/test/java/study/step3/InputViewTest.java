@@ -142,7 +142,12 @@ public class InputViewTest {
             if (!isInteger(laps)) {
                 printError("횟수는 0 이상의 정수로 입력해 주세요.");
             }
-            return Integer.parseInt(laps);
+            int lapsAsInteger = Integer.parseInt(laps);
+            if (lapsAsInteger < 1) {
+                printError("횟수는 0 이상의 정수로 입력해 주세요.");
+            }
+
+            return lapsAsInteger;
         }
 
         private boolean isInteger(String input) {
