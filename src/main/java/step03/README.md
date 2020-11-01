@@ -68,7 +68,9 @@ Operate 를 만들다가 키보드를 빼앗기고 아주 혼났다.. 느낀점�
 
 ### 3차
 준일님의 추천으로 [8기 gmlwjd9405 님의 PR](https://github.com/next-step/java-racingcar/pull/774) 을 보았습니다.
- 
+
+- 테스트 케이스를 보며 내 코드에서 만들 수 있는 테스트 케이스에 대한 도움을 얻었다.
+
 
 ## [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
 git 의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.

@@ -15,6 +15,11 @@ public class Car {
         return new Car(carKind);
     }
 
+    public static Car of() {
+        final String defaultCarKind = "-";
+        return new Car(defaultCarKind);
+    }
+
     public void move (MoveStrategy moveStrategy) {
         if (moveStrategy.isGoing()) {
             position = position.concat(carKind);
