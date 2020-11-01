@@ -29,7 +29,7 @@ public class DiscriminatorTest {
         return Stream.concat(stream0To5, stream5To10);
     }
 
-    private Random getMockRandom(int result) {
+    public static Random getMockRandom(int result) {
         return new Random() {
             @Override
             public int nextInt(int bound) {
