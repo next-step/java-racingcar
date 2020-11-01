@@ -6,17 +6,19 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import sun.tools.jstat.Operator;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StringCalculatorTest {
 
-  StringCalculator calculator;
-
+  StringCalculator stringCalculator;
+  Calculator calculator;
   @BeforeEach
   void setUp() {
-    calculator = new StringCalculator();
+    stringCalculator = new StringCalculator();
+    calculator = new Calculator();
   }
 
   @Test
@@ -40,7 +42,7 @@ public class StringCalculatorTest {
   @Test
   @DisplayName("나눗셈")
   void 나눗셈_테스트() {
-    assertThat(calculator.division(6, 3)).isEqualTo(2);
+    assertThat(calculator.division(4, 2)).isEqualTo(2);
   }
 
   @ParameterizedTest
@@ -52,19 +54,17 @@ public class StringCalculatorTest {
             .overridingErrorMessage(message);
   }
 
-  @Test
-  @DisplayName("사칙연산 기호가 아닌 경우 예외 처리")
-  void 사칙연산_기호_유효성_테스트() {
-    String operator = "&";
-    assertThatIllegalArgumentException()
-            .isThrownBy(() -> Operator.toOperator(operator))
-            .withMessage("사칙연산 기호가 아닙니다");
+  @ParameterizedTest
+  @DisplayName("사칙연산 기호가 아닌 경우 false 반환")
+  @ValueSource(strings = {"&"})
+  void 사칙연산_기호_유효성_테스트(String operator) {
+    assertFalse(stringCalculator.isOperator(operator));
   }
 
   @ParameterizedTest
   @DisplayName("사칙연산을 모두 포함하는 기능 구현")
   @ValueSource(strings = {"2 + 3 * 4 / 2"})
   void 사칙연산_모두_포함_테스트(String data) {
-    assertThat(calculator.calculator(data)).isEqualTo(10);
+    assertThat(stringCalculator.calculator(data)).isEqualTo(10);
   }
 }
