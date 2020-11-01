@@ -10,7 +10,11 @@ class OperandTest {
 
     @DisplayName("피연산자 유효성 검증 단위테스트")
     @ParameterizedTest
-    @ValueSource(strings = { "as", "x", "!"})
+    @ValueSource(strings = {
+            "as",
+            "x",
+            "!"
+    })
     public void test(String factor) {
         assertThatThrownBy(() -> {
             new Operand(factor);
