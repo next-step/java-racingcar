@@ -31,7 +31,11 @@ public class Presenter implements RaceGameContract.Presenter{
 
     @Override
     public void orderCommand(int participant) {
-
+        for (int i = 0; i < participant; i++) {
+            String commands = commander.generateCommand();
+            racingCars.getParticipantCar(i).addCommands(commands);
+        }
+        view.renderView(racingCars);
     }
 
 }

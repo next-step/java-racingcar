@@ -26,5 +26,24 @@ public class PresenterTest {
         assertThat(result.size()).isEqualTo(participantCar);
     }
 
+    @DisplayName("참가차량 랜덤명령 전달 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"3, 5", "5, 3", "10, 2", "2, 6"})
+    public void oderCommandTest(int participantCar, int totalTry) {
+        //Given
+        Presenter presenter = new Presenter(new RenderingView(), new RandomCommander());
+
+        //When
+        RacingCars result = presenter.createParticipantRacingCar(participantCar);
+        for (int i = 0; i < totalTry; i++) {
+            presenter.orderCommand(participantCar);
+        }
+
+        //Then
+        for (int i = 0; i < participantCar; i++) {
+            assertThat(result.getParticipantCar(i).getCommands().length()).isGreaterThanOrEqualTo(1);
+        }
+
+    }
 
 }
