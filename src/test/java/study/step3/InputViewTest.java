@@ -10,8 +10,7 @@ import java.util.Queue;
 import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 public class InputViewTest {
 
@@ -36,9 +35,9 @@ public class InputViewTest {
     public void whenCarNamesIsEmpty() {
         inputView.setConsoleInput("", "1");
 
-        inputView.request();
-
-        assertThat(inputView.recentErrorMessage()).isEqualTo("쉼표로 구분된 자동차 이름을 입력해주세요.");
+        assertThatThrownBy(() -> inputView.request()) //
+                .isInstanceOf(IllegalArgumentException.class) //
+                .hasMessage("쉼표로 구분된 자동차 이름을 입력해주세요.");
     }
 
     @Test
@@ -46,9 +45,9 @@ public class InputViewTest {
     public void whenCarNameOverFiveChar() {
         inputView.setConsoleInput("yellow", "1");
 
-        inputView.request();
-
-        assertThat(inputView.recentErrorMessage()).isEqualTo("이름은 5자를 넘을 수 없습니다.");
+        assertThatThrownBy(() -> inputView.request()) //
+                .isInstanceOf(IllegalArgumentException.class) //
+                .hasMessage("이름은 5자를 넘을 수 없습니다.");
     }
 
     @Test
@@ -75,9 +74,9 @@ public class InputViewTest {
     public void CarNameOverFiveCharInList() {
         inputView.setConsoleInput("red,gold,yellow,blue", "1");
 
-        inputView.request();
-
-        assertThat(inputView.recentErrorMessage()).isEqualTo("이름은 5자를 넘을 수 없습니다.");
+        assertThatThrownBy(() -> inputView.request()) //
+                .isInstanceOf(IllegalArgumentException.class) //
+                .hasMessage("이름은 5자를 넘을 수 없습니다.");
     }
 
     @Test
@@ -96,10 +95,9 @@ public class InputViewTest {
     public void ensureLapsType() {
         inputView.setConsoleInput("red", "A");
 
-        assertThatExceptionOfType(NumberFormatException.class) //
-                .isThrownBy(() -> inputView.request());
-
-        assertThat(inputView.recentErrorMessage()).isEqualTo("횟수는 0 이상의 정수로 입력해 주세요.");
+        assertThatThrownBy(() -> inputView.request()) //
+                .isInstanceOf(IllegalArgumentException.class) //
+                .hasMessage("횟수는 0 이상의 정수로 입력해 주세요.");
     }
 
     @Test
@@ -107,9 +105,9 @@ public class InputViewTest {
     public void ensureLapsMinValue() {
         inputView.setConsoleInput("red", "-1");
 
-        inputView.request();
-
-        assertThat(inputView.recentErrorMessage()).isEqualTo("횟수는 0 이상의 정수로 입력해 주세요.");
+        assertThatThrownBy(() -> inputView.request()) //
+                .isInstanceOf(IllegalArgumentException.class) //
+                .hasMessage("횟수는 0 이상의 정수로 입력해 주세요.");
     }
 
     private static class TestingInputView extends InputView {
@@ -151,11 +149,11 @@ public class InputViewTest {
         private int requestLaps() {
             String laps = nextLine();
             if (!isInteger(laps)) {
-                printError("횟수는 0 이상의 정수로 입력해 주세요.");
+                throw new IllegalArgumentException("횟수는 0 이상의 정수로 입력해 주세요.");
             }
             int lapsAsInteger = Integer.parseInt(laps);
             if (lapsAsInteger < 1) {
-                printError("횟수는 0 이상의 정수로 입력해 주세요.");
+                throw new IllegalArgumentException("횟수는 0 이상의 정수로 입력해 주세요.");
             }
 
             return lapsAsInteger;
@@ -173,10 +171,10 @@ public class InputViewTest {
         private String requestNames() {
             String names = nextLine();
             if (names.isEmpty()) {
-                printError("쉼표로 구분된 자동차 이름을 입력해주세요.");
+                throw new IllegalArgumentException("쉼표로 구분된 자동차 이름을 입력해주세요.");
             }
             if (names.length() > 5) {
-                printError("이름은 5자를 넘을 수 없습니다.");
+                throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
             }
 
             return names;
