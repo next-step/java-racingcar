@@ -1,6 +1,7 @@
 package step2;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -22,11 +23,17 @@ public enum Operator {
     }
 
     public static Operator fromSymbol(String symbol) {
-        return Arrays.stream(values()).filter(operator -> operator.getSymbol().equals(symbol)).findFirst()
+        return findSymbol(symbol)
                 .orElseThrow(() -> new IllegalArgumentException("invalid symbol"));
     }
 
-    private String getSymbol() {
-        return symbol;
+    private static Optional<Operator> findSymbol(String symbol) {
+        return Arrays.stream(values())
+                .filter(operator -> operator.symbol.equals(symbol))
+                .findFirst();
+    }
+
+    public static boolean contains(String symbol) {
+        return findSymbol(symbol).isPresent();
     }
 }

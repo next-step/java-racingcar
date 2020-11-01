@@ -1,11 +1,6 @@
 package step2;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class ExpressionTokenizer {
-
-    private final static List<String> operators = Arrays.asList("+", "-", "*", "/");
 
     private ExpressionTokenizer() {
     }
@@ -45,7 +40,7 @@ public class ExpressionTokenizer {
     }
 
     private static void validateOperator(String token) {
-        if (!operators.contains(token)) {
+        if (!Operator.contains(token)) {
             throw new IllegalArgumentException("token should be operator");
         }
     }

@@ -68,5 +68,14 @@ public class OperatorTest {
                 .hasMessageContaining("invalid symbol");
     }
 
+    @DisplayName("symbol에 해당하는 Operator가 있는지 여부")
+    @ParameterizedTest(name = "\"{0}\" is contained in Operator -> {1}")
+    @CsvSource(value = {"+:true", "invalid:false"}, delimiter = ':')
+    public void containsSymbol(String symbol, boolean expectedResult) {
+        boolean result = Operator.contains(symbol);
+
+        assertThat(result).isEqualTo(expectedResult);
+    }
+
 
 }
