@@ -21,7 +21,7 @@ public class InputViewTest {
     @Test
     @DisplayName("request() 은 입력 결과를 응답한다.")
     public void request() {
-        inputView.setConsoleInput("red");
+        inputView.setConsoleInput("red", "1");
 
         Circuit circuit = inputView.request();
         assertThat(circuit).isNotNull();
@@ -30,7 +30,7 @@ public class InputViewTest {
     @Test
     @DisplayName("입력결과가 없으면 오류메시지를 출력한다.")
     public void whenCarNamesIsEmpty() {
-        inputView.setConsoleInput("");
+        inputView.setConsoleInput("", "1");
 
         inputView.request();
 
@@ -40,7 +40,7 @@ public class InputViewTest {
     @Test
     @DisplayName("자동차 이름이 5자가 넘으면 오류메시지를 출력한다.")
     public void whenCarNameOverFiveChar() {
-        inputView.setConsoleInput("yellow");
+        inputView.setConsoleInput("yellow", "1");
 
         inputView.request();
 
@@ -50,7 +50,7 @@ public class InputViewTest {
     @Test
     @DisplayName("쉽표로 구분된 입력을 분석하여 자동차 객체로 반환한다.")
     public void parsingCarNames() {
-        inputView.setConsoleInput("red,gold,white,blue");
+        inputView.setConsoleInput("red,gold,white,blue", "1");
 
         Circuit circuit = inputView.request();
 
@@ -67,8 +67,8 @@ public class InputViewTest {
 
     @Test
     @DisplayName("횟수를 입력받는다")
-    public void stepCount() {
-        inputView.setConsoleInput("4");
+    public void requestLaps() {
+        inputView.setConsoleInput("red", "4");
 
         Circuit circuit = inputView.request();
 
@@ -77,11 +77,12 @@ public class InputViewTest {
     }
 
     private static class TestingInputView extends InputView {
-        private Queue<String> consoleInput = new ArrayDeque<>();
+        private final Queue<String> consoleInput = new ArrayDeque<>();
         private String errorMessage;
 
-        public void setConsoleInput(String input) {
-            consoleInput.add(input);
+        public void setConsoleInput(String name, String laps) {
+            consoleInput.add(name);
+            consoleInput.add(laps);
         }
 
         public String recentErrorMessage() {
@@ -107,7 +108,13 @@ public class InputViewTest {
                     .map(RealCar::new) //
                     .collect(toSet());
 
-            return new Circuit(cars);
+            int laps = requestLaps();
+            return new Circuit(cars, laps);
+        }
+
+        private int requestLaps() {
+            String laps = nextLine();
+            return Integer.parseInt(laps);
         }
 
         private String requestNames() {
@@ -134,13 +141,19 @@ public class InputViewTest {
 
     private static class Circuit {
         private final Set<Car> cars;
+        private final int laps;
 
-        public Circuit(Set<Car> cars) {
+        public Circuit(Set<Car> cars, int laps) {
             this.cars = cars;
+            this.laps = laps;
         }
 
         public Set<Car> getCars() {
             return cars;
+        }
+
+        public int getLaps() {
+            return laps;
         }
     }
 }
