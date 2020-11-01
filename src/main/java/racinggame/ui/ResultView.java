@@ -17,12 +17,12 @@ public class ResultView {
   public static void printRacingResult(RacingResult racingResult) {
     System.out.println(NEW_LINE + RACING_RESULT);
     List<MovingResult> movingResults = racingResult.getMovingResults();
-    movingResults.forEach(movingResult -> printRoundResult(movingResult));
+    movingResults.forEach(ResultView::printRoundResult);
   }
 
   private static void printRoundResult(MovingResult movingResults) {
     List<CarSateInRace> carSateInRaces = movingResults.getCarSateInRaces();
-    carSateInRaces.forEach(carSateInRace -> printCarMovingPosition(carSateInRace));
+    carSateInRaces.forEach(ResultView::printCarMovingPosition);
     System.out.println(NEW_LINE);
   }
 

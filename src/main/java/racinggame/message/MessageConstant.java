@@ -13,6 +13,5 @@ public class MessageConstant {
 
   public static String NO_FOUND_WINNER = "경기를 시작하지 않았습니다.";
 
-  private MessageConstant() {
-  }
+  private MessageConstant() {}
 }
