@@ -62,57 +62,8 @@ public class Calculator {
 
     // 계산
     double calculate() {
-        double firstNumber = getFirstNumber();
-        return numberList.stream().reduce(firstNumber, (a, b) -> operate(a, b));
-    }
+        double firstNumber = numberList.poll();
 
-    private Double getFirstNumber() {
-        return numberList.poll();
-    }
-
-    // 연산
-    private double operate(double a, double b) {
-        double result = 0;
-
-        String operator = getOperator();
-
-        switch (operator) {
-            case "+":
-                result = sum(a, b);
-                break;
-            case "-":
-                result = subtract(a, b);
-                break;
-            case "*":
-                result = multiply(a, b);
-                break;
-            case "/":
-                result = divide(a, b);
-                break;
-        }
-        return result;
-    }
-
-    private String getOperator() {
-        return operatorList.poll();
-    }
-
-    double sum(double a, double b) {
-        return a + b;
-    }
-
-    double subtract(double a, double b) {
-        return a - b;
-    }
-
-    double multiply(double a, double b) {
-        return a * b;
-    }
-
-    double divide(double a, double b) {
-        if (b <= 0) {
-            throw new ArithmeticException("ArithmeticException");
-        }
-        return a / b;
+        return numberList.stream().reduce(firstNumber, (a, b) -> OperateType.operate(operatorList.poll(), a, b));
     }
 }
