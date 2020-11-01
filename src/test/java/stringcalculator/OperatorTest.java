@@ -26,7 +26,7 @@ class OperatorTest {
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Operator.findBy(invalidStrValue))
-                .withMessage("Unexpected strValue to find Operator '" + invalidStrValue + "'");
+                .withMessage("Unexpected value to find Operator '" + invalidStrValue + "'");
     }
 
     @Test
