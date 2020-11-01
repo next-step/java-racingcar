@@ -1,31 +1,36 @@
 package step3.view;
 
-import step3.Constant;
+import step3.strategy.PrintMarkStrategy;
 
-public class ResultView implements View<StringBuilder> {
+import java.util.List;
+import java.util.Map;
+
+public class ResultView {
     private static final ResultView resultView = new ResultView();
-    private StringBuilder racingProgress = new StringBuilder();
+    private final StringBuilder racingProgress = new StringBuilder();
 
     private ResultView() {
-        System.out.println(Constant.CREATED_INSTANCE);
     }
 
     public static ResultView getInstance() {
         return resultView;
     }
 
-    @Override
-    public void execute(StringBuilder sb) {
+    private void draw(List<Integer> list, PrintMarkStrategy strategy) {
+        list.forEach(progress -> {
+            racingProgress.append(String.valueOf(strategy.getPrintMark()).repeat(Math.max(0, progress)));
+            racingProgress.append(System.lineSeparator());
+        });
+        racingProgress.append(System.lineSeparator());
+    }
+
+    public void viewAll(Map<Integer, List<Integer>> history, PrintMarkStrategy strategy) {
         if (racingProgress.length() > 0) {
             racingProgress.delete(0, racingProgress.length());
         }
-        racingProgress = sb;
-        this.execute();
-    }
-
-    @Override
-    public StringBuilder execute() {
+        for (List<Integer> value : history.values()) {
+            draw(value, strategy);
+        }
         System.out.println(racingProgress.toString());
-        return racingProgress;
     }
 }

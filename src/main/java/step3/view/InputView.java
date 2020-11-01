@@ -3,14 +3,13 @@ package step3.view;
 import step3.Constant;
 import step3.game.RacingInfomation;
 
+import java.util.Objects;
 import java.util.Scanner;
 
-public class InputView implements View<RacingInfomation> {
+public class InputView{
     private static final InputView inputView = new InputView();
 
-    private InputView() {
-        System.out.println(Constant.CREATED_INSTANCE);
-    }
+    private InputView() { }
 
     public static InputView getInstance() {
         return inputView;
@@ -26,7 +25,6 @@ public class InputView implements View<RacingInfomation> {
         return scanner.nextInt();
     }
 
-    @Override
     public RacingInfomation execute() {
         Scanner scanner = new Scanner(System.in);
         Integer carNumber = questionCarNumber(scanner);
