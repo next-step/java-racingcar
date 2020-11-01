@@ -13,7 +13,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void init() {
-        racingCar = new RacingCar(new MockAlwaysMaxValueRandomUtil());
+        racingCar = new RacingCar(new MockAlwaysMaxValueRandomUtil(), "test");
     }
 
     @Test
