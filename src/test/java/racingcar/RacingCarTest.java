@@ -24,7 +24,7 @@ public class RacingCarTest {
             racingCar.tryToMove();
         }
         StringBuilder stringBuilder = new StringBuilder();
-        racingCar.printProcess(stringBuilder);
+        racingCar.repeatAsMoveCount(() -> stringBuilder.append("-"));
 
         assertThat(stringBuilder.toString().length()).isEqualTo(numberOfCountToTry);
     }

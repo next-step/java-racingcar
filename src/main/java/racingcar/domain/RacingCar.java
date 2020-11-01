@@ -35,9 +35,9 @@ public class RacingCar {
         }
     }
 
-    public void printProcess(StringBuilder stringBuilder) {
+    public void repeatAsMoveCount(Runnable runnable) {
         for (int i = 0; i < moveCount; i++) {
-            stringBuilder.append("-");
+            runnable.run();
         }
     }
 }
