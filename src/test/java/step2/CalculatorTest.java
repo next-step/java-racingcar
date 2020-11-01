@@ -3,48 +3,35 @@ package step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
-    CalculatorTest(){   
-        final int num1 = 0;
-        final int num2 = 0;
-    }
 
-    static final char plus = '+';
-    static final char minus = '-';
-    static final char div = '/';
-    static final char mul = '+';
+    private final static Calculator calculator = new Calculator();
 
-//    String[] value = "2 + 3 * 4 / 2".split(" ");
-
-    @DisplayName("계산")
     @Test
-    public void main(){
-        CalculatorTest calculatorTest = new CalculatorTest();
-        int addition = calculatorTest.addition(12, 14);
+    @DisplayName("더하기 테스트")
+    public void add () {
+        assertThat(calculator.addition(3, 2)).isEqualTo(5);
     }
 
-
-    @DisplayName("더하기")
-    public int addition (int num1, int num2) {
-        return num1-num2;
+    @Test
+    @DisplayName("빼기 테스트")
+    public void sub () {
+        assertThat(calculator.subtraction(3, 2)).isEqualTo(1);
     }
-
-    @DisplayName("빼기")
-    public int subtraction (int num1, int num2) {
-        return num1-num2;
+    @Test
+    @DisplayName("곱하기 테스트")
+    public void mul () {
+        assertThat(calculator.multiplication(3, 2)).isEqualTo(6);
     }
-
-    @DisplayName("곱하기")
-    public int multiplication (int num1, int num2) {
-        return num1*num2;
-    }
-
-    @DisplayName("나누기")
-    public int division (int num1, int num2) {
-        return num1/num2;
+    @Test
+    @DisplayName("나누기 테스트")
+    public void div () {
+        assertThat(calculator.division(4, 2)).isEqualTo(2);
     }
 
 }
