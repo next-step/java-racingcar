@@ -19,7 +19,7 @@ public class Calculator {
         // 2. 숫자, 연산자 세팅
         setNumberAndOperatorList();
         // 3. 잘못된 연산자 체크
-        checkOperator();
+        checkOperatorList();
     }
 
     double sum(double a, double b) {
@@ -54,27 +54,37 @@ public class Calculator {
         return string.replaceAll(" ", "");
     }
 
-    // 숫자, 문자 구분
+    // 숫자, 문자 구분 반복
     private void setNumberAndOperatorList() {
         String[] arrInputSplit = input.split(" ");
         for (String inputSplit : arrInputSplit) {
-            try {
-                Double parseDouble = Double.parseDouble(inputSplit);
-                numberList.add(parseDouble);
-            } catch (NumberFormatException e) {
-                operatorList.add(inputSplit);
-            }
+            setNumberAndOperator(inputSplit);
         }
     }
 
-    // 기호체크
-    private void checkOperator() {
-        // 기호가 하나이상 입력되어있거나, 사칙연산이 아닌경우
+    // 숫자, 문자 구분
+    private void setNumberAndOperator(String inputSplit) {
+        try {
+            Double parseDouble = Double.parseDouble(inputSplit);
+            numberList.add(parseDouble);
+        } catch (NumberFormatException e) {
+            operatorList.add(inputSplit);
+        }
+    }
+
+    // 연산자 목록 체크
+    private void checkOperatorList() {
         for (String operator : operatorList) {
-            if (operator.toCharArray().length > 1
-                    || !"+-*/".contains(operator)) {
-                throw new IllegalArgumentException("IllegalArgumentException");
-            }
+            checkOperator(operator);
+        }
+    }
+
+    // 연산자 체크
+    private void checkOperator(String operator) {
+        // 기호가 하나이상 입력되어있거나, 사칙연산이 아닌경우
+        if (operator.toCharArray().length > 1
+                || !"+-*/".contains(operator)) {
+            throw new IllegalArgumentException("IllegalArgumentException");
         }
     }
 
