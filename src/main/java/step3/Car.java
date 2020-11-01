@@ -3,30 +3,26 @@ package step3;
 import java.util.Random;
 
 public class Car {
+    private static final Integer bound = 9;
+
     private static final Random random = new Random();
     private int location = 0;
-    private boolean luck = false;
+
 
     public void move() {
-        if (goOrStay()) {
+        if (goOrStay(random.nextInt(bound))) {
             goForward();
         }
     }
 
-    private void tossUp() {
-        this.luck = random.nextInt(9) > 4;
+    public boolean goOrStay(int key) {
+        if (key > bound || key < 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANDOM_VALUE);
+        }
+        return key > 4;
     }
 
-    public boolean getLuck() {
-        return this.luck;
-    }
-
-    private boolean goOrStay() {
-        tossUp();
-        return getLuck();
-    }
-
-    public void goForward() {
+    private void goForward() {
         location++;
     }
 
