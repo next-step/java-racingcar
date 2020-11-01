@@ -13,7 +13,7 @@ public class RacingGame {
         int carNum = inputView.getCarNum();
         int gameRoundNum = inputView.getGameRoundNum();
 
-        GameManager gameManager = new GameManager();
+        GameManager gameManager = new GameManager(new RuleStrategyImpl());
         List<Car> cars = gameManager.readyCars(carNum, new MoveStrategyImpl());
         GameRound gameRound = new GameRound(gameRoundNum);
 
