@@ -8,11 +8,16 @@ public class ExpressionManager {
 
     public ExpressionManager(String[] expression) {
         for (int i = expression.length - 1; i >= 0; i--) {
-            addFactorToExpressionStack(expression, i);
+            ExpressionFactor expressionFactor = generateExpressionFactor(expression, i);
+            addExpressionFactor(expressionFactor);
         }
     }
 
-    private void addFactorToExpressionStack(String[] expression, int i) {
+    private void addExpressionFactor(ExpressionFactor expressionFactor) {
+        expressionStack.push(expressionFactor);
+    }
+
+    private ExpressionFactor generateExpressionFactor(String[] expression, int i) {
         ExpressionFactor expressionFactor = null;
         if (i % 2 == 0) {
             expressionFactor = new Operand(expression[i]);
@@ -20,7 +25,7 @@ public class ExpressionManager {
         if (i % 2 == 1) {
             expressionFactor = new Operator(expression[i]);
         }
-        expressionStack.push(expressionFactor);
+        return expressionFactor;
     }
 
     public boolean hasNext() {
