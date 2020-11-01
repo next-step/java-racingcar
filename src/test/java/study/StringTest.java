@@ -37,7 +37,7 @@ public class StringTest {
     void test3_2_throw_StringIndexOutOfBoundsExceptions() {
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> "abc".charAt(3))
-                .withMessageMatching("String index out of range: 3");
+                .withMessageMatching("String index out of range: \\d+");
     }
 
 
