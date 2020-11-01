@@ -1,3 +1,5 @@
+package calculator;
+
 public class Calculator {
     public int calculate(Expression e) {
         Integer result = null;
