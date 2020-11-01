@@ -13,4 +13,9 @@ public class ConsoleInputDevice implements InputDevice {
     public int getIntNumber() {
         return scanner.nextInt();
     }
+
+    @Override
+    public String getString() {
+        return scanner.next();
+    }
 }
