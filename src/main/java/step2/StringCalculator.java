@@ -40,7 +40,7 @@ public class StringCalculator {
             return tokenizer.nextToken();
         } catch(NoSuchElementException ex) {
             // token이 필요한데 없을 땐, IllegalArgumentException
-            throw new IllegalArgumentException("not enough token elements");
+            throw new IllegalArgumentException("incomplete expression");
         }
     }
 }

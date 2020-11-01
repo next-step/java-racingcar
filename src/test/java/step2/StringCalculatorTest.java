@@ -12,6 +12,7 @@ import static step2.StringCalculator.calculate;
 public class StringCalculatorTest {
     @DisplayName("basic operation test")
     @CsvSource(delimiter = '=', value = {
+            "1 = 1",
             "1 + 5 = 6",
             "1 - 5 = -4",
             "5 * 1 = 5",
@@ -40,20 +41,41 @@ public class StringCalculatorTest {
     void illegalExpression(String expression) {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 calculate(expression)
-        );
+        ).withMessage("expression omitted");
     }
 
-    @DisplayName("test for illegal elements")
+    @DisplayName("test for incomplete expression")
     @ValueSource(strings = {
             "1 + ",     // no rhs value
-            "1 2",      // invalid operator
-            "1 + 3 x 5",    // invalid operator
-            "1 - x / y"     // invalid value
     })
     @ParameterizedTest
-    void illegalElement(String expression) {
+    void incompleteExpression(String expression) {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 calculate(expression)
-        );
+        ).withMessage("incomplete expression");
+    }
+
+    @DisplayName("test for illegal operators")
+    @ValueSource(strings = {
+            "1 2",
+            "1 + 3 x 5",
+    })
+    @ParameterizedTest
+    void illegalOperator(String expression) {
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                calculate(expression)
+        ).withMessageMatching("unknown operator symbol: .*");
+    }
+
+    @DisplayName("test for illegal values")
+    @ValueSource(strings = {
+            "1 - x / y",
+            "1 * 5 / y",
+    })
+    @ParameterizedTest
+    void illegalValues(String expression) {
+        assertThatExceptionOfType(NumberFormatException.class).isThrownBy(() ->
+                calculate(expression)
+        ).withMessageMatching("For input string: .*");
     }
 }
