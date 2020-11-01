@@ -19,9 +19,11 @@ class ArithmeticExpression {
         for (int i = 0; i < inputSplits.length; i++) {
             addArithmeticNode(inputSplits[i], i);
         }
+
+        validateArithmeticNodes();
     }
 
-    void addArithmeticNode(String inputSplit, int index) {
+    private void addArithmeticNode(String inputSplit, int index) {
         if (isNumberIndex(index)) {
             numbers.add(Integer.valueOf(inputSplit));
             return;
