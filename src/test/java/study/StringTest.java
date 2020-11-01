@@ -4,13 +4,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
 
     @Test
     void split() {
-        String[] result = "1,2".split(",");
+        String[] result;
+
+        result = "1,2".split(",");
         assertThat(result).containsExactly("1", "2");
+
+        result = "1".split(",");
+        assertThat(result).containsExactly("1");
     }
 
     @Test
@@ -23,18 +29,9 @@ public class StringTest {
     @Test
     void findCharacter() {
         String input = "abc";
-        int findIndex = 0;
+        int findIndex = 3;
 
-        char result = getCharacherFromString(input, findIndex);
-
-        assertThat(result).isEqualTo('a');
-    }
-
-    private char getCharacherFromString(String input, int findIndex) {
-        if (findIndex < 0 || findIndex > 2) {
-            throw new StringIndexOutOfBoundsException(findIndex);
-        }
-
-        return input.charAt(findIndex);
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> input.charAt(findIndex));
     }
 }
