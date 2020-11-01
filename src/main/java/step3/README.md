@@ -8,7 +8,7 @@
 * 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
     * Car::allowMove
 * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다
-    * ResultView::execute
+    * ResultView::viewAll
 
 ## 힌트
 - 값을 입력 받는 API는 Scanner를 이용한다.
@@ -26,27 +26,25 @@
 ### step3 구조
 ```
 src
-.
 ├── main
 │     └── java
 │         └── step3
-│             ├── Constant.java //각종 상수 저장 클래스
+│             ├── Constant.java략 //프로젝트에서 사용되는 상수모음 클래
 │             ├── Main.java
 │             ├── README.md
 │             ├── car
-│             │     ├── Car.java // 자동차 인터페이스이며 Observer class
-│             │     └── RacingCar.java //자동차(Car) 구현체 Concrete Observer
-│             ├── factory
-│             │     ├── CarFactory.java //자동차 생성 인터페이스
-│             │     └── RacingCarFactory.java //자동차 생성 구현
+│             │     ├── Car.java
+│             │     └── RacingCar.java
 │             ├── game
-│             │     ├── RacingGame.java체 //레이싱 게임 Subject
-│             │     ├── RacingGameImpl.java //레이싱 게임 Concrete Subject
-│             │     └── RacingInfomation.java //레이싱 게임 참가 자동차 및 게임횟수 메타정보 클래
+│             │     ├── RacingGame.java
+│             │     ├── RacingGameImpl.java
+│             │     └── RacingInfomation.java
+│             ├── strategy
+│             │     ├── MoveStrategy.java //자동차 이동 전략 FunctionalInterface
+│             │     └── PrintMarkStrategy.java //ResultView에서 사용하는 출력 전
 │             └── view
 │                 ├── InputView.java
-│                 ├── ResultView.java
-│                 └── View.java
+│                 └── ResultView.java
 └── test
     └── java
         ├── step1
@@ -56,8 +54,7 @@ src
         │     ├── StringCalculator.java
         │     └── StringCalculatorTest.java
         └── step3
-            ├── RacingCarTest.java
-            └── TestRacingGame.java //테스트용 자동차 경주 게임 클래스 getNumber 오버라이드용 클래
+            └── RacingCarTest.java
 ```
 
 ## 구현시 애로사항
