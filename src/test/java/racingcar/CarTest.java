@@ -1,18 +1,22 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @Test
+    @ParameterizedTest
     @DisplayName("Car 이동하기")
-    void moveCar() {
-        Car car = new Car();
+    @ValueSource(ints = {0, 1, 2})
+    void moveCar(int movementExpected) {
+        Car car = new Car(() -> movementExpected);
+        int initialPosition = car.getPosition();
 
         car.move();
+        int movement = car.getPosition() - initialPosition;
 
-        assertThat(car).hasToString("-");
+        assertThat(movement).isEqualTo(movementExpected);
     }
 }

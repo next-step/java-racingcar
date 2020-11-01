@@ -6,24 +6,17 @@ import java.util.stream.IntStream;
 
 public class GameManager {
 
-    private final Discriminator discriminator;
+    private List<Car> cars;
 
-    public GameManager(Discriminator discriminator) {
-        this.discriminator = discriminator;
-    }
-
-    public List<Car> createCars(int carNum) {
-        return IntStream.range(0, carNum)
-                .mapToObj(i -> new Car())
+    public List<Car> readyCars(int num, MoveStrategy moveStrategy) {
+        this.cars = IntStream.range(0, num)
+                .mapToObj(i -> new Car(moveStrategy))
                 .collect(Collectors.toList());
+
+        return cars;
     }
 
-    public void move(List<Car> cars) {
-        cars.stream().forEach(car -> move(car));
-    }
-
-    private void move(Car c) {
-        if (discriminator.discriminate())
-            c.move();
+    public void play() {
+        cars.stream().forEach(c -> c.move());
     }
 }

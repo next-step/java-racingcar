@@ -4,49 +4,28 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameManagerTest {
-
     @Test
-    @DisplayName("Car객체 개수만큼 생성")
-    void createCars() {
-        int carNum = 4;
+    @DisplayName("게임 한 턴 플레이 테스트")
+    void play_everyCarOneMovement() {
+        int carNum = 3;
+        int movementExpected = 1;
+        GameManager gameManager = new GameManager();
+        List<Car> cars = gameManager.readyCars(carNum, () -> movementExpected);
+        List<Integer> initialPositions = cars.stream().map(Car::getPosition).collect(Collectors.toList());
 
-        Discriminator discriminator = new Discriminator(new Random());
-        GameManager gameManager = new GameManager(discriminator);
-        List<Car> cars = gameManager.createCars(carNum);
+        gameManager.play();
+        List<Integer> movements = IntStream.range(0, cars.size())
+                .mapToObj(i -> cars.get(i).getPosition() - initialPositions.get(i))
+                .collect(Collectors.toList());
 
-        assertThat(cars).hasSize(carNum);
-    }
-
-    @Test
-    @DisplayName("car를 모두 move하게 하여 테스트")
-    void move_fullMovement() {
-        Discriminator discriminator = new Discriminator(DiscriminatorTest.getMockRandom(Discriminator.THRESHOLD));
-        GameManager gameManager = new GameManager(discriminator);
-        List<Car> cars = gameManager.createCars(3);
-
-        gameManager.move(cars);
-
-        cars.stream().forEach(car ->
-                assertThat(car).hasToString("-")
-        );
-    }
-
-    @Test
-    @DisplayName("car를 모두 move하지 못하게 하여 테스트")
-    void move_noMovement() {
-        Discriminator discriminator = new Discriminator(DiscriminatorTest.getMockRandom(Discriminator.THRESHOLD - 1));
-        GameManager gameManager = new GameManager(discriminator);
-        List<Car> cars = gameManager.createCars(3);
-
-        gameManager.move(cars);
-
-        cars.stream().forEach(car ->
-                assertThat(car).hasToString("")
+        movements.stream().forEach(movement ->
+                assertThat(movement).isEqualTo(movementExpected)
         );
     }
 }

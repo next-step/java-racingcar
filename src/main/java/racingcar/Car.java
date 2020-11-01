@@ -1,20 +1,19 @@
 package racingcar;
 
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class Car {
     private int position;
-    private static final String DISTANCE_UNIT = "-";
+    private MoveStrategy moveStrategy;
 
-    public void move() {
-        this.position += 1;
+    public Car(MoveStrategy moveStrategy) {
+        position = 0;
+        this.moveStrategy = moveStrategy;
     }
 
-    @Override
-    public String toString() {
-        return IntStream.range(0, position)
-                .mapToObj(i -> DISTANCE_UNIT)
-                .collect(Collectors.joining());
+    public void move() {
+        position += moveStrategy.getMovement();
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
