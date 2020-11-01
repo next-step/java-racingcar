@@ -4,10 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Queue;
+import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class InputViewTest {
 
@@ -74,6 +78,17 @@ public class InputViewTest {
 
         assertThat(circuit.getLaps()) //
                 .isEqualTo(4);
+    }
+
+    @Test
+    @DisplayName("횟수는 Integer type 이어야 한다.")
+    public void ensureLapsType() {
+        inputView.setConsoleInput("red", "A");
+
+        assertThatExceptionOfType(NumberFormatException.class) //
+                .isThrownBy(() -> inputView.request());
+
+        assertThat(inputView.recentErrorMessage()).isEqualTo("횟수는 0 이상의 정수로 입력해 주세요.");
     }
 
     private static class TestingInputView extends InputView {
