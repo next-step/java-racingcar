@@ -91,6 +91,16 @@ public class InputViewTest {
         assertThat(inputView.recentErrorMessage()).isEqualTo("횟수는 0 이상의 정수로 입력해 주세요.");
     }
 
+    @Test
+    @DisplayName("횟수는 0 이상이어야 한다.")
+    public void ensureLapsMinValue() {
+        inputView.setConsoleInput("red", "-1");
+
+        inputView.request();
+
+        assertThat(inputView.recentErrorMessage()).isEqualTo("횟수는 0 이상의 정수로 입력해 주세요.");
+    }
+
     private static class TestingInputView extends InputView {
         private final Queue<String> consoleInput = new ArrayDeque<>();
         private String errorMessage;
