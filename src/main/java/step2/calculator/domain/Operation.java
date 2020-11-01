@@ -1,9 +1,15 @@
 package step2.calculator.domain;
 
+import common.util.Message;
+import common.util.Preconditions;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.IntBinaryOperator;
 import java.util.stream.Collectors;
+
+import static step2.calculator.domain.Operation.ErrorMessage.CAN_NOT_DIVIDE_BY_ZERO;
+import static step2.calculator.domain.Operation.ErrorMessage.NOT_FOUND_MATCHED_OPERATION;
 
 public enum Operation {
     PLUS("+", (x, y) -> x + y),
@@ -12,9 +18,25 @@ public enum Operation {
     DIVIDE("/", (x, y) -> x / y),
     ;
 
+    public enum ErrorMessage implements Message {
+        CAN_NOT_DIVIDE_BY_ZERO("can't divide bu zero"),
+        NOT_FOUND_MATCHED_OPERATION("not found matched Operation"),
+        ;
+
+        private final String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        ErrorMessage(String message) {
+            this.message = message;
+        }
+    }
+
     private final String symbol;
     private final IntBinaryOperator op;
-    
+
     Operation(final String symbol, final IntBinaryOperator op) {
         this.symbol = symbol;
         this.op = op;
@@ -22,7 +44,7 @@ public enum Operation {
 
     public int apply(final int x, final int y) {
         if (this == DIVIDE && y == 0) {
-            throw new IllegalArgumentException("can't divide bu zero");
+            throw new IllegalArgumentException(CAN_NOT_DIVIDE_BY_ZERO.getMessage());
         }
         return op.applyAsInt(x, y);
     }
@@ -33,7 +55,7 @@ public enum Operation {
                 return op;
             }
         }
-        throw new IllegalArgumentException("can't find matched Operation");
+        throw new IllegalArgumentException(NOT_FOUND_MATCHED_OPERATION.getMessage());
     }
 
     public static List<String> getSupportedSymbols() {

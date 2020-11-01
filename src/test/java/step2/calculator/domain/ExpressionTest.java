@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static step2.calculator.domain.Expression.ErrorMessage.*;
 
 class ExpressionTest {
 
@@ -27,7 +28,7 @@ class ExpressionTest {
 
             // then
             assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("Expression's value should not be null");
+                    .hasMessageContaining(NOT_BE_NULL.getMessage());
         }
 
         @DisplayName("입력 값이 공백 문자인 경우 IllegalArgumentException throw")
@@ -43,7 +44,7 @@ class ExpressionTest {
 
             // then
             assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("Expression's value should not be blank");
+                    .hasMessageContaining(NOT_BE_BLANK.getMessage());
         }
 
         @DisplayName("입력 값이 숫자 혹은 사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
@@ -65,7 +66,7 @@ class ExpressionTest {
 
             // then
             assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("Expression's value should be consist of number and operations");
+                    .hasMessageContaining(CONSIST_OF_NUMBER_AND_OPERATIONS.getMessage());
         }
 
         @DisplayName("입력 값이 모두 유효한 경우 Expression_instance 반환")

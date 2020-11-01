@@ -11,6 +11,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static step2.calculator.domain.Operation.ErrorMessage.CAN_NOT_DIVIDE_BY_ZERO;
+import static step2.calculator.domain.Operation.ErrorMessage.NOT_FOUND_MATCHED_OPERATION;
 
 class OperationTest {
 
@@ -95,7 +97,7 @@ class OperationTest {
 
                 // then
                 assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("can't divide bu zero");
+                        .hasMessageContaining(CAN_NOT_DIVIDE_BY_ZERO.getMessage());
             }
         }
     }
@@ -130,7 +132,7 @@ class OperationTest {
 
             // then
             assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("can't find matched Operation");
+                    .hasMessageContaining(NOT_FOUND_MATCHED_OPERATION.getMessage());
         }
     }
 
