@@ -5,6 +5,7 @@ import racingcar.view.OutputView;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class RacingCar {
     public static void main(String[] args) {
@@ -17,9 +18,9 @@ public class RacingCar {
         GameManager gameManager = new GameManager(new Discriminator(new Random()));
         List<Car> cars = gameManager.createCars(carNum);
 
-        for(int i=0;i<tryNum;i++){
+        IntStream.range(0, tryNum).forEach(i -> {
             gameManager.move(cars);
             outputView.showResult(cars);
-        }
+        });
     }
 }
