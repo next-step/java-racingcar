@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,12 +18,16 @@ class CarTest {
     @ValueSource(strings = {"", "1", "22", "333", "4444", "55555", "666666", "7777777", "88888888"})
     void car(String name) {
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        if (name.length() > NumConst.MAX_NAME_LENGTH) {
-            assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> {
-                        new Car(name, strategy);
-                    }).withMessageMatching(MsgConst.MAX_NAME_LENGTH_EXCEEDED);
+        if (name.length() <= NumConst.MAX_NAME_LENGTH) {
+            Assertions.assertDoesNotThrow(() -> {
+                new Car(name, strategy);
+            });
+            return;
         }
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Car(name, strategy);
+                }).withMessageMatching(MsgConst.MAX_NAME_LENGTH_EXCEEDED);
     }
 
     @Test
