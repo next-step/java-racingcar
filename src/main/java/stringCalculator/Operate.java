@@ -3,7 +3,7 @@ package stringCalculator;
 import java.util.List;
 
 /**
- * 연산하는 클래스
+ * 연산 수행 전
  */
 public class Operate {
 
@@ -26,22 +26,14 @@ public class Operate {
      */
     private void operate(List<Integer> operands, String operator) {
         int operand = operands.get(operatorCnt);
-        operate(operand, operator);
+        calculate(operand, operator);
     }
 
     /**
      * 사칙연산 수행
      */
-    private void operate(int operand, String operator) {
-        if ("+".equals(operator)) {
-            result += operand;
-        } else if ("-".equals(operator)) {
-            result -= operand;
-        } else if ("*".equals(operator)) {
-            result *= operand;
-        } else if ("/".equals(operator)) {
-            result /= operand;
-        }
+    private void calculate(int operand, String operator) {
+        result = Calculate.calculate(operator, result, operand);
     }
 
     public int getResult() {

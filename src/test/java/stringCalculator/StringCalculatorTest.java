@@ -11,7 +11,7 @@ class StringCalculatorTest {
     @DisplayName(value = "문자열을 사칙연산 한다.")
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2,10", "2 * 2 * 2 * 2,16", "-1 * -1 / 2,0"})
-    void addAndSubtract(String str, int expected) {
+    void stringCalculator(String str, int expected) {
         // given
         String source = str;
 
