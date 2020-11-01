@@ -138,7 +138,13 @@ public class InputViewTest {
         public Circuit request() {
             String names = requestNames();
 
+
             Set<Car> cars = Arrays.stream(names.split(",")) //
+                    .peek(name -> {
+                        if (name.length() > 5) {
+                            throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
+                        }
+                    })
                     .map(RealCar::new) //
                     .collect(toSet());
 
@@ -172,9 +178,6 @@ public class InputViewTest {
             String names = nextLine();
             if (names.isEmpty()) {
                 throw new IllegalArgumentException("쉼표로 구분된 자동차 이름을 입력해주세요.");
-            }
-            if (names.length() > 5) {
-                throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
             }
 
             return names;
