@@ -1,11 +1,10 @@
 package step3.car;
 
-import step3.game.RacingGame;
+import step3.strategy.PrintMarkStrategy;
 
 public interface Car {
-    void go(RacingGame game);
-
-    default boolean allowMove(Integer number) {
-        return number >= 4;
-    }
+    void go();
+    boolean allowMove();
+    int currentProgress();
+    StringBuilder getProgressFromStrategy(PrintMarkStrategy strategy);
 }
