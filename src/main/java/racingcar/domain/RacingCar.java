@@ -8,31 +8,27 @@ public class RacingCar {
     private static final int MIN_MOVABLE_NUM = 4;
 
     private final RandomUtil randomUtil;
-    private final int numberOfCountToTry;
     private int moveCount;
 
-    public RacingCar(int numberOfCountToTry) {
+    public RacingCar() {
         this.randomUtil = JavaUtilRandom.getInstance();
-        this.numberOfCountToTry = numberOfCountToTry;
         moveCount = 0;
     }
 
-    public RacingCar(RandomUtil randomUtil, int numberOfCountToTry) {
+    public RacingCar(RandomUtil randomUtil) {
         this.randomUtil = randomUtil;
-        this.numberOfCountToTry = numberOfCountToTry;
         moveCount = 0;
     }
 
     public void tryToMove() {
-        int randomNumber = randomUtil.getInt(RANDOM_BOUND);
-
-        if (moveCount >= numberOfCountToTry) {
-            return;
-        }
-
-        if (randomNumber >= MIN_MOVABLE_NUM) {
+        if (isMovable()) {
             moveCount++;
         }
+    }
+
+    private boolean isMovable() {
+        int randomNumber = randomUtil.getInt(RANDOM_BOUND);
+        return randomNumber >= MIN_MOVABLE_NUM;
     }
 
     public void repeatAsMoveCount(Runnable runnable) {

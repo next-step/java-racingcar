@@ -17,7 +17,7 @@ public class Input {
     public List<RacingCar> toRacingCars() {
         List<RacingCar> racingCars = new ArrayList<>();
         for (int i = 0; i < numberOfCar; i++) {
-            racingCars.add(new RacingCar(numberOfCountToTry));
+            racingCars.add(new RacingCar());
         }
         return racingCars;
     }
