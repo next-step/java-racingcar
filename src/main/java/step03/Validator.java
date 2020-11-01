@@ -1,6 +1,6 @@
 package step03;
 
-import step03.exception.NotPositiveIntegerException;
+import exception.NotPositiveIntegerException;
 
 public class Validator {
     private Validator() {}

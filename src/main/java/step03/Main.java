@@ -11,7 +11,8 @@ public class Main {
         int numberOfMoves = InputView.scanNumberOfMoves();
         Validator.validatePositiveNumber(numberOfMoves);
 
-        Operator operator = Operator.of(numberOfCars, numberOfMoves);
+        Cars cars = Cars.of(numberOfCars);
+        Operator operator = Operator.of(numberOfMoves, cars);
         operator.operate(RandomMoveStrategy.of());
 
     }

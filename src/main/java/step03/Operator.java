@@ -8,20 +8,13 @@ public class Operator {
     private final int numberOfMoves;
     private final Cars cars;
 
-    private Operator(int numberOfCars, Cars cars) {
-        this.numberOfMoves = numberOfCars;
+    private Operator(int numberOfMoves, Cars cars) {
+        this.numberOfMoves = numberOfMoves;
         this.cars = cars;
     }
 
-    public static Operator of(int numberOfCars, Cars cars) {
-        return new Operator(numberOfCars, cars);
-    }
-
-    public static Operator of(int numberOfCars, int numberOfMoves) {
-        return of(
-            numberOfMoves,
-            Cars.of(numberOfCars)
-        );
+    public static Operator of(int numberOfMoves, Cars cars) {
+        return new Operator(numberOfMoves, cars);
     }
 
     public void operate(MoveStrategy moveStrategy) {
