@@ -36,7 +36,7 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("가장 많이 move 한 car 들이 Winner 가 된다.")
+    @DisplayName("가장 getPosition 값이 큰 car 들이 Winner 가 된다.")
     void getWinners() {
         int carNum = 5;
         int maxPosition = Integer.MAX_VALUE;
