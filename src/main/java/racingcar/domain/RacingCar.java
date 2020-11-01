@@ -3,15 +3,13 @@ package racingcar.domain;
 import racingcar.util.JavaUtilRandom;
 import racingcar.util.RandomUtil;
 
-import java.util.function.Consumer;
-
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar>{
     public static final int AVAILABLE_MAX_NAME_LENGTH = 5;
     private static final int RANDOM_BOUND = 10;
     private static final int MIN_MOVABLE_NUM = 4;
 
+    public final String name;
     private final RandomUtil randomUtil;
-    private final String name;
     private int moveCount;
 
     public RacingCar(String name) {
@@ -42,13 +40,18 @@ public class RacingCar {
         return randomNumber >= MIN_MOVABLE_NUM;
     }
 
-    public void labelName(Consumer<String> consumer) {
-        consumer.accept(name);
-    }
-
     public void repeatAsMoveCount(Runnable runnable) {
         for (int i = 0; i < moveCount; i++) {
             runnable.run();
         }
+    }
+
+    public boolean isSameMoveCount(RacingCar racingCar) {
+        return moveCount == racingCar.moveCount;
+    }
+
+    @Override
+    public int compareTo(RacingCar racingCar) {
+        return Integer.compare(racingCar.moveCount, moveCount);
     }
 }

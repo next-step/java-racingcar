@@ -5,7 +5,9 @@ import racingcar.dto.Input;
 import racingcar.inputview.InputHandler;
 import racingcar.resultview.ResultView;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
     private final InputHandler inputHandler;
@@ -22,8 +24,15 @@ public class RacingCarGame {
 
         for (int i = 0; i < input.numberOfCountToTry; i++) {
             tryToMoveRacingCars(racingCars);
-            resultView.print(racingCars);
+            resultView.printProgress(racingCars);
         }
+
+        Collections.sort(racingCars);
+        RacingCar winner = racingCars.get(0);
+        List<RacingCar> winners = racingCars.stream()
+                .filter(rc -> rc.isSameMoveCount(winner))
+                .collect(Collectors.toList());
+        resultView.printWinners(winners);
     }
 
     private void tryToMoveRacingCars(List<RacingCar> racingCars) {
