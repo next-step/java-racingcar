@@ -15,15 +15,19 @@ public class InputHandler {
     }
 
     public Input getInput() {
-        inputView.print(NUMBER_OF_CAR_QUERYING_MSG);
-        int numberOfCar = inputDevice.getIntNumber();
-
-        inputView.print(NUMBER_OF_COUNT_TO_TRY_QUERYING_MSG);
-        int numberOfCountOfTry = inputDevice.getIntNumber();
-
         return Input.builder()
-                .numberOfCar(numberOfCar)
-                .numberOfCountToTry(numberOfCountOfTry)
+                .numberOfCar(getNumberOfCar())
+                .numberOfCountToTry(getNumberOfCountOfTry())
                 .build();
+    }
+
+    private int getNumberOfCar() {
+        inputView.print(NUMBER_OF_CAR_QUERYING_MSG);
+        return inputDevice.getIntNumber();
+    }
+
+    private int getNumberOfCountOfTry() {
+        inputView.print(NUMBER_OF_COUNT_TO_TRY_QUERYING_MSG);
+        return inputDevice.getIntNumber();
     }
 }
