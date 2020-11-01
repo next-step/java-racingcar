@@ -25,7 +25,7 @@ public class GameManagerTest {
     @Test
     @DisplayName("car를 모두 move하게 하여 테스트")
     void move_fullMovement() {
-        Discriminator discriminator = new Discriminator(DiscriminatorTest.getMockRandom(4));
+        Discriminator discriminator = new Discriminator(DiscriminatorTest.getMockRandom(Discriminator.THRESHOLD));
         GameManager gameManager = new GameManager(discriminator);
         List<Car> cars = gameManager.createCars(3);
 
@@ -39,7 +39,7 @@ public class GameManagerTest {
     @Test
     @DisplayName("car를 모두 move하지 못하게 하여 테스트")
     void move_noMovement() {
-        Discriminator discriminator = new Discriminator(DiscriminatorTest.getMockRandom(3));
+        Discriminator discriminator = new Discriminator(DiscriminatorTest.getMockRandom(Discriminator.THRESHOLD - 1));
         GameManager gameManager = new GameManager(discriminator);
         List<Car> cars = gameManager.createCars(3);
 
