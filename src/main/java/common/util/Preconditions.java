@@ -12,8 +12,6 @@ public class Preconditions {
     }
 
     public static void checkArgument(final boolean expression, final Message message) {
-        if (!expression) {
-            throw new IllegalArgumentException(message.getMessage());
-        }
+        checkArgument(expression, message.getMessage());
     }
 }
