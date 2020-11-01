@@ -16,7 +16,7 @@ public enum Calculator {
   this.values = values;
  }
 
- public int calculate(String operator, int first, int second) {
+ public static int calculate(String operator, int first, int second) {
   switch (operator) {
    case "+":
     return ADD.values.apply(first, second);

@@ -30,7 +30,7 @@ public class StringCalculator {
    if (!this.isOperator(datas.get(i)) || !this.isNumeric(datas.get(i + 1))) {
     continue;
    }
-   value = Calculator.ADD.calculate(datas.get(i), value, Integer.parseInt(datas.get(i + 1)));
+   value = Calculator.calculate(datas.get(i), value, Integer.parseInt(datas.get(i + 1)));
   }
   return value;
  }
