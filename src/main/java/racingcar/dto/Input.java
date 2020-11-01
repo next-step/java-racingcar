@@ -30,7 +30,7 @@ public class Input {
 
         private Builder() {}
 
-        public Builder numberOfCar(List<String> namesOfCars) {
+        public Builder namesOfCars(List<String> namesOfCars) {
             this.namesOfCars = namesOfCars;
             return this;
         }

@@ -20,12 +20,12 @@ public class InputHandler {
 
     public Input getInput() {
         return Input.builder()
-                .numberOfCar(getNumberOfCar())
+                .namesOfCars(getNamesOfCars())
                 .numberOfCountToTry(getNumberOfCountOfTry())
                 .build();
     }
 
-    private List<String> getNumberOfCar() {
+    private List<String> getNamesOfCars() {
         inputView.print(NAMES_OF_CARS_QUERYING_MSG);
         String namesOfCars = inputDevice.getString();
         String[] names = namesOfCars.split(",");
