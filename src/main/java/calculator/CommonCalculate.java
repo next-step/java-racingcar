@@ -3,44 +3,33 @@ package calculator;
 /**
  * +, -, *, / 연산
  */
-public class CommonCalculate {
-    /**
-     * 뺄셈 연산.
-     * @param a
-     * @param b
-     * @return a - b
-     */
-    public static int subCalculate(final int a, final int b) {
-        return a - b;
-    }
+public class CommonCalculate{
 
     /**
-     * 곱하기 연산
+     * 사칙연산
+     * @param Operator
      * @param a
      * @param b
-     * @return a * b
+     * @return
      */
-    public static int mulCalculate(final int a, final int b) {
-        return a * b;
-    }
+    public static int commonCalculate(CalculatorParamValue paramValue){
+        int returnValue = 0;
 
-    /**
-     * 나눗셈 연산
-     * @param a
-     * @param b
-     * @return a / b
-     */
-    public static int divCalculate(final int a, final int b) {
-        return a / b;
-    }
+        switch(paramValue.getOperator()) {
+            case '+':
+                returnValue = Opserator.ADD.getResult(paramValue);
+                break;
+            case '-':
+                returnValue = Opserator.SUB.getResult(paramValue);
+                break;
+            case '*':
+                returnValue = Opserator.MUL.getResult(paramValue);
+                break;
+            case '/':
+                returnValue = Opserator.DIV.getResult(paramValue);
+                break;
+        }
 
-    /**
-     * 덧셈 연산
-     * @param a
-     * @param b
-     * @return a + b
-     */
-    public static int addCalculate(final int a, final int b) {
-        return a + b;
+        return returnValue;
     }
 }

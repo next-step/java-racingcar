@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * 문자열 중에서 연산자가 존재하는 index와 해당되는 문자열 저장하는 객체
  */
-public class OperatorOrder {
+public class OperatorOrder{
 
-    private char operatorText; // 연산자
-    private int index;  // 연산자가 존재하는 inex
+    private final char operatorText; // 연산자
+    private final int index;  // 연산자가 존재하는 inex
 
     OperatorOrder(char operatorText, int index){
         this.operatorText = operatorText;
@@ -31,7 +31,6 @@ public class OperatorOrder {
      */
     public static List<OperatorOrder> operatorDivision (final String param){
         List<OperatorOrder> list = new ArrayList<OperatorOrder>();
-        char temp;
 
         for (int i = 0; i < param.toCharArray().length; i++){
             paramNumberCheckAndListAdd(param.toCharArray()[i], i, list);
@@ -63,4 +62,5 @@ public class OperatorOrder {
             throw new IllegalArgumentException("연산자 외 다른 값");
         }
     }
+
 }
