@@ -24,6 +24,7 @@ class CalculatorTest {
         assertThat(calc).isEqualTo(expect);
     }
 
+    // 이거 1인경우는....  정상 아닌가요 ..?  1 -> 1 요구사항이해를 잘못한걸꺼요 ㅜㅜ?흑흑
     @DisplayName("문자열 계산기 통합 테스트 - 예외 발생 테스트")
     @ParameterizedTest
     @CsvSource(value = {
