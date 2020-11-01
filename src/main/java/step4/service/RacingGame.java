@@ -51,6 +51,9 @@ public class RacingGame {
         cars.moveCars(moveStrategy);
         return cars;
     }
+    public Cars getGameEndResult(){
+        return cars;
+    }
 
     private void validTryCount(int tryCount) {
         if (tryCount < MIN_TRY_COUNT) {

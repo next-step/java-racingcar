@@ -12,12 +12,14 @@ public class GameController {
         int tryCount = InputController.putTryCount();
 
 
-        OutputController.endResult();
+        OutputController.printEndResult();
 
         RacingGame racingGame = new RacingGame(new RacingGameConditionDTO(carNames,tryCount), new RandomMoveStrategy());
         for (int i = 0; i < tryCount; i++) {
             OutputController.runResult(racingGame.getGameRoundResult());
         }
+
+        OutputController.printWinnerResult(racingGame.getGameEndResult());
     }
 
 
