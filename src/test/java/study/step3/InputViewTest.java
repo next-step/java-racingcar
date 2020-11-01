@@ -69,6 +69,17 @@ public class InputViewTest {
         //@formatter:on
     }
 
+
+    @Test
+    @DisplayName("쉽표로 구분된 입력을 분석하여 자동차 객체로 반환한다.")
+    public void CarNameOverFiveCharInList() {
+        inputView.setConsoleInput("red,gold,yellow,blue", "1");
+
+        inputView.request();
+
+        assertThat(inputView.recentErrorMessage()).isEqualTo("이름은 5자를 넘을 수 없습니다.");
+    }
+
     @Test
     @DisplayName("횟수를 입력받는다")
     public void requestLaps() {
