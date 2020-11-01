@@ -1,14 +1,12 @@
 package study.step3;
 
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
+import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest {
@@ -56,9 +54,15 @@ public class InputViewTest {
 
         Circuit circuit = inputView.request();
 
-        assertThat(circuit.getCars()) //
-                .hasSize(4) //
-                .containsExactly(new RealCar("red"), new RealCar("gold"), new RealCar("white"), new RealCar("blue"));
+        //@formatter:off
+        assertThat(circuit.getCars())
+                .hasSize(4)
+                .containsExactlyInAnyOrder(
+                        new RealCar("red"),
+                        new RealCar("gold"),
+                        new RealCar("white"),
+                        new RealCar("blue"));
+        //@formatter:on
     }
 
     private static class TestingInputView extends InputView {
@@ -86,8 +90,13 @@ public class InputViewTest {
 
     private static class InputView {
         public Circuit request() {
-            String name = requestNames();
-            return new Circuit();
+            String names = requestNames();
+
+            Set<Car> cars = Arrays.stream(names.split(",")) //
+                    .map(RealCar::new) //
+                    .collect(toSet());
+
+            return new Circuit(cars);
         }
 
         private String requestNames() {
@@ -98,6 +107,7 @@ public class InputViewTest {
             if (names.length() > 5) {
                 printError("이름은 5자를 넘을 수 없습니다.");
             }
+
             return names;
         }
 
@@ -112,5 +122,14 @@ public class InputViewTest {
     }
 
     private static class Circuit {
+        private final Set<Car> cars;
+
+        public Circuit(Set<Car> cars) {
+            this.cars = cars;
+        }
+
+        public Set<Car> getCars() {
+            return cars;
+        }
     }
 }
