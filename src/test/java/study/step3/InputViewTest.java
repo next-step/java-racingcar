@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest {
@@ -18,8 +21,9 @@ public class InputViewTest {
     @Test
     @DisplayName("request() 은 입력 결과를 응답한다.")
     public void request() {
-        Circuit circuit = inputView.request();
+        inputView.setConsoleInput("red");
 
+        Circuit circuit = inputView.request();
         assertThat(circuit).isNotNull();
     }
 
@@ -44,23 +48,53 @@ public class InputViewTest {
     }
 
     private static class TestingInputView extends InputView {
-        public Circuit request() {
-            return new Circuit();
-        }
+        private Queue<String> consoleInput = new ArrayDeque<>();
+        private String errorMessage;
 
         public void setConsoleInput(String input) {
-
+            consoleInput.add(input);
         }
 
         public String recentErrorMessage() {
-            return "쉼표로 구분된 자동차 이름을 입력해주세요.";
+            return errorMessage;
+        }
+
+        @Override
+        protected String nextLine() {
+            return consoleInput.poll();
+        }
+
+        @Override
+        protected void printError(String message) {
+            this.errorMessage = message;
         }
     }
 
     private static class InputView {
         public Circuit request() {
+            String name = requestNames();
             return new Circuit();
         }
+
+        private String requestNames() {
+            String names = nextLine();
+            if (names.isEmpty()) {
+                printError("쉼표로 구분된 자동차 이름을 입력해주세요.");
+            }
+            if (names.length() > 5) {
+                printError("이름은 5자를 넘을 수 없습니다.");
+            }
+            return names;
+        }
+
+        protected void printError(String message) {
+
+        }
+
+        protected String nextLine() {
+            return null;
+        }
+
     }
 
     private static class Circuit {
