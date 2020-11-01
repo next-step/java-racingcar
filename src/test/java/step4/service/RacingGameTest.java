@@ -3,6 +3,7 @@ package step4.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step4.domain.Car;
 import step4.domain.Cars;
 import step4.domain.MustMoveStrategy;
 import step4.dto.RacingGameConditionDTO;
@@ -10,6 +11,7 @@ import step4.utils.CarNameSplitter;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,7 +26,10 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(new RacingGameConditionDTO(carNames, tryCount), new MustMoveStrategy());
         for (int i = 0; i < tryCount; i++) {
             Cars cars = racingGame.getGameRoundResult();
-            carsPositions = cars.getCarsPosition();
+            carsPositions = cars.getCarsStatus()
+                    .stream()
+                    .map(Car::getCarPosition)
+                    .collect(Collectors.toList());
         }
         carsPositions.forEach(carPosition -> assertThat(carPosition).isEqualTo(tryCount));
 

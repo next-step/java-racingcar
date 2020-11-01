@@ -8,6 +8,7 @@ import step4.exception.OutBoundCarListSizeException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,7 +25,9 @@ class CarsTest {
         MoveStrategy moveStrategy = new MustMoveStrategy();
         //when
         cars.moveCars(moveStrategy);
-        List<Integer> carsPositions = cars.getCarsPosition();
+        List<Integer> carsPositions = cars.getCarsStatus().stream()
+                .map(Car::getCarPosition)
+                .collect(Collectors.toList());
         //then
         carsPositions.forEach(carsPosition -> assertThat(carsPosition).isEqualTo(1));
     }
