@@ -7,10 +7,13 @@ import java.util.function.IntBinaryOperator;
 import java.util.stream.Collectors;
 
 public enum Operator {
-    ADD(     "+", (lhs, rhs) -> lhs + rhs), // can be replaced with Integer::sum
+    ADD(     "+", Integer::sum),
     SUBTRACT("-", (lhs, rhs) -> lhs - rhs),
     MULTIPLY("*", (lhs, rhs) -> lhs * rhs),
-    DIVIDE(  "/", (lhs, rhs) -> lhs / rhs);
+    DIVIDE(  "/", (lhs, rhs) -> {
+        if(rhs == 0) throw new IllegalArgumentException("divided by zero");
+        return lhs / rhs;
+    });
 
     private static final Map<String, Operator> symbolMapping =
             Arrays.stream(values()).collect(
@@ -32,10 +35,6 @@ public enum Operator {
     }
 
     public int operate(int lhs, int rhs) {
-        try {
-            return operation.applyAsInt(lhs, rhs);
-        } catch(ArithmeticException ex) {
-            throw new IllegalArgumentException(ex);
-        }
+        return operation.applyAsInt(lhs, rhs);
     }
 }
