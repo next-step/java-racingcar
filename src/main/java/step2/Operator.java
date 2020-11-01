@@ -12,15 +12,15 @@ public enum Operator {
     MULTIPLY("*", (lhs, rhs) -> lhs * rhs),
     DIVIDE(  "/", (lhs, rhs) -> lhs / rhs);
 
-    static final Map<String, Operator> symbolMapping =
+    private static final Map<String, Operator> symbolMapping =
             Arrays.stream(values()).collect(
                     Collectors.toUnmodifiableMap(op -> op.symbol, Function.identity())
             );
 
-    final String symbol;
-    final IntBinaryOperator operation;  // more exact than BiFunction<Integer, Integer, Integer>
+    private final String symbol;
+    private final IntBinaryOperator operation;  // more exact than BiFunction<Integer, Integer, Integer>
 
-    Operator(String symbol, IntBinaryOperator operation) {
+    /* private */ Operator(String symbol, IntBinaryOperator operation) {
         this.symbol = symbol;
         this.operation = operation;
     }

@@ -6,10 +6,10 @@ import static java.lang.Integer.parseInt;
 import static step2.Operator.parseOperator;
 
 public class StringCalculator {
-    static final String EXPRESSION_DELIMITERS = " ";
-    final StringTokenizer tokenizer;
+    private static final String EXPRESSION_DELIMITERS = " ";
+    protected final StringTokenizer tokenizer;
 
-    StringCalculator(String expression) {
+    protected StringCalculator(String expression) {
         if(expression == null || expression.isBlank()) {
             throw new IllegalArgumentException();
         }
@@ -21,7 +21,7 @@ public class StringCalculator {
         return new StringCalculator(expression).calculate();
     }
 
-    int calculate() {
+    private int calculate() {
         // leftmost derivation { lhs = ( (lhs op1 rhs1) op2 rhs2 ) ... }
         int lhs = parseInt(nextToken());
         while(tokenizer.hasMoreElements()) {
@@ -30,12 +30,12 @@ public class StringCalculator {
         return lhs;
     }
 
-    int calculateOne(int base) {
+    protected int calculateOne(int base) {
         return parseOperator(nextToken())
                 .operate(base, parseInt(nextToken()));
     }
 
-    String nextToken() {
+    protected String nextToken() {
         try {
             return tokenizer.nextToken();
         } catch(NoSuchElementException ex) {
