@@ -2,24 +2,22 @@ package racingcar.dto;
 
 import racingcar.domain.RacingCar;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Input {
-    public final int numberOfCar;
+    public final List<String> namesOfCars;
     public final int numberOfCountToTry;
 
-    private Input(int numberOfCar, int numberOfCountToTry) {
-        this.numberOfCar = numberOfCar;
+    private Input(List<String> namesOfCars, int numberOfCountToTry) {
+        this.namesOfCars = namesOfCars;
         this.numberOfCountToTry = numberOfCountToTry;
     }
 
     public List<RacingCar> toRacingCars() {
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            racingCars.add(new RacingCar());
-        }
-        return racingCars;
+        return namesOfCars.stream()
+                .map(RacingCar::new)
+                .collect(Collectors.toList());
     }
 
     public static Builder builder() {
@@ -27,13 +25,13 @@ public class Input {
     }
 
     public static class Builder {
-        private int numberOfCar;
+        private List<String> namesOfCars;
         private int numberOfCountToTry;
 
         private Builder() {}
 
-        public Builder numberOfCar(int numberOfCar) {
-            this.numberOfCar = numberOfCar;
+        public Builder numberOfCar(List<String> namesOfCars) {
+            this.namesOfCars = namesOfCars;
             return this;
         }
 
@@ -43,7 +41,7 @@ public class Input {
         }
 
         public Input build() {
-            return new Input(this.numberOfCar, this.numberOfCountToTry);
+            return new Input(this.namesOfCars, this.numberOfCountToTry);
         }
     }
 }
