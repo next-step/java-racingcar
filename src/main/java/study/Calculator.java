@@ -13,9 +13,7 @@ public class Calculator {
 
         // 1. 공백체크
         checkIsBlank();
-        // 2. 잘못된 연산자 체크
-        checkOperator();
-        // 3. 숫자, 연산자 세팅
+        // 2. 숫자, 연산자 세팅
         setNumberAndOperatorList();
     }
 
@@ -30,16 +28,6 @@ public class Calculator {
     // 공백제거
     private String removeWhitespace(String string) {
         return string.replaceAll(" ", "");
-    }
-
-    // 연산자 체크
-    private void checkOperator() {
-        // 숫자랑, 사칙연산 제외 값이 있는지 확인
-        String inputRemoveWhitespace = removeWhitespace(input);
-        String notOperators = inputRemoveWhitespace.replaceAll("[0-9]|[+]|[-]|[*]|[/]", "");
-        if (notOperators.length() > 0) {
-            throw new IllegalArgumentException("IllegalArgumentException");
-        }
     }
 
     // 숫자, 문자 구분 반복
