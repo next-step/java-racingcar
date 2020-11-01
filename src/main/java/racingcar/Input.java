@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Input {
     public int numberOfCar;
     public int numberOfCountToTry;
@@ -7,6 +10,14 @@ public class Input {
     private Input(int numberOfCar, int numberOfCountToTry) {
         this.numberOfCar = numberOfCar;
         this.numberOfCountToTry = numberOfCountToTry;
+    }
+
+    public List<RacingCar> toRacingCars() {
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (int i = 0; i < numberOfCar; i++) {
+            racingCars.add(new RacingCar(numberOfCountToTry));
+        }
+        return racingCars;
     }
 
     public static Builder builder() {
