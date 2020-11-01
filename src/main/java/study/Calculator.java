@@ -1,11 +1,12 @@
 package study;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Calculator {
     private String input;
-    private ArrayList<Double> numberList = new ArrayList<>();
-    private ArrayList<String> operatorList = new ArrayList<>();
+    private Queue<Double> numberList = new LinkedList<>();
+    private Queue<String> operatorList = new LinkedList<>();
 
     public Calculator() {
 
@@ -66,9 +67,9 @@ public class Calculator {
     private void setNumberAndOperator(String inputSplit) {
         try {
             Double parseDouble = Double.parseDouble(inputSplit);
-            numberList.add(parseDouble);
+            numberList.offer(parseDouble);
         } catch (NumberFormatException e) {
-            operatorList.add(inputSplit);
+            operatorList.offer(inputSplit);
         }
     }
 
@@ -95,9 +96,7 @@ public class Calculator {
     }
 
     private Double getFirstNumber() {
-        double firstNumber = numberList.get(0);
-        numberList.remove(0);
-        return firstNumber;
+        return numberList.poll();
     }
 
     // 연산
@@ -106,7 +105,7 @@ public class Calculator {
 
         String operator = getOperator();
 
-        switch(operator) {
+        switch (operator) {
             case "+":
                 result = sum(a, b);
                 break;
@@ -124,8 +123,6 @@ public class Calculator {
     }
 
     private String getOperator() {
-        String operator = operatorList.get(0);
-        operatorList.remove(0);
-        return operator;
+        return operatorList.poll();
     }
 }
