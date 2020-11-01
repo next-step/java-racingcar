@@ -1,19 +1,19 @@
 package step3.game;
 
 public class RacingInfomation {
-    private final Integer numberOfCar;
-    private final Integer playCount;
+    private final int numberOfCar;
+    private final int playCount;
 
-    public RacingInfomation(Integer numberOfCar, Integer playCount) {
+    public RacingInfomation(int numberOfCar, int playCount) {
         this.numberOfCar = numberOfCar;
         this.playCount = playCount;
     }
 
-    public Integer getNumberOfCar() {
+    public int getNumberOfCar() {
         return numberOfCar;
     }
 
-    public Integer getPlayCount() {
+    public int getPlayCount() {
         return playCount;
     }
 }

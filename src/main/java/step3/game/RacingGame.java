@@ -1,37 +1,39 @@
 package step3.game;
 
 import step3.car.Car;
-import step3.car.RacingCar;
+import step3.strategy.MoveStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public abstract class RacingGame {
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
+    private final Map<Integer, List<Integer>> gameHistory = new HashMap<>();
 
     public void addCar(Car car) {
         cars.add(car);
     }
 
-    public void deleteCar(Car car) {
-        cars.remove(car);
+    private void logGameHistory(int round){
+        List<Integer> list = new ArrayList<>();
+        cars.forEach(c-> list.add(c.currentProgress()));
+        gameHistory.put(round, list);
     }
 
-    public boolean hasCar(Car car) {
-        return cars.contains(car);
+    public void notifyCars(int round) {
+        cars.forEach(Car::go);
+        logGameHistory(round);
     }
 
-    public void notifyCars() {
-        cars.forEach(c -> c.go(this));
+    public Optional<List<Integer>> getResultByRound(int round) {
+        return Optional.ofNullable(gameHistory.get(round));
+    }
+    public Map<Integer, List<Integer>> getResultAll() {
+        return gameHistory;
     }
 
-    public StringBuilder gameProgress(){
-        StringBuilder sb = new StringBuilder();
-        cars.forEach(c-> sb.append(((RacingCar)c).getSkidMark()).append(System.lineSeparator()));
-        return sb;
-    }
+    public abstract void addCarList(int number);
+    public abstract void addCarList(int number, MoveStrategy moveStrategy);
 
-    public abstract Integer getNumber();
-
-    public abstract void execute(RacingInfomation racingInfomation);
+    public abstract void execute(RacingInfomation racingInfomation, MoveStrategy moveStrategy);
 }
