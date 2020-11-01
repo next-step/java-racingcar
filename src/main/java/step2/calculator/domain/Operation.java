@@ -14,8 +14,7 @@ public enum Operation {
 
     private final String symbol;
     private final IntBinaryOperator op;
-
-    //TODO:: Operator 로직 검증은 계산기 구현시 이어서 진행하기
+    
     Operation(final String symbol, final IntBinaryOperator op) {
         this.symbol = symbol;
         this.op = op;
@@ -23,7 +22,7 @@ public enum Operation {
 
     public int apply(final int x, final int y) {
         if (this == DIVIDE && y == 0) {
-           throw new IllegalArgumentException("can't divide bu zero"); 
+            throw new IllegalArgumentException("can't divide bu zero");
         }
         return op.applyAsInt(x, y);
     }
