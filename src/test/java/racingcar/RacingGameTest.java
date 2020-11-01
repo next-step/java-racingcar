@@ -14,10 +14,10 @@ class RacingGameTest {
     @DisplayName("tryNum 보다 많이 play 하면 gameOver 되어야 한다.")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void play(int loop) {
-        int carNum = 3;
+        String carCsv = "1,2,3";
         int tryNum = 5;
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        CarGroup cars = new CarGroup(carNum, strategy);
+        CarGroup cars = new CarGroup(carCsv, strategy);
         RacingGame game = new RacingGame(cars, tryNum);
 
         for (int i = 0; i < loop; i++) {

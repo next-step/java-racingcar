@@ -13,10 +13,12 @@ public class CarGroup {
      */
     private Car[] carArr;
 
-    public CarGroup(int carNum, MoveStrategy strategy) {
+    public CarGroup(String nameCsv, MoveStrategy strategy) {
+        String[] nameArr = nameCsv.split(RegexConst.NAME_SPLIT);
+        int carNum = nameArr.length;
         Car[] carArr = new Car[carNum];
         for (int i = 0; i < carNum; i++) {
-            carArr[i] = new Car(strategy);
+            carArr[i] = new Car(nameArr[i], strategy);
         }
         this.carArr = carArr;
     }

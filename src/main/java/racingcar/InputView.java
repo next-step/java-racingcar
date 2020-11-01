@@ -14,21 +14,18 @@ public class InputView {
         return SingletonHelper.instance;
     }
 
-    private int askNum(String questionMsg) {
-        System.out.println(questionMsg);
-        return this.scanner.nextInt();
-    }
-
-    public int askCarNum() {
-        return this.askNum(MsgConst.HOW_MANY_CARS_STR);
+    public String askCars() {
+        System.out.println(MsgConst.ASK_CARS);
+        return this.scanner.nextLine();
     }
 
     public int askTryNum() {
-        return this.askNum(MsgConst.HOW_MANY_TRIES_STR);
+        System.out.println(MsgConst.ASK_HOW_MANY_TRIES);
+        return this.scanner.nextInt();
     }
 
     public void printResultMsg() {
-        System.out.println(MsgConst.EXECUTION_RESULT_STR);
+        System.out.println(MsgConst.EXECUTION_RESULT);
     }
 
     private static class SingletonHelper {

@@ -29,7 +29,8 @@ class RacingViewTest {
                 return true;
             }
         };
-        Car car = new Car(strategy);
+        String name = "고정완";
+        Car car = new Car(name, strategy);
 
         for (int i = 0; i < loop; i++) {
             car.move();

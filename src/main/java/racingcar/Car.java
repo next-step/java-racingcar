@@ -2,10 +2,16 @@ package racingcar;
 
 public class Car {
     private int position;
+    private String name;
     private MoveStrategy strategy;
 
-    public Car(MoveStrategy strategy) {
+    public Car(String name, MoveStrategy strategy) {
+        if (name.length() > NumConst.MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException(MsgConst.MAX_NAME_LENGTH_EXCEEDED);
+        }
+
         this.position = NumConst.START_POSITION;
+        this.name = name;
         this.strategy = strategy;
     }
 

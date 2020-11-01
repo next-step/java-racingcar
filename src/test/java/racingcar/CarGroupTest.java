@@ -12,11 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarGroupTest {
 
     @ParameterizedTest
-    @DisplayName("입력받은 carNum 과 getCarNum 값이 같아야 한다.")
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-    void getCarNum(int carNum) {
+    @DisplayName("입력받은 자동차 대수 getCarNum 값이 같아야 한다.")
+    @ValueSource(strings = {"1", "2,2", "3,3,3", "4,4,4,4", "5,5,5,5,5", "6,6,6,6,6,6", "7,7,7,7,7,7,7"})
+    void getCarNum(String carCsv) {
+        int carNum = carCsv.split(RegexConst.NAME_SPLIT).length;
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        CarGroup cars = new CarGroup(carNum, strategy);
+        CarGroup cars = new CarGroup(carCsv, strategy);
         assertThat(cars.getCarNum())
                 .isEqualTo(carNum);
     }
@@ -25,7 +26,8 @@ class CarGroupTest {
     @DisplayName("carIndex 의 car 만 전진해야 한다.")
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void moveCar(int carIdx) {
-        int carNum = 10;
+        String carCsv = "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10";
+        int carNum = carCsv.length();
         MoveStrategy strategy = new MoveStrategy() {
             @Override
             public boolean checkMovable() {
@@ -33,7 +35,7 @@ class CarGroupTest {
             }
         };
 
-        CarGroup cars = new CarGroup(carNum, strategy);
+        CarGroup cars = new CarGroup(carCsv, strategy);
         cars.moveCar(carIdx);
 
         int unMovedPosition = 1;
