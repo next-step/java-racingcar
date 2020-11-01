@@ -17,19 +17,25 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("RacingCar가 전진에 모두 성공한다면 진행상황의 길이와 numberOfCountToTry가 같아야 한다.")
+    @DisplayName("RacingCar가 전진에 모두 성공한다면 moveCount와 numberOfCountToTry가 같아야 한다.")
     void testRacingCar_moveToTry() {
         //given
         int numberOfCountToTry = 5;
-        StringBuilder stringBuilder = new StringBuilder();
+        class MoveCounter {
+            private int count = 0;
+            private void increaseCount() {
+                count++;
+            }
+        }
+        MoveCounter moveCounter = new MoveCounter();
 
         //when
         for (int i = 0; i < numberOfCountToTry; i++) {
             racingCar.tryToMove();
         }
-        racingCar.repeatAsMoveCount(() -> stringBuilder.append("-"));
+        racingCar.repeatAsMoveCount(moveCounter::increaseCount);
 
         //then
-        assertThat(stringBuilder.toString().length()).isEqualTo(numberOfCountToTry);
+        assertThat(moveCounter.count).isEqualTo(numberOfCountToTry);
     }
 }
