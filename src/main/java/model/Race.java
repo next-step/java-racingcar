@@ -37,9 +37,7 @@ public class Race {
     }
 
     public List<Car> go () {
-        for (Car car : cars) {
-            car.stepForward(car.checkOverReferenceValue(car.getRandomInteager()));
-        }
+        cars.forEach(car -> car.stepForward(car.checkOverReferenceValue(car.getRandomInteager())));
         return cars;
     }
 }
