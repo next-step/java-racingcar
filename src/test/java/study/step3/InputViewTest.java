@@ -1,23 +1,31 @@
 package study.step3;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputViewTest {
+
+    private TestingInputView inputView;
+
+    @BeforeEach
+    void setUp() {
+        inputView = new TestingInputView();
+    }
+
     @Test
     @DisplayName("request() 은 입력 결과를 응답한다.")
     public void request() {
-        InputView inputView = new InputView();
         Circuit circuit = inputView.request();
+
         assertThat(circuit).isNotNull();
     }
 
     @Test
     @DisplayName("입력결과가 없으면 오류메시지를 출력한다.")
     public void whenCarNamesIsEmpty() {
-        TestingInputView inputView = new TestingInputView();
         inputView.setConsoleInput("");
 
         inputView.request();
