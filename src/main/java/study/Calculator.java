@@ -41,11 +41,6 @@ public class Calculator {
         return a / b;
     }
 
-    // 공백제거
-    String removeWhitespace(String string) {
-        return string.replaceAll(" ", "");
-    }
-
     // null, 빈 공백 체크
     // 입력이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
     void checkIsBlank() {
@@ -54,33 +49,9 @@ public class Calculator {
         }
     }
 
-    String getOperate() {
-        String operator = operatorList.get(0);
-        operatorList.remove(0);
-        return operator;
-    }
-
-    // 연산
-    double operate(double a, double b) {
-        double result = 0;
-
-        String operator = getOperate();
-
-        switch(operator) {
-            case "+":
-                result = sum(a, b);
-                break;
-            case "-":
-                result = subtract(a, b);
-                break;
-            case "*":
-                result = multiply(a, b);
-                break;
-            case "/":
-                result = divide(a, b);
-                break;
-        }
-        return result;
+    // 공백제거
+    String removeWhitespace(String string) {
+        return string.replaceAll(" ", "");
     }
 
     // 숫자, 문자 구분
@@ -107,14 +78,44 @@ public class Calculator {
         }
     }
 
+    // 계산
+    double calculate() {
+        double firstNumber = getFirstNumber();
+        return numberList.stream().reduce(firstNumber, (a, b) -> operate(a, b));
+    }
+
     Double getFirstNumber() {
         double firstNumber = numberList.get(0);
         numberList.remove(0);
         return firstNumber;
     }
-    // 계산
-    double calculate() {
-        double firstNumber = getFirstNumber();
-        return numberList.stream().reduce(firstNumber, (a, b) -> operate(a, b));
+
+    // 연산
+    double operate(double a, double b) {
+        double result = 0;
+
+        String operator = getOperate();
+
+        switch(operator) {
+            case "+":
+                result = sum(a, b);
+                break;
+            case "-":
+                result = subtract(a, b);
+                break;
+            case "*":
+                result = multiply(a, b);
+                break;
+            case "/":
+                result = divide(a, b);
+                break;
+        }
+        return result;
+    }
+
+    String getOperate() {
+        String operator = operatorList.get(0);
+        operatorList.remove(0);
+        return operator;
     }
 }
