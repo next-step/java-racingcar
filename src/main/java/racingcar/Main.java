@@ -9,8 +9,8 @@ public class Main {
         inputView.printResultMsg();
 
         MoveStrategy strategy = new RandomMoveStrategy();
-        CarGroup cars = new CarGroup(carCsv, strategy);
-        RacingGame game = new RacingGame(cars, tryNum);
+        CarGroup carGroup = new CarGroup(carCsv, strategy);
+        RacingGame game = new RacingGame(carGroup, tryNum);
         RacingView racingView = new RacingView(game);
 
         while (game.checkNotGameOver()) {

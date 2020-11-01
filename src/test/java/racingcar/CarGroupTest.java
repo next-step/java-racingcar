@@ -22,8 +22,8 @@ class CarGroupTest {
     void getCarNum(String carCsv) {
         int carNum = carCsv.split(RegexConst.NAME_SPLIT).length;
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        CarGroup cars = new CarGroup(carCsv, strategy);
-        assertThat(cars.getCarNum())
+        CarGroup carGroup = new CarGroup(carCsv, strategy);
+        assertThat(carGroup.getCarNum())
                 .isEqualTo(carNum);
     }
 
@@ -39,13 +39,13 @@ class CarGroupTest {
             }
         };
 
-        CarGroup cars = new CarGroup(carCsv, strategy);
-        cars.moveCar(carIdx);
+        CarGroup carGroup = new CarGroup(carCsv, strategy);
+        carGroup.moveCar(carIdx);
 
         int unMovedPosition = 1;
         int movedPosition = 2;
 
-        int carNum = cars.getCarNum();
+        int carNum = carGroup.getCarNum();
         int[] expectedPositions = new int[carNum];
         Arrays.fill(expectedPositions, unMovedPosition);
         expectedPositions[carIdx] = movedPosition;
@@ -54,7 +54,7 @@ class CarGroupTest {
 
 
         // FIXME: 두 Stream 을 비교하는 더 효과적인 방법은 없을까?
-        Stream<Executable> executables = cars.getCarStream().<Executable>map(car -> () -> {
+        Stream<Executable> executables = carGroup.getCarStream().<Executable>map(car -> () -> {
             assertThat(car.getPosition())
                     .isEqualTo(expectedItr.next());
         });

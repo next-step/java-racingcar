@@ -7,12 +7,12 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private CarGroup cars;
+    private CarGroup carGroup;
     private int currTry;
     private int maxTry;
 
-    public RacingGame(CarGroup cars, int tryNum) {
-        this.cars = cars;
+    public RacingGame(CarGroup carGroup, int tryNum) {
+        this.carGroup = carGroup;
 
         this.currTry = 0;
         this.maxTry = tryNum;
@@ -23,12 +23,12 @@ public class RacingGame {
     }
 
     public void printCars(Consumer<Car> printMethod) {
-        this.cars.getCarStream()
+        this.carGroup.getCarStream()
                 .forEach(printMethod);
     }
 
     public List<Car> getWinners() {
-        return this.cars.getCarStream()
+        return this.carGroup.getCarStream()
                 .collect(
                         Collectors.groupingBy(Car::getPosition)
                 ).entrySet()
@@ -44,9 +44,9 @@ public class RacingGame {
             return;
         }
         this.currTry++;
-        int carNum = this.cars.getCarNum();
+        int carNum = this.carGroup.getCarNum();
         for (int carIdx = 0; carIdx < carNum; carIdx++) {
-            this.cars.moveCar(carIdx);
+            this.carGroup.moveCar(carIdx);
         }
     }
 }

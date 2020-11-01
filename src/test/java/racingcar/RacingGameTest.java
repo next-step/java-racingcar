@@ -23,8 +23,8 @@ class RacingGameTest {
         String carCsv = "1,2,3";
         int tryNum = 5;
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        CarGroup cars = new CarGroup(carCsv, strategy);
-        RacingGame game = new RacingGame(cars, tryNum);
+        CarGroup carGroup = new CarGroup(carCsv, strategy);
+        RacingGame game = new RacingGame(carGroup, tryNum);
 
         for (int i = 0; i < loop; i++) {
             game.play();
