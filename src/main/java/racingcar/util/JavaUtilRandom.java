@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.util;
 
 public class JavaUtilRandom implements RandomUtil {
     private static final JavaUtilRandom INSTANCE = new JavaUtilRandom();

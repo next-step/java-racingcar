@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.util.JavaUtilRandom;
+import racingcar.util.RandomUtil;
 
 public class RacingCar {
     private static final int RANDOM_BOUND = 10;

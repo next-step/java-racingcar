@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.resultview;
+
+import racingcar.domain.RacingCar;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package racingcar.mock;
 
-import racingcar.RandomUtil;
+import racingcar.util.RandomUtil;
 
 public class MockAlwaysMaxValueRandomUtil implements RandomUtil {
     @Override

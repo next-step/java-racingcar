@@ -3,6 +3,9 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.Input;
+import racingcar.inputview.ConsoleInputView;
+import racingcar.inputview.InputHandler;
 import racingcar.mock.MockInputDevice;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.inputview;
+
+import racingcar.dto.Input;
 
 public class InputHandler {
     private static final String NUMBER_OF_CAR_QUERYING_MSG = "자동차 대수는 몇 대 인가요?";
