@@ -1,4 +1,6 @@
-package step3;
+package step3.controller;
+
+import step3.RacingSpec;
 
 import java.util.Scanner;
 
