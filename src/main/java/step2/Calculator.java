@@ -3,7 +3,7 @@ package step2;
 public class Calculator {
 
     private ExpressionManager expressionManager = null;
-    private final String splitToken = " ";
+    private final static String splitToken = " ";
 
     public Calculator(String expression) {
         this.read(expression);
