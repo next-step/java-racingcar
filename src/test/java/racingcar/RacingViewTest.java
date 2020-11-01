@@ -15,7 +15,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingViewTest {
 
     private RacingView racingView;
-    private String name = "고정완";
 
     @BeforeEach
     void setUp() {
@@ -27,13 +26,14 @@ class RacingViewTest {
     @DisplayName("car 가 움직인만큼 -가 출력되어야 한다.")
     @CsvSource(value = {"0$고정완 : -", "1$고정완 : --", "2$고정완 : ---", "3$고정완 : ----", "4$고정완 : -----", "5$고정완 : ------", "6$고정완 : -------"}, delimiter = '$')
     void convertCarPositions(int loop, String expectedResult) {
+        String name = "고정완";
         MoveStrategy strategy = new MoveStrategy() {
             @Override
             public boolean checkMovable() {
                 return true;
             }
         };
-        Car car = new Car(this.name, strategy);
+        Car car = new Car(name, strategy);
 
         for (int i = 0; i < loop; i++) {
             car.move();
