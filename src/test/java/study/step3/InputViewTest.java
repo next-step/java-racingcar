@@ -33,6 +33,16 @@ public class InputViewTest {
         assertThat(inputView.recentErrorMessage()).isEqualTo("쉼표로 구분된 자동차 이름을 입력해주세요.");
     }
 
+    @Test
+    @DisplayName("자동차 이름이 5자가 넘으면 오류메시지를 출력한다.")
+    public void whenCarNameOverFiveChar() {
+        inputView.setConsoleInput("yellow");
+
+        inputView.request();
+
+        assertThat(inputView.recentErrorMessage()).isEqualTo("이름은 5자를 넘을 수 없습니다.");
+    }
+
     private static class TestingInputView extends InputView {
         public Circuit request() {
             return new Circuit();
