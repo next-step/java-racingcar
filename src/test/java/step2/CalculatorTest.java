@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CalculatorTest {
 
-    @DisplayName("문자열 계산기 통 테스트")
+    @DisplayName("문자열 계산기 통합 테스트")
     @ParameterizedTest
     @CsvSource(value = {
             "2 + 3 * 4 / 2:10",
@@ -24,7 +24,7 @@ class CalculatorTest {
         assertThat(calc).isEqualTo(expect);
     }
 
-    @DisplayName("문자열 계산기 통 테스트 - 예외 발생 테스트")
+    @DisplayName("문자열 계산기 통합 테스트 - 예외 발생 테스트")
     @ParameterizedTest
     @CsvSource(value = {
             "2 + 3 * * / 2",
