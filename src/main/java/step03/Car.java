@@ -3,17 +3,21 @@ package step03;
 import step03.strategy.MoveStrategy;
 
 public class Car {
-    private String position = "-";
+    private String position;
+    private final String carKind;
 
-    private Car() {}
+    private Car(String carKind) {
+        this.position = carKind;
+        this.carKind = carKind;
+    }
 
-    public static Car of() {
-        return new Car();
+    public static Car of(String carKind) {
+        return new Car(carKind);
     }
 
     public void move (MoveStrategy moveStrategy) {
         if (moveStrategy.isGoing()) {
-            position = position.concat("-");
+            position = position.concat(carKind);
         }
     }
 

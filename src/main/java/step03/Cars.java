@@ -18,11 +18,19 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of (int numberOfCars) {
+    public static Cars of (int numberOfCars, String carKind) {
         return of(Stream.iterate(0, n -> n + 1)
                         .limit(numberOfCars)
-                        .map(n -> Car.of())
+                        .map(n -> Car.of(carKind))
                         .collect(Collectors.toList()));
+    }
+
+    public static Cars of (int numberOfCars) {
+        final String carKind = "-";
+        return of(Stream.iterate(0, n -> n + 1)
+                .limit(numberOfCars)
+                .map(n -> Car.of(carKind))
+                .collect(Collectors.toList()));
     }
 
     public void move(MoveStrategy moveStrategy) {
