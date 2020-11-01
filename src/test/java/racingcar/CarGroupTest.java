@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarGroupTest {
 
     @ParameterizedTest
-    @DisplayName("입력받은 자동차 대수 getCarNum 값이 같아야 한다.")
+    @DisplayName("입력받은 자동차 대수와 getCarNum 값이 같아야 한다.")
     @ValueSource(strings = {"1", "2,2", "3,3,3", "4,4,4,4", "5,5,5,5,5", "6,6,6,6,6,6", "7,7,7,7,7,7,7"})
     void getCarNum(String carCsv) {
         int carNum = carCsv.split(RegexConst.NAME_SPLIT).length;
