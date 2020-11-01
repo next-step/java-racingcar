@@ -13,29 +13,10 @@ public class Calculator {
 
         // 1. 공백체크
         checkIsBlank();
-        // 2. 숫자, 연산자 세팅
+        // 2. 잘못된 연산자 체크
+        checkOperator();
+        // 3. 숫자, 연산자 세팅
         setNumberAndOperatorList();
-        // 3. 잘못된 연산자 체크
-        checkOperatorList();
-    }
-
-    double sum(double a, double b) {
-        return a + b;
-    }
-
-    double subtract(double a, double b) {
-        return a - b;
-    }
-
-    double multiply(double a, double b) {
-        return a * b;
-    }
-
-    double divide(double a, double b) {
-        if (b <= 0) {
-            throw new ArithmeticException("ArithmeticException");
-        }
-        return a / b;
     }
 
     // null, 빈 공백 체크
@@ -49,6 +30,16 @@ public class Calculator {
     // 공백제거
     private String removeWhitespace(String string) {
         return string.replaceAll(" ", "");
+    }
+
+    // 연산자 체크
+    private void checkOperator() {
+        // 숫자랑, 사칙연산 제외 값이 있는지 확인
+        String inputRemoveWhitespace = removeWhitespace(input);
+        String notOperators = inputRemoveWhitespace.replaceAll("[0-9]|[+]|[-]|[*]|[/]", "");
+        if (notOperators.length() > 0) {
+            throw new IllegalArgumentException("IllegalArgumentException");
+        }
     }
 
     // 숫자, 문자 구분 반복
@@ -66,22 +57,6 @@ public class Calculator {
             numberList.offer(parseDouble);
         } catch (NumberFormatException e) {
             operatorList.offer(inputSplit);
-        }
-    }
-
-    // 연산자 목록 체크
-    private void checkOperatorList() {
-        for (String operator : operatorList) {
-            checkOperator(operator);
-        }
-    }
-
-    // 연산자 체크
-    private void checkOperator(String operator) {
-        // 기호가 하나이상 입력되어있거나, 사칙연산이 아닌경우
-        if (operator.toCharArray().length > 1
-                || !"+-*/".contains(operator)) {
-            throw new IllegalArgumentException("IllegalArgumentException");
         }
     }
 
@@ -120,5 +95,24 @@ public class Calculator {
 
     private String getOperator() {
         return operatorList.poll();
+    }
+
+    double sum(double a, double b) {
+        return a + b;
+    }
+
+    double subtract(double a, double b) {
+        return a - b;
+    }
+
+    double multiply(double a, double b) {
+        return a * b;
+    }
+
+    double divide(double a, double b) {
+        if (b <= 0) {
+            throw new ArithmeticException("ArithmeticException");
+        }
+        return a / b;
     }
 }
