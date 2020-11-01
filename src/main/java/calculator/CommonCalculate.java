@@ -5,7 +5,7 @@ package calculator;
  */
 public class CommonCalculate{
 
-    /**
+    /**.
      * 사칙연산
      * @param Operator
      * @param a
