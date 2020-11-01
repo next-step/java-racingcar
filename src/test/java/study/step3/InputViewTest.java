@@ -13,4 +13,13 @@ public class InputViewTest {
         Circuit circuit = inputView.request();
         assertThat(circuit).isNotNull();
     }
+
+    private static class InputView {
+        public Circuit request() {
+            return new Circuit();
+        }
+    }
+
+    private static class Circuit {
+    }
 }
