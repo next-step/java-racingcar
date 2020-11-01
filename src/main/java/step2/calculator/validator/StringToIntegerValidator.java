@@ -1,7 +1,7 @@
 package step2.calculator.validator;
 
-public class IntegerValidator {
-    private IntegerValidator() {
+public class StringToIntegerValidator {
+    private StringToIntegerValidator() {
         throw new AssertionError();
     }
     

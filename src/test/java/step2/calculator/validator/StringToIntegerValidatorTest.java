@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class IntegerValidatorTest {
+class StringToIntegerValidatorTest {
 
     @DisplayName("isValid")
     @Nested
@@ -22,7 +22,7 @@ class IntegerValidatorTest {
         })
         void return_true_when_input_is_number(final String input) {
             // when
-            final boolean result = IntegerValidator.isValid(input);
+            final boolean result = StringToIntegerValidator.isValid(input);
 
             // then
             assertThat(result).isTrue();
@@ -38,7 +38,7 @@ class IntegerValidatorTest {
         })
         void return_false_when_input_is_not_integers(final String input) {
             // when
-            final boolean result = IntegerValidator.isValid(input);
+            final boolean result = StringToIntegerValidator.isValid(input);
 
             // then
             assertThat(result).isFalse();
@@ -58,7 +58,7 @@ class IntegerValidatorTest {
         })
         void return_true_when_input_is_number(final String input) {
             // when
-            final boolean result = IntegerValidator.isInvalid(input);
+            final boolean result = StringToIntegerValidator.isInvalid(input);
 
             // then
             assertThat(result).isFalse();
@@ -74,7 +74,7 @@ class IntegerValidatorTest {
         })
         void return_false_when_input_is_not_integers(final String input) {
             // when
-            final boolean result = IntegerValidator.isInvalid(input);
+            final boolean result = StringToIntegerValidator.isInvalid(input);
 
             // then
             assertThat(result).isTrue();

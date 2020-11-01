@@ -28,6 +28,6 @@ public class ExpressionSymbolValidator {
     }
 
     public static boolean isNotExpressionSymbol(final String symbol) {
-        return OperationValidator.isInvalid(symbol) && IntegerValidator.isInvalid(symbol);
+        return OperationValidator.isInvalid(symbol) && StringToIntegerValidator.isInvalid(symbol);
     }
 }
