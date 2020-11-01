@@ -10,6 +10,8 @@
 
 package model;
 
+import java.util.Random;
+
 public class Car {
     final private int REFERENCE_VALUE = 4;
 
@@ -21,5 +23,19 @@ public class Car {
 
     public Position getPosition () {
         return position;
+    }
+
+    public void stepForward (boolean isStepForward) {
+        if (isStepForward) {
+            position.setPosition(position.getPosition() + 1);
+        }
+    }
+
+    public boolean checkOverReferenceValue (int radomNumber) {
+        return radomNumber > REFERENCE_VALUE;
+    }
+
+    public int getRandomInteager () {
+        return new Random().nextInt(10);
     }
 }

@@ -35,4 +35,11 @@ public class Race {
     public int getTryCount () {
         return tryCount;
     }
+
+    public List<Car> go () {
+        for (Car car : cars) {
+            car.stepForward(car.checkOverReferenceValue(car.getRandomInteager()));
+        }
+        return cars;
+    }
 }
