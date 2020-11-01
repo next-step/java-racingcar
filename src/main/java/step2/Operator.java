@@ -12,7 +12,7 @@ public enum Operator {
     MULTIPLY("*", (lhs, rhs) -> lhs * rhs),
     DIVIDE(  "/", (lhs, rhs) -> lhs / rhs);
 
-    final static Map<String, Operator> symbolMapping =
+    static final Map<String, Operator> symbolMapping =
             Arrays.stream(values()).collect(
                     Collectors.toUnmodifiableMap(op -> op.symbol, Function.identity())
             );
