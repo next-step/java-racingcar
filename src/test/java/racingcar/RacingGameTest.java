@@ -17,8 +17,8 @@ class RacingGameTest {
         int carNum = 3;
         int tryNum = 5;
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        CarCollection collection = new CarCollection(carNum, strategy);
-        RacingGame game = new RacingGame(collection, tryNum);
+        CarGroup cars = new CarGroup(carNum, strategy);
+        RacingGame game = new RacingGame(cars, tryNum);
 
         for (int i = 0; i < loop; i++) {
             game.play();

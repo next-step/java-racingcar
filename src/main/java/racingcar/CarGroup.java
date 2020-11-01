@@ -3,7 +3,7 @@ package racingcar;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-public class CarCollection {
+public class CarGroup {
 
     /**
      * NOTE: 기본 배열을 사용한 이유
@@ -13,7 +13,7 @@ public class CarCollection {
      */
     private Car[] carArr;
 
-    public CarCollection(int carNum, MoveStrategy strategy) {
+    public CarGroup(int carNum, MoveStrategy strategy) {
         Car[] carArr = new Car[carNum];
         for (int i = 0; i < carNum; i++) {
             carArr[i] = new Car(strategy);

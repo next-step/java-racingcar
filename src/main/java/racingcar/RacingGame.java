@@ -3,12 +3,12 @@ package racingcar;
 import java.util.function.Consumer;
 
 public class RacingGame {
-    private CarCollection collection;
+    private CarGroup cars;
     private int currTry;
     private int maxTry;
 
-    public RacingGame(CarCollection carCollection, int tryNum) {
-        this.collection = carCollection;
+    public RacingGame(CarGroup cars, int tryNum) {
+        this.cars = cars;
 
         this.currTry = 0;
         this.maxTry = tryNum;
@@ -19,7 +19,7 @@ public class RacingGame {
     }
 
     public void printCars(Consumer<Car> printMethod) {
-        this.collection.print(printMethod);
+        this.cars.print(printMethod);
     }
 
     public void play() {
@@ -27,9 +27,9 @@ public class RacingGame {
             return;
         }
         this.currTry++;
-        int carNum = this.collection.getCarNum();
+        int carNum = this.cars.getCarNum();
         for (int carIdx = 0; carIdx < carNum; carIdx++) {
-            this.collection.moveCar(carIdx);
+            this.cars.moveCar(carIdx);
         }
     }
 }
