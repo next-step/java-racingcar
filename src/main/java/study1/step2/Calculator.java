@@ -1,4 +1,4 @@
-package study1;
+package study1.step2;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package study1;
+package study1.step2;
 
 public enum Operation implements Operator{
     PLUS("+"){
