@@ -27,7 +27,7 @@ public enum Operator {
 
     public static Operator parseOperator(String symbol) {
         Operator res = symbolMapping.get(symbol);
-        if(res == null) throw new IllegalArgumentException();
+        if(res == null) throw new IllegalArgumentException("unknown operator symbol: " + symbol);
         return res;
     }
 

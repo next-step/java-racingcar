@@ -11,7 +11,7 @@ public class StringCalculator {
 
     protected StringCalculator(String expression) {
         if(expression == null || expression.isBlank()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("expression omitted");
         }
         tokenizer = new StringTokenizer(expression, EXPRESSION_DELIMITERS);
     }
@@ -40,7 +40,7 @@ public class StringCalculator {
             return tokenizer.nextToken();
         } catch(NoSuchElementException ex) {
             // token이 필요한데 없을 땐, IllegalArgumentException
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("not enough token elements");
         }
     }
 }
