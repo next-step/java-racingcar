@@ -16,10 +16,14 @@ public class RacingCarGame {
         List<RacingCar> racingCars = input.toRacingCars();
 
         for (int i = 0; i < input.numberOfCountToTry; i++) {
-            for (RacingCar racingCar : racingCars) {
-                racingCar.tryToMove();
-            }
+            tryToMoveRacingCars(racingCars);
             resultView.print(racingCars);
+        }
+    }
+
+    private void tryToMoveRacingCars(List<RacingCar> racingCars) {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.tryToMove();
         }
     }
 }
