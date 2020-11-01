@@ -7,10 +7,6 @@ public class Car {
     private int position;
     private static final String DISTANCE_UNIT = "-";
 
-    public int getPosition() {
-        return this.position;
-    }
-
     public void move() {
         this.position += 1;
     }
