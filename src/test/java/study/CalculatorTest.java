@@ -12,28 +12,28 @@ public class CalculatorTest {
     @Test
     @DisplayName("sum 테스트")
     void sumTest() {
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator("2 + 3");
         assertThat(calculator.sum(1, 2)).isEqualTo(3);
     }
 
     @Test
     @DisplayName("subtract 테스트")
     void subtractTest() {
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator("2 - 1");
         assertThat(calculator.subtract(2, 1)).isEqualTo(1);
     }
 
     @Test
     @DisplayName("divide 테스트")
     void divideTest() {
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator("4 / 2");
         assertThat(calculator.divide(4, 2)).isEqualTo(2.0);
     }
 
     @Test
     @DisplayName("divide 0 나누기 테스트")
     void failDivideTest() {
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator("4 / 0");
         assertThatExceptionOfType(ArithmeticException.class).isThrownBy(() -> {
             calculator.divide(4, 0);
         });
@@ -42,7 +42,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("multiply 테스트")
     void multiplyTest() {
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator("2 * 2");
         assertThat(calculator.multiply(2, 2)).isEqualTo(4.0);
     }
 

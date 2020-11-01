@@ -8,10 +8,6 @@ public class Calculator {
     private Queue<Double> numberList = new LinkedList<>();
     private Queue<String> operatorList = new LinkedList<>();
 
-    public Calculator() {
-
-    }
-
     public Calculator(String input) {
         this.input = input;
 
