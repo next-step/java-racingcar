@@ -1,20 +1,20 @@
 package step3.present;
 
 import step3.RaceGameContract;
-import step3.model.RacingCars;
+import step3.model.Commander;
 import step3.model.RacingCar;
-import step3.model.RandomCommander;
+import step3.model.RacingCars;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Presenter implements RaceGameContract.Presenter{
 
-    private RandomCommander commander;
+    private Commander commander;
     private RacingCars racingCars;
     private RaceGameContract.View view;
 
-    public Presenter(RaceGameContract.View view, RandomCommander commander) {
+    public Presenter(RaceGameContract.View view, Commander commander) {
         this.view = view;
         this.commander = commander;
     }
