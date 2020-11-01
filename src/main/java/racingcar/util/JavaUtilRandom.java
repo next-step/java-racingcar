@@ -2,10 +2,10 @@ package racingcar.util;
 
 public class JavaUtilRandom implements RandomUtil {
     private static final JavaUtilRandom INSTANCE = new JavaUtilRandom();
-    private final java.util.Random RANDOM;
+    private final java.util.Random random;
 
     private JavaUtilRandom() {
-        RANDOM = new java.util.Random();
+        random = new java.util.Random();
     }
 
     public static JavaUtilRandom getInstance() {
@@ -13,6 +13,6 @@ public class JavaUtilRandom implements RandomUtil {
     }
 
     public int getInt(int bound) {
-        return RANDOM.nextInt(bound);
+        return random.nextInt(bound);
     }
 }
