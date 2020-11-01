@@ -12,7 +12,8 @@ public class SymbolStack {
 
     private final Stack<String> stack;
 
-    public SymbolStack(final List<String> symbols) {
+    public SymbolStack(final Expression expression) {
+        final List<String> symbols = expression.getSymbols();
         checkArgument(Objects.nonNull(symbols) && symbols.size() > 0, "symbols should not empty");
         checkArgument(symbols.size() >= OPERABLE_MINIMUM_STACK_SIZE, "symbols should more than 3");
         this.stack = toStack(symbols);

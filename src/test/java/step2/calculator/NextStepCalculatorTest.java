@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step2.calculator.domain.Expression;
+import step2.calculator.domain.SymbolStack;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,9 +23,10 @@ class NextStepCalculatorTest {
     void calculate_return_integer(final String input, final Integer expected) {
         // given
         final NextStepCalculator calculator = new NextStepCalculator();
+        final SymbolStack symbolStack = new SymbolStack(new Expression(input));
 
         // when
-        int result = calculator.calculate(new Expression(input));
+        int result = calculator.calculate(symbolStack);
 
         // then
         assertThat(result).isEqualTo(expected);
