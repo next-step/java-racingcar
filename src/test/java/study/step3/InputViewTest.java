@@ -65,6 +65,17 @@ public class InputViewTest {
         //@formatter:on
     }
 
+    @Test
+    @DisplayName("횟수를 입력받는다")
+    public void stepCount() {
+        inputView.setConsoleInput("4");
+
+        Circuit circuit = inputView.request();
+
+        assertThat(circuit.getLaps()) //
+                .isEqualTo(4);
+    }
+
     private static class TestingInputView extends InputView {
         private Queue<String> consoleInput = new ArrayDeque<>();
         private String errorMessage;
