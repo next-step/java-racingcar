@@ -3,30 +3,28 @@ package step03;
 import step03.strategy.MoveStrategy;
 
 public class Car {
-    private String position;
-    private final String carKind;
+    private int position;
 
-    private Car(String carKind) {
-        this.position = carKind;
-        this.carKind = carKind;
+    private Car(int position) {
+        this.position = position;
     }
 
-    public static Car of(String carKind) {
-        return new Car(carKind);
+    public static Car of(int position) {
+        return new Car(position);
     }
 
     public static Car of() {
-        final String defaultCarKind = "-";
+        final int defaultCarKind = 1;
         return new Car(defaultCarKind);
     }
 
     public void move (MoveStrategy moveStrategy) {
         if (moveStrategy.isGoing()) {
-            position = position.concat(carKind);
+            position += 1;
         }
     }
 
-    public String position() {
+    public int position() {
         return this.position;
     }
 

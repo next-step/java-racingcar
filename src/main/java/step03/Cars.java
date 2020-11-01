@@ -1,7 +1,6 @@
 package step03;
 
 import step03.strategy.MoveStrategy;
-import step03.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,10 +17,10 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of (int numberOfCars, String carKind) {
+    public static Cars of (int numberOfCars, int position) {
         return of(Stream.iterate(0, n -> n + 1)
                         .limit(numberOfCars)
-                        .map(n -> Car.of(carKind))
+                        .map(n -> Car.of(position))
                         .collect(Collectors.toList()));
     }
 
@@ -36,7 +35,7 @@ public class Cars {
         cars.forEach(car -> car.move(moveStrategy));
     }
 
-    public void show() {
-        ResultView.print(cars);
+    public Stream<Car> stream () {
+        return cars.stream();
     }
 }

@@ -1,6 +1,7 @@
 package step03;
 
 import step03.strategy.MoveStrategy;
+import step03.view.ResultView;
 
 import java.util.stream.Stream;
 
@@ -17,14 +18,14 @@ public class Operator {
         return new Operator(numberOfMoves, cars);
     }
 
-    public void operate(MoveStrategy moveStrategy) {
-        cars.show();
+    public void operate(MoveStrategy moveStrategy, String carKind) {
+        ResultView.print(cars.stream(), carKind);
 
         Stream.iterate(1, a -> a + 1)
                 .limit(numberOfMoves)
                 .forEach(moveCount -> {
                     cars.move(moveStrategy);
-                    cars.show();
+                    ResultView.print(cars.stream(), carKind);
                 });
     }
 

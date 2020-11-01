@@ -5,6 +5,7 @@ import step03.view.InputView;
 
 public class Main {
     public static void main(String[] args) {
+        final String carKind = "-";
 
         int numberOfCars = InputView.scanNumberOfCars();
         Validator.validatePositiveNumber(numberOfCars);
@@ -14,7 +15,7 @@ public class Main {
 
         Cars cars = Cars.of(numberOfCars);
         Operator operator = Operator.of(numberOfMoves, cars);
-        operator.operate(RandomMoveStrategy.of());
+        operator.operate(RandomMoveStrategy.of(), carKind);
 
     }
 }
