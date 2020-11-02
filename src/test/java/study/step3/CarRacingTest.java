@@ -19,7 +19,6 @@ import static org.assertj.core.api.Assertions.assertThatCode;
  */
 public class CarRacingTest {
     private CarRacing carRacing;
-    private ResultView resultView;
     private Circuit circuit;
 
     @Test
@@ -106,7 +105,6 @@ public class CarRacingTest {
 
     private void setUpRacing() {
         this.carRacing = new CarRacing(circuit);
-        this.resultView = new ResultView(this.carRacing);
     }
 
     private static class TestingCar implements Car {
