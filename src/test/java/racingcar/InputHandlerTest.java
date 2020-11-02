@@ -11,7 +11,7 @@ import racingcar.mock.MockInputDevice;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputHandlerTest {
-    private static final String EXPECTED_STRING = "test1,test2";
+    private static final String EXPECTED_STRING = "test1" + InputHandler.NAME_DELIMITER + "test2";
     private static final int EXPECTED_NUMBER = 5;
     private InputHandler inputHandler;
     private Input input;
@@ -29,7 +29,7 @@ public class InputHandlerTest {
     }
 
     @Test
-    @DisplayName("Input의 namesOfCars 요소들은 입력받은 문자열값을 ',' 로 구분하여 분리한것과 같다.")
+    @DisplayName("Input의 namesOfCars 요소들은 입력받은 문자열값을 InputHandler.NAME_DELIMITER 로 구분하여 분리한것과 같다.")
     void testInputHandler_getNamesOfCars() {
         assertThat(input.namesOfCars).containsExactly("test1", "test2");
     }
