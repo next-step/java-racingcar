@@ -56,7 +56,8 @@ public class StringCalculator {
         for (int i = 1; i < inputArr.length; i += 2) {
             String op = inputArr[i];
             int secondNum = Integer.parseInt(inputArr[i + 1]);
-            resultNum = Operator.operation(resultNum,secondNum,op);
+            Operator operator = Operator.validationCheck(op);
+            resultNum = operator.calculate(resultNum,secondNum,op);
         }
 
         return resultNum;
