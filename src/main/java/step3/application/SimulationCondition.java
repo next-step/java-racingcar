@@ -5,7 +5,6 @@ public class SimulationCondition {
     private final int numberOfAttempts;
 
     public SimulationCondition(final int numberOfCar, final int numberOfAttempts) {
-        //TODO:: validation 추가
         this.numberOfCar = numberOfCar;
         this.numberOfAttempts = numberOfAttempts;
     }

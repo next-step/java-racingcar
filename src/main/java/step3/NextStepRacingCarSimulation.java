@@ -9,9 +9,18 @@ import step3.interfaces.output.ResultView;
 
 public class NextStepRacingCarSimulation {
     public static void main(String[] args) {
-        final SimulationCondition condition = InputView.receiveSimulationCondition();
-        final SimulationResult simulationResult = simulate(condition);
-        printResult(simulationResult);
+        // 조건을 받고
+        final SimulationCondition condition = receiveCondition();
+        
+        // 시뮬레이션을 한 결과를 받아와
+        final SimulationResult result = simulate(condition);
+        
+        // 형식에 맞게 출력
+        printResult(result);
+    }
+    
+    private static SimulationCondition receiveCondition() {
+        return new InputView().receiveSimulationCondition();
     }
 
     private static SimulationResult simulate(final SimulationCondition condition) {
