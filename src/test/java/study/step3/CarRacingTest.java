@@ -75,16 +75,15 @@ public class CarRacingTest {
         assertThat(carRacing.hasRecord()).isTrue();
     }
 
-
     @Test
     @DisplayName("가장 많이 아동한 자동차를 위너로 지정한다")
     void winner() {
-        setUpLapsAndCars(new TestingCar("blue", 3), new TestingCar("red"), 2);
+        setUpLapsAndCars(new TestingCar("blue", 3), new TestingCar("red", 2));
         setUpRacing();
 
         carRacing.start();
 
-        assertThat(carRacing.getWinner()).match(winner -> winner.getName().equals("blue"));
+        assertThat(carRacing.getWinner()).contains("blue");
     }
 
     private void setUpLapsAndCars(Car... cars) {
@@ -97,7 +96,19 @@ public class CarRacingTest {
     }
 
     private static class TestingCar implements Car {
+        private final String name;
+        private int moves;
         private boolean isMoved;
+
+
+        public TestingCar() {
+            this("anonymous", 1);
+        }
+
+        public TestingCar(String name, int moves) {
+            this.name = name;
+            this.moves = moves;
+        }
 
         @Override
         public boolean isMoved() {
@@ -106,7 +117,7 @@ public class CarRacingTest {
 
         @Override
         public void move() {
-            isMoved = true;
+            isMoved = --moves >= 0;
         }
 
         @Override
@@ -116,7 +127,7 @@ public class CarRacingTest {
 
         @Override
         public String getName() {
-            return null;
+            return name;
         }
     }
 

@@ -1,6 +1,11 @@
 package study.step3;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static java.util.AbstractMap.*;
+import static java.util.Comparator.*;
+import static java.util.stream.Collectors.toList;
 
 class CarRacing {
 
@@ -35,5 +40,26 @@ class CarRacing {
 
     public boolean hasRecord() {
         return !records.isEmpty();
+    }
+
+    public List<String> getWinner() {
+        AtomicInteger maxMove = new AtomicInteger();
+
+        return records.entrySet() //
+                .stream() //
+                .map(entry -> new SimpleEntry<>(entry.getKey(), countMove(entry))) //
+                .sorted(comparingInt(SimpleEntry::getValue)) //
+                .filter(entry -> {
+                    if (entry.getValue() >= maxMove.get()) {
+                        maxMove.set(entry.getValue());
+                        return true;
+                    }
+                    return false;
+                }).map(Entry::getKey) //
+                .collect(toList());
+    }
+
+    private int countMove(Entry<String, List<Boolean>> entry) {
+        return entry.getValue().stream().mapToInt(moved -> moved ? 1 : 0).sum();
     }
 }
