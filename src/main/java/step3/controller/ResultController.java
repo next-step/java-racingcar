@@ -20,9 +20,7 @@ public class ResultController {
 
     public void printLocation(Integer location) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < location; i++) {
-            sb.append("-");
-        }
+        IntStream.range(0, location).forEach(i -> sb.append("-"));
         System.out.println(sb);
     }
 }
