@@ -1,52 +1,66 @@
 package study.step3;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.joining;
 
 class ResultView {
-    private final List<Set<LapResult>> results = new ArrayList<>();
+    private final Map<String, List<Boolean>> records;
+    private final Set<String> winners;
 
-    public boolean isCommitted() {
-        return !results.isEmpty();
+    public ResultView(Map<String, List<Boolean>> records, Set<String> winners) {
+        this.records = records;
+        this.winners = winners;
     }
 
-    public void add(Set<LapResult> result) {
-        results.add(result);
+    public ResultView(CarRacing carRacing) {
+        this(carRacing.getRecords(), carRacing.getWinners());
     }
 
     public void report() {
         print("실행결과");
-        for (int i = 0; i < results.size(); i++) {
+        printRaceHistory();
+        printWinners();
+    }
+
+    void printRaceHistory() {
+        int laps = records.values().iterator().next().size();
+        for (int i = 0; i < laps; i++) {
             printNewline();
             printRecord(i);
         }
     }
 
+    void printWinners() {
+        String names = winners.stream() //
+                .sorted() //
+                .map(name -> "'" + name + "'")
+                .collect(joining(", "));
+        print("우승자는 " + names + " 입니다.");
+    }
+
     private void printRecord(int lastLap) {
+        new TreeMap<>(records).forEach((name, record) -> {
+            printNameAndRecord(name, record.subList(0, lastLap + 1));
+            printNewline();
+        });
+    }
+
+    private void printNameAndRecord(String name, List<Boolean> recoard) {
         //@formatter:off
-        results.subList(0, lastLap + 1)
-                .stream()
-                .flatMap(Set::stream)
-                .collect(groupingBy(LapResult::getId))
-                .values()
-                .forEach(this::printCarLapResult);
+        print(nameWithSpace(name) + ": " +
+                recoard.stream()
+                        .map(moved -> moved ? "-" : "")
+                        .collect(joining())
+        );
         //@formatter:on
     }
 
-    private void printCarLapResult(List<LapResult> aCarLap) {
-        for (LapResult lap : aCarLap) {
-            printLap(lap);
-        }
-        printNewline();
-    }
-
-    private void printLap(LapResult lap) {
-        if (lap.isMoved()) {
-            print("-");
-        }
+    public static String nameWithSpace(String name) {
+        return String.format("%-5s", name);
     }
 
     protected void print(String content) {

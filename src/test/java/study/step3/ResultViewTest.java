@@ -9,16 +9,17 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static study.step3.ResultView.nameWithSpace;
 
 class TestingResultView extends ResultView {
     private final StringBuilder stringBuilder;
 
-    public TestingResultView(StringBuilder stringBuilder) {
+    public TestingResultView(StringBuilder stringBuilder, Map<String, List<Boolean>> records, Set<String> winners) {
+        super(records, winners);
         this.stringBuilder = stringBuilder;
     }
 
@@ -30,30 +31,24 @@ class TestingResultView extends ResultView {
 
 public class ResultViewTest {
 
-    public static final int ID = 0;
-    public static final int IS_MOVED = 1;
     private StringBuilder stringBuilder;
     private ResultView resultView;
+    private final Map<String, List<Boolean>> records = new HashMap<>();
+    private Set<String> winners = new HashSet<>();
 
     @BeforeEach
     void setUp() {
         stringBuilder = new StringBuilder();
-        resultView = new TestingResultView(stringBuilder);
+        resultView = new TestingResultView(stringBuilder, records, winners);
     }
 
     @ParameterizedTest
     @ArgumentsSource(OneCarRacingRecordArgumentProvider.class)
     @DisplayName("'ResultView'는 한대의 차가 움직인 결과를 출력할 수 있다.")
-    void reportResultOneCarMove(String[] records, String expected) {
+    void reportResultOneCarMove(String name, Boolean[] moves, String expected) {
+        addRecord(name, moves);
 
-        for (String lapRecord : records) {
-            String[] split = lapRecord.split(":");
-            Set<LapResult> lap = new HashSet<>();
-            lap.add(new LapResult(Long.parseLong(split[ID]), Boolean.valueOf(split[IS_MOVED])));
-            resultView.add(lap);
-        }
-
-        resultView.report();
+        resultView.printRaceHistory();
 
         assertThat(stringBuilder.toString()) //
                 .isEqualTo(expected);
@@ -63,20 +58,20 @@ public class ResultViewTest {
     @DisplayName("'ResultView'는 두대의 차가 두번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarTwoMove() {
 
-        addResult(new LapResult(0L, false), new LapResult(1L, true));
-        addResult(new LapResult(0L, true), new LapResult(1L, true));
+        addRecord("blue", new Boolean[]{false, true});
+        addRecord("red", new Boolean[]{true, true});
 
-        resultView.report();
+        resultView.printRaceHistory();
 
         //@formatter:off
         assertThat(stringBuilder.toString())
                 .isEqualTo(
                     line("실행결과") +
-                    line("") +
-                    line("-") +
+                    line(nameWithSpace("blue") + ": ") +
+                    line(nameWithSpace("red") + ": -") +
                     lineEmpty() +
-                    line("-") +
-                    line("--")
+                    line(nameWithSpace("blue") + ": -") +
+                    line(nameWithSpace("red") + ": --")
                 );
         //@formatter:on
     }
@@ -85,33 +80,46 @@ public class ResultViewTest {
     @DisplayName("'ResultView'는 두대의 차가 세번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarThreeMove() {
 
-        addResult(new LapResult(0L, false), new LapResult(1L, true));
-        addResult(new LapResult(0L, true), new LapResult(1L, true));
-        addResult(new LapResult(0L, true), new LapResult(1L, true));
+        addRecord("blue", new Boolean[]{false, true, true});
+        addRecord("red", new Boolean[]{true, true, true});
 
-        resultView.report();
+        resultView.printRaceHistory();
 
         //@formatter:off
         assertThat(stringBuilder.toString())
                 .isEqualTo(
                         line("실행결과") +
-                                line("") +
-                                line("-") +
+                                line(nameWithSpace("blue") + ": ") +
+                                line(nameWithSpace("red") + ": -") +
                                 lineEmpty() +
-                                line("-") +
-                                line("--") +
+                                line(nameWithSpace("blue") + ": -") +
+                                line(nameWithSpace("red") + ": --") +
                                 lineEmpty() +
-                                line("--") +
-                                line("---")
+                                line(nameWithSpace("blue") + ": --") +
+                                line(nameWithSpace("red") + ": ---")
                 );
         //@formatter:on
     }
 
-    private void addResult(LapResult aCar, LapResult bCar) {
-        Set<LapResult> firstLap = new HashSet<>();
-        firstLap.add(aCar);
-        firstLap.add(bCar);
-        resultView.add(firstLap);
+    @Test
+    @DisplayName("우승자를 출력한다")
+    void reportWinners() {
+
+        addWinners("blue", "red");
+        resultView.printWinners();
+
+        assertThat(stringBuilder.toString()) //
+                .isEqualTo("우승자는 'blue', 'red' 입니다.");
+    }
+
+    private void addWinners(String... winners) {
+        this.winners.addAll(Arrays.asList(winners));
+    }
+
+    private void addRecord(String name, Boolean[] moves) {
+        for (Boolean move : moves) {
+            records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
+        }
     }
 
     static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
@@ -120,28 +128,28 @@ public class ResultViewTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             //@formatter:off
             return Stream.of(
-                    Arguments.of(new String[]{"0:true"}, // 한대의 차가 한번 움직인 결과
+                    Arguments.of("blue", new Boolean[]{true}, // 한번 시도에서 한번 움직인 결과
                                     line("실행결과") +
-                                    line("-")
+                                    line(nameWithSpace("blue") + ": -")
                     ),
 
-                    Arguments.of(new String[]{"0:false"},
+                    Arguments.of("blue", new Boolean[]{false}, // 한번 시도에서 0번 움직인 결과
                                     line("실행결과") +
-                                    line("")
+                                    line(nameWithSpace("blue") + ": ")
                     ),
 
-                    Arguments.of(new String[]{"0:true", "0:false"},
+                    Arguments.of("blue", new Boolean[]{true, false}, // 두번 시도에서 한번 움직인 결과
                                     line("실행결과") +
-                                    line("-") +
+                                    line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
-                                    line("-")
+                                    line(nameWithSpace("blue") + ": -")
                     ),
 
-                    Arguments.of(new String[]{"0:true", "0:true"},
+                    Arguments.of("blue", new Boolean[]{true, true}, // 두번 시도에서 두번 움직인 결과
                                     line("실행결과") +
-                                    line("-") +
+                                    line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
-                                    line("--")
+                                    line(nameWithSpace("blue") + ": --")
                     )
             );
             //@formatter:on
