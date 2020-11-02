@@ -6,8 +6,7 @@ class RacingCarSimulationTest {
 
     @Test
     void start() {
-        final Main.NextStepRacingCarSimulation simulation = new Main.NextStepRacingCarSimulation(new Main.InputView());
-        simulation.start();
+        NextStepRacingCarSimulation.main();
     }
 
 }
