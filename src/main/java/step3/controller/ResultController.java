@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 
 public class ResultController {
 
+    private static final String RACING_DASH = "-";
+
     public void printRacingGame(List<List<Integer>> racingGameResult) {
         racingGameResult
                 .stream()
@@ -15,12 +17,12 @@ public class ResultController {
         racingStepResult
                 .stream()
                 .forEach(this::printLocation);
-        System.out.println("");
+        System.out.println();
     }
 
     public void printLocation(Integer location) {
         StringBuilder sb = new StringBuilder();
-        IntStream.range(0, location).forEach(i -> sb.append("-"));
+        IntStream.range(0, location).forEach(i -> sb.append(RACING_DASH));
         System.out.println(sb);
     }
 }
