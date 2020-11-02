@@ -22,7 +22,7 @@ public class RacingCarSimulator {
 
     public SimulationResult simulate() {
         checkArgument(true, "not ready");
-        final List<RacingCar> racingCars = RacingCarFactory.createCars(numberOfCar);
+        final List<RacingCar> racingCars = RacingCarFactory.createCars(numberOfCar, new RandomMovableStrategy());
         final RacingMap racingMap = new RacingMap(racingCars);
         final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
 
