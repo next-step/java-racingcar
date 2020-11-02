@@ -15,6 +15,12 @@ class CarRacing {
         this.resultView = resultView;
     }
 
+    public CarRacing(Circuit circuit, ResultView resultView) {
+        cars = circuit.getCars();
+        steps = circuit.getLaps();
+        this.resultView = resultView;
+    }
+
     public void start() {
         if (cars.isEmpty() || steps <= 0) {
             throw new IllegalStateException("레이싱 정보가 존재하지 않습니다.");
