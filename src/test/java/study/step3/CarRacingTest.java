@@ -75,7 +75,7 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("가장 많이 아동한 자동차를 위너로 지정한다")
+    @DisplayName("가장 많이 이동한 자동차를 위너로 지정한다")
     void winner() {
         setUpLapsAndCars(new TestingCar("blue", 3), new TestingCar("red", 2));
         setUpRacing();

@@ -26,11 +26,11 @@ class CarRacing {
     private void move() {
         for (Car car : cars) {
             car.move();
-            record(car);
+            recording(car);
         }
     }
 
-    private void record(Car car) {
+    private void recording(Car car) {
         records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
                 .add(car.isMoved());
     }
