@@ -96,14 +96,14 @@ public class ResultViewTest {
         assertThat(stringBuilder.toString())
                 .isEqualTo(
                         line("실행결과") +
-                                line("") +
-                                line("-") +
+                                line(nameWithSpace("blue") + ": ") +
+                                line(nameWithSpace("red") + ": -") +
                                 lineEmpty() +
-                                line("-") +
-                                line("--") +
+                                line(nameWithSpace("blue") + ": -") +
+                                line(nameWithSpace("red") + ": --") +
                                 lineEmpty() +
-                                line("--") +
-                                line("---")
+                                line(nameWithSpace("blue") + ": --") +
+                                line(nameWithSpace("red") + ": ---")
                 );
         //@formatter:on
     }
