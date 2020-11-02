@@ -30,31 +30,24 @@ class ResultView {
     }
 
     private void printRecord(int lastLap) {
-        //@formatter:off
         records.forEach((name, record) -> {
-            print(nameWithSpace(name) + ": " +
-                    record.subList(0, lastLap + 1).stream().map(moved -> moved ? "-" : "").collect(joining()));
+            printNameAndRecord(name, record.subList(0, lastLap + 1));
             printNewline();
         });
-        //@formatter:on
     }
 
-    private void printCarLapResult(String name, List<LapResult> aCarLap) {
-        print(nameWithSpace(name) + ": ");
-        for (LapResult lap : aCarLap) {
-            printLap(lap);
-        }
-        printNewline();
+    private void printNameAndRecord(String name, List<Boolean> recoard) {
+        //@formatter:off
+        print(nameWithSpace(name) + ": " +
+                recoard.stream()
+                        .map(moved -> moved ? "-" : "")
+                        .collect(joining())
+        );
+        //@formatter:on
     }
 
     public static String nameWithSpace(String name) {
         return String.format("%-5s", name);
-    }
-
-    private void printLap(LapResult lap) {
-        if (lap.isMoved()) {
-            print("-");
-        }
     }
 
     protected void print(String content) {
