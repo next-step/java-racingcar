@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class RacingCarFactory {
     public static List<RacingCar> createCars(final int numberOfCar) {
         return IntStream.range(0, numberOfCar)
-                .mapToObj(RacingCar::new)
+                .mapToObj(i -> new RacingCar(String.valueOf(i)))
                 .collect(Collectors.toList());
     }
 }

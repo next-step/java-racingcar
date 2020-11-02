@@ -7,14 +7,18 @@ public class RacingCar {
     private static final int RANDOM_BOUND = 10;
     private static final int MINIMUM_MOVABLE_VALUE = 4;
 
-    private final int id;
+    private final String name;
 
-    public RacingCar(final int id) {
-        this.id = id;
+    public RacingCar(final String name) {
+        this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
+    }
+    
+    public int getStartPosition() {
+        return 0;
     }
 
     public boolean isMovable() {

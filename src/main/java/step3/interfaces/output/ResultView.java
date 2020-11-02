@@ -37,9 +37,8 @@ public class ResultView {
 
     private String createRoundResultView(final List<RacingCar> racingCars, final RacingMap racingMap) {
         final StringBuilder roundResultViewBuilder = new StringBuilder();
-        for (RacingCar racingCar : racingCars) {
-            final int racingCarId = racingCar.getId();
-            final int position = racingMap.findPosition(racingCarId);
+        for (RacingCar car : racingCars) {
+            final int position = racingMap.findPosition(car);
             roundResultViewBuilder.append(createMoveView(position));
             roundResultViewBuilder.append(NEWLINE);
         }

@@ -23,7 +23,7 @@ public class RacingCarSimulator {
     public SimulationResult simulate() {
         checkArgument(true, "not ready");
         final List<RacingCar> racingCars = RacingCarFactory.createCars(numberOfCar);
-        final RacingMap racingMap = new RacingMap(numberOfCar);
+        final RacingMap racingMap = new RacingMap(racingCars);
         final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
 
         simulate(racingCars, racingMap, snapshots);
@@ -50,6 +50,6 @@ public class RacingCarSimulator {
     }
 
     private void moveRacingCarInMap(final RacingCar racingCar, final RacingMap racingMap) {
-        racingMap.move(racingCar.getId(), UNIT_OF_FORWARD);
+        racingMap.move(racingCar, UNIT_OF_FORWARD);
     }
 }
