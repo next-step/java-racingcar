@@ -1,4 +1,4 @@
-package step3.view;
+package step4.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,34 +15,35 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("게입 환경 입력 테스트")
 public class InputViewTest {
 
-    @DisplayName("자동차 대수 입력")
+    @DisplayName("자동차 이름 입력")
     @Test
-    public void getCarCount() {
-        InputView inputView = new InputView(new Scanner("3"), new PrintWriter(System.out));
+    public void enterCarNames() {
+        InputView inputView = new InputView(new Scanner("pobi,crong,honux"), new PrintWriter(System.out));
 
-        Integer carCount = inputView.getCarCountFromInput();
+        Integer carCount = inputView.getCarNames().size();
         assertThat(carCount).isEqualTo(3);
     }
 
-    @DisplayName("자동차 대수 0이하로 입력")
-    @ParameterizedTest
-    @CsvSource(value = {"-1", "0"})
-    public void enterInvalidCarCount(String invalidInput) {
-        InputView inputView = new InputView(new Scanner(invalidInput), new PrintWriter(System.out));
-        assertThatThrownBy(inputView::getCarCountFromInput)
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("invalid count");
-    }
-
-    @DisplayName("자동차 대수 입력시 질의 문구")
+    @DisplayName("자동차 이름 입력시 질의 문구")
     @Test
-    public void getMessageForCarCount() {
+    public void getMessageForCarNames() {
         StringWriter output = new StringWriter();
         InputView inputView = new InputView(new Scanner("3"), new PrintWriter(output));
 
-        inputView.getCarCountFromInput();
+        inputView.getCarNames();
 
-        assertThat(output.toString()).isEqualTo("자동차 대수는 몇 대 인가요?\n");
+        assertThat(output.toString()).isEqualTo("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n");
+    }
+
+    @DisplayName("자동차 이름 5글자보다 크게 입력")
+    @Test
+    public void enterLongerCarNames() {
+        InputView inputView = new InputView(new Scanner("pobiha"), new PrintWriter(System.out));
+
+        assertThatThrownBy(() -> {
+            inputView.getCarNames();
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("invalid car name length");
     }
 
     @DisplayName("시도 횟수 입력")
