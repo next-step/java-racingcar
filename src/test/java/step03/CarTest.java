@@ -15,7 +15,7 @@ public class CarTest {
 
     @DisplayName("DEFAULT Position CAR 생성 테스트")
     @Test
-    void DEFAULT_Position_CAR_생성_테스트() {
+    void Given_NoPosition_When_CreateCar_Then_PositionIs1() {
         Car car = Car.of();
         final int result = car.position();
         assertThat(result).isEqualTo(1);
@@ -24,7 +24,7 @@ public class CarTest {
     @DisplayName("Position CAR 생성 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 10, 13})
-    void Position_CAR_생성_테스트(int input) {
+    void Given_Position_When_CreateCar_Then_PositionIsGivenPosition(int input) {
         Car car = Car.of(input);
         final int result = car.position();
         assertThat(result).isEqualTo(input);
@@ -40,9 +40,9 @@ public class CarTest {
     @DisplayName("CAR move 테스트")
     @ParameterizedTest
     @MethodSource("provideMovingCarResult")
-    void CAR_이동_테스트(boolean input, int expected) {
+    void Given_isMovable_Then_CarMove(boolean isMovable, int expected) {
         final Car car = Car.of();
-        car.move(() -> input);
+        car.move(() -> isMovable);
         final int result = car.position();
         assertThat(result).isEqualTo(expected);
     }

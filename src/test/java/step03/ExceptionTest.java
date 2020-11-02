@@ -12,7 +12,7 @@ public class ExceptionTest {
     @DisplayName("입력값이 양의 정수가 아닐 때 예외를 일으킴")
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, -13})
-    public void 양의정수가_아닐때_예외_테스트(int input) {
+    public void Given_NoAPositiveInteger_Then_ThrowException(int input) {
         assertThatExceptionOfType(NotPositiveIntegerException.class)
                 .isThrownBy(() -> {
                    Validator.validatePositiveNumber(input);
