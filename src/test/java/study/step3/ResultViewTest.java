@@ -59,8 +59,8 @@ public class ResultViewTest {
     @DisplayName("'ResultView'는 두대의 차가 두번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarTwoMove() {
 
-        addResult(new LapResult("blue", false), new LapResult("red", true));
-        addResult(new LapResult("blue", true), new LapResult("red", true));
+        addRecord("blue", new Boolean[]{false, true});
+        addRecord("red", new Boolean[]{true, true});
 
         resultView.report();
 

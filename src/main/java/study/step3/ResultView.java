@@ -30,7 +30,7 @@ class ResultView {
     }
 
     private void printRecord(int lastLap) {
-        records.forEach((name, record) -> {
+        new TreeMap<>(records).forEach((name, record) -> {
             printNameAndRecord(name, record.subList(0, lastLap + 1));
             printNewline();
         });
