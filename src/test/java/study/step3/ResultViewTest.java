@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static study.step3.ResultView.nameWithSpace;
 
 class TestingResultView extends ResultView {
     private final StringBuilder stringBuilder;
@@ -72,11 +73,11 @@ public class ResultViewTest {
         assertThat(stringBuilder.toString())
                 .isEqualTo(
                     line("실행결과") +
-                    line("blue\t: ") +
-                    line("red\t: -") +
+                    line(nameWithSpace("blue") + ": ") +
+                    line(nameWithSpace("red") + ": -") +
                     lineEmpty() +
-                    line("blue\t: -") +
-                    line("red\t: --")
+                    line(nameWithSpace("blue") + ": -") +
+                    line(nameWithSpace("red") + ": --")
                 );
         //@formatter:on
     }
@@ -122,26 +123,26 @@ public class ResultViewTest {
             return Stream.of(
                     Arguments.of(new String[]{"blue:true"}, // 한대의 차가 한번 움직인 결과
                                     line("실행결과") +
-                                    line("blue\t: -")
+                                    line(nameWithSpace("blue") + ": -")
                     ),
 
                     Arguments.of(new String[]{"blue:false"},
                                     line("실행결과") +
-                                    line("blue\t: ")
+                                    line(nameWithSpace("blue") + ": ")
                     ),
 
                     Arguments.of(new String[]{"blue:true", "blue:false"},
                                     line("실행결과") +
-                                    line("blue\t: -") +
+                                    line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
-                                    line("blue\t: -")
+                                    line(nameWithSpace("blue") + ": -")
                     ),
 
                     Arguments.of(new String[]{"blue:true", "blue:true"},
                                     line("실행결과") +
-                                    line("blue\t: -") +
+                                    line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
-                                    line("blue\t: --")
+                                    line(nameWithSpace("blue") + ": --")
                     )
             );
             //@formatter:on
