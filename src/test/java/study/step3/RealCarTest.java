@@ -3,13 +3,21 @@ package study.step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RealCarTest {
     @Test
-    @DisplayName("RealCar 객체가 생성되면 임의의 아이디를 갖는다.")
-    void instantiation(){
+    @DisplayName("이동 결과는 true 또는 false 가 나온다")
+    void move(){
         RealCar realCar = new RealCar("blue");
-        assertThat(realCar.getId()).isNotNull();
+        Set<Boolean> results = new HashSet<>();
+        for (int i = 0; i < 1000; i++) {
+            realCar.move();
+            results.add(realCar.isMoved());
+        }
+        assertThat(results).contains(true, false);
     }
 }
