@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -34,14 +36,14 @@ public class StringCalculatorTest {
 
     //":입력", " :입력", "2 +3:사칙연산",
     @ParameterizedTest
-    @CsvSource(value = {":입력", " :입력", "2 +3:사칙연산"}, delimiter = ':')
+    @NullAndEmptySource
     @DisplayName("사칙연산 예외 테스트")
-    public void calculateExceptionTest(String input, String message) {
+    public void calculateExceptionTest(String input) {
+
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> {
-                    stringCalculator.calculate(input);
-                })
-                .withMessageStartingWith(message);
+                .isThrownBy(() -> stringCalculator.calculate(input))
+                .withMessageStartingWith("입력");
+
     }
 
 }
