@@ -5,8 +5,9 @@ import java.util.Arrays;
 public class Calculator {
 
     public static int calculate(String symbol, int a, int b) {
+        System.out.println("carculator : " + symbol);
         return Arrays.stream(Tokenizer.separateToken())
-                .filter(operator -> operator.isSameSymbol(symbol))
+                .filter(operator -> operator.symbol.isSameSymbol(symbol))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new)
                 .operate(a, b);

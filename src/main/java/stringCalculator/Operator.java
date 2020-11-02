@@ -1,27 +1,22 @@
 package stringCalculator;
 
-import java.util.ArrayList;
-
 public class Operator {
-    String symbol;
 
-    public Operator(String symbol){
-        this.symbol = symbol;
+    Symbol symbol;
+
+    public Operator(String state){
+        symbol = new Symbol(state);
     }
 
-    public boolean isSameSymbol(String symbol){
-        return this.symbol.equals(symbol);
+    public int operate(int a, int b){
+        System.out.print("operate : " + symbol.state);
+        if (symbol.isSameSymbol("+")) return a + b;
+        if (symbol.isSameSymbol("-")) return a - b;
+        if (symbol.isSameSymbol("*")) return a * b;
+        if (b == 0) throw new DivideByZeroException();
+        if (symbol.isSameSymbol("/")) return a / b;
+
+        return 0;
+
     }
-
-public int operate(int a, int b){
-
-    if (symbol.equals("+")) return a + b;
-    if (symbol.equals("-")) return a - b;
-    if (symbol.equals("*")) return a * b;
-    if (b == 0) throw new DivideByZeroException();
-    if (symbol.equals("/")) return a / b;
-
-    return 0;
-
-}
 }
