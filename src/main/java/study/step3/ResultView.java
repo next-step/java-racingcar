@@ -30,13 +30,13 @@ class ResultView {
         results.subList(0, lastLap + 1)
                 .stream()
                 .flatMap(Set::stream)
-                .collect(groupingBy(LapResult::getId))
-                .values()
+                .collect(groupingBy(LapResult::getName))
                 .forEach(this::printCarLapResult);
         //@formatter:on
     }
 
-    private void printCarLapResult(List<LapResult> aCarLap) {
+    private void printCarLapResult(String name, List<LapResult> aCarLap) {
+        print(name + "\t: ");
         for (LapResult lap : aCarLap) {
             printLap(lap);
         }

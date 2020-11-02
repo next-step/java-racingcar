@@ -31,6 +31,7 @@ class TestingResultView extends ResultView {
 public class ResultViewTest {
 
     public static final int ID = 0;
+    public static final int NAME = 0;
     public static final int IS_MOVED = 1;
     private StringBuilder stringBuilder;
     private ResultView resultView;
@@ -49,7 +50,7 @@ public class ResultViewTest {
         for (String lapRecord : records) {
             String[] split = lapRecord.split(":");
             Set<LapResult> lap = new HashSet<>();
-            lap.add(new LapResult(Long.parseLong(split[ID]), Boolean.valueOf(split[IS_MOVED])));
+            lap.add(new LapResult(split[NAME], Boolean.valueOf(split[IS_MOVED])));
             resultView.add(lap);
         }
 
@@ -120,28 +121,28 @@ public class ResultViewTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             //@formatter:off
             return Stream.of(
-                    Arguments.of(new String[]{"0:true"}, // 한대의 차가 한번 움직인 결과
+                    Arguments.of(new String[]{"blue:true"}, // 한대의 차가 한번 움직인 결과
                                     line("실행결과") +
-                                    line("-")
+                                    line("blue\t: -")
                     ),
 
-                    Arguments.of(new String[]{"0:false"},
+                    Arguments.of(new String[]{"blue:false"},
                                     line("실행결과") +
-                                    line("")
+                                    line("blue\t: ")
                     ),
 
-                    Arguments.of(new String[]{"0:true", "0:false"},
+                    Arguments.of(new String[]{"blue:true", "blue:false"},
                                     line("실행결과") +
-                                    line("-") +
+                                    line("blue\t: -") +
                                     lineEmpty() +
-                                    line("-")
+                                    line("blue\t: -")
                     ),
 
-                    Arguments.of(new String[]{"0:true", "0:true"},
+                    Arguments.of(new String[]{"blue:true", "blue:true"},
                                     line("실행결과") +
-                                    line("-") +
+                                    line("blue\t: -") +
                                     lineEmpty() +
-                                    line("--")
+                                    line("blue\t: --")
                     )
             );
             //@formatter:on
