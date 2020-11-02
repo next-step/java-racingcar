@@ -1,6 +1,5 @@
 package humbledude.carracing;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
