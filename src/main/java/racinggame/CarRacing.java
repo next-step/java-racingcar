@@ -15,7 +15,7 @@ public class CarRacing {
 
   public CarRacing(RacingInfo racingInfo) {
     this.roundCount = racingInfo.getRoundCount();
-    this.racingCars = new RacingCars(racingInfo.getRacingCarCount());
+    this.racingCars = new RacingCars(racingInfo.getRacingCarNames());
   }
 
   public RacingResult startRacing() {

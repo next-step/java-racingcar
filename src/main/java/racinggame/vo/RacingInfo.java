@@ -2,16 +2,16 @@ package racinggame.vo;
 
 public class RacingInfo {
 
-  private final int racingCarCount;
+  private final String[] racingCarNames;
   private final int roundCount;
 
-  public RacingInfo(int racingCarCount, int roundCount) {
-    this.racingCarCount = racingCarCount;
+  public RacingInfo(String[] racingCarNames, int roundCount) {
+    this.racingCarNames = racingCarNames;
     this.roundCount = roundCount;
   }
 
-  public int getRacingCarCount() {
-    return racingCarCount;
+  public String[] getRacingCarNames() {
+    return racingCarNames;
   }
 
   public int getRoundCount() {

@@ -12,5 +12,6 @@ public class CarRacingRunner {
     CarRacing carRacing = new CarRacing(racingInfo);
     RacingResult racingResult = carRacing.startRacing();
     ResultView.printRacingResult(racingResult);
+    ResultView.printFinalWinnerCarNames(racingResult);
   }
 }
