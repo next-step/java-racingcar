@@ -5,8 +5,7 @@ import java.util.*;
 import static java.util.stream.Collectors.*;
 
 class ResultView {
-    private final List<Set<LapResult>> results = new ArrayList<>();
-    private Map<String, List<Boolean>> records;
+    private final Map<String, List<Boolean>> records;
 
     public ResultView() {
         this(new HashMap<>());
@@ -14,10 +13,6 @@ class ResultView {
 
     public ResultView(Map<String, List<Boolean>> records) {
         this.records = records;
-    }
-
-    public void add(Set<LapResult> result) {
-        results.add(result);
     }
 
     public void report() {

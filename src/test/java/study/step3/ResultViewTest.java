@@ -31,8 +31,6 @@ class TestingResultView extends ResultView {
 
 public class ResultViewTest {
 
-    public static final int NAME = 0;
-    public static final int IS_MOVED = 1;
     private StringBuilder stringBuilder;
     private ResultView resultView;
     private final Map<String, List<Boolean>> records = new HashMap<>();
@@ -106,13 +104,6 @@ public class ResultViewTest {
         for (Boolean move : moves) {
             records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
         }
-    }
-
-    private void addResult(LapResult aCar, LapResult bCar) {
-        Set<LapResult> firstLap = new HashSet<>();
-        firstLap.add(aCar);
-        firstLap.add(bCar);
-        resultView.add(firstLap);
     }
 
     static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
