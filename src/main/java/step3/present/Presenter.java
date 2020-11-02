@@ -2,17 +2,14 @@ package step3.present;
 
 import step3.RaceGameContract;
 import step3.model.Commander;
-import step3.model.RacingCar;
+import step3.model.RaceGame;
 import step3.model.RacingCars;
+import step3.model.GameRound;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Presenter implements RaceGameContract.Presenter {
 
-public class Presenter implements RaceGameContract.Presenter{
-
-    private Commander commander;
-    private RacingCars racingCars;
-    private RaceGameContract.View view;
+    private final RaceGameContract.View view;
+    private final Commander commander;
 
     public Presenter(RaceGameContract.View view, Commander commander) {
         this.view = view;
@@ -20,22 +17,12 @@ public class Presenter implements RaceGameContract.Presenter{
     }
 
     @Override
-    public RacingCars createParticipantRacingCar(int participantCar) {
-        List<RacingCar> cars = new ArrayList<>();
-        for (int i = 0; i < participantCar; i++) {
-            cars.add(new RacingCar(i));
-        }
-        racingCars = new RacingCars(cars);
-        return racingCars;
-    }
+    public void gameStart(GameRound round) {
+        RaceGame raceGame = new RaceGame(round, commander);
 
-    @Override
-    public void orderCommand(int participant) {
-        for (int i = 0; i < participant; i++) {
-            String commands = commander.generateCommand();
-            racingCars.getParticipantCar(i).addCommands(commands);
+        while (!round.isAllRoundFinish()) {
+            RacingCars cars = raceGame.nextRound();
+            view.renderView(cars);
         }
-        view.renderView(racingCars);
     }
-
 }
