@@ -7,9 +7,7 @@ public class CommonCalculate{
 
     /**.
      * 사칙연산.
-     * @param Operator
-     * @param a
-     * @param b
+     * @param paramValue
      * @return
      */
     public static int commonCalculate(CalculatorParamValue paramValue){
