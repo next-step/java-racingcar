@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 /**
  * <pre>
@@ -82,26 +82,6 @@ public class CarRacingTest {
     private void setUpRacing() {
         this.resultView = new ResultView();
         this.carRacing = new CarRacing(circuit, resultView);
-    }
-
-    static class StaticInfoProvider implements RacingInfoProvider {
-        private final int steps;
-        private final Set<Car> cars;
-
-        public StaticInfoProvider(int rename, Car... cars) {
-            this.steps = rename;
-            this.cars = new HashSet<>(Arrays.asList(cars));
-        }
-
-        @Override
-        public Set<Car> getCars() {
-            return cars;
-        }
-
-        @Override
-        public int countSteps() {
-            return steps;
-        }
     }
 
     private static class TestingCar implements Car {

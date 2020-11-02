@@ -5,8 +5,9 @@ import java.util.*;
 
 public class CarRacingMain {
     public static void main(String[] args) {
+        InputView inputView = new InputView();
         ResultView resultView = new ResultView();
-        CarRacing carRacing = new CarRacing(ConsoleInputRacingInfoProvider.newInstanceWithCLI(), resultView);
+        CarRacing carRacing = new CarRacing(inputView.request(), resultView);
         carRacing.start();
         resultView.report();
     }
