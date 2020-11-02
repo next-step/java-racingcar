@@ -15,8 +15,7 @@ public class InputController {
         int carCount = scanner.nextInt();
         System.out.println(MOVE_COUNT_QUESTION);
         int moveCount = scanner.nextInt();
-        RacingSpec spec = new RacingSpec(carCount, moveCount);
-        return spec;
+        return new RacingSpec(carCount, moveCount);
     }
 
 }
