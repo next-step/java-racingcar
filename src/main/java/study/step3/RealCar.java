@@ -9,10 +9,6 @@ public class RealCar implements Car {
     private final Random random;
     private final Long id;
 
-    public RealCar() {
-        this("");
-    }
-
     public RealCar(String name) {
         this.name = name;
         this.random = new Random();

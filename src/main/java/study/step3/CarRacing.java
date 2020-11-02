@@ -9,12 +9,6 @@ class CarRacing {
     private final int steps;
     private final ResultView resultView;
 
-    public CarRacing(RacingInfoProvider racingInfoProvider, ResultView resultView) {
-        cars = racingInfoProvider.getCars();
-        steps = racingInfoProvider.countSteps();
-        this.resultView = resultView;
-    }
-
     public CarRacing(Circuit circuit, ResultView resultView) {
         cars = circuit.getCars();
         steps = circuit.getLaps();

@@ -9,7 +9,7 @@ class RealCarTest {
     @Test
     @DisplayName("RealCar 객체가 생성되면 임의의 아이디를 갖는다.")
     void instantiation(){
-        RealCar realCar = new RealCar();
+        RealCar realCar = new RealCar("blue");
         assertThat(realCar.getId()).isNotNull();
     }
 }
