@@ -9,8 +9,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,14 +44,8 @@ public class ResultViewTest {
     @ParameterizedTest
     @ArgumentsSource(OneCarRacingRecordArgumentProvider.class)
     @DisplayName("'ResultView'는 한대의 차가 움직인 결과를 출력할 수 있다.")
-    void reportResultOneCarMove(String[] records, String expected) {
-
-        for (String lapRecord : records) {
-            String[] split = lapRecord.split(":");
-            Set<LapResult> lap = new HashSet<>();
-            lap.add(new LapResult(split[NAME], Boolean.valueOf(split[IS_MOVED])));
-            resultView.add(lap);
-        }
+    void reportResultOneCarMove(String name, int moves, String expected) {
+        addRecord(name, moves);
 
         resultView.report();
 
