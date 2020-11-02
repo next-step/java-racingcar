@@ -1,5 +1,8 @@
 package step3;
 
+import step3.strategy.MoveStrategy;
+import step3.strategy.RandomStrategy;
+
 public class Car {
 
     private int location = 0;

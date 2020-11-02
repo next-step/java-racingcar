@@ -1,4 +1,7 @@
-package step3;
+package step3.strategy;
+
+import step3.ErrorMessage;
+import step3.strategy.MoveStrategy;
 
 import java.util.Random;
 
