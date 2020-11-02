@@ -5,7 +5,6 @@ import step4.domain.Cars;
 import step4.domain.MoveStrategy;
 import step4.dto.RacingGameConditionMoveStrategyDTO;
 import step4.exception.MinimumTryCountException;
-import step4.exception.OutBoundCarListSizeException;
 import step4.utils.CarNameSplitter;
 
 import java.util.List;
@@ -15,7 +14,6 @@ public class RacingGame {
 
 
     private static final int MIN_TRY_COUNT = 1;
-    private static final int CARS_MIN_COUNT = 1;
     private final Cars cars;
     private final RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO;
 
@@ -24,7 +22,6 @@ public class RacingGame {
 
         validTryCount(getRacingGameTryCount());
         List<Car> carList = CarNameSplitter.splitToCarList(getRacingGameCarNames());
-        validateCarSize(carList);
         cars = new Cars(carList);
     }
 
@@ -62,9 +59,5 @@ public class RacingGame {
 
     }
 
-    private void validateCarSize(List<Car> cars) {
-        if (cars.size() < CARS_MIN_COUNT) {
-            throw new OutBoundCarListSizeException(CARS_MIN_COUNT);
-        }
-    }
+
 }
