@@ -1,4 +1,4 @@
-package racingcar.stringcalculator;
+package racingcar.step2;
 
 import java.util.regex.Pattern;
 
