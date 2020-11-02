@@ -1,5 +1,8 @@
 package study;
 
+import study.code.ErrorCodes;
+import study.exception.NotDividedByDivisorException;
+
 public enum Operator {
     PLUS("+") { public double operate(double x, double y) { return x + y; } },
     MINUS("-") { public double operate(double x, double y) { return x - y;} },
@@ -7,7 +10,7 @@ public enum Operator {
     DIVIDE("/"){
         public double operate(double x, double y) throws Exception {
             if( x % y != 0 )
-                throw new Exception("나눗셈의 경우. 결과 값이 정수로 떨어지는 경우로 한정됩니다.");
+                throw new NotDividedByDivisorException();
             return x / y;
         }
     };
@@ -18,6 +21,16 @@ public enum Operator {
         this.symbol = symbol;
     }
 
-    abstract double operate(double x, double y) throws Exception;
-    public String getSymbol() { return symbol;}
+    public abstract double operate(double x, double y) throws Exception;
+
+    public static Operator convertStringToOperator(String s) {
+        switch (s) {
+            case "+" : return Operator.PLUS;
+            case "-" : return Operator.MINUS;
+            case "*" : return Operator.MULTIPLY;
+            case "/" : return Operator.DIVIDE;
+        }
+        throw new IllegalArgumentException();
+    }
+
 }

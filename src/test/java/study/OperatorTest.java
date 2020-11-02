@@ -1,6 +1,10 @@
 package study;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import study.code.ErrorCodes;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -30,6 +34,19 @@ public class OperatorTest {
         assertThatExceptionOfType(Exception.class)
                 .isThrownBy(() -> {
                     Operator.DIVIDE.operate(4, 3);
-                }).withMessageMatching("나눗셈의 경우. 결과 값이 정수로 떨어지는 경우로 한정됩니다.");
+                }).withMessageMatching(ErrorCodes.E00);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"+:PLUS", "-:MINUS", "*:MULTIPLY", "/:DIVIDE"}, delimiter = ':')
+    void convertStringToOperatorTest(String s, Operator o){
+        assertThat(Operator.convertStringToOperator(s)).isEqualTo(o);
+    }
+
+    @Test
+    void convertStringToOperatorTest_ShouldReturnIllegalArgumentException(){
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            Operator.convertStringToOperator("^");
+        });
     }
 }

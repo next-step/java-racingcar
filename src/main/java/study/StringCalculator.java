@@ -1,5 +1,7 @@
 package study;
 
+import study.code.LiteralCodes;
+
 public class StringCalculator {
 
     public double calculate(String input) throws Exception{
@@ -11,19 +13,19 @@ public class StringCalculator {
         return calculatedValue;
     }
 
-    boolean isBlank(String str) {
+    private boolean isBlank(String str) {
         return str == null || str.trim().length() == 0;
     }
 
-    String[] splitByWhiteSpace(String input) {
-        return input.split(" ");
+    private String[] splitByWhiteSpace(String input) {
+        return input.split(LiteralCodes.L01);
     }
 
-    double calculateByOperator(String[] arr) throws Exception {
+    private double calculateByOperator(String[] arr) throws Exception {
         double result = 0;
 
-        for(int i = 1; i < arr.length - 1; i+=2) {
-            Operator o = convertStringToOperator(arr[i]);
+        for(int i = 1; i < arr.length - 1; i += 2) {
+            Operator o = Operator.convertStringToOperator(arr[i]);
             double first = i == 1? Double.parseDouble(arr[i-1]) : result;
             double second = Double.parseDouble(arr[i+1]);
 
@@ -32,13 +34,5 @@ public class StringCalculator {
         return result;
     }
 
-    Operator convertStringToOperator(String s) {
-        switch (s) {
-            case "+" : return Operator.PLUS;
-            case "-" : return Operator.MINUS;
-            case "*" : return Operator.MULTIPLY;
-            case "/" : return Operator.DIVIDE;
-        }
-        throw new IllegalArgumentException();
-    }
+
 }
