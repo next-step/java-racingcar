@@ -1,35 +1,35 @@
 package step2;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.IntBinaryOperator;
 import java.util.function.IntFunction;
+import java.util.stream.IntStream;
 
 public class StringCalculator {
     private static final String DELIMETER = " ";
     private static final String OPERATOR_PATTERN = "[+\\-*/]";
     private static final String NUMBER_PATTERN = "(^\\d*)$";
-    private static final Map<String, IntBinaryOperator> functionByOperator = new HashMap<>() {{
-        put("+", Integer::sum);
-        put("-", (i, j) -> i - j);
-        put("*", (i, j) -> i * j);
-        put("/", (i, j) -> i / j);
-    }};
     private static final IntFunction<Boolean> isEven = (i)-> i % 2 == 0;
     private static final IntFunction<Boolean> isOdd = (i)-> i % 2 == 1;
     private final List<Integer> numbers = new ArrayList<>();
     private final Queue<String> operators = new LinkedList<>();
 
-    public void filtering(int index, String value){
+    public void filteringNumber(String[] strings){
         numbers.clear();
+        IntStream.range(0, strings.length).forEach(index->{
+            if (isEven.apply(index)) {
+                isValid(strings[index]);
+                numbers.add(Integer.parseInt(strings[index]));
+            }
+        });
+    }
+    public void filteringOperator(String[] strings){
         operators.clear();
-        Boolean even = isEven.apply(index);
-        if(even){
-            numbers.add(Integer.parseInt(value));
-        }
-        if (!even) {
-            operators.offer(value);
-        }
+        IntStream.range(0, strings.length).forEach(index->{
+            if (isOdd.apply(index)) {
+                isValid(strings[index]);
+                operators.add(strings[index]);
+            }
+        });
     }
 
     /**
@@ -39,13 +39,10 @@ public class StringCalculator {
     protected Integer calculate(String input) {
         isEmpty(input);
         String[] strings = input.split(DELIMETER);
-        for (int i = 0; i < strings.length; i++) {
-            String currentValue = strings[i];
-            isValid(currentValue);
-            filtering(i, currentValue);
-        }
+        filteringNumber(strings);
+        filteringOperator(strings);
         Optional<Integer> reduce = numbers.stream()
-                .reduce((prev, after) -> functionByOperator.get(operators.poll()).applyAsInt(prev, after));
+                .reduce((prev, after) -> Operator.execute(new ComputationalInformation(prev, after, operators.poll())));
 
         return reduce.orElseThrow(IllegalArgumentException::new);
     }
