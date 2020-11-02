@@ -13,8 +13,8 @@ public class RacingGame {
         int carNum = inputView.getCarNum();
         int gameRoundNum = inputView.getGameRoundNum();
 
-        GameManager gameManager = new GameManager(new RuleStrategyImpl());
-        List<Car> cars = gameManager.readyCars(carNum, new MoveStrategyImpl());
+        GameManager gameManager = new GameManager();
+        List<Car> cars = gameManager.readyCars(carNum, new RuleStrategyImpl());
         GameRound gameRound = new GameRound(gameRoundNum);
 
         while (!gameRound.isGameEnd()) {

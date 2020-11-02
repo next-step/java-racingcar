@@ -2,15 +2,15 @@ package racingcar;
 
 public class Car {
     private int position;
-    private MoveStrategy moveStrategy;
+    private RuleStrategy ruleStrategy;
 
-    public Car(MoveStrategy moveStrategy) {
+    public Car(RuleStrategy ruleStrategy) {
         position = 0;
-        this.moveStrategy = moveStrategy;
+        this.ruleStrategy = ruleStrategy;
     }
 
     public void move() {
-        position += moveStrategy.getMovement();
+        position += ruleStrategy.getMovement();
     }
 
     public int getPosition() {

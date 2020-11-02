@@ -6,22 +6,13 @@ import java.util.stream.IntStream;
 
 public class GameManager {
 
-    private RuleStrategy ruleStrategy;
-
-    public GameManager(RuleStrategy ruleStrategy) {
-        this.ruleStrategy = ruleStrategy;
-    }
-
-    public List<Car> readyCars(int num, MoveStrategy moveStrategy) {
+    public List<Car> readyCars(int num, RuleStrategy ruleStrategy) {
         return IntStream.range(0, num)
-                .mapToObj(i -> new Car(moveStrategy))
+                .mapToObj(i -> new Car(ruleStrategy))
                 .collect(Collectors.toList());
     }
 
     public void playOneRound(List<Car> cars) {
-        cars.stream().forEach(c -> {
-            if (ruleStrategy.checkRule())
-                c.move();
-        });
+        cars.stream().forEach(c -> c.move());
     }
 }

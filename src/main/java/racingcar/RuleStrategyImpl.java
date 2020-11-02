@@ -3,16 +3,16 @@ package racingcar;
 import java.util.Random;
 
 public class RuleStrategyImpl implements RuleStrategy {
-
+    public static final int MOVEMENT_UNIT = 1;
     public static final int THRESHOLD = 4;
     public static final int BOUND = 10;
     private static final Random random = new Random();
 
     @Override
-    public boolean checkRule() {
+    public int getMovement() {
         if (random.nextInt(BOUND) >= THRESHOLD)
-            return true;
+            return MOVEMENT_UNIT;
         
-        return false;
+        return 0;
     }
 }
