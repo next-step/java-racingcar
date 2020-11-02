@@ -1,11 +1,9 @@
 package study.step3;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.AbstractMap.Entry;
 import static java.util.AbstractMap.SimpleEntry;
-import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.toSet;
 
 class CarRacing {
@@ -42,24 +40,21 @@ class CarRacing {
     }
 
     public Set<String> getWinners() {
-        AtomicInteger maxMove = new AtomicInteger();
+        Integer maxMove = records.values() //
+                .stream() //
+                .mapToInt(this::countMove)
+                .max()
+                .orElse(0);
 
         return records.entrySet() //
                 .stream() //
-                .map(entry -> new SimpleEntry<>(entry.getKey(), countMove(entry))) //
-                .sorted(comparingInt(SimpleEntry::getValue)) //
-                .filter(entry -> {
-                    if (entry.getValue() >= maxMove.get()) {
-                        maxMove.set(entry.getValue());
-                        return true;
-                    }
-                    return false;
-                }).map(Entry::getKey) //
+                .map(entry -> new SimpleEntry<>(entry.getKey(), countMove(entry.getValue()))) //
+                .filter(entry -> entry.getValue() >= maxMove).map(Entry::getKey) //
                 .collect(toSet());
     }
 
-    private int countMove(Entry<String, List<Boolean>> entry) {
-        return entry.getValue().stream().mapToInt(moved -> moved ? 1 : 0).sum();
+    private int countMove(List<Boolean> values) {
+        return values.stream().mapToInt(moved -> moved ? 1 : 0).sum();
     }
 
     public Map<String, List<Boolean>> getRecords() {

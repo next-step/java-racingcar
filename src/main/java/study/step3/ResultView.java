@@ -23,6 +23,7 @@ class ResultView {
     public void report() {
         print("실행결과");
         printRaceHistory();
+        printWinners();
     }
 
     void printRaceHistory() {

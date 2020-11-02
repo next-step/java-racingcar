@@ -89,9 +89,9 @@ public class CarRacingTest {
     @Test
     @DisplayName("위너는 둘 이상일 수 있다")
     void co_winner() {
-        setUpLapsAndCars(new TestingCar("blue", 3), //
-                new TestingCar("red", 3), //
-                new TestingCar("white", 2));
+        setUpLapsAndCars(new TestingCar("white", 2), //
+                new TestingCar("blue", 3), //
+                new TestingCar("red", 3));
 
         setUpRacing();
 
