@@ -17,6 +17,10 @@ class ResultView {
 
     public void report() {
         print("실행결과");
+        printRaceHistory();
+    }
+
+    void printRaceHistory() {
         int laps = records.values().iterator().next().size();
         for (int i = 0; i < laps; i++) {
             printNewline();

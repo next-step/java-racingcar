@@ -47,7 +47,7 @@ public class ResultViewTest {
     void reportResultOneCarMove(String name, Boolean[] moves, String expected) {
         addRecord(name, moves);
 
-        resultView.report();
+        resultView.printRaceHistory();
 
         assertThat(stringBuilder.toString()) //
                 .isEqualTo(expected);
@@ -60,7 +60,7 @@ public class ResultViewTest {
         addRecord("blue", new Boolean[]{false, true});
         addRecord("red", new Boolean[]{true, true});
 
-        resultView.report();
+        resultView.printRaceHistory();
 
         //@formatter:off
         assertThat(stringBuilder.toString())
@@ -82,7 +82,7 @@ public class ResultViewTest {
         addRecord("blue", new Boolean[]{false, true, true});
         addRecord("red", new Boolean[]{true, true, true});
 
-        resultView.report();
+        resultView.printRaceHistory();
 
         //@formatter:off
         assertThat(stringBuilder.toString())
