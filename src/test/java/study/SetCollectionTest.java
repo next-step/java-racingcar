@@ -22,11 +22,11 @@ public class SetCollectionTest {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
-
     }
+
     @Test
     void getSetSize(){
-        assertThat(numbers.size()).isNotZero();
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @Test
@@ -38,14 +38,15 @@ public class SetCollectionTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    void contains2(int input){
+    void contains_ShouldReturnTrueForContainsNumber(int input){
         assertThat(numbers.contains(input)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
-    void contains3(int input, boolean isTrue){
+    void contains_SetContainsNumber_True(int input, boolean isTrue){
         boolean isContains = numbers.contains(input);
         assertEquals(isTrue, isContains);
     }
+
 }
