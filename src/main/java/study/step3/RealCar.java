@@ -7,12 +7,10 @@ public class RealCar implements Car {
     private final String name;
     private boolean moved;
     private final Random random;
-    private final Long id;
 
     public RealCar(String name) {
         this.name = name;
         this.random = new Random();
-        this.id = random.nextLong();
     }
 
     @Override
@@ -25,10 +23,6 @@ public class RealCar implements Car {
         moved = guessMove();
     }
 
-    @Override
-    public Long getId() {
-        return id;
-    }
 
     @Override
     public String getName() {

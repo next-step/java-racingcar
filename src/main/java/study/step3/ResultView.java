@@ -65,7 +65,8 @@ class ResultView {
     public void printWinners() {
         String names = winners.stream() //
                 .sorted() //
-                .collect(joining(", ", "'", "'"));
+                .map(name -> "'" + name + "'")
+                .collect(joining(", "));
         print("우승자는 " + names + " 입니다.");
     }
 }

@@ -34,7 +34,7 @@ public class ResultViewTest {
     private StringBuilder stringBuilder;
     private ResultView resultView;
     private final Map<String, List<Boolean>> records = new HashMap<>();
-    private Set<String> winners;
+    private Set<String> winners = new HashSet<>();
 
     @BeforeEach
     void setUp() {
@@ -105,14 +105,15 @@ public class ResultViewTest {
     @DisplayName("우승자를 출력한다")
     void reportWinners() {
 
-        setWinners("blue", "red");
+        addWinners("blue", "red");
         resultView.printWinners();
 
         assertThat(stringBuilder.toString()) //
                 .isEqualTo("우승자는 'blue', 'red' 입니다.");
     }
 
-    private void setWinners(String... winners) {
+    private void addWinners(String... winners) {
+        this.winners.addAll(Arrays.asList(winners));
     }
 
     private void addRecord(String name, Boolean[] moves) {
