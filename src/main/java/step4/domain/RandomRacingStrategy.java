@@ -1,10 +1,9 @@
-package step3.domain;
+package step4.domain;
 
-import step3.util.RandomGenerator;
+import step4.util.RandomGenerator;
 
 public class RandomRacingStrategy implements RacingStrategy {
     public RandomRacingStrategy() {
-
     }
 
     @Override
@@ -12,9 +11,10 @@ public class RandomRacingStrategy implements RacingStrategy {
         if (shouldMove()) {
             car.move();
         }
+        car.record();
     }
 
-    private static boolean shouldMove() {
+    private boolean shouldMove() {
         return ((int) (RandomGenerator.getRandomLessThan(10))) >= 4;
     }
 }

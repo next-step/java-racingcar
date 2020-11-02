@@ -1,4 +1,4 @@
-package step3.util;
+package step4.util;
 
 public class RandomGenerator {
     private RandomGenerator() {
