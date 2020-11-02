@@ -5,7 +5,7 @@ public class CarRacingMain {
     public static void main(String[] args) {
         Circuit request = requestInput();
         ResultView resultView = new ResultView();
-        CarRacing carRacing = new CarRacing(request, resultView);
+        CarRacing carRacing = new CarRacing(request);
         carRacing.start();
         resultView.report();
     }

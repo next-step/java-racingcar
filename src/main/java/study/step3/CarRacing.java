@@ -11,13 +11,11 @@ class CarRacing {
 
     private final Set<Car> cars;
     private final int steps;
-    private final ResultView resultView;
     private final Map<String, List<Boolean>> records = new HashMap<>();
 
-    public CarRacing(Circuit circuit, ResultView resultView) {
+    public CarRacing(Circuit circuit) {
         cars = circuit.getCars();
         steps = circuit.getLaps();
-        this.resultView = resultView;
     }
 
     public void start() {

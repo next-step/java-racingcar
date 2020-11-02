@@ -11,10 +11,6 @@ import static java.util.stream.Collectors.toList;
 class ResultView {
     private final List<Set<LapResult>> results = new ArrayList<>();
 
-    public boolean isCommitted() {
-        return !results.isEmpty();
-    }
-
     public void add(Set<LapResult> result) {
         results.add(result);
     }

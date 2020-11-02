@@ -106,7 +106,7 @@ public class CarRacingTest {
 
     private void setUpRacing() {
         this.resultView = new ResultView();
-        this.carRacing = new CarRacing(circuit, resultView);
+        this.carRacing = new CarRacing(circuit);
     }
 
     private static class TestingCar implements Car {
