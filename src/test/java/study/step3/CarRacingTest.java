@@ -2,10 +2,6 @@ package study.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.step3.Car;
-import study.step3.CarRacing;
-import study.step3.RacingInfoProvider;
-import study.step3.ResultView;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -22,11 +18,9 @@ import static org.assertj.core.api.Assertions.*;
  * </pre>
  */
 public class CarRacingTest {
-
-    private Car[] cars = new Car[0];
-    private int laps;
     private CarRacing carRacing;
     private ResultView resultView;
+    private Circuit circuit;
 
     @Test
     @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
@@ -40,7 +34,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
     void startRacing() {
-        setUpLapsAndCars(1, new TestingCar());
+        setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
         assertThatCode(carRacing::start).doesNotThrowAnyException();
@@ -49,27 +43,31 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주를 시작하면 자동차가 달린다.")
     void carMoved() {
-        setUpLapsAndCars(1, new TestingCar());
+        setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
         carRacing.start();
 
-        assertThat(cars[0].isMoved()).isTrue();
+        assertThat(theCar().isMoved()).isTrue();
     }
 
     @Test
     @DisplayName("자동차 경주 시작전엔 자동차가 달리지 않는다.")
     void carNotMoved() {
-        setUpLapsAndCars(1, new TestingCar());
+        setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
-        assertThat(cars[0].isMoved()).isFalse();
+        assertThat(theCar().isMoved()).isFalse();
+    }
+
+    private Car theCar() {
+        return circuit.getCars().iterator().next();
     }
 
     @Test
     @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
     void acceptableResultView() {
-        setUpLapsAndCars(1, new TestingCar());
+        setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
         assertThat(resultView.isCommitted()).isFalse();
@@ -78,7 +76,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
     void resultViewCommittedAfterStaring() {
-        setUpLapsAndCars(1, new TestingCar());
+        setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
         carRacing.start();
@@ -86,14 +84,13 @@ public class CarRacingTest {
         assertThat(resultView.isCommitted()).isTrue();
     }
 
-    private void setUpLapsAndCars(int laps, Car... cars) {
-        this.laps = laps;
-        this.cars = cars;
+    private void setUpLapsAndCars(Car... cars) {
+        this.circuit = new Circuit(new HashSet<>(Arrays.asList(cars)), 1);
     }
 
     private void setUpRacing() {
         this.resultView = new ResultView();
-        this.carRacing = new CarRacing(new StaticInfoProvider(laps, cars), resultView);
+        this.carRacing = new CarRacing(circuit, resultView);
     }
 
     static class StaticInfoProvider implements RacingInfoProvider {
