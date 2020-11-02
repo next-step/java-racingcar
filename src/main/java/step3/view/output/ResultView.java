@@ -1,4 +1,4 @@
-package step3.interfaces.output;
+package step3.view.output;
 
 import step3.application.SimulationResult;
 import step3.domain.RacingCar;

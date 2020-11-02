@@ -1,4 +1,4 @@
-package step3.interfaces.output;
+package step3.view.output;
 
 public class Printer {
     public static void println(final Object x) {

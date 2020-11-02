@@ -1,7 +1,7 @@
-package step3.interfaces.input;
+package step3.view.input;
 
 import step3.application.SimulationCondition;
-import step3.interfaces.output.Printer;
+import step3.view.output.Printer;
 
 import java.util.Scanner;
 

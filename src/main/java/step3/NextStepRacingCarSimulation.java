@@ -3,9 +3,9 @@ package step3;
 import step3.application.RacingCarSimulator;
 import step3.application.SimulationCondition;
 import step3.application.SimulationResult;
-import step3.interfaces.input.InputView;
-import step3.interfaces.output.Printer;
-import step3.interfaces.output.ResultView;
+import step3.view.input.InputView;
+import step3.view.output.Printer;
+import step3.view.output.ResultView;
 
 public class NextStepRacingCarSimulation {
     public static void main(String[] args) {
