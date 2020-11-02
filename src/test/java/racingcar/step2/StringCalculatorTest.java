@@ -1,4 +1,4 @@
-package racingcar.stringcalculator;
+package racingcar.step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

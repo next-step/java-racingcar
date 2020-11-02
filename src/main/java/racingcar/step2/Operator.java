@@ -1,6 +1,4 @@
-package racingcar.stringcalculator;
-
-import java.util.function.Function;
+package racingcar.step2;
 
 /**
  * Created : 2020-10-30 오전 10:44
