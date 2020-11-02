@@ -22,16 +22,16 @@ public class RacingCarGame {
         Input input = inputHandler.getInput();
         List<RacingCar> racingCars = input.toRacingCars();
 
+        if (racingCars.isEmpty()) {
+            return;
+        }
+
         for (int i = 0; i < input.numberOfCountToTry; i++) {
             tryToMoveRacingCars(racingCars);
             resultView.printProgress(racingCars);
         }
 
-        Collections.sort(racingCars);
-        RacingCar winner = racingCars.get(0);
-        List<RacingCar> winners = racingCars.stream()
-                .filter(rc -> rc.isSameMoveCount(winner))
-                .collect(Collectors.toList());
+        List<RacingCar> winners = getWinners(racingCars);
         resultView.printWinners(winners);
     }
 
@@ -39,5 +39,13 @@ public class RacingCarGame {
         for (RacingCar racingCar : racingCars) {
             racingCar.tryToMove();
         }
+    }
+
+    private List<RacingCar> getWinners(List<RacingCar> racingCars) {
+        Collections.sort(racingCars);
+        RacingCar winner = racingCars.get(0);
+        return racingCars.stream()
+                .filter(rc -> rc.isSameMoveCount(winner))
+                .collect(Collectors.toList());
     }
 }
