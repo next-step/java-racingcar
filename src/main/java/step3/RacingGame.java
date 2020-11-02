@@ -3,6 +3,7 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -19,15 +20,11 @@ public class RacingGame {
     }
 
     private void initRacingGame() {
-        for (int i = 0; i < racingSpec.getCarCount(); i++) {
-            joinCar();
-        }
+        IntStream.range(0, racingSpec.getCarCount()).forEach(i -> joinCar());
     }
 
     public void start() {
-        for (int i = 0; i < racingSpec.getMoveCount(); i++) {
-            doMoveStep();
-        }
+        IntStream.range(0, racingSpec.getMoveCount()).forEach(i -> doMoveStep());
     }
 
     private void doMoveStep() {
