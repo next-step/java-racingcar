@@ -6,4 +6,6 @@ public interface Car {
     void move();
 
     Long getId();
+
+    String getName();
 }

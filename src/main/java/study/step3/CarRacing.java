@@ -25,7 +25,7 @@ class CarRacing {
         Set<LapResult> result = new HashSet<>();
         for (Car car : cars) {
             car.move();
-            result.add(new LapResult(car.getId(), car.isMoved()));
+            result.add(new LapResult(car.getName(), car.isMoved()));
         }
         resultView.add(result);
     }

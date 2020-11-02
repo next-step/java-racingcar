@@ -30,6 +30,11 @@ public class RealCar implements Car {
         return id;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
     private boolean guessMove() {
         return random.nextInt(10) >= 4;
     }

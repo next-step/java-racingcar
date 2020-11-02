@@ -101,6 +101,11 @@ public class CarRacingTest {
         public Long getId() {
             return null;
         }
+
+        @Override
+        public String getName() {
+            return null;
+        }
     }
 
 }
