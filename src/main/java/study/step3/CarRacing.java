@@ -42,7 +42,7 @@ class CarRacing {
         return !records.isEmpty();
     }
 
-    public List<String> getWinner() {
+    public List<String> getWinners() {
         AtomicInteger maxMove = new AtomicInteger();
 
         return records.entrySet() //

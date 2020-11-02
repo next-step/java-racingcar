@@ -83,7 +83,7 @@ public class CarRacingTest {
 
         carRacing.start();
 
-        assertThat(carRacing.getWinner()).contains("blue");
+        assertThat(carRacing.getWinners()).contains("blue");
     }
 
     @Test
@@ -97,7 +97,7 @@ public class CarRacingTest {
 
         carRacing.start();
 
-        assertThat(carRacing.getWinner()).contains("blue", "red");
+        assertThat(carRacing.getWinners()).contains("blue", "red");
     }
 
     private void setUpLapsAndCars(Car... cars) {
