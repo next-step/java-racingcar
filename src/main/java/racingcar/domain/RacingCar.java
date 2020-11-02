@@ -3,7 +3,7 @@ package racingcar.domain;
 import racingcar.util.JavaUtilRandom;
 import racingcar.util.RandomUtil;
 
-public class RacingCar implements Comparable<RacingCar>{
+public class RacingCar implements Comparable<RacingCar> {
     public static final int AVAILABLE_MAX_NAME_LENGTH = 5;
     private static final int RANDOM_BOUND = 10;
     private static final int MIN_MOVABLE_NUM = 4;
