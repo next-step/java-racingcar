@@ -12,7 +12,7 @@ public class RandomGeneratorTest {
     @ParameterizedTest
     @ValueSource(ints = {3, 10, 9, 100})
     public void ZeroToPositiveIntGenerate_MaxPositiveInteger_isBetweenZeroToMaxPositiveInteger(int input) {
-        final int result = RandomGenerator.ZeroToPositiveIntGenerate(input);
+        final int result = RandomGenerator.generateZeroToPositiveInt(input);
         assertThat(result).isBetween(0, input + 1);
     }
 }

@@ -21,7 +21,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isGoing() {
-        final int randomValue = RandomGenerator.ZeroToPositiveIntGenerate(max);
+        final int randomValue = RandomGenerator.generateZeroToPositiveInt(max);
         return randomValue >= standard;
     }
 }
