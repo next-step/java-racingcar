@@ -18,7 +18,7 @@ public class Expression {
     }
 
     public int getInteger(int index) {
-        return Integer.getInteger(expressionArray[index]);
+        return Integer.valueOf(expressionArray[index]);
     }
 
     public int getLength() {
