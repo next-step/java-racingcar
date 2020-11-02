@@ -3,9 +3,10 @@ package study.step3;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.util.AbstractMap.*;
-import static java.util.Comparator.*;
-import static java.util.stream.Collectors.toList;
+import static java.util.AbstractMap.Entry;
+import static java.util.AbstractMap.SimpleEntry;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.toSet;
 
 class CarRacing {
 
@@ -40,7 +41,7 @@ class CarRacing {
         return !records.isEmpty();
     }
 
-    public List<String> getWinners() {
+    public Set<String> getWinners() {
         AtomicInteger maxMove = new AtomicInteger();
 
         return records.entrySet() //
@@ -54,10 +55,14 @@ class CarRacing {
                     }
                     return false;
                 }).map(Entry::getKey) //
-                .collect(toList());
+                .collect(toSet());
     }
 
     private int countMove(Entry<String, List<Boolean>> entry) {
         return entry.getValue().stream().mapToInt(moved -> moved ? 1 : 0).sum();
+    }
+
+    public Map<String, List<Boolean>> getRecords() {
+        return records;
     }
 }

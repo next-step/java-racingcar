@@ -1,18 +1,23 @@
 package study.step3;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.joining;
 
 class ResultView {
     private final Map<String, List<Boolean>> records;
+    private final Set<String> winners;
 
-    public ResultView() {
-        this(new HashMap<>());
+    public ResultView(Map<String, List<Boolean>> records, Set<String> winners) {
+        this.records = records;
+        this.winners = winners;
     }
 
-    public ResultView(Map<String, List<Boolean>> records) {
-        this.records = records;
+    public ResultView(CarRacing carRacing) {
+        this(carRacing.getRecords(), carRacing.getWinners());
     }
 
     public void report() {
@@ -55,5 +60,12 @@ class ResultView {
 
     private void printNewline() {
         print(System.lineSeparator());
+    }
+
+    public void printWinners() {
+        String names = winners.stream() //
+                .sorted() //
+                .collect(joining(", ", "'", "'"));
+        print("우승자는 " + names + " 입니다.");
     }
 }

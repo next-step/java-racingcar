@@ -18,8 +18,8 @@ import static study.step3.ResultView.nameWithSpace;
 class TestingResultView extends ResultView {
     private final StringBuilder stringBuilder;
 
-    public TestingResultView(StringBuilder stringBuilder, Map<String, List<Boolean>> records) {
-        super(records);
+    public TestingResultView(StringBuilder stringBuilder, Map<String, List<Boolean>> records, Set<String> winners) {
+        super(records, winners);
         this.stringBuilder = stringBuilder;
     }
 
@@ -34,11 +34,12 @@ public class ResultViewTest {
     private StringBuilder stringBuilder;
     private ResultView resultView;
     private final Map<String, List<Boolean>> records = new HashMap<>();
+    private Set<String> winners;
 
     @BeforeEach
     void setUp() {
         stringBuilder = new StringBuilder();
-        resultView = new TestingResultView(stringBuilder, records);
+        resultView = new TestingResultView(stringBuilder, records, winners);
     }
 
     @ParameterizedTest
@@ -109,6 +110,9 @@ public class ResultViewTest {
 
         assertThat(stringBuilder.toString()) //
                 .isEqualTo("우승자는 'blue', 'red' 입니다.");
+    }
+
+    private void setWinners(String... winners) {
     }
 
     private void addRecord(String name, Boolean[] moves) {
