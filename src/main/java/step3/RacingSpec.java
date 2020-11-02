@@ -2,8 +2,8 @@ package step3;
 
 public class RacingSpec {
 
-    private Integer carCount;
-    private Integer moveCount;
+    private final Integer carCount;
+    private final Integer moveCount;
 
     public RacingSpec(Integer carCount, Integer moveCount) {
         this.carCount = carCount;
