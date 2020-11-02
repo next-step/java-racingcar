@@ -9,7 +9,7 @@ public class Operator {
     }
 
     public int operate(int a, int b){
-        System.out.print("operate : " + symbol.state);
+
         if (symbol.isSameSymbol("+")) return a + b;
         if (symbol.isSameSymbol("-")) return a - b;
         if (symbol.isSameSymbol("*")) return a * b;
