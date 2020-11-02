@@ -1,15 +1,20 @@
 package step3.controller;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ResultController {
 
     public void printRacingGame(List<List<Integer>> racingGameResult) {
-        racingGameResult.stream().forEach(this::printRacingLog);
+        racingGameResult
+                .stream()
+                .forEach(this::printRacingLog);
     }
 
     public void printRacingLog(List<Integer> racingStepResult) {
-        racingStepResult.stream().forEach(this::printLocation);
+        racingStepResult
+                .stream()
+                .forEach(this::printLocation);
         System.out.println("");
     }
 
