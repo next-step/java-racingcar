@@ -1,5 +1,6 @@
 package step3.view;
 
+import step3.model.GameRound;
 import step3.model.RandomCommander;
 import step3.present.Presenter;
 
@@ -7,22 +8,19 @@ import java.util.Scanner;
 
 public class ClientView {
 
-    private static Presenter presenter = new Presenter(new RenderingView(), new RandomCommander());
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
         int participantCar = scanner.nextInt();
-        presenter.createParticipantRacingCar(participantCar);
 
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        int totalTry = scanner.nextInt();
+        int round = scanner.nextInt();
 
-        System.out.println("실행결과");
-        for (int i = 0; i < totalTry; i++) {
-            presenter.orderCommand(participantCar);
-        }
+        GameRound gameRound = new GameRound(participantCar, round);
+        Presenter presenter = new Presenter(new RenderingView(), new RandomCommander());
+        presenter.gameStart(gameRound);
+
     }
 
 }
