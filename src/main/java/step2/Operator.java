@@ -9,7 +9,7 @@ public enum Operator {
     MULTIPLE("*", (first, second) -> first * second),
     DIVIDE("/", (first, second) -> {
         if( second == 0) {
-            throw new IllegalArgumentException("+,-,*,/ 중 연산자를 입력해주세요");
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
         return first / second;
     });
