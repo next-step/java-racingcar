@@ -8,8 +8,9 @@ import static java.util.stream.Collectors.joining;
 
 public class ConsoleResultView implements ResultView {
     private static final String PROGRESS_BAR = "-";
-    private static final String NAME_PUNCTUATION_MARK  = ": ";
+    private static final String NAME_PUNCTUATION_MARK = ": ";
     private static final String WINNER_DECLARATION_MSG = "(이)가 최종 우승했습니다.";
+    private static final String WINNERS_NAME_DELIMITER = ", ";
 
     @Override
     public void printProgress(List<RacingCar> cars) {
@@ -28,7 +29,7 @@ public class ConsoleResultView implements ResultView {
     public void printWinners(List<RacingCar> winners) {
         String winnersName = winners.stream()
                 .map(racingCar -> racingCar.name)
-                .collect(joining(","));
+                .collect(joining(WINNERS_NAME_DELIMITER));
 
         System.out.println(winnersName + WINNER_DECLARATION_MSG);
     }
