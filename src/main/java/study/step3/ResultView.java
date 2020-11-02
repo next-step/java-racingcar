@@ -34,6 +34,14 @@ class ResultView {
         }
     }
 
+    void printWinners() {
+        String names = winners.stream() //
+                .sorted() //
+                .map(name -> "'" + name + "'")
+                .collect(joining(", "));
+        print("우승자는 " + names + " 입니다.");
+    }
+
     private void printRecord(int lastLap) {
         new TreeMap<>(records).forEach((name, record) -> {
             printNameAndRecord(name, record.subList(0, lastLap + 1));
@@ -61,13 +69,5 @@ class ResultView {
 
     private void printNewline() {
         print(System.lineSeparator());
-    }
-
-    public void printWinners() {
-        String names = winners.stream() //
-                .sorted() //
-                .map(name -> "'" + name + "'")
-                .collect(joining(", "));
-        print("우승자는 " + names + " 입니다.");
     }
 }
