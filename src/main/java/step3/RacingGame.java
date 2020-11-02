@@ -31,7 +31,9 @@ public class RacingGame {
     }
 
     private void doMoveStep() {
-        joinCarList.stream().forEach(car -> car.move());
+        joinCarList
+                .stream()
+                .forEach(car -> car.move());
         List<Integer> racingResult = getRacingResult();
         saveRacingLog(racingResult);
     }
