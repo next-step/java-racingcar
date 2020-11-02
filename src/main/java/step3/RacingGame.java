@@ -18,15 +18,19 @@ public class RacingGame {
     }
 
     private void initRacingGame() {
-        IntStream.range(0, racingSpec.getCarCount()).forEach(i -> racingCarManager.joinCar());
+        IntStream
+                .range(0, racingSpec.getCarCount())
+                .forEach(i -> racingCarManager.joinCar());
     }
 
     public void start() {
-        IntStream.range(0, racingSpec.getMoveCount()).forEach(i -> {
-            racingCarManager.moveCars();
-            List<Integer> racingStatus = racingCarManager.getRacingStatus();
-            racingRecord.saveOneStepRecord(racingStatus);
-        });
+        IntStream
+                .range(0, racingSpec.getMoveCount())
+                .forEach(i -> {
+                    racingCarManager.moveCars();
+                    List<Integer> racingStatus = racingCarManager.getRacingStatus();
+                    racingRecord.saveOneStepRecord(racingStatus);
+                });
     }
 
     public List<List<Integer>> getRacingLog() {
