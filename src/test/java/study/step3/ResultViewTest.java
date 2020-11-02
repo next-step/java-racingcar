@@ -55,12 +55,6 @@ public class ResultViewTest {
                 .isEqualTo(expected);
     }
 
-    private void addRecord(String name, Boolean[] moves) {
-        for (Boolean move : moves) {
-            records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
-        }
-    }
-
     @Test
     @DisplayName("'ResultView'는 두대의 차가 두번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarTwoMove() {
@@ -107,6 +101,12 @@ public class ResultViewTest {
                                 line(nameWithSpace("red") + ": ---")
                 );
         //@formatter:on
+    }
+
+    private void addRecord(String name, Boolean[] moves) {
+        for (Boolean move : moves) {
+            records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
+        }
     }
 
     private void addResult(LapResult aCar, LapResult bCar) {
