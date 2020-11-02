@@ -36,7 +36,7 @@ public class RacingView {
                 .stream()
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
-        return String.join(", ", winners) + MsgConst.WINNER;
+        return String.join(ViewConst.WINNER_DELIMITER, winners) + MsgConst.WINNER;
     }
 
     public void printWinners() {
