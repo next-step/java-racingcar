@@ -75,6 +75,18 @@ public class CarRacingTest {
         assertThat(carRacing.hasRecord()).isTrue();
     }
 
+
+    @Test
+    @DisplayName("가장 많이 아동한 자동차를 위너로 지정한다")
+    void winner() {
+        setUpLapsAndCars(new TestingCar("blue", 3), new TestingCar("red"), 2);
+        setUpRacing();
+
+        carRacing.start();
+
+        assertThat(carRacing.getWinner()).match(winner -> winner.getName().equals("blue"));
+    }
+
     private void setUpLapsAndCars(Car... cars) {
         this.circuit = new Circuit(new HashSet<>(Arrays.asList(cars)), 1);
     }
