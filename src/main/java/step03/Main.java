@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
         final String carKind = "-";
 
-        int numberOfCars = InputView.scanNumberOfCars();
+        int numberOfCars = InputView.readInteger(Constant.NUMBER_OF_CARS_QUESTION);
         Validator.validatePositiveNumber(numberOfCars);
 
-        int numberOfMoves = InputView.scanNumberOfMoves();
+        int numberOfMoves = InputView.readInteger(Constant.NUMBER_OF_MOVES_QUESTION);
         Validator.validatePositiveNumber(numberOfMoves);
 
         Cars cars = Cars.of(numberOfCars);
