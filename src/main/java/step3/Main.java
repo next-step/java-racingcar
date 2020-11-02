@@ -6,9 +6,7 @@ import step3.controller.ResultController;
 public class Main {
 
     public static void main(String[] args) {
-
-        InputController inputController = new InputController();
-        RacingSpec spec = inputController.enterInput();
+        RacingSpec spec = InputController.enterInput();
         RacingGame racingGame = new RacingGame(spec);
         racingGame.start();
         ResultController resultController = new ResultController();
