@@ -37,9 +37,16 @@ class CarsTest {
     void throwExceptionMinCarCount() {
         //given
         List<Car> carList = Collections.emptyList();
-        Cars cars;
         //then
         assertThatThrownBy(()-> new Cars(carList)).isInstanceOf(OutBoundCarListSizeException.class);
+    }
+
+    @Test
+    @DisplayName("테스트")
+    void test()
+    {
+        String str = "";
+        System.out.println(str.length());
     }
 
 }
