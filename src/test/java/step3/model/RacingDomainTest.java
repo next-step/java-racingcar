@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingCarTest {
+public class RacingDomainTest {
 
     @DisplayName("참가차량 명령어 값 셋팅 테스트")
     @ParameterizedTest
