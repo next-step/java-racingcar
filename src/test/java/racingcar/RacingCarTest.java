@@ -7,13 +7,15 @@ import racingcar.domain.RacingCar;
 import racingcar.mock.MockAlwaysMaxValueRandomUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static racingcar.domain.RacingCar.AVAILABLE_MAX_NAME_LENGTH;
 
 public class RacingCarTest {
     private RacingCar racingCar;
 
     @BeforeEach
     void init() {
-        racingCar = new RacingCar(new MockAlwaysMaxValueRandomUtil());
+        racingCar = new RacingCar(new MockAlwaysMaxValueRandomUtil(), "test");
     }
 
     @Test
@@ -37,5 +39,18 @@ public class RacingCarTest {
 
         //then
         assertThat(moveCounter.count).isEqualTo(numberOfCountToTry);
+    }
+
+    @Test
+    @DisplayName("RacingCar의 이름이 허용된 길이를 초과하면 IllegalArgumentException")
+    void testRacingCar_nameLength() {
+        StringBuilder invalidNameBuilder = new StringBuilder();
+        for (int i = 0; i < AVAILABLE_MAX_NAME_LENGTH + 1; i++) {
+            invalidNameBuilder.append("x");
+        }
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new RacingCar(invalidNameBuilder.toString()))
+                .withMessage("Length of RacingCar name cannot exceed " + AVAILABLE_MAX_NAME_LENGTH);
     }
 }
