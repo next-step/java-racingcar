@@ -1,4 +1,4 @@
-package step3.domain;
+package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ public class SimulatorTest {
     @DisplayName("주어진 횟수동안 n대의 자동차는 움직일 수 있는 기회를 받음")
     @Test
     public void simulateCarMovement() {
-        Integer tryCount = 3;
+        int tryCount = 3;
         Cars cars = mock(Cars.class);
 
         Simulator simulator = new Simulator(tryCount, cars);

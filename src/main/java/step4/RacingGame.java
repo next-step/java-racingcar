@@ -1,9 +1,9 @@
-package step3;
+package step4;
 
-import step3.domain.Cars;
-import step3.domain.Simulator;
-import step3.view.InputView;
-import step3.view.ResultView;
+import step4.domain.Cars;
+import step4.domain.Simulator;
+import step4.view.InputView;
+import step4.view.ResultView;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -18,11 +18,12 @@ public class RacingGame {
         PrintWriter output = new PrintWriter(System.out, true);
         InputView inputView = new InputView(new Scanner(System.in), output);
         ResultView resultView = new ResultView(output);
-        Cars cars = Cars.of(inputView.getCarCountFromInput());
+        Cars cars = Cars.ofNames(inputView.getCarNames());
         Simulator simulator = new Simulator(inputView.getTryCountFromInput(), cars);
 
         simulator.execute();
         resultView.show(cars.getRecords());
+        resultView.showWinner(cars.getWinnerRecord());
         output.close();
     }
 
