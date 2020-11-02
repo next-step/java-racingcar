@@ -29,7 +29,7 @@ public class SetTest {
     @Test
     @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인")
     void size() {
-        assertThat(numbers.size()).as("서로의 Size가 동일하지 않습니다").isEqualTo(4);
+        assertThat(numbers.size()).as("서로의 Size가 동일하지 않습니다").isEqualTo(3);
     }
 
     @ParameterizedTest
