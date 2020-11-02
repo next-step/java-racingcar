@@ -16,7 +16,7 @@ public abstract class RacingGame {
 
     private void logGameHistory(int round){
         List<Integer> list = new ArrayList<>();
-        cars.forEach(c-> list.add(c.currentProgress()));
+        cars.forEach(car-> list.add(car.currentProgress()));
         gameHistory.put(round, list);
     }
 
@@ -25,14 +25,16 @@ public abstract class RacingGame {
         logGameHistory(round);
     }
 
-    public Optional<List<Integer>> getResultByRound(int round) {
-        return Optional.ofNullable(gameHistory.get(round));
+    public List<Integer> getResultByRound(int round) {
+        if (gameHistory.size() < round) {
+            throw new IllegalArgumentException();
+        }
+        return gameHistory.get(round);
     }
     public Map<Integer, List<Integer>> getResultAll() {
         return gameHistory;
     }
 
-    public abstract void addCarList(int number);
     public abstract void addCarList(int number, MoveStrategy moveStrategy);
 
     public abstract void execute(RacingInfomation racingInfomation, MoveStrategy moveStrategy);

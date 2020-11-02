@@ -7,8 +7,7 @@ import java.util.Random;
 
 public class RacingCar implements Car {
     private int progress;
-    private MoveStrategy moveStrategy;
-    private final StringBuilder sb = new StringBuilder();
+    private final MoveStrategy moveStrategy;
     private static final Random random = new Random();
 
     public RacingCar() {
@@ -25,24 +24,17 @@ public class RacingCar implements Car {
     @Override
     public void go() {
         if (allowMove()) {
-            progress += 1;
+            move();
         }
+    }
+
+    private void move() {
+        progress ++;
     }
 
     @Override
     public boolean allowMove() {
         return moveStrategy.strategy();
-    }
-
-    public boolean allowMove(int number) {
-        return moveStrategy.strategy(number);
-    }
-
-    @Override
-    public StringBuilder getProgressFromStrategy(PrintMarkStrategy strategy) {
-        sb.delete(0, sb.length());
-        sb.append(String.valueOf(strategy.getPrintMark()).repeat(Math.max(0, progress)));
-        return sb;
     }
 
     @Override

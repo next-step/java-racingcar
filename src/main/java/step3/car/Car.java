@@ -6,5 +6,4 @@ public interface Car {
     void go();
     boolean allowMove();
     int currentProgress();
-    StringBuilder getProgressFromStrategy(PrintMarkStrategy strategy);
 }

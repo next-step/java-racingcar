@@ -47,7 +47,7 @@ public class RacingCarTest {
         MoveStrategy moveStrategy = () -> numberQueue.poll() > Constant.ANCHOR_POINT;
 
         racingGame.execute(new RacingInfomation(carNumber, playCount), moveStrategy);
-        List<Integer> integers = racingGame.getResultByRound(playCount).orElseThrow(IllegalArgumentException::new);
+        List<Integer> integers = racingGame.getResultByRound(playCount);
         Integer integer = integers.get(0);
         assertThat(integer).isEqualTo(resultProgress);
     }

@@ -8,12 +8,6 @@ import java.util.Objects;
 
 public class RacingGameImpl extends RacingGame {
 
-    @Override
-    public void addCarList(int number) {
-        for (int i = 0; i < number; i++) {
-            addCar(new RacingCar());
-        }
-    }
 
     @Override
     public void addCarList(int number, MoveStrategy moveStrategy) {
