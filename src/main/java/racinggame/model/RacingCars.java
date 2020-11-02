@@ -10,8 +10,8 @@ public class RacingCars {
 
   private List<Car> racingCars;
 
-  public RacingCars(int raceCarCount) {
-    this.racingCars = preparerCar(raceCarCount);
+  public RacingCars(String[] racingCarNames) {
+    this.racingCars = preparerCar(racingCarNames);
   }
 
   public RacingCars(List<Car> racingCars) {
@@ -28,9 +28,9 @@ public class RacingCars {
         .collect(Collectors.toList());
   }
 
-  private List<Car> preparerCar(int raceCarCount) {
-    return IntStream.range(0, raceCarCount)
-        .mapToObj(index -> new Car(index))
+  private List<Car> preparerCar(String[] racingCarNames) {
+    return IntStream.range(0, racingCarNames.length)
+        .mapToObj(index -> new Car(racingCarNames[index]))
         .collect(Collectors.toList());
   }
 

@@ -15,6 +15,5 @@ public class CheckUtils {
     return !isNumber(num);
   }
 
-  private CheckUtils() {
-  }
+  private CheckUtils() {}
 }

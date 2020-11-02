@@ -15,6 +15,14 @@ public class RacingResult {
     return movingResults;
   }
 
+  public String getWinnerCarNames() {
+    return getLastRoundResult().getWinnerCarNames();
+  }
+
+  private MovingResult getLastRoundResult() {
+    return this.movingResults.get(movingResults.size() - 1);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

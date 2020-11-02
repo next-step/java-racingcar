@@ -9,18 +9,18 @@ public class Car {
 
   private final int INIT_RACE_POSITION = 0;
 
-  private int carNumber;
+  private String carName;
   private int racingPosition;
   private MoveRule moveRule;
 
-  public Car(int carNumber) {
-    this.carNumber = carNumber;
+  public Car(String carName) {
+    this.carName = carName;
     this.racingPosition = INIT_RACE_POSITION;
     this.moveRule = new RandomMoveRule();
   }
 
-  public Car(int carNumber, MoveRule moveRule) {
-    this.carNumber = carNumber;
+  public Car(String carName, MoveRule moveRule) {
+    this.carName = carName;
     this.racingPosition = INIT_RACE_POSITION;
     this.moveRule = moveRule;
   }
@@ -31,7 +31,7 @@ public class Car {
 
   public CarSateInRace go() {
     updateRacePosition(moveRule.isAbleToMove());
-    return new CarSateInRace(this.carNumber, this.racingPosition);
+    return new CarSateInRace(this.carName, this.racingPosition);
   }
 
   private int updateRacePosition(boolean goingPossible) {
@@ -47,11 +47,11 @@ public class Car {
       return false;
     }
     Car car = (Car) o;
-    return carNumber == car.carNumber;
+    return carName == car.carName;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(carNumber);
+    return Objects.hash(carName);
   }
 }
