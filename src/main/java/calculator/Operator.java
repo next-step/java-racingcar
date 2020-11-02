@@ -21,7 +21,7 @@ public enum Operator {
     private static Operator validationCheck(String operator) {
         Operator operatorType = Operator.Types.operators.get(operator);
         if(operatorType == null) {
-            throw new IllegalArgumentException("정의된 연산기호가 아닙니다");
+            throw new IllegalArgumentException(CalculatorError.E000);
         }
         return operatorType;
     }
@@ -38,11 +38,11 @@ public enum Operator {
         }
         if(validationCheck(operator).equals(DIVIDE)) {
             if(n2 <= 0) {
-                throw new ArithmeticException("0으로 나눌 수 없습니다");
+                throw new ArithmeticException(CalculatorError.E001);
             }
             return n1 / n2;
         }
-        throw new IllegalArgumentException("정의된 연산기호가 아닙니다");
+        throw new IllegalArgumentException(CalculatorError.E000);
     }
 
 }

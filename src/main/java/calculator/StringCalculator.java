@@ -5,7 +5,9 @@ import java.util.Map;
 
 public class StringCalculator {
 
+
     private static final Map<String,String> regexGroups = new HashMap<>();
+    private static final String STRING_SEPARATOR = " ";
 
     public StringCalculator() {
         regexGroups.put("number","^[0-9]*$");
@@ -18,29 +20,29 @@ public class StringCalculator {
                 .filter(entry -> input.matches(entry.getValue()))
                 .map(Map.Entry::getKey)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("숫자 또는 연산자만 입력가능합니다"));
+                .orElseThrow(() -> new IllegalArgumentException(CalculatorError.E002));
     }
 
     private void isEmpty(String value) {
         if(value == null || value.isEmpty() || value.trim().length() == 0) {
-            throw new IllegalArgumentException("입력 값이 null 이거나 빈 공백 문자 입니다");
+            throw new IllegalArgumentException(CalculatorError.E003);
         }
     }
 
     private void expressionCheck(String[] valueArr) {
 
         if(!getType(valueArr[0]).equals("number")) {
-            throw new IllegalArgumentException("첫번째 문자열이 숫자가 아닙니다");
+            throw new IllegalArgumentException(CalculatorError.E004);
         }
 
         if(getType(valueArr[valueArr.length-1]).equals("special_characters")) {
-            throw new IllegalArgumentException("마지막 문자열이 연산자로 끝납니다");
+            throw new IllegalArgumentException(CalculatorError.E005);
         }
     }
 
     private String[] split(String expression) {
         isEmpty(expression);
-        String[] expArr = expression.split(" ");
+        String[] expArr = expression.split(STRING_SEPARATOR);
         expressionCheck(expArr);
 
         return expArr;
