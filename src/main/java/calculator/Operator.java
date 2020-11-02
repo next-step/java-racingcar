@@ -3,23 +3,23 @@ package calculator;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Calculrator {
+public enum Operator {
 
     PLUS("+"),
     MINUS("-"),
     TIMES("*"),
     DIVIDE("/");
 
-    private static class Operator {
-        static Map<String, Calculrator> typeMap = new HashMap<>();
+    private static class Types {
+        static Map<String, Operator> operators = new HashMap<>();
     }
 
-    Calculrator(String operator) {
-        Operator.typeMap.put(operator,this);
+    Operator(String op) {
+        Types.operators.put(op,this);
     }
 
-    private static Calculrator validationCheck(String operator) {
-        Calculrator operatorType = Operator.typeMap.get(operator);
+    private static Operator validationCheck(String operator) {
+        Operator operatorType = Operator.Types.operators.get(operator);
         if(operatorType == null) {
             throw new IllegalArgumentException("정의된 연산기호가 아닙니다");
         }

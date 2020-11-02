@@ -5,18 +5,18 @@ import java.util.Map;
 
 public class StringCalculator {
 
-    private static final Map<String,String> groupToRegexMap = new HashMap<>();
+    private static final Map<String,String> regexGroups = new HashMap<>();
 
     public StringCalculator() {
-        groupToRegexMap.put("number","^[0-9]*$");
-        groupToRegexMap.put("sp","^[^a-zA-Z0-9가-힣]");
+        regexGroups.put("number","^[0-9]*$");
+        regexGroups.put("special_characters","^[^a-zA-Z0-9가-힣]");
     }
 
     private String getType(String input) {
-        return groupToRegexMap.entrySet()
+        return regexGroups.entrySet()
                 .stream()
                 .filter(entry -> input.matches(entry.getValue()))
-                .map(entry -> entry.getKey())
+                .map(Map.Entry::getKey)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("숫자 또는 연산자만 입력가능합니다"));
     }
@@ -33,28 +33,28 @@ public class StringCalculator {
             throw new IllegalArgumentException("첫번째 문자열이 숫자가 아닙니다");
         }
 
-        if(getType(valueArr[valueArr.length-1]).equals("sp")) {
+        if(getType(valueArr[valueArr.length-1]).equals("special_characters")) {
             throw new IllegalArgumentException("마지막 문자열이 연산자로 끝납니다");
         }
     }
 
     private String[] split(String expression) {
         isEmpty(expression);
-        String expArr[] = expression.split(" ");
+        String[] expArr = expression.split(" ");
         expressionCheck(expArr);
 
         return expArr;
     }
 
     public int result(String input) {
-        String inputArr[] = split(input);
+        String[] inputArr = split(input);
 
         int resultNum = Integer.parseInt(inputArr[0]);
 
         for (int i = 1; i < inputArr.length; i += 2) {
             String op = inputArr[i];
             int secondNum = Integer.parseInt(inputArr[i + 1]);
-            resultNum = Calculrator.operation(resultNum,secondNum,op);
+            resultNum = Operator.operation(resultNum,secondNum,op);
         }
 
         return resultNum;
