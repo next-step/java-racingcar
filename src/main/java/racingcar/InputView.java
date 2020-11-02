@@ -24,10 +24,6 @@ public class InputView {
         return this.scanner.nextInt();
     }
 
-    public void printResultMsg() {
-        System.out.println(MsgConst.EXECUTION_RESULT);
-    }
-
     private static class SingletonHelper {
         private static final InputView instance = new InputView();
     }

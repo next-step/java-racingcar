@@ -10,6 +10,10 @@ public class RacingView {
         this.game = game;
     }
 
+    public void printResultMsg() {
+        System.out.println(MsgConst.EXECUTION_RESULT);
+    }
+
     // NOTE: Car 보다 작은 단위로 convert 하지 않도록 한다.
     protected String convertCar(Car car) {
         int position = car.getPosition();
