@@ -1,6 +1,7 @@
 package study.step3;
 
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
@@ -16,6 +17,8 @@ class InputView {
     }
 
     private int requestLaps() {
+        System.out.println("시도할 회수는 몇회인가요?");
+
         String laps = nextLine();
         if (!isInteger(laps)) {
             throw new IllegalArgumentException("횟수는 0 이상의 정수로 입력해 주세요.");
@@ -38,6 +41,8 @@ class InputView {
     }
 
     private String requestNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+
         String names = nextLine();
         if (names.isEmpty()) {
             throw new IllegalArgumentException("쉼표로 구분된 자동차 이름을 입력해주세요.");
@@ -47,7 +52,7 @@ class InputView {
     }
 
     protected String nextLine() {
-        return null;
+        return new Scanner(System.in).nextLine();
     }
 
     private Set<Car> parseNames(String names) {
