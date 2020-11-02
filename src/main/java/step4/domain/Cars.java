@@ -1,6 +1,7 @@
-package step3.domain;
+package step4.domain;
 
-import java.util.Collections;
+import step4.RecordDto;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,15 +19,15 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of(Integer carCount) {
-        return of(Collections.nCopies(carCount, new Car(0)));
+    public static Cars ofNames(List<String> names) {
+        return of(names.stream().map(name -> new Car(name, 0)).collect(Collectors.toList()));
     }
 
     public void move() {
         cars.forEach(racingStrategy::move);
     }
 
-    public List<List<Integer>> getRecords() {
+    public List<List<RecordDto>> getRecords() {
         if (cars.size() == 0) {
             throw new IllegalStateException("no cars");
         }
@@ -35,9 +36,20 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private List<Integer> getRecordsAtStep(int step) {
+    private List<RecordDto> getRecordsAtStep(int step) {
         return cars.stream()
                 .map(car -> car.getRecordAtStep(step))
+                .collect(Collectors.toList());
+    }
+
+    public List<RecordDto> getWinnerRecord() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("no maximum"));
+        return cars.stream()
+                .filter(car -> car.getPosition().equals(maxPosition))
+                .map(Car::getFinalRecord)
                 .collect(Collectors.toList());
     }
 }

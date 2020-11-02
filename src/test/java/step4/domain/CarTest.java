@@ -1,4 +1,4 @@
-package step3.domain;
+package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,25 +19,13 @@ public class CarTest {
         assertThat(position).isEqualTo(1);
     }
 
-    @DisplayName("자동차가 움직이면 위치가 기록됨")
+    @DisplayName("자동차 위치가 기록됨")
     @Test
     public void recordPosition() {
-        car.move();
-
-        Integer recordAtStep = car.getRecordAtStep(0);
-
-        assertThat(recordAtStep).isEqualTo(1);
-    }
-
-    @DisplayName("자동차가 움직인만큼 기록됨")
-    @Test
-    public void recordAllMovement() {
-        car.move();
-        car.move();
+        car.record();
 
         Integer recordCount = car.getRecordCount();
 
-        assertThat(recordCount).isEqualTo(2);
+        assertThat(recordCount).isEqualTo(1);
     }
-
 }
