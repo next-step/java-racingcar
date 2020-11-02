@@ -1,5 +1,6 @@
 package step4.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,15 +11,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
 
-    private MoveStrategy moveStrategy;
+    private static final String CAR_NAME = "Wani";
+    private Car car;
 
+    @BeforeEach
+    void setUp() {
+        car = new Car(CAR_NAME);
+    }
+
+    @Test
+    @DisplayName("이름이 맞게 들어가는지 확인을 한다.")
+    void validationCarName() {
+        //given
+        assertThat(car.getName()).isEqualTo(CAR_NAME);
+    }
 
     @Test
     @DisplayName("전략에 따라 차가 무조건 움직이는지 확인한다.")
     void mustMoveCar() {
         //given
-        moveStrategy = new MustMoveStrategy();
-        Car car = new Car("Wani");
+        MoveStrategy moveStrategy = new MustMoveStrategy();
         //when
         car.move(moveStrategy);
         //then
@@ -29,8 +41,7 @@ class CarTest {
     @DisplayName("전략에 따라 차가 안움직이는지 확인한다.")
     void notMoveCar() {
         //given
-        moveStrategy = new NotMoveStrategy();
-        Car car = new Car("Wani");
+        MoveStrategy moveStrategy = new NotMoveStrategy();
         //when
         car.move(moveStrategy);
         //then
@@ -42,8 +53,7 @@ class CarTest {
     @DisplayName("움직임 횟수에 따라 차의 포지션을 맞춥니다.")
     void moveCarGetPosition(int moveCount) {
         //given
-        moveStrategy = new MustMoveStrategy();
-        Car car = new Car("Wani");
+        MoveStrategy moveStrategy = new MustMoveStrategy();
         //when
         for (int i = 0; i < moveCount; i++) {
             car.move(moveStrategy);

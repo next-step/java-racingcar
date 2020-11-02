@@ -3,10 +3,11 @@ package step4.service;
 import step4.domain.Car;
 import step4.domain.Cars;
 import step4.domain.MoveStrategy;
-import step4.dto.RacingGameConditionDTO;
+import step4.dto.RacingGameConditionMoveStrategyDTO;
 import step4.exception.MinimumTryCountException;
 import step4.exception.OutBoundCarListSizeException;
 import step4.utils.CarNameSplitter;
+
 import java.util.List;
 
 
@@ -16,12 +17,10 @@ public class RacingGame {
     private static final int MIN_TRY_COUNT = 1;
     private static final int CARS_MIN_COUNT = 1;
     private final Cars cars;
-    private final MoveStrategy moveStrategy;
-    private final RacingGameConditionDTO racingGameConditionDTO;
+    private final RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO;
 
-    public RacingGame(RacingGameConditionDTO racingGameConditionDTO, MoveStrategy moveStrategy) {
-        this.racingGameConditionDTO = racingGameConditionDTO;
-        this.moveStrategy = moveStrategy;
+    public RacingGame(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
+        this.racingGameConditionMoveStrategyDTO = racingGameConditionMoveStrategyDTO;
 
         validTryCount(getRacingGameTryCount());
         List<Car> carList = CarNameSplitter.splitToCarList(getRacingGameCarNames());
@@ -30,21 +29,29 @@ public class RacingGame {
     }
 
 
-
     public int getRacingGameTryCount() {
-        return this.racingGameConditionDTO.getTryCount();
+        return racingGameConditionMoveStrategyDTO
+                .getRacingGameConditionDTO()
+                .getTryCount();
     }
 
     public String getRacingGameCarNames() {
-        return this.racingGameConditionDTO.getCarNames();
+        return racingGameConditionMoveStrategyDTO
+                .getRacingGameConditionDTO()
+                .getCarNames();
     }
 
 
     public Cars getGameRoundResult() {
-        cars.moveCars(moveStrategy);
+        cars.moveCars(getGameMoveStrategy());
         return cars;
     }
-    public Cars getGameEndResult(){
+
+    private MoveStrategy getGameMoveStrategy() {
+        return racingGameConditionMoveStrategyDTO.getMoveStrategy();
+    }
+
+    public Cars getGameEndResult() {
         return cars;
     }
 

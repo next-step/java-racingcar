@@ -1,7 +1,5 @@
 package step4.domain;
 
-import step4.exception.OutBoundCarListSizeException;
-
 import java.util.List;
 
 public class Cars {
@@ -9,7 +7,6 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
-        System.out.println(this.cars.size());
     }
 
 
