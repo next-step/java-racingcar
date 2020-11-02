@@ -30,7 +30,6 @@ class TestingResultView extends ResultView {
 
 public class ResultViewTest {
 
-    public static final int ID = 0;
     public static final int NAME = 0;
     public static final int IS_MOVED = 1;
     private StringBuilder stringBuilder;
