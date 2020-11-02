@@ -23,15 +23,6 @@ public class CarRacingTest {
     private Circuit circuit;
 
     @Test
-    @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
-    void errorWhenEmptyRacingInfo() {
-        setUpRacing();
-
-        assertThatExceptionOfType(IllegalStateException.class) //
-                .isThrownBy(carRacing::start);
-    }
-
-    @Test
     @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
     void startRacing() {
         setUpLapsAndCars(new TestingCar());
