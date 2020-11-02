@@ -5,17 +5,17 @@ import step03.view.ResultView;
 
 import java.util.stream.Stream;
 
-public class Operator {
+public class Race {
     private final int numberOfMoves;
     private final Cars cars;
 
-    private Operator(int numberOfMoves, Cars cars) {
+    private Race(int numberOfMoves, Cars cars) {
         this.numberOfMoves = numberOfMoves;
         this.cars = cars;
     }
 
-    public static Operator of(int numberOfMoves, Cars cars) {
-        return new Operator(numberOfMoves, cars);
+    public static Race of(int numberOfMoves, Cars cars) {
+        return new Race(numberOfMoves, cars);
     }
 
     public void operate(MoveStrategy moveStrategy, String carKind) {

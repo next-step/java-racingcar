@@ -160,6 +160,10 @@ private 메서드의 테스트가 꼭 필요해 보인다면, 클래스 분리�
 (추가로 외부에서 접근할 수 있는 메소드의 네이밍에 구체적인 구현내용이 포함되지 않는 것도 '캡슐화'의 일종이라고 할 수 있습니다!)
 ```
 
+```
+메소드 네이밍은 동사형으로 시작하는 것을 권장
+```
+
 
 ## [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)
 git 의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.

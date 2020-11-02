@@ -14,8 +14,8 @@ public class Main {
         Validator.validatePositiveNumber(numberOfMoves);
 
         Cars cars = Cars.of(numberOfCars);
-        Operator operator = Operator.of(numberOfMoves, cars);
-        operator.operate(RandomMoveStrategy.of(), carKind);
+        Race race = Race.of(numberOfMoves, cars);
+        race.operate(RandomMoveStrategy.of(), carKind);
 
     }
 }
