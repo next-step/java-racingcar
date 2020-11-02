@@ -5,20 +5,20 @@ import java.util.Objects;
 public class RacingCar {
 
     private int entryNumber;
-    private StringBuilder commands = new StringBuilder();
-    private static final String DEFAULT_EXPRESSION = "-";
+    private StringBuilder moveTrack = new StringBuilder();
+    private static final String DEFAULT_START_EXPRESSION = "-";
 
     public RacingCar(int entryNumber){
         this.entryNumber = entryNumber;
-        commands.append(DEFAULT_EXPRESSION);
+        this.moveTrack.append(DEFAULT_START_EXPRESSION);
     }
 
     public void addCommands(String command){
-        commands.append(command);
+        moveTrack.append(command);
     }
 
     public StringBuilder getCommands() {
-        return commands;
+        return moveTrack;
     }
 
     @Override
