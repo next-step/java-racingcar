@@ -61,7 +61,7 @@ public class CarRacingTest {
         setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
-        assertThat(resultView.isCommitted()).isFalse();
+        assertThat(carRacing.hasRecord()).isFalse();
     }
 
     @Test
@@ -72,7 +72,7 @@ public class CarRacingTest {
 
         carRacing.start();
 
-        assertThat(resultView.isCommitted()).isTrue();
+        assertThat(carRacing.hasRecord()).isTrue();
     }
 
     private void setUpLapsAndCars(Car... cars) {
