@@ -86,9 +86,9 @@ public class ResultViewTest {
     @DisplayName("'ResultView'는 두대의 차가 세번 움직인 결과를 출력할 수 있다.")
     void reportResultTwoCarThreeMove() {
 
-        addResult(new LapResult(0L, false), new LapResult(1L, true));
-        addResult(new LapResult(0L, true), new LapResult(1L, true));
-        addResult(new LapResult(0L, true), new LapResult(1L, true));
+        addResult(new LapResult("blue", false), new LapResult("red", true));
+        addResult(new LapResult("blue", true), new LapResult("red", true));
+        addResult(new LapResult("blue", true), new LapResult("red", true));
 
         resultView.report();
 
