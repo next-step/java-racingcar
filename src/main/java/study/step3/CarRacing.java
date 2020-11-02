@@ -20,19 +20,21 @@ class CarRacing {
     public void start() {
         for (int i = 0; i < steps; i++) {
             move();
+            recording();
         }
     }
 
     private void move() {
         for (Car car : cars) {
             car.move();
-            recording(car);
         }
     }
 
-    private void recording(Car car) {
-        records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
-                .add(car.isMoved());
+    private void recording() {
+        for (Car car : cars) {
+            records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
+                    .add(car.isMoved());
+        }
     }
 
     public boolean hasRecord() {
