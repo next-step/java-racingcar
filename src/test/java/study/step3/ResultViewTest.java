@@ -18,7 +18,8 @@ import static study.step3.ResultView.nameWithSpace;
 class TestingResultView extends ResultView {
     private final StringBuilder stringBuilder;
 
-    public TestingResultView(StringBuilder stringBuilder) {
+    public TestingResultView(StringBuilder stringBuilder, Map<String, List<Boolean>> records) {
+        super(records);
         this.stringBuilder = stringBuilder;
     }
 
@@ -34,23 +35,30 @@ public class ResultViewTest {
     public static final int IS_MOVED = 1;
     private StringBuilder stringBuilder;
     private ResultView resultView;
+    private final Map<String, List<Boolean>> records = new HashMap<>();
 
     @BeforeEach
     void setUp() {
         stringBuilder = new StringBuilder();
-        resultView = new TestingResultView(stringBuilder);
+        resultView = new TestingResultView(stringBuilder, records);
     }
 
     @ParameterizedTest
     @ArgumentsSource(OneCarRacingRecordArgumentProvider.class)
     @DisplayName("'ResultView'는 한대의 차가 움직인 결과를 출력할 수 있다.")
-    void reportResultOneCarMove(String name, int moves, String expected) {
+    void reportResultOneCarMove(String name, Boolean[] moves, String expected) {
         addRecord(name, moves);
 
         resultView.report();
 
         assertThat(stringBuilder.toString()) //
                 .isEqualTo(expected);
+    }
+
+    private void addRecord(String name, Boolean[] moves) {
+        for (Boolean move : moves) {
+            records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
+        }
     }
 
     @Test
@@ -114,24 +122,24 @@ public class ResultViewTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             //@formatter:off
             return Stream.of(
-                    Arguments.of(new String[]{"blue:true"}, // 한대의 차가 한번 움직인 결과
+                    Arguments.of("blue", new Boolean[]{true}, // 한번 시도에서 한번 움직인 결과
                                     line("실행결과") +
                                     line(nameWithSpace("blue") + ": -")
                     ),
 
-                    Arguments.of(new String[]{"blue:false"},
+                    Arguments.of("blue", new Boolean[]{false}, // 한번 시도에서 0번 움직인 결과
                                     line("실행결과") +
                                     line(nameWithSpace("blue") + ": ")
                     ),
 
-                    Arguments.of(new String[]{"blue:true", "blue:false"},
+                    Arguments.of("blue", new Boolean[]{true, false}, // 두번 시도에서 한번 움직인 결과
                                     line("실행결과") +
                                     line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
                                     line(nameWithSpace("blue") + ": -")
                     ),
 
-                    Arguments.of(new String[]{"blue:true", "blue:true"},
+                    Arguments.of("blue", new Boolean[]{true, true}, // 두번 시도에서 두번 움직인 결과
                                     line("실행결과") +
                                     line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +

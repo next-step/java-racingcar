@@ -1,15 +1,20 @@
 package study.step3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
 
 class ResultView {
     private final List<Set<LapResult>> results = new ArrayList<>();
+    private Map<String, List<Boolean>> records;
+
+    public ResultView() {
+        this(new HashMap<>());
+    }
+
+    public ResultView(Map<String, List<Boolean>> records) {
+        this.records = records;
+    }
 
     public void add(Set<LapResult> result) {
         results.add(result);
@@ -17,7 +22,8 @@ class ResultView {
 
     public void report() {
         print("실행결과");
-        for (int i = 0; i < results.size(); i++) {
+        int laps = records.values().iterator().next().size();
+        for (int i = 0; i < laps; i++) {
             printNewline();
             printRecord(i);
         }
@@ -25,11 +31,11 @@ class ResultView {
 
     private void printRecord(int lastLap) {
         //@formatter:off
-        results.subList(0, lastLap + 1)
-                .stream()
-                .flatMap(Set::stream)
-                .collect(groupingBy(LapResult::getName, TreeMap::new, toList()))
-                .forEach(this::printCarLapResult);
+        records.forEach((name, record) -> {
+            print(nameWithSpace(name) + ": " +
+                    record.subList(0, lastLap + 1).stream().map(moved -> moved ? "-" : "").collect(joining()));
+            printNewline();
+        });
         //@formatter:on
     }
 
