@@ -100,6 +100,17 @@ public class ResultViewTest {
         //@formatter:on
     }
 
+    @Test
+    @DisplayName("우승자를 출력한다")
+    void reportWinners() {
+
+        setWinners("blue", "red");
+        resultView.printWinners();
+
+        assertThat(stringBuilder.toString()) //
+                .isEqualTo("우승자는 'blue', 'red' 입니다.");
+    }
+
     private void addRecord(String name, Boolean[] moves) {
         for (Boolean move : moves) {
             records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
