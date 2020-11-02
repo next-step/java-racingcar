@@ -4,7 +4,7 @@ public class RandomGenerator {
     private RandomGenerator() {
     }
 
-    public static double getRandomBetweenZeroToOne() {
-        return Math.random();
+    public static double getRandomLessThan(int number) {
+        return Math.random() * number;
     }
 }

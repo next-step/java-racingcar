@@ -1,39 +1,43 @@
 package step3.domain;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
+    private final RacingStrategy racingStrategy;
 
-    public Cars(Integer carCount) {
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(0));
-        }
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+        this.racingStrategy = new RandomRacingStrategy();
     }
 
-    public Cars(List<Integer> positions) {
-        cars = new ArrayList<>();
-        for (Integer position : positions) {
-            cars.add(new Car(position));
-        }
+    public static Cars of(List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    public static Cars of(Integer carCount) {
+        return of(Collections.nCopies(carCount, new Car(0)));
     }
 
     public void move() {
-        for (Car car : cars) {
-            RacingStrategy.move(car);
+        cars.forEach(racingStrategy::move);
+    }
+
+    public List<List<Integer>> getRecords() {
+        if (cars.size() == 0) {
+            throw new IllegalStateException("no cars");
         }
+        return IntStream.range(0, cars.get(0).getRecordCount())
+                .mapToObj(this::getRecordsAtStep)
+                .collect(Collectors.toList());
     }
 
-    public Integer size() {
-        return cars.size();
-    }
-
-    public List<Integer> getPositions() {
+    private List<Integer> getRecordsAtStep(int step) {
         return cars.stream()
-                .map(Car::getPosition)
+                .map(car -> car.getRecordAtStep(step))
                 .collect(Collectors.toList());
     }
 }

@@ -14,7 +14,30 @@ public class CarTest {
     public void increasePosition() {
         car.move();
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        Integer position = car.getPosition();
+
+        assertThat(position).isEqualTo(1);
+    }
+
+    @DisplayName("자동차가 움직이면 위치가 기록됨")
+    @Test
+    public void recordPosition() {
+        car.move();
+
+        Integer recordAtStep = car.getRecordAtStep(0);
+
+        assertThat(recordAtStep).isEqualTo(1);
+    }
+
+    @DisplayName("자동차가 움직인만큼 기록됨")
+    @Test
+    public void recordAllMovement() {
+        car.move();
+        car.move();
+
+        Integer recordCount = car.getRecordCount();
+
+        assertThat(recordCount).isEqualTo(2);
     }
 
 }
