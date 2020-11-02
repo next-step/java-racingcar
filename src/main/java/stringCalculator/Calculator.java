@@ -10,10 +10,10 @@ public class Calculator {
                 .filter(operator -> operator.symbol.isSameSymbol(symbol))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new)
-                .operate(a, b);
+                .execute(symbol,a,b);
     }
 
-    public int excuteResult(String token){
+    public int executeResult(String token){
 
         Tokenizer.setSplitToken(token);
         String[] splitToken = Tokenizer.splitToken;

@@ -19,7 +19,7 @@ public class Tokenizer {
     }
 
     public static Operator createOperator(String symbol){
-        if("+-/*".contains(symbol)) {
+        if(Operator.operatorCollection.containsKey(symbol)) {
             return new Operator(symbol);
         }
         throw new NotVaildOperatorException("올바른 사칙연산 기호를 입력해주세요");
