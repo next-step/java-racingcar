@@ -1,13 +1,13 @@
 package study.step3;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 class CarRacing {
 
     private final Set<Car> cars;
     private final int steps;
     private final ResultView resultView;
+    private final Map<String, List<Boolean>> records = new HashMap<>();
 
     public CarRacing(Circuit circuit, ResultView resultView) {
         cars = circuit.getCars();
@@ -22,11 +22,18 @@ class CarRacing {
     }
 
     private void move() {
-        Set<LapResult> result = new HashSet<>();
         for (Car car : cars) {
             car.move();
-            result.add(new LapResult(car.getName(), car.isMoved()));
+            record(car);
         }
-        resultView.add(result);
+    }
+
+    private void record(Car car) {
+        records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
+                .add(car.isMoved());
+    }
+
+    public boolean hasRecord() {
+        return !records.isEmpty();
     }
 }
