@@ -86,6 +86,20 @@ public class CarRacingTest {
         assertThat(carRacing.getWinner()).contains("blue");
     }
 
+    @Test
+    @DisplayName("위너는 둘 이상일 수 있다")
+    void co_winner() {
+        setUpLapsAndCars(new TestingCar("blue", 3), //
+                new TestingCar("red", 3), //
+                new TestingCar("white", 2));
+
+        setUpRacing();
+
+        carRacing.start();
+
+        assertThat(carRacing.getWinner()).contains("blue", "red");
+    }
+
     private void setUpLapsAndCars(Car... cars) {
         this.circuit = new Circuit(new HashSet<>(Arrays.asList(cars)), 1);
     }
