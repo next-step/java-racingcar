@@ -6,5 +6,5 @@ public class ErrorMessage {
     }
 
     public static final String INVALID_RANDOM_VALUE = "invalid random value";
-    public static final String RACING_SPEC_IS_NULL = "racing spec is null";
+    public static final String MOVE_STRATEGY_IS_NULL = "move strategy is null";
 }

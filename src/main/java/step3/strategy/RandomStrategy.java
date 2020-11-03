@@ -1,7 +1,5 @@
 package step3.strategy;
 
-import step3.ErrorMessage;
-import step3.strategy.MoveStrategy;
 
 import java.util.Random;
 
@@ -11,15 +9,8 @@ public class RandomStrategy implements MoveStrategy {
     private static final Integer bound = 9;
 
     @Override
-    public boolean move() {
-        return strategy(random.nextInt(bound));
-    }
-
-    public boolean strategy(int value) {
-        if (value > bound || value < 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RANDOM_VALUE);
-        }
-        return value > 4;
+    public int generate() {
+        return random.nextInt(bound);
     }
 
 }

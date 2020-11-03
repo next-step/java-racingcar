@@ -7,12 +7,6 @@ public class ResultController {
 
     private static final String RACING_DASH = "-";
 
-    public void printRacingGame(List<List<Integer>> racingGameResult) {
-        racingGameResult
-                .stream()
-                .forEach(this::printRacingLog);
-    }
-
     public void printRacingLog(List<Integer> racingStepResult) {
         racingStepResult
                 .stream()

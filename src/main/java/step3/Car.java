@@ -1,16 +1,16 @@
 package step3;
 
-import step3.strategy.MoveStrategy;
-import step3.strategy.RandomStrategy;
-
 public class Car {
 
     private int location = 0;
 
-    private final MoveStrategy moveStrategy = new RandomStrategy();
+    private static final Integer bound = 9;
 
-    public void move() {
-        if (moveStrategy.move()) {
+    public void move(int value) {
+        if (value > bound || value < 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANDOM_VALUE);
+        }
+        if (value > 4) {
             goForward();
         }
     }
