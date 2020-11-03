@@ -4,7 +4,7 @@ public class StringCalculator {
     private String[] inputs;
     private int firstOperand;
     private int secondOperand;
-    private String operator;
+    private OperationType operator;
     private int result;
 
     public int calculate(String input) throws IllegalArgumentException{
@@ -18,9 +18,10 @@ public class StringCalculator {
 
             if (isEven(i + 1)) {
                 setSecondOperand(inputs[i + 1]);
+
             }
 
-            operateFourCalculation();
+            operateFourCalculation(operator);
         }
 
         return result;
@@ -38,22 +39,22 @@ public class StringCalculator {
         if (!isValidOperator(operator)) {
             throw new IllegalArgumentException();
         } else {
-            this.operator = operator;
+            this.operator = OperationType.findByOperator(operator);
         }
     }
 
-    private void operateFourCalculation(){
+    private void operateFourCalculation(OperationType operator){
         switch(operator){
-            case "+":
+            case ADD:
                 result = add(firstOperand, secondOperand);
                 break;
-            case "-":
+            case SUBTRACT:
                 result = subtract(firstOperand, secondOperand);
                 break;
-            case "*":
+            case MULTIPLE:
                 result = multiple(firstOperand, secondOperand);
                 break;
-            case "/":
+            case DIVIDE:
                 result = divide(firstOperand, secondOperand);
                 break;
             default:
@@ -79,11 +80,10 @@ public class StringCalculator {
     }
 
     private void parseInputs(String input) throws IllegalArgumentException{
-        if(this.isNullOrEmptyString(input)) {
+        if (this.isNullOrEmptyString(input)) {
             throw new IllegalArgumentException();
-        }else {
-            inputs = input.split(" ");
         }
+        inputs = input.split(" ");
     }
 
     private boolean isValidOperator(String input) {
