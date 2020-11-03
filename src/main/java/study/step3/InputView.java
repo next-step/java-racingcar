@@ -57,11 +57,7 @@ class InputView {
 
     private Set<Car> parseNames(String names) {
         return Arrays.stream(names.split(",")) //
-                .peek(name -> {
-                    if (name.length() > 5) {
-                        throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
-                    }
-                }).map(RealCar::new) //
+                .map(RealCar::new) //
                 .collect(toSet());
     }
 }

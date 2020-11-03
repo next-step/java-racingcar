@@ -9,6 +9,9 @@ public class RealCar implements Car {
     private final Random random;
 
     public RealCar(String name) {
+        if (name.length() > NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
+        }
         this.name = name;
         this.random = new Random();
     }
