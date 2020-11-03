@@ -16,7 +16,7 @@ class CarRacing {
     public void start() {
         for (int i = 0; i < steps; i++) {
             move();
-            recording();
+            saveRecord();
         }
     }
 
@@ -26,7 +26,7 @@ class CarRacing {
         }
     }
 
-    private void recording() {
+    private void saveRecord() {
         for (Car car : cars) {
             raceRecord.saveRecord(car);
         }
