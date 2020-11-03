@@ -27,17 +27,13 @@ public class RaceRecordTest {
     @Test
     @DisplayName("RaceRecord는 생성후 비어있는 상태이다.")
     void initState() {
-        RaceRecord raceRecord = new RaceRecord();
         assertThat(raceRecord.isEmpty()).isTrue();
     }
 
     @Test
     @DisplayName("RaceRecord는 자동차 이동기록을 저장할 수 있다.")
     void saveMove() {
-        RaceRecord raceRecord = new RaceRecord();
-
-        Car car = new TestingCar();
-        raceRecord.saveRecord(car);
+        saveRecords(1, new TestingCar());
 
         assertThat(raceRecord.isEmpty()).isFalse();
     }
@@ -45,7 +41,6 @@ public class RaceRecordTest {
     @Test
     @DisplayName("RaceRecord는 가장 많이 이동한 자동차의 이름을 한대 이상 반환할 수 있다.")
     void mostMovingCarName() {
-
         saveRecords(5, new TestingCar("blue", 2), //
                 new TestingCar("red", 3),  //
                 new TestingCar("white", 2),  //
