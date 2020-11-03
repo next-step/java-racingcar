@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         int numberOfCars = InputView.readInteger(Constant.NUMBER_OF_CARS_QUESTION);
-        Cars cars = Cars.of(numberOfCars);
+        Cars cars = Cars.of(numberOfCars, 1, RandomMoveStrategy.of());
 
         int numberOfMoves = InputView.readInteger(Constant.NUMBER_OF_MOVES_QUESTION);
         Race race = Race.of(numberOfMoves, cars);
@@ -16,7 +16,7 @@ public class Main {
         final String dashCar = "-";
         ResultView dashCarView = ResultView.of(dashCar);
 
-        race.operate(RandomMoveStrategy.of(), dashCarView);
+        race.operate(dashCarView);
 
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import step03.strategy.RandomMoveStrategy;
 
 import java.util.stream.Stream;
 
@@ -13,19 +14,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("DEFAULT Position CAR 생성 테스트")
-    @Test
-    void Given_NoPosition_When_CreateCar_Then_PositionIs1() {
-        Car car = Car.of();
-        final int result = car.position();
-        assertThat(result).isEqualTo(1);
-    }
-
     @DisplayName("Position CAR 생성 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 10, 13})
     void Given_Position_When_CreateCar_Then_PositionIsGivenPosition(int input) {
-        Car car = Car.of(input);
+        Car car = Car.of(input, RandomMoveStrategy.of());
         final int result = car.position();
         assertThat(result).isEqualTo(input);
     }
@@ -41,8 +34,8 @@ public class CarTest {
     @ParameterizedTest
     @MethodSource("provideMovingCarResult")
     void Given_isMovable_Then_CarMove(boolean isMovable, int expected) {
-        final Car car = Car.of();
-        car.move(() -> isMovable);
+        final Car car = Car.of(1, () -> isMovable);
+        car.move();
         final int result = car.position();
         assertThat(result).isEqualTo(expected);
     }

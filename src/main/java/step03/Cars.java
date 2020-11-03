@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 
 public class Cars {
     public List<Car> cars;
-
     private Cars(List<Car> cars) {
         this.cars = cars;
     }
@@ -17,24 +16,20 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of (int numberOfCars, int position) {
+    public static Cars of (int numberOfCars, int position, MoveStrategy moveStrategy) {
         validateNumberOfCars(numberOfCars);
         return of(Stream.iterate(0, n -> n + 1)
                         .limit(numberOfCars)
-                        .map(n -> Car.of(position))
+                        .map(n -> Car.of(position, moveStrategy))
                         .collect(Collectors.toList()));
-    }
-
-    public static Cars of (int numberOfCars) {
-        return of(numberOfCars, 1);
     }
 
     private static void validateNumberOfCars(int numberOfCars) {
         Validator.validatePositiveNumber(numberOfCars);
     }
 
-    public void move(MoveStrategy moveStrategy) {
-        cars.forEach(car -> car.move(moveStrategy));
+    public void move() {
+        cars.forEach(car -> car.move());
     }
 
     public Stream<Car> stream () {

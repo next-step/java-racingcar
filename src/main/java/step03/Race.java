@@ -1,6 +1,5 @@
 package step03;
 
-import step03.strategy.MoveStrategy;
 import step03.view.ResultView;
 
 import java.util.stream.Stream;
@@ -23,13 +22,13 @@ public class Race {
         Validator.validatePositiveNumber(numberOfMoves);
     }
 
-    public void operate(MoveStrategy moveStrategy, ResultView view) {
+    public void operate(ResultView view) {
         view.print(cars.stream());
 
         Stream.iterate(1, a -> a + 1)
                 .limit(numberOfMoves)
                 .forEach(moveCount -> {
-                    cars.move(moveStrategy);
+                    cars.move();
                     view.print(cars.stream());
                 });
     }
