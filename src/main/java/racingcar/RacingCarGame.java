@@ -46,6 +46,6 @@ public class RacingCarGame {
         RacingCar winner = racingCars.get(0);
         return racingCars.stream()
                 .filter(rc -> rc.isSameMoveCount(winner))
-                .collect(Collectors.toList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 }

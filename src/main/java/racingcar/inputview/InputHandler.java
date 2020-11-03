@@ -3,6 +3,7 @@ package racingcar.inputview;
 import racingcar.dto.Input;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,7 @@ public class InputHandler {
 
         String namesOfCars = inputDevice.getString();
         return Arrays.stream(namesOfCars.split(NAME_DELIMITER))
-                .collect(Collectors.toList());
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
     }
 
     private int getNumberOfCountOfTry() {
