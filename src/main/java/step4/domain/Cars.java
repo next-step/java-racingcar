@@ -8,22 +8,20 @@ import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
-    private final RacingStrategy racingStrategy;
 
-    private Cars(List<Car> cars, RacingStrategy racingStrategy) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
-        this.racingStrategy = racingStrategy;
     }
 
-    public static Cars of(List<Car> cars, RacingStrategy racingStrategy) {
-        return new Cars(cars, racingStrategy);
+    public static Cars of(List<Car> cars) {
+        return new Cars(cars);
     }
 
-    public static Cars ofNames(List<String> names, RacingStrategy racingStrategy) {
-        return of(names.stream().map(name -> new Car(name, 0)).collect(Collectors.toList()), racingStrategy);
+    public static Cars ofNames(List<String> names) {
+        return of(names.stream().map(Car::new).collect(Collectors.toList()));
     }
 
-    public void move() {
+    public void move(RacingStrategy racingStrategy) {
         cars.forEach(racingStrategy::move);
     }
 
@@ -44,11 +42,11 @@ public class Cars {
 
     public List<RecordDto> getWinnerRecord() {
         int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
+                .mapToInt(car -> car.getFinalRecord().getRecord())
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("no maximum"));
         return cars.stream()
-                .filter(car -> car.getPosition().equals(maxPosition))
+                .filter(car -> car.getFinalRecord().getRecord().equals(maxPosition))
                 .map(Car::getFinalRecord)
                 .collect(Collectors.toList());
     }

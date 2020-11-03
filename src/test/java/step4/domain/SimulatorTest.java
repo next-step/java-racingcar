@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -20,8 +21,8 @@ public class SimulatorTest {
         Cars cars = mock(Cars.class);
 
         Simulator simulator = new Simulator(tryCount, cars);
-        simulator.execute();
+        simulator.execute(new RandomRacingStrategy());
 
-        verify(cars, times(tryCount)).move();
+        verify(cars, times(tryCount)).move(any());
     }
 }

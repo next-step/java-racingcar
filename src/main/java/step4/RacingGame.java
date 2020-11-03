@@ -19,10 +19,10 @@ public class RacingGame {
         PrintWriter output = new PrintWriter(System.out, true);
         InputView inputView = new InputView(new Scanner(System.in), output);
         ResultView resultView = new ResultView(output);
-        Cars cars = Cars.ofNames(inputView.getCarNames(), new RandomRacingStrategy());
+        Cars cars = Cars.ofNames(inputView.getCarNames());
         Simulator simulator = new Simulator(inputView.getTryCountFromInput(), cars);
 
-        simulator.execute();
+        simulator.execute(new RandomRacingStrategy());
         resultView.show(cars.getRecords());
         resultView.showWinner(cars.getWinnerRecord());
         output.close();

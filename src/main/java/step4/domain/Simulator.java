@@ -11,9 +11,11 @@ public class Simulator {
         this.cars = cars;
     }
 
-    public void execute() {
+    public void execute(RacingStrategy racingStrategy) {
         IntStream.range(0, tryCount)
-                .forEach(i -> cars.move());
+                .forEach(i -> {
+                    cars.move(racingStrategy);
+                });
     }
 
 }

@@ -17,10 +17,10 @@ public class RandomRacingStrategyTest {
     public void moveWithRandom(double randomValue, Integer expectedPosition) {
         try (MockedStatic<RandomGenerator> mocked = mockStatic(RandomGenerator.class)) {
             mocked.when(() -> RandomGenerator.getRandomLessThan(10)).thenReturn(randomValue);
-            Car car = new Car(0);
+            Car car = new Car("");
             new RandomRacingStrategy().move(car);
 
-            Integer position = car.getPosition();
+            Integer position = car.getFinalRecord().getRecord();
 
             assertThat(position).isEqualTo(expectedPosition);
         }
@@ -32,7 +32,7 @@ public class RandomRacingStrategyTest {
     public void moveWithRecordAlways(double randomValue, Integer expectedRecordCount) {
         try (MockedStatic<RandomGenerator> mocked = mockStatic(RandomGenerator.class)) {
             mocked.when(() -> RandomGenerator.getRandomLessThan(10)).thenReturn(randomValue);
-            Car car = new Car(0);
+            Car car = new Car("");
             new RandomRacingStrategy().move(car);
 
             Integer recordCount = car.getRecordCount();

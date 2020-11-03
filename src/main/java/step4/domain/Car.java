@@ -10,15 +10,9 @@ public class Car {
     private final String name;
     private final List<Integer> record;
 
-    public Car(Integer position) {
-        this.position = position;
-        this.name = "";
-        record = new ArrayList<>();
-    }
-
-    public Car(String name, Integer position) {
+    public Car(String name) {
         this.name = name;
-        this.position = position;
+        position = 0;
         record = new ArrayList<>();
     }
 
@@ -26,12 +20,12 @@ public class Car {
         position += 1;
     }
 
-    public void record() {
-        record.add(position);
-    }
-
     public Integer getPosition() {
         return position;
+    }
+
+    public void record() {
+        record.add(position);
     }
 
     public RecordDto getRecordAtStep(int step) {

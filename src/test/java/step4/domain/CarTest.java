@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("자동차 테스트")
 public class CarTest {
-    Car car = new Car(0);
+    Car car = new Car("");
 
     @DisplayName("자동차가 움직이면 position이 증가")
     @Test

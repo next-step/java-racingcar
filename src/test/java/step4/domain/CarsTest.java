@@ -29,7 +29,7 @@ public class CarsTest {
             when(car1.getRecordAtStep(step)).thenReturn(new RecordDto("", step + 1));
             when(car2.getRecordAtStep(step)).thenReturn(new RecordDto("", step));
         }
-        Cars cars = Cars.of(Arrays.asList(car1, car2), racingStrategy);
+        Cars cars = Cars.of(Arrays.asList(car1, car2));
 
         List<List<RecordDto>> records = cars.getRecords();
 
@@ -41,7 +41,7 @@ public class CarsTest {
     @DisplayName("자동차가 하나도 없을 때 기록")
     @Test
     public void getRecordsWithEmptyCars() {
-        Cars cars = Cars.of(new ArrayList<>(), racingStrategy);
+        Cars cars = Cars.of(new ArrayList<>());
 
         assertThatThrownBy(cars::getRecords)
                 .isInstanceOf(IllegalStateException.class)
@@ -54,13 +54,10 @@ public class CarsTest {
         Car winner1 = mock(Car.class);
         Car winner2 = mock(Car.class);
         Car loser = mock(Car.class);
-        when(winner1.getPosition()).thenReturn(2);
         when(winner1.getFinalRecord()).thenReturn(new RecordDto("winner1", 2));
-        when(winner2.getPosition()).thenReturn(2);
         when(winner2.getFinalRecord()).thenReturn(new RecordDto("winner2", 2));
-        when(loser.getPosition()).thenReturn(1);
         when(loser.getFinalRecord()).thenReturn(new RecordDto("loser", 0));
-        Cars cars = Cars.of(Arrays.asList(winner1, winner2, loser), racingStrategy);
+        Cars cars = Cars.of(Arrays.asList(winner1, winner2, loser));
 
         List<RecordDto> winnerRecords = cars.getWinnerRecord();
 
