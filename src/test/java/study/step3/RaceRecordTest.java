@@ -3,9 +3,12 @@ package study.step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,7 +21,7 @@ public class RaceRecordTest {
     // TODO 이동 기록 저장 v
     // TODO 가장 많이 이동한 기록 반환 v
     // TODO 기록횟수 반환 v
-    // TODO 이름으로 정렬된 기록 반환 v
+    // TODO 이름으로 정렬된 기록 반환 v -> 주어진 휫수만큼 이동기록을 제공하는 함수를 실행할 수 있다.
 
     @BeforeEach
     void setUp() {
@@ -69,6 +72,23 @@ public class RaceRecordTest {
         assertThatThrownBy(() -> raceRecord.getTotalTry()) //
                 .isInstanceOf(IllegalStateException.class) //
                 .hasMessage("모든 자동차의 이동시도횟수 기록은 동일해야 합니다.");
+    }
+
+    @ParameterizedTest
+    @DisplayName("RaceRecord는 주어진 휫수만큼 이동기록을 제공하는 함수를 실행할 수 있다")
+    @ValueSource(ints = {1, 2, 3})
+    void takeRecordUntil(int recordCount) {
+        saveRecords(5, new TestingCar("blue", 2), //
+                new TestingCar("red", 3),  //
+                new TestingCar("white", 2),  //
+                new TestingCar("gray", 3));
+
+        AtomicInteger assertions = new AtomicInteger();
+        raceRecord.takeRecordUntil(recordCount, (name, record) -> {
+            assertThat(record.size()).isEqualTo(recordCount);
+            assertions.incrementAndGet();
+        });
+        assertThat(assertions.get()).isEqualTo(recordCount);
     }
 
     private void saveRecords(int totalMoves, Car... cars) {
