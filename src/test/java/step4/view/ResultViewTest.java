@@ -2,7 +2,7 @@ package step4.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.RecordDto;
+import step4.dto.RecordDto;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

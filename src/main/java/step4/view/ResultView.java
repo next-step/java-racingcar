@@ -1,6 +1,6 @@
 package step4.view;
 
-import step4.RecordDto;
+import step4.dto.RecordDto;
 
 import java.io.PrintWriter;
 import java.util.Collections;

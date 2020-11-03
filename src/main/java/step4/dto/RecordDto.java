@@ -1,4 +1,4 @@
-package step4;
+package step4.dto;
 
 public class RecordDto {
     private final String name;

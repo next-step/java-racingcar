@@ -1,6 +1,6 @@
 package step4.domain;
 
-import step4.RecordDto;
+import step4.dto.RecordDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

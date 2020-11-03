@@ -1,6 +1,6 @@
 package step4.domain;
 
-import step4.RecordDto;
+import step4.dto.RecordDto;
 
 import java.util.ArrayList;
 import java.util.List;

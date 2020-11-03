@@ -1,4 +1,4 @@
-package step4;
+package step4.controller;
 
 import step4.domain.Cars;
 import step4.domain.RandomRacingStrategy;
