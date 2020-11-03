@@ -33,7 +33,7 @@ public class GameManager {
                 .collect(Collectors.toList());
     }
 
-    public void playOneRound(List<Car> cars) {
-        cars.stream().forEach(c -> c.move());
+    private void playOneRound(List<Car> cars) {
+        cars.stream().forEach(car -> car.move());
     }
 }
