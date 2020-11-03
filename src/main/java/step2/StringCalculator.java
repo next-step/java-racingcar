@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class StringCalculator {
 
-  public int calculator(String data) {
+public int calculator(String data) {
     if (data.equals("") && data == null) {
       throw new IllegalArgumentException("값을 입력해주세요.");
     }
