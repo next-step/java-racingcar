@@ -3,7 +3,7 @@ package step2;
 import java.util.function.BiFunction;
 
 public enum Calculator {
-  ADD("+", (first, second) -> first + second),
+ ADD("+", (first, second) -> first + second),
   SUBTRACT("-", (first, second) -> first - second),
   MULTIPLY("*", (first, second) -> first * second),
   DIVISION("-", (first, second) -> first / second);

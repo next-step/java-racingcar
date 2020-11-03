@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class StringCalculatorTest {
 
-  StringCalculator stringCalculator;
+StringCalculator stringCalculator;
 
   @BeforeEach
   void setUp() {
@@ -65,5 +65,4 @@ public class StringCalculatorTest {
   @ValueSource(strings = {"2 + 3 * 4 / 2"})
   void 사칙연산_모두_포함_테스트(String data) {
     assertThat(stringCalculator.calculator(data)).isEqualTo(10);
-  }
 }

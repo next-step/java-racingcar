@@ -8,10 +8,7 @@ import java.util.stream.IntStream;
 
 public class StringCalculator {
 
-  // TO-DO refactor list
-  // 1-2. 유효한 문자열을 피연산자와 연산자로 나눠서 활용하도록 한다.
-
-  public int calculator(String data) {
+public int calculator(String data) {
     if (data.equals("") && data == null) {
       throw new IllegalArgumentException("값을 입력해주세요.");
     }
