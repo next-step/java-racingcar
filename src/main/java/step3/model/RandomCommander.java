@@ -2,20 +2,17 @@ package step3.model;
 
 import java.util.Random;
 
-public class RandomCommander implements Commander{
+public class RandomCommander implements Commander {
 
     private Random random = new Random();
 
-    private static final String FORWARD_COMMAND = "-";
-    private static final String STOP_COMMAND = "";
-
     @Override
-    public String generateCommand() {
+    public boolean moveForward() {
         int randomNumber = random.nextInt(10);
         if (randomNumber >= 4) {
-            return FORWARD_COMMAND;
+            return true;
         }
-        return STOP_COMMAND;
+        return false;
     }
 
 }
