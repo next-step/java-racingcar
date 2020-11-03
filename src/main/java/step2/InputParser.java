@@ -1,6 +1,7 @@
 package step2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputParser {
@@ -17,14 +18,16 @@ public class InputParser {
 
         List<String> result = new ArrayList<>();
         for (int i = 0; i < separateData.length; i++) {
-            if (i % 2 == 1) {
-                validateIsCorrectOperatorType(separateData[i]);
-                result.add(separateData[i]);
-                continue;
-            }
+            findOperatorType(separateData, i);
             result.add(separateData[i]);
         }
         return result;
+    }
+
+    private static void findOperatorType(String[] separateData, int index) {
+        if (index % 2 == 1) {
+            validateIsCorrectOperatorType(separateData[index]);
+        }
     }
 
     private static void validateInputDataIsEmpty(String inputData) {
