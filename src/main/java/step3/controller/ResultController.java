@@ -9,6 +9,9 @@ public class ResultController {
     private static final String NEW_LINE = "\n";
 
     public void printRacingLog(List<Integer> racingStepResult) {
+        if (racingStepResult == null) {
+            throw new NullPointerException();
+        }
         System.out.println(makeRacingResult(racingStepResult));
     }
 
