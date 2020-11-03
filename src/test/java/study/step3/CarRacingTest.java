@@ -60,7 +60,7 @@ public class CarRacingTest {
         setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
-        assertThat(carRacing.hasRecord()).isFalse();
+        assertThat(carRacing.getRecords().getTotalTry()).isEqualTo(0);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class CarRacingTest {
 
         carRacing.start();
 
-        assertThat(carRacing.hasRecord()).isTrue();
+        assertThat(carRacing.getRecords().getTotalTry()).isEqualTo(1);
     }
 
     @Test

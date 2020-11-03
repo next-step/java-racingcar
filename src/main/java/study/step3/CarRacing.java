@@ -32,14 +32,9 @@ class CarRacing {
         }
     }
 
-    public boolean hasRecord() {
-        return raceRecord.getTotalTry() > 0;
-    }
-
     public Set<String> getWinners() {
         return raceRecord.listMostMovingNames();
     }
-
 
     public RaceRecord getRecords() {
         return raceRecord;
