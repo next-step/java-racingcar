@@ -16,6 +16,8 @@ import static org.mockito.Mockito.when;
 @DisplayName("자동차 일급 컬렉션 테스트")
 public class CarsTest {
 
+    RandomRacingStrategy racingStrategy = new RandomRacingStrategy();
+
     @DisplayName("자동차 이동 기록")
     @Test
     public void getRecords() {
@@ -27,7 +29,7 @@ public class CarsTest {
             when(car1.getRecordAtStep(step)).thenReturn(new RecordDto("", step + 1));
             when(car2.getRecordAtStep(step)).thenReturn(new RecordDto("", step));
         }
-        Cars cars = Cars.of(Arrays.asList(car1, car2));
+        Cars cars = Cars.of(Arrays.asList(car1, car2), racingStrategy);
 
         List<List<RecordDto>> records = cars.getRecords();
 
@@ -39,7 +41,7 @@ public class CarsTest {
     @DisplayName("자동차가 하나도 없을 때 기록")
     @Test
     public void getRecordsWithEmptyCars() {
-        Cars cars = Cars.of(new ArrayList<>());
+        Cars cars = Cars.of(new ArrayList<>(), racingStrategy);
 
         assertThatThrownBy(cars::getRecords)
                 .isInstanceOf(IllegalStateException.class)
@@ -58,7 +60,7 @@ public class CarsTest {
         when(winner2.getFinalRecord()).thenReturn(new RecordDto("winner2", 2));
         when(loser.getPosition()).thenReturn(1);
         when(loser.getFinalRecord()).thenReturn(new RecordDto("loser", 0));
-        Cars cars = Cars.of(Arrays.asList(winner1, winner2, loser));
+        Cars cars = Cars.of(Arrays.asList(winner1, winner2, loser), racingStrategy);
 
         List<RecordDto> winnerRecords = cars.getWinnerRecord();
 

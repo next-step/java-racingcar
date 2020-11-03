@@ -10,17 +10,17 @@ public class Cars {
     private final List<Car> cars;
     private final RacingStrategy racingStrategy;
 
-    private Cars(List<Car> cars) {
+    private Cars(List<Car> cars, RacingStrategy racingStrategy) {
         this.cars = cars;
-        this.racingStrategy = new RandomRacingStrategy();
+        this.racingStrategy = racingStrategy;
     }
 
-    public static Cars of(List<Car> cars) {
-        return new Cars(cars);
+    public static Cars of(List<Car> cars, RacingStrategy racingStrategy) {
+        return new Cars(cars, racingStrategy);
     }
 
-    public static Cars ofNames(List<String> names) {
-        return of(names.stream().map(name -> new Car(name, 0)).collect(Collectors.toList()));
+    public static Cars ofNames(List<String> names, RacingStrategy racingStrategy) {
+        return of(names.stream().map(name -> new Car(name, 0)).collect(Collectors.toList()), racingStrategy);
     }
 
     public void move() {
