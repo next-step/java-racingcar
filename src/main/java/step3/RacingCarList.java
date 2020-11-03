@@ -14,7 +14,9 @@ public class RacingCarList {
 
     public RacingCarList(int carCount) {
         List<Car> list = new ArrayList<>();
-        IntStream.range(0, carCount).forEach(i -> {
+        IntStream
+                .range(0, carCount)
+                .forEach(i -> {
             list.add(new Car());
         });
         racingCarList = Collections.unmodifiableList(list);
