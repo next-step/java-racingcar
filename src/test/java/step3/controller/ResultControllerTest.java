@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ResultControllerTest {
@@ -31,4 +35,26 @@ class ResultControllerTest {
         assertThat(s.length()).isEqualTo(value);
     }
 
+    @DisplayName("레이싱 결과 생성 테스트 - 개행 테스")
+    @ParameterizedTest
+    @ValueSource(strings = {"10"})
+    public void test2(Integer value) {
+        List<Integer> list = new ArrayList<>();
+
+        IntStream
+                .range(0, value)
+                .forEach(item -> {
+                    list.add(20);
+                });
+
+        String racingResult = resultController.makeRacingResult(list);
+
+        int lineCnt = 0;
+        int fromIndex = -1;
+        while ((fromIndex = racingResult.indexOf("\n", fromIndex + 1)) >= 0) {
+            lineCnt++;
+        }
+
+        assertThat(value).isEqualTo(lineCnt);
+    }
 }
