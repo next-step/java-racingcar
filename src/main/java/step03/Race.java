@@ -2,8 +2,6 @@ package step03;
 
 import step03.view.ResultView;
 
-import java.util.stream.Stream;
-
 public class Race {
     private final int numberOfMoves;
     private final Cars cars;
