@@ -34,5 +34,4 @@ public class Cars {
         return positions;
     }
 
-
 }
