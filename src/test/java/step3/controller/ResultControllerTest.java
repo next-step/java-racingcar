@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ResultControllerTest {
 
@@ -56,5 +57,13 @@ class ResultControllerTest {
         }
 
         assertThat(value).isEqualTo(lineCnt);
+    }
+
+    @DisplayName("레이싱 결과 Null Point Exception test")
+    @Test
+    public void test3() {
+        assertThatThrownBy(() -> {
+            resultController.printRacingLog(null);
+        }).isInstanceOf(NullPointerException.class);
     }
 }
