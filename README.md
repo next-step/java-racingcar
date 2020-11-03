@@ -19,17 +19,19 @@
  ## 기능목록
  * RunCarRace -- 레이싱 시작 관리 클래스
     * run() - 레이싱 시작
-    * testRun() - 레이싱 테스트코드 시작
- * CarImformation -- 자동차의 정보 관리 클래스
-    * 자동차의 움직인 거리와 댓수를 관리하는 객체
+    * inputValue() - 파라미터를 받는 메소드
+    * repeatTryMoveCar() - 시동할 횟수를 반복
+    * repeatCar - 자동차 갯수를 반복
+ * CarRaceInformation -- 자동차의 정보 관리 클래스
+    * 자동차의 댓수와, 이동시도횟수, 자동차 댓수에 따른 이동횟수 배열
  * NumberInput - 입력받은 값 체크 클래스
     * inputCount : 키보드로 input값 받기
     * valueCheck : 키보드로 임력받은 값 체크 (null, empty, arrayException 처리)
  * ResultPrint - 자동차 그리는 관리 클래스
-    * showCarImformation : 자동차의 갯수 for문
-    * goInTryMove : 자동차의 이동 횟수  배열 들어가기
-    * showCarMovePrint : 배열안에 들어가있는 숫자만큼 그리기
- * CarMove : 자동차의 이동을 관리하는 enum
+    * drawMoveCar : 자동차의 이동한 배열을 받아 그려주는 메소드
+ * Car - 자동차의 이동 여부 관리 클래스
+ * ErrorMessage : 에러메세지 관리 클래스
+
            
                   
  
