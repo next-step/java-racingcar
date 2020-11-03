@@ -1,4 +1,4 @@
-package string_calculator;
+package string.calculator;
 
 public enum Operator implements CalculatorBinaryOperator {
 

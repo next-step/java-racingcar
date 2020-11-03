@@ -1,6 +1,6 @@
 package car.racing;
 
-public class CarRacingControllerFactory {
+public class ViewControllerFactory {
 
     static CarRacingViewController newInstance() {
         return new CarRacingViewController(

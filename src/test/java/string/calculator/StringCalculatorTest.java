@@ -1,13 +1,13 @@
-package study;
+package string.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import string_calculator.OperationsDivision;
-import string_calculator.Operator;
-import string_calculator.StringCalculator;
+import string.calculator.OperationsDivision;
+import string.calculator.Operator;
+import string.calculator.StringCalculator;
 
 import java.util.LinkedList;
 

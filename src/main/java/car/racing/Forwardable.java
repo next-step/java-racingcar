@@ -2,5 +2,5 @@ package car.racing;
 
 public interface Forwardable {
 
-    boolean forwardable();
+    boolean forwardable(int forward);
 }
