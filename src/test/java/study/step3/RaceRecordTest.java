@@ -14,11 +14,6 @@ import static study.step3.CarRacingTest.TestingCar;
 
 public class RaceRecordTest {
     private RaceRecord raceRecord;
-    // TODO 레코드 상태 존재 v
-    // TODO 이동 기록 저장 v
-    // TODO 가장 많이 이동한 기록 반환 v
-    // TODO 기록횟수 반환 v
-    // TODO 이름으로 정렬된 기록 반환 v -> 주어진 휫수만큼 이동기록을 제공하는 함수를 실행할 수 있다.
 
     @BeforeEach
     void setUp() {

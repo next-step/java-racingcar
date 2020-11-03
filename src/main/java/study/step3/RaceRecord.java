@@ -12,33 +12,6 @@ class RaceRecord {
         saveRecord(car.getName(), car.isMoved());
     }
 
-    void saveRecord(String name, boolean moved) {
-        records.computeIfAbsent(name, key -> new ArrayList<>()) //
-                .add(moved);
-    }
-
-    public Set<String> listMostMovingNames() {
-        int mostMove = getMostMove();
-        return records.entrySet() //
-                .stream() //
-                .map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), countMove(entry.getValue()))) //
-                .filter(entry -> entry.getValue() >= mostMove) //
-                .map(Map.Entry::getKey) //
-                .collect(toSet());
-    }
-
-    private int getMostMove() {
-        return records.values() //
-                .stream() //
-                .mapToInt(this::countMove) //
-                .max() //
-                .orElse(0);
-    }
-
-    private int countMove(List<Boolean> values) {
-        return values.stream().mapToInt(moved -> moved ? 1 : 0).sum();
-    }
-
     public int getTotalTry() {
         if (records.isEmpty()) {
             return 0;
@@ -51,8 +24,35 @@ class RaceRecord {
         return totalTry;
     }
 
+    public Set<String> listMostMovingNames() {
+        int mostMove = getMostMove();
+        return records.entrySet() //
+                .stream() //
+                .map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), countMove(entry.getValue()))) //
+                .filter(entry -> entry.getValue() >= mostMove) //
+                .map(Map.Entry::getKey) //
+                .collect(toSet());
+    }
+
     public void forEachRecordUntil(int tries, BiConsumer<String, List<Boolean>> biConsumer) {
         records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries)));
+    }
+
+    void saveRecord(String name, boolean moved) {
+        records.computeIfAbsent(name, key -> new ArrayList<>()) //
+                .add(moved);
+    }
+
+    private int getMostMove() {
+        return records.values() //
+                .stream() //
+                .mapToInt(this::countMove) //
+                .max() //
+                .orElse(0);
+    }
+
+    private int countMove(List<Boolean> values) {
+        return values.stream().mapToInt(moved -> moved ? 1 : 0).sum();
     }
 
     private void checkAllRecord(int expectedTry) {
