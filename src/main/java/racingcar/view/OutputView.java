@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class OutputView {
     private static final PrintStream out = System.out;
-    private static final String DISTANCE_UNIT = "-";
+    private static final String MOVEMENT_CHAR = "-";
 
     public void showResult(List<Record> records) {
         String result = records.stream()
@@ -25,6 +25,6 @@ public class OutputView {
     }
 
     private String changeMovementToString(int num) {
-        return new String(new char[num]).replace("\0", DISTANCE_UNIT);
+        return new String(new char[num]).replace("\0", MOVEMENT_CHAR);
     }
 }
