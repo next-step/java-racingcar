@@ -21,7 +21,7 @@ public class Calculator {
         int result = initialValue;
 
         for (int x = 0; x < numbers.size(); x++) {
-            result = operators.get(x).apply(result, numbers.get(x));
+            result = operators.get(x).calculate(result, numbers.get(x));
         }
 
         return result;

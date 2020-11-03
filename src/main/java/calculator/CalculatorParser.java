@@ -1,7 +1,6 @@
 package calculator;
 
 import calculator.domain.Operator;
-import calculator.domain.factory.OperatorFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,14 +37,14 @@ public class CalculatorParser {
 
     public static List<Operator> getOperatorList(String[] expression) {
         return Arrays.stream(expression)
-                .filter(OperatorFactory::isOperator)
-                .map(OperatorFactory::build)
+                .filter(Operator::isOperator)
+                .map(Operator::build)
                 .collect(Collectors.toList());
     }
 
     public static List<Integer> getNumberListWithoutInitialNumber(String[] expression) {
         return Arrays.stream(expression)
-                .filter(OperatorFactory::isNotOperator)
+                .filter(Operator::isNotOperator)
                 .map(Integer::parseInt)
                 .skip(INITIAL_ELEMENT_NUMBER) // expression의 초기값은 제외
                 .collect(Collectors.toList());

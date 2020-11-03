@@ -1,8 +1,5 @@
 package calculator;
 
-import calculator.domain.AddOperator;
-import calculator.domain.DivideOperator;
-import calculator.domain.MultiplyOperator;
 import calculator.domain.Operator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -83,12 +80,9 @@ public class CalculatorParserTest {
 
         List<Operator> operators = CalculatorParser.getOperatorList(expression);
 
-        assertThat(operators.get(0))
-                .isExactlyInstanceOf(AddOperator.class);
-        assertThat(operators.get(1))
-                .isExactlyInstanceOf(MultiplyOperator.class);
-        assertThat(operators.get(2))
-                .isExactlyInstanceOf(DivideOperator.class);
+        assertThat(operators.get(0)).isEqualTo(Operator.ADD);
+        assertThat(operators.get(1)).isEqualTo(Operator.MULTIPLY);
+        assertThat(operators.get(2)).isEqualTo(Operator.DIVIDE);
     }
 
 
