@@ -21,6 +21,9 @@ public class RacingCarList {
     }
 
     public void moveCars(MoveStrategy moveStrategy) {
+        if (moveStrategy == null) {
+            throw new NullPointerException();
+        }
         racingCarList
                 .forEach(car -> {
                     int generate = moveStrategy.generate();
