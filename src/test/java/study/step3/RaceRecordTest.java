@@ -31,14 +31,6 @@ public class RaceRecordTest {
     }
 
     @Test
-    @DisplayName("RaceRecord는 자동차 이동기록을 저장할 수 있다.")
-    void saveMove() {
-        saveRecords(1, new TestingCar());
-
-        assertThat(raceRecord.getTotalMoves()).isEqualTo(1);
-    }
-
-    @Test
     @DisplayName("RaceRecord는 가장 많이 이동한 자동차의 이름을 한대 이상 반환할 수 있다.")
     void mostMovingCarName() {
         saveRecords(5, new TestingCar("blue", 2), //
@@ -75,10 +67,6 @@ public class RaceRecordTest {
 
     private static class RaceRecord {
         private final Map<String, List<Boolean>> records = new TreeMap<>();
-
-        public boolean isEmpty() {
-            return records.isEmpty();
-        }
 
         public void saveRecord(Car car) {
             records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
