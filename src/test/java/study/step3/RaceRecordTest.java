@@ -49,6 +49,17 @@ public class RaceRecordTest {
         assertThat(raceRecord.listMostMovingNames()).containsOnly("red", "gray");
     }
 
+    @Test
+    @DisplayName("RaceRecord는 전체 이동거리를 반환한다.")
+    void totalMoves() {
+        saveRecords(10, new TestingCar("blue", 2), //
+                new TestingCar("red", 3),  //
+                new TestingCar("white", 2),  //
+                new TestingCar("gray", 3));
+
+        assertThat(raceRecord.getTotalMoves()).isEqualTo(10);
+    }
+
     private void saveRecords(int totalMoves, Car... cars) {
         for (int i = 0; i < totalMoves; i++) {
             moveAndSave(cars);
