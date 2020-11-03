@@ -21,8 +21,9 @@ class CalculatorSignTest {
 
     }
 
-    @Test 
-    public void calculatorOperate() throws Exception { 
+    @Test
+    @DisplayName(value = "계산기의 각 기능들 테스트")
+    public void check_CalculatorFunction() throws Exception {
         //given 
         int a = 10;
         int b = 5;

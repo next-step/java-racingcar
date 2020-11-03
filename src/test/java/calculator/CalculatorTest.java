@@ -38,30 +38,4 @@ class CalculatorTest {
         assertThat(str.matches("^[0-9]+$")).isTrue();
     }
 
-    @Test
-    public void isNotFormatSupported() {
-        String str = "1 + 2";
-        String[] result = str.split(" ");
-
-
-        for (int i=0; i<result.length; i++) {
-            assertThat(isNotInteger(i, result[i])).isTrue();
-            assertThat(isNotSupportedSign(i, result[i])).isTrue();
-        }
-    }
-
-    private boolean isNotSupportedSign(int i, String input) {
-        if (i%2 == 0) {
-            return input.matches("^[0-9]+$");
-        }
-        return true;
-    }
-
-    private boolean isNotInteger(int i, String input) {
-        if (i%2 == 1)  {
-            return input.matches("^[*/+-]+$");
-        }
-        return true;
-    }
-
 }
