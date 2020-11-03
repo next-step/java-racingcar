@@ -19,6 +19,9 @@ public class CarRacingApplication {
             carRacing.playOneTurn();
             resultView.printCars(cars);
         }
+
+        List<Car> winners = carRacing.getWinners();
+        resultView.printWinners(winners);
     }
 
     private static List<Car> initializeCars(List<String> namesOfCars) {
