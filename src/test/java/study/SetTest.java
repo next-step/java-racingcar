@@ -1,14 +1,18 @@
 package study;
 
+import org.assertj.core.internal.Numbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -28,13 +32,18 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
-    // 요구사항 2를 구현하였는데 3의 조건에도 맞는 것 같습니다~
-    // 혹시 제가 요구사항을 정확하게 이해하지 못한 것일까요~?
+
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void containsTest(int input){
-        assertThat(numbers).contains(input);
+        assertTrue(numbers.contains(input));
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1","2","3","4","5"})
+    void eachContainsTest(Integer input){
+        System.out.println(input + ":" + numbers.contains(input));
+        assertTrue("",numbers.contains(input));
+    }
 
 }
