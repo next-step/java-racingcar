@@ -107,7 +107,7 @@ public class CarRacingTest {
         this.carRacing = new CarRacing(circuit);
     }
 
-    private static class TestingCar implements Car {
+    public static class TestingCar implements Car {
         private final String name;
         private int moves;
         private boolean isMoved;
