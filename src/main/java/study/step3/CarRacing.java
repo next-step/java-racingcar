@@ -1,16 +1,15 @@
 package study.step3;
 
-import java.util.*;
-
-import static java.util.AbstractMap.Entry;
-import static java.util.AbstractMap.SimpleEntry;
-import static java.util.stream.Collectors.toSet;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 class CarRacing {
 
     private final Set<Car> cars;
     private final int steps;
-    private final Map<String, List<Boolean>> records = new HashMap<>();
+    private final RaceRecord raceRecord = new RaceRecord();
 
     public CarRacing(Circuit circuit) {
         cars = circuit.getCars();
@@ -32,34 +31,20 @@ class CarRacing {
 
     private void recording() {
         for (Car car : cars) {
-            records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
-                    .add(car.isMoved());
+            raceRecord.saveRecord(car);
         }
     }
 
     public boolean hasRecord() {
-        return !records.isEmpty();
+        return raceRecord.getTotalTry() > 0;
     }
 
     public Set<String> getWinners() {
-        Integer maxMove = records.values() //
-                .stream() //
-                .mapToInt(this::countMove)
-                .max()
-                .orElse(0);
-
-        return records.entrySet() //
-                .stream() //
-                .map(entry -> new SimpleEntry<>(entry.getKey(), countMove(entry.getValue()))) //
-                .filter(entry -> entry.getValue() >= maxMove).map(Entry::getKey) //
-                .collect(toSet());
+        return raceRecord.listMostMovingNames();
     }
 
-    private int countMove(List<Boolean> values) {
-        return values.stream().mapToInt(moved -> moved ? 1 : 0).sum();
-    }
 
     public Map<String, List<Boolean>> getRecords() {
-        return records;
+        return Collections.emptyMap();
     }
 }
