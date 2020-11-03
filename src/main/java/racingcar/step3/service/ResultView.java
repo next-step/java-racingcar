@@ -7,10 +7,17 @@ import racingcar.step3.domain.Car;
  * Developer : Seo
  */
 public class ResultView {
-    public void printResult(InputView iv) {
-        for (Car car : iv.getCars()) {
-            System.out.println("Car " + car.getName() + " : " + (car.getDistance()));
+
+    public void print(Car car) {
+        System.out.println("Car " + car.getName() + " : " + (gridDistance(car.getDistance())));
+    }
+
+    private String gridDistance(int distance) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < distance; i++) {
+            sb.append("-");
         }
+        return sb.toString();
     }
 
 }

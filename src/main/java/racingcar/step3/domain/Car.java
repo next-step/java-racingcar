@@ -5,14 +5,14 @@ package racingcar.step3.domain;
  * Developer : Seo
  */
 public class Car {
-    private int name;
+    private final String name;
     private int distance;
 
-    public Car(int i) {
+    public Car(String i) {
         this.name = i;
     }
 
-    public int getName() {
+    public String getName() {
         return this.name;
     }
 
@@ -20,11 +20,7 @@ public class Car {
         this.distance++;
     }
 
-    public String getDistance() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.distance; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
+    public int getDistance() {
+        return distance;
     }
 }

@@ -16,22 +16,22 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(0);
+        car = new Car("0");
     }
 
     @Test
     @DisplayName("이름")
     void getName() {
-        assertThat(car.getName()).isEqualTo(0);
+        assertThat(car.getName()).isEqualTo("0");
     }
 
     @Test
     @DisplayName("이동 후 거리 확인")
     void whenMove_thenGetDistance() {
         this.car.move();
-        assertThat(car.getDistance()).isEqualTo("-");
+        assertThat(car.getDistance()).isEqualTo(1);
 
         this.car.move();
-        assertThat(car.getDistance()).isEqualTo("--");
+        assertThat(car.getDistance()).isEqualTo(2);
     }
 }
