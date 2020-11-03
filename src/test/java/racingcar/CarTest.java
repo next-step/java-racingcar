@@ -43,21 +43,11 @@ class CarTest {
     @Test
     @DisplayName("movable 인 경우만 전진해야 한다.")
     void move() {
-        MoveStrategy movableStrategy = new MoveStrategy() {
-            @Override
-            public boolean checkMovable() {
-                return true;
-            }
-        };
+        MoveStrategy movableStrategy = () -> true;
         String movableName = "move";
         Car movableCar = new Car(movableName, movableStrategy);
 
-        MoveStrategy stopStrategy = new MoveStrategy() {
-            @Override
-            public boolean checkMovable() {
-                return false;
-            }
-        };
+        MoveStrategy stopStrategy = () -> false;
         String stoppedName = "stop";
         Car stoppedCar = new Car(stoppedName, stopStrategy);
 

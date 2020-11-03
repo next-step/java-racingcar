@@ -32,12 +32,7 @@ class CarGroupTest {
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void moveCar(int carIdx) {
         String carCsv = "0,1,2,3,4,5,6,7,8,9";
-        MoveStrategy strategy = new MoveStrategy() {
-            @Override
-            public boolean checkMovable() {
-                return true;
-            }
-        };
+        MoveStrategy strategy = () -> true;
 
         CarGroup carGroup = new CarGroup(carCsv, strategy);
         carGroup.moveCar(carIdx);

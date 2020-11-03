@@ -27,12 +27,7 @@ class RacingViewTest {
     @CsvSource(value = {"0$고정완 : -", "1$고정완 : --", "2$고정완 : ---", "3$고정완 : ----", "4$고정완 : -----", "5$고정완 : ------", "6$고정완 : -------"}, delimiter = '$')
     void convertCarPositions(int loop, String expectedResult) {
         String name = "고정완";
-        MoveStrategy strategy = new MoveStrategy() {
-            @Override
-            public boolean checkMovable() {
-                return true;
-            }
-        };
+        MoveStrategy strategy = () -> true;
         Car car = new Car(name, strategy);
 
         for (int i = 0; i < loop; i++) {
