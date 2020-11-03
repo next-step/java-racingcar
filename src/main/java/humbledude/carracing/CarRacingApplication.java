@@ -7,10 +7,10 @@ public class CarRacingApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int numberOfCars = inputView.getNumberOfCars();
+        List<String> namesOfCars = inputView.getNamesOfCars();
         int numberOfTurns = inputView.getNumberOfTurns();
 
-        List<Car> cars = initializeCars(numberOfCars);
+        List<Car> cars = initializeCars(namesOfCars);
         CarRacing carRacing = new CarRacing(cars, new RandomFuelGenerator());
 
         ResultView resultView = new ResultView();
@@ -21,12 +21,20 @@ public class CarRacingApplication {
         }
     }
 
+    private static List<Car> initializeCars(List<String> namesOfCars) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : namesOfCars) {
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+
+    @Deprecated
     private static List<Car> initializeCars(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
         }
-
         return cars;
     }
 }

@@ -18,6 +18,7 @@ public class ResultView {
     }
 
     private void printCarPosition(Car car) {
+        System.out.printf("%5s : ", car.getName());
         IntStream.range(0, car.getPosition())
                 .forEach(i -> System.out.print("-"));
     }
