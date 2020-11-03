@@ -18,10 +18,10 @@ public class StringCalculator {
 
             if (isEven(i + 1)) {
                 setSecondOperand(inputs[i + 1]);
-
             }
 
-            operateFourCalculation(operator);
+            result = operator.operate(firstOperand, secondOperand);
+            firstOperand = result;
         }
 
         return result;
@@ -36,47 +36,7 @@ public class StringCalculator {
     }
 
     private void setOperator(String operator) throws IllegalArgumentException{
-        if (!isValidOperator(operator)) {
-            throw new IllegalArgumentException();
-        } else {
-            this.operator = OperationType.findByOperator(operator);
-        }
-    }
-
-    private void operateFourCalculation(OperationType operator){
-        switch(operator){
-            case ADD:
-                result = add(firstOperand, secondOperand);
-                break;
-            case SUBTRACT:
-                result = subtract(firstOperand, secondOperand);
-                break;
-            case MULTIPLE:
-                result = multiple(firstOperand, secondOperand);
-                break;
-            case DIVIDE:
-                result = divide(firstOperand, secondOperand);
-                break;
-            default:
-                break;
-        }
-        firstOperand = result;
-    }
-
-    private int divide(int firstOperand, int secondOperand) {
-        return firstOperand / secondOperand;
-    }
-
-    private int multiple(int firstOperand, int secondOperand) {
-        return firstOperand * secondOperand;
-    }
-
-    private int subtract(int firstOperand, int secondOperand) {
-        return firstOperand - secondOperand;
-    }
-
-    private int add(int firstOperand, int secondOperand) {
-        return firstOperand + secondOperand;
+        this.operator = OperationType.findByOperator(operator);
     }
 
     private void parseInputs(String input) throws IllegalArgumentException{
@@ -84,11 +44,6 @@ public class StringCalculator {
             throw new IllegalArgumentException();
         }
         inputs = input.split(" ");
-    }
-
-    private boolean isValidOperator(String input) {
-        return input.equals("+") || input.equals("-")
-                || input.equals("*") || input.equals("/");
     }
 
     private boolean isNullOrEmptyString(String input) {
