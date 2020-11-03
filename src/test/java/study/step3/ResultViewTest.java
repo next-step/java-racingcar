@@ -18,8 +18,8 @@ import static study.step3.ResultView.nameWithSpace;
 class TestingResultView extends ResultView {
     private final StringBuilder stringBuilder;
 
-    public TestingResultView(StringBuilder stringBuilder, Map<String, List<Boolean>> records, Set<String> winners) {
-        super(records, winners);
+    public TestingResultView(StringBuilder stringBuilder, RaceRecord raceRecord, Set<String> winners) {
+        super(raceRecord, winners);
         this.stringBuilder = stringBuilder;
     }
 
@@ -33,13 +33,13 @@ public class ResultViewTest {
 
     private StringBuilder stringBuilder;
     private ResultView resultView;
-    private final Map<String, List<Boolean>> records = new HashMap<>();
-    private Set<String> winners = new HashSet<>();
+    private final RaceRecord raceRecord = new RaceRecord();
+    private final Set<String> winners = new HashSet<>();
 
     @BeforeEach
     void setUp() {
         stringBuilder = new StringBuilder();
-        resultView = new TestingResultView(stringBuilder, records, winners);
+        resultView = new TestingResultView(stringBuilder, raceRecord, winners);
     }
 
     @ParameterizedTest
@@ -118,7 +118,7 @@ public class ResultViewTest {
 
     private void addRecord(String name, Boolean[] moves) {
         for (Boolean move : moves) {
-            records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
+            raceRecord.saveRecord(name, move);
         }
     }
 
