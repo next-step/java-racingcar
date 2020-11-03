@@ -3,10 +3,10 @@ package racingcar;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GameRound {
+public class GameRounds {
     private int round;
 
-    public GameRound(int round) {
+    public GameRounds(int round) {
         this.round = round;
     }
 

@@ -13,15 +13,15 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class GameRoundTest {
+public class GameRoundsTest {
 
     @ParameterizedTest
     @DisplayName("게임 종료 확인")
     @MethodSource
     void isGameEnd(int roundNum, boolean gameEnd) {
-        GameRound gameRound = new GameRound(roundNum);
+        GameRounds gameRounds = new GameRounds(roundNum);
 
-        assertThat(gameRound.isGameEnd()).isEqualTo(gameEnd);
+        assertThat(gameRounds.isGameEnd()).isEqualTo(gameEnd);
     }
 
     static Stream<Arguments> isGameEnd() {
@@ -38,9 +38,9 @@ public class GameRoundTest {
         cars.add(new Car(null));
         cars.add(new Car(null));
 
-        GameRound gameRound = new GameRound(0);
-        Record record = gameRound.getRecord(cars);
-        
+        GameRounds gameRounds = new GameRounds(0);
+        Record record = gameRounds.getRecord(cars);
+
         assertThat(record.getPositions()).containsExactly(0, 0);
     }
 }

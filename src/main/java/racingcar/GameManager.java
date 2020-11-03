@@ -15,13 +15,13 @@ public class GameManager {
 
     public List<Record> play(int carNum, int gameRoundNum) {
         List<Car> cars = readyCars(carNum);
-        GameRound gameRound = new GameRound(gameRoundNum);
+        GameRounds gameRounds = new GameRounds(gameRoundNum);
         List<Record> records = new ArrayList<>();
 
-        while (!gameRound.isGameEnd()) {
+        while (!gameRounds.isGameEnd()) {
             playOneRound(cars);
-            gameRound.endRound();
-            records.add(gameRound.getRecord(cars));
+            gameRounds.endRound();
+            records.add(gameRounds.getRecord(cars));
         }
 
         return records;
