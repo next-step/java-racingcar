@@ -25,4 +25,7 @@ public class GameRound {
     public boolean isAllRoundFinish() {
         return isAllRoundFinish;
     }
+    public int getRound() {
+        return round;
+    }
 }

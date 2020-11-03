@@ -4,15 +4,22 @@ import java.util.List;
 
 public class RacingCars {
 
-    private final List<RacingCar> participantCars;
+    private List<RacingCar> participantCars;
 
     public RacingCars(List<RacingCar> participantCars) {
         this.participantCars = participantCars;
     }
 
+    public void moveForward(int index){
+        participantCars.get(index).executeMoveTrack();
+    }
 
-    public RacingCar getParticipantCar(int entryNumber) {
-        return this.participantCars.get(entryNumber);
+
+    public int[] targetRacingCarRoundResult(int index) {
+        int size  = participantCars.get(index).getMoveTrack();
+        int[] roundResult = new int[size];
+        return roundResult;
+
     }
 
     public int size(){
