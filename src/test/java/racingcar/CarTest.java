@@ -31,6 +31,16 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("name 이 null 이면, NullPointerException 가 발생된다.")
+    void car() {
+        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
+        assertThatExceptionOfType(NullPointerException.class)
+                .isThrownBy(() -> {
+                    new Car(null, strategy);
+                });
+    }
+
+    @Test
     @DisplayName("movable 인 경우만 전진해야 한다.")
     void move() {
         MoveStrategy movableStrategy = new MoveStrategy() {

@@ -6,6 +6,9 @@ public class Car {
     private MoveStrategy strategy;
 
     public Car(String name, MoveStrategy strategy) {
+        if (name == null) {
+            throw new NullPointerException();
+        }
         if (name.length() > NumConst.MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(MsgConst.MAX_NAME_LENGTH_EXCEEDED);
         }
