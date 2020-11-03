@@ -17,7 +17,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"name_1", "long_car_name", "한글여섯글자"})
+    @ValueSource(strings = {"", "name_1", "long_car_name", "한글여섯글자"})
     public void carName_throwingException(String name) {
         assertThatIllegalArgumentException().isThrownBy(() -> new Car(name));
     }

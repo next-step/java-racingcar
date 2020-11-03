@@ -5,15 +5,16 @@ import java.util.List;
 
 public class CarRacingApplication {
 
+    private static InputView inputView = new InputView();
+    private static ResultView resultView = new ResultView();
+
     public static void main(String[] args) {
-        InputView inputView = new InputView();
         List<String> namesOfCars = inputView.getNamesOfCars();
         int numberOfTurns = inputView.getNumberOfTurns();
 
         List<Car> cars = initializeCars(namesOfCars);
         CarRacing carRacing = new CarRacing(cars, new RandomFuelGenerator());
 
-        ResultView resultView = new ResultView();
         resultView.printHeader();
         for (int i = 0; i < numberOfTurns; i++) {
             carRacing.playOneTurn();
