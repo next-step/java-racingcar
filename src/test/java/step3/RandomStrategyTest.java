@@ -24,20 +24,6 @@ class RandomStrategyTest {
         );
     }
 
-    @DisplayName("자동차 이 테스트 - 예외 발생 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "-1",
-            "-2",
-            "10"
-    })
-    public void test2(int value) {
-        Car car = new Car();
-        assertThatThrownBy(() -> {
-                    car.move(value);
 
-                }
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
 
 }
