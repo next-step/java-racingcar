@@ -3,6 +3,8 @@ package study.step3;
 
 import study.step3.domain.CarRacing;
 import study.step3.domain.Circuit;
+import study.step3.view.InputView;
+import study.step3.view.ResultView;
 
 public class CarRacingMain {
     public static void main(String[] args) {

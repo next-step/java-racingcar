@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.view;
 
 import study.step3.domain.Car;
 import study.step3.domain.Circuit;
@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
 
-class InputView {
+public class InputView {
     public Circuit request() {
         String names = requestNames();
 

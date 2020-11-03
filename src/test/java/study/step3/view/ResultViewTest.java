@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.step3.ResultView.nameWithSpace;
+import static study.step3.view.ResultView.nameWithSpace;
 
 class TestingResultView extends ResultView {
     private final StringBuilder stringBuilder;
