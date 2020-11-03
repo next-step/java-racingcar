@@ -6,7 +6,7 @@ import utils.RandomUtils;
 @Getter
 public class RaceMachine {
     private Integer horsePower;
-    private Integer lap;
+    private Integer lap = 0;
 
     public void accelerate() {
         horsePower = RandomUtils.nextInt(10);
