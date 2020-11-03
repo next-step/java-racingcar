@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static study.step3.CarRacingTest.TestingCar;
+import static study.step3.domain.CarRacingTest.TestingCar;
 
 public class RaceRecordTest {
     private RaceRecord raceRecord;

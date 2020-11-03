@@ -1,5 +1,8 @@
 package study.step3;
 
+import study.step3.domain.CarRacing;
+import study.step3.domain.RaceRecord;
+
 import java.util.*;
 
 import static java.util.stream.Collectors.joining;

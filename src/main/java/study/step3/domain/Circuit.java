@@ -1,8 +1,8 @@
-package study.step3;
+package study.step3.domain;
 
 import java.util.Set;
 
-class Circuit {
+public class Circuit {
     private final Set<Car> cars;
     private final int laps;
 

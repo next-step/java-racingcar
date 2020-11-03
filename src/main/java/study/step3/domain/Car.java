@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.domain;
 
 public interface Car {
     int NAME_MAX_LENGTH = 5;

@@ -1,6 +1,9 @@
 package study.step3;
 
 
+import study.step3.domain.CarRacing;
+import study.step3.domain.Circuit;
+
 public class CarRacingMain {
     public static void main(String[] args) {
         Circuit request = requestInput();

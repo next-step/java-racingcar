@@ -3,6 +3,8 @@ package study.step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.step3.domain.Circuit;
+import study.step3.domain.RealCar;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

@@ -1,5 +1,9 @@
 package study.step3;
 
+import study.step3.domain.Car;
+import study.step3.domain.Circuit;
+import study.step3.domain.RealCar;
+
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Set;

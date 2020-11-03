@@ -1,11 +1,11 @@
-package study.step3;
+package study.step3.domain;
 
 import java.util.*;
 import java.util.function.BiConsumer;
 
 import static java.util.stream.Collectors.toSet;
 
-class RaceRecord {
+public class RaceRecord {
     private final Map<String, List<Boolean>> records = new TreeMap<>();
 
     public void saveRecord(Car car) {

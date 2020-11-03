@@ -1,7 +1,10 @@
-package study.step3;
+package study.step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.step3.domain.Car;
+import study.step3.domain.CarRacing;
+import study.step3.domain.Circuit;
 
 import java.util.Arrays;
 import java.util.HashSet;
