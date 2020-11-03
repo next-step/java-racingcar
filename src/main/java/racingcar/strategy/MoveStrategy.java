@@ -1,6 +1,6 @@
-package step3.strategy;
+package racingcar.strategy;
 
-import step3.Constant;
+import racingcar.Constant;
 
 import java.util.Random;
 
