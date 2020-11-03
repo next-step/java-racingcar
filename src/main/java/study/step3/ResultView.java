@@ -25,7 +25,7 @@ class ResultView {
 
     void printRaceHistory() {
         int laps = raceRecord.getTotalTry();
-        for (int i = 0; i < laps; i++) {
+        for (int i = 1; i <= laps; i++) {
             printNewline();
             printRecord(i);
         }

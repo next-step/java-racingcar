@@ -52,7 +52,7 @@ class RaceRecord {
     }
 
     public void forEachRecordUntil(int tries, BiConsumer<String, List<Boolean>> biConsumer) {
-        records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries + 1)));
+        records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries)));
     }
 
     private void checkAllRecord(int expectedTry) {
