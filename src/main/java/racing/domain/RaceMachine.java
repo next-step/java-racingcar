@@ -1,12 +1,17 @@
 package racing.domain;
 
 import lombok.Getter;
-import lombok.Setter;
+import utils.RandomUtils;
 
 @Getter
-@Setter
 public class RaceMachine {
     private Integer horsePower;
     private Integer lap;
 
+    public void accelerate() {
+        horsePower = RandomUtils.nextInt(10);
+        if (horsePower >= 4) {
+            lap++;
+        }
+    }
 }
