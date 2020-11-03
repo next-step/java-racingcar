@@ -29,7 +29,7 @@ public class CarSateInRace {
       return false;
     }
     CarSateInRace that = (CarSateInRace) o;
-    return carName == that.carName;
+    return carName.equals(that.carName);
   }
 
   @Override

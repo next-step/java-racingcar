@@ -13,6 +13,7 @@ public class MessageConstant {
 
   public static final String NEW_LINE = "\n";
   public static final String COLON = " : ";
+  public static final String WINNER_CAR_DELIMITER = ",";
 
   public static final String NO_FOUND_WINNER = "경기를 시작하지 않았습니다.";
 

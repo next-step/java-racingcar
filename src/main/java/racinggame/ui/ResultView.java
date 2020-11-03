@@ -13,8 +13,7 @@ import racinggame.vo.CarSateInRace;
 
 public class ResultView {
 
-  private ResultView() {
-  }
+  private ResultView() {}
 
   public static void printRacingResult(RacingResult racingResult) {
     System.out.println(NEW_LINE + RACING_RESULT);

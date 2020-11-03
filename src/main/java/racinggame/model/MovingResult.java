@@ -1,6 +1,7 @@
 package racinggame.model;
 
 import static racinggame.message.MessageConstant.NO_FOUND_WINNER;
+import static racinggame.message.MessageConstant.WINNER_CAR_DELIMITER;
 
 import java.util.Comparator;
 import java.util.List;
@@ -30,7 +31,8 @@ public class MovingResult {
     if (origin.size() == 0) {
       throw new IllegalStateException(NO_FOUND_WINNER);
     }
-    return collectWinnerCarName(sortByPosition(origin));
+    return collectWinnerCarName(sortByPosition(origin)).stream()
+        .collect(Collectors.joining(WINNER_CAR_DELIMITER));
   }
 
   private List<CarSateInRace> sortByPosition(List<CarSateInRace> carSateInRaces) {
@@ -39,12 +41,12 @@ public class MovingResult {
         .collect(Collectors.toList());
   }
 
-  private String collectWinnerCarName(List<CarSateInRace> sortedCarSateInRaces) {
+  private List<String> collectWinnerCarName(List<CarSateInRace> sortedCarSateInRaces) {
     int winnerPosition = sortedCarSateInRaces.get(FIRST_INDEX).getRacingPosition();
     return sortedCarSateInRaces.stream()
         .filter(carSateInRace -> carSateInRace.getRacingPosition() == winnerPosition)
-        .map(carSateInRace -> carSateInRace.getCarName())
-        .collect(Collectors.joining(","));
+        .map(CarSateInRace::getCarName)
+        .collect(Collectors.toList());
   }
 
   @Override

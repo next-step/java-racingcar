@@ -1,9 +1,9 @@
 package racinggame.model;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import racinggame.vo.CarSateInRace;
 
 public class RacingCars {
@@ -11,7 +11,7 @@ public class RacingCars {
   private List<Car> racingCars;
 
   public RacingCars(String[] racingCarNames) {
-    this.racingCars = preparerCar(racingCarNames);
+    this.racingCars = preparerCar(Arrays.asList(racingCarNames.clone()));
   }
 
   public RacingCars(List<Car> racingCars) {
@@ -28,9 +28,9 @@ public class RacingCars {
         .collect(Collectors.toList());
   }
 
-  private List<Car> preparerCar(String[] racingCarNames) {
-    return IntStream.range(0, racingCarNames.length)
-        .mapToObj(index -> new Car(racingCarNames[index]))
+  private List<Car> preparerCar(List<String> racingCarNames) {
+    return racingCarNames.stream()
+        .map(racingCarName -> new Car(racingCarName))
         .collect(Collectors.toList());
   }
 
