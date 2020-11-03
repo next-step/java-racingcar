@@ -31,13 +31,13 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("name 이 null 이면, NullPointerException 가 발생된다.")
+    @DisplayName("name 이 null 이면, 에러가 발생된다.")
     void car() {
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        assertThatExceptionOfType(NullPointerException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     new Car(null, strategy);
-                });
+                }).withMessageMatching(MsgConst.NULL_NAME_ERR);
     }
 
     @Test
