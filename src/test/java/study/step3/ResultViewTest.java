@@ -66,7 +66,7 @@ public class ResultViewTest {
         //@formatter:off
         assertThat(stringBuilder.toString())
                 .isEqualTo(
-                    line("실행결과") +
+                    lineEmpty() +
                     line(nameWithSpace("blue") + ": ") +
                     line(nameWithSpace("red") + ": -") +
                     lineEmpty() +
@@ -88,7 +88,7 @@ public class ResultViewTest {
         //@formatter:off
         assertThat(stringBuilder.toString())
                 .isEqualTo(
-                        line("실행결과") +
+                        lineEmpty() +
                                 line(nameWithSpace("blue") + ": ") +
                                 line(nameWithSpace("red") + ": -") +
                                 lineEmpty() +
@@ -129,24 +129,24 @@ public class ResultViewTest {
             //@formatter:off
             return Stream.of(
                     Arguments.of("blue", new Boolean[]{true}, // 한번 시도에서 한번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": -")
                     ),
 
                     Arguments.of("blue", new Boolean[]{false}, // 한번 시도에서 0번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": ")
                     ),
 
                     Arguments.of("blue", new Boolean[]{true, false}, // 두번 시도에서 한번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
                                     line(nameWithSpace("blue") + ": -")
                     ),
 
                     Arguments.of("blue", new Boolean[]{true, true}, // 두번 시도에서 두번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
                                     line(nameWithSpace("blue") + ": --")

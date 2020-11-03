@@ -9,8 +9,12 @@ class RaceRecord {
     private final Map<String, List<Boolean>> records = new TreeMap<>();
 
     public void saveRecord(Car car) {
-        records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
-                .add(car.isMoved());
+        saveRecord(car.getName(), car.isMoved());
+    }
+
+    void saveRecord(String name, boolean moved) {
+        records.computeIfAbsent(name, key -> new ArrayList<>()) //
+                .add(moved);
     }
 
     public Set<String> listMostMovingNames() {
@@ -48,7 +52,7 @@ class RaceRecord {
     }
 
     public void forEachRecordUntil(int tries, BiConsumer<String, List<Boolean>> biConsumer) {
-        records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries)));
+        records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries + 1)));
     }
 
     private void checkAllRecord(int expectedTry) {

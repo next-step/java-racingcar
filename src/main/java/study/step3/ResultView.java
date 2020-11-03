@@ -1,19 +1,22 @@
 package study.step3;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import static java.util.stream.Collectors.joining;
 
 class ResultView {
     private final Map<String, List<Boolean>> records;
+    private RaceRecord raceRecord;
     private final Set<String> winners;
 
     public ResultView(Map<String, List<Boolean>> records, Set<String> winners) {
         this.records = records;
         this.winners = winners;
+    }
+
+    public ResultView(RaceRecord raceRecord, Set<String> winners) {
+        this(Collections.emptyMap(), winners);
+        this.raceRecord = raceRecord;
     }
 
     public ResultView(CarRacing carRacing) {
@@ -27,7 +30,7 @@ class ResultView {
     }
 
     void printRaceHistory() {
-        int laps = records.values().iterator().next().size();
+        int laps = raceRecord.getTotalTry();
         for (int i = 0; i < laps; i++) {
             printNewline();
             printRecord(i);
@@ -43,8 +46,8 @@ class ResultView {
     }
 
     private void printRecord(int lastLap) {
-        new TreeMap<>(records).forEach((name, record) -> {
-            printNameAndRecord(name, record.subList(0, lastLap + 1));
+        raceRecord.forEachRecordUntil(lastLap, (name, record) -> {
+            printNameAndRecord(name, record);
             printNewline();
         });
     }
