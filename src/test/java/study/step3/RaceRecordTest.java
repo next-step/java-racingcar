@@ -3,9 +3,12 @@ package study.step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.*;
 
+import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
+import static study.step3.CarRacingTest.*;
 
 public class RaceRecordTest {
     // TODO 레코드 상태 존재 v
@@ -30,6 +33,19 @@ public class RaceRecordTest {
         raceRecord.saveRecord(car);
 
         assertThat(raceRecord.isEmpty()).isFalse();
+    }
+
+    @Test
+    @DisplayName("RaceRecord는 가장 많이 이동한 자동차의 이름을 한대 이상 반환할 수 있다.")
+    void mostMovingCarName() {
+        RaceRecord raceRecord = new RaceRecord();
+
+        saveRecords(5, new TestingCar("blue", 2), //
+                new TestingCar("red", 3),  //
+                new TestingCar("white", 2),  //
+                new TestingCar("gray", 3));
+
+        assertThat(raceRecord.listMostMovingNames()).containsOnly("red", "gray");
     }
 
     private static class RaceRecord {
