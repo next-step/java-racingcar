@@ -8,7 +8,17 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.joining;
 
 public class ResultView {
-    public static void print(Stream<Car> cars, final String carKind) {
+    private final String carKind;
+
+    private ResultView(String carKind) {
+        this.carKind = carKind;
+    }
+
+    public static ResultView of (String carKind) {
+        return new ResultView(carKind);
+    }
+
+    public void print(Stream<Car> cars) {
         cars.forEach((car) -> {
             String status = IntStream.range(0, car.position())
                     .mapToObj(n -> carKind)

@@ -23,14 +23,14 @@ public class Race {
         Validator.validatePositiveNumber(numberOfMoves);
     }
 
-    public void operate(MoveStrategy moveStrategy, String carKind) {
-        ResultView.print(cars.stream(), carKind);
+    public void operate(MoveStrategy moveStrategy, ResultView view) {
+        view.print(cars.stream());
 
         Stream.iterate(1, a -> a + 1)
                 .limit(numberOfMoves)
                 .forEach(moveCount -> {
                     cars.move(moveStrategy);
-                    ResultView.print(cars.stream(), carKind);
+                    view.print(cars.stream());
                 });
     }
 
