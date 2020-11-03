@@ -2,9 +2,8 @@ package step3.present;
 
 import step3.RaceGameContract;
 import step3.model.Commander;
-import step3.model.RaceGame;
-import step3.model.RacingCars;
 import step3.model.GameRound;
+import step3.model.RaceGame;
 
 public class Presenter implements RaceGameContract.Presenter {
 
@@ -17,12 +16,16 @@ public class Presenter implements RaceGameContract.Presenter {
     }
 
     @Override
-    public void gameStart(GameRound round) {
+    public RaceGame createGame(GameRound round) {
         RaceGame raceGame = new RaceGame(round, commander);
-
-        while (!round.isAllRoundFinish()) {
-            RacingCars cars = raceGame.nextRound();
-            view.renderView(cars);
-        }
+        return raceGame;
     }
+
+    @Override
+    public void gameStart(RaceGame game) {
+        game.start();
+        view.renderView(game.end());
+    }
+
+
 }
