@@ -19,6 +19,17 @@ public class RaceRecordTest {
         assertThat(raceRecord.isEmpty()).isTrue();
     }
 
+    @Test
+    @DisplayName("RaceRecord는 자동차 이동기록을 저장할 수 있다.")
+    void saveMove() {
+        RaceRecord raceRecord = new RaceRecord();
+
+        Car car = new TestingCar();
+        raceRecord.saveRecord(car);
+
+        assertThat(raceRecord.isEmpty()).isFalse();
+    }
+
     private static class RaceRecord {
         public boolean isEmpty() {
             return true;
