@@ -22,13 +22,11 @@ public class NumberInput {
      *
      * @param paramValue
      */
-    public static boolean valueCheck(String paramValue) {
+    public static void valueCheck(String paramValue) {
         isNullCheck(paramValue);
         isEmptyCheck(paramValue);
         isNumberCheck(paramValue);
-        //isZeroCheck(paramValue);
-
-        return true;
+        isZeroCheck(paramValue);
     }
 
     /**
@@ -38,7 +36,7 @@ public class NumberInput {
      */
     private static void isZeroCheck(String paramValue) {
         if ("0".equals(paramValue)) {
-            throw new ArrayIndexOutOfBoundsException("자동차의 갯수를 1개이상으로 입력해주세요");
+            throw new ArrayIndexOutOfBoundsException(ErrorMessage.getARRAYINDEXOUTOFBOUNDSEXCEPTION());
         }
     }
 
@@ -55,7 +53,7 @@ public class NumberInput {
 
     private static void isDetailNumberCheck(char inputValue) {
         if (!('0' <= inputValue && inputValue <= '9')) {
-            throw new NumberFormatException("문자를 입력하였습니다. 숫자를 입력해주세요");
+            throw new NumberFormatException(ErrorMessage.getNUMBERFORMATEXCEPTION());
         }
     }
 
@@ -66,7 +64,7 @@ public class NumberInput {
      */
     private static void isEmptyCheck(String paramValue) {
         if ("".equals(paramValue)) {
-            throw new NumberFormatException("입력하지 않으셨습니다. 숫자를 입력해주세요");
+            throw new NumberFormatException(ErrorMessage.getEmptyException());
         }
     }
 
@@ -77,7 +75,8 @@ public class NumberInput {
      */
     private static void isNullCheck(String paramValue) {
         if (paramValue == null) {
-            throw new NullPointerException("Null을 입력하였습니다. 숫자를 입력해주세요");
+            throw new NullPointerException(ErrorMessage.getNullException());
         }
     }
+
 }
