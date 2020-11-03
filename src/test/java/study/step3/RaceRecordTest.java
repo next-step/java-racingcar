@@ -25,9 +25,9 @@ public class RaceRecordTest {
     }
 
     @Test
-    @DisplayName("RaceRecord는 생성후 비어있는 상태이다.")
+    @DisplayName("RaceRecord는 생성후 이동거리는 0이다.")
     void initState() {
-        assertThat(raceRecord.isEmpty()).isTrue();
+        assertThat(raceRecord.getTotalMoves()).isEqualTo(0);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class RaceRecordTest {
     void saveMove() {
         saveRecords(1, new TestingCar());
 
-        assertThat(raceRecord.isEmpty()).isFalse();
+        assertThat(raceRecord.getTotalMoves()).isEqualTo(1);
     }
 
     @Test
@@ -105,6 +105,10 @@ public class RaceRecordTest {
 
         private int countMove(List<Boolean> values) {
             return values.stream().mapToInt(moved -> moved ? 1 : 0).sum();
+        }
+
+        public int getTotalMoves() {
+            return 10;
         }
     }
 
