@@ -1,5 +1,7 @@
 package step4.domain;
 
+import java.util.stream.IntStream;
+
 public class Simulator {
     private final Cars cars;
     private final Integer tryCount;
@@ -10,9 +12,8 @@ public class Simulator {
     }
 
     public void execute() {
-        for (int i = 0; i < tryCount; i++) {
-            cars.move();
-        }
+        IntStream.range(0, tryCount)
+                .forEach(i -> cars.move());
     }
 
 }
