@@ -108,7 +108,13 @@ public class RaceRecordTest {
         }
 
         public int getTotalMoves() {
-            return 10;
+            if (records.isEmpty()) {
+                return 0;
+            }
+            return records.values() //
+                    .iterator() //
+                    .next() //
+                    .size();
         }
     }
 
