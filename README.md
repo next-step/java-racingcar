@@ -2,7 +2,7 @@
 
 ## 기능 구현 내용
 * [ ] Main: GameClient
-* [ ] 전체 게임을 컨트롤 하는 역할을 하는 RacingGame 객체
+* [V] 전체 게임을 컨트롤 하는 역할을 하는 RacingGame 객체
 * [ ] 자동차를 표현하는 Car, Cars 객체
 * [X] 자동차가 움직일 거리를 계산하는 ScoreGenerator 객체
 * [X] Input을 받아 처리하는 InputView 객체
