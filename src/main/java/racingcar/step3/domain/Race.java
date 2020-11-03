@@ -1,7 +1,7 @@
 package racingcar.step3.domain;
 
 import racingcar.step3.common.Consts;
-import racingcar.step3.service.ResultView;
+import racingcar.step3.view.ResultView;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -24,6 +24,10 @@ public class Race {
         this.rv = rv;
     }
 
+    public Set<Car> getCarSet() {
+        return this.carSet;
+    }
+
     public void ready() {
         this.carSet = new HashSet<>();
         for (int i = 1; i < cars + 1; i++) {
@@ -41,9 +45,7 @@ public class Race {
     private void roll(ResultView rv, int i) {
         for (Car car : getCarSet()) {
             try {
-                if (SecureRandom.getInstanceStrong().nextInt(10) > 3) {
-                    car.move();
-                }
+                car.move(SecureRandom.getInstanceStrong().nextInt(10));
                 rv.print(car);
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
@@ -51,10 +53,6 @@ public class Race {
         }
         System.out.println("turn " + i + " 종료");
         System.out.println();
-    }
-
-    public Set<Car> getCarSet() {
-        return this.carSet;
     }
 
 }

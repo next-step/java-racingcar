@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class Scan {
     static Scanner instance;
 
-    private Scan() {}
+    private Scan() {
+    }
 
     public static Scanner getInstance() {
         if (instance == null) {

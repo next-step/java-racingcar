@@ -16,8 +16,10 @@ public class Car {
         return this.name;
     }
 
-    public void move() {
-        this.distance++;
+    public void move(int random) {
+        if (random > 3) {
+            this.distance++;
+        }
     }
 
     public int getDistance() {

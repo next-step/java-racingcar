@@ -1,4 +1,4 @@
-package racingcar.step3.service;
+package racingcar.step3.view;
 
 import racingcar.step3.domain.Car;
 

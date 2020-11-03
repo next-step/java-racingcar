@@ -1,8 +1,8 @@
 package racingcar.step3;
 
 import racingcar.step3.domain.Race;
-import racingcar.step3.service.InputView;
-import racingcar.step3.service.ResultView;
+import racingcar.step3.view.InputView;
+import racingcar.step3.view.ResultView;
 
 /**
  * Created : 2020-11-02 오전 8:21

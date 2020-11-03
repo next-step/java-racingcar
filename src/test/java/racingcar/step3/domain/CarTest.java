@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.security.NoSuchAlgorithmException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -28,10 +30,12 @@ class CarTest {
     @Test
     @DisplayName("이동 후 거리 확인")
     void whenMove_thenGetDistance() {
-        this.car.move();
-        assertThat(car.getDistance()).isEqualTo(1);
+        int dissatisfiedValue = 3;
+        this.car.move(dissatisfiedValue);
+        assertThat(car.getDistance()).isEqualTo(0);
 
-        this.car.move();
-        assertThat(car.getDistance()).isEqualTo(2);
+        int satisfiedValue = 4;
+        this.car.move(satisfiedValue);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
