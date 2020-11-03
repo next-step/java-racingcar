@@ -52,6 +52,24 @@ public class RacingCar implements Comparable<RacingCar> {
 
     @Override
     public int compareTo(RacingCar racingCar) {
+        if (moveCount == racingCar.moveCount) {
+            return name.compareTo(racingCar.name);
+        }
         return Integer.compare(racingCar.moveCount, moveCount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RacingCar)) return false;
+
+        RacingCar racingCar = (RacingCar) o;
+
+        return name != null ? name.equals(racingCar.name) : racingCar.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
     }
 }
