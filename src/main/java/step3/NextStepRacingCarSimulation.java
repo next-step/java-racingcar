@@ -20,7 +20,7 @@ public class NextStepRacingCarSimulation {
     }
     
     private static SimulationCondition receiveCondition() {
-        return new InputView().receiveSimulationCondition();
+        return InputView.receiveSimulationCondition();
     }
 
     private static SimulationResult simulate(final SimulationCondition condition) {
