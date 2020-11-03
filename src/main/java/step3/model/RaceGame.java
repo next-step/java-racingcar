@@ -1,7 +1,10 @@
 package step3.model;
 
+import step3.exception.NotFinishRaceGameException;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class RaceGame {
 
@@ -17,18 +20,29 @@ public class RaceGame {
 
     private void createParticipantRacingCar() {
         List<RacingCar> cars = new ArrayList<>();
-        for (int i = 0; i < round.getParticipantCar(); i++) {
-            cars.add(new RacingCar(i));
-        }
+        IntStream.range(0, round.getParticipantCar())
+                .forEach(i -> cars.add(new RacingCar(commander)));
         this.racingCars = new RacingCars(cars);
     }
 
-    public RacingCars nextRound() {
+    public boolean start() {
+        while(!round.isAllRoundFinish()){
+            play();
+        }
+        return round.isAllRoundFinish();
+    }
+
+    private void play() {
         for (int i = 0; i < round.getParticipantCar(); i++) {
-            String commands = commander.generateCommand();
-            racingCars.getParticipantCar(i).addCommands(commands);
+            racingCars.moveForward(i);
         }
         round.roundFinish();
+    }
+
+    public RacingCars end() {
+        if (!round.isAllRoundFinish()) {
+            throw new NotFinishRaceGameException(round.getRound());
+        }
         return racingCars;
     }
 
