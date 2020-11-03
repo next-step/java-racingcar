@@ -11,7 +11,7 @@ public class Car {
     public String move(int randomNumber){
         if(randomNumber > THRESHOLD) this.numberOfMoves++;
 
-        return String.join("", Collections.nCopies(numberOfMoves, "-"));
+        return String.join("", Collections.nCopies(numberOfMoves, "-")).concat("\n");
     }
 
 }

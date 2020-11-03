@@ -1,13 +1,9 @@
 package racingcar.ui;
 
-import racingcar.domain.Car;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class ResultView {
 
-    public void print() {
+    public void print(String str) {
         System.out.println("실행 결과");
+        System.out.print(str);
     }
 }
