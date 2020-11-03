@@ -14,6 +14,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RunCarRaceTest {
 
+    @ParameterizedTest(name = "{index} => basePrice={0}, maxPrice={1}")
+    @CsvSource({
+            "1, 1",
+            "10, 10",
+            "5, 5"
+    })
+    @DisplayName("자동차가 갯수가 제대로 만들어졌는지?")
+    void testCarCount(int carCount, int tryCount) {
+        CarRaceInformation carRaceInformation = new CarRaceInformation(carCount, tryCount);
+
+        assertTrue(carRaceInformation.getCarMoveCountArr().length <= carCount);
+    }
 
     @ParameterizedTest(name = "{index} => basePrice={0}, maxPrice={1}")
     @CsvSource({
@@ -21,9 +33,12 @@ public class RunCarRaceTest {
             "10, 10",
             "5, 5"
     })
-    @DisplayName("레이싱의 결과가 제대로 동작이 되었는가?")
-    void startRacing(int carCount, int tryCount) {
-        assertEquals(RunCarRace.testRun(carCount, tryCount), RunCarRace.testRun(carCount, tryCount));
-    }
+    @DisplayName("자동차가 제대로 이동했는지?")
+    void testTryCount(int carCount, int tryCount) {
+        CarRaceInformation carRaceInformation = new CarRaceInformation(carCount, tryCount);
 
+        for(int i=0; i<carRaceInformation.getCarMoveCountArr().length; i++){
+            assertTrue(carRaceInformation.getCarMoveCountArr()[i] <= tryCount);
+        }
+    }
 }
