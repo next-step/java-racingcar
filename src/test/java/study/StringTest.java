@@ -41,5 +41,5 @@ public class StringTest {
         //withMessageMatching : 발생한 Exception 메세지가 파라미터 값과 정규식으로 매칭되는지 테스트
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(()->string.charAt(idx)).withMessageMatching(".+index.+\\d+");
-}
+    }
 }
