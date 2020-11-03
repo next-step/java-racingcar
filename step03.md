@@ -163,6 +163,17 @@ private 메서드의 테스트가 꼭 필요해 보인다면, 클래스 분리�
 ```
 메소드 네이밍은 동사형으로 시작하는 것을 권장
 ```
+```
+더 역할에 맞게 클래스 이름을 구체화
+```
+
+[God object](https://en.wikipedia.org/wiki/God_object)
+- 객체지향 프로그래밍에서, 안티패턴 중 하나로.
+- `knows too much or does too much.` 너무 많이 알거나 너무 많은 일을 하는 객체
+- divide and conquer strategy !
+- Single-responsibility principle !
+
+[utill class anti pattern](https://ralin.io/blog/oop-anti-patterns-utility-or-helper-classes.html)
 
 
 ## [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)

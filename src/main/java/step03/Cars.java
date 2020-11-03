@@ -18,6 +18,7 @@ public class Cars {
     }
 
     public static Cars of (int numberOfCars, int position) {
+        validateNumberOfCars(numberOfCars);
         return of(Stream.iterate(0, n -> n + 1)
                         .limit(numberOfCars)
                         .map(n -> Car.of(position))
@@ -25,10 +26,11 @@ public class Cars {
     }
 
     public static Cars of (int numberOfCars) {
-        return of(Stream.iterate(0, n -> n + 1)
-                .limit(numberOfCars)
-                .map(n -> Car.of())
-                .collect(Collectors.toList()));
+        return of(numberOfCars, 1);
+    }
+
+    private static void validateNumberOfCars(int numberOfCars) {
+        Validator.validatePositiveNumber(numberOfCars);
     }
 
     public void move(MoveStrategy moveStrategy) {

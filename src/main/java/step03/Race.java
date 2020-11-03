@@ -15,7 +15,12 @@ public class Race {
     }
 
     public static Race of(int numberOfMoves, Cars cars) {
+        validateNumberOfMoves(numberOfMoves);
         return new Race(numberOfMoves, cars);
+    }
+
+    private static void validateNumberOfMoves(int numberOfMoves) {
+        Validator.validatePositiveNumber(numberOfMoves);
     }
 
     public void operate(MoveStrategy moveStrategy, String carKind) {
