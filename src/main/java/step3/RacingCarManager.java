@@ -11,13 +11,15 @@ public class RacingCarManager {
         joinCarList.add(new Car());
     }
 
-    public void moveCars(){
-        joinCarList.stream().forEach(car -> car.move());
+    public void moveCars() {
+        joinCarList
+                .forEach(Car::move);
     }
 
     public List<Integer> getRacingStatus() {
-        return joinCarList.stream()
-                .map(car -> car.getLocation())
+        return joinCarList
+                .stream()
+                .map(Car::getLocation)
                 .collect(Collectors.toList());
     }
 }
