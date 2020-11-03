@@ -1,14 +1,19 @@
 package step3;
 
-public class RacingCar {
-//  자동차 이름, 이동, 이동거리.
-  //기능을 구현 한다
-  public void run() {
-    //랜덤함수를 사용?
-    // 전진 메서드
-  }
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-  public void stop() {
-    //멈추는 메서드
+public class RacingCar {
+  private static final InputView inputView = new InputView();
+  private static final ResultView resultView = new ResultView();
+
+  public void run() {
+    int car = inputView.setCarCount();
+    if (car == 0) {
+      throw new IllegalArgumentException("자동차 수가 0입니다.");
+    }
+    Set<Car> carSet = IntStream.range(0, car).mapToObj(Car::new).collect(Collectors.toSet());
+    resultView.resultPrint(carSet);
   }
 }

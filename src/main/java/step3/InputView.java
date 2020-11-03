@@ -3,14 +3,16 @@ package step3;
 import java.util.Scanner;
 
 public class InputView {
-  // 입력 메서드 구현 (자동차 갯수 & 횟수 입력받은 후 리턴)
-  Scanner scanner ;
-  RacingCar racingCar;
+  Scanner scanner = new Scanner(System.in);
 
-  void setCarCount() {
+  int setCarCount() {
+    System.out.println("자동차 대수는 몇 대 인가요?");
+    return scanner.nextInt();
   }
 
-  void setMoveCount() {
+  int setMoveCount() {
+    System.out.println("시도할 회수는 몇 회 인가요?");
+    return scanner.nextInt();
   }
 
 }
