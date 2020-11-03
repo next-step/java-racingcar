@@ -5,7 +5,7 @@ import java.util.*;
 import static java.util.stream.Collectors.joining;
 
 class ResultView {
-    private RaceRecord raceRecord;
+    private final RaceRecord raceRecord;
     private final Set<String> winners;
 
     public ResultView(RaceRecord raceRecord, Set<String> winners) {
