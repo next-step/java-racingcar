@@ -1,43 +1,21 @@
 package race.car;
 
+/**
+ * 결과를 그려주는 객체
+ */
 public class ResultPrint {
 
-    /**
-     * 자동차 그리기
-     *
-     * @param carImformation
-     */
-    public static CarImformation showCarImformation(CarImformation carImformation) {
-        for (int i = 0; i < carImformation.getCarCount(); i++) {
-            goInTryMove(carImformation.getTryMoveCount());
-            System.out.println();
+    public static void drawMoveCar(int[] carMoveCountArr) {
+        for (int i = 0; i < carMoveCountArr.length; i++) {
+            insideArr(carMoveCountArr[i]);
         }
-        return carImformation;
+        System.out.print("\n");
     }
 
-    /**
-     * 자동차의 이동횟수 배열 들어가기
-     *
-     * @param tryMoveCount
-     */
-    private static void goInTryMove(int[] tryMoveCount) {
-        CarMove.MOVE.carMove(tryMoveCount);
-
-        for (int i = 0; i < tryMoveCount.length; i++) {
-            ResultPrint.showCarMovePrint(tryMoveCount[i]);
-            System.out.println();
-        }
-    }
-
-    /**
-     * 자동차 이동횟수 그리기
-     *
-     * @param tryMoveCount
-     */
-    private static void showCarMovePrint(int tryMoveCount) {
-        for (int j = 0; j < tryMoveCount; j++) {
+    private static void insideArr(int inputValue) {
+        for (int i = 0; i < inputValue; i++) {
             System.out.print("-");
         }
+        System.out.print("\n");
     }
-
 }
