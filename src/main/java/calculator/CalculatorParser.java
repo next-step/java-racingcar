@@ -10,40 +10,50 @@ import java.util.stream.Collectors;
 public class CalculatorParser {
 
     private static final String REGEX_BLANK = " ";
+    private static final int ZERO = 0;
+    private static final int INITIAL_ELEMENT_NUMBER = 1;
 
-    public String[] parseExpression(String input) {
+    private static final String ERROR_MESSAGE_INPUT_NULL_OR_BLANK = "입력값이 null이거나 빈 공백 문자입니다.";
+    private static final String ERROR_MESSAGE_INPUT_WRONG = "입력값의 수식이 잘못되었습니다.";
+    private static final String ERROR_MESSAGE_UTILITY_CLASS = "유틸성 클래스입니다.";
+
+    private CalculatorParser() {
+        throw new IllegalStateException(ERROR_MESSAGE_UTILITY_CLASS);
+    }
+
+    public static String[] parseExpression(String input) {
         checkInputArgument(input);
         return input.split(REGEX_BLANK);
     }
 
-    private void checkInputArgument(String input) {
-        if (input == null || input.length() == 0) {
-            throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자입니다.");
+    private static void checkInputArgument(String input) {
+        if (input == null || input.length() == ZERO) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_INPUT_NULL_OR_BLANK);
         }
     }
 
-    public int getInitialValue(String[] expression) {
-        return Integer.parseInt(expression[0]);
+    public static int getInitialValue(String[] expression) {
+        return Integer.parseInt(expression[ZERO]);
     }
 
-    public List<Operator> getOperatorList(String[] expression) {
+    public static List<Operator> getOperatorList(String[] expression) {
         return Arrays.stream(expression)
                 .filter(OperatorFactory::isOperator)
                 .map(OperatorFactory::build)
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> getNumberListWithoutInitialNumber(String[] expression) {
+    public static List<Integer> getNumberListWithoutInitialNumber(String[] expression) {
         return Arrays.stream(expression)
                 .filter(OperatorFactory::isNotOperator)
                 .map(Integer::parseInt)
-                .skip(1) // expression의 초기값은 제외
+                .skip(INITIAL_ELEMENT_NUMBER) // expression의 초기값은 제외
                 .collect(Collectors.toList());
     }
 
-    public void validate(List<Operator> operators, List<Integer> numbers) {
+    public static void validate(List<Operator> operators, List<Integer> numbers) {
         if (operators.size() != numbers.size()) {
-            throw new IllegalArgumentException("입력값의 수식이 잘못되었습니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_INPUT_WRONG);
         }
     }
 

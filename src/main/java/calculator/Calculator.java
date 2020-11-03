@@ -7,14 +7,12 @@ import java.util.List;
 public class Calculator {
 
     public int calculate(String input) {
-        CalculatorParser calculatorParser = new CalculatorParser();
+        String[] expression = CalculatorParser.parseExpression(input);
+        int initialValue = CalculatorParser.getInitialValue(expression);
 
-        String[] expression = calculatorParser.parseExpression(input);
-        int initialValue = calculatorParser.getInitialValue(expression);
-
-        List<Operator> operators = calculatorParser.getOperatorList(expression);
-        List<Integer> numbers = calculatorParser.getNumberListWithoutInitialNumber(expression);
-        calculatorParser.validate(operators, numbers);
+        List<Operator> operators = CalculatorParser.getOperatorList(expression);
+        List<Integer> numbers = CalculatorParser.getNumberListWithoutInitialNumber(expression);
+        CalculatorParser.validate(operators, numbers);
 
         return calculate(initialValue, operators, numbers);
     }

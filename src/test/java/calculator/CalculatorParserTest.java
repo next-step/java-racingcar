@@ -4,7 +4,6 @@ import calculator.domain.AddOperator;
 import calculator.domain.DivideOperator;
 import calculator.domain.MultiplyOperator;
 import calculator.domain.Operator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,21 +17,13 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorParserTest {
 
-    private CalculatorParser calculatorParser;
-
-    @BeforeEach
-    void setUp() {
-        calculatorParser = new CalculatorParser();
-    }
-
-
     @DisplayName("parserExpression() 테스트 케이스 : 실패 케이스 -> input 데이터가 null인 경우")
     @Test
     void parserExpression1() {
         String input = null;
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            calculatorParser.parseExpression(input);
+            CalculatorParser.parseExpression(input);
         });
     }
 
@@ -42,7 +33,7 @@ public class CalculatorParserTest {
         String input = "";
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            calculatorParser.parseExpression(input);
+            CalculatorParser.parseExpression(input);
         });
     }
 
@@ -52,7 +43,7 @@ public class CalculatorParserTest {
         String input = "1 * 3 + 7";
         String[] expectedExpression = {"1", "*", "3", "+", "7"};
 
-        String[] expression = calculatorParser.parseExpression(input);
+        String[] expression = CalculatorParser.parseExpression(input);
 
         assertThat(expression).isEqualTo(expectedExpression);
     }
@@ -62,10 +53,10 @@ public class CalculatorParserTest {
     @ParameterizedTest
     @ValueSource(strings = {" $ + 1", "* 7"})
     void getInitialValue1(String input) {
-        String[] expression = calculatorParser.parseExpression(input);
+        String[] expression = CalculatorParser.parseExpression(input);
 
         assertThatExceptionOfType(NumberFormatException.class).isThrownBy(() -> {
-            calculatorParser.getInitialValue(expression);
+            CalculatorParser.getInitialValue(expression);
         });
     }
 
@@ -77,9 +68,9 @@ public class CalculatorParserTest {
             " 165 * 14 + 8 | 165 ",
     }, delimiter = '|')
     void getInitialValue2(String input, int expectedInitialValue) {
-        String[] expression = calculatorParser.parseExpression(input);
+        String[] expression = CalculatorParser.parseExpression(input);
 
-        assertThat(calculatorParser.getInitialValue(expression))
+        assertThat(CalculatorParser.getInitialValue(expression))
                 .isEqualTo(expectedInitialValue);
     }
 
@@ -88,9 +79,9 @@ public class CalculatorParserTest {
     @Test
     void getOperatorList() {
         String input = "1 + 7 * 7 / 2";
-        String[] expression = calculatorParser.parseExpression(input);
+        String[] expression = CalculatorParser.parseExpression(input);
 
-        List<Operator> operators = calculatorParser.getOperatorList(expression);
+        List<Operator> operators = CalculatorParser.getOperatorList(expression);
 
         assertThat(operators.get(0))
                 .isExactlyInstanceOf(AddOperator.class);
@@ -105,10 +96,10 @@ public class CalculatorParserTest {
     @Test
     void getNumberListWithoutInitialNumber1() {
         String input = "1 + & * 7 / 2";
-        String[] expression = calculatorParser.parseExpression(input);
+        String[] expression = CalculatorParser.parseExpression(input);
 
         assertThatExceptionOfType(NumberFormatException.class).isThrownBy(() -> {
-            calculatorParser.getNumberListWithoutInitialNumber(expression);
+            CalculatorParser.getNumberListWithoutInitialNumber(expression);
         });
     }
 
@@ -116,9 +107,9 @@ public class CalculatorParserTest {
     @Test
     void getNumberListWithoutInitialNumber2() {
         String input = "1 + 7 * 7 / 2";
-        String[] expression = calculatorParser.parseExpression(input);
+        String[] expression = CalculatorParser.parseExpression(input);
 
-        List<Integer> numbers = calculatorParser.getNumberListWithoutInitialNumber(expression);
+        List<Integer> numbers = CalculatorParser.getNumberListWithoutInitialNumber(expression);
 
         assertThat(numbers.get(0)).isEqualTo(7);
         assertThat(numbers.get(1)).isEqualTo(7);
@@ -130,13 +121,13 @@ public class CalculatorParserTest {
     @Test
     void validate() {
         String input = "1 + 7 * 7 / * 2 ";
-        String[] expression = calculatorParser.parseExpression(input);
+        String[] expression = CalculatorParser.parseExpression(input);
 
-        List<Operator> operators = calculatorParser.getOperatorList(expression);
-        List<Integer> numbers = calculatorParser.getNumberListWithoutInitialNumber(expression);
+        List<Operator> operators = CalculatorParser.getOperatorList(expression);
+        List<Integer> numbers = CalculatorParser.getNumberListWithoutInitialNumber(expression);
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            calculatorParser.validate(operators, numbers);
+            CalculatorParser.validate(operators, numbers);
         });
     }
 }
