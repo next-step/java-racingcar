@@ -8,14 +8,16 @@ import step3.domain.Snapshot;
 import java.util.List;
 
 public class ResultView {
-    private static final char MOVE_CHAR = '-' ;
+    private static final char MOVE_CHAR = '-';
     private static final String NEWLINE = "\n";
     private static final String RESULT_ANNOUNCEMENT = NEWLINE + "실행결과" + NEWLINE;
     private static final String ROUND_ANNOUNCEMENT = "라운드";
-    private final String view;
+    
+    private ResultView() {
+        throw new AssertionError();
+    }
 
-
-    public ResultView(final SimulationResult simulationResult) {
+    public static void print(final SimulationResult simulationResult) {
         final StringBuilder viewBuilder = new StringBuilder(RESULT_ANNOUNCEMENT);
         final List<Snapshot> snapshots = simulationResult.getSnapshots();
         final List<RacingCar> racingCars = simulationResult.getRacingCars();
@@ -28,14 +30,14 @@ public class ResultView {
             viewBuilder.append(NEWLINE);
         }
 
-        this.view = viewBuilder.toString();
+        Printer.print(viewBuilder.toString());
     }
 
-    private String createRoundView(final Snapshot snapshot) {
+    private static String createRoundView(final Snapshot snapshot) {
         return ROUND_ANNOUNCEMENT + " " + (snapshot.getNumber() + 1);
     }
 
-    private String createRoundResultView(final List<RacingCar> racingCars, final RacingMap racingMap) {
+    private static String createRoundResultView(final List<RacingCar> racingCars, final RacingMap racingMap) {
         final StringBuilder roundResultViewBuilder = new StringBuilder();
         for (RacingCar car : racingCars) {
             final int position = racingMap.findPosition(car);
@@ -45,20 +47,15 @@ public class ResultView {
         return roundResultViewBuilder.toString();
     }
 
-    private String createMoveView(final int position) {
+    private static String createMoveView(final int position) {
         return createMovingDistanceView(position);
     }
 
-    private String createMovingDistanceView(final int position) {
+    private static String createMovingDistanceView(final int position) {
         final StringBuilder movingDistanceViewBuilder = new StringBuilder();
         for (int i = 0; i < position; i++) {
             movingDistanceViewBuilder.append(MOVE_CHAR);
         }
         return movingDistanceViewBuilder.toString();
-    }
-
-    @Override
-    public String toString() {
-        return view;
     }
 }
