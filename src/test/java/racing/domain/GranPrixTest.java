@@ -11,30 +11,30 @@ public class GranPrixTest {
     void testMakeUp(){
         GrandPrix grandPrix = new GrandPrix(3, 5);
         assertThat(grandPrix.getRaceMachines()).size().isEqualTo(3);
-        assertThat(grandPrix.getMaxLaps()).isEqualTo(5);
+        assertThat(grandPrix.getMaxRounds()).isEqualTo(5);
     }
 
     @Test
-    void testCheckLap(){
+    void testRunRound(){
         GrandPrix grandPrix = new GrandPrix(3, 5);
-        grandPrix.checkLap();
-        assertThat(grandPrix.getCurrentLap()).isEqualTo(2);
-        grandPrix.checkLap();
-        assertThat(grandPrix.getCurrentLap()).isEqualTo(3);
+        grandPrix.runRound();
+        assertThat(grandPrix.getCurrentRound()).isEqualTo(2);
+        grandPrix.runRound();
+        assertThat(grandPrix.getCurrentRound()).isEqualTo(3);
     }
 
     @Test
     void testGetMachinesInLap(){
         GrandPrix grandPrix = new GrandPrix(3, 5);
-        grandPrix.checkLap();
+        grandPrix.runRound();
         List<RaceMachine> machines = grandPrix.getMachinesInLap(3);
         assertThat(machines).size().isZero();
     }
 
    @Test
-    void testStartRace(){
+    void testRunFullRace(){
        GrandPrix grandPrix = new GrandPrix(3, 5);
-       grandPrix.startRace();
-       assertThat(grandPrix.getCurrentLap()).isEqualTo(grandPrix.getMaxLaps());
+       grandPrix.runFullRace();
+       assertThat(grandPrix.getCurrentRound()).isEqualTo(grandPrix.getMaxRounds());
    }
 }

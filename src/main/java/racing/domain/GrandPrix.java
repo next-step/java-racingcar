@@ -8,22 +8,23 @@ import java.util.stream.Collectors;
 
 @Getter
 public class GrandPrix {
-    private final int maxLaps;
+    private int id;
+    private final int maxRounds;
     private final List<RaceMachine> raceMachines = new ArrayList<>();
-    private int currentLap = 1;
+    private int currentRound = 1;
 
-    public GrandPrix(int numberOfMachines, int maxLaps) {
-        this.maxLaps = maxLaps;
-        for (int id = 0; id < numberOfMachines; id++) {
-            raceMachines.add(new RaceMachine(id));
+    public GrandPrix(int numberOfMachines, int maxRounds) {
+        this.maxRounds = maxRounds;
+        for (int machineId = 0; machineId < numberOfMachines; machineId++) {
+            raceMachines.add(new RaceMachine(machineId));
         }
     }
 
-    public void checkLap() {
-        if (currentLap >= maxLaps) {
+    public void runRound() {
+        if (currentRound >= maxRounds) {
             return;
         }
-        currentLap++;
+        currentRound++;
         raceMachines.forEach(RaceMachine::accelerate);
     }
 
@@ -33,9 +34,13 @@ public class GrandPrix {
                 .collect(Collectors.toList());
     }
 
-    public void startRace() {
+    public void runFullRace() {
         do {
-            checkLap();
-        } while (currentLap < maxLaps);
+            runRound();
+        } while (currentRound < maxRounds);
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
