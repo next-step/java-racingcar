@@ -1,6 +1,8 @@
-package step3.view;
+package step4.view;
 
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -12,8 +14,20 @@ public class InputView {
         this.output = output;
     }
 
-    public Integer getCarCountFromInput() {
-        return getCountFromInput("자동차 대수는 몇 대 인가요?");
+    public List<String> getCarNames() {
+        output.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        List<String> names = Arrays.asList(scanner.next().split(","));
+        validateNames(names);
+        return names;
+    }
+
+    private void validateNames(List<String> names) {
+        if (names.size() == 0) {
+            throw new IllegalArgumentException("invalid car count");
+        }
+        if (names.stream().filter(name -> name.length() > 5).count() > 0) {
+            throw new IllegalArgumentException("invalid car name length");
+        }
     }
 
     public Integer getTryCountFromInput() {
