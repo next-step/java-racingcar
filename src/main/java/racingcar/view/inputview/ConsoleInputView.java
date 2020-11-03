@@ -1,4 +1,4 @@
-package racingcar.inputview;
+package racingcar.view.inputview;
 
 public class ConsoleInputView implements InputView {
     @Override

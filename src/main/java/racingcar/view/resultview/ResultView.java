@@ -1,4 +1,4 @@
-package racingcar.resultview;
+package racingcar.view.resultview;
 
 import racingcar.domain.RacingCar;
 
