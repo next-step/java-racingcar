@@ -1,14 +1,14 @@
-package car_racing;
+package car.racing;
 
 
 import java.util.stream.IntStream;
 
 public class CarRacingViewController {
 
-    private final CarRacingContract.View resultView;
+    private final ResultView resultView;
     private final CarRacingManager carRacingManager;
 
-    public CarRacingViewController(CarRacingContract.View resultView, CarRacingManager carRacingManager) {
+    public CarRacingViewController(ResultView resultView, CarRacingManager carRacingManager) {
         this.resultView = resultView;
         this.carRacingManager = carRacingManager;
     }
