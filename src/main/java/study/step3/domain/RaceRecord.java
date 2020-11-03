@@ -9,7 +9,8 @@ public class RaceRecord {
     private final Map<String, List<Boolean>> records = new TreeMap<>();
 
     public void saveRecord(Car car) {
-        saveRecord(car.getName(), car.isMoved());
+        records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
+                .add(car.isMoved());
     }
 
     public int getTotalTry() {

@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
+import study.step3.domain.Car;
 import study.step3.domain.RaceRecord;
 
 import java.util.*;
@@ -119,8 +120,27 @@ public class ResultViewTest {
 
     private void addRecord(String name, Boolean[] moves) {
         for (Boolean move : moves) {
-            raceRecord.saveRecord(name, move);
+            raceRecord.saveRecord(makeCar(name, move));
         }
+    }
+
+    private Car makeCar(String name, Boolean move) {
+        return new Car() {
+            @Override
+            public boolean isMoved() {
+                return move;
+            }
+
+            @Override
+            public void move() {
+
+            }
+
+            @Override
+            public String getName() {
+                return name;
+            }
+        };
     }
 
     static class OneCarRacingRecordArgumentProvider implements ArgumentsProvider {
