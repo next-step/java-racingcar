@@ -56,6 +56,6 @@ public class OutputController {
     }
 
     private static List<Car> getCars(Cars cars) {
-        return cars.getCarsStatus();
+        return cars.getCarList();
     }
 }

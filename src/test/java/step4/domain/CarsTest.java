@@ -24,7 +24,7 @@ class CarsTest {
         MoveStrategy moveStrategy = new MustMoveStrategy();
         //when
         cars.moveCars(moveStrategy);
-        List<Integer> carsPositions = cars.getCarsStatus().stream()
+        List<Integer> carsPositions = cars.getCarList().stream()
                 .map(Car::getCarPosition)
                 .collect(Collectors.toList());
         //then

@@ -5,8 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step4.exception.OutBoundCarListSizeException;
+import step4.exception.ValidateLengthOfCarName;
+
+import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -62,5 +68,12 @@ class CarTest {
         assertThat(car.getCarPosition()).isEqualTo(moveCount);
     }
 
+
+    @Test
+    @DisplayName("자동차 이름이 5글자 초과 일경우 익셉션 발생")
+    void validCarCount() {
+        //then
+        assertThatThrownBy(() -> new Car("abcdef")).isInstanceOf(ValidateLengthOfCarName.class);
+    }
 
 }

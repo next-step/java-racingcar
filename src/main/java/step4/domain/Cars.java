@@ -19,7 +19,7 @@ public class Cars {
         cars.forEach(car -> car.move(moveStrategy));
     }
 
-    public List<Car> getCarsStatus() {
+    public List<Car> getCarList() {
         return cars;
     }
 

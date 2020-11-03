@@ -43,14 +43,14 @@ public class RacingGame {
         cars.moveCars(getGameMoveStrategy());
         return cars;
     }
+    public Cars getGameEndResult() {
+        return cars;
+    }
 
     private MoveStrategy getGameMoveStrategy() {
         return racingGameConditionMoveStrategyDTO.getMoveStrategy();
     }
 
-    public Cars getGameEndResult() {
-        return cars;
-    }
 
     private void validTryCount(int tryCount) {
         if (tryCount < MIN_TRY_COUNT) {
