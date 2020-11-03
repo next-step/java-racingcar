@@ -1,21 +1,26 @@
 package step3;
 
-import step3.strategy.RandomStrategy;
+import step3.strategy.MoveStrategy;
 
 public class RacingGame {
 
-    private final RacingCarManager racingCarManager;
+    private MoveStrategy moveStrategy;
+    private RacingCarList racingCarList;
 
-    public RacingGame(int carCount) {
-        this.racingCarManager = new RacingCarManager(carCount, new RandomStrategy());
+    public RacingGame(int carCount, MoveStrategy moveStrategy) {
+        if (moveStrategy == null) {
+            throw new NullPointerException(ErrorMessage.MOVE_STRATEGY_IS_NULL);
+        }
+        this.moveStrategy = moveStrategy;
+        this.racingCarList = new RacingCarList(carCount);
     }
 
     public void playStep() {
-        racingCarManager.moveCars();
+        racingCarList.moveCars(moveStrategy);
     }
 
     public RacingCarList getRacingCarList() {
-        return racingCarManager.getRacingCarList();
+        return racingCarList;
     }
 
 }
