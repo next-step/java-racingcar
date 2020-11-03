@@ -1,6 +1,7 @@
 package step3.view;
 
 import step3.model.GameRound;
+import step3.model.RaceGame;
 import step3.model.RandomCommander;
 import step3.present.Presenter;
 
@@ -19,7 +20,9 @@ public class ClientView {
 
         GameRound gameRound = new GameRound(participantCar, round);
         Presenter presenter = new Presenter(new RenderingView(), new RandomCommander());
-        presenter.gameStart(gameRound);
+
+        RaceGame game = presenter.createGame(gameRound);
+        presenter.gameStart(game);
 
     }
 
