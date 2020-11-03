@@ -1,16 +1,21 @@
 package StringInputCalcualtor;
 
 import lombok.AllArgsConstructor;
-import utils.StandardIoUtils;
+
+import java.util.Scanner;
 
 @AllArgsConstructor
 public class ArgumentCollector {
     private String[] args;
 
     public String collect() {
-        if (args.length > 0) {
-            return String.join(" ", args);
+        try (Scanner in = new Scanner(System.in)) {
+            if (args.length > 0) {
+                return String.join(" ", args);
+            } else {
+                System.out.println("문자열 수식을 입력 하세요");
+                return in.nextLine();
+            }
         }
-        return StandardIoUtils.input("문자열 수식을 입력 하세요");
     }
 }

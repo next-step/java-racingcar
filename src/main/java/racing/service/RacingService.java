@@ -8,7 +8,8 @@ import java.util.Map;
 public class RacingService {
     private static final Map<Integer, GrandPrix> grandPrixMap = new HashMap<>();
 
-    public GrandPrix createGrandPrix(GrandPrix grandPrix) {
+    public GrandPrix createGrandPrix(int maxMachines, int maxRounds) {
+        GrandPrix grandPrix = new GrandPrix(maxMachines, maxRounds);
         grandPrix.setId(grandPrixMap.size());
         grandPrixMap.put(grandPrix.getId(), grandPrix);
         return grandPrix;
