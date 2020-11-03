@@ -15,7 +15,6 @@ public class CarTest {
         car = new Car();
     }
 
-
     @ParameterizedTest
     @ValueSource(ints = {4,5,6,7,8,9})
     void moveTest(int randomNumber){
