@@ -1,23 +1,31 @@
-package step3.car;
+package racingcar.car;
 
-import step3.strategy.MoveStrategy;
-import step3.strategy.PrintMarkStrategy;
+import racingcar.strategy.MoveStrategy;
 
 import java.util.Random;
 
 public class RacingCar implements Car {
     private int progress;
+    private final String name;
     private final MoveStrategy moveStrategy;
     private static final Random random = new Random();
 
-    public RacingCar() {
-        moveStrategy = MoveStrategy.defaultStrategy(random);
-        progress = 0;
+    public RacingCar(MoveStrategy strategy) {
+        this(strategy, null);
     }
 
-    public RacingCar(MoveStrategy moveStrategy) {
+    public RacingCar(String name) {
+        this(MoveStrategy.defaultStrategy(random), name);
+    }
+
+    public RacingCar(MoveStrategy moveStrategy, String name) {
+        this.name = name;
         progress = 0;
         this.moveStrategy = moveStrategy;
+    }
+
+    public String getName() {
+        return name;
     }
 
 

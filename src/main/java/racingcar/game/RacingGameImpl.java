@@ -1,9 +1,10 @@
-package step3.game;
+package racingcar.game;
 
-import step3.Constant;
-import step3.strategy.MoveStrategy;
-import step3.car.RacingCar;
+import racingcar.Constant;
+import racingcar.car.RacingCar;
+import racingcar.strategy.MoveStrategy;
 
+import java.util.List;
 import java.util.Objects;
 
 public class RacingGameImpl extends RacingGame {
@@ -17,20 +18,26 @@ public class RacingGameImpl extends RacingGame {
     }
 
     @Override
+    public void addCarList(List<String> carNames, MoveStrategy moveStrategy) {
+        carNames.forEach(carName -> addCar(new RacingCar(moveStrategy, carName)));
+    }
+
+    @Override
     public void execute(RacingInfomation infomation, MoveStrategy moveStrategy) {
         isValidInformation(infomation);
 
-        int number = infomation.getNumberOfCar();
+        List<String> carNames = infomation.getCarNames();
         int playCount = infomation.getPlayCount();
-        addCarList(number, moveStrategy);
+        addCarList(carNames, moveStrategy);
 
         for (int i = 0; i < playCount; i++) {
-            notifyCars(i+1);
+            notifyCars(i + 1);
         }
     }
 
+
     private void isValidInformation(RacingInfomation infomation) {
-        if (Objects.isNull(infomation)||(infomation.getNumberOfCar() <= 0 && infomation.getPlayCount() <= 0)) {
+        if (Objects.isNull(infomation) || (infomation.getPlayCount() <= 0)) {
             throw new IllegalArgumentException(Constant.EMPTY_NULL_ERROR);
         }
     }
