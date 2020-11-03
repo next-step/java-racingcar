@@ -13,7 +13,8 @@ public class Main {
         ResultController resultController = new ResultController();
         IntStream.range(0, spec.getMoveCount()).forEach(i -> {
             racingGame.playStep();
-            resultController.printRacingLog(racingGame.getStepResult());
+            RacingCarList racingCarList = racingGame.getRacingCarList();
+            resultController.printRacingLog(racingCarList.getRacingStatus());
         });
     }
 }

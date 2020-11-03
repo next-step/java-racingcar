@@ -2,23 +2,20 @@ package step3;
 
 import step3.strategy.RandomStrategy;
 
-import java.util.List;
-
 public class RacingGame {
 
     private final RacingCarManager racingCarManager;
 
     public RacingGame(int carCount) {
-        this.racingCarManager = new RacingCarManager(new RandomStrategy());
-        this.racingCarManager.joinCars(carCount);
+        this.racingCarManager = new RacingCarManager(carCount, new RandomStrategy());
     }
 
     public void playStep() {
         racingCarManager.moveCars();
     }
 
-    public List<Integer> getStepResult() {
-        return racingCarManager.getRacingStatus();
+    public RacingCarList getRacingCarList() {
+        return racingCarManager.getRacingCarList();
     }
 
 }
