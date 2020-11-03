@@ -16,8 +16,8 @@ public class RaceRecordTest {
     private RaceRecord raceRecord;
     // TODO 레코드 상태 존재 v
     // TODO 이동 기록 저장 v
-    // TODO 가장 많이 이동한 기록 반환
-    // TODO 기록횟수 반환
+    // TODO 가장 많이 이동한 기록 반환 v
+    // TODO 기록횟수 반환 v
     // TODO 이름으로 정렬된 기록 반환 v
 
     @BeforeEach
@@ -28,7 +28,7 @@ public class RaceRecordTest {
     @Test
     @DisplayName("RaceRecord는 생성후 이동거리는 0이다.")
     void initState() {
-        assertThat(raceRecord.getTotalMoves()).isEqualTo(0);
+        assertThat(raceRecord.getTotalTry()).isEqualTo(0);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class RaceRecordTest {
                 new TestingCar("white", 2),  //
                 new TestingCar("gray", 3));
 
-        assertThat(raceRecord.getTotalMoves()).isEqualTo(10);
+        assertThat(raceRecord.getTotalTry()).isEqualTo(10);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class RaceRecordTest {
         secondCar.move();
         raceRecord.saveRecord(secondCar);
 
-        assertThatThrownBy(() -> raceRecord.getTotalMoves()) //
+        assertThatThrownBy(() -> raceRecord.getTotalTry()) //
                 .isInstanceOf(IllegalStateException.class) //
                 .hasMessage("모든 자동차의 이동시도횟수 기록은 동일해야 합니다.");
     }
@@ -114,14 +114,29 @@ public class RaceRecordTest {
             return values.stream().mapToInt(moved -> moved ? 1 : 0).sum();
         }
 
-        public int getTotalMoves() {
+        public int getTotalTry() {
             if (records.isEmpty()) {
                 return 0;
             }
-            return records.values() //
-                    .iterator() //
-                    .next() //
-                    .size();
+
+            int totalTry = records.values().iterator().next().size();
+
+            checkAllRecord(totalTry);
+
+            return totalTry;
+        }
+
+        private void checkAllRecord(int expectedTry) {
+            records.values() //
+                    .stream() //
+                    .map(List::size) //
+                    .forEach(tries -> throwIfNotEqual(expectedTry, tries));
+        }
+
+        private void throwIfNotEqual(int expectedTry, int tries) {
+            if (expectedTry != tries) {
+                throw new IllegalStateException("모든 자동차의 이동시도횟수 기록은 동일해야 합니다.");
+            }
         }
     }
 
