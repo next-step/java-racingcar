@@ -25,12 +25,11 @@ public class Race {
     public void operate(ResultView view) {
         view.print(cars.stream());
 
-        Stream.iterate(1, a -> a + 1)
-                .limit(numberOfMoves)
-                .forEach(moveCount -> {
-                    cars.move();
-                    view.print(cars.stream());
-                });
+        for (int i = 0; i < numberOfMoves; i++) {
+            cars.move();
+            view.print(cars.stream());
+        }
+
     }
 
 }
