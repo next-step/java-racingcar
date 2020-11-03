@@ -1,17 +1,21 @@
 package step2;
 
 import java.util.*;
+
 import java.util.function.IntFunction;
 import java.util.stream.IntStream;
+
 
 public class StringCalculator {
     private static final String DELIMETER = " ";
     private static final String OPERATOR_PATTERN = "[+\\-*/]";
     private static final String NUMBER_PATTERN = "(^\\d*)$";
+
     private static final IntFunction<Boolean> isEven = (i)-> i % 2 == 0;
     private static final IntFunction<Boolean> isOdd = (i)-> i % 2 == 1;
     private final List<Integer> numbers = new ArrayList<>();
     private final Queue<String> operators = new LinkedList<>();
+
 
     public void filteringNumber(String[] strings){
         numbers.clear();
@@ -30,6 +34,7 @@ public class StringCalculator {
                 operators.add(strings[index]);
             }
         });
+
     }
 
     /**
@@ -39,10 +44,12 @@ public class StringCalculator {
     protected Integer calculate(String input) {
         isEmpty(input);
         String[] strings = input.split(DELIMETER);
+
         filteringNumber(strings);
         filteringOperator(strings);
         Optional<Integer> reduce = numbers.stream()
                 .reduce((prev, after) -> Operator.execute(new ComputationalInformation(prev, after, operators.poll())));
+
 
         return reduce.orElseThrow(IllegalArgumentException::new);
     }
