@@ -5,9 +5,9 @@
 * [ ] 전체 게임을 컨트롤 하는 역할을 하는 RacingGame 객체
 * [ ] 자동차를 표현하는 Car, Cars 객체
 * [X] 자동차가 움직일 거리를 계산하는 ScoreGenerator 객체
-* [ ] Input을 받아 처리하는 InputView 객체
+* [X] Input을 받아 처리하는 InputView 객체
 * [X] 게임 초기 정보를 표현하는 객체 
-* [ ] 게임 결과를 표현하는 ResultView 객체
+* [X] 게임 결과를 표현하는 ResultView 객체
 * [ ] 파일 포메팅
 
 ## 진행 방법
