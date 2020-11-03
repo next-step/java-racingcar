@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class GameRound {
     private int round;
 
@@ -9,6 +12,12 @@ public class GameRound {
 
     public void endRound() {
         round--;
+    }
+
+    public Record getRecord(List<Car> cars) {
+        return new Record(cars.stream()
+                .map(car -> car.getPosition())
+                .collect(Collectors.toList()));
     }
 
     public boolean isGameEnd() {

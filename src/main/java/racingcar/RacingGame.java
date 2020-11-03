@@ -13,14 +13,9 @@ public class RacingGame {
         int carNum = inputView.getCarNum();
         int gameRoundNum = inputView.getGameRoundNum();
 
-        GameManager gameManager = new GameManager();
-        List<Car> cars = gameManager.readyCars(carNum, new RuleStrategyImpl());
-        GameRound gameRound = new GameRound(gameRoundNum);
+        GameManager gameManager = new GameManager(new RuleStrategyImpl());
+        List<Record> records = gameManager.play(carNum, gameRoundNum);
 
-        while (!gameRound.isGameEnd()) {
-            gameManager.playOneRound(cars);
-            outputView.showResult(cars);
-            gameRound.endRound();
-        }
+        outputView.showResult(records);
     }
 }
