@@ -1,8 +1,5 @@
 package study.step3;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 class CarRacing {
@@ -44,7 +41,7 @@ class CarRacing {
     }
 
 
-    public Map<String, List<Boolean>> getRecords() {
-        return Collections.emptyMap();
+    public RaceRecord getRecords() {
+        return raceRecord;
     }
 }

@@ -8,12 +8,8 @@ class ResultView {
     private RaceRecord raceRecord;
     private final Set<String> winners;
 
-    public ResultView(Map<String, List<Boolean>> records, Set<String> winners) {
-        this.winners = winners;
-    }
-
     public ResultView(RaceRecord raceRecord, Set<String> winners) {
-        this(Collections.emptyMap(), winners);
+        this.winners = winners;
         this.raceRecord = raceRecord;
     }
 
