@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiConsumer;
 
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -77,18 +78,18 @@ public class RaceRecordTest {
     @ParameterizedTest
     @DisplayName("RaceRecord는 주어진 휫수만큼 이동기록을 제공하는 함수를 실행할 수 있다")
     @ValueSource(ints = {1, 2, 3})
-    void takeRecordUntil(int recordCount) {
+    void takeRecordUntil(int tris) {
         saveRecords(5, new TestingCar("blue", 2), //
                 new TestingCar("red", 3),  //
                 new TestingCar("white", 2),  //
                 new TestingCar("gray", 3));
 
         AtomicInteger assertions = new AtomicInteger();
-        raceRecord.takeRecordUntil(recordCount, (name, record) -> {
-            assertThat(record.size()).isEqualTo(recordCount);
+        raceRecord.forEachRecordUntil(tris, (name, record) -> {
+            assertThat(record.size()).isEqualTo(tris);
             assertions.incrementAndGet();
         });
-        assertThat(assertions.get()).isEqualTo(recordCount);
+        assertThat(assertions.get()).isEqualTo(4); // consumer 가 자동차수만큼 실행되었는지 검증
     }
 
     private void saveRecords(int totalMoves, Car... cars) {
@@ -144,6 +145,10 @@ public class RaceRecordTest {
             checkAllRecord(totalTry);
 
             return totalTry;
+        }
+
+        public void forEachRecordUntil(int tries, BiConsumer<String, List<Boolean>> biConsumer) {
+            records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries)));
         }
 
         private void checkAllRecord(int expectedTry) {
