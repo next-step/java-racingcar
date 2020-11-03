@@ -2,12 +2,9 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import step3.strategy.RandomStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RandomStrategyTest {
@@ -23,7 +20,5 @@ class RandomStrategyTest {
                         assertThat(randomStrategy.generate()).isGreaterThanOrEqualTo(0)
         );
     }
-
-
 
 }
