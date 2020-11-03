@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceRecordTest {
-    // TODO 레코드 상태 존재
+    // TODO 레코드 상태 존재 v
     // TODO 이동 기록 저장
     // TODO 가장 많이 이동한 기록 반환
     // TODO 기록횟수 반환
@@ -17,5 +17,11 @@ public class RaceRecordTest {
     void initState() {
         RaceRecord raceRecord = new RaceRecord();
         assertThat(raceRecord.isEmpty()).isTrue();
+    }
+
+    private static class RaceRecord {
+        public boolean isEmpty() {
+            return true;
+        }
     }
 }
