@@ -5,8 +5,13 @@ import utils.RandomUtils;
 
 @Getter
 public class RaceMachine {
-    private Integer horsePower;
-    private Integer lap = 0;
+    private final int id;
+    private int horsePower = 0;
+    private int lap = 0;
+
+    public RaceMachine(int id) {
+        this.id = id;
+    }
 
     public void accelerate() {
         horsePower = RandomUtils.nextInt(10);
