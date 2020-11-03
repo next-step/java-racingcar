@@ -12,11 +12,11 @@ public class StringCalculator {
 
         setFirstOperand(inputs[0]);
         for (int i = 1; i < inputs.length; i = i + 2) {
-            if (!isEven(i)) {
+            if (!Utils.isEven(i)) {
                 setOperator(inputs[i]);
             }
 
-            if (isEven(i + 1)) {
+            if (Utils.isEven(i + 1)) {
                 setSecondOperand(inputs[i + 1]);
             }
 
@@ -40,18 +40,10 @@ public class StringCalculator {
     }
 
     private void parseInputs(String input) throws IllegalArgumentException{
-        if (this.isNullOrEmptyString(input)) {
+        if (Utils.isNullOrEmptyString(input)) {
             throw new IllegalArgumentException();
         }
         inputs = input.split(" ");
-    }
-
-    private boolean isNullOrEmptyString(String input) {
-        return input == null || input.trim().isEmpty();
-    }
-
-    private boolean isEven(int number) {
-        return (number % 2) == 0;
     }
 }
 
