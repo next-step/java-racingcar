@@ -10,7 +10,7 @@ public class RaceMacineTest {
         RaceMachine ferrari = new RaceMachine(1);
         do {
             ferrari.accelerate();
-        } while (ferrari.getLap() < 1);
+        } while (ferrari.getLap() < 2);
         assertThat(ferrari.getHorsePower()).isGreaterThanOrEqualTo(4);
     }
 }

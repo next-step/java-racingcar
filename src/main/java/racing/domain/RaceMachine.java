@@ -7,7 +7,7 @@ import utils.RandomUtils;
 public class RaceMachine {
     private final int id;
     private int horsePower = 0;
-    private int lap = 0;
+    private int lap = 1;
 
     public RaceMachine(int id) {
         this.id = id;
