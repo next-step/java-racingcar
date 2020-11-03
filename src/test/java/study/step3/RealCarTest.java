@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RealCarTest {
     @Test
@@ -19,5 +20,13 @@ class RealCarTest {
             results.add(realCar.isMoved());
         }
         assertThat(results).contains(true, false);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자가 넘으면 오류메시지를 출력한다.")
+    public void whenCarNameOverFiveChar() {
+        assertThatThrownBy(() -> new RealCar("yellow")) //
+                .isInstanceOf(IllegalArgumentException.class) //
+                .hasMessage("이름은 5자를 넘을 수 없습니다.");
     }
 }
