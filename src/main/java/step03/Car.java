@@ -14,8 +14,8 @@ public class Car {
     }
 
     public static Car of() {
-        final int defaultCarKind = 1;
-        return new Car(defaultCarKind);
+        final int defaultPosition = 1;
+        return new Car(defaultPosition);
     }
 
     public void move (MoveStrategy moveStrategy) {
