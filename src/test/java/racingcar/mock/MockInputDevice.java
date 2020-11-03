@@ -1,6 +1,6 @@
 package racingcar.mock;
 
-import racingcar.inputview.InputDevice;
+import racingcar.view.inputview.InputDevice;
 
 public class MockInputDevice implements InputDevice {
     private final String string;

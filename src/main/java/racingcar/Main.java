@@ -1,9 +1,10 @@
 package racingcar;
 
-import racingcar.inputview.ConsoleInputDevice;
-import racingcar.inputview.ConsoleInputView;
-import racingcar.inputview.InputHandler;
-import racingcar.resultview.ConsoleResultView;
+import racingcar.controller.RacingCarGame;
+import racingcar.view.inputview.ConsoleInputDevice;
+import racingcar.view.inputview.ConsoleInputView;
+import racingcar.view.inputview.InputHandler;
+import racingcar.view.resultview.ConsoleResultView;
 
 public class Main {
     public static void main(String[] args) {

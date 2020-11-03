@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
 import racingcar.domain.RacingCar;
 import racingcar.dto.Input;
-import racingcar.inputview.InputHandler;
-import racingcar.resultview.ResultView;
+import racingcar.view.inputview.InputHandler;
+import racingcar.view.resultview.ResultView;
 
 import java.util.Collections;
 import java.util.List;
