@@ -4,6 +4,7 @@ import step03.strategy.MoveStrategy;
 
 public class Car {
     private int position;
+    static final int defaultPosition = 1;
 
     private Car(int position) {
         this.position = position;
@@ -14,7 +15,6 @@ public class Car {
     }
 
     public static Car of() {
-        final int defaultPosition = 1;
         return new Car(defaultPosition);
     }
 
