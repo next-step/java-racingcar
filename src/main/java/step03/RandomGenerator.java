@@ -8,4 +8,5 @@ public class RandomGenerator {
     public static int generateZeroToPositiveInt(int to) {
         return random.nextInt(to + 1);
     }
+
 }
