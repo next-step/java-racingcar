@@ -10,12 +10,12 @@ public class InputView {
     private static final String HOW_MUCH_ATTEMPT_QUESTION = "시도할 회수는 몇 회 인가요?";
 
     public SimulationCondition receiveSimulationCondition() {
-        final int numberOfCar = QuestionAndAnswer(HOW_MANY_CAR_QUESTION);
-        final int numberOfAttempts = QuestionAndAnswer(HOW_MUCH_ATTEMPT_QUESTION);
+        final int numberOfCar = questionAndAnswer(HOW_MANY_CAR_QUESTION);
+        final int numberOfAttempts = questionAndAnswer(HOW_MUCH_ATTEMPT_QUESTION);
         return new SimulationCondition(numberOfCar, numberOfAttempts);
     }
 
-    private int QuestionAndAnswer(final String question) {
+    private int questionAndAnswer(final String question) {
         printQuestion(question);
         return receiveAnswer();
     }
