@@ -15,9 +15,18 @@ public class Input {
     }
 
     public List<RacingCar> toRacingCars() {
-        return namesOfCars.stream()
+        List<RacingCar> racingCars = namesOfCars.stream()
                 .map(RacingCar::new)
                 .collect(Collectors.toList());
+
+        validateRacingCars(racingCars);
+        return racingCars;
+    }
+
+    private void validateRacingCars(List<RacingCar> racingCars) {
+        if (racingCars.isEmpty()) {
+            throw new IllegalStateException("There is no car name entered correctly.");
+        }
     }
 
     public static Builder builder() {
