@@ -9,6 +9,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static study.step3.CarRacingTest.TestingCar;
 
 public class RaceRecordTest {
@@ -50,6 +51,24 @@ public class RaceRecordTest {
                 new TestingCar("gray", 3));
 
         assertThat(raceRecord.getTotalMoves()).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("RaceRecord는 모든 자동차의 이동시도 횟수는 동일해야 한다")
+    void checkState() {
+        TestingCar firstCar = new TestingCar("red", 1);
+        firstCar.move();
+        raceRecord.saveRecord(firstCar);
+
+        TestingCar secondCar = new TestingCar("blue", 2);
+        secondCar.move();
+        raceRecord.saveRecord(secondCar);
+        secondCar.move();
+        raceRecord.saveRecord(secondCar);
+
+        assertThatThrownBy(() -> raceRecord.getTotalMoves()) //
+                .isInstanceOf(IllegalStateException.class) //
+                .hasMessage("모든 자동차의 이동시도횟수 기록은 동일해야 합니다.");
     }
 
     private void saveRecords(int totalMoves, Car... cars) {
