@@ -13,7 +13,7 @@ public class RacingCarManager {
             throw new NullPointerException(ErrorMessage.MOVE_STRATEGY_IS_NULL);
         }
         this.moveStrategy = moveStrategy;
-        racingCarList = new RacingCarList(carCount);
+        this.racingCarList = new RacingCarList(carCount);
     }
 
     public void moveCars() {
