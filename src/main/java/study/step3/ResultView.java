@@ -5,12 +5,10 @@ import java.util.*;
 import static java.util.stream.Collectors.joining;
 
 class ResultView {
-    private final Map<String, List<Boolean>> records;
     private RaceRecord raceRecord;
     private final Set<String> winners;
 
     public ResultView(Map<String, List<Boolean>> records, Set<String> winners) {
-        this.records = records;
         this.winners = winners;
     }
 
