@@ -17,14 +17,6 @@ public enum OperationType {
         this.expression = expression;
     }
 
-    public String getSign() {
-        return sign;
-    }
-
-    public BiFunction getExpression() {
-        return expression;
-    }
-
     public static OperationType findByOperator(String operator) {
         return Arrays.stream(OperationType.values())
                 .filter(v -> operator.equals(v.sign))
