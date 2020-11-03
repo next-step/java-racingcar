@@ -1,4 +1,4 @@
-package racinggame.model;
+package racinggame.domain.model;
 
 import static racinggame.message.MessageConstant.NO_FOUND_WINNER;
 import static racinggame.message.MessageConstant.WINNER_CAR_DELIMITER;

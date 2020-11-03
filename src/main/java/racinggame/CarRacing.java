@@ -3,9 +3,9 @@ package racinggame;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import racinggame.model.MovingResult;
-import racinggame.model.RacingCars;
-import racinggame.model.RacingResult;
+import racinggame.domain.model.MovingResult;
+import racinggame.domain.model.RacingCars;
+import racinggame.domain.model.RacingResult;
 import racinggame.vo.RacingInfo;
 
 public class CarRacing {

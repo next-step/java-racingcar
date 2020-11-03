@@ -1,10 +1,10 @@
-package racinggame.model;
+package racinggame.domain;
 
 import static racinggame.message.MessageConstant.CAR_NAME_LENGTH_IS_UNDER_FIVE;
 
 import java.util.Objects;
-import racinggame.rule.MoveRule;
-import racinggame.rule.RandomMoveRule;
+import racinggame.domain.rule.MoveRule;
+import racinggame.domain.rule.RandomMoveRule;
 import racinggame.vo.CarSateInRace;
 
 public class Car {

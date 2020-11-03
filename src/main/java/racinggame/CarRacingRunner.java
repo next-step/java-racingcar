@@ -1,8 +1,8 @@
 package racinggame;
 
-import racinggame.model.RacingResult;
-import racinggame.ui.InputView;
-import racinggame.ui.ResultView;
+import racinggame.domain.model.RacingResult;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 import racinggame.vo.RacingInfo;
 
 public class CarRacingRunner {

@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.view;
 
 import static racinggame.message.MessageConstant.ENTER_THE_NAME_OF_THE_CAR;
 import static racinggame.message.MessageConstant.HOW_MANY_ATTEMPT;
