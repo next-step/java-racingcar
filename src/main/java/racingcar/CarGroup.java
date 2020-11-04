@@ -14,7 +14,7 @@ public class CarGroup {
     private Car[] carArr;
 
     public CarGroup(String nameCsv, MoveStrategy strategy) {
-        String[] nameArr = nameCsv.split(RegexConst.NAME_SPLIT);
+        String[] nameArr = nameCsv.split(CarGroupConst.NAME_SPLIT_REGEX);
         int carNum = nameArr.length;
         Car[] carArr = new Car[carNum];
         for (int i = 0; i < carNum; i++) {

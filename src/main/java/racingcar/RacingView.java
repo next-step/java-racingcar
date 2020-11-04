@@ -11,7 +11,7 @@ public class RacingView {
     }
 
     public void printResultMsg() {
-        System.out.println(MsgConst.EXECUTION_RESULT);
+        System.out.println(RacingViewConst.EXECUTION_RESULT_MSG);
     }
 
     // NOTE: Car 보다 작은 단위로 convert 하지 않도록 한다.
@@ -20,9 +20,9 @@ public class RacingView {
         String name = car.getName();
         StringBuilder sb = new StringBuilder();
         sb.append(name);
-        sb.append(ViewConst.SEPARATOR);
+        sb.append(RacingViewConst.SEPARATOR);
         for (int j = 0; j < position; j++) {
-            sb.append(ViewConst.PLAYER_TOKEN);
+            sb.append(RacingViewConst.PLAYER_TOKEN);
         }
         return sb.toString();
     }
@@ -40,7 +40,7 @@ public class RacingView {
                 .stream()
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
-        return String.join(ViewConst.WINNER_DELIMITER, winners) + MsgConst.WINNER;
+        return String.join(RacingViewConst.WINNER_DELIMITER, winners) + RacingViewConst.WINNER_MSG;
     }
 
     public void printWinners() {

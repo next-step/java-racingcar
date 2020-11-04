@@ -20,7 +20,7 @@ class CarGroupTest {
     @DisplayName("입력받은 자동차 대수와 getCarNum 값이 같아야 한다.")
     @ValueSource(strings = {"1", "2,2", "3,3,3", "4,4,4,4", "5,5,5,5,5", "6,6,6,6,6,6", "7,7,7,7,7,7,7"})
     void getCarNum(String carCsv) {
-        int carNum = carCsv.split(RegexConst.NAME_SPLIT).length;
+        int carNum = carCsv.split(CarGroupConst.NAME_SPLIT_REGEX).length;
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
         CarGroup carGroup = new CarGroup(carCsv, strategy);
         assertThat(carGroup.getCarNum())

@@ -15,12 +15,12 @@ public class InputView {
     }
 
     public String askCars() {
-        System.out.println(MsgConst.ASK_CARS);
+        System.out.println(InputViewConst.ASK_CARS);
         return this.scanner.nextLine();
     }
 
     public int askTryNum() {
-        System.out.println(MsgConst.ASK_HOW_MANY_TRIES);
+        System.out.println(InputViewConst.ASK_HOW_MANY_TRIES);
         return this.scanner.nextInt();
     }
 

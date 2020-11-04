@@ -13,8 +13,8 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean checkMovable() {
-        int bound = NumConst.RANDOM_MAX;
-        int biggerThan = NumConst.RANDOM_BIGGER_THAN;
+        int bound = RandomMoveStrategyConst.RANDOM_MAX;
+        int biggerThan = RandomMoveStrategyConst.RANDOM_BIGGER_THAN;
         int randomNum = this.random.nextInt(bound);
         return randomNum >= biggerThan;
     }
