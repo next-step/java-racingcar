@@ -9,24 +9,10 @@ public class StringCalculator {
     public static String getCalculationResult(String toCalculateValue){
         isEmptyInput(toCalculateValue);
 
-        String[] input = toCalculateValue.split(CALCULATOR_DELIMITER);
-
         List<Integer> operand = new ArrayList<Integer>();
         List<String> operator = new ArrayList<String>();
 
-
-        int inputLength = input.length;
-
-        for(int i=0; i<inputLength; i++){
-            if(i%2 == 0){
-                isNumericString(input[i]);
-                operand.add(Integer.parseInt(input[i]));
-            }else{
-                isCorrectOperator(input[i]);
-                operator.add(input[i]);
-
-            }
-        }
+        splitCalculateValue(toCalculateValue, operand, operator);
 
         int calculationResult = 0;
         int operandSize = operand.size();
@@ -54,6 +40,22 @@ public class StringCalculator {
         }
         
         return String.valueOf(calculationResult);
+    }
+
+    private static void splitCalculateValue(String toCalculateValue, List<Integer> operand, List<String> operator) {
+        String[] input = toCalculateValue.split(CALCULATOR_DELIMITER);
+        int inputLength = input.length;
+
+        for(int i=0; i<inputLength; i++){
+            if(i%2 == 0){
+                isNumericString(input[i]);
+                operand.add(Integer.parseInt(input[i]));
+            }else{
+                isCorrectOperator(input[i]);
+                operator.add(input[i]);
+
+            }
+        }
     }
 
     private static void isCorrectOperator(String input) {
