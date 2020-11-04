@@ -35,12 +35,12 @@ public class ResultView {
         return String.join("", Collections.nCopies(repeatCount, SYMBOL));
     }
 
-    public void showWinner(List<RecordDto> winnerRecord) {
-        output.print(format("%s가 최종 우승했습니다.", getWinnerNames(winnerRecord)));
+    public void showWinner(List<RecordDto> winnerRecords) {
+        output.print(format("%s가 최종 우승했습니다.", getWinnerNames(winnerRecords)));
     }
 
-    private String getWinnerNames(List<RecordDto> winnerRecord) {
-        return winnerRecord.stream()
+    private String getWinnerNames(List<RecordDto> winnerRecords) {
+        return winnerRecords.stream()
                 .map(RecordDto::getName)
                 .collect(Collectors.joining(", "));
     }
