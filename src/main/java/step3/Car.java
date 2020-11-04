@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.Random;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -16,8 +17,10 @@ public class Car {
 
   @Override
   public String toString() {
-    return IntStream.range(0, move)
-            .mapToObj(i -> "-")
-            .collect(Collectors.joining("", "-", ""));
+    StringBuffer buffer = new StringBuffer();
+    for (int i = 0; i < move; i++) {
+      buffer.append("-");
+    }
+    return buffer.toString();
   }
 }
