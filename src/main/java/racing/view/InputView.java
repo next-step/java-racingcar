@@ -2,8 +2,6 @@ package racing.view;
 
 import java.util.Scanner;
 
-import racing.InputValidator;
-
 public class InputView {
 
     private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";

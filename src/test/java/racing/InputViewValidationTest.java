@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static racing.InputValidator.isMatch;
-import static racing.InputValidator.isNull;
+import static racing.view.InputValidator.isMatch;
+import static racing.view.InputValidator.isNull;
 
 public class InputViewValidationTest {
 
