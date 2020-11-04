@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static study.step3.domain.CarRacingTest.TestingCar;
 
 public class RaceRecordTest {
     private RaceRecord raceRecord;
@@ -53,13 +52,12 @@ public class RaceRecordTest {
     @Test
     @DisplayName("RaceRecord는 모든 자동차의 이동시도 횟수는 동일해야 한다")
     void checkState() {
-        TestingCar firstCar = new TestingCar("red", 1);
+        RealCarTest.TestingCar firstCar = new RealCarTest.TestingCar("red");
         firstCar.move();
         raceRecord.saveRecord(firstCar);
 
-        TestingCar secondCar = new TestingCar("blue", 2);
+        RealCarTest.TestingCar secondCar = new RealCarTest.TestingCar("blue");
         secondCar.move();
-        raceRecord.saveRecord(secondCar);
         secondCar.move();
         raceRecord.saveRecord(secondCar);
 
