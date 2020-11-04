@@ -2,6 +2,9 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.exception.InvalidCarCountException;
@@ -10,27 +13,40 @@ import racingcar.dto.RecordDto;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("자동차 일급 컬렉션 테스트")
 public class CarsTest {
 
     @DisplayName("자동차 이동 기록")
-    @Test
-    public void getRecords() {
-        Car car1 = mock(Car.class);
-        Car car2 = mock(Car.class);
-        when(car1.getRecord()).thenReturn(new RecordDto("car1", 2));
-        when(car2.getRecord()).thenReturn(new RecordDto("car2", 3));
-        Cars cars = Cars.of(Arrays.asList(car1, car2));
-
+    @ParameterizedTest
+    @MethodSource("getMovedCars")
+    public void getRecords(Cars cars, RecordDto[] expectedRecords) {
         List<RecordDto> records = cars.getRecords();
 
-        assertThat(records).contains(new RecordDto("car1", 2), new RecordDto("car2", 3));
+        assertThat(records).contains(expectedRecords);
+    }
+
+    static Stream<Arguments> getMovedCars() {
+        return Stream.of(
+                arguments(Cars.of(
+                        Arrays.asList(
+                                getMovedCar("car1", 2),
+                                getMovedCar("car2", 3))),
+                        new RecordDto[]{new RecordDto("car1", 2),
+                                new RecordDto("car2", 3)})
+        );
+    }
+
+    static Car getMovedCar(String name, int expectedPosition) {
+        Car car = Car.ofName(name);
+        IntStream.range(0, expectedPosition).forEach(i -> car.move());
+        return car;
     }
 
     @DisplayName("자동차가 하나도 없을 때")
@@ -39,30 +55,27 @@ public class CarsTest {
         assertThatThrownBy(() -> {
             Cars.of(new ArrayList<>());
         }).isInstanceOf(InvalidCarCountException.class)
-                .hasMessageContaining("invalid car count");
+                .hasMessageContaining("잘못된 자동차 갯수입니다.");
     }
 
     @DisplayName("자동차 우승자 기록")
-    @Test
-    public void getWinnerRecords() {
-        Car winner1 = mock(Car.class);
-        Car winner2 = mock(Car.class);
-        Car loser = mock(Car.class);
-        when(winner1.getPosition()).thenReturn(2);
-        when(winner2.getPosition()).thenReturn(2);
-        when(loser.getPosition()).thenReturn(0);
-        when(winner1.isAt(2)).thenReturn(true);
-        when(winner2.isAt(2)).thenReturn(true);
-        when(loser.isAt(2)).thenReturn(false);
-        when(winner1.getRecord()).thenReturn(new RecordDto("winner1", 2));
-        when(winner2.getRecord()).thenReturn(new RecordDto("winner2", 2));
-        when(loser.getRecord()).thenReturn(new RecordDto("loser", 0));
-
-        Cars cars = Cars.of(Arrays.asList(winner1, winner2, loser));
-
+    @ParameterizedTest
+    @MethodSource("getMovedCarsForWinner")
+    public void getWinnerRecords(Cars cars, RecordDto[] expectedRecords) {
         List<RecordDto> winnerRecords = cars.getWinnerRecord();
 
-        assertThat(winnerRecords).containsOnly(new RecordDto("winner1", 2),
-                new RecordDto("winner2", 2));
+        assertThat(winnerRecords).containsOnly(expectedRecords);
+    }
+
+    static Stream<Arguments> getMovedCarsForWinner() {
+        return Stream.of(
+                arguments(Cars.of(
+                        Arrays.asList(
+                                getMovedCar("win1", 2),
+                                getMovedCar("win2", 2),
+                                getMovedCar("loser", 0))),
+                        new RecordDto[]{new RecordDto("win1", 2),
+                                new RecordDto("win2", 2)})
+        );
     }
 }

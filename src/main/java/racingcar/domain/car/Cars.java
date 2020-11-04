@@ -6,8 +6,8 @@ import racingcar.dto.RecordDto;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
@@ -26,7 +26,7 @@ public class Cars {
         validateCarCount(names.size());
         return names.stream()
                 .map(Car::ofName)
-                .collect(Collectors.collectingAndThen(toList(), Cars::of));
+                .collect(collectingAndThen(toList(), Cars::of));
     }
 
     private static void validateCarCount(int carCount) {
@@ -42,7 +42,7 @@ public class Cars {
     public List<RecordDto> getRecords() {
         return cars.stream()
                 .map(Car::getRecord)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public List<RecordDto> getWinnerRecord() {
@@ -56,6 +56,6 @@ public class Cars {
     private Integer getMaxPosition() {
         return Collections.max(cars.stream()
                 .map(Car::getPosition)
-                .collect(Collectors.toList()));
+                .collect(toList()));
     }
 }

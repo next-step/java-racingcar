@@ -3,9 +3,11 @@ package racingcar.controller;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.MockedStatic;
+import org.mockito.junit.jupiter.MockitoExtension;
 import racingcar.domain.car.Cars;
 import racingcar.domain.exception.InvalidTryCountException;
 import racingcar.view.InputView;
@@ -25,6 +27,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @DisplayName("게임 테스트")
+@ExtendWith(MockitoExtension.class)
 public class RacingGameTest {
 
     PrintWriter output = mock(PrintWriter.class);
@@ -61,7 +64,7 @@ public class RacingGameTest {
     @CsvSource(value = {"-1", "0"})
     public void simulateWithTryCount(Integer tryCount) {
         when(inputView.getTryCountFromInput()).thenReturn(tryCount);
-        
+
         try (MockedStatic<Cars> mocked = mockStatic(Cars.class)) {
             Cars cars = mock(Cars.class);
             mocked.when(() -> Cars.ofNames(anyList())).thenReturn(cars);
@@ -69,7 +72,7 @@ public class RacingGameTest {
             assertThatThrownBy(() -> {
                 RacingGame.execute(output, inputView, resultView);
             }).isInstanceOf(InvalidTryCountException.class)
-                    .hasMessageContaining("invalid try count");
+                    .hasMessageContaining("시도횟수는 0보다 큰 숫자여야 합니다.");
         }
 
     }

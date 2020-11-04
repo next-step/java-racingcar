@@ -22,8 +22,17 @@ public class ResultView {
     }
 
     public void showAtStep(List<RecordDto> recordAtStep) {
-        recordAtStep.forEach(recordDto -> output.println(format("%s : %s", recordDto.getName(), String.join("", Collections.nCopies(recordDto.getPosition(), SYMBOL)))));
+        recordAtStep.stream()
+                .map(recordDto -> format(
+                        "%s : %s",
+                        recordDto.getName(),
+                        getRepeatedSymbol(recordDto.getPosition())))
+                .forEach(output::println);
         output.println();
+    }
+
+    private String getRepeatedSymbol(Integer repeatCount) {
+        return String.join("", Collections.nCopies(repeatCount, SYMBOL));
     }
 
     public void showWinner(List<RecordDto> winnerRecord) {

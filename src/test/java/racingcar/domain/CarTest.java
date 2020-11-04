@@ -32,6 +32,6 @@ public class CarTest {
         assertThatThrownBy(() -> {
             Car.ofName(name);
         }).isInstanceOf(InvalidCarNameLengthException.class)
-                .hasMessageContaining("invalid car name length");
+                .hasMessageContaining("자동차 이름은 5글자 이하여야 합니다.");
     }
 }
