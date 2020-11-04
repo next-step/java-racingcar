@@ -10,8 +10,7 @@ public class Calculator {
         Integer result = Integer.parseInt(inputs[0]);
 
         for (String input : inputs) {
-            Expression expression = new Expression(result, operator, input);
-            result = calculateFor(expression);
+            result = calculateFor(result, operator, input);
             operator = getFourPointOperation(input);
         }
 
@@ -51,14 +50,14 @@ public class Calculator {
         return input.matches("[-*/+]") || input.matches("[0-9]+$");
     }
 
-    public Integer calculateFor(Expression expression) {
+    public Integer calculateFor(Integer result, FourPointOperation operator, String input) {
 
-        if (expression.getOperator() != null) {
-            Integer operand = Integer.parseInt(expression.getY());
-            return expression.getOperator().calculate(expression.getX(), operand);
+        if (operator != null) {
+            Integer operand = Integer.parseInt(input);
+            return operator.calculate(result, operand);
         }
 
-        return expression.getX();
+        return result;
     }
 
 
