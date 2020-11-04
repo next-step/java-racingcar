@@ -16,4 +16,10 @@ public interface MoveStrategy {
         return ()->random.nextInt(Constant.RANDOM_MAX_NUMBER) > Constant.ANCHOR_POINT;
     }
 
+    static MoveStrategy unconditionalForwardStrategy(){
+        return ()->true;
+    }
+    static MoveStrategy unconditionalStopStrategt(){
+        return ()->false;
+    }
 }
