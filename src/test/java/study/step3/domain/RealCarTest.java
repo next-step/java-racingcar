@@ -2,7 +2,6 @@ package study.step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.step3.domain.RealCar;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RealCarTest {
     @Test
     @DisplayName("이동 결과는 true 또는 false 가 나온다")
-    void move(){
+    void move() {
         RealCar realCar = new RealCar("blue");
         Set<Boolean> results = new HashSet<>();
         for (int i = 0; i < 1000; i++) {
@@ -40,5 +39,17 @@ class RealCarTest {
         car.move();
 
         assertThat(car.getTotalTry()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("실제 이동거리를 반환한다.")
+    void distanceDriven() {
+        TestingCar car = new TestingCar();
+        car.move(false);
+        car.move(true);
+        car.move(true);
+        car.move(false);
+
+        assertThat(car.getDistanceDriven()).isEqualTo(2);
     }
 }
