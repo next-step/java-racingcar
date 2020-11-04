@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import racinggame.domain.model.MovingResult;
 import racinggame.domain.model.RacingCars;
 import racinggame.domain.model.RacingResult;
+import racinggame.domain.rule.RandomMoveRule;
 import racinggame.vo.RacingInfo;
 
 public class CarRacing {
@@ -15,7 +16,7 @@ public class CarRacing {
 
   public CarRacing(RacingInfo racingInfo) {
     this.roundCount = racingInfo.getRoundCount();
-    this.racingCars = new RacingCars(racingInfo.getRacingCarNames());
+    this.racingCars = new RacingCars(racingInfo.getRacingCarNames(), new RandomMoveRule());
   }
 
   public RacingResult startRacing() {

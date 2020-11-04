@@ -2,12 +2,12 @@ package racinggame.vo;
 
 import java.util.Objects;
 
-public class CarSateInRace {
+public class CarSateInRace implements Comparable<CarSateInRace> {
 
   private String carName;
   private int racingPosition;
 
-  public CarSateInRace( String carName, int racingPosition) {
+  public CarSateInRace(String carName, int racingPosition) {
     this.carName = carName;
     this.racingPosition = racingPosition;
   }
@@ -18,6 +18,10 @@ public class CarSateInRace {
 
   public int getRacingPosition() {
     return racingPosition;
+  }
+
+  public boolean isSamePosition(CarSateInRace otherCarSateInRace) {
+    return this.racingPosition == otherCarSateInRace.racingPosition;
   }
 
   @Override
@@ -35,5 +39,10 @@ public class CarSateInRace {
   @Override
   public int hashCode() {
     return Objects.hash(carName);
+  }
+
+  @Override
+  public int compareTo(CarSateInRace o) {
+    return this.racingPosition - o.racingPosition;
   }
 }

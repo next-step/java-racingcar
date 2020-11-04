@@ -5,14 +5,17 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import racinggame.domain.Car;
+import racinggame.domain.rule.MoveRule;
 import racinggame.vo.CarSateInRace;
 
 public class RacingCars {
 
   private List<Car> racingCars;
 
-  public RacingCars(String[] racingCarNames) {
-    this.racingCars = preparerCar(Arrays.asList(racingCarNames.clone()));
+  public RacingCars(String[] racingCarNames, MoveRule moveRule) {
+    this.racingCars = Arrays.stream(racingCarNames)
+        .map(racingCarName -> Car.of(racingCarName, moveRule))
+        .collect(Collectors.toList());
   }
 
   public RacingCars(List<Car> racingCars) {
@@ -26,12 +29,6 @@ public class RacingCars {
   private List<CarSateInRace> orderRacing() {
     return this.racingCars.stream()
         .map(car -> car.go())
-        .collect(Collectors.toList());
-  }
-
-  private List<Car> preparerCar(List<String> racingCarNames) {
-    return racingCarNames.stream()
-        .map(racingCarName -> new Car(racingCarName))
         .collect(Collectors.toList());
   }
 

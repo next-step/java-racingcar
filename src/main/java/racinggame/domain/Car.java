@@ -16,18 +16,25 @@ public class Car {
   private int racingPosition;
   private MoveRule moveRule;
 
-  public Car(String carName) {
-    checkCarNameMaxLength(carName);
+  private Car() {}
+
+  private Car(String carName) {
     this.carName = carName;
-    this.racingPosition = INIT_RACE_POSITION;
     this.moveRule = new RandomMoveRule();
   }
 
-  public Car(String carName, MoveRule moveRule) {
-    checkCarNameMaxLength(carName);
+  private Car(String carName, MoveRule moveRule) {
     this.carName = carName;
     this.racingPosition = INIT_RACE_POSITION;
     this.moveRule = moveRule;
+  }
+
+  public static Car newInstanceByCarName(String carName) {
+    return new Car(carName);
+  }
+
+  public static Car of(String carName, MoveRule moveRule) {
+    return new Car(carName, moveRule);
   }
 
   public int getRacingPosition() {
@@ -35,6 +42,7 @@ public class Car {
   }
 
   public CarSateInRace go() {
+    checkCarNameMaxLength(carName);
     updateRacePosition(moveRule.isAbleToMove());
     return new CarSateInRace(this.carName, this.racingPosition);
   }

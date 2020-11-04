@@ -31,8 +31,7 @@ public class MovingResult {
     if (origin.size() == 0) {
       throw new IllegalStateException(NO_FOUND_WINNER);
     }
-    return collectWinnerCarName(sortByPosition(origin)).stream()
-        .collect(Collectors.joining(WINNER_CAR_DELIMITER));
+    return String.join(WINNER_CAR_DELIMITER, collectWinnerCarName(sortByPosition(origin)));
   }
 
   private List<CarSateInRace> sortByPosition(List<CarSateInRace> carSateInRaces) {
@@ -42,9 +41,9 @@ public class MovingResult {
   }
 
   private List<String> collectWinnerCarName(List<CarSateInRace> sortedCarSateInRaces) {
-    int winnerPosition = sortedCarSateInRaces.get(FIRST_INDEX).getRacingPosition();
+    CarSateInRace winnerCarSateInRace = sortedCarSateInRaces.get(FIRST_INDEX);
     return sortedCarSateInRaces.stream()
-        .filter(carSateInRace -> carSateInRace.getRacingPosition() == winnerPosition)
+        .filter(carSateInRace -> carSateInRace.isSamePosition(winnerCarSateInRace))
         .map(CarSateInRace::getCarName)
         .collect(Collectors.toList());
   }
