@@ -1,6 +1,6 @@
 package study;
 
-public abstract class Operator {
+public interface Operator {
 
-    public abstract int operate(int first, int second);
+    public int operate(int first, int second);
 }

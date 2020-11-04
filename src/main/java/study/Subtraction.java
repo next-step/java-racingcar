@@ -1,6 +1,6 @@
 package study;
 
-public class Subtraction extends Operator{
+public class Subtraction implements Operator{
     @Override
     public int operate(int first, int second) {
         return first - second;

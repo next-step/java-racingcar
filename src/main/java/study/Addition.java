@@ -1,6 +1,6 @@
 package study;
 
-public class Addition extends Operator{
+public class Addition implements Operator{
 
     @Override
     public int operate(int first, int second) {

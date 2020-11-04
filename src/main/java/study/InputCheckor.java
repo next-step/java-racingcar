@@ -4,8 +4,9 @@ public class InputCheckor {
 
 
 
-    public InputCheckor(){
-
+    public InputCheckor(String input){
+        checkEmpty(input);
+        checkOperator(input);
     }
 
     // null값 또는 "" 값 확
@@ -16,9 +17,13 @@ public class InputCheckor {
     }
 
     //잘못된 값 확인
-    void checkOperator(int size){
-        if(size !=0){
-            throw new IllegalArgumentException("It's not operation");
+    void checkOperator(String input){
+
+        String[] splited = input.split(" ");
+        for(String str : splited){
+            if(str.matches("[^0-9^\\*\\-\\+\\/\\s]")){
+                throw new IllegalArgumentException("It's not operation");
+            }
         }
     }
 

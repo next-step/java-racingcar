@@ -1,19 +1,35 @@
 package study;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.HashMap;
+import java.util.HashSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CalculatorTest {
 
+    private OperatorManager operatorManager;
+
+    // @Test 메소드 실행되기전 수행
+    @BeforeEach
+    void setUp(){
+        operatorManager = new OperatorManager();
+        operatorManager.put("+", (a, b) -> a + b);
+        operatorManager.put("-", (a, b) -> a - b);
+        operatorManager.put("*", (a, b) -> a * b);
+        operatorManager.put("/", (a, b) -> a / b);
+    }
+
     @Test
     @DisplayName("정상 테스트")
     void successTest(){
         String input = "2 + 3 * 4 / 2";
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator(operatorManager);
         assertThat(calculator.calculate(input)).isEqualTo(10);
      }
     @Test
@@ -48,7 +64,7 @@ public class CalculatorTest {
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우")
     void argTest(){
         String input = "";
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator(operatorManager);
         assertThatIllegalArgumentException().isThrownBy(()->{
             calculator.calculate(input);
         });
@@ -58,7 +74,7 @@ public class CalculatorTest {
     @DisplayName("사칙연산 기호가 아닌경우")
     void operatorTest(){
         String input = "1 @ 3";
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator(operatorManager);
         assertThatIllegalArgumentException().isThrownBy(()->{
             calculator.calculate(input);
         });
