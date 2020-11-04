@@ -23,7 +23,6 @@ public class CalculatorTest {
 //    반복적인 패턴을 찾아 반복문으로 구현한다.
 
     Calculator calculator = new Calculator();
-    private String reqString = "2 + 3 * 4 / 2";
 
     @DisplayName("덧셈")
     @ParameterizedTest
@@ -57,32 +56,28 @@ public class CalculatorTest {
     @Test
     void 입력값null() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    calculator.calculate(null);
-                });
+                .isThrownBy(() -> calculator.calculate(null));
     }
 
     @DisplayName("입력값blank")
     @Test
     void 입력값blank() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    calculator.calculate("");
-                });
+                .isThrownBy(() -> calculator.calculate(""));
     }
 
     @DisplayName("사칙연산기호가아닌경우")
     @Test
     void 사칙연산기호가아닌경우() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    calculator.calculate("%");
-                });
+                .isThrownBy(() -> calculator.calculate("%"));
+
     }
 
     @DisplayName("사칙연산")
     @Test
     void 사칙연산() {
+        String reqString = "2 + 3 * 4 / 2";
         assertThat(calculator.calculate(reqString)).isEqualTo(10);
     }
 

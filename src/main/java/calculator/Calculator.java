@@ -5,7 +5,10 @@ import java.util.Arrays;
 public class Calculator {
 
     public Integer calculate(String reqString){
-        String[] operArr = {"+", "-", "*", "/"};
+        OperatorEnum[] operArr = {OperatorEnum.PLUS,
+                OperatorEnum.MINUS,
+                OperatorEnum.MULTIPLY,
+                OperatorEnum.DIVIDE};
 
         if(reqString == null || reqString.isEmpty()){
             throw new IllegalArgumentException();
@@ -15,25 +18,25 @@ public class Calculator {
 
         for(int i=0; i<reqParts.length; i++){
             if(!this.isParseInt(reqParts[i])){
-                if(Arrays.asList(operArr).contains(reqParts[i])){
-                    if(reqParts[i].equals("+")){
+                switch (OperatorEnum.getOperation(reqParts[i])){
+                    case PLUS:
                         result+=Integer.parseInt(reqParts[i+1]);
-                    }
-                    else if(reqParts[i].equals("-")){
+                        break;
+                    case MINUS:
                         result-=Integer.parseInt(reqParts[i+1]);
-                    }
-                    else if(reqParts[i].equals("*")){
+                        break;
+                    case MULTIPLY:
                         result*=Integer.parseInt(reqParts[i+1]);
-                    }
-                    else if(reqParts[i].equals("/")){
+                        break;
+                    case DIVIDE:
                         if(Integer.parseInt(reqParts[i+1]) == 0){
                             // 0으로 나눌 수 없음.
                             continue;
                         }
                         result/=Integer.parseInt(reqParts[i+1]);
-                    }
-                }else{
-                    throw new IllegalArgumentException();
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
                 }
             }
         }
