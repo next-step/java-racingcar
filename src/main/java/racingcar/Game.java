@@ -27,7 +27,13 @@ public class Game {
         InputView.viewCountCarInputMessage();
         User.InputCarCount();
 
-        InputView.viewConutGameInputMessage();
+        InputView.viewCoutRoundInputMessage();
         User.InputRoundCount();
+
+        for (int i = 0; i < roundCount; i++) {
+            playRound();
+        }
+
+
     }
 }
