@@ -2,7 +2,7 @@ package calc;
 
 import java.util.regex.Pattern;
 
-import static calc.ErrorMessage.INVALID_EXPRESSION;
+import static common.ErrorMessage.INVALID_VALUE;
 
 public final class Validator {
 
@@ -15,7 +15,7 @@ public final class Validator {
         java.util.regex.Matcher matcher = EXPRESSION_PATTERN.matcher(expression);
 
         if (!matcher.matches()) {
-            throw new IllegalArgumentException(INVALID_EXPRESSION);
+            throw new IllegalArgumentException(INVALID_VALUE);
         }
     }
 }
