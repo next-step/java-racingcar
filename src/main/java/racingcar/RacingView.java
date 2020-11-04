@@ -49,7 +49,7 @@ public class RacingView {
     protected String convertWinnerList(List<Car> winnerList) {
         List<String> winners = winnerList
                 .stream()
-                .map(car -> car.getName())
+                .map(Car::getName)
                 .collect(Collectors.toList());
         return String.join(RacingViewConst.WINNER_DELIMITER, winners) + RacingViewConst.WINNER_MSG;
     }

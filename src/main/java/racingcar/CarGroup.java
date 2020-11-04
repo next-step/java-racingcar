@@ -34,7 +34,7 @@ public class CarGroup {
 
     protected List<Integer> getPositions() {
         return this.cars.stream()
-                .map(car -> car.getPosition())
+                .map(Car::getPosition())
                 .collect(Collectors.toList());
     }
 
