@@ -13,7 +13,7 @@ public class OutputView {
     public void showResult(Records records) {
         String result = records.getRecordList().stream()
                 .map(this::recordToString)
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n\n"));
 
         out.println(result + "\n");
     }
