@@ -33,7 +33,7 @@ public class StringCalculator {
 
 
         if(operandSize != operatorSize+1){
-            throw new IllegalArgumentException("입력값이 정상적으로 종료되지않았습니다.");
+            throw new IllegalArgumentException(CustomErrorMessage.UNCOMPLETED_INPUT.getErrorMessage());
         }
 
         for(int j=0; j<operandSize; j++){
@@ -55,53 +55,22 @@ public class StringCalculator {
         return String.valueOf(calculationResult);
     }
 
-    /*private static int calculate(CalculateSet calculateSet, String operator) {
-        int innerResult = 0;
-
-        switch (operator) {
-            case "+":
-                innerResult = getAddition(calculateSet.left, calculateSet.right);
-                break;
-            case "-":
-                innerResult = getSubtraction(calculateSet.left, calculateSet.right);
-                break;
-            case "*":
-                innerResult = getMultiplication(calculateSet.left, calculateSet.right);
-                break;
-            case "/":
-                innerResult = getDivision(calculateSet.left, calculateSet.right);
-                break;
-            default:
-                break;
-        }
-
-        return innerResult;
-    }*/
-
-   /* private static int getDivision(int left, int right) {
-        if(right == 0){
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-        }
-
-        return  left / right;
-    }*/
-
     private static void isCorrectOperator(String input) {
         if(!input.matches("([+\\-*\\/])")){
-            throw new IllegalArgumentException("연산자는 (+,-,*,/)만 사용 가능합니다.");
+            throw new IllegalArgumentException(CustomErrorMessage.ILLEGAL_OPERATOR.getErrorMessage());
         }
     }
 
     private static void isNumericString(String input) {
         if(!input.matches("-?\\d+")){
-            throw new IllegalArgumentException("피연산자는 정수형 숫자로 입력하세요.");
+            throw new IllegalArgumentException(CustomErrorMessage.ILLEGAL_OPERAND.getErrorMessage());
         }
     }
 
 
     private static void isEmptyInput(String input) {
         if(input == null || input.length() == 0 || input.trim().length() == 0){
-            throw new IllegalArgumentException("빈값을 입력하실 수 없습니다.");
+            throw new IllegalArgumentException(CustomErrorMessage.EMPTY_INPUT.getErrorMessage());
         }
     }
 }

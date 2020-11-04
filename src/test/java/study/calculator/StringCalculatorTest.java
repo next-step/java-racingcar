@@ -25,16 +25,16 @@ public class StringCalculatorTest {
     void divisionByZeroExceptionTest(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
             String result = StringCalculator.getCalculationResult("3 / 0");
-        }).withMessageContaining("0으로 나눌 수 없습니다.");
+        }).withMessageContaining(CustomErrorMessage.DIVISION_BY_ZERO.getErrorMessage());
     }
 
     @DisplayName("입력값이 비어있는 경우에 대한 Test")
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    void emptyStringExceptionTest(String input){
+    void emptyInputExceptionTest(String input){
         assertThatIllegalArgumentException().isThrownBy(() -> {
             String result = StringCalculator.getCalculationResult(input);
-        }).withMessageContaining("빈값을 입력하실 수 없습니다.");
+        }).withMessageContaining(CustomErrorMessage.EMPTY_INPUT.getErrorMessage());
     }
 
     @DisplayName("연산자가 유효하지 않는 경우에 대한 Test")
@@ -43,7 +43,7 @@ public class StringCalculatorTest {
     void illegalOperatorExceptionTest(String input){
         assertThatIllegalArgumentException().isThrownBy(() -> {
             String result = StringCalculator.getCalculationResult(input);
-        }).withMessageContaining("연산자는 (+,-,*,/)만 사용 가능합니다.");
+        }).withMessageContaining(CustomErrorMessage.ILLEGAL_OPERATOR.getErrorMessage());
     }
 
     @DisplayName("피연산자가 정수형 숫자가 아닌 경우에 대한 Test")
@@ -52,7 +52,7 @@ public class StringCalculatorTest {
     void illegalOperandExceptionTest(String input){
         assertThatIllegalArgumentException().isThrownBy(() -> {
             String result = StringCalculator.getCalculationResult(input);
-        }).withMessageContaining("피연산자는 정수형 숫자로 입력하세요.");
+        }).withMessageContaining(CustomErrorMessage.ILLEGAL_OPERAND.getErrorMessage());
     }
 
     @DisplayName("입력값이 정상적으로 완성되지 않은 경우에 대한 Test")
@@ -61,7 +61,7 @@ public class StringCalculatorTest {
     void uncompletedInputExceptionTest(String input){
         assertThatIllegalArgumentException().isThrownBy(() -> {
             String result = StringCalculator.getCalculationResult(input);
-        }).withMessageContaining("입력값이 정상적으로 종료되지않았습니다.");
+        }).withMessageContaining(CustomErrorMessage.UNCOMPLETED_INPUT.getErrorMessage());
     }
 
 
