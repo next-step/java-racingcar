@@ -7,7 +7,7 @@ public class User {
         Game.setCars(new Scanner(System.in).nextInt());
     }
 
-    public static void InputGameCount(){
-        Game.setGameCount(new Scanner(System.in).nextInt());
+    public static void InputRoundCount(){
+        Game.setRoundCount(new Scanner(System.in).nextInt());
     }
 }
