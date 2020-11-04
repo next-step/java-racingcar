@@ -1,8 +1,10 @@
 package step3.view;
 
 import step3.RaceGameContract;
-import step3.model.RaceGame;
 import step3.model.RacingCars;
+
+import java.util.Collections;
+import java.util.stream.IntStream;
 
 public class RenderingView implements RaceGameContract.View {
 
@@ -15,10 +17,15 @@ public class RenderingView implements RaceGameContract.View {
 
     @Override
     public void renderView(RacingCars racingCars) {
-
+        for (int i = 0; i < racingCars.getTotalRound(); i++) {
+            racingCars.roundResult();
+        }
         executeCount++;
     }
 
+    private void getRoundResult(RacingCars racingCars) {
+
+    }
 
     public int getExecuteCount() {
         return executeCount;

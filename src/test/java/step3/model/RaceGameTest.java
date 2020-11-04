@@ -15,13 +15,13 @@ public class RaceGameTest {
     @DisplayName("참가 차량 댓수에 맞는 RacingCars 인스턴스 생성 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
-    public void makeRacingCar(int index) {
+    public void makeRacingCar(int round) {
         //Given & When
         List<RacingCar> racingCars = List.of(
                 new RacingCar(new RandomCommander()),
                 new RacingCar(new RandomCommander()),
                 new RacingCar(new RandomCommander()));
-        RacingCars cars = new RacingCars(racingCars);
+        RacingCars cars = new RacingCars(racingCars, round);
 
 
         //Then

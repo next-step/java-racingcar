@@ -10,19 +10,17 @@ public class RaceGame {
 
     private RacingCars racingCars;
     private GameRound round;
-    private Commander commander;
 
     public RaceGame(GameRound round, Commander commander) {
         this.round = round;
-        this.commander = commander;
-        createParticipantRacingCar();
+        createParticipantRacingCar(commander, round.getRound());
     }
 
-    private void createParticipantRacingCar() {
+    private void createParticipantRacingCar(Commander commander, int totalRound) {
         List<RacingCar> cars = new ArrayList<>();
         IntStream.range(0, round.getParticipantCar())
                 .forEach(i -> cars.add(new RacingCar(commander)));
-        this.racingCars = new RacingCars(cars);
+        this.racingCars = new RacingCars(cars, totalRound);
     }
 
     public boolean start() {
