@@ -1,10 +1,11 @@
-package study.step3;
+package study.step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -38,7 +39,7 @@ public class CarRacingTest {
 
         carRacing.start();
 
-        assertThat(theCar().isMoved()).isTrue();
+        assertThat(theCar().getDistanceDriven()).isEqualTo(1);
     }
 
     @Test
@@ -47,7 +48,7 @@ public class CarRacingTest {
         setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
-        assertThat(theCar().isMoved()).isFalse();
+        assertThat(theCar().getDistanceDriven()).isEqualTo(0);
     }
 
     private Car theCar() {
@@ -55,48 +56,23 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
-    void acceptableResultView() {
-        setUpLapsAndCars(new TestingCar());
+    @DisplayName("경주시작 전엔 이동시도횟수가 0이다.")
+    void zeroTryWhenBeforeStart() {
+        setUpLapsAndCars(new study.step3.TestingCar());
         setUpRacing();
 
-        assertThat(carRacing.hasRecord()).isFalse();
+        assertThat(carRacing.getRecords().getTotalTry()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
-    void resultViewCommittedAfterStaring() {
-        setUpLapsAndCars(new TestingCar());
+    @DisplayName("경주시작 후엔 이동시도횟수가 0이다.")
+    void nonZeroTryWhenAfterStart() {
+        setUpLapsAndCars(new study.step3.TestingCar());
         setUpRacing();
 
         carRacing.start();
 
-        assertThat(carRacing.hasRecord()).isTrue();
-    }
-
-    @Test
-    @DisplayName("가장 많이 이동한 자동차를 위너로 지정한다")
-    void winner() {
-        setUpLapsAndCars(new TestingCar("blue", 3), new TestingCar("red", 2));
-        setUpRacing();
-
-        carRacing.start();
-
-        assertThat(carRacing.getWinners()).contains("blue");
-    }
-
-    @Test
-    @DisplayName("위너는 둘 이상일 수 있다")
-    void co_winner() {
-        setUpLapsAndCars(new TestingCar("white", 2), //
-                new TestingCar("blue", 3), //
-                new TestingCar("red", 3));
-
-        setUpRacing();
-
-        carRacing.start();
-
-        assertThat(carRacing.getWinners()).contains("blue", "red");
+        assertThat(carRacing.getRecords().getTotalTry()).isEqualTo(1);
     }
 
     private void setUpLapsAndCars(Car... cars) {
@@ -107,34 +83,42 @@ public class CarRacingTest {
         this.carRacing = new CarRacing(circuit);
     }
 
-    private static class TestingCar implements Car {
+    public static class TestingCar implements Car {
         private final String name;
-        private int moves;
-        private boolean isMoved;
+        private int distanceDriven = 0;
 
 
         public TestingCar() {
-            this("anonymous", 1);
+            this("anonymous");
         }
 
-        public TestingCar(String name, int moves) {
+        public TestingCar(String name) {
             this.name = name;
-            this.moves = moves;
-        }
-
-        @Override
-        public boolean isMoved() {
-            return isMoved;
         }
 
         @Override
         public void move() {
-            isMoved = --moves >= 0;
+            distanceDriven++;
         }
 
         @Override
         public String getName() {
             return name;
+        }
+
+        @Override
+        public int getTotalTry() {
+            return 0;
+        }
+
+        @Override
+        public int getDistanceDriven() {
+            return distanceDriven;
+        }
+
+        @Override
+        public List<Boolean> takeDrivingRecordTake(int takes) {
+            return null;
         }
     }
 

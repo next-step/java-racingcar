@@ -1,4 +1,8 @@
-package study.step3;
+package study.step3.view;
+
+import study.step3.domain.Car;
+import study.step3.domain.Circuit;
+import study.step3.domain.RealCar;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -6,7 +10,7 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
 
-class InputView {
+public class InputView {
     public Circuit request() {
         String names = requestNames();
 
@@ -57,11 +61,7 @@ class InputView {
 
     private Set<Car> parseNames(String names) {
         return Arrays.stream(names.split(",")) //
-                .peek(name -> {
-                    if (name.length() > 5) {
-                        throw new IllegalArgumentException("이름은 5자를 넘을 수 없습니다.");
-                    }
-                }).map(RealCar::new) //
+                .map(RealCar::new) //
                 .collect(toSet());
     }
 }

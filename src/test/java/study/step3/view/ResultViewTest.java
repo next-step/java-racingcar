@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,18 +8,22 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
+import study.step3.domain.RaceRecord;
+import study.step3.TestingCar;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.step3.ResultView.nameWithSpace;
+import static study.step3.view.ResultView.nameWithSpace;
 
 class TestingResultView extends ResultView {
     private final StringBuilder stringBuilder;
 
-    public TestingResultView(StringBuilder stringBuilder, Map<String, List<Boolean>> records, Set<String> winners) {
-        super(records, winners);
+    public TestingResultView(StringBuilder stringBuilder, RaceRecord raceRecord, Set<String> winners) {
+        super(raceRecord, winners);
         this.stringBuilder = stringBuilder;
     }
 
@@ -33,13 +37,13 @@ public class ResultViewTest {
 
     private StringBuilder stringBuilder;
     private ResultView resultView;
-    private final Map<String, List<Boolean>> records = new HashMap<>();
-    private Set<String> winners = new HashSet<>();
+    private final RaceRecord raceRecord = new RaceRecord();
+    private final Set<String> winners = new HashSet<>();
 
     @BeforeEach
     void setUp() {
         stringBuilder = new StringBuilder();
-        resultView = new TestingResultView(stringBuilder, records, winners);
+        resultView = new TestingResultView(stringBuilder, raceRecord, winners);
     }
 
     @ParameterizedTest
@@ -66,7 +70,7 @@ public class ResultViewTest {
         //@formatter:off
         assertThat(stringBuilder.toString())
                 .isEqualTo(
-                    line("실행결과") +
+                    lineEmpty() +
                     line(nameWithSpace("blue") + ": ") +
                     line(nameWithSpace("red") + ": -") +
                     lineEmpty() +
@@ -88,7 +92,7 @@ public class ResultViewTest {
         //@formatter:off
         assertThat(stringBuilder.toString())
                 .isEqualTo(
-                        line("실행결과") +
+                        lineEmpty() +
                                 line(nameWithSpace("blue") + ": ") +
                                 line(nameWithSpace("red") + ": -") +
                                 lineEmpty() +
@@ -117,8 +121,10 @@ public class ResultViewTest {
     }
 
     private void addRecord(String name, Boolean[] moves) {
+        TestingCar car = new TestingCar(name);
+        raceRecord.saveRecord(car);
         for (Boolean move : moves) {
-            records.computeIfAbsent(name, key -> new ArrayList<>()).add(move);
+            car.move(move);
         }
     }
 
@@ -129,24 +135,24 @@ public class ResultViewTest {
             //@formatter:off
             return Stream.of(
                     Arguments.of("blue", new Boolean[]{true}, // 한번 시도에서 한번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": -")
                     ),
 
                     Arguments.of("blue", new Boolean[]{false}, // 한번 시도에서 0번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": ")
                     ),
 
                     Arguments.of("blue", new Boolean[]{true, false}, // 두번 시도에서 한번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
                                     line(nameWithSpace("blue") + ": -")
                     ),
 
                     Arguments.of("blue", new Boolean[]{true, true}, // 두번 시도에서 두번 움직인 결과
-                                    line("실행결과") +
+                                    lineEmpty() +
                                     line(nameWithSpace("blue") + ": -") +
                                     lineEmpty() +
                                     line(nameWithSpace("blue") + ": --")

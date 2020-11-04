@@ -1,19 +1,19 @@
-package study.step3;
+package study.step3.view;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import study.step3.domain.CarRacing;
+import study.step3.domain.RaceRecord;
+
+import java.util.*;
 
 import static java.util.stream.Collectors.joining;
 
-class ResultView {
-    private final Map<String, List<Boolean>> records;
+public class ResultView {
+    private final RaceRecord raceRecord;
     private final Set<String> winners;
 
-    public ResultView(Map<String, List<Boolean>> records, Set<String> winners) {
-        this.records = records;
+    public ResultView(RaceRecord raceRecord, Set<String> winners) {
         this.winners = winners;
+        this.raceRecord = raceRecord;
     }
 
     public ResultView(CarRacing carRacing) {
@@ -27,8 +27,8 @@ class ResultView {
     }
 
     void printRaceHistory() {
-        int laps = records.values().iterator().next().size();
-        for (int i = 0; i < laps; i++) {
+        int laps = raceRecord.getTotalTry();
+        for (int i = 1; i <= laps; i++) {
             printNewline();
             printRecord(i);
         }
@@ -43,16 +43,16 @@ class ResultView {
     }
 
     private void printRecord(int lastLap) {
-        new TreeMap<>(records).forEach((name, record) -> {
-            printNameAndRecord(name, record.subList(0, lastLap + 1));
+        raceRecord.forEachRecordUntil(lastLap, (name, record) -> {
+            printNameAndRecord(name, record);
             printNewline();
         });
     }
 
-    private void printNameAndRecord(String name, List<Boolean> recoard) {
+    private void printNameAndRecord(String name, List<Boolean> record) {
         //@formatter:off
         print(nameWithSpace(name) + ": " +
-                recoard.stream()
+                record.stream()
                         .map(moved -> moved ? "-" : "")
                         .collect(joining())
         );
