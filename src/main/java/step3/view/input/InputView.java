@@ -1,14 +1,15 @@
 package step3.view.input;
 
 import step3.application.SimulationCondition;
+import step3.view.ViewString;
 import step3.view.output.Printer;
 
 import java.util.Scanner;
 
-public class InputView {
-    private static final String HOW_MANY_CAR_QUESTION = "자동차 대수는 몇 대 인가요?";
-    private static final String HOW_MUCH_ATTEMPT_QUESTION = "시도할 회수는 몇 회 인가요?";
+import static step3.view.ViewString.HOW_MANY_CAR_QUESTION;
+import static step3.view.ViewString.HOW_MUCH_ATTEMPT_QUESTION;
 
+public class InputView {
     private InputView() {
         throw new AssertionError();
     }
@@ -19,12 +20,12 @@ public class InputView {
         return new SimulationCondition(numberOfCar, numberOfAttempts);
     }
 
-    private static int questionAndAnswer(final String question) {
+    private static int questionAndAnswer(final ViewString question) {
         printQuestion(question);
         return receiveAnswer();
     }
 
-    private static void printQuestion(final String question) {
+    private static void printQuestion(final ViewString question) {
         Printer.println(question);
     }
 

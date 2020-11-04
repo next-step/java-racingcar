@@ -1,26 +1,31 @@
-package step3.view.dto;
+package step3.view.output.presenter;
+
+import step3.view.dto.CarDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RoundResultDTO {
-    private static final String NEWLINE = "\n";
-    private static final char MOVE_CHAR = '-';
-    private static final String ROUND_ANNOUNCEMENT = "라운드";
+import static step3.view.ViewString.*;
 
+public class RoundResultViewPresenter implements Presenter {
     private final int round;
     private final List<CarDTO> cars;
 
-    public RoundResultDTO(final int round, final List<CarDTO> cars) {
+    public RoundResultViewPresenter(final int round, final List<CarDTO> cars) {
         this.round = round;
         this.cars = cars;
     }
 
-    public String createRoundAnnounceView() {
+    @Override
+    public String present() {
+        return createRoundAnnounceView() + NEWLINE + createRoundResultView() + NEWLINE;
+    }
+
+    private String createRoundAnnounceView() {
         return ROUND_ANNOUNCEMENT + " " + (round + 1);
     }
 
-    public String createRoundResultView() {
+    private String createRoundResultView() {
         return cars.stream()
                 .map(CarDTO::getLocation)
                 .map(position -> createMovingDistanceView(position) + NEWLINE)
