@@ -22,8 +22,8 @@ public abstract class RacingGame {
         gameHistory.addHistory(round, history);
     }
 
-    public void notifyCars(int round) {
-        cars.forEach(Car::go);
+    public void notifyCars(int round, MoveStrategy strategy) {
+        cars.forEach(car -> car.go(strategy));
         logGameHistory(round);
     }
 
@@ -31,8 +31,7 @@ public abstract class RacingGame {
         return gameHistory;
     }
 
-    public abstract void addCarList(int number, MoveStrategy moveStrategy);
-    public abstract void addCarList(List<String> carNames, MoveStrategy moveStrategy);
+    public abstract void addCarList(List<String> carNames);
 
     public abstract void execute(RacingInfomation racingInfomation, MoveStrategy moveStrategy);
 }

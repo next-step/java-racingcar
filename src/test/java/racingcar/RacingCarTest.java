@@ -35,8 +35,8 @@ public class RacingCarTest {
     @CsvSource(value = {"0:false", "1:false", "2:false", "3:false", "4:true", "5:true", "6:true", "7:true", "8:true", "9:true"}, delimiter = ':')
     public void allowMoveTest(int input, boolean resultBool) {
         MoveStrategy moveStrategy = () -> input >= Constant.ANCHOR_POINT;
-        RacingCar racingCar = new RacingCar(moveStrategy);
-        assertThat(racingCar.allowMove()).isEqualTo(resultBool);
+        RacingCar racingCar = new RacingCar("");
+        assertThat(racingCar.allowMove(moveStrategy)).isEqualTo(resultBool);
     }
 
 
