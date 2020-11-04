@@ -23,10 +23,6 @@ public class RacingGame {
         InputView.closeScanner();
     }
 
-    public void ready() {
-        this.racingCars.ready();
-    }
-
     public void race() {
         ResultView.viewMessage();
 

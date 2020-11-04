@@ -1,20 +1,24 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class RacingCars {
 
-    private final Car[] cars;
+    private final List<Car> cars;
 
     public RacingCars(final int carCount) {
-        this.cars = new Car[carCount];
+        this.cars = new ArrayList<>();
+        ready(carCount);
     }
 
-    public Car[] getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void ready() {
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car();
+    public void ready(int carCount) {
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
         }
     }
 
