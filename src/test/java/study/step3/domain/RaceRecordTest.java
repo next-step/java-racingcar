@@ -29,10 +29,11 @@ public class RaceRecordTest {
     @Test
     @DisplayName("RaceRecord는 가장 많이 이동한 자동차의 이름을 한대 이상 반환할 수 있다.")
     void mostMovingCarName() {
-        saveRecords(5, new TestingCar("blue", 2), //
-                new TestingCar("red", 3),  //
-                new TestingCar("white", 2),  //
-                new TestingCar("gray", 3));
+        int totalTry = 5;
+        saveRecord(totalTry, 2, new RealCarTest.TestingCar("blue"));
+        saveRecord(totalTry, 3, new RealCarTest.TestingCar("red"));
+        saveRecord(totalTry, 2, new RealCarTest.TestingCar("white"));
+        saveRecord(totalTry, 3, new RealCarTest.TestingCar("gray"));
 
         assertThat(raceRecord.listMostMovingNames()).containsOnly("red", "gray");
     }
@@ -86,6 +87,13 @@ public class RaceRecordTest {
     private void saveRecords(int totalMoves, Car... cars) {
         for (int i = 0; i < totalMoves; i++) {
             moveAndSave(cars);
+        }
+    }
+
+    private void saveRecord(int totalTry, int moves, RealCarTest.TestingCar car) {
+        raceRecord.saveRecord(car);
+        for (int i = 0, j = moves; i < totalTry; i++, j--) {
+            car.move(j > 0);
         }
     }
 
