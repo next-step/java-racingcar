@@ -3,7 +3,6 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,11 +13,9 @@ class RacingGameTest {
     @DisplayName("tryNum 보다 많이 play 하면 gameOver 되어야 한다.")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void play(int loop) {
-        String carCsv = "1,2,3";
+        String nameCsv = "1,2,3";
         int tryNum = 5;
-        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
-        CarGroup carGroup = new CarGroup(carCsv, strategy);
-        RacingGame game = new RacingGame(carGroup, tryNum);
+        RacingGame game = new RacingGame(nameCsv, tryNum);
 
         for (int i = 0; i < loop; i++) {
             game.play();

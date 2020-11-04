@@ -16,14 +16,14 @@ class CarGroupTest {
     @Test
     @DisplayName("moveCar 를 하면 car 가 전진해야 한다.")
     void moveCar() {
-        String carCsv = "0,1,2,3,4,5,6,7,8,9";
+        String nameCsv = "0,1,2,3,4,5,6,7,8,9";
         MoveStrategy strategy = () -> true;
 
-        CarGroup carGroup = new CarGroup(carCsv, strategy);
+        CarGroup carGroup = new CarGroup(nameCsv, strategy);
         carGroup.moveCar();
 
         int movedPosition = 2;
-        int carNum = carCsv
+        int carNum = nameCsv
                 .split(CarGroupConst.NAME_SPLIT_REGEX)
                 .length;
         Integer[] expectedPositions = new Integer[carNum];

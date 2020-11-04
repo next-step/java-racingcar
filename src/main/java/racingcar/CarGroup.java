@@ -56,4 +56,10 @@ public class CarGroup {
     public List<Car> getWinners() {
         return this.getWinners(this.cars);
     }
+
+    public void setStrategy(MoveStrategy strategy) {
+        for (Car car : this.cars) {
+            car.setStrategy(strategy);
+        }
+    }
 }

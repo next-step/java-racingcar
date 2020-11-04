@@ -16,7 +16,12 @@ public class InputView {
 
     public String askCars() {
         System.out.println(InputViewConst.ASK_CARS);
-        return this.scanner.nextLine();
+        String nameCsv = this.scanner.nextLine();
+        String[] nameArr = nameCsv.split(CarGroupConst.NAME_SPLIT_REGEX);
+        for (String name : nameArr) {
+            Car.validateName(name);
+        }
+        return nameCsv;
     }
 
     public int askTryNum() {

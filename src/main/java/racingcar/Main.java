@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
@@ -8,27 +7,21 @@ public class Main {
 
         InputView inputView = InputView.getInstance();
 
-        String carCsv = inputView.askCars();
-        MoveStrategy strategy = new RandomMoveStrategy();
-        CarGroup carGroup = new CarGroup(carCsv, strategy);
-
+        String nameCsv = inputView.askCars();
         int tryNum = inputView.askTryNum();
-        RacingGame game = new RacingGame(carGroup, tryNum);
+        RacingGame game = new RacingGame(nameCsv, tryNum);
 
         RacingView racingView = RacingView.getInstance();
         racingView.printResultMsg();
 
-        List<Memento> mementos = new LinkedList<>();
         while (game.checkNotGameOver()) {
-            mementos.add(
-                    carGroup.createMemento()
-            );
             game.play();
         }
 
-        for (Memento memento : mementos) {
-            racingView.printCars(memento.getCars());
+        List<List<Car>> history = game.getHistory();
+        for (List<Car> cars : history) {
+            racingView.printCars(cars);
         }
-        racingView.printWinners(carGroup.getWinners());
+        racingView.printWinners(game.getWinners());
     }
 }
