@@ -25,4 +25,8 @@ public class Calculator {
             throw new IllegalArgumentException("에러");
         }
     }
+    public String[] sp(String input){
+       return input.split(" ");
+    }
+
 }
