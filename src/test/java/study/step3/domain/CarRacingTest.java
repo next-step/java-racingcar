@@ -75,31 +75,6 @@ public class CarRacingTest {
         assertThat(carRacing.getRecords().getTotalTry()).isEqualTo(1);
     }
 
-    @Test
-    @DisplayName("가장 많이 이동한 자동차를 위너로 지정한다")
-    void winner() {
-        setUpLapsAndCars(new TestingCar("blue"), new TestingCar("red"));
-        setUpRacing();
-
-        carRacing.start();
-
-        assertThat(carRacing.getWinners()).contains("blue");
-    }
-
-    @Test
-    @DisplayName("위너는 둘 이상일 수 있다")
-    void co_winner() {
-        setUpLapsAndCars(new TestingCar("white"), //
-                new TestingCar("blue"), //
-                new TestingCar("red"));
-
-        setUpRacing();
-
-        carRacing.start();
-
-        assertThat(carRacing.getWinners()).contains("blue", "red");
-    }
-
     private void setUpLapsAndCars(Car... cars) {
         this.circuit = new Circuit(new HashSet<>(Arrays.asList(cars)), 1);
     }
