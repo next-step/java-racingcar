@@ -49,10 +49,10 @@ public class ResultView {
         });
     }
 
-    private void printNameAndRecord(String name, List<Boolean> recoard) {
+    private void printNameAndRecord(String name, List<Boolean> record) {
         //@formatter:off
         print(nameWithSpace(name) + ": " +
-                recoard.stream()
+                record.stream()
                         .map(moved -> moved ? "-" : "")
                         .collect(joining())
         );
