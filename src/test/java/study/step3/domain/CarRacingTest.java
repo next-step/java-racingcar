@@ -78,7 +78,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("가장 많이 이동한 자동차를 위너로 지정한다")
     void winner() {
-        setUpLapsAndCars(new TestingCar("blue", 3), new TestingCar("red", 2));
+        setUpLapsAndCars(new TestingCar("blue"), new TestingCar("red"));
         setUpRacing();
 
         carRacing.start();
@@ -89,9 +89,9 @@ public class CarRacingTest {
     @Test
     @DisplayName("위너는 둘 이상일 수 있다")
     void co_winner() {
-        setUpLapsAndCars(new TestingCar("white", 2), //
-                new TestingCar("blue", 3), //
-                new TestingCar("red", 3));
+        setUpLapsAndCars(new TestingCar("white"), //
+                new TestingCar("blue"), //
+                new TestingCar("red"));
 
         setUpRacing();
 
@@ -110,28 +110,19 @@ public class CarRacingTest {
 
     public static class TestingCar implements Car {
         private final String name;
-        private int moves;
-        private boolean isMoved;
         private int distanceDriven = 0;
 
 
         public TestingCar() {
-            this("anonymous", 1);
+            this("anonymous");
         }
 
-        public TestingCar(String name, int moves) {
+        public TestingCar(String name) {
             this.name = name;
-            this.moves = moves;
-        }
-
-        @Override
-        public boolean isMoved() {
-            return isMoved;
         }
 
         @Override
         public void move() {
-            isMoved = --moves >= 0;
             distanceDriven++;
         }
 

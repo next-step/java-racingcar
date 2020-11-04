@@ -7,7 +7,6 @@ import java.util.Random;
 
 public class RealCar implements Car {
     private final String name;
-    private boolean moved;
     private final Random random;
     private final List<Boolean> drivingRecord = new ArrayList<>();
 
@@ -20,14 +19,8 @@ public class RealCar implements Car {
     }
 
     @Override
-    public boolean isMoved() {
-        return moved;
-    }
-
-    @Override
     public void move() {
-        moved = guessMove();
-        drivingRecord.add(moved);
+        drivingRecord.add(guessMove());
     }
 
     @Override
