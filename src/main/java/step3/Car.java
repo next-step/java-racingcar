@@ -10,7 +10,7 @@ public class Car {
 
   public void setMove() {
     if (new Random().nextInt(BOUND) >= 4) {
-      this.move += 1;
+      this.move++;
     }
   }
 

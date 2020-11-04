@@ -15,6 +15,8 @@ public class RacingCar {
     }
     Set<Car> cars = IntStream.range(0, car).mapToObj(i -> new Car()).collect(Collectors.toSet());
 
+    System.out.print("실행결과\n");
+
     int move = inputView.setMoveCount();
     IntStream.range(0, move).mapToObj(i -> cars).forEach(this::move);
   }
