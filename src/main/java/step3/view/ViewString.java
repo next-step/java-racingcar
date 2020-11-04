@@ -5,7 +5,6 @@ public enum ViewString {
     HOW_MUCH_ATTEMPT_QUESTION("시도할 회수는 몇 회 인가요?"),
     NEWLINE("\n"),
     RESULT_ANNOUNCEMENT(NEWLINE + "실행결과" + NEWLINE),
-    ROUND_ANNOUNCEMENT("라운드"),
     MOVE_CHAR("-"),
     ;
 

@@ -24,7 +24,7 @@ public class ResultViewPresenter implements Presenter {
             final List<CarDTO> cars = racingCars.stream()
                     .map(racingCar -> new CarDTO(racingCar.getName(), racingMap.findPosition(racingCar)))
                     .collect(Collectors.toList());
-            return new RoundResultViewPresenter(snapshot.getNumber(), cars);
+            return new RoundResultViewPresenter(cars);
         }).collect(Collectors.toList());
     }
 
