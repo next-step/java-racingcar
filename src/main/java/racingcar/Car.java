@@ -5,6 +5,12 @@ public class Car {
     private String name;
     private MoveStrategy strategy;
 
+    public Car(Car car) {
+        this.position = car.position;
+        this.name = car.name;
+        this.strategy = car.strategy;
+    }
+
     public Car(String name, MoveStrategy strategy) {
         if (name == null) {
             throw new IllegalArgumentException(CarConst.NULL_NAME_ERR);

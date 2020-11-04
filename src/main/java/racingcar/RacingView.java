@@ -1,23 +1,9 @@
 package racingcar;
 
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class RacingView {
-
-    public Consumer<List<Car>> carsConsumer = (cars) -> {
-        for (Car car : cars) {
-            String carStr = this.convertCar(car);
-            System.out.println(carStr);
-        }
-        System.out.println();
-    };
-
-    public Consumer<List<Car>> winnersConsumer = (winners) -> {
-        String winnerStr = this.convertWinnerList(winners);
-        System.out.println(winnerStr);
-    };
 
     private RacingView() {}
 
@@ -46,12 +32,25 @@ public class RacingView {
         return sb.toString();
     }
 
+    public void printCars(List<Car> cars) {
+        for (Car car : cars) {
+            String carStr = this.convertCar(car);
+            System.out.println(carStr);
+        }
+        System.out.println();
+    }
+
     protected String convertWinnerList(List<Car> winnerList) {
         List<String> winners = winnerList
                 .stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
         return String.join(RacingViewConst.WINNER_DELIMITER, winners) + RacingViewConst.WINNER_MSG;
+    }
+
+    public void printWinners(List<Car> winners) {
+        String winnerStr = this.convertWinnerList(winners);
+        System.out.println(winnerStr);
     }
 
     private static class SingletonHelper {

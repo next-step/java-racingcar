@@ -1,8 +1,5 @@
 package racingcar;
 
-import java.util.List;
-import java.util.function.Consumer;
-
 public class RacingGame {
     private CarGroup carGroup;
     private int currTry;
@@ -17,14 +14,6 @@ public class RacingGame {
 
     public boolean checkNotGameOver() {
         return this.currTry < this.maxTry;
-    }
-
-    public void printCars(Consumer<List<Car>> consumer) {
-        this.carGroup.print(consumer);
-    }
-
-    public void printWinners(Consumer<List<Car>> consumer) {
-        this.carGroup.printWinners(consumer);
     }
 
     public void play() {

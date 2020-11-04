@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -14,11 +17,18 @@ public class Main {
 
         RacingView racingView = RacingView.getInstance();
         racingView.printResultMsg();
+
+        List<Memento> mementos = new LinkedList<>();
         while (game.checkNotGameOver()) {
-            game.printCars(racingView.carsConsumer);
+            mementos.add(
+                    carGroup.createMemento()
+            );
             game.play();
         }
 
-        game.printWinners(racingView.winnersConsumer);
+        for (Memento memento : mementos) {
+            racingView.printCars(memento.getCars());
+        }
+        racingView.printWinners(carGroup.getWinners());
     }
 }

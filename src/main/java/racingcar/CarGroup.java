@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class CarGroup {
@@ -24,12 +23,16 @@ public class CarGroup {
         }
     }
 
-    private void print(List<Car> cars, Consumer<List<Car>> consumer) {
-        consumer.accept(cars);
+    public Memento createMemento() {
+        Memento memento = new Memento();
+        for (Car car : this.cars) {
+            memento.addCar(new Car(car));
+        }
+        return memento;
     }
 
-    public void print(Consumer<List<Car>> consumer) {
-        this.print(this.cars, consumer);
+    public void restoreMemento(Memento memento) {
+        this.cars = memento.getCars();
     }
 
     protected List<Integer> getPositions() {
@@ -50,8 +53,7 @@ public class CarGroup {
                 .getValue();
     }
 
-    public void printWinners(Consumer<List<Car>> consumer) {
-        List<Car> winners = this.getWinners(this.cars);
-        this.print(winners, consumer);
+    public List<Car> getWinners() {
+        return this.getWinners(this.cars);
     }
 }
