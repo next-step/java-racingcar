@@ -1,0 +1,7 @@
+1. 사칙연산의 기호를 enum이 갖도록 구현
+2. Expression 객체 삭제
+3. FourPointOperation에서 NUMBER 삭제
+4. @DisplayName을 사용한 테스트 의도 명세
+5. 매직넘버 상수화
+    https://www.slipp.net/questions/356
+6. Objects 클래스를 이용한 null 체크
