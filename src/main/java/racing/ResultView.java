@@ -2,7 +2,9 @@ package racing;
 
 public final class ResultView {
 
-    public static final String RACING_RESULT = "실행 결과";
+    private static final String RACING_RESULT = "실행 결과";
+
+    private static final String DISPLACEMENT_SYMBOL = "-";
 
     private ResultView() {}
 
@@ -12,9 +14,13 @@ public final class ResultView {
 
     public static void viewRoundResult(final RacingCars racingCars) {
         for (final Car car : racingCars.getCars()) {
-            System.out.println(car.getDisplacement());
+            System.out.println(repeat(car.getDisplacement()));
         }
 
         System.out.println();
+    }
+
+    private static String repeat(int times) {
+        return new String(new char[times]).replace("\0", DISPLACEMENT_SYMBOL);
     }
 }

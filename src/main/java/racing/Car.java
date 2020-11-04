@@ -2,21 +2,17 @@ package racing;
 
 public class Car {
 
-    private static final String MOVEMENT = "-";
+    private int displacement;
 
-    private final StringBuilder displacement;
-
-    public Car() {
-        this.displacement = new StringBuilder();
-    }
+    public Car() {}
 
     public void move(boolean canMove) {
         if (canMove) {
-            displacement.append(MOVEMENT);
+            displacement++;
         }
     }
 
-    public String getDisplacement() {
-        return displacement.toString();
+    public int getDisplacement() {
+        return displacement;
     }
 }
