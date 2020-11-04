@@ -1,22 +1,19 @@
 package stringCalculator;
 
-import java.util.Arrays;
-
 public class Calculator {
 
     public static int calculate(String symbol, int a, int b) {
 
-        return Arrays.stream(Tokenizer.separateToken())
-                .filter(operator -> operator.symbol.isSameSymbol(symbol))
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new)
-                .execute(symbol,a,b);
+        Tokenizer.separateToken();
+        Operator.containsSymbol(symbol);
+
+        return Operator.execute(symbol, a, b);
     }
 
     public int executeResult(String token){
 
-        Tokenizer.setSplitToken(token);
-        String[] splitToken = Tokenizer.splitToken;
+        Tokenizer.makeAndSetSplitToken(token);
+        String[] splitToken = Tokenizer.getSplitToken();
         int result = Integer.parseInt(splitToken[0]);
 
         for (int i = 1; i < splitToken.length; i += 2) {

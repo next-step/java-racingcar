@@ -18,8 +18,8 @@ public class CalculatorTest {
             return a / b;
         });
 
-        assertThat(calculator.executeResult("2 + 3 * 4 / 2 / 2"))
-            .isEqualTo(5);
+        assertThat(calculator.executeResult("2 + 3 * 4 / 2"))
+            .isEqualTo(10);
 
 
     }

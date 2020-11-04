@@ -2,26 +2,26 @@ package stringCalculator;
 
 public class Tokenizer {
 
-    public static String[] splitToken;
+    private static String[] splitToken;
 
-    public static void setSplitToken(String token){
+    public static void makeAndSetSplitToken(String token){
         splitToken = token.split(" ");
     }
 
-    public static Operator[] separateToken() {
-        Operator[] operators = new Operator[splitToken.length / 2];
-
-        for (int i = 1; i < splitToken.length; i += 2) {
-            operators[i/2] = createOperator(splitToken[i]);
-        }
-
-        return operators;
+    public static String[] getSplitToken(){
+        return splitToken;
     }
 
-    public static Operator createOperator(String symbol){
-        if(Operator.operatorCollection.containsKey(symbol)) {
-            return new Operator(symbol);
+    public static void separateToken() {
+        for (int i = 1; i < splitToken.length; i += 2) {
+            createOperator(splitToken[i]);
         }
-        throw new NotVaildOperatorException("올바른 사칙연산 기호를 입력해주세요");
+    }
+
+    public static void createOperator(String symbol){
+        if(!Operator.containsSymbol(symbol)) {
+            throw new NotVaildOperatorException("올바른 사칙연산 기호를 입력해주세요");
+        }
+        Operator.addSymbol(symbol);
     }
 }
