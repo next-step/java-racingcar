@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import racing.domain.Car;
+import racing.domain.FixedRoulette;
+import racing.domain.RacingCars;
+
 public class RacingGameTest {
 
     @Test
