@@ -3,6 +3,7 @@ package stringCalculator;
 import java.util.function.BiFunction;
 
 public enum Calculate {
+
     ADD("+", (firstNumber, secondNumber) -> (firstNumber + secondNumber)),
 
     SUBTRACT("-", (firstNumber, secondNumber) -> (firstNumber - secondNumber)),
