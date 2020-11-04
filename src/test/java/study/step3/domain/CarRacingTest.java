@@ -56,17 +56,17 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("자동차 경주는 경주결과를 출력하는 ResultView를 받을 수 있다.")
-    void acceptableResultView() {
-        setUpLapsAndCars(new TestingCar());
+    @DisplayName("경주시작 전엔 이동시도횟수가 0이다.")
+    void zeroTryWhenBeforeStart() {
+        setUpLapsAndCars(new study.step3.TestingCar());
         setUpRacing();
 
         assertThat(carRacing.getRecords().getTotalTry()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
-    void resultViewCommittedAfterStaring() {
+    @DisplayName("경주시작 후엔 이동시도횟수가 0이다.")
+    void nonZeroTryWhenAfterStart() {
         setUpLapsAndCars(new study.step3.TestingCar());
         setUpRacing();
 
