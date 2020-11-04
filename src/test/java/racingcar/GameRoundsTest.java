@@ -45,13 +45,15 @@ public class GameRoundsTest {
     @DisplayName("기록 저장하기")
     void keepRecord() {
         int carNum = 2;
+        int roundNum = 0;
         Cars cars = new Cars(carNum, null);
-        GameRounds gameRounds = new GameRounds(0);
+        GameRounds gameRounds = new GameRounds(roundNum);
 
         gameRounds.keepRecord(cars);
-        Record record = gameRounds.getRecords().getRecordList().get(0);
 
+        int roundToGet = 0;
+        Record record = gameRounds.getRecords().getRecordList().get(roundToGet);
         assertThat(record.getPositions()).hasSize(carNum);
-        record.getPositions().forEach(position -> assertThat(position).isEqualTo(0));
+        record.getPositions().forEach(position -> assertThat(position).isEqualTo(Car.INITIAL_POSITION));
     }
 }

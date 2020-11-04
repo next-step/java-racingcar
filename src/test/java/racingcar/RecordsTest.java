@@ -9,10 +9,11 @@ public class RecordsTest {
     @Test
     @DisplayName("레코드 저장하기")
     void addRecord() {
-        Records records = new Records(0);
+        int recordCount = 1;
+        Records records = new Records(recordCount);
 
         records.addRecord(null);
 
-        assertThat(records.getRecordList()).hasSize(1);
+        assertThat(records.getRecordList()).hasSize(recordCount);
     }
 }
