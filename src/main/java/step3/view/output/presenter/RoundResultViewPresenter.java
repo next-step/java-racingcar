@@ -4,6 +4,7 @@ import step3.view.dto.CarDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static step3.view.ViewString.*;
 
@@ -33,10 +34,8 @@ public class RoundResultViewPresenter implements Presenter {
     }
 
     private String createMovingDistanceView(final int position) {
-        final StringBuilder viewBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            viewBuilder.append(MOVE_CHAR);
-        }
-        return viewBuilder.toString();
+        return IntStream.range(0, position)
+                .mapToObj(i -> String.valueOf(MOVE_CHAR))
+                .collect(Collectors.joining());
     }
 }
