@@ -11,7 +11,7 @@ public enum Operator {
     MULTIPLY("*",(left, right) -> left * right),
     DIVIDE("/",(left, right) -> {
         if(right == 0){
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+            throw new IllegalArgumentException(CustomErrorMessage.DIVISION_BY_ZERO.getErrorMessage());
         }
 
         return  left / right;
@@ -30,7 +30,7 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .filter(operator -> operator.operatorValue.equals(operatorCharacter))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("연산자는 (+,-,*,/)만 사용 가능합니다."));
+                .orElseThrow(() -> new IllegalArgumentException(CustomErrorMessage.ILLEGAL_OPERATOR.getErrorMessage()));
     }
 
 
