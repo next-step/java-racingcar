@@ -3,12 +3,10 @@ package stringcalculator;
 public class Expression {
 
     private final String[] expressionArray;
-    private final int length;
 
     public Expression(String input) {
         validate(input);
         expressionArray = input.split(" ");
-        length = expressionArray.length;
     }
 
     private void validate(String input) {
@@ -18,11 +16,11 @@ public class Expression {
     }
 
     public int getInteger(int index) {
-        return Integer.valueOf(expressionArray[index]);
+        return Integer.parseInt(expressionArray[index]);
     }
 
     public int getLength() {
-        return length;
+        return expressionArray.length;
     }
 
     public String get(int index) {
