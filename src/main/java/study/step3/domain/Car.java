@@ -12,4 +12,8 @@ public interface Car {
     default int getTotalTry() {
         return 0;
     }
+
+    default int getDistanceDriven() {
+        return 0;
+    }
 }

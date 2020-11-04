@@ -52,4 +52,22 @@ class RealCarTest {
 
         assertThat(car.getDistanceDriven()).isEqualTo(2);
     }
+
+    private static class TestingCar extends RealCar {
+        private boolean nextGuess;
+
+        public TestingCar() {
+            super("blue");
+        }
+
+        @Override
+        protected boolean guessMove() {
+            return nextGuess;
+        }
+
+        public void move(boolean nextGuess) {
+            this.nextGuess = nextGuess;
+            super.move();
+        }
+    }
 }

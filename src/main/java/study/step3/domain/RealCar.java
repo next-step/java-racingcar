@@ -41,7 +41,7 @@ public class RealCar implements Car {
         return drivingRecord.size();
     }
 
-    private boolean guessMove() {
+    protected boolean guessMove() {
         return random.nextInt(10) >= 4;
     }
 
@@ -60,5 +60,10 @@ public class RealCar implements Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int getDistanceDriven() {
+        return drivingRecord.stream().mapToInt(moved -> moved ? 1 : 0).sum();
     }
 }
