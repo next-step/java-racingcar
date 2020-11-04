@@ -6,4 +6,8 @@ public class User {
     public static void InputCarCount(){
         Game.setCars(new Scanner(System.in).nextInt());
     }
+
+    public static void InputGameCount(){
+        Game.setGameCount(new Scanner(System.in).nextInt());
+    }
 }
