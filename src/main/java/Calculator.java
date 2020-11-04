@@ -37,8 +37,6 @@ public interface Calculator {
 
         @Override
         public int calculate(String expression) {
-            validateExpression(expression);
-
             Deque<Integer> operands = new LinkedList<>();
             Queue<Operator> operators = new LinkedList<>();
 
@@ -60,6 +58,8 @@ public interface Calculator {
         }
 
         private void parseExpression(String expression, Queue<Integer> operands, Queue<Operator> operators) {
+            validateExpression(expression);
+
             String[] parts = expression.split(" ");
 
             for (int i = 0; i < parts.length; i++) {
@@ -102,19 +102,13 @@ public interface Calculator {
 
             @Override
             public void validate(String expression) throws InvalidExpressionException {
-                if (isNullOrBlank(expression) || !isStartByNumericOperand(expression)
+                if (isNullOrBlank(expression)
+                        || !isStartByNumericOperand(expression)
                 ) throw new InvalidExpressionException(expression);
             }
 
             private boolean isNullOrBlank(String expression) {
-                if (expression == null) return true;
-                if (expression.isEmpty()) return true;
-                for (int i = 0; i < expression.length(); i++) {
-                    if (!Character.isWhitespace(expression.charAt(i))) {
-                        return false;
-                    }
-                }
-                return true;
+                return StringUtils.isNullOrBlank(expression);
             }
 
             private boolean isStartByNumericOperand(String expression) {
