@@ -2,9 +2,9 @@ package racingcar;
 
 public class Car {
 
-    private static int score;
+    private int score;
 
-    public static void foward(){
+    public void foward(){
         score++;
     }
 }
