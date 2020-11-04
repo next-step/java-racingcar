@@ -1,7 +1,5 @@
 package racingGame.View;
 
-import racingGame.GameSetting;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -15,21 +13,18 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public static InputView createInstance(){
+    public static InputView createInstance() {
         return new InputView(new Scanner(System.in));
     }
 
-    public GameSetting setUpGame() {
-        int numRound;
-        int numCar;
-
+    public int askNumCar() {
         System.out.println(NUM_CAR_QUESTION);
-        numRound = this.scanner.nextInt();
+        return this.scanner.nextInt();
+    }
 
+    public int askNumRound() {
         System.out.println(NUM_ROUND_QUESTION);
-        numCar = this.scanner.nextInt();
-
-        return GameSetting.of(numRound, numCar);
+        return this.scanner.nextInt();
     }
 
 }
