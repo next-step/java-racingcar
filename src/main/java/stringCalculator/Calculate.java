@@ -1,66 +1,32 @@
 package stringCalculator;
 
-import stringCalculator.exception.TypeException;
+import java.util.function.BiFunction;
 
 /**
  * 연산하는 클래스
  */
-public enum Calculate implements Calculatable{
-    ADD("+") {
-        @Override
-        public int calculate(int firstNumber, int secondNumber) {
-            return firstNumber + secondNumber;
-        }
-    },
+public enum Calculate {
+    ADD("+", (firstNumber, secondNumber) -> (firstNumber + secondNumber)),
 
-    SUBTRACT("-") {
-        @Override
-        public int calculate(int firstNumber, int secondNumber) {
-            return firstNumber - secondNumber;
-        }
-    },
+    SUBTRACT("-", (firstNumber, secondNumber) -> (firstNumber - secondNumber)),
 
-    MULTIPLE("*") {
-        @Override
-        public int calculate(int firstNumber, int secondNumber) {
-            return firstNumber * secondNumber;
-        }
-    },
+    MULTIPLE("*", (firstNumber, secondNumber) -> (firstNumber * secondNumber)),
 
-    DIVISION("/") {
-        @Override
-        public int calculate(int firstNumber, int secondNumber) {
-            return firstNumber / secondNumber;
-        }
-    };
+    DIVISION("/", (firstNumber, secondNumber) -> (firstNumber / secondNumber));
 
     private final String operator;
+    private final BiFunction biFunction;
 
-    Calculate(String operator) {
+    Calculate(String operator, BiFunction<Integer, Integer, Integer> biFunction) {
         this.operator = operator;
+        this.biFunction = biFunction;
     }
 
-    /**
-     * 연산
-     */
-    public static int calculate(String operator, int firstNumber, int secondNumber) {
-        try {
-            return of(operator).calculate(firstNumber, secondNumber);
-        } catch (NullPointerException e) {
-            throw new TypeException();
-        }
+    public Integer calculate(int firstNumber, int secondNumber) {
+        return (Integer) this.biFunction.apply(firstNumber, secondNumber);
     }
 
-    /**
-     * enum 반환
-     */
-    private static Calculatable of(String operator) {
-        Calculate[] values = Calculate.values();
-        for (Calculate value : values) {
-            if (value.operator.equals(operator)) {
-                return value;
-            }
-        }
-        return null;
+    public String getOperator() {
+        return operator;
     }
 }

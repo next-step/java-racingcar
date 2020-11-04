@@ -33,7 +33,11 @@ public class Operate {
      * 사칙연산 수행
      */
     private void calculate(int operand, String operator) {
-        result = Calculate.calculate(operator, result, operand);
+        for (Calculate value : Calculate.values()) {
+            if (operator.equals(value.getOperator())) {
+                result = value.calculate(result, operand);
+            }
+        }
     }
 
     public int getResult() {
