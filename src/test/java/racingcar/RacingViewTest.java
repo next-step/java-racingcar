@@ -19,7 +19,7 @@ class RacingViewTest {
     @BeforeEach
     void setUp() {
         RacingGame game = Mockito.mock(RacingGame.class);
-        this.racingView = new RacingView(game);
+        this.racingView = RacingView.getInstance();
     }
 
     @ParameterizedTest

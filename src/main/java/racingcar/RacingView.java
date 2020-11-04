@@ -1,13 +1,32 @@
 package racingcar;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class RacingView {
-    public RacingGame game;
 
-    public RacingView(RacingGame game) {
-        this.game = game;
+    public Consumer<List<Car>> carsConsumer = (cars) -> {
+        for (Car car : cars) {
+            String carStr = this.convertCar(car);
+            System.out.println(carStr);
+        }
+        System.out.println();
+    };
+
+    public Consumer<List<Car>> winnersConsumer = (winners) -> {
+        String winnerStr = this.convertWinnerList(winners);
+        System.out.println(winnerStr);
+    };
+
+    private RacingView() {}
+
+    /**
+     * NOTE: 굳이 싱글톤 패턴으로 할 필요는 없지만,
+     * InputView 와 인터페이스를 비슷하게 하기 위해 적용했다.
+     */
+    public static RacingView getInstance() {
+        return RacingView.SingletonHelper.instance;
     }
 
     public void printResultMsg() {
@@ -27,14 +46,6 @@ public class RacingView {
         return sb.toString();
     }
 
-    public void print() {
-        this.game.printCars(car -> {
-            String convertedCar = this.convertCar(car);
-            System.out.println(convertedCar);
-        });
-        System.out.println();
-    }
-
     protected String convertWinnerList(List<Car> winnerList) {
         List<String> winners = winnerList
                 .stream()
@@ -43,9 +54,7 @@ public class RacingView {
         return String.join(RacingViewConst.WINNER_DELIMITER, winners) + RacingViewConst.WINNER_MSG;
     }
 
-    public void printWinners() {
-        List<Car> winnerList = this.game.getWinners();
-        String winnerStr = this.convertWinnerList(winnerList);
-        System.out.println(winnerStr);
+    private static class SingletonHelper {
+        private static final RacingView instance = new RacingView();
     }
 }

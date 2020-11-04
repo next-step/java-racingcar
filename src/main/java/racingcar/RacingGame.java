@@ -1,10 +1,7 @@
 package racingcar;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private CarGroup carGroup;
@@ -22,21 +19,12 @@ public class RacingGame {
         return this.currTry < this.maxTry;
     }
 
-    public void printCars(Consumer<Car> printMethod) {
-        this.carGroup.getCarStream()
-                .forEach(printMethod);
+    public void printCars(Consumer<List<Car>> consumer) {
+        this.carGroup.print(consumer);
     }
 
-    public List<Car> getWinners() {
-        return this.carGroup.getCarStream()
-                .collect(
-                        Collectors.groupingBy(Car::getPosition)
-                ).entrySet()
-                .stream()
-                .max(
-                        Comparator.comparing(Map.Entry::getKey)
-                ).get()
-                .getValue();
+    public void printWinners(Consumer<List<Car>> consumer) {
+        this.carGroup.printWinners(consumer);
     }
 
     public void play() {
@@ -44,9 +32,6 @@ public class RacingGame {
             return;
         }
         this.currTry++;
-        int carNum = this.carGroup.getCarNum();
-        for (int carIdx = 0; carIdx < carNum; carIdx++) {
-            this.carGroup.moveCar(carIdx);
-        }
+        this.carGroup.moveCar();
     }
 }

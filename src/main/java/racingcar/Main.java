@@ -12,13 +12,13 @@ public class Main {
         int tryNum = inputView.askTryNum();
         RacingGame game = new RacingGame(carGroup, tryNum);
 
-        RacingView racingView = new RacingView(game);
+        RacingView racingView = RacingView.getInstance();
         racingView.printResultMsg();
         while (game.checkNotGameOver()) {
-            racingView.print();
+            game.printCars(racingView.carsConsumer);
             game.play();
         }
 
-        racingView.printWinners();
+        game.printWinners(racingView.winnersConsumer);
     }
 }
