@@ -5,6 +5,8 @@ import java.util.List;
 
 public final class RacingCars {
 
+    public static final int moveCondition = 4;
+
     private final List<Car> cars;
 
     public RacingCars(final int carCount) {
@@ -16,7 +18,7 @@ public final class RacingCars {
         return cars;
     }
 
-    public void ready(int carCount) {
+    private void ready(int carCount) {
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
@@ -24,7 +26,7 @@ public final class RacingCars {
 
     public void race(Roulette roulette) {
         for (final Car car : this.cars) {
-            boolean canMove = (roulette.spin() >= 4);
+            boolean canMove = (roulette.spin() >= moveCondition);
             car.move(canMove);
         }
     }

@@ -2,9 +2,7 @@ package racing;
 
 public class Car {
 
-    private int displacement;
-
-    public Car() {}
+    private int displacement = 0;
 
     public void move(boolean canMove) {
         if (canMove) {
