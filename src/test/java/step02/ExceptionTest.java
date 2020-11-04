@@ -2,27 +2,33 @@ package step02;
 
 import exception.DividedByZeroException;
 import exception.EmptyException;
-import exception.ErrorMessage;
 import exception.InValidOperatorException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class ExceptionTest {
+    private static Stream<Arguments> provideInValidOperatorResult() {
+        return Stream.of(
+                Arguments.of(Arrays.asList("3", "&", "5", ".", "2", "=", "5", "+", "10", "-", "5"))
+        );
+    }
 
-//    @DisplayName("사칙연산 기호에 해당되지 않을 경우 예외 처리")
-//    @ParameterizedTest
-//    @ValueSource(string[] = "3 * 5 & 5")
-//    public void 유효하지않은_제수_예외처리_테스트(String inputData) {
-//        assertThatExceptionOfType(InValidOperatorException.class)
-//                .isThrownBy(() -> {
-//                    Calculator.calculate(inputData);
-//                });
-//    }
+    @DisplayName("사칙연산 기호에 해당되지 않을 경우 예외 처리")
+    @ParameterizedTest
+    @MethodSource("provideInValidOperatorResult")
+    public void 유효하지않은_연산자_예외처리_테스트(List<String> inputData) {
+        assertThatExceptionOfType(InValidOperatorException.class)
+                .isThrownBy(() -> {
+                    Calculator.calculate((String[]) inputData.toArray());
+                });
+    }
 
     @DisplayName("입력값이 null 이거나 비었을 때 예외처리")
     @ParameterizedTest
