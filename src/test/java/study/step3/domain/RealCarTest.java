@@ -53,11 +53,15 @@ class RealCarTest {
         assertThat(car.getDistanceDriven()).isEqualTo(2);
     }
 
-    private static class TestingCar extends RealCar {
+    public static class TestingCar extends RealCar {
         private boolean nextGuess;
 
         public TestingCar() {
-            super("blue");
+            this("blue");
+        }
+
+        public TestingCar(String name) {
+            super(name);
         }
 
         @Override

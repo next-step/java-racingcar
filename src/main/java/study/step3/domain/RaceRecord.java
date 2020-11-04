@@ -7,10 +7,12 @@ import static java.util.stream.Collectors.toSet;
 
 public class RaceRecord {
     private final Map<String, List<Boolean>> records = new TreeMap<>();
+    private final List<Car> carRecords = new ArrayList<>();
 
     public void saveRecord(Car car) {
         records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
                 .add(car.isMoved());
+        carRecords.add(car);
     }
 
     public int getTotalTry() {
@@ -27,11 +29,9 @@ public class RaceRecord {
 
     public Set<String> listMostMovingNames() {
         int mostMove = getMostMove();
-        return records.entrySet() //
-                .stream() //
-                .map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), countMove(entry.getValue()))) //
-                .filter(entry -> entry.getValue() >= mostMove) //
-                .map(Map.Entry::getKey) //
+        return carRecords.stream() //
+                .filter(car -> car.getDistanceDriven() >= mostMove) //
+                .map(Car::getName) //
                 .collect(toSet());
     }
 
@@ -40,9 +40,8 @@ public class RaceRecord {
     }
 
     private int getMostMove() {
-        return records.values() //
-                .stream() //
-                .mapToInt(this::countMove) //
+        return carRecords.stream() //
+                .mapToInt(Car::getDistanceDriven) //
                 .max() //
                 .orElse(0);
     }
