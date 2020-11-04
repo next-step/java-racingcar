@@ -7,6 +7,9 @@ public class InputView {
     private Scanner scanner;
 
     private InputView() {
+        if (this.scanner != null) {
+            return;
+        }
         this.scanner = new Scanner(System.in);
     }
 

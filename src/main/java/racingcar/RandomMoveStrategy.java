@@ -5,10 +5,15 @@ import java.util.Random;
 public class RandomMoveStrategy implements MoveStrategy {
     private static Random random;
 
-    public RandomMoveStrategy() {
-        if (this.random == null) {
-            this.random = new Random();
+    private RandomMoveStrategy() {
+        if (this.random != null) {
+            return;
         }
+        this.random = new Random();
+    }
+
+    public static RandomMoveStrategy getInstance() {
+        return RandomMoveStrategy.SingletonHelper.instance;
     }
 
     @Override
@@ -17,5 +22,9 @@ public class RandomMoveStrategy implements MoveStrategy {
         int biggerThan = RandomMoveStrategyConst.RANDOM_BIGGER_THAN;
         int randomNum = this.random.nextInt(bound);
         return randomNum >= biggerThan;
+    }
+
+    private static class SingletonHelper {
+        private static final RandomMoveStrategy instance = new RandomMoveStrategy();
     }
 }

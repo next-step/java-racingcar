@@ -11,7 +11,7 @@ public class RacingGame {
     private int maxTry;
 
     public RacingGame(String nameCsv, int tryNum) {
-        MoveStrategy strategy = new RandomMoveStrategy();
+        MoveStrategy strategy = RandomMoveStrategy.getInstance();
         this.carGroup = new CarGroup(nameCsv, strategy);
         this.currTry = 0;
         this.maxTry = tryNum;
