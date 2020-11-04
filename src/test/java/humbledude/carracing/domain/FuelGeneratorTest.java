@@ -1,5 +1,8 @@
-package humbledude.carracing;
+package humbledude.carracing.domain;
 
+import humbledude.carracing.domain.ConstantFuelGenerator;
+import humbledude.carracing.domain.FuelGenerator;
+import humbledude.carracing.domain.RandomFuelGenerator;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

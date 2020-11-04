@@ -1,5 +1,11 @@
 package humbledude.carracing;
 
+import humbledude.carracing.domain.Car;
+import humbledude.carracing.domain.CarRacing;
+import humbledude.carracing.domain.RandomFuelGenerator;
+import humbledude.carracing.view.InputView;
+import humbledude.carracing.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 

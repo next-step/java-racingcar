@@ -1,4 +1,4 @@
-package humbledude.carracing;
+package humbledude.carracing.domain;
 
 import java.util.Comparator;
 import java.util.List;

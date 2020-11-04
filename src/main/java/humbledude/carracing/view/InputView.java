@@ -1,4 +1,4 @@
-package humbledude.carracing;
+package humbledude.carracing.view;
 
 import java.util.List;
 import java.util.Scanner;

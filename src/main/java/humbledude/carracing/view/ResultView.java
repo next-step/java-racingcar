@@ -1,4 +1,6 @@
-package humbledude.carracing;
+package humbledude.carracing.view;
+
+import humbledude.carracing.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
