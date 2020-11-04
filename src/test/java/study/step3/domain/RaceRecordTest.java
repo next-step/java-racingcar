@@ -41,10 +41,11 @@ public class RaceRecordTest {
     @Test
     @DisplayName("RaceRecord는 전체 이동거리를 반환한다.")
     void totalMoves() {
-        saveRecords(10, new TestingCar("blue", 2), //
-                new TestingCar("red", 3),  //
-                new TestingCar("white", 2),  //
-                new TestingCar("gray", 3));
+        int totalTry = 10;
+        saveRecord(totalTry, 2, new RealCarTest.TestingCar("blue"));
+        saveRecord(totalTry, 3, new RealCarTest.TestingCar("red"));
+        saveRecord(totalTry, 2, new RealCarTest.TestingCar("white"));
+        saveRecord(totalTry, 3, new RealCarTest.TestingCar("gray"));
 
         assertThat(raceRecord.getTotalTry()).isEqualTo(10);
     }
