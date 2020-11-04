@@ -7,8 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step3.TestingCar;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -77,12 +75,12 @@ public class RaceRecordTest {
         saveRecord(totalTry, 2, new TestingCar("white"));
         saveRecord(totalTry, 3, new TestingCar("gray"));
 
-        AtomicInteger assertions = new AtomicInteger();
+        int[] assertions = new int[]{0};
         raceRecord.forEachRecordUntil(tris, (name, record) -> {
             assertThat(record.size()).isEqualTo(tris);
-            assertions.incrementAndGet();
+            assertions[0]++;
         });
-        assertThat(assertions.get()).isEqualTo(4); // consumer 가 자동차수만큼 실행되었는지 검증
+        assertThat(assertions[0]).isEqualTo(4); // consumer 가 자동차수만큼 실행되었는지 검증
     }
 
     private void saveRecord(int totalTry, int moves, TestingCar car) {
