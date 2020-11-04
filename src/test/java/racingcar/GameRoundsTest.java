@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -46,17 +45,13 @@ public class GameRoundsTest {
     @DisplayName("기록 저장하기")
     void keepRecord() {
         int carNum = 2;
-        int roundNum = 3;
         Cars cars = new Cars(carNum, null);
         GameRounds gameRounds = new GameRounds(0);
 
-        IntStream.range(0, roundNum).forEach(idx -> gameRounds.keepRecord(cars));
-        List<Record> recordList = gameRounds.getRecords().getRecordList();
+        gameRounds.keepRecord(cars);
+        Record record = gameRounds.getRecords().getRecordList().get(0);
 
-        assertThat(recordList).hasSize(roundNum);
-        recordList.stream().forEach(record -> {
-            assertThat(record.getPositions()).hasSize(carNum);
-            record.getPositions().forEach(position -> assertThat(position).isEqualTo(0));
-        });
+        assertThat(record.getPositions()).hasSize(carNum);
+        record.getPositions().forEach(position -> assertThat(position).isEqualTo(0));
     }
 }
