@@ -8,8 +8,8 @@ public class RacingGame {
 
     private int round;
 
-    public RacingGame() {
-        roulette = new Roulette();
+    public RacingGame(Roulette roulette) {
+        this.roulette = roulette;
     }
 
     public void start() {
