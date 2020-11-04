@@ -5,6 +5,7 @@ import racingcar.game.GameHistory;
 import racingcar.strategy.PrintMarkStrategy;
 
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class ResultView {
     private static final ResultView resultView = new ResultView();
@@ -19,9 +20,11 @@ public class ResultView {
 
 
     private void drawWithName(Map<String, Integer> carStatus, PrintMarkStrategy strategy) {
-        carStatus.forEach((name, progress) -> racingProgress.append(String.format("%s :", name))
-                .append(String.valueOf(strategy.getPrintMark()).repeat(Math.max(0, progress)))
-                .append(System.lineSeparator()));
+        carStatus.forEach((name, progress) -> {
+            racingProgress.append(String.format("%s :", name));
+            IntStream.range(0,progress).forEach(index->racingProgress.append(strategy.getPrintMark()));
+            racingProgress.append(System.lineSeparator());
+        });
         racingProgress.append(System.lineSeparator());
 
     }
@@ -32,11 +35,15 @@ public class ResultView {
     }
 
     public void viewAll(GameHistory gameHistory, PrintMarkStrategy strategy) {
-        if (racingProgress.length() > 0) {
-            racingProgress.delete(0, racingProgress.length());
-        }
+        clearRacingProgress();
         gameHistory.getHistoryAll().forEach((round, history)-> drawWithName(history,strategy));
         drawWinner(gameHistory.getWinner());
         System.out.println(racingProgress.toString());
+    }
+
+    private void clearRacingProgress(){
+        if (racingProgress.length() > 0) {
+            racingProgress.delete(0, racingProgress.length());
+        }
     }
 }

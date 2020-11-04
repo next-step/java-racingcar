@@ -1,6 +1,7 @@
 package racingcar.game;
 
 import racingcar.Constant;
+import racingcar.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class RacingInfomation {
         return carNames;
     }
 
-    public static class Builder{
+    public static class Builder {
         private final int playCount;
 
         private int numberOfCar = 0;
@@ -50,20 +51,22 @@ public class RacingInfomation {
             carNames = Stream.of(value.split(DELIMETER))
                     .map(String::trim)
                     .collect(Collectors.toList());
-            isValidCarNames(carNames);
+            isValidCarNameList(carNames);
             return this;
         }
 
-        public RacingInfomation build(){
+        public RacingInfomation build() {
             return new RacingInfomation(this);
         }
 
-        private void isValidCarNames(List<String> names) {
-            names.forEach(name->{
-                if (name.length() > 5) {
-                    throw new IllegalArgumentException(Constant.ERROR_5OVER_NAME);
-                }
-            });
+        private void isValidCarNameList(List<String> names) {
+            names.forEach(Car::isValidName);
+        }
+    }
+
+    public void isValidInformation() {
+        if (playCount <= 0 || carNames.size() <= 0) {
+            throw new IllegalArgumentException(Constant.EMPTY_NULL_ERROR);
         }
     }
 
