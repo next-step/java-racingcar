@@ -72,10 +72,11 @@ public class RaceRecordTest {
     @DisplayName("RaceRecord는 주어진 휫수만큼 이동기록을 제공하는 함수를 실행할 수 있다")
     @ValueSource(ints = {1, 2, 3})
     void takeRecordUntil(int tris) {
-        saveRecords(5, new TestingCar("blue", 2), //
-                new TestingCar("red", 3),  //
-                new TestingCar("white", 2),  //
-                new TestingCar("gray", 3));
+        int totalTry = 5;
+        saveRecord(totalTry, 2, new RealCarTest.TestingCar("blue"));
+        saveRecord(totalTry, 3, new RealCarTest.TestingCar("red"));
+        saveRecord(totalTry, 2, new RealCarTest.TestingCar("white"));
+        saveRecord(totalTry, 3, new RealCarTest.TestingCar("gray"));
 
         AtomicInteger assertions = new AtomicInteger();
         raceRecord.forEachRecordUntil(tris, (name, record) -> {
