@@ -46,7 +46,7 @@ public class RacingCarSimulator {
 
         simulate(racingCars, racingMap, snapshots);
 
-        return new SimulationResult(snapshots, racingCars);
+        return new SimulationResult(snapshots, racingCars, racingMap.selectWinnerNames());
     }
 
     private void simulate(final List<RacingCar> racingCars, final RacingMap racingMap, final List<Snapshot> snapshots) {

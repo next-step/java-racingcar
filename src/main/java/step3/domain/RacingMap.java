@@ -1,9 +1,6 @@
 package step3.domain;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -29,5 +26,16 @@ public class RacingMap {
 
     public int findPosition(final RacingCar racingCar) {
         return racingCarLocation.get(racingCar);
+    }
+
+    public List<String> selectWinnerNames() {
+        final int farthestLocation = Collections.max(racingCarLocation.values());
+        final List<String> winnerNames = new ArrayList<>();
+        for (final RacingCar car : racingCarLocation.keySet()) {
+            if (racingCarLocation.get(car) == farthestLocation) {
+                winnerNames.add(car.getName());
+            }
+        }
+        return winnerNames;
     }
 }
