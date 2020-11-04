@@ -11,15 +11,9 @@ public interface Car {
 
     String getName();
 
-    default int getTotalTry() {
-        return 0;
-    }
+    int getTotalTry();
 
-    default int getDistanceDriven() {
-        return 0;
-    }
+    int getDistanceDriven();
 
-    default List<Boolean> takeDrivingRecordTake(int takes) {
-        throw new RuntimeException("리펙토링이 끝나면 삭제될 메소드로 호출되면 안됨");
-    }
+    List<Boolean> takeDrivingRecordTake(int takes);
 }

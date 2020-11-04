@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -38,7 +39,7 @@ public class CarRacingTest {
 
         carRacing.start();
 
-        assertThat(theCar().isMoved()).isTrue();
+        assertThat(theCar().getDistanceDriven()).isEqualTo(1);
     }
 
     @Test
@@ -47,7 +48,7 @@ public class CarRacingTest {
         setUpLapsAndCars(new TestingCar());
         setUpRacing();
 
-        assertThat(theCar().isMoved()).isFalse();
+        assertThat(theCar().getDistanceDriven()).isEqualTo(0);
     }
 
     private Car theCar() {
@@ -111,6 +112,7 @@ public class CarRacingTest {
         private final String name;
         private int moves;
         private boolean isMoved;
+        private int distanceDriven = 0;
 
 
         public TestingCar() {
@@ -130,11 +132,27 @@ public class CarRacingTest {
         @Override
         public void move() {
             isMoved = --moves >= 0;
+            distanceDriven++;
         }
 
         @Override
         public String getName() {
             return name;
+        }
+
+        @Override
+        public int getTotalTry() {
+            return 0;
+        }
+
+        @Override
+        public int getDistanceDriven() {
+            return distanceDriven;
+        }
+
+        @Override
+        public List<Boolean> takeDrivingRecordTake(int takes) {
+            return null;
         }
     }
 

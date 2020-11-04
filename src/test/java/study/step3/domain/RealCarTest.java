@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import study.step3.TestingCar;
 
 import java.util.HashSet;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -14,13 +13,11 @@ public class RealCarTest {
     @Test
     @DisplayName("이동 결과는 true 또는 false 가 나온다")
     void move() {
-        RealCar realCar = new RealCar("blue");
-        Set<Boolean> results = new HashSet<>();
+        Car car = new RealCar("blue");
         for (int i = 0; i < 1000; i++) {
-            realCar.move();
-            results.add(realCar.isMoved());
+            car.move();
         }
-        assertThat(results).contains(true, false);
+        assertThat(new HashSet<>(car.takeDrivingRecordTake(1000))).contains(true, false);
     }
 
     @Test
