@@ -12,7 +12,7 @@ public class GameClient {
 
         ResultView.printResultMessage();
 
-        for (; isFinished(currentRound, numRound); currentRound += 1) {
+        for (; !isFinished(currentRound, numRound); currentRound += 1) {
             cars.moves(scoreGenerator);
             ResultView.printStatus(cars);
         }
