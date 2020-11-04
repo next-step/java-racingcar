@@ -8,4 +8,8 @@ public interface Car {
     void move();
 
     String getName();
+
+    default int getTotalTry() {
+        return 0;
+    }
 }
