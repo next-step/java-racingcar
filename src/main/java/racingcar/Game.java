@@ -2,13 +2,13 @@ package racingcar;
 
 public class Game {
     private static int gameCount;
-    private static int carCount;
+    private static Car[] cars;
 
     public static void setGameCount(int count){
         gameCount = count;
     }
 
-    public static void setCarCount(int count){
-        carCount = count;
+    public static void setCars(int count){
+        cars = new Car[count];
     }
 }
