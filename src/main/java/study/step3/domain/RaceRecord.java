@@ -39,11 +39,6 @@ public class RaceRecord {
         records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries)));
     }
 
-    void saveRecord(String name, boolean moved) {
-        records.computeIfAbsent(name, key -> new ArrayList<>()) //
-                .add(moved);
-    }
-
     private int getMostMove() {
         return records.values() //
                 .stream() //
