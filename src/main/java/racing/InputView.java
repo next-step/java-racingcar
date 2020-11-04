@@ -13,24 +13,38 @@ public class InputView {
 
         do {
             System.out.printf(InputViewMessage.FIRST_QUESTION);
-            manyCars = validationCheck(scanner.next());
+            manyCars = inputValidationCheck(scanner.next());
         } while (manyCars <= 0);
 
         do {
             System.out.printf(InputViewMessage.SECOND_QUESTION);
-            tryCount = validationCheck(scanner.next());
-        } while (tryCount <= 0);
+            tryCount = inputValidationCheck(scanner.next());
+        } while (tryCount <= 0 );
 
         scanner.close();
     }
 
-    public int validationCheck(String input) {
+    public int inputValidationCheck(String input) {
+        if(numberFormatCheck(input) == 0) {
+            return 0;
+        }
+        return minimumValueCheck(input);
+    }
+
+    private int minimumValueCheck(String input) {
+        int value = Integer.valueOf(input);
+        if(value <= 0)
+            System.out.printf(InputViewMessage.INPUT_VALIDATION_ERROR);
+
+        return value;
+    }
+
+    private int numberFormatCheck(String input) {
         if(!input.matches(numberRegex)) {
             System.out.printf(InputViewMessage.INPUT_FORMAT_VALIDATION_ERROR);
             return 0;
         }
-        System.out.printf(InputViewMessage.INPUT_VALIDATION_ERROR);
-        return Integer.valueOf(input);
+        return minimumValueCheck(input);
     }
 
     public int getManyCars() {
