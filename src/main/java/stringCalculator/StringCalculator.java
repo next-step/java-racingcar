@@ -2,14 +2,8 @@ package stringCalculator;
 
 import java.util.List;
 
-/**
- * 문자열 계산
- */
 public class StringCalculator {
 
-    /**
-     * 연산
-     */
     public static int calculator(String str) {
         String[] values = StringUtil.split(str);
         List<Integer> operands = new Operand(values).getOperands();   // 피연산자

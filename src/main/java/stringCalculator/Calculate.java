@@ -2,9 +2,6 @@ package stringCalculator;
 
 import java.util.function.BiFunction;
 
-/**
- * 연산하는 클래스
- */
 public enum Calculate {
     ADD("+", (firstNumber, secondNumber) -> (firstNumber + secondNumber)),
 
@@ -15,7 +12,7 @@ public enum Calculate {
     DIVISION("/", (firstNumber, secondNumber) -> (firstNumber / secondNumber));
 
     private final String operator;
-    private final BiFunction biFunction;
+    private final BiFunction<Integer, Integer, Integer> biFunction;
 
     Calculate(String operator, BiFunction<Integer, Integer, Integer> biFunction) {
         this.operator = operator;
@@ -23,7 +20,7 @@ public enum Calculate {
     }
 
     public Integer calculate(int firstNumber, int secondNumber) {
-        return (Integer) this.biFunction.apply(firstNumber, secondNumber);
+        return this.biFunction.apply(firstNumber, secondNumber);
     }
 
     public String getOperator() {
