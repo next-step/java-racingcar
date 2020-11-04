@@ -12,7 +12,12 @@ public class RacingGame {
         roulette = new Roulette();
     }
 
-    public void set() {
+    public void start() {
+        set();
+        race();
+    }
+
+    private void set() {
         InputView.openScanner();
 
         final int carCount = InputView.readCarCount();
@@ -23,7 +28,7 @@ public class RacingGame {
         InputView.closeScanner();
     }
 
-    public void race() {
+    private void race() {
         ResultView.viewMessage();
 
         for (int i = 0; i < round; i++) {
