@@ -1,4 +1,4 @@
-package calculatorException;
+package stringCalculator.calculatorException;
 
 public class IllegalOperatorSymbol extends ArithmeticException {
     public IllegalOperatorSymbol() {

@@ -1,4 +1,4 @@
-package calculatorException;
+package stringCalculator.calculatorException;
 
 public class IllegalExpresion extends ArithmeticException {
     public IllegalExpresion() {

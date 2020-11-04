@@ -1,8 +1,8 @@
 package stringCalculator;
 
 
-import calculatorException.IllegalExpresion;
-import calculatorException.IllegalOperatorSymbol;
+import stringCalculator.calculatorException.IllegalExpresion;
+import stringCalculator.calculatorException.IllegalOperatorSymbol;
 
 public class InputParser {
 
