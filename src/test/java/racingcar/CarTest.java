@@ -57,9 +57,17 @@ class CarTest {
 
         int movedPosition = 2;
         int stoppedPosition = 1;
-        assertThat(movableCar.getPosition())
-                .isEqualTo(movedPosition);
-        assertThat(stoppedCar.getPosition())
-                .isEqualTo(stoppedPosition);
+        Assertions.assertAll(
+                () -> {
+                    assertThat(movableCar.getPosition())
+                            .isEqualTo(movedPosition);
+                },
+                () -> {
+                    assertThat(stoppedCar.getPosition())
+                            .isEqualTo(stoppedPosition);
+                }
+        );
+
+
     }
 }
