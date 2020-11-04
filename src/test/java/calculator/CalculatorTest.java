@@ -46,6 +46,13 @@ public class CalculatorTest {
         assertThatExceptionOfType(NumberFormatException.class).isThrownBy(() -> calculator.calculate(wrongNumberExpression));
     }
 
+    @Test
+    void wrongSymbolFormat() {
+        String wrongSymbolExpression = "1 = 6";
+
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> calculator.calculate(wrongSymbolExpression));
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"null", "", " "})
     void emptyTest(String input) {
