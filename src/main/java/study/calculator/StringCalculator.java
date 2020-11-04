@@ -3,17 +3,17 @@ package study.calculator;
 import java.util.LinkedList;
 
 public class StringCalculator {
-
+    private static final String CALCULATOR_DELIMITER = " ";
 
     public static String getCalculationResult(String toCalculateValue){
         isEmptyInput(toCalculateValue);
 
-        String[] input = toCalculateValue.split(" ");
+        String[] input = toCalculateValue.split(CALCULATOR_DELIMITER);
 
         LinkedList<Integer> operand = new LinkedList<Integer>();
         LinkedList<String> operator = new LinkedList<String>();
 
-        //입력값을 연산자와 피연산자로 분리
+
         int inputLength = input.length;
 
         for(int i=0; i<inputLength; i++){
@@ -31,7 +31,7 @@ public class StringCalculator {
         int operandSize = operand.size();
         int operatorSize = operator.size();
 
-        //입력값이 정상적으로 완성되지 않은 경우
+
         if(operandSize != operatorSize+1){
             throw new IllegalArgumentException("입력값이 정상적으로 종료되지않았습니다.");
         }
