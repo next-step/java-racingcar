@@ -30,4 +30,15 @@ class RealCarTest {
                 .isInstanceOf(IllegalArgumentException.class) //
                 .hasMessage("이름은 5자를 넘을 수 없습니다.");
     }
+
+    @Test
+    @DisplayName("이동 시도횟수를 반환한다.")
+    void totalMoves() {
+        Car car = new RealCar("blue");
+        car.move();
+        car.move();
+        car.move();
+
+        assertThat(car.getTotalTry()).isEqualTo(3);
+    }
 }
