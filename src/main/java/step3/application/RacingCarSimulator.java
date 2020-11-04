@@ -35,7 +35,7 @@ public class RacingCarSimulator {
     
     public RacingCarSimulator(final SimulationCondition condition) {
         checkArgument(Objects.nonNull(condition), NOT_BE_NULL);
-        this.nameOfCars = condition.getNameOfCars();
+        this.nameOfCars = condition.getCarNames();
         this.numberOfAttempts = condition.getNumberOfAttempts();
     }
 
