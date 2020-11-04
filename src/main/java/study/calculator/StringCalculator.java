@@ -46,7 +46,8 @@ public class StringCalculator {
                 }else{
                     calculateSet = new CalculateSet(calculationResult, operand.get(j+1));
                 }
-                calculationResult = calculate(calculateSet, operator.get(j));
+                String operatorValue = operator.get(j);
+                calculationResult = Operator.calculate(operatorValue,calculateSet);
                 
             }
         }
@@ -54,7 +55,7 @@ public class StringCalculator {
         return String.valueOf(calculationResult);
     }
 
-    private static int calculate(CalculateSet calculateSet, String operator) {
+    /*private static int calculate(CalculateSet calculateSet, String operator) {
         int innerResult = 0;
 
         switch (operator) {
@@ -75,27 +76,15 @@ public class StringCalculator {
         }
 
         return innerResult;
-    }
+    }*/
 
-    private static int getDivision(int left, int right) {
+   /* private static int getDivision(int left, int right) {
         if(right == 0){
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
 
         return  left / right;
-    }
-
-    private static int getMultiplication(int left, int right) {
-        return left * right;
-    }
-
-    private static int getSubtraction(int left, int right) {
-        return left - right;
-    }
-
-    private static int getAddition(int left, int right) {
-        return  left + right;
-    }
+    }*/
 
     private static void isCorrectOperator(String input) {
         if(!input.matches("([+\\-*\\/])")){
