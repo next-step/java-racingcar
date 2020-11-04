@@ -1,5 +1,8 @@
 package racing;
 
+import racing.view.InputView;
+import racing.view.ResultView;
+
 public class RacingGame {
 
     private final Roulette roulette;

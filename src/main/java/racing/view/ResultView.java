@@ -1,4 +1,7 @@
-package racing;
+package racing.view;
+
+import racing.Car;
+import racing.RacingCars;
 
 public final class ResultView {
 
