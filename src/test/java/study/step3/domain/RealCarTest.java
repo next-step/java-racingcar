@@ -9,7 +9,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class RealCarTest {
+public class RealCarTest {
     @Test
     @DisplayName("이동 결과는 true 또는 false 가 나온다")
     void move() {
