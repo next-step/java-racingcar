@@ -6,12 +6,9 @@ import java.util.function.BiConsumer;
 import static java.util.stream.Collectors.toSet;
 
 public class RaceRecord {
-    private final Map<String, List<Boolean>> records = new TreeMap<>();
     private final List<Car> carRecords = new ArrayList<>();
 
     public void saveRecord(Car car) {
-        records.computeIfAbsent(car.getName(), key -> new ArrayList<>()) //
-                .add(car.isMoved());
         carRecords.add(car);
     }
 
@@ -44,10 +41,6 @@ public class RaceRecord {
                 .mapToInt(Car::getDistanceDriven) //
                 .max() //
                 .orElse(0);
-    }
-
-    private int countMove(List<Boolean> values) {
-        return values.stream().mapToInt(moved -> moved ? 1 : 0).sum();
     }
 
     private void checkAllRecord(int expectedTry) {

@@ -84,24 +84,10 @@ public class RaceRecordTest {
         assertThat(assertions.get()).isEqualTo(4); // consumer 가 자동차수만큼 실행되었는지 검증
     }
 
-    private void saveRecords(int totalMoves, Car... cars) {
-        for (int i = 0; i < totalMoves; i++) {
-            moveAndSave(cars);
-        }
-    }
-
     private void saveRecord(int totalTry, int moves, RealCarTest.TestingCar car) {
         raceRecord.saveRecord(car);
         for (int i = 0, j = moves; i < totalTry; i++, j--) {
             car.move(j > 0);
         }
     }
-
-    private void moveAndSave(Car[] cars) {
-        for (Car car : cars) {
-            car.move();
-            raceRecord.saveRecord(car);
-        }
-    }
-
 }

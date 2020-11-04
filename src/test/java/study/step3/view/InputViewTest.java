@@ -5,12 +5,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.step3.domain.Circuit;
 import study.step3.domain.RealCar;
-import study.step3.view.InputView;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputViewTest {
 
@@ -112,7 +112,6 @@ public class InputViewTest {
 
     private static class TestingInputView extends InputView {
         private final Queue<String> consoleInput = new ArrayDeque<>();
-        private String errorMessage;
 
         public void setConsoleInput(String name, String laps) {
             consoleInput.add(name);
