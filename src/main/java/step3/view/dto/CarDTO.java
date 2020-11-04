@@ -9,6 +9,10 @@ public class CarDTO {
         this.location = location;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getLocation() {
         return location;
     }

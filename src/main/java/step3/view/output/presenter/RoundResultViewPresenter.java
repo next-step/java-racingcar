@@ -22,9 +22,16 @@ public class RoundResultViewPresenter implements Presenter {
 
     private String createRoundResultView() {
         return cars.stream()
-                .map(CarDTO::getLocation)
-                .map(position -> createMovingDistanceView(position) + NEWLINE)
+                .map(this::createCarResult)
                 .collect(Collectors.joining());
+    }
+    
+    private String createCarResult(final CarDTO car) {
+        return createCarNameView(car.getName()) + createMovingDistanceView(car.getLocation()) + NEWLINE;
+    }
+    
+    private String createCarNameView(final String name) {
+        return name + SPACE + DELIMITER + SPACE;  
     }
 
     private String createMovingDistanceView(final int position) {

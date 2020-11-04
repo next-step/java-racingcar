@@ -6,6 +6,8 @@ public enum ViewString {
     NEWLINE("\n"),
     RESULT_ANNOUNCEMENT(NEWLINE + "실행결과" + NEWLINE),
     MOVE_CHAR("-"),
+    DELIMITER(":"),
+    SPACE(" "),
     ;
 
     private final String value;
