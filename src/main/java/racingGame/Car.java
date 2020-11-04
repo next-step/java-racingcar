@@ -4,9 +4,7 @@ public class Car {
 
     private int position;
 
-    Car() {
-        this(0);
-    }
+    Car() { }
 
     Car(int initialPosition) {
         this.position = initialPosition;
