@@ -1,6 +1,8 @@
 package humbledude.carracing;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRacing {
 
@@ -19,5 +21,14 @@ public class CarRacing {
         }
     }
 
+    public List<Car> getWinners() {
+        int winnersPosition = cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .get()
+                .getPosition();
 
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnersPosition)
+                .collect(Collectors.toList());
+    }
 }
