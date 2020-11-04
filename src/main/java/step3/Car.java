@@ -1,9 +1,6 @@
 package step3;
 
 import java.util.Random;
-import java.util.StringJoiner;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Car {
   private int move;
