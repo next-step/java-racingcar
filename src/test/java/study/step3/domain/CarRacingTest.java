@@ -2,9 +2,6 @@ package study.step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.step3.domain.Car;
-import study.step3.domain.CarRacing;
-import study.step3.domain.Circuit;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -69,7 +66,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
     void resultViewCommittedAfterStaring() {
-        setUpLapsAndCars(new TestingCar());
+        setUpLapsAndCars(new RealCarTest.TestingCar());
         setUpRacing();
 
         carRacing.start();
