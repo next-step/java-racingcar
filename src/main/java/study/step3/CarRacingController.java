@@ -9,9 +9,10 @@ public class CarRacingController {
     void invoke() {
         Circuit circuit = makeInputView().request();
 
-        makeRacing(circuit).start();
+        CarRacing carRacing = makeRacing(circuit);
+        carRacing.start();
 
-        makeResultView(makeRacing(circuit)).report();
+        makeResultView(carRacing).report();
     }
 
     protected InputView makeInputView() {

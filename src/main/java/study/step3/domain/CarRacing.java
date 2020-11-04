@@ -14,9 +14,9 @@ public class CarRacing {
     }
 
     public void start() {
+        saveRecord();
         for (int i = 0; i < steps; i++) {
             move();
-            saveRecord();
         }
     }
 
