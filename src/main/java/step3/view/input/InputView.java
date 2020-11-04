@@ -6,7 +6,7 @@ import step3.view.output.Printer;
 
 import java.util.Scanner;
 
-import static step3.view.ViewString.HOW_MANY_CAR_QUESTION;
+import static step3.view.ViewString.ENTER_THE_NAME_OF_THE_CARS;
 import static step3.view.ViewString.HOW_MUCH_ATTEMPT_QUESTION;
 
 public class InputView {
@@ -15,12 +15,12 @@ public class InputView {
     }
 
     public static SimulationCondition receiveSimulationCondition() {
-        final int numberOfCar = questionAndAnswer(HOW_MANY_CAR_QUESTION);
-        final int numberOfAttempts = questionAndAnswer(HOW_MUCH_ATTEMPT_QUESTION);
-        return new SimulationCondition(numberOfCar, numberOfAttempts);
+        final String nameOfCars = questionAndAnswer(ENTER_THE_NAME_OF_THE_CARS);
+        final String numberOfAttempts = questionAndAnswer(HOW_MUCH_ATTEMPT_QUESTION);
+        return SimulationCondition.of(nameOfCars, numberOfAttempts);
     }
 
-    private static int questionAndAnswer(final ViewString question) {
+    private static String questionAndAnswer(final ViewString question) {
         printQuestion(question);
         return receiveAnswer();
     }
@@ -29,8 +29,8 @@ public class InputView {
         Printer.println(question);
     }
 
-    private static int receiveAnswer() {
+    private static String receiveAnswer() {
         final Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return scanner.next();
     }
 }

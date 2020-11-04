@@ -4,41 +4,43 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static step3.application.SimulationCondition.ErrorMessage.*;
 
 class SimulationConditionTest {
-    @DisplayName("생성자")
+    @DisplayName("of 생성자")
     @Nested
-    class constructor {
+    class Of {
         @DisplayName("전달 된 '레이싱카'의 값이 1보다 작은 경우 'IllegalArgumentException'를 throw")
         @Test
         void throw_IllegalArgumentException_when_numberOfCar_not_more_then_one() {
             // given
-            final int numberOfCar = 0;
-            final int numberOfAttempts = 10;
+            final String nameOfCars = "";
+            final String numberOfAttempts = "10";
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                new SimulationCondition(numberOfCar, numberOfAttempts);
+                SimulationCondition.of(nameOfCars, numberOfAttempts);
             });
 
             // then
             assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(NUMBER_OF_CAR_MUST_MORE_THEN_ONE.getMessage());
+                    .hasMessageContaining(NAME_OF_CARS_MUST_NOT_BE_BLANK.getMessage());
         }
 
         @DisplayName("전달 된 '시도할 회수'의 값이 1보다 작은 경우 'IllegalArgumentException'를 throw")
         @Test
         void throw_IllegalArgumentException_when_numberOfAttempts_not_more_then_one() {
             // given
-            final int numberOfCar = 10;
-            final int numberOfAttempts = 0;
+            final String nameOfCars = "pobi,crong,honux";
+            final String numberOfAttempts = "0";
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                new SimulationCondition(numberOfCar, numberOfAttempts);
+                SimulationCondition.of(nameOfCars, numberOfAttempts);
             });
 
             // then
@@ -50,16 +52,16 @@ class SimulationConditionTest {
         @Test
         void create() {
             // given
-            final int numberOfCar = 1;
-            final int numberOfAttempts = 1;
+            final String nameOfCars = "pobi,crong,honux";
+            final String numberOfAttempts = "10";
 
             // when
-            final SimulationCondition result = new SimulationCondition(numberOfCar, numberOfAttempts);
+            final SimulationCondition result = SimulationCondition.of(nameOfCars, numberOfAttempts);
 
             // then
             assertThat(result).isNotNull();
-            assertThat(result.getNumberOfCar()).isEqualTo(numberOfCar);
-            assertThat(result.getNumberOfAttempts()).isEqualTo(numberOfAttempts);
+            assertThat(result.getNameOfCars()).isEqualTo(Arrays.asList("pobi", "crong", "honux"));
+            assertThat(result.getNumberOfAttempts()).isEqualTo(Integer.valueOf(numberOfAttempts));
         }
     }
 }
