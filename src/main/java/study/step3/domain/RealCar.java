@@ -30,7 +30,6 @@ public class RealCar implements Car {
         drivingRecord.add(moved);
     }
 
-
     @Override
     public String getName() {
         return name;
@@ -39,6 +38,10 @@ public class RealCar implements Car {
     @Override
     public int getTotalTry() {
         return drivingRecord.size();
+    }
+
+    public List<Boolean> takeDrivingRecordTake(int takes) {
+        return drivingRecord.subList(0, takes);
     }
 
     protected boolean guessMove() {

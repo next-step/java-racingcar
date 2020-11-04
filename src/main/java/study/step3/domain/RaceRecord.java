@@ -36,7 +36,7 @@ public class RaceRecord {
     }
 
     public void forEachRecordUntil(int tries, BiConsumer<String, List<Boolean>> biConsumer) {
-        records.forEach((name, record) -> biConsumer.accept(name, record.subList(0, tries)));
+        carRecords.forEach(car -> biConsumer.accept(car.getName(), car.takeDrivingRecordTake(tries)));
     }
 
     private int getMostMove() {
