@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.common.Constants;
+import racingcar.common.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +16,8 @@ public class Racing {
 
     public String race(int numberOfTries) {
         for(int i = 0; i < numberOfTries; i++) {
-            cars.stream().map(c -> c.move(5)).forEach(sb::append);
-            sb.append("\n");
+            cars.stream().map(c -> c.move(RandomNumberGenerator.generate())).forEach(sb::append);
+            sb.append(Constants.NEW_LINE_DELIMITER);
         }
         return sb.toString();
     }

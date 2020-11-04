@@ -8,7 +8,13 @@ public class RacingCarApplication {
     static Racing racing = new Racing();
 
     public static void main(String[] args) {
-        racing.initializeCars(inputView.askToInsertNumberOfCars());
-        resultView.print(racing.race(inputView.askToInsertNumberOfTries()));
+
+        int numberOfCars = inputView.askToInsertNumberOfCars();
+        int numberOfTries = inputView.askToInsertNumberOfTries();
+
+        racing.initializeCars(numberOfCars);
+        String result = racing.race(numberOfTries);
+
+        resultView.print(result);
     }
 }

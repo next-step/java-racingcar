@@ -1,9 +1,11 @@
 package racingcar.ui;
 
+import racingcar.common.Constants;
+
 public class ResultView {
 
     public void print(String str) {
-        System.out.println("실행 결과");
+        System.out.println(Constants.PRINT_PREFIX);
         System.out.print(str);
     }
 }
