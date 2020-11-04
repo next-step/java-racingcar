@@ -36,6 +36,12 @@ public class ResultView {
     }
 
     public void showWinner(List<RecordDto> winnerRecord) {
-        output.print(format("%s가 최종 우승했습니다.", winnerRecord.stream().map(RecordDto::getName).collect(Collectors.joining(", "))));
+        output.print(format("%s가 최종 우승했습니다.", getWinnerNames(winnerRecord)));
+    }
+
+    private String getWinnerNames(List<RecordDto> winnerRecord) {
+        return winnerRecord.stream()
+                .map(RecordDto::getName)
+                .collect(Collectors.joining(", "));
     }
 }
