@@ -6,13 +6,13 @@ public class Calculator {
 
         String[] inputs = splitInputString(inputString);
 
-        FourPointOperation operatorOrNumber = FourPointOperation.NUMBER;
+        FourPointOperation operator = null;
         Integer result = Integer.parseInt(inputs[0]);
 
         for (String input : inputs) {
-            Expression expression = new Expression(result, operatorOrNumber, input);
+            Expression expression = new Expression(result, operator, input);
             result = calculateFor(expression);
-            operatorOrNumber = getFourPointOperation(input);
+            operator = getFourPointOperation(input);
         }
 
         return result.toString();
@@ -36,26 +36,15 @@ public class Calculator {
 
     private FourPointOperation getFourPointOperation(String input) {
 
+        if (input.matches("[0-9]+$")) {
+            return null;
+        }
+
         if (!isSymbolOfFourPointOperationOrNumber(input)) {
             throw new IllegalArgumentException("input is not symbol of four-point operation or Number");
         }
 
-        if (input.equals("+")) {
-            return FourPointOperation.PLUS;
-        }
-        if (input.equals("-")) {
-            return FourPointOperation.MINUS;
-        }
-
-        if (input.equals("*")) {
-            return FourPointOperation.TIMES;
-        }
-
-        if (input.equals("/")) {
-            return FourPointOperation.DIVIDE;
-        }
-
-        return FourPointOperation.NUMBER;
+        return FourPointOperation.value(input);
     }
 
     private boolean isSymbolOfFourPointOperationOrNumber(String input) {
@@ -64,7 +53,7 @@ public class Calculator {
 
     public Integer calculateFor(Expression expression) {
 
-        if (expression.getOperator() != FourPointOperation.NUMBER) {
+        if (expression.getOperator() != null) {
             Integer operand = Integer.parseInt(expression.getY());
             return expression.getOperator().calculate(expression.getX(), operand);
         }
