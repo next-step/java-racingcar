@@ -11,7 +11,12 @@ public enum  Operator {
     PLUS("+", (first, second) -> first + second),
     MINUS("-", (first, second) -> first - second),
     MULTIPLY("*", (first, second) -> first * second),
-    DIVIDE("/", (first, second) -> first / second)
+    DIVIDE("/", (first, second) -> {
+        if (first % second != 0) {
+            throw new ArithmeticException("나눗셈은 정수로 나누어 떨어져야 합니다.");
+        }
+        return first / second;
+    })
     ;
 
     private String operator;
@@ -35,21 +40,5 @@ public enum  Operator {
                 .filter(opr -> opr.operator.equals(operator))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("사칙연산 부호가 아닙니다."));
     }
-
-    //    public static int plus(String first, String second) {
-//        return NumberUtils.toInt(first) + NumberUtils.toInt(second);
-//    }
-//
-//    public static int minus(String first, String second) {
-//        return NumberUtils.toInt(first) - NumberUtils.toInt(second);
-//    }
-//
-//    public static int multiply(String first, String second) {
-//        return NumberUtils.toInt(first) * NumberUtils.toInt(second);
-//    }
-//
-//    public static int divide(String first, String second) {
-//        return NumberUtils.toInt(first) / NumberUtils.toInt(second);
-//    }
 
 }
