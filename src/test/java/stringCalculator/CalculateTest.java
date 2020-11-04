@@ -1,10 +1,13 @@
 package stringCalculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import stringCalculator.exception.OperatorException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CalculateTest {
 
@@ -50,5 +53,16 @@ class CalculateTest {
 
         // then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName(value = "0으로 나누면 예외")
+    @Test
+    void calculateDivisionZero() {
+        // when
+        assertThatThrownBy(() -> {
+            Calculate.DIVISION.calculate(10, 0);
+            // then
+        }).isInstanceOf(ArithmeticException.class)
+                .hasMessage("/ by zero");
     }
 }

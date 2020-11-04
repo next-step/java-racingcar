@@ -47,8 +47,8 @@ public class StringCalculator {
         }
     }
 
-    static void validateOperator(String value) {
-        if (!("+".equals(value) || "-".equals(value) || "*".equals(value)|| "/".equals(value))) {
+    static void validateOperator(String operator) {
+        if (!("+".equals(operator) || "-".equals(operator) || "*".equals(operator)|| "/".equals(operator))) {
             throw new OperatorException();
         }
     }
