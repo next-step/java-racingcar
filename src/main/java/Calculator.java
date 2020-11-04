@@ -9,6 +9,8 @@ public interface Calculator {
 
         private List<Operator> supportedOperators = Arrays.asList(Operator.Plus, Operator.Minus, Operator.Multiple, Operator.Divide);
 
+        private ExpressionValidator expressionValidator = new DefaultExpressionValidator();
+
         enum Operator {
             Plus("+", (value1, value2) -> value1 + value2),
             Minus("-", (value1, value2) -> value1 - value2),
@@ -89,29 +91,40 @@ public interface Calculator {
         }
 
         private void validateExpression(String expression) {
-            if (isNullOrBlank(expression) || !isStartByNumericOperand(expression)
-            ) throw new IllegalArgumentException(expression);
+            try {
+                expressionValidator.validate(expression);
+            } catch ( InvalidExpressionException e ){
+                throw new IllegalArgumentException(e.getMessage(), e);
+            }
         }
 
-        private boolean isNullOrBlank(String expression) {
-            if (expression == null) return true;
-            if (expression.isEmpty()) return true;
-            for (int i = 0; i < expression.length(); i++) {
-                if (!Character.isWhitespace(expression.charAt(i))) {
+        private class DefaultExpressionValidator implements ExpressionValidator {
+
+            @Override
+            public void validate(String expression) throws InvalidExpressionException {
+                if (isNullOrBlank(expression) || !isStartByNumericOperand(expression)
+                ) throw new InvalidExpressionException(expression);
+            }
+
+            private boolean isNullOrBlank(String expression) {
+                if (expression == null) return true;
+                if (expression.isEmpty()) return true;
+                for (int i = 0; i < expression.length(); i++) {
+                    if (!Character.isWhitespace(expression.charAt(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            private boolean isStartByNumericOperand(String expression) {
+                try {
+                    Integer.parseInt(String.valueOf(expression.split(" ")[0]));
+                    return true;
+                } catch (NumberFormatException e) {
                     return false;
                 }
             }
-            return true;
         }
-
-        private boolean isStartByNumericOperand(String expression) {
-            try {
-                Integer.parseInt(String.valueOf(expression.split(" ")[0]));
-                return true;
-            } catch (NumberFormatException e) {
-                return false;
-            }
-        }
-
     }
 }
