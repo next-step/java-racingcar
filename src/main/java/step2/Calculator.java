@@ -25,8 +25,12 @@ public class Calculator {
             throw new IllegalArgumentException("에러");
         }
     }
-    public String[] sp(String input){
+    public String[] splitCheck(String input){
        return input.split(" ");
     }
-
+    public void operatorCheck(String input){
+        if(!"+".equals(input) && !"-".equals(input) && !"*".equals(input) && !"/".equals(input)){
+            throw new IllegalArgumentException("연산기호가 아닙니다");
+        }
+    }
 }
