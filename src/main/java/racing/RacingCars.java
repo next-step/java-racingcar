@@ -25,9 +25,12 @@ public final class RacingCars {
     }
 
     public void race(Roulette roulette) {
-        for (final Car car : this.cars) {
-            boolean canMove = (roulette.spin() >= MOVE_CONDITION);
-            car.move(canMove);
-        }
+        cars.stream()
+                .filter(car -> canMove(roulette))
+                .forEach(Car::move);
+    }
+
+    private boolean canMove(Roulette roulette) {
+        return roulette.spin() >= MOVE_CONDITION;
     }
 }
