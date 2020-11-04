@@ -13,7 +13,14 @@ public class RacingCar {
     if (car == 0) {
       throw new IllegalArgumentException("자동차 수가 0입니다.");
     }
-    Set<Car> carSet = IntStream.range(0, car).mapToObj(Car::new).collect(Collectors.toSet());
-    resultView.resultPrint(carSet);
+    Set<Car> cars = IntStream.range(0, car).mapToObj(i -> new Car()).collect(Collectors.toSet());
+
+    int move = inputView.setMoveCount();
+    IntStream.range(0, move).mapToObj(i -> cars).forEach(this::move);
+  }
+
+  public void move(Set<Car> cars) {
+    cars.forEach(Car::setMove);
+    resultView.resultPrint(cars);
   }
 }

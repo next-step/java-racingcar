@@ -31,10 +31,6 @@ public class CarTest {
     assertTrue(numbers.contains(random));
   }
 
-  @Test
-  public void 자동차_이동하기() {
-  }
-
   @ParameterizedTest
   @DisplayName("자동차 갯수와 이동 횟수가 숫자가 아닌 경우 예외")
   @CsvSource(value = {"문자입력중! : 숫자를 입력해주세요."}, delimiter = ':')
