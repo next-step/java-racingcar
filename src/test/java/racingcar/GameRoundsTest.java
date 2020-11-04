@@ -6,8 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,15 +32,31 @@ public class GameRoundsTest {
     }
 
     @Test
-    @DisplayName("record가져오기")
-    void getRecords() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(null));
-        cars.add(new Car(null));
+    @DisplayName("라운드 종료")
+    void endRound() {
+        int roundNum = 2;
+        GameRounds gameRounds = new GameRounds(roundNum);
 
+        IntStream.range(0, roundNum).forEach(round -> gameRounds.endRound());
+
+        assertThat(gameRounds.isGameEnd()).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("기록 저장하기")
+    void keepRecord() {
+        int carNum = 2;
+        int roundNum = 3;
+        Cars cars = new Cars(carNum, null);
         GameRounds gameRounds = new GameRounds(0);
-        Record record = gameRounds.getRecord(cars);
 
-        assertThat(record.getPositions()).containsExactly(0, 0);
+        IntStream.range(0, roundNum).forEach(idx -> gameRounds.keepRecord(cars));
+        List<Record> recordList = gameRounds.getRecords().getRecordList();
+
+        assertThat(recordList).hasSize(roundNum);
+        recordList.stream().forEach(record -> {
+            assertThat(record.getPositions()).hasSize(carNum);
+            record.getPositions().forEach(position -> assertThat(position).isEqualTo(0));
+        });
     }
 }

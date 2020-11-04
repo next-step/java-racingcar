@@ -1,17 +1,17 @@
 package racingcar.view;
 
 import racingcar.Record;
+import racingcar.Records;
 
 import java.io.PrintStream;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
     private static final PrintStream out = System.out;
     private static final String MOVEMENT_CHAR = "-";
 
-    public void showResult(List<Record> records) {
-        String result = records.stream()
+    public void showResult(Records records) {
+        String result = records.getRecordList().stream()
                 .map(this::recordToString)
                 .collect(Collectors.joining("\n"));
 

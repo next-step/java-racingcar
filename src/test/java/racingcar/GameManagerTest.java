@@ -18,12 +18,12 @@ public class GameManagerTest {
         int gameRoundNum = 3;
         GameManager gameManager = new GameManager(() -> movement);
 
-        List<Record> records = gameManager.play(carNum, gameRoundNum);
+        Records records = gameManager.play(carNum, gameRoundNum);
 
-        assertThat(records).hasSize(gameRoundNum);
+        assertThat(records.getRecordList()).hasSize(gameRoundNum);
         IntStream.range(0, gameRoundNum).forEach(idx -> {
             int round = idx + 1;
-            List<Integer> positions = records.get(idx).getPositions();
+            List<Integer> positions = records.getRecordList().get(idx).getPositions();
             assertThat(positions).hasSize(carNum);
             positions.forEach(position -> assertThat(position).isEqualTo((round) * movement));
         });

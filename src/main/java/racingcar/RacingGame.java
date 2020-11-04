@@ -3,8 +3,6 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.List;
-
 public class RacingGame {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -14,7 +12,7 @@ public class RacingGame {
         int gameRoundNum = inputView.getGameRoundNum();
 
         GameManager gameManager = new GameManager(new RuleStrategyImpl());
-        List<Record> records = gameManager.play(carNum, gameRoundNum);
+        Records records = gameManager.play(carNum, gameRoundNum);
 
         outputView.showResult(records);
     }

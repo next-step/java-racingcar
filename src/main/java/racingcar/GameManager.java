@@ -1,10 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class GameManager {
 
     private final RuleStrategy ruleStrategy;
@@ -13,27 +8,20 @@ public class GameManager {
         this.ruleStrategy = ruleStrategy;
     }
 
-    public List<Record> play(int carNum, int gameRoundNum) {
-        List<Car> cars = readyCars(carNum);
+    public Records play(int carNum, int gameRoundNum) {
+        Cars cars = readyCars(carNum);
         GameRounds gameRounds = new GameRounds(gameRoundNum);
-        List<Record> records = new ArrayList<>();
 
         while (!gameRounds.isGameEnd()) {
-            playOneRound(cars);
+            cars.move();
             gameRounds.endRound();
-            records.add(gameRounds.getRecord(cars));
+            gameRounds.keepRecord(cars);
         }
 
-        return records;
+        return gameRounds.getRecords();
     }
 
-    private List<Car> readyCars(int num) {
-        return IntStream.range(0, num)
-                .mapToObj(i -> new Car(ruleStrategy))
-                .collect(Collectors.toList());
-    }
-
-    private void playOneRound(List<Car> cars) {
-        cars.stream().forEach(car -> car.move());
+    private Cars readyCars(int num) {
+        return new Cars(num, ruleStrategy);
     }
 }

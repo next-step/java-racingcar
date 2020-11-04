@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class Record {
+
     private List<Integer> positions;
 
     public Record(List<Integer> positions) {
