@@ -16,11 +16,11 @@ public class RaceRecord {
     }
 
     public int getTotalTry() {
-        if (records.isEmpty()) {
+        if (carRecords.isEmpty()) {
             return 0;
         }
 
-        int totalTry = records.values().iterator().next().size();
+        int totalTry = carRecords.get(0).getTotalTry();
 
         checkAllRecord(totalTry);
 
@@ -51,9 +51,8 @@ public class RaceRecord {
     }
 
     private void checkAllRecord(int expectedTry) {
-        records.values() //
-                .stream() //
-                .map(List::size) //
+        carRecords.stream() //
+                .map(Car::getTotalTry) //
                 .forEach(tries -> throwIfNotEqual(expectedTry, tries));
     }
 
