@@ -1,9 +1,10 @@
 package racingcar.game;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GameHistory {
     private Map<Integer, Map<String, Integer>> histories = new HashMap<>();
@@ -36,24 +37,24 @@ public class GameHistory {
     }
 
     private Integer getMaxProgress(Map<String, Integer> history) {
-        int maxProgress = 0;
-        for (Integer value : history.values()) {
-            if (maxProgress < value) {
-                maxProgress = value;
-            }
-        }
-        return maxProgress;
+        List<Integer> progressList = history.keySet()
+                .stream()
+                .map(history::get)
+                .sorted(Comparator.comparing(Integer::valueOf))
+                .collect(Collectors.toList());
+
+        return progressList.get(progressList.size()-1);
     }
 
+
     public String getWinner() {
-        List<String> winners = new ArrayList<>();
         Map<String, Integer> lastHistory = histories.get(currentRound());
         Integer maxProgress = getMaxProgress(lastHistory);
-        lastHistory.forEach((name, progress)->{
-            if (maxProgress <= progress) {
-                winners.add(name);
-            }
-        });
+        List<String> winners = lastHistory.keySet()
+                .stream()
+                .filter((name) -> lastHistory.get(name) >= maxProgress)
+                .collect(Collectors.toList());
+
         return String.join(",", winners);
     }
 }
