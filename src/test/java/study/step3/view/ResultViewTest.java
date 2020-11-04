@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import study.step3.domain.RaceRecord;
-import study.step3.domain.RealCarTest;
+import study.step3.TestingCar;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -121,7 +121,7 @@ public class ResultViewTest {
     }
 
     private void addRecord(String name, Boolean[] moves) {
-        RealCarTest.TestingCar car = new RealCarTest.TestingCar(name);
+        TestingCar car = new TestingCar(name);
         raceRecord.saveRecord(car);
         for (Boolean move : moves) {
             car.move(move);

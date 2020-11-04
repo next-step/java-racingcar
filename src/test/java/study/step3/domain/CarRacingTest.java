@@ -66,7 +66,7 @@ public class CarRacingTest {
     @Test
     @DisplayName("경주를 시작하면 경주결과가 저장되어 있다.")
     void resultViewCommittedAfterStaring() {
-        setUpLapsAndCars(new RealCarTest.TestingCar());
+        setUpLapsAndCars(new study.step3.TestingCar());
         setUpRacing();
 
         carRacing.start();

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import study.step3.TestingCar;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -29,10 +30,10 @@ public class RaceRecordTest {
     @DisplayName("RaceRecord는 가장 많이 이동한 자동차의 이름을 한대 이상 반환할 수 있다.")
     void mostMovingCarName() {
         int totalTry = 5;
-        saveRecord(totalTry, 2, new RealCarTest.TestingCar("blue"));
-        saveRecord(totalTry, 3, new RealCarTest.TestingCar("red"));
-        saveRecord(totalTry, 2, new RealCarTest.TestingCar("white"));
-        saveRecord(totalTry, 3, new RealCarTest.TestingCar("gray"));
+        saveRecord(totalTry, 2, new TestingCar("blue"));
+        saveRecord(totalTry, 3, new TestingCar("red"));
+        saveRecord(totalTry, 2, new TestingCar("white"));
+        saveRecord(totalTry, 3, new TestingCar("gray"));
 
         assertThat(raceRecord.listMostMovingNames()).containsOnly("red", "gray");
     }
@@ -41,10 +42,10 @@ public class RaceRecordTest {
     @DisplayName("RaceRecord는 전체 이동거리를 반환한다.")
     void totalMoves() {
         int totalTry = 10;
-        saveRecord(totalTry, 2, new RealCarTest.TestingCar("blue"));
-        saveRecord(totalTry, 3, new RealCarTest.TestingCar("red"));
-        saveRecord(totalTry, 2, new RealCarTest.TestingCar("white"));
-        saveRecord(totalTry, 3, new RealCarTest.TestingCar("gray"));
+        saveRecord(totalTry, 2, new TestingCar("blue"));
+        saveRecord(totalTry, 3, new TestingCar("red"));
+        saveRecord(totalTry, 2, new TestingCar("white"));
+        saveRecord(totalTry, 3, new TestingCar("gray"));
 
         assertThat(raceRecord.getTotalTry()).isEqualTo(10);
     }
@@ -52,11 +53,11 @@ public class RaceRecordTest {
     @Test
     @DisplayName("RaceRecord는 모든 자동차의 이동시도 횟수는 동일해야 한다")
     void checkState() {
-        RealCarTest.TestingCar firstCar = new RealCarTest.TestingCar("red");
+        TestingCar firstCar = new TestingCar("red");
         firstCar.move();
         raceRecord.saveRecord(firstCar);
 
-        RealCarTest.TestingCar secondCar = new RealCarTest.TestingCar("blue");
+        TestingCar secondCar = new TestingCar("blue");
         secondCar.move();
         secondCar.move();
         raceRecord.saveRecord(secondCar);
@@ -71,10 +72,10 @@ public class RaceRecordTest {
     @ValueSource(ints = {1, 2, 3})
     void takeRecordUntil(int tris) {
         int totalTry = 5;
-        saveRecord(totalTry, 2, new RealCarTest.TestingCar("blue"));
-        saveRecord(totalTry, 3, new RealCarTest.TestingCar("red"));
-        saveRecord(totalTry, 2, new RealCarTest.TestingCar("white"));
-        saveRecord(totalTry, 3, new RealCarTest.TestingCar("gray"));
+        saveRecord(totalTry, 2, new TestingCar("blue"));
+        saveRecord(totalTry, 3, new TestingCar("red"));
+        saveRecord(totalTry, 2, new TestingCar("white"));
+        saveRecord(totalTry, 3, new TestingCar("gray"));
 
         AtomicInteger assertions = new AtomicInteger();
         raceRecord.forEachRecordUntil(tris, (name, record) -> {
@@ -84,7 +85,7 @@ public class RaceRecordTest {
         assertThat(assertions.get()).isEqualTo(4); // consumer 가 자동차수만큼 실행되었는지 검증
     }
 
-    private void saveRecord(int totalTry, int moves, RealCarTest.TestingCar car) {
+    private void saveRecord(int totalTry, int moves, TestingCar car) {
         raceRecord.saveRecord(car);
         for (int i = 0, j = moves; i < totalTry; i++, j--) {
             car.move(j > 0);

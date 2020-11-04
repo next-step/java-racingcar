@@ -2,6 +2,7 @@ package study.step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.step3.TestingCar;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -53,25 +54,4 @@ public class RealCarTest {
         assertThat(car.getDistanceDriven()).isEqualTo(2);
     }
 
-    public static class TestingCar extends RealCar {
-        private boolean nextGuess;
-
-        public TestingCar() {
-            this("blue");
-        }
-
-        public TestingCar(String name) {
-            super(name);
-        }
-
-        @Override
-        protected boolean guessMove() {
-            return nextGuess;
-        }
-
-        public void move(boolean nextGuess) {
-            this.nextGuess = nextGuess;
-            super.move();
-        }
-    }
 }
