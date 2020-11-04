@@ -1,6 +1,7 @@
 package study.calculator;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StringCalculator {
     private static final String CALCULATOR_DELIMITER = " ";
@@ -10,8 +11,8 @@ public class StringCalculator {
 
         String[] input = toCalculateValue.split(CALCULATOR_DELIMITER);
 
-        LinkedList<Integer> operand = new LinkedList<Integer>();
-        LinkedList<String> operator = new LinkedList<String>();
+        List<Integer> operand = new ArrayList<Integer>();
+        List<String> operator = new ArrayList<String>();
 
 
         int inputLength = input.length;
