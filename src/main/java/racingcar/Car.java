@@ -5,6 +5,10 @@ public class Car {
     private int score;
 
     public void foward(){
-        score++;
+        this.score++;
+    }
+
+    public int getScore(){
+        return this.score;
     }
 }
