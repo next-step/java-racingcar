@@ -14,21 +14,25 @@ public class InputView {
         return SingletonHelper.instance;
     }
 
-    private int askNum(String questionMsg) {
-        System.out.println(questionMsg);
+    private boolean validateNameCsv(String nameCsv) {
+        String[] nameArr = nameCsv.split(CarGroupConst.NAME_SPLIT_REGEX);
+        boolean validation = true;
+        for (String name : nameArr) {
+            validation &= Car.validateName(name);
+        }
+        return validation;
+    }
+
+    public String askNames() {
+        System.out.println(InputViewConst.ASK_CARS);
+        String nameCsv = this.scanner.nextLine();
+        this.validateNameCsv(nameCsv);
+        return nameCsv;
+    }
+
+    public int askMaxRaceNum() {
+        System.out.println(InputViewConst.ASK_HOW_MANY_RACES);
         return this.scanner.nextInt();
-    }
-
-    public int askCarNum() {
-        return this.askNum(MsgConst.HOW_MANY_CARS_STR);
-    }
-
-    public int askTryNum() {
-        return this.askNum(MsgConst.HOW_MANY_TRIES_STR);
-    }
-
-    public void printResultMsg() {
-        System.out.println(MsgConst.EXECUTION_RESULT_STR);
     }
 
     private static class SingletonHelper {

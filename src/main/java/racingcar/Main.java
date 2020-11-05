@@ -1,21 +1,23 @@
 package racingcar;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-
         InputView inputView = InputView.getInstance();
-        int carNum = inputView.askCarNum();
-        int tryNum = inputView.askTryNum();
-        inputView.printResultMsg();
+        String nameCsv = inputView.askNames();
+        int maxRaceNum = inputView.askMaxRaceNum();
 
-        MoveStrategy strategy = new RandomMoveStrategy();
-        CarCollection collection = new CarCollection(carNum, strategy);
-        RacingGame game = new RacingGame(collection, tryNum);
-        RacingView racingView = new RacingView(game);
+        RacingGame game = new RacingGame(nameCsv, maxRaceNum);
+        game.play();
 
-        while (game.checkNotGameOver()) {
-            racingView.print();
-            game.play();
-        }
+        OutputView outputView = OutputView.getInstance();
+        outputView.printResultMsg();
+
+        List<List<Car>> history = game.getHistory();
+        outputView.printHistory(history);
+
+        List<Car> winners = game.getWinners();
+        outputView.printWinners(winners);
     }
 }

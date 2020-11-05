@@ -1,35 +1,54 @@
 package racingcar;
 
-import java.util.function.Consumer;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private CarCollection collection;
-    private int currTry;
-    private int maxTry;
+    List<Memento> mementos;
+    private CarGroup carGroup;
+    private int currRaceNum;
+    private int maxRaceNum;
 
-    public RacingGame(CarCollection carCollection, int tryNum) {
-        this.collection = carCollection;
-
-        this.currTry = 0;
-        this.maxTry = tryNum;
+    public RacingGame(String nameCsv, int maxRaceNum) {
+        MoveStrategy defaultStrategy = RandomStrategy.getInstance();
+        this.carGroup = new CarGroup(nameCsv, defaultStrategy);
+        this.maxRaceNum = maxRaceNum;
+        this.mementos = new LinkedList<>();
     }
 
-    public boolean checkNotGameOver() {
-        return this.currTry < this.maxTry;
+    public void setStrategy(MoveStrategy strategy) {
+        this.carGroup.setStrategy(strategy);
     }
 
-    public void printCars(Consumer<Car> printMethod) {
-        this.collection.print(printMethod);
+    protected boolean checkGameOver() {
+        return this.currRaceNum >= this.maxRaceNum;
+    }
+
+    protected void race() {
+        if (this.checkGameOver()) {
+            return;
+        }
+        this.currRaceNum++;
+        this.carGroup.moveCar();
+        this.mementos.add(
+                this.carGroup.createMemento()
+        );
     }
 
     public void play() {
-        if (!this.checkNotGameOver()) {
-            return;
+        while (!this.checkGameOver()) {
+            this.race();
         }
-        this.currTry++;
-        int carNum = this.collection.getCarNum();
-        for (int carIdx = 0; carIdx < carNum; carIdx++) {
-            this.collection.moveCar(carIdx);
-        }
+    }
+
+    public List<List<Car>> getHistory() {
+        return this.mementos.stream()
+                .map(memento -> memento.getCars())
+                .collect(Collectors.toList());
+    }
+
+    public List<Car> getWinners() {
+        return this.carGroup.getWinners();
     }
 }
