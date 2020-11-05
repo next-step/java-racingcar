@@ -1,4 +1,4 @@
-package racinggame.ui;
+package racinggame.view;
 
 import static racinggame.message.MessageConstant.COLON;
 import static racinggame.message.MessageConstant.NEW_LINE;
@@ -7,14 +7,13 @@ import static racinggame.message.MessageConstant.RACING_RESULT;
 import static racinggame.message.MessageConstant.WINNER_CALL;
 
 import java.util.List;
-import racinggame.model.MovingResult;
-import racinggame.model.RacingResult;
+import racinggame.domain.model.MovingResult;
+import racinggame.domain.model.RacingResult;
 import racinggame.vo.CarSateInRace;
 
 public class ResultView {
 
-  private ResultView() {
-  }
+  private ResultView() {}
 
   public static void printRacingResult(RacingResult racingResult) {
     System.out.println(NEW_LINE + RACING_RESULT);

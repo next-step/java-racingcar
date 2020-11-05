@@ -1,4 +1,4 @@
-package racinggame.rule;
+package racinggame.domain.rule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

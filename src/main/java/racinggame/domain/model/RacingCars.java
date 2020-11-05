@@ -1,17 +1,21 @@
-package racinggame.model;
+package racinggame.domain.model;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import racinggame.domain.Car;
+import racinggame.domain.rule.MoveRule;
 import racinggame.vo.CarSateInRace;
 
 public class RacingCars {
 
   private List<Car> racingCars;
 
-  public RacingCars(String[] racingCarNames) {
-    this.racingCars = preparerCar(racingCarNames);
+  public RacingCars(String[] racingCarNames, MoveRule moveRule) {
+    this.racingCars = Arrays.stream(racingCarNames)
+        .map(racingCarName -> Car.of(racingCarName, moveRule))
+        .collect(Collectors.toList());
   }
 
   public RacingCars(List<Car> racingCars) {
@@ -25,12 +29,6 @@ public class RacingCars {
   private List<CarSateInRace> orderRacing() {
     return this.racingCars.stream()
         .map(car -> car.go())
-        .collect(Collectors.toList());
-  }
-
-  private List<Car> preparerCar(String[] racingCarNames) {
-    return IntStream.range(0, racingCarNames.length)
-        .mapToObj(index -> new Car(racingCarNames[index]))
         .collect(Collectors.toList());
   }
 

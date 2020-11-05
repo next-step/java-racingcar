@@ -1,4 +1,4 @@
-package racinggame.rule;
+package racinggame.domain.rule;
 
 public interface MoveRule {
 
