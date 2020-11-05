@@ -15,21 +15,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarsTest {
 
 
-    @Test
-    @DisplayName("Cars에 있는 Car들이 잘 움직이는지 확인한다.")
-    void moveCars() {
-        //given
-        List<Car> carList = Arrays.asList(new Car("wani"), new Car("pobi"));
-        Cars cars = new Cars(carList);
-        MoveStrategy moveStrategy = new MustMoveStrategy();
-        //when
-        cars.moveCars(moveStrategy);
-        List<Integer> carsPositions = cars.getCarList().stream()
-                .map(Car::getCarPosition)
-                .collect(Collectors.toList());
-        //then
-        carsPositions.forEach(carsPosition -> assertThat(carsPosition).isEqualTo(1));
-    }
 
     @Test
     @DisplayName("자동차가 1개 미만일 경우 익셉션 확인")
