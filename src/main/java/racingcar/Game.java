@@ -7,17 +7,8 @@ public class Game {
     private static Car[] cars;
     private static Random random = new Random();
 
-    public static int getRoundCount(){
-        return roundCount;
-    }
-
-    public static int getCarCount(){
-        return cars.length;
-    }
-
     public static void setRoundCount(int count){
         roundCount = count;
-        System.out.println(roundCount);
     }
 
     public static void setCars(int count){
