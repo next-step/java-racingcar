@@ -13,7 +13,6 @@ public class RacingGame {
     public RacingGame(String nameCsv, int maxRaceNum) {
         MoveStrategy defaultStrategy = RandomStrategy.getInstance();
         this.carGroup = new CarGroup(nameCsv, defaultStrategy);
-        this.currRace = 0;
         this.maxRace = maxRaceNum;
         this.mementos = new LinkedList<>();
     }
@@ -22,12 +21,12 @@ public class RacingGame {
         this.carGroup.setStrategy(strategy);
     }
 
-    protected boolean checkNotGameOver() {
-        return this.currRace < this.maxRace;
+    protected boolean checkGameOver() {
+        return this.currRace >= this.maxRace;
     }
 
     protected void race() {
-        if (!this.checkNotGameOver()) {
+        if (this.checkGameOver()) {
             return;
         }
         this.currRace++;
@@ -38,7 +37,7 @@ public class RacingGame {
     }
 
     public void play() {
-        while (this.checkNotGameOver()) {
+        while (!this.checkGameOver()) {
             this.race();
         }
     }

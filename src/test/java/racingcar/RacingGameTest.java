@@ -21,8 +21,8 @@ class RacingGameTest {
             game.race();
         }
 
-        boolean expectedGameOver = loop < maxRaceNum;
-        assertThat(game.checkNotGameOver())
+        boolean expectedGameOver = loop >= maxRaceNum;
+        assertThat(game.checkGameOver())
                 .isEqualTo(expectedGameOver);
     }
 }
