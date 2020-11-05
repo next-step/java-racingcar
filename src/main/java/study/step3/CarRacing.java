@@ -5,11 +5,22 @@ import java.util.*;
 public class CarRacing {
 
     private final List<Integer> cars;
-    private ResultView printer;
+    private final RacingInput racingInput;
+    private final ResultView printer;
     private int round = 0;
 
-    public CarRacing(int countOfCars, ResultView printer) {
-        this.cars = initRacing(countOfCars);
+    public static void main(String... args) {
+
+        InputView inputView = new InputView();
+        RacingInput racingInput = inputView.getRacingInput();
+
+        CarRacing cr = new CarRacing(racingInput, new ResultView());
+        cr.run();
+    }
+
+    public CarRacing(RacingInput racingInput, ResultView printer) {
+        this.racingInput = racingInput;
+        this.cars = initRacing(racingInput.getCountOfCar());
         this.printer = printer;
     }
 
@@ -17,27 +28,16 @@ public class CarRacing {
         return new ArrayList<>(Collections.nCopies(cars, 0));
     }
 
-    public static void main(String... args) {
-
-        InputView inputView = new InputView();
-        RacingInput racingInput = inputView.getRacingInput();
-
-        CarRacing cr = new CarRacing(racingInput.getCountOfCar(), new ResultView());
-        List<Integer> cars = cr.initRacing(racingInput.getCountOfCar());
+    public void run() {
 
         int round = 0;
-
         while (round++ < racingInput.getCountOfRound()) {
-            cr.processRound();
-            cr.printResult();
+            processRound();
+            printResult();
         }
     }
 
-    public void printResult() {
-        printer.printResult(round, cars);
-    }
-
-    public void processRound() {
+    private void processRound() {
         for (int i = 0; i < cars.size(); i++) {
             if (getRandomNumber() >= 4) {
                 cars.set(i, cars.get(i) + 1);
@@ -49,6 +49,10 @@ public class CarRacing {
     private int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(10);
+    }
+
+    private void printResult() {
+        printer.printResult(round, cars);
     }
 
 }
