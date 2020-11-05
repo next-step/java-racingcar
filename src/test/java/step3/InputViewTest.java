@@ -14,14 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class InputViewTest {
-//input값을 확인하기 위한 TDD
-//    @DisplayName("요청한 input값 과 결과값 동일 여부")
-//    @Test
-//    void resultValue(String content, int inputNumber){
-//        assertThat(InputView.input(InputView.LOOP_COUNT_MESSAGE)).
-//    }
-
-    @DisplayName("Input값 유효성 검사 여부")
+    @DisplayName("Input number 값 유효성 검사")
     @ParameterizedTest
     @MethodSource("inputNumberCase")
     void validInputNum(boolean expect, int inputNumber) {
