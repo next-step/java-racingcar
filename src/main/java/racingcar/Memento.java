@@ -7,17 +7,17 @@ public class Memento {
     private List<Car> cars;
 
     public Memento() {
-        this.cars = new LinkedList<>();
+        cars = new LinkedList<>();
     }
 
     public void addCar(Car car) {
-        this.cars.add(car);
+        cars.add(car);
     }
 
     public List<Car> getCars() {
         List<Car> cars = new LinkedList<>();
         for (Car car : this.cars) {
-            cars.add(new Car(car));
+            cars.add(car.clone());
         }
         return cars;
     }

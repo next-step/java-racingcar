@@ -12,31 +12,31 @@ public class CarGroup {
 
     public CarGroup(String nameCsv, MoveStrategy strategy) {
         String[] nameArr = nameCsv.split(CarGroupConst.NAME_SPLIT_REGEX);
-        this.cars = Arrays.stream(nameArr)
-                .map(name -> new Car(name, strategy))
+        cars = Arrays.stream(nameArr)
+                .map(name -> Car.createCar(name, strategy))
                 .collect(Collectors.toList());
     }
 
     public void moveCar() {
-        for (Car car : this.cars) {
+        for (Car car : cars) {
             car.move();
         }
     }
 
     public Memento createMemento() {
         Memento memento = new Memento();
-        for (Car car : this.cars) {
-            memento.addCar(new Car(car));
+        for (Car car : cars) {
+            memento.addCar(car.clone());
         }
         return memento;
     }
 
     public void restoreMemento(Memento memento) {
-        this.cars = memento.getCars();
+        cars = memento.getCars();
     }
 
     protected List<Integer> getPositions() {
-        return this.cars.stream()
+        return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
@@ -54,11 +54,11 @@ public class CarGroup {
     }
 
     public List<Car> getWinners() {
-        return this.getWinners(this.cars);
+        return getWinners(cars);
     }
 
     public void setStrategy(MoveStrategy strategy) {
-        for (Car car : this.cars) {
+        for (Car car : cars) {
             car.setStrategy(strategy);
         }
     }

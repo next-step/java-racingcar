@@ -5,17 +5,16 @@ public class Car {
     private String name;
     private MoveStrategy strategy;
 
-    public Car(Car car) {
-        this.position = car.position;
-        this.name = car.name;
-        this.strategy = car.strategy;
-    }
-
-    public Car(String name, MoveStrategy strategy) {
-        validateName(name);
-        this.position = CarConst.START_POSITION;
+    private Car(int position, String name, MoveStrategy strategy) {
+        this.position = position;
         this.name = name;
         this.strategy = strategy;
+    }
+
+    public static Car createCar(String name, MoveStrategy strategy) {
+        validateName(name);
+        int position = CarConst.START_POSITION;
+        return new Car(position, name, strategy);
     }
 
     public static boolean validateName(String name) {
@@ -28,18 +27,23 @@ public class Car {
         return true;
     }
 
+    @Override
+    public Car clone() {
+        return new Car(position, name, strategy);
+    }
+
     public void move() {
-        if (this.strategy.checkMovable()) {
-            this.position++;
+        if (strategy.checkMovable()) {
+            position++;
         }
     }
 
     public int getPosition() {
-        return this.position;
+        return position;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setStrategy(MoveStrategy strategy) {

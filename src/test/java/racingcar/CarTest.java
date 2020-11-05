@@ -20,13 +20,13 @@ class CarTest {
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
         if (name.length() <= CarConst.MAX_NAME_LENGTH) {
             Assertions.assertDoesNotThrow(() -> {
-                new Car(name, strategy);
+                Car.createCar(name, strategy);
             });
             return;
         }
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    new Car(name, strategy);
+                    Car.createCar(name, strategy);
                 }).withMessageMatching(CarConst.MAX_NAME_LENGTH_EXCEEDED);
     }
 
@@ -36,7 +36,7 @@ class CarTest {
         MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    new Car(null, strategy);
+                    Car.createCar(null, strategy);
                 }).withMessageMatching(CarConst.NULL_NAME_ERR);
     }
 
@@ -45,11 +45,11 @@ class CarTest {
     void move() {
         MoveStrategy proceedStrategy = ProceedStrategy.getInstance();
         String movableName = "move";
-        Car movableCar = new Car(movableName, proceedStrategy);
+        Car movableCar = Car.createCar(movableName, proceedStrategy);
 
         MoveStrategy stopStrategy = StopStrategy.getInstance();
         String stoppedName = "stop";
-        Car stoppedCar = new Car(stoppedName, stopStrategy);
+        Car stoppedCar = Car.createCar(stoppedName, stopStrategy);
 
         movableCar.move();
         stoppedCar.move();

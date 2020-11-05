@@ -18,7 +18,7 @@ class OutputViewTest {
 
     @BeforeEach
     void setUp() {
-        this.outputView = OutputView.getInstance();
+        outputView = OutputView.getInstance();
     }
 
     @ParameterizedTest
@@ -27,13 +27,13 @@ class OutputViewTest {
     void convertCarPositions(int loop, String expectedResult) {
         String name = "고정완";
         MoveStrategy strategy = ProceedStrategy.getInstance();
-        Car car = new Car(name, strategy);
+        Car car = Car.createCar(name, strategy);
 
         for (int i = 0; i < loop; i++) {
             car.move();
         }
 
-        String result = this.outputView.convertCar(car);
+        String result = outputView.convertCar(car);
         assertThat(result)
                 .isEqualTo(expectedResult);
 
@@ -49,10 +49,11 @@ class OutputViewTest {
         List<Car> carList = new LinkedList<Car>();
         for (int i = 0; i < winnerNames.length; i++) {
             String name = winnerNames[i];
-            carList.add(new Car(name, strategy));
+            Car car = Car.createCar(name, strategy);
+            carList.add(car);
         }
 
-        assertThat(this.outputView.convertWinnerList(carList))
+        assertThat(outputView.convertWinnerList(carList))
                 .isEqualTo(expectedMsg);
     }
 }
