@@ -11,15 +11,15 @@ public class Racing {
     private List<Car> cars = new ArrayList<>();
     private StringBuilder sb = new StringBuilder();
 
-    public void setStrategyGenerator(StrategyGenerator strategyGenerator) {
-        this.strategyGenerator = strategyGenerator;
-    }
-
     public Racing(int numberOfCars, int numberOfTries){
         this.numberOfTries = numberOfTries;
         for(int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
         }
+    }
+
+    public void setStrategyGenerator(StrategyGenerator strategyGenerator) {
+        this.strategyGenerator = strategyGenerator;
     }
 
     public String race() {
