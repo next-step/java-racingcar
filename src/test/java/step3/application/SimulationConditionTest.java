@@ -48,7 +48,7 @@ class SimulationConditionTest {
                     .hasMessageContaining(NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE.getMessage());
         }
 
-        @DisplayName("전달 된 레이싱카 이름 리스트중에 길이가 5보다 큰 레이카가 존재하는 경우 'IllegalArgumentException'를 throw")
+        @DisplayName("전달 된 레이싱카 이름 리스트중에 길이가 5보다 큰 레이싱카가 존재하는 경우 'IllegalArgumentException'를 throw")
         @Test
         void throw_IllegalArgumentException_when_car_name_not_below_then_five() {
             // given
@@ -63,6 +63,23 @@ class SimulationConditionTest {
             // then
             assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(NAME_OF_CAR_LENGTH_MUST_BELOW_THEN_FIVE.getMessage());
+        }
+
+        @DisplayName("전달 된 레이싱카 이름 리스트중에 중복된 이름이 존재하는 경우 'IllegalArgumentException'를 throw")
+        @Test
+        void throw_IllegalArgumentException_when_car_name_be_duplicated() {
+            // given
+            final String nameOfCars = "a,b,c,d,a";
+            final String numberOfAttempts = "1";
+
+            // when
+            final Throwable thrown = catchThrowable(() -> {
+                SimulationCondition.of(nameOfCars, numberOfAttempts);
+            });
+
+            // then
+            assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(CAR_NAME_MUST_NOT_BE_DUPLICATED.getMessage());
         }
 
         @DisplayName("정상 생성")

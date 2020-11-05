@@ -12,6 +12,7 @@ import static step3.application.SimulationCondition.ErrorMessage.*;
 public class SimulationCondition {
     public enum ErrorMessage implements Message {
         NAME_OF_CAR_LENGTH_MUST_BELOW_THEN_FIVE("name of car's length must below then 5"),
+        CAR_NAME_MUST_NOT_BE_DUPLICATED("car name must not be duplicated"),
         NAME_OF_CARS_MUST_NOT_BE_BLANK(SimulationCondition.class.getName() + "'s carNames must not blank"),
         NUMBER_OF_CAR_MUST_MORE_THEN_ONE("number of car must more then 1"),
         NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE(SimulationCondition.class.getName() + "'s numberOfAttempts must more then 1"),
@@ -47,6 +48,7 @@ public class SimulationCondition {
         
         final List<String> carNames = CarNamesSeparator.split(nameOfCars);
         checkArgument(carNames.stream().noneMatch(carName -> carName.length() > 5), NAME_OF_CAR_LENGTH_MUST_BELOW_THEN_FIVE);
+        checkArgument(carNames.stream().distinct().count() == carNames.size(), CAR_NAME_MUST_NOT_BE_DUPLICATED);
         checkArgument(carNames.size() >= 1, NUMBER_OF_CAR_MUST_MORE_THEN_ONE);
         return carNames;
     }
