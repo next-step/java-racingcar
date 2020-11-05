@@ -20,7 +20,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static String printPosition(final Car car) {
+    private static String printPosition(final Car car) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < car.getPosition(); i++) {
             stringBuilder.append(POSITION_MARK);

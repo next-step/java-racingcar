@@ -22,14 +22,8 @@ public class RacingCars {
         return new RacingCars(initCars, movingStrategy);
     }
 
-    private void getCarName(String[] nameOfCars,int numOfCar){
-        for (String carName: nameOfCars) {
-            createCars()
-        }
-    }
-
-    public static List<Car> createCars(int numOfCar,String carName) {
-        return Stream.generate(Car::new(carName))
+    private static List<Car> createCars(int numOfCar) {
+        return Stream.generate(Car::new)
                 .limit(numOfCar)
                 .collect(Collectors.toList());
     }

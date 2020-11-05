@@ -22,57 +22,20 @@ public class InputView {
         return getLoopCount(LOOP_COUNT_MESSAGE);
     }
 
-    public static String[] getNameOfCars(String content) {
-        System.out.println(content);
-        String inputName = SCANNER.next();
-        String[] names = inputName.split(",");
-        validInputName(names);
-        int numOfNames = names.length;
-        validateInputNum(numOfNames);
-        return names;
-    }
-
-
-    public static int getLoopCount(String content) {
+    private static int input(String content) {
         System.out.println(content);
         int value = SCANNER.nextInt();
         validateInputNum(value);
         return value;
     }
 
-    public static void validInputName(String[] names){
-        System.out.println("11"+isValidInputName(names));
-        if(isValidInputName(names)){
-            throw new IllegalArgumentException(ErrorMessage.INPUT_NAME_ERROR);
-        }
-    }
-
-
-    public static boolean isValidInputName(String[] names) {
-        for (String name : names) {
-            System.out.println("22"+isNullOrEmpty(name));
-            System.out.println("33"+isFiveLetterWords(name));
-            return isNullOrEmpty(name) || isFiveLetterWords(name);
-        }
-        return true;
-    }
-
-
-    public static boolean isNullOrEmpty(String name) {
-
-        return name.isEmpty() || name.equals(" ");
-    }
-    public static boolean isFiveLetterWords(String name){
-        return name.length()>5;}
-
-
-    public static void validateInputNum(final int inputNumber) {
+    private static void validateInputNum(final int inputNumber) {
         if (isValidInputNumber(inputNumber)) {
             throw new IllegalArgumentException(ErrorMessage.MORE_THAN_ZERO);
         }
     }
 
-    public static boolean isValidInputNumber(int inputNumber) {
+    private static boolean isValidInputNumber(int inputNumber) {
         return inputNumber <= MIN_INPUT_VALUE;
     }
 }
