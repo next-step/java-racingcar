@@ -72,14 +72,10 @@ class ParsedExpression {
     Queue<Operator> operators = new LinkedList<>();
 
     public void addPart(ExpressionPart part) {
-        switch (part.type()){
-            case Operand:
-                operands.offer((Operand)part);
-                break;
-            case Operator:
-                operators.offer((Operator)part);
-                break;
-            default:
+        if( part.type() == ExpressionPart.Type.Operand ){
+            operands.offer((Operand)part);
+        } else {
+            operators.offer((Operator)part);
         }
     }
 }
