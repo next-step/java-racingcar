@@ -4,6 +4,7 @@ import step3.strategy.MoveStrategy;
 import step3.strategy.PrintMarkStrategy;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class RacingCar implements Car {
     private int progress;
@@ -38,10 +39,14 @@ public class RacingCar implements Car {
         return moveStrategy.strategy(number);
     }
 
+    public void clearPrintMark(){
+        sb.delete(0, sb.length());
+    }
+
     @Override
     public StringBuilder getProgressFromStrategy(PrintMarkStrategy strategy) {
-        sb.delete(0, sb.length());
-        sb.append(String.valueOf(strategy.getPrintMark()).repeat(Math.max(0, progress)));
+        clearPrintMark();
+        IntStream.range(0,progress).forEach(index->sb.append(strategy.getPrintMark()));
         return sb;
     }
 

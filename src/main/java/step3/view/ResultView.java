@@ -4,6 +4,7 @@ import step3.strategy.PrintMarkStrategy;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class ResultView {
     private static final ResultView resultView = new ResultView();
@@ -18,7 +19,7 @@ public class ResultView {
 
     private void draw(List<Integer> list, PrintMarkStrategy strategy) {
         list.forEach(progress -> {
-            racingProgress.append(String.valueOf(strategy.getPrintMark()).repeat(Math.max(0, progress)));
+            IntStream.range(0,progress).forEach(index->racingProgress.append(strategy.getPrintMark()));
             racingProgress.append(System.lineSeparator());
         });
         racingProgress.append(System.lineSeparator());
