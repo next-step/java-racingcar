@@ -1,39 +1,48 @@
 package step3.domain;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class RacingMap {
-    private final Map<RacingCar, Integer> racingCarLocation;
+    private final List<RacingCarLocation> racingCarLocations;
 
-    public RacingMap(final List<RacingCar> racingCars) {
-        this.racingCarLocation = racingCars.stream()
-                .collect(Collectors.toMap(Function.identity(), RacingCar::getStartPosition));
+    private RacingMap(final List<RacingCarLocation> racingCarLocations) {
+        this.racingCarLocations = racingCarLocations;
     }
 
-    private RacingMap(final Map<RacingCar, Integer> racingCarLocation) {
-        this.racingCarLocation = racingCarLocation;
+    public static RacingMap of(final List<RacingCar> racingCars) {
+        final List<RacingCarLocation> racingCarLocations = racingCars.stream()
+                .map(racingCar -> new RacingCarLocation(racingCar, racingCar.getStartPosition()))
+                .collect(Collectors.toList());
+        return new RacingMap(racingCarLocations);
     }
 
     public void moveRacingCars(final int unitOfForward) {
-        racingCarLocation.keySet()
+        racingCarLocations
                 .stream()
+                .map(RacingCarLocation::getCar)
                 .filter(RacingCar::isMovable)
                 .forEach(racingCar -> move(racingCar, unitOfForward));
     }
 
     public List<RacingCar> getRacingCars() {
-        final List<RacingCar> racingCars = new ArrayList<>(racingCarLocation.keySet());
+        final List<RacingCar> racingCars = racingCarLocations.stream().map(RacingCarLocation::getCar).collect(Collectors.toList());
         return Collections.unmodifiableList(racingCars);
     }
 
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     private void move(final RacingCar racingCar, final int unitOfForward) {
-        racingCarLocation.computeIfPresent(racingCar, (car, position) -> position + unitOfForward);
+        racingCarLocations.stream().filter(racingCarLocation -> racingCarLocation.getCar() == racingCar)
+                .findAny()
+                .get()
+                .move(unitOfForward);
     }
 
     public RacingMap clone() {
-        return new RacingMap(Collections.unmodifiableMap(new HashMap<>(racingCarLocation)));
+        final List<RacingCarLocation> clonedRacingCarLocations = racingCarLocations.stream()
+                .map(RacingCarLocation::clone)
+                .collect(Collectors.toList());
+        return new RacingMap(Collections.unmodifiableList(clonedRacingCarLocations));
     }
 
     public Snapshot createSnapshot() {
@@ -41,14 +50,23 @@ public class RacingMap {
     }
 
     public int findPosition(final RacingCar racingCar) {
-        return racingCarLocation.get(racingCar);
+        return racingCarLocations.stream()
+                .filter(racingCarLocation -> racingCarLocation.getCar().equals(racingCar))
+                .findAny()
+                .map(RacingCarLocation::getLocation)
+                .orElse(0);
     }
 
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public List<String> selectWinnerNames() {
-        final int farthestLocation = Collections.max(racingCarLocation.values());
+        final int farthestLocation = racingCarLocations.stream()
+                .map(RacingCarLocation::getLocation)
+                .max(Integer::compareTo)
+                .get();
 
-        return racingCarLocation.keySet().stream()
-                .filter(car -> racingCarLocation.get(car) == farthestLocation)
+        return racingCarLocations.stream()
+                .filter(racingCarLocation -> racingCarLocation.getLocation().equals(farthestLocation))
+                .map(RacingCarLocation::getCar)
                 .map(RacingCar::getName)
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());

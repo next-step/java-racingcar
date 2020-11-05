@@ -24,7 +24,7 @@ class RacingMapTest {
                     , new RacingCar("CAR2", NEVER_MOVABLE)
                     , new RacingCar("CAR3", NEVER_MOVABLE)
             );
-            final RacingMap racingMap = new RacingMap(racingCars);
+            final RacingMap racingMap = RacingMap.of(racingCars);
             final RacingCar car1 = racingCars.get(0);
 
             // when
@@ -44,7 +44,7 @@ class RacingMapTest {
                     , new RacingCar("CAR2", MUST_MOVABLE)
                     , new RacingCar("CAR3", NEVER_MOVABLE)
             );
-            final RacingMap racingMap = new RacingMap(racingCars);
+            final RacingMap racingMap = RacingMap.of(racingCars);
             
             final RacingCar car1 = racingCars.get(0);
             final RacingCar car2 = racingCars.get(1);

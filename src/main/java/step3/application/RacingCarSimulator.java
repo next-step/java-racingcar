@@ -38,7 +38,7 @@ public class RacingCarSimulator {
 
     public SimulationResult simulate() {
         final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, new RandomMovableStrategy());
-        final RacingMap racingMap = new RacingMap(racingCars);
+        final RacingMap racingMap = RacingMap.of(racingCars);
         final List<Snapshot> snapshots = createSimulationSnapshots(racingMap, numberOfAttempts);
 
         return new SimulationResult(snapshots, racingMap);
