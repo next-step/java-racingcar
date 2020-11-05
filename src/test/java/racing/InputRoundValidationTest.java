@@ -7,10 +7,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static racing.view.InputValidator.isMatch;
+import static racing.view.InputValidator.ROUND_PATTERN;
 import static racing.view.InputValidator.isNull;
 
-public class InputViewValidationTest {
+import racing.view.InputValidator;
+
+public class InputRoundValidationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "5", "10", "19"})
@@ -58,5 +60,9 @@ public class InputViewValidationTest {
     @DisplayName("null 체크가 제대로 동작하는지 확인합니다")
     public void isNullTest() {
         assertTrue(isNull(null));
+    }
+
+    private static boolean isMatch(String input) {
+        return InputValidator.isMatch(ROUND_PATTERN, input);
     }
 }
