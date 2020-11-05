@@ -7,13 +7,13 @@ import java.util.stream.Collectors;
 public class RacingGame {
     List<Memento> mementos;
     private CarGroup carGroup;
-    private int currRace;
-    private int maxRace;
+    private int currRaceNum;
+    private int maxRaceNum;
 
     public RacingGame(String nameCsv, int maxRaceNum) {
         MoveStrategy defaultStrategy = RandomStrategy.getInstance();
         this.carGroup = new CarGroup(nameCsv, defaultStrategy);
-        this.maxRace = maxRaceNum;
+        this.maxRaceNum = maxRaceNum;
         this.mementos = new LinkedList<>();
     }
 
@@ -22,14 +22,14 @@ public class RacingGame {
     }
 
     protected boolean checkGameOver() {
-        return this.currRace >= this.maxRace;
+        return this.currRaceNum >= this.maxRaceNum;
     }
 
     protected void race() {
         if (this.checkGameOver()) {
             return;
         }
-        this.currRace++;
+        this.currRaceNum++;
         this.carGroup.moveCar();
         this.mementos.add(
                 this.carGroup.createMemento()
