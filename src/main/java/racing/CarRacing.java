@@ -1,8 +1,6 @@
 package racing;
 
 import racing.domain.Grid;
-import racing.view.InputView;
-
 import java.util.LinkedList;
 
 public class CarRacing {
@@ -18,7 +16,6 @@ public class CarRacing {
     public Grid start() {
         return new Grid(new LinkedList<>())
                 .lineUp(this.cars)
-                .standingStart(this.rounds)
-                .finished();
+                .standingStart(this.rounds);
     }
 }

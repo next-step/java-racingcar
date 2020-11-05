@@ -49,7 +49,4 @@ public class Grid {
         return round;
     }
 
-    public Grid finished() {
-        return this;
-    }
 }
