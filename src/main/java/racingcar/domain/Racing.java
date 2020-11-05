@@ -7,8 +7,13 @@ import java.util.List;
 
 public class Racing {
     private int numberOfTries;
+    private StrategyGenerator strategyGenerator;
     private List<Car> cars = new ArrayList<>();
     private StringBuilder sb = new StringBuilder();
+
+    public void setStrategyGenerator(StrategyGenerator strategyGenerator) {
+        this.strategyGenerator = strategyGenerator;
+    }
 
     public Racing(int numberOfCars, int numberOfTries){
         this.numberOfTries = numberOfTries;
@@ -17,11 +22,13 @@ public class Racing {
         }
     }
 
-    public String race(RandomStrategyGenerator r) {
+    public String race() {
         for(int i = 0; i < numberOfTries; i++) {
-            cars.stream().map(c -> c.move(r.generate())).forEach(sb::append);
+            cars.stream().map(c -> c.move(strategyGenerator.generate())).forEach(sb::append);
             sb.append(Constants.NEW_LINE_DELIMITER);
         }
         return sb.toString();
     }
+
+
 }

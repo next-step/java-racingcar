@@ -11,7 +11,8 @@ public class RacingCarApplication {
         int numberOfTries = InputView.askToInsertNumberOfTries();
 
         racing = new Racing(numberOfCars, numberOfTries);
-        String result = racing.race(RandomStrategyGenerator.getInstance());
+        racing.setStrategyGenerator(new RandomStrategyGenerator());
+        String result = racing.race();
 
         ResultView.print(result);
     }
