@@ -9,4 +9,8 @@ public class ResultView {
     public static void drawTravelDistance() {
         System.out.print("-");
     }
+
+    public static void drawLineBreak() {
+        System.out.println();
+    }
 }
