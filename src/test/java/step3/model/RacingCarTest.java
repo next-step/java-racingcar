@@ -8,20 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    @DisplayName("차량 전진 테스트")
-    @ValueSource(ints = {1, 3, 4, 5, 6, 8})
-    public void racingCarAddCommand(int executeTry) {
-        //Given
-        RacingCar racingCar = new RacingCar(new RandomCommander());
-
-        //When
-        for (int i = 0; i < executeTry; i++) {
-            racingCar.executeMoveTrack();
-        }
-
-        //Then
-        assertThat(racingCar.getMoveTrack()).isEqualTo(executeTry);
-    }
 
     @DisplayName("RaceCar 포지션 이동 테스트 ")
     @ParameterizedTest
@@ -37,7 +23,7 @@ public class RacingCarTest {
         }
 
         //Then
-        assertThat(racingCar.movePosition()).isEqualTo(racingCar.getMoveTrack());
+        assertThat(racingCar.movePosition()).isLessThanOrEqualTo(moveCount);
 
 
 
