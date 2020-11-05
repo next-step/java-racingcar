@@ -54,7 +54,7 @@
 
 ### FixedRoullete
 
-- 테스트용  정 값 생성
+- 테스트용 고정 값 생성
 
 ### ResultView
 
