@@ -1,9 +1,12 @@
 package stringCalculator;
 
+import com.sun.tools.javac.util.StringUtils;
 import stringCalculator.exception.EmptyException;
 import stringCalculator.exception.NullException;
 
-public class StringUtil {
+import java.util.Objects;
+
+public class CustomStringUtils {
 
     public static String[] split(String str) {
         validateNone(str);

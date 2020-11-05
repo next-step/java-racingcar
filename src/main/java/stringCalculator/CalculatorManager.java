@@ -2,11 +2,11 @@ package stringCalculator;
 
 import java.util.List;
 
-public class Operate {
+public class CalculatorManager {
 
     private int result = 0;
 
-    public Operate(List<Integer> operands, List<String> operators) {
+    public CalculatorManager(List<Integer> operands, List<String> operators) {
         result = operands.get(0); // 첫 자리 값 셋팅;
         int operatorCnt = 1;
 
@@ -20,7 +20,7 @@ public class Operate {
     }
 
     private void calculate(int operand, String operator) {
-        for (Calculate value : Calculate.values()) {
+        for (Operator value : Operator.values()) {
             if (operator.equals(value.getOperator())) {
                 result = value.calculate(result, operand);
             }

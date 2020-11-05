@@ -25,7 +25,7 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(expected);
     }
 
-    @DisplayName(value = "피연산자 추출 시 숫자가 아니면 예외 발생")
+    @DisplayName(value = "연산자 추출 시 숫자가 아니면 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = {"!", "@", "^"})
     void operatorException(String str) {

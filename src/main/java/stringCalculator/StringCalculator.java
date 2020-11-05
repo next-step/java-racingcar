@@ -8,11 +8,11 @@ import java.util.List;
 public class StringCalculator {
 
     public static int calculator(String str) {
-        String[] values = StringUtil.split(str);
+        String[] values = CustomStringUtils.split(str);
         List<Integer> operands = getOperands(values);
         List<String> operators = getOperator(values);
 
-        return new Operate(operands, operators).getResult();
+        return new CalculatorManager(operands, operators).getResult();
     }
 
     private static List<Integer> getOperands(String[] values) {
@@ -48,7 +48,10 @@ public class StringCalculator {
     }
 
     static void validateOperator(String operator) {
-        if (!("+".equals(operator) || "-".equals(operator) || "*".equals(operator)|| "/".equals(operator))) {
+        if (!(Operator.ADD.getOperator().equals(operator)
+                || Operator.SUBTRACT.getOperator().equals(operator)
+                || Operator.MULTIPLE.getOperator().equals(operator)
+                || Operator.DIVISION.getOperator().equals(operator))) {
             throw new OperatorException();
         }
     }

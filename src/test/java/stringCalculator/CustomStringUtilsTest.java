@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class StringUtilTest {
+class CustomStringUtilsTest {
 
     @DisplayName(value = "문자열을 배열로 변환한다.")
     @ParameterizedTest
@@ -18,7 +18,7 @@ class StringUtilTest {
         String source = str;
 
         // when
-        String[] result = StringUtil.split(source);
+        String[] result = CustomStringUtils.split(source);
 
         // then
         assertThat(result.length).isEqualTo(length);
@@ -33,14 +33,14 @@ class StringUtilTest {
 
         // when
         assertThatThrownBy(() -> {
-            StringUtil.split(emptySource);
+            CustomStringUtils.split(emptySource);
             // then
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("빈 문자열을 사용할 수 없습니다.");
 
         // when
         assertThatThrownBy(() -> {
-            StringUtil.split(nullSource);
+            CustomStringUtils.split(nullSource);
             // then
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("NULL을 사용할 수 없습니다.");
