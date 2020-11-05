@@ -32,7 +32,8 @@ public final class RacingCars {
         Map<Integer, List<String>> rankings = new HashMap<>();
 
         for (Car car : cars) {
-            List<String> names = rankings.computeIfAbsent(car.getDisplacement(), name -> new LinkedList<>());
+            List<String> names =
+                    rankings.computeIfAbsent(car.getDisplacement(), name -> new LinkedList<>());
             names.add(car.getName());
         }
 

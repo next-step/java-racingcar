@@ -13,7 +13,8 @@ public final class InputValidator {
 
     // 자동차 이름은 전부 다 한글이거나 전부 다 영어이어야 하며 공백을 포함시킬 수 없습니다
     // 자동차 이름은 5글자를 초과할 수 없습니다
-    public static final Pattern CAR_NAMES_PATTERN = Pattern.compile("^(([가-힣]{1,5}|[a-zA-Z]{1,5})(,|$))+");
+    public static final Pattern CAR_NAMES_PATTERN =
+            Pattern.compile("^(([가-힣]{1,5}|[a-zA-Z]{1,5})(,|$))+");
 
     private InputValidator() {}
 
