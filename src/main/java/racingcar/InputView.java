@@ -14,7 +14,7 @@ public class InputView {
         return SingletonHelper.instance;
     }
 
-    public String askCars() {
+    public String askNames() {
         System.out.println(InputViewConst.ASK_CARS);
         String nameCsv = this.scanner.nextLine();
         String[] nameArr = nameCsv.split(CarGroupConst.NAME_SPLIT_REGEX);

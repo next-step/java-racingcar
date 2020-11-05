@@ -5,7 +5,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         InputView inputView = InputView.getInstance();
-        String nameCsv = inputView.askCars();
+        String nameCsv = inputView.askNames();
         int maxRaceNum = inputView.askMaxRaceNum();
 
         RacingGame game = new RacingGame(nameCsv, maxRaceNum);
