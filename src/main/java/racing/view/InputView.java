@@ -28,7 +28,7 @@ public class InputView {
         return Integer.parseInt(read(ROUND_QUESTION, ROUND_PATTERN));
     }
 
-    private static <T> String read(final String message, final Pattern pattern) {
+    private static String read(final String message, final Pattern pattern) {
         System.out.println(message);
 
         final String input = scanner.nextLine();

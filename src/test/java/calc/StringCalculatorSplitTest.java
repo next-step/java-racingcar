@@ -7,7 +7,7 @@ import org.junit.platform.commons.util.StringUtils;
 
 import static calc.Separator.splitNumbers;
 import static calc.Separator.splitOperators;
-import static calc.StringUtils.EMPTY;
+import static util.StringUtils.EMPTY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
