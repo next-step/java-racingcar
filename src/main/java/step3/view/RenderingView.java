@@ -1,10 +1,11 @@
 package step3.view;
 
 import step3.RaceGameContract;
-import step3.model.RacingCars;
+import step3.model.RaceGame;
+import sun.text.resources.CollationData;
 
 import java.util.Collections;
-import java.util.stream.IntStream;
+import java.util.List;
 
 public class RenderingView implements RaceGameContract.View {
 
@@ -16,16 +17,15 @@ public class RenderingView implements RaceGameContract.View {
     }
 
     @Override
-    public void renderView(RacingCars racingCars) {
-        for (int i = 0; i < racingCars.getTotalRound(); i++) {
-            racingCars.roundResult();
+    public void renderView(RaceGame raceGame) {
+        List<Integer> result = raceGame.getMoveTracks();
+        for (int i = 0; i < result.size(); i++) {
+            System.out.println(String.join("", Collections.nCopies(result.get(i), "-")));
         }
+        System.out.println("");
         executeCount++;
     }
 
-    private void getRoundResult(RacingCars racingCars) {
-
-    }
 
     public int getExecuteCount() {
         return executeCount;

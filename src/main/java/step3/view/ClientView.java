@@ -6,6 +6,7 @@ import step3.model.RandomCommander;
 import step3.present.Presenter;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class ClientView {
 
@@ -19,10 +20,11 @@ public class ClientView {
         int round = scanner.nextInt();
 
         GameRound gameRound = new GameRound(participantCar, round);
-        Presenter presenter = new Presenter(new RenderingView(), new RandomCommander());
+        Presenter presenter = new Presenter(new RenderingView(),  new RaceGame(gameRound, new RandomCommander()));
 
-        RaceGame game = presenter.createGame(gameRound);
-        presenter.gameStart(game);
+        IntStream.range(0, round)
+                .forEach(i -> presenter.gameStart());
+
 
     }
 
