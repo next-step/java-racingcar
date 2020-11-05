@@ -10,21 +10,21 @@ public class OutputView {
     private static final PrintStream out = System.out;
     private static final String MOVEMENT_CHAR = "-";
 
-    public void showResult(Records records) {
+    public static void showResult(Records records) {
         String result = records.getRecordList().stream()
-                .map(this::recordToString)
+                .map(OutputView::recordToString)
                 .collect(Collectors.joining("\n\n"));
 
         out.println(result + "\n");
     }
 
-    private String recordToString(Record record) {
+    private static String recordToString(Record record) {
         return record.getPositions().stream()
-                .map(this::changeMovementToString)
+                .map(OutputView::changeMovementToString)
                 .collect(Collectors.joining("\n"));
     }
 
-    private String changeMovementToString(int num) {
+    private static String changeMovementToString(int num) {
         return new String(new char[num]).replace("\0", MOVEMENT_CHAR);
     }
 }
