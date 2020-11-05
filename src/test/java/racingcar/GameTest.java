@@ -8,12 +8,14 @@ public class GameTest {
     @ParameterizedTest
     @CsvSource(value = {"3,5"})
     public void 게임플레이(int carCount, int roundCount){
-        System.out.println(carCount);
-        System.out.println(roundCount);
+
+
         InputView.viewCountCarInputMessage();
+        System.out.println(carCount);
         Game.setCars(carCount);
 
         InputView.viewCoutRoundInputMessage();
+        System.out.println(roundCount);
         Game.setRoundCount(roundCount);
 
         ResultView.viewResultMessage();
