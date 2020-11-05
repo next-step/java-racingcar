@@ -1,5 +1,7 @@
 package racingGame;
 
 public interface ScoreGenerator {
-    int generateScore();
+
+  int generateScore();
+
 }

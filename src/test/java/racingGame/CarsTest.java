@@ -12,18 +12,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
-    @DisplayName("차량 초기상태 확인")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4})
-    void testNumCars(int input) {
-
-        List<Integer> results = new Vector<>(input);
-        for (int i = 0; i < input; i++) {
-            results.add(0);
-        }
-
-        assertThat(Cars.of(input).getPositions()).isEqualTo(results);
-
+  @DisplayName("차량 초기상태 확인")
+  @ParameterizedTest
+  @ValueSource(ints = {1, 2, 3, 4})
+  void testNumCars(int input) {
+    List<Integer> results = new Vector<>(input);
+    for (int i = 0; i < input; i++) {
+      results.add(0);
     }
+
+    assertThat(Cars.of(input).getPositions()).isEqualTo(results);
+  }
 
 }

@@ -2,20 +2,22 @@ package racingGame;
 
 public class Car {
 
-    private int position;
+  private int position;
 
-    Car() { }
+  Car() {
+  }
 
-    Car(int initialPosition) {
-        this.position = initialPosition;
-    }
+  Car(int initialPosition) {
+    this.position = initialPosition;
+  }
 
-    public int move(int delta) {
-        position += delta;
-        return this.position;
-    }
+  public int move(int delta) {
+    position += delta;
+    return this.position;
+  }
 
-    public int getPosition() {
-        return position;
-    }
+  public int getPosition() {
+    return position;
+  }
+
 }

@@ -5,38 +5,35 @@ import racingGame.View.ResultView;
 
 public class GameClient {
 
-    private static void runGame(Cars cars, int numRound) {
+  private static void runGame(Cars cars, int numRound) {
+    int currentRound = 1;
+    ScoreGenerator scoreGenerator = new RandomScoreGenerator();
 
-        int currentRound = 1;
-        ScoreGenerator scoreGenerator = new RandomScoreGenerator();
+    ResultView.printResultMessage();
 
-        ResultView.printResultMessage();
-
-        for (; !isFinished(currentRound, numRound); currentRound += 1) {
-            cars.moves(scoreGenerator);
-            ResultView.printStatus(cars);
-        }
-
+    for (; !isFinished(currentRound, numRound); currentRound += 1) {
+      cars.moves(scoreGenerator);
+      ResultView.printStatus(cars);
     }
+  }
 
-    private static boolean isFinished(int currentRound, int numRound) {
-        return currentRound > numRound;
-    }
+  private static boolean isFinished(int currentRound, int numRound) {
+    return currentRound > numRound;
+  }
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
+    int numCar;
+    int numRound;
+    Cars cars;
+    InputView inputView;
 
-        int numCar;
-        int numRound;
-        Cars cars;
-        InputView inputView;
+    inputView = InputView.createInstance();
 
-        inputView = InputView.createInstance();
+    numCar = inputView.askNumCar();
+    numRound = inputView.askNumRound();
 
-        numCar = inputView.askNumCar();
-        numRound = inputView.askNumRound();
+    cars = Cars.of(numCar);
+    runGame(cars, numRound);
+  }
 
-        cars = Cars.of(numCar);
-        runGame(cars, numRound);
-
-    }
 }
