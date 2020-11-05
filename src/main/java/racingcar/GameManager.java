@@ -21,7 +21,7 @@ public class GameManager {
         return gameRounds.getRecords();
     }
 
-    private Cars readyCars(int num) {
-        return new Cars(num, ruleStrategy);
+    private Cars readyCars(int carNum) {
+        return new Cars(carNum, ruleStrategy);
     }
 }
