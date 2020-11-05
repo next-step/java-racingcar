@@ -1,9 +1,25 @@
 package racing;
 
-import racing.view.ResultView;
+import racing.domain.Grid;
+import racing.view.InputView;
+
+import java.util.LinkedList;
 
 public class CarRacing {
-    public static void main(String[] args) {
-        new ResultView().play(new Racing().start());
+
+    private static int cars = 0;
+    private static int rounds = 0;
+
+    public CarRacing() {
+        InputView inputView = new InputView();
+        cars = inputView.getManyCars();
+        rounds = inputView.getTryCount();
+    }
+
+    public Grid start() {
+        return new Grid(new LinkedList<>())
+                .lineUp(cars)
+                .standingStart(rounds)
+                .finished();
     }
 }
