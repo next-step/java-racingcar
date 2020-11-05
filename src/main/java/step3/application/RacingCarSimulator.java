@@ -49,13 +49,9 @@ public class RacingCarSimulator {
         final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
         for (int i = 0; i < numberOfAttempts; i++) {
             racingMap.moveRacingCars(UNIT_OF_FORWARD);
-            final Snapshot snapshot = createSnapshot(racingMap);
+            final Snapshot snapshot = racingMap.createSnapshot();
             snapshots.add(snapshot);
         }
         return snapshots;
-    }
-
-    private Snapshot createSnapshot(final RacingMap racingMap) {
-        return new Snapshot(racingMap);
     }
 }

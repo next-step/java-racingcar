@@ -31,6 +31,10 @@ public class RacingMap {
         return new RacingMap(Collections.unmodifiableMap(new HashMap<>(racingCarLocation)));
     }
 
+    public Snapshot createSnapshot() {
+        return Snapshot.of(clone());
+    }
+
     public int findPosition(final RacingCar racingCar) {
         return racingCarLocation.get(racingCar);
     }
