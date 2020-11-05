@@ -8,8 +8,8 @@ import racingcar.behavior.MovingStrategy;
 
 public class RacingCars {
 
-    private  List<Car> cars;
-    private  MovingStrategy movingStrategy;
+    private final List<Car> cars;
+    private final MovingStrategy movingStrategy;
 
     public RacingCars(List<Car> cars, MovingStrategy movingStrategy) {
         this.cars = cars;
