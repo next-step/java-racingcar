@@ -31,7 +31,7 @@ class RacingMapTest {
 
         @DisplayName("두명 이상")
         @Test
-        void selectWinnerNames() {
+        void more_then_two() {
             // given
             final List<RacingCar> racingCars = RacingCarFactory.createCars(Arrays.asList("CAR1", "CAR2", "CAR3"), () -> true);
             final RacingMap racingMap = new RacingMap(racingCars);
