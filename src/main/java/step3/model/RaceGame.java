@@ -5,23 +5,23 @@ import step3.exception.NotFinishRaceGameException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RaceGame {
 
-    private RacingCars racingCars;
+    private List<RacingCar> racingCars;
     private GameRound round;
 
     public RaceGame(GameRound round, Commander commander) {
         this.round = round;
-        createParticipantRacingCar(commander, round.getRound());
+        createParticipantRacingCar(commander);
     }
 
-    private void createParticipantRacingCar(Commander commander, int totalRound) {
-        List<RacingCar> cars = new ArrayList<>();
+    private void createParticipantRacingCar(Commander commander) {
+        racingCars = new ArrayList<>();
         IntStream.range(0, round.getParticipantCar())
-                .forEach(i -> cars.add(new RacingCar(commander)));
-        this.racingCars = new RacingCars(cars, totalRound);
+                .forEach(i -> racingCars.add(new RacingCar(commander)));
     }
 
     public void start() {
@@ -34,17 +34,18 @@ public class RaceGame {
 
     private void play() {
         for (int i = 0; i < round.getParticipantCar(); i++) {
-            racingCars.moveForward(i);
+            racingCars.get(i).executeMoveTrack();
         }
         round.roundFinish();
     }
 
-    public RacingCars end() {
-        if (!round.isAllRoundFinish()) {
-            throw new NotFinishRaceGameException(round.getRound());
-        }
-        return racingCars;
+    public RaceGame roundEnd() {
+        return this;
     }
 
-
+    public List<Integer> getMoveTracks() {
+        return racingCars.stream()
+                .map(RacingCar::movePosition)
+                .collect(Collectors.toList());
+    }
 }
