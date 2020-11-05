@@ -1,46 +1,47 @@
 package calculator;
 
-import calculator.operator.*;
-import calculator.utils.StringUtil;
+import utils.StringUtil;
+
+import java.util.Arrays;
 
 public class Calculator {
-    static public String getValidExpr(String in) throws IllegalArgumentException{
-        if(in == null || in.isEmpty() || in.replace(" ","").length() == 0){
-            throw new IllegalArgumentException("입력된 값에 오류가 있습니다.");
+    public final static String INPUT_EXCEPTION_MSG="입력된 값에 오류가 있습니다.";
+
+    private String getValidExpression(String in) throws IllegalArgumentException{
+        if(in == null || in.isEmpty() || in.replace(StringUtil.WHITESPACE,"").length() == 0){
+            throw new IllegalArgumentException(INPUT_EXCEPTION_MSG);
         }
         return in;
     }
 
-    static public Operator getOperator(String in) throws IllegalArgumentException{
-        if(in.equals("+")){
-            return new Addition();
-        }
+    public long getResult(String expression){
+        String validExpression = getValidExpression(expression);
 
-        if(in.equals("-")){
-            return new Subtraction();
-        }
+        long[] operands = getOperands(validExpression);
+        Operator[] operators = getOperators(validExpression);
 
-        if(in.equals("*")){
-            return new Multiplication();
-        }
+        long acc = operands[0];
 
-        if(in.equals("/")){
-            return new Division();
-        }
-
-        throw new IllegalArgumentException("사칙연산 기호가 아닌 값이 들어왔습니다.");
-
-    }
-
-    static public long getResult(String expr){
-        String[] items = StringUtil.split(expr, " ");
-
-        Long acc = Long.valueOf(items[0]);
-        for(int i =1; i<items.length; i = i+2){
-            acc = Calculator.getOperator(items[i]).action(acc, Long.valueOf(items[i+1]));
+        for(int i = 1; i < operands.length; i++){
+            acc = operators[i-1].action(acc, operands[i]);
         }
 
         return acc;
+    }
+
+    private long[] getOperands(String expression){
+        return Arrays.stream(StringUtil.regexSplit(expression, StringUtil.REGEX_OPERATOR))
+                .filter(x->!x.isEmpty())
+                .mapToLong(x->Long.valueOf(x.trim()))
+                .toArray();
+    }
+
+    private Operator[] getOperators(String expression){
+        return Arrays.stream(StringUtil.regexSplit(expression, StringUtil.REGEX_OPERAND))
+                .map(String::trim)
+                .filter(x->!x.isEmpty())
+                .map(Operator::getOperator)
+                .toArray(Operator[]::new);
     }
 
 }
