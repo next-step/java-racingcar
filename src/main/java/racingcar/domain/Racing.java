@@ -11,8 +11,9 @@ public class Racing {
     private StringBuilder sb = new StringBuilder();
 
     public Racing(int numberOfCars){
-        for(int i = 0; i < numberOfCars; i++)
+        for(int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
+        }
     }
 
     public String race(int numberOfTries) {

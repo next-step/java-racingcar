@@ -13,7 +13,7 @@ public class InputView {
         int numberOfCars = scanner.nextInt();
 
         if(numberOfCars < 0)
-            throw new NegativeNumberNotAllowedException();
+            throw new NegativeNumberNotAllowedException(Constants.NEGATIVE_NUMBERS_ERROR);
 
         return numberOfCars;
     }
@@ -23,7 +23,7 @@ public class InputView {
         int numberOfTries = scanner.nextInt();
 
         if(numberOfTries < 0)
-            throw new NegativeNumberNotAllowedException();
+            throw new NegativeNumberNotAllowedException(Constants.NEGATIVE_NUMBERS_ERROR);
 
         return numberOfTries;
     }
