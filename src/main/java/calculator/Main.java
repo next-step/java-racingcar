@@ -12,5 +12,4 @@ public class Main {
         System.out.println(calculator.getResult(br.readLine()));
         br.close();
     }
-
 }
