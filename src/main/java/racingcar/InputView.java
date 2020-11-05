@@ -14,13 +14,19 @@ public class InputView {
         return SingletonHelper.instance;
     }
 
+    private boolean validateNameCsv(String nameCsv) {
+        String[] nameArr = nameCsv.split(CarGroupConst.NAME_SPLIT_REGEX);
+        boolean validation = true;
+        for (String name : nameArr) {
+            validation &= Car.validateName(name);
+        }
+        return validation;
+    }
+
     public String askNames() {
         System.out.println(InputViewConst.ASK_CARS);
         String nameCsv = this.scanner.nextLine();
-        String[] nameArr = nameCsv.split(CarGroupConst.NAME_SPLIT_REGEX);
-        for (String name : nameArr) {
-            Car.validateName(name);
-        }
+        this.validateNameCsv(nameCsv);
         return nameCsv;
     }
 
