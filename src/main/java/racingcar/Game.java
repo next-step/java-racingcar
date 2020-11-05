@@ -29,7 +29,7 @@ public class Game {
     public static void playRound(){
         for (int i = 0; i < cars.length; i++) {
             randomFoward(cars[i]);
-            applyResult(cars[i]);
+            DrawResult(cars[i]);
         }
     }
 
@@ -37,9 +37,9 @@ public class Game {
         if(random.nextInt(10) >= 4) car.foward();
     }
 
-    public static void applyResult(Car car){
-        for (int i = 0; i < car.getScore(); i++) {
-            ResultView.viewTravelDistance();
+    public static void DrawResult(Car car){
+        for (int i = 0; i < car.getTravelDistance(); i++) {
+            ResultView.drawTravelDistance();
         }
     }
 
