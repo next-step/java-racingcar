@@ -28,6 +28,7 @@ public class Game {
     public static void playRound(){
         for (int i = 0; i < cars.length; i++) {
             randomFoward(cars[i]);
+
         }
     }
 
