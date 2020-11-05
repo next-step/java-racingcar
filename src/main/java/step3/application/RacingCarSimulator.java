@@ -15,7 +15,7 @@ import static step3.application.RacingCarSimulator.ErrorMessage.NOT_BE_NULL;
 
 public class RacingCarSimulator {
     private static final int UNIT_OF_FORWARD = 1;
-    private final List<String> nameOfCars;
+    private final List<String> carNames;
     private final int numberOfAttempts;
 
     public enum ErrorMessage implements Message {
@@ -35,12 +35,12 @@ public class RacingCarSimulator {
     
     public RacingCarSimulator(final SimulationCondition condition) {
         checkArgument(Objects.nonNull(condition), NOT_BE_NULL);
-        this.nameOfCars = condition.getCarNames();
+        this.carNames = condition.getCarNames();
         this.numberOfAttempts = condition.getNumberOfAttempts();
     }
 
     public SimulationResult simulate() {
-        final List<RacingCar> racingCars = RacingCarFactory.createCars(nameOfCars, new RandomMovableStrategy());
+        final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, new RandomMovableStrategy());
         final RacingMap racingMap = new RacingMap(racingCars);
         final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
 
