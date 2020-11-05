@@ -7,7 +7,6 @@ public class CarRacing {
     private final List<Integer> cars;
     private final RacingInput racingInput;
     private final ResultView printer;
-    private int round = 0;
 
     public static void main(String... args) {
 
@@ -33,7 +32,7 @@ public class CarRacing {
         int round = 0;
         while (round++ < racingInput.getCountOfRound()) {
             processRound();
-            printResult();
+            printResult(round);
         }
     }
 
@@ -43,7 +42,6 @@ public class CarRacing {
                 cars.set(i, cars.get(i) + 1);
             }
         }
-        round++;
     }
 
     private int getRandomNumber() {
@@ -51,7 +49,7 @@ public class CarRacing {
         return random.nextInt(10);
     }
 
-    private void printResult() {
+    private void printResult(int round) {
         printer.printResult(round, cars);
     }
 
