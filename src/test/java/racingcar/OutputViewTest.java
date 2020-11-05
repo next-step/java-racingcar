@@ -12,13 +12,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("View 클래스 테스트")
-class RacingViewTest {
+class OutputViewTest {
 
-    private RacingView racingView;
+    private OutputView outputView;
 
     @BeforeEach
     void setUp() {
-        this.racingView = RacingView.getInstance();
+        this.outputView = OutputView.getInstance();
     }
 
     @ParameterizedTest
@@ -33,7 +33,7 @@ class RacingViewTest {
             car.move();
         }
 
-        String result = this.racingView.convertCar(car);
+        String result = this.outputView.convertCar(car);
         assertThat(result)
                 .isEqualTo(expectedResult);
 
@@ -52,7 +52,7 @@ class RacingViewTest {
             carList.add(new Car(name, strategy));
         }
 
-        assertThat(this.racingView.convertWinnerList(carList))
+        assertThat(this.outputView.convertWinnerList(carList))
                 .isEqualTo(expectedMsg);
     }
 }

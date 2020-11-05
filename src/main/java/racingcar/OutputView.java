@@ -3,20 +3,20 @@ package racingcar;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingView {
+public class OutputView {
 
-    private RacingView() {}
+    private OutputView() {}
 
     /**
      * NOTE: 굳이 싱글톤 패턴으로 할 필요는 없지만,
      * InputView 와 인터페이스를 비슷하게 하기 위해 적용했다.
      */
-    public static RacingView getInstance() {
-        return RacingView.SingletonHelper.instance;
+    public static OutputView getInstance() {
+        return OutputView.SingletonHelper.instance;
     }
 
     public void printResultMsg() {
-        System.out.println(RacingViewConst.EXECUTION_RESULT_MSG);
+        System.out.println(OutputViewConst.EXECUTION_RESULT_MSG);
     }
 
     // NOTE: Car 보다 작은 단위로 convert 하지 않도록 한다.
@@ -25,9 +25,9 @@ public class RacingView {
         String name = car.getName();
         StringBuilder sb = new StringBuilder();
         sb.append(name);
-        sb.append(RacingViewConst.SEPARATOR);
+        sb.append(OutputViewConst.SEPARATOR);
         for (int j = 0; j < position; j++) {
-            sb.append(RacingViewConst.PLAYER_TOKEN);
+            sb.append(OutputViewConst.PLAYER_TOKEN);
         }
         return sb.toString();
     }
@@ -51,7 +51,7 @@ public class RacingView {
                 .stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
-        return String.join(RacingViewConst.WINNER_DELIMITER, winners) + RacingViewConst.WINNER_MSG;
+        return String.join(OutputViewConst.WINNER_DELIMITER, winners) + OutputViewConst.WINNER_MSG;
     }
 
     public void printWinners(List<Car> winners) {
@@ -60,6 +60,6 @@ public class RacingView {
     }
 
     private static class SingletonHelper {
-        private static final RacingView instance = new RacingView();
+        private static final OutputView instance = new OutputView();
     }
 }

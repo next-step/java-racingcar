@@ -11,13 +11,13 @@ public class Main {
         RacingGame game = new RacingGame(nameCsv, maxRaceNum);
         game.play();
 
-        RacingView racingView = RacingView.getInstance();
-        racingView.printResultMsg();
+        OutputView outputView = OutputView.getInstance();
+        outputView.printResultMsg();
 
         List<List<Car>> history = game.getHistory();
-        racingView.printHistory(history);
+        outputView.printHistory(history);
 
         List<Car> winners = game.getWinners();
-        racingView.printWinners(winners);
+        outputView.printWinners(winners);
     }
 }
