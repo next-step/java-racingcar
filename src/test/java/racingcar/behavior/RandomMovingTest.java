@@ -1,12 +1,10 @@
-package step3;
+package racingcar.behavior;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.stream.IntStream;
-
-import racingcar.behavior.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,5 +18,4 @@ public class RandomMovingTest {
         RandomNumber randomNumber = new RandomNumber(boundNumber);
         IntStream.range(start, end).forEach(index -> assertThat(randomNumber.getBoundNumber()).isBetween(min, max));
     }
-
 }
