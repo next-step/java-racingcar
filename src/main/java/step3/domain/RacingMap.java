@@ -25,9 +25,8 @@ public class RacingMap {
                 .forEach(racingCar -> move(racingCar, unitOfForward));
     }
 
-    public List<RacingCar> getRacingCars() {
-        final List<RacingCar> racingCars = racingCarLocations.stream().map(RacingCarLocation::getCar).collect(Collectors.toList());
-        return Collections.unmodifiableList(racingCars);
+    public List<RacingCarLocation> getRacingCarLocations() {
+        return racingCarLocations;
     }
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
@@ -48,21 +47,12 @@ public class RacingMap {
     public Snapshot createSnapshot() {
         return Snapshot.of(clone());
     }
-
-    public int findPosition(final RacingCar racingCar) {
-        return racingCarLocations.stream()
-                .filter(racingCarLocation -> racingCarLocation.getCar().equals(racingCar))
-                .findAny()
-                .map(RacingCarLocation::getLocation)
-                .orElse(0);
-    }
-
-    @SuppressWarnings("OptionalGetWithoutIsPresent")
+    
     public List<String> selectWinnerNames() {
         final int farthestLocation = racingCarLocations.stream()
                 .map(RacingCarLocation::getLocation)
                 .max(Integer::compareTo)
-                .get();
+                .orElse(0);
 
         return racingCarLocations.stream()
                 .filter(racingCarLocation -> racingCarLocation.getLocation().equals(farthestLocation))

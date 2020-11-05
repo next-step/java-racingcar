@@ -16,6 +16,10 @@ public class RacingCarLocation {
     public RacingCar getCar() {
         return car;
     }
+    
+    public String getCarName() {
+        return car.getName();
+    }
 
     public Integer getLocation() {
         return location;

@@ -39,7 +39,6 @@ class RacingCarSimulatorTest {
         final SimulationResult result = simulator.simulate();
         
         // then
-        assertThat(result.getRacingCars()).isNotEmpty();
         assertThat(result.getSnapshots().size()).isEqualTo(Integer.valueOf(numberOfAttempts));
     }
 

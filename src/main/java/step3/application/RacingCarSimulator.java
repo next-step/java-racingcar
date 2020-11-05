@@ -41,7 +41,7 @@ public class RacingCarSimulator {
         final RacingMap racingMap = RacingMap.of(racingCars);
         final List<Snapshot> snapshots = createSimulationSnapshots(racingMap, numberOfAttempts);
 
-        return new SimulationResult(snapshots, racingMap);
+        return new SimulationResult(snapshots);
     }
 
     private List<Snapshot> createSimulationSnapshots(final RacingMap racingMap, final int numberOfAttempts) {
