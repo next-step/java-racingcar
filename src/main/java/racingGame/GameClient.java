@@ -25,12 +25,9 @@ public class GameClient {
     int numCar;
     int numRound;
     Cars cars;
-    InputView inputView;
 
-    inputView = InputView.createInstance();
-
-    numCar = inputView.askNumCar();
-    numRound = inputView.askNumRound();
+    numCar = InputView.askNumCar();
+    numRound = InputView.askNumRound();
 
     cars = Cars.of(numCar);
     runGame(cars, numRound);
