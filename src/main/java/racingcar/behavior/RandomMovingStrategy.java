@@ -1,12 +1,15 @@
 package racingcar.behavior;
 
-import java.util.Random;
-
 public class RandomMovingStrategy implements MovingStrategy {
     private static final int MAX_NUM = 9;
     private static final int BASE_LINE_NUM = 4;
 
-    private Random random = new Random();
+    private Integer randomSupplier;
+    RandomNumber randomNumber = new RandomNumber(MAX_NUM + 1);
+
+    public RandomMovingStrategy() {
+        this.randomSupplier = randomNumber.getBoundNumber();
+    }
 
     @Override
     public boolean isMovable() {
@@ -14,6 +17,6 @@ public class RandomMovingStrategy implements MovingStrategy {
     }
 
     private int random() {
-        return random.nextInt(MAX_NUM + 1);
+        return randomSupplier;
     }
 }
