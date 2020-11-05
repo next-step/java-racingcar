@@ -2,13 +2,13 @@ package racingcar;
 
 public class Car {
 
-    private int score;
+    private int travelDistance;
 
     public void foward(){
-        this.score++;
+        this.travelDistance++;
     }
 
-    public int getScore(){
-        return this.score;
+    public int getTravelDistance(){
+        return this.travelDistance;
     }
 }
