@@ -9,6 +9,14 @@ public class Game {
     private static Car[] cars;
     private static Random random = new Random();
 
+    public static int getRoundCount(){
+        return roundCount;
+    }
+
+    public static int getCarCount(){
+        return cars.length;
+    }
+
     public static void setRoundCount(int count){
         roundCount = count;
     }
@@ -19,8 +27,12 @@ public class Game {
 
     public static void playRound(){
         for (int i = 0; i < cars.length; i++) {
-            if(random.nextInt(10) >= 4) cars[i].foward();
+            randomFoward(cars[i]);
         }
+    }
+
+    public static void randomFoward(Car car){
+        if(random.nextInt(10) >= 4) car.foward();
     }
 
     public static void playGame(){
