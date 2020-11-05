@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;

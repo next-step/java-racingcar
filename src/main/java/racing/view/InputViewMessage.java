@@ -1,4 +1,4 @@
-package racing;
+package racing.view;
 
 public final class InputViewMessage {
     public static final String FIRST_QUESTION = "자동차 대수는 몇 대 인가요?\n";

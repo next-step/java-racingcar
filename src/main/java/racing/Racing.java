@@ -1,5 +1,8 @@
 package racing;
 
+import racing.domain.Grid;
+import racing.view.InputView;
+
 import java.util.LinkedList;
 
 public class Racing {
