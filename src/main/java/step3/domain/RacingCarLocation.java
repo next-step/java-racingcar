@@ -25,6 +25,10 @@ public class RacingCarLocation {
         return location;
     }
     
+    public boolean isLocationEqual(int location) {
+        return this.location == location;
+    }
+    
     public void move(final int unitOfForward) {
         this.location += unitOfForward;
     }

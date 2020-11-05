@@ -49,15 +49,14 @@ public class RacingMap {
     }
     
     public List<String> selectWinnerNames() {
-        final int farthestLocation = racingCarLocations.stream()
+        final int farthestDistance = racingCarLocations.stream()
                 .map(RacingCarLocation::getLocation)
                 .max(Integer::compareTo)
                 .orElse(0);
 
         return racingCarLocations.stream()
-                .filter(racingCarLocation -> racingCarLocation.getLocation().equals(farthestLocation))
-                .map(RacingCarLocation::getCar)
-                .map(RacingCar::getName)
+                .filter(racingCarLocation -> racingCarLocation.isLocationEqual(farthestDistance))
+                .map(RacingCarLocation::getCarName)
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());
     }
