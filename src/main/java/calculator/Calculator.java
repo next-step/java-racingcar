@@ -2,6 +2,10 @@ package calculator;
 
 public class Calculator {
 
+    private static final String FOUR_POINT_OPERATION_REG = "[-*/+]";
+    private static final String NUMBER_REG = "[0-9]+$";
+
+
     public String calculate(String inputString) {
 
         String[] inputs = splitInputString(inputString);
@@ -35,7 +39,7 @@ public class Calculator {
 
     private FourPointOperation getFourPointOperation(String input) {
 
-        if (input.matches("[0-9]+$")) {
+        if (isNumber(input)) {
             return null;
         }
 
@@ -47,7 +51,15 @@ public class Calculator {
     }
 
     private boolean isSymbolOfFourPointOperationOrNumber(String input) {
-        return input.matches("[-*/+]") || input.matches("[0-9]+$");
+        return isFourPointOperator(input) || isNumber(input);
+    }
+
+    private boolean isFourPointOperator(String input) {
+        return input.matches(FOUR_POINT_OPERATION_REG);
+    }
+
+    private boolean isNumber(String input) {
+        return input.matches(NUMBER_REG);
     }
 
     public Integer calculateFor(Integer result, FourPointOperation operator, String input) {
