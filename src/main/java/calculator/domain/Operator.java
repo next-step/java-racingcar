@@ -1,8 +1,7 @@
 package calculator.domain;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BinaryOperator;
 
 public enum Operator {
@@ -16,6 +15,15 @@ public enum Operator {
         return x / y;
     });
 
+    private static final String NOT_DEFINITION_ERROR = "연산자가 정의되지 않은 Operator입니다.";
+    private static final Map<String, Operator> OPERATOR_SIGNS_MAP = new HashMap<>();
+
+    static {
+        for (Operator operator : Operator.values()) {
+            OPERATOR_SIGNS_MAP.put(operator.sign, operator);
+        }
+    }
+
     private String sign;
     private BinaryOperator<Integer> expression;
 
@@ -25,29 +33,23 @@ public enum Operator {
     }
 
     public static Operator build(String sign) {
-        return Arrays.stream(Operator.values())
-                .filter(v -> v.sign.equals(sign))
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+        Operator operator = OPERATOR_SIGNS_MAP.get(sign);
+        if (operator == null) {
+            throw new IllegalArgumentException(NOT_DEFINITION_ERROR);
+        }
+        return operator;
     }
 
     public int calculate(int x, int y) {
         return expression.apply(x, y);
     }
 
-
-    private static final Set<String> OPERATOR_SIGNS_SET = new HashSet<>();
-    static {
-        Arrays.stream(Operator.values())
-                .forEach(v -> OPERATOR_SIGNS_SET.add(v.sign));
-    }
-
     public static boolean isOperator(String sign) {
-        return OPERATOR_SIGNS_SET.contains(sign);
+        return OPERATOR_SIGNS_MAP.containsKey(sign);
     }
 
     public static boolean isNotOperator(String sign) {
-        return !OPERATOR_SIGNS_SET.contains(sign);
+        return !OPERATOR_SIGNS_MAP.containsKey(sign);
     }
 
 }
