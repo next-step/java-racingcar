@@ -26,14 +26,14 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @DisplayName("빼기")
-    @CsvSource(value = {"4 / 2=2"}, delimiter = '=')
+    @CsvSource(value = {"4 - 2=2"}, delimiter = '=')
     public void minus(String input, int result) {
         assertThat(calculator.calculate(input)).isEqualTo(result);
     }
 
     @ParameterizedTest
     @DisplayName("곱하기")
-    @CsvSource(value = {"4 / 2=2"}, delimiter = '=')
+    @CsvSource(value = {"2 * 2=4"}, delimiter = '=')
     public void multiply(String input, int result) {
         assertThat(calculator.calculate(input)).isEqualTo(result);
     }
