@@ -8,5 +8,6 @@ public class RacingGame {
     public RacingGame(int cars, int attempts) {
         this.cars = cars;
         this.attempts = attempts;
+        this.car = new Car(attempts);
     }
 }
