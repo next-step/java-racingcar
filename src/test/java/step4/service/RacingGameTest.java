@@ -36,13 +36,6 @@ class RacingGameTest {
 
     }
 
-    @Test
-    @DisplayName("자동차 경주횟수가 1미만 일때익셉션 확인")
-    void throwExceptionMinTryCount() {
-        //then
-        assertThatThrownBy(() -> getRacingGameInstance("wani,kim", 0)).isInstanceOf(MinimumTryCountException.class);
-
-    }
 
     private RacingGame getOutBoundCarListSizeExceptionGameSetting() {
         return RacingGame.of(

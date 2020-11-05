@@ -18,15 +18,12 @@ public class RacingGame {
 
     private static final String SPLIT_SEPARATOR = ",";
     private static final String WINNER_DELIMITER = ",";
-    private static final int MIN_TRY_COUNT = 1;
+
     private final Cars cars;
     private final RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO;
-    private final GameRound gameRound;
 
     private RacingGame(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
         this.racingGameConditionMoveStrategyDTO = racingGameConditionMoveStrategyDTO;
-        validTryCount(getRacingGameTryCount());
-        gameRound = GameRound.of(racingGameConditionMoveStrategyDTO.getRacingGameConditionDTO().getTryCount());
         cars = new Cars(splitToCarList(getRacingGameCarNames()));
     }
 
@@ -35,7 +32,7 @@ public class RacingGame {
     }
 
     public Cars runRound() {
-        gameRound.stackGameRound();
+        getGameRound().stackGameRound();
         cars.moveCars(getGameMoveStrategy());
         return cars;
     }
@@ -50,7 +47,7 @@ public class RacingGame {
     }
 
     private void validGameEnd() {
-        if (!gameRound.isGameFinish()) {
+        if (!getGameRound().isGameFinish()) {
             throw new NotGameEndException();
         }
     }
@@ -60,12 +57,6 @@ public class RacingGame {
     }
 
 
-    private void validTryCount(int tryCount) {
-        if (tryCount < MIN_TRY_COUNT) {
-            throw new MinimumTryCountException(MIN_TRY_COUNT);
-        }
-
-    }
 
     private List<Car> splitToCarList(String input) {
         return Arrays.stream(input.split(SPLIT_SEPARATOR))
@@ -80,16 +71,16 @@ public class RacingGame {
                 .get();
     }
 
-    private int getRacingGameTryCount() {
-        return racingGameConditionMoveStrategyDTO
-                .getRacingGameConditionDTO()
-                .getTryCount();
-    }
 
     private String getRacingGameCarNames() {
         return racingGameConditionMoveStrategyDTO
                 .getRacingGameConditionDTO()
                 .getCarNames();
+    }
+    private GameRound getGameRound(){
+        return racingGameConditionMoveStrategyDTO
+                .getRacingGameConditionDTO()
+                .getGameRound();
     }
 
 
