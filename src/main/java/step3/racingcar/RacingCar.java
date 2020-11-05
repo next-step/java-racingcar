@@ -18,6 +18,7 @@ public class RacingCar implements Car {
         if (isEnough(power)) {
             place += "-";
         }
+        System.out.println(place);
     }
 
     private boolean isEnough(int power) {
