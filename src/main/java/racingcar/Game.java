@@ -1,8 +1,5 @@
 package racingcar;
 
-import jdk.internal.util.xml.impl.Input;
-
-import javax.xml.transform.Result;
 import java.util.Random;
 
 public class Game {
@@ -20,21 +17,29 @@ public class Game {
 
     public static void setRoundCount(int count){
         roundCount = count;
+        System.out.println(roundCount);
     }
 
     public static void setCars(int count){
         cars = new Car[count];
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = new Car();
+        }
     }
 
     public static void playRound(){
         for (int i = 0; i < cars.length; i++) {
             randomFoward(cars[i]);
             DrawResult(cars[i]);
+            System.out.println();
         }
+        System.out.println();
     }
 
     public static void randomFoward(Car car){
-        if(random.nextInt(10) >= 4) car.foward();
+        if(random.nextInt(10) >= 4) {
+            car.foward();
+        }
     }
 
     public static void DrawResult(Car car){
