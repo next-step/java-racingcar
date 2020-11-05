@@ -46,13 +46,10 @@ public class RacingMap {
 
     public List<String> selectWinnerNames() {
         final int farthestLocation = Collections.max(racingCarLocation.values());
-        final List<String> winnerNames = new ArrayList<>();
-        for (final RacingCar car : racingCarLocation.keySet()) {
-            if (racingCarLocation.get(car) == farthestLocation) {
-                winnerNames.add(car.getName());
-            }
-        }
-        return winnerNames.stream()
+
+        return racingCarLocation.keySet().stream()
+                .filter(car -> racingCarLocation.get(car) == farthestLocation)
+                .map(RacingCar::getName)
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());
     }
