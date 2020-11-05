@@ -17,7 +17,7 @@ class CarGroupTest {
     @DisplayName("moveCar 를 하면 car 가 전진해야 한다.")
     void moveCar() {
         String nameCsv = "0,1,2,3,4,5,6,7,8,9";
-        MoveStrategy strategy = () -> true;
+        MoveStrategy strategy = ProceedStrategy.getInstance();
 
         CarGroup carGroup = new CarGroup(nameCsv, strategy);
         carGroup.moveCar();

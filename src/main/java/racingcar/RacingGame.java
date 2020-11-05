@@ -11,11 +11,15 @@ public class RacingGame {
     private int maxTry;
 
     public RacingGame(String nameCsv, int tryNum) {
-        MoveStrategy strategy = RandomMoveStrategy.getInstance();
-        this.carGroup = new CarGroup(nameCsv, strategy);
+        MoveStrategy defaultStrategy = RandomStrategy.getInstance();
+        this.carGroup = new CarGroup(nameCsv, defaultStrategy);
         this.currTry = 0;
         this.maxTry = tryNum;
         this.mementos = new LinkedList<>();
+    }
+
+    public void setStrategy(MoveStrategy strategy) {
+        this.carGroup.setStrategy(strategy);
     }
 
     public boolean checkNotGameOver() {
