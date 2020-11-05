@@ -12,6 +12,9 @@ public class Grid {
     private static int round = 1;
 
     public Grid(LinkedList<String> raceRecording) {
+        if(raceRecording == null) {
+            raceRecording = new LinkedList<>();
+        }
         this.raceRecording = raceRecording;
     }
 
@@ -35,6 +38,9 @@ public class Grid {
         return this;
     }
 
+    public List<Car> getStartingGrid() {
+        return statingGrid;
+    }
     public LinkedList<String> getRaceRecord() {
         return raceRecording;
     }
