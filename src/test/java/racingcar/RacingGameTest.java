@@ -10,18 +10,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     @ParameterizedTest
-    @DisplayName("tryNum 보다 많이 play 하면 gameOver 되어야 한다.")
+    @DisplayName("maxRaceNum 보다 많이 race 하면 gameOver 되어야 한다.")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void play(int loop) {
         String nameCsv = "1,2,3";
-        int tryNum = 5;
-        RacingGame game = new RacingGame(nameCsv, tryNum);
+        int maxRaceNum = 5;
+        RacingGame game = new RacingGame(nameCsv, maxRaceNum);
 
         for (int i = 0; i < loop; i++) {
-            game.play();
+            game.race();
         }
 
-        boolean expectedGameOver = loop < tryNum;
+        boolean expectedGameOver = loop < maxRaceNum;
         assertThat(game.checkNotGameOver())
                 .isEqualTo(expectedGameOver);
     }

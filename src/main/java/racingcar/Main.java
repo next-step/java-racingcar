@@ -8,20 +8,16 @@ public class Main {
         InputView inputView = InputView.getInstance();
 
         String nameCsv = inputView.askCars();
-        int tryNum = inputView.askTryNum();
-        RacingGame game = new RacingGame(nameCsv, tryNum);
+        int maxRaceNum = inputView.askMaxRaceNum();
+        RacingGame game = new RacingGame(nameCsv, maxRaceNum);
 
         RacingView racingView = RacingView.getInstance();
         racingView.printResultMsg();
 
-        while (game.checkNotGameOver()) {
-            game.play();
-        }
+        game.play();
 
         List<List<Car>> history = game.getHistory();
-        for (List<Car> cars : history) {
-            racingView.printCars(cars);
-        }
+        racingView.printHistory(history);
         racingView.printWinners(game.getWinners());
     }
 }

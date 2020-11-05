@@ -32,12 +32,18 @@ public class RacingView {
         return sb.toString();
     }
 
-    public void printCars(List<Car> cars) {
+    private void printCars(List<Car> cars) {
         for (Car car : cars) {
             String carStr = this.convertCar(car);
             System.out.println(carStr);
         }
         System.out.println();
+    }
+
+    public void printHistory(List<List<Car>> history) {
+        for (List<Car> cars : history) {
+            this.printCars(cars);
+        }
     }
 
     protected String convertWinnerList(List<Car> winnerList) {

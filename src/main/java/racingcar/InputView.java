@@ -24,8 +24,8 @@ public class InputView {
         return nameCsv;
     }
 
-    public int askTryNum() {
-        System.out.println(InputViewConst.ASK_HOW_MANY_TRIES);
+    public int askMaxRaceNum() {
+        System.out.println(InputViewConst.ASK_HOW_MANY_RACES);
         return this.scanner.nextInt();
     }
 

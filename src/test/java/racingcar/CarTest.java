@@ -29,7 +29,7 @@ class CarTest {
                     new Car(name, strategy);
                 }).withMessageMatching(CarConst.MAX_NAME_LENGTH_EXCEEDED);
     }
-    
+
     @Test
     @DisplayName("name 이 null 이면, 에러가 발생된다.")
     void car() {
@@ -44,7 +44,7 @@ class CarTest {
     @DisplayName("movable 인 경우만 전진해야 한다.")
     void move() {
         MoveStrategy proceedStrategy = ProceedStrategy.getInstance();
-        String movableName = "proceed";
+        String movableName = "move";
         Car movableCar = new Car(movableName, proceedStrategy);
 
         MoveStrategy stopStrategy = StopStrategy.getInstance();
