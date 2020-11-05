@@ -7,7 +7,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
 
     @Override
-    public boolean move() {
+    public boolean isMoved() {
         return RandomUtil.generateRandomNumber() >= MOVE_CONDITION;
     }
 }

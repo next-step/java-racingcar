@@ -1,18 +1,16 @@
 package step4.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.domain.Cars;
 import step4.domain.MustMoveStrategy;
 import step4.dto.RacingGameConditionDTO;
 import step4.dto.RacingGameConditionMoveStrategyDTO;
 import step4.exception.MinimumTryCountException;
 import step4.exception.ValidateBlankName;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
