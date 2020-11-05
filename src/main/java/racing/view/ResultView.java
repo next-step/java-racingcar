@@ -9,6 +9,8 @@ public final class ResultView {
 
     private static final String DISPLACEMENT_SYMBOL = "-";
 
+    public static final String DELIMITER = " : ";
+
     private ResultView() {}
 
     public static void viewMessage() {
@@ -17,7 +19,7 @@ public final class ResultView {
 
     public static void viewRoundResult(final RacingCars racingCars) {
         for (final Car car : racingCars.getCars()) {
-            System.out.println(repeat(car.getDisplacement()));
+            System.out.println(car.getName() + DELIMITER + repeat(car.getDisplacement()));
         }
 
         System.out.println();

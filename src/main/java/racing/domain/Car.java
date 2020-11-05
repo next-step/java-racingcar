@@ -14,6 +14,10 @@ public class Car {
         displacement++;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getDisplacement() {
         return displacement;
     }
