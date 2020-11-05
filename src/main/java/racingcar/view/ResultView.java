@@ -14,8 +14,10 @@ public class ResultView {
     }
 
     public static void printResult(final List<Car> cars) {
+        for (final Car car : cars) {
+            System.out.println(printPosition(car));
+        }
         System.out.println();
-        cars.forEach(ResultView::printPosition);
     }
 
     public static String printPosition(final Car car) {
