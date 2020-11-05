@@ -14,8 +14,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarsTest {
 
-
-
     @Test
     @DisplayName("자동차가 1개 미만일 경우 익셉션 확인")
     void validCarCount() {

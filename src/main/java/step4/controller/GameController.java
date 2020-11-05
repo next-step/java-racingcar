@@ -15,8 +15,9 @@ public class GameController {
 
         OutputController.printEndResult();
 
-        RacingGame racingGame = new RacingGame(new RacingGameConditionMoveStrategyDTO
-                (new RacingGameConditionDTO(carNames, tryCount), new RandomMoveStrategy()));
+        RacingGame racingGame = RacingGame.of(
+                RacingGameConditionMoveStrategyDTO.of(
+                        RacingGameConditionDTO.of(carNames, tryCount), new RandomMoveStrategy()));
         for (int i = 0; i < tryCount; i++) {
             OutputController.runResult(racingGame.getGameRoundResult());
         }

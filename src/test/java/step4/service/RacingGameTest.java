@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import step4.domain.Car;
 import step4.domain.Cars;
 import step4.domain.MustMoveStrategy;
+import step4.domain.RandomMoveStrategy;
 import step4.dto.RacingGameConditionDTO;
 import step4.dto.RacingGameConditionMoveStrategyDTO;
 import step4.exception.ValidateBlankName;
@@ -49,20 +50,22 @@ class RacingGameTest {
     }
 
     private RacingGame getRacingGameInstance(String carNames, int tryCount) {
-        return new RacingGame(new RacingGameConditionMoveStrategyDTO(new RacingGameConditionDTO(carNames, tryCount), new MustMoveStrategy()));
+        return RacingGame.of(
+                RacingGameConditionMoveStrategyDTO.of(
+                        RacingGameConditionDTO.of(carNames, tryCount), new MustMoveStrategy()));
     }
 
     @Test
     @DisplayName("자동차 이름이 빈값일때 익셉션 확인")
     void throwExceptionMinCarCount() {
         //then
-        assertThatThrownBy(() -> new RacingGame(
-                getOutBoundCarListSizeExceptionGameSetting())).isInstanceOf(ValidateBlankName.class);
+        assertThatThrownBy(() -> getOutBoundCarListSizeExceptionGameSetting()).isInstanceOf(ValidateBlankName.class);
+
     }
 
-    private RacingGameConditionMoveStrategyDTO getOutBoundCarListSizeExceptionGameSetting() {
-        return new RacingGameConditionMoveStrategyDTO(
-                new RacingGameConditionDTO(" ", 1),
-                new MustMoveStrategy());
+    private RacingGame getOutBoundCarListSizeExceptionGameSetting() {
+        return RacingGame.of(
+                RacingGameConditionMoveStrategyDTO.of(
+                        RacingGameConditionDTO.of(" ", 1), new MustMoveStrategy()));
     }
 }

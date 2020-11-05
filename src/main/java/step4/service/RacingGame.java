@@ -17,12 +17,15 @@ public class RacingGame {
     private final Cars cars;
     private final RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO;
 
-    public RacingGame(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
+    private RacingGame(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
         this.racingGameConditionMoveStrategyDTO = racingGameConditionMoveStrategyDTO;
-
         validTryCount(getRacingGameTryCount());
         List<Car> carList = CarNameSplitter.splitToCarList(getRacingGameCarNames());
         cars = new Cars(carList);
+    }
+
+    public static RacingGame of(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
+        return new RacingGame(racingGameConditionMoveStrategyDTO);
     }
 
 
@@ -43,6 +46,7 @@ public class RacingGame {
         cars.moveCars(getGameMoveStrategy());
         return cars;
     }
+
     public Cars getGameEndResult() {
         return cars;
     }
