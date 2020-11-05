@@ -14,6 +14,13 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class GameRoundsTest {
 
+    static Stream<Arguments> isGameEnd() {
+        return Stream.of(
+                arguments(0, true),
+                arguments(1, false)
+        );
+    }
+
     @ParameterizedTest
     @DisplayName("게임 종료 확인")
     @MethodSource
@@ -21,13 +28,6 @@ public class GameRoundsTest {
         GameRounds gameRounds = new GameRounds(roundNum);
 
         assertThat(gameRounds.isGameEnd()).isEqualTo(gameEnd);
-    }
-
-    static Stream<Arguments> isGameEnd() {
-        return Stream.of(
-                arguments(0, true),
-                arguments(1, false)
-        );
     }
 
     @Test
@@ -46,7 +46,8 @@ public class GameRoundsTest {
     void keepRecord() {
         int carNum = 2;
         int roundNum = 0;
-        Cars cars = new Cars(carNum, null);
+        int movement = 0;
+        Cars cars = new Cars(carNum, () -> movement);
         GameRounds gameRounds = new GameRounds(roundNum);
 
         gameRounds.keepRecord(cars);

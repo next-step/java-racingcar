@@ -3,6 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RecordsTest {
@@ -11,9 +13,11 @@ public class RecordsTest {
     void addRecord() {
         int recordCount = 1;
         Records records = new Records(recordCount);
+        Record recordExpected = new Record(new ArrayList<>());
 
-        records.addRecord(null);
+        records.addRecord(recordExpected);
 
-        assertThat(records.getRecordList()).hasSize(recordCount);
+        Record record = records.getRecordList().get(0);
+        assertThat(record).isEqualTo(recordExpected);
     }
 }
