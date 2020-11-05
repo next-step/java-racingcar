@@ -1,5 +1,6 @@
 package step3.model;
 
+import step3.exception.AlreadyTerminateRaceGameException;
 import step3.exception.NotFinishRaceGameException;
 
 import java.util.ArrayList;
@@ -23,11 +24,12 @@ public class RaceGame {
         this.racingCars = new RacingCars(cars, totalRound);
     }
 
-    public boolean start() {
-        while(!round.isAllRoundFinish()){
-            play();
+    public void start() {
+        if(round.isAllRoundFinish()) {
+            throw new AlreadyTerminateRaceGameException();
         }
-        return round.isAllRoundFinish();
+        play();
+
     }
 
     private void play() {
