@@ -1,10 +1,7 @@
 package stringCalculator;
 
-import com.sun.tools.javac.util.StringUtils;
 import stringCalculator.exception.EmptyException;
 import stringCalculator.exception.NullException;
-
-import java.util.Objects;
 
 public class CustomStringUtils {
 
