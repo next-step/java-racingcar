@@ -1,5 +1,8 @@
-package humbledude.carracing;
+package humbledude.carracing.domain;
 
+import humbledude.carracing.domain.Car;
+import humbledude.carracing.domain.CarRacing;
+import humbledude.carracing.domain.ConstantFuelGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

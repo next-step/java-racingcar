@@ -1,13 +1,15 @@
-package humbledude.carracing;
+package humbledude.carracing.domain;
 
 public class Car {
 
     private static final String DEFAULT_CAR_NAME = "car";
 
-    private String name = DEFAULT_CAR_NAME;
+    private final String name;
     private int position = 0;
 
-    public Car() {}
+    public Car() {
+        this(DEFAULT_CAR_NAME);
+    }
 
     public Car(String name) {
         validateName(name);

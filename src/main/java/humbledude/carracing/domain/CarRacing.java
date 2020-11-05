@@ -1,4 +1,4 @@
-package humbledude.carracing;
+package humbledude.carracing.domain;
 
 import java.util.Comparator;
 import java.util.List;
@@ -22,13 +22,17 @@ public class CarRacing {
     }
 
     public List<Car> getWinners() {
-        int winnersPosition = cars.stream()
-                .max(Comparator.comparingInt(Car::getPosition))
-                .get()
-                .getPosition();
+        int winnersPosition = getWinnersPosition();
 
         return cars.stream()
                 .filter(car -> car.getPosition() == winnersPosition)
                 .collect(Collectors.toList());
+    }
+
+    private int getWinnersPosition() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .get()
+                .getPosition();
     }
 }

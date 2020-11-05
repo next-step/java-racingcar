@@ -1,4 +1,4 @@
-package humbledude.carracing;
+package humbledude.carracing.domain;
 
 public class ConstantFuelGenerator implements FuelGenerator{
     private int seed;
