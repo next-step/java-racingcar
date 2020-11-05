@@ -29,13 +29,13 @@ public class InputView {
         return value;
     }
 
-    private static void validateInputNum(final int inputNumber) {
+    static void validateInputNum(final int inputNumber) {
         if (isValidInputNumber(inputNumber)) {
             throw new IllegalArgumentException(ErrorMessage.MORE_THAN_ZERO);
         }
     }
 
-    private static boolean isValidInputNumber(int inputNumber) {
+    static boolean isValidInputNumber(int inputNumber) {
         return inputNumber <= MIN_INPUT_VALUE;
     }
 }
