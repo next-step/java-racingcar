@@ -31,9 +31,9 @@ public class Game {
         for (int i = 0; i < cars.length; i++) {
             randomFoward(cars[i]);
             DrawResult(cars[i]);
-            System.out.println();
+            ResultView.drawLineBreak();
         }
-        System.out.println();
+        ResultView.drawLineBreak();
     }
 
     public static void randomFoward(Car car){
