@@ -3,14 +3,31 @@
  */
 public class ExpressionPartFactory {
     public ExpressionPart create(String value){
-        try {
+
+        if( isNumeric(value) ) {
             return new Operand(Integer.parseInt(value));
-        } catch (NumberFormatException e ){
-            try {
-                return Operator.valueOfSign(value);
-            } catch ( EnumConstantNotPresentException e1 ){
-                throw new RuntimeException("fail to create ExpressionPart (" + e.getMessage() + ")", e);
-            }
+        }
+        if( isOperator(value) ){
+            return Operator.valueOfSign(value);
+        }
+        throw new RuntimeException("fail to create ExpressionPart ( " + value + " )");
+    }
+
+    private boolean isOperator(String value) {
+        try{
+            Operator.valueOfSign(value);
+            return true;
+        } catch ( EnumConstantNotPresentException e ) {
+            return false;
+        }
+    }
+
+    private boolean isNumeric(String value) {
+        try{
+            Integer.parseInt(value);
+            return true;
+        } catch ( NumberFormatException e ){
+            return false;
         }
     }
 }
