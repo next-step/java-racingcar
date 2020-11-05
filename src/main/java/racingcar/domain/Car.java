@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.common.Constants;
-
 import java.util.Collections;
 
 public class Car {

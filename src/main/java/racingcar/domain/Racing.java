@@ -29,6 +29,4 @@ public class Racing {
         }
         return sb.toString();
     }
-
-
 }
