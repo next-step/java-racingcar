@@ -29,8 +29,9 @@ public class InputView {
 
         final String input = scanner.nextLine();
 
-        IllegalArgumentException exception = InputValidator.validate(input, clazz);
-        if (exception != null) {
+        try {
+            InputValidator.validate(input, clazz);
+        } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
             return read(message, clazz);
         }

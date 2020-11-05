@@ -17,16 +17,16 @@ public final class InputValidator {
 
     private InputValidator() {}
 
-    public static <T> IllegalArgumentException validate(String input, Class<T> clazz) {
+    public static <T> void validate(String input, Class<T> clazz) {
         if (isNull(input)) {
             throw new IllegalArgumentException(NOT_NULL);
         }
 
-        if (clazz.isInstance(String.class)) {
-            return match(CAR_NAMES_PATTERN, input);
+        if (clazz == String.class) {
+            match(CAR_NAMES_PATTERN, input);
         }
 
-        return match(ROUND_PATTERN, input);
+        match(ROUND_PATTERN, input);
     }
 
     public static boolean isNull(final String input) {
@@ -38,11 +38,9 @@ public final class InputValidator {
         return matcher.matches();
     }
 
-    private static IllegalArgumentException match(final Pattern pattern, final String input) {
+    private static void match(final Pattern pattern, final String input) {
         if (!isMatch(pattern, input)) {
             throw new IllegalArgumentException(INVALID_VALUE);
         }
-
-        return null;
     }
 }
