@@ -9,28 +9,29 @@ public final class RacingCars {
 
     private final List<Car> cars;
 
-    public RacingCars(final int carCount) {
+    public RacingCars(final String delimitedCarNames) {
         this.cars = new ArrayList<>();
-        ready(carCount);
+        ready(delimitedCarNames);
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    private void ready(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    private void ready(final String delimitedCarNames) {
+        String[] carNames = delimitedCarNames.split(",");
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 
-    public void race(Roulette roulette) {
+    public void race(final Roulette roulette) {
         cars.stream()
                 .filter(car -> canMove(roulette))
                 .forEach(Car::move);
     }
 
-    private boolean canMove(Roulette roulette) {
+    private boolean canMove(final Roulette roulette) {
         return roulette.spin() >= MOVE_CONDITION;
     }
 }
