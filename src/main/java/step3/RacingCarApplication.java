@@ -6,11 +6,11 @@ public class RacingCarApplication {
     public static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
-        RacingCar racingCar = new RacingCar();
-        int car = InputView.setCarCount();
-        int move = InputView.setMoveCount();
+        CarService carService = new CarService();
+        int car = InputView.inputCarCount();
+        int move = InputView.inputMoveCount();
 
-        racingCar.run(car, move);
+        carService.run(car, move);
 
         SCANNER.close();
     }
