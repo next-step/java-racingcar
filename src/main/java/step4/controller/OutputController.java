@@ -17,10 +17,10 @@ public class OutputController {
     public static void runResult(Cars cars) {
         List<Car> carsStatus = getCars(cars);
         carsStatus.forEach(car -> {
-            String carPositionPaint = Arrays.stream(new String[car.getCarPosition()])
+            String carPositionPaint = Arrays.stream(new String[car.getPosition()])
                     .map(v -> RACING_PAINT)
                     .collect(Collectors.joining(""));
-            System.out.println(car.getName() + " : " + carPositionPaint);
+            System.out.println(car.toString() + " : " + carPositionPaint);
         });
         System.out.println("");
     }
@@ -39,15 +39,15 @@ public class OutputController {
 
     private static List<Integer> getCarPositions(List<Car> carsStatus) {
         return carsStatus.stream()
-                .map(Car::getCarPosition)
+                .map(Car::getPosition)
                 .sorted(Integer::compareTo)
                 .collect(Collectors.toList());
     }
 
     private static String getTopPositionCarName(List<Car> carsStatus, Integer topPosition) {
         return carsStatus.stream()
-                .filter(car -> car.getCarPosition() == topPosition)
-                .map(Car::getName)
+                .filter(car -> car.getPosition() == topPosition)
+                .map(Car::toString)
                 .collect(Collectors.joining(WINNER_DELIMITER));
     }
 

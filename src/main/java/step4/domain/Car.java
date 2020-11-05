@@ -23,12 +23,14 @@ public class Car {
 
     }
 
-    public int getCarPosition() {
+    public int getPosition() {
         return this.position;
     }
 
-    public String getName() {
-        return this.name;
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     private void validateLengthOfCarName(String name) {

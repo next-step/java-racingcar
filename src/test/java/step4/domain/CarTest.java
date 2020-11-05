@@ -5,11 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.exception.OutBoundCarListSizeException;
 import step4.exception.ValidateLengthOfCarName;
-
-import java.util.Collections;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -29,7 +25,7 @@ class CarTest {
     @DisplayName("이름이 맞게 들어가는지 확인을 한다.")
     void validationCarName() {
         //given
-        assertThat(car.getName()).isEqualTo(CAR_NAME);
+        assertThat(car.toString()).isEqualTo(CAR_NAME);
     }
 
     @Test
@@ -40,7 +36,7 @@ class CarTest {
         //when
         car.move(moveStrategy);
         //then
-        assertThat(car.getCarPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -51,7 +47,7 @@ class CarTest {
         //when
         car.move(moveStrategy);
         //then
-        assertThat(car.getCarPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest
@@ -65,7 +61,7 @@ class CarTest {
             car.move(moveStrategy);
         }
         //then
-        assertThat(car.getCarPosition()).isEqualTo(moveCount);
+        assertThat(car.getPosition()).isEqualTo(moveCount);
     }
 
 
