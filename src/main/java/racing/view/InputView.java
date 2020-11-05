@@ -1,6 +1,10 @@
 package racing.view;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
+
+import static racing.view.InputValidator.CAR_NAMES_PATTERN;
+import static racing.view.InputValidator.ROUND_PATTERN;
 
 public class InputView {
 
@@ -17,23 +21,23 @@ public class InputView {
     }
 
     public static String readCarNames() {
-        return read(CAR_NAMES_QUESTION, String.class);
+        return read(CAR_NAMES_QUESTION, CAR_NAMES_PATTERN);
     }
 
     public static int readRound() {
-        return Integer.parseInt(read(ROUND_QUESTION, Integer.class));
+        return Integer.parseInt(read(ROUND_QUESTION, ROUND_PATTERN));
     }
 
-    private static <T> String read(final String message, Class<T> clazz) {
+    private static <T> String read(final String message, final Pattern pattern) {
         System.out.println(message);
 
         final String input = scanner.nextLine();
 
         try {
-            InputValidator.validate(input, clazz);
+            InputValidator.validate(input, pattern);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
-            return read(message, clazz);
+            return read(message, pattern);
         }
 
         return input;
