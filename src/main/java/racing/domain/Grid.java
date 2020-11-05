@@ -8,8 +8,8 @@ import java.util.stream.IntStream;
 public class Grid {
 
     private List<Car> statingGrid;
-    private final LinkedList<String> raceRecording;
-    private static int round = 1;
+    private LinkedList<String> raceRecording;
+    private static int round = 0;
 
     public Grid(LinkedList<String> raceRecording) {
         if(raceRecording == null) {
@@ -19,7 +19,7 @@ public class Grid {
     }
 
     public Grid lineUp(int numberOfCars) {
-        round = 1;
+        round = 0;
         this.statingGrid = IntStream.range(0,numberOfCars)
                         .mapToObj(pitOut -> new Car())
                         .collect(Collectors.toList());
@@ -27,8 +27,8 @@ public class Grid {
     }
 
     public Grid standingStart(int rounds) {
-        while(round <= rounds) {
-            statingGrid = statingGrid.stream()
+        while(round < rounds) {
+            this.statingGrid = statingGrid.stream()
                     .peek(Car::move)
                     .peek(Car -> raceRecording.add(Car.skidMark()))
                     .collect(Collectors.toList());
@@ -39,13 +39,17 @@ public class Grid {
     }
 
     public List<Car> getStartingGrid() {
-        return statingGrid;
+        return this.statingGrid;
     }
     public LinkedList<String> getRaceRecord() {
-        return raceRecording;
+        return this.raceRecording;
+    }
+
+    public int getRound() {
+        return round;
     }
 
     public Grid finished() {
-        return new Grid(raceRecording);
+        return this;
     }
 }
