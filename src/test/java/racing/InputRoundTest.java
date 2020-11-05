@@ -12,7 +12,7 @@ import static racing.view.InputValidator.isNull;
 
 import racing.view.InputValidator;
 
-public class InputRoundValidationTest {
+public class InputRoundTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "5", "10", "19"})
