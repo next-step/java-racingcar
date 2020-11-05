@@ -5,24 +5,33 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCar {
-  private static final InputView inputView = new InputView();
-  private static final ResultView resultView = new ResultView();
+    public void run(int car, int move) {
+        validate(car, move);
 
-  public void run() {
-    int car = inputView.setCarCount();
-    if (car == 0) {
-      throw new IllegalArgumentException("자동차 수가 0입니다.");
+        Set<Car> cars = IntStream.range(0, car)
+                .mapToObj(i -> new Car())
+                .collect(Collectors.toSet());
+
+
+        System.out.println("실행결과");
+        IntStream.range(0, move)
+                .mapToObj(i -> cars)
+                .forEach(this::move);
     }
-    Set<Car> cars = IntStream.range(0, car).mapToObj(i -> new Car()).collect(Collectors.toSet());
 
-    System.out.print("실행결과\n");
+    public void move(Set<Car> cars) {
+        cars.forEach(Car::move);
+        ResultView.resultPrint(cars);
+    }
 
-    int move = inputView.setMoveCount();
-    IntStream.range(0, move).mapToObj(i -> cars).forEach(this::move);
-  }
+    private void validate(int car, int move) {
+        if (car == 0) {
+            throw new IllegalArgumentException("자동차 수가 0입니다.");
+        }
 
-  public void move(Set<Car> cars) {
-    cars.forEach(Car::setMove);
-    resultView.resultPrint(cars);
-  }
+        if (move == 0) {
+            throw new IllegalArgumentException("이동횟수가 0입니다.");
+        }
+    }
+
 }
