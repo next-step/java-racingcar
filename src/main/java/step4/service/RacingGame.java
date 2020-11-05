@@ -5,14 +5,16 @@ import step4.domain.Cars;
 import step4.domain.MoveStrategy;
 import step4.dto.RacingGameConditionMoveStrategyDTO;
 import step4.exception.MinimumTryCountException;
-import step4.utils.CarNameSplitter;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class RacingGame {
 
 
+    private static final String SPLIT_SEPARATOR = ",";
     private static final int MIN_TRY_COUNT = 1;
     private final Cars cars;
     private final RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO;
@@ -20,7 +22,7 @@ public class RacingGame {
     private RacingGame(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
         this.racingGameConditionMoveStrategyDTO = racingGameConditionMoveStrategyDTO;
         validTryCount(getRacingGameTryCount());
-        List<Car> carList = CarNameSplitter.splitToCarList(getRacingGameCarNames());
+        List<Car> carList = splitToCarList(getRacingGameCarNames());
         cars = new Cars(carList);
     }
 
@@ -64,4 +66,8 @@ public class RacingGame {
     }
 
 
+    public List<Car> splitToCarList(String input){
+        return Arrays.stream(input.split(SPLIT_SEPARATOR))
+                .map(Car::new).collect(Collectors.toList());
+    }
 }

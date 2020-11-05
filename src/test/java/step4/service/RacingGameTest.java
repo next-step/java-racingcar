@@ -4,18 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step4.domain.Car;
-import step4.domain.Cars;
 import step4.domain.MustMoveStrategy;
-import step4.domain.RandomMoveStrategy;
 import step4.dto.RacingGameConditionDTO;
 import step4.dto.RacingGameConditionMoveStrategyDTO;
 import step4.exception.ValidateBlankName;
-import step4.utils.CarNameSplitter;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -44,7 +36,7 @@ class RacingGameTest {
     void validGameCarCount(String carNames, int carCount) {
         int tryCount = 1;
         RacingGame racingGame = getRacingGameInstance(carNames, tryCount);
-        assertThat(CarNameSplitter.splitToCarList(
+        assertThat(racingGame.splitToCarList(
                 racingGame.getRacingGameCarNames()).size()).isEqualTo(carCount);
 
     }

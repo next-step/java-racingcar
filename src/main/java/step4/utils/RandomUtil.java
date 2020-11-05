@@ -6,8 +6,7 @@ public class RandomUtil {
 
     private final static int BOUND_CONDITION = 10;
 
-    private RandomUtil() {
-    }
+    private RandomUtil() {}
 
 
     public static int generateRandomNumber() {
