@@ -19,7 +19,7 @@ public class GameController {
                 RacingGameConditionMoveStrategyDTO.of(
                         RacingGameConditionDTO.of(carNames, tryCount), new RandomMoveStrategy()));
         for (int i = 0; i < tryCount; i++) {
-            OutputController.runResult(racingGame.getGameRoundResult());
+            OutputController.runResult(racingGame.runRound());
         }
 
         OutputController.printWinnerResult(racingGame.getTopPositionCarNames());

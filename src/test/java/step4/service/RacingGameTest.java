@@ -1,5 +1,6 @@
 package step4.service;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,6 +12,7 @@ import step4.dto.RacingGameConditionMoveStrategyDTO;
 import step4.exception.MinimumTryCountException;
 import step4.exception.ValidateBlankName;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
@@ -20,7 +22,11 @@ class RacingGameTest {
     @DisplayName("게임이 잘 되는지 확인한다.")
     void runGame(String carNames, int tryCount) {
         RacingGame racingGame = getRacingGameInstance(carNames, tryCount);
-        Cars gameEndResult = racingGame.getGameEndResult();
+        for (int i = 0; i < tryCount; i++) {
+            racingGame.runRound();
+        }
+
+        assertThat(racingGame.getTopPositionCarNames()).isEqualTo(carNames);
 
     }
 

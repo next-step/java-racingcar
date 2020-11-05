@@ -34,7 +34,7 @@ public class RacingGame {
         return new RacingGame(racingGameConditionMoveStrategyDTO);
     }
 
-    public Cars getGameRoundResult() {
+    public Cars runRound() {
         gameRound.stackGameRound();
         cars.moveCars(getGameMoveStrategy());
         return cars;

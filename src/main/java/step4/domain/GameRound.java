@@ -4,11 +4,10 @@ import step4.exception.GameEndException;
 
 public class GameRound {
 
-    private int gameRound;
-    private int tryCount;
+    private int gameRound = 0;
+    private final int tryCount;
 
     private GameRound(int tryCount) {
-        gameRound = 0;
         this.tryCount = tryCount;
     }
 
