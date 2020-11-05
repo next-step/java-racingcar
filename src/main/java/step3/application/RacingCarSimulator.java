@@ -40,9 +40,8 @@ public class RacingCarSimulator {
         final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, new RandomMovableStrategy());
         final RacingMap racingMap = new RacingMap(racingCars);
         final List<Snapshot> snapshots = createSimulationSnapshots(racingMap, numberOfAttempts);
-        final Snapshot lastSnapshot = snapshots.get(snapshots.size() - 1);
 
-        return new SimulationResult(snapshots, racingCars, lastSnapshot.getRacingMap().selectWinnerNames());
+        return new SimulationResult(snapshots, racingMap);
     }
 
     private List<Snapshot> createSimulationSnapshots(final RacingMap racingMap, final int numberOfAttempts) {

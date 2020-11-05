@@ -23,6 +23,11 @@ public class RacingMap {
                 .forEach(racingCar -> move(racingCar, unitOfForward));
     }
 
+    public List<RacingCar> getRacingCars() {
+        final List<RacingCar> racingCars = new ArrayList<>(racingCarLocation.keySet());
+        return Collections.unmodifiableList(racingCars);
+    }
+
     private void move(final RacingCar racingCar, final int unitOfForward) {
         racingCarLocation.computeIfPresent(racingCar, (car, position) -> position + unitOfForward);
     }
