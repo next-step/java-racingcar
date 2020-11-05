@@ -1,7 +1,11 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public final class RacingCars {
 
@@ -18,18 +22,31 @@ public final class RacingCars {
         return cars;
     }
 
+    public void race(final Roulette roulette) {
+        cars.stream()
+                .filter(car -> canMove(roulette))
+                .forEach(Car::move);
+    }
+
+    public List<String> getWinners() {
+        Map<Integer, List<String>> rankings = new HashMap<>();
+
+        for (Car car : cars) {
+            List<String> names = rankings.computeIfAbsent(car.getDisplacement(), name -> new LinkedList<>());
+            names.add(car.getName());
+        }
+
+        int maxDisplacement = Collections.max(rankings.keySet());
+
+        return rankings.get(maxDisplacement);
+    }
+
     private void ready(final String delimitedCarNames) {
         String[] carNames = delimitedCarNames.split(",");
 
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
-    }
-
-    public void race(final Roulette roulette) {
-        cars.stream()
-                .filter(car -> canMove(roulette))
-                .forEach(Car::move);
     }
 
     private boolean canMove(final Roulette roulette) {

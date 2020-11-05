@@ -1,5 +1,7 @@
 package racing.view;
 
+import java.util.List;
+
 import racing.domain.Car;
 import racing.domain.RacingCars;
 
@@ -10,6 +12,8 @@ public final class ResultView {
     private static final String DISPLACEMENT_SYMBOL = "-";
 
     public static final String DELIMITER = " : ";
+
+    public static final String WIN_MESSAGE = "가 최종 우승했습니다";
 
     private ResultView() {}
 
@@ -23,6 +27,12 @@ public final class ResultView {
         }
 
         System.out.println();
+    }
+
+    public static void viewWinner(final RacingCars racingCars) {
+        List<String> winners = racingCars.getWinners();
+
+        System.out.println(winners.toString() + WIN_MESSAGE);
     }
 
     private static String repeat(int times) {

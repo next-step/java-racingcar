@@ -35,8 +35,10 @@ public class RacingGame {
         ResultView.viewMessage();
 
         for (int i = 0; i < round; i++) {
-            this.racingCars.race(roulette);
+            this.racingCars.race(this.roulette);
             ResultView.viewRoundResult(this.racingCars);
         }
+
+        ResultView.viewWinner(this.racingCars);
     }
 }
