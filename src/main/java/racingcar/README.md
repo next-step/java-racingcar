@@ -28,4 +28,4 @@
 
 - [0] Car 에서 정적 팩토리 메서드 활용
 - Memento 일급 컬렉션 작성
-- convertWinnerList 개선
+- [0] convertWinnerList 개선

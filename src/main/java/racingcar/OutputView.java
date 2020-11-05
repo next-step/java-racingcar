@@ -34,7 +34,7 @@ public class OutputView {
 
     private void printCars(List<Car> cars) {
         for (Car car : cars) {
-            String carStr = this.convertCar(car);
+            String carStr = convertCar(car);
             System.out.println(carStr);
         }
         System.out.println();
@@ -42,20 +42,20 @@ public class OutputView {
 
     public void printHistory(List<List<Car>> history) {
         for (List<Car> cars : history) {
-            this.printCars(cars);
+            printCars(cars);
         }
     }
 
     protected String convertWinnerList(List<Car> winnerList) {
-        List<String> winners = winnerList
-                .stream()
+        return winnerList.stream()
                 .map(Car::getName)
-                .collect(Collectors.toList());
-        return String.join(OutputViewConst.WINNER_DELIMITER, winners) + OutputViewConst.WINNER_MSG;
+                .collect(
+                        Collectors.joining(OutputViewConst.WINNER_DELIMITER)
+                ) + OutputViewConst.WINNER_MSG;
     }
 
     public void printWinners(List<Car> winners) {
-        String winnerStr = this.convertWinnerList(winners);
+        String winnerStr = convertWinnerList(winners);
         System.out.println(winnerStr);
     }
 
