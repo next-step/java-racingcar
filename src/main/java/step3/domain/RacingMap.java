@@ -16,7 +16,14 @@ public class RacingMap {
         this.racingCarLocation = racingCarLocation;
     }
 
-    public void move(final RacingCar racingCar, final int unitOfForward) {
+    public void moveRacingCars(final int unitOfForward) {
+        racingCarLocation.keySet()
+                .stream()
+                .filter(RacingCar::isMovable)
+                .forEach(racingCar -> move(racingCar, unitOfForward));
+    }
+    
+    private void move(final RacingCar racingCar, final int unitOfForward) {
         racingCarLocation.computeIfPresent(racingCar, (car, position) -> position + unitOfForward);
     }
 

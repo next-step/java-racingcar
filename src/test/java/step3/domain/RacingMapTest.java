@@ -10,6 +10,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingMapTest {
+    private final MovableStrategy MUST_MOVABLE = () -> true;
+    private final MovableStrategy NEVER_MOVABLE = () -> false;
     @DisplayName("우승자 선정")
     @Nested
     class SelectWinnerNames {
@@ -17,12 +19,16 @@ class RacingMapTest {
         @Test
         void single() {
             // given
-            final List<RacingCar> racingCars = RacingCarFactory.createCars(Arrays.asList("CAR1", "CAR2", "CAR3"), () -> true);
+            final List<RacingCar> racingCars = Arrays.asList(
+                    new RacingCar("CAR1", MUST_MOVABLE)
+                    , new RacingCar("CAR2", NEVER_MOVABLE)
+                    , new RacingCar("CAR3", NEVER_MOVABLE)
+            );
             final RacingMap racingMap = new RacingMap(racingCars);
             final RacingCar car1 = racingCars.get(0);
 
             // when
-            racingMap.move(car1, 1);
+            racingMap.moveRacingCars(1);
 
             // then
             final List<String> winners = racingMap.selectWinnerNames();
@@ -33,14 +39,18 @@ class RacingMapTest {
         @Test
         void more_then_two() {
             // given
-            final List<RacingCar> racingCars = RacingCarFactory.createCars(Arrays.asList("CAR1", "CAR2", "CAR3"), () -> true);
+            final List<RacingCar> racingCars = Arrays.asList(
+                    new RacingCar("CAR1", MUST_MOVABLE)
+                    , new RacingCar("CAR2", MUST_MOVABLE)
+                    , new RacingCar("CAR3", NEVER_MOVABLE)
+            );
             final RacingMap racingMap = new RacingMap(racingCars);
+            
             final RacingCar car1 = racingCars.get(0);
             final RacingCar car2 = racingCars.get(1);
 
             // when
-            racingMap.move(car1, 1);
-            racingMap.move(car2, 1);
+            racingMap.moveRacingCars(1);
 
             // then
             final List<String> winners = racingMap.selectWinnerNames();
