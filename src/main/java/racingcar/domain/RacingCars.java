@@ -16,13 +16,20 @@ public class RacingCars {
         this.movingStrategy = movingStrategy;
     }
 
-    public static RacingCars of(int numOfCar, MovingStrategy movingStrategy) {
-        List<Car> initCars = createCars(numOfCar);
+    public static RacingCars of(String [] numOfCar, MovingStrategy movingStrategy) {
+        int size = numOfCar.length;
+        List<Car> initCars = createCars(size);
         return new RacingCars(initCars, movingStrategy);
     }
 
-    public static List<Car> createCars(int numOfCar) {
-        return Stream.generate(Car::new)
+    private void getCarName(String[] nameOfCars,int numOfCar){
+        for (String carName: nameOfCars) {
+            createCars()
+        }
+    }
+
+    public static List<Car> createCars(int numOfCar,String carName) {
+        return Stream.generate(Car::new(carName))
                 .limit(numOfCar)
                 .collect(Collectors.toList());
     }
