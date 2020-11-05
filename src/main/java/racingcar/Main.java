@@ -14,7 +14,7 @@ public class Main {
         OutputView outputView = OutputView.getInstance();
         outputView.printResultMsg();
 
-        List<List<Car>> history = game.getHistory();
+        History history = game.getHistory();
         outputView.printHistory(history);
 
         List<Car> winners = game.getWinners();

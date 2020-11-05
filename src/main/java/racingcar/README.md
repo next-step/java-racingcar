@@ -27,5 +27,6 @@
 ### 피드백
 
 - [0] Car 에서 정적 팩토리 메서드 활용
-- Memento 일급 컬렉션 작성
 - [0] convertWinnerList 개선
+- [0] Memento 일급 컬렉션 작성
+- [0] cars 가 read only 되도록 하기

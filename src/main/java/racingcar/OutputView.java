@@ -40,8 +40,10 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printHistory(List<List<Car>> history) {
-        for (List<Car> cars : history) {
+    public void printHistory(History history) {
+        List<Memento> mementoList = history.getMementoList();
+        for (Memento memento : mementoList) {
+            List<Car> cars = memento.getCars();
             printCars(cars);
         }
     }
