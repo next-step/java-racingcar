@@ -16,7 +16,7 @@ public class Presenter implements RaceGameContract.Presenter {
     @Override
     public void gameStart() {
         raceGame.start();
-        view.renderView(raceGame.roundEnd());
+        view.renderView(raceGame);
     }
 
 

@@ -39,10 +39,6 @@ public class RaceGame {
         round.roundFinish();
     }
 
-    public RaceGame roundEnd() {
-        return this;
-    }
-
     public List<Integer> getMoveTracks() {
         return racingCars.stream()
                 .map(RacingCar::movePosition)
