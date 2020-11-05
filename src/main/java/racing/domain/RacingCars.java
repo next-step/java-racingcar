@@ -20,6 +20,7 @@ public final class RacingCars {
 
     private void ready(final String delimitedCarNames) {
         String[] carNames = delimitedCarNames.split(",");
+
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
