@@ -2,34 +2,31 @@ package step3.model;
 
 public class RacingCar {
 
-    private int moveTrack;
+    private int targetPoint;
     private int currentPosition;
     private Commander commander;
 
     public RacingCar(Commander commander) {
         this.commander = commander;
-        this.moveTrack++;
+        this.targetPoint++;
     }
 
     public void executeMoveTrack() {
         if(commander.moveForward()){
-            moveTrack ++;
+            targetPoint ++;
         }
-    }
-
-    public int getMoveTrack() {
-        return moveTrack;
     }
 
     public int movePosition() {
         if(isReachMoveTargetPosition()) {
-            return moveTrack;
+            return targetPoint;
         }
         currentPosition++;
         return currentPosition;
     }
 
+
     private boolean isReachMoveTargetPosition() {
-        return currentPosition == moveTrack ? true : false;
+        return currentPosition == targetPoint ? true : false;
     }
 }
