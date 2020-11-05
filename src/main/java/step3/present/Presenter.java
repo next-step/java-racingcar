@@ -1,30 +1,22 @@
 package step3.present;
 
 import step3.RaceGameContract;
-import step3.model.Commander;
-import step3.model.GameRound;
 import step3.model.RaceGame;
 
 public class Presenter implements RaceGameContract.Presenter {
 
     private final RaceGameContract.View view;
-    private final Commander commander;
+    private final RaceGame raceGame;
 
-    public Presenter(RaceGameContract.View view, Commander commander) {
+    public Presenter(RaceGameContract.View view, RaceGame raceGame) {
         this.view = view;
-        this.commander = commander;
+        this.raceGame = raceGame;
     }
 
     @Override
-    public RaceGame createGame(GameRound round) {
-        RaceGame raceGame = new RaceGame(round, commander);
-        return raceGame;
-    }
-
-    @Override
-    public void gameStart(RaceGame game) {
-        game.start();
-        view.renderView(game.end());
+    public void gameStart() {
+        raceGame.start();
+        view.renderView(raceGame.roundEnd());
     }
 
 
