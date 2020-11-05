@@ -5,12 +5,12 @@ import java.util.stream.IntStream;
 
 public class ResultView {
 
-    public void printResult(List<Integer> cars) {
+    public void printResult(int round, List<Integer> cars) {
         for (Integer number : cars) {
             IntStream.range(0, number)
                     .forEach(t -> System.out.print("-"));
             System.out.println();
         }
-        System.out.println("End Round");
+        System.out.printf("End %d Round\n", round);
     }
 }

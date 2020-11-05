@@ -4,15 +4,7 @@ import java.util.*;
 
 public class CarRacing {
 
-    private final int maxRound;
-    private final List<Integer> cars;
-
-    public CarRacing(RacingInput racingInput) {
-        maxRound = racingInput.getCountOfRound();
-        cars = initRacing(racingInput.getCountOfCar());
-    }
-
-    private List<Integer> initRacing(int cars) {
+    public List<Integer> initRacing(int cars) {
         return new ArrayList<>(Collections.nCopies(cars, 0));
     }
 
@@ -21,21 +13,20 @@ public class CarRacing {
         InputView inputView = new InputView();
         RacingInput racingInput = inputView.getRacingInput();
 
-        CarRacing cr = new CarRacing(racingInput);
-        cr.run();
-    }
+        CarRacing cr = new CarRacing();
+        List<Integer> cars = cr.initRacing(racingInput.getCountOfCar());
 
-    private void run() {
-
-        int count = 0;
         ResultView resultView = new ResultView();
-        while (count++ < maxRound) {
-            processRound(cars);
-            resultView.printResult(cars);
+
+        int round = 0;
+
+        while (round++ < racingInput.getCountOfRound()) {
+            cr.processRound(cars);
+            resultView.printResult(round, cars);
         }
     }
 
-    private void processRound(List<Integer> cars) {
+    public void processRound(List<Integer> cars) {
         for (int i = 0; i < cars.size(); i++) {
             if (getRandomNumber() >= 4) {
                 cars.set(i, cars.get(i) + 1);
