@@ -22,7 +22,7 @@ public class GameController {
             OutputController.runResult(racingGame.getGameRoundResult());
         }
 
-        OutputController.printWinnerResult(racingGame.getGameEndResult());
+        OutputController.printWinnerResult(racingGame.getTopPositionCarNames());
     }
 
 
