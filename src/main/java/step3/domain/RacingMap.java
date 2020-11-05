@@ -22,7 +22,7 @@ public class RacingMap {
                 .filter(RacingCar::isMovable)
                 .forEach(racingCar -> move(racingCar, unitOfForward));
     }
-    
+
     private void move(final RacingCar racingCar, final int unitOfForward) {
         racingCarLocation.computeIfPresent(racingCar, (car, position) -> position + unitOfForward);
     }
@@ -43,6 +43,8 @@ public class RacingMap {
                 winnerNames.add(car.getName());
             }
         }
-        return winnerNames;
+        return winnerNames.stream()
+                .sorted(String::compareTo)
+                .collect(Collectors.toList());
     }
 }
