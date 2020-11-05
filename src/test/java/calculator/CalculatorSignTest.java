@@ -56,10 +56,5 @@ class CalculatorSignTest {
     @DisplayName(value = "두 값의 빼기 기능 테스트")
     public int subtraction(int a, int b) {
         return a - b;
-    } 
-    
-    
-    
-    
-
+    }
 }

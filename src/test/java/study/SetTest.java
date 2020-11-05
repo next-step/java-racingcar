@@ -43,5 +43,4 @@ public class SetTest {
     public void isContains_ShouldGenerateTheExpected(int number, boolean expected) throws Exception {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
-
 }
