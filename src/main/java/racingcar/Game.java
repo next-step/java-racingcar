@@ -2,6 +2,7 @@ package racingcar;
 
 import jdk.internal.util.xml.impl.Input;
 
+import javax.xml.transform.Result;
 import java.util.Random;
 
 public class Game {
@@ -28,7 +29,6 @@ public class Game {
     public static void playRound(){
         for (int i = 0; i < cars.length; i++) {
             randomFoward(cars[i]);
-
         }
     }
 
@@ -43,10 +43,10 @@ public class Game {
         InputView.viewCoutRoundInputMessage();
         User.InputRoundCount();
 
+        ResultView.viewResultMessage();
+
         for (int i = 0; i < roundCount; i++) {
             playRound();
         }
-
-
     }
 }
