@@ -1,7 +1,7 @@
 package step4.domain;
 
-@FunctionalInterface
 public interface MoveStrategy {
 
+    boolean isMoved(int number);
     boolean isMoved();
 }
