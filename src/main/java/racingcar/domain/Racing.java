@@ -4,12 +4,13 @@ import racingcar.common.Constants;
 import racingcar.common.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Racing {
     private List<Car> cars = new ArrayList<>();
     private StringBuilder sb = new StringBuilder();
 
-    public void initializeCars(int numberOfCars){
+    public Racing(int numberOfCars){
         for(int i = 0; i < numberOfCars; i++)
             cars.add(new Car());
     }
