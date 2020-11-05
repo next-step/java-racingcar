@@ -23,7 +23,7 @@ public class RacingGame {
     private void set() {
         InputView.openScanner();
 
-        final int carCount = InputView.readCarNames();
+        final int carCount = Integer.parseInt(InputView.readCarNames());
         this.racingCars = new RacingCars(carCount);
 
         this.round = InputView.readRound();
