@@ -16,6 +16,8 @@ public final class ResultView {
 
     public static final String WIN_MESSAGE = " 가 최종 우승했습니다";
 
+    public static final String NULL_CHARACTER = "\0";
+
     private ResultView() {}
 
     public static void viewMessage() {
@@ -38,6 +40,6 @@ public final class ResultView {
     }
 
     private static String repeat(int times) {
-        return new String(new char[times]).replace("\0", DISPLACEMENT_SYMBOL);
+        return new String(new char[times]).replace(NULL_CHARACTER, DISPLACEMENT_SYMBOL);
     }
 }

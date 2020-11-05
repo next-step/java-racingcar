@@ -9,6 +9,8 @@ import java.util.Map;
 
 public final class RacingCars {
 
+    public static final String CAR_NAMES_DELIMITER = ",";
+
     public static final int MOVE_CONDITION = 4;
 
     private final List<Car> cars;
@@ -43,7 +45,7 @@ public final class RacingCars {
     }
 
     private void ready(final String delimitedCarNames) {
-        String[] carNames = delimitedCarNames.split(",");
+        String[] carNames = delimitedCarNames.split(CAR_NAMES_DELIMITER);
 
         for (String carName : carNames) {
             cars.add(new Car(carName));
