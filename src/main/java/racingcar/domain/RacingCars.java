@@ -16,9 +16,8 @@ public class RacingCars {
         this.movingStrategy = movingStrategy;
     }
 
-    public static RacingCars of(String [] numOfCar, MovingStrategy movingStrategy) {
-        int size = numOfCar.length;
-        List<Car> initCars = createCars(size);
+    public static RacingCars of(int numOfCar, MovingStrategy movingStrategy) {
+        List<Car> initCars = createCars(numOfCar);
         return new RacingCars(initCars, movingStrategy);
     }
 
@@ -39,5 +38,4 @@ public class RacingCars {
     public List<Car> getCars() {
         return this.cars;
     }
-
 }
