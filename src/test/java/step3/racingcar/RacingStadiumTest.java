@@ -19,5 +19,4 @@ class RacingStadiumTest {
             assertThat(result).isBetween(0, 10);
         }
     }
-
 }
