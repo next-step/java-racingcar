@@ -19,7 +19,7 @@ public class StringInputClassifier {
 
     private static final String BLANK_FOR_SPLIT = " ";
     private static final Set<String> AVAILABLE_OPERATORS = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
-    private static final String DOUBLE_REGEX = "\\d+(?:\\.\\d+)?";
+    private static final Pattern DOUBLE_REGEX_PATTERN = Pattern.compile("\\d+(?:\\.\\d+)?");
 
     private String input;
     private List<BigDecimal> operands = new ArrayList<>();
@@ -47,8 +47,7 @@ public class StringInputClassifier {
     }
 
     protected boolean isOperand(String possibleOperator) {
-        Pattern regex = Pattern.compile(DOUBLE_REGEX);
-        Matcher regexMatcher = regex.matcher(possibleOperator);
+        Matcher regexMatcher = DOUBLE_REGEX_PATTERN.matcher(possibleOperator);
         return regexMatcher.find();
     }
 

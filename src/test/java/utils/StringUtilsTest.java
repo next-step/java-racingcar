@@ -13,4 +13,9 @@ class StringUtilsTest {
         assertThat(StringUtils.isEmpty(" ")).isTrue();
         assertThat(StringUtils.isEmpty("test")).isFalse();
     }
+
+    @Test
+    void testRepeat() {
+        assertThat(StringUtils.repeat("*", 3)).isEqualTo("***");
+    }
 }
