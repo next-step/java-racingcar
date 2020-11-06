@@ -12,19 +12,19 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
 
         do {
-            System.out.printf(InputViewMessage.FIRST_QUESTION);
+            System.out.print(InputViewMessage.FIRST_QUESTION);
             manyCars = inputValidationCheck(scanner.next());
         } while (manyCars <= 0);
 
         do {
-            System.out.printf(InputViewMessage.SECOND_QUESTION);
+            System.out.print(InputViewMessage.SECOND_QUESTION);
             tryCount = inputValidationCheck(scanner.next());
         } while (tryCount <= 0 );
 
         scanner.close();
     }
 
-    public int inputValidationCheck(String input) {
+    private int inputValidationCheck(String input) {
         if(numberFormatCheck(input) == 0) {
             return 0;
         }
@@ -32,26 +32,26 @@ public class InputView {
     }
 
     private int minimumValueCheck(String input) {
-        int value = Integer.valueOf(input);
+        int value = Integer.parseInt(input);
         if(value <= 0)
-            System.out.printf(InputViewMessage.INPUT_VALIDATION_ERROR);
+            System.out.print(InputViewMessage.INPUT_VALIDATION_ERROR);
 
         return value;
     }
 
     private int numberFormatCheck(String input) {
         if(!input.matches(numberRegex)) {
-            System.out.printf(InputViewMessage.INPUT_FORMAT_VALIDATION_ERROR);
+            System.out.print(InputViewMessage.INPUT_FORMAT_VALIDATION_ERROR);
             return 0;
         }
         return minimumValueCheck(input);
     }
 
-    public int getManyCars() {
+    public static int getManyCars() {
         return manyCars;
     }
 
-    public int getTryCount() {
+    public static int getTryCount() {
         return tryCount;
     }
 
