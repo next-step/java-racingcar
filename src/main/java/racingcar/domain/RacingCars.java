@@ -30,6 +30,20 @@ public class RacingCars {
         return carsWithName;
     }
 
+    private int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(RuntimeException::new);
+    }
+
+    public List<Car> getWinnerCars() {
+        int winnerPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.hasSamePosition(winnerPosition))
+                .collect(Collectors.toList());
+    }
+
     public void run() {
         cars.forEach(this::moveCar);
     }
