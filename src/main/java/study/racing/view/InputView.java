@@ -1,6 +1,6 @@
-package study.racing;
+package study.racing.view;
 
-import study.racing.view.RacingInput;
+import study.racing.RacingInput;
 
 import java.util.Scanner;
 

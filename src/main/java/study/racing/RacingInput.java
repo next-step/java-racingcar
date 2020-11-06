@@ -1,4 +1,4 @@
-package study.racing.view;
+package study.racing;
 
 public class RacingInput {
 
