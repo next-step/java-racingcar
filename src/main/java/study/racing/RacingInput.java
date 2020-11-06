@@ -15,14 +15,14 @@ public class RacingInput {
     }
 
     private void validateCountOfCar(int countOfCar) {
-        if (countOfCar <= 0) {
-            throw new IllegalArgumentException("자동차 수는 0 보다 커야합니다.");
+        if (countOfCar <= 1) {
+            throw new IllegalArgumentException("자동차 수는 1 보다 커야합니다.");
         }
     }
 
     private void validateCountOfRound(int countOfRound) {
         if (countOfRound <= 0) {
-            throw new IllegalArgumentException("라운드 횟수는 0 보다 커야합니다.");
+            throw new IllegalArgumentException("라운드 수는 0 보다 커야합니다.");
         }
     }
 

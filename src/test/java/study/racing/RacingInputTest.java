@@ -27,13 +27,23 @@ class RacingInputTest {
     }
 
     @Test
-    @DisplayName("자동차 수가 0보다 작다면 예외발생")
-    void 예외가_발생()
+    @DisplayName("자동차 수가 1보다 작다면 예외발생")
+    void 자동차_수_예외_발생()
     {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     RacingInput input = new RacingInput(-1, 3);
-                }).withMessageContaining("자동차 수는 0 보다 커야합니다.");
+                }).withMessageContaining("자동차 수는 1 보다 커야합니다.");
+    }
+
+    @Test
+    @DisplayName("라운드 수가 0보다 작다면 예외발생")
+    void 라운드_수_예외_발생()
+    {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    RacingInput input = new RacingInput(2, 0);
+                }).withMessageContaining("라운드 수는 0 보다 커야합니다.");
     }
 
 }
