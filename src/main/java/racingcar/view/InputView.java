@@ -25,8 +25,7 @@ public class InputView {
     public static String[] getNameOfCars(String content) {
         System.out.println(content);
         String inputName = SCANNER.next();
-        String[] names = inputName.split(",");
-        validInputName(names);
+        String[] names = splitValues(inputName);
         int numOfNames = names.length;
         validateInputNum(numOfNames);
         return names;
@@ -58,14 +57,9 @@ public class InputView {
     }
 
     public static int inputLoopCount() {
-        return input();
-    }
-
-    private static int input() {
-        System.out.println(InputView.LOOP_COUNT_MESSAGE);
+        System.out.println(LOOP_COUNT_MESSAGE);
         int value = SCANNER.nextInt();
         validateInputNum(value);
-
         return value;
     }
 
