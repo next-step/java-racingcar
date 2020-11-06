@@ -10,7 +10,7 @@ import racingcar.view.ResultView;
 
 public class RacingController {
     public static void main(String[] args) {
-        int numOfCar = InputView.inputNumOfCar();
+        String[] nameOfCars = InputView.inputNameOfCars();
         int loopCount = InputView.inputLoopCount();
 
         RacingCars racingCars = RacingCars.of(numOfCar, new RandomMovingStrategy());
