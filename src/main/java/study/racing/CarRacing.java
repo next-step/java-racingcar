@@ -9,15 +9,6 @@ public class CarRacing {
     private final ResultView printer;
     private final Random random = new Random();
 
-    public static void main(String... args) {
-
-        InputView inputView = new InputView();
-        RacingInput racingInput = inputView.getRacingInput();
-
-        CarRacing cr = new CarRacing(racingInput, new ResultView());
-        cr.run();
-    }
-
     public CarRacing(RacingInput racingInput, ResultView printer) {
         this.racingInput = racingInput;
         this.cars = initRacing(racingInput.getCountOfCar());
