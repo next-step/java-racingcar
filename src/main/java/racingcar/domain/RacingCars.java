@@ -11,7 +11,7 @@ public class RacingCars {
     private final List<Car> cars;
     private final MovingStrategy movingStrategy;
 
-    public RacingCars(List<Car> cars, MovingStrategy movingStrategy) {
+    private RacingCars(List<Car> cars, MovingStrategy movingStrategy) {
         this.cars = cars;
         this.movingStrategy = movingStrategy;
     }
