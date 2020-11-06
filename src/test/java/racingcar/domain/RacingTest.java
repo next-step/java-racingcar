@@ -4,16 +4,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
     private Racing racing;
-    private final String RESULT_OF_RACING_WITH_A_TRY_AND_THREE_CARS_FORWARDING = "-\n-\n-\n\n";
+    private List<String> carNames = new ArrayList<>();
+
+    private final String RESULT_OF_RACING_WITH_A_TRY_AND_THREE_CARS_FORWARDING = "test1 : -\ntest2 : -\ntest3 : -\n\ntest1, test2, test3가 최종 우승했습니다.";
     private final String RESULT_OF_RACING_WITH_A_TRY_AND_THREE_CARS_STOPPED = "\n\n\n\n";
+
 
     @BeforeEach
     void setUp(){
-        racing = new Racing(3,1);
+        carNames.add("test1");
+        carNames.add("test2");
+        carNames.add("test3");
+        racing = new Racing(carNames,1);
     }
 
     @Test

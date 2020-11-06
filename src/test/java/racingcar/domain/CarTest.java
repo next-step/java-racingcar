@@ -9,14 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
     private Car car;
     private MoveStrategy forwardStrategy = new ForwardStrategy();;
-    private MoveStrategy stopStrategy = new StopStrategy();;
+    private MoveStrategy stopStrategy = new StopStrategy();
+
+    private final String TEST_NAME = "test";
     private final String JOIN_DELIMITER = "";
     private final String COPY_DELIMITER = "-";
     private final String NEW_LINE_DELIMITER = "\n";
 
     @BeforeEach
     void setUp(){
-        car = new Car();
+        car = new Car(TEST_NAME);
     }
 
     @Test
