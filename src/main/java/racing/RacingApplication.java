@@ -1,16 +1,18 @@
 package racing;
 
+import racing.controller.GrandPrixController;
+import racing.domain.GrandPrix;
 import racing.view.RacingInputView;
-import racing.view.RacingResultView;
+import racing.view.to.RacingInputTO;
 
 public class RacingApplication {
 
     private static final RacingInputView racingInputView = new RacingInputView();
-    private static final RacingResultView racingResultView = new RacingResultView();
+    private static final GrandPrixController granPrixController = new GrandPrixController();
 
     public static void main(String[] args) {
-        racingInputView.view();
-        int grandPrixId = racingInputView.getGrandPrixId();
-        racingResultView.view(grandPrixId);
+        RacingInputTO racingInputTO = racingInputView.getRacingInput();
+        GrandPrix grandPrix = granPrixController.create(racingInputTO);
+        granPrixController.startRace(grandPrix);
     }
 }

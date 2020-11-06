@@ -1,33 +1,23 @@
 package racing.view;
 
-import racing.domain.GrandPrix;
-import racing.service.RacingService;
 import utils.StringUtils;
+
+import java.util.Map;
 
 public class RacingResultView {
 
-    RacingService racingService = new RacingService();
+    private static final String RACE_MACHINE_STATUS_BAR = "-";
 
-    public void view(int grandPrixId) {
-        GrandPrix grandPrix = racingService.getGrandPrix(grandPrixId);
-        ready(grandPrix);
-        do {
-            grandPrix.runRound();
-            viewRound(grandPrix);
-        } while (grandPrix.getCurrentRound() < grandPrix.getMaxRounds());
-    }
-
-    public void viewRound(GrandPrix grandPrix) {
-        grandPrix.getRaceMachines().forEach(raceMachine -> {
-            int lap = raceMachine.getLap();
-            String machineLapView = StringUtils.repeat("-", lap);
+    public void viewRound(Map<Integer, Integer> lapMapStatus) {
+        lapMapStatus.forEach((raceMachineId, lap) -> {
+            String machineLapView = StringUtils.repeat(RACE_MACHINE_STATUS_BAR, lap);
             System.out.println(machineLapView);
         });
         System.out.println();
     }
 
-    public void ready(GrandPrix grandPrix) {
+    public void ready(Map<Integer, Integer> lapMapStatus) {
         System.out.println("\n실행 결과");
-        viewRound(grandPrix);
+        viewRound(lapMapStatus);
     }
 }

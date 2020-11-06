@@ -1,21 +1,21 @@
 package racing.domain;
 
 import lombok.Getter;
-import utils.RandomUtils;
+import racing.resolver.AccelerateResolver;
 
 @Getter
 public class RaceMachine {
     private final int id;
-    private int horsePower = 0;
     private int lap = 1;
+    private final AccelerateResolver accelerateResolver;
 
-    public RaceMachine(int id) {
+    public RaceMachine(int id, AccelerateResolver accelerateResolver) {
         this.id = id;
+        this.accelerateResolver = accelerateResolver;
     }
 
     public void accelerate() {
-        horsePower = RandomUtils.nextInt(10);
-        if (horsePower >= 4) {
+        if (accelerateResolver.resolve()) {
             lap++;
         }
     }

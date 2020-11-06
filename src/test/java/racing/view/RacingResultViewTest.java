@@ -1,11 +1,11 @@
 package racing.view;
 
 import org.junit.jupiter.api.Test;
-import racing.domain.GrandPrix;
 import utils.StringUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +17,11 @@ public class RacingResultViewTest {
         System.setOut(new PrintStream(outContent));
 
         RacingResultView racingResultView = new RacingResultView();
-        racingResultView.ready(new GrandPrix(3, 5));
+        HashMap<Integer, Integer> lapMapStatus = new HashMap<>();
+        lapMapStatus.put(1, 1);
+        lapMapStatus.put(2, 1);
+        lapMapStatus.put(3, 1);
+        racingResultView.ready(lapMapStatus);
 
         assertThat(outContent.toString()).contains(StringUtils.repeat("-\n", 3));
     }

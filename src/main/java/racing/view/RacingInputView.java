@@ -1,17 +1,16 @@
 package racing.view;
 
 import lombok.Getter;
-import racing.domain.GrandPrix;
-import racing.service.RacingService;
+import racing.service.GranPrixService;
+import racing.view.to.RacingInputTO;
 
 import java.util.Scanner;
 
 @Getter
 public class RacingInputView {
-    RacingService racingService = new RacingService();
-    private int grandPrixId;
+    private final GranPrixService granPrixService = new GranPrixService();
 
-    public void view() {
+    public RacingInputTO getRacingInput() {
         int maxMachines;
         int maxRounds;
 
@@ -22,8 +21,7 @@ public class RacingInputView {
             System.out.println("시도할 회수는 몇 회 인가요?");
             maxRounds = Integer.parseInt(in.nextLine());
         }
-        GrandPrix grandPrix = racingService.createGrandPrix(maxMachines, maxRounds);
-        grandPrixId = grandPrix.getId();
+        return new RacingInputTO(maxMachines, maxRounds);
     }
 
 }
