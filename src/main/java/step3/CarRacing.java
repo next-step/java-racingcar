@@ -13,11 +13,9 @@ public class CarRacing {
 
     private List<Integer> movingDistances;
 
-    public CarRacing() {
-        displayInputView();
-    }
-
     public void start() {
+        displayInputView();
+
         int totalTurns = inputView.getInputData().getNumOfTry();
         readyToRace(inputView.getInputData().getNumOfCars());
 

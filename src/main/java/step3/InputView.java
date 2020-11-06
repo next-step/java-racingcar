@@ -1,7 +1,5 @@
 package step3;
 
-import jdk.nashorn.internal.ir.RuntimeNode;
-
 import java.util.Scanner;
 
 public class InputView {
