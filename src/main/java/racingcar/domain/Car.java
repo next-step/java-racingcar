@@ -6,9 +6,11 @@ public class Car {
     static final int DEFAULT_DISTANCE = 0;
 
     private int position;
+    private String carName;
 
-    public Car() {
+    public Car(String carName) {
         this.position = DEFAULT_DISTANCE;
+        this.carName = carName;
     }
 
     public void move(final MovingStrategy movingStrategy) {
@@ -19,5 +21,9 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 }
