@@ -4,6 +4,7 @@ import java.util.Random;
 
 /**
  * 차가 전진하려면 4이상의 숫자를 얻어야 한다. 룰렛을 돌리면(spin) 숫자가 하나 나온다
+ * 룰렛이
  */
 public interface RaceRoulette {
     /**

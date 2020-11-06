@@ -9,6 +9,10 @@ public class Car {
         this.no = no;
     }
 
+    public int getMovingDistance(){
+        return this.movingDistance;
+    }
+
     public void move(RaceRoulette raceRoulette){
         if( raceRoulette.spin() >= 4 ) movingDistance++;
     }
