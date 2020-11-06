@@ -1,31 +1,33 @@
 package step2;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class ValidatorTest {
 
-    private Calculator calculator;
 
-    @BeforeEach
-    public void setUp(){
-        calculator = new Calculator();
+
+    @DisplayName("사칙연산 기호 포함 여부 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"*:true", "^:false", "-:true", "/:true", "@:false"}, delimiter = ':')
+    public void isContainsOperatorTypeTest(String inputData, boolean expected) {
+        assertThat(Operator.isContainOperator(inputData)).isEqualTo(expected);
     }
 
-    @DisplayName("사칙연산 기호에 해당되지 않을 경우 예외처리")
+    @DisplayName("사칙연산 기호 미포함시 예외처리 테스트")
     @ParameterizedTest
-    @ValueSource(strings = "3 * 5 & 5")
-    public void validateOperatorTypeCheck(String inputData) {
+    @CsvSource(value = {"1 + 3 / 5 * 7 ^ 2"})
+    public void validateIsCorrectOperatorTypeTest(String inputData) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    calculator.calculate(inputData);
+                    InputParser.getCalculationMaterial(inputData);
                 }).withMessageMatching("사칙연산 기호가 아닙니다");
     }
 
@@ -36,7 +38,7 @@ public class ValidatorTest {
     public void validateIsEmptyCheck(String blankData) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    calculator.calculate(blankData);
+                    InputParser.getCalculationMaterial(blankData);
                 }).withMessageMatching("입력값이 비어있습니다");
     }
 
