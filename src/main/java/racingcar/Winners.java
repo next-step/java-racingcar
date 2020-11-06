@@ -21,13 +21,21 @@ public class Winners {
     }
 
     public void checkNewPlayerRecord(String name, int position) {
-        int result = compare(position);
-        if (result == SAME_AS_WINNERS)
-            names.add(name);
-        if (result == HIGHER_THAN_WINNERS) {
+        checkNewPlayerSamePosition(name, position);
+        checkNewPlayerHigher(name, position);
+    }
+
+    private void checkNewPlayerHigher(String name, int position) {
+        if (compare(position) == HIGHER_THAN_WINNERS) {
             names.clear();
             names.add(name);
             this.position = position;
+        }
+    }
+
+    private void checkNewPlayerSamePosition(String name, int position) {
+        if (compare(position) == SAME_AS_WINNERS) {
+            names.add(name);
         }
     }
 
