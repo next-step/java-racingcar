@@ -16,10 +16,10 @@ public class CarsTest {
     @ValueSource(ints = {0, 1, 2})
     void move(int movementExpected) {
         List<String> names = Arrays.asList("pobi", "crong", "honux");
-        Cars cars = new Cars(names, () -> movementExpected);
+        Cars cars = new Cars(names);
         List<Integer> positions = cars.getCarPositions();
 
-        cars.move();
+        cars.move(() -> movementExpected);
         List<Integer> positionsAfterMove = cars.getCarPositions();
 
         IntStream.range(0, names.size())

@@ -8,12 +8,12 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<String> names, RuleStrategy ruleStrategy) {
-        this.cars = names.stream().map(name -> new Car(name, ruleStrategy)).collect(Collectors.toList());
+    public Cars(List<String> names) {
+        this.cars = names.stream().map(Car::new).collect(Collectors.toList());
     }
 
-    public void move() {
-        this.cars.forEach(Car::move);
+    public void move(RuleStrategy ruleStrategy) {
+        this.cars.forEach(car -> car.move(ruleStrategy));
     }
 
     public List<Integer> getCarPositions() {

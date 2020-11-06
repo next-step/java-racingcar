@@ -48,8 +48,7 @@ public class GameRoundsTest {
     void keepRecord() {
         List<String> names = Arrays.asList("pobi", "crong", "honux");
         int roundNum = 0;
-        int movement = 0;
-        Cars cars = new Cars(names, () -> movement);
+        Cars cars = new Cars(names);
         GameRounds gameRounds = new GameRounds(roundNum);
 
         gameRounds.keepRecord(cars);

@@ -11,19 +11,15 @@ public class GameManager {
     }
 
     public Records play(List<String> carNames, int gameRoundNum) {
-        Cars cars = readyCars(carNames);
+        Cars cars = new Cars(carNames);
         GameRounds gameRounds = new GameRounds(gameRoundNum);
 
         while (!gameRounds.isGameEnd()) {
-            cars.move();
+            cars.move(ruleStrategy);
             gameRounds.endRound();
             gameRounds.keepRecord(cars);
         }
 
         return gameRounds.getRecords();
-    }
-
-    private Cars readyCars(List<String> carNames) {
-        return new Cars(carNames, ruleStrategy);
     }
 }
