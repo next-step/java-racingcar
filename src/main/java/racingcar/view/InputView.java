@@ -52,11 +52,11 @@ public class InputView {
     }
 
     public static int inputLoopCount() {
-        return input(LOOP_COUNT_MESSAGE);
+        return input();
     }
 
-    private static int input(String content) {
-        System.out.println(content);
+    private static int input() {
+        System.out.println(InputView.LOOP_COUNT_MESSAGE);
         int value = SCANNER.nextInt();
         validateInputNum(value);
 
