@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import racingcar.behavior.MovingStrategy;
 
 public class RacingCars {
-
     private final List<Car> cars;
     private final MovingStrategy movingStrategy;
 
