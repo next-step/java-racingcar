@@ -7,6 +7,7 @@ public class CarRacing {
     private final List<Integer> cars;
     private final RacingInput racingInput;
     private final ResultView printer;
+    private final Random random = new Random();
 
     public static void main(String... args) {
 
@@ -45,7 +46,6 @@ public class CarRacing {
     }
 
     private int getRandomNumber() {
-        Random random = new Random();
         return random.nextInt(10);
     }
 
