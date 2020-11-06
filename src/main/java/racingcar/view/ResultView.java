@@ -13,8 +13,6 @@ public class ResultView {
     private static final String COMMA = ",";
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
-    private static int maxValue = Integer.MIN_VALUE;
-
     public static void printResultMessage() {
         System.out.println(NEW_LINE + RESULT_MESSAGE);
     }
