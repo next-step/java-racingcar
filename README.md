@@ -7,3 +7,25 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현할 기능 목록
+
+* Car
+    * CurrentPosition
+    * RandomValueMovingStrategy
+    * 이동기능(전진/멈춤)
+
+* CarMovingStrategy(변경가능성높음)
+
+* RacingGame 
+    * RacingGameUI(변경가능성높음)
+    * RacingCars(List)
+    * 게임 설정값 입력받기(몇 대의 자동차, 몇 번의 이동)
+        * InputView
+    * 현재 자동차들의 상태를 출력하기(UI에 변경을 통지)
+        * ResultView
+
+* UI 
+    * InputView
+    * ResultView
+
