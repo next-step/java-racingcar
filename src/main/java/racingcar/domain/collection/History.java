@@ -31,7 +31,7 @@ public class History {
 
     private List<Memento> cloneMementoList() {
         List<Memento> mementoList = new LinkedList<>();
-        for (Memento memento : mementoList) {
+        for (Memento memento : this.mementoList) {
             mementoList.add(
                     memento.clone()
             );

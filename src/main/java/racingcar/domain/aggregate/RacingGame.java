@@ -53,7 +53,7 @@ public class RacingGame {
     }
 
     public History getHistory() {
-        return history;
+        return history.clone();
     }
 
     public List<Car> getWinners() {
