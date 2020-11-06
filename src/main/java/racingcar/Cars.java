@@ -3,16 +3,13 @@ package racingcar;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int num, RuleStrategy ruleStrategy) {
-        this.cars = IntStream.range(0, num)
-                .mapToObj(i -> new Car(ruleStrategy))
-                .collect(Collectors.toList());
+    public Cars(List<String> names, RuleStrategy ruleStrategy) {
+        this.cars = names.stream().map(name -> new Car(name, ruleStrategy)).collect(Collectors.toList());
     }
 
     public void move() {

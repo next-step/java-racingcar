@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class GameManager {
 
     private final RuleStrategy ruleStrategy;
@@ -8,8 +10,8 @@ public class GameManager {
         this.ruleStrategy = ruleStrategy;
     }
 
-    public Records play(int carNum, int gameRoundNum) {
-        Cars cars = readyCars(carNum);
+    public Records play(List<String> carNames, int gameRoundNum) {
+        Cars cars = readyCars(carNames);
         GameRounds gameRounds = new GameRounds(gameRoundNum);
 
         while (!gameRounds.isGameEnd()) {
@@ -21,7 +23,7 @@ public class GameManager {
         return gameRounds.getRecords();
     }
 
-    private Cars readyCars(int carNum) {
-        return new Cars(carNum, ruleStrategy);
+    private Cars readyCars(List<String> carNames) {
+        return new Cars(carNames, ruleStrategy);
     }
 }

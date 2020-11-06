@@ -3,17 +3,16 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingGame {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-
-        int carNum = inputView.getCarNum();
-        int gameRoundNum = inputView.getGameRoundNum();
+        List<String> carNames = InputView.getCarNames();
+        int gameRoundNum = InputView.getGameRoundNum();
 
         GameManager gameManager = new GameManager(new RuleStrategyImpl());
-        Records records = gameManager.play(carNum, gameRoundNum);
+        Records records = gameManager.play(carNames, gameRoundNum);
 
-        outputView.showResult(records);
+        OutputView.showResult(records);
     }
 }
