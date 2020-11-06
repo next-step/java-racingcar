@@ -15,7 +15,7 @@ class StringUtilsTest {
     }
 
     @Test
-    public void testRepeat() {
+    void testRepeat() {
         assertThat(StringUtils.repeat("*", 3)).isEqualTo("***");
     }
 }

@@ -1,6 +1,6 @@
 package racing.resolver;
 
-public class SimpleAccelerateResolver extends AccelerateResolver {
+public class SimpleAccelerateResolver implements AccelerateResolver {
 
     boolean isProceed;
 

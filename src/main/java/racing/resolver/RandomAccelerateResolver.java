@@ -2,7 +2,7 @@ package racing.resolver;
 
 import utils.RandomUtils;
 
-public class RandomAccelerateResolver extends AccelerateResolver {
+public class RandomAccelerateResolver implements AccelerateResolver {
     int range;
     int threshold;
 

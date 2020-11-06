@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GranPrixTest {
+class GranPrixTest {
     @Test
     void testMakeUp() {
         List<RaceMachine> raceMachines = new ArrayList<>();
@@ -32,9 +32,9 @@ public class GranPrixTest {
         LineUp lineUp = new LineUp(raceMachines);
         GrandPrix grandPrix = new GrandPrix(lineUp, 5);
         grandPrix.runRound();
-        assertThat(grandPrix.getCurrentRound()).isEqualTo(2);
+        assertThat(grandPrix.getCurrentRound()).isEqualTo(1);
         grandPrix.runRound();
-        assertThat(grandPrix.getCurrentRound()).isEqualTo(3);
+        assertThat(grandPrix.getCurrentRound()).isEqualTo(2);
     }
 
     @Test

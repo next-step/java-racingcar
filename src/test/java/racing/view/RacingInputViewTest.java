@@ -7,12 +7,12 @@ import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingInputViewTest {
+class RacingInputViewTest {
     private static final int MAX_MACHINE = 3;
     private static final int MAX_ROUND = 5;
 
     @Test
-    public void testInputView() {
+    void testInputView() {
         String sample = MAX_MACHINE + "\n" + MAX_ROUND;
 
         ByteArrayInputStream in = new ByteArrayInputStream(sample.getBytes());

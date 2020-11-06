@@ -1,5 +1,5 @@
 package racing.resolver;
 
-public abstract class AccelerateResolver {
+public interface AccelerateResolver {
     public abstract boolean resolve();
 }

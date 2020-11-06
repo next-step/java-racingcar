@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SupplierAccelerateResolverTest {
+class SupplierAccelerateResolverTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
     void testSupplierAccelerateResolver(int input) {

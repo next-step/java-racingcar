@@ -5,7 +5,7 @@ import racing.domain.LineUp;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LineUpServiceTest {
+class LineUpServiceTest {
     private final LineUpService lineUpService = new LineUpService();
 
     @Test
@@ -14,7 +14,7 @@ public class LineUpServiceTest {
         assertThat(lineUp).isNotNull();
         assertThat(lineUp.getRaceMachines()).isNotEmpty();
         assertThat(lineUp.getRaceMachines()).allSatisfy(raceMachine -> {
-            assertThat(raceMachine.getId()).isNotNull();
+            assertThat(raceMachine.getAccelerateResolver()).isNotNull();
         });
     }
 }

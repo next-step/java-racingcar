@@ -6,13 +6,13 @@ import racing.view.to.RacingInputTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GrandPrixControllerTest {
+class GrandPrixControllerTest {
     private final GrandPrixController grandPrixController = new GrandPrixController();
 
     @Test
     void testCreate() {
         GrandPrix grandPrix = grandPrixController.create(new RacingInputTO(3, 5));
-        assertThat(grandPrix.getId()).isNotNull();
+        assertThat(grandPrix).isNotNull();
         assertThat(grandPrix.getLineUp()).isNotNull();
         assertThat(grandPrix.getLineUp().getMachinesInLap(1)).size().isEqualTo(3);
     }

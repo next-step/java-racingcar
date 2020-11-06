@@ -5,7 +5,7 @@ import racing.resolver.SupplierAccelerateResolver;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RaceMachineTest {
+class RaceMachineTest {
     @Test
     void testRaceMachineAccelerate() {
         RaceMachine ferrari = new RaceMachine(1, new SupplierAccelerateResolver(() -> {

@@ -9,10 +9,10 @@ import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingResultViewTest {
+class RacingResultViewTest {
 
     @Test
-    public void testResultView() {
+    void testResultView() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomAccelerateResolverTest {
+class RandomAccelerateResolverTest {
     @Test
     void testRandomResolver() {
         RandomAccelerateResolver randomAccelerateResolver = new RandomAccelerateResolver(10, 11);
