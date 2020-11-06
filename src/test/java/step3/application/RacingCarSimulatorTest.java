@@ -3,7 +3,10 @@ package step3.application;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -26,19 +29,25 @@ class RacingCarSimulatorTest {
     
     @DisplayName("simulate")
     @ParameterizedTest
-    @CsvSource(value = {"1:1", "2:2", "3:3", "3:5", "100:300"}, delimiter = ':')
-    void simulate(final int numberOfCar, final int numberOfAttempts) {
+    @MethodSource("generateSampleForSimulateMethodTesting")
+    void simulate(final String nameOfCars, final String numberOfAttempts) {
         // given
-        final SimulationCondition condition = new SimulationCondition(numberOfCar, numberOfAttempts);
+        final SimulationCondition condition = SimulationCondition.of(nameOfCars, numberOfAttempts);
         final RacingCarSimulator simulator = new RacingCarSimulator(condition);
         
         // when
         final SimulationResult result = simulator.simulate();
         
         // then
-        assertThat(result.getRacingCars().size()).isEqualTo(numberOfCar);
-        assertThat(result.getSnapshots().size()).isEqualTo(numberOfAttempts);
+        assertThat(result.getSnapshots().size()).isEqualTo(Integer.valueOf(numberOfAttempts));
     }
-    
+
+    static Stream<Arguments> generateSampleForSimulateMethodTesting() {
+        return Stream.of(
+                Arguments.of("a,b,c", "2"),
+                Arguments.of("pobi,crong,honux", "3"),
+                Arguments.of("pobi,crong,honux,hong", "4")
+        );
+    }
 
 }

@@ -15,9 +15,9 @@ class ResultViewPresenterTest {
     @Test
     void present_return_not_blank_when_simulationResult_is_not_empty() {
         // given
-        final int numberOfCar = 3;
-        final int numberOfAttempts = 5;
-        final SimulationCondition condition = new SimulationCondition(numberOfCar, numberOfAttempts);
+        final String nameOfCars = "pobi,crong,honux";
+        final String numberOfAttempts = "5";
+        final SimulationCondition condition = SimulationCondition.of(nameOfCars, numberOfAttempts);
         final RacingCarSimulator simulator = new RacingCarSimulator(condition);
         final SimulationResult simulationResult = simulator.simulate();
         final ResultViewPresenter presenter = new ResultViewPresenter(simulationResult);

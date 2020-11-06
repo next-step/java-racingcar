@@ -1,12 +1,14 @@
 package step3.view;
 
 public enum ViewString {
-    HOW_MANY_CAR_QUESTION("자동차 대수는 몇 대 인가요?"),
+    ENTER_THE_NAME_OF_THE_CARS("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."),
     HOW_MUCH_ATTEMPT_QUESTION("시도할 회수는 몇 회 인가요?"),
     NEWLINE("\n"),
     RESULT_ANNOUNCEMENT(NEWLINE + "실행결과" + NEWLINE),
-    ROUND_ANNOUNCEMENT("라운드"),
     MOVE_CHAR("-"),
+    DELIMITER(":"),
+    SPACE(" "),
+    WINNER_ANNOUNCEMENT("가 최종 우승했습니다."),
     ;
 
     private final String value;

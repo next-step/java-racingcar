@@ -1,16 +1,14 @@
 package step3.domain;
 
 public class Snapshot {
-    private final int number;
     private final RacingMap racingMap;
 
-    public Snapshot(final int number, final RacingMap racingMap) {
-        this.number = number;
-        this.racingMap = racingMap.clone();
+    private Snapshot(final RacingMap racingMap) {
+        this.racingMap = racingMap;
     }
-
-    public int getNumber() {
-        return number;
+    
+    public static Snapshot of(final RacingMap racingMap) {
+        return new Snapshot(racingMap);
     }
 
     public RacingMap getRacingMap() {

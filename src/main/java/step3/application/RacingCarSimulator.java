@@ -1,10 +1,7 @@
 package step3.application;
 
 import common.util.Message;
-import step3.domain.RacingCar;
-import step3.domain.RacingCarFactory;
-import step3.domain.RacingMap;
-import step3.domain.Snapshot;
+import step3.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +12,7 @@ import static step3.application.RacingCarSimulator.ErrorMessage.NOT_BE_NULL;
 
 public class RacingCarSimulator {
     private static final int UNIT_OF_FORWARD = 1;
-    private final int numberOfCar;
+    private final List<String> carNames;
     private final int numberOfAttempts;
 
     public enum ErrorMessage implements Message {
@@ -32,42 +29,28 @@ public class RacingCarSimulator {
             this.message = message;
         }
     }
-    
+
     public RacingCarSimulator(final SimulationCondition condition) {
         checkArgument(Objects.nonNull(condition), NOT_BE_NULL);
-        this.numberOfCar = condition.getNumberOfCar();
+        this.carNames = condition.getCarNames();
         this.numberOfAttempts = condition.getNumberOfAttempts();
     }
 
     public SimulationResult simulate() {
-        final List<RacingCar> racingCars = RacingCarFactory.createCars(numberOfCar, new RandomMovableStrategy());
-        final RacingMap racingMap = new RacingMap(racingCars);
+        final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, new RandomMovableStrategy());
+        final RacingMap racingMap = RacingMap.of(racingCars);
+        final List<Snapshot> snapshots = createSimulationSnapshots(racingMap, numberOfAttempts);
+
+        return new SimulationResult(snapshots);
+    }
+
+    private List<Snapshot> createSimulationSnapshots(final RacingMap racingMap, final int numberOfAttempts) {
         final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
-
-        simulate(racingCars, racingMap, snapshots);
-
-        return new SimulationResult(snapshots, racingCars);
-    }
-
-    private void simulate(final List<RacingCar> racingCars, final RacingMap racingMap, final List<Snapshot> snapshots) {
-        for (int round = 0; round < numberOfAttempts; round++) {
-            moveRacingCarInMapIfMovable(racingCars, racingMap);
-            saveSnapshot(round, racingMap, snapshots);
+        for (int i = 0; i < numberOfAttempts; i++) {
+            racingMap.moveRacingCars(UNIT_OF_FORWARD);
+            final Snapshot snapshot = racingMap.createSnapshot();
+            snapshots.add(snapshot);
         }
-    }
-
-    private void saveSnapshot(final int round, final RacingMap racingMap, final List<Snapshot> snapshots) {
-        final Snapshot snapshot = new Snapshot(round, racingMap);
-        snapshots.add(snapshot);
-    }
-
-    private void moveRacingCarInMapIfMovable(final List<RacingCar> racingCars, final RacingMap racingMap) {
-        racingCars.stream()
-                .filter(RacingCar::isMovable)
-                .forEach(racingCar -> moveRacingCarInMap(racingCar, racingMap));
-    }
-
-    private void moveRacingCarInMap(final RacingCar racingCar, final RacingMap racingMap) {
-        racingMap.move(racingCar, UNIT_OF_FORWARD);
+        return snapshots;
     }
 }
