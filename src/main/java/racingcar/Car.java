@@ -21,7 +21,8 @@ public class Car {
     }
 
     public void generateMoves() {
-        for (int i = 0; i <moves.length ; i++) {
+        moves[0] = true;
+        for (int i = 1; i < moves.length; i++) {
             moves[i] = getRandomNumber() >= MOVE_POINT;
         }
     }
