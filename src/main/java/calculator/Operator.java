@@ -43,7 +43,7 @@ public enum Operator {
         }
 
         return Arrays.stream(Operator.values())
-                .filter(it -> type.contains(it.operator))
+                .filter(inputValue -> type.contains(inputValue.operator))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(WRONG_OPERATOR));
     }
