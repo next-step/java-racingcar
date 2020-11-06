@@ -20,19 +20,20 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("입력 값이 null")
+    @DisplayName("입력 값이 null인 경우 테스트")
     void input_null() {
         assertThatThrownBy(() -> {
-            calculator.input(null);
+            calculator.calculate(null);
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("입력값이 null이거나 빈 문자열");
     }
 
-    @Test
-    @DisplayName("입력 값이 빈 문자열")
-    void input_empty_string() {
+    @ParameterizedTest
+    @DisplayName("입력 값이 빈 문자열인 경우 테스트")
+    @ValueSource(strings = {"", "   "})
+    void input_empty_string(String input) {
         assertThatThrownBy(() -> {
-            calculator.input(" ");
+            calculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값이 null이거나 빈 문자열");
     }
