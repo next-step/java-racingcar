@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import racingcar.util.ErrorMessage;
@@ -9,6 +10,7 @@ public class InputView {
     public static final String LOOP_COUNT_MESSAGE = "시도할 횟수는 몇 회 인가요?";
     private static final int MIN_INPUT_VALUE = 0;
     private static final int MAX_INPUT_NAME_VALUE = 5;
+    private static final String COMMA = ",";
     private static final String BLANK = " ";
 
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -30,17 +32,21 @@ public class InputView {
         return names;
     }
 
-    public static void validInputName(String[] names) {
-        if (isValidInputName(names)) {
+    private static String[] splitValues(String inputName) {
+        validInputName(inputName);
+        return Arrays.stream(inputName.split(COMMA))
+                .map(String::trim)
+                .toArray(String[]::new);
+    }
+
+    public static void validInputName(String inputName) {
+        if (isValidInputName(inputName)) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NAME_ERROR);
         }
     }
 
-    public static boolean isValidInputName(String[] names) {
-        for (String name : names) {
-            return isNullOrEmpty(name) || isFiveLetterWords(name);
-        }
-        return true;
+    public static boolean isValidInputName(String inputName) {
+        return isNullOrEmpty(inputName) || isFiveLetterWords(inputName);
     }
 
     public static boolean isNullOrEmpty(String name) {
