@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.domain.Car;
 
@@ -34,49 +34,14 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    public static void getMaxValue(List<Car> cars) {
-        for (Car car : cars) {
-            findMaxValue(car);
-        }
+    private static String getNamesOfWinnerCars(List<Car> winnerCars) {
+        return winnerCars.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(COMMA));
     }
 
-    private static void findMaxValue(Car car) {
-        if (car.getPosition() > maxValue) {
-            maxValue = car.getPosition();
-        }
-    }
-
-    private static List<String> getWinners(List<Car> cars) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            findWinners(car, winners);
-        }
-        return winners;
-    }
-
-    private static void findWinners(Car car, List<String> winners) {
-        if (car.getPosition() == maxValue) {
-            winners.add(car.getCarName());
-        }
-    }
-
-    private static String printWinner(List<Car> cars) {
-        StringBuilder stringBuilder = new StringBuilder();
-        getMaxValue(cars);
-        List<String> winners = getWinners(cars);
-
-        for (int i = 0; i < winners.size() - 1; i++) {
-            String winnerName = winners.get(i);
-            stringBuilder.append(winnerName).append(COMMA);
-        }
-
-        String lastWinnerName = winners.get(winners.size() - 1);
-        stringBuilder.append(lastWinnerName);
-        stringBuilder.append(WINNER_MESSAGE);
-        return stringBuilder.toString();
-    }
-
-    public static void printWinnerResult(List<Car> cars) {
-        System.out.println(printWinner(cars));
+    public static void printWinnerResult(List<Car> winnerCars) {
+        String winner = getNamesOfWinnerCars(winnerCars) + WINNER_MESSAGE;
+        System.out.println(winner);
     }
 }
