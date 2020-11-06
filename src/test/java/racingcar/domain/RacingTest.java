@@ -5,23 +5,21 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
     private Racing racing;
-    private List<String> carNames = new ArrayList<>();
+    private List<String> carNames = Arrays.asList(new String[]{"test1","test2","test3"});
 
     private final String RESULT_OF_RACING_WITH_A_TRY_AND_THREE_CARS_FORWARDING = "test1 : -\ntest2 : -\ntest3 : -\n\ntest1, test2, test3가 최종 우승했습니다.";
-    private final String RESULT_OF_RACING_WITH_A_TRY_AND_THREE_CARS_STOPPED = "\n\n\n\n";
+    private final String RESULT_OF_RACING_WITH_A_TRY_AND_THREE_CARS_STOPPED = "test1 : \ntest2 : \ntest3 : \n\ntest1, test2, test3가 최종 우승했습니다.";
 
 
     @BeforeEach
     void setUp(){
-        carNames.add("test1");
-        carNames.add("test2");
-        carNames.add("test3");
         racing = new Racing(carNames,1);
     }
 

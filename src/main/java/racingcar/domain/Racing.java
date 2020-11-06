@@ -33,9 +33,8 @@ public class Racing {
                 .map(car -> car.getName())
                 .toArray(String[]::new);
 
-
-        sb.append(String.join(", ",names))
-          .append("가 최종 우승했습니다.");
+        sb.append(String.join(Constants.COMMA_DELIMITER.concat(Constants.WHITE_SPACE_DELIMITER),names))
+          .append(Constants.THE_WINNER_IS);
 
         return sb.toString();
     }

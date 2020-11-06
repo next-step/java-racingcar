@@ -1,6 +1,7 @@
 package racingcar.ui;
 
 import racingcar.common.Constants;
+import racingcar.exception.NameTooLongException;
 import racingcar.exception.NegativeNumberNotAllowedException;
 
 import java.util.Arrays;
@@ -12,7 +13,10 @@ public class InputView {
 
     public static List<String> askToInsertCarNames() throws Exception {
         System.out.println(Constants.ASK_NAME_OF_CARS);
-        List<String> carNames = Arrays.asList(scanner.nextLine().split(","));
+        List<String> carNames = Arrays.asList(scanner.nextLine().split(Constants.COMMA_DELIMITER));
+
+        if(carNames.stream().filter(carName -> carName.length() > 5).findFirst().isPresent())
+            throw new NameTooLongException(Constants.NAME_TOO_LONG_ERROR);
 
         return carNames;
     }
