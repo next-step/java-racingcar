@@ -1,12 +1,13 @@
 package calculator;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Splitter {
     private String[] arrays;
-    private List<Integer> integers;
+    private List<Integer> calculatorNumbers;
     private List<CalculatorSign> signs;
 
     protected Splitter() {
@@ -28,42 +29,53 @@ public class Splitter {
     }
 
     private void setCalculatorSigns() {
-
         this.signs = IntStream.range(0, arrays.length)
-                .filter(i -> i % 2 == 1)
-                .mapToObj(i -> CalculatorSign.findByCodeName(arrays[i]))
+                .filter(index -> isOdd(index))
+                .mapToObj(index -> CalculatorSign.findByCodeName(arrays[index]))
                 .collect(Collectors.toList());
-
     }
 
     private void setIntegers() {
-        this.integers = IntStream.range(0, arrays.length)
-                .filter(i -> i % 2 == 0)
-                .mapToObj(i -> Integer.parseInt(arrays[i]))
+        this.calculatorNumbers = IntStream.range(0, arrays.length)
+                .filter(index -> !isOdd(index))
+                .mapToObj(index -> Integer.parseInt(arrays[index]))
                 .collect(Collectors.toList());
     }
 
     private boolean isSupportFormat() {
-        boolean isCalculatorSign = IntStream.range(0, this.arrays.length)
-                .filter(i -> i % 2 == 1)
-                .mapToObj(m -> arrays[m])
-                .allMatch(sign -> sign.matches("^[*/+-]+$"));
+        return isSopportCalculatorSing() && isSupportNumbers();
+    }
 
+    private boolean isSupportNumbers() {
+        return IntStream.range(0, this.arrays.length)
+                .filter(index -> !isOdd(index))
+                .allMatch(index -> isNumberFormat(index));
+    }
 
-        boolean isNumbers = IntStream.range(0, this.arrays.length)
-                .filter(i -> i % 2 == 0)
-                .mapToObj(m -> arrays[m])
-                .allMatch(number -> number.matches("^[0-9]+$"));
+    private boolean isNumberFormat(int index){
+        return this.arrays[index].matches("^[0-9]+$");
+    }
 
-        return isCalculatorSign && isNumbers;
+    private boolean isSopportCalculatorSing() {
+        return IntStream.range(0, this.arrays.length)
+                .filter(index -> isOdd(index))
+                .allMatch(index -> isSignFormat(index));
+    }
+
+    private boolean isSignFormat(int index) {
+        return this.arrays[index].matches("^[*/+-]+$");
+    }
+
+    private boolean isOdd(int index) {
+        return index%2 == 1;
     }
 
     private boolean isBlank(String input) {
-        return input == null || input.trim().isEmpty();
+        return Objects.isNull(input) || input.trim().isEmpty();
     }
 
-    public List<Integer> getIntegers() {
-        return this.integers;
+    public List<Integer> getCalculatorNumbers() {
+        return this.calculatorNumbers;
     }
 
     public List<CalculatorSign> getSigns() {

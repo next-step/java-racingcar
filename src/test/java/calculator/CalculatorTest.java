@@ -37,5 +37,4 @@ class CalculatorTest {
 
         assertThat(str.matches("^[0-9]+$")).isTrue();
     }
-
 }

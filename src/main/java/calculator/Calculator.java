@@ -14,7 +14,7 @@ public class Calculator {
         String input = init();
 
         Splitter splitter = new Splitter(input);
-        List<Integer> numbers = splitter.getIntegers();
+        List<Integer> numbers = splitter.getCalculatorNumbers();
         List<CalculatorSign> signs = splitter.getSigns();
 
         int frontNumber = numbers.get(0);
