@@ -1,26 +1,24 @@
 package study1.step3;
 
-import java.util.*;
-
 public class Race {
     private int raceCnt = 0;
-    private CarList carList;
-    private RaceBoard board;
+    private final Cars cars;
 
-    private void setting(){
+    public Race(){
         RaceSetting raceSetting = new RaceSetting();
         int carCnt = raceSetting.getCarCnt();
-        this.carList = new CarList(carCnt, new MoveDecision());
+        this.cars = Cars.of(carCnt);
         this.raceCnt = raceSetting.getRaceCnt();
         raceSetting.close();
     }
-    public void race(){
-        setting();
 
-        board = new RaceBoard();
+    public void race(){
+        Decision moveDecisionMaker = new MoveDecision();
+
+        RaceBoard board = new RaceBoard();
         for(int i = 0; i < raceCnt; i++){
-            carList.race();
-            board.show(carList.getCarList());
+            cars.race(moveDecisionMaker);
+            board.show(cars.getCarList());
         }
     }
 }

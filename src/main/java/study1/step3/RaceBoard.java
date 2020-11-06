@@ -9,8 +9,16 @@ public class RaceBoard {
 
     void show(List<Car> carList){
         for(Car car: carList){
-            System.out.println(car.getMoveDistance());
+            System.out.println(getMoveDistance(car));
         }
         System.out.println("");
+    }
+
+    private StringBuilder getMoveDistance(Car car){
+        StringBuilder raceDistance = new StringBuilder();
+        for(int i = 0; i < car.getMoveDistance(); i++){
+            raceDistance.append("-");
+        }
+        return raceDistance;
     }
 }

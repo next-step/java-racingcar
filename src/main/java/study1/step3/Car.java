@@ -2,15 +2,15 @@ package study1.step3;
 
 
 public class Car {
-    private String moveDistance = "-";
+    private int moveDistance = 1;
 
     void move(Decision generator){
         if(generator.moveDecision()){
-            this.moveDistance += "-";
+            this.moveDistance ++;
         }
     }
 
-    public String getMoveDistance(){
+    public int getMoveDistance(){
         return this.moveDistance;
-    };
+    }
 }
