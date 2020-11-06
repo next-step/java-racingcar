@@ -29,7 +29,7 @@ public class Cars {
         cars.forEach(car -> car.move());
     }
 
-    public Stream<Car> stream () {
-        return cars.stream();
+    public List<Car> getCars () {
+        return cars;
     }
 }
