@@ -1,4 +1,4 @@
-package stringscalculator;
+package step2.string.calculator;
 
 public class Calculator {
 
