@@ -1,17 +1,14 @@
 package step3;
 
-import java.util.Scanner;
-
 public class RacingCarApplication {
-    public static final Scanner SCANNER = new Scanner(System.in);
-
     public static void main(String[] args) {
-        CarService carService = new CarService();
+        RacingGame racingGame = new RacingGame();
+
         int car = InputView.inputCarCount();
         int move = InputView.inputMoveCount();
 
-        carService.run(car, move);
+        InputView.close();
 
-        SCANNER.close();
+        racingGame.run(car, move);
     }
 }
