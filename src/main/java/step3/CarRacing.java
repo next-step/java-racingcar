@@ -7,10 +7,10 @@ public class CarRacing {
 
     private InputView inputView = new InputView();
 
-    private RaceDisplay raceDisplay = RaceDisplay.console();
     private List<Car> cars;
 
     private RaceRoulette raceRoulette = RaceRoulette.simple(10);
+    private RaceDisplay raceDisplay = RaceDisplay.console();
 
     public void start() {
         displayInputView();
@@ -50,7 +50,7 @@ public class CarRacing {
      * race 에 참여한 모든 car 들이 이동을 시도한다
      */
     private void tryMovingAllCars() {
-        this.cars.forEach( car -> car.move(raceRoulette) );
+        this.cars.forEach(car -> car.move(raceRoulette));
     }
 
     public static void main(String[] args) {

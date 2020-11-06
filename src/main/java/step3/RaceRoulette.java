@@ -14,7 +14,7 @@ public interface RaceRoulette {
      */
     int spin();
 
-    static RaceRoulette simple(int max){
+    static RaceRoulette simple(int max) {
         return new RaceRoulette() {
             private int maxNumber = max;
             private Random random = new Random();

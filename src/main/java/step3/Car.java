@@ -9,15 +9,15 @@ public class Car {
         this.no = no;
     }
 
-    public int getMovingDistance(){
+    public int getMovingDistance() {
         return this.movingDistance;
     }
 
-    public void move(RaceRoulette raceRoulette){
-        if( raceRoulette.spin() >= 4 ) movingDistance++;
+    public void move(RaceRoulette raceRoulette) {
+        if (raceRoulette.spin() >= 4) movingDistance++;
     }
 
-    public void displayOn(RaceDisplay raceDisplay){
+    public void displayOn(RaceDisplay raceDisplay) {
         raceDisplay.writeMovingDistance(no, movingDistance);
     }
 }

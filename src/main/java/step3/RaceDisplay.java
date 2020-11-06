@@ -6,7 +6,7 @@ public interface RaceDisplay {
 
     void writeBlankLine();
 
-    static RaceDisplay console(){
+    static RaceDisplay console() {
         return new RaceDisplay() {
             @Override
             public void writeMovingDistance(int no, int movingDistance) {
