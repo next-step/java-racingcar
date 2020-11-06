@@ -29,11 +29,11 @@ public class Racing {
         }
 
         int max = cars.stream().mapToInt(car -> car.getNumberOfMoves()).max().getAsInt();
-        String[] names = cars.stream().filter(car -> car.getNumberOfMoves() == max)
+        String[] winnerNames = cars.stream().filter(car -> car.getNumberOfMoves() == max)
                 .map(car -> car.getName())
                 .toArray(String[]::new);
 
-        sb.append(String.join(Constants.COMMA_DELIMITER.concat(Constants.WHITE_SPACE_DELIMITER),names))
+        sb.append(String.join(Constants.COMMA_DELIMITER.concat(Constants.WHITE_SPACE_DELIMITER), winnerNames))
           .append(Constants.THE_WINNER_IS);
 
         return sb.toString();
