@@ -2,6 +2,7 @@ package racingcar.domain.model;
 
 import racingcar.asset.CarConst;
 import racingcar.domain.strategy.MoveStrategy;
+import racingcar.exeption.BadCarNameException;
 
 public class Car {
     private int position;
@@ -22,10 +23,10 @@ public class Car {
 
     public static boolean validateName(String name) {
         if (name == null) {
-            throw new IllegalArgumentException(CarConst.NULL_NAME_ERR);
+            throw new BadCarNameException(CarConst.NULL_NAME_ERR);
         }
         if (name.length() > CarConst.MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(CarConst.MAX_NAME_LENGTH_EXCEEDED);
+            throw new BadCarNameException(CarConst.MAX_NAME_LENGTH_EXCEEDED);
         }
         return true;
     }

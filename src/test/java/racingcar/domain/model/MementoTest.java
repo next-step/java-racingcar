@@ -1,21 +1,45 @@
 package racingcar.domain.model;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import racingcar.domain.strategy.MoveStrategy;
+
+import java.util.Iterator;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class MementoTest {
 
     @Test
+    @DisplayName("addCar 를 하면 자동차가 추가되어야 한다.")
     void addCar() {
-        // TODO:
-    }
+        String name = "dumb";
+        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
+        Car car = Car.createCar(name, strategy);
 
-    @Test
-    void getCars() {
-        // TODO:
-    }
+        Memento memento = new Memento();
+        memento.addCar(car);
+        List<Car> cars = memento.getCars();
+        Iterator<Car> itr = cars.iterator();
+        Car addedCar = itr.next();
 
-    @Test
-    void testClone() {
-        // TODO:
+        Assertions.assertAll(
+                () -> {
+                    assertThat(addedCar.getName())
+                            .isEqualTo(car.getName());
+                },
+                () -> {
+                    assertThat(addedCar.getPosition())
+                            .isEqualTo(car.getPosition());
+                },
+                () -> {
+                    assertThat(itr.hasNext())
+                            .isFalse();
+                }
+        );
+
     }
 }
