@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * NOTE: 루트 어그리게이트
  * racingcar.controller.Main 에서 모델의 실제 데이터에 접근할 때는,
- * RacingGame 을 레포지토리 객체를 만들어 접근해야만 한다.
+ * RacingGame 레포지토리 객체를 만들어 접근해야만 한다.
  */
 
 public class RacingGame {
