@@ -6,7 +6,7 @@ public class Car {
     static final int DEFAULT_DISTANCE = 0;
 
     private int position;
-    private String carName;
+    private final String carName;
 
     public Car(String carName) {
         this.position = DEFAULT_DISTANCE;
