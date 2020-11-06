@@ -36,13 +36,12 @@ public class GameManagerTest {
     @Test
     @DisplayName("게임 플레이 우승자 확인")
     void play_verifyWinner() {
-        List<String> names = Arrays.asList("pobi", "crong", "honux");
-        List<String> winnerNames = Arrays.asList("pobi", "crong");
         int gameRoundNum = 2;
-        GameManager gameManager = new GameManager(new RuleStrategyImpl(), (roundRecords) -> new Winners(winnerNames, Car.INITIAL_POSITION));
+        GameManager gameManager = new GameManager(new RuleStrategyImpl(),
+                (roundRecords) -> new Winners(Arrays.asList("pobi", "crong"), Car.INITIAL_POSITION));
 
-        GameResult gameResult = gameManager.play(names, gameRoundNum);
+        GameResult gameResult = gameManager.play(Arrays.asList("pobi", "crong", "honux"), gameRoundNum);
 
-        assertThat(gameResult.getWinnerNames()).isEqualTo(winnerNames);
+        assertThat(gameResult.getWinnerNames()).containsExactly("pobi", "crong");
     }
 }
