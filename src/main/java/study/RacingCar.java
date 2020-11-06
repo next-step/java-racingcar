@@ -20,7 +20,9 @@ public class RacingCar {
     }
 
     public void moveForward(boolean movement) {
-        distance[index] = movement;
-        if (index < length) { index++; }
+        if (index < length) {
+            distance[index] = movement;
+            index++;
+        }
     }
 }
