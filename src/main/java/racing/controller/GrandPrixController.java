@@ -13,7 +13,7 @@ public class GrandPrixController {
     private final RacingResultView racingResultView = new RacingResultView();
 
     public GrandPrix create(RacingInputTO racingInputTO) {
-        LineUp lineUp = lineUpService.createRandomAccelerateMachines(racingInputTO.getMaxMachines());
+        LineUp lineUp = lineUpService.createRandomAccelerateMachines(racingInputTO.getDrivers());
         return granPrixService.createGrandPrix(lineUp, racingInputTO.getMaxRounds());
     }
 
