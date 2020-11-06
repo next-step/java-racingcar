@@ -9,13 +9,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CarServiceTest {
+public class RacingGameTest {
 
-    CarService carService;
+    RacingGame racingGame;
 
     @BeforeEach
     void setUp() {
-        carService = new CarService();
+        racingGame = new RacingGame();
     }
 
     @ParameterizedTest
@@ -30,14 +30,14 @@ public class CarServiceTest {
     @Test
     @DisplayName("자동차 수가 0개인 경우 예외")
     public void 자동차수_값이_0인경우() {
-        assertThatThrownBy(() -> carService.run(0, 5))
+        assertThatThrownBy(() -> racingGame.run(0, 5))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("자동차 이동수가 0개인 경우 예외")
     public void 자동차_이동_값이_0인경우() {
-        assertThatThrownBy(() -> carService.run(5, 0))
+        assertThatThrownBy(() -> racingGame.run(5, 0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
