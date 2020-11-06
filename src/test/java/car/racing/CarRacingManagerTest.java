@@ -29,8 +29,8 @@ public class CarRacingManagerTest {
     @Test
     void verifyForwardEachCar() {
         int numOfCar = 3;
-
         manager.setupCars(numOfCar);
+
         manager.forwardEachCar();
 
         assertThat(manager.cars.size()).isEqualTo(numOfCar);

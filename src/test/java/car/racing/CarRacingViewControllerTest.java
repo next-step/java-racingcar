@@ -9,12 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarRacingViewControllerTest {
 
     private CarRacingViewController viewController;
-    private ResultView resultView;
+    private FakeResultView resultView;
     private CarRacingManager manager;
 
     @BeforeEach
     void setup() {
-        resultView = new ResultView();
+        resultView = new FakeResultView();
         manager = new CarRacingManager();
         viewController = new CarRacingViewController(resultView, manager);
     }
@@ -27,6 +27,8 @@ public class CarRacingViewControllerTest {
 
         viewController.input(numOfCar, tryCount);
 
-        assertThat(manager.forwardEachCar().size()).isEqualTo(3);
+        for (int i = 0; i < tryCount; i++) {
+            assertThat(resultView.cars.size()).isEqualTo(numOfCar);
+        }
     }
 }

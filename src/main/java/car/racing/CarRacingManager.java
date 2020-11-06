@@ -2,7 +2,8 @@ package car.racing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CarRacingManager {
 
@@ -10,9 +11,11 @@ public class CarRacingManager {
     final List<Car> cars = new ArrayList<>();
 
     public void setupCars(int numOfCar) {
-        cars.clear();
-        IntStream.range(0, numOfCar)
-                .forEach(i -> cars.add(new Car(forwardable)));
+        List<Car> cars = Stream.generate(() -> new Car(forwardable))
+                .limit(numOfCar)
+                .collect(Collectors.toList());
+        this.cars.clear();
+        this.cars.addAll(cars);
     }
 
     public List<Car> forwardEachCar() {
