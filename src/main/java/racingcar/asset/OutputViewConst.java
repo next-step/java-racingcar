@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.asset;
 
 public class OutputViewConst {
     public final static String EXECUTION_RESULT_MSG = "실행 결과";

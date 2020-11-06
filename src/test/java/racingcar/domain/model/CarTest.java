@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
-import racingcar.domain.model.Car;
-import racingcar.domain.model.CarConst;
+import racingcar.asset.CarConst;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.ProceedStrategy;
 import racingcar.domain.strategy.StopStrategy;
@@ -15,7 +14,6 @@ import racingcar.domain.strategy.StopStrategy;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-@DisplayName("Car 클래스의 테스트")
 class CarTest {
 
     @ParameterizedTest
@@ -46,6 +44,21 @@ class CarTest {
     }
 
     @Test
+    void createCar() {
+        // TODO:
+    }
+
+    @Test
+    void validateName() {
+        // TODO:
+    }
+
+    @Test
+    void testClone() {
+        // TODO:
+    }
+
+    @Test
     @DisplayName("movable 인 경우만 전진해야 한다.")
     void move() {
         MoveStrategy proceedStrategy = ProceedStrategy.getInstance();
@@ -71,5 +84,20 @@ class CarTest {
                             .isEqualTo(stoppedPosition);
                 }
         );
+    }
+
+    @Test
+    void getPosition() {
+        // TODO:
+    }
+
+    @Test
+    void getName() {
+        // TODO:
+    }
+
+    @Test
+    void setStrategy() {
+        // TODO:
     }
 }

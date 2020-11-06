@@ -1,10 +1,9 @@
-package racingcar;
+package racingcar.domain.collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import racingcar.domain.collection.CarGroup;
-import racingcar.domain.collection.CarGroupConst;
+import racingcar.asset.CarGroupConst;
 import racingcar.domain.model.Car;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.ProceedStrategy;
@@ -37,6 +36,21 @@ class CarGroupTest {
 
         assertThat(carGroup.getPositions())
                 .isEqualTo(expectedList);
+    }
+
+    @Test
+    void createMemento() {
+        // TODO:
+    }
+
+    @Test
+    void restoreMemento() {
+        // TODO:
+    }
+
+    @Test
+    void getPositions() {
+        // TODO:
     }
 
     @Test
@@ -74,4 +88,16 @@ class CarGroupTest {
         assertThat(winners)
                 .isEqualTo(expectedWinners);
     }
+
+    @Test
+    void testGetWinners() {
+        // TODO:
+    }
+
+    @Test
+    void setStrategy() {
+        // TODO:
+    }
+
+
 }

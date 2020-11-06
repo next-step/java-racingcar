@@ -29,7 +29,7 @@ public class History {
         mementoList.add(memento);
     }
 
-    public List<Memento> cloneMementoList() {
+    private List<Memento> cloneMementoList() {
         List<Memento> mementoList = new LinkedList<>();
         for (Memento memento : mementoList) {
             mementoList.add(

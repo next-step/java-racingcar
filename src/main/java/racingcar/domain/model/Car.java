@@ -1,5 +1,6 @@
 package racingcar.domain.model;
 
+import racingcar.asset.CarConst;
 import racingcar.domain.strategy.MoveStrategy;
 
 public class Car {

@@ -1,14 +1,28 @@
-package racingcar;
+package racingcar.domain.aggregate;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.aggregate.RacingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("RacingGame 클래스의 테스트")
 class RacingGameTest {
+
+    @Test
+    void setStrategy() {
+        // TODO:
+    }
+
+    @Test
+    void checkGameOver() {
+        // TODO:
+    }
+
+    @Test
+    void race() {
+        // TODO:
+    }
 
     @ParameterizedTest
     @DisplayName("maxRaceNum 보다 많이 race 하면 gameOver 되어야 한다.")
@@ -25,5 +39,15 @@ class RacingGameTest {
         boolean expectedGameOver = loop >= maxRaceNum;
         assertThat(game.checkGameOver())
                 .isEqualTo(expectedGameOver);
+    }
+
+    @Test
+    void getHistory() {
+        // TODO:
+    }
+
+    @Test
+    void getWinners() {
+        // TODO:
     }
 }

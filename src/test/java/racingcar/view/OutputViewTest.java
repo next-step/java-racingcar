@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,14 +8,12 @@ import org.mockito.Mockito;
 import racingcar.domain.model.Car;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.ProceedStrategy;
-import racingcar.view.OutputView;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("View 클래스 테스트")
 class OutputViewTest {
 
     private OutputView outputView;

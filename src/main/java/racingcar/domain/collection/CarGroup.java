@@ -1,5 +1,6 @@
 package racingcar.domain.collection;
 
+import racingcar.asset.CarGroupConst;
 import racingcar.domain.model.Car;
 import racingcar.domain.model.Memento;
 import racingcar.domain.strategy.MoveStrategy;
@@ -47,13 +48,13 @@ public class CarGroup {
         cars = memento.getCars();
     }
 
-    public List<Integer> getPositions() {
+    protected List<Integer> getPositions() {
         return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
 
-    public List<Car> getWinners(List<Car> cars) {
+    protected List<Car> getWinners(List<Car> cars) {
         return cars.stream()
                 .collect(
                         Collectors.groupingBy(Car::getPosition)

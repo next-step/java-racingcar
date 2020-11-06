@@ -1,6 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.collection.CarGroupConst;
+import racingcar.asset.CarGroupConst;
+import racingcar.asset.InputViewConst;
 import racingcar.domain.model.Car;
 
 import java.util.Scanner;
