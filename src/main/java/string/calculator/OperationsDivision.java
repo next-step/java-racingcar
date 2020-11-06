@@ -1,4 +1,4 @@
-package string_calculator;
+package string.calculator;
 
 import java.util.Arrays;
 import java.util.LinkedList;

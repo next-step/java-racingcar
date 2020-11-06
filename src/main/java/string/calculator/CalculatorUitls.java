@@ -1,4 +1,4 @@
-package string_calculator;
+package string.calculator;
 
 
 public class CalculatorUitls {
