@@ -20,7 +20,7 @@ public class RacingGame {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < cars ; i++) {
             Car car = new Car(attempts);
-            car.generateMoves();;
+            car.generateMoves();
             carList.add(car);
         }
         return carList;
