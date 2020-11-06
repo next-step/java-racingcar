@@ -1,47 +1,45 @@
 package study.racing;
 
+import study.racing.view.RacingInput;
+
 import java.util.*;
 
 public class CarRacing {
 
-    private final List<Integer> cars;
-    private final RacingInput racingInput;
-    private final ResultView printer;
+    private final List<Integer> carRecords;
     private final Random random = new Random();
+    private final int lastRound;
 
-    public CarRacing(RacingInput racingInput, ResultView printer) {
-        this.racingInput = racingInput;
-        this.cars = initRacing(racingInput.getCountOfCar());
-        this.printer = printer;
+    private int currentRound = 0;
+
+    public CarRacing(RacingInput racingInput) {
+        this.carRecords = initRacingRecords(racingInput.getCountOfCar());
+        this.lastRound = racingInput.getCountOfRound();
     }
 
-    private List<Integer> initRacing(int cars) {
-        return new ArrayList<>(Collections.nCopies(cars, 0));
+    private List<Integer> initRacingRecords(int countOfCars) {
+        return new ArrayList<>(Collections.nCopies(countOfCars, 0));
     }
 
-    public void run() {
-
-        int round = 0;
-        while (round++ < racingInput.getCountOfRound()) {
-            processRound();
-            printResult(round);
-        }
+    public boolean isEndRacing() {
+        return (currentRound >= lastRound);
     }
 
-    private void processRound() {
-        for (int i = 0; i < cars.size(); i++) {
+    public void processRound() {
+        for (int i = 0; i < carRecords.size(); i++) {
             if (getRandomNumber() >= 4) {
-                cars.set(i, cars.get(i) + 1);
+                carRecords.set(i, carRecords.get(i) + 1);
             }
         }
+        currentRound++;
+    }
+
+    public List<Integer> getRoundRecords() {
+        return carRecords;
     }
 
     private int getRandomNumber() {
         return random.nextInt(10);
-    }
-
-    private void printResult(int round) {
-        printer.printResult(round, cars);
     }
 
 }

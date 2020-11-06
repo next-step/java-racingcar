@@ -1,5 +1,7 @@
 package study.racing;
 
+import study.racing.view.RacingInput;
+
 import java.util.Scanner;
 
 public class InputView {
