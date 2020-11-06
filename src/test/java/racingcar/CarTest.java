@@ -6,6 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
+import racingcar.domain.model.Car;
+import racingcar.domain.model.CarConst;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.ProceedStrategy;
+import racingcar.domain.strategy.StopStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;

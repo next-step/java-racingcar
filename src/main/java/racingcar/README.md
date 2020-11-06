@@ -20,7 +20,7 @@
 
 ### 요구사항
 
-- 패키지 분리: controller, domain, view
+- [0] 패키지 분리: controller, domain, view
 - domain 과 view 가 서로 의존하지 않도록 리팩토링
 - 단위 테스트 작성
 

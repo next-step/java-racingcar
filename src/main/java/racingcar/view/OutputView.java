@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.collection.History;
+import racingcar.domain.model.Car;
+import racingcar.domain.model.Memento;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +24,7 @@ public class OutputView {
     }
 
     // NOTE: Car 보다 작은 단위로 convert 하지 않도록 한다.
-    protected String convertCar(Car car) {
+    public String convertCar(Car car) {
         int position = car.getPosition();
         String name = car.getName();
         StringBuilder sb = new StringBuilder();
@@ -48,7 +52,7 @@ public class OutputView {
         }
     }
 
-    protected String convertWinnerList(List<Car> winnerList) {
+    public String convertWinnerList(List<Car> winnerList) {
         return winnerList.stream()
                 .map(Car::getName)
                 .collect(

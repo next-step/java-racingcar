@@ -1,6 +1,18 @@
-package racingcar;
+package racingcar.domain.aggregate;
+
+import racingcar.domain.collection.CarGroup;
+import racingcar.domain.collection.History;
+import racingcar.domain.model.Car;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.RandomStrategy;
 
 import java.util.List;
+
+/**
+ * NOTE: 루트 어그리게이트
+ * racingcar.controller.Main 에서 모델의 실제 데이터에 접근할 때는,
+ * RacingGame 을 레포지토리 객체로 만들어 접근해야만 한다.
+ */
 
 public class RacingGame {
     private History history;
@@ -19,11 +31,11 @@ public class RacingGame {
         carGroup.setStrategy(strategy);
     }
 
-    protected boolean checkGameOver() {
+    public boolean checkGameOver() {
         return currRaceNum >= maxRaceNum;
     }
 
-    protected void race() {
+    public void race() {
         if (checkGameOver()) {
             return;
         }

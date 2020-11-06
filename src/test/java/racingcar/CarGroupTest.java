@@ -3,6 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import racingcar.domain.collection.CarGroup;
+import racingcar.domain.collection.CarGroupConst;
+import racingcar.domain.model.Car;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.ProceedStrategy;
 
 import java.util.Arrays;
 import java.util.LinkedList;

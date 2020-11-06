@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.collection.CarGroupConst;
+import racingcar.domain.model.Car;
 
 import java.util.Scanner;
 
@@ -7,7 +10,7 @@ public class InputView {
     private Scanner scanner;
 
     private InputView() {
-        this.scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
     }
 
     public static InputView getInstance() {
@@ -25,14 +28,14 @@ public class InputView {
 
     public String askNames() {
         System.out.println(InputViewConst.ASK_CARS);
-        String nameCsv = this.scanner.nextLine();
-        this.validateNameCsv(nameCsv);
+        String nameCsv = scanner.nextLine();
+        validateNameCsv(nameCsv);
         return nameCsv;
     }
 
     public int askMaxRaceNum() {
         System.out.println(InputViewConst.ASK_HOW_MANY_RACES);
-        return this.scanner.nextInt();
+        return scanner.nextInt();
     }
 
     private static class SingletonHelper {

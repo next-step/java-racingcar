@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.domain.collection;
+
+import racingcar.domain.model.Car;
+import racingcar.domain.model.Memento;
+import racingcar.domain.strategy.MoveStrategy;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -6,6 +10,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * NOTE: Car 의 일급 컬렉션
+ * FIXME: racingcar.domain.collection 가 적절한지 확인 필요.
+ * 자바의 Collection 데이터 타입에 종속되는 패키지명이므로 혼동을 줄 수 있음.
+ * Memento 클래스 한개만 의존하고 있으므로,
+ * composition 이나, aggregation 이라는 표현은 부적절해보임.
+ * FIXME: collection 보다 적절한 패키지명을 추천받을 필요 있음.
+ */
 public class CarGroup {
 
     private List<Car> cars;
@@ -35,13 +47,13 @@ public class CarGroup {
         cars = memento.getCars();
     }
 
-    protected List<Integer> getPositions() {
+    public List<Integer> getPositions() {
         return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
 
-    protected List<Car> getWinners(List<Car> cars) {
+    public List<Car> getWinners(List<Car> cars) {
         return cars.stream()
                 .collect(
                         Collectors.groupingBy(Car::getPosition)

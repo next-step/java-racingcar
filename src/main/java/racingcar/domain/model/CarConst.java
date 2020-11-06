@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.model;
 
 public class CarConst {
     public final static String MAX_NAME_LENGTH_EXCEEDED = "자동차 이름은 5자를 초과할 수 없습니다.";

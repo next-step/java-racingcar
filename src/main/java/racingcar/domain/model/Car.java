@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain.model;
+
+import racingcar.domain.strategy.MoveStrategy;
 
 public class Car {
     private int position;

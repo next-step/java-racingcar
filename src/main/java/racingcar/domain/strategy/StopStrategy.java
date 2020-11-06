@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.strategy;
 
 public class StopStrategy implements MoveStrategy {
     private StopStrategy() {}

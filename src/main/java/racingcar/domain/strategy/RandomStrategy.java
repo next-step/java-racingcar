@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.strategy;
 
 import java.util.Random;
 
@@ -6,7 +6,7 @@ public class RandomStrategy implements MoveStrategy {
     private Random random;
 
     private RandomStrategy() {
-        this.random = new Random();
+        random = new Random();
     }
 
     public static RandomStrategy getInstance() {
@@ -17,7 +17,7 @@ public class RandomStrategy implements MoveStrategy {
     public boolean checkMovable() {
         int bound = RandomStrategyConst.RANDOM_MAX;
         int biggerThan = RandomStrategyConst.RANDOM_BIGGER_THAN;
-        int randomNum = this.random.nextInt(bound);
+        int randomNum = random.nextInt(bound);
         return randomNum >= biggerThan;
     }
 

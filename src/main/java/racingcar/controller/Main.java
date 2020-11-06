@@ -1,4 +1,10 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.domain.aggregate.RacingGame;
+import racingcar.domain.collection.History;
+import racingcar.domain.model.Car;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
