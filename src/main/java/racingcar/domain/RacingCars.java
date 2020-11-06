@@ -16,15 +16,19 @@ public class RacingCars {
         this.movingStrategy = movingStrategy;
     }
 
-    public static RacingCars of(int numOfCar, MovingStrategy movingStrategy) {
-        List<Car> initCars = createCars(numOfCar);
+    public static RacingCars of(String[] nameOfCars, MovingStrategy movingStrategy) {
+        int size = nameOfCars.length;
+        List<Car> initCars = createCars(nameOfCars, size);
         return new RacingCars(initCars, movingStrategy);
     }
 
-    private static List<Car> createCars(int numOfCar) {
-        return Stream.generate(Car::new)
-                .limit(numOfCar)
-                .collect(Collectors.toList());
+    private static List<Car> createCars(String[] nameOfCars, int numOfCar) {
+        List<Car> carsWithName = new ArrayList<>();
+        for (int i = 0; i < numOfCar; i++) {
+            String carName = nameOfCars[i];
+            carsWithName.add(new Car(carName));
+        }
+        return carsWithName;
     }
 
     public void run() {

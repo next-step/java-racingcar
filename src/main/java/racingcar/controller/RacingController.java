@@ -13,7 +13,7 @@ public class RacingController {
         String[] nameOfCars = InputView.inputNameOfCars();
         int loopCount = InputView.inputLoopCount();
 
-        RacingCars racingCars = RacingCars.of(numOfCar, new RandomMovingStrategy());
+        RacingCars racingCars = RacingCars.of(nameOfCars, new RandomMovingStrategy());
         ResultView.printResultMessage();
         for (int i = 0; i < loopCount; i++) {
             racingCars.run();
