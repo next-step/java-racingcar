@@ -1,7 +1,8 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racingcar.behavior.MovingStrategy;
 
@@ -16,18 +17,14 @@ public class RacingCars {
     }
 
     public static RacingCars of(String[] nameOfCars, MovingStrategy movingStrategy) {
-        int size = nameOfCars.length;
-        List<Car> initCars = createCars(nameOfCars, size);
+        List<Car> initCars = createCars(nameOfCars);
         return new RacingCars(initCars, movingStrategy);
     }
 
-    private static List<Car> createCars(String[] nameOfCars, int numOfCar) {
-        List<Car> carsWithName = new ArrayList<>();
-        for (int i = 0; i < numOfCar; i++) {
-            String carName = nameOfCars[i];
-            carsWithName.add(new Car(carName));
-        }
-        return carsWithName;
+    private static List<Car> createCars(String[] nameOfCars) {
+        return Arrays.stream(nameOfCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
