@@ -1,4 +1,4 @@
-package study.step3;
+package study.racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
