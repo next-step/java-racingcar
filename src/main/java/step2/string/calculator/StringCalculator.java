@@ -1,6 +1,6 @@
 package step2.string.calculator;
 
-public class Calculator {
+public class StringCalculator {
 
     public int calculate(String input) {
         if (isNullOrBlank(input)) {

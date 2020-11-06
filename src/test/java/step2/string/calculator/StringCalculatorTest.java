@@ -6,25 +6,24 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step2.string.calculator.Calculator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorTest {
+class StringCalculatorTest {
 
-    private Calculator calculator;
+    private StringCalculator stringCalculator;
 
     @BeforeEach
     void create_calculator_instance() {
-        calculator = new Calculator();
+        stringCalculator = new StringCalculator();
     }
 
     @Test
     @DisplayName("입력 값이 null인 경우 테스트")
     void input_null() {
         assertThatThrownBy(() -> {
-            calculator.calculate(null);
+            stringCalculator.calculate(null);
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("입력값이 null이거나 빈 문자열");
     }
@@ -34,7 +33,7 @@ class CalculatorTest {
     @ValueSource(strings = {"", "   "})
     void input_empty_string(String input) {
         assertThatThrownBy(() -> {
-            calculator.calculate(input);
+            stringCalculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값이 null이거나 빈 문자열");
     }
@@ -44,7 +43,7 @@ class CalculatorTest {
     @ValueSource(strings = {"4 @ 7", "6 ) 2"})
     void input_not_arithmetic_operator(String input) {
         assertThatThrownBy(() -> {
-            calculator.calculate(input);
+            stringCalculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("사칙연산 기호가 아님");
     }
@@ -53,6 +52,6 @@ class CalculatorTest {
     @DisplayName("계산기 기능 테스트")
     @CsvSource(value = {"2 + 3 * 4 / 2=10", "4 - 1 * 8 / 4=6"}, delimiter = '=')
     void calculate(String input, int expected) {
-        assertEquals(calculator.calculate(input), expected);
+        assertEquals(stringCalculator.calculate(input), expected);
     }
 }
