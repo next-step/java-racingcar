@@ -10,12 +10,13 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final int NAME_LIMIT = 5;
 
     public static List<String> askToInsertCarNames() throws Exception {
         System.out.println(Constants.ASK_NAME_OF_CARS);
         List<String> carNames = Arrays.asList(scanner.nextLine().split(Constants.COMMA_DELIMITER));
 
-        if(carNames.stream().filter(carName -> carName.length() > 5).findFirst().isPresent())
+        if(carNames.stream().filter(carName -> carName.length() > NAME_LIMIT).findFirst().isPresent())
             throw new NameTooLongException(Constants.NAME_TOO_LONG_ERROR);
 
         return carNames;
