@@ -22,7 +22,7 @@ public class ResultView {
         System.out.println();
     }
 
-    static String printPosition(final Car car) {
+    private static String printPosition(final Car car) {
         StringBuilder stringBuilder = new StringBuilder();
         String carName = car.getCarName();
         stringBuilder.append(carName).append(CAR_POSITION_IS);
