@@ -1,3 +1,5 @@
+package step2;
+
 /**
  * expression 에서 추출된 part 문자열을 입력받아 ExpressPart 객체를 생성하는 Factory
  */
@@ -10,7 +12,7 @@ public class ExpressionPartFactory {
         if( isOperator(value) ){
             return Operator.valueOfSign(value);
         }
-        throw new RuntimeException("fail to create ExpressionPart ( " + value + " )");
+        throw new RuntimeException("fail to create step2.ExpressionPart ( " + value + " )");
     }
 
     private boolean isOperator(String value) {

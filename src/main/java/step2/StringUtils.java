@@ -1,3 +1,5 @@
+package step2;
+
 public class StringUtils {
 
     public static boolean isNullOrBlank(String value) {

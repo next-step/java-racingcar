@@ -1,3 +1,5 @@
+package step2;
+
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -8,7 +10,7 @@ public interface ExpressionParser {
     /**
      * expression 유효성을 검증하고 피연산자와 연산자로 분리합니다.
      *
-     * 분리된 피연산자와 연산자는 ParsedExpression 에 담아서 돌려줍니다.
+     * 분리된 피연산자와 연산자는 step2.ParsedExpression 에 담아서 돌려줍니다.
      */
     ParsedExpression parse(String expression);
 

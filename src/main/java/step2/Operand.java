@@ -1,5 +1,7 @@
+package step2;
+
 /**
- * ExpressionPart : 피연산자
+ * step2.ExpressionPart : 피연산자
  */
 public class Operand implements ExpressionPart{
 

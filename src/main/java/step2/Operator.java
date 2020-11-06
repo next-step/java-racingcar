@@ -1,7 +1,9 @@
+package step2;
+
 import java.util.function.BiFunction;
 
 /**
- * ExpressionPart : 연산자
+ * step2.ExpressionPart : 연산자
  */
 public enum Operator implements ExpressionPart {
     Plus("+", (value1, value2) -> value1 + value2),

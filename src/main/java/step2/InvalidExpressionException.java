@@ -1,3 +1,5 @@
+package step2;
+
 /**
  * expression 이 유효하지 않으면 발생하는 Exception
  */
