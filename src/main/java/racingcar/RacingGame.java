@@ -10,9 +10,9 @@ public class RacingGame {
         List<String> carNames = InputView.getCarNames();
         int gameRoundNum = InputView.getGameRoundNum();
 
-        GameManager gameManager = new GameManager(new RuleStrategyImpl());
-        RoundRecords roundRecords = gameManager.play(carNames, gameRoundNum);
+        GameManager gameManager = new GameManager(new RuleStrategyImpl(), new WinStrategyImpl());
+        GameResult gameResult = gameManager.play(carNames, gameRoundNum);
 
-        OutputView.showResult(roundRecords);
+        OutputView.showResult(gameResult);
     }
 }

@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class RoundRecord {
 
@@ -12,7 +11,7 @@ public class RoundRecord {
         this.record = record;
     }
 
-    public Map<String, Integer> getRecord() {
+    public LinkedHashMap<String, Integer> getRecord() {
         return record;
     }
 }

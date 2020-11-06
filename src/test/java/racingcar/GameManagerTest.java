@@ -14,22 +14,35 @@ import static org.assertj.core.data.MapEntry.entry;
 public class GameManagerTest {
 
     @Test
-    @DisplayName("게임 한 라운드 플레이 모든 car 전진")
+    @DisplayName("게임 플레이 모든 car 한 칸 전진 확인")
     void play_everyCarOneMovement() {
         List<String> names = Arrays.asList("pobi", "crong", "honux");
         int movement = 1;
         int gameRoundNum = 2;
-        GameManager gameManager = new GameManager(() -> movement);
+        GameManager gameManager = new GameManager(() -> movement, new WinStrategyImpl());
 
-        RoundRecords roundRecords = gameManager.play(names, gameRoundNum);
+        GameResult gameResult = gameManager.play(names, gameRoundNum);
 
         IntStream.range(0, gameRoundNum).forEach(idx -> {
             int round = idx + 1;
-            Map<String, Integer> record = roundRecords.getRoundRecordList().get(idx).getRecord();
+            Map<String, Integer> record = gameResult.getRoundRecords().getRoundRecordList().get(idx).getRecord();
             assertThat(record).containsExactly(
                     entry("pobi", round * movement),
                     entry("crong", round * movement),
                     entry("honux", round * movement));
         });
+    }
+
+    @Test
+    @DisplayName("게임 플레이 우승자 확인")
+    void play_verifyWinner() {
+        List<String> names = Arrays.asList("pobi", "crong", "honux");
+        List<String> winnerNames = Arrays.asList("pobi", "crong");
+        int gameRoundNum = 2;
+        GameManager gameManager = new GameManager(new RuleStrategyImpl(), (roundRecords) -> new Winners(winnerNames, Car.INITIAL_POSITION));
+
+        GameResult gameResult = gameManager.play(names, gameRoundNum);
+
+        assertThat(gameResult.getWinnerNames()).isEqualTo(winnerNames);
     }
 }

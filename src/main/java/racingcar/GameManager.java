@@ -5,12 +5,14 @@ import java.util.List;
 public class GameManager {
 
     private final RuleStrategy ruleStrategy;
+    private final WinStrategy winStrategy;
 
-    public GameManager(RuleStrategy ruleStrategy) {
+    public GameManager(RuleStrategy ruleStrategy, WinStrategy winStrategy) {
         this.ruleStrategy = ruleStrategy;
+        this.winStrategy = winStrategy;
     }
 
-    public RoundRecords play(List<String> carNames, int gameRoundNum) {
+    public GameResult play(List<String> carNames, int gameRoundNum) {
         Cars cars = new Cars(carNames);
         GameRounds gameRounds = new GameRounds(gameRoundNum);
 
@@ -20,6 +22,8 @@ public class GameManager {
             gameRounds.keepRecord(cars);
         }
 
-        return gameRounds.getRecords();
+        RoundRecords roundRecords = gameRounds.getRecords();
+        Winners winners = winStrategy.decideWinners(roundRecords);
+        return new GameResult(winners, roundRecords);
     }
 }
