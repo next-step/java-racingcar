@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -11,6 +12,12 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 abstract class CalculatorTest {
 
     Calculator calculator;
+
+    @Test
+    void wrong_expression(){
+        String expression = "1 @ 2";
+        calculator.calculate(expression);
+    }
 
     @DisplayName("expression 에 사칙연산 기호가 아닌값이 포함되면 IllegalArgumentException 을 던진다")
     @ParameterizedTest

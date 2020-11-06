@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -23,10 +24,9 @@ public interface ExpressionParser {
 
             try {
                 ParsedExpression result = new ParsedExpression();
-                for (int i = 0; i < parts.length; i++) {
-                    ExpressionPart part = new ExpressionPartFactory().create(parts[i]);
-                    result.addPart(part);
-                }
+                Arrays.stream(parts).forEach( part -> {
+                    result.addPart(new ExpressionPartFactory().create(part));
+                });
                 return result;
             } catch ( RuntimeException e ){
                 throw new IllegalArgumentException(e.getMessage(), e.getCause() == null ? e : e.getCause());
