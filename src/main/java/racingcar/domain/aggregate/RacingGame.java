@@ -5,6 +5,7 @@ import racingcar.domain.collection.History;
 import racingcar.domain.model.Car;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.RandomStrategy;
+import racingcar.exeption.GameOverException;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class RacingGame {
 
     protected void race() {
         if (checkGameOver()) {
-            return;
+            throw new GameOverException();
         }
         currRaceNum++;
         carGroup.moveCar();
