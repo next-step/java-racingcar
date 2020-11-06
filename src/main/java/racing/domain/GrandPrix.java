@@ -7,7 +7,7 @@ public class GrandPrix {
     private int id;
     private final int maxRounds;
     private final LineUp lineUp;
-    private int currentRound = 1;
+    private int currentRound = 0;
 
     public GrandPrix(LineUp lineUp, int maxRounds) {
         this.maxRounds = maxRounds;
