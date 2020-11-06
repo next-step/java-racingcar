@@ -10,7 +10,7 @@ public class GameManager {
         this.ruleStrategy = ruleStrategy;
     }
 
-    public Records play(List<String> carNames, int gameRoundNum) {
+    public RoundRecords play(List<String> carNames, int gameRoundNum) {
         Cars cars = new Cars(carNames);
         GameRounds gameRounds = new GameRounds(gameRoundNum);
 

@@ -16,11 +16,7 @@ public class Cars {
         this.cars.forEach(car -> car.move(ruleStrategy));
     }
 
-    public List<Integer> getCarPositions() {
-        return this.cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
+    public List<Car> getCarList() {
+        return cars;
     }
-
-
 }

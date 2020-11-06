@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.data.MapEntry.entry;
 
 public class GameManagerTest {
 
@@ -16,17 +18,18 @@ public class GameManagerTest {
     void play_everyCarOneMovement() {
         List<String> names = Arrays.asList("pobi", "crong", "honux");
         int movement = 1;
-        int gameRoundNum = 3;
+        int gameRoundNum = 2;
         GameManager gameManager = new GameManager(() -> movement);
 
-        Records records = gameManager.play(names, gameRoundNum);
+        RoundRecords roundRecords = gameManager.play(names, gameRoundNum);
 
-        assertThat(records.getRecordList()).hasSize(gameRoundNum);
         IntStream.range(0, gameRoundNum).forEach(idx -> {
             int round = idx + 1;
-            List<Integer> positions = records.getRecordList().get(idx).getPositions();
-            assertThat(positions).hasSize(names.size());
-            positions.forEach(position -> assertThat(position).isEqualTo((round) * movement));
+            Map<String, Integer> record = roundRecords.getRoundRecordList().get(idx).getRecord();
+            assertThat(record).containsExactly(
+                    entry("pobi", round * movement),
+                    entry("crong", round * movement),
+                    entry("honux", round * movement));
         });
     }
 }

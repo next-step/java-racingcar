@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.entry;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class GameRoundsTest {
@@ -54,8 +55,14 @@ public class GameRoundsTest {
         gameRounds.keepRecord(cars);
 
         int roundToGet = 0;
-        Record record = gameRounds.getRecords().getRecordList().get(roundToGet);
-        assertThat(record.getPositions()).hasSize(names.size());
-        record.getPositions().forEach(position -> assertThat(position).isEqualTo(Car.INITIAL_POSITION));
+        int recordCount = 1;
+        List<RoundRecord> roundRecordList = gameRounds.getRecords().getRoundRecordList();
+        assertThat(roundRecordList).hasSize(recordCount);
+        assertThat(roundRecordList.get(roundToGet).getRecord())
+                .containsExactly(
+                        entry("pobi", Car.INITIAL_POSITION),
+                        entry("crong", Car.INITIAL_POSITION),
+                        entry("honux", Car.INITIAL_POSITION)
+                );
     }
 }

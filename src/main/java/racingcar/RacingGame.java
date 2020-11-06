@@ -11,8 +11,8 @@ public class RacingGame {
         int gameRoundNum = InputView.getGameRoundNum();
 
         GameManager gameManager = new GameManager(new RuleStrategyImpl());
-        Records records = gameManager.play(carNames, gameRoundNum);
+        RoundRecords roundRecords = gameManager.play(carNames, gameRoundNum);
 
-        OutputView.showResult(records);
+        OutputView.showResult(roundRecords);
     }
 }

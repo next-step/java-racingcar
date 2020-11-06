@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,15 +16,11 @@ public class CarsTest {
     void move(int movementExpected) {
         List<String> names = Arrays.asList("pobi", "crong", "honux");
         Cars cars = new Cars(names);
-        List<Integer> positions = cars.getCarPositions();
 
         cars.move(() -> movementExpected);
-        List<Integer> positionsAfterMove = cars.getCarPositions();
 
-        IntStream.range(0, names.size())
-                .forEach(idx -> {
-                    int movement = positionsAfterMove.get(idx) - positions.get(idx);
-                    assertThat(movement).isEqualTo(movementExpected);
-                });
+        assertThat(cars.getCarList())
+                .extracting(Car::getPosition)
+                .allMatch((position) -> position == Car.INITIAL_POSITION + movementExpected);
     }
 }

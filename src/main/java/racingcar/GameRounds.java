@@ -1,12 +1,14 @@
 package racingcar;
 
+import java.util.LinkedHashMap;
+
 public class GameRounds {
+    private final RoundRecords roundRecords;
     private int round;
-    private final Records records;
 
     public GameRounds(int round) {
         this.round = round;
-        this.records = new Records(round);
+        this.roundRecords = new RoundRecords(round);
     }
 
     public void endRound() {
@@ -14,15 +16,16 @@ public class GameRounds {
     }
 
     public void keepRecord(Cars cars) {
-        Record record = new Record(cars.getCarPositions());
-        this.records.addRecord(record);
+        LinkedHashMap<String, Integer> positions = new LinkedHashMap<>();
+        cars.getCarList().forEach(car -> positions.put(car.getName(), car.getPosition()));
+        this.roundRecords.addRecord(new RoundRecord(positions));
     }
 
     public boolean isGameEnd() {
         return round == 0;
     }
 
-    public Records getRecords() {
-        return records;
+    public RoundRecords getRecords() {
+        return roundRecords;
     }
 }
