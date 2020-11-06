@@ -1,37 +1,30 @@
 package study.racingcar.car;
 
-import study.racingcar.car.moving.CarMovingStrategy;
-import study.racingcar.car.moving.MovingSeed;
+import java.util.Random;
 
+/**
+ * 각 자동차에 대한 위치를 보관하는 책임
+ */
 public class Car {
 
-    int currentPosition;
-    CarMovingStrategy carMovingStrategy;
-
-    public Car(CarMovingStrategy carMovingStrategy) {
-        this.currentPosition = 0;
-        this.carMovingStrategy = carMovingStrategy;
-    }
-
-    public void move() {
-
-        MovingSeed movingSeed = carMovingStrategy.getMovingSeed();
-
-        if (movingSeed.isMovable()) {
-            goForward();
-        }
-    }
-
-    public void goForward() {
-        this.currentPosition += 1;
-    }
-
-    public void stop() {
-        this.currentPosition += 0;
-    }
+    private int currentPosition = 1;
 
     public int getCurrentPosition() {
         return currentPosition;
     }
+
+    public void move(Engine engine) {
+
+        if (engine.isMovable()) {
+            goForward();
+        }
+
+    }
+
+    private void goForward() {
+        this.currentPosition += 1;
+    }
+
+
 
 }

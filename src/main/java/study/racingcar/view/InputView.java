@@ -1,10 +1,26 @@
 package study.racingcar.view;
 
-public interface InputView {
+import study.racingcar.GameConfiguration;
+import study.racingcar.car.OldEngine;
 
-    void numberOfCarsMessage();
+import java.util.Scanner;
 
-    void numberOfTriesMessage();
+public class InputView {
 
+    private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() {}
+
+    public static GameConfiguration initGameWithOldEngine() {
+
+        System.out.println("how many cars do you need?");
+
+        int numberOfCars = scanner.nextInt();
+
+        System.out.println("How much times do you attemps?");
+
+        int numberOfAttempts = scanner.nextInt();
+
+        return new GameConfiguration(numberOfCars, numberOfAttempts, OldEngine.getInstance());
+    }
 }

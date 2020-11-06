@@ -1,42 +1,29 @@
 package study.racingcar;
 
-import study.racingcar.car.Car;
-import study.racingcar.configuration.GameConfiguration;
 import study.racingcar.view.ResultView;
 
-import java.util.List;
-import java.util.Scanner;
-
+/**
+ * RacingGame을 진행하는 책임
+ */
 public class RacingGame {
 
-    private static Scanner scanner = new Scanner(System.in);
-
-    GameConfiguration gameConfiguration;
-    ResultView resultView;
-    List<Car> cars;
+    private GameConfiguration gameConfiguration;
+    private ResultView resultView;
 
     public RacingGame(GameConfiguration gameConfiguration, ResultView resultView) {
         this.gameConfiguration = gameConfiguration;
         this.resultView = resultView;
     }
 
+    public void startGame() {
 
-    // 게임진행
-    public GameResult startGame() {
+        RacingCars racingCars = gameConfiguration.initRacingCars();
 
-        initGame();
-
-        for (int tries = 0; gameConfiguration.doMoreTry(tries); tries++) {
-            cars.stream().forEach(Car::move);
-            resultView.displayResult(cars);
-            System.out.println();
+        for (int attempt = 0; gameConfiguration.doMoreAttempt(attempt); attempt++) {
+            racingCars.nextAttempt();
+            racingCars.displayCurrentStatus(resultView);
         }
 
-        return new GameResult(cars);
-    }
-
-    private void initGame() {
-        this.cars = gameConfiguration.initCars();
     }
 
 }
