@@ -1,6 +1,6 @@
 package study.racing;
 
-import study.racing.view.RacingInput;
+import study.racing.view.InputView;
 import study.racing.view.ResultView;
 
 public class CarRacingApp {
@@ -14,7 +14,7 @@ public class CarRacingApp {
 
         ResultView resultView = new ResultView();
 
-        while(!cr.isEndRacing()) {
+        while(cr.isProcessAbleRound()) {
             cr.processRound();
             resultView.printResult(cr.getRoundRecords());
         }

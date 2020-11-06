@@ -1,7 +1,5 @@
 package study.racing;
 
-import study.racing.view.RacingInput;
-
 import java.util.*;
 
 public class CarRacing {
@@ -21,11 +19,16 @@ public class CarRacing {
         return new ArrayList<>(Collections.nCopies(countOfCars, 0));
     }
 
-    public boolean isEndRacing() {
-        return (currentRound >= lastRound);
+    public boolean isProcessAbleRound() {
+        return (currentRound < lastRound);
     }
 
     public void processRound() {
+
+        if(!isProcessAbleRound()) {
+            throw new RuntimeException("더 이상 라운드를 진행 할 수 없습니다.");
+        }
+
         for (int i = 0; i < carRecords.size(); i++) {
             if (getRandomNumber() >= 4) {
                 carRecords.set(i, carRecords.get(i) + 1);
