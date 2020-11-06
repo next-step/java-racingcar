@@ -9,6 +9,7 @@ public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String NEW_LINE = "\n";
     private static final String POSITION_MARK = "-";
+    private static final String CAR_POSITION_IS = ":";
     private static final String COMMA = ",";
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
@@ -25,6 +26,8 @@ public class ResultView {
 
     static String printPosition(final Car car) {
         StringBuilder stringBuilder = new StringBuilder();
+        String carName = car.getCarName();
+        stringBuilder.append(carName).append(CAR_POSITION_IS);
         for (int i = 0; i < car.getPosition(); i++) {
             stringBuilder.append(POSITION_MARK);
         }
