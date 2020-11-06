@@ -12,7 +12,7 @@ public class RuleStrategyImpl implements RuleStrategy {
     public int getMovement() {
         if (random.nextInt(BOUND) >= THRESHOLD)
             return MOVEMENT_UNIT;
-        
+
         return 0;
     }
 }

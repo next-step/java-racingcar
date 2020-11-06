@@ -13,14 +13,14 @@ public class Cars {
     }
 
     public void move() {
-        this.cars.stream().forEach(car -> car.move());
+        this.cars.forEach(Car::move);
     }
 
     public List<Integer> getCarPositions() {
         return this.cars.stream()
-                .map(car -> car.getPosition())
+                .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
 
-    
+
 }
