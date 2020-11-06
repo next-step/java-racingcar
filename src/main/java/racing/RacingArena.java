@@ -5,9 +5,9 @@ import racing.view.ResultView;
 
 public class RacingArena {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        int cars = inputView.getManyCars();
-        int rounds = inputView.getTryCount();
-        new ResultView().play(new CarRacing(cars,rounds).start());
+        new InputView();
+        int cars = InputView.getManyCars();
+        int rounds = InputView.getTryCount();
+        new ResultView().racingResults(new CarRacing(cars,rounds).start());
     }
 }
