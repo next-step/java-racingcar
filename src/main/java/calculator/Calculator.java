@@ -1,5 +1,6 @@
 package calculator;
 
+
 import static java.util.Objects.isNull;
 
 public class Calculator {
@@ -12,12 +13,14 @@ public class Calculator {
 
         String[] inputs = splitInputString(inputString);
 
+
         FourPointOperation operator = null;
         Integer result = Integer.parseInt(inputs[0]);
 
         for (String input : inputs) {
             result = calculateFor(result, operator, input);
             operator = getFourPointOperation(input);
+
         }
 
         return result.toString();
@@ -25,7 +28,9 @@ public class Calculator {
 
     private String[] splitInputString(String inputString) {
 
+
         if (isNull(inputString)) {
+
             throw new IllegalArgumentException("input string is null");
         }
 
@@ -41,13 +46,16 @@ public class Calculator {
 
     private FourPointOperation getFourPointOperation(String input) {
 
+
         if (isNumber(input)) {
             return null;
         }
 
+
         if (!isSymbolOfFourPointOperationOrNumber(input)) {
             throw new IllegalArgumentException("input is not symbol of four-point operation or Number");
         }
+
 
         return FourPointOperation.value(input);
     }
@@ -72,6 +80,7 @@ public class Calculator {
         }
 
         return result;
+
     }
 
 
