@@ -3,7 +3,6 @@ package step3.application;
 import common.util.Message;
 import step3.domain.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,19 +36,9 @@ public class RacingCarSimulator {
 
     public SimulationResult simulate() {
         final RacingGame racingGame = RacingGame.of(carNames, new RandomMovableStrategy());
-        final List<Snapshot> snapshots = createSimulationSnapshots(racingGame, numberOfAttempts);
+        final List<Snapshot> snapshots = racingGame.run(numberOfAttempts);
         final List<String> winners = racingGame.selectWinnerNames();
 
         return new SimulationResult(snapshots, winners);
-    }
-
-    private List<Snapshot> createSimulationSnapshots(final RacingGame racingGame, final int numberOfAttempts) {
-        final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
-        for (int i = 0; i < numberOfAttempts; i++) {
-            racingGame.moveRacingCars();
-            final Snapshot snapshot = racingGame.createSnapshot();
-            snapshots.add(snapshot);
-        }
-        return snapshots;
     }
 }

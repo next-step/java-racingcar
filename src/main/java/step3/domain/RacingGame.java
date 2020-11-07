@@ -30,7 +30,9 @@ public class RacingGame {
     }
 
     public Snapshot createSnapshot() {
-        return Snapshot.of(racingCars.stream().map(RacingCar::createRacingResult).collect(Collectors.toList()));
+        return Snapshot.of(racingCars.stream()
+                .map(RacingCar::createRacingResult)
+                .collect(Collectors.toList()));
     }
 
     public List<String> selectWinnerNames() {
@@ -38,5 +40,14 @@ public class RacingGame {
                 .map(RacingCar::getName)
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());
+    }
+
+    public List<Snapshot> run(final int numberOfAttempts) {
+        final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
+        for (int i = 0; i < numberOfAttempts; i++) {
+            moveRacingCars();
+            snapshots.add(createSnapshot());
+        }
+        return snapshots;
     }
 }
