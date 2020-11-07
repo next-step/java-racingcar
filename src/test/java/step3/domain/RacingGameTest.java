@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import step3.domain.strategy.MovableStrategy;
 import step3.domain.strategy.SelectFarthestDistanceWinnerStrategy;
 import step3.domain.strategy.SelectWinnerStrategy;
+import step3.view.output.dto.CarRacingResult;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,10 +48,9 @@ class RacingGameTest {
 
             // then
             final Snapshot lastSnapshot = snapshots.get(TEN_TIMES_ATTEMPT - 1);
-            final List<CarRacingResult> lastCarRacingResults = lastSnapshot.getCarRacingResults();
-            final boolean AllCarMovedAtTenTimes = lastCarRacingResults
+            final boolean AllCarMovedAtTenTimes = lastSnapshot.getCars()
                     .stream()
-                    .mapToInt(CarRacingResult::getCarPosition)
+                    .mapToInt(Car::getPosition)
                     .allMatch(position -> position == TEN_TIMES_ATTEMPT);
             assertThat(AllCarMovedAtTenTimes).isTrue();
         }

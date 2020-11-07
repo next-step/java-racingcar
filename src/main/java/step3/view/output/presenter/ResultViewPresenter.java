@@ -16,7 +16,7 @@ public class ResultViewPresenter implements Presenter {
         final List<Snapshot> snapshots = simulationResponse.getSnapshots();
 
         this.roundResultViewPresenters = snapshots.stream()
-                .map(Snapshot::getCarRacingResults)
+                .map(Snapshot::getCars)
                 .map(RoundResultViewPresenter::new)
                 .collect(Collectors.toList());
         this.winnerResultViewPresenter = new WinnerResultViewPresenter(simulationResponse.getWinners());

@@ -4,7 +4,9 @@ import step3.domain.strategy.MovableStrategy;
 import step3.domain.strategy.SelectFarthestDistanceWinnerStrategy;
 import step3.domain.strategy.SelectWinnerStrategy;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
@@ -36,9 +38,10 @@ public class RacingGame {
     }
 
     private Snapshot createSnapshot() {
-        return Snapshot.of(cars.stream()
-                .map(Car::createRacingResult)
-                .collect(Collectors.toList()));
+        final List<Car> clonedCars = cars.stream()
+                .map(Car::clone)
+                .collect(Collectors.toList());
+        return Snapshot.of(Collections.unmodifiableList(clonedCars));
     }
 
     public List<String> selectWinnerNames() {
@@ -54,7 +57,7 @@ public class RacingGame {
             snapshots.add(moveRacingCars());
         }
     }
-    
+
     public List<Snapshot> extractSnapshots() {
         return snapshots;
     }

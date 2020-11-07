@@ -1,6 +1,6 @@
 package step3.view.output.presenter;
 
-import step3.domain.CarRacingResult;
+import step3.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,9 +9,9 @@ import java.util.stream.IntStream;
 import static step3.view.ViewString.*;
 
 public class RoundResultViewPresenter implements Presenter {
-    private final List<CarRacingResult> cars;
+    private final List<Car> cars;
 
-    public RoundResultViewPresenter(final List<CarRacingResult> cars) {
+    public RoundResultViewPresenter(final List<Car> cars) {
         this.cars = cars;
     }
 
@@ -26,8 +26,8 @@ public class RoundResultViewPresenter implements Presenter {
                 .collect(Collectors.joining());
     }
 
-    private String createCarResult(final CarRacingResult car) {
-        return createCarNameView(car.getCarName()) + createMovingDistanceView(car.getCarPosition()) + NEWLINE;
+    private String createCarResult(final Car car) {
+        return createCarNameView(car.getName()) + createMovingDistanceView(car.getPosition()) + NEWLINE;
     }
 
     private String createCarNameView(final String name) {
