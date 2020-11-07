@@ -15,14 +15,14 @@ class GameConfigurationTest {
     void test_createGameConfiguration_success() {
         // When & Then
         GameConfiguration gameConfiguration
-                = new GameConfiguration(1, 1, OldEngine.getInstance());
+                = new GameConfiguration("a", 1, OldEngine.getInstance());
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0,1", "1,0"}, delimiter = ',')
-    void test_createGameConfiguration_fail(int numberOfCars, int numberOfAttempts) {
+    @CsvSource(value = {"123456|1", "|1", "a|0"}, delimiter = '|')
+    void test_createGameConfiguration_fail(String carNamesWithComma, int numberOfAttempts) {
         assertThrows(IllegalArgumentException.class
-                , () -> new GameConfiguration(numberOfCars, numberOfAttempts, OldEngine.getInstance()));
+                , () -> new GameConfiguration(carNamesWithComma, numberOfAttempts, OldEngine.getInstance()));
     }
 
 }

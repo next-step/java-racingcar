@@ -10,6 +10,10 @@ public class Car {
     private String name;
     private int currentPosition = 1;
 
+    public Car(String name) {
+        this.name = name;
+    }
+
     public int getCurrentPosition() {
         return currentPosition;
     }

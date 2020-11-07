@@ -20,7 +20,7 @@ class RacingCarsTest {
     void test_nextAttempt() {
         // Given
         List<Car> cars = new ArrayList<Car>();
-        Car car = new Car();
+        Car car = initCar();
         cars.add(car);
         RacingCars racingCars = new RacingCars(cars, new NewEngine());
 
@@ -36,8 +36,7 @@ class RacingCarsTest {
     void test_export() {
         // Given
         List<Car> cars = new ArrayList<Car>();
-        Car car = new Car();
-        cars.add(car);
+        cars.add(initCar());
         RacingCars racingCars = new RacingCars(cars, new NewEngine());
 
         racingCars.nextAttempt();
@@ -50,4 +49,7 @@ class RacingCarsTest {
         assertEquals(carSnapshot.getCurrentPosition(), 2);
     }
 
+    private Car initCar() {
+        return new Car("test");
+    }
 }

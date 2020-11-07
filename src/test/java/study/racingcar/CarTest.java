@@ -14,7 +14,7 @@ class CarTest {
     @DisplayName("이동 성공")
     void test_move_success() {
         // Given
-        Car car = new Car();
+        Car car = initCar();
 
         // When
         car.move(new NewEngine());
@@ -27,7 +27,7 @@ class CarTest {
     @DisplayName("이동 실패")
     void test_move_fail() {
         // Given
-        Car car = new Car();
+        Car car = initCar();
 
         // When
         car.move(new BrokenEngine());
@@ -40,7 +40,7 @@ class CarTest {
     @DisplayName("CarSnapshot으로 Export")
     void test_export() {
         // Given
-        Car car = new Car();
+        Car car = initCar();
         car.move(new NewEngine());
 
         // When
@@ -48,6 +48,10 @@ class CarTest {
 
         // Then
         assertEquals(carSnapshot.getCurrentPosition(), 2);
+    }
+
+    private Car initCar() {
+        return new Car("test");
     }
 
 }
