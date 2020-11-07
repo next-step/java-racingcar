@@ -1,9 +1,8 @@
 package step3.domain;
 
 public class RacingCar {
-    private final MovableStrategy movableStrategy;
-
     private final String name;
+    private final MovableStrategy movableStrategy;
 
     public RacingCar(final String name, final MovableStrategy movableStrategy) {
         this.name = name;
