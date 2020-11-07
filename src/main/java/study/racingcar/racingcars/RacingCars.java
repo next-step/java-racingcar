@@ -25,10 +25,6 @@ public class RacingCars {
         }
     }
 
-    public void displayCurrentStatus(ResultView resultView) {
-        resultView.displayCars(cars);
-    }
-
     public <T> T export(RacingCarsExporter<T> exporter) {
         exporter.cars(cars);
         return exporter.build();

@@ -1,6 +1,8 @@
 package study.racingcar;
 
 import study.racingcar.racingcars.RacingCars;
+import study.racingcar.racingcars.RacingCarsSnapshot;
+import study.racingcar.racingcars.RacingCarsSnapshotExporter;
 import study.racingcar.view.ResultView;
 
 /**
@@ -21,8 +23,13 @@ public class RacingGame {
         RacingCars racingCars = gameConfiguration.initRacingCars();
 
         for (int attempt = 0; gameConfiguration.doMoreAttempt(attempt); attempt++) {
+
             racingCars.nextAttempt();
-            racingCars.displayCurrentStatus(resultView);
+
+            RacingCarsSnapshot racingCarsSnapshot = racingCars.export(new RacingCarsSnapshotExporter());
+
+            resultView.displayCurrentStatus(racingCarsSnapshot);
+
         }
 
     }
