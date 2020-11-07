@@ -21,6 +21,24 @@ public class Calculator {
         return num1 / num2;
     }
 
+    public int stringCalculator (int num1, String op, int num2) {
+        int result = 0;
+        if ("+".equals(op)) {
+            result = num1 + num2;
+        }
+        if ("-".equals(op)) {
+            result = num1 - num2;
+        }
+        if ("*".equals(op)) {
+            result = num1 * num2;
+        }
+        if ("/".equals(op)) {
+            result = num1 / num2;
+        }
+        return result;
+    }
+
+
     public void vaildate (String input) {
         if (input.trim().isEmpty() || input == null) {
             throw new IllegalArgumentException("에러");
@@ -40,21 +58,33 @@ public class Calculator {
     public int changeResult (String input) {
         String[] st = input.split(" ");
         int result = 0;
+
         for (int i = 0; i < st.length; i += 2) {
-            String op = st[i];
-            result = Integer.parseInt(op);
+            result = Integer.parseInt(st[i]);
         }
         System.out.println(result);
         return result;
     }
 
-    public void changeString (String input) {
+    public String changeString (String input) {
         String[] st = input.split(" ");
+        String operator = "";
+        for (int i = 1; i < st.length - 1; i += 2) {
+            operator = st[i];
+        System.out.println(operator);
+        }
+        return operator;
+    }
+
+    public int changeAll (String input) {
+        String[] st = input.split(" ");
+        int result = Integer.parseInt(st[0]);
+
         for (int i = 1; i < st.length - 1; i += 2) {
             String operator = st[i];
-            System.out.println(operator);
-//            result = stringCalculator.calculator(result, operator, Integer.parseInt(strings[i + 1]));
+            result = stringCalculator(result, operator, Integer.parseInt(st[i + 1]));
         }
+        return result;
     }
 }
 

@@ -64,17 +64,19 @@ public class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"2 + 3 * 4 / 2"})
     public void changeResult (String data) {
-//        assertThat(calculator.changeResult(data)).isEqualTo(4);
         calculator.changeResult(data);
     }
 
     @DisplayName("연산기호 배출 ")
     @ParameterizedTest
     @ValueSource(strings = {"2 + 3 * 4 / 2"})
-    public void changeResulta (String data) {
-        calculator.changeString(data);
+    public void changeString (String data) {
+        assertThat(calculator.changeString(data)).contains("/");
     }
-
-
-
+    @DisplayName("모든 연산")
+    @ParameterizedTest
+    @CsvSource(value = {"3 + 3 * 4 / 2 = 12"}, delimiter = '=')
+    public void changeAll (String data) {
+        assertThat(calculator.changeAll(data)).isEqualTo(12);
+    }
 }
