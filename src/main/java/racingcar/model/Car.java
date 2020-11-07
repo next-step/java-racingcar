@@ -4,7 +4,7 @@ public class Car {
 
     private static final int INITIAL_POSITION = 0;
 
-    int position;
+    private int position;
 
     public Car() {
         this.position = INITIAL_POSITION;
