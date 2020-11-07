@@ -1,4 +1,4 @@
-package step3.application;
+package step3.domain;
 
 import step3.domain.MovableStrategy;
 
