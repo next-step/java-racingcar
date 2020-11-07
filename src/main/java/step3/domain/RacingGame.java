@@ -9,7 +9,7 @@ public class RacingGame {
     private final SelectWinnerStrategy selectWinnerStrategy;
 
     private RacingGame(final List<RacingCar> racingCars, final SelectWinnerStrategy selectWinnerStrategy) {
-        this.racingCars = racingCars;
+        this.racingCars = Collections.unmodifiableList(racingCars);
         this.selectWinnerStrategy = selectWinnerStrategy;
     }
 
@@ -23,13 +23,14 @@ public class RacingGame {
         return new RacingGame(racingCars, selectWinnerStrategy);
     }
 
-    public void moveRacingCars() {
+    private Snapshot moveRacingCars() {
         racingCars.stream()
                 .filter(RacingCar::isMove)
                 .forEach(RacingCar::moveForward);
+        return createSnapshot();
     }
 
-    public Snapshot createSnapshot() {
+    private Snapshot createSnapshot() {
         return Snapshot.of(racingCars.stream()
                 .map(RacingCar::createRacingResult)
                 .collect(Collectors.toList()));
@@ -42,11 +43,10 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public List<Snapshot> run(final int numberOfAttempts) {
+    public synchronized List<Snapshot> run(final int numberOfAttempts) {
         final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
         for (int i = 0; i < numberOfAttempts; i++) {
-            moveRacingCars();
-            snapshots.add(createSnapshot());
+            snapshots.add(moveRacingCars());
         }
         return snapshots;
     }
