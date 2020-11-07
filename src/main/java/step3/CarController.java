@@ -6,23 +6,14 @@ import java.util.stream.IntStream;
 
 public class CarController {
 
-    public void start() {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-
-        int numberOfCars = inputView.numberOfCars();
-        int tryCounts = inputView.tryCount();
-
+    public void start(int numberOfCars, int tryCounts) {
         CarList carList = initCarList(numberOfCars);
 
-        outputView.resultMention();
+        OutputView.resultMention();
 
         for(int tryNumber = 0; tryNumber < tryCounts; tryNumber++) {
-            carList.nextPosition();
-            carList.displayCurrentPosition(outputView);
-
+            nextPosition(carList);
         }
-
     }
 
     private CarList initCarList(int numberOfCars) {
@@ -32,4 +23,11 @@ public class CarController {
         return CarList.from(carList);
     }
 
+    private void nextPosition(CarList carList) {
+        List<Car> cars = carList.getCarList();
+        for(Car car : cars) {
+            car.move(car.makeRandomValue());
+        }
+        OutputView.displayCarList(cars);
+    }
 }

@@ -14,13 +14,7 @@ public class CarList {
         return new CarList(carList);
     }
 
-    public void nextPosition() {
-        for(Car car : carList) {
-            car.goForward();
-        }
-    }
-
-    public void displayCurrentPosition(OutputView outputView) {
-        outputView.displayCarList(carList);
+    public List<Car> getCarList() {
+        return this.carList;
     }
 }

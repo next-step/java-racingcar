@@ -16,17 +16,13 @@ public class Car {
         return currentPosition;
     }
 
-    public void goForward() {
-        move(makeRandomValue());
-    }
-
     public void move(int randomValue) {
         if(checkRandom(randomValue)) {
             this.currentPosition += POSITION_MOVE;
         }
     }
 
-    private int makeRandomValue() {
+    public int makeRandomValue() {
         return random.nextInt(MAX_MOVING_BOUNDARY);
     }
 
