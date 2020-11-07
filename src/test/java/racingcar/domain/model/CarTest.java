@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mockito;
 import racingcar.asset.CarConst;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.ProceedStrategy;
@@ -22,7 +21,7 @@ class CarTest {
     @DisplayName("createCar: name 이 최대 길이를 초과하면, BadCarNameException 가 발생된다.")
     @ValueSource(strings = {"", "1", "22", "333", "4444", "55555", "666666", "7777777", "88888888"})
     void createCar(String name) {
-        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
+        MoveStrategy strategy = ProceedStrategy.getInstance();
         if (name.length() <= CarConst.MAX_NAME_LENGTH) {
             Assertions.assertDoesNotThrow(() -> {
                 Car.createCar(name, strategy);
@@ -38,7 +37,7 @@ class CarTest {
     @Test
     @DisplayName("createCar: name 이 null 이면, 에러가 발생된다.")
     void createCar() {
-        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
+        MoveStrategy strategy = ProceedStrategy.getInstance();
         assertThatExceptionOfType(BadCarNameException.class)
                 .isThrownBy(() -> {
                     Car.createCar(null, strategy);

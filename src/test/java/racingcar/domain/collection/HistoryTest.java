@@ -3,7 +3,6 @@ package racingcar.domain.collection;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import racingcar.domain.model.Memento;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,7 +14,7 @@ class HistoryTest {
     void add() {
         History history = new History();
         int emptyMementoListSize = history.getMementoList().size();
-        Memento memento = Mockito.mock(Memento.class);
+        Memento memento = new Memento();
         history.add(memento);
         int mementoListSize = history.getMementoList().size();
 

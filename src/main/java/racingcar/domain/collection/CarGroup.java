@@ -30,6 +30,18 @@ public class CarGroup {
                 .collect(Collectors.toList());
     }
 
+    protected static List<Car> getWinners(List<Car> cars) {
+        return cars.stream()
+                .collect(
+                        Collectors.groupingBy(Car::getPosition)
+                ).entrySet()
+                .stream()
+                .max(
+                        Comparator.comparing(Map.Entry::getKey)
+                ).get()
+                .getValue();
+    }
+
     public void moveCar() {
         for (Car car : cars) {
             car.move();
@@ -52,18 +64,6 @@ public class CarGroup {
         return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
-    }
-
-    protected List<Car> getWinners(List<Car> cars) {
-        return cars.stream()
-                .collect(
-                        Collectors.groupingBy(Car::getPosition)
-                ).entrySet()
-                .stream()
-                .max(
-                        Comparator.comparing(Map.Entry::getKey)
-                ).get()
-                .getValue();
     }
 
     public List<Car> getWinners() {

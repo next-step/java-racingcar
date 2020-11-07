@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.Mockito;
 import racingcar.domain.model.Car;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.ProceedStrategy;
@@ -45,7 +44,7 @@ class OutputViewTest {
     @DisplayName("convertWinnerList 테스트")
     @CsvSource(value = {"1,2,3$1, 2, 3가 최종 우승했습니다.", "a,b,c$a, b, c가 최종 우승했습니다."}, delimiter = '$')
     void convertWinnerList(String winnerNameCsv, String expectedMsg) {
-        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
+        MoveStrategy strategy = ProceedStrategy.getInstance();
 
         String[] winnerNames = winnerNameCsv.split(",");
         List<Car> carList = new LinkedList<Car>();
