@@ -45,6 +45,10 @@ public class RacingGame {
     }
 
     public List<String> selectWinnerNames() {
+        if (isNotFinished()) {
+            return Collections.emptyList();
+        }
+        
         return selectWinnerStrategy.select(cars).stream()
                 .map(Car::getName)
                 .sorted(String::compareTo)
@@ -62,7 +66,7 @@ public class RacingGame {
             moveCars();
             saveSnapshot();
         }
-        
+
         changeToFinished();
     }
 
