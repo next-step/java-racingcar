@@ -10,20 +10,20 @@ public class InputView {
 
     private InputView() {}
 
-    public static int getManyCars() {
-        int manyCars;
+    public static int getVehicleCount() {
+        int vehicleCount;
         do {
             System.out.print(FIRST_QUESTION);
-        } while ((manyCars = inputValidationCheck(scanner.next())) <= 0);
-        return manyCars;
+        } while ((vehicleCount = inputValidationCheck(scanner.next())) <= 0);
+        return vehicleCount;
     }
 
-    public static int getLabs() {
-        int labs;
+    public static int getMaxCheckPoint() {
+        int maxCheckPoint;
         do {
             System.out.print(SECOND_QUESTION);
-        } while ((labs = inputValidationCheck(scanner.next())) <= 0 );
-        return labs;
+        } while ((maxCheckPoint = inputValidationCheck(scanner.next())) <= 0 );
+        return maxCheckPoint;
     }
 
     private static int inputValidationCheck(String input) {
