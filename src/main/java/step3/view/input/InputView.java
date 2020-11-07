@@ -15,9 +15,9 @@ public class InputView {
     }
 
     public static SimulationCondition receiveSimulationCondition() {
-        final String nameOfCars = questionAndAnswer(ENTER_THE_NAME_OF_THE_CARS);
-        final String numberOfAttempts = questionAndAnswer(HOW_MUCH_ATTEMPT_QUESTION);
-        return SimulationCondition.of(nameOfCars, numberOfAttempts);
+        final String carNames = questionAndAnswer(ENTER_THE_NAME_OF_THE_CARS);
+        final String numberAttempts = questionAndAnswer(HOW_MUCH_ATTEMPT_QUESTION);
+        return SimulationCondition.of(carNames, numberAttempts);
     }
 
     private static String questionAndAnswer(final ViewString question) {

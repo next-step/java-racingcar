@@ -17,12 +17,12 @@ class RacingCarFactoryTest {
     @Test
     void createCars() {
         // given
-        final List<String> nameOfCars = Arrays.asList("pobi", "crong", "honux");
+        final List<String> carNames = Arrays.asList("pobi", "crong", "honux");
         
         // when
-        final List<RacingCar> result = RacingCarFactory.createCars(nameOfCars, movableStrategy);
+        final List<RacingCar> result = RacingCarFactory.createCars(carNames, movableStrategy);
 
         // then
-        assertThat(result.size()).isEqualTo(nameOfCars.size());
+        assertThat(result.size()).isEqualTo(carNames.size());
     }
 }

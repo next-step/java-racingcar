@@ -47,9 +47,9 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public synchronized List<Snapshot> run(final int numberOfAttempts) {
-        final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
-        for (int i = 0; i < numberOfAttempts; i++) {
+    public synchronized List<Snapshot> run(final int numberAttempts) {
+        final List<Snapshot> snapshots = new ArrayList<>(numberAttempts);
+        for (int i = 0; i < numberAttempts; i++) {
             snapshots.add(moveRacingCars());
         }
         return snapshots;

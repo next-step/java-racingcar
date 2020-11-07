@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCarFactory {
-    public static List<RacingCar> createCars(final List<String> nameOfCars, final MovableStrategy movableStrategy) {
-        return nameOfCars.stream()
+    public static List<RacingCar> createCars(final List<String> carNames, final MovableStrategy movableStrategy) {
+        return carNames.stream()
                 .map(carName -> RacingCar.of(carName, movableStrategy))
                 .collect(Collectors.toList());
     }

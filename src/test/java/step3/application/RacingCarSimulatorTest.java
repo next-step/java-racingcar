@@ -30,16 +30,16 @@ class RacingCarSimulatorTest {
     @DisplayName("simulate")
     @ParameterizedTest
     @MethodSource("generateSampleForSimulateMethodTesting")
-    void simulate(final String nameOfCars, final String numberOfAttempts) {
+    void simulate(final String carNames, final String numberAttempts) {
         // given
-        final SimulationCondition condition = SimulationCondition.of(nameOfCars, numberOfAttempts);
+        final SimulationCondition condition = SimulationCondition.of(carNames, numberAttempts);
         final RacingCarSimulator simulator = new RacingCarSimulator(condition);
         
         // when
         final SimulationResult result = simulator.simulate();
         
         // then
-        assertThat(result.getSnapshots().size()).isEqualTo(Integer.valueOf(numberOfAttempts));
+        assertThat(result.getSnapshots().size()).isEqualTo(Integer.valueOf(numberAttempts));
     }
 
     static Stream<Arguments> generateSampleForSimulateMethodTesting() {
