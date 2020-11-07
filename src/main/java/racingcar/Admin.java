@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Scanner;
 
-public class User {
+public class Admin {
     public static void InputCarCount(){
         Game.setCars(Integer.parseInt(new Scanner(System.in).nextLine()));
     }
