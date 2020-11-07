@@ -2,8 +2,8 @@ package racingcar.model;
 
 public class RaceReadyValue {
 
-    int carCount;
-    int tryCount;
+    final int carCount;
+    final int tryCount;
 
     public RaceReadyValue(int carCount, int tryCount) {
         this.carCount = carCount;
