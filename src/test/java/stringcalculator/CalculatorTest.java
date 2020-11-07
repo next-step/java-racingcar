@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -75,4 +76,24 @@ class CalculatorTest {
                 .isInstanceOf(ArithmeticException.class);
     }
 
+
+    // 입력 식 띄어쓰기 아닐 때
+    @ParameterizedTest
+    @DisplayName("부호와 숫자 간 띄어쓰기 없을 때")
+    @ValueSource(strings = {"2 +4", "2+ 4", "2 + 4- 4,"})
+    public void 입력값_테스트_7(String input) {
+        assertThatThrownBy(() -> new Calculator(input).calculate())
+                .isInstanceOf(IllegalArgumentException.class)
+                .withFailMessage("부호와 숫자 간 한 칸 띄어쓰기 필요");
+    }
+
+    // 나눗셈 => 정수 반환 안 될 때
+    @ParameterizedTest
+    @DisplayName("나눗셈: 정수 반환 안 될 때")
+    @ValueSource(strings = {"2 / 3"})
+    public void 입력값_테스트_8(String input) {
+        assertThatThrownBy(() -> new Calculator(input).calculate())
+                .isInstanceOf(ArithmeticException.class)
+                .withFailMessage("나눗셈은 정수로 나누어 떨어져야 합니다.");
+    }
 }

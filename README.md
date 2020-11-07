@@ -7,3 +7,16 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## step3 자동차 경주
+**구현할 기능 목록**
+- 컨트롤러  
+- UI  
+  - 입력  
+  - 출력  
+- 경주장  
+- 경주차 그룹  
+- 차  
+- 점수 generator  
+- 점수 inspector  
+
