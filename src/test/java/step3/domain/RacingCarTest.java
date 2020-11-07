@@ -16,7 +16,7 @@ class RacingCarTest {
         void isMovable_return_true() {
             // given
             final MovableStrategy mustMoveStrategy = () -> true;
-            final RacingCar racingCar = new RacingCar("1", mustMoveStrategy);
+            final RacingCar racingCar = RacingCar.of("1", mustMoveStrategy);
 
             // when
             final boolean result = racingCar.isMove();
@@ -30,7 +30,7 @@ class RacingCarTest {
         void isMovable_return_false() {
             // given
             final MovableStrategy mustNotMoveStrategy = () -> false;
-            final RacingCar racingCar = new RacingCar("1", mustNotMoveStrategy);
+            final RacingCar racingCar = RacingCar.of("1", mustNotMoveStrategy);
 
             // when
             final boolean result = racingCar.isMove();

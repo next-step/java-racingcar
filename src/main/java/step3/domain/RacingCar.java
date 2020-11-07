@@ -3,14 +3,24 @@ package step3.domain;
 import step3.domain.strategy.MovableStrategy;
 
 public class RacingCar {
-    private int UNIT_OF_FORWARD = 1;
+    private static final int UNIT_OF_FORWARD = 1;
+    private static final int DEFAULT_POSITION = 0; 
     private final String name;
-    private int position = 0;
+    private int position;
     private final MovableStrategy movableStrategy;
 
-    public RacingCar(final String name, final MovableStrategy movableStrategy) {
+    private RacingCar(final String name, final MovableStrategy movableStrategy, final int initPosition) {
         this.name = name;
+        this.position = initPosition;
         this.movableStrategy = movableStrategy;
+    }
+    
+    public static RacingCar of(final String name, final MovableStrategy movableStrategy) {
+        return of (name, movableStrategy, DEFAULT_POSITION);
+    }
+
+    public static RacingCar of(final String name, final MovableStrategy movableStrategy, final int initPosition) {
+        return new RacingCar(name, movableStrategy, initPosition);
     }
     
     public String getName() {
