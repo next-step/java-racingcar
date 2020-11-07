@@ -1,13 +1,11 @@
 package racing.domain;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-@Getter
 public class LineUp {
     private final List<RaceMachine> raceMachines = new ArrayList<>();
 
@@ -19,14 +17,12 @@ public class LineUp {
         raceMachines.forEach(RaceMachine::accelerate);
     }
 
-    public List<RaceMachine> getMachinesInLap(int lap) {
-        return raceMachines.stream()
-                .filter(raceMachine -> raceMachine.getLap() == lap)
-                .collect(Collectors.toList());
-    }
-
     public Map<Integer, Integer> getLapMapStatus() {
         return raceMachines.stream()
                 .collect(Collectors.toMap(RaceMachine::getId, RaceMachine::getLap));
+    }
+
+    public void each(Consumer<RaceMachine> consumer) {
+        this.raceMachines.forEach(consumer);
     }
 }

@@ -1,14 +1,14 @@
 package racing.view;
 
 import lombok.Getter;
-import racing.service.GranPrixService;
+import racing.service.GrandPrixService;
 import racing.view.to.RacingInputTO;
 
 import java.util.Scanner;
 
 @Getter
 public class RacingInputView {
-    private final GranPrixService granPrixService = new GranPrixService();
+    private final GrandPrixService grandPrixService = new GrandPrixService();
 
     public RacingInputTO getRacingInput() {
         String drivers;
