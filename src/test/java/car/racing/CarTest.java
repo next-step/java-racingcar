@@ -12,24 +12,16 @@ public class CarTest {
     @DisplayName("자동차 전진 테스트")
     @Test
     void verifyCarForward() {
-        Car car = new Car((int i) -> true);
-        car.forwardOrNot();
-        assertThat(car.forwardResult()).isEqualTo("-");
-    }
-
-    @DisplayName("자동차 스탑 테스트")
-    @Test
-    void verifyCarStop() {
-        Car car = new Car((int i) -> false);
-        car.forwardOrNot();
-        assertThat(car.forwardResult()).isEqualTo("");
+        Car car = new Car("kyle");
+        car.forward("-");
+        assertThat(car.forwardResult()).isEqualTo("kyle : -");
     }
 
     @DisplayName("4 이상일 때 전진 테스트")
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8})
     void verifyForwardable(int randomNum) {
-        Forwardable forwardable = new ForwardableImpl();
+        CarForwardable forwardable = new CarForwardableImpl();
         assertThat(forwardable.forwardable(randomNum)).isEqualTo(true);
     }
 
@@ -37,7 +29,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void verifyFowardDisable(int randomNum) {
-        Forwardable forwardable = new ForwardableImpl();
+        CarForwardable forwardable = new CarForwardableImpl();
         assertThat(forwardable.forwardable(randomNum)).isEqualTo(false);
     }
 }

@@ -5,6 +5,6 @@ public class ViewControllerFactory {
     static CarRacingViewController newInstance() {
         return new CarRacingViewController(
                 new ResultView(),
-                new CarRacingManager());
+                new CarRacingManager(new CarForwardableImpl()));
     }
 }

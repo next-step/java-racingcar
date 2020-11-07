@@ -1,6 +1,6 @@
 package car.racing;
 
-public interface Forwardable {
+public interface CarForwardable {
 
     boolean forwardable(int forward);
 }

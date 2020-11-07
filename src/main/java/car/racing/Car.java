@@ -1,27 +1,33 @@
 package car.racing;
 
-import java.util.Random;
-
 public class Car {
 
-    private static final String FORWARD = "-";
-    private static final int LIMIT = 10;
+    private static final String DELIMITER = " : ";
 
-    private final Forwardable forwardable;
-    private final StringBuilder forwardStrBuilder = new StringBuilder();
-    private final Random random = new Random();
+    private final StringBuilder forwardStrBuilder;
 
-    public Car(Forwardable forwardable) {
-        this.forwardable = forwardable;
+    private int forwardCount = 0;
+    private String name = "";
+
+    public Car(String name) {
+        this.name = name;
+        this.forwardStrBuilder = new StringBuilder(name + DELIMITER);
     }
 
     public String forwardResult() {
         return forwardStrBuilder.toString();
     }
 
-    public void forwardOrNot() {
-        if (forwardable.forwardable(random.nextInt(LIMIT))) {
-            forwardStrBuilder.append(FORWARD);
-        }
+    public String getName() {
+        return name;
+    }
+
+    public int getForwardCount() {
+        return forwardCount;
+    }
+
+    public void forward(String forward) {
+        forwardStrBuilder.append(forward);
+        forwardCount++;
     }
 }

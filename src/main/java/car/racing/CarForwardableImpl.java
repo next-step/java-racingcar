@@ -1,6 +1,6 @@
 package car.racing;
 
-public class ForwardableImpl implements Forwardable {
+public class CarForwardableImpl implements CarForwardable {
 
     private static final int THRESHOLD = 4;
 
