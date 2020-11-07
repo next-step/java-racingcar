@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.worker.application.SimulationRequest;
 import step5.worker.application.SimulationResponse;
-import step5.worker.application.SimulationResponseInterator;
+import step5.worker.application.SimulationResponseInteractor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +16,7 @@ class ResultViewPresenterTest {
         final String carNames = "pobi,crong,honux";
         final String numberAttempts = "5";
         final SimulationRequest request = SimulationRequest.of(carNames, numberAttempts);
-        final SimulationResponseInterator simulator = new SimulationResponseInterator();
+        final SimulationResponseInteractor simulator = new SimulationResponseInteractor();
         final SimulationResponse simulationResponse = simulator.interact(request);
         final ResultViewPresenter presenter = new ResultViewPresenter();
 
