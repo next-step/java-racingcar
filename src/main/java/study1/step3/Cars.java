@@ -2,8 +2,6 @@ package study1.step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();

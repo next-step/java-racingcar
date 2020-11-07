@@ -17,4 +17,12 @@ public class Car {
     public int getMoveDistance(){
         return this.moveDistance;
     }
+
+    public StringBuilder getMoveResult(){
+        StringBuilder raceDistance = new StringBuilder();
+        for(int i = 0; i < this.moveDistance; i++){
+            raceDistance.append("-");
+        }
+        return raceDistance;
+    }
 }
