@@ -22,12 +22,12 @@
     - 멤버     
         - 자동차들 list public final List<Car>
     - 생성자
-        - 자동차 이름의 배열 private final String[] nameList
+        - 자동차 이름의 배열 private final String[] carNames
         - 자동차들에게 일괄적으로 적용할 private final int position 
         - 자동차들에게 일괄적으로 적용할 private final MoveStrategy moveStrategy
     - 메서드
         - 자동차를 한회차 이동시킴 public void move
-        - 자동차 배열이 유효한지 검사 private void validate
+        - 자동차 배열이 유효한지 검사 private void validate -> 무엇이 유효한지 검사하는 기준을 안적어서 까먹음
 - 입력기
     - 쉼표로 구분한 자동차들이름 static public readString String
     - 시도 횟수 static public readInteger int 
@@ -100,3 +100,30 @@ pobi, honux가 최종 우승했습니다.
 - else 예약어를 쓰지 않는다.
     - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
     - else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
+    
+## 피드백
+### 준일님
+* collectingAndThen
+```java
+private static List<Car> createCars(String[] names, int position, MoveStrategy moveStrategy) {
+    return Arrays.stream(names)
+            .map(name -> Car.of(name, position, moveStrategy))
+            .collect(Collectors.toList());
+```
+```java
+private static List<Car> createCars(String[] names, int position, MoveStrategy moveStrategy) {
+    return Arrays.stream(processNames(carNames))
+          .map(name -> Car.of(name, position, moveStrategy))
+        .collect(collectingAndThen(toList(), Cars::new));
+}
+```
+
+### gmlwjd9405
+```java
+@DisplayName("Cars 생성: Car 의 이름 배열을 생성자의 인자로 받아 생성")
+@Test
+void create() {
+    assertThatCode(() -> Cars.of(carNames.get(CASE.THREE_VALUES)))
+            .doesNotThrowAnyException();
+}
+```
