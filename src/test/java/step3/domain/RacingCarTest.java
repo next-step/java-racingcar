@@ -10,10 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCarTest {
     @DisplayName("isMovable")
     @Nested
-    class IsMovable {
+    class IsMove {
         @DisplayName("앞으로 전진 가능")
         @Test
-        void isMovable_return_true() {
+        void return_true() {
             // given
             final MovableStrategy mustMoveStrategy = () -> true;
             final RacingCar racingCar = RacingCar.of("1", mustMoveStrategy);
@@ -27,7 +27,7 @@ class RacingCarTest {
 
         @DisplayName("앞으로 전진 불가능")
         @Test
-        void isMovable_return_false() {
+        void return_false() {
             // given
             final MovableStrategy mustNotMoveStrategy = () -> false;
             final RacingCar racingCar = RacingCar.of("1", mustNotMoveStrategy);

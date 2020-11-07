@@ -3,6 +3,7 @@ package step3.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import step3.domain.strategy.MovableStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,52 +11,55 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
-//    private final MovableStrategy MUST_MOVABLE = () -> true;
-//    private final MovableStrategy NEVER_MOVABLE = () -> false;
-//    @DisplayName("우승자 선정")
-//    @Nested
-//    class SelectWinnerNames {
-//        @DisplayName("한명")
-//        @Test
-//        void single() {
-//            // given
-//            final List<RacingCar> racingCars = Arrays.asList(
-//                    new RacingCar("CAR1", MUST_MOVABLE)
-//                    , new RacingCar("CAR2", NEVER_MOVABLE)
-//                    , new RacingCar("CAR3", NEVER_MOVABLE)
-//            );
-//            final RacingGame racingGame = RacingGame.of(racingCars);
-//            final RacingCar car1 = racingCars.get(0);
-//
-//            // when
-//            racingGame.moveRacingCars(1);
-//
-//            // then
-//            final List<String> winners = racingGame.selectWinnerNames();
-//            assertThat(winners.get(0)).isEqualTo(car1.getName());
-//        }
-//
-//        @DisplayName("두명 이상")
-//        @Test
-//        void more_then_two() {
-//            // given
-//            final List<RacingCar> racingCars = Arrays.asList(
-//                    new RacingCar("CAR1", MUST_MOVABLE)
-//                    , new RacingCar("CAR2", MUST_MOVABLE)
-//                    , new RacingCar("CAR3", NEVER_MOVABLE)
-//            );
-//            final RacingGame racingGame = RacingGame.of(racingCars);
-//            
-//            final RacingCar car1 = racingCars.get(0);
-//            final RacingCar car2 = racingCars.get(1);
-//
-//            // when
-//            racingGame.moveRacingCars(1);
-//
-//            // then
-//            final List<String> winners = racingGame.selectWinnerNames();
-//            winners.sort(String::compareTo);
-//            assertThat(winners).isEqualTo(Arrays.asList(car1.getName(), car2.getName()));
-//        }
-//    }
+    private static final MovableStrategy MUST_MOVABLE = () -> true;
+    private static final List<String> CAR_NAMES = Arrays.asList("CAR1", "CAR2", "CAR3");
+    private static final int TEN_TIMES_ATTEMPT = 10;
+
+    @DisplayName("run")
+    @Nested
+    class Run {
+        @DisplayName("결과를 snapshot 리스트로 반환")
+        @Test
+        void return_snapshot_list() {
+            // given
+            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
+            
+            // when
+            final List<Snapshot> snapshots = racingGame.run(TEN_TIMES_ATTEMPT);
+
+            // then
+            assertThat(snapshots).isNotEmpty();
+        }
+
+        @DisplayName("10번 시도 시 레이싱카는 10번 이동")
+        @Test
+        void cars_must_moved_ten_times() {
+            // given
+            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
+            // when
+            final List<Snapshot> snapshots = racingGame.run(TEN_TIMES_ATTEMPT);
+
+            // then
+            final Snapshot lastSnapshot = snapshots.get(TEN_TIMES_ATTEMPT - 1);
+            final List<CarRacingResult> lastCarRacingResults = lastSnapshot.getCarRacingResults();
+            final boolean AllCarMovedAtTenTimes = lastCarRacingResults
+                    .stream()
+                    .mapToInt(CarRacingResult::getCarPosition)
+                    .allMatch(position -> position == TEN_TIMES_ATTEMPT);
+            assertThat(AllCarMovedAtTenTimes).isTrue();
+        }
+        
+        @DisplayName("모두 동일하게 이동시 모두 우승자로 선정")
+        @Test
+        void all_is_winner_if_all_car_moved_same() {
+            // given
+            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
+            // when
+            racingGame.run(TEN_TIMES_ATTEMPT);
+
+            // then
+            final List<String> winners = racingGame.selectWinnerNames();
+            assertThat(winners).isEqualTo(CAR_NAMES);
+        }
+    }
 }
