@@ -6,6 +6,7 @@ import exception.InValidOperatorException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+import validator.HasContentsValidator;
 
 import java.util.Arrays;
 import java.util.List;
