@@ -13,6 +13,7 @@ public class RacingGame {
     private static final SelectWinnerStrategy DEFAULT_SELECT_WINNER_STRATEGY = new SelectFarthestDistanceWinnerStrategy();
     private final List<Car> cars;
     private final SelectWinnerStrategy selectWinnerStrategy;
+    private volatile boolean finished = false;
     private List<Snapshot> snapshots;
 
     private RacingGame(final List<Car> cars, final SelectWinnerStrategy selectWinnerStrategy) {
@@ -30,11 +31,10 @@ public class RacingGame {
         return new RacingGame(cars, selectWinnerStrategy);
     }
 
-    private Snapshot moveRacingCars() {
+    private void moveCars() {
         cars.stream()
                 .filter(Car::isMove)
                 .forEach(Car::moveForward);
-        return createSnapshot();
     }
 
     private Snapshot createSnapshot() {
@@ -52,13 +52,44 @@ public class RacingGame {
     }
 
     public synchronized void run(final int times) {
-        snapshots = new ArrayList<>(times);
-        for (int i = 0; i < times; i++) {
-            snapshots.add(moveRacingCars());
+        if (isFinished()) {
+            return;
         }
+
+        initSnapShots(times);
+
+        for (int i = 0; i < times; i++) {
+            moveCars();
+            saveSnapshot();
+        }
+        
+        changeToFinished();
+    }
+
+    private void initSnapShots(final int times) {
+        snapshots = new ArrayList<>(times);
+    }
+
+    private void saveSnapshot() {
+        snapshots.add(createSnapshot());
     }
 
     public List<Snapshot> extractSnapshots() {
+        if (isNotFinished()) {
+            return Collections.emptyList();
+        }
         return snapshots;
+    }
+
+    private boolean isNotFinished() {
+        return !isFinished();
+    }
+
+    private boolean isFinished() {
+        return finished;
+    }
+
+    private void changeToFinished() {
+        this.finished = true;
     }
 }

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import step3.domain.strategy.MovableStrategy;
 import step3.domain.strategy.SelectFarthestDistanceWinnerStrategy;
 import step3.domain.strategy.SelectWinnerStrategy;
-import step3.view.output.dto.CarRacingResult;
 
 import java.util.Arrays;
 import java.util.List;
