@@ -16,10 +16,6 @@ public class Car {
         this.step = step;
     }
 
-    public void forward() {
-        this.forward(1);
-    }
-
     public void forward(int step) {
         this.step = this.step + step;
     }

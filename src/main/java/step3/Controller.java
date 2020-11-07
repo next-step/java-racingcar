@@ -19,19 +19,11 @@ public class Controller {
         int roundNum = InputView.askRoundNumber();
 
         Racing racing = Racing.of(carNum, roundNum);
-        startRacing(roundNum, racing);
+        racing.race();
+
+        ResultView.printResult(racing.getScoreBoard(), carNum);
 
         SCANNER.close();
-    }
-
-    private static void startRacing(int roundNum, Racing racing) {
-        System.out.println();
-        ResultView.printResultMessage();
-
-        for (int i = 0; i < roundNum; i++) {
-            ResultView.printResult(racing.race());
-            System.out.println();
-        }
     }
 
 }
