@@ -7,14 +7,14 @@ public class RaceBoard {
         System.out.println("실행 결과");
     }
 
-    void show(List<Car> carList){
-        for(Car car: carList){
+    public void show(List<Car> cars){
+        for(Car car: cars){
             System.out.println(getMoveDistance(car));
         }
         System.out.println("");
     }
 
-    private StringBuilder getMoveDistance(Car car){
+    public StringBuilder getMoveDistance(Car car){
         StringBuilder raceDistance = new StringBuilder();
         for(int i = 0; i < car.getMoveDistance(); i++){
             raceDistance.append("-");

@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Cars {
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
-    private Cars(List<Car> carList){
-        this.carList = carList;
+    private Cars(List<Car> cars){
+        this.cars = cars;
     }
 
     public static Cars of(int carCnt){
@@ -19,16 +19,16 @@ public class Cars {
     private static List<Car> makeList(int carCnt){
         List<Car> inputList = new ArrayList<>();
         for(int i = 0; i < carCnt; i++){
-            inputList.add(new Car());
+            inputList.add(new Car(1));
         }
         return inputList;
     }
 
     public void race(Decision moveDecisionMaker){
-        this.carList.forEach(car -> car.move(moveDecisionMaker));
+        this.cars.forEach(car -> car.move(moveDecisionMaker));
     }
 
-    public List<Car> getCarList(){
-        return carList;
+    public List<Car> getCars(){
+        return cars;
     }
 }
