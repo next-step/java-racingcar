@@ -25,6 +25,9 @@ public class Car {
         this.currentPosition += 1;
     }
 
-
+    public <T> T export(CarExporter<T> exporter) {
+        exporter.currentPosition(currentPosition);
+        return exporter.build();
+    }
 
 }

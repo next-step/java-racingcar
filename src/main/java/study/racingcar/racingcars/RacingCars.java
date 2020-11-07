@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.racingcars;
 
 import study.racingcar.car.Car;
 import study.racingcar.car.Engine;
@@ -27,5 +27,10 @@ public class RacingCars {
 
     public void displayCurrentStatus(ResultView resultView) {
         resultView.displayCars(cars);
+    }
+
+    public <T> T export(RacingCarsExporter<T> exporter) {
+        exporter.cars(cars);
+        return exporter.build();
     }
 }

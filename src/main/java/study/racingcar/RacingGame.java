@@ -1,5 +1,6 @@
 package study.racingcar;
 
+import study.racingcar.racingcars.RacingCars;
 import study.racingcar.view.ResultView;
 
 /**
