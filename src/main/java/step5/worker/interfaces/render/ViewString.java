@@ -1,7 +1,7 @@
 package step5.worker.interfaces.render;
 
 public enum ViewString {
-    NEWLINE("\n"),
+    NEWLINE(System.lineSeparator()),
     RESULT_ANNOUNCEMENT(NEWLINE + "실행결과" + NEWLINE),
     MOVE_CHAR("-"),
     DELIMITER(":"),
