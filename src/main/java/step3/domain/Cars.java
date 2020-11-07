@@ -3,6 +3,7 @@ package step3.domain;
 import step3.service.Randomize;
 import step3.service.ScoreInspector;
 
+import javax.naming.Name;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -17,15 +18,15 @@ public class Cars {
 
     private final List<Car> cars;
 
-
-    public Cars(int participants) {
-        this.cars = initCars(participants);
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private static List<Car> initCars(int participants) {
-        return Stream.generate(() -> new Car())
-                .limit(participants)
-                .collect(toList());
+    public static Cars of(String carNames) {
+        String[] names = carNames.split(",");
+        List<Car> participants = Stream.of(names).map(s -> new Car(s)).collect(toList());
+
+        return new Cars(participants);
     }
 
     // 1 round 때마다 각 car score . 해당 score가 move 인지 아닌지 판단 -> move. 점수
@@ -44,6 +45,11 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public int carNum(){
+        return this.cars.size();
+    }
+
 
     @Override
     public int hashCode() {

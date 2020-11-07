@@ -2,6 +2,8 @@ package step3.util;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
+import java.util.Objects;
+
 /**
  * Created By mand2 on 2020-11-04.
  * 검증 or Exception throw
@@ -16,6 +18,13 @@ public class Validator {
         if (value < min || value > max) {
             throw new IllegalArgumentException(
                     String.format("%s must be in range [%s, $s] and type of int", value, min, max));
+        }
+    }
+
+    public static void checkEmpty(String input) {
+        if (Objects.isNull(input) || input.isEmpty()
+                || "".equals(input) || " ".equals(input)) {
+            throw new IllegalArgumentException("경주할 차 이름의 입력값이 없습니다.");
         }
     }
 

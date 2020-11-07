@@ -17,17 +17,17 @@ public class Racing {
     private final Cars cars;
     private List<Integer> scoreBoard;
 
-    private Racing(int participants, int rounds) {
+    private Racing(String carNames, int rounds) {
         this.rounds = rounds;
-        this.cars = new Cars(participants);
+        this.cars = Cars.of(carNames);
         this.scoreBoard = new ArrayList<>();
     }
 
-    public static Racing of(int participants, int rounds) {
-        Validator.checkArgumentInRange(participants, 1);
+    public static Racing of(String carNames, int rounds) {
+        Validator.checkEmpty(carNames);
         Validator.checkArgumentInRange(rounds, 1);
 
-        return new Racing(participants, rounds);
+        return new Racing(carNames, rounds);
     }
 
     public void race() {
@@ -39,6 +39,10 @@ public class Racing {
 
     public List<Integer> getScoreBoard() {
         return this.scoreBoard;
+    }
+
+    public int getParticipantsNum() {
+        return this.cars.carNum();
     }
 
     @Override

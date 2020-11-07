@@ -17,11 +17,13 @@ public class Controller {
     public static void main(String[] args) {
         int carNum = InputView.askCarNumber();
         int roundNum = InputView.askRoundNumber();
+        String carNames = InputView.askCarNames();
 
-        Racing racing = Racing.of(carNum, roundNum);
+//        Racing racing = Racing.of(carNum, roundNum);
+        Racing racing = Racing.of(carNames, roundNum);
         racing.race();
 
-        ResultView.printResult(racing.getScoreBoard(), carNum);
+        ResultView.printResult(racing.getScoreBoard(), racing.getParticipantsNum());
 
         SCANNER.close();
     }
