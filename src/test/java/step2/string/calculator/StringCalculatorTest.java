@@ -1,5 +1,6 @@
 package step2.string.calculator;
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ class StringCalculatorTest {
         assertThatThrownBy(() -> {
             stringCalculator.calculate(null);
         }).isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("입력값이 null이거나 빈 문자열");
+            .hasMessageContaining(Constants.INPUT_IS_NULL_OR_BLANK);
     }
 
     @ParameterizedTest
@@ -35,7 +36,7 @@ class StringCalculatorTest {
         assertThatThrownBy(() -> {
             stringCalculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력값이 null이거나 빈 문자열");
+                .hasMessageContaining(Constants.INPUT_IS_NULL_OR_BLANK);
     }
 
     @ParameterizedTest
@@ -45,7 +46,7 @@ class StringCalculatorTest {
         assertThatThrownBy(() -> {
             stringCalculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("사칙연산 기호가 아님");
+                .hasMessageContaining(Constants.IS_NOT_VALID_OPERATOR);
     }
 
     @ParameterizedTest

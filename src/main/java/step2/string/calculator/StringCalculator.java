@@ -1,10 +1,11 @@
 package step2.string.calculator;
 
+
 public class StringCalculator {
 
     public int calculate(String input) {
         if (isNullOrBlank(input)) {
-            throw new IllegalArgumentException("입력값이 null이거나 빈 문자열");
+            throw new IllegalArgumentException(Constants.INPUT_IS_NULL_OR_BLANK);
         }
         String [] expression = input.split(" ");
         int firstOperand = Integer.parseInt(expression[0]);
@@ -31,6 +32,6 @@ public class StringCalculator {
             return firstOperand / secondOperand;
         }
 
-        throw new IllegalArgumentException("사칙연산 기호가 아님");
+        throw new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR);
     }
 }
