@@ -11,6 +11,7 @@ public class RacingGame {
     private static final SelectWinnerStrategy DEFAULT_SELECT_WINNER_STRATEGY = new SelectFarthestDistanceWinnerStrategy();
     private final List<RacingCar> racingCars;
     private final SelectWinnerStrategy selectWinnerStrategy;
+    private List<Snapshot> snapshots;
 
     private RacingGame(final List<RacingCar> racingCars, final SelectWinnerStrategy selectWinnerStrategy) {
         this.racingCars = Collections.unmodifiableList(racingCars);
@@ -47,11 +48,14 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public synchronized List<Snapshot> run(final int numberAttempts) {
-        final List<Snapshot> snapshots = new ArrayList<>(numberAttempts);
-        for (int i = 0; i < numberAttempts; i++) {
+    public synchronized void run(final int times) {
+        snapshots = new ArrayList<>(times);
+        for (int i = 0; i < times; i++) {
             snapshots.add(moveRacingCars());
         }
+    }
+    
+    public List<Snapshot> extractSnapshots() {
         return snapshots;
     }
 }

@@ -18,9 +18,9 @@ class RacingGameTest {
     private static final List<String> CAR_NAMES = Arrays.asList("CAR1", "CAR2", "CAR3");
     private static final int TEN_TIMES_ATTEMPT = 10;
 
-    @DisplayName("run")
+    @DisplayName("extractSnapshots")
     @Nested
-    class Run {
+    class ExtractSnapshots {
         @DisplayName("결과를 snapshot 리스트로 반환")
         @Test
         void return_snapshot_list() {
@@ -28,8 +28,9 @@ class RacingGameTest {
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE, SELECT_WINNER_STRATEGY);
 
             // when
-            final List<Snapshot> snapshots = racingGame.run(TEN_TIMES_ATTEMPT);
-
+            racingGame.run(TEN_TIMES_ATTEMPT);
+            final List<Snapshot> snapshots = racingGame.extractSnapshots();
+            
             // then
             assertThat(snapshots).isNotEmpty();
         }
@@ -39,8 +40,10 @@ class RacingGameTest {
         void cars_must_moved_ten_times() {
             // given
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
+            
             // when
-            final List<Snapshot> snapshots = racingGame.run(TEN_TIMES_ATTEMPT);
+            racingGame.run(TEN_TIMES_ATTEMPT);
+            final List<Snapshot> snapshots = racingGame.extractSnapshots();
 
             // then
             final Snapshot lastSnapshot = snapshots.get(TEN_TIMES_ATTEMPT - 1);
@@ -57,8 +60,10 @@ class RacingGameTest {
         void all_is_winner_if_all_car_moved_same() {
             // given
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
+            
             // when
             racingGame.run(TEN_TIMES_ATTEMPT);
+            final List<Snapshot> snapshots = racingGame.extractSnapshots();
 
             // then
             final List<String> winners = racingGame.selectWinnerNames();

@@ -33,9 +33,14 @@ public class SimulationResponseInterator {
         final List<String> carNames = request.getCarNames();
         final int times = request.getNumberAttempts();
         final RacingGame racingGame = RacingGame.of(carNames, new RandomMovableStrategy());
-        final List<Snapshot> snapshots = racingGame.run(times);
-        final List<String> winners = racingGame.selectWinnerNames();
 
+        return getResponseAfterGameFinished(racingGame, times);
+    }
+
+    private SimulationResponse getResponseAfterGameFinished(final RacingGame racingGame, final int times) {
+        racingGame.run(times);
+        final List<Snapshot> snapshots = racingGame.extractSnapshots();
+        final List<String> winners = racingGame.selectWinnerNames();
         return new SimulationResponse(snapshots, winners);
     }
 }
