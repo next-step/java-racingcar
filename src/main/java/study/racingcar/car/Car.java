@@ -3,10 +3,11 @@ package study.racingcar.car;
 import java.util.Random;
 
 /**
- * 각 자동차에 대한 위치를 보관하는 책임
+ * 각 자동차에 대한 위치 및 이름을 보관하는 책임
  */
 public class Car {
 
+    private String name;
     private int currentPosition = 1;
 
     public int getCurrentPosition() {

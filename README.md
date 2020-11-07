@@ -11,21 +11,16 @@
 ## 구현할 기능 목록
 
 * Car
-    * CurrentPosition
-    * RandomValueMovingStrategy
-    * 이동기능(전진/멈춤)
+    - 현재 위치 및 사용자를 관리
+    - 이동
+    
+* RacingCars
+    - 경주에 참여하는 자동차들에 대한 상태관리
 
-* CarMovingStrategy(변경가능성높음)
+* GameConfiguration
+    - 게임에 대한 설정 값(자동차 대수, 몇 번의 시도를 할지) 및 Validation
+    - 설정 값을 토대로 자동차 초기화
 
-* RacingGame 
-    * RacingGameUI(변경가능성높음)
-    * RacingCars(List)
-    * 게임 설정값 입력받기(몇 대의 자동차, 몇 번의 이동)
-        * InputView
-    * 현재 자동차들의 상태를 출력하기(UI에 변경을 통지)
-        * ResultView
-
-* UI 
-    * InputView
-    * ResultView
-
+* Winner
+    - 우승자에 대한 정보
+    
