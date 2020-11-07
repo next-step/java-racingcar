@@ -1,8 +1,7 @@
 package racingGame.View;
 
-import racingGame.Cars;
-
 import java.util.List;
+import javafx.util.Pair;
 
 public class ResultView {
 
@@ -15,11 +14,18 @@ public class ResultView {
     System.out.println(RESULT_MESSAGE);
   }
 
-  static public void printStatus(Cars cars) {
-    List<Integer> positions = cars.getPositions();
-
+  public static void printCurrentStatus(List<Integer> positions) {
     for (Integer position : positions) {
       printDash(position);
+    }
+    System.out.println();
+  }
+
+  public static void printCurrentStatusWithName(List<Pair<String, Integer>> nameAndPosition) {
+    for (Pair<String, Integer> position : nameAndPosition) {
+      System.out.print(position.getKey());
+      System.out.print(": ");
+      printDash(position.getValue());
     }
     System.out.println();
   }
@@ -31,4 +37,13 @@ public class ResultView {
     System.out.println();
   }
 
+  static public void printWinner(List<String> winners) {
+
+    System.out.print(winners.get(0));
+    for (int i = 1; i < winners.size(); i++) {
+      System.out.print(",");
+      System.out.print(winners.get(i));
+    }
+    System.out.println("이(가) 최종 우승했습니다.");
+  }
 }
