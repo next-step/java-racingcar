@@ -15,6 +15,18 @@ public class RacingCarGame {
         this.cars = cars;
     }
 
+    public int getCars() {
+        return this.cars;
+    }
+
+    public int getRounds() {
+        return this.rounds;
+    }
+
+    public RacingCar getRacingCarByIndex(int index) {
+        return this.racingCars[index];
+    }
+
     public void run() {
         Random generator = new Random();
         for (int i = 0; i < rounds; i++) {

@@ -19,6 +19,10 @@ public class RacingCar {
         return this.index;
     }
 
+    public boolean getDistanceByIndex(int index) {
+        return this.distance[index];
+    }
+
     public void moveForward(boolean movement) {
         if (index < length) {
             distance[index] = movement;
