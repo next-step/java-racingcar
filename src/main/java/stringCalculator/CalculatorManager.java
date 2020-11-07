@@ -1,5 +1,6 @@
 package stringCalculator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatorManager {
@@ -20,10 +21,28 @@ public class CalculatorManager {
     }
 
     private void calculate(int operand, String operator) {
+        List<Operator> operators = filterOperator(operator);
+        calculate(operand, operators);
+    }
+
+    private List<Operator> filterOperator(String operator) {
+        List<Operator> operators = new ArrayList<>();
         for (Operator value : Operator.values()) {
-            if (operator.equals(value.getOperator())) {
-                result = value.calculate(result, operand);
-            }
+            addIfEquals(operator, value, operators);
+        }
+
+        return operators;
+    }
+
+    private void addIfEquals(String operator, Operator value, List<Operator> operators) {
+        if (operator.equals(value.getOperator())) {
+            operators.add(value);
+        }
+    }
+
+    private void calculate(int operand, List<Operator> operators) {
+        for (Operator value : operators) {
+            result = value.calculate(result, operand);
         }
     }
 
