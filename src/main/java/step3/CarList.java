@@ -18,7 +18,7 @@ public class CarList {
 
     public void nextPosition() {
         for(Car car : carList) {
-            car.move();
+            car.goForward();
         }
     }
 
