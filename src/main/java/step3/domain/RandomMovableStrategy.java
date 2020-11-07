@@ -1,7 +1,5 @@
 package step3.domain;
 
-import step3.domain.MovableStrategy;
-
 import java.util.Random;
 
 public class RandomMovableStrategy implements MovableStrategy {
