@@ -4,15 +4,23 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final SelectWinnerStrategy DEFAULT_SELECT_WINNER_STRATEGY = new SelectFarthestDistanceWinnerStrategy();
     private final List<RacingCar> racingCars;
+    private final SelectWinnerStrategy selectWinnerStrategy;
 
-    private RacingGame(final List<RacingCar> racingCars) {
+    private RacingGame(final List<RacingCar> racingCars, final SelectWinnerStrategy selectWinnerStrategy) {
         this.racingCars = racingCars;
+        this.selectWinnerStrategy = selectWinnerStrategy;
     }
 
     public static RacingGame of(final List<String> carNames, final MovableStrategy movableStrategy) {
         final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, movableStrategy);
-        return new RacingGame(racingCars);
+        return new RacingGame(racingCars, DEFAULT_SELECT_WINNER_STRATEGY);
+    }
+
+    public static RacingGame of(final List<String> carNames, final MovableStrategy movableStrategy, final SelectWinnerStrategy selectWinnerStrategy) {
+        final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, movableStrategy);
+        return new RacingGame(racingCars, selectWinnerStrategy);
     }
 
     public void moveRacingCars() {
@@ -26,19 +34,9 @@ public class RacingGame {
     }
 
     public List<String> selectWinnerNames() {
-        final int farthestDistance = findFarthestDistance();
-
-        return racingCars.stream()
-                .filter(car -> car.isPositionEqual(farthestDistance))
+        return selectWinnerStrategy.select(racingCars).stream()
                 .map(RacingCar::getName)
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());
-    }
-
-    private int findFarthestDistance() {
-        return racingCars.stream()
-                .map(RacingCar::getPosition)
-                .max(Integer::compareTo)
-                .orElse(0);
     }
 }
