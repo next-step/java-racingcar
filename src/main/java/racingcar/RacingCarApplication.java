@@ -3,7 +3,9 @@ package racingcar;
 import racingcar.external.InputView;
 import racingcar.external.ResultView;
 import racingcar.model.Car;
-import racingcar.model.RaceReadyValue;
+import racingcar.dto.RaceReadyValue;
+import racingcar.model.Motor;
+import racingcar.model.RandomMove;
 
 import java.util.List;
 
@@ -19,8 +21,9 @@ public class RacingCarApplication {
 
     public static void main(String[] args) {
         RaceReadyValue raceReadyValue = input();
+        Motor motor = new RandomMove();
 
-        List<Car> cars = RacingCarService.initialCars(raceReadyValue.getCarCount());
+        List<Car> cars = RacingCarService.initialCars(raceReadyValue.getCarCount(), motor);
 
         for (int x = 0; x < raceReadyValue.getTryCount(); x++) {
             RacingCarService.startRaceByStep(cars);
