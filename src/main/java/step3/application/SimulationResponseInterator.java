@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Objects;
 
 import static common.util.Preconditions.checkArgument;
-import static step3.application.ShowSimulationResponseInterator.ErrorMessage.NOT_BE_NULL;
+import static step3.application.SimulationResponseInterator.ErrorMessage.NOT_BE_NULL;
 
-public class ShowSimulationResponseInterator {
+public class SimulationResponseInterator {
 
     public enum ErrorMessage implements Message {
-        NOT_BE_NULL(ShowSimulationResponseInterator.class.getName() + "'s value should not be null"),
+        NOT_BE_NULL(SimulationResponseInterator.class.getName() + "'s value should not be null"),
         ;
 
         private final String message;

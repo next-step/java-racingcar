@@ -2,7 +2,7 @@ package step3.view.output;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.application.ShowSimulationResponseInterator;
+import step3.application.SimulationResponseInterator;
 import step3.application.SimulationRequest;
 import step3.application.SimulationResponse;
 import step3.view.output.presenter.ResultViewPresenter;
@@ -18,7 +18,7 @@ class ResultViewPresenterTest {
         final String carNames = "pobi,crong,honux";
         final String numberAttempts = "5";
         final SimulationRequest request = SimulationRequest.of(carNames, numberAttempts);
-        final ShowSimulationResponseInterator simulator = new ShowSimulationResponseInterator();
+        final SimulationResponseInterator simulator = new SimulationResponseInterator();
         final SimulationResponse simulationResponse = simulator.interact(request);
         final ResultViewPresenter presenter = new ResultViewPresenter(simulationResponse);
 
