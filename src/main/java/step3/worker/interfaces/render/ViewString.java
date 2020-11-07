@@ -1,4 +1,4 @@
-package step3.worker.interfaces.presenter;
+package step3.worker.interfaces.render;
 
 public enum ViewString {
     ENTER_THE_NAME_OF_THE_CARS("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."),

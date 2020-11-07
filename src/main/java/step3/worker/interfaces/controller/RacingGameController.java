@@ -7,10 +7,10 @@ import step3.worker.application.SimulationRequest;
 
 public class RacingGameController {
     private static final SimulationResponseInterator INTERATOR = new SimulationResponseInterator();
+    private static final ResultViewPresenter PRESENTER = new ResultViewPresenter();
 
     public String showSimulationResult(SimulationRequest request) {
         final SimulationResponse response = INTERATOR.interact(request);
-        final ResultViewPresenter resultViewPresenter = new ResultViewPresenter(response);
-        return resultViewPresenter.present();
+        return PRESENTER.present(response);
     }
 }

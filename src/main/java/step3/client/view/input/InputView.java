@@ -1,13 +1,13 @@
 package step3.client.view.input;
 
 import step3.worker.application.SimulationRequest;
-import step3.worker.interfaces.presenter.ViewString;
+import step3.worker.interfaces.render.ViewString;
 import step3.client.view.output.Printer;
 
 import java.util.Scanner;
 
-import static step3.worker.interfaces.presenter.ViewString.ENTER_THE_NAME_OF_THE_CARS;
-import static step3.worker.interfaces.presenter.ViewString.HOW_MUCH_ATTEMPT_QUESTION;
+import static step3.worker.interfaces.render.ViewString.ENTER_THE_NAME_OF_THE_CARS;
+import static step3.worker.interfaces.render.ViewString.HOW_MUCH_ATTEMPT_QUESTION;
 
 public class InputView {
     private InputView() {

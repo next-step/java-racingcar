@@ -18,10 +18,10 @@ class ResultViewPresenterTest {
         final SimulationRequest request = SimulationRequest.of(carNames, numberAttempts);
         final SimulationResponseInterator simulator = new SimulationResponseInterator();
         final SimulationResponse simulationResponse = simulator.interact(request);
-        final ResultViewPresenter presenter = new ResultViewPresenter(simulationResponse);
+        final ResultViewPresenter presenter = new ResultViewPresenter();
 
         // when
-        final String result = presenter.present();
+        final String result = presenter.present(simulationResponse);
 
         // then
         assertThat(result).isNotBlank();

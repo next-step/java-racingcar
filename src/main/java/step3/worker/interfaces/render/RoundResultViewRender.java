@@ -1,4 +1,4 @@
-package step3.worker.interfaces.presenter;
+package step3.worker.interfaces.render;
 
 import step3.worker.domain.Car;
 
@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static step3.worker.interfaces.presenter.ViewString.*;
+import static step3.worker.interfaces.render.ViewString.*;
 
-public class RoundResultViewPresenter implements Presenter {
+public class RoundResultViewRender implements ViewRender {
     private final List<Car> cars;
 
-    public RoundResultViewPresenter(final List<Car> cars) {
+    public RoundResultViewRender(final List<Car> cars) {
         this.cars = cars;
     }
 
     @Override
-    public String present() {
+    public String render() {
         return createRoundResultView() + NEWLINE;
     }
 
