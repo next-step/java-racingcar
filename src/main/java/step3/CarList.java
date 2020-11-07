@@ -1,7 +1,5 @@
 package step3;
 
-import sun.tools.jconsole.OutputViewer;
-
 import java.util.List;
 
 public class CarList {

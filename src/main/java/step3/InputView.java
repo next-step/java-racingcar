@@ -1,6 +1,9 @@
 package step3;
 
+import java.util.Scanner;
+
 public class InputView {
+    public static Scanner scanner = new Scanner(System.in);
 
     private String questionCarNumbers = "자동차 대수는 몇 대 인가요?";
 
@@ -8,12 +11,12 @@ public class InputView {
 
     public int numberOfCars() {
         System.out.println(questionCarNumbers);
-        return CarController.scanner.nextInt();
+        return scanner.nextInt();
     }
 
     public int tryCount() {
         System.out.println(questionTryNumbers);
-        return CarController.scanner.nextInt();
+        return scanner.nextInt();
     }
 
 }

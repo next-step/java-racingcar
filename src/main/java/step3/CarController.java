@@ -1,12 +1,10 @@
 package step3;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarController {
-    public static Scanner scanner = new Scanner(System.in);
 
     public void start() {
         InputView inputView = new InputView();
