@@ -18,7 +18,7 @@ class RacingCarTest {
             final RacingCar racingCar = new RacingCar("1", mustMoveStrategy);
 
             // when
-            final boolean result = racingCar.isMovable();
+            final boolean result = racingCar.isMove();
 
             // then
             assertThat(result).isTrue();
@@ -32,7 +32,7 @@ class RacingCarTest {
             final RacingCar racingCar = new RacingCar("1", mustNotMoveStrategy);
 
             // when
-            final boolean result = racingCar.isMovable();
+            final boolean result = racingCar.isMove();
 
             // then
             assertThat(result).isFalse();

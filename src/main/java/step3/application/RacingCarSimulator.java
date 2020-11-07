@@ -11,7 +11,6 @@ import static common.util.Preconditions.checkArgument;
 import static step3.application.RacingCarSimulator.ErrorMessage.NOT_BE_NULL;
 
 public class RacingCarSimulator {
-    private static final int UNIT_OF_FORWARD = 1;
     private final List<String> carNames;
     private final int numberOfAttempts;
 
@@ -37,18 +36,18 @@ public class RacingCarSimulator {
     }
 
     public SimulationResult simulate() {
-        final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, new RandomMovableStrategy());
-        final RacingMap racingMap = RacingMap.of(racingCars);
-        final List<Snapshot> snapshots = createSimulationSnapshots(racingMap, numberOfAttempts);
+        final RacingGame racingGame = RacingGame.of(carNames, new RandomMovableStrategy());
+        final List<Snapshot> snapshots = createSimulationSnapshots(racingGame, numberOfAttempts);
+        final List<String> winners = racingGame.selectWinnerNames();
 
-        return new SimulationResult(snapshots);
+        return new SimulationResult(snapshots, winners);
     }
 
-    private List<Snapshot> createSimulationSnapshots(final RacingMap racingMap, final int numberOfAttempts) {
+    private List<Snapshot> createSimulationSnapshots(final RacingGame racingGame, final int numberOfAttempts) {
         final List<Snapshot> snapshots = new ArrayList<>(numberOfAttempts);
         for (int i = 0; i < numberOfAttempts; i++) {
-            racingMap.moveRacingCars(UNIT_OF_FORWARD);
-            final Snapshot snapshot = racingMap.createSnapshot();
+            racingGame.moveRacingCars();
+            final Snapshot snapshot = racingGame.createSnapshot();
             snapshots.add(snapshot);
         }
         return snapshots;

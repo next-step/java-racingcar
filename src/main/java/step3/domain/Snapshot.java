@@ -1,17 +1,19 @@
 package step3.domain;
 
+import java.util.List;
+
 public class Snapshot {
-    private final RacingMap racingMap;
+    private final List<CarRacingResult> carRacingResults;
 
-    private Snapshot(final RacingMap racingMap) {
-        this.racingMap = racingMap;
-    }
-    
-    public static Snapshot of(final RacingMap racingMap) {
-        return new Snapshot(racingMap);
+    private Snapshot(final List<CarRacingResult> carRacingResults) {
+        this.carRacingResults = carRacingResults;
     }
 
-    public RacingMap getRacingMap() {
-        return racingMap;
+    public static Snapshot of(final List<CarRacingResult> carRacingResults) {
+        return new Snapshot(carRacingResults);
+    }
+
+    public List<CarRacingResult> getCarRacingResults() {
+        return carRacingResults;
     }
 }

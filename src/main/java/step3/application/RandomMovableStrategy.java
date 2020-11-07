@@ -10,7 +10,7 @@ public class RandomMovableStrategy implements MovableStrategy {
     private static final int MINIMUM_MOVABLE_VALUE = 4;
     
     @Override
-    public boolean isMovable() {
+    public boolean isMove() {
         final int randomValue = RANDOM.nextInt(RANDOM_BOUND);
         return randomValue >= MINIMUM_MOVABLE_VALUE;
     }
