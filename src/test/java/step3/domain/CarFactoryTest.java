@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarFactoryTest {
+class CarFactoryTest {
     private final MovableStrategy movableStrategy = new RandomMovableStrategy();
 
     @DisplayName("'RacingCar' 다중 생성 테스트")
@@ -20,7 +20,7 @@ class RacingCarFactoryTest {
         final List<String> carNames = Arrays.asList("pobi", "crong", "honux");
         
         // when
-        final List<RacingCar> result = RacingCarFactory.createCars(carNames, movableStrategy);
+        final List<Car> result = CarFactory.createCars(carNames, movableStrategy);
 
         // then
         assertThat(result.size()).isEqualTo(carNames.size());

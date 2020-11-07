@@ -7,7 +7,7 @@ import step3.domain.strategy.MovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarTest {
+class CarTest {
     @DisplayName("isMovable")
     @Nested
     class IsMove {
@@ -16,10 +16,10 @@ class RacingCarTest {
         void return_true() {
             // given
             final MovableStrategy mustMoveStrategy = () -> true;
-            final RacingCar racingCar = RacingCar.of("1", mustMoveStrategy);
+            final Car car = Car.of("1", mustMoveStrategy);
 
             // when
-            final boolean result = racingCar.isMove();
+            final boolean result = car.isMove();
 
             // then
             assertThat(result).isTrue();
@@ -30,10 +30,10 @@ class RacingCarTest {
         void return_false() {
             // given
             final MovableStrategy mustNotMoveStrategy = () -> false;
-            final RacingCar racingCar = RacingCar.of("1", mustNotMoveStrategy);
+            final Car car = Car.of("1", mustNotMoveStrategy);
 
             // when
-            final boolean result = racingCar.isMove();
+            final boolean result = car.isMove();
 
             // then
             assertThat(result).isFalse();

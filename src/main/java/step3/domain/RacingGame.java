@@ -9,41 +9,41 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final SelectWinnerStrategy DEFAULT_SELECT_WINNER_STRATEGY = new SelectFarthestDistanceWinnerStrategy();
-    private final List<RacingCar> racingCars;
+    private final List<Car> cars;
     private final SelectWinnerStrategy selectWinnerStrategy;
     private List<Snapshot> snapshots;
 
-    private RacingGame(final List<RacingCar> racingCars, final SelectWinnerStrategy selectWinnerStrategy) {
-        this.racingCars = Collections.unmodifiableList(racingCars);
+    private RacingGame(final List<Car> cars, final SelectWinnerStrategy selectWinnerStrategy) {
+        this.cars = Collections.unmodifiableList(cars);
         this.selectWinnerStrategy = selectWinnerStrategy;
     }
 
     public static RacingGame of(final List<String> carNames, final MovableStrategy movableStrategy) {
-        final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, movableStrategy);
-        return new RacingGame(racingCars, DEFAULT_SELECT_WINNER_STRATEGY);
+        final List<Car> cars = CarFactory.createCars(carNames, movableStrategy);
+        return new RacingGame(cars, DEFAULT_SELECT_WINNER_STRATEGY);
     }
 
     public static RacingGame of(final List<String> carNames, final MovableStrategy movableStrategy, final SelectWinnerStrategy selectWinnerStrategy) {
-        final List<RacingCar> racingCars = RacingCarFactory.createCars(carNames, movableStrategy);
-        return new RacingGame(racingCars, selectWinnerStrategy);
+        final List<Car> cars = CarFactory.createCars(carNames, movableStrategy);
+        return new RacingGame(cars, selectWinnerStrategy);
     }
 
     private Snapshot moveRacingCars() {
-        racingCars.stream()
-                .filter(RacingCar::isMove)
-                .forEach(RacingCar::moveForward);
+        cars.stream()
+                .filter(Car::isMove)
+                .forEach(Car::moveForward);
         return createSnapshot();
     }
 
     private Snapshot createSnapshot() {
-        return Snapshot.of(racingCars.stream()
-                .map(RacingCar::createRacingResult)
+        return Snapshot.of(cars.stream()
+                .map(Car::createRacingResult)
                 .collect(Collectors.toList()));
     }
 
     public List<String> selectWinnerNames() {
-        return selectWinnerStrategy.select(racingCars).stream()
-                .map(RacingCar::getName)
+        return selectWinnerStrategy.select(cars).stream()
+                .map(Car::getName)
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());
     }
