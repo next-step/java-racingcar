@@ -40,10 +40,21 @@ public class Calculator {
     public int changeResult (String input) {
         String[] st = input.split(" ");
         int result = 0;
-        for(int i = 0; i < st.length-1; i+=2) {
+        for (int i = 0; i < st.length; i += 2) {
             String op = st[i];
             result = Integer.parseInt(op);
         }
+        System.out.println(result);
         return result;
     }
+
+    public void changeString (String input) {
+        String[] st = input.split(" ");
+        for (int i = 1; i < st.length - 1; i += 2) {
+            String operator = st[i];
+            System.out.println(operator);
+//            result = stringCalculator.calculator(result, operator, Integer.parseInt(strings[i + 1]));
+        }
+    }
 }
+
