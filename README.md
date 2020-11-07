@@ -74,7 +74,60 @@ void contains() {
 - 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 **`split(" ")`** 메서드를 활용한다.
 - 반복적인 패턴을 찾아 반복문을 구현한다.
 
+## 자동차경주
 
+### 기능요구 사항
+
+- 초간단 자동차 경주게임
+- 주어진 횟수동안 n대의 자동차는 전진 또는 정지할 수 있다.
+- 사용자는 몇 대의 자동차로 몇 번 이동할지 입력할 수 있다.
+- 전진 조건은 0 ~ 9 까지 random 값 중 4이상 일 때 이다.
+- 자동차의 상태를 출력한다. 어느 시점에 출력할지에 대한 제약은 없다.
+
+### 실행결과
+
+```
+자동차 대수는 몇대 인가요?
+3
+시도할 회수는 몇 회 인가요?
+5
+
+실행 결과
+-
+-
+-
+
+--
+-
+--
+
+---
+--
+---
+
+----
+---
+----
+
+----
+----
+-----
+```
+
+### 힌트
+- 값을 입력 받는 API는 Scanner를 이용한다.
+```java
+Scanner scanner = new Scanner(System.in);
+String value = scanner.nextLine();
+int number = scanner.nextInt();
+```
+- 랜덤 값은 자바 java.util.Random 클래스의 nextInt(10) 메소드를 활용한다.
+
+### 프로그래밍 요구사항
+
+- 모든 로직에 테스트를 구현한다. 단, UI(System.out, System.in) 로직은 제외
+  - 핵심 로직을 구현하는 코드와 UI 담당 로직을 분리한다.
+  - UI 로직을 InputView, ResultView와 같은 클래스로 분리한다.
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
