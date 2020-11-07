@@ -121,7 +121,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("strategy 가 stop 으로 바뀌면 전진하지 않는.")
+    @DisplayName("strategy 가 stop 으로 바뀌면 전진하지 않는다.")
     void setStrategy() {
         String name = "car";
         MoveStrategy proceedStrategy = ProceedStrategy.getInstance();

@@ -13,11 +13,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 class RacingGameTest {
 
     @Test
-    void setStrategy() {
-        // TODO:
-    }
-
-    @Test
     @DisplayName("gameOver 되었음에도 race 를 하면, GameOverException 이 발생한다.")
     void race() {
         String nameCsv = "1,2,3";
@@ -47,15 +42,5 @@ class RacingGameTest {
         boolean expectedGameOver = loop >= maxRaceNum;
         assertThat(game.checkGameOver())
                 .isEqualTo(expectedGameOver);
-    }
-
-    @Test
-    void getHistory() {
-        // TODO:
-    }
-
-    @Test
-    void getWinners() {
-        // TODO:
     }
 }

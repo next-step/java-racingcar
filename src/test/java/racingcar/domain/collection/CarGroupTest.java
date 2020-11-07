@@ -7,6 +7,7 @@ import racingcar.asset.CarGroupConst;
 import racingcar.domain.model.Car;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.ProceedStrategy;
+import racingcar.domain.strategy.StopStrategy;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -36,21 +37,6 @@ class CarGroupTest {
 
         assertThat(carGroup.getPositions())
                 .isEqualTo(expectedList);
-    }
-
-    @Test
-    void createMemento() {
-        // TODO:
-    }
-
-    @Test
-    void restoreMemento() {
-        // TODO:
-    }
-
-    @Test
-    void getPositions() {
-        // TODO:
     }
 
     @Test
@@ -90,13 +76,29 @@ class CarGroupTest {
     }
 
     @Test
-    void testGetWinners() {
-        // TODO:
-    }
-
-    @Test
+    @DisplayName("strategy 가 stop 으로 바뀌면 전진하지 않는다.")
     void setStrategy() {
-        // TODO:
+        String nameCsv = "0,1,2,3,4,5,6,7,8,9";
+        MoveStrategy proceedStrategy = ProceedStrategy.getInstance();
+        MoveStrategy stopStrategy = StopStrategy.getInstance();
+
+        CarGroup carGroup = new CarGroup(nameCsv, proceedStrategy);
+        carGroup.moveCar();
+        carGroup.setStrategy(stopStrategy);
+        for (int i = 0; i < 100; i++) {
+            carGroup.moveCar();
+        }
+
+        int movedPosition = 2;
+        int carNum = nameCsv
+                .split(CarGroupConst.NAME_SPLIT_REGEX)
+                .length;
+        Integer[] expectedPositions = new Integer[carNum];
+        Arrays.fill(expectedPositions, movedPosition);
+        List<Integer> expectedList = Arrays.asList(expectedPositions);
+
+        assertThat(carGroup.getPositions())
+                .isEqualTo(expectedList);
     }
 
 
