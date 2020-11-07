@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import step3.domain.strategy.MovableStrategy;
+import step3.domain.strategy.SelectFarthestDistanceWinnerStrategy;
+import step3.domain.strategy.SelectWinnerStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
+    private static final SelectWinnerStrategy SELECT_WINNER_STRATEGY = new SelectFarthestDistanceWinnerStrategy();
     private static final MovableStrategy MUST_MOVABLE = () -> true;
     private static final List<String> CAR_NAMES = Arrays.asList("CAR1", "CAR2", "CAR3");
     private static final int TEN_TIMES_ATTEMPT = 10;
@@ -22,8 +25,8 @@ class RacingGameTest {
         @Test
         void return_snapshot_list() {
             // given
-            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
-            
+            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE, SELECT_WINNER_STRATEGY);
+
             // when
             final List<Snapshot> snapshots = racingGame.run(TEN_TIMES_ATTEMPT);
 
@@ -48,7 +51,7 @@ class RacingGameTest {
                     .allMatch(position -> position == TEN_TIMES_ATTEMPT);
             assertThat(AllCarMovedAtTenTimes).isTrue();
         }
-        
+
         @DisplayName("모두 동일하게 이동시 모두 우승자로 선정")
         @Test
         void all_is_winner_if_all_car_moved_same() {
