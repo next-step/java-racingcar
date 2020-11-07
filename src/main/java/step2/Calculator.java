@@ -20,17 +20,30 @@ public class Calculator {
         }
         return num1 / num2;
     }
-    public void vaildate(String input){
-        if(input.trim().isEmpty() || input == null){
+
+    public void vaildate (String input) {
+        if (input.trim().isEmpty() || input == null) {
             throw new IllegalArgumentException("에러");
         }
     }
-    public String[] splitCheck(String input){
-       return input.split(" ");
-    }
-    public void operatorCheck(String input){
-        if(!"+".equals(input) && !"-".equals(input) && !"*".equals(input) && !"/".equals(input)){
+
+    public void operatorCheck (String input) {
+        if (!"+".equals(input) && !"-".equals(input) && !"*".equals(input) && !"/".equals(input)) {
             throw new IllegalArgumentException("연산기호가 아닙니다");
         }
+    }
+
+    public String[] splitCheck (String input) {
+        return input.split(" ");
+    }
+
+    public int changeResult (String input) {
+        String[] st = input.split(" ");
+        int result = 0;
+        for(int i = 0; i < st.length-1; i+=2) {
+            String op = st[i];
+            result = Integer.parseInt(op);
+        }
+        return result;
     }
 }

@@ -4,6 +4,7 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,7 +55,16 @@ public class CalculatorTest {
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
     @ParameterizedTest
     @ValueSource(strings = {"="})
-    public void OperatorCheck (String data) {
+    public void operatorCheck (String data) {
         assertThrows(IllegalArgumentException.class, () -> calculator.operatorCheck(data));
+
     }
+
+    @DisplayName("integer로 변환")
+    @ParameterizedTest
+    @ValueSource(strings = {"2 + 3 * 4 / 2"})
+    public void changeResult (String data) {
+        assertThat(calculator.changeResult(data)).isEqualTo(4);
+    }
+
 }
