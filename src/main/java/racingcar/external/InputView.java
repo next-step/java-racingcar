@@ -1,18 +1,16 @@
 package racingcar.external;
 
-import java.util.Scanner;
+import racingcar.dto.RaceReadyValue;
 
-public class InputView implements Input {
+public class InputView {
 
-    Scanner scanner;
+    private static final String INPUT_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
+    private static final String INPUT_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 
-    public InputView() {
-        scanner = new Scanner(System.in);
-    }
+    public static RaceReadyValue input(InputChannel inputChannel) {
+        int carCount = inputChannel.input(INPUT_CAR_COUNT);
+        int tryCount = inputChannel.input(INPUT_TRY_COUNT);
 
-    @Override
-    public int input(String s) {
-        System.out.println(s);
-        return scanner.nextInt();
+        return new RaceReadyValue(carCount, tryCount);
     }
 }
