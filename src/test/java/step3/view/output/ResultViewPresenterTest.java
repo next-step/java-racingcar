@@ -17,9 +17,9 @@ class ResultViewPresenterTest {
         // given
         final String carNames = "pobi,crong,honux";
         final String numberAttempts = "5";
-        final SimulationRequest condition = SimulationRequest.of(carNames, numberAttempts);
-        final ShowSimulationResponseInterator simulator = new ShowSimulationResponseInterator(condition);
-        final SimulationResponse simulationResponse = simulator.interact();
+        final SimulationRequest request = SimulationRequest.of(carNames, numberAttempts);
+        final ShowSimulationResponseInterator simulator = new ShowSimulationResponseInterator();
+        final SimulationResponse simulationResponse = simulator.interact(request);
         final ResultViewPresenter presenter = new ResultViewPresenter(simulationResponse);
 
         // when

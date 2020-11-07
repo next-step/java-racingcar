@@ -11,8 +11,6 @@ import static common.util.Preconditions.checkArgument;
 import static step3.application.ShowSimulationResponseInterator.ErrorMessage.NOT_BE_NULL;
 
 public class ShowSimulationResponseInterator {
-    private final List<String> carNames;
-    private final int numberAttempts;
 
     public enum ErrorMessage implements Message {
         NOT_BE_NULL(ShowSimulationResponseInterator.class.getName() + "'s value should not be null"),
@@ -29,15 +27,13 @@ public class ShowSimulationResponseInterator {
         }
     }
 
-    public ShowSimulationResponseInterator(final SimulationRequest condition) {
-        checkArgument(Objects.nonNull(condition), NOT_BE_NULL);
-        this.carNames = condition.getCarNames();
-        this.numberAttempts = condition.getNumberAttempts();
-    }
+    public SimulationResponse interact(final SimulationRequest request) {
+        checkArgument(Objects.nonNull(request), NOT_BE_NULL);
 
-    public SimulationResponse interact() {
+        final List<String> carNames = request.getCarNames();
+        final int times = request.getNumberAttempts();
         final RacingGame racingGame = RacingGame.of(carNames, new RandomMovableStrategy());
-        final List<Snapshot> snapshots = racingGame.run(numberAttempts);
+        final List<Snapshot> snapshots = racingGame.run(times);
         final List<String> winners = racingGame.selectWinnerNames();
 
         return new SimulationResponse(snapshots, winners);

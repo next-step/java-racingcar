@@ -19,7 +19,7 @@ class ShowSimulationResponseInteratorTest {
     void constructor_throw_IllegalArgumentException_when_condition_is_null() {
         // when
         final Throwable thrown = catchThrowable(() -> {
-            new ShowSimulationResponseInterator(null);
+            new ShowSimulationResponseInterator().interact(null);
         });
 
         // then
@@ -33,10 +33,10 @@ class ShowSimulationResponseInteratorTest {
     void simulate(final String carNames, final String numberAttempts) {
         // given
         final SimulationRequest request = SimulationRequest.of(carNames, numberAttempts);
-        final ShowSimulationResponseInterator simulator = new ShowSimulationResponseInterator(request);
+        final ShowSimulationResponseInterator simulator = new ShowSimulationResponseInterator();
         
         // when
-        final SimulationResponse result = simulator.interact();
+        final SimulationResponse result = simulator.interact(request);
         
         // then
         assertThat(result.getSnapshots().size()).isEqualTo(Integer.valueOf(numberAttempts));

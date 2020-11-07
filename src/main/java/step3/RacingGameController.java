@@ -8,6 +8,7 @@ import step3.view.input.InputView;
 import step3.view.output.ResultView;
 
 public class RacingGameController {
+    private static final ShowSimulationResponseInterator INTERATOR = new ShowSimulationResponseInterator();
     public static void main(String[] args) {
         final SimulationRequest request = receiveRequest();
         final SimulationResponse response = showSimulationResponse(request);
@@ -18,9 +19,8 @@ public class RacingGameController {
         return InputView.receiveSimulationCondition();
     }
 
-    private static SimulationResponse showSimulationResponse(final SimulationRequest condition) {
-        final ShowSimulationResponseInterator interator = new ShowSimulationResponseInterator(condition);
-        return interator.interact();
+    private static SimulationResponse showSimulationResponse(final SimulationRequest request) {
+        return INTERATOR.interact(request);
     }
 
     private static void print(final SimulationResponse response) {
