@@ -1,21 +1,29 @@
 package racing;
 
-import racing.domain.Grid;
-import java.util.LinkedList;
+import racing.domain.Car;
+import racing.domain.Cars;
+
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class CarRacing {
 
-    private int cars = 0;
-    private int rounds = 0;
+    private final Cars cars;
+    private int maxLaps = 0;
 
-    public CarRacing(int cars, int rounds) {
-        this.cars = cars;
-        this.rounds = rounds;
+    public CarRacing(int numberOfCars,int maxLaps) {
+        this.cars = new Cars(numberOfCars);
+        this.maxLaps = maxLaps;
+        start();
     }
 
-    public Grid start() {
-        return new Grid(new LinkedList<>())
-                .lineUp(this.cars)
-                .standingStart(this.rounds);
+    public List<Car> getRacingCars() {
+        return cars.getCars();
+    }
+
+    private void start() {
+        IntStream.range(0,maxLaps)
+                .filter(i -> i < maxLaps)
+                .forEach(e -> cars.moves());
     }
 }

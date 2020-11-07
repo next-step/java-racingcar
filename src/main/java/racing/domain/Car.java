@@ -1,29 +1,40 @@
 package racing.domain;
 
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
+import static racing.domain.CarConfig.*;
 
 public class Car {
 
-    private final AtomicInteger distance = new AtomicInteger();
-    private static final String SKID_MARK = "- ";
+    private final CarThrottleSensor sensor = new CarThrottleSensor();
+    private final String name;
 
-    public void move() {
-        int random = new Random().nextInt(10);
-        if(random >= 4) distance.addAndGet(1);
+    private final ElectronicControlUnit ecu;
+    private int distance;
+
+    public Car(String name) {
+        this.name = name;
+        this.ecu = new ElectronicControlUnit();
+        this.distance = 0;
     }
 
-    public String skidMark() {
-        if(distance.intValue() == 0) {
-            return SKID_MARK+" \n";
+    public void move() {
+        distance++;
+        if(sensor.check()) {
+            ecu.speedRecord(ECU_NORMAL_MOVE_CODE);
+            return;
         }
+        ecu.speedRecord(ECU_STOP_MOVE_CODE);
+    }
 
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < distance.intValue(); i += 1) {
-            sb.append(SKID_MARK);
-        }
-        sb.append("\n");
-        return sb.toString();
+    public ElectronicControlUnit getEcu() {
+        return ecu;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
 }
