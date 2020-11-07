@@ -17,12 +17,25 @@ public class Winners {
 
     public Winners() {
         this.names = new ArrayList<>();
-        this.position = Car.INITIAL_POSITION;
+        this.position = null;
     }
 
     public void checkNewPlayerRecord(String name, int position) {
+        if (checkNewPlayerIsFirst(name, position))
+            return;
+
         checkNewPlayerSamePosition(name, position);
         checkNewPlayerHigher(name, position);
+    }
+
+    private boolean checkNewPlayerIsFirst(String name, int position) {
+        if (this.position == null) {
+            names.add(name);
+            this.position = position;
+            return true;
+        }
+
+        return false;
     }
 
     private void checkNewPlayerHigher(String name, int position) {
