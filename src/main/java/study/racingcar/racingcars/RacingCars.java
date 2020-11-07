@@ -5,6 +5,8 @@ import study.racingcar.car.Engine;
 import study.racingcar.view.ResultView;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * 경주에 참여하는 자동차를 보관하고 상태를 관리하는 책임
@@ -23,6 +25,29 @@ public class RacingCars {
         for (Car car : cars) {
             car.move(engineOfRacingCars);
         }
+    }
+
+    public List<Car> whoIsFrontRunners() {
+
+        int frontPosition = getFrontPosition();
+
+        return cars.stream()
+                .filter(car -> car.getCurrentPosition() == frontPosition)
+                .collect(Collectors.toList());
+    }
+
+    private int getFrontPosition() {
+
+        int maxPosition = 0;
+
+        for (Car car : cars) {
+            int currentPosition = car.getCurrentPosition();
+            if (maxPosition < currentPosition) {
+                maxPosition = currentPosition;
+            }
+        }
+
+        return maxPosition;
     }
 
     public <T> T export(RacingCarsExporter<T> exporter) {

@@ -48,7 +48,25 @@ class RacingCarsTest {
         CarSnapshot carSnapshot = racingCarsSnapshot.getCarSnapshot().get(0);
         assertEquals(carSnapshot.getCurrentPosition(), 2);
     }
+    
+    @Test
+    @DisplayName("선두주자 찾기")
+    void test_whoIsFrontRunners() {
+        // Given
+        List<Car> cars = new ArrayList<Car>();
+        cars.add(initCar());
+        RacingCars racingCars = new RacingCars(cars, new NewEngine());
 
+        racingCars.nextAttempt();
+
+        // When
+        List<Car> frontRunners = racingCars.whoIsFrontRunners();
+
+        // Then
+        Car frontRunner = frontRunners.get(0);
+        assertEquals(frontRunner.getCurrentPosition(), 2);
+    }
+    
     private Car initCar() {
         return new Car("test");
     }

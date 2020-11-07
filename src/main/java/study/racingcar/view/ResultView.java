@@ -5,6 +5,7 @@ import study.racingcar.car.CarSnapshot;
 import study.racingcar.racingcars.RacingCarsSnapshot;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -43,4 +44,15 @@ public class ResultView {
         }
     }
 
+    public void displayWinner(List<CarSnapshot> winnerSnapshots) {
+
+        List<String> nameOfWinners = winnerSnapshots.stream()
+                .map(CarSnapshot::getName)
+                .collect(Collectors.toList());
+
+        String winnerMessage = String.format("Winner: [%s]"
+                , String.join(",", nameOfWinners));
+
+        System.out.println(winnerMessage);
+    }
 }
