@@ -1,6 +1,7 @@
 package step03;
 
 import step03.strategy.MoveStrategy;
+import validator.NumberValidator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public class Cars {
     }
 
     private static void validateNumberOfCars(int numberOfCars) {
-        Validator.validatePositiveNumber(numberOfCars);
+        NumberValidator.validatePositiveNumber(numberOfCars);
     }
 
     public void move() {

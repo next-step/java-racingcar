@@ -1,6 +1,7 @@
 package step03;
 
 import step03.view.ResultView;
+import validator.NumberValidator;
 
 public class Race {
     private final int numberOfMoves;
@@ -17,7 +18,7 @@ public class Race {
     }
 
     private static void validateNumberOfMoves(int numberOfMoves) {
-        Validator.validatePositiveNumber(numberOfMoves);
+        NumberValidator.validatePositiveNumber(numberOfMoves);
     }
 
     public void operate(ResultView view) {
