@@ -23,22 +23,21 @@ public class InputView {
     return scanner.nextInt();
   }
 
-  public static List<String> askUserNames() {
+  public static String askUserNames() {
     String rawInput;
     List<String> parsedInput;
 
     System.out.println(USER_NAME_QUESTION);
     rawInput = scanner.nextLine();
 
-    parsedInput = parseRawInput(rawInput);
-    if (parsedInput.size() < 1){
+    if (rawInput == null || rawInput.length() < 1) {
       throw new IllegalNumCars();
     }
 
-    return parsedInput;
+    return rawInput;
   }
 
-  private static List<String> parseRawInput(String rawInput) {
+  public static List<String> parseRawInput(String rawInput) {
     if (rawInput == null || rawInput.length() < 1) {
       throw new IllegalArgumentException();
     }
