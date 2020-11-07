@@ -1,16 +1,17 @@
 package racing.view;
 
 import lombok.Getter;
-import racing.service.GrandPrixService;
 import racing.view.to.RacingInputTO;
 
 import java.util.Scanner;
 
 @Getter
 public class RacingInputView {
-    private final GrandPrixService grandPrixService = new GrandPrixService();
 
-    public RacingInputTO getRacingInput() {
+    private RacingInputView() {
+    }
+
+    public static RacingInputTO getRacingInput() {
         String drivers;
         String maxRounds;
 

@@ -19,9 +19,7 @@ class RacingInputViewTest {
         ByteArrayInputStream in = new ByteArrayInputStream(sample.getBytes());
         System.setIn(in);
 
-
-        RacingInputView racingInputView = new RacingInputView();
-        RacingInputTO racingInput = racingInputView.getRacingInput();
+        RacingInputTO racingInput = RacingInputView.getRacingInput();
 
         assertThat(racingInput).isNotNull();
         assertThat(racingInput.getDrivers()).containsAll(Arrays.asList(DRIVERS.split(",")));

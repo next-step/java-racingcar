@@ -12,7 +12,6 @@ import racing.view.to.RacingInputTO;
 public class GrandPrixController {
     private final GrandPrixService grandPrixService;
     private final LineUpService lineUpService;
-    private final RacingResultView racingResultView = new RacingResultView();
 
     public GrandPrix create(RacingInputTO racingInputTO) {
         LineUp lineUp = lineUpService.createMachines(racingInputTO.getDrivers());
@@ -20,10 +19,10 @@ public class GrandPrixController {
     }
 
     public void startRace(GrandPrix grandPrix) {
-        racingResultView.ready(grandPrix.getLineUp().getLapMapStatus());
+        RacingResultView.ready(grandPrix.getLineUp().getLapMapStatus());
         while (grandPrix.getCurrentRound() < grandPrix.getMaxRounds()) {
             grandPrix.runRound();
-            racingResultView.viewRound(grandPrix.getLineUp().getLapMapStatus());
+            RacingResultView.viewRound(grandPrix.getLineUp().getLapMapStatus());
         }
 
     }

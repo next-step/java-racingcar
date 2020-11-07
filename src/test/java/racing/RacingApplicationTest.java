@@ -9,7 +9,7 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingApplicationTest {
+class RacingApplicationTest {
     private static final String DRIVERS = "Lewis Hamilton,Valtteri Bottas,Max Verstappen";
     private static final int MAX_ROUND = 5;
 

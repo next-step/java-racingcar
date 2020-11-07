@@ -15,10 +15,9 @@ public class RacingApplication {
     private static AccelerateResolver accelerateResolver = new RandomAccelerateResolver(10, 4);
     private static final LineUpService lineUpService = new LineUpService(new RaceMachineService(), accelerateResolver);
     private static final GrandPrixController grandPrixController = new GrandPrixController(grandPrixService, lineUpService);
-    private static final RacingInputView racingInputView = new RacingInputView();
 
     public static void main(String[] args) {
-        RacingInputTO racingInputTO = racingInputView.getRacingInput();
+        RacingInputTO racingInputTO = RacingInputView.getRacingInput();
         GrandPrix grandPrix = grandPrixController.create(racingInputTO);
         grandPrixController.startRace(grandPrix);
     }
