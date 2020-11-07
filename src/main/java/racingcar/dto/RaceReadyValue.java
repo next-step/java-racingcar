@@ -2,8 +2,8 @@ package racingcar.dto;
 
 public class RaceReadyValue {
 
-    final private int carCount;
-    final private int tryCount;
+    private final int carCount;
+    private final int tryCount;
 
     public RaceReadyValue(int carCount, int tryCount) {
         this.carCount = carCount;
