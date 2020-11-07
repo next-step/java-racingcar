@@ -2,6 +2,8 @@ package step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.strategy.MovableStrategy;
+import step3.domain.strategy.RandomMovableStrategy;
 
 import java.util.Arrays;
 import java.util.List;

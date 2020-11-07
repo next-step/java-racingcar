@@ -1,4 +1,6 @@
-package step3.domain;
+package step3.domain.strategy;
+
+import step3.domain.strategy.MovableStrategy;
 
 import java.util.Random;
 

@@ -2,6 +2,7 @@ package step3.application;
 
 import common.util.Message;
 import step3.domain.*;
+import step3.domain.strategy.RandomMovableStrategy;
 
 import java.util.List;
 import java.util.Objects;

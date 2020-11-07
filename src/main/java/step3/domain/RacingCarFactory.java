@@ -1,5 +1,7 @@
 package step3.domain;
 
+import step3.domain.strategy.MovableStrategy;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,5 +1,7 @@
 package step3.domain;
 
+import step3.domain.strategy.MovableStrategy;
+
 public class RacingCar {
     private int UNIT_OF_FORWARD = 1;
     private final String name;

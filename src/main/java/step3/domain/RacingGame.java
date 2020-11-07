@@ -1,5 +1,9 @@
 package step3.domain;
 
+import step3.domain.strategy.MovableStrategy;
+import step3.domain.strategy.SelectFarthestDistanceWinnerStrategy;
+import step3.domain.strategy.SelectWinnerStrategy;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
