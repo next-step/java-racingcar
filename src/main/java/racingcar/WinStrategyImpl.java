@@ -7,8 +7,7 @@ import java.util.Map.Entry;
 public class WinStrategyImpl implements WinStrategy {
     @Override
     public Winners decideWinners(RoundRecords roundRecords) {
-        List<RoundRecord> roundRecordList = roundRecords.getRoundRecordList();
-        LinkedHashMap<String, Integer> lastRecord = roundRecordList.get(roundRecordList.size() - 1).getRecord();
+        LinkedHashMap<String, Integer> lastRecord = getLastRecord(roundRecords);
 
         Winners winners = new Winners();
         for (Entry<String, Integer> playerRecord : lastRecord.entrySet()) {
@@ -16,5 +15,10 @@ public class WinStrategyImpl implements WinStrategy {
         }
 
         return winners;
+    }
+
+    private LinkedHashMap<String, Integer> getLastRecord(RoundRecords roundRecords) {
+        List<RoundRecord> roundRecordList = roundRecords.getRoundRecordList();
+        return roundRecordList.get(roundRecordList.size() - 1).getRecord();
     }
 }
