@@ -1,6 +1,6 @@
 package step3.view.output.presenter;
 
-import step3.application.SimulationResult;
+import step3.application.SimulationResponse;
 import step3.domain.Snapshot;
 
 import java.util.List;
@@ -12,14 +12,14 @@ public class ResultViewPresenter implements Presenter {
     private final List<RoundResultViewPresenter> roundResultViewPresenters;
     private final WinnerResultViewPresenter winnerResultViewPresenter;
 
-    public ResultViewPresenter(final SimulationResult simulationResult) {
-        final List<Snapshot> snapshots = simulationResult.getSnapshots();
+    public ResultViewPresenter(final SimulationResponse simulationResponse) {
+        final List<Snapshot> snapshots = simulationResponse.getSnapshots();
 
         this.roundResultViewPresenters = snapshots.stream()
                 .map(Snapshot::getCarRacingResults)
                 .map(RoundResultViewPresenter::new)
                 .collect(Collectors.toList());
-        this.winnerResultViewPresenter = new WinnerResultViewPresenter(simulationResult.getWinners());
+        this.winnerResultViewPresenter = new WinnerResultViewPresenter(simulationResponse.getWinners());
     }
 
     @Override

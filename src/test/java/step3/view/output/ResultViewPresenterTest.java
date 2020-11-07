@@ -2,9 +2,9 @@ package step3.view.output;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.application.RacingCarSimulator;
-import step3.application.SimulationCondition;
-import step3.application.SimulationResult;
+import step3.application.ShowSimulationResponseInterator;
+import step3.application.SimulationRequest;
+import step3.application.SimulationResponse;
 import step3.view.output.presenter.ResultViewPresenter;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,10 +17,10 @@ class ResultViewPresenterTest {
         // given
         final String carNames = "pobi,crong,honux";
         final String numberAttempts = "5";
-        final SimulationCondition condition = SimulationCondition.of(carNames, numberAttempts);
-        final RacingCarSimulator simulator = new RacingCarSimulator(condition);
-        final SimulationResult simulationResult = simulator.simulate();
-        final ResultViewPresenter presenter = new ResultViewPresenter(simulationResult);
+        final SimulationRequest condition = SimulationRequest.of(carNames, numberAttempts);
+        final ShowSimulationResponseInterator simulator = new ShowSimulationResponseInterator(condition);
+        final SimulationResponse simulationResponse = simulator.interact();
+        final ResultViewPresenter presenter = new ResultViewPresenter(simulationResponse);
 
         // when
         final String result = presenter.present();

@@ -8,9 +8,9 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static step3.application.SimulationCondition.ErrorMessage.*;
+import static step3.application.SimulationRequest.ErrorMessage.*;
 
-class SimulationConditionTest {
+class SimulationRequestTest {
     @DisplayName("of 생성자")
     @Nested
     class Of {
@@ -23,7 +23,7 @@ class SimulationConditionTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationCondition.of(carNames, numberAttempts);
+                SimulationRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -40,7 +40,7 @@ class SimulationConditionTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationCondition.of(carNames, numberAttempts);
+                SimulationRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -57,7 +57,7 @@ class SimulationConditionTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationCondition.of(carNames, numberAttempts);
+                SimulationRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -74,7 +74,7 @@ class SimulationConditionTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationCondition.of(carNames, numberAttempts);
+                SimulationRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -90,7 +90,7 @@ class SimulationConditionTest {
             final String numberAttempts = "10";
 
             // when
-            final SimulationCondition result = SimulationCondition.of(carNames, numberAttempts);
+            final SimulationRequest result = SimulationRequest.of(carNames, numberAttempts);
 
             // then
             assertThat(result).isNotNull();

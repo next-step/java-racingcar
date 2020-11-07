@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Objects;
 
 import static common.util.Preconditions.checkArgument;
-import static step3.application.SimulationCondition.ErrorMessage.*;
+import static step3.application.SimulationRequest.ErrorMessage.*;
 
-public class SimulationCondition {
+public class SimulationRequest {
     public enum ErrorMessage implements Message {
         NAME_OF_CAR_LENGTH_MUST_BELOW_THEN_FIVE("name of car's length must below then 5"),
         CAR_NAME_MUST_NOT_BE_DUPLICATED("car name must not be duplicated"),
-        NAME_OF_CARS_MUST_NOT_BE_BLANK(SimulationCondition.class.getName() + "'s carNames must not blank"),
+        NAME_OF_CARS_MUST_NOT_BE_BLANK(SimulationRequest.class.getName() + "'s carNames must not blank"),
         NUMBER_OF_CAR_MUST_MORE_THEN_ONE("number of car must more then 1"),
-        NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE(SimulationCondition.class.getName() + "'s numberAttempts must more then 1"),
+        NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE(SimulationRequest.class.getName() + "'s numberAttempts must more then 1"),
         ;
 
         private final String message;
@@ -34,13 +34,13 @@ public class SimulationCondition {
     private final List<String> carNames;
     private final int numberAttempts;
 
-    private SimulationCondition(final List<String> carNames, final int numberAttempts) {
+    private SimulationRequest(final List<String> carNames, final int numberAttempts) {
         this.carNames = carNames;
         this.numberAttempts = numberAttempts;
     }
 
-    public static SimulationCondition of(final String carNames, final String numberAttempts) {
-        return new SimulationCondition(createCarNames(carNames), createNumberAttempts(numberAttempts));
+    public static SimulationRequest of(final String carNames, final String numberAttempts) {
+        return new SimulationRequest(createCarNames(carNames), createNumberAttempts(numberAttempts));
     }
 
     private static List<String> createCarNames(final String carNamesExpression) {

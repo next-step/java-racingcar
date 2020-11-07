@@ -5,11 +5,11 @@ import step3.domain.Snapshot;
 import java.util.Collections;
 import java.util.List;
 
-public class SimulationResult {
+public class SimulationResponse {
     private final List<Snapshot> snapshots;
     private final List<String> winners;
 
-    public SimulationResult(final List<Snapshot> snapshots, final List<String> winners) {
+    public SimulationResponse(final List<Snapshot> snapshots, final List<String> winners) {
         this.snapshots = Collections.unmodifiableList(snapshots);
         this.winners = Collections.unmodifiableList(winners);
     }

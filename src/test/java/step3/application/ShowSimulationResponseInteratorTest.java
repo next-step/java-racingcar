@@ -10,16 +10,16 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static step3.application.RacingCarSimulator.ErrorMessage.NOT_BE_NULL;
+import static step3.application.ShowSimulationResponseInterator.ErrorMessage.NOT_BE_NULL;
 
-class RacingCarSimulatorTest {
+class ShowSimulationResponseInteratorTest {
 
     @DisplayName("'condition'이 null 인 경우 'IllegalArgumentException'를 throw")
     @Test
     void constructor_throw_IllegalArgumentException_when_condition_is_null() {
         // when
         final Throwable thrown = catchThrowable(() -> {
-            new RacingCarSimulator(null);
+            new ShowSimulationResponseInterator(null);
         });
 
         // then
@@ -32,11 +32,11 @@ class RacingCarSimulatorTest {
     @MethodSource("generateSampleForSimulateMethodTesting")
     void simulate(final String carNames, final String numberAttempts) {
         // given
-        final SimulationCondition condition = SimulationCondition.of(carNames, numberAttempts);
-        final RacingCarSimulator simulator = new RacingCarSimulator(condition);
+        final SimulationRequest request = SimulationRequest.of(carNames, numberAttempts);
+        final ShowSimulationResponseInterator simulator = new ShowSimulationResponseInterator(request);
         
         // when
-        final SimulationResult result = simulator.simulate();
+        final SimulationResponse result = simulator.interact();
         
         // then
         assertThat(result.getSnapshots().size()).isEqualTo(Integer.valueOf(numberAttempts));
