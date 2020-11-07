@@ -9,6 +9,9 @@ public class CarSnapshotExporter implements CarExporter<CarSnapshot>{
     }
 
     @Override
+    public void name(String name) { carSnapshot.setName(name); }
+
+    @Override
     public void currentPosition(int currentPosition) {
         carSnapshot.setCurrentPosition(currentPosition);
     }

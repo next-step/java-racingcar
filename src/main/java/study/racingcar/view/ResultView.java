@@ -17,19 +17,30 @@ public class ResultView {
     private ResultView() {}
 
     public void displayCurrentStatus(RacingCarsSnapshot racingCarsSnapshot) {
+
         for (CarSnapshot carSnapshot : racingCarsSnapshot.getCarSnapshot()) {
-            displayCar(carSnapshot);
+
+            displayCarName(carSnapshot);
+
+            System.out.print(" : ");
+
+            displayCarCurrentPosition(carSnapshot);
+
+            System.out.println();
         }
-        // 각각의 시도가 끝나면 개행
+
         System.out.println();
 
     }
 
-    private void displayCar(CarSnapshot carSnapshot) {
+    private void displayCarName(CarSnapshot carSnapshot) {
+        System.out.print(carSnapshot.getName());
+    }
+
+    private void displayCarCurrentPosition(CarSnapshot carSnapshot) {
         for (int position = 0; position < carSnapshot.getCurrentPosition(); position++) {
             System.out.print('-');
         }
-        System.out.println();
     }
 
 }

@@ -2,15 +2,15 @@ package study.racingcar.car;
 
 public class CarSnapshot {
 
-    private String carName;
+    private String name;
     private int currentPosition;
 
-    public String getCarName() {
-        return carName;
+    public String getName() {
+        return name;
     }
 
-    public void setCarName(String carName) {
-        this.carName = carName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getCurrentPosition() {

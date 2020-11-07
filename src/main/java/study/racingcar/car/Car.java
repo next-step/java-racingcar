@@ -31,6 +31,7 @@ public class Car {
     }
 
     public <T> T export(CarExporter<T> exporter) {
+        exporter.name(name);
         exporter.currentPosition(currentPosition);
         return exporter.build();
     }
