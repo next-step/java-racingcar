@@ -1,4 +1,4 @@
-package step3.domain;
+package step3.service;
 
 import step3.util.Validator;
 

@@ -1,9 +1,10 @@
 package step3.domain;
 
-import java.util.ArrayList;
+import step3.service.Randomize;
+import step3.service.ScoreInspector;
+
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;

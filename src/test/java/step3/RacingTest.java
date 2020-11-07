@@ -1,12 +1,8 @@
 package step3;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import step3.domain.Racing;
-import step3.view.InputView;
+import step3.service.Racing;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

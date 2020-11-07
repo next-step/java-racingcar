@@ -1,14 +1,11 @@
-package step3.domain;
+package step3.service;
 
+import step3.domain.Cars;
 import step3.util.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
 
 /**
  * Created By mand2 on 2020-11-04.
