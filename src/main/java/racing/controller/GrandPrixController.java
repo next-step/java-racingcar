@@ -19,11 +19,11 @@ public class GrandPrixController {
     }
 
     public void startRace(GrandPrix grandPrix) {
-        RacingResultView.ready(grandPrix.getLineUp().getLapMapStatus());
+        RacingResultView.ready(grandPrix.getLineUp());
         while (grandPrix.getCurrentRound() < grandPrix.getMaxRounds()) {
             grandPrix.runRound();
-            RacingResultView.viewRound(grandPrix.getLineUp().getLapMapStatus());
+            RacingResultView.viewRound(grandPrix.getLineUp());
         }
-
+        RacingResultView.champion(grandPrix.getLineUp());
     }
 }

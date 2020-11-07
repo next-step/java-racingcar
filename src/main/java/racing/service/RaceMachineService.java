@@ -10,7 +10,7 @@ public class RaceMachineService {
 
     public RaceMachine create(RaceMachine raceMachine) {
         raceMachine.setId(raceMachineMap.size());
-        raceMachineMap.putIfAbsent(raceMachine.getId(), raceMachine);
+        raceMachineMap.put(raceMachine.getId(), raceMachine);
         return raceMachine;
     }
 

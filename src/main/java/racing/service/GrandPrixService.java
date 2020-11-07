@@ -12,7 +12,7 @@ public class GrandPrixService {
     public GrandPrix createGrandPrix(LineUp lineUp, int maxRounds) {
         GrandPrix grandPrix = new GrandPrix(lineUp, maxRounds);
         grandPrix.setId(grandPrixMap.size());
-        grandPrixMap.putIfAbsent(grandPrix.getId(), grandPrix);
+        grandPrixMap.put(grandPrix.getId(), grandPrix);
         return grandPrix;
     }
 

@@ -30,6 +30,7 @@ class GrandPrixControllerTest {
         GrandPrix grandPrix = grandPrixController.create(racingInputTO);
         assertThat(grandPrix).isNotNull();
         assertThat(grandPrix.getLineUp()).isNotNull();
+        assertThat(grandPrix.getLineUp().getMachinesInLap(1)).size().isEqualTo(3);
     }
 
     @Test

@@ -17,10 +17,8 @@ class LineUpServiceTest {
         LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis Hamilton", "Valtteri Bottas", "Max Verstappen", "Daniel Ricciardo"));
         assertThat(lineUp).isNotNull();
 
-        //TODO
-//        raceMachineService.getByLineUp(lineUp)
-//        assertThat(lineUp.getRaceMachines()).allSatisfy(raceMachine -> {
-//            assertThat(raceMachine.getAccelerateResolver()).isNotNull();
-//        });
+        lineUp.each(raceMachine -> {
+            assertThat(raceMachine.getAccelerateResolver()).isNotNull();
+        });
     }
 }
