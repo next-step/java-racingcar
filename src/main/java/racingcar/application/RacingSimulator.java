@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.application;
 
-import racingcar.utils.RandomNumberGenerator;
+import racingcar.domain.Car;
 
 public class RacingSimulator {
 
