@@ -4,20 +4,28 @@ public class Car {
 
     private static final int INITIAL_POSITION = 0;
 
+    private String name;
     private int position;
     private Motor motor;
 
-    public Car(Motor motor) {
+    public Car(String name, Motor motor) {
+        this.name = name;
         this.position = INITIAL_POSITION;
         this.motor = motor;
     }
 
     public void run() {
-        motor.run(this);
+        if (motor.run()) {
+            move();
+        }
     }
 
     public void move() {
         this.position++;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public int getPosition() {
