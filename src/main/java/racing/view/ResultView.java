@@ -13,13 +13,9 @@ public class ResultView {
     private static final String FIRST_EXECUTE_RESULT_MESSAGE = "실행 결과";
     private static final String SKID_MARK = "-";
 
-    private final RaceResult raceResult;
+    private ResultView() {}
 
-    public ResultView(RaceResult raceResult) {
-        this.raceResult = raceResult;
-    }
-
-    public void viewRaceResult() {
+    public static void viewRaceResult(RaceResult raceResult) {
         printFirstMessage();
 
         int maxLaps = raceResult.getMaxLaps();
@@ -31,13 +27,13 @@ public class ResultView {
         }
     }
 
-    public void printFirstMessage() {
+    private static void printFirstMessage() {
         System.out.print("\n");
         System.out.printf("%s \n",FIRST_EXECUTE_RESULT_MESSAGE);
         System.out.print("\n");
     }
 
-    private void parseRecord(CarSetInRace setInRace,int index) {
+    private static void parseRecord(CarSetInRace setInRace,int index) {
         String raceRecord = setInRace.findRecord(index);
         raceRecord = Pattern.compile(CAR_RECORD_STRING_SEPARATOR)
                 .splitAsStream(raceRecord)

@@ -11,7 +11,6 @@ public class RacingArena {
         CarRacing carRacing = new CarRacing(vehicleCount,maxCheckPoint);
         carRacing.start();
 
-        ResultView resultView = new ResultView(carRacing.getRaceResults());
-        resultView.viewRaceResult();
+        ResultView.viewRaceResult(carRacing.getRaceResults());
     }
 }
