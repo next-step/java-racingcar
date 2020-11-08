@@ -6,38 +6,28 @@ public class RacingCar {
     //counts, attempts
     private int counts;
     private int attempts;
-    private Car[] car;
+    private Cars cars;
 
-    public RacingCar(Map<String, Integer> inputs){
-        this.counts = inputs.get("counts");
-        this.attempts = inputs.get("attempts");
-    }
-    //Getter Methods - start
-    public int getCounts(){
-        return this.counts;
+    public RacingCar(RacingDTO racingDTO){
+        this.counts = racingDTO.getCounts();
+        this.attempts = racingDTO.getAttempts();
     }
 
-    public int getAttempts(){
-        return this.attempts;
+    public Cars getCars() {
+        return this.cars;
     }
-
-    public Car[] getCars(){
-        return this.car;
-    }
-    //Getter Methods - end
 
     //경기 출전 자동차 객체 초기화
     public void readToCar(int count){
-        this.car = new Car[count];
-        for(int i=0;i<count;i++){
-            this.car[i] = new Car();
-        }
+        this.cars = new Cars(count);
     }
 
     //자동차 객체별 난수 발생
     public void instructMove(){
+        MoveCheckor moveCheckor = new MoveCheckor();
         for(int i=0;i<this.counts;i++) {
-            this.car[i].decision(this.attempts);
+            moveCheckor.moveAndStop(this.cars.getCars().get(i),this.attempts );
+
         }
     }
 
