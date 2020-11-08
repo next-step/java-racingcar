@@ -28,6 +28,7 @@ public class Winners implements Comparable<Integer> {
         int comparison = compareTo(position);
         if (comparison == 0) {
             names.add(name);
+            return;
         }
 
         if (comparison < 0) {
