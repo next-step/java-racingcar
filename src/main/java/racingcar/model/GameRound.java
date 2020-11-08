@@ -2,30 +2,22 @@ package racingcar.model;
 
 public class GameRound {
 
-    private int participantCar;
-    private int round;
+    private int totalRound;
+    private int currentRound;
     private boolean isAllRoundFinish;
 
-    public GameRound(int participantCar, int round) {
-        this.participantCar = participantCar;
-        this.round = round;
-    }
-
-    public int getParticipantCar() {
-        return participantCar;
+    public GameRound(int totalRound) {
+        this.totalRound = totalRound;
     }
 
     public void roundFinish() {
-        this.round--;
-        if(round == 0){
+        this.currentRound++;
+        if(currentRound == totalRound){
             isAllRoundFinish = true;
         }
     }
 
     public boolean isAllRoundFinish() {
         return isAllRoundFinish;
-    }
-    public int getRound() {
-        return round;
     }
 }
