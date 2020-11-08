@@ -27,11 +27,4 @@ public class RacingCarList {
                         .collect(Collectors.toList())
         );
     }
-
-    public List<Integer> getRacingStatus() {
-        return racingCarList
-                .stream()
-                .map(Car::getLocation)
-                .collect(Collectors.toList());
-    }
 }
