@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.application;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-class RandomGeneratorTest {
+class RandomNumberGeneratorTest {
 
-    RandomGenerator randomGenerator;
+    RandomNumberGenerator randomGenerator;
 
     @BeforeEach
     public void setUp() {
-        randomGenerator = new RandomGenerator();
+        randomGenerator = new RandomNumberGenerator();
     }
 
     @Test

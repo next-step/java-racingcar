@@ -1,8 +1,8 @@
-package racingcar.utils;
+package racingcar.application;
 
 import java.util.Random;
 
-public class RandomGenerator {
+public class RandomNumberGenerator {
 
     private final Random random = new Random();
 
