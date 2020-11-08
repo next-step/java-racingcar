@@ -8,6 +8,17 @@ public class Car {
 
     private static Random random = new Random();
 
+    private String[] raceCarNames;
+    private HashMap<String, List<CarRaceMoveInfo>> carReacMoveInfoList;
+    private int raceTryCount;
+
+    public Car(String[] raceCarNames, HashMap<String, List<CarRaceMoveInfo>> carReacMoveInfoList, int raceTryCount) {
+        this.raceCarNames = raceCarNames;
+        this.carReacMoveInfoList = carReacMoveInfoList;
+        this.raceTryCount = raceTryCount;
+    }
+
+
     /**
      * 랜덤값 return
      * @return
@@ -29,5 +40,19 @@ public class Car {
         }
         return moveDistance;
     }
+
+
+    public String[] getRaceCarNames() {
+        return raceCarNames;
+    }
+
+    public HashMap<String, List<CarRaceMoveInfo>> getCarReacMoveInfoList() {
+        return carReacMoveInfoList;
+    }
+
+    public int getRaceTryCount() {
+        return raceTryCount;
+    }
+
 
 }
