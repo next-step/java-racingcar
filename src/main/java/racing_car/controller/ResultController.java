@@ -1,8 +1,8 @@
-package step3.controller;
+package racing_car.controller;
 
-import step3.LabRecord;
-import step3.RacingRecord;
-import step3.Record;
+import racing_car.LabRecord;
+import racing_car.RacingRecord;
+import racing_car.Record;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

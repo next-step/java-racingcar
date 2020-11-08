@@ -1,7 +1,6 @@
-package step3;
+package racing_car;
 
-import step3.strategy.MoveStrategy;
-import step3.strategy.RandomStrategy;
+import racing_car.strategy.RandomStrategy;
 
 import java.util.Collections;
 import java.util.List;

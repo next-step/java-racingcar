@@ -1,6 +1,6 @@
-package step3.controller;
+package racing_car.controller;
 
-import step3.RacingSpec;
+import racing_car.RacingSpec;
 
 import java.util.Arrays;
 import java.util.List;

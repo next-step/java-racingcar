@@ -1,4 +1,4 @@
-package step3;
+package racing_car;
 
 public class Record {
     private final String name;

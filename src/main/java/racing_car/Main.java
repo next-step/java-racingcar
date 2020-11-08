@@ -1,8 +1,7 @@
-package step3;
+package racing_car;
 
-import step3.controller.InputController;
-import step3.controller.ResultController;
-import step3.strategy.RandomStrategy;
+import racing_car.controller.InputController;
+import racing_car.controller.ResultController;
 
 
 public class Main {

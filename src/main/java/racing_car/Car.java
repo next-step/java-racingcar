@@ -1,6 +1,6 @@
-package step3;
+package racing_car;
 
-import step3.strategy.MoveStrategy;
+import racing_car.strategy.MoveStrategy;
 
 public class Car {
 

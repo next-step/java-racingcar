@@ -1,4 +1,4 @@
-package step2;
+package string_calculator;
 
 public class Operator implements ExpressionFactor {
 

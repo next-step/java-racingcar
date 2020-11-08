@@ -1,4 +1,4 @@
-package step3;
+package racing_car;
 
 import java.util.stream.IntStream;
 
