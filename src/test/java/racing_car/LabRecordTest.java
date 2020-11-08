@@ -22,7 +22,7 @@ class LabRecordTest {
 
         LabRecord labRecord = new LabRecord(recordList);
 
-        List<Record> winnersRecords = labRecord.getWinnersRecords();
+        List<Record> winnersRecords = labRecord.findWinnersRecords();
 
         assertAll(() ->
         {

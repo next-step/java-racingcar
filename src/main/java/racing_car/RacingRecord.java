@@ -17,8 +17,8 @@ public class RacingRecord {
     }
 
     private List<Record> getFinalLabWinnersRecord() {
-        return getFinalLabRecord()
-                .getWinnersRecords();
+        return findFinalLabRecord()
+                .findWinnersRecords();
     }
 
     public List<String> getFinalLabWinnersName() {
@@ -28,7 +28,7 @@ public class RacingRecord {
                 .collect(Collectors.toList());
     }
 
-    private LabRecord getFinalLabRecord() {
+    private LabRecord findFinalLabRecord() {
         return labRecordList.get(labRecordList.size() - 1);
     }
 

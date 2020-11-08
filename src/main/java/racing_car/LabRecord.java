@@ -16,7 +16,7 @@ public class LabRecord {
         return recordList;
     }
 
-    public List<Record> getWinnersRecords() {
+    public List<Record> findWinnersRecords() {
         return recordList
                 .stream()
                 .filter(record -> record.getLocation() == getMaxLocation())
