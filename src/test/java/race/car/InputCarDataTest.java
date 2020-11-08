@@ -46,6 +46,14 @@ public class InputCarDataTest {
     }
 
     @Test
+    @DisplayName("자동차 이름의 길이가 5초과하는지")
+    void isGreaterThanFive() {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            InputCarData.checkName("dasasdasd");
+        });
+    }
+
+    @Test
     @DisplayName("숫자인지 체크")
     void isNumberCheckTryCountTest() {
         assertThrows(NumberFormatException.class, () -> {
