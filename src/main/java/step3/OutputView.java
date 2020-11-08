@@ -3,21 +3,27 @@ package step3;
 import java.util.List;
 
 public class OutputView {
-    private static final String RESULT_MENTION = "실행결과";
-    private static final String PRESENT_MOVE = "-";
+    private final String RESULT_MENTION = "실행결과";
+    private final String PRESENT_MOVE = "-";
 
-    public static void resultMention() {
+    public void resultMention() {
         System.out.println(RESULT_MENTION);
     }
 
-    public static void displayCarList(List<Car> carList) {
-        for(Car car : carList) {
+    public void displayCarListResult(List<CarList> carListResult) {
+        for(CarList carList : carListResult) {
+            displayCarList(carList);
+        }
+    }
+
+    private void displayCarList(CarList carList) {
+        for(Car car : carList.getCarList()) {
             displayCar(car);
         }
         System.out.println();
     }
 
-    private static void displayCar(Car car) {
+    private void displayCar(Car car) {
         for(int position = 0; position < car.getCurrentPosition(); position++) {
             System.out.print(PRESENT_MOVE);
         }

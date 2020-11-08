@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.Random;
-
 public class Car {
 
     private static final int MIN_MOVING_CONDITION = 4;
@@ -21,5 +19,11 @@ public class Car {
 
     private boolean checkRandom(int randomValue) {
         return randomValue >= MIN_MOVING_CONDITION;
+    }
+
+    public static Car makeNewCar(int currentPosition) {
+        Car car = new Car();
+        car.currentPosition = currentPosition;
+        return car;
     }
 }
