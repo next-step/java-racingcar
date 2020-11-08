@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 public class OutputView {
     private static final PrintStream out = System.out;
     private static final String MOVEMENT_CHAR = "-";
+    private static final String WINNERS_MESSAGE_SUFFIX = "가 최종 우승했습니다.";
+    private static final String WINNERS_JOINING_UNIT = ",";
 
     private OutputView() {
     }
@@ -22,13 +24,9 @@ public class OutputView {
     }
 
     private static void printWinners(List<String> winners) {
-        String winnerStr = String.join(",", winners);
+        String winnerStr = String.join(WINNERS_JOINING_UNIT, winners);
 
-        out.println(getWinnerSentence(winnerStr));
-    }
-
-    private static String getWinnerSentence(String winners) {
-        return winners + "가 최종 우승했습니다.";
+        out.println(winnerStr + WINNERS_MESSAGE_SUFFIX);
     }
 
     private static void printRoundRecords(RoundRecords roundRecords) {
