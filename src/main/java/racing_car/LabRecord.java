@@ -24,11 +24,11 @@ public class LabRecord {
     }
 
     private Integer getMaxLocation() {
-        int max = Integer.MIN_VALUE;
-        for (Record record : recordList) {
-            max = max > record.getLocation() ? max : record.getLocation();
-        }
-        return max;
+        return recordList
+                .stream()
+                .mapToInt(Record::getLocation)
+                .max()
+                .getAsInt();
     }
 
 }
