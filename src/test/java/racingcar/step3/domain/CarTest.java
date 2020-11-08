@@ -26,7 +26,7 @@ class CarTest {
     void whenStay_thenGetDistance() {
         int dissatisfiedValue = 3;
         this.car.move(dissatisfiedValue);
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getDistance()).isZero();
     }
 
     @Test

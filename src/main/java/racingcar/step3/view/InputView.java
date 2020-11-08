@@ -10,28 +10,17 @@ import java.util.Scanner;
  * Developer : Seo
  */
 public class InputView {
-    private int cars;
-    private int turns;
     Scanner scanner;
 
-    public void setCars() {
+    public int getCars() {
         this.scanner = Scan.getInstance();
         System.out.println(Consts.HOW_MANY_CARS);
-        this.cars = scanner.nextInt();
-    }
-
-    public int getCars() {
-        return this.cars;
-    }
-
-    public void setTurns() {
-        this.scanner = Scan.getInstance();
-        System.out.println(Consts.HOW_MANY_ATTEMPTS);
-        this.turns = scanner.nextInt();
+        return scanner.nextInt();
     }
 
     public int getTurns() {
-        return this.turns;
+        this.scanner = Scan.getInstance();
+        System.out.println(Consts.HOW_MANY_ATTEMPTS);
+        return scanner.nextInt();
     }
-
 }
