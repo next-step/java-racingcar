@@ -2,5 +2,7 @@ package racingcar.external;
 
 public interface Input {
 
-    int input(String s);
+    int inputNumber(String s);
+
+    String inputString(String s);
 }
