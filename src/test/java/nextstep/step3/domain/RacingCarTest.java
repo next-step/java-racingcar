@@ -10,10 +10,18 @@ public class RacingCarTest {
 	private RacingCar underTest = new RacingCar(0);
 
 	@Test
-	@DisplayName("이동가능한 수는 0보다 크고 9보다 작아야 한다.")
-	public void invalidateMoveCountTest() {
+	@DisplayName("이동가능한 수는 0보다 커야 한다.")
+	public void moveCountOverZero() {
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> underTest.move(-2))
+				.withMessage("움직일 수 있는 숫자는 0보다 크고 9보다 작아야 합니다.");
+	}
+
+	@Test
+	@DisplayName("이동가능한 수는 10보다 작아야 한다.")
+	public void moveCountUnderTen() {
+		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> underTest.move(10))
 				.withMessage("움직일 수 있는 숫자는 0보다 크고 9보다 작아야 합니다.");
 	}
 
