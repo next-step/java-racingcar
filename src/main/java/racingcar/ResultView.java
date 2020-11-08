@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ResultView {
-    public static void print(List<Car> carList){
-        for(int i=0; i < carList.size(); i++){
-            System.out.println(carList.get(i).getDistance());
+    public static void print(Car car){
+        for(int i=0; i < car.distance; i++){
+            System.out.print("-");
         }
         System.out.println();
     }

@@ -5,23 +5,27 @@ import java.util.List;
 
 public class CarRace {
 
-    public static void main(String[] args){
-        int carCnt = InputView.Input("자동차 대수는 몇 대 인가요? ");
-        int tryCnt = InputView.Input("시도할 회수는 몇 회 인가요? ");
-        race(carCnt, tryCnt);
-    }
+    private int tryCnt;
+    List<Car> carList = new ArrayList<Car>();
 
-    public static void race(int carCnt, int tryCnt){
-        List<Car> carList = new ArrayList<Car>();
+    public CarRace(int carCnt, int tryCnt) {
+        this.tryCnt = tryCnt;
         for(int i=0; i < carCnt; i++){
             carList.add(new Car());
         }
-        System.out.println("\n실행결과");
+    }
+
+    public void race(){
         for(int i=0; i < tryCnt; i++) {
             for (int j = 0; j < carList.size(); j++) {
                 carList.get(j).go();
+                ResultView.print(carList.get(j));
             }
-            ResultView.print(carList);
+            System.out.println();
         }
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }
