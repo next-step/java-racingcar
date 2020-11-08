@@ -11,4 +11,9 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
+
+    public String[] insertNameOfCars() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine().split(",");
+    }
 }
