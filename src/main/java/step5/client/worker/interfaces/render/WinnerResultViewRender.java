@@ -1,13 +1,19 @@
 package step5.client.worker.interfaces.render;
 
+import step5.client.worker.domain.Car;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinnerResultViewRender implements ViewRender {
     private static final String WINNER_ANNOUNCEMENT = "가 최종 우승했습니다.";
     private final List<String> winnerNames;
 
-    public WinnerResultViewRender(final List<String> winnerNames) {
-        this.winnerNames = winnerNames;
+    public WinnerResultViewRender(final List<Car> winners) {
+        this.winnerNames = winners.stream()
+                .map(Car::getName)
+                .sorted(String::compareTo)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -44,15 +44,12 @@ public class RacingGame {
         return RacingGameRoundResult.of(Collections.unmodifiableList(clonedCars));
     }
 
-    public List<String> selectWinnerNames() {
+    public List<Car> selectWinner() {
         if (isNotFinished()) {
             return Collections.emptyList();
         }
         
-        return selectWinnerStrategy.select(cars).stream()
-                .map(Car::getName)
-                .sorted(String::compareTo)
-                .collect(Collectors.toList());
+        return Collections.unmodifiableList(selectWinnerStrategy.select(cars));
     }
 
     public synchronized void race(final int times) {
@@ -85,10 +82,10 @@ public class RacingGame {
         return racingGameRoundResults;
     }
     
-    public RacingGameResponse getRacingGameResponse() {
+    public RacingGameResult getRacingGameResponse() {
         final List<RacingGameRoundResult> racingGameRoundResults = getAllRacingGameResults();
-        final List<String> winners = selectWinnerNames();
-        return new RacingGameResponse(racingGameRoundResults, winners);
+        final List<Car> winners = selectWinner();
+        return new RacingGameResult(racingGameRoundResults, winners);
     }
 
     private boolean isNotFinished() {

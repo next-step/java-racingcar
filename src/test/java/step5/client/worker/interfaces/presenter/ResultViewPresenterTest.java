@@ -16,12 +16,11 @@ class ResultViewPresenterTest {
         // given
         final List<Car> cars = Collections.singletonList(Car.of("name", () -> true));
         final List<RacingGameRoundResult> racingGameRoundResults = Collections.singletonList(RacingGameRoundResult.of(cars));
-        final List<String> winners = Collections.singletonList("name");
-        final RacingGameResponse racingGameResponse = new RacingGameResponse(racingGameRoundResults, winners);
+        final RacingGameResult racingGameResult = new RacingGameResult(racingGameRoundResults, cars);
         final ResultViewPresenter presenter = new ResultViewPresenter();
 
         // when
-        final String result = presenter.present(racingGameResponse);
+        final String result = presenter.present(racingGameResult);
 
         // then
         assertThat(result).isNotBlank();

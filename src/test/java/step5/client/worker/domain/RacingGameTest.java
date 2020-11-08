@@ -9,6 +9,7 @@ import step5.client.worker.domain.strategy.SelectWinnerStrategy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,7 +31,7 @@ class RacingGameTest {
             // when
             racingGame.race(TEN_TIMES_ATTEMPT);
             final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
-            
+
             // then
             assertThat(racingGameRoundResults).isNotEmpty();
         }
@@ -40,7 +41,7 @@ class RacingGameTest {
         void cars_must_moved_ten_times() {
             // given
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
-            
+
             // when
             racingGame.race(TEN_TIMES_ATTEMPT);
             final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
@@ -60,14 +61,16 @@ class RacingGameTest {
         void all_is_winner_if_all_car_moved_same() {
             // given
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
-            
+
             // when
             racingGame.race(TEN_TIMES_ATTEMPT);
             final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
 
             // then
-            final List<String> winners = racingGame.selectWinnerNames();
-            assertThat(winners).isEqualTo(CAR_NAMES);
+            final List<String> winnerNames = racingGame.selectWinner().stream()
+                    .map(Car::getName)
+                    .collect(Collectors.toList());
+            assertThat(winnerNames).isEqualTo(CAR_NAMES);
         }
     }
 }

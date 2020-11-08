@@ -1,6 +1,6 @@
 package step5.client.worker.interfaces.presenter;
 
-import step5.client.worker.domain.RacingGameResponse;
+import step5.client.worker.domain.RacingGameResult;
 import step5.client.worker.domain.RacingGameRoundResult;
 import step5.client.worker.interfaces.render.RoundResultViewRender;
 import step5.client.worker.interfaces.render.WinnerResultViewRender;
@@ -13,7 +13,7 @@ import static step5.client.worker.interfaces.render.ViewString.NEWLINE;
 public class ResultViewPresenter {
     private static final String RESULT_ANNOUNCEMENT = NEWLINE + "실행결과" + NEWLINE;
     
-    public String present(final RacingGameResponse response) {
+    public String present(final RacingGameResult response) {
         final List<RoundResultViewRender> roundResultViewRenders = createRoundResultViewRenders(response);
         final WinnerResultViewRender winnerResultViewRender = new WinnerResultViewRender(response.getWinners());
 
@@ -22,7 +22,7 @@ public class ResultViewPresenter {
         return RESULT_ANNOUNCEMENT + roundResultView + winnerResultView;
     }
 
-    private List<RoundResultViewRender> createRoundResultViewRenders(final RacingGameResponse response) {
+    private List<RoundResultViewRender> createRoundResultViewRenders(final RacingGameResult response) {
         final List<RacingGameRoundResult> racingGameRoundResults = response.getRacingGameRoundResults();
         return racingGameRoundResults.stream()
                 .map(RacingGameRoundResult::getCars)
