@@ -6,7 +6,8 @@ public class CarMain {
         OutputView outputView = new OutputView();
         CarController carController = new CarController();
 
-        int numberOfCars = inputView.numberOfCars();
+        String[] carNames = inputView.carNames().split(",");
+        int numberOfCars = carNames.length;
         int tryCounts = inputView.tryCount();
 
         outputView.resultMention();
