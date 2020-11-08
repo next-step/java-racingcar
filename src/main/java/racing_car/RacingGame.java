@@ -24,8 +24,4 @@ public class RacingGame {
         return racingRecord;
     }
 
-    public RacingCarList getRacingCarList() {
-        return racingCarList;
-    }
-
 }
