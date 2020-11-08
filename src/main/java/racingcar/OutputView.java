@@ -16,6 +16,7 @@ public class OutputView {
     }
 
     private void displayCar(Car car) {
+        System.out.print(car.getName() + " : ");
         for(int position = 0; position < car.getCurrentPosition(); position++) {
             System.out.print(PRESENT_MOVE);
         }

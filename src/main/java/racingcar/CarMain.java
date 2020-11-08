@@ -7,12 +7,11 @@ public class CarMain {
         CarController carController = new CarController();
 
         String[] carNames = inputView.carNames().split(",");
-        int numberOfCars = carNames.length;
         int tryCounts = inputView.tryCount();
 
         outputView.resultMention();
 
-        CarList carList = carController.initCarList(numberOfCars);
+        CarList carList = carController.initCarList(carNames);
         for(int round = 0; round < tryCounts; round++) {
             outputView.displayCarList(carController.nextRound(carList));
         }
