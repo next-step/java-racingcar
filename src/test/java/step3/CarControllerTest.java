@@ -16,14 +16,4 @@ class CarControllerTest {
         assertThat(carList.getCarList().size()).isEqualTo(3);
     }
 
-    @Test
-    @DisplayName("차 이동 테스트")
-    void carMoveTest() {
-        CarController controller = new CarController();
-        CarList carList = controller.initCarList(1);
-        carList.getCarList().get(0).move(5);
-
-        assertThat(carList.getCarList().get(0).getCurrentPosition()).isEqualTo(1);
-    }
-
 }
