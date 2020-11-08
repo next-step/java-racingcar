@@ -79,5 +79,4 @@ class CalcuratorTest {
             calcurator.calcurateString("1 / 0");
         });
     }
-
 }

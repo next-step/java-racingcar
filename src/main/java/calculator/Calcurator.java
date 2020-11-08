@@ -83,7 +83,6 @@ public class Calcurator {
     public int multiply(int firstValue, int secondValue) {
         return firstValue * secondValue;
     }
-
     public int divide(int firstValue, int secondValue) {
         return firstValue / secondValue;
     }
