@@ -9,7 +9,8 @@ public class RacingGameController {
     private static final SimulationResponseInteractor INTERACTOR = new SimulationResponseInteractor();
     private static final ResultViewPresenter PRESENTER = new ResultViewPresenter();
 
-    public String showSimulationResult(SimulationRequest request) {
+    public String showSimulationResult(final String carNames, final String times) {
+        final SimulationRequest request = SimulationRequest.of(carNames, times);
         final SimulationResponse response = INTERACTOR.interact(request);
         return PRESENTER.present(response);
     }
