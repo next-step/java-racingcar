@@ -1,32 +1,46 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class RacingCar {
 
-    private int targetPoint;
+    private static final int START_LINE = 1;
     private int currentPosition;
-    private Commander commander;
+    private String carName;
 
-    public RacingCar(Commander commander) {
-        this.commander = commander;
-        this.targetPoint++;
+    public RacingCar(String carName) {
+        this.carName = carName;
+        this.currentPosition += START_LINE;
     }
 
-    public void executeMoveTrack() {
+    public void move(Commander commander) {
         if(commander.moveForward()){
-            targetPoint ++;
+            currentPosition ++;
         }
     }
 
-    public int movePosition() {
-        if(isReachMoveTargetPosition()) {
-            return targetPoint;
-        }
-        currentPosition++;
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getCurrentPosition() {
         return currentPosition;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RacingCar racingCar = (RacingCar) o;
+        return carName.equals(racingCar.carName);
+    }
 
-    private boolean isReachMoveTargetPosition() {
-        return currentPosition == targetPoint ? true : false;
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName);
     }
 }
