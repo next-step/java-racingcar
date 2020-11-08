@@ -2,12 +2,10 @@ package car.racing;
 
 import java.util.List;
 
-public interface CarRacingContract {
+interface ResultViewContract {
 
-    interface View {
-
-        void resultTitle();
-        void newLine();
-        void forward(List<Car> cars);
-    }
+    void resultTitle();
+    void newLine();
+    void winners(List<String> winners);
+    void forward(Car car);
 }

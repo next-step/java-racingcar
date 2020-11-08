@@ -11,24 +11,22 @@ public class CarRacingViewControllerTest {
     private CarRacingViewController viewController;
     private FakeResultView resultView;
     private CarRacingManager manager;
+    private String[] names = "pobi,crong,honux".split(",");
 
     @BeforeEach
     void setup() {
         resultView = new FakeResultView();
-        manager = new CarRacingManager();
+        manager = new CarRacingManager(names, forward -> true);
         viewController = new CarRacingViewController(resultView, manager);
     }
 
     @DisplayName("input이 제대로 들어갔는지 확인")
     @Test
-    void verifyInput() {
-        int numOfCar = 3;
-        int tryCount = 7;
+    void verifyValidInput() {
+        int tryCount = 5;
 
-        viewController.input(numOfCar, tryCount);
+        viewController.input(tryCount);
 
-        for (int i = 0; i < tryCount; i++) {
-            assertThat(resultView.cars.size()).isEqualTo(numOfCar);
-        }
+        assertThat(resultView.cars.size()).isEqualTo(names.length * tryCount);
     }
 }

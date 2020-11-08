@@ -1,8 +1,13 @@
 package car.racing;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
-public class ResultView implements CarRacingContract.View {
+public class ResultView implements ResultViewContract {
+
+    private static final String FORWARD = "-";
+    private static final String SEPARATOR = " : ";
+    private static final String DELIMITER = ",";
 
     @Override
     public void resultTitle() {
@@ -15,7 +20,16 @@ public class ResultView implements CarRacingContract.View {
     }
 
     @Override
-    public void forward(List<Car> cars) {
-        cars.forEach(car -> System.out.println(car.forwardResult()));
+    public void forward(Car car) {
+        System.out.print(car.getName() + SEPARATOR);
+        IntStream.range(0, car.getForwardCount())
+                .forEach(i -> System.out.print(FORWARD));
+        System.out.println();
+    }
+
+    @Override
+    public void winners(List<String> racingWinners) {
+        System.out.print(String.join(DELIMITER, racingWinners));
+        System.out.println("가 최종 우승했습니다.");
     }
 }

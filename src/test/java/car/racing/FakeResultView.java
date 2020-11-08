@@ -3,7 +3,7 @@ package car.racing;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeResultView implements CarRacingContract.View {
+public class FakeResultView implements ResultViewContract {
 
     List<Car> cars = new ArrayList<>();
 
@@ -18,8 +18,11 @@ public class FakeResultView implements CarRacingContract.View {
     }
 
     @Override
-    public void forward(List<Car> cars) {
-        this.cars.clear();
-        this.cars.addAll(cars);
+    public void winners(List<String> racingWinners) {
+    }
+
+    @Override
+    public void forward(Car car) {
+        cars.add(car);
     }
 }

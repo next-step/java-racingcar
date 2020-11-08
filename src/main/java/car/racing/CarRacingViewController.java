@@ -5,22 +5,34 @@ import java.util.stream.IntStream;
 
 public class CarRacingViewController {
 
-    private final CarRacingContract.View resultView;
+    private final ResultViewContract resultView;
     private final CarRacingManager carRacingManager;
 
-    public CarRacingViewController(CarRacingContract.View resultView, CarRacingManager carRacingManager) {
+    public CarRacingViewController(ResultViewContract resultView, CarRacingManager carRacingManager) {
         this.resultView = resultView;
         this.carRacingManager = carRacingManager;
     }
 
-    public void input(int numOfCar, int tryCount) {
+    public void input(int tryCount) {
         resultView.resultTitle();
+        forwardCars(tryCount);
+        showRacingWinners();
+    }
 
-        carRacingManager.setupCars(numOfCar);
+    private void forwardCars(int tryCount) {
         IntStream.range(0, tryCount)
                 .forEach(i -> {
-                    resultView.forward(carRacingManager.forwardEachCar());
-                    resultView.newLine();
+                    carRacingManager.forwardCarEachTry();
+                    showRacingResultEachTry();
                 });
+    }
+
+    private void showRacingResultEachTry() {
+        carRacingManager.getCars().forEach(resultView::forward);
+        resultView.newLine();
+    }
+
+    private void showRacingWinners() {
+        resultView.winners(carRacingManager.racingWinners());
     }
 }
