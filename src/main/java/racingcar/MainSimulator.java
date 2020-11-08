@@ -1,15 +1,19 @@
 package racingcar;
 
-import racingcar.utils.CarsGenerator;
-import racingcar.utils.RandomNumberGenerator;
+import racingcar.application.RacingSimulator;
+import racingcar.domain.Car;
+import racingcar.application.CarsGenerator;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
-public class RacingSimulator {
+public class MainSimulator {
+
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-        RandomNumberGenerator randomGenerator = new RandomNumberGenerator();
+        ResultView resultView = new ResultView();
         CarsGenerator carsGenerator = new CarsGenerator();
+        RacingSimulator racingSimulator = new RacingSimulator();
 
         System.out.println("자동차 대수는 몇 대 인가요?");
         int countOfCar = inputView.insertCount();
@@ -18,24 +22,16 @@ public class RacingSimulator {
 
         Car[] cars = carsGenerator.generateCars(countOfCar);
 
+        if (cars.length == 0) {
+            return;
+        }
+
+        System.out.println("실행 결과");
+
         for (int i = 0; i < countOfRacing; i++) {
-            for (Car car : cars) {
-                Integer integer = randomGenerator.generatorNumber(10);
-                car.move(integer);
-            }
+            racingSimulator.race(cars);
+            resultView.printDistanceOfCar(cars);
+            System.out.println("");
         }
-
-        for (Car car : cars) {
-            System.out.println(car.getDistance());
-        }
-
-    }
-
-    private Car[] initCars(Integer carCount) {
-        Car[] cars = new Car[carCount];
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car();
-        }
-        return cars;
     }
 }
