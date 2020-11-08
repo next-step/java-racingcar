@@ -9,7 +9,7 @@ import racingcar.step3.domain.Car;
 public class ResultView {
 
     public void print(Car car) {
-        System.out.println("Car " + car.getName() + " : " + (gridDistance(car.getDistance())));
+        System.out.println((gridDistance(car.getDistance())));
     }
 
     private String gridDistance(int distance) {
@@ -20,4 +20,8 @@ public class ResultView {
         return sb.toString();
     }
 
+    public void printTurnOver(int i) {
+        System.out.println("turn " + i + " 종료");
+        System.out.println();
+    }
 }

@@ -18,22 +18,20 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("0");
+        car = new Car();
     }
 
     @Test
-    @DisplayName("이름")
-    void getName() {
-        assertThat(car.getName()).isEqualTo("0");
+    @DisplayName("멈춤 거리 확인")
+    void whenStay_thenGetDistance() {
+        int dissatisfiedValue = 3;
+        this.car.move(dissatisfiedValue);
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("이동 후 거리 확인")
     void whenMove_thenGetDistance() {
-        int dissatisfiedValue = 3;
-        this.car.move(dissatisfiedValue);
-        assertThat(car.getDistance()).isEqualTo(0);
-
         int satisfiedValue = 4;
         this.car.move(satisfiedValue);
         assertThat(car.getDistance()).isEqualTo(1);

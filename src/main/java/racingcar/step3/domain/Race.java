@@ -5,7 +5,9 @@ import racingcar.step3.view.ResultView;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,29 +15,25 @@ import java.util.Set;
  * Developer : Seo
  */
 public class Race {
-    private final int cars;
     private final int turns;
-    private final ResultView rv;
-    private Set<Car> carSet;
+    private List<Car> cars;
 
-    public Race(int cars, int turns, ResultView rv) {
-        this.cars = cars;
+    public Race(int turns) {
         this.turns = turns;
-        this.rv = rv;
     }
 
-    public Set<Car> getCarSet() {
-        return this.carSet;
+    public List<Car> getCarSet() {
+        return this.cars;
     }
 
-    public void ready() {
-        this.carSet = new HashSet<>();
-        for (int i = 1; i < cars + 1; i++) {
-            carSet.add(new Car(String.valueOf(i)));
+    public void ready(int inputCarNumber) {
+        this.cars = new ArrayList<>();
+        for (int i = 1; i < inputCarNumber + 1; i++) {
+            cars.add(new Car());
         }
     }
 
-    public void run() {
+    public void run(ResultView rv) {
         System.out.println(Consts.RESULT);
         for (int i = 1; i < turns + 1; i++) {
             roll(rv, i);
@@ -51,8 +49,7 @@ public class Race {
                 e.printStackTrace();
             }
         }
-        System.out.println("turn " + i + " 종료");
-        System.out.println();
+        rv.printTurnOver(i);
     }
 
 }

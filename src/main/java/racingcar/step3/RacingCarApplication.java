@@ -18,9 +18,9 @@ public class RacingCarApplication {
         int cars = iv.getCars();
         int turns = iv.getTurns();
 
-        Race race = new Race(cars, turns, rv);
-        race.ready();
-        race.run();
+        Race race = new Race(turns);
+        race.ready(cars);
+        race.run(rv);
     }
 
 }

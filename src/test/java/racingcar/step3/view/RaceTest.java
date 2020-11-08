@@ -24,8 +24,8 @@ class RaceTest {
 
         int cars = 3;
         int turns = 5;
-        race = new Race(cars, turns, rv);
-        race.ready();
+        race = new Race(turns);
+        race.ready(cars);
     }
 
     @Test
@@ -37,7 +37,7 @@ class RaceTest {
     @Test
     @DisplayName("경주")
     void letsRun() {
-        race.run();
+        race.run(rv);
     }
 
 }
