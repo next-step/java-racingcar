@@ -9,11 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    Car car;
+    private Car car;
+    private final String NAME_OF_CAR = "test";
 
     @BeforeEach
     public void setUp() {
-        car = new Car();
+        car = new Car(NAME_OF_CAR, 0);
     }
 
     @Test
