@@ -3,7 +3,7 @@ package step04;
 import step03.strategy.MoveStrategy;
 import validator.HasContentsValidator;
 
-public class Car {
+public class Car implements Cloneable {
     public final String name;
     private int position;
     private final MoveStrategy moveStrategy;
@@ -31,6 +31,11 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    @Override
+    public Car clone() throws CloneNotSupportedException {
+        return (Car)super.clone();
     }
 
 }
