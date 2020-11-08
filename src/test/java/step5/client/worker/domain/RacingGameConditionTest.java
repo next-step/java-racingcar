@@ -1,4 +1,4 @@
-package step5.client.worker.application;
+package step5.client.worker.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -8,9 +8,9 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static step5.client.worker.application.RacingGameRequest.ErrorMessage.*;
+import static step5.client.worker.domain.RacingGameCondition.ErrorMessage.*;
 
-class RacingGameRequestTest {
+class RacingGameConditionTest {
     @DisplayName("of 생성자")
     @Nested
     class Of {
@@ -23,7 +23,7 @@ class RacingGameRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                RacingGameRequest.of(carNames, numberAttempts);
+                RacingGameCondition.of(carNames, numberAttempts);
             });
 
             // then
@@ -40,7 +40,7 @@ class RacingGameRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                RacingGameRequest.of(carNames, numberAttempts);
+                RacingGameCondition.of(carNames, numberAttempts);
             });
 
             // then
@@ -57,7 +57,7 @@ class RacingGameRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                RacingGameRequest.of(carNames, numberAttempts);
+                RacingGameCondition.of(carNames, numberAttempts);
             });
 
             // then
@@ -74,7 +74,7 @@ class RacingGameRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                RacingGameRequest.of(carNames, numberAttempts);
+                RacingGameCondition.of(carNames, numberAttempts);
             });
 
             // then
@@ -90,7 +90,7 @@ class RacingGameRequestTest {
             final String numberAttempts = "10";
 
             // when
-            final RacingGameRequest result = RacingGameRequest.of(carNames, numberAttempts);
+            final RacingGameCondition result = RacingGameCondition.of(carNames, numberAttempts);
 
             // then
             assertThat(result).isNotNull();

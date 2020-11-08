@@ -1,6 +1,4 @@
-package step5.client.worker.application;
-
-import step5.client.worker.domain.RacingGameRoundResult;
+package step5.client.worker.domain;
 
 import java.util.Collections;
 import java.util.List;

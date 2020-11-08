@@ -1,17 +1,17 @@
 package step5.client.worker.interfaces.controller;
 
+import step5.client.worker.domain.RacingGame;
+import step5.client.worker.domain.strategy.RandomMovableStrategy;
 import step5.client.worker.interfaces.presenter.ResultViewPresenter;
-import step5.client.worker.application.RacingGameResponse;
-import step5.client.worker.application.RacingGameInteractor;
-import step5.client.worker.application.RacingGameRequest;
+import step5.client.worker.domain.RacingGameCondition;
 
 public class RacingGameController {
-    private static final RacingGameInteractor INTERACTOR = new RacingGameInteractor();
     private static final ResultViewPresenter PRESENTER = new ResultViewPresenter();
 
     public String showSimulationResult(final String carNames, final String times) {
-        final RacingGameRequest request = RacingGameRequest.of(carNames, times);
-        final RacingGameResponse response = INTERACTOR.interact(request);
-        return PRESENTER.present(response);
+        final RacingGameCondition condition = RacingGameCondition.of(carNames, times);
+        final RacingGame racingGame  = RacingGame.of(condition.getCarNames(), new RandomMovableStrategy());
+        racingGame.race(condition.getNumberAttempts());
+        return PRESENTER.present(racingGame.getRacingGameResponse());
     }
 }

@@ -2,9 +2,10 @@ package step5.client.worker.interfaces.presenter;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.client.worker.application.RacingGameRequest;
-import step5.client.worker.application.RacingGameResponse;
-import step5.client.worker.application.RacingGameInteractor;
+import step5.client.worker.domain.RacingGame;
+import step5.client.worker.domain.RacingGameCondition;
+import step5.client.worker.domain.RacingGameResponse;
+import step5.client.worker.domain.strategy.RandomMovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,11 +14,10 @@ class ResultViewPresenterTest {
     @Test
     void present_return_not_blank_when_simulationResult_is_not_empty() {
         // given
-        final String carNames = "pobi,crong,honux";
-        final String numberAttempts = "5";
-        final RacingGameRequest request = RacingGameRequest.of(carNames, numberAttempts);
-        final RacingGameInteractor simulator = new RacingGameInteractor();
-        final RacingGameResponse racingGameResponse = simulator.interact(request);
+        final RacingGameCondition condition = RacingGameCondition.of("pobi,crong,honux", "5");
+        final RacingGame racingGame = RacingGame.of(condition.getCarNames(), new RandomMovableStrategy());
+        racingGame.race(condition.getNumberAttempts());
+        final RacingGameResponse racingGameResponse = racingGame.getRacingGameResponse();
         final ResultViewPresenter presenter = new ResultViewPresenter();
 
         // when

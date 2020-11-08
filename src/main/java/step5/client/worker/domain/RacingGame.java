@@ -20,7 +20,7 @@ public class RacingGame {
         this.cars = Collections.unmodifiableList(cars);
         this.selectWinnerStrategy = selectWinnerStrategy;
     }
-
+    
     public static RacingGame of(final List<String> carNames, final MovableStrategy movableStrategy) {
         final List<Car> cars = CarFactory.createCars(carNames, movableStrategy);
         return new RacingGame(cars, DEFAULT_SELECT_WINNER_STRATEGY);
@@ -83,6 +83,12 @@ public class RacingGame {
             return Collections.emptyList();
         }
         return racingGameRoundResults;
+    }
+    
+    public RacingGameResponse getRacingGameResponse() {
+        final List<RacingGameRoundResult> racingGameRoundResults = getAllRacingGameResults();
+        final List<String> winners = selectWinnerNames();
+        return new RacingGameResponse(racingGameRoundResults, winners);
     }
 
     private boolean isNotFinished() {

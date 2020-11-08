@@ -1,6 +1,6 @@
 package step5.client.worker.interfaces.presenter;
 
-import step5.client.worker.application.RacingGameResponse;
+import step5.client.worker.domain.RacingGameResponse;
 import step5.client.worker.domain.RacingGameRoundResult;
 import step5.client.worker.interfaces.render.RoundResultViewRender;
 import step5.client.worker.interfaces.render.WinnerResultViewRender;

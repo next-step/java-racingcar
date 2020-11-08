@@ -1,4 +1,4 @@
-package step5.client.worker.application;
+package step5.client.worker.domain;
 
 import common.util.Message;
 import step5.client.util.CarNamesSeparator;
@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Objects;
 
 import static common.util.Preconditions.checkArgument;
-import static step5.client.worker.application.RacingGameRequest.ErrorMessage.*;
+import static step5.client.worker.domain.RacingGameCondition.ErrorMessage.*;
 
-public class RacingGameRequest {
+public class RacingGameCondition {
     public enum ErrorMessage implements Message {
         NAME_OF_CAR_LENGTH_MUST_BELOW_THEN_FIVE("name of car's length must below then 5"),
         CAR_NAME_MUST_NOT_BE_DUPLICATED("car name must not be duplicated"),
-        NAME_OF_CARS_MUST_NOT_BE_BLANK(RacingGameRequest.class.getName() + "'s carNames must not blank"),
+        NAME_OF_CARS_MUST_NOT_BE_BLANK(RacingGameCondition.class.getName() + "'s carNames must not blank"),
         NUMBER_OF_CAR_MUST_MORE_THEN_ONE("number of car must more then 1"),
-        NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE(RacingGameRequest.class.getName() + "'s numberAttempts must more then 1"),
+        NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE(RacingGameCondition.class.getName() + "'s numberAttempts must more then 1"),
         ;
 
         private final String message;
@@ -34,13 +34,13 @@ public class RacingGameRequest {
     private final List<String> carNames;
     private final int numberAttempts;
 
-    private RacingGameRequest(final List<String> carNames, final int numberAttempts) {
+    private RacingGameCondition(final List<String> carNames, final int numberAttempts) {
         this.carNames = carNames;
         this.numberAttempts = numberAttempts;
     }
 
-    public static RacingGameRequest of(final String carNames, final String numberAttempts) {
-        return new RacingGameRequest(createCarNames(carNames), createNumberAttempts(numberAttempts));
+    public static RacingGameCondition of(final String carNames, final String numberAttempts) {
+        return new RacingGameCondition(createCarNames(carNames), createNumberAttempts(numberAttempts));
     }
 
     private static List<String> createCarNames(final String carNamesExpression) {
