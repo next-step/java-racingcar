@@ -22,10 +22,8 @@ public class InputView {
 
     private static String[] getNameOfCars() {
         System.out.println(InputView.NUM_OF_NAME_MESSAGE);
-        String inputName = SCANNER.next();
-        //        int numOfNames = names.length;
-//        validateInputNum(numOfNames);
-        return splitValues(inputName);
+        String inputNameOfCars = SCANNER.next();
+        return splitNameOfCars(inputNameOfCars);
     }
 
     static String[] splitNameOfCars(String inputNameOfCars) {
@@ -33,33 +31,6 @@ public class InputView {
                 .map(String::trim)
                 .toArray(String[]::new);
     }
-
-
-//    static void validInputName(String [] carNames) {
-//        Arrays.stream(carNames)
-//                .filter()
-//                .forEach(s -> isValidInputName(s))
-//
-//                //.orElseThrow(s -> new IllegalArgumentException(ErrorMessage.INPUT_NAME_ERROR));
-//
-////       for(String carName : carNames){
-////           if (isValidInputName(carName)) {
-////               throw new IllegalArgumentException(ErrorMessage.INPUT_NAME_ERROR);
-////           }
-////       }
-//    }
-
-//    static boolean isValidInputName(String inputName) {
-//        return isNullOrEmpty(inputName) || isFiveLetterWords(inputName);
-//    }
-//
-//    static boolean isNullOrEmpty(String name) {
-//        return name.isEmpty() || name.equals(BLANK);
-//    }
-//
-//    static boolean isFiveLetterWords(String name) {
-//        return name.length() > MAX_INPUT_NAME_VALUE;
-//    }
 
     public static int inputLoopCount() {
         System.out.println(LOOP_COUNT_MESSAGE);
