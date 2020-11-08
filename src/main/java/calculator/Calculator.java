@@ -25,6 +25,7 @@ public class Calculator {
 
     private String[] splitInputString(String inputString) {
 
+
         if (isNull(inputString)) {
             throw new IllegalArgumentException("input string is null");
         }
@@ -41,9 +42,11 @@ public class Calculator {
 
     private FourPointOperation getFourPointOperation(String input) {
 
+
         if (isNumber(input)) {
             return null;
         }
+
 
         if (!isSymbolOfFourPointOperationOrNumber(input)) {
             throw new IllegalArgumentException("input is not symbol of four-point operation or Number");
