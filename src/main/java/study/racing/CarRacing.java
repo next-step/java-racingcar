@@ -1,7 +1,8 @@
 package study.racing;
 
-
+import study.calculator.CustomErrorMessage;
 import study.racing.view.InputView;
+import study.racing.view.ResultView;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -15,8 +16,8 @@ public class CarRacing {
 
     public void racing(int carCnt, int tryCnt){
 
-
-        System.out.println("실행 결과");
+        ResultView resultView = new ResultView();
+        resultView.showResultHead();
 
         validateCarCount(carCnt);
         validateTryCount(tryCnt);
@@ -24,7 +25,10 @@ public class CarRacing {
         Set<Car> carSet = initCarSet(carCnt);
 
         IntStream.range(0, tryCnt)
-                .mapToObj(tryIndex -> carSet)
+                .mapToObj(tryIndex -> {
+                    resultView.showLapResultHead(tryIndex);
+                    return carSet;
+                })
                 .forEach(cars -> {
 
                             cars.forEach(car -> {
@@ -32,7 +36,7 @@ public class CarRacing {
                                     }
                             );
 
-                            cars.forEach(car -> System.out.println(car.toString()));
+                            cars.forEach(car -> resultView.showCarRacingLapResult(car));
                         }
                 );
     }
