@@ -1,14 +1,12 @@
 package racingcar.model;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
-
-    private static final int RANGE_START_NUM = 0;
 
     private final List<Car> carList;
 
@@ -16,9 +14,9 @@ public class Cars {
         this.carList = cars;
     }
 
-    public static Cars of(int carCount, Motor motor) {
-        List<Car> cars = IntStream.range(RANGE_START_NUM, carCount)
-                .mapToObj(v -> new Car(motor))
+    public static Cars of(String[] names, Motor motor) {
+        List<Car> cars = Arrays.stream(names)
+                .map(name -> new Car(name, motor))
                 .collect(toList());
 
         return new Cars(cars);
@@ -32,6 +30,10 @@ public class Cars {
 
     public int sizeOfCar() {
         return carList.size();
+    }
+
+    public List<Car> getCars() {
+        return this.carList;
     }
 
     public List<Integer> getPositions() {

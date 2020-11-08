@@ -7,10 +7,8 @@ public class RandomMove implements Motor {
     private static final java.util.Random random = new java.util.Random();
 
     @Override
-    public void run(Car car) {
-        if (possibleMoveSpeedByRandomSpeed()) {
-            car.move();
-        }
+    public boolean run() {
+        return possibleMoveSpeedByRandomSpeed();
     }
 
     public boolean possibleMoveSpeed(int speed) {
