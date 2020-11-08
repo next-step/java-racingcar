@@ -37,7 +37,7 @@ public class RacingGame {
                 .forEach(Car::moveForward);
     }
 
-    private RacingGameRoundResult createSnapshot() {
+    private RacingGameRoundResult createRacingGameRoundResult() {
         final List<Car> clonedCars = cars.stream()
                 .map(Car::clone)
                 .collect(Collectors.toList());
@@ -60,22 +60,22 @@ public class RacingGame {
             return;
         }
 
-        initSnapShots(times);
+        initRacingGameRoundResults(times);
 
         for (int i = 0; i < times; i++) {
             moveCars();
-            saveSnapshot();
+            saveRacingGameRoundResult();
         }
 
         changeToFinished();
     }
 
-    private void initSnapShots(final int times) {
+    private void initRacingGameRoundResults(final int times) {
         racingGameRoundResults = new ArrayList<>(times);
     }
 
-    private void saveSnapshot() {
-        racingGameRoundResults.add(createSnapshot());
+    private void saveRacingGameRoundResult() {
+        racingGameRoundResults.add(createRacingGameRoundResult());
     }
 
     public List<RacingGameRoundResult> getAllRacingGameResults() {

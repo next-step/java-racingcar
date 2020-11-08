@@ -21,9 +21,9 @@ class RacingGameTest {
     @DisplayName("getAllRacingGameResults")
     @Nested
     class GetAllRacingGameResults {
-        @DisplayName("결과를 snapshot 리스트로 반환")
+        @DisplayName("레이싱 결과를 리스트로 반환")
         @Test
-        void return_snapshot_list() {
+        void return_racing_result_list() {
             // given
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE, SELECT_WINNER_STRATEGY);
 
