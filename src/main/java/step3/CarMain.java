@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.List;
-
 public class CarMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -11,9 +9,11 @@ public class CarMain {
         int numberOfCars = inputView.numberOfCars();
         int tryCounts = inputView.tryCount();
 
-        List<CarList> carListResult = carController.gameStart(numberOfCars, tryCounts);
-
         outputView.resultMention();
-        outputView.displayCarListResult(carListResult);
+
+        CarList carList = carController.initCarList(numberOfCars);
+        for(int round = 0; round < tryCounts; round++) {
+            outputView.displayCarList(carController.nextRound(carList));
+        }
     }
 }
