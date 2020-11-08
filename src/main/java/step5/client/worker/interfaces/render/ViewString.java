@@ -2,7 +2,6 @@ package step5.client.worker.interfaces.render;
 
 public enum ViewString {
     NEWLINE(System.lineSeparator()),
-    RESULT_ANNOUNCEMENT(NEWLINE + "실행결과" + NEWLINE),
     MOVE_CHAR("-"),
     DELIMITER(":"),
     SPACE(" "),
