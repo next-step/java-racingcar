@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racing.domain.CarConfig.*;
+
 public class Cars {
 
     private final List<Car> cars;
@@ -15,6 +17,13 @@ public class Cars {
     public void setCars(int vehicleCount) {
         for(int i = 0; i<vehicleCount; i += 1) {
             cars.add(new Car(String.valueOf(i)));
+        }
+    }
+
+    public void setCars(String names) {
+        String[] carNames = names.split(CAR_NAME_STRING_SEPARATOR);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 

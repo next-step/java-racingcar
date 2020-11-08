@@ -6,11 +6,17 @@ public class CarRacing {
 
     private final Cars cars;
     private final RaceResult raceResult = new RaceResult();
-    private int maxLaps;
+    private final int maxLaps;
 
     public CarRacing(int vehicleCount, int maxLaps) {
         this.cars = new Cars();
         this.cars.setCars(vehicleCount);
+        this.maxLaps = maxLaps;
+    }
+
+    public CarRacing(String carNames, int maxLaps) {
+        this.cars = new Cars();
+        this.cars.setCars(carNames);
         this.maxLaps = maxLaps;
     }
 
