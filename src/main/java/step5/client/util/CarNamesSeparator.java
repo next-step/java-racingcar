@@ -1,4 +1,4 @@
-package step5.util;
+package step5.client.util;
 
 import java.util.Arrays;
 import java.util.List;

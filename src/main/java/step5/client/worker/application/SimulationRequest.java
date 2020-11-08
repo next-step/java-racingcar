@@ -1,7 +1,7 @@
 package step5.client.worker.application;
 
 import common.util.Message;
-import step5.util.CarNamesSeparator;
+import step5.client.util.CarNamesSeparator;
 
 import java.util.List;
 import java.util.Objects;
