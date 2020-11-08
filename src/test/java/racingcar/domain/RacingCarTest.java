@@ -21,12 +21,12 @@ public class RacingCarTest {
     private static final int MOVE = 1;
     private static final int NOT_MOVE = 0;
 
-    private final String [] nameOfCars = {"car1","car2","car3","car4"};
+    private final String[] nameOfCars = {"car1", "car2", "car3", "car4"};
     private RacingCars racingCars;
 
     @BeforeEach
-    void  setUp(){
-        racingCars = RacingCars.of(nameOfCars,() -> true);
+    void setUp() {
+        racingCars = RacingCars.of(nameOfCars, () -> true);
         racingCars.run();
     }
 
@@ -40,7 +40,7 @@ public class RacingCarTest {
     @DisplayName("초기화된 Cars의 위치가 시작점 0인 경우")
     @Test
     void initialCars() {
-       RacingCars initRacingCar = RacingCars.of(nameOfCars, new RandomMovingStrategy());
+        RacingCars initRacingCar = RacingCars.of(nameOfCars, new RandomMovingStrategy());
         assertThat(initRacingCar.getCars()
                 .stream()
                 .map(Car::getPosition))
@@ -86,12 +86,12 @@ public class RacingCarTest {
 
     @DisplayName("Car 최대 이동거리 일치 여부")
     @Test
-    void carMaxPosition(){
+    void carMaxPosition() {
         int maxPosition = getMaxPosition();
         assertThat(racingCars.getMaxPosition()).isEqualTo(maxPosition);
     }
 
-    private int getMaxPosition(){
+    private int getMaxPosition() {
         return racingCars.getCars().
                 stream()
                 .mapToInt(Car::getPosition)
