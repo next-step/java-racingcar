@@ -5,21 +5,21 @@ import step5.client.worker.domain.strategy.MovableStrategy;
 public class Car {
     private static final int UNIT_OF_FORWARD = 1;
     private static final int DEFAULT_POSITION = 0;
-    private final String name;
+    private final CarName name;
     private final Position position;
     private final MovableStrategy movableStrategy;
 
-    private Car(final String name, final MovableStrategy movableStrategy, final int initPosition) {
+    private Car(final CarName name, final MovableStrategy movableStrategy, final int initPosition) {
         this.name = name;
         this.position = Position.of(initPosition);
         this.movableStrategy = movableStrategy;
     }
 
-    public static Car of(final String name, final MovableStrategy movableStrategy) {
+    public static Car of(final CarName name, final MovableStrategy movableStrategy) {
         return of(name, movableStrategy, DEFAULT_POSITION);
     }
 
-    public static Car of(final String name, final MovableStrategy movableStrategy, final int initPosition) {
+    public static Car of(final CarName name, final MovableStrategy movableStrategy, final int initPosition) {
         return new Car(name, movableStrategy, initPosition);
     }
     
@@ -27,7 +27,7 @@ public class Car {
         return Car.of(name, movableStrategy, position.getValue()); 
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 

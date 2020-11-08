@@ -14,7 +14,7 @@ class ResultViewPresenterTest {
     @Test
     void present_return_not_blank_when_simulationResult_is_not_empty() {
         // given
-        final List<Car> cars = Collections.singletonList(Car.of("name", () -> true));
+        final List<Car> cars = Collections.singletonList(Car.of(CarName.of("name"), () -> true));
         final List<RacingGameRoundResult> racingGameRoundResults = Collections.singletonList(RacingGameRoundResult.of(cars));
         final RacingGameResult racingGameResult = new RacingGameResult(racingGameRoundResults, cars);
         final ResultViewPresenter presenter = new ResultViewPresenter();

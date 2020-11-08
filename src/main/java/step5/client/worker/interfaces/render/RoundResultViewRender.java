@@ -1,6 +1,7 @@
 package step5.client.worker.interfaces.render;
 
 import step5.client.worker.domain.Car;
+import step5.client.worker.domain.CarName;
 import step5.client.worker.domain.Position;
 
 import java.util.List;
@@ -28,7 +29,8 @@ public class RoundResultViewRender implements ViewRender {
     }
 
     private String createCarResult(final Car car) {
-        return createCarNameView(car.getName()) + createMovingDistanceView(car.getPosition()) + NEWLINE;
+        final CarName carName = car.getName();
+        return createCarNameView(carName.getValue()) + createMovingDistanceView(car.getPosition()) + NEWLINE;
     }
 
     private String createCarNameView(final String name) {

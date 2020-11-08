@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
     private static final SelectWinnerStrategy SELECT_WINNER_STRATEGY = new SelectFarthestDistanceWinnerStrategy();
     private static final MovableStrategy MUST_MOVABLE = () -> true;
-    private static final List<String> CAR_NAMES = Arrays.asList("CAR1", "CAR2", "CAR3");
+    private static final List<CarName> CAR_NAMES = Arrays.asList(CarName.of("CAR1"), CarName.of("CAR2"), CarName.of("CAR3"));
     private static final int TEN_TIMES_ATTEMPT = 10;
 
     @DisplayName("getAllRacingGameResults")
@@ -64,10 +64,9 @@ class RacingGameTest {
 
             // when
             racingGame.race(TEN_TIMES_ATTEMPT);
-            final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
 
             // then
-            final List<String> winnerNames = racingGame.selectWinner().stream()
+            final List<CarName> winnerNames = racingGame.selectWinner().stream()
                     .map(Car::getName)
                     .collect(Collectors.toList());
             assertThat(winnerNames).isEqualTo(CAR_NAMES);

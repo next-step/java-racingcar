@@ -17,8 +17,8 @@ class CarFactoryTest {
     @Test
     void createCars() {
         // given
-        final List<String> carNames = Arrays.asList("pobi", "crong", "honux");
-        
+        final List<CarName> carNames = Arrays.asList(CarName.of("pobi"), CarName.of("crong"), CarName.of("honux"));
+
         // when
         final List<Car> result = CarFactory.createCars(carNames, movableStrategy);
 

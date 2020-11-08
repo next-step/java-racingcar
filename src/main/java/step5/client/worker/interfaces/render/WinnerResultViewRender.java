@@ -1,6 +1,7 @@
 package step5.client.worker.interfaces.render;
 
 import step5.client.worker.domain.Car;
+import step5.client.worker.domain.CarName;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +13,7 @@ public class WinnerResultViewRender implements ViewRender {
     public WinnerResultViewRender(final List<Car> winners) {
         this.winnerNames = winners.stream()
                 .map(Car::getName)
+                .map(CarName::getValue)
                 .sorted(String::compareTo)
                 .collect(Collectors.toList());
     }

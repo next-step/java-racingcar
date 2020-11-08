@@ -16,7 +16,7 @@ class CarTest {
         void return_true() {
             // given
             final MovableStrategy mustMoveStrategy = () -> true;
-            final Car car = Car.of("1", mustMoveStrategy);
+            final Car car = Car.of(CarName.of("1"), mustMoveStrategy);
 
             // when
             final boolean result = car.isMove();
@@ -30,7 +30,7 @@ class CarTest {
         void return_false() {
             // given
             final MovableStrategy mustNotMoveStrategy = () -> false;
-            final Car car = Car.of("1", mustNotMoveStrategy);
+            final Car car = Car.of(CarName.of("1"), mustNotMoveStrategy);
 
             // when
             final boolean result = car.isMove();

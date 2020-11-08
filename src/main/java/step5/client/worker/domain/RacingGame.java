@@ -21,12 +21,12 @@ public class RacingGame {
         this.selectWinnerStrategy = selectWinnerStrategy;
     }
     
-    public static RacingGame of(final List<String> carNames, final MovableStrategy movableStrategy) {
+    public static RacingGame of(final List<CarName> carNames, final MovableStrategy movableStrategy) {
         final List<Car> cars = CarFactory.createCars(carNames, movableStrategy);
         return new RacingGame(cars, DEFAULT_SELECT_WINNER_STRATEGY);
     }
 
-    public static RacingGame of(final List<String> carNames, final MovableStrategy movableStrategy, final SelectWinnerStrategy selectWinnerStrategy) {
+    public static RacingGame of(final List<CarName> carNames, final MovableStrategy movableStrategy, final SelectWinnerStrategy selectWinnerStrategy) {
         final List<Car> cars = CarFactory.createCars(carNames, movableStrategy);
         return new RacingGame(cars, selectWinnerStrategy);
     }

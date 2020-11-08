@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import step5.client.worker.domain.Car;
+import step5.client.worker.domain.CarName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,9 +22,9 @@ class SelectFarthestDistanceWinnerStrategyTest {
         void single() {
             // given
             final List<Car> cars = Arrays.asList(
-                    Car.of("CAR1", MUST_MOVABLE, 1)
-                    , Car.of("CAR2", MUST_MOVABLE, 0)
-                    , Car.of("CAR3", MUST_MOVABLE, 0)
+                    Car.of(CarName.of("CAR1"), MUST_MOVABLE, 1)
+                    , Car.of(CarName.of("CAR2"), MUST_MOVABLE, 0)
+                    , Car.of(CarName.of("CAR3"), MUST_MOVABLE, 0)
             );
             final Car winner = cars.get(0);
             final SelectFarthestDistanceWinnerStrategy strategy = new SelectFarthestDistanceWinnerStrategy();
@@ -40,10 +41,10 @@ class SelectFarthestDistanceWinnerStrategyTest {
         void more_then_two() {
             // given
             final List<Car> cars = Arrays.asList(
-                    Car.of("CAR1", MUST_MOVABLE, 2)
-                    , Car.of("CAR2", MUST_MOVABLE, 2)
-                    , Car.of("CAR3", MUST_MOVABLE, 1)
-                    , Car.of("CAR4", MUST_MOVABLE, 0)
+                    Car.of(CarName.of("CAR1"), MUST_MOVABLE, 2)
+                    , Car.of(CarName.of("CAR2"), MUST_MOVABLE, 2)
+                    , Car.of(CarName.of("CAR3"), MUST_MOVABLE, 1)
+                    , Car.of(CarName.of("CAR4"), MUST_MOVABLE, 0)
             );
             final Car winner1 = cars.get(0);
             final Car winner2 = cars.get(1);

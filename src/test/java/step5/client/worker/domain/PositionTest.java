@@ -1,6 +1,5 @@
 package step5.client.worker.domain;
 
-import common.util.Preconditions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
