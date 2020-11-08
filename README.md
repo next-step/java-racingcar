@@ -7,3 +7,20 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+
+# 작성된 클래스 
+
+## RacingCar
+자동차 개수 및 시도 횟수 초기화, 자동차 객체 초기화 및 경기 시작을 나타내는 클래스
+
+## Car
+자동차의 행위를 나타내는 클래스(이동 결정 여부, 이동)
+
+## InputView
+출전할 자동차 개수와 시도 횟수를 입력하는 클래스
+
+
+## ResultView
+결과에 대해 그려주는 클래스
