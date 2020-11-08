@@ -11,7 +11,8 @@ class CarControllerTest {
     @DisplayName("CarList 초기화 성공 테스트")
     void initCarListTest() {
         CarController controller = new CarController();
-        CarList carList = controller.initCarList(3);
+        String[] carNames = {"name1", "name2", "name3"};
+        CarList carList = controller.initCarList(carNames);
 
         assertThat(carList.getCarList().size()).isEqualTo(3);
     }
