@@ -8,6 +8,7 @@ import static racing.domain.CarConfig.*;
 
 public class Cars {
 
+    private static final String CAR_NAME_VALIDATION_ERROR = "자동차 이름은 5자를 초과 할 수 없습니다";
     private final List<Car> cars;
 
     public Cars() {
@@ -23,7 +24,14 @@ public class Cars {
     public void setCars(String names) {
         String[] carNames = names.split(CAR_NAME_STRING_SEPARATOR);
         for (String carName : carNames) {
+            carNameValidationCheck(carName);
             cars.add(new Car(carName));
+        }
+    }
+
+    public void carNameValidationCheck(String name) {
+        if(name.length() > CAR_NAME_LIMIT_SIZE) {
+            throw new IllegalArgumentException(CAR_NAME_VALIDATION_ERROR);
         }
     }
 

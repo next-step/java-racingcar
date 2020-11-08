@@ -24,9 +24,15 @@ public class ResultView {
         for(int i=0; i<maxLaps; i++) {
             int laps = i;
             raceResult.findResult(laps)
-                    .forEach(car -> parseRecord(car.getName(),car.getRaceSetting(),laps));
+                .forEach(car -> printRecord(car.getName(),car.getRaceSetting(),laps));
             System.out.print("\n");
         }
+    }
+
+    public static void viewRaceWinners(RaceResult raceResult) {
+        String result = Arrays.toString(raceResult.getWinners())
+                .replaceAll("[\\[\\]]","");
+        System.out.print(result+" 가 최종 우승했습니다.");
     }
 
     private static void printFirstMessage() {
@@ -35,21 +41,25 @@ public class ResultView {
         System.out.print("\n");
     }
 
-    private static void parseRecord(String name, CarSetInRace setInRace, int index) {
-        String raceRecord = setInRace.findRecord(index);
-        raceRecord = Pattern.compile(CAR_RECORD_STRING_SEPARATOR)
-                .splitAsStream(raceRecord)
-                .filter(str -> !CAR_STOP_MOVE_CODE.contains(str))
-                .collect(Collectors.joining());
-        System.out.printf("%s : %s \n",
-            name,raceRecord.replaceAll(CAR_NORMAL_MOVE_CODE,SKID_MARK)
-        );
+    private static void printRecord(String name,CarSetInRace setInRace, int index) {
+        System.out.println(parseRecord(name,setInRace,index));
     }
 
-    public static void viewRaceWinners(RaceResult raceResult) {
-        String result = Arrays.toString(raceResult.getWinners())
-                .replaceAll("[\\[\\]]","");
-        System.out.print(result+"가 최종 우승했습니다.");
+    public static String parseRecord(String name,CarSetInRace setInRace, int index) {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append(name);
+        strBuilder.append(" : ");
+        strBuilder.append(makeSkidMark(setInRace.findRecord(index)));
+        return strBuilder.toString();
     }
+
+    private static String makeSkidMark(String input) {
+        return Pattern.compile(CAR_RECORD_STRING_SEPARATOR)
+                .splitAsStream(input)
+                .filter(str -> !CAR_STOP_MOVE_CODE.contains(str))
+                .collect(Collectors.joining())
+                .replaceAll(CAR_NORMAL_MOVE_CODE,SKID_MARK);
+    }
+
 
 }

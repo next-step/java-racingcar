@@ -23,7 +23,7 @@ public class InputView {
         int maxCheckPoint;
         do {
             System.out.print(SECOND_QUESTION);
-        } while ((maxCheckPoint = inputNumberValidationCheck(scanner.next())) <= 0 );
+        } while ((maxCheckPoint = inputNumberValidationCheck(scanner.next())) <= 0);
         return maxCheckPoint;
     }
 
