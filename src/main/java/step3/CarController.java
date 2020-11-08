@@ -10,6 +10,17 @@ public class CarController {
     private static final Random random = new Random();
     private static final int MAX_MOVING_BOUNDARY = 10;
 
+    public List<CarList> gameStart(int numberOfCars, int tryCounts) {
+        CarList carList = initCarList(numberOfCars);
+        List<CarList> carListResult = new ArrayList<>();
+
+        for(int tryNumber = 0; tryNumber < tryCounts; tryNumber++) {
+            carListResult.add(nextPosition(carList));
+        }
+
+        return carListResult;
+    }
+
     public CarList initCarList(int numberOfCars) {
         List<Car> carList = Stream.generate(Car::new)
                 .limit(numberOfCars)
