@@ -1,11 +1,8 @@
 package racing.view;
 
-import racing.domain.Car;
+import racing.domain.CarSetInRace;
+import racing.domain.RaceResult;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -13,33 +10,40 @@ import static racing.domain.CarConfig.*;
 
 public class ResultView {
 
-    private static final String EXECUTE_RESULT = "실행 결과";
+    private static final String FIRST_EXECUTE_RESULT_MESSAGE = "실행 결과";
     private static final String SKID_MARK = "-";
 
+    private final RaceResult raceResult;
 
-    private Map<String,StringBuilder> map = new HashMap<>();
-
-    public void racingResults(List<Car> cars,int maxLaps) {
-        System.out.print("\n");
-        System.out.printf("%s \n",EXECUTE_RESULT);
-        System.out.print("\n");
-
-        int laps = 0;
-        do {
-            for(Car car:cars) {
-                parseSkidMark(car.getEcu().findRecord(laps));
-            }
-            System.out.println();
-            laps++;
-        }while (laps < maxLaps);
+    public ResultView(RaceResult raceResult) {
+        this.raceResult = raceResult;
     }
 
-    public void parseSkidMark(String raceRecord) {
-        raceRecord = Pattern.compile(ECU_RECORD_STRING_SEPARATOR)
+    public void viewRaceResult() {
+        printFirstMessage();
+
+        int maxLaps = raceResult.getMaxLaps();
+        for(int i=0; i<maxLaps; i++) {
+            int laps = i;
+            raceResult.findResult(laps)
+                    .forEach(car -> parseRecord(car.getRaceSetting(),laps));
+            System.out.print("\n");
+        }
+    }
+
+    public void printFirstMessage() {
+        System.out.print("\n");
+        System.out.printf("%s \n",FIRST_EXECUTE_RESULT_MESSAGE);
+        System.out.print("\n");
+    }
+
+    private void parseRecord(CarSetInRace setInRace,int index) {
+        String raceRecord = setInRace.findRecord(index);
+        raceRecord = Pattern.compile(CAR_RECORD_STRING_SEPARATOR)
                 .splitAsStream(raceRecord)
-                .filter(str -> !"0".contains(str))
+                .filter(str -> !CAR_STOP_MOVE_CODE.contains(str))
                 .collect(Collectors.joining());
-        System.out.println(raceRecord.replaceAll(ECU_NORMAL_MOVE_CODE,SKID_MARK));
+        System.out.println(raceRecord.replaceAll(CAR_NORMAL_MOVE_CODE,SKID_MARK));
     }
 
 }

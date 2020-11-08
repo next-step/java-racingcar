@@ -9,6 +9,10 @@
 
 ![](https://i.ibb.co/2WgP78v/image.png)
 
+**Car Racing Package(`step3-3`)**
+
+![](https://i.ibb.co/XjnMfzX/image.png)
+
 > 꼼꼼한 리뷰 부탁드립니다 ! 🤗
 
 **기능 요구사항**
@@ -78,5 +82,26 @@
 **리팩토링 참고**
 - [일급 컬렉션 (First Class Collection)의 소개와 써야할 이유](https://jojoldu.tistory.com/412)
 - [일급 컬렉션을 사용하는 이유](https://woowacourse.github.io/javable/2020-05-08/First-Class-Collection)
+- [Strategy 패턴/전략패턴](https://lee1535.tistory.com/93)
+- [Test Stub이란 ?](https://beomseok95.tistory.com/294)
+
+
+<br>
+
+**`step3-2` 리팩토링 요구사항**
+
+1. `2개 이상의 인스턴스 변수를 가진 클래스` 를 쓰지 않는다.
+2. 의미 전달이 어려운 객체 네이밍 변경
+3. Random 값에 대한 테스트 필요성으로 인터페이스 기반 전략패턴 사용
+4. `한 메서드에 오직 한 단계의 들여쓰기만 한다.`
+5. 매직넘버 상수화!
+6. 무조건 전진하는 테스트 객체 생성
+
+
+
+<br>
+
+**리팩토링 참고**
+- [객체지향 생활 체조 원칙 9가지(from 소트웍스 앤솔러지)](https://jamie95.tistory.com/entry/Java-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%83%9D%ED%99%9C-%EC%B2%B4%EC%A1%B0-%EC%9B%90%EC%B9%99-9%EA%B0%80%EC%A7%80-from-%EC%86%8C%ED%8A%B8%EC%9B%8D%EC%8A%A4-%EC%95%A4%EC%86%94%EB%9F%AC%EC%A7%80)
 - [Strategy 패턴/전략패턴](https://lee1535.tistory.com/93)
 - [Test Stub이란 ?](https://beomseok95.tistory.com/294)
