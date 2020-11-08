@@ -12,9 +12,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class InputViewTest {
-    @DisplayName("Input number 값 유효성 검사")
+    @DisplayName("이름 유효성 검사 : ,로 분리 여부")
     @ParameterizedTest
-    @MethodSource("inputNumberCase")
+    @ValueSource(strings = "aaaaa,bbbbb,ccccc")
+    void splitCarNames(String carNames) {
+        String[] splitCarNames = InputView.splitValues(carNames);
+        assertThat(splitCarNames).isEqualTo(new String[]{"aaaaa", "bbbbb", "ccccc"});
+    }
+
+    @DisplayName("시도 횟수 값 유효성 검사")
+    @ParameterizedTest
+    @MethodSource("inputLoopCount")
     void validInputNum(boolean expect, int inputNumber) {
         assertThat(InputView.isValidInputNumber(inputNumber)).isEqualTo(expect);
     }
