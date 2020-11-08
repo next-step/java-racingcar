@@ -18,6 +18,8 @@
         - 검사 private void validate
             - 자동차 이름 (비어있지 않나) throw error
         - 위치 리턴 public int getPosition
+        - clone() implements Cloneable
+            - snapshot 을 resultView 에 저장하기 위해 사용  
 - 자동차들 Cars
     - 멤버     
         - 자동차들 list public final List<Car>
@@ -28,6 +30,8 @@
     - 메서드
         - 자동차를 한회차 이동시킴 public void move
         - 자동차 배열이 유효한지 검사 private void validate -> 무엇이 유효한지 검사하는 기준을 안적어서 까먹음
+        - 한 회차의 스냅샷을 저장하기 위한 용도 public List<Car> clonedCars()
+        
 - 입력기
     - 쉼표로 구분한 자동차들이름 static public String readString 
     - 시도 횟수 static public int readInteger  
