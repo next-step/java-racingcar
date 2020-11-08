@@ -14,7 +14,7 @@ public class RacingCarTest {
 	public void moveCountOverZero() {
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> underTest.move(-2))
-				.withMessage("움직일 수 있는 숫자는 0보다 크고 9보다 작아야 합니다.");
+				.withMessage("움직일 수 있는 숫자는 0보다 크고 10보다 작아야 합니다.");
 	}
 
 	@Test
@@ -22,7 +22,7 @@ public class RacingCarTest {
 	public void moveCountUnderTen() {
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> underTest.move(10))
-				.withMessage("움직일 수 있는 숫자는 0보다 크고 9보다 작아야 합니다.");
+				.withMessage("움직일 수 있는 숫자는 0보다 크고 10보다 작아야 합니다.");
 	}
 
 	@Test
