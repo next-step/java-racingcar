@@ -14,6 +14,15 @@ public class GameManager {
 
     public GameResult play(List<String> carNames, int gameRoundNum) {
         Cars cars = new Cars(carNames);
+
+        RoundRecords roundRecords = race(cars, gameRoundNum);
+
+        Winners winners = winStrategy.decideWinners(roundRecords);
+
+        return new GameResult(winners, roundRecords);
+    }
+
+    private RoundRecords race(Cars cars, int gameRoundNum) {
         GameRounds gameRounds = new GameRounds(gameRoundNum);
 
         while (!gameRounds.isGameEnd()) {
@@ -22,8 +31,6 @@ public class GameManager {
             gameRounds.keepRecord(cars);
         }
 
-        RoundRecords roundRecords = gameRounds.getRecords();
-        Winners winners = winStrategy.decideWinners(roundRecords);
-        return new GameResult(winners, roundRecords);
+        return gameRounds.getRecords();
     }
 }
