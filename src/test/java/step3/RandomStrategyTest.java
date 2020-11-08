@@ -15,9 +15,9 @@ class RandomStrategyTest {
         RandomStrategy randomStrategy = new RandomStrategy();
         assertAll(
                 () ->
-                        assertThat(randomStrategy.generate()).isLessThan(10),
+                        assertThat(randomStrategy.move()).isLessThan(10),
                 () ->
-                        assertThat(randomStrategy.generate()).isGreaterThanOrEqualTo(0)
+                        assertThat(randomStrategy.move()).isGreaterThanOrEqualTo(0)
         );
     }
 

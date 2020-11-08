@@ -1,6 +1,7 @@
 package step3;
 
 import step3.strategy.MoveStrategy;
+import step3.strategy.RandomStrategy;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +27,7 @@ public class RacingCarList {
                         .map(Car::exportRecord)
                         .collect(Collectors.toList())
         );
+    }
 
     public List<Integer> getRacingStatus() {
         return racingCarList

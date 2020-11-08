@@ -9,8 +9,8 @@ public class RandomStrategy implements MoveStrategy {
     private static final Integer bound = 9;
 
     @Override
-    public int generate() {
-        return random.nextInt(bound);
+    public boolean move() {
+        return random.nextInt(bound) > 4;
     }
 
 }

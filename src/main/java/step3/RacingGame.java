@@ -4,8 +4,8 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    private MoveStrategy moveStrategy;
     private RacingCarList racingCarList;
+    private RacingSpec racingSpec;
 
     public RacingGame(RacingSpec racingSpec) {
         this.racingCarList = new RacingCarList(racingSpec.getUsers());

@@ -1,5 +1,7 @@
 package step3;
 
+import step3.strategy.MoveStrategy;
+
 public class Car {
 
     private int location;
@@ -11,11 +13,8 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
-    public void move(int value) {
-        if (value > bound || value < 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RANDOM_VALUE);
-        }
-        if (value > 4) {
+    public void move() {
+        if (moveStrategy.move()) {
             goForward();
         }
     }
