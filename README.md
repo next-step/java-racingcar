@@ -21,7 +21,6 @@
     * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
  ## 기능목록
- ## 기능목록
  * Car : 자동차 경주에 따른 정보를 관리하는 객체
     * 메소드
         * getMovePower() - 자동차의 power
@@ -40,11 +39,13 @@
     * inputValue - 키보드로 입력받는 메소드
     * checkTryCount - 입력 받은 시도횟수 값 체크
     * checkName - 입력받은 자동차 이름 체크
- * RaceResultPrint :  자동차 결과 그리는 관리 클래스
+ * RaceResultPrint :  자동차 진행결과 및 우승자 그리는 관리 클래스
     * runPrintRaceResult - 그리기 시작하는 메소드
  * RunCarRace : 자동차 경기 관리 클래스
     * start : 경기 시작
     * runRace : 레이스 시작
+ * ExtractWinner : 우승자 관리 클래스
+    * ExtractRun : 결과에서 우승자 뽑기
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
