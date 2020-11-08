@@ -3,10 +3,7 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winners {
-    public static final int HIGHER_THAN_WINNERS = 1;
-    public static final int SAME_AS_WINNERS = 0;
-    public static final int LOWER_THAN_WINNERS = -1;
+public class Winners implements Comparable<Integer> {
     private final List<String> names;
     private Integer position;
 
@@ -20,44 +17,37 @@ public class Winners {
         this.position = null;
     }
 
-    public void checkNewPlayerRecord(String name, int position) {
-        if (checkNewPlayerIsFirst(name, position))
+    public void checkPlayerRecord(String name, int position) {
+        if (checkPlayerRecordIsFirst(name, position))
             return;
 
-        checkNewPlayerSamePosition(name, position);
-        checkNewPlayerHigher(name, position);
+        checkPlayerRecordWithComparing(name, position);
     }
 
-    private boolean checkNewPlayerIsFirst(String name, int position) {
-        if (this.position == null) {
+    private void checkPlayerRecordWithComparing(String name, int position) {
+        int comparison = compareTo(position);
+        if (comparison == 0) {
             names.add(name);
-            this.position = position;
+        }
+
+        if (comparison < 0) {
+            addPlayerRecordWithReset(name, position);
+        }
+    }
+
+    private boolean checkPlayerRecordIsFirst(String name, int position) {
+        if (this.position == null) {
+            addPlayerRecordWithReset(name, position);
             return true;
         }
 
         return false;
     }
 
-    private void checkNewPlayerHigher(String name, int position) {
-        if (compare(position) == HIGHER_THAN_WINNERS) {
-            names.clear();
-            names.add(name);
-            this.position = position;
-        }
-    }
-
-    private void checkNewPlayerSamePosition(String name, int position) {
-        if (compare(position) == SAME_AS_WINNERS) {
-            names.add(name);
-        }
-    }
-
-    private int compare(int position) {
-        if (this.position > position)
-            return LOWER_THAN_WINNERS;
-        if (this.position == position)
-            return SAME_AS_WINNERS;
-        return HIGHER_THAN_WINNERS;
+    private void addPlayerRecordWithReset(String name, int position) {
+        names.clear();
+        names.add(name);
+        this.position = position;
     }
 
     public List<String> getNames() {
@@ -66,5 +56,10 @@ public class Winners {
 
     public Integer getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(Integer position) {
+        return this.position.compareTo(position);
     }
 }

@@ -24,7 +24,7 @@ public class WinnersTest {
         int maxPosition = winners.getPosition();
         List<String> winnersExpected = winners.getNames();
 
-        winners.checkNewPlayerRecord("honux", maxPosition);
+        winners.checkPlayerRecord("honux", maxPosition);
 
         winnersExpected.add("honux");
         assertThat(winners.getPosition()).isEqualTo(maxPosition);
@@ -37,7 +37,7 @@ public class WinnersTest {
     void checkNewPlayerRecord_higherThanWinners(Winners winners) {
         int newMaxPosition = 3;
 
-        winners.checkNewPlayerRecord("honux", newMaxPosition);
+        winners.checkPlayerRecord("honux", newMaxPosition);
 
         assertThat(winners.getPosition()).isEqualTo(newMaxPosition);
         assertThat(winners.getNames()).containsExactly("honux");

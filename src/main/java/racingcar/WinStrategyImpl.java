@@ -11,7 +11,7 @@ public class WinStrategyImpl implements WinStrategy {
 
         Winners winners = new Winners();
         for (Entry<String, Integer> playerRecord : lastRecord.entrySet()) {
-            winners.checkNewPlayerRecord(playerRecord.getKey(), playerRecord.getValue());
+            winners.checkPlayerRecord(playerRecord.getKey(), playerRecord.getValue());
         }
 
         return winners;
