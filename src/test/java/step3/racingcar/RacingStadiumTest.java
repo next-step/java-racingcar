@@ -19,4 +19,14 @@ class RacingStadiumTest {
             assertThat(result).isBetween(0, 10);
         }
     }
+
+    @Test
+    @DisplayName(value = "RandomStrategy move가 랜덤값을 뱉는지 테스트")
+    public void isRandomStrategy_ShouldReturnRandomValue() {
+        RandomStrategy randomStrategy = new RandomStrategy();
+        randomStrategy.move();
+
+        assertThat(randomStrategy.move()).isBetween(0,10);
+
+    }
 }

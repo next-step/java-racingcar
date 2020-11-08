@@ -1,4 +1,3 @@
-import calculator.Calculator;
 import step3.racingcar.RacingStadium;
 
 public class Main {

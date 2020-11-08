@@ -2,18 +2,11 @@ package step3.racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class RacingStadium {
-
     private Scanner scanner;
     private List<Car> racingCars;
-
-    public static int getPower(){
-        Random random = new Random();
-        return random.nextInt(10);
-    }
 
     public RacingStadium() {
         this.scanner = new Scanner(System.in);
@@ -38,7 +31,7 @@ public class RacingStadium {
     private void startRacing(int repeatCount) {
         for (int count=0; count < repeatCount; count++) {
             this.racingCars.stream().forEach(racingCar -> {
-                racingCar.axel(getPower());
+                racingCar.move();
             });
 
             System.out.println();
@@ -51,7 +44,9 @@ public class RacingStadium {
         int carCount = scanner.nextInt();
 
         for(int lane=0; lane<carCount; lane++) {
-            this.racingCars.add(new RacingCar(lane));
+            Car car = new RacingCar(lane);
+            car.setMovableStrategy(new RandomStrategy());
+            this.racingCars.add(car);
         }
     }
 }
