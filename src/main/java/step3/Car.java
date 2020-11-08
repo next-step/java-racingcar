@@ -21,9 +21,4 @@ public class Car {
         return randomValue >= MIN_MOVING_CONDITION;
     }
 
-    public static Car makeNewCar(int currentPosition) {
-        Car car = new Car();
-        car.currentPosition = currentPosition;
-        return car;
-    }
 }
