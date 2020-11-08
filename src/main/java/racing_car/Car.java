@@ -9,6 +9,15 @@ public class Car {
     private MoveStrategy moveStrategy;
 
     public Car(String name, MoveStrategy moveStrategy) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CAR_NAME);
+        }
+        if (name.length() >= 5) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME);
+        }
+        if (moveStrategy == null) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_MOVE_STRATEGY);
+        }
         this.name = name;
         this.moveStrategy = moveStrategy;
     }
