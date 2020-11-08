@@ -9,7 +9,9 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
+    private static final StringBuilder stringBuilder = new StringBuilder();
     private static final ResultView instance = new ResultView();
+    private static final String NEW_LINE = "\n";
 
     public static ResultView getInstance() {
         return instance;
@@ -23,24 +25,27 @@ public class ResultView {
 
             displayCarName(carSnapshot);
 
-            System.out.print(" : ");
+            stringBuilder.append(" : ");
 
             displayCarCurrentPosition(carSnapshot);
 
-            System.out.println();
+            // stringBuilder.append(NEW_LINE);
+
+            printAndClear();
         }
 
-        System.out.println();
+        // stringBuilder.append(NEW_LINE);
+        printAndClear();
 
     }
 
     private void displayCarName(CarSnapshot carSnapshot) {
-        System.out.print(carSnapshot.getName());
+        stringBuilder.append(carSnapshot.getName());
     }
 
     private void displayCarCurrentPosition(CarSnapshot carSnapshot) {
         for (int position = 0; position < carSnapshot.getCurrentPosition(); position++) {
-            System.out.print('-');
+            stringBuilder.append('-');
         }
     }
 
@@ -50,9 +55,23 @@ public class ResultView {
                 .map(CarSnapshot::getName)
                 .collect(Collectors.toList());
 
-        String winnerMessage = String.format("Winner: [%s]"
-                , String.join(",", nameOfWinners));
+        stringBuilder.append("Winner: [");
+        stringBuilder.append(String.join(",", nameOfWinners));
+        stringBuilder.append("]");
 
-        System.out.println(winnerMessage);
+        printAndClear();
+    }
+
+    private void printAndClear() {
+        print();
+        clear();
+    }
+
+    private void print() {
+        System.out.println(stringBuilder.toString());
+    }
+
+    private void clear() {
+        stringBuilder.setLength(0);
     }
 }

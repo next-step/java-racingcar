@@ -12,22 +12,18 @@ public class RacingCarsSnapshotExporter implements RacingCarsExporter<RacingCars
 
     private RacingCarsSnapshot racingCarsSnapshot;
 
-    public RacingCarsSnapshotExporter() {
-        this.racingCarsSnapshot = new RacingCarsSnapshot();
-    }
+    private List<CarSnapshot> carSnapshots;
+
+    public RacingCarsSnapshotExporter() { }
 
     @Override
-    public void cars(List<Car> cars) {
-        List<CarSnapshot> carSnapshots = cars.stream()
-                .map(car -> car.export(new CarSnapshotExporter()))
-                .collect(Collectors.toList());
-
-        racingCarsSnapshot.setCarSnapshot(carSnapshots);
+    public void cars(List<CarSnapshot> carSnapshots) {
+        this.carSnapshots = carSnapshots;
     }
 
     @Override
     public RacingCarsSnapshot build() {
-        return racingCarsSnapshot;
+        return new RacingCarsSnapshot(carSnapshots);
     }
 
 }

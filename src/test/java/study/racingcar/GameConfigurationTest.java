@@ -19,7 +19,7 @@ class GameConfigurationTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"123456|1", "|1", "a|0"}, delimiter = '|')
+    @CsvSource(value = {"123456|1", "|1", "a|0", "   ,   ,   |0"}, delimiter = '|')
     void test_createGameConfiguration_fail(String carNamesWithComma, int numberOfAttempts) {
         assertThrows(IllegalArgumentException.class
                 , () -> new GameConfiguration(carNamesWithComma, numberOfAttempts, OldEngine.getInstance()));

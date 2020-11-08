@@ -1,6 +1,8 @@
 package study.racingcar.racingcars;
 
 import study.racingcar.car.Car;
+import study.racingcar.car.CarSnapshot;
+import study.racingcar.car.CarSnapshotExporter;
 import study.racingcar.car.Engine;
 import study.racingcar.view.ResultView;
 
@@ -32,26 +34,22 @@ public class RacingCars {
         int frontPosition = getFrontPosition();
 
         return cars.stream()
-                .filter(car -> car.getCurrentPosition() == frontPosition)
+                .filter(car -> car.isCurrentPosition(frontPosition))
                 .collect(Collectors.toList());
     }
 
     private int getFrontPosition() {
-
-        int maxPosition = 0;
-
-        for (Car car : cars) {
-            int currentPosition = car.getCurrentPosition();
-            if (maxPosition < currentPosition) {
-                maxPosition = currentPosition;
-            }
-        }
-
-        return maxPosition;
+        return cars.stream()
+                .mapToInt(Car::getCurrentPosition)
+                .max()
+                .getAsInt();
     }
 
     public <T> T export(RacingCarsExporter<T> exporter) {
-        exporter.cars(cars);
+        List<CarSnapshot> carSnapshots = cars.stream()
+                .map(car -> car.export(new CarSnapshotExporter()))
+                .collect(Collectors.toList());
+        exporter.cars(carSnapshots);
         return exporter.build();
     }
 }

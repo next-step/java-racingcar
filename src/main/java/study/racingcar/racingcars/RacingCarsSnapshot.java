@@ -13,15 +13,14 @@ import java.util.stream.Collectors;
  */
 public class RacingCarsSnapshot {
 
-    private List<CarSnapshot> carSnapshot = new ArrayList<CarSnapshot>();
+    private final List<CarSnapshot> carSnapshot;
+
+    public RacingCarsSnapshot(List<CarSnapshot> carSnapshot) {
+        this.carSnapshot = carSnapshot;
+    }
 
     public List<CarSnapshot> getCarSnapshot() {
         return carSnapshot;
     }
-
-    public void setCarSnapshot(List<CarSnapshot> carSnapshot) {
-        this.carSnapshot = carSnapshot;
-    }
-
 
 }

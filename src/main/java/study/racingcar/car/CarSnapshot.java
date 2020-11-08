@@ -2,23 +2,19 @@ package study.racingcar.car;
 
 public class CarSnapshot {
 
-    private String name;
-    private int currentPosition;
+    private final String name;
+    private final int currentPosition;
+
+    public CarSnapshot(String name, int currentPosition) {
+        this.name = name;
+        this.currentPosition = currentPosition;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getCurrentPosition() {
         return currentPosition;
     }
-
-    public void setCurrentPosition(int currentPosition) {
-        this.currentPosition = currentPosition;
-    }
-
 }

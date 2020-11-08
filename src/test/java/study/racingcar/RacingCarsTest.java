@@ -3,6 +3,7 @@ package study.racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.car.Car;
+import study.racingcar.car.CarName;
 import study.racingcar.car.CarSnapshot;
 import study.racingcar.racingcars.RacingCars;
 import study.racingcar.racingcars.RacingCarsSnapshot;
@@ -28,7 +29,7 @@ class RacingCarsTest {
         racingCars.nextAttempt();
 
         // Then
-        assertEquals(car.getCurrentPosition(), 2);
+        assertEquals(car.getCurrentPosition(), 1);
     }
 
     @Test
@@ -64,10 +65,10 @@ class RacingCarsTest {
 
         // Then
         Car frontRunner = frontRunners.get(0);
-        assertEquals(frontRunner.getCurrentPosition(), 2);
+        assertEquals(frontRunner.getCurrentPosition(), 1);
     }
     
     private Car initCar() {
-        return new Car("test");
+        return new Car(new CarName("test"));
     }
 }

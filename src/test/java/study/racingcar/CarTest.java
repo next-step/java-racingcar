@@ -3,6 +3,7 @@ package study.racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.car.Car;
+import study.racingcar.car.CarName;
 import study.racingcar.car.CarSnapshot;
 import study.racingcar.car.CarSnapshotExporter;
 
@@ -47,11 +48,11 @@ class CarTest {
         CarSnapshot carSnapshot = car.export(new CarSnapshotExporter());
 
         // Then
-        assertEquals(carSnapshot.getCurrentPosition(), 2);
+        assertEquals(carSnapshot.getCurrentPosition(), 1);
     }
 
     private Car initCar() {
-        return new Car("test");
+        return new Car(new CarName("test"));
     }
 
 }

@@ -2,23 +2,22 @@ package study.racingcar.car;
 
 public class CarSnapshotExporter implements CarExporter<CarSnapshot>{
 
-    private CarSnapshot carSnapshot;
+    private String name;
+    private int currentPosition;
 
-    public CarSnapshotExporter() {
-        this.carSnapshot = new CarSnapshot();
-    }
+    public CarSnapshotExporter() {}
 
     @Override
-    public void name(String name) { carSnapshot.setName(name); }
+    public void name(String name) { this.name = name; }
 
     @Override
     public void currentPosition(int currentPosition) {
-        carSnapshot.setCurrentPosition(currentPosition);
+        this.currentPosition = currentPosition;
     }
 
     @Override
     public CarSnapshot build() {
-        return carSnapshot;
+        return new CarSnapshot(name, currentPosition);
     }
 
 }

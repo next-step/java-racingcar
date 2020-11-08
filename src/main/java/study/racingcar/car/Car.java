@@ -7,10 +7,10 @@ import java.util.Random;
  */
 public class Car {
 
-    private String name;
-    private int currentPosition = 1;
+    private final CarName name;
+    private int currentPosition = 0;
 
-    public Car(String name) {
+    public Car(CarName name) {
         this.name = name;
     }
 
@@ -30,8 +30,13 @@ public class Car {
         this.currentPosition += 1;
     }
 
+    public  boolean isCurrentPosition(int position) {
+        return currentPosition == position;
+    }
+
+
     public <T> T export(CarExporter<T> exporter) {
-        exporter.name(name);
+        exporter.name(name.getValue());
         exporter.currentPosition(currentPosition);
         return exporter.build();
     }
