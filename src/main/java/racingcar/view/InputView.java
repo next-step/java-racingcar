@@ -28,8 +28,7 @@ public class InputView {
         return splitValues(inputName);
     }
 
-    private static String[] splitValues(String inputName) {
-        validInputName(inputName);
+    static String[] splitValues(String inputName) {
         return Arrays.stream(inputName.split(COMMA))
                 .map(String::trim)
                 .toArray(String[]::new);

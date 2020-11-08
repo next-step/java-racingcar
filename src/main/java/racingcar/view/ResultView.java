@@ -22,7 +22,7 @@ public class ResultView {
         System.out.println();
     }
 
-    private static String printPosition(final Car car) {
+    static String printPosition(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
         String carName = car.getCarName();
         stringBuilder.append(carName).append(CAR_POSITION_IS);
@@ -32,7 +32,7 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    private static String getNamesOfWinnerCars(List<Car> winnerCars) {
+    static String getNamesOfWinnerCars(List<Car> winnerCars) {
         return winnerCars.stream()
                 .map(Car::getCarName)
                 .collect(Collectors.joining(COMMA));
