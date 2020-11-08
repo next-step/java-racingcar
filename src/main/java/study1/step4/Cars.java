@@ -1,0 +1,22 @@
+package study1.step4;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cars {
+    private final List<Car> cars = new ArrayList<>();
+
+    public void initializeCars(String[] racerList){
+        for(String racer: racerList){
+            cars.add(new Car(racer, 1));
+        }
+    }
+
+    public void race(Decision moveDecisionMaker){
+        this.cars.forEach(car -> car.move(moveDecisionMaker));
+    }
+
+    public List<Car> getCars(){
+        return cars;
+    }
+}
