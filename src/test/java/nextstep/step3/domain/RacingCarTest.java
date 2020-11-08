@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
-	private RacingCar underTest = new RacingCar();
+	private RacingCar underTest = new RacingCar(0);
 
 	@Test
 	@DisplayName("이동가능한 수는 0보다 크고 9보다 작아야 한다.")
@@ -21,14 +21,14 @@ public class RacingCarTest {
 	@DisplayName(("4 이상이 이동한다."))
 	public void moveTest() {
 		underTest.move(5);
-		assertThat(underTest.getPoint()).isEqualTo(2);
+		assertThat(underTest.getPoint()).isEqualTo(1);
 	}
 
 	@Test
 	@DisplayName(("4 미만이면 이동안한다."))
 	public void stopTest() {
 		underTest.move(3);
-		assertThat(underTest.getPoint()).isEqualTo(1);
+		assertThat(underTest.getPoint()).isEqualTo(0);
 	}
 
 }
