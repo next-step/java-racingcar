@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Random;
 
-public class MoveCheckor {
+public class MoveCheckor{
 
     //난수 확인
     public boolean checkNumber(){
