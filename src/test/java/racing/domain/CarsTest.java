@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
 
@@ -18,6 +19,14 @@ public class CarsTest {
 
         // then
         assertThat(cars.getCars().size()).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자 초과하여 넘어갈 경우 exception 발생 테스트")
+    void 자동차_이름_유효성검사_테스트() {
+        assertThatThrownBy(() ->
+            new Cars().setCars("테스트자동차")
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

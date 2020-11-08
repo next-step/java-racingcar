@@ -30,7 +30,10 @@ public class RaceResultTest {
     void 레이스_기록에_초과된_랩수로_결과를_조회() {
         RaceResult raceResult = carRacing.getRaceResults();
         assertThatThrownBy(() ->
-                raceResult.findResult(11)
+            raceResult.findResult(11)
         ).isInstanceOf(NullPointerException.class);
     }
+
+
+
 }
