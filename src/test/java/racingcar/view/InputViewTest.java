@@ -19,14 +19,14 @@ public class InputViewTest {
         assertThat(InputView.isValidInputNumber(inputNumber)).isEqualTo(expect);
     }
 
-    private static Stream<Arguments> inputNumberCase() {
+    private static Stream<Arguments> inputLoopCount() {
         return Stream.of(
                 Arguments.of(false, 7),
                 Arguments.of(true, 0)
         );
     }
 
-    @DisplayName("Input 값 유효성 검사 : 숫자외의 입력시")
+    @DisplayName("시도 횟수 값 유효성 검사 : 숫자외의 입력시")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "foo"})
     void validInputValue(String exceptionWord) {
