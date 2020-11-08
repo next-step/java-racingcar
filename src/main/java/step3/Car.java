@@ -12,12 +12,12 @@ public class Car {
     }
 
     public void move(int randomValue) {
-        if(checkRandom(randomValue)) {
+        if(checkMovable(randomValue)) {
             this.currentPosition += POSITION_MOVE;
         }
     }
 
-    private boolean checkRandom(int randomValue) {
+    private boolean checkMovable(int randomValue) {
         return randomValue >= MIN_MOVING_CONDITION;
     }
 
