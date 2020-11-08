@@ -1,6 +1,6 @@
 package step5.client.view.input;
 
-import step5.worker.application.SimulationRequest;
+import step5.client.worker.application.SimulationRequest;
 import step5.client.view.output.Printer;
 
 import java.util.Scanner;
