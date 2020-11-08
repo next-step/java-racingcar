@@ -30,7 +30,7 @@
         - 자동차 배열이 유효한지 검사 private void validate -> 무엇이 유효한지 검사하는 기준을 안적어서 까먹음
 - 입력기
     - 쉼표로 구분한 자동차들이름 static public String readString 
-    - 시도 횟수 static public readInteger int 
+    - 시도 횟수 static public int readInteger  
 - 출력기
     - 멤버
         - 자동차 종류 private final String carKind;
