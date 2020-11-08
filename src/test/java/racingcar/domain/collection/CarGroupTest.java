@@ -1,8 +1,12 @@
-package racingcar;
+package racingcar.domain.collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import racingcar.asset.CarGroupConst;
+import racingcar.domain.model.Car;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.ProceedStrategy;
+import racingcar.domain.strategy.StopStrategy;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -35,27 +39,27 @@ class CarGroupTest {
     }
 
     @Test
-    @DisplayName("가장 getPosition 값이 큰 car 들이 Winner 가 된다.")
+    @DisplayName("가장 move  car 들이 Winner 가 된다.")
     void getWinners() {
         int carNum = 10;
-        int maxPosition = Integer.MAX_VALUE;
+        int winnerPosition = 100;
+        MoveStrategy strategy = ProceedStrategy.getInstance();
         Car[] carArr = new Car[carNum];
         Function<Integer, Boolean> checkWinner = (Integer idx) -> (idx % 2 == 0);
 
         for (int i = 0; i < carNum; i++) {
-            Car car = Mockito.mock(Car.class);
+            String name = "car" + i;
+            Car car = Car.createCar(name, strategy);
             boolean isWinner = checkWinner.apply(i);
-            int position = isWinner ? maxPosition : i;
-            Mockito.when(
-                    car.getPosition()
-            ).thenReturn(position);
+            int position = isWinner ? winnerPosition : i;
+            for (int j = 0; j < position; j++) {
+                car.move();
+            }
             carArr[i] = car;
         }
 
         List<Car> cars = Arrays.asList(carArr);
-        CarGroup carGroup = Mockito.mock(CarGroup.class);
-        Mockito.when(carGroup.getWinners(cars)).thenCallRealMethod();
-        List<Car> winners = carGroup.getWinners(cars);
+        List<Car> winners = CarGroup.getWinners(cars);
 
         List<Car> expectedWinners = new LinkedList<Car>();
         for (int i = 0; i < carNum; i++) {
@@ -69,4 +73,32 @@ class CarGroupTest {
         assertThat(winners)
                 .isEqualTo(expectedWinners);
     }
+
+    @Test
+    @DisplayName("strategy 가 stop 으로 바뀌면 전진하지 않는다.")
+    void setStrategy() {
+        String nameCsv = "0,1,2,3,4,5,6,7,8,9";
+        MoveStrategy proceedStrategy = ProceedStrategy.getInstance();
+        MoveStrategy stopStrategy = StopStrategy.getInstance();
+
+        CarGroup carGroup = new CarGroup(nameCsv, proceedStrategy);
+        carGroup.moveCar();
+        carGroup.setStrategy(stopStrategy);
+        for (int i = 0; i < 100; i++) {
+            carGroup.moveCar();
+        }
+
+        int movedPosition = 2;
+        int carNum = nameCsv
+                .split(CarGroupConst.NAME_SPLIT_REGEX)
+                .length;
+        Integer[] expectedPositions = new Integer[carNum];
+        Arrays.fill(expectedPositions, movedPosition);
+        List<Integer> expectedList = Arrays.asList(expectedPositions);
+
+        assertThat(carGroup.getPositions())
+                .isEqualTo(expectedList);
+    }
+
+
 }

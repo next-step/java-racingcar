@@ -1,4 +1,9 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.asset.OutputViewConst;
+import racingcar.domain.collection.History;
+import racingcar.domain.model.Car;
+import racingcar.domain.model.Memento;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,28 +39,30 @@ public class OutputView {
 
     private void printCars(List<Car> cars) {
         for (Car car : cars) {
-            String carStr = this.convertCar(car);
+            String carStr = convertCar(car);
             System.out.println(carStr);
         }
         System.out.println();
     }
 
-    public void printHistory(List<List<Car>> history) {
-        for (List<Car> cars : history) {
-            this.printCars(cars);
+    public void printHistory(History history) {
+        List<Memento> mementoList = history.getMementoList();
+        for (Memento memento : mementoList) {
+            List<Car> cars = memento.getCars();
+            printCars(cars);
         }
     }
 
     protected String convertWinnerList(List<Car> winnerList) {
-        List<String> winners = winnerList
-                .stream()
+        return winnerList.stream()
                 .map(Car::getName)
-                .collect(Collectors.toList());
-        return String.join(OutputViewConst.WINNER_DELIMITER, winners) + OutputViewConst.WINNER_MSG;
+                .collect(
+                        Collectors.joining(OutputViewConst.WINNER_DELIMITER)
+                ) + OutputViewConst.WINNER_MSG;
     }
 
     public void printWinners(List<Car> winners) {
-        String winnerStr = this.convertWinnerList(winners);
+        String winnerStr = convertWinnerList(winners);
         System.out.println(winnerStr);
     }
 

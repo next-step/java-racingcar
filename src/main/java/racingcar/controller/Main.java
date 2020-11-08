@@ -1,4 +1,10 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.domain.aggregate.RacingGame;
+import racingcar.domain.collection.History;
+import racingcar.domain.model.Car;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -14,7 +20,7 @@ public class Main {
         OutputView outputView = OutputView.getInstance();
         outputView.printResultMsg();
 
-        List<List<Car>> history = game.getHistory();
+        History history = game.getHistory();
         outputView.printHistory(history);
 
         List<Car> winners = game.getWinners();

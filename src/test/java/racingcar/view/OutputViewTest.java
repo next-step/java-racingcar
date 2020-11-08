@@ -1,24 +1,25 @@
-package racingcar;
+package racingcar.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.Mockito;
+import racingcar.domain.model.Car;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.ProceedStrategy;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("View 클래스 테스트")
 class OutputViewTest {
 
     private OutputView outputView;
 
     @BeforeEach
     void setUp() {
-        this.outputView = OutputView.getInstance();
+        outputView = OutputView.getInstance();
     }
 
     @ParameterizedTest
@@ -27,13 +28,13 @@ class OutputViewTest {
     void convertCarPositions(int loop, String expectedResult) {
         String name = "고정완";
         MoveStrategy strategy = ProceedStrategy.getInstance();
-        Car car = new Car(name, strategy);
+        Car car = Car.createCar(name, strategy);
 
         for (int i = 0; i < loop; i++) {
             car.move();
         }
 
-        String result = this.outputView.convertCar(car);
+        String result = outputView.convertCar(car);
         assertThat(result)
                 .isEqualTo(expectedResult);
 
@@ -43,16 +44,17 @@ class OutputViewTest {
     @DisplayName("convertWinnerList 테스트")
     @CsvSource(value = {"1,2,3$1, 2, 3가 최종 우승했습니다.", "a,b,c$a, b, c가 최종 우승했습니다."}, delimiter = '$')
     void convertWinnerList(String winnerNameCsv, String expectedMsg) {
-        MoveStrategy strategy = Mockito.mock(MoveStrategy.class);
+        MoveStrategy strategy = ProceedStrategy.getInstance();
 
         String[] winnerNames = winnerNameCsv.split(",");
         List<Car> carList = new LinkedList<Car>();
         for (int i = 0; i < winnerNames.length; i++) {
             String name = winnerNames[i];
-            carList.add(new Car(name, strategy));
+            Car car = Car.createCar(name, strategy);
+            carList.add(car);
         }
 
-        assertThat(this.outputView.convertWinnerList(carList))
+        assertThat(outputView.convertWinnerList(carList))
                 .isEqualTo(expectedMsg);
     }
 }

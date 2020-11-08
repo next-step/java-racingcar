@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.strategy;
 
 public class ProceedStrategy implements MoveStrategy {
     private ProceedStrategy() {}
