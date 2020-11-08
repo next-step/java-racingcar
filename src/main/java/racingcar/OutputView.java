@@ -1,4 +1,4 @@
-package step3;
+package racingcar;
 
 public class OutputView {
     private final String RESULT_MENTION = "실행결과";

@@ -1,4 +1,4 @@
-package step3;
+package racingcar;
 
 public class Car {
 
