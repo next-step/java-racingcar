@@ -1,6 +1,7 @@
 package step5.client.worker.domain.strategy;
 
 import step5.client.worker.domain.Car;
+import step5.client.worker.domain.Position;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ public class SelectFarthestDistanceWinnerStrategy implements SelectWinnerStrateg
     private int findFarthestDistance(final List<Car> cars) {
         return cars.stream()
                 .map(Car::getPosition)
+                .map(Position::getValue)
                 .max(Integer::compareTo)
                 .orElse(0);
     }

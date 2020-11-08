@@ -49,7 +49,8 @@ class RacingGameTest {
             final RacingGameRoundResult lastRacingGameRoundResult = racingGameRoundResults.get(TEN_TIMES_ATTEMPT - 1);
             final boolean AllCarMovedAtTenTimes = lastRacingGameRoundResult.getCars()
                     .stream()
-                    .mapToInt(Car::getPosition)
+                    .map(Car::getPosition)
+                    .map(Position::getValue)
                     .allMatch(position -> position == TEN_TIMES_ATTEMPT);
             assertThat(AllCarMovedAtTenTimes).isTrue();
         }

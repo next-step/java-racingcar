@@ -6,12 +6,12 @@ public class Car {
     private static final int UNIT_OF_FORWARD = 1;
     private static final int DEFAULT_POSITION = 0;
     private final String name;
-    private int position;
+    private final Position position;
     private final MovableStrategy movableStrategy;
 
     private Car(final String name, final MovableStrategy movableStrategy, final int initPosition) {
         this.name = name;
-        this.position = initPosition;
+        this.position = Position.of(initPosition);
         this.movableStrategy = movableStrategy;
     }
 
@@ -24,19 +24,19 @@ public class Car {
     }
     
     public Car clone() {
-        return Car.of(name, movableStrategy, position); 
+        return Car.of(name, movableStrategy, position.getValue()); 
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
     public boolean isPositionEqual(final int position) {
-        return this.position == position;
+        return this.position.getValue() == position;
     }
 
     public boolean isMove() {
@@ -44,6 +44,6 @@ public class Car {
     }
 
     public void moveForward() {
-        position += UNIT_OF_FORWARD;
+        position.increase(UNIT_OF_FORWARD);
     }
 }
