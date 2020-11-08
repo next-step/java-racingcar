@@ -11,14 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
-    private Car car;
-
-    @BeforeEach
-    void setUp(){
-        this.car = new Car();
-    }
-
-    @DisplayName("자동차 이동  테스트 - 예외 발생 테스트")
+    @DisplayName("자동차 전진 테스트")
     @ParameterizedTest
     @ValueSource(strings = {
             "-1",
@@ -47,10 +40,10 @@ class CarTest {
             "8:True",
             "9:True",
     }, delimiter = ':')
-    public void test2(int value, boolean expected) {
-        car.move(value);
-        assertThat(car.getLocation() == 1)
-                .isEqualTo(expected);
+    public void test3(boolean move, int expected) {
+        Car car = new Car("name", new ForTestStrategy(() -> move));
+        car.move();
+        assertThat(car.getLocation()).isEqualTo(expected);
     }
 
 }

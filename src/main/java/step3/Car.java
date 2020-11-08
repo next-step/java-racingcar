@@ -2,9 +2,14 @@ package step3;
 
 public class Car {
 
-    private int location = 0;
+    private int location;
+    private final String name;
+    private MoveStrategy moveStrategy;
 
-    private static final Integer bound = 9;
+    public Car(String name, MoveStrategy moveStrategy) {
+        this.name = name;
+        this.moveStrategy = moveStrategy;
+    }
 
     public void move(int value) {
         if (value > bound || value < 0) {
@@ -21,6 +26,10 @@ public class Car {
 
     public int getLocation() {
         return location;
+    }
+
+    public Record exportRecord() {
+        return new Record(this.name, this.location);
     }
 
 }

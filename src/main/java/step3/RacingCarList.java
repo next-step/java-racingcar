@@ -2,36 +2,30 @@ package step3;
 
 import step3.strategy.MoveStrategy;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCarList {
 
     private List<Car> racingCarList;
 
-    public RacingCarList(int carCount) {
-        List<Car> list = new ArrayList<>();
-        IntStream
-                .range(0, carCount)
-                .forEach(i -> {
-            list.add(new Car());
-        });
-        racingCarList = Collections.unmodifiableList(list);
+    public RacingCarList(List<String> users) {
+        racingCarList = Collections.unmodifiableList(users
+                .stream()
+                .map(user -> new Car(user, new RandomStrategy()))
+                .collect(Collectors.toList()));
     }
 
-    public void moveCars(MoveStrategy moveStrategy) {
-        if (moveStrategy == null) {
-            throw new NullPointerException();
-        }
+    public LabRecord moveCars() {
         racingCarList
-                .forEach(car -> {
-                    int generate = moveStrategy.generate();
-                    car.move(generate);
-                });
-    }
+                .forEach(Car::move);
+        return new LabRecord(
+                racingCarList
+                        .stream()
+                        .map(Car::exportRecord)
+                        .collect(Collectors.toList())
+        );
 
     public List<Integer> getRacingStatus() {
         return racingCarList

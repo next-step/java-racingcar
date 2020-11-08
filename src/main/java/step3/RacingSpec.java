@@ -1,23 +1,26 @@
 package step3;
 
+import java.util.Collections;
+import java.util.List;
+
 public class RacingSpec {
 
-    private final Integer carCount;
-    private final Integer moveCount;
+    private List<String> users;
+    private final Integer lab;
 
-    public RacingSpec(int carCount, int moveCount) {
-        if (carCount <= 0 || moveCount <= 0) {
+    public RacingSpec(List<String> users, int lab) {
+        if (users == null || lab <= 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RACING_SPEC);
         }
-        this.carCount = carCount;
-        this.moveCount = moveCount;
+        this.lab = lab;
+        this.users = Collections.unmodifiableList(users);
     }
 
-    public Integer getCarCount() {
-        return carCount;
+    public Integer getLab() {
+        return this.lab;
     }
 
-    public Integer getMoveCount() {
-        return moveCount;
+    public List<String> getUsers() {
+        return this.users;
     }
 }
