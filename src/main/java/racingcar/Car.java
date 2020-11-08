@@ -1,4 +1,4 @@
-package step3.racingcar;
+package racingcar;
 
 public class Car {
     private MovableStrategy movableStrategy;

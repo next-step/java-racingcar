@@ -1,4 +1,4 @@
-import step3.racingcar.RacingStadium;
+import racingcar.RacingStadium;
 
 public class Main {
 

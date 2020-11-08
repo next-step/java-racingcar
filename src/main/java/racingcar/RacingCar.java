@@ -1,4 +1,4 @@
-package step3.racingcar;
+package racingcar;
 
 public class RacingCar extends Car {
     private Integer lane;
