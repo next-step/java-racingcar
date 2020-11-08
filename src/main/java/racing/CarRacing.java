@@ -1,29 +1,34 @@
 package racing;
 
-import racing.domain.Car;
-import racing.domain.Cars;
-
-import java.util.List;
-import java.util.stream.IntStream;
+import racing.domain.*;
 
 public class CarRacing {
 
     private final Cars cars;
-    private int maxLaps = 0;
+    private final RaceResult raceResult = new RaceResult();
+    private int maxLaps;
 
-    public CarRacing(int numberOfCars,int maxLaps) {
-        this.cars = new Cars(numberOfCars);
+    public CarRacing(int vehicleCount, int maxLaps) {
+        this.cars = new Cars();
+        this.cars.setCars(vehicleCount);
         this.maxLaps = maxLaps;
-        start();
     }
 
-    public List<Car> getRacingCars() {
-        return cars.getCars();
+    public Cars getRacingCars() {
+        return cars;
     }
 
-    private void start() {
-        IntStream.range(0,maxLaps)
-                .filter(i -> i < maxLaps)
-                .forEach(e -> cars.moves());
+    public RaceResult getRaceResults() {
+        return raceResult;
+    }
+
+    public void start() {
+        for (int i = 0; i < maxLaps; i++) {
+            raceResult.setResult(i,cars.moves(raceRule()));
+        }
+    }
+
+    public RaceRule raceRule() {
+        return new RaceMovementRule();
     }
 }

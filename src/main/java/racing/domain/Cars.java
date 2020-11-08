@@ -8,9 +8,11 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int vehicleCount) {
-        this.cars = new ArrayList<>(vehicleCount);
+    public Cars() {
+        this.cars = new ArrayList<>();
+    }
 
+    public void setCars(int vehicleCount) {
         for(int i = 0; i<vehicleCount; i += 1) {
             cars.add(new Car(String.valueOf(i)));
         }
@@ -20,9 +22,9 @@ public class Cars {
         return cars;
     }
 
-    public void moves() {
-        cars.stream()
-                .peek(Car::move)
+    public List<Car> moves(RaceRule raceRule) {
+        return cars.stream()
+                .peek(car -> car.move(raceRule))
                 .collect(Collectors.toList());
     }
 
