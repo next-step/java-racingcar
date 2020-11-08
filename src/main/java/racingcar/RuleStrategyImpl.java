@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Random;
 
 public class RuleStrategyImpl implements RuleStrategy {
+    public static final int NO_MOVEMENT = 0;
     public static final int MOVEMENT_UNIT = 1;
     public static final int THRESHOLD = 4;
     public static final int BOUND = 10;
@@ -13,6 +14,6 @@ public class RuleStrategyImpl implements RuleStrategy {
         if (random.nextInt(BOUND) >= THRESHOLD)
             return MOVEMENT_UNIT;
 
-        return 0;
+        return NO_MOVEMENT;
     }
 }
