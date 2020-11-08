@@ -48,10 +48,8 @@ public class StringCalculator {
 		List<Integer> numbers = strList.stream()
 				.map(Integer::parseInt)
 				.collect(Collectors.toList());
-		Optional<Integer> result = Optional.ofNullable(numbers.stream()
-				.reduce(numbers.remove(0), (num1, num2) -> Operator.getOperatorBy(operatorList.remove(0)).apply(num1, num2)));
-
-		return result.isPresent() ? result.get() : 0;
+		return numbers.stream()
+				.reduce(numbers.remove(0), (num1, num2) -> Operator.getOperatorBy(operatorList.remove(0)).apply(num1, num2));
 	}
 
 	private boolean isEven(int index) {

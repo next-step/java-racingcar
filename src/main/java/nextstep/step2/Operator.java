@@ -7,7 +7,12 @@ public enum Operator {
 	PLUS("+", (num1, num2) -> num1 + num2),
 	MINUS("-", (num1, num2) -> num1 - num2),
 	MULTIPLICATION("*", (num1, num2) -> num1 * num2),
-	DIVISION("/", (num1, num2) -> num1 / num2);
+	DIVISION("/", (num1, num2) -> {
+		if (num1 % num2 != 0) {
+			throw new IllegalArgumentException("divide into integers.");
+		}
+		return (num1 / num2);
+	});
 
 	private final String operator;
 	private final BiFunction<Integer, Integer, Integer> operationFunction;
@@ -25,9 +30,6 @@ public enum Operator {
 	}
 
 	public int apply(int num1, int num2) {
-		if (this == DIVISION && (num1 % num2 != 0)) {
-			throw new IllegalArgumentException("divide into integers.");
-		}
 		return operationFunction.apply(num1, num2);
 	}
 }
