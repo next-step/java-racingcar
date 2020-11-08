@@ -1,21 +1,21 @@
 package step5.client.worker.application;
 
-import step5.client.worker.domain.Snapshot;
+import step5.client.worker.domain.RacingGameRoundResult;
 
 import java.util.Collections;
 import java.util.List;
 
 public class RacingGameResponse {
-    private final List<Snapshot> snapshots;
+    private final List<RacingGameRoundResult> racingGameRoundResults;
     private final List<String> winners;
 
-    public RacingGameResponse(final List<Snapshot> snapshots, final List<String> winners) {
-        this.snapshots = Collections.unmodifiableList(snapshots);
+    public RacingGameResponse(final List<RacingGameRoundResult> racingGameRoundResults, final List<String> winners) {
+        this.racingGameRoundResults = Collections.unmodifiableList(racingGameRoundResults);
         this.winners = Collections.unmodifiableList(winners);
     }
 
-    public List<Snapshot> getSnapshots() {
-        return snapshots;
+    public List<RacingGameRoundResult> getRacingGameRoundResults() {
+        return racingGameRoundResults;
     }
 
     public List<String> getWinners() {

@@ -39,7 +39,7 @@ class RacingGameInteractorTest {
         final RacingGameResponse result = simulator.interact(request);
         
         // then
-        assertThat(result.getSnapshots().size()).isEqualTo(Integer.valueOf(numberAttempts));
+        assertThat(result.getRacingGameRoundResults().size()).isEqualTo(Integer.valueOf(numberAttempts));
     }
 
     static Stream<Arguments> generateSampleForSimulateMethodTesting() {

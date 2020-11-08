@@ -18,9 +18,9 @@ class RacingGameTest {
     private static final List<String> CAR_NAMES = Arrays.asList("CAR1", "CAR2", "CAR3");
     private static final int TEN_TIMES_ATTEMPT = 10;
 
-    @DisplayName("extractSnapshots")
+    @DisplayName("getAllRacingGameResults")
     @Nested
-    class ExtractSnapshots {
+    class GetAllRacingGameResults {
         @DisplayName("결과를 snapshot 리스트로 반환")
         @Test
         void return_snapshot_list() {
@@ -28,11 +28,11 @@ class RacingGameTest {
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE, SELECT_WINNER_STRATEGY);
 
             // when
-            racingGame.run(TEN_TIMES_ATTEMPT);
-            final List<Snapshot> snapshots = racingGame.extractSnapshots();
+            racingGame.race(TEN_TIMES_ATTEMPT);
+            final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
             
             // then
-            assertThat(snapshots).isNotEmpty();
+            assertThat(racingGameRoundResults).isNotEmpty();
         }
 
         @DisplayName("10번 시도 시 레이싱카는 10번 이동")
@@ -42,12 +42,12 @@ class RacingGameTest {
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
             
             // when
-            racingGame.run(TEN_TIMES_ATTEMPT);
-            final List<Snapshot> snapshots = racingGame.extractSnapshots();
+            racingGame.race(TEN_TIMES_ATTEMPT);
+            final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
 
             // then
-            final Snapshot lastSnapshot = snapshots.get(TEN_TIMES_ATTEMPT - 1);
-            final boolean AllCarMovedAtTenTimes = lastSnapshot.getCars()
+            final RacingGameRoundResult lastRacingGameRoundResult = racingGameRoundResults.get(TEN_TIMES_ATTEMPT - 1);
+            final boolean AllCarMovedAtTenTimes = lastRacingGameRoundResult.getCars()
                     .stream()
                     .mapToInt(Car::getPosition)
                     .allMatch(position -> position == TEN_TIMES_ATTEMPT);
@@ -61,8 +61,8 @@ class RacingGameTest {
             final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
             
             // when
-            racingGame.run(TEN_TIMES_ATTEMPT);
-            final List<Snapshot> snapshots = racingGame.extractSnapshots();
+            racingGame.race(TEN_TIMES_ATTEMPT);
+            final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
 
             // then
             final List<String> winners = racingGame.selectWinnerNames();

@@ -38,9 +38,9 @@ public class RacingGameInteractor {
     }
 
     private RacingGameResponse getResponseAfterGameFinished(final RacingGame racingGame, final int times) {
-        racingGame.run(times);
-        final List<Snapshot> snapshots = racingGame.extractSnapshots();
+        racingGame.race(times);
+        final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
         final List<String> winners = racingGame.selectWinnerNames();
-        return new RacingGameResponse(snapshots, winners);
+        return new RacingGameResponse(racingGameRoundResults, winners);
     }
 }

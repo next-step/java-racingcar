@@ -1,7 +1,7 @@
 package step5.client.worker.interfaces.presenter;
 
 import step5.client.worker.application.RacingGameResponse;
-import step5.client.worker.domain.Snapshot;
+import step5.client.worker.domain.RacingGameRoundResult;
 import step5.client.worker.interfaces.render.RoundResultViewRender;
 import step5.client.worker.interfaces.render.WinnerResultViewRender;
 
@@ -21,9 +21,9 @@ public class ResultViewPresenter {
     }
 
     private List<RoundResultViewRender> createRoundResultViewRenders(final RacingGameResponse response) {
-        final List<Snapshot> snapshots = response.getSnapshots();
-        return snapshots.stream()
-                .map(Snapshot::getCars)
+        final List<RacingGameRoundResult> racingGameRoundResults = response.getRacingGameRoundResults();
+        return racingGameRoundResults.stream()
+                .map(RacingGameRoundResult::getCars)
                 .map(RoundResultViewRender::new)
                 .collect(Collectors.toList());
     }

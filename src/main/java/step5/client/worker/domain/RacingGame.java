@@ -14,7 +14,7 @@ public class RacingGame {
     private final List<Car> cars;
     private final SelectWinnerStrategy selectWinnerStrategy;
     private volatile boolean finished = false;
-    private List<Snapshot> snapshots;
+    private List<RacingGameRoundResult> racingGameRoundResults;
 
     private RacingGame(final List<Car> cars, final SelectWinnerStrategy selectWinnerStrategy) {
         this.cars = Collections.unmodifiableList(cars);
@@ -37,11 +37,11 @@ public class RacingGame {
                 .forEach(Car::moveForward);
     }
 
-    private Snapshot createSnapshot() {
+    private RacingGameRoundResult createSnapshot() {
         final List<Car> clonedCars = cars.stream()
                 .map(Car::clone)
                 .collect(Collectors.toList());
-        return Snapshot.of(Collections.unmodifiableList(clonedCars));
+        return RacingGameRoundResult.of(Collections.unmodifiableList(clonedCars));
     }
 
     public List<String> selectWinnerNames() {
@@ -55,7 +55,7 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public synchronized void run(final int times) {
+    public synchronized void race(final int times) {
         if (isFinished()) {
             return;
         }
@@ -71,18 +71,18 @@ public class RacingGame {
     }
 
     private void initSnapShots(final int times) {
-        snapshots = new ArrayList<>(times);
+        racingGameRoundResults = new ArrayList<>(times);
     }
 
     private void saveSnapshot() {
-        snapshots.add(createSnapshot());
+        racingGameRoundResults.add(createSnapshot());
     }
 
-    public List<Snapshot> extractSnapshots() {
+    public List<RacingGameRoundResult> getAllRacingGameResults() {
         if (isNotFinished()) {
             return Collections.emptyList();
         }
-        return snapshots;
+        return racingGameRoundResults;
     }
 
     private boolean isNotFinished() {
