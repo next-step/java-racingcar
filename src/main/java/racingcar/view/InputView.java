@@ -17,11 +17,11 @@ public class InputView {
     }
 
     public static String[] inputNameOfCars() {
-        return getNameOfCars(NUM_OF_NAME_MESSAGE);
+        return getNameOfCars();
     }
 
-    public static String[] getNameOfCars(String content) {
-        System.out.println(content);
+    private static String[] getNameOfCars() {
+        System.out.println(InputView.NUM_OF_NAME_MESSAGE);
         String inputName = SCANNER.next();
         //        int numOfNames = names.length;
 //        validateInputNum(numOfNames);
