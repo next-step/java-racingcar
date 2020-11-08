@@ -1,6 +1,6 @@
-package racingcar.utils;
+package racingcar.application;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 
 public class CarsGenerator {
     public Car[] generateCars(int countOfCar) {
