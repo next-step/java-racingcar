@@ -9,7 +9,7 @@ public class RacingSpec {
     private final Integer lab;
 
     public RacingSpec(List<String> users, int lab) {
-        if (users == null || lab <= 0) {
+        if (users == null || users.isEmpty() || lab <= 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RACING_SPEC);
         }
         this.lab = lab;

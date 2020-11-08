@@ -1,9 +1,11 @@
 package racing_car.controller;
 
+import racing_car.ErrorMessage;
 import racing_car.RacingSpec;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -15,17 +17,24 @@ public class InputController {
 
     public static RacingSpec enterInput() {
         List<String> users = enterRacingUser();
+        if (users.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_RACING_USER);
+        }
         Integer lap = enterRacingLap();
         return new RacingSpec(users, lap);
     }
+
+
 
     private static List<String> enterRacingUser() {
         System.out.println(CAR_COUNT_QUESTION);
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
-        List<String> strings = Arrays.asList(input.split(UESR_SPLIT_DELIMITER));
-        return strings
+        List<String> userNameString = Arrays.asList(input.split(UESR_SPLIT_DELIMITER));
+        return userNameString
                 .stream()
+                .filter(Objects::nonNull)
+                .filter(name -> name.isEmpty() == false)
                 .map(String::trim)
                 .collect(Collectors.toList());
     }
