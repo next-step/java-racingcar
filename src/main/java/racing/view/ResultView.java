@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.Car;
 import racing.domain.CarSetInRace;
 import racing.domain.RaceResult;
 
@@ -22,7 +23,7 @@ public class ResultView {
         for(int i=0; i<maxLaps; i++) {
             int laps = i;
             raceResult.findResult(laps)
-                    .forEach(car -> parseRecord(car.getRaceSetting(),laps));
+                    .forEach(car -> parseRecord(car.getName(),car.getRaceSetting(),laps));
             System.out.print("\n");
         }
     }
@@ -33,13 +34,15 @@ public class ResultView {
         System.out.print("\n");
     }
 
-    private static void parseRecord(CarSetInRace setInRace,int index) {
+    private static void parseRecord(String name, CarSetInRace setInRace, int index) {
         String raceRecord = setInRace.findRecord(index);
         raceRecord = Pattern.compile(CAR_RECORD_STRING_SEPARATOR)
                 .splitAsStream(raceRecord)
                 .filter(str -> !CAR_STOP_MOVE_CODE.contains(str))
                 .collect(Collectors.joining());
-        System.out.println(raceRecord.replaceAll(CAR_NORMAL_MOVE_CODE,SKID_MARK));
+        System.out.printf("%s : %s \n",
+            name,raceRecord.replaceAll(CAR_NORMAL_MOVE_CODE,SKID_MARK)
+        );
     }
 
 }
