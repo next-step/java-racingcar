@@ -61,7 +61,7 @@ public class CarTest {
     @DisplayName("Car 생성 시 distance 를 0으로 초기화 여부")
     @Test
     void createCar() {
-        Car car = new Car();
+        Car car = new Car("peony");
         assertThat(car.getPosition()).isZero();
         assertThat(car).isNotNull();
     }
@@ -69,17 +69,18 @@ public class CarTest {
     @DisplayName("Car 이동 또는 정지 여부")
     @ParameterizedTest
     @MethodSource("moveCase")
-    void moveOrStopCar(boolean moveOrNot, int distance) {
-        Car car = new Car();
+    void moveOrStopCar(boolean moveOrNot, int distance, String carName) {
+        Car car = new Car(carName);
         car.move(() -> moveOrNot);
         int result = car.getPosition();
         assertThat(result).isEqualTo(distance);
+        assertThat(car.getCarName()).isEqualTo(carName);
     }
 
     private static Stream<Arguments> moveCase() {
         return Stream.of(
-                Arguments.of(true, 1),
-                Arguments.of(false, 0)
+                Arguments.of(true, 1, "peony"),
+                Arguments.of(false, 0, "peony")
         );
     }
 }
