@@ -1,13 +1,9 @@
 package car.racing;
 
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class CarRacingViewController {
-
-    private static final String DELIMITER = ",";
 
     private final ResultViewContract resultView;
     private final CarRacingManager carRacingManager;
@@ -17,45 +13,26 @@ public class CarRacingViewController {
         this.carRacingManager = carRacingManager;
     }
 
-    public void input(String names, int tryCount) {
-        String[] carNames = names.split(DELIMITER);
-        if (!isValidInput(carNames)) {
-            throw new IllegalArgumentException("잘못된 이름 입니다.");
-        }
-
-        carRacingManager.setupCars(carNames);
-        showRacingResult(tryCount);
+    public void input(int tryCount) {
+        resultView.resultTitle();
+        forwardCars(tryCount);
         showRacingWinners();
     }
 
-    private void showRacingResult(int tryCount) {
-        resultView.resultTitle();
+    private void forwardCars(int tryCount) {
         IntStream.range(0, tryCount)
                 .forEach(i -> {
-                    resultView.forward(carRacingManager.forwardEachCar());
-                    resultView.newLine();
+                    carRacingManager.forwardCarEachTry();
+                    showRacingResultEachTry();
                 });
     }
 
+    private void showRacingResultEachTry() {
+        carRacingManager.getCars().forEach(resultView::forward);
+        resultView.newLine();
+    }
+
     private void showRacingWinners() {
-        StringBuilder winnersStrBuilder = new StringBuilder();
-
-        List<String> winnerNames = carRacingManager.racingWinners();
-        IntStream.range(0, winnerNames.size())
-                .forEach(i -> winnersStrBuilder
-                        .append(winnerNames.get(i))
-                        .append(delimiterOrNot(i, winnerNames.size())));
-        resultView.winners(winnersStrBuilder.toString());
-    }
-
-    private String delimiterOrNot(int index, int size) {
-        if (index == size -1) {
-            return "";
-        }
-        return ", ";
-    }
-
-    private boolean isValidInput(String[] carNames) {
-        return Arrays.stream(carNames).allMatch(carName -> carName.length() <= 5);
+        resultView.winners(carRacingManager.racingWinners());
     }
 }

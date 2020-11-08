@@ -2,20 +2,16 @@ package car.racing;
 
 public class Car {
 
-    private static final String DELIMITER = " : ";
-
-    private final StringBuilder forwardStrBuilder;
+    private static final int NAME_LIMIT = 5;
 
     private int forwardCount = 0;
     private String name = "";
 
     public Car(String name) {
         this.name = name;
-        this.forwardStrBuilder = new StringBuilder(name + DELIMITER);
-    }
-
-    public String forwardResult() {
-        return forwardStrBuilder.toString();
+        if (name.length() > NAME_LIMIT) {
+            throw new IllegalArgumentException("이름 길이가 너무 기네요ㅠ");
+        }
     }
 
     public String getName() {
@@ -26,8 +22,7 @@ public class Car {
         return forwardCount;
     }
 
-    public void forward(String forward) {
-        forwardStrBuilder.append(forward);
+    public void forward() {
         forwardCount++;
     }
 }

@@ -5,47 +5,51 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingManagerTest {
 
     private CarRacingManager manager;
+    private String[] names = "pobi,crong,honux".split(",");
 
     @BeforeEach
     void setup() {
-        manager = new CarRacingManager(forward -> true);
+        manager = new CarRacingManager(names, forward -> true);
     }
 
     @DisplayName("자동차들이 잘 초기화 되었는지 확인")
     @Test
     void verifySetupCars() {
-        String names = "kyle,tak,lee";
-        manager.setupCars(names.split(","));
-        assertThat(manager.cars.size()).isEqualTo(3);
+        List<Car> cars = manager.getCars();
+        IntStream.range(0, cars.size())
+                .forEach(i -> assertThat(cars.get(i).getName()).isEqualTo(names[i]));
     }
 
-    @DisplayName("전진(혹은 스탑)된 자동차들 리턴")
+    @DisplayName("각 시도마다 전진 테스트가 잘되었는지 확인")
     @Test
-    void verifyForwardEachCar() {
-        String names = "kyle,tak,lee";
-        String[] carNames = names.split(",");
-        manager.setupCars(carNames);
+    void verifyForwardCarEachTry() {
+        manager.forwardCarEachTry();
 
-        List<Car> cars = manager.forwardEachCar();
-
+        List<Car> cars = manager.getCars();
         cars.forEach(car -> assertThat(car.getForwardCount()).isEqualTo(1));
     }
 
     @DisplayName("자동차 경주자 우승자들 이름")
     @Test
     void verifyRacingWinners() {
-        String names = "kyle,tak,lee";
-        String[] carNames = names.split(",");
-        manager.setupCars(carNames);
+        List<Car> cars = manager.getCars();
+        cars.get(0).forward();
+        cars.get(0).forward();
+        cars.get(1).forward();
+        cars.get(2).forward();
+        cars.get(2).forward();
 
         List<String> winners = manager.racingWinners();
 
-        assertThat(winners.size()).isEqualTo(3);
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners.get(0)).isEqualTo("pobi");
+        assertThat(winners.get(1)).isEqualTo("honux");
     }
 }

@@ -1,6 +1,11 @@
 package car.racing;
 
-public interface CarForwardable {
+public class CarForwardable implements Forwardable {
 
-    boolean forwardable(int forward);
+    private static final int THRESHOLD = 4;
+
+    @Override
+    public boolean forwardable(int forward) {
+        return forward >= THRESHOLD;
+    }
 }

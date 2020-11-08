@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
 
@@ -13,15 +14,27 @@ public class CarTest {
     @Test
     void verifyCarForward() {
         Car car = new Car("kyle");
-        car.forward("-");
-        assertThat(car.forwardResult()).isEqualTo("kyle : -");
+
+        for (int i = 0; i < 10; i++) {
+            car.forward();
+        }
+
+        assertThat(car.getForwardCount()).isEqualTo(10);
+    }
+
+    @DisplayName("자동차 올바르지 않은 이름 입력 테스트")
+    @Test
+    void verifyCarInvalidName() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Car("kyleee"))
+                .withMessageMatching("이름 길이가 너무 기네요ㅠ");
     }
 
     @DisplayName("4 이상일 때 전진 테스트")
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8})
     void verifyForwardable(int randomNum) {
-        CarForwardable forwardable = new CarForwardableImpl();
+        Forwardable forwardable = new CarForwardable();
         assertThat(forwardable.forwardable(randomNum)).isEqualTo(true);
     }
 
@@ -29,7 +42,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void verifyFowardDisable(int randomNum) {
-        CarForwardable forwardable = new CarForwardableImpl();
+        Forwardable forwardable = new CarForwardable();
         assertThat(forwardable.forwardable(randomNum)).isEqualTo(false);
     }
 }
