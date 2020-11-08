@@ -19,8 +19,8 @@ public class CarRacing {
         ResultView resultView = new ResultView();
         resultView.showResultHead();
 
-        validateCarCount(carCnt);
-        validateTryCount(tryCnt);
+        InputView.validateCarCount(carCnt);
+        InputView.validateTryCount(tryCnt);
 
         Set<Car> carSet = initCarSet(carCnt);
 
@@ -41,17 +41,7 @@ public class CarRacing {
                 );
     }
 
-    private void validateTryCount(int tryCnt) {
-        if(tryCnt == 0){
-            throw new IllegalArgumentException(RacingErrorMessage.ZERO_TRY_COUNT.getErrorMessage());
-        }
-    }
 
-    private void validateCarCount(int carCnt) {
-        if(carCnt == 0){
-            throw new IllegalArgumentException(RacingErrorMessage.ZERO_CAR_COUNT.getErrorMessage());
-        }
-    }
 
     private Set<Car> initCarSet(int carCnt) {
         Set<Car> cars = IntStream.range(0, carCnt)

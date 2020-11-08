@@ -1,6 +1,7 @@
 package study.racing.view;
 
 import study.racing.CarRacing;
+import study.racing.RacingErrorMessage;
 
 import java.util.Scanner;
 
@@ -20,5 +21,17 @@ public class InputView {
     public static int getTryCount(){
         System.out.println(INPUT_TRY_MESSAGE);
         return scanner.nextInt();
+    }
+
+    public static void validateTryCount(int tryCnt) {
+        if(tryCnt == 0){
+            throw new IllegalArgumentException(RacingErrorMessage.ZERO_TRY_COUNT.getErrorMessage());
+        }
+    }
+
+    public static void validateCarCount(int carCnt) {
+        if(carCnt == 0){
+            throw new IllegalArgumentException(RacingErrorMessage.ZERO_CAR_COUNT.getErrorMessage());
+        }
     }
 }
