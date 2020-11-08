@@ -30,17 +30,6 @@ public class RacingCarTest {
         racingCars.run();
     }
 
-//    private enum CASE {
-//        INCLUDED_EMPTY_VALUE, NULL_VALUE, THREE_VALUES, FOUR_VALUES
-//    }
-//    private static final Map<CASE, String> carNames = new HashMap<>();
-//    static {
-//        carNames.put(CASE.INCLUDED_EMPTY_VALUE, ",car");
-//        carNames.put(CASE.NULL_VALUE, null);
-//        carNames.put(CASE.THREE_VALUES, "car1,car2,car3");
-//        carNames.put(CASE.FOUR_VALUES, "car1,car2,car3,car4");
-//    }
-
     @DisplayName("게임에 필요한 Car 를 생성자의 인자로 받아 원하는 인자를 가진 Car로 생성 여부")
     @Test
     void createTest() {
@@ -57,7 +46,6 @@ public class RacingCarTest {
                 .map(Car::getPosition))
                 .contains(DEFAULT_DISTANCE);
     }
-
 
     @DisplayName("입력한 Car의 수와 생성된 Cars의 사이즈 일치 여부 (of 메소드) ")
     @Test
@@ -87,14 +75,13 @@ public class RacingCarTest {
 
     @DisplayName("게임 한번 수행시, 우승자 출력")
     @Test
-    void getWinners(){
-      // RacingCars racingCars = RacingCars.of(nameOfCars,()->true);
-       racingCars.run();
-       List<String> winners = racingCars.getWinnerCars()
-               .stream()
-               .map(Car::getCarName)
-               .collect(Collectors.toList());
-       assertThat(winners).containsExactly("car1","car2","car3","car4");
+    void getWinners() {
+        racingCars.run();
+        List<String> winners = racingCars.getNamesOfWinnerCars()
+                .stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
+        assertThat(winners).containsExactly("car1", "car2", "car3", "car4");
     }
 
     @DisplayName("Car 최대 이동거리 일치 여부")
@@ -109,6 +96,6 @@ public class RacingCarTest {
                 stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElse(0);
+                .orElse(NOT_MOVE);
     }
 }

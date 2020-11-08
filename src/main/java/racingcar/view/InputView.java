@@ -8,7 +8,7 @@ import racingcar.util.ErrorMessage;
 public class InputView {
     public static final String NUM_OF_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     public static final String LOOP_COUNT_MESSAGE = "시도할 횟수는 몇 회 인가요?";
-    private static final int MIN_INPUT_VALUE = 0;
+    private static final int MIN_INPUT_LOOP_COUNT = 0;
     private static final String COMMA = ",";
 
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -28,8 +28,8 @@ public class InputView {
         return splitValues(inputName);
     }
 
-    static String[] splitValues(String inputName) {
-        return Arrays.stream(inputName.split(COMMA))
+    static String[] splitNameOfCars(String inputNameOfCars) {
+        return Arrays.stream(inputNameOfCars.split(COMMA))
                 .map(String::trim)
                 .toArray(String[]::new);
     }
@@ -64,17 +64,17 @@ public class InputView {
     public static int inputLoopCount() {
         System.out.println(LOOP_COUNT_MESSAGE);
         int value = SCANNER.nextInt();
-        validateInputNum(value);
+        validateLoopCountNumber(value);
         return value;
     }
 
-    static void validateInputNum(int inputNumber) {
-        if (isValidInputNumber(inputNumber)) {
+    static void validateLoopCountNumber(int inputNumber) {
+        if (isValidLoopCountNumber(inputNumber)) {
             throw new IllegalArgumentException(ErrorMessage.MORE_THAN_ZERO);
         }
     }
 
-    static boolean isValidInputNumber(int inputNumber) {
-        return inputNumber <= MIN_INPUT_VALUE;
+    static boolean isValidLoopCountNumber(int inputLoopCountNumber) {
+        return inputLoopCountNumber <= MIN_INPUT_LOOP_COUNT;
     }
 }

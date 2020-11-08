@@ -16,15 +16,15 @@ public class InputViewTest {
     @ParameterizedTest
     @ValueSource(strings = "aaaaa,bbbbb,ccccc")
     void splitCarNames(String carNames) {
-        String[] splitCarNames = InputView.splitValues(carNames);
+        String[] splitCarNames = InputView.splitNameOfCars(carNames);
         assertThat(splitCarNames).isEqualTo(new String[]{"aaaaa", "bbbbb", "ccccc"});
     }
 
     @DisplayName("시도 횟수 값 유효성 검사")
     @ParameterizedTest
     @MethodSource("inputLoopCount")
-    void validInputNum(boolean expect, int inputNumber) {
-        assertThat(InputView.isValidInputNumber(inputNumber)).isEqualTo(expect);
+    void validInputNum(boolean expect, int inputLoopCountNumber) {
+        assertThat(InputView.isValidLoopCountNumber(inputLoopCountNumber)).isEqualTo(expect);
     }
 
     private static Stream<Arguments> inputLoopCount() {
@@ -39,7 +39,7 @@ public class InputViewTest {
     @ValueSource(strings = {"", " ", "foo"})
     void validInputValue(String exceptionWord) {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                InputView.validateInputNum(Integer.parseInt(exceptionWord)));
+                InputView.validateLoopCountNumber(Integer.parseInt(exceptionWord)));
 
     }
 }

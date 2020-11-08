@@ -33,7 +33,7 @@ public class RacingCars {
                 .orElseThrow(RuntimeException::new);
     }
 
-    public List<Car> getWinnerCars() {
+    public List<Car> getNamesOfWinnerCars() {
         int winnerPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.hasSamePosition(winnerPosition))

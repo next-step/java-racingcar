@@ -17,7 +17,7 @@ public class ResultView {
         System.out.println(NEW_LINE + RESULT_MESSAGE);
     }
 
-    public static void printResult(List<Car> cars) {
+    public static void printPositionResult(List<Car> cars) {
         cars.forEach(car -> System.out.println(printPosition(car)));
         System.out.println();
     }
@@ -32,14 +32,14 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    static String getNamesOfWinnerCars(List<Car> winnerCars) {
+    static String getNamesOfWinnerCarsInString(List<Car> winnerCars) {
         return winnerCars.stream()
                 .map(Car::getCarName)
                 .collect(Collectors.joining(COMMA));
     }
 
-    public static void printWinnerResult(List<Car> winnerCars) {
-        String winner = getNamesOfWinnerCars(winnerCars) + WINNER_MESSAGE;
+    public static void printNamesOfWinnerCarsResult(List<Car> winnerCars) {
+        String winner = getNamesOfWinnerCarsInString(winnerCars) + WINNER_MESSAGE;
         System.out.println(winner);
     }
 }

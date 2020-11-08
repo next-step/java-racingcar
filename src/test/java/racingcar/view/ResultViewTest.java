@@ -45,6 +45,6 @@ public class ResultViewTest {
     @Test
     @DisplayName("최종 우승자 Car Name 출력")
     void getWinnerTest() {
-        assertThat(ResultView.getNamesOfWinnerCars(cars)).isEqualTo("car1,car2,car3");
+        assertThat(ResultView.getNamesOfWinnerCarsInString(cars)).isEqualTo("car1,car2,car3");
     }
 }

@@ -18,8 +18,8 @@ public class RacingController {
         for (int i = 0; i < loopCount; i++) {
             racingCars.run();
             List<Car> cars = racingCars.getCars();
-            ResultView.printResult(cars);
+            ResultView.printPositionResult(cars);
         }
-        ResultView.printWinnerResult(racingCars.getWinnerCars());
+        ResultView.printNamesOfWinnerCarsResult(racingCars.getNamesOfWinnerCars());
     }
 }

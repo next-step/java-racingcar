@@ -13,11 +13,11 @@ public class Car {
 
     public Car(String carName) {
         this.position = DEFAULT_DISTANCE;
-        this.carName = validateName(carName);
+        this.carName = validateNamesOfCars(carName);
     }
 
-    public static String validateName(String carName) {
-        if(isNullOrEmpty(carName)|| isFiveLetterWords(carName)) {
+    public static String validateNamesOfCars(String carName) {
+        if (isNullOrEmpty(carName) || isFiveLetterWords(carName)) {
             throw new IllegalArgumentException(ErrorMessage.INPUT_NAME_ERROR);
         }
         return carName;
