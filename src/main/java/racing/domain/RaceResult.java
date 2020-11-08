@@ -32,4 +32,19 @@ public class RaceResult {
         throw new NullPointerException(lap+NOT_FOUND_RESULT_MESSAGE);
     }
 
+    public int getRaceMaxDistance() {
+        List<Car> cars = findResult(getMaxLaps()-1);
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .getAsInt();
+    }
+
+    public String[] getWinners() {
+        return findResult(getMaxLaps()-1).stream()
+                .filter(car -> car.getDistance() == getRaceMaxDistance())
+                .map(Car::getName)
+                .toArray(String[]::new);
+    }
+
 }

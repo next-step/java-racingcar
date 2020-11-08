@@ -4,6 +4,7 @@ import racing.domain.Car;
 import racing.domain.CarSetInRace;
 import racing.domain.RaceResult;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -43,6 +44,12 @@ public class ResultView {
         System.out.printf("%s : %s \n",
             name,raceRecord.replaceAll(CAR_NORMAL_MOVE_CODE,SKID_MARK)
         );
+    }
+
+    public static void viewRaceWinners(RaceResult raceResult) {
+        String result = Arrays.toString(raceResult.getWinners())
+                .replaceAll("[\\[\\]]","");
+        System.out.print(result+"가 최종 우승했습니다.");
     }
 
 }

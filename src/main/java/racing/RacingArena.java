@@ -1,16 +1,20 @@
 package racing;
 
+import racing.domain.RaceResult;
 import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingArena {
     public static void main(String[] args) {
-        int vehicleCount = InputView.getVehicleCount();
+        String names = InputView.getInputNames();
         int maxCheckPoint = InputView.getMaxCheckPoint();
 
-        CarRacing carRacing = new CarRacing(vehicleCount,maxCheckPoint);
+        CarRacing carRacing = new CarRacing(names,maxCheckPoint);
         carRacing.start();
 
-        ResultView.viewRaceResult(carRacing.getRaceResults());
+        RaceResult raceResult = carRacing.getRaceResults();
+
+        ResultView.viewRaceResult(raceResult);
+        ResultView.viewRaceWinners(raceResult);
     }
 }
