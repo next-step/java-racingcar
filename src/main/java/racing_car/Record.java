@@ -1,6 +1,7 @@
 package racing_car;
 
-public class Record {
+
+public class Record implements Comparable<Record> {
     private final String name;
     private final Integer location;
 
@@ -15,5 +16,14 @@ public class Record {
 
     public Integer getLocation() {
         return this.location;
+    }
+
+    public boolean isSameLocation(Record record) {
+        return this.location.equals(record.getLocation());
+    }
+
+    @Override
+    public int compareTo(Record o) {
+        return this.getLocation() - o.getLocation();
     }
 }

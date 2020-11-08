@@ -17,18 +17,16 @@ public class LabRecord {
     }
 
     public List<Record> findWinnersRecords() {
-        return recordList
-                .stream()
-                .filter(record -> record.getLocation() == getMaxLocation())
+        Record bestRecord = findBestRecord();
+        return recordList.stream()
+                .filter(record -> record.isSameLocation(bestRecord))
                 .collect(Collectors.toList());
     }
 
-    private Integer getMaxLocation() {
-        return recordList
-                .stream()
-                .mapToInt(Record::getLocation)
-                .max()
-                .getAsInt();
+    private Record findBestRecord() {
+        return recordList.stream()
+                .max(Record::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.EMPTY_RECORD));
     }
 
 }
