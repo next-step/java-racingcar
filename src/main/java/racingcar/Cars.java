@@ -9,7 +9,9 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> names) {
-        this.cars = names.stream().map(Car::new).collect(Collectors.toList());
+        this.cars = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void move(RuleStrategy ruleStrategy) {
