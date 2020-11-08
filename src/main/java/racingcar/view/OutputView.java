@@ -13,6 +13,8 @@ public class OutputView {
     private static final PrintStream out = System.out;
     private static final String MOVEMENT_CHAR = "-";
 
+    private OutputView() {
+    }
 
     public static void showResult(GameResult gameResult) {
         printRoundRecords(gameResult.getRoundRecords());
