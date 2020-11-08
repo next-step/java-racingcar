@@ -16,7 +16,9 @@ public class RunCarRace {
         System.out.println(HOW_MANY_ATTEMPTS);
         int raceTryCount = InputCarData.checkTryCount(InputCarData.inputValue());
 
-        RaceResultPrint.runPrintRaceResult(new CarRaceInfo(raceCarNames, runRace(raceCarNames, raceTryCount), raceTryCount));
+        Car car = new Car(raceCarNames, runRace(raceCarNames, raceTryCount), raceTryCount);
+
+        RaceResultPrint.runPrintRaceResult(car);
     }
 
     /**
@@ -59,6 +61,4 @@ public class RunCarRace {
         }
         return carRaceMoveInfoList;
     }
-
-
 }
