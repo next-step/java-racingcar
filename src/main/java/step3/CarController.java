@@ -3,7 +3,7 @@ package step3;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CarController {
     private static final Random random = new Random();
@@ -20,8 +20,8 @@ public class CarController {
     }
 
     private CarList initCarList(int numberOfCars) {
-        List<Car> carList = IntStream.range(0, numberOfCars)
-                .mapToObj(i -> new Car())
+        List<Car> carList = Stream.generate(Car::new)
+                .limit(numberOfCars)
                 .collect(Collectors.toList());
         return CarList.from(carList);
     }
