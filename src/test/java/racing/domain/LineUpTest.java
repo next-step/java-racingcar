@@ -18,7 +18,7 @@ class LineUpTest {
     @BeforeEach
     private void makeLineUp() {
         List<RaceMachine> raceMachines = new ArrayList<>();
-        List<String> driverNames = Arrays.asList("Lewis Hamilton", "Valtteri Bottas", "Max Verstappen", "Daniel Ricciardo", "Sebastian Vettel");
+        List<String> driverNames = Arrays.asList("Lewis", "Valtt", "Max", "Dani", "Vett");
         IntStream.range(0, driverNames.size()).forEach(id -> {
             String driverName = driverNames.get(id);
             RaceMachine raceMachine = new RaceMachine(driverName, new SupplierAccelerateResolver(() -> driverName.length() % 2 == 1));
@@ -32,7 +32,7 @@ class LineUpTest {
     @Test
     void testGetMachinesInLap() {
         List<RaceMachine> machinesInLap2 = lineUp.getMachinesInLap(2);
-        assertThat(machinesInLap2).size().isEqualTo(1);
+        assertThat(machinesInLap2).size().isEqualTo(3);
         List<RaceMachine> machinesInLap3 = lineUp.getMachinesInLap(3);
         assertThat(machinesInLap3).size().isZero();
     }

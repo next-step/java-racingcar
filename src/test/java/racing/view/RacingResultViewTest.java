@@ -33,29 +33,29 @@ class RacingResultViewTest {
 
     @Test
     void testtViewReady() {
-        LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis Hamilton", "Valtteri Bottas"));
+        LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis", "Valtt"));
 
         RacingResultView.ready(lineUp);
         assertThat(outContent.toString())
-                .contains("Lewis Hamilton : -")
-                .contains("Valtteri Bottas : -");
+                .contains("Lewis : -")
+                .contains("Valtt : -");
     }
 
     @Test
     void testViewChampion() {
-        LineUp lineUp = lineUpService.createMachines(Collections.singletonList("Lewis Hamilton"));
+        LineUp lineUp = lineUpService.createMachines(Collections.singletonList("Lewis"));
 
         RacingResultView.champion(lineUp);
         assertThat(outContent.toString())
-                .contains("Lewis Hamilton가 최종 우승");
+                .contains("Lewis가 최종 우승");
     }
 
     @Test
     void testViewMultiChampion() {
-        LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis Hamilton", "Valtteri Bottas"));
+        LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis", "Valtt"));
 
         RacingResultView.champion(lineUp);
         assertThat(outContent.toString())
-                .contains("Lewis Hamilton, Valtteri Bottas가 최종 우승");
+                .contains("Lewis, Valtt가 최종 우승");
     }
 }

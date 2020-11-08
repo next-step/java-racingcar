@@ -22,7 +22,7 @@ class GrandPrixControllerTest {
 
     @BeforeEach
     void makeTestGrandPrix() {
-        racingInputTO = new RacingInputTO(Arrays.asList("Lewis Hamilton", "Valtteri Bottas", "Max Verstappen"), 5);
+        racingInputTO = new RacingInputTO(Arrays.asList("Lewis", "Botta", "Max"), 5);
     }
 
     @Test

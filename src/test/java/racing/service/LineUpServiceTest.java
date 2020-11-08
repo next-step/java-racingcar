@@ -14,7 +14,7 @@ class LineUpServiceTest {
 
     @Test
     void testAutoBuildLineUp() {
-        LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis Hamilton", "Valtteri Bottas", "Max Verstappen", "Daniel Ricciardo"));
+        LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis", "Valtt", "Max", "Dani"));
         assertThat(lineUp).isNotNull();
 
         lineUp.each(raceMachine -> {

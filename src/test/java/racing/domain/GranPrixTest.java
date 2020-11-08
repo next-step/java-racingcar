@@ -17,7 +17,7 @@ class GranPrixTest {
     private void makeTestGrandPrix() {
         List<RaceMachine> raceMachines = new ArrayList<>();
         for (int id = 0; id < 3; id++) {
-            raceMachines.add(new RaceMachine("Lewis Hamilton", new SimpleAccelerateResolver(true)));
+            raceMachines.add(new RaceMachine("Lewis", new SimpleAccelerateResolver(true)));
         }
         grandPrix = new GrandPrix(new LineUp(raceMachines), 5);
     }

@@ -13,6 +13,7 @@ public class RaceMachine {
     public RaceMachine(String driverName, AccelerateResolver accelerateResolver) {
         this.driverName = driverName;
         this.accelerateResolver = accelerateResolver;
+        this.validate();
     }
 
     public void accelerate() {
@@ -23,5 +24,14 @@ public class RaceMachine {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void validate() {
+        if (driverName == null || driverName.length() <= 0) {
+            throw new IllegalArgumentException("이름은 반드시 필요합니다.");
+        }
+        if (driverName.length() > 5) {
+            throw new IllegalArgumentException("이름은 5자를 초과 할 수 없습니다.");
+        }
     }
 }

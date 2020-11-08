@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingApplicationTest {
-    private static final String DRIVERS = "Lewis Hamilton,Valtteri Bottas,Max Verstappen";
+    private static final String DRIVERS = "Lewis,Botta,Max";
     private static final int MAX_ROUND = 5;
 
     @Test
@@ -23,6 +23,6 @@ class RacingApplicationTest {
         System.setOut(new PrintStream(outContent));
 
         RacingApplication.main(null);
-        assertThat(outContent.toString()).contains("Lewis Hamilton : -");
+        assertThat(outContent.toString()).contains("Lewis : -");
     }
 }
