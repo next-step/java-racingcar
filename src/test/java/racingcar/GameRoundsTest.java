@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,12 +17,18 @@ import static org.assertj.core.api.Assertions.entry;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class GameRoundsTest {
+    List<String> carNames;
 
     static Stream<Arguments> isGameEnd() {
         return Stream.of(
                 arguments(0, true),
                 arguments(1, false)
         );
+    }
+
+    @BeforeEach
+    void setUp() {
+        carNames = Arrays.asList("pobi", "crong", "honux");
     }
 
     @ParameterizedTest
@@ -47,9 +54,8 @@ public class GameRoundsTest {
     @Test
     @DisplayName("기록 저장하기")
     void keepRecord() {
-        List<String> names = Arrays.asList("pobi", "crong", "honux");
         int roundNum = 0;
-        Cars cars = new Cars(names);
+        Cars cars = new Cars(carNames);
         GameRounds gameRounds = new GameRounds(roundNum);
 
         gameRounds.keepRecord(cars);
