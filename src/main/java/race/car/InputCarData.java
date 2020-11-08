@@ -48,13 +48,20 @@ public class InputCarData {
     }
 
     /**
-     * 값 체크
+     * 이름 체크
      *
      * @param paramValue
      */
     private static void checkNamesValue(String paramValue) {
         isNullCheck(paramValue);
         isEmptyCheck(paramValue);
+        checkNameLength(paramValue);
+    }
+
+    private static void checkNameLength(String paramValue) {
+        if (paramValue.length() > 5) {
+            throw new IndexOutOfBoundsException(ErrorMessage.getINDEXOUTOFBOUNDSEXCEPTION());
+        }
     }
 
     /**
