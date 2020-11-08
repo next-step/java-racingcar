@@ -14,7 +14,7 @@ public class CarSetInRace {
     }
 
     public void stop() {
-        if(setRace.size() == 0) {
+        if(setRace.isEmpty()) {
             setRace.add(new StringJoiner(CAR_RECORD_STRING_SEPARATOR).add(CAR_STOP_MOVE_CODE));
             return;
         }
@@ -23,7 +23,7 @@ public class CarSetInRace {
     }
 
     public void move() {
-        if(setRace.size() == 0) {
+        if(setRace.isEmpty()) {
             setRace.add(new StringJoiner(CAR_RECORD_STRING_SEPARATOR).add(CAR_NORMAL_MOVE_CODE));
             return;
         }
