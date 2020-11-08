@@ -62,9 +62,9 @@ public class CarRacing {
 
 
     public static void main(String args[]){
-        InputView inputView = new InputView();
-        int carCnt = inputView.setCarCount();
-        int tryCnt = inputView.setTryCount();
+
+        int carCnt = InputView.getCarCount();
+        int tryCnt = InputView.getTryCount();
 
         CarRacing carRacing = new CarRacing();
         carRacing.racing(carCnt, tryCnt);
