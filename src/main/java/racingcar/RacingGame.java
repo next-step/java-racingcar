@@ -3,17 +3,24 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingGame {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
+        try {
+            executeGame();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-        int carNum = inputView.getCarNum();
-        int gameRoundNum = inputView.getGameRoundNum();
+    private static void executeGame() {
+        List<String> carNames = InputView.getCarNames();
+        int gameRoundNum = InputView.getGameRoundNum();
 
-        GameManager gameManager = new GameManager(new RuleStrategyImpl());
-        Records records = gameManager.play(carNum, gameRoundNum);
+        GameManager gameManager = new GameManager(new RuleStrategyImpl(), new WinStrategyImpl());
+        GameResult gameResult = gameManager.play(carNames, gameRoundNum);
 
-        outputView.showResult(records);
+        OutputView.showResult(gameResult);
     }
 }

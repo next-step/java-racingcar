@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## STEP4 기능 목록
+- [x] 자동차 이름 입력 받고 자동차에 이름 부여
+- [x] 기록 저장 시 이름과 같이 저장하여 결과와 같이 출력
+- [x] 우승자 선정 및 출력
+- [x] 자동차 이름 최대 사이즈 설정

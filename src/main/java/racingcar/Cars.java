@@ -3,27 +3,22 @@ package racingcar;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int num, RuleStrategy ruleStrategy) {
-        this.cars = IntStream.range(0, num)
-                .mapToObj(i -> new Car(ruleStrategy))
+    public Cars(List<String> names) {
+        this.cars = names.stream()
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    public void move() {
-        this.cars.stream().forEach(car -> car.move());
+    public void move(RuleStrategy ruleStrategy) {
+        this.cars.forEach(car -> car.move(ruleStrategy));
     }
 
-    public List<Integer> getCarPositions() {
-        return this.cars.stream()
-                .map(car -> car.getPosition())
-                .collect(Collectors.toList());
+    public List<Car> getCarList() {
+        return cars;
     }
-
-    
 }
