@@ -68,7 +68,7 @@ public class InputView {
         return value;
     }
 
-    static void validateInputNum(final int inputNumber) {
+    static void validateInputNum(int inputNumber) {
         if (isValidInputNumber(inputNumber)) {
             throw new IllegalArgumentException(ErrorMessage.MORE_THAN_ZERO);
         }

@@ -17,7 +17,7 @@ public class ResultView {
         System.out.println(NEW_LINE + RESULT_MESSAGE);
     }
 
-    public static void printResult(final List<Car> cars) {
+    public static void printResult(List<Car> cars) {
         cars.forEach(car -> System.out.println(printPosition(car)));
         System.out.println();
     }
