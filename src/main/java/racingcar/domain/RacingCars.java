@@ -1,29 +1,42 @@
 package racingcar.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import racingcar.behavior.MovingStrategy;
 
 public class RacingCars {
-
     private final List<Car> cars;
     private final MovingStrategy movingStrategy;
 
-    public RacingCars(List<Car> cars, MovingStrategy movingStrategy) {
+    private RacingCars(List<Car> cars, MovingStrategy movingStrategy) {
         this.cars = cars;
         this.movingStrategy = movingStrategy;
     }
 
-    public static RacingCars of(int numOfCar, MovingStrategy movingStrategy) {
-        List<Car> initCars = createCars(numOfCar);
+    public static RacingCars of(String[] nameOfCars, MovingStrategy movingStrategy) {
+        List<Car> initCars = createCars(nameOfCars);
         return new RacingCars(initCars, movingStrategy);
     }
 
-    private static List<Car> createCars(int numOfCar) {
-        return Stream.generate(Car::new)
-                .limit(numOfCar)
+    private static List<Car> createCars(String[] nameOfCars) {
+        return Arrays.stream(nameOfCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(RuntimeException::new);
+    }
+
+    public List<Car> getNamesOfWinnerCars() {
+        int winnerPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.hasSamePosition(winnerPosition))
                 .collect(Collectors.toList());
     }
 

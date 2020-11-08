@@ -10,15 +10,16 @@ import racingcar.view.ResultView;
 
 public class RacingController {
     public static void main(String[] args) {
-        int numOfCar = InputView.inputNumOfCar();
+        String[] nameOfCars = InputView.inputNameOfCars();
         int loopCount = InputView.inputLoopCount();
 
-        RacingCars racingCars = RacingCars.of(numOfCar, new RandomMovingStrategy());
+        RacingCars racingCars = RacingCars.of(nameOfCars, new RandomMovingStrategy());
         ResultView.printResultMessage();
         for (int i = 0; i < loopCount; i++) {
             racingCars.run();
             List<Car> cars = racingCars.getCars();
-            ResultView.printResult(cars);
+            ResultView.printPositionResult(cars);
         }
+        ResultView.printNamesOfWinnerCarsResult(racingCars.getNamesOfWinnerCars());
     }
 }
