@@ -2,9 +2,9 @@ package step5.client.worker.interfaces.presenter;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.client.worker.application.SimulationRequest;
-import step5.client.worker.application.SimulationResponse;
-import step5.client.worker.application.SimulationResponseInteractor;
+import step5.client.worker.application.RacingGameRequest;
+import step5.client.worker.application.RacingGameResponse;
+import step5.client.worker.application.RacingGameInteractor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,13 +15,13 @@ class ResultViewPresenterTest {
         // given
         final String carNames = "pobi,crong,honux";
         final String numberAttempts = "5";
-        final SimulationRequest request = SimulationRequest.of(carNames, numberAttempts);
-        final SimulationResponseInteractor simulator = new SimulationResponseInteractor();
-        final SimulationResponse simulationResponse = simulator.interact(request);
+        final RacingGameRequest request = RacingGameRequest.of(carNames, numberAttempts);
+        final RacingGameInteractor simulator = new RacingGameInteractor();
+        final RacingGameResponse racingGameResponse = simulator.interact(request);
         final ResultViewPresenter presenter = new ResultViewPresenter();
 
         // when
-        final String result = presenter.present(simulationResponse);
+        final String result = presenter.present(racingGameResponse);
 
         // then
         assertThat(result).isNotBlank();

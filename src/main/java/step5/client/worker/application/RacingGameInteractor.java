@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Objects;
 
 import static common.util.Preconditions.checkArgument;
-import static step5.client.worker.application.SimulationResponseInteractor.ErrorMessage.NOT_BE_NULL;
+import static step5.client.worker.application.RacingGameInteractor.ErrorMessage.NOT_BE_NULL;
 
-public class SimulationResponseInteractor {
+public class RacingGameInteractor {
 
     public enum ErrorMessage implements Message {
-        NOT_BE_NULL(SimulationResponseInteractor.class.getName() + "'s value should not be null"),
+        NOT_BE_NULL(RacingGameInteractor.class.getName() + "'s value should not be null"),
         ;
 
         private final String message;
@@ -27,7 +27,7 @@ public class SimulationResponseInteractor {
         }
     }
 
-    public SimulationResponse interact(final SimulationRequest request) {
+    public RacingGameResponse interact(final RacingGameRequest request) {
         checkArgument(Objects.nonNull(request), NOT_BE_NULL);
 
         final List<String> carNames = request.getCarNames();
@@ -37,10 +37,10 @@ public class SimulationResponseInteractor {
         return getResponseAfterGameFinished(racingGame, times);
     }
 
-    private SimulationResponse getResponseAfterGameFinished(final RacingGame racingGame, final int times) {
+    private RacingGameResponse getResponseAfterGameFinished(final RacingGame racingGame, final int times) {
         racingGame.run(times);
         final List<Snapshot> snapshots = racingGame.extractSnapshots();
         final List<String> winners = racingGame.selectWinnerNames();
-        return new SimulationResponse(snapshots, winners);
+        return new RacingGameResponse(snapshots, winners);
     }
 }

@@ -8,9 +8,9 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static step5.client.worker.application.SimulationRequest.ErrorMessage.*;
+import static step5.client.worker.application.RacingGameRequest.ErrorMessage.*;
 
-class SimulationRequestTest {
+class RacingGameRequestTest {
     @DisplayName("of 생성자")
     @Nested
     class Of {
@@ -23,7 +23,7 @@ class SimulationRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationRequest.of(carNames, numberAttempts);
+                RacingGameRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -40,7 +40,7 @@ class SimulationRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationRequest.of(carNames, numberAttempts);
+                RacingGameRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -57,7 +57,7 @@ class SimulationRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationRequest.of(carNames, numberAttempts);
+                RacingGameRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -74,7 +74,7 @@ class SimulationRequestTest {
 
             // when
             final Throwable thrown = catchThrowable(() -> {
-                SimulationRequest.of(carNames, numberAttempts);
+                RacingGameRequest.of(carNames, numberAttempts);
             });
 
             // then
@@ -90,7 +90,7 @@ class SimulationRequestTest {
             final String numberAttempts = "10";
 
             // when
-            final SimulationRequest result = SimulationRequest.of(carNames, numberAttempts);
+            final RacingGameRequest result = RacingGameRequest.of(carNames, numberAttempts);
 
             // then
             assertThat(result).isNotNull();

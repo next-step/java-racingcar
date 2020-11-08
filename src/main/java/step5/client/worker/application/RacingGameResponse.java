@@ -5,11 +5,11 @@ import step5.client.worker.domain.Snapshot;
 import java.util.Collections;
 import java.util.List;
 
-public class SimulationResponse {
+public class RacingGameResponse {
     private final List<Snapshot> snapshots;
     private final List<String> winners;
 
-    public SimulationResponse(final List<Snapshot> snapshots, final List<String> winners) {
+    public RacingGameResponse(final List<Snapshot> snapshots, final List<String> winners) {
         this.snapshots = Collections.unmodifiableList(snapshots);
         this.winners = Collections.unmodifiableList(winners);
     }
