@@ -32,5 +32,6 @@ public class InputViewTest {
     void validInputValue(String exceptionWord) {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 InputView.validateInputNum(Integer.parseInt(exceptionWord)));
+
     }
 }
