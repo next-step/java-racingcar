@@ -11,7 +11,7 @@ public class ResponseViewTest {
 	@DisplayName("차대수별 이동거리를 표시한다.")
 	public void resultViewTest() {
 		RacingCars racingCars = new RacingCars(3);
-		racingCars.getRacingCars().stream().forEach(car -> car.move(5));
+		racingCars.getRacingCars().forEach(car -> car.move(5));
 		underTest.showRacingResult(racingCars);
 	}
 }

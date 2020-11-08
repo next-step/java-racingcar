@@ -1,7 +1,6 @@
 package nextstep.step2;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -64,6 +63,6 @@ public class StringCalculator {
 	}
 
 	protected void validateOperator(List<String> evenArray) {
-		evenArray.stream().forEach(Operator::getOperatorBy);
+		evenArray.forEach(Operator::getOperatorBy);
 	}
 }

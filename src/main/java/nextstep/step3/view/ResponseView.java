@@ -9,8 +9,7 @@ public class ResponseView {
 
 	public void showRacingResult(RacingCars racingCars) {
 		StringBuilder sb = new StringBuilder();
-		racingCars.getRacingCars().stream()
-				.forEach(car -> {
+		racingCars.getRacingCars().forEach(car -> {
 							sb.append(printRacingPoint(car.getPoint()));
 							sb.append("\n");
 						}
