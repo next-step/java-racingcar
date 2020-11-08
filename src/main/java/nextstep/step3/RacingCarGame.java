@@ -15,8 +15,15 @@ public class RacingCarGame {
 	}
 
 	protected static void startGame(int carNumber, int tryNumber) {
+		validate(carNumber, tryNumber);
 		RacingCars racingCars = new RacingCars(carNumber);
 		tryRacing(tryNumber, racingCars);
+	}
+
+	private static void validate(int carNumber, int tryNumber) {
+		if (carNumber < 0 || tryNumber < 0) {
+			throw new IllegalArgumentException("입력값은 양수이어야 합니다.");
+		}
 	}
 
 	private static void tryRacing(int tryNumber, RacingCars racingCars) {
