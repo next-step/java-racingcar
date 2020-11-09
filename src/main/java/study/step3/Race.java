@@ -20,6 +20,30 @@ public class Race {
         this.raceCount = inputView.inputRacingCount();
     }
 
+    /* 시작 */
+    public void start() {
+        for (int i = 0; i < this.raceCount; i++) {
+            loopByCarCount();
+        }
+        ResultView.printCrlf();
+    }
+
+    /* 자동차 수만큼 시도 로직 반복 */
+    private void loopByCarCount() {
+        for (int i = 0; i < this.carCount; i++) {
+            loopByRaceCount();
+        }
+        ResultView.printCrlf();
+    }
+
+    /* 시도 회수만큼 전진 로직 반복 */
+    private void loopByRaceCount() {
+        for (int i = 0; i < this.raceCount; i++) {
+            go();
+        }
+        ResultView.printCrlf();
+    }
+
     /* 전진 여부 로직 */
     private void go () {
         int randomNumber;
