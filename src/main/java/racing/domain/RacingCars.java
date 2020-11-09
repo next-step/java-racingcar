@@ -15,6 +15,10 @@ public final class RacingCars {
 
     private final List<Car> cars;
 
+    public RacingCars(final List<Car> cars) {
+        this.cars = cars;
+    }
+
     public RacingCars(final String delimitedCarNames) {
         this.cars = new ArrayList<>();
         ready(delimitedCarNames);

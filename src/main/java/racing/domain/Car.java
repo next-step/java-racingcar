@@ -6,6 +6,11 @@ public class Car {
 
     private int displacement = 0;
 
+    public Car(String name, int displacement) {
+        this.name = name;
+        this.displacement = displacement;
+    }
+
     public Car(String name) {
         this.name = name;
     }
