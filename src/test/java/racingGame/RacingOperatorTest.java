@@ -5,15 +5,15 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import racingGame.View.InputView;
 
-class CarOperatorTest {
+class RacingOperatorTest {
 
-  private CarOperator carOperator;
+  private RacingOperator racingOperator;
 
   @BeforeEach
   void setUp() {
     String rawInput = "a,b,c,d";
     List<String> parsedInput = InputView.parseRawInput(rawInput);
 
-    carOperator = CarOperator.of(Cars.of(parsedInput));
+    racingOperator = RacingOperator.of(Cars.of(parsedInput));
   }
 }

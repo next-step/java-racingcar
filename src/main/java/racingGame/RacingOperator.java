@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Vector;
 import javafx.util.Pair;
 
-public class CarOperator {
+public class RacingOperator {
 
   /**
    * Car에게 position 변경을 지시하는 역할.
@@ -14,12 +14,12 @@ public class CarOperator {
    */
   private final Cars cars;
 
-  private CarOperator(Cars cars) {
+  private RacingOperator(Cars cars) {
     this.cars = cars;
   }
 
-  public static CarOperator of(Cars cars){
-    return new CarOperator(cars);
+  public static RacingOperator of(Cars cars){
+    return new RacingOperator(cars);
   }
 
   public void moves() {
