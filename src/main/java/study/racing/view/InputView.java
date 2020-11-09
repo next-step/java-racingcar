@@ -1,6 +1,5 @@
 package study.racing.view;
 
-import study.racing.CarRacing;
 import study.racing.RacingErrorMessage;
 
 import java.util.Scanner;
@@ -13,6 +12,7 @@ public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
     private InputView(){}
+
     public static int getCarCount(){
         System.out.println(INPUT_CAR_MESSAGE);
         return scanner.nextInt();
