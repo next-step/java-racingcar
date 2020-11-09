@@ -18,7 +18,7 @@ class CarTest {
   }
 
   @Test
-  @DisplayName("Car 이름 지정")
+  @DisplayName("올바르지 않은 형식의 이름 지정")
   void InvalidInstance() {
     assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
         () -> {
