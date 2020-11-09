@@ -1,15 +1,7 @@
 package study.racing;
 
-import study.calculator.CustomErrorMessage;
 import study.racing.view.InputView;
 import study.racing.view.ResultView;
-
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CarRacing {
 
