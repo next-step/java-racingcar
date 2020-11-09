@@ -54,4 +54,11 @@ public class Race {
             ResultView.printForwardLine();
         }
     }
+
+    /* 임시 테스트 */
+    public static void main(String[] args) {
+        Race race = new Race();
+
+        race.start();
+    }
 }
