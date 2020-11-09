@@ -12,8 +12,17 @@ public class Car {
         this.name = name;
     }
 
+    private Car(String name, int currentPosition) {
+        this.name = name;
+        this.currentPosition = currentPosition;
+    }
+
     public static Car makeCar(String name) {
         return new Car(name);
+    }
+
+    public static Car carDtoMapper(CarDto carDto) {
+        return new Car(carDto.getName(), carDto.getPosition());
     }
 
     public String getName() {
