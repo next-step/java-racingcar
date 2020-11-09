@@ -19,4 +19,15 @@ public class Race {
         this.carCount = inputView.inputCarCount();
         this.raceCount = inputView.inputRacingCount();
     }
+
+    /* 전진 여부 로직 */
+    private void go () {
+        int randomNumber;
+        Random random = new Random();
+        randomNumber = random.nextInt(10);
+
+        if (randomNumber >= 4) {
+            ResultView.printForwardLine();
+        }
+    }
 }
