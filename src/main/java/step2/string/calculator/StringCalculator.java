@@ -22,16 +22,7 @@ public class StringCalculator {
     }
 
     private int calculate(int firstOperand, int secondOperand, String operator) {
-        if (operator.equalsIgnoreCase("+")) {
-            return firstOperand + secondOperand;
-        } else if (operator.equalsIgnoreCase("-")) {
-            return firstOperand - secondOperand;
-        } else if (operator.equalsIgnoreCase("*")) {
-            return firstOperand * secondOperand;
-        } else if (operator.equalsIgnoreCase("/")) {
-            return firstOperand / secondOperand;
-        }
-
-        throw new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR);
+        Operator op = Operator.fromString(operator);
+        return op.apply(firstOperand, secondOperand);
     }
 }
