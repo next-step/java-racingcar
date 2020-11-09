@@ -13,7 +13,7 @@ public class RacingGameClient {
     public static void main(String[] args) {
         final String carNames = questionAndAnswer(ENTER_THE_NAME_OF_THE_CARS);
         final String times = questionAndAnswer(HOW_MUCH_ATTEMPT_QUESTION);
-        final String result = controller.showSimulationResult(carNames, times);
+        final String result = controller.showRacingGameResultView(carNames, times);
         Printer.print(result);
     }
 }

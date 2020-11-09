@@ -8,7 +8,7 @@ import step5.client.worker.domain.RacingGameCondition;
 public class RacingGameController {
     private static final ResultViewPresenter PRESENTER = new ResultViewPresenter();
 
-    public String showSimulationResult(final String carNames, final String times) {
+    public String showRacingGameResultView(final String carNames, final String times) {
         final RacingGameCondition condition = RacingGameCondition.of(carNames, times);
         final RacingGame racingGame  = RacingGame.of(condition.getCarNames(), new RandomMovableStrategy());
         racingGame.race(condition.getTryNumber());
