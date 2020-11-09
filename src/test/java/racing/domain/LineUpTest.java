@@ -31,24 +31,16 @@ class LineUpTest {
 
     @Test
     void testGetMachinesInLap() {
-        List<RaceMachine> machinesInLap2 = lineUp.getMachinesInLap(2);
+        List<RaceMachine> machinesInLap2 = lineUp.getMachinesInLap(1);
         assertThat(machinesInLap2).size().isEqualTo(3);
-        List<RaceMachine> machinesInLap3 = lineUp.getMachinesInLap(3);
+        List<RaceMachine> machinesInLap3 = lineUp.getMachinesInLap(2);
         assertThat(machinesInLap3).size().isZero();
     }
 
     @Test
     void testGetStatus() {
         lineUp.each(raceMachine -> {
-            assertThat(raceMachine.getLap()).isEqualTo(raceMachine.getDriverName().length() % 2 == 1 ? 2 : 1);
+            assertThat(raceMachine.getLap()).isEqualTo(raceMachine.getDriverName().length() % 2 == 1 ? 1 : 0);
         });
-    }
-
-    @Test
-    void testGetLastLap() {
-        lineUp.runRound();
-        lineUp.runRound();
-        int lastLap = lineUp.getLastLap();
-        assertThat(lastLap).isEqualTo(4);
     }
 }

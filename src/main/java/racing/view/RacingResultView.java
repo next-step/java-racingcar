@@ -23,11 +23,11 @@ public class RacingResultView {
 
     public static void ready(LineUp lineUp) {
         System.out.println(READY_BANNER);
-        viewRound(lineUp);
     }
 
-    public static void champion(LineUp lineUp) {
+    public static void viewChampion(LineUp lineUp) {
         String championNames = lineUp.getChampionNames();
+        viewRound(lineUp);
         System.out.printf(ANNOUNCE_CHAMPION, championNames);
     }
 }

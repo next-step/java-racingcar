@@ -12,13 +12,13 @@ class RaceMachineTest {
         RaceMachine ferrari = new RaceMachine("Seba", new SupplierAccelerateResolver(() -> true));
         ferrari.accelerate();
         ferrari.accelerate();
-        assertThat(ferrari.getLap()).isGreaterThan(2);
+        assertThat(ferrari.getLap()).isGreaterThanOrEqualTo(2);
         assertThat(ferrari.getAccelerateResolver().resolve()).isTrue();
 
         RaceMachine mercedes = new RaceMachine("Lewis", new SupplierAccelerateResolver(() -> false));
         mercedes.accelerate();
         mercedes.accelerate();
-        assertThat(mercedes.getLap()).isEqualTo(1);
+        assertThat(mercedes.getLap()).isEqualTo(0);
 
     }
 

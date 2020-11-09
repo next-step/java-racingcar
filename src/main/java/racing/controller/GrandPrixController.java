@@ -24,6 +24,6 @@ public class GrandPrixController {
             grandPrix.runRound();
             RacingResultView.viewRound(grandPrix.getLineUp());
         }
-        RacingResultView.champion(grandPrix.getLineUp());
+        RacingResultView.viewChampion(grandPrix.getLineUp());
     }
 }

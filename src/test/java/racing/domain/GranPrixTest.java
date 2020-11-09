@@ -38,7 +38,9 @@ class GranPrixTest {
 
     @Test
     void testRunRoundOverMaxRound() {
-        grandPrix.runFullRace();
+        while (grandPrix.getCurrentRound() < grandPrix.getMaxRounds()) {
+            grandPrix.runRound();
+        }
         assertThat(grandPrix.getCurrentRound()).isEqualTo(grandPrix.getMaxRounds());
         grandPrix.runRound();
         assertThat(grandPrix.getCurrentRound()).isEqualTo(grandPrix.getMaxRounds());
@@ -46,7 +48,9 @@ class GranPrixTest {
 
     @Test
     void testRunFullRace() {
-        grandPrix.runFullRace();
+        while (grandPrix.getCurrentRound() < grandPrix.getMaxRounds()) {
+            grandPrix.runRound();
+        }
         assertThat(grandPrix.getCurrentRound()).isEqualTo(grandPrix.getMaxRounds());
     }
 }

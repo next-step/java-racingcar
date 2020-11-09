@@ -16,26 +16,26 @@ public class LineUp {
         raceMachines.forEach(RaceMachine::accelerate);
     }
 
-    public List<RaceMachine> getMachinesInLap(int lap) {
-        return raceMachines.stream()
-                .filter(raceMachine -> raceMachine.getLap() == lap)
-                .collect(Collectors.toList());
-    }
-
     public void each(Consumer<RaceMachine> consumer) {
         this.raceMachines.forEach(consumer);
-    }
-
-    public int getLastLap() {
-        return raceMachines.stream()
-                .map(RaceMachine::getLap)
-                .max(Integer::compareTo)
-                .orElseThrow(() -> new RuntimeException("참가한 자동차가 없습니다."));
     }
 
     public String getChampionNames() {
         return getMachinesInLap(getLastLap()).stream()
                 .map(RaceMachine::getDriverName)
                 .collect(Collectors.joining(", "));
+    }
+
+    private int getLastLap() {
+        return raceMachines.stream()
+                .map(RaceMachine::getLap)
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new RuntimeException("참가한 자동차가 없습니다."));
+    }
+
+    protected List<RaceMachine> getMachinesInLap(int lap) {
+        return raceMachines.stream()
+                .filter(raceMachine -> raceMachine.getLap() == lap)
+                .collect(Collectors.toList());
     }
 }

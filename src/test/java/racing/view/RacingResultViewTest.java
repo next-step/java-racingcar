@@ -32,20 +32,19 @@ class RacingResultViewTest {
     }
 
     @Test
-    void testtViewReady() {
+    void testViewReady() {
         LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis", "Valtt"));
 
         RacingResultView.ready(lineUp);
         assertThat(outContent.toString())
-                .contains("Lewis : -")
-                .contains("Valtt : -");
+                .contains("실행 결과");
     }
 
     @Test
     void testViewChampion() {
         LineUp lineUp = lineUpService.createMachines(Collections.singletonList("Lewis"));
 
-        RacingResultView.champion(lineUp);
+        RacingResultView.viewChampion(lineUp);
         assertThat(outContent.toString())
                 .contains("Lewis가 최종 우승");
     }
@@ -54,7 +53,7 @@ class RacingResultViewTest {
     void testViewMultiChampion() {
         LineUp lineUp = lineUpService.createMachines(Arrays.asList("Lewis", "Valtt"));
 
-        RacingResultView.champion(lineUp);
+        RacingResultView.viewChampion(lineUp);
         assertThat(outContent.toString())
                 .contains("Lewis, Valtt가 최종 우승");
     }

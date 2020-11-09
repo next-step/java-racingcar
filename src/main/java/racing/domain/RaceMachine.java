@@ -7,7 +7,7 @@ import racing.resolver.AccelerateResolver;
 public class RaceMachine {
     private int id;
     private final String driverName;
-    private int lap = 1;
+    private int lap = 0;
     private final AccelerateResolver accelerateResolver;
 
     public RaceMachine(String driverName, AccelerateResolver accelerateResolver) {
