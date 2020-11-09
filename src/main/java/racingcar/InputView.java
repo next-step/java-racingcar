@@ -1,4 +1,4 @@
-package study;
+package racingcar;
 import java.util.Scanner;
 
 public final class InputView {
