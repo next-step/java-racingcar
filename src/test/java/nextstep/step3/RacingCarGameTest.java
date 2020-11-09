@@ -10,17 +10,17 @@ public class RacingCarGameTest {
 
 	@ParameterizedTest
 	@DisplayName("자동차 경주 게임 테스트")
-	@ValueSource(ints = {1, 2, 3, 4, 5})
-	public void startTest(int carNumber) {
+	@ValueSource(strings = {"adel,angus,joy,ruby"})
+	public void startTest(String carName) {
 		int tryNumber = 5;
-		RacingCarGame.startGame(carNumber, tryNumber);
+		RacingCarGame.startGame(carName, tryNumber);
 	}
 
 	@Test
 	@DisplayName("입력값 체크")
 	public void validateInputValueTest() {
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> RacingCarGame.startGame(-2, -5))
-				.withMessage("입력값은 양수이어야 합니다.");
+				.isThrownBy(() -> RacingCarGame.startGame("adel", -5))
+				.withMessage("시도 횟수는 양수이어야 합니다.");
 	}
 }
