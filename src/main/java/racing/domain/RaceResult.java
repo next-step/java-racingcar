@@ -1,50 +1,17 @@
 package racing.domain;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RaceResult {
 
-    private static final String NOT_FOUND_RESULT_MESSAGE = " 랩에 통과한 차량이 없습니다";
-    private final Map<Integer,List<Car>> resultCars;
+    private final List<Car> resultCars;
 
-    public RaceResult() {
-        this.resultCars = new HashMap<>();
+    public RaceResult(List<Car> resultCars) {
+        this.resultCars = resultCars;
     }
 
-    public void setResult(int lap, List<Car> cars) {
-        resultCars.put(lap,cars);
-    }
-
-    public int getMaxLaps() {
-        return resultCars.size();
-    }
-
-    public Map<Integer,List<Car>> getResult() {
+    public List<Car> getResultCars() {
         return resultCars;
-    }
-
-    public List<Car> findResult(int lap) {
-        if(resultCars.containsKey(lap)) {
-            return resultCars.get(lap);
-        }
-        throw new NullPointerException(lap+NOT_FOUND_RESULT_MESSAGE);
-    }
-
-    public int getRaceMaxDistance() {
-        List<Car> cars = findResult(getMaxLaps()-1);
-        return cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .getAsInt();
-    }
-
-    public String[] getWinners() {
-        return findResult(getMaxLaps()-1).stream()
-                .filter(car -> car.getDistance() == getRaceMaxDistance())
-                .map(Car::getName)
-                .toArray(String[]::new);
     }
 
 }
