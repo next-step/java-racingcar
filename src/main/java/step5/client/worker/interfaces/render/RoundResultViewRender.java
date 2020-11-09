@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import static step5.client.worker.interfaces.render.ViewString.*;
 
 public class RoundResultViewRender implements ViewRender {
+    private static final String MOVE_CHAR = "-";
     private final List<Car> cars;
 
     public RoundResultViewRender(final List<Car> cars) {
