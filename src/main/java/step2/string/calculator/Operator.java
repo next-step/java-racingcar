@@ -7,24 +7,24 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toMap;
 
-public enum Operator {
+public enum Operator implements Operation {
     PLUS("+") {
-        public int apply(int x, int y) {
+        public int operate(int x, int y) {
             return x + y;
         }
     },
     MINUS("-") {
-        public int apply(int x, int y) {
+        public int operate(int x, int y) {
             return x - y;
         }
     },
     TIMES("*") {
-        public int apply(int x, int y) {
+        public int operate(int x, int y) {
             return x * y;
         }
     },
     DIVIDE("/") {
-        public int apply(int x, int y) {
+        public int operate(int x, int y) {
             return x / y;
         }
     };
@@ -45,7 +45,5 @@ public enum Operator {
     public String toString() {
         return symbol;
     }
-
-    public abstract int apply(int x, int y);
 
 }

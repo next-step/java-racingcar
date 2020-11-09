@@ -23,6 +23,6 @@ public class StringCalculator {
 
     private int calculate(int firstOperand, int secondOperand, String operator) {
         Operator op = Operator.fromString(operator);
-        return op.apply(firstOperand, secondOperand);
+        return op.operate(firstOperand, secondOperand);
     }
 }
