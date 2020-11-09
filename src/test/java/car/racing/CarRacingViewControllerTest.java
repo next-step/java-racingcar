@@ -15,7 +15,7 @@ public class CarRacingViewControllerTest {
 
     private CarRacingViewController viewController;
     private FakeResultView resultView;
-    private CarRacingManager manager;
+    private CarRacingGame manager;
     private String names = "pobi,crong,honux";
     private String[] carNames = names.split(",");
     private List<Car> cars = Arrays.stream(carNames)
@@ -25,8 +25,8 @@ public class CarRacingViewControllerTest {
     @BeforeEach
     void setup() {
         resultView = new FakeResultView();
-        manager = new CarRacingManager(cars, forward -> true);
-        viewController = new CarRacingViewController(resultView, manager);
+        manager = new CarRacingGame(cars, forward -> true);
+        viewController = new CarRacingViewController(resultView, manager, new CarRacingWinners(cars));
     }
 
     @DisplayName("input이 제대로 들어갔는지 확인")

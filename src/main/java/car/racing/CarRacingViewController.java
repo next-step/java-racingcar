@@ -9,11 +9,13 @@ import java.util.stream.IntStream;
 public class CarRacingViewController {
 
     private final ResultViewContract resultView;
-    private final CarRacingManager carRacingManager;
+    private final CarRacingGame racingGame;
+    private final CarRacingWinners racingWinners;
 
-    public CarRacingViewController(ResultViewContract resultView, CarRacingManager carRacingManager) {
+    public CarRacingViewController(ResultViewContract resultView, CarRacingGame racingGame, CarRacingWinners racingWinners) {
         this.resultView = resultView;
-        this.carRacingManager = carRacingManager;
+        this.racingGame = racingGame;
+        this.racingWinners = racingWinners;
     }
 
     public void input(int tryCount) {
@@ -25,17 +27,17 @@ public class CarRacingViewController {
     private void forwardCars(int tryCount) {
         IntStream.range(0, tryCount)
                 .forEach(i -> {
-                    carRacingManager.forwardCarEachTry();
+                    racingGame.forwardCarEachTry();
                     showRacingResultEachTry();
                 });
     }
 
     private void showRacingResultEachTry() {
-        carRacingManager.getCars().forEach(resultView::forward);
+        racingGame.getCars().forEach(resultView::forward);
         resultView.newLine();
     }
 
     private void showRacingWinners() {
-        resultView.winners(carRacingManager.racingWinners());
+        resultView.winners(racingWinners.racingWinners());
     }
 }

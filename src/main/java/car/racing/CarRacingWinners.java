@@ -4,30 +4,14 @@ import car.racing.domain.Car;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
-public class CarRacingManager {
+public class CarRacingWinners {
 
-    private static final int LIMIT = 10;
-
-    private final Forwardable forwardable;
     private final List<Car> cars;
-    private final Random random = new Random();
 
-    public CarRacingManager(List<Car> cars, Forwardable forwardable) {
+    public CarRacingWinners(List<Car> cars) {
         this.cars = cars;
-        this.forwardable = forwardable;
-    }
-
-    public void forwardCarEachTry() {
-        cars.stream()
-                .filter(car -> forwardable.forwardable(random.nextInt(LIMIT)))
-                .forEach(Car::forward);
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public List<String> racingWinners() {
