@@ -4,25 +4,27 @@ import step5.domain.RandomMoveStrategy;
 import step5.dto.RacingGameConditionDTO;
 import step5.dto.RacingGameConditionMoveStrategyDTO;
 import step5.service.RacingGame;
+import step5.view.InputView;
+import step5.view.OutputView;
 
 public class GameController {
 
 
     public void startRacingGame() {
-        String carNames = InputController.putCarCount();
+        String carNames = InputView.putCarCount();
 
-        int tryCount = InputController.putTryCount();
+        int tryCount = InputView.putTryCount();
 
-        OutputController.printEndResult();
+        OutputView.printEndResult();
 
         RacingGame racingGame = RacingGame.of(
                 RacingGameConditionMoveStrategyDTO.of(
                         RacingGameConditionDTO.of(carNames, tryCount), new RandomMoveStrategy()));
 
         for (int i = 0; i < tryCount; i++) {
-            OutputController.runResult(racingGame.runRound());
+            OutputView.runResult(racingGame.runRound());
         }
 
-        OutputController.printWinnerResult(racingGame.getTopPositionCarNames());
+        OutputView.printWinnerResult(racingGame.getTopPositionCarNames());
     }
 }
