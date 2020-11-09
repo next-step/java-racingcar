@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static common.ErrorMessage.INVALID_VALUE;
 import static common.ErrorMessage.NOT_NULL;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racing.view.InputValidator.CAR_NAMES_PATTERN;
 import static racing.view.InputValidator.validate;
 
@@ -81,7 +81,7 @@ public class InputCarNamesTest {
     }
 
     private static void doesNotThrow(String input) {
-        assertThatThrownBy(() -> validate(input, CAR_NAMES_PATTERN))
+        assertThatCode(() -> validate(input, CAR_NAMES_PATTERN))
                 .doesNotThrowAnyException();
     }
 
