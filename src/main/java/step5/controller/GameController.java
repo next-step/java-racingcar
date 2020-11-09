@@ -20,7 +20,7 @@ public class GameController {
                         RacingGameConditionDTO.of(carNames, tryCount));
 
         for (int i = 0; i < tryCount; i++) {
-            OutputView.runResult(racingGame.runRound(RandomUtil.generateRandomNumber()));
+            OutputView.runResult(racingGame.runRound());
         }
 
         OutputView.printWinnerResult(racingGame.getTopPositionCarNames());

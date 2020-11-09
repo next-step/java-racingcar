@@ -2,6 +2,7 @@ package step5.domain;
 
 import step5.exception.ValidateBlankName;
 import step5.exception.ValidateLengthOfCarName;
+import step5.utils.RandomUtil;
 
 public class Car {
     private final static int LIMIT_LENGTH_CAR_NAME = 5;
@@ -16,6 +17,9 @@ public class Car {
         position = 0;
     }
 
+    public void moveRandomCondition() {
+        this.move(getRandomMoveCondition());
+    }
 
     public void move(int moveCondition) {
         if (moveCondition >= MIN_MOVE_CONDITION) {
@@ -24,10 +28,13 @@ public class Car {
 
     }
 
+    private int getRandomMoveCondition() {
+        return RandomUtil.generateRandomNumber();
+    }
+
     public int getPosition() {
         return this.position;
     }
-
 
 
     private void validateLengthOfCarName(String name) {

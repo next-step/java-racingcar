@@ -15,8 +15,8 @@ public class Cars {
     }
 
 
-    public void moveCars(int moveCondition) {
-        cars.forEach(car -> car.move(moveCondition));
+    public void moveCars() {
+        cars.forEach(Car::moveRandomCondition);
     }
 
     public List<Car> getCarList() {
