@@ -8,6 +8,7 @@ public class CarRaceApplication {
         CarRace carRace = new CarRace(carCnt, tryCnt);
         System.out.println("\n실행결과");
         carRace.race();
+        ResultView.print(carRace);
 
     }
 

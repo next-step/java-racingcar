@@ -1,31 +1,21 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    public static final int LIMIT_BOUND = 10;
     public static final int MOVE_THRESHHOLD = 4;
-    int distance = 1;
+    private int distance = 1;
 
-    public void go(){
-        if(isMove(getRandom())) {
+    public void go(int random){
+        if(isMove(random)) {
             distance++;
         }
     }
 
     public boolean isMove(int random){
-        if(random >= MOVE_THRESHHOLD){
-            return true;
-        }
-        return false;
-    }
-
-    public int getRandom(){
-        Random random = new Random();
-        return random.nextInt(LIMIT_BOUND);
+        return random >= MOVE_THRESHHOLD;
     }
 
     public int getDistance() {
         return distance;
     }
+
 }

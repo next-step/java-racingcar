@@ -1,11 +1,7 @@
-package study.racingcar;
+package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
-import racingcar.CarRace;
-import racingcar.InputView;
-import racingcar.ResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,8 +10,8 @@ public class RacingCarTest {
     @DisplayName("출력")
     @Test
     void print() {
-        Car car = new Car();
-        ResultView.print(car);
+        CarRace carRace = new CarRace(10, 1);
+        ResultView.print(carRace);
     }
 
     @DisplayName("차량셋팅")
@@ -30,7 +26,7 @@ public class RacingCarTest {
     void carMove() {
         Car car = new Car();
         for(int i=0; i<10; i++){
-            car.go();
+            car.go(10);
         }
         assertThat(car.getDistance()).isGreaterThan(1);
     }
@@ -38,8 +34,8 @@ public class RacingCarTest {
     @DisplayName("랜덤함수")
     @Test
     void getRandom() {
-        Car car = new Car();
-        assertThat(car.getRandom()).isLessThan(10);
+        CarRace carRace = new CarRace(5, 10);
+        assertThat(carRace.getRandom()).isLessThan(10);
     }
 
 }
