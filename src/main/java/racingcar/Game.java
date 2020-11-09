@@ -17,10 +17,7 @@ public class Game {
     }
 
     public void setCars(int count){
-
-        for (int i = 0; i < count; i++) {
-            cars.createCar();
-        }
+            cars.createCars(count);
     }
 
     public void playRound(){

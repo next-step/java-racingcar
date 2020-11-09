@@ -6,8 +6,10 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public void createCar(){
-        cars.add(new Car());
+    public void createCars(int count){
+        for (int i = 0; i < count; i++) {
+            cars.add(new Car());
+        }
     }
 
     public int getSize(){
