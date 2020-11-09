@@ -12,7 +12,7 @@ public class RacingInputValidationTest {
 
     @BeforeEach
     void setUp(){
-        carRacing = new CarRacing();
+        carRacing = new CarRacing(new RandomMoveStrategy());
     }
 
     @DisplayName("자동차 대수를 0으로 입력한 경우")

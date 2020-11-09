@@ -13,6 +13,12 @@ import java.util.stream.IntStream;
 
 public class CarRacing {
 
+    private RacingMoveStrategy racingMoveStrategy;
+
+    public CarRacing(RacingMoveStrategy racingMoveStrategy) {
+        this.racingMoveStrategy = racingMoveStrategy;
+    }
+
     public RacingRecords start(int carCnt, int tryCnt){
         Cars cars = new Cars(carCnt);
 
@@ -23,7 +29,7 @@ public class CarRacing {
         RacingGameRounds racingGameRounds = new RacingGameRounds(tryCnt);
 
         while (!racingGameRounds.isEnd()){
-            cars.move();
+            cars.move(racingMoveStrategy);
             racingGameRounds.roundClose();
             racingGameRounds.recording(cars);
         }
@@ -41,7 +47,7 @@ public class CarRacing {
         ResultView resultView = new ResultView();
         resultView.showResultHead();
 
-        CarRacing carRacing = new CarRacing();
+        CarRacing carRacing = new CarRacing(new RandomMoveStrategy());
         RacingRecords racingResults = carRacing.start(carCnt, tryCnt);
         resultView.showResult(racingResults);
     }

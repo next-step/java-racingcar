@@ -15,9 +15,9 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void move() {
+    public void move(RacingMoveStrategy racingMoveStrategy) {
         cars.forEach(car -> {
-                    car.move(car.getRandomInt());
+                    car.move(racingMoveStrategy);
                 }
         );
     }
