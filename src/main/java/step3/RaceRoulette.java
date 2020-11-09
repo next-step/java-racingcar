@@ -14,6 +14,12 @@ public interface RaceRoulette {
      */
     int spin();
 
+    /**
+     * 룰렛에서 나올수 있는 max(최대수) 를 인자로 넘겨주면 spin 시 0 ~ max 사이의 수를 돌려주는 룰렛을 만들어 준다
+     *
+     * @param max
+     * @return
+     */
     static RaceRoulette simple(int max) {
         return new RaceRoulette() {
             private int maxNumber = max;
@@ -21,7 +27,7 @@ public interface RaceRoulette {
 
             @Override
             public int spin() {
-                return random.nextInt(maxNumber);
+                return random.nextInt(maxNumber + 1);
             }
         };
     }

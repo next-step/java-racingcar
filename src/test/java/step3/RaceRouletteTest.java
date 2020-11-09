@@ -10,28 +10,24 @@ abstract class RaceRouletteTest {
 
     RaceRoulette raceRoulette;
 
-    abstract int max();
+    int max() {
+        return 9;
+    }
 
     @Test
     @DisplayName("룰렛은 max 이하의 값을 return 한다")
     void shouldAlwaysLessThanMaxValueAndEquals(){
         int loop = 10000;
         while(loop-- > 0){
-            assertThat(raceRoulette.spin()).isLessThan(max());
+            assertThat(raceRoulette.spin()).isLessThanOrEqualTo(max());
         }
     }
 
 }
 
 class SimpleRaceRouletteTest extends RaceRouletteTest {
-
     @BeforeEach
     void setUp(){
         raceRoulette = RaceRoulette.simple(max());
-    }
-
-    @Override
-    int max() {
-        return 10;
     }
 }

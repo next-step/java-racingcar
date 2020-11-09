@@ -4,37 +4,30 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private int numOfCars;
-    private int numOfTry;
+    private Scanner scanner;
 
-    public InputData getInputData() {
-        return new InputData(numOfCars, numOfTry);
+    public InputView() {
+        this.scanner = new Scanner(System.in);
     }
 
-    public void draw() {
-        try (Scanner scanner = new Scanner(System.in)) {
+    public int getNumberFromStdin(String displayText){
+        int value = -1;
+        try {
             boolean isNumber = false;
             while (!isNumber) {
-                System.out.println("자동차 대수는 몇 대 인가요?");
-                this.numOfCars = getIntegerValueFrom(scanner);
-                if (this.numOfCars > 0) isNumber = true;
+                System.out.println(displayText);
+                value = convertLineToNumber(scanner.nextLine());
+                if (value > 0) isNumber = true;
             }
-
-            isNumber = false;
-            while (!isNumber) {
-                System.out.println("시도할 회수는 몇 회 인가요?");
-                this.numOfTry = getIntegerValueFrom(scanner);
-                if (this.numOfTry > 0) isNumber = true;
-            }
+            return value;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e.getCause() == null ? e : e.getCause());
         }
     }
 
-    private int getIntegerValueFrom(Scanner scanner) {
-        String value = scanner.nextLine();
+    private int convertLineToNumber(String line) {
         try {
-            int parsedValue = Integer.parseInt(value);
+            int parsedValue = Integer.parseInt(line);
             if (parsedValue <= 0) {
                 System.out.println("error) 1 이상 숫자만 입력가능합니다.");
                 return -1;
@@ -46,21 +39,9 @@ public class InputView {
         }
     }
 
-    class InputData {
-        private int numOfCars;
-        private int numOfTry;
-
-        public InputData(int numOfCars, int numOfTry) {
-            this.numOfCars = numOfCars;
-            this.numOfTry = numOfTry;
-        }
-
-        public int getNumOfCars() {
-            return numOfCars;
-        }
-
-        public int getNumOfTry() {
-            return numOfTry;
-        }
+    @Override
+    protected void finalize() throws Throwable {
+        this.scanner.close();
+        super.finalize();
     }
 }

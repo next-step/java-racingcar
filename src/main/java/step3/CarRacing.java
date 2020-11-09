@@ -10,14 +10,13 @@ public class CarRacing {
 
     private List<Car> cars;
 
-    private RaceRoulette raceRoulette = RaceRoulette.simple(10);
+    private RaceRoulette raceRoulette = RaceRoulette.simple(9);
 
     public void start() {
-        displayInputView();
+        int numOfCars = getNumOfCars();
+        int totalTurns = getNumOfTry();
 
-        int totalTurns = inputView.getInputData().getNumOfTry();
-
-        readyToRace(inputView.getInputData().getNumOfCars());
+        readyToRace(numOfCars);
 
         int currentTurn = 1;
         System.out.println("실행 결과");
@@ -29,6 +28,14 @@ public class CarRacing {
         }
     }
 
+    private int getNumOfCars() {
+        return inputView.getNumberFromStdin("자동차 대수는 몇 대 인가요?");
+    }
+
+    private int getNumOfTry() {
+        return inputView.getNumberFromStdin("시도할 회수는 몇 회 인가요?");
+    }
+
     private void readyToRace(int numOfCars) {
         this.cars = new ArrayList<>(numOfCars);
         int number = 1;
@@ -37,17 +44,10 @@ public class CarRacing {
         }
     }
 
-    private void displayInputView() {
-        inputView.draw();
-    }
-
     private void displayCurrentMovingDistances() {
         this.resultView.showRaceState(cars);
     }
 
-    /**
-     * race 에 참여한 모든 car 들이 이동을 시도한다
-     */
     private void tryMovingAllCars() {
         this.cars.forEach(car -> car.move(raceRoulette));
     }
