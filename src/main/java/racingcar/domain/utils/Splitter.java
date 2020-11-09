@@ -1,14 +1,16 @@
-package racingcar.domain.util;
+package racingcar.domain.utils;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 public class Splitter {
 
-    private final int NAME_MAX_LENGTH = 5;
     private String[] names;
 
-    public Splitter(String nameList) {
+    public Splitter() {
+    }
+
+    public String[] splitNames(String nameList) {
         if (isBlack(nameList)) {
             throw new IllegalArgumentException(String.format("입력 데이터가 올바르지 않습니다. : [%s] ", nameList));
         }
@@ -18,6 +20,7 @@ public class Splitter {
         if (!isValidateName()) {
             throw new IllegalArgumentException(String.format("Name은 5글자를 초과할 수 없습니다. : [%s] ", nameList));
         }
+        return this.names;
     }
 
     private void split(String nameList) {
@@ -34,9 +37,7 @@ public class Splitter {
     }
 
     private boolean isLong(String name) {
-        return name.length() <= NAME_MAX_LENGTH;
+        return name.length() <= Number.NAME_MAX_LENGTH;
     }
-    public String[] getResult() {
-        return this.names;
-    }
+
 }
