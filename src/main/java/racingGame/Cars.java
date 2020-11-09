@@ -16,12 +16,23 @@ public class Cars {
   }
 
   public static Cars of(List<String> names) {
-    List<Car> cars = new Vector<>();
-    for (int i = 0; i < names.size(); i++) {
-      cars.add(Car.of(names.get(i)));
+    List<Car> cars;
+
+    validateInput(names);
+
+    cars = new Vector<>();
+
+    for (String name : names) {
+      cars.add(Car.of(name));
     }
 
     return new Cars(cars);
+  }
+
+  private static void validateInput(List<String> names) {
+    if (names == null) {
+      throw new IllegalArgumentException();
+    }
   }
 
   // Car가 어떻게 움직일 지 만드는 기능.
