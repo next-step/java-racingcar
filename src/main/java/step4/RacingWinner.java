@@ -18,7 +18,7 @@ public class RacingWinner {
         this.position = position;
     }
 
-    private void setWinners(List<Car> cars) {
+    public void setWinners(List<Car> cars) {
         this.winners = IntStream.range(0, cars.size())
                 .filter(i -> cars.get(i).getPosition() == this.position)
                 .mapToObj(i -> cars.get(i).getCarName())
@@ -29,7 +29,7 @@ public class RacingWinner {
         return String.join(COMMA, this.winners);
     }
 
-    private void setWinnerPosition(List<Car> cars) {
+    public void setWinnerPosition(List<Car> cars) {
         int winnerPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .filter(car -> car >= 0)
@@ -37,6 +37,10 @@ public class RacingWinner {
                 .orElse(0);
 
         this.setPosition(winnerPosition);
+    }
+
+    public int getPosition() {
+        return this.position;
     }
 
     @Override
