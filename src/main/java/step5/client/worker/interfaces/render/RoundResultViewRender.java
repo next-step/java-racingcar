@@ -6,7 +6,6 @@ import step5.client.worker.domain.Position;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static step5.client.worker.interfaces.render.ViewString.*;
 
