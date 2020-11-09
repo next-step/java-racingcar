@@ -14,6 +14,9 @@ public class CarRacing {
     public RacingRecords start(int carCnt, int tryCnt){
         Cars cars = new Cars(carCnt);
 
+        InputView.validateCarCount(carCnt);
+        InputView.validateTryCount(tryCnt);
+
         return racing(tryCnt, cars);
     }
 
@@ -33,14 +36,11 @@ public class CarRacing {
         int carCnt = InputView.getCarCount();
         int tryCnt = InputView.getTryCount();
 
-        InputView.validateCarCount(carCnt);
-        InputView.validateTryCount(tryCnt);
+        CarRacing carRacing = new CarRacing(new RandomMoveStrategy());
+        RacingRecords racingResults = carRacing.start(carCnt, tryCnt);
 
         ResultView resultView = new ResultView();
         resultView.showResultHead();
-
-        CarRacing carRacing = new CarRacing(new RandomMoveStrategy());
-        RacingRecords racingResults = carRacing.start(carCnt, tryCnt);
         resultView.showResult(racingResults);
     }
 }

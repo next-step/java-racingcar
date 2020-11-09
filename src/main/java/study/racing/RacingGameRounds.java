@@ -22,6 +22,10 @@ public class RacingGameRounds {
         tries--;
     }
 
+    public int getTries(){
+        return tries;
+    }
+
     public void recording(Cars cars) {
         List<Car> carSet = cars.getCarSet();
         LinkedList<Integer> positionList = new LinkedList<Integer>();

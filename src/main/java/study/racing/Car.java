@@ -2,7 +2,6 @@ package study.racing;
 
 public class Car {
 
-    private static final String FORWARD_STRING = "-";
     private static final int INITIAL_POSITION = 0;
 
     private int position;
