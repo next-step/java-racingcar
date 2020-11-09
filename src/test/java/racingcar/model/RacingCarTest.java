@@ -42,7 +42,7 @@ public class RacingCarTest {
 
     @DisplayName("RacingCar Equals 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"hyundai:hyundai:hyundai", "kia:kia:kia", "volvo:volvo:volvo"}, delimiter = ':')
+    @CsvSource(value = {"현대:현대:현대", "kia:kia:kia", "volvo:volvo:volvo"}, delimiter = ':')
     public void carNameInstanceEqualsTest(String carName, String carName2, String carName3) {
 
         //Given && When
@@ -51,12 +51,7 @@ public class RacingCarTest {
         RacingCar car3 = new RacingCar(carName3);
 
         //Then
-        assertThat(car1.equals(car1)).isTrue();
-        assertThat(car1.equals(car2)).isTrue();
-        assertThat(car2.equals(car1)).isTrue();
-        assertThat(car2.equals(car3)).isTrue();
-        assertThat(car1.equals(car3)).isTrue();
-
+        assertThat(car1).isEqualTo(car2).isEqualTo(car3);
     }
 
     @DisplayName("RacingCar hashCode 테스트")
