@@ -14,14 +14,14 @@ public class RacingTest {
     @Test
     @DisplayName("경주할 차가 0일 때")
     public void 경주_테스트_1() {
-        assertThatThrownBy(() -> Racing.of(0, 3))
+        assertThatThrownBy(() -> Racing.of("", 3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("경기의 수가 0일 때")
     public void 경주_테스트_2() {
-        assertThatThrownBy(() -> Racing.of(3, 0))
+        assertThatThrownBy(() -> Racing.of("a,b,c", 0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

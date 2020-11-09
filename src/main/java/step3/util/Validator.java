@@ -28,4 +28,11 @@ public class Validator {
         }
     }
 
+    public static void checkLength(String input, int length) {
+        if (input.length() > length) {
+            throw new IllegalArgumentException(
+                    String.format("자동차 이름은 %s 자를 초과할 수 없습니다.", length));
+        }
+    }
+
 }

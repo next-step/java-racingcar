@@ -19,7 +19,7 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(4);
+        cars = Cars.of("a,b,c,d");
         cars.getCars().get(0).forward(0);
         cars.getCars().get(1).forward(2);
         cars.getCars().get(2).forward(1);
@@ -46,7 +46,7 @@ class CarsTest {
     @Test
     @DisplayName("다른 경기장에 배정된 경주차그룹이 점수만 같을 때 경주차 그룹 중복인가")
     void isSame() {
-        Cars a = new Cars(4);
+        Cars a = Cars.of("a,b,c,d");
         a.getCars().get(0).forward(0);
         a.getCars().get(1).forward(2);
         a.getCars().get(2).forward(1);

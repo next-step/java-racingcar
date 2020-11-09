@@ -30,8 +30,8 @@ public class Cars {
 
     public static Cars of(String carNames) {
         String[] names = carNames.split(",");
-        List<Car> participants = Stream.of(names).map(s -> new Car(s)).collect(toList());
-        List<ScoreBoard> scoreBoards = Stream.of(names).map(s -> new ScoreBoard(s)).collect(toList());
+        List<Car> participants = Stream.of(names).map(name -> new Car(name)).collect(toList());
+        List<ScoreBoard> scoreBoards = Stream.of(names).map(name -> new ScoreBoard(name)).collect(toList());
 
         return new Cars(participants, scoreBoards);
     }

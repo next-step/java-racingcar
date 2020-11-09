@@ -15,9 +15,7 @@ public class Racing {
     private final int rounds;
     private final Cars cars;
     private List<ScoreBoard> scoreBoards;
-
     private Randomize randomize;
-
 
     private Racing(String carNames, int rounds) {
         this.rounds = rounds;
