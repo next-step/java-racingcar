@@ -1,11 +1,9 @@
 package racingcar.view;
 
 import racingcar.model.RaceGame;
-import racingcar.model.RacingCar;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 
