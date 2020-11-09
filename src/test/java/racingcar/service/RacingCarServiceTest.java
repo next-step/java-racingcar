@@ -20,7 +20,5 @@ public class RacingCarServiceTest {
         RaceResultValue play = RacingCarService.play(raceReadyValue, new TesterMotor());
 
         assertThat(play.getStepCount()).isEqualTo(tryCount);
-        assertThat(play.getRaceStepValueByCarName().keySet()).contains("jin", "hyun", "hwi");
-        assertThat(play.getRaceStepValueByCarName().values()).hasSize(tryCount);
     }
 }

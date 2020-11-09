@@ -3,6 +3,7 @@ package racingcar.service;
 import racingcar.dto.RaceReadyValue;
 import racingcar.dto.RaceResultValue;
 import racingcar.dto.StepByCar;
+import racingcar.dto.StepResult;
 import racingcar.model.Cars;
 import racingcar.model.Motor;
 
@@ -15,7 +16,7 @@ public class RacingCarService {
     private static final int RANGE_START_NUM = 0;
 
     public static RaceResultValue play(RaceReadyValue raceReadyValue, Motor motor) {
-        List<StepByCar> stepByCars = new ArrayList<>();
+        List<StepResult> stepResults = new ArrayList<>();
         int stepCount = raceReadyValue.getTryCount();
 
         Cars cars = Cars.of(raceReadyValue.getCarNames(), motor);
@@ -23,9 +24,9 @@ public class RacingCarService {
         IntStream.range(RANGE_START_NUM, stepCount)
                 .forEach(i -> {
                     cars.run();
-                    stepByCars.addAll(cars.getStepByCar());
+                    stepResults.add(StepResult.of(cars));
                 });
 
-        return RaceResultValue.of(stepCount, stepByCars);
+        return RaceResultValue.of(stepCount, stepResults);
     }
 }

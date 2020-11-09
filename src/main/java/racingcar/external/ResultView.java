@@ -2,17 +2,14 @@ package racingcar.external;
 
 import racingcar.dto.RaceResultValue;
 import racingcar.dto.StepByCar;
+import racingcar.dto.StepResult;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
 
 public class ResultView {
 
-    private static final int RANGE_START_NUM = 0;
     private static final String REGEX_COMMA = ",";
     private static final String MOVE_DASH = "-";
     private static final String RACE_TREM = "********************";
@@ -25,17 +22,16 @@ public class ResultView {
     }
 
     public static void outputByStep(OuputChannel outputChnnel, RaceResultValue raceResultValue) {
-        IntStream.range(RANGE_START_NUM, raceResultValue.getStepCount())
-                .forEach(i -> outputByStep(outputChnnel, raceResultValue, i));
+        for (StepResult stepResult : raceResultValue.getStepResults()) {
+            outputByStep(outputChnnel, stepResult);
+        }
+
     }
 
-    public static void outputByStep(OuputChannel outputChnnel, RaceResultValue raceResultValue, int index) {
-        Map<String, List<StepByCar>> raceStepValueByCarName = raceResultValue.getRaceStepValueByCarName();
-
-        raceStepValueByCarName.forEach((key, value) -> {
-            StepByCar stepByCar = value.get(index);
+    public static void outputByStep(OuputChannel outputChnnel, StepResult stepResult) {
+        for (StepByCar stepByCar : stepResult.getStepByCar()) {
             outputChnnel.out(parseResult(stepByCar));
-        });
+        }
         outputChnnel.out(RACE_TREM);
     }
 
@@ -51,7 +47,7 @@ public class ResultView {
     }
 
     public static void winner(OuputChannel outputChnnel, RaceResultValue raceResultValue) {
-        String winnerName = String.join(REGEX_COMMA, raceResultValue.getWinnerName());
+        String winnerName = String.join(REGEX_COMMA, raceResultValue.getFinalWinnerName());
 
         String winner = String.format(OUTPUT_FORMAT_WINNER, winnerName);
         outputChnnel.out(winner);
