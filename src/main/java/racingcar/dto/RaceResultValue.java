@@ -12,7 +12,7 @@ public class RaceResultValue {
     private final int step;
     private final Map<String, List<StepByCar>> raceStepValueByCarName;
 
-    RaceResultValue(int tryCount, Map<String, List<StepByCar>> raceStepValueByCarName) {
+    private RaceResultValue(int tryCount, Map<String, List<StepByCar>> raceStepValueByCarName) {
         this.step = tryCount;
         this.raceStepValueByCarName = raceStepValueByCarName;
     }

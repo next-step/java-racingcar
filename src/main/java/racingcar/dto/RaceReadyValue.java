@@ -11,7 +11,7 @@ public class RaceReadyValue {
     private final String[] carNames;
     private final int tryCount;
 
-    RaceReadyValue(String carNameList, int tryCount) {
+    private RaceReadyValue(String carNameList, int tryCount) {
         this.carNames = parseCarName(carNameList);
         this.tryCount = tryCount;
     }

@@ -11,7 +11,7 @@ public class StepByCar {
     private final String name;
     private final int position;
 
-    StepByCar(String name, int position) {
+    private StepByCar(String name, int position) {
         this.name = name;
         this.position = position;
     }
