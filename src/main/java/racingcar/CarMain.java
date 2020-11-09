@@ -15,5 +15,7 @@ public class CarMain {
         for(int round = 0; round < tryCounts; round++) {
             outputView.displayCarList(carController.nextRound(carList));
         }
+
+        outputView.displayWinners(carController.getWinner(carList));
     }
 }

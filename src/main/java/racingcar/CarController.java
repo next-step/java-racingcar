@@ -1,10 +1,10 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CarController {
     private static final Random random = new Random();
@@ -28,5 +28,24 @@ public class CarController {
 
     private int makeRandomValue() {
         return random.nextInt(MAX_MOVING_BOUNDARY);
+    }
+
+    public List<String> getWinner(CarList carList) {
+        List<Car> finalCarList = carList.getCarList();
+        List<String> winners = new ArrayList<>();
+
+        int previousPosition = -1;
+        for(Car car : finalCarList) {
+            int currentPosition = car.getCurrentPosition();
+            if(currentPosition > previousPosition) {
+                previousPosition = currentPosition;
+                winners = new ArrayList<>();
+                winners.add(car.getName());
+            } else if (currentPosition == previousPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
     }
 }
