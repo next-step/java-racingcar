@@ -11,7 +11,7 @@ public class RacingGameController {
     public String showSimulationResult(final String carNames, final String times) {
         final RacingGameCondition condition = RacingGameCondition.of(carNames, times);
         final RacingGame racingGame  = RacingGame.of(condition.getCarNames(), new RandomMovableStrategy());
-        racingGame.race(condition.getNumberAttempts());
+        racingGame.race(condition.getTryNumber());
         return PRESENTER.present(racingGame.getRacingGameResponse());
     }
 }

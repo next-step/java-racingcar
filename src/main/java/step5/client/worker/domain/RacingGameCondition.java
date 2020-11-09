@@ -12,7 +12,7 @@ import static step5.client.worker.domain.RacingGameCondition.ErrorMessage.*;
 public class RacingGameCondition {
     public enum ErrorMessage implements Message {
         CAR_NAME_MUST_NOT_BE_DUPLICATED("car name must not be duplicated"),
-        NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE(RacingGameCondition.class.getName() + "'s numberAttempts must more then 1"),
+        NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE(RacingGameCondition.class.getName() + "'s tryNumber must more then 1"),
         ;
 
         private final String message;
@@ -27,15 +27,15 @@ public class RacingGameCondition {
     }
 
     private final List<CarName> carNames;
-    private final int numberAttempts;
+    private final int tryNumber;
 
-    private RacingGameCondition(final List<CarName> carNames, final int numberAttempts) {
+    private RacingGameCondition(final List<CarName> carNames, final int tryNumber) {
         this.carNames = carNames;
-        this.numberAttempts = numberAttempts;
+        this.tryNumber = tryNumber;
     }
 
-    public static RacingGameCondition of(final String carNames, final String numberAttempts) {
-        return new RacingGameCondition(createCarNames(carNames), createNumberAttempts(numberAttempts));
+    public static RacingGameCondition of(final String carNames, final String tryNumber) {
+        return new RacingGameCondition(createCarNames(carNames), createTryNumber(tryNumber));
     }
 
     private static List<CarName> createCarNames(final String carNamesExpression) {
@@ -46,17 +46,17 @@ public class RacingGameCondition {
                 .collect(Collectors.toList());
     }
 
-    private static int createNumberAttempts(final String numberAttemptsExpression) {
-        final int numberAttempts = Integer.parseInt(numberAttemptsExpression);
-        checkArgument(numberAttempts >= 1, NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE);
-        return numberAttempts;
+    private static int createTryNumber(final String tryNumberExpression) {
+        final int tryNumber = Integer.parseInt(tryNumberExpression);
+        checkArgument(tryNumber >= 1, NUMBER_OF_ATTEMPTS_MUST_MORE_THEN_ONE);
+        return tryNumber;
     }
 
     public List<CarName> getCarNames() {
         return carNames;
     }
 
-    public int getNumberAttempts() {
-        return numberAttempts;
+    public int getTryNumber() {
+        return tryNumber;
     }
 }

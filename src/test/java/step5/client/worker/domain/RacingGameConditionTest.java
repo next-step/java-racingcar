@@ -63,7 +63,7 @@ class RacingGameConditionTest {
             // then
             assertThat(result).isNotNull();
             assertThat(result.getCarNames()).isEqualTo(carNames);
-            assertThat(result.getNumberAttempts()).isEqualTo(Integer.valueOf(numberAttempts));
+            assertThat(result.getTryNumber()).isEqualTo(Integer.valueOf(numberAttempts));
         }
     }
 }
