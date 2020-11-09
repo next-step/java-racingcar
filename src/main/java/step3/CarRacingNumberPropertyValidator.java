@@ -1,8 +1,8 @@
 package step3;
 
-public class CarRacingPropertyValidator {
+public class CarRacingNumberPropertyValidator {
 
-    public boolean isNumber(String value){
+    public boolean validate(String value){
         try {
             int parsedValue = Integer.parseInt(value);
             if (parsedValue <= 0) {

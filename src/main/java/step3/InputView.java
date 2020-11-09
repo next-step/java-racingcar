@@ -6,13 +6,13 @@ public class InputView {
 
     private Scanner scanner;
 
-    private CarRacingPropertyValidator propertyValidator = new CarRacingPropertyValidator();
+    private CarRacingNumberPropertyValidator numberPropertyValidator = new CarRacingNumberPropertyValidator();
 
     public InputView() {
         this.scanner = new Scanner(System.in);
     }
 
-    public int getNumberFromStdin(String displayText){
+    public int getNumberFromStdin(String displayText) {
         try {
             boolean isNumber = false;
             String inputValue = null;
@@ -20,12 +20,12 @@ public class InputView {
                 System.out.println(displayText);
 
                 inputValue = scanner.nextLine();
-                if( propertyValidator.isNumber(inputValue) ){
+                if (numberPropertyValidator.validate(inputValue)) {
                     isNumber = true;
                 } else {
                     System.out.println("error) 1 이상 숫자만 입력가능합니다.");
                 }
-            } while(!isNumber);
+            } while (!isNumber);
 
             return Integer.valueOf(inputValue);
         } catch (Exception e) {

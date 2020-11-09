@@ -7,41 +7,41 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarRacingPropertyValidatorTest {
+class CarRacingNumberPropertyValidatorTest {
 
-    CarRacingPropertyValidator validator;
+    CarRacingNumberPropertyValidator validator;
 
     @BeforeEach
     void setUp(){
-        validator = new CarRacingPropertyValidator();
+        validator = new CarRacingNumberPropertyValidator();
     }
 
     @ParameterizedTest
     @DisplayName("1 이상의 정수만 Number 프로퍼티다")
     @ValueSource(strings = {"10", "1000"})
-    void isNumber_1(String value){
-        assertThat(validator.isNumber(value)).isTrue();
+    void restriction1(String value){
+        assertThat(validator.validate(value)).isTrue();
     }
 
     @ParameterizedTest
     @DisplayName("음수는 Number 프로퍼티가 아니다")
     @ValueSource(strings = {"-1", "-100", "-1000"})
-    void isNumber_2(String value){
-        assertThat(validator.isNumber(value)).isFalse();
+    void restriction2(String value){
+        assertThat(validator.validate(value)).isFalse();
     }
 
     @ParameterizedTest
     @DisplayName("0은 Number 프로퍼티가 아니다")
     @ValueSource(strings = {"10", "1000"})
-    void isNumber_3(String value){
-        assertThat(validator.isNumber(value)).isTrue();
+    void restriction3(String value){
+        assertThat(validator.validate(value)).isTrue();
     }
 
     @ParameterizedTest
     @DisplayName("숫자이외에 문자는 Number 프로퍼티가 아니다")
     @ValueSource(strings = {"abc", "hundred", "#1"})
-    void isNumber_4(String value){
-        assertThat(validator.isNumber(value)).isFalse();
+    void restriction4(String value){
+        assertThat(validator.validate(value)).isFalse();
     }
 
 }

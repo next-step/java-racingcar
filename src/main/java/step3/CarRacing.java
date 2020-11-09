@@ -14,17 +14,17 @@ public class CarRacing {
 
     public void start() {
         int numOfCars = getNumOfCars();
-        int totalTurns = getNumOfTry();
+        int totalTries = getNumOfTry();
 
         readyToRace(numOfCars);
 
-        int currentTurn = 1;
+        int currentTry = 1;
         System.out.println("실행 결과");
 
-        while (currentTurn <= totalTurns) {
+        while (currentTry <= totalTries) {
             tryMovingAllCars();
             displayCurrentMovingDistances();
-            currentTurn++;
+            currentTry++;
         }
     }
 
