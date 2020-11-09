@@ -1,6 +1,7 @@
 package racingcar.external;
 
 import racingcar.dto.RaceReadyValue;
+import racingcar.validator.InputValidator;
 
 public class InputView {
 
@@ -9,6 +10,8 @@ public class InputView {
 
     public static RaceReadyValue input(InputChannel inputChannel) {
         String carNames = inputChannel.inputString(INPUT_CAR_NAMES);
+        InputValidator.validate(carNames);
+
         int tryCount = inputChannel.inputNumber(INPUT_TRY_COUNT);
 
         return RaceReadyValue.of(carNames, tryCount);
