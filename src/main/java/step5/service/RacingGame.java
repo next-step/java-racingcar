@@ -22,6 +22,7 @@ public class RacingGame {
 
     private RacingGame(RacingGameConditionDTO racingGameConditionDTO) {
         this.racingGameConditionDTO = racingGameConditionDTO;
+
         cars = new Cars(splitToCarList(getRacingGameCarNames()));
     }
 
@@ -31,12 +32,16 @@ public class RacingGame {
 
     public Cars runRound() {
         getGameRound().stackGameRound();
+
         cars.moveCars();
+
         return cars;
     }
 
     public boolean isGameEnd() {
-        return racingGameConditionDTO.getGameRound().isGameFinish();
+        return racingGameConditionDTO
+                .getGameRound()
+                .isGameFinish();
     }
 
     public String getTopPositionCarNames() {
