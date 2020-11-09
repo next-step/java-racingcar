@@ -15,11 +15,15 @@ public class InputView {
     private InputView(){}
     public static int getCarCount(){
         System.out.println(INPUT_CAR_MESSAGE);
+        int carCnt = scanner.nextInt();
+        validateCarCount(carCnt);
         return scanner.nextInt();
     }
 
     public static int getTryCount(){
         System.out.println(INPUT_TRY_MESSAGE);
+        int tryCnt = scanner.nextInt();
+        validateTryCount(tryCnt);
         return scanner.nextInt();
     }
 

@@ -15,32 +15,23 @@ public class CarRacing {
 
 
     public void racing(int carCnt, int tryCnt){
-
-        ResultView resultView = new ResultView();
-        resultView.showResultHead();
-
-        InputView.validateCarCount(carCnt);
-        InputView.validateTryCount(tryCnt);
-
         Set<Car> carSet = initCarSet(carCnt);
 
         IntStream.range(0, tryCnt)
-                .mapToObj(tryIndex -> {
-                    resultView.showLapResultHead(tryIndex);
-                    return carSet;
-                })
-                .forEach(cars -> {
-
-                            cars.forEach(car -> {
-                                        car.move(car.getRandomInt());
-                                    }
-                            );
-
-                            cars.forEach(car -> resultView.showCarRacingLapResult(car));
-                        }
-                );
+                .mapToObj(tryIndex -> carSet)
+                .forEach(cars -> this.move(cars));
     }
 
+    private void move(Set<Car> cars) {
+
+        cars.forEach(car -> {
+                    car.move(car.getRandomInt());
+                }
+        );
+
+        //cars.forEach(car -> resultView.showCarRacingLapResult(car));
+
+    }
 
 
     private Set<Car> initCarSet(int carCnt) {
@@ -52,9 +43,12 @@ public class CarRacing {
 
 
     public static void main(String args[]){
+        ResultView resultView = new ResultView();
+        resultView.showResultHead();
 
         int carCnt = InputView.getCarCount();
         int tryCnt = InputView.getTryCount();
+
 
         CarRacing carRacing = new CarRacing();
         carRacing.racing(carCnt, tryCnt);
