@@ -1,4 +1,4 @@
-package string;
+package step1.string;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
