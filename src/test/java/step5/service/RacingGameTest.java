@@ -18,12 +18,10 @@ class RacingGameTest {
     @DisplayName("게임이 잘 되는지 확인한다.")
     void runGame(String carNames, int tryCount) {
         RacingGame racingGame = getRacingGameInstance(carNames, tryCount);
-        int moveCondition = 4;
         for (int i = 0; i < tryCount; i++) {
-            racingGame.runRound(4);
+            racingGame.runRound();
         }
-
-        assertThat(racingGame.getTopPositionCarNames()).isEqualTo(carNames);
+        assertThat(racingGame.isGameEnd()).isTrue();
 
     }
 

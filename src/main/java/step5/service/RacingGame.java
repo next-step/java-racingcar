@@ -29,10 +29,14 @@ public class RacingGame {
         return new RacingGame(racingGameConditionDTO);
     }
 
-    public Cars runRound(int moveCondition) {
+    public Cars runRound() {
         getGameRound().stackGameRound();
-        cars.moveCars(moveCondition);
+        cars.moveCars();
         return cars;
+    }
+
+    public boolean isGameEnd() {
+        return racingGameConditionDTO.getGameRound().isGameFinish();
     }
 
     public String getTopPositionCarNames() {
@@ -49,7 +53,6 @@ public class RacingGame {
             throw new NotGameEndException();
         }
     }
-
 
 
     private List<Car> splitToCarList(String input) {
@@ -70,7 +73,8 @@ public class RacingGame {
         return racingGameConditionDTO
                 .getCarNames();
     }
-    private GameRound getGameRound(){
+
+    private GameRound getGameRound() {
         return racingGameConditionDTO
                 .getGameRound();
     }
