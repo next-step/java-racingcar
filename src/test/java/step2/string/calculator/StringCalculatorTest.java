@@ -55,4 +55,32 @@ class StringCalculatorTest {
     void calculate(String input, int expected) {
         assertEquals(stringCalculator.calculate(input), expected);
     }
+
+    @ParameterizedTest
+    @DisplayName("덧셈 테스트")
+    @CsvSource(value = {"1 + 3=4", "6 + 9=15"}, delimiter = '=')
+    void calculate_sum(String input, int expected) {
+        assertEquals(stringCalculator.calculate(input), expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("뺄셈 테스트")
+    @CsvSource(value = {"9 - 2=7", "5 - 3=2"}, delimiter = '=')
+    void calculate_subtract(String input, int expected) {
+        assertEquals(stringCalculator.calculate(input), expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("곱셈 테스트")
+    @CsvSource(value = {"4 * 2=8", "10 * 7=70"}, delimiter = '=')
+    void calculate_multiple(String input, int expected) {
+        assertEquals(stringCalculator.calculate(input), expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("곱셈 테스트")
+    @CsvSource(value = {"36 / 9=4", "25 / 5=5"}, delimiter = '=')
+    void calculate_division(String input, int expected) {
+        assertEquals(stringCalculator.calculate(input), expected);
+    }
 }
