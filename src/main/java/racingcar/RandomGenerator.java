@@ -3,11 +3,10 @@ package racingcar;
 import java.util.Random;
 
 public class RandomGenerator {
-    static final int RANDOM_RANGE = 10;
-    static final Random random = new Random();
+    private static final int RANDOM_RANGE = 10;
+    private static final Random random = new Random();
 
-
-    public int getRandomNumber(){
+    public static int getRandomNumber(){
         return random.nextInt(RANDOM_RANGE);
     }
 }
