@@ -25,7 +25,9 @@ public class Winners implements Comparable<Integer> {
     }
 
     private void checkPlayerRecordWithComparing(String name, int position) {
-        checkPlayerRecordSame(name, position);
+        if (checkPlayerRecordSame(name, position))
+            return;
+
         checkPlayerRecordHigh(name, position);
     }
 
@@ -36,11 +38,13 @@ public class Winners implements Comparable<Integer> {
         }
     }
 
-    private void checkPlayerRecordSame(String name, int position) {
+    private boolean checkPlayerRecordSame(String name, int position) {
         int comparison = compareTo(position);
         if (comparison == 0) {
             names.add(name);
+            return true;
         }
+        return false;
     }
 
     private boolean checkPlayerRecordIsFirst(String name, int position) {
