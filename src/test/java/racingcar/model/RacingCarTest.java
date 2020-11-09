@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -8,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
 
@@ -71,5 +72,13 @@ public class RacingCarTest {
         assertThat(map.get(new RacingCar(carName))).isFalse();
     }
 
-
+    @DisplayName("RacingCar hashCode 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"람보르기니기니", "폭스바겐바겐", "제네시스시스"})
+    public void inValidCarName(String carName){
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    RacingCar car = new RacingCar(carName);
+                }).withMessage("자동차 이름에 빈값은 사용할 수 없으며, 5자를 넘을 수 없습니다.");
+    }
 }
