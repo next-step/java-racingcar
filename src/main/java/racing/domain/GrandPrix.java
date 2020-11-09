@@ -22,12 +22,6 @@ public class GrandPrix {
         lineUp.runRound();
     }
 
-    public void runFullRace() {
-        while (currentRound < maxRounds) {
-            runRound();
-        }
-    }
-
     public void setId(int id) {
         this.id = id;
     }

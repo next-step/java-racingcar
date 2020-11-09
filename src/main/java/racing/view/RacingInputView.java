@@ -1,27 +1,29 @@
 package racing.view;
 
 import lombok.Getter;
-import racing.service.GranPrixService;
 import racing.view.to.RacingInputTO;
 
 import java.util.Scanner;
 
 @Getter
 public class RacingInputView {
-    private final GranPrixService granPrixService = new GranPrixService();
 
-    public RacingInputTO getRacingInput() {
-        int maxMachines;
-        int maxRounds;
+    private RacingInputView() {
+    }
+
+    public static RacingInputTO getRacingInput() {
+        String drivers;
+        String maxRounds;
 
         try (Scanner in = new Scanner(System.in)) {
-            System.out.println("자동차 대수는 몇 대 인가요?");
-            maxMachines = Integer.parseInt(in.nextLine());
+            System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+            drivers = in.nextLine();
 
             System.out.println("시도할 회수는 몇 회 인가요?");
-            maxRounds = Integer.parseInt(in.nextLine());
+            maxRounds = in.nextLine();
         }
-        return new RacingInputTO(maxMachines, maxRounds);
+        System.out.println();
+        return new RacingInputTO(drivers, maxRounds);
     }
 
 }

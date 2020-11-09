@@ -4,24 +4,35 @@ import org.junit.jupiter.api.Test;
 import racing.resolver.SupplierAccelerateResolver;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RaceMachineTest {
     @Test
     void testRaceMachineAccelerate() {
-        RaceMachine ferrari = new RaceMachine(1, new SupplierAccelerateResolver(() -> {
-            return true;
-        }));
+        RaceMachine ferrari = new RaceMachine("Seba", new SupplierAccelerateResolver(() -> true));
         ferrari.accelerate();
         ferrari.accelerate();
-        assertThat(ferrari.getLap()).isGreaterThan(2);
+        assertThat(ferrari.getLap()).isGreaterThanOrEqualTo(2);
         assertThat(ferrari.getAccelerateResolver().resolve()).isTrue();
 
-        RaceMachine avante = new RaceMachine(2, new SupplierAccelerateResolver(() -> {
-            return false;
-        }));
-        avante.accelerate();
-        avante.accelerate();
-        assertThat(avante.getLap()).isEqualTo(1);
+        RaceMachine mercedes = new RaceMachine("Lewis", new SupplierAccelerateResolver(() -> false));
+        mercedes.accelerate();
+        mercedes.accelerate();
+        assertThat(mercedes.getLap()).isEqualTo(0);
+
+    }
+
+    @Test
+    void testValidate() {
+        assertThatThrownBy(() -> {
+            new RaceMachine("", null);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("반드시 필요");
+
+        assertThatThrownBy(() -> {
+            new RaceMachine("Lewis Hamilton", null);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("5자를 초과");
 
     }
 }
