@@ -16,11 +16,4 @@ public class RacingDTO {
         return this.attempts;
     }
 
-    public void setCounts(int counts){
-        this.counts = counts;
-    }
-
-    public void setAttempts(int attempts){
-        this.attempts = attempts;
-    }
 }
