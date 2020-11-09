@@ -1,11 +1,10 @@
 package step3.service;
 
 import step3.domain.Cars;
+import step3.domain.ScoreBoard;
 import step3.util.Validator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created By mand2 on 2020-11-04.
@@ -15,12 +14,16 @@ public class Racing {
 
     private final int rounds;
     private final Cars cars;
-    private List<Integer> scoreBoard;
+    private List<ScoreBoard> scoreBoards;
+
+    private Randomize randomize;
+
 
     private Racing(String carNames, int rounds) {
         this.rounds = rounds;
         this.cars = Cars.of(carNames);
-        this.scoreBoard = new ArrayList<>();
+        this.scoreBoards = new ArrayList<>();
+        this.randomize = new Randomize();
     }
 
     public static Racing of(String carNames, int rounds) {
@@ -32,17 +35,25 @@ public class Racing {
 
     public void race() {
         for (int i = rounds; i > 0; i--) {
-            this.cars.runRound();
-            this.scoreBoard.addAll(cars.getRoundScore());
+            this.cars.runRound(this.randomize);
+            this.scoreBoards = this.cars.getRoundScore();
         }
     }
 
-    public List<Integer> getScoreBoard() {
-        return this.scoreBoard;
+    public List<ScoreBoard> getScoreBoard() {
+        return this.scoreBoards;
     }
 
     public int getParticipantsNum() {
         return this.cars.carNum();
+    }
+
+    public String getWinner() {
+        return this.cars.getWinners();
+    }
+
+    public int getRounds() {
+        return rounds;
     }
 
     @Override

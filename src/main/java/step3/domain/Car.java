@@ -11,8 +11,6 @@ public class Car {
     private final String name;
     private int step; //자동차가 전진한 횟수
 
-    // TODO 생성자 name 필수조건이 되어 deprecated 시켜야 함.
-
     public Car(String name) {
         this(name, 0);
     }
@@ -31,5 +29,9 @@ public class Car {
 
     public int getStep() {
         return this.step;
+    }
+
+    public String getName() {
+        return name;
     }
 }

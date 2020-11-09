@@ -15,15 +15,14 @@ public class Controller {
     public static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int carNum = InputView.askCarNumber();
-        int roundNum = InputView.askRoundNumber();
         String carNames = InputView.askCarNames();
+        int roundNum = InputView.askRoundNumber();
 
-//        Racing racing = Racing.of(carNum, roundNum);
         Racing racing = Racing.of(carNames, roundNum);
         racing.race();
 
-        ResultView.printResult(racing.getScoreBoard(), racing.getParticipantsNum());
+        ResultView.printResult(racing.getScoreBoard(), racing.getRounds());
+        ResultView.printWinner(racing.getWinner());
 
         SCANNER.close();
     }
