@@ -1,10 +1,12 @@
 package nextstep.step3;
 
+import nextstep.step3.domain.RacingCar;
 import nextstep.step3.domain.RacingCars;
 import nextstep.step3.domain.RandomGenerator;
 import nextstep.step3.view.InputView;
 import nextstep.step3.view.ResultView;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -53,10 +55,12 @@ public class RacingCarGame {
 
 	private static void tryRacing(int tryNumber, RacingCars racingCars) {
 		System.out.println("실행 결과");
+		ResultView resultView = new ResultView();
 		IntStream.range(0, tryNumber).forEach(i ->  {
 			racingCarMove(racingCars);
-			printRacingResult(racingCars);
+			printRacingResult(racingCars, resultView);
 		});
+		printRacingWinners(racingCars, resultView);
 	}
 
 	private static void racingCarMove(RacingCars racingCars) {
@@ -66,8 +70,17 @@ public class RacingCarGame {
 		});
 	}
 
-	private static void printRacingResult(RacingCars racingCars) {
-		ResultView resultView = new ResultView();
+	private static void printRacingResult(RacingCars racingCars, ResultView resultView) {
 		resultView.showRacingResult(racingCars);
+	}
+
+	private static void printRacingWinners(RacingCars racingCars, ResultView resultView) {
+		int maxPoint = racingCars.getRacingCars().stream()
+				.max(Comparator.comparing(RacingCar::getPoint)).get().getPoint();
+		List<String> winnerList = racingCars.getRacingCars().stream()
+				.filter(car -> maxPoint == car.getPoint())
+				.map(RacingCar::getName)
+				.collect(Collectors.toList());
+		resultView.printRacingWinner(winnerList);
 	}
 }
