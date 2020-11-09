@@ -18,7 +18,7 @@ public class Car {
 
 
     public void move(int moveCondition) {
-        if (moveCondition > MIN_MOVE_CONDITION) {
+        if (moveCondition >= MIN_MOVE_CONDITION) {
             position++;
         }
 
