@@ -34,7 +34,7 @@ public class Game {
     }
 
     public static void drawResult(Car car){
-            ResultView.drawTravelDistance(car);
+        ResultView.drawTravelDistance(car);
     }
 
     public void playGame(){

@@ -40,6 +40,5 @@ public class GameTest {
         for (int i = 0; i < roundCount; i++) {
             Game.playRound();
         }
-
     }
 }

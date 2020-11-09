@@ -27,6 +27,4 @@ public class InputView {
     public static void viewCountRound(){
         System.out.println(Game.getRoundCount());
     }
-
-
 }
