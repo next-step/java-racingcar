@@ -5,6 +5,7 @@ import step5.exception.ValidateLengthOfCarName;
 
 public class Car {
     private final static int LIMIT_LENGTH_CAR_NAME = 5;
+    private final static int MIN_MOVE_CONDITION = 4;
     private int position;
     private final String name;
 
@@ -16,8 +17,8 @@ public class Car {
     }
 
 
-    public void move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMoved()) {
+    public void move(int moveCondition) {
+        if (moveCondition > MIN_MOVE_CONDITION) {
             position++;
         }
 

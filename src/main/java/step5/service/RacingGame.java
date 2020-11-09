@@ -3,8 +3,7 @@ package step5.service;
 import step5.domain.Car;
 import step5.domain.Cars;
 import step5.domain.GameRound;
-import step5.domain.MoveStrategy;
-import step5.dto.RacingGameConditionMoveStrategyDTO;
+import step5.dto.RacingGameConditionDTO;
 import step5.exception.NotGameEndException;
 
 import java.util.Arrays;
@@ -19,20 +18,20 @@ public class RacingGame {
     private static final String WINNER_DELIMITER = ",";
 
     private final Cars cars;
-    private final RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO;
+    private final RacingGameConditionDTO racingGameConditionDTO;
 
-    private RacingGame(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
-        this.racingGameConditionMoveStrategyDTO = racingGameConditionMoveStrategyDTO;
+    private RacingGame(RacingGameConditionDTO racingGameConditionDTO) {
+        this.racingGameConditionDTO = racingGameConditionDTO;
         cars = new Cars(splitToCarList(getRacingGameCarNames()));
     }
 
-    public static RacingGame of(RacingGameConditionMoveStrategyDTO racingGameConditionMoveStrategyDTO) {
-        return new RacingGame(racingGameConditionMoveStrategyDTO);
+    public static RacingGame of(RacingGameConditionDTO racingGameConditionDTO) {
+        return new RacingGame(racingGameConditionDTO);
     }
 
-    public Cars runRound() {
+    public Cars runRound(int moveCondition) {
         getGameRound().stackGameRound();
-        cars.moveCars(getGameMoveStrategy());
+        cars.moveCars(moveCondition);
         return cars;
     }
 
@@ -51,10 +50,6 @@ public class RacingGame {
         }
     }
 
-    private MoveStrategy getGameMoveStrategy() {
-        return racingGameConditionMoveStrategyDTO.getMoveStrategy();
-    }
-
 
 
     private List<Car> splitToCarList(String input) {
@@ -65,20 +60,18 @@ public class RacingGame {
 
     private static Integer getTopPosition(List<Car> carList) {
         return carList.stream()
-                .map(v -> v.getPosition())
+                .map(Car::getPosition)
                 .max(Integer::compare)
                 .get();
     }
 
 
     private String getRacingGameCarNames() {
-        return racingGameConditionMoveStrategyDTO
-                .getRacingGameConditionDTO()
+        return racingGameConditionDTO
                 .getCarNames();
     }
     private GameRound getGameRound(){
-        return racingGameConditionMoveStrategyDTO
-                .getRacingGameConditionDTO()
+        return racingGameConditionDTO
                 .getGameRound();
     }
 

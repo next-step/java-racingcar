@@ -15,8 +15,8 @@ public class Cars {
     }
 
 
-    public void moveCars(MoveStrategy moveStrategy) {
-        cars.forEach(car -> car.move(moveStrategy));
+    public void moveCars(int moveCondition) {
+        cars.forEach(car -> car.move(moveCondition));
     }
 
     public List<Car> getCarList() {

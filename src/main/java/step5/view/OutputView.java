@@ -40,10 +40,8 @@ public class OutputView {
     }
 
     public static void printWinnerResult(String winnerNames) {
-
         System.out.println(winnerNames + WINNER_RESULT);
     }
-
 
 
 }
