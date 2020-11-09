@@ -4,7 +4,7 @@ import nextstep.step3.domain.RacingCars;
 
 import java.util.stream.IntStream;
 
-public class ResponseView {
+public class ResultView {
 	private static final String MOVE_TAB = "-";
 
 	public void showRacingResult(RacingCars racingCars) {

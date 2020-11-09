@@ -3,7 +3,7 @@ package nextstep.step3;
 import nextstep.step3.domain.RacingCars;
 import nextstep.step3.domain.RandomGenerator;
 import nextstep.step3.view.InputView;
-import nextstep.step3.view.ResponseView;
+import nextstep.step3.view.ResultView;
 
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -42,7 +42,7 @@ public class RacingCarGame {
 	}
 
 	private static void printRacingResult(RacingCars racingCars) {
-		ResponseView responseView = new ResponseView();
-		responseView.showRacingResult(racingCars);
+		ResultView resultView = new ResultView();
+		resultView.showRacingResult(racingCars);
 	}
 }
