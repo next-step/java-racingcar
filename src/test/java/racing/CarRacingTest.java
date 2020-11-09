@@ -4,7 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
+import racing.domain.RaceResult;
 import racing.domain.RaceRule;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,30 +22,28 @@ public class CarRacingTest {
     void 자동차경주_게임_테스트(String names) {
         // given
         int maxLaps = 3;
-        String setRecord1 = "111";
-        String setRecord2 = "1,11,11,1";
-        String setRecord3 = "1,1,11,1,11,1,1";
+        int setRecord1 = 3;
+        int setRecord2 = 6;
+        int setRecord3 = 9;
 
         // when
         CarRacingImpl carRacing = new CarRacingImpl(names, maxLaps);
         carRacing.start();
 
-        List<Car> cars = carRacing.getRaceResults().findResult(maxLaps-1);
-        StringBuilder resultRecord1 = new StringBuilder();
-        StringBuilder resultRecord2 = new StringBuilder();
-        StringBuilder resultRecord3 = new StringBuilder();
+        List<RaceResult> raceResults = carRacing.getRaceRound().getRaceResults();
+        List<Integer> results = new ArrayList<>();
 
-        for(Car car : cars) {
-            resultRecord1.append(car.getRaceSetting().findRecord(0));
-            resultRecord2.append(car.getRaceSetting().findRecord(1));
-            resultRecord3.append(car.getRaceSetting().findRecord(2));
+        for(int i=0; i<3; i++) {
+            results.add(raceResults.get(i).getResultCars().stream()
+                    .mapToInt(Car::getDistance)
+                    .sum());
         }
 
         // then
         assertAll(
-                () -> assertThat(resultRecord1.toString()).contains(setRecord1),
-                () -> assertThat(resultRecord2.toString()).contains(setRecord2),
-                () -> assertThat(resultRecord3.toString()).contains(setRecord3)
+                () -> assertThat(results.get(0)).isEqualTo(setRecord1),
+                () -> assertThat(results.get(1)).isEqualTo(setRecord2),
+                () -> assertThat(results.get(2)).isEqualTo(setRecord3)
         );
     }
 
