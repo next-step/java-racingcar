@@ -5,7 +5,9 @@ public class Car {
     private int travelDistance;
 
     public void move(){
-        this.travelDistance++;
+        if(RandomGenerator.getRandomNumber() >= 4) {
+            this.travelDistance++;
+        }
     }
 
     public int getTravelDistance(){
