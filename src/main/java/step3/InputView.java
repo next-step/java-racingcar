@@ -1,32 +1,44 @@
 package step3;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
     private Scanner scanner;
 
-    private CarRacingNumberPropertyValidator numberPropertyValidator = new CarRacingNumberPropertyValidator();
+    private CarRacingPropertyValidator propertyValidator = new CarRacingPropertyValidator();
 
     public InputView() {
         this.scanner = new Scanner(System.in);
     }
 
-    public int getNumOfCars() {
-        return getNumberFromStdin("자동차 대수는 몇 대 인가요?");
+    public List<String> getCarNames() {
+        String value = getStringFromStdin("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
+        List<String> carNames = Arrays.asList(value.split(",").clone());
+        return carNames;
     }
 
     public int getNumOfTries() {
-        return getNumberFromStdin("시도할 회수는 몇 회 인가요?");
+        int value = getNumberFromStdin("시도할 회수는 몇 회 인가요?");
+        propertyValidator.validate(value);
+        return value;
+    }
+
+
+    private String getStringFromStdin(String displayText) {
+        return getFromStdin(displayText);
     }
 
     private int getNumberFromStdin(String displayText) {
+        String value = getFromStdin(displayText);
+        return Integer.valueOf(value);
+    }
+
+    private String getFromStdin(String displayText){
         System.out.println(displayText);
-
-        String inputValue = scanner.nextLine();
-        numberPropertyValidator.validate(inputValue);
-
-        return Integer.valueOf(inputValue);
+        return scanner.nextLine();
     }
 
     @Override

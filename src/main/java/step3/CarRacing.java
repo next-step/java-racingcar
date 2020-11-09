@@ -1,7 +1,9 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CarRacing {
 
@@ -13,11 +15,10 @@ public class CarRacing {
     private RaceRoulette raceRoulette = RaceRoulette.simple(9);
 
     public void start() {
-        int numOfCars = getNumOfCars();
+        List<String> carNames = getCarNames();
+        readyToRace(carNames);
+
         int totalTries = getNumOfTries();
-
-        readyToRace(numOfCars);
-
         int currentTry = 1;
         System.out.println("실행 결과");
 
@@ -28,29 +29,26 @@ public class CarRacing {
         }
     }
 
-    private int getNumOfCars() {
-        try {
-            return inputView.getNumOfCars();
-        } catch (InvalidPropertyValueException e){
-            System.err.println("자동차 댓수는 1이상 정수 만 입력 가능합니다.");
-            throw e;
-        }
+    private List<String> getCarNames() {
+        return inputView.getCarNames();
     }
 
     private int getNumOfTries() {
         try {
             return inputView.getNumOfTries();
-        } catch (InvalidPropertyValueException e){
+        } catch (RuntimeException e){
             System.err.println("시도할 횟수는 1이상 정수 만 입력 가능합니다.");
             throw e;
         }
     }
 
-    private void readyToRace(int numOfCars) {
-        this.cars = new ArrayList<>(numOfCars);
-        int number = 1;
-        while (number <= numOfCars) {
-            cars.add(new Car(number++));
+    private void readyToRace(List<String> carNames) {
+        try {
+            this.cars = new ArrayList<>(carNames.size());
+            carNames.forEach(it -> cars.add(new Car(it)));
+        } catch(InvalidCarNameException e){
+            System.err.println("자동차이름은 5자를 초과 할 수 없고 쉼표(,)로 구분하여 입력해야 합니다.");
+            throw e;
         }
     }
 
@@ -66,4 +64,5 @@ public class CarRacing {
         CarRacing carRacing = new CarRacing();
         carRacing.start();
     }
+
 }

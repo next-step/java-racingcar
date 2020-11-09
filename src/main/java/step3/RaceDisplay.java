@@ -2,16 +2,16 @@ package step3;
 
 public interface RaceDisplay {
 
-    void writeMovingDistance(int no, int movingDistance);
+    void writeMovingDistance(String name, int movingDistance);
 
     void writeBlankLine();
 
     static RaceDisplay console() {
         return new RaceDisplay() {
             @Override
-            public void writeMovingDistance(int no, int movingDistance) {
+            public void writeMovingDistance(String name, int movingDistance) {
                 StringBuffer sb = new StringBuffer();
-                sb.append(no).append('|');
+                sb.append(name).append('|');
                 while (movingDistance-- > 0) {
                     sb.append('-');
                 }

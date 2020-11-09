@@ -1,12 +1,17 @@
 package step3;
 
+import step2.StringUtils;
+
 public class Car {
-    private int no;
+    private String name;
 
     private int movingDistance = 0;
 
-    public Car(int no) {
-        this.no = no;
+    private NameValidator nameValidator = new NameValidator();
+
+    public Car(String name) {
+        nameValidator.validate(name);
+        this.name = name;
     }
 
     public int getMovingDistance() {
@@ -18,6 +23,17 @@ public class Car {
     }
 
     public void displayOn(RaceDisplay raceDisplay) {
-        raceDisplay.writeMovingDistance(no, movingDistance);
+        raceDisplay.writeMovingDistance(name, movingDistance);
+    }
+
+    private class NameValidator {
+        private final int MAX_LENGTH = 5;
+
+        public boolean validate(String name) {
+            if(StringUtils.isNullOrBlank(name)) throw new InvalidCarNameException(name);
+            if(name.length() > MAX_LENGTH) throw new InvalidCarNameException(name);
+
+            return true;
+        }
     }
 }

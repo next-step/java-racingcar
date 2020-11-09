@@ -3,8 +3,12 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -12,7 +16,7 @@ class CarTest {
 
     @BeforeEach
     void setUp(){
-        car = new Car(1);
+        car = new Car("sehan");
     }
 
     @Test
@@ -42,4 +46,24 @@ class CarTest {
 
         assertThat(car.getMovingDistance()).isEqualTo(2);
     }
+
+    @ParameterizedTest
+    @DisplayName("자동차 이름이 5자를 초과하면 Exception 을 던진다")
+    @ValueSource(strings = {"123456", "1234567", "12345678"})
+    void nameLength(String name){
+        assertThatThrownBy(() -> {
+            new Car(name);
+        }).isInstanceOf(InvalidCarNameException.class);
+    }
+
+    @ParameterizedTest
+    @DisplayName("자동차 이름이 Null 이거나 Blank 면 Exception 을 던진다")
+    @NullAndEmptySource
+    void nameLength2(String name){
+        assertThatThrownBy(() -> {
+            new Car(name);
+        }).isInstanceOf(InvalidCarNameException.class);
+    }
+
+
 }
