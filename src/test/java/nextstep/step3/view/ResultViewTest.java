@@ -16,4 +16,10 @@ public class ResultViewTest {
 		racingCars.getRacingCars().forEach(car -> car.move(5));
 		underTest.showRacingResult(racingCars);
 	}
+
+	@Test
+	@DisplayName("최종 우승자들을 출력한다.")
+	public void resultWinnderTest() {
+		underTest.printRacingWinner(Arrays.asList("adel", "joy"));
+	}
 }

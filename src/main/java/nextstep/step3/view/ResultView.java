@@ -2,6 +2,7 @@ package nextstep.step3.view;
 
 import nextstep.step3.domain.RacingCars;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -24,6 +25,10 @@ public class ResultView {
 		IntStream.range(0, point)
 				.forEach(i -> sb.append(MOVE_TAB));
 		return sb.toString();
+	}
+
+	public void printRacingWinner(List<String> winners) {
+		System.out.println(String.join(",", winners) + "가 최종우승 했습니다.");
 	}
 
 }
