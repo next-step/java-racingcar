@@ -13,8 +13,8 @@ public class Car {
         return this.movingDistance;
     }
 
-    public void move(RaceRoulette raceRoulette) {
-        if (raceRoulette.spin() >= 4) movingDistance++;
+    public void moveIf(MoveCondition condition) {
+        if (condition.match()) movingDistance++;
     }
 
     public void displayOn(RaceDisplay raceDisplay) {

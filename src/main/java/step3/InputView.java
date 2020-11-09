@@ -21,24 +21,12 @@ public class InputView {
     }
 
     private int getNumberFromStdin(String displayText) {
-        try {
-            boolean isNumber = false;
-            String inputValue = null;
-            do {
-                System.out.println(displayText);
+        System.out.println(displayText);
 
-                inputValue = scanner.nextLine();
-                if (numberPropertyValidator.validate(inputValue)) {
-                    isNumber = true;
-                } else {
-                    System.out.println("error) 1 이상 숫자만 입력가능합니다.");
-                }
-            } while (!isNumber);
+        String inputValue = scanner.nextLine();
+        numberPropertyValidator.validate(inputValue);
 
-            return Integer.valueOf(inputValue);
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage(), e.getCause() == null ? e : e.getCause());
-        }
+        return Integer.valueOf(inputValue);
     }
 
     @Override

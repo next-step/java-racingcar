@@ -29,11 +29,21 @@ public class CarRacing {
     }
 
     private int getNumOfCars() {
-        return inputView.getNumOfCars();
+        try {
+            return inputView.getNumOfCars();
+        } catch (InvalidPropertyValueException e){
+            System.err.println("자동차 댓수는 1이상 정수 만 입력 가능합니다.");
+            throw e;
+        }
     }
 
     private int getNumOfTries() {
-        return inputView.getNumOfTries();
+        try {
+            return inputView.getNumOfTries();
+        } catch (InvalidPropertyValueException e){
+            System.err.println("시도할 횟수는 1이상 정수 만 입력 가능합니다.");
+            throw e;
+        }
     }
 
     private void readyToRace(int numOfCars) {
@@ -49,7 +59,7 @@ public class CarRacing {
     }
 
     private void tryMovingAllCars() {
-        this.cars.forEach(car -> car.move(raceRoulette));
+        this.cars.forEach(it -> it.moveIf( () -> raceRoulette.spin() >= 4 ));
     }
 
     public static void main(String[] args) {

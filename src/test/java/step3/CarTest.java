@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -18,25 +16,30 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("RaceRoulette 값이 4보다 작으면 차량은 움직이지 않는다")
+    @DisplayName("MoveCondition 이 false 면 이동하지 않는다")
     void noMoving(){
-        car.move(lessThan4);
-        car.move(lessThan4);
-        car.move(lessThan4);
+        car.moveIf(() -> false );
 
         assertThat(car.getMovingDistance()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("RaceRoulette 값이 4이상이면 차량은 전진한다")
+    @DisplayName("MoveCondition 이 true 면 이동한다")
     void moving(){
-        car.move(greaterThan3);
-        car.move(greaterThan3);
-        car.move(greaterThan3);
+        car.moveIf(() -> true);
+        car.moveIf(() -> true);
+        car.moveIf(() -> true);
 
         assertThat(car.getMovingDistance()).isEqualTo(3);
     }
 
-    private RaceRoulette lessThan4 = () -> new Random().nextInt(3);
-    private RaceRoulette greaterThan3 = () -> new Random().nextInt(6) + 4;
+    @Test
+    @DisplayName("MoveCondition 에 따라 이동하거나 이동하지 않거나 한다")
+    void moving_and_nomoving(){
+        car.moveIf(() -> true);
+        car.moveIf(() -> false);
+        car.moveIf(() -> true);
+
+        assertThat(car.getMovingDistance()).isEqualTo(2);
+    }
 }
