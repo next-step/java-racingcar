@@ -25,14 +25,21 @@ public class Winners implements Comparable<Integer> {
     }
 
     private void checkPlayerRecordWithComparing(String name, int position) {
+        checkPlayerRecordSame(name, position);
+        checkPlayerRecordHigh(name, position);
+    }
+
+    private void checkPlayerRecordHigh(String name, int position) {
+        int comparison = compareTo(position);
+        if (comparison < 0) {
+            addPlayerRecordWithReset(name, position);
+        }
+    }
+
+    private void checkPlayerRecordSame(String name, int position) {
         int comparison = compareTo(position);
         if (comparison == 0) {
             names.add(name);
-            return;
-        }
-
-        if (comparison < 0) {
-            addPlayerRecordWithReset(name, position);
         }
     }
 
