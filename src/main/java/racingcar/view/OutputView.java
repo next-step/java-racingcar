@@ -1,8 +1,8 @@
 package racingcar.view;
 
-import racingcar.GameResult;
-import racingcar.RoundRecord;
-import racingcar.RoundRecords;
+import racingcar.domain.GameResult;
+import racingcar.domain.RoundRecord;
+import racingcar.domain.RoundRecords;
 
 import java.io.PrintStream;
 import java.util.List;

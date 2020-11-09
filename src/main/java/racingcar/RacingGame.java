@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.GameManager;
+import racingcar.domain.GameResult;
+import racingcar.domain.RuleStrategyImpl;
+import racingcar.domain.WinStrategyImpl;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
