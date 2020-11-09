@@ -4,7 +4,7 @@ public class Car {
 
     private int travelDistance;
 
-    public void foward(){
+    public void forward(){
         this.travelDistance++;
     }
 
