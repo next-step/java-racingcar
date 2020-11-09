@@ -9,14 +9,14 @@ public class Game {
     public static Cars cars = new Cars();
 
     public static int getRoundCount(){
-        return roundCount;
+        return Game.roundCount;
     }
 
     public static void setRoundCount(int roundCount){
-        roundCount = roundCount;
+        Game.roundCount = roundCount;
     }
 
-    public void setCars(int count){
+    public static void setCars(int count){
             cars.createCars(count);
     }
 
@@ -39,12 +39,17 @@ public class Game {
 
     public void playGame(){
 
+        InputView.viewCountCarInputMessage();
         InputView.viewCountCarInput();
+        InputView.viewCountCar();
+
+        InputView.viewCountRoundInputMessage();
         InputView.viewCountRoundInput();
+        InputView.viewCountRound();
 
         ResultView.viewResultMessage();
 
-        for (int i = 0; i < roundCount; i++) {
+        for (int i = 0; i < Game.roundCount; i++) {
             playRound();
         }
     }
