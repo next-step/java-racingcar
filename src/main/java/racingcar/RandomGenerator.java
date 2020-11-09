@@ -7,7 +7,7 @@ public class RandomGenerator {
     static final Random random = new Random();
 
 
-    public static int getRandomNumber(){
+    public int getRandomNumber(){
         return random.nextInt(RANDOM_RANGE);
     }
 }
