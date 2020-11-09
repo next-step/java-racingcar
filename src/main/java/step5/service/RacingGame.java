@@ -42,7 +42,12 @@ public class RacingGame {
     public String getTopPositionCarNames() {
         validGameEnd();
         int topPosition = getTopPosition(cars.getCarList());
-        return cars.getCarList().stream()
+        return matchCarsTopPositionToName(topPosition);
+    }
+
+    private String matchCarsTopPositionToName(int topPosition) {
+        return cars.getCarList()
+                .stream()
                 .filter(car -> car.getPosition() == topPosition)
                 .map(Car::toString)
                 .collect(Collectors.joining(WINNER_DELIMITER));
