@@ -6,8 +6,10 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void drawTravelDistance() {
-        System.out.print("-");
+    public static void drawTravelDistance(Car car) {
+        for (int i = 0; i < car.getTravelDistance(); i++) {
+            System.out.print("-");
+        }
     }
 
     public static void drawLineBreak() {

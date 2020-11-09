@@ -16,8 +16,6 @@ public class Game {
         roundCount = roundCount;
     }
 
-
-
     public void setCars(int count){
 
         for (int i = 0; i < count; i++) {
@@ -41,15 +39,12 @@ public class Game {
     }
 
     public static void drawResult(Car car){
-        for (int i = 0; i < car.getTravelDistance(); i++) {
-            ResultView.drawTravelDistance();
-        }
+            ResultView.drawTravelDistance(car);
     }
 
     public void playGame(){
 
         InputView.viewCountCarInput();
-
         InputView.viewCountRoundInput();
 
         ResultView.viewResultMessage();
