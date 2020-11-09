@@ -1,6 +1,7 @@
 package step5.client.worker.domain;
 
 import common.util.Message;
+import step5.client.util.StringUtils;
 
 import java.util.Objects;
 
@@ -24,7 +25,6 @@ public class CarName {
             this.message = message;
         }
     }
-    private static final String BLANK = "";
 
     private final String value;
 
@@ -33,11 +33,11 @@ public class CarName {
     }
 
     public static CarName of(final String name) {
-        checkArgument(Objects.nonNull(name) && !BLANK.equals(name), CAR_NAME_MUST_NOT_BE_BLANK);
+        checkArgument(StringUtils.isBlank(name) == Boolean.FALSE, CAR_NAME_MUST_NOT_BE_BLANK);
         checkArgument(name.length() <= 5, CAR_NAME_LENGTH_MUST_BELOW_THEN_FIVE);
         return new CarName(name);
     }
-    
+
     public String getValue() {
         return value;
     }
