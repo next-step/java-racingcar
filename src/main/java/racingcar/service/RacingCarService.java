@@ -15,7 +15,7 @@ public class RacingCarService {
     private static final int RANGE_START_NUM = 0;
 
     public static RaceResultValue play(RaceReadyValue raceReadyValue, Motor motor) {
-        List<StepByCar> stepByCar = new ArrayList<>();
+        List<StepByCar> stepByCars = new ArrayList<>();
         int stepCount = raceReadyValue.getTryCount();
 
         Cars cars = Cars.of(raceReadyValue.getCarNames(), motor);
@@ -23,9 +23,9 @@ public class RacingCarService {
         IntStream.range(RANGE_START_NUM, stepCount)
                 .forEach(i -> {
                     cars.run();
-                    stepByCar.addAll(StepByCar.of(cars));
+                    stepByCars.addAll(StepByCar.of(cars));
                 });
 
-        return RaceResultValue.of(stepCount, stepByCar);
+        return RaceResultValue.of(stepCount, stepByCars);
     }
 }
