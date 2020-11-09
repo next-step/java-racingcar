@@ -1,6 +1,6 @@
 package racing;
 
-import racing.domain.RaceResult;
+import racing.domain.RaceRound;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -12,9 +12,8 @@ public class RacingArena {
         CarRacing carRacing = new CarRacing(names,maxCheckPoint);
         carRacing.start();
 
-        RaceResult raceResult = carRacing.getRaceResults();
-
-        ResultView.viewRaceResult(raceResult);
-        ResultView.viewRaceWinners(raceResult);
+        RaceRound raceRound = carRacing.getRaceRound();
+        ResultView.viewRaceResult(raceRound);
+        ResultView.viewRaceWinners(raceRound);
     }
 }

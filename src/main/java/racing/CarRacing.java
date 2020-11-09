@@ -2,36 +2,44 @@ package racing;
 
 import racing.domain.*;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static racing.domain.CarConfig.*;
+
 public class CarRacing {
 
     private final Cars cars;
-    private final RaceResult raceResult = new RaceResult();
     private final int maxLaps;
+    private RaceRound raceRound;
 
-    public CarRacing(int vehicleCount, int maxLaps) {
-        this.cars = new Cars();
-        this.cars.setCars(vehicleCount);
+    public CarRacing(String carNames, int maxLaps) {
+        this.cars = setCars(carNames);
         this.maxLaps = maxLaps;
     }
 
-    public CarRacing(String carNames, int maxLaps) {
-        this.cars = new Cars();
-        this.cars.setCars(carNames);
-        this.maxLaps = maxLaps;
+    private Cars setCars(String names) {
+        return new Cars(Arrays.stream(names.split(CAR_NAME_STRING_SEPARATOR))
+                .map(Car::new)
+                .collect(Collectors.toList()));
     }
 
     public Cars getRacingCars() {
         return cars;
     }
 
-    public RaceResult getRaceResults() {
-        return raceResult;
+    public RaceRound getRaceRound() {
+        return raceRound;
     }
 
     public void start() {
-        for (int i = 0; i < maxLaps; i++) {
-            raceResult.setResult(i,cars.moves(raceRule()));
+        List<RaceResult> results = new LinkedList<>();
+        for(int i=0; i<maxLaps; i++ ) {
+            results.add(i,new RaceResult(cars.moves(raceRule())));
         }
+        raceRound = new RaceRound(results);
     }
 
     public RaceRule raceRule() {

@@ -1,38 +1,33 @@
 package racing.view;
 
-import racing.domain.Car;
-import racing.domain.CarSetInRace;
-import racing.domain.RaceResult;
-
+import racing.domain.RaceRound;
 import java.util.Arrays;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import static racing.domain.CarConfig.*;
+import static racing.view.ResultViewMessage.*;
 
 public class ResultView {
 
-    private static final String FIRST_EXECUTE_RESULT_MESSAGE = "실행 결과";
     private static final String SKID_MARK = "-";
 
     private ResultView() {}
 
-    public static void viewRaceResult(RaceResult raceResult) {
+    public static void viewRaceResult(RaceRound raceRound) {
         printFirstMessage();
 
-        int maxLaps = raceResult.getMaxLaps();
-        for(int i=0; i<maxLaps; i++) {
+        int maxRounds = raceRound.getRoundCount();
+        for(int i=0; i<maxRounds; i++) {
             int laps = i;
-            raceResult.findResult(laps)
-                .forEach(car -> printRecord(car.getName(),car.getRaceSetting(),laps));
+            raceRound.findResult(laps).getResultCars()
+                .forEach(car -> printRecord(car.getName(),car.getDistance()));
             System.out.print("\n");
         }
     }
 
-    public static void viewRaceWinners(RaceResult raceResult) {
-        String result = Arrays.toString(raceResult.getWinners())
+    public static void viewRaceWinners(RaceRound raceRound) {
+        String result = Arrays.toString(raceRound.getWinners())
                 .replaceAll("[\\[\\]]","");
-        System.out.print(result+" 가 최종 우승했습니다.");
+        System.out.printf("%s %s",result,LAST_EXECUTE_RESULT_MESSAGE);
     }
 
     private static void printFirstMessage() {
@@ -41,24 +36,15 @@ public class ResultView {
         System.out.print("\n");
     }
 
-    private static void printRecord(String name,CarSetInRace setInRace, int index) {
-        System.out.println(parseRecord(name,setInRace,index));
+    private static void printRecord(String name,int position) {
+        System.out.printf("%s : %s\n",name,makeSkidMark(position));
     }
 
-    public static String parseRecord(String name,CarSetInRace setInRace, int index) {
-        StringBuilder strBuilder = new StringBuilder();
-        strBuilder.append(name);
-        strBuilder.append(" : ");
-        strBuilder.append(makeSkidMark(setInRace.findRecord(index)));
-        return strBuilder.toString();
-    }
-
-    private static String makeSkidMark(String input) {
-        return Pattern.compile(CAR_RECORD_STRING_SEPARATOR)
-                .splitAsStream(input)
-                .filter(str -> !CAR_STOP_MOVE_CODE.contains(str))
-                .collect(Collectors.joining())
-                .replaceAll(CAR_NORMAL_MOVE_CODE,SKID_MARK);
+    private static String makeSkidMark(int position) {
+        StringBuilder stringBuilder = new StringBuilder();
+        IntStream.range(0,position)
+                .forEach(i -> stringBuilder.append(SKID_MARK));
+        return stringBuilder.toString();
     }
 
 
