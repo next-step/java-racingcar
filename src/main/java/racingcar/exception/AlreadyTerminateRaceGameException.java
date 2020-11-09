@@ -1,4 +1,4 @@
-package step3.exception;
+package racingcar.exception;
 
 public class AlreadyTerminateRaceGameException extends RuntimeException{
 

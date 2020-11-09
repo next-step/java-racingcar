@@ -1,7 +1,6 @@
-package step2;
+package calculator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class InputParser {

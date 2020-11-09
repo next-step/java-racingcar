@@ -1,4 +1,4 @@
-package step3.model;
+package racingcar.model;
 
 import java.util.Random;
 
