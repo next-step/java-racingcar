@@ -31,21 +31,28 @@ public class CarController {
     }
 
     public List<String> getWinner(CarList carList) {
-        List<Car> finalCarList = carList.getCarList();
         List<String> winners = new ArrayList<>();
 
-        int previousPosition = -1;
-        for(Car car : finalCarList) {
-            int currentPosition = car.getCurrentPosition();
-            if(currentPosition > previousPosition) {
-                previousPosition = currentPosition;
-                winners = new ArrayList<>();
-                winners.add(car.getName());
-            } else if (currentPosition == previousPosition) {
-                winners.add(car.getName());
-            }
+        int winnerScore = getWinnerScore(carList);
+        for(Car car : carList.getCarList()) {
+            getWinnerName(winnerScore, car, winners);
         }
 
         return winners;
     }
+
+    public void getWinnerName(int winnerScore, Car car, List<String> winners) {
+        if(winnerScore == car.getCurrentPosition()) {
+            winners.add(car.getName());
+        }
+    }
+
+    public int getWinnerScore(CarList carList) {
+        int winnerScore = 0;
+        for(Car car : carList.getCarList()) {
+            winnerScore = Math.max(winnerScore, car.getCurrentPosition());
+        }
+        return winnerScore;
+    }
+
 }
