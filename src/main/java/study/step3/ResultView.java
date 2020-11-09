@@ -5,4 +5,9 @@ public class ResultView {
     public static void printMessage(String message) {
         System.out.println(message);
     }
+
+    /* 개행 */
+    public static void printCrlf() {
+        System.out.println();
+    }
 }
