@@ -1,9 +1,7 @@
 package calculator.domain;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.BiFunction;
-import java.util.stream.Collectors;
 
 public enum Operator {
     PLUS("+", (a, b) -> (a + b)),
@@ -19,15 +17,18 @@ public enum Operator {
         this.biFunction = biFunction;
     }
 
-    public String getDiv() {
-        return sign;
-    }
-
     public Double calculate(double a, double b) {
         return this.biFunction.apply(a,b);
     }
 
+    private static void validOperatorDiv(String sign) {
+        if (!Operator.contains(sign)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static Operator getOperator(String sign) {
+        validOperatorDiv(sign);
         return Arrays.stream(values())
                 .filter(operator -> operator.sign.equals(sign))
                 .findFirst()

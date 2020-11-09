@@ -4,7 +4,7 @@ public class StringCalculator {
     private final double TOTAL;
 
     private StringCalculator(double total) {
-        TOTAL = total;
+        this.TOTAL = total;
     }
 
     public static StringCalculator of(String inputWord) {
@@ -25,12 +25,11 @@ public class StringCalculator {
 
     static double calculate(String[] arrWord) {
         double total = 0;
-        Calculator calculator = new Calculator();
         for (int i = 1; i < arrWord.length; i = i + 2) {
-            String div = arrWord[i];
-            calculator.setBeforeNum(i == 1 ? Double.parseDouble(arrWord[i - 1]) : total);
-            calculator.setNextNum(Double.parseDouble(arrWord[i + 1]));
-            total = calculator.calculate(div);
+            String sign = arrWord[i];
+            double beforeNum = i == 1 ? Double.parseDouble(arrWord[i - 1]) : total;
+            double nextNum = Double.parseDouble(arrWord[i + 1]);
+            total = Operator.getOperator(sign).calculate(beforeNum, nextNum);
         }
         return total;
     }
