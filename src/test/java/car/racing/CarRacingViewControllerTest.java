@@ -4,6 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingViewControllerTest {
@@ -11,12 +15,16 @@ public class CarRacingViewControllerTest {
     private CarRacingViewController viewController;
     private FakeResultView resultView;
     private CarRacingManager manager;
-    private String[] names = "pobi,crong,honux".split(",");
+    private String names = "pobi,crong,honux";
+    private String[] carNames = names.split(",");
+    private List<Car> cars = Arrays.stream(carNames)
+            .map(name -> new Car(name, 0))
+            .collect(Collectors.toList());
 
     @BeforeEach
     void setup() {
         resultView = new FakeResultView();
-        manager = new CarRacingManager(names, forward -> true);
+        manager = new CarRacingManager(cars, forward -> true);
         viewController = new CarRacingViewController(resultView, manager);
     }
 
@@ -27,6 +35,6 @@ public class CarRacingViewControllerTest {
 
         viewController.input(tryCount);
 
-        assertThat(resultView.cars.size()).isEqualTo(names.length * tryCount);
+        assertThat(resultView.cars.size()).isEqualTo(carNames.length * tryCount);
     }
 }

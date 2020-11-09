@@ -1,6 +1,5 @@
 package car.racing;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
@@ -14,10 +13,8 @@ public class CarRacingManager {
     private final List<Car> cars;
     private final Random random = new Random();
 
-    public CarRacingManager(String[] names, Forwardable forwardable) {
-        this.cars = Arrays.stream(names)
-                .map(Car::new)
-                .collect(Collectors.toList());
+    public CarRacingManager(List<Car> cars, Forwardable forwardable) {
+        this.cars = cars;
         this.forwardable = forwardable;
     }
 
