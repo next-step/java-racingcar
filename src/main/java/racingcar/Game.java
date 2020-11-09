@@ -4,24 +4,26 @@ import java.util.Random;
 
 public class Game {
     private static int roundCount;
-    private static Car[] cars;
     private static Random random = new Random();
+
+    private Cars cars = new Cars();
+
 
     public static void setRoundCount(int count){
         roundCount = count;
     }
 
-    public static void setCars(int count){
-        cars = new Car[count];
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car();
+    public void setCars(int count){
+
+        for (int i = 0; i < count; i++) {
+            cars.createCar();
         }
     }
 
-    public static void playRound(){
-        for (int i = 0; i < cars.length; i++) {
-            randomFoward(cars[i]);
-            DrawResult(cars[i]);
+    public void playRound(){
+        for (int i = 0; i < cars.getSize(); i++) {
+            randomFoward(cars.getCar(i));
+            DrawResult(cars.getCar(i));
             ResultView.drawLineBreak();
         }
         ResultView.drawLineBreak();
@@ -39,12 +41,15 @@ public class Game {
         }
     }
 
-    public static void playGame(){
+    public void playGame(){
+
+        Admin admin = new Admin();
+
         InputView.viewCountCarInputMessage();
-        User.InputCarCount();
+        admin.InputCarCount();
 
         InputView.viewCoutRoundInputMessage();
-        User.InputRoundCount();
+        admin.InputRoundCount();
 
         ResultView.viewResultMessage();
 

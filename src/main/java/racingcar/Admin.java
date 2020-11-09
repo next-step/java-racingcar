@@ -3,11 +3,13 @@ package racingcar;
 import java.util.Scanner;
 
 public class Admin {
-    public static void InputCarCount(){
-        Game.setCars(Integer.parseInt(new Scanner(System.in).nextLine()));
+
+    Game game = new Game();
+    public void InputCarCount(){
+        game.setCars(Integer.parseInt(new Scanner(System.in).nextLine()));
     }
 
-    public static void InputRoundCount(){
-        Game.setRoundCount(Integer.parseInt(new Scanner(System.in).nextLine()));
+    public void InputRoundCount(){
+        game.setRoundCount(Integer.parseInt(new Scanner(System.in).nextLine()));
     }
 }
