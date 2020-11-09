@@ -1,0 +1,75 @@
+package step5.client.worker.domain;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import step5.client.worker.domain.strategy.MovableStrategy;
+import step5.client.worker.domain.strategy.SelectFarthestDistanceWinnerStrategy;
+import step5.client.worker.domain.strategy.SelectWinnerStrategy;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class RacingGameTest {
+    private static final SelectWinnerStrategy SELECT_WINNER_STRATEGY = new SelectFarthestDistanceWinnerStrategy();
+    private static final MovableStrategy MUST_MOVABLE = () -> true;
+    private static final List<CarName> CAR_NAMES = Arrays.asList(CarName.of("CAR1"), CarName.of("CAR2"), CarName.of("CAR3"));
+    private static final int TEN_TIMES_ATTEMPT = 10;
+
+    @DisplayName("getAllRacingGameResults")
+    @Nested
+    class GetAllRacingGameResults {
+        @DisplayName("레이싱 결과를 리스트로 반환")
+        @Test
+        void return_racing_result_list() {
+            // given
+            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE, SELECT_WINNER_STRATEGY);
+
+            // when
+            racingGame.race(TEN_TIMES_ATTEMPT);
+            final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
+
+            // then
+            assertThat(racingGameRoundResults).isNotEmpty();
+        }
+
+        @DisplayName("10번 시도 시 레이싱카는 10번 이동")
+        @Test
+        void cars_must_moved_ten_times() {
+            // given
+            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
+
+            // when
+            racingGame.race(TEN_TIMES_ATTEMPT);
+            final List<RacingGameRoundResult> racingGameRoundResults = racingGame.getAllRacingGameResults();
+
+            // then
+            final RacingGameRoundResult lastRacingGameRoundResult = racingGameRoundResults.get(TEN_TIMES_ATTEMPT - 1);
+            final boolean AllCarMovedAtTenTimes = lastRacingGameRoundResult.getCars()
+                    .stream()
+                    .map(Car::getPosition)
+                    .map(Position::getValue)
+                    .allMatch(position -> position == TEN_TIMES_ATTEMPT);
+            assertThat(AllCarMovedAtTenTimes).isTrue();
+        }
+
+        @DisplayName("모두 동일하게 이동시 모두 우승자로 선정")
+        @Test
+        void all_is_winner_if_all_car_moved_same() {
+            // given
+            final RacingGame racingGame = RacingGame.of(CAR_NAMES, MUST_MOVABLE);
+
+            // when
+            racingGame.race(TEN_TIMES_ATTEMPT);
+
+            // then
+            final List<CarName> winnerNames = racingGame.selectWinner().stream()
+                    .map(Car::getName)
+                    .collect(Collectors.toList());
+            assertThat(winnerNames).isEqualTo(CAR_NAMES);
+        }
+    }
+}
