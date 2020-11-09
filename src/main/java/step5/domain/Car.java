@@ -7,14 +7,14 @@ import step5.utils.RandomUtil;
 public class Car {
     private final static int LIMIT_LENGTH_CAR_NAME = 5;
     private final static int MIN_MOVE_CONDITION = 4;
-    private int position;
+    private int position = 0;
     private final String name;
 
     public Car(String name) {
         validateLengthOfCarName(name);
         validateBlankName(name);
+
         this.name = name;
-        position = 0;
     }
 
     public void moveRandomCondition() {
