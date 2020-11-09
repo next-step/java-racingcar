@@ -6,11 +6,11 @@ import java.util.List;
 public class CarRacing {
 
     private InputView inputView = new InputView();
+    private ResultView resultView = new ResultView();
 
     private List<Car> cars;
 
     private RaceRoulette raceRoulette = RaceRoulette.simple(10);
-    private RaceDisplay raceDisplay = RaceDisplay.console();
 
     public void start() {
         displayInputView();
@@ -42,8 +42,7 @@ public class CarRacing {
     }
 
     private void displayCurrentMovingDistances() {
-        this.cars.forEach(car -> car.displayOn(raceDisplay));
-        raceDisplay.writeBlankLine();
+        this.resultView.showRaceState(cars);
     }
 
     /**
