@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import racing.view.InputView;
 import racing.view.ResultView;
@@ -23,8 +23,8 @@ public class RacingGame {
     private void set() {
         InputView.openScanner();
 
-        final int carCount = InputView.readCarCount();
-        this.racingCars = new RacingCars(carCount);
+        final String delimitedCarNames = InputView.readCarNames();
+        this.racingCars = new RacingCars(delimitedCarNames);
 
         this.round = InputView.readRound();
 
@@ -35,8 +35,10 @@ public class RacingGame {
         ResultView.viewMessage();
 
         for (int i = 0; i < round; i++) {
-            this.racingCars.race(roulette);
+            this.racingCars.race(this.roulette);
             ResultView.viewRoundResult(this.racingCars);
         }
+
+        ResultView.viewWinner(this.racingCars.getWinners());
     }
 }

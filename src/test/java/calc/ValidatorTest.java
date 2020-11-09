@@ -25,7 +25,7 @@ import static calc.StringCalculatorTestCase.START_WITH_MINUS_ONE;
 import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_LARGE_NUMBER;
 import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_MANY_OPERATOR;
 import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_ONE_OPERATOR;
-import static calc.StringUtils.EMPTY;
+import static util.StringUtils.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

@@ -3,7 +3,9 @@ package calc;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static calc.StringUtils.EMPTY;
+import static util.StringUtils.EMPTY;
+
+import util.StringUtils;
 
 public final class StringCalculator extends Calculator {
 
