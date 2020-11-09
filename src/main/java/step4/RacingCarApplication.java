@@ -2,13 +2,12 @@ package step4;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        String racer = RacingCarUi.receiveRacerInput();
-        RacingCarGame.validate(racer);
+        RacingCarGame racingCarGame = new RacingCarGame();
 
-        String[] racers = racer.split(",");
+        String racer = RacingCarUi.receiveRacerInput();
         int move = RacingCarUi.receiveMoveInput();
 
-        RacingCarGame.getRacers(move, racers);
+        racingCarGame.start(move, racer);
 
         RacingCarUi.close();
     }

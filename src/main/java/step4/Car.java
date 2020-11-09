@@ -4,10 +4,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class Car {
-
-    private String racer;
+    private String carName;
     private int position;
-
     private static final String HYPHEN = "-";
     private static final int MIN_FORWARD_NUMBER = 4;
 
@@ -17,20 +15,23 @@ class Car {
         }
     }
 
-    public Car(String racer) {
-        this.racer = racer;
+    public Car(String carName) {
+        this.carName = carName;
     }
 
     @Override
     public String toString() {
-        return String.format("%s:%s", this.racer,
+        return String.format("%s:%s", this.carName,
                 IntStream.range(0, position)
                         .mapToObj(i -> HYPHEN)
                         .collect(Collectors.joining()));
     }
 
-    public String getRacer() {
-        return this.racer;
+    public String getCarName() {
+        return this.carName;
     }
 
+    public int getPosition() {
+        return this.position;
+    }
 }

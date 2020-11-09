@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingCarUi {
-    public static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static String receiveRacerInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -21,12 +21,6 @@ public class RacingCarUi {
                 .map(Car::toString)
                 .forEach(System.out::println);
         System.out.println();
-    }
-
-    public static void winnerPrint() {
-        System.out.println("------");
-        // 우승자 결과 찍어줘야함.
-        // sort
     }
 
     public static void close() {
