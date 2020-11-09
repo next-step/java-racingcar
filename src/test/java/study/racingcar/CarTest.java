@@ -3,6 +3,9 @@ package study.racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.car.Car;
+import study.racingcar.car.CarName;
+import study.racingcar.car.CarSnapshot;
+import study.racingcar.car.CarSnapshotExporter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,7 +15,7 @@ class CarTest {
     @DisplayName("이동 성공")
     void test_move_success() {
         // Given
-        Car car = new Car();
+        Car car = initCar();
 
         // When
         car.move(new NewEngine());
@@ -24,14 +27,32 @@ class CarTest {
     @Test
     @DisplayName("이동 실패")
     void test_move_fail() {
-    // Given
-        Car car = new Car();
+        // Given
+        Car car = initCar();
 
         // When
         car.move(new BrokenEngine());
 
         // Then
         assertEquals(car.getCurrentPosition(), 1);
+    }
+
+    @Test
+    @DisplayName("CarSnapshot으로 Export")
+    void test_export() {
+        // Given
+        Car car = initCar();
+        car.move(new NewEngine());
+
+        // When
+        CarSnapshot carSnapshot = car.export(new CarSnapshotExporter());
+
+        // Then
+        assertEquals(carSnapshot.getCurrentPosition(), 1);
+    }
+
+    private Car initCar() {
+        return new Car(new CarName("test"));
     }
 
 }

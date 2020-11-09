@@ -13,14 +13,15 @@ public class InputView {
 
     public static GameConfiguration initGameWithOldEngine() {
 
-        System.out.println("how many cars do you need?");
+        System.out.println("Enter car names. Car names are splitted by (,).");
 
-        int numberOfCars = scanner.nextInt();
+        String carNamesWithComma = scanner.nextLine();
 
-        System.out.println("How much times do you attemps?");
+        System.out.println("How much times do you attempts?");
 
         int numberOfAttempts = scanner.nextInt();
 
-        return new GameConfiguration(numberOfCars, numberOfAttempts, OldEngine.getInstance());
+        return new GameConfiguration(carNamesWithComma, numberOfAttempts, OldEngine.getInstance());
     }
+
 }
