@@ -57,7 +57,8 @@ public class RacingGame {
 
     private List<Car> splitToCarList(String input) {
         return Arrays.stream(input.split(SPLIT_SEPARATOR))
-                .map(Car::new).collect(Collectors.toList());
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
 
