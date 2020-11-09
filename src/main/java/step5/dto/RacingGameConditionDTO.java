@@ -3,8 +3,8 @@ package step5.dto;
 import step5.domain.GameRound;
 
 public class RacingGameConditionDTO {
-    private String carNames;
-    private GameRound gameRound;
+    private final String carNames;
+    private final GameRound gameRound;
 
 
     private RacingGameConditionDTO(String carNames, int tryCount) {

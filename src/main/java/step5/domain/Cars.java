@@ -11,6 +11,7 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         validateCarSize(cars);
+
         this.cars = cars;
     }
 

@@ -10,8 +10,8 @@ public class GameRound {
 
     private GameRound(int tryCount) {
         validTryCount(tryCount);
-        this.tryCount = tryCount;
 
+        this.tryCount = tryCount;
     }
 
     public static GameRound of(int tryCount) {
@@ -19,7 +19,7 @@ public class GameRound {
     }
 
     public void stackGameRound() {
-        if(isGameFinish()){
+        if (isGameFinish()) {
             throw new GameEndException();
         }
         gameRound++;
