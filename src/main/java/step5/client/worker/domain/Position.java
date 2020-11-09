@@ -9,7 +9,7 @@ import static step5.client.worker.domain.Position.ErrorMessage.POSITION_VALUE_MU
 
 public class Position {
     public enum ErrorMessage implements Message {
-        POSITION_VALUE_MUST_MORE_THEN_ZERO("number of car must more then 0"),
+        POSITION_VALUE_MUST_MORE_THEN_ZERO("position must more then 0"),
         ;
 
         private final String message;
