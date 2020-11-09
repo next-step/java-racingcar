@@ -13,44 +13,38 @@ import java.util.stream.IntStream;
 
 public class CarRacing {
 
+    public String start(int carCnt, int tryCnt){
+        Cars cars = new Cars(carCnt);
 
-    public void racing(int carCnt, int tryCnt){
-        Set<Car> carSet = initCarSet(carCnt);
-
-        IntStream.range(0, tryCnt)
-                .mapToObj(tryIndex -> carSet)
-                .forEach(cars -> this.move(cars));
+        String results = racing(tryCnt, cars);
+        return results;
     }
 
-    private void move(Set<Car> cars) {
+    private String racing(int tryCnt, Cars cars) {
+        RacingGameRounds racingGameRounds = new RacingGameRounds(tryCnt);
 
-        cars.forEach(car -> {
-                    car.move(car.getRandomInt());
-                }
-        );
-
-        //cars.forEach(car -> resultView.showCarRacingLapResult(car));
-
-    }
-
-
-    private Set<Car> initCarSet(int carCnt) {
-        Set<Car> cars = IntStream.range(0, carCnt)
-                .mapToObj(car -> new Car())
-                .collect(Collectors.toSet());
-        return cars;
+        while (!racingGameRounds.isEnd()){
+            cars.move();
+            racingGameRounds.roundClose();
+            racingGameRounds.recording(cars);
+        }
+        return racingGameRounds.getRecordingResult();
     }
 
 
     public static void main(String args[]){
-        ResultView resultView = new ResultView();
-        resultView.showResultHead();
 
         int carCnt = InputView.getCarCount();
         int tryCnt = InputView.getTryCount();
 
+        InputView.validateCarCount(carCnt);
+        InputView.validateTryCount(tryCnt);
+
+        ResultView resultView = new ResultView();
+        resultView.showResultHead();
 
         CarRacing carRacing = new CarRacing();
-        carRacing.racing(carCnt, tryCnt);
+        String racingResult = carRacing.start(carCnt, tryCnt);
+        System.out.println(racingResult);
     }
 }

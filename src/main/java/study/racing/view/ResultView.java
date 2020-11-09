@@ -4,8 +4,8 @@ import study.racing.Car;
 
 public class ResultView {
 
-    private static String RESULT_HEAD_MESSAGE = "=============실행결과=============";
-    private static String RESULT_LAP_HEAD_MESSAGE = "번째 시도";
+    private static final String RESULT_HEAD_MESSAGE = "=============실행결과=============";
+    private static final String RESULT_LAP_HEAD_MESSAGE = "번째 시도";
 
 
     public void showResultHead() {

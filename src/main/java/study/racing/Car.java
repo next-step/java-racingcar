@@ -5,9 +5,15 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Car {
-    private static int MAX_RANDOM_INT = 10;
-    private static String FORWARD_STRING = "-";
+    private static final int MAX_RANDOM_INT = 10;
+    private static final String FORWARD_STRING = "-";
+    private static final int INITIAL_POSITION = 0;
+
     private int position;
+
+    public Car(){
+        this.position = INITIAL_POSITION;
+    }
 
     public int getRandomInt() {
         Random ran = new Random();
@@ -16,7 +22,7 @@ public class Car {
 
     public void move(int randomInt){
         if(randomInt >= 4){
-            this.position++;
+            position++;
         }
     }
 
@@ -29,4 +35,7 @@ public class Car {
     }
 
 
+    public Integer getPosition() {
+        return position;
+    }
 }
