@@ -6,36 +6,30 @@ public class InputView {
 
     private Scanner scanner;
 
+    private CarRacingPropertyValidator propertyValidator = new CarRacingPropertyValidator();
+
     public InputView() {
         this.scanner = new Scanner(System.in);
     }
 
     public int getNumberFromStdin(String displayText){
-        int value = -1;
         try {
             boolean isNumber = false;
-            while (!isNumber) {
+            String inputValue = null;
+            do {
                 System.out.println(displayText);
-                value = convertLineToNumber(scanner.nextLine());
-                if (value > 0) isNumber = true;
-            }
-            return value;
+
+                inputValue = scanner.nextLine();
+                if( propertyValidator.isNumber(inputValue) ){
+                    isNumber = true;
+                } else {
+                    System.out.println("error) 1 이상 숫자만 입력가능합니다.");
+                }
+            } while(!isNumber);
+
+            return Integer.valueOf(inputValue);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e.getCause() == null ? e : e.getCause());
-        }
-    }
-
-    private int convertLineToNumber(String line) {
-        try {
-            int parsedValue = Integer.parseInt(line);
-            if (parsedValue <= 0) {
-                System.out.println("error) 1 이상 숫자만 입력가능합니다.");
-                return -1;
-            }
-            return parsedValue;
-        } catch (NumberFormatException e) {
-            System.out.println("error) 1 이상 숫자만 입력가능합니다.");
-            return -1;
         }
     }
 
