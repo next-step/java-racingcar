@@ -4,6 +4,7 @@ import step5.domain.Car;
 import step5.domain.Cars;
 import step5.domain.GameRound;
 import step5.dto.RacingGameConditionDTO;
+import step5.exception.NotCompareIntegerException;
 import step5.exception.NotGameEndException;
 
 import java.util.Arrays;
@@ -76,7 +77,7 @@ public class RacingGame {
         return carList.stream()
                 .map(Car::getPosition)
                 .max(Integer::compare)
-                .get();
+                .orElseThrow(NotCompareIntegerException::new);
     }
 
 
