@@ -46,8 +46,8 @@ public class RacingGame {
 
     public String getTopPositionCarNames() {
         validGameEnd();
-        int topPosition = getTopPosition(cars.getCarList());
-        return matchCarsTopPositionToName(topPosition);
+
+        return matchCarsTopPositionToName(getTopPosition(cars.getCarList()));
     }
 
     private String matchCarsTopPositionToName(int topPosition) {
