@@ -31,12 +31,14 @@ public class RacingCarTest {
     public void movePosition(String carName) {
         //Given
         RacingCar racingCar = new RacingCar(carName);
+        Commander commander = () -> true;
+        int range = 10;
 
         //When
-        IntStream.range(0, 10)
-                .forEach(i -> racingCar.move(new RandomCommander()));
+        IntStream.range(0, range -1)
+                .forEach(i -> racingCar.move(commander));
         //Then
-        assertThat(racingCar.getCurrentPosition()).isGreaterThan(1);
+        assertThat(racingCar.getCurrentPosition()).isEqualTo(range);
     }
 
 
