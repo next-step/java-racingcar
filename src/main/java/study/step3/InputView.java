@@ -18,4 +18,9 @@ public class InputView {
         ResultView.printMessage(message);
         return scanner.nextInt();
     }
+
+    /* 시도 회수 입력 */
+    public int inputRacingCount() {
+        return input("시도할 회수는 몇 회 인가요?");
+    }
 }
