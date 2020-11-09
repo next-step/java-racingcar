@@ -25,7 +25,6 @@ public class InputView {
 
   public static String askUserNames() {
     String rawInput;
-    List<String> parsedInput;
 
     System.out.println(USER_NAME_QUESTION);
     rawInput = scanner.nextLine();
