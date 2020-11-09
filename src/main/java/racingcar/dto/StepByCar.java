@@ -20,11 +20,11 @@ public class StepByCar {
         return new StepByCar(car.getName(), car.getPosition());
     }
 
-    public static List<StepByCar> of(Cars cars) {
-        return of(cars.getCars());
+    public static List<StepByCar> transformToStepByCars(Cars cars) {
+        return transformToStepByCars(cars.getCars());
     }
 
-    public static List<StepByCar> of(List<Car> car) {
+    public static List<StepByCar> transformToStepByCars(List<Car> car) {
         return car.stream().map(StepByCar::of)
                 .collect(Collectors.toList());
     }

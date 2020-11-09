@@ -23,7 +23,7 @@ public class RacingCarService {
         IntStream.range(RANGE_START_NUM, stepCount)
                 .forEach(i -> {
                     cars.run();
-                    stepByCars.addAll(StepByCar.of(cars));
+                    stepByCars.addAll(StepByCar.transformToStepByCars(cars));
                 });
 
         return RaceResultValue.of(stepCount, stepByCars);
