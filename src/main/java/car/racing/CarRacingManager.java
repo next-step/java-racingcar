@@ -1,5 +1,7 @@
 package car.racing;
 
+import car.racing.domain.Car;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;

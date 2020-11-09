@@ -1,8 +1,10 @@
-package car.racing;
+package car.racing.view;
+
+import car.racing.domain.Car;
 
 import java.util.List;
 
-interface ResultViewContract {
+public interface ResultViewContract {
 
     void resultTitle();
     void newLine();

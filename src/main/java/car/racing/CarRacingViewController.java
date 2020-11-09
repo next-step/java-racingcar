@@ -1,6 +1,9 @@
 package car.racing;
 
 
+
+import car.racing.view.ResultViewContract;
+
 import java.util.stream.IntStream;
 
 public class CarRacingViewController {
