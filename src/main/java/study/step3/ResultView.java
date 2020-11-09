@@ -10,4 +10,9 @@ public class ResultView {
     public static void printCrlf() {
         System.out.println();
     }
+
+    /* 전진 */
+    public static void printForwardLine() {
+        System.out.print("-");
+    }
 }
