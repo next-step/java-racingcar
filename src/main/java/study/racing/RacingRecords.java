@@ -21,12 +21,4 @@ public class RacingRecords {
         return racingRecords;
     }
 
-
-    public String getResultString() {
-        List<String> result = new ArrayList<String>();
-
-        String racingTotalResult = racingRecords.stream().map(racingRecord -> racingRecord.getResultString()).collect(Collectors.joining("\n\n"));
-
-        return racingTotalResult;
-    }
 }

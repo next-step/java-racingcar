@@ -13,14 +13,13 @@ import java.util.stream.IntStream;
 
 public class CarRacing {
 
-    public String start(int carCnt, int tryCnt){
+    public RacingRecords start(int carCnt, int tryCnt){
         Cars cars = new Cars(carCnt);
 
-        String results = racing(tryCnt, cars);
-        return results;
+        return racing(tryCnt, cars);
     }
 
-    private String racing(int tryCnt, Cars cars) {
+    private RacingRecords racing(int tryCnt, Cars cars) {
         RacingGameRounds racingGameRounds = new RacingGameRounds(tryCnt);
 
         while (!racingGameRounds.isEnd()){
@@ -30,7 +29,6 @@ public class CarRacing {
         }
         return racingGameRounds.getRecordingResult();
     }
-
 
     public static void main(String args[]){
 
@@ -44,7 +42,7 @@ public class CarRacing {
         resultView.showResultHead();
 
         CarRacing carRacing = new CarRacing();
-        String racingResult = carRacing.start(carCnt, tryCnt);
-        System.out.println(racingResult);
+        RacingRecords racingResults = carRacing.start(carCnt, tryCnt);
+        resultView.showResult(racingResults);
     }
 }

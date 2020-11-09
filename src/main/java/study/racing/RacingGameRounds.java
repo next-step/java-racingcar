@@ -33,7 +33,7 @@ public class RacingGameRounds {
 
     }
 
-    public String getRecordingResult() {
-        return racingRecords.getResultString();
+    public RacingRecords getRecordingResult() {
+        return racingRecords;
     }
 }
