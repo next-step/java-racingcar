@@ -22,8 +22,9 @@ public class StringTest {
     // "(1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현한다.
     @Test
     void testSubstring() {
+        final int OFF = 1;
         String s = "(1,2)";
-        assertThat(s.substring(1, s.length() - 1)).isEqualTo("1,2");
+        assertThat(s.substring(OFF, s.length() - OFF)).isEqualTo("1,2");
     }
 
     // 요구사항 3
