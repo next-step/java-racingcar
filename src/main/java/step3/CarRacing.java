@@ -14,7 +14,7 @@ public class CarRacing {
 
     public void start() {
         int numOfCars = getNumOfCars();
-        int totalTries = getNumOfTry();
+        int totalTries = getNumOfTries();
 
         readyToRace(numOfCars);
 
@@ -29,11 +29,11 @@ public class CarRacing {
     }
 
     private int getNumOfCars() {
-        return inputView.getNumberFromStdin("자동차 대수는 몇 대 인가요?");
+        return inputView.getNumOfCars();
     }
 
-    private int getNumOfTry() {
-        return inputView.getNumberFromStdin("시도할 회수는 몇 회 인가요?");
+    private int getNumOfTries() {
+        return inputView.getNumOfTries();
     }
 
     private void readyToRace(int numOfCars) {

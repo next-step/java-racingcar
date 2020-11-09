@@ -12,7 +12,15 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public int getNumberFromStdin(String displayText) {
+    public int getNumOfCars() {
+        return getNumberFromStdin("자동차 대수는 몇 대 인가요?");
+    }
+
+    public int getNumOfTries() {
+        return getNumberFromStdin("시도할 회수는 몇 회 인가요?");
+    }
+
+    private int getNumberFromStdin(String displayText) {
         try {
             boolean isNumber = false;
             String inputValue = null;
@@ -38,4 +46,5 @@ public class InputView {
         this.scanner.close();
         super.finalize();
     }
+
 }
