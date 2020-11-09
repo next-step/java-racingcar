@@ -28,11 +28,11 @@ public final class InputValidator {
         }
     }
 
-    public static boolean isNull(final String input) {
+    private static boolean isNull(final String input) {
         return input == null;
     }
 
-    public static boolean isMatch(final Pattern pattern, final String input) {
+    private static boolean isMatch(final Pattern pattern, final String input) {
         final Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }
