@@ -1,10 +1,10 @@
 package racingcar;
 
-import java.util.List;
+import java.util.*;
 
 public class Cars {
 
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     public void createCar(){
         cars.add(new Car());
