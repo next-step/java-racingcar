@@ -9,8 +9,8 @@ public class Game {
     private Cars cars = new Cars();
 
 
-    public static void setRoundCount(int count){
-        roundCount = count;
+    public static void setRoundCount(int roundCount){
+        roundCount = roundCount;
     }
 
     public void setCars(int count){
@@ -23,7 +23,7 @@ public class Game {
     public void playRound(){
         for (int i = 0; i < cars.getSize(); i++) {
             randomFoward(cars.getCar(i));
-            DrawResult(cars.getCar(i));
+            drawResult(cars.getCar(i));
             ResultView.drawLineBreak();
         }
         ResultView.drawLineBreak();
@@ -35,7 +35,7 @@ public class Game {
         }
     }
 
-    public static void DrawResult(Car car){
+    public static void drawResult(Car car){
         for (int i = 0; i < car.getTravelDistance(); i++) {
             ResultView.drawTravelDistance();
         }
