@@ -11,32 +11,33 @@ public enum Operator {
     MULTIPLY("*", (a, b) -> (a * b)),
     DIVIDE("/", (a, b) -> (a / b));
 
-    private final String div;
+    private final String sign;
     private final BiFunction<Double, Double, Double> biFunction;
 
-    Operator(String div, BiFunction<Double, Double, Double> biFunction) {
-        this.div = div;
+    Operator(String sign, BiFunction<Double, Double, Double> biFunction) {
+        this.sign = sign;
         this.biFunction = biFunction;
     }
 
     public String getDiv() {
-        return div;
+        return sign;
     }
 
     public Double calculate(double a, double b) {
         return this.biFunction.apply(a,b);
     }
 
-    public static Operator getOperator(String div) {
+    public static Operator getOperator(String sign) {
         return Arrays.stream(values())
-                .filter(operator -> { return operator.div.equals(div); })
+                .filter(operator -> operator.sign.equals(sign))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(IllegalAccessError::new);
     }
 
-    public static List<String> getDivs() {
+    public static boolean contains(String sign) {
         return Arrays.stream(values())
-                .map(Operator::getDiv)
-                .collect(Collectors.toList());
+                .filter(operator -> operator.sign.equals(sign))
+                .distinct()
+                .count() > 0;
     }
 }

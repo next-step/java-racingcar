@@ -34,8 +34,7 @@ class OperatorTest {
 
 
     @Test
-    void getDivs() {
-        Assertions.assertThat(Operator.getDivs().size()).isEqualTo(4);
-        Assertions.assertThat(Operator.getDivs()).containsExactly("+", "-", "*", "/");
+    void contains() {
+        Assertions.assertThat(Operator.contains("+")).isTrue();
     }
 }

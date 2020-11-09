@@ -3,7 +3,6 @@ package calculator.domain;
 import java.util.List;
 
 public class Calculator {
-    private static final List<String> DIVS = Operator.getDivs();
     private double beforeNum = 0;
     private double nextNum = 0;
 
@@ -23,8 +22,8 @@ public class Calculator {
         return nextNum;
     }
 
-    void validOperatorDiv(String div) {
-        if (!DIVS.contains(div)) {
+    void validOperatorDiv(String sign) {
+        if (!Operator.contains(sign)) {
             throw new IllegalArgumentException();
         }
     }
