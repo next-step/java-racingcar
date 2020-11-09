@@ -15,7 +15,7 @@ public class Car {
     }
 
     public void run() {
-        if (motor.run()) {
+        if (motor.isMovable()) {
             move();
         }
     }

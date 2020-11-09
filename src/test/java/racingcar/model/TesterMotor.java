@@ -4,7 +4,7 @@ package racingcar.model;
 public class TesterMotor implements Motor {
 
     @Override
-    public boolean run() {
+    public boolean isMovable() {
         return true;
     }
 }

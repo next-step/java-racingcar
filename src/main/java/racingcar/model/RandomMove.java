@@ -7,7 +7,7 @@ public class RandomMove implements Motor {
     private static final java.util.Random random = new java.util.Random();
 
     @Override
-    public boolean run() {
+    public boolean isMovable() {
         return possibleMoveSpeedByRandomSpeed();
     }
 
