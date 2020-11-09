@@ -32,8 +32,7 @@ public final class ResultView {
         System.out.println();
     }
 
-    public static void viewWinner(final RacingCars racingCars) {
-        List<String> winners = racingCars.getWinners();
+    public static void viewWinner(final List<String> winners) {
         String winnersHasNoBrackets = StringUtils.removeBrackets(winners.toString());
 
         System.out.println(winnersHasNoBrackets + WIN_MESSAGE);

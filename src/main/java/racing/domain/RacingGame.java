@@ -39,6 +39,6 @@ public class RacingGame {
             ResultView.viewRoundResult(this.racingCars);
         }
 
-        ResultView.viewWinner(this.racingCars);
+        ResultView.viewWinner(this.racingCars.getWinners());
     }
 }
