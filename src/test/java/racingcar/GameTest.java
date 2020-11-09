@@ -9,10 +9,11 @@ public class GameTest {
     @CsvSource(value = {"3,5"})
     public void 게임플레이(int carCount, int roundCount){
 
+        Game game = new Game();
 
         InputView.viewCountCarInputMessage();
         System.out.println(carCount);
-        Game.setCars(carCount);
+        game.setCars(carCount);
 
         InputView.viewCoutRoundInputMessage();
         System.out.println(roundCount);
@@ -21,7 +22,7 @@ public class GameTest {
         ResultView.viewResultMessage();
 
         for (int i = 0; i < roundCount; i++) {
-            Game.playRound();
+            game.playRound();
         }
     }
 }
