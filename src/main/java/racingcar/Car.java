@@ -3,9 +3,10 @@ package racingcar;
 public class Car {
 
     private int travelDistance;
+    private RandomGenerator randomGenerator = new RandomGenerator();
 
     public void move(){
-        RandomGenerator randomGenerator = new RandomGenerator();
+
         if(randomGenerator.getRandomNumber() >= 4) {
             this.travelDistance++;
         }
