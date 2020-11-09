@@ -10,6 +10,8 @@ public class ResultView {
 	public void showRacingResult(RacingCars racingCars) {
 		StringBuilder sb = new StringBuilder();
 		racingCars.getRacingCars().forEach(car -> {
+							sb.append(car.getName());
+							sb.append(" : ");
 							sb.append(printRacingPoint(car.getPoint()));
 							sb.append("\n");
 						}
