@@ -31,7 +31,7 @@ public class Game {
 
     public static void randomFoward(Car car){
         if(random.nextInt(10) >= 4) {
-            car.forward();
+            car.move();
         }
     }
 
