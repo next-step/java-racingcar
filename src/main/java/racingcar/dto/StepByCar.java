@@ -1,10 +1,6 @@
 package racingcar.dto;
 
 import racingcar.model.Car;
-import racingcar.model.Cars;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class StepByCar {
 
@@ -18,15 +14,6 @@ public class StepByCar {
 
     public static StepByCar of(Car car) {
         return new StepByCar(car.getName(), car.getPosition());
-    }
-
-    public static List<StepByCar> transformToStepByCars(Cars cars) {
-        return transformToStepByCars(cars.getCars());
-    }
-
-    public static List<StepByCar> transformToStepByCars(List<Car> car) {
-        return car.stream().map(StepByCar::of)
-                .collect(Collectors.toList());
     }
 
     public String getName() {

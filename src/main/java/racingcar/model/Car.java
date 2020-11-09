@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.dto.StepByCar;
+
 public class Car {
 
     private static final int INITIAL_POSITION = 0;
@@ -30,5 +32,9 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public StepByCar buildToStepByCar(){
+        return StepByCar.of(this);
     }
 }

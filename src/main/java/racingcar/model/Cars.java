@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.dto.StepByCar;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,12 +30,14 @@ public class Cars {
         }
     }
 
-    public int sizeOfCar() {
-        return carList.size();
+    public List<StepByCar> getStepByCar() {
+        return carList.stream()
+                .map(Car::buildToStepByCar)
+                .collect(Collectors.toList());
     }
 
-    public List<Car> getCars() {
-        return this.carList;
+    public int sizeOfCar() {
+        return carList.size();
     }
 
     public List<Integer> getPositions() {
