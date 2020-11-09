@@ -6,12 +6,17 @@ public class Game {
     private static int roundCount;
     private static Random random = new Random();
 
-    private Cars cars = new Cars();
+    public Cars cars = new Cars();
 
+    public int getRoundCount(){
+        return roundCount;
+    }
 
     public static void setRoundCount(int roundCount){
         roundCount = roundCount;
     }
+
+
 
     public void setCars(int count){
 
@@ -31,7 +36,7 @@ public class Game {
 
     public static void randomFoward(Car car){
         if(random.nextInt(10) >= 4) {
-            car.foward();
+            car.forward();
         }
     }
 
@@ -43,13 +48,9 @@ public class Game {
 
     public void playGame(){
 
-        Admin admin = new Admin();
+        InputView.viewCountCarInput();
 
-        InputView.viewCountCarInputMessage();
-        admin.InputCarCount();
-
-        InputView.viewCoutRoundInputMessage();
-        admin.InputRoundCount();
+        InputView.viewCountRoundInput();
 
         ResultView.viewResultMessage();
 

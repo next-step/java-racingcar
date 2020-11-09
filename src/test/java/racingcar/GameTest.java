@@ -11,13 +11,8 @@ public class GameTest {
 
         Game game = new Game();
 
-        InputView.viewCountCarInputMessage();
-        System.out.println(carCount);
-        game.setCars(carCount);
-
-        InputView.viewCoutRoundInputMessage();
-        System.out.println(roundCount);
-        Game.setRoundCount(roundCount);
+        InputView.viewCountCarInput();
+        InputView.viewCountRoundInput();
 
         ResultView.viewResultMessage();
 
