@@ -28,7 +28,7 @@ public class RacingCarGame {
 		tryRacing(tryNumber, racingCars);
 	}
 
-	private static List<String> getCarNames(String inputCarNames) {
+	protected static List<String> getCarNames(String inputCarNames) {
 		if (inputCarNames.isEmpty()) {
 			throw new IllegalArgumentException(INPUT_CARNAME_REQUIRED);
 		}
