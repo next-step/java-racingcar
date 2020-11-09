@@ -7,6 +7,10 @@
 
 ![](https://i.ibb.co/Y2xvDDN/image.png)
 
+**Car Racing Package(`step4-2`)**
+
+![](https://i.ibb.co/Jxp2WzD/image.png)
+
 > 리뷰 부탁드립니다 ~ !! 😄
 
 <br>
@@ -58,6 +62,24 @@
 
 - [javaguide](https://google.github.io/styleguide/javaguide.html )
 - [myeonguni.tistory](https://myeonguni.tistory.com/1596)
+
+<br>
+
+**`step4-1` 리팩토링 요구사항**
+
+1. 자동차의 기록을 `private int position;` 으로 카운팅 하게 변경
+2. 경기 결과 `List<RaceResult>`를 가지고 있는 일급 컬렉션(예: RaceRound)을 만들어 리턴
+3. 외부에서 객체의 상태를 변경할 수 있는 set() 사용을 지양해야 합니다.
+4. 모든 메세지 상수화
+
+<br>
+
+**리팩토링 참고**
+- [일급 컬렉션 (First Class Collection)의 소개와 써야할 이유](https://jojoldu.tistory.com/412)
+- [일급 컬렉션을 사용하는 이유](https://woowacourse.github.io/javable/2020-05-08/First-Class-Collection)
+
+
+<br>
 
 <br><br>
 
