@@ -13,6 +13,7 @@ public class InputView {
 
     public static String putCarCount() {
         System.out.println(CAR_NAMES);
+
         return getString();
     }
 
@@ -22,6 +23,7 @@ public class InputView {
 
     public static int putTryCount() {
         System.out.println(TRY_COUNT);
+
         return getNumber();
 
     }
