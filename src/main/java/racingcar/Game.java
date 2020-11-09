@@ -6,9 +6,9 @@ public class Game {
     private static int roundCount;
     private static Random random = new Random();
 
-    public Cars cars = new Cars();
+    public static Cars cars = new Cars();
 
-    public int getRoundCount(){
+    public static int getRoundCount(){
         return roundCount;
     }
 
@@ -20,7 +20,7 @@ public class Game {
             cars.createCars(count);
     }
 
-    public void playRound(){
+    public static void playRound(){
         for (int i = 0; i < cars.getSize(); i++) {
             randomFoward(cars.getCar(i));
             drawResult(cars.getCar(i));
@@ -30,7 +30,7 @@ public class Game {
     }
 
     public static void randomFoward(Car car){
-        car.move();
+        car.move(RandomGenerator.getRandomNumber());
     }
 
     public static void drawResult(Car car){
