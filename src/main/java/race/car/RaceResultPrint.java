@@ -1,6 +1,7 @@
 package race.car;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -8,25 +9,22 @@ import java.util.List;
  */
 public class RaceResultPrint {
 
-    public static void runPrintRaceResult(Car car) {
-        List<List<CarRaceMoveInfo>> carReacMoveInfoList = new ArrayList<>();
+    public void runPrintRaceResult(RunCarRace runCarRace) {
+        RunCarRace carRace = new RunCarRace();
+        List<List<CarRaceMoveInfo>> carReacMoveInfoList = carRace.carReacMoveInfoList(runCarRace);
 
-        for (String name : car.getRaceCarNames()) {
-            carReacMoveInfoList.add(car.getCarReacMoveInfoList().get(name));
-        }
-
-        printPaceResult(carReacMoveInfoList, car.getRaceTryCount());
-        runPrintCarRaceWinner(car);
+        printPaceResult(carReacMoveInfoList);
+        runPrintCarRaceWinner(runCarRace);
     }
 
-    private static void printPaceResult(List<List<CarRaceMoveInfo>> carReacMoveInfoList, int raceTryCount) {
-        for (int i = 0; i < raceTryCount; i++) {
+    private void printPaceResult(List<List<CarRaceMoveInfo>> carReacMoveInfoList) {
+        for (int i = 0; i < carReacMoveInfoList.get(0).size(); i++) {
             repeatCarReacMoveInfoList(carReacMoveInfoList, i);
             System.out.print(System.lineSeparator());
         }
     }
 
-    private static void repeatCarReacMoveInfoList(List<List<CarRaceMoveInfo>> carReacMoveInfoList, int index) {
+    private void repeatCarReacMoveInfoList(List<List<CarRaceMoveInfo>> carReacMoveInfoList, int index) {
         for (int i = 0; i < carReacMoveInfoList.size(); i++) {
             System.out.print(carReacMoveInfoList.get(i).get(index).getRaceCarName()
                     + " : "
@@ -35,7 +33,7 @@ public class RaceResultPrint {
         }
     }
 
-    private static String changeNumberToChar(int count) {
+    private String changeNumberToChar(int count) {
         StringBuffer sb = new StringBuffer();
 
         for (int i = 0; i < count; i++) {
@@ -45,8 +43,9 @@ public class RaceResultPrint {
         return sb.toString();
     }
 
-    private static void runPrintCarRaceWinner(Car car) {
-        List<CarRaceMoveInfo> raceWinnerList = ExtractWinner.ExtractRun(car);
+    private void runPrintCarRaceWinner(RunCarRace runCarRace) {
+        WinnerExtract winnerExtract = new WinnerExtract();
+        List<CarRaceMoveInfo> raceWinnerList = winnerExtract.runExtract(runCarRace);
 
         System.out.print("우승자 : " + raceWinnerList.get(0).getRaceCarName());
 
