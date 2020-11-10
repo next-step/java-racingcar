@@ -12,7 +12,8 @@ public class TestRacingCar {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar(new GoStraightBehavior());
+        String cars = "BENZ,BMW,AUDI";
+        racingCar = new RacingCar(cars, new GoStraightBehavior());
     }
 
     @DisplayName("자동차 1번 이동")
