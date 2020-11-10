@@ -25,6 +25,9 @@
     - 자동차 대수 입력 (NumberOfCars)
     - 시도할 횟수 입력 (NumberOfAttempts)
 
+1. ResultView
+    - 자동차의 현재 위치를 출력해준다.
+
 1. Car
     - boolean에 따른 position값 변동
         - random값이 4 이상일 경우 position을 증가 시킨다.
@@ -32,6 +35,10 @@
 1. MoveStrategy
     - random값을 구한다. (0 ~ 9)
     - random값이 4 이상일 경우 true 아닐경우 false를 리턴한다.
+
+1. Cars
+    - Car객체를 관리하는 객체
+    - 횟수에 따라 car의 move() 메소드를 호출해 이동시킨다.
 
 1. Main
     - 자동차 대수와 시도할 횟수를 입력받는다.
