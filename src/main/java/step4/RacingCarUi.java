@@ -23,6 +23,11 @@ public class RacingCarUi {
         System.out.println();
     }
 
+    public static void finalWinner(List<Car> cars) {
+        RacingWinner racingWinner = new RacingWinner(cars);
+        System.out.println(racingWinner.toString());
+    }
+
     public static void close() {
         scanner.close();
     }

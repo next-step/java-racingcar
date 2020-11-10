@@ -8,10 +8,11 @@ import java.util.stream.IntStream;
 
 public class RacingCarGame {
     private final Random random = new Random();
-    private static final int BOUND = 9;
+    private static final int BOUND = 10;
+    private static final int MAX_CAR_NAME_NUMBER = 5;
 
-    public void start(int move, String carName) {
-        car(move, setCars(carName));
+    public void start(int numberOfMove, String carNames) {
+        car(numberOfMove, setCars(carNames));
     }
 
     public void car(int move, String[] racingCars) {
@@ -30,7 +31,7 @@ public class RacingCarGame {
                 .mapToObj(i -> cars)
                 .forEach(this::carMove);
 
-        finalWinner(cars);
+        RacingCarUi.finalWinner(cars);
     }
 
     public void carMove(List<Car> cars) {
@@ -43,14 +44,9 @@ public class RacingCarGame {
             throw new IllegalArgumentException("경주할 자동차 이름이 비어있습니다.");
         }
         String[] racers = carName.split(",");
-        if (racers.length > 5) {
+        if (racers.length > MAX_CAR_NAME_NUMBER) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과 할 수 없습니다.");
         }
         return racers;
-    }
-
-    public void finalWinner(List<Car> cars) {
-        RacingWinner racingWinner = new RacingWinner(cars);
-        System.out.println(racingWinner.toString());
     }
 }

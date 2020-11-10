@@ -39,10 +39,6 @@ public class RacingWinner {
         this.setPosition(winnerPosition);
     }
 
-    public int getPosition() {
-        return this.position;
-    }
-
     @Override
     public String toString() {
         return String.format("%s가 최종 우승했습니다.", this.getWinners());

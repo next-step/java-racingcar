@@ -4,10 +4,10 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         RacingCarGame racingCarGame = new RacingCarGame();
 
-        String racer = RacingCarUi.receiveRacerInput();
-        int move = RacingCarUi.receiveMoveInput();
+        String carNames = RacingCarUi.receiveRacerInput();
+        int numberOfMove = RacingCarUi.receiveMoveInput();
 
-        racingCarGame.start(move, racer);
+        racingCarGame.start(numberOfMove, carNames);
 
         RacingCarUi.close();
     }

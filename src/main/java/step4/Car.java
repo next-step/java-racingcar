@@ -4,10 +4,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class Car {
-    private String carName;
-    private int position;
     private static final String HYPHEN = "-";
     private static final int MIN_FORWARD_NUMBER = 4;
+    private String carName;
+    private int position;
 
     public void move(int randomNumber) {
         if (randomNumber >= MIN_FORWARD_NUMBER) {
