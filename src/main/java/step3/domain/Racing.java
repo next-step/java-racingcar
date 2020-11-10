@@ -41,10 +41,6 @@ public class Racing {
         return this.scoreBoards;
     }
 
-    public int getParticipantsNum() {
-        return this.cars.carNum();
-    }
-
     public String getWinner() {
         return this.cars.getWinners();
     }

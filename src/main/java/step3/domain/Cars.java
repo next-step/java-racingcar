@@ -68,10 +68,6 @@ public class Cars {
         return cars;
     }
 
-    public int carNum() {
-        return this.cars.size();
-    }
-
 
     @Override
     public int hashCode() {

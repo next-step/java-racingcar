@@ -1,8 +1,6 @@
-package step4.domain;
+package step3.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step3.domain.Cars;
@@ -18,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     @ParameterizedTest
-    @DisplayName("차 이름이 없을 때")
+    @DisplayName("차 이름이 없을 때 IllegalArgumentException 예외를 던진다")
     @ValueSource(strings = {"", " ", "ab,,d"})
     public void isCarName_Empty_throw_IllegalArgument(String names) {
         assertThatThrownBy(() -> Cars.of(names))
@@ -27,7 +25,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("차 이름이 5자 이내일 때")
+    @DisplayName("차 이름이 5자 이내일 때는 정상이다")
     @ValueSource(strings = {"a,b,c,d", "abc,d", "abie,codec,f5"})
     public void isCarName_below_five_characters(String name) {
         Cars cars = Cars.of(name);
@@ -38,7 +36,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("차 이름이 5자 초과일 때")
+    @DisplayName("차 이름이 5자 초과일 때 IllegalArgumentException 예외를 던진다")
     @ValueSource(strings = {"abcf,abcdef", "a,b,1234567"})
     public void isCarName_over_five_characters_throw_Exception(String names) {
         assertThatThrownBy(() -> Cars.of(names))

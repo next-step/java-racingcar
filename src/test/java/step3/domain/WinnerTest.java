@@ -1,4 +1,4 @@
-package step4.service;
+package step3.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -25,14 +25,14 @@ public class WinnerTest {
 
     @Test
     @DisplayName("동점자가 없는 a 단독 우승")
-    public void winner_1() {
+    public void winner_without_tie_break() {
         cars.getCars().get(0).forward(1);
         assertThat(cars.getWinners()).isEqualTo("a");
     }
 
     @Test
     @DisplayName("동점자가 있는 우승자")
-    public void winner_2() {
+    public void winner_with_tie_break() {
         assertThat(cars.getWinners()).isEqualTo("a,b");
     }
 
