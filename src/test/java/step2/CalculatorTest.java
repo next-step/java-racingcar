@@ -77,6 +77,6 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3 + 3 * 4 / 2 = 12"}, delimiter = '=')
     public void changeAll (String data) {
-        assertThat(calculator.changeAll(data)).isEqualTo(12);
+        assertThat(calculator.changeAll(data)).isEqualTo(12     );
     }
 }
