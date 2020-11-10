@@ -4,16 +4,10 @@ package race.car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtractWinner {
+public class WinnerExtract {
 
-    public static List<CarRaceMoveInfo> ExtractRun(Car car) {
-        List<CarRaceMoveInfo> lastRaceInfoList = new ArrayList<>();
-
-        for (String carName : car.getRaceCarNames()) {
-            lastRaceInfoList.add(car.getCarReacMoveInfoList().get(carName).get(car.getCarReacMoveInfoList().get(carName).size() - 1));
-        }
-
-        return getCarRaceMaxRank(lastRaceInfoList);
+    public static List<CarRaceMoveInfo> runExtract(RunCarRace runCarRace) {
+        return getCarRaceMaxRank(runCarRace.lastCarRecord(runCarRace));
     }
 
     private static List<CarRaceMoveInfo> getCarRaceMaxRank(List<CarRaceMoveInfo> lastRaceInfoList) {
