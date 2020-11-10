@@ -11,11 +11,13 @@ public class Car {
     private int position = 0;
 
     public void run(int throttle) {
-        if (throttle < THROTTLE_MIN || throttle >= THROTTLE_MAX)
+        if (throttle < THROTTLE_MIN || throttle >= THROTTLE_MAX) {
             throw new IllegalArgumentException("invalid throttle range");
+        }
 
-        if (throttle > THROTTLE_MOVE_MIN)
+        if (throttle > THROTTLE_MOVE_MIN) {
             position += 1;
+        }
     }
 
     public int getThrottle() {
