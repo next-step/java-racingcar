@@ -1,6 +1,7 @@
 package car.racing;
 
 import car.racing.domain.Car;
+import car.racing.domain.CarRacingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,7 @@
 package car.racing;
 
 import car.racing.domain.Car;
+import car.racing.domain.CarRacingWinners;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,8 +23,6 @@ public class CarRacingWinnersTest {
 
         List<String> winners = racingWinners.racingWinners();
 
-        assertThat(winners.size()).isEqualTo(2);
-        assertThat(winners.get(0)).isEqualTo("pobi");
-        assertThat(winners.get(1)).isEqualTo("honux");
+        assertThat(winners).containsExactly("pobi", "honux");
     }
 }

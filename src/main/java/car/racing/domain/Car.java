@@ -1,11 +1,17 @@
 package car.racing.domain;
 
+import car.racing.Forwardable;
+
+import java.util.Random;
+
 public class Car {
 
     private static final int NAME_LIMIT = 5;
+    private static final int LIMIT = 10;
 
     private int forwardCount;
     private String name;
+    private final Random random = new Random();
 
     public Car(String name, int forwardCount) {
         if (name.length() > NAME_LIMIT) {
@@ -23,7 +29,9 @@ public class Car {
         return forwardCount;
     }
 
-    public void forward() {
-        forwardCount++;
+    public void forward(Forwardable forwardable) {
+        if (forwardable.forwardable(random.nextInt(LIMIT))) {
+            forwardCount++;
+        }
     }
 }

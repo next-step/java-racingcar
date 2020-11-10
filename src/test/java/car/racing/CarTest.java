@@ -17,7 +17,7 @@ public class CarTest {
         Car car = new Car("kyle", 0);
 
         for (int i = 0; i < 10; i++) {
-            car.forward();
+            car.forward(forward -> true);
         }
 
         assertThat(car.getForwardCount()).isEqualTo(10);
