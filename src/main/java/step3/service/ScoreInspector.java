@@ -17,4 +17,11 @@ public class ScoreInspector {
         return score >= JUDGE_NUMBER ? 1 : 0;
     }
 
+    public static int judgeMovable(Randomize randomize) {
+        int score = randomize.random();
+        Validator.checkArgumentInRange(score, 0, 9);
+
+        return score >= JUDGE_NUMBER ? 1 : 0;
+    }
+
 }

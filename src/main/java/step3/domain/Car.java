@@ -1,5 +1,6 @@
 package step3.domain;
 
+import step3.service.strategy.MoveStrategy;
 import step3.util.Validator;
 
 /**
@@ -36,4 +37,10 @@ public class Car {
     public String getName() {
         return name;
     }
+
+
+    public void forward(MoveStrategy moveStrategy) {
+        this.step = this.step + moveStrategy.move();
+    }
+
 }

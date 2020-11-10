@@ -1,12 +1,8 @@
 package step3.domain;
 
-import step3.service.Randomize;
-import step3.service.ScoreInspector;
+import step3.service.strategy.MoveStrategy;
 
-import javax.naming.Name;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -37,11 +33,9 @@ public class Cars {
     }
 
     // 1 round 때마다 각 car score . 해당 score가 move 인지 아닌지 판단 -> move. 점수
-    public void runRound(Randomize randomize) {
-        for (int i = 0; i < cars.size(); i++) {
-            int score = randomize.random();
-            int step = ScoreInspector.judgeMovable(score);
-            cars.get(i).forward(step);
+    public void runRound(MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.forward(moveStrategy);
         }
     }
 
