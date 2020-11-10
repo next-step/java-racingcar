@@ -1,20 +1,23 @@
 package racingcar.step3.view;
 
 import racingcar.step3.common.Consts;
+import racingcar.step3.domain.Car;
+import racingcar.step3.domain.Record;
 
 /**
- * Created : 2020-11-02 오전 8:25
- * Developer : Seo
+ * Created : 2020-11-02 오전 8:25.
+ * Developer : Seo.
  */
 public class ResultView {
 
-    public void print(int distance) {
-        System.out.println((gridDistance(distance)));
+    public void printResult(Car car) {
+        System.out.println(gridDistance(car));
     }
 
-    private String gridDistance(int distance) {
+    private String gridDistance(Car car) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
+        sb.append(car.getName()).append(" : ");
+        for (int i = 0; i < car.getDistance(); i++) {
             sb.append("-");
         }
         return sb.toString();
@@ -27,4 +30,9 @@ public class ResultView {
     public void printResultTitle() {
         System.out.println(Consts.RESULT);
     }
+
+    public void printWinner(Record record) {
+        System.out.println(record.getWinner() + Consts.HAVE_BEEN_A_WINNER);
+    }
+
 }

@@ -6,16 +6,16 @@ import racingcar.step3.common.Scan;
 import java.util.Scanner;
 
 /**
- * Created : 2020-11-02 오전 8:25
- * Developer : Seo
+ * Created : 2020-11-02 오전 8:25.
+ * Developer : Seo.
  */
 public class InputView {
     Scanner scanner;
 
-    public int getCars() {
+    public String getNames() {
         this.scanner = Scan.getInstance();
         System.out.println(Consts.HOW_MANY_CARS);
-        return scanner.nextInt();
+        return scanner.next();
     }
 
     public int getTurns() {

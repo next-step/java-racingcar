@@ -8,35 +8,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created : 2020-11-02 오전 8:22
- * Developer : Seo
+ * Created : 2020-11-02 오전 8:22.
+ * Developer : Seo.
  */
 public class Race {
     private List<Car> cars;
     private int turns;
-    private ResultView rv;
 
-    public Race(int inputCarNumber, int turns) {
+    public Race(String inputNames, int turns) {
         this.cars = new ArrayList<>();
-        for (int i = 1; i < inputCarNumber + 1; i++) {
-            cars.add(new Car());
+        String[] names = inputNames.split(",");
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
         this.turns = turns;
-        this.rv = new ResultView();
     }
 
-    public void run() {
+    public void run(ResultView rv, Record record) {
         rv.printResultTitle();
         for (int i = 0; i < turns; i++) {
-            roll();
+            roll(rv, record);
+            rv.printTurnOver();
         }
+        rv.printWinner(record);
     }
 
-    private void roll() {
+    private void roll(ResultView rv, Record record) {
         for (Car car : cars) {
             try {
                 car.move(SecureRandom.getInstanceStrong().nextInt(10));
-                car.record();
+                record.record(car);
+                rv.printResult(car);
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }

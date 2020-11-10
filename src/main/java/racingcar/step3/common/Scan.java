@@ -3,8 +3,8 @@ package racingcar.step3.common;
 import java.util.Scanner;
 
 /**
- * Created : 2020-11-03 오전 8:40
- * Developer : Seo
+ * Created : 2020-11-03 오전 8:40.
+ * Developer : Seo.
  */
 public class Scan {
     static Scanner instance;
