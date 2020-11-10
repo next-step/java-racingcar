@@ -20,7 +20,7 @@ public class CarTest {
     @ParameterizedTest
     @DisplayName("차 이름이 없을 때")
     @ValueSource(strings = {"", " ", "ab,,d"})
-    public void 차_이름_1(String names) {
+    public void isCarName_Empty_throw_IllegalArgument(String names) {
         assertThatThrownBy(() -> Cars.of(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("경주할 차 이름의 입력값이 없습니다.");
@@ -29,7 +29,7 @@ public class CarTest {
     @ParameterizedTest
     @DisplayName("차 이름이 5자 이내일 때")
     @ValueSource(strings = {"a,b,c,d", "abc,d", "abie,codec,f5"})
-    public void 차_이름_2(String name) {
+    public void isCarName_below_five_characters(String name) {
         Cars cars = Cars.of(name);
         String carNames = cars.getCars().stream()
                 .map(car -> car.getName()).collect(Collectors.joining(","));
@@ -40,7 +40,7 @@ public class CarTest {
     @ParameterizedTest
     @DisplayName("차 이름이 5자 초과일 때")
     @ValueSource(strings = {"abcf,abcdef", "a,b,1234567"})
-    public void 차_이름_3(String names) {
+    public void isCarName_over_five_characters_throw_Exception(String names) {
         assertThatThrownBy(() -> Cars.of(names))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5 자를 초과할 수 없습니다.");

@@ -1,7 +1,6 @@
 package step3.domain;
 
-import step3.service.strategy.MoveStrategy;
-import step3.util.Validator;
+import step3.domain.strategy.MoveStrategy;
 
 import java.util.Objects;
 

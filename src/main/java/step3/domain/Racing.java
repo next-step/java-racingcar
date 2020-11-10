@@ -1,9 +1,7 @@
-package step3.service;
+package step3.domain;
 
-import step3.domain.Cars;
-import step3.domain.ScoreBoard;
-import step3.service.strategy.Movable;
-import step3.service.strategy.MoveStrategy;
+import step3.domain.strategy.Movable;
+import step3.domain.strategy.MoveStrategy;
 import step3.util.Validator;
 
 import java.util.*;

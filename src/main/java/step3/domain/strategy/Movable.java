@@ -1,4 +1,4 @@
-package step3.service.strategy;
+package step3.domain.strategy;
 
 /**
  * Created By mand2 on 2020-11-10.

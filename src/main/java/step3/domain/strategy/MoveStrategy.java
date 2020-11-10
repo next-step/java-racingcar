@@ -1,7 +1,7 @@
-package step3.service.strategy;
+package step3.domain.strategy;
 
-import step3.service.Randomize;
-import step3.service.ScoreInspector;
+import step3.domain.Randomize;
+import step3.domain.ScoreInspector;
 
 /**
  * Created By mand2 on 2020-11-10.
