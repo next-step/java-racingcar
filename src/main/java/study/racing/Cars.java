@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Cars {
 
-    private static List<Car> cars;
+    private List<Car> cars;
 
     public Cars(String[] carNames) {
         this.cars = IntStream.range(0, carNames.length)

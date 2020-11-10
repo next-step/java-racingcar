@@ -34,8 +34,7 @@ public class CarRacing {
         CarRacing carRacing = new CarRacing(new RandomMoveStrategy());
         RacingRecords racingResults = carRacing.start(carNames, tryCnt);
 
-        ResultView resultView = new ResultView();
-        resultView.showResultHead();
-        resultView.showResult(racingResults);
+        ResultView.showResultHead();
+        ResultView.showResult(racingResults);
     }
 }
