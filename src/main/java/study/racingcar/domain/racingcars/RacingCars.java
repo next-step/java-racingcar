@@ -1,13 +1,11 @@
-package study.racingcar.racingcars;
+package study.racingcar.domain.racingcars;
 
-import study.racingcar.car.Car;
-import study.racingcar.car.CarSnapshot;
-import study.racingcar.car.CarSnapshotExporter;
-import study.racingcar.car.Engine;
-import study.racingcar.view.ResultView;
+import study.racingcar.domain.car.Car;
+import study.racingcar.domain.car.CarSnapshot;
+import study.racingcar.domain.car.CarSnapshotExporter;
+import study.racingcar.domain.car.Engine;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**

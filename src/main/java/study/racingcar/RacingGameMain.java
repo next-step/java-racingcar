@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import study.racingcar.domain.GameConfiguration;
+import study.racingcar.domain.RacingGame;
 import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 

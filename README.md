@@ -8,7 +8,7 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-## 구현할 기능 목록
+## Domain
 
 * Car
     - 현재 위치 및 사용자를 관리
@@ -21,6 +21,11 @@
     - 게임에 대한 설정 값(자동차 대수, 몇 번의 시도를 할지) 및 Validation
     - 설정 값을 토대로 자동차 초기화
 
-* Winner
-    - 우승자에 대한 정보
+
+## 5단계 - TodoList
+
+- RacingGameController 추가
+    - Domain과 View사이에서 중간다리 역할
     
+- Domain별 테스트 추가
+   

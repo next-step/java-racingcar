@@ -4,7 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import study.racingcar.car.OldEngine;
+import study.racingcar.domain.GameConfiguration;
+import study.racingcar.domain.car.OldEngine;
 
 import static org.junit.jupiter.api.Assertions.*;
 

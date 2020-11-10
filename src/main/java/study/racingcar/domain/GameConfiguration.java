@@ -1,9 +1,9 @@
-package study.racingcar;
+package study.racingcar.domain;
 
-import study.racingcar.car.Car;
-import study.racingcar.car.CarName;
-import study.racingcar.car.Engine;
-import study.racingcar.racingcars.RacingCars;
+import study.racingcar.domain.car.Car;
+import study.racingcar.domain.car.CarName;
+import study.racingcar.domain.car.Engine;
+import study.racingcar.domain.racingcars.RacingCars;
 
 import java.util.Arrays;
 import java.util.List;

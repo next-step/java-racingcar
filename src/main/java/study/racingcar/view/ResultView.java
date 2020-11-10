@@ -1,8 +1,7 @@
 package study.racingcar.view;
 
-import study.racingcar.car.Car;
-import study.racingcar.car.CarSnapshot;
-import study.racingcar.racingcars.RacingCarsSnapshot;
+import study.racingcar.domain.car.CarSnapshot;
+import study.racingcar.domain.racingcars.RacingCarsSnapshot;
 
 import java.util.List;
 import java.util.stream.Collectors;

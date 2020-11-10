@@ -1,6 +1,6 @@
 package study.racingcar;
 
-import study.racingcar.car.Engine;
+import study.racingcar.domain.car.Engine;
 
 /**
  * 자동차의 이동 실패를 담당
