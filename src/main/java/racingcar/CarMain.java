@@ -12,8 +12,11 @@ public class CarMain {
         outputView.resultMention();
 
         CarList carList = carController.initCarList(carNames);
-        for(int round = 0; round < tryCounts; round++) {
+
+        int round = 0;
+        while(!carController.isFinish(tryCounts, round)) {
             outputView.displayCarList(carController.nextRound(carList));
+            round++;
         }
 
         outputView.displayWinners(carController.getWinner(carList));

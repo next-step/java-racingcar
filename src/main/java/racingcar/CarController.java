@@ -18,6 +18,10 @@ public class CarController {
         return CarList.from(carList);
     }
 
+    public boolean isFinish(int tryCounts, int round) {
+        return tryCounts == round;
+    }
+
     public CarList nextRound(CarList carList) {
         List<Car> cars = carList.getCarList();
         for(Car car : cars) {
