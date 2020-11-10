@@ -1,11 +1,6 @@
 package racingcar;
 
-import racingcar.domain.GameManager;
-import racingcar.domain.GameResult;
-import racingcar.domain.RuleStrategyImpl;
-import racingcar.domain.WinStrategyImpl;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.controller.RacingController;
 
 import java.util.List;
 
@@ -19,12 +14,9 @@ public class RacingGame {
     }
 
     private static void executeGame() {
-        List<String> carNames = InputView.getCarNames();
-        int gameRoundNum = InputView.getGameRoundNum();
+        List<String> carNames = RacingController.getCarNames();
+        int gameRoundNum = RacingController.getGameRoundNum();
 
-        GameManager gameManager = new GameManager(new RuleStrategyImpl(), new WinStrategyImpl());
-        GameResult gameResult = gameManager.play(carNames, gameRoundNum);
-
-        OutputView.showResult(gameResult);
+        RacingController.showResult(RacingController.execute(carNames, gameRoundNum));
     }
 }
