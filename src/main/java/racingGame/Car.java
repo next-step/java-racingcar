@@ -14,7 +14,6 @@ public class Car {
     this.name = name;
   }
 
-
   static public Car of(String name) {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException();
