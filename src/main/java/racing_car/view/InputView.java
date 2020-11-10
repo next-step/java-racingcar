@@ -24,8 +24,6 @@ public class InputView {
         return new RacingSpec(users, lap);
     }
 
-
-
     private static List<String> enterRacingUser() {
         System.out.println(CAR_COUNT_QUESTION);
         Scanner scanner = new Scanner(System.in);

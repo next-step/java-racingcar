@@ -12,5 +12,4 @@ public class ErrorMessage {
     public static final String INVALID_CAR_NAME = "empty racing car name, car name is less then 5";
     public static final String EMPTY_MOVE_STRATEGY = "empty move strategy";
 
-
 }
