@@ -9,9 +9,9 @@ public class InputView {
 
     private String questionTryNumbers = "시도할 회수는 몇 회 인가요?";
 
-    public String carNames() {
+    public String[] carNames() {
         System.out.println(qudstionCarNames);
-        return scanner.nextLine();
+        return scanner.nextLine().split(",");
     }
 
     public int tryCount() {
