@@ -1,6 +1,10 @@
 package calculator.domain;
 
+import java.util.Objects;
+
 public class StringCalculator {
+    private static final String SPLIT_WORD = " ";
+
     private final double TOTAL;
 
     private StringCalculator(double total) {
@@ -9,21 +13,17 @@ public class StringCalculator {
 
     public static StringCalculator of(String inputWord) {
         validInputWord(inputWord);
-        double total = calculate(splitWord(inputWord));
+        double total = calculate(inputWord.split(SPLIT_WORD));
         return new StringCalculator(total);
     }
 
-    static void validInputWord(String inputWord) {
-        if ("".equals(inputWord) || inputWord == null) {
+    private static void validInputWord(String inputWord) {
+        if (Objects.isNull(inputWord) || inputWord.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
 
-    static String[] splitWord(String inputWord) {
-        return inputWord.split(" ");
-    }
-
-    static double calculate(String[] arrWord) {
+    private static double calculate(String[] arrWord) {
         double total = 0;
         for (int i = 1; i < arrWord.length; i = i + 2) {
             String sign = arrWord[i];
