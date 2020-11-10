@@ -17,9 +17,9 @@ public class GameController {
         OutputView.printEndResult();
 
         RacingGame racingGame = RacingGame.of(
-                        RacingGameConditionDTO.of(carNames, tryCount));
+                RacingGameConditionDTO.of(carNames, tryCount));
 
-        for (int i = 0; i < tryCount; i++) {
+        while (!racingGame.isGameEnd()) {
             OutputView.runResult(racingGame.runRound());
         }
 
