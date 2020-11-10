@@ -1,10 +1,11 @@
-package study.racingcar;
+package study.racingcar.domain.racingcars;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.domain.car.Car;
 import study.racingcar.domain.car.CarName;
 import study.racingcar.domain.car.CarSnapshot;
+import study.racingcar.domain.car.NewEngine;
 import study.racingcar.domain.racingcars.RacingCars;
 import study.racingcar.domain.racingcars.RacingCarsSnapshot;
 import study.racingcar.domain.racingcars.RacingCarsSnapshotExporter;
@@ -47,7 +48,7 @@ class RacingCarsTest {
 
         // Then
         CarSnapshot carSnapshot = racingCarsSnapshot.getCarSnapshot().get(0);
-        assertEquals(carSnapshot.getCurrentPosition(), 2);
+        assertEquals(carSnapshot.getCurrentPosition(), 1);
     }
     
     @Test

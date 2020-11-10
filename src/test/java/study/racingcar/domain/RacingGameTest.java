@@ -2,12 +2,11 @@ package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.NewEngine;
+import study.racingcar.domain.car.NewEngine;
 import study.racingcar.domain.car.CarSnapshot;
 import study.racingcar.domain.racingcars.RacingCarsSnapshot;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;

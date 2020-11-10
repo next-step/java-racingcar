@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain.car;
 
 import study.racingcar.domain.car.Engine;
 
@@ -11,4 +11,5 @@ public class NewEngine implements Engine {
     public boolean isMovable() {
         return true;
     }
+
 }

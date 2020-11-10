@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain.car;
 
 import study.racingcar.domain.car.Engine;
 
