@@ -4,10 +4,18 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static int input(String message) {
-        Scanner scanner = new Scanner(System.in);
+    private static final String PARTICIPATION_CAR_MESSAGE = "자동차는 몇 대 인가요?";
+    private static final String NUMBER_OF_TRY_MESSAGE = "시도 횟수는 몇 회 인가요?";
 
-        System.out.println(message);
+    public static int inputParticipationCars() {
+        System.out.println(PARTICIPATION_CAR_MESSAGE);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    public static int inputNumberOfTry() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(NUMBER_OF_TRY_MESSAGE);
         return scanner.nextInt();
     }
 
