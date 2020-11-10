@@ -13,10 +13,6 @@ public class CarRacing {
 
     public RacingRecords start(String[] carNames, int tryCnt){
         Cars cars = new Cars(carNames);
-
-        InputView.validateCarCount(carNames.length);
-        InputView.validateTryCount(tryCnt);
-
         return racing(tryCnt, cars);
     }
 

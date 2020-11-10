@@ -26,7 +26,9 @@ public class InputView {
 
     public static int getTryCount(){
         System.out.println(INPUT_TRY_MESSAGE);
-        return scanner.nextInt();
+        int tryCount = scanner.nextInt();
+        validateTryCount(tryCount);
+        return tryCount;
     }
 
     public static String[] getCarsName(){

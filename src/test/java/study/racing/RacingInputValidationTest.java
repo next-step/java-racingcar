@@ -20,7 +20,7 @@ public class RacingInputValidationTest {
     @Test
     void inputCarCountZeroTest(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            carRacing.start(new String[]{}, 3);
+            InputView.validateCarCount(0);
         }).withMessageContaining(RacingErrorMessage.ZERO_CAR_COUNT.getErrorMessage());
     }
 
@@ -28,7 +28,7 @@ public class RacingInputValidationTest {
     @Test
     void inputTryCountZeroTest(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            carRacing.start(new String[]{"A","B"}, 0);
+            InputView.validateTryCount(0);
         }).withMessageContaining(RacingErrorMessage.ZERO_TRY_COUNT.getErrorMessage());
     }
 
