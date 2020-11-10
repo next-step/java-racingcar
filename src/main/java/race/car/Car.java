@@ -6,31 +6,19 @@ import java.util.Random;
 
 public class Car {
 
-    private static Random random = new Random();
 
-    private String[] raceCarNames;
-    private HashMap<String, List<CarRaceMoveInfo>> carReacMoveInfoList;
-    private int raceTryCount;
-
-    public Car(String[] raceCarNames, HashMap<String, List<CarRaceMoveInfo>> carReacMoveInfoList, int raceTryCount) {
-        this.raceCarNames = raceCarNames;
-        this.carReacMoveInfoList = carReacMoveInfoList;
-        this.raceTryCount = raceTryCount;
+    private Car() {
     }
 
 
-    /**
-     * 랜덤값 return
-     * @return
-     */
-    public static int getMovePower() {
-        return random.nextInt(10);
+    public static int carMove(int moveDistance, int carMovePower) {
+        return moveCarCheck(moveDistance, carMovePower);
     }
 
     /**
      * 랜덤값을 확인하여 이동거리 +1
      *
-     * @param moveDistance     이동거리
+     * @param mo0veDistance    이동거리
      * @param inputRandomValue 받은 랜덤한 값
      * @return
      */
@@ -40,19 +28,4 @@ public class Car {
         }
         return moveDistance;
     }
-
-
-    public String[] getRaceCarNames() {
-        return raceCarNames;
-    }
-
-    public HashMap<String, List<CarRaceMoveInfo>> getCarReacMoveInfoList() {
-        return carReacMoveInfoList;
-    }
-
-    public int getRaceTryCount() {
-        return raceTryCount;
-    }
-
-
 }
