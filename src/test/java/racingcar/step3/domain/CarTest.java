@@ -13,11 +13,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 /**
- * Created : 2020-11-02 오전 10:11
- * Developer : Seo
+ * Created : 2020-11-02 오전 10:11.
+ * Developer : Seo,
  */
 class CarTest {
-
     Car car = null;
 
     @BeforeEach
