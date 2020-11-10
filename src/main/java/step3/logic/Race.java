@@ -7,9 +7,9 @@ import java.util.stream.IntStream;
 public class Race {
     private final List<Car> cars;
 
-    public Race(int numberCars) {
+    public Race(EngineFactory factory, int numberCars) {
         cars = IntStream.range(0, numberCars)
-                .mapToObj(i -> new Car())
+                .mapToObj(i -> new Car(factory.createEngine()))
                 .collect(Collectors.toUnmodifiableList());
     }
 
@@ -18,6 +18,6 @@ public class Race {
     }
 
     public void lap() {
-        cars.forEach(car -> car.run(car.getThrottle()));
+        cars.forEach(Car::run);
     }
 }
