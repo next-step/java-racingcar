@@ -1,33 +1,41 @@
 package racing.domain;
 
+import static racing.domain.CarConfig.*;
+
 public class Car {
 
+    private static final String CAR_NAME_VALIDATION_ERROR = "자동차 이름은 5자를 초과 할 수 없습니다";
     private final String name;
-    private final CarSetInRace setRace;
+    private int position;
 
     public Car(String name) {
-        this.name = name;
-        this.setRace = new CarSetInRace();
+        this.name = carNameValidationCheck(name);
     }
 
-    public void move(RaceRule rule) {
+    public Car(String name, int position) {
+        this.name = carNameValidationCheck(name);
+        this.position = position;
+    }
+
+    public Car move(RaceRule rule) {
         if(rule.movementRule()) {
-            setRace.move();
-            return;
+            position++;
         }
-        setRace.stop();
+        return new Car(name,position);
     }
 
     public String getName() {
         return name;
     }
 
-    public CarSetInRace getRaceSetting() {
-        return setRace;
-    }
-
     public int getDistance() {
-        return setRace.getMoveSize();
+        return position;
     }
 
+    private String carNameValidationCheck(String name) {
+        if(name.length() > CAR_NAME_LIMIT_SIZE) {
+            throw new IllegalArgumentException(CAR_NAME_VALIDATION_ERROR);
+        }
+        return name;
+    }
 }
