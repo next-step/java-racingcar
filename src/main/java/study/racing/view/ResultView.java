@@ -24,11 +24,12 @@ public class ResultView {
     }
 
     private String showRoundResult(RacingRecord racingRecord) {
-        return racingRecord.getPositionList().stream().map(positionIndex -> getRecordByEachCar(positionIndex)).collect(Collectors.joining("\n"));
+        return racingRecord.getSingleRecords().stream().map(record ->getRecordByEachCar(record.getPosition(), record.getCarName())
+        ).collect(Collectors.joining("\n"));
     }
 
-    private String getRecordByEachCar(int position) {
-        return IntStream.range(0, position)
+    private String getRecordByEachCar(int position, String carName) {
+        return carName + ": " + IntStream.range(0, position)
                 .mapToObj(i -> FORWARD_STRING)
                 .collect(Collectors.joining());
     }

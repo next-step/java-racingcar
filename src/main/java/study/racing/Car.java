@@ -17,6 +17,7 @@ public class Car {
         position += racingMoveStrategy.getMovement();
     }
 
+    public String getCarName(){return carName;}
     public Integer getPosition() {
         return position;
     }

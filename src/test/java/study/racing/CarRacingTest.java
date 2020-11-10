@@ -21,7 +21,7 @@ public class CarRacingTest {
 
         IntStream.range(0, tryCnt).forEach(i -> {
             int round = i+1;
-            racingResults.getRecordList().get(i).getPositionList().stream().forEach(position -> assertThat(position).isEqualTo(round * step));
+            racingResults.getRecordList().get(i).getSingleRecords().stream().forEach(record -> assertThat(record.getPosition()).isEqualTo(round * step));
         });
     }
 }
