@@ -3,13 +3,14 @@ package study.racing;
 import java.util.LinkedList;
 
 public class RacingRecord {
-    private LinkedList<Integer> positionList;
+    private LinkedList<SingleRecord> singleRecords;
 
-    public RacingRecord(LinkedList<Integer> positionList) {
-        this.positionList = positionList;
+    public RacingRecord(LinkedList<SingleRecord> singleRecords) {
+        this.singleRecords = singleRecords;
     }
 
-    public LinkedList<Integer> getPositionList() {
-        return positionList;
+    public LinkedList<SingleRecord> getSingleRecords(){
+        return singleRecords;
     }
 }
+

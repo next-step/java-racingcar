@@ -17,7 +17,8 @@ public class CarsTest {
     @BeforeEach
     void setUp(){
         carCnt = 1;
-        cars = new Cars(carCnt);
+        cars = new Cars(new String[]{"A"});
+
     }
 
     @DisplayName("Cars 생성자 테스트")

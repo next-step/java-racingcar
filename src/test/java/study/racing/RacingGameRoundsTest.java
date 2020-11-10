@@ -16,14 +16,14 @@ public class RacingGameRoundsTest {
     @DisplayName("recording 메소드 테스트")
     @Test
     void recordingTest(){
-        int carCnt = 1;
+        String[] carNames = {"A"};
+        int carCnt = carNames.length;
+        Cars cars = new Cars(carNames);
 
-        Cars cars = new Cars(carCnt);
+        LinkedList<SingleRecord> singleRecords = new LinkedList<SingleRecord>();
+        singleRecords.add(new SingleRecord(cars.getCarSet().get(0).getPosition(), cars.getCarSet().get(0).getCarName()));
 
-        LinkedList<Integer> positionList = new LinkedList<>();
-        positionList.add(cars.getCarSet().get(0).getPosition());
-
-        RacingRecord racingRecord = new RacingRecord(positionList);
+        RacingRecord racingRecord = new RacingRecord(singleRecords);
         RacingRecords racingRecords = new RacingRecords();
         racingRecords.addRecord(racingRecord);
 
