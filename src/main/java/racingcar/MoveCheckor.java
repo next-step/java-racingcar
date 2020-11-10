@@ -4,12 +4,23 @@ import java.util.Random;
 
 public class MoveCheckor{
 
+    final private int baseLineNum = 4;
+    private int randomNum;
+
+    public int getBaseLineNum(){
+        return this.baseLineNum;
+    }
+
+    public int getRandomNum(){
+        return this.randomNum;
+    }
+
     //기준치 이상 여부 확인
-    public boolean checkOverBaseline(){
+    public boolean checkOverBaseLine(){
         boolean canMove = false;
         Random random = new Random();
-        int randomNum = random.nextInt(10);
-        if(randomNum >=4){
+        this.randomNum = random.nextInt(10);
+        if(this.randomNum >= this.baseLineNum){
             canMove = true;
         }
 
@@ -17,14 +28,10 @@ public class MoveCheckor{
     }
 
     //난수에 따른 이동 및 기록
-    public void moveAndStop(Car car, int attempts){
-
-        for(int i=0;i<attempts;i++){
-            if(this.checkOverBaseline()){
-                car.move();
-            }
-            car.recordDistance();
+    public void moveAndStop(Car car){
+        if(this.checkOverBaseLine()){
+            car.move();
         }
-
+        car.recordDistance();
     }
 }
