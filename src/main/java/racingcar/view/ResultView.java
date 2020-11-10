@@ -1,16 +1,21 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+
 import java.util.List;
 
 public class ResultView {
 
     public void printDistanceOfCar(List<Car> cars) {
-        System.out.println("실행 결과");
+
         for (Car car : cars) {
             print(car.getName(), car.getDistance());
-            System.out.println("");
         }
+        System.out.println("");
+    }
+
+    public void printHeader() {
+        System.out.println("실행 결과");
     }
 
     public void print(String nameOfCar, int distance) {
@@ -18,6 +23,7 @@ public class ResultView {
         for (int i = 0; i < distance; i++) {
             System.out.print("-");
         }
+        System.out.println("");
     }
 
 

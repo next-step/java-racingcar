@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.application.CarsGenerator;
 import racingcar.application.RacingSimulator;
+import racingcar.application.number.RandomNumberGenerator;
 import racingcar.domain.Car;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -15,16 +16,18 @@ public class MainSimulator {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         CarsGenerator carsGenerator = new CarsGenerator();
-        RacingSimulator racingSimulator = new RacingSimulator();
 
-        String nameOfCars = inputView.insertNameOfCars();
-        int countOfRacing = inputView.insertCount();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        RacingSimulator racingSimulator = new RacingSimulator(randomNumberGenerator);
 
-        List<Car> cars = carsGenerator.generateCars(nameOfCars);
+        String carName = inputView.insertNameOfCars();
+        int racingCount = inputView.insertCount();
 
-//        racingSimulator.race(cars, countOfRacing);
-//TODO 경주결과 한번에 뽑기
-        for (int i = 0; i < countOfRacing; i++) {
+        List<Car> cars = carsGenerator.generateCars(carName);
+
+        resultView.printHeader();
+
+        for (int i = 0; i < racingCount; i++) {
             racingSimulator.moveCars(cars);
             resultView.printDistanceOfCar(cars);
         }

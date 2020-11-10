@@ -1,8 +1,7 @@
 package racingcar.domain;
 
-import lombok.Getter;
+import racingcar.application.number.NumberGenerator;
 
-@Getter
 public class Car {
 
     private String name;
@@ -13,10 +12,21 @@ public class Car {
         this.distance = distance;
     }
 
-    public int move(int randomNumber) {
-        if (randomNumber >= 4) {
+    public int move(NumberGenerator numberGenerator) {
+        final int FORWARD_CRITERION = 4;
+        int number = numberGenerator.getNumber();
+
+        if (number >= FORWARD_CRITERION) {
             distance++;
         }
+        return distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
         return distance;
     }
 }
