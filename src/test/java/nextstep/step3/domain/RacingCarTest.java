@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
-	private RacingCar underTest = new RacingCar(0);
+	private RacingCar underTest = new RacingCar("adeldel");
 
 	@Test
 	@DisplayName("이동가능한 수는 0보다 커야 한다.")

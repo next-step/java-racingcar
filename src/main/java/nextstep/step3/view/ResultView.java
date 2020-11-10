@@ -2,15 +2,17 @@ package nextstep.step3.view;
 
 import nextstep.step3.domain.RacingCars;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
-public class ResponseView {
+public class ResultView {
 	private static final String MOVE_TAB = "-";
 
 	public void showRacingResult(RacingCars racingCars) {
 		StringBuilder sb = new StringBuilder();
-		racingCars.getRacingCars().stream()
-				.forEach(car -> {
+		racingCars.getRacingCars().forEach(car -> {
+							sb.append(car.getName());
+							sb.append(" : ");
 							sb.append(printRacingPoint(car.getPoint()));
 							sb.append("\n");
 						}
@@ -23,6 +25,10 @@ public class ResponseView {
 		IntStream.range(0, point)
 				.forEach(i -> sb.append(MOVE_TAB));
 		return sb.toString();
+	}
+
+	public void printRacingWinner(List<String> winners) {
+		System.out.println(String.join(",", winners) + "가 최종우승 했습니다.");
 	}
 
 }

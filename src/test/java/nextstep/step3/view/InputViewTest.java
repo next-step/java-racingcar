@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class InputViewTest {
 
 	@Test
-	@DisplayName("자동차 레이싱게임 차 대수 입력메시지 테스트")
-	public void inputMessageCarNumberTest() {
-		InputView underTest = new InputView(new Scanner("5"));
-		Integer carNumber = underTest.getInputMessageCarNumber();
-		assertThat(carNumber).isEqualTo(5);
+	@DisplayName("자동차 레이싱게임 차 이름 입력메시지 테스트")
+	public void inputMessageCarNammeTest() {
+		InputView underTest = new InputView(new Scanner("adel,joy"));
+		String carNames = underTest.getInputMessageCarName();
+		assertThat(carNames).isEqualTo("adel,joy");
 	}
 
 	@Test
@@ -27,11 +27,11 @@ public class InputViewTest {
 	}
 
 	@Test
-	@DisplayName("자동차 레이싱게임 차와 시도횟수는 숫자만 입력가능하다. ")
-	public void inputValidateNumberTest() {
-		InputView underTest = new InputView(new Scanner("abc"));
+	@DisplayName("자동차 레이싱게임 차이름은 비어있으면 안된다.")
+	public void inputValidateCarNameTest() {
+		InputView underTest = new InputView(new Scanner(""));
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> underTest.getInputMessageCarNumber())
-				.withMessage("자동차수와 시도횟수는 숫자만 가능합니다.");
+				.isThrownBy(() -> underTest.getInputMessageCarName())
+				.withMessage("자동차 이름은 필수입니다.");
 	}
 }
