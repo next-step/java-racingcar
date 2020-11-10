@@ -5,17 +5,13 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingWinner {
+    private static final String COMMA = ",";
     private int position;
     private List<String> winners;
-    private static final String COMMA = ",";
 
     public RacingWinner(List<Car> cars) {
         this.setWinnerPosition(cars);
         this.setWinners(cars);
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
     }
 
     public void setWinners(List<Car> cars) {
@@ -30,13 +26,11 @@ public class RacingWinner {
     }
 
     public void setWinnerPosition(List<Car> cars) {
-        int winnerPosition = cars.stream()
+        this.position = cars.stream()
                 .mapToInt(Car::getPosition)
                 .filter(car -> car >= 0)
                 .max()
                 .orElse(0);
-
-        this.setPosition(winnerPosition);
     }
 
     @Override
