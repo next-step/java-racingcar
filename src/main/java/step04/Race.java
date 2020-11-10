@@ -5,10 +5,14 @@ import validator.NumberValidator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
 public class Race {
     private final int numberOfMoves;
     private final Cars cars;
     private ArrayList<List<Car>> raceSnapShop = new ArrayList<>();
+    private static final String joinDelimiter = ", ";
 
     private Race(int numberOfMoves, Cars cars) {
         this.numberOfMoves = numberOfMoves;
@@ -28,6 +32,20 @@ public class Race {
         raceSnapShop.add(cars);
     }
 
+    private static String getWinner(List<Car> cars) {
+        int topPosition = cars.stream()
+                .sorted((a, b) -> b.getPosition() - a.getPosition())
+                .limit(1)
+                .collect(toList())
+                .get(0)
+                .getPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == topPosition)
+                .map(car -> car.name)
+                .collect(joining(joinDelimiter));
+    }
+
     public void run(ResultView resultView) {
         setSnapShot(cars.clonedCars());
 
@@ -37,7 +55,8 @@ public class Race {
         }
 
         resultView.printRace(raceSnapShop);
-        resultView.printWinner(cars.cars);
+        String winners = getWinner(cars.cars);
+        resultView.printWinner(winners);
 
     }
 

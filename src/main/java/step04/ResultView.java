@@ -11,7 +11,6 @@ public class ResultView {
     private final String carKind;
 
     private final String delimiter = "";
-    private final String joinDelimiter = ", ";
     private final String POST_WINNER_MESSAGE = "가 최종우승했습니다";
     private final String RESULT_START_MESSAGE = "실행 결과";
 
@@ -41,20 +40,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinner(List<Car> lastRace) {
-        int topPosition = lastRace.stream()
-                .sorted((a, b) -> b.getPosition() - a.getPosition())
-                .limit(1)
-                .collect(toList())
-                .get(0)
-                .getPosition();
-
-        String winners = lastRace.stream()
-                .filter(car -> car.getPosition() == topPosition)
-                .map(car -> car.name)
-                .collect(joining(joinDelimiter));
-
+    public void printWinner(String winners) {
         System.out.println(winners + POST_WINNER_MESSAGE);
-
     }
 }
