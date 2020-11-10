@@ -1,4 +1,4 @@
-package racing_car.controller;
+package racing_car.view;
 
 import racing_car.LabRecord;
 import racing_car.RacingRecord;
@@ -7,7 +7,7 @@ import racing_car.Record;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ResultController {
+public class ResultView {
 
     private static final String RACING_DASH = "-";
     private static final String USERS_DELIMITER = ", ";
@@ -29,7 +29,7 @@ public class ResultController {
     private static String buildRacingStateString(RacingRecord racingRecord) {
         return racingRecord.toLabRecordList()
                 .stream()
-                .map(ResultController::buildLabStateString)
+                .map(ResultView::buildLabStateString)
                 .collect(
                         Collectors.joining(System.lineSeparator() + System.lineSeparator()));
     }
@@ -53,7 +53,7 @@ public class ResultController {
     private static String buildLabStateString(LabRecord labRecord) {
         return labRecord.toRecordList()
                 .stream()
-                .map(ResultController::buildRecordStateString)
+                .map(ResultView::buildRecordStateString)
                 .collect(
                         Collectors
                                 .joining(System.lineSeparator())
