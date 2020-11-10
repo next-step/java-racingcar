@@ -19,22 +19,10 @@ public class Car {
         this.name = name;
     }
 
-    public void moveRandomCondition() {
-        this.move(getRandomMoveCondition());
-    }
-
     public void move(int moveCondition) {
         if (moveCondition >= MIN_MOVE_CONDITION) {
             position++;
         }
-    }
-
-    private int getRandomMoveCondition() {
-        return RandomUtil.generateRandomNumber();
-    }
-
-    public int getPosition() {
-        return this.position;
     }
 
 
@@ -49,6 +37,12 @@ public class Car {
             throw new ValidateBlankName();
         }
     }
+
+
+    public int getPosition() {
+        return this.position;
+    }
+
 
     @Override
     public String toString() {
