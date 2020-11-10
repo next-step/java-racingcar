@@ -1,9 +1,7 @@
 package car.racing;
 
 
-
 import car.racing.domain.CarRacingGame;
-import car.racing.domain.CarRacingWinners;
 import car.racing.view.ResultViewContract;
 
 import java.util.stream.IntStream;
@@ -12,12 +10,10 @@ public class CarRacingViewController {
 
     private final ResultViewContract resultView;
     private final CarRacingGame racingGame;
-    private final CarRacingWinners racingWinners;
 
-    public CarRacingViewController(ResultViewContract resultView, CarRacingGame racingGame, CarRacingWinners racingWinners) {
+    public CarRacingViewController(ResultViewContract resultView, CarRacingGame racingGame) {
         this.resultView = resultView;
         this.racingGame = racingGame;
-        this.racingWinners = racingWinners;
     }
 
     public void input(int tryCount) {
@@ -40,6 +36,6 @@ public class CarRacingViewController {
     }
 
     private void showRacingWinners() {
-        resultView.winners(racingWinners.racingWinners());
+        resultView.winners(racingGame.findWinners());
     }
 }

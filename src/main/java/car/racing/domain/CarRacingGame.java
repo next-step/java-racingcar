@@ -21,4 +21,8 @@ public class CarRacingGame {
     public List<Car> getCars() {
         return cars;
     }
+
+    public List<String> findWinners() {
+        return new CarRacingWinners(cars).racingWinners();
+    }
 }
