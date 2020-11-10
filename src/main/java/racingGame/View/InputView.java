@@ -1,11 +1,6 @@
 package racingGame.View;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Vector;
-import racingGame.racingGameException.IllegalNumCars;
-import racingGame.racingGameException.IllegalNumRoundException;
 
 public class InputView {
 
@@ -24,33 +19,13 @@ public class InputView {
   }
 
   public static String askUserNames() {
-    String rawInput;
-
     System.out.println(USER_NAME_QUESTION);
-    rawInput = scanner.nextLine();
-
-    if (rawInput == null || rawInput.length() < 1) {
-      throw new IllegalNumCars();
-    }
-
-    return rawInput;
+    return scanner.nextLine();
   }
 
-  public static List<String> parseRawInput(String rawInput) {
-    if (rawInput == null || rawInput.length() < 1) {
-      throw new IllegalArgumentException();
-    }
-
-    return new Vector<>(Arrays.asList(rawInput.split(",")));
-  }
 
   public static int askNumRound() {
     System.out.println(NUM_ROUND_QUESTION);
-    int round = scanner.nextInt();
-    if (round < 1) {
-      throw new IllegalNumRoundException();
-    }
-
-    return round;
+    return scanner.nextInt();
   }
 }

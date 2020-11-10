@@ -1,12 +1,13 @@
 package racingGame;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
 public class Cars {
 
   /**
-   * 게임에 사용되는 Car 들을 List<Car>의 형태로 가지고 있는 객체. 게임에 사용되는 Car 전체의 상태와 각각의 Car에 접근 가능하게 함
+   * 게임에 사용되는 Car 들을 List<Car>의 형태로 가지고 있는 객체. 게임에 사용되는 Car 전체의 상태와 각각의 Car 에 접근 가능하게 함
    */
 
   private final List<Car> cars;
@@ -33,6 +34,18 @@ public class Cars {
     if (names == null) {
       throw new IllegalArgumentException();
     }
+  }
+
+  public static Cars of(String rawInput) {
+    return of(parseRawInput(rawInput));
+  }
+
+  private static List<String> parseRawInput(String rawInput) {
+    if (rawInput == null || rawInput.length() < 1) {
+      throw new IllegalArgumentException();
+    }
+
+    return new Vector<>(Arrays.asList(rawInput.split(",")));
   }
 
   // Car가 어떻게 움직일 지 만드는 기능.
