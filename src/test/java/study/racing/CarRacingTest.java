@@ -11,11 +11,13 @@ public class CarRacingTest {
     @DisplayName("지정한 step 만큼 항상 전진하는지 테스트")
     @Test
     void alwaysForwardStrategyTest(){
-        int carCnt = 2;
+
         int tryCnt = 4;
         int step = 2;
+        String[] carNames = {"A","B"};
+        int carCnt = carNames.length;
         CarRacing carRacing = new CarRacing(() -> step);
-        RacingRecords racingResults = carRacing.start(carCnt, tryCnt);
+        RacingRecords racingResults = carRacing.start(carNames, tryCnt);
 
         IntStream.range(0, tryCnt).forEach(i -> {
             int round = i+1;

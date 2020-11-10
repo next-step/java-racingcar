@@ -16,9 +16,9 @@ public class RacingGameRoundsTest {
     @DisplayName("recording 메소드 테스트")
     @Test
     void recordingTest(){
-        int carCnt = 1;
-
-        Cars cars = new Cars(carCnt);
+        String[] carNames = {"A"};
+        int carCnt = carNames.length;
+        Cars cars = new Cars(carNames);
 
         LinkedList<Integer> positionList = new LinkedList<>();
         positionList.add(cars.getCarSet().get(0).getPosition());

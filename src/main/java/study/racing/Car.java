@@ -6,7 +6,10 @@ public class Car {
 
     private int position;
 
-    public Car(){
+    private String carName;
+
+    public Car(String carName){
+        this.carName = carName;
         this.position = INITIAL_POSITION;
     }
 

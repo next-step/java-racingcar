@@ -11,10 +11,10 @@ public class CarRacing {
         this.racingMoveStrategy = racingMoveStrategy;
     }
 
-    public RacingRecords start(int carCnt, int tryCnt){
-        Cars cars = new Cars(carCnt);
+    public RacingRecords start(String[] carNames, int tryCnt){
+        Cars cars = new Cars(carNames);
 
-        InputView.validateCarCount(carCnt);
+        InputView.validateCarCount(carNames.length);
         InputView.validateTryCount(tryCnt);
 
         return racing(tryCnt, cars);
@@ -32,12 +32,11 @@ public class CarRacing {
     }
 
     public static void main(String args[]){
-
-        int carCnt = InputView.getCarCount();
+        String[] carNames = InputView.getCarsName();
         int tryCnt = InputView.getTryCount();
 
         CarRacing carRacing = new CarRacing(new RandomMoveStrategy());
-        RacingRecords racingResults = carRacing.start(carCnt, tryCnt);
+        RacingRecords racingResults = carRacing.start(carNames, tryCnt);
 
         ResultView resultView = new ResultView();
         resultView.showResultHead();

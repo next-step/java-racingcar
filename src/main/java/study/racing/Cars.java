@@ -8,9 +8,9 @@ public class Cars {
 
     private static List<Car> cars;
 
-    public Cars(int carCnt) {
-        this.cars = IntStream.range(0, carCnt)
-                .mapToObj(car -> new Car())
+    public Cars(String[] carNames) {
+        this.cars = IntStream.range(0, carNames.length)
+                .mapToObj(car -> new Car(carNames[car]))
                 .collect(Collectors.toList());
     }
 
