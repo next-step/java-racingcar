@@ -6,7 +6,8 @@ public class OutputView {
     private final String RESULT_MENTION = "실행결과";
     private final String PRESENT_MOVE = "-";
     private final String WINNER_MEOTION = "가 최종 우승했습니다.";
-    private final String COMMA = ",";
+    private final String COMMA = ", ";
+    private final String COLON = " : ";
 
     public void resultMention() {
         System.out.println(RESULT_MENTION);
@@ -20,7 +21,7 @@ public class OutputView {
     }
 
     private void displayCar(Car car) {
-        System.out.print(car.getName() + " : ");
+        System.out.print(car.getName() + COLON);
         for (int position = 0; position < car.getCurrentPosition(); position++) {
             System.out.print(PRESENT_MOVE);
         }
@@ -28,7 +29,7 @@ public class OutputView {
     }
 
     public void displayWinners(List<String> winners) {
-        String stringWinners = String.join(", ", winners);
+        String stringWinners = String.join(COMMA, winners);
         System.out.print(stringWinners + WINNER_MEOTION);
     }
 }
