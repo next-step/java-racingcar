@@ -8,24 +8,13 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-### STEP5 
 
-##### 리팩토링 요구사항
-* 핵심 비지니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
-* MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
-* 테스트 가능한 부분과 테스트하기 힘든 부분을 분리해 테스트 가능한 부분에 대해서만 단위 테스트를 진행한다.
-  
-##### 기능 목록 및 commit 로그 요구사항
-* 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가한다.
-* git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
-    * 참고문서: AngularJS Commit Message Conventions
-   
-<pre><code>
-feat (feature)
-fix (bug fix)
-docs (documentation)
-style (formatting, missing semi colons, …)
-refactor
-test (when adding missing tests)
-chore (maintain)
-</code></pre>
+
+
+
+## STEP3
+
+### 기능목록
+    - 자동차 대수 및 시도할 횟수를 입력받는다
+    - 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
+    - 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
