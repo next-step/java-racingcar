@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class RunMain {
     public static void main(String[] args) {
-        RunCarRace.inputValue();
-    }
+        RunCarRace run = new RunCarRace();
+        run.start();
+     }
 }

@@ -5,28 +5,67 @@ import java.util.Scanner;
 /**
  * 데이터 입력받기
  */
-public class NumberInput {
+public class InputCarData {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public static int inputCount() {
-        String inputValue = scanner.nextLine();
-
-        valueCheck(inputValue);
-
-        return Integer.valueOf(inputValue);
+    public static String inputValue() {
+        return scanner.nextLine();
     }
 
     /**
-     * 저장된 값 확인
+     * 시도횟수값 체크
+     *
+     * @param paramValue
+     * @return 시도할 횟수
+     */
+    public static int checkTryCount(String paramValue) {
+        checkNumberValue(paramValue);
+        return Integer.valueOf(paramValue);
+    }
+
+    /**
+     * string형을 받아 ',' 기준으로 배열만들기
+     *
+     * @param paramValue
+     * @return
+     */
+    public static String[] checkName(String paramValue) {
+        checkNamesValue(paramValue);
+
+        for(String carName : paramValue.split(",")){
+            checkNameLength(carName);
+        }
+
+        return paramValue.split(",");
+    }
+
+    /**
+     * 숫자 체크
      *
      * @param paramValue
      */
-    public static void valueCheck(String paramValue) {
+    private static void checkNumberValue(String paramValue) {
         isNullCheck(paramValue);
         isEmptyCheck(paramValue);
         isNumberCheck(paramValue);
         isZeroCheck(paramValue);
+    }
+
+    /**
+     * 이름 체크
+     *
+     * @param paramValue
+     */
+    private static void checkNamesValue(String paramValue) {
+        isNullCheck(paramValue);
+        isEmptyCheck(paramValue);
+    }
+
+    private static void checkNameLength(String paramValue) {
+        if (paramValue.length() > 5) {
+            throw new IndexOutOfBoundsException(ErrorMessage.getINDEXOUTOFBOUNDSEXCEPTION());
+        }
     }
 
     /**
