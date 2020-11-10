@@ -39,19 +39,21 @@ public class RacingOperator {
 
     //가장 멀리간 위치 확인
     for (int i = 0; i < numCars; i++) {
-      if (cars.get(i).getPosition() > furthestPosition) {
-        furthestPosition = cars.get(i).getPosition();
-      }
+      furthestPosition = Math.max(furthestPosition, cars.get(i).getPosition());
     }
 
     //이름 뽑아내기
     for (int i = 0; i < numCars; i++) {
-      if (cars.get(i).getPosition() == furthestPosition) {
-        winners.add(cars.get(i).getName());
-      }
+      insertNames(cars.get(i), furthestPosition, winners);
     }
 
     return winners;
+  }
+
+  private void insertNames(Car target, int furthestPosition, List<String> winners) {
+    if (target.getPosition() == furthestPosition) {
+      winners.add(target.getName());
+    }
   }
 
   // 게임에 사용되는 Car 전체의 position을 반환하는 기능
