@@ -22,6 +22,7 @@ public class GameRound {
         if (isGameFinish()) {
             throw new GameEndException();
         }
+
         gameRound++;
     }
 

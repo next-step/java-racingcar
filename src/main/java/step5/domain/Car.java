@@ -19,13 +19,6 @@ public class Car {
         this.name = name;
     }
 
-    public void move(int moveCondition) {
-        if (moveCondition >= MIN_MOVE_CONDITION) {
-            position++;
-        }
-    }
-
-
     private void validateLengthOfCarName(String name) {
         if (name.length() > LIMIT_LENGTH_CAR_NAME) {
             throw new ValidateLengthOfCarName(LIMIT_LENGTH_CAR_NAME);
@@ -38,6 +31,11 @@ public class Car {
         }
     }
 
+    public void move(int moveCondition) {
+        if (moveCondition >= MIN_MOVE_CONDITION) {
+            position++;
+        }
+    }
 
     public int getPosition() {
         return this.position;

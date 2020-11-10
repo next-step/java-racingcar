@@ -27,6 +27,17 @@ public class RacingGame {
         cars = new Cars(splitToCarList(getRacingGameCarNames()));
     }
 
+    private String getRacingGameCarNames() {
+        return racingGameConditionDTO
+                .getCarNames();
+    }
+
+    private List<Car> splitToCarList(String input) {
+        return Arrays.stream(input.split(SPLIT_SEPARATOR))
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
     public static RacingGame of(RacingGameConditionDTO racingGameConditionDTO) {
         return new RacingGame(racingGameConditionDTO);
     }
@@ -44,11 +55,26 @@ public class RacingGame {
                 .getGameRound()
                 .isGameFinish();
     }
+    private GameRound getGameRound() {
+        return racingGameConditionDTO
+                .getGameRound();
+    }
 
     public String getTopPositionCarNames() {
         validGameEnd();
 
         return matchCarsTopPositionToName(getTopPosition(cars.getCarList()));
+    }
+    private void validGameEnd() {
+        if (!getGameRound().isGameFinish()) {
+            throw new NotGameEndException();
+        }
+    }
+    private static Integer getTopPosition(List<Car> carList) {
+        return carList.stream()
+                .map(Car::getPosition)
+                .max(Integer::compare)
+                .orElseThrow(NotCompareIntegerException::new);
     }
 
     private String matchCarsTopPositionToName(int topPosition) {
@@ -59,37 +85,7 @@ public class RacingGame {
                 .collect(Collectors.joining(WINNER_DELIMITER));
     }
 
-    private void validGameEnd() {
-        if (!getGameRound().isGameFinish()) {
-            throw new NotGameEndException();
-        }
-    }
 
-
-    private List<Car> splitToCarList(String input) {
-        return Arrays.stream(input.split(SPLIT_SEPARATOR))
-                .map(Car::new)
-                .collect(Collectors.toList());
-    }
-
-
-    private static Integer getTopPosition(List<Car> carList) {
-        return carList.stream()
-                .map(Car::getPosition)
-                .max(Integer::compare)
-                .orElseThrow(NotCompareIntegerException::new);
-    }
-
-
-    private String getRacingGameCarNames() {
-        return racingGameConditionDTO
-                .getCarNames();
-    }
-
-    private GameRound getGameRound() {
-        return racingGameConditionDTO
-                .getGameRound();
-    }
 
 
 }

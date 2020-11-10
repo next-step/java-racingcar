@@ -15,17 +15,19 @@ public class Cars {
         this.cars = cars;
     }
 
-
-    public void moveCars() {
-        cars.forEach(car -> car.move(MoveCondition.getRandomMoveCondition()));
-    }
-    public List<Car> getCarList() {
-        return cars;
-    }
-
     private void validateCarSize(List<Car> cars) {
         if (cars.size() < CARS_MIN_COUNT) {
             throw new OutBoundCarListSizeException(CARS_MIN_COUNT);
         }
     }
+
+    public void moveCars() {
+        cars.forEach(car -> car.move(MoveCondition.getRandomMoveCondition()));
+    }
+
+    public List<Car> getCarList() {
+        return cars;
+    }
+
+
 }

@@ -9,6 +9,7 @@ public class RacingGameConditionDTO {
 
     private RacingGameConditionDTO(String carNames, int tryCount) {
         this.carNames = carNames;
+
         gameRound = GameRound.of(tryCount);
     }
 
