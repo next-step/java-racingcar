@@ -20,7 +20,7 @@ public class Race {
         NumberValidator.validatePositiveNumber(this.numberOfMoves);
     }
 
-    public void operate(ResultView resultView) {
+    public void run(ResultView resultView) {
         resultView.setSnapShot(cars.clonedCars());
 
         for(int i = 0; i < numberOfMoves; i++) {

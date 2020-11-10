@@ -17,7 +17,7 @@ public class RaceTest {
 
     @BeforeEach
     void setup() {
-        cars = Cars.of("pobi,crong,honux", 1, () -> true);
+        cars = Cars.of(new String[]{"pobi", "crong", "honux"}, 1, () -> true);
     }
 
     private static Stream<Arguments> provideRightRaceParamResult() {
@@ -56,7 +56,7 @@ public class RaceTest {
     @Test
     public void operate_doesNotThrowAnyException() {
         ResultView resultView = ResultView.of("-");
-        assertThatCode(() -> Race.of(3, cars).operate(resultView))
+        assertThatCode(() -> Race.of(3, cars).run(resultView))
                 .doesNotThrowAnyException();
     }
 

@@ -16,6 +16,6 @@ public class Main {
         final String carKind = "-";
         ResultView resultView = ResultView.of(carKind);
 
-        race.operate(resultView);
+        race.run(resultView);
     }
 }
