@@ -32,6 +32,11 @@ public class InputCarData {
      */
     public static String[] checkName(String paramValue) {
         checkNamesValue(paramValue);
+
+        for(String carName : paramValue.split(",")){
+            checkNameLength(carName);
+        }
+
         return paramValue.split(",");
     }
 
@@ -55,7 +60,6 @@ public class InputCarData {
     private static void checkNamesValue(String paramValue) {
         isNullCheck(paramValue);
         isEmptyCheck(paramValue);
-        checkNameLength(paramValue);
     }
 
     private static void checkNameLength(String paramValue) {
