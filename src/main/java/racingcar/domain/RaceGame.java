@@ -27,12 +27,12 @@ public class RaceGame {
         racingCars = new RacingCars(cars);
     }
 
-    public RaceGame start() {
+    public RacingCars start() {
         if (gameRound.isAllRoundFinish()) {
             throw new AlreadyTerminateRaceGameException();
         }
         roundPlay();
-        return this;
+        return racingCars;
     }
 
     private void roundPlay() {
@@ -42,16 +42,4 @@ public class RaceGame {
         gameRound.roundFinish();
     }
 
-
-    public List<Integer> getRoundResult(){
-        return racingCars.getResult();
-    }
-
-    public List<String> getCarNames(){
-        return racingCars.getCarName();
-    }
-
-    public List<String> getWinner() {
-        return racingCars.getWinner();
-    }
 }
