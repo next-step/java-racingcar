@@ -13,7 +13,7 @@ class CarListTest {
     @Test
     @DisplayName("CarList 생성 테스트")
     void successCarListTest() {
-        Car car = Car.makeCar("name");
+        Car car = Car.from("name");
         List<Car> cars = new ArrayList<>();
         cars.add(car);
         CarList carList = CarList.from(cars);

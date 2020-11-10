@@ -17,7 +17,7 @@ public class Car {
         this.currentPosition = currentPosition;
     }
 
-    public static Car makeCar(String name) {
+    public static Car from(String name) {
         return new Car(name);
     }
 

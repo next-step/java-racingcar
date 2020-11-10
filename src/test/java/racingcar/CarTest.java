@@ -12,7 +12,7 @@ class CarTest {
     @ValueSource(ints = {4, 9})
     @DisplayName("자동차 이동 성공 테스트")
     void checkCarMovingSuccess(int value) {
-        Car car = Car.makeCar("name");
+        Car car = Car.from("name");
         car.move(value);
         assertThat(car.getCurrentPosition()).isEqualTo(1);
     }
@@ -21,7 +21,7 @@ class CarTest {
     @ValueSource(ints = {0, 3})
     @DisplayName("자동차 이동 실패 테스트")
     void checkCarMovingFail(int value) {
-        Car car = Car.makeCar("name");
+        Car car = Car.from("name");
         car.move(value);
         assertThat(car.getCurrentPosition()).isEqualTo(0);
     }

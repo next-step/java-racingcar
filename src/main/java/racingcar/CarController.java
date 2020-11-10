@@ -12,7 +12,7 @@ public class CarController {
 
     public CarList initCarList(String[] carNames) {
         List<Car> carList = Arrays.stream(carNames)
-                .map(Car::makeCar)
+                .map(Car::from)
                 .collect(Collectors.toList());
 
         return CarList.from(carList);
