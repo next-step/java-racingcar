@@ -29,5 +29,4 @@ public class Record {
     public String getWinner() {
         return this.winner;
     }
-
 }

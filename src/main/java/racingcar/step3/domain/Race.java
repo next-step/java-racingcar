@@ -43,6 +43,7 @@ public class Race {
                 e.printStackTrace();
             }
         }
+        rv.printTurnOver();
     }
 
 }

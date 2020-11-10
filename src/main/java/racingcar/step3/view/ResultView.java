@@ -34,4 +34,5 @@ public class ResultView {
     public void printWinner(Record record) {
         System.out.println(record.getWinner() + Consts.HAVE_BEEN_A_WINNER);
     }
+
 }
