@@ -9,7 +9,6 @@ import static java.util.stream.Collectors.toList;
 
 public class ResultView {
     private final String carKind;
-    private ArrayList<List<Car>> raceSnapShop = new ArrayList<>();
 
     private final String delimiter = "";
     private final String joinDelimiter = ", ";
@@ -24,16 +23,12 @@ public class ResultView {
         return new ResultView(carKind);
     }
 
-    public void printRace() {
+    public void printRace(ArrayList<List<Car>> raceSnapShop) {
         System.out.println(RESULT_START_MESSAGE);
 
         for (List<Car> cars : raceSnapShop) {
             printCarsPosition(cars);
         }
-    }
-
-    public void setSnapShot(List<Car> cars) {
-        raceSnapShop.add(cars);
     }
 
     private void printCarsPosition(List<Car> cars) {
@@ -46,16 +41,15 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinner() {
-        List<Car> lastSnapShot = raceSnapShop.get(raceSnapShop.size() - 1);
-        int topPosition = lastSnapShot.stream()
+    public void printWinner(List<Car> lastRace) {
+        int topPosition = lastRace.stream()
                 .sorted((a, b) -> b.getPosition() - a.getPosition())
                 .limit(1)
                 .collect(toList())
                 .get(0)
                 .getPosition();
 
-        String winners = lastSnapShot.stream()
+        String winners = lastRace.stream()
                 .filter(car -> car.getPosition() == topPosition)
                 .map(car -> car.name)
                 .collect(joining(joinDelimiter));

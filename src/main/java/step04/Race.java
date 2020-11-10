@@ -2,9 +2,13 @@ package step04;
 
 import validator.NumberValidator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Race {
     private final int numberOfMoves;
     private final Cars cars;
+    private ArrayList<List<Car>> raceSnapShop = new ArrayList<>();
 
     private Race(int numberOfMoves, Cars cars) {
         this.numberOfMoves = numberOfMoves;
@@ -20,16 +24,21 @@ public class Race {
         NumberValidator.validatePositiveNumber(this.numberOfMoves);
     }
 
+    private void setSnapShot(List<Car> cars) {
+        raceSnapShop.add(cars);
+    }
+
     public void run(ResultView resultView) {
-        resultView.setSnapShot(cars.clonedCars());
+        setSnapShot(cars.clonedCars());
 
         for(int i = 0; i < numberOfMoves; i++) {
             cars.move();
-            resultView.setSnapShot(cars.clonedCars());
+            setSnapShot(cars.clonedCars());
         }
 
-        resultView.printRace();
-        resultView.printWinner();
+        resultView.printRace(raceSnapShop);
+        resultView.printWinner(cars.cars);
+
     }
 
 }
