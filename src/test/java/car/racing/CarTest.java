@@ -1,5 +1,6 @@
 package car.racing;
 
+import car.racing.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,10 +14,10 @@ public class CarTest {
     @DisplayName("자동차 전진 테스트")
     @Test
     void verifyCarForward() {
-        Car car = new Car("kyle");
+        Car car = new Car("kyle", 0);
 
         for (int i = 0; i < 10; i++) {
-            car.forward();
+            car.forward(forward -> true);
         }
 
         assertThat(car.getForwardCount()).isEqualTo(10);
@@ -26,7 +27,7 @@ public class CarTest {
     @Test
     void verifyCarInvalidName() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Car("kyleee"))
+                .isThrownBy(() -> new Car("kyleee", 0))
                 .withMessageMatching("이름 길이가 너무 기네요ㅠ");
     }
 

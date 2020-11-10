@@ -1,12 +1,24 @@
 package car.racing;
 
+import car.racing.domain.Car;
+import car.racing.domain.CarRacingGame;
+import car.racing.view.ResultView;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CarRacingFactory {
 
     private static final String DELIMITER = ",";
 
-    static CarRacingViewController newInstance(String names) {
+    public static CarRacingViewController newInstance(String names) {
+        List<Car> cars = Arrays.stream(names.split(DELIMITER))
+                .map(name -> new Car(name, 0))
+                .collect(Collectors.toList());
+
         return new CarRacingViewController(
                 new ResultView(),
-                new CarRacingManager(names.split(DELIMITER), new CarForwardable()));
+                new CarRacingGame(cars, new CarForwardable()));
     }
 }

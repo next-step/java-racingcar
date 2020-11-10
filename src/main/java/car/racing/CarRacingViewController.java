@@ -1,16 +1,19 @@
 package car.racing;
 
 
+import car.racing.domain.CarRacingGame;
+import car.racing.view.ResultViewContract;
+
 import java.util.stream.IntStream;
 
 public class CarRacingViewController {
 
     private final ResultViewContract resultView;
-    private final CarRacingManager carRacingManager;
+    private final CarRacingGame racingGame;
 
-    public CarRacingViewController(ResultViewContract resultView, CarRacingManager carRacingManager) {
+    public CarRacingViewController(ResultViewContract resultView, CarRacingGame racingGame) {
         this.resultView = resultView;
-        this.carRacingManager = carRacingManager;
+        this.racingGame = racingGame;
     }
 
     public void input(int tryCount) {
@@ -22,17 +25,17 @@ public class CarRacingViewController {
     private void forwardCars(int tryCount) {
         IntStream.range(0, tryCount)
                 .forEach(i -> {
-                    carRacingManager.forwardCarEachTry();
+                    racingGame.forwardCarEachTry();
                     showRacingResultEachTry();
                 });
     }
 
     private void showRacingResultEachTry() {
-        carRacingManager.getCars().forEach(resultView::forward);
+        racingGame.getCars().forEach(resultView::forward);
         resultView.newLine();
     }
 
     private void showRacingWinners() {
-        resultView.winners(carRacingManager.racingWinners());
+        resultView.winners(racingGame.findWinners());
     }
 }

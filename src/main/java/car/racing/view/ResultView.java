@@ -1,4 +1,6 @@
-package car.racing;
+package car.racing.view;
+
+import car.racing.domain.Car;
 
 import java.util.List;
 import java.util.stream.IntStream;
