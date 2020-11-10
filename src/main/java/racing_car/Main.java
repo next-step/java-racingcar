@@ -8,7 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
         RacingSpec spec = InputView.enterInput();
+
         RacingRecord racingRecord = new RacingGame(spec).play();
+
         ResultView.drawRacingResult(racingRecord);
     }
 }
