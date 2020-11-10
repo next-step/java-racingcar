@@ -1,9 +1,7 @@
 package step3;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CarRacing {
 
@@ -13,9 +11,11 @@ public class CarRacing {
     private List<Car> cars;
 
     private RaceRoulette raceRoulette = RaceRoulette.simple(9);
+    private RaceResult raceResult = new RaceResult();
 
     public void start() {
         List<String> carNames = getCarNames();
+
         readyToRace(carNames);
 
         int totalTries = getNumOfTries();
@@ -27,6 +27,12 @@ public class CarRacing {
             displayCurrentMovingDistances();
             currentTry++;
         }
+
+        announceRaceWinner();
+    }
+
+    private void announceRaceWinner() {
+        resultView.showRaceWinner(raceResult.findRaceWinners(cars));
     }
 
     private List<String> getCarNames() {
