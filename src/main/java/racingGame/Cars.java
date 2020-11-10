@@ -48,18 +48,12 @@ public class Cars {
     return new Vector<>(Arrays.asList(rawInput.split(",")));
   }
 
-  // Car가 어떻게 움직일 지 만드는 기능.
-  // 아.. Car의 position 상태 변경에 영향을 줌.
-  // 심지어 외부 Game Client에서 받아서 사용하고 있음
-  // position을 변경하려면 3군대에서 고쳐야 됨. 일단은 Cars 안으로만..
-  // 이후 Car 객체 생성할 때 move를 어떻게 할지 지정하는 것으로 하면 될 듯
-  // Car가 알아서 움직이게 해야됨
-  public void moves() {
-    ScoreGenerator scoreGenerator = new RandomScoreGenerator();
-    for (Car car : cars) {
-      car.move(scoreGenerator.generateScore());
-    }
-  }
+  // Car 가 어떻게 움직일 지 만드는 기능.
+  // 아.. Car 의 position 상태 변경에 영향을 줌.
+  // 심지어 외부 Game Client 에서 받아서 사용하고 있음
+  // position 을 변경하려면 3군대에서 고쳐야 됨. 일단은 Cars 안으로만..
+  // 이후 Car 객체 생성할 때 move 를 어떻게 할지 지정하는 것으로 하면 될 듯
+  // 1차 수정: 일단 move 기능 제거 후, RacingOperator 에서 결정하기
 
   public Car get(int index) {
     return cars.get(index);

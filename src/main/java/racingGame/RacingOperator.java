@@ -8,22 +8,28 @@ public class RacingOperator {
 
   /**
    * Car에게 position 변경을 지시하는 역할.
-   *
-   * 1. Car들에게 position을 변경 하도록 지시하는 역할
-   * 2. 동시에 Car 묶음 중에서 필요한 내용을 가져오는 역할 두 가지로 객체를 분할하면 될 듯
    */
   private final Cars cars;
+  private final ScoreGenerator scoreGenerator;
 
-  private RacingOperator(Cars cars) {
+  private RacingOperator(Cars cars, ScoreGenerator scoreGenerator) {
     this.cars = cars;
+    this.scoreGenerator = scoreGenerator;
   }
 
-  public static RacingOperator of(Cars cars){
-    return new RacingOperator(cars);
+  public static RacingOperator of(Cars cars, ScoreGenerator scoreGenerator) {
+    return new RacingOperator(cars, scoreGenerator);
+  }
+
+  public static RacingOperator of(Cars cars) {
+    ScoreGenerator scoreGenerator = new RandomScoreGenerator();
+    return new RacingOperator(cars, scoreGenerator);
   }
 
   public void moves() {
-    cars.moves();
+    for (int i = 0; i < cars.size(); i++) {
+      cars.get(i).move(this.scoreGenerator.generateScore());
+    }
   }
 
   public List<String> extractWinners() {
