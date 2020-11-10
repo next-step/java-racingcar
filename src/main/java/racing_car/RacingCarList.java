@@ -18,11 +18,10 @@ public class RacingCarList {
     }
 
     public LabRecord moveCars() {
-        racingCarList
-                .forEach(Car::move);
         return new LabRecord(
                 racingCarList
                         .stream()
+                        .peek(Car::move)
                         .map(Car::exportRecord)
                         .collect(Collectors.toList())
         );
