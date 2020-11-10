@@ -20,7 +20,6 @@ public class Car {
 
     public String getCarName(){return carName;}
 
-
     public Integer getPosition() {
         return position;
     }

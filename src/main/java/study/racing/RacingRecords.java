@@ -1,9 +1,7 @@
 package study.racing;
 
-
 import java.util.*;
 import java.util.stream.Collectors;
-
 
 
 public class RacingRecords {

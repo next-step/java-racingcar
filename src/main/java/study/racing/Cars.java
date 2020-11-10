@@ -15,10 +15,7 @@ public class Cars {
     }
 
     public void move(RacingMoveStrategy racingMoveStrategy) {
-        cars.forEach(car -> {
-                    car.move(racingMoveStrategy);
-                }
-        );
+        cars.forEach(car -> car.move(racingMoveStrategy));
     }
 
     public List<Car> getCarSet() {

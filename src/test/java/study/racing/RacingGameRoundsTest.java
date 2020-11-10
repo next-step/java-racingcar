@@ -1,14 +1,10 @@
 package study.racing;
 
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import java.util.LinkedList;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingGameRoundsTest {
@@ -37,8 +33,8 @@ public class RacingGameRoundsTest {
         RacingGameRounds racingGameRounds = new RacingGameRounds(rounds);
         racingGameRounds.roundClose();
         int leftover = racingGameRounds.getTries();
-        assertEquals(leftRounds, leftover);
 
+        assertEquals(leftRounds, leftover);
     }
 
     @DisplayName("isEnd 메소드 유효성 테스트")
@@ -47,6 +43,7 @@ public class RacingGameRoundsTest {
     void isEndTest(int rounds, boolean expectedValue){
         RacingGameRounds racingGameRounds = new RacingGameRounds(rounds);
         boolean isEnd = racingGameRounds.isEnd();
+
         assertEquals(expectedValue, isEnd);
 
     }
