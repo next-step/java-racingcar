@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class StringTest {
+class StringTest {
     @Test
     void test1_1() {
         String[] result = "1,2".split(",");
@@ -29,7 +29,7 @@ public class StringTest {
     @DisplayName("a를 가져오는 학습 테스트")
     void test3_1_get_a() {
         char c = "abc".charAt(0);
-        assertThat(c).isEqualTo("a");
+        assertThat(c).isEqualTo('a');
     }
 
     @Test

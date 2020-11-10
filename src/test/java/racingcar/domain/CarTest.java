@@ -16,7 +16,7 @@ class CarTest {
 
     @Test
     @DisplayName("주어진 숫자가 4이상이면, 자동차의 이동거리를 1증가시킨다")
-    public void should_move_car_by_1() {
+     void should_move_car_by_1() {
         //Given
         NumberGenerator numberGenerator = new MovableNumberGenerator();
         Car car = new Car(NAME_OF_CAR, 0);
@@ -30,7 +30,7 @@ class CarTest {
 
     @Test
     @DisplayName("주어진 숫자가 4미만이면, 자동차의 이동거리는 증가하지 않는다.")
-    public void should_not_move_car() {
+     void should_not_move_car() {
         //Given
         NumberGenerator numberGenerator = new NotMovableNumberGenerator();
         Car car = new Car(NAME_OF_CAR, 0);
@@ -39,6 +39,6 @@ class CarTest {
         car.move(numberGenerator);
 
         //Then
-        assertThat(car.getDistance()).isEqualTo(0);
+        assertThat(car.getDistance()).isZero();
     }
 }

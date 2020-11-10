@@ -25,20 +25,20 @@ public class SetCollectionTest {
     }
 
     @Test
-    public void test1() {
+    void test1() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    public void test2(int number) {
+    void test2(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource({"1,true", "4,false", "5,false"})
-    public void test3(int number, boolean expectedResult) {
+    void test3(int number, boolean expectedResult) {
         boolean actualResult = numbers.contains(number);
         assertThat(actualResult).isEqualTo(expectedResult);
     }

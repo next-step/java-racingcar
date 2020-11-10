@@ -30,7 +30,7 @@ class RacingSimulatorTest {
 
     @Test
     @DisplayName("주어진 숫자가 4이상이면, 자동차의 이동거리를 1증가시킨다")
-    public void should_move_cars() {
+     void should_move_cars() {
         //Given
         NumberGenerator movableNumberGenerator = new MovableNumberGenerator();
         RacingSimulator racingSimulator = new RacingSimulator(movableNumberGenerator);
@@ -46,7 +46,7 @@ class RacingSimulatorTest {
 
     @Test
     @DisplayName("주어진 숫자가 4미만이면, 자동차의 이동거리는 증가하지 않는다.")
-    public void should_do_not_move_cars() {
+     void should_do_not_move_cars() {
         //Given
         NumberGenerator notMovableNumberGenerator = new NotMovableNumberGenerator();
         RacingSimulator racingSimulator = new RacingSimulator(notMovableNumberGenerator);
