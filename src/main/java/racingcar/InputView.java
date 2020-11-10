@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class InputView {
-    public RacingDTO setInput(){
+    public RacingDTO setRacingInfo(){
         Map<String, Integer> inputs = new HashMap<String, Integer>();
         Scanner scanner = new Scanner(System.in);
 
