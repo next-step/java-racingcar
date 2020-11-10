@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.model.RaceGame;
-import racingcar.model.RandomCommander;
+import racingcar.domain.RaceGame;
+import racingcar.domain.RandomCommander;
 import racingcar.view.ClientView;
 import racingcar.view.RenderingView;
 

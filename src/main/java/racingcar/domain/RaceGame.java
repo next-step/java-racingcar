@@ -1,6 +1,6 @@
-package racingcar.model;
+package racingcar.domain;
 
-import racingcar.exception.AlreadyTerminateRaceGameException;
+import racingcar.domain.exception.AlreadyTerminateRaceGameException;
 
 import java.util.ArrayList;
 import java.util.List;
