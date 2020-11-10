@@ -1,9 +1,5 @@
 package race.car;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-
 /**
  * 자동차 게임의 정보를 관리하는 객체
  */
