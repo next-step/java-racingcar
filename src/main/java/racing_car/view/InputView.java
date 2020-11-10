@@ -1,7 +1,7 @@
 package racing_car.view;
 
-import racing_car.ErrorMessage;
-import racing_car.RacingSpec;
+import racing_car.common.ErrorMessage;
+import racing_car.domain.RacingSpec;
 
 import java.util.Arrays;
 import java.util.List;

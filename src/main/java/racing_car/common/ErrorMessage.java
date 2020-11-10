@@ -1,4 +1,4 @@
-package racing_car;
+package racing_car.common;
 
 public class ErrorMessage {
 

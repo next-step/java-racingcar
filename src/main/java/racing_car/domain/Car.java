@@ -1,6 +1,7 @@
-package racing_car;
+package racing_car.domain;
 
-import racing_car.strategy.MoveStrategy;
+import racing_car.common.ErrorMessage;
+import racing_car.domain.strategy.MoveStrategy;
 
 public class Car {
 

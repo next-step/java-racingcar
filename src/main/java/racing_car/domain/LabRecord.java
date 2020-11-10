@@ -1,4 +1,6 @@
-package racing_car;
+package racing_car.domain;
+
+import racing_car.common.ErrorMessage;
 
 import java.util.Collections;
 import java.util.List;
