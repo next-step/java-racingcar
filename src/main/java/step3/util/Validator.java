@@ -21,18 +21,4 @@ public class Validator {
         }
     }
 
-    public static void checkEmpty(String input) {
-        if (Objects.isNull(input) || input.isEmpty()
-                || "".equals(input) || " ".equals(input)) {
-            throw new IllegalArgumentException("경주할 차 이름의 입력값이 없습니다.");
-        }
-    }
-
-    public static void checkLength(String input, int length) {
-        if (input.length() > length) {
-            throw new IllegalArgumentException(
-                    String.format("자동차 이름은 %s 자를 초과할 수 없습니다.", length));
-        }
-    }
-
 }

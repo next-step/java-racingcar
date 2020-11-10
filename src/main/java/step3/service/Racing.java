@@ -27,7 +27,6 @@ public class Racing {
     }
 
     public static Racing of(String carNames, int rounds) {
-        Validator.checkEmpty(carNames);
         Validator.checkArgumentInRange(rounds, 1);
 
         return new Racing(carNames, rounds);

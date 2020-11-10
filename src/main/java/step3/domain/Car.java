@@ -3,6 +3,8 @@ package step3.domain;
 import step3.service.strategy.MoveStrategy;
 import step3.util.Validator;
 
+import java.util.Objects;
+
 /**
  * Created By mand2 on 2020-11-04.
  * 자동차 객체
@@ -18,8 +20,8 @@ public class Car {
     }
 
     public Car(String name, int step) {
-        Validator.checkEmpty(name);
-        Validator.checkLength(name, MAXIMUM_CAR_NAME_LENGTH);
+        checkEmpty(name);
+        checkLength(name, MAXIMUM_CAR_NAME_LENGTH);
 
         this.name = name;
         this.step = step;
@@ -43,4 +45,17 @@ public class Car {
         this.step = this.step + moveStrategy.move();
     }
 
+    private static void checkEmpty(String input) {
+        if (Objects.isNull(input) || input.isEmpty()
+                || "".equals(input) || " ".equals(input)) {
+            throw new IllegalArgumentException("경주할 차 이름의 입력값이 없습니다.");
+        }
+    }
+
+    private static void checkLength(String input, int length) {
+        if (input.length() > length) {
+            throw new IllegalArgumentException(
+                    String.format("자동차 이름은 %s 자를 초과할 수 없습니다.", length));
+        }
+    }
 }
