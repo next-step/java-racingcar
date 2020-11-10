@@ -7,8 +7,8 @@ public class Car {
     static final int THROTTLE_MAX = 10;
     static final int THROTTLE_MOVE_MIN = 4;
 
-    protected final Random random = new Random();
-    protected int position = 0;
+    private final Random random = new Random();
+    private int position = 0;
 
     public void run(int throttle) {
         if (throttle < THROTTLE_MIN || throttle >= THROTTLE_MAX)
