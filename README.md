@@ -25,5 +25,9 @@
     - 자동차 대수 입력 (NumberOfCars)
     - 시도할 횟수 입력 (NumberOfAttempts)
 
+1. Car
+    - boolean에 따른 position값 변동
+        - random값이 4 이상일 경우 position을 증가 시킨다.
+
 1. Main
     - 자동차 대수와 시도할 횟수를 입력받는다.
