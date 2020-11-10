@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.application.CarsGenerator;
 import racingcar.application.RacingSimulator;
+import racingcar.application.number.NumberGenerator;
 import racingcar.application.number.RandomNumberGenerator;
 import racingcar.domain.Car;
 import racingcar.view.InputView;
@@ -17,7 +18,7 @@ public class MainSimulator {
         ResultView resultView = new ResultView();
         CarsGenerator carsGenerator = new CarsGenerator();
 
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         RacingSimulator racingSimulator = new RacingSimulator(randomNumberGenerator);
 
         String carName = inputView.insertNameOfCars();
@@ -26,11 +27,10 @@ public class MainSimulator {
         List<Car> cars = carsGenerator.generateCars(carName);
 
         resultView.printHeader();
+        racingSimulator.race(cars, racingCount);
 
-        for (int i = 0; i < racingCount; i++) {
-            racingSimulator.moveCars(cars);
-            resultView.printDistanceOfCar(cars);
-        }
+        List<String> winnersNames = racingSimulator.getWinnersNames(cars);
+        resultView.printWinners(winnersNames);
 
     }
 }
