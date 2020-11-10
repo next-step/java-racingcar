@@ -1,7 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import static racingcar.RacingCarGame.createRacingCars;
 
 public class RacingCarGameManager {
     public static void main(String[] args) {
@@ -13,16 +12,7 @@ public class RacingCarGameManager {
 
         RacingCarGame game = new RacingCarGame(new RacingCarGroups(createRacingCars(carNames)), numberOfRounds);
         game.runGame();
-    }
 
-    public static List<RacingCar> createRacingCars(String carNames) {
-        String[] names = carNames.split(",");
-
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            RacingCar racingCar = new RacingCar(names[i].replaceAll(" ", ""), new GoStraightBehavior());
-            racingCars.add(racingCar);
-        }
-        return racingCars;
+        ResultView.displayWinner(game.getWinners());
     }
 }

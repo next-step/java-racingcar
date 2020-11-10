@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.RacingCarGameManager.createRacingCars;
+import static racingcar.RacingCarGame.createRacingCars;
 
 public class TestRacingCarGame {
     RacingCarGame racingCarGame;
@@ -43,5 +43,14 @@ public class TestRacingCarGame {
         racingCarGame.runGame();
         assertThat(racingCarGame.getRacingCarGroups().getRacingCars().get(index).getDistance())
                 .isLessThanOrEqualTo(rounds);
+    }
+
+    @DisplayName("자동차 게임 우승자 결과")
+    @ParameterizedTest
+    @CsvSource({"BBBB,2,BBBB", "CCCCC,5,CCCCC" })
+    void test_run_game_winner(String cars, int rounds, String winner) {
+        racingCarGame = new RacingCarGame(new RacingCarGroups(createRacingCars(cars)), rounds);
+        racingCarGame.runGame();
+        assertThat(racingCarGame.getWinners().get(0)).isEqualTo(winner);
     }
 }

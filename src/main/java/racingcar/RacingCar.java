@@ -1,14 +1,14 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingCar {
     private int distance;
     private String name;
-    private RacingCarMoveBehavior racingCarMoveBehavior;
 
-    public RacingCar(String name, RacingCarMoveBehavior racingCarMoveBehavior) {
+    public RacingCar(String name) {
         this.distance = 0;
         this.name = name;
-        this.racingCarMoveBehavior = racingCarMoveBehavior;
     }
 
     public int getDistance() {
@@ -19,17 +19,14 @@ public class RacingCar {
         return name;
     }
 
-    public void move() {
-        distance = this.racingCarMoveBehavior.action(distance);
+    public void move(RacingCarMoveBehavior racingCarMoveBehavior) {
+        distance = racingCarMoveBehavior.action(distance);
     }
 
-    public void display() {
-        if (distance != 0) {
-            System.out.print(name + " : ");
+    public List<String> isWinner(List<String> winners, int condition) {
+        if (distance == condition) {
+            winners.add(name);
         }
-        for(int i = 0; i < distance; i++) {
-            System.out.print('-');
-        }
-        System.out.println();
+        return winners;
     }
 }

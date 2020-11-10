@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGroups {
@@ -15,14 +16,23 @@ public class RacingCarGroups {
 
     public void move() {
         for(int i = 0; i < racingCars.size(); i++) {
-            racingCars.get(i).move();
+            racingCars.get(i).move(new GoStraightBehavior());
         }
     }
 
-    public void display() {
-        for(int i = 0; i < racingCars.size(); i++) {
-            racingCars.get(i).display();
+    public List<String> findWinners(int condition) {
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i< racingCars.size(); i++) {
+            racingCars.get(i).isWinner(winners, condition);
         }
-        System.out.println();
+        return winners;
+    }
+
+    public int getMaxDistance() {
+        int max = racingCars.get(0).getDistance();
+        for (int i = 1; i < racingCars.size(); i++) {
+            max = Math.max(racingCars.get(i).getDistance(), max);
+        }
+        return max;
     }
 }
