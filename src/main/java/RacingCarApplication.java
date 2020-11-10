@@ -1,3 +1,4 @@
+import racingcar.domain.RacingResult;
 import racingcar.domain.RandomStrategyGenerator;
 import racingcar.domain.Racing;
 import racingcar.ui.InputView;
@@ -12,8 +13,10 @@ public class RacingCarApplication {
 
         Racing racing = new Racing(carNames, numberOfTries);
         racing.setStrategyGenerator(new RandomStrategyGenerator());
-        String result = racing.race();
+        racing.race();
 
-        ResultView.print(result);
+        RacingResult racingResult = racing.getRacingResult();
+
+        ResultView.print(racingResult);
     }
 }

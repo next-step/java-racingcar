@@ -1,41 +1,68 @@
 package racingcar.domain;
 
-import racingcar.common.Constants;
-
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Racing {
     private int numberOfTries;
     private StrategyGenerator strategyGenerator;
+    private RacingResult racingResult;
     private List<Car> cars = new ArrayList<>();
-    private StringBuilder sb = new StringBuilder();
+
 
     public Racing(List<String> carNames, int numberOfTries){
         this.numberOfTries = numberOfTries;
+        this.racingResult = new RacingResult();
 
         for(int i = 0; i < carNames.size(); i++) {
             cars.add(new Car(carNames.get((i))));
         }
     }
 
+    public RacingResult getRacingResult(){
+        return racingResult;
+    }
+
     public void setStrategyGenerator(StrategyGenerator strategyGenerator) {
         this.strategyGenerator = strategyGenerator;
     }
 
-    public String race() {
+    public void race() {
+        clearRacingResultAndWinners();
+        makeMovingHistoryByTry();
+        decideWinners();
+    }
+
+    private void clearRacingResultAndWinners(){
+        racingResult.clear();
+    }
+
+    private void makeMovingHistoryByTry(){
         for(int i = 0; i < numberOfTries; i++) {
-            cars.stream().map(c -> c.move(strategyGenerator.generate())).forEach(sb::append);
-            sb.append(Constants.NEW_LINE_DELIMITER);
+            Map<String,Integer> resultMap = fetchMovingResult();
+            racingResult.addMovingHistoryByTry(resultMap);
+        }
+    }
+
+    private void decideWinners() {
+        int max = cars.stream().mapToInt(car -> car.getNumberOfMoves()).max().getAsInt();
+        List<String> winners = cars.stream().filter(car -> car.getNumberOfMoves() == max)
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
+
+        racingResult.setWinners(winners);
+    }
+
+    private Map<String, Integer> fetchMovingResult() {
+        Map<String, Integer> resultMap = new LinkedHashMap<>();
+
+        for(Car car : cars){
+            car.move(strategyGenerator.generate());
+            resultMap.put(car.getName(), car.getNumberOfMoves());
         }
 
-        int max = cars.stream().mapToInt(car -> car.getNumberOfMoves()).max().getAsInt();
-        String[] winnerNames = cars.stream().filter(car -> car.getNumberOfMoves() == max)
-                .map(car -> car.getName())
-                .toArray(String[]::new);
-
-        sb.append(String.join(Constants.COMMA_DELIMITER.concat(Constants.WHITE_SPACE_DELIMITER), winnerNames))
-          .append(Constants.THE_WINNER_IS);
-
-        return sb.toString();
+        return resultMap;
     }
+
+
 }

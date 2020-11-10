@@ -14,20 +14,6 @@ public class CarTest {
 
     private final String TEST_NAME = "test";
 
-
-    private final String RESULT_OF_A_FORWARD_CAR = TEST_NAME.concat(Constants.WHITE_SPACE_DELIMITER)
-            .concat(Constants.COLON_DELIMITER)
-            .concat(Constants.WHITE_SPACE_DELIMITER)
-            .concat(Constants.HYPHEN_DELIMITER)
-            .concat(Constants.NEW_LINE_DELIMITER);
-
-    private final String RESULT_OF_A_STOPPED_CAR = TEST_NAME.concat(Constants.WHITE_SPACE_DELIMITER)
-            .concat(Constants.COLON_DELIMITER)
-            .concat(Constants.WHITE_SPACE_DELIMITER)
-            .concat(Constants.BLANK_DELIMITER)
-            .concat(Constants.NEW_LINE_DELIMITER);
-
-
     @BeforeEach
     void setUp(){
         car = new Car(TEST_NAME);
@@ -36,12 +22,16 @@ public class CarTest {
     @Test
     @DisplayName("ForwardStrategy 전략 하에서의 Car의 move() 테스트")
     void moveTest_whenGivenForwardStrategy(){
-        assertThat(car.move(forwardStrategy)).isEqualTo(RESULT_OF_A_FORWARD_CAR);
+        int before = car.getNumberOfMoves();
+        car.move(forwardStrategy);
+        assertThat(car.getNumberOfMoves()).isEqualTo(before + 1);
     }
 
     @Test
     @DisplayName("StopStrategy 전략 하에서의 Car의 move() 테스트")
     void moveTest_whenGivenStopStrategy(){
-        assertThat(car.move(stopStrategy)).isEqualTo(RESULT_OF_A_STOPPED_CAR);
+        int before = car.getNumberOfMoves();
+        car.move(stopStrategy);
+        assertThat(car.getNumberOfMoves()).isEqualTo(before);
     }
 }
