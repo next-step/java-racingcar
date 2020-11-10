@@ -50,23 +50,22 @@ public class StringCalculator {
 
     private static void isCorrectOperator(String[] input) {
         IntStream.range(0, input.length)
-                .filter(i -> i%2 != 0)
-                .mapToObj(i -> input[i])
-                .filter(j -> j.matches(OPERATOR_PATTERN))
+                .filter(inputIndex -> inputIndex%2 != 0)
+                .mapToObj(str -> input[str])
+                .filter(filteredStr -> filteredStr.matches(OPERATOR_PATTERN))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(CustomErrorMessage.ILLEGAL_OPERATOR.getErrorMessage()));
     }
 
     private static void isNumericString(String[] input) {
-         List<String> operands = IntStream.range(0, input.length)
-                .filter(a -> a%2 == 0)
-                .mapToObj(a -> input[a]).collect(Collectors.toList());
-
-         operands.stream().forEach(x -> {
-             if(!x.matches(OPERAND_PATTERN)){
-                 throw new IllegalArgumentException(CustomErrorMessage.ILLEGAL_OPERAND.getErrorMessage());
-             }
-         });
+        IntStream.range(0, input.length)
+                .filter(inputIndex -> inputIndex%2 == 0)
+                .mapToObj(str -> input[str])
+                .filter(filteredStr -> !(filteredStr.matches(OPERAND_PATTERN)))
+                .findFirst()
+                .ifPresent(result -> {
+                    throw new IllegalArgumentException(CustomErrorMessage.ILLEGAL_OPERAND.getErrorMessage());
+                });
     }
 
 
