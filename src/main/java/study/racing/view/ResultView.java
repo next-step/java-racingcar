@@ -13,11 +13,13 @@ public class ResultView {
     private static final String WINNER_HEAD_MESSAGE = "우승자는?\n";
     private static final String WINNER_DELIMITER = ",";
 
-    public void showResultHead() {
+    private ResultView(){}
+
+    public static void showResultHead() {
         System.out.println(RESULT_HEAD_MESSAGE);
     }
 
-    public void showResult(RacingRecords racingResults) {
+    public static void showResult(RacingRecords racingResults) {
         String racingHistory = racingResults.getRecordList().stream()
                 .map(racingRecord -> showRoundResult(racingRecord)).collect(Collectors.joining("\n\n"));
 
@@ -30,12 +32,12 @@ public class ResultView {
 
     }
 
-    private String showRoundResult(RacingRecord racingRecord) {
+    private static String showRoundResult(RacingRecord racingRecord) {
         return racingRecord.getSingleRecords().stream()
                 .map(record ->getRecordByEachCar(record.getPosition(), record.getCarName())).collect(Collectors.joining("\n"));
     }
 
-    private String getRecordByEachCar(int position, String carName) {
+    private static String getRecordByEachCar(int position, String carName) {
         return carName + ": " + IntStream.range(0, position)
                 .mapToObj(i -> FORWARD_STRING).collect(Collectors.joining());
     }
