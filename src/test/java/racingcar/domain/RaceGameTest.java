@@ -62,14 +62,32 @@ public class RaceGameTest {
         RaceGame raceGame = new RaceGame(carNames, totalRound, new RandomCommander());
 
         //When
+        RacingCars cars = null;
         for (int i = 0; i < totalRound; i++) {
-            raceGame = raceGame.start();
+            cars = raceGame.start();
         }
-        List<String> winner = raceGame.getWinner();
+        List<String> winner = cars.getWinner();
 
         //Then
         assertThat(winner.size()).isGreaterThan(0);
 
 
+    }
+
+    @DisplayName("한 라운드 결과 테스트")
+    @ParameterizedTest
+    @MethodSource("createCarNames")
+    public void getResult(String[] carNames) {
+
+        //Given
+        int totalRound = 3;
+        RaceGame raceGame = new RaceGame(carNames, totalRound, new RandomCommander());
+
+        //When
+        RacingCars cars = raceGame.start();
+        List<Integer> result = cars.getResult();
+
+        //Then
+        assertThat(result).hasSize(carNames.length);
     }
 }
