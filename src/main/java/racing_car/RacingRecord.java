@@ -1,15 +1,15 @@
 package racing_car;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingRecord {
 
-    private List<LabRecord> labRecordList = new ArrayList<>();
+    private List<LabRecord> labRecordList;
 
-    public void addLabRecord(LabRecord labRecord) {
-        this.labRecordList.add(labRecord);
+    public RacingRecord(List<LabRecord> labRecordList) {
+        this.labRecordList = Collections.unmodifiableList(labRecordList);
     }
 
     public List<LabRecord> toLabRecordList() {

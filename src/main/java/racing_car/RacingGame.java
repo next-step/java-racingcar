@@ -1,5 +1,7 @@
 package racing_car;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class RacingGame {
@@ -13,15 +15,13 @@ public class RacingGame {
     }
 
     public RacingRecord play() {
-        RacingRecord racingRecord = new RacingRecord();
+        List<LabRecord> labRecords = new ArrayList<>();
         IntStream
                 .range(0, racingSpec.getLab())
                 .forEach(i -> {
-                    racingRecord.addLabRecord(
-                            racingCarList.moveCars()
-                    );
+                    labRecords.add(racingCarList.moveCars());
                 });
-        return racingRecord;
+        return new RacingRecord(labRecords);
     }
 
 }

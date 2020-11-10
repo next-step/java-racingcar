@@ -1,9 +1,11 @@
 package racing_car;
 
+import org.assertj.core.internal.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,12 +23,9 @@ class RacingRecordTest {
         recordList.add(new Record("자바", 2));
         recordList.add(new Record("영희", 3));
         recordList.add(new Record("파이썬", 4));
-
-
         LabRecord labRecord = new LabRecord(recordList);
 
-        RacingRecord racingRecord = new RacingRecord();
-        racingRecord.addLabRecord(labRecord);
+        RacingRecord racingRecord = new RacingRecord(Arrays.asList(labRecord));
 
         //when
         List<String> finalLabWinnersName = racingRecord.getFinalLabWinnersName();
@@ -49,12 +48,9 @@ class RacingRecordTest {
         recordList.add(new Record("자바", 2));
         recordList.add(new Record("영희", 4));
         recordList.add(new Record("파이썬", 4));
-
-
         LabRecord labRecord = new LabRecord(recordList);
 
-        RacingRecord racingRecord = new RacingRecord();
-        racingRecord.addLabRecord(labRecord);
+        RacingRecord racingRecord = new RacingRecord(Arrays.asList(labRecord));
 
         //when
         List<String> finalLabWinnersName = racingRecord.getFinalLabWinnersName();
