@@ -4,7 +4,6 @@ import java.util.function.BinaryOperator;
 
 public enum FourPointOperation {
 
-
     PLUS("+", (x, y) -> x + y),
     MINUS("-", (x, y) -> x - y),
     TIMES("*", (x, y) -> x * y),
@@ -27,7 +26,6 @@ public enum FourPointOperation {
 
         throw new NullPointerException("operator is null");
     }
-
 
     public Integer calculate(int a, int b) {
         return this.expression.apply(a, b);

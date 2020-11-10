@@ -1,10 +1,12 @@
 package racingcar;
 
+import racingcar.application.CarsGenerator;
 import racingcar.application.RacingSimulator;
 import racingcar.domain.Car;
-import racingcar.application.CarsGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
+
+import java.util.List;
 
 public class MainSimulator {
 
@@ -15,23 +17,17 @@ public class MainSimulator {
         CarsGenerator carsGenerator = new CarsGenerator();
         RacingSimulator racingSimulator = new RacingSimulator();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int countOfCar = inputView.insertCount();
-        System.out.println("시도할 회수는 몇 회 인가요?");
+        String nameOfCars = inputView.insertNameOfCars();
         int countOfRacing = inputView.insertCount();
 
-        Car[] cars = carsGenerator.generateCars(countOfCar);
+        List<Car> cars = carsGenerator.generateCars(nameOfCars);
 
-        if (cars.length == 0) {
-            return;
-        }
-
-        System.out.println("실행 결과");
-
+//        racingSimulator.race(cars, countOfRacing);
+//TODO 경주결과 한번에 뽑기
         for (int i = 0; i < countOfRacing; i++) {
-            racingSimulator.race(cars);
+            racingSimulator.moveCars(cars);
             resultView.printDistanceOfCar(cars);
-            System.out.println("");
         }
+
     }
 }

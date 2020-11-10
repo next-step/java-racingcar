@@ -2,7 +2,9 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 
+
 import org.junit.jupiter.api.DisplayName;
+
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,7 +26,6 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource({"4 + 4,8", "2 - 20, -18", "4 * 2,8", "3 / 1,3"})
     @DisplayName("단일 사칙연산 기능 테스트")
-
     public void four_point_operation_test(String input, String output) {
         assertThat(calculator.calculate(input)).isEqualTo(output);
     }
