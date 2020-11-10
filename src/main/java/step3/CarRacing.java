@@ -14,18 +14,17 @@ public class CarRacing {
     private RaceResult raceResult = new RaceResult();
 
     public void start() {
-        List<String> carNames = getCarNames();
-
-        readyToRace(carNames);
+        readyToRace(getCarNames());
 
         int totalTries = getNumOfTries();
+        if (totalTries < 1) throw new RuntimeException("Invalid Input - totalTries is " + totalTries);
+
         int currentTry = 1;
         System.out.println("실행 결과");
 
-        while (currentTry <= totalTries) {
+        while (currentTry++ <= totalTries) {
             tryMovingAllCars();
             displayCurrentMovingDistances();
-            currentTry++;
         }
 
         announceRaceWinner();
@@ -40,22 +39,12 @@ public class CarRacing {
     }
 
     private int getNumOfTries() {
-        try {
-            return inputView.getNumOfTries();
-        } catch (RuntimeException e){
-            System.err.println("시도할 횟수는 1이상 정수 만 입력 가능합니다.");
-            throw e;
-        }
+        return inputView.getNumOfTries();
     }
 
     private void readyToRace(List<String> carNames) {
-        try {
-            this.cars = new ArrayList<>(carNames.size());
-            carNames.forEach(it -> cars.add(new Car(it)));
-        } catch(InvalidCarNameException e){
-            System.err.println("자동차이름은 5자를 초과 할 수 없고 쉼표(,)로 구분하여 입력해야 합니다.");
-            throw e;
-        }
+        this.cars = new ArrayList<>(carNames.size());
+        carNames.forEach(it -> cars.add(new Car(it)));
     }
 
     private void displayCurrentMovingDistances() {
@@ -63,7 +52,7 @@ public class CarRacing {
     }
 
     private void tryMovingAllCars() {
-        this.cars.forEach(it -> it.moveIf( () -> raceRoulette.spin() >= 4 ));
+        this.cars.forEach(it -> it.moveIf(() -> raceRoulette.spin() >= 4));
     }
 
     public static void main(String[] args) {

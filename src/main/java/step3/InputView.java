@@ -8,8 +8,6 @@ public class InputView {
 
     private Scanner scanner;
 
-    private CarRacingPropertyValidator propertyValidator = new CarRacingPropertyValidator();
-
     public InputView() {
         this.scanner = new Scanner(System.in);
     }
@@ -21,9 +19,7 @@ public class InputView {
     }
 
     public int getNumOfTries() {
-        int value = getNumberFromStdin("시도할 회수는 몇 회 인가요?");
-        propertyValidator.validate(value);
-        return value;
+        return getNumberFromStdin("시도할 회수는 몇 회 인가요?");
     }
 
 
