@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +25,26 @@ public class Winners implements Comparable<Integer> {
     }
 
     private void checkPlayerRecordWithComparing(String name, int position) {
-        int comparison = compareTo(position);
-        if (comparison == 0) {
-            names.add(name);
+        if (checkPlayerRecordSame(name, position))
             return;
-        }
 
+        checkPlayerRecordHigh(name, position);
+    }
+
+    private void checkPlayerRecordHigh(String name, int position) {
+        int comparison = compareTo(position);
         if (comparison < 0) {
             addPlayerRecordWithReset(name, position);
         }
+    }
+
+    private boolean checkPlayerRecordSame(String name, int position) {
+        int comparison = compareTo(position);
+        if (comparison == 0) {
+            names.add(name);
+            return true;
+        }
+        return false;
     }
 
     private boolean checkPlayerRecordIsFirst(String name, int position) {
