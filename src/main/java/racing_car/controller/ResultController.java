@@ -10,8 +10,6 @@ import java.util.stream.IntStream;
 public class ResultController {
 
     private static final String RACING_DASH = "-";
-    private static final String NEW_LINE = "\n";
-    private static final String DOUBLE_NEW_LINE = "\n\n";
     private static final String USERS_DELIMITER = ", ";
     private static final String NOTI_WINNER_USER_MESSAGE_FORMAT = "%s가 최종 우승 했습니다.";
     private static final String LAB_STATE_MESSAGE_FORMAT = "%s : %s";
@@ -23,7 +21,7 @@ public class ResultController {
     private static String buildRacingResultString(RacingRecord racingRecord) {
         StringBuilder sb = new StringBuilder();
         sb.append(buildRacingStateString(racingRecord));
-        sb.append(NEW_LINE);
+        sb.append(System.lineSeparator());
         sb.append(buildWinnerMessage(racingRecord));
         return sb.toString();
     }
@@ -33,7 +31,7 @@ public class ResultController {
                 .stream()
                 .map(ResultController::buildLabStateString)
                 .collect(
-                        Collectors.joining(DOUBLE_NEW_LINE));
+                        Collectors.joining(System.lineSeparator() + System.lineSeparator()));
     }
 
     private static String buildWinnerMessage(RacingRecord racingRecord) {
@@ -58,7 +56,7 @@ public class ResultController {
                 .map(ResultController::buildRecordStateString)
                 .collect(
                         Collectors
-                                .joining(NEW_LINE)
+                                .joining(System.lineSeparator())
                 );
     }
 
