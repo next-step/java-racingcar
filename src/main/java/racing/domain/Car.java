@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.strategy.MoveStrategy;
+
 public class Car {
     private int position;
 
@@ -7,8 +9,8 @@ public class Car {
         this.position = 0;
     }
 
-    public void move(boolean isMove) {
-        if (isMove) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMoveable()) {
             this.position++;
         }
     }
