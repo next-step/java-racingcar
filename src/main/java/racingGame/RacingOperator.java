@@ -10,26 +10,22 @@ public class RacingOperator {
    * Car에게 position 변경을 지시하는 역할.
    */
   private final Cars cars;
-  private final ScoreGenerator scoreGenerator;
+  private int currentRound;
 
-  private RacingOperator(Cars cars, ScoreGenerator scoreGenerator) {
+  private RacingOperator(Cars cars) {
     this.cars = cars;
-    this.scoreGenerator = scoreGenerator;
-  }
-
-  public static RacingOperator of(Cars cars, ScoreGenerator scoreGenerator) {
-    return new RacingOperator(cars, scoreGenerator);
+    this.currentRound = 1;
   }
 
   public static RacingOperator of(Cars cars) {
-    ScoreGenerator scoreGenerator = new RandomScoreGenerator();
-    return of(cars, scoreGenerator);
+    return new RacingOperator(cars);
   }
 
-  public void moves() {
+  public void moves(ScoreGenerator scoreGenerator) {
     for (int i = 0; i < cars.size(); i++) {
-      cars.get(i).move(this.scoreGenerator.generateScore());
+      cars.get(i).move(scoreGenerator.generateScore());
     }
+    this.currentRound += 1;
   }
 
   public List<String> extractWinners() {
@@ -68,10 +64,10 @@ public class RacingOperator {
 
   // 게임에 사용되는 Car 전체의 position을 반환하는 기능
   public List<Integer> getPositions() {
-    List<Integer> positions = new Vector<>(cars.size());
+    List<Integer> positions = new Vector<>();
 
     for (int i = 0; i < cars.size(); i++) {
-      positions.add(i, cars.get(i).getPosition());
+      positions.add(cars.get(i).getPosition());
     }
 
     return positions;
@@ -85,5 +81,9 @@ public class RacingOperator {
     }
 
     return status;
+  }
+
+  public boolean finished(int numRound) {
+    return currentRound > numRound;
   }
 }

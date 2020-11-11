@@ -9,14 +9,13 @@ public class GameClient {
   private static void runGame(RacingOperator racingOperator, int numRound) {
     validateRound(numRound);
 
-    int currentRound = 1;
+    ScoreGenerator scoreGenerator = new RandomScoreGenerator();
 
     ResultView.printResultMessage();
 
-    while (!isFinished(currentRound, numRound)) {
-      racingOperator.moves();
+    while (!racingOperator.finished(numRound)) {
+      racingOperator.moves(scoreGenerator);
       ResultView.printCurrentStatusWithName(racingOperator.getCurrentCarsStatus());
-      currentRound += 1;
     }
 
     ResultView.printWinner(racingOperator.extractWinners());

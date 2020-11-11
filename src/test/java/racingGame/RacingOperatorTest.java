@@ -10,22 +10,23 @@ import org.junit.jupiter.api.Test;
 
 class RacingOperatorTest {
 
-  private RacingOperator racingOperator;
   private Cars cars;
+  private RacingOperator racingOperator;
+  private ScoreGenerator scoreGenerator;
 
   @BeforeEach
   void setUp() {
     String rawInput = "a,b,c,d";
-    ScoreGenerator scoreGenerator = new DummyScoreGenerator();
     this.cars = Cars.of(rawInput);
-    this.racingOperator = RacingOperator.of(this.cars, scoreGenerator);
+    this.racingOperator = RacingOperator.of(this.cars);
+    this.scoreGenerator = new DummyScoreGenerator();
   }
 
 
   @DisplayName("move 테스트")
   @Test
   void testMoveExactly() {
-    this.racingOperator.moves();
+    this.racingOperator.moves(this.scoreGenerator);
     List<Integer> expected = new Vector<>();
     expected.add(1);
     expected.add(0);
@@ -39,7 +40,7 @@ class RacingOperatorTest {
   @DisplayName("우승자 테스트")
   @Test
   void whoIsWinner() {
-    this.racingOperator.moves();
+    this.racingOperator.moves(this.scoreGenerator);
     List<String> expected = new Vector<>();
     expected.add("a");
     expected.add("c");
