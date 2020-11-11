@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.model.Car;
+import racing.model.RacingCars;
 
 import java.util.stream.IntStream;
 
@@ -11,8 +12,8 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public void printCarsLocation(Car[] cars) {
-        for (Car car : cars) {
+    public void printRacingResult(RacingCars cars) {
+        for (Car car : cars.getCandidates()) {
             IntStream.rangeClosed(0, car.currentLocation())
                     .forEach(x -> System.out.print("-"));
             System.out.println();
