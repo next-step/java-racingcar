@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -59,19 +60,20 @@ public class RaceGameTest {
 
         //Given
         int totalRound = 3;
-        RaceGame raceGame = new RaceGame(carNames, totalRound, new RandomCommander());
+        RaceGame raceGame = new RaceGame(carNames, totalRound, () -> true);
 
         //When
         RacingCars cars = null;
         for (int i = 0; i < totalRound; i++) {
             cars = raceGame.start();
         }
-        List<String> winner = cars.getWinner();
+        List<RacingCar> winner = cars.getWinner();
 
         //Then
-        assertThat(winner.size()).isGreaterThan(0);
-
-
+        assertThat(winner).hasSize(carNames.length);
+        assertThat(winner.get(0)).isEqualTo(new RacingCar(carNames[0], totalRound+1));
+        assertThat(winner.get(1)).isEqualTo(new RacingCar(carNames[1], totalRound+1));
+        assertThat(winner.get(2)).isEqualTo(new RacingCar(carNames[2], totalRound+1));
     }
 
     @DisplayName("한 라운드 결과 테스트")
@@ -94,7 +96,7 @@ public class RaceGameTest {
     @DisplayName("모든 라운드를 소진하는 확인하는 테스트")
     @ParameterizedTest
     @MethodSource("createCarNames")
-    public void isAllRoundFinishTest(String[] carNames){
+    public void isAllRoundFinishTest(String[] carNames) {
 
         //Given
         int totalRound = 10;
