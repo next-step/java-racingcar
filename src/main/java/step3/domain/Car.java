@@ -35,18 +35,13 @@ public class Car {
     public int getStep() {
         return this.step;
     }
-
+ 
     public String getName() {
         return name;
     }
 
-
     public void forward(MoveStrategy moveStrategy) {
         this.step = this.step + moveStrategy.move();
-    }
-
-    private int move(int score) {
-        return score >= MOVE_JUDGE_NUMBER ? 1 : 0;
     }
 
     private static void checkEmpty(String input) {
