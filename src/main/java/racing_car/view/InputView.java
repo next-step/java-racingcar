@@ -1,7 +1,7 @@
-package racing_car.controller;
+package racing_car.view;
 
-import racing_car.ErrorMessage;
-import racing_car.RacingSpec;
+import racing_car.common.ErrorMessage;
+import racing_car.domain.RacingSpec;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class InputController {
+public class InputView {
 
     private static final String CAR_COUNT_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String MOVE_COUNT_QUESTION = "시도할 회수는 몇 회 인가요?";
@@ -23,8 +23,6 @@ public class InputController {
         Integer lap = enterRacingLap();
         return new RacingSpec(users, lap);
     }
-
-
 
     private static List<String> enterRacingUser() {
         System.out.println(CAR_COUNT_QUESTION);

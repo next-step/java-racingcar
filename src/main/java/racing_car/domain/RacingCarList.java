@@ -1,6 +1,6 @@
-package racing_car;
+package racing_car.domain;
 
-import racing_car.strategy.RandomStrategy;
+import racing_car.domain.strategy.RandomStrategy;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,11 +18,10 @@ public class RacingCarList {
     }
 
     public LabRecord moveCars() {
-        racingCarList
-                .forEach(Car::move);
         return new LabRecord(
                 racingCarList
                         .stream()
+                        .peek(Car::move)
                         .map(Car::exportRecord)
                         .collect(Collectors.toList())
         );

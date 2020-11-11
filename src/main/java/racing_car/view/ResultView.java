@@ -1,17 +1,15 @@
-package racing_car.controller;
+package racing_car.view;
 
-import racing_car.LabRecord;
-import racing_car.RacingRecord;
-import racing_car.Record;
+import racing_car.domain.LabRecord;
+import racing_car.domain.RacingRecord;
+import racing_car.domain.Record;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ResultController {
+public class ResultView {
 
     private static final String RACING_DASH = "-";
-    private static final String NEW_LINE = "\n";
-    private static final String DOUBLE_NEW_LINE = "\n\n";
     private static final String USERS_DELIMITER = ", ";
     private static final String NOTI_WINNER_USER_MESSAGE_FORMAT = "%s가 최종 우승 했습니다.";
     private static final String LAB_STATE_MESSAGE_FORMAT = "%s : %s";
@@ -23,7 +21,7 @@ public class ResultController {
     private static String buildRacingResultString(RacingRecord racingRecord) {
         StringBuilder sb = new StringBuilder();
         sb.append(buildRacingStateString(racingRecord));
-        sb.append(NEW_LINE);
+        sb.append(System.lineSeparator());
         sb.append(buildWinnerMessage(racingRecord));
         return sb.toString();
     }
@@ -31,9 +29,9 @@ public class ResultController {
     private static String buildRacingStateString(RacingRecord racingRecord) {
         return racingRecord.toLabRecordList()
                 .stream()
-                .map(ResultController::buildLabStateString)
+                .map(ResultView::buildLabStateString)
                 .collect(
-                        Collectors.joining(DOUBLE_NEW_LINE));
+                        Collectors.joining(System.lineSeparator() + System.lineSeparator()));
     }
 
     private static String buildWinnerMessage(RacingRecord racingRecord) {
@@ -55,10 +53,10 @@ public class ResultController {
     private static String buildLabStateString(LabRecord labRecord) {
         return labRecord.toRecordList()
                 .stream()
-                .map(ResultController::buildRecordStateString)
+                .map(ResultView::buildRecordStateString)
                 .collect(
                         Collectors
-                                .joining(NEW_LINE)
+                                .joining(System.lineSeparator())
                 );
     }
 
