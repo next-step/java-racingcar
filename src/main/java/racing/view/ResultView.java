@@ -14,6 +14,7 @@ public class ResultView {
 
     public void printRacingResult(RacingCars cars) {
         for (Car car : cars.getCandidates()) {
+            System.out.print(car.getCarName()+" : ");
             IntStream.rangeClosed(0, car.currentLocation())
                     .forEach(x -> System.out.print("-"));
             System.out.println();
