@@ -11,8 +11,7 @@ public class StringCalculator {
     public int calculator(String value){
         int count = 0;
         int result = 0;
-        String[] stringInput = value.split(" ");
-        boolean isSort = sortByNumAndSymbol(stringInput);
+        boolean isSort = sortByNumAndSymbol(value);
         if(isSort == true){
             count = 0;
             for(String sym : symbol){
@@ -39,8 +38,9 @@ public class StringCalculator {
 
     }
 
-    public boolean sortByNumAndSymbol(String[] stringInput){
+    public boolean sortByNumAndSymbol(String value){
         boolean result = false;
+        String[] stringInput = value.split(" ");
 
         for(String str : stringInput){
             char temp = str.charAt(0);
