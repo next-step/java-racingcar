@@ -16,7 +16,7 @@ public class RaceGameStarter {
         RenderingView renderingView = new RenderingView(carNames.length, carNames);
 
         RacingCars cars = null;
-        for (int i = 0; i < totalRound; i++) {
+        while(!raceGame.hasRemainRounds()) {
             cars = raceGame.start();
             renderingView.renderResult(cars);
         }

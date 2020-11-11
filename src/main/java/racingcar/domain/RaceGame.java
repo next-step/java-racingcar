@@ -42,4 +42,7 @@ public class RaceGame {
         gameRound.roundFinish();
     }
 
+    public boolean hasRemainRounds() {
+        return gameRound.isAllRoundFinish();
+    }
 }
