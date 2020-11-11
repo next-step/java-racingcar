@@ -11,28 +11,29 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RacingCarGameTest {
+public class RacingCarControllerTest {
+	private RacingCarController underTest = new RacingCarController();
 
 	@ParameterizedTest
 	@DisplayName("자동차 경주 게임 테스트")
 	@ValueSource(strings = {"adel,angus,joy,ruby"})
 	public void startTest(String carName) {
 		int tryNumber = 5;
-		RacingCarGame.startGame(carName, tryNumber);
+		underTest.startGame(carName, tryNumber);
 	}
 
 	@Test
 	@DisplayName("입력값 체크")
 	public void validateInputValueTest() {
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> RacingCarGame.startGame("adel", -5))
+				.isThrownBy(() -> underTest.startGame("adel", -5))
 				.withMessage("시도 횟수는 양수이어야 합니다.");
 	}
 
 	@Test
 	@DisplayName("자동차 이름을 가져온다.")
 	public void getCarNamesTest() {
-		List<String> carNames = RacingCarGame.getCarNames("adel,joy,ruby,angus,shawn");
+		List<String> carNames = underTest.getCarNames("adel,joy,ruby,angus,shawn");
 		assertThat(carNames.size()).isEqualTo(5);
 		assertTrue(carNames.contains("adel"));
 		assertTrue(carNames.contains("joy"));
