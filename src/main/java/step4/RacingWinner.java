@@ -2,35 +2,33 @@ package step4;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingWinner {
-    private static final String COMMA = ",";
-    private int position;
-    private List<String> winners;
+    private static final String JOIN_DELIMITER = ",";
+    private List<Car> winners;
 
     public RacingWinner(List<Car> cars) {
-        this.setWinnerPosition(cars);
-        this.setWinners(cars);
+        this.winners = getWinners(cars, getMaxPosition(cars));
     }
 
-    public void setWinners(List<Car> cars) {
-        this.winners = IntStream.range(0, cars.size())
-                .filter(i -> cars.get(i).getPosition() == this.position)
-                .mapToObj(i -> cars.get(i).getCarName())
+
+    private int getMaxPosition(final List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    private List<Car> getWinners(final List<Car> cars, final int winnerPosition) {
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
                 .collect(Collectors.toList());
     }
 
     public String getWinners() {
-        return String.join(COMMA, this.winners);
-    }
-
-    public void setWinnerPosition(List<Car> cars) {
-        this.position = cars.stream()
-                .mapToInt(Car::getPosition)
-                .filter(car -> car >= 0)
-                .max()
-                .orElse(0);
+        return this.winners.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(JOIN_DELIMITER));
     }
 
     @Override
