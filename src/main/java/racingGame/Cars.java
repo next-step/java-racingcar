@@ -78,7 +78,7 @@ public class Cars {
     }
   }
 
-  public int size() {
+  public int getNumCars() {
     return this.cars.size();
   }
 }

@@ -22,7 +22,7 @@ public class RacingOperator {
   }
 
   public void moves(ScoreGenerator scoreGenerator) {
-    for (int i = 0; i < cars.size(); i++) {
+    for (int i = 0; i < cars.getNumCars(); i++) {
       cars.get(i).move(scoreGenerator.generateScore());
     }
     this.currentRound += 1;
@@ -35,7 +35,7 @@ public class RacingOperator {
   public List<Pair<String, Integer>> getCurrentCarsStatus() {
     List<Pair<String, Integer>> status = new Vector<>();
 
-    for (int i = 0; i < this.cars.size(); i++) {
+    for (int i = 0; i < this.cars.getNumCars(); i++) {
       status.add(new Pair<>(cars.get(i).getName(), cars.get(i).getPosition()));
     }
 

@@ -22,7 +22,7 @@ class CarsTest {
   @Test
   @DisplayName("Car 의 갯수 확인")
   void CarsInitializedStatus() {
-    assertThat(sampleCars.size()).isEqualTo(this.names.split(",").length);
+    assertThat(sampleCars.getNumCars()).isEqualTo(this.names.split(",").length);
   }
 
   @ParameterizedTest
@@ -35,7 +35,7 @@ class CarsTest {
   @Test
   @DisplayName("Car 들의 초기 상태 확인")
   void initialNames() {
-    for (int i = 0; i < this.sampleCars.size(); i++) {
+    for (int i = 0; i < this.sampleCars.getNumCars(); i++) {
       assertThat(this.sampleCars.get(i).getName()).isEqualTo(names.split(",")[i]);
     }
   }
