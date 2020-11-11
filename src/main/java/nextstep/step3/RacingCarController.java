@@ -49,23 +49,13 @@ public class RacingCarController {
 		ResultView resultView = new ResultView();
 		for(int i = 0; i < tryNumber; i++) {
 			racingCarMove(racingCars);
-			printRacingResult(racingCars, resultView);
+			resultView.showRacingResult(racingCars);
 		}
-		printRacingWinners(racingCars, resultView);
+		resultView.printRacingWinner(racingCars.getRacingWinnerNames());
 	}
 
 	private void racingCarMove(RacingCars racingCars) {
 		RandomGenerator randomGenerator = new RandomGenerator();
-		racingCars.getRacingCars().forEach( car -> {
-			car.move(randomGenerator.getRandomNumber());
-		});
-	}
-
-	private void printRacingResult(RacingCars racingCars, ResultView resultView) {
-		resultView.showRacingResult(racingCars);
-	}
-
-	private void printRacingWinners(RacingCars racingCars, ResultView resultView) {
-		resultView.printRacingWinner(racingCars.getRacingWinnerNames());
+		racingCars.getRacingCars().forEach( car -> car.move(randomGenerator.getRandomNumber()));
 	}
 }
