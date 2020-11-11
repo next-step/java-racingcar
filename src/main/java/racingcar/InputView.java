@@ -2,17 +2,16 @@ package racingcar;
 import java.util.Scanner;
 
 public final class InputView {
+    public static final Scanner scanner = new Scanner(System.in);
     public static void displayMessage(String message) {
         System.out.println(message);
     }
 
     public static int getUserInput() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
     public static String getStringInput() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 }
