@@ -1,5 +1,9 @@
 package racingcar.domain;
 
+import java.util.List;
+
+import racingcar.view.ResultView;
+
 public class Round {
     private int round;
     private final int finalRound;
@@ -21,7 +25,11 @@ public class Round {
         return round = round + 1;
     }
 
-    public boolean isLastRound() {
-        return finalRound == round;
+    boolean isLastRound() {
+        return finalRound == getRound();
+    }
+
+    int getRound() {
+        return this.round;
     }
 }

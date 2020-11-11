@@ -42,5 +42,4 @@ public class RoundTest {
         round.progressRound(racingCars);
         assertThat(round.getRound()).isEqualTo(roundCount);
     }
-
 }
