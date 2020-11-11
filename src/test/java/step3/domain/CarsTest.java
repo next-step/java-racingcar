@@ -81,12 +81,6 @@ class CarsTest {
         }
     }
 
-    private void random() {
-        Random random = new Random();
-        random.nextInt(10);
-    }
-
-
     @ParameterizedTest
     @DisplayName("현재 라운드까지 진행된 점수판을 가져온다")
     @ValueSource(ints = {2, 1, 3})
