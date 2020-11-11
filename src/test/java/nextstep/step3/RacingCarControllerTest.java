@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,11 +25,19 @@ public class RacingCarControllerTest {
 	}
 
 	@Test
-	@DisplayName("입력값 체크")
-	public void validateInputValueTest() {
+	@DisplayName("시도횟수 입력값 체크")
+	public void validateInputTryValueTest() {
 		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> underTest.startGame("adel", -5))
+				.isThrownBy(() -> underTest.validate(Arrays.asList("adel", "joy"), -5))
 				.withMessage("시도 횟수는 양수이어야 합니다.");
+	}
+
+	@Test
+	@DisplayName("자동차명 입력값 체크")
+	public void validateInputNameValueTest() {
+		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> underTest.validate(new ArrayList<>(), 5))
+				.withMessage("자동차 이름은 필수 입력 입니다.");
 	}
 
 	@Test

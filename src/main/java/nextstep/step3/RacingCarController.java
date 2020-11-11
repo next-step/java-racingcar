@@ -35,7 +35,7 @@ public class RacingCarController {
 				.collect(Collectors.toList());
 	}
 
-	private void validate(List<String> carNames, int tryNumber) {
+	protected void validate(List<String> carNames, int tryNumber) {
 		if (carNames.size() == 0) {
 			throw new IllegalArgumentException(INPUT_CARNAME_REQUIRED);
 		}
