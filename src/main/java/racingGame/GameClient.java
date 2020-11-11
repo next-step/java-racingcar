@@ -1,42 +1,50 @@
 package racingGame;
 
+import java.util.List;
+import javafx.util.Pair;
 import racingGame.View.InputView;
 import racingGame.View.ResultView;
+import racingGame.racingGameException.IllegalNumRoundException;
 
 public class GameClient {
 
-    private static void runGame(Cars cars, int numRound) {
+  private static void runGame(RacingOperator racingOperator, int numRound) {
+    int currentRound = 1;
 
-        int currentRound = 1;
-        ScoreGenerator scoreGenerator = new RandomScoreGenerator();
-
-        ResultView.printResultMessage();
-
-        for (; !isFinished(currentRound, numRound); currentRound += 1) {
-            cars.moves(scoreGenerator);
-            ResultView.printStatus(cars);
-        }
-
+    if (numRound < 1) {
+      throw new IllegalNumRoundException();
     }
 
-    private static boolean isFinished(int currentRound, int numRound) {
-        return currentRound > numRound;
+    ResultView.printResultMessage();
+
+    for (; !isFinished(currentRound, numRound); currentRound += 1) {
+      racingOperator.moves();
+      // Step3의 로직. 어떻게 하면 코드를 예쁘게 바꿨을 지 검토해보기
+      // List<Integer> status = carOperator.getPositions();
+      // ResultView.printCurrentStatus(status);
+      List<Pair<String, Integer>> status = racingOperator.getCurrentCarsStatus();
+      ResultView.printCurrentStatusWithName(status);
     }
 
-    public static void main(String[] args) {
+    ResultView.printWinner(racingOperator.extractWinners());
+  }
 
-        int numCar;
-        int numRound;
-        Cars cars;
-        InputView inputView;
+  private static boolean isFinished(int currentRound, int numRound) {
+    return currentRound > numRound;
+  }
 
-        inputView = InputView.createInstance();
+  public static void main(String[] args) {
+    String names;
+    int numRound;
+    Cars cars;
+    RacingOperator racingOperator;
 
-        numCar = inputView.askNumCar();
-        numRound = inputView.askNumRound();
+    names = InputView.askUserNames();
+    numRound = InputView.askNumRound();
 
-        cars = Cars.of(numCar);
-        runGame(cars, numRound);
+    cars = Cars.of(names);
+    racingOperator = RacingOperator.of(cars);
 
-    }
+    runGame(racingOperator, numRound);
+  }
 }

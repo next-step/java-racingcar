@@ -1,29 +1,42 @@
 package racingGame;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.List;
-import java.util.Vector;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
-
 class CarsTest {
 
-    @DisplayName("차량 초기상태 확인")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4})
-    void testNumCars(int input) {
+  private Cars sampleCars;
+  private String names;
 
-        List<Integer> results = new Vector<>(input);
-        for (int i = 0; i < input; i++) {
-            results.add(0);
-        }
+  @BeforeEach
+  void setUp() {
+    names = "a,b,c,d,e";
+    this.sampleCars = Cars.of(names);
+  }
 
-        assertThat(Cars.of(input).getPositions()).isEqualTo(results);
+  @Test
+  @DisplayName("Car 의 갯수 확인")
+  void CarsInitializedStatus() {
+    assertThat(sampleCars.size()).isEqualTo(this.names.split(",").length);
+  }
 
+  @ParameterizedTest
+  @ValueSource(ints = {0, 1, 2, 3, 4})
+  @DisplayName("Car 의 초기 상태 확인(위치)")
+  void initialPositions(int location) {
+    assertThat(this.sampleCars.get(location).getPosition()).isEqualTo(0);
+  }
+
+  @Test
+  @DisplayName("Car 들의 초기 상태 확인")
+  void initialNames() {
+    for (int i = 0; i < this.sampleCars.size(); i++) {
+      assertThat(this.sampleCars.get(i).getName()).isEqualTo(names.split(",")[i]);
     }
-
+  }
 }

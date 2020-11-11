@@ -4,23 +4,25 @@ import java.util.Random;
 
 public class RandomScoreGenerator implements ScoreGenerator {
 
-    private static final int THRESH_HOLD = 4;
-    private static final int GO = 1;
-    private static final int STAY = 0;
+  private static final int RANDOM_RANGE = 10;
+  private static final int THRESHOLD = 4;
+  private static final int GO = 1;
+  private static final int STAY = 0;
 
-    private final Random rawValueGenerator;
+  private final Random rawValueGenerator;
 
-    public RandomScoreGenerator() {
-        this.rawValueGenerator = new Random();
-    }
+  public RandomScoreGenerator() {
+    this.rawValueGenerator = new Random();
+  }
 
-    public RandomScoreGenerator(long seed){
-        this();
-        rawValueGenerator.setSeed(seed);
-    }
+  public RandomScoreGenerator(long seed) {
+    this();
+    rawValueGenerator.setSeed(seed);
+  }
 
-    @Override
-    public int generateScore() {
-        return rawValueGenerator.nextInt(10) > THRESH_HOLD ? GO : STAY;
-    }
+  @Override
+  public int generateScore() {
+    return rawValueGenerator.nextInt(RANDOM_RANGE) > THRESHOLD ? GO : STAY;
+  }
+
 }
