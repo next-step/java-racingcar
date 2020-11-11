@@ -1,4 +1,4 @@
-package step3.logic;
+package race.logic;
 
 import java.util.Random;
 

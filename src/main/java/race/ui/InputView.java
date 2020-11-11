@@ -1,4 +1,4 @@
-package step3.ui;
+package race.ui;
 
 import java.io.InputStream;
 import java.io.PrintStream;

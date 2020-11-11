@@ -1,9 +1,9 @@
-package step3.entry;
+package race.entry;
 
-import step3.logic.Race;
-import step3.logic.RandomEngine;
-import step3.ui.InputView;
-import step3.ui.OutputView;
+import race.logic.Race;
+import race.logic.RandomEngine;
+import race.ui.InputView;
+import race.ui.OutputView;
 
 import java.util.stream.IntStream;
 

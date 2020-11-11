@@ -1,4 +1,4 @@
-package step3.logic;
+package race.logic;
 
 
 public class Car {

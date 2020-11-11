@@ -1,6 +1,6 @@
-package step3.ui;
+package race.ui;
 
-import step3.logic.Car;
+import race.logic.Car;
 
 import java.io.PrintStream;
 import java.util.List;
