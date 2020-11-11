@@ -7,8 +7,12 @@ public class RacingCar {
     private String name;
 
     public RacingCar(String name) {
-        this.distance = 0;
+        this(name, 0);
+    }
+
+    public RacingCar(String name, int distance) {
         this.name = name;
+        this.distance = distance;
     }
 
     public int getDistance() {
