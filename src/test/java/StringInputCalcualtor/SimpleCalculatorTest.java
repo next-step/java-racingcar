@@ -11,7 +11,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleCalculatorTest {
-    SimpleCalculator simpleCalculator = new SimpleCalculator();
+    private final SimpleCalculator simpleCalculator = new SimpleCalculator();
 
     @Test
     void testAdd() {
@@ -44,7 +44,7 @@ public class SimpleCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"+,1,2,3", "*,1,2,2", "/,1,2,0", "-,1,2,-1", "-,3,2,1", "/,3,2,1", "/,5,2,2", "/,3,1,3"}, delimiter = ',')
+    @CsvSource(value = {"+,1,2,3", "*,1,2,2", "/,1,2,0", "-,1,2,-1", "-,3,2,1", "/,3,2,1", "/,5,2,2", "/,3,1,3"})
     void operateTest(String operator, BigDecimal a, BigDecimal b, BigDecimal expected) {
         BigDecimal result = simpleCalculator.operate(operator, a, b);
         assertThat(result).isEqualTo(expected);
