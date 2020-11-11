@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingCarsTest {
 	@Test
 	@DisplayName("자동차수만큼 레이싱카를 만든다.")
 	public void racingCarsTest() {
 		RacingCars racingCars = new RacingCars("adel,joy,ruby");
-		assertThat(racingCars.getRacingCars().size()).isEqualTo(3);
+		assertThat(racingCars.getRacingCars()).hasSize(3);
 	}
 
 	@Test
@@ -33,11 +33,11 @@ public class RacingCarsTest {
 	public void getCarNamesTest() {
 		RacingCars racingCars = new RacingCars("adel,joy,ruby,angus,shawn");
 
-		assertThat(racingCars.getCarNames().size()).isEqualTo(5);
-		assertTrue(racingCars.getCarNames().contains("adel"));
-		assertTrue(racingCars.getCarNames().contains("joy"));
-		assertTrue(racingCars.getCarNames().contains("ruby"));
-		assertTrue(racingCars.getCarNames().contains("angus"));
-		assertTrue(racingCars.getCarNames().contains("shawn"));
+		assertAll(() -> assertThat(racingCars.getCarNames()).hasSize(5),
+				() -> assertTrue(racingCars.getCarNames().contains("adel")),
+				() -> assertTrue(racingCars.getCarNames().contains("joy")),
+				() -> assertTrue(racingCars.getCarNames().contains("ruby")),
+				() -> assertTrue(racingCars.getCarNames().contains("angus")),
+				() -> assertTrue(racingCars.getCarNames().contains("shawn")));
 	}
 }
