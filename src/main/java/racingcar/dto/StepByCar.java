@@ -1,6 +1,6 @@
 package racingcar.dto;
 
-import racingcar.model.Car;
+import racingcar.domain.Car;
 
 public class StepByCar {
 

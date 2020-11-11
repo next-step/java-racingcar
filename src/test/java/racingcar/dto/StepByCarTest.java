@@ -2,8 +2,8 @@ package racingcar.dto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
-import racingcar.model.Motor;
+import racingcar.domain.Car;
+import racingcar.domain.Motor;
 import racingcar.model.TesterMotor;
 
 import static org.assertj.core.api.Assertions.assertThat;
