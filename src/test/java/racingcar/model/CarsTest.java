@@ -12,26 +12,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
 
     private Motor motor;
+    private String[] carsName;
 
     @BeforeEach
     void setup() {
         motor = new TesterMotor();
+        carsName = new String[]{"jin", "hyun", "hwi", "woong"};
     }
 
     @DisplayName("of() 테스트")
     @Test
     void of() {
-        int carCount = 3;
-        Cars cars = Cars.of(carCount, motor);
+        Cars cars = Cars.of(carsName, motor);
 
-        assertThat(cars.sizeOfCar()).isEqualTo(carCount);
+        assertThat(cars.sizeOfCar()).isEqualTo(carsName.length);
     }
 
     @DisplayName("getPositions() 테스트")
     @Test
     void getPositions() {
-        Car car1 = new Car(motor);
-        Car car2 = new Car(motor);
+        Car car1 = new Car(carsName[0], motor);
+        Car car2 = new Car(carsName[1], motor);
         car1.move();
         car1.move();
 

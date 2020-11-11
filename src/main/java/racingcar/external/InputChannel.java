@@ -10,8 +10,14 @@ public class InputChannel implements Input {
     }
 
     @Override
-    public int input(String s) {
+    public int inputNumber(String s) {
         System.out.println(s);
         return scanner.nextInt();
+    }
+
+    @Override
+    public String inputString(String s) {
+        System.out.println(s);
+        return scanner.next();
     }
 }
