@@ -23,7 +23,6 @@ public class InputView {
     return scanner.nextLine();
   }
 
-
   public static int askNumRound() {
     System.out.println(NUM_ROUND_QUESTION);
     return scanner.nextInt();

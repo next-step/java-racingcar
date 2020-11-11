@@ -1,13 +1,9 @@
 package racingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
-import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
