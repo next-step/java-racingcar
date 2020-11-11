@@ -1,9 +1,7 @@
 package racingcar.controller;
 
-import java.util.List;
 
 import racingcar.behavior.RandomMovingStrategy;
-import racingcar.domain.Car;
 import racingcar.domain.RacingCars;
 import racingcar.domain.Round;
 import racingcar.view.InputView;
@@ -17,12 +15,6 @@ public class RacingController {
 
         RacingCars racingCars = RacingCars.of(nameOfCars, new RandomMovingStrategy(), round);
         ResultView.printResultMessage();
-        while (!racingCars.isGameOver()) {
-            racingCars.run();
-            List<Car> cars = racingCars.getCars();
-            ResultView.printPositionResult(cars);
-        }
-
-        ResultView.printNamesOfWinnerCarsResult(racingCars.getNamesOfWinnerCars());
+        round.progressRound(racingCars);
     }
 }

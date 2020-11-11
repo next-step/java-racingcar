@@ -8,8 +8,17 @@ public class Round {
         this.finalRound = finalRound;
     }
 
-    public void nextRound() {
-        round = round + 1;
+    public void progressRound(RacingCars racingCars) {
+        while (!isLastRound()) {
+            racingCars.run();
+            List<Car> cars = racingCars.getCars();
+            ResultView.printPositionResult(cars);
+        }
+        ResultView.printNamesOfWinnerCarsResult(racingCars.getNamesOfWinnerCars());
+    }
+
+    int nextRound() {
+        return round = round + 1;
     }
 
     public boolean isLastRound() {
