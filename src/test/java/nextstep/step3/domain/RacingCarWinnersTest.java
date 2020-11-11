@@ -19,11 +19,11 @@ public class RacingCarWinnersTest {
 
 	private List<RacingCar> mockRacingCars() {
 		RacingCar racingCar1 = new RacingCar("adel");
-		racingCar1.setPoint(10);
+		racingCar1.move(5);
 		RacingCar racingCar2 = new RacingCar("joy");
-		racingCar2.setPoint(4);
+		racingCar2.move(2);
 		RacingCar racingCar3 = new RacingCar("ruby");
-		racingCar3.setPoint(10);
+		racingCar3.move(5);
 		return Arrays.asList(racingCar1, racingCar2, racingCar3);
 	}
 }
