@@ -21,8 +21,8 @@ public class Car {
         return new Car(name);
     }
 
-    public static Car carDtoMapper(CarDto carDto) {
-        return new Car(carDto.getName(), carDto.getPosition());
+    public static Car of(String name, int currentPosition) {
+        return new Car(name, currentPosition);
     }
 
     public String getName() {

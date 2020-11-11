@@ -32,8 +32,8 @@ class CarControllerTest {
     void winnerScoreTest() {
         int winnerScore = 5;
         int looserScore = 3;
-        Car car1 = Car.carDtoMapper(new CarDto("a", winnerScore));
-        Car car2 = Car.carDtoMapper(new CarDto("b", looserScore));
+        Car car1 = Car.of("a", winnerScore);
+        Car car2 = Car.of("b", looserScore);
         List<Car> cars = new ArrayList<>();
         cars.add(car1);
         cars.add(car2);
@@ -47,7 +47,7 @@ class CarControllerTest {
     void winnerOnlyOneNameTest() {
         List<String> winners = new ArrayList<>();
         int winnerScore = 3;
-        Car car1 = Car.carDtoMapper(new CarDto("a", winnerScore));
+        Car car1 = Car.of("a", winnerScore);
 
         controller.getWinnerName(winnerScore, car1, winners);
 
@@ -60,9 +60,9 @@ class CarControllerTest {
         List<String> winners = new ArrayList<>();
         int winnerScore = 3;
         int looserScore = 2;
-        Car car1 = Car.carDtoMapper(new CarDto("a", winnerScore));
-        Car car2 = Car.carDtoMapper(new CarDto("b", winnerScore));
-        Car car3 = Car.carDtoMapper(new CarDto("b", looserScore));
+        Car car1 = Car.of("a", winnerScore);
+        Car car2 = Car.of("b", winnerScore);
+        Car car3 = Car.of("c", looserScore);
 
         controller.getWinnerName(winnerScore, car1, winners);
         controller.getWinnerName(winnerScore, car2, winners);
@@ -79,7 +79,7 @@ class CarControllerTest {
     @DisplayName("우승자 구하기 테스트 - 1명일 때")
     void winnerOnlyOneTest() {
         int winnerScore = 5;
-        Car car1 = Car.carDtoMapper(new CarDto("a", winnerScore));
+        Car car1 = Car.of("a", winnerScore);
         List<Car> cars = new ArrayList<>();
         cars.add(car1);
         CarList carList = CarList.from(cars);
@@ -94,9 +94,9 @@ class CarControllerTest {
     void winnerPeopleTest() {
         int winnerScore = 5;
         int looserScore = 3;
-        Car car1 = Car.carDtoMapper(new CarDto("a", winnerScore));
-        Car car2 = Car.carDtoMapper(new CarDto("b", looserScore));
-        Car car3 = Car.carDtoMapper(new CarDto("c", winnerScore));
+        Car car1 = Car.of("a", winnerScore);
+        Car car2 = Car.of("b", looserScore);
+        Car car3 = Car.of("c", winnerScore);
         List<Car> cars = new ArrayList<>();
         cars.add(car1);
         cars.add(car2);
