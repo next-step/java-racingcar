@@ -36,10 +36,10 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
-    public List<String> getWinner() {
+    public List<RacingCar> getWinner() {
         return  IntStream.range(0, racingCars.size())
                 .filter(i -> racingCars.get(i).getCurrentPosition() == winnerPosition)
-                .mapToObj(i -> racingCars.get(i).getCarName())
+                .mapToObj(i -> racingCars.get(i))
                 .collect(Collectors.toList());
     }
 }
