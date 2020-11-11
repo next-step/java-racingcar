@@ -22,6 +22,7 @@ public class Race {
         for (int turn = 1; turn < turns + 1; turn++) {
             roll(turn, cars, record);
         }
+        rv.printWinner(record);
     }
 
     private void roll(int turn, List<Car> cars, Record record) {
