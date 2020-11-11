@@ -15,7 +15,7 @@ public class GameClient {
 
     while (!racingOperator.finished(numRound)) {
       racingOperator.moves(scoreGenerator);
-      ResultView.printCurrentStatusWithName(racingOperator.getCurrentCarsStatus());
+      ResultView.printCurrentStatusWithName(racingOperator.getCarsStatus());
     }
 
     ResultView.printWinner(racingOperator.extractWinners());

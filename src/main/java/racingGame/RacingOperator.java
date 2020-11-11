@@ -32,14 +32,8 @@ public class RacingOperator {
     return this.cars.extractWinners(this.cars.extractFurthestPosition());
   }
 
-  public List<Pair<String, Integer>> getCurrentCarsStatus() {
-    List<Pair<String, Integer>> status = new Vector<>();
-
-    for (int i = 0; i < this.cars.getNumCars(); i++) {
-      status.add(new Pair<>(cars.get(i).getName(), cars.get(i).getPosition()));
-    }
-
-    return status;
+  public List<Pair<String, Integer>> getCarsStatus() {
+    return this.cars.getCarsStatus();
   }
 
   public boolean finished(int numRound) {

@@ -1,5 +1,6 @@
 package racingGame;
 
+import javafx.util.Pair;
 import racingGame.racingGameException.IllegalCarNameLengthException;
 
 public class Car {
@@ -55,5 +56,9 @@ public class Car {
 
   public boolean isWinner(int furthestPosition){
     return this.position == furthestPosition;
+  }
+
+  public Pair<String, Integer> publishNamePosition(){
+    return new Pair<>(this.name, this.position);
   }
 }

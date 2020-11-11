@@ -3,6 +3,7 @@ package racingGame;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
+import javafx.util.Pair;
 
 public class Cars {
 
@@ -80,5 +81,14 @@ public class Cars {
 
   public int getNumCars() {
     return this.cars.size();
+  }
+
+  List<Pair<String, Integer>> getCarsStatus() {
+    List<Pair<String, Integer>> status = new Vector<>();
+
+    for (Car car : this.cars) {
+      status.add(car.publishNamePosition());
+    }
+    return status;
   }
 }
