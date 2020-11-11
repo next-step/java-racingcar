@@ -12,9 +12,17 @@ public class ResultView {
 
     public static void show(List<Car> cars){
         for(Car car: cars){
-            System.out.println(car.getMoveResult());
+            System.out.println(car.racer + ": " + getCarResult(car));
         }
         System.out.println("");
+    }
+
+    public static String getCarResult(Car car){
+        StringBuilder raceDistance = new StringBuilder();
+        for(int i = 0; i < car.distance; i++){
+            raceDistance.append("-");
+        }
+        return raceDistance.toString();
     }
 
     public static void printWinner(ArrayList<String> winnerList){

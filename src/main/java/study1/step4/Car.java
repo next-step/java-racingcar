@@ -15,14 +15,6 @@ public class Car {
         }
     }
 
-    public String getMoveResult(){
-        StringBuilder raceDistance = new StringBuilder();
-        for(int i = 0; i < this.distance; i++){
-            raceDistance.append("-");
-        }
-        return this.racer + ": " + raceDistance.toString();
-    }
-
     private String racerValidate(String racerName){
         if(Validator.inputValidate(racerName)){
             throw new IllegalArgumentException("자동차 이름이 올바르지 않습니다.");
