@@ -1,9 +1,8 @@
 package step2.string.calculator;
 
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.function.BiFunction;
 
 import static java.util.stream.Collectors.toMap;
 
@@ -35,10 +34,11 @@ public enum Operator implements Operation {
         this.symbol = symbol;
     }
 
-    public static Operator fromString(String symbol) {
-        final Map<String, Operator> stringToEnum = Stream.of(values()).collect(toMap(Object::toString, e-> e));
-        Optional<Operator> currentOperator = Optional.ofNullable(stringToEnum.get(symbol));
-        return currentOperator.orElseThrow(() -> new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR));
+    private static Operator fromString(String symbol) {
+        return Arrays.stream(values())
+                .filter(op -> op.symbol.equals(symbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR));
     }
 
     @Override
