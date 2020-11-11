@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -12,10 +10,8 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public List<String> getCarNames() {
-        String value = getStringFromStdin("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
-        List<String> carNames = Arrays.asList(value.split(",").clone());
-        return carNames;
+    public String getCarNames() {
+        return getStringFromStdin("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
     }
 
     public int getNumOfTries() {

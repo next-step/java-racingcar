@@ -7,13 +7,14 @@ public class ResultView {
 
     private RaceDisplay raceDisplay = RaceDisplay.console();
 
-    public void showRaceState(List<Car> cars){
-        cars.forEach( car -> car.displayOn(raceDisplay));
-        raceDisplay.writeBlankLine();
+    public void showRaceState(JoinedCars joinedCars){
+        joinedCars.displayRaceStateOn(raceDisplay);
     }
 
     public void showRaceWinner(List<Car> winners){
-        raceDisplay.writeRaceWinner(winners.stream().map(it -> it.getName()).collect(Collectors.toList()));
+        String winnerNames = winners.stream()
+                .map(it -> CarState.of(it))
+                .map(it -> it.getName()).collect(Collectors.joining(","));
+        raceDisplay.writeLine(winnerNames +"가 최종 우승했습니다.");
     }
-
 }
