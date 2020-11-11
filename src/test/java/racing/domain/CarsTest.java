@@ -1,17 +1,14 @@
 package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarsTest {
 
@@ -25,9 +22,10 @@ public class CarsTest {
         // when
         Cars cars = new Cars(Arrays.stream(carNames).map(Car::new)
                 .collect(Collectors.toList()));
-
         // then
-        assertThat(cars.getCars().size()).isEqualTo(3);
+        assertThat(cars.getCars()).containsExactly(
+                new Car("next"),new Car("step"),new Car("yoon")
+        );
     }
 
 }
