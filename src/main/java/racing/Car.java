@@ -1,19 +1,17 @@
 package racing;
 
-import java.util.Random;
-
 public class Car {
 
-    private int carPosition = 0;
+    private int travelDistance = 0;
 
-    public void movePosition() {
-        int randomNumber = new Random().nextInt(10);
-        if (randomNumber >= 4) {
-            carPosition++;
+    public void move(int randomNumber) {
+        int FORWARD_CONDITION = 4;
+        if (randomNumber >= FORWARD_CONDITION) {
+            travelDistance++;
         }
     }
 
-    public int getCarPosition() {
-        return carPosition;
+    public int getTravelDistance() {
+        return travelDistance;
     }
 }
