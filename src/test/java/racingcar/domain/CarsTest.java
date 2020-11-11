@@ -1,11 +1,8 @@
-package racingcar.model;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.domain.Motor;
 
 import java.util.Arrays;
 import java.util.List;

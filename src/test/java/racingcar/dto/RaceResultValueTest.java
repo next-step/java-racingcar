@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Motor;
-import racingcar.model.TesterMotor;
+import racingcar.domain.TesterMotor;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,4 @@
-package racingcar.model;
-
-import racingcar.domain.Motor;
+package racingcar.domain;
 
 // 테스트를 위한 테스터 Motor
 public class TesterMotor implements Motor {
