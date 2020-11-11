@@ -11,12 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RoundTest {
     private final String[] nameOfCars = {"car1", "car2", "car3", "car4"};
     private RacingCars racingCars;
-    private static final int FINAL_ROUND = 0;
+    private static final int FINAL_ROUND = 6;
 
-    @DisplayName("라운드 정상 진행 여부")
-
+    @DisplayName("다음 라운드 정상 진행 여부")
     @Test
-    void roundTest() {
+    void nextRoundTest() {
         Round round = new Round(FINAL_ROUND);
         racingCars = RacingCars.of(nameOfCars, () -> true, round);
         racingCars.run();
