@@ -10,13 +10,26 @@ public class InputView {
     public static int inputParticipationCars() {
         System.out.println(PARTICIPATION_CAR_MESSAGE);
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+
+        int participationCars = scanner.nextInt();
+        validate(participationCars);
+
+        return participationCars;
     }
 
     public static int inputNumberOfAttempt() {
         Scanner scanner = new Scanner(System.in);
         System.out.println(NUMBER_OF_ATTEMPT_MESSAGE);
-        return scanner.nextInt();
+
+        int numberOfAttempt = scanner.nextInt();
+        validate(numberOfAttempt);
+
+        return numberOfAttempt;
     }
 
+    static void validate(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException("0 이하는 입력할 수 없습니다.");
+        }
+    }
 }
