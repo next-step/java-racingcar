@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
     
     @Test
-    void requirementTest1(){
+    void StringSplitTest(){
         String[] strArray = "1,2".split(",");
         assertThat(strArray).contains("1", "2");
         assertThat(strArray).contains("1", strArray[0]);
@@ -21,7 +21,7 @@ public class StringTest {
     }
 
     @Test
-    void requirementTest2(){
+    void substringTest(){
         String str = "(1,2)";
         String subStr = str.substring(1,4);
         assertEquals("1,2", subStr);
@@ -29,7 +29,7 @@ public class StringTest {
 
     @Test
     @DisplayName("요구사항 3을 충족한다.")
-    void requirementTest3(){
+    void charAtTest(){
         String str = "a,b,c";
         assertThat(str.charAt(0)).isEqualTo('a');
         assertThat(str.charAt(4)).isEqualTo('c');
@@ -38,7 +38,7 @@ public class StringTest {
 
     @Test
     @DisplayName("요구사항 3을 충족한다, Exception 처리")
-    void requirementTest4(){
+    void charAtTest_Excrption(){
         String str = "a,b,c";
         assertThatThrownBy(()->{
             assertThat(str.charAt(5)).isEqualTo('c');

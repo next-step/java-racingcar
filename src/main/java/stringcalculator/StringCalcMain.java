@@ -11,12 +11,22 @@ public class StringCalcMain {
 
         // String value = sc.next();
         String value = "2 + 3 * 4 / 2";
+        boolean result = validValue(value);
+
+        if(result = true){
+            StringCalculator strCalc = new StringCalculator();
+            strCalc.calculator(value);
+        }
+    }
+
+    public static boolean validValue(String value) {
+        boolean result = false;
         if(value == null || value.equals("") ){
             throw new IllegalArgumentException("Input is null or empty, Please check your input");
+        }else{
+            result = true;
         }
-
-        StringCalculator strCalc = new StringCalculator();
-        strCalc.calculator(value);
+        return result;
     }
 
 }

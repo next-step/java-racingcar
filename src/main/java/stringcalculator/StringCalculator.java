@@ -7,7 +7,7 @@ public class StringCalculator {
 
     List<String> numbers = new ArrayList<>();
     List<String> symbol = new ArrayList<>();
-    //사칙연산 기호가 아닌 경우 illegalArgumentException
+    
     public int calculator(String value){
         int count = 0;
         int result = 0;
@@ -76,6 +76,7 @@ public class StringCalculator {
         }
 
         return calResult;
+
     }
 
     public int add(int num1, int num2){
