@@ -6,10 +6,6 @@ import java.util.Vector;
 
 public class Cars {
 
-  /**
-   * 게임에 사용되는 Car 들을 List<Car>의 형태로 가지고 있는 객체. 게임에 사용되는 Car 전체의 상태와 각각의 Car 에 접근 가능하게 함
-   */
-
   private final List<Car> cars;
 
   private Cars(List<Car> cars) {
@@ -56,6 +52,30 @@ public class Cars {
 
   public Car get(int index) {
     return this.cars.get(index);
+  }
+
+  public int extractFurthestPosition() {
+    int furthestPosition = 0;
+
+    for (Car car : this.cars) {
+      furthestPosition = car.renewWinner(furthestPosition);
+    }
+
+    return furthestPosition;
+  }
+
+  public List<String> extractWinners(int furthestPosition) {
+    List<String> winners = new Vector<>();
+    for (Car car : this.cars) {
+      addWinnerName(furthestPosition, winners, car);
+    }
+    return winners;
+  }
+
+  private void addWinnerName(int furthestPosition, List<String> winners, Car car) {
+    if (car.isWinner(furthestPosition)) {
+      winners.add(car.getName());
+    }
   }
 
   public int size() {

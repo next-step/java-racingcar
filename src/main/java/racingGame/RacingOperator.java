@@ -29,37 +29,7 @@ public class RacingOperator {
   }
 
   public List<String> extractWinners() {
-    List<String> winners = new Vector<>();
-    int numCars = this.cars.size();
-    int furthestPosition = discoverFurthestPosition();
-
-    return getWinners(winners, numCars, furthestPosition);
-  }
-
-  private List<String> getWinners(List<String> winners, int numCars, int furthestPosition) {
-    //이름 뽑아내기
-    for (int i = 0; i < numCars; i++) {
-      insertNames(cars.get(i), furthestPosition, winners);
-    }
-
-    return winners;
-  }
-
-  private int discoverFurthestPosition() {
-    int furthestPosition = cars.get(0).getPosition();
-
-    //가장 멀리간 위치 확인
-    for (int i = 0; i < cars.size(); i++) {
-      furthestPosition = Math.max(furthestPosition, cars.get(i).getPosition());
-    }
-
-    return furthestPosition;
-  }
-
-  private void insertNames(Car target, int furthestPosition, List<String> winners) {
-    if (target.getPosition() == furthestPosition) {
-      winners.add(target.getName());
-    }
+    return this.cars.extractWinners(this.cars.extractFurthestPosition());
   }
 
   public List<Pair<String, Integer>> getCurrentCarsStatus() {

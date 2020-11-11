@@ -48,4 +48,12 @@ public class Car {
   public String getName() {
     return this.name;
   }
+
+  public int renewWinner(int candidatePosition) {
+    return Math.max(position, candidatePosition);
+  }
+
+  public boolean isWinner(int furthestPosition){
+    return this.position == furthestPosition;
+  }
 }
