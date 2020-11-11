@@ -1,12 +1,9 @@
-package study.racingcar.racingcars;
+package study.racingcar.domain.racingcars;
 
 
-import study.racingcar.car.Car;
-import study.racingcar.car.CarSnapshot;
-import study.racingcar.car.CarSnapshotExporter;
+import study.racingcar.domain.car.CarSnapshot;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarsSnapshotExporter implements RacingCarsExporter<RacingCarsSnapshot> {
 

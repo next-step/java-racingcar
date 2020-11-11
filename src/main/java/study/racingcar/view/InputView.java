@@ -1,7 +1,7 @@
 package study.racingcar.view;
 
-import study.racingcar.GameConfiguration;
-import study.racingcar.car.OldEngine;
+import study.racingcar.domain.GameConfiguration;
+import study.racingcar.domain.car.OldEngine;
 
 import java.util.Scanner;
 

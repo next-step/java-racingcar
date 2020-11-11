@@ -1,6 +1,6 @@
-package study.racingcar;
+package study.racingcar.domain.car;
 
-import study.racingcar.car.Engine;
+import study.racingcar.domain.car.Engine;
 
 /**
  * 자동차의 이동 성공을 담당
@@ -11,4 +11,5 @@ public class NewEngine implements Engine {
     public boolean isMovable() {
         return true;
     }
+
 }

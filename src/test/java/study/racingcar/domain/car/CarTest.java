@@ -1,11 +1,7 @@
-package study.racingcar;
+package study.racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.car.Car;
-import study.racingcar.car.CarName;
-import study.racingcar.car.CarSnapshot;
-import study.racingcar.car.CarSnapshotExporter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,7 +17,7 @@ class CarTest {
         car.move(new NewEngine());
 
         // Then
-        assertEquals(car.getCurrentPosition(), 2);
+        assertEquals(car.getCurrentPosition(), 1);
     }
 
     @Test
@@ -34,7 +30,7 @@ class CarTest {
         car.move(new BrokenEngine());
 
         // Then
-        assertEquals(car.getCurrentPosition(), 1);
+        assertEquals(car.getCurrentPosition(), 0);
     }
 
     @Test

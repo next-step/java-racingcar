@@ -1,11 +1,11 @@
-package study.racingcar;
+package study.racingcar.domain;
 
-import study.racingcar.car.Car;
-import study.racingcar.car.CarSnapshot;
-import study.racingcar.car.CarSnapshotExporter;
-import study.racingcar.racingcars.RacingCars;
-import study.racingcar.racingcars.RacingCarsSnapshot;
-import study.racingcar.racingcars.RacingCarsSnapshotExporter;
+import study.racingcar.domain.car.Car;
+import study.racingcar.domain.car.CarSnapshot;
+import study.racingcar.domain.car.CarSnapshotExporter;
+import study.racingcar.domain.racingcars.RacingCars;
+import study.racingcar.domain.racingcars.RacingCarsSnapshot;
+import study.racingcar.domain.racingcars.RacingCarsSnapshotExporter;
 import study.racingcar.view.ResultView;
 
 import java.util.List;
@@ -17,14 +17,14 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private GameConfiguration gameConfiguration;
-    private ResultView resultView;
-
-    public RacingGame(GameConfiguration gameConfiguration, ResultView resultView) {
+    private RacingGameResult racingGameResult;
+    public RacingGame(GameConfiguration gameConfiguration) {
         this.gameConfiguration = gameConfiguration;
-        this.resultView = resultView;
     }
 
-    public void startGame() {
+    public RacingGameResult startGame() {
+
+        racingGameResult = new RacingGameResult();
 
         RacingCars racingCars = gameConfiguration.initRacingCars();
 
@@ -32,6 +32,7 @@ public class RacingGame {
 
         award(racingCars);
 
+        return racingGameResult;
     }
 
     private void racing(RacingCars racingCars) {
@@ -42,7 +43,7 @@ public class RacingGame {
 
             RacingCarsSnapshot racingCarsSnapshot = racingCars.export(new RacingCarsSnapshotExporter());
 
-            resultView.displayCurrentStatus(racingCarsSnapshot);
+            racingGameResult.addGameProgressSnapshots(racingCarsSnapshot);
 
         }
 
@@ -56,7 +57,7 @@ public class RacingGame {
                 .map(car -> car.export(new CarSnapshotExporter()))
                 .collect(Collectors.toList());
 
-        resultView.displayWinner(winnerSnapshots);
+        racingGameResult.addWinners(winnerSnapshots);
     }
 
 }

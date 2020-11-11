@@ -1,6 +1,4 @@
-package study.racingcar.car;
-
-import java.util.Random;
+package study.racingcar.domain.car;
 
 /**
  * 각 자동차에 대한 위치 및 이름을 보관하는 책임
