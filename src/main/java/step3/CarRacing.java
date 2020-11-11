@@ -1,59 +1,59 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CarRacing {
 
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
 
-    private List<Car> cars;
+    private JoinedCars joinedCars;
 
     private RaceRoulette raceRoulette = RaceRoulette.simple(9);
 
     public void start() {
-        int numOfCars = getNumOfCars();
+
+        readyToRace(getCarNames());
+
         int totalTries = getNumOfTries();
-
-        readyToRace(numOfCars);
-
         int currentTry = 1;
         System.out.println("실행 결과");
 
-        while (currentTry <= totalTries) {
+        while (currentTry++ <= totalTries) {
             tryMovingAllCars();
-            displayCurrentMovingDistances();
-            currentTry++;
+            displayRaceState();
         }
+
+        announceRaceWinner();
     }
 
-    private int getNumOfCars() {
-        return inputView.getNumOfCars();
+    private String getCarNames(){
+        return inputView.getCarNames();
     }
 
-    private int getNumOfTries() {
-        return inputView.getNumOfTries();
+    private int getNumOfTries(){
+        int value = inputView.getNumOfTries();
+        if (value < 1) throw new RuntimeException("시도 횟수는 1 이상만 허용됩니다. ( 입력값 : " + value + " )");
+        return value;
     }
 
-    private void readyToRace(int numOfCars) {
-        this.cars = new ArrayList<>(numOfCars);
-        int number = 1;
-        while (number <= numOfCars) {
-            cars.add(new Car(number++));
-        }
-    }
-
-    private void displayCurrentMovingDistances() {
-        this.resultView.showRaceState(cars);
+    private void readyToRace(String carNames) {
+        joinedCars = new JoinedCars(carNames);
     }
 
     private void tryMovingAllCars() {
-        this.cars.forEach(car -> car.move(raceRoulette));
+        joinedCars.tryMoving(raceRoulette);
+    }
+
+    private void displayRaceState() {
+        resultView.showRaceState(joinedCars);
+    }
+
+    private void announceRaceWinner() {
+        resultView.showRaceWinner(joinedCars.findRaceWinner(new RaceWinnerFinder()));
     }
 
     public static void main(String[] args) {
         CarRacing carRacing = new CarRacing();
         carRacing.start();
     }
+
 }
