@@ -4,6 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import step3.domain.Cars;
 import step3.domain.ScoreBoard;
 import step3.domain.strategy.Movable;
@@ -28,16 +31,17 @@ class CarsTest {
         cars = Cars.of("black,no,peace");
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("랜덤값에 따라 움직이는가-아예 움직이지 않는다")
-    void car_immovable_randomly() {
+    @ValueSource(ints = {2,3,5})
+    void car_immovable_randomly(int input) {
         // given
-        cars.getCars().get(0).forward(2);
-        cars.getCars().get(1).forward(3);
-        cars.getCars().get(2).forward(5);
+        for (Car car : cars.getCars()) {
+            car.forward(input);
+        }
 
         // when
-        MoveStrategy moveStrategy = new MoveStrategy() {
+        MoveStrategy moveStrategy = new MoveStrategy(new Randomize()) {
             @Override
             public int move() {
                 Random random = new Random();
@@ -47,21 +51,22 @@ class CarsTest {
         cars.runRound(moveStrategy);
 
         // then
-        assertThat(cars.getCars().get(0).getStep()).isEqualTo(2);
-        assertThat(cars.getCars().get(1).getStep()).isEqualTo(3);
-        assertThat(cars.getCars().get(2).getStep()).isEqualTo(5);
+        for (Car car : cars.getCars()) {
+            assertThat(car.getStep()).isEqualTo(input);
+        }
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("랜덤값에 따라 움직이는가-계속 움직인다")
-    void car_movable_randomly() {
+    @ValueSource(ints = {2,3,5})
+    void car_movable_randomly(int input) {
         // given
-        cars.getCars().get(0).forward(2);
-        cars.getCars().get(1).forward(3);
-        cars.getCars().get(2).forward(5);
+        for (Car car : cars.getCars()) {
+            car.forward(input);
+        }
 
         // when
-        MoveStrategy moveStrategy = new MoveStrategy() {
+        MoveStrategy moveStrategy = new MoveStrategy(new Randomize()) {
             @Override
             public int move() {
                 Random random = new Random();
@@ -71,9 +76,9 @@ class CarsTest {
         cars.runRound(moveStrategy);
 
         // then
-        assertThat(cars.getCars().get(0).getStep()).isEqualTo(3);
-        assertThat(cars.getCars().get(1).getStep()).isEqualTo(4);
-        assertThat(cars.getCars().get(2).getStep()).isEqualTo(6);
+        for (Car car : cars.getCars()) {
+            assertThat(car.getStep()).isEqualTo(input + 1);
+        }
     }
 
     private void random() {
@@ -82,26 +87,22 @@ class CarsTest {
     }
 
 
-    @Test
+    @ParameterizedTest
     @DisplayName("현재 라운드까지 진행된 점수판을 가져온다")
-    void getRoundScore() {
+    @ValueSource(ints = {2, 1, 3})
+    void getRoundScore(int step) {
         // given
-        cars.getCars().get(0).forward(2);
-        cars.getCars().get(1).forward(1);
-        cars.getCars().get(2).forward(3);
+        for (Car car : cars.getCars()) {
+            car.forward(step);
+        }
 
         // when
         List<ScoreBoard> scoreBoards = cars.getRoundScore();
 
         // then
-        assertThat(scoreBoards.get(0).getName()).isEqualTo("black");
-        assertThat(scoreBoards.get(0).getScoreHistory()).isEqualTo(Arrays.asList(2));
-
-        assertThat(scoreBoards.get(1).getName()).isEqualTo(cars.getCars().get(1).getName());
-        assertThat(scoreBoards.get(1).getScoreHistory()).isEqualTo(Arrays.asList(1));
-
-        assertThat(scoreBoards.get(2).getName()).isEqualTo(cars.getCars().get(2).getName());
-        assertThat(scoreBoards.get(2).getScoreHistory()).isEqualTo(Arrays.asList(3));
+        for (ScoreBoard scoreBoard : scoreBoards) {
+            assertThat(scoreBoard.getScoreHistory()).containsOnly(step);
+        }
     }
 
     @Test

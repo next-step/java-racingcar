@@ -11,7 +11,10 @@ public abstract class MoveStrategy {
     Randomize randomize;
     ScoreInspector scoreInspector;
 
-    public MoveStrategy() {}
+    public MoveStrategy(Randomize randomize) {
+        this.randomize = randomize;
+        this.scoreInspector = new ScoreInspector();
+    }
 
     public MoveStrategy(Randomize randomize, ScoreInspector scoreInspector) {
         this.randomize = randomize;

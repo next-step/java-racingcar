@@ -17,17 +17,17 @@ public class Racing {
     private List<ScoreBoard> scoreBoards;
     private MoveStrategy moveStrategy;
 
-    private Racing(String carNames, int rounds) {
+    private Racing(String carNames, int rounds, Randomize randomize) {
         this.rounds = rounds;
         this.cars = Cars.of(carNames);
         this.scoreBoards = new ArrayList<>();
-        this.moveStrategy = new Movable();
+        this.moveStrategy = new Movable(randomize);
     }
 
-    public static Racing of(String carNames, int rounds) {
+    public static Racing of(String carNames, int rounds, Randomize randomize) {
         Validator.checkArgumentInRange(rounds, 1);
 
-        return new Racing(carNames, rounds);
+        return new Racing(carNames, rounds, randomize);
     }
 
     public void race() {
