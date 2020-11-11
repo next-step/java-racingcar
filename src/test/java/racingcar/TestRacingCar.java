@@ -2,15 +2,24 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class TestRacingCar {
     RacingCar racingCar;
+
+    @DisplayName("자동차 이름 길이")
+    @ParameterizedTest
+    @ValueSource(strings = {"1234, 12345, 123456"})
+    void test_car_name(String name) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar(name));
+    }
 
     @DisplayName("자동차 1번 이동")
     @ParameterizedTest
