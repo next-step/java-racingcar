@@ -19,9 +19,7 @@ public class Cars {
   public static Cars of(List<String> names) {
     validateInput(names);
 
-    List<Car> cars = createCarsWithNames(names);
-
-    return new Cars(cars);
+    return new Cars(createCarsWithNames(names));
   }
 
   private static List<Car> createCarsWithNames(List<String> names) {
