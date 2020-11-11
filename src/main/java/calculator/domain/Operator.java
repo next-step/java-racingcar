@@ -21,11 +21,18 @@ public enum Operator {
         return this.biFunction.apply(a,b);
     }
 
+    private static void validOperatorDiv(String sign) {
+        if (!Operator.contains(sign)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static Operator getOperator(String sign) {
+        validOperatorDiv(sign);
         return Arrays.stream(values())
                 .filter(operator -> operator.sign.equals(sign))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(IllegalAccessError::new);
     }
 
     public static boolean contains(String sign) {

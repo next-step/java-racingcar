@@ -37,11 +37,4 @@ class OperatorTest {
     void contains() {
         Assertions.assertThat(Operator.contains("+")).isTrue();
     }
-
-    @Test
-    void testGetOperator() {
-        Assertions.assertThatThrownBy(() -> {
-            Operator.getOperator("&");
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
 }
