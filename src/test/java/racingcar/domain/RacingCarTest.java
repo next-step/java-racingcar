@@ -20,27 +20,28 @@ public class RacingCarTest {
     private static final int DEFAULT_DISTANCE = 0;
     private static final int MOVE = 1;
     private static final int NOT_MOVE = 0;
+    private final Round round = new Round(3);
 
     private final String[] nameOfCars = {"car1", "car2", "car3", "car4"};
     private RacingCars racingCars;
 
     @BeforeEach
     void setUp() {
-        racingCars = RacingCars.of(nameOfCars, () -> true);
+        racingCars = RacingCars.of(nameOfCars, () -> true,round);
         racingCars.run();
     }
 
     @DisplayName("게임에 필요한 Car 를 생성자의 인자로 받아 원하는 인자를 가진 Car로 생성 여부")
     @Test
     void createTest() {
-        assertThatCode(() -> RacingCars.of(nameOfCars, new RandomMovingStrategy()))
+        assertThatCode(() -> RacingCars.of(nameOfCars, new RandomMovingStrategy(),round))
                 .doesNotThrowAnyException();
     }
 
     @DisplayName("초기화된 Cars의 위치가 시작점 0인 경우")
     @Test
     void initialCars() {
-        RacingCars initRacingCar = RacingCars.of(nameOfCars, new RandomMovingStrategy());
+        RacingCars initRacingCar = RacingCars.of(nameOfCars, new RandomMovingStrategy(),round);
         assertThat(initRacingCar.getCars()
                 .stream()
                 .map(Car::getPosition))
@@ -57,8 +58,8 @@ public class RacingCarTest {
     @DisplayName("게임을 한 번 수행할 때마다 만들어진 Car 는 이동 또는 정지 여부")
     @ParameterizedTest
     @MethodSource("moveCarsCase")
-    void moveOrStopCar(boolean moveOrNot, int distance) {
-        RacingCars racingCars = RacingCars.of(nameOfCars, () -> moveOrNot);
+    void moveOrStopCar(boolean moveOrNot, int distance, Round round) {
+        RacingCars racingCars = RacingCars.of(nameOfCars, () -> moveOrNot,round);
         racingCars.run();
         assertThat(racingCars.getCars()
                 .stream()
@@ -68,8 +69,8 @@ public class RacingCarTest {
 
     private static Stream<Arguments> moveCarsCase() {
         return Stream.of(
-                Arguments.of(true, MOVE),
-                Arguments.of(false, NOT_MOVE)
+                Arguments.of(true, MOVE,new Round(3)),
+                Arguments.of(false, NOT_MOVE,new Round(7))
         );
     }
 
