@@ -22,8 +22,9 @@ public class ResultView {
 
 	private String printRacingPoint(int point) {
 		StringBuilder sb = new StringBuilder();
-		IntStream.range(0, point)
-				.forEach(i -> sb.append(MOVE_TAB));
+		for(int i = 0; i < point ; i++) {
+			sb.append(MOVE_TAB);
+		}
 		return sb.toString();
 	}
 
