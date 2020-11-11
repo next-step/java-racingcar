@@ -5,16 +5,17 @@ import step3.logic.RandomEngine;
 import step3.ui.InputView;
 import step3.ui.OutputView;
 
+import java.util.stream.IntStream;
+
 public class Stadium {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        Race race = new Race(RandomEngine::new, inputView.readNumberCars());
+        final InputView inputView = new InputView();
+        final OutputView outputView = new OutputView();
+        final Race race = new Race(RandomEngine::new, inputView.readNumberCars());
 
-        for (int it = inputView.readNumberIterations(); it > 0; --it) {
-            race.lap();
-            outputView.showStatus(race.getCars());
-            System.out.println();
-        }
+        IntStream.range(0, inputView.readNumberIterations()).forEach(i -> {
+                race.lap();
+                outputView.showStatus(race.getCars());
+        });
     }
 }

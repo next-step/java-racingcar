@@ -24,5 +24,6 @@ public class OutputView {
 
     public void showStatus(List<Car> cars) {
         cars.forEach(this::showStatus);
+        out.println();
     }
 }
