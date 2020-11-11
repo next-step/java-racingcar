@@ -13,15 +13,11 @@ public class RacingCars {
 	private List<RacingCar> racingCars;
 
 	public RacingCars(String carNames) {
-		this.racingCars = getRacingCars(carNames);
-	}
-
-	protected List<RacingCar> getRacingCars(String carNames) {
 		if (carNames.isEmpty()) {
 			throw new IllegalArgumentException(INPUT_CARNAME_REQUIRED);
 		}
 		String[] names = carNames.split(",");
-		return Stream.of(names)
+		this.racingCars = Stream.of(names)
 				.peek(name -> {
 					if (name.length() > 5) {
 						throw new IllegalArgumentException(CARNAME_IS_BELOW_FIVE);
