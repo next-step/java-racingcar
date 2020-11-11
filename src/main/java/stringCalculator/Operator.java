@@ -1,26 +1,29 @@
 package stringCalculator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Operator {
 
-    static HashMap<String, ArithmeticInterface> operatorCollection = new HashMap<>();
-    Symbol symbol;
-
-    public Operator(){
-
-    }
-    public Operator(String state){
-        symbol = new Symbol(state);
-    }
+    private static ArrayList<String> symbols = new ArrayList();
+    private static HashMap<String, ArithmeticInterface> operatorCollection = new HashMap<>();
 
     public void add(String symbol,ArithmeticInterface arithmetic){
         operatorCollection.put(symbol, arithmetic);
     }
 
-    public int execute(String symbol,int a, int b){
+    public static int execute(String symbol,int a, int b){
         return operatorCollection.get(symbol).operate(a,b);
-
     }
+
+    public static boolean containsSymbol(String symbol) {
+        return operatorCollection.containsKey(symbol);
+    }
+
+    public static void addSymbol(String symbol){
+        symbols.add(symbol);
+    }
+
+
 
 }
