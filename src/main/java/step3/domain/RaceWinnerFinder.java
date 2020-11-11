@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +11,7 @@ public class RaceWinnerFinder {
      * @return
      */
     public List<Car> find(List<Car> cars){
-        List<CarState> states = cars.stream().map( it -> CarState.of(it) ).collect(Collectors.toList());
+        List<CarState> states = cars.stream().map(it -> CarState.of(it) ).collect(Collectors.toList());
 
         int winningNumber = states.stream()
                 .map( it -> it.getMovingDistance() )

@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ public class JoinedCars {
     }
 
     public void displayRaceStateOn(RaceDisplay raceDisplay) {
-        cars.stream().map(it -> CarState.of(it)).forEach( it -> {
+        cars.stream().map(it -> CarState.of(it)).forEach(it -> {
             StringBuffer sb = new StringBuffer();
             sb.append(it.getName()).append('|');
             int length = it.getMovingDistance();
