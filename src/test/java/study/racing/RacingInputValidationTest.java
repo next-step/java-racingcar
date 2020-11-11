@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racing.view.InputView;
-
-
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingInputValidationTest {
@@ -20,7 +18,7 @@ public class RacingInputValidationTest {
     @Test
     void inputCarCountZeroTest(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            carRacing.start(0, 3);
+            InputView.validateCarCount(0);
         }).withMessageContaining(RacingErrorMessage.ZERO_CAR_COUNT.getErrorMessage());
     }
 
@@ -28,7 +26,7 @@ public class RacingInputValidationTest {
     @Test
     void inputTryCountZeroTest(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            carRacing.start(2, 0);
+            InputView.validateTryCount(0);
         }).withMessageContaining(RacingErrorMessage.ZERO_TRY_COUNT.getErrorMessage());
     }
 
