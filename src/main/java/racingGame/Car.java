@@ -15,18 +15,27 @@ public class Car {
   }
 
   static public Car of(String name) {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException();
-    }
-
-    if (name.length() > MAX_NAME_LENGTH) {
-      throw new IllegalCarNameLengthException();
-    }
-
+    validateName(name);
     return new Car(0, name);
   }
 
-  // Car를 생성할 때 어떻게 움직일지 결정 해놓는다?
+  private static void validateName(String name) {
+    validateNullString(name);
+    validateOverLength(name);
+  }
+
+  private static void validateNullString(String name) {
+    if (name == null || name.isEmpty()) {
+      throw new IllegalArgumentException();
+    }
+  }
+
+  private static void validateOverLength(String name) {
+    if (name.length() > MAX_NAME_LENGTH) {
+      throw new IllegalCarNameLengthException();
+    }
+  }
+
   public int move(int delta) {
     position += delta;
     return this.position;

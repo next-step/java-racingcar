@@ -1,7 +1,5 @@
 package racingGame;
 
-import java.util.List;
-import javafx.util.Pair;
 import racingGame.View.InputView;
 import racingGame.View.ResultView;
 import racingGame.racingGameException.IllegalNumRoundException;
@@ -9,24 +7,25 @@ import racingGame.racingGameException.IllegalNumRoundException;
 public class GameClient {
 
   private static void runGame(RacingOperator racingOperator, int numRound) {
-    int currentRound = 1;
+    validateRound(numRound);
 
-    if (numRound < 1) {
-      throw new IllegalNumRoundException();
-    }
+    int currentRound = 1;
 
     ResultView.printResultMessage();
 
-    for (; !isFinished(currentRound, numRound); currentRound += 1) {
+    while (!isFinished(currentRound, numRound)) {
       racingOperator.moves();
-      // Step3의 로직. 어떻게 하면 코드를 예쁘게 바꿨을 지 검토해보기
-      // List<Integer> status = carOperator.getPositions();
-      // ResultView.printCurrentStatus(status);
-      List<Pair<String, Integer>> status = racingOperator.getCurrentCarsStatus();
-      ResultView.printCurrentStatusWithName(status);
+      ResultView.printCurrentStatusWithName(racingOperator.getCurrentCarsStatus());
+      currentRound += 1;
     }
 
     ResultView.printWinner(racingOperator.extractWinners());
+  }
+
+  private static void validateRound(int numRound) {
+    if (numRound < 1) {
+      throw new IllegalNumRoundException();
+    }
   }
 
   private static boolean isFinished(int currentRound, int numRound) {
@@ -34,16 +33,11 @@ public class GameClient {
   }
 
   public static void main(String[] args) {
-    String names;
-    int numRound;
-    Cars cars;
-    RacingOperator racingOperator;
+    String names = InputView.askUserNames();
+    int numRound = InputView.askNumRound();
 
-    names = InputView.askUserNames();
-    numRound = InputView.askNumRound();
-
-    cars = Cars.of(names);
-    racingOperator = RacingOperator.of(cars);
+    Cars cars = Cars.of(names);
+    RacingOperator racingOperator = RacingOperator.of(cars);
 
     runGame(racingOperator, numRound);
   }
