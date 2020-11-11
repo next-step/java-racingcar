@@ -1,8 +1,9 @@
 # 자동차 경주 게임
 ## 기능 구현
-* Intput, Output 
+* View
+    * Intput, Output 
 * 관련 객체 구현
-  * Model
+  * Domain
     * Car
     * Cars
     * Motor
