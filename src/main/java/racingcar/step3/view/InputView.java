@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class InputView {
     Scanner scanner;
 
-    public String getNames() {
+    public String getCars() {
         this.scanner = Scan.getInstance();
         System.out.println(Consts.HOW_MANY_CARS);
         return scanner.next();

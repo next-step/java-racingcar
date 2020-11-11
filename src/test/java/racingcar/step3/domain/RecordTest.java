@@ -29,7 +29,7 @@ class RecordTest {
     @DisplayName("승자는 한 명")
     void givenTheOnlyOneBestRecord_thenGetWinner() {
         car1.move(Consts.INVALID_VALUE + 1);
-        this.record.record(car1);
+        this.record.record(1, car1);
         assertThat(record.getWinner()).isEqualTo("pobi");
     }
 
@@ -37,10 +37,10 @@ class RecordTest {
     @DisplayName("승자는 두 명")
     void givenTwoBestRecord_thenGetWinners() {
         car1.move(Consts.INVALID_VALUE + 1);
-        this.record.record(car1);
+        this.record.record(1, car1);
 
         car2.move(Consts.INVALID_VALUE + 1);
-        this.record.record(car2);
+        this.record.record(1, car2);
 
         assertThat(record.getWinner()).isEqualTo("pobi, crong");
     }
@@ -49,13 +49,13 @@ class RecordTest {
     @DisplayName("모두가 승자")
     void givenAllBestRecord_thenGetWinners() {
         car1.move(Consts.INVALID_VALUE + 1);
-        this.record.record(car1);
+        this.record.record(1, car1);
 
         car2.move(Consts.INVALID_VALUE + 1);
-        this.record.record(car2);
+        this.record.record(1, car2);
 
         car3.move(Consts.INVALID_VALUE + 1);
-        this.record.record(car3);
+        this.record.record(1, car3);
 
         assertThat(record.getWinner()).isEqualTo("pobi, crong, honux");
     }
@@ -64,13 +64,13 @@ class RecordTest {
     @DisplayName("승자는 없음")
     void givenNothingBestRecord_thenGetWinners() {
         car1.move(Consts.INVALID_VALUE);
-        this.record.record(car1);
+        this.record.record(1, car1);
 
         car2.move(Consts.INVALID_VALUE);
-        this.record.record(car2);
+        this.record.record(1, car2);
 
         car3.move(Consts.INVALID_VALUE);
-        this.record.record(car3);
+        this.record.record(1, car3);
 
         assertThat(record.getWinner()).isEmpty();
     }
