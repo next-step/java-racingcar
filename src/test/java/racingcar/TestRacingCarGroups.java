@@ -13,7 +13,7 @@ public class TestRacingCarGroups {
     @ParameterizedTest
     @CsvSource({"AAA, 1"})
     void test_create_racing_cars(String cars, int result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
+        racingCarGroups = createRacingCars(cars);
         racingCarGroups.move();
         assertThat(racingCarGroups.getRacingCars().size())
                 .isEqualTo(result);
@@ -23,7 +23,7 @@ public class TestRacingCarGroups {
     @ParameterizedTest
     @CsvSource({"BBBB, 1"})
     void test_move(String cars, int result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
+        racingCarGroups = createRacingCars(cars);
         racingCarGroups.move();
         assertThat(racingCarGroups.getRacingCars().get(0).getDistance())
                 .isLessThanOrEqualTo(result);
@@ -33,7 +33,7 @@ public class TestRacingCarGroups {
     @ParameterizedTest
     @CsvSource({"CCCCC, 2"})
     void test_move_two_step(String cars, int result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
+        racingCarGroups = createRacingCars(cars);
         racingCarGroups.move();
         racingCarGroups.move();
         assertThat(racingCarGroups.getRacingCars().get(0).getDistance())
@@ -44,7 +44,7 @@ public class TestRacingCarGroups {
     @ParameterizedTest
     @CsvSource({"CCCCC, 2"})
     void test_get_max_distance(String cars, int result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
+        racingCarGroups = createRacingCars(cars);
         racingCarGroups.move();
         racingCarGroups.move();
         assertThat(racingCarGroups.getMaxDistance()).isEqualTo(result);
@@ -54,7 +54,7 @@ public class TestRacingCarGroups {
     @ParameterizedTest
     @CsvSource({"CCCCC,1,CCCCC"})
     void test_get_find_winners(String cars, int condition, String result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
+        racingCarGroups = createRacingCars(cars);
         racingCarGroups.move();
         racingCarGroups.move();
         assertThat(racingCarGroups.findWinners(condition));

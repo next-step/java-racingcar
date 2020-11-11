@@ -9,8 +9,8 @@ public class RacingCarGame {
     private final RacingCarGroups racingCarGroups;
     private final int rounds;
 
-    public RacingCarGame(RacingCarGroups racingCarGroups, int rounds) {
-        this.racingCarGroups = racingCarGroups;
+    public RacingCarGame(String carNames, int rounds) {
+        this.racingCarGroups = createRacingCars(carNames);
         this.rounds = rounds;
     }
 
@@ -29,7 +29,7 @@ public class RacingCarGame {
         }
     }
 
-    public static List<RacingCar> createRacingCars(String carNames) {
+    public static RacingCarGroups createRacingCars(String carNames) {
         String[] names = carNames.split(",");
 
         List<RacingCar> racingCars = new ArrayList<>();
@@ -37,7 +37,7 @@ public class RacingCarGame {
             RacingCar racingCar = new RacingCar(names[i].trim());
             racingCars.add(racingCar);
         }
-        return racingCars;
+        return new RacingCarGroups(racingCars);
     }
 
     public List<String> getWinners() {

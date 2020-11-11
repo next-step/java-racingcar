@@ -14,7 +14,7 @@ public class TestRacingCarGame {
     @ParameterizedTest
     @CsvSource(value = {"AAA,BBBB,CCCCC:2", }, delimiter = ':')
     void test_check_total_cars(String cars, int rounds) {
-        racingCarGame = new RacingCarGame(new RacingCarGroups(createRacingCars(cars)), rounds);
+        racingCarGame = new RacingCarGame(cars, rounds);
         assertThat(racingCarGame.getRacingCarGroups()).isInstanceOf(RacingCarGroups.class);
     }
 
@@ -22,7 +22,7 @@ public class TestRacingCarGame {
     @ParameterizedTest
     @CsvSource(value = {"AAA,BBBB,CCCCC:2:2", "AAA,BBBB,CCCCC:3:3", "AAA,BBBB,CCCCC:4:4"}, delimiter = ':')
     void test_check_total_rounds(String cars, int rounds, int resultRounds) {
-        racingCarGame = new RacingCarGame(new RacingCarGroups(createRacingCars(cars)), rounds);
+        racingCarGame = new RacingCarGame(cars, rounds);
         assertThat(racingCarGame.getRounds()).isEqualTo(resultRounds);
     }
 
@@ -30,7 +30,7 @@ public class TestRacingCarGame {
     @ParameterizedTest
     @CsvSource(value = {"AAA:1:1", "AAA,BBBB:2:2", "AAA,BBBB,CCCCC:3:3"}, delimiter = ':')
     void test_check_creation_of_racing_cars(String cars, int rounds, int result) {
-        racingCarGame = new RacingCarGame(new RacingCarGroups(createRacingCars(cars)), rounds);
+        racingCarGame = new RacingCarGame(cars, rounds);
         assertThat(racingCarGame.getRacingCarGroups().getRacingCars().size())
                 .isEqualTo(result);
     }
@@ -39,7 +39,7 @@ public class TestRacingCarGame {
     @ParameterizedTest
     @CsvSource(value = {"AAA,BBBB,CCCCC:2:0", "AAA,BBBB,CCCCC:5:0" },delimiter = ':')
     void test_run_game(String cars, int rounds, int index) {
-        racingCarGame = new RacingCarGame(new RacingCarGroups(createRacingCars(cars)), rounds);
+        racingCarGame = new RacingCarGame(cars, rounds);
         racingCarGame.runGame();
         assertThat(racingCarGame.getRacingCarGroups().getRacingCars().get(index).getDistance())
                 .isLessThanOrEqualTo(rounds);
@@ -49,7 +49,7 @@ public class TestRacingCarGame {
     @ParameterizedTest
     @CsvSource({"BBBB,2,BBBB", "CCCCC,5,CCCCC" })
     void test_run_game_winner(String cars, int rounds, String winner) {
-        racingCarGame = new RacingCarGame(new RacingCarGroups(createRacingCars(cars)), rounds);
+        racingCarGame = new RacingCarGame(cars, rounds);
         racingCarGame.runGame();
         assertThat(racingCarGame.getWinners().get(0)).isEqualTo(winner);
     }

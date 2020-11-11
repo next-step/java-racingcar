@@ -10,7 +10,7 @@ public class RacingCarGameManager {
         InputView.displayMessage("시도할 회수는 몇 회 인가요?");
         int numberOfRounds = InputView.getUserInput();
 
-        RacingCarGame game = new RacingCarGame(new RacingCarGroups(createRacingCars(carNames)), numberOfRounds);
+        RacingCarGame game = new RacingCarGame(carNames, numberOfRounds);
         game.runGame();
 
         ResultView.displayWinner(game.getWinners());
