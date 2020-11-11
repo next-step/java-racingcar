@@ -24,20 +24,20 @@ public class RacingCarTest {
         assertThat(racingCar.getCurrentPosition()).isEqualTo(1);
     }
 
-    @DisplayName("RacingCar")
+    @DisplayName("RacingCar 이동 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"볼보", "폭스바겐", "벤츠"})
-    public void movePosition(String carName) {
+    @CsvSource(value = {"볼보:3", "폭스바겐:5", "벤츠:7"}, delimiter = ':')
+    public void movePosition(String carName, int expectedMove) {
         //Given
         RacingCar racingCar = new RacingCar(carName);
         Commander commander = () -> true;
-        int range = 10;
 
         //When
-        IntStream.range(0, range -1)
+        IntStream.range(0, expectedMove -1 )
                 .forEach(i -> racingCar.move(commander));
+
         //Then
-        assertThat(racingCar.getCurrentPosition()).isEqualTo(range);
+        assertThat(racingCar).isEqualTo(new RacingCar(carName, expectedMove));
     }
 
 
@@ -47,9 +47,9 @@ public class RacingCarTest {
     public void carNameInstanceEqualsTest(String carName, String carName2, String carName3) {
 
         //Given && When
-        RacingCar car1 = new RacingCar(carName);
-        RacingCar car2 = new RacingCar(carName2);
-        RacingCar car3 = new RacingCar(carName3);
+        RacingCar car1 = new RacingCar(carName, 5);
+        RacingCar car2 = new RacingCar(carName2, 5);
+        RacingCar car3 = new RacingCar(carName3, 5);
 
         //Then
         assertThat(car1).isEqualTo(car2).isEqualTo(car3);
@@ -57,18 +57,18 @@ public class RacingCarTest {
 
     @DisplayName("RacingCar hashCode 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"현대:현대", "기아:기아", "제네시스:제네시스"})
-    public void carNameHashCodeTest(String carName) {
+    @CsvSource(value = {"현대:현대", "기아:기아", "제네시스:제네시스"}, delimiter = ':')
+    public void carNameHashCodeTest(String carName, String carName2) {
         //Given & When
         Map<RacingCar, Boolean> map = new HashMap<>();
-        map.put(new RacingCar(carName), true);
-        map.put(new RacingCar(carName), false);
+        map.put(new RacingCar(carName, 5), true);
+        map.put(new RacingCar(carName2, 5), false);
 
         //Then
-        assertThat(map.get(new RacingCar(carName))).isFalse();
+        assertThat(map.get(new RacingCar(carName, 5))).isFalse();
     }
 
-    @DisplayName("RacingCar hashCode 테스트")
+    @DisplayName("RacingCar 이름 유효성 검사 테스트")
     @ParameterizedTest
     @CsvSource(value = {"람보르기니기니", "폭스바겐바겐", "제네시스시스"})
     public void inValidCarName(String carName){
