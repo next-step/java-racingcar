@@ -51,6 +51,12 @@ public class Cars {
     }
   }
 
+  public void movesCar(ScoreGenerator scoreGenerator){
+    for (Car car : this.cars){
+      car.move(scoreGenerator);
+    }
+  }
+
   public Car get(int index) {
     return this.cars.get(index);
   }

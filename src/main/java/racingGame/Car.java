@@ -37,8 +37,8 @@ public class Car {
     }
   }
 
-  public int move(int delta) {
-    position += delta;
+  public int move(ScoreGenerator scoreGenerator) {
+    position += scoreGenerator.generateScore();
     return this.position;
   }
 

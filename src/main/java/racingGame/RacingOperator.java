@@ -1,14 +1,10 @@
 package racingGame;
 
 import java.util.List;
-import java.util.Vector;
 import javafx.util.Pair;
 
 public class RacingOperator {
 
-  /**
-   * Car에게 position 변경을 지시하는 역할.
-   */
   private final Cars cars;
   private int currentRound;
 
@@ -22,9 +18,7 @@ public class RacingOperator {
   }
 
   public void moves(ScoreGenerator scoreGenerator) {
-    for (int i = 0; i < cars.getNumCars(); i++) {
-      cars.get(i).move(scoreGenerator.generateScore());
-    }
+    cars.movesCar(scoreGenerator);
     this.currentRound += 1;
   }
 
