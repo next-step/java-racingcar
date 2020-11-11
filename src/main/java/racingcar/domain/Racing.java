@@ -6,45 +6,34 @@ import java.util.stream.Collectors;
 public class Racing {
     private int numberOfTries;
     private StrategyGenerator strategyGenerator;
-    private RacingResult racingResult;
     private List<Car> cars = new ArrayList<>();
 
-
-    public Racing(List<String> carNames, int numberOfTries){
+    public Racing(List<String> carNames, int numberOfTries, StrategyGenerator strategyGenerator){
         this.numberOfTries = numberOfTries;
-        this.racingResult = new RacingResult();
+        this.strategyGenerator = strategyGenerator;
 
         for(int i = 0; i < carNames.size(); i++) {
             cars.add(new Car(carNames.get((i))));
         }
     }
 
-    public RacingResult getRacingResult(){
+    public RacingResult race() {
+        RacingResult racingResult = new RacingResult();
+
+        makeMovingHistoryByTry(racingResult);
+        decideWinners(racingResult);
+
         return racingResult;
     }
 
-    public void setStrategyGenerator(StrategyGenerator strategyGenerator) {
-        this.strategyGenerator = strategyGenerator;
-    }
-
-    public void race() {
-        clearRacingResultAndWinners();
-        makeMovingHistoryByTry();
-        decideWinners();
-    }
-
-    private void clearRacingResultAndWinners(){
-        racingResult.clear();
-    }
-
-    private void makeMovingHistoryByTry(){
+    private void makeMovingHistoryByTry(RacingResult racingResult){
         for(int i = 0; i < numberOfTries; i++) {
             Map<String,Integer> resultMap = fetchMovingResult();
             racingResult.addMovingHistoryByTry(resultMap);
         }
     }
 
-    private void decideWinners() {
+    private void decideWinners(RacingResult racingResult) {
         int max = cars.stream().mapToInt(car -> car.getNumberOfMoves()).max().getAsInt();
         List<String> winners = cars.stream().filter(car -> car.getNumberOfMoves() == max)
                 .map(car -> car.getName())
@@ -63,6 +52,4 @@ public class Racing {
 
         return resultMap;
     }
-
-
 }

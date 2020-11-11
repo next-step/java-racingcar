@@ -1,9 +1,6 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -26,39 +23,30 @@ public class RacingResultTest {
     }
 
     @Test
-    void clearTest(){
-        racingResult.addMovingHistoryByTry(testMap);
-        racingResult.setWinners(testList);
-
-        racingResult.clear();
-        assertThat(racingResult.getMovingHistoryByTry().size()).isEqualTo(0);
-        assertThat(racingResult.getWinners().size()).isEqualTo(0);
-    }
-
-    @Test
+    @DisplayName("getMovingHistoryByTry() 테스")
     void getMovingHistoryByTryTest(){
         assertThat(racingResult.getMovingHistoryByTry()).isInstanceOf(List.class);
     }
 
     @Test
+    @DisplayName("getWinners() 테스트")
     void getWinnersTest(){
         assertThat(racingResult.getWinners()).isInstanceOf(List.class);
     }
 
     @Test
+    @DisplayName("addMovingHistoryByTry() 테스트")
     void addMovingHistoryByTryTest(){
-        racingResult.clear();
         int before = racingResult.getMovingHistoryByTry().size();
         racingResult.addMovingHistoryByTry(testMap);
         int after = racingResult.getMovingHistoryByTry().size();
 
         assertThat(before + 1).isEqualTo(after);
-
     }
 
     @Test
+    @DisplayName("setWinners() 테스트")
     void setWinnersTest(){
-        racingResult.clear();
         racingResult.setWinners(testList);
 
         assertThat(racingResult.getWinners()).isEqualTo(testList);

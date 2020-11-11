@@ -23,7 +23,6 @@ public class ResultView {
 
         System.out.print(String.join(Constants.COMMA_DELIMITER, winners));
         System.out.print(Constants.THE_WINNER_IS);
-
     }
 
     private static void drawMovingHistory(String k, Integer v) {

@@ -11,11 +11,9 @@ public class RacingCarApplication {
         List<String> carNames = InputView.askToInsertCarNames();
         int numberOfTries = InputView.askToInsertNumberOfTries();
 
-        Racing racing = new Racing(carNames, numberOfTries);
-        racing.setStrategyGenerator(new RandomStrategyGenerator());
-        racing.race();
+        Racing racing = new Racing(carNames, numberOfTries, new RandomStrategyGenerator());
 
-        RacingResult racingResult = racing.getRacingResult();
+        RacingResult racingResult = racing.race();
 
         ResultView.print(racingResult);
     }

@@ -16,11 +16,6 @@ public class RacingResult {
         return winners;
     }
 
-    public void clear() {
-        movingHistoryByTry.clear();
-        winners.clear();
-    }
-
     public void addMovingHistoryByTry(Map<String, Integer> resultMap) {
         movingHistoryByTry.add(resultMap);
     }
