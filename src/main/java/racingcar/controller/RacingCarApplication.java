@@ -2,10 +2,10 @@ package racingcar.controller;
 
 import racingcar.dto.RaceReadyValue;
 import racingcar.dto.RaceResultValue;
-import racingcar.external.InputChannel;
-import racingcar.external.InputView;
-import racingcar.external.OuputChannel;
-import racingcar.external.ResultView;
+import racingcar.view.InputChannel;
+import racingcar.view.InputView;
+import racingcar.view.OuputChannel;
+import racingcar.view.ResultView;
 import racingcar.domain.RandomMove;
 import racingcar.service.RacingCarService;
 
