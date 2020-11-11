@@ -15,10 +15,11 @@ public final class ResultView {
     }
 
     public static void displayRacingCar(RacingCar racingCar) {
-        System.out.print(racingCar.getName() + " : ");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(racingCar.getName()).append(" : ");
         for(int i = 0; i < racingCar.getDistance(); i++) {
-            System.out.print('-');
+            stringBuilder.append("-");
         }
-        System.out.println();
+        System.out.println(stringBuilder);
     }
 }
