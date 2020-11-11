@@ -3,8 +3,8 @@ package racingcar;
 import java.util.Random;
 
 class GoStraightBehavior implements RacingCarMoveBehavior {
-    private final int MOVING_CONDITION = 4;
-    private Random random = new Random();
+    private static final int MOVING_CONDITION = 4;
+    private static final Random random = new Random();
 
     @Override
     public int action(int currentDistance) {
