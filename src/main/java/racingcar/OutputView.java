@@ -5,7 +5,7 @@ import java.util.List;
 public class OutputView {
     private final String RESULT_MENTION = "실행결과";
     private final String PRESENT_MOVE = "-";
-    private final String WINNER_MEOTION = "가 최종 우승했습니다.";
+    private final String WINNER_MENTION = "가 최종 우승했습니다.";
     private final String COMMA = ", ";
     private final String COLON = " : ";
 
@@ -30,6 +30,6 @@ public class OutputView {
 
     public void displayWinners(List<String> winners) {
         String stringWinners = String.join(COMMA, winners);
-        System.out.print(stringWinners + WINNER_MEOTION);
+        System.out.print(stringWinners + WINNER_MENTION);
     }
 }
