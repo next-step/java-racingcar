@@ -54,11 +54,11 @@ public class Car {
     return Math.max(position, candidatePosition);
   }
 
-  public boolean isWinner(int furthestPosition){
+  public boolean isWinner(int furthestPosition) {
     return this.position == furthestPosition;
   }
 
-  public Pair<String, Integer> publishNamePosition(){
+  public Pair<String, Integer> publishNamePosition() {
     return new Pair<>(this.name, this.position);
   }
 }
