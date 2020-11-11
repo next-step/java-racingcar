@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
 import racing.domain.RaceResult;
-import racing.domain.RaceRule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class CarRacingTest {
         int setRecord3 = 9;
 
         // when
-        CarRacingImpl carRacing = new CarRacingImpl(names, maxLaps);
+        CarRacingStub carRacing = new CarRacingStub(names, maxLaps);
         carRacing.start();
 
         List<RaceResult> raceResults = carRacing.getRaceRound().getRaceResults();
@@ -47,15 +46,4 @@ public class CarRacingTest {
         );
     }
 
-    static class CarRacingImpl extends CarRacing{
-
-        public CarRacingImpl(String carNames, int maxLaps) {
-            super(carNames, maxLaps);
-        }
-
-        @Override
-        public RaceRule raceRule() {
-            return () -> true;
-        }
-    }
 }

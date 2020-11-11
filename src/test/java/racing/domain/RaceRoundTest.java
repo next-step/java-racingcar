@@ -34,6 +34,4 @@ public class RaceRoundTest {
         ).isInstanceOf(IndexOutOfBoundsException.class);
     }
 
-
-
 }
