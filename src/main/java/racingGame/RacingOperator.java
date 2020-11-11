@@ -62,17 +62,6 @@ public class RacingOperator {
     }
   }
 
-  // 게임에 사용되는 Car 전체의 position을 반환하는 기능
-  public List<Integer> getPositions() {
-    List<Integer> positions = new Vector<>();
-
-    for (int i = 0; i < cars.size(); i++) {
-      positions.add(cars.get(i).getPosition());
-    }
-
-    return positions;
-  }
-
   public List<Pair<String, Integer>> getCurrentCarsStatus() {
     List<Pair<String, Integer>> status = new Vector<>();
 

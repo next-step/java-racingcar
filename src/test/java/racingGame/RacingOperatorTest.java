@@ -22,21 +22,6 @@ class RacingOperatorTest {
     this.scoreGenerator = new DummyScoreGenerator();
   }
 
-
-  @DisplayName("move 테스트")
-  @Test
-  void testMoveExactly() {
-    this.racingOperator.moves(this.scoreGenerator);
-    List<Integer> expected = new Vector<>();
-    expected.add(1);
-    expected.add(0);
-    expected.add(1);
-    expected.add(0);
-
-    assertThat(this.racingOperator.getPositions())
-        .isEqualTo(expected);
-  }
-
   @DisplayName("우승자 테스트")
   @Test
   void whoIsWinner() {
