@@ -5,7 +5,9 @@ import racing.domain.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static racing.domain.CarConfig.*;
 
@@ -35,14 +37,21 @@ public class CarRacing {
     }
 
     public void start() {
-        List<RaceResult> results = new LinkedList<>();
-        for(int i=0; i<maxLaps; i++ ) {
-            results.add(i,new RaceResult(cars.moves(raceRule())));
-        }
-        raceRound = new RaceRound(results);
+        raceRound = new RaceRound(getRaceResults());
+    }
+
+    private List<RaceResult> getRaceResults() {
+        return IntStream.range(0,maxLaps)
+                .mapToObj(e -> new RaceResult(carMoves()))
+                .collect(Collectors.toList());
+    }
+
+    private List<Car> carMoves() {
+        return cars.moves(raceRule());
     }
 
     public RaceRule raceRule() {
         return new RaceMovementRule();
     }
+
 }

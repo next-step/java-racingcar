@@ -1,7 +1,10 @@
 package racing.view;
 
+import racing.domain.Car;
+import racing.domain.RaceResult;
 import racing.domain.RaceRound;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static racing.view.ResultViewMessage.*;
@@ -14,14 +17,26 @@ public class ResultView {
 
     public static void viewRaceResult(RaceRound raceRound) {
         printFirstMessage();
+        racePlay(raceRound,raceRound.getRoundCount());
+    }
 
-        int maxRounds = raceRound.getRoundCount();
-        for(int i=0; i<maxRounds; i++) {
-            int laps = i;
-            raceRound.findResult(laps).getResultCars()
+    private static void racePlay(RaceRound raceRound,int maxRounds) {
+        IntStream.range(0,maxRounds)
+                .forEach(i->raceStart(raceRound,i));
+    }
+
+    private static void raceStart(RaceRound raceRound, int index) {
+        getResultCars(raceRound,index)
                 .forEach(car -> printRecord(car.getName(),car.getDistance()));
-            System.out.print("\n");
-        }
+        System.out.print("\n");
+    }
+
+    private static List<Car> getResultCars(RaceRound raceRound,int index) {
+        return getResult(raceRound,index).getResultCars();
+    }
+
+    private static RaceResult getResult(RaceRound raceRound, int index) {
+        return raceRound.findResult(index);
     }
 
     public static void viewRaceWinners(RaceRound raceRound) {
