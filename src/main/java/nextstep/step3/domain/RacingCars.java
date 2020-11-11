@@ -10,16 +10,12 @@ public class RacingCars {
 	private static final String INPUT_CARNAME_REQUIRED = "자동차 이름은 필수 입력 입니다.";
 	private static final String CARNAME_IS_BELOW_FIVE = "자동차 이름은 5자를 넘길 수 없습니다.";
 	private List<RacingCar> racingCars;
-	private String carNames;
 
 	public RacingCars(String carNames) {
-		this.carNames = carNames;
-		this.racingCars = getCarNames().stream()
-				.map(RacingCar::new)
-				.collect(Collectors.toList());
+		this.racingCars = getRacingCars(carNames);
 	}
 
-	protected List<String> getCarNames() {
+	protected List<RacingCar> getRacingCars(String carNames) {
 		if (carNames.isEmpty()) {
 			throw new IllegalArgumentException(INPUT_CARNAME_REQUIRED);
 		}
@@ -30,6 +26,7 @@ public class RacingCars {
 						throw new IllegalArgumentException(CARNAME_IS_BELOW_FIVE);
 					}
 				})
+				.map(RacingCar::new)
 				.collect(Collectors.toList());
 	}
 

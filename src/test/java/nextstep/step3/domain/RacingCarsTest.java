@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,11 +34,14 @@ public class RacingCarsTest {
 	public void getCarNamesTest() {
 		RacingCars racingCars = new RacingCars("adel,joy,ruby,angus,shawn");
 
-		assertAll(() -> assertThat(racingCars.getCarNames()).hasSize(5),
-				() -> assertTrue(racingCars.getCarNames().contains("adel")),
-				() -> assertTrue(racingCars.getCarNames().contains("joy")),
-				() -> assertTrue(racingCars.getCarNames().contains("ruby")),
-				() -> assertTrue(racingCars.getCarNames().contains("angus")),
-				() -> assertTrue(racingCars.getCarNames().contains("shawn")));
+		List<String> carNames = racingCars.getRacingCars().stream()
+				.map(RacingCar::getName)
+				.collect(Collectors.toList());
+		assertAll(() -> assertThat(racingCars.getRacingCars()).hasSize(5),
+				() -> assertTrue(carNames.contains("adel")),
+				() -> assertTrue(carNames.contains("joy")),
+				() -> assertTrue(carNames.contains("ruby")),
+				() -> assertTrue(carNames.contains("angus")),
+				() -> assertTrue(carNames.contains("shawn")));
 	}
 }
