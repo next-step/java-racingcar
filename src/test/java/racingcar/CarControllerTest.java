@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,10 +35,7 @@ class CarControllerTest {
         int looserScore = 3;
         Car car1 = Car.of("a", winnerScore);
         Car car2 = Car.of("b", looserScore);
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-        CarList carList = CarList.from(cars);
+        CarList carList = CarList.from(Arrays.asList(car1, car2));
 
         assertThat(controller.getWinnerScore(carList)).isEqualTo(winnerScore);
     }
@@ -68,9 +66,7 @@ class CarControllerTest {
         controller.getWinnerName(winnerScore, car2, winners);
         controller.getWinnerName(winnerScore, car3, winners);
 
-        List<String> compareWinner = new ArrayList<>();
-        compareWinner.add(car1.getName());
-        compareWinner.add(car2.getName());
+        List<String> compareWinner = Arrays.asList(car1.getName(), car2.getName());
 
         assertThat(winners).isEqualTo(compareWinner);
     }
@@ -80,9 +76,7 @@ class CarControllerTest {
     void winnerOnlyOneTest() {
         int winnerScore = 5;
         Car car1 = Car.of("a", winnerScore);
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        CarList carList = CarList.from(cars);
+        CarList carList = CarList.from(Arrays.asList(car1));
 
         List<String> winner = controller.getWinner(carList);
 
@@ -97,17 +91,11 @@ class CarControllerTest {
         Car car1 = Car.of("a", winnerScore);
         Car car2 = Car.of("b", looserScore);
         Car car3 = Car.of("c", winnerScore);
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        CarList carList = CarList.from(cars);
+        CarList carList = CarList.from(Arrays.asList(car1, car2, car3));
 
         List<String> winner = controller.getWinner(carList);
 
-        List<String> compareWinner = new ArrayList<>();
-        compareWinner.add(car1.getName());
-        compareWinner.add(car3.getName());
+        List<String> compareWinner = Arrays.asList(car1.getName(), car3.getName());
 
         assertThat(winner).isEqualTo(compareWinner);
     }
