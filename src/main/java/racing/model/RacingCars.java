@@ -1,10 +1,9 @@
 package racing.model;
 
-import java.util.Arrays;
-import java.util.LinkedList;
+import racing.Racing;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private List<Car> cars = new LinkedList<>();
@@ -21,6 +20,10 @@ public class RacingCars {
         Arrays.stream(candidates).forEach(candidate -> cars.add(new RacingCar(candidate)));
     }
 
+    public RacingCars(List<Car> cars){
+        this.cars = cars;
+    }
+
     public List<Car> getCandidates(){
         return cars;
     }
@@ -29,7 +32,14 @@ public class RacingCars {
         cars.forEach(car -> car.move(getRandomFuel()));
     }
 
+    public List<String> getWinners(){
+        int maxLocation = cars.stream().map(Car::currentLocation).max(Comparator.naturalOrder()).orElse(0);
+        return cars.stream().filter(car -> car.currentLocation() == maxLocation).map(Car::getCarName).collect(Collectors.toList());
+    }
+
     private int getRandomFuel(){
         return random.nextInt(RANDOM_RANGE);
     }
+
+
 }

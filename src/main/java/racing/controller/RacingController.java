@@ -42,6 +42,7 @@ public class RacingController {
             cars.racing();
             resultView.printRacingResult(cars);
         }
+        resultView.printWinner(cars);
     }
 
     private int getRetryCount() {
