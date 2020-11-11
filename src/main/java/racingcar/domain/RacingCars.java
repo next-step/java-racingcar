@@ -55,7 +55,4 @@ public class RacingCars {
         return this.cars;
     }
 
-    public boolean isGameOver(){
-        return round.isLastRound();
-    }
 }
