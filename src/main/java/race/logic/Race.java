@@ -2,14 +2,13 @@ package race.logic;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Race {
     private final List<Car> cars;
 
-    public Race(EngineFactory factory, int numberCars) {
-        cars = IntStream.range(0, numberCars)
-                .mapToObj(i -> new Car(factory.createEngine()))
+    public Race(EngineFactory factory, List<String> carNames) {
+        cars = carNames.stream()
+                .map(name -> new Car(factory.createEngine(), name))
                 .collect(Collectors.toUnmodifiableList());
     }
 
@@ -19,5 +18,15 @@ public class Race {
 
     public void lap() {
         cars.forEach(Car::run);
+    }
+
+    public List<Car> getFrontLine() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getCurrentPosition)
+                .max()
+                .getAsInt();
+        return cars.stream()
+                .filter(car -> car.getCurrentPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }
