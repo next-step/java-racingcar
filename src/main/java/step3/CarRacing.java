@@ -11,37 +11,40 @@ public class CarRacing {
     private List<Car> cars;
 
     private RaceRoulette raceRoulette = RaceRoulette.simple(9);
+    private RaceResult raceResult = new RaceResult();
 
     public void start() {
-        int numOfCars = getNumOfCars();
-        int totalTries = getNumOfTries();
+        readyToRace(getCarNames());
 
-        readyToRace(numOfCars);
+        int totalTries = getNumOfTries();
+        if (totalTries < 1) throw new RuntimeException("Invalid Input - totalTries is " + totalTries);
 
         int currentTry = 1;
         System.out.println("실행 결과");
 
-        while (currentTry <= totalTries) {
+        while (currentTry++ <= totalTries) {
             tryMovingAllCars();
             displayCurrentMovingDistances();
-            currentTry++;
         }
+
+        announceRaceWinner();
     }
 
-    private int getNumOfCars() {
-        return inputView.getNumOfCars();
+    private void announceRaceWinner() {
+        resultView.showRaceWinner(raceResult.findRaceWinners(cars));
+    }
+
+    private List<String> getCarNames() {
+        return inputView.getCarNames();
     }
 
     private int getNumOfTries() {
         return inputView.getNumOfTries();
     }
 
-    private void readyToRace(int numOfCars) {
-        this.cars = new ArrayList<>(numOfCars);
-        int number = 1;
-        while (number <= numOfCars) {
-            cars.add(new Car(number++));
-        }
+    private void readyToRace(List<String> carNames) {
+        this.cars = new ArrayList<>(carNames.size());
+        carNames.forEach(it -> cars.add(new Car(it)));
     }
 
     private void displayCurrentMovingDistances() {
@@ -49,11 +52,12 @@ public class CarRacing {
     }
 
     private void tryMovingAllCars() {
-        this.cars.forEach(car -> car.move(raceRoulette));
+        this.cars.forEach(it -> it.moveIf(() -> raceRoulette.spin() >= 4));
     }
 
     public static void main(String[] args) {
         CarRacing carRacing = new CarRacing();
         carRacing.start();
     }
+
 }
