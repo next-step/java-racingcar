@@ -12,23 +12,9 @@ class StringCalculatorTest {
     }
 
     @Test
-    void splitWord() {
-        Assertions.assertThat(StringCalculator.splitWord("2 + 3 * 4 / 2").length)
-                .isEqualTo(7);
-        Assertions.assertThat(StringCalculator.splitWord("2 + 3 * 4 / 2"))
-                .containsExactly("2", "+", "3", "*", "4", "/", "2");
-    }
-
-    @Test
-    void calculate() {
-        Assertions.assertThat(StringCalculator.of("2").calculate(new String[] {"2", "+", "3", "*", "4", "/", "2"}))
-                .isEqualTo(10);
-    }
-
-    @Test
     void validInputWord() {
         Assertions.assertThatThrownBy(() -> {
-            StringCalculator.validInputWord("");
+            StringCalculator.of("");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
