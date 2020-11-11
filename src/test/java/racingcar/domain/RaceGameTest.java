@@ -90,4 +90,22 @@ public class RaceGameTest {
         //Then
         assertThat(result).hasSize(carNames.length);
     }
+
+    @DisplayName("모든 라운드를 소진하는 확인하는 테스트")
+    @ParameterizedTest
+    @MethodSource("createCarNames")
+    public void isAllRoundFinishTest(String[] carNames){
+
+        //Given
+        int totalRound = 10;
+        RaceGame raceGame = new RaceGame(carNames, totalRound, new RandomCommander());
+
+        //When
+        IntStream.range(0, totalRound)
+                .forEach(i -> raceGame.start());
+
+        //Then
+        assertThat(raceGame.hasRemainRounds()).isTrue();
+    }
+
 }
