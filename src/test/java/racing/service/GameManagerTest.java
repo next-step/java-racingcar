@@ -1,4 +1,4 @@
-package racing;
+package racing.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-public class CarRacingTest {
+public class GameManagerTest {
 
 
     @ParameterizedTest
@@ -26,7 +26,7 @@ public class CarRacingTest {
         int setRecord3 = 9;
 
         // when
-        CarRacingStub carRacing = new CarRacingStub(names, maxLaps);
+        GameManagerStub carRacing = new GameManagerStub(names, maxLaps);
         carRacing.start();
 
         List<RaceResult> raceResults = carRacing.getRaceRound().getRaceResults();

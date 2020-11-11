@@ -3,18 +3,18 @@ package racing.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.CarRacing;
+import racing.service.GameManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceRoundTest {
 
-    private CarRacing carRacing;
+    private GameManager carRacing;
 
     @BeforeEach
     void setUp() {
-        this.carRacing = new CarRacing("next,step,yoon",10);
+        this.carRacing = new GameManager("next,step,yoon",10);
         this.carRacing.start();
     }
 

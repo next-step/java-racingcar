@@ -1,23 +1,21 @@
-package racing;
+package racing.service;
 
 import racing.domain.*;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static racing.domain.CarConfig.*;
 
-public class CarRacing {
+public class GameManager {
 
     private final Cars cars;
     private final int maxLaps;
     private RaceRound raceRound;
 
-    public CarRacing(String carNames, int maxLaps) {
+    public GameManager(String carNames, int maxLaps) {
         this.cars = setCars(carNames);
         this.maxLaps = maxLaps;
     }
@@ -26,10 +24,6 @@ public class CarRacing {
         return new Cars(Arrays.stream(names.split(CAR_NAME_STRING_SEPARATOR))
                 .map(Car::new)
                 .collect(Collectors.toList()));
-    }
-
-    public Cars getRacingCars() {
-        return cars;
     }
 
     public RaceRound getRaceRound() {

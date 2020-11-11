@@ -1,10 +1,10 @@
-package racing;
+package racing.service;
 
 import racing.domain.RaceRule;
 
-public class CarRacingStub extends CarRacing{
+public class GameManagerStub extends GameManager {
 
-    public CarRacingStub(String carNames, int maxLaps) {
+    public GameManagerStub(String carNames, int maxLaps) {
         super(carNames, maxLaps);
     }
 
