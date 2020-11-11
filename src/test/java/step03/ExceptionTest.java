@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import exception.NotPositiveIntegerException;
+import validator.NumberValidator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
@@ -15,7 +16,7 @@ public class ExceptionTest {
     public void Given_NoAPositiveInteger_Then_ThrowException(int input) {
         assertThatExceptionOfType(NotPositiveIntegerException.class)
                 .isThrownBy(() -> {
-                   Validator.validatePositiveNumber(input);
+                   NumberValidator.validatePositiveNumber(input);
                 });
     }
 }

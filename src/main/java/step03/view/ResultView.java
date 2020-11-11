@@ -2,8 +2,8 @@ package step03.view;
 
 import step03.Car;
 
+import java.util.List;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
 
@@ -18,8 +18,8 @@ public class ResultView {
         return new ResultView(carKind);
     }
 
-    public void print(Stream<Car> cars) {
-        cars.forEach((car) -> {
+    public void print(List<Car> cars) {
+        cars.stream().forEach((car) -> {
             String status = IntStream.range(0, car.position())
                     .mapToObj(n -> carKind)
                     .collect(joining(""));

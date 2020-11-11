@@ -1,9 +1,9 @@
-package step03;
+package validator;
 
 import exception.NotPositiveIntegerException;
 
-public class Validator {
-    private Validator() {}
+public class NumberValidator {
+    private NumberValidator() {}
 
     public static void validatePositiveNumber(int number) {
         if (number < 1) throw new NotPositiveIntegerException();
