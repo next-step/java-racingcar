@@ -1,24 +1,27 @@
 package racing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(int participationCars) {
-        this.cars = createCars(participationCars);
+        createCars(participationCars);
     }
 
-    private List<Car> createCars(int participationCars) {
+    private void createCars(int participationCars) {
         for (int i = 0; i < participationCars; i++) {
             cars.add(new Car());
         }
-
-        return cars;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
+
+    public int size() {
+        return cars.size();
     }
 }
