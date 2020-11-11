@@ -1,6 +1,5 @@
 package nextstep.step3;
 
-import nextstep.step3.domain.RacingCarWinners;
 import nextstep.step3.domain.RacingCars;
 import nextstep.step3.domain.RandomGenerator;
 import nextstep.step3.view.InputView;
@@ -9,7 +8,6 @@ import nextstep.step3.view.ResultView;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class RacingCarGame {
@@ -74,7 +72,6 @@ public class RacingCarGame {
 	}
 
 	private static void printRacingWinners(RacingCars racingCars, ResultView resultView) {
-		RacingCarWinners racingCarWinners = new RacingCarWinners();
-		resultView.printRacingWinner(racingCarWinners.getRacingWinnerNames(racingCars.getRacingCars()));
+		resultView.printRacingWinner(racingCars.getRacingWinnerNames());
 	}
 }
