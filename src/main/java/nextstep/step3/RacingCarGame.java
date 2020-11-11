@@ -55,10 +55,10 @@ public class RacingCarGame {
 	private static void tryRacing(int tryNumber, RacingCars racingCars) {
 		System.out.println("실행 결과");
 		ResultView resultView = new ResultView();
-		IntStream.range(0, tryNumber).forEach(i ->  {
+		for(int i = 0; i < tryNumber; i++) {
 			racingCarMove(racingCars);
 			printRacingResult(racingCars, resultView);
-		});
+		}
 		printRacingWinners(racingCars, resultView);
 	}
 
