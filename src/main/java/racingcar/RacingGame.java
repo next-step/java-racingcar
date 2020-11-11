@@ -16,9 +16,13 @@ public class RacingGame {
         return carList;
     }
 
+    public int getAttempts() {
+        return attempts;
+    }
+
     public List<Car> makeCars(int cars) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < cars ; i++) {
+        for (int i = 0; i < cars; i++) {
             Car car = new Car(attempts);
             car.generateMoves();
             carList.add(car);
