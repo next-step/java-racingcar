@@ -1,2 +1,5 @@
-package racing;public interface MoveStrategy {
+package racing;
+
+public interface MoveStrategy {
+
 }

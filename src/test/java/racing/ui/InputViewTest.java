@@ -14,7 +14,6 @@ class InputViewTest {
 
         // when
         Assertions.assertThatThrownBy(() -> {
-//            InputView.inputNumberOfAttempt(number);
             InputView.validate(inputNumber);
             // then
         }).hasMessageContaining("0 이하는 입력할 수 없습니다.");
