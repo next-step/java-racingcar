@@ -1,7 +1,6 @@
 package nextstep.step3;
 
 import nextstep.step3.domain.RacingCars;
-import nextstep.step3.domain.RandomGenerator;
 import nextstep.step3.view.ResultView;
 
 public class RacingCarController {
@@ -23,14 +22,9 @@ public class RacingCarController {
 		System.out.println("실행 결과");
 		ResultView resultView = new ResultView();
 		for(int i = 0; i < tryNumber; i++) {
-			racingCarMove(racingCars);
+			racingCars.move();
 			resultView.showRacingResult(racingCars);
 		}
 		resultView.printRacingWinner(racingCars.getRacingWinnerNames());
-	}
-
-	private void racingCarMove(RacingCars racingCars) {
-		RandomGenerator randomGenerator = new RandomGenerator();
-		racingCars.getRacingCars().forEach( car -> car.move(randomGenerator.getRandomNumber()));
 	}
 }

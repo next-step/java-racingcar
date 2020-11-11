@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingCars {
-
+	private static final int RANDOM_BOUND = 10;
+	private static final RandomGenerator randomGenerator = new RandomGenerator(RANDOM_BOUND);
 	private static final String INPUT_CARNAME_REQUIRED = "자동차 이름은 필수 입력 입니다.";
 	private static final String CARNAME_IS_BELOW_FIVE = "자동차 이름은 5자를 넘길 수 없습니다.";
 	private List<RacingCar> racingCars;
@@ -34,6 +35,11 @@ public class RacingCars {
 		return racingCars;
 	}
 
+	public void move() {
+		for (RacingCar racingCar : racingCars) {
+			racingCar.move(randomGenerator.getRandomNumber());
+		}
+	}
 	public List<String> getRacingWinnerNames() {
 		int maxPoint = getMaxPoint();
 		return racingCars.stream()
