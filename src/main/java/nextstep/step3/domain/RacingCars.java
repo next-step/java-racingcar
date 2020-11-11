@@ -38,13 +38,16 @@ public class RacingCars {
 	}
 
 	public List<String> getRacingWinnerNames() {
-		int maxPoint = racingCars.stream()
-				.max(Comparator.comparing(RacingCar::getPoint))
-				.get().getPoint();
-
+		int maxPoint = getMaxPoint();
 		return racingCars.stream()
 				.filter(car -> maxPoint == car.getPoint())
 				.map(RacingCar::getName)
 				.collect(Collectors.toList());
+	}
+
+	private int getMaxPoint() {
+		return racingCars.stream()
+					.max(Comparator.comparing(RacingCar::getPoint))
+					.get().getPoint();
 	}
 }
