@@ -34,16 +34,15 @@ public class RacingCarsTest {
         racingCars = new RacingCars(racingCarList);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {3, 5, 4, 2, 5})
-    public void roundExecuteTest(int executeCount) {
+    @Test
+    public void roundExecuteTest() {
         //Given & When
         Commander commander = () -> true;
-        IntStream.range(0, executeCount)
+        IntStream.range(0, racingCarList.size())
                 .forEach((i) -> racingCars.roundExecute(i, commander));
 
         //Then
-        assertThat(racingCars.getWinner()).hasSize(executeCount);
+        assertThat(racingCars.getWinner()).isEqualTo(racingCarList);
     }
 
     @ParameterizedTest
