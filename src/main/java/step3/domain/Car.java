@@ -13,7 +13,6 @@ public class Car {
     private final String name;
     private int step; //자동차가 전진한 횟수
     private final int MAXIMUM_CAR_NAME_LENGTH = 5;
-    private final int MOVE_JUDGE_NUMBER = 4;
 
     public Car(String name) {
         this(name, 0);
@@ -35,7 +34,7 @@ public class Car {
     public int getStep() {
         return this.step;
     }
- 
+
     public String getName() {
         return name;
     }
