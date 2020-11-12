@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import java.util.List;
 
-import racingcar.view.ResultView;
-
 public class Round {
     private int round;
     private final int finalRound;
@@ -12,13 +10,9 @@ public class Round {
         this.finalRound = finalRound;
     }
 
-    public void progressRound(RacingCars racingCars) {
-        while (!isLastRound()) {
-            racingCars.run();
-            List<Car> cars = racingCars.getCars();
-            ResultView.printPositionResult(cars);
-        }
-        ResultView.printNamesOfWinnerCarsResult(racingCars.getNamesOfWinnerCars());
+    public List<Car> progressRound(RacingCars racingCars) {
+        racingCars.run();
+        return racingCars.getCars();
     }
 
     int nextRound() {

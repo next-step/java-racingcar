@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-
 import racingcar.behavior.RandomMovingStrategy;
 import racingcar.domain.RacingCars;
 import racingcar.domain.Round;
@@ -15,6 +14,9 @@ public class RacingController {
 
         RacingCars racingCars = RacingCars.of(nameOfCars, new RandomMovingStrategy(), round);
         ResultView.printResultMessage();
-        round.progressRound(racingCars);
+        while (!round.isLastRound()) {
+            ResultView.printPositionResult(round.progressRound(racingCars));
+        }
+        ResultView.printNamesOfWinnerCarsResult(racingCars.getNamesOfWinnerCars());
     }
 }
