@@ -24,6 +24,28 @@ class CarControllerTest {
     }
 
     @Test
+    @DisplayName("게임 종료 조건 테스트 - 성공")
+    void isFinishSuccessTest() {
+        int tryCounts = 5;
+        int round = 5;
+        String[] carNames = {"name1", "name2", "name3"};
+        controller = new CarController(tryCounts, round);
+
+        assertThat(controller.isFinish()).isTrue();
+    }
+
+    @Test
+    @DisplayName("게임 종료 조건 테스트 - 실패")
+    void isFinishFailTest() {
+        int tryCounts = 5;
+        int round = 3;
+        String[] carNames = {"name1", "name2", "name3"};
+        controller = new CarController(tryCounts, round);
+
+        assertThat(controller.isFinish()).isFalse();
+    }
+
+    @Test
     @DisplayName("우승자 점수 계산 테스트")
     void winnerScoreTest() {
         int winnerScore = 5;

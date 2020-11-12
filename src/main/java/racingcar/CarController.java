@@ -23,6 +23,11 @@ public class CarController {
         this.carList = carList;
     }
 
+    public CarController(int tryCounts, int round) {
+        this.tryCounts = tryCounts;
+        this.round = round;
+    }
+
     public void initCarList(String[] carNames) {
         List<Car> cars = Arrays.stream(carNames)
                 .map(Car::from)
