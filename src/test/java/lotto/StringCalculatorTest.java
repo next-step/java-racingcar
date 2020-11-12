@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class StringCalculatorTest {
@@ -94,5 +95,18 @@ class StringCalculatorTest {
     public void test4(String expression, Integer expected) {
         Integer result = this.stringCalculator.enterExpression(expression);
         assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "-1,2,3"
+    },
+            delimiter = '-'
+    )
+    public void test5(String expression, Integer expected) {
+        assertThatThrownBy(
+                () -> this.stringCalculator.enterExpression(expression)
+        ).isInstanceOf(RuntimeException.class);
     }
 }
