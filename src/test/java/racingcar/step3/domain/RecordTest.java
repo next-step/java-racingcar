@@ -12,67 +12,62 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Developer : Seo.
  */
 class RecordTest {
-    Car car1 = null;
-    Car car2 = null;
-    Car car3 = null;
-    Record record = null;
+    Car car1;
+    Car car2;
+    Car car3;
+    Record record;
+    Cars cars;
+    String inputNames;
 
     @BeforeEach
     void setUp() {
-        car1 = new Car("pobi");
-        car2 = new Car("crong");
-        car3 = new Car("honux");
-        record = new Record(Consts.BEST_RECORD_INIT, Consts.WINNER_INIT);
+        this.car1 = new Car("pobi");
+        this.car2 = new Car("crong");
+        this.car3 = new Car("honux");
+        this.record = new Record();
+        this.inputNames = "pobi,crong,honux";
+        this.cars = new Cars(inputNames, record);
     }
 
     @Test
-    @DisplayName("승자는 한 명")
-    void givenTheOnlyOneBestRecord_thenGetWinner() {
+    @DisplayName("최고 기록 확인")
+    void whenTwoMove_thenShouldBeTheBestTwo() {
+        int turn = 1;
         car1.move(Consts.INVALID_VALUE + 1);
-        this.record.record(1, car1);
-        assertThat(record.getWinner()).isEqualTo("pobi");
-    }
-
-    @Test
-    @DisplayName("승자는 두 명")
-    void givenTwoBestRecord_thenGetWinners() {
-        car1.move(Consts.INVALID_VALUE + 1);
-        this.record.record(1, car1);
+        record.record(car1, turn);
+        assertThat(record.getBestRecord()).isEqualTo(1);
 
         car2.move(Consts.INVALID_VALUE + 1);
-        this.record.record(1, car2);
-
-        assertThat(record.getWinner()).isEqualTo("pobi, crong");
-    }
-
-    @Test
-    @DisplayName("모두가 승자")
-    void givenAllBestRecord_thenGetWinners() {
-        car1.move(Consts.INVALID_VALUE + 1);
-        this.record.record(1, car1);
-
         car2.move(Consts.INVALID_VALUE + 1);
-        this.record.record(1, car2);
-
-        car3.move(Consts.INVALID_VALUE + 1);
-        this.record.record(1, car3);
-
-        assertThat(record.getWinner()).isEqualTo("pobi, crong, honux");
+        record.record(car2, turn);
+        assertThat(record.getBestRecord()).isEqualTo(2);
     }
 
     @Test
-    @DisplayName("승자는 없음")
-    void givenNothingBestRecord_thenGetWinners() {
-        car1.move(Consts.INVALID_VALUE);
-        this.record.record(1, car1);
+    @DisplayName("턴 기록 확인")
+    void whenTwoCarsParticipate_thenTheTurnResultShouldHaveTwo() {
+        int turn = 1;
+        car1.move(Consts.INVALID_VALUE + 1);
+        record.record(car1, turn);
 
         car2.move(Consts.INVALID_VALUE);
-        this.record.record(1, car2);
+        record.record(car2, turn);
 
-        car3.move(Consts.INVALID_VALUE);
-        this.record.record(1, car3);
+        assertThat(record.getTotalRecords().get(turn)).hasSize(2);
+    }
 
-        assertThat(record.getWinner()).isEmpty();
+    @Test
+    @DisplayName("총 기록 확인")
+    void whenTheRaceRunsTwice_thenTheTotalShouldHaveTwo() {
+        int turn = 1;
+        car1.move(Consts.INVALID_VALUE + 1);
+        record.record(car1, turn);
+        assertThat(record.getTotalRecords()).hasSize(1);
+
+        turn = 2;
+        car1.move(Consts.INVALID_VALUE + 1);
+        record.record(car1, turn);
+        assertThat(record.getTotalRecords()).hasSize(2);
     }
 
 }

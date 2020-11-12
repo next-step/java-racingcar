@@ -1,8 +1,8 @@
 package racingcar.step3.domain;
 
-import java.util.ArrayList;
+import racingcar.step3.common.Consts;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,42 +10,45 @@ import java.util.Map;
  * Developer : Seo.
  */
 public class Record {
+    private Map<String, Integer> turnRecords;
+    private final Map<Integer, Map<String, Integer>> totalRecords;
     private int bestRecord;
-    private String winner;
-    private Map<Integer, List<Car>> totalRecords;
-    private List<Car> turnRecords;
 
-    public Record(int bestRecord, String winner) {
-        this.bestRecord = bestRecord;
-        this.winner = winner;
+    public Record() {
+        this.turnRecords = new HashMap<>();
         this.totalRecords = new HashMap<>();
-        this.turnRecords = new ArrayList<>();
+        this.bestRecord = Consts.BEST_RECORD_INIT;
     }
 
-    public void record(int turn, Car car) {
-        if (!totalRecords.containsKey(turn)) {
-            turnRecords = new ArrayList<>();
-        }
-        turnRecords.add(car);
-        totalRecords.put(turn, turnRecords);
+    public void record(Car car, int turn) {
+        setTurnRecords(car, turn);
+        setTotalRecords(turn);
+        setBestRecord(car);
+    }
 
+    private void setTurnRecords(Car car, int turn) {
+        if (!totalRecords.containsKey(turn)) {
+            turnRecords = new HashMap<>();
+        }
+        turnRecords.put(car.getName(), car.getDistance());
+    }
+
+    private void setTotalRecords(int turn) {
+        totalRecords.put(turn, turnRecords);
+    }
+
+    private void setBestRecord(Car car) {
         if (Integer.compare(bestRecord, car.getDistance()) == -1) {
             this.bestRecord = car.getDistance();
-            this.winner = car.getName();
-        }
-        if (!winner.equals("") && !winner.contains(car.getName())
-                && bestRecord == car.getDistance()) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(this.winner).append(", ").append(car.getName());
-            this.winner = sb.toString();
         }
     }
 
-    public String getWinner() {
-        return this.winner;
-    }
-
-    public Map<Integer, List<Car>> getTotalRecords() {
+    public Map<Integer, Map<String, Integer>> getTotalRecords() {
         return this.totalRecords;
     }
+
+    public int getBestRecord() {
+        return this.bestRecord;
+    }
+
 }

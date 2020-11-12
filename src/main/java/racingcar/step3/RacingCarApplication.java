@@ -1,6 +1,6 @@
 package racingcar.step3;
 
-import racingcar.step3.common.Consts;
+import racingcar.step3.domain.Cars;
 import racingcar.step3.domain.Race;
 import racingcar.step3.domain.Record;
 import racingcar.step3.view.InputView;
@@ -14,13 +14,12 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         InputView iv = new InputView();
         ResultView rv = new ResultView();
-        Record record = new Record(Consts.BEST_RECORD_INIT, Consts.WINNER_INIT);
+        Record record = new Record();
         Race race = new Race();
+        Cars cars = new Cars(iv.getInputCars(), record);
 
-        String cars = iv.getCars();
-        int turns = iv.getTurns();
-        race.run(cars, turns, record);
-        rv.print(record);
+        race.run(cars, iv.getInputTurns(), record);
+        rv.print(cars, record);
     }
 }
 

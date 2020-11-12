@@ -12,13 +12,13 @@ import java.util.Scanner;
 public class InputView {
     Scanner scanner;
 
-    public String getCars() {
+    public String getInputCars() {
         this.scanner = Scan.getInstance();
         System.out.println(Consts.HOW_MANY_CARS);
         return scanner.next();
     }
 
-    public int getTurns() {
+    public int getInputTurns() {
         this.scanner = Scan.getInstance();
         System.out.println(Consts.HOW_MANY_ATTEMPTS);
         return scanner.nextInt();
