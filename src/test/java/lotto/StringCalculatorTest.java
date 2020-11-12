@@ -51,14 +51,14 @@ class StringCalculatorTest {
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
     @ParameterizedTest
     @CsvSource(value = {
-            "1,2:3",
-            "3,4:7",
-            "6,9:15",
-            "20,13:33",
-            "24,12:36",
-            "123,234:357",
+            "1,2-3",
+            "3,4-7",
+            "6,9-15",
+            "20,13-33",
+            "24,12-36",
+            "123,234-357",
     },
-            delimiter = ':'
+            delimiter = '-'
     )
     public void test2(String expression, Integer expected) {
         Integer result = this.stringCalculator.enterExpression(expression);
