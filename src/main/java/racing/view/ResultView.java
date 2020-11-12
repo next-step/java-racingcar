@@ -12,9 +12,7 @@ public class ResultView {
     }
 
     public static void printCarPosition(Cars cars) {
-        cars.getCarList().stream().forEach(car -> {
-            System.out.println(repeat(car.getPosition()));
-        });
+        cars.getCarList().forEach(car -> System.out.println(repeat(car.getPosition())));
     }
 
     private static String repeat(int count) {
