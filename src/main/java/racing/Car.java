@@ -2,15 +2,19 @@ package racing;
 
 public class Car {
 
-    private int travelDistance = 0;
+    private TravelDistance travelDistance;
+
+    public Car() {
+        this.travelDistance = new TravelDistance();
+    }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMoveAble()) {
-            travelDistance++;
+            travelDistance = travelDistance.move();
         }
     }
 
     public int getTravelDistance() {
-        return travelDistance;
+        return travelDistance.getTravelDistance();
     }
 }
