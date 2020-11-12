@@ -13,15 +13,23 @@
 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 
 ## 기능들
+- MaxLength
+    - private final int maxLength;
+    - private static final int defaultMaxLength = 5;
+
+    - private MaxLength(int maxLength)
+    - public static MaxLength of ()
+    - public static MaxLength of (int maxLength)
+
+    - public boolean isInBoundLength(String name) // 이름이 5자 이하인지 검사
+
 - CarName
     - 멤버
         - 이름 private final String name
     - 생성자
         - name 을 초기화
-        - 이름 검사 아래 2가지
     - 메서드
         - 이름이 비었는지 검사 private static void isBlank
-        - 이름이 5자 이하인지 검사 private static void isInBoundLength 
         - 이름 객체 반환 public CarName getName
 - CarPosition
     - 멤버    
