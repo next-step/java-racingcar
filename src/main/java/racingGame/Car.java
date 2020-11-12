@@ -6,18 +6,24 @@ import racingGame.racingGameException.IllegalCarNameLengthException;
 public class Car {
 
   private static final int MAX_NAME_LENGTH = 5;
+  private static final int CAR_INITIAL_POSITION = 0;
 
   private int position;
   private final String name;
 
-  private Car(int initialPosition, String name) {
-    this.position = initialPosition;
+  private Car(String name, int initialPosition) {
     this.name = name;
+    this.position = initialPosition;
   }
 
   static public Car of(String name) {
+    return of(name, 0);
+  }
+
+  static public Car of(String name, int initialPosition) {
     validateName(name);
-    return new Car(0, name);
+    validateInitialPosition(initialPosition);
+    return new Car(name, initialPosition);
   }
 
   private static void validateName(String name) {
@@ -37,12 +43,14 @@ public class Car {
     }
   }
 
-  public int move(ScoreGenerator scoreGenerator) {
-    position += scoreGenerator.generateScore();
-    return this.position;
+  private static void validateInitialPosition(int initialPosition) {
+    if (initialPosition < CAR_INITIAL_POSITION) {
+      throw new IllegalArgumentException();
+    }
   }
 
-  public int getPosition() {
+  public int move(ScoreGenerator scoreGenerator) {
+    position += scoreGenerator.generateScore();
     return this.position;
   }
 
@@ -56,6 +64,10 @@ public class Car {
 
   public boolean isWinner(int furthestPosition) {
     return this.position == furthestPosition;
+  }
+
+  public boolean isLocatedOn(int position) {
+    return isWinner(position);
   }
 
   public Pair<String, Integer> publishNamePosition() {
