@@ -10,7 +10,7 @@ class CarsTest {
     @Test
     void from() {
         Assertions.assertThat(Cars.from("test").getCarList().size())
-                .isEqualTo(5);
+                .isEqualTo(1);
     }
 
     @Test
