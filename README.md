@@ -42,3 +42,59 @@
 
 1. Main
     - 자동차 대수와 시도할 횟수를 입력받는다.
+
+
+### 피드백
+    1. expression lambda 를 통해 가독성 향샹 
+    > before
+    IntStream.range(0, numberOfCars)
+             .forEach(value -> {
+                 tempCarList.add(new Car());
+             });
+    > after
+    IntStream.range(0, numberOfCars)
+             .forEach(value -> tempCarList.add(new Car()));
+            
+    2. stream forEach 를 사용 자제
+       list API를 사용할때 stream ForEach 사용을 자제해야하는 이유 (https://jeong-pro.tistory.com/185)
+       * 한줄요역 : 자료형에 데이터가 많으면 for문쓰고 데이터가 적으면 List는 ListApi forEach를 사용하는게 성능적으로 좋다.
+       
+    > before
+    cars.getCarList().stream().forEach(car -> {
+        System.out.println(repeat(car.getPosition()));
+    });
+    > after
+    cars.getCarList().forEach(car -> System.out.println(repeat(car.getPosition())));
+       
+## STEP4
+
+### 추가기능
+    - 자동차에 이름을 부여한다. (5글자 이하)
+    - 실행 결과를 보여줄때 자동차의 이름도 같이 출력한다.
+    - 자동차의 이름을 입력받을때 쉼표(,)를 기준으로 구분한다.
+    - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다. 
+      
+
+### 구현기능
+
+1. InputView
+    - 자동차 대수 입력 (NumberOfCars)
+    - 시도할 횟수 입력 (NumberOfAttempts)
+
+1. ResultView
+    - 자동차의 현재 위치를 출력해준다.
+
+1. Car
+    - boolean에 따른 position값 변동
+        - random값이 4 이상일 경우 position을 증가 시킨다.
+
+1. MoveStrategy
+    - random값을 구한다. (0 ~ 9)
+    - random값이 4 이상일 경우 true 아닐경우 false를 리턴한다.
+
+1. Cars
+    - Car객체를 관리하는 객체
+    - 횟수에 따라 car의 move() 메소드를 호출해 이동시킨다.
+
+1. Main
+    - 자동차 대수와 시도할 횟수를 입력받는다.
