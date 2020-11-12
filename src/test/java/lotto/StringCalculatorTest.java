@@ -81,4 +81,18 @@ class StringCalculatorTest {
         Integer result = this.stringCalculator.enterExpression(expression);
         assertThat(result).isEqualTo(expected);
     }
+
+    @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다. 커스텀 구분자를 사용 가능하다.")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "//;\\n1;2-3",
+            "//;\\n4;5-9",
+            "//;\\n7;13-20"
+    },
+            delimiter = '-'
+    )
+    public void test4(String expression, Integer expected) {
+        Integer result = this.stringCalculator.enterExpression(expression);
+        assertThat(result).isEqualTo(expected);
+    }
 }
