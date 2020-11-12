@@ -31,6 +31,7 @@
     - 메서드
         - 이름이 비었는지 검사 private static void isBlank
         - 이름 객체 반환 public CarName getName
+        
 - CarPosition
     - 멤버    
         - 위치 private int position
