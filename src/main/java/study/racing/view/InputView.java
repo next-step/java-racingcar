@@ -31,18 +31,7 @@ public class InputView {
 
     private static String[] splitCarNames(String carNames) {
         String [] carNameArray = carNames.split(CAR_NAME_DELIMITER);
-        validateCarName(carNameArray);
         return carNameArray;
-    }
-
-    private static void validateCarName(String[] carNameArray) {
-        boolean isOverMaxNameLength = Arrays.stream(carNameArray)
-                .anyMatch(carName -> carName.length() > MAX_CAR_NAME_LENGTH);
-
-        if(isOverMaxNameLength){
-            throw new IllegalArgumentException(RacingErrorMessage.OVER_MAX_NAME_LENGTH.getErrorMessage());
-        }
-
     }
 
     public static void validateTryCount(int tryCnt) {
