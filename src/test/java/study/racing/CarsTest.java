@@ -24,13 +24,6 @@ public class CarsTest {
 
     }
 
-    @DisplayName("Cars 생성자 테스트")
-    @Test
-    void carsConstructTest(){
-        int carSetSize = cars.getCarSet().size();
-        assertThat(carSetSize).isEqualTo(carCnt);
-    }
-
     @DisplayName("Car 생성 테스트")
     @Test
     void carsCreateTest(){
@@ -59,4 +52,5 @@ public class CarsTest {
                 .forEach(position -> assertThat(position).isEqualTo(expectedPosition));
 
     }
+
 }
