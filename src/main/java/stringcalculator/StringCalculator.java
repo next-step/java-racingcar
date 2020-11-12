@@ -9,33 +9,38 @@ public class StringCalculator {
     List<String> symbol = new ArrayList<>();
     
     public int calculator(String value){
-        int count = 0;
         int result = 0;
         boolean isSort = sortByNumAndSymbol(value);
         if(isSort == true){
-            count = 0;
-            for(String sym : symbol){
-                int num1 = 0;
-                int num2 = 0;
-                if(count == 0){
-                    num1 = Integer.parseInt(numbers.get(0));
-                    num2 = Integer.parseInt(numbers.get(count+1));
-                    result = symbolSelector(num1, num2, sym);
-                    count ++;
-                }else{
-                    num1 = result;
-                    num2 = Integer.parseInt(numbers.get(count+1));
-                    result = symbolSelector(num1, num2, sym);
-                    count ++;
-                }
-                if(count > numbers.size()){
-                    break;
-                }
-            }
+            result = operator(numbers, symbol);
         }
         System.out.println(result);
         return result;
 
+    }
+
+    public int operator(List<String> numbers, List<String> symbol){
+       int count = 0;
+       int result = 0;
+        for(String sym : symbol){
+            int num1 = 0;
+            int num2 = 0;
+            if(count == 0){
+                num1 = Integer.parseInt(numbers.get(0));
+                num2 = Integer.parseInt(numbers.get(count+1));
+                result = symbolSelector(num1, num2, sym);
+            }
+            if(count > 0){
+                num1 = result;
+                num2 = Integer.parseInt(numbers.get(count+1));
+                result = symbolSelector(num1, num2, sym);
+            }
+            count++;
+            if(count > numbers.size()){
+                break;
+            }
+        }
+        return result;
     }
 
     public boolean sortByNumAndSymbol(String value){
@@ -46,12 +51,12 @@ public class StringCalculator {
             char temp = str.charAt(0);
             if(Character.isDigit(temp)){
                 numbers.add(str);
-            }else{
+            }
+            if(!Character.isDigit(temp)){
                 symbol.add(str);
             }
             result = true;
         }
-
         return result;
 
     }

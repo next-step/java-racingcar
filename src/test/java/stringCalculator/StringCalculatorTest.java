@@ -1,11 +1,18 @@
 package stringCalculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import stringcalculator.StringCalculator;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class StringCalculatorTest {
 
@@ -13,10 +20,23 @@ public class StringCalculatorTest {
 
     String value = "2 + 3 * 4 / 2";
 
+    static Stream<Arguments> parameter(){
+        return Stream.of(
+            Arguments.of(Arrays.asList("2","4"), Arrays.asList("+"))
+        );
+    }
+
     @Test
     void calculatorTest(){
         int result = stringCalculator.calculator(value);
         assertThat(result).isEqualTo(10);
+    }
+
+    @ParameterizedTest
+    @MethodSource("parameter")
+    void operatorTest(List<String> numbers, List<String> symbol){
+        int result = stringCalculator.operator(numbers, symbol);
+        assertThat(result).isEqualTo(6);
     }
 
     @Test

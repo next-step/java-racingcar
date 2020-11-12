@@ -2,8 +2,6 @@ package stringcalculator;
 
 import java.util.Scanner;
 
-import org.junit.platform.commons.util.StringUtils;
-
 public class StringCalcMain {
 
     public static void main(String[] args) {
@@ -11,22 +9,17 @@ public class StringCalcMain {
 
         // String value = sc.next();
         String value = "2 + 3 * 4 / 2";
-        boolean result = validValue(value);
+        validateValue(value);
 
-        if(result = true){
-            StringCalculator strCalc = new StringCalculator();
-            strCalc.calculator(value);
-        }
+        StringCalculator strCalc = new StringCalculator();
+        strCalc.calculator(value);
+
     }
 
-    public static boolean validValue(String value) {
-        boolean result = false;
+    public static void validateValue(String value) {
         if(value == null || value.equals("") ){
             throw new IllegalArgumentException("Input is null or empty, Please check your input");
-        }else{
-            result = true;
         }
-        return result;
     }
 
 }
