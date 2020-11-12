@@ -16,7 +16,7 @@ public class MaxLength {
         return new MaxLength(maxLength);
     }
 
-    public boolean isInBoundLength(String name) {
-        return name.length() <= maxLength;
+    public boolean isOutOfBoundLength(String name) {
+        return name.length() > maxLength;
     }
 }

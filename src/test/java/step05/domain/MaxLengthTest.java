@@ -13,9 +13,9 @@ public class MaxLengthTest {
 
     private static Stream<Arguments> provideNameMaxLengthResult() {
         return Stream.of(
-                Arguments.of("1234", "3", false),
-                Arguments.of("1234", "4", true),
-                Arguments.of("1234", "5", true)
+                Arguments.of("1234", "3", true),
+                Arguments.of("1234", "4", false),
+                Arguments.of("1234", "5", false)
         );
     }
 
@@ -24,15 +24,15 @@ public class MaxLengthTest {
     @MethodSource("provideNameMaxLengthResult")
     public void test_isInBoundLength(String name, int maxLength, boolean expect) {
         MaxLength testObj = MaxLength.of(maxLength);
-        boolean result = testObj.isInBoundLength(name);
+        boolean result = testObj.isOutOfBoundLength(name);
         assertThat(result).isEqualTo(expect);
     }
 
     private static Stream<Arguments> provideDefaultMaxLengthResult() {
         return Stream.of(
-                Arguments.of("1234", true),
-                Arguments.of("12345", true),
-                Arguments.of("1234567", false)
+                Arguments.of("1234", false),
+                Arguments.of("12345", false),
+                Arguments.of("1234567", true)
         );
     }
 
@@ -41,7 +41,7 @@ public class MaxLengthTest {
     @MethodSource("provideDefaultMaxLengthResult")
     public void test_isInBoundDefaultLength(String name, boolean expect) {
         MaxLength testObj = MaxLength.of();
-        boolean result = testObj.isInBoundLength(name);
+        boolean result = testObj.isOutOfBoundLength(name);
         assertThat(result).isEqualTo(expect);
     }
 
