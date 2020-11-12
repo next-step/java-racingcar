@@ -11,7 +11,7 @@ class CarTest {
 
     @BeforeEach
     void create() {
-        car = new Car();
+        car = new Car("test");
     }
 
     @Test
@@ -32,5 +32,10 @@ class CarTest {
     void move_forward() {
         car.move(() -> true);
         Assertions.assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void getName() {
+        Assertions.assertThat(car.getName()).isEqualTo("test");
     }
 }
