@@ -3,6 +3,7 @@ package step05.domain;
 import exception.EmptyException;
 import exception.OutOfBoundLength;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,6 +11,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
@@ -73,7 +75,12 @@ public class CarNameTest {
                 .doesNotThrowAnyException();
     }
 
-    /*
-        - 이름 객체 반환 public CarName getName
-     */
+    @DisplayName("이름 객체 반환")
+    @Test
+    public void test_getName() {
+        String name = "name";
+        CarName carName = CarName.of(name);
+        assertThat(carName).isEqualTo(carName.getName());
+    }
+
 }
