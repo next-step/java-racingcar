@@ -68,5 +68,4 @@ class CarTest {
         }).isInstanceOf(InvalidCarNameException.class);
     }
 
-
 }

@@ -18,7 +18,6 @@ public class InputView {
         return getNumberFromStdin("시도할 회수는 몇 회 인가요?");
     }
 
-
     private String getStringFromStdin(String displayText) {
         return getFromStdin(displayText);
     }

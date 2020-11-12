@@ -1,48 +1,37 @@
 package step3.domain;
 
-import step3.view.ResultView;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class CarRacing {
 
-    private ResultView resultView = new ResultView();
-
     private JoinedCars joinedCars;
+
+    private int nextTry;
     private int totalTries;
 
-    private RaceRoulette raceRoulette = RaceRoulette.simple(9);
+    private final RaceRoulette DEFAULT_RACE_ROULETTE = RaceRoulette.simple(9);
+    private RaceRoulette raceRoulette;
 
-    public CarRacing(String carNames, int numOfTries) {
-        joinedCars = new JoinedCars(carNames);
-        totalTries = numOfTries;
+    public CarRacing(String carNames, int totalTries) {
+        this.joinedCars = new JoinedCars(carNames);
+        this.totalTries = totalTries;
+        this.nextTry = 1;
+        this.raceRoulette = DEFAULT_RACE_ROULETTE;
     }
 
-    public void start() {
-        int currentTry = 1;
-
-        System.out.println("경주 시작");
-
-        while (currentTry++ <= totalTries) {
-            tryMovingAllCars();
-            displayRaceState();
-        }
-
-        announceRaceWinner();
+    public void tryMovingAllCars() {
+        this.joinedCars.tryMoving(this.raceRoulette);
+        this.nextTry++;
     }
 
-    private void tryMovingAllCars() {
-        joinedCars.tryMoving(raceRoulette);
+    public boolean isFinish(){
+        return this.nextTry > this.totalTries;
     }
 
-    private void displayRaceState() {
-        resultView.showRaceState(joinedCars);
+    public RaceState getRaceState() {
+        return new RaceState(this.joinedCars.getCarStates());
     }
 
-    private void announceRaceWinner() {
-        List<Car> winners = joinedCars.findRaceWinner(new RaceWinnerFinder());
-        resultView.showRaceWinner(winners.stream().map(it -> CarState.of(it)).collect(Collectors.toList()));
+    public RaceResult getRaceResult(){
+        return new RaceResult(joinedCars.findRaceWinner(new RaceWinnerFinder()));
     }
 
 }

@@ -8,7 +8,6 @@ public interface RaceDisplay {
 
     static RaceDisplay console() {
         return new RaceDisplay() {
-
             @Override
             public void writeBlankLine() {
                 System.out.println("");
@@ -20,8 +19,6 @@ public interface RaceDisplay {
             }
         };
     }
-
-
 }
 
 
