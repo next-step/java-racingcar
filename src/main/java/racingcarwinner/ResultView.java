@@ -16,7 +16,7 @@ public class ResultView {
 
     public static void viewWinner(){
         System.out.print(Winner.getWinner(0));
-        for (int i = 1; i < Winner.winnerCount(); i++) {
+        for (int i = 1; i < Winner.getWinnerCount(); i++) {
             System.out.print(", " + Winner.getWinner(i));
         }
         System.out.println("가 최종 우승하였습니다");

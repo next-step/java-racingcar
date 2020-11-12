@@ -10,7 +10,7 @@ public class Winner {
         winners.add(winnerName);
     }
 
-    public static int winnerCount(){
+    public static int getWinnerCount(){
         return winners.size();
     }
 
