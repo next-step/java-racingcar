@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static step5.view.RacingCarUi.resultPrint;
-
 public class RacingCarGame {
     private static final int MAX_CAR_NAME_NUMBER = 5;
 
@@ -31,8 +29,7 @@ public class RacingCarGame {
     }
 
     private void carMove(List<Car> cars) {
-        cars.forEach(car -> car.move(CarUtils.getRandom()));
-        resultPrint(cars);
+        cars.forEach(car -> car.move(CarUtils.getRandom(), cars));
     }
 
     private void carNameMaxValid(String[] carNames) {

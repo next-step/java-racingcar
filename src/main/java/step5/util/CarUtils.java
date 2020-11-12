@@ -9,5 +9,4 @@ public class CarUtils {
     public static int getRandom() {
         return random.nextInt(CAR_MOVE_MAX_BOUND);
     }
-
 }
