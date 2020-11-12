@@ -38,8 +38,4 @@ public class Car {
                 Objects.equals(position, car.position);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, position);
-    }
 }

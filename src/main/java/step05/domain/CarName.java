@@ -15,11 +15,11 @@ public class CarName {
 
         isBlank(name);
         isInBoundLength();
-    };
+    }
 
     public static CarName of (String name) {
         return new CarName(name, MaxLength.of());
-    };
+    }
 
     public static CarName of (String name, int maxLength) {
         return new CarName(name, MaxLength.of(maxLength));
@@ -48,8 +48,4 @@ public class CarName {
                 Objects.equals(maxLength, carName.maxLength);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, maxLength);
-    }
 }

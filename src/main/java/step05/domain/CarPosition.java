@@ -3,8 +3,6 @@ package step05.domain;
 import step03.strategy.MoveStrategy;
 import validator.NumberValidator;
 
-import java.util.Objects;
-
 public class CarPosition {
     private final int position;
     private static final int defaultPosition = 1;
@@ -43,11 +41,6 @@ public class CarPosition {
         if (o == null || getClass() != o.getClass()) return false;
         CarPosition that = (CarPosition) o;
         return position == that.position;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(position);
     }
 
 }
