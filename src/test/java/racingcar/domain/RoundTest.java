@@ -39,7 +39,9 @@ public class RoundTest {
     void gameRoundTest(int roundCount) {
         Round round = new Round(roundCount);
         racingCars = RacingCars.of(nameOfCars, () -> true, round);
-        round.progressRound(racingCars);
+        for (int i = 0; i < roundCount; i++) {
+            round.progressRound(racingCars);
+        }
         assertThat(round.getRound()).isEqualTo(roundCount);
     }
 }
