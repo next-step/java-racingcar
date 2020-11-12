@@ -5,6 +5,7 @@ import racing.domain.GrandPrix;
 import racing.domain.LineUp;
 import racing.service.GrandPrixService;
 import racing.service.LineUpService;
+import racing.view.RacingInputView;
 import racing.view.RacingResultView;
 import racing.view.to.RacingInputTO;
 
@@ -13,9 +14,10 @@ public class GrandPrixController {
     private final GrandPrixService grandPrixService;
     private final LineUpService lineUpService;
 
-    public GrandPrix create(RacingInputTO racingInputTO) {
-        LineUp lineUp = lineUpService.createMachines(racingInputTO.getDrivers());
-        return grandPrixService.createGrandPrix(lineUp, racingInputTO.getMaxRounds());
+    public GrandPrix create() {
+        RacingInputTO racingInput = RacingInputView.getRacingInput();
+        LineUp lineUp = lineUpService.createMachines(racingInput.getDrivers());
+        return grandPrixService.createGrandPrix(lineUp, racingInput.getMaxRounds());
     }
 
     public void startRace(GrandPrix grandPrix) {
