@@ -9,6 +9,10 @@ public class CalculatorManager {
 
     public CalculatorManager(List<Integer> operands, List<String> operators) {
         result = operands.get(0); // 첫 자리 값 셋팅;
+        calculate(operands, operators);
+    }
+
+    private void calculate(List<Integer> operands, List<String> operators) {
         int operatorCnt = 1;
 
         for (String operator : operators) {
