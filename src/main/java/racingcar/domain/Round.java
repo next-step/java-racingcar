@@ -19,7 +19,7 @@ public class Round {
         return round = round + 1;
     }
 
-    boolean isLastRound() {
+    public boolean isLastRound() {
         return finalRound == getRound();
     }
 
