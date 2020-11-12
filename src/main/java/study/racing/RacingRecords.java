@@ -23,7 +23,7 @@ public class RacingRecords {
     public List<CarSetInRace> getWinners() {
         RacingRecord lastRecord = getLastRecord();
 
-        List<CarSetInRace> winners = lastRecord.getSingleRecords().stream()
+        List<CarSetInRace> winners = lastRecord.getCarSetInRaces().stream()
                 .collect(Collectors.groupingBy(
                         CarSetInRace::getPosition,
                         TreeMap::new,

@@ -9,7 +9,7 @@ public class RacingRecord {
         this.carSetInRaces = carSetInRaces;
     }
 
-    public LinkedList<CarSetInRace> getSingleRecords(){
+    public LinkedList<CarSetInRace> getCarSetInRaces(){
         return carSetInRaces;
     }
 }

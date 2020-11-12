@@ -13,15 +13,14 @@ public class CarRacingTest {
         int tryCnt = 4;
         int step = 2;
         String[] carNames = {"A","B"};
-        int carCnt = carNames.length;
 
         CarRacing carRacing = new CarRacing(() -> step);
         RacingRecords racingResults = carRacing.start(carNames, tryCnt);
 
         IntStream.range(0, tryCnt).forEach(i -> {
             int round = i+1;
-            racingResults.getRecordList().get(i).getSingleRecords().stream()
-                    .forEach(record -> assertThat(record.getPosition()).isEqualTo(round * step));
+            racingResults.getRecordList().get(i).getCarSetInRaces().stream()
+                    .forEach(carSet -> assertThat(carSet.getPosition()).isEqualTo(round * step));
         });
     }
 

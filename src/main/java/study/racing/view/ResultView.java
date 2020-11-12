@@ -10,7 +10,7 @@ public class ResultView {
 
     private static final String RESULT_HEAD_MESSAGE = "=============실행결과=============";
     private static final String FORWARD_STRING = "-";
-    private static final String WINNER_HEAD_MESSAGE = "우승자는?\n";
+    private static final String WINNER_HEAD_MESSAGE = "\n우승자는?\n";
     private static final String WINNER_DELIMITER = ",";
 
     private ResultView(){}
@@ -33,8 +33,8 @@ public class ResultView {
     }
 
     private static String showRoundResult(RacingRecord racingRecord) {
-        return racingRecord.getSingleRecords().stream()
-                .map(record ->getRecordByEachCar(record.getPosition(), record.getCarName())).collect(Collectors.joining("\n"));
+        return racingRecord.getCarSetInRaces().stream()
+                .map(carSet ->getRecordByEachCar(carSet.getPosition(), carSet.getCarName())).collect(Collectors.joining("\n"));
     }
 
     private static String getRecordByEachCar(int position, String carName) {
