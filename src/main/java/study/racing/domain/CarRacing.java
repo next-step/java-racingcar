@@ -1,8 +1,5 @@
 package study.racing.domain;
 
-import study.racing.view.InputView;
-import study.racing.view.ResultView;
-
 public class CarRacing {
 
     private RacingMoveStrategy racingMoveStrategy;
