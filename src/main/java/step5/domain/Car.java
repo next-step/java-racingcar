@@ -56,4 +56,18 @@ public class Car {
                     String.format("자동차 이름은 %s 자를 초과할 수 없습니다.", length));
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(step, car.step)
+                && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, step);
+    }
 }
