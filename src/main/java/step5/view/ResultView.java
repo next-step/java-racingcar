@@ -1,5 +1,6 @@
 package step5.view;
 
+import step5.domain.Racing;
 import step5.domain.ScoreBoard;
 
 import java.util.List;
@@ -15,7 +16,12 @@ public class ResultView {
     private final static String COMMAND_LINE_RESULT_MESSAGE = "실행 결과";
     private final static String WINNER_IS_WHOM = "가 최종 우승했습니다.";
 
-    public static void printResult(List<ScoreBoard> score, int rounds) {
+    public static void printResult(Racing racing) {
+        printScoreBoard(racing.getScoreBoard(), racing.getRounds());
+        printWinner(racing.getWinner());
+    }
+
+    private static void printScoreBoard(List<ScoreBoard> score, int rounds) {
         printResultMessage();
         for (int i = 0; i < rounds; i++) {
             printRounds(score, i);

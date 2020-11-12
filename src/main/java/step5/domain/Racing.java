@@ -18,17 +18,17 @@ public class Racing {
     private List<ScoreBoard> scoreBoards;
     private MoveStrategy moveStrategy;
 
-    private Racing(String carNames, int rounds, MoveStrategy moveStrategy) {
-        this.rounds = rounds;
-        this.cars = Cars.of(carNames);
+    private Racing(InputValue inputValue, MoveStrategy moveStrategy) {
+        this.rounds = inputValue.getRounds();
+        this.cars = Cars.of(inputValue.getCarNames());
         this.scoreBoards = new ArrayList<>();
         this.moveStrategy = moveStrategy;
     }
 
-    public static Racing of(String carNames, int rounds, MoveStrategy moveStrategy) {
-        Validator.checkArgumentInRange(rounds, 1);
+    public static Racing of(InputValue inputValue, MoveStrategy moveStrategy) {
+        Validator.checkArgumentInRange(inputValue.getRounds(), 1);
 
-        return new Racing(carNames, rounds, moveStrategy);
+        return new Racing(inputValue, moveStrategy);
     }
 
     public void race() {
