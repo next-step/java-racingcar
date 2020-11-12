@@ -57,10 +57,6 @@ public class Cars {
     }
   }
 
-  public Car get(int index) {
-    return this.cars.get(index);
-  }
-
   public int extractFurthestPosition() {
     int furthestPosition = 0;
 
@@ -83,10 +79,6 @@ public class Cars {
     if (car.isWinner(furthestPosition)) {
       winners.add(car.getName());
     }
-  }
-
-  public int getNumCars() {
-    return this.cars.size();
   }
 
   List<Pair<String, Integer>> getCarsStatus() {
