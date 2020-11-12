@@ -12,7 +12,7 @@ public class ResultViewTest {
 	@Test
 	@DisplayName("차 이름별 이동거리를 표시한다.")
 	public void resultViewTest() {
-		RacingCars racingCars = new RacingCars(Arrays.asList("adel,joy,frisk"));
+		RacingCars racingCars = new RacingCars("adel,joy,frisk");
 		racingCars.getRacingCars().forEach(car -> car.move(5));
 		underTest.showRacingResult(racingCars);
 	}
