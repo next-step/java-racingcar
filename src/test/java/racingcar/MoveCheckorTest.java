@@ -22,11 +22,11 @@ public class MoveCheckorTest {
     @DisplayName("이동에 따른 기록 저장 테스트")
     public void recordDistanceTest(){
         MoveCheckor moveCheckor = new MoveCheckor();
-        Car testCar = new Car();
+        Car testCar = new Car("pobi");
 
         moveCheckor.moveAndStop(testCar);
 
-        assertThat(testCar.recordList.size()).isEqualTo(3);
+        assertThat(testCar.getRecordList().size()).isEqualTo(1);
 
 
     }

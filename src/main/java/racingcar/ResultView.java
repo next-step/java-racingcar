@@ -35,9 +35,21 @@ public class ResultView {
     public void printDistance(List<Car> carList, int num){
         for(int i=0;i<this.counts;i++){
             Car afterRacingCar  = carList.get(i);
-            System.out.println(this.intToStr(afterRacingCar.recordList.get(num)));
+            int distance = afterRacingCar.getRecordList().get(num);
+            System.out.println(this.intToStr(distance));
         }
         System.out.println();
 
+    }
+    public void announceWinner(List<String> winners){
+        String announceMessage="";
+        for(int i=0;i<winners.size();i++){
+            announceMessage+=winners.get(i);
+            if(i != winners.size()-1){
+                announceMessage+=" ,";
+            }
+        }
+        announceMessage+="가 최종 우승했습니다.";
+        System.out.println(announceMessage);
     }
 }
