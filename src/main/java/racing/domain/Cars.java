@@ -4,7 +4,8 @@ import racing.strategy.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> carList;
@@ -13,11 +14,20 @@ public class Cars {
         this.carList = carList;
     }
 
-    public static Cars from(int numberOfCars) {
+    public static Cars from(String nameOfCars) {
+        validNameOfCars(nameOfCars);
         List<Car> tempCarList = new ArrayList<>();
-        IntStream.range(0, numberOfCars)
-                .forEach(value -> tempCarList.add(new Car()));
+        String[] arrCarNams = nameOfCars.split(",");
+        for (String carName : arrCarNams) {
+            tempCarList.add(new Car(carName));
+        }
         return new Cars(tempCarList);
+    }
+
+    private static void validNameOfCars(String nameOfCars) {
+        if (Objects.isNull(nameOfCars) || nameOfCars.isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름 입력을 확인해주세요.");
+        }
     }
 
     public void nextRound() {
