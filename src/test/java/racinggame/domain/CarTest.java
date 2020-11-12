@@ -7,8 +7,6 @@ import javafx.util.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.Car;
-import racinggame.domain.ScoreGenerator;
 import racinggame.racinggamexception.IllegalCarNameLengthException;
 
 class CarTest {

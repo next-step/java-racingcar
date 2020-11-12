@@ -1,12 +1,12 @@
 package racinggame;
 
-import racinggame.view.InputView;
-import racinggame.view.ResultView;
 import racinggame.domain.Cars;
 import racinggame.domain.RacingOperator;
 import racinggame.domain.RandomScoreGenerator;
 import racinggame.domain.ScoreGenerator;
 import racinggame.racinggamexception.IllegalNumRoundException;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 public class GameClient {
 

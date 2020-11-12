@@ -1,8 +1,6 @@
 package racinggame.domain;
 
 
-import racinggame.domain.ScoreGenerator;
-
 public class DummyScoreGenerator implements ScoreGenerator {
 
   private int index;
