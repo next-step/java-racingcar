@@ -1,7 +1,7 @@
 package step05.domain;
 
 import exception.EmptyException;
-import exception.OutOfBoundCarName;
+import exception.OutOfBoundLength;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -37,8 +37,8 @@ public class CarNameTest {
     @DisplayName("이름이 default 5자 초과일때 에러")
     @ParameterizedTest
     @MethodSource("provideOverDefaultLengthCarName")
-    public void isInBoundLength__overDefaultLengthCarName_throwException(String outOfBoundCarName) {
-        assertThatExceptionOfType(OutOfBoundCarName.class)
+    public void isInBoundLength_overDefaultLengthCarName_throwException(String outOfBoundCarName) {
+        assertThatExceptionOfType(OutOfBoundLength.class)
                 .isThrownBy(() -> CarName.of(outOfBoundCarName));
     }
 
@@ -53,7 +53,7 @@ public class CarNameTest {
     @ParameterizedTest
     @MethodSource("provideOverMaxLengthCarName")
     public void isInBoundLength__overMaxLengthCarName_throwException(String outOfBoundCarName, int maxLength) {
-        assertThatExceptionOfType(OutOfBoundCarName.class)
+        assertThatExceptionOfType(OutOfBoundLength.class)
                 .isThrownBy(() -> CarName.of(outOfBoundCarName, maxLength));
     }
 
