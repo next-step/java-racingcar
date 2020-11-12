@@ -89,6 +89,7 @@
     - boolean에 따른 position값 변동
         - random값이 4 이상일 경우 position을 증가 시킨다.
     - name은 5글자를 초과할 수 없다.
+    - stream API를 활용해 정렬하기 위해 Comparable를 상속한다.
 
 1. MoveStrategy
     - random값을 구한다. (0 ~ 9)
