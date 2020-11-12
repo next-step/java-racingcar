@@ -20,7 +20,8 @@ public class RacingCarConfiguration {
     }
 
     private void initRacingCar() {
-        this.carList = Arrays.stream(carNames).map(carName -> createRacingCar(carName))
+        this.carList = Arrays.stream(carNames)
+                .map(carName -> createRacingCar(carName))
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +50,7 @@ public class RacingCarConfiguration {
     }
 
     private boolean isDuplicatePlace(Car car, Car firstCar) {
-        return car.getPlace().equals(firstCar.getPlace());
+        return car.getPlace() == firstCar.getPlace();
     }
 
     private String createWiningCarNames(List<String> winingCars) {

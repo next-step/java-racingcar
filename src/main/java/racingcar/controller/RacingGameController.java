@@ -5,6 +5,7 @@ import racingcar.domain.RacingCarConfiguration;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -26,7 +27,9 @@ public class RacingGameController {
 
     public void enterCars() {
         resultView.enterCar();
-        this.racingCarConfiguration = new RacingCarConfiguration();
+        inputView.getEnterCars();
+
+
         this.racingCars = this.racingCarConfiguration.enterCar(inputView.getEnterCars());
     }
 
@@ -53,5 +56,15 @@ public class RacingGameController {
 
     public void racingResult() {
         resultView.show(racingCarConfiguration.findWinningCarNames());
+    }
+
+    public void createCar() {
+        resultView.enterCar();
+
+        String[] carNames = inputView.getEnterCars().split(",");
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 }

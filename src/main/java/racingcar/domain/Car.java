@@ -4,12 +4,12 @@ import racingcar.domain.utils.Number;
 
 public class Car {
     private String name;
-    private String place;
+    private int place;
     private MovingStrategy movingStrategy;
 
     public Car(String name, MovingStrategy movingStrategy) {
         this.name = name;
-        this.place = "";
+        this.place = 0;
         this.movingStrategy = movingStrategy;
     }
 
@@ -33,7 +33,7 @@ public class Car {
         return name == null || name.trim().isEmpty();
     }
 
-    public String getPlace() {
+    public int getPlace() {
         return this.place;
     }
 
@@ -43,11 +43,7 @@ public class Car {
 
     public void move() {
         if (this.movingStrategy.move() >= Number.NEED_NUMBER) {
-            movePlace();
+            this.place++;
         }
-    }
-
-    private void movePlace() {
-        this.place += new StringBuilder().append('-');
     }
 }
