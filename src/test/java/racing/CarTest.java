@@ -10,11 +10,10 @@ class CarTest {
     @Test
     void forwardMove() {
         // given
-        int randomNumber = 4;
         Car car = new Car();
 
         // when
-        car.move(randomNumber);
+        car.move(() -> true);
 
         // then
         Assertions.assertThat(car.getTravelDistance()).isEqualTo(1);
@@ -24,11 +23,10 @@ class CarTest {
     @Test
     void stopMove() {
         // given
-        int randomNumber = 3;
         Car car = new Car();
 
         // when
-        car.move(randomNumber);
+        car.move(() -> false);
 
         // then
         Assertions.assertThat(car.getTravelDistance()).isEqualTo(0);

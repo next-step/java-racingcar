@@ -2,7 +2,7 @@ package racing.ui;
 
 import racing.Car;
 import racing.Cars;
-import racing.RandomGenerator;
+import racing.MoveStrategyImpl;
 
 public class ResultView {
 
@@ -33,9 +33,7 @@ public class ResultView {
 
     private static void raceResult(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
-        int randomNumber = RandomGenerator.getRandomRange();
-
-        car.move(randomNumber);
+        car.move(new MoveStrategyImpl());
 
         for (int i = 0; i < car.getTravelDistance(); i++) {
             stringBuilder.append(FORWARD_MARK);
