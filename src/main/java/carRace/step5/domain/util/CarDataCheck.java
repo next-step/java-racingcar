@@ -1,32 +1,65 @@
-package race.car;
+package carRace.step5.domain.util;
 
-import java.util.Scanner;
+import carRace.step5.domain.util.ErrorMessage;
 
 /**
  * 데이터 입력받기
  */
-public class NumberInput {
+public class CarDataCheck {
 
-    private static Scanner scanner = new Scanner(System.in);
-
-    public static int inputCount() {
-        String inputValue = scanner.nextLine();
-
-        valueCheck(inputValue);
-
-        return Integer.valueOf(inputValue);
+    /**
+     * 시도횟수값 체크
+     *
+     * @param paramValue
+     * @return 시도할 횟수
+     */
+    public static int checkTryCount(String paramValue) {
+        checkNumberValue(paramValue);
+        return Integer.valueOf(paramValue);
     }
 
     /**
-     * 저장된 값 확인
+     * string형을 받아 ',' 기준으로 배열만들기
+     *
+     * @param paramValue
+     * @return
+     */
+    public static String[] checkName(String paramValue) {
+        checkNamesValue(paramValue);
+
+        for(String carName : paramValue.split(",")){
+            checkNameLength(carName);
+        }
+
+        return paramValue.split(",");
+    }
+
+    /**
+     * 숫자 체크
      *
      * @param paramValue
      */
-    public static void valueCheck(String paramValue) {
+    public static void checkNumberValue(String paramValue) {
         isNullCheck(paramValue);
         isEmptyCheck(paramValue);
         isNumberCheck(paramValue);
         isZeroCheck(paramValue);
+    }
+
+    /**
+     * 이름 체크
+     *
+     * @param paramValue
+     */
+    private static void checkNamesValue(String paramValue) {
+        isNullCheck(paramValue);
+        isEmptyCheck(paramValue);
+    }
+
+    private static void checkNameLength(String paramValue) {
+        if (paramValue.length() > 5) {
+            throw new IndexOutOfBoundsException(ErrorMessage.getINDEXOUTOFBOUNDSEXCEPTION());
+        }
     }
 
     /**
@@ -78,5 +111,4 @@ public class NumberInput {
             throw new NullPointerException(ErrorMessage.getNullException());
         }
     }
-
 }
