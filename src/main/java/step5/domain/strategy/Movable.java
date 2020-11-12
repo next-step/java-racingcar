@@ -5,14 +5,11 @@ import step5.domain.Randomize;
 /**
  * Created By mand2 on 2020-11-10.
  */
-public class Movable extends MoveStrategy {
+public class Movable implements MoveStrategy {
 
     @Override
     public int move() {
-        return this.scoreInspector.judgeMovable(this.randomize);
+        return scoreInspector.judgeMovable();
     }
 
-    public Movable(Randomize randomize) {
-        super(randomize);
-    }
 }

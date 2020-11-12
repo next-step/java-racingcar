@@ -20,9 +20,8 @@ public class Controller {
     public static void main(String[] args) {
         String carNames = InputView.askCarNames();
         int roundNum = InputView.askRoundNumber();
-        MoveStrategy moveStrategy = new Movable(new Randomize());
 
-        Racing racing = Racing.of(carNames, roundNum, moveStrategy);
+        Racing racing = Racing.of(carNames, roundNum, new Movable());
         racing.race();
 
         ResultView.printResult(racing.getScoreBoard(), racing.getRounds());
