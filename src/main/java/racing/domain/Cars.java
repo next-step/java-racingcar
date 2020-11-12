@@ -16,9 +16,7 @@ public class Cars {
     public static Cars from(int numberOfCars) {
         List<Car> tempCarList = new ArrayList<>();
         IntStream.range(0, numberOfCars)
-                .forEach(value -> {
-                    tempCarList.add(new Car());
-                });
+                .forEach(value -> tempCarList.add(new Car()));
         return new Cars(tempCarList);
     }
 
