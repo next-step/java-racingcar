@@ -2,31 +2,59 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private final int attempts;
+    private final int rounds;
     private final List<Car> carList;
+    private final List<RaceRecord> raceRecords;
 
-    public RacingGame(int cars, int attempts) {
-        this.attempts = attempts;
-        this.carList = makeCars(cars);
+    final static int START_LOCATION = 0;
+
+    public RacingGame(InputView input) {
+        this.carList = makeCars(input.getCars());
+        this.rounds = input.getRounds();
+        this.raceRecords = new ArrayList<>();
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public int getRounds() {
+        return rounds;
     }
 
-    public int getAttempts() {
-        return attempts;
+    public List<RaceRecord> getRaceRecords() {
+        return raceRecords;
     }
 
-    public List<Car> makeCars(int cars) {
+    private List<Car> makeCars(int cars) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < cars; i++) {
-            Car car = new Car(attempts);
-            car.generateMoves();
+            Car car = new Car(START_LOCATION);
             carList.add(car);
         }
         return carList;
+    }
+
+    public void play() {
+        for (int i = 0; i < rounds; i++) {
+            playSingleRound(i);
+        }
+    }
+
+    private void playSingleRound(int round) {
+        for (Car car : carList) {
+            tryToMove(car);
+        }
+        raceRecords.add(new RaceRecord(round, saveRecords()));
+    }
+
+    private void tryToMove(Car car) {
+        if (RandomNumberUtil.getRandomNumber() >= 4) {
+            car.move();
+        }
+    }
+
+    private List<Integer> saveRecords() {
+        return carList.stream().map(Car::getLocation)
+                .collect(Collectors.toList());
     }
 }

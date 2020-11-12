@@ -1,29 +1,17 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private final boolean[] moves;
-    private final static int MOVE_POINT = 4;
-    private final static int RANDOM_NUMBER_BOUND = 10;
+    private int location;
 
-    public Car(int attempts) {
-        this.moves = new boolean[attempts];
+    public Car(int location) {
+        this.location = location;
     }
 
-    public boolean[] getMoves() {
-        return moves;
+    public int getLocation() {
+        return location;
     }
 
-    private int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_NUMBER_BOUND);
-    }
-
-    public void generateMoves() {
-        moves[0] = true;
-        for (int i = 1; i < moves.length; i++) {
-            moves[i] = getRandomNumber() >= MOVE_POINT;
-        }
+    public void move() {
+        location++;
     }
 }
