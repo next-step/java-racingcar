@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 public class CarTest {
 
-    Car car = new Car();
+    Car car = new Car("베니");
 
     @Test
     @DisplayName("자동차의 전진이 잘 작동하는가?")
@@ -18,10 +18,4 @@ public class CarTest {
         car.move();
     }
 
-    @Test
-    @DisplayName("4 이상일 때만 가능한가?")
-    public void isOrAboveEnableNumberTest(){
-        assertFalse(car.isOrAboveEnableNumber(3));
-        assertTrue(car.isOrAboveEnableNumber(4));
-    }
 }
