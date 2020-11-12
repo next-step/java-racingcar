@@ -16,6 +16,7 @@ public class Race {
         for (Car car : cars.getCars()) {
             cars.setWinner(car);
         }
+        rv.printWinner(record);
     }
 
     private void roll(Cars cars, int turn, Record record) {
