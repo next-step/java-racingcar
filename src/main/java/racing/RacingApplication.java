@@ -7,8 +7,6 @@ import racing.resolver.RandomAccelerateResolver;
 import racing.service.GrandPrixService;
 import racing.service.LineUpService;
 import racing.service.RaceMachineService;
-import racing.view.RacingInputView;
-import racing.view.to.RacingInputTO;
 
 public class RacingApplication {
     private static final GrandPrixService grandPrixService = new GrandPrixService();
@@ -17,8 +15,7 @@ public class RacingApplication {
     private static final GrandPrixController grandPrixController = new GrandPrixController(grandPrixService, lineUpService);
 
     public static void main(String[] args) {
-        RacingInputTO racingInputTO = RacingInputView.getRacingInput();
-        GrandPrix grandPrix = grandPrixController.create(racingInputTO);
+        GrandPrix grandPrix = grandPrixController.create();
         grandPrixController.startRace(grandPrix);
     }
 }

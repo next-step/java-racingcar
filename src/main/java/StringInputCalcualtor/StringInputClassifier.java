@@ -22,8 +22,8 @@ public class StringInputClassifier {
     private static final Pattern DOUBLE_REGEX_PATTERN = Pattern.compile("\\d+(?:\\.\\d+)?");
 
     private String input;
-    private List<BigDecimal> operands = new ArrayList<>();
-    private List<String> operators = new ArrayList<>();
+    private final List<BigDecimal> operands = new ArrayList<>();
+    private final List<String> operators = new ArrayList<>();
 
     public void input(String input) {
         this.input = input;

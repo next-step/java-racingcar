@@ -10,7 +10,7 @@ import java.util.function.BiFunction;
 
 public class SimpleCalculator {
 
-    private Map<String, BiFunction<BigDecimal, BigDecimal, BigDecimal>> operatorMap = new HashMap<>();
+    private final Map<String, BiFunction<BigDecimal, BigDecimal, BigDecimal>> operatorMap = new HashMap<>();
 
     public SimpleCalculator() {
         operatorMap.put("+", this::add);

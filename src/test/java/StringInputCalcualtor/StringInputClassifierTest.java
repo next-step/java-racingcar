@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringInputClassifierTest {
-    StringInputClassifier stringInputClassifier = new StringInputClassifier();
+    private final StringInputClassifier stringInputClassifier = new StringInputClassifier();
 
     @Test
     void testOperandOperatorClassify() {
@@ -57,14 +57,14 @@ public class StringInputClassifierTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1,true", "1.1,true", "200,true", "0,true", "sdfg,false", "+,false"}, delimiter = ',')
+    @CsvSource(value = {"1,true", "1.1,true", "200,true", "0,true", "sdfg,false", "+,false"})
     void isOperand(String input, boolean expectedResult) {
         boolean result = stringInputClassifier.isOperand(input);
         assertThat(result).isEqualTo(expectedResult);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"+,true", "-,true", "*,true", "/,true", "34,false", "e,false","^,false", "%,false"}, delimiter = ',')
+    @CsvSource(value = {"+,true", "-,true", "*,true", "/,true", "34,false", "e,false", "^,false", "%,false"})
     void isOperator(String input, boolean expectedResult) {
         boolean result = stringInputClassifier.isOperator(input);
         assertThat(result).isEqualTo(expectedResult);
