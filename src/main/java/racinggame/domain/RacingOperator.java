@@ -1,4 +1,4 @@
-package racingGame;
+package racinggame.domain;
 
 import java.util.List;
 import javafx.util.Pair;

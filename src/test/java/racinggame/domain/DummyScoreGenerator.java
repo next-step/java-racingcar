@@ -1,5 +1,7 @@
-package racingGame;
+package racinggame.domain;
 
+
+import racinggame.domain.ScoreGenerator;
 
 public class DummyScoreGenerator implements ScoreGenerator {
 

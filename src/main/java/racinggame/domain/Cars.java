@@ -1,4 +1,4 @@
-package racingGame;
+package racinggame.domain;
 
 import java.util.Arrays;
 import java.util.List;
@@ -81,7 +81,7 @@ public class Cars {
     }
   }
 
-  List<Pair<String, Integer>> getCarsStatus() {
+  public List<Pair<String, Integer>> getCarsStatus() {
     List<Pair<String, Integer>> status = new Vector<>();
 
     for (Car car : this.cars) {

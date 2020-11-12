@@ -1,4 +1,4 @@
-package racingGame;
+package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -7,7 +7,9 @@ import javafx.util.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingGame.racingGameException.IllegalCarNameLengthException;
+import racinggame.domain.Car;
+import racinggame.domain.ScoreGenerator;
+import racinggame.racinggamexception.IllegalCarNameLengthException;
 
 class CarTest {
 

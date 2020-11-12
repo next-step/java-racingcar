@@ -1,7 +1,7 @@
-package racingGame;
+package racinggame.domain;
 
 import javafx.util.Pair;
-import racingGame.racingGameException.IllegalCarNameLengthException;
+import racinggame.racinggamexception.IllegalCarNameLengthException;
 
 public class Car {
 

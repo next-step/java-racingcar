@@ -1,4 +1,4 @@
-package racingGame.View;
+package racinggame.view;
 
 import java.util.List;
 import javafx.util.Pair;
