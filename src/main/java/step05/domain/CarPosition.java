@@ -6,7 +6,7 @@ import validator.NumberValidator;
 import java.util.Objects;
 
 public class CarPosition {
-    private int position;
+    private final int position;
     private static final int defaultPosition = 1;
 
     private CarPosition(int position) {
