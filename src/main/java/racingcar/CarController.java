@@ -10,19 +10,29 @@ public class CarController {
     private static final Random random = new Random();
     private static final int MAX_MOVING_BOUNDARY = 10;
 
-    public CarList initCarList(String[] carNames) {
-        List<Car> carList = Arrays.stream(carNames)
+    private CarList carList;
+    private int tryCounts;
+    private int round;
+
+    public CarController(String[] carNames, int tryCounts) {
+        this.tryCounts = tryCounts;
+        initCarList(carNames);
+    }
+
+    public void initCarList(String[] carNames) {
+        List<Car> cars = Arrays.stream(carNames)
                 .map(Car::from)
                 .collect(Collectors.toList());
 
-        return CarList.from(carList);
+        carList = CarList.from(cars);
     }
 
-    public boolean isFinish(int tryCounts, int round) {
+    public boolean isFinish() {
         return tryCounts == round;
     }
 
-    public CarList nextRound(CarList carList) {
+    public CarList nextRound() {
+        round++;
         List<Car> cars = carList.getCarList();
         for(Car car : cars) {
             car.move(makeRandomValue());
@@ -34,7 +44,7 @@ public class CarController {
         return random.nextInt(MAX_MOVING_BOUNDARY);
     }
 
-    public List<String> getWinner(CarList carList) {
+    public List<String> getWinner() {
         List<String> winners = new ArrayList<>();
 
         int winnerScore = getWinnerScore(carList);
