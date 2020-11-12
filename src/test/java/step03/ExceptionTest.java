@@ -16,7 +16,7 @@ public class ExceptionTest {
     public void Given_NoAPositiveInteger_Then_ThrowException(int input) {
         assertThatExceptionOfType(NotPositiveIntegerException.class)
                 .isThrownBy(() -> {
-                   NumberValidator.validatePositiveNumber(input);
+                   NumberValidator.validatePositiveInteger(input);
                 });
     }
 }

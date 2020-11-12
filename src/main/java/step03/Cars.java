@@ -23,7 +23,7 @@ public class Cars {
     }
 
     private static void validateNumberOfCars(int numberOfCars) {
-        NumberValidator.validatePositiveNumber(numberOfCars);
+        NumberValidator.validatePositiveInteger(numberOfCars);
     }
 
     public void move() {
