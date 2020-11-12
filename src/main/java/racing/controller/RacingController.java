@@ -1,7 +1,8 @@
 package racing.controller;
 
-import racing.model.RacingCars;
+import racing.model.Racing;
 
+import racing.model.RacingResult;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -15,7 +16,8 @@ public class RacingController {
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
 
-    private RacingCars cars;
+    private Racing racing;
+    private RacingResult racingResult = new RacingResult();
 
     private int retryCount;
 
@@ -28,7 +30,7 @@ public class RacingController {
 
     private void inputCandidates() {
         inputView.printCandidates();
-        cars = new RacingCars(scanner.nextLine());
+        racing = new Racing(scanner.nextLine());
     }
 
     private void inputRetryCount() {
@@ -39,10 +41,11 @@ public class RacingController {
     private void run() {
         resultView.printResultMessage();
         for (int retry = 0; retry < retryCount; retry++) {
-            cars.racing();
-            resultView.printRacingResult(cars);
+            racing.racing();
+            racingResult.update(racing.getCandidates());
+            resultView.printRacingResult(racingResult.getResult());
         }
-        resultView.printWinner(cars);
+        resultView.printWinner(racingResult.getWinners());
     }
 
     private int getRetryCount() {

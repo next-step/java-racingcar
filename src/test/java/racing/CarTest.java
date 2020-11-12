@@ -4,10 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.model.Car;
-import racing.model.Name;
-import racing.model.RacingCars;
-import racing.model.RacingCar;
+import racing.model.*;
+import racing.model.Racing;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -54,7 +52,7 @@ public class CarTest {
     @DisplayName("이름 정상 분리")
     void testNameCaseSplit() {
         String input = "12345,1234,123,12,1";
-        RacingCars cars = new RacingCars(input);
+        Racing cars = new Racing(input);
         assertThat(
                 cars.getCandidates().stream()
                         .map(Car::getCarName).toArray()
@@ -69,8 +67,9 @@ public class CarTest {
         cars.add(movingCar("2", 3));
         cars.add(movingCar("3", 3));
 
-        RacingCars racingCars = new RacingCars(cars);
-        assertThat(racingCars.getWinners().toArray()).containsExactly("1");
+        RacingResult racingResult = new RacingResult();
+        racingResult.update(cars);
+        assertThat(racingResult.getWinners().toArray()).containsExactly("1");
     }
 
     @Test
@@ -81,8 +80,9 @@ public class CarTest {
         cars.add(movingCar("2", 4));
         cars.add(movingCar("3", 3));
 
-        RacingCars racingCars = new RacingCars(cars);
-        assertThat(racingCars.getWinners().toArray()).containsExactly("1","2");
+        RacingResult racingResult = new RacingResult();
+        racingResult.update(cars);
+        assertThat(racingResult.getWinners().toArray()).containsExactly("1","2");
     }
 
     private Car movingCar(String name, int fuel){
