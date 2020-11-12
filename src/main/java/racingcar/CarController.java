@@ -40,24 +40,29 @@ public class CarController {
         return tryCounts == round;
     }
 
-    public void nextRound() {
-        round++;
-    }
-
-    public CarList carListMove() {
-        nextRound();
+    public void moveCarListPosition() {
         List<Car> cars = carList.getCarList();
         for(Car car : cars) {
             car.move(makeRandomValue());
         }
-        return CarList.from(cars);
+        carList = CarList.from(cars);
+    }
+
+    public void increaseRound() {
+        round++;
+    }
+
+    public CarList nextRound() {
+        increaseRound();
+        moveCarListPosition();
+        return carList;
     }
 
     private int makeRandomValue() {
         return random.nextInt(MAX_MOVING_BOUNDARY);
     }
 
-    public List<String> getWinner() {
+    public List<String> getWinners() {
         List<String> winners = new ArrayList<>();
 
         int winnerScore = getWinnerScore();
@@ -75,19 +80,15 @@ public class CarController {
     }
 
     public int getWinnerScore() {
-        int winnerScore = 0;
-        for(Car car : carList.getCarList()) {
-            winnerScore = Math.max(winnerScore, car.getCurrentPosition());
-        }
-        return winnerScore;
+        return carList.getCarList()
+                .stream()
+                .mapToInt(Car::getCurrentPosition)
+                .max()
+                .orElseThrow(RuntimeException::new);
     }
 
     public CarList getCarList() {
         return carList;
-    }
-
-    public int getRound() {
-        return round;
     }
 
 }

@@ -50,7 +50,7 @@ class CarControllerTest {
         int round = 1;
 
         controller = new CarController(tryCounts, round);
-        controller.nextRound();
+        controller.increaseRound();
 
         assertThat(controller.isFinish()).isTrue();
     }
@@ -111,7 +111,7 @@ class CarControllerTest {
         String[] carNames = {"name1"};
         controller = new CarController(carNames, winnerScore);
 
-        List<String> winner = controller.getWinner();
+        List<String> winner = controller.getWinners();
 
         assertThat(winner).containsOnly(carNames);
     }
@@ -128,7 +128,7 @@ class CarControllerTest {
 
         controller = new CarController(carList);
 
-        List<String> winner = controller.getWinner();
+        List<String> winner = controller.getWinners();
 
         List<String> compareWinner = Arrays.asList(car1.getName(), car3.getName());
 
