@@ -27,16 +27,9 @@ public class RacingGameRounds {
     }
 
     public void recording(Cars cars) {
-        List<Car> carSet = cars.getCarSet();
-
         LinkedList<SingleRecord> singleRecords = new LinkedList<SingleRecord>();
-
-        carSet.forEach(car -> singleRecords.add(new SingleRecord(car.getPosition(), car.getCarName())));
-
-        RacingRecord racingRecord = new RacingRecord(singleRecords);
-
-        this.racingRecords.addRecord(racingRecord);
-
+        cars.getCarSet().forEach(car -> singleRecords.add(new SingleRecord(car.getPosition(), car.getCarName())));
+        this.racingRecords.addRecord(new RacingRecord(singleRecords));
     }
 
     public RacingRecords getRecordingResult() {
