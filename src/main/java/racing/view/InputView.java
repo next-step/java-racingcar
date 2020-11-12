@@ -11,14 +11,6 @@ public class InputView {
 
     private InputView() {}
 
-    public static int getVehicleCount() {
-        int vehicleCount;
-        do {
-            System.out.print(FIRST_QUESTION);
-        } while ((vehicleCount = inputNumberValidationCheck(scanner.next())) <= 0);
-        return vehicleCount;
-    }
-
     public static int getMaxCheckPoint() {
         int maxCheckPoint;
         do {

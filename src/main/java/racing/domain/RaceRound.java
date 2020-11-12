@@ -22,20 +22,22 @@ public class RaceRound {
         return raceResults.get(index);
     }
 
+    private List<Car> getFinalRoundCars() {
+        return findResult(getRoundCount()-1).getResultCars();
+    }
+
     private int getMaxPosition() {
-        List<Car> cars = findResult(getRoundCount()-1).getResultCars();
-        return cars.stream()
+        return getFinalRoundCars().stream()
                 .mapToInt(Car::getDistance)
-                .max().getAsInt();
+                .max()
+                .getAsInt();
     }
 
     public String[] getWinners() {
-        List<Car> cars = findResult(getRoundCount()-1).getResultCars();
-        return cars.stream()
+        return getFinalRoundCars().stream()
                 .filter(car -> car.getDistance() == getMaxPosition())
                 .map(Car::getName)
                 .toArray(String[]::new);
     }
-
 
 }

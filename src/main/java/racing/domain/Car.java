@@ -1,5 +1,7 @@
 package racing.domain;
 
+import java.util.Objects;
+
 import static racing.domain.CarConfig.*;
 
 public class Car {
@@ -37,5 +39,19 @@ public class Car {
             throw new IllegalArgumentException(CAR_NAME_VALIDATION_ERROR);
         }
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position &&
+                Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }

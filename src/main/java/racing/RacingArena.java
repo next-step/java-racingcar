@@ -9,10 +9,10 @@ public class RacingArena {
         String names = InputView.getInputNames();
         int maxCheckPoint = InputView.getMaxCheckPoint();
 
-        CarRacing carRacing = new CarRacing(names,maxCheckPoint);
-        carRacing.start();
+        RacingController controller = new RacingController(names, maxCheckPoint);
+        controller.execute();
 
-        RaceRound raceRound = carRacing.getRaceRound();
+        RaceRound raceRound = controller.getRacingRound();
         ResultView.viewRaceResult(raceRound);
         ResultView.viewRaceWinners(raceRound);
     }
