@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.model.Car;
+import racing.model.Name;
 import racing.model.RacingCars;
 import racing.model.RacingCar;
 
@@ -37,7 +38,7 @@ public class CarTest {
     @DisplayName("이름에 5자를 초과하는 값이 존재하는 경우 Exception 발생")
     void testNameCaseMorThenFive() {
         String input = "123456,1234";
-        assertThatThrownBy(() -> new RacingCars(input))
+        assertThatThrownBy(() -> new Name(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -45,7 +46,7 @@ public class CarTest {
     @DisplayName("이름 값 입력이 없는 경우")
     void testNameCaseNull() {
         String input = "";
-        assertThatThrownBy(() -> new RacingCars(input))
+        assertThatThrownBy(() -> new Name(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
