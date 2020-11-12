@@ -1,6 +1,7 @@
 package step05.domain;
 
 import exception.EmptyException;
+import exception.OutOfBoundCarName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -22,40 +23,53 @@ public class CarNameTest {
                 .isThrownBy(() -> CarName.of(blackName));
     }
 
-    private static Stream<Arguments> provideOver5LengthCarName() {
+    private static Stream<Arguments> provideOverDefaultLengthCarName() {
         return Stream.of(
                 Arguments.of(
-                    "123456",
-                    "asdasdasdsadsadsa",
-                    "asdasdsad",
-                    "123213ads"
+                        "123456",
+                        "asdasdasdsadsadsa",
+                        "asdasdsad",
+                        "123213ads"
                 )
         );
     }
 
-    @DisplayName("이름이 5자 초과일때 에러")
+    @DisplayName("이름이 default 5자 초과일때 에러")
     @ParameterizedTest
-    @MethodSource("provideOver5LengthCarName")
-    public void isInBoundLength__over5LengthCarName_throwException(String outOfBoundCarName) {
+    @MethodSource("provideOverDefaultLengthCarName")
+    public void isInBoundLength__overDefaultLengthCarName_throwException(String outOfBoundCarName) {
         assertThatExceptionOfType(OutOfBoundCarName.class)
                 .isThrownBy(() -> CarName.of(outOfBoundCarName));
     }
 
-    private static Stream<Arguments> provideUnder5LengthCarName() {
+    private static Stream<Arguments> provideOverMaxLengthCarName() {
         return Stream.of(
-                Arguments.of(
-                        "12345",
-                        "asd",
-                        "a"
-                )
+                Arguments.of("123456", 4),
+                Arguments.of("asdasdasdsadsadsa", 10)
         );
     }
 
-    @DisplayName("이름이 5자 이하일 때 에러 없음")
+    @DisplayName("이름이 default maxLength 자 초과일때 에러")
     @ParameterizedTest
-    @MethodSource("provideUnder5LengthCarName")
-    public void isInBoundLength__under5LengthCarName_NotThrowException(String InBoundCarName) {
-        assertThatCode(() -> CarName.of(InBoundCarName))
+    @MethodSource("provideOverMaxLengthCarName")
+    public void isInBoundLength__overMaxLengthCarName_throwException(String outOfBoundCarName, int maxLength) {
+        assertThatExceptionOfType(OutOfBoundCarName.class)
+                .isThrownBy(() -> CarName.of(outOfBoundCarName, maxLength));
+    }
+
+    private static Stream<Arguments> provideUnderMaxLengthCarName() {
+        return Stream.of(
+                Arguments.of("123456", 7),
+                Arguments.of("asd", 3),
+                Arguments.of("asd", 4)
+        );
+    }
+
+    @DisplayName("이름이 maxLength 자 이하일 때 에러 없음")
+    @ParameterizedTest
+    @MethodSource("provideUnderMaxLengthCarName")
+    public void isInBoundLength__underMaxLengthCarName_throwException(String inBoundCarName, int maxLength) {
+        assertThatCode(() -> CarName.of(inBoundCarName, maxLength))
                 .doesNotThrowAnyException();
     }
 

@@ -31,7 +31,7 @@
         - position 을 인자로 받는 생성자
     - 메서드
         - position 증가한 후 증가된 객체 반환 public CarPosition move
-        - position 이 양수인지 검사 private void validatePositiveInteger
+        - position 이 양수인지 검사 private void isPositiveInteger
         - CarPosition 객체 반환 public CarPosition getPosition
 
 - Car
