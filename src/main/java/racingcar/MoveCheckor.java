@@ -17,14 +17,10 @@ public class MoveCheckor{
 
     //기준치 이상 여부 확인
     public boolean checkOverBaseLine(){
-        boolean canMove = false;
         Random random = new Random();
         this.randomNum = random.nextInt(10);
-        if(this.randomNum >= this.baseLineNum){
-            canMove = true;
-        }
 
-        return canMove;
+        return (this.randomNum >= this.baseLineNum);
     }
 
     //난수에 따른 이동 및 기록
