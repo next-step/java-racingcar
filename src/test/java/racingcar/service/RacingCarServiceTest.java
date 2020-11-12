@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.RaceReadyValue;
 import racingcar.dto.RaceResultValue;
-import racingcar.model.TesterMotor;
+import racingcar.domain.TesterMotor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

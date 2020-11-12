@@ -1,4 +1,4 @@
-package racingcar.external;
+package racingcar.view;
 
 import racingcar.dto.RaceReadyValue;
 import racingcar.validator.InputValidator;

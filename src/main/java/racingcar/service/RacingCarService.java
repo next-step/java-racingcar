@@ -2,10 +2,9 @@ package racingcar.service;
 
 import racingcar.dto.RaceReadyValue;
 import racingcar.dto.RaceResultValue;
-import racingcar.dto.StepByCar;
 import racingcar.dto.StepResult;
-import racingcar.model.Cars;
-import racingcar.model.Motor;
+import racingcar.domain.Cars;
+import racingcar.domain.Motor;
 
 import java.util.ArrayList;
 import java.util.List;

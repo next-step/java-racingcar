@@ -1,4 +1,4 @@
-package racingcar.external;
+package racingcar.view;
 
 public class OuputChannel implements Output {
     @Override

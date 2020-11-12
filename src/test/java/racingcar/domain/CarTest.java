@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,5 +31,30 @@ public class CarTest {
         car.move();
 
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @DisplayName("run() 테스트 : 메소드 호출시 전진하는지 확인")
+    @Test
+    void run1(){
+        // TesterMotor는 항상 true 반환
+        Motor motor = new TesterMotor();
+
+        Car car = new Car(name, motor); // postition 초기값은 0
+        car.run();
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+
+    @DisplayName("run() 테스트 : 메소드 호출시 전진하지 않는지 확인")
+    @Test
+    void run2() {
+        // TesterImmobileMotor 항상 false 반환
+        Motor motor = new TesterImmobileMotor();
+
+        Car car = new Car(name, motor); // postition 초기값은 0
+        car.run();
+
+        assertThat(car.getPosition()).isZero();
     }
 }
