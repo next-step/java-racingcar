@@ -4,8 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CarTest {
     Car car;
 
@@ -37,5 +35,12 @@ class CarTest {
     @Test
     void getName() {
         Assertions.assertThat(car.getName()).isEqualTo("test");
+    }
+
+    @Test
+    void validName() {
+        Assertions.assertThatThrownBy(() -> {
+            new Car("123456");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }

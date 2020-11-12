@@ -78,15 +78,17 @@
 ### 구현기능
 
 1. InputView
-    - 자동차 대수 입력 (NumberOfCars)
+    - 자동차 이름 입력 (NameOfCars)
     - 시도할 횟수 입력 (NumberOfAttempts)
 
 1. ResultView
-    - 자동차의 현재 위치를 출력해준다.
+    - 자동차의 이름과 현재 현재 위치를 출력해준다.
+    - 우승자를 출력해준다.
 
 1. Car
     - boolean에 따른 position값 변동
         - random값이 4 이상일 경우 position을 증가 시킨다.
+    - name은 5글자를 초과할 수 없다.
 
 1. MoveStrategy
     - random값을 구한다. (0 ~ 9)
