@@ -17,7 +17,7 @@ public class CarPositionTest {
     private static Stream<Arguments> provideMovableResult() {
         return Stream.of(
                 Arguments.of(1, true, 2),
-                Arguments.of(1, false, 0),
+                Arguments.of(1, false, 1),
                 Arguments.of(4, true, 5)
         );
     }
@@ -27,15 +27,13 @@ public class CarPositionTest {
     @MethodSource("provideMovableResult")
     public void test_move(int position, boolean movable, int expect) {
         CarPosition carPosition = CarPosition.of(position);
-        assertThat(carPosition.move(movable).isEqualTo(new CarPosition(expect)));
+        assertThat(carPosition.move(() -> movable)).isEqualTo(CarPosition.of(expect));
     }
 
     private static Stream<Arguments> provideNotPositiveIntegerResult() {
         return Stream.of(
                 Arguments.of(-1),
-                Arguments.of(0),
-                Arguments.of(2.3),
-                Arguments.of(-2.3)
+                Arguments.of(0)
         );
     }
 
@@ -50,8 +48,8 @@ public class CarPositionTest {
     @DisplayName("CarPosition 객체 반환")
     @Test
     public void test_getCarPosition() {
-        CarPosition carPosition = CarPosotion.of(1);
-        assertThat(carPosition.getCarPosition).isEqualTo(CarPosition.of(1));
+        CarPosition carPosition = CarPosition.of(1);
+        assertThat(carPosition.getCarPosition()).isEqualTo(CarPosition.of(1));
     }
 
 }
