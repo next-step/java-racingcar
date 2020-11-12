@@ -13,7 +13,7 @@ public class CarMain {
         CarController carController = new CarController(carNames, tryCounts);
 
         while(!carController.isFinish()) {
-            outputView.displayCarList(carController.nextRound());
+            outputView.displayCarList(carController.carListMove());
         }
 
         outputView.displayWinners(carController.getWinner());

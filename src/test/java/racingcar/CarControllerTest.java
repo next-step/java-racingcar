@@ -28,7 +28,6 @@ class CarControllerTest {
     void isFinishSuccessTest() {
         int tryCounts = 5;
         int round = 5;
-        String[] carNames = {"name1", "name2", "name3"};
         controller = new CarController(tryCounts, round);
 
         assertThat(controller.isFinish()).isTrue();
@@ -39,10 +38,21 @@ class CarControllerTest {
     void isFinishFailTest() {
         int tryCounts = 5;
         int round = 3;
-        String[] carNames = {"name1", "name2", "name3"};
         controller = new CarController(tryCounts, round);
 
         assertThat(controller.isFinish()).isFalse();
+    }
+
+    @Test
+    @DisplayName("게임 진행 테스트")
+    void nextRoundTest() {
+        int tryCounts = 2;
+        int round = 1;
+
+        controller = new CarController(tryCounts, round);
+        controller.nextRound();
+
+        assertThat(controller.isFinish()).isTrue();
     }
 
     @Test

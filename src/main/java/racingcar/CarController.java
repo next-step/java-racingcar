@@ -40,8 +40,12 @@ public class CarController {
         return tryCounts == round;
     }
 
-    public CarList nextRound() {
+    public void nextRound() {
         round++;
+    }
+
+    public CarList carListMove() {
+        nextRound();
         List<Car> cars = carList.getCarList();
         for(Car car : cars) {
             car.move(makeRandomValue());
@@ -80,6 +84,10 @@ public class CarController {
 
     public CarList getCarList() {
         return carList;
+    }
+
+    public int getRound() {
+        return round;
     }
 
 }
