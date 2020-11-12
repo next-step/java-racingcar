@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -26,6 +28,23 @@ class StringCalculatorTest {
                 () -> assertThat(result1).isEqualTo(0),
                 () -> assertThat(result2).isEqualTo(0)
         );
+    }
+
+    @DisplayName("숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+    })
+    public void test1(String value) {
+        Integer result = this.stringCalculator.enterExpression(value);
+        assertThat(result).isEqualTo(value);
     }
 
 }
