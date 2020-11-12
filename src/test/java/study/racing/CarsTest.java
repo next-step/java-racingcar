@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +27,20 @@ public class CarsTest {
     void carsConstructTest(){
         int carSetSize = cars.getCarSet().size();
         assertThat(carSetSize).isEqualTo(carCnt);
+    }
+
+    @DisplayName("Car 생성 테스트")
+    @Test
+    void carsCreateTest(){
+        // given
+        String[] names = {"AAA", "BBB", "CCC"};
+
+        // when
+        Cars cars = new Cars(names);
+
+        // then
+        assertThat(cars.getCarSet().size()).isEqualTo(3);
+        assertThat(cars.getCarSet()).containsExactly(new Car("AAA"), new Car("BBB"), new Car("CCC"));
     }
 
     @DisplayName("Cars Move 메소드 테스트")

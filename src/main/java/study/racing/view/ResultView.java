@@ -2,7 +2,7 @@ package study.racing.view;
 
 import study.racing.RacingRecord;
 import study.racing.RacingRecords;
-import study.racing.SingleRecord;
+import study.racing.CarSetInRace;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -26,7 +26,7 @@ public class ResultView {
         System.out.println(racingHistory);
 
         String racingWinner = racingResults.getWinners().stream()
-                .map(SingleRecord::getCarName).collect(Collectors.joining(WINNER_DELIMITER));
+                .map(CarSetInRace::getCarName).collect(Collectors.joining(WINNER_DELIMITER));
 
         System.out.println(WINNER_HEAD_MESSAGE + racingWinner);
 
