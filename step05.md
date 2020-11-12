@@ -47,11 +47,10 @@
     - 멤버    
         - 자동차 이름 private final CarName name; 
         - 위치 정보 private CarPosition position;
-        - 움직이는 방법 private MoveStrategy moveStrategy;
     - 생성자 
         - 멤버 변수 모두 초기화 
     - 메서드 
-        - 전진 public void move 
+        - 전진 public Car move 
 - 자동차들 Cars
     - 멤버     
         - 자동차들 list,  private final List<Car>
