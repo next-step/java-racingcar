@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,18 +13,14 @@ class CarControllerTest {
 
     CarController controller;
 
-    @BeforeEach
-    void setup() {
-        controller = new CarController();
-    }
-
     @Test
     @DisplayName("CarList 초기화 성공 테스트")
     void initCarListTest() {
         String[] carNames = {"name1", "name2", "name3"};
-        CarList carList = controller.initCarList(carNames);
+        controller = new CarController(carNames, 1);
+        controller.initCarList(carNames);
 
-        assertThat(carList.getCarList().size()).isEqualTo(3);
+        assertThat(controller.getCarList().getCarList().size()).isEqualTo(3);
     }
 
     @Test
@@ -37,7 +32,9 @@ class CarControllerTest {
         Car car2 = Car.of("b", looserScore);
         CarList carList = CarList.from(Arrays.asList(car1, car2));
 
-        assertThat(controller.getWinnerScore(carList)).isEqualTo(winnerScore);
+        controller = new CarController(carList);
+
+        assertThat(controller.getWinnerScore()).isEqualTo(winnerScore);
     }
 
     @Test
@@ -46,6 +43,8 @@ class CarControllerTest {
         List<String> winners = new ArrayList<>();
         int winnerScore = 3;
         Car car1 = Car.of("a", winnerScore);
+        CarList carList = CarList.from(Arrays.asList(car1));
+        controller = new CarController(carList);
 
         controller.getWinnerName(winnerScore, car1, winners);
 
@@ -61,6 +60,8 @@ class CarControllerTest {
         Car car1 = Car.of("a", winnerScore);
         Car car2 = Car.of("b", winnerScore);
         Car car3 = Car.of("c", looserScore);
+        CarList carList = CarList.from(Arrays.asList(car1, car2, car3));
+        controller = new CarController(carList);
 
         controller.getWinnerName(winnerScore, car1, winners);
         controller.getWinnerName(winnerScore, car2, winners);
@@ -75,12 +76,12 @@ class CarControllerTest {
     @DisplayName("우승자 구하기 테스트 - 1명일 때")
     void winnerOnlyOneTest() {
         int winnerScore = 5;
-        Car car1 = Car.of("a", winnerScore);
-        CarList carList = CarList.from(Arrays.asList(car1));
+        String[] carNames = {"name1"};
+        controller = new CarController(carNames, winnerScore);
 
-        List<String> winner = controller.getWinner(carList);
+        List<String> winner = controller.getWinner();
 
-        assertThat(winner).containsOnly(car1.getName());
+        assertThat(winner).containsOnly(carNames);
     }
 
     @Test
@@ -93,7 +94,9 @@ class CarControllerTest {
         Car car3 = Car.of("c", winnerScore);
         CarList carList = CarList.from(Arrays.asList(car1, car2, car3));
 
-        List<String> winner = controller.getWinner(carList);
+        controller = new CarController(carList);
+
+        List<String> winner = controller.getWinner();
 
         List<String> compareWinner = Arrays.asList(car1.getName(), car3.getName());
 

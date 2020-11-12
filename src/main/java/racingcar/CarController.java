@@ -19,6 +19,10 @@ public class CarController {
         initCarList(carNames);
     }
 
+    public CarController(CarList carList) {
+        this.carList = carList;
+    }
+
     public void initCarList(String[] carNames) {
         List<Car> cars = Arrays.stream(carNames)
                 .map(Car::from)
@@ -47,7 +51,7 @@ public class CarController {
     public List<String> getWinner() {
         List<String> winners = new ArrayList<>();
 
-        int winnerScore = getWinnerScore(carList);
+        int winnerScore = getWinnerScore();
         for(Car car : carList.getCarList()) {
             getWinnerName(winnerScore, car, winners);
         }
@@ -61,12 +65,16 @@ public class CarController {
         }
     }
 
-    public int getWinnerScore(CarList carList) {
+    public int getWinnerScore() {
         int winnerScore = 0;
         for(Car car : carList.getCarList()) {
             winnerScore = Math.max(winnerScore, car.getCurrentPosition());
         }
         return winnerScore;
+    }
+
+    public CarList getCarList() {
+        return carList;
     }
 
 }
