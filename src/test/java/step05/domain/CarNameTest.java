@@ -2,6 +2,7 @@ package step05.domain;
 
 import exception.EmptyException;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
@@ -9,6 +10,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOf
 public class CarNameTest {
 
     @DisplayName("이름이 비었는지 검사")
+    @ParameterizedTest
     @NullAndEmptySource
     public void test_isBlank (String blackName) {
         assertThatExceptionOfType(EmptyException.class)
@@ -16,10 +18,6 @@ public class CarNameTest {
     }
 
     /*
-        - 멤버
-        - 이름 private final String name
-    - 생성자
-        - name 을 초기화
         - 이름 검사 아래 2가지
     - 메서드
         - 이름이 비었는지 검사 private void isBlank
