@@ -1,6 +1,9 @@
 package step3;
 
 import step3.domain.Racing;
+import step3.domain.Randomize;
+import step3.domain.strategy.Movable;
+import step3.domain.strategy.MoveStrategy;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -15,13 +18,15 @@ public class Controller {
     public static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int carNum = InputView.askCarNumber();
+        String carNames = InputView.askCarNames();
         int roundNum = InputView.askRoundNumber();
+        MoveStrategy moveStrategy = new Movable(new Randomize());
 
-        Racing racing = Racing.of(carNum, roundNum);
+        Racing racing = Racing.of(carNames, roundNum, moveStrategy);
         racing.race();
 
-        ResultView.printResult(racing.getScoreBoard(), carNum);
+        ResultView.printResult(racing.getScoreBoard(), racing.getRounds());
+        ResultView.printWinner(racing.getWinner());
 
         SCANNER.close();
     }

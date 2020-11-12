@@ -1,14 +1,10 @@
 package step3.domain;
 
+import step3.domain.strategy.Movable;
+import step3.domain.strategy.MoveStrategy;
 import step3.util.Validator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
+import java.util.*;
 
 /**
  * Created By mand2 on 2020-11-04.
@@ -18,30 +14,39 @@ public class Racing {
 
     private final int rounds;
     private final Cars cars;
-    private List<Integer> scoreBoard;
+    private List<ScoreBoard> scoreBoards;
+    private MoveStrategy moveStrategy;
 
-    private Racing(int participants, int rounds) {
+    private Racing(String carNames, int rounds, MoveStrategy moveStrategy) {
         this.rounds = rounds;
-        this.cars = new Cars(participants);
-        this.scoreBoard = new ArrayList<>();
+        this.cars = Cars.of(carNames);
+        this.scoreBoards = new ArrayList<>();
+        this.moveStrategy = moveStrategy;
     }
 
-    public static Racing of(int participants, int rounds) {
-        Validator.checkArgumentInRange(participants, 1);
+    public static Racing of(String carNames, int rounds, MoveStrategy moveStrategy) {
         Validator.checkArgumentInRange(rounds, 1);
 
-        return new Racing(participants, rounds);
+        return new Racing(carNames, rounds, moveStrategy);
     }
 
     public void race() {
         for (int i = rounds; i > 0; i--) {
-            this.cars.runRound();
-            this.scoreBoard.addAll(cars.getRoundScore());
+            this.cars.runRound(this.moveStrategy);
+            this.scoreBoards = this.cars.getRoundScore();
         }
     }
 
-    public List<Integer> getScoreBoard() {
-        return this.scoreBoard;
+    public List<ScoreBoard> getScoreBoard() {
+        return this.scoreBoards;
+    }
+
+    public String getWinner() {
+        return this.cars.getWinners();
+    }
+
+    public int getRounds() {
+        return rounds;
     }
 
     @Override
