@@ -9,7 +9,6 @@ public class RacingCars {
 	private static final int RANDOM_BOUND = 10;
 	private static final RandomGenerator randomGenerator = new RandomGenerator(RANDOM_BOUND);
 	private static final String INPUT_CARNAME_REQUIRED = "자동차 이름은 필수 입력 입니다.";
-	private static final String CARNAME_IS_BELOW_FIVE = "자동차 이름은 5자를 넘길 수 없습니다.";
 	private List<RacingCar> racingCars;
 
 	public RacingCars(String carNames) {
@@ -18,11 +17,6 @@ public class RacingCars {
 		}
 		String[] names = carNames.split(",");
 		this.racingCars = Stream.of(names)
-				.peek(name -> {
-					if (name.length() > 5) {
-						throw new IllegalArgumentException(CARNAME_IS_BELOW_FIVE);
-					}
-				})
 				.map(RacingCar::new)
 				.collect(Collectors.toList());
 	}

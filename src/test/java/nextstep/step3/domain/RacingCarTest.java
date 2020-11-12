@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
-	private RacingCar underTest = new RacingCar("adeldel");
+	private RacingCar underTest = new RacingCar("adel");
 
 	@Test
 	@DisplayName("이동가능한 수는 0보다 커야 한다.")
@@ -37,6 +37,14 @@ public class RacingCarTest {
 	public void stopTest() {
 		underTest.move(3);
 		assertThat(underTest.getPoint()).isEqualTo(0);
+	}
+
+	@Test
+	@DisplayName("자동차이름은 5자를 넘길수 없다")
+	public void carNameUnderFiveTest() {
+		Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> new RacingCar("adeldeldeldel"))
+				.withMessage("자동차 이름은 5자를 넘길 수 없습니다.");
 	}
 
 }
