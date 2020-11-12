@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.utils.Number;
 
-public abstract class Car {
+public class Car {
     private String name;
     private String place;
     private MovingStrategy movingStrategy;

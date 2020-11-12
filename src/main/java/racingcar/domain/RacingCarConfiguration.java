@@ -25,7 +25,7 @@ public class RacingCarConfiguration {
     }
 
     private Car createRacingCar(String carName) {
-        return new RacingCar(carName, new RandomStrategy());
+        return new Car(carName, new RandomStrategy());
     }
 
     public List<Car> enterCar(String carNameList) {
