@@ -1,8 +1,7 @@
 package study.racing.view;
 
-import study.racing.RacingErrorMessage;
+import study.racing.domain.RacingErrorMessage;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {

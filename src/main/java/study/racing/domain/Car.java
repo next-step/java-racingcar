@@ -1,6 +1,5 @@
-package study.racing;
+package study.racing.domain;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Car {

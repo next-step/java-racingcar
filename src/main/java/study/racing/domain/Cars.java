@@ -1,7 +1,6 @@
-package study.racing;
+package study.racing.domain;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

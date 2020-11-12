@@ -1,8 +1,8 @@
 package study.racing.view;
 
-import study.racing.RacingRecord;
-import study.racing.RacingRecords;
-import study.racing.CarSetInRace;
+import study.racing.domain.RacingRecord;
+import study.racing.domain.RacingRecords;
+import study.racing.domain.CarSetInRace;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

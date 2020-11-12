@@ -2,6 +2,9 @@ package study.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racing.domain.CarRacing;
+import study.racing.domain.RacingRecords;
+
 import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
