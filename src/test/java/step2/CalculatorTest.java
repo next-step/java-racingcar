@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.platform.commons.annotation.Testable;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -17,13 +18,13 @@ public class CalculatorTest {
     @Test
     @DisplayName("더하기 테스트")
     public void add () {
-        assertThat(calculator.addition(3, 2)).isEqualTo(5);
+        assertThat(Operator.PLUS.caculate(2,3)).isEqualTo(5);
     }
 
     @Test
     @DisplayName("빼기 테스트")
     public void sub () {
-        assertThat(calculator.subtraction(3, 2)).isEqualTo(1);
+        assertThat(Operator.MINUS.caculate(3, 2)).isEqualTo(1);
     }
 
     @Test

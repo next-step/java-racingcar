@@ -2,23 +2,24 @@ package step2;
 
 public class Calculator {
 
+
     public int addition (int num1, int num2) {
-        return num1 + num2;
+        return Operator.PLUS.caculate(num1, num2);
     }
 
     public int subtraction (int num1, int num2) {
-        return num1 - num2;
+        return Operator.MINUS.caculate(num1, num2);
     }
 
     public int multiplication (int num1, int num2) {
-        return num1 * num2;
+        return Operator.MUL.caculate(num1, num2);
     }
 
-    public int division (int num1, int num2) {
+    public int division (int num1, int num2) throws ArithmeticException {
         if (num2 <= 0) {
             throw new ArithmeticException("0으로는 나눌수 없습니다");
         }
-        return num1 / num2;
+        return Operator.DIV.caculate(num1, num2);
     }
 
     public int stringCalculator (int num1, String op, int num2) {
@@ -71,7 +72,7 @@ public class Calculator {
         String operator = "";
         for (int i = 1; i < st.length - 1; i += 2) {
             operator = st[i];
-        System.out.println(operator);
+            System.out.println(operator);
         }
         return operator;
     }
