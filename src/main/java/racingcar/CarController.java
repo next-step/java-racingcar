@@ -11,11 +11,10 @@ public class CarController {
     private static final int MAX_MOVING_BOUNDARY = 10;
 
     private CarList carList;
-    private int tryCounts;
-    private int round;
+    private GameNumbers gameNumbers;
 
     public CarController(String[] carNames, int tryCounts) {
-        this.tryCounts = tryCounts;
+        gameNumbers = new GameNumbers(tryCounts);
         initCarList(carNames);
     }
 
@@ -24,8 +23,7 @@ public class CarController {
     }
 
     public CarController(int tryCounts, int round) {
-        this.tryCounts = tryCounts;
-        this.round = round;
+        gameNumbers = new GameNumbers(tryCounts, round);
     }
 
     public void initCarList(String[] carNames) {
@@ -37,7 +35,7 @@ public class CarController {
     }
 
     public boolean isFinish() {
-        return tryCounts == round;
+        return gameNumbers.getTryCounts() == gameNumbers.getRound();
     }
 
     public void moveCarListPosition() {
@@ -49,7 +47,7 @@ public class CarController {
     }
 
     public void increaseRound() {
-        round++;
+        gameNumbers.increaseRound();
     }
 
     public CarList nextRound() {
