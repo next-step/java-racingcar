@@ -10,8 +10,7 @@ public class Consts {
     public static final String RESULT = "실행 결과";
     public static final String HAVE_BEEN_A_WINNER = " 가 최종 우승했습니다.";
     public static final int INVALID_VALUE = 3;
-    public static final int BEST_RECORD_INIT = 0;
-    public static final String WINNER_INIT = "";
 
-    private Consts() {}
+    private Consts() {
+    }
 }
