@@ -1,16 +1,21 @@
 package racingcar.domain;
 
 public class CarDTO {
-    private String name;
+    private Name name;
     private int position;
 
     public CarDTO(String name, int position) {
+        this.name = new Name(name);
+        this.position = position;
+    }
+
+    public CarDTO(Name name, int position) {
         this.name = name;
         this.position = position;
     }
 
     public String getName() {
-        return name;
+        return this.name.getName();
     }
 
     public String getPosition() {

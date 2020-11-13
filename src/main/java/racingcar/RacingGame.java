@@ -33,7 +33,7 @@ public class RacingGame {
     public void race() {
         int repeatCount = inputView.getRepeatCount();
 
-        for (int count=0; count<repeatCount; count++) {
+        for (int count = 0; count < repeatCount; count++) {
             List<CarDTO> race = racingGameController.race();
             resultView.showRacingResult(race);
         }
@@ -43,5 +43,4 @@ public class RacingGame {
         List<CarDTO> winners = racingGameController.findWinner();
         resultView.show(winners);
     }
-
 }

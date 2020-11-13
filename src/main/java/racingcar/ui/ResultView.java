@@ -14,7 +14,6 @@ public class ResultView {
                     .append(carDTO.getPosition())
             );
         }
-
         System.out.println();
         System.out.println();
     }
