@@ -29,12 +29,14 @@ public class Race {
         ResultView.printCrlf();
     }
 
-    /* 시도 회수만큼 전진 로직 반복 */
+    /* 시도 회수만큼 전진 로직 반복 및 스코어 초기화 */
     private static void loopByRaceCount(Car car) {
         for (int i = 0; i < raceCount; i++) {
             car.go(randomNumber());
         }
+        ResultView.printScore(car);
         ResultView.printCrlf();
+        car.initScore();
     }
 
     /* 1~10 사이 랜덤숫자 추출 */

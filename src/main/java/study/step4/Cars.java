@@ -16,29 +16,29 @@ public class Cars {
     }
     /* 우승자 추출 */
     public void winner() {
-        int max = getMaxScore();
+        int max = getMaxTotalScore();
         for (Car car : cars) {
-            compareMaxScoreAddWinner(car, max);
+            compareMaxTotalScoreAddWinner(car, max);
         }
     }
     /* 최대스코어 비교 및 우승자 추가 */
-    private void compareMaxScoreAddWinner(Car car, int max) {
-        if (car.getScore() == max) {
+    private void compareMaxTotalScoreAddWinner(Car car, int max) {
+        if (car.getTotalScore() == max) {
             winnerNames.add(car.getName());
         }
     }
     /* 최대 스코어 추출 */
-    private int getMaxScore() {
+    private int getMaxTotalScore() {
         int max = 0;
         for (Car car : cars) {
-            max = compareMaxScore(car, max);
+            max = compareMaxTotalScore(car, max);
         }
         return max;
     }
     /* 최대 스코어 추출 비교 */
-    private int compareMaxScore(Car car, int max) {
-        if (car.getScore() > max) {
-            max = car.getScore();
+    private int compareMaxTotalScore(Car car, int max) {
+        if (car.getTotalScore() > max) {
+            max = car.getTotalScore();
         }
         return max;
     }

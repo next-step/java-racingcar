@@ -12,8 +12,8 @@ public class Car {
     /* 전진 여부 로직 */
     public void go (int number) {
         if (number >= 4) {
-//            ResultView.printForwardLine();
             this.score++;
+            this.totalScore++;
         }
     }
 
@@ -28,5 +28,9 @@ public class Car {
 
     public int getScore() {
         return this.score;
+    }
+
+    public int getTotalScore() {
+        return this.totalScore;
     }
 }

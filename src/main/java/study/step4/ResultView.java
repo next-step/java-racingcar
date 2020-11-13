@@ -16,6 +16,13 @@ public class ResultView {
         printlnMessage("");
     }
 
+    /* 점수만큼 출력 */
+    public static void printScore(Car car) {
+        for (int i = 0; i < car.getScore(); i++) {
+            printForwardLine();
+        }
+    }
+
     /* 전진 */
     public static void printForwardLine() {
         printMessage("-");
