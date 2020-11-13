@@ -2,7 +2,7 @@ package racingcar.domain;
 
 public class Car {
     private String name;
-    private int place;
+    private int position;
 
     public Car(String name) {
         if (isBlank(name)) {
@@ -14,7 +14,12 @@ public class Car {
         }
 
         this.name = name;
-        this.place = 0;
+        this.position = 0;
+    }
+
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     private boolean isSupportFormat(String name) {
@@ -27,16 +32,26 @@ public class Car {
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
-            this.place++;
+            this.position++;
         }
     }
 
     public CarDTO toDTO() {
-        return new CarDTO(this.name, this.place);
+        return new CarDTO(this.name, this.position);
     }
 
     public int getPosition() {
-        return this.place;
+        return this.position;
     }
 
+    public boolean isPosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
+    public int greaterThan(int maxPosition) {
+        if (this.position > maxPosition) {
+            return this.position;
+        }
+        return maxPosition;
+    }
 }

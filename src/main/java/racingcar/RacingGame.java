@@ -39,8 +39,9 @@ public class RacingGame {
         }
     }
 
-    private void findWinner() {
-        racingGameController.findWinner();
+    public void findWinner() {
+        List<CarDTO> winners = racingGameController.findWinner();
+        resultView.show(winners);
     }
 
 }
