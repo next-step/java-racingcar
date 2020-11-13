@@ -2,21 +2,21 @@ package racingcar.domain;
 
 public class Car {
     private Name name;
-    private int position;
+    private Position position;
 
     public Car(String name) {
         this.name = new Name(name);
-        this.position = 0;
+        this.position = new Position(0);
     }
 
     public Car(String name, int position) {
         this.name = new Name(name);
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
-            this.position++;
+            this.position = new Position(this.position.getPosition() + 1);
         }
     }
 
@@ -25,17 +25,15 @@ public class Car {
     }
 
     public int getPosition() {
-        return this.position;
+        return this.position.getPosition();
     }
 
-    public boolean isPosition(int maxPosition) {
-        return this.position == maxPosition;
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position.isMaxPosition(maxPosition);
     }
 
     public int greaterThan(int maxPosition) {
-        if (this.position > maxPosition) {
-            return this.position;
-        }
-        return maxPosition;
+        return this.position.greaterThan(maxPosition);
+
     }
 }

@@ -14,13 +14,19 @@ public class RacingGameController {
     }
 
     public void createCarBy(String racingCarNameList) {
-        String[] carNames = racingCarNameList.split(",");
+        this.racingCarList = new RacingCarList(getRacingCarList(split(racingCarNameList)));
+    }
+
+    private List<Car>  getRacingCarList(String[] carNames) {
         List<Car> racingCars = new ArrayList<>();
         for (String carName : carNames) {
             racingCars.add(new Car(carName));
         }
+        return racingCars;
+    }
 
-        this.racingCarList = new RacingCarList(racingCars);
+    private String[] split(String racingCarNameList) {
+        return racingCarNameList.split(",");
     }
 
     public List<CarDTO> race() {

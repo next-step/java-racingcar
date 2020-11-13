@@ -2,14 +2,14 @@ package racingcar.domain;
 
 public class CarDTO {
     private Name name;
-    private int position;
+    private Position position;
 
     public CarDTO(String name, int position) {
         this.name = new Name(name);
-        this.position = position;
+        this.position = new Position(position);
     }
 
-    public CarDTO(Name name, int position) {
+    public CarDTO(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
@@ -19,10 +19,6 @@ public class CarDTO {
     }
 
     public String getPosition() {
-        StringBuilder sb = new StringBuilder();
-        for (int index=0; index<this.position; index++) {
-            sb.append('-');
-        }
-        return sb.toString();
+        return this.position.getPositionString();
     }
 }

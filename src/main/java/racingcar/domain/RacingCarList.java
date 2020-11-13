@@ -29,10 +29,14 @@ public class RacingCarList {
     }
 
     public List<CarDTO> findWinners() {
-        int maxPosition = this.findMaxPosition();
+        return findDuplicatePositionCar(this.findMaxPosition());
+
+    }
+
+    private List<CarDTO> findDuplicatePositionCar(int maxPosition) {
         List<CarDTO> carDTOS = new ArrayList<>();
         for (Car car : this.racingCarList) {
-            if (car.isPosition(maxPosition)) {
+            if (car.isMaxPosition(maxPosition)) {
                 carDTOS.add(car.toDTO());
             }
         }
