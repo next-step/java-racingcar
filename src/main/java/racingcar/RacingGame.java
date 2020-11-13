@@ -11,9 +11,9 @@ public class RacingGame {
 
     final static int START_LOCATION = 0;
 
-    public RacingGame(InputView input) {
-        this.carList = makeCars(input.getCars());
-        this.rounds = input.getRounds();
+    public RacingGame(int cars, int rounds) {
+        this.carList = makeCars(cars);
+        this.rounds = rounds;
         this.raceRecords = new ArrayList<>();
     }
 
