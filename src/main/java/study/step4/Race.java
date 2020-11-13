@@ -20,9 +20,9 @@ public class Race {
 
     /* 자동차 수만큼 시도 로직 반복 */
     static private void loopByCarCount() {
-        for (int i = 0; i < Cars.list.size(); i++) {
-            ResultView.printMessage(Cars.list.get(i).name + " : ");
-            loopByRaceCount(Cars.list.get(i));
+        for (int i = 0; i < Cars.cars.size(); i++) {
+            ResultView.printMessage(Cars.cars.get(i).name + " : ");
+            loopByRaceCount(Cars.cars.get(i));
         }
         ResultView.printCrlf();
     }

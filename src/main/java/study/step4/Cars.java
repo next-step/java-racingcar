@@ -3,7 +3,7 @@ package study.step4;
 import java.util.ArrayList;
 
 public class Cars {
-    static ArrayList<Car> list = new ArrayList<Car>();
+    static ArrayList<Car> cars = new ArrayList<Car>();
     static ArrayList winnerNames = new ArrayList<>();
 
     /* 입력값 세팅 */
@@ -11,13 +11,13 @@ public class Cars {
         String[] carNames = inputCarNames.split(",");
         for (String carName : carNames) {
             Car car = new Car(carName);
-            list.add(car);
+            cars.add(car);
         }
     }
     /* 우승자 추출 */
     static public void winner() {
         int max = getMaxScore();
-        for (Car car : list) {
+        for (Car car : cars) {
             compareMaxScoreAddWinner(car, max);
         }
     }
@@ -30,7 +30,7 @@ public class Cars {
     /* 최대 스코어 추출 */
     static private int getMaxScore() {
         int max = 0;
-        for (Car car : list) {
+        for (Car car : cars) {
             max = compareMaxScore(car, max);
         }
         return max;
