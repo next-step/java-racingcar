@@ -1,7 +1,7 @@
 package step5.controller;
 
 import step5.domain.Car;
-import step5.service.RacingCarGame;
+import step5.domain.RacingCarGame;
 
 import java.util.List;
 
@@ -22,4 +22,5 @@ public class RacingCarApplication {
 
         finalWinner(cars);
     }
+
 }

@@ -1,8 +1,5 @@
 package step5.domain;
 
-import step5.view.RacingCarUi;
-
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -12,11 +9,10 @@ public class Car {
     private String carName;
     private int position;
 
-    public void move(int randomNumber, List<Car> cars) {
+    public void move(int randomNumber) {
         if (randomNumber >= MIN_FORWARD_NUMBER) {
             this.position++;
         }
-        RacingCarUi.resultPrint(cars);
     }
 
     public Car(String carName) {

@@ -1,6 +1,5 @@
-package step5.service;
+package step5.domain;
 
-import step5.domain.Car;
 import step5.util.CarUtils;
 
 import java.util.Arrays;
@@ -8,11 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RacingCarGame {
-    private static final int MAX_CAR_NAME_NUMBER = 5;
+import static step5.view.RacingCarUi.resultPrint;
 
+public class RacingCarGame {
     public List<Car> start(String[] carNames) {
-        carNameMaxValid(carNames);
+        CarUtils.carNameMaxValid(carNames);
         return newCars(carNames);
     }
 
@@ -29,12 +28,7 @@ public class RacingCarGame {
     }
 
     private void carMove(List<Car> cars) {
-        cars.forEach(car -> car.move(CarUtils.getRandom(), cars));
-    }
-
-    private void carNameMaxValid(String[] carNames) {
-        if (carNames.length > MAX_CAR_NAME_NUMBER) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과 할 수 없습니다.");
-        }
+        cars.forEach(car -> car.move(CarUtils.getRandom()));
+        resultPrint(cars);
     }
 }
