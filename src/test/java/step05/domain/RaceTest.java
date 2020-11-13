@@ -54,14 +54,12 @@ public class RaceTest {
                                                 Car.of("eun", 4),
                                                 Car.of("young", 3)
                                         )
-
                                 ),
                                 Cars.of(
                                         Arrays.asList(
                                                 Car.of("eun", 5),
                                                 Car.of("young", 4)
                                         )
-
                                 ),
                                 Cars.of(
                                         Arrays.asList(
@@ -82,15 +80,4 @@ public class RaceTest {
         assertThat(race.run(() -> movable)).isEqualTo(expect);
     }
 
-    /*
-        - 멤버
-        - 경주 횟수 private final int numberOfMoves
-        - 경주에 참여시킬 자동차들 private final Cars cars;
-    - 생성자
-        - 경주 횟수를 검증하고 검증횟수, 경주에 참여시킬 자동차들을 초기화
-    - 메서드
-        - 경주 횟수 검증 (양수인지) private static void validateNumberOfMoves
-        - 경주 운행 public void operate()
-        - 승자를 리턴 private static String getWinner(List<Car> cars)
-     */
 }
