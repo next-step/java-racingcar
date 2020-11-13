@@ -47,12 +47,12 @@ class CarControllerTest {
 
     @Test
     @DisplayName("게임 진행 테스트")
-    void nextRoundTest() {
-        int tryCounts = 2;
-        int round = 1;
+    void racingTest() {
+        int tryCounts = 1;
 
-        controller = new CarController(tryCounts, round);
-        controller.increaseRound();
+        controller = new CarController(new String[]{"a"}, tryCounts);
+
+        controller.racing();
 
         assertThat(controller.isFinish()).isTrue();
     }
