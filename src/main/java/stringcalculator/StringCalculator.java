@@ -51,10 +51,9 @@ public class StringCalculator {
             char temp = str.charAt(0);
             if(Character.isDigit(temp)){
                 numbers.add(str);
+                continue;
             }
-            if(!Character.isDigit(temp)){
-                symbol.add(str);
-            }
+            symbol.add(str);
             result = true;
         }
         return result;
