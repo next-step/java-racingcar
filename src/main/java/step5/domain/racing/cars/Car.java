@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Car {
 
     private final Name name;
-    private int step; //자동차가 전진한 횟수
+    private Step step; //자동차가 전진한 횟수
 
     public Car(String name) {
         this(name, 0);
@@ -19,16 +19,15 @@ public class Car {
 
     public Car(String name, int step) {
         this.name = Name.of(name);
-        this.step = step;
+        this.step = Step.of(step);
     }
 
-
     public void forward(int step) {
-        this.step = this.step + step;
+        this.step.move(step);
     }
 
     public int getStep() {
-        return this.step;
+        return this.step.step();
     }
 
     public String getName() {
@@ -36,9 +35,8 @@ public class Car {
     }
 
     public void forward(MoveStrategy moveStrategy) {
-        this.step = this.step + moveStrategy.move();
+        this.step.move(moveStrategy.move());
     }
-
 
     @Override
     public boolean equals(Object o) {
