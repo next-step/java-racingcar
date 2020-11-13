@@ -1,44 +1,43 @@
 package racing.ui;
 
-import racing.Car;
-import racing.Cars;
-import racing.MoveStrategyImpl;
+import racing.RacingGame;
 
 public class ResultView {
 
     private static final String FORWARD_MARK = "-";
 
-    public static void output(int numberOfAttempt, Cars cars) {
-        ready();
-        start(numberOfAttempt, cars);
+    public static void raceResult(int participationCars, int numberOfAttempt) {
+        printReady();
+        printStart(participationCars, numberOfAttempt);
     }
 
-    private static void ready() {
-        System.out.println();
+    private static void printReady() {
         System.out.println("실행결과");
+        System.out.println();
     }
 
-    private static void start(int numberOfAttempt, Cars cars) {
+    private static void printStart(int participationCars, int numberOfAttempt) {
+        RacingGame racingGame = new RacingGame(participationCars);
+
         for (int i = 0; i < numberOfAttempt; i++) {
-            race(cars);
+            racingGame.go();
+            printManager(racingGame);
             printAttemptDividingLine();
         }
     }
 
-    private static void race(Cars cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            raceResult(cars.getCar(i));
+
+    private static void printManager(RacingGame racingGame) {
+        for (int i = 0; i < racingGame.getCarsSize(); i++) {
+            printResult(racingGame, i);
         }
     }
 
-    private static void raceResult(Car car) {
+    private static void printResult(RacingGame racingGame, int number) {
         StringBuilder stringBuilder = new StringBuilder();
-        car.move(new MoveStrategyImpl());
-
-        for (int i = 0; i < car.getTravelDistance(); i++) {
+        for (int i = 0; i < racingGame.getCar(number).getTravelDistance(); i++) {
             stringBuilder.append(FORWARD_MARK);
         }
-
         System.out.println(stringBuilder.toString());
     }
 

@@ -1,15 +1,24 @@
 package racing;
 
-import racing.ui.InputView;
-import racing.ui.ResultView;
-
 public class RacingGame {
 
-    public void race() {
-        int participationCars = InputView.inputParticipationCars();
-        int numberOfAttempt = InputView.inputNumberOfAttempt();
+    private final Cars cars;
 
-        Cars cars = new Cars(participationCars);
-        ResultView.output(numberOfAttempt, cars);
+    public RacingGame(int participationCars) {
+        cars = new Cars(participationCars);
+    }
+
+    public void go() {
+        for (int i = 0; i < cars.size(); i++) {
+            cars.getCar(i).move(new MoveStrategyImpl());
+        }
+    }
+
+    public Car getCar(int testCarNumber) {
+        return cars.getCar(testCarNumber);
+    }
+
+    public int getCarsSize() {
+        return cars.size();
     }
 }
