@@ -1,10 +1,8 @@
 package step5;
 
 import step5.domain.InputValue;
-import step5.domain.Racing;
-import step5.domain.Randomize;
+import step5.domain.racing.Racing;
 import step5.domain.strategy.Movable;
-import step5.domain.strategy.MoveStrategy;
 import step5.view.InputView;
 import step5.view.ResultView;
 

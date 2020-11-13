@@ -1,7 +1,7 @@
 package step5.view;
 
-import step5.domain.Racing;
-import step5.domain.ScoreBoard;
+import step5.domain.racing.Racing;
+import step5.domain.racing.cars.ScoreBoard;
 
 import java.util.List;
 

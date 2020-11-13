@@ -1,5 +1,7 @@
-package step5.domain;
+package step5.domain.racing;
 
+import step5.domain.racing.cars.Car;
+import step5.domain.racing.cars.ScoreBoard;
 import step5.domain.strategy.MoveStrategy;
 
 import java.util.Collections;

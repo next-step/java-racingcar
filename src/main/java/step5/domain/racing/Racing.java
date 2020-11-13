@@ -1,9 +1,10 @@
-package step5.domain;
+package step5.domain.racing;
 
+import step5.domain.InputValue;
+import step5.domain.racing.cars.ScoreBoard;
 import step5.domain.strategy.MoveStrategy;
 import step5.util.Validator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,12 +14,12 @@ import java.util.Objects;
  */
 public class Racing {
 
-    private final int rounds;
+    private final Round rounds;
     private final Cars cars;
     private MoveStrategy moveStrategy;
 
     private Racing(InputValue inputValue, MoveStrategy moveStrategy) {
-        this.rounds = inputValue.getRounds();
+        this.rounds = Round.of(inputValue.getRounds());
         this.cars = Cars.of(inputValue.getCarNames());
         this.moveStrategy = moveStrategy;
     }
@@ -30,7 +31,7 @@ public class Racing {
     }
 
     public void race() {
-        for (int i = rounds; i > 0; i--) {
+        for (int i = rounds.round(); i > 0; i--) {
             this.cars.runRound(this.moveStrategy);
         }
     }
@@ -44,7 +45,7 @@ public class Racing {
     }
 
     public int getRounds() {
-        return rounds;
+        return rounds.round();
     }
 
     @Override
