@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.utils.Number;
-
 public class Car {
     private String name;
     private int place;
@@ -27,14 +25,6 @@ public class Car {
         return name == null || name.trim().isEmpty();
     }
 
-    public int getPlace() {
-        return this.place;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
     public void move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
             this.place++;
@@ -44,4 +34,9 @@ public class Car {
     public CarDTO toDTO() {
         return new CarDTO(this.name, this.place);
     }
+
+    public int getPosition() {
+        return this.place;
+    }
+
 }

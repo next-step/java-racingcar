@@ -1,7 +1,5 @@
 package racingcar.ui;
 
-import racingcar.domain.utils.Number;
-
 import java.util.Scanner;
 
 public class InputView {

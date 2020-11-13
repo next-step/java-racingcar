@@ -15,7 +15,7 @@ public class CarDTO {
 
     public String getPosition() {
         StringBuilder sb = new StringBuilder();
-        for (int index=0; index<position; index++) {
+        for (int index=0; index<this.position; index++) {
             sb.append('-');
         }
         return sb.toString();

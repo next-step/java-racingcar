@@ -2,36 +2,16 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.CarDTO;
-import racingcar.domain.RacingCarConfiguration;
+import racingcar.domain.RacingCarList;
 import racingcar.domain.RandomStrategy;
-import racingcar.ui.InputView;
-import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class RacingGameController {
-    private ResultView resultView;
-    private InputView inputView;
     private List<Car> racingCars;
-    private RacingCarConfiguration racingCarConfiguration;
-    private int repeatCount;
 
     public RacingGameController() {
-        this.resultView = new ResultView();
-        this.inputView = new InputView();
-    }
-
-
-    public void readyGame() {
-        resultView.ready();
-        repeatCount = inputView.getRepeatCount();
-        resultView.printSpace();
-    }
-
-    public void racingResult() {
-        resultView.show(racingCarConfiguration.findWinningCarNames());
     }
 
     public void createCarBy(String racingCarNameList) {
@@ -50,5 +30,9 @@ public class RacingGameController {
         }
 
         return carDTOS;
+    }
+
+    public void findWinner() {
+
     }
 }

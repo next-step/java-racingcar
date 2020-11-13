@@ -22,6 +22,7 @@ public class RacingGame {
     public void run() {
         this.startRacingGame();
         this.race();
+        this.findWinner();
     }
 
     public void startRacingGame() {
@@ -34,13 +35,12 @@ public class RacingGame {
 
         for (int count=0; count<repeatCount; count++) {
             List<CarDTO> race = racingGameController.race();
-            resultView.showPlace(race);
+            resultView.showRacingResult(race);
         }
     }
 
-//    public void readyGame() {
-//        racingGameController.readyGame();
-//    }
-
+    private void findWinner() {
+        racingGameController.findWinner();
+    }
 
 }
