@@ -40,7 +40,7 @@ public class ResultView {
 
     private static void printRounds(List<ScoreBoard> scoreBoards, int round) {
         for (ScoreBoard scoreBoard : scoreBoards) {
-            System.out.println(scoreBoard.getName() + DELIMITER);
+            System.out.print(scoreBoard.getName() + DELIMITER);
             printDash(scoreBoard.getScoreHistory().get(round));
         }
     }

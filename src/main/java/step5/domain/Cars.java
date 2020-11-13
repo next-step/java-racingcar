@@ -33,21 +33,22 @@ public class Cars {
         return new Cars(participants, scoreBoards);
     }
 
-    // 1 round 때마다 각 car score . 해당 score가 move 인지 아닌지 판단 -> move. 점수
     public void runRound(MoveStrategy moveStrategy) {
         for (Car car : cars) {
             car.forward(moveStrategy);
+            addRoundScore(car);
         }
     }
 
-    public List<ScoreBoard> getRoundScore() {
-        for (Car car : cars) {
-            scoreBoards.stream()
-                    .filter(s -> s.getName().equals(car.getName()))
-                    .map(scoreBoard -> scoreBoard.getScoreHistory().add(car.getStep()))
-                    .collect(toList());
-        }
-        return scoreBoards;
+    public void addRoundScore(Car car) {
+        this.scoreBoards.stream()
+                .filter(s -> s.getName().equals(car.getName()))
+                .map(scoreBoard -> scoreBoard.getScoreHistory().add(car.getStep()))
+                .collect(toList());
+    }
+
+    public List<ScoreBoard> getScoreBoards() {
+        return Collections.unmodifiableList(this.scoreBoards);
     }
 
     public String getWinners() {

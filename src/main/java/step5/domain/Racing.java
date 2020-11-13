@@ -15,13 +15,11 @@ public class Racing {
 
     private final int rounds;
     private final Cars cars;
-    private List<ScoreBoard> scoreBoards;
     private MoveStrategy moveStrategy;
 
     private Racing(InputValue inputValue, MoveStrategy moveStrategy) {
         this.rounds = inputValue.getRounds();
         this.cars = Cars.of(inputValue.getCarNames());
-        this.scoreBoards = new ArrayList<>();
         this.moveStrategy = moveStrategy;
     }
 
@@ -34,12 +32,11 @@ public class Racing {
     public void race() {
         for (int i = rounds; i > 0; i--) {
             this.cars.runRound(this.moveStrategy);
-            this.scoreBoards = this.cars.getRoundScore();
         }
     }
 
     public List<ScoreBoard> getScoreBoard() {
-        return this.scoreBoards;
+        return this.cars.getScoreBoards();
     }
 
     public String getWinner() {
