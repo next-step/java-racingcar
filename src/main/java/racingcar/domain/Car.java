@@ -5,13 +5,6 @@ import racingcar.domain.utils.Number;
 public class Car {
     private String name;
     private int place;
-    private MovingStrategy movingStrategy;
-
-    public Car(String name, MovingStrategy movingStrategy) {
-        this.name = name;
-        this.place = 0;
-        this.movingStrategy = movingStrategy;
-    }
 
     public Car(String name) {
         if (isBlank(name)) {
@@ -46,5 +39,9 @@ public class Car {
         if (movingStrategy.isMovable()) {
             this.place++;
         }
+    }
+
+    public CarDTO toDTO() {
+        return new CarDTO(this.name, this.place);
     }
 }

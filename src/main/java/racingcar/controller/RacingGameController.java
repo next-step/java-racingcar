@@ -1,7 +1,9 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
+import racingcar.domain.CarDTO;
 import racingcar.domain.RacingCarConfiguration;
+import racingcar.domain.RandomStrategy;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
@@ -21,17 +23,6 @@ public class RacingGameController {
         this.inputView = new InputView();
     }
 
-    public void startRacingGame() {
-        resultView.intro();
-    }
-
-    public void enterCars() {
-        resultView.enterCar();
-        inputView.getEnterCars();
-
-
-        this.racingCars = this.racingCarConfiguration.enterCar(inputView.getEnterCars());
-    }
 
     public void readyGame() {
         resultView.ready();
@@ -39,32 +30,25 @@ public class RacingGameController {
         resultView.printSpace();
     }
 
-    public void startGame() {
-        resultView.showRacingResult();
-        IntStream.range(0, repeatCount).forEach(repeat -> racing());
-    }
-
-    private void racing() {
-        racingCars.stream().forEach(this::move);
-        resultView.printSpace();
-    }
-
-    private void move(Car car) {
-//        car.move();
-        resultView.showPlace(car);
-    }
-
     public void racingResult() {
         resultView.show(racingCarConfiguration.findWinningCarNames());
     }
 
-    public void createCar() {
-        resultView.enterCar();
-
-        String[] carNames = inputView.getEnterCars().split(",");
-        List<Car> cars = new ArrayList<>();
+    public void createCarBy(String racingCarNameList) {
+        String[] carNames = racingCarNameList.split(",");
+        this.racingCars = new ArrayList<>();
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            racingCars.add(new Car(carName));
         }
+    }
+
+    public List<CarDTO> race() {
+        List<CarDTO> carDTOS = new ArrayList<>();
+        for (Car car : racingCars) {
+            car.move(new RandomStrategy());
+            carDTOS.add(car.toDTO());
+        }
+
+        return carDTOS;
     }
 }

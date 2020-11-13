@@ -1,38 +1,46 @@
 package racingcar;
 
 import racingcar.controller.RacingGameController;
+import racingcar.domain.CarDTO;
+import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
+
+import java.util.List;
 
 public class RacingGame {
 
     private RacingGameController racingGameController;
+    private InputView inputView;
+    private ResultView resultView;
 
     public RacingGame() {
         this.racingGameController = new RacingGameController();
+        this.inputView = new InputView();
+        this.resultView = new ResultView();
+    }
+
+    public void run() {
+        this.startRacingGame();
+        this.race();
     }
 
     public void startRacingGame() {
-        racingGameController.startRacingGame();
-    }
-
-    public void createCar() {
-        racingGameController.createCar();
-    }
-
-    public void readyGame() {
-        racingGameController.readyGame();
+        String racingCarNameList = inputView.findRacingCarNameList();
+        racingGameController.createCarBy(racingCarNameList);
     }
 
     public void race() {
-        racingGameController.startGame();
+        int repeatCount = inputView.getRepeatCount();
+
+        for (int count=0; count<repeatCount; count++) {
+            List<CarDTO> race = racingGameController.race();
+            resultView.showPlace(race);
+        }
     }
 
+//    public void readyGame() {
+//        racingGameController.readyGame();
+//    }
 
-    public void run() {
-        racingGameController.startRacingGame();
 
-        racingGameController.enterCars();
-
-        racingGameController.startGame();
-        racingGameController.racingResult();
-    }
 }
