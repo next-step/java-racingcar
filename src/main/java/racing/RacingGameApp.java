@@ -6,16 +6,13 @@ import racing.view.ResultView;
 
 public class RacingGameApp {
     public static void main(String[] args) {
-        int numberOfCars = InputView.inputNumberOfCars();
-        int numberOfRound = InputView.inputNumberOfRound();
-
-        Cars cars = Cars.from(numberOfCars);
-
+        Cars cars = Cars.from(InputView.inputNameOfCars());
         System.out.println("실행 결과");
-        for (int i = 0; i < numberOfRound; i++) {
+        for (int i = 0, length = InputView.inputNumberOfRound(); i < length; i++) {
             cars.nextRound();
-            ResultView.printCarPosition(cars);
+            ResultView.printCarNameAndPosition(cars);
             System.out.println();
         }
+        ResultView.printVictoryCarNames(cars.getVictoryCarNames());
     }
 }

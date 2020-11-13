@@ -9,7 +9,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarsTest {
     @Test
     void from() {
-        Assertions.assertThat(Cars.from(5).getCarList().size())
-                .isEqualTo(5);
+        Assertions.assertThat(Cars.from("test").getCarList().size())
+                .isEqualTo(1);
     }
+
+    @Test
+    void getVictoryCarNames() {
+        Cars cars = Cars.from("test, 1, 2, 3");
+        Assertions.assertThat(cars.getVictoryCarNames())
+                .isEqualTo("test, 1, 2, 3");
+    }
+
+    @Test
+    void validNames() {
+        Assertions.assertThatThrownBy(() -> {
+            Cars.from("");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
