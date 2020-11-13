@@ -1,31 +1,19 @@
 package study.racing4;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
 
-    private final List<Car> cars;
+    private final CarCollection cars;
     private final int lastRound;
     private final MovingStrategy moveable;
 
     private int currentRound = 0;
 
     public CarRacing(RacingInput racingInput, MovingStrategy moveable) {
-        this.cars = initRacingRecords(racingInput.getCars());
+        this.cars = new CarCollection(racingInput.getCars());
         this.lastRound = racingInput.getCountOfRound();
         this.moveable = moveable;
-    }
-
-    private List<Car> initRacingRecords(String[] carNames) {
-
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-
-        return cars;
     }
 
     public boolean isProcessAbleRound() {
@@ -38,51 +26,20 @@ public class CarRacing {
             throw new RuntimeException("더 이상 라운드를 진행 할 수 없습니다.");
         }
 
-        for (Car car : cars) {
-            carMoving(car);
-        }
+        cars.apply( car -> {
+            if(moveable.moveable()) car.move();
+        });
         currentRound++;
     }
 
-    private void carMoving(Car car) {
-        if (moveable.moveable()) {
-            car.move();
-        }
-    }
-
-    public List<Car> getCars() {
+    public CarCollection getCars() {
         return cars;
-
     }
 
     public List<Car> getWinnerCar() {
 
-        int maxPosition = getMaxPosition(cars);
-        return findWinnerCar(cars, maxPosition);
-    }
-
-    private List<Car> findWinnerCar(List<Car> cars, int maxPosition) {
-
-        List<Car> winners = new ArrayList<>();
-
-        for(Car car: cars) {
-            if(car.getPosition() == maxPosition){
-                winners.add(car);
-            }
-        }
-        return winners;
-    }
-
-
-    private int getMaxPosition(List<Car> cars) {
-        int maxPosition = 0;
-
-        for (Car car: cars) {
-            if(car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
-        }
-        return maxPosition;
+        int maxPosition = cars.getMaxPosition();
+        return cars.matchedPositionCars(maxPosition);
     }
 
 }
