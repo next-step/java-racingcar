@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,4 +21,5 @@ public class Cars {
     public List<Car> getCarSet() {
         return cars;
     }
+
 }

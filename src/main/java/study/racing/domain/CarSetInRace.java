@@ -1,10 +1,10 @@
-package study.racing;
+package study.racing.domain;
 
-public class SingleRecord {
+public class CarSetInRace {
     private int position;
     private String carName;
 
-    public SingleRecord(int position, String carName){
+    public CarSetInRace(int position, String carName){
         this.position = position;
         this.carName = carName;
     }

@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,12 +20,12 @@ public class RacingRecords {
     }
 
 
-    public List<SingleRecord> getWinners() {
+    public List<CarSetInRace> getWinners() {
         RacingRecord lastRecord = getLastRecord();
 
-        List<SingleRecord> winners = lastRecord.getSingleRecords().stream()
+        List<CarSetInRace> winners = lastRecord.getCarSetInRaces().stream()
                 .collect(Collectors.groupingBy(
-                        SingleRecord::getPosition,
+                        CarSetInRace::getPosition,
                         TreeMap::new,
                         Collectors.toList()
                 ))

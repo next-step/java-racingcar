@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import study.racing.domain.*;
+
 import java.util.LinkedList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,10 +18,10 @@ public class RacingGameRoundsTest {
         int carCnt = carNames.length;
         Cars cars = new Cars(carNames);
 
-        LinkedList<SingleRecord> singleRecords = new LinkedList<SingleRecord>();
-        singleRecords.add(new SingleRecord(cars.getCarSet().get(0).getPosition(), cars.getCarSet().get(0).getCarName()));
+        LinkedList<CarSetInRace> carSetInRaces = new LinkedList<CarSetInRace>();
+        carSetInRaces.add(new CarSetInRace(cars.getCarSet().get(0).getPosition(), cars.getCarSet().get(0).getCarName()));
 
-        RacingRecord racingRecord = new RacingRecord(singleRecords);
+        RacingRecord racingRecord = new RacingRecord(carSetInRaces);
         RacingRecords racingRecords = new RacingRecords();
         racingRecords.addRecord(racingRecord);
 

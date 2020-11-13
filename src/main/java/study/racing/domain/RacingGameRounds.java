@@ -1,7 +1,6 @@
-package study.racing;
+package study.racing.domain;
 
 import java.util.LinkedList;
-import java.util.List;
 
 
 public class RacingGameRounds {
@@ -27,16 +26,9 @@ public class RacingGameRounds {
     }
 
     public void recording(Cars cars) {
-        List<Car> carSet = cars.getCarSet();
-
-        LinkedList<SingleRecord> singleRecords = new LinkedList<SingleRecord>();
-
-        carSet.forEach(car -> singleRecords.add(new SingleRecord(car.getPosition(), car.getCarName())));
-
-        RacingRecord racingRecord = new RacingRecord(singleRecords);
-
-        this.racingRecords.addRecord(racingRecord);
-
+        LinkedList<CarSetInRace> carSetInRaces = new LinkedList<CarSetInRace>();
+        cars.getCarSet().forEach(car -> carSetInRaces.add(new CarSetInRace(car.getPosition(), car.getCarName())));
+        this.racingRecords.addRecord(new RacingRecord(carSetInRaces));
     }
 
     public RacingRecords getRecordingResult() {
