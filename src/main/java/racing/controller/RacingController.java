@@ -1,42 +1,36 @@
 package racing.controller;
 
-import racing.model.Car;
-import racing.model.RacingCar;
+import racing.model.Racing;
+
+import racing.model.RacingResult;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
 public class RacingController {
-    private static final String ILLEGAL_NUMBER_OF_CARS = "유효하지 않은 자동차 대 수입니다.";
     private static final String ILLEGAL_RETRY_COUNT = "유효하지 않은 시도 횟수 입니다.";
 
-    private static final int RANDOM_RANGE = 10;
-
     private Scanner scanner = new Scanner(System.in);
-    private Random random = new Random();
 
     private InputView inputView = new InputView();
     private ResultView resultView = new ResultView();
 
-    private Car[] cars;
+    private Racing racing;
+    private RacingResult racingResult = new RacingResult();
 
     private int retryCount;
-    private int numberOfCars;
 
     public void start() {
-        inputNumberOfCars();
+        inputCandidates();
         inputRetryCount();
-        makeCars();
         run();
         scanner.close();
     }
 
-    private void inputNumberOfCars() {
-        inputView.printNumberOfCars();
-        numberOfCars = getNumberOfCars();
+    private void inputCandidates() {
+        inputView.printCandidates();
+        racing = new Racing(scanner.nextLine());
     }
 
     private void inputRetryCount() {
@@ -47,22 +41,15 @@ public class RacingController {
     private void run() {
         resultView.printResultMessage();
         for (int retry = 0; retry < retryCount; retry++) {
-            Arrays.stream(cars).forEach(car -> car.move(random.nextInt(RANDOM_RANGE)));
-            resultView.printCarsLocation(cars);
+            racing.racing();
+            racingResult.update(racing.getCandidates());
+            resultView.printRacingResult(racingResult.getResult());
         }
-    }
-
-    private void makeCars() {
-        cars = new Car[numberOfCars];
-        Arrays.setAll(cars, i -> new RacingCar());
+        resultView.printWinner(racingResult.getWinners());
     }
 
     private int getRetryCount() {
         return inputIntValue(ILLEGAL_RETRY_COUNT);
-    }
-
-    private int getNumberOfCars() {
-        return inputIntValue(ILLEGAL_NUMBER_OF_CARS);
     }
 
     private int inputIntValue(String errorMessage) {
