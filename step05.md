@@ -60,7 +60,18 @@
         - 자동차들에게 일괄적으로 적용할 private final MoveStrategy moveStrategy
     - 메서드
         - 자동차를 한회차 이동시킴 public void move
-        
+
+- Race
+    - 멤버
+        - 경주 횟수 private final int numberOfMoves
+        - 경주에 참여시킬 자동차들 private final Cars cars;
+    - 생성자
+        - 경주 횟수를 검증하고 검증횟수, 경주에 참여시킬 자동차들을 초기화
+    - 메서드
+        - 경주 횟수 검증 (양수인지) private static void validateNumberOfMoves
+        - 경주 운행 public void operate()
+        - 승자를 리턴 private static String findWinner(List<Car> cars)
+      
 - 입력기
     - 쉼표로 구분한 자동차들이름 static public String[] readCarNames 
     - 시도 횟수 static public int readNumberOfMoves  
@@ -73,15 +84,4 @@
         - 자동차 종류 private final String carKind;
     - 실행 결과 public void printRace(Race)
     - 우승 자동차 이름들 public void printWinner(Race.승자리턴 메서드)
-- Race
-    - 멤버
-        - 경주 횟수 private final int numberOfMoves
-        - 경주에 참여시킬 자동차들 private final Cars cars;
-    - 생성자
-        - 경주 횟수를 검증하고 검증횟수, 경주에 참여시킬 자동차들을 초기화
-    - 메서드
-        - 경주 횟수 검증 (양수인지) private static void validateNumberOfMoves
-        - 경주 운행 public void operate()
-        - 승자를 리턴 private static String getWinner(List<Car> cars)
-
-        
+  
