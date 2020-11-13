@@ -59,4 +59,43 @@ public class CarsTest {
         assertThat(cars.move(() -> true)).isEqualTo(expect);
     }
 
+    private static Stream<Arguments> provideTopPositionCarsResult() {
+        return Stream.of(
+                Arguments.of(
+                        Cars.of(
+                                Arrays.asList(
+                                        Car.of("eun", 1),
+                                        Car.of("young", 2)
+                                )
+                        ),
+                        Cars.of(
+                                Arrays.asList(
+                                        Car.of("young", 2)
+                                )
+                        )
+                ),
+                Arguments.of(
+                        Cars.of(
+                                Arrays.asList(
+                                        Car.of("eun", 6),
+                                        Car.of("young", 6)
+                                )
+                        ),
+                        Cars.of(
+                                Arrays.asList(
+                                        Car.of("eun", 6),
+                                        Car.of("young", 6)
+                                )
+                        )
+                )
+        );
+    }
+
+    @DisplayName("Cars 의 topPositionCar 구하기")
+    @ParameterizedTest
+    @MethodSource("provideTopPositionCarsResult")
+    public void test_findTopPositionCars(Cars cars, Cars expect) {
+        assertThat(cars.findTopPositionCars()).isEqualTo(expect);
+    }
+
 }
