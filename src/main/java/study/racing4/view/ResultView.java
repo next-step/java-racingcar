@@ -3,6 +3,7 @@ package study.racing4.view;
 import study.racing4.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -21,17 +22,11 @@ public class ResultView {
 
     public void printWinner(List<Car> cars) {
 
-        int lastCar = cars.size();
-        int count = 1;
-        for(Car car: cars) {
+        String winnerString = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
 
-            System.out.print(car.getName());
-            if(count++ < lastCar) {
-                System.out.print(", ");
-            }
-        }
-
-        System.out.println("가 최종 우승했습니다.");
+        System.out.println(winnerString + "가 최종 우승했습니다.");
     }
 
 }
