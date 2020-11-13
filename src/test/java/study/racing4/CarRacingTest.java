@@ -21,10 +21,18 @@ class CarRacingTest {
     }
 
     @Test
-    @DisplayName("자동차 레이싱 하나의 라운드를 진행하는데 에러가 없다.")
+    @DisplayName("자동차 레이싱 라운드를 진행후 우승자 확인")
     void 정상적인_진행_확인() {
         CarRacing racing = new CarRacing(new RacingInput("pobi,crong,honux", 3), getAlwaysMoveStrategy());
-        assertDoesNotThrow(() -> racing.processRound());
+        racing.processRound();
+        racing.processRound();
+        racing.processRound();
+
+        List<Car> winnerCars = racing.getWinnerCar();
+
+        assertThat(winnerCars).contains(new Car("pobi", 3));
+        assertThat(winnerCars).contains(new Car("crong", 3));
+        assertThat(winnerCars).contains(new Car("honux", 3));
     }
 
     @Test
