@@ -6,9 +6,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 public class RaceTest {
 
@@ -24,19 +26,60 @@ public class RaceTest {
     @ParameterizedTest
     @MethodSource("provideNotPositiveIntegerResult")
     public void test_validateNumberOfMoves(int NotPositiveInteger) {
+        Cars cars = Cars.of(
+                Arrays.asList(
+                        Car.of("eun", 3),
+                        Car.of("young", 2)
+                )
+        );
         assertThatExceptionOfType(NotPositiveIntegerException.class)
-                .isThrownBy(() -> Race.of(NotPositiveInteger));
+                .isThrownBy(() -> Race.of(NotPositiveInteger, cars));
     }
 
-//    @DisplayName("경주 운행 결과")
-//    @ParameterizedTest
+    private static Stream<Arguments> provideRunResult() {
+        return Stream.of(
+                Arguments.of(
+                        3,
+                        Cars.of(
+                                Arrays.asList(
+                                        Car.of("eun", 3),
+                                        Car.of("young", 2)
+                                )
 
+                        ),
+                        true,
+                        Arrays.asList(
+                                Cars.of(
+                                        Arrays.asList(
+                                                Car.of("eun", 4),
+                                                Car.of("young", 3)
+                                        )
 
-    @DisplayName("승자 확인")
+                                ),
+                                Cars.of(
+                                        Arrays.asList(
+                                                Car.of("eun", 5),
+                                                Car.of("young", 4)
+                                        )
+
+                                ),
+                                Cars.of(
+                                        Arrays.asList(
+                                                Car.of("eun", 6),
+                                                Car.of("young", 5)
+                                        )
+                                )
+                        )
+                )
+        );
+    }
+
+    @DisplayName("경주 운행 결과")
     @ParameterizedTest
-    @MethodSource("provideLastCarsStatusResult")
-    public void test_findWinner() {
-
+    @MethodSource("provideRunResult")
+    public void test_run(int numberOfMoves, Cars cars, boolean movable, List<Cars> expect) {
+        Race race = Race.of(numberOfMoves, cars);
+        assertThat(race.run(() -> movable)).isEqualTo(expect);
     }
 
     /*
