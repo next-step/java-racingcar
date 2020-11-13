@@ -1,9 +1,7 @@
 # 자동차 경주 게임
 ## 기능 요구사항
-* 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
-* 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
-* 자동차 이름은 쉼표(,)를 기준으로 구분한다.
-* 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
+* 핵심 비지니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
+* MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
 
 ## 프로그래밍 요구사항
 * indent(인덴트, 들여쓰기) depth를 2를 넘지 않도록 구현한다. 1까지만 허용한다.
@@ -21,31 +19,30 @@
     * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
  ## 기능목록
- * Car : 자동차 경주에 따른 정보를 관리하는 객체
+ * CarRacingGame : 자동차 경주에 따른 정보를 관리하는 객체
     * 메소드
-        * getMovePower() - 자동차의 power
-        * moveCarCheck() - 자동차의 power에 따른 이동
+        * playRacingGame() - 게임 시작 메소드
+        * drawRasingWinner() - 자동차 경주 우승자 그려주는 메소드
+        * drawRasingGame() - 자동자 경주 기록 그려주는 메소드
     * 주요 변수
         * String[] raceCarNames - 경주에 참여한 자동차 이름(배열)
         * HashMap<String, List<CarRaceMoveInfo>> carReacMoveInfoList - 자동차 이름에 따른 경주기록
         * int raceTryCount - 시도횟수
- * RunCarRace : 레이싱 시작 관리 클래스
-    * run() - 레이싱 시작
-    * inputValue() - 파라미터를 받는 메소드
-    * repeatTryMoveCar() - 시동할 횟수를 반복
-    * repeatCar - 자동차 갯수를 반복
- * ErrorMessage : 에러메세지 관리 클래스
- * InputCarData : 입력받은 값 체크 클래스
-    * inputValue - 키보드로 입력받는 메소드
-    * checkTryCount - 입력 받은 시도횟수 값 체크
-    * checkName - 입력받은 자동차 이름 체크
- * RaceResultPrint :  자동차 진행결과 및 우승자 그리는 관리 클래스
-    * runPrintRaceResult - 그리기 시작하는 메소드
- * RunCarRace : 자동차 경기 관리 클래스
-    * start : 경기 시작
-    * runRace : 레이스 시작
- * ExtractWinner : 우승자 관리 클래스
-    * ExtractRun : 결과에서 우승자 뽑기
+* Car : 자동차 정보를 관리하는 객체
+    * 메소드
+        * moveCar() - 외부의 값을 받아서 자동차 이동
+    * 주요 변수
+        * carName - 자동차 이름
+        * moveDistance - 이동 거리
+* CarDataCheck : 입력된값 체크
+    * 메소드
+        * checkTryCount - 시도횟수값 체크
+        * checkName - 이름을 올바르게 입력했는지 체크
+* CarRasingDraw : 자동차를 그려줄때 도움주는 클래스
+    * 메소드
+        * changeNumberToChar - 이동거리만큼 '-' 반환
+* CarDataCheckTest : 입력값 테스트
+* CarTest : car객체 테스트
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
