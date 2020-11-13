@@ -27,6 +27,7 @@ public class Race {
     public List<Cars> run(MoveStrategy moveStrategy) {
         List<Cars> raceSnapShot = new ArrayList<>();
         Cars tempCars = cars;
+        raceSnapShot.add(tempCars);
 
         for(int i = 0; i < numberOfMoves; i++) {
             tempCars = tempCars.move(moveStrategy);

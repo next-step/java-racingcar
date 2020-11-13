@@ -31,8 +31,8 @@ public class CarPosition {
         return CarPosition.of(position);
     }
 
-    public CarPosition getCarPosition() {
-        return new CarPosition(position);
+    public int getCarPosition() {
+        return position;
     }
 
     public int compare(CarPosition otherPosition) {

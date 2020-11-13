@@ -64,6 +64,10 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,5 +75,7 @@ public class Cars {
         Cars cars1 = (Cars) o;
         return cars.equals(cars1.cars);
     }
+
+
 
 }

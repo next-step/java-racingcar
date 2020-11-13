@@ -30,11 +30,19 @@ public class Car {
     }
 
     public CarPosition getCarPosition() {
-        return position.getCarPosition();
+        return CarPosition.of(position.getCarPosition());
     }
 
     public int comparePosition(CarPosition otherPosition) {
         return position.compare(otherPosition);
+    }
+
+    public CarName getName() {
+        return CarName.of(name.getName());
+    }
+
+    public CarPosition getPosition() {
+        return CarPosition.of(position.getCarPosition());
     }
 
     @Override

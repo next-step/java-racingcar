@@ -35,8 +35,8 @@ public class CarName {
         }
     }
 
-    public CarName getName() {
-        return new CarName(name, maxLength);
+    public String getName() {
+        return name;
     }
 
     @Override
