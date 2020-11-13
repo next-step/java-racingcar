@@ -11,7 +11,10 @@ class CarTest {
     @DisplayName("자동차 이름 확인")
     public void 자동차_이름_확인() {
 
+        //given
         Car car = new Car("pobi");
+
+        // then
         assertThat(car.getName()).isEqualTo("pobi");
 
     }
@@ -20,7 +23,10 @@ class CarTest {
     @DisplayName("자동차 위치 확인")
     public void 자동차_위치_확인() {
 
+        // given
         Car car = new Car("pobi");
+
+        // then
         assertThat(car.getPosition()).isEqualTo(0);
 
     }
@@ -29,9 +35,15 @@ class CarTest {
     @DisplayName("자동차 이동 확인")
     public void 자동차_이동_확인() {
 
+        // given
         Car car = new Car("pobi");
+        Car expectedResult = new Car("pobi", 1);
+
+        // when
         car.move();
-        assertThat(car.getPosition()).isEqualTo(1);
+
+        // then
+        assertThat(car).isEqualTo(expectedResult);
 
     }
 
