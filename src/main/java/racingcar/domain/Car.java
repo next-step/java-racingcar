@@ -23,6 +23,7 @@ public class Car {
         }
 
         this.name = name;
+        this.place = 0;
     }
 
     private boolean isSupportFormat(String name) {
@@ -41,8 +42,8 @@ public class Car {
         return this.name;
     }
 
-    public void move() {
-        if (this.movingStrategy.move() >= Number.NEED_NUMBER) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) {
             this.place++;
         }
     }

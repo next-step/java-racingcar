@@ -50,7 +50,7 @@ public class RacingGameController {
     }
 
     private void move(Car car) {
-        car.move();
+//        car.move();
         resultView.showPlace(car);
     }
 
