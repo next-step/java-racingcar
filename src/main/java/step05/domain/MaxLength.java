@@ -1,5 +1,7 @@
 package step05.domain;
 
+import java.util.Objects;
+
 public class MaxLength {
     private final int maxLength;
     private static final int defaultMaxLength = 5;
@@ -19,4 +21,13 @@ public class MaxLength {
     public boolean isOutOfBoundLength(String name) {
         return name.length() > maxLength;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MaxLength maxLength1 = (MaxLength) o;
+        return maxLength == maxLength1.maxLength;
+    }
+
 }

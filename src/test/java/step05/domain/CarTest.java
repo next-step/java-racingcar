@@ -23,6 +23,6 @@ public class CarTest {
     @MethodSource("provideMovableResult")
     public void test_move(int position, boolean movable, int expect) {
         Car car = Car.of("name", position);
-        assertThat(car.move(() -> movable)).isEqualToComparingOnlyGivenFields(Car.of("name", expect));
+        assertThat(car.move(() -> movable)).isEqualTo(Car.of("name", expect));
     }
 }
