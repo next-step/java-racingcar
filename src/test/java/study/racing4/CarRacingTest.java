@@ -44,9 +44,9 @@ class CarRacingTest {
         racing.processRound();
         racing.processRound();
 
-        List<Car> cars = racing.getCars();
+        CarCollection cars = racing.getCars();
 
-        assertThat(cars.size()).isEqualTo(3);
+        assertThat(cars.matchedPositionCars(3).size()).isEqualTo(3);
     }
 
     @Test
