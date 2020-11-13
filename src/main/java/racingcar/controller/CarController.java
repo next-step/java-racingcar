@@ -3,16 +3,13 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.CarList;
 import racingcar.domain.GameNumbers;
+import racingcar.util.CarRandom;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CarController {
-    private static final Random random = new Random();
-    private static final int MAX_MOVING_BOUNDARY = 10;
-
     private CarList carList;
     private GameNumbers gameNumbers;
 
@@ -44,7 +41,7 @@ public class CarController {
     private void racingCarMove() {
         List<Car> cars = carList.getCarList();
         for(Car car : cars) {
-            car.move(makeRandomValue());
+            car.move(CarRandom.makeRandomValue());
         }
         carList = CarList.from(cars);
     }
@@ -57,10 +54,6 @@ public class CarController {
         increaseRound();
         racingCarMove();
         return carList;
-    }
-
-    private int makeRandomValue() {
-        return random.nextInt(MAX_MOVING_BOUNDARY);
     }
 
     public List<String> getWinners() {
