@@ -1,52 +1,46 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RacingGameConsole {
 
-    private static Scanner scanner = new Scanner(System.in);
-
     private RacingGame racingGame = new RacingGame(new RandomRacingCarMovingRule());
-    private List<String> carNames;
+    private int numCars;
     private int numSteps;
 
     private void run() {
         input();
 
-        ArrayList<RacingStep> result = racingGame.run(carNames, numSteps);
+        ArrayList<RacingStep> result = racingGame.run(numCars, numSteps);
 
         printGame(result);
     }
 
     private void input() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carNamesLine = scanner.next();
-        carNames = Arrays.stream(carNamesLine.split(","))
-                .map(s -> s.trim())
-                .collect(Collectors.toList());
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        numCars = scanner.nextInt();
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         numSteps = scanner.nextInt();
     }
 
     public static String racingStepToString(RacingStep racingStep) {
-        return racingStep.getCarNameAndPositionList().stream()
-                .map(nameAndPosition -> nameAndPosition.getName() + " : " + String.join("", Collections.nCopies(nameAndPosition.getPosition(), "-")))
+        return racingStep.getCarPositionList().stream()
+                .map(pos -> String.join("", Collections.nCopies(pos, "-")))
                 .collect(Collectors.joining("\n"));
     }
 
-    public static String racingStepListToString(ArrayList<RacingStep> racingStepList) {
-        return racingStepList.stream()
+    public static String racingStepListToString(ArrayList<RacingStep> racingStepArrayList) {
+        return racingStepArrayList.stream()
                 .map(racingStep -> racingStepToString(racingStep))
                 .collect(Collectors.joining("\n\n"));
     }
 
-    public static void printGame(ArrayList<RacingStep> racingStepList) {
-        System.out.print("\n실행 결과\n" + racingStepListToString(racingStepList));
-
-        String winnerNames = RacingGame.getWinnerNames(racingStepList).stream()
-                .collect(Collectors.joining(","));
-
-        System.out.print("\n\n" + winnerNames + "가 최종 우승했습니다.");
+    public static void printGame(ArrayList<RacingStep> racingStepArrayList) {
+        System.out.print("\n실행 결과\n" + racingStepListToString(racingStepArrayList));
     }
 
     public static void main(String[] args) {

@@ -13,7 +13,7 @@ public class RacingCarTest {
 
     @BeforeAll
     static void initRacingCar() {
-        racingCar = new RacingCar("testcar0", () -> true);
+        racingCar = new RacingCar(() -> true, 0);
     }
 
     @Test

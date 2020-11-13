@@ -3,8 +3,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,23 +13,17 @@ public class RacingGameTest {
     void testRacingGame(int numCars, int numSteps) {
         RacingGame racingGame = new RacingGame(RacingCarTest.regularRacingCarMovingRule());
 
-        List<String> testCarNames = IntStream.range(0, numCars)
-                .mapToObj(i -> "testcar" + i)
-                .collect(Collectors.toList());
-
-        ArrayList<RacingStep> result = racingGame.run(testCarNames, numSteps);
+        ArrayList<RacingStep> result = racingGame.run(numCars, numSteps);
 
         for (int step = 0; step < numSteps; step++) {
             RacingStep racingStep = result.get(step);
+            List<Integer> carPositionList = racingStep.getCarPositionList();
 
-            List<RacingStep.RacingCarNameAndPosition> carNameAndPositionList = racingStep.getCarNameAndPositionList();
-
-            assertThat(carNameAndPositionList.size()).isEqualTo(numCars);
+            assertThat(carPositionList.size()).isEqualTo(numCars);
 
             int expectedCarPosition = RacingCar.INITIAL_POSITION + step;
 
-            assertThat(carNameAndPositionList.stream()
-                    .mapToInt(carNameAndPosition -> carNameAndPosition.getPosition())
+            assertThat(carPositionList.stream()
                     .allMatch(carPosition -> carPosition == expectedCarPosition)).isTrue();
         }
     }

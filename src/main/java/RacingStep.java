@@ -4,35 +4,15 @@ import java.util.stream.Collectors;
 
 public class RacingStep {
 
-    public static class RacingCarNameAndPosition {
-        private String name;
-        private int position;
-
-        public RacingCarNameAndPosition(String name, int position) {
-            this.name = name;
-            this.position = position;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getPosition() {
-            return position;
-        }
-    }
-
-    private List<RacingCarNameAndPosition> carNameAndPositions;
+    private List<Integer> carPositionList;
 
     public RacingStep(ArrayList<RacingCar> racingCarList) {
-        this.carNameAndPositions = racingCarList.stream()
-                .map(racingCar -> new RacingCarNameAndPosition(racingCar.getName(), racingCar.getPosition()))
+        carPositionList = racingCarList.stream()
+                .map(racingCar -> racingCar.getPosition())
                 .collect(Collectors.toList());
     }
 
-
-    public List<RacingCarNameAndPosition> getCarNameAndPositionList() {
-        return carNameAndPositions;
+    public List<Integer> getCarPositionList() {
+        return carPositionList;
     }
-
 }
