@@ -10,21 +10,21 @@ import java.util.Random;
  * 2020-11-13
  */
 public class Race {
-    public static int raceCount;
+    private static int raceCount;
     private static Random random = new Random();
     /* 시작 */
-    public static void start() {
+    public static void start(Cars cars) {
         for (int i = 0; i < raceCount; i++) {
-            loopByCarCount();
+            loopByCarCount(cars);
         }
         ResultView.printCrlf();
     }
 
     /* 자동차 수만큼 시도 로직 반복 */
-    private static void loopByCarCount() {
-        for (int i = 0; i < Cars.cars.size(); i++) {
-            ResultView.printMessage(Cars.cars.get(i).name + " : ");
-            loopByRaceCount(Cars.cars.get(i));
+    private static void loopByCarCount(Cars cars) {
+        for (int i = 0; i < cars.getSize(); i++) {
+            ResultView.printMessage(cars.getIndexName(i) + " : ");
+            loopByRaceCount(cars.getIndex(i));
         }
         ResultView.printCrlf();
     }
@@ -52,10 +52,10 @@ public class Race {
         // 기회 세팅
         raceCount = InputView.inputRacingCount();
         // 경주 시작
-        Race.start();
+        Race.start(cars);
         // 우승자
         cars.winner();
         // 우승자 출력
-        ResultView.printWinner();
+        ResultView.printWinner(cars);
     }
 }

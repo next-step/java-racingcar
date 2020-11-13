@@ -22,7 +22,7 @@ public class ResultView {
     }
 
     /* 우승자 출력 */
-    public static void printWinner() {
-        printMessage(String.join(",", Cars.winnerNames) + "가 최종 우승했습니다.");
+    public static void printWinner(Cars cars) {
+        printMessage(String.join(",", cars.getWinnerNames()) + "가 최종 우승했습니다.");
     }
 }
