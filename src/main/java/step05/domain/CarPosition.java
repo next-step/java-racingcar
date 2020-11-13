@@ -35,6 +35,10 @@ public class CarPosition {
         return new CarPosition(position);
     }
 
+    public int compare(CarPosition otherPosition) {
+        return position - otherPosition.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

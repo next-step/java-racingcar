@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 public class Cars {
     private final List<Car> cars;
 
@@ -47,6 +49,19 @@ public class Cars {
                         .map(car -> car.move(moveStrategy))
                         .collect(Collectors.toList())
         );
+    }
+
+    public Cars findTopPositionCars() {
+        CarPosition topPosition = cars.stream()
+                .sorted((a, b) -> b.comparePosition(a.getCarPosition()))
+                .limit(1)
+                .collect(toList())
+                .get(0)
+                .getCarPosition();
+
+        return Cars.of(cars.stream()
+                .filter(car -> car.comparePosition(topPosition) == 0)
+                .collect(Collectors.toList()));
     }
 
     @Override

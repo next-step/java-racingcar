@@ -29,6 +29,14 @@ public class Car {
         return new Car(name, position.move(moveStrategy));
     }
 
+    public CarPosition getCarPosition() {
+        return position.getCarPosition();
+    }
+
+    public int comparePosition(CarPosition otherPosition) {
+        return position.compare(otherPosition);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

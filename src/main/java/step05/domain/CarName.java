@@ -17,11 +17,11 @@ public class CarName {
         isInBoundLength();
     }
 
-    public static CarName of (String name) {
+    public static CarName of(String name) {
         return new CarName(name, MaxLength.of());
     }
 
-    public static CarName of (String name, int maxLength) {
+    public static CarName of(String name, int maxLength) {
         return new CarName(name, MaxLength.of(maxLength));
     }
 
