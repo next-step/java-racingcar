@@ -57,9 +57,8 @@
     - 생성자
         - 자동차 이름의 배열 private final String[] carNames
         - 자동차들에게 일괄적으로 적용할 private final int position 
-        - 자동차들에게 일괄적으로 적용할 private final MoveStrategy moveStrategy
     - 메서드
-        - 자동차를 한회차 이동시킴 public void move
+        - 자동차를 한회차 이동시킴 public Cars move
 
 - Race
     - 멤버
