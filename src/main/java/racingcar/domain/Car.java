@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.CarValidation;
+
 public class Car {
 
     private static final int MIN_MOVING_CONDITION = 4;
@@ -9,10 +11,12 @@ public class Car {
     private int currentPosition = 0;
 
     private Car(String name) {
+        CarValidation.checkNameValidation(name);
         this.name = name;
     }
 
     private Car(String name, int currentPosition) {
+        CarValidation.checkNameValidation(name);
         this.name = name;
         this.currentPosition = currentPosition;
     }

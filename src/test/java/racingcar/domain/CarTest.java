@@ -1,6 +1,8 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -24,6 +26,13 @@ class CarTest {
         Car car = Car.from("name");
         car.move(value);
         assertThat(car.getCurrentPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("이름 글자 초과 테스트")
+    void checkNameLengthSuccess() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Car.from("abcdefg"));
     }
 
 }

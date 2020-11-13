@@ -12,9 +12,9 @@ public class CarMain {
         String[] carNames = inputView.carNames();
         int tryCounts = inputView.tryCount();
 
-        outputView.resultMention();
-
         CarController carController = new CarController(carNames, tryCounts);
+
+        outputView.resultMention();
 
         while(!carController.isFinish()) {
             outputView.displayCarList(carController.racing());
