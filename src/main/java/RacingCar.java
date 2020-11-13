@@ -3,14 +3,14 @@ public class RacingCar {
     public static final int INITIAL_POSITION = 1;
     public static final int FORWARD_STEP = 1;
 
+    private final String name;
     private final RacingCarMovingRule movingRule;
-    private final int id;
 
     private int position;
 
-    public RacingCar(RacingCarMovingRule movingRule, int id) {
+    public RacingCar(String name, RacingCarMovingRule movingRule) {
+        this.name = name;
         this.movingRule = movingRule;
-        this.id = id;
         this.position = INITIAL_POSITION;
     }
 
@@ -20,8 +20,13 @@ public class RacingCar {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getPosition() {
         return position;
     }
 
 }
+
