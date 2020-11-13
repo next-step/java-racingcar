@@ -1,4 +1,4 @@
-package racingGame.View;
+package racinggame.view;
 
 import java.util.Scanner;
 
@@ -22,7 +22,6 @@ public class InputView {
     System.out.println(USER_NAME_QUESTION);
     return scanner.nextLine();
   }
-
 
   public static int askNumRound() {
     System.out.println(NUM_ROUND_QUESTION);

@@ -1,4 +1,4 @@
-package racingGame.racingGameException;
+package racinggame.racinggamexception;
 
 public class IllegalNumRoundException extends IllegalArgumentException {
 

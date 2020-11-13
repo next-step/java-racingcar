@@ -1,4 +1,4 @@
-package racingGame.racingGameException;
+package racinggame.racinggamexception;
 
 public class IllegalNumCars extends IllegalArgumentException {
 

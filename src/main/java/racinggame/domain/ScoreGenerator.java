@@ -1,4 +1,4 @@
-package racingGame;
+package racinggame.domain;
 
 public interface ScoreGenerator {
 
