@@ -3,6 +3,7 @@ package study.step4;
 import java.util.Scanner;
 
 public class InputView {
+    static private Scanner scanner = new Scanner(System.in);
     /* 자동차 이름 입력 */
     static public String inputCars() {
         return inputString("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -14,7 +15,6 @@ public class InputView {
      * @return 입력받은 문자열
      */
     static private String inputString(String message) {
-        Scanner scanner = new Scanner(System.in);
         ResultView.printlnMessage(message);
         return scanner.next();
     }
