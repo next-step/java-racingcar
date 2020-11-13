@@ -7,11 +7,13 @@ import java.util.stream.IntStream;
 
 public class ResultView {
 
+    private static final char POSITION_MARK = '-';
+
     public void printCarPosition(List<Car> cars) {
         for (Car car : cars) {
-            System.out.print(car.getName() + " : -");
+            System.out.print(car.getName() + " : " + POSITION_MARK);
             IntStream.range(0, car.getPosition())
-                    .forEach(t -> System.out.print("-"));
+                    .forEach(t -> System.out.print(POSITION_MARK));
             System.out.println();
         }
         System.out.println();
