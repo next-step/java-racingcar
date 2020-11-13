@@ -1,10 +1,11 @@
 package study.step4;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cars {
-    private final ArrayList<Car> cars = new ArrayList<>();
-    private final ArrayList<String> winnerNames = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
+    private final List<String> winnerNames = new ArrayList<>();
 
     /* 입력값 세팅 */
     public void split(String inputCarNames) {
@@ -55,7 +56,7 @@ public class Cars {
         return this.cars.get(i);
     }
 
-    public ArrayList<String> getWinnerNames() {
+    public List<String> getWinnerNames() {
         return winnerNames;
     }
 }
