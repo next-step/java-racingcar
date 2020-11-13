@@ -8,8 +8,6 @@ import step5.domain.ScoreInspector;
  */
 public interface MoveStrategy {
 
-    ScoreInspector scoreInspector = new ScoreInspector();
-
     int move();
 
 }
