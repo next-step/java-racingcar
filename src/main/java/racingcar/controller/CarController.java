@@ -4,7 +4,6 @@ import racingcar.domain.Car;
 import racingcar.domain.CarList;
 import racingcar.domain.GameNumbers;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -65,20 +64,11 @@ public class CarController {
     }
 
     public List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
-
-        int winnerScore = getWinnerScore();
-        for(Car car : carList.getCarList()) {
-            getWinnerName(winnerScore, car, winners);
-        }
-
-        return winners;
-    }
-
-    public void getWinnerName(int winnerScore, Car car, List<String> winners) {
-        if(winnerScore == car.getCurrentPosition()) {
-            winners.add(car.getName());
-        }
+        return carList.getCarList()
+                .stream()
+                .filter(car -> car.getCurrentPosition() == getWinnerScore())
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public int getWinnerScore() {
