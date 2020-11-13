@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.CarController;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
 public class CarMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
