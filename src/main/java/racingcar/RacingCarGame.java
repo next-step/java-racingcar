@@ -41,7 +41,6 @@ public class RacingCarGame {
     }
 
     public List<String> getWinners() {
-        int max = racingCarGroups.getMaxDistance();
-        return racingCarGroups.findWinners(max);
+        return racingCarGroups.findWinners();
     }
 }

@@ -29,11 +29,4 @@ public class RacingCar {
     public void move(RacingCarMoveBehavior racingCarMoveBehavior) {
         distance = racingCarMoveBehavior.action(distance);
     }
-
-    public List<String> isWinner(List<String> winners, int condition) {
-        if (distance == condition) {
-            winners.add(name);
-        }
-        return winners;
-    }
 }
