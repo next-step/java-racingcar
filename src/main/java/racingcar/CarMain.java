@@ -17,7 +17,7 @@ public class CarMain {
         CarController carController = new CarController(carNames, tryCounts);
 
         while(!carController.isFinish()) {
-            outputView.displayCarList(carController.nextRound());
+            outputView.displayCarList(carController.racing());
         }
 
         outputView.displayWinners(carController.getWinners());

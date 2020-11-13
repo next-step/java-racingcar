@@ -42,7 +42,7 @@ public class CarController {
         return gameNumbers.getTryCounts() == gameNumbers.getRound();
     }
 
-    public void moveCarListPosition() {
+    private void racingCarMove() {
         List<Car> cars = carList.getCarList();
         for(Car car : cars) {
             car.move(makeRandomValue());
@@ -50,13 +50,13 @@ public class CarController {
         carList = CarList.from(cars);
     }
 
-    public void increaseRound() {
+    private void increaseRound() {
         gameNumbers.increaseRound();
     }
 
-    public CarList nextRound() {
+    public CarList racing() {
         increaseRound();
-        moveCarListPosition();
+        racingCarMove();
         return carList;
     }
 
