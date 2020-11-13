@@ -1,8 +1,7 @@
 package racingcar.step3.domain;
 
-import racingcar.step3.common.Consts;
-
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,45 +9,18 @@ import java.util.Map;
  * Developer : Seo.
  */
 public class Record {
-    private Map<String, Integer> turnRecords;
-    private final Map<Integer, Map<String, Integer>> totalRecords;
-    private int bestRecord;
+    private final List<Map<String, Integer>> totalRecords;
 
     public Record() {
-        this.turnRecords = new HashMap<>();
-        this.totalRecords = new HashMap<>();
-        this.bestRecord = Consts.BEST_RECORD_INIT;
+        this.totalRecords = new ArrayList<>();
     }
 
-    public void record(Car car, int turn) {
-        setTurnRecords(car, turn);
-        setTotalRecords(turn);
-        setBestRecord(car);
+    public void setTotalRecords(Map<String, Integer> turnRecords) {
+        totalRecords.add(turnRecords);
     }
 
-    private void setTurnRecords(Car car, int turn) {
-        if (!totalRecords.containsKey(turn)) {
-            turnRecords = new HashMap<>();
-        }
-        turnRecords.put(car.getName(), car.getDistance());
-    }
-
-    private void setTotalRecords(int turn) {
-        totalRecords.put(turn, turnRecords);
-    }
-
-    private void setBestRecord(Car car) {
-        if (Integer.compare(bestRecord, car.getDistance()) == -1) {
-            this.bestRecord = car.getDistance();
-        }
-    }
-
-    public Map<Integer, Map<String, Integer>> getTotalRecords() {
+    public List<Map<String, Integer>> getTotalRecords() {
         return this.totalRecords;
-    }
-
-    public int getBestRecord() {
-        return this.bestRecord;
     }
 
 }

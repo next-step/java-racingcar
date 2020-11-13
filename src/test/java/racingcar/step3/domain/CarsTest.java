@@ -26,7 +26,7 @@ class CarsTest {
         this.car3 = new Car("honux");
         this.record = new Record();
         this.inputNames = "pobi,crong,honux";
-        this.cars = new Cars(inputNames, record);
+        this.cars = new Cars(inputNames);
     }
 
     @Test
@@ -34,15 +34,15 @@ class CarsTest {
     void givenTheOnlyOneBestRecord_thenGetWinner() {
         int turn = 1;
         car1.move(Consts.INVALID_VALUE + 1);
-        record.record(car1, turn);
+        record.record(car1, turn, turnRecords);
         cars.setWinner(car1);
 
         car2.move(Consts.INVALID_VALUE);
-        record.record(car2, turn);
+        record.record(car2, turn, turnRecords);
         cars.setWinner(car2);
 
         car3.move(Consts.INVALID_VALUE);
-        record.record(car3, turn);
+        record.record(car3, turn, turnRecords);
         cars.setWinner(car3);
 
         assertThat(cars.getWinner()).isEqualTo("pobi");
@@ -53,15 +53,15 @@ class CarsTest {
     void givenTwoBestRecord_thenGetWinners() {
         int turn = 1;
         car1.move(Consts.INVALID_VALUE + 1);
-        record.record(car1, turn);
+        record.record(car1, turn, turnRecords);
         cars.setWinner(car1);
 
         car2.move(Consts.INVALID_VALUE + 1);
-        record.record(car2, turn);
+        record.record(car2, turn, turnRecords);
         cars.setWinner(car2);
 
         car3.move(Consts.INVALID_VALUE);
-        record.record(car3, turn);
+        record.record(car3, turn, turnRecords);
         cars.setWinner(car3);
 
         assertThat(cars.getWinner()).isEqualTo("pobi, crong");
@@ -72,15 +72,15 @@ class CarsTest {
     void givenAllBestRecord_thenGetWinners() {
         int turn = 1;
         car1.move(Consts.INVALID_VALUE + 1);
-        record.record(car1, turn);
+        record.record(car1, turn, turnRecords);
         cars.setWinner(car1);
 
         car2.move(Consts.INVALID_VALUE + 1);
-        record.record(car2, turn);
+        record.record(car2, turn, turnRecords);
         cars.setWinner(car2);
 
         car3.move(Consts.INVALID_VALUE + 1);
-        record.record(car3, turn);
+        record.record(car3, turn, turnRecords);
         cars.setWinner(car3);
 
         assertThat(cars.getWinner()).isEqualTo("pobi, crong, honux");
@@ -91,13 +91,13 @@ class CarsTest {
     void givenNothingBestRecord_thenGetWinners() {
         int turn = 1;
         car1.move(Consts.INVALID_VALUE);
-        this.record.record(car1, turn);
+        this.record.record(car1, turn, turnRecords);
 
         car2.move(Consts.INVALID_VALUE);
-        this.record.record(car2, turn);
+        this.record.record(car2, turn, turnRecords);
 
         car3.move(Consts.INVALID_VALUE);
-        this.record.record(car3, turn);
+        this.record.record(car3, turn, turnRecords);
 
         assertThat(cars.getWinner()).isEmpty();
     }

@@ -26,7 +26,7 @@ class RecordTest {
         this.car3 = new Car("honux");
         this.record = new Record();
         this.inputNames = "pobi,crong,honux";
-        this.cars = new Cars(inputNames, record);
+        this.cars = new Cars(inputNames);
     }
 
     @Test
@@ -34,12 +34,12 @@ class RecordTest {
     void whenTwoMove_thenShouldBeTheBestTwo() {
         int turn = 1;
         car1.move(Consts.INVALID_VALUE + 1);
-        record.record(car1, turn);
+        record.record(car1, turn, turnRecords);
         assertThat(record.getBestRecord()).isEqualTo(1);
 
         car2.move(Consts.INVALID_VALUE + 1);
         car2.move(Consts.INVALID_VALUE + 1);
-        record.record(car2, turn);
+        record.record(car2, turn, turnRecords);
         assertThat(record.getBestRecord()).isEqualTo(2);
     }
 
@@ -48,10 +48,10 @@ class RecordTest {
     void whenTwoCarsParticipate_thenTheTurnResultShouldHaveTwo() {
         int turn = 1;
         car1.move(Consts.INVALID_VALUE + 1);
-        record.record(car1, turn);
+        record.record(car1, turn, turnRecords);
 
         car2.move(Consts.INVALID_VALUE);
-        record.record(car2, turn);
+        record.record(car2, turn, turnRecords);
 
         assertThat(record.getTotalRecords().get(turn)).hasSize(2);
     }
@@ -61,12 +61,12 @@ class RecordTest {
     void whenTheRaceRunsTwice_thenTheTotalShouldHaveTwo() {
         int turn = 1;
         car1.move(Consts.INVALID_VALUE + 1);
-        record.record(car1, turn);
+        record.record(car1, turn, turnRecords);
         assertThat(record.getTotalRecords()).hasSize(1);
 
         turn = 2;
         car1.move(Consts.INVALID_VALUE + 1);
-        record.record(car1, turn);
+        record.record(car1, turn, turnRecords);
         assertThat(record.getTotalRecords()).hasSize(2);
     }
 
