@@ -39,9 +39,9 @@ public class ResultView {
     }
 
     private static void printRounds(List<ScoreBoard> scoreBoards, int round) {
-        for (int i = 0; i < scoreBoards.size(); i++) {
-            System.out.print(scoreBoards.get(i).getName() + DELIMITER);
-            printDash(scoreBoards.get(i).getScoreHistory().get(round));
+        for (ScoreBoard scoreBoard : scoreBoards) {
+            System.out.println(scoreBoard.getName() + DELIMITER);
+            printDash(scoreBoard.getScoreHistory().get(round));
         }
     }
 
