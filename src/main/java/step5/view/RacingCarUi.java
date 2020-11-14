@@ -32,7 +32,9 @@ public class RacingCarUi {
 
     public static void finalWinner(List<Car> cars) {
         RacingWinner racingWinner = new RacingWinner(cars);
-        System.out.println(racingWinner.toString());
+        String winners = String.format("%s가 최종 우승했습니다.", racingWinner.getWinners());
+        System.out.println(winners);
+
     }
 
     public static void close() {

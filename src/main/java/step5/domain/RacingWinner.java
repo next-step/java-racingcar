@@ -31,8 +31,4 @@ public class RacingWinner {
                 .collect(Collectors.joining(JOIN_DELIMITER));
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s가 최종 우승했습니다.", this.getWinners());
-    }
 }
