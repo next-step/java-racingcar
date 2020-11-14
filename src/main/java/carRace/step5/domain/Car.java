@@ -1,7 +1,7 @@
 package carRace.step5.domain;
 
 
-import carRace.step5.domain.util.CarDataCheck;
+import carRace.step5.domain.util.CarName;
 
 public class Car {
     private String carName;
@@ -9,9 +9,7 @@ public class Car {
     private static int referenceValue = 4;
 
     public Car(String carName) {
-        CarDataCheck carDataCheck = new CarDataCheck();
-
-        carDataCheck.checkNumberValue(carName);
+        CarName.checkCarNames(carName);
 
         this.carName = carName;
         this.moveDistance = 0;
