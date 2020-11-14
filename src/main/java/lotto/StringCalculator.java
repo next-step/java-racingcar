@@ -6,6 +6,7 @@ public class StringCalculator {
         if (expression == null || expression.isEmpty()) {
             return 0;
         }
-        return -1;
+        Expression expressionResolver = new Expression(expression);
+        return expressionResolver.sum();
     }
 }
