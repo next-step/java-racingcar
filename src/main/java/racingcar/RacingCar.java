@@ -1,26 +1,32 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingCar {
     private int distance;
-    private RacingCarMoveBehavior racingCarMoveBehavior;
+    private String name;
 
-    public RacingCar(RacingCarMoveBehavior racingCarMoveBehavior) {
-        this.distance = 0;
-        this.racingCarMoveBehavior = racingCarMoveBehavior;
+    public RacingCar(String name) {
+        this(name, 0);
+    }
+
+    public RacingCar(String name, int distance) {
+        if (name.trim().length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다. ");
+        }
+        this.name = name;
+        this.distance = distance;
     }
 
     public int getDistance() {
         return distance;
     }
 
-    public void move() {
-        distance = this.racingCarMoveBehavior.action(distance);
+    public String getName() {
+        return name;
     }
 
-    public void display() {
-        for(int i = 0; i < distance; i++) {
-            System.out.print('-');
-        }
-        System.out.println();
+    public void move(RacingCarMoveBehavior racingCarMoveBehavior) {
+        distance = racingCarMoveBehavior.action(distance);
     }
 }

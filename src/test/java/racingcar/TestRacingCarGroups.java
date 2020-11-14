@@ -6,42 +6,52 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.RacingCarGameManager.createRacingCars;
 
 public class TestRacingCarGroups {
     RacingCarGroups racingCarGroups;
 
+    @BeforeEach
+    void setUp() {
+        HashMap<String, Integer> carInfo = new HashMap<String, Integer>(){{
+            put("BMW", 4);
+            put("BENZ", 3);
+            put("VOLVO", 1);
+        }};
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (String name : carInfo.keySet()) {
+            RacingCar racingCar = new RacingCar(name, carInfo.get(name));
+            racingCarList.add(racingCar);
+        }
+        racingCarGroups = new RacingCarGroups(racingCarList);
+    }
+
     @DisplayName("자동차그룹 생성")
     @ParameterizedTest
-    @CsvSource({"3, 3"})
-    void test_create_racing_cars(int cars, int result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
-        racingCarGroups.move();
+    @CsvSource({"3"})
+    void test_create_racing_cars(int result) {
         assertThat(racingCarGroups.getRacingCars().size())
                 .isEqualTo(result);
     }
 
-    @DisplayName("자동차그룹 1번 이동")
+    @DisplayName("자동차그룹 이동")
     @ParameterizedTest
-    @CsvSource({"3, 1"})
-    void test_move(int cars, int result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
+    @CsvSource({"4"})
+    void test_move(int result) {
         racingCarGroups.move();
         assertThat(racingCarGroups.getRacingCars().get(0).getDistance())
                 .isLessThanOrEqualTo(result);
     }
 
-    @DisplayName("자동차그룹 2번 이동")
+    @DisplayName("우승자 찾기")
     @ParameterizedTest
-    @CsvSource({"3, 2"})
-    void test_move_two_step(int cars, int result) {
-        racingCarGroups = new RacingCarGroups(createRacingCars(cars));
-        racingCarGroups.move();
-        racingCarGroups.move();
-        assertThat(racingCarGroups.getRacingCars().get(0).getDistance())
-                .isLessThanOrEqualTo(result);
+    @CsvSource({"BMW"})
+    void test_get_find_winners(String winner) {
+        assertThat(racingCarGroups.findWinners()).isEqualTo(new ArrayList<String>() {{
+            add(winner);
+        }});
     }
 }
