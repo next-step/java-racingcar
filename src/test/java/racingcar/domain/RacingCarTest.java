@@ -100,4 +100,23 @@ public class RacingCarTest {
                 .max()
                 .orElse(NOT_MOVE);
     }
+
+    @DisplayName("다음 라운드 정상 진행 여부")
+    @Test
+    void nextRoundTest() {
+        racingCars = RacingCars.of(nameOfCars, () -> true, round);
+        racingCars.run();
+        assertThat(racingCars.nextRound()).isEqualTo(2);
+    }
+
+    @ParameterizedTest
+    @DisplayName("마지막 라운드 시 true 반환 여부")
+    @ValueSource(ints = {3, 5, 7})
+    void finalRoundTest(int round) {
+        racingCars = RacingCars.of(nameOfCars, () -> true, round);
+        for (int i = 0; i < round; i++) {
+            racingCars.run();
+        }
+        assertThat(racingCars.isLastRound()).isTrue();
+    }
 }
