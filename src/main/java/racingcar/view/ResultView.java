@@ -1,15 +1,25 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import java.util.List;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 public class ResultView {
 
-    public void printDistanceOfCar(List<Car> cars) {
-        for (Car car : cars) {
-            print(car.getName(), car.getDistance());
+    public void printCars(Cars cars) {
+        for (Car car : cars.getValue()) {
+            System.out.println(getCarPosition(car));
         }
-        System.out.println("");
+        System.out.println();
+    }
+
+    private String getCarPosition(Car car) {
+        StringBuilder carInformation = new StringBuilder();
+        carInformation.append(car.getName().getValue());
+        carInformation.append(" : ");
+        for (int i = 0; i < car.getPosition().getValue(); i++) {
+            carInformation.append("-");
+        }
+        return carInformation.toString();
     }
 
     public void printHeader() {
@@ -24,8 +34,8 @@ public class ResultView {
         System.out.println("");
     }
 
-    public void printWinners(List<String> winnersNames) {
-        System.out.println(String.join(",", winnersNames) + "가 최종 우승했습니다.");
+    public void printWinners(Cars winnersNames) {
+        System.out.println(String.join(",", winnersNames.getCarNames()) + "가 최종 우승했습니다.");
     }
 
 

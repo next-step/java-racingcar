@@ -1,36 +1,44 @@
 package racingcar;
 
-import racingcar.application.CarsGenerator;
-import racingcar.application.RacingSimulator;
-import racingcar.application.number.NumberGenerator;
-import racingcar.application.number.RandomNumberGenerator;
-import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+import racingcar.domain.car.Cars;
+import racingcar.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainSimulator {
+
+    private static final String SPLIT_LETTER = ",";
 
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
-        CarsGenerator carsGenerator = new CarsGenerator();
+        RacingGame racingGame = new RacingGame();
+        Cars preRaceCars;
+        Cars postRaceCars = new Cars();
 
-        NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        RacingSimulator racingSimulator = new RacingSimulator(randomNumberGenerator);
+        String names = inputView.getCarNames();
+        int racingCount = inputView.getRacingCount();
 
-        String carName = inputView.insertNameOfCars();
-        int racingCount = inputView.insertCount();
-
-        List<Car> cars = carsGenerator.generateCars(carName);
+        List<String> carNames = Arrays.stream(names.split(SPLIT_LETTER)).collect(Collectors.toList());
+        preRaceCars = racingGame.createCars(carNames);
 
         resultView.printHeader();
-        racingSimulator.race(cars, racingCount);
 
-        List<String> winnersNames = racingSimulator.getWinnersNames(cars);
-        resultView.printWinners(winnersNames);
+        for (int i = 0; i < racingCount; i++) {
+            postRaceCars = racingGame.race(preRaceCars, new RandomMovingStrategy());
+            resultView.printCars(postRaceCars);
+        }
+
+        Cars winners = racingGame.getWinners(postRaceCars);
+        resultView.printWinners(winners);
+
 
     }
+
 }
