@@ -26,10 +26,14 @@ public class ResultView {
     }
 
     public static void printWinner(ArrayList<String> winnerList){
+        System.out.println(toStringRacerList(winnerList) + "가 최종우승했습니다.");
+    }
+
+    public static String toStringRacerList(ArrayList<String> winnerList){
         StringJoiner winnerText = new StringJoiner(", ");
         for(String winner: winnerList){
             winnerText.add(winner);
         }
-        System.out.println(winnerText.toString() + "가 최종우승했습니다.");
+        return winnerText.toString();
     }
 }
