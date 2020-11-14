@@ -29,7 +29,7 @@ public class RacingCarGameTest {
 
     @Test
     @DisplayName("입력한 자동차 값이 정상 등록되는지")
-    public void 등록_자동차_확인 () {
+    public void 등록_자동차_확인() {
         String[] carNames = "zu,cu,du".split(",");
         List<Car> cars = racingCarGame.start(carNames);
         assertEquals(cars.get(0).getCarName(), "zu");

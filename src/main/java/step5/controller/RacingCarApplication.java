@@ -2,8 +2,10 @@ package step5.controller;
 
 import step5.domain.Car;
 import step5.domain.RacingCarGame;
+import step5.view.RacingCarUi;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static step5.view.RacingCarUi.*;
 
@@ -18,9 +20,12 @@ public class RacingCarApplication {
         close();
 
         List<Car> cars = racingCarGame.start(carNames);
-        racingCarGame.carMove(numberOfMove, cars);
+        IntStream.range(0, numberOfMove)
+                .mapToObj(i -> racingCarGame.carMove(cars))
+                .forEach(RacingCarUi::resultPrint);
 
         finalWinner(cars);
     }
+
 
 }
