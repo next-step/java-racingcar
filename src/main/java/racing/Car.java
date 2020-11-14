@@ -14,7 +14,7 @@ public class Car {
         }
     }
 
-    public int getTravelDistance() {
-        return travelDistance.getTravelDistance();
+    public int getPosition() {
+        return travelDistance.getPosition();
     }
 }

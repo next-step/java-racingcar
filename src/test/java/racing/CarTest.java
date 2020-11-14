@@ -16,7 +16,7 @@ class CarTest {
         car.move(() -> true);
 
         // then
-        Assertions.assertThat(car.getTravelDistance()).isEqualTo(1);
+        Assertions.assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName(value = "랜덤 값이 4미만이면, 정지")
@@ -29,6 +29,6 @@ class CarTest {
         car.move(() -> false);
 
         // then
-        Assertions.assertThat(car.getTravelDistance()).isEqualTo(0);
+        Assertions.assertThat(car.getPosition()).isEqualTo(0);
     }
 }
