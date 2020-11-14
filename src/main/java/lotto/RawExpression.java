@@ -10,6 +10,9 @@ public class RawExpression {
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
 
     public RawExpression(String rawExpression) {
+        if (rawExpression == null || rawExpression.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RAW_EXPRESSION);
+        }
         this.expression = rawExpression;
         Matcher matcher = Pattern
                 .compile(CUSTOM_DELIMITER_REGEX)

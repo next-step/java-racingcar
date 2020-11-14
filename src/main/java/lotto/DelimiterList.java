@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DelimiterList {
 
@@ -21,6 +22,11 @@ public class DelimiterList {
         if (value != null && value.isEmpty() == false) {
             this.delimiter.add(value);
         }
+    }
+
+    public String toSplitRegex() {
+        return delimiter.stream()
+                .collect(Collectors.joining("|"));
     }
 
     public Iterator<String> iterator() {
