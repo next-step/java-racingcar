@@ -17,9 +17,9 @@ public class RacingCars {
         this.round = round;
     }
 
-    public static RacingCars of(String[] nameOfCars, MovingStrategy movingStrategy,Round round) {
+    public static RacingCars of(String[] nameOfCars, MovingStrategy movingStrategy, int round) {
         List<Car> initCars = createCars(nameOfCars);
-        return new RacingCars(initCars, movingStrategy,round);
+        return new RacingCars(initCars, movingStrategy, round);
     }
 
     private static List<Car> createCars(String[] nameOfCars) {

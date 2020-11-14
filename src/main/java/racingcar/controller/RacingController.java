@@ -10,10 +10,10 @@ public class RacingController {
         String[] nameOfCars = InputView.inputNameOfCars();
         int loopCount = InputView.inputLoopCount();
 
-        RacingCars racingCars = RacingCars.of(nameOfCars, new RandomMovingStrategy(), round);
+        RacingCars racingCars = RacingCars.of(nameOfCars, new RandomMovingStrategy(), loopCount);
         ResultView.printResultMessage();
-        while (!round.isLastRound()) {
-            ResultView.printPositionResult(round.progressRound(racingCars));
+        while (!racingCars.isLastRound()) {
+            ResultView.printPositionResult(racingCars.progressRound());
         }
         ResultView.printNamesOfWinnerCarsResult(racingCars.getNamesOfWinnerCars());
     }
