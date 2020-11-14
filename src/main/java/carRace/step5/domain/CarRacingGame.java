@@ -1,99 +1,79 @@
 package carRace.step5.domain;
 
-import carRace.step5.domain.util.CarRasingDraw;
+import carRace.step5.domain.util.TryCount;
+import carRace.step5.view.CarRasingDraw;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CarRacingGame {
     private static Random random = new Random();
-    private HashMap<Object, List<Car>> carResultData = new HashMap<>();
-    private String[] carNames;
+    private List<Car> carsScore = new ArrayList<>();
     private static int raceTryCount;
 
-    public CarRacingGame(String[] carNames, int raceTryCount) {
-        this.carNames = carNames;
+    public CarRacingGame(int raceTryCount) {
         this.raceTryCount = raceTryCount;
     }
 
-    public void playRacingGame() {
-        List<Car> list = new ArrayList<>();
-
-        for (String carName : carNames) {
-            Car car = new Car(carName);
-            car.moveCar(random.nextInt(10));
-            list.add(car);
-
-            repeatRaceTryCount(list);
-            list = new ArrayList<>();
-        }
+    public void RunPlayGame(String[] carNames) {
+        makeCars(carNames);
+        playRasingGame();
+        drawRasingWinner();
     }
 
-    public void drawRasingWinner() {
-        List<Car> lastGameList = getLastPlay();
-        int maxValue = getMaxWinnerSocre(lastGameList);
-        List<Car> winnerList = new ArrayList<>();
-
-        for (int i = 0; i < lastGameList.size(); i++) {
-            selectWinner(maxValue, winnerList, lastGameList.get(i));
-        }
-
-        System.out.print("우승자 : " + winnerList.get(0).getCarName());
-        for (int i = 1; i < winnerList.size(); i++) {
-            System.out.print(", " + winnerList.get(i).getCarName());
-        }
-    }
-
-    public void drawRasingGame() {
+    private void playRasingGame() {
         for (int i = 0; i < raceTryCount; i++) {
-            for (String carName : carNames) {
-                System.out.print(carName + " : "
-                 + CarRasingDraw.changeNumberToChar(carResultData.get(carName).get(i).getMoveDistance()));
-                System.out.print(System.lineSeparator());
-            }
+            repeatRaceTryCount();
             System.out.print(System.lineSeparator());
         }
     }
 
-    private void repeatRaceTryCount(List<Car> paramList) {
-        Car car;
-        String carName = paramList.get(0).getCarName();
-
-        for (int i = 1; i < raceTryCount; i++) {
-            car = new Car(paramList.get(i - 1));
-            car.moveCar(random.nextInt(10));
-            paramList.add(car);
+    private void repeatRaceTryCount() {
+        for (int i = 0; i < carsScore.size(); i++) {
+            carsScore.get(i).moveCar(random.nextInt(10));
+            CarRasingDraw.printCarDistance(carsScore.get(i).getCarName(), carsScore.get(i).getMoveDistance());
         }
-        this.carResultData.put(carName, paramList);
     }
 
-    private List<Car> getLastPlay() {
-        List<Car> lastGameList = new ArrayList<>();
+    private void drawRasingWinner() {
+        int maxScore = getMaxWinnerSocre();
+        List<String> winnerList = new ArrayList<>();
 
-        for (String carName : carNames) {
-            lastGameList.add(carResultData.get(carName).get(raceTryCount - 1));
+        for (int i = 0; i < carsScore.size(); i++) {
+            selectWinner(maxScore, winnerList, i);
         }
 
-        return lastGameList;
+        CarRasingDraw.printWinner(winnerList);
     }
 
-    private int getMaxWinnerSocre(List<Car> lastGameList) {
+    private void selectWinner(int maxValue, List<String> winnerList, int index) {
+        if (carsScore.get(index).getMoveDistance() >= maxValue) {
+            winnerList.add(carsScore.get(index).getCarName());
+        }
+    }
+
+    private int getMaxWinnerSocre() {
         int maxValue = 0;
 
-        for (int i = 0; i < lastGameList.size(); i++) {
-            if (maxValue <= lastGameList.get(i).getMoveDistance()) {
-                maxValue = lastGameList.get(i).getMoveDistance();
+        for (int i = 0; i < carsScore.size(); i++) {
+            if (maxValue <= carsScore.get(i).getMoveDistance()) {
+                maxValue = carsScore.get(i).getMoveDistance();
             }
         }
 
         return maxValue;
     }
 
-    private void selectWinner(int maxValue, List<Car> winnerList, Car car) {
-        if (car.getMoveDistance() >= maxValue) {
-            winnerList.add(car);
+    /**
+     * 레이싱 게임을 참여할 자동차 생성
+     *
+     * @param carNames
+     * @return
+     */
+    private void makeCars(String[] carNames) {
+
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            carsScore.add(car);
         }
     }
 }
