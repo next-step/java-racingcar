@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-class CarRacingTest {
+class RacingGameTest {
 
     @Test
     @DisplayName("자동차 레이싱 하나의 라운드를 진행하는데 에러가 없다.")

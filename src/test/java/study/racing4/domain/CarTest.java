@@ -1,7 +1,8 @@
-package study.racing4;
+package study.racing4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racing4.domain.Car;
 
 import static org.assertj.core.api.Assertions.*;
 

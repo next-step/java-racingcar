@@ -1,8 +1,8 @@
-package study.racing4;
+package study.racing4.domain;
 
 import java.util.List;
 
-public class CarRacing {
+public class RacingGame {
 
     private final CarCollection cars;
     private final int lastRound;
@@ -10,7 +10,7 @@ public class CarRacing {
 
     private int currentRound = 0;
 
-    public CarRacing(RacingInput racingInput, MovingStrategy moveable) {
+    public RacingGame(RacingInput racingInput, MovingStrategy moveable) {
         this.cars = new CarCollection(racingInput.getCars());
         this.lastRound = racingInput.getCountOfRound();
         this.moveable = moveable;
