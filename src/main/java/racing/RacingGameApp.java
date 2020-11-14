@@ -13,6 +13,6 @@ public class RacingGameApp {
             ResultView.printCarNameAndPosition(cars);
             System.out.println();
         }
-        ResultView.printVictoryCarNames(cars.getVictoryCarNames());
+        ResultView.printVictoryCarNames(cars);
     }
 }

@@ -38,18 +38,11 @@ public class Cars {
         return carList;
     }
 
-    private int getVictoryPosition() {
+    public int getVictoryPosition() {
         return carList.stream()
                 .sorted()
                 .findFirst()
                 .get()
                 .getPosition();
-    }
-
-    public String getVictoryCarNames() {
-        return carList.stream()
-                .filter(car -> car.getPosition() >= getVictoryPosition())
-                .map(Car::getName)
-                .collect(Collectors.joining(","));
     }
 }

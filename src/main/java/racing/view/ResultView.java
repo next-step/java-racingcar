@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.Car;
 import racing.domain.Cars;
 
 import java.util.stream.Collectors;
@@ -22,7 +23,14 @@ public class ResultView {
                 .collect(Collectors.joining());
     }
 
-    public static void printVictoryCarNames(String victoryCarNames) {
-        System.out.println(victoryCarNames + "가 최종우승 했습니다.");
+    public static void printVictoryCarNames(Cars cars) {
+        System.out.println(getVictoryCarNames(cars) + "가 최종우승 했습니다.");
+    }
+
+    private static String getVictoryCarNames(Cars cars) {
+        return cars.getCarList().stream()
+                .filter(car -> car.getPosition() >= cars.getVictoryPosition())
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
     }
 }
