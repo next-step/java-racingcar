@@ -21,12 +21,9 @@
  ## 기능목록
  * CarRacingGame : 자동차 경주에 따른 정보를 관리하는 객체
     * 메소드
-        * playRacingGame() - 게임 시작 메소드
-        * drawRasingWinner() - 자동차 경주 우승자 그려주는 메소드
-        * drawRasingGame() - 자동자 경주 기록 그려주는 메소드
+        * RunPlayGame() - 게임 시작 메소드
     * 주요 변수
-        * String[] raceCarNames - 경주에 참여한 자동차 이름(배열)
-        * HashMap<String, List<CarRaceMoveInfo>> carReacMoveInfoList - 자동차 이름에 따른 경주기록
+        * carsScore - 자동차 이름에 따른 경주기록
         * int raceTryCount - 시도횟수
 * Car : 자동차 정보를 관리하는 객체
     * 메소드
@@ -34,14 +31,14 @@
     * 주요 변수
         * carName - 자동차 이름
         * moveDistance - 이동 거리
-* CarDataCheck : 입력된값 체크
-    * 메소드
-        * checkTryCount - 시도횟수값 체크
-        * checkName - 이름을 올바르게 입력했는지 체크
+* CarName : 자동차이름 입력된 값 관리 객체
+* TryCount : 자동차움직임 시도횟수 값 관리 객체
 * CarRasingDraw : 자동차를 그려줄때 도움주는 클래스
     * 메소드
-        * changeNumberToChar - 이동거리만큼 '-' 반환
-* CarDataCheckTest : 입력값 테스트
+        * printWinner - 경기당 이동거리만큼 '-' 그려주기
+        * printWinner - 우승자 그려주기 
+* CarNameTest : 입력값 테스트
+* TryCountTest : 입력값 테스트
 * CarTest : car객체 테스트
 
 ## 온라인 코드 리뷰 과정
