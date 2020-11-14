@@ -2,6 +2,8 @@ package study.racing4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racing4.domain.Car;
+import study.racing4.domain.CarCollection;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,6 @@
 package study.racing4.view;
 
-import study.racing4.RacingInput;
+import study.racing4.domain.RacingInput;
 
 import java.util.Scanner;
 

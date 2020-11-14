@@ -2,6 +2,7 @@ package study.racing4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racing4.domain.MovingStrategy;
 
 import static org.assertj.core.api.Assertions.*;
 

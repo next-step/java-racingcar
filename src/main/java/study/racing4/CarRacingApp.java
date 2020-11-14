@@ -1,5 +1,7 @@
 package study.racing4;
 
+import study.racing4.domain.CarRacing;
+import study.racing4.domain.RandomMovingStrategy;
 import study.racing4.view.InputView;
 import study.racing4.view.ResultView;
 
