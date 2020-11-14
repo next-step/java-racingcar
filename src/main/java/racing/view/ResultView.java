@@ -29,7 +29,7 @@ public class ResultView {
 
     private static String getVictoryCarNames(Cars cars) {
         return cars.getCarList().stream()
-                .filter(car -> car.getPosition() >= cars.getVictoryPosition())
+                .filter(car -> car.isGreaterOrEqualsPosition(cars.getVictoryPosition()))
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
     }

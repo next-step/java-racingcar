@@ -43,4 +43,8 @@ public class Car implements Comparable {
         Car c = (Car) o;
         return c.getPosition() - this.getPosition();
     }
+
+    public boolean isGreaterOrEqualsPosition(int position) {
+        return this.position >= position;
+    }
 }
