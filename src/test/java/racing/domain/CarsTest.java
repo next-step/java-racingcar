@@ -14,10 +14,10 @@ class CarsTest {
     }
 
     @Test
-    void getVictoryCarNames() {
+    void getVictoryPosition() {
         Cars cars = Cars.from("test, 1, 2, 3");
-        Assertions.assertThat(cars.getVictoryCarNames())
-                .isEqualTo("test, 1, 2, 3");
+        Assertions.assertThat(cars.getVictoryPosition())
+                .isEqualTo(0);
     }
 
     @Test
