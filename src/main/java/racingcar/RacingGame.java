@@ -6,13 +6,13 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private final int rounds;
-    private final List<Car> carList;
+    private final List<Car> cars;
     private final List<RaceRecord> raceRecords;
 
     final static int START_LOCATION = 0;
 
     public RacingGame(int cars, int rounds) {
-        this.carList = makeCars(cars);
+        this.cars = makeCars(cars);
         this.rounds = rounds;
         this.raceRecords = new ArrayList<>();
     }
@@ -41,20 +41,12 @@ public class RacingGame {
     }
 
     private void playSingleRound(int round) {
-        for (Car car : carList) {
-            tryToMove(car);
-        }
+        cars.forEach(Car::tryToMove);
         raceRecords.add(new RaceRecord(round, saveRecords()));
     }
 
-    private void tryToMove(Car car) {
-        if (RandomNumberUtil.getRandomNumber() >= 4) {
-            car.move();
-        }
-    }
-
     private List<Integer> saveRecords() {
-        return carList.stream().map(Car::getLocation)
+        return cars.stream().map(Car::getLocation)
                 .collect(Collectors.toList());
     }
 }
