@@ -17,8 +17,8 @@ public class Cars {
     public static Cars from(String nameOfCars) {
         validNameOfCars(nameOfCars);
         List<Car> tempCarList = new ArrayList<>();
-        String[] arrCarNams = nameOfCars.split(",");
-        for (String carName : arrCarNams) {
+        String[] arrCarNames = nameOfCars.split(",");
+        for (String carName : arrCarNames) {
             tempCarList.add(new Car(carName));
         }
         return new Cars(tempCarList);
