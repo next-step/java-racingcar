@@ -1,16 +1,14 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DelimiterList {
 
     private List<String> delimiter;
     private final static String COMMA = ",";
     private final static String COLON = ":";
-
+    private final static String VERTICAL_BAR = "|";
 
     public DelimiterList() {
         this.delimiter = new ArrayList<>();
@@ -25,11 +23,6 @@ public class DelimiterList {
     }
 
     public String toSplitRegex() {
-        return delimiter.stream()
-                .collect(Collectors.joining("|"));
-    }
-
-    public Iterator<String> iterator() {
-        return this.delimiter.iterator();
+        return String.join(VERTICAL_BAR, delimiter);
     }
 }
