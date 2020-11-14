@@ -15,6 +15,8 @@ public class InputView {
         System.out.println("시도할 횟수는 몇회 인가요?");
         racingRule.add(sc.nextInt());
 
+        sc.close();
+        
         return racingRule;
     }
     
