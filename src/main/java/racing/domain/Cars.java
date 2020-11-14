@@ -31,9 +31,7 @@ public class Cars {
     }
 
     public void nextRound() {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(new RandomMoveStrategy());
-        }
+        carList.forEach(car -> car.move(new RandomMoveStrategy()));
     }
 
     public List<Car> getCarList() {
