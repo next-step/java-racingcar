@@ -8,8 +8,9 @@ public class Award {
 
     public ArrayList<String> getWinnerList(Cars cars){
         ArrayList<String> winnerList = new ArrayList<>();
-        for(Car car: cars.getCars()){
-            checkWinner(winnerList, car);
+
+        for(int i = 0; i < cars.getCarsSize(); i++){
+            checkWinner(winnerList, cars.getCar(i));
         }
         return winnerList;
     }

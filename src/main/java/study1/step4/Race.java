@@ -19,10 +19,10 @@ public class Race {
     public void race(){
         Decision moveDecisionMaker = new MoveDecision();
 
-        ResultView.startRace(cars.getCars());
+        ResultView.startRace(cars);
         for(int i = 0; i < roundCnt; i++){
             cars.race(moveDecisionMaker);
-            ResultView.show(cars.getCars());
+            ResultView.show(cars);
         }
 
         Award award = new Award();

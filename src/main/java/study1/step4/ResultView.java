@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class ResultView {
-    public static void startRace(List<Car> cars){
+    public static void startRace(Cars cars){
         System.out.println("실행 결과");
         show(cars);
     }
 
-    public static void show(List<Car> cars){
-        for(Car car: cars){
+    public static void show(Cars cars){
+        for(int i = 0; i < cars.getCarsSize(); i++){
+            Car car = cars.getCar(i);
             System.out.println(car.racer + ": " + getCarResult(car));
         }
         System.out.println("");

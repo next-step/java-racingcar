@@ -16,7 +16,11 @@ public class Cars {
         this.cars.forEach(car -> car.move(moveDecisionMaker));
     }
 
-    public List<Car> getCars(){
-        return cars;
+    public int getCarsSize() {
+        return cars.size();
+    }
+
+    public Car getCar(int index){
+        return cars.get(index);
     }
 }

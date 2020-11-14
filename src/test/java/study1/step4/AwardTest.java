@@ -33,13 +33,11 @@ public class AwardTest {
 
         assertThat(winnerList).isEqualTo(winnerListAnswer);
 
-        List<Car> carsList = cars.getCars();
-
         // second racer 우승
         winnerListAnswer = new ArrayList<>();
         winnerListAnswer.add(second_race);
 
-        Car secondCar = carsList.get(1);
+        Car secondCar = cars.getCar(1);
 
         secondCar.move(moveGenerator);
         secondCar.move(moveGenerator);
@@ -53,9 +51,7 @@ public class AwardTest {
         winnerListAnswer.add(first_race);
         winnerListAnswer.add(second_race);
 
-        carsList = cars.getCars();
-
-        Car firstCar = carsList.get(0);
+        Car firstCar = cars.getCar(0);
         firstCar.move(moveGenerator);
         firstCar.move(moveGenerator);
         firstCar.move(moveGenerator);
