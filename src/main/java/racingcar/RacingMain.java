@@ -16,6 +16,7 @@ public class RacingMain {
         move = sc.nextInt();
 
         
+        
     }
 
 }
