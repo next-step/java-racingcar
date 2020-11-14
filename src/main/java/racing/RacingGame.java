@@ -9,9 +9,7 @@ public class RacingGame {
     }
 
     public void go() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.getCar(i).move(new MoveStrategyImpl());
-        }
+        cars.go();
     }
 
     public Car getCar(int testCarNumber) {

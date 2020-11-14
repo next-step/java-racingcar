@@ -21,6 +21,12 @@ public class Cars {
         return cars.get(index);
     }
 
+    public void go() {
+        for (Car car : cars) {
+            car.move(new MoveStrategyImpl());
+        }
+    }
+
     public int size() {
         return cars.size();
     }
