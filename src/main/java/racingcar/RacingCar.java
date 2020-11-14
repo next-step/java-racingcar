@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 
 public class RacingCar {
+    private final static int MAX_NAME_LENGTH = 5;
     private int distance;
     private String name;
 
@@ -11,7 +12,7 @@ public class RacingCar {
     }
 
     public RacingCar(String name, int distance) {
-        if (name.trim().length() > 5) {
+        if (name.trim().length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다. ");
         }
         this.name = name;
