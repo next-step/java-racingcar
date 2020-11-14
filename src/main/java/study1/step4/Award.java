@@ -9,20 +9,19 @@ public class Award {
     public ArrayList<String> getWinnerList(Cars cars){
         ArrayList<String> winnerList = new ArrayList<>();
         for(Car car: cars.getCars()){
-            winnerList = checkWinner(winnerList, car);
+            checkWinner(winnerList, car);
         }
         return winnerList;
     }
 
-    private ArrayList<String> checkWinner(ArrayList<String> winnerList, Car car){
+    private void checkWinner(ArrayList<String> winnerList, Car car){
         if(car.distance == this.highestScore){
             winnerList.add(car.racer);
         }
         if(car.distance > this.highestScore){
             this.highestScore = car.distance;
-            winnerList = new ArrayList<>();
+            winnerList.clear();
             winnerList.add(car.racer);
         }
-        return winnerList;
     }
 }
