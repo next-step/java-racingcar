@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +21,7 @@ public class RacingCarTest {
     private static final int DEFAULT_DISTANCE = 0;
     private static final int MOVE = 1;
     private static final int NOT_MOVE = 0;
-    private final Round round = new Round(3);
+    private final int round = 3;
 
     private final String[] nameOfCars = {"car1", "car2", "car3", "car4"};
     private RacingCars racingCars;
@@ -58,7 +59,7 @@ public class RacingCarTest {
     @DisplayName("게임을 한 번 수행할 때마다 만들어진 Car 는 이동 또는 정지 여부")
     @ParameterizedTest
     @MethodSource("moveCarsCase")
-    void moveOrStopCar(boolean moveOrNot, int distance, Round round) {
+    void moveOrStopCar(boolean moveOrNot, int distance, int round) {
         RacingCars racingCars = RacingCars.of(nameOfCars, () -> moveOrNot,round);
         racingCars.run();
         assertThat(racingCars.getCars()
@@ -69,8 +70,8 @@ public class RacingCarTest {
 
     private static Stream<Arguments> moveCarsCase() {
         return Stream.of(
-                Arguments.of(true, MOVE,new Round(3)),
-                Arguments.of(false, NOT_MOVE,new Round(7))
+                Arguments.of(true, MOVE,3),
+                Arguments.of(false, NOT_MOVE,7)
         );
     }
 

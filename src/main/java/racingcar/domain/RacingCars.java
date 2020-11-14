@@ -9,12 +9,13 @@ import racingcar.behavior.MovingStrategy;
 public class RacingCars {
     private final List<Car> cars;
     private final MovingStrategy movingStrategy;
-    private Round round;
+    private final int finalRound;
+    private int round;
 
-    private RacingCars(List<Car> cars, MovingStrategy movingStrategy,Round round) {
+    private RacingCars(List<Car> cars, MovingStrategy movingStrategy, int finalRound) {
         this.cars = cars;
         this.movingStrategy = movingStrategy;
-        this.round = round;
+        this.finalRound = finalRound;
     }
 
     public static RacingCars of(String[] nameOfCars, MovingStrategy movingStrategy, int round) {
