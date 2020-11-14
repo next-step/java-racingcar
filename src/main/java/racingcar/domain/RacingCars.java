@@ -29,6 +29,19 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public List<Car> progressRound() {
+        run();
+        return getCars();
+    }
+
+    int nextRound() {
+        return round = round + 1;
+    }
+
+    public boolean isLastRound() {
+        return finalRound == round;
+    }
+
     int getMaxPosition() {
         return cars.stream()
                 .mapToInt(Car::getPosition)
@@ -45,7 +58,7 @@ public class RacingCars {
 
     public void run() {
         cars.forEach(this::moveCar);
-        round.nextRound();
+        nextRound();
     }
 
     private void moveCar(final Car car) {
