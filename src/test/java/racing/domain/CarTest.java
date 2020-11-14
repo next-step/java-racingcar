@@ -43,4 +43,10 @@ class CarTest {
             new Car("123456");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void isGreaterOrEqualsPosition() {
+        Assertions.assertThat(car.isGreaterOrEqualsPosition(0))
+                .isEqualTo(true);
+    }
 }
