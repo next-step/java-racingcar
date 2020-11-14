@@ -46,7 +46,7 @@ class StringCalculatorTest {
     })
     public void test1(String value) {
         Integer result = this.stringCalculator.enterExpression(value);
-        assertThat(result).isEqualTo(value);
+        assertThat(result).isEqualTo(Integer.parseInt(value));
     }
 
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.")
@@ -84,26 +84,17 @@ class StringCalculatorTest {
     }
 
     @DisplayName("숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다. 커스텀 구분자를 사용 가능하다.")
-    @ParameterizedTest
-    @CsvSource(value = {
-            "//;\\n1;2-3",
-            "//;\\n4;5-9",
-            "//;\\n7;13-20"
-    },
-            delimiter = '-'
-    )
-    public void test4(String expression, Integer expected) {
-        Integer result = this.stringCalculator.enterExpression(expression);
-        assertThat(result).isEqualTo(expected);
+    @Test
+    public void test4() {
+        Integer result = this.stringCalculator.enterExpression("//;\n7;13");
+        assertThat(result).isEqualTo(20);
     }
 
     @DisplayName("음수를 전달할 경우 RuntimeException 예외가 발생해야 한다.")
     @ParameterizedTest
     @CsvSource(value = {
             "-1,2,3"
-    },
-            delimiter = '-'
-    )
+    })
     public void test5(String expression, Integer expected) {
         assertThatThrownBy(
                 () -> this.stringCalculator.enterExpression(expression)
