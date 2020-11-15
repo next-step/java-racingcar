@@ -1,44 +1,45 @@
 package racing.ui;
 
-import racing.RacingGame;
+import racing.Car;
+import racing.Cars;
+import racing.RacingRound;
 
 public class ResultView {
 
     private static final String FORWARD_MARK = "-";
-
-    public static void raceResult(int participationCars, int numberOfAttempt) {
-        printReady();
-        printStart(participationCars, numberOfAttempt);
-    }
 
     private static void printReady() {
         System.out.println("실행결과");
         System.out.println();
     }
 
-    private static void printStart(int participationCars, int numberOfAttempt) {
-        RacingGame racingGame = new RacingGame(participationCars);
+    public static void output(RacingRound racingRound) {
+        printReady();
+        printStart(racingRound);
+    }
 
-        for (int i = 0; i < numberOfAttempt; i++) {
-            racingGame.go();
-            printManager(racingGame);
-            printAttemptDividingLine();
+    private static void printStart(RacingRound racingRound) {
+        int roundSize = racingRound.size();
+        for (int round = 0; round < roundSize; round++) {
+            printManager(racingRound, round);
         }
     }
 
-
-    private static void printManager(RacingGame racingGame) {
-        for (int i = 0; i < racingGame.getCarsSize(); i++) {
-            printResult(racingGame, i);
+    private static void printManager(RacingRound racingRound, int round) {
+        Cars cars = racingRound.getRoundResult(round);
+        int carsSize = cars.size();
+        for (int i = 0; i < carsSize; i++) {
+            print(cars.getCar(i));
         }
+        printAttemptDividingLine();
     }
 
-    private static void printResult(RacingGame racingGame, int number) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < racingGame.getCar(number).getPosition(); i++) {
-            stringBuilder.append(FORWARD_MARK);
+    private static void print(Car car) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < car.getPosition(); i++) {
+            sb.append(FORWARD_MARK);
         }
-        System.out.println(stringBuilder.toString());
+        System.out.println(sb.toString());
     }
 
     private static void printAttemptDividingLine() {

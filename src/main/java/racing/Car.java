@@ -4,8 +4,8 @@ public class Car {
 
     private TravelDistance travelDistance;
 
-    public Car() {
-        this.travelDistance = new TravelDistance();
+    public Car(int oldPositions) {
+        this.travelDistance = new TravelDistance(oldPositions);
     }
 
     public void move(MoveStrategy moveStrategy) {

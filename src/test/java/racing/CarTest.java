@@ -10,7 +10,7 @@ class CarTest {
     @Test
     void forwardMove() {
         // given
-        Car car = new Car();
+        Car car = new Car(0);
 
         // when
         car.move(() -> true);
@@ -23,7 +23,7 @@ class CarTest {
     @Test
     void stopMove() {
         // given
-        Car car = new Car();
+        Car car = new Car(0);
 
         // when
         car.move(() -> false);

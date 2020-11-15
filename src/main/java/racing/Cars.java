@@ -7,13 +7,13 @@ public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(int participationCars) {
-        createCars(participationCars);
+    public Cars(int participationCars, List<Integer> oldPositions) {
+        createCars(participationCars, oldPositions);
     }
 
-    private void createCars(int participationCars) {
+    private void createCars(int participationCars, List<Integer> oldPositions) {
         for (int i = 0; i < participationCars; i++) {
-            cars.add(new Car());
+            cars.add(new Car(oldPositions.get(i)));
         }
     }
 

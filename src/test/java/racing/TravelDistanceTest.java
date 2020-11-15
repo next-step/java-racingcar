@@ -25,7 +25,7 @@ class TravelDistanceTest {
         TravelDistance travelDistance;
 
         // when
-        travelDistance = new TravelDistance().move();
+        travelDistance = new TravelDistance(0).move();
 
         // then
         assertThat(travelDistance).isEqualTo(new TravelDistance(1));

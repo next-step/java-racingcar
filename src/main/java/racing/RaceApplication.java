@@ -9,6 +9,7 @@ public class RaceApplication {
         int participationCars = InputView.inputParticipationCars();
         int numberOfAttempt = InputView.inputNumberOfAttempt();
 
-        ResultView.raceResult(participationCars ,numberOfAttempt);
+        RacingRound racingRound = new RacingRound(participationCars, numberOfAttempt);
+        ResultView.output(racingRound);
     }
 }

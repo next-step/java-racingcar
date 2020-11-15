@@ -6,10 +6,6 @@ public class TravelDistance {
 
     private final int position;
 
-    public TravelDistance() {
-        this(0);
-    }
-
     public TravelDistance(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("이동거리는 0 보다 작을 수 없습니다.");
