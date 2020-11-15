@@ -1,20 +1,22 @@
 package carRace.step5.domain;
 
-import carRace.step5.domain.util.TryCount;
 import carRace.step5.view.CarRasingDraw;
 
 import java.util.*;
 
 public class CarRacingGame {
     private static Random random = new Random();
+
     private List<Car> carsScore = new ArrayList<>();
     private static int raceTryCount;
+    private String[] carNames;
 
-    public CarRacingGame(int raceTryCount) {
+    public CarRacingGame(int raceTryCount, String[] carNames) {
         this.raceTryCount = raceTryCount;
+        this.carNames = carNames;
     }
 
-    public void RunPlayGame(String[] carNames) {
+    public void RunPlayGame() {
         makeCars(carNames);
         playRasingGame();
         drawRasingWinner();
@@ -28,9 +30,9 @@ public class CarRacingGame {
     }
 
     private void repeatRaceTryCount() {
-        for (int i = 0; i < carsScore.size(); i++) {
-            carsScore.get(i).moveCar(random.nextInt(10));
-            CarRasingDraw.printCarDistance(carsScore.get(i).getCarName(), carsScore.get(i).getMoveDistance());
+        for (Car car : carsScore) {
+            car.moveCar(random.nextInt(10));
+            CarRasingDraw.printCarDistance(car.getCarName(), car.getMoveDistance());
         }
     }
 
@@ -75,5 +77,13 @@ public class CarRacingGame {
             Car car = new Car(carName);
             carsScore.add(car);
         }
+    }
+
+    public String[] getCarNames() {
+        return carNames;
+    }
+
+    public static int getRaceTryCount() {
+        return raceTryCount;
     }
 }
