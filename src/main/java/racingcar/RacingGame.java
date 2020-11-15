@@ -7,7 +7,7 @@ import java.util.Map;
 public class RacingGame {
     ResultView resultView = new ResultView();
 
-    Map<Integer, Integer> joinCar = new HashMap<Integer, Integer>();
+    Map<Integer, Integer> joinCar = new HashMap<>();
     int move = 0;
 
     public void playRacing(List<Integer> input){
@@ -25,16 +25,20 @@ public class RacingGame {
 
     public void moveCar(){
         for(int j = 0; j < move; j++){
-            for(int k = 0; k < joinCar.size(); k++){
-                if(tryMoveResult() == true){
-                    joinCar.put(k, joinCar.get(k)+1);
-                }
-            }
+            tryToMoveResult();
             resultView.racingResult(joinCar);
         }
     }
 
-    public boolean tryMoveResult(){
+    public void tryToMoveResult(){
+        for(int k = 0; k < joinCar.size(); k++){
+            if(tryToMove() == true){
+                joinCar.put(k, joinCar.get(k)+1);
+            }
+        }
+    }
+
+    public boolean tryToMove(){
         boolean result = false;
         int random = (int)(Math.random()*9);
 
