@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 
 public class RacingCarController {
     private List<Car> cars;
+    private int carMoveCount = 0;
 
     public List<Car> start(String[] carNames) {
         CarUtils.carNameMaxValid(carNames);
@@ -29,9 +30,11 @@ public class RacingCarController {
         return cars;
     }
 
-    public void carMove(int numberOfMove) {
-        IntStream.range(0, numberOfMove)
-                .mapToObj(i -> this.carMove())
-                .forEach(RacingCarUi::resultPrint);
+    public int carMove(int numberOfMove) {
+        IntStream.range(0, numberOfMove).forEach(count -> {
+            carMoveCount++;
+            RacingCarUi.resultPrint(this.carMove());
+        });
+        return carMoveCount;
     }
 }
