@@ -4,15 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> carList;
+    private final List<Car> carList = new ArrayList<>();
 
+
+    public Cars(String names){
+
+        String[] nameArr = names.split(",");
+
+        for (String name : nameArr) {
+            this.carList.add(new Car(name.trim()));
+        }
+    }
     public Cars(String[] names){
-        carList= new ArrayList<>();
 
         for (String name : names) {
             this.carList.add(new Car(name));
         }
     }
+
+    public Cars(List<String> names){
+        for(String name : names){
+            this.carList.add(new Car(name));
+        }
+    }
+
 
     public Car oneOfCars(int count){
         return this.carList.get(count);
