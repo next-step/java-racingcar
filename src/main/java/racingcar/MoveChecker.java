@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Random;
 
-public class MoveCheckor{
+class MoveChecker{
 
     final private int baseLineNum = 4;
     private int randomNum;
