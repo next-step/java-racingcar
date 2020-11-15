@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 public class Car {
-    private String name;
+    private final String name;
     private int distance;
-    private List<Integer> recordList;
+    private final List<Integer> recordList;
 
     public Car(String name){
         this.name = name;
         this.distance = 0;
-        this.recordList = new ArrayList<Integer>();
+        this.recordList = new ArrayList<>();
     }
     public List<Integer> getRecordList(){
         return this.recordList;
