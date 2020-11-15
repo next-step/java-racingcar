@@ -1,9 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RacingGame {
     ResultView resultView = new ResultView();
@@ -12,14 +10,14 @@ public class RacingGame {
     List<Car> carList = new ArrayList<>();
     int move = 0;
 
-    public void playRacing(List<Integer> input){
-        sortForRacing(input);
+    public void setInRacing(List<Integer> input){
+        placetForRacing(input);
         System.out.println("실행 결과");
         moveCar();
     }
 
-    public void sortForRacing(List<Integer> input){
-        for(int i = 0; i < input.get(0); i++){
+    public void placetForRacing(List<Integer> input){
+        for(int i = 0; i < input.size(); i++){
             Car car = new Car(i);
             carList.add(car);
         }
