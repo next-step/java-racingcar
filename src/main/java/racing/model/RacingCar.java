@@ -1,9 +1,11 @@
 package racing.model;
 
 public class RacingCar implements Car {
-    private Name name;
+
     private static final int MOVEABLE_NUMBER = 4;
-    private int location = 0;
+
+    private Name name;
+    private Position position = new Position();
 
     public RacingCar(String name) {
         this.name = new Name(name);
@@ -12,13 +14,13 @@ public class RacingCar implements Car {
     @Override
     public void move(int fuel) {
         if (MOVEABLE_NUMBER <= fuel) {
-            location++;
+            position.increase();
         }
     }
 
     @Override
     public int currentLocation() {
-        return location;
+        return position.getPosition();
     }
 
     public String getCarName() {
