@@ -1,9 +1,9 @@
 package race.ui;
 
-import race.logic.RaceScore;
+import race.logic.LapScore;
+import race.logic.LapScores;
 
 import java.io.PrintStream;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -19,7 +19,7 @@ public class OutputView {
         this.out = out;
     }
 
-    public void showScore(List<RaceScore> scores) {
+    public void showScore(LapScores scores) {
         scores.forEach(score -> {
             out.print(score.getName() + " : ");
             out.println(POSITION_MARKER.repeat(score.getPosition() + 1));
@@ -27,9 +27,9 @@ public class OutputView {
         out.println();
     }
 
-    public void showWinner(List<RaceScore> scores) {
-        String winners = scores.stream()
-                .map(RaceScore::getName)
+    public void showWinner(LapScores scores) {
+        String winners = scores.getFrontLine()
+                .map(LapScore::getName)
                 .collect(Collectors.joining(", "));
         out.println(winners + "가 최종 우승했습니다.");
     }

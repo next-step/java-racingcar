@@ -1,10 +1,10 @@
 package race.logic;
 
-public class RaceScore {
+public class LapScore {
     private final String name;
     private final int position;
 
-    RaceScore(String name, int position) {
+    LapScore(String name, int position) {
         this.name = name;
         this.position = position;
     }
