@@ -12,6 +12,12 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int score, int totalScore) {
+        this.name = name;
+        this.score = score;
+        this.totalScore = totalScore;
+    }
+
     /* 전진 여부 로직 */
     public void go (int number) {
         if (number >= 4) {

@@ -4,8 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> cars = new ArrayList<>();
-    private final List<String> winnerNames = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
+    private List<Car> winners = new ArrayList<>();
+
+    public Cars() {
+
+    }
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
 
     /* 입력값 세팅 */
     public void split(String inputCarNames) {
@@ -20,12 +27,6 @@ public class Cars {
         int max = getMaxTotalScore();
         for (Car car : cars) {
             compareMaxTotalScoreAddWinner(car, max);
-        }
-    }
-    /* 최대스코어 비교 및 우승자 추가 */
-    private void compareMaxTotalScoreAddWinner(Car car, int max) {
-        if (car.getTotalScore() == max) {
-            winnerNames.add(car.getName());
         }
     }
     /* 최대 스코어 추출 */
@@ -43,6 +44,12 @@ public class Cars {
         }
         return max;
     }
+    /* 최대스코어 비교 및 우승자 추가 */
+    private void compareMaxTotalScoreAddWinner(Car car, int max) {
+        if (car.getTotalScore() == max) {
+            winners.add(car);
+        }
+    }
 
     public int getSize() {
         return this.cars.size();
@@ -56,7 +63,7 @@ public class Cars {
         return this.cars.get(i);
     }
 
-    public List<String> getWinnerNames() {
-        return winnerNames;
+    public List<Car> getWinners() {
+        return winners;
     }
 }

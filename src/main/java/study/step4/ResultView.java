@@ -1,5 +1,7 @@
 package study.step4;
 
+import java.util.List;
+
 public class ResultView {
     /* 메시지 출력 */
     public static void printMessage(String message) {
@@ -30,6 +32,11 @@ public class ResultView {
 
     /* 우승자 출력 */
     public static void printWinner(Cars cars) {
-        printMessage(String.join(",", cars.getWinnerNames()) + "가 최종 우승했습니다.");
+        String[] winnerNames = cars
+                .getWinners()
+                .stream()
+                .map(winner -> winner.getName())
+                .toArray(String[]::new);
+        printMessage(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 }
