@@ -1,37 +1,44 @@
 package racingcar;
 
-import racingcar.application.RacingSimulator;
-import racingcar.domain.Car;
-import racingcar.application.CarsGenerator;
+import racingcar.domain.RacingGame;
+import racingcar.domain.car.Cars;
+import racingcar.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class MainSimulator {
+
+    private static final String SPLIT_LETTER = ",";
 
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
-        CarsGenerator carsGenerator = new CarsGenerator();
-        RacingSimulator racingSimulator = new RacingSimulator();
+        RacingGame racingGame = new RacingGame();
+        Cars preRaceCars;
+        Cars postRaceCars = new Cars();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int countOfCar = inputView.insertCount();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int countOfRacing = inputView.insertCount();
+        String names = inputView.getCarNames();
+        int racingCount = inputView.getRacingCount();
 
-        Car[] cars = carsGenerator.generateCars(countOfCar);
+        List<String> carNames = Arrays.stream(names.split(SPLIT_LETTER)).collect(Collectors.toList());
+        preRaceCars = racingGame.createCars(carNames);
 
-        if (cars.length == 0) {
-            return;
+        resultView.printHeader();
+
+        for (int i = 0; i < racingCount; i++) {
+            postRaceCars = racingGame.race(preRaceCars, new RandomMovingStrategy());
+            resultView.printCars(postRaceCars);
         }
 
-        System.out.println("실행 결과");
+        Cars winners = racingGame.getWinners(postRaceCars);
+        resultView.printWinners(winners);
 
-        for (int i = 0; i < countOfRacing; i++) {
-            racingSimulator.race(cars);
-            resultView.printDistanceOfCar(cars);
-            System.out.println("");
-        }
+
     }
+
 }
