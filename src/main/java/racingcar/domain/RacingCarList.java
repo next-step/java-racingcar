@@ -30,7 +30,6 @@ public class RacingCarList {
 
     public List<CarDTO> findWinners() {
         return findDuplicatePositionCar(this.findMaxPosition());
-
     }
 
     private List<CarDTO> findDuplicatePositionCar(int maxPosition) {

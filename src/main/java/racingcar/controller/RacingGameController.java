@@ -1,39 +1,46 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
 import racingcar.domain.CarDTO;
-import racingcar.domain.RacingCarList;
+import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameController {
-    private RacingCarList racingCarList;
+
+    private RacingGame racingGame;
+    private InputView inputView;
+    private ResultView resultView;
 
     public RacingGameController() {
+        this.racingGame = new RacingGame();
+        this.inputView = new InputView();
+        this.resultView = new ResultView();
     }
 
-    public void createCarBy(String racingCarNameList) {
-        this.racingCarList = new RacingCarList(getRacingCarList(split(racingCarNameList)));
+    public void run() {
+        this.startRacingGame();
+        this.race();
+        this.findWinner();
     }
 
-    private List<Car>  getRacingCarList(String[] carNames) {
-        List<Car> racingCars = new ArrayList<>();
-        for (String carName : carNames) {
-            racingCars.add(new Car(carName));
+    public void startRacingGame() {
+        String racingCarNameList = inputView.findRacingCarNameList();
+        racingGame.createCarBy(racingCarNameList);
+    }
+
+    public void race() {
+        int repeatCount = inputView.getRepeatCount();
+
+        for (int count = 0; count < repeatCount; count++) {
+            List<CarDTO> race = racingGame.race();
+            resultView.showRacingResult(race);
         }
-        return racingCars;
     }
 
-    private String[] split(String racingCarNameList) {
-        return racingCarNameList.split(",");
-    }
-
-    public List<CarDTO> race() {
-        return racingCarList.race();
-    }
-
-    public List<CarDTO> findWinner() {
-        return racingCarList.findWinners();
+    public void findWinner() {
+        List<CarDTO> winners = racingGame.findWinner();
+        resultView.show(winners);
     }
 }

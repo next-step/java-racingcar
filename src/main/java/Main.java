@@ -1,12 +1,12 @@
-import racingcar.RacingGame;
+import racingcar.controller.RacingGameController;
 
 public class Main {
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.run();
-        racingGame.startRacingGame();
-        racingGame.race();
-        racingGame.findWinner();
+        RacingGameController racingGameController = new RacingGameController();
+        racingGameController.run();
+        racingGameController.startRacingGame();
+        racingGameController.race();
+        racingGameController.findWinner();
     }
 }
