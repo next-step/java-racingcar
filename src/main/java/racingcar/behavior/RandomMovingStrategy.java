@@ -9,7 +9,7 @@ public class RandomMovingStrategy implements MovingStrategy {
     private final IntSupplier randomSupplier;
 
     public RandomMovingStrategy() {
-        this.randomSupplier = ()-> new RandomNumber(MAX_NUM+1).getBoundNumber();
+        this.randomSupplier = () -> new RandomNumber(MAX_NUM + 1).getBoundNumber();
     }
 
     @Override
