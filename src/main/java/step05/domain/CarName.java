@@ -48,4 +48,8 @@ public class CarName {
                 Objects.equals(maxLength, carName.maxLength);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, maxLength);
+    }
 }

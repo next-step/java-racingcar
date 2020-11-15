@@ -5,6 +5,7 @@ import validator.NumberValidator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Race {
     private final int numberOfMoves;
@@ -46,4 +47,8 @@ public class Race {
                 cars.equals(race.cars);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberOfMoves, cars);
+    }
 }

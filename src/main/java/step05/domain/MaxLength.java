@@ -30,4 +30,8 @@ public class MaxLength {
         return maxLength == maxLength1.maxLength;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(maxLength);
+    }
 }

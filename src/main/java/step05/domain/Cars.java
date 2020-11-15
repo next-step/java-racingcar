@@ -4,6 +4,7 @@ import step03.strategy.MoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -76,6 +77,8 @@ public class Cars {
         return cars.equals(cars1.cars);
     }
 
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
+    }
 }
