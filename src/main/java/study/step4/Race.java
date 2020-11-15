@@ -40,7 +40,7 @@ public class Race {
     }
 
     /* 1~10 사이 랜덤숫자 추출 */
-    public static int randomNumber () {
+    private static int randomNumber () {
         return random.nextInt(10);
     }
 
