@@ -1,10 +1,12 @@
 package step5.view;
 
+import step5.controller.RacingCarController;
 import step5.domain.Car;
 import step5.domain.RacingWinner;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class RacingCarUi {
 
@@ -28,6 +30,12 @@ public class RacingCarUi {
                 .map(Car::toString)
                 .forEach(System.out::println);
         System.out.println();
+    }
+
+    public static void resultPrint(int numberOfMove) {
+        IntStream.range(0, numberOfMove)
+                .mapToObj(i -> RacingCarController.carMove())
+                .forEach(RacingCarUi::resultPrint);
     }
 
     public static void finalWinner(List<Car> cars) {

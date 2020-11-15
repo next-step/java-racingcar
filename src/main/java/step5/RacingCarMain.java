@@ -18,8 +18,8 @@ public class RacingCarMain {
         close();
 
         List<Car> cars = racingCarController.start(carNames);
-        racingCarController.carMove(numberOfMove);
 
+        resultPrint(racingCarController.carMove(numberOfMove));
         finalWinner(cars);
     }
 }
