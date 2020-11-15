@@ -19,22 +19,14 @@ public class InputView {
         scanner = new Scanner(System.in);
     }
 
-    public int inputCarCountMessage () {
-        printInputCarCountMessage();
-        return inputCarCount();
-    }
-
     public int inputTryCountMessage () {
         printInputTryCountMessage();
         return inputTryCount();
     }
 
-    private void printInputCarCountMessage () {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-    }
-
-    private int inputCarCount () {
-        return isDigit(scanner.nextLine());
+    public String inputCarNamesMessage () {
+        printInputCarNamesMessage();
+        return inputCarNames();
     }
 
     private void printInputTryCountMessage () {
@@ -43,6 +35,14 @@ public class InputView {
 
     private int inputTryCount () {
         return isDigit(scanner.nextLine());
+    }
+
+    private void printInputCarNamesMessage () {
+        System.out.println("자동차 이름들을 입력해주세요. (,로 구분)");
+    }
+
+    private String inputCarNames () {
+        return scanner.nextLine();
     }
 
     public int isDigit (String number) {

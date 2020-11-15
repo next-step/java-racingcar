@@ -17,10 +17,12 @@ import java.util.Objects;
 public class Race {
     private Cars cars;
 
-    public void createCars (int carCount) {
+    public void createCars (String inputNames) {
         List originalCars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            originalCars.add(new Car());
+        String[] names = inputNames.split(",");
+
+        for (String name : names) {
+            originalCars.add(new Car(name));
         }
 
         cars = new Cars(originalCars);

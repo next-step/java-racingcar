@@ -14,8 +14,10 @@ import java.util.Objects;
 
 public class Car {
     private Position position;
+    private Name name;
 
-    public Car () {
+    public Car (String name) {
+        this.name = new Name(name);
         this.position = new Position();
     }
 
@@ -30,6 +32,7 @@ public class Car {
     }
 
     public void printCar () {
+        name.print();
         position.print();
         System.out.println();
     }
@@ -39,11 +42,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position);
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode () {
-        return Objects.hash(position);
+        return Objects.hash(position, name);
     }
 }

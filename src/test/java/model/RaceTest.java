@@ -2,8 +2,7 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,13 +14,12 @@ class RaceTest {
         race = new Race();
     }
 
-    @ParameterizedTest
+    @Test
     @DisplayName("자동차 생성 테스트")
-    @ValueSource(ints = {3, 5})
-    void createCars (int carCount) {
-        race.createCars(carCount);
+    void createCars () {
+        race.createCars("test, abc, hyeon");
         Race race1 = new Race();
-        race1.createCars(carCount);
+        race1.createCars("test, abc, hyeon");
         assertThat(race).isEqualTo(race1);
     }
 }

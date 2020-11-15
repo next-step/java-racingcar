@@ -17,8 +17,8 @@ public class RacingApplication {
         InputView inputView = new InputView();
         Race race = new Race();
 
-        int carCount = inputView.inputCarCountMessage();
-        race.createCars(carCount);
+        String inputNames = inputView.inputCarNamesMessage();
+        race.createCars(inputNames);
 
         int tryCount = inputView.inputTryCountMessage();
         ResultView resultView = new ResultView();
