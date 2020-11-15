@@ -7,6 +7,8 @@ public class Race {
     private final List<Car> cars;
 
     public Race(EngineFactory factory, List<String> carNames) {
+        if(carNames.size() <= 0) throw new IllegalArgumentException("carNames");
+
         cars = carNames.stream()
                 .map(name -> new Car(factory.createEngine(), name))
                 .collect(Collectors.toUnmodifiableList());
