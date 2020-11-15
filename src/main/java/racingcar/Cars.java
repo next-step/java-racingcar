@@ -14,8 +14,8 @@ public class Cars {
         }
     }
 
-    public List<Car> getCarList(){
-        return this.carList;
+    public Car oneOfCars(int count){
+        return this.carList.get(count);
     }
 
     public int getBestRecord(){
@@ -29,10 +29,17 @@ public class Cars {
     public List<String> findWinner(){
         List<String> winners = new ArrayList<>();
         for(Car car : this.carList){
-            if(car.getLastRecord() == getBestRecord()){
-                winners.add(car.getName());
-            }
+            isWinner(winners, car);
         }
         return winners;
     }
+
+    public void isWinner(List<String> winners, Car car){
+        if(car.getLastRecord() == getBestRecord()){
+            winners.add(car.getName());
+        }
+    }
+
+
+
 }
