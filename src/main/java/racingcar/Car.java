@@ -2,12 +2,19 @@ package racingcar;
 
 public class Car {
     public static final int MOVE_THRESHHOLD = 4;
+    private String name;
     private int distance = 1;
 
     public Car() {
     }
-    public Car(int distance) {
-        this.distance = distance;
+
+    public Car(Car car) {
+        this.name = car.name;
+        this.distance = car.distance;
+    }
+
+    public Car(String name) {
+        this.name = name;
     }
 
     public void go(int random){
@@ -25,9 +32,12 @@ public class Car {
     }
 
     public CarSnapshot snapshot(){
-        return new CarSnapshot(distance);
+        return new CarSnapshot(this);
     }
 
+    public String getName() {
+        return name;
+    }
 
 
 }

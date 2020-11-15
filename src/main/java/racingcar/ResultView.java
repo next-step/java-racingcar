@@ -1,5 +1,12 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static jdk.nashorn.internal.objects.NativeMath.max;
+
 public class ResultView {
 
     public static final String DISTANCE = "-";
@@ -7,7 +14,7 @@ public class ResultView {
     public static void print(CarRace carRace){
         for(int i=0; i < carRace.getTryCnt(); i++){
             carRace.getRaceResult().get(i).cars.stream().forEach(c -> {
-                System.out.println(getDistanceToUI(c));
+                System.out.println(c.getName()+" : "+getDistanceToUI(c));
             });
             System.out.println();
         }
@@ -20,4 +27,11 @@ public class ResultView {
         }
         return result;
     }
+
+    public static void printWinner(List<Car> winnerCars){
+        String winnerName = String.join(",", winnerCars.stream().map(s -> s.getName()).collect(Collectors.toList()));
+        System.out.println(winnerName + "가 최종 우승했습니다.");
+
+    }
+
 }
