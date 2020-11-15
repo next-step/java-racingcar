@@ -8,28 +8,24 @@
  * 저작권 주의
  */
 
-import model.Car;
 import model.Race;
 import view.InputView;
 import view.ResultView;
 
-import java.util.List;
-
 public class RacingApplication {
     public static void main (String[] args) {
         InputView inputView = new InputView();
+        Race race = new Race();
 
-        inputView.inputMessage();
-        Race race = inputView.getRace();
+        int carCount = inputView.inputCarCountMessage();
+        race.createCars(carCount);
 
-        List<Car> cars;
-        int tryCount = race.getTryCount();
-
+        int tryCount = inputView.inputTryCountMessage();
         ResultView resultView = new ResultView();
 
         for (int i = 0; i < tryCount; i++) {
-            cars = race.go();
-            resultView.printCars(cars);
+            race.go();
+            resultView.printCars(race);
         }
     }
 }

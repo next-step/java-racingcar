@@ -10,22 +10,11 @@
 
 package view;
 
-import model.Car;
-
-import java.util.List;
-import java.util.stream.IntStream;
+import model.Race;
 
 public class ResultView {
-    public void printCars (List<Car> cars) {
-        cars.forEach(car -> {
-            printCar(car);
-            System.out.println();
-        });
-
+    public void printCars (Race race) {
+        race.printCars();
         System.out.println();
-    }
-
-    private void printCar (Car car) {
-        IntStream.range(0, car.getPosition().getPosition()).mapToObj(i -> "-").forEach(System.out::print);
     }
 }

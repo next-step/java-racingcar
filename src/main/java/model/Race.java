@@ -14,30 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private List<Car> cars;
-    private int tryCount;
+    private Cars cars;
 
-    public void setCars (int carCount) {
-        cars = new ArrayList<>(carCount);
+    public void createCars (int carCount) {
+        List originalCars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+            originalCars.add(new Car());
         }
+
+        cars = new Cars(originalCars);
     }
 
-    public List<Car> getCars () {
+    public Cars go () {
+        cars = new Cars(cars.stepForward());
         return cars;
     }
 
-    public void setTryCount (int tryCount) {
-        this.tryCount = tryCount;
-    }
-
-    public int getTryCount () {
-        return tryCount;
-    }
-
-    public List<Car> go () {
-        cars.forEach(car -> car.stepForward(car.checkOverReferenceValue(car.getRandomInteager())));
-        return cars;
+    public void printCars () {
+        cars.printCars();
     }
 }
