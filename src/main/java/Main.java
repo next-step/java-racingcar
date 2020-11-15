@@ -4,8 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         RacingGameController racingGameController = new RacingGameController();
-        racingGameController.run();
-        racingGameController.startRacingGame();
+        racingGameController.createRacingCars();
         racingGameController.race();
         racingGameController.findWinner();
     }

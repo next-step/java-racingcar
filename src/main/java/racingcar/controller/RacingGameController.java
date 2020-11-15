@@ -1,14 +1,16 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.domain.CarDTO;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameController {
-
+    private static final int ZERO = 0;
     private RacingGame racingGame;
     private InputView inputView;
     private ResultView resultView;
@@ -19,28 +21,33 @@ public class RacingGameController {
         this.resultView = new ResultView();
     }
 
-    public void run() {
-        this.startRacingGame();
-        this.race();
-        this.findWinner();
-    }
-
-    public void startRacingGame() {
-        String racingCarNameList = inputView.findRacingCarNameList();
-        racingGame.createCarBy(racingCarNameList);
+    public void createRacingCars() {
+        String carNames = inputView.inputCarNames();
+        racingGame.createCars(carNames);
     }
 
     public void race() {
         int repeatCount = inputView.getRepeatCount();
+        if (repeatCount < ZERO) {
+            throw new IllegalArgumentException("1 이상의 숫자가 필요합니다.");
+        }
 
         for (int count = 0; count < repeatCount; count++) {
-            List<CarDTO> race = racingGame.race();
-            resultView.showRacingResult(race);
+            List<Car> race = racingGame.race();
+            resultView.showRacingResult(toDTO(race));
         }
     }
 
     public void findWinner() {
-        List<CarDTO> winners = racingGame.findWinner();
-        resultView.show(winners);
+        List<Car> winners = racingGame.findWinner();
+        resultView.show(toDTO(winners));
+    }
+
+    private List<CarDTO> toDTO(List<Car> cars) {
+        List<CarDTO> carDTOS = new ArrayList<>();
+        for (Car car : cars) {
+            carDTOS.add(new CarDTO(car));
+        }
+        return carDTOS;
     }
 }

@@ -1,20 +1,16 @@
 package racingcar.domain;
 
-import racingcar.domain.Car;
-import racingcar.domain.CarDTO;
-import racingcar.domain.RacingCarList;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private RacingCarList racingCarList;
+    private RacingCars racingCars;
 
     public RacingGame() {
     }
 
-    public void createCarBy(String racingCarNameList) {
-        this.racingCarList = new RacingCarList(getRacingCarList(split(racingCarNameList)));
+    public void createCars(String racingCarNameList) {
+        this.racingCars = new RacingCars(getRacingCarList(split(racingCarNameList)));
     }
 
     private List<Car>  getRacingCarList(String[] carNames) {
@@ -29,11 +25,12 @@ public class RacingGame {
         return racingCarNameList.split(",");
     }
 
-    public List<CarDTO> race() {
-        return racingCarList.race();
+    public List<Car> race() {
+        racingCars.race();
+        return racingCars.getCars();
     }
 
-    public List<CarDTO> findWinner() {
-        return racingCarList.findWinners();
+    public List<Car> findWinner() {
+        return racingCars.findWinners();
     }
 }

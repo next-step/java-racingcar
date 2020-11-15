@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Name {
     private final String name;
     private static final int NAME_LENGTH = 5;
@@ -24,10 +26,23 @@ public class Name {
     }
 
     private boolean isBlank(String name) {
-        return name == null || name.trim().isEmpty();
+        return Objects.isNull(name) || name.trim().isEmpty();
     }
 
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name1 = (Name) o;
+        return Objects.equals(name, name1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
