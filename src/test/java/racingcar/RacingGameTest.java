@@ -17,12 +17,6 @@ public class RacingGameTest {
         racingDTO = new RacingDTO(inputName,5);
     }
 
-    @Test
-    @DisplayName("생성된 자동차 객체수 확인 테스트")
-    public void numberOfCarTest(){
-        RacingGame racingGame = new RacingGame(racingDTO);
-        assertThat(racingGame.getCars()).isEqualTo(3);
-    }
 
     @Test
     @DisplayName("자동차 경기 진행 지시 테스트")
