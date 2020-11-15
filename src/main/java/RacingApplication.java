@@ -27,5 +27,7 @@ public class RacingApplication {
             race.go();
             resultView.printCars(race);
         }
+
+        resultView.printWinners(race);
     }
 }

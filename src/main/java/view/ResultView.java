@@ -17,4 +17,8 @@ public class ResultView {
         race.printCars();
         System.out.println();
     }
+
+    public void printWinners (Race race) {
+        race.printWinners();
+    }
 }

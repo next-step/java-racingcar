@@ -37,6 +37,11 @@ public class Race {
         cars.printCars();
     }
 
+    public void printWinners () {
+        Cars winners = new Cars(cars.getWinners());
+        winners.printWinners();
+    }
+
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;

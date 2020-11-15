@@ -21,6 +21,11 @@ public class Car {
         this.position = new Position();
     }
 
+    public Car (String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
+    }
+
     public Position getPosition () {
         return position;
     }
@@ -33,8 +38,17 @@ public class Car {
 
     public void printCar () {
         name.print();
+        System.out.print(" : ");
         position.print();
         System.out.println();
+    }
+
+    public Position getMaxPosition (Position maxPosition) {
+        return position.biggerPosition(maxPosition);
+    }
+
+    public boolean isWinner (Position maxPosition) {
+        return position.equals(maxPosition);
     }
 
     @Override
@@ -48,5 +62,9 @@ public class Car {
     @Override
     public int hashCode () {
         return Objects.hash(position, name);
+    }
+
+    public void printName () {
+        name.print();
     }
 }

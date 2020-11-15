@@ -59,6 +59,6 @@ public class Name {
     }
 
     public void print () {
-        System.out.print(name + " : ");
+        System.out.print(name);
     }
 }
