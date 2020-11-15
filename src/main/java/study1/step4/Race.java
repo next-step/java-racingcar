@@ -4,15 +4,12 @@ import java.util.ArrayList;
 
 public class Race {
     private final int roundCnt;
-    private final Cars cars = new Cars();
+    private final Cars cars;
 
     public Race(){
-        Tokenizer tokenizer = new Tokenizer();
-
         String racerListString = InputView.getRacerList();
-        tokenizer.TokenListValidate(racerListString);
-
-        cars.initializeCars(tokenizer.getList(racerListString));
+        Tokenizer.TokenListValidate(racerListString);
+        cars = new Cars(racerListString);
         roundCnt = InputView.getRoundCnt();
     }
 

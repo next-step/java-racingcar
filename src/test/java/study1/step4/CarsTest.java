@@ -21,16 +21,12 @@ public class CarsTest {
 
         String[] racerList = {first_race, second_race, third_race};
 
-        Cars cars = new Cars();
+        Cars cars = new Cars("first,second,third");
 
-        cars.initializeCars(racerList);
-
-        List<Car> carsSample = new ArrayList<>();
-        for(String racer: racerList){
-            carsSample.add(new Car(racer, 1));
+        for(int i = 0; i < cars.getCarsSize(); i++){
+            assertThat(cars.getCar(i)).isEqualTo(new Car(racerList[i], 1));
         }
 
-        assertThat(cars.getCars()).isEqualTo(carsSample);
     }
 
     @Test
@@ -38,9 +34,7 @@ public class CarsTest {
     void raceTest(){
         String[] racerList = {"first", "second", "third"};
 
-        Cars cars = new Cars();
-
-        cars.initializeCars(racerList);
+        Cars cars = new Cars("first,second,third");
 
         Decision moveGenerator = new FixedMoveDecision(10);
 
@@ -48,7 +42,8 @@ public class CarsTest {
         cars.race(moveGenerator);
         cars.race(moveGenerator);
 
-        for(Car car: cars.getCars()){
+        for(int i =0;i < cars.getCarsSize(); i++){
+            Car car = cars.getCar(i);
             assertThat(car.isBestRacer(4)).isEqualTo(true);
         }
         Decision notMoveGenerator = new FixedMoveDecision(1);
@@ -57,7 +52,8 @@ public class CarsTest {
         cars.race(notMoveGenerator);
         cars.race(notMoveGenerator);
 
-        for(Car car: cars.getCars()){
+        for(int i =0;i < cars.getCarsSize(); i++){
+            Car car = cars.getCar(i);
             assertThat(car.isBestRacer(4)).isEqualTo(true);
         }
 

@@ -6,7 +6,11 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public void initializeCars(String[] racerList){
+    public Cars(String racerListString){
+        Tokenizer.TokenListValidate(racerListString);
+        initializeCars(Tokenizer.getList(racerListString));
+    }
+    private void initializeCars(String[] racerList){
         for(String racer: racerList){
             cars.add(new Car(racer, 1));
         }

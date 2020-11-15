@@ -16,11 +16,8 @@ public class AwardTest {
         String second_race = "second";
         String third_race = "third";
 
-        String[] racerList = {first_race, second_race, third_race};
         Decision moveGenerator = new FixedMoveDecision(10);
-        Cars cars = new Cars();
-
-        cars.initializeCars(racerList);
+        Cars cars = new Cars("first,second,third");
 
         Award award = new Award();
 
