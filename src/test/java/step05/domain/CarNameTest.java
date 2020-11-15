@@ -80,7 +80,7 @@ public class CarNameTest {
     public void test_getName() {
         String name = "name";
         CarName carName = CarName.of(name);
-        assertThat(carName).isEqualTo(carName.getName());
+        assertThat(carName.getName()).isEqualTo(name);
     }
 
 }

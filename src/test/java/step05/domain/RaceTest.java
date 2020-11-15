@@ -51,6 +51,12 @@ public class RaceTest {
                         Arrays.asList(
                                 Cars.of(
                                         Arrays.asList(
+                                                Car.of("eun", 3),
+                                                Car.of("young", 2)
+                                        )
+                                ),
+                                Cars.of(
+                                        Arrays.asList(
                                                 Car.of("eun", 4),
                                                 Car.of("young", 3)
                                         )

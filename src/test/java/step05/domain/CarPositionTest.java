@@ -49,7 +49,7 @@ public class CarPositionTest {
     @Test
     public void test_getCarPosition() {
         CarPosition carPosition = CarPosition.of(1);
-        assertThat(carPosition.getCarPosition()).isEqualTo(CarPosition.of(1));
+        assertThat(carPosition.getCarPosition()).isEqualTo(1);
     }
 
 }
