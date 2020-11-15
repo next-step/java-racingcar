@@ -1,7 +1,5 @@
 package carRace.step5.view;
 
-import carRace.step5.domain.util.CarName;
-
 import java.util.List;
 
 public class CarRasingDraw {
