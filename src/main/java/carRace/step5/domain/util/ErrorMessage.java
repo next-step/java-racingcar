@@ -24,10 +24,6 @@ public class ErrorMessage {
         return NUMBERFORMATEXCEPTION;
     }
 
-    public static String getARRAYINDEXOUTOFBOUNDSEXCEPTION() {
-        return ARRAYINDEXOUTOFBOUNDSEXCEPTION;
-    }
-
     public static String getINDEXOUTOFBOUNDSEXCEPTION() {
         return INDEXOUTOFBOUNDSEXCEPTION;
     }
