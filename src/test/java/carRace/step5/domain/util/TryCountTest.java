@@ -16,7 +16,7 @@ public class TryCountTest {
     @DisplayName("시도할 횟수 Null  체크")
     void isNullCheckTryCountTest() {
         assertThrows(NullPointerException.class, () -> {
-            TryCount.checkNumberValue(null);
+            TryCountValueCheck.checkNumberValue(null);
         });
     }
 
@@ -25,7 +25,7 @@ public class TryCountTest {
     @DisplayName("시도할 횟수 EMPTY  체크")
     void isEmptyCheckTryCountTest() {
         assertThrows(NumberFormatException.class, () -> {
-            TryCount.checkNumberValue("");
+            TryCountValueCheck.checkNumberValue("");
         });
     }
 
@@ -33,7 +33,15 @@ public class TryCountTest {
     @DisplayName("숫자인지 체크")
     void isNumberCheckTryCountTest() {
         assertThrows(NumberFormatException.class, () -> {
-            TryCount.checkNumberValue("asdf");
+            TryCountValueCheck.checkNumberValue("asdf");
+        });
+    }
+
+    @Test
+    @DisplayName("음수인지 체크")
+    void isNumberCheckTryCountTest() {
+        assertThrows(NumberFormatException.class, () -> {
+            TryCountValueCheck.checkNumberValue("asdf");
         });
     }
 }
