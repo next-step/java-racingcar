@@ -27,14 +27,16 @@
 경기에 참여하는 `자동차 대수`를 가지고 자동차 경주를 진행
 * `void lap()`: 한 `회` 경주
 * `List<Car> getCars()`: 경기중인 `자동차`들
+* `List<Car> getFrontLine()`: 선두의 `자동차`들
 
 ### 경기장: `Stadium`
 경기를 주최
 
 ### 입력 UI: `InputView`
-* `int readNumberCars()`: `자동차 대수` 입력받기
+* `List<String> readCarNames()`: `자동차 이름` 입력받기
 * `int readIterations()`: `주어진 횟수` 입력받기
 
 ### 출력 UI: `OutputView`
 * `void showStatus(Car)`: 한 자동차의 `현재 진행 상태`를 출력
 * `void showStatus(List<Car>)`: 자동차들의 `현재 진행 상태`를 모두 출력
+* `void showWinner(List<Car> cars)`: `우승자`를 출력

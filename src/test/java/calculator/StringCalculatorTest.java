@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static step2.StringCalculator.calculate;
+import static calculator.StringCalculator.calculate;
 
 public class StringCalculatorTest {
     @DisplayName("basic operation test")

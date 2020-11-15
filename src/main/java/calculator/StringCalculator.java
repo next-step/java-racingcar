@@ -1,9 +1,9 @@
-package step2;
+package calculator;
 
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
-import static step2.Operator.parseOperator;
+import static calculator.Operator.parseOperator;
 
 public class StringCalculator {
     private static final String EXPRESSION_DELIMITERS = " ";
