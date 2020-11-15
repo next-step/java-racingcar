@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +8,8 @@ import java.util.Map;
 public class RacingGame {
     ResultView resultView = new ResultView();
 
-    Map<Integer, Integer> joinCar = new HashMap<>();
+    // Map<Integer, Integer> joinCar = new HashMap<>();
+    List<Car> carList = new ArrayList<>();
     int move = 0;
 
     public void playRacing(List<Integer> input){
@@ -18,7 +20,8 @@ public class RacingGame {
 
     public void sortForRacing(List<Integer> input){
         for(int i = 0; i < input.get(0); i++){
-            joinCar.put(i, 1);
+            Car car = new Car(i);
+            carList.add(car);
         }
         move = input.get(1);
     }
@@ -26,14 +29,16 @@ public class RacingGame {
     public void moveCar(){
         for(int j = 0; j < move; j++){
             tryToMoveResult();
-            resultView.racingResult(joinCar);
+            resultView.racingResult(carList);
         }
     }
 
     public void tryToMoveResult(){
-        for(int k = 0; k < joinCar.size(); k++){
+        for(int k = 0; k < carList.size(); k++){
             if(tryToMove() == true){
-                joinCar.put(k, joinCar.get(k)+1);
+                Car car = carList.get(k);
+                car.moveLocation(k);
+                carList.set(k, car);
             }
         }
     }
