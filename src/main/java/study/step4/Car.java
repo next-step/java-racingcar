@@ -6,6 +6,9 @@ public class Car {
     private int totalScore = 0;
 
     public Car(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("자동차이름 길이가 초과되었습니다.");
+        }
         this.name = name;
     }
 
