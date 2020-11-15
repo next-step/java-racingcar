@@ -18,17 +18,10 @@ class RaceTest {
     @ParameterizedTest
     @DisplayName("자동차 생성 테스트")
     @ValueSource(ints = {3, 5})
-    void setCars (int carCount) {
-        race.setCars(carCount);
-        assertThat(race.getCars().size()).isEqualTo(carCount);
-    }
-
-
-    @ParameterizedTest
-    @DisplayName("레이스 시도 횟수 셋팅 테스트")
-    @ValueSource(ints = {3, 5})
-    void setTryCount (int tryCount) {
-        race.setTryCount(tryCount);
-        assertThat(race.getTryCount()).isEqualTo(tryCount);
+    void createCars (int carCount) {
+        race.createCars(carCount);
+        Race race1 = new Race();
+        race1.createCars(carCount);
+        assertThat(race).isEqualTo(race1);
     }
 }

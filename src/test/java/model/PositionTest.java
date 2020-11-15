@@ -15,13 +15,11 @@ class PositionTest {
 
     @Test
     void valid () {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Position(-1))
-                .withMessageMatching("position은 0보다 커야 합니다.");
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> new Position(-1)).withMessageMatching("position은 0보다 커야 합니다.");
     }
 
     @Test
-    void go () {
+    void move () {
         Position position = new Position(2);
         position = position.move();
         assertThat(position).isEqualTo(new Position(3));
