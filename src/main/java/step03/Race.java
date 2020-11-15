@@ -18,7 +18,7 @@ public class Race {
     }
 
     private static void validateNumberOfMoves(int numberOfMoves) {
-        NumberValidator.validatePositiveInteger(numberOfMoves);
+        NumberValidator.validatePositiveNumber(numberOfMoves);
     }
 
     public void operate(ResultView view) {

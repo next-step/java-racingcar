@@ -25,7 +25,7 @@ public class Race {
     }
 
     private void validateNumberOfMoves() {
-        NumberValidator.validatePositiveInteger(this.numberOfMoves);
+        NumberValidator.validatePositiveNumber(this.numberOfMoves);
     }
 
     private void setSnapShot(List<Car> cars) {

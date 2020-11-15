@@ -21,7 +21,7 @@ public class Race {
     }
 
     private void validateNumberOfMoves() {
-        NumberValidator.validatePositiveInteger(numberOfMoves);
+        NumberValidator.validatePositiveNumber(numberOfMoves);
     }
 
     public List<Cars> run(MoveStrategy moveStrategy) {

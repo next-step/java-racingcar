@@ -21,7 +21,7 @@ public class CarPosition {
     }
 
     private void isPositiveInteger() {
-        NumberValidator.validatePositiveInteger(position);
+        NumberValidator.validatePositiveNumber(position);
     }
 
     public CarPosition move(MoveStrategy moveStrategy) {

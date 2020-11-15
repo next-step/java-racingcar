@@ -68,8 +68,7 @@
         - 경주 횟수를 검증하고 검증횟수, 경주에 참여시킬 자동차들을 초기화
     - 메서드
         - 경주 횟수 검증 (양수인지) private static void validateNumberOfMoves
-        - 경주 운행 public void operate()
-        - 승자를 리턴 private static String findWinner(List<Car> cars)
+        - 경주 운행 public void run()
       
 - 입력기
     - 쉼표로 구분한 자동차들이름 static public String[] readCarNames 
