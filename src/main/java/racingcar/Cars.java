@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carList;
+    private final List<Car> carList;
 
     public Cars(String[] names){
-        carList= new ArrayList<Car>();
+        carList= new ArrayList<>();
 
-        for(int i=0;i<names.length;i++){
-            this.carList.add(new Car(names[i]));
+        for (String name : names) {
+            this.carList.add(new Car(name));
         }
     }
 
@@ -21,15 +21,13 @@ public class Cars {
     public int getBestRecord(){
         int bestRecord = 0;
         for(Car car : this.carList) {
-            if(car.getLastRecord() >=bestRecord){
-                bestRecord = car.getLastRecord();
-            }
+            bestRecord = Math.max(car.getLastRecord(),bestRecord);
         }
         return bestRecord;
     }
 
     public List<String> findWinner(){
-        List<String> winners = new ArrayList<String>();
+        List<String> winners = new ArrayList<>();
         for(Car car : this.carList){
             if(car.getLastRecord() == getBestRecord()){
                 winners.add(car.getName());
