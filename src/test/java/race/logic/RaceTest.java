@@ -23,8 +23,8 @@ public class RaceTest {
     @DisplayName("test for cars' initial position")
     @Test
     void initialPosition() {
-        List<Car> cars = new Race(EngineFactory.BROKEN_ENGINE_FACTORY, carNames).getCars();
-        cars.forEach(car -> assertThat(car.getCurrentPosition()).isEqualTo(0));
+        List<RaceScore> scores = new Race(EngineFactory.BROKEN_ENGINE_FACTORY, carNames).lap();
+        scores.forEach(score -> assertThat(score.getPosition()).isEqualTo(0));
     }
 
     @DisplayName("test for each lap's position with perfect engine")
@@ -33,8 +33,7 @@ public class RaceTest {
         final int iterations = 20;
         Race race = new Race(EngineFactory.PERFECT_ENGINE_FACTORY, carNames);
         IntStream.range(1, iterations).forEach(i -> {
-            race.lap();
-            race.getCars().forEach(car -> assertThat(car.getCurrentPosition()).isEqualTo(i));
+            race.lap().forEach(score -> assertThat(score.getPosition()).isEqualTo(i));
         });
     }
 
@@ -44,8 +43,7 @@ public class RaceTest {
         final int iterations = 20;
         Race race = new Race(RandomEngine::new, carNames);
         IntStream.range(1, iterations).forEach(i -> {
-            race.lap();
-            race.getCars().forEach(car -> assertThat(car.getCurrentPosition()).isBetween(0, i));
+            race.lap().forEach(score -> assertThat(score.getPosition()).isBetween(0, i));
         });
     }
 
@@ -54,8 +52,9 @@ public class RaceTest {
     void frontLineWithPerfectEngine() {
         final int iterations = 10;
         Race race = new Race(EngineFactory.PERFECT_ENGINE_FACTORY, carNames);
-        IntStream.range(0, iterations).forEach(i -> race.lap());
-        assertThat(race.getFrontLine()).isEqualTo(race.getCars());
+        IntStream.range(0, iterations)
+                .mapToObj(i -> race.lap())
+                .forEach(score -> assertThat(race.getFrontLine()).isEqualTo(score));
     }
 
     @DisplayName("test for broken engine winner")
@@ -63,8 +62,9 @@ public class RaceTest {
     void frontLineWithBrokenEngine() {
         final int iterations = 10;
         Race race = new Race(EngineFactory.BROKEN_ENGINE_FACTORY, carNames);
-        IntStream.range(0, iterations).forEach(i -> race.lap());
-        assertThat(race.getFrontLine()).isEqualTo(race.getCars());
+        IntStream.range(0, iterations)
+                .mapToObj(i -> race.lap())
+                .forEach(score -> assertThat(race.getFrontLine()).isEqualTo(score));
     }
 
     @DisplayName("test for modulated engine winner")
@@ -83,7 +83,8 @@ public class RaceTest {
                 return Engine.BROKEN_ENGINE;
             }
         }, carNames);
-        IntStream.range(0, iterations).forEach(i -> race.lap());
-        assertThat(race.getFrontLine()).isEqualTo(Collections.singletonList(race.getCars().get(0)));
+        IntStream.range(0, iterations)
+                .mapToObj(i -> race.lap())
+                .forEach(score -> assertThat(race.getFrontLine()).isEqualTo(score.subList(0, 1)));
     }
 }

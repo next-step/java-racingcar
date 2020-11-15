@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Race {
     private final List<Car> cars;
+    private List<RaceScore> latestRaceResult;
 
     public Race(EngineFactory factory, List<String> carNames) {
         if(carNames.size() <= 0) throw new IllegalArgumentException("carNames");
@@ -14,21 +15,17 @@ public class Race {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<RaceScore> lap() {
+        return latestRaceResult = cars.stream().map(Car::run).collect(Collectors.toUnmodifiableList());
     }
 
-    public void lap() {
-        cars.forEach(Car::run);
-    }
-
-    public List<Car> getFrontLine() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getCurrentPosition)
+    public List<RaceScore> getFrontLine() {
+        int maxPosition = latestRaceResult.stream()
+                .mapToInt(RaceScore::getPosition)
                 .max()
                 .getAsInt();
-        return cars.stream()
-                .filter(car -> car.getCurrentPosition() == maxPosition)
-                .collect(Collectors.toList());
+        return latestRaceResult.stream()
+                .filter(score -> score.getPosition() == maxPosition)
+                .collect(Collectors.toUnmodifiableList());
     }
 }

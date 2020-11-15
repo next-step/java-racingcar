@@ -1,6 +1,6 @@
 package race.ui;
 
-import race.logic.Car;
+import race.logic.RaceScore;
 
 import java.io.PrintStream;
 import java.util.List;
@@ -19,19 +19,17 @@ public class OutputView {
         this.out = out;
     }
 
-    public void showStatus(Car car) {
-        out.print(car.getName() + " : ");
-        out.println(POSITION_MARKER.repeat(car.getCurrentPosition() + 1));
-    }
-
-    public void showStatus(List<Car> cars) {
-        cars.forEach(this::showStatus);
+    public void showScore(List<RaceScore> scores) {
+        scores.forEach(score -> {
+            out.print(score.getName() + " : ");
+            out.println(POSITION_MARKER.repeat(score.getPosition() + 1));
+        });
         out.println();
     }
 
-    public void showWinner(List<Car> cars) {
-        String winners = cars.stream()
-                .map(Car::getName)
+    public void showWinner(List<RaceScore> scores) {
+        String winners = scores.stream()
+                .map(RaceScore::getName)
                 .collect(Collectors.joining(", "));
         out.println(winners + "가 최종 우승했습니다.");
     }

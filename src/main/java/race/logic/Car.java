@@ -18,17 +18,10 @@ public class Car {
         this.name = name;
     }
 
-    public void run() {
+    public RaceScore run() {
         if (engine.canMove()) {
             position += 1;
         }
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getCurrentPosition() {
-        return position;
+        return new RaceScore(name, position);
     }
 }

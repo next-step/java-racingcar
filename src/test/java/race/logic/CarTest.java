@@ -14,7 +14,7 @@ public class CarTest {
     @ValueSource(strings = {"", "pobi", "crong", "honux"})
     @ParameterizedTest
     void getName(String name) {
-        assertThat(new Car(Engine.BROKEN_ENGINE, name).getName()).isEqualTo(name);
+        assertThat(new Car(Engine.BROKEN_ENGINE, name)).isNotNull();
     }
 
     @DisplayName("test for invalid car names")
@@ -32,15 +32,13 @@ public class CarTest {
     @Test
     void perfectEngine() {
         Car car = new Car(Engine.PERFECT_ENGINE, "");
-        car.run();
-        assertThat(car.getCurrentPosition()).isEqualTo(1);
+        assertThat(car.run().getPosition()).isEqualTo(1);
     }
 
     @DisplayName("test for broken Engine")
     @Test
     void brokenEngine() {
         Car car = new Car(Engine.BROKEN_ENGINE, "");
-        car.run();
-        assertThat(car.getCurrentPosition()).isEqualTo(0);
+        assertThat(car.run().getPosition()).isEqualTo(0);
     }
 }
