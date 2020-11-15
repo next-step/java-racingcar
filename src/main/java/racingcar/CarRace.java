@@ -8,7 +8,7 @@ public class CarRace {
     private int tryCnt;
     private List<Car> cars = new ArrayList<Car>();
     private List<RaceSnapshot> raceResult = new ArrayList<>();
-    public static Random random = new Random();
+    private static Random random = new Random();
 
     public CarRace(int carCnt, int tryCnt) {
         this.tryCnt = tryCnt;
@@ -27,9 +27,9 @@ public class CarRace {
 
     private List<CarSnapshot> moveCars() {
         List<CarSnapshot> carSnapshotList = new ArrayList<>();
-        for (int j = 0; j < cars.size(); j++) {
-            cars.get(j).go(getRandom());
-            carSnapshotList.add(cars.get(j).snapshot());
+        for (Car car : cars) {
+            car.go(getRandom());
+            carSnapshotList.add(car.snapshot());
         }
         return carSnapshotList;
     }
