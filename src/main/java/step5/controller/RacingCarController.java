@@ -6,32 +6,47 @@ import step5.util.CarUtils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCarController {
-    private static List<Car> cars;
-    private int carMoveCount = 0;
+    private final List<Car> cars;
+    private final int numberOfMove;
+    private int carMoveCount;
 
-    public List<Car> start(String[] carNames) {
-        CarUtils.carNameMaxValid(carNames);
-        return newCars(carNames);
+    public RacingCarController(List<Car> cars, int numberOfMove) {
+        this.cars = cars;
+        this.numberOfMove = numberOfMove;
     }
 
-    private List<Car> newCars(String[] racingCars) {
-        cars = Arrays.stream(racingCars)
+    public static RacingCarController of(String[] carNames, int numberOfMove) {
+        CarUtils.carNameMaxValid(carNames);
+        return new RacingCarController(newCars(carNames), numberOfMove);
+    }
+
+    private static List<Car> newCars(String[] racingCars) {
+        return Arrays.stream(racingCars)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        return cars;
     }
 
-    public static List<Car> carMove() {
+    private void carMove() {
         cars.forEach(car -> car.move(CarUtils.getRandom()));
-        return cars;
+        hasNextRound();
     }
 
-    public int carMove(int numberOfMove) {
-        IntStream.range(0, numberOfMove)
-                .forEach(count -> carMoveCount++);
-        return carMoveCount;
+    private void hasNextRound() {
+        carMoveCount++;
+    }
+
+    public List<Car> gameProgress() {
+        carMove();
+        return getCars();
+    }
+
+    public boolean isFinish() {
+        return numberOfMove == carMoveCount;
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 }
