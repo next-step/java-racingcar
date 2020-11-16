@@ -25,9 +25,9 @@ public class RacingCarGroups {
     }
 
     private int getMaxDistance() {
-        int max = racingCars.get(0).getDistance();
+        int max = racingCars.get(0).getCarDistance().getDistance();
         for (int i = 1; i < racingCars.size(); i++) {
-            max = Math.max(racingCars.get(i).getDistance(), max);
+            max = Math.max(racingCars.get(i).getCarDistance().getDistance(), max);
         }
         return max;
     }
@@ -42,7 +42,7 @@ public class RacingCarGroups {
     }
 
     private void addWinner(List<String> winners, RacingCar car, int condition) {
-        if (isWinner(car.getDistance(), condition)) {
+        if (isWinner(car.getCarDistance().getDistance(), condition)) {
             winners.add(car.getCarName().getName());
         }
     }

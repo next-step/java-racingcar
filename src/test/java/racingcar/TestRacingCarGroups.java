@@ -44,7 +44,7 @@ public class TestRacingCarGroups {
     @CsvSource({"4"})
     void test_move(int result) {
         racingCarGroups.move();
-        assertThat(racingCarGroups.getRacingCars().get(0).getDistance())
+        assertThat(racingCarGroups.getRacingCars().get(0).getCarDistance().getDistance())
                 .isLessThanOrEqualTo(result);
     }
 

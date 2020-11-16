@@ -3,7 +3,7 @@ package domain;
 import java.util.Objects;
 
 public class RacingCar {
-    private int distance;
+    private CarDistance carDistance;
     private CarName carName;
 
     public RacingCar(String name) {
@@ -12,11 +12,11 @@ public class RacingCar {
 
     public RacingCar(String name, int distance) {
         this.carName = new CarName(name);
-        this.distance = distance;
+        this.carDistance = new CarDistance(distance);
     }
 
-    public int getDistance() {
-        return distance;
+    public CarDistance getCarDistance() {
+        return carDistance;
     }
 
     public CarName getCarName() {
@@ -25,7 +25,7 @@ public class RacingCar {
 
     public void move(RacingCarMoveBehavior racingCarMoveBehavior) {
         if (racingCarMoveBehavior.isMoving()) {
-            this.distance++;
+            carDistance.increase();
         }
     }
 
@@ -34,12 +34,12 @@ public class RacingCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return distance == racingCar.distance &&
+        return carDistance == racingCar.carDistance &&
                 Objects.equals(carName, racingCar.carName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(distance, carName);
+        return Objects.hash(carDistance, carName);
     }
 }

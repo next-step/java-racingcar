@@ -42,8 +42,7 @@ public class TestRacingCarGame {
     void test_run_game(String cars, int rounds, int index) {
         racingCarGame = new RacingCarGame(cars, rounds);
         racingCarGame.runGame();
-        assertThat(racingCarGame.getRacingCarGroups().getRacingCars().get(index).getDistance())
-                .isLessThanOrEqualTo(rounds);
+        assertThat(racingCarGame.getRacingCarGroups().getRacingCars().get(index).getCarDistance().getDistance()).isLessThanOrEqualTo(rounds);
     }
 
     @DisplayName("자동차 게임 우승자 결과")
