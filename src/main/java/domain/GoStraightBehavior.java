@@ -4,17 +4,15 @@ import java.util.Random;
 
 public class GoStraightBehavior implements RacingCarMoveBehavior {
     private static final int MOVING_CONDITION = 4;
-    private static final Random RANDOM = new Random();
+    public static final int BOUND = 10;
 
     @Override
-    public int action(int currentDistance) {
-        if (isValidCondition(RANDOM.nextInt(10))) {
-            return currentDistance + 1;
-        }
-        return currentDistance;
+    public boolean isMoving() {
+        return getRandomNumber() >= MOVING_CONDITION;
     }
 
-    public boolean isValidCondition(int input) {
-        return input >= MOVING_CONDITION;
+    private int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(BOUND);
     }
 }

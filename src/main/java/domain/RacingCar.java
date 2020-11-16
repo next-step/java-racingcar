@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 public class RacingCar {
     private final static int MAX_NAME_LENGTH = 5;
     private int distance;
@@ -26,6 +28,22 @@ public class RacingCar {
     }
 
     public void move(RacingCarMoveBehavior racingCarMoveBehavior) {
-        distance = racingCarMoveBehavior.action(distance);
+        if (racingCarMoveBehavior.isMoving()) {
+            this.distance++;
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return distance == racingCar.distance &&
+                Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance, name);
     }
 }
