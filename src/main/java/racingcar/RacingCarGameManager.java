@@ -1,5 +1,6 @@
 package racingcar;
 
+import domain.RacingCarGame;
 import view.InputView;
 import view.ResultView;
 

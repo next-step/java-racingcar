@@ -1,6 +1,6 @@
-package racingcar;
+package domain;
 
-import java.util.List;
+import racingcar.RacingCarMoveBehavior;
 
 public class RacingCar {
     private final static int MAX_NAME_LENGTH = 5;

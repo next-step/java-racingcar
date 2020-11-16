@@ -1,7 +1,7 @@
 package view;
 
-import racingcar.RacingCar;
-import racingcar.RacingCarGroups;
+import domain.RacingCar;
+import domain.RacingCarGroups;
 
 import java.util.List;
 
