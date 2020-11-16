@@ -2,7 +2,7 @@ package step3.domain;
 
 public class CarRacing {
 
-    private JoinedCars joinedCars;
+    private Cars cars;
 
     private int nextTry;
     private int totalTries;
@@ -11,14 +11,14 @@ public class CarRacing {
     private RaceRoulette raceRoulette;
 
     public CarRacing(String carNames, int totalTries) {
-        this.joinedCars = new JoinedCars(carNames);
+        this.cars = new Cars(carNames);
         this.totalTries = totalTries;
         this.nextTry = 1;
         this.raceRoulette = DEFAULT_RACE_ROULETTE;
     }
 
     public void tryMovingAllCars() {
-        this.joinedCars.tryMoving(this.raceRoulette);
+        this.cars.tryMoving(() -> raceRoulette.spin() >= 4);
         this.nextTry++;
     }
 
@@ -27,11 +27,11 @@ public class CarRacing {
     }
 
     public RaceState getRaceState() {
-        return new RaceState(this.joinedCars.getCarStates());
+        return new RaceState(this.cars.getCarStates());
     }
 
     public RaceResult getRaceResult(){
-        return new RaceResult(joinedCars.findRaceWinner(new RaceWinnerFinder()));
+        return new RaceResult(cars.findRaceWinner(new RaceWinnerFinder()));
     }
 
 }

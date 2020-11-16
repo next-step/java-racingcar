@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JoinedCarsTest {
+class CarsTest {
 
     @Test
     @DisplayName("구분자(,) 를 사용해서 자동차 이름을 생성자에 넘겨주면  ")
