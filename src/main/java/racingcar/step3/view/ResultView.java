@@ -1,7 +1,7 @@
 package racingcar.step3.view;
 
 import racingcar.step3.common.Consts;
-import racingcar.step3.domain.Record;
+import racingcar.step3.domain.Cars;
 
 import java.util.Map;
 
@@ -11,24 +11,24 @@ import java.util.Map;
  */
 public class ResultView {
 
-    public void print(Record record) {
+    public void print(Cars cars) {
         title();
-        grid(record);
-        winner(record);
+        grid(cars);
+        winner(cars);
     }
 
     private void title() {
         System.out.println(Consts.RESULT);
     }
 
-    private void grid(Record record) {
-        record.getTotalRecords().forEach(t -> System.out.println(distance(t)));
+    private void grid(Cars cars) {
+        cars.getTotalRecords().forEach(t -> System.out.println(distance(t)));
     }
 
     private String distance(Map<String, Integer> turnRecords) {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, Integer> entry : turnRecords.entrySet()) {
-            sb.append(entry.getKey()).append(" : ");
+            sb.append(entry.getKey()).append(Consts.COLON);
             for (int i = 0; i < entry.getValue(); i++) {
                 sb.append("-");
             }
@@ -37,8 +37,8 @@ public class ResultView {
         return sb.toString();
     }
 
-    private void winner(Record record) {
-        System.out.println(record.getWinner() + Consts.HAVE_BEEN_A_WINNER);
+    private void winner(Cars cars) {
+        System.out.println(cars.getWinner() + Consts.HAVE_BEEN_A_WINNER);
     }
 
 }

@@ -2,8 +2,8 @@ package racingcar.step3.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.step3.domain.Cars;
 import racingcar.step3.domain.Race;
-import racingcar.step3.domain.Record;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,10 +17,10 @@ class RaceTest {
     @DisplayName("기록 확인")
     void run() {
         Race race = new Race("pobi,crong,honux");
-        Record record = race.run(5);
-        assertThat(record.getWinner()).isNotEmpty();
-        assertThat(record.getBest()).isBetween(0,5);
-        assertThat(record.getTotalRecords()).hasSize(5);
+        Cars cars = race.run(5);
+        assertThat(cars.getWinner()).isNotEmpty();
+        assertThat(cars.getBest()).isBetween(0, 5);
+        assertThat(cars.getTotalRecords()).hasSize(5);
     }
 
 }

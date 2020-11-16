@@ -15,9 +15,9 @@ class RecordTest {
     @DisplayName("최고 기록 확인")
     void getBestTest() {
         Race race = new Race("pobi,crong,honux");
-        Record record = race.run(5);
-        assertThat(record.getWinner()).isNotEmpty();
-        assertThat(record.getBest()).isBetween(0, 5);
+        Cars cars = race.run(5);
+        assertThat(cars.getWinner()).isNotEmpty();
+        assertThat(cars.getBest()).isBetween(0, 5);
     }
 
 }
