@@ -12,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     public void setUp() {
-        car = new Car(START_LOCATION);
+        car = new Car(START_LOCATION, "name");
     }
 
     @Test

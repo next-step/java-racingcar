@@ -7,9 +7,10 @@ public class ResultView {
         List<RaceRecord> raceRecords = racingGame.getRaceRecords();
         for (RaceRecord raceRecord : raceRecords) {
             System.out.println("ROUND " + raceRecord.getRound());
-            raceRecord.getRecords().stream()
-                    .map(StateUtil::makeStateLine)
-                    .forEach(System.out::println);
+            raceRecord.getRecordsWithCarName()
+            .forEach((key, value) -> System.out.printf("%s : %s \n", key, StateUtil.makeStateLine(value)) );
         }
+        String winner = racingGame.getWinner();
+        System.out.println(winner + "가 우승했습니다.");
     }
 }
