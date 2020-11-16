@@ -12,32 +12,46 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Race {
-    private List<Car> cars;
-    private int tryCount;
+    private Cars cars;
 
-    public void setCars (int carCount) {
-        cars = new ArrayList<>(carCount);
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+    public void createCars (String inputNames) {
+        List originalCars = new ArrayList<>();
+        String[] names = inputNames.split(",");
+
+        for (String name : names) {
+            originalCars.add(new Car(name));
         }
+
+        cars = new Cars(originalCars);
     }
 
-    public List<Car> getCars () {
+    public Cars go () {
+        cars = new Cars(cars.stepForward());
         return cars;
     }
 
-    public void setTryCount (int tryCount) {
-        this.tryCount = tryCount;
+    public void printCars () {
+        cars.printCars();
     }
 
-    public int getTryCount () {
-        return tryCount;
+    public void printWinners () {
+        Cars winners = new Cars(cars.getWinners());
+        winners.printWinners();
     }
 
-    public List<Car> go () {
-        cars.forEach(car -> car.stepForward(car.checkOverReferenceValue(car.getRandomInteager())));
-        return cars;
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Race race = (Race) o;
+        return Objects.equals(cars, race.cars);
+    }
+
+    @Override
+    public int hashCode () {
+        return Objects.hash(cars);
     }
 }

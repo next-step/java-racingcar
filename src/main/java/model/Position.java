@@ -10,17 +10,56 @@
 
 package model;
 
+import java.util.Objects;
+
 public class Position {
     private int position;
+
     public Position () {
-        setPosition(1);
+        this(0);
     }
 
-    public int getPosition () {
-        return position;
-    }
-
-    public void setPosition (int position) {
+    public Position (int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("position은 0보다 커야 합니다.");
+        }
         this.position = position;
+    }
+
+    public Position move () {
+        return new Position(position + 1);
+    }
+
+    public void print () {
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
+        }
+    }
+
+    public Position biggerPosition (Position maxPosition) {
+        if (bigger(maxPosition)) {
+            return this;
+        }
+        return maxPosition;
+    }
+
+    private boolean bigger (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return position > position1.position;
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return position == position1.position;
+    }
+
+    @Override
+    public int hashCode () {
+        return Objects.hash(position);
     }
 }

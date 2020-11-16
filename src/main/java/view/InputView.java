@@ -10,44 +10,39 @@
 
 package view;
 
-import model.Race;
-
 import java.util.Scanner;
 
 public class InputView {
-    Scanner scanner;
-    Race race;
+    private Scanner scanner;
 
     public InputView () {
-        this.race = new Race();
         scanner = new Scanner(System.in);
     }
 
-    public Race getRace () {
-        return race;
-    }
-
-    public void inputMessage () {
-        printInputCarCountMessage();
-        inputCarCount();
+    public int inputTryCountMessage () {
         printInputTryCountMessage();
-        inputTryCount();
+        return inputTryCount();
     }
 
-    private void printInputCarCountMessage () {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-    }
-
-    public void inputCarCount () {
-        race.setCars(isDigit(scanner.nextLine()));
+    public String inputCarNamesMessage () {
+        printInputCarNamesMessage();
+        return inputCarNames();
     }
 
     private void printInputTryCountMessage () {
         System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    public void inputTryCount () {
-        race.setTryCount(isDigit(scanner.nextLine()));
+    private int inputTryCount () {
+        return isDigit(scanner.nextLine());
+    }
+
+    private void printInputCarNamesMessage () {
+        System.out.println("자동차 이름들을 입력해주세요. (,로 구분)");
+    }
+
+    private String inputCarNames () {
+        return scanner.nextLine();
     }
 
     public int isDigit (String number) {
