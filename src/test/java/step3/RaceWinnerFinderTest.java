@@ -1,18 +1,20 @@
 package step3;
 
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.Car;
+import step3.domain.MoveCondition;
+import step3.domain.RaceWinnerFinder;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RaceResultTest {
+class RaceWinnerFinderTest {
 
-    RaceResult raceResult;
+    RaceWinnerFinder raceWinnerFinder;
 
     Car nio;
     Car hoon;
@@ -23,7 +25,7 @@ class RaceResultTest {
 
     @BeforeEach
     void setUp(){
-        this.raceResult = new RaceResult();
+        this.raceWinnerFinder = new RaceWinnerFinder();
         nio = new Car("nio");
         hoon = new Car("hoon");
         mit = new Car("mit");
@@ -47,7 +49,7 @@ class RaceResultTest {
         bill.moveIf( alwaysMatch );
         bill.moveIf( alwaysMatch );
 
-        List<Car> winners = raceResult.findRaceWinners(Arrays.asList(nio, hoon, mit, bill));
+        List<Car> winners = raceWinnerFinder.find(Arrays.asList(nio, hoon, mit, bill));
 
         assertThat(winners.size()).isEqualTo(1);
         assertThat(winners).contains(nio);
@@ -74,7 +76,7 @@ class RaceResultTest {
         bill.moveIf( alwaysMatch );
         bill.moveIf( alwaysMatch );
 
-        List<Car> winners = raceResult.findRaceWinners(Arrays.asList(nio, hoon, mit, bill));
+        List<Car> winners = raceWinnerFinder.find(Arrays.asList(nio, hoon, mit, bill));
 
         assertThat(winners.size()).isEqualTo(2);
         assertThat(winners).contains(nio, hoon);

@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import step3.domain.Car;
+import step3.domain.CarState;
+import step3.domain.InvalidCarNameException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,7 +27,7 @@ class CarTest {
     void noMoving(){
         car.moveIf(() -> false );
 
-        assertThat(car.getMovingDistance()).isEqualTo(0);
+        assertThat(CarState.of(car).getMovingDistance()).isEqualTo(0);
     }
 
     @Test
@@ -34,7 +37,7 @@ class CarTest {
         car.moveIf(() -> true);
         car.moveIf(() -> true);
 
-        assertThat(car.getMovingDistance()).isEqualTo(3);
+        assertThat(CarState.of(car).getMovingDistance()).isEqualTo(3);
     }
 
     @Test
@@ -44,7 +47,7 @@ class CarTest {
         car.moveIf(() -> false);
         car.moveIf(() -> true);
 
-        assertThat(car.getMovingDistance()).isEqualTo(2);
+        assertThat(CarState.of(car).getMovingDistance()).isEqualTo(2);
     }
 
     @ParameterizedTest
@@ -64,6 +67,5 @@ class CarTest {
             new Car(name);
         }).isInstanceOf(InvalidCarNameException.class);
     }
-
 
 }

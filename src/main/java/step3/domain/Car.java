@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import step2.StringUtils;
 
@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class Car {
 
-    private String name;
+    String name;
 
-    private int movingDistance = 0;
+    int movingDistance = 0;
 
     private NameValidator nameValidator = new NameValidator();
 
@@ -17,20 +17,8 @@ public class Car {
         this.name = name;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int getMovingDistance() {
-        return this.movingDistance;
-    }
-
     public void moveIf(MoveCondition condition) {
         if (condition.match()) movingDistance++;
-    }
-
-    public void displayOn(RaceDisplay raceDisplay) {
-        raceDisplay.writeMovingDistance(name, movingDistance);
     }
 
     private class NameValidator {
@@ -58,3 +46,4 @@ public class Car {
     }
 
 }
+
