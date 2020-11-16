@@ -7,12 +7,12 @@ public class RacingRound {
 
     private final List<Cars> racingRound = new ArrayList<>();
 
-    public RacingRound(int participationCars, int round) {
+    public RacingRound(String[] names, int round) {
         List<Integer> oldPositions = new ArrayList<>();
-        initOldPosition(participationCars, oldPositions);
+        initOldPosition(names.length, oldPositions);
 
         for (int i = 0; i < round; i++) {
-            racingRound.add(new Cars(participationCars, oldPositions));
+            racingRound.add(new Cars(names, oldPositions));
             racingRound.get(i).go();
             addOldPosition(oldPositions, i);
         }

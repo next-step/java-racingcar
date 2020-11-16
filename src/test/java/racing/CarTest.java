@@ -13,7 +13,7 @@ class CarTest {
     @CsvSource(value = {"0,1, 1,2, 2,3"})
     void forwardMove(int oldPosition, int newPosition) {
         // given
-        Car car = new Car(oldPosition);
+        Car car = new Car(oldPosition, "david");
 
         // when
         car.move(() -> true);
@@ -26,7 +26,7 @@ class CarTest {
     @Test
     void stopMove() {
         // given
-        Car car = new Car(0);
+        Car car = new Car(0, "david");
 
         // when
         car.move(() -> false);

@@ -13,14 +13,14 @@ class CarsTest {
     @Test
     void createCars() {
         // given
-        int participationCars = 3;
+        String[] names = {"jason", "park", "david"};
         List<Integer> oldPositions = new ArrayList<>();
         oldPositions.add(0);
         oldPositions.add(0);
         oldPositions.add(0);
 
         // when
-        Cars cars = new Cars(participationCars, oldPositions);
+        Cars cars = new Cars(names, oldPositions);
 
         // then
         Assertions.assertThat(cars.size()).isEqualTo(3);

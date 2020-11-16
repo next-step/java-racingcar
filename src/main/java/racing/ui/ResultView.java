@@ -39,7 +39,7 @@ public class ResultView {
         for (int i = 0; i < car.getPosition(); i++) {
             sb.append(FORWARD_MARK);
         }
-        System.out.println(sb.toString());
+        System.out.println(car.getName() + " : " + sb.toString());
     }
 
     private static void printAttemptDividingLine() {
