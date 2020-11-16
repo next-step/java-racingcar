@@ -1,4 +1,4 @@
-package race.car;
+package carRace.step5.domain.util;
 
 public class ErrorMessage {
 
@@ -22,10 +22,6 @@ public class ErrorMessage {
 
     public static String getNUMBERFORMATEXCEPTION() {
         return NUMBERFORMATEXCEPTION;
-    }
-
-    public static String getARRAYINDEXOUTOFBOUNDSEXCEPTION() {
-        return ARRAYINDEXOUTOFBOUNDSEXCEPTION;
     }
 
     public static String getINDEXOUTOFBOUNDSEXCEPTION() {
