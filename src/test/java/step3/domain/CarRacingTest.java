@@ -8,33 +8,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingTest {
 
-    CarRacing carRacing;
-
-    @BeforeEach
-    void setUp(){
-        carRacing = new CarRacing("nio,hoon,mit,bill,ravi", 5);
-    }
-
     @Test
-    @DisplayName("totalTries 만큼 이동시도를 하면 경기는 종료된다")
+    @DisplayName("total 만큼 try 하면 경기는 끝난다")
     void isFinish(){
+        CarRacing carRacing = new CarRacing("nio,hoon,mit,bill,ravi", 5);
+
         carRacing.tryMovingAllCars();
         carRacing.tryMovingAllCars();
         carRacing.tryMovingAllCars();
         carRacing.tryMovingAllCars();
         carRacing.tryMovingAllCars();
 
-        assertThat(carRacing.isFinish()).isTrue();
+        assertThat(carRacing.isInCarRacing()).isFalse();
     }
 
     @Test
-    @DisplayName("totalTries 만큼 이동시도를 하면 경기는 종료된다")
+    @DisplayName("try 가 total 보다 작으면 경기상태는 진행중이다")
     void isNotFinish(){
+        CarRacing carRacing = new CarRacing("nio,hoon,mit,bill,ravi", 5);
+
         carRacing.tryMovingAllCars();
         carRacing.tryMovingAllCars();
         carRacing.tryMovingAllCars();
 
-        assertThat(carRacing.isFinish()).isFalse();
+        assertThat(carRacing.isInCarRacing()).isTrue();
     }
 
 

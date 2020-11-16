@@ -17,7 +17,7 @@ public class CarRacingApplication {
         CarRacing carRacing = new CarRacing(carNames, numOfTries);
 
         ResultView resultView = new ResultView();
-        while(!carRacing.isFinish()){
+        while(carRacing.isInCarRacing()){
             carRacing.tryMovingAllCars();
             resultView.showRaceState(carRacing.getRaceState());
         }

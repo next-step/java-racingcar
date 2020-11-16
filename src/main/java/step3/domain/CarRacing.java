@@ -2,28 +2,26 @@ package step3.domain;
 
 public class CarRacing {
 
+    private final RaceRoulette DEFAULT_RACE_ROULETTE = RaceRoulette.simple(9);
+
     private Cars cars;
 
-    private int nextTry;
     private int totalTries;
 
-    private final RaceRoulette DEFAULT_RACE_ROULETTE = RaceRoulette.simple(9);
     private RaceRoulette raceRoulette;
 
     public CarRacing(String carNames, int totalTries) {
         this.cars = new Cars(carNames);
         this.totalTries = totalTries;
-        this.nextTry = 1;
         this.raceRoulette = DEFAULT_RACE_ROULETTE;
     }
 
     public void tryMovingAllCars() {
         this.cars.tryMoving(() -> raceRoulette.spin() >= 4);
-        this.nextTry++;
     }
 
-    public boolean isFinish(){
-        return this.nextTry > this.totalTries;
+    public boolean isInCarRacing(){
+        return this.cars.isRemainingTry(this.totalTries);
     }
 
     public RaceState getRaceState() {

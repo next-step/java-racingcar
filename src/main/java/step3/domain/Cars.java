@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class Cars {
 
     private List<Car> cars;
+    private int numOfMoveTries;
 
     public Cars(String joinedCarNames) {
         this(Arrays.asList(joinedCarNames.split(",").clone()));
@@ -16,10 +17,12 @@ public class Cars {
         this.cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+        this.numOfMoveTries = 0;
     }
 
     public void tryMoving(MoveCondition moveCondition) {
         this.cars.forEach(it -> it.moveIf(moveCondition));
+        this.numOfMoveTries++;
     }
 
     public List<Car> findRaceWinner(RaceWinnerFinder raceWinnerFinder) {
@@ -30,5 +33,9 @@ public class Cars {
         return this.cars.stream()
                 .map(CarState::of)
                 .collect(Collectors.toList());
+    }
+
+    public boolean isRemainingTry(int totalTries) {
+        return this.numOfMoveTries < totalTries;
     }
 }
