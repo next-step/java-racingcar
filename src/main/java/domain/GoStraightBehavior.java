@@ -1,8 +1,8 @@
-package racingcar;
+package domain;
 
 import java.util.Random;
 
-class GoStraightBehavior implements RacingCarMoveBehavior {
+public class GoStraightBehavior implements RacingCarMoveBehavior {
     private static final int MOVING_CONDITION = 4;
     private static final Random RANDOM = new Random();
 

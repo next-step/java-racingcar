@@ -1,7 +1,5 @@
 package domain;
 
-import racingcar.RacingCarMoveBehavior;
-
 public class RacingCar {
     private final static int MAX_NAME_LENGTH = 5;
     private int distance;
