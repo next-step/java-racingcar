@@ -19,7 +19,7 @@ public final class ResultView {
 
     public static void displayRacingCar(RacingCar racingCar) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(racingCar.getName()).append(" : ");
+        stringBuilder.append(racingCar.getCarName()).append(" : ");
         for(int i = 0; i < racingCar.getDistance(); i++) {
             stringBuilder.append("-");
         }

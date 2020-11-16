@@ -43,7 +43,7 @@ public class RacingCarGroups {
 
     private void addWinner(List<String> winners, RacingCar car, int condition) {
         if (isWinner(car.getDistance(), condition)) {
-            winners.add(car.getName());
+            winners.add(car.getCarName().getName());
         }
     }
 
