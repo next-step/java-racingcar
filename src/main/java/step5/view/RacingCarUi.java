@@ -1,12 +1,10 @@
 package step5.view;
 
-import step5.controller.RacingCarController;
 import step5.domain.Car;
 import step5.domain.RacingWinner;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class RacingCarUi {
 
@@ -32,17 +30,10 @@ public class RacingCarUi {
         System.out.println();
     }
 
-    public static void resultPrint(int numberOfMove) {
-        IntStream.range(0, numberOfMove)
-                .mapToObj(i -> RacingCarController.carMove())
-                .forEach(RacingCarUi::resultPrint);
-    }
-
     public static void finalWinner(List<Car> cars) {
         RacingWinner racingWinner = new RacingWinner(cars);
         String winners = String.format("%s가 최종 우승했습니다.", racingWinner.getWinners());
         System.out.println(winners);
-
     }
 
     public static void close() {
