@@ -1,6 +1,5 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,9 +9,13 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(String joinedCarNames) {
-        List<String> carNames = Arrays.asList(joinedCarNames.split(",").clone());
-        this.cars = new ArrayList<>(carNames.size());
-        carNames.forEach(it -> this.cars.add(new Car(it)));
+        this(Arrays.asList(joinedCarNames.split(",").clone()));
+    }
+
+    public Cars(List<String> carNames){
+        this.cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void tryMoving(MoveCondition moveCondition) {
@@ -24,6 +27,8 @@ public class Cars {
     }
 
     public List<CarState> getCarStates() {
-        return this.cars.stream().map(it -> CarState.of(it)).collect(Collectors.toList());
+        return this.cars.stream()
+                .map(CarState::of)
+                .collect(Collectors.toList());
     }
 }
