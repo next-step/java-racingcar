@@ -3,6 +3,7 @@ package racing.ui;
 import racing.Car;
 import racing.Cars;
 import racing.RacingRound;
+import racing.RacingWinner;
 
 public class ResultView {
 
@@ -13,9 +14,10 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void output(RacingRound racingRound) {
+    public static void output(RacingRound racingRound, RacingWinner racingWinner) {
         printReady();
         printStart(racingRound);
+        System.out.println("우승자는 :  " + racingWinner.getWinners());
     }
 
     private static void printStart(RacingRound racingRound) {
@@ -41,6 +43,8 @@ public class ResultView {
         }
         System.out.println(car.getName() + " : " + sb.toString());
     }
+
+
 
     private static void printAttemptDividingLine() {
         System.out.println("========================");
