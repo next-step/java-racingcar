@@ -1,41 +1,41 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Map;
 
 public class RacingGame {
     //counts, attempts
-    private int counts;
-    private int attempts;
-    private Cars cars;
+    //private int counts;
+    private final Cars cars;
+    private final RacingDTO racingDTO;
 
     public RacingGame(RacingDTO racingDTO){
-        this.counts = racingDTO.getCounts();
-        this.attempts = racingDTO.getAttempts();
-        this.cars = new Cars(this.counts);
+        this.racingDTO = racingDTO;
+        this.cars = new Cars(this.racingDTO.getNames());
     }
 
-    //리스트 형태로 car List 내보내기
-    public List<Car> getCars() {
-        List<Car> carList = this.cars.getCarList();
-        return carList;
+    public Cars getCars(){
+        return this.cars;
     }
-
 
     //자동차 경주 진행 지시
     public void instructMove(Car car){
-        MoveCheckor moveCheckor = new MoveCheckor();
-        for(int i=0;i<this.attempts;i++){
-            moveCheckor.moveAndStop(car);
+        MoveChecker moveChecker = new MoveChecker();
+        for(int i=0;i<this.racingDTO.getAttempts();i++){
+            moveChecker.moveAndStop(car);
         }
     }
 
-    //경기 시작
+    //경기 시작  :
     public void start(){
-        for(int i=0;i<this.counts;i++){
-            instructMove(this.getCars().get(i));
+        for(int i=0;i<this.racingDTO.getNames().length;i++){
+            instructMove(this.cars.oneOfCars(i));
         }
 
+    }
+
+    //경기 결과
+    public List<String> end(){
+        return cars.findWinner();
     }
 
 
