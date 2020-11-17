@@ -14,8 +14,14 @@ public class RacingGame {
 
     public RacingGame(List<String> carNames, int rounds) {
         this.cars = makeCars(carNames);
+        validateRounds(rounds);
         this.rounds = rounds;
         this.raceRecords = new ArrayList<>();
+    }
+
+    private void validateRounds(int rounds) {
+        if (rounds <= 0)
+            throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다 :) ");
     }
 
     public int getRounds() {
