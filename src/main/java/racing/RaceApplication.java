@@ -7,10 +7,11 @@ public class RaceApplication {
 
     public static void main(String[] args) {
         String[] names = InputView.inputParticipationCars();
-        int numberOfAttempt = InputView.inputNumberOfAttempt();
+        int roundCount = InputView.inputNumberOfAttempt();
 
-        RacingRound racingRound = new RacingRound(names, numberOfAttempt);
-        RacingWinner racingWinner = new RacingWinner(racingRound);
-        ResultView.output(racingRound, racingWinner);
+        RacingGame racingGame = new RacingGame(roundCount, names);
+        racingGame.startRacing();
+        RacingWinner racingWinner = new RacingWinner(racingGame);
+        ResultView.output(racingGame, racingWinner);
     }
 }

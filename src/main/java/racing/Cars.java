@@ -5,15 +5,19 @@ import java.util.List;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] names, List<Integer> oldPositions) {
-        createCars(names, oldPositions);
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    private void createCars(String[] names, List<Integer> oldPositions) {
-        for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(oldPositions.get(i), names[i]));
+    public Cars(String[] names) {
+        createCars(names);
+    }
+
+    private void createCars(String[] names) {
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 
@@ -21,10 +25,13 @@ public class Cars {
         return cars.get(index);
     }
 
-    public void go() {
+    public Cars go() {
+        List<Car> raceRecord = new ArrayList<>();
         for (Car car : cars) {
-            car.move(new MoveStrategyImpl());
+            raceRecord.add(car.move(new MoveStrategyImpl()));
         }
+
+        return new Cars(raceRecord);
     }
 
     public int size() {
