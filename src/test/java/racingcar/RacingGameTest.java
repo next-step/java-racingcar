@@ -9,7 +9,8 @@ public class RacingGameTest {
     RacingGame racingGame;
 
     @Test
-    void setInRacing(){
+    void setInRacingTest(){
+        
     }
     
 }
