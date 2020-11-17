@@ -2,42 +2,25 @@ package racingcar;
 
 import racingcar.domain.RacingGame;
 import racingcar.domain.car.Cars;
-import racingcar.strategy.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainSimulator {
 
-    private static final String SPLIT_LETTER = ",";
-
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
-        RacingGame racingGame = new RacingGame();
-        Cars preRaceCars;
-        Cars postRaceCars = new Cars();
+        String names = InputView.getCarNames();
+        int racingCount = InputView.getRacingCount();
 
-        String names = inputView.getCarNames();
-        int racingCount = inputView.getRacingCount();
+        RacingGame racingGame = new RacingGame(names, racingCount);
+        List<Cars> records = racingGame.start();
 
-        List<String> carNames = Arrays.stream(names.split(SPLIT_LETTER)).collect(Collectors.toList());
-        preRaceCars = racingGame.createCars(carNames);
+        ResultView.printResult(records);
 
-        resultView.printHeader();
-
-        for (int i = 0; i < racingCount; i++) {
-            postRaceCars = racingGame.race(preRaceCars, new RandomMovingStrategy());
-            resultView.printCars(postRaceCars);
-        }
-
-        Cars winners = racingGame.getWinners(postRaceCars);
-        resultView.printWinners(winners);
-
+        Cars winners = racingGame.getWinners(records);
+        ResultView.printWinners(winners);
 
     }
 
