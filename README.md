@@ -67,3 +67,4 @@
 
 - 리팩토링
 1. MainSimulator와 Controller를 분리한다.
+2. RacingCarView 생성
