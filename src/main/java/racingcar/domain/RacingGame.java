@@ -55,13 +55,16 @@ public class RacingGame {
         return cars;
     }
 
-    public Cars getWinners(Cars cars) {
-        int winnerPosition = cars.getValue().stream()
+    public Cars getWinners(List<Cars> cars) {
+
+        Cars finalRaceRecord = cars.get(cars.size() - 1);
+
+        int winnerPosition = finalRaceRecord.getValue().stream()
                 .mapToInt(car -> car.getPosition().getValue())
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("The winner is not exists."));
 
-        List<Car> carList = cars.getValue().stream()
+        List<Car> carList = finalRaceRecord.getValue().stream()
                 .filter(car -> car.isEqualPositionValue(winnerPosition))
                 .collect(Collectors.toList());
 
