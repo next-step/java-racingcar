@@ -4,38 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> carList = new ArrayList<>();
 
+    private final List<Car> cars;
 
-    public Cars(String names){
-
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+    public static Cars of(List<Car> cars){
+        return new Cars(cars);
+    }
+    public static Cars of(String names){
         String[] nameArr = names.split(",");
-
-        for (String name : nameArr) {
-            this.carList.add(new Car(name.trim()));
-        }
+        return of(nameArr);
     }
-    public Cars(String[] names){
-
-        for (String name : names) {
-            this.carList.add(new Car(name));
+    public static Cars of(String[] nameArr){
+        List<Car> cars = new ArrayList<>();
+        for(String name : nameArr){
+            cars.add(new Car(name.trim()));
         }
-    }
-
-    public Cars(List<String> names){
-        for(String name : names){
-            this.carList.add(new Car(name));
-        }
+        return of(cars);
     }
 
 
     public Car oneOfCars(int count){
-        return this.carList.get(count);
+        return cars.get(count);
     }
 
     public int getBestRecord(){
         int bestRecord = 0;
-        for(Car car : this.carList) {
+        for(Car car : cars) {
             bestRecord = Math.max(car.getLastRecord(),bestRecord);
         }
         return bestRecord;
@@ -43,7 +40,7 @@ public class Cars {
 
     public List<String> findWinner(){
         List<String> winners = new ArrayList<>();
-        for(Car car : this.carList){
+        for(Car car : cars){
             isWinner(winners, car);
         }
         return winners;

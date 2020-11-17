@@ -17,7 +17,7 @@ public class RacingDTOTest {
         int attempts = 3;
 
         String test ="aim, test, tenu";
-        RacingDTO racingDTO = new RacingDTO(test, attempts);
+        RacingDTO racingDTO = RacingDTO.of(test, attempts);
 
         String[] testArr = {"aim", "test","nony"};
         RacingDTO racingDTO1 = new RacingDTO(testArr,attempts);
@@ -25,7 +25,7 @@ public class RacingDTOTest {
         List<String> testList = new ArrayList<>();
         testList.add("aim");
         testList.add("tatoo");
-        RacingDTO racingDTO2 = new RacingDTO(testList, attempts);
+        RacingDTO racingDTO2 = RacingDTO.of(testList, attempts);
 
         assertThat(racingDTO.getAttempts()).isEqualTo(attempts);
         assertThat(racingDTO1.getAttempts()).isEqualTo(attempts);

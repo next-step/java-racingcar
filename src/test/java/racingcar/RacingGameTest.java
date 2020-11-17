@@ -14,7 +14,7 @@ public class RacingGameTest {
     @BeforeEach
     void setUp(){
         String inputName = "pobi,crong,honux";
-        racingDTO = new RacingDTO(inputName,5);
+        racingDTO = RacingDTO.of(inputName,5);
     }
 
 

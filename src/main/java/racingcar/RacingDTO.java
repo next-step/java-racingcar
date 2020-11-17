@@ -1,29 +1,28 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class RacingDTO {
     private final String[] names;
     private final int attempts;
 
-    public RacingDTO(String inputName, int attempts){
-        String[] tempName = inputName.split(",");
-        names = new String[tempName.length];
-        for(int i=0;i<tempName.length;i++){
-            this.names[i] = tempName[i].trim();
-        }
-        this.attempts = attempts;
-    }
     public RacingDTO(String[] inputName, int attempts){
         this.names = inputName;
         this.attempts = attempts;
     }
-    public RacingDTO(List<String> inputName, int attempts){
-        this.names = new String[inputName.size()];
-        for(int i=0;i<inputName.size();i++){
-            this.names[i] = inputName.get(i);
-        }
-        this.attempts = attempts;
+    public static RacingDTO of(String[] names, int attempts){
+        return new RacingDTO(names, attempts);
+    }
+
+    public static RacingDTO of(String inputName, int attempts){
+        String[] names = Stream.of(inputName.split(",")).map(String::trim).toArray(String[]::new);
+        return of(names, attempts);
+    }
+
+    public static RacingDTO of(List<String> inputName, int attempts){
+        String[] names = inputName.toArray(new String[inputName.size()]);
+        return of(names, attempts);
     }
 
     public String[] getNames(){
