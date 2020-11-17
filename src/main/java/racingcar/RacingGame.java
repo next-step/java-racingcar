@@ -4,15 +4,10 @@ import java.util.List;
 
 public class RacingGame {
     private final RacingDTO racingDTO;
-    private final Cars cars;
 
     public RacingGame(RacingDTO racingDTO){
         this.racingDTO = racingDTO;
-        this.cars = Cars.of(racingDTO.getNames());
-    }
 
-    public Cars getCars(){
-        return cars;
     }
 
     //자동차 경주 진행 지시
@@ -23,17 +18,16 @@ public class RacingGame {
         }
     }
 
-    //경기 시작  :
+    //경기 시작
     public void start(){
         for(int i=0;i<racingDTO.getNames().length;i++){
-            instructMove(cars.oneOfCars(i));
+            instructMove(racingDTO.getCars().oneOfCars(i));
         }
-
     }
 
-    //경기 결과
+    //경기 종료
     public List<String> end(){
-        return cars.findWinner();
+        return racingDTO.getCars().findWinner();
     }
 
 

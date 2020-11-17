@@ -46,7 +46,7 @@ public class RacingGameTest {
         int attempts = racingDTO.getAttempts();
 
         ResultView resultView = new ResultView(counts, attempts);
-        resultView.showResult(racingGame.getCars());
+        resultView.showResult(racingDTO.getCars());
         resultView.announceWinner(winners);
     }
 

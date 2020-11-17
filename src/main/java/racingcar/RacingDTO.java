@@ -6,10 +6,12 @@ import java.util.stream.Stream;
 public class RacingDTO {
     private final String[] names;
     private final int attempts;
+    private final Cars cars;
 
     public RacingDTO(String[] inputName, int attempts){
         this.names = inputName;
         this.attempts = attempts;
+        this.cars = Cars.of(this.names);
     }
     public static RacingDTO of(String[] names, int attempts){
         return new RacingDTO(names, attempts);
@@ -30,6 +32,9 @@ public class RacingDTO {
     }
     public int getAttempts(){
         return this.attempts;
+    }
+    public Cars getCars(){
+        return this.cars;
     }
 
 }
