@@ -7,21 +7,21 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printResult(List<Cars> records) {
-        printHeader();
+    public static void printResult(List<Cars> records) {
+        System.out.println("실행 결과");
         for (Cars record : records) {
             printCars(record);
         }
     }
 
-    private void printCars(Cars cars) {
+    private static void printCars(Cars cars) {
         for (Car car : cars.getValue()) {
             System.out.println(getCarPosition(car));
         }
         System.out.println();
     }
 
-    private String getCarPosition(Car car) {
+    private static String getCarPosition(Car car) {
         StringBuilder carInformation = new StringBuilder();
         carInformation.append(car.getName().getValue());
         carInformation.append(" : ");
@@ -31,11 +31,7 @@ public class ResultView {
         return carInformation.toString();
     }
 
-    private void printHeader() {
-        System.out.println("실행 결과");
-    }
-
-    public void printWinners(Cars lastRecord) {
+    public static void printWinners(Cars lastRecord) {
         System.out.println(String.join(",", lastRecord.getCarNames()) + "가 최종 우승했습니다.");
     }
 
