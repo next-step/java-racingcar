@@ -16,13 +16,13 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(RacingCarTest.regularRacingCarMovingRule());
 
         List<String> testCarNames = IntStream.range(0, numCars)
-                .mapToObj(i -> "testcar" + i)
+                .mapToObj(i -> "car" + i)
                 .collect(Collectors.toList());
 
-        ArrayList<RacingStep> result = racingGame.run(testCarNames, numSteps);
+        RacingResult result = racingGame.run(testCarNames, numSteps);
 
         for (int step = 0; step < numSteps; step++) {
-            RacingStep racingStep = result.get(step);
+            RacingStep racingStep = result.getRacingStepList().get(step);
 
             List<RacingStep.RacingCarNameAndPosition> carNameAndPositionList = racingStep.getCarNameAndPositionList();
 

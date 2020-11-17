@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -11,7 +9,7 @@ public class RacingGame {
         this.racingCarMovingRule = racingCarMovingRule;
     }
 
-    public ArrayList<RacingStep> run(List<String> carNameList, int numSteps) {
+    public RacingResult run(List<String> carNameList, int numSteps) {
         ArrayList<RacingCar> racingCarList = buildRacingCarList(carNameList);
         ArrayList<RacingStep> racingStepList = new ArrayList<>();
 
@@ -23,7 +21,7 @@ public class RacingGame {
             racingStepList.add(new RacingStep(racingCarList));
         }
 
-        return racingStepList;
+        return new RacingResult(racingStepList);
     }
 
     private ArrayList<RacingCar> buildRacingCarList(List<String> carNameList) {
@@ -34,30 +32,6 @@ public class RacingGame {
         }
 
         return racingCarList;
-    }
-
-    public static List<String> getWinnerNames(ArrayList<RacingStep> racingStepList) {
-        if (racingStepList.isEmpty()) {
-            return Collections.EMPTY_LIST;
-        }
-
-        RacingStep lastRacingStep = racingStepList.get(racingStepList.size() - 1);
-
-        int winnerPosition = getWinnerPosition(lastRacingStep);
-
-        List<String> winnerNames = lastRacingStep.getCarNameAndPositionList().stream()
-                .filter(nameAndPosition -> nameAndPosition.getPosition() == winnerPosition)
-                .map(nameAndPosition -> nameAndPosition.getName())
-                .collect(Collectors.toList());
-
-        return winnerNames;
-    }
-
-    private static int getWinnerPosition(RacingStep lastRacingStep) {
-        return lastRacingStep.getCarNameAndPositionList().stream()
-                    .mapToInt(nameAndPosition -> nameAndPosition.getPosition())
-                    .max()
-                    .getAsInt();
     }
 
 }

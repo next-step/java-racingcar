@@ -30,9 +30,15 @@ public class RacingStep {
                 .collect(Collectors.toList());
     }
 
-
     public List<RacingCarNameAndPosition> getCarNameAndPositionList() {
         return carNameAndPositions;
+    }
+
+    public int getWinnerPosition() {
+        return getCarNameAndPositionList().stream()
+                .mapToInt(nameAndPosition -> nameAndPosition.getPosition())
+                .max()
+                .getAsInt();
     }
 
 }
