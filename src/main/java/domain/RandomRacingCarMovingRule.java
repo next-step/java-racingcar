@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomRacingCarMovingRule implements RacingCarMovingRule {

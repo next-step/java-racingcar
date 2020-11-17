@@ -1,3 +1,5 @@
+import domain.RacingCar;
+import domain.RacingCarMovingRule;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

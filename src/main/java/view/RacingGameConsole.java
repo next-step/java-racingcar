@@ -1,3 +1,10 @@
+package view;
+
+import domain.RacingGame;
+import domain.RacingResult;
+import domain.RacingStep;
+import domain.RandomRacingCarMovingRule;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
