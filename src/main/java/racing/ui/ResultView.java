@@ -11,22 +11,22 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void output(RacingGame racingGame, RacingWinner racingWinner) {
+    public static void output(RacingRound racingRound, RacingWinner racingWinner) {
         printReady();
-        printStart(racingGame);
+        printStart(racingRound);
         System.out.println("우승자는 :  " + racingWinner.getWinners());
     }
 
-    private static void printStart(RacingGame racingGame) {
-        int roundSize = racingGame.size();
+    private static void printStart(RacingRound racingRound) {
+        int roundSize = racingRound.size();
 
         for (int round = 0; round < roundSize; round++) {
-            printManager(racingGame, round);
+            printManager(racingRound, round);
         }
     }
 
-    private static void printManager(RacingGame racingRound, int round) {
-        Cars cars = racingRound.getLastRoundResult();
+    private static void printManager(RacingRound racingRound, int round) {
+        Cars cars = racingRound.getCars(round);
         int carsSize = cars.size();
 
         for (int i = 0; i < carsSize; i++) {

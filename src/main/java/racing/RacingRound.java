@@ -15,6 +15,10 @@ public class RacingRound {
         return racingRound.get(racingRound.size() - 1);
     }
 
+    public Cars getCars(int round) {
+        return racingRound.get(round);
+    }
+
     public int size() {
         return racingRound.size();
     }

@@ -10,8 +10,8 @@ public class RaceApplication {
         int roundCount = InputView.inputNumberOfAttempt();
 
         RacingGame racingGame = new RacingGame(roundCount, names);
-        racingGame.startRacing();
-        RacingWinner racingWinner = new RacingWinner(racingGame);
-        ResultView.output(racingGame, racingWinner);
+        RacingRound racingRound = racingGame.startRacing();
+        RacingWinner racingWinner = new RacingWinner(racingRound);
+        ResultView.output(racingRound, racingWinner);
     }
 }

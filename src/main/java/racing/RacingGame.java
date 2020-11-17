@@ -20,10 +20,6 @@ public class RacingGame {
         return racingRound;
     }
 
-    public Cars getLastRoundResult() {
-        return racingRound.getLastRoundResult();
-    }
-
     public int size() {
         return racingRound.size();
     }

@@ -8,9 +8,9 @@ public class RacingWinner {
 
     private final List<String> winners = new ArrayList<>();
 
-    public RacingWinner(RacingGame racingGame) {
+    public RacingWinner(RacingRound racingRound) {
         List<Integer> positions = new ArrayList<>();
-        Cars winnerCars = racingGame.getLastRoundResult();
+        Cars winnerCars = racingRound.getLastRoundResult();
 
         int max = createMaxRank(positions, winnerCars);
         createWinners(winnerCars, max);
