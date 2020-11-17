@@ -3,12 +3,12 @@ package racingcar;
 import java.util.List;
 
 public class RacingGame {
-    private final Cars cars;
     private final RacingDTO racingDTO;
+    private final Cars cars;
 
     public RacingGame(RacingDTO racingDTO){
         this.racingDTO = racingDTO;
-        this.cars = Cars.of(this.racingDTO.getNames());
+        this.cars = Cars.of(racingDTO.getNames());
     }
 
     public Cars getCars(){
@@ -17,9 +17,9 @@ public class RacingGame {
 
     //자동차 경주 진행 지시
     public void instructMove(Car car){
-        MoveChecker moveChecker = new MoveChecker();
         for(int i=0;i<racingDTO.getAttempts();i++){
-            moveChecker.moveAndStop(car);
+            car.move();
+            car.recordDistance();
         }
     }
 

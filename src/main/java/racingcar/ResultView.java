@@ -3,8 +3,8 @@ package racingcar;
 import java.util.List;
 
 public class ResultView {
-    int counts;
-    int attempts;
+    private final int counts;
+    private final int attempts;
 
 
     public ResultView(int counts, int attempts){
