@@ -9,7 +9,7 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame();
         
         List<Integer> input = inputView.inputRacing();
-        racingGame.playRacing(input);
+        racingGame.setInRacing(input);
     }
 
 }

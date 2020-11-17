@@ -1,16 +1,15 @@
 package racingcar;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
+
 
 public class RacingGameTest {
     RacingGame racingGame;
 
     @Test
-    void playRacing(){
+    void setInRacing(){
     }
     
 }

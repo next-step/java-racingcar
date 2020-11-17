@@ -2,11 +2,11 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     ResultView resultView = new ResultView();
 
-    // Map<Integer, Integer> joinCar = new HashMap<>();
     List<Car> carList = new ArrayList<>();
     int move = 0;
 
@@ -17,7 +17,7 @@ public class RacingGame {
     }
 
     public void placetForRacing(List<Integer> input){
-        for(int i = 0; i < input.size(); i++){
+        for(int i = 0; i <= input.size(); i++){
             Car car = new Car(i);
             carList.add(car);
         }
@@ -27,7 +27,7 @@ public class RacingGame {
     public void moveCar(){
         for(int j = 0; j < move; j++){
             tryToMoveResult();
-            resultView.racingResult(carList);
+            resultView.racingResult(carList.stream().map(Car::getLocation).collect(Collectors.toList()));
         }
     }
 
