@@ -2,8 +2,11 @@ import domain.RacingCar;
 import domain.RacingCarMovingRule;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingCarTest {
 
@@ -16,6 +19,22 @@ public class RacingCarTest {
     @BeforeAll
     static void initRacingCar() {
         racingCar = new RacingCar("car0", () -> true);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1234,true", "123456,false"})
+    void testRacingCarNameLength(String carName, boolean expectValidLength) {
+        if (expectValidLength) {
+            assertThat(carName.length()).isLessThanOrEqualTo(RacingCar.MAX_NAME_LENGTH);
+
+            new RacingCar(carName, () -> true);
+        } else {
+            assertThat(carName.length()).isGreaterThan(RacingCar.MAX_NAME_LENGTH);
+
+            assertThatIllegalArgumentException().isThrownBy(() -> {
+                new RacingCar(carName, () -> true);
+            });
+        }
     }
 
     @Test

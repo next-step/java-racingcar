@@ -5,7 +5,7 @@ public class RacingCar {
     public static final int INITIAL_POSITION = 1;
     public static final int FORWARD_STEP = 1;
 
-    private static final int MAX_NAME_LENGTH = 5;
+    public static final int MAX_NAME_LENGTH = 5;
 
     private final String name;
     private final RacingCarMovingRule movingRule;
