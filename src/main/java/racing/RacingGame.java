@@ -19,8 +19,4 @@ public class RacingGame {
 
         return racingRound;
     }
-
-    public int size() {
-        return racingRound.size();
-    }
 }

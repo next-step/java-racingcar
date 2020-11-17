@@ -12,8 +12,17 @@ class NameTest {
         // when
         Assertions.assertThatThrownBy(() -> {
             new Name("이브라히모비");
+            // then
         }).isInstanceOf(IllegalArgumentException.class);
+    }
 
-        // then
+    @DisplayName(value = "자동차 이름이 공란이면 예외")
+    @Test
+    void validateNameEmpty() {
+        // when
+        Assertions.assertThatThrownBy(() -> {
+            new Name(" ");
+            // then
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
