@@ -15,7 +15,7 @@ public class ResultView {
     //시도 횟수별 자동차 이동경로 값 가져오기
     public void showResult(Cars cars){
         System.out.println("실행 결과");
-        for(int i=0;i<this.attempts;i++){
+        for(int i=0;i<attempts;i++){
             printDistance(cars, i);
         }
     }
@@ -32,7 +32,7 @@ public class ResultView {
 
     //이동 결과 그리기
     public void printDistance(Cars cars, int num){
-        for(int i=0;i<this.counts;i++){
+        for(int i=0;i<counts;i++){
             int distance = cars.oneOfCars(i).getRecordList().get(num);
             System.out.println(this.intToStr(distance));
         }

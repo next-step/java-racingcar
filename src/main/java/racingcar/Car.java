@@ -15,7 +15,7 @@ public class Car {
         this.recordList = new ArrayList<>();
     }
     public List<Integer> getRecordList(){
-        return this.recordList;
+        return recordList;
     }
 
     public String getName(){
@@ -24,16 +24,16 @@ public class Car {
 
     //자동차 이동
     public void move(){
-        this.distance +=1;
+        distance +=1;
     }
     //자동차 이동 기록
     public void recordDistance(){
-        this.recordList.add(this.distance);
+        recordList.add(distance);
     }
 
     //자동차 최종 기록
     public int getLastRecord(){
-        return this.recordList.get(this.recordList.size()-1);
+        return recordList.get(recordList.size()-1);
     }
 
 }
