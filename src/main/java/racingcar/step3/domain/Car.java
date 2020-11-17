@@ -7,7 +7,7 @@ import racingcar.step3.common.Consts;
  * Developer : Seo.
  */
 public class Car {
-    private String name;
+    private final String name;
     private int distance;
 
     public Car(String name) {

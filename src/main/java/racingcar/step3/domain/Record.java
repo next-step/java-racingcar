@@ -1,32 +1,26 @@
 package racingcar.step3.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created : 2020-11-09 오전 8:25.
  * Developer : Seo.
  */
 public class Record {
-    private int bestRecord;
-    private String winner;
+    private final List<Map<String, Integer>> totalRecords;
 
-    public Record(int bestRecord, String winner) {
-        this.bestRecord = bestRecord;
-        this.winner = winner;
+    public Record() {
+        this.totalRecords = new ArrayList<>();
     }
 
-    public void record(Car car) {
-        if (Integer.compare(bestRecord, car.getDistance()) == -1) {
-            this.bestRecord = car.getDistance();
-            this.winner = car.getName();
-        }
-        if (!winner.equals("") && !winner.contains(car.getName())
-                && Integer.compare(bestRecord, car.getDistance()) == 0) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(this.winner).append(", ").append(car.getName());
-            this.winner = sb.toString();
-        }
+    public void setTotalRecords(Map<String, Integer> turnRecords) {
+        totalRecords.add(turnRecords);
     }
 
-    public String getWinner() {
-        return this.winner;
+    public List<Map<String, Integer>> getTotalRecords() {
+        return this.totalRecords;
     }
+
 }
