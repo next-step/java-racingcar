@@ -102,7 +102,7 @@ class RacingGameTest {
     @DisplayName("자동차들 중 우승자가 아니면 반환하지 않는다")
     void should_not_return_winners() {
         //Given
-        Cars cars = getRacingGameResult();
+        List<Cars> cars = getRacingGameResult();
 
         //When
         Cars winners = racingGame.getWinners(cars);
@@ -116,7 +116,7 @@ class RacingGameTest {
         return Arrays.stream(RacingGameTest.CAR_NAMES.split(SPLIT_CHARACTER)).collect(Collectors.toList());
     }
 
-    private Cars getRacingGameResult() {
+    private List<Cars> getRacingGameResult() {
         List<Car> carList = new ArrayList<>();
 
         Name damas = new Name("damas");
@@ -130,7 +130,7 @@ class RacingGameTest {
         carList.add(new Car(bmw, winner));
         carList.add(new Car(benz, loser));
 
-        return new Cars(carList);
+        return Lists.newArrayList(new Cars(carList));
     }
 
 }
