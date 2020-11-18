@@ -55,10 +55,6 @@ public class Cars {
         return this.cars.size();
     }
 
-    public String getCarName(int carsIndex) {
-        return this.cars.get(carsIndex).getName();
-    }
-
     public Car getCar(int carsIndex) {
         return this.cars.get(carsIndex);
     }
