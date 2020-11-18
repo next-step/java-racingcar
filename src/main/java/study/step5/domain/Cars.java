@@ -1,7 +1,5 @@
 package study.step5.domain;
 
-import study.step5.domain.Car;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
