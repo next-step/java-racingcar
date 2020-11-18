@@ -1,7 +1,11 @@
-package racingcar;
+package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import racingcar.domain.Car;
+import racingcar.domain.Scoreboard;
+import racingcar.view.ResultView;
 
 public class RacingGame {
     ResultView resultView = new ResultView();

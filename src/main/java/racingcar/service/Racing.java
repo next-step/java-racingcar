@@ -1,7 +1,12 @@
-package racingcar;
+package racingcar.service;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
+
+import racingcar.domain.Car;
+import racingcar.domain.Scoreboard;
+import racingcar.view.ResultView;
 
 public class Racing {
     ResultView resultView = new ResultView();
@@ -27,9 +32,10 @@ public class Racing {
 
     public boolean tryToMove(){
         boolean result = false;
-        int random = (int)(Math.random()*9);
+        Random random = new Random();
+        int move = random.nextInt(10);
 
-        if(random >=4){
+        if(move >=4){
             result = true;
         }
 
