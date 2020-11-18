@@ -10,7 +10,6 @@ public class RacingGame {
     private final List<Car> cars;
     private final List<RaceRecord> raceRecords;
 
-    final static int START_LOCATION = 1;
 
     public RacingGame(List<String> carNames, int rounds) {
         this.cars = makeCars(carNames);
@@ -35,7 +34,7 @@ public class RacingGame {
     private List<Car> makeCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
-            Car car = new Car(START_LOCATION, name);
+            Car car = new Car(name);
             cars.add(car);
         }
         return cars;
