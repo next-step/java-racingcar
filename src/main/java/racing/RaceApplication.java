@@ -6,9 +6,12 @@ import racing.ui.ResultView;
 public class RaceApplication {
 
     public static void main(String[] args) {
-        int participationCars = InputView.inputParticipationCars();
-        int numberOfAttempt = InputView.inputNumberOfAttempt();
+        String[] names = InputView.inputParticipationCars();
+        int roundCount = InputView.inputNumberOfAttempt();
 
-        ResultView.raceResult(participationCars ,numberOfAttempt);
+        RacingGame racingGame = new RacingGame(roundCount, names);
+        RacingRound racingRound = racingGame.startRacing();
+        RacingWinner racingWinner = new RacingWinner(racingRound);
+        ResultView.output(racingRound, racingWinner);
     }
 }

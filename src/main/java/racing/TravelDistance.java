@@ -4,25 +4,25 @@ import java.util.Objects;
 
 public class TravelDistance {
 
-    private final int travelDistance;
+    private final int position;
 
     public TravelDistance() {
         this(0);
     }
 
-    public TravelDistance(int travelDistance) {
-        if (travelDistance < 0) {
+    public TravelDistance(int position) {
+        if (position < 0) {
             throw new IllegalArgumentException("이동거리는 0 보다 작을 수 없습니다.");
         }
-        this.travelDistance = travelDistance;
+        this.position = position;
     }
 
     public TravelDistance move() {
-        return new TravelDistance(travelDistance + 1);
+        return new TravelDistance(position + 1);
     }
 
-    public int getTravelDistance() {
-        return travelDistance;
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -30,11 +30,11 @@ public class TravelDistance {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TravelDistance that = (TravelDistance) o;
-        return travelDistance == that.travelDistance;
+        return position == that.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(travelDistance);
+        return Objects.hash(position);
     }
 }

@@ -2,23 +2,21 @@ package racing;
 
 public class RacingGame {
 
+    private final int roundCount;
     private final Cars cars;
+    private final RacingRound racingRound;
 
-    public RacingGame(int participationCars) {
-        cars = new Cars(participationCars);
+    public RacingGame(int roundCount, String[] names) {
+        this.roundCount = roundCount;
+        this.cars = new Cars(names);
+        this.racingRound = new RacingRound();
     }
 
-    public void go() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.getCar(i).move(new MoveStrategyImpl());
+    public RacingRound startRacing() {
+        for (int i = 0; i < roundCount; i++) {
+            racingRound.addRacingResult(cars.go());
         }
-    }
 
-    public Car getCar(int testCarNumber) {
-        return cars.getCar(testCarNumber);
-    }
-
-    public int getCarsSize() {
-        return cars.size();
+        return racingRound;
     }
 }
