@@ -23,11 +23,6 @@ public class Car {
         }
     }
 
-    // 스코어 초기화
-    public void initScore() {
-        this.score = 0;
-    }
-
     public String getName() {
         return this.name;
     }
