@@ -8,9 +8,8 @@ public class ResultView {
         for (RaceRecord raceRecord : raceRecords) {
             System.out.println("ROUND " + raceRecord.getRound());
             raceRecord.getRecordsWithCarName()
-            .forEach((key, value) -> System.out.printf("%s : %s \n", key, StateUtil.makeStateLine(value)) );
+                    .forEach((key, value) -> System.out.printf("%s : %s \n", key, StateUtil.makeStateLine(value)));
         }
-        String winner = racingGame.getWinner();
-        System.out.println(winner + "가 우승했습니다.");
+        System.out.println(racingGame.getWinner() + "가 우승했습니다.");
     }
 }

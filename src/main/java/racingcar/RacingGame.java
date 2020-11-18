@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,14 +61,24 @@ public class RacingGame {
     }
 
     public String getWinner() {
-        RaceRecord raceRecord = getRaceRecords().get(getRaceRecords().size() - 1);
-        Map<String, Integer> recordsWithCarName = raceRecord.getRecordsWithCarName();
-        Map.Entry<String, Integer> winner = null;
-        for (Map.Entry<String, Integer> entry : recordsWithCarName.entrySet()) {
-            if (winner == null || entry.getValue().compareTo(winner.getValue()) > 0) {
-                winner = entry;
+        RaceRecord lastRaceRecord = getLastRaceRecord();
+        Map<String, Integer> recordsWithCarName = lastRaceRecord.getRecordsWithCarName();
+        Integer max = Collections.max(recordsWithCarName.values());
+        return getWinnerNames(recordsWithCarName, max);
+    }
+
+    private RaceRecord getLastRaceRecord() {
+        return getRaceRecords().get(getRaceRecords().size() - 1);
+    }
+
+    public String getWinnerNames(Map<String, Integer> map, Integer max) {
+        StringBuilder winners = new StringBuilder();
+        for (String name : map.keySet()) {
+            if (map.get(name).equals(max)) {
+                winners.append(name).append(", ");
             }
         }
-        return winner.getKey();
+        return winners.toString();
     }
+
 }
