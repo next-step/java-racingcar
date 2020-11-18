@@ -2,6 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Cars {
 
@@ -21,10 +22,6 @@ public class Cars {
         }
     }
 
-    public Car getCar(int index) {
-        return cars.get(index);
-    }
-
     public Cars go() {
         List<Car> raceRecord = new ArrayList<>();
         for (Car car : cars) {
@@ -34,7 +31,28 @@ public class Cars {
         return new Cars(raceRecord);
     }
 
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
+
+    public List<Car> getCarList() {
+        return cars;
+    }
+
     public int size() {
         return cars.size();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }

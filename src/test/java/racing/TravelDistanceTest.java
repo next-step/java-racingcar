@@ -9,7 +9,7 @@ class TravelDistanceTest {
 
     @DisplayName(value = "이동거리는 0 보다 작을 수 없다.")
     @Test
-    void moveException() {
+    void 이동거리_최소값_체크() {
 
         // when
         assertThatThrownBy(() -> {
@@ -20,7 +20,7 @@ class TravelDistanceTest {
 
     @DisplayName(value = "한칸 이동거리 테스트")
     @Test
-    void move() {
+    void 이동_테스트() {
         // given
         TravelDistance travelDistance;
 

@@ -9,14 +9,13 @@ public class RacingWinner {
     private final List<String> winners = new ArrayList<>();
 
     public RacingWinner(RacingRound racingRound) {
-        List<Integer> positions = new ArrayList<>();
         Cars winnerCars = racingRound.getLastRoundResult();
-
-        int max = createMaxRank(positions, winnerCars);
+        int max = createMaxRank(winnerCars);
         createWinners(winnerCars, max);
     }
 
-    private int createMaxRank(List<Integer> positions, Cars winnerCars) {
+    private int createMaxRank(Cars winnerCars) {
+        List<Integer> positions = new ArrayList<>();
         for (int i = 0; i < winnerCars.size(); i++) {
             positions.add(winnerCars.getCar(i).getPosition());
         }
