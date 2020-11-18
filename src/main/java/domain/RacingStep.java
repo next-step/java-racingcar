@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,9 +32,15 @@ public class RacingStep {
                 .collect(Collectors.toList());
     }
 
-
     public List<RacingCarNameAndPosition> getCarNameAndPositionList() {
         return carNameAndPositions;
+    }
+
+    public int getWinnerPosition() {
+        return getCarNameAndPositionList().stream()
+                .mapToInt(nameAndPosition -> nameAndPosition.getPosition())
+                .max()
+                .getAsInt();
     }
 
 }

@@ -1,3 +1,10 @@
+package view;
+
+import domain.RacingGame;
+import domain.RacingResult;
+import domain.RacingStep;
+import domain.RandomRacingCarMovingRule;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -12,7 +19,7 @@ public class RacingGameConsole {
     private void run() {
         input();
 
-        ArrayList<RacingStep> result = racingGame.run(carNames, numSteps);
+        RacingResult result = racingGame.run(carNames, numSteps);
 
         printGame(result);
     }
@@ -40,10 +47,10 @@ public class RacingGameConsole {
                 .collect(Collectors.joining("\n\n"));
     }
 
-    public static void printGame(ArrayList<RacingStep> racingStepList) {
-        System.out.print("\n실행 결과\n" + racingStepListToString(racingStepList));
+    public static void printGame(RacingResult racingResult) {
+        System.out.print("\n실행 결과\n" + racingStepListToString(racingResult.getRacingStepList()));
 
-        String winnerNames = RacingGame.getWinnerNames(racingStepList).stream()
+        String winnerNames = racingResult.getWinnerNames().stream()
                 .collect(Collectors.joining(","));
 
         System.out.print("\n\n" + winnerNames + "가 최종 우승했습니다.");
