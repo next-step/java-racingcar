@@ -19,7 +19,7 @@ public class Racing {
         for(int k = 0; k < cars.size(); k++){
             if(tryToMove() == true){
                 Car car = cars.get(k);
-                car.moveLocation(k);
+                car.moveLocation();
                 cars.set(k, car);
             }
         }

@@ -18,8 +18,7 @@ public class Car {
         return location;
     }
 
-    public void moveLocation(int car){
-        this.car = car;
+    public void moveLocation(){
         this.location = location + 1;
     }
     
