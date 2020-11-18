@@ -35,7 +35,7 @@ class RacingGameTest {
         RacingGame newRacingGame = new RacingGame(CAR_NAMES, racingCount);
 
         //When
-        List<Cars> start = newRacingGame.start();
+        List<Cars> start = newRacingGame.getRacingGameResult();
 
         //Then
         assertThat(start.size()).isEqualTo(racingCount);
@@ -81,35 +81,6 @@ class RacingGameTest {
 
         //Then
         assertThat(cars.getCarNames()).doesNotContain("k5").isNotEmpty();
-    }
-
-    @Test
-    @DisplayName("자동차들 중 우승자(들)를 반환한다")
-    void should_return_winners() {
-        //Given
-        List<Cars> cars = getRacingGameResult();
-
-        //When
-        Cars winners = racingGame.getWinners(cars);
-
-        //Then
-        assertThat(winners.getCarNames())
-                .containsAll(Lists.newArrayList("damas", "bmw"));
-
-    }
-
-    @Test
-    @DisplayName("자동차들 중 우승자가 아니면 반환하지 않는다")
-    void should_not_return_winners() {
-        //Given
-        List<Cars> cars = getRacingGameResult();
-
-        //When
-        Cars winners = racingGame.getWinners(cars);
-
-        //Then
-        assertThat(winners.getCarNames()).doesNotContain("benz").isNotEmpty();
-
     }
 
     private List<String> splitCarNames() {

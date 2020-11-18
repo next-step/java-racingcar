@@ -4,14 +4,13 @@ import racingcar.common.Constant;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.car.Name;
-import racingcar.strategy.MovingStrategy;
-import racingcar.strategy.RandomMovingStrategy;
+import racingcar.domain.strategy.MovingStrategy;
+import racingcar.domain.strategy.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
