@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -11,9 +12,10 @@ public class RacingGame {
     private final List<Car> cars;
     private final List<RaceRecord> raceRecords;
 
+    private final static String DELIMITER = ",";
 
-    public RacingGame(List<String> carNames, int rounds) {
-        this.cars = makeCars(carNames);
+    public RacingGame(String carName, int rounds) {
+        this.cars = makeCars(carName);
         validateRounds(rounds);
         this.rounds = rounds;
         this.raceRecords = new ArrayList<>();
@@ -32,13 +34,18 @@ public class RacingGame {
         return raceRecords;
     }
 
-    private List<Car> makeCars(List<String> carNames) {
+    private List<Car> makeCars(String carName) {
+        List<String> carNames = splitCarNames(carName);
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             Car car = new Car(name);
             cars.add(car);
         }
         return cars;
+    }
+
+    private List<String> splitCarNames(String carNames) {
+        return Arrays.asList(carNames.split(DELIMITER));
     }
 
     public void play() {
