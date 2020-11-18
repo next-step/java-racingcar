@@ -28,8 +28,7 @@ public class RacingGame {
             Car car = new Car(i);
             carList.add(car);
         }
-        Scoreboard board = new Scoreboard();
-        board.setCars(carList);
+        Scoreboard board = new Scoreboard(carList);
         board.setMove(input.get(1));
         return board;
     }

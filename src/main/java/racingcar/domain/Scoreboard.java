@@ -6,10 +6,6 @@ public class Scoreboard {
     private List<Car> cars;
     private int move;
 
-    public void setCars(List<Car> list){
-        this.cars = list;
-    }
-
     public void setMove(int move){
         this.move = move;
     }
@@ -22,4 +18,7 @@ public class Scoreboard {
         return move;
     }
     
+    public Scoreboard(List<Car> cars){
+        this.cars = cars;
+    }
 }
