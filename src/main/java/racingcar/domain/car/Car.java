@@ -18,11 +18,14 @@ public class Car {
         this.position = position;
     }
 
-    public void move(MovingStrategy movableGenerator) {
+    public Car move(MovingStrategy movableGenerator) {
         if (movableGenerator.isMovable()) {
-            int currentPosition = this.position.getValue();
-            this.position = new Position(currentPosition + MOVING_DISTANCE);
+            Name newName = new Name(name.getValue());
+            Position newPosition = new Position(this.position.getValue() + MOVING_DISTANCE);
+            return new Car(newName, newPosition);
         }
+
+        return this;
     }
 
     @Override

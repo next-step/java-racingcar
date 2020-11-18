@@ -46,10 +46,10 @@ class CarTest {
         Car car = new Car(name);
 
         //When
-        car.move(() -> true);
+        Car movingCar = car.move(() -> true);
 
         //Then
-        assertThat(car.getPosition().getValue()).isEqualTo(MOVABLE);
+        assertThat(movingCar.getPosition().getValue()).isEqualTo(MOVABLE);
     }
 
 
@@ -61,10 +61,10 @@ class CarTest {
         Car car = new Car(name);
 
         //When
-        car.move(() -> false);
+        Car nonMovingCar = car.move(() -> false);
 
         //Then
-        assertThat(car.getPosition().getValue()).isEqualTo(NON_MOVABLE);
+        assertThat(nonMovingCar.getPosition().getValue()).isEqualTo(NON_MOVABLE);
     }
 
 }

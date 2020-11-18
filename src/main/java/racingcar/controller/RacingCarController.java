@@ -10,7 +10,7 @@ public class RacingCarController {
 
     public List<Cars> getRacingCarResult(RacingCarParameter parameter) {
         RacingGame racingGame = new RacingGame(parameter.getCarNames(), parameter.getRacingCount());
-        return racingGame.getRacingResult();
+        return racingGame.getRacingGameResult();
     }
 
 }

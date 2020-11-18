@@ -8,15 +8,12 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> value;
 
-    public Cars() {
-        this(new ArrayList<>());
-    }
-
-    public Cars(final List<Car> value) {
-        this.value = value;
+    public Cars(List<Car> value) {
+        this.value = new ArrayList<>(value);
     }
 
     public List<Car> getValue() {
+
         return Collections.unmodifiableList(value);
     }
 

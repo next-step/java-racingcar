@@ -1,17 +1,17 @@
 package racingcar.domain;
 
-import com.sun.tools.internal.jxc.ap.Const;
 import racingcar.common.Constant;
-import racingcar.strategy.MovingStrategy;
 import racingcar.domain.car.Car;
-import racingcar.domain.car.Name;
 import racingcar.domain.car.Cars;
+import racingcar.domain.car.Name;
+import racingcar.strategy.MovingStrategy;
 import racingcar.strategy.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -27,20 +27,16 @@ public class RacingGame {
     }
 
     public Cars createCars() {
-        List<String> carNames = Arrays.stream(racingCarNames.split(SPLIT_LETTER))
+        List<Car> cars = Arrays.stream(racingCarNames.split(SPLIT_LETTER))
+                .map(carName -> new Car(new Name(carName)))
                 .collect(Collectors.toList());
-
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            Name name = new Name(carName);
-            cars.add(new Car(name));
-        }
         return new Cars(cars);
     }
 
-    public List<Cars> getRacingResult() {
+    public List<Cars> getRacingGameResult() {
         List<Cars> records = new ArrayList<>();
         Cars cars = createCars();
+
         for (int i = 0; i < racingCount; i++) {
             Cars postRaceCars = race(cars, new RandomMovingStrategy());
             records.add(postRaceCars);
@@ -49,10 +45,12 @@ public class RacingGame {
     }
 
     public Cars race(Cars cars, MovingStrategy movableGenerator) {
-        for (Car car : cars.getValue()) {
-            car.move(movableGenerator);
-        }
-        return cars;
+
+        List<Car> racingResult = cars.getValue().stream()
+                .map(car -> car.move(movableGenerator))
+                .collect(Collectors.toList());
+
+        return new Cars(racingResult);
     }
 
     private void validRacingCount(int racingCount) {
