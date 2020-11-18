@@ -13,8 +13,8 @@ public class Car {
         this.distance = 0;
         this.records = new ArrayList<>();
     }
-    public List<Integer> getRecordList(){
-        return records;
+    public int getRecord(int attempt){
+        return records.get(attempt);
     }
 
     public String getName(){

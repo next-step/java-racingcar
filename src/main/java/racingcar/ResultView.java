@@ -33,7 +33,7 @@ public class ResultView {
     //이동 결과 그리기
     public void printDistance(Cars cars, int num){
         for(int i=0;i<counts;i++){
-            int distance = cars.oneOfCars(i).getRecordList().get(num);
+            int distance = cars.oneOfCars(i).getRecord(num);
             System.out.println(this.intToStr(distance));
         }
         System.out.println();
