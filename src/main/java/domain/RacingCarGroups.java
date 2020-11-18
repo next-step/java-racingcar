@@ -50,17 +50,4 @@ public class RacingCarGroups {
     private boolean isWinner(int distance, int condition) {
         return distance == condition;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacingCarGroups that = (RacingCarGroups) o;
-        return Objects.equals(racingCars, that.racingCars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(racingCars);
-    }
 }
