@@ -26,8 +26,8 @@ public class Car {
         location++;
     }
 
-    public void tryToMove() {
-        if (RandomNumberUtil.getRandomNumber() >= MOVE_POINT) {
+    public void tryToMove(int randomNumber) {
+        if (randomNumber >= MOVE_POINT) {
             move();
         }
     }

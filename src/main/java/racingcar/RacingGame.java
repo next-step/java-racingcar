@@ -46,8 +46,8 @@ public class RacingGame {
         }
     }
 
-    private void playSingleRound(int round) {
-        cars.forEach(Car::tryToMove);
+    public void playSingleRound(int round) {
+        cars.forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
         raceRecords.add(new RaceRecord(round, saveRecords()));
     }
 
