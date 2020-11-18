@@ -40,6 +40,7 @@ public class RacingGame {
         for (int i = 0; i < racingCount; i++) {
             Cars postRaceCars = race(cars, new RandomMovingStrategy());
             records.add(postRaceCars);
+            cars = postRaceCars;
         }
         return records;
     }

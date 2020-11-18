@@ -69,3 +69,4 @@
 1. MainSimulator와 Controller를 분리
 2. RacingCarView와 RacingGame(Model)과의 분리
 3. car의 move 메서드의 반환값으로 새로운 Car객체를 반환하도록 변경
+4. stream을 사용한 코드 간결화
