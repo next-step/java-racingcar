@@ -17,4 +17,12 @@ public class InputView {
     public int inputCarNumber() {
         return scanner.nextInt();
     }
+
+    public void showInputRoundMessage() {
+        System.out.println(Constants.MSG_ROUNDS);
+    }
+
+    public int inputRound() {
+        return scanner.nextInt();
+    }
 }
