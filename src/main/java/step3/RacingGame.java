@@ -34,8 +34,12 @@ public class RacingGame {
     }
 
     private void playGame(List<Car> cars, int round) {
+        ResultView resultView = new ResultView();
+        resultView.showResultMessage();
+
         for (int i =0; i<round; i++) {
             playEachRound(cars);
+            resultView.printRoundResult(cars);
         }
     }
 
