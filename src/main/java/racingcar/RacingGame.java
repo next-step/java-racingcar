@@ -18,7 +18,7 @@ public class RacingGame {
 
     public Scoreboard placetForRacing(List<Integer> input){
         List<Car> carList = new ArrayList<>();
-        for(int i = 0; i <= input.size(); i++){
+        for(int i = 0; i < input.get(0); i++){
             Car car = new Car(i);
             carList.add(car);
         }
