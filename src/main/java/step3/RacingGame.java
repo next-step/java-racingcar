@@ -2,6 +2,7 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
 
@@ -20,6 +21,7 @@ public class RacingGame {
         round = inputView.inputRound();
 
         makeCarList(carNumber);
+        playGame(carList, round);
     }
 
     private void makeCarList(int carNumber) {
@@ -29,6 +31,29 @@ public class RacingGame {
             Car car = new Car(0);
             carList.add(car);
         }
+    }
+
+    private void playGame(List<Car> cars, int round) {
+        for (int i =0; i<round; i++) {
+            playEachRound(cars);
+        }
+    }
+
+    private void playEachRound(List<Car> cars) {
+        for (Car car : cars) {
+            if (isMovable()) {
+                car.position++;
+            }
+        }
+    }
+
+    private boolean isMovable() {
+        return getRandomNumber() >= Constants.MOVE_CONDITION;
+    }
+
+    private int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
 }
