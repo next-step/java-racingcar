@@ -40,7 +40,7 @@ public class RacingCarGame {
         return new RacingCarGroups(racingCars);
     }
 
-    public List<String> getWinners() {
+    public List<CarName> getWinners() {
         return racingCarGroups.findWinners();
     }
 }

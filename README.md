@@ -68,6 +68,10 @@
 -[x] MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, 
  domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
 -[ ] 테스트 가능한 부분과 테스트하기 힘든 부분을 분리해 테스트 가능한 부분에 대해서만 단위 테스트를 진행한다.
-  * RacingCar 클래스에 Random 값에 대해서 interface로 분리 및 test 작성
-  * RacingCar내에 있는 원시타입에 대해서 클래스로 분리
-  * 
+  * RacingCar 클래스에 Random 값에 대해서 interface 로 분리 및 test 작성
+  * RacingCar 내에 있는 원시타입 2개에 대해서 클래스로 분리
+  * RacingCarGroup 내에서 사용하는 RacingCar 원시타입에 대한 refactoring
+
+ ## 문의 사항
+  * `RacingCar`의 `move()` 기능을 unit test를 작성했는데, `RacingCarGroups`의 `move()` 기능에 대해서도 테스트를 해야 한다면,
+  어떻게 테스트를 해야 하는걸까요? `RacingCarGroups`의 `move()`는 자동차 수만큼의 `RacingCar`이 `move()`를 호출하는것만 수행합니다.
