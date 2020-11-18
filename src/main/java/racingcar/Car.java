@@ -32,7 +32,7 @@ public class Car {
         }
     }
 
-    public void validateName(String name) {
+    private void validateName(String name) {
        if (name.length() > MAX_NAME_LENGTH)
            throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH +"자 이하로 입력해주세요 :)");
     }

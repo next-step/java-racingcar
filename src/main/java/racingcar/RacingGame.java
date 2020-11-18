@@ -54,7 +54,7 @@ public class RacingGame {
         }
     }
 
-    public void playSingleRound(int round) {
+    private void playSingleRound(int round) {
         cars.forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
         raceRecords.add(new RaceRecord(round, saveRecords()));
     }
@@ -78,7 +78,7 @@ public class RacingGame {
         return getRaceRecords().get(getRaceRecords().size() - 1);
     }
 
-    public String getWinnerNames(Map<String, Integer> map, Integer max) {
+    private String getWinnerNames(Map<String, Integer> map, Integer max) {
         StringBuilder winners = new StringBuilder();
         for (String name : map.keySet()) {
             if (map.get(name).equals(max)) {
