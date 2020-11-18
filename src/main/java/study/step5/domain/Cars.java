@@ -40,14 +40,7 @@ public class Cars {
     private int getMaxScore() {
         int max = 0;
         for (Car car : cars) {
-            max = compareMaxScore(car, max);
-        }
-        return max;
-    }
-    /* 최대 스코어 추출 비교 */
-    private int compareMaxScore(Car car, int max) {
-        if (car.getScore() > max) {
-            max = car.getScore();
+            max = Math.max(car.getScore(), max);
         }
         return max;
     }
