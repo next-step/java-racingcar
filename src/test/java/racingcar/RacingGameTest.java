@@ -2,6 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import racingcar.domain.Scoreboard;
+import racingcar.service.RacingGame;
+
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;

@@ -5,11 +5,13 @@ import java.util.List;
 
 import racingcar.domain.Car;
 import racingcar.domain.Scoreboard;
-import racingcar.view.ResultView;
 
 public class RacingGame {
-    ResultView resultView = new ResultView();
-    Racing racing = new Racing();
+
+    public RacingGame(Racing racing){
+        this.racing = racing;
+    }
+    private Racing racing;
 
     List<Car> carList = new ArrayList<>();
     int move = 0;

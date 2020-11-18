@@ -1,7 +1,5 @@
 package stringcalculator;
 
-import java.util.Scanner;
-
 public class StringCalcMain {
 
     public static void main(String[] args) {
