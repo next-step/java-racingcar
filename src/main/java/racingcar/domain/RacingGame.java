@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import com.sun.tools.internal.jxc.ap.Const;
+import racingcar.common.Constant;
 import racingcar.strategy.MovingStrategy;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Name;
@@ -15,8 +17,6 @@ public class RacingGame {
 
     private final String racingCarNames;
     private final int racingCount;
-    private final static String BLANK = "";
-    private final static String BLANK_STRING = " ";
     private static final String SPLIT_LETTER = ",";
 
     public RacingGame(String racingCarNames, int racingCount) {
@@ -38,7 +38,7 @@ public class RacingGame {
         return new Cars(cars);
     }
 
-    public List<Cars> start() {
+    public List<Cars> getRacingResult() {
         List<Cars> records = new ArrayList<>();
         Cars cars = createCars();
         for (int i = 0; i < racingCount; i++) {
@@ -55,22 +55,6 @@ public class RacingGame {
         return cars;
     }
 
-    public Cars getWinners(List<Cars> cars) {
-
-        Cars finalRaceRecord = cars.get(cars.size() - 1);
-
-        int winnerPosition = finalRaceRecord.getValue().stream()
-                .mapToInt(car -> car.getPosition().getValue())
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException("The winner is not exists."));
-
-        List<Car> carList = finalRaceRecord.getValue().stream()
-                .filter(car -> car.isEqualPositionValue(winnerPosition))
-                .collect(Collectors.toList());
-
-        return new Cars(carList);
-    }
-
     private void validRacingCount(int racingCount) {
         if (racingCount < 0) {
             throw new IllegalArgumentException("racing count is not available");
@@ -78,7 +62,7 @@ public class RacingGame {
     }
 
     private void validRacingCarNames(String racingCarNames) {
-        if (racingCarNames.equals(BLANK) || racingCarNames.equals(BLANK_STRING) || racingCarNames.isEmpty()) {
+        if (racingCarNames.equals(Constant.BLANK) || racingCarNames.equals(Constant.BLANK_STRING) || racingCarNames.isEmpty()) {
             throw new IllegalArgumentException("racing car name is wrong");
         }
     }

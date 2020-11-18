@@ -1,9 +1,10 @@
-package racingcar.view;
+package racingcar.view.output;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -12,6 +13,7 @@ public class ResultView {
         for (Cars record : records) {
             printCars(record);
         }
+        printWinners(records);
     }
 
     private static void printCars(Cars cars) {
@@ -31,8 +33,20 @@ public class ResultView {
         return carInformation.toString();
     }
 
-    public static void printWinners(Cars lastRecord) {
-        System.out.println(String.join(",", lastRecord.getCarNames()) + "가 최종 우승했습니다.");
+    public static void printWinners(List<Cars> records) {
+        Cars finalRaceRecord = records.get(records.size() - 1);
+
+        int winnerPosition = finalRaceRecord.getValue().stream()
+                .mapToInt(car -> car.getPosition().getValue())
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException("The winner is not exists."));
+
+        List<String> winnerNames = finalRaceRecord.getValue().stream()
+                .filter(car -> car.isEqualPositionValue(winnerPosition))
+                .map(car -> car.getName().getValue())
+                .collect(Collectors.toList());
+
+        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 
 

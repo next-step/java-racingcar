@@ -66,5 +66,5 @@
 7. MainSimulator의 로직을 제거하고, 각 책임을 가진 객체에게 메시지를 보내는 형식으로 개선
 
 - 리팩토링
-1. MainSimulator와 Controller를 분리한다.
-2. RacingCarView 생성
+1. MainSimulator와 Controller를 분리
+2. RacingCarView와 RacingGame(Model)과의 분리
