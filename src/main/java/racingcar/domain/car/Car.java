@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain.car;
+
+import racingcar.domain.move.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +23,12 @@ public class Car {
         return this.name;
     }
 
+
     //자동차 이동
-    public void move(){
-        RandomNumber randomNumber = new RandomNumber();
-        int randomNum = randomNumber.makeNumber();
-        distance += randomNumber.isBigger(randomNum);
-    }
-    //자동차 이동 기록
-    public void recordDistance(){
+    public void move(MoveStrategy moveStrategy){
+        if(moveStrategy.canMove()){
+            distance+=1;
+        }
         records.add(distance);
     }
 

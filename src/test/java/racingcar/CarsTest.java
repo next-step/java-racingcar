@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Cars;
 
 import java.util.List;
 
@@ -13,14 +14,13 @@ public class CarsTest {
     @BeforeEach
     void setUp(){
         cars = Cars.of(new String[]{"철수", "영희"});
-        cars.oneOfCars(0).move();
-        cars.oneOfCars(0).move();
-        cars.oneOfCars(0).move();
-        cars.oneOfCars(0).recordDistance();
+        cars.oneOfCars(0).move(()->true);
+        cars.oneOfCars(0).move(()->true);
+        cars.oneOfCars(0).move(()->true);
 
-        cars.oneOfCars(1).move();
-        cars.oneOfCars(1).move();
-        cars.oneOfCars(1).recordDistance();
+        cars.oneOfCars(1).move(()->true);
+        cars.oneOfCars(1).move(()->true);
+
     }
 
     @Test
@@ -38,6 +38,17 @@ public class CarsTest {
 
 
     }
+    @Test
+    @DisplayName("move 테스트")
+    public void moveTest(){
+        cars.oneOfCars(0).move(()->true);
+        assertThat(cars.oneOfCars(0).getLastRecord()).isEqualTo(4);
+
+        cars.oneOfCars(1).move(()->false);
+        assertThat(cars.oneOfCars(1).getLastRecord()).isEqualTo(2);
+
+    }
+
 
     @Test
     @DisplayName("최고 기록 테스트")

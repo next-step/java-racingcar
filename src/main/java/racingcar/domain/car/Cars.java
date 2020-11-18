@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,8 @@ public class Cars {
     private Cars(List<Car> cars) {
         this.cars = cars;
     }
-    public static Cars of(List<Car> cars){
+    public static Cars of(List<Car> cars)
+    {
         return new Cars(cars);
     }
     public static Cars of(String names){
@@ -24,7 +25,9 @@ public class Cars {
         }
         return of(cars);
     }
-
+    public int getPlayerNumber(){
+        return cars.size();
+    }
 
     public Car oneOfCars(int count){
         return cars.get(count);

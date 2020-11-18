@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.racing.RacingDTO;
 
 import java.util.Scanner;
 
@@ -12,6 +14,6 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int attempts = scanner.nextInt();
 
-        return RacingDTO.of(inputName, attempts);
+        return new RacingDTO(inputName, attempts);
     }
 }
