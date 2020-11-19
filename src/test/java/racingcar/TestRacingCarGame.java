@@ -1,5 +1,7 @@
 package racingcar;
 
+import domain.RacingCarGame;
+import domain.RacingCarGroups;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -40,8 +42,7 @@ public class TestRacingCarGame {
     void test_run_game(String cars, int rounds, int index) {
         racingCarGame = new RacingCarGame(cars, rounds);
         racingCarGame.runGame();
-        assertThat(racingCarGame.getRacingCarGroups().getRacingCars().get(index).getDistance())
-                .isLessThanOrEqualTo(rounds);
+        assertThat(racingCarGame.getRacingCarGroups().getRacingCars().get(index).getCarDistance().getDistance()).isLessThanOrEqualTo(rounds);
     }
 
     @DisplayName("자동차 게임 우승자 결과")

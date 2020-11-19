@@ -1,7 +1,8 @@
-package racingcar;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RacingCarGroups {
     private final List<RacingCar> racingCars;
@@ -20,30 +21,29 @@ public class RacingCarGroups {
         }
     }
 
-    public List<String> findWinners() {
+    public List<CarName> findWinners() {
         return collectWinners(getMaxDistance());
     }
 
     private int getMaxDistance() {
-        int max = racingCars.get(0).getDistance();
-        for (int i = 1; i < racingCars.size(); i++) {
-            max = Math.max(racingCars.get(i).getDistance(), max);
+        int max = 0;
+        for (int i = 0; i < racingCars.size(); i++) {
+            max = Math.max(racingCars.get(i).getCarDistance().getDistance(), max);
         }
         return max;
     }
 
-
-    private List<String> collectWinners(int condition) {
-        List<String> winners = new ArrayList<>();
+    private List<CarName> collectWinners(int condition) {
+        List<CarName> winners = new ArrayList<>();
         for (int i = 0; i< racingCars.size(); i++) {
             addWinner(winners, racingCars.get(i), condition);
         }
         return winners;
     }
 
-    private void addWinner(List<String> winners, RacingCar car, int condition) {
-        if (isWinner(car.getDistance(), condition)) {
-            winners.add(car.getName());
+    private void addWinner(List<CarName> winners, RacingCar car, int condition) {
+        if (isWinner(car.getCarDistance().getDistance(), condition)) {
+            winners.add(car.getCarName());
         }
     }
 

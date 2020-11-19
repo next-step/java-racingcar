@@ -1,5 +1,9 @@
 package racingcar;
 
+import domain.RacingCarGame;
+import view.InputView;
+import view.ResultView;
+
 public class RacingCarGameManager {
     public static void main(String[] args) {
         String carNames = InputView.getCarNames("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");

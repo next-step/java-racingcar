@@ -1,9 +1,9 @@
-package racingcar;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.ResultView.displayRacingCarGroup;
+import static view.ResultView.displayRacingCarGroup;
 
 public class RacingCarGame {
     private final RacingCarGroups racingCarGroups;
@@ -40,7 +40,7 @@ public class RacingCarGame {
         return new RacingCarGroups(racingCars);
     }
 
-    public List<String> getWinners() {
+    public List<CarName> getWinners() {
         return racingCarGroups.findWinners();
     }
 }
