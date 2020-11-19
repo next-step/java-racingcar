@@ -1,6 +1,9 @@
 package racing.ui;
 
-import racing.*;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.RacingRound;
+import racing.domain.RacingWinner;
 
 public class ResultView {
 

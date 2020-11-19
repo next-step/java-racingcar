@@ -1,5 +1,8 @@
 package racing;
 
+import racing.domain.RacingGame;
+import racing.domain.RacingRound;
+import racing.domain.RacingWinner;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
