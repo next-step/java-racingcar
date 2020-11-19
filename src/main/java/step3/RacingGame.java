@@ -9,6 +9,7 @@ public class RacingGame {
     private static int carNumber;
     private static int round;
     private static List<Car> carList;
+    private static Random random = new Random();
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -56,7 +57,6 @@ public class RacingGame {
     }
 
     private static int getRandomNumber() {
-        Random random = new Random();
         return random.nextInt(10);
     }
 
