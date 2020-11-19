@@ -48,9 +48,13 @@ public class RacingGame {
 
     private static void playEachRound(List<Car> cars) {
         for (Car car : cars) {
-            if (isMovable()) {
-                car.position++;
-            }
+            moveCar(car);
+        }
+    }
+
+    private static void moveCar(Car car) {
+        if (isMovable()) {
+            car.position++;
         }
     }
 
