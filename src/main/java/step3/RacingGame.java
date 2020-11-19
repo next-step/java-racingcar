@@ -25,13 +25,15 @@ public class RacingGame {
         playGame(carList, round);
     }
 
-    private static void makeCarList(int carNumber) {
+    public static List<Car> makeCarList(int carNumber) {
         carList = new ArrayList<>();
 
         for (int i = 0; i < carNumber; i++) {
             Car car = new Car(Constants.STARTING_POINT);
             carList.add(car);
         }
+
+        return carList;
     }
 
     private static void playGame(List<Car> cars, int round) {
