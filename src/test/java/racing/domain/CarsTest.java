@@ -14,7 +14,7 @@ class CarsTest {
     }
 
     @Test
-    void getVictoryPosition() {
+    void getHighPosition() {
         Cars cars = Cars.from("test, 1, 2, 3");
         Assertions.assertThat(cars.getVictoryPosition())
                 .isEqualTo(0);

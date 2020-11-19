@@ -37,7 +37,7 @@ public class Cars {
         return carList;
     }
 
-    public int getVictoryPosition() {
+    public int getHighPosition() {
         return carList.stream()
                 .sorted()
                 .findFirst()
