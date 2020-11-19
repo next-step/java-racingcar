@@ -1,28 +1,35 @@
 package racing.view;
 
+import racing.domain.Car;
 import racing.domain.Cars;
+import racing.dto.RancingRecode;
+import racing.utils.StringUtils;
 
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ResultView {
     private static final String POSITION = "-";
-    private static final String CONNECT_CHAR = " : ";
+    public static final String CONNECT_CHAR = " : ";
+
+    private static final String DELIMITER = ",";
+    private static final String VICTORY_MSG = "가 최종우승 했습니다.";
 
     private ResultView() {
     }
 
-    public static void printCarNameAndPosition(Cars cars) {
-        cars.getCarList().forEach(car -> System.out.println(car.getName() + CONNECT_CHAR + repeat(car.getPosition())));
+    public static void printVictoryCarNames(Cars cars) {
+        System.out.println(getVictoryCarNames(cars) + VICTORY_MSG);
     }
 
-    private static String repeat(int count) {
-        return Stream.generate(() -> POSITION)
-                .limit(count)
-                .collect(Collectors.joining());
+    public static void printRacingRecdoe(List<RancingRecode> listRecode) {
+        listRecode.forEach(recode -> System.out.println(recode.getName() + CONNECT_CHAR + StringUtils.repeat(POSITION, recode.getPosition())));
     }
 
-    public static void printVictoryCarNames(String victoryCarNames) {
-        System.out.println(victoryCarNames + "가 최종우승 했습니다.");
+    private static String getVictoryCarNames(Cars cars) {
+        return cars.getCarList().stream()
+                .filter(car -> car.isGreaterOrEqualsPosition(cars.getHighPosition()))
+                .map(Car::getName)
+                .collect(Collectors.joining(DELIMITER));
     }
 }

@@ -3,6 +3,9 @@ package racing.domain;
 import racing.strategy.MoveStrategy;
 
 public class Car implements Comparable {
+    private static final int MIN_NAME_LENGTH = 1;
+    private static final int MAX_NAME_LENGTH = 5;
+
     private final String name;
     private int position;
 
@@ -13,7 +16,7 @@ public class Car implements Comparable {
     }
 
     private void validName(String name) {
-        if (name.length() < 1 || name.length() > 5) {
+        if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 1글자 이상에 5글자를 초과할 수 없습니다.");
         }
     }
@@ -39,5 +42,9 @@ public class Car implements Comparable {
         }
         Car c = (Car) o;
         return c.getPosition() - this.getPosition();
+    }
+
+    public boolean isGreaterOrEqualsPosition(int position) {
+        return this.position >= position;
     }
 }

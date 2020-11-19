@@ -1,18 +1,15 @@
 package racing;
 
-import racing.domain.Cars;
+import racing.domain.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingGameApp {
     public static void main(String[] args) {
-        Cars cars = Cars.from(InputView.inputNameOfCars());
+        RacingGame racingGame = new RacingGame(InputView.inputNameOfCars(), InputView.inputNumberOfRound());
         System.out.println("실행 결과");
-        for (int i = 0, length = InputView.inputNumberOfRound(); i < length; i++) {
-            cars.nextRound();
-            ResultView.printCarNameAndPosition(cars);
-            System.out.println();
-        }
-        ResultView.printVictoryCarNames(cars.getVictoryCarNames());
+        racingGame.run();
+        ResultView.printRacingRecdoe(racingGame.getRancingRecodes());
+        ResultView.printVictoryCarNames(racingGame.getCars());
     }
 }

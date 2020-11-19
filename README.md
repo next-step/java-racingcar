@@ -105,3 +105,45 @@
     - 자동차 이름과 시도할 횟수를 입력받는다.
     - 시도할 횟수만큼 자동차를 돌린다.
     - 우승자를 보여준다.
+
+### 피드백
+    - 상수화로 매직 넘버에 이름 부여 
+    private void validName(String name) {
+        if (name.length() < 1 || name.length() > 5) {
+        
+    - foreach 사용
+    > before
+    for (int i = 0; i < carList.size(); i++) {
+        carList.get(i).move(new RandomMoveStrategy());
+    > after
+        carList.forEach(car -> car.move(new RandomMoveStrategy()));
+    
+    - getter사용 보다는 객체에게 메세지를 보내는 방식 사용하기
+    public String getVictoryCarNames() {
+        return carList.stream()
+                .filter(car -> car.getPosition() >= getVictoryPosition())
+          
+    - UI 로직과 도메인 로직을 분리 (src/main/java/racing/domain/Cars.java)
+    public String getVictoryCarNames() {
+    
+    - Controller와 RacingGame Domain의 분리
+    
+## STEP5
+
+### 목표
+    - 핵심 비지니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
+    - MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
+    
+### 피드백 (https://github.com/next-step/java-racingcar/pull/1536)
+    - 불필요한 static 선언 제거
+    
+    - 부적절한 메소드명 변경
+    > befroe
+    public int getHighPosition() {    
+    > after
+    public int getHighPosition()
+    
+    - RacingGame 은 domain 패키지 안에 속해 있지만 해당 메서드는 화면을 출력한 UI 로직이다
+      DTO를 사용해 자동차 경주의 record 를 생성하고 UI 객체에 주입시켜 주는방향으로 처리
+    > before
+    public List<String> run() {    

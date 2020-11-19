@@ -5,7 +5,6 @@ import racing.strategy.RandomMoveStrategy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> carList;
@@ -17,8 +16,8 @@ public class Cars {
     public static Cars from(String nameOfCars) {
         validNameOfCars(nameOfCars);
         List<Car> tempCarList = new ArrayList<>();
-        String[] arrCarNams = nameOfCars.split(",");
-        for (String carName : arrCarNams) {
+        String[] arrCarNames = nameOfCars.split(",");
+        for (String carName : arrCarNames) {
             tempCarList.add(new Car(carName));
         }
         return new Cars(tempCarList);
@@ -31,27 +30,18 @@ public class Cars {
     }
 
     public void nextRound() {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(new RandomMoveStrategy());
-        }
+        carList.forEach(car -> car.move(new RandomMoveStrategy()));
     }
 
     public List<Car> getCarList() {
         return carList;
     }
 
-    private int getVictoryPosition() {
+    public int getHighPosition() {
         return carList.stream()
                 .sorted()
                 .findFirst()
                 .get()
                 .getPosition();
-    }
-
-    public String getVictoryCarNames() {
-        return carList.stream()
-                .filter(car -> car.getPosition() >= getVictoryPosition())
-                .map(Car::getName)
-                .collect(Collectors.joining(","));
     }
 }

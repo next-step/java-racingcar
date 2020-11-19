@@ -1,10 +1,7 @@
 package racing.domain;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
     @Test
@@ -14,10 +11,10 @@ class CarsTest {
     }
 
     @Test
-    void getVictoryCarNames() {
+    void getHighPosition() {
         Cars cars = Cars.from("test, 1, 2, 3");
-        Assertions.assertThat(cars.getVictoryCarNames())
-                .isEqualTo("test, 1, 2, 3");
+        Assertions.assertThat(cars.getHighPosition())
+                .isEqualTo(0);
     }
 
     @Test
