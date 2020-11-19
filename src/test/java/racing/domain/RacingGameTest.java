@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 class RacingGameTest {
 
     @Test
-    void run() {
+    void runAndGetRancingRecodes() {
         RacingGame racingGame = new RacingGame("test, 1, 2", 1);
-        Assertions.assertThat(racingGame.run().size())
-                .isEqualTo(4);
+        racingGame.run();
+        Assertions.assertThat(racingGame.getRancingRecodes().size())
+                .isEqualTo(3);
     }
 
     @Test

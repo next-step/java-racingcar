@@ -8,10 +8,8 @@ public class RacingGameApp {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(InputView.inputNameOfCars(), InputView.inputNumberOfRound());
         System.out.println("실행 결과");
-
-        racingGame.run()
-                .forEach(msg -> System.out.println(msg));
-
+        racingGame.run();
+        ResultView.printRacingRecdoe(racingGame.getRancingRecodes());
         ResultView.printVictoryCarNames(racingGame.getCars());
     }
 }
