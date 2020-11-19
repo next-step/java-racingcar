@@ -9,8 +9,8 @@ public class RacingGame {
     private static final String POSITION = "-";
     public static final String CONNECT_CHAR = " : ";
 
-    private static Cars cars;
-    private static int repeat;
+    private Cars cars;
+    private int repeat;
 
     public RacingGame(String nameOfCars, int repeat) {
         this.cars = Cars.from(nameOfCars);
