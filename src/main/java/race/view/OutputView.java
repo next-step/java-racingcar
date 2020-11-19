@@ -1,8 +1,8 @@
-package race.ui;
+package race.view;
 
-import race.logic.LapScore;
-import race.logic.LapScores;
-import race.logic.ResultEmitter;
+import race.domain.LapScore;
+import race.domain.LapScores;
+import race.domain.ResultEmitter;
 
 import java.io.PrintStream;
 import java.util.stream.Collectors;

@@ -1,10 +1,10 @@
-package race.entry;
+package race.controller;
 
-import race.logic.Cars;
-import race.logic.RaceGame;
-import race.logic.RandomEngine;
-import race.ui.InputView;
-import race.ui.OutputView;
+import race.domain.Cars;
+import race.domain.RaceGame;
+import race.domain.RandomEngine;
+import race.view.InputView;
+import race.view.OutputView;
 
 public class Stadium {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package race.logic;
+package race.domain;
 
 public class LapScore {
     private final String name;
