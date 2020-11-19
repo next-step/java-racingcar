@@ -2,16 +2,22 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import racingcar.domain.Car;
 import racingcar.domain.Scoreboard;
+import racingcar.view.ResultView;
 
 public class RacingGame {
 
-    public RacingGame(Racing racing){
-        this.racing = racing;
-    }
     private Racing racing;
+    private ResultView resultView;
+
+    public RacingGame(Racing racing, ResultView resultView){
+        this.racing = racing;
+        this.resultView = resultView;
+    }
 
     List<Car> carList = new ArrayList<>();
     int move = 0;
@@ -19,7 +25,12 @@ public class RacingGame {
     public void setInRacing(List<Integer> input){
         placetForRacing(input);
         System.out.println("실행 결과");
-        racing.moveCar(placetForRacing(input));
+        List<Scoreboard> board = racing.moveCar(placetForRacing(input));
+        for(Scoreboard score : board){
+            resultView.racingResult(score.getCars().stream()
+                                                    .map(Car::getLocation)
+                                                    .collect(Collectors.toList()));
+        }
     }
 
     public Scoreboard placetForRacing(List<Integer> input){

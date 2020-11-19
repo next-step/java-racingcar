@@ -18,7 +18,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void init() {
-        racingGame = new RacingGame(new Racing(new ResultView()));
+        racingGame = new RacingGame(new Racing(), new ResultView());
     }
 
     @Test

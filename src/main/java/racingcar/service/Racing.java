@@ -1,27 +1,21 @@
 package racingcar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import racingcar.domain.Car;
 import racingcar.domain.Scoreboard;
-import racingcar.view.ResultView;
 
 public class Racing {
-
-    public Racing(ResultView resultView){
-        this.resultView = resultView;
-    }
-    private ResultView resultView;
     
-    public void moveCar(final Scoreboard board){
+    public List<Scoreboard> moveCar(Scoreboard board){
+        List<Scoreboard> result = new ArrayList<>();
         for(int j = 0; j < board.getMove(); j++){
             tryToMoveResult(board.getCars());
-            resultView.racingResult(board.getCars()
-                                    .stream().map(Car::getLocation)
-                                    .collect(Collectors.toList()));
+            result.add(board);
         }
+        return result;
     }
 
     public void tryToMoveResult(final List<Car> cars){
