@@ -2,6 +2,7 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
 import racing.domain.Cars;
 
 import static org.assertj.core.api.Assertions.*;
@@ -28,12 +29,11 @@ class CarsTest {
     void 최초_이후_자동차_목록_생성() {
         // given
         String[] names = {"jason", "park", "david"};
-        Cars cars1 = new Cars(names);
 
         // when
-        Cars cars2 = cars1.go();
+        Cars cars = new Cars(names);
 
         // then
-        assertThat(cars2).isEqualTo(cars1);
+        assertThat(cars.getCarList()).containsExactly(new Car("jason"), new Car("park"), new Car("david"));
     }
 }
