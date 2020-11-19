@@ -29,7 +29,7 @@ public class RacingGame {
         carList = new ArrayList<>();
 
         for (int i = 0; i < carNumber; i++) {
-            Car car = new Car(0);
+            Car car = new Car(Constants.STARTING_POINT);
             carList.add(car);
         }
     }
@@ -57,7 +57,7 @@ public class RacingGame {
     }
 
     private static int getRandomNumber() {
-        return random.nextInt(10);
+        return random.nextInt(Constants.RANDOM_RANGE);
     }
 
 }
