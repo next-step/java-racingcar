@@ -1,21 +1,22 @@
 package racingcar;
 
-import java.util.List;
+import java.util.Map;
 
 public class RaceRecord {
     private final int round;
-    private final List<Integer> records;
+    private final Map<String, Integer> recordsWithCarName;
 
-    RaceRecord(int round, List<Integer> records) {
+    RaceRecord(int round, Map<String, Integer> map) {
         this.round = round;
-        this.records = records;
+        this.recordsWithCarName = map;
     }
 
     public int getRound() {
         return round;
     }
 
-    public List<Integer> getRecords() {
-        return records;
+    public Map<String, Integer> getRecordsWithCarName() {
+        return recordsWithCarName;
     }
+
 }

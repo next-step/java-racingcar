@@ -1,20 +1,29 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public class RacingGame {
     private final int rounds;
-    private final List<Car> carList;
+    private final List<Car> cars;
     private final List<RaceRecord> raceRecords;
 
-    final static int START_LOCATION = 0;
+    private final static String DELIMITER = ",";
 
-    public RacingGame(int cars, int rounds) {
-        this.carList = makeCars(cars);
+    public RacingGame(String carName, int rounds) {
+        this.cars = makeCars(carName);
+        validateRounds(rounds);
         this.rounds = rounds;
         this.raceRecords = new ArrayList<>();
+    }
+
+    private void validateRounds(int rounds) {
+        if (rounds <= 0)
+            throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다 :) ");
     }
 
     public int getRounds() {
@@ -25,36 +34,58 @@ public class RacingGame {
         return raceRecords;
     }
 
-    private List<Car> makeCars(int cars) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < cars; i++) {
-            Car car = new Car(START_LOCATION);
-            carList.add(car);
+    private List<Car> makeCars(String carName) {
+        List<String> carNames = splitCarNames(carName);
+        List<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            Car car = new Car(name);
+            cars.add(car);
         }
-        return carList;
+        return cars;
+    }
+
+    private List<String> splitCarNames(String carNames) {
+        return Arrays.asList(carNames.split(DELIMITER));
     }
 
     public void play() {
-        for (int i = 0; i < rounds; i++) {
+        for (int i = 1; i < rounds + 1; i++) {
             playSingleRound(i);
         }
     }
 
     private void playSingleRound(int round) {
-        for (Car car : carList) {
-            tryToMove(car);
-        }
+        cars.forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
         raceRecords.add(new RaceRecord(round, saveRecords()));
     }
 
-    private void tryToMove(Car car) {
-        if (RandomNumberUtil.getRandomNumber() >= 4) {
-            car.move();
+    private Map<String, Integer> saveRecords() {
+        Map<String, Integer> map = new HashMap<>();
+        for (Car car : cars) {
+            map.put(car.getName(), car.getLocation());
         }
+        return map;
     }
 
-    private List<Integer> saveRecords() {
-        return carList.stream().map(Car::getLocation)
-                .collect(Collectors.toList());
+    public String getWinner() {
+        RaceRecord lastRaceRecord = getLastRaceRecord();
+        Map<String, Integer> recordsWithCarName = lastRaceRecord.getRecordsWithCarName();
+        Integer max = Collections.max(recordsWithCarName.values());
+        return getWinnerNames(recordsWithCarName, max);
     }
+
+    private RaceRecord getLastRaceRecord() {
+        return getRaceRecords().get(getRaceRecords().size() - 1);
+    }
+
+    private String getWinnerNames(Map<String, Integer> map, Integer max) {
+        StringBuilder winners = new StringBuilder();
+        for (String name : map.keySet()) {
+            if (map.get(name).equals(max)) {
+                winners.append(name).append(", ");
+            }
+        }
+        return winners.toString();
+    }
+
 }
