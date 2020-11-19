@@ -6,11 +6,11 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private int carNumber;
-    private int round;
-    private List<Car> carList;
+    private static int carNumber;
+    private static int round;
+    private static List<Car> carList;
 
-    public void startGame() {
+    public static void main(String[] args) {
         InputView inputView = new InputView();
 
         inputView.init();
@@ -24,7 +24,7 @@ public class RacingGame {
         playGame(carList, round);
     }
 
-    private void makeCarList(int carNumber) {
+    private static void makeCarList(int carNumber) {
         carList = new ArrayList<>();
 
         for (int i = 0; i < carNumber; i++) {
@@ -33,7 +33,7 @@ public class RacingGame {
         }
     }
 
-    private void playGame(List<Car> cars, int round) {
+    private static void playGame(List<Car> cars, int round) {
         ResultView resultView = new ResultView();
         resultView.showResultMessage();
 
@@ -43,7 +43,7 @@ public class RacingGame {
         }
     }
 
-    private void playEachRound(List<Car> cars) {
+    private static void playEachRound(List<Car> cars) {
         for (Car car : cars) {
             if (isMovable()) {
                 car.position++;
@@ -51,11 +51,11 @@ public class RacingGame {
         }
     }
 
-    private boolean isMovable() {
+    private static boolean isMovable() {
         return getRandomNumber() >= Constants.MOVE_CONDITION;
     }
 
-    private int getRandomNumber() {
+    private static int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(10);
     }
