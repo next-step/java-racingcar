@@ -3,8 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Cars;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,15 +13,14 @@ public class CarsTest {
     Cars cars;
     @BeforeEach
     void setUp(){
-        cars = new Cars(new String[]{"철수", "영희"});
-        cars.oneOfCars(0).move();
-        cars.oneOfCars(0).move();
-        cars.oneOfCars(0).move();
-        cars.oneOfCars(0).recordDistance();
+        cars = Cars.of(new String[]{"철수", "영희"});
+        cars.oneOfCars(0).move(()->true);
+        cars.oneOfCars(0).move(()->true);
+        cars.oneOfCars(0).move(()->true);
 
-        cars.oneOfCars(1).move();
-        cars.oneOfCars(1).move();
-        cars.oneOfCars(1).recordDistance();
+        cars.oneOfCars(1).move(()->true);
+        cars.oneOfCars(1).move(()->true);
+
     }
 
     @Test
@@ -29,18 +28,27 @@ public class CarsTest {
     public void initTest(){
 
         String testNames= "aim, test, int";
-        Cars cars = new Cars(testNames);
+        Cars cars = Cars.of(testNames);
 
-        List<String> testList = new ArrayList<>();
-        testList.add("aim");
-        testList.add("test");
-        Cars cars2 = new Cars(testList);
+        String[] testNameArr = {"aim","test"};
+        Cars cars2 = Cars.of(testNameArr);
 
         assertThat(cars.oneOfCars(1).getName())
                 .isEqualTo(cars2.oneOfCars(1).getName());
 
 
     }
+    @Test
+    @DisplayName("move 테스트")
+    public void moveTest(){
+        cars.oneOfCars(0).move(()->true);
+        assertThat(cars.oneOfCars(0).getLastRecord()).isEqualTo(4);
+
+        cars.oneOfCars(1).move(()->false);
+        assertThat(cars.oneOfCars(1).getLastRecord()).isEqualTo(2);
+
+    }
+
 
     @Test
     @DisplayName("최고 기록 테스트")

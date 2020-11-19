@@ -3,8 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.domain.racing.RacingDTO;
+import racingcar.domain.racing.RacingGame;
+import racingcar.view.ResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +17,7 @@ public class RacingGameTest {
     @BeforeEach
     void setUp(){
         String inputName = "pobi,crong,honux";
-        racingDTO = new RacingDTO(inputName,5);
+        racingDTO = new  RacingDTO(inputName,5);
     }
 
 
@@ -25,7 +28,7 @@ public class RacingGameTest {
         Car testCar = new Car("pobi");
         racingGame.instructMove(testCar);
 
-        assertThat(testCar.getRecordList().size()).isEqualTo(racingDTO.getAttempts());
+        assertThat(testCar.getRecord(5)).isNotNull();
     }
 
     @Test
@@ -40,14 +43,14 @@ public class RacingGameTest {
     public void resultTest(){
         RacingGame racingGame = new RacingGame(racingDTO);
         racingGame.start();
-        List<String> winners = racingGame.end();
+        Cars cars = racingGame.end();
 
-        int counts = racingDTO.getNames().length;
+        int counts = cars.getPlayerNumber();
         int attempts = racingDTO.getAttempts();
 
         ResultView resultView = new ResultView(counts, attempts);
-        resultView.showResult(racingGame.getCars());
-        resultView.announceWinner(winners);
+        resultView.showResult(cars);
+        resultView.announceWinner(cars.findWinner());
     }
 
 
