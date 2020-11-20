@@ -1,3 +1,7 @@
+/*
+* 자동차 경주 게임을 진행하는 클래스
+* */
+
 package step3;
 
 import java.util.ArrayList;
@@ -29,7 +33,7 @@ public class RacingGame {
         carList = new ArrayList<>();
 
         for (int i = 0; i < carNumber; i++) {
-            Car car = new Car(Constants.STARTING_POINT);
+            Car car = new Car(Constants.INITIAL_POSITION);
             carList.add(car);
         }
 
