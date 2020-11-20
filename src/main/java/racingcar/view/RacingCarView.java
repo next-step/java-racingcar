@@ -9,13 +9,16 @@ import java.util.List;
 
 public class RacingCarView {
 
-    public RacingCarParameter getInputValue() {
+    private RacingCarView() {
+    }
+
+    public static RacingCarParameter getInputValue() {
         String carNames = InputView.getCarNames();
         int racingCount = InputView.getRacingCount();
         return new RacingCarParameter(carNames, racingCount);
     }
 
-    public void printRacingResult(List<Cars> racingResult) {
+    public static void printRacingResult(List<Cars> racingResult) {
         ResultView.printResult(racingResult);
     }
 }

@@ -1,10 +1,11 @@
 package racingcar.domain.car;
 
 public class Name {
-    private final String value;
+
     private static final int LIMIT_LENGTH = 5;
     private static final String BLANK = "";
     private static final String BLANK_NAME = " ";
+    private final String value;
 
     public Name(String value) {
         validName(value);

@@ -3,8 +3,8 @@ package racingcar.view.input;
 import racingcar.common.Constant;
 
 public class RacingCarParameter {
-    String carNames;
-    int racingCount;
+    private final String carNames;
+    private final int racingCount;
 
     public RacingCarParameter(String carNames, int racingCount) {
         validRacingCount(racingCount);

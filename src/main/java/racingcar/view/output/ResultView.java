@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
+    private ResultView() {
+    }
+
     public static void printResult(List<Cars> records) {
         System.out.println("실행 결과");
         for (Cars record : records) {

@@ -1,6 +1,9 @@
 package racingcar.common;
 
 public class Constant {
-    public final static String BLANK = "";
-    public final static String BLANK_STRING = " ";
+    public static final String BLANK = "";
+    public static final String BLANK_STRING = " ";
+
+    private Constant() {
+    }
 }

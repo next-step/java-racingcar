@@ -34,7 +34,9 @@
 4. stream을 사용한 코드 간결화
 
 ## step5 피드백 2차 TODO
-5. 클래스 내부 접근제어자 정리 및 상수, 생성자 함수 private 선언
 6. DTO 객체를 사용한 Controller와 UI간 message 전달
 7. 유효성 검사 로직 중복 제거
 8. Car 객체 불변 객체로 수정
+
+## step5 피드백 2차 DONE
+5. 클래스 내부 접근제어자 정리 및 상수, 생성자 함수 private 선언

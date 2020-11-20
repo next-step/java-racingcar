@@ -10,13 +10,12 @@ import java.util.List;
 public class MainSimulator {
 
     private static final RacingCarController racingCarController = new RacingCarController();
-    private static final RacingCarView racingCarView = new RacingCarView();
 
     public static void main(String[] args) {
 
-        RacingCarParameter racingCarParameterValue = racingCarView.getInputValue();
+        RacingCarParameter racingCarParameterValue = RacingCarView.getInputValue();
         List<Cars> racingCarResult = racingCarController.getRacingCarResult(racingCarParameterValue);
-        racingCarView.printRacingResult(racingCarResult);
+        RacingCarView.printRacingResult(racingCarResult);
 
     }
 

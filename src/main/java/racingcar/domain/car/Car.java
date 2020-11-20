@@ -4,10 +4,11 @@ import racingcar.domain.strategy.MovingStrategy;
 
 public class Car {
 
-    private final Name name;
-    private Position position;
     private static final int DEFAULT_POSITION = 0;
     private static final int MOVING_DISTANCE = 1;
+    private final Name name;
+    private final Position position;
+
 
     public Car(Name name) {
         this(name, new Position(DEFAULT_POSITION));

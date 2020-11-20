@@ -14,9 +14,10 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
+    private static final String SPLIT_LETTER = ",";
     private final String racingCarNames;
     private final int racingCount;
-    private static final String SPLIT_LETTER = ",";
+
 
     public RacingGame(String racingCarNames, int racingCount) {
         validRacingCount(racingCount);
