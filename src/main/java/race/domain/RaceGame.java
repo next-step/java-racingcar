@@ -1,25 +1,21 @@
 package race.domain;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RaceGame {
     private final Cars cars;
     private final int numberIterations;
-    private ResultEmitter resultEmitter;
 
-    public RaceGame(Cars cars, int numberIterations, ResultEmitter resultEmitter) {
+    public RaceGame(Cars cars, int numberIterations) {
         this.cars = cars;
         this.numberIterations = numberIterations;
-        this.resultEmitter = resultEmitter;
     }
 
-    public void play() {
-        LapScores latestScore = null;
-        for(int i = 0; i < numberIterations; ++i) {
-            latestScore = cars.lap();
-            resultEmitter.emitScores(latestScore);
-        }
-        Optional.ofNullable(latestScore)
-                .ifPresent(resultEmitter::emitWinner);
+    public List<LapScores> play() {
+        return IntStream.range(0, numberIterations)
+                .mapToObj(i -> cars.lap())
+                .collect(Collectors.toUnmodifiableList());
     }
 }

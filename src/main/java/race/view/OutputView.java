@@ -2,12 +2,12 @@ package race.view;
 
 import race.domain.LapScore;
 import race.domain.LapScores;
-import race.domain.ResultEmitter;
 
 import java.io.PrintStream;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class OutputView implements ResultEmitter {
+public class OutputView {
     private static final String POSITION_MARKER = "-";
 
     protected final PrintStream out;
@@ -20,8 +20,14 @@ public class OutputView implements ResultEmitter {
         this.out = out;
     }
 
-    @Override
-    public void emitScores(LapScores scores) {
+    public void showScoreBoard(List<LapScores> scores) {
+        scores.forEach(this::showScores);
+        if (!scores.isEmpty()) {
+            showWinner(scores.get(scores.size() - 1));
+        }
+    }
+
+    private void showScores(LapScores scores) {
         scores.forEach(score -> {
             out.print(score.getName() + " : ");
             out.println(POSITION_MARKER.repeat(score.getPosition() + 1));
@@ -29,8 +35,7 @@ public class OutputView implements ResultEmitter {
         out.println();
     }
 
-    @Override
-    public void emitWinner(LapScores scores) {
+    private void showWinner(LapScores scores) {
         String winners = scores.getFrontLine()
                 .map(LapScore::getName)
                 .collect(Collectors.joining(", "));
