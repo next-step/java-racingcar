@@ -9,23 +9,27 @@ import racingcar.domain.Scoreboard;
 
 public class Racing {
     
-    public List<Scoreboard> moveCar(Scoreboard board){
-        List<Scoreboard> result = new ArrayList<>();
+    public List<Integer> moveCar(Scoreboard board){
+        List<Integer> result = new ArrayList<>();
         for(int j = 0; j < board.getMove(); j++){
-            tryToMoveResult(board.getCars());
-            result.add(board);
+            List<Integer> moveResult = tryToMoveResult(board.getCars());
+            result.addAll(moveResult);
         }
         return result;
     }
 
-    public void tryToMoveResult(final List<Car> cars){
+    public List<Integer> tryToMoveResult(final List<Car> cars){
+        List<Integer> result = new ArrayList<>();
         for(int k = 0; k < cars.size(); k++){
             if(tryToMove() == true){
                 final Car car = cars.get(k);
                 car.moveLocation();
                 cars.set(k, car);
             }
+            result.add(cars.get(k).getLocation());
         }
+        result.add(0);
+        return result;
     }
 
     public boolean tryToMove(){
