@@ -7,11 +7,17 @@ import java.util.List;
 
 public class ResultView {
 
+    /**
+     * 실행 결과 메시지를 출력하는 메소드
+     */
     public void showResultMessage() {
         System.out.println();
         System.out.println(Constants.MSG_RESULT);
     }
 
+    /**
+     * 매 라운드마다 자동차들이 이동한 상태를 출력하는 메소드
+     */
     public void printEachCar(Car car) {
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(Constants.MOVE_MARK);

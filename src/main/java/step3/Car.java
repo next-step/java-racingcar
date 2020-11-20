@@ -11,6 +11,9 @@ public class Car {
         this.position = position;
     }
 
+    /**
+     * 자동차의 위치를 변경하는 메소드
+     */
     public void move() {
         this.position++;
     }
