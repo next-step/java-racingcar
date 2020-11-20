@@ -1,6 +1,5 @@
 package racingcar.dto.input;
 
-import racingcar.common.Constant;
 import racingcar.util.StringUtils;
 
 import java.util.Arrays;
