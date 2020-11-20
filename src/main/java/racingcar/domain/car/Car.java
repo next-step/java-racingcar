@@ -9,9 +9,12 @@ public class Car {
     private final Name name;
     private final Position position;
 
+    public Car(String name) {
+        this(new Name(name), new Position(DEFAULT_POSITION));
+    }
 
-    public Car(Name name) {
-        this(name, new Position(DEFAULT_POSITION));
+    public Car(String name, int position) {
+        this(new Name(name), new Position(position));
     }
 
     public Car(Name name, Position position) {
@@ -46,10 +49,6 @@ public class Car {
     @Override
     public int hashCode() {
         return super.hashCode();
-    }
-
-    public boolean isEqualPositionValue(int positionValue) {
-        return this.position.getValue() == positionValue;
     }
 
     public Name getName() {

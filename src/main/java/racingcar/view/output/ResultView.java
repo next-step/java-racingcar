@@ -1,32 +1,34 @@
 package racingcar.view.output;
 
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Cars;
+import racingcar.dto.output.RacingGameResponse;
+import racingcar.dto.output.RacingGameRecord;
+import racingcar.dto.output.RacingGameResult;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static racingcar.common.Constant.SPLIT_LETTER;
 
 public class ResultView {
 
     private ResultView() {
     }
 
-    public static void printResult(List<Cars> records) {
+    public static void printResult(RacingGameResponse records) {
         System.out.println("실행 결과");
-        for (Cars record : records) {
+        for (RacingGameRecord record : records.getRacingGameRecords()) {
             printCars(record);
         }
-        printWinners(records);
+        printWinners(records.getWinners());
     }
 
-    private static void printCars(Cars cars) {
-        for (Car car : cars.getValue()) {
+    private static void printCars(RacingGameRecord cars) {
+        for (RacingGameResult car : cars.getValue()) {
             System.out.println(getCarPosition(car));
         }
         System.out.println();
     }
 
-    private static String getCarPosition(Car car) {
+    private static String getCarPosition(RacingGameResult car) {
         StringBuilder carInformation = new StringBuilder();
         carInformation.append(car.getName().getValue());
         carInformation.append(" : ");
@@ -36,20 +38,8 @@ public class ResultView {
         return carInformation.toString();
     }
 
-    public static void printWinners(List<Cars> records) {
-        Cars finalRaceRecord = records.get(records.size() - 1);
-
-        int winnerPosition = finalRaceRecord.getValue().stream()
-                .mapToInt(car -> car.getPosition().getValue())
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException("The winner is not exists."));
-
-        List<String> winnerNames = finalRaceRecord.getValue().stream()
-                .filter(car -> car.isEqualPositionValue(winnerPosition))
-                .map(car -> car.getName().getValue())
-                .collect(Collectors.toList());
-
-        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
+    public static void printWinners(List<String> winnerNames) {
+        System.out.println(String.join(SPLIT_LETTER, winnerNames) + "가 최종 우승했습니다.");
     }
 
 

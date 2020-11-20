@@ -1,11 +1,9 @@
 package racingcar;
 
 import racingcar.controller.RacingCarController;
-import racingcar.domain.car.Cars;
+import racingcar.dto.output.RacingGameResponse;
 import racingcar.view.RacingCarView;
-import racingcar.view.input.RacingCarParameter;
-
-import java.util.List;
+import racingcar.dto.input.RacingCarRequest;
 
 public class MainSimulator {
 
@@ -13,8 +11,8 @@ public class MainSimulator {
 
     public static void main(String[] args) {
 
-        RacingCarParameter racingCarParameterValue = RacingCarView.getInputValue();
-        List<Cars> racingCarResult = racingCarController.getRacingCarResult(racingCarParameterValue);
+        RacingCarRequest parameter = RacingCarView.getInputValue();
+        RacingGameResponse racingCarResult = racingCarController.getRacingCarResult(parameter);
         RacingCarView.printRacingResult(racingCarResult);
 
     }

@@ -1,24 +1,22 @@
 package racingcar.view;
 
-import racingcar.domain.car.Cars;
-import racingcar.view.input.RacingCarParameter;
+import racingcar.dto.output.RacingGameResponse;
+import racingcar.dto.input.RacingCarRequest;
 import racingcar.view.input.InputView;
 import racingcar.view.output.ResultView;
-
-import java.util.List;
 
 public class RacingCarView {
 
     private RacingCarView() {
     }
 
-    public static RacingCarParameter getInputValue() {
+    public static RacingCarRequest getInputValue() {
         String carNames = InputView.getCarNames();
         int racingCount = InputView.getRacingCount();
-        return new RacingCarParameter(carNames, racingCount);
+        return new RacingCarRequest(carNames, racingCount);
     }
 
-    public static void printRacingResult(List<Cars> racingResult) {
+    public static void printRacingResult(RacingGameResponse racingResult) {
         ResultView.printResult(racingResult);
     }
 }

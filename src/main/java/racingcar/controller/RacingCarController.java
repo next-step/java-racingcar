@@ -1,16 +1,25 @@
 package racingcar.controller;
 
-import racingcar.domain.RacingGame;
+import racingcar.domain.CarFactory;
+import racingcar.domain.racing.RacingGame;
 import racingcar.domain.car.Cars;
-import racingcar.view.input.RacingCarParameter;
+import racingcar.dto.input.RacingCarRequest;
+import racingcar.dto.output.RacingGameResponse;
+import racingcar.util.ResponseEntity;
 
 import java.util.List;
 
 public class RacingCarController {
 
-    public List<Cars> getRacingCarResult(RacingCarParameter parameter) {
-        RacingGame racingGame = new RacingGame(parameter.getCarNames(), parameter.getRacingCount());
-        return racingGame.getRacingGameResult();
+    private final RacingGame racingGame = new RacingGame();
+    private final CarFactory carFactory = new CarFactory();
+
+    public RacingGameResponse getRacingCarResult(RacingCarRequest parameter) {
+        Cars cars = carFactory.createCars(parameter.getCarNames());
+        List<Cars> racingGameResult = racingGame.startRacingGame(cars, parameter.getRacingCount());
+        List<String> winners = racingGameResult.get(racingGameResult.size()-1).filterWinners();
+
+        return ResponseEntity.ok(racingGameResult, winners);
     }
 
 }
