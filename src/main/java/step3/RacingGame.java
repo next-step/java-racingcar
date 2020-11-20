@@ -54,7 +54,7 @@ public class RacingGame {
 
     private static void moveCar(Car car) {
         if (isMovable()) {
-            car.position++;
+            car.move();
         }
     }
 
