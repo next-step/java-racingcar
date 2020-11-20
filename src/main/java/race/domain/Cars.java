@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(EngineFactory factory, List<String> carNames) {
+    Cars(EngineFactory factory, List<String> carNames) {
         if(carNames.size() <= 0) throw new IllegalArgumentException("carNames");
 
         cars = carNames.stream()
