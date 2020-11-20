@@ -40,34 +40,30 @@ public class RacingGame {
         return carList;
     }
 
-    private static void playGame(List<Car> cars, int round) {
+    public static void playGame(List<Car> cars, int round) {
         ResultView resultView = new ResultView();
         resultView.showResultMessage();
 
-        for (int i =0; i<round; i++) {
-            playEachRound(cars);
-            resultView.printRoundResult(cars);
+        for (int i = 0; i <round; i++) {
+            cars.forEach(item -> {
+                playEachRound(item);
+                resultView.printEachCar(item);
+            });
+            System.out.println();
         }
     }
 
-    private static void playEachRound(List<Car> cars) {
-        for (Car car : cars) {
-            moveCar(car);
-        }
-    }
-
-    private static void moveCar(Car car) {
+    private static void playEachRound(Car car) {
         if (isMovable()) {
             car.move();
         }
     }
 
-    private static boolean isMovable() {
+    public static boolean isMovable() {
         return getRandomNumber() >= Constants.MOVE_CONDITION;
     }
 
     private static int getRandomNumber() {
         return random.nextInt(Constants.RANDOM_RANGE);
     }
-
 }

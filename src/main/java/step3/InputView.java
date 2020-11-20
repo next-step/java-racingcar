@@ -1,3 +1,6 @@
+/*
+ * 자동차 대수와 시도할 횟수를 입력 받는 UI 클래스
+ * */
 package step3;
 
 import java.util.Scanner;
@@ -6,6 +9,7 @@ public class InputView {
 
     private Scanner scanner;
 
+    
     public void init() {
         scanner = new Scanner(System.in);
     }
