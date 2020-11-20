@@ -1,4 +1,4 @@
-package race.logic;
+package race.domain;
 
 @FunctionalInterface
 public interface Engine {

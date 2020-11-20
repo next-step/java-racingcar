@@ -1,4 +1,4 @@
-package race.ui;
+package race.view;
 
 import java.io.InputStream;
 import java.io.PrintStream;

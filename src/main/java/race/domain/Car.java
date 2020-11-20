@@ -1,4 +1,4 @@
-package race.logic;
+package race.domain;
 
 import java.util.Objects;
 
