@@ -27,4 +27,32 @@ class RacingGameTest {
         cars.forEach(car -> assertThat(car.getPosition()).isEqualTo(0));
     }
 
+    @Test
+    @DisplayName("전진 조건에서 자동차가 전진하는지 테스트")
+    void move_forward() {
+        Car car = new Car(0);
+        // car의 move 조건을 어떻게 테스트 해야 할까요ㅜㅜ
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("전진 조건이 아닌 경우 자동차가 멈추는지 테스트")
+    void stop() {
+        Car car = new Car(0);
+
+//        assertThat()
+    }
+
+    @ParameterizedTest
+    @DisplayName("자동차 경주 게임 테스트")
+    @CsvSource(value = {"3,5", "4,6"})
+    void test_racing_game (int numberOfCar, int round) {
+        // given
+
+        // when
+
+        // then
+
+    }
+
 }
