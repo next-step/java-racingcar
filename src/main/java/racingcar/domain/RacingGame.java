@@ -3,7 +3,6 @@ package racingcar.domain;
 import racingcar.util.RandomNumberUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -11,20 +10,18 @@ import java.util.Map;
 
 public class RacingGame {
     private final int rounds;
-    private final List<Car> cars;
+    private final Cars cars;
     private final List<RaceRecord> raceRecords;
 
-    private final static String DELIMITER = ",";
-
-    public RacingGame(String carName, int rounds) {
-        this.cars = makeCars(carName);
+    public RacingGame(Cars cars, int rounds) {
+        this.cars = cars;
         validateRounds(rounds);
         this.rounds = rounds;
         this.raceRecords = new ArrayList<>();
     }
 
-    public static RacingGame newRacingGame(String carName, int rounds) {
-        return new RacingGame(carName, rounds);
+    public static RacingGame newRacingGame(Cars cars, int rounds) {
+        return new RacingGame(cars, rounds);
     }
 
     private void validateRounds(int rounds) {
@@ -40,20 +37,6 @@ public class RacingGame {
         return raceRecords;
     }
 
-    private List<Car> makeCars(String carName) {
-        List<String> carNames = splitCarNames(carName);
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            Car car = Car.newCar(name);
-            cars.add(car);
-        }
-        return cars;
-    }
-
-    private List<String> splitCarNames(String carNames) {
-        return Arrays.asList(carNames.split(DELIMITER));
-    }
-
     public void play() {
         for (int i = 1; i < rounds + 1; i++) {
             playSingleRound(i);
@@ -61,13 +44,13 @@ public class RacingGame {
     }
 
     private void playSingleRound(int round) {
-        cars.forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
+        cars.getCars().forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
         raceRecords.add(new RaceRecord(round, saveRecords()));
     }
 
     private Map<String, Integer> saveRecords() {
         Map<String, Integer> map = new HashMap<>();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             map.put(car.getName(), car.getLocation());
         }
         return map;
