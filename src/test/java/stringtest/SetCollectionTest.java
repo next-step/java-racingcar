@@ -3,7 +3,6 @@ package stringtest;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
