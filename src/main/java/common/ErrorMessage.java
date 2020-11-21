@@ -8,7 +8,8 @@ public final class ErrorMessage {
 
     public static final String NOT_BLANK = "input must not be blank";
 
-    public static final String OUT_OF_RANGE = "out of range. input must be between 1 and 19 inclusive";
+    public static final String OUT_OF_RANGE =
+            "out of range. input must be between 1 and 19 inclusive";
 
     private ErrorMessage() {}
 }
