@@ -10,13 +10,7 @@ public class RacingGame {
     public RacingGame(Cars cars, RaceRecords raceRecords, int rounds) {
         this.cars = cars;
         this.raceRecords = raceRecords;
-        validateRounds(rounds);
         this.rounds = rounds;
-    }
-
-    private void validateRounds(int rounds) {
-        if (rounds <= 0)
-            throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다 :) ");
     }
 
     public static RacingGame newRacingGame(Cars cars, RaceRecords raceRecords, int rounds) {

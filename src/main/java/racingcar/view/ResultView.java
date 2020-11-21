@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.util.StateUtil;
+import racingcar.util.StringUtil;
 import racingcar.domain.RaceRecord;
 import racingcar.domain.RacingGame;
 
@@ -12,7 +12,7 @@ public class ResultView {
         for (RaceRecord raceRecord : raceRecords) {
             System.out.println("ROUND " + raceRecord.getRound());
             raceRecord.getRecordsWithCarName()
-                    .forEach((key, value) -> System.out.printf("%s : %s \n", key, StateUtil.makeStateLine(value)));
+                    .forEach((key, value) -> System.out.printf("%s : %s \n", key, StringUtil.makeStateLine(value)));
         }
         System.out.println(racingGame.getRaceRecords().getWinner() + "가 우승했습니다.");
     }
