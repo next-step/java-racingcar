@@ -1,20 +1,25 @@
 package racingcar.domain.car;
 
+import racingcar.util.StringUtils;
+
 public class Name {
-    private final String value;
+
     private static final int LIMIT_LENGTH = 5;
-    private static final String BLANK = "";
-    private static final String BLANK_NAME = " ";
+    private final String value;
 
     public Name(String value) {
         validName(value);
+        validNameLength(value);
         this.value = value;
     }
 
     private void validName(String value) {
-        if (value.equals(BLANK) || value.equals(BLANK_NAME)) {
+        if (StringUtils.isBlank(value)) {
             throw new IllegalArgumentException("the name must not blank.");
         }
+    }
+
+    private void validNameLength(String value) {
         if (value.length() > LIMIT_LENGTH) {
             throw new IllegalArgumentException("the name must be less than five characters.");
         }

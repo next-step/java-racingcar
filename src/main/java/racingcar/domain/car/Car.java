@@ -1,16 +1,20 @@
 package racingcar.domain.car;
 
-import racingcar.strategy.MovingStrategy;
+import racingcar.domain.strategy.MovingStrategy;
 
 public class Car {
 
-    private final Name name;
-    private Position position;
     private static final int DEFAULT_POSITION = 0;
     private static final int MOVING_DISTANCE = 1;
+    private final Name name;
+    private final Position position;
 
-    public Car(Name name) {
-        this(name, new Position(DEFAULT_POSITION));
+    public Car(String name) {
+        this(new Name(name), new Position(DEFAULT_POSITION));
+    }
+
+    public Car(String name, int position) {
+        this(new Name(name), new Position(position));
     }
 
     public Car(Name name, Position position) {
@@ -18,11 +22,14 @@ public class Car {
         this.position = position;
     }
 
-    public void move(MovingStrategy movableGenerator) {
+    public Car move(MovingStrategy movableGenerator) {
         if (movableGenerator.isMovable()) {
-            int currentPosition = this.position.getValue();
-            this.position = new Position(currentPosition + MOVING_DISTANCE);
+            Name newName = new Name(name.getValue());
+            Position newPosition = new Position(this.position.getValue() + MOVING_DISTANCE);
+            return new Car(newName, newPosition);
         }
+
+        return this;
     }
 
     @Override
@@ -42,10 +49,6 @@ public class Car {
     @Override
     public int hashCode() {
         return super.hashCode();
-    }
-
-    public boolean isEqualPositionValue(int positionValue) {
-        return this.position.getValue() == positionValue;
     }
 
     public Name getName() {
