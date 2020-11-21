@@ -33,7 +33,7 @@ public class RaceRecords {
         return getWinnerNames(recordsWithCarName, max);
     }
 
-    public RaceRecord getLastRaceRecord() {
+    private RaceRecord getLastRaceRecord() {
         return getRaceRecords().get(getRaceRecords().size() - 1);
     }
 

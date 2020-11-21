@@ -15,7 +15,7 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> makeCars(List<String> carNames) {
+    private List<Car> makeCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             Car car = Car.newCar(name);
