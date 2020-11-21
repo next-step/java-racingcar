@@ -14,6 +14,11 @@ public class Car {
         this.name = name;
     }
 
+    private void validateName(String name) {
+       if (name.length() > MAX_NAME_LENGTH)
+           throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH +"자 이하로 입력해주세요 :)");
+    }
+
     public static Car newCar(String name) {
         return new Car(name);
     }
@@ -26,7 +31,7 @@ public class Car {
         return name;
     }
 
-    public void move() {
+    private void move() {
         location++;
     }
 
@@ -34,10 +39,5 @@ public class Car {
         if (randomNumber >= MOVE_POINT) {
             move();
         }
-    }
-
-    private void validateName(String name) {
-       if (name.length() > MAX_NAME_LENGTH)
-           throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH +"자 이하로 입력해주세요 :)");
     }
 }

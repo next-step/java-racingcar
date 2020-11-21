@@ -16,14 +16,6 @@ public class CarTest {
         car = new Car("car");
     }
 
-    @Test
-    @DisplayName("자동차가 움직이면 위치가 증가하는지 확인")
-    public void move_test() {
-        int startLocation = car.getLocation();
-        car.move();
-        assertThat(car.getLocation()).isEqualTo(startLocation +1);
-    }
-
     @ParameterizedTest
     @CsvSource(value = {"1", "2", "3"})
     @DisplayName("기준값 미만이면 자동차가 움직이지 않는지 확인")
