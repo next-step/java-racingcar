@@ -11,9 +11,11 @@ public class RacingMain {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        RacingGame racingGame = new RacingGame(new Racing(), new ResultView());
+        RacingGame racingGame = new RacingGame(new Racing());
         List<Integer> input = inputView.inputRacing();
-        racingGame.setInRacing(input);
+        List<Integer> result = racingGame.setInRacing(input);
+        ResultView resultView = new ResultView();
+        resultView.racingResult(result);
     }
 
 }

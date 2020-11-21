@@ -10,10 +10,6 @@ public class Car {
         this.location = 1;
     }
 
-    public int getCar(){
-        return car;
-    }
-
     public int getLocation(){
         return location;
     }

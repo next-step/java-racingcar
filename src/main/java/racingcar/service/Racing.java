@@ -22,7 +22,7 @@ public class Racing {
         List<Integer> result = new ArrayList<>();
         for(int k = 0; k < cars.size(); k++){
             if(tryToMove() == true){
-                final Car car = cars.get(k);
+                Car car = cars.get(k);
                 car.moveLocation();
                 cars.set(k, car);
             }
@@ -34,8 +34,8 @@ public class Racing {
 
     public boolean tryToMove(){
         boolean result = false;
-        final Random random = new Random();
-        final int move = random.nextInt(10);
+        Random random = new Random();
+        int move = random.nextInt(10);
 
         if(move >=4){
             result = true;

@@ -10,21 +10,16 @@ import racingcar.view.ResultView;
 public class RacingGame {
 
     private Racing racing;
-    private ResultView resultView;
 
-    public RacingGame(Racing racing, ResultView resultView){
+    public RacingGame(Racing racing){
         this.racing = racing;
-        this.resultView = resultView;
     }
 
-    List<Car> carList = new ArrayList<>();
-    int move = 0;
-
-    public void setInRacing(List<Integer> input){
+    public List<Integer> setInRacing(List<Integer> input){
         placetForRacing(input);
         System.out.println("실행 결과");
         List<Integer> result = racing.moveCar(placetForRacing(input));
-        resultView.racingResult(result);
+        return result;
     }
 
     public Scoreboard placetForRacing(List<Integer> input){

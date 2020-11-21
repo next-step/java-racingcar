@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import racingcar.domain.Scoreboard;
-import racingcar.view.ResultView;
-
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void init() {
-        racingGame = new RacingGame(new Racing(), new ResultView());
+        racingGame = new RacingGame(new Racing());
     }
 
     @Test
