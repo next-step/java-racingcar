@@ -9,26 +9,26 @@ import racingcar.domain.Scoreboard;
 
 public class Racing {
     
-    public List<Integer> moveCar(Scoreboard board){
-        List<Integer> result = new ArrayList<>();
+    public List<String> moveCar(Scoreboard board){
+        List<String> result = new ArrayList<>();
         for(int j = 0; j < board.getMove(); j++){
-            List<Integer> moveResult = tryToMoveResult(board.getCars());
+            List<String> moveResult = tryToMoveResult(board.getCars());
             result.addAll(moveResult);
         }
         return result;
     }
 
-    public List<Integer> tryToMoveResult(List<Car> cars){
-        List<Integer> result = new ArrayList<>();
+    public List<String> tryToMoveResult(List<Car> cars){
+        List<String> result = new ArrayList<>();
         for(int k = 0; k < cars.size(); k++){
             if(tryToMove() == true){
                 Car car = cars.get(k);
                 car.moveLocation();
                 cars.set(k, car);
             }
-            result.add(cars.get(k).getLocation());
+            result.add(cars.get(k).getCar()+" : "+String.valueOf(cars.get(k).getLocation()));
         }
-        result.add(0);
+        result.add("");
         return result;
     }
 

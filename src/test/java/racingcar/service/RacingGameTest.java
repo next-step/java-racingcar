@@ -23,13 +23,13 @@ public class RacingGameTest {
     void placetForRacingTest(){
 
         //given
-        List<Integer> list =new ArrayList<Integer>(Arrays.asList(3,5));
+        List<String> list = new ArrayList<String>(Arrays.asList("pobi,maro","5"));
 
         //when
-        Scoreboard board = racingGame.placetForRacing(list);
+        Scoreboard board = racingGame.placetForRacingByName(list);
 
         //then
-        assertThat(board.getCars().size()).isEqualTo(3);
+        assertThat(board.getCars().size()).isEqualTo(2);
         assertThat(board.getMove()).isEqualTo(5);
     }
     

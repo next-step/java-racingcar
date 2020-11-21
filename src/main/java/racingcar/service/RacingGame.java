@@ -13,10 +13,10 @@ public class RacingGame {
         this.racing = racing;
     }
 
-    public List<Integer> setInRacingByName(List<String> input){
+    public List<String> setInRacingByName(List<String> input){
         placetForRacingByName(input);
         System.out.println("실행 결과");
-        List<Integer> result = racing.moveCar(placetForRacingByName(input));
+        List<String> result = racing.moveCar(placetForRacingByName(input));
         return result;
     }
 

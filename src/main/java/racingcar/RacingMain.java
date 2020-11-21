@@ -14,7 +14,7 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame(new Racing());
         List<String> input = inputView.inputRacingByName();
 
-        List<Integer> result = racingGame.setInRacingByName(input);
+        List<String> result = racingGame.setInRacingByName(input);
         ResultView resultView = new ResultView();
         resultView.racingResult(result);
     }
