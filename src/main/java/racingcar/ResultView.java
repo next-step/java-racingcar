@@ -32,4 +32,8 @@ public class ResultView {
 
     }
 
+    public static void printResultMsg(){
+        System.out.println("\n실행결과");
+    }
+
 }

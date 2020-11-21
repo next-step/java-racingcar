@@ -77,7 +77,6 @@ public class CarRace {
         String[] names = splitCarNames(carNames);
         for(String name : names){
             if(name.length()> CARNAME_MAXSIZE){
-                System.out.println(name);
                 return false;
             }
         }
