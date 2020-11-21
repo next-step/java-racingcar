@@ -9,7 +9,7 @@ public class CarTest {
     @Test
     void carMoveTest(){
         //given
-        Car car = new Car(1);
+        Car car = new Car("test");
 
         // when
         car.moveLocation();

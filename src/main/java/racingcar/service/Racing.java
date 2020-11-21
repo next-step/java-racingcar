@@ -18,7 +18,7 @@ public class Racing {
         return result;
     }
 
-    public List<Integer> tryToMoveResult(final List<Car> cars){
+    public List<Integer> tryToMoveResult(List<Car> cars){
         List<Integer> result = new ArrayList<>();
         for(int k = 0; k < cars.size(); k++){
             if(tryToMove() == true){

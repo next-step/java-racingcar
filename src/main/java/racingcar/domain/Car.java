@@ -2,10 +2,10 @@ package racingcar.domain;
 
 public class Car {
 
-    private int car;
+    private  String car;
     private int location;
 
-    public Car(int car){
+    public Car(String car){
         this.car = car;
         this.location = 1;
     }
