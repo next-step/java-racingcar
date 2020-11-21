@@ -7,18 +7,13 @@ public class RacingGame {
     private final Cars cars;
     private final RaceRecords raceRecords;
 
-    public RacingGame(Cars cars, RaceRecords raceRecords, int rounds) {
+    public RacingGame(Cars cars, int rounds) {
         this.cars = cars;
-        this.raceRecords = raceRecords;
         this.rounds = rounds;
+        this.raceRecords = new RaceRecords();
     }
-
-    public static RacingGame newRacingGame(Cars cars, RaceRecords raceRecords, int rounds) {
-        return new RacingGame(cars, raceRecords, rounds);
-    }
-
-    public int getRounds() {
-        return rounds;
+    public static RacingGame newRacingGame(Cars cars, int rounds) {
+        return new RacingGame(cars, rounds);
     }
 
     public RaceRecords getRaceRecords() {
