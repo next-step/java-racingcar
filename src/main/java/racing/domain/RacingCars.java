@@ -1,11 +1,7 @@
 package racing.domain;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public final class RacingCars {
@@ -35,17 +31,7 @@ public final class RacingCars {
     }
 
     public List<String> getWinners() {
-        Map<Integer, List<String>> rankings = new HashMap<>();
-
-        for (Car car : cars) {
-            List<String> names =
-                    rankings.computeIfAbsent(car.getPosition(), name -> new LinkedList<>());
-            names.add(car.getName());
-        }
-
-        int maxDisplacement = Collections.max(rankings.keySet());
-
-        return rankings.get(maxDisplacement);
+        return Ranking.findWinners(cars);
     }
 
     private List<Car> ready(final String delimitedCarNames) {
