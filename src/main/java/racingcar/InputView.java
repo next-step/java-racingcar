@@ -10,21 +10,10 @@ public class InputView {
         System.out.println(inputMsg);
         Scanner scanner = new Scanner(System.in);
         String inputString = scanner.next();
-        while(!carNamesValidation(inputString)){
+        while(!CarRace.carNamesValidation(inputString)){
             return inputCarNames("자동차 이름은 5자를 초과할 수 없습니다. 다시 입력해주세요.");
         }
         return splitCarNames(inputString);
-    }
-
-    public static boolean carNamesValidation(String carNames){
-        String[] names = splitCarNames(carNames);
-        for(String name : names){
-            if(name.length()> CARNAME_MAXSIZE){
-                System.out.println(name);
-                return false;
-            }
-        }
-        return true;
     }
 
     public static String[] splitCarNames(String carNames){

@@ -5,10 +5,11 @@ import java.util.*;
 public class CarRace {
 
     public static final int LIMIT_BOUND = 10;
+    public static final int CARNAME_MAXSIZE = 5;
+    private static Random random = new Random();
     private int tryCnt;
     private List<Car> cars = new ArrayList<Car>();
     private List<RaceSnapshot> raceResult = new ArrayList<>();
-    private static Random random = new Random();
 
     public CarRace(String[] carNames, int tryCnt) {
         this.tryCnt = tryCnt;
@@ -48,23 +49,20 @@ public class CarRace {
 
     public List<Car> getWinnerCars() {
         List<Car> winnerCar = new ArrayList<>();
-        int winnerDistance = getWinnerDistance(raceResult);
+        int winnerDistance = getWinnerDistance(raceResult.get(raceResult.size()-1));
         RaceSnapshot lastRaceSnapShot = raceResult.get(raceResult.size()-1);
         for(Car car : lastRaceSnapShot.cars){
-            if(car.getDistance() == winnerDistance){
+            if(car.equalDistance(winnerDistance)){
                 winnerCar.add(car);
             }
         }
         return winnerCar;
     }
 
-    public int getWinnerDistance(List<RaceSnapshot> raceSnapshotList) {
-        RaceSnapshot lastRaceSnapShot = raceSnapshotList.get(raceSnapshotList.size()-1);
-        final Comparator<Integer> comp1 = (s1, s2) -> s1.compareTo(s2);
-        int winnerDistance = lastRaceSnapShot.cars.stream()
-                .max((x, y) -> x.getDistance() - y.getDistance())
+    public int getWinnerDistance(RaceSnapshot lastRaceSnapShot) {
+        return lastRaceSnapShot.cars.stream()
+                .max(Comparator.comparingInt(Car::getDistance))
                 .get().getDistance();
-        return winnerDistance;
     }
 
     public int getRandom(){
@@ -73,5 +71,20 @@ public class CarRace {
 
     public void setRaceResult(List<RaceSnapshot> raceResult) {
         this.raceResult = raceResult;
+    }
+
+    public static boolean carNamesValidation(String carNames){
+        String[] names = splitCarNames(carNames);
+        for(String name : names){
+            if(name.length()> CARNAME_MAXSIZE){
+                System.out.println(name);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static String[] splitCarNames(String carNames){
+        return carNames.split(",");
     }
 }

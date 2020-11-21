@@ -32,14 +32,14 @@ public class RacingCarTest {
     @DisplayName("입력정상")
     @Test
     void carNamesValidationTest_SUCCESS() {
-        boolean result = InputView.carNamesValidation("john,tom,myung");
+        boolean result = CarRace.carNamesValidation("john,tom,myung");
         assertTrue(result);
     }
 
     @DisplayName("5자이상입력")
     @Test
     void carNamesValidationTest_FAIL() {
-        boolean result = InputView.carNamesValidation("john,tom,petrucci");
+        boolean result = CarRace.carNamesValidation("john,tom,petrucci");
         assertFalse(result);
     }
 
@@ -62,7 +62,7 @@ public class RacingCarTest {
     @Test
     void carMoveSuccess() {
         car.go(4);
-        assertThat(car.getDistance()).isEqualTo(2);
+        assertTrue(car.equalDistance(2));
     }
 
     @DisplayName("10번전진")
@@ -78,7 +78,7 @@ public class RacingCarTest {
     @Test
     void carMovefail() {
         car.go(3);
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.equalDistance(1)).isTrue();
     }
 
     @DisplayName("레이스스냅샷확인")
@@ -102,7 +102,7 @@ public class RacingCarTest {
         RaceSnapshot raceSnapshot = new RaceSnapshot(carSnapshotArrayList);
         ArrayList<RaceSnapshot> raceSnapshotArrayList = new ArrayList<>();
         raceSnapshotArrayList.add(raceSnapshot);
-        int winenrDistance = carRace.getWinnerDistance(raceSnapshotArrayList);
+        int winenrDistance = carRace.getWinnerDistance(raceSnapshotArrayList.get(raceSnapshotArrayList.size()-1));
         assertThat(winenrDistance).isEqualTo(3);
     }
 
