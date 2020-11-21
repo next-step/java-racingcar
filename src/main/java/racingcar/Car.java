@@ -14,6 +14,10 @@ public class Car {
         this.name = name;
     }
 
+    public static Car newCar(String name) {
+        return new Car(name);
+    }
+
     public int getLocation() {
         return location;
     }
