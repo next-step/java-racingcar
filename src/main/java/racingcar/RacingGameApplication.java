@@ -6,7 +6,7 @@ public class RacingGameApplication {
         ResultView resultView = new ResultView();
 
         inputView.input();
-        RacingGame racingGame = new RacingGame(inputView.getCarNames(), inputView.getRounds());
+        RacingGame racingGame = RacingGame.newRacingGame(inputView.getCarNames(), inputView.getRounds());
         racingGame.play();
         resultView.print(racingGame);
     }

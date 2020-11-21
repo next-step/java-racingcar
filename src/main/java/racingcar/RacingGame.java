@@ -21,6 +21,10 @@ public class RacingGame {
         this.raceRecords = new ArrayList<>();
     }
 
+    public static RacingGame newRacingGame(String carName, int rounds) {
+        return new RacingGame(carName, rounds);
+    }
+
     private void validateRounds(int rounds) {
         if (rounds <= 0)
             throw new IllegalArgumentException("시도 횟수는 1회 이상이어야 합니다 :) ");
