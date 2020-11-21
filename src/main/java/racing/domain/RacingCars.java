@@ -39,7 +39,7 @@ public final class RacingCars {
 
         for (Car car : cars) {
             List<String> names =
-                    rankings.computeIfAbsent(car.getDisplacement(), name -> new LinkedList<>());
+                    rankings.computeIfAbsent(car.getPosition(), name -> new LinkedList<>());
             names.add(car.getName());
         }
 
