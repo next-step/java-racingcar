@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import racing.domain.Car;
 import racing.domain.FixedRoulette;
-import racing.domain.Position;
 import racing.domain.RacingCars;
 
 public class RacingGameTest {
