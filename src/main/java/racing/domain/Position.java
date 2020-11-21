@@ -4,10 +4,6 @@ public class Position {
 
     private int position;
 
-    public Position() {
-        this(0);
-    }
-
     public Position(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("Position 은 음수 값을 가질 수 없습니다");
