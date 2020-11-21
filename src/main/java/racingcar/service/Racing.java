@@ -12,13 +12,13 @@ public class Racing {
     public List<String> moveCar(Scoreboard board){
         List<String> result = new ArrayList<>();
         for(int j = 0; j < board.getMove(); j++){
-            List<String> moveResult = tryToMoveResult(board.getCars());
+            List<String> moveResult = tryToMoveResult(board.getCars(), board.getMove());
             result.addAll(moveResult);
         }
         return result;
     }
 
-    public List<String> tryToMoveResult(List<Car> cars){
+    public List<String> tryToMoveResult(List<Car> cars, int move){
         List<String> result = new ArrayList<>();
         for(int k = 0; k < cars.size(); k++){
             if(tryToMove() == true){
@@ -26,7 +26,7 @@ public class Racing {
                 car.moveLocation();
                 cars.set(k, car);
             }
-            result.add(cars.get(k).getCar()+" : "+String.valueOf(cars.get(k).getLocation()));
+            result.add(cars.get(k).getCar()+" : "+String.valueOf(cars.get(k).getLocation()) +" : "+ String.valueOf(move));
         }
         result.add("");
         return result;
