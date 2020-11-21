@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class Car {
 
-    private final Name name;
+    private final String name;
 
-    private final Position position;
+    private Position position;
 
     public Car(String name, int position) {
-        this.name = new Name(name);
+        this.name = name;
         this.position = new Position(position);
     }
 
@@ -19,7 +19,7 @@ public class Car {
         this(name, 0);
     }
 
-    public Name getName() {
+    public String getName() {
         return name;
     }
 
@@ -28,12 +28,13 @@ public class Car {
     }
 
     public void move() {
-        position.move();
+        position = position.move();
     }
 
     public void rank(Map<Integer, List<String>> rankings) {
         List<String> names =
                 rankings.computeIfAbsent(position.getPosition(), name -> new LinkedList<>());
-        names.add(name.getName());
+
+        names.add(name);
     }
 }

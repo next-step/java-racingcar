@@ -30,10 +30,6 @@ public final class RacingCars {
                 .forEach(Car::move);
     }
 
-    public List<String> getWinners() {
-        return Ranking.findWinners(cars);
-    }
-
     private List<Car> ready(final String delimitedCarNames) {
         String[] carNames = delimitedCarNames.split(CAR_NAMES_DELIMITER);
 
