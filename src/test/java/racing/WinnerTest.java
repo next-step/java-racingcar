@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import racing.domain.Car;
 import racing.domain.RacingCars;
+import racing.domain.Ranking;
 
 public class WinnerTest {
 
@@ -34,8 +35,7 @@ public class WinnerTest {
         cars.add(javajigi);
         cars.add(crong);
 
-        racingCars = new RacingCars(cars);
-        assertThat(racingCars.getWinners()).containsExactly("crong");
+        assertThat(Ranking.findWinners(cars)).containsExactly("crong");
     }
 
     @Test
@@ -50,6 +50,6 @@ public class WinnerTest {
         cars.add(crong);
 
         racingCars = new RacingCars(cars);
-        assertThat(racingCars.getWinners()).containsExactly("javajigi", "crong");
+        assertThat(Ranking.findWinners(cars)).containsExactly("javajigi", "crong");
     }
 }
