@@ -1,11 +1,11 @@
 package racing.view;
 
 import java.util.List;
+import java.util.Map;
 
 import static util.StringUtils.repeat;
 
-import racing.domain.Car;
-import racing.domain.RacingCars;
+import racing.domain.Record;
 import util.StringUtils;
 
 public final class ResultView {
@@ -24,11 +24,10 @@ public final class ResultView {
         System.out.println(RACING_RESULT);
     }
 
-    public static void viewRoundResult(final RacingCars racingCars) {
-        for (final Car car : racingCars.getCars()) {
-
-            String name = car.getName();
-            int position = car.getPosition().getPosition();
+    public static void viewRoundResult(final List<Record> records) {
+        for (Record record : records) {
+            String name = record.getName();
+            int position = record.getPosition();
 
             System.out.println(name + DELIMITER + repeat(DISPLACEMENT_SYMBOL, position));
         }

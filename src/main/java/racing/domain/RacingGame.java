@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import racing.view.InputView;
@@ -53,8 +54,21 @@ public class RacingGame {
     private void raceAndViewRondResult() {
         for (int i = 0; i < round; i++) {
             this.racingCars.race(this.roulette);
-            ResultView.viewRoundResult(this.racingCars);
+
+            List<Record> records = recordRound(racingCars);
+
+            ResultView.viewRoundResult(records);
         }
+    }
+
+    private List<Record> recordRound(RacingCars racingCars) {
+        List<Record> records = new ArrayList<>();
+
+        for (Car car : racingCars.getCars()) {
+            records.add(new Record(car));
+        }
+
+        return records;
     }
 
     private void viewWinner() {
