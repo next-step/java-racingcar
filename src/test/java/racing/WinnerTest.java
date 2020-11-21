@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import racing.domain.Car;
+import racing.domain.Name;
 import racing.domain.Position;
 import racing.domain.RacingCars;
 
@@ -27,9 +28,9 @@ public class WinnerTest {
     @Test
     @DisplayName("우승자가 한 명일 경우 우승자 출력 테스트")
     public void oneWinnerTest() {
-        Car pobi = new Car("pobi", new Position(2));
-        Car javajigi = new Car("javajigi", new Position(2));
-        Car crong = new Car("crong", new Position(3));
+        Car pobi = new Car("pobi", 2);
+        Car javajigi = new Car("javajigi", 2);
+        Car crong = new Car("crong", 3);
 
         cars.add(pobi);
         cars.add(javajigi);
@@ -42,9 +43,9 @@ public class WinnerTest {
     @Test
     @DisplayName("우승자가 여러 명일 경우 우승자 출력 테스트")
     public void manyWinnerTest() {
-        Car pobi = new Car("pobi", new Position(2));
-        Car javajigi = new Car("javajigi", new Position(3));
-        Car crong = new Car("crong", new Position(3));
+        Car pobi = new Car("pobi", 2);
+        Car javajigi = new Car("javajigi", 3);
+        Car crong = new Car("crong", 3);
 
         cars.add(pobi);
         cars.add(javajigi);

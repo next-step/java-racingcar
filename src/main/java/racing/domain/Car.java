@@ -2,24 +2,24 @@ package racing.domain;
 
 public class Car {
 
-    private final String name;
+    private final Name name;
 
     private final Position position;
 
-    public Car(String name, Position position) {
-        this.name = name;
-        this.position = position;
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
     public Car(String name) {
-        this(name, new Position());
+        this(name, 0);
     }
 
     public void move() {
         position.move();
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
