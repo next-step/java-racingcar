@@ -15,24 +15,30 @@ public class Car {
     }
 
     /**
-     * 자동차의 위치를 변경하는 메소드
+     * 자동차의 위치를 변경하는 메소드로 랜덤값을 인자로 넘기는 메소드
      */
     public void move() {
-        if (isMovable()) {
-            this.position++;
-        }
+        this.move(getRandomNumber());
     }
 
     public int getPosition() {
         return this.position;
     }
 
+    /**
+     * 자동차의 전진 여부를 검사하여 위치를 변경하는 메소드
+     */
+    public void move(int num) {
+        if (isMovable(num)) {
+            this.position++;
+        }
+    }
 
     /**
      * 랜덤으로 생성된 숫자가 전진 조건인지 아닌지 판별하는 메소드
      */
-    public static boolean isMovable() {
-        return getRandomNumber() >= Constants.MOVE_CONDITION;
+    public static boolean isMovable(int number) {
+        return number >= Constants.MOVE_CONDITION;
     }
 
     /**
