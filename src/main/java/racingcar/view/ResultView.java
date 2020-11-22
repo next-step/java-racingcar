@@ -10,6 +10,7 @@ public class ResultView {
     public void racingResult(List<String> list){
         int count = 0;
         int move = Integer.valueOf(list.get(0).split(" : ")[2]);
+        System.out.println("실행 결과");
         for(int i = 0; i < list.size(); i++){
             printMove(list.get(i));
             System.out.println();

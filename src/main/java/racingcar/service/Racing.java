@@ -21,7 +21,7 @@ public class Racing {
     public List<String> tryToMoveResult(List<Car> cars, int move){
         List<String> result = new ArrayList<>();
         for(int k = 0; k < cars.size(); k++){
-            if(tryToMove() == true){
+            if(tryToMove()){
                 Car car = cars.get(k);
                 car.moveLocation();
                 cars.set(k, car);
