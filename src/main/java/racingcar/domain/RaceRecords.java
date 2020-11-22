@@ -18,12 +18,12 @@ public class RaceRecords {
         return raceRecords;
     }
 
-    public Map<String, Integer> saveRecords(Cars cars) {
+    public RaceRecord saveRecords(Cars cars, int round) {
         Map<String, Integer> map = new HashMap<>();
         for (Car car : cars.getCars()) {
             map.put(car.getName(), car.getLocation());
         }
-        return map;
+        return new RaceRecord(round, map);
     }
 
     public List<String> getWinner() {
@@ -48,6 +48,6 @@ public class RaceRecords {
     }
 
     public void saveSingleRoundRecord(int round, Cars cars) {
-        getRaceRecords().add(new RaceRecord(round, saveRecords(cars)));
+        getRaceRecords().add(saveRecords(cars, round));
     }
 }

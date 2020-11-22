@@ -18,6 +18,6 @@ public class RaceRecordsTest {
         carName.add("car3");
         Cars cars = new Cars(carName);
 
-        raceRecords.saveRecords(cars);
+        raceRecords.saveRecords(cars, 3);
     }
 }
