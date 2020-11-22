@@ -14,7 +14,6 @@ public class RacingGame {
     }
 
     public List<String> setInRacingByName(List<String> input){
-        placetForRacingByName(input);
         System.out.println("실행 결과");
         List<String> result = racing.moveCar(placetForRacingByName(input));
         return result;
