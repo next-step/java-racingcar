@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,11 +28,12 @@ class RacingGameTest {
         cars.forEach(car -> assertThat(car.getPosition()).isEqualTo(0));
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("전진 조건에서 자동차가 전진하는지 테스트")
-    void move_forward() {
+    @ValueSource(ints = {4,5,6,7,8,9})
+    void move_forward(int condition) {
         Car car = new Car(0);
-        // car의 move 조건을 어떻게 테스트 해야 할까요ㅜㅜ
+        car.move(condition);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
