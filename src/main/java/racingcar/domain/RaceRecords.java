@@ -26,7 +26,7 @@ public class RaceRecords {
         return map;
     }
 
-    public String getWinner() {
+    public List<String> getWinner() {
         RaceRecord lastRaceRecord = getLastRaceRecord();
         Map<String, Integer> recordsWithCarName = lastRaceRecord.getRecordsWithCarName();
         Integer max = Collections.max(recordsWithCarName.values());
@@ -37,13 +37,17 @@ public class RaceRecords {
         return getRaceRecords().get(getRaceRecords().size() - 1);
     }
 
-    private String getWinnerNames(Map<String, Integer> map, Integer max) {
-        StringBuilder winners = new StringBuilder();
+    private List<String> getWinnerNames(Map<String, Integer> map, Integer max) {
+        List<String> winners = new ArrayList<>();
         for (String name : map.keySet()) {
             if (map.get(name).equals(max)) {
-                winners.append(name).append(", ");
+                winners.add(name);
             }
         }
-        return winners.toString();
+        return winners;
+    }
+
+    public void saveSingleRoundRecord(int round, Cars cars) {
+        getRaceRecords().add(new RaceRecord(round, saveRecords(cars)));
     }
 }

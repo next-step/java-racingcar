@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.util.RandomNumberUtil;
+import java.util.List;
 
 public class RacingGame {
     private final int rounds;
@@ -27,7 +27,11 @@ public class RacingGame {
     }
 
     private void playSingleRound(int round) {
-        cars.getCars().forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
-        raceRecords.getRaceRecords().add(new RaceRecord(round, raceRecords.saveRecords(cars)));
+        cars.tryToMove();
+        raceRecords.saveSingleRoundRecord(round, cars);
+    }
+
+    public List<Car> getWinner() {
+        return cars.getCarsByName(raceRecords.getWinner());
     }
 }

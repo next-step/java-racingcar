@@ -1,7 +1,10 @@
 package racingcar.domain;
 
+import racingcar.util.RandomNumberUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -11,16 +14,27 @@ public class Cars {
         this.cars = makeCars(carName);
     }
 
+    private List<Car> makeCars(List<String> carNames) {
+        return carNames.stream()
+                .map(Car::newCar)
+                .collect(Collectors.toList());
+    }
+
     public List<Car> getCars() {
         return cars;
     }
 
-    private List<Car> makeCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            Car car = Car.newCar(name);
-            cars.add(car);
+    public List<Car> getCarsByName(List<String> carNames) {
+        List<Car> result = new ArrayList<>();
+        for (Car car : cars) {
+            if (carNames.contains(car.getName())) {
+                result.add(car);
+            }
         }
-        return cars;
+        return result;
+    }
+
+    public void tryToMove() {
+        getCars().forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
     }
 }

@@ -14,6 +14,6 @@ public class ResultView {
             raceRecord.getRecordsWithCarName()
                     .forEach((key, value) -> System.out.printf("%s : %s \n", key, StringUtil.makeStateLine(value)));
         }
-        System.out.println(racingGame.getRaceRecords().getWinner() + "가 우승했습니다.");
+        System.out.println(StringUtil.printName(racingGame.getWinner()) + "가 우승했습니다.");
     }
 }
