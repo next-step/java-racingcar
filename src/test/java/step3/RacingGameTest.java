@@ -37,12 +37,13 @@ class RacingGameTest {
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("전진 조건이 아닌 경우 자동차가 멈추는지 테스트")
-    void stop() {
+    @ValueSource(ints = {0,1,2,3})
+    void stop(int condition) {
         Car car = new Car(0);
-
-//        assertThat()
+        car.move(condition);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest
