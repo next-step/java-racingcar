@@ -6,7 +6,6 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
@@ -38,7 +37,7 @@ public class RacingGame {
     /**
      * 자동차 경주 게임을 실행하는 메소드, 각 라운드를 실행하고 자동차들의 위치를 변경한다
      */
-    public void playGame(int carNumber, int round) {
+    public void playGame(int round) {
         ResultView resultView = new ResultView();
         resultView.showResultMessage();
 

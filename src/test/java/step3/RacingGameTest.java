@@ -41,16 +41,4 @@ class RacingGameTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @ParameterizedTest
-    @DisplayName("자동차 경주 게임 테스트")
-    @CsvSource(value = {"3,5", "4,6"})
-    void test_racing_game (int numberOfCar, int round) {
-        // given
-
-        // when
-
-        // then
-
-    }
-
 }

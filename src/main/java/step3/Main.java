@@ -13,6 +13,6 @@ public class Main {
 
         RacingGame racingGame = new RacingGame(carNumber, round);
 
-        racingGame.playGame(carNumber, round);
+        racingGame.playGame(round);
     }
 }
