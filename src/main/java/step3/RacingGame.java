@@ -10,28 +10,21 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private static int carNumber;
-    private static int round;
-    private static List<Car> carList;
+    private int carNumber;
+    private int round;
+    private List<Car> carList;
 
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
+    public RacingGame(int carNumber, int round) {
+        this.carNumber = carNumber;
+        this.round = round;
 
-        inputView.init();
-        inputView.showInputCarMessage();
-        carNumber = inputView.inputCarNumber();
-
-        inputView.showInputRoundMessage();
-        round = inputView.inputRound();
-
-        makeCarList(carNumber);
-        playGame(carList, round);
+        this.carList = this.makeCarList(carNumber);
     }
 
     /**
      * 입력받은 자동차 대수로 자동차 클래스의 리스트를 만드는 메소드
      */
-    public static List<Car> makeCarList(int carNumber) {
+    public List<Car> makeCarList(int carNumber) {
         carList = new ArrayList<>();
 
         for (int i = 0; i < carNumber; i++) {
@@ -45,17 +38,17 @@ public class RacingGame {
     /**
      * 자동차 경주 게임을 실행하는 메소드, 각 라운드를 실행하고 자동차들의 위치를 변경한다
      */
-    public static void playGame(List<Car> cars, int round) {
+    public void playGame(int carNumber, int round) {
         ResultView resultView = new ResultView();
         resultView.showResultMessage();
 
         for (int i = 0; i <round; i++) {
-            playEachRound(cars);
-            resultView.printEachRound(cars);
+            playEachRound(this.carList);
+            resultView.printEachRound(this.carList);
         }
     }
 
-    private static void playEachRound(List<Car> cars) {
+    private void playEachRound(List<Car> cars) {
         for (Car car : cars) {
             playEachCar(car);
         }
@@ -64,7 +57,7 @@ public class RacingGame {
     /**
      * 매 라운드마다 자동차의 전진 조건을 파악하여 자동차의 위치를 변경하는 메소드
      */
-    private static void playEachCar(Car car) {
+    private void playEachCar(Car car) {
         car.move();
     }
 }
