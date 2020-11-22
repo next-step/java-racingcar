@@ -1,11 +1,7 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static jdk.nashorn.internal.objects.NativeMath.max;
 
 public class ResultView {
 
@@ -29,9 +25,15 @@ public class ResultView {
     }
 
     public static void printWinner(List<Car> winnerCars){
-        String winnerName = String.join(",", winnerCars.stream().map(s -> s.getName()).collect(Collectors.toList()));
+        String winnerName = String.join(",", winnerCars.stream()
+                .map(s -> s.getName())
+                .collect(Collectors.toList()));
         System.out.println(winnerName + "가 최종 우승했습니다.");
 
+    }
+
+    public static void printResultMsg(){
+        System.out.println("\n실행결과");
     }
 
 }

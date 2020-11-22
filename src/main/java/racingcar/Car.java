@@ -31,6 +31,10 @@ public class Car {
         return distance;
     }
 
+    public boolean equalDistance(int distance){
+        return this.distance == distance;
+    }
+
     public CarSnapshot snapshot(){
         return new CarSnapshot(this);
     }
