@@ -1,14 +1,15 @@
 package racingcar.domain;
 
 public class Car {
-    private int location;
-    private final String name;
 
     private final static int MAX_NAME_LENGTH = 5;
     private final static int MOVE_POINT = 4;
     private final static int START_LOCATION = 1;
 
-    public Car(String name) {
+    private int location;
+    private final String name;
+
+    private Car(String name) {
         this.location = START_LOCATION;
         validateName(name);
         this.name = name;

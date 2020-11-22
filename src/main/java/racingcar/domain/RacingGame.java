@@ -7,7 +7,7 @@ public class RacingGame {
     private final Cars cars;
     private final RaceRecords raceRecords;
 
-    public RacingGame(Cars cars, int rounds) {
+    private RacingGame(Cars cars, int rounds) {
         this.cars = cars;
         this.rounds = rounds;
         this.raceRecords = new RaceRecords();

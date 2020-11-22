@@ -12,7 +12,7 @@ public class RacingGameApplication {
 
         inputView.input();
         Cars cars = new Cars(inputView.getCarNames());
-        RacingGame racingGame = new RacingGame(cars, inputView.getRounds());
+        RacingGame racingGame = RacingGame.newRacingGame(cars, inputView.getRounds());
         racingGame.play();
         resultView.print(racingGame);
     }
