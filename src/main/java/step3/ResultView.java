@@ -25,11 +25,17 @@ public class ResultView {
     /**
      * 매 라운드마다 자동차들이 이동한 상태를 출력하는 메소드
      */
-    public void printEachCar(Car car) {
+    public String printEachCar(Car car) {
+        StringBuilder result = new StringBuilder();
+
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(Constants.MOVE_MARK);
+            result.append(Constants.MOVE_MARK);
         }
+
         System.out.println();
+
+        return result.toString();
     }
 
 }
