@@ -15,6 +15,13 @@ public class ResultView {
         System.out.println(Constants.MSG_RESULT);
     }
 
+    public void printEachRound(List<Car> cars) {
+        for (Car car : cars) {
+            printEachCar(car);
+        }
+        System.out.println();
+    }
+
     /**
      * 매 라운드마다 자동차들이 이동한 상태를 출력하는 메소드
      */
