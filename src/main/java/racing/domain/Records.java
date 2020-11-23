@@ -7,7 +7,11 @@ import java.util.List;
 
 public class Records {
 
-    private static final List<Record> records = new ArrayList<>();
+    private final List<Record> records;
+
+    public Records() {
+        this.records = new ArrayList<>();
+    }
 
     public List<Record> getRecords() {
         return records;
