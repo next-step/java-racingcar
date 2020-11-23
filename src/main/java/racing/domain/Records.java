@@ -42,7 +42,7 @@ public class Records {
 
         private final int position;
 
-        public Record(Car car) {
+        private Record(Car car) {
             this.name = car.getName();
             this.position = car.getPosition().getPosition();
         }

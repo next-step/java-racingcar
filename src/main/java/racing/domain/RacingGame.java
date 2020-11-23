@@ -59,7 +59,6 @@ public class RacingGame {
         }
     }
 
-
     private void viewWinner() {
         ResultView.viewWinner(records.findWinners());
     }
