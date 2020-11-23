@@ -1,6 +1,5 @@
 package step2.string.calculator;
 
-
 public class StringCalculator {
 
     public int calculate(String input) {
@@ -22,7 +21,6 @@ public class StringCalculator {
     }
 
     private int calculate(int firstOperand, int secondOperand, String operator) {
-        Operator op = Operator.fromString(operator);
-        return op.operate(firstOperand, secondOperand);
+        return Operator.calculate(firstOperand, secondOperand, operator);
     }
 }

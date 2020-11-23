@@ -1,49 +1,32 @@
 package step2.string.calculator;
 
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.function.BiFunction;
 
-import static java.util.stream.Collectors.toMap;
-
-public enum Operator implements Operation {
-    PLUS("+") {
-        public int operate(int x, int y) {
-            return x + y;
-        }
-    },
-    MINUS("-") {
-        public int operate(int x, int y) {
-            return x - y;
-        }
-    },
-    TIMES("*") {
-        public int operate(int x, int y) {
-            return x * y;
-        }
-    },
-    DIVIDE("/") {
-        public int operate(int x, int y) {
-            return x / y;
-        }
-    };
+public enum Operator {
+    PLUS("+", (x, y) -> x + y),
+    MINUS("-", (x, y) -> x - y),
+    MULTIPLE("*", (x, y) -> x * y),
+    DIVIDE("/", (x, y) -> x / y);
 
     private final String symbol;
+    private BiFunction<Integer, Integer, Integer> expression;
 
-    Operator(String symbol) {
+    Operator(String symbol, BiFunction<Integer, Integer, Integer> expression) {
         this.symbol = symbol;
+        this.expression = expression;
     }
 
-    public static Operator fromString(String symbol) {
-        final Map<String, Operator> stringToEnum = Stream.of(values()).collect(toMap(Object::toString, e-> e));
-        Optional<Operator> currentOperator = Optional.ofNullable(stringToEnum.get(symbol));
-        return currentOperator.orElseThrow(() -> new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR));
+    private static Operator getOperator(String symbol) {
+        return Arrays.stream(values())
+                .filter(op -> op.symbol.equals(symbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR));
     }
 
-    @Override
-    public String toString() {
-        return symbol;
+    public static int calculate(int x, int y, String symbol) {
+        return getOperator(symbol).expression.apply(x, y);
     }
 
 }
