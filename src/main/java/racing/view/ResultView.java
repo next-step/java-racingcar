@@ -4,7 +4,7 @@ import java.util.List;
 
 import static util.StringUtils.repeat;
 
-import racing.domain.Record;
+import racing.domain.Records;
 import util.StringUtils;
 
 public final class ResultView {
@@ -23,8 +23,8 @@ public final class ResultView {
         System.out.println(RACING_RESULT);
     }
 
-    public static void viewRoundResult(final List<Record> records) {
-        for (Record record : records) {
+    public static void viewRoundResult(final Records records) {
+        for (Records.Record record : records.getRecords()) {
             String name = record.getName();
             int position = record.getPosition();
 

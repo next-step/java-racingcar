@@ -1,9 +1,5 @@
 package racing.domain;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 public class Car {
 
     private final String name;
@@ -29,12 +25,5 @@ public class Car {
 
     public void move() {
         position = position.move();
-    }
-
-    public void rank(Map<Integer, List<String>> rankings) {
-        List<String> names =
-                rankings.computeIfAbsent(position.getPosition(), name -> new LinkedList<>());
-
-        names.add(name);
     }
 }
