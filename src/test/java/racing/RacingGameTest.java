@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import racing.domain.Car;
 import racing.domain.FixedRoulette;
+import racing.domain.Position;
 import racing.domain.RacingCars;
 
 public class RacingGameTest {
@@ -25,7 +26,7 @@ public class RacingGameTest {
         racingCars.race(new FixedRoulette(4));
         assertThat(racingCars.getCars())
                 .extracting(Car::getPosition)
-                .allMatch(position -> position.isSame(1));
+                .allMatch(position -> position.equals(new Position(1)));
     }
 
     @Test
@@ -34,6 +35,6 @@ public class RacingGameTest {
         racingCars.race(new FixedRoulette(0));
         assertThat(racingCars.getCars())
                 .extracting(Car::getPosition)
-                .allMatch(position -> position.isSame(0));
+                .allMatch(position -> position.equals(new Position(0)));
     }
 }
