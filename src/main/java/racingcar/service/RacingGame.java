@@ -2,6 +2,8 @@ package racingcar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import racingcar.domain.Car;
 import racingcar.domain.Scoreboard;
 
@@ -13,21 +15,19 @@ public class RacingGame {
         this.racing = racing;
     }
 
-    public List<String> setInRacingByName(List<String> input){
-        System.out.println("실행 결과");
-        List<String> result = racing.moveCar(placetForRacingByName(input));
+    public List<String> setInRacingByName(Map<Integer, String[]> map){
+        List<String> result = racing.moveCar(placetForRacingByName(map));
         return result;
     }
 
-    public Scoreboard placetForRacingByName(List<String> input){
-        List<Car> carList = new ArrayList<>();
-        String[] getName = input.get(0).split(","); 
-        for(String carName : getName){
+    public Scoreboard placetForRacingByName(Map<Integer, String[]> input){
+        List<Car> carList = new ArrayList<>(); 
+        for(String carName : input.get(0)){
             Car car = new Car(carName);
             carList.add(car);
         }
         Scoreboard board = new Scoreboard(carList);
-        board.setMove(Integer.valueOf(input.get(1)));
+        board.setMove(Integer.valueOf(input.get(1)[0]));
         return board;
     }
 

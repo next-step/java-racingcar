@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 
 public class RacingGameTest {
@@ -21,15 +22,18 @@ public class RacingGameTest {
 
     @Test
     void placetForRacingTest(){
-
+        String[] a = {"test","test1","test2"};
+        String[] b ={"5"};
         //given
-        List<String> list = new ArrayList<String>(Arrays.asList("pobi,maro","5"));
+        Map<Integer, String[]> list = Map.of( 
+                                                0 , a, 
+                                               1 , b );
 
         //when
         Scoreboard board = racingGame.placetForRacingByName(list);
 
         //then
-        assertThat(board.getCars().size()).isEqualTo(2);
+        assertThat(board.getCars().size()).isEqualTo(3);
         assertThat(board.getMove()).isEqualTo(5);
     }
     
