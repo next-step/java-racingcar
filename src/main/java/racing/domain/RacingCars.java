@@ -1,11 +1,8 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public final class RacingCars {
 
@@ -20,8 +17,7 @@ public final class RacingCars {
     }
 
     public RacingCars(final String delimitedCarNames) {
-        this.cars = new ArrayList<>();
-        ready(delimitedCarNames);
+        this.cars = ready(delimitedCarNames);
     }
 
     public List<Car> getCars() {
@@ -34,26 +30,12 @@ public final class RacingCars {
                 .forEach(Car::move);
     }
 
-    public List<String> getWinners() {
-        Map<Integer, List<String>> rankings = new HashMap<>();
-
-        for (Car car : cars) {
-            List<String> names =
-                    rankings.computeIfAbsent(car.getDisplacement(), name -> new LinkedList<>());
-            names.add(car.getName());
-        }
-
-        int maxDisplacement = Collections.max(rankings.keySet());
-
-        return rankings.get(maxDisplacement);
-    }
-
-    private void ready(final String delimitedCarNames) {
+    private List<Car> ready(final String delimitedCarNames) {
         String[] carNames = delimitedCarNames.split(CAR_NAMES_DELIMITER);
 
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        return Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private boolean canMove(final Roulette roulette) {

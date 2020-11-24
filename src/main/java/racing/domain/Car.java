@@ -4,26 +4,26 @@ public class Car {
 
     private final String name;
 
-    private int displacement = 0;
+    private Position position;
 
-    public Car(String name, int displacement) {
+    public Car(String name, int position) {
         this.name = name;
-        this.displacement = displacement;
+        this.position = new Position(position);
     }
 
     public Car(String name) {
-        this.name = name;
-    }
-
-    public void move() {
-        displacement++;
+        this(name, 0);
     }
 
     public String getName() {
         return name;
     }
 
-    public int getDisplacement() {
-        return displacement;
+    public Position getPosition() {
+        return position;
+    }
+
+    public void move() {
+        position = position.move();
     }
 }

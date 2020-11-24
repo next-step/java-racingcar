@@ -2,8 +2,9 @@ package racing.view;
 
 import java.util.List;
 
-import racing.domain.Car;
-import racing.domain.RacingCars;
+import static util.StringUtils.repeat;
+
+import racing.domain.Records;
 import util.StringUtils;
 
 public final class ResultView {
@@ -16,17 +17,18 @@ public final class ResultView {
 
     public static final String WIN_MESSAGE = " 가 최종 우승했습니다";
 
-    public static final String NULL_CHARACTER = "\0";
-
     private ResultView() {}
 
     public static void viewMessage() {
         System.out.println(RACING_RESULT);
     }
 
-    public static void viewRoundResult(final RacingCars racingCars) {
-        for (final Car car : racingCars.getCars()) {
-            System.out.println(car.getName() + DELIMITER + repeat(car.getDisplacement()));
+    public static void viewRoundResult(final Records records) {
+        for (Records.Record record : records.getRecords()) {
+            String name = record.getName();
+            int position = record.getPosition();
+
+            System.out.println(name + DELIMITER + repeat(DISPLACEMENT_SYMBOL, position));
         }
 
         System.out.println();
@@ -36,9 +38,5 @@ public final class ResultView {
         String winnersHasNoBrackets = StringUtils.removeBrackets(winners.toString());
 
         System.out.println(winnersHasNoBrackets + WIN_MESSAGE);
-    }
-
-    private static String repeat(int times) {
-        return new String(new char[times]).replace(NULL_CHARACTER, DISPLACEMENT_SYMBOL);
     }
 }
