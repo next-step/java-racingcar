@@ -6,7 +6,7 @@ public class RaceRecord {
     private final int round;
     private final Map<String, Integer> recordsWithCarName;
 
-    RaceRecord(int round, Map<String, Integer> map) {
+    public RaceRecord(int round, Map<String, Integer> map) {
         this.round = round;
         this.recordsWithCarName = map;
     }

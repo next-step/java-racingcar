@@ -3,7 +3,9 @@ package racingcar.domain;
 import racingcar.util.RandomNumberUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -27,7 +29,7 @@ public class Cars {
     public List<Car> getCarsByName(List<String> carNames) {
         List<Car> result = new ArrayList<>();
         for (Car car : cars) {
-            if (carNames.contains(car.getName())) {
+            if (car.isContained(carNames)) {
                 result.add(car);
             }
         }
@@ -36,5 +38,13 @@ public class Cars {
 
     public void tryToMove() {
         getCars().forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
+    }
+
+    public RaceRecord saveRecord(int round) {
+        Map<String, Integer> map = new HashMap<>();
+        for (Car car : cars) {
+            map.put(car.getName(), car.getLocation());
+        }
+        return new RaceRecord(round, map);
     }
 }

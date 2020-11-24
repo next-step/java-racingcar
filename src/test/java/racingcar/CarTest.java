@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
     private Car car;
@@ -31,6 +32,15 @@ public class CarTest {
     public void try_to_move_success_test2(int value) {
         int startLocation = car.getLocation();
         car.tryToMove(value);
-        assertThat(car.getLocation()).isEqualTo(startLocation +1);
+        assertThat(car.getLocation()).isEqualTo(startLocation + 1);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"123456", "1234567"})
+    @DisplayName("자동차 이름 기준에 부합하지 않는 경우")
+    public void new_car_test(String value) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Car.newCar(value));
+    }
+
 }

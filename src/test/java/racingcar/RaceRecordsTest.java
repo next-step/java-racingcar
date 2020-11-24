@@ -7,23 +7,28 @@ import racingcar.domain.RaceRecord;
 import racingcar.domain.RaceRecords;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RaceRecordsTest {
 
     @Test
-    @DisplayName("round에 해당하는 RaceRecord가 저장되는지 확인")
-    public void save_records() {
+    @DisplayName("마지막 RaceRecord에서 우승자를 구하는지 확인")
+    public void get_winner() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("car1", 0);
+        map.put("car2", 1);
+        map.put("car3", 2);
+        RaceRecord lastRaceRecord = new RaceRecord(2, map);
         RaceRecords raceRecords = new RaceRecords();
-        List<String> carName = new ArrayList<>();
-        carName.add("car1");
-        carName.add("car2");
-        carName.add("car3");
-        Cars cars = new Cars(carName);
+        raceRecords.getRaceRecords().add(lastRaceRecord);
 
-        RaceRecord raceRecord = raceRecords.saveRecords(cars, 3);
-        assertThat(raceRecord.getRound()).isEqualTo(3);
+        List<String> winner = raceRecords.getWinner();
+        assertAll(() -> assertEquals(winner.get(0), "car3"),
+                () -> assertEquals(winner.size(), 1));
     }
 }
