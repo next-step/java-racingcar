@@ -10,21 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
     @ParameterizedTest
-    @DisplayName("전진 조건에서 자동차가 전진하는지 테스트")
-    @ValueSource(ints = {4,5,6,7,8,9})
-    void move_forward(int condition) {
+    @DisplayName("입력된 조건에 따라 자동차의 전진 여부 테스트")
+    @CsvSource(value = {"3:0", "4:1", "9:1"}, delimiter = ':')
+    void move_or_stop(int condition, int expectedPosition) {
         Car car = new Car(0);
         car.move(condition);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @ParameterizedTest
-    @DisplayName("전진 조건이 아닌 경우 자동차가 멈추는지 테스트")
-    @ValueSource(ints = {0,1,2,3})
-    void stop(int condition) {
-        Car car = new Car(0);
-        car.move(condition);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 
     @ParameterizedTest
