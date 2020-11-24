@@ -3,28 +3,34 @@ package racingcarwinner;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class RoundsTest {
 
     @Test
     @DisplayName("라운드 리스트 생성이 잘 되는가")
     public void create(){
-        Rounds rounds = Rounds.createRounds(1);
+        Rounds rounds = new Rounds(1);
         assertTrue(rounds.equals(new Rounds(1)));
     }
 
     @Test
-    @DisplayName("라운드를 제대로 가져오는가")
-    public void getRound(){
-        Rounds rounds = Rounds.createRounds(1);
-        assertTrue(rounds.getRound(0).equals(new Round()));
+    @DisplayName("경기 수에 0을 입력하면 어떻게 되는가")
+    public void isZero(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rounds(0);
+        });
     }
 
     @Test
-    @DisplayName("라운드의 갯수를 제대로 가져오는가")
-    public void getCount(){
-        Rounds rounds = Rounds.createRounds(5);
-        assertEquals(rounds.getCount(),5);
+    @DisplayName("경기수에 음수를 입력하면 어떻게 되는가")
+    public void isNegative(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rounds(-1);
+        });
     }
+
 
 }
 
