@@ -24,7 +24,7 @@ public class CarTest {
     @Test
     @DisplayName("자동차 객체를 제대로 생성하는가")
     public void create(){
-        Cars cars = Cars.createCars("포비,코난,베니");
+        Cars cars = new Cars("포비,코난,베니");
         Car car = new Car("코난");
         assertTrue(cars.getCar(1).equals(car));
     }
