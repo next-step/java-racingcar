@@ -9,13 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class RoundsTest {
 
     @Test
-    @DisplayName("라운드 리스트 생성이 잘 되는가")
-    public void create(){
-        Rounds rounds = new Rounds(1);
-        assertTrue(rounds.equals(new Rounds(1)));
-    }
-
-    @Test
     @DisplayName("경기 수에 0을 입력하면 어떻게 되는가")
     public void isZero(){
         assertThrows(IllegalArgumentException.class, () -> {
