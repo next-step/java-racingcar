@@ -1,2 +1,9 @@
-package racingcarwinner;public class Splitter {
+package racingcarwinner;
+
+public class Splitter{
+
+
+    public static String[] splitName(String names){
+        return names.split(",");
+    }
 }
