@@ -2,6 +2,7 @@ package racingcarrefectoring;
 
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import racingcarrefectoring.model.RandomGenerator;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,7 +13,7 @@ public class RandomGeneratorTest {
     public void getRandomNumber(){
         int randomNumber = RandomGenerator.getRandomNumber();
         for (int i = 0; i < 100; i++) {
-            assertTrue(0 <= randomNumber  || randomNumber < 10)
+            assertTrue(0 <= randomNumber  || randomNumber < 10);
         }
     }
 }
