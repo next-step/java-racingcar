@@ -8,15 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-
-    private int carNumber;
-    private int round;
     private List<Car> carList;
 
-    public RacingGame(int carNumber, int round) {
-        this.carNumber = carNumber;
-        this.round = round;
-
+    public RacingGame(int carNumber) {
         this.carList = this.makeCarList(carNumber);
     }
 
