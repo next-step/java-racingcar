@@ -2,6 +2,11 @@ package racingcarrefectoring;
 
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import racingcarrefectoring.model.Car;
+import racingcarrefectoring.model.Name;
+import racingcarrefectoring.model.Position;
+
+import static org.junit.Assert.assertTrue;
 
 public class CarTest {
 
@@ -12,7 +17,7 @@ public class CarTest {
         Position position = new Position(0);
         assertTrue(car.getPosition().equals(position));
         car.move();
-        position = new Position(position.increase());
+        position = position.increase();
         assertTrue(car.getPosition().equals(position));
     }
 
@@ -21,6 +26,6 @@ public class CarTest {
     public void setName(){
         Car car = new Car("베니");
         Name name = new Name("베니");
-        assertTrue(car.getName.Equals(name));
+        assertTrue(car.getName().equals(name));
     }
 }
