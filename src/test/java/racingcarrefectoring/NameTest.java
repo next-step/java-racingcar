@@ -2,6 +2,12 @@ package racingcarrefectoring;
 
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import racingcarrefectoring.exception.NameEmptyException;
+import racingcarrefectoring.exception.OverTheLimitException;
+import racingcarrefectoring.model.Name;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class NameTest {
 
