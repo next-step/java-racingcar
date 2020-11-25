@@ -15,7 +15,11 @@ public class ResultView {
         System.out.println(Constants.MSG_RESULT);
     }
 
-    public void printEachRound(List<Car> cars) {
+
+    /**
+     * 각 라운드 실행결과를 출력하는 메소드
+     * */
+    public void printRace(List<Car> cars) {
         for (Car car : cars) {
             printEachCar(car);
         }

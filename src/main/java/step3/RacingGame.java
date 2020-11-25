@@ -31,18 +31,8 @@ public class RacingGame {
     /**
      * 자동차 경주 게임을 실행하는 메소드, 각 라운드를 실행하고 자동차들의 위치를 변경한다
      */
-    public void playGame(int round) {
-        ResultView resultView = new ResultView();
-        resultView.showResultMessage();
-
-        for (int i = 0; i <round; i++) {
-            playEachRound(this.carList);
-            resultView.printEachRound(this.carList);
-        }
-    }
-
-    private void playEachRound(List<Car> cars) {
-        for (Car car : cars) {
+    public void playRace() {
+        for (Car car : getCars()) {
             playEachCar(car);
         }
     }
@@ -52,5 +42,12 @@ public class RacingGame {
      */
     private void playEachCar(Car car) {
         car.move();
+    }
+
+    /**
+     * RacingGame 클래스에서 관리하는 자동차 리스트 반환
+     * */
+    public List<Car> getCars() {
+        return this.carList;
     }
 }
