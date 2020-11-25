@@ -2,6 +2,9 @@ package racingcarrefectoring;
 
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import racingcarrefectoring.model.Position;
+
+import static org.junit.Assert.assertEquals;
 
 public class PositionTest {
 
@@ -11,8 +14,8 @@ public class PositionTest {
         Position position = new Position(0);
         assertEquals(position.getValue(),0);
 
-        Position position = new Position(1);
-        assertEquals(position.getValue(),1);
+        Position position2 = new Position(1);
+        assertEquals(position2.getValue(),1);
     }
 
     @Test
@@ -21,7 +24,7 @@ public class PositionTest {
         Position position = new Position(0);
         assertEquals(position.getValue(),0);
 
-        position = new Position(position.increase());
+        position = position.increase();
         assertEquals(position.getValue(),1);
     }
 }
