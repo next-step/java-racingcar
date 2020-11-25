@@ -10,51 +10,62 @@
 
 ## 기능 목록
 
-### Game
-- 게임 시작
-- 경기 시작
-- 랜덤 값이 4 이상인지 확인
+### Model
 
-### InputView
-- 자동차 이름들 입력 받기
-- 경기 수 입력 받기
+- Cars
+  - 자동차 리스트 만들기
 
-### Cars
-- 자동차 리스트 만들기
+- Splitter
+  - 자동차 이름들 배열로 분리
 
-### Splitter
-- 자동차 이름들 배열로 분리
+- Car
+  - 자동차 객체 생성
+  - 이동하기
 
-### Car
-- 자동차 객체 생성
-- 이동하기
+- Name
+  - 이름 객체 세팅
+  - 이름값 반환하기
 
-### Position
-- 값 세팅
-- 값이 증가된 새로운 객체 반환
+- Position
+  - 값 세팅
+  - 값이 증가된 새로운 객체 반환
+  - 값 반환
 
-### Round
-- 경기 객체 생성
+- Rounds
+  - 경기 객체 생성
+  - 경기 시작
 
-### RoundCount
-- 경기 수 객체 생성
-- 경기 수 가져오기
+- Round
+  - 경기 객체 생성
+  - 경기 시작
 
-### RandomGenerator
-- 랜덤값 출력
+- RandomGenerator
+  - 랜덤값 출력
 
-### Winners
-- 우승자 리스트 만들기
+- Winners
+  - 우승자 리스트 만들기
 
-### Winner
-- 우승자 객체 생성
+- Winner
+  - 우승자 객체 생성
 
-### WinnerPicker
-- 우승자 고르기 
+- WinnerPicker
+  - 우승자 고르기
 
-### ResultView
-- 경기별 이동거리 출력
-- 실행결과 출력
-- 우승자 출력
+### View
+- InputView
+  - 자동차 이름들 입력 받기
+  - 경기 수 입력 받기
+
+- ResultView
+  - 경기별 이동거리 출력
+  - 실행결과 출력
+  - 우승자 출력
+
+### Controller
+- GameController
+  - InputView에서 데이터를 받아 Model을 구성
+  - Model의 데이터와 행위를 통해 프로세스 동작
+  - ResultView에 Model의 데이터를 전달하여 결과 출력
+
 
 객체 생성에 대한 테스트를 할 수 있는 방법이 있을
