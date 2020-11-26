@@ -18,21 +18,21 @@ public class InputView {
     }
 
     /**
-     * 자동차 경주자 이름 입력 메시지를 출력하는 메소드
+     * 자동차 이름 입력 메시지를 출력하는 메소드
      */
     public void showInputCarMessage() {
         System.out.println(Constants.CAR_NAMES_INPUT_MSG);
     }
 
     /**
-     * 자동차 경주자 이름을 쉼표로 구분하는 메소드
+     * 자동차 이름을 쉼표로 구분하는 메소드
      */
     public String[] inputCarName() {
         return inputNames().split(",");
     }
 
     /**
-     * 자동차 경주자 이름을 스캐너로 입력받는 메소드
+     * 자동차 이름을 스캐너로 입력받는 메소드
      * */
     private String inputNames() {
         return scanner.nextLine();
