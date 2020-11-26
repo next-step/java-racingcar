@@ -9,4 +9,5 @@ public class Constants {
     public static final int RANDOM_RANGE = 10;
     public static final int INITIAL_POSITION = 0;
     public static final int CAR_NAME_LENGTH_LIMIT = 5;
+    public static final String RACE_RESULT_MSG = "가 최종 우승했습니다.";
 }
