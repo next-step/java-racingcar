@@ -6,13 +6,13 @@ package step4;
 import java.util.Random;
 
 public class Car {
-    private String racerName;
+    private String name;
     private int position;
     private static Random random = new Random();
 
-    public Car(int position, String racerName) {
+    public Car(int position, String name) {
         this.position = position;
-        this.racerName = racerName;
+        this.name = name;
     }
 
     /**
