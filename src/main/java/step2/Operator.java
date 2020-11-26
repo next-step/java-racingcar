@@ -10,16 +10,23 @@ public enum Operator {
     MUL("*", (num1, num2) -> num1 * num2),
     DIV("/", (num1, num2) -> num1 / num2);
 
-    private final String operator;
+    private final String op;
     private final BiFunction<Integer, Integer, Integer> expression;
 
-    Operator (String operator, BiFunction<Integer, Integer, Integer> expression) {
-        this.operator = operator;
+    Operator (String op, BiFunction<Integer, Integer, Integer> expression) {
+        this.op = op;
         this.expression = expression;
     }
 
-    public String getOperator () {
-        return operator;
+    public Operator getOperator (String input) {
+        return Arrays.stream(values())
+                .filter(op -> op.getOperator().equals(input))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    private String getOperator () {
+        return op;
     }
     public static Operator getOperator(String op){
         return Arrays.stream(values())
