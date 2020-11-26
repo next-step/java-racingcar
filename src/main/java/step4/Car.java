@@ -6,12 +6,13 @@ package step4;
 import java.util.Random;
 
 public class Car {
-
-    public int position;
+    private String racerName;
+    private int position;
     private static Random random = new Random();
 
-    public Car(int position) {
+    public Car(int position, String racerName) {
         this.position = position;
+        this.racerName = racerName;
     }
 
     /**
@@ -21,8 +22,18 @@ public class Car {
         this.move(getRandomNumber());
     }
 
+    /**
+     * 자동차의 위치를 가져오는 메소드
+     * */
     public int getPosition() {
         return this.position;
+    }
+
+    /**
+     * 자동차 경주자의 이름을 가져오는 메소드
+     * */
+    public String getRacerName() {
+        return this.racerName;
     }
 
     /**
