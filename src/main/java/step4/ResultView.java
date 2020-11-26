@@ -3,8 +3,6 @@
  * */
 package step4;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,11 +52,19 @@ public class ResultView {
      * @param cars 우승한 자동차 리스트
      */
     public void printWinner(List<Car> cars) {
-        String winner  = cars.stream()
+        System.out.print(getStringOfWinner(cars));
+        System.out.println(Constants.RACE_RESULT_MSG);
+    }
+
+    /**
+     * 우승한 자동차 리스트를 스트링으로 반환하는 메소드
+     * @param cars 경주에서 우승한 자동차 리스트
+     * @return 우승한 자동차 이름을 ,로 묶어 스트링으로 반환한 값
+     */
+    private String getStringOfWinner(List<Car> cars) {
+        return cars.stream()
                 .map(Car::getName)
-                .collect((Collectors.joining(", ")));
-        System.out.print(winner);
-        System.out.println("가 최종 우승했습니다.");
+                .collect(Collectors.joining(", "));
     }
 
 }
