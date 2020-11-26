@@ -3,21 +3,19 @@ package step2;
 public class Calculator {
     public int stringCalculator (String op,int num1,int  num2) {
         if ("+".equals(op)) {
-            return Operator.PLUS.caculate(num1,num2);
+            return Operator.PLUS.caculate(num1, num2);
         }
         if ("-".equals(op)) {
-            return Operator.MINUS.caculate(num1,num2);
+            return Operator.MINUS.caculate(num1, num2);
         }
         if ("*".equals(op)) {
-            return Operator.MUL.caculate(num1,num2);
+            return Operator.MUL.caculate(num1, num2);
         }
         if ("/".equals(op)) {
-            return Operator.DIV.caculate(num1,num2);
+            return Operator.DIV.caculate(num1, num2);
         }
         throw new IllegalArgumentException(ErrorMsg.ERROR_CODE_2);
     }
-
-
     public void vaildate (String input) {
         if (input.trim().isEmpty() || input == null) {
             throw new IllegalArgumentException(ErrorMsg.ERROR_CODE_1);
