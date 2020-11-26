@@ -4,24 +4,24 @@
 
 package step4;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public class RacingGame {
     private List<Car> carList;
 
-    public RacingGame(int carNumber) {
-        this.carList = this.makeCarList(carNumber);
+    public RacingGame(String[] racerNames) {
+        this.carList = makeCarList(racerNames);
     }
 
     /**
-     * 입력받은 자동차 대수로 자동차 클래스의 리스트를 만드는 메소드
+     * 입력받은 자동차 이름으로 자동차 클래스의 리스트를 만드는 메소드
      */
-    public List<Car> makeCarList(int carNumber) {
+    private List<Car> makeCarList(String[] racerNames) {
         carList = new ArrayList<>();
 
-        for (int i = 0; i < carNumber; i++) {
-            Car car = new Car(Constants.INITIAL_POSITION);
+        for (String racerName : racerNames) {
+            Car car = new Car(Constants.INITIAL_POSITION, racerName);
             carList.add(car);
         }
 

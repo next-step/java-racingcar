@@ -19,7 +19,7 @@ public class Main {
         inputView.showInputRoundMessage();
         int round = inputView.inputRound();
 
-        racingGame = new RacingGame(carNumber);
+        racingGame = new RacingGame(inputName);
 
         resultView.showResultMessage();
 
