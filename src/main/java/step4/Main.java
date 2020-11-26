@@ -1,18 +1,16 @@
 package step4;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
         RacingGame racingGame;
-        String[] inputName;
 
         inputView.init();
+        inputView.showInputCarMessage();
+        String[] inputName;
 
         do {
-            inputView.showInputCarMessage();
             inputName = inputView.inputCarName();
         } while (inputView.isValidInput(inputName));
 
@@ -27,5 +25,7 @@ public class Main {
             racingGame.playRace();
             resultView.printRace(racingGame.getCars());
         }
+
+        resultView.printWinner(racingGame.getWinners());
     }
 }

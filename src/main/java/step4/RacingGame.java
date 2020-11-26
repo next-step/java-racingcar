@@ -5,23 +5,26 @@
 package step4;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class RacingGame {
     private List<Car> carList;
 
-    public RacingGame(String[] racerNames) {
-        this.carList = makeCarList(racerNames);
+    public RacingGame(String[] carNames) {
+        this.carList = makeCarList(carNames);
     }
 
     /**
      * 입력받은 자동차 이름으로 자동차 클래스의 리스트를 만드는 메소드
+     * @param carNames 입력받은 자동차 이름
+     * @return 자동차 경주에서 사용될 자동차 리스트
      */
-    private List<Car> makeCarList(String[] racerNames) {
+    private List<Car> makeCarList(String[] carNames) {
         carList = new ArrayList<>();
 
-        for (String racerName : racerNames) {
-            Car car = new Car(Constants.INITIAL_POSITION, racerName);
+        for (String carName : carNames) {
+            Car car = new Car(Constants.INITIAL_POSITION, carName);
             carList.add(car);
         }
 
@@ -39,14 +42,45 @@ public class RacingGame {
 
     /**
      * 매 라운드마다 자동차의 전진 조건을 파악하여 자동차의 위치를 변경하는 메소드
+     * @param car 각 자동차
      */
     private void playEachCar(Car car) {
         car.move();
     }
 
     /**
+     * 자동차 경주게임에서의 우승한 자동차 리스트를 얻어오는 메소드
+     * @return 우승한 자동차 리스트
+     */
+    public List<Car> getWinners() {
+        return getCars().stream()
+                .filter(c -> c.getPosition() == getMaxPosition())
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 우승한 자동차의 위치를 얻어오는 메소드
+     * @return 우승한 자동차의 위치
+     */
+    private int getMaxPosition() {
+        return getWinnerCar().getPosition();
+    }
+
+    /**
+     * 우승한 자동차를 얻어온다 (각 자동차의 위치를 비교하여 max 자동차 객체를 얻어옴)
+     * @return 우승한 자동차 객체
+     */
+    private Car getWinnerCar() {
+        return getCars().stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .orElse(null);
+    }
+
+
+    /**
      * RacingGame 클래스에서 관리하는 자동차 리스트 반환
-     * */
+     * @return 자동차 리스트
+     */
     public List<Car> getCars() {
         return this.carList;
     }
