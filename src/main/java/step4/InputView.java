@@ -45,7 +45,7 @@ public class InputView {
      * @param names 입력받은 자동차 이름 배열
      * @return 5글자 초과 여부
      */
-    public boolean lessThanFiveWords(String[] names) {
+    public boolean moreThanFiveWords(String[] names) {
         return Arrays.stream(names)
                 .anyMatch(item -> item.length() > Constants.CAR_NAME_LENGTH_LIMIT);
     }
