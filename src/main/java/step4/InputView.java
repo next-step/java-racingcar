@@ -26,6 +26,7 @@ public class InputView {
 
     /**
      * 자동차 이름을 쉼표로 구분하는 메소드
+     * @return 입력받은 자동차 이름 배열
      */
     public String[] inputCarName() {
         return inputNames().split(",");
@@ -33,14 +34,17 @@ public class InputView {
 
     /**
      * 자동차 이름을 스캐너로 입력받는 메소드
-     * */
+     * @return 사용자에게 입력받은 자동차 이름
+     */
     private String inputNames() {
         return scanner.nextLine();
     }
 
     /**
      * 각 자동차 이름이 5글자를 초과하는지 검사하는 메소드
-     * */
+     * @param names 입력받은 자동차 이름 배열
+     * @return 5글자 초과 여부
+     */
     public boolean isValidInput(String[] names) {
         return Arrays.stream(names)
                 .anyMatch(item -> item.length() > Constants.CAR_NAME_LENGTH_LIMIT);
@@ -55,6 +59,7 @@ public class InputView {
 
     /**
      * 시도 횟수를 사용자에게 입력 받는 메소드
+     * @return 사용자에게 입력 받은 시도 횟수
      */
     public int inputRound() {
         return scanner.nextInt();
