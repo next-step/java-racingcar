@@ -20,7 +20,7 @@ public class RacingGame {
      * @param carNames 입력받은 자동차 이름
      * @return 자동차 경주에서 사용될 자동차 리스트
      */
-    private List<Car> makeCarList(String[] carNames) {
+    public List<Car> makeCarList(String[] carNames) {
         carList = new ArrayList<>();
 
         for (String carName : carNames) {
