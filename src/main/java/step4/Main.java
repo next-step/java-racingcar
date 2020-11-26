@@ -12,7 +12,7 @@ public class Main {
 
         do {
             inputName = inputView.inputCarName();
-        } while (inputView.isValidInput(inputName));
+        } while (inputView.lessThanFiveWords(inputName));
 
         inputView.showInputRoundMessage();
         int round = inputView.inputRound();
