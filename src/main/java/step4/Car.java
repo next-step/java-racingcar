@@ -32,8 +32,8 @@ public class Car {
     /**
      * 자동차 경주자의 이름을 가져오는 메소드
      * */
-    public String getRacerName() {
-        return this.racerName;
+    public String getName() {
+        return this.name;
     }
 
     /**
