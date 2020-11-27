@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Scoreboard;
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 

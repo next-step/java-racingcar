@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class InputView {
     public Map<Integer, String[]> inputRacingByName(){
@@ -20,6 +21,13 @@ public class InputView {
         sc.close();
         
         return map;
+    }
+    public void validateNameLength(String[] racer){
+        Stream.of(racer).forEach(s ->   {
+            if (s.length() > 5){
+                throw new RuntimeException(s + "의 이름이 5글자 이상입니다.");
+            }
+        });
     }
     
 }
