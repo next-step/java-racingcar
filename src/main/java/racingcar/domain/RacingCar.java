@@ -20,7 +20,7 @@ public class RacingCar {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Scoreboard scoreboard = (Scoreboard) obj;
-        return Objects.equals(cars, scoreboard.getCars());
+        return Objects.equals(cars, scoreboard.getRacingCar().getCars());
     }
 
     @Override

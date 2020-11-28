@@ -12,7 +12,7 @@ public class Racing {
     public List<String> moveCar(Scoreboard board){
         List<String> result = new ArrayList<>();
         for(int j = 0; j < board.getMove(); j++){
-            List<String> moveResult = tryToMoveResult(board.getCars(), board.getMove());
+            List<String> moveResult = tryToMoveResult(board.getRacingCar().getCars(), board.getMove());
             result.addAll(moveResult);
         }
         return result;

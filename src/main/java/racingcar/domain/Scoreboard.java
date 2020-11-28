@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.List;
 
 public class Scoreboard {
-    private RacingCar cars;
+    private RacingCar racingaCar;
     private int move;
     private List<String> history;
 
@@ -11,8 +11,8 @@ public class Scoreboard {
         this.move = move;
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public RacingCar getRacingCar() {
+        return racingaCar;
     }
 
     public int getMove() {
@@ -28,7 +28,7 @@ public class Scoreboard {
     }
     
     public Scoreboard(RacingCar cars){
-        this.cars = cars;
+        this.racingaCar = cars;
     }
 
 }

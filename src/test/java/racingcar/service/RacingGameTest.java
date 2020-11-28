@@ -30,7 +30,7 @@ public class RacingGameTest {
         Scoreboard board = racingGame.placetForRacingByName(list);
 
         //then
-        assertThat(board.getCars().size()).isEqualTo(3);
+        assertThat(board.getRacingCar().getCars().size()).isEqualTo(3);
         assertThat(board.getMove()).isEqualTo(5);
     }
     
