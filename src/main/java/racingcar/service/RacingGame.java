@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import racingcar.domain.Car;
+import racingcar.domain.RacingCar;
 import racingcar.domain.Scoreboard;
 
 public class RacingGame {
@@ -26,7 +27,7 @@ public class RacingGame {
             Car car = new Car(carName);
             carList.add(car);
         }
-        Scoreboard board = new Scoreboard(carList);
+        Scoreboard board = new Scoreboard(new RacingCar(carList));
         board.setMove(Integer.valueOf(input.get(1)[0]));
         return board;
     }

@@ -1,10 +1,9 @@
 package racingcar.domain;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Scoreboard {
-    private List<Car> cars;
+    private RacingCar cars;
     private int move;
     private List<String> history;
 
@@ -13,7 +12,7 @@ public class Scoreboard {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
     public int getMove() {
@@ -28,23 +27,8 @@ public class Scoreboard {
         this.history = list;
     }
     
-    public Scoreboard(List<Car> cars){
+    public Scoreboard(RacingCar cars){
         this.cars = cars;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Scoreboard scoreboard = (Scoreboard) obj;
-        return move == scoreboard.getMove() &&
-            history == scoreboard.getHistory() &&
-                Objects.equals(cars, scoreboard.getCars());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars, move, history);
     }
 
 }
