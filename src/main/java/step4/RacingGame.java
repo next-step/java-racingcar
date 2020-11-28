@@ -53,8 +53,9 @@ public class RacingGame {
      * @return 우승한 자동차 리스트
      */
     public List<Car> getWinners() {
+        int maxPosition = getMaxPosition();
         return getCars().stream()
-                .filter(c -> c.getPosition() == getMaxPosition())
+                .filter(c -> c.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 
