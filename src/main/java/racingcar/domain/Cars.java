@@ -22,10 +22,6 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     public List<Car> getCarsByName(List<String> carNames) {
         List<Car> result = new ArrayList<>();
         for (Car car : cars) {
@@ -36,14 +32,14 @@ public class Cars {
         return result;
     }
 
-    public void tryToMove() {
-        getCars().forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
+    public void tryToMove(int randomNumber) {
+        cars.forEach(c -> c.tryToMove(randomNumber));
     }
 
     public RaceRecord saveRecord(int round) {
         Map<String, Integer> map = new HashMap<>();
         for (Car car : cars) {
-            map.put(car.getName(), car.getLocation());
+            car.saveLocation(map);
         }
         return new RaceRecord(round, map);
     }

@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,5 +47,9 @@ public class Car {
 
     public boolean isContained(List<String> list) {
         return list.contains(name);
+    }
+
+    public void saveLocation(Map<String, Integer> map) {
+        map.put(name, location);
     }
 }
