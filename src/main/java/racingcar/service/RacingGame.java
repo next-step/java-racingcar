@@ -16,8 +16,8 @@ public class RacingGame {
         this.racing = racing;
     }
 
-    public List<String> setInRacingByName(Map<Integer, String[]> map){
-        List<String> result = racing.moveCar(placetForRacingByName(map));
+    public Scoreboard setInRacingByName(Map<Integer, String[]> map){
+        Scoreboard result = racing.moveCar(placetForRacingByName(map));
         return result;
     }
 

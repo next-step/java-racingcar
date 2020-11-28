@@ -5,37 +5,26 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import racingcar.domain.Car;
+import racingcar.domain.Scoreboard;
+
 public class ResultView {
 
-    public void racingResult(List<String> list){
-        int count = 0;
-        int move = Integer.valueOf(list.get(0).split(" : ")[2]);
+    public void racingResult(Scoreboard result){
+        int move = result.getMove();
         System.out.println("실행 결과");
-        for(int i = 0; i < list.size(); i++){
-            printMove(list.get(i));
+        for(int i = 0; i < move; i++){
+            printMove(result.getRacingCar().getCars(), result.getHistory().getRacingResult().get(i));
             System.out.println();
-            count = branch(i, list, move, count);
         }
-        System.out.println();
+        System.out.println("");
+        printWinner(result.getRacingCar().getCars());
     }
 
-    public int branch(int i ,List<String> list, int move, int count){
-        int result = count;
-        if(list.get(i).equals("")){
-            result++;
-        }
-        if(result == move){
-            printWinner(list);
-        }
-        return result;
-    }
-
-    public void printMove(String board){
-        if(!board.equals("")){
-            String[] temp = board.split(" : ");
-            System.out.print(temp[0] + " : ");
-            int move = Integer.valueOf(temp[1]);
-            printLoacation(move);
+    public void printMove(List<Car> cars, List<Integer> result){
+        for(int j = 0; j < cars.size(); j++){
+            System.out.print(cars.get(j).getCar() + " : ");
+            printLoacation(result.get(j));
         }
     }
 
@@ -43,43 +32,34 @@ public class ResultView {
         for(int j = 0; j < move; j++){
             System.out.print("-");
         }
+        System.out.println("");
     }
 
-    public void printWinner(List<String> list){
+    public void printWinner(List<Car> cars){
         List<Integer> tempList = new ArrayList<>();
-        for(int k = 0; k < list.size(); k++){
-            tempList.add(Integer.valueOf(checkScore(list.get(k))));
+        for(int k = 0; k < cars.size(); k++){
+            tempList.add(cars.get(k).getLocation());
         }
-        HashSet<String> winer = getWinner(list, tempList);
+        
+        HashSet<String> winer = getWinner(cars, tempList);
         System.out.println(winer + " 가 최종 우승했습니다.");
     }
 
-    public String checkScore(String score){
-        String temp = null;
-        if(!score.equals("")){
-            temp = score.split(" : ")[1];
-        }
-        if(score.equals("")){
-            temp = "0";
-        }
-        return temp;
-    }
-
-    public HashSet<String> getWinner(List<String> list, List<Integer> tempList){
+    public HashSet<String> getWinner(List<Car> cars, List<Integer> tempList){
         int max = Collections.max(tempList);
         List<String> winnerList = new ArrayList<>(); 
-        for(int l = 0; l < list.size(); l++){
-            winnerList.add(chooseWinner(list.get(l), max));
+        for(int l = 0; l < cars.size(); l++){
+            winnerList.add(chooseWinner(cars.get(l), max));
         }
         while (winnerList.remove(null));
         HashSet<String> dedupl = new HashSet<String>(winnerList);
         return dedupl;
     }
 
-    public String chooseWinner(String racer, int score){
+    public String chooseWinner(Car racer, int score){
         String winner = null;
-        if(!racer.equals("") && racer.split(" : ")[1].contains(String.valueOf(score))){
-            winner = racer.split(" : ")[0];
+        if(racer.getLocation() == score){
+            winner = racer.getCar();
         }
         return winner;
     }
