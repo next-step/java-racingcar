@@ -3,12 +3,9 @@
  * */
 package step4;
 
-import java.util.Random;
-
 public class Car {
     private String name;
     private int position;
-    private static Random random = new Random();
 
     public Car(int position, String name) {
         this.position = position;
@@ -19,7 +16,7 @@ public class Car {
      * 자동차의 위치를 변경하는 메소드로 랜덤값을 인자로 넘기는 메소드
      */
     public void move() {
-        this.move(getRandomNumber());
+        this.move(Util.getRandomNumber());
     }
 
     /**
@@ -56,13 +53,4 @@ public class Car {
     public static boolean isMovable(int number) {
         return number >= Constants.MOVE_CONDITION;
     }
-
-    /**
-     * 0에서 9사이의 랜덤값을 생성하는 메소드
-     * @return 랜덤값
-     */
-    private static int getRandomNumber() {
-        return random.nextInt(Constants.RANDOM_RANGE);
-    }
-
 }
