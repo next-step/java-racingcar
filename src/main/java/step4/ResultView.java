@@ -60,7 +60,7 @@ public class ResultView {
      * @param cars 경주에서 우승한 자동차 리스트
      * @return 우승한 자동차 이름을 ,로 묶어 스트링으로 반환한 값
      */
-    private static String getStringOfWinner(List<Car> cars) {
+    public static String getStringOfWinner(List<Car> cars) {
         return cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
