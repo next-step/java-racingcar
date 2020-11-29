@@ -65,5 +65,32 @@ class RacingGameTest {
         assertThat(winners).contains(carList.get(0));
     }
 
+    @ParameterizedTest
+    @DisplayName("다수의 우승자를 제대로 구하는지 테스트")
+    @CsvSource(value = {"apple,bean,candy:4", "abc,def,ghi:4"} , delimiter = ':')
+    void play_racing_and_get_multiple_winners(String carNames, int round) {
+        RacingGame racingGame = new RacingGame(carNames.split(","), round);
+        List<Car> carList = racingGame.getCars();
+
+        carList.get(0).move(7);
+        carList.get(0).move(5);
+        carList.get(0).move(4);
+        carList.get(0).move(6);
+
+        carList.get(1).move(9);
+        carList.get(1).move(9);
+        carList.get(1).move(9);
+        carList.get(1).move(9);
+
+        carList.get(2).move(1);
+        carList.get(2).move(4);
+        carList.get(2).move(5);
+        carList.get(2).move(7);
+
+        List<Car> winners = racingGame.getWinners();
+
+        assertThat(winners).contains(carList.get(0), carList.get(1));
+    }
+
 
 }
