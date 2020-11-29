@@ -10,18 +10,11 @@ public class Main {
         inputView.showInputCarMessage();
         String[] inputName = inputView.inputCarName();
 
-        racingGame = new RacingGame(inputName);
-
         inputView.showInputRoundMessage();
         int round = inputView.inputRound();
 
-        resultView.showResultMessage();
+        racingGame = new RacingGame(inputName, round);
 
-        for (int i = 0; i < round; i++) {
-            racingGame.playRace();
-            resultView.printRace(racingGame.getCars());
-        }
-
-        resultView.printWinner(racingGame.getWinners());
+        racingGame.playGame();
     }
 }

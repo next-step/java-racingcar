@@ -10,9 +10,13 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> carList;
+    private int round;
+    private int currentRound;
 
-    public RacingGame(String[] carNames) {
+    public RacingGame(String[] carNames, int round) {
         this.carList = makeCarList(carNames);
+        this.round = round;
+        this.currentRound = 0;
     }
 
     /**
@@ -32,6 +36,28 @@ public class RacingGame {
     }
 
     /**
+     * 자동차 경주 게임을 실행하는 메소드
+     */
+    public void playGame() {
+        ResultView.showResultMessage();
+
+        while (hasNextRound()) {
+            playRace();
+            ResultView.printRace(getCars());
+            this.currentRound++;
+        }
+        ResultView.printWinner(getWinners());
+    }
+
+    /**
+     * 다음 라운드가 있는지 확인
+     * @return 다음 라운드가 있으면 true
+     */
+    private boolean hasNextRound() {
+        return this.round > this.currentRound;
+    }
+
+    /**
      * 자동차 경주 게임을 실행하는 메소드, 각 라운드를 실행하고 자동차들의 위치를 변경한다
      */
     public void playRace() {
@@ -44,6 +70,7 @@ public class RacingGame {
      */
     public List<Car> getWinners() {
         int maxPosition = getMaxPosition();
+
         return getCars().stream()
                 .filter(c -> c.getPosition() == maxPosition)
                 .collect(Collectors.toList());
@@ -66,7 +93,6 @@ public class RacingGame {
                 .max(Comparator.comparing(Car::getPosition))
                 .orElse(null);
     }
-
 
     /**
      * RacingGame 클래스에서 관리하는 자동차 리스트 반환
