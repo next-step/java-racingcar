@@ -44,7 +44,6 @@ public class RacingGame {
         while (hasNextRound()) {
             playRace();
             ResultView.printRace(getCars());
-            this.currentRound++;
         }
         ResultView.printWinner(getWinners());
     }
@@ -53,7 +52,7 @@ public class RacingGame {
      * 다음 라운드가 있는지 확인
      * @return 다음 라운드가 있으면 true
      */
-    private boolean hasNextRound() {
+    public boolean hasNextRound() {
         return this.round > this.currentRound;
     }
 
@@ -62,6 +61,7 @@ public class RacingGame {
      */
     public void playRace() {
         getCars().forEach(Car::move);
+        this.currentRound++;
     }
 
     /**
