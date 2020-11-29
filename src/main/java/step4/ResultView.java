@@ -21,9 +21,8 @@ public class ResultView {
      * @param cars 자동차 경주에 참여한 자동차 리스트
      */
     public void printRace(List<Car> cars) {
-        for (Car car : cars) {
-            printEachCar(car);
-        }
+        cars.forEach(this::printEachCar);
+
         System.out.println();
     }
 

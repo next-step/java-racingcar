@@ -35,17 +35,7 @@ public class RacingGame {
      * 자동차 경주 게임을 실행하는 메소드, 각 라운드를 실행하고 자동차들의 위치를 변경한다
      */
     public void playRace() {
-        for (Car car : getCars()) {
-            playEachCar(car);
-        }
-    }
-
-    /**
-     * 매 라운드마다 자동차의 전진 조건을 파악하여 자동차의 위치를 변경하는 메소드
-     * @param car 각 자동차
-     */
-    private void playEachCar(Car car) {
-        car.move();
+        getCars().forEach(Car::move);
     }
 
     /**
