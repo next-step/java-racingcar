@@ -10,4 +10,5 @@ public class Constants {
     public static final int INITIAL_POSITION = 0;
     public static final int CAR_NAME_LENGTH_LIMIT = 5;
     public static final String RACE_RESULT_MSG = "가 최종 우승했습니다.";
+    public static final String NAME_IS_MORE_THAN_FIVE_WORDS = "자동차 이름은 5글자를 초과할 수 없습니다. 다시 프로그램을 실행해주세요.";
 }

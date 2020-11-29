@@ -8,16 +8,12 @@ public class Main {
 
         inputView.init();
         inputView.showInputCarMessage();
-        String[] inputName;
+        String[] inputName = inputView.inputCarName();
 
-        do {
-            inputName = inputView.inputCarName();
-        } while (inputView.moreThanFiveWords(inputName));
+        racingGame = new RacingGame(inputName);
 
         inputView.showInputRoundMessage();
         int round = inputView.inputRound();
-
-        racingGame = new RacingGame(inputName);
 
         resultView.showResultMessage();
 

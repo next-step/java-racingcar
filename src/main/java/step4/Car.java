@@ -8,6 +8,10 @@ public class Car {
     private int position;
 
     public Car(int position, String name) {
+        if (moreThanFiveWords(name)) {
+            throw new IllegalArgumentException(Constants.NAME_IS_MORE_THAN_FIVE_WORDS);
+        }
+
         this.position = position;
         this.name = name;
     }
@@ -52,5 +56,14 @@ public class Car {
      */
     public static boolean isMovable(int number) {
         return number >= Constants.MOVE_CONDITION;
+    }
+
+    /**
+     * 각 자동차 이름이 5글자를 초과하는지 검사하는 메소드
+     * @param name 입력받은 자동차 이름
+     * @return 5글자 초과 여부
+     */
+    private boolean moreThanFiveWords(String name) {
+        return name.length() > Constants.CAR_NAME_LENGTH_LIMIT;
     }
 }

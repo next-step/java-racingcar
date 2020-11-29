@@ -41,16 +41,6 @@ public class InputView {
     }
 
     /**
-     * 각 자동차 이름이 5글자를 초과하는지 검사하는 메소드
-     * @param names 입력받은 자동차 이름 배열
-     * @return 5글자 초과 여부
-     */
-    public boolean moreThanFiveWords(String[] names) {
-        return Arrays.stream(names)
-                .anyMatch(item -> item.length() > Constants.CAR_NAME_LENGTH_LIMIT);
-    }
-
-    /**
      * 시도 횟수 입력 메시지를 출력하는 메소드
      */
     public void showInputRoundMessage() {
