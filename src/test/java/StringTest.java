@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
     @DisplayName("split 메서드를 통해 주어진 문자열을 구분자로 나눌 수 있는지 확인하는 학습 테스트")
@@ -50,5 +51,15 @@ public class StringTest {
         String target = "abc";
 
         assertThat(target.charAt(index)).isEqualTo(expectedResult);
+    }
+
+    @DisplayName("charAt 메서드를 통해 주어진 문자열의 크기를 벗어난 index의 문자열을 요구하는 경우 에러가 발생하는지 확인하는 학습 테스트")
+    @Test
+    void charAtWithOutOfRangeIndexTest() {
+        String target = "abc";
+        int outOfRangeIndex = target.length();
+
+        assertThatThrownBy(() -> target.charAt(outOfRangeIndex))
+                .isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
