@@ -3,9 +3,7 @@ package calculator;
 public class Calculator {
 
     public int calculate(String input) {
-        FormulaMaker formulaMaker = new FormulaMaker();
-        formulaMaker.split(input);
-        formulaMaker.checkValidation();
+        FormulaMaker formulaMaker = new FormulaMaker(input);
 
         String[] formula = formulaMaker.getFormula();
         int ret = Integer.parseInt(formula[0]);

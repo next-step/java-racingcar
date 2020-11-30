@@ -4,19 +4,24 @@ public class FormulaMaker {
     private static final String SPACE = " ";
     private static final int MIN_LENGTH = 3;
 
-    private static final IllegalArgumentException nullOrEmptyException = new IllegalArgumentException();
-    private static final IllegalArgumentException wrongExpressionException = new IllegalArgumentException();
-    private static final IllegalArgumentException wrongSignException = new IllegalArgumentException();
+    private static final String NULL_OR_EMPTY_EXCEPTION = "입력값이 비어있습니다.";
+    private static final String WRONG_EXPRESSION_EXCEPTION = "계산식이 최소 길이를 만족하지 않습니다.";
+    private static final String WRONG_SIGN_EXCEPTION = "계산 부호 오류입니다.";
 
-    private String inputValue;
     private String[] formula;
 
-    public void split(String inputValue) {
-        this.inputValue = inputValue;
+    public FormulaMaker(String inputValue) {
+        this.formula = inputValue.split(SPACE);
+
+        split(inputValue);
+        checkValidation(inputValue);
+    }
+
+    private void split(String inputValue) {
         this.formula = inputValue.split(SPACE);
     }
 
-    public void checkValidation() {
+    private void checkValidation(String inputValue) {
         checkInputValidation(inputValue);
         checkFormulaValidation(formula);
 
@@ -32,13 +37,13 @@ public class FormulaMaker {
 
     private void checkInputValidation(String input) {
         if (input == null || input.length() == 0) {
-            throw nullOrEmptyException;
+            throw new IllegalArgumentException(NULL_OR_EMPTY_EXCEPTION);
         }
     }
 
     private void checkFormulaValidation(String[] expression) {
         if (expression.length < MIN_LENGTH) {
-            throw wrongExpressionException;
+            throw new IllegalArgumentException(WRONG_EXPRESSION_EXCEPTION);
         }
     }
 
@@ -46,7 +51,7 @@ public class FormulaMaker {
         try {
             Operator operator = Operator.getOperator(symbol);
         } catch (IllegalArgumentException e) {
-            throw wrongSignException;
+            throw new IllegalArgumentException(WRONG_SIGN_EXCEPTION);
         }
     }
 
