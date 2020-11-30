@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,11 +44,10 @@ public class StringTest {
     }
 
     @DisplayName("charAt 메서드를 통해 주어진 문자열의 특정 위치에 있는 문자열을 가져올 수 있는지 확인하는 학습 테스트")
-    @Test
-    void charAtTest() {
+    @ParameterizedTest
+    @CsvSource(value = {"0:a", "1:b", "2:c"}, delimiter = ':')
+    void charAtTest(int index, char expectedResult) {
         String target = "abc";
-        int index = 0;
-        char expectedResult = 'a';
 
         assertThat(target.charAt(index)).isEqualTo(expectedResult);
     }
