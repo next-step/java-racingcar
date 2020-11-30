@@ -8,7 +8,8 @@ public class StringTest {
     @Test
     void splitOneAndTwoTest() {
         String target = "1,2";
-        String[] splatTarget = target.split(",");
+        String splitter = ",";
+        String[] splatTarget = target.split(splitter);
 
         String expectedResult1 = "1";
         String expectedResult2 = "2";
