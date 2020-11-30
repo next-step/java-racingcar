@@ -28,4 +28,16 @@ public class StringTest {
 
         assertThat(splatFirstResult).isEqualTo(target);
     }
+
+    @DisplayName("substring 메서드를 통해 주어진 문자열 중 원하는 위치의 문자열을 제거할 수 있는지 확인하는 학습 테스트")
+    @Test
+    void substringTest() {
+        String target = "(1,2)";
+        String expectedResult = "1,2";
+
+        int startIndex = 1;
+        int lastIndex = target.length() - 1;
+
+        assertThat(target.substring(startIndex, lastIndex)).isEqualTo(expectedResult);
+    }
 }
