@@ -1,4 +1,4 @@
-package step2;
+package claculator;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;

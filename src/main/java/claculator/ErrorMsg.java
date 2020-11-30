@@ -1,4 +1,4 @@
-package step2;
+package claculator;
 
 public class ErrorMsg {
     protected static final String ERROR_CODE_1 = "Null이거나 빈어있는 문자입니다";
