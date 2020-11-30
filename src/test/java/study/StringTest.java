@@ -22,4 +22,16 @@ public class StringTest {
         assertThat(splitStrArr).contains(one, two);
         assertThat(splitStrArr).containsExactly(one, two);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = "(1,2)")
+    @DisplayName("[요구사항 2] '(1,2)' 문자열을 substring 메서드를 사용하여 '('와 ')'을 제거하여 '1,2'만을 포함하는 배열을 반환하는지 확인")
+    void checkReturnStringAnd1And2SameWhenUseSubstringMethod(final String givenInput) {
+        final int startPoint = 1;
+        final String oneAndTwo = "1,2";
+
+        final String resultStr = givenInput.substring(startPoint, givenInput.length() - 1);
+
+        assertThat(resultStr).isEqualTo(oneAndTwo);
+    }
 }
