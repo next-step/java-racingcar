@@ -40,4 +40,12 @@ public class StringTest {
 
         assertThat(target.substring(startIndex, lastIndex)).isEqualTo(expectedResult);
     }
+
+    @DisplayName("charAt 메서드를 통해 주어진 문자열의 특정 위치에 있는 문자열을 가져올 수 있는지 확인하는 학습 테스트")
+    @Test
+    void charAtTest() {
+        String target = "abc";
+
+        assertThat(target.charAt(0)).isEqualTo('a');
+    }
 }
