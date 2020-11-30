@@ -45,7 +45,9 @@ public class StringTest {
     @Test
     void charAtTest() {
         String target = "abc";
+        int index = 0;
+        char expectedResult = 'a';
 
-        assertThat(target.charAt(0)).isEqualTo('a');
+        assertThat(target.charAt(index)).isEqualTo(expectedResult);
     }
 }
