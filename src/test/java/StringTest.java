@@ -16,4 +16,15 @@ public class StringTest {
         assertThat(splatTarget[0]).isEqualTo(expectedResult1);
         assertThat(splatTarget[1]).isEqualTo(expectedResult2);
     }
+
+    @DisplayName("split 메서드를 통해 구분자가 없는 문자열을 나눌 경우 주어진 문자열을 그대로 반환하는지 확인하는 학습 테스트")
+    @Test
+    void splitWithoutSplitStringTest() {
+        String target = "1";
+        String splitter = ",";
+
+        String splatFirstResult = target.split(splitter)[0];
+
+        assertThat(splatFirstResult).isEqualTo(target);
+    }
 }
