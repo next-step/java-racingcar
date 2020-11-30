@@ -10,7 +10,10 @@ public class StringTest {
         String target = "1,2";
         String[] splatTarget = target.split(",");
 
-        assertThat(splatTarget[0]).isEqualTo("1");
-        assertThat(splatTarget[1]).isEqualTo("2");
+        String expectedResult1 = "1";
+        String expectedResult2 = "2";
+
+        assertThat(splatTarget[0]).isEqualTo(expectedResult1);
+        assertThat(splatTarget[1]).isEqualTo(expectedResult2);
     }
 }
