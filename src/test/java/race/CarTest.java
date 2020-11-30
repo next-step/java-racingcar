@@ -1,28 +1,33 @@
 package race;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import race.model.Car;
-import race.strategy.AlwaysMoveStrategy;
+import race.strategytest.AlwaysMoveStrategy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarTest {
+    public Car car;
 
-    @Test
-    void generateCar() {
-        Car car = new Car();
-        assertEquals(car.position, 0);
-
-        car.move(true);
-        assertEquals(car.position, 1);
+    @BeforeEach
+    void setUp() {
+        car = new Car(new AlwaysMoveStrategy());
+        car.move();
+        car.move();
+        car.move();
     }
 
     @Test
     void alwaysMoveStrategy() {
-        Car car = new Car();
-        car.move(new AlwaysMoveStrategy().isMovable());
-        car.move(new AlwaysMoveStrategy().isMovable());
+        assertEquals(car.history.get(0), true);
+        assertEquals(car.history.get(1), true);
+        assertEquals(car.history.get(2), true);
+        assertEquals(car.history.size(), 3);
+    }
 
-        assertEquals(car.position, 2);
+    @Test
+    void getPosition() {
+        assertEquals(car.getPositionInRace(3), 3);
     }
 }

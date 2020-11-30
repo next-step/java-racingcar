@@ -1,36 +1,22 @@
 package race.model;
 
-import race.strategy.MoveStrategy;
-import race.strategy.RandomMoveStrategy;
-
-import java.util.ArrayList;
-
 public class Race {
-    public interface RaceInterface {
-        void getPosition(int position);
-        void finishTurn();
+    private final Cars cars;
+
+    public Race(Cars cars) {
+        this.cars = cars;
     }
 
-    private final ArrayList<Car> cars;
-    private final MoveStrategy moveStrategy = new RandomMoveStrategy();
-
-    public Race(int carCount) {
-        cars = CarMaker.generate(carCount);
-    }
-
-    public void run(int runCount, RaceInterface raceInterface) {
+    public Cars run(int runCount) {
         for (int i = 0; i < runCount; i++) {
-            runForEachCar(raceInterface);
-
-            raceInterface.finishTurn();
+            runForEachCar();
         }
+        return cars;
     }
 
-    private void runForEachCar(RaceInterface raceInterface) {
-        for (Car car : cars) {
-            car.move(moveStrategy.isMovable());
-
-            raceInterface.getPosition(car.position);
+    private void runForEachCar() {
+        for (Car car : cars.getCars()) {
+            car.move();
         }
     }
 }
