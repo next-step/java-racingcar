@@ -20,4 +20,14 @@ public class StringTest {
 
         assertThat(result).contains("1");
     }
+
+    @Test
+    public void substring(){
+        String source = "(1,2)";
+        int beginIdx = source.indexOf("(") + 1;
+        int endIdx = source.indexOf(")");
+        String result = source.substring(beginIdx, endIdx);
+
+        assertThat(result).isEqualTo("1,2");
+    }
 }
