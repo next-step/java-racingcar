@@ -11,16 +11,23 @@ public class StringCaculator {
 
 	Scanner sc = new Scanner(System.in);
 
-	public void caculate() {
+	public void main() {
 		System.out.println("계산할 문자열을 입력해주세요");
 		String inputString = sc.nextLine();
+
+		System.out.println("입력값");
 		System.out.println(inputString);
 
-		// 1. 숫자, 사칙연산만올 것
 		validate(inputString);
+
+		calculate(inputString);
+	}
+
+	Integer calculate(String inputString) {
 		// 2. 빈 공백으로 숫자, 사칙연산 분리
 		List<String> operatorList = new ArrayList<>();
 		List<Integer> inputNumberList = new ArrayList<>();
+
 		analyzeInputString(inputString, operatorList, inputNumberList);
 
 		// 2. 앞에서 부터 차례대로 연산한다. + - * /
@@ -49,14 +56,13 @@ public class StringCaculator {
 			}
 
 		}
-		//todo 나눗셈의 경우 결과 값을 정수로 떨어지는 값으로 한정  -> 소숫점 제외?
 		System.out.println("사칙연산 계산 결과");
 		System.out.println(frontNumber);
-
+		return frontNumber;
 	}
 
 	void validate(String inputString) {
-		if(inputString == null ){
+		if (inputString == null) {
 			throw new IllegalArgumentException();
 		}
 		List<String> inputList = Arrays.asList(inputString.split(" "));
@@ -64,46 +70,41 @@ public class StringCaculator {
 			throw new IllegalArgumentException();
 		}
 		for (String number : inputList) {
-			if (!isValid(number)) {
-				throw new IllegalArgumentException();
-			}
+			isValid(number);
 		}
 	}
 
 	private boolean isValid(String number) {
 		if (!(number.matches("\\d+") || number.matches("[\\+*\\/-]"))) {
 			//숫자도 아니고 사칙연산에도 해당되지 않은 경우
-			return false;
+			throw new IllegalArgumentException();
 		}
 		return true;
 	}
 
-	private Integer divide(Integer frontNumber, Integer rearNumber) {
+	Integer divide(Integer frontNumber, Integer rearNumber) {
 		Integer result = frontNumber / rearNumber;
-		System.out.println("나누기 값");
+		System.out.println("나누기 결과 값");
 		System.out.println(result);
 		return result;
 	}
 
-	private Integer multiply(Integer frontNumber, Integer rearNumber) {
+	Integer multiply(Integer frontNumber, Integer rearNumber) {
 		Integer result = frontNumber * rearNumber;
-		System.out.println(result);
 		return result;
 	}
 
-	private Integer minus(Integer frontNumber, Integer rearNumber) {
+	Integer minus(Integer frontNumber, Integer rearNumber) {
 		Integer result = frontNumber - rearNumber;
-		System.out.println(result);
 		return result;
 	}
 
-	private Integer plus(Integer frontNumber, Integer rearNumber) {
+	Integer plus(Integer frontNumber, Integer rearNumber) {
 		Integer result = frontNumber + rearNumber;
-		System.out.println(result);
 		return result;
 	}
 
-	private void analyzeInputString(String inputString, List<String> operatorList, List<Integer> inputNumberList) {
+	void analyzeInputString(String inputString, List<String> operatorList, List<Integer> inputNumberList) {
 		String[] inputArr = inputString.split(" ");
 		for (int i = 0; i < inputArr.length; i++) {
 			if (i % 2 == 1) {
