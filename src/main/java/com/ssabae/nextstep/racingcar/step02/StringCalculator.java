@@ -1,7 +1,5 @@
 package com.ssabae.nextstep.racingcar.step02;
 
-import java.util.Scanner;
-
 /**
  * @author : leesangbae
  * @project : java-racingcar
@@ -62,17 +60,5 @@ public class StringCalculator implements Calculator {
                 break;
         }
         return returnValue;
-    }
-
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-
-        Validator<String[]> validator = new StringCalculateValidator();
-        Calculator calculator = new StringCalculator(validator);
-        int result = calculator.calculate(input);
-
-        System.out.println("result = " + result);
     }
 }
