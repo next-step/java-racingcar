@@ -36,4 +36,13 @@ class StringTest {
 		assertThat(splitValue).containsExactly("1");
 	}
 
+	@Order(3)
+	@DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
+	@Test
+	void split_values_is_correct() {
+		String arg = "(1,2)";
+		String[] splitValue = arg.substring(arg.indexOf("(") + 1, arg.indexOf(")")).split(",");
+		assertThat(splitValue.length).isEqualTo(2);
+		assertThat(splitValue).contains("1", "2");
+	}
 }
