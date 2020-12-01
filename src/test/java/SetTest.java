@@ -26,4 +26,12 @@ public class SetTest {
 
         assertThat(numbers.size()).isEqualTo(expectedResult);
     }
+
+    @DisplayName("contains 메서드로 Set Collection에 해당 요소가 존재하는지 확인하는 학습 테스트")
+    @Test
+    void containsTest() {
+        Integer searchTarget = 1;
+
+        assertThat(numbers.contains(searchTarget)).isTrue();
+    }
 }
