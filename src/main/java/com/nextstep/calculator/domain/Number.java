@@ -2,6 +2,8 @@ package com.nextstep.calculator.domain;
 
 import com.nextstep.calculator.domain.exceptions.InvalidNumberException;
 
+import java.util.Objects;
+
 public class Number {
     private final int value;
 
@@ -15,5 +17,18 @@ public class Number {
         } catch (Exception e) {
             throw new InvalidNumberException("숫자로 적합하지 않은 문자열입니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Number number = (Number) o;
+        return value == number.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

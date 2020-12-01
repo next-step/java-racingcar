@@ -13,9 +13,10 @@ class NumberTest {
     @DisplayName("문자열을 인자로 받아서 객체를 생성할 수 있다.")
     @Test
     void createTest() {
-        Number one = Number.of("1");
+        Number number = Number.of("1");
+        Number expectedValue = Number.of("1");
 
-        assertThat(one).isNotNull();
+        assertThat(number).isEqualTo(expectedValue);
     }
 
     @DisplayName("인자로 전달된 문자열을 숫자로 변환할 수 없는 경우 예외 발생")
