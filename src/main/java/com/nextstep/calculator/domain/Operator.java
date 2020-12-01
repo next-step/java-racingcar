@@ -3,7 +3,7 @@ package com.nextstep.calculator.domain;
 import java.util.Arrays;
 
 public enum Operator {
-    PLUS("+");
+    PLUS("+"), MINUS("-"), DIVIDE("/"), MULTIPLY("*");
 
     private final String value;
 
