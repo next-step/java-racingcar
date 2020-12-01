@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * @author : byungkyu
@@ -37,12 +39,33 @@ class StringTest {
 	}
 
 	@Order(3)
-	@DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
+	@DisplayName("2.1. \"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
 	@Test
-	void split_values_is_correct() {
+	void split_values_using_substring_is_correct() {
 		String arg = "(1,2)";
 		String[] splitValue = arg.substring(arg.indexOf("(") + 1, arg.indexOf(")")).split(",");
 		assertThat(splitValue.length).isEqualTo(2);
 		assertThat(splitValue).contains("1", "2");
+	}
+
+	@Order(4)
+	@DisplayName("3.1. \"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.")
+	@ParameterizedTest
+	@ValueSource(strings = {"a", "b", "c"})
+	void get_sentence_with_using_charAt_is_correct(String arg) {
+		String target = "abc";
+		char c = target.charAt(target.indexOf(arg));
+		assertThat(target).contains(Character.toString(c));
+	}
+
+	@Order(5)
+	@DisplayName("3.2. \"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.")
+	@ParameterizedTest
+	@ValueSource(strings = {"n", "e", "x", "t"})
+	void get_sentence_with_using_charAt_is_not_correct(String arg) {
+		String target = "abc";
+		assertThatThrownBy(() -> {
+			char c = target.charAt(target.indexOf(arg));
+		}).isInstanceOf(StringIndexOutOfBoundsException.class);
 	}
 }
