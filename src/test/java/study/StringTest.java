@@ -2,8 +2,11 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -38,5 +41,27 @@ public class StringTest {
         String substringResult = input.substring(1, 4);
 
         assertThat(substringResult).isEqualTo(expected);
+    }
+
+    @DisplayName("charAt 메소드가 정상 동작하는지 확인")
+    @ParameterizedTest
+    @CsvSource(value = {"1,a", "2,b", "3,c"})
+    void charAtTest(int index, char expected) {
+        final String input = "abc";
+
+        char result = input.charAt(index);
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("charAt 메소드 사용 시 인덱스가 벗어난 경우 예외 처리 확인")
+    @Test
+    void charAtIndexOutOfBoundExceptionTest() {
+        final String input = "abc";
+        final int inputIndex = 3;
+
+        assertThatThrownBy(() -> input.charAt(inputIndex))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: " + inputIndex);
     }
 }
