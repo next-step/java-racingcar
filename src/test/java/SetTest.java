@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,10 +31,9 @@ public class SetTest {
     }
 
     @DisplayName("contains 메서드로 Set Collection에 해당 요소가 존재하는지 확인하는 학습 테스트")
-    @Test
-    void containsTest() {
-        Integer searchTarget = 1;
-
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void containsTest(Integer searchTarget) {
         assertThat(numbers.contains(searchTarget)).isTrue();
     }
 }
