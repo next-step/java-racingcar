@@ -13,15 +13,12 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
-    private Set numbers;
 
-    /*
-    @BeforeEach 와 @AfterEach 는 각 테스트 메소드 마다! 각각 실행된다.
-    ex ) @BeforeEach -> 메소드 1 -> @AfterEach
-         @BeforeEach -> 메소드 2 -> @AfterEach
-     */
+    private Set<Integer> numbers;
+
     @BeforeEach
     void setUp() {
+        // given
         numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(1);
@@ -29,28 +26,35 @@ public class SetTest {
         numbers.add(3);
     }
 
+    @DisplayName("Set의 size() 메소드를 활용해 Set의 크기를 확인하는 학습테스트를 구현한다.")
     @Test
     void size() {
-        assertThat(numbers).hasSize(3);
+        // when
+        int size = numbers.size();
+
+        // then
+        assertThat(size).isEqualTo(3);
     }
 
-    @Test
-    void contains() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
-    }
-
+    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 학습테스트를 구현하려한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void contains_parameterized(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+    void contains(int input) {
+        // when
+        boolean contains = numbers.contains(input);
+
+        // then
+        assertThat(contains).isTrue();
     }
 
+    @DisplayName("입력 값에 따라 결과 값이 다른 contains() 메소드에 대한 테스트도 가능하도록 구현한다.")
     @ParameterizedTest
-    @DisplayName("나는 성공도, 실패도 하나의 테스트로 만들고 싶다")
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void contains_parameterized2(int number, boolean expected) {
-        assertThat(numbers.contains(number)).isEqualTo(expected);
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void contains(int input, boolean expected) {
+        // when
+        boolean contains = numbers.contains(input);
+
+        // then
+        assertThat(contains).isEqualTo(expected);
     }
 }
