@@ -4,19 +4,19 @@ import java.math.RoundingMode;
 
 public class NumberHelper {
 
-	public Number add(Number baseNumber, Number addendNumber) {
-		return new Number(baseNumber.valueOf().add(addendNumber.valueOf()));
+	public Number add(Number addendNumber, Number augendNumber) {
+		return new Number(addendNumber.valueOf().add(augendNumber.valueOf()));
 	}
 
-	public Number subtract(Number baseNumber, Number addendNumber) {
-		return new Number(baseNumber.valueOf().subtract(addendNumber.valueOf()));
+	public Number subtract(Number minuendNumber, Number subtrahendNumber) {
+		return new Number(minuendNumber.valueOf().subtract(subtrahendNumber.valueOf()));
 	}
 
-	public Number multiply(Number baseNumber, Number addendNumber) {
-		return new Number(baseNumber.valueOf().multiply(addendNumber.valueOf()));
+	public Number multiply(Number multiplierNumber, Number multiplicandNumber) {
+		return new Number(multiplierNumber.valueOf().multiply(multiplicandNumber.valueOf()));
 	}
 
-	public Number divide(Number baseNumber, Number addendNumber) {
-		return new Number(baseNumber.valueOf().divide(addendNumber.valueOf(), RoundingMode.CEILING));
+	public Number divide(Number dividendNumber, Number divisorNumber) {
+		return new Number(dividendNumber.valueOf().divide(divisorNumber.valueOf(), RoundingMode.CEILING));
 	}
 }
