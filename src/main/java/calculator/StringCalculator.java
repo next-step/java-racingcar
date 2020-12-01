@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringCaculator {
+public class StringCalculator {
 
 	Scanner sc = new Scanner(System.in);
 
