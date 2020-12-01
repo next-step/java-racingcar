@@ -6,6 +6,10 @@ public class StringCalculator {
 
 	public static Long calculate(String numbers) {
 		ParseResult parseResult = Parser.parse(numbers);
-		throw new RuntimeException("파싱 결과 값을 가지고 리듀스 형태로 계산한다.");
+		AtomicInteger index = new AtomicInteger();
+		return parseResult.getNumbers()
+			.stream()
+			.reduce((a, b) -> parseResult.getOperators().get(index.getAndIncrement()).getOperator().applyAsLong(a, b))
+			.orElseThrow(() -> new NullPointerException(Validator.MSG_RETURN_NULL));
 	}
 }

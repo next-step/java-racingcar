@@ -17,4 +17,19 @@ public enum Operator {
 		this.keyword = keyword;
 		this.operator = operator;
 	}
+
+	public static Operator getOperator(String op) {
+		return Arrays.stream(Operator.values())
+			.filter(operator -> op.equals(operator.getKeyword()))
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException(Validator.MSG_NOT_FOUND_OPERATOR));
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public LongBinaryOperator getOperator() {
+		return operator;
+	}
 }
