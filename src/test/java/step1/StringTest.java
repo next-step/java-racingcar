@@ -7,7 +7,10 @@ import java.util.Collection;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringTest {
 	@TestFactory
@@ -25,5 +28,14 @@ public class StringTest {
 					.containsExactly("1")
 			)
 		);
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = "(1,2)")
+	@DisplayName("요구사항 2. \"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
+	void substringTest(String input) {
+		String result = input.substring(input.indexOf("(") + 1, input.indexOf(")"));
+
+		assertThat(result).isEqualTo("1,2");
 	}
 }
