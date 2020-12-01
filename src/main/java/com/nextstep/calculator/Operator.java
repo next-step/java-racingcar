@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 public enum Operator {
     ADDITION("+") {
         @Override
-        public int apply(int a, int b){
+        public int apply(int a, int b) {
             return a + b;
         }
     },
@@ -17,20 +17,18 @@ public enum Operator {
     },
     MULTIPLICATION("*") {
         @Override
-        public int apply(int a, int b){
+        public int apply(int a, int b) {
             return a * b;
         }
-
     },
     DIVISION("/") {
         @Override
-        public int apply(int a, int b){
-            if ( a % b != 0 ) {
-                throw new IllegalArgumentException( a + " can't divided into " + b );
+        public int apply(int a, int b) {
+            if (a % b != 0) {
+                throw new IllegalArgumentException(a + " can't divided into " + b);
             }
             return a / b;
         }
-
     }
     ;
 
@@ -40,7 +38,7 @@ public enum Operator {
         this.symbol = symbol;
     }
 
-    public static Operator select(String symbol){
+    public static Operator select(String symbol) {
         return Stream.of(Operator.values())
                 .filter(operator -> operator.symbol.equals(symbol))
                 .findFirst()
