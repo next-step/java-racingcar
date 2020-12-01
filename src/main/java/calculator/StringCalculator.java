@@ -83,25 +83,19 @@ public class StringCalculator {
 	}
 
 	Integer divide(Integer frontNumber, Integer rearNumber) {
-		Integer result = frontNumber / rearNumber;
-		System.out.println("나누기 결과 값");
-		System.out.println(result);
-		return result;
+		return frontNumber / rearNumber;
 	}
 
 	Integer multiply(Integer frontNumber, Integer rearNumber) {
-		Integer result = frontNumber * rearNumber;
-		return result;
+		return frontNumber * rearNumber;
 	}
 
 	Integer minus(Integer frontNumber, Integer rearNumber) {
-		Integer result = frontNumber - rearNumber;
-		return result;
+		return frontNumber - rearNumber;
 	}
 
 	Integer plus(Integer frontNumber, Integer rearNumber) {
-		Integer result = frontNumber + rearNumber;
-		return result;
+		return frontNumber + rearNumber;
 	}
 
 	void analyzeInputString(String inputString, List<String> operatorList, List<Integer> inputNumberList) {
