@@ -32,8 +32,8 @@ public class SetTest {
 
     @DisplayName("contains 메서드로 Set Collection에 해당 요소가 존재하는지 확인하는 학습 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void containsTest(Integer searchTarget) {
-        assertThat(numbers.contains(searchTarget)).isTrue();
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void containsTest(Integer searchTarget, boolean expectedResult) {
+        assertThat(numbers.contains(searchTarget)).isEqualTo(expectedResult);
     }
 }
