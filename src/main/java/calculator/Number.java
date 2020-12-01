@@ -1,15 +1,20 @@
 package calculator;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Number {
-	private final int value;
+	private final BigDecimal value;
 
-	public Number(int value) {
+	public Number(String value) {
+		this.value = new BigDecimal(value);
+	}
+
+	public Number(BigDecimal value) {
 		this.value = value;
 	}
 
-	public int getValue() {
+	public BigDecimal valueOf() {
 		return this.value;
 	}
 
@@ -18,7 +23,7 @@ public class Number {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Number number = (Number) o;
-		return value == number.value;
+		return Objects.equals(value, number.value);
 	}
 
 	@Override
