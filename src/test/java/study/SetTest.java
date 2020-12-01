@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,4 +34,13 @@ public class SetTest {
         assertThat(size).isEqualTo(expectedSize);
     }
 
+    @DisplayName("contains 메소드 정상적으로 반환하는지 확인")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void containsTest(int input) {
+
+        boolean result = numbers.contains(input);
+
+        assertThat(result).isTrue();
+    }
 }
