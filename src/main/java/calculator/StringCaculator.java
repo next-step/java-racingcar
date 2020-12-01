@@ -49,13 +49,16 @@ public class StringCaculator {
 			}
 
 		}
-		//todo 나눗셈의 경우 결과 값을 정수로 떨어지는 값으로 한정 ?
-		System.out.println("##########");
+		//todo 나눗셈의 경우 결과 값을 정수로 떨어지는 값으로 한정  -> 소숫점 제외?
+		System.out.println("사칙연산 계산 결과");
 		System.out.println(frontNumber);
 
 	}
 
-	private void validate(String inputString) {
+	void validate(String inputString) {
+		if(inputString == null ){
+			throw new IllegalArgumentException();
+		}
 		List<String> inputList = Arrays.asList(inputString.split(" "));
 		if (inputList.size() == 0) { //공백 입력 시
 			throw new IllegalArgumentException();
@@ -77,6 +80,7 @@ public class StringCaculator {
 
 	private Integer divide(Integer frontNumber, Integer rearNumber) {
 		Integer result = frontNumber / rearNumber;
+		System.out.println("나누기 값");
 		System.out.println(result);
 		return result;
 	}
