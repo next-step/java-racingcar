@@ -28,4 +28,15 @@ public class StringTest {
 
         assertThat(splitResult).containsExactly("1");
     }
+
+    @DisplayName("subString 메소드가 정상 동작하는지 확인")
+    @Test
+    void subStringTest() {
+        final String input = "(1,2)";
+        final String expected = "1,2";
+
+        String substringResult = input.substring(1, 4);
+
+        assertThat(substringResult).isEqualTo(expected);
+    }
 }
