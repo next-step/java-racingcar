@@ -7,3 +7,14 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능별 테스트 케이스
+- [x] 덧셈
+- [x] 뺄셈
+- [x] 곱셈
+- [ ] 나눗셈
+- [x] 숫자 객체 비교 기능
+- [ ] 입력 받은 문자열에서 숫자와 연산자 분리
+- [ ] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+- [ ] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
+- [ ] 사칙 연산을 모두 포함하는 기능 구현
