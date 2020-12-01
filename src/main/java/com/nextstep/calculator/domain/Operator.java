@@ -1,5 +1,7 @@
 package com.nextstep.calculator.domain;
 
+import com.nextstep.calculator.domain.exceptions.InvalidOperatorException;
+
 import java.util.Arrays;
 
 public enum Operator {
@@ -15,6 +17,6 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .filter((Operator operator) -> operator.value.equals(value))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new InvalidOperatorException("올바르지 않은 사칙연산 인자입니다."));
     }
 }
