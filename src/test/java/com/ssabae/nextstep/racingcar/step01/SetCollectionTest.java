@@ -1,4 +1,4 @@
-package com.ssabae.nextstep.racingcar;
+package com.ssabae.nextstep.racingcar.step01;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
