@@ -34,7 +34,7 @@ public enum Operator {
 
     private final String symbol;
 
-    Operator(String symbol){
+    Operator(String symbol) {
         this.symbol = symbol;
     }
 

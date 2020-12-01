@@ -6,15 +6,15 @@ import java.util.Scanner;
 public class InputReader {
     private final Scanner scanner;
 
-    public InputReader(){
+    public InputReader() {
         this(System.in);
     }
 
-    public InputReader(InputStream is){
+    public InputReader(InputStream is) {
         scanner = new Scanner(is);
     }
 
-    public String readString(){
+    public String readString() {
         return scanner.nextLine();
     }
 }

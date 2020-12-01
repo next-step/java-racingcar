@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class InputReaderTest {
     @Test
-    public void readString(){
+    public void readString() {
         String source = "abc";
         InputReader inputReader = new InputReader(new ByteArrayInputStream(source.getBytes()));
         String result = inputReader.readString();
