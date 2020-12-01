@@ -19,6 +19,10 @@ public class Number {
         }
     }
 
+    public static Number of(final int value) {
+        return new Number(value);
+    }
+
     public int getValue() {
         return this.value;
     }

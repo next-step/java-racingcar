@@ -5,10 +5,10 @@ import com.nextstep.calculator.domain.exceptions.InvalidOperatorException;
 import java.util.Arrays;
 
 public enum Operator {
-    PLUS("+", (Number first, Number second) -> first.getValue() + second.getValue()),
-    MINUS("-", (Number first, Number second) -> first.getValue() - second.getValue()),
-    DIVIDE("/", (Number first, Number second) -> first.getValue() / second.getValue()),
-    MULTIPLY("*", (Number first, Number second) -> first.getValue() * second.getValue());
+    PLUS("+", (Number first, Number second) -> Number.of(first.getValue() + second.getValue())),
+    MINUS("-", (Number first, Number second) -> Number.of(first.getValue() - second.getValue())),
+    DIVIDE("/", (Number first, Number second) -> Number.of(first.getValue() / second.getValue())),
+    MULTIPLY("*", (Number first, Number second) -> Number.of(first.getValue() * second.getValue()));
 
     private final String value;
     private final Calculate calculate;
@@ -25,7 +25,7 @@ public enum Operator {
                 .orElseThrow(() -> new InvalidOperatorException("올바르지 않은 사칙연산 인자입니다."));
     }
 
-    public int operate(Number fist, Number second) {
+    public Number operate(Number fist, Number second) {
         return calculate.calculate(fist, second);
     }
 }

@@ -39,7 +39,7 @@ class OperatorTest {
     @DisplayName("두개의 Number를 전달받아서 사칙연산에 맞는 계산을 수행할 수 있다.")
     @ParameterizedTest
     @MethodSource("operateTestSource")
-    void operateTest(Operator operator, int expected) {
+    void operateTest(Operator operator, Number expected) {
         Number one = Number.of("1");
         Number two = Number.of("2");
 
@@ -47,10 +47,10 @@ class OperatorTest {
     }
     public static Stream<Arguments> operateTestSource() {
         return Stream.of(
-                Arguments.of(Operator.PLUS, 3),
-                Arguments.of(Operator.MINUS, -1),
-                Arguments.of(Operator.DIVIDE, 0),
-                Arguments.of(Operator.MULTIPLY, 2)
+                Arguments.of(Operator.PLUS, Number.of("3")),
+                Arguments.of(Operator.MINUS, Number.of("-1")),
+                Arguments.of(Operator.DIVIDE, Number.of("0")),
+                Arguments.of(Operator.MULTIPLY, Number.of("2"))
         );
     }
 
