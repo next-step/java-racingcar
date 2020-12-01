@@ -32,8 +32,8 @@ public class Cars {
         return result;
     }
 
-    public void tryToMove(int randomNumber) {
-        cars.forEach(c -> c.tryToMove(randomNumber));
+    public void tryToMove() {
+        cars.forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
     }
 
     public RaceRecord saveRecord(int round) {

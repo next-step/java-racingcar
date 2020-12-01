@@ -29,7 +29,7 @@ public class RacingGame {
     }
 
     private void playSingleRound(int round) {
-        cars.tryToMove(RandomNumberUtil.getRandomNumber());
+        cars.tryToMove();
         raceRecords.saveSingleRoundRecord(round, cars);
     }
 
