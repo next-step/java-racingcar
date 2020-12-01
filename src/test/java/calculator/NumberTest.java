@@ -42,4 +42,12 @@ class NumberTest {
 	void shouldAbleToEachNumberObjectMultiply() {
 		assertThat(numberHelper.multiply(baseNumber, addendNumber)).isEqualTo(new Number(3));
 	}
+
+	@DisplayName("숫자 객체간 나눗셈을 할수있어야한다.")
+	@Test
+	void shouldAbleToEachNumberObjectDivide() {
+		baseNumber = new Number(10);
+		addendNumber = new Number(5);
+		assertThat(numberHelper.divide(baseNumber, addendNumber)).isEqualTo(new Number(1));
+	}
 }
