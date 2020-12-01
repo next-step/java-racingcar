@@ -32,9 +32,16 @@ class StringCalculatorTest {
         assertThat(calculate).isEqualTo(10);
     }
 
+    @Test
+    @DisplayName("계산기 계산 테스트 (음수)")
+    void calculateWithMinusValueTest() {
+        int calculate = stringCalculator.calculate("-2 + 3 * 4 / 2");
+        assertThat(calculate).isEqualTo(2);
+    }
+
     @ParameterizedTest(name = "{displayName}[{index}] - \"{arguments}\"")
     @DisplayName("계산기 허용되지 않는 문자열 테스트")
-    @ValueSource(strings = {"2 + 3 * 4 /", "", " ", "1 ! 2"})
+    @ValueSource(strings = {"2 + 3 * 4 /", "", " ", "1 ! 2", "1 ! 2"})
     void calculateInvalidInputTest(String value) {
         assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(value));
     }
