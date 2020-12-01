@@ -35,4 +35,32 @@ class OperatorTest {
     void createFailTest(String invalidValue) {
         assertThatThrownBy(() -> Operator.of(invalidValue)).isInstanceOf(InvalidOperatorException.class);
     }
+
+    @DisplayName("두개의 Number를 전달받아서 사칙연산에 맞는 계산을 수행할 수 있다.")
+    @ParameterizedTest
+    @MethodSource("operateTestSource")
+    void operateTest(Operator operator, int expected) {
+        Number one = Number.of("1");
+        Number two = Number.of("2");
+
+        assertThat(operator.operate(one, two)).isEqualTo(expected);
+    }
+    public static Stream<Arguments> operateTestSource() {
+        return Stream.of(
+                Arguments.of(Operator.PLUS, 3),
+                Arguments.of(Operator.MINUS, -1),
+                Arguments.of(Operator.DIVIDE, 0),
+                Arguments.of(Operator.MULTIPLY, 2)
+        );
+    }
+
+    @DisplayName("0으로 나눌 경우 예외가 발생한다.")
+    @Test
+    void operateFailTest() {
+        Number one = Number.of("1");
+        Number zero = Number.of("0");
+
+        assertThatThrownBy(() -> Operator.DIVIDE.operate(one, zero))
+                .isInstanceOf(ArithmeticException.class);
+    }
 }

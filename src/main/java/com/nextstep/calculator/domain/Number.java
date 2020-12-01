@@ -19,6 +19,10 @@ public class Number {
         }
     }
 
+    public int getValue() {
+        return this.value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
