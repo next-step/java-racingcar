@@ -17,6 +17,7 @@ public class Parser {
 	private static List<Long> parseNumbers(String[] splits) {
 		List<Long> numbers = new ArrayList<>();
 		for (int i = 0; i < splits.length; i += 2) {
+			Validator.validateNumber(splits[i]);
 			numbers.add(Long.parseLong(splits[i]));
 		}
 		return numbers;
