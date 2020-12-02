@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExpressionTest {
 
@@ -36,6 +37,23 @@ public class ExpressionTest {
                 .isThrownBy(() -> {
                     Expression expression = new Expression(input);
                 }).withMessageMatching("input data is empty");
+    }
+
+    @Test
+    @DisplayName("of method test")
+    void ofTest() {
+        Expression expression = new Expression("1 + 2");
+        assertAll("expression",
+                () -> assertEquals(expression.of(0), "1"),
+                () -> assertEquals(expression.of(1), "+"),
+                () -> assertEquals(expression.of(2), "2"));
+    }
+
+    @Test
+    @DisplayName("식 길이 측정 test")
+    void lengthTest() {
+        Expression expression = new Expression("1 + 2");
+        assertThat(expression.length()).isEqualTo(3);
     }
 
 }
