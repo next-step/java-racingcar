@@ -24,4 +24,18 @@ public class StringTest {
 		assertThat(splitStringArray).containsExactly("1");
 	}
 
+	@Test
+	void given_comma_string_with_bracket_when_substring_then_return_string_without_bracket() {
+		final String openBracket = "(";
+		final String closeBracket = ")";
+		final String commaSeparatedNumbersWithBracket = "(1,2)";
+		final String expectedString = "1,2";
+
+		final String commaSeparatedNumbersWithoutBracket = commaSeparatedNumbersWithBracket
+			.substring(commaSeparatedNumbersWithBracket.indexOf(openBracket) + 1,
+				commaSeparatedNumbersWithBracket.indexOf(closeBracket));
+
+		assertThat(commaSeparatedNumbersWithoutBracket).isEqualTo(expectedString);
+	}
+
 }
