@@ -10,7 +10,7 @@ class ParserTest {
 
 	@DisplayName("parse 메서드에 정상적인(Validator를 통과하는) 값을 전달하면 ParseResult 객체를 반환한다.")
 	@ParameterizedTest
-	@ValueSource(strings = {"2 + 3 * 4 / 2", "2 + 3 * 4 + 5 - 3 * 2", "3 + 4"})
+	@ValueSource(strings = {"2 + 3 * 4 / 2", "2 + 3 * 4 + 5 - 3 * 2", "-3 + 4", "-3 + 4 * -7"})
 	void parse(String value) {
 
 		//when

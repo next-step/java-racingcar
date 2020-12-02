@@ -15,7 +15,7 @@ class OperatorTest {
 
 	@DisplayName("Operator PLUS 항목의 operator필드는 덧셈기능을 하는 인터페이스 구현체다.")
 	@ParameterizedTest
-	@CsvSource(value = {"1:2:3", "3:5:8", "7:9:16"}, delimiter = ':')
+	@CsvSource(value = {"1:2:3", "-7:9:2", "-3:-5:-8"}, delimiter = ':')
 	public void operatorPlus(long value1, long value2, long expected) {
 
 		//when
@@ -27,7 +27,7 @@ class OperatorTest {
 
 	@DisplayName("Operator MINUS 항목의 operator필드는 뺄셈기능을 하는 인터페이스 구현체다.")
 	@ParameterizedTest
-	@CsvSource(value = {"3:2:1", "5:3:2", "9:6:3"}, delimiter = ':')
+	@CsvSource(value = {"3:2:1", "5:-3:8", "-9:-6:-3"}, delimiter = ':')
 	public void operatorMinus(long value1, long value2, long expected) {
 
 		//when
@@ -39,7 +39,7 @@ class OperatorTest {
 
 	@DisplayName("Operator MULTIPLY 항목의 operator필드는 곱셈기능을 하는 인터페이스 구현체다.")
 	@ParameterizedTest
-	@CsvSource(value = {"3:2:6", "5:3:15", "9:6:54"}, delimiter = ':')
+	@CsvSource(value = {"3:2:6", "5:-3:-15", "-9:-6:54"}, delimiter = ':')
 	public void operatorMultiply(long value1, long value2, long expected) {
 
 		//when
@@ -51,7 +51,7 @@ class OperatorTest {
 
 	@DisplayName("Operator DIVIDE 항목의 operator필드는 나눗셈기능을 하는 인터페이스 구현체다.")
 	@ParameterizedTest
-	@CsvSource(value = {"15:3:5", "12:4:3", "25:5:5"}, delimiter = ':')
+	@CsvSource(value = {"15:3:5", "12:-4:-3", "-25:-5:5"}, delimiter = ':')
 	public void operatorDivde(long value1, long value2, long expected) {
 
 		//when
