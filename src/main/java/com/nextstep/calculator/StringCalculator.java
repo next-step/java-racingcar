@@ -31,8 +31,9 @@ public class StringCalculator {
     }
 
     private Accumulator calculate(String input) {
+        final int BEGIN_IDX = 0;
         String[] temp = input.split(" ");
-        int begin = Integer.parseInt(temp[0]);
+        int begin = Integer.parseInt(temp[BEGIN_IDX]);
         Accumulator accumulator = new Accumulator(begin);
         for (int i = 1 ; i < temp.length ; i = i + 2) {
             String symbol = temp[i];
