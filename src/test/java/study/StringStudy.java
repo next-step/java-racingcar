@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -27,6 +29,14 @@ public class StringStudy {
         String str = "(1,2)";
         String actual = str.substring(1, str.length() - 1);
         assertThat(actual).isEqualTo("1,2");
+    }
+
+    @DisplayName("charAt 학습 테스트")
+    @ParameterizedTest
+    @CsvSource({"0,a", "1,b", "2,c"})
+    public void charAt(int index, char ch) {
+        String str = "abc";
+        assertThat(str.charAt(index)).isEqualTo(ch);
     }
 
 }
