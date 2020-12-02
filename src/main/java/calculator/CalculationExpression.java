@@ -8,43 +8,18 @@ import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class CalculationExpression {
+	private final String SEPARATOR_CALCULATION_EXPRESSION = " ";
 	private final Deque<NumberFactor> numbers;
 	private final Queue<OperatorFactor> operators;
 
-	public CalculationExpression(String paramExpression) {
-		List<NumberFactor> numberFactors = getNumberFactors(paramExpression);
-		List<OperatorFactor> operatorFactors = getOperatorFactors(paramExpression);
+	public CalculationExpression(String inputExpression) {
+		List<NumberFactor> numberFactors = getNumberFactors(inputExpression);
+		List<OperatorFactor> operatorFactors = getOperatorFactors(inputExpression);
 
-		checkInputFactorOverflow(numberFactors.size(), operatorFactors.size());
-		checkCalculationExpressionFormat(paramExpression);
+		operatorNotGreaterNumberFactor(operatorFactors.size(), numberFactors.size());
+		checkCalculationExpressionFormat(inputExpression);
 		this.numbers = new LinkedList<>(numberFactors);
 		this.operators = new LinkedList<>(operatorFactors);
-	}
-
-	private void checkCalculationExpressionFormat(String paramExpression) {
-		if (!CalculationExpressionHelper.isCalculationExpression(paramExpression)) {
-			throw new IllegalCalculationFormatException();
-		}
-	}
-
-	private void checkInputFactorOverflow(int numbers, int operators) {
-		if (operators >= numbers) {
-			throw new InputFactorOverflowException();
-		}
-	}
-
-	private List<OperatorFactor> getOperatorFactors(String paramExpression) {
-		return Arrays.stream(paramExpression.split(" "))
-			.filter(OperatorFactorHelper::isOperatorFactor)
-			.map(OperatorFactor::new)
-			.collect(Collectors.toList());
-	}
-
-	private List<NumberFactor> getNumberFactors(String paramExpression) {
-		return Arrays.stream(paramExpression.split(" "))
-			.filter(NumberFactorHelper::isNumeric)
-			.map(NumberFactor::new)
-			.collect(Collectors.toList());
 	}
 
 	public void executeAll() {
@@ -55,6 +30,36 @@ public class CalculationExpression {
 		executeAll();
 	}
 
+	public NumberFactor getResult() {
+		return numbers.pollFirst();
+	}
+
+	private void checkCalculationExpressionFormat(String inputExpression) {
+		if (!CalculationExpressionHelper.isCalculationExpression(inputExpression)) {
+			throw new IllegalCalculationFormatException();
+		}
+	}
+
+	private void operatorNotGreaterNumberFactor(int operators, int numbers) {
+		if (operators >= numbers) {
+			throw new InputFactorOverflowException();
+		}
+	}
+
+	private List<OperatorFactor> getOperatorFactors(String inputExpression) {
+		return Arrays.stream(inputExpression.split(SEPARATOR_CALCULATION_EXPRESSION))
+			.filter(OperatorFactorHelper::isOperatorFactor)
+			.map(OperatorFactor::new)
+			.collect(Collectors.toList());
+	}
+
+	private List<NumberFactor> getNumberFactors(String inputExpression) {
+		return Arrays.stream(inputExpression.split(SEPARATOR_CALCULATION_EXPRESSION))
+			.filter(NumberFactorHelper::isNumeric)
+			.map(NumberFactor::new)
+			.collect(Collectors.toList());
+	}
+
 	private void executeNextCalculation() {
 		NumberFactor baseNumber = numbers.pollFirst();
 		NumberFactor targetNumber = numbers.pollFirst();
@@ -63,9 +68,4 @@ public class CalculationExpression {
 			numbers.addFirst(operator.valueOfFactor().calculate(baseNumber, targetNumber));
 		}
 	}
-
-	public NumberFactor getResult() {
-		return numbers.pollFirst();
-	}
-
 }

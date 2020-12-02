@@ -1,6 +1,5 @@
 package calculator;
 
-import com.sun.tools.javac.comp.Check;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -26,6 +25,7 @@ class CalculationExpressionTest {
 		return Stream.of(
 			Arguments.of("5 + 5 + 5 + 90", new NumberFactor("105")),
 			Arguments.of("1234 + 90 / 123 + 84", new NumberFactor("94")),
+			Arguments.of("10 / 3", new NumberFactor("3")),
 			Arguments.of("5 / 1", new NumberFactor("5")),
 			Arguments.of("5 * 10", new NumberFactor("50"))
 		);
@@ -44,9 +44,15 @@ class CalculationExpressionTest {
 	public static Stream<Arguments> ExactedException() {
 		return Stream.of(
 			Arguments.of("1234 + 90 / 123 + 1.5", "For input string: ", IllegalArgumentException.class),
-			Arguments.of("5 5 5 90 * + +", "calculation expression format error", IllegalArgumentException.class),
-			Arguments.of("1234 + a / 123 + 84 +", "NumberFactor must be more than OperatorFactor in calculation expression", IllegalArgumentException.class),
-			Arguments.of("5 / 0", "/ by zero", ArithmeticException.class)
+			Arguments.of("4000000000 - 2000000000", "For input string: ", NumberFormatException.class),
+			Arguments.of("5 / 0", "/ by zero", ArithmeticException.class),
+			Arguments.of("2000000000 + 2000000000", "integer overflow", ArithmeticException.class),
+			Arguments.of("2000000000 * 2000000000", "integer overflow", ArithmeticException.class),
+			Arguments.of("5 5 5 90 * + +", "The calculation expression does not match the format", IllegalArgumentException.class),
+			Arguments.of("1 + 1 - -1", "The calculation expression does not match the format", IllegalArgumentException.class),
+			Arguments.of(" 1 + 90 / 123 + 84", "The calculation expression does not match the format", IllegalArgumentException.class),
+			Arguments.of("  + 90 / 123 + 84", "OperatorFactor cannot be greater than NumberFactor", IllegalArgumentException.class),
+			Arguments.of("1234 + a / 123 + 84 +", "OperatorFactor cannot be greater than NumberFactor", IllegalArgumentException.class)
 		);
 	}
 }

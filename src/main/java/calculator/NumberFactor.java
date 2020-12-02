@@ -31,8 +31,6 @@ public class NumberFactor implements InputFactor<Integer> {
 			return false;
 		}
 
-		NumberFactor numberFactor = (NumberFactor) obj;
-
-		return numberFactor.valueOfFactor().equals(((NumberFactor) obj).valueOfFactor());
+		return this.valueOfFactor().equals(((NumberFactor) obj).valueOfFactor());
 	}
 }

@@ -14,17 +14,9 @@ public class NumberFactorHelper {
 		return true;
 	}
 
-	public static boolean isNumberFactor(String value) {
-		try {
-			Integer.parseInt(value);
-		} catch (NumberFormatException numberFormatException) {
-			return false;
-		}
-		return true;
-	}
-
 	public static NumberFactor add(InputFactor<Integer> addendNumber, InputFactor<Integer> augendNumber) {
-		return wrapperNumberFactor(addendNumber.valueOfFactor() + augendNumber.valueOfFactor());
+
+		return wrapperNumberFactor(Math.addExact(addendNumber.valueOfFactor(), augendNumber.valueOfFactor()));
 	}
 
 	public static NumberFactor subtract(InputFactor<Integer> minuendNumber, InputFactor<Integer> subtrahendNumber) {

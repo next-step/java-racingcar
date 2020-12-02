@@ -1,7 +1,7 @@
 package calculator;
 
 public class InputFactorOverflowException extends IllegalArgumentException {
-	private final String overFlowMessage = "NumberFactor must be more than OperatorFactor in calculation expression";
+	private final String overFlowMessage = "OperatorFactor cannot be greater than NumberFactor";
 
 	@Override
 	public String getMessage() {
