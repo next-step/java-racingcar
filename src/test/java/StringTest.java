@@ -1,5 +1,6 @@
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StringTest {
@@ -36,6 +37,21 @@ public class StringTest {
 				commaSeparatedNumbersWithBracket.indexOf(closeBracket));
 
 		assertThat(commaSeparatedNumbersWithoutBracket).isEqualTo(expectedString);
+	}
+
+	@DisplayName("String charAt()이 특정 위치의 문자를 가져오고 위치가 인덱스 범위를 벗어날 경우 익셉션 발생 테스트")
+	@Test
+	void given_string_when_chatAt_with_index_then_return_char_at_index() {
+		final String givenString = "abc";
+		final int indexA = 0;
+		final int exceptionIndex = 9;
+
+		assertThat(givenString.charAt(indexA)).isEqualTo('a');
+
+		assertThatThrownBy(() -> givenString.charAt(exceptionIndex))
+			.isInstanceOf(StringIndexOutOfBoundsException.class)
+			.hasMessage("String index out of range: %s", exceptionIndex);
+
 	}
 
 }
