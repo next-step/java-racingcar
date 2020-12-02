@@ -7,34 +7,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
-    private String num1 = "20";
-    private String num2 = "10";
+    private Expression expression;
+    private Calculator calculator;
 
     @Test
     @DisplayName("덧셈 test")
     void additionTest() {
-        String result = Calculator.calculate("+", num1, num2);
+        expression = new Expression("20 + 10");
+        calculator = new Calculator(expression);
+        String result = calculator.calculate();
         assertThat(result).isEqualTo("30");
     }
 
     @Test
     @DisplayName("뺄셈 test")
     void subtractionTest() {
-        String result = Calculator.calculate("-", num1, num2);
+        expression = new Expression("20 - 10");
+        calculator = new Calculator(expression);
+        String result = calculator.calculate();
         assertThat(result).isEqualTo("10");
     }
 
     @Test
     @DisplayName("곱셈 test")
     void multiplicationTest() {
-        String result = Calculator.calculate("*", num1, num2);
+        expression = new Expression("20 * 10");
+        calculator = new Calculator(expression);
+        String result = calculator.calculate();
         assertThat(result).isEqualTo("200");
     }
 
     @Test
     @DisplayName("나눗셈 test")
     void divisionTest() {
-        String result = Calculator.calculate("/", num1, num2);
+        expression = new Expression("20 / 10");
+        calculator = new Calculator(expression);
+        String result = calculator.calculate();
         assertThat(result).isEqualTo("2");
     }
 
@@ -43,7 +51,18 @@ public class CalculatorTest {
     void illegalOperatorTest() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    String result = Calculator.calculate("?", num1, num2);
+                    expression = new Expression("20 ? 10");
+                    calculator = new Calculator(expression);
+                    String result = calculator.calculate();
                 }).withMessageMatching("\\S is not operator");
+    }
+
+    @Test
+    @DisplayName("사칙연산 모두포함 결과 test")
+    void ResultTest() {
+        expression = new Expression("20 + 10 * 2 - 10 / 5");
+        calculator = new Calculator(expression);
+        String result = calculator.calculate();
+        assertThat(result).isEqualTo("10");
     }
 }
