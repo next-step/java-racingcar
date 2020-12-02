@@ -19,6 +19,10 @@ class Accumulator {
 		this.result = operator.operate(this.result, operand);
 	}
 
+	void applyOperatingEntry(OperatingEntry operatingEntry) {
+		applyOperator(operatingEntry.getFourRuleOperator(), operatingEntry.getOperand());
+	}
+
 	Long getResult() {
 		return result;
 	}

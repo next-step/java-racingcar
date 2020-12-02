@@ -4,6 +4,8 @@ import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -47,5 +49,20 @@ class AccumulatorTest {
 
 		// then
 		assertThat(result).isEqualTo(INIT_VALUE + 3L + 4L);
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"PLUS,7,12", "MINUS,5,0"})
+	@DisplayName("OperatingEntry 를 이용한 누산 테스트")
+	void applyOperatorEntry(FourRuleOperator fourRuleOperator, Long operand, Long expected) {
+		// given
+		OperatingEntry operatingEntry = OperatingEntry.of(fourRuleOperator, operand);
+
+		// when
+		accumulator.applyOperatingEntry(operatingEntry);
+		Long result = accumulator.getResult();
+
+		// then
+		assertThat(result).isEqualTo(expected);
 	}
 }
