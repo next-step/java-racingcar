@@ -67,11 +67,9 @@ public class CalculationExpression {
 	}
 
 	private void executeNextCalculation() {
-		NumberFactor baseNumber = numbers.pollFirst();
-		NumberFactor targetNumber = numbers.pollFirst();
-		OperatorFactor operator = operators.poll();
-		if (operator != null) {
-			numbers.addFirst(operator.valueOfFactor().calculate(baseNumber, targetNumber));
-		}
+		NumberFactor baseNumber = numbers.removeFirst();
+		NumberFactor targetNumber = numbers.removeFirst();
+		OperatorFactor operator = operators.remove();
+		numbers.addFirst(operator.valueOfFactor().calculate(baseNumber, targetNumber));
 	}
 }
