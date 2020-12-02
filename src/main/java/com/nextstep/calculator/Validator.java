@@ -24,15 +24,15 @@ public class Validator {
     }
 
     private void checkNumber(String str) {
-        final String REGEX = "\\d";
-        if (!str.matches(REGEX)) {
+        final String regex = "\\d";
+        if (!str.matches(regex)) {
             throw new IllegalArgumentException(str + " is not number");
         }
     }
 
     private void checkOperator(String str) {
-        final String REGEX = "[+\\-*/]";
-        if (!str.matches(REGEX)) {
+        final String regex = "[+\\-*/]";
+        if (!str.matches(regex)) {
             throw new IllegalArgumentException(str + " is not valid operator. ( +, -, *, / )");
         }
     }
