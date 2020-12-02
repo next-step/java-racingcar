@@ -21,4 +21,12 @@ public class StringStudy {
         assertThat(actual).containsExactly("1");
     }
 
+    @DisplayName("substring 학습 테스트")
+    @Test
+    public void substring() {
+        String str = "(1,2)";
+        String actual = str.substring(1, str.length() - 1);
+        assertThat(actual).isEqualTo("1,2");
+    }
+
 }
