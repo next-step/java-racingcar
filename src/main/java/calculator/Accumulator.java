@@ -4,8 +4,15 @@ class Accumulator {
 
 	private Long result;
 
-	Accumulator(Long initValue) {
+	private Accumulator(Long initValue) {
 		this.result = initValue;
+	}
+
+	static Accumulator of(Long initValue) {
+		if (initValue == null) {
+			throw new IllegalArgumentException("initValue must be nonNull");
+		}
+		return new Accumulator(initValue);
 	}
 
 	void applyOperator(Operator operator, Long operand) {

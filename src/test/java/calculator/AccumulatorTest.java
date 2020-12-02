@@ -15,7 +15,7 @@ class AccumulatorTest {
 
 	@BeforeEach
 	void setUp() {
-		accumulator = new Accumulator(INIT_VALUE);
+		accumulator = Accumulator.of(INIT_VALUE);
 	}
 
 	@Test
