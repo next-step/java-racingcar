@@ -8,6 +8,13 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'calculator.CalculatorApplication'
+    }
+    baseName 'step1-calculator'
+}
+
 dependencies {
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')

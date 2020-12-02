@@ -23,3 +23,14 @@
 - [x] 입력 받은 문자열에서 숫자와 연산자 분리
 - [x] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 - [x] 사칙 연산을 모두 포함하는 기능 구현
+
+
+## Build
+```
+./gradlew build
+```
+
+## Run
+```
+java -jar build/libs/step1-calculator-1.0.0.jar
+```

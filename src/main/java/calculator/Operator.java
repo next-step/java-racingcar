@@ -43,14 +43,14 @@ public enum Operator {
 
 	public static Operator of(String symbol) {
 		return Stream.of(Operator.values())
-			.filter(e -> e.getSymbol().equals(symbol))
+			.filter(operator -> operator.getSymbol().equals(symbol))
 			.findFirst()
 			.orElseThrow(IllegalArgumentException::new);
 	}
 
 	public static boolean isContainsMathOperator(String symbol) {
 		return Stream.of(Operator.values())
-			.anyMatch(e -> e.getSymbol().equals(symbol));
+			.anyMatch(operator -> operator.getSymbol().equals(symbol));
 	}
 
 	abstract NumberFactor calculate(InputFactor<Integer> base, InputFactor<Integer> target);
