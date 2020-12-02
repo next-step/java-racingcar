@@ -19,7 +19,7 @@ class OperatorTest {
 	public void operatorPlus(long value1, long value2, long expected) {
 
 		//when
-		long result = Operator.PLUS.getOperator().applyAsLong(value1, value2);
+		long result = Operator.PLUS.doOperator(value1, value2);
 
 		//then
 		then(result).isEqualTo(expected);
@@ -31,7 +31,7 @@ class OperatorTest {
 	public void operatorMinus(long value1, long value2, long expected) {
 
 		//when
-		long result = Operator.MINUS.getOperator().applyAsLong(value1, value2);
+		long result = Operator.MINUS.doOperator(value1, value2);
 
 		//then
 		then(result).isEqualTo(expected);
@@ -43,7 +43,7 @@ class OperatorTest {
 	public void operatorMultiply(long value1, long value2, long expected) {
 
 		//when
-		long result = Operator.MULTIPLY.getOperator().applyAsLong(value1, value2);
+		long result = Operator.MULTIPLY.doOperator(value1, value2);
 
 		//then
 		then(result).isEqualTo(expected);
@@ -55,7 +55,7 @@ class OperatorTest {
 	public void operatorDivde(long value1, long value2, long expected) {
 
 		//when
-		long result = Operator.DIVIDE.getOperator().applyAsLong(value1, value2);
+		long result = Operator.DIVIDE.doOperator(value1, value2);
 
 		//then
 		then(result).isEqualTo(expected);
