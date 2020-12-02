@@ -25,7 +25,7 @@ public enum Operator {
                 .orElseThrow(() -> new InvalidOperatorException("올바르지 않은 사칙연산 인자입니다."));
     }
 
-    public Number operate(Number fist, Number second) {
-        return operatorAction.act(fist, second);
+    public Number operate(Number first, Number second) {
+        return operatorAction.act(first, second);
     }
 }
