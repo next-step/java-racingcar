@@ -16,19 +16,22 @@ public class RacingCar {
 	public void main() {
 		InputView inputView = new InputView();
 		inputView.inputUI();
-
-		List<Car> carList = createRacingCar(inputView.getPlayCarCount());
-
 		ResultView resultView = new ResultView();
-		for (int i = 0; i < inputView.getPlayCount(); i++) {
-			playRacing(carList);
 
+		playRacingCar(inputView.getPlayCarCount(), inputView.getPlayCount(), resultView);
+
+	}
+
+	void playRacingCar(int playCarCount, int playCount, ResultView resultView) {
+		List<Car> carList = createRacingCar(playCarCount);
+
+		for (int i = 0; i < playCount; i++) {
+			drive(carList);
 			resultView.printResult(carList);
-
 		}
 	}
 
-	private void playRacing(List<Car> carList) {
+	private void drive(List<Car> carList) {
 		for (int i = 0; i < carList.size(); i++) {
 			int result = random.nextInt(10);
 			if (result >= 4) {
