@@ -27,7 +27,7 @@ public enum Operator {
         return Stream.of(Operator.values())
                 .filter(operator -> operator.symbol.equals(symbol))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException(symbol + " is not valid operator ( +, -, *, / )"));
     }
 
     public int apply(int a, int b) {
