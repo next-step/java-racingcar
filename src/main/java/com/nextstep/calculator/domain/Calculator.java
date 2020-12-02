@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
+    private static final int FIRST_NUMBER_INDEX = 0;
+    private static final int SECOND_NUMBER_INDEX = 1;
+    private static final int NEXT_CALCULATE_TARGET_INDEX = 2;
+
     private List<Operator> operators = new ArrayList<>();
     private List<Number> numbers = new ArrayList<>();
 
@@ -18,15 +22,14 @@ public class Calculator {
 
     public Number calculate() {
         operators.forEach(operator -> {
-            Number number = operator.operate(numbers.get(0), numbers.get(1));
+            Number number = operator.operate(numbers.get(FIRST_NUMBER_INDEX), numbers.get(SECOND_NUMBER_INDEX));
 
-            numbers.remove(0);
-            numbers.remove(0);
+            numbers = numbers.subList(NEXT_CALCULATE_TARGET_INDEX, numbers.size());
 
-            numbers.add(0, number);
+            numbers.add(FIRST_NUMBER_INDEX, number);
         });
 
-        return numbers.get(0);
+        return numbers.get(FIRST_NUMBER_INDEX);
     }
 
     private void validate(List<Operator> operators, List<Number> numbers) {
