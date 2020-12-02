@@ -20,7 +20,7 @@ class AccumulatorTest {
 
 	@Test
 	@DisplayName("연산자가 적용되는지 확인해보는 테스트")
-	void applyOperator_toZero() {
+	void applyOperator_expectException() {
 		// given
 		Operator unsupportedOperator = (firstOperand, secondOperand) -> {
 			throw new UnsupportedOperationException();
