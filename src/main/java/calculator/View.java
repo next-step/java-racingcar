@@ -11,7 +11,7 @@ public class View {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static String input() {
-		return scanner.next();
+		return scanner.nextLine();
 	}
 
 	public static void printResult(String arg) {

@@ -7,6 +7,7 @@ package calculator;
  **/
 public class CalculatorApplication {
 	public static void main(String[] args) {
-		View.input();
+		Calculator calculator = new Calculator();
+		calculator.calculate(View.input());
 	}
 }
