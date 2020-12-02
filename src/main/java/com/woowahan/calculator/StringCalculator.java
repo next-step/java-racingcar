@@ -7,9 +7,12 @@ public class StringCalculator {
 	public static Long calculate(String numbers) {
 		ParseResult parseResult = Parser.parse(numbers);
 		AtomicInteger index = new AtomicInteger();
-		return parseResult.getNumbers()
+		return parseResult
+			.getNumbers()
 			.stream()
-			.reduce((a, b) -> parseResult.getOperators().get(index.getAndIncrement()).getOperator().applyAsLong(a, b))
+			.reduce((a, b) -> parseResult.getOperators()
+				.get(index.getAndIncrement())
+				.doOperator(a, b))
 			.orElseThrow(() -> new NullPointerException(Validator.MSG_RETURN_NULL));
 	}
 }

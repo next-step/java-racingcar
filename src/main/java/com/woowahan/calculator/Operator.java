@@ -25,6 +25,10 @@ public enum Operator {
 			.orElseThrow(() -> new IllegalArgumentException(Validator.MSG_NOT_FOUND_OPERATOR));
 	}
 
+	public Long doOperator(long a, long b){
+		return this.operator.applyAsLong(a, b);
+	}
+
 	public String getKeyword() {
 		return keyword;
 	}
