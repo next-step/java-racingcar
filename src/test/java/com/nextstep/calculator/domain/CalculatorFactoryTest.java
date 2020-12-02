@@ -2,6 +2,7 @@ package com.nextstep.calculator.domain;
 
 import com.nextstep.calculator.domain.exceptions.EmptyFormulaException;
 import com.nextstep.calculator.domain.exceptions.InvalidCalculatorFormulaException;
+import com.nextstep.calculator.domain.exceptions.InvalidNumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
