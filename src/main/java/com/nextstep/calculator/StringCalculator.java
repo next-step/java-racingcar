@@ -9,24 +9,25 @@ public class StringCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        new StringCalculator(input).run();
+        StringCalculator stringCalculator = new StringCalculator(input);
+        try {
+            int result = stringCalculator.calculate();
+            System.out.println(result);
+        } catch ( IllegalArgumentException e ) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public StringCalculator(String input) {
         this.input = input;
     }
 
-    public void run() {
-        try {
-            validator.validate(input);
-            Accumulator accumulator = calculate(input);
-            System.out.println(accumulator.getValue());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+    public int calculate() {
+        validator.validate(input);
+        return calculate(input);
     }
 
-    private Accumulator calculate(String input) {
+    private int calculate(String input) {
         final int beginIdx = 0;
         String[] temp = input.split(" ");
         int begin = Integer.parseInt(temp[beginIdx]);
@@ -36,6 +37,6 @@ public class StringCalculator {
             int number = Integer.parseInt(temp[i+1]);
             accumulator.calculate(symbol, number);
         }
-        return accumulator;
+        return accumulator.getValue();
     }
 }
