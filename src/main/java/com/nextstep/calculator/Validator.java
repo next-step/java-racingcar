@@ -24,7 +24,7 @@ public class Validator {
     }
 
     private void checkNumber(String str) {
-        final String regex = "\\d";
+        final String regex = "\\d+";
         if (!str.matches(regex)) {
             throw new IllegalArgumentException(str + " is not number");
         }
