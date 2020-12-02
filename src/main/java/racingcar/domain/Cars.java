@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.util.RandomNumberUtil;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,8 +30,8 @@ public class Cars {
         return result;
     }
 
-    public void tryToMove() {
-        cars.forEach(c -> c.tryToMove(RandomNumberUtil.getRandomNumber()));
+    public void tryToMove(MoveRule moveRule) {
+        cars.forEach(c -> c.tryToMove(moveRule));
     }
 
     public RaceRecord saveRecord(int round) {

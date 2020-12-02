@@ -8,14 +8,16 @@ public class RacingGame {
     private final int rounds;
     private final Cars cars;
     private final RaceRecords raceRecords;
+    private final MoveRule moveRule;
 
-    private RacingGame(Cars cars, int rounds) {
+    private RacingGame(Cars cars, int rounds, MoveRule moveRule) {
         this.cars = cars;
         this.rounds = rounds;
         this.raceRecords = new RaceRecords();
+        this.moveRule = moveRule;
     }
-    public static RacingGame newRacingGame(Cars cars, int rounds) {
-        return new RacingGame(cars, rounds);
+    public static RacingGame newRacingGame(Cars cars, int rounds, MoveRule moveRule) {
+        return new RacingGame(cars, rounds, moveRule);
     }
 
     public RaceRecords getRaceRecords() {
@@ -29,7 +31,7 @@ public class RacingGame {
     }
 
     private void playSingleRound(int round) {
-        cars.tryToMove();
+        cars.tryToMove(moveRule);
         raceRecords.saveSingleRoundRecord(round, cars);
     }
 

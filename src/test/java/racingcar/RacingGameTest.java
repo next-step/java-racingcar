@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Cars;
+import racingcar.domain.MoveRule;
 import racingcar.domain.RacingGame;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class RacingGameTest {
         carName.add("car3");
         Cars cars = new Cars(carName);
 
-        racingGame = RacingGame.newRacingGame(cars, 3);
+        racingGame = RacingGame.newRacingGame(cars, 3, new MoveRule());
     }
 
     @Test

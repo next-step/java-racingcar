@@ -27,10 +27,6 @@ public class Car {
            throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH +"자 이하로 입력해주세요 :)");
     }
 
-    public int getLocation() {
-        return location;
-    }
-
     public String getName() {
         return name;
     }
@@ -39,8 +35,8 @@ public class Car {
         location++;
     }
 
-    public void tryToMove(int randomNumber) {
-        if (randomNumber >= MOVE_POINT) {
+    public void tryToMove(MoveRule moveRule) {
+        if (moveRule.isMovable()) {
             move();
         }
     }

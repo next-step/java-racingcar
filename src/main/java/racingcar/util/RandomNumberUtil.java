@@ -3,10 +3,8 @@ package racingcar.util;
 import java.util.Random;
 
 public class RandomNumberUtil {
-    private final static int RANDOM_NUMBER_BOUND = 10;
-
-    public static int getRandomNumber() {
+    public static int getRandomNumber(int bound) {
         Random random = new Random();
-        return random.nextInt(RANDOM_NUMBER_BOUND);
+        return random.nextInt(bound);
     }
 }
