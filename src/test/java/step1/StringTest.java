@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class StringTest {
 
     @Test
-    @DisplayName("두 요소의 split이 잘 동작하는 지 확인한다.")
+    @DisplayName("두 요소의 split을 하면 delimiter를 기준으로 분리된 배열이 생성된다.")
     void split_two_char() {
         String string = "1,2";
         String delimiter = ",";
@@ -20,7 +20,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("한 요소의 split이 잘 동작하는 지 확인한다.")
+    @DisplayName("delimiter가 없는 문자의 경우에도 배열로 잘 분리되어야 한다.")
     void split_one_char() {
         String string = "1";
         String delimiter = ",";
@@ -29,7 +29,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("substring 메소드가 잘 동작하는 지 확인한다.")
+    @DisplayName("시작 index와 끝 index를 입력받아 substring 메소드가 잘 동작하는 지 확인한다. 시작 index~끝 index-1 만큼 분리된다.")
     void substring() {
         String string = "(1,2)";
 
