@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.study;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
