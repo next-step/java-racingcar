@@ -26,4 +26,12 @@ public class StringTest {
 
         assertThat(string.split(delimiter)).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("substring 메소드가 잘 동작하는 지 확인한다.")
+    void substring() {
+        String string = "(1,2)";
+
+        assertThat(string.substring(1, string.length() - 1)).isEqualTo("1,2");
+    }
 }
