@@ -13,24 +13,24 @@ public enum Operator {
     private final String value;
     private final OperatorAction operatorAction;
 
-    Operator(String value, OperatorAction operatorAction) {
+    Operator(final String value, final OperatorAction operatorAction) {
         this.value = value;
         this.operatorAction = operatorAction;
     }
 
-    public static Operator of(String value) {
+    public static Operator of(final String value) {
         return Arrays.stream(Operator.values())
                 .filter((Operator operator) -> operator.value.equals(value))
                 .findFirst()
                 .orElseThrow(() -> new InvalidOperatorException("올바르지 않은 사칙연산 인자입니다."));
     }
 
-    public static boolean isOperator(String target) {
+    public static boolean isOperator(final String target) {
         return target.equals(PLUS.value) || target.equals(MINUS.value) ||
                 target.equals(DIVIDE.value) || target.equals(MULTIPLY.value);
     }
 
-    public Number operate(Number first, Number second) {
+    public Number operate(final Number first, final Number second) {
         return operatorAction.act(first, second);
     }
 }
