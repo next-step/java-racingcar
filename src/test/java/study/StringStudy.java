@@ -13,4 +13,12 @@ public class StringStudy {
         String[] actual = "1,2".split(",");
         assertThat(actual).contains("1", "2");
     }
+
+    @DisplayName("콤마 split 특정값만 포함하는지 테스트")
+    @Test
+    public void containsExactly() {
+        String[] actual = "1".split(",");
+        assertThat(actual).containsExactly("1");
+    }
+
 }
