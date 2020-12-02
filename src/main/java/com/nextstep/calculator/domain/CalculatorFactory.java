@@ -1,12 +1,29 @@
 package com.nextstep.calculator.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CalculatorFactory {
+    private static final String FORMULA_SPLITTER = " ";
+
     public static Calculator of(String formula) {
-        return new Calculator(Collections.singletonList(Operator.PLUS),
-                Arrays.asList(Number.of("1"), Number.of("1")));
+        List<String> formulaContents = Arrays.asList(formula.split(FORMULA_SPLITTER));
+
+        return new Calculator(extractOperators(formulaContents), extractNumbers(formulaContents));
+    }
+
+    private static List<Number> extractNumbers(List<String> formulaContents) {
+        return formulaContents.stream()
+                .filter(formulaContent -> !Operator.isOperator(formulaContent))
+                .map(Number::of)
+                .collect(Collectors.toList());
+    }
+
+    private static List<Operator> extractOperators(List<String> formulaContents) {
+        return formulaContents.stream()
+                .filter(Operator::isOperator)
+                .map(Operator::of)
+                .collect(Collectors.toList());
     }
 }

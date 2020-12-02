@@ -25,6 +25,11 @@ public enum Operator {
                 .orElseThrow(() -> new InvalidOperatorException("올바르지 않은 사칙연산 인자입니다."));
     }
 
+    public static boolean isOperator(String target) {
+        return target.equals(PLUS.value) || target.equals(MINUS.value) ||
+                target.equals(DIVIDE.value) || target.equals(MULTIPLY.value);
+    }
+
     public Number operate(Number first, Number second) {
         return operatorAction.act(first, second);
     }
