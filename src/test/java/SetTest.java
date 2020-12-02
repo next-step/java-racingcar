@@ -6,6 +6,7 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
@@ -30,6 +31,12 @@ public class SetTest {
 	@ValueSource(ints = {1, 2, 3})
 	void given_set_when_contains_return_true(int input) {
 		assertThat(numbers.contains(input)).isTrue();
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+	void given_set_when_contains_with_not_exists_element_return_true_or_false(String input, String expectedValue) {
+		assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(Boolean.valueOf(expectedValue));
 	}
 
 }
