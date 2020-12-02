@@ -19,8 +19,12 @@ public class RacingCar {
 
 		List<Car> carList = createRacingCar(inputView.getPlayCarCount());
 
+		ResultView resultView = new ResultView();
 		for (int i = 0; i < inputView.getPlayCount(); i++) {
 			playRacing(carList);
+
+			resultView.printResult(carList);
+
 		}
 	}
 
