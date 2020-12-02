@@ -9,11 +9,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+    private static final int CAR_COUNT = 5;
     private Car car;
 
     @BeforeEach
     public void init(){
-        car = new Car(5);
+        car = new Car(CAR_COUNT);
     }
 
     @DisplayName("move 호출 시 position이 1씩 증가하는지 확인")

@@ -13,30 +13,30 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
+    private static final int CAR_COUNT = 3;
 
     @DisplayName("0-3만 나오는 경우와 4-9만 나오는 경우 position의 변화 체크")
     @ParameterizedTest
     @MethodSource
     public void moveAndGet(Supplier<Integer> numberGenerator, int moveLimit, int expected) {
-        final int carCount = 3;
-        Race race = new Race(carCount, moveLimit);
+        Race race = new Race(CAR_COUNT, moveLimit);
 
         List<Car> carList = null;
 
-        for ( int ix = 0 ; ix < moveLimit ; ix ++ ) {
+        for (int ix = 0 ; ix < moveLimit ; ix ++) {
             carList = race.moveAndGet(numberGenerator);
         }
         assertThat(carList).isNotNull();
 
-        for ( Car car : carList ) {
+        for (Car car : carList) {
             assertThat(car.getPosition()).isEqualTo(expected);
         }
     }
 
     private static Stream<Arguments> moveAndGet() {
-        Supplier<Integer> lessThanGenerator = () -> random.nextInt(4);
-        Supplier<Integer> greaterThanGenerator = () -> random.nextInt(6) + 4;
+        Supplier<Integer> lessThanGenerator = () -> RANDOM.nextInt(4);
+        Supplier<Integer> greaterThanGenerator = () -> RANDOM.nextInt(6) + 4;
         return Stream.of(
                 Arguments.of(lessThanGenerator, 5, 0),
                 Arguments.of(greaterThanGenerator, 5, 5)
@@ -47,10 +47,9 @@ public class RaceTest {
     @ParameterizedTest
     @MethodSource
     public void isFinished(Supplier<Integer> numberGenerator, int moveLimit, boolean expected) {
-        final int carCount = 3;
-        Race race = new Race(carCount, moveLimit);
+        Race race = new Race(CAR_COUNT, moveLimit);
 
-        for ( int ix = 0 ; ix < moveLimit ; ix ++ ) {
+        for (int ix = 0 ; ix < moveLimit ; ix ++) {
             race.moveAndGet(numberGenerator);
         }
 
@@ -69,9 +68,11 @@ public class RaceTest {
     private static class SpecificGenerator implements  Supplier<Integer> {
         private int[] values;
         private int idx = 0;
-        public SpecificGenerator(int ... values){
+
+        public SpecificGenerator(int ... values) {
             this.values = values;
         }
+
         @Override
         public Integer get() {
             if (idx >= values.length) {

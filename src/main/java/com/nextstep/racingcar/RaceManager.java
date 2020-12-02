@@ -60,6 +60,7 @@ public class RaceManager {
     }
 
     private int getRandomValue() {
-        return random.nextInt(10);
+        final int bound = 10;
+        return random.nextInt(bound);
     }
 }

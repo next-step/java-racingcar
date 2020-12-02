@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 
 public class Race {
     private List<Car> carList = new ArrayList<>();
+    private static final int THRESHOLD = 3;
 
     public Race(int carCount, int moveLimit) {
         for ( int ix = 0 ; ix < carCount ; ix ++ ) {
@@ -29,7 +30,7 @@ public class Race {
     }
 
     private boolean isMove(int number) {
-        return number >= 4;
+        return THRESHOLD < number;
     }
 
     public boolean isFinished() {
