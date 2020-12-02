@@ -46,7 +46,7 @@ public class StringTest {
 		String data = "(1,2)";
 
 		/*
-		 * substring(param)
+		 * substring(param1, param2)
 		 * 문자열의 시작/ 시작과 끝을 지정한 index 의 문자를 리턴
 		 */
 		assertThat(data.substring(1,4)).contains("1,2");
@@ -63,20 +63,49 @@ public class StringTest {
 	void checkCharAtTest() {
 
 		userInputCharAtTest("abc", 'b', 1);
-		userInputCharAtTest("abcd", 'c', 2);
+		userInputCharAtTest("abed", 'e', 2);
+		// userInputCharAtTest("abed", 'c', 2); // false
+		// userInputCharAtTest("abed", 'e', 5); // StringIndexOutOfBoundsException Exception
 
-		// chatAtTest("abcd", 'c', 3);	// indexOutOfBound Error
-		// userInputExceptionTest("abcdef", 6); // 인덱스 예외처리가 일어날 케이스 테스트
-		// suserInputExceptionTest("abc", 10);
+		// 임의로 Exception 을 발생시켜 테스트
+		// userInputThrownByTest("apple", 8);
+		// userInputExceptionTest("apples", 7);
+		// userInputExceptionTest("abide", 6); // 인덱스 예외처리가 일어날 케이스 테스트
+		// userInputExceptionTest("abc", 10);
 
+		// Exception 이 발생하지 않는 경우 확인하는 테스트코드
+		userInputNotExceptionTest("abed", 3);
+		// userInputNotExceptionTest("abed", 8);
 	}
 
-	void userInputExceptionTest(String testStr, int getIndex) {
+	private void userInputNotExceptionTest(String inputTestStr, int index) {
+
+		assertThatCode(
+			() -> System.out.println(inputTestStr.charAt(index))
+
+		).doesNotThrowAnyException();
+	}
+
+	private void userInputExceptionOfTypeTest(String inputTestStr, int index) {
+
+		assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> {
+
+			//throw new StringIndexOutOfBoundsException();
+			System.out.println(inputTestStr.charAt(index));
+		}).withMessage("%s!", "@@Oops......@@")
+			.withMessageContaining("#####thrown#####")
+			.withNoCause();
+	}
+
+	private void userInputThrownByTest(String inputTestStr, int index) {
 
 		assertThatThrownBy(() -> {
-			char tempChar = testStr.charAt(getIndex);
+
+			System.out.println(inputTestStr.charAt(index)); //throw new StringIndexOutOfBoundsException();
+
 		}).isInstanceOf(StringIndexOutOfBoundsException.class)
-			.hasMessageContaining("[" + testStr + "]Index: " + getIndex + ", Size: " + testStr.length());
+			.hasMessageContaining("[" + inputTestStr + "] Index: " + index + ", Size: " + inputTestStr.length());
+
 	}
 
 	private void userInputCharAtTest(String inputTestStr, char resultTestCh, int getIndex) {
