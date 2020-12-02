@@ -15,6 +15,7 @@ public class Validator {
     private void validate(int ix, String str) {
         if (ix % 2 == 0) {
             checkNumber(str);
+            return;
         }
         checkOperator(str);
     }

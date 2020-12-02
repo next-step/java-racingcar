@@ -13,6 +13,15 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class ValidatorTest {
     private final Validator validator = new Validator();
 
+    @DisplayName("잘못된 입력 값에 대한 정합성 검사 확인")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "+ 2 * 3 - 5", " 1 + 2 * 3 - 6", "1+3", "5 @ 3"})
+    public void checkValidate(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> validator.validate(input));
+    }
+
+    @DisplayName("짝수인 경우 숫자 체크, 홀수인 경우 연산자 체크 하는지 확인")
     @ParameterizedTest
     @ValueSource(ints = {0,1,2,3})
     public void checkValidateWithIndex(int idx){
