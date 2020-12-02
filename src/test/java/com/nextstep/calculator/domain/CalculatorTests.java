@@ -61,4 +61,38 @@ class CalculatorTests {
                 )
         );
     }
+
+    @DisplayName("현재 계산기 상태를 기반으로 사칙연산을 수행하 수 있다.")
+    @ParameterizedTest
+    @MethodSource("calculateTestResource")
+    void calculateTest(List<Operator> operators, List<Number> numbers, Number expected) {
+        Calculator calculator = new Calculator(operators, numbers);
+
+        assertThat(calculator.calculate()).isEqualTo(expected);
+    }
+    public static Stream<Arguments> calculateTestResource() {
+        return Stream.of(
+                // 단항 연산
+                Arguments.of(
+                        Collections.singletonList(Operator.PLUS),
+                        Arrays.asList(Number.of("1"), Number.of("2")),
+                        Number.of("3")
+                ),
+                Arguments.of(
+                        Collections.singletonList(Operator.MINUS),
+                        Arrays.asList(Number.of("1"), Number.of("2")),
+                        Number.of("-1")
+                ),
+                Arguments.of(
+                        Collections.singletonList(Operator.MULTIPLY),
+                        Arrays.asList(Number.of("1"), Number.of("2")),
+                        Number.of("2")
+                ),
+                Arguments.of(
+                        Collections.singletonList(Operator.DIVIDE),
+                        Arrays.asList(Number.of("1"), Number.of("2")),
+                        Number.of("0")
+                )
+        );
+    }
 }

@@ -16,6 +16,10 @@ public class Calculator {
         this.numbers = new ArrayList<>(numbers);
     }
 
+    public Number calculate() {
+        return operators.get(0).operate(numbers.get(0), numbers.get(1));
+    }
+
     private void validate(List<Operator> operators, List<Number> numbers) {
         if (operators.size() == 0 || numbers.size() == 0) {
             throw new InvalidCalculatorFormulaException("수식과 숫자 모두 있어야 합니다.");
