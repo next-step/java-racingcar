@@ -28,4 +28,12 @@ public class SetStudy {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
+    @DisplayName("contains 학습 테스트")
+    @Test
+    public void contains() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
+
 }
