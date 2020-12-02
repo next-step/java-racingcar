@@ -1,6 +1,7 @@
 package step1;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,8 +13,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
-
-    private Set numbers;
+    private Set<Integer> numbers;
 
     @BeforeEach
     void setUp() {
@@ -25,27 +25,28 @@ public class SetTest {
     }
 
     @Test
+    @DisplayName("Set는 중복되는 요소는 제외하고 add되어야 한다.")
     void size() {
-        assertThat(numbers).contains(1);
-//        assertThat(numbers.size()).isEqualTo(3); // 이렇게 쓰는 것보다 배열, 콜렉션의 경우는 아래 구문으로 쓰는 것이 좋다.
-        assertThat(numbers).hasSize(3);
+         assertThat(numbers.size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("Set의 요소들이 잘 들어갔는지 테스트 한다.")
+    void contains() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void contains1(int no) {
-        //중복 코드 발생
-//        assertThat(numbers.contains(1)).isTrue();
-//        assertThat(numbers.contains(2)).isTrue();
-//        assertThat(numbers.contains(3)).isTrue();
-
-        assertThat(numbers.contains(no)).isTrue();
+    @ValueSource(ints = {1, 2, 3}) // six numbers
+    void contains(int input) {
+        assertThat(numbers.contains(input)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
-    void contains2(int no, boolean expected) {
-        assertThat(numbers.contains(no)).isEqualTo(expected);
+    void contains(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
-
