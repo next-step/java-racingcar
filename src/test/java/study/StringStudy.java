@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringStudy {
 
@@ -37,6 +38,14 @@ public class StringStudy {
     public void charAt(int index, char ch) {
         String str = "abc";
         assertThat(str.charAt(index)).isEqualTo(ch);
+    }
+
+    @DisplayName("charAt 범위 벗어나면 StringIndexOutOfBoundsException")
+    @ParameterizedTest
+    @CsvSource({"-1", "3"})
+    public void charAtException(int index) {
+        String str = "abc";
+        assertThatThrownBy(() -> str.charAt(index)).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 
 }
