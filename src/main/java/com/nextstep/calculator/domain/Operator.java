@@ -11,11 +11,11 @@ public enum Operator {
     MULTIPLY("*", (Number first, Number second) -> Number.of(first.getValue() * second.getValue()));
 
     private final String value;
-    private final Calculate calculate;
+    private final OperatorAction operatorAction;
 
-    Operator(String value, Calculate calculate) {
+    Operator(String value, OperatorAction operatorAction) {
         this.value = value;
-        this.calculate = calculate;
+        this.operatorAction = operatorAction;
     }
 
     public static Operator of(String value) {
@@ -26,6 +26,6 @@ public enum Operator {
     }
 
     public Number operate(Number fist, Number second) {
-        return calculate.calculate(fist, second);
+        return operatorAction.act(fist, second);
     }
 }
