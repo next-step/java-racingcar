@@ -1,5 +1,6 @@
 package step2;
 
+import java.util.Arrays;
 import java.util.function.DoubleBinaryOperator;
 
 public enum Operation {
@@ -14,6 +15,12 @@ public enum Operation {
     Operation(String operator, DoubleBinaryOperator op) {
         this.operator = operator;
         this.op = op;
+    }
+
+    public static Operation getOperation(String operator) {
+        return Arrays.stream(Operation.values())
+                        .filter(operation -> operation.operator.equals(operator))
+                        .findAny().orElseThrow(()-> new IllegalArgumentException());
     }
 
     public double calculate(double x, double y) {
