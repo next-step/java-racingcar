@@ -74,32 +74,27 @@ public class StringCalculator {
 		}
 	}
 
-	private void isValid(String number) {
-		if (isNotNumberAndOperator(number)) {
+	private boolean isValid(String number) {
+		if (!(number.matches("\\d+") || number.matches("[\\+*\\/-]"))) {
+			//숫자도 아니고 사칙연산에도 해당되지 않은 경우
 			throw new IllegalArgumentException();
 		}
+		return true;
 	}
 
-	private boolean isNotNumberAndOperator(String number) {
-		if (!(number.matches("\\d+") || number.matches("[\\+*\\/-]"))) {
-			return true;
-		}
-		return false;
-	}
-
-	private Integer divide(Integer frontNumber, Integer rearNumber) {
+	Integer divide(Integer frontNumber, Integer rearNumber) {
 		return frontNumber / rearNumber;
 	}
 
-	private Integer multiply(Integer frontNumber, Integer rearNumber) {
+	Integer multiply(Integer frontNumber, Integer rearNumber) {
 		return frontNumber * rearNumber;
 	}
 
-	private Integer minus(Integer frontNumber, Integer rearNumber) {
+	Integer minus(Integer frontNumber, Integer rearNumber) {
 		return frontNumber - rearNumber;
 	}
 
-	private Integer plus(Integer frontNumber, Integer rearNumber) {
+	Integer plus(Integer frontNumber, Integer rearNumber) {
 		return frontNumber + rearNumber;
 	}
 
