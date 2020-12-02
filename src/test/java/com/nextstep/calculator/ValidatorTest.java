@@ -1,12 +1,8 @@
 package com.nextstep.calculator;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -15,60 +11,17 @@ public class ValidatorTest {
 
     @DisplayName("잘못된 입력 값에 대한 정합성 검사 확인")
     @ParameterizedTest
-    @ValueSource(strings = {"", "+ 2 * 3 - 5", " 1 + 2 * 3 - 6", "1+3", "5 @ 3", "1 + 2 *"})
-    public void checkValidate(String input) {
+    @CsvSource(value = {
+            "'': Empty string is not valid argument",
+            "+ 2 * 3 - 5: + 2 * 3 - 5 is not valid argument",
+            "' 1 + 2 * 3 - 6': ' 1 + 2 * 3 - 6 is not valid argument'",
+            "1+3: 1+3 is not number",
+            "5 @ 3: @ is not valid operator. ( +, -, *, / )",
+            "1 + 2 *: 1 + 2 * is not valid argument",
+    }, delimiter = ':')
+    public void checkValidate(String input, String message) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> validator.validate(input));
-    }
-
-    @DisplayName("짝수인 경우 숫자 체크, 홀수인 경우 연산자 체크 하는지 확인")
-    @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3})
-    public void checkValidateWithIndex(int idx){
-        final Method method = getDeclaredMethod("validate", int.class, String.class);
-        String message = (idx % 2 == 0) ? "# is not number" : "# is not valid operator. ( +, -, *, / )";
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            try {
-                method.invoke(validator, idx, "#");
-            } catch ( InvocationTargetException e ) {
-                throw e.getCause();
-            }
-        }).withMessage(message);
-    }
-
-    @DisplayName("숫자가 아닌 경우 IllegalArgumentException 발생")
-    @Test
-    public void checkNumber() {
-        final Method method = getDeclaredMethod("checkNumber", String.class);
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            try {
-                method.invoke(validator, "a");
-            } catch ( InvocationTargetException e ) {
-                throw e.getCause();
-            }
-        }).withMessage("a is not number");
-    }
-
-    @DisplayName("사칙연산자가 아닌 경우 IllegalArgumentException 발생")
-    @Test
-    public void checkOperator() {
-        final Method method = getDeclaredMethod("checkOperator", String.class);
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            try {
-                method.invoke(validator, "#");
-            } catch ( InvocationTargetException e ) {
-                throw e.getCause();
-            }
-        }).withMessage("# is not valid operator. ( +, -, *, / )");
-    }
-
-    private Method getDeclaredMethod(String name, Class<?> ... classes) {
-        Class<?> cls = validator.getClass();
-        Method method = null;
-        try {
-            method = cls.getDeclaredMethod(name, classes);
-            method.setAccessible(true);
-        } catch ( NoSuchMethodException ignored ) {}
-        return method;
+                .isThrownBy(() -> validator.validate(input))
+                .withMessage(message);
     }
 }
