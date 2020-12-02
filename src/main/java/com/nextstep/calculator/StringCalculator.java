@@ -1,26 +1,22 @@
 package com.nextstep.calculator;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class StringCalculator {
-    private final Scanner scanner;
     private final Validator validator = new Validator();
+    private final String input;
 
     public static void main(String[] args) {
-        new StringCalculator().run();
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        new StringCalculator(input).run();
     }
 
-    public StringCalculator() {
-        this(System.in);
-    }
-
-    public StringCalculator(InputStream is) {
-        this.scanner = new Scanner(is);
+    public StringCalculator(String input) {
+        this.input = input;
     }
 
     public void run() {
-        String input = scanner.nextLine();
         try {
             validator.validate(input);
             Accumulator accumulator = calculate(input);

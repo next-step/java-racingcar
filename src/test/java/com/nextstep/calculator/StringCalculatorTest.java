@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.ByteArrayInputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -16,7 +15,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource({"1 + 2 * 6, 18", "3 - 1 * 14 / 7, 4", "1 + 1 + 1 + 1, 4"})
     public void calculate(String input, int expected){
-        StringCalculator calculator = new StringCalculator(new ByteArrayInputStream(input.getBytes()));
+        StringCalculator calculator = new StringCalculator(input);
         int result = 0;
 
         try {
