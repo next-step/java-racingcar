@@ -1,4 +1,6 @@
-package calculator;
+package calculator.helper;
+
+import calculator.Operator;
 
 public class OperatorFactorHelper {
 

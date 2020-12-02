@@ -1,4 +1,4 @@
-package calculator;
+package calculator.exception;
 
 public class IllegalCalculationFormatException extends IllegalArgumentException {
 	private final String illegalCalculationFormatMessage = "The calculation expression does not match the format";

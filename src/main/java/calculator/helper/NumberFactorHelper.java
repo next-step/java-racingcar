@@ -1,4 +1,7 @@
-package calculator;
+package calculator.helper;
+
+import calculator.InputFactor;
+import calculator.NumberFactor;
 
 public class NumberFactorHelper {
 

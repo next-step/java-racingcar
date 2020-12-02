@@ -2,6 +2,9 @@ package calculator;
 
 import java.util.stream.Stream;
 
+import calculator.helper.NumberFactorHelper;
+
+
 public enum Operator {
 	ADD("+") {
 		@Override

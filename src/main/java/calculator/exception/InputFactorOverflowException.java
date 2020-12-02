@@ -1,4 +1,4 @@
-package calculator;
+package calculator.exception;
 
 public class InputFactorOverflowException extends IllegalArgumentException {
 	private final String overFlowMessage = "OperatorFactor cannot be greater than NumberFactor";
