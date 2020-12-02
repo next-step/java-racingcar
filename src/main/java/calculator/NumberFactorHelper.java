@@ -2,6 +2,18 @@ package calculator;
 
 public class NumberFactorHelper {
 
+	public static boolean isNumeric(String checkNumber) {
+		if (checkNumber == null) {
+			return false;
+		}
+		try {
+			Double.parseDouble(checkNumber);
+		} catch (NumberFormatException numberFormatException) {
+			return false;
+		}
+		return true;
+	}
+
 	public static boolean isNumberFactor(String value) {
 		try {
 			Integer.parseInt(value);
@@ -24,7 +36,7 @@ public class NumberFactorHelper {
 	}
 
 	public static NumberFactor divide(InputFactor<Integer> dividendNumber, InputFactor<Integer> divisorNumber) {
-		return wrapperNumberFactor(Math.floorDiv(dividendNumber.valueOfFactor(), divisorNumber.valueOfFactor()));
+		return wrapperNumberFactor(dividendNumber.valueOfFactor() / divisorNumber.valueOfFactor());
 	}
 
 	private static NumberFactor wrapperNumberFactor(int value) {
