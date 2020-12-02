@@ -5,8 +5,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.Stream;
 
@@ -41,6 +43,14 @@ class OperationTest {
         assertThat(Operation.DIVIDE.calculate(input[0], input[1])).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"$", "^", "&"})
+    @DisplayName("사칙연산에 없는 연산자의 경우 IllegalArgumentException")
+    public void operation_illegalArgumentExceptionTest(String input) {
+        assertThatThrownBy(() -> {
+            Operation.getOperation(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
     static Stream<Arguments> generatePlusData() {
         return Stream.of(
