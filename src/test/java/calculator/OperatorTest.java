@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("문자열 사칙 연산 검증")
 class OperatorTest {
 
 	@DisplayName("사칙 연산 문자열과 Enum 함수의 이름이 일치하는지 확인한다.")
