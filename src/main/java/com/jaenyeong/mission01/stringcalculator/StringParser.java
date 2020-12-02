@@ -75,4 +75,12 @@ public class StringParser {
             throw new IllegalArgumentException(expression + " is not valid expression");
         }
     }
+
+    public List<String> getOperators() {
+        return new ArrayList<>(operators);
+    }
+
+    public List<Integer> getOperands() {
+        return new ArrayList<>(operands);
+    }
 }
