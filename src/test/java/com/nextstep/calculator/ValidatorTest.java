@@ -15,7 +15,7 @@ public class ValidatorTest {
 
     @DisplayName("잘못된 입력 값에 대한 정합성 검사 확인")
     @ParameterizedTest
-    @ValueSource(strings = {"", "+ 2 * 3 - 5", " 1 + 2 * 3 - 6", "1+3", "5 @ 3"})
+    @ValueSource(strings = {"", "+ 2 * 3 - 5", " 1 + 2 * 3 - 6", "1+3", "5 @ 3", "1 + 2 *"})
     public void checkValidate(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> validator.validate(input));

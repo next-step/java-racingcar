@@ -7,6 +7,9 @@ public class Validator {
             throw new IllegalArgumentException("Empty string is not valid argument");
         }
         String[] temp = input.split(" ");
+        if (temp.length % 2 == 0) {
+            throw new IllegalArgumentException(input + " is not valid argument");
+        }
         for( int ix = 0 ; ix < temp.length ; ix ++ ) {
             validate(ix, temp[ix]);
         }
