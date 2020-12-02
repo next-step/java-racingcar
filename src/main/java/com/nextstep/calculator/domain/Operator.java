@@ -3,6 +3,8 @@ package com.nextstep.calculator.domain;
 import com.nextstep.calculator.domain.exceptions.InvalidOperatorException;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public enum Operator {
     PLUS("+", (Number first, Number second) -> Number.of(first.getValue() + second.getValue())),
@@ -26,8 +28,10 @@ public enum Operator {
     }
 
     public static boolean isOperator(final String target) {
-        return target.equals(PLUS.value) || target.equals(MINUS.value) ||
-                target.equals(DIVIDE.value) || target.equals(MULTIPLY.value);
+        return Arrays.stream(Operator.values())
+                .map(operator -> operator.value)
+                .collect(Collectors.toList())
+                .contains(target);
     }
 
     public Number operate(final Number first, final Number second) {
