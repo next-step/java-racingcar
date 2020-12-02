@@ -17,7 +17,16 @@ public class Calculator {
     }
 
     public Number calculate() {
-        return operators.get(0).operate(numbers.get(0), numbers.get(1));
+        operators.forEach(operator -> {
+            Number number = operator.operate(numbers.get(0), numbers.get(1));
+
+            numbers.remove(0);
+            numbers.remove(0);
+
+            numbers.add(0, number);
+        });
+
+        return numbers.get(0);
     }
 
     private void validate(List<Operator> operators, List<Number> numbers) {

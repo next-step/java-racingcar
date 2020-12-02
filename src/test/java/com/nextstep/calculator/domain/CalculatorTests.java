@@ -92,6 +92,18 @@ class CalculatorTests {
                         Collections.singletonList(Operator.DIVIDE),
                         Arrays.asList(Number.of("1"), Number.of("2")),
                         Number.of("0")
+                ),
+
+                // 복합 연산
+                Arguments.of(
+                        Arrays.asList(Operator.PLUS, Operator.MINUS),
+                        Arrays.asList(Number.of("1"), Number.of("2"), Number.of("3")),
+                        Number.of("0")
+                ),
+                Arguments.of(
+                        Arrays.asList(Operator.PLUS, Operator.MINUS, Operator.MULTIPLY),
+                        Arrays.asList(Number.of("4"), Number.of("2"), Number.of("3"), Number.of("4")),
+                        Number.of("12")
                 )
         );
     }
