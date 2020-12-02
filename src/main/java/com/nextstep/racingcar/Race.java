@@ -28,7 +28,15 @@ public class Race {
         car.move();
     }
 
-    private boolean isMove(int number){
+    private boolean isMove(int number) {
         return number >= 4;
+    }
+
+    public boolean isFinished() {
+        boolean isFinished = false;
+        for ( Car car : carList ) {
+            isFinished = isFinished | car.isFinished();
+        }
+        return isFinished;
     }
 }
