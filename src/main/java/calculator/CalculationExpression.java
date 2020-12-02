@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class CalculationExpression {
-	private final String SEPARATOR_CALCULATION_EXPRESSION = " ";
+	private final String separatorCalculationExpression = " ";
 	private final Deque<NumberFactor> numbers;
 	private final Queue<OperatorFactor> operators;
 
@@ -47,14 +47,14 @@ public class CalculationExpression {
 	}
 
 	private List<OperatorFactor> getOperatorFactors(String inputExpression) {
-		return Arrays.stream(inputExpression.split(SEPARATOR_CALCULATION_EXPRESSION))
+		return Arrays.stream(inputExpression.split(separatorCalculationExpression))
 			.filter(OperatorFactorHelper::isOperatorFactor)
 			.map(OperatorFactor::new)
 			.collect(Collectors.toList());
 	}
 
 	private List<NumberFactor> getNumberFactors(String inputExpression) {
-		return Arrays.stream(inputExpression.split(SEPARATOR_CALCULATION_EXPRESSION))
+		return Arrays.stream(inputExpression.split(separatorCalculationExpression))
 			.filter(NumberFactorHelper::isNumeric)
 			.map(NumberFactor::new)
 			.collect(Collectors.toList());
