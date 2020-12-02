@@ -13,6 +13,7 @@
 * 요구사항 3
     + charAt 확용 학습
     + 배열 예외 처리 학습
+      - 예외가 발생할 경우와 발생하지 않는 경우 테스트코드 생성
     + JUnit @DisplayNAme 학습
 
 ### Set Collection
@@ -24,6 +25,7 @@
     + 중복코드 제거 -> JUnit Parameterized Test 학습 및 활용
 * 요구사항 3
     + 다양한 Test Case 구현
+    + CsvSource 활용한 테스트 케이스 만들기
 
 
 ## 진행 방법
