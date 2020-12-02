@@ -1,41 +1,26 @@
 package com.nextstep.calculator;
 
+import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
 public enum Operator {
-    ADDITION("+") {
-        @Override
-        public int apply(int a, int b) {
-            return a + b;
+    ADDITION("+", (a, b) -> a + b),
+    SUBTRACTION("-", (a, b) -> a - b),
+    MULTIPLICATION("*", (a, b) -> a * b),
+    DIVISION("/", (a, b) -> {
+        if (a % b != 0) {
+            throw new IllegalArgumentException(a + " can't divided into " + b);
         }
-    },
-    SUBTRACTION("-") {
-        @Override
-        public int apply(int a, int b) {
-            return a - b;
-        }
-    },
-    MULTIPLICATION("*") {
-        @Override
-        public int apply(int a, int b) {
-            return a * b;
-        }
-    },
-    DIVISION("/") {
-        @Override
-        public int apply(int a, int b) {
-            if (a % b != 0) {
-                throw new IllegalArgumentException(a + " can't divided into " + b);
-            }
-            return a / b;
-        }
-    }
+        return a / b;
+    })
     ;
 
     private final String symbol;
+    private final BiFunction<Integer, Integer, Integer> function;
 
-    Operator(String symbol) {
+    Operator(String symbol, BiFunction<Integer, Integer, Integer> function) {
         this.symbol = symbol;
+        this.function = function;
     }
 
     public static Operator select(String symbol) {
@@ -45,5 +30,7 @@ public enum Operator {
                 .orElse(null);
     }
 
-    public abstract int apply(int a, int b);
+    public int apply(int a, int b) {
+        return function.apply(a,b);
+    }
 }
