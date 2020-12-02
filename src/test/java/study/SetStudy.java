@@ -40,4 +40,11 @@ public class SetStudy {
         assertThat(numbers.contains(value)).isTrue();
     }
 
+    @DisplayName("contains 입력에 따라 다른 결과 테스트")
+    @ParameterizedTest
+    @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+    public void contains(int value, boolean expected) {
+        assertThat(numbers.contains(value)).isEqualTo(expected);
+    }
+
 }
