@@ -13,7 +13,7 @@ public class Car {
         return new Car(0);
     }
 
-    public Car move(GasStation gasStation) {
+    public Car move(final GasStation gasStation) {
         Fuel fuel = gasStation.refuel();
 
         if (fuel.isEnough()) {
