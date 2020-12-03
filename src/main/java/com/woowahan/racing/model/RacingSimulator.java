@@ -29,10 +29,11 @@ public class RacingSimulator {
 		return carList;
 	}
 
-	public void run() {
+	public List<GameResult> run() {
 		for (int i = 0; i < inputResult.getTryCount(); i++) {
 			gameResultList.add(racingCars());
 		}
+		return this.gameResultList;
 	}
 
 	public GameResult racingCars() {
@@ -41,10 +42,5 @@ public class RacingSimulator {
 		}
 		return GameResult.of(this.partCarList);
 	}
-
-	public List<GameResult> getGameResultList() {
-		return gameResultList;
-	}
-
 
 }
