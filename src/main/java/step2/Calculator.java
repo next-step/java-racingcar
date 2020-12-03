@@ -5,10 +5,6 @@ public class Calculator {
     private double val;
     private Operation operation;
 
-    public Calculator() {
-        this.val = 0;
-    }
-
     public double displayResult(String input) {
         if (input == null || input.trim().isEmpty()) throw new IllegalArgumentException();
         for (String s : input.split(" ")) calculate(s);
@@ -21,10 +17,10 @@ public class Calculator {
             return;
         }
         if (this.operation != null) {
-            operate(Double.parseDouble(input));
+            operate(Integer.parseInt(input));
             return;
         }
-        initVal(Double.parseDouble(input));
+        initVal(Integer.parseInt(input));
     }
 
     boolean isNumeric(String input) {
