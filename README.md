@@ -7,3 +7,30 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능별 테스트 케이스
+- [x] 덧셈
+- [x] 뺄셈
+- [x] 곱셈
+- [x] 나눗셈
+    - [x] 결과 값을 정수
+    - [x] 0을 나눌 경우 ArithmeticException throw
+- [x] 숫자 객체 비교 기능
+- [x] 연산자 클래스 정의
+    - [x] 연산자와 일치 하는 클래스 찾는 기능
+    - [x] 연산자와 일치 하는 메소드 호출 기능
+    - [x] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
+- [x] 입력 받은 문자열에서 숫자와 연산자 분리
+- [x] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+- [x] 사칙 연산을 모두 포함하는 기능 구현
+
+
+## Build
+```
+./gradlew build
+```
+
+## Run
+```
+java -jar build/libs/step1-calculator-1.0.0.jar
+```
