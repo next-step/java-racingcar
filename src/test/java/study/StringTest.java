@@ -1,6 +1,7 @@
 package study;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,5 +27,24 @@ class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
+    @Test
+    @DisplayName("String 클래스의 charAt 테스트")
+    void charAt() {
+        String input = "abc";
+        char charAt = input.charAt(0);
+        assertThat(charAt).isEqualTo('a');
+
+        char charAt2 = input.charAt(1);
+        assertThat(charAt2).isEqualTo('b');
+
+        char charAt3 = input.charAt(2);
+        assertThat(charAt3).isEqualTo('c');
+
+
+        assertThatThrownBy(() -> {
+            char charAt4 = input.charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range: 3");
+    }
 
 }
