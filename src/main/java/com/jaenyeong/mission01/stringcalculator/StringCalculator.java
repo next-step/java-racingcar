@@ -6,10 +6,6 @@ public class StringCalculator {
     private static final int OPERATOR_SIZE_MIN = 1;
     private static final int OPERAND_SIZE_MIN = 2;
     private static final String ERR_OPERATION = "error occurred during operation";
-    private static final String ADDITION = "+";
-    private static final String SUBTRACTION = "-";
-    private static final String MULTIPLICATION = "*";
-    private static final String DIVISION = "/";
 
     private final List<String> operators;
     private final List<Integer> operands;
@@ -33,7 +29,6 @@ public class StringCalculator {
         try {
             return calculate();
         } catch (Exception e) {
-
             throw new ArithmeticException(ERR_OPERATION);
         }
     }
@@ -52,33 +47,6 @@ public class StringCalculator {
     }
 
     private int elementCalculate(final String operator, final int firstOp, final int secondOp) {
-        switch (operator) {
-            case ADDITION:
-                return add(firstOp, secondOp);
-            case SUBTRACTION:
-                return subtract(firstOp, secondOp);
-            case MULTIPLICATION:
-                return multiply(firstOp, secondOp);
-            case DIVISION:
-                return divide(firstOp, secondOp);
-        }
-
-        throw new ArithmeticException(ERR_OPERATION);
-    }
-
-    private int add(int firstOp, int secondOp) {
-        return firstOp + secondOp;
-    }
-
-    private int subtract(int firstOp, int secondOp) {
-        return firstOp - secondOp;
-    }
-
-    private int multiply(int firstOp, int secondOp) {
-        return firstOp * secondOp;
-    }
-
-    private int divide(int firstOp, int secondOp) {
-        return firstOp / secondOp;
+        return Operator.calculate(operator, firstOp, secondOp);
     }
 }
