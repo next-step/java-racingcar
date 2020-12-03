@@ -41,19 +41,6 @@ public class RacingGame {
     }
 
     /**
-     * 자동차 경주 게임을 실행하는 메소드
-     */
-    public void playGame() {
-        ResultView.showResultMessage();
-
-        while (hasNextRound()) {
-            playRace();
-            ResultView.printRace(getCars());
-        }
-        ResultView.printWinner(getWinners());
-    }
-
-    /**
      * 다음 라운드가 있는지 확인
      * @return 다음 라운드가 있으면 true
      */

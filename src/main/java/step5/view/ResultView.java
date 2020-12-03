@@ -4,12 +4,28 @@
 package step5.view;
 
 import step5.domain.Car;
+import step5.domain.RacingGame;
 import step5.util.Constants;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
+
+    /**
+     * 게임을 실행과 동시에 출력하는 메소드
+     * @param racingGame 자동차 경주 게임
+     */
+    public static void getGameResult(RacingGame racingGame) {
+        showResultMessage();
+
+        while (racingGame.hasNextRound()) {
+            racingGame.playRace();
+            printRace(racingGame.getCars());
+        }
+
+        printWinner(racingGame.getWinners());
+    }
 
     /**
      * 실행 결과 메시지를 출력하는 메소드
