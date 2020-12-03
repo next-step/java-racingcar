@@ -6,7 +6,7 @@ import java.util.WeakHashMap;
 
 public class Number {
 
-    private static final Map<Integer, Number> CHACHE = new WeakHashMap<>();
+    private static final Map<Integer, Number> CACHE = new WeakHashMap<>();
 
     private Number(final int value) {
         this.value = value;
@@ -19,7 +19,7 @@ public class Number {
     }
 
     public static Number valueOf(final int value) {
-        return CHACHE.computeIfAbsent(value, Number::new);
+        return CACHE.computeIfAbsent(value, Number::new);
     }
 
     public int getValue() {
