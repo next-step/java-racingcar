@@ -12,7 +12,7 @@ import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_ST
 import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarTests {
+class CarTest {
     @DisplayName("주유할 주유소를 인자로 받아서 객체 생성 가능")
     @Test
     void createTest() {

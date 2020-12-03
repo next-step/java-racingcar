@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class FuelTests {
+class FuelTest {
     @DisplayName("값을 입력받아서 객체를 생성할 수 있다.")
     @Test
     void createTest() {

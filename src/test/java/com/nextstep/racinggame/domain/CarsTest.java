@@ -15,7 +15,7 @@ import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_ST
 import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarsTests {
+class CarsTest {
     @DisplayName("생성하고 싶은 Car의 수를 입력받아서 객체를 생성할 수 있다.")
     @Test
     void createTest() {

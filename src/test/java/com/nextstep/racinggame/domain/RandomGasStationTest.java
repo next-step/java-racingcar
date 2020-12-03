@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RandomGasStationTests {
+class RandomGasStationTest {
     @DisplayName("주유를 하고 연료를 받을 수 있다.")
     @Test
     void refuelTest() {

@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class CalculatorTests {
+class CalculatorTest {
     @DisplayName("Number 컬렉션, Operator 컬렉션을 인자로 객체를 생성할 수 있다.")
     @Test
     void createTest() {
