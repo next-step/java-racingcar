@@ -11,8 +11,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -26,22 +24,23 @@ public class SetTest {
         numbers.add(3);
     }
 
+    @DisplayName("numbers 크기가 일치하는지 확인한다.")
     @Test
-    void getSize() {
+    void checkSize() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
+    @DisplayName("해당 값들이 존재하는지 확인한다.")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    @DisplayName("Use @ValueSource")
-    void contains1(int number) {
-        assertTrue(numbers.contains(number));
+    @ValueSource(ints = {1, 2, 3})
+    void containValue1(int number) {
+        assertThat(numbers.contains(number)).isTrue();
     }
 
+    @DisplayName("해당 값이 존재하면 true, 존재하지 않으면 false 나오는지 확인한다.")
     @ParameterizedTest
-    @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
-    @DisplayName("Use @CsvSource")
-    void contains2(int input,boolean expected) {
-        assertEquals(expected,numbers.contains(input));
+    @CsvSource(value = {"2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void containValue2(int number, boolean expected) {
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 }
