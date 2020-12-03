@@ -78,6 +78,6 @@ public class SetTest {
     - [X] 정합성이 확인된 문자열로 Calculator 객체를 생성할 수 있다.
 
 ## Step2. 피드백 반영
-- [ ] CalculatorFactory 클래스의 객체 생성 메서드명 변경
+- [X] CalculatorFactory 클래스의 객체 생성 메서드명 변경
     - 일반적으로 of는 사용한 해당 클래스 타입을 반환할 것이라 기대되기 때문에 현재 형태와는 어울리지 않음
 - [ ] 빈 String 비교할 때 NPE가 발생하지 않도록 안전한 코드로 수정

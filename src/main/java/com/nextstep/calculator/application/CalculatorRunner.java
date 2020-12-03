@@ -14,7 +14,7 @@ public class CalculatorRunner {
         System.out.println(INPUT_COMMENT);
         String userFormula = SCANNER.nextLine();
 
-        Calculator calculator = CalculatorFactory.of(userFormula);
+        Calculator calculator = CalculatorFactory.createFactory(userFormula);
 
         System.out.println(RESULT_HEADER + calculator.calculate().getValue());
     }
