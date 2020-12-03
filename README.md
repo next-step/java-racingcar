@@ -20,10 +20,11 @@
 * 메소드가 너무 많은 일을 하지 않도록 분리하기 위해 노력해 본다.
 
 ## To do
- - [ ] 입력값 검증 :: CalculatorView 클래스 구현
-    - [ ] null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-    - [ ] 사칙 연산 기호가 아니거나 변환 불가능한 값의 경우 IllegalArgumentException throw
-    - [ ] 숫자(정수)로 변환 불가능한 값의 경우 IllegalArgumentException throw
+ - [ ] 입력값 파싱:: CalculatorFormula 클래스 구현
+    - [X] null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+    - [X] 숫자(정수)로 변환 불가능한 값의 경우 IllegalArgumentException throw
+    - [X] 들어온 순번에 맞는 숫자를 반환
+    - [X] 들어온 순번에 맞는 연산자를 반환
 - [X] 입력 문자열의 연산 처리 :: Enum 사용해보기
     - [X] 덧셈
     - [X] 뺄셈
