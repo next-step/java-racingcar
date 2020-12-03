@@ -25,11 +25,11 @@
     - [ ] 사칙 연산 기호가 아니거나 변환 불가능한 값의 경우 IllegalArgumentException throw
     - [ ] 숫자(정수)로 변환 불가능한 값의 경우 IllegalArgumentException throw
 - [ ] 입력 문자열의 연산 처리 :: Enum 사용해보기
-    - [ ] 덧셈
-    - [ ] 뺄셈
-    - [ ] 곱셈
-    - [ ] 나눗셈
-        - [ ] 결과 값은 정수로 떨어지는 값으로 한정
+    - [X] 덧셈
+    - [X] 뺄셈
+    - [X] 곱셈
+    - [X] 나눗셈
+        - [X] 결과 값은 정수로 떨어지는 값으로 한정
         - [ ] 0으로 나눌경우 IllegalArgumentException throw
 - [ ] 연산 결과를 가지고 있는 CalculationResult 클래스 구현
     - [ ] 초기 값은 입력 문자열의 첫번째 값을 가짐
