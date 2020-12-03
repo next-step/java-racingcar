@@ -33,6 +33,14 @@ public class Cars {
         return new Cars(movedCars);
     }
 
+    public CurrentDistance calculateCurrentDistance() {
+        List<Integer> distanceValues = this.cars.stream()
+                .map(Car::getDistance)
+                .collect(Collectors.toList());
+
+        return new CurrentDistance(distanceValues);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

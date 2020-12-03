@@ -23,6 +23,10 @@ public class Car {
         return this;
     }
 
+    int getDistance() {
+        return distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
