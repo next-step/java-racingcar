@@ -1,6 +1,6 @@
 package calculator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,9 +24,11 @@ class CalculatorTest {
 	@DisplayName("1. 입력값이 없는경우")
 	@ParameterizedTest
 	@ValueSource(strings = {"", " ", "    "})
-	void userInputValid(String arg) {
-		assertThrows(IllegalArgumentException.class, () -> {
+	void userInputIsEmpty(String arg) {
+		assertThatThrownBy(() -> {
 			calculator.calculate(arg);
-		});
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("입력값이 존재하지 않습니다.");
 	}
+
 }

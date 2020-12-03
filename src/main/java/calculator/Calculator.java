@@ -7,6 +7,7 @@ package calculator;
  **/
 public class Calculator {
 	private int result;
+
 	public Calculator() {
 		result = 0;
 	}
@@ -16,6 +17,11 @@ public class Calculator {
 	}
 
 	private void checkUserInput(String arg) {
-		if (arg.trim().isEmpty()) throw new IllegalArgumentException();
+		checkUserInputEmpty(arg);
+	}
+
+	private void checkUserInputEmpty(String arg) {
+		if (arg.trim().isEmpty())
+			throw new IllegalArgumentException("입력값이 존재하지 않습니다.");
 	}
 }
