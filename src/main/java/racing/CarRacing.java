@@ -8,10 +8,10 @@ public class CarRacing {
     private static final List<Car> cars = new ArrayList<>();
 
     private static Display display;
-    private static Util util;
-    public CarRacing( Display display, Util util){
+    private static InputUtil inputUtil;
+    public CarRacing( Display display,InputUtil inputUtil){
         this.display = display;
-        this.util = util;
+        this.inputUtil = inputUtil;
     }
 
     public void startRacing(){
@@ -29,36 +29,36 @@ public class CarRacing {
         display.printLine("자동차 대수는 몇 대 인가요?");
     }
     private int inputNumberOfCar(){
-        int numberOfCar = util.inputNumber();
+        int numberOfCar = NumberUtil.toInt(inputUtil.inputNumber());
         return numberOfCar;
     }
     private int inputNumberOfTry(){
-        int racingCount = util.inputNumber();
+        int racingCount = NumberUtil.toInt(inputUtil.inputNumber());
         return racingCount;
     }
 
     protected int createCar(int numberOfCar){
-        for( int i=0;i<numberOfCar;i++){
-            cars.add(new Car());
+        for ( int i = 0; i < numberOfCar; i++){
+            cars.add(new Car( display));
         }
         return cars.size();
     }
     private void racingCount(int racingCount) {
-        for(int i = 0; i < racingCount; i ++){
+        for (int i = 0; i < racingCount; i++){
             racingStart();
             endTryRacing();
         }
     }
 
     private void racingStart(){
-        for( int i = 0; i < cars.size() ; i ++){
+        for ( int i = 0; i < cars.size() ; i++){
             Car car = cars.get(i);
-            car.run( util.getRandomNumber());
+            car.run( NumberUtil.getRandomNumber());
         }
     }
 
     private void endTryRacing(){
-        System.out.println();
+        display.printEmptyLine();
     }
 
 }

@@ -5,18 +5,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarRacingTest {
 
     private CarRacing cars;
     private Display display;
-    private Util util;
+    private InputUtil inputUtil;
     @BeforeEach
     void setup(){
         display = new Display();
-        util = new Util();
-        cars = new CarRacing(display, util);
+        inputUtil = new InputUtil();
+        cars = new CarRacing(display, inputUtil);
     }
 
     @Test
