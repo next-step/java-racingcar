@@ -7,6 +7,6 @@ public class InputView {
 
     public static String inputExpression() {
         System.out.println("계산식을 입력해주세요.");
-        return (sc.nextLine());
+        return sc.nextLine();
     }
 }

@@ -7,43 +7,16 @@ public class Calculator {
         this.expression = expression;
     }
 
-    public String calculate() {
-        String result = expression.of(0);
+    public Long calculate() {
+        Long resultNum = Long.parseLong(expression.of(0));
         for(int i = 1; i < expression.length() - 1; i = i + 2) {
-            result = calculate(expression.of(i), result, expression.of(i + 1));
+            resultNum = calculate(expression.of(i), resultNum, Long.parseLong(expression.of(i + 1)));
         }
-        return result;
+        return resultNum;
     }
 
-    private String calculate(String operator, String num1, String num2) {
-        if(operator.equals("+")) {
-            return addition(num1, num2);
-        }
-        if(operator.equals("-")) {
-            return subtraction(num1, num2);
-        }
-        if(operator.equals("*")) {
-            return multiplication(num1, num2);
-        }
-        if(operator.equals("/")) {
-            return division(num1, num2);
-        }
-        throw new IllegalArgumentException( operator + " is not operator");
-    }
+    private Long calculate(String operator, Long num1, Long num2) {
+        return Operation.of(operator).calculate(num1, num2);
 
-    private String addition(String num1, String num2) {
-        return String.valueOf(Integer.parseInt(num1) + Integer.parseInt(num2));
-    }
-
-    private String subtraction(String num1, String num2) {
-        return String.valueOf(Integer.parseInt(num1) - Integer.parseInt(num2));
-    }
-
-    private String multiplication(String num1, String num2) {
-        return String.valueOf(Integer.parseInt(num1) * Integer.parseInt(num2));
-    }
-
-    private String division(String num1, String num2) {
-        return String.valueOf(Integer.parseInt(num1) / Integer.parseInt(num2));
     }
 }

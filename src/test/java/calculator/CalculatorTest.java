@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -10,40 +12,14 @@ public class CalculatorTest {
     private Expression expression;
     private Calculator calculator;
 
-    @Test
-    @DisplayName("덧셈 test")
-    void additionTest() {
-        expression = new Expression("20 + 10");
+    @ParameterizedTest
+    @CsvSource({"20 + 10,30","20 - 10,10","20 * 10,200","20 / 10,2"})
+    @DisplayName("사칙연산 test")
+    void calculationTest(String inputData, Long result) {
+        expression = new Expression(inputData);
         calculator = new Calculator(expression);
-        String result = calculator.calculate();
-        assertThat(result).isEqualTo("30");
-    }
-
-    @Test
-    @DisplayName("뺄셈 test")
-    void subtractionTest() {
-        expression = new Expression("20 - 10");
-        calculator = new Calculator(expression);
-        String result = calculator.calculate();
-        assertThat(result).isEqualTo("10");
-    }
-
-    @Test
-    @DisplayName("곱셈 test")
-    void multiplicationTest() {
-        expression = new Expression("20 * 10");
-        calculator = new Calculator(expression);
-        String result = calculator.calculate();
-        assertThat(result).isEqualTo("200");
-    }
-
-    @Test
-    @DisplayName("나눗셈 test")
-    void divisionTest() {
-        expression = new Expression("20 / 10");
-        calculator = new Calculator(expression);
-        String result = calculator.calculate();
-        assertThat(result).isEqualTo("2");
+        Long testResult = calculator.calculate();
+        assertThat(testResult).isEqualTo(result);
     }
 
     @Test
@@ -53,7 +29,7 @@ public class CalculatorTest {
                 .isThrownBy(() -> {
                     expression = new Expression("20 ? 10");
                     calculator = new Calculator(expression);
-                    String result = calculator.calculate();
+                    Long result = calculator.calculate();
                 }).withMessageMatching("\\S is not operator");
     }
 
@@ -62,7 +38,7 @@ public class CalculatorTest {
     void ResultTest() {
         expression = new Expression("20 + 10 * 2 - 10 / 5");
         calculator = new Calculator(expression);
-        String result = calculator.calculate();
-        assertThat(result).isEqualTo("10");
+        Long result = calculator.calculate();
+        assertThat(result).isEqualTo(10);
     }
 }
