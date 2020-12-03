@@ -17,12 +17,32 @@ public class Calculator {
 	}
 
 	private void checkUserInput(String arg) {
-		String[] splitValue = arg.split(" ");
 		checkUserInputEmpty(arg);
-		checkUserInputValidPattern(splitValue);
+		checkUserInputValidPattern(arg);
 	}
 
-	private void checkUserInputValidPattern(String[] splitValue) {
+	private void checkUserInputValidPattern(String arg) {
+		String[] splitValue = arg.split(" ");
+		checkUserInputValidPatternOnLength(splitValue);
+		checkUserInputValidPatternOnPosition(splitValue);
+	}
+
+	private void checkUserInputValidPatternOnPosition(String[] splitValue) {
+		for (int i = 0; i < splitValue.length; i += 2) {
+			checkNumeric(splitValue[i]);
+		}
+
+	}
+
+	private void checkNumeric(String s) {
+		try {
+			int parseInt = Integer.parseInt(s);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 숫자와 연산자의 조합이 옳바르지 않습니다.");
+		}
+	}
+
+	private void checkUserInputValidPatternOnLength(String[] splitValue) {
 		if (splitValue.length == 1 || splitValue.length % 2 == 0)
 			throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 계산식이 없거나 계산식이 옳바르게 종료되지 않았습니다.");
 	}
