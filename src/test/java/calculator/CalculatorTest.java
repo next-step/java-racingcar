@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculatorTest {
@@ -22,9 +25,10 @@ class CalculatorTest {
 		Long firstOperand = 5L;
 		OperatingEntry entry1 = OperatingEntry.of(FourRuleOperator.PLUS, 5L);
 		OperatingEntry entry2 = OperatingEntry.of(FourRuleOperator.MULTIPLY, 3L);
+		List<OperatingEntry> entryList = Arrays.asList(entry1, entry2);
 
 		// when
-		Long result = calculator.calculate(firstOperand, entry1, entry2);
+		Long result = calculator.calculate(firstOperand, entryList);
 
 		// then
 		assertThat(result).isEqualTo(30L);

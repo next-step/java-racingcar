@@ -1,12 +1,12 @@
 package calculator;
 
-import java.util.stream.Stream;
+import java.util.List;
 
 class Calculator {
 
-	Long calculate(Long firstOperand, OperatingEntry... operatingEntries) {
+	Long calculate(Long firstOperand, List<OperatingEntry> operatingEntryList) {
 		Accumulator accumulator = Accumulator.of(firstOperand);
-		Stream.of(operatingEntries).forEach(accumulator::applyOperatingEntry);
+		operatingEntryList.forEach(accumulator::applyOperatingEntry);
 		return accumulator.getResult();
 	}
 }
