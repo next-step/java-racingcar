@@ -1,7 +1,5 @@
 package com.woowahan.racing.model;
 
-import com.woowahan.racing.util.GameRandom;
-
 public class Car {
 
 	private String distance = "";
@@ -17,8 +15,8 @@ public class Car {
 		return new Car();
 	}
 
-	public void racing() {
-		if (GameRandom.isGameWin()) {
+	public void move(boolean isWin) {
+		if (isWin) {
 			this.distance += "-";
 		}
 	}

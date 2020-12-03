@@ -3,6 +3,8 @@ package com.woowahan.racing.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.woowahan.racing.util.GameRandom;
+
 public class RacingSimulator {
 
 	private final InputResult inputResult;
@@ -35,7 +37,7 @@ public class RacingSimulator {
 
 	public GameResult racingCars() {
 		for (Car car : this.partCarList) {
-			car.racing();
+			car.move(GameRandom.isGameWin());
 		}
 		return GameResult.of(this.partCarList);
 	}
