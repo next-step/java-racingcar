@@ -1,5 +1,9 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class OperatorFactor {
@@ -12,7 +16,13 @@ public class OperatorFactor {
 			.orElseThrow(IllegalArgumentException::new);
 	}
 
-	public static boolean validator(String value) {
+	public static Queue<OperatorFactor> getOperatorFactors(String expression) {
+		return Arrays.stream(expression.split(CalculationExpressionFactory.SEPARATOR_CALCULATION_EXPRESSION))
+			.filter(OperatorFactor::validator)
+			.map(OperatorFactor::new).collect(Collectors.toCollection(LinkedList::new));
+	}
+
+	private static boolean validator(String value) {
 		return Stream.of(Operator.values())
 			.anyMatch(operator -> operator.getSymbol().equals(value));
 	}

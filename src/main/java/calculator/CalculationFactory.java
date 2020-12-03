@@ -1,5 +1,5 @@
 package calculator;
 
-public abstract class CalculationFactory {
-	protected abstract CalculationExpression calculationExpressionParser(String inputExpression);
+public interface CalculationFactory {
+	Calculation calculationExpressionParser(String inputExpression);
 }

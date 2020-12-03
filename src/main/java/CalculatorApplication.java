@@ -1,6 +1,8 @@
-package calculator;
-
 import java.util.Scanner;
+
+import calculator.Calculation;
+import calculator.CalculationExpressionFactory;
+import calculator.CalculationFactory;
 
 public class CalculatorApplication {
 
@@ -16,9 +18,8 @@ public class CalculatorApplication {
 		String userInputCalculationExpression = userInput.nextLine();
 		try {
 			CalculationFactory calculationFactory = new CalculationExpressionFactory();
-			CalculationExpression expression = calculationFactory.calculationExpressionParser(userInputCalculationExpression);
-			expression.executeAll();
-			System.out.println(expression.getResult().valueOfFactor());
+			Calculation expression = calculationFactory.calculationExpressionParser(userInputCalculationExpression);
+			System.out.println(expression.calculationResult());
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e.getMessage());
 		}

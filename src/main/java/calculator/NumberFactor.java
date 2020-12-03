@@ -1,5 +1,10 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.stream.Collectors;
+
 public class NumberFactor {
 	private final int value;
 
@@ -11,11 +16,26 @@ public class NumberFactor {
 		this.value = value;
 	}
 
+	public Integer valueOfFactor() {
+		return this.value;
+	}
+
+	public String valueOf() {
+		return String.valueOf(value);
+	}
+
 	public static NumberFactor createFactor(int value) {
 		return new NumberFactor(value);
 	}
 
-	public static boolean validator(String value) {
+	public static Deque<NumberFactor> getNumberFactors(String expression) {
+		return Arrays.stream(expression.split(CalculationExpressionFactory.SEPARATOR_CALCULATION_EXPRESSION))
+			.filter(NumberFactor::validator)
+			.map(NumberFactor::new)
+			.collect(Collectors.toCollection(LinkedList::new));
+	}
+
+	private static boolean validator(String value) {
 		try {
 			Double.parseDouble(value);
 		} catch (Exception isNotNumericException) {
@@ -23,11 +43,6 @@ public class NumberFactor {
 		}
 		return true;
 	}
-
-	public Integer valueOfFactor() {
-		return this.value;
-	}
-
 
 	@Override
 	public int hashCode() {
