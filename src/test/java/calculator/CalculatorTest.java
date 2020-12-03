@@ -44,10 +44,20 @@ class CalculatorTest {
 	@DisplayName("3. 계산식의 숫자와 연산자의 조합이 옳바르지 않습니다.(홀수 숫자체크)")
 	@ParameterizedTest
 	@ValueSource(strings = {"+ + 3 + 5", "3 + + + 2"})
-	void userInputIsInvalidPatternOnPosition(String arg) {
+	void userInputIsInvalidPatternOnNumberPosition(String arg) {
 		assertThatThrownBy(() -> {
 			calculator.calculate(arg);
 		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("계산식이 옳바르지 않습니다. 숫자와 연산자의 조합이 옳바르지 않습니다.");
+			.hasMessageContaining("계산식이 옳바르지 않습니다. 숫자의 위치가 옳바르지 않습니다.");
+	}
+
+	@DisplayName("4. 계산식의 숫자와 연산자의 조합이 옳바르지 않습니다.(짝수 연산자체크)")
+	@ParameterizedTest
+	@ValueSource(strings = {"1 3 5", "1 # 5", "2 ? 9 + 5"})
+	void userInputIsInvalidPatternOnOperatorPosition(String arg) {
+		assertThatThrownBy(() -> {
+			calculator.calculate(arg);
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("계산식이 옳바르지 않습니다. 연산자의 위치가 옳바르지 않거나, 허용된 연산자가 아닙니다.");
 	}
 }

@@ -1,5 +1,9 @@
 package calculator;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * @author : byungkyu
  * @date : 2020/12/02
@@ -32,13 +36,20 @@ public class Calculator {
 			checkNumeric(splitValue[i]);
 		}
 
+		for (int i = 0; i < splitValue.length; i += 2) {
+			checkOperator(splitValue[i]);
+		}
+	}
+
+	private void checkOperator(String s) {
+		if(!Operator.isValid(s)) throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 연산자의 위치가 옳바르지 않거나, 허용된 연산자가 아닙니다.");
 	}
 
 	private void checkNumeric(String s) {
 		try {
 			int parseInt = Integer.parseInt(s);
 		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 숫자와 연산자의 조합이 옳바르지 않습니다.");
+			throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 숫자의 위치가 옳바르지 않습니다.");
 		}
 	}
 
