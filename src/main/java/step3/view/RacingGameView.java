@@ -1,5 +1,8 @@
 package step3.view;
 
+import step3.domain.Car;
+import step3.domain.Cars;
+
 import java.util.Scanner;
 
 public class RacingGameView {
@@ -16,4 +19,19 @@ public class RacingGameView {
     return scanner.nextInt();
   }
 
+  public static void printRacingGameResult(Cars carList) {
+    for (Car car : carList.getCars()) {
+      System.out.println(makeRacingGameResult(car.getDistance()));
+    }
+    System.out.println();
+  }
+
+  private static StringBuilder makeRacingGameResult(int distance) {
+    String distanceMark = "-";
+    StringBuilder racingGameResult = new StringBuilder();
+    for (int i = 0; i < distance; i ++) {
+      racingGameResult.append(distanceMark);
+    }
+    return racingGameResult;
+  }
 }
