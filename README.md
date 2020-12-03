@@ -92,10 +92,10 @@ public class SetTest {
 ### Todo-list
 - Fuel(class)
     - 자동차가 움직이기 위해 필요한 연료를 표현하는 래퍼 객체
-    - [ ] 0 ~ 9 사이의 값을 갖는다.
+    - [X] 0 ~ 9 사이의 값을 갖는다.
 - GasStation(interface)
     - 연료 생산 방식을 정의하는 인터페이스
-    - [ ] Fuel 객체를 생산할 수 있다.
+    - [X] Fuel 객체를 생산할 수 있다.
 - RandomGasStation(class)
     - 랜덤으로 연료를 생산하는 객체
     - [ ] 랜덤으로 유효한 범위의 Fuel 객체를 생산할 수 있다.
