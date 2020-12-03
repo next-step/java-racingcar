@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+## 기능 목록 (step3)
+* 자동차 대수와 시도할 횟수 입력받기 
+* 전진 여부 결정하여 진행 
+    - random 0~9수 중 4 이상이면 전진
+* 화면에 자동차의 상태 노출
