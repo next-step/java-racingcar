@@ -31,8 +31,9 @@ public class CalculationResultTest {
         CalculationResult result = new CalculationResult(String.valueOf(0));
 
         //when
-        result.add(Operator.getOperator(operator).calculate(firstNumber, secondNumber));
-        result.add(Operator.getOperator(operator).calculate(firstNumber, secondNumber));
+        result.set(Operator.getOperator(operator).calculate(firstNumber, secondNumber));
+        result.set(Operator.getOperator(operator).calculate(result.getResult(), firstNumber));
+        result.set(Operator.getOperator(operator).calculate(result.getResult(), secondNumber));
 
         //then
         assertThat(result.getResult()).isEqualTo(expect);
