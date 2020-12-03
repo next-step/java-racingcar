@@ -11,6 +11,10 @@ public class CurrentDistance {
         this.values = new ArrayList<>(values);
     }
 
+    public List<Integer> getValues() {
+        return new ArrayList<>(values);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
