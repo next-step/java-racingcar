@@ -17,7 +17,8 @@ class CalculationExpressionTest {
 	@ParameterizedTest
 	@MethodSource("calculationExpressionExactedResult")
 	void shouldEqualsExpressionResultAndExpectedValue(String paramExpression, NumberFactor expectedNumber) {
-		CalculationExpression expression = new CalculationExpression(paramExpression);
+		CalculationFactory calculationFactory = new CalculationExpressionFactory();
+		CalculationExpression expression = calculationFactory.calculationExpressionParser(paramExpression);
 		expression.executeAll();
 		assertThat(expectedNumber).isEqualTo(expression.getResult());
 	}
@@ -36,23 +37,25 @@ class CalculationExpressionTest {
 	@ParameterizedTest
 	@MethodSource("ExactedException")
 	void whenInputFactorNotAllowStringMatchesExpectedExceptionAndMessage(String paramExpression, String message, Class<?> exception) {
-		assertThatThrownBy(() -> new CalculationExpression(paramExpression).executeAll())
+		assertThatThrownBy(() -> {
+			CalculationFactory calculationFactory = new CalculationExpressionFactory();
+			CalculationExpression expression = calculationFactory.calculationExpressionParser(paramExpression);
+			expression.executeAll();
+		})
 			.isInstanceOf(exception)
 			.hasMessageContaining(message);
 	}
 
 	public static Stream<Arguments> ExactedException() {
 		return Stream.of(
-			Arguments.of("1234 + 90 / 123 + 1.5", "For input string: ", IllegalArgumentException.class),
-			Arguments.of("4000000000 - 2000000000", "For input string: ", NumberFormatException.class),
 			Arguments.of("5 / 0", "/ by zero", ArithmeticException.class),
+			Arguments.of("4000000000 - 2000000000", "For input string: ", NumberFormatException.class),
 			Arguments.of("2000000000 + 2000000000", "integer overflow", ArithmeticException.class),
 			Arguments.of("2000000000 * 2000000000", "integer overflow", ArithmeticException.class),
+			Arguments.of("1234 + 90 / 123 + 1.5", "The calculation expression does not match the format", IllegalArgumentException.class),
+			Arguments.of("", "The calculation expression does not match the format", IllegalArgumentException.class),
 			Arguments.of("5 5 5 90 * + +", "The calculation expression does not match the format", IllegalArgumentException.class),
 			Arguments.of("1 + 1 - -1", "The calculation expression does not match the format", IllegalArgumentException.class),
-			Arguments.of(" 1 + 90 / 123 ? | 84", "The calculation expression does not match the format", IllegalArgumentException.class),
-			Arguments.of("  + 90 / 123 + 84", "OperatorFactor cannot be greater than NumberFactor", IllegalArgumentException.class),
-			Arguments.of("1234 + a / 123 + 84 +", "OperatorFactor cannot be greater than NumberFactor", IllegalArgumentException.class)
-		);
+			Arguments.of(" 1 + 90 / 123 ? | 84", "The calculation expression does not match the format", IllegalArgumentException.class));
 	}
 }

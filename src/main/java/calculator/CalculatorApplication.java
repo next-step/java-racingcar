@@ -15,9 +15,10 @@ public class CalculatorApplication {
 		System.out.print("연산을 입력하세요: ");
 		String userInputCalculationExpression = userInput.nextLine();
 		try {
-			CalculationExpression calculationExpression = new CalculationExpression(userInputCalculationExpression);
-			calculationExpression.executeAll();
-			System.out.println(calculationExpression.getResult().valueOfFactor());
+			CalculationFactory calculationFactory = new CalculationExpressionFactory();
+			CalculationExpression expression = calculationFactory.calculationExpressionParser(userInputCalculationExpression);
+			expression.executeAll();
+			System.out.println(expression.getResult().valueOfFactor());
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e.getMessage());
 		}

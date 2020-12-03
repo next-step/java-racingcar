@@ -1,6 +1,6 @@
 package calculator;
 
-public class NumberFactor implements InputFactor<Integer> {
+public class NumberFactor {
 	private final int value;
 
 	public NumberFactor(String value) {
@@ -11,7 +11,19 @@ public class NumberFactor implements InputFactor<Integer> {
 		this.value = value;
 	}
 
-	@Override
+	public static NumberFactor createFactor(int value) {
+		return new NumberFactor(value);
+	}
+
+	public static boolean validator(String value) {
+		try {
+			Double.parseDouble(value);
+		} catch (Exception isNotNumericException) {
+			return false;
+		}
+		return true;
+	}
+
 	public Integer valueOfFactor() {
 		return this.value;
 	}

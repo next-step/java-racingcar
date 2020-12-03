@@ -1,33 +1,28 @@
 package calculator;
 
-import java.util.stream.Stream;
-
-import calculator.helper.NumberFactorHelper;
-
-
 public enum Operator {
 	ADD("+") {
 		@Override
-		public NumberFactor calculate(InputFactor<Integer> base, InputFactor<Integer> target) {
-			return NumberFactorHelper.add(base, target);
+		public NumberFactor calculate(NumberFactor base, NumberFactor target) {
+			return NumberFactor.createFactor(Math.addExact(base.valueOfFactor(), target.valueOfFactor()));
 		}
 	},
 	SUBTRACT("-") {
 		@Override
-		public NumberFactor calculate(InputFactor<Integer> base, InputFactor<Integer> target) {
-			return NumberFactorHelper.subtract(base, target);
+		public NumberFactor calculate(NumberFactor base, NumberFactor target) {
+			return NumberFactor.createFactor(base.valueOfFactor() - target.valueOfFactor());
 		}
 	},
 	MULTIPLY("*") {
 		@Override
-		public NumberFactor calculate(InputFactor<Integer> base, InputFactor<Integer> target) {
-			return NumberFactorHelper.multiply(base, target);
+		public NumberFactor calculate(NumberFactor base, NumberFactor target) {
+			return NumberFactor.createFactor(Math.multiplyExact(base.valueOfFactor(), target.valueOfFactor()));
 		}
 	},
 	DIVIDE("/") {
 		@Override
-		public NumberFactor calculate(InputFactor<Integer> base, InputFactor<Integer> target) {
-			return NumberFactorHelper.divide(base, target);
+		public NumberFactor calculate(NumberFactor base, NumberFactor target) {
+			return NumberFactor.createFactor(base.valueOfFactor() / target.valueOfFactor());
 		}
 	};
 
@@ -41,17 +36,5 @@ public enum Operator {
 		return symbol;
 	}
 
-	public static Operator of(String symbol) {
-		return Stream.of(Operator.values())
-			.filter(operator -> operator.getSymbol().equals(symbol))
-			.findFirst()
-			.orElseThrow(IllegalArgumentException::new);
-	}
-
-	public static boolean isContainsMathOperator(String symbol) {
-		return Stream.of(Operator.values())
-			.anyMatch(operator -> operator.getSymbol().equals(symbol));
-	}
-
-	abstract NumberFactor calculate(InputFactor<Integer> base, InputFactor<Integer> target);
+	abstract NumberFactor calculate(NumberFactor base, NumberFactor target);
 }
