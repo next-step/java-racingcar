@@ -4,13 +4,9 @@ import java.util.Random;
 
 public class RandomGenerator {
 
-    Random random;
+    private final static Random random = new Random();
 
-    public RandomGenerator() {
-        this.random = new Random();
-    }
-
-    public int generate() {
+    public static int generate() {
         return random.nextInt(10);
     }
 }
