@@ -17,4 +17,14 @@ class StringTest {
         assertThat(data).contains("1");
     }
 
+
+    @Test
+    @DisplayName("String 클래스의 substring 테스트")
+    void substring() {
+        String input = "(1,2)";
+        String result = input.substring(1, input.length() - 1);
+        assertThat(result).isEqualTo("1,2");
+    }
+
+
 }
