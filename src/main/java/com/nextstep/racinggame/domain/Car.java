@@ -1,23 +1,45 @@
 package com.nextstep.racinggame.domain;
 
+import java.util.Objects;
+
 public class Car {
-    private final GasStation gasStation;
-    private int distance;
+    private final int distance;
 
-    public Car(final GasStation gasStation) {
-        this.gasStation = gasStation;
-        this.distance = 0;
+    Car(final int distance) {
+        this.distance = distance;
     }
 
-    public int getDistance() {
-        return distance;
+    public static Car of() {
+        return new Car(0);
     }
 
-    public void move() {
+    public Car move(GasStation gasStation) {
         Fuel fuel = gasStation.refuel();
 
         if (fuel.isEnough()) {
-            this.distance += 1;
+            return new Car(this.distance + 1);
         }
+
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return distance == car.distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "distance=" + distance +
+                '}';
     }
 }

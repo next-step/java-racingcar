@@ -17,21 +17,22 @@ class CarTests {
     @DisplayName("주유할 주유소를 인자로 받아서 객체 생성 가능")
     @Test
     void createTest() {
-        assertThat(new Car(MOVE_GAS_STATION)).isNotNull();
+        assertThat(Car.of()).isNotNull();
     }
 
     @DisplayName("이동 시 주입된 연료의 값에 따라 이동 가능")
     @ParameterizedTest
     @MethodSource("moveTestResource")
-    void moveTest(Car car, int expectedDistance) {
-        car.move();
+    void moveTest(GasStation gasStation, int expectedDistance) {
+        Car movedCar = Car.of()
+                .move(gasStation);
 
-        assertThat(car.getDistance()).isEqualTo(expectedDistance);
+        assertThat(movedCar).isEqualTo(new Car(expectedDistance));
     }
     public static Stream<Arguments> moveTestResource() {
         return Stream.of(
-                Arguments.of(new Car(MOVE_GAS_STATION), 1),
-                Arguments.of(new Car(NOT_MOVE_GAS_STATION), 0)
+                Arguments.of(MOVE_GAS_STATION, 1),
+                Arguments.of(NOT_MOVE_GAS_STATION, 0)
         );
     }
 }
