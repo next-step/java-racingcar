@@ -3,6 +3,9 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,4 +54,30 @@ class FourRuleOperatorTest {
 		// then
 		assertThat(result).isEqualTo(expected);
 	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"+,PLUS", "-,MINUS", "*,MULTIPLY", "/,DIVIDE"})
+	@DisplayName("문자열로 된 연산자 변환 테스트_성공케이스")
+	void of_success(String identifier, FourRuleOperator expected) {
+		// when
+		Optional<FourRuleOperator> fourRuleOperator = FourRuleOperator.of(identifier);
+
+		// then
+		assertThat(fourRuleOperator)
+				.isPresent()
+				.get()
+				.isEqualTo(expected);
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"1", "0", "A", "a", "&"})
+	@DisplayName("문자열로 된 연산자 변환 테스트_실패케이스")
+	void of_fail(String wrongIdentifier) {
+		// when
+		Optional<FourRuleOperator> fourRuleOperator = FourRuleOperator.of(wrongIdentifier);
+
+		// then
+		assertThat(fourRuleOperator).isNotPresent();
+	}
+
 }
