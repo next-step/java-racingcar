@@ -31,6 +31,9 @@ public class CalculatorFormula {
         if (CalculatorFormula.isNotConvertToInt(input)) {
             throw new IllegalArgumentException(WRONG_INPUT);
         }
+        if (CalculatorFormula.isNotAble(input)) {
+            throw new IllegalArgumentException(WRONG_INPUT);
+        }
     }
 
     private static boolean isNull(String input) {
@@ -48,5 +51,10 @@ public class CalculatorFormula {
             }
         }
         return false;
+    }
+
+    private static boolean isNotAble(String input) {
+        String[] strings = input.split(" ");
+        return strings.length % 2 == 0;
     }
 }

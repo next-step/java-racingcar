@@ -30,7 +30,7 @@ public enum Operator {
         return Arrays.stream(values())
                 .filter(o -> o.getOperator().equals(operator))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException("연산자가 잘못 입력 되었습니다."));
     }
 
     public int calculate(int first, int second) {
