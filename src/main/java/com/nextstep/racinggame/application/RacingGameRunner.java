@@ -9,14 +9,18 @@ import java.util.Scanner;
 public class RacingGameRunner {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final GasStation GAS_STATION = new RandomGasStation();
+    private static final String CAR_DEMAND_COMMENT = "자동차 대수는 몇 대 인가요?";
+    private static final String RESULT_HEADER = "실행 결과";
 
     public static void main(String[] args) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+        System.out.println(CAR_DEMAND_COMMENT);
         int carDemand = SCANNER.nextInt();
 
         Cars cars = Cars.of(carDemand);
 
         Cars racedCars = RacingGame.race(cars, GAS_STATION);
+
+        System.out.println(RESULT_HEADER);
         System.out.println(RacingGameResultDrawer.drawGameResult(racedCars));
     }
 }
