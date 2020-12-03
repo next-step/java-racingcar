@@ -98,7 +98,7 @@ public class SetTest {
     - [X] Fuel 객체를 생산할 수 있다.
 - RandomGasStation(class)
     - 랜덤으로 연료를 생산하는 객체
-    - [ ] 랜덤으로 유효한 범위의 Fuel 객체를 생산할 수 있다.
+    - [X] 랜덤으로 유효한 범위의 Fuel 객체를 생산할 수 있다.
 - Car(class)
     - 연료를 주입받아 움직일 수 있는 객체
     - [X] 연료의 값에 따라 이동할 수 있다.
@@ -106,5 +106,6 @@ public class SetTest {
     - [X] GasStation 객체를 인자로 받아서 객체를 생산할 수 있다.
 - Cars(class)
     - Car 일급 컬렉션
+    - [ ] 만들 Car의 수를 인자로 받아서 객체를 생성할 수 있다.
     - [ ] 속한 Car 객체를 모두 동시에 이동시킬 수 있다.
     - [ ] 속한 Car 객체들의 이동 거리 상태를 보여줄 수 있다.
