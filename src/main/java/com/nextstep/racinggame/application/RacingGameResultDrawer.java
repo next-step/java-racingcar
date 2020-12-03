@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGameResultDrawer {
-    public static String drawGameResult(Cars cars) {
+    public static String drawGameResult(final Cars cars) {
         CurrentDistance currentDistance = cars.calculateCurrentDistance();
 
         return currentDistance.getValues().stream()
@@ -15,7 +15,7 @@ public class RacingGameResultDrawer {
                 .collect(Collectors.joining());
     }
 
-    private static String drawMoveLine(int distance) {
+    private static String drawMoveLine(final int distance) {
         if (distance == 0) {
             return "";
         }

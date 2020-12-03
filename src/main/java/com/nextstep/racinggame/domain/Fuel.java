@@ -17,7 +17,7 @@ public class Fuel {
         this.value = value;
     }
 
-    private void validate(int value) {
+    private void validate(final int value) {
         if (value < MIN_VALUE || value > MAX_VALUE) {
             throw new InvalidFuelValueException("유효하지 않은 연료값입니다.");
         }

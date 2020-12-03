@@ -25,7 +25,7 @@ public class Cars {
         return this.cars.size();
     }
 
-    public Cars move(GasStation gasStation) {
+    public Cars move(final GasStation gasStation) {
         List<Car> movedCars = this.cars.stream()
                 .map(car -> car.move(gasStation))
                 .collect(Collectors.toList());

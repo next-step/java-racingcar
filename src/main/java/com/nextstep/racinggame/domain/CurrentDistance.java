@@ -7,7 +7,7 @@ import java.util.Objects;
 public class CurrentDistance {
     private final List<Integer> values;
 
-    public CurrentDistance(List<Integer> values) {
+    public CurrentDistance(final List<Integer> values) {
         this.values = new ArrayList<>(values);
     }
 
