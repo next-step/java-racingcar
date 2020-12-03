@@ -1,10 +1,12 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class OperatorTest {
 
@@ -50,5 +52,19 @@ public class OperatorTest {
 
         //then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("두 수의 나눗셈 연산 테스트 - 0으로 나눌경우 IllegalArgumentException throw")
+    public void divideForZeroIsException(){
+        //given
+        String divisionSign = "/";
+        int number = 5;
+        int zero = 0;
+
+        //when then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Operator.getOperator(divisionSign).calculate(number, zero))
+                .withMessageMatching("0으로 나눌 수 없습니다.");
     }
 }

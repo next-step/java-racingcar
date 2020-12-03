@@ -7,7 +7,12 @@ public enum Operator {
     PLUS("+", (no1, no2) -> no1 + no2),
     MINUS("-", (no1, no2) -> no1 - no2),
     MULTIPLY("*", (no1, no2) -> no1 * no2),
-    DIVIDE("/", (no1, no2) -> no1 / no2);
+    DIVIDE("/", (no1, no2) -> {
+        if (no2 == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
+        return no1 / no2;
+    });
 
     private final String operator;
     private final BiFunction<Integer, Integer, Integer> expression;

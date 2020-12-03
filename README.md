@@ -30,7 +30,7 @@
     - [X] 곱셈
     - [X] 나눗셈
         - [X] 결과 값은 정수로 떨어지는 값으로 한정
-        - [ ] 0으로 나눌경우 IllegalArgumentException throw
+        - [X] 0으로 나눌경우 IllegalArgumentException throw
 - [ ] 연산 결과를 가지고 있는 CalculationResult 클래스 구현
     - [ ] 초기 값은 입력 문자열의 첫번째 값을 가짐
     - [ ] 계산되는 값을 계속 합산하여 가지고 있어야함
