@@ -9,9 +9,6 @@ public class Accumulator {
 
     public void calculate(String symbol, int number) {
         Operator operator = Operator.select(symbol);
-        if (operator == null) {
-            throw new IllegalArgumentException(symbol + " is not valid operator ( +, -, *, / )");
-        }
         value = operator.apply(value, number);
     }
 

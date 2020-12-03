@@ -9,11 +9,12 @@ import static org.assertj.core.api.Assertions.*;
 
 public class OperatorTest {
 
-    @DisplayName("연산자가 올바르지 않은 경우 Operator null 반환")
+    @DisplayName("연산자가 올바르지 않은 경우 IllegalArgumentException 발생")
     @Test
     public void getOperator() {
-        Operator operator = Operator.select("#");
-        assertThat(operator).isNull();
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Operator.select("#"))
+                .withMessage("# is not valid operator ( +, -, *, / )");
     }
 
     @DisplayName("연산자에 따른 Operator 획득 및 계산 결과")
@@ -32,7 +33,8 @@ public class OperatorTest {
         Operator operator = Operator.DIVISION;
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> operator.apply(3,5)).withMessage("3 can't divided into 5");
+                .isThrownBy(() -> operator.apply(3,5))
+                .withMessage("3 can't divided into 5");
     }
 
 }
