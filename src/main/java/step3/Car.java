@@ -8,8 +8,10 @@ public class Car {
         this.distance = new StringBuilder();
     }
 
-    public void move() {
-        distance.append("-");
+    public void move(int random) {
+        if (Checkor.check(random)) {
+            distance.append("-");
+        }
     }
 
     public String getDistance() {

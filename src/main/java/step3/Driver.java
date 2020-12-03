@@ -10,14 +10,12 @@ public class Driver {
         this.cars = cars;
     }
 
-    public void drive(int random) {
-        if (isDrive(random)) {
-            cars.stream().forEach(Car::move);
-        }
+    public void drive() {
+        this.cars.stream().forEach(car -> car.move(RandomGenerator.generate()));
     }
 
-    private boolean isDrive(int random) {
-        return Checkor.check(random);
+    public void currentDistance() {
+        this.cars.stream().map(Car::getDistance).forEach(System.out::println);
     }
 
 }
