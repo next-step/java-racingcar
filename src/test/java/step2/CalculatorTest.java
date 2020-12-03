@@ -2,6 +2,7 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -21,7 +22,8 @@ public class CalculatorTest {
     @CsvSource(value = {"1 + 5 - 2 * 10 / 2:9",
             "10 * 5 + 3 - 4:7",
             "8 - 3:3",
-            "9 / 3 + 10 - 2 * 1:9"}, delimiter = ':')
+            "9 / 3 + 10 - 2 * 1:9",
+            "1 + 2 + 45 - 45 - 80 / 1 / 1 / 1 * 2 * 10:19"}, delimiter = ':')
     @DisplayName("사칙연산 문자열 분해 테스트")
     void splitStringTest(String input, int expected) {
         String[] result = calculator.splitStringByBlankValue(input);
@@ -57,5 +59,34 @@ public class CalculatorTest {
     void operationFailTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.isOperation(input))
                 .withMessageMatching("사칙연산 기호가 아닙니다");
+    }
+
+    @Test
+    @DisplayName("사칙연산 기호와 숫자 자료구조 구축 테스트")
+    void setUpNumbersAndOperationsTest() {
+        // given
+        String[] result = calculator.splitStringByBlankValue("1 + 2 + 45 - 45 - 80 / 2 / 1 / 1 * 2 * 10");
+
+        // when
+        calculator.setUpNumbersAndOperations(result);
+
+        // then
+        assertThat(calculator.numbers.size()).isEqualTo(10);
+        assertThat(calculator.operations.size()).isEqualTo(9);
+    }
+
+    @Test
+    @DisplayName("최종 값 테스트")
+    void calculateNumberTest() {
+        // given
+        String[] result = calculator.splitStringByBlankValue("1 * 80 + 5 / 5 * 2 - 3");
+        calculator.setUpNumbersAndOperations(result);
+
+        // when
+        calculator.calculateNumber();
+
+        // then
+        assertThat(calculator.numbers.size()).isEqualTo(1);
+        assertThat(calculator.numbers.peek()).isEqualTo(31);
     }
 }
