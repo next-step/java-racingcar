@@ -9,6 +9,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static com.nextstep.racinggame.domain.CarsFixtures.ALL_NOT_MOVED_CARS;
+import static com.nextstep.racinggame.domain.CarsFixtures.ALL_ONE_MOVED_CARS;
+import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_STATION;
+import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTests {
@@ -36,14 +40,8 @@ class CarsTests {
     }
     public static Stream<Arguments> moveAllTestResource() {
         return Stream.of(
-                Arguments.of(
-                        new FourFuelGasStation(),
-                        new Cars(Arrays.asList(new Car(1), new Car(1), new Car(1)))
-                ),
-                Arguments.of(
-                        new ThreeFuelGasStation(),
-                        new Cars(Arrays.asList(new Car(0), new Car(0), new Car(0)))
-                )
+                Arguments.of(FOUR_FUEL_GAS_STATION, ALL_ONE_MOVED_CARS),
+                Arguments.of(THREE_FUEL_GAS_STATION, ALL_NOT_MOVED_CARS)
         );
     }
 }

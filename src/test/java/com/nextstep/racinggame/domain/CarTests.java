@@ -8,12 +8,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_STATION;
+import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTests {
-    private static final GasStation MOVE_GAS_STATION = new FourFuelGasStation();
-    private static final GasStation NOT_MOVE_GAS_STATION = new ThreeFuelGasStation();
-
     @DisplayName("주유할 주유소를 인자로 받아서 객체 생성 가능")
     @Test
     void createTest() {
@@ -31,8 +30,8 @@ class CarTests {
     }
     public static Stream<Arguments> moveTestResource() {
         return Stream.of(
-                Arguments.of(MOVE_GAS_STATION, new Car(1)),
-                Arguments.of(NOT_MOVE_GAS_STATION, new Car(0))
+                Arguments.of(FOUR_FUEL_GAS_STATION, new Car(1)),
+                Arguments.of(THREE_FUEL_GAS_STATION, new Car(0))
         );
     }
 }
