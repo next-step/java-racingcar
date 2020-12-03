@@ -17,7 +17,14 @@ public class Calculator {
 	}
 
 	private void checkUserInput(String arg) {
+		String[] splitValue = arg.split(" ");
 		checkUserInputEmpty(arg);
+		checkUserInputValidPattern(splitValue);
+	}
+
+	private void checkUserInputValidPattern(String[] splitValue) {
+		if (splitValue.length == 1 || splitValue.length % 2 == 0)
+			throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 계산식이 없거나 계산식이 옳바르게 종료되지 않았습니다.");
 	}
 
 	private void checkUserInputEmpty(String arg) {
