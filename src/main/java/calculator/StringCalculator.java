@@ -1,9 +1,23 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StringCalculator {
+
+    public void validate(String input) {
+        if (input.equals("") || input.equals(" ")) throw new IllegalArgumentException();
+        List<String> inputList = Arrays.asList(input.split(" "));
+        for (String opCheck : inputList) {
+            isValid(opCheck);
+        }
+    }
+
+    public void isValid(String opCheck) {
+        if (!(opCheck.matches("\\d+") || opCheck.matches("[\\+*\\/-]"))) throw new IllegalArgumentException();
+    }
 
     public int calculateInfo(String input){
         String inputValue = input.replaceAll(" ", "");
@@ -28,17 +42,17 @@ public class StringCalculator {
             int prevNum = numList.poll();
             int nextNum = numList.poll();
             char op = opList.poll();
-            if(op == '+') numList.addFirst(prevNum + nextNum);
-            if(op == '-') numList.addFirst(prevNum - nextNum);
-            if(op == '*') numList.addFirst(prevNum * nextNum);
-            if(op == '/') numList.addFirst(prevNum / nextNum);
+            if (op == '+') numList.addFirst(prevNum + nextNum);
+            if (op == '-') numList.addFirst(prevNum - nextNum);
+            if (op == '*') numList.addFirst(prevNum * nextNum);
+            if (op == '/') numList.addFirst(prevNum / nextNum);
         }
     }
 
     private void distinguishValue(char[] inputValue, LinkedList<Integer> numList, LinkedList<Character> opList) {
-        for(int i = 0; i < inputValue.length; i++) {
+        for (int i = 0; i < inputValue.length; i++) {
             char ch = inputValue[i];
-            if(ch != '+' && ch != '-' && ch != '/' && ch != '*') {
+            if (ch != '+' && ch != '-' && ch != '/' && ch != '*') {
                 numList.add(Integer.parseInt(Character.toString(ch)));
             }
             if(ch == '+' || ch == '-' || ch == '/' || ch == '*') {
@@ -52,7 +66,9 @@ public class StringCalculator {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         StringCalculator cal = new StringCalculator();
+        cal.validate(input);
         int result = cal.calculateInfo(input);
         System.out.println(result);
     }
+
 }
