@@ -21,7 +21,7 @@ public class Calculator {
   }
 
   private static void valid(String input) {
-    if(input == null || input.equals("")) {
+    if (input == null || input.equals("")) {
       throw new IllegalArgumentException();
     }
   }
