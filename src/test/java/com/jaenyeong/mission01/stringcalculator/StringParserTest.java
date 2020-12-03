@@ -12,49 +12,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("주어진 문자열을 수식으로 변환하기 위한 StringParser 클래스 테스트")
 class StringParserTest {
-    @ParameterizedTest
-    @ValueSource(strings = {"1 + 2", "3 * 5 + 5 / 4", "1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9", "-1 * -3 * 7 + 5"})
-    @DisplayName("파라미터가 올바른 문자열인 경우 Parser 객체 생성 테스트")
-    void createParserInstanceWhenGivenValidExpression(final String exp) {
-        final StringParser sp = new StringParser(exp);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1 2 3", "* / /", "1 * 2 3", "111", "", "1 + 2 + +", "3 3 3 / 4", "1   +   2"})
-    @DisplayName("연산자, 피연산자의 위치 또는 개수가 올바르지 않은 경우 Parser 객체 생성 테스트")
-    void createParserInstanceWhenGivenInvalidExpression(final String exp) {
-        assertThatThrownBy(() -> {
-            final StringParser sp = new StringParser(exp);
-        })
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(exp + " is not valid expression");
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1 ^ 2", "1 & 3 & 6", "1 ! 3 _ 5"})
-    @DisplayName("연산자가 올바르지 않은 경우 Parser 객체 생성 테스트")
-    void createParserInstanceWhenGivenNotOperationExpression(final String exp) {
-        assertThatThrownBy(() -> {
-            final StringParser sp = new StringParser(exp);
-        })
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(exp + " is not valid expression");
-    }
 
     @ParameterizedTest
     @ValueSource(strings = {"1 + 2", "3 * 5 + 5 / 4", "1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9", "-1 * -3 * 7 + 5"})
-    @DisplayName("파라미터가 올바른 문자열인 경우 Parser 객체가 올바른 연산자와 피연산자를 반환하는지 테스트")
-    void checkReturnValidOperatorsAndOperandsWhenGivenValidExpression(final String exp) {
+    @DisplayName("올바른 수식인 경우")
+    void checkWhenGivenValidExpression(final String exp) {
         final List<String> operators = new ArrayList<>();
         final List<Integer> operands = new ArrayList<>();
         parseOperatorsAndOperands(operators, operands, exp);
 
-        final StringParser sp = new StringParser(exp);
-        final List<String> operatorsByParser = sp.getOperators();
-        final List<Integer> operandsByParser = sp.getOperands();
+        final StringParser sp = new StringParser();
+        final Expression resultExp = sp.parseExpression(exp);
+        final List<String> expOperators = resultExp.getOperators();
+        final List<Integer> expOperands = resultExp.getOperands();
 
-        assertEquals(operatorsByParser, operators);
-        assertEquals(operandsByParser, operands);
+        assertEquals(expOperators, operators);
+        assertEquals(expOperands, operands);
     }
 
     private void parseOperatorsAndOperands(final List<String> operators, final List<Integer> operands, final String exp) {
@@ -76,5 +49,29 @@ class StringParserTest {
                     break;
             }
         }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 ^ 2", "1 & 3 & 6", "1 ! 3 _ 5"})
+    @DisplayName("올바르지 않은 특수문자가 포함된 수식인 경우")
+    void checkWhenGivenInvalidCharacterInExpression(final String exp) {
+        assertThatThrownBy(() -> {
+            final StringParser sp = new StringParser();
+            final Expression resultExp = sp.parseExpression(exp);
+        })
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(exp + " is not valid expression");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 2 3", "* / /", "1 * 2 3", "111", "", "1 + 2 + +", "3 3 3 / 4", "1   +   2"})
+    @DisplayName("연산자, 피연산자의 위치 또는 개수가 올바르지 않은 경우")
+    void checkWhenGivenInvalidNumberOfOperatorsAndOperands(final String exp) {
+        assertThatThrownBy(() -> {
+            final StringParser sp = new StringParser();
+            final Expression resultExp = sp.parseExpression(exp);
+        })
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(exp + " is not valid expression");
     }
 }

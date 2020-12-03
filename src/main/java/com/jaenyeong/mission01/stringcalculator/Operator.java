@@ -28,4 +28,8 @@ public enum Operator {
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("operator is not valid"));
     }
+
+//    public static Operator getOp(final String operator) {
+//        return operator.equals(operator);
+//    }
 }

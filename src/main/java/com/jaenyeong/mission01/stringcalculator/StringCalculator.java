@@ -1,44 +1,44 @@
 package com.jaenyeong.mission01.stringcalculator;
 
-import java.util.List;
-
 public class StringCalculator {
+    private static final String ERR_OPERATION = "error occurred during operation";
     private static final int OPERATOR_SIZE_MIN = 1;
     private static final int OPERAND_SIZE_MIN = 2;
-    private static final String ERR_OPERATION = "error occurred during operation";
+    private final StringParser parser;
 
-    private final List<String> operators;
-    private final List<Integer> operands;
+    public StringCalculator() {
+        this.parser = new StringParser();
+    }
 
-    public StringCalculator(final List<String> operators, final List<Integer> operands) {
-        this.operators = operators;
-        this.operands = operands;
-
-        if (checkInvalidSize()) {
+    public int calculate(final String strExp) {
+        final Expression expression = this.parser.parseExpression(strExp);
+        if (checkInvalidSize(expression)) {
             throw new IllegalArgumentException("operator or operand is not valid");
         }
+
+        return calculateExpression(expression);
     }
 
-    private boolean checkInvalidSize() {
-        return (operators.size() < OPERATOR_SIZE_MIN)
-            || (operands.size() < OPERAND_SIZE_MIN)
-            || ((operators.size() + 1) != operands.size());
+    private boolean checkInvalidSize(final Expression expression) {
+        return (expression.getOperators().size() < OPERATOR_SIZE_MIN)
+            || (expression.getOperands().size() < OPERAND_SIZE_MIN)
+            || ((expression.getOperators().size() + 1) != expression.getOperands().size());
     }
 
-    public int calculateExpression() {
+    public int calculateExpression(final Expression expression) {
         try {
-            return calculate();
+            return calculate(expression);
         } catch (Exception e) {
             throw new ArithmeticException(ERR_OPERATION);
         }
     }
 
-    private int calculate() {
-        int calculationResult = operands.get(0);
+    private int calculate(final Expression expression) {
+        int calculationResult = expression.getOperands().get(0);
 
-        for (int i = 0; i < operators.size(); i++) {
-            final String operator = operators.get(i);
-            final int operand = operands.get(i + 1);
+        for (int i = 0; i < expression.getOperators().size(); i++) {
+            final String operator = expression.getOperators().get(i);
+            final int operand = expression.getOperands().get(i + 1);
 
             calculationResult = elementCalculate(operator, calculationResult, operand);
         }
