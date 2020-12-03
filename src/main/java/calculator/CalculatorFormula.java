@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CalculatorFormula {
     private static final String WRONG_INPUT = "입력값이 잘못되었습니다.";
-    private List<String> formula;
+    private final List<String> formula;
 
     public CalculatorFormula(String input) {
         inputValidation(input);

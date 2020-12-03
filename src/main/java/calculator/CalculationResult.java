@@ -11,7 +11,7 @@ public class CalculationResult {
         return this.result;
     }
 
-    public void set(int calculateResult) {
+    public void setResult(int calculateResult) {
         this.result = calculateResult;
     }
 }
