@@ -12,7 +12,7 @@ public class RacingRule {
   }
 
   static int getRandomNumber() {
-    return  random.nextInt(10);
+    return random.nextInt(10);
   }
 
 }
