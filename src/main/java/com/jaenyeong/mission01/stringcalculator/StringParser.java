@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringParser {
-    private static final String PLUS = "+";
-    private static final String MINUS = "-";
-    private static final String MULTIPLE = "*";
-    private static final String DIVISION = "/";
     private static final String SEPARATOR = " ";
     private static final String NUMBER_REGEX = "^[+-]?\\d+$";
 
@@ -60,16 +56,8 @@ public class StringParser {
             return;
         }
 
-        switch (element) {
-            case PLUS:
-            case MINUS:
-            case MULTIPLE:
-            case DIVISION:
-                operators.add(element);
-                break;
-            default:
-                throw new IllegalArgumentException();
-        }
+        Operator.getOperator(element);
+        operators.add(element);
     }
 
     private void checkValidOperatorsAndOperands(final String[] expElements,

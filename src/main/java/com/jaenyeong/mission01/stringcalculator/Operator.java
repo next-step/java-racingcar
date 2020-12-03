@@ -22,14 +22,10 @@ public enum Operator {
             .apply(firstOp, secondOp);
     }
 
-    private static Operator getOperator(final String operator) {
+    public static Operator getOperator(final String operator) {
         return Arrays.stream(values())
             .filter(op -> op.operator.equals(operator))
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("operator is not valid"));
     }
-
-//    public static Operator getOp(final String operator) {
-//        return operator.equals(operator);
-//    }
 }
