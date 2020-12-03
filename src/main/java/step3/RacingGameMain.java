@@ -7,6 +7,7 @@ public class RacingGameMain {
     int numberOfCar = RacingGameView.getNumberOfCarFromUser();
     int gameCount = RacingGameView.getGameCountFromUser();
 
+    System.out.println("실행결과");
     RacingGame game = new RacingGame();
     game.start(numberOfCar, gameCount);
   }
