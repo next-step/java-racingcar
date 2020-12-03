@@ -65,7 +65,7 @@ public class SetTest {
 
 - `판독기(Reader)`
     - `계산식(Expression)`을 만드는 역할을 한다.
-    - [ ] 문자열로 `계산식(Expression)`을 만든다.
+    - [X] 문자열로 `계산식(Expression)`을 만든다.
     
 - `계산식(Expression)`
     - 사칙연산을 수행할 수 있는 식을 의미한다.
