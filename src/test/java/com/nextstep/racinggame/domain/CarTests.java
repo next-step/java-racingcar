@@ -23,16 +23,16 @@ class CarTests {
     @DisplayName("이동 시 주입된 연료의 값에 따라 이동 가능")
     @ParameterizedTest
     @MethodSource("moveTestResource")
-    void moveTest(GasStation gasStation, int expectedDistance) {
+    void moveTest(GasStation gasStation, Car expectedCar) {
         Car movedCar = Car.of()
                 .move(gasStation);
 
-        assertThat(movedCar).isEqualTo(new Car(expectedDistance));
+        assertThat(movedCar).isEqualTo(expectedCar);
     }
     public static Stream<Arguments> moveTestResource() {
         return Stream.of(
-                Arguments.of(MOVE_GAS_STATION, 1),
-                Arguments.of(NOT_MOVE_GAS_STATION, 0)
+                Arguments.of(MOVE_GAS_STATION, new Car(1)),
+                Arguments.of(NOT_MOVE_GAS_STATION, new Car(0))
         );
     }
 }
