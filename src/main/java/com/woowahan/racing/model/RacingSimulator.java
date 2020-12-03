@@ -21,7 +21,7 @@ public class RacingSimulator {
 		return new RacingSimulator(inputResult);
 	}
 
-	private List<Car> participateCarList() {
+	List<Car> participateCarList() {
 		List<Car> carList = new ArrayList<>();
 		for (int i = 0; i < inputResult.getCarCount(); i++) {
 			carList.add(Car.getInstance());
@@ -36,7 +36,7 @@ public class RacingSimulator {
 		return this.gameResultList;
 	}
 
-	public GameResult racingCars() {
+	GameResult racingCars() {
 		for (Car car : this.partCarList) {
 			car.move(GameRandom.isGameWin());
 		}
