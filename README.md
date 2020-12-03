@@ -24,15 +24,15 @@
     - [ ] null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
     - [ ] 사칙 연산 기호가 아니거나 변환 불가능한 값의 경우 IllegalArgumentException throw
     - [ ] 숫자(정수)로 변환 불가능한 값의 경우 IllegalArgumentException throw
-- [ ] 입력 문자열의 연산 처리 :: Enum 사용해보기
+- [X] 입력 문자열의 연산 처리 :: Enum 사용해보기
     - [X] 덧셈
     - [X] 뺄셈
     - [X] 곱셈
     - [X] 나눗셈
         - [X] 결과 값은 정수로 떨어지는 값으로 한정
         - [X] 0으로 나눌경우 IllegalArgumentException throw
-- [ ] 연산 결과를 가지고 있는 CalculationResult 클래스 구현
-    - [ ] 초기 값은 입력 문자열의 첫번째 값을 가짐
-    - [ ] 계산되는 값을 계속 합산하여 가지고 있어야함
+- [X] 연산 결과를 가지고 있는 CalculationResult 클래스 구현
+    - [X] 초기 값은 입력 문자열의 첫번째 값을 가짐
+    - [X] 계산되는 값을 계속 합산하여 가지고 있어야함
  - [ ] 사칙 연산을 모두 포함하는 기능 구현 :: Calculator 클래스 구현
     - [ ] 사칙 연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서 결정
