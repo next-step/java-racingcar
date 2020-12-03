@@ -18,7 +18,7 @@ public class CalculatorFactory {
     }
 
     private static void validateEmpty(final String formula) {
-        if (formula.trim().equals("")) {
+        if ("".equals(formula.trim())) {
             throw new EmptyFormulaException("문자열 수식이 반드시 존재해야 합니다.");
         }
     }
