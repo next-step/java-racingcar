@@ -10,11 +10,11 @@ public enum Operation {
     DIVIDE ("/", (x,y) -> x/y);
 
     private final String operator;
-    private final DoubleBinaryOperator op;
+    private final DoubleBinaryOperator binaryOperator;
 
-    Operation(String operator, DoubleBinaryOperator op) {
+    Operation(String operator, DoubleBinaryOperator binaryOperator) {
         this.operator = operator;
-        this.op = op;
+        this.binaryOperator = binaryOperator;
     }
 
     public static Operation getOperation(String operator) {
@@ -24,6 +24,6 @@ public enum Operation {
     }
 
     public double calculate(double x, double y) {
-        return op.applyAsDouble(x, y);
+        return binaryOperator.applyAsDouble(x, y);
     }
 }
