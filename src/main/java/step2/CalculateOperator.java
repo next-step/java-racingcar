@@ -14,22 +14,23 @@ public enum CalculateOperator {
     return x / y;
   });
 
-  private String operator;
-  private BiFunction<Integer, Integer, Integer> expression;
+  private final String operator;
+  private final BiFunction<Integer, Integer, Integer> expression;
 
   CalculateOperator(String operator, BiFunction<Integer, Integer, Integer> expression) {
     this.operator = operator;
     this.expression = expression;
   }
 
-  public static int calculate(String operator, Integer x, Integer y) {
-    return getOperator(operator).expression.apply(x, y);
+  public int calculate(int x, int y) {
+    return this.expression.apply(x, y);
   }
 
-  private static CalculateOperator getOperator(String operator) {
+  public static CalculateOperator valueOfOperator(String operator) {
     return Arrays.stream(values())
         .filter(o -> o.operator.equals(operator))
-        .findFirst().orElseThrow(IllegalArgumentException::new);
+        .findFirst()
+        .orElseThrow(IllegalArgumentException::new);
   }
 
 }
