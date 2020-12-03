@@ -39,4 +39,18 @@ public class CalculatorTest {
                 })
                 .withMessageMatching("입력값이 잘못되었습니다.");
     }
+
+    @Test
+    @DisplayName("사칙 연산 중 연산자 예외 테스트")
+    public void operatorException(){
+        //given
+        String formula = "5 - 2 * 2 / 3 # 2";
+
+        //when then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    int calculate = Calculator.calculate(formula);
+                })
+                .withMessageMatching("연산자가 잘못 입력 되었습니다.");
+    }
 }
