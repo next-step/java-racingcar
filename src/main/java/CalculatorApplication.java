@@ -6,19 +6,19 @@ import calculator.CalculationFactory;
 
 public class CalculatorApplication {
 
+	private static final Scanner userInput = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		Scanner userInput = new Scanner(System.in);
+		CalculationFactory calculationFactory = new CalculationExpressionFactory();
 		while (true) {
-			playCalculator(userInput);
+			playCalculator(calculationFactory);
 		}
 	}
 
-	private static void playCalculator(Scanner userInput) {
+	private static void playCalculator(CalculationFactory calculationFactory) {
 		System.out.print("연산을 입력하세요: ");
-		String userInputCalculationExpression = userInput.nextLine();
 		try {
-			CalculationFactory calculationFactory = new CalculationExpressionFactory();
-			Calculation expression = calculationFactory.calculationExpressionParser(userInputCalculationExpression);
+			Calculation expression = calculationFactory.calculationExpressionParser(userInput.nextLine());
 			System.out.println(expression.calculationResult());
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e.getMessage());
