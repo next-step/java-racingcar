@@ -5,14 +5,21 @@ import com.nextstep.racinggame.domain.exceptions.InvalidFuelValueException;
 import java.util.Objects;
 
 public class Fuel {
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 9;
+
     private final int value;
 
     public Fuel(final int value) {
-        if (value < 0 || value > 9) {
-            throw new InvalidFuelValueException("유효하지 않은 연료값입니다.");
-        }
+        validate(value);
 
         this.value = value;
+    }
+
+    private void validate(int value) {
+        if (value < MIN_VALUE || value > MAX_VALUE) {
+            throw new InvalidFuelValueException("유효하지 않은 연료값입니다.");
+        }
     }
 
     @Override
