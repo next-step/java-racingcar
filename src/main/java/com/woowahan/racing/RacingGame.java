@@ -14,6 +14,7 @@ public class RacingGame {
 
 		RacingSimulator racingSimulator = RacingSimulator.getInstance(inputResult);
 		racingSimulator.run();
+		System.out.println(racingSimulator.getGameResultList());
 		ResultView.printResult(racingSimulator.getGameResultList());
 
 	}
