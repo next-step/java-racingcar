@@ -33,11 +33,13 @@ class CalculatorTest {
 
 	@DisplayName("2. 계산식이 없거나, 옳바르게 종료되지 않은 경우 ")
 	@ParameterizedTest
-	@ValueSource(strings = {"1 + ", "5 + 2 + ", "- 5 + 2"})
+	@ValueSource(strings = {"1 + ", "5 + 2 + ", "2 + 2 + 1 +"})
 	void userInputIsInvalidPattern(String arg) {
 		assertThatThrownBy(() -> {
 			calculator.calculate(arg);
 		}).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("계산식이 옳바르지 않습니다. 계산식이 없거나 계산식이 옳바르게 종료되지 않았습니다.");
 	}
+
+
 }
