@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class CalculatorFactory {
     private static final String FORMULA_SPLITTER = " ";
 
-    public static Calculator of(final String formula) {
+    public static Calculator createFactory(final String formula) {
         validateEmpty(formula);
 
         List<String> formulaContents = Arrays.asList(formula.split(FORMULA_SPLITTER));
@@ -18,7 +18,7 @@ public class CalculatorFactory {
     }
 
     private static void validateEmpty(final String formula) {
-        if (formula.trim().equals("")) {
+        if ("".equals(formula.trim())) {
             throw new EmptyFormulaException("문자열 수식이 반드시 존재해야 합니다.");
         }
     }
