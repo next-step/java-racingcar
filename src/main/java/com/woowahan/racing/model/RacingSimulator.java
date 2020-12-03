@@ -46,13 +46,5 @@ public class RacingSimulator {
 		return gameResultList;
 	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("RacingSimulator{");
-		sb.append("inputResult=").append(inputResult);
-		sb.append(", partCarList=").append(partCarList);
-		sb.append(", gameResultList=").append(gameResultList);
-		sb.append('}');
-		return sb.toString();
-	}
+
 }

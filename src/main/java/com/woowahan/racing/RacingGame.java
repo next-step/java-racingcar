@@ -10,11 +10,8 @@ public class RacingGame {
 	public static void main(String[] args) {
 
 		InputResult inputResult = InputResult.of(InputView.getCarCount(), InputView.getTryCount());
-		System.out.println(inputResult);
-
 		RacingSimulator racingSimulator = RacingSimulator.getInstance(inputResult);
 		racingSimulator.run();
-		System.out.println(racingSimulator.getGameResultList());
 		ResultView.printResult(racingSimulator.getGameResultList());
 
 	}

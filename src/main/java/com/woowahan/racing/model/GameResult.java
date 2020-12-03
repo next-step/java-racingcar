@@ -23,11 +23,5 @@ public class GameResult {
 		return carList;
 	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("GameResult{");
-		sb.append("carList=").append(carList);
-		sb.append('}');
-		return sb.toString();
-	}
+
 }

@@ -29,11 +29,5 @@ public class Car {
 		return new Car(this.distance);
 	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("Car{");
-		sb.append("distance='").append(distance).append('\'');
-		sb.append('}');
-		return sb.toString();
-	}
+
 }

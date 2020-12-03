@@ -22,12 +22,5 @@ public class InputResult {
 		return tryCount;
 	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("InputResult{");
-		sb.append("carCount=").append(carCount);
-		sb.append(", tryCount=").append(tryCount);
-		sb.append('}');
-		return sb.toString();
-	}
+
 }
