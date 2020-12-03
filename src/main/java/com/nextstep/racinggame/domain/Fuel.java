@@ -1,11 +1,17 @@
 package com.nextstep.racinggame.domain;
 
+import com.nextstep.racinggame.domain.exceptions.InvalidFuelValueException;
+
 import java.util.Objects;
 
 public class Fuel {
     private final int value;
 
     public Fuel(final int value) {
+        if (value < 0 || value > 9) {
+            throw new InvalidFuelValueException("유효하지 않은 연료값입니다.");
+        }
+
         this.value = value;
     }
 
