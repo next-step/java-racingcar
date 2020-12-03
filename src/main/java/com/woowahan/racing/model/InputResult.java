@@ -14,4 +14,20 @@ public class InputResult {
 		return new InputResult(carCount, tryCount);
 	}
 
+	public int getCarCount() {
+		return carCount;
+	}
+
+	public int getTryCount() {
+		return tryCount;
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("InputResult{");
+		sb.append("carCount=").append(carCount);
+		sb.append(", tryCount=").append(tryCount);
+		sb.append('}');
+		return sb.toString();
+	}
 }
