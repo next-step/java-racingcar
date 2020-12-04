@@ -2,44 +2,64 @@ package calculator;
 
 public class Calculator {
 
-	public static int plus(int number1, int number2) {
+	private int result;
+	private int calculateNumber;
+	private String sign;
 
-		return number1 + number2;
+	public Calculator(int firstNumber) {
+
+		this.result = firstNumber;
 	}
 
-	public static int minus(int number1, int number2) {
+	public void plus() {
 
-		return number1 - number2;
+		this.result = this.result + this.calculateNumber;
 	}
 
-	public static int mod(int number1, int number2) {
+	public void minus() {
 
-		return number1 / number2;
+		this.result = this.result - this.calculateNumber;
 	}
 
-	public static int multi(int number1, int number2) {
+	public void mod() {
 
-		return number1 * number2;
+		this.result = this.result / this.calculateNumber;
 	}
 
-	public static int calculate(int number1, int number2, String sign) {
+	public void multi() {
 
-		if ("+".equals(sign)) {
-			return plus(number1, number2);
+		this.result = this.result * this.calculateNumber;
+	}
+
+	public int getResult() {
+
+		return this.result;
+	}
+
+	public void calculate() {
+
+		if ("+".equals(this.sign)) {
+			plus();
 		}
 
-		if ("-".equals(sign)) {
-			return minus(number1, number2);
+		if ("-".equals(this.sign)) {
+			minus();
 		}
 
-		if ("*".equals(sign)) {
-			return multi(number1, number2);
+		if ("*".equals(this.sign)) {
+			multi();
 		}
 
-		if ("/".equals(sign)) {
-			return  mod(number1, number2);
+		if ("/".equals(this.sign)) {
+			mod();
 		}
+	}
 
-		return 0;
+	public void calculate(String signStr, int number2) {
+
+		calculateNumber = number2;
+		sign = signStr;
+
+		calculate();
 	}
 }
