@@ -20,7 +20,24 @@
     + 우승자는 1명 이상일 수 있다
 
 ### 구현한 클래스 설명
-
++ Checkor (Interface) : 확장이 가능한 클래스로 Interface로 정의
+    + AdvanceCheckor : 전진가능여부를 체크
+    + ScoreCheckor : 우승자 점수를 체크
++ Car : 자동차 클래스
+    + 이동한다
+    + 운전한 거리를 가진다
+    + 이름을 가진다
++ Driver : 자동차를 가진 운전자
+    + 자동차를 운전한다
+    + 자동차의 운전한 거리를 볼 수 있다
+    + 자동차의 이름을 알 수 있다
++ RandomGenerator : 0~9까지 Random 숫자를 뽑아준다
++ ViewManager : 뷰 메시지 출력 담당자
+    + 자동차의 이름을 물어본다
+    + 시도할 회수를 물어본다
+    + 자동차의 움직임을 보여준다
+    + 최종 우승자를 말해준다
++ View : 실행되는 뷰 
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
