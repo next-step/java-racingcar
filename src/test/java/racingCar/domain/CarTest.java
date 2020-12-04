@@ -1,6 +1,5 @@
 package racingCar.domain;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-         car = new Car(new Position());
+         car = new Car();
     }
 
     @Test
@@ -36,5 +35,14 @@ public class CarTest {
         car.racing(2);
         car.racing(7);
         assertThat(car.getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("자동차 위치 toString")
+    void drawPosition() {
+        car.racing(4);
+        car.racing(2);
+        car.racing(7);
+        assertThat(car.toString()).isEqualTo("--");
     }
 }

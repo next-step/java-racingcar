@@ -26,12 +26,7 @@ public class Racing {
         }
     }
 
-
-
-
-
-
-
-    //생성된 자동차한테 racing 처리하기
-    // output view한테 그림그리게 시키기
+    public List<Car> getRacingCars() {
+        return cars;
+    }
 }
