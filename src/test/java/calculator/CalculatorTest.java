@@ -5,41 +5,46 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CalculatorTest {
 
-	int result;
+	@ParameterizedTest
+	@CsvSource(value = {"1 + 2 3", "4 - 2 2", "2 * 3 6", "10 / 2 5"}, delimiter = ' ')
+	@DisplayName("계산 부호 추가 테스트")
+	void calculateTest(int number1, String sign, int number2, int result) {
+
+		assertThat(Calculator.calculate(number1, number2, sign)).isEqualTo(result);
+	}
 
 
 	@Test
-	@DisplayName("계산 테스트 ")
+	@DisplayName("덧셈 계산 테스트 ")
 	void plusTest() {
 
-		result = Calculator.plus(4, 5);
-		assertThat(result).isEqualTo(9);
+		assertThat(Calculator.plus(4, 5)).isEqualTo(9);
 	}
 
 	@Test
-	@DisplayName("계산 테스트")
+	@DisplayName("뺄셈 계산 테스트")
 	void minusTest() {
 
-		result = Calculator.minus(6, 4);
-		assertThat(result).isEqualTo(2);
+		assertThat(Calculator.minus(6, 4)).isEqualTo(2);
 	}
 
 	@Test
-	@DisplayName("계산 테스트")
+	@DisplayName("나눗셈 계산 테스트")
 	void modTest() {
 
-		result = Calculator.mod(10,2);
-		assertThat(result).isEqualTo(5);
+		assertThat(Calculator.mod(10,2)).isEqualTo(5);
 	}
 
 	@Test
-	@DisplayName("계산 테스트")
+	@DisplayName("곱셈 계산 테스트")
 	void multiTest() {
 
-		result = Calculator.multi(3, 6);
-		assertThat(result).isEqualTo(18);
+		assertThat(Calculator.multi(3, 6)).isEqualTo(18);
 	}
 }
