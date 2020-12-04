@@ -1,9 +1,21 @@
 package racing.view;
 
-public class ResultView {
+import racing.model.Car;
 
-	public void print(int forwardRecult) {
-		for (int i = 0; i < forwardRecult; i++) {
+import java.util.List;
+
+public class ResultView {
+	public void printResult(List<Car> carList){
+		System.out.println("Ready.. Go!");
+		for (int i = 0; i < carList.size(); i++) {
+			Car car = carList.get(i);
+			print(car.getForwardCount());
+		}
+		System.out.println("End!");
+	}
+
+	public void print(int forwardCount){
+		for (int i = 0; i < forwardCount; i++) {
 			System.out.print("-");
 		}
 		System.out.println();

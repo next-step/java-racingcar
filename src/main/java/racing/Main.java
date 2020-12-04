@@ -1,9 +1,12 @@
 package racing;
 
+import calculator.StringCalculator;
+
 public class Main {
 
 	public static void main(String[] args) {
-		RacingGame racingGame = new RacingGame();
-		racingGame.start();
+		RacingCar racingCar = new RacingCar();
+		racingCar.main();
+
 	}
 }
