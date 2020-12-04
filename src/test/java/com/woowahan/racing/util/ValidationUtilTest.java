@@ -118,4 +118,22 @@ class ValidationUtilTest {
 			Arguments.of(Arrays.asList("가나다라마", "abcde"), false)
 		);
 	}
+
+	@DisplayName("isNullOrEmpty 메서드는 전달된 문자열이 null or empty인경우 true를 반환한다. 아닌 경우 false를 반환한다.")
+	@ParameterizedTest
+	@MethodSource("argIsNullOrEmpty")
+	void isNullOrEmpty(String value, boolean expected) {
+
+		boolean result = ValidationUtil.isNullOrEmpty(value);
+
+		assertThat(result).isEqualTo(expected);
+	}
+
+	public static Stream argIsNullOrEmpty() {
+		return Stream.of(
+			Arguments.of(null, true),
+			Arguments.of("", true),
+			Arguments.of("abc", false)
+		);
+	}
 }
