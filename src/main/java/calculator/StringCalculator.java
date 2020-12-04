@@ -1,11 +1,15 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class StringCalculator {
+
+    private static Map<String, Operator> operators = new HashMap<>();
+
+    static {
+        for (Operator value : Operator.values())
+            operators.put(value.operator, value);
+    }
 
     public void validate(String input) {
         if (input.equals("") || input.equals(" ")) throw new IllegalArgumentException();
@@ -20,6 +24,7 @@ public class StringCalculator {
     }
 
     public int calculateInfo(String input){
+        validate(input);
         String inputValue = input.replaceAll(" ", "");
         char[] arrCh = inputValue.toCharArray();
         int result = 0;
@@ -42,33 +47,27 @@ public class StringCalculator {
             int prevNum = numList.poll();
             int nextNum = numList.poll();
             char op = opList.poll();
-            if (op == '+') numList.addFirst(prevNum + nextNum);
-            if (op == '-') numList.addFirst(prevNum - nextNum);
-            if (op == '*') numList.addFirst(prevNum * nextNum);
-            if (op == '/') numList.addFirst(prevNum / nextNum);
+            processOperator(op, prevNum, nextNum, numList);
         }
+    }
+
+    private void processOperator(char op, int preNum, int nextNum, LinkedList<Integer> numList) {
+        numList.addFirst(operators.get(Character.toString(op)).calculate(preNum, nextNum));
     }
 
     private void distinguishValue(char[] inputValue, LinkedList<Integer> numList, LinkedList<Character> opList) {
         for (int i = 0; i < inputValue.length; i++) {
             char ch = inputValue[i];
-            if (ch != '+' && ch != '-' && ch != '/' && ch != '*') {
-                numList.add(Integer.parseInt(Character.toString(ch)));
-            }
-            if(ch == '+' || ch == '-' || ch == '/' || ch == '*') {
-                opList.add(ch);
-            }
+            processValues(ch, numList, opList);
         }
     }
 
-    public static void main(String[] args){
-        System.out.println("사칙연산을 수행할 식을 입력하세요.");
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        StringCalculator cal = new StringCalculator();
-        cal.validate(input);
-        int result = cal.calculateInfo(input);
-        System.out.println(result);
+    private void processValues(char ch, LinkedList<Integer> numList, LinkedList<Character> opList) {
+        if (ch != '+' && ch != '-' && ch != '/' && ch != '*') {
+            numList.add(Integer.parseInt(Character.toString(ch)));
+        }
+        if(ch == '+' || ch == '-' || ch == '/' || ch == '*') {
+            opList.add(ch);
+        }
     }
-
 }

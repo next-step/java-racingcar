@@ -16,29 +16,25 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("덧셈 테스트")
     void add() {
-        String input = "2 + 3";
-        assertThat(scal.calculateInfo(input)).isEqualTo(5);
+        assertThat(scal.calculateInfo("2 + 3")).isEqualTo(5);
     }
 
     @Test
     @DisplayName("minus test")
     void minus() {
-        String input = "5 - 3";
-        assertThat(scal.calculateInfo(input)).isEqualTo(2);
+        assertThat(scal.calculateInfo("5 - 3")).isEqualTo(2);
     }
 
     @Test
     @DisplayName("multiple test")
     void multiple() {
-        String input = "5 * 3";
-        assertThat(scal.calculateInfo(input)).isEqualTo(15);
+        assertThat(scal.calculateInfo("5 * 3")).isEqualTo(15);
     }
 
     @Test
     @DisplayName("divide test")
     void divide() {
-        String input = "6 / 3";
-        assertThat(scal.calculateInfo(input)).isEqualTo(2);
+        assertThat(scal.calculateInfo("6 / 3")).isEqualTo(2);
     }
 
     @ParameterizedTest
@@ -54,6 +50,6 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"2 + 3 * 4 / 2"})
     @DisplayName("사칙연산을 모두 포함하는 기능 구현")
     void fourOperationCheck(String input) {
-        assertEquals(10, scal.calculateInfo(input));
+        assertThat(scal.calculateInfo(input)).isEqualTo(10);
     }
 }
