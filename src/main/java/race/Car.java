@@ -12,8 +12,11 @@ public class Car {
 		return new Car(movePolicy);
 	}
 
-	public int move() {
+	public void move() {
 		distance += movePolicy.move();
+	}
+
+	public int nowDistance() {
 		return distance;
 	}
 }
