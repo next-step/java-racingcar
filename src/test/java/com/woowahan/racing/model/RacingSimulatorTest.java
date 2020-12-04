@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class RacingSimulatorTest {
@@ -31,17 +32,24 @@ class RacingSimulatorTest {
 		);
 	}
 
-	@DisplayName("run 메서드는 List<GameResult> 형태의 결과를 반환한다.")
+	@DisplayName("run 메서드의 결과는 InputResult의 carCount만큼의 Car수와  tryCount만큼 GameResult객체의 수를 가진다.")
 	@ParameterizedTest
-	@MethodSource("argCreateSimulator")
-	void run(InputResult param) {
+	@CsvSource(value = {"3:5", "1:9", "2:10"}, delimiter = ':')
+	void run(int carCount, int tryCount) {
 
-		RacingSimulator simulator = RacingSimulator.createSimulator(param);
-		List<GameResult> result = simulator.run();
+		InputResult inputResult = InputResult.of(carCount, tryCount);
 
+		RacingSimulator simulator = RacingSimulator.createSimulator(inputResult);
+		List<GameResult> gameResults = simulator.run();
+		int trySize = gameResults.size();
 		assertAll(
-			() -> assertThat(result).isInstanceOf(List.class),
-			() -> assertThat(result).hasOnlyElementsOfType(GameResult.class)
+			() -> assertThat(trySize).isEqualTo(tryCount),
+			() -> {
+				for (GameResult gameResult : gameResults) {
+					int carSize = gameResult.getCars().size();
+					assertThat(carSize).isEqualTo(carCount);
+				}
+			}
 		);
 	}
 }
