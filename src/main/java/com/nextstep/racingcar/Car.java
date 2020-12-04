@@ -29,6 +29,10 @@ public class Car {
         return position;
     }
 
+    public boolean isFinished(int limit) {
+        return limit <= position;
+    }
+
     public boolean isNotFinished(int limit) {
         return position < limit;
     }

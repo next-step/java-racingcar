@@ -3,6 +3,7 @@ package com.nextstep.racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Race {
     private int moveLimit;
@@ -24,9 +25,16 @@ public class Race {
 
     public boolean isNotFinished() {
         boolean isNotFinished = true;
-        for ( Car car : cars) {
+        for (Car car : cars) {
             isNotFinished = isNotFinished && car.isNotFinished(moveLimit);
         }
         return isNotFinished;
+    }
+
+    public String getFinishedCarNames(){
+        return cars.stream()
+                .filter(car -> car.isFinished(moveLimit))
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
     }
 }

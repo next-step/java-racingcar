@@ -65,6 +65,29 @@ public class RaceTest {
         );
     }
 
+    @DisplayName("종료 된 car의 이름들을 가져오는지 확인")
+    @ParameterizedTest
+    @MethodSource
+    public void getFinishedCarNames(Supplier<Integer> numberGenerator, int moveLimit, String expected) {
+        Race race = new Race(carNames, moveLimit, numberGenerator);
+
+        for (int ix = 0 ; ix < moveLimit ; ix ++) {
+            race.moveAndGet();
+        }
+        assertThat(race.getFinishedCarNames()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> getFinishedCarNames() {
+        return Stream.of(
+                Arguments.of(new SpecificGenerator(5, 1, 1), 5, "test1"),
+                Arguments.of(new SpecificGenerator(1, 5, 1), 5, "test2"),
+                Arguments.of(new SpecificGenerator(1, 1, 5), 5, "test3"),
+                Arguments.of(new SpecificGenerator(1, 5, 5), 5, "test2,test3"),
+                Arguments.of(new SpecificGenerator(5, 5, 5), 5, "test1,test2,test3"),
+                Arguments.of(new SpecificGenerator(1, 1, 1), 5, "")
+        );
+    }
+
     private static class SpecificGenerator implements  Supplier<Integer> {
         private int[] values;
         private int idx = 0;

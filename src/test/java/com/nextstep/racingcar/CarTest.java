@@ -54,7 +54,9 @@ public class CarTest {
         for ( int ix = 0 ; ix < count ; ix ++ ) {
             car.tryMove();
         }
+
         assertThat(car.isNotFinished(CAR_COUNT)).isEqualTo(expected);
+        assertThat(car.isFinished(CAR_COUNT)).isEqualTo(!expected);
     }
 
     private static Stream<Arguments> isNotFinished() {

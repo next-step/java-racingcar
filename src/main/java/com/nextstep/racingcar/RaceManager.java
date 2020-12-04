@@ -24,6 +24,11 @@ public class RaceManager {
             List<Car> cars = race.moveAndGet();
             printPosition(cars);
         }
+        printWinner(race.getFinishedCarNames());
+    }
+
+    private void printWinner(String names) {
+        System.out.println(names + "가 최종 우승했습니다.");
     }
 
     private void printResultHeader() {
