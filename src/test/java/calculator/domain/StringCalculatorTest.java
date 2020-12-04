@@ -32,4 +32,12 @@ public class StringCalculatorTest {
         double result = stringCalculator.calculate("*", num1, num2);
         assertThat(result).isEqualTo(expected);
     }
+
+    @DisplayName("나눗셈")
+    @ParameterizedTest
+    @CsvSource(value = {"1:-2:-0.5", "4:2:2", "0:4:0"}, delimiter = ':')
+    void divide(double num1, double num2, double expected) {
+        double result = stringCalculator.calculate("/", num1, num2);
+        assertThat(result).isEqualTo(expected);
+    }
 }
