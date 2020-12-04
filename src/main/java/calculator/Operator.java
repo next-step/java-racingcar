@@ -6,9 +6,19 @@ import java.util.function.BiFunction;
 public enum Operator {
     PLUS("+", (left, right) -> left + right),
     MINUS("-", (left, right) -> left - right),
-    DIVIDE("/", (left, right) -> left / right),
+    DIVIDE("/", (left, right) -> {
+        checkZero(right);
+        return left / right;
+    }),
     MULTIPLY("*", (left, right) -> left * right),
     ;
+
+    private static void checkZero(long right) {
+        if (right == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다");
+        }
+
+    }
 
     private final BiFunction<Long, Long, Long> biFunction;
     private final String symbol;

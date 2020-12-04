@@ -13,4 +13,11 @@ class OperatorTest {
                 .isThrownBy(() -> Operator.calculate(1, 2, "("));
     }
 
+    @DisplayName("0으로 나누면 에러 발생")
+    @Test
+    public void divideZero() {
+        Assertions.assertThatIllegalArgumentException()
+                .isThrownBy(() -> Operator.calculate(1, 0, "/"));
+    }
+    
 }
