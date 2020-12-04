@@ -17,6 +17,7 @@ public class StringParser {
 
         try {
             return extractOperatorsAndOperands(expression);
+
         } catch (Exception e) {
             throw new IllegalArgumentException(expression + " is not valid expression");
         }

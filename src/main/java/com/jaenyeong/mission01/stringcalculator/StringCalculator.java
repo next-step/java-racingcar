@@ -2,8 +2,6 @@ package com.jaenyeong.mission01.stringcalculator;
 
 public class StringCalculator {
     private static final String ERR_OPERATION = "error occurred during operation";
-    private static final int OPERATOR_SIZE_MIN = 1;
-    private static final int OPERAND_SIZE_MIN = 2;
     private final StringParser parser;
 
     public StringCalculator() {
@@ -12,17 +10,8 @@ public class StringCalculator {
 
     public int calculate(final String strExp) {
         final Expression expression = this.parser.parseExpression(strExp);
-        if (checkInvalidSize(expression)) {
-            throw new IllegalArgumentException("operator or operand is not valid");
-        }
 
         return calculateExpression(expression);
-    }
-
-    private boolean checkInvalidSize(final Expression expression) {
-        return (expression.getOperators().size() < OPERATOR_SIZE_MIN)
-            || (expression.getOperands().size() < OPERAND_SIZE_MIN)
-            || ((expression.getOperators().size() + 1) != expression.getOperands().size());
     }
 
     public int calculateExpression(final Expression expression) {
