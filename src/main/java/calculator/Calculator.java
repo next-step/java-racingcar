@@ -11,32 +11,15 @@ public class Calculator {
 		this.result = firstNumber;
 	}
 
-	public void plus() {
+	public void calculate(String signStr, int calculateNumber) {
 
-		this.result = this.result + this.calculateNumber;
+		this.calculateNumber = calculateNumber;
+		this.sign = signStr;
+
+		calculate();
 	}
 
-	public void minus() {
-
-		this.result = this.result - this.calculateNumber;
-	}
-
-	public void mod() {
-
-		this.result = this.result / this.calculateNumber;
-	}
-
-	public void multi() {
-
-		this.result = this.result * this.calculateNumber;
-	}
-
-	public int getResult() {
-
-		return this.result;
-	}
-
-	public void calculate() {
+	private void calculate() {
 
 		if ("+".equals(this.sign)) {
 			plus();
@@ -55,11 +38,28 @@ public class Calculator {
 		}
 	}
 
-	public void calculate(String signStr, int number2) {
+	public int getResult() {
 
-		calculateNumber = number2;
-		sign = signStr;
+		return this.result;
+	}
 
-		calculate();
+	private void plus() {
+
+		this.result += this.calculateNumber;
+	}
+
+	private void minus() {
+
+		this.result -= this.calculateNumber;
+	}
+
+	private void mod() {
+
+		this.result /= this.calculateNumber;
+	}
+
+	private void multi() {
+
+		this.result *= this.calculateNumber;
 	}
 }
