@@ -20,12 +20,12 @@ public class RaceTest {
     @ParameterizedTest
     @MethodSource
     public void moveAndGet(Supplier<Integer> numberGenerator, int moveLimit, int expected) {
-        Race race = new Race(CAR_COUNT, moveLimit);
+        Race race = new Race(CAR_COUNT, moveLimit, numberGenerator);
 
         List<Car> carList = null;
 
         for (int ix = 0 ; ix < moveLimit ; ix ++) {
-            carList = race.moveAndGet(numberGenerator);
+            carList = race.moveAndGet();
         }
         assertThat(carList).isNotNull();
 
@@ -47,10 +47,10 @@ public class RaceTest {
     @ParameterizedTest
     @MethodSource
     public void isNotFinished(Supplier<Integer> numberGenerator, int moveLimit, boolean expected) {
-        Race race = new Race(CAR_COUNT, moveLimit);
+        Race race = new Race(CAR_COUNT, moveLimit, numberGenerator);
 
         for (int ix = 0 ; ix < moveLimit ; ix ++) {
-            race.moveAndGet(numberGenerator);
+            race.moveAndGet();
         }
         assertThat(race.isNotFinished()).isEqualTo(expected);
     }

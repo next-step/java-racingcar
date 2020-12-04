@@ -21,7 +21,7 @@ public class RaceManager {
 
         printResultHeader();
         while(!race.isNotFinished()) {
-            List<Car> cars = race.moveAndGet(this::getRandomValue);
+            List<Car> cars = race.moveAndGet();
             printPosition(cars);
         }
     }
@@ -49,7 +49,7 @@ public class RaceManager {
         int carCount = inputCarCount();
         int moveLimit = inputMoveLimit();
 
-        return new Race(carCount, moveLimit);
+        return new Race(carCount, moveLimit, this::getRandomValue);
     }
 
     private int inputCarCount() {
