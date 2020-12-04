@@ -1,11 +1,17 @@
 package calculator;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Calculator {
 	private int firstNumber;
 	private String operation;
 	private int secondNumber;
 
 	public Calculator(String firstNumber, String operation, String secondNumber) {
+		if (StringUtils.isEmpty(firstNumber) || StringUtils.isEmpty(operation) || StringUtils.isEmpty(secondNumber)) {
+			throw new IllegalArgumentException();
+		}
+
 		this.firstNumber = Integer.parseInt(firstNumber);
 		this.operation = operation;
 		this.secondNumber = Integer.parseInt(secondNumber);
@@ -24,7 +30,7 @@ public class Calculator {
 		if (isDivision()) {
 			return this.firstNumber / this.secondNumber;
 		}
-		return 0;
+		throw new IllegalArgumentException();
 	}
 
 	private boolean isAddition() {
