@@ -14,6 +14,8 @@ public class RacingGame {
 
 	Random random = new Random();
 
+	ResultView resultView = new ResultView();
+
 	public void start() {
 		InputView inputView = new InputView();
 		inputView.inputUI();
@@ -26,7 +28,6 @@ public class RacingGame {
 	}
 
 	private void speedUpForPlayCount(List<RacingCar> racingCarList) {
-		ResultView resultView = new ResultView();
 		for (RacingCar racingCar : racingCarList) {
 			racingCar.recordResult(racingCar.isForward(random.nextInt(MAX_RANDOM_BOUND)));
 			resultView.print(racingCar.getForwardRecord());
