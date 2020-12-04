@@ -1,6 +1,5 @@
 package calculator;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,9 +33,7 @@ public class CalculatorTest {
 
         //when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    int calculate = Calculator.calculate(formula);
-                })
+                .isThrownBy(() -> Calculator.calculate(formula))
                 .withMessageMatching("입력값이 잘못되었습니다.");
     }
 
@@ -48,9 +45,7 @@ public class CalculatorTest {
 
         //when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    int calculate = Calculator.calculate(formula);
-                })
+                .isThrownBy(() -> Calculator.calculate(formula))
                 .withMessageMatching("연산자가 잘못 입력 되었습니다.");
     }
 }
