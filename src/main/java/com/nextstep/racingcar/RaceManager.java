@@ -19,8 +19,8 @@ public class RaceManager {
 
         printResultHeader();
         while(!race.isFinished()) {
-            List<Car> carList = race.moveAndGet(this::getRandomValue);
-            printPosition(carList);
+            List<Car> cars = race.moveAndGet(this::getRandomValue);
+            printPosition(cars);
         }
     }
 

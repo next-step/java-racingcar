@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class Race {
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
     private static final int THRESHOLD = 3;
 
     public Race(int carCount, int moveLimit) {
         for ( int ix = 0 ; ix < carCount ; ix ++ ) {
-            carList.add(new Car(moveLimit));
+            cars.add(new Car(moveLimit));
         }
     }
 
     public List<Car> moveAndGet(Supplier<Integer> numberGenerator) {
-        for (Car car : carList) {
+        for (Car car : cars) {
             int number = numberGenerator.get();
             tryMove(car, number);
         }
-        return carList;
+        return cars;
     }
 
     private void tryMove(Car car, int number) {
@@ -35,7 +35,7 @@ public class Race {
 
     public boolean isFinished() {
         boolean isFinished = false;
-        for ( Car car : carList ) {
+        for ( Car car : cars) {
             isFinished = isFinished | car.isFinished();
         }
         return isFinished;
