@@ -2,7 +2,7 @@ package step3;
 
 public class Car {
 
-    StringBuilder distance;
+    private StringBuilder distance;
 
     public Car() {
         this.distance = new StringBuilder();
