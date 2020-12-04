@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 public class RaceManager {
     private final int BOUND = 10;
+
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
 

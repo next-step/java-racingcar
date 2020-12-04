@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class Race {
+    private static final int THRESHOLD = 3;
+
     private int moveLimit;
     private List<Car> cars = new ArrayList<>();
-    private static final int THRESHOLD = 3;
 
     public Race(int carCount, int moveLimit) {
         this.moveLimit = moveLimit;
