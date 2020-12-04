@@ -4,20 +4,20 @@ public class Driver {
 
     private Car car;
 
-    public Driver() {
-        this.car = new Car();
+    public Driver(Car car) {
+        this.car = car;
     }
 
     public void drive(int random) {
         car.move(random);
-        printCurrentDistance();
+        printCarInfo();
     }
 
-    public String getCarDistance() {
-        return car.getDistance();
+    private void printCarInfo() {
+        System.out.println(car);
     }
 
-    private void printCurrentDistance() {
-        System.out.println(getCarDistance());
+    public int getDistanceSize() {
+        return car.getDistance().length();
     }
 }
