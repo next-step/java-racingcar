@@ -11,7 +11,7 @@ public class Car {
 		this.distance = distance;
 	}
 
-	public static Car getInstance() {
+	public static Car createCar() {
 		return new Car();
 	}
 

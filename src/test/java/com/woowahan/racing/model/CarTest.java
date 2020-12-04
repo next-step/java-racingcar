@@ -14,13 +14,13 @@ class CarTest {
 	@BeforeEach
 	void setup() {
 		//초기에 한번 전진한 인스턴스 생성
-		car = Car.getInstance();
+		car = Car.createCar();
 		car.move(true);
 	}
 
-	@DisplayName("getInstance 메서드로 Car의 객체를 생성할 수 있다.")
+	@DisplayName("createCar 메서드로 Car의 객체를 생성할 수 있다.")
 	@Test
-	void carInstance() {
+	void createCar() {
 		assertThat(car).isInstanceOf(Car.class);
 	}
 

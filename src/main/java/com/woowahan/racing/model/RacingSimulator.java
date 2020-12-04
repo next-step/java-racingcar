@@ -17,14 +17,14 @@ public class RacingSimulator {
 		this.gameResults = new ArrayList<>();
 	}
 
-	public static RacingSimulator getInstance(InputResult inputResult) {
+	public static RacingSimulator createSimulator(InputResult inputResult) {
 		return new RacingSimulator(inputResult);
 	}
 
 	private List<Car> participateCars() {
 		List<Car> cars = new ArrayList<>();
 		for (int i = 0; i < inputResult.getCarCount(); i++) {
-			cars.add(Car.getInstance());
+			cars.add(Car.createCar());
 		}
 		return cars;
 	}

@@ -13,17 +13,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class RacingSimulatorTest {
 
-	@DisplayName("getInstance메서드는 InputResult객체를 전달하면 RacingSimulator객체를 반환한다.")
+	@DisplayName("createSimulator메서드는 InputResult객체를 전달하면 RacingSimulator객체를 반환한다.")
 	@ParameterizedTest
-	@MethodSource("argGetInstance")
-	void getInstance(InputResult param) {
+	@MethodSource("argCreateSimulator")
+	void createSimulator(InputResult param) {
 
-		RacingSimulator result = RacingSimulator.getInstance(param);
+		RacingSimulator result = RacingSimulator.createSimulator(param);
 
 		assertThat(result).isInstanceOf(RacingSimulator.class);
 	}
 
-	public static Stream<Arguments> argGetInstance() {
+	public static Stream<Arguments> argCreateSimulator() {
 		return Stream.of(
 			Arguments.of(InputResult.of(10, 1)),
 			Arguments.of(InputResult.of(1, 10)),
@@ -33,10 +33,10 @@ class RacingSimulatorTest {
 
 	@DisplayName("run 메서드는 List<GameResult> 형태의 결과를 반환한다.")
 	@ParameterizedTest
-	@MethodSource("argGetInstance")
+	@MethodSource("argCreateSimulator")
 	void run(InputResult param) {
 
-		RacingSimulator simulator = RacingSimulator.getInstance(param);
+		RacingSimulator simulator = RacingSimulator.createSimulator(param);
 		List<GameResult> result = simulator.run();
 
 		assertAll(
