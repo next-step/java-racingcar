@@ -37,6 +37,10 @@ public class Car {
 		return name;
 	}
 
+	public int getDistanceLength() {
+		return this.distance != null ? distance.length() : 0;
+	}
+
 	public String getDistance() {
 		return distance;
 	}
@@ -44,6 +48,4 @@ public class Car {
 	public Car clone() {
 		return new Car(this.name, this.distance);
 	}
-
-
 }

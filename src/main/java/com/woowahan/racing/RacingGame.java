@@ -12,6 +12,5 @@ public class RacingGame {
 		InputResult inputResult = InputResult.of(InputView.getCarNames(), InputView.getTryCount());
 		RacingSimulator racingSimulator = RacingSimulator.createSimulator(inputResult);
 		ResultView.printResult(racingSimulator.run());
-
 	}
 }

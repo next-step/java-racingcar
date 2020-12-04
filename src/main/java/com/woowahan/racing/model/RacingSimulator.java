@@ -2,6 +2,9 @@ package com.woowahan.racing.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import com.woowahan.racing.constant.Message;
 
 public class RacingSimulator {
 
@@ -41,4 +44,21 @@ public class RacingSimulator {
 		return GameResult.of(this.partCars);
 	}
 
+	public List<String> getWinners() {
+		if (this.gameResults.size() == 0)
+			throw new IllegalStateException(Message.MSG_REQUEST_SIMULATOR_RUN);
+		int maxValue = findMaxDistance();
+		return this.partCars.stream()
+			.filter(car -> maxValue == car.getDistanceLength())
+			.map(Car::getName)
+			.collect(Collectors.toList());
+	}
+
+	private int findMaxDistance() {
+		return this.partCars
+			.stream()
+			.mapToInt(Car::getDistanceLength)
+			.max()
+			.orElseThrow(() -> new NullPointerException(Message.MSG_NOT_FOUND_DISTANCE));
+	}
 }
