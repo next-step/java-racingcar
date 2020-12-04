@@ -10,7 +10,7 @@ public class InputView {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static int getCarCount() {
-		System.out.println(Message.MSG_CAR_COUNT);
+		System.out.println(Message.MSG_CAR_NAME);
 		String input = scanner.nextLine();
 		if (!ValidationUtil.validate(input)) {
 			System.out.println(Message.MSG_POSITIVE_NUMBER);
