@@ -38,7 +38,7 @@ public class RacingGameRunner {
             cars = racedCars;
         }
 
-        Cars winningCars = cars.calculateMostMovedCars();
-        System.out.println(RacingGameWinnerOutputView.parseToWinnerResult(winningCars));
+        Cars mostMovedCars = cars.calculateMostMovedCars();
+        System.out.println(RacingGameWinnerOutputView.parseToWinnerResult(mostMovedCars));
     }
 }
