@@ -13,8 +13,8 @@ public class Position {
         return cur;
     }
 
-    public void move(int condition) {
-        if (condition >= 4 && condition <= 9) {
+    public void move(Condition condition) {
+        if (condition.isGo()) {
             this.cur++;
         }
     }

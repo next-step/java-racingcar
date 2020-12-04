@@ -19,13 +19,14 @@ public class PositionTest {
     void initialPosition() {
         assertThat(position.getPosition()).isEqualTo(0);
     }
+
     @Test
     @DisplayName("이동 test")
     void movePosition() {
-        position.move(4);
-        position.move(3);
-        position.move(9);
-        position.move(10);
+        position.move(Condition.GO);
+        position.move(Condition.STOP);
+        position.move(Condition.GO);
+        position.move(Condition.STOP);
         assertThat(position.getPosition()).isEqualTo(2);
     }
 
