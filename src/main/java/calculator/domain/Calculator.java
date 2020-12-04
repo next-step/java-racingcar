@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class StringCalculator {
+public class Calculator {
     private final Map<String, Operator> operatorMap;
 
-    public StringCalculator() {
+    public Calculator() {
         this.operatorMap = new HashMap<>();
         putOperator();
     }

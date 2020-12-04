@@ -8,14 +8,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StringCalculatorTest {
-    private final StringCalculator stringCalculator = new StringCalculator();
+public class CalculatorTest {
+    private final Calculator calculator = new Calculator();
 
     @DisplayName("덧셈")
     @ParameterizedTest
     @CsvSource(value = {"1:2:3", "4:5:9"}, delimiter = ':')
     void add(double num1, double num2, double expected) {
-        double result = stringCalculator.calculate("+", num1, num2);
+        double result = calculator.calculate("+", num1, num2);
         assertThat(result).isEqualTo(expected);
     }
 
@@ -23,7 +23,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1:2:-1", "9:3:6"}, delimiter = ':')
     void subtract(double num1, double num2, double expected) {
-        double result = stringCalculator.calculate("-", num1, num2);
+        double result = calculator.calculate("-", num1, num2);
         assertThat(result).isEqualTo(expected);
     }
 
@@ -31,7 +31,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1:-2:-2", "6:7:42", "0:4:0"}, delimiter = ':')
     void multiply(double num1, double num2, double expected) {
-        double result = stringCalculator.calculate("*", num1, num2);
+        double result = calculator.calculate("*", num1, num2);
         assertThat(result).isEqualTo(expected);
     }
 
@@ -39,7 +39,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1:-2:-0.5", "4:2:2", "0:4:0"}, delimiter = ':')
     void divide(double num1, double num2, double expected) {
-        double result = stringCalculator.calculate("/", num1, num2);
+        double result = calculator.calculate("/", num1, num2);
         assertThat(result).isEqualTo(expected);
     }
 
@@ -47,7 +47,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"$", "#", "@"})
     void not_operator(String operator) {
-        assertThatThrownBy(() -> stringCalculator.calculate(operator, 1, 2))
+        assertThatThrownBy(() -> calculator.calculate(operator, 1, 2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("잘못된 연산자입니다.");
     }
