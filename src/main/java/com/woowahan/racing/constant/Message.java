@@ -9,4 +9,5 @@ public class Message {
 	public static final String MSG_TRY_COUNT = "시도할 회수는 몇 회 인가요?";
 	public static final String MSG_NOT_FOUND_DISTANCE = "자동차 최대 거리 값이 null을 반환했습니다.";
 	public static final String MSG_REQUEST_SIMULATOR_RUN = "RacingSimulator의 run 메소드가 실행되지 않았습니다.";
+	public static final String MSG_WINNER = "%s가 최종 우승했습니다";
 }

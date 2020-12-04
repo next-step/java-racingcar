@@ -1,5 +1,8 @@
 package com.woowahan.racing;
 
+import java.util.List;
+
+import com.woowahan.racing.model.GameResult;
 import com.woowahan.racing.model.InputResult;
 import com.woowahan.racing.model.RacingSimulator;
 import com.woowahan.racing.view.InputView;
@@ -11,6 +14,8 @@ public class RacingGame {
 
 		InputResult inputResult = InputResult.of(InputView.getCarNames(), InputView.getTryCount());
 		RacingSimulator racingSimulator = RacingSimulator.createSimulator(inputResult);
-		ResultView.printResult(racingSimulator.run());
+		List<GameResult> gameResults = racingSimulator.run();
+		List<String> winners = racingSimulator.getWinners();
+		ResultView.printResult(gameResults, winners);
 	}
 }
