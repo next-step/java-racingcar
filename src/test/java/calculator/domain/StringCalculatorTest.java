@@ -3,8 +3,10 @@ package calculator.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
     private final StringCalculator stringCalculator = new StringCalculator();
@@ -39,5 +41,14 @@ public class StringCalculatorTest {
     void divide(double num1, double num2, double expected) {
         double result = stringCalculator.calculate("/", num1, num2);
         assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("사칙 연산 기호가 아닐 경우, Exception 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"$", "#", "@"})
+    void not_operator(String operator) {
+        assertThatThrownBy(() -> stringCalculator.calculate(operator, 1, 2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 연산자입니다.");
     }
 }

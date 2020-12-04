@@ -2,6 +2,7 @@ package calculator.domain;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class StringCalculator {
     private final Map<String, Operator> operatorMap;
@@ -12,7 +13,9 @@ public class StringCalculator {
     }
 
     public double calculate(String operator, double num1, double num2) {
-        return operatorMap.get(operator).calculate(num1, num2);
+        return Optional.ofNullable(operatorMap.get(operator))
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자입니다."))
+                .calculate(num1, num2);
     }
 
     private void putOperator() {
