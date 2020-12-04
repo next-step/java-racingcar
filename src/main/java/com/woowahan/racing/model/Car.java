@@ -1,18 +1,30 @@
 package com.woowahan.racing.model;
 
+import com.woowahan.racing.constant.Message;
+import com.woowahan.racing.util.ValidationUtil;
+
 public class Car {
 
+	private String name = "";
 	private String distance = "";
 
-	private Car() {
+	private Car(String name) {
+		if (ValidationUtil.isLengthEmptyOrGreaterThanFive(name)) {
+			throw new IllegalArgumentException(Message.MSG_NAME_LENGTH_EMPTY_OR_GREATER_THAN_5);
+		}
+		this.name = name;
 	}
 
-	private Car(String distance) {
+	private Car(String name, String distance) {
+		if (ValidationUtil.isLengthEmptyOrGreaterThanFive(name)) {
+			throw new IllegalArgumentException(Message.MSG_NAME_LENGTH_EMPTY_OR_GREATER_THAN_5);
+		}
+		this.name = name;
 		this.distance = distance;
 	}
 
-	public static Car createCar() {
-		return new Car();
+	public static Car createCar(String name) {
+		return new Car(name);
 	}
 
 	public void move(boolean isWin) {
@@ -21,12 +33,16 @@ public class Car {
 		}
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public String getDistance() {
 		return distance;
 	}
 
 	public Car clone() {
-		return new Car(this.distance);
+		return new Car(this.name, this.distance);
 	}
 
 

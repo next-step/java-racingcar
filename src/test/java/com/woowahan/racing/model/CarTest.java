@@ -6,15 +6,21 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import com.woowahan.racing.constant.Message;
 
 class CarTest {
 
+	public static final String SETUP_CAR_NAME = "자동차1";
 	private Car car;
 
 	@BeforeEach
 	void setup() {
 		//초기에 한번 전진한 인스턴스 생성
-		car = Car.createCar();
+		car = Car.createCar(SETUP_CAR_NAME);
 		car.move(true);
 	}
 
@@ -22,6 +28,15 @@ class CarTest {
 	@Test
 	void createCar() {
 		assertThat(car).isInstanceOf(Car.class);
+	}
+
+	@DisplayName("getName 메서드로 Car의 name 정보를 받을 수 있다.")
+	@Test
+	void getName() {
+
+		String result = car.getName();
+
+		assertThat(result).isEqualTo(SETUP_CAR_NAME);
 	}
 
 	@DisplayName("getDistance 메서드로 Car의 distance 정보를 받을 수 있다.")
@@ -51,8 +66,20 @@ class CarTest {
 
 		assertAll(
 			() -> assertThat(otherCar).isNotEqualTo(car),
+			() -> assertThat(otherCar.getName()).isEqualTo(car.getName()),
 			() -> assertThat(otherCar.getDistance()).isEqualTo(car.getDistance())
 		);
+	}
+
+	@DisplayName("createCar 메서드로 Car의 객체를 생성할 수 있다.")
+	@ParameterizedTest
+	@NullAndEmptySource
+	@ValueSource(strings = {"abcdef,", "가나다라마바사아자"})
+	void carNameLength(String name) {
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> {
+				Car.createCar(name);
+			}).withMessage(Message.MSG_NAME_LENGTH_EMPTY_OR_GREATER_THAN_5);
 	}
 
 }
