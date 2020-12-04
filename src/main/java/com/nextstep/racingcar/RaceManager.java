@@ -34,7 +34,7 @@ public class RaceManager {
     private void printPosition(List<Car> carList) {
         for (Car car : carList) {
             String positionString = getPositionString(car.getPosition());
-            System.out.println(positionString);
+            System.out.println(car.getName() + " : " + positionString);
         }
         System.out.println();
     }
