@@ -33,7 +33,4 @@ public enum Operator {
 		return keyword;
 	}
 
-	public LongBinaryOperator getOperator() {
-		return operator;
-	}
 }
