@@ -41,13 +41,11 @@ class RacingSimulatorTest {
 
 		RacingSimulator simulator = RacingSimulator.createSimulator(inputResult);
 		List<GameResult> gameResults = simulator.run();
-		int trySize = gameResults.size();
 		assertAll(
-			() -> assertThat(trySize).isEqualTo(tryCount),
+			() -> assertThat(gameResults).hasSize(tryCount),
 			() -> {
 				for (GameResult gameResult : gameResults) {
-					int carSize = gameResult.getCars().size();
-					assertThat(carSize).isEqualTo(carCount);
+					assertThat(gameResult.getCars()).hasSize(carCount);
 				}
 			}
 		);
