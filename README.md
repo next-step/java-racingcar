@@ -113,7 +113,8 @@ public class SetTest {
 ## Step3. 피드백 반영
 - [X] CalculatorFactory 클래스의 메서드명을 역할에 어울리도록 수정
     - 다음부턴 똑바로 정신 차리고 이름 잘 확인할 것
-- [ ] 전략객체로 사용되고 있는 GasStation 이름 어떻게 가져갈지 고민할 것
-    - [ ] 움직일 수 있는지 판단하는 기능을 GasStation 구현체에서 할지 Fuel에서 할지 고민해볼 것
+- [X] 전략객체로 사용되고 있는 GasStation 이름 어떻게 가져갈지 고민할 것
+    - [X] 움직일 수 있는지 판단하는 기능을 GasStation 구현체에서 할지 Fuel에서 할지 고민해볼 것
+    - Fuel 객체가 반드시 필요한지에 대해 고민 필요
 - [ ] RacingGame이 진짜 필요한 객체인지 고민할 것
     - Step4 구현하면서 고려할 것

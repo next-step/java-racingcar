@@ -29,11 +29,11 @@ class CarsTest {
     @DisplayName("속한 차량들을 한번에 움직일 수 있다.")
     @ParameterizedTest
     @MethodSource("moveAllTestResource")
-    void moveAllTest(GasStation gasStation, Cars expectedCars) {
+    void moveAllTest(MovePolicy movePolicy, Cars expectedCars) {
         int carDemand = 3;
         Cars cars = Cars.of(carDemand);
 
-        Cars movedCars = cars.move(gasStation);
+        Cars movedCars = cars.move(movePolicy);
 
         assertThat(movedCars)
                 .isEqualTo(expectedCars);

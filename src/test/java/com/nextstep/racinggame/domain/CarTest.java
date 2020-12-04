@@ -22,9 +22,9 @@ class CarTest {
     @DisplayName("이동 시 주입된 연료의 값에 따라 이동 가능")
     @ParameterizedTest
     @MethodSource("moveTestResource")
-    void moveTest(GasStation gasStation, Car expectedCar) {
+    void moveTest(MovePolicy movePolicy, Car expectedCar) {
         Car movedCar = Car.of()
-                .move(gasStation);
+                .move(movePolicy);
 
         assertThat(movedCar).isEqualTo(expectedCar);
     }

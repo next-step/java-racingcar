@@ -13,10 +13,8 @@ public class Car {
         return new Car(0);
     }
 
-    public Car move(final GasStation gasStation) {
-        Fuel fuel = gasStation.refuel();
-
-        if (fuel.isEnough()) {
+    public Car move(final MovePolicy movePolicy) {
+        if (movePolicy.canMove()) {
             return new Car(this.distance + 1);
         }
 
