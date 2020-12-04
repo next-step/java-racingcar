@@ -3,8 +3,8 @@ package racingCar.domain;
 public class Car {
     private Position curPosition;
 
-    public Car(Position position) {
-        curPosition = position;
+    public Car() {
+        curPosition = new Position();
     }
 
     public void racing(int randomValue) {
