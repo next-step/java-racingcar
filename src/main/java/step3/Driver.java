@@ -1,21 +1,23 @@
 package step3;
 
-import java.util.List;
-
 public class Driver {
 
-    private List<Car> cars;
+    private Car car;
 
-    public Driver(List<Car> cars) {
-        this.cars = cars;
+    public Driver() {
+        this.car = new Car();
     }
 
-    public void drive() {
-        this.cars.stream().forEach(car -> car.move(RandomGenerator.generate()));
+    public void drive(int random) {
+        car.move(random);
+        printCurrentDistance();
     }
 
-    public void currentDistance() {
-        this.cars.stream().map(Car::getDistance).forEach(System.out::println);
+    public String getCarDistance() {
+        return car.getDistance();
     }
 
+    private void printCurrentDistance() {
+        System.out.println(getCarDistance());
+    }
 }
