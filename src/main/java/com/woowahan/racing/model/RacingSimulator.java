@@ -3,8 +3,6 @@ package com.woowahan.racing.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.woowahan.racing.util.GameRandom;
-
 public class RacingSimulator {
 
 	private final InputResult inputResult;

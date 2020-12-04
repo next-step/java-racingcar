@@ -1,4 +1,4 @@
-package com.woowahan.racing.util;
+package com.woowahan.racing.model;
 
 import java.util.Random;
 
