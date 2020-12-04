@@ -30,7 +30,7 @@ class GameResultTest {
 		car2.move(true);
 
 		GameResult gameResult = GameResult.of(Arrays.asList(car1, car2));
-		List<Car> resultList = gameResult.getCarList();
+		List<Car> resultList = gameResult.getCars();
 
 		assertAll(
 			() -> assertThat(resultList.get(0)).isNotEqualTo(car1),

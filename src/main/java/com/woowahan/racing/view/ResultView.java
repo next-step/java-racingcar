@@ -6,9 +6,9 @@ import com.woowahan.racing.model.GameResult;
 
 public class ResultView {
 
-	public static void printResult(List<GameResult> gameResultList) {
+	public static void printResult(List<GameResult> gameResults) {
 		printResultHeader();
-		for (GameResult gameResult : gameResultList) {
+		for (GameResult gameResult : gameResults) {
 			printEachResult(gameResult);
 		}
 	}
@@ -18,7 +18,7 @@ public class ResultView {
 	}
 
 	public static void printEachResult(GameResult gameResult) {
-		gameResult.getCarList()
+		gameResult.getCars()
 			.forEach(car -> System.out.println(car.getDistance()));
 		System.out.println();
 	}

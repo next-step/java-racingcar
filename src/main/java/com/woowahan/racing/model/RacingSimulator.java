@@ -8,39 +8,39 @@ import com.woowahan.racing.util.GameRandom;
 public class RacingSimulator {
 
 	private final InputResult inputResult;
-	private final List<Car> partCarList;
-	private final List<GameResult> gameResultList;
+	private final List<Car> partCars;
+	private final List<GameResult> gameResults;
 
 	private RacingSimulator(InputResult inputResult) {
 		this.inputResult = inputResult;
-		this.partCarList = participateCarList();
-		this.gameResultList = new ArrayList<>();
+		this.partCars = participateCars();
+		this.gameResults = new ArrayList<>();
 	}
 
 	public static RacingSimulator getInstance(InputResult inputResult) {
 		return new RacingSimulator(inputResult);
 	}
 
-	private List<Car> participateCarList() {
-		List<Car> carList = new ArrayList<>();
+	private List<Car> participateCars() {
+		List<Car> cars = new ArrayList<>();
 		for (int i = 0; i < inputResult.getCarCount(); i++) {
-			carList.add(Car.getInstance());
+			cars.add(Car.getInstance());
 		}
-		return carList;
+		return cars;
 	}
 
 	public List<GameResult> run() {
 		for (int i = 0; i < inputResult.getTryCount(); i++) {
-			gameResultList.add(racingCars());
+			gameResults.add(racingCars());
 		}
-		return this.gameResultList;
+		return this.gameResults;
 	}
 
 	private GameResult racingCars() {
-		for (Car car : this.partCarList) {
+		for (Car car : this.partCars) {
 			car.move(GameRandom.isGameWin());
 		}
-		return GameResult.of(this.partCarList);
+		return GameResult.of(this.partCars);
 	}
 
 }
