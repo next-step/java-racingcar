@@ -5,6 +5,8 @@ import com.nextstep.racinggame.domain.exceptions.InvalidNameException;
 import java.util.Objects;
 
 public class Name {
+    private static final int MAX_LENGTH = 5;
+
     private final String value;
 
     public Name(final String value) {
@@ -13,7 +15,7 @@ public class Name {
     }
 
     private void validate(final String value) {
-        if (value.length() > 5) {
+        if (value.length() > MAX_LENGTH) {
             throw new InvalidNameException("이름은 최대 5글자까지만 가능합니다.");
         }
         if (value.isEmpty()) {
