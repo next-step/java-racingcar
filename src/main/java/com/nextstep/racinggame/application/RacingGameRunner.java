@@ -2,9 +2,8 @@ package com.nextstep.racinggame.application;
 
 import com.nextstep.racinggame.domain.*;
 import com.nextstep.racinggame.view.InputView;
+import com.nextstep.racinggame.view.RacingGameResultOutputView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class RacingGameRunner {
@@ -33,7 +32,7 @@ public class RacingGameRunner {
         for (int i = 0; i < raceDemand; i++) {
             Cars racedCars = RacingGame.race(cars, GAS_STATION);
 
-            System.out.println(RacingGameResultDrawer.drawGameResult(racedCars));
+            System.out.println(RacingGameResultOutputView.drawGameResult(racedCars));
 
             cars = racedCars;
         }

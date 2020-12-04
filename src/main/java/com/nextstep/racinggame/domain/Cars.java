@@ -32,6 +32,10 @@ public class Cars {
         return new CurrentDistance(distanceValues);
     }
 
+    public List<Car> getCars() {
+        return new ArrayList<>(this.cars);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

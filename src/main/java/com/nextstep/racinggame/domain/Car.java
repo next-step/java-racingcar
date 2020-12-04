@@ -23,7 +23,11 @@ public class Car {
         return this;
     }
 
-    int getDistance() {
+    public String getName() {
+        return this.name.getValue();
+    }
+
+    public int getDistance() {
         return distance;
     }
 

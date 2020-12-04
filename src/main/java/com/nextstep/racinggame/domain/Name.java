@@ -14,6 +14,10 @@ public class Name {
         this.value = value;
     }
 
+    String getValue() {
+        return this.value;
+    }
+
     private void validate(final String value) {
         if (value.length() > MAX_LENGTH) {
             throw new InvalidNameException("이름은 최대 5글자까지만 가능합니다.");
