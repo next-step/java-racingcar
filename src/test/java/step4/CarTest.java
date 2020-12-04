@@ -3,8 +3,11 @@ package step4;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -12,7 +15,15 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("jack");
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자를 초과하면 IllegalArgumentException 발생")
+    void length_IllegalArgumentException() {
+        assertThatThrownBy(()-> {
+            car = new Car("jackcoding");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
