@@ -23,6 +23,11 @@
     + 자동차의 운전한 거리를 볼 수 있다
 + RandomGenerator : 0~9까지 Random 숫자를 뽑아준다
 + Checkor : 전진할지 스탑할지 체크해준다
++ ViewManager : 뷰 메시지 입력/출력 담당자
+    + 자동차의 대수를 물어본다
+    + 시도할 회수를 물어본다
+    + 자동차의 움직임을 보여준다
++ View : 실행되는 뷰
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
