@@ -2,6 +2,12 @@ package calculator;
 
 public class Calculator {
 
+	public static final String OPERATOR_PLUS = "+";
+	public static final String OPERATOR_MINUS = "-";
+	public static final String OPERATOR_MULTI = "*";
+	public static final String OPERATOR_MOD = "/";
+
+
 	private int result;
 	private int calculateNumber;
 	private String sign;
@@ -21,19 +27,19 @@ public class Calculator {
 
 	private void calculate() {
 
-		if ("+".equals(this.sign)) {
+		if (OPERATOR_PLUS.equals(this.sign)) {
 			plus();
 		}
 
-		if ("-".equals(this.sign)) {
+		if (OPERATOR_MINUS.equals(this.sign)) {
 			minus();
 		}
 
-		if ("*".equals(this.sign)) {
+		if (OPERATOR_MULTI.equals(this.sign)) {
 			multi();
 		}
 
-		if ("/".equals(this.sign)) {
+		if (OPERATOR_MOD.equals(this.sign)) {
 			mod();
 		}
 	}
