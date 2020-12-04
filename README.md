@@ -116,7 +116,7 @@ public class SetTest {
 - [X] 전략객체로 사용되고 있는 GasStation 이름 어떻게 가져갈지 고민할 것
     - [X] 움직일 수 있는지 판단하는 기능을 GasStation 구현체에서 할지 Fuel에서 할지 고민해볼 것
     - Fuel 객체가 반드시 필요한지에 대해 고민 필요
-- [ ] RacingGame이 진짜 필요한 객체인지 고민할 것
+- [X] RacingGame이 진짜 필요한 객체인지 고민할 것
     - Step4 구현하면서 고려할 것
     
 ## Step4. 자동가 경주(우승자)
