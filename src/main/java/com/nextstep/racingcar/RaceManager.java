@@ -20,7 +20,7 @@ public class RaceManager {
         Race race = createRace();
 
         printResultHeader();
-        while(!race.isNotFinished()) {
+        while(race.isNotFinished()) {
             List<Car> cars = race.moveAndGet();
             printPosition(cars);
         }
