@@ -12,14 +12,6 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static Cars of(final Names names) {
-        return new Cars(
-                names.getNames().stream()
-                        .map(Car::of)
-                        .collect(Collectors.toList())
-        );
-    }
-
     public int size() {
         return this.cars.size();
     }

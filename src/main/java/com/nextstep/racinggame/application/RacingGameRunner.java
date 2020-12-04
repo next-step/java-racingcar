@@ -2,6 +2,7 @@ package com.nextstep.racinggame.application;
 
 import com.nextstep.racinggame.domain.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -23,18 +24,16 @@ public class RacingGameRunner {
     }
 
     private static void run(final int carDemand, final int raceDemand) {
-        // TODO: 임시방편 Cars 수정 후 수정 필요
-        Names names = new Names(
-                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
-        Cars cars = Cars.of(names);
-
-        System.out.println(RESULT_HEADER);
-        for (int i = 0; i < raceDemand; i++) {
-            Cars racedCars = RacingGame.race(cars, GAS_STATION);
-
-            System.out.println(RacingGameResultDrawer.drawGameResult(racedCars));
-
-            cars = racedCars;
-        }
+//        // TODO: 임시방편 Cars 수정 후 수정 필요
+//        Cars cars = new Cars(new ArrayList<>());
+//
+//        System.out.println(RESULT_HEADER);
+//        for (int i = 0; i < raceDemand; i++) {
+//            Cars racedCars = RacingGame.race(cars, GAS_STATION);
+//
+//            System.out.println(RacingGameResultDrawer.drawGameResult(racedCars));
+//
+//            cars = racedCars;
+//        }
     }
 }

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static com.nextstep.racinggame.domain.CarFixtures.*;
 import static com.nextstep.racinggame.domain.CarsFixtures.ALL_NOT_MOVED_CARS;
 import static com.nextstep.racinggame.domain.CarsFixtures.ALL_ONE_MOVED_CARS;
 import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_STATION;
@@ -16,12 +17,10 @@ import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_S
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-    @DisplayName("Names를 인자로 받아서 객체를 생성할 수 있다.")
+    @DisplayName("Cars 컬렉션을 인자로 받아서 객체를 생성할 수 있다.")
     @Test
     void createTest() {
-        Names names = new Names(
-                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
-        Cars cars = Cars.of(names);
+        Cars cars = new Cars(Arrays.asList(ZERO_TEST1_CAR, ZERO_TEST2_CAR, ZERO_TEST3_CAR));
 
         assertThat(cars).isNotNull();
     }
@@ -30,9 +29,7 @@ class CarsTest {
     @ParameterizedTest
     @MethodSource("moveAllTestResource")
     void moveAllTest(MovePolicy movePolicy, Cars expectedCars) {
-        Names names = new Names(
-                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
-        Cars cars = Cars.of(names);
+        Cars cars = new Cars(Arrays.asList(ZERO_TEST1_CAR, ZERO_TEST2_CAR, ZERO_TEST3_CAR));
 
         Cars movedCars = cars.move(movePolicy);
 
@@ -49,9 +46,7 @@ class CarsTest {
     @DisplayName("속한 차량들의 현재 주행거리를 알 수 있다.")
     @Test
     void calculateCurrentDistanceTest() {
-        Names names = new Names(
-                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
-        Cars cars = Cars.of(names);
+        Cars cars = new Cars(Arrays.asList(ZERO_TEST1_CAR, ZERO_TEST2_CAR, ZERO_TEST3_CAR));
         CurrentDistance expected = new CurrentDistance(Arrays.asList(1, 1, 1));
 
         Cars movedCars = cars.move(FOUR_FUEL_GAS_STATION);
