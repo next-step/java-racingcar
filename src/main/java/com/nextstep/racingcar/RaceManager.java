@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RaceManager {
+    private final int BOUND = 10;
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
 
@@ -61,7 +62,6 @@ public class RaceManager {
     }
 
     private int getRandomValue() {
-        final int bound = 10;
-        return random.nextInt(bound);
+        return random.nextInt(BOUND);
     }
 }
