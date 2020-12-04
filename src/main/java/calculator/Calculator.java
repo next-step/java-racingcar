@@ -1,19 +1,20 @@
 package calculator;
 
 public class Calculator {
-
+    private static final String BLANK = " ";
+    
     public static int calculate(String input) {
-        CalculationResult result = new CalculationResult(input);
         CalculatorFormula formula = new CalculatorFormula(input);
-        for (int i = 1; i <= getLoopCount(input) / 2; i++) {
-            int calculatedValue = Operator.getOperator(formula.getOperator(i))
-                                          .calculate(result.getResult(), formula.getNumber(i));
-            result.setResult(calculatedValue);
+        int loopCount = getLoopCount(input);
+        int result = formula.getNumber(0);
+        for (int i = 1; i <= loopCount; i++) {
+            result = Operator.getOperator(formula.getOperator(i))
+                             .calculate(result, formula.getNumber(i));
         }
-        return result.getResult();
+        return result;
     }
 
     public static int getLoopCount(String input) {
-        return input.split(" ").length;
+        return input.split(BLANK).length / 2;
     }
 }
