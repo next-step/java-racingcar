@@ -14,5 +14,15 @@
     + random 값이 4미만이면 정지
 + 자동차의 상태를 출력한다
 
+### 구현한 클래스 설명
++ Car : 자동차 클래스 
+    + 이동한다
+    + 운전한 거리를 가지고 있다
++ Driver : 각자 자동차 하나씩 가지고 있는 운전자 
+    + 자동차를 운전한다
+    + 자동차의 운전한 거리를 볼 수 있다
++ RandomGenerator : 0~9까지 Random 숫자를 뽑아준다
++ Checkor : 전진할지 스탑할지 체크해준다
+
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
