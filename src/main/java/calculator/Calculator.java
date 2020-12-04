@@ -12,8 +12,15 @@ public class Calculator {
 		result = 0;
 	}
 
-	public void calculate(String arg) {
+	public int calculate(String arg) {
 		checkUserInput(arg);
+		String[] splitValue = arg.split(" ");
+
+		result = Integer.parseInt(splitValue[0]);
+		for (int i = 1; i < splitValue.length; i += 2) {
+			result = Operator.of(splitValue[i]).operate(result, Integer.parseInt(splitValue[i + 1]));
+		}
+		return result;
 	}
 
 	private void checkUserInput(String arg) {
@@ -41,10 +48,6 @@ public class Calculator {
 		for (int i = 0; i < splitValue.length; i += 2) {
 			checkNumeric(splitValue[i]);
 		}
-
-		for (int i = 0; i < splitValue.length; i += 2) {
-			checkOperator(splitValue[i]);
-		}
 	}
 
 	private void checkNumeric(String s) {
@@ -53,11 +56,6 @@ public class Calculator {
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 숫자의 위치가 옳바르지 않습니다.");
 		}
-	}
-
-	private void checkOperator(String s) {
-		if (!Operator.isValid(s))
-			throw new IllegalArgumentException("계산식이 옳바르지 않습니다. 연산자의 위치가 옳바르지 않거나, 허용된 연산자가 아닙니다.");
 	}
 
 }

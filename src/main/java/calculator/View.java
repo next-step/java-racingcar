@@ -14,7 +14,7 @@ public class View {
 		return scanner.nextLine();
 	}
 
-	public static void printResult(String arg) {
+	public static void printResult(int arg) {
 		System.out.println(arg);
 	}
 }

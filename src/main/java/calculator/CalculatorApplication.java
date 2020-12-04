@@ -8,6 +8,7 @@ package calculator;
 public class CalculatorApplication {
 	public static void main(String[] args) {
 		Calculator calculator = new Calculator();
-		calculator.calculate(View.input());
+		int result = calculator.calculate(View.input());
+		View.printResult(result);
 	}
 }
