@@ -1,5 +1,7 @@
 package com.nextstep.racinggame.domain;
 
+import com.nextstep.racinggame.domain.exceptions.InvalidDistanceException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,10 +22,17 @@ public class Cars {
         return new Cars(movedCars);
     }
 
-    public List<Integer> calculateCurrentDistance() {
-        return this.cars.stream()
-                .map(Car::getDistance)
+    public List<Car> calculateMostMovedCars() {
+        return cars.stream()
+                .filter(car -> car.isMovedAmount(calculateLongestDistance()))
                 .collect(Collectors.toList());
+    }
+
+    private Integer calculateLongestDistance() {
+        return this.cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElseThrow(() -> new InvalidDistanceException("가장 멀리 이동한 차량이 존재하지 않습니다."));
     }
 
     public List<Car> getCars() {

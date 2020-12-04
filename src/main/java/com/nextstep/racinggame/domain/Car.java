@@ -31,6 +31,10 @@ public class Car {
         return distance;
     }
 
+    public boolean isMovedAmount(int distance) {
+        return this.distance == distance;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

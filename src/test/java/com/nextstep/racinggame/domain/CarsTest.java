@@ -42,4 +42,13 @@ class CarsTest {
                 Arguments.of(THREE_FUEL_GAS_STATION, ALL_NOT_MOVED_TEST123_CARS)
         );
     }
+
+    @DisplayName("현재 속한 차량들 중 가장 많이 움직인 차량을 구할 수 있다.")
+    @Test
+    void calculateMostMovedCarsTest() {
+        Cars cars = new Cars(Arrays.asList(ONE_TEST1_CAR, ONE_TEST2_CAR, ZERO_TEST3_CAR));
+
+        assertThat(cars.calculateMostMovedCars()).contains(ONE_TEST1_CAR);
+        assertThat(cars.calculateMostMovedCars()).contains(ONE_TEST2_CAR);
+    }
 }
