@@ -3,6 +3,7 @@ package com.nextstep.racinggame.application;
 import com.nextstep.racinggame.domain.*;
 import com.nextstep.racinggame.view.InputView;
 import com.nextstep.racinggame.view.RacingGameResultOutputView;
+import com.nextstep.racinggame.view.exceptions.RacingGameWinnerOutputView;
 
 import java.util.Scanner;
 
@@ -36,5 +37,7 @@ public class RacingGameRunner {
 
             cars = racedCars;
         }
+
+        System.out.println(RacingGameWinnerOutputView.parseToWinnerResult(cars.getCars()));
     }
 }
