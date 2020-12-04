@@ -11,18 +11,16 @@ public class View {
         Scanner scanner = new Scanner(System.in);
         int value = scanner.nextInt();
 
-        List<Car> cars = new ArrayList<>();
-        for (int i=0; i<value; i++) cars.add(new Car());
+        List<Driver> drivers = new ArrayList<>();
+        for (int i=0; i<value; i++) drivers.add(new Driver());
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        int number = scanner.nextInt();
+        int numOfTry = scanner.nextInt();
 
         System.out.println();
         System.out.println("실행 결과");
-        Driver driver = new Driver(cars);
-        for (int i=0; i<number; i++) {
-            driver.drive();
-            driver.currentDistance();
+        for (int i=0; i<numOfTry; i++) {
+            drivers.stream().forEach(driver -> driver.drive(RandomGenerator.generate()));
             System.out.println();
         }
     }
