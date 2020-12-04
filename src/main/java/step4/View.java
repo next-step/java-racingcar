@@ -1,27 +1,30 @@
 package step4;
 
+import step4.checkor.ScoreCheckor;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import static step4.ViewManager.*;
+
 
 public class View {
 
     public static void main(String[] args) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        Scanner scanner = new Scanner(System.in);
-        int value = scanner.nextInt();
-
         List<Driver> drivers = new ArrayList<>();
-        for (int i=0; i<value; i++) drivers.add(new Driver());
+        String cars = inputMessageAboutCars();
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int numOfTry = scanner.nextInt();
-
-        System.out.println();
-        System.out.println("실행 결과");
-        for (int i=0; i<numOfTry; i++) {
-            drivers.stream().forEach(driver -> driver.drive(step4.RandomGenerator.generate()));
-            System.out.println();
+        for (String carName : cars.split(",")) {
+            drivers.add(new Driver(new Car(carName)));
         }
+
+        int numOfTry = inputMessageAboutTry();
+
+        outputMessageAboutMove(drivers, numOfTry);
+
+        int winnerScore = new ScoreCheckor().check(drivers);
+        outputMessageAboutWinner(drivers, winnerScore);
     }
 }
