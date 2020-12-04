@@ -1,6 +1,7 @@
 package com.nextstep.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,11 +14,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
     private static final int CAR_COUNT = 5;
 
+    @DisplayName("자동차에 이름 부여")
+    @Test
+    public void name(){
+        Car car = new Car("test", () -> 1);
+        assertThat(car.getName()).isEqualTo("test");
+    }
+
     @DisplayName("move 호출 시 값에 따른 이동 여부 확인")
     @ParameterizedTest
     @MethodSource
     public void tryMove(Supplier<Integer> numberSupplier, int count) {
-        Car car = new Car(numberSupplier);
+        Car car = new Car("test", numberSupplier);
         for ( int ix = 0 ; ix < count ; ix ++ ) {
             car.tryMove();
         }
@@ -42,7 +50,7 @@ public class CarTest {
     @ParameterizedTest
     @MethodSource
     public void isNotFinished(Supplier<Integer> supplier, int count, boolean expected) {
-        Car car = new Car(supplier);
+        Car car = new Car("test", supplier);
         for ( int ix = 0 ; ix < count ; ix ++ ) {
             car.tryMove();
         }

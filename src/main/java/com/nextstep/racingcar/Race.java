@@ -8,10 +8,10 @@ public class Race {
     private int moveLimit;
     private List<Car> cars = new ArrayList<>();
 
-    public Race(int carCount, int moveLimit, Supplier<Integer> numberGenerator) {
+    public Race(List<String> carNames, int moveLimit, Supplier<Integer> numberGenerator) {
         this.moveLimit = moveLimit;
-        for ( int ix = 0 ; ix < carCount ; ix ++ ) {
-            cars.add(new Car(numberGenerator));
+        for (String carName : carNames) {
+            cars.add(new Car(carName, numberGenerator));
         }
     }
 

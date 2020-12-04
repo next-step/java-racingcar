@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -14,13 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
     private static final Random RANDOM = new Random();
-    private static final int CAR_COUNT = 3;
+    private final List<String> carNames = Arrays.asList("test1", "test2", "test3");
 
     @DisplayName("0-3만 나오는 경우와 4-9만 나오는 경우 position의 변화 체크")
     @ParameterizedTest
     @MethodSource
     public void moveAndGet(Supplier<Integer> numberGenerator, int moveLimit, int expected) {
-        Race race = new Race(CAR_COUNT, moveLimit, numberGenerator);
+        Race race = new Race(carNames, moveLimit, numberGenerator);
 
         List<Car> carList = null;
 
@@ -47,7 +48,7 @@ public class RaceTest {
     @ParameterizedTest
     @MethodSource
     public void isNotFinished(Supplier<Integer> numberGenerator, int moveLimit, boolean expected) {
-        Race race = new Race(CAR_COUNT, moveLimit, numberGenerator);
+        Race race = new Race(carNames, moveLimit, numberGenerator);
 
         for (int ix = 0 ; ix < moveLimit ; ix ++) {
             race.moveAndGet();
