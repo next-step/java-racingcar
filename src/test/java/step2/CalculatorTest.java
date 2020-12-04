@@ -89,4 +89,10 @@ public class CalculatorTest {
         assertThat(calculator.numbers.size()).isEqualTo(1);
         assertThat(calculator.numbers.peek()).isEqualTo(31);
     }
+
+    @Test
+    @DisplayName("문자열 사칙연산 수행 테스트")
+    void calculateTest() {
+        assertThat(calculator.calculate("1 * 2 / 2 + 5 - 1")).isEqualTo(5);
+    }
 }
