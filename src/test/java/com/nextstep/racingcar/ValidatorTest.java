@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ValidatorTest {
     @DisplayName("자동차 이름 5자 초과 체크")
     @ParameterizedTest
-    @CsvSource({"aaaaa, true", "bbbbbb, false"})
+    @CsvSource({"aaaaa, false", "bbbbbb, true"})
     public void isValidName(String name, boolean expected){
-        boolean result = Validator.isValidName(name);
+        boolean result = Validator.isInvalidName(name);
         assertThat(result).isEqualTo(expected);
     }
 }
