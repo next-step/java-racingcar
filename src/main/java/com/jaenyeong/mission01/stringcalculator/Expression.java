@@ -3,15 +3,15 @@ package com.jaenyeong.mission01.stringcalculator;
 import java.util.List;
 
 public class Expression {
-    private final List<String> operators;
+    private final List<Operator> operators;
     private final List<Integer> operands;
 
-    public Expression(final List<String> operators, final List<Integer> operands) {
+    public Expression(final List<Operator> operators, final List<Integer> operands) {
         this.operators = operators;
         this.operands = operands;
     }
 
-    public List<String> getOperators() {
+    public List<Operator> getOperators() {
         return operators;
     }
 

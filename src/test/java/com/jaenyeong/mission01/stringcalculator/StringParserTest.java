@@ -17,20 +17,20 @@ class StringParserTest {
     @ValueSource(strings = {"1 + 2", "3 * 5 + 5 / 4", "1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9", "-1 * -3 * 7 + 5"})
     @DisplayName("올바른 수식인 경우")
     void checkWhenGivenValidExpression(final String exp) {
-        final List<String> operators = new ArrayList<>();
+        final List<Operator> operators = new ArrayList<>();
         final List<Integer> operands = new ArrayList<>();
         parseOperatorsAndOperands(operators, operands, exp);
 
         final StringParser sp = new StringParser();
         final Expression resultExp = sp.parseExpression(exp);
-        final List<String> expOperators = resultExp.getOperators();
+        final List<Operator> expOperators = resultExp.getOperators();
         final List<Integer> expOperands = resultExp.getOperands();
 
         assertEquals(expOperators, operators);
         assertEquals(expOperands, operands);
     }
 
-    private void parseOperatorsAndOperands(final List<String> operators, final List<Integer> operands, final String exp) {
+    private void parseOperatorsAndOperands(final List<Operator> operators, final List<Integer> operands, final String exp) {
         final String numberRegex = "^[+-]?\\d+$";
 
         final String[] expElements = exp.split(" ");
@@ -40,14 +40,7 @@ class StringParserTest {
                 continue;
             }
 
-            switch (e) {
-                case "+":
-                case "-":
-                case "*":
-                case "/":
-                    operators.add(e);
-                    break;
-            }
+            operators.add(Operator.getOperator(e));
         }
     }
 

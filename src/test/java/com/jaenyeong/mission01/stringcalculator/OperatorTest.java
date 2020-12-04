@@ -16,7 +16,7 @@ class OperatorTest {
     @ParameterizedTest
     @MethodSource("validExpression")
     @DisplayName("연산자, 피연산자가 올바른 경우 연산 테스트")
-    void calculateExpressionWhenGivenValidExpression(final String operator, final int firstOp, final int secondOp,
+    void calculateExpressionWhenGivenValidExpression(final Operator operator, final int firstOp, final int secondOp,
                                                      final int correctResult) {
 
         final int opResult = Operator.calculate(operator, firstOp, secondOp);
@@ -25,10 +25,10 @@ class OperatorTest {
 
     private static Stream<Arguments> validExpression() {
         return Stream.of(
-            Arguments.of("*", 8, 7, 56),
-            Arguments.of("+", 3, 9, 12),
-            Arguments.of("/", 10, 5, 2),
-            Arguments.of("-", 81, 9, 72)
+            Arguments.of(Operator.getOperator("*"), 8, 7, 56),
+            Arguments.of(Operator.getOperator("+"), 3, 9, 12),
+            Arguments.of(Operator.getOperator("/"), 10, 5, 2),
+            Arguments.of(Operator.getOperator("-"), 81, 9, 72)
         );
     }
 
@@ -39,7 +39,8 @@ class OperatorTest {
                                                      final int correctResult) {
 
         assertThatThrownBy(() -> {
-            final int opResult = Operator.calculate(operator, firstOp, secondOp);
+            Operator op = Operator.getOperator(operator);
+            final int opResult = Operator.calculate(op, firstOp, secondOp);
             assertEquals(opResult, correctResult);
         })
             .isInstanceOf(IllegalArgumentException.class)

@@ -37,7 +37,7 @@ public class StringCalculator {
         int calculationResult = expression.getOperands().get(0);
 
         for (int i = 0; i < expression.getOperators().size(); i++) {
-            final String operator = expression.getOperators().get(i);
+            final Operator operator = expression.getOperators().get(i);
             final int operand = expression.getOperands().get(i + 1);
 
             calculationResult = elementCalculate(operator, calculationResult, operand);
@@ -46,7 +46,7 @@ public class StringCalculator {
         return calculationResult;
     }
 
-    private int elementCalculate(final String operator, final int firstOp, final int secondOp) {
+    private int elementCalculate(final Operator operator, final int firstOp, final int secondOp) {
         return Operator.calculate(operator, firstOp, secondOp);
     }
 }

@@ -17,8 +17,8 @@ public enum Operator {
         this.expression = expression;
     }
 
-    public static int calculate(final String operator, final int firstOp, final int secondOp) {
-        return getOperator(operator).expression
+    public static int calculate(final Operator operator, final int firstOp, final int secondOp) {
+        return operator.expression
             .apply(firstOp, secondOp);
     }
 

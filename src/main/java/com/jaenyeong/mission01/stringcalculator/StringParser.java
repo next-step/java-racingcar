@@ -31,7 +31,7 @@ public class StringParser {
 
         checkValidExpression(expElements);
 
-        final List<String> operators = new ArrayList<>();
+        final List<Operator> operators = new ArrayList<>();
         final List<Integer> operands = new ArrayList<>();
 
         for (String e : expElements) {
@@ -50,18 +50,17 @@ public class StringParser {
         }
     }
 
-    private void extractElement(final String element, final List<String> operators, final List<Integer> operands) {
+    private void extractElement(final String element, final List<Operator> operators, final List<Integer> operands) {
         if (element.matches(NUMBER_REGEX)) {
             operands.add(Integer.valueOf(element));
             return;
         }
 
-        Operator.getOperator(element);
-        operators.add(element);
+        operators.add(Operator.getOperator(element));
     }
 
     private void checkValidOperatorsAndOperands(final String[] expElements,
-                                                final List<String> operators, final List<Integer> operands) {
+                                                final List<Operator> operators, final List<Integer> operands) {
         final int operatorSize = (expElements.length / 2);
         final int operandSize = (expElements.length - operatorSize);
 
