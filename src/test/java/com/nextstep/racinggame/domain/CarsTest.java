@@ -42,15 +42,4 @@ class CarsTest {
                 Arguments.of(THREE_FUEL_GAS_STATION, ALL_NOT_MOVED_TEST123_CARS)
         );
     }
-
-    @DisplayName("속한 차량들의 현재 주행거리를 알 수 있다.")
-    @Test
-    void calculateCurrentDistanceTest() {
-        Cars cars = new Cars(Arrays.asList(ZERO_TEST1_CAR, ZERO_TEST2_CAR, ZERO_TEST3_CAR));
-        CurrentDistance expected = new CurrentDistance(Arrays.asList(1, 1, 1));
-
-        Cars movedCars = cars.move(FOUR_FUEL_GAS_STATION);
-
-        assertThat(movedCars.calculateCurrentDistance()).isEqualTo(expected);
-    }
 }

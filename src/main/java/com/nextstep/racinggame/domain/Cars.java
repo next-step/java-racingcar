@@ -12,10 +12,6 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public int size() {
-        return this.cars.size();
-    }
-
     public Cars move(final MovePolicy movePolicy) {
         List<Car> movedCars = this.cars.stream()
                 .map(car -> car.move(movePolicy))
@@ -24,12 +20,10 @@ public class Cars {
         return new Cars(movedCars);
     }
 
-    public CurrentDistance calculateCurrentDistance() {
-        List<Integer> distanceValues = this.cars.stream()
+    public List<Integer> calculateCurrentDistance() {
+        return this.cars.stream()
                 .map(Car::getDistance)
                 .collect(Collectors.toList());
-
-        return new CurrentDistance(distanceValues);
     }
 
     public List<Car> getCars() {
