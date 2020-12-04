@@ -23,21 +23,20 @@ public class Race {
     }
 
     private void tryMove(Car car, int number) {
-        if (!isMove(number)) {
-            return;
+        if (isMove(number)) {
+            car.move();
         }
-        car.move();
     }
 
     private boolean isMove(int number) {
         return THRESHOLD < number;
     }
 
-    public boolean isFinished() {
-        boolean isFinished = false;
+    public boolean isNotFinished() {
+        boolean isNotFinished = true;
         for ( Car car : cars) {
-            isFinished = isFinished | car.isFinished();
+            isNotFinished = isNotFinished && car.isNotFinished();
         }
-        return isFinished;
+        return isNotFinished;
     }
 }

@@ -43,25 +43,24 @@ public class RaceTest {
         );
     }
 
-    @DisplayName("Car list 중 하나라도 끝나면 true인지 확인")
+    @DisplayName("Car list 중 하나라도 끝나면 false인지 확인")
     @ParameterizedTest
     @MethodSource
-    public void isFinished(Supplier<Integer> numberGenerator, int moveLimit, boolean expected) {
+    public void isNotFinished(Supplier<Integer> numberGenerator, int moveLimit, boolean expected) {
         Race race = new Race(CAR_COUNT, moveLimit);
 
         for (int ix = 0 ; ix < moveLimit ; ix ++) {
             race.moveAndGet(numberGenerator);
         }
-
-        assertThat(race.isFinished()).isEqualTo(expected);
+        assertThat(race.isNotFinished()).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> isFinished() {
+    private static Stream<Arguments> isNotFinished() {
         return Stream.of(
-                Arguments.of(new SpecificGenerator(5, 1, 1), 5, true),
-                Arguments.of(new SpecificGenerator(1, 5, 1), 5, true),
-                Arguments.of(new SpecificGenerator(1, 1, 5), 5, true),
-                Arguments.of(new SpecificGenerator(1, 1, 1), 5, false)
+                Arguments.of(new SpecificGenerator(5, 1, 1), 5, false),
+                Arguments.of(new SpecificGenerator(1, 5, 1), 5, false),
+                Arguments.of(new SpecificGenerator(1, 1, 5), 5, false),
+                Arguments.of(new SpecificGenerator(1, 1, 1), 5, true)
         );
     }
 

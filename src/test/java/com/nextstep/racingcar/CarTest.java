@@ -29,11 +29,11 @@ public class CarTest {
 
     @DisplayName("현재 position에 따른 finished 체크")
     @ParameterizedTest
-    @CsvSource({"3, false", "4, false", "5, true"})
+    @CsvSource({"3, true", "4, true", "5, false"})
     public void isFinished(int count, boolean expected) {
         for ( int ix = 0 ; ix < count ; ix ++ ) {
             car.move();
         }
-        assertThat(car.isFinished()).isEqualTo(expected);
+        assertThat(car.isNotFinished()).isEqualTo(expected);
     }
 }

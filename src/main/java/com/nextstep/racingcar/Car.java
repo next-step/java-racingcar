@@ -16,7 +16,7 @@ public class Car {
         return position;
     }
 
-    public boolean isFinished() {
-        return limit == position;
+    public boolean isNotFinished() {
+        return position < limit;
     }
 }

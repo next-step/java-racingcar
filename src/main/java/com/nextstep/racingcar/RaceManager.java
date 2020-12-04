@@ -18,7 +18,7 @@ public class RaceManager {
         Race race = createRace();
 
         printResultHeader();
-        while(!race.isFinished()) {
+        while(!race.isNotFinished()) {
             List<Car> cars = race.moveAndGet(this::getRandomValue);
             printPosition(cars);
         }
