@@ -74,7 +74,7 @@
     - [X] 아닌경우 throw exception
   - [X] 위 연산을 모두 포함하는 기능
 - 유틸
-  - [ ] null or empty
+  - [X] null or empty
   - [ ] string to long
   
 ### 프로그래밍 요구사항
