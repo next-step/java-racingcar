@@ -5,6 +5,12 @@ import java.util.List;
 
 class CalculatorView {
 
+	public static void main(String[] args) {
+		CalculatorView calculatorView = new CalculatorView();
+		Long calculateResult = calculatorView.calculateByCalculator("2 + 5 - -7 * 5 / 7");
+		System.out.println(calculateResult);
+	}
+
 	private final Calculator calculator;
 
 	CalculatorView() {

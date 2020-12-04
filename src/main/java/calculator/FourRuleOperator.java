@@ -19,6 +19,12 @@ public enum FourRuleOperator implements Operator {
 	private String identifier;
 	private Operator operator;
 
+	public static Optional<FourRuleOperator> of(String identifier) {
+		return Stream.of(values())
+				.filter(fourRuleOperator -> fourRuleOperator.isIdentifierEqual(identifier))
+				.findFirst();
+	}
+
 	@Override
 	public Long operate(Long firstOperand, Long secondOperand) {
 		return operator.operate(firstOperand, secondOperand);
@@ -26,11 +32,5 @@ public enum FourRuleOperator implements Operator {
 
 	private boolean isIdentifierEqual(String identifier) {
 		return Objects.equals(this.identifier, identifier);
-	}
-
-	public static Optional<FourRuleOperator> of(String identifier) {
-		return Stream.of(values())
-				.filter(fourRuleOperator -> fourRuleOperator.isIdentifierEqual(identifier))
-				.findFirst();
 	}
 }

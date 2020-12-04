@@ -15,12 +15,12 @@ class Accumulator {
 		return new Accumulator(initValue);
 	}
 
-	void applyOperator(Operator operator, Long operand) {
-		this.result = operator.operate(this.result, operand);
-	}
-
 	void applyOperatingEntry(OperatingEntry operatingEntry) {
 		applyOperator(operatingEntry.getFourRuleOperator(), operatingEntry.getOperand());
+	}
+
+	void applyOperator(Operator operator, Long operand) {
+		this.result = operator.operate(this.result, operand);
 	}
 
 	Long getResult() {
