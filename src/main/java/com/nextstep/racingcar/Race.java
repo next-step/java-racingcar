@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class Race {
+    private int moveLimit;
     private List<Car> cars = new ArrayList<>();
     private static final int THRESHOLD = 3;
 
     public Race(int carCount, int moveLimit) {
+        this.moveLimit = moveLimit;
         for ( int ix = 0 ; ix < carCount ; ix ++ ) {
-            cars.add(new Car(moveLimit));
+            cars.add(new Car());
         }
     }
 
@@ -35,7 +37,7 @@ public class Race {
     public boolean isNotFinished() {
         boolean isNotFinished = true;
         for ( Car car : cars) {
-            isNotFinished = isNotFinished && car.isNotFinished();
+            isNotFinished = isNotFinished && car.isNotFinished(moveLimit);
         }
         return isNotFinished;
     }

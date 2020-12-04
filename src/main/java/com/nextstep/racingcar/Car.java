@@ -1,12 +1,7 @@
 package com.nextstep.racingcar;
 
 public class Car {
-    private final int limit;
     private int position = 0;
-
-    public Car(int limit) {
-        this.limit = limit;
-    }
 
     public void move() {
         position++;
@@ -16,7 +11,7 @@ public class Car {
         return position;
     }
 
-    public boolean isNotFinished() {
+    public boolean isNotFinished(int limit) {
         return position < limit;
     }
 }

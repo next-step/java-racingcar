@@ -14,7 +14,7 @@ public class CarTest {
 
     @BeforeEach
     public void init(){
-        car = new Car(CAR_COUNT);
+        car = new Car();
     }
 
     @DisplayName("move 호출 시 position이 1씩 증가하는지 확인")
@@ -27,13 +27,13 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(count);
     }
 
-    @DisplayName("현재 position에 따른 finished 체크")
+    @DisplayName("limit이 5일때 현재 position에 따른 finished 체크")
     @ParameterizedTest
     @CsvSource({"3, true", "4, true", "5, false"})
     public void isFinished(int count, boolean expected) {
         for ( int ix = 0 ; ix < count ; ix ++ ) {
             car.move();
         }
-        assertThat(car.isNotFinished()).isEqualTo(expected);
+        assertThat(car.isNotFinished(CAR_COUNT)).isEqualTo(expected);
     }
 }
