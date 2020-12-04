@@ -6,17 +6,15 @@ public class CalculatorMain {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             String target = scanner.nextLine();
-            calculate(target);
+            play(target);
         }
     }
 
-    private static void calculate(String target) {
+    private static void play(String target) {
         if (checkInputString(target)) {
             Calculator calculator = new Calculator();
-            String[] stringArray = calculator.splitStringByBlankValue(target);
-            calculator.setUpNumbersAndOperations(stringArray);
-            calculator.calculateNumber();
-            calculator.printResult();
+            Integer result = calculator.calculate(target);
+            printResult(result);
         }
     }
 
@@ -25,5 +23,9 @@ public class CalculatorMain {
             throw new IllegalArgumentException("null 또는 빈값을 입력할 수 없습니다");
         }
         return true;
+    }
+
+    public static void printResult(Integer result) {
+        System.out.println(result);
     }
 }

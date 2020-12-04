@@ -27,6 +27,13 @@ public class Calculator {
         OPERATION_FUNCTION.put(DIVISION, new DivisionOperation());
     }
 
+    public Integer calculate(String target) {
+        String[] stringArray = splitStringByBlankValue(target);
+        setUpNumbersAndOperations(stringArray);
+        calculateNumber();
+        return numbers.peek();
+    }
+
     public String[] splitStringByBlankValue(String input) {
         return input.split(" ");
     }
@@ -85,9 +92,5 @@ public class Calculator {
 
     private Integer pickNumberArgument() {
         return numbers.poll();
-    }
-
-    public void printResult() {
-        System.out.println(numbers.peek());
     }
 }
