@@ -17,6 +17,16 @@ public class Calculator {
 		this.secondNumber = Integer.parseInt(secondNumber);
 	}
 
+	public void setCalculator(int firstNumber, String operation, String secondNumber) {
+		if (StringUtils.isEmpty(operation) || StringUtils.isEmpty(secondNumber)) {
+			throw new IllegalArgumentException();
+		}
+
+		this.firstNumber = firstNumber;
+		this.operation = operation;
+		this.secondNumber = Integer.parseInt(secondNumber);
+	}
+
 	public int calculate() {
 		if (isAddition()) {
 			return this.firstNumber + this.secondNumber;
