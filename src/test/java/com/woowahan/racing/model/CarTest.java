@@ -14,7 +14,7 @@ import com.woowahan.racing.constant.Message;
 
 class CarTest {
 
-	public static final String SETUP_CAR_NAME = "자동차1";
+	private static final String SETUP_CAR_NAME = "자동차1";
 	private Car car;
 
 	@BeforeEach
