@@ -75,7 +75,7 @@
   - [X] 위 연산을 모두 포함하는 기능
 - 유틸
   - [X] null or empty
-  - [ ] string to long
+  - [X] string to long
   
 ### 프로그래밍 요구사항
 

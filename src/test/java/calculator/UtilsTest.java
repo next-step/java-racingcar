@@ -14,4 +14,12 @@ class UtilsTest {
         Assertions.assertThatIllegalArgumentException().isThrownBy(() -> Utils.checkNullOrEmpty(str));
     }
 
+    @DisplayName("숫자가 아닌 문자열 변환시 에러")
+    @NullAndEmptySource
+    @ParameterizedTest
+    public void stringToLong(String str) {
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> Utils.stringToLong(str));
+    }
+
+
 }
