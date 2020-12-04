@@ -71,10 +71,10 @@ class CarTest {
 		);
 	}
 
-	@DisplayName("createCar 메서드로 Car의 객체를 생성할 수 있다.")
+	@DisplayName("createCar 메서드로 null or empty 또는 5글자 이상의 문자를 전달하면 IllegalArgumentException이 발생한다.")
 	@ParameterizedTest
 	@NullAndEmptySource
-	@ValueSource(strings = {"abcdef,", "가나다라마바사아자"})
+	@ValueSource(strings = {"abcdef", "가나다라마바사아자"})
 	void carNameLength(String name) {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
