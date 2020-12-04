@@ -138,8 +138,8 @@ public class SetTest {
             - 공백, 특수문자, 숫자 등도 일반 문자열로 취급한다.
 - CarsFactory(class)
     - 복잡한 Cars 일급 컬렉션 생성방식을 책임지는 객체
-    - [ ] Name 컬렉션을 인자로 받아서 Cars 일급 컬렉션 생성 가능
-    - [ ] Name 컬렉션 유효성 검증
+    - [X] Name 컬렉션을 인자로 받아서 Cars 일급 컬렉션 생성 가능
+    - [X] Name 컬렉션 유효성 검증
         - null이거나 빈 컬렉션일 경우 예외 발생
 - InputView(class)
     - 사용자가 입력한 차량 목록을 담는 일종의 DTO 오브젝트

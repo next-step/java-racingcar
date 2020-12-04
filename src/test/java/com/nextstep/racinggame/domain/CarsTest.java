@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static com.nextstep.racinggame.domain.CarFixtures.*;
-import static com.nextstep.racinggame.domain.CarsFixtures.ALL_NOT_MOVED_CARS;
-import static com.nextstep.racinggame.domain.CarsFixtures.ALL_ONE_MOVED_CARS;
+import static com.nextstep.racinggame.domain.CarsFixtures.ALL_NOT_MOVED_TEST123_CARS;
+import static com.nextstep.racinggame.domain.CarsFixtures.ALL_ONE_MOVED_TEST123_CARS;
 import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_STATION;
 import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,8 +38,8 @@ class CarsTest {
     }
     public static Stream<Arguments> moveAllTestResource() {
         return Stream.of(
-                Arguments.of(FOUR_FUEL_GAS_STATION, ALL_ONE_MOVED_CARS),
-                Arguments.of(THREE_FUEL_GAS_STATION, ALL_NOT_MOVED_CARS)
+                Arguments.of(FOUR_FUEL_GAS_STATION, ALL_ONE_MOVED_TEST123_CARS),
+                Arguments.of(THREE_FUEL_GAS_STATION, ALL_NOT_MOVED_TEST123_CARS)
         );
     }
 

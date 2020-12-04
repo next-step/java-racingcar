@@ -3,7 +3,7 @@ package com.nextstep.racinggame.application;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.nextstep.racinggame.domain.CarsFixtures.ALL_ONE_MOVED_CARS;
+import static com.nextstep.racinggame.domain.CarsFixtures.ALL_ONE_MOVED_TEST123_CARS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameResultDrawerTest {
@@ -12,6 +12,6 @@ class RacingGameResultDrawerTest {
     void drawTest() {
         String expected = "-\n-\n-\n";
 
-        assertThat(RacingGameResultDrawer.drawGameResult(ALL_ONE_MOVED_CARS)).isEqualTo(expected);
+        assertThat(RacingGameResultDrawer.drawGameResult(ALL_ONE_MOVED_TEST123_CARS)).isEqualTo(expected);
     }
 }
