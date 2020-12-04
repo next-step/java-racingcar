@@ -31,12 +31,12 @@ public class RacingSimulator {
 
 	public List<GameResult> run() {
 		for (int i = 0; i < inputResult.getTryCount(); i++) {
-			gameResults.add(racingCars());
+			gameResults.add(moveCars());
 		}
 		return this.gameResults;
 	}
 
-	private GameResult racingCars() {
+	private GameResult moveCars() {
 		for (Car car : this.partCars) {
 			car.move(GameRandom.isGameWin());
 		}
