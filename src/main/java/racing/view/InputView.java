@@ -11,16 +11,11 @@ public class InputView {
 	public InputView() {
 	}
 
-	public InputView(int playCount, int playCarCount) {
-		this.playCount = playCount;
-		this.playCarCount = playCarCount;
-	}
-
 	public int getPlayCount() {
 		return playCount;
 	}
 
-	public void setPlayCount(int playCount) {
+	private void setPlayCount(int playCount) {
 		this.playCount = playCount;
 	}
 
@@ -28,7 +23,7 @@ public class InputView {
 		return playCarCount;
 	}
 
-	public void setPlayCarCount(int playCarCount) {
+	private void setPlayCarCount(int playCarCount) {
 		this.playCarCount = playCarCount;
 	}
 
@@ -42,14 +37,5 @@ public class InputView {
 		int playCount = scanner.nextInt();
 		System.out.println(playCount);
 		this.setPlayCount(playCount);
-
-	}
-
-	@Override
-	public String toString() {
-		return "InputView{" +
-				"playCount=" + playCount +
-				", playCar=" + playCarCount +
-				'}';
 	}
 }
