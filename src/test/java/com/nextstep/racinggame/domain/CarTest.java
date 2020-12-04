@@ -13,25 +13,27 @@ import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_S
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    @DisplayName("주유할 주유소를 인자로 받아서 객체 생성 가능")
+    private static final Name HELLO_NAME = new Name("hello");
+
+    @DisplayName("차량의 이름을 입력받아 객체 생성 가능")
     @Test
     void createTest() {
-        assertThat(Car.of()).isNotNull();
+        assertThat(Car.of(HELLO_NAME)).isNotNull();
     }
 
     @DisplayName("이동 시 주입된 연료의 값에 따라 이동 가능")
     @ParameterizedTest
     @MethodSource("moveTestResource")
     void moveTest(MovePolicy movePolicy, Car expectedCar) {
-        Car movedCar = Car.of()
+        Car movedCar = Car.of(HELLO_NAME)
                 .move(movePolicy);
 
         assertThat(movedCar).isEqualTo(expectedCar);
     }
     public static Stream<Arguments> moveTestResource() {
         return Stream.of(
-                Arguments.of(FOUR_FUEL_GAS_STATION, new Car(1)),
-                Arguments.of(THREE_FUEL_GAS_STATION, new Car(0))
+                Arguments.of(FOUR_FUEL_GAS_STATION, new Car(1, HELLO_NAME)),
+                Arguments.of(THREE_FUEL_GAS_STATION, new Car(0, HELLO_NAME))
         );
     }
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
@@ -13,11 +12,11 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static Cars of(final int carDemand) {
+    public static Cars of(final Names names) {
         return new Cars(
-                IntStream.range(0, carDemand)
-                .mapToObj(number -> Car.of())
-                .collect(Collectors.toList())
+                names.getNames().stream()
+                        .map(Car::of)
+                        .collect(Collectors.toList())
         );
     }
 

@@ -15,6 +15,10 @@ public class Names {
         this.names = new ArrayList<>(names);
     }
 
+    public List<Name> getNames() {
+        return new ArrayList<>(names);
+    }
+
     private void validate(final List<Name> names) {
         if (names.size() <= MIN_SIZE) {
             throw new InvalidNamesException("최소 1개 이상의 Name이 있어야 합니다.");

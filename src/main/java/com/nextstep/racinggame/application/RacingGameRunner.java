@@ -1,9 +1,8 @@
 package com.nextstep.racinggame.application;
 
-import com.nextstep.racinggame.domain.Cars;
-import com.nextstep.racinggame.domain.MovePolicy;
-import com.nextstep.racinggame.domain.RandomMovePolicy;
+import com.nextstep.racinggame.domain.*;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class RacingGameRunner {
@@ -24,7 +23,10 @@ public class RacingGameRunner {
     }
 
     private static void run(final int carDemand, final int raceDemand) {
-        Cars cars = Cars.of(carDemand);
+        // TODO: 임시방편 Cars 수정 후 수정 필요
+        Names names = new Names(
+                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
+        Cars cars = Cars.of(names);
 
         System.out.println(RESULT_HEADER);
         for (int i = 0; i < raceDemand; i++) {

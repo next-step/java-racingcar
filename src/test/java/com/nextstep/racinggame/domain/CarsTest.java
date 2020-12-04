@@ -16,22 +16,23 @@ import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_S
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-    @DisplayName("생성하고 싶은 Car의 수를 입력받아서 객체를 생성할 수 있다.")
+    @DisplayName("Names를 인자로 받아서 객체를 생성할 수 있다.")
     @Test
     void createTest() {
-        int carDemand = 3;
-        Cars cars = Cars.of(carDemand);
+        Names names = new Names(
+                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
+        Cars cars = Cars.of(names);
 
         assertThat(cars).isNotNull();
-        assertThat(cars.size()).isEqualTo(carDemand);
     }
 
     @DisplayName("속한 차량들을 한번에 움직일 수 있다.")
     @ParameterizedTest
     @MethodSource("moveAllTestResource")
     void moveAllTest(MovePolicy movePolicy, Cars expectedCars) {
-        int carDemand = 3;
-        Cars cars = Cars.of(carDemand);
+        Names names = new Names(
+                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
+        Cars cars = Cars.of(names);
 
         Cars movedCars = cars.move(movePolicy);
 
@@ -48,8 +49,9 @@ class CarsTest {
     @DisplayName("속한 차량들의 현재 주행거리를 알 수 있다.")
     @Test
     void calculateCurrentDistanceTest() {
-        int carDemand = 3;
-        Cars cars = Cars.of(carDemand);
+        Names names = new Names(
+                Arrays.asList(new Name("test1"), new Name("test2"), new Name("test3")));
+        Cars cars = Cars.of(names);
         CurrentDistance expected = new CurrentDistance(Arrays.asList(1, 1, 1));
 
         Cars movedCars = cars.move(FOUR_FUEL_GAS_STATION);
