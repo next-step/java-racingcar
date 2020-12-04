@@ -7,7 +7,10 @@ public enum Operator {
     PLUS("+", (num1, num2) -> num1 + num2),
     MINUS("-", (num1, num2) -> num1 - num2),
     MULTIPLY("*", (num1, num2) -> num1 * num2),
-    DIVIDE("/", (num1, num2) -> num1 / num2);
+    DIVIDE("/", (num1, num2) -> {
+        byZero(num2);
+        return num1 / num2;
+    });
 
     private final String operator;
     private final BiFunction<Integer, Integer, Integer> expression;
@@ -27,4 +30,8 @@ public enum Operator {
         return getOperator(operator).expression.apply(num1, num2);
     }
 
+    public static void byZero(int num) {
+        if(num == 0)
+            throw new ArithmeticException("제수가 0입니다.");
+    }
 }
