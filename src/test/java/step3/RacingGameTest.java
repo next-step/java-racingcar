@@ -1,7 +1,6 @@
-package step3.domain;
+package step3;
 
 import org.junit.jupiter.api.Test;
-import step3.RacingGame;
 
 public class RacingGameTest {
 
