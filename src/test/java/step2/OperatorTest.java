@@ -3,6 +3,7 @@ package step2;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -33,5 +34,41 @@ class OperatorTest {
 	@DisplayName("두 숫자를 나눈 값을 반환한다.")
 	void divideTest(int left, int right, int expected) {
 		assertThat(Operator.DIVIDE.operate(left, right)).isEqualTo(expected);
+	}
+
+	@Test
+	@DisplayName("+를 입력하면 PLUS Operator를 반환한다.")
+	void valueOfSign_ReturnPlus() {
+		assertThat(Operator.valueOfSign("+")).isEqualTo(Operator.PLUS);
+	}
+
+	@Test
+	@DisplayName("-를 입력하면 MINUS Operator를 반환한다.")
+	void valueOfSign_ReturnMinus() {
+		assertThat(Operator.valueOfSign("-")).isEqualTo(Operator.MINUS);
+	}
+
+	@Test
+	@DisplayName("*를 입력하면 MULTIPLY Operator를 반환한다.")
+	void valueOfSign_ReturnMultiply() {
+		assertThat(Operator.valueOfSign("*")).isEqualTo(Operator.MULTIPLY);
+	}
+
+	@Test
+	@DisplayName("/를 입력하면 DIVIDE Operator를 반환한다.")
+	void valueOfSign_ReturnDivide() {
+		assertThat(Operator.valueOfSign("/")).isEqualTo(Operator.DIVIDE);
+	}
+
+	@Test
+	@DisplayName("정의되지 않은 연산자를 입력하면 IllegalArgumentException을 발생한다.")
+	void valueOfSign_ThrowIllegalArgumentException() {
+		assertThatIllegalArgumentException()
+			.isThrownBy(() -> Operator.valueOfSign(null))
+			.withMessage("정의되지 않은 연산자입니다.");
+
+		assertThatIllegalArgumentException()
+			.isThrownBy(() -> Operator.valueOfSign("&"))
+			.withMessage("정의되지 않은 연산자입니다.");
 	}
 }
