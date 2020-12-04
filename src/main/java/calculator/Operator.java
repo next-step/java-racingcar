@@ -13,13 +13,6 @@ public enum Operator {
     MULTIPLY("*", (left, right) -> left * right),
     ;
 
-    private static void checkZero(long right) {
-        if (right == 0) {
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다");
-        }
-
-    }
-
     private final BiFunction<Long, Long, Long> biFunction;
     private final String symbol;
 
@@ -42,6 +35,12 @@ public enum Operator {
                 .filter((value) -> value.symbol.equals(symbol))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
+    }
+
+    private static void checkZero(long right) {
+        if (right == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다");
+        }
     }
 
 }
