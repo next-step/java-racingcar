@@ -71,7 +71,7 @@
     - [X] 곱하기
     - [X] 나누기
       - [ ] 0으로 나누면 throw exception
-    - [ ] 아닌경우 throw exception
+    - [X] 아닌경우 throw exception
   - [X] 위 연산을 모두 포함하는 기능
 - 유틸
   - [ ] null or empty
