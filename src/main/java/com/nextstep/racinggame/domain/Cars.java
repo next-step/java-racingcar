@@ -22,10 +22,12 @@ public class Cars {
         return new Cars(movedCars);
     }
 
-    public List<Car> calculateMostMovedCars() {
-        return cars.stream()
+    public Cars calculateMostMovedCars() {
+        return new Cars(
+                cars.stream()
                 .filter(car -> car.isMovedAmount(calculateLongestDistance()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+        );
     }
 
     private Integer calculateLongestDistance() {

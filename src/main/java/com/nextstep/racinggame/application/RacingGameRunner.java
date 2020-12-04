@@ -3,8 +3,9 @@ package com.nextstep.racinggame.application;
 import com.nextstep.racinggame.domain.*;
 import com.nextstep.racinggame.view.InputView;
 import com.nextstep.racinggame.view.RacingGameResultOutputView;
-import com.nextstep.racinggame.view.exceptions.RacingGameWinnerOutputView;
+import com.nextstep.racinggame.view.RacingGameWinnerOutputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameRunner {
@@ -38,6 +39,7 @@ public class RacingGameRunner {
             cars = racedCars;
         }
 
-        System.out.println(RacingGameWinnerOutputView.parseToWinnerResult(cars.getCars()));
+        Cars winningCars = cars.calculateMostMovedCars();
+        System.out.println(RacingGameWinnerOutputView.parseToWinnerResult(winningCars));
     }
 }

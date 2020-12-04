@@ -10,8 +10,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static com.nextstep.racinggame.domain.CarFixtures.*;
-import static com.nextstep.racinggame.domain.CarsFixtures.ALL_NOT_MOVED_TEST123_CARS;
-import static com.nextstep.racinggame.domain.CarsFixtures.ALL_ONE_MOVED_TEST123_CARS;
+import static com.nextstep.racinggame.domain.CarsFixtures.*;
 import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_STATION;
 import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,7 +47,6 @@ class CarsTest {
     void calculateMostMovedCarsTest() {
         Cars cars = new Cars(Arrays.asList(ONE_TEST1_CAR, ONE_TEST2_CAR, ZERO_TEST3_CAR));
 
-        assertThat(cars.calculateMostMovedCars()).contains(ONE_TEST1_CAR);
-        assertThat(cars.calculateMostMovedCars()).contains(ONE_TEST2_CAR);
+        assertThat(cars.calculateMostMovedCars()).isEqualTo(TEST1_TEST2_WINNING_CARS);
     }
 }
