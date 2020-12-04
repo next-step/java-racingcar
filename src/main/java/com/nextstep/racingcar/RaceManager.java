@@ -1,6 +1,5 @@
 package com.nextstep.racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -56,25 +55,7 @@ public class RaceManager {
     private List<String> inputCarCount() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String line = scanner.nextLine();
-        return parseCarCount(line);
-    }
-
-    private List<String> parseCarCount(String line) {
-        List<String> carNames = new ArrayList<>();
-        String[] names = line.split(",");
-
-        for (String name : names ) {
-            name = name.trim();
-            validateName(name);
-            carNames.add(name);
-        }
-        return carNames;
-    }
-
-    private void validateName(String name) {
-        if ( Validator.isInvalidName(name) ) {
-            throw new IllegalArgumentException(name + " is over limit");
-        }
+        return Parser.parseCarNames(line);
     }
 
     private int inputMoveLimit() {
