@@ -20,4 +20,8 @@ public class Driver {
     public int getDistanceSize() {
         return car.getDistance().length();
     }
+
+    public String getCarName() {
+        return car.getName();
+    }
 }
