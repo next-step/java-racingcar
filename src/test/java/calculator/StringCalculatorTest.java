@@ -26,7 +26,7 @@ public class StringCalculatorTest {
 
     @DisplayName("문자열계산식 등록 - 비정상적인 계산식")
     @ParameterizedTest
-    @ValueSource(strings = {"1", "1+2", "1 . 2 $ 5", "1 ++ 2", "1 / 0"})
+    @ValueSource(strings = {"1", "1+2", "1 . 2 $ 5", "1 ++ 2"})
     void create_fail(String values) {
         //when, then
         assertThatIllegalArgumentException()
