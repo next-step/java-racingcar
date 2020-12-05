@@ -1,12 +1,25 @@
 package util;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class UserInputTest {
+
+	@Test
+	@DisplayName("유저 전체 입력 테스트")
+	void userInputTest() {
+
+		String userInput = "2 + 3 * 4 / 2 / 56 + 45646 * 6  ";
+
+		assertThatIllegalArgumentException().isThrownBy(() -> UserInput.validCalculatorString(userInput));
+	}
 
 	@ParameterizedTest
 	@ValueSource(strings = {"    ", "", "테 스 트"})
