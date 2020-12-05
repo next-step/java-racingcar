@@ -30,35 +30,12 @@ public class StringCalculator implements Calculator {
     }
 
     private int calculating(String[] split) {
-        int lastValue = 0;
-        String lastOperation = "+";
-        for (int i = 0; i < split.length; i++) {
-            if (i % 2 == 0) {
-                int value = Integer.parseInt(split[i]);
-                lastValue = operate(lastValue, lastOperation, value);
-            } else {
-                lastOperation = split[i];
-            }
+        int lastValue = Integer.parseInt(split[0]);
+        for (int i = 2; i < split.length; i += 2) {
+            int value = Integer.parseInt(split[i]);
+            Operator operator = Operator.find(split[i - 1]);
+            lastValue = operator.operation(lastValue, value);
         }
         return lastValue;
-    }
-
-    protected int operate(int val1, String operator, int val2) {
-        int returnValue = 0;
-        switch (operator) {
-            case "+":
-                returnValue = val1 + val2;
-                break;
-            case "-":
-                returnValue = val1 - val2;
-                break;
-            case "*":
-                returnValue = val1 * val2;
-                break;
-            case "/":
-                returnValue = val1 / val2;
-                break;
-        }
-        return returnValue;
     }
 }

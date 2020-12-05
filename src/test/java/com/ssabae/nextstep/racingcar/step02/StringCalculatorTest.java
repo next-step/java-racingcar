@@ -1,6 +1,5 @@
 package com.ssabae.nextstep.racingcar.step02;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,26 +16,15 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("계산기 테스트 클래스")
 class StringCalculatorTest {
 
-    private StringCalculator stringCalculator;
+    private final StringCalculateValidator validator = new StringCalculateValidator();
+    private final StringCalculator stringCalculator = new StringCalculator(validator);
 
-    @BeforeEach
-    void beforeAll() {
-        StringCalculateValidator validator = new StringCalculateValidator();
-        stringCalculator = new StringCalculator(validator);
-    }
-
-    @Test
+    @ParameterizedTest(name = "{displayName}[{index}] - \"{arguments}\"")
     @DisplayName("계산기 계산 테스트")
-    void calculateTest() {
-        int calculate = stringCalculator.calculate("2 + 3 * 4 / 2");
+    @ValueSource(strings = {"2 + 3 * 4 / 2", "-2 + 3 * 20 / 2"})
+    void calculateTest(String value) {
+        int calculate = stringCalculator.calculate(value);
         assertThat(calculate).isEqualTo(10);
-    }
-
-    @Test
-    @DisplayName("계산기 계산 테스트 (음수)")
-    void calculateWithMinusValueTest() {
-        int calculate = stringCalculator.calculate("-2 + 3 * 4 / 2");
-        assertThat(calculate).isEqualTo(2);
     }
 
     @ParameterizedTest(name = "{displayName}[{index}] - \"{arguments}\"")
@@ -58,9 +46,9 @@ class StringCalculatorTest {
     @Test
     @DisplayName("계산기 연산 처리 로직 테스트")
     void operationTest() {
-        assertThat(stringCalculator.operate(1, "+", 2)).isEqualTo(3);
-        assertThat(stringCalculator.operate(5, "-", 2)).isEqualTo(3);
-        assertThat(stringCalculator.operate(2, "*", 2)).isEqualTo(4);
-        assertThat(stringCalculator.operate(4, "/", 4)).isEqualTo(1);
+        assertThat(Operator.PLUS.operation(1, 2)).isEqualTo(3);
+        assertThat(Operator.MINUS.operation(5, 2)).isEqualTo(3);
+        assertThat(Operator.TIMES.operation(2, 2)).isEqualTo(4);
+        assertThat(Operator.DIVIDE.operation(4, 4)).isEqualTo(1);
     }
 }

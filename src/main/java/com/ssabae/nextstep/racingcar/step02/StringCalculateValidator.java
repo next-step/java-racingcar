@@ -16,16 +16,14 @@ public class StringCalculateValidator implements Validator<String[]> {
             throw new IllegalArgumentException(INVALID_PAIR_MESSAGE);
         }
         for (int i = 1; i < strings.length; i += 2) {
-            if (!isOperator(strings[i])) {
-                throw new IllegalArgumentException(INVALID_OPERATION_MESSAGE);
-            }
+            isOperator(strings[i]);
         }
         return true;
     }
 
-    private boolean isOperator(String operator) {
-        return operator.equals("+") || operator.equals("-")
-                || operator.equals("*") || operator.equals("/");
+    private void isOperator(String str) {
+        if (!Operator.isOperator(str)) {
+            throw new IllegalArgumentException(INVALID_OPERATION_MESSAGE);
+        }
     }
-
 }
