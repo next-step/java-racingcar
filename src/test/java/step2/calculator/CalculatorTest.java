@@ -68,7 +68,7 @@ public class CalculatorTest {
 			String input = "";
 			Calculator calculator = new Calculator();
 			calculator.calculate(input);
-		});
+		}).withMessage("입력 값이 없습니다.");
 	}
 
 	@DisplayName("사칙연산 기호가 아닌 경우 익셉션")
@@ -79,6 +79,26 @@ public class CalculatorTest {
 			Calculator calculator = new Calculator();
 			calculator.calculate(input);
 		}).withMessage("사칙 연산 기호가 아닙니다.");
+	}
+
+	@DisplayName("잘못된 값이 있을 경우 익셉션 - 숫자가 더 많음")
+	@Test
+	void given_wrong_input_more_number_when_calculate_then_throw_exception() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			String input = "1 * 3 3 3 3";
+			Calculator calculator = new Calculator();
+			calculator.calculate(input);
+		}).withMessage("계산 대상 수와 사칙 연산의 짝이 안 맞습니다.");
+	}
+
+	@DisplayName("잘못된 값이 있을 경우 익셉션 - 사칙연산 기가 더 많음")
+	@Test
+	void given_wrong_input_more_sign_when_calculate_then_throw_exception() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			String input = "1 * 3 * / + -";
+			Calculator calculator = new Calculator();
+			calculator.calculate(input);
+		}).withMessage("계산 대상 수와 사칙 연산의 짝이 안 맞습니다.");
 	}
 
 }

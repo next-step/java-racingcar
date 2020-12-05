@@ -34,7 +34,7 @@ public class Calculator {
 
 		result = operator.operate(result, number.getValue());
 
-		if (numbers.isEmpty() || operators.isEmpty()) {
+		if (numbers.isEmpty() && operators.isEmpty()) {
 			return;
 		}
 
@@ -52,6 +52,7 @@ public class Calculator {
 		for (String input : inputs) {
 			store(input);
 		}
+		validateQueue();
 	}
 
 	private void store(final String input) {
@@ -61,6 +62,13 @@ public class Calculator {
 		}
 
 		operators.offer(OperatorFactory.findOperator(input));
+	}
+
+	private void validateQueue() {
+		String unfairMessage = "계산 대상 수와 사칙 연산의 짝이 안 맞습니다.";
+		if (numbers.size() -1 != operators.size()) {
+			throw new IllegalArgumentException(unfairMessage);
+		}
 	}
 
 	Queue<Number> getNumbers() {
