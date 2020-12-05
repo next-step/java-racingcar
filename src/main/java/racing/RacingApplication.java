@@ -11,6 +11,6 @@ public class RacingApplication {
         AppConfig appConfig = new AppConfig();
         RacingController racingController = appConfig.racingController();
         Response response = racingController.play(InputView.input());
-        ResultView.getRoundReport(response);
+        ResultView.print(response);
     }
 }

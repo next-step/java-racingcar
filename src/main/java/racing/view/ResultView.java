@@ -14,13 +14,13 @@ public class ResultView {
     private static final String DELIMITER = "\n";
     private static final String ROUND_DELIMITER = "\n\n";
 
-    public static void getRoundReport(final Response response) {
+    public static void print(final Response response) {
         System.out.println(RESULT);
         printRoundReports(response);
     }
 
     private static void printRoundReports(final Response response) {
-        System.out.println(response.getRoundReports()
+        System.out.print(response.getRoundReports()
                 .stream()
                 .map(ResultView::getRoundReport)
                 .collect(Collectors.joining(ROUND_DELIMITER)));
