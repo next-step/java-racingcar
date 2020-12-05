@@ -2,7 +2,7 @@ package calculator;
 
 public class Calculator {
     public Integer calculate(String input) {
-        String[] inputValues = seperateInput(input);
+        String[] inputValues = separateInput(input);
         OperatorReader operatorReader = new OperatorReader();
         Integer result = Integer.valueOf(inputValues[0]);
         int i = 1;
@@ -16,7 +16,7 @@ public class Calculator {
         return result;
     }
 
-    private String[] seperateInput(String input) {
+    private String[] separateInput(String input) {
         InputReader inputReader = new InputReader();
         return inputReader.separate(input);
     }

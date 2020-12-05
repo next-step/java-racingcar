@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class OperatorReaderTest {
     @Test
@@ -31,5 +32,13 @@ public class OperatorReaderTest {
         OperatorReader reader = new OperatorReader();
         Operator type = reader.readOperator("/");
         assertThat(type).isInstanceOf(DevideOperator.class);
+    }
+
+    @Test
+    void 없는_연산자일때_익셉션() {
+        OperatorReader reader = new OperatorReader();
+        assertThatThrownBy(() ->
+                reader.readOperator("#")
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 }
