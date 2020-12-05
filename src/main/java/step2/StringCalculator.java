@@ -3,17 +3,16 @@ package step2;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class StringCalculator {
 	private static final String SPACE = " ";
 	private static final int MIN_INPUT_STRINGS_SIZE = 3;
-	private final Queue<Operand> operands;
-	private final Queue<Operator> operators;
+	private final Operands operands;
+	private final Operators operators;
 
-	private StringCalculator(Queue<Operand> operands, Queue<Operator> operators) {
+	private StringCalculator(Operands operands, Operators operators) {
 		this.operands = operands;
 		this.operators = operators;
 	}
@@ -25,8 +24,8 @@ public class StringCalculator {
 		Map<OperationElement, List<String>> classTypeGroups = groupingByClassType(inputStrings);
 
 		return new StringCalculator(
-			QueueUtils.mapToQueue(classTypeGroups.get(OperationElement.OPERAND), Operand::create),
-			QueueUtils.mapToQueue(classTypeGroups.get(OperationElement.OPERATOR), Operator::valueOfSign)
+			Operands.create(classTypeGroups.get(OperationElement.OPERAND)),
+			Operators.create(classTypeGroups.get(OperationElement.OPERATOR))
 		);
 	}
 
@@ -80,12 +79,12 @@ public class StringCalculator {
 	}
 
 	public int calculate() {
-		int result = operands.poll().getValue();
+		Operand result = operands.poll();
 
 		while (!operators.isEmpty()) {
-			result = operators.poll().operate(result, operands.poll().getValue());
+			result = operators.poll().operate(result, operands.poll());
 		}
 
-		return result;
+		return result.getValue();
 	}
 }

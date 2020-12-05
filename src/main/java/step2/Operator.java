@@ -34,7 +34,7 @@ public enum Operator {
 			.orElseThrow(() -> new IllegalArgumentException(Message.UNDEFINED_OPERATOR));
 	}
 
-	public int operate(int left, int right) {
-		return operator.applyAsInt(left, right);
+	public Operand operate(Operand left, Operand right) {
+		return new Operand(operator.applyAsInt(left.getValue(), right.getValue()));
 	}
 }

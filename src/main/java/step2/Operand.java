@@ -3,7 +3,7 @@ package step2;
 public class Operand {
 	private final int value;
 
-	private Operand(int value) {
+	public Operand(int value) {
 		this.value = value;
 	}
 
@@ -17,5 +17,14 @@ public class Operand {
 
 	public int getValue() {
 		return value;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof Operand) {
+			return this.value == ((Operand)object).value;
+		}
+
+		return false;
 	}
 }
