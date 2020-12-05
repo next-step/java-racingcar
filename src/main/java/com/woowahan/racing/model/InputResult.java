@@ -10,7 +10,7 @@ public class InputResult {
 	private final List<String> carNames;
 
 	private InputResult(List<String> carNames, int tryCount) {
-		if (carNames == null || carNames.size() == 0) {
+		if (carNames == null || carNames.isEmpty()) {
 			throw new IllegalArgumentException(Message.MSG_NULL_OR_EMPTY_CAR_NAMES);
 		}
 		if (tryCount <= 0) {
