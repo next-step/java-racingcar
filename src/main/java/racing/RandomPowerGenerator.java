@@ -5,6 +5,6 @@ import java.util.Random;
 public class RandomPowerGenerator implements PowerGenerator {
     @Override
     public int generate() {
-        return new Random(10).nextInt();
+        return new Random().nextInt(10);
     }
 }

@@ -26,6 +26,10 @@ public class Cars {
         cars.forEach(car -> car.move(powerGenerator.generate()));
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
