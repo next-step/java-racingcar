@@ -1,4 +1,4 @@
-package step2.calculator;
+package step2.calculator.domain;
 
 public class Number {
 	private final Integer value;

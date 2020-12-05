@@ -1,4 +1,4 @@
-package step2.calculator;
+package step2.calculator.domain;
 
 import static org.assertj.core.api.Assertions.*;
 

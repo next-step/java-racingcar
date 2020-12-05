@@ -1,4 +1,4 @@
-package step2.calculator;
+package step2.calculator.domain;
 
 import java.util.LinkedList;
 import java.util.Queue;
