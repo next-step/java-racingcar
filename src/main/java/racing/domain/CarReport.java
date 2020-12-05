@@ -20,4 +20,8 @@ public class CarReport {
     public static CarReport of(final CarIndex carIndex, final Location location) {
         return new CarReport(carIndex, location);
     }
+
+    public int getLocation() {
+        return location.getValue();
+    }
 }

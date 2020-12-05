@@ -28,6 +28,10 @@ public class Location {
         return valueOf(value + MOVE_DISTANCE);
     }
 
+    public int getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

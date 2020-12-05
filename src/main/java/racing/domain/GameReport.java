@@ -15,4 +15,8 @@ public class GameReport {
     public static GameReport of(final List<RoundReport> roundReports) {
         return new GameReport(roundReports);
     }
+
+    public List<RoundReport> getRoundReports() {
+        return roundReports;
+    }
 }

@@ -15,4 +15,8 @@ public class RoundReport {
     public static RoundReport of(final List<CarReport> carReports) {
         return new RoundReport(carReports);
     }
+
+    public List<CarReport> getCarReports() {
+        return carReports;
+    }
 }
