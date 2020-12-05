@@ -6,7 +6,6 @@ import com.woowahan.racing.constant.Message;
 
 public class InputResult {
 
-	private final int carCount;
 	private final int tryCount;
 	private final List<String> carNames;
 
@@ -18,7 +17,6 @@ public class InputResult {
 			throw new IllegalArgumentException(Message.MSG_POSITIVE_NUMBER);
 		}
 		this.carNames = carNames;
-		this.carCount = carNames.size();
 		this.tryCount = tryCount;
 	}
 
@@ -27,7 +25,7 @@ public class InputResult {
 	}
 
 	public int getCarCount() {
-		return carCount;
+		return carNames.size();
 	}
 
 	public int getTryCount() {
