@@ -124,7 +124,7 @@ public class SetTest {
 
 - `자동차경주(RacingGame)`
     - 주어진 판 수 만큼 `이동 규칙(Moveable)`에 따라 게임을 진행하는 역할을 한다.
-    - [ ] 게임을 진행하고 `게임 보고서(GameReport)`를 만들 수 있다.
+    - [X] 게임을 진행하고 `게임 보고서(GameReport)`를 만들 수 있다.
 
 - `자동차들(Cars)`
     - [X] 각 판마다 `자동차(Car)`들을 움직일 수 있다.
