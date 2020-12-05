@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public enum OperatorFactory {
 
-	ADDITION(OperatorSign.PLUS, new AdditionOperator());
+	ADDITION(OperatorSign.PLUS, new AdditionOperator()),
+	SUBTRACTION(OperatorSign.MINUS, new SubtractionOperator());
 
 	private final OperatorSign sign;
 	private final Operator operator;
