@@ -1,10 +1,12 @@
 package race;
 
 public class Car {
+	public static final int START_DISTANCE = 0;
 	private int distance;
 	private final MovePolicy movePolicy;
 
 	private Car(MovePolicy movePolicy) {
+		this.distance = START_DISTANCE;
 		this.movePolicy = movePolicy;
 	}
 
