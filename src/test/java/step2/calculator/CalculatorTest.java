@@ -23,4 +23,12 @@ public class CalculatorTest {
 		assertThat(operator).isInstanceOf(SubtractionOperator.class);
 	}
 
+	@DisplayName("곱셈 사칙 연산 판단")
+	@Test
+	void given_input_with_asterisk_sign_when_factory_of_then_return_multiplication_operator() {
+		String input = "2 * 3";
+		Operator operator = OperatorFactory.of(input);
+		assertThat(operator).isInstanceOf(MultiplicationOperator.class);
+	}
+
 }
