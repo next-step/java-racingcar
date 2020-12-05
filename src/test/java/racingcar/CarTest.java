@@ -14,8 +14,7 @@ public class CarTest {
 	@DisplayName("입력값이 4 이상인 경우 moveCount 가 증가해야한다 ")
 	void moveTest(int inputNumber) {
 		Car car = new Car();
-		car.tryMove(inputNumber);
-		assertThat(car.moveCount).isEqualTo(1);
+		assertThat(car.tryMove(inputNumber)).isEqualTo(1);
 	}
 
 	@ParameterizedTest
@@ -23,21 +22,16 @@ public class CarTest {
 	@DisplayName("입력값이 4 미만인 경우 moveCount 가 유지되어야한다 ")
 	void stopTest(int inputNumber) {
 		Car car = new Car();
-		car.tryMove(inputNumber);
-		assertThat(car.moveCount).isEqualTo(0);
+		assertThat(car.tryMove(inputNumber)).isEqualTo(0);
 	}
 
 	@Test
 	@DisplayName("이동이 여러번 시도될 경우 moveCount 는 누적되어 증가해야한다 ")
 	void moveRepeatTest() {
 		Car car = new Car();
-		car.tryMove(4);
-		assertThat(car.moveCount).isEqualTo(1);
-		car.tryMove(5);
-		assertThat(car.moveCount).isEqualTo(2);
-		car.tryMove(2);
-		assertThat(car.moveCount).isEqualTo(2);
-		car.tryMove(9);
-		assertThat(car.moveCount).isEqualTo(3);
+		assertThat(car.tryMove(4)).isEqualTo(1);
+		assertThat(car.tryMove(5)).isEqualTo(2);
+		assertThat(car.tryMove(2)).isEqualTo(2);
+		assertThat(car.tryMove(9)).isEqualTo(3);
 	}
 }
