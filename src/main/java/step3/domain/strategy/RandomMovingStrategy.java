@@ -3,7 +3,7 @@ package step3.domain.strategy;
 import step3.domain.AdvanceCheckor;
 import step3.domain.RandomGenerator;
 
-public class RandomMovingStrategy implements MovingStrategy {
+public class RandomMovingStrategy implements MovingStrategy<Boolean> {
 
     private RandomGenerator randomGenerator;
     private AdvanceCheckor checkor;
@@ -14,7 +14,7 @@ public class RandomMovingStrategy implements MovingStrategy {
     }
 
     @Override
-    public boolean isMove() {
+    public Boolean isMove() {
         return checkor.check(randomGenerator.generate());
     }
 

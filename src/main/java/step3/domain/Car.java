@@ -6,7 +6,7 @@ public class Car {
 
     private int position;
 
-    public void move(MovingStrategy movingStrategy) {
+    public void move(MovingStrategy<Boolean> movingStrategy) {
         if (movingStrategy.isMove()) {
             position++;
         }

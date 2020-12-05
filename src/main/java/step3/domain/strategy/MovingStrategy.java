@@ -1,5 +1,5 @@
 package step3.domain.strategy;
 
-public interface MovingStrategy {
-    boolean isMove();
+public interface MovingStrategy<T> {
+    T isMove();
 }
