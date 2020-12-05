@@ -1,18 +1,15 @@
 package com.jaenyeong.mission2.racingcar.domain;
 
+import com.jaenyeong.mission2.racingcar.common.BaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Car 클래스의 이동, 이동한 거리를 담당하는 Distance 클래스 테스트")
-class DistanceTest {
+class DistanceTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("randomIntValues")
@@ -40,20 +37,6 @@ class DistanceTest {
             assertThat(distance.getDist()).isNotEqualTo(negative);
             assertThat(distance.getDist()).isNotEqualTo(aNumberGreaterThanOne);
         }
-    }
-
-    private static Stream<Arguments> randomIntValues() {
-        return Stream.of(
-            Arguments.of(getRandomValue()),
-            Arguments.of(getRandomValue()),
-            Arguments.of(getRandomValue()),
-            Arguments.of(getRandomValue())
-        );
-    }
-
-    private static int getRandomValue() {
-        return ThreadLocalRandom.current()
-            .nextInt(1, 20);
     }
 
     @ParameterizedTest
