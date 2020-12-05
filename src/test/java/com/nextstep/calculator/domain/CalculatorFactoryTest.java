@@ -16,21 +16,21 @@ class CalculatorFactoryTest {
     void createTest() {
         String formula = "1 + 2 - 3";
 
-        assertThat(CalculatorFactory.createFactory(formula)).isInstanceOf(Calculator.class);
+        assertThat(CalculatorFactory.createCalculator(formula)).isInstanceOf(Calculator.class);
     }
 
     @DisplayName("빈 문자열 수식으로 Calculator 객체 생성 시도 시 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = {"", "  ", "    "})
     void createFailByEmptyFormulaTest(String invalidFormula) {
-        assertThatThrownBy(() -> CalculatorFactory.createFactory(invalidFormula)).isInstanceOf(EmptyFormulaException.class);
+        assertThatThrownBy(() -> CalculatorFactory.createCalculator(invalidFormula)).isInstanceOf(EmptyFormulaException.class);
     }
 
     @DisplayName("잘못된 문자열 수식으로 객체 생성 시도 시 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = {"3", "3 2", "3 + 2 4", "+ 3 - 2", "3 + 2 -", "+ -"})
     void createFailByTooManyNumbersTest(String invalidFormula) {
-        assertThatThrownBy(() -> CalculatorFactory.createFactory(invalidFormula))
+        assertThatThrownBy(() -> CalculatorFactory.createCalculator(invalidFormula))
                 .isInstanceOf(InvalidCalculatorFormulaException.class);
     }
 }

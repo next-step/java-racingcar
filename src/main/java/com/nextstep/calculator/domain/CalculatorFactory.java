@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class CalculatorFactory {
     private static final String FORMULA_SPLITTER = " ";
 
-    public static Calculator createFactory(final String formula) {
+    public static Calculator createCalculator(final String formula) {
         validateEmpty(formula);
 
         List<String> formulaContents = Arrays.asList(formula.split(FORMULA_SPLITTER));

@@ -1,10 +1,11 @@
 package com.nextstep.racinggame.domain;
 
+import com.nextstep.racinggame.domain.exceptions.InvalidDistanceException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
     private final List<Car> cars;
@@ -13,32 +14,31 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public static Cars of(final int carDemand) {
-        return new Cars(
-                IntStream.range(0, carDemand)
-                .mapToObj(number -> Car.of())
-                .collect(Collectors.toList())
-        );
-    }
-
-    public int size() {
-        return this.cars.size();
-    }
-
-    public Cars move(final GasStation gasStation) {
+    public Cars move(final MovePolicy movePolicy) {
         List<Car> movedCars = this.cars.stream()
-                .map(car -> car.move(gasStation))
+                .map(car -> car.move(movePolicy))
                 .collect(Collectors.toList());
 
         return new Cars(movedCars);
     }
 
-    public CurrentDistance calculateCurrentDistance() {
-        List<Integer> distanceValues = this.cars.stream()
-                .map(Car::getDistance)
-                .collect(Collectors.toList());
+    public Cars calculateMostMovedCars() {
+        return new Cars(
+                cars.stream()
+                .filter(car -> car.isMovedAmount(calculateLongestDistance()))
+                .collect(Collectors.toList())
+        );
+    }
 
-        return new CurrentDistance(distanceValues);
+    private Integer calculateLongestDistance() {
+        return this.cars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElseThrow(() -> new InvalidDistanceException("가장 멀리 이동한 차량이 존재하지 않습니다."));
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(this.cars);
     }
 
     @Override
