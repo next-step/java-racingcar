@@ -9,9 +9,19 @@ import java.util.stream.IntStream;
 public class StringCalculator {
 
     public static final String BLANK = " ";
+    public static final String INPUT_ERROR_MESSAGE = "입력에 0 또는 NULL 값을 넣을 수 없습니다.";
 
     public int calculate(String text) {
+
+        if(isBlank(text)){
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
+
         return sumText(splitText(text));
+    }
+
+    private boolean isBlank(String text) {
+        return text == null || text.isEmpty();
     }
 
     private List<String> splitText (String text) {
