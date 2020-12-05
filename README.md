@@ -41,5 +41,5 @@
 
 ## Run
 ```
-java -jar build/libs/step1-calculator-1.0.0.jar
+java -jar build/libs/step2-racing-1.0.0.jar
 ```
