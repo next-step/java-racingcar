@@ -48,6 +48,6 @@ public class StringTest {
     void charAtWithException(int index) {
         String str = "abc";
         assertThatThrownBy(() -> str.charAt(index)).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageMatching("String index out of range: \\d+");
+                .hasMessageMatching("String index out of range: [-]?\\d+");
     }
 }
