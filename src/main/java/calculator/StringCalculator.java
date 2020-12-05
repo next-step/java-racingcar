@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class StringCalculator {
 
-	public static void main(String[] args) {
+	public static void run() {
 		Scanner scanner = new Scanner(System.in);
-		String inputString = scanner.nextLine();
+		String input = scanner.nextLine();
 
-		System.out.println(calculate(inputString));
+		System.out.println(stringCalculate(input));
 	}
 
-	public static int calculate(String inputString) {
-		String[] components = inputString.split(" ");
+	public static int stringCalculate(String input) {
+		String[] components = input.split(" ");
 
 		if (components.length < 3) {
 			throw new IllegalArgumentException();
