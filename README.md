@@ -127,8 +127,8 @@ public class SetTest {
     - [ ] 게임을 진행하고 `게임 보고서(GameReport)`를 만들 수 있다.
 
 - `자동차들(Cars)`
-    - [ ] 각 판마다 `자동차(Car)`들을 움직일 수 있다.
-    - [ ] `판 보고서(RoundReport)`를 만들 수 있다.
+    - [X] 각 판마다 `자동차(Car)`들을 움직일 수 있다.
+    - [X] `판 보고서(RoundReport)`를 만들 수 있다.
     
 - `자동차(Car)`
     - [X] `이동 규칙(Moveable)`의 결과로 움직일 수 있다.
