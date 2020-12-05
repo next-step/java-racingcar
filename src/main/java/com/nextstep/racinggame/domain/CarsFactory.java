@@ -11,11 +11,11 @@ public class CarsFactory {
     public static Cars createCars(final List<Name> names) {
         validate(names);
 
-        return new Cars(
-                names.stream()
-                        .map(name -> new Car(0, name))
-                        .collect(Collectors.toList())
-        );
+        List<Car> requestedCars = names.stream()
+                .map(name -> new Car(0, name))
+                .collect(Collectors.toList());
+
+        return new Cars(requestedCars);
     }
 
     private static void validate(final List<Name> names) {
