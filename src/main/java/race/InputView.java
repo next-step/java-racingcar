@@ -9,8 +9,8 @@ public class InputView {
 	private final Scanner in = new Scanner(System.in);
 
 	public GameProcessor settingGame() {
-		int numberOfCar = 0;
-		int numberOfTryTimes = 0;
+		int numberOfCar;
+		int numberOfTryTimes;
 
 		System.out.println(numberOfCarMessage);
 		numberOfCar = in.nextInt();

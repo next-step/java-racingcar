@@ -21,7 +21,7 @@ public class GameResultMessage {
 
 	private String amountToSeparatorParser(Car car) {
 		return IntStream.range(Car.START_DISTANCE, car.nowDistance())
-			.mapToObj(i -> this.separator) //i is an int, not an Integer
+			.mapToObj(i -> this.separator)
 			.collect(Collectors.joining(MESSAGE_SEPARATOR));
 	}
 }

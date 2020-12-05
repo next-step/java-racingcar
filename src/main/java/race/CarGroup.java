@@ -14,10 +14,6 @@ public class CarGroup {
 			.collect(Collectors.toList());
 	}
 
-	public List<Car> getCars() {
-		return cars;
-	}
-
 	public Car ofCarIndex(int carIndex) {
 		return this.cars.get(carIndex);
 	}
@@ -27,7 +23,6 @@ public class CarGroup {
 	}
 
 	public List<Car> nowCarStatus() {
-//		return cars.stream().map(Car::nowDistance).collect(Collectors.toList());
 		return cars;
 	}
 

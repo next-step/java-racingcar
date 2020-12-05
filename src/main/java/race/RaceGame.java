@@ -18,13 +18,13 @@ public class RaceGame implements GameSubject {
 		this.gameObserver = gameObserver;
 	}
 
-	private void sendMessageToObserver() {
-		this.gameObserver.update(createGameResultMessage());
-	}
-
 	@Override
 	public void notifyObserver() {
 		this.run();
+	}
+
+	private void sendMessageToObserver() {
+		this.gameObserver.update(createGameResultMessage());
 	}
 
 	private void run() {
