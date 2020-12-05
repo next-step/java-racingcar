@@ -21,7 +21,7 @@ public class InputView {
 		}
 		List<String> result = parseNames(input);
 		if (ValidationUtil.hasLengthEmptyOrGreaterThanFive(result)) {
-			System.out.println(Message.MSG_HAS_NAME_LENGTH_EMPTY_OR_GREATER_THAN_5);
+			System.out.println(Message.MSG_HAS_CAR_NAME_LENGTH_ERROR);
 			return getCarNames();
 		}
 		return result;

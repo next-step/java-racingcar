@@ -79,7 +79,7 @@ class CarTest {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
 				Car.createCar(name);
-			}).withMessage(Message.MSG_NAME_LENGTH_EMPTY_OR_GREATER_THAN_5);
+			}).withMessage(Message.MSG_CAR_NAME_LENGTH_ERROR);
 	}
 
 }

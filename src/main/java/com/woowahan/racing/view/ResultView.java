@@ -27,7 +27,6 @@ public class ResultView {
 
 	private static void printResultWinner(List<String> winners) {
 		System.out.println(String.format(Message.MSG_WINNER, String.join(", ", winners)));
-		;
 	}
 
 }
