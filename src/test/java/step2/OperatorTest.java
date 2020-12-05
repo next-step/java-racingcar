@@ -65,10 +65,10 @@ class OperatorTest {
 	void valueOfSign_ThrowIllegalArgumentException() {
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> Operator.valueOfSign(null))
-			.withMessage("정의되지 않은 연산자입니다.");
+			.withMessage(Message.UNDEFINED_OPERATOR);
 
 		assertThatIllegalArgumentException()
 			.isThrownBy(() -> Operator.valueOfSign("&"))
-			.withMessage("정의되지 않은 연산자입니다.");
+			.withMessage(Message.UNDEFINED_OPERATOR);
 	}
 }

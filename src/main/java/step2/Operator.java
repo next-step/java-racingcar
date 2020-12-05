@@ -31,7 +31,7 @@ public enum Operator {
 
 	public static Operator valueOfSign(String sign) {
 		return Optional.ofNullable(operators.get(sign))
-			.orElseThrow(() -> new IllegalArgumentException("정의되지 않은 연산자입니다."));
+			.orElseThrow(() -> new IllegalArgumentException(Message.UNDEFINED_OPERATOR));
 	}
 
 	public int operate(int left, int right) {
