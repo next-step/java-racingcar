@@ -36,7 +36,4 @@ public class InputResult {
 		return carNames;
 	}
 
-	public String getCarNameByIndex(int index) {
-		return carNames.get(index);
-	}
 }

@@ -24,8 +24,8 @@ public class RacingSimulator {
 
 	private List<Car> participateCars() {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < inputResult.getCarCount(); i++) {
-			cars.add(Car.createCar(inputResult.getCarNameByIndex(i)));
+		for (String carName : inputResult.getCarNames()) {
+			cars.add(Car.createCar(carName));
 		}
 		return cars;
 	}
