@@ -21,7 +21,7 @@ class StringTest {
 	@Order(1)
 	@DisplayName("1.1. \"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.")
 	@Test
-	void split_two_value_is_correct() {
+	void splitTwoValueIsCorrect() {
 		String arg = "1,2";
 		String[] splitValue = arg.split(",");
 		assertThat(splitValue.length).isEqualTo(2);
@@ -31,7 +31,7 @@ class StringTest {
 	@Order(2)
 	@DisplayName("1.2. \"1,2\"을 ,로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.")
 	@Test
-	void split_one_value_with_comma_is_correct() {
+	void splitOneValueWithCommaIsCorrect() {
 		String arg = "1,";
 		String[] splitValue = arg.split(",");
 		assertThat(splitValue.length).isEqualTo(1);
@@ -41,7 +41,7 @@ class StringTest {
 	@Order(3)
 	@DisplayName("2.1. \"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현한다.")
 	@Test
-	void split_values_using_substring_is_correct() {
+	void splitValuesUsingSubstringIsCorrect() {
 		String arg = "(1,2)";
 		String[] splitValue = arg.substring(arg.indexOf("(") + 1, arg.indexOf(")")).split(",");
 		assertThat(splitValue.length).isEqualTo(2);
@@ -52,7 +52,7 @@ class StringTest {
 	@DisplayName("3.1. \"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.")
 	@ParameterizedTest
 	@ValueSource(strings = {"a", "b", "c"})
-	void get_sentence_with_using_charAt_is_correct(String arg) {
+	void getSentenceWithUsingCharAtIsCorrect(String arg) {
 		String target = "abc";
 		char c = target.charAt(target.indexOf(arg));
 		assertThat(target).contains(Character.toString(c));
@@ -62,7 +62,7 @@ class StringTest {
 	@DisplayName("3.2. \"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.")
 	@ParameterizedTest
 	@ValueSource(strings = {"n", "e", "x", "t"})
-	void get_sentence_with_using_charAt_is_not_correct(String arg) {
+	void getSentenceWithUsingCharAtIsNotCorrect(String arg) {
 		String target = "abc";
 		assertThatThrownBy(() -> {
 			char c = target.charAt(target.indexOf(arg));

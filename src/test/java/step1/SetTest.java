@@ -36,7 +36,7 @@ public class SetTest {
 	@Order(1)
 	@DisplayName("1.1. Set의 size() 메소드를 활용해 Set의 크기를 확인하는 학습테스트를 구현한다.")
 	@Test
-	void check_set_Size() {
+	void checkSetSize() {
 		assertThat(numbers.size()).isEqualTo(3);
 	}
 
@@ -44,7 +44,7 @@ public class SetTest {
 	@DisplayName("2. Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 학습테스트를 구현하려한다.")
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
-	void check_set_contains_value(int arg) {
+	void checkSetContainsValue(int arg) {
 		assertThat(numbers.contains(arg)).isTrue();
 	}
 
@@ -52,7 +52,7 @@ public class SetTest {
 	@DisplayName("3. 요구사항 2는 contains 메소드 결과 값이 true인 경우만 테스트 가능하다. 입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현한다.")
 	@ParameterizedTest
 	@CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-	void check_set_contains_value(int input, boolean isCorrect) {
+	void checkSetContainsValue(int input, boolean isCorrect) {
 		assertThat(numbers.contains(input)).isEqualTo(isCorrect);
 	}
 }
