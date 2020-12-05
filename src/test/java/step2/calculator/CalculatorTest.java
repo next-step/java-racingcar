@@ -71,4 +71,14 @@ public class CalculatorTest {
 		});
 	}
 
+	@DisplayName("사칙연산 기호가 아닌 경우 익셉션")
+	@Test
+	void given_other_sign_input_when_calculate_then_throw_exception() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			String input = "1 ! 3";
+			Calculator calculator = new Calculator();
+			calculator.calculate(input);
+		}).withMessage("사칙 연산 기호가 아닙니다.");
+	}
+
 }

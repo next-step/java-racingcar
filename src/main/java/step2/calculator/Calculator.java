@@ -5,39 +5,34 @@ import java.util.Queue;
 
 public class Calculator {
 
-	private Queue<Integer> numbers;
+	private Queue<Number> numbers;
 	private Queue<Operator> operators;
 	private Integer result;
 
 	public int calculate(final String input) {
+		validateInput(input);
 		separate(input);
-		validate(input);
-		result = numbers.poll();
+		if (numbers.isEmpty()) {
+			return 0;
+		}
+		result = numbers.poll().getValue();
 		calculate(numbers.poll(), operators.poll());
 
 		return result;
 	}
 
-	private void validate(final String input) {
+	private void validateInput(final String input) {
 		if (input == null || input.isEmpty()) {
 			throw new IllegalArgumentException("입력 값이 없습니다.");
 		}
-
-		if (numbers.isEmpty()) {
-			throw new IllegalArgumentException("입력된 숫자가 없습니다.");
-		}
-
-		if (operators.isEmpty()) {
-			throw new IllegalArgumentException("입력된 사칙연산이 없습니다.");
-		}
 	}
 
-	private void calculate(Integer number, Operator operator) {
+	private void calculate(Number number, Operator operator) {
 		if (number == null || operator == null) {
 			return;
 		}
 
-		result = operator.operate(result, number);
+		result = operator.operate(result, number.getValue());
 
 		if (numbers.isEmpty() || operators.isEmpty()) {
 			return;
@@ -60,25 +55,15 @@ public class Calculator {
 	}
 
 	private void store(final String input) {
-		if (OperatorSign.isSign(input)) {
-			operators.offer(OperatorFactory.findOperator(input));
+		if (Number.isIntegerNumber(input)) {
+			numbers.offer(new Number(Integer.parseInt(input)));
 			return;
 		}
-		storeNumber(input);
+
+		operators.offer(OperatorFactory.findOperator(input));
 	}
 
-	private void storeNumber(final String input) {
-		int number;
-		try {
-			number = Integer.parseInt(input);
-		} catch (NumberFormatException e) {
-			throw new IllegalArgumentException("숫자가 아닙니다.");
-		}
-
-		numbers.offer(number);
-	}
-
-	Queue<Integer> getNumbers() {
+	Queue<Number> getNumbers() {
 		return numbers;
 	}
 
