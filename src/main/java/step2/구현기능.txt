@@ -1,0 +1,15 @@
+CalculatorMain
+[1] 사칙연산 문자열 입력기능(숫자와 사칙연산 사이에는 빈 공백 문자 존재를 가정함)
+[2] 사칙연산 문자열 입력값 검증 기능(null 또는 공백 안됨)
+
+Calculator
+[1] 숫자와 사칙연산 기호 맞는지 검증 기능
+[2] 계산 기능
+[3] 결괏값 출력 기능
+
+ArithmeticOperation
+[1] 더하기 기능 PlusOperation
+[2] 빼기 기능 MinusOperation
+[3] 곱하기 기능 MultiplicationOperation
+[4] 나누기 기능 DivisionOperation
+[5] 나눗셈 연산 전 검증 기능
