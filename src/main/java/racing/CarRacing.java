@@ -29,11 +29,11 @@ public class CarRacing {
         display.printLine("자동차 대수는 몇 대 인가요?");
     }
     private int inputNumberOfCar(){
-        int numberOfCar = NumberUtil.toInt(inputUtil.inputNumber());
+        int numberOfCar = NumberParserUtil.toInt(inputUtil.inputNumber());
         return numberOfCar;
     }
     private int inputNumberOfTry(){
-        int racingCount = NumberUtil.toInt(inputUtil.inputNumber());
+        int racingCount = NumberParserUtil.toInt(inputUtil.inputNumber());
         return racingCount;
     }
 
@@ -53,7 +53,7 @@ public class CarRacing {
     private void racingStart(){
         for ( int i = 0; i < cars.size() ; i++){
             Car car = cars.get(i);
-            car.run( NumberUtil.getRandomNumber());
+            car.run(RandomGenerator.getRandomNumber());
         }
     }
 

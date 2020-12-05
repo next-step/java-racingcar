@@ -4,10 +4,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class InputUtil {
-
+    private static final Scanner scanner = new Scanner(System.in);
     public String inputNumber(){
-        Scanner scanner = new Scanner(System.in);
-        String inputNumber = scanner.nextLine();
+        String inputNumber = this.scanner.nextLine();
         return inputNumber;
     }
 

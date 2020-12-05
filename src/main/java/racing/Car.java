@@ -1,7 +1,6 @@
 package racing;
 
 public class Car {
-    private static final char sign = '-';
     private int allMeter = 0;
     private Display display;
 
@@ -12,7 +11,7 @@ public class Car {
     public int run(int inputNumber) {
         allMeter = allMeter + returnMeterByCondition(inputNumber);
         for (int i = 0; i < allMeter; i++) {
-            display.print(sign);
+            display.printMove();
         }
         stopRunning();
         return allMeter;
@@ -22,7 +21,8 @@ public class Car {
         if (inputNumber < moveableNumber) {
             return 0;
         }
-        return inputNumber;
+        this.allMeter = this.allMeter + 1;
+        return allMeter;
     }
 
     private void stopRunning() {
