@@ -17,6 +17,10 @@ public class GameProcessor {
 		this.numberOfTryTimes = numberOfTryTimes;
 	}
 
+	public static GameProcessor ofInputView(InputView inputView, MovePolicy movePolicy) {
+		return new GameProcessor(inputView.numberOfCar, inputView.numberOfTryTimes, movePolicy);
+	}
+
 	public GameSubject getGameSubject() {
 		return gameSubject;
 	}
