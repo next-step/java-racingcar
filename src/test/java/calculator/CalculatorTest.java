@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
+    private static final Calculator CALCULATOR = new Calculator();
 
     @ParameterizedTest
     @CsvSource(value = {
@@ -19,7 +20,7 @@ public class CalculatorTest {
     @DisplayName("입력 문자열을 통한 사칙 연산 수행")
     public void calculate(String formula, int expected){
         //when
-        int result = Calculator.calculate(formula);
+        int result = CALCULATOR.calculate(formula);
 
         //then
         assertEquals(result, expected);
@@ -33,7 +34,7 @@ public class CalculatorTest {
 
         //when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Calculator.calculate(formula))
+                .isThrownBy(() -> CALCULATOR.calculate(formula))
                 .withMessageMatching("입력값이 잘못되었습니다.");
     }
 
@@ -45,7 +46,7 @@ public class CalculatorTest {
 
         //when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Calculator.calculate(formula))
+                .isThrownBy(() -> CALCULATOR.calculate(formula))
                 .withMessageMatching("연산자가 잘못 입력 되었습니다.");
     }
 }
