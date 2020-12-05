@@ -13,27 +13,6 @@ public class NumbersTest {
     private static final String BLANK = " ";
 
     @Test
-    @DisplayName("입력값이 null일 경우 IllegalArgumentException throw")
-    public void nullCheck(){
-        //when then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Numbers(null))
-                .withMessageMatching(WRONG_INPUT);
-    }
-
-    @Test
-    @DisplayName("입력값이 빈 공백 문자일 경우 IllegalArgumentException throw")
-    public void blankCheck(){
-        //given
-        String blank = " ";
-
-        //when then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Numbers(blank.split(BLANK)))
-                .withMessageMatching(WRONG_INPUT);
-    }
-
-    @Test
     @DisplayName("숫자(정수)로 변환 불가능한 값의 경우 IllegalArgumentException throw")
     public void symbolCheck(){
         //given
