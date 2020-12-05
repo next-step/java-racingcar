@@ -1,6 +1,5 @@
 package step3;
 
-import step3.domain.AdvanceCheckor;
 import step3.domain.Cars;
 import step3.domain.RandomGenerator;
 import step3.domain.strategy.MovingStrategy;
@@ -13,7 +12,7 @@ import static step3.view.OutputView.outputMessageAboutMove;
 
 public class CarController {
     public static void main(String[] args) {
-        MovingStrategy strategy = new RandomMovingStrategy(new RandomGenerator(), new AdvanceCheckor());
+        MovingStrategy strategy = new RandomMovingStrategy(new RandomGenerator());
         Cars cars = new Cars(inputMessageAboutCars());
         int numOfTry = inputMessageAboutTry();
         outputMessage();

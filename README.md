@@ -18,7 +18,8 @@
 + domain
     + MovingStrategy : 전진 전략 인터페이스 
         + RandomMovingStrategy : 전진 전략 구현 클래스 (랜덤)
-    + AdvanceCheckor : 전진할지 스탑할지 체크해준다
+           + 랜덤 숫자를 만들고 4이상이면 isMove() -> True
+           + 랜덤 숫자를 만들고 4미만이면 isMove() -> False
     + RandomGenerator : 0~9까지 Random 숫자를 뽑아준다
     + Car : 자동차 클래스 
         + 이동한다
