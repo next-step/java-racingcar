@@ -17,11 +17,11 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:''","3:''", "4:-", "5:-" }, delimiter = ':')
+    @CsvSource(value = {"0:0","3:0", "4:1", "5:1" }, delimiter = ':')
     @DisplayName("4이상 전진, 4미만 정지 기능 테스트")
-    void move(int input, String expected) {
+    void move(int input, int expected) {
         car.move(input);
-        assertThat(car.getDistance()).isEqualTo(expected);
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
 }
