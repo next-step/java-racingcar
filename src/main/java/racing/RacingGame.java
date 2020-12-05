@@ -22,11 +22,33 @@ public class RacingGame {
 	public void start() {
 		InputView inputView = initInputView();
 
-		List<RacingCar> racingCarList = prepareInitRacingCar(inputView.getPlayRacingCarCount());
-		for (int i = 0; i < inputView.getPlayCount(); i++) {
-			speedUpForPlayCount(racingCarList);
+		List<RacingCar> racingCars = prepareInitRacingCar(inputView.getPlayRacingCarCount());
+		startRacing(racingCars, inputView.getPlayCount());
+	}
+
+	public void startRacing(List<RacingCar> racingCars, int playCount) {
+		for (int i = 0; i < playCount; i++) {
+			speedUpForPlayCount(racingCars);
 			System.out.println();
 		}
+	}
+
+	//todo 전략패턴
+	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
+	public void speedUpForPlayCount(List<RacingCar> racingCarList) {
+		for (RacingCar racingCar : racingCarList) {
+			racingCar.speedUp(random.nextInt(MAX_RANDOM_BOUND));
+			resultView.print(racingCar.getForwardRecord());
+		}
+	}
+
+	public List<RacingCar> prepareInitRacingCar(int playCarCount) {
+		List<RacingCar> racingCarList = new ArrayList<>();
+		for (int i = 0; i < playCarCount; i++) {
+			racingCarList.add(new RacingCar());
+		}
+		return racingCarList;
+
 	}
 
 	private InputView initInputView() {
@@ -41,20 +63,5 @@ public class RacingGame {
 		return new InputView(playRacingCarCount, playCount);
 	}
 
-	//todo 전략패턴
-	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
-	private void speedUpForPlayCount(List<RacingCar> racingCarList) {
-		for (RacingCar racingCar : racingCarList) {
-			racingCar.recordResult(racingCar.isForward(random.nextInt(MAX_RANDOM_BOUND)));
-			resultView.print(racingCar.getForwardRecord());
-		}
-	}
 
-	private List<RacingCar> prepareInitRacingCar(int playCarCount) {
-		List<RacingCar> racingCarList = new ArrayList<>();
-		for (int i = 0; i < playCarCount; i++) {
-			racingCarList.add(new RacingCar());
-		}
-		return racingCarList;
-	}
 }

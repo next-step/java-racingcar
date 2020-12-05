@@ -1,22 +1,29 @@
 package racing;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.model.RacingCar;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-	RacingCar racingCar = new RacingCar();
+	private static final int RACING_CAR_COUNT = 3;
+	private static final int PLAY_COUNT = 5;
 
-	//todo RacingCar의 단위 테스트로 보임. RacingGame의 단위테스트 추가해보기
+	RacingGame racingGame = new RacingGame();
+
 	@Test
-	@DisplayName("랜덤값이 4이상인 경우 한 칸 전진한다.")
-	void test_forward() {
-		assertThat(racingCar.isForward(4)).isTrue();
-		assertThat(racingCar.isForward(0)).isFalse();
-		assertThat(racingCar.isForward(-1)).isFalse();
+	void 경주에_출전한_차_댓수와_돌아야하는_카운트도_잘도는지_테스트(){
+		List<RacingCar> racingCars  = racingGame.prepareInitRacingCar(RACING_CAR_COUNT);
+		assertThat(racingCars).hasSize(RACING_CAR_COUNT);
+
+		racingGame.startRacing(racingCars, PLAY_COUNT);
+
+		for(RacingCar racingCar : racingCars){
+			assertThat(racingCar.getRacingRecord()==PLAY_COUNT).isTrue();
+		}
 	}
 
 }

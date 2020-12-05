@@ -6,6 +6,8 @@ public class RacingCar {
 
 	private int forwardRecord;
 
+	private int racingRecord;
+
 	public RacingCar() {
 	}
 
@@ -13,13 +15,18 @@ public class RacingCar {
 		return forwardRecord;
 	}
 
+	public int getRacingRecord() {
+		return racingRecord;
+	}
+
 	public boolean isForward(int randomCount) {
 		return randomCount >= FORWARD_CRITERIA;
 	}
 
-	public void recordResult(boolean isForward) {
-		if (isForward) {
+	public void speedUp(int randomCount) {
+		if (this.isForward(randomCount)) {
 			this.forwardRecord += 1;
 		}
+		this.racingRecord += 1;
 	}
 }
