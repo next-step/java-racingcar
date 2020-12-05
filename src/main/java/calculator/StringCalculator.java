@@ -2,6 +2,8 @@ package calculator;
 
 import java.util.Scanner;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class StringCalculator {
 
 	public static void run() {
@@ -12,18 +14,23 @@ public class StringCalculator {
 	}
 
 	public static int stringCalculate(String input) {
-		String[] components = input.split(" ");
-
-		if (components.length < 3) {
+		if (StringUtils.isEmpty(input)) {
 			throw new IllegalArgumentException();
 		}
 
-		Calculator calculator = new Calculator(components[0], components[1], components[2]);
-		int calculateResult = calculator.calculate();
-		for(int i = 3; i < components.length ; i = i + 2) {
-			calculator.setCalculator(calculateResult, components[i], components[i + 1]);
-			calculateResult = calculator.calculate();
+		String[] components = input.split(" ");
+
+		int calculateResult = toInteger(components[0]);
+		for(int i = 1; i < components.length ; i = i + 2) {
+			calculateResult = Calculator.calculate(calculateResult, components[i], toInteger(components[i + 1]));
 		}
 		return calculateResult;
+	}
+
+	private static int toInteger(String number) {
+		if (StringUtils.isEmpty(number)) {
+			throw new IllegalArgumentException();
+		}
+		return Integer.parseInt(number);
 	}
 }
