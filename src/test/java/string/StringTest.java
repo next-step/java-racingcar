@@ -42,11 +42,12 @@ public class StringTest {
         assertThat(str.charAt(1)).isEqualTo('b');
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생")
-    void charAtWithException() {
+    @ValueSource(ints = {-1, 3})
+    void charAtWithException(int index) {
         String str = "abc";
-        assertThatThrownBy(() -> str.charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class)
+        assertThatThrownBy(() -> str.charAt(index)).isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageMatching("String index out of range: \\d+");
     }
 }
