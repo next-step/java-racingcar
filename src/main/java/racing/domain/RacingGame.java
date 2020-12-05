@@ -5,7 +5,7 @@ import racing.view.OutputView;
 import java.util.Objects;
 
 public class RacingGame {
-    private int repeatCount;
+    private final int repeatCount;
     private Cars cars;
 
     public RacingGame(int carCount, int repeatCount, PowerGenerator powerGenerator) {

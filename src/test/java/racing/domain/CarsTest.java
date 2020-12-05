@@ -19,8 +19,7 @@ public class CarsTest {
         Cars actual = new Cars(carCount, new FixedPowerGenerator());
 
         //then
-        Cars expected = new Cars(Arrays.asList(new Car(), new Car(), new Car()), new FixedPowerGenerator());
-        assertEquals(expected, actual);
+        assertEquals(carCount, actual.size());
     }
 
     @DisplayName("자동차 N대 전진/멈춤")

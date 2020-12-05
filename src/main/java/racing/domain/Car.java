@@ -3,11 +3,12 @@ package racing.domain;
 import java.util.Objects;
 
 public class Car {
-    public static final int LOW_POWER = 3;
-    public static final int MOVE_POSITION = 1;
+    private static final int LOW_POWER = 3;
+    private static final int MOVE_POSITION = 1;
     private int position;
 
     public Car() {
+        this.position = 0;
     }
 
     Car(int position) {
@@ -15,7 +16,11 @@ public class Car {
     }
 
     public void move(int power) {
-        this.position = power > LOW_POWER ? this.position + MOVE_POSITION : this.position;
+        this.position = isPowerEnough(power) ? this.position + MOVE_POSITION : this.position;
+    }
+
+    private boolean isPowerEnough(int power) {
+        return power > LOW_POWER;
     }
 
     public int getPosition() {

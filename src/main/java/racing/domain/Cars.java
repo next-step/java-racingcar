@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
-    private PowerGenerator powerGenerator;
-    private List<Car> cars;
+    private final PowerGenerator powerGenerator;
+    private final List<Car> cars;
 
     public Cars(int carCount, PowerGenerator powerGenerator) {
         this.cars = Stream.generate(Car::new)
@@ -28,6 +28,10 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int size() {
+        return cars.size();
     }
 
     @Override
