@@ -8,8 +8,7 @@ public class Car {
     }
 
     public void racing(int randomValue) {
-        Condition condition = Condition.CheckCondition(randomValue);
-        curPosition.move(condition);
+        curPosition.move(randomValue);
     }
 
     public int getPosition() {

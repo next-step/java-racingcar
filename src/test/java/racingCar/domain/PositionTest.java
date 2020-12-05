@@ -23,10 +23,10 @@ public class PositionTest {
     @Test
     @DisplayName("이동 test")
     void movePosition() {
-        position.move(Condition.GO);
-        position.move(Condition.STOP);
-        position.move(Condition.GO);
-        position.move(Condition.STOP);
+        position.move(5);
+        position.move(4);
+        position.move(6);
+        position.move(3);
         assertThat(position.getPosition()).isEqualTo(2);
     }
 
