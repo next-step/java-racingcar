@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class NamesInputView {
     private static final String SEPARATOR = ",";
 
-    private String userInput;
+    private final String userInput;
 
     public NamesInputView(final String userInput) {
         validate(userInput);

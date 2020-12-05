@@ -3,8 +3,6 @@ package com.nextstep.racinggame.application;
 import com.nextstep.racinggame.domain.*;
 import com.nextstep.racinggame.view.InputView;
 import com.nextstep.racinggame.view.OutputView;
-import com.nextstep.racinggame.view.RacingGameResultOutputView;
-import com.nextstep.racinggame.view.RacingGameWinnerOutputView;
 
 import java.util.List;
 
