@@ -7,7 +7,10 @@ public enum Operator {
 	PLUS("+", (firstNumber, secondNumber) -> firstNumber + secondNumber),
 	MINUS("-", (firstNumber, secondNumber) -> firstNumber - secondNumber),
 	TIMES("*", (firstNumber, secondNumber) -> firstNumber * secondNumber),
-	DIVIDE("/", (firstNumber, secondNumber) -> firstNumber / secondNumber);
+	DIVIDE("/", (firstNumber, secondNumber) -> {
+		checkZeroDivide(secondNumber);
+		return firstNumber / secondNumber;
+	});
 
 	private final String operator;
 	private final BiFunction<Integer, Integer, Integer> function;
@@ -17,11 +20,17 @@ public enum Operator {
 		this.function = function;
 	}
 
-	public Integer calculate(Integer firstNumber, Integer secondNumber) {
+	public Integer calculate(int firstNumber, int secondNumber) {
 		return this.function.apply(firstNumber, secondNumber);
 	}
 
-	public static Operator findOperator(String symbol) {
+	private static void checkZeroDivide(int secondNumber) {
+		if (secondNumber == 0) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	public static Operator valueOfOperator(String symbol) {
 		return Arrays.stream(Operator.values())
 			.filter(operator -> operator.operator.equals(symbol))
 			.findFirst()
