@@ -9,10 +9,14 @@ public class InputView {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static List<Name> getCarNames() {
-        String userInput = SCANNER.nextLine();
-
-        NamesInputView namesInputView = new NamesInputView(userInput);
+        NamesInputView namesInputView = new NamesInputView(SCANNER.nextLine());
 
         return namesInputView.parseToNames();
+    }
+
+    public static int getRacingCount() {
+        RacingCountInputView racingCountInputView = new RacingCountInputView(SCANNER.nextInt());
+
+        return racingCountInputView.getRacingCount();
     }
 }

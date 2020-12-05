@@ -2,15 +2,12 @@ package com.nextstep.racinggame.application;
 
 import com.nextstep.racinggame.domain.*;
 import com.nextstep.racinggame.view.InputView;
-import com.nextstep.racinggame.view.NamesInputView;
 import com.nextstep.racinggame.view.RacingGameResultOutputView;
 import com.nextstep.racinggame.view.RacingGameWinnerOutputView;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingGameRunner {
-    private static final Scanner SCANNER = new Scanner(System.in);
     private static final MovePolicy RANDOM_MOVE_POLICY = new RandomMovePolicy();
 
     private static final String CAR_DEMAND_COMMENT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
@@ -22,9 +19,9 @@ public class RacingGameRunner {
         List<Name> names = InputView.getCarNames();
 
         System.out.println(RACE_DEMAND_COMMENT);
-        int raceDemand = SCANNER.nextInt();
+        int raceCount = InputView.getRacingCount();
 
-        run(names, raceDemand);
+        run(names, raceCount);
     }
 
     private static void run(final List<Name> names, final int raceDemand) {

@@ -16,4 +16,8 @@ public class RacingCountInputView {
             throw new InvalidUserInputException("레이싱 회수는 1이상이어야만 합니다.");
         }
     }
+
+    int getRacingCount() {
+        return racingCount;
+    }
 }
