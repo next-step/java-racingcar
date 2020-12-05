@@ -28,7 +28,7 @@ class CarsTest {
     @Test
     @DisplayName("모든 자동차들이 전진 조건에 만족하면 1씩 움직이는 기능 테스트")
     public void moveCars() {
-        when(movingStrategy.move()).thenReturn(true);
+        when(movingStrategy.isMove()).thenReturn(true);
         cars.moveCars(movingStrategy);
         cars.getCars().stream().forEach(car ->
                 assertEquals(car.getPosition(), 1)
@@ -38,7 +38,7 @@ class CarsTest {
     @Test
     @DisplayName("모든 자동차들이 전진 조건에 만족하지 않으면 정지하는 기능 테스트")
     public void stopCars() {
-        when(movingStrategy.move()).thenReturn(false);
+        when(movingStrategy.isMove()).thenReturn(false);
         cars.moveCars(movingStrategy);
         cars.getCars().stream().forEach(car ->
                 assertEquals(car.getPosition(), 0)

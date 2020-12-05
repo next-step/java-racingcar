@@ -28,14 +28,14 @@ class RandomMovingStrategyTest {
     @DisplayName("랜덤값이 4이상이면 True 테스트")
     public void move() {
         when(randomGenerator.generate()).thenReturn(4);
-        assertTrue(randomMovingStrategy.move());
+        assertTrue(randomMovingStrategy.isMove());
     }
 
     @Test
     @DisplayName("랜덤값이 4미만이면 False 테스트")
     public void stop() {
         when(randomGenerator.generate()).thenReturn(3);
-        assertFalse(randomMovingStrategy.move());
+        assertFalse(randomMovingStrategy.isMove());
     }
 
 }
