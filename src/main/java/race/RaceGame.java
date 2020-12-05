@@ -21,7 +21,7 @@ public class RaceGame implements GameSubject {
 		gameObserver.update(this.carDistanceMessage);
 	}
 
-	public void run() {
+	private void run() {
 		this.raceCarGroup.moveAll();
 		this.carDistanceMessage = new GameResultMessage("-").parser(this.raceCarGroup.nowCarStatus());
 	}
