@@ -23,20 +23,21 @@ class SetTest {
     }
 
     @Test
-    @DisplayName("Set size() 테스트")
+    @DisplayName("Set size() 메소드를 활용해 크기를 확인")
     void size_test() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3,})
-    @DisplayName("Set contains() 테스트")
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("Set contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인")
     void contains_test(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "3:true", "4:false"}, delimiter = ':')
+    @DisplayName("Set contains() 메소드를 활용해 contains()의 결과 값을 유무 확인")
     void contains_결과값_테스트(int number, boolean result) {
         assertEquals(result, numbers.contains(number));
     }

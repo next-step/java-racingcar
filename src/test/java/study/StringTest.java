@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 class StringTest {
 
     @Test
-    @DisplayName("문자열 여러개 split 테스트")
+    @DisplayName("split() 메소드 사용, 문자열 자르기 테스트")
     void split_test() {
         // given
         String data = "1,2";
@@ -23,7 +23,7 @@ class StringTest {
     }
 
     @Test
-    @DisplayName("문자열 하나 split 테스트")
+    @DisplayName("split() 메소드 사용, 문자열 하나 자르기 테스트")
     void split_one_data_test() {
         // given
         String data = "1";
@@ -36,7 +36,7 @@ class StringTest {
     }
 
     @Test
-    @DisplayName("문자열 substring 테스트")
+    @DisplayName("substring() 메소드 사용, 인덱스를 사용하여 문자열 자르기 테스트")
     void substring_test() {
         // given
         String data = "(1,2)";
@@ -49,8 +49,20 @@ class StringTest {
     }
 
     @Test
-    @DisplayName("chart() 예외 테스트")
-    void charAt(){
+    @DisplayName("charAt() 메소드 사용, 인덱스로 문자를 리턴하는 테스트")
+    void charAt_test() {
+        // given
+        String result = "abc";
+
+        // when & then
+        assertThat(result.charAt(0)).as("서로 문자가 일치하지 않습니다").isEqualTo('a');
+        assertThat(result.charAt(1)).as("서로 문자가 일치하지 않습니다").isEqualTo('b');
+        assertThat(result.charAt(2)).as("서로 문자가 일치하지 않습니다").isEqualTo('c');
+    }
+
+    @Test
+    @DisplayName("charAt() 메소드 사용, 인덱스 값을 벗어나는 예외 테스트")
+    void charAt_exception_test(){
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     "abc".charAt(3);
