@@ -9,10 +9,7 @@ public class Car {
 	private String distance = "";
 
 	private Car(String name) {
-		if (ValidationUtil.isLengthEmptyOrGreaterThanFive(name)) {
-			throw new IllegalArgumentException(Message.MSG_NAME_LENGTH_EMPTY_OR_GREATER_THAN_5);
-		}
-		this.name = name;
+		this(name, "");
 	}
 
 	private Car(String name, String distance) {
