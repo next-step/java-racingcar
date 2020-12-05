@@ -6,7 +6,8 @@ public enum OperatorFactory {
 
 	ADDITION(OperatorSign.PLUS, new AdditionOperator()),
 	SUBTRACTION(OperatorSign.MINUS, new SubtractionOperator()),
-	MULTIPLICATION(OperatorSign.ASTERISK, new MultiplicationOperator());
+	MULTIPLICATION(OperatorSign.ASTERISK, new MultiplicationOperator()),
+	DIVISION(OperatorSign.SLASH, new DivisionOperator());
 
 	private final OperatorSign sign;
 	private final Operator operator;

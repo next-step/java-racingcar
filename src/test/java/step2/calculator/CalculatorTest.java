@@ -31,4 +31,12 @@ public class CalculatorTest {
 		assertThat(operator).isInstanceOf(MultiplicationOperator.class);
 	}
 
+	@DisplayName("나눗셈 사칙 연산 판단")
+	@Test
+	void given_input_with_slash_sign_when_factory_of_then_return_multiplication_operator() {
+		String input = "2 / 3";
+		Operator operator = OperatorFactory.of(input);
+		assertThat(operator).isInstanceOf(DivisionOperator.class);
+	}
+
 }

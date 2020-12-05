@@ -3,7 +3,7 @@ package step2.calculator;
 import java.util.Arrays;
 
 public enum OperatorSign {
-	PLUS("+"), MINUS("-"), ASTERISK("*");
+	PLUS("+"), MINUS("-"), ASTERISK("*"), SLASH("/");
 
 	private final String sign;
 
