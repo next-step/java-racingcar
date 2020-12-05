@@ -14,7 +14,7 @@ public class RandomMovingStrategy implements MovingStrategy<Boolean> {
     }
 
     @Override
-    public Boolean isMove() {
+    public Boolean move() {
         return checkor.check(randomGenerator.generate());
     }
 

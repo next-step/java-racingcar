@@ -25,7 +25,7 @@ public class CarTest {
     @Test
     @DisplayName("전진 조건에 만족하면 전진")
     void move() {
-        when(movingStrategy.isMove()).thenReturn(true);
+        when(movingStrategy.move()).thenReturn(true);
         car.move(movingStrategy);
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -33,7 +33,7 @@ public class CarTest {
     @Test
     @DisplayName("전진 조건에 만족하지 않으면 스탑")
     void stop() {
-        when(movingStrategy.isMove()).thenReturn(false);
+        when(movingStrategy.move()).thenReturn(false);
         car.move(movingStrategy);
         assertThat(car.getPosition()).isEqualTo(0);
     }
