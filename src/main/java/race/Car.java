@@ -13,7 +13,9 @@ public class Car {
 	}
 
 	public void move() {
-		distance += movePolicy.move();
+		if (movePolicy.move()) {
+			this.distance += 1;
+		}
 	}
 
 	public int nowDistance() {

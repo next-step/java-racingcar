@@ -20,7 +20,7 @@ class CarTest {
 		assertThat(car.nowDistance()).isEqualTo(10);
 	}
 
-	@DisplayName("자동차를 여러대 이동시키고 거리가 일치하는지 확인한다.")
+	@DisplayName("자동차를 여러대 이동시키고 최종 거리가 일치하는지 확인한다.")
 	@Test
 	void 자동차_여러대_이동_TEST() {
 		MovePolicy movePolicy = new SimpleMovePolicy();
@@ -29,6 +29,5 @@ class CarTest {
 			carGroup.moveAll();
 		});
 		assertThat(carGroup.ofCarIndex(1).nowDistance()).isEqualTo(5);
-
 	}
 }

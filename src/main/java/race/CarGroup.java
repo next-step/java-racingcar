@@ -8,7 +8,11 @@ public class CarGroup {
 	private final List<Car> cars;
 
 	private CarGroup(int groupSize, MovePolicy movePolicy) {
-		this.cars = IntStream.rangeClosed(0, groupSize).mapToObj(i -> Car.of(movePolicy)).collect(Collectors.toList());
+		this.cars = IntStream.rangeClosed(1, groupSize).mapToObj(i -> Car.of(movePolicy)).collect(Collectors.toList());
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 
 	public Car ofCarIndex(int carIndex) {
