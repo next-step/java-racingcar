@@ -1,3 +1,5 @@
+package step1.string;
+
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.HashSet;
