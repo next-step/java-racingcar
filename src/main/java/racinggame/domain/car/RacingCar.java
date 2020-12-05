@@ -3,11 +3,11 @@ package racinggame.domain.car;
 public class RacingCar {
     private final int position;
 
-    public RacingCar(int position) {
+    public RacingCar(final int position) {
         this.position = position;
     }
 
-    public RacingCar move(boolean isMove) {
+    public RacingCar move(final boolean isMove) {
         if (isMove) {
             return new RacingCar(position + 1);
         }
