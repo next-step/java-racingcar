@@ -23,6 +23,11 @@ public class CarGroup {
 		cars.forEach(Car::move);
 	}
 
+	public List<Car> nowCarStatus() {
+//		return cars.stream().map(Car::nowDistance).collect(Collectors.toList());
+		return cars;
+	}
+
 	public static CarGroup of(int groupSize, MovePolicy movePolicy) {
 		return new CarGroup(groupSize, movePolicy);
 	}
