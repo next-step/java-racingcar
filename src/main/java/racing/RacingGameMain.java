@@ -1,5 +1,7 @@
 package racing;
 
+import racing.domain.RacingGame;
+import racing.domain.RandomPowerGenerator;
 import racing.view.InputView;
 
 public class RacingGameMain {

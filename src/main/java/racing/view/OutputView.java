@@ -1,8 +1,8 @@
 package racing.view;
 
 import org.apache.commons.lang3.StringUtils;
-import racing.Car;
-import racing.Cars;
+import racing.domain.Car;
+import racing.domain.Cars;
 
 import java.util.List;
 
