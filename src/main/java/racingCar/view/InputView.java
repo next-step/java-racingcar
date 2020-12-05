@@ -3,7 +3,7 @@ package racingCar.view;
 import java.util.Scanner;
 
 public class InputView {
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     public static int inputCarNums() {
         System.out.println("자동차 대수는 몇 대 인가요?");

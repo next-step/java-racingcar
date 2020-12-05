@@ -2,27 +2,20 @@ package racingCar.domain;
 
 import racingCar.RacingCarUtils;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Racing {
     private List<Car> cars;
 
     public Racing(int carNums) {
-        this.cars = mapCars(carNums);
-    }
-
-    private static List<Car> mapCars(int carNums) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNums; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+        this.cars = Stream.generate(() -> new Car()).limit(carNums).collect(Collectors.toList());
     }
 
     public void race() {
         for (Car car : cars) {
-            car.racing(RacingCarUtils.RandomValueGenerator());
+            car.racing(RacingCarUtils.randomValueGenerator());
         }
     }
 
