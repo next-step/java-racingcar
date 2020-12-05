@@ -6,13 +6,11 @@ import java.util.stream.Stream;
 
 public class Cars {
     private final List<Car> cars;
-    private final MovingCondition condition;
 
     public Cars(int count, MovingCondition condition) {
-        cars = Stream.generate(Car::new)
+        cars = Stream.generate(() -> new Car(condition))
                 .limit(count)
                 .collect(Collectors.toList());
-        this.condition = condition;
     }
 
     public List<Car> getCars() {
@@ -20,6 +18,6 @@ public class Cars {
     }
 
     public void move() {
-        cars.forEach(car -> car.move(condition.getCondition()));
+        cars.forEach(Car::move);
     }
 }
