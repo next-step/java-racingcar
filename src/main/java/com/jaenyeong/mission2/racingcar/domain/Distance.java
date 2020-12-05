@@ -21,7 +21,7 @@ public class Distance {
     private int nextMove() {
         final int valueForMoveToNext = ThreadLocalRandom.current()
             .nextInt(Move.RANDOM_START_RANGE.getValue(), Move.RANDOM_END_RANGE.getValue());
-        
+
         return (valueForMoveToNext >= Move.MOVE_LIMIT_WHEN_RANDOM.getValue())
             ? Move.NEXT.getValue()
             : Move.STOP.getValue();
