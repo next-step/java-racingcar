@@ -14,7 +14,7 @@ class CarTest {
 	void 자동차_거리_이동_TEST() {
 		MovePolicy movePolicy = new SimpleMovePolicy();
 		Car car = Car.of(movePolicy);
-		IntStream.rangeClosed(1, 10).forEach(i -> {
+		IntStream.range(0, 10).forEach(i -> {
 			car.move();
 		});
 		assertThat(car.nowDistance()).isEqualTo(10);
@@ -25,7 +25,7 @@ class CarTest {
 	void 자동차_여러대_이동_TEST() {
 		MovePolicy movePolicy = new SimpleMovePolicy();
 		CarGroup carGroup = CarGroup.of(10, movePolicy);
-		IntStream.rangeClosed(1, 5).forEach(i -> {
+		IntStream.range(0, 5).forEach(i -> {
 			carGroup.moveAll();
 		});
 		assertThat(carGroup.ofCarIndex(1).nowDistance()).isEqualTo(5);

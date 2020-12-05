@@ -5,10 +5,13 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarGroup {
+	public static final int INIT_GROUP_SIZE_INDEX = 0;
 	private final List<Car> cars;
 
 	private CarGroup(int groupSize, MovePolicy movePolicy) {
-		this.cars = IntStream.rangeClosed(1, groupSize).mapToObj(i -> Car.of(movePolicy)).collect(Collectors.toList());
+		this.cars = IntStream.range(INIT_GROUP_SIZE_INDEX, groupSize)
+			.mapToObj(i -> Car.of(movePolicy))
+			.collect(Collectors.toList());
 	}
 
 	public List<Car> getCars() {
