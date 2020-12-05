@@ -20,7 +20,7 @@
 * 메소드가 너무 많은 일을 하지 않도록 분리하기 위해 노력해 본다.
 
 ## To do
- - [X] 입력값 파싱:: CalculatorFormula 클래스 구현
+ - [X] 입력값 파싱:: InputValid 클래스를 상속받는 Numbers, Operators 클래스(일급객체) 구현
     - [X] null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
     - [X] 숫자(정수)로 변환 불가능한 값의 경우 IllegalArgumentException throw
     - [X] 들어온 순번에 맞는 숫자를 반환
@@ -32,8 +32,5 @@
     - [X] 나눗셈
         - [X] 결과 값은 정수로 떨어지는 값으로 한정
         - [X] 0으로 나눌경우 IllegalArgumentException throw
-- [X] 연산 결과를 가지고 있는 CalculationResult 클래스 구현
-    - [X] 초기 값은 입력 문자열의 첫번째 값을 가짐
-    - [X] 계산되는 값을 계속 합산하여 가지고 있어야함
  - [X] 사칙 연산을 모두 포함하는 기능 구현 :: Calculator 클래스 구현
     - [X] 사칙 연산 수행
