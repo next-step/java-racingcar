@@ -5,17 +5,17 @@ import step3.domain.RandomGenerator;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
-    private RandomGenerator randomGenerator;
-    private AdvanceCheckor checkor;
+    private final RandomGenerator randomGenerator;
+    private final AdvanceCheckor advanceCheckor;
 
-    public RandomMovingStrategy(RandomGenerator randomGenerator, AdvanceCheckor checkor) {
+    public RandomMovingStrategy(RandomGenerator randomGenerator, AdvanceCheckor advanceCheckor) {
         this.randomGenerator = randomGenerator;
-        this.checkor = checkor;
+        this.advanceCheckor = advanceCheckor;
     }
 
     @Override
     public boolean isMove() {
-        return checkor.check(randomGenerator.generate());
+        return advanceCheckor.check(randomGenerator.generate());
     }
 
 }

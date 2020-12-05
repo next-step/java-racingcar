@@ -14,14 +14,14 @@ import static org.mockito.Mockito.when;
 class RandomMovingStrategyTest {
 
     private RandomGenerator randomGenerator;
-    private AdvanceCheckor checkor;
+    private AdvanceCheckor advanceCheckor;
     private RandomMovingStrategy randomMovingStrategy;
 
     @BeforeEach
     void setUp() {
         randomGenerator = mock(RandomGenerator.class);
-        checkor = new AdvanceCheckor();
-        randomMovingStrategy = new RandomMovingStrategy(randomGenerator, checkor);
+        advanceCheckor = new AdvanceCheckor();
+        randomMovingStrategy = new RandomMovingStrategy(randomGenerator, advanceCheckor);
     }
 
     @Test
