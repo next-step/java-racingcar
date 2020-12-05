@@ -157,4 +157,4 @@ public class SetTest {
     
 ## Step4. 피드백 반영
 - [X] Stream 메서드를 거친 뒤 객체를 생성하는 코드 가독성 높이기
-- [ ] Fixture가 반드시 필요한 테스트인지 점검하기
+- [X] Fixture가 반드시 필요한 테스트인지 점검하기

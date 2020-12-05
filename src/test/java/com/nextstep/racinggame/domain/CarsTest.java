@@ -9,13 +9,16 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static com.nextstep.racinggame.domain.CarFixtures.*;
 import static com.nextstep.racinggame.domain.CarsFixtures.*;
-import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_STATION;
-import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
+    private static final Car ZERO_TEST1_CAR = new Car(0, new Name("test1"));
+    private static final Car ZERO_TEST2_CAR = new Car(0, new Name("test2"));
+    private static final Car ZERO_TEST3_CAR = new Car(0, new Name("test3"));
+    private static final Car ONE_TEST1_CAR = new Car(1, new Name("test1"));
+    private static final Car ONE_TEST2_CAR = new Car(1, new Name("test2"));
+
     @DisplayName("Cars 컬렉션을 인자로 받아서 객체를 생성할 수 있다.")
     @Test
     void createTest() {
@@ -37,8 +40,8 @@ class CarsTest {
     }
     public static Stream<Arguments> moveAllTestResource() {
         return Stream.of(
-                Arguments.of(FOUR_FUEL_GAS_STATION, ALL_ONE_MOVED_TEST123_CARS),
-                Arguments.of(THREE_FUEL_GAS_STATION, ALL_NOT_MOVED_TEST123_CARS)
+                Arguments.of(new ForceMovePolicy(), ALL_ONE_MOVED_TEST123_CARS),
+                Arguments.of(new ForceNotMovePolicy(), ALL_NOT_MOVED_TEST123_CARS)
         );
     }
 

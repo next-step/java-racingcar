@@ -1,5 +1,6 @@
 package com.nextstep.racinggame.view;
 
+import com.nextstep.racinggame.domain.Name;
 import com.nextstep.racinggame.domain.exceptions.InvalidNameException;
 import com.nextstep.racinggame.view.exceptions.InvalidUserInputException;
 import org.junit.jupiter.api.DisplayName;
@@ -7,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static com.nextstep.racinggame.domain.NameFixtures.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -32,12 +32,16 @@ class InputViewTest {
     @DisplayName("Name 컬렉션으로 파싱 가능")
     @Test
     void parseToNamesTest() {
-        String userInput = "test1,test2,test3";
+        String name1 = "test1";
+        String name2 = "test2";
+        String name3 = "test3";
+        String userInput = name1 + "," + name2 + "," + name3;
+
         InputView inputView = new InputView(userInput);
 
-        assertThat(inputView.parseToNames()).contains(TEST1);
-        assertThat(inputView.parseToNames()).contains(TEST2);
-        assertThat(inputView.parseToNames()).contains(TEST3);
+        assertThat(inputView.parseToNames()).contains(new Name(name1));
+        assertThat(inputView.parseToNames()).contains(new Name(name2));
+        assertThat(inputView.parseToNames()).contains(new Name(name3));
     }
 
     @DisplayName("적합하지 않은 이름이 포함된 채로 객체 생성 시도 시 예외 발생")

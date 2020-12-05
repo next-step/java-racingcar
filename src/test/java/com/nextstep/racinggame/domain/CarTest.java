@@ -8,8 +8,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static com.nextstep.racinggame.domain.GasStationFixtures.FOUR_FUEL_GAS_STATION;
-import static com.nextstep.racinggame.domain.GasStationFixtures.THREE_FUEL_GAS_STATION;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -32,8 +30,8 @@ class CarTest {
     }
     public static Stream<Arguments> moveTestResource() {
         return Stream.of(
-                Arguments.of(FOUR_FUEL_GAS_STATION, new Car(1, HELLO_NAME)),
-                Arguments.of(THREE_FUEL_GAS_STATION, new Car(0, HELLO_NAME))
+                Arguments.of(new ForceMovePolicy(), new Car(1, HELLO_NAME)),
+                Arguments.of(new ForceNotMovePolicy(), new Car(0, HELLO_NAME))
         );
     }
 }
