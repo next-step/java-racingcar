@@ -4,7 +4,9 @@ public class Calculator {
     private static final String BLANK = " ";
     
     public int calculate(String input) {
+        InputValidUtil.isNull(input);
         String[] inputArray = getInputArray(input);
+        InputValidUtil.numbersValidation(inputArray);
         Numbers numbers = new Numbers(inputArray);
         Operators operators = new Operators(inputArray);
         int result = numbers.get(0);
