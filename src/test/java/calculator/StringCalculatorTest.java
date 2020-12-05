@@ -45,4 +45,9 @@ class StringCalculatorTest {
         });
     }
 
+    @Test
+    @DisplayName("숫자_하나_계산_테스트")
+    void one_data_test() {
+        assertEquals(1, calculator.calculate("1"));
+    }
 }
