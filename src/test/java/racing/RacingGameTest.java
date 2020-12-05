@@ -10,6 +10,7 @@ class RacingGameTest {
 
 	RacingCar racingCar = new RacingCar();
 
+	//todo RacingCar의 단위 테스트로 보임. RacingGame의 단위테스트 추가해보기
 	@Test
 	@DisplayName("랜덤값이 4이상인 경우 한 칸 전진한다.")
 	void test_forward() {

@@ -7,6 +7,7 @@ import racing.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class RacingGame {
 
@@ -16,17 +17,32 @@ public class RacingGame {
 
 	ResultView resultView = new ResultView();
 
-	public void start() {
-		InputView inputView = new InputView();
-		inputView.inputUI();
+	Scanner scanner = new Scanner(System.in);
 
-		List<RacingCar> racingCarList = prepareInitRacingCar(inputView.getPlayCarCount());
+	public void start() {
+		InputView inputView = initInputView();
+
+		List<RacingCar> racingCarList = prepareInitRacingCar(inputView.getPlayRacingCarCount());
 		for (int i = 0; i < inputView.getPlayCount(); i++) {
 			speedUpForPlayCount(racingCarList);
 			System.out.println();
 		}
 	}
 
+	private InputView initInputView() {
+		System.out.println("자동차 대수는 몇 대 인가요?");
+		int playRacingCarCount = scanner.nextInt();
+		System.out.println(playRacingCarCount);
+
+		System.out.println("시도할 회수는 몇 회 인가요?");
+		int playCount = scanner.nextInt();
+		System.out.println(playCount);
+
+		return new InputView(playRacingCarCount, playCount);
+	}
+
+	//todo 전략패턴
+	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
 	private void speedUpForPlayCount(List<RacingCar> racingCarList) {
 		for (RacingCar racingCar : racingCarList) {
 			racingCar.recordResult(racingCar.isForward(random.nextInt(MAX_RANDOM_BOUND)));
