@@ -9,9 +9,9 @@ public class Race {
     private int moveLimit;
     private List<Car> cars = new ArrayList<>();
 
-    public Race(List<String> carNames, int moveLimit, Supplier<Integer> numberGenerator) {
+    public Race(List<CarName> carNames, int moveLimit, Supplier<Integer> numberGenerator) {
         this.moveLimit = moveLimit;
-        for (String carName : carNames) {
+        for (CarName carName : carNames) {
             cars.add(new Car(carName, numberGenerator));
         }
     }

@@ -5,17 +5,17 @@ import java.util.function.Supplier;
 public class Car {
     private static final int THRESHOLD = 3;
 
-    private String name;
+    private CarName name;
     private int position = 0;
     private Supplier<Integer> numberGenerator;
 
-    public Car(String name, Supplier<Integer> numberGenerator) {
+    public Car(CarName name, Supplier<Integer> numberGenerator) {
         this.name = name;
         this.numberGenerator = numberGenerator;
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public void tryMove() {

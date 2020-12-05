@@ -51,13 +51,13 @@ public class RaceManager {
     }
 
     private Race createRace() {
-        List<String> carNames = inputCarCount();
+        List<CarName> carNames = inputCarNames();
         int moveLimit = inputMoveLimit();
 
         return new Race(carNames, moveLimit, this::getRandomValue);
     }
 
-    private List<String> inputCarCount() {
+    private List<CarName> inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String line = scanner.nextLine();
         return Parser.parseCarNames(line);

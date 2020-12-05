@@ -14,10 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
     private static final int CAR_COUNT = 5;
 
+    private final CarName carName = new CarName("test");
+
     @DisplayName("자동차에 이름 부여")
     @Test
     public void name(){
-        Car car = new Car("test", () -> 1);
+        Car car = new Car(carName, () -> 1);
         assertThat(car.getName()).isEqualTo("test");
     }
 
@@ -25,7 +27,7 @@ public class CarTest {
     @ParameterizedTest
     @MethodSource
     public void tryMove(Supplier<Integer> numberSupplier, int count) {
-        Car car = new Car("test", numberSupplier);
+        Car car = new Car(carName, numberSupplier);
         for ( int ix = 0 ; ix < count ; ix ++ ) {
             car.tryMove();
         }
@@ -50,7 +52,7 @@ public class CarTest {
     @ParameterizedTest
     @MethodSource
     public void isNotFinished(Supplier<Integer> supplier, int count, boolean expected) {
-        Car car = new Car("test", supplier);
+        Car car = new Car(carName, supplier);
         for ( int ix = 0 ; ix < count ; ix ++ ) {
             car.tryMove();
         }

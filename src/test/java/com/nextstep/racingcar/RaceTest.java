@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
     private static final Random RANDOM = new Random();
-    private final List<String> carNames = Arrays.asList("test1", "test2", "test3");
+    private final List<CarName> carNames = Arrays.asList(new CarName("test1"), new CarName("test2"), new CarName("test3"));
 
     @DisplayName("0-3만 나오는 경우와 4-9만 나오는 경우 position의 변화 체크")
     @ParameterizedTest
