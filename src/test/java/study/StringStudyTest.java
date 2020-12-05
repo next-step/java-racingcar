@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StringTest {
+public class StringStudyTest {
 
     @Test
     @DisplayName("\"1,2\"을 \",\"로 split 했을 때 1과 2로 잘 분리되는지 확인")
