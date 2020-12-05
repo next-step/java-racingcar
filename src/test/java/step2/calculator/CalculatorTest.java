@@ -61,4 +61,14 @@ public class CalculatorTest {
 		assertThat(result).isEqualTo(Integer.parseInt(expectResult));
 	}
 
+	@DisplayName("입력 값이 없을 경우 익셉션")
+	@Test
+	void given_none_input_when_calculate_then_throw_exception() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			String input = "";
+			Calculator calculator = new Calculator();
+			calculator.calculate(input);
+		});
+	}
+
 }
