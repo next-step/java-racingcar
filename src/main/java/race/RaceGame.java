@@ -1,13 +1,16 @@
 package race;
 
 public class RaceGame implements GameSubject {
+	private static final String MOVE_SEPARATOR = "-";
 	private GameObserver gameObserver;
 	private final CarGroup raceCarGroup;
-	private String carDistanceMessage;
 
-	public RaceGame(int carAmount, GameObserver gameObserver) {
+	public RaceGame(int carAmount) {
 		this.raceCarGroup = CarGroup.of(carAmount, new SimpleMovePolicy());
-		this.registerObserver(gameObserver);
+	}
+
+	public RaceGame(int carAmount, MovePolicy movePolicy) {
+		this.raceCarGroup = CarGroup.of(carAmount, movePolicy);
 	}
 
 	@Override
@@ -15,14 +18,21 @@ public class RaceGame implements GameSubject {
 		this.gameObserver = gameObserver;
 	}
 
+	private void sendMessageToObserver() {
+		this.gameObserver.update(createGameResultMessage());
+	}
+
 	@Override
 	public void notifyObserver() {
 		this.run();
-		gameObserver.update(this.carDistanceMessage);
 	}
 
 	private void run() {
 		this.raceCarGroup.moveAll();
-		this.carDistanceMessage = new GameResultMessage("-").parser(this.raceCarGroup.nowCarStatus());
+		sendMessageToObserver();
+	}
+
+	private String createGameResultMessage() {
+		return new GameResultMessage(MOVE_SEPARATOR).parser(this.raceCarGroup.nowCarStatus());
 	}
 }

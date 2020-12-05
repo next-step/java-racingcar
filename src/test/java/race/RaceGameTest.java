@@ -4,27 +4,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.IntStream;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceGameTest {
 
-	GameSubject gameSubject;
+	GameProcessor gameProcessor;
 	OutputView outputView;
 
 	@BeforeEach
 	void setUp() {
-		outputView = new OutputView();
-		gameSubject = new RaceGame(5, outputView);
+		gameProcessor = new GameProcessor(5, 5, new SimpleMovePolicy());
+		outputView = new OutputView(gameProcessor.getGameSubject());
 	}
 
 	@DisplayName("경주 게임 시도 횟수만큼 결과 메시지가 변하는지 확인")
 	@Test
 	void 경주게임_결과메세지_TEST() {
-		IntStream.rangeClosed(1, 5).forEach(i -> {
-			gameSubject.notifyObserver();
-		});
+		gameProcessor.running();
 		String expected = "-----\n" +
 			"-----\n" +
 			"-----\n" +
