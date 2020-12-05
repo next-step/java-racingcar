@@ -155,4 +155,3 @@ public class SetTest {
 
 - `게임 보고서(GameReport)`
     - `판 보고서(RoundReport)`에 대한 통계를 나타낸다.
-    - [ ] 결과를 출력할 수 있다. 
