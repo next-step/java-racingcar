@@ -14,12 +14,6 @@ public class Cars {
         addCars(numOfCar);
     }
 
-    private void addCars(int numOfCar) {
-        for (int i = 0; i< numOfCar; i++) {
-            cars.add(new Car());
-        }
-    }
-
     public void moveCars(MovingStrategy movingStrategy) {
         cars.stream()
                 .forEach(car -> car.move(movingStrategy));
@@ -27,5 +21,11 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    private void addCars(int numOfCar) {
+        for (int i = 0; i< numOfCar; i++) {
+            cars.add(new Car());
+        }
     }
 }
