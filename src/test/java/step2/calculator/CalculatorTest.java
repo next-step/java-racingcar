@@ -39,4 +39,15 @@ public class CalculatorTest {
 		assertThat(operator).isInstanceOf(DivisionOperator.class);
 	}
 
+	@DisplayName("숫자와 사칙연산 기호 분리하여 기호에 따른 연산 구현체 포함된 리스트 응답")
+	@Test
+	void given_input_number_and_signs_when_separate_return_list_contains_only_operator_sign() {
+		String input = "2 + 3 - 1 * 4 / 2";
+		Calculator calculator = new Calculator();
+		calculator.separate(input);
+
+		assertThat(calculator.getOperators().size()).isEqualTo(4);
+
+	}
+
 }

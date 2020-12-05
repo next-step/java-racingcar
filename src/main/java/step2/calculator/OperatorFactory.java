@@ -9,6 +9,7 @@ public enum OperatorFactory {
 	MULTIPLICATION(OperatorSign.ASTERISK, new MultiplicationOperator()),
 	DIVISION(OperatorSign.SLASH, new DivisionOperator());
 
+	public final static String SPACE = " ";
 	private final OperatorSign sign;
 	private final Operator operator;
 
@@ -18,14 +19,13 @@ public enum OperatorFactory {
 	}
 
 	public static Operator of(final String input) {
-		final String SPACE = " ";
 		final String[] inputs = input.split(SPACE);
 		return findOperator(Arrays.stream(inputs).filter(OperatorSign::isSign)
 			.findFirst()
 			.orElseThrow(() -> new IllegalArgumentException("사칙 연산 기호가 없습니다.")));
 	}
 
-	private static Operator findOperator(final String sign) {
+	public static Operator findOperator(final String sign) {
 		return Arrays.stream(OperatorFactory.values())
 			.filter(operator -> operator.getSign().equals(sign))
 			.findFirst()
