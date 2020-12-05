@@ -29,12 +29,8 @@ public class Car {
         return position;
     }
 
-    public boolean isFinished(int limit) {
-        return limit <= position;
-    }
-
-    public boolean isNotFinished(int limit) {
-        return position < limit;
+    public boolean equalsPosition(int position) {
+        return this.position == position;
     }
 
     private boolean isMove(int number) {

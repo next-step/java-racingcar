@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RaceManager {
-    private final int BOUND = 10;
+    private static final int BOUND = 10;
 
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
@@ -18,13 +18,14 @@ public class RaceManager {
 
     public void run() {
         Race race = createRace();
+        int moveCount = inputMoveLimit();
 
         printResultHeader();
-        while(race.isNotFinished()) {
+        for (int i = 0; i < moveCount; i ++) {
             List<Car> cars = race.moveAndGet();
             printPosition(cars);
         }
-        printWinner(race.getFinishedCarNames());
+        printWinner(race.getWinnerNames());
     }
 
     private void printWinner(String names) {
@@ -52,9 +53,7 @@ public class RaceManager {
 
     private Race createRace() {
         List<CarName> carNames = inputCarNames();
-        int moveLimit = inputMoveLimit();
-
-        return new Race(carNames, moveLimit, this::getRandomValue);
+        return new Race(carNames, this::getRandomValue);
     }
 
     private List<CarName> inputCarNames() {

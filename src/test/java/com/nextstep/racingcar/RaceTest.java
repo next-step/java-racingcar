@@ -20,12 +20,12 @@ public class RaceTest {
     @DisplayName("0-3만 나오는 경우와 4-9만 나오는 경우 position의 변화 체크")
     @ParameterizedTest
     @MethodSource
-    public void moveAndGet(Supplier<Integer> numberGenerator, int moveLimit, int expected) {
-        Race race = new Race(carNames, moveLimit, numberGenerator);
+    public void moveAndGet(Supplier<Integer> numberGenerator, int moveCount, int expected) {
+        Race race = new Race(carNames, numberGenerator);
 
         List<Car> carList = null;
 
-        for (int ix = 0 ; ix < moveLimit ; ix ++) {
+        for (int ix = 0 ; ix < moveCount ; ix ++) {
             carList = race.moveAndGet();
         }
         assertThat(carList).isNotNull();
@@ -44,47 +44,25 @@ public class RaceTest {
         );
     }
 
-    @DisplayName("Car list 중 하나라도 끝나면 false인지 확인")
+    @DisplayName("우승 한 car의 이름들을 가져오는지 확인")
     @ParameterizedTest
     @MethodSource
-    public void isNotFinished(Supplier<Integer> numberGenerator, int moveLimit, boolean expected) {
-        Race race = new Race(carNames, moveLimit, numberGenerator);
+    public void getWinnerNames(Supplier<Integer> numberGenerator, int moveCount, String expected) {
+        Race race = new Race(carNames, numberGenerator);
 
-        for (int ix = 0 ; ix < moveLimit ; ix ++) {
+        for (int ix = 0 ; ix < moveCount ; ix ++) {
             race.moveAndGet();
         }
-        assertThat(race.isNotFinished()).isEqualTo(expected);
+        assertThat(race.getWinnerNames()).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> isNotFinished() {
-        return Stream.of(
-                Arguments.of(new SpecificGenerator(5, 1, 1), 5, false),
-                Arguments.of(new SpecificGenerator(1, 5, 1), 5, false),
-                Arguments.of(new SpecificGenerator(1, 1, 5), 5, false),
-                Arguments.of(new SpecificGenerator(1, 1, 1), 5, true)
-        );
-    }
-
-    @DisplayName("종료 된 car의 이름들을 가져오는지 확인")
-    @ParameterizedTest
-    @MethodSource
-    public void getFinishedCarNames(Supplier<Integer> numberGenerator, int moveLimit, String expected) {
-        Race race = new Race(carNames, moveLimit, numberGenerator);
-
-        for (int ix = 0 ; ix < moveLimit ; ix ++) {
-            race.moveAndGet();
-        }
-        assertThat(race.getFinishedCarNames()).isEqualTo(expected);
-    }
-
-    private static Stream<Arguments> getFinishedCarNames() {
+    private static Stream<Arguments> getWinnerNames() {
         return Stream.of(
                 Arguments.of(new SpecificGenerator(5, 1, 1), 5, "test1"),
                 Arguments.of(new SpecificGenerator(1, 5, 1), 5, "test2"),
                 Arguments.of(new SpecificGenerator(1, 1, 5), 5, "test3"),
                 Arguments.of(new SpecificGenerator(1, 5, 5), 5, "test2,test3"),
-                Arguments.of(new SpecificGenerator(5, 5, 5), 5, "test1,test2,test3"),
-                Arguments.of(new SpecificGenerator(1, 1, 1), 5, "")
+                Arguments.of(new SpecificGenerator(5, 5, 5), 5, "test1,test2,test3")
         );
     }
 

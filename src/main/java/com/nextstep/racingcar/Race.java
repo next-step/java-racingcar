@@ -6,11 +6,9 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Race {
-    private int moveLimit;
     private List<Car> cars = new ArrayList<>();
 
-    public Race(List<CarName> carNames, int moveLimit, Supplier<Integer> numberGenerator) {
-        this.moveLimit = moveLimit;
+    public Race(List<CarName> carNames, Supplier<Integer> numberGenerator) {
         for (CarName carName : carNames) {
             cars.add(new Car(carName, numberGenerator));
         }
@@ -23,18 +21,19 @@ public class Race {
         return cars;
     }
 
-    public boolean isNotFinished() {
-        boolean isNotFinished = true;
-        for (Car car : cars) {
-            isNotFinished = isNotFinished && car.isNotFinished(moveLimit);
-        }
-        return isNotFinished;
-    }
-
-    public String getFinishedCarNames(){
+    public String getWinnerNames() {
+        int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.isFinished(moveLimit))
+                .filter(car -> car.equalsPosition(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+        return maxPosition;
     }
 }

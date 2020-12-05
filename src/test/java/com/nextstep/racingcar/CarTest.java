@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.function.Supplier;
@@ -21,6 +22,17 @@ public class CarTest {
     public void name(){
         Car car = new Car(carName, () -> 1);
         assertThat(car.getName()).isEqualTo("test");
+    }
+
+    @DisplayName("현재 position과 파라미터로 입력받은 포지션이 같은지 확인")
+    @ParameterizedTest
+    @CsvSource({"3,3,true", "3,4,false"})
+    public void equalsPosition(int moveCount, int maxPosition, boolean expected) {
+        Car car = new Car(carName, () -> 5);
+        for ( int ix = 0 ; ix < moveCount ; ix ++ ) {
+            car.tryMove();
+        }
+        assertThat(car.equalsPosition(maxPosition)).isEqualTo(expected);
     }
 
     @DisplayName("move 호출 시 값에 따른 이동 여부 확인")
@@ -45,28 +57,6 @@ public class CarTest {
                 Arguments.of(supplier3, 0),
                 Arguments.of(supplier4, 1),
                 Arguments.of(supplier9, 1)
-        );
-    }
-
-    @DisplayName("limit이 5일때 현재 position에 따른 finished 체크")
-    @ParameterizedTest
-    @MethodSource
-    public void isNotFinished(Supplier<Integer> supplier, int count, boolean expected) {
-        Car car = new Car(carName, supplier);
-        for ( int ix = 0 ; ix < count ; ix ++ ) {
-            car.tryMove();
-        }
-
-        assertThat(car.isNotFinished(CAR_COUNT)).isEqualTo(expected);
-        assertThat(car.isFinished(CAR_COUNT)).isEqualTo(!expected);
-    }
-
-    private static Stream<Arguments> isNotFinished() {
-        Supplier<Integer> supplier = () -> 9;
-        return Stream.of(
-                Arguments.of(supplier, 1, true),
-                Arguments.of(supplier, 4, true),
-                Arguments.of(supplier, 5, false)
         );
     }
 }
