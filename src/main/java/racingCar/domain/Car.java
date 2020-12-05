@@ -7,8 +7,10 @@ public class Car {
         curPosition = new Position();
     }
 
-    public void racing(int randomValue) {
-        curPosition.move(randomValue);
+    public void racing(int randomValue, MoveStrategy moveStrategy) {
+        if(moveStrategy.isMove(randomValue)) {
+            curPosition.move();
+        }
     }
 
     public int getPosition() {

@@ -1,5 +1,5 @@
 package racingCar.domain;
 
 public interface MoveStrategy {
-    void move(int value);
+    boolean isMove(int value);
 }
