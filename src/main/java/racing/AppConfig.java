@@ -3,6 +3,7 @@ package racing;
 import racing.application.RacingService;
 import racing.domain.Moveable;
 import racing.domain.RacingGame;
+import racing.infra.NextStepMoveable;
 import racing.ui.RacingController;
 
 public class AppConfig {
@@ -20,6 +21,6 @@ public class AppConfig {
     }
 
     public Moveable moveable() {
-        return () -> true;
+        return new NextStepMoveable();
     }
 }
