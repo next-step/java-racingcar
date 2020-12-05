@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CalculatorTest {
 
@@ -48,6 +50,15 @@ public class CalculatorTest {
 
 		assertThat(calculator.getOperators().size()).isEqualTo(4);
 
+	}
+
+	@DisplayName("계산 기능 테스트")
+	@ParameterizedTest
+	@CsvSource(value = { "2 + 3 * 4 / 2:10", "10 - 1 * 2 / 6:3" }, delimiter = ':')
+	void given_input_when_calculate_then_return_result(final String input, final String expectResult) {
+		Calculator calculator = new Calculator();
+		int result = calculator.calculate(input);
+		assertThat(result).isEqualTo(Integer.parseInt(expectResult));
 	}
 
 }
