@@ -172,8 +172,8 @@ public class SetTest {
     - [X] 레이싱 게임을 진행할 사용자가 입력하는 구분자로 구분된 차량명 문자열을 입력받을 수 있다.
 - RacingCountView(class)
     - InputView 하위 객체로 사용자가 입력한 레이싱 회수를 다룬다.
-    - [ ] 레이싱 게임을 진행할 사용자가 입력하는 레이싱 회수를 입력받을 수 있다. 
+    - [X] 레이싱 게임을 진행할 사용자가 입력하는 레이싱 회수를 입력받을 수 있다. 
 - OutputView(class)
     - 사용자에게 보여줄 내용을 책임지는 객체
-    - [ ] 기존의 RacingGameResultOutputView, RacingGameWinnerOutputView 통합
-    - [ ] 사용자에게 보여줄 문구도 통합
+    - [X] 기존의 RacingGameResultOutputView, RacingGameWinnerOutputView 통합
+    - [X] 사용자에게 보여줄 문구도 통합
