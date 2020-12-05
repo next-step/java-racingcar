@@ -30,9 +30,7 @@ public class ValidationUtil {
 	}
 
 	public static boolean isLengthEmptyOrGreaterThanFive(String value) {
-		if (value == null || "".equals(value))
-			return true;
-		return value.length() > 5;
+		return isNullOrEmpty(value) || value.length() > 5;
 	}
 
 	public static boolean hasLengthEmptyOrGreaterThanFive(List<String> strings) {
