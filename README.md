@@ -131,8 +131,8 @@ public class SetTest {
     - [ ] `판 보고서(RoundReport)`를 만들 수 있다.
     
 - `자동차(Car)`
-    - [ ] `이동 규칙(Moveable)`의 결과로 움직일 수 있다.
-    - [ ] `자동차 보고서(CarReport)`를 만들 수 있다.
+    - [X] `이동 규칙(Moveable)`의 결과로 움직일 수 있다.
+    - [X] `자동차 보고서(CarReport)`를 만들 수 있다.
     
 - `자동차 식별자(CarIndex)`
     - [X] 자동차 식별자는 `자동차(Car)`를 식별하는 하나의 숫자를 의미한다.
