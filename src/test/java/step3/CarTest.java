@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -30,5 +31,11 @@ public class CarTest {
     void acceleratorTest(int input, int expected) {
         car.accelerate(input);
         assertThat(car.getDashboard().getMileage()).isEqualTo(expected);
+    }
+
+    @RepeatedTest(value = 10)
+    @DisplayName("랜덤 숫자 테스트")
+    void randomNumberTest() {
+        assertThat(RandomNumberProvider.provideRandomNumber()).isBetween(0, 9);
     }
 }
