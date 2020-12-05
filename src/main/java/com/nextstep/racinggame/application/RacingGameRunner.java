@@ -2,9 +2,11 @@ package com.nextstep.racinggame.application;
 
 import com.nextstep.racinggame.domain.*;
 import com.nextstep.racinggame.view.InputView;
+import com.nextstep.racinggame.view.NamesInputView;
 import com.nextstep.racinggame.view.RacingGameResultOutputView;
 import com.nextstep.racinggame.view.RacingGameWinnerOutputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameRunner {
@@ -17,17 +19,16 @@ public class RacingGameRunner {
 
     public static void main(String[] args) {
         System.out.println(CAR_DEMAND_COMMENT);
-        String userInput = SCANNER.nextLine();
+        List<Name> names = InputView.getCarNames();
+
         System.out.println(RACE_DEMAND_COMMENT);
         int raceDemand = SCANNER.nextInt();
 
-        run(userInput, raceDemand);
+        run(names, raceDemand);
     }
 
-    private static void run(final String userInput, final int raceDemand) {
-        InputView inputView = new InputView(userInput);
-
-        Cars cars = CarsFactory.createCars(inputView.parseToNames());
+    private static void run(final List<Name> names, final int raceDemand) {
+        Cars cars = CarsFactory.createCars(names);
 
         System.out.println(RESULT_HEADER);
         for (int i = 0; i < raceDemand; i++) {

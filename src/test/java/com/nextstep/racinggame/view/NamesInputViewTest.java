@@ -11,13 +11,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class InputViewTest {
+class NamesInputViewTest {
     @DisplayName("문자열을 인자로 받아서 객체를 생성할 수 있다.")
     @Test
     void createTest() {
         String userInput = "test1,test2,test3";
 
-        assertThat(new InputView(userInput)).isNotNull();
+        assertThat(new NamesInputView(userInput)).isNotNull();
     }
 
     @DisplayName("잘못된 문자열을 인자로 전달한 경우 예외 발생")
@@ -25,8 +25,8 @@ class InputViewTest {
     void createFailTest() {
         String emptyString = "";
 
-        assertThatThrownBy(() -> new InputView(null)).isInstanceOf(InvalidUserInputException.class);
-        assertThatThrownBy(() -> new InputView(emptyString)).isInstanceOf(InvalidUserInputException.class);
+        assertThatThrownBy(() -> new NamesInputView(null)).isInstanceOf(InvalidUserInputException.class);
+        assertThatThrownBy(() -> new NamesInputView(emptyString)).isInstanceOf(InvalidUserInputException.class);
     }
 
     @DisplayName("Name 컬렉션으로 파싱 가능")
@@ -37,19 +37,19 @@ class InputViewTest {
         String name3 = "test3";
         String userInput = name1 + "," + name2 + "," + name3;
 
-        InputView inputView = new InputView(userInput);
+        NamesInputView namesInputView = new NamesInputView(userInput);
 
-        assertThat(inputView.parseToNames()).contains(new Name(name1));
-        assertThat(inputView.parseToNames()).contains(new Name(name2));
-        assertThat(inputView.parseToNames()).contains(new Name(name3));
+        assertThat(namesInputView.parseToNames()).contains(new Name(name1));
+        assertThat(namesInputView.parseToNames()).contains(new Name(name2));
+        assertThat(namesInputView.parseToNames()).contains(new Name(name3));
     }
 
     @DisplayName("적합하지 않은 이름이 포함된 채로 객체 생성 시도 시 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = {"test1 ,test2,test3 ", ",test2,test3"})
     void parseToNamesFailTest(String invalidValue) {
-        InputView inputView = new InputView(invalidValue);
+        NamesInputView namesInputView = new NamesInputView(invalidValue);
 
-        assertThatThrownBy(inputView::parseToNames).isInstanceOf(InvalidNameException.class);
+        assertThatThrownBy(namesInputView::parseToNames).isInstanceOf(InvalidNameException.class);
     }
 }
