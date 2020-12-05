@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -32,5 +33,20 @@ public class StringTest {
     void substring(String str) {
         String result = str.substring(str.indexOf("(") + 1, str.indexOf(")"));
         assertThat(result).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는지 확인")
+    void chatAt() {
+        String str = "abc";
+        assertThat(str.charAt(1)).isEqualTo('b');
+    }
+
+    @Test
+    @DisplayName("특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생")
+    void charAtWithException() {
+        String str = "abc";
+        assertThatThrownBy(() -> str.charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageMatching("String index out of range: \\d+");
     }
 }
