@@ -11,7 +11,7 @@ public class RacingGameWinnerOutputView {
     private static final String WINNER_DIVIDER = ", ";
     private static final int USELESS_FOOTER_SIZE = 2;
 
-    public static String parseToWinnerResult(Cars cars) {
+    static String parseToWinnerResult(Cars cars) {
         return parseToWinners(cars.getCars()) + WINNER_FOOTER;
     }
 

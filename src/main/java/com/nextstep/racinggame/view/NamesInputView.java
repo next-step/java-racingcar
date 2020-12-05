@@ -12,13 +12,13 @@ public class NamesInputView {
 
     private final String userInput;
 
-    public NamesInputView(final String userInput) {
+    NamesInputView(final String userInput) {
         validate(userInput);
 
         this.userInput = userInput;
     }
 
-    public List<Name> parseToNames() {
+    List<Name> parseToNames() {
         return Arrays.stream(userInput.split(SEPARATOR))
                 .map(Name::new)
                 .collect(Collectors.toList());
