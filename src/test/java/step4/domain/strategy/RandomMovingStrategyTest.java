@@ -1,10 +1,9 @@
-package step4.strategy;
+package step4.domain.strategy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.RandomGenerator;
-import step3.domain.strategy.RandomMovingStrategy;
+import step4.domain.RandomGenerator;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
