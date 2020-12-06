@@ -30,4 +30,12 @@ class CarTest {
 		});
 		assertThat(carGroup.ofCarIndex(1).nowDistance()).isEqualTo(5);
 	}
+
+	@DisplayName("자동차에 이름을 부여한다.")
+	@Test
+	void 자동차_이름부여_테스트() {
+		MovePolicy movePolicy = new SimpleMovePolicy();
+		Car newCar = Car.ofName("pobi", movePolicy);
+		assertThat(newCar.getName()).isEqualTo("pobi");
+	}
 }
