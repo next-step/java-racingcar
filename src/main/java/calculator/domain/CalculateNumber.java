@@ -1,4 +1,4 @@
-package calculator;
+package calculator.domain;
 
 public class CalculateNumber {
     private static final String VALID_EMPTY_NUMBER_MESSAGE = "숫자 값이 없습니다.";

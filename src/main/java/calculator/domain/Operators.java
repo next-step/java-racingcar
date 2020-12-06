@@ -1,31 +1,30 @@
-package calculator;
+package calculator.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalculateNumbers {
+public class Operators {
     private static final String VALID_EMPTY_NUMBERS_MESSAGE = "입력 값이 없습니다.";
     private static final String VALID_MIN_SIZE_MESSAGE = "공백을 기준으로 최소 3개 이상 입력바랍니다.";
     private static final int MIN_SIZE = 3;
-    private final List<CalculateNumber> numbers;
+    private List<Operator> operators;
 
-    public CalculateNumbers(String[] numbers) {
-        validNumber(numbers);
-        this.numbers = mapCaculateNumber(numbers);
+    public Operators(String[] inputs) {
+        validOperators(inputs);
+        this.operators = mapOperators(inputs);
     }
 
-    private List<CalculateNumber> mapCaculateNumber(String[] numbers) {
-        List<CalculateNumber> calculateNumbers = new ArrayList<>();
-        for (int i = 0; i < numbers.length - 2; i += 2) {
-            calculateNumbers.add(new CalculateNumber(numbers[i]));
-            calculateNumbers.add(new CalculateNumber(numbers[i + 2]));
+    private void validOperators(String[] inputs) {
+        validEmpty(inputs);
+        validMinSize(inputs);
+    }
+
+    private List<Operator> mapOperators(String[] inputs) {
+        List<Operator> operators = new ArrayList<>();
+        for (int i = 0; i < inputs.length - 2; i += 2) {
+            operators.add(Operator.valueOfOperator(inputs[i + 1]));
         }
-        return calculateNumbers;
-    }
-
-    private void validNumber(String[] numbers) {
-        validEmpty(numbers);
-        validMinSize(numbers);
+        return operators;
     }
 
     private void validEmpty(String[] numbers) {
@@ -39,4 +38,6 @@ public class CalculateNumbers {
             throw new IllegalArgumentException(VALID_MIN_SIZE_MESSAGE);
         }
     }
+
+
 }
