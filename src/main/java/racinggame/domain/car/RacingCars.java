@@ -5,20 +5,19 @@ import racinggame.domain.move.MoveBehavior;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCars {
     private static final int CAR_INIT_POSITION = 0;
     private final List<RacingCar> racingCars;
 
-    public RacingCars(final int carCount) {
-        this.racingCars = new ArrayList<>();
-        IntStream.range(0, carCount)
-                .forEach(index -> racingCars.add(new RacingCar(CAR_INIT_POSITION)));
-    }
-
     public RacingCars(final List<RacingCar> racingCars) {
         this.racingCars = racingCars;
+    }
+
+    public static RacingCars of(final List<String> carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
+        carNames.forEach(carName -> racingCars.add(new RacingCar(carName, CAR_INIT_POSITION)));
+        return new RacingCars(racingCars);
     }
 
     public RacingCars move(final MoveBehavior moveBehavior) {
