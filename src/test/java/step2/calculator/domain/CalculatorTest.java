@@ -45,10 +45,8 @@ public class CalculatorTest {
 	@Test
 	void given_input_number_and_signs_when_separate_return_list_contains_only_operator_sign() {
 		String input = "2 + 3 - 1 * 4 / 2";
-		Calculator calculator = new Calculator();
-		calculator.separate(input);
-
-		assertThat(calculator.getOperators().size()).isEqualTo(4);
+		ArithmeticOperationInputSeparator separator = new ArithmeticOperationInputSeparator(input);
+		assertThat(separator.getOperators().size()).isEqualTo(4);
 
 	}
 
@@ -56,18 +54,18 @@ public class CalculatorTest {
 	@ParameterizedTest
 	@CsvSource(value = { "2 + 3 * 4 / 2:10", "10 - 1 * 2 / 6:3" }, delimiter = ':')
 	void given_input_when_calculate_then_return_result(final String input, final String expectResult) {
+		ArithmeticOperationInputSeparator separator = new ArithmeticOperationInputSeparator(input);
 		Calculator calculator = new Calculator();
-		int result = calculator.calculate(input);
+		int result = calculator.calculate(separator.getNumbers(), separator.getOperators());
 		assertThat(result).isEqualTo(Integer.parseInt(expectResult));
 	}
 
 	@DisplayName("입력 값이 없을 경우 익셉션")
 	@Test
-	void given_none_input_when_calculate_then_throw_exception() {
+	void given_none_input_when_separate_then_throw_exception() {
 		assertThatIllegalArgumentException().isThrownBy(() -> {
 			String input = "";
-			Calculator calculator = new Calculator();
-			calculator.calculate(input);
+			new ArithmeticOperationInputSeparator(input);
 		}).withMessage("입력 값이 없습니다.");
 	}
 
@@ -76,8 +74,7 @@ public class CalculatorTest {
 	void given_other_sign_input_when_calculate_then_throw_exception() {
 		assertThatIllegalArgumentException().isThrownBy(() -> {
 			String input = "1 ! 3";
-			Calculator calculator = new Calculator();
-			calculator.calculate(input);
+			new ArithmeticOperationInputSeparator(input);
 		}).withMessage("사칙 연산 기호가 아닙니다.");
 	}
 
@@ -86,8 +83,7 @@ public class CalculatorTest {
 	void given_wrong_input_more_number_when_calculate_then_throw_exception() {
 		assertThatIllegalArgumentException().isThrownBy(() -> {
 			String input = "1 * 3 3 3 3";
-			Calculator calculator = new Calculator();
-			calculator.calculate(input);
+			new ArithmeticOperationInputSeparator(input);
 		}).withMessage("계산 대상 수와 사칙 연산의 짝이 안 맞습니다.");
 	}
 
@@ -96,8 +92,7 @@ public class CalculatorTest {
 	void given_wrong_input_more_sign_when_calculate_then_throw_exception() {
 		assertThatIllegalArgumentException().isThrownBy(() -> {
 			String input = "1 * 3 * / + -";
-			Calculator calculator = new Calculator();
-			calculator.calculate(input);
+			new ArithmeticOperationInputSeparator(input);
 		}).withMessage("계산 대상 수와 사칙 연산의 짝이 안 맞습니다.");
 	}
 
