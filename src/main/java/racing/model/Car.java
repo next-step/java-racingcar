@@ -4,6 +4,8 @@ public class Car {
 
 	private static final int FORWARD_CRITERIA = 4;
 
+	private static final int MAX_NAME_CHARACTER_LENGTH = 5;
+
 	private String name;
 
 	private int forwardPosition;
@@ -11,6 +13,19 @@ public class Car {
 	private int racingRecord;
 
 	public Car() {
+	}
+
+	public Car(String name) {
+		if (isValidateName(name)) {
+			this.name = name;
+		}
+	}
+
+	private boolean isValidateName(String name) {
+		if (name == null || name.trim().isEmpty() || name.length() > MAX_NAME_CHARACTER_LENGTH) {
+			throw new IllegalArgumentException();
+		}
+		return true;
 	}
 
 	public int getForwardPosition() {

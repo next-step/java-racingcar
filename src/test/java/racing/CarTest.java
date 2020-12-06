@@ -1,14 +1,36 @@
 package racing;
 
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.model.Car;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
 	Car car = new Car();
+
+	@ParameterizedTest
+	@NullSource
+	@ValueSource(strings = {"", "  ", "123456"})
+	@DisplayName("자동차 생성 테스트(name validate)")
+	void test_prepareInitRacingCar(String name) {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			new Car(name);
+		});
+	}
+
 
 	@Test
 	@DisplayName("랜덤값이 4이상인 경우 한 칸 전진한다.")

@@ -22,7 +22,7 @@ public class RacingGame {
 	public void start() {
 		InputView inputView = initInputView();
 
-		List<Car> cars = prepareInitRacingCar(inputView.getPlayRacingCarCount());
+		List<Car> cars = prepareInitRacingCar(inputView.getInputName());
 		startRacing(cars, inputView.getPlayCount());
 	}
 
@@ -42,25 +42,27 @@ public class RacingGame {
 		}
 	}
 
-	public List<Car> prepareInitRacingCar(int playCarCount) {
+	public List<Car> prepareInitRacingCar(String inputName) {
+		String[] carNames = inputName.split(",");
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < playCarCount; i++) {
-			cars.add(new Car());
+		for (String name : carNames) {
+			cars.add(new Car(name));
 		}
 		return cars;
 
 	}
 
 	private InputView initInputView() {
-		System.out.println("자동차 대수는 몇 대 인가요?");
-		int playRacingCarCount = scanner.nextInt();
-		System.out.println(playRacingCarCount);
+		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+		String inputName = scanner.next();
+		System.out.println(inputName);
+		String[] carNames = inputName.split(",");
 
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		int playCount = scanner.nextInt();
 		System.out.println(playCount);
 
-		return new InputView(playRacingCarCount, playCount);
+		return new InputView(inputName, carNames.length, playCount);
 	}
 
 

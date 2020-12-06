@@ -16,8 +16,9 @@ class RacingGameTest {
 
 	@Test
 	void 경주에_출전한_차_댓수와_돌아야하는_카운트도_잘도는지_테스트(){
-		List<Car> cars = racingGame.prepareInitRacingCar(RACING_CAR_COUNT);
-		assertThat(cars).hasSize(RACING_CAR_COUNT);
+		String inputName = "a, bb, ccc, dddd";
+		List<Car> cars = racingGame.prepareInitRacingCar(inputName);
+		assertThat(cars.size()).isEqualTo(inputName.split(",").length);
 
 		racingGame.startRacing(cars, PLAY_COUNT);
 
