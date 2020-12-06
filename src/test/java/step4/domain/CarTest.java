@@ -1,11 +1,11 @@
-package step4;
+package step4.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
-import step3.domain.strategy.MovingStrategy;
-import step3.domain.strategy.RandomMovingStrategy;
+import step4.domain.Car;
+import step4.domain.strategy.MovingStrategy;
+import step4.domain.strategy.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -18,7 +18,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("jack");
         movingStrategy = mock(RandomMovingStrategy.class);
     }
 
