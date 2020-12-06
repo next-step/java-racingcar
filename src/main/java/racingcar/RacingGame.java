@@ -12,6 +12,7 @@ public class RacingGame {
 
     private final int carCount;     // 자동차 수
     private final int moveCount;    // 이동횟수
+    private List<CarName> carNames;    // 자동차 이름 목록
     private final Map<Integer, List<RacingCar>> racingCarMap = new HashMap<>();     // 경주용 자동차 맵
 
     public RacingGame(int carCount, int moveCount) {
@@ -19,6 +20,15 @@ public class RacingGame {
         this.moveCount = moveCount;
         for (int i = 0; i < moveCount; i++) {
             setRacingCarMap(i);
+        }
+    }
+
+    public RacingGame(List<CarName> carNames, int moveCount) {
+        this.carCount = carNames.size();
+        this.moveCount = moveCount;
+        this.carNames = carNames;
+        for (int i = 0; i < moveCount; i++) {
+            setRacingCarMapForCarNames(i);
         }
     }
 
@@ -34,6 +44,20 @@ public class RacingGame {
         List<RacingCar> racingCarList = new ArrayList<>();
         for (int j = 0; j < carCount; j++) {
             RacingCar car = new RacingCar(moveCount);
+            car.race();
+            racingCarList.add(car);
+        }
+        racingCarMap.put(racingCarMapKey, racingCarList);
+    }
+
+    /**
+     * 실행횟수에 따른 경주용 자동차 목록 저장
+     * @param racingCarMapKey 실행횟수 번호
+     */
+    private void setRacingCarMapForCarNames(int racingCarMapKey) {
+        List<RacingCar> racingCarList = new ArrayList<>();
+        for (int j = 0; j < carCount; j++) {
+            RacingCar car = new RacingCar(moveCount, carNames.get(j));
             car.race();
             racingCarList.add(car);
         }

@@ -9,6 +9,7 @@ public class RacingCar {
 
     private final int moveCount;    // 이동횟수
     private int advancedCount;      // 전진횟수
+    private CarName carName;
 
     // 전진 조건 숫자
     private final static int ADVANCED_CONDITION_NUMBER = 4;
@@ -17,8 +18,17 @@ public class RacingCar {
         this.moveCount = moveCount;
     }
 
+    public RacingCar(int moveCount, CarName carName) {
+        this.moveCount = moveCount;
+        this.carName = carName;
+    }
+
     public int getAdvancedCount() {
         return advancedCount;
+    }
+
+    public CarName getCarName() {
+        return carName;
     }
 
     /**
