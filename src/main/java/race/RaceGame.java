@@ -8,10 +8,6 @@ public class RaceGame implements GameSubject {
 	private final List<GameObserver> gameObserver = new ArrayList<>();
 	private final CarGroup raceCarGroup;
 
-	public RaceGame(int carAmount) {
-		this.raceCarGroup = CarGroup.of(carAmount, new SimpleMovePolicy());
-	}
-
 	public RaceGame(int carAmount, MovePolicy movePolicy) {
 		this.raceCarGroup = CarGroup.of(carAmount, movePolicy);
 	}

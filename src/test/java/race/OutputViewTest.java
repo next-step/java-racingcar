@@ -13,7 +13,8 @@ class OutputViewTest {
 
 	@BeforeEach
 	void setUp() {
-		gameProcessor = new RaceGameProcessor(5, 5, new SimpleMovePolicy());
+		InputValue inputValue = new InputValue(5, 5);
+		gameProcessor = new RaceGameProcessor(inputValue, new SimpleMovePolicy());
 		outputView = new OutputView(gameProcessor.getGameSubject());
 	}
 
