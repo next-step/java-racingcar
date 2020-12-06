@@ -8,6 +8,7 @@ import step4.domain.strategy.MovingStrategy;
 import step4.domain.strategy.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -20,6 +21,14 @@ public class CarTest {
     void setUp() {
         car = new Car("jack");
         movingStrategy = mock(RandomMovingStrategy.class);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자를 초과하면 IllegalArgumentException 발생")
+    void length_IllegalArgumentException() {
+        assertThatThrownBy(() -> {
+            car = new Car("jackcoding");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
