@@ -2,23 +2,26 @@ package com.nextstep.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Race {
     private static final String DELIMITER = ",";
-    private static final String SEPARATOR = System.lineSeparator();
-    private static final String EMPTY = "";
 
     private int moveCount;
     private List<Car> cars = new ArrayList<>();
-    private StringBuilder stringBuilder = new StringBuilder();
+    private Consumer<List<Car>> movePrinter = null;
 
     public Race(List<CarName> carNames, int moveCount, Supplier<Integer> numberGenerator) {
         this.moveCount = moveCount;
         for (CarName carName : carNames) {
             cars.add(new Car(carName, numberGenerator));
         }
+    }
+
+    public void setMovePrinter(Consumer<List<Car>> movePrinter) {
+        this.movePrinter = movePrinter;
     }
 
     public void run() {
@@ -30,22 +33,14 @@ public class Race {
     private void move() {
         for (Car car : cars) {
             car.tryMove();
-            addLog(car.toDetailString());
         }
-        addLog();
+        movePrint();
     }
 
-    private void addLog() {
-        addLog(EMPTY);
-    }
-
-    private void addLog(String message) {
-        stringBuilder.append(message)
-                .append(SEPARATOR);
-    }
-
-    public String getPositionLog() {
-        return stringBuilder.toString();
+    private void movePrint() {
+        if (movePrinter != null) {
+            movePrinter.accept(cars);
+        }
     }
 
     public String getWinnerNames() {

@@ -1,5 +1,6 @@
 package com.nextstep.racingcar.view;
 
+import com.nextstep.racingcar.domain.Car;
 import com.nextstep.racingcar.domain.CarName;
 import com.nextstep.racingcar.domain.Parser;
 import com.nextstep.racingcar.domain.Race;
@@ -10,6 +11,8 @@ import java.util.Scanner;
 
 public class RaceManager {
     private static final int BOUND = 10;
+    private static final String MARK = "-";
+    private static final String DELIMITER = " : ";
 
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
@@ -23,7 +26,6 @@ public class RaceManager {
 
         printResultHeader();
         race.run();
-        System.out.print(race.getPositionLog());
         printWinner(race.getWinnerNames());
     }
 
@@ -40,7 +42,16 @@ public class RaceManager {
         List<CarName> carNames = inputCarNames();
         int moveCount = inputMoveLimit();
 
-        return new Race(carNames, moveCount, this::getRandomValue);
+        Race race = new Race(carNames, moveCount, this::getRandomValue);
+        race.setMovePrinter(this::movePrint);
+        return race;
+    }
+
+    private void movePrint(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car + DELIMITER + car.getPositionString(MARK));
+        }
+        System.out.println();
     }
 
     private List<CarName> inputCarNames() {

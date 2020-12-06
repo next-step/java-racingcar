@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 public class Car {
     private static final int THRESHOLD = 3;
-    private static final String DASH = "-";
 
     private CarName name;
     private int position = 0;
@@ -45,12 +44,8 @@ public class Car {
         return name.toString();
     }
 
-    public String toDetailString() {
-        return name + " : " + makeDashes();
-    }
-
-    private String makeDashes() {
-        return Stream.generate(() -> DASH)
+    public String getPositionString(String mark) {
+        return Stream.generate(() -> mark)
                 .limit(position)
                 .collect(Collectors.joining());
     }

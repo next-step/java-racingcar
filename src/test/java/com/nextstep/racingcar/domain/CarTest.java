@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     private final static String CAR_NAME = "test";
+    private final static String DASH = "-";
 
     @DisplayName("자동차에 이름 부여")
     @Test
@@ -84,8 +85,8 @@ public class CarTest {
     @DisplayName("position 만큼 - 문자열이 들어간 이름이 나오는지 테스트")
     @ParameterizedTest
     @CsvSource({"1, test : -", "3, test : ---"})
-    public void toDetailString(int moveCount, String expected) {
+    public void getPositionString(int moveCount, String expected) {
         Car car = createMovedCar(moveCount);
-        assertThat(car.toDetailString()).isEqualTo(expected);
+        assertThat(car.getPositionString(DASH)).isEqualTo(expected);
     }
 }
