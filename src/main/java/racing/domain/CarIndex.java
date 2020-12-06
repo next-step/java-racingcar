@@ -14,6 +14,10 @@ public class CarIndex {
         return new CarIndex(value);
     }
 
+    public int getIndex() {
+        return index;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
