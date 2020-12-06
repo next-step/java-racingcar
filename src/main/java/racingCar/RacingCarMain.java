@@ -1,5 +1,6 @@
 package racingCar;
 
+import racingCar.domain.RacingResult;
 import racingCar.view.OutputView;
 import racingCar.domain.Racing;
 import racingCar.view.InputView;
@@ -17,6 +18,10 @@ public class RacingCarMain {
           racing.race();
           OutputView.printCars(racing.getRacingCars());
       }
+
+      RacingResult result = new RacingResult(racing.getRacingCars());
+      result.getWinners();
+      System.out.println(result.toString());
   }
 
 }
