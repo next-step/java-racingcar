@@ -20,8 +20,13 @@ public class GameResultMessage {
 	}
 
 	private String amountToSeparatorParser(Car car) {
-		return IntStream.range(Car.START_DISTANCE, car.nowDistance())
+		String message = "";
+		if (car.getName() != null && !"".equals(car.getName())) {
+			message += car.getName() + " : ";
+		}
+		message += IntStream.range(Car.START_DISTANCE, car.nowDistance())
 			.mapToObj(i -> this.separator)
 			.collect(Collectors.joining(MESSAGE_SEPARATOR));
+		return message;
 	}
 }

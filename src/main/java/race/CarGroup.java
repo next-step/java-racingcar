@@ -15,18 +15,26 @@ public class CarGroup {
 			.collect(Collectors.toList());
 	}
 
-	private CarGroup(String names, MovePolicy movePolicy) {
-		this.cars = Arrays.stream(names.split(","))
+	private CarGroup(String separator, String names, MovePolicy movePolicy) {
+		this.cars = Arrays.stream(names.split(separator))
 			.map(name -> Car.ofName(name, movePolicy))
 			.collect(Collectors.toList());
 	}
 
-	public static CarGroup ofNames(String names, MovePolicy movePolicy) {
-		return new CarGroup(names, movePolicy);
+	public static CarGroup ofNames(String inputNameSeparator, String names, MovePolicy movePolicy) {
+		return new CarGroup(inputNameSeparator, names, movePolicy);
+	}
+
+	public static CarGroup of(int groupSize, MovePolicy movePolicy) {
+		return new CarGroup(groupSize, movePolicy);
 	}
 
 	public Car ofCarIndex(int carIndex) {
 		return this.cars.get(carIndex);
+	}
+
+	public boolean ofCarName(String name) {
+		return this.cars.stream().anyMatch(car -> car.getName().equals(name));
 	}
 
 	public void moveAll() {
@@ -37,11 +45,4 @@ public class CarGroup {
 		return cars;
 	}
 
-	public static CarGroup of(int groupSize, MovePolicy movePolicy) {
-		return new CarGroup(groupSize, movePolicy);
-	}
-
-	public boolean ofCarName(String name) {
-		return this.cars.stream().anyMatch(car -> car.getName().equals(name));
-	}
 }

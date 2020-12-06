@@ -45,11 +45,9 @@ class CarTest {
 	void 자동차_그룹_이름부여_테스트() {
 		String names = "pobi,hglee";
 		MovePolicy movePolicy = new SimpleMovePolicy();
-		CarGroup carGroup = CarGroup.ofNames(names, movePolicy);
+		CarGroup carGroup = CarGroup.ofNames(",", names, movePolicy);
 		Arrays.stream(names.split(",")).forEach(name -> {
 			assertThat(carGroup.ofCarName(name)).isTrue();
 		});
-
-
 	}
 }

@@ -9,7 +9,7 @@ public class RaceGameProcessor {
 
 	public RaceGameProcessor(InputValue inputValue, MovePolicy movePolicy) {
 		this.inputValue = inputValue;
-		this.gameSubject = new RaceGame(inputValue.numberOfCar(), movePolicy);
+		this.gameSubject = new RaceGame(inputValue.names(), movePolicy);
 	}
 
 	public RaceGame getGameSubject() {
