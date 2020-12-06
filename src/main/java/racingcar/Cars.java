@@ -1,12 +1,16 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
 	private List<Car> cars;
 
-	public Cars(List<Car> cars) {
-		this.cars = cars;
+	public Cars(int carCount) {
+		this.cars = new ArrayList<>();
+		for(int i = 0; i < carCount; i++) {
+			cars.add(new Car());
+		}
 	}
 
 	public void moveCars() {
@@ -15,5 +19,9 @@ public class Cars {
 			moveResult = car.tryMove(RandomNumberGenerator.createRandomNumber());
 			ResultView.printMove(moveResult);
 		}
+	}
+
+	public int sizeOfCars() {
+		return this.cars.size();
 	}
 }
