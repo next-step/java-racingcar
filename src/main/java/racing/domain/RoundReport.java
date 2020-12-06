@@ -2,7 +2,9 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RoundReport {
 
@@ -18,5 +20,20 @@ public class RoundReport {
 
     public List<CarReport> getCarReports() {
         return new ArrayList<>(carReports);
+    }
+
+    public List<String> winner() {
+        int winnerLocation = winnerLocation();
+        return carReports.stream()
+                .filter(carReport -> carReport.isLocation(winnerLocation))
+                .map(CarReport::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int winnerLocation() {
+        return carReports.stream()
+                .max(Comparator.comparing(CarReport::getLocation))
+                .orElseThrow(IllegalArgumentException::new)
+                .getLocation();
     }
 }

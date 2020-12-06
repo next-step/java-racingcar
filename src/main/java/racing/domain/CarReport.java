@@ -22,4 +22,12 @@ public class CarReport {
     public int getLocation() {
         return location;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isLocation(final int location) {
+        return this.location == location;
+    }
 }
