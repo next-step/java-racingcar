@@ -14,15 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class ParserTest {
-    @DisplayName("자동차 이름 5자 초과 체크")
-    @Test
-    public void isInvalidName() {
-        String name = "aaaaaa";
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> Parser.parseCarNames(name))
-                .withMessage(name + " is over limit");
-    }
-
     @DisplayName("이름 , 단위로 분리 기능")
     @ParameterizedTest
     @MethodSource
