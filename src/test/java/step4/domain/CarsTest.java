@@ -26,12 +26,10 @@ class CarsTest {
     private static final String CARS_NAME = "pobi,jack,honux";
 
     private Cars cars;
-    private MovingStrategy movingStrategy;
     private Judge judge;
 
     @BeforeEach
     void setUp() {
-        movingStrategy = mock(RandomMovingStrategy.class);
         judge = new LongPositionJudge();
         cars = new Cars(produceCars(CARS_NAME));
     }
@@ -39,8 +37,7 @@ class CarsTest {
     @Test
     @DisplayName("모든 자동차들이 전진 조건에 만족하면 1씩 움직이는 기능 테스트")
     public void moveCars() {
-        when(movingStrategy.isMove()).thenReturn(true);
-        cars.moveCars(movingStrategy);
+        cars.moveCars(()->true);
         cars.getCars().stream().forEach(car ->
                 assertEquals(car.getPosition(), 1)
         );
@@ -49,8 +46,7 @@ class CarsTest {
     @Test
     @DisplayName("모든 자동차들이 전진 조건에 만족하지 않으면 정지하는 기능 테스트")
     public void stopCars() {
-        when(movingStrategy.isMove()).thenReturn(false);
-        cars.moveCars(movingStrategy);
+        cars.moveCars(()->false);
         cars.getCars().stream().forEach(car ->
                 assertEquals(car.getPosition(), 0)
         );
