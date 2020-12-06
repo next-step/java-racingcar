@@ -1,7 +1,7 @@
 package racing;
 
 public class Car {
-    private int moveCount;
+    private int moveCount = 0;
 
     public void move() {
         moveCount++;
