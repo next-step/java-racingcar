@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 
 public class RacingCarTest {
-    RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar(0);
 
     @Test
     @DisplayName("0보다 크고 9보다 작아야합니다.")
