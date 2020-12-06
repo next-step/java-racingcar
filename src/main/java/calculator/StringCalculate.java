@@ -4,17 +4,27 @@ public class StringCalculate {
 
     private StringCalculate() {}
 
-    public static int calculate(String input) {
+    private static void verifyInput(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("input cannot be null or empty");
         }
-
-        return doCalculate(input);
     }
 
-    private static int doCalculate(String input) {
-        String[] parts = input.split("\\s+");
+    private static void verifyInputSize(String[] parts) {
+        if (parts.length % 2 == 0) {
+            throw new IllegalArgumentException("invalid input value");
+        }
+    }
 
+    public static int calculate(String input) {
+        verifyInput(input);
+        String[] parts = input.split("\\s+");
+        verifyInputSize(parts);
+
+        return doCalculate(parts);
+    }
+
+    private static int doCalculate(String[] parts) {
         int result = Integer.parseInt(parts[0]);
 
         for (int i = 1; i < parts.length; i += 2) {
