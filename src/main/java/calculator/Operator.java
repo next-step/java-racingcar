@@ -35,6 +35,11 @@ public enum Operator {
     }
 
     public static int calculate(char symbol, int left, int right) {
+        Operator operator = OPERATOR_BY_SYMBOL.get(symbol);
+        if (operator == null) {
+            throw new IllegalArgumentException("unknown operator symbol: " + symbol);
+        }
+
         return OPERATOR_BY_SYMBOL.get(symbol)
                 .apply(left, right);
     }
