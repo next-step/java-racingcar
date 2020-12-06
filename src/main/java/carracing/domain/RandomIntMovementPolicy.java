@@ -5,7 +5,8 @@ package carracing.domain;
  */
 public class RandomIntMovementPolicy implements MovementPolicy {
 
-    private static final int POLICY_BASE_NUMBER = 4;
+    public static final int BASE_POSITION_NUMBER = 4;
+    public static final int MAX_POSITION_NUMBER = 9;
     private final RandomGenerator randomGenerator;
 
     public RandomIntMovementPolicy(RandomGenerator randomGenerator) {
@@ -22,10 +23,6 @@ public class RandomIntMovementPolicy implements MovementPolicy {
     @Override
     public boolean isMovable() {
         int randomInt = randomGenerator.generateZeroToNineInt();
-        return randomInt >= POLICY_BASE_NUMBER;
-    }
-
-    public static int getPolicyBaseNumber() {
-        return POLICY_BASE_NUMBER;
+        return randomInt >= BASE_POSITION_NUMBER;
     }
 }

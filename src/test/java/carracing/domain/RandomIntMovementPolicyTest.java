@@ -17,8 +17,8 @@ import static org.mockito.Mockito.when;
 @DisplayName("자동차 전진을 위한 정책을 위한 테스트")
 class RandomIntMovementPolicyTest {
 
-    private static final int POLICY_BASE_NUMBER = RandomIntMovementPolicy.getPolicyBaseNumber();
-    private static final int MAX_POSITION_NUMBER = 9;
+    private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
+    private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
 
     private RandomGenerator randomGenerator;
     private MovementPolicy movementPolicy;
@@ -43,7 +43,7 @@ class RandomIntMovementPolicyTest {
 
     private static Stream<Arguments> provideMovableCases() {
         List<Arguments> arguments = new ArrayList<>();
-        for (int i = POLICY_BASE_NUMBER; i <= MAX_POSITION_NUMBER; i++) {
+        for (int i = BASE_POSITION_NUMBER; i <= MAX_POSITION_NUMBER; i++) {
             arguments.add(Arguments.of(i));
         }
         return arguments.stream();
@@ -63,7 +63,7 @@ class RandomIntMovementPolicyTest {
 
     private static Stream<Arguments> provideUnmovableCases() {
         List<Arguments> arguments = new ArrayList<>();
-        for (int i = 0; i < POLICY_BASE_NUMBER; i++) {
+        for (int i = 0; i < BASE_POSITION_NUMBER; i++) {
             arguments.add(Arguments.of(i));
         }
         return arguments.stream();

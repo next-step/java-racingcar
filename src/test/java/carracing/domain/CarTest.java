@@ -3,6 +3,13 @@ package carracing.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -14,9 +21,8 @@ class CarTest {
 
     private static final int ONE = 1;
     private static final int INITIATION_POSITION_NUMBER = 0;
-    private static final int POLICY_BASE_NUMBER = RandomIntMovementPolicy.getPolicyBaseNumber();
-    private static final int MOVABLE_POSITION_NUMBER = POLICY_BASE_NUMBER;
-    private static final int UNMOVABLE_POSITION_NUMBER = MOVABLE_POSITION_NUMBER - ONE;
+    private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
+    private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
 
     private RandomGenerator randomGenerator;
     private MovementPolicy movementPolicy;
@@ -41,28 +47,50 @@ class CarTest {
     }
 
     @DisplayName("자동차가 움직일 수 있는 경우, 자동자의 위치가 변경되는지 확인")
-    @Test
-    void moveCarTest() {
-        // When
+    @ParameterizedTest
+    @MethodSource("provideMovableCases")
+    void moveCarTest(int movableNumber) {
+        // Given
         Car car = new Car();
+
+        // When
         when(randomGenerator.generateZeroToNineInt())
-                .thenReturn(MOVABLE_POSITION_NUMBER);
+                .thenReturn(movableNumber);
         car.move(movementPolicy);
 
         // Then
         assertThat(car.getPosition().getNumber()).isEqualTo(ONE);
     }
 
+    private static Stream<Arguments> provideMovableCases() {
+        List<Arguments> arguments = new ArrayList<>();
+        for (int i = BASE_POSITION_NUMBER; i <= MAX_POSITION_NUMBER; i++) {
+            arguments.add(Arguments.of(i));
+        }
+        return arguments.stream();
+    }
+
     @DisplayName("자동차가 움직일 수 있는 경우, 자동자의 위치가 변경되는지 확인")
-    @Test
-    void checkMoveCarTest() {
-        // When
+    @ParameterizedTest
+    @MethodSource("provideUnmovableCases")
+    void checkMoveCarTest(int unmovableNumber) {
+        // Given
         Car car = new Car();
+
+        // When
         when(randomGenerator.generateZeroToNineInt())
-                .thenReturn(UNMOVABLE_POSITION_NUMBER);
+                .thenReturn(unmovableNumber);
         car.move(movementPolicy);
 
         // Then
         assertThat(car.getPosition().getNumber()).isEqualTo(INITIATION_POSITION_NUMBER);
+    }
+
+    private static Stream<Arguments> provideUnmovableCases() {
+        List<Arguments> arguments = new ArrayList<>();
+        for (int i = 0; i < BASE_POSITION_NUMBER; i++) {
+            arguments.add(Arguments.of(i));
+        }
+        return arguments.stream();
     }
 }
