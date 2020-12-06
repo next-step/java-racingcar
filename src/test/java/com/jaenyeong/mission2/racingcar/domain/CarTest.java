@@ -41,7 +41,7 @@ class CarTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("randomIntValues")
-    @DisplayName("여러번 이동시 이동 후에 위치값은 0부터 이동 횟수 사이의 값인지 확인하는 테스트")
+    @DisplayName("여러 번 이동시 이동 후에 위치값은 0부터 이동 횟수 사이의 값인지 확인하는 테스트")
     void checkDistanceWhenMoveSeveralTimes(final int randomValue) {
         final Car car = new Car();
 
