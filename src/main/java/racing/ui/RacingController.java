@@ -17,7 +17,7 @@ public class RacingController {
 
 
     public Response play(final Request input) {
-        GameReport gameReport = racingService.play(input.getCarCount(), input.getRound());
+        GameReport gameReport = racingService.play(input.getCarNames(), input.getRound());
         return Response.of(gameReport);
     }
 }
