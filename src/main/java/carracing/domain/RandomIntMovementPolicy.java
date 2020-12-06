@@ -7,6 +7,7 @@ public class RandomIntMovementPolicy implements MovementPolicy {
 
     public static final int BASE_POSITION_NUMBER = 4;
     public static final int MAX_POSITION_NUMBER = 9;
+    public static final int MIN_POSITION_NUMBER = 0;
     private final RandomGenerator randomGenerator;
 
     public RandomIntMovementPolicy(RandomGenerator randomGenerator) {
