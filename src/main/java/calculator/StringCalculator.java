@@ -43,5 +43,4 @@ public class StringCalculator {
                 .map(Symbol::new)
                 .collect(Collectors.toCollection(LinkedList::new));
     }
-
 }
