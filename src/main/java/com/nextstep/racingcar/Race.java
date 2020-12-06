@@ -3,41 +3,37 @@ package com.nextstep.racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Race {
-    private List<Car> carList = new ArrayList<>();
-    private static final int THRESHOLD = 3;
+    private List<Car> cars = new ArrayList<>();
 
-    public Race(int carCount, int moveLimit) {
-        for ( int ix = 0 ; ix < carCount ; ix ++ ) {
-            carList.add(new Car(moveLimit));
+    public Race(List<CarName> carNames, Supplier<Integer> numberGenerator) {
+        for (CarName carName : carNames) {
+            cars.add(new Car(carName, numberGenerator));
         }
     }
 
-    public List<Car> moveAndGet(Supplier<Integer> numberGenerator) {
-        for (Car car : carList) {
-            int number = numberGenerator.get();
-            tryMove(car, number);
+    public List<Car> moveAndGet() {
+        for (Car car : cars) {
+            car.tryMove();
         }
-        return carList;
+        return cars;
     }
 
-    private void tryMove(Car car, int number) {
-        if (!isMove(number)) {
-            return;
-        }
-        car.move();
+    public String getWinnerNames() {
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.equalsPosition(maxPosition))
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
     }
 
-    private boolean isMove(int number) {
-        return THRESHOLD < number;
-    }
-
-    public boolean isFinished() {
-        boolean isFinished = false;
-        for ( Car car : carList ) {
-            isFinished = isFinished | car.isFinished();
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
-        return isFinished;
+        return maxPosition;
     }
 }

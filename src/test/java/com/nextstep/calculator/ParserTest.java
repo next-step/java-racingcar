@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-public class ValidatorTest {
+public class ParserTest {
     private final Validator validator = new Validator();
 
     @DisplayName("잘못된 입력 값에 대한 정합성 검사 확인")

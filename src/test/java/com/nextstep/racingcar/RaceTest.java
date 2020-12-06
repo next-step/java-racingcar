@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -14,18 +15,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
     private static final Random RANDOM = new Random();
-    private static final int CAR_COUNT = 3;
+    private final List<CarName> carNames = Arrays.asList(new CarName("test1"), new CarName("test2"), new CarName("test3"));
 
     @DisplayName("0-3만 나오는 경우와 4-9만 나오는 경우 position의 변화 체크")
     @ParameterizedTest
     @MethodSource
-    public void moveAndGet(Supplier<Integer> numberGenerator, int moveLimit, int expected) {
-        Race race = new Race(CAR_COUNT, moveLimit);
+    public void moveAndGet(Supplier<Integer> numberGenerator, int moveCount, int expected) {
+        Race race = new Race(carNames, numberGenerator);
 
         List<Car> carList = null;
 
-        for (int ix = 0 ; ix < moveLimit ; ix ++) {
-            carList = race.moveAndGet(numberGenerator);
+        for (int ix = 0 ; ix < moveCount ; ix ++) {
+            carList = race.moveAndGet();
         }
         assertThat(carList).isNotNull();
 
@@ -43,25 +44,25 @@ public class RaceTest {
         );
     }
 
-    @DisplayName("Car list 중 하나라도 끝나면 true인지 확인")
+    @DisplayName("우승 한 car의 이름들을 가져오는지 확인")
     @ParameterizedTest
     @MethodSource
-    public void isFinished(Supplier<Integer> numberGenerator, int moveLimit, boolean expected) {
-        Race race = new Race(CAR_COUNT, moveLimit);
+    public void getWinnerNames(Supplier<Integer> numberGenerator, int moveCount, String expected) {
+        Race race = new Race(carNames, numberGenerator);
 
-        for (int ix = 0 ; ix < moveLimit ; ix ++) {
-            race.moveAndGet(numberGenerator);
+        for (int ix = 0 ; ix < moveCount ; ix ++) {
+            race.moveAndGet();
         }
-
-        assertThat(race.isFinished()).isEqualTo(expected);
+        assertThat(race.getWinnerNames()).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> isFinished() {
+    private static Stream<Arguments> getWinnerNames() {
         return Stream.of(
-                Arguments.of(new SpecificGenerator(5, 1, 1), 5, true),
-                Arguments.of(new SpecificGenerator(1, 5, 1), 5, true),
-                Arguments.of(new SpecificGenerator(1, 1, 5), 5, true),
-                Arguments.of(new SpecificGenerator(1, 1, 1), 5, false)
+                Arguments.of(new SpecificGenerator(5, 1, 1), 5, "test1"),
+                Arguments.of(new SpecificGenerator(1, 5, 1), 5, "test2"),
+                Arguments.of(new SpecificGenerator(1, 1, 5), 5, "test3"),
+                Arguments.of(new SpecificGenerator(1, 5, 5), 5, "test2,test3"),
+                Arguments.of(new SpecificGenerator(5, 5, 5), 5, "test1,test2,test3")
         );
     }
 

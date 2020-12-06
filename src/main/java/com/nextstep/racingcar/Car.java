@@ -1,22 +1,39 @@
 package com.nextstep.racingcar;
 
-public class Car {
-    private final int limit;
-    private int position = 0;
+import java.util.function.Supplier;
 
-    public Car(int limit) {
-        this.limit = limit;
+public class Car {
+    private static final int THRESHOLD = 3;
+
+    private CarName name;
+    private int position = 0;
+    private Supplier<Integer> numberGenerator;
+
+    public Car(CarName name, Supplier<Integer> numberGenerator) {
+        this.name = name;
+        this.numberGenerator = numberGenerator;
     }
 
-    public void move() {
-        position++;
+    public String getName() {
+        return name.getName();
+    }
+
+    public void tryMove() {
+        int number = numberGenerator.get();
+        if (isMove(number)) {
+            position++;
+        }
     }
 
     public int getPosition() {
         return position;
     }
 
-    public boolean isFinished() {
-        return limit == position;
+    public boolean equalsPosition(int position) {
+        return this.position == position;
+    }
+
+    private boolean isMove(int number) {
+        return THRESHOLD < number;
     }
 }

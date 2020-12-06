@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RaceManager {
+    private static final int BOUND = 10;
+
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
 
@@ -16,11 +18,18 @@ public class RaceManager {
 
     public void run() {
         Race race = createRace();
+        int moveCount = inputMoveLimit();
 
-        while(!race.isFinished()) {
-            List<Car> carList = race.moveAndGet(this::getRandomValue);
-            printPosition(carList);
+        printResultHeader();
+        for (int i = 0; i < moveCount; i ++) {
+            List<Car> cars = race.moveAndGet();
+            printPosition(cars);
         }
+        printWinner(race.getWinnerNames());
+    }
+
+    private void printWinner(String names) {
+        System.out.println(names + "가 최종 우승했습니다.");
     }
 
     private void printResultHeader() {
@@ -31,7 +40,7 @@ public class RaceManager {
     private void printPosition(List<Car> carList) {
         for (Car car : carList) {
             String positionString = getPositionString(car.getPosition());
-            System.out.println(positionString);
+            System.out.println(car.getName() + " : " + positionString);
         }
         System.out.println();
     }
@@ -43,15 +52,14 @@ public class RaceManager {
     }
 
     private Race createRace() {
-        int carCount = inputCarCount();
-        int moveLimit = inputMoveLimit();
-
-        return new Race(carCount, moveLimit);
+        List<CarName> carNames = inputCarNames();
+        return new Race(carNames, this::getRandomValue);
     }
 
-    private int inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    private List<CarName> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String line = scanner.nextLine();
+        return Parser.parseCarNames(line);
     }
 
     private int inputMoveLimit() {
@@ -60,7 +68,6 @@ public class RaceManager {
     }
 
     private int getRandomValue() {
-        final int bound = 10;
-        return random.nextInt(bound);
+        return random.nextInt(BOUND);
     }
 }
