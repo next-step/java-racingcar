@@ -21,15 +21,8 @@ public class StringCalculate {
             }
 
             char op = operator.charAt(0);
-            if (op == '+') {
-                result = Operator.PLUS.apply(result, number);
-            } else if (op == '-') {
-                result = Operator.MINUS.apply(result, number);
-            } else if (op == '*') {
-                result = Operator.MULTIPLY.apply(result, number);
-            } else if (op == '/') {
-                result = Operator.DIVIDE.apply(result, number);
-            }
+
+            result = Operator.calculate(op, result, number);
         }
 
         return result;
