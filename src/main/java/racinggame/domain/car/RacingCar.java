@@ -1,6 +1,6 @@
 package racinggame.domain.car;
 
-public class RacingCar {
+public class RacingCar{
     private final CarName name;
     private final int position;
 

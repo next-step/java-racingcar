@@ -14,9 +14,9 @@ public class RacingCars {
         this.racingCars = racingCars;
     }
 
-    public static RacingCars of(final List<String> carNames) {
+    public static RacingCars of(final List<CarName> carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
-        carNames.forEach(name -> racingCars.add(new RacingCar(new CarName(name), CAR_INIT_POSITION)));
+        carNames.forEach(carName -> racingCars.add(new RacingCar(carName, CAR_INIT_POSITION)));
         return new RacingCars(racingCars);
     }
 
