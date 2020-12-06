@@ -24,6 +24,15 @@
 - [x] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 - [x] 사칙 연산을 모두 포함하는 기능 구현
 
+## 자동차 경주 기능
+- 자동차가 움직이는 기능
+- 자동차가 움직이는 조건 기능
+- N대의 자동차를 생성하는 기능
+- 자동차 그룹을 모두 이동시키는 기능
+- 자동차가 이동한 결과를 사용자에게 보내는 기능
+- 자동차의 거리를 메세지 결과로 변환하는 기능
+- 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상인 경우 전진 하는 기능.
+- 사용자에게 대수, 회수를 입력받는 기능
 
 ## Build
 ```
@@ -32,5 +41,5 @@
 
 ## Run
 ```
-java -jar build/libs/step1-calculator-1.0.0.jar
+java -jar build/libs/step2-racing-1.0.0.jar
 ```

@@ -10,9 +10,9 @@ repositories {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'calculator.CalculatorApplication'
+        attributes 'Main-Class': 'race.RaceGameApplication'
     }
-    baseName 'step1-calculator'
+    baseName 'step2-racing'
 }
 
 dependencies {
