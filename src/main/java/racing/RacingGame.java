@@ -38,7 +38,7 @@ public class RacingGame {
 	public void speedUpForPlayCount(List<Car> cars) {
 		for (Car car : cars) {
 			car.speedUp(random.nextInt(MAX_RANDOM_BOUND));
-			resultView.print(car.getForwardPosition());
+			resultView.print(car.getName(), car.getForwardPosition());
 		}
 	}
 

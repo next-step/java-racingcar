@@ -28,6 +28,10 @@ public class Car {
 		return true;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public int getForwardPosition() {
 		return forwardPosition;
 	}

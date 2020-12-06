@@ -2,10 +2,14 @@ package racing.view;
 
 public class ResultView {
 
-	public void print(int forwardRecult) {
+	StringBuilder stringBuilder = new StringBuilder();
+
+	public void print(String carName, int forwardRecult) {
+		stringBuilder.setLength(0);
+		stringBuilder.append(carName).append(" : ");
 		for (int i = 0; i < forwardRecult; i++) {
-			System.out.print("-");
+			stringBuilder.append("-");
 		}
-		System.out.println();
+		System.out.println(stringBuilder.toString());
 	}
 }
