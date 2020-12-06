@@ -15,15 +15,18 @@ public class GameResult {
     }
 
     public List<CarName> pickWinners() {
-        int maxPosition = racingCars.stream()
-                .max(Comparator.comparingInt(RacingCar::getPosition))
-                .get()
-                .getPosition();
-
+        int maxPosition = selectMaxPosition();
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getPosition() == maxPosition)
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
+    }
+
+    private int selectMaxPosition() {
+        return racingCars.stream()
+                .max(Comparator.comparingInt(RacingCar::getPosition))
+                .get()
+                .getPosition();
     }
 
     public List<RacingCar> getRacingCars() {
