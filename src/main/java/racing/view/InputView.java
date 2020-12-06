@@ -1,7 +1,5 @@
 package racing.view;
 
-import java.util.Scanner;
-
 public class InputView {
 	private String inputName;
 	private int playCount;
@@ -22,10 +20,6 @@ public class InputView {
 
 	public int getPlayCount() {
 		return playCount;
-	}
-
-	public int getPlayRacingCarCount() {
-		return playRacingCarCount;
 	}
 
 }

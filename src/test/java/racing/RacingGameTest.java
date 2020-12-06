@@ -25,6 +25,7 @@ class RacingGameTest {
 		for(Car car : cars){
 			assertThat(car.getRacingRecord()==PLAY_COUNT).isTrue();
 		}
+		racingGame.printWinner(cars);
 	}
 
 }

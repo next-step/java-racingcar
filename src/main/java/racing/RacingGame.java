@@ -4,10 +4,7 @@ import racing.model.Car;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingGame {
 
@@ -21,9 +18,20 @@ public class RacingGame {
 
 	public void start() {
 		InputView inputView = initInputView();
-
 		List<Car> cars = prepareInitRacingCar(inputView.getInputName());
 		startRacing(cars, inputView.getPlayCount());
+		printWinner(cars);
+	}
+
+	public void printWinner(List<Car> cars) {
+		List<Integer> positionList = new ArrayList<>();
+		Map<Integer, String> map = new HashMap<>();
+		for (Car car : cars) {
+			positionList.add(car.getForwardPosition());
+			map.merge(car.getForwardPosition(), car.getName(), (k, v) -> map.get(car.getForwardPosition()) + "," + car.getName());
+		}
+		Integer maxPosition = Collections.max(positionList);
+		System.out.println(map.get(maxPosition) + "가 최종 우승했습니다.");
 	}
 
 	public void startRacing(List<Car> cars, int playCount) {
@@ -61,9 +69,6 @@ public class RacingGame {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		int playCount = scanner.nextInt();
 		System.out.println(playCount);
-
 		return new InputView(inputName, carNames.length, playCount);
 	}
-
-
 }
