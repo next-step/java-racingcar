@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringCalculateTest {
 
@@ -24,14 +24,12 @@ public class StringCalculateTest {
     @NullAndEmptySource
     @DisplayName("null 또는 empty 입력 값 전달 시 예외")
     public void calculateWithNullAndEmpty(String input) {
-        assertThatThrownBy(() -> StringCalculate.calculate(input))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculate.calculate(input));
     }
 
     @Test
     @DisplayName("사칙연산 기호가 아닌 경우 예외")
     public void calculateWithInvalidOperatorSymbol() {
-        assertThatThrownBy(() -> StringCalculate.calculate("2 @ 1"))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculate.calculate("2 @ 1"));
     }
 }
