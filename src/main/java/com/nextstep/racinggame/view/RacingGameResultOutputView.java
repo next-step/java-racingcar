@@ -9,7 +9,7 @@ public class RacingGameResultOutputView {
     private static final String CAR_STATUS_DIVIDER = " : ";
     private static final String LINE_DIVIDER = "\n";
 
-    public static String drawGameResult(final Cars cars) {
+    static String drawGameProgress(final Cars cars) {
         return cars.getCars().stream()
                 .map(RacingGameResultOutputView::drawCarStatus)
                 .collect(Collectors.joining());

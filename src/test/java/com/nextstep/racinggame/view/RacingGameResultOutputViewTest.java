@@ -12,6 +12,6 @@ class RacingGameResultOutputViewTest {
     void drawTest() {
         String expected = "test1 : -\ntest2 : -\ntest3 : -\n";
 
-        assertThat(RacingGameResultOutputView.drawGameResult(ALL_ONE_MOVED_TEST123_CARS)).isEqualTo(expected);
+        assertThat(RacingGameResultOutputView.drawGameProgress(ALL_ONE_MOVED_TEST123_CARS)).isEqualTo(expected);
     }
 }

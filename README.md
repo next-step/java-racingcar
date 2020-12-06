@@ -154,3 +154,26 @@ public class SetTest {
     - [X] 게임 시작 방식을 차량 대수 입력에서 참여할 차량 이름으로 변경한 뒤 기존 기능 그대로 동작하는지 확인
     - [X] 레이싱 게임 결과 출력 시 차량 이름도 출력되도록 기능 변경
     - [X] 우승 차량 결과를 사용자가 볼 수 있도록 기능 추가
+    
+## Step4. 피드백 반영
+- [X] Stream 메서드를 거친 뒤 객체를 생성하는 코드 가독성 높이기
+- [X] Fixture가 반드시 필요한 테스트인지 점검하기
+
+## Step5. 자동차 경주(리팩토링)
+### 제약조건
+- 도메인 객체에서 View를 알지 못하도록 객체 간 책임을 분리할 것
+- Controller에서 도메인 객체, View 객체 간 접합점을 만들도록 개선할 것 
+
+### Todo-list
+- InputView(class)
+    - 커맨드 라인으로 사용자가 입력한 문자열을 알맞는 세부 InputView로 분배하는 객체
+- NamesInputView(class)
+    - InputView 하위 객체로 사용자가 입력한 차량명을 다룬다.
+    - [X] 레이싱 게임을 진행할 사용자가 입력하는 구분자로 구분된 차량명 문자열을 입력받을 수 있다.
+- RacingCountView(class)
+    - InputView 하위 객체로 사용자가 입력한 레이싱 회수를 다룬다.
+    - [X] 레이싱 게임을 진행할 사용자가 입력하는 레이싱 회수를 입력받을 수 있다. 
+- OutputView(class)
+    - 사용자에게 보여줄 내용을 책임지는 객체
+    - [X] 기존의 RacingGameResultOutputView, RacingGameWinnerOutputView 통합
+    - [X] 사용자에게 보여줄 문구도 통합

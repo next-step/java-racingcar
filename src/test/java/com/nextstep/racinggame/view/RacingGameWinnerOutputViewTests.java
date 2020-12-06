@@ -2,6 +2,7 @@ package com.nextstep.racinggame.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static com.nextstep.racinggame.domain.CarsFixtures.TEST1_TEST2_WINNING_CARS;
 import static org.assertj.core.api.Assertions.assertThat;
 
