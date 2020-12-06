@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Race {
+    private static final String DELIMITER = ",";
     private List<Car> cars = new ArrayList<>();
 
     public Race(List<CarName> carNames, Supplier<Integer> numberGenerator) {
@@ -26,7 +27,7 @@ public class Race {
         return cars.stream()
                 .filter(car -> car.equalsPosition(maxPosition))
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(DELIMITER));
     }
 
     private int getMaxPosition() {
