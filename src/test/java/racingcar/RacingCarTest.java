@@ -14,7 +14,7 @@ class RacingCarTest {
         RacingCar racingCar = new RacingCar();
 
         // when
-        racingCar.run();
+        racingCar.run(() -> true);
 
         // then
         assertThat(racingCar.getCarPosition()).isPositive();
