@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingCar {
     private List<Car> cars;
@@ -12,6 +13,13 @@ public class RacingCar {
 
     public List<Car> getCars(){
         return cars;
+    }
+
+    public List<String> getWinnerList(int location) {
+        return cars.stream()
+                .filter(car -> car.getLocation() == location)
+                .map(Car::getCar)
+                .collect(Collectors.toList());
     }
 
     @Override

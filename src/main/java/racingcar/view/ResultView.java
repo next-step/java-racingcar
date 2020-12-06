@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import racingcar.domain.Car;
+import racingcar.domain.RacingCar;
 import racingcar.domain.Scoreboard;
 
 public class ResultView {
@@ -18,7 +19,7 @@ public class ResultView {
             System.out.println();
         }
         System.out.println("");
-        printWinner(result.getRacingCar().getCars());
+        printWinner(result.getRacingCar());
     }
 
     public void printMove(List<Car> cars, List<Integer> result){
@@ -35,33 +36,23 @@ public class ResultView {
         System.out.println("");
     }
 
-    public void printWinner(List<Car> cars){
+    public void printWinner(RacingCar cars){
         List<Integer> tempList = new ArrayList<>();
-        for(int k = 0; k < cars.size(); k++){
-            tempList.add(cars.get(k).getLocation());
+        for(int k = 0; k < cars.getCars().size(); k++){
+            tempList.add(cars.getCars().get(k).getLocation());
         }
         
         HashSet<String> winer = getWinner(cars, tempList);
         System.out.println(winer + " 가 최종 우승했습니다.");
     }
 
-    public HashSet<String> getWinner(List<Car> cars, List<Integer> tempList){
+    public HashSet<String> getWinner(RacingCar cars, List<Integer> tempList){
         int max = Collections.max(tempList);
         List<String> winnerList = new ArrayList<>(); 
-        for(int l = 0; l < cars.size(); l++){
-            winnerList.add(chooseWinner(cars.get(l), max));
-        }
+        winnerList = cars.getWinnerList(max);
         while (winnerList.remove(null));
         HashSet<String> dedupl = new HashSet<String>(winnerList);
         return dedupl;
-    }
-
-    public String chooseWinner(Car racer, int score){
-        String winner = null;
-        if(racer.getLocation() == score){
-            winner = racer.getCar();
-        }
-        return winner;
     }
 
 }
