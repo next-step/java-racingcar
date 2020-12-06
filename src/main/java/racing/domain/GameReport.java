@@ -17,6 +17,6 @@ public class GameReport {
     }
 
     public List<RoundReport> getRoundReports() {
-        return roundReports;
+        return new ArrayList<>(roundReports);
     }
 }

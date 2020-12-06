@@ -17,6 +17,6 @@ public class RoundReport {
     }
 
     public List<CarReport> getCarReports() {
-        return carReports;
+        return new ArrayList<>(carReports);
     }
 }
