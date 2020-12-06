@@ -4,7 +4,7 @@ import step3.domain.RandomGenerator;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
-    private final int ADVANCE_MIN_NUMBER = 4;
+    private static final int ADVANCE_MIN_NUMBER = 4;
     private final RandomGenerator randomGenerator;
 
 
