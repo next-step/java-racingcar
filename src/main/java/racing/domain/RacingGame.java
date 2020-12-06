@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class RacingGame {
     private final int repeatCount;
-    private Cars cars;
+    private final Cars cars;
 
     public RacingGame(String carNames, int repeatCount, PowerGenerator powerGenerator) {
         this.repeatCount = repeatCount;

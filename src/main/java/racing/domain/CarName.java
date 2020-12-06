@@ -13,16 +13,15 @@ public class CarName {
 
     private void validate(String name) {
         if (StringUtils.isBlank(name)) {
-            wrongName();
-            return;
+            throwWrongNameException();
         }
 
         if (name.length() > MAX_LENGTH) {
-            wrongName();
+            throwWrongNameException();
         }
     }
 
-    private void wrongName() {
+    private void throwWrongNameException() {
         throw new IllegalArgumentException("잘못된 이름입니다.");
     }
 
