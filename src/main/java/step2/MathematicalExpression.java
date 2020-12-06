@@ -1,5 +1,6 @@
 package step2;
 
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
@@ -9,11 +10,11 @@ import java.util.stream.IntStream;
 public class MathematicalExpression {
 
     private List<BigDecimal> numbers;
-    private List<Symbol> symbols;
+    private List<Operator> operators;
 
-    public MathematicalExpression(List<BigDecimal> numbers, List<Symbol> symbols) {
+    public MathematicalExpression(List<BigDecimal> numbers, List<Operator> operators) {
         this.numbers = numbers;
-        this.symbols = symbols;
+        this.operators = operators;
     }
 
     public static MathematicalExpression of(String text) {
@@ -21,27 +22,30 @@ public class MathematicalExpression {
             throw new IllegalArgumentException();
         }
         String[] splitText = text.split(" ");
+        if (splitText.length == 1) {
+            throw new IllegalArgumentException();
+        }
         List<BigDecimal> numbers = IntStream.range(0, splitText.length)
                 .filter(i -> i % 2 == 0)
                 .mapToObj(i -> textToBigDecimal(splitText[i]))
                 .collect(Collectors.toList());
-        List<Symbol> symbols = IntStream.range(0, splitText.length)
+        List<Operator> operators = IntStream.range(0, splitText.length)
                 .filter(i -> i % 2 == 1)
-                .mapToObj(i -> new Symbol(splitText[i]))
+                .mapToObj(i -> Operator.getOperatorFor(splitText[i]))
                 .collect(Collectors.toList());
-        return new MathematicalExpression(numbers, symbols);
+        return new MathematicalExpression(numbers, operators);
     }
 
     public BigDecimal getNumber(int index) {
         return numbers.get(index);
     }
 
-    public Symbol getSymbol(int index) {
-        return symbols.get(index);
+    public Operator getSymbol(int index) {
+        return operators.get(index);
     }
 
     private static BigDecimal textToBigDecimal(String text) {
-        if (isNumeric(text)) {
+        if (!isNumeric(text)) {
             throw new IllegalArgumentException();
         }
         return new BigDecimal(text);

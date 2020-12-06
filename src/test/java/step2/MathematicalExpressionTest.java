@@ -46,24 +46,18 @@ public class MathematicalExpressionTest {
 
     @Test
     public void 연산기호_추출() {
-        Symbol symbol1 = new Symbol("+");
-        Symbol symbol2 = new Symbol("-");
-        Symbol symbol3 = new Symbol("+");
         expression = MathematicalExpression.of("2 + 2 - 1923129 + 333.33");
-        assertThat(expression.getSymbol(0)).isEqualTo(symbol1);
-        assertThat(expression.getSymbol(1)).isEqualTo(symbol2);
-        assertThat(expression.getSymbol(2)).isEqualTo(symbol3);
+        assertThat(expression.getSymbol(0)).isEqualTo(Operator.PLUS);
+        assertThat(expression.getSymbol(1)).isEqualTo(Operator.MINUS);
+        assertThat(expression.getSymbol(2)).isEqualTo(Operator.PLUS);
     }
 
     @Test
     public void 연산기호_추출2() {
-        Symbol symbol1 = new Symbol("*");
-        Symbol symbol2 = new Symbol("/");
-        Symbol symbol3 = new Symbol("/");
         expression = MathematicalExpression.of("2 * 2 / 1923129 / 333.33");
-        assertThat(expression.getSymbol(0)).isEqualTo(symbol1);
-        assertThat(expression.getSymbol(1)).isEqualTo(symbol2);
-        assertThat(expression.getSymbol(2)).isEqualTo(symbol3);
+        assertThat(expression.getSymbol(0)).isEqualTo(Operator.MULTIPLY);
+        assertThat(expression.getSymbol(1)).isEqualTo(Operator.DIVIDE);
+        assertThat(expression.getSymbol(2)).isEqualTo(Operator.DIVIDE);
     }
 
     @Test
