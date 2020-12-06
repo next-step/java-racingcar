@@ -14,27 +14,23 @@ import static org.mockito.Mockito.when;
 public class CarTest {
 
     Car car;
-    MovingStrategy movingStrategy;
 
     @BeforeEach
     void setUp() {
         car = new Car();
-        movingStrategy = mock(RandomMovingStrategy.class);
     }
 
     @Test
     @DisplayName("전진 조건에 만족하면 전진")
     void move() {
-        when(movingStrategy.isMove()).thenReturn(true);
-        car.move(movingStrategy);
+        car.move(()->true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("전진 조건에 만족하지 않으면 스탑")
     void stop() {
-        when(movingStrategy.isMove()).thenReturn(false);
-        car.move(movingStrategy);
+        car.move(()->false);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
