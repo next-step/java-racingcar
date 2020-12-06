@@ -7,12 +7,12 @@ import java.util.Map;
 
 public class RacingGame {
 
-    private final int carNumber;
+    private final int carCount;
     private final int moveCount;
     private final Map<Integer, List<RacingCar>> racingCarMap = new HashMap<>();
 
-    public RacingGame(int carNumber, int moveCount) {
-        this.carNumber = carNumber;
+    public RacingGame(int carCount, int moveCount) {
+        this.carCount = carCount;
         this.moveCount = moveCount;
         for (int i = 0; i < moveCount; i++) {
             setRacingCarMap(i);
@@ -25,7 +25,7 @@ public class RacingGame {
 
     private void setRacingCarMap(int racingCarMapKey) {
         List<RacingCar> racingCarList = new ArrayList<>();
-        for (int j = 0; j < carNumber; j++) {
+        for (int j = 0; j < carCount; j++) {
             RacingCar car = new RacingCar(moveCount);
             car.race();
             racingCarList.add(car);
