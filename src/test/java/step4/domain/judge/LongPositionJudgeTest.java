@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LongPositionJudgeTest {
 
-    private static final String[] CARS = new String[]{"pobi", "jack", "honux"};
+    private static final String CARS_NAME = "pobi,jack,honux";
     private Judge judge;
 
     @BeforeEach
@@ -26,7 +26,7 @@ class LongPositionJudgeTest {
     @ParameterizedTest
     @MethodSource("generateCarsInfo")
     @DisplayName("우승자 점수를 판단하는 기능테스트")
-    void judge(String[] carNames, int[] distance, int expected) {
+    void judge(String[] carNames, int[] distance, String expected) {
         assertEquals(judge.judge(getCars(carNames, distance)), expected);
     }
 
@@ -44,11 +44,9 @@ class LongPositionJudgeTest {
 
     static Stream<Arguments> generateCarsInfo() {
         return Stream.of(
-                Arguments.arguments(CARS, new int[]{1,3,5}, 5),
-                Arguments.arguments(CARS, new int[]{1,5,5}, 5),
-                Arguments.arguments(CARS, new int[]{5,7,7}, 7),
-                Arguments.arguments(CARS, new int[]{8,8,8}, 8)
+                Arguments.arguments(CARS_NAME.split(","), new int[]{1,3,5}, "honux"),
+                Arguments.arguments(CARS_NAME.split(","), new int[]{1,5,5}, "jack, honux"),
+                Arguments.arguments(CARS_NAME.split(","), new int[]{7,7,7}, "pobi, jack, honux")
         );
     }
-
 }

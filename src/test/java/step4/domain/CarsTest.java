@@ -57,7 +57,7 @@ class CarsTest {
     @DisplayName("우승한 자동차를 찾는 기능 테스트")
     void judge(String[] carNames, int[] distance, String expected) {
         Cars cars = new Cars(getCars(carNames, distance));
-        assertEquals( cars.winnerCars(judge), expected);
+        assertEquals(cars.winnerCars(judge), expected);
     }
 
     private List<Car> getCars(String[] carNames, int[] distance) {

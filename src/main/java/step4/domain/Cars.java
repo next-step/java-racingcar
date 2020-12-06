@@ -21,11 +21,7 @@ public class Cars {
     }
 
     public String winnerCars(Judge judge) {
-        int longDistance = (int) judge.judge(cars);
-        return cars.stream()
-                    .filter(car -> car.getPosition() == longDistance)
-                    .map(car -> car.getName())
-                    .collect(Collectors.joining(", "));
+        return (String) judge.judge(cars);
     }
 
     public List<Car> getCars() {
