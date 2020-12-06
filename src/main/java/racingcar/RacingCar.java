@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -52,4 +53,27 @@ public class RacingCar {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RacingCar racingCar = (RacingCar) o;
+
+        if (moveCount != racingCar.moveCount) return false;
+        if (advancedCount != racingCar.advancedCount) return false;
+        return Objects.equals(carName, racingCar.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = moveCount;
+        result = 31 * result + advancedCount;
+        result = 31 * result + (carName != null ? carName.hashCode() : 0);
+        return result;
+    }
+
+    public boolean isExistName() {
+        return this.carName != null;
+    }
 }

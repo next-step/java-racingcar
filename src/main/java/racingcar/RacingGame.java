@@ -1,9 +1,7 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 자동차 경주 게임 클래스
@@ -12,8 +10,8 @@ public class RacingGame {
 
     private final int carCount;     // 자동차 수
     private final int moveCount;    // 이동횟수
-    private List<CarName> carNames;    // 자동차 이름 목록
     private final Map<Integer, List<RacingCar>> racingCarMap = new HashMap<>();     // 경주용 자동차 맵
+    private List<CarName> carNames;    // 자동차 이름 목록
 
     public RacingGame(int carCount, int moveCount) {
         this.carCount = carCount;
@@ -62,6 +60,36 @@ public class RacingGame {
             racingCarList.add(car);
         }
         racingCarMap.put(racingCarMapKey, racingCarList);
+    }
+
+    /**
+     * 위치를 통한 우승자 선정
+     * @return 우승자 목록
+     */
+    public List<RacingCar> pickWinner() {
+        List<RacingCar> candidates = new ArrayList<>();
+        for (Integer key : racingCarMap.keySet()) {
+            List<RacingCar> racingCarList = racingCarMap.get(key);
+            candidates.addAll(getMaxByAdvancedCount(racingCarList));
+        }
+        return getMaxByAdvancedCount(candidates).stream()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 입력받은 목록 중 전진 횟수가 최대인 RacingCar 목록을 리턴
+     * @param racingCarList RacingCar 목록
+     * @return 전진 횟수가 최대인 RacingCar 목록
+     */
+    private List<RacingCar> getMaxByAdvancedCount(List<RacingCar> racingCarList) {
+        return racingCarList.stream()
+                .collect(Collectors.groupingBy(
+                        RacingCar::getAdvancedCount,
+                        TreeMap::new,
+                        Collectors.toList()))
+                .lastEntry()
+                .getValue();
     }
 
 }
