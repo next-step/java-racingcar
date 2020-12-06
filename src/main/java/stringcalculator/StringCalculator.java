@@ -16,7 +16,7 @@ import java.util.Stack;
  */
 public class StringCalculator {
 
-    public static final String DELIMITER = " ";
+    private static final String DELIMITER = " ";
 
     public static ArithmeticResult calculate(InputExpression inputExpression) {
         return calculateInfixExpression(inputExpression.getExpression());
@@ -34,16 +34,9 @@ public class StringCalculator {
             ArithmeticOperand num2 = new ArithmeticOperand(Integer.parseInt(postfixStack.pop()));
             ArithmeticOperator operator = ArithmeticOperator.findByOperator(postfixStack.pop());
             ArithmeticExpression arithmeticExpression = new ArithmeticExpression(operator, num1, num2);
-            String result = String.valueOf(calculate(arithmeticExpression));
+            ArithmeticResult arithmeticResult = arithmeticExpression.calculate();
+            String result = String.valueOf(arithmeticResult.getNumber());
             postfixStack.push(result);
         }
-    }
-
-    private static int calculate(ArithmeticExpression arithmeticExpression) {
-        ArithmeticOperator operator = arithmeticExpression.getOperator();
-        ArithmeticOperand operand1 = arithmeticExpression.getOperand1();
-        ArithmeticOperand operand2 = arithmeticExpression.getOperand2();
-        return operator.getFunction()
-                .apply(operand1.getNumber(), operand2.getNumber());
     }
 }

@@ -34,22 +34,22 @@
 - 덧셈, 뺄셈, 곱셈, 나눗셈 계산에 필요한 연산자 `ArithmeticOperator` 정의
     - [ ] 덧셈, 뺄셈, 곱셈, 나눗셈으로 구성된 Enum 생성
     - [ ] 덧셈, 뺄셈, 곱셈, 나눗셈이 아닌 연산자는 IllegalArgumentException 발생
-- 1회 연산에 필요한 수식 `ArithmeticExpression` 정
+- 1회 연산에 필요한 수식 `ArithmeticExpression` 정의
     - [ ] 1개 연산자 `ArithmeticOperator`와 2개 피연산자 `ArithmeticOperand`로 구성된 수식 생성
 - 1회 연산 결과를 저장할 값 `ArithmeticResult` 정의
     - [ ] 정수로 구성된 결과값 생성
 - 연산에 필요한 전체 수식에 대한 객체 `InputExpression` 정의
     - [ ] null이거나 빈 공백 문자일 경우 IllegalArgumentException 발생
-- 계산에 필요한 전체 수식을 입력받기 위한 콘솔 `InputConsole`현 구현
+- 계산에 필요한 전체 수식을 입력받기 위한 콘솔 `InputConsole` 구현
     - [ ] 계산에 필요한 수식을 사용자에게 입력받는 기능
-- 입력받은 수식에 대한 결과를 출력하는 콘솔 `OutputConsole`현 구현
+- 입력받은 수식에 대한 결과를 출력하는 콘솔 `OutputConsole` 구현
     - [ ] 입력받은 계산의 결과를 출력하는 기능
 - 계산에 필요한 전위/중위/후위 표기법 변환 유틸 `NotationUtils` 구현
     - [ ] 중위 표기법을 후위 표기법으로 변경
     - [ ] 전위/중위/후위 표기법을 Stack으로 변경
 - 문자열 수식을 계산하는 문자열 계산기 `StringCalculator` 구현
-  - [ ] 중위 표기법 수식 계산
-  - [ ] 좌에서 우로 순서대로 진행하며 계산
+    - [ ] 중위 표기법 수식 계산
+    - [ ] 좌에서 우로 순서대로 진행하며 계산
 
 ## 게임 실행 예시
 
