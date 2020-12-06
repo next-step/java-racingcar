@@ -19,7 +19,7 @@ public class Cars {
 	public List<String> getWinners() {
 		int maxValue = findMaxDistance();
 		return this.cars.stream()
-			.filter(car -> maxValue == car.getDistanceLength())
+			.filter(car -> maxValue == car.getDistance())
 			.map(Car::getName)
 			.collect(Collectors.toList());
 	}
@@ -34,7 +34,7 @@ public class Cars {
 	private int findMaxDistance() {
 		return this.cars
 			.stream()
-			.mapToInt(Car::getDistanceLength)
+			.mapToInt(Car::getDistance)
 			.max()
 			.orElseThrow(() -> new NullPointerException(Message.MSG_NOT_FOUND_DISTANCE));
 	}

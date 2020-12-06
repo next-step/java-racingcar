@@ -43,9 +43,9 @@ class CarTest {
 	@Test
 	void getDistance() {
 
-		String result = car.getDistance();
+		int result = car.getDistance();
 
-		assertThat(result).isEqualTo("-");
+		assertThat(result).isEqualTo(1);
 	}
 
 	@DisplayName("move 메서드의 파라미터로 true를 전달하면 distance의 문자열을 추가할 수 있다.")
@@ -53,9 +53,9 @@ class CarTest {
 	void move() {
 
 		car.move(true);
-		String result = car.getDistance();
+		int result = car.getDistance();
 
-		assertThat(result).isEqualTo("--");
+		assertThat(result).isEqualTo(2);
 	}
 
 	@DisplayName("clone 메서드로 car의 객체를 deep copy할 수 있다.")

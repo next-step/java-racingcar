@@ -6,13 +6,13 @@ import com.woowahan.racing.util.ValidationUtil;
 public class Car {
 
 	private String name = "";
-	private String distance = "";
+	private int distance = 0;
 
 	private Car(String name) {
-		this(name, "");
+		this(name, 0);
 	}
 
-	private Car(String name, String distance) {
+	private Car(String name, int distance) {
 		if (ValidationUtil.isLengthEmptyOrGreaterThanFive(name)) {
 			throw new IllegalArgumentException(Message.MSG_CAR_NAME_LENGTH_ERROR);
 		}
@@ -26,7 +26,7 @@ public class Car {
 
 	public void move(boolean isWin) {
 		if (isWin) {
-			this.distance += "-";
+			this.distance += 1;
 		}
 	}
 
@@ -34,11 +34,7 @@ public class Car {
 		return name;
 	}
 
-	public int getDistanceLength() {
-		return this.distance != null ? distance.length() : 0;
-	}
-
-	public String getDistance() {
+	public int getDistance() {
 		return distance;
 	}
 
