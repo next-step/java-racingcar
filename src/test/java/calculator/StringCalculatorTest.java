@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -42,6 +43,20 @@ class StringCalculatorTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
             calculator.calculate(null);
+        });
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("NULL_또는_빈문자_입력_테스트 (@NullAndEmptySource 사용)")
+    void null_and_empty_test(String text) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.calculate(text);
+                }).withMessageMatching(StringCalculator.INPUT_ERROR_MESSAGE);
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(text);
         });
     }
 
