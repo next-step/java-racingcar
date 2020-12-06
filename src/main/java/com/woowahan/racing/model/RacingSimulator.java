@@ -6,12 +6,12 @@ import java.util.List;
 public class RacingSimulator {
 
 	private final InputResult inputResult;
-	private final List<Car> partCars;
+	private final Cars partCars;
 	private final List<GameResult> gameResults;
 
 	private RacingSimulator(InputResult inputResult) {
 		this.inputResult = inputResult;
-		this.partCars = participateCars();
+		this.partCars = Cars.of(participateCars());
 		this.gameResults = new ArrayList<>();
 	}
 
@@ -21,24 +21,20 @@ public class RacingSimulator {
 
 	private List<Car> participateCars() {
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < inputResult.getCarCount(); i++) {
-			cars.add(Car.createCar());
+		for (String carName : inputResult.getCarNames()) {
+			cars.add(Car.createCar(carName));
 		}
 		return cars;
 	}
 
 	public List<GameResult> run() {
 		for (int i = 0; i < inputResult.getTryCount(); i++) {
-			gameResults.add(moveCars());
+			gameResults.add(partCars.moveCars());
 		}
 		return this.gameResults;
 	}
 
-	private GameResult moveCars() {
-		for (Car car : this.partCars) {
-			car.move(GameRandom.isGameWin());
-		}
-		return GameResult.of(this.partCars);
+	public Cars getPartCars() {
+		return partCars;
 	}
-
 }

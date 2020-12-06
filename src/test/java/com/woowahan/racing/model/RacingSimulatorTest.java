@@ -3,13 +3,13 @@ package com.woowahan.racing.model;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class RacingSimulatorTest {
@@ -24,32 +24,31 @@ class RacingSimulatorTest {
 		assertThat(result).isInstanceOf(RacingSimulator.class);
 	}
 
-	public static Stream<Arguments> argCreateSimulator() {
-		return Stream.of(
-			Arguments.of(InputResult.of(10, 1)),
-			Arguments.of(InputResult.of(1, 10)),
-			Arguments.of(InputResult.of(7, 3))
-		);
-	}
-
 	@DisplayName("run 메서드의 결과는 InputResult의 carCount만큼의 Car수와  tryCount만큼 GameResult객체의 수를 가진다.")
 	@ParameterizedTest
-	@CsvSource(value = {"3:5", "1:9", "2:10"}, delimiter = ':')
-	void run(int carCount, int tryCount) {
+	@MethodSource("argCreateSimulator")
+	void run(InputResult inputResult) {
 
-		InputResult inputResult = InputResult.of(carCount, tryCount);
+		int carCount = inputResult.getCarCount();
+		int tryCount = inputResult.getTryCount();
 
 		RacingSimulator simulator = RacingSimulator.createSimulator(inputResult);
 		List<GameResult> gameResults = simulator.run();
-		int trySize = gameResults.size();
 		assertAll(
-			() -> assertThat(trySize).isEqualTo(tryCount),
+			() -> assertThat(gameResults).hasSize(tryCount),
 			() -> {
 				for (GameResult gameResult : gameResults) {
-					int carSize = gameResult.getCars().size();
-					assertThat(carSize).isEqualTo(carCount);
+					assertThat(gameResult.getCars()).hasSize(carCount);
 				}
 			}
+		);
+	}
+
+	public static Stream<Arguments> argCreateSimulator() {
+		return Stream.of(
+			Arguments.of(InputResult.of(Arrays.asList("abc"), 1)),
+			Arguments.of(InputResult.of(Arrays.asList("abc", "가나다라"), 10)),
+			Arguments.of(InputResult.of(Arrays.asList("abc", "가나다라", "bc"), 3))
 		);
 	}
 }

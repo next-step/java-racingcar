@@ -1,5 +1,7 @@
 package com.woowahan.racing.util;
 
+import java.util.List;
+
 public class ValidationUtil {
 
 	public static boolean validate(String strNum) {
@@ -23,4 +25,15 @@ public class ValidationUtil {
 		return true;
 	}
 
+	public static boolean isNullOrEmpty(String value) {
+		return value == null || "".equals(value);
+	}
+
+	public static boolean isLengthEmptyOrGreaterThanFive(String value) {
+		return isNullOrEmpty(value) || value.length() > 5;
+	}
+
+	public static boolean hasLengthEmptyOrGreaterThanFive(List<String> strings) {
+		return strings.stream().anyMatch(ValidationUtil::isLengthEmptyOrGreaterThanFive);
+	}
 }

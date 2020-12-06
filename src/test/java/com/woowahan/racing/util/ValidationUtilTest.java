@@ -2,6 +2,8 @@ package com.woowahan.racing.util;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -71,6 +73,67 @@ class ValidationUtilTest {
 			Arguments.of("-1", false),
 			Arguments.of("-10", false),
 			Arguments.of("-3A5", false)
+		);
+	}
+
+	@DisplayName("isLengthLessThanFive메서드는 전달된 문자열이 문자열이 null or empty이거나 5자를 초과하면 true를 반환한다.")
+	@ParameterizedTest
+	@MethodSource("argIsLengthEmptyOrGreaterThanFive")
+	void isLengthEmptyOrGreaterThanFive(String value, boolean expected) {
+
+		boolean result = ValidationUtil.isLengthEmptyOrGreaterThanFive(value);
+
+		assertThat(result).isEqualTo(expected);
+	}
+
+	public static Stream argIsLengthEmptyOrGreaterThanFive() {
+		return Stream.of(
+			Arguments.of("abcde", false),
+			Arguments.of("가나다라마", false),
+			Arguments.of("abc", false),
+			Arguments.of("가나다라마바", true),
+			Arguments.of("abcdefgh", true),
+			Arguments.of("", true),
+			Arguments.of(null, true)
+		);
+	}
+
+	@DisplayName("hasLengthEmptyOrGreaterThanFive메서드에 전달된 파라미터 리스트 값중에 하나라도 문자열이 null or empty이거나 5자를 초과하면 true를 반환한다.")
+	@ParameterizedTest
+	@MethodSource("argHasLengthEmptyOrGreaterThanFive")
+	void hasLengthEmptyOrGreaterThanFive(List<String> value, boolean expected) {
+
+		boolean result = ValidationUtil.hasLengthEmptyOrGreaterThanFive(value);
+
+		assertThat(result).isEqualTo(expected);
+	}
+
+	public static Stream argHasLengthEmptyOrGreaterThanFive() {
+		return Stream.of(
+			Arguments.of(Arrays.asList("a", "ab", "abcde"), false),
+			Arguments.of(Arrays.asList("a", "ab", "abcdef"), true),
+			Arguments.of(Arrays.asList("", "ab", "abcde"), true),
+			Arguments.of(Arrays.asList(null, "ab", "abcde"), true),
+			Arguments.of(Arrays.asList("가나다"), false),
+			Arguments.of(Arrays.asList("가나다라마", "abcde"), false)
+		);
+	}
+
+	@DisplayName("isNullOrEmpty 메서드는 전달된 문자열이 null or empty인경우 true를 반환한다. 아닌 경우 false를 반환한다.")
+	@ParameterizedTest
+	@MethodSource("argIsNullOrEmpty")
+	void isNullOrEmpty(String value, boolean expected) {
+
+		boolean result = ValidationUtil.isNullOrEmpty(value);
+
+		assertThat(result).isEqualTo(expected);
+	}
+
+	public static Stream argIsNullOrEmpty() {
+		return Stream.of(
+			Arguments.of(null, true),
+			Arguments.of("", true),
+			Arguments.of("abc", false)
 		);
 	}
 }

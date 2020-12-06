@@ -24,3 +24,16 @@
 4. 게임 결과를 출력
 5. 코드 점검 후 리펙토링
 6. 테스트 코드 작성
+
+## 4단계 기능 목록 구현
+- 아래 기능 구현 전 테스트 코드 먼저 추가하면서 기능을 구현한다.
+
+1. InputView를 통해 경주를 통해 자동차 이름을 받는 기능 구현
+    - ValidationUtils를 통해 0보다 큰 숫자 인지 판단하는 부분 제거
+    - split으로 이름을 분리해 List<String>으로 담는 private 메서드 생성
+    - ValidationUtil 이름 5자 초과를 검증하는 메서드 생성
+    - InputResult List<String> 형태의 carNames 멤버변수 생성
+
+2. Car 클래스 name 멤버 변수 생성
+3. RacingSimulator 클래스에서 우승자를 검증하는 메소드 생성
+4. ResultView에서 실행결과를 출력하는 부분에서 자동차 이름을 출력하는 기능 구현 및 최종 우승자를 출력하는 기능 구현

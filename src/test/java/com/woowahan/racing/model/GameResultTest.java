@@ -15,7 +15,7 @@ class GameResultTest {
 	@Test
 	void of() {
 
-		GameResult result = GameResult.of(Arrays.asList(Car.createCar(), Car.createCar()));
+		GameResult result = GameResult.of(Arrays.asList(Car.createCar("자동차1"), Car.createCar("자동차2")));
 
 		assertThat(result).isInstanceOf(GameResult.class);
 	}
@@ -24,9 +24,9 @@ class GameResultTest {
 	@Test
 	void ofDeepCopy() {
 
-		Car car1 = Car.createCar();
+		Car car1 = Car.createCar("자동차1");
 		car1.move(true);
-		Car car2 = Car.createCar();
+		Car car2 = Car.createCar("자동차2");
 		car2.move(true);
 
 		GameResult gameResult = GameResult.of(Arrays.asList(car1, car2));
