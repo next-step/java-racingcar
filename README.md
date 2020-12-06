@@ -29,7 +29,7 @@
     - [ ] `Car`는 `RandomIntMovementPolicy`의 정책에 맞으면 이동이 가능하다.
 - 자동차 경주를 같이하는 자동차 그룹 `Cars` 구현
     - [ ] 자동차 경주에 참여하는 자동차 대수 만큼 `Car` 초기화한다.
-    - [ ] 자동차 경주에 사용하는 `MovementPolicy`를 적용한다.
+    - [ ] 자동차 경주에 사용하는 `RandomIntMovementPolicy`를 적용한다.
 - 자동차 경주에 필요한 랜덤 생성 유틸 `RandomGenerator` 구현
     - [ ] 0에서 9사이에 랜덤 정수를 반환한다.
 - 자동차 경주의 조건을 정의하는 `RandomIntMovementPolicy` 구현
