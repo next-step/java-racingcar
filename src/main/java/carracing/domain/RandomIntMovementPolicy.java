@@ -24,4 +24,8 @@ public class RandomIntMovementPolicy implements MovementPolicy {
         int randomInt = randomGenerator.generateZeroToNineInt();
         return randomInt >= POLICY_BASE_NUMBER;
     }
+
+    public static int getPolicyBaseNumber() {
+        return POLICY_BASE_NUMBER;
+    }
 }

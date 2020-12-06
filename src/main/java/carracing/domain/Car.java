@@ -4,17 +4,22 @@ package carracing.domain;
  * 자동차 정보를 가지는 자동차 클래스
  */
 class Car {
-    private final CarPosition position;
+    private static final int MOVING_POSITION_NUMBER = 1;
+    private static final int INITIATION_POSITION_NUMBER = 0;
+    private CarPosition position;
 
-    Car(CarPosition position) {
-        validateCar(position);
-        this.position = position;
+    Car() {
+        this.position = new CarPosition(INITIATION_POSITION_NUMBER);
     }
 
-    private void validateCar(CarPosition position) {
-        if (position == null) {
-            throw new IllegalArgumentException("자동차를 구성하는 위치가 입력되어야합니다.");
+    public void move(MovementPolicy movementPolicy) {
+        if (movementPolicy.isMovable()) {
+            movePosition();
         }
+    }
+
+    private void movePosition() {
+        this.position = new CarPosition(position.getNumber() + MOVING_POSITION_NUMBER);
     }
 
     public CarPosition getPosition() {
