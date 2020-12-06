@@ -16,7 +16,8 @@ public class InputReaderTest {
     }
 
     @Test
-    void 입력값이_null이면_IllegalArgumentException() {
+    @DisplayName("입력값이 null이면 IllegalArgumentException")
+    void input_null_test() {
         assertThatThrownBy(()-> {
             reader.separate(null);
         }).isInstanceOf(IllegalArgumentException.class)
@@ -24,7 +25,8 @@ public class InputReaderTest {
     }
 
     @Test
-    void 입력값이_공백이면_IllegalArgumentException() {
+    @DisplayName("입력값이 공백이면 IllegalArgumentException")
+    void input_blank_test() {
         assertThatThrownBy(()-> {
             reader.separate("");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -33,7 +35,7 @@ public class InputReaderTest {
 
     @Test
     @DisplayName("\"2 * 3 / 4 * 3 을 2, *, 3, /, 4, *, 3 으로 분라\"")
-    void 분리히기() {
+    void separate_input_test() {
         String testString = "2 * 3 / 4 * 3";
         String[] results = reader.separate(testString);
         assertThat(results).containsExactly("2","*","3", "/", "4", "*", "3");

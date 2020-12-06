@@ -1,26 +1,30 @@
 package calculator;
 
 public class OperatorReader {
-    public static final String PLUS = "+";
-    public static final String MINUS = "-";
-    public static final String MULTIPLY = "*";
-    public static final String DEVIDE = "/";
+    private static final String PLUS = "+";
+    private static final String MINUS = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
+    private static final PlusOperator plusOperator = new PlusOperator();
+    private static final MinusOperator minusOperator = new MinusOperator();
+    private static final MultiplyOperator multiplyOperator = new MultiplyOperator();
+    private static final DivideOperator divideOperator = new DivideOperator();
 
     public Operator readOperator(String operator) {
         if(PLUS.equals(operator)) {
-            return new PlusOperator();
+            return plusOperator;
         }
 
         if(MINUS.equals(operator)) {
-            return new MinusOperator();
+            return minusOperator;
         }
 
         if(MULTIPLY.equals(operator)) {
-            return new MultiplyOperator();
+            return multiplyOperator;
         }
 
-        if(DEVIDE.equals(operator)) {
-            return new DevideOperator();
+        if(DIVIDE.equals(operator)) {
+            return divideOperator;
         }
         throw new IllegalArgumentException();
     }

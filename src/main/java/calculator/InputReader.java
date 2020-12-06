@@ -1,8 +1,7 @@
 package calculator;
 
 public class InputReader {
-
-    public static final String BLANK = " ";
+    private static final String BLANK = " ";
 
     public String[] separate(String input) {
         if (input == null || input.isEmpty()) {

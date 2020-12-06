@@ -1,18 +1,20 @@
 package calculator;
 
 public class Calculator {
+    private final int OPERATION_UNIT = 2;
+    private final int FIRST = 0;
+
     public Integer calculate(String input) {
         String[] inputValues = separateInput(input);
         OperatorReader operatorReader = new OperatorReader();
-        Integer result = Integer.valueOf(inputValues[0]);
-        int i = 1;
-        while (i <= inputValues.length - 1) {
+        Integer result = Integer.valueOf(inputValues[FIRST]);
+
+        for(int i = 1; i < inputValues.length; i += OPERATION_UNIT) {
             Operator operator = operatorReader.readOperator(inputValues[i]);
-            i ++;
-            Integer second = Integer.valueOf(inputValues[i]);
-            i ++;
-            result = operator.operate(result, second);
+            Integer secondOperand = Integer.valueOf(inputValues[i+1]);
+            result = operator.operate(result, secondOperand);
         }
+
         return result;
     }
 
