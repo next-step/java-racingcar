@@ -10,6 +10,7 @@ import com.woowahan.racing.model.GameResult;
 public class GameReport {
 
 	private static final String DISTANCE_CHAR = "-";
+	private static final String WINNER_DELIMITER = ", ";
 
 	public static String report(List<GameResult> gameResults, List<String> winners) {
 		String result = Message.MSG_REPORT_HEADER;
@@ -26,13 +27,13 @@ public class GameReport {
 	}
 
 	private static String reportWinner(List<String> winners) {
-		return String.format(Message.MSG_WINNER, String.join(", ", winners));
+		return String.format(Message.MSG_WINNER, String.join(WINNER_DELIMITER, winners));
 	}
 
 	private static String reportEachGame(GameResult gameResult) {
 		List<Car> cars = gameResult.getCars();
 		return cars.stream()
-			.map(car -> String.format("%s : %s", car.getName(), reportDistance(car.getDistance())))
+			.map(car -> String.format(Message.MSG_EACH_GAME_RESULT, car.getName(), reportDistance(car.getDistance())))
 			.collect(Collectors.joining(Message.MSG_LINE_BREAK));
 	}
 

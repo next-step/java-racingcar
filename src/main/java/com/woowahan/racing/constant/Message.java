@@ -12,4 +12,5 @@ public class Message {
 	public static final String MSG_LINE_BREAK = "\n";
 	public static final String MSG_LINE_DOUBLE_BREAK = MSG_LINE_BREAK + MSG_LINE_BREAK;
 	public static final String MSG_REPORT_HEADER = "실행 결과:" + MSG_LINE_BREAK;
+	public static final String MSG_EACH_GAME_RESULT = "%s : %s";
 }
