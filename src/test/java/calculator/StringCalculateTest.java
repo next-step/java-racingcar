@@ -1,6 +1,7 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -24,6 +25,13 @@ public class StringCalculateTest {
     @DisplayName("null 또는 empty 입력 값 전달 시 예외")
     public void calculateWithNullAndEmpty(String input) {
         assertThatThrownBy(() -> StringCalculate.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("사칙연산 기호가 아닌 경우 예외")
+    public void calculateWithInvalidOperatorSymbol() {
+        assertThatThrownBy(() -> StringCalculate.calculate("2 @ 1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
