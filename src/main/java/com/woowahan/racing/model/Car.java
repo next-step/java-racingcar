@@ -20,7 +20,7 @@ public class Car {
 		this.distance = distance;
 	}
 
-	public static Car createCar(String name) {
+	public static Car create(String name) {
 		return new Car(name);
 	}
 

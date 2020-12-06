@@ -20,7 +20,7 @@ class CarTest {
 	@BeforeEach
 	void setup() {
 		//초기에 한번 전진한 인스턴스 생성
-		car = Car.createCar(SETUP_CAR_NAME);
+		car = Car.create(SETUP_CAR_NAME);
 		car.move(true);
 	}
 
@@ -78,7 +78,7 @@ class CarTest {
 	void carNameLength(String name) {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				Car.createCar(name);
+				Car.create(name);
 			}).withMessage(Message.MSG_CAR_NAME_LENGTH_ERROR);
 	}
 
