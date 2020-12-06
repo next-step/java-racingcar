@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 자동차 경주를 같이하는 자동차들을 표현한 클래스
  */
-class Cars {
+public class Cars {
     private List<Car> cars;
 
     public Cars(int numberOfCars) {

@@ -3,7 +3,7 @@ package carracing.domain;
 /**
  * 자동차 정보를 가지는 자동차 클래스
  */
-class Car {
+public class Car {
     private static final int MOVING_POSITION_NUMBER = 1;
     private static final int INITIATION_POSITION_NUMBER = 0;
     private CarPosition position;
