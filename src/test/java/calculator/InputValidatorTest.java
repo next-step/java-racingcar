@@ -8,6 +8,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class InputValidatorTest {
@@ -16,9 +19,9 @@ public class InputValidatorTest {
     @DisplayName("알맞는 위치에 숫자인지 확인")
     @CsvSource(value = {"2,true", "+,false"})
     void isNumberFormat(String value, boolean flag) {
-        String regex = "^[0-9]+$";
+        Pattern numeric = Pattern.compile("^[0-9]+$");
 
-        assertThat(value.matches(regex)).isEqualTo(flag);
+        assertThat(numeric.matcher(value).find()).isEqualTo(flag);
     }
 
     @Test
