@@ -7,7 +7,7 @@ import com.woowahan.racing.model.GameResult;
 
 public class ResultView {
 
-	public static final String DISTANCE_CHAR = "-";
+	private static final String DISTANCE_CHAR = "-";
 
 	public static void printResult(List<GameResult> gameResults, List<String> winners) {
 		printResultHeader();
