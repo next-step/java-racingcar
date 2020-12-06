@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class StringCalculator {
 
-    public static final String BLANK = " ";
+    private static final String BLANK = " ";
     public static final String INPUT_ERROR_MESSAGE = "입력에 0 또는 NULL 값을 넣을 수 없습니다.";
 
     public int calculate(String text) {
