@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-
-    public static final String POSITION_BAR = "-";
+    private static final String POSITION_BAR = "-";
+    private static final String COLON = ":";
+    private static final String SPACE = " ";
+    private static final String COMMA = ",";
 
     private OutputView() {
     }
@@ -20,7 +22,9 @@ public class OutputView {
 
     public static void printResult(Cars cars) {
         List<Car> carList = cars.getCars();
-        carList.forEach(car -> System.out.println(car.getName() + ": " + StringUtils.repeat(POSITION_BAR, car.getPosition())));
+        carList.forEach(car ->
+                System.out.println(car.getName() + COLON + SPACE + StringUtils.repeat(POSITION_BAR, car.getPosition()))
+        );
 
         System.out.println();
     }
@@ -32,6 +36,6 @@ public class OutputView {
                 .map(Car::getName)
                 .collect(Collectors.toList());
 
-        System.out.println(StringUtils.join(winnerNames, ", ") + "가 최종 우승했습니다.");
+        System.out.println(StringUtils.join(winnerNames, COMMA + SPACE) + "가 최종 우승했습니다.");
     }
 }

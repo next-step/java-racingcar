@@ -30,18 +30,29 @@ public class Cars {
         cars.forEach(car -> car.move(powerGenerator.generate()));
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .reduce(Math::max)
+                .getAsInt();
 
-    public int size() {
-        return cars.size();
+        return cars.stream()
+                .filter(car -> maxPosition == car.getPosition())
+                .collect(Collectors.toList());
     }
 
     private void validate(String names) {
         if (StringUtils.isBlank(names)) {
             throw new IllegalArgumentException("잘못된 자동차 이름입니다.");
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int size() {
+        return cars.size();
     }
 
     @Override
@@ -55,16 +66,5 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
-    }
-
-    public List<Car> getWinners() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .reduce(Math::max)
-                .getAsInt();
-
-        return cars.stream()
-                .filter(car -> maxPosition == car.getPosition())
-                .collect(Collectors.toList());
     }
 }

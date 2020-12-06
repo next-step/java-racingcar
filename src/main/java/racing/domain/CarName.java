@@ -3,6 +3,7 @@ package racing.domain;
 import org.apache.commons.lang3.StringUtils;
 
 public class CarName {
+    private static final int MAX_LENGTH = 5;
     private final String name;
 
     public CarName(String name) {
@@ -16,7 +17,7 @@ public class CarName {
             return;
         }
 
-        if (name.length() > 5) {
+        if (name.length() > MAX_LENGTH) {
             wrongName();
         }
     }
