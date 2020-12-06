@@ -5,8 +5,8 @@ import java.util.Queue;
 
 public class Calculator {
 
-	private Queue<Number> numbers;
-	private Queue<Operator> operators;
+	private Queue<Number> numbers = new LinkedList<>();
+	private Queue<Operator> operators = new LinkedList<>();
 	private Integer result;
 
 	public int calculate(final String input) {
@@ -41,13 +41,7 @@ public class Calculator {
 		calculate(numbers.poll(), operators.poll());
 	}
 
-	private void init() {
-		numbers = new LinkedList<>();
-		operators = new LinkedList<>();
-	}
-
 	void separate(final String source) {
-		init();
 		final String[] inputs = source.split(OperatorFactory.SPACE);
 		for (String input : inputs) {
 			store(input);
