@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.domain;
 
 public class CarName {
     private static final int NAME_LIMIT = 5;

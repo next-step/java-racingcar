@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.domain;
 
 import java.util.function.Supplier;
 import java.util.stream.Collectors;

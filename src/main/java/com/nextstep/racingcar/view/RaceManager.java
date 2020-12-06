@@ -1,4 +1,9 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.view;
+
+import com.nextstep.racingcar.domain.Car;
+import com.nextstep.racingcar.domain.CarName;
+import com.nextstep.racingcar.domain.Parser;
+import com.nextstep.racingcar.domain.Race;
 
 import java.util.List;
 import java.util.Random;

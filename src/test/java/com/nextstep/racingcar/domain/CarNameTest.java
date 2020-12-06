@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
