@@ -1,34 +1,27 @@
 package calculator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class StringCalculate {
-
-    private static final Pattern CALCULATE_PATTERN = Pattern.compile("([\\D]?)\\s?(\\d)");
 
     private StringCalculate() {}
 
     public static int calculate(String input) {
-        if (input == null || input.isEmpty()) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("input cannot be null or empty");
         }
 
-        Matcher matcher = CALCULATE_PATTERN.matcher(input);
+        return doCalculate(input);
+    }
 
-        int result = 0;
-        while (matcher.find()) {
-            String operator = matcher.group(1);
-            int number = Integer.parseInt(matcher.group(2));
+    private static int doCalculate(String input) {
+        String[] parts = input.split("\\s+");
 
-            if (operator.equals("")) {
-                result = number;
-                continue;
-            }
+        int result = Integer.parseInt(parts[0]);
 
-            char op = operator.charAt(0);
+        for (int i = 1; i < parts.length; i += 2) {
+            char symbol = parts[i].charAt(0);
+            int num = Integer.parseInt(parts[i + 1]);
 
-            result = Operator.calculate(op, result, number);
+            result = Operator.calculate(symbol, result, num);
         }
 
         return result;
