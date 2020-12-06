@@ -7,10 +7,10 @@ import racingCar.view.InputView;
 public class RacingCarMain {
 
   public static void main(String[] args) {
-      int carNum = InputView.inputCarNums();
+      String carNames = InputView.inputCarNames();
       int laps = InputView.inputLaps();
 
-      Racing racing = new Racing(carNum);
+      Racing racing = new Racing(carNames);
 
       System.out.println("실행 결과");
       for(int i = 0; i < laps; i++) {

@@ -7,25 +7,26 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+    private String carName = "louis";
     private Car car;
 
     @BeforeEach
     void setUp() {
-         car = new Car();
+         car = new Car(carName);
     }
 
     @Test
     @DisplayName("자동차 전진 test")
     void goCar() {
         car.racing(4, new RandomMoveStrategy());
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition().getPosition()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("자동차 멈춤 test")
     void stopCar() {
         car.racing(2, new RandomMoveStrategy());
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition().getPosition()).isEqualTo(0);
     }
 
     @Test
@@ -34,7 +35,7 @@ public class CarTest {
         car.racing(4, new RandomMoveStrategy());
         car.racing(2, new RandomMoveStrategy());
         car.racing(7, new RandomMoveStrategy());
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition().getPosition()).isEqualTo(2);
     }
 
     @Test
@@ -44,5 +45,11 @@ public class CarTest {
         car.racing(2, new RandomMoveStrategy());
         car.racing(7, new RandomMoveStrategy());
         assertThat(car.toString()).isEqualTo("--");
+    }
+
+    @Test
+    @DisplayName("자동차 이름 Test")
+    void carName() {
+        assertThat(car.getName()).isEqualTo("louis");
     }
 }
