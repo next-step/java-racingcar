@@ -25,6 +25,8 @@
     - [ ] `CarPosition`는 0또는 양의 정수를 가진다.
 - 자동차 경주를 구성하는 기본 단위인 `Car` 구현
     - [ ] `Car`는 위치 정보인 `CarPosition`를 가진다.
+    - [ ] `Car`는 생성시 초기값으로 `CarPosition`의 숫자 0을 가진다.
+    - [ ] `Car`는 `RandomIntMovementPolicy`의 정책에 맞으면 이동이 가능하다.
 - 자동차 경주를 같이하는 자동차 그룹 `Cars` 구현
     - [ ] 자동차 경주에 참여하는 자동차 대수 만큼 `Car` 초기화한다.
     - [ ] 자동차 경주에 사용하는 `MovementPolicy`를 적용한다.
