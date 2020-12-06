@@ -23,5 +23,8 @@
 ##### Cars
 * 모든 자동차(Car)들 이동
 
+##### GameResult
+* 한 게임 끝나고 결과(모든 자동차 위치) 저장
+
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
