@@ -17,11 +17,11 @@ public class RacingCars {
                 .forEach(index -> racingCars.add(new RacingCar(CAR_INIT_POSITION)));
     }
 
-    public RacingCars(List<RacingCar> racingCars) {
+    public RacingCars(final List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
 
-    public RacingCars move(MoveBehavior moveBehavior) {
+    public RacingCars move(final MoveBehavior moveBehavior) {
         List<RacingCar> moveRacingCars = racingCars.stream()
                 .map(car -> car.move(moveBehavior.isMove()))
                 .collect(Collectors.toList());
