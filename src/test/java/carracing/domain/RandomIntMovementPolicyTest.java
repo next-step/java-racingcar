@@ -1,5 +1,6 @@
 package carracing.domain;
 
+import carracing.util.RandomGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

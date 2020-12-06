@@ -1,5 +1,8 @@
 package carracing.domain;
 
+
+import carracing.util.RandomGenerator;
+
 /**
  * 랜덤 값이 기준값에 따라 전진이 가능한 정책을 정의한 클래스
  */

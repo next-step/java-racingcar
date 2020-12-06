@@ -1,8 +1,8 @@
-package carracing.domain;
+package carracing.util;
 
 import java.util.Random;
 
-class RandomGenerator {
+public class RandomGenerator {
     private static final int RANDOM_BOUND_NUMBER = 10;
 
     private final Random random = new Random();
