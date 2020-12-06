@@ -12,9 +12,9 @@ public class CarReportTest {
     @DisplayName("자동차 보고서는 자동차 인덱스와 위치정보로 구성된다.")
     @ParameterizedTest
     @CsvSource({"1,4", "2,3"})
-    void create(int index, int location) {
+    void create(String name, int location) {
         // when
-        CarReport carReport = CarReport.of(index, location);
+        CarReport carReport = CarReport.of(name, location);
 
         // then
         assertThat(carReport).isNotNull();

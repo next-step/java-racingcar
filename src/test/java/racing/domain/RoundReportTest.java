@@ -16,9 +16,9 @@ public class RoundReportTest {
     @BeforeEach
     void setUp() {
         roundReport = RoundReport.of(Arrays.asList(
-                CarReport.of(1, 10),
-                CarReport.of(2, 5),
-                CarReport.of(3, 2)
+                CarReport.of("1", 10),
+                CarReport.of("2", 5),
+                CarReport.of("3", 2)
         ));
     }
 

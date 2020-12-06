@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-트
-@DisplayName("자동차 이름(CarName) 테스")
+
+@DisplayName("자동차 이름(CarName) 테스트")
 public class CarNameTest {
 
     @DisplayName("5자 이내의 이름을 허용한다.")

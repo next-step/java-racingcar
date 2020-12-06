@@ -16,9 +16,9 @@ public class GameReportTest {
     @BeforeEach
     void setUp() {
         gameReport = GameReport.of(Arrays.asList(
-                RoundReport.of(Arrays.asList(CarReport.of(1, 3))),
-                RoundReport.of(Arrays.asList(CarReport.of(1, 3))),
-                RoundReport.of(Arrays.asList(CarReport.of(1, 3)))
+                RoundReport.of(Arrays.asList(CarReport.of("1", 3))),
+                RoundReport.of(Arrays.asList(CarReport.of("1", 3))),
+                RoundReport.of(Arrays.asList(CarReport.of("1", 3)))
         ));
     }
 

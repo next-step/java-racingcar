@@ -15,7 +15,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = Car.of(1);
+        car = Car.of("1");
     }
 
     @DisplayName("자동차 인덱스(CarIndex)로 자동차를 만들 수 있다.")
@@ -33,13 +33,13 @@ public class CarTest {
     })
     void move(boolean isMove, int location, int expected) {
         // when
-        int index = 2;
-        Car car = Car.of(index, location);
+        String name = "2";
+        Car car = Car.of(name, location);
         Moveable moveable = () -> isMove;
         Car forward = car.forward(moveable);
 
         // then
-        assertThat(forward).isEqualTo(Car.of(index, expected));
+        assertThat(forward).isEqualTo(Car.of(name, expected));
     }
 
     @DisplayName("자동차 보고서(CarReport)를 만들 수 있다.")

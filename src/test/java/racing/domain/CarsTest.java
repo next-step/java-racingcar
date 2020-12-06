@@ -16,10 +16,10 @@ public class CarsTest {
     @BeforeEach
     void setUp() {
         cars = Cars.of(Arrays.asList(
-                Car.of(1, 1),
-                Car.of(2, 2),
-                Car.of(3, 3),
-                Car.of(4, 4)
+                Car.of("1", 1),
+                Car.of("2", 2),
+                Car.of("3", 3),
+                Car.of("4", 4)
         ));
     }
 
@@ -41,10 +41,10 @@ public class CarsTest {
 
         // then
         assertThat(forward).isEqualTo(Cars.of(Arrays.asList(
-                Car.of(1, 2),
-                Car.of(2, 3),
-                Car.of(3, 4),
-                Car.of(4, 5))));
+                Car.of("1", 2),
+                Car.of("2", 3),
+                Car.of("3", 4),
+                Car.of("4", 5))));
     }
 
     @DisplayName("판 보고서(RoundReport)를 만들 수 있다.")
