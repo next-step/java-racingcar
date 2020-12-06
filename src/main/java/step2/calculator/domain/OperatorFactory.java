@@ -9,7 +9,7 @@ public enum OperatorFactory {
 	MULTIPLICATION(new MultiplicationOperator()),
 	DIVISION(new DivisionOperator());
 
-	public final static String SPACE = " ";
+	public final static String INPUT_DELIMITER = " ";
 	private final Operator operator;
 
 	OperatorFactory(final Operator operator) {

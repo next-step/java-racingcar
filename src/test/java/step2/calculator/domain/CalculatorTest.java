@@ -13,7 +13,7 @@ public class CalculatorTest {
 	@Test
 	void given_input_with_plus_when_factory_of_then_return_addition_operator() {
 		String input = "2 + 3";
-		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.SPACE)[1]);
+		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.INPUT_DELIMITER)[1]);
 		assertThat(operator).isInstanceOf(AdditionOperator.class);
 	}
 
@@ -21,7 +21,7 @@ public class CalculatorTest {
 	@Test
 	void given_input_with_minus_sign_when_factory_of_then_return_subtraction_operator() {
 		String input = "2 - 3";
-		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.SPACE)[1]);
+		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.INPUT_DELIMITER)[1]);
 		assertThat(operator).isInstanceOf(SubtractionOperator.class);
 	}
 
@@ -29,7 +29,7 @@ public class CalculatorTest {
 	@Test
 	void given_input_with_asterisk_sign_when_factory_of_then_return_multiplication_operator() {
 		String input = "2 * 3";
-		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.SPACE)[1]);
+		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.INPUT_DELIMITER)[1]);
 		assertThat(operator).isInstanceOf(MultiplicationOperator.class);
 	}
 
@@ -37,7 +37,7 @@ public class CalculatorTest {
 	@Test
 	void given_input_with_slash_sign_when_factory_of_then_return_multiplication_operator() {
 		String input = "2 / 3";
-		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.SPACE)[1]);
+		Operator operator = OperatorFactory.findOperator(input.split(OperatorFactory.INPUT_DELIMITER)[1]);
 		assertThat(operator).isInstanceOf(DivisionOperator.class);
 	}
 

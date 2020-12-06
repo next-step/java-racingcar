@@ -42,7 +42,7 @@ public class Calculator {
 	}
 
 	void separate(final String source) {
-		final String[] inputs = source.split(OperatorFactory.SPACE);
+		final String[] inputs = source.split(OperatorFactory.INPUT_DELIMITER);
 		for (String input : inputs) {
 			store(input);
 		}
