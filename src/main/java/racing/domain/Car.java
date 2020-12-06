@@ -8,11 +8,6 @@ public class Car {
     private CarName carName;
     private int position;
 
-    @Deprecated
-    public Car() {
-        this.position = 0;
-    }
-
     public Car(CarName name) {
         this.carName = name;
         this.position = 0;
@@ -33,6 +28,10 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public String getName() {
+        return carName.getName();
     }
 
     @Override

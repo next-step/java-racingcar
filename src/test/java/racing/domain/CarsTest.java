@@ -2,10 +2,13 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarsTest {
@@ -38,5 +41,23 @@ public class CarsTest {
         List<Car> expectedCarList = Arrays.asList(new Car(a, 2), new Car(b, 5));
         Cars expected = new Cars(expectedCarList, new FixedPowerGenerator());
         assertEquals(expected, cars);
+    }
+
+    @DisplayName("우승자 찾기")
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3,1", "1,2,2,2", "5,5,5,3"})
+    void getWinners(int p1, int p2, int p3, int expected) {
+        //given
+        CarName a = new CarName("a");
+        CarName b = new CarName("b");
+        CarName c = new CarName("c");
+        List<Car> carList = Arrays.asList(new Car(a, p1), new Car(b, p2), new Car(c, p3));
+        Cars cars = new Cars(carList, new FixedPowerGenerator());
+
+        //when
+        List<Car> winners = cars.getWinners();
+
+        //then
+        assertEquals(expected, winners.size());
     }
 }

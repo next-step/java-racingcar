@@ -25,6 +25,8 @@ public class RacingGame {
             cars.move();
             OutputView.printResult(this.cars);
         }
+
+        OutputView.printWinners(this.cars);
     }
 
     @Override

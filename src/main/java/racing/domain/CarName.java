@@ -24,4 +24,8 @@ public class CarName {
     private void wrongName() {
         throw new IllegalArgumentException("잘못된 이름입니다.");
     }
+
+    public String getName() {
+        return name;
+    }
 }

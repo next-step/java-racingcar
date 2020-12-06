@@ -56,4 +56,15 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .reduce(Math::max)
+                .getAsInt();
+
+        return cars.stream()
+                .filter(car -> maxPosition == car.getPosition())
+                .collect(Collectors.toList());
+    }
 }
