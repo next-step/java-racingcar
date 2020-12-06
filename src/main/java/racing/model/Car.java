@@ -1,16 +1,19 @@
 package racing.model;
 
-public class Car {
+public class Car implements Forwardable {
 
-	private static final int FORWARD_CRITERIA = 4;
 
 	private static final int MAX_NAME_CHARACTER_LENGTH = 5;
+
+	private static final int FORWARD_CRITERIA = 4;
 
 	private String name;
 
 	private int forwardPosition;
 
 	private int racingRecord;
+
+
 
 	public Car() {
 	}
@@ -40,14 +43,15 @@ public class Car {
 		return racingRecord;
 	}
 
-	public boolean isForward(int randomCount) {
-		return randomCount >= FORWARD_CRITERIA;
-	}
-
-	public void speedUp(int randomCount) {
-		if (this.isForward(randomCount)) {
+	@Override
+	public void speedUp(int randomNumber) {
+		if (isForward(randomNumber)) {
 			this.forwardPosition += 1;
 		}
 		this.racingRecord += 1;
+	}
+
+	private boolean isForward(int randomNumber) {
+		return randomNumber >= FORWARD_CRITERIA;
 	}
 }

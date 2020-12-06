@@ -10,11 +10,11 @@ public class RacingGame {
 
 	private static final int MAX_RANDOM_BOUND = 10;
 
-	Random random = new Random();
-
 	ResultView resultView = new ResultView();
 
 	Scanner scanner = new Scanner(System.in);
+
+	Random random = new Random();
 
 	public void start() {
 		InputView inputView = initInputView();
@@ -41,13 +41,16 @@ public class RacingGame {
 		}
 	}
 
-	//todo 전략패턴
 	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
 	public void speedUpForPlayCount(List<Car> cars) {
 		for (Car car : cars) {
-			car.speedUp(random.nextInt(MAX_RANDOM_BOUND));
+			car.speedUp(go());
 			resultView.print(car.getName(), car.getForwardPosition());
 		}
+	}
+
+	private int go(){
+		return random.nextInt(MAX_RANDOM_BOUND);
 	}
 
 	public List<Car> prepareInitRacingCar(String inputName) {

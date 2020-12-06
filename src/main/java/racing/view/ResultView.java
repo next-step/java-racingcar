@@ -4,11 +4,13 @@ public class ResultView {
 
 	StringBuilder stringBuilder = new StringBuilder();
 
-	public void print(String carName, int forwardRecult) {
+	private static final String FORWARD_MARKER = "-";
+
+	public void print(String carName, int forwardResult) {
 		stringBuilder.setLength(0);
 		stringBuilder.append(carName).append(" : ");
-		for (int i = 0; i < forwardRecult; i++) {
-			stringBuilder.append("-");
+		for (int i = 0; i < forwardResult; i++) {
+			stringBuilder.append(FORWARD_MARKER);
 		}
 		System.out.println(stringBuilder.toString());
 	}
