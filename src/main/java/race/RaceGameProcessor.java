@@ -2,26 +2,26 @@ package race;
 
 import java.util.stream.IntStream;
 
-public class GameProcessor {
+public class RaceGameProcessor {
 	public static final int START_INCLUSIVE = 0;
-	private final GameSubject gameSubject;
+	private final RaceGame gameSubject;
 	private final int numberOfTryTimes;
 
-	public GameProcessor(int numberOfCar, int numberOfTryTimes) {
+	public RaceGameProcessor(int numberOfCar, int numberOfTryTimes) {
 		this.gameSubject = new RaceGame(numberOfCar);
 		this.numberOfTryTimes = numberOfTryTimes;
 	}
 
-	public GameProcessor(int numberOfCar, int numberOfTryTimes, MovePolicy movePolicy) {
+	public RaceGameProcessor(int numberOfCar, int numberOfTryTimes, MovePolicy movePolicy) {
 		this.gameSubject = new RaceGame(numberOfCar, movePolicy);
 		this.numberOfTryTimes = numberOfTryTimes;
 	}
 
-	public static GameProcessor ofInputView(InputView inputView, MovePolicy movePolicy) {
-		return new GameProcessor(inputView.numberOfCar, inputView.numberOfTryTimes, movePolicy);
+	public static RaceGameProcessor ofInputView(InputView inputView, MovePolicy movePolicy) {
+		return new RaceGameProcessor(inputView.numberOfCar, inputView.numberOfTryTimes, movePolicy);
 	}
 
-	public GameSubject getGameSubject() {
+	public RaceGame getGameSubject() {
 		return gameSubject;
 	}
 

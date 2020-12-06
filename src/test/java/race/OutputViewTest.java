@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RaceGameTest {
+class OutputViewTest {
 
-	GameProcessor gameProcessor;
+	RaceGameProcessor gameProcessor;
 	OutputView outputView;
 
 	@BeforeEach
 	void setUp() {
-		gameProcessor = new GameProcessor(5, 5, new SimpleMovePolicy());
+		gameProcessor = new RaceGameProcessor(5, 5, new SimpleMovePolicy());
 		outputView = new OutputView(gameProcessor.getGameSubject());
 	}
 
@@ -27,6 +27,5 @@ class RaceGameTest {
 			"-----\n" +
 			"-----";
 		assertThat(outputView.getGameResultMessage()).isEqualTo(expected);
-
 	}
 }

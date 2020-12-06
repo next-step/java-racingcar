@@ -1,8 +1,11 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RaceGame implements GameSubject {
 	private static final String MOVE_SEPARATOR = "-";
-	private GameObserver gameObserver;
+	private final List<GameObserver> gameObserver = new ArrayList<>();
 	private final CarGroup raceCarGroup;
 
 	public RaceGame(int carAmount) {
@@ -15,24 +18,26 @@ public class RaceGame implements GameSubject {
 
 	@Override
 	public void registerObserver(GameObserver gameObserver) {
-		this.gameObserver = gameObserver;
+		this.gameObserver.add(gameObserver);
 	}
 
 	@Override
 	public void notifyObserver() {
-		this.run();
+		this.notifyObserveRun();
 	}
 
-	private void sendMessageToObserver() {
-		this.gameObserver.update(createGameResultMessage());
-	}
-
-	private void run() {
+	private void notifyObserveRun() {
 		this.raceCarGroup.moveAll();
 		sendMessageToObserver();
 	}
 
-	private String createGameResultMessage() {
+	private void sendMessageToObserver() {
+		for (GameObserver observer : gameObserver) {
+			observer.update(createGameResultMessage());
+		}
+	}
+
+	public String createGameResultMessage() {
 		return new GameResultMessage(MOVE_SEPARATOR).parser(this.raceCarGroup.nowCarStatus());
 	}
 }
