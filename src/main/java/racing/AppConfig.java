@@ -13,11 +13,7 @@ public class AppConfig {
     }
 
     public RacingService racingService() {
-        return new RacingService(racingGame());
-    }
-
-    public RacingGame racingGame() {
-        return new RacingGame(moveable());
+        return new RacingService(moveable());
     }
 
     public Moveable moveable() {
