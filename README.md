@@ -163,7 +163,10 @@ public class SetTest {
     
 - `자동차 공장(CarFactory)`
     - 요구사항에 맞춰 자동차를 만드는 역할을 합니다.
-    - [X] `자동차들(Cars)` 을 만들 수 있다. 
+    - [X] `자동차들(Cars)` 을 만들 수 있다.
+     
+- `넥스트스탭 자동차 공장(NextStepCarFactory)`
+    - [X] ',' 구분자로 자동차를 만들 수 있습니다.
 
 
 ## Step4 자동차 경주(우승자)
