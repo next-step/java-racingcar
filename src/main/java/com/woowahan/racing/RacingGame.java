@@ -6,6 +6,7 @@ import com.woowahan.racing.model.Cars;
 import com.woowahan.racing.model.GameResult;
 import com.woowahan.racing.model.InputResult;
 import com.woowahan.racing.model.RacingSimulator;
+import com.woowahan.racing.view.GameReport;
 import com.woowahan.racing.view.InputView;
 import com.woowahan.racing.view.ResultView;
 
@@ -18,6 +19,7 @@ public class RacingGame {
 		List<GameResult> gameResults = racingSimulator.run();
 		Cars partCars = racingSimulator.getPartCars();
 		List<String> winners = partCars.getWinners();
-		ResultView.printResult(gameResults, winners);
+		String report = GameReport.report(gameResults, winners);
+		ResultView.printResult(report);
 	}
 }
