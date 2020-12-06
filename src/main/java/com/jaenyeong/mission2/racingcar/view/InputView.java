@@ -32,6 +32,7 @@ public class InputView implements Input {
             return scanner.nextInt();
         } catch (Exception e) {
             printErrorMessage();
+            scanner.next();
             return CAN_NOT_READ;
         }
     }
