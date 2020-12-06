@@ -54,29 +54,32 @@
 
 ### 구현한 클래스 설명
 + domain
+    + Judge : 우승 판단 인터페이스 
+        + LongPositionJudge : 우승 판단 구현 클래스 (가장 멀리간 자동차 우승)
     + MovingStrategy : 전진 전략 인터페이스 
         + RandomMovingStrategy : 전진 전략 구현 클래스 (랜덤)
            + 랜덤 숫자를 만들고 4이상이면 isMove() -> True
            + 랜덤 숫자를 만들고 4미만이면 isMove() -> False
     + RandomGenerator : 0~9까지 Random 숫자를 뽑아준다
     + Car : 자동차 클래스 
-        + 이동한다
+        + 이름을 가진다 
         + 현재 위치를 가진다
+        + 전진한다
+        + 이름이 5글자 이상이면 IllegalArgumentException() 발생
     + Cars : 자동차 클래스의 묶음 (일급컬렉션)
         + 자동차 개수만큼 가진다
         + 모든 자동차를 전진 전략에 따라 이동시킨다
+        + 우승 판단에 따라 우승한 자동차들을 리턴한다
 
 + view
     + InputView : 뷰 메시지 입력/출력 담당자
-        + 자동차의 대수를 물어본다
+        + 경주할 자동차 이름들을 물어본다
         + 시도할 회수를 물어본다
     + OutputView
         + 실행 결과를 보여준다 
         + 자동차의 움직임을 보여준다
+        + 최종 우승한 자동차들을 보여준다
     + CarController : 입력을 받아서 출력을 해준다
-
-
-
 
 
 ## 온라인 코드 리뷰 과정
