@@ -8,17 +8,13 @@ import java.util.List;
 import java.util.Map;
 
 public class RacingCarGame {
-    private final List<String> carNames;
-    private final int gameCount;
     private final Map<Integer, GameResult> gameResults;
 
-    public RacingCarGame(final List<String> carNames, final int gameCount) {
-        this.carNames = carNames;
-        this.gameCount = gameCount;
+    public RacingCarGame() {
         this.gameResults = new HashMap<>();
     }
 
-    public void gameStart() {
+    public void gameStart(final List<String> carNames, final int gameCount) {
         RacingCars racingCars = RacingCars.of(carNames);
         for (int index = 1; index <= gameCount; index++) {
             racingCars = racingCars.move(new RandomMove());

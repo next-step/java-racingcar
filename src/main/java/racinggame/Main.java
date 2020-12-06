@@ -5,14 +5,11 @@ import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> carNames = InputView.carNames();
-        int gameCount = InputView.gameCount();
-        RacingCarGame racingCarGame = new RacingCarGame(carNames, gameCount);
-        racingCarGame.gameStart();
+        RacingCarGame racingCarGame = new RacingCarGame();
+        racingCarGame.gameStart(InputView.carNames(), InputView.gameCount());
         OutputView.print(new ArrayList<>(racingCarGame.getGameResults().values()));
     }
 }
