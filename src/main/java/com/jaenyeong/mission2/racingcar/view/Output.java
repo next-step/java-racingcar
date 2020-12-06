@@ -16,5 +16,5 @@ public interface Output {
 
     void printExecutionResult();
 
-    void printRacingResult(RacingHistoryDto cars);
+    void printAllRacingHistoriesResult(RacingHistoryDto cars);
 }
