@@ -10,7 +10,7 @@ public class RacingCar {
 
     private final int moveCount;    // 이동횟수
     private int advancedCount;      // 전진횟수
-    private CarName carName;
+    private CarName carName;        // 자동차 이름
 
     // 전진 조건 숫자
     private final static int ADVANCED_CONDITION_NUMBER = 4;
@@ -53,6 +53,14 @@ public class RacingCar {
         }
     }
 
+    /**
+     * 자동차 이름 존재 여부
+     * @return 존재하면 true, 존재하지 않으면 null
+     */
+    public boolean isExistName() {
+        return this.carName != null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,7 +81,4 @@ public class RacingCar {
         return result;
     }
 
-    public boolean isExistName() {
-        return this.carName != null;
-    }
 }

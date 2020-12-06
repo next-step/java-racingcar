@@ -3,7 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ResultViewTest {
@@ -14,6 +14,31 @@ public class ResultViewTest {
         RacingGame racingGame = new RacingGame(3, 5);
         ResultView resultView = new ResultView(racingGame);
         resultView.print();
+    }
+
+    @Test
+    @DisplayName("자동차 이름과 상태를 출력")
+    void printCarRacing() {
+        List<CarName> carNames = Arrays.asList(
+                new CarName("pobi"),
+                new CarName("crong"),
+                new CarName("honux"));
+        RacingGame racingGame = new RacingGame(carNames, 5);
+        ResultView resultView = new ResultView(racingGame);
+        resultView.print();
+    }
+
+    @Test
+    @DisplayName("우승자 출력")
+    void printWinners() {
+        List<CarName> carNames = Arrays.asList(
+                new CarName("pobi"),
+                new CarName("crong"),
+                new CarName("honux"));
+        RacingGame racingGame = new RacingGame(carNames, 5);
+        racingGame.pickWinner();
+        ResultView resultView = new ResultView(racingGame);
+        resultView.printWinners();
     }
 
 }

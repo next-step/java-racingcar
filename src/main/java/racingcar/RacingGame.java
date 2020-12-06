@@ -11,7 +11,8 @@ public class RacingGame {
     private final int carCount;     // 자동차 수
     private final int moveCount;    // 이동횟수
     private final Map<Integer, List<RacingCar>> racingCarMap = new HashMap<>();     // 경주용 자동차 맵
-    private List<CarName> carNames;    // 자동차 이름 목록
+    private List<CarName> carNames = new ArrayList<>();     // 자동차 이름 목록
+    private List<RacingCar> winners = new ArrayList<>();    // 우승 자동차 목록
 
     public RacingGame(int carCount, int moveCount) {
         this.carCount = carCount;
@@ -32,6 +33,10 @@ public class RacingGame {
 
     public Map<Integer, List<RacingCar>> getRacingCarMap() {
         return racingCarMap;
+    }
+
+    public List<RacingCar> getWinners() {
+        return winners;
     }
 
     /**
@@ -64,15 +69,14 @@ public class RacingGame {
 
     /**
      * 위치를 통한 우승자 선정
-     * @return 우승자 목록
      */
-    public List<RacingCar> pickWinner() {
+    public void pickWinner() {
         List<RacingCar> candidates = new ArrayList<>();
         for (Integer key : racingCarMap.keySet()) {
             List<RacingCar> racingCarList = racingCarMap.get(key);
             candidates.addAll(getMaxByAdvancedCount(racingCarList));
         }
-        return getMaxByAdvancedCount(candidates).stream()
+        this.winners = getMaxByAdvancedCount(candidates).stream()
                 .distinct()
                 .collect(Collectors.toList());
     }

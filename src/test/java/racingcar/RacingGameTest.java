@@ -63,15 +63,9 @@ public class RacingGameTest {
         int moveCount = inputView.getMoveCount();
 
         RacingGame racingGame = new RacingGame(carNames, moveCount);
-        List<RacingCar> winners = racingGame.pickWinner();
+        racingGame.pickWinner();
         ResultView resultView = new ResultView(racingGame);
         resultView.print();
-
-        winners.forEach(car ->
-                System.out.printf("name : %s, advanced : %d%n",
-                        car.getCarName().getName(),
-                        car.getAdvancedCount())
-        );
 
     }
 }
