@@ -1,6 +1,7 @@
 package com.nextstep.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,16 +15,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
     private final List<CarName> carNames = Arrays.asList(new CarName("test1"), new CarName("test2"), new CarName("test3"));
+    private final String SEPARATOR = System.lineSeparator();
+
+    @DisplayName("position의 변화 로그를 가져오는지 테스트")
+    @Test
+    public void getPositionLog() {
+        String expected = "test1 : -" + SEPARATOR + "test2 : -" + SEPARATOR + "test3 : " + SEPARATOR + SEPARATOR;
+        Race race = new Race(carNames, 1, new SpecificGenerator(5,5,1));
+        race.run();
+        assertThat(race.getPositionLog()).isEqualTo(expected);
+    }
 
     @DisplayName("우승 한 car의 이름들을 가져오는지 확인")
     @ParameterizedTest
     @MethodSource
     public void getWinnerNames(Supplier<Integer> numberGenerator, int moveCount, String expected) {
-        Race race = new Race(carNames, numberGenerator);
-
-        for (int ix = 0 ; ix < moveCount ; ix ++) {
-            race.moveAndGet();
-        }
+        Race race = new Race(carNames, moveCount, numberGenerator);
+        race.run();
         assertThat(race.getWinnerNames()).isEqualTo(expected);
     }
 

@@ -7,19 +7,45 @@ import java.util.stream.Collectors;
 
 public class Race {
     private static final String DELIMITER = ",";
-    private List<Car> cars = new ArrayList<>();
+    private static final String SEPARATOR = System.lineSeparator();
+    private static final String EMPTY = "";
 
-    public Race(List<CarName> carNames, Supplier<Integer> numberGenerator) {
+    private int moveCount;
+    private List<Car> cars = new ArrayList<>();
+    private StringBuilder stringBuilder = new StringBuilder();
+
+    public Race(List<CarName> carNames, int moveCount, Supplier<Integer> numberGenerator) {
+        this.moveCount = moveCount;
         for (CarName carName : carNames) {
             cars.add(new Car(carName, numberGenerator));
         }
     }
 
-    public List<Car> moveAndGet() {
+    public void run() {
+        for (int ix = 0 ; ix < moveCount ; ix ++) {
+            move();
+        }
+    }
+
+    private void move() {
         for (Car car : cars) {
             car.tryMove();
+            addLog(car.toDetailString());
         }
-        return cars;
+        addLog();
+    }
+
+    private void addLog() {
+        addLog(EMPTY);
+    }
+
+    private void addLog(String message) {
+        stringBuilder.append(message)
+                .append(SEPARATOR);
+    }
+
+    public String getPositionLog() {
+        return stringBuilder.toString();
     }
 
     public String getWinnerNames() {

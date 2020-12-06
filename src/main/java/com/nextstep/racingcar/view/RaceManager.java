@@ -1,6 +1,5 @@
 package com.nextstep.racingcar.view;
 
-import com.nextstep.racingcar.domain.Car;
 import com.nextstep.racingcar.domain.CarName;
 import com.nextstep.racingcar.domain.Parser;
 import com.nextstep.racingcar.domain.Race;
@@ -21,13 +20,10 @@ public class RaceManager {
 
     public void run() {
         Race race = createRace();
-        int moveCount = inputMoveLimit();
 
         printResultHeader();
-        for (int i = 0; i < moveCount; i ++) {
-            List<Car> cars = race.moveAndGet();
-            printPosition(cars);
-        }
+        race.run();
+        System.out.print(race.getPositionLog());
         printWinner(race.getWinnerNames());
     }
 
@@ -40,16 +36,11 @@ public class RaceManager {
         System.out.println("실행 결과");
     }
 
-    private void printPosition(List<Car> carList) {
-        for (Car car : carList) {
-            System.out.println(car.toDetailString());
-        }
-        System.out.println();
-    }
-
     private Race createRace() {
         List<CarName> carNames = inputCarNames();
-        return new Race(carNames, this::getRandomValue);
+        int moveCount = inputMoveLimit();
+
+        return new Race(carNames, moveCount, this::getRandomValue);
     }
 
     private List<CarName> inputCarNames() {
