@@ -3,9 +3,7 @@ package step4.domain;
 import step4.domain.judge.Judge;
 import step4.domain.strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
 
