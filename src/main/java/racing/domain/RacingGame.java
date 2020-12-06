@@ -5,12 +5,12 @@ import racing.view.OutputView;
 import java.util.Objects;
 
 public class RacingGame {
-    private int repeatCount;
+    private final int repeatCount;
     private Cars cars;
 
-    public RacingGame(int carCount, int repeatCount, PowerGenerator powerGenerator) {
+    public RacingGame(String carNames, int repeatCount, PowerGenerator powerGenerator) {
         this.repeatCount = repeatCount;
-        this.cars = new Cars(carCount, powerGenerator);
+        this.cars = new Cars(carNames, powerGenerator);
     }
 
     RacingGame(Cars cars, int repeatCount) {
@@ -25,6 +25,8 @@ public class RacingGame {
             cars.move();
             OutputView.printResult(this.cars);
         }
+
+        OutputView.printWinners(this.cars);
     }
 
     @Override

@@ -1,17 +1,21 @@
 package racing.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
-    private PowerGenerator powerGenerator;
-    private List<Car> cars;
+    private static final String COMMA = ",";
+    private final PowerGenerator powerGenerator;
+    private final List<Car> cars;
 
-    public Cars(int carCount, PowerGenerator powerGenerator) {
-        this.cars = Stream.generate(Car::new)
-                .limit(carCount)
+    public Cars(String carNames, PowerGenerator powerGenerator) {
+        validate(carNames);
+        this.cars = Stream.of(carNames.split(COMMA))
+                .map(name -> new Car(new CarName(name)))
                 .collect(Collectors.toList());
 
         this.powerGenerator = powerGenerator;
@@ -26,8 +30,29 @@ public class Cars {
         cars.forEach(car -> car.move(powerGenerator.generate()));
     }
 
+    public List<Car> getWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .reduce(Math::max)
+                .getAsInt();
+
+        return cars.stream()
+                .filter(car -> maxPosition == car.getPosition())
+                .collect(Collectors.toList());
+    }
+
+    private void validate(String names) {
+        if (StringUtils.isBlank(names)) {
+            throw new IllegalArgumentException("잘못된 자동차 이름입니다.");
+        }
+    }
+
     public List<Car> getCars() {
         return cars;
+    }
+
+    public int size() {
+        return cars.size();
     }
 
     @Override

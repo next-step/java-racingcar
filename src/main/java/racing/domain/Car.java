@@ -3,23 +3,35 @@ package racing.domain;
 import java.util.Objects;
 
 public class Car {
-    public static final int LOW_POWER = 3;
-    public static final int MOVE_POSITION = 1;
+    private static final int LOW_POWER = 3;
+    private static final int MOVE_POSITION = 1;
+    private CarName carName;
     private int position;
 
-    public Car() {
+    public Car(CarName name) {
+        this.carName = name;
+        this.position = 0;
     }
 
-    Car(int position) {
+    Car(CarName name, int position) {
+        this.carName = name;
         this.position = position;
     }
 
     public void move(int power) {
-        this.position = power > LOW_POWER ? this.position + MOVE_POSITION : this.position;
+        this.position = isPowerEnough(power) ? this.position + MOVE_POSITION : this.position;
+    }
+
+    private boolean isPowerEnough(int power) {
+        return power > LOW_POWER;
     }
 
     public int getPosition() {
         return this.position;
+    }
+
+    public String getName() {
+        return carName.getName();
     }
 
     @Override

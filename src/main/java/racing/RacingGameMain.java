@@ -6,10 +6,10 @@ import racing.view.InputView;
 
 public class RacingGameMain {
     public static void main(String[] args) {
-        int carCount = InputView.carCount();
+        String carNames = InputView.carNames();
         int repeatCount = InputView.repeatCount();
 
-        RacingGame racingGame = new RacingGame(carCount, repeatCount, new RandomPowerGenerator());
+        RacingGame racingGame = new RacingGame(carNames, repeatCount, new RandomPowerGenerator());
         racingGame.start();
     }
 }
