@@ -7,11 +7,11 @@ public class CalculateNumber {
     private int number;
 
     public CalculateNumber(String number) {
-        validCaculateNumber(number);
+        validEmpty(number);
         this.number = parseNumber(number);
     }
 
-    private void validCaculateNumber(String number) {
+    private void validEmpty(String number) {
         if (number == null || number.isEmpty()) {
             throw new IllegalArgumentException(VALID_EMPTY_NUMBER_MESSAGE);
         }
