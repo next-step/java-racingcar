@@ -8,9 +8,9 @@ public class RacingGame {
     private final int repeatCount;
     private Cars cars;
 
-    public RacingGame(int carCount, int repeatCount, PowerGenerator powerGenerator) {
+    public RacingGame(String carNames, int repeatCount, PowerGenerator powerGenerator) {
         this.repeatCount = repeatCount;
-        this.cars = new Cars(carCount, powerGenerator);
+        this.cars = new Cars(carNames, powerGenerator);
     }
 
     RacingGame(Cars cars, int repeatCount) {

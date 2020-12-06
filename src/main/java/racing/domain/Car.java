@@ -5,13 +5,21 @@ import java.util.Objects;
 public class Car {
     private static final int LOW_POWER = 3;
     private static final int MOVE_POSITION = 1;
+    private CarName carName;
     private int position;
 
+    @Deprecated
     public Car() {
         this.position = 0;
     }
 
-    Car(int position) {
+    public Car(CarName name) {
+        this.carName = name;
+        this.position = 0;
+    }
+
+    Car(CarName name, int position) {
+        this.carName = name;
         this.position = position;
     }
 

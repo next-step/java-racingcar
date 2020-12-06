@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,15 +13,16 @@ public class RacingGameTest {
     @Test
     void game() {
         //given
-        int carCount = 3;
+        String names = "a,b,c";
         int repeatCount = 2;
-        RacingGame racingGame = new RacingGame(carCount, repeatCount, new FixedPowerGenerator());
+        RacingGame racingGame = new RacingGame(names, repeatCount, new FixedPowerGenerator());
 
         //when
         racingGame.start();
 
         //then
-        Cars cars = new Cars(Arrays.asList(new Car(2), new Car(2), new Car(2)), new FixedPowerGenerator());
+        List<Car> carList = Arrays.asList(new Car(new CarName("a"), 2), new Car(new CarName("b"), 2), new Car(new CarName("c"), 2));
+        Cars cars = new Cars(carList, new FixedPowerGenerator());
         RacingGame expected = new RacingGame(cars, repeatCount);
 
         assertEquals(expected, racingGame);
