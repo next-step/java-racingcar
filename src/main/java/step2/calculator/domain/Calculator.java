@@ -5,8 +5,8 @@ import java.util.Queue;
 
 public class Calculator {
 
-	private Queue<Number> numbers = new LinkedList<>();
-	private Queue<Operator> operators = new LinkedList<>();
+	private final Queue<Number> numbers = new LinkedList<>();
+	private final Queue<Operator> operators = new LinkedList<>();
 	private Integer result;
 
 	public int calculate(final String input) {
