@@ -6,14 +6,13 @@ import java.util.Objects;
 public class RacingCar {
     private List<Car> cars;
 
-    public List<Car> getCars(){
-        return cars;
-    }
-
     public RacingCar(List<Car> cars){
         this.cars = cars;
     }
 
+    public List<Car> getCars(){
+        return cars;
+    }
 
     @Override
     public boolean equals(Object obj) {
