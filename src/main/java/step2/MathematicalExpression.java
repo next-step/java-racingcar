@@ -11,20 +11,19 @@ public class MathematicalExpression {
 
     private List<BigDecimal> numbers;
     private List<Operator> operators;
+    private int operationCount;
 
     public MathematicalExpression(List<BigDecimal> numbers, List<Operator> operators) {
+        if (numbers.size() - 1 != operators.size()) {
+            throw new IllegalArgumentException();
+        }
         this.numbers = numbers;
         this.operators = operators;
+        this.operationCount = operators.size();
     }
 
     public static MathematicalExpression of(String text) {
-        if (text == null) {
-            throw new IllegalArgumentException();
-        }
-        String[] splitText = text.split(" ");
-        if (splitText.length == 1) {
-            throw new IllegalArgumentException();
-        }
+        String[] splitText = checkValidAndReturnSplitText(text);
         List<BigDecimal> numbers = IntStream.range(0, splitText.length)
                 .filter(i -> i % 2 == 0)
                 .mapToObj(i -> textToBigDecimal(splitText[i]))
@@ -36,11 +35,15 @@ public class MathematicalExpression {
         return new MathematicalExpression(numbers, operators);
     }
 
+    public int getOperationCount() {
+        return operationCount;
+    }
+
     public BigDecimal getNumber(int index) {
         return numbers.get(index);
     }
 
-    public Operator getSymbol(int index) {
+    public Operator getOperator(int index) {
         return operators.get(index);
     }
 
@@ -51,7 +54,18 @@ public class MathematicalExpression {
         return new BigDecimal(text);
     }
 
-    public static boolean isNumeric(String strNum) {
+    private static String[] checkValidAndReturnSplitText(String text) {
+        if (text == null) {
+            throw new IllegalArgumentException();
+        }
+        String[] splitText = text.split(" ");
+        if (splitText.length == 1) {
+            throw new IllegalArgumentException();
+        }
+        return splitText;
+    }
+
+    private static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
         }

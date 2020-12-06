@@ -47,17 +47,17 @@ public class MathematicalExpressionTest {
     @Test
     public void 연산기호_추출() {
         expression = MathematicalExpression.of("2 + 2 - 1923129 + 333.33");
-        assertThat(expression.getSymbol(0)).isEqualTo(Operator.PLUS);
-        assertThat(expression.getSymbol(1)).isEqualTo(Operator.MINUS);
-        assertThat(expression.getSymbol(2)).isEqualTo(Operator.PLUS);
+        assertThat(expression.getOperator(0)).isEqualTo(Operator.PLUS);
+        assertThat(expression.getOperator(1)).isEqualTo(Operator.MINUS);
+        assertThat(expression.getOperator(2)).isEqualTo(Operator.PLUS);
     }
 
     @Test
     public void 연산기호_추출2() {
         expression = MathematicalExpression.of("2 * 2 / 1923129 / 333.33");
-        assertThat(expression.getSymbol(0)).isEqualTo(Operator.MULTIPLY);
-        assertThat(expression.getSymbol(1)).isEqualTo(Operator.DIVIDE);
-        assertThat(expression.getSymbol(2)).isEqualTo(Operator.DIVIDE);
+        assertThat(expression.getOperator(0)).isEqualTo(Operator.MULTIPLY);
+        assertThat(expression.getOperator(1)).isEqualTo(Operator.DIVIDE);
+        assertThat(expression.getOperator(2)).isEqualTo(Operator.DIVIDE);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class MathematicalExpressionTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"2 d 2", "22", "a * 2", "null * d"})
+    @ValueSource(strings = {"2 d 2", "22", "a * 2", "null * d", "2 *"})
     public void 사칙연산_문자열이_정당하지_않은경우(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             expression = MathematicalExpression.of(input);
