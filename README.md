@@ -159,7 +159,7 @@ public class SetTest {
 
 - `게임 보고서(GameReport)`
     - `판 보고서(RoundReport)`에 대한 통계를 나타낸다.
-    - [ ] 게임의 우승자들을 구할 수 있다.
+    - [X] 게임의 우승자들을 구할 수 있다.
     
 - `자동차 공장(CarFactory)`
     - 요구사항에 맞춰 자동차를 만드는 역할을 합니다.
