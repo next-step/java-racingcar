@@ -1,33 +1,26 @@
 package racingcar;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingCar {
 	public static void run() {
 		int carCount = InputView.totalCarCount();
-		Car[] cars = initCarArray(carCount);
+		Cars cars = initCars(carCount);
 
 		int tryCount = InputView.totalTryCount();
 		System.out.println("실행결과");
 		for (int i = 0; i < tryCount; i++) {
-			moveCars(cars);
+			cars.moveCars();
 			System.out.println();
 		}
 	}
 
-	private static void moveCars(Car[] cars) {
-		int moveResult;
-		for (Car car : cars) {
-			moveResult = car.tryMove(RandomUtils.createRandomNumber());
-			ResultView.printMove(moveResult);
-		}
-	}
-
-	private static Car[] initCarArray(int carCount) {
-		Car[] cars = new Car[carCount];
+	private static Cars initCars(int carCount) {
+		List<Car> cars = new ArrayList<>();
 		for(int i = 0; i < carCount; i++) {
-			cars[i] = new Car();
+			cars.add(new Car());
 		}
-		return cars;
+		return new Cars(cars);
 	}
 }
