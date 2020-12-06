@@ -16,9 +16,8 @@ public class CalculateNumbers {
 
     private List<CalculateNumber> mapCaculateNumber(String[] numbers) {
         List<CalculateNumber> calculateNumbers = new ArrayList<>();
-        for (int i = 0; i < numbers.length - 2; i += 2) {
+        for (int i = 0; i < numbers.length; i += 2) {
             calculateNumbers.add(new CalculateNumber(numbers[i]));
-            calculateNumbers.add(new CalculateNumber(numbers[i + 2]));
         }
         return calculateNumbers;
     }
@@ -38,5 +37,9 @@ public class CalculateNumbers {
         if (numbers.length > 0 && numbers.length < MIN_SIZE) {
             throw new IllegalArgumentException(VALID_MIN_SIZE_MESSAGE);
         }
+    }
+
+    public List<CalculateNumber> numbers() {
+        return this.numbers;
     }
 }

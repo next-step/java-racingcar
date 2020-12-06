@@ -39,7 +39,7 @@ public class OperatorsTest {
         new Operators(inputs2);
         String[] inputs3 = {"1","%","3","@"};
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Operators(inputs3);
+            Operators op = new Operators(inputs3);
         })
                 .withMessageContaining("사칙연산 기호가 올바르지 않습니다.");
     }

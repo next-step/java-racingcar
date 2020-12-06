@@ -34,10 +34,14 @@ public class Operators {
     }
 
     private void validMinSize(String[] numbers) {
-        if (numbers.length > 0 && numbers.length < MIN_SIZE) {
+        if (numbers.length > 0 && numbers.length < MIN_SIZE)
             throw new IllegalArgumentException(VALID_MIN_SIZE_MESSAGE);
-        }
     }
 
-
+    public List<Operator> operators() {
+        return this.operators;
+    }
 }
+
+
+
