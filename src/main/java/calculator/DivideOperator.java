@@ -6,7 +6,7 @@ public class DivideOperator implements Operator{
     @Override
     public Integer operate(Integer first, Integer second) {
         if(second == ZERO) {
-            return ZERO;
+            throw new IllegalArgumentException("0 으로 나눌 수 없습니다.");
         }
         return first / second;
     }

@@ -3,7 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class CalculatorTest {
 
@@ -35,11 +35,12 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("나누기 0 이 있는 연산 테스트")
+    @DisplayName("나누기 0 을 포함하면 Exception")
     void include_divide_zero() {
         String input = "2 + 4 / 0 * 2";
         Calculator calculator = new Calculator();
-        Integer result = calculator.calculate(input);
-        assertThat(result).isEqualTo(0);
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("0 으로 나눌 수 없습니다.");
     }
 }
