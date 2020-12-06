@@ -5,10 +5,16 @@ import java.util.regex.Pattern;
 
 public class StringCalculate {
 
-    public static int calculate(String input) {
-        Pattern operatorPattern = Pattern.compile("([\\D]?)\\s?(\\d)");
+    private static final Pattern CALCULATE_PATTERN = Pattern.compile("([\\D]?)\\s?(\\d)");
 
-        Matcher matcher = operatorPattern.matcher(input);
+    private StringCalculate() {}
+
+    public static int calculate(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("input cannot be null or empty");
+        }
+
+        Matcher matcher = CALCULATE_PATTERN.matcher(input);
 
         int result = 0;
         while (matcher.find()) {
