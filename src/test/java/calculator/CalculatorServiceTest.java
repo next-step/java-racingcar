@@ -12,6 +12,38 @@ class CalculatorServiceTest {
 	private CalculatorService calculatorService;
 
 	@Test
+	@DisplayName("계산식 ENUM 계산 테스트, 나누었을때, 정수로 출력되는지 확인")
+	void enumModest() {
+
+		CalculatorType calculatorTypeTest = CalculatorType.getOperator("/");
+		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(2);
+	}
+
+	@Test
+	@DisplayName("계산식 ENUM 계산 테스트")
+	void enumMultiTest() {
+
+		CalculatorType calculatorTypeTest = CalculatorType.getOperator("*");
+		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(40);
+	}
+
+	@Test
+	@DisplayName("계산식 ENUM 계산 테스트")
+	void enumMinusTest() {
+
+		CalculatorType calculatorTypeTest = CalculatorType.getOperator("-");
+		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(6);
+	}
+
+	@Test
+	@DisplayName("계산식 ENUM 계산 테스트")
+	void enumPlusTest() {
+
+		CalculatorType calculatorTypeTest = CalculatorType.getOperator("+");
+		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(14);
+	}
+
+	@Test
 	@DisplayName("전체 계산식 테스트")
 	void userInputCalculateTest() {
 
