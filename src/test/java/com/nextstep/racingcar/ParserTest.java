@@ -21,7 +21,7 @@ public class ParserTest {
         List<CarName> names = Parser.parseCarNames(source);
         int idx = 0;
         for (CarName name : names) {
-            assertThat(name.getName()).isEqualTo(expected[idx++]);
+            assertThat(name.toString()).isEqualTo(expected[idx++]);
         }
     }
 

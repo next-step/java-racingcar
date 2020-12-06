@@ -1,9 +1,12 @@
 package com.nextstep.racingcar;
 
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Car {
     private static final int THRESHOLD = 3;
+    private static final String DASH = "-";
 
     private CarName name;
     private int position = 0;
@@ -14,10 +17,6 @@ public class Car {
         this.numberGenerator = numberGenerator;
     }
 
-    public String getName() {
-        return name.getName();
-    }
-
     public void tryMove() {
         int number = numberGenerator.get();
         if (isMove(number)) {
@@ -25,15 +24,34 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public boolean equalsPosition(int position) {
-        return this.position == position;
-    }
-
     private boolean isMove(int number) {
         return THRESHOLD < number;
+    }
+
+    public boolean equalsPosition(Car other) {
+        return this.position == other.position;
+    }
+
+    private boolean compareTo(Car other) {
+        return this.position < other.position;
+    }
+
+    public Car compareAndGet(Car other) {
+        return (this.compareTo(other)) ? other : this;
+    }
+
+    @Override
+    public String toString() {
+        return name.toString();
+    }
+
+    public String toDetailString() {
+        return name + " : " + makeDashes();
+    }
+
+    private String makeDashes() {
+        return Stream.generate(() -> DASH)
+                .limit(position)
+                .collect(Collectors.joining());
     }
 }

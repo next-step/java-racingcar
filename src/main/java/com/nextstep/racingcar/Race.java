@@ -23,18 +23,18 @@ public class Race {
     }
 
     public String getWinnerNames() {
-        int maxPosition = getMaxPosition();
+        Car winner = getWinner();
         return cars.stream()
-                .filter(car -> car.equalsPosition(maxPosition))
-                .map(Car::getName)
+                .filter(car -> car.equalsPosition(winner))
+                .map(Car::toString)
                 .collect(Collectors.joining(DELIMITER));
     }
 
-    private int getMaxPosition() {
-        int maxPosition = 0;
+    private Car getWinner() {
+        Car winner = cars.get(0);
         for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            winner = winner.compareAndGet(car);
         }
-        return maxPosition;
+        return winner;
     }
 }

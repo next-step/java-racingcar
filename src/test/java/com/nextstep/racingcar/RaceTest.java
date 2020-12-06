@@ -14,35 +14,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
-    private static final Random RANDOM = new Random();
     private final List<CarName> carNames = Arrays.asList(new CarName("test1"), new CarName("test2"), new CarName("test3"));
-
-    @DisplayName("0-3만 나오는 경우와 4-9만 나오는 경우 position의 변화 체크")
-    @ParameterizedTest
-    @MethodSource
-    public void moveAndGet(Supplier<Integer> numberGenerator, int moveCount, int expected) {
-        Race race = new Race(carNames, numberGenerator);
-
-        List<Car> carList = null;
-
-        for (int ix = 0 ; ix < moveCount ; ix ++) {
-            carList = race.moveAndGet();
-        }
-        assertThat(carList).isNotNull();
-
-        for (Car car : carList) {
-            assertThat(car.getPosition()).isEqualTo(expected);
-        }
-    }
-
-    private static Stream<Arguments> moveAndGet() {
-        Supplier<Integer> lessThanGenerator = () -> RANDOM.nextInt(4);
-        Supplier<Integer> greaterThanGenerator = () -> RANDOM.nextInt(6) + 4;
-        return Stream.of(
-                Arguments.of(lessThanGenerator, 5, 0),
-                Arguments.of(greaterThanGenerator, 5, 5)
-        );
-    }
 
     @DisplayName("우승 한 car의 이름들을 가져오는지 확인")
     @ParameterizedTest

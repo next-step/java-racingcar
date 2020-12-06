@@ -3,8 +3,6 @@ package com.nextstep.racingcar;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RaceManager {
     private static final int BOUND = 10;
@@ -39,16 +37,9 @@ public class RaceManager {
 
     private void printPosition(List<Car> carList) {
         for (Car car : carList) {
-            String positionString = getPositionString(car.getPosition());
-            System.out.println(car.getName() + " : " + positionString);
+            System.out.println(car.toDetailString());
         }
         System.out.println();
-    }
-
-    private String getPositionString(int position) {
-        return Stream.generate(() -> "-")
-                .limit(position)
-                .collect(Collectors.joining());
     }
 
     private Race createRace() {

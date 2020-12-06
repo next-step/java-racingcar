@@ -12,11 +12,12 @@ public class CarName {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     private boolean isInvalidName(String name){
         return NAME_LIMIT < name.length();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
