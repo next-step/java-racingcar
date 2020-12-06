@@ -9,8 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class CalculatorServiceTest {
 
-	private CalculatorService calculatorService;
-
+	Calculator calculator = null;
 	@Test
 	@DisplayName("계산식 ENUM 계산 테스트, 나누었을때, 정수로 출력되는지 확인")
 	void enumModest() {
@@ -51,14 +50,14 @@ class CalculatorServiceTest {
 		String[] userInputArr = userInput.split(" ");
 
 		// 첫번 째 입력 값으로 계산기 생성
-		calculatorService = new CalculatorService(Integer.parseInt(userInputArr[0]));
+		calculator = new Calculator(Integer.parseInt(userInputArr[0]));
 
 		// 두번 째, 계산 부호와 입력 수 반복 계산
 		for (int i = 1; i < userInputArr.length; i = i + 2) {
-			calculatorService.calculate(userInputArr[i], Integer.parseInt(userInputArr[i+1]));
+			calculator.calculate(userInputArr[i], Integer.parseInt(userInputArr[i+1]));
 		}
 
-		assertThat(calculatorService.getResult()).isEqualTo(10);
+		assertThat(calculator.getResult()).isEqualTo(10);
 	}
 
 	@ParameterizedTest
@@ -66,35 +65,35 @@ class CalculatorServiceTest {
 	@DisplayName("계산 부호 추가 테스트")
 	void calculateTest(int number1, String sign, int number2, int result) {
 
-		calculatorService = new CalculatorService(number1);
-		calculatorService.calculate(sign, number2);
-		assertThat(calculatorService.getResult()).isEqualTo(result);
+		calculator = new Calculator(number1);
+		calculator.calculate(sign, number2);
+		assertThat(calculator.getResult()).isEqualTo(result);
 	}
 
 	@Test
 	@DisplayName("덧셈 계산 테스트 ")
 	void plusTest() {
 
-		calculatorService = new CalculatorService(4);
-		calculatorService.calculate("+", 5);
-		assertThat(calculatorService.getResult()).isEqualTo(9);
+		calculator = new Calculator(4);
+		calculator.calculate("+", 5);
+		assertThat(calculator.getResult()).isEqualTo(9);
 	}
 
 	@Test
 	@DisplayName("뺄셈 계산 테스트")
 	void minusTest() {
 
-		calculatorService = new CalculatorService(6);
-		calculatorService.calculate("-", 4);
-		assertThat(calculatorService.getResult()).isEqualTo(2);
+		calculator = new Calculator(6);
+		calculator.calculate("-", 4);
+		assertThat(calculator.getResult()).isEqualTo(2);
 	}
 
 	@Test
 	@DisplayName("나눗셈 계산 테스트")
 	void modTest() {
-		calculatorService = new CalculatorService(10);
-		calculatorService.calculate("/", 2);
-		assertThat(calculatorService.getResult()).isEqualTo(5);
+		calculator = new Calculator(10);
+		calculator.calculate("/", 2);
+		assertThat(calculator.getResult()).isEqualTo(5);
 	}
 
 	@Test
@@ -103,17 +102,17 @@ class CalculatorServiceTest {
 
 		// 나눗셈의 경우, 결과 값을 정수로 떨어지도록 제한 테스트
 		// int 자료형으로 나누기 떄문에, 정수값을로 얻을 수 있다.
-		calculatorService = new CalculatorService(7);
-		calculatorService.calculate("/", 2);
-		assertThat(calculatorService.getResult()).isEqualTo(3);
+		calculator = new Calculator(7);
+		calculator.calculate("/", 2);
+		assertThat(calculator.getResult()).isEqualTo(3);
 	}
 
 	@Test
 	@DisplayName("곱셈 계산 테스트")
 	void multiTest() {
 
-		calculatorService = new CalculatorService(3);
-		calculatorService.calculate("*", 6);
-		assertThat(calculatorService.getResult()).isEqualTo(18);
+		calculator = new Calculator(3);
+		calculator.calculate("*", 6);
+		assertThat(calculator.getResult()).isEqualTo(18);
 	}
 }

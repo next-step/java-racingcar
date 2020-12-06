@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import util.UserOutput;
+
 public enum CalculatorType {
 
 	PLUS("+", (num1, num2) -> num1 + num2),
@@ -36,6 +38,6 @@ public enum CalculatorType {
 			// findFirst // findAny
 			.findFirst()
 			// filter 메소드에 탐색이 안되면 Exception throw
-			.orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
+			.orElseThrow(() -> new IllegalArgumentException(UserOutput.USER_ERROR_MSG_IS_OPERATOR));
 	}
 }

@@ -1,62 +1,69 @@
 package calculator;
 
-import util.UserInput;
-import util.UserOutput;
-
 public class Calculator {
 
-	/**
-	 * 계산기 시작 메서드- 계산이 끝나면, 재시작 여부 확인
-	 */
-	public static void start() {
 
-		do {
-			calculateStart();
-		} while (isContinue());
+	private int result;
+	private int calculateNumber;
+	private CalculatorType calculatorType;
+
+
+	public Calculator(int firstNumber) {
+
+		this.result = firstNumber;
 	}
 
 	/**
-	 * 사칙연산 계산 메서드
-	 * 문자열 계산기는 사칙연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서가 결정
+	 * 문자열 계산기- 계산이 끝나면, 재시작 여부 확인
+	 * @param userInputStr: 유저 입력 문자열
 	 */
-	private static void calculateStart() {
+	public static int start(String userInputStr) throws IllegalArgumentException {
 
-		// 유서 계산식 입력
-		String userInputMsg = UserInput.userInputString();
+		CalculatorVaild.validCalculatorString(userInputStr);
+		
+		String[] userInputArr = userInputStr.split(" ");
+		Calculator calculator = new Calculator(Integer.parseInt(userInputArr[0]));
 
-		// 계산식 입력 벨리데이션
-		if (isInputCorrect(userInputMsg)) {
+		// 유저가 입력한 계산식에서 연산자와 수 2개씩 끊어서 계산하는 반복문
+		for (int i = 1; i < userInputArr.length; i = i + 2) {
 
-			// 계산 시작
-			int result = CalculatorService.start(userInputMsg);
-
-			// 계산 결과 출력
-			UserOutput.printCalculatorResult(result);
+			// 계산
+			calculator.calculate(userInputArr[i], Integer.parseInt(userInputArr[i + 1]));
 		}
+
+		// 결과 리턴
+		return calculator.getResult();
 	}
 
 	/**
-	 * 유저가 입력한 계산식 문자열이 올바른지 판단
-	 * @param userInputMsg: 유저 입력 계산식 문자열
-	 * @return 입력이 올바르면 True, 아니면 False
+	 * 연산자와 수를 입력받아 계산하는 메서드
+	 * @param signStr: 유저 입력 연산자
+	 * @param calculateNumber: 유저 입력 수
 	 */
-	private static boolean isInputCorrect(String userInputMsg) {
+	public void calculate(String signStr, int calculateNumber) {
 
-		try {
-			UserInput.validCalculatorString(userInputMsg);
+		this.calculatorType = CalculatorType.getOperator(signStr);
+		this.calculateNumber = calculateNumber;
 
-			return true;
-		} catch (IllegalArgumentException illegalArgumentException) {
-
-			return false;
-		}
+		calculate();
 	}
 
 	/**
-	 * 게임 재시작 여부 확인 메서드
-	 * @return 게임 재시작 여부(1: 재시작, 그와: 종료)
+	 * 사칙 연산 계산 메서드
 	 */
-	private static boolean isContinue() {
-		return CalculatorService.isStartGame();
+	private void calculate() {
+
+		this.result = this.calculatorType.calculate(this.result, this.calculateNumber);
 	}
+
+	/**
+	 * 계산 결과 리턴 메서드
+	 * @return 계산 결과
+	 */
+	public int getResult() {
+
+		return this.result;
+	}
+
+
 }

@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import calculator.CalculatorType;
+import calculator.CalculatorVaild;
+
 class UserInputTest {
 
 	@Test
@@ -18,7 +21,7 @@ class UserInputTest {
 
 		String userInput = "2 + 3 * 4 / 2 / 56 + 45646 * 6  ";
 
-		assertThatIllegalArgumentException().isThrownBy(() -> UserInput.validCalculatorString(userInput));
+		assertThatIllegalArgumentException().isThrownBy(() -> CalculatorVaild.validCalculatorString(userInput));
 	}
 
 	@ParameterizedTest
@@ -26,7 +29,7 @@ class UserInputTest {
 	@DisplayName("빈 문자열 테스트")
 	void bankTest(String inputStr) {
 
-		assertTrue(UserInput.isBank(inputStr));
+		assertTrue(CalculatorVaild.isBank(inputStr));
 	}
 
 	@ParameterizedTest
@@ -34,14 +37,14 @@ class UserInputTest {
 	@DisplayName("숫자 입력 테스트")
 	void numberTest(String inputNumber) {
 
-		assertTrue(UserInput.isNumber(inputNumber));
+		assertTrue(CalculatorVaild.isNumber(inputNumber));
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = {"+", "*", "/", "-", "%"})
+	@ValueSource(strings = {"+", "*", "/", "-"})
 	@DisplayName("사칙연산 부호 테스트")
 	void operatorTest(String inputOperator) {
 
-		assertTrue(UserInput.isOperator(inputOperator));
+		assertThatIllegalArgumentException().isThrownBy(() -> CalculatorType.getOperator(inputOperator));
 	}
 }
