@@ -35,10 +35,10 @@ public class OperatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-        "+,1,2,3",
-        "-,1,2,-1",
-        "*,1,2,2",
-        "/,2,1,2"
+        "+, 1, 2, 3",
+        "-, 1, 2, -1",
+        "*, 1, 2, 2",
+        "/, 2, 1, 2"
     })
     @DisplayName("연산자에 따라 계산하는지 확인")
     public void applyWithOperator(char op, int left, int right, int result) {

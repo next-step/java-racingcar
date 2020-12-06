@@ -14,13 +14,13 @@ public class StringCalculateTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-        "2 + 3 * 4 / 2,10",
-        "1,1",
-        "1 + 3,4",
-        "10 - 5,5",
-        "4 * 6,24",
-        "10 / 2,5",
-        "1 + 2 + 3 + 4 * 2 - 2 / 9,2"
+        "2 + 3 * 4 / 2, 10",
+        "1, 1",
+        "1 + 3, 4",
+        "10 - 5, 5",
+        "4 * 6, 24",
+        "10 / 2, 5",
+        "1 + 2 + 3 + 4 * 2 - 2 / 9, 2"
     })
     @DisplayName("입력한 문자열 계산 정상 수행")
     public void calculate(String input, int result) {
