@@ -15,26 +15,17 @@ public class StringCalculateTest {
     @DisplayName("null 체크")
     @ParameterizedTest
     @NullSource
-    void nullExcpetion(String input) {
+    void validNullInput(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new StringCalculator(input);
-        }).withMessageContaining("입력 값이 없습니다.");
+        })
+                .withMessageContaining("입력값이 없습니다.");
     }
 
     @Test
     @DisplayName("빈칸 공백 여부 예외 처리")
     void isBlankException() {
-        String input = "1 2 / 5";
-        new StringCalculator(input);
-
         String input2 = "12/5";
-        assertThat(input2.contains(" ")).isFalse();
-        assertThat("1 2/5".contains(" ")).isTrue();
-        assertThat("12 /5".contains(" ")).isTrue();
-        assertThat("12/ 5".contains(" ")).isTrue();
-        assertThat("12 / 5".contains(" ")).isTrue();
-        assertThat("12/5 ".contains(" ")).isTrue();
-
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new StringCalculator(input2);
         })
@@ -44,7 +35,7 @@ public class StringCalculateTest {
     @DisplayName("문자열 계산")
     @ParameterizedTest
     @CsvSource(value={"1 + 1 + 2 + 3,7", "1 + 3 / 2 * 4,8", "1 * 2 * 3 * 4 / 3 * 2 - 1,15", "5 / 1,5"
-            , "1 + 2 + 4 * 3 / 6 / 8 * 123,0", "1 - 2,-1", "1 + 1 + 3 +5,2"})
+            , "1 + 2 + 4 * 3 / 6 / 8 * 123,0", "1 - 2,-1"})
     void calculate(String input, int expected) {
        StringCalculator calculator = new StringCalculator(input);
        int result = calculator.calculate();
@@ -59,7 +50,7 @@ public class StringCalculateTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new StringCalculator(input);
         })
-                .withMessageContaining("입력값의 포맷이 맞습니다.");
+                .withMessageContaining("입력값의 포맷이 맞지않습니다.");
 
 
     }

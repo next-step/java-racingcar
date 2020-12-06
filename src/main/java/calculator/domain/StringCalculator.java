@@ -6,7 +6,7 @@ import java.util.List;
 public class StringCalculator {
     private static final String VALID_EMPTY_INPUT_MESSAGE = "입력값이 없습니다.";
     private static final String VALID_BLANK_INPUT_MESSAGE = "공백 구분자가 없습니다.";
-    private static final String NO_MATCH_INPUT_FORMAT_MESSAGE = "입력값의 포맷이 맞습니다.";
+    private static final String NO_MATCH_INPUT_FORMAT_MESSAGE = "입력값의 포맷이 맞지않습니다.";
     private static final String BLANK_SEPARATOR = " ";
 
     private final List<Operator> calculateOperators;
