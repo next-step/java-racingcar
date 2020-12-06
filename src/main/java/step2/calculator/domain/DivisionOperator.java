@@ -1,6 +1,7 @@
 package step2.calculator.domain;
 
 public class DivisionOperator implements Operator {
+
 	@Override
 	public Integer operate(final Integer result, final Integer number) {
 		if (0 == number) {
@@ -8,4 +9,10 @@ public class DivisionOperator implements Operator {
 		}
 		return result / number;
 	}
+
+	@Override
+	public String getSign() {
+		return "/";
+	}
+
 }
