@@ -13,7 +13,7 @@ public class Car {
 	}
 
 	private Car(String name, int distance) {
-		if (ValidationUtil.isLengthEmptyOrGreaterThanFive(name)) {
+		if (!ValidationUtil.validateCarName(name)) {
 			throw new IllegalArgumentException(Message.MSG_CAR_NAME_LENGTH_ERROR);
 		}
 		this.name = name;
