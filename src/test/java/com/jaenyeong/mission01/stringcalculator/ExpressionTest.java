@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("연산자와 비연산자를 담는 수식 Expression 클래스 테스트")
 class ExpressionTest {

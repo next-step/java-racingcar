@@ -34,6 +34,9 @@ class CarsTest extends BaseTest {
 
         final List<Integer> distanceOfCars = cars.getDistanceRacingCars();
 
-        distanceOfCars.forEach(distOfCar -> assertThat(distOfCar).isBetween(0, randomValue));
+        distanceOfCars.forEach(distOfCar -> {
+            final int start = 0;
+            assertThat(distOfCar).isBetween(start, randomValue);
+        });
     }
 }
