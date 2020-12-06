@@ -2,15 +2,16 @@ package racing.domain;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Cars {
+public class Cars implements Cloneable {
     private static final String COMMA = ",";
     private final PowerGenerator powerGenerator;
-    private final List<Car> cars;
+    private List<Car> cars;
 
     public Cars(String carNames, PowerGenerator powerGenerator) {
         validate(carNames);
@@ -66,5 +67,18 @@ public class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
+    }
+
+    @Override
+    protected Cars clone() throws CloneNotSupportedException {
+        Cars clone = (Cars) super.clone();
+
+        List<Car> cloneCarList = new ArrayList<>();
+        for (Car car : cars) {
+            cloneCarList.add(car.clone());
+        }
+
+        clone.cars = cloneCarList;
+        return clone;
     }
 }

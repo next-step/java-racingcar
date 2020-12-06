@@ -2,7 +2,7 @@ package racing.domain;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class CarName {
+public class CarName implements Cloneable {
     private static final int MAX_LENGTH = 5;
     private final String name;
 
@@ -27,5 +27,10 @@ public class CarName {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    protected CarName clone() throws CloneNotSupportedException {
+        return (CarName) super.clone();
     }
 }
