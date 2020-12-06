@@ -16,11 +16,20 @@ public class OutputView {
     public static void outputMessageAboutMove(List<Car> cars) {
         cars.forEach(car -> {
             StringBuilder builder = new StringBuilder();
+            builder.append(car.getName());
+            builder.append(" : ");
             for (int i=0; i<car.getPosition(); i++) {
                 builder.append(DISPLAY);
             }
             System.out.println(builder.toString());
         });
         System.out.println();
+    }
+
+    public static void outputMessageAboutWinner(String winnerCars) {
+        String result = new StringBuilder()
+                .append(winnerCars)
+                .append("가 최종 우승했습니다").toString();
+        System.out.println(result);
     }
 }
