@@ -25,6 +25,7 @@ public class OutputView implements Output {
 
     @Override
     public void printExecutionResult() {
+        printMessage("");
         printMessage(EXECUTION_RESULT);
     }
 
