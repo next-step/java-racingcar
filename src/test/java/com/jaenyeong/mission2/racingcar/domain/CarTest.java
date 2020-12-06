@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -50,5 +52,22 @@ class CarTest extends BaseTest {
         }
 
         assertThat(car.getCurrentDistance()).isBetween(0, randomValue);
+    }
+
+    @ParameterizedTest
+    @MethodSource("randomIntValues")
+    @DisplayName("특정 Car 객체가 임의의 횟수만큼 이동 후 거리 기록 유효성 테스트")
+    void check(final int randomValue) {
+        final Car car = new Car();
+
+        for (int i = 0; i < randomValue; i++) {
+            car.move();
+        }
+
+        final int start = 0;
+        final List<Integer> history = car.getRacingHistory();
+        for (final int distance : history) {
+            assertThat(distance).isBetween(start, randomValue);
+        }
     }
 }

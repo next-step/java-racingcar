@@ -39,4 +39,27 @@ class CarsTest extends BaseTest {
             assertThat(distOfCar).isBetween(start, randomValue);
         });
     }
+
+    @ParameterizedTest
+    @MethodSource("randomIntValues")
+    @DisplayName("Cars의 속한 모든 Car 객체의 이동 거리 기록 유효성 테스트")
+    void checkAllRacingHistoriesForAllCars(final int randomValue) {
+        final Cars cars = new Cars(randomValue);
+
+        for (int i = 0; i < randomValue; i++) {
+            cars.moveRacingCars();
+        }
+
+        final List<List<Integer>> racingHistories = cars.getRaceHistoriesForAllCars();
+        for (List<Integer> history : racingHistories) {
+            checkAllRacingHistoriesForOneCar(history, randomValue);
+        }
+    }
+
+    private void checkAllRacingHistoriesForOneCar(final List<Integer> history, final int moveTurn) {
+        final int start = 0;
+        for (int distance : history) {
+            assertThat(distance).isBetween(start, moveTurn);
+        }
+    }
 }

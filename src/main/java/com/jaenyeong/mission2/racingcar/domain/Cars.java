@@ -27,4 +27,10 @@ public class Cars {
             .map(Car::getCurrentDistance)
             .collect(Collectors.toList());
     }
+
+    public List<List<Integer>> getRaceHistoriesForAllCars() {
+        return racingCars.stream()
+            .map(Car::getRacingHistory)
+            .collect(Collectors.toList());
+    }
 }
