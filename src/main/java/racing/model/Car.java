@@ -1,18 +1,20 @@
 package racing.model;
 
-public class RacingCar {
+public class Car {
 
 	private static final int FORWARD_CRITERIA = 4;
 
-	private int forwardRecord;
+	private String name;
+
+	private int forwardPosition;
 
 	private int racingRecord;
 
-	public RacingCar() {
+	public Car() {
 	}
 
-	public int getForwardRecord() {
-		return forwardRecord;
+	public int getForwardPosition() {
+		return forwardPosition;
 	}
 
 	public int getRacingRecord() {
@@ -25,7 +27,7 @@ public class RacingCar {
 
 	public void speedUp(int randomCount) {
 		if (this.isForward(randomCount)) {
-			this.forwardRecord += 1;
+			this.forwardPosition += 1;
 		}
 		this.racingRecord += 1;
 	}

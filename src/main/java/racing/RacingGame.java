@@ -1,6 +1,6 @@
 package racing;
 
-import racing.model.RacingCar;
+import racing.model.Car;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -22,32 +22,32 @@ public class RacingGame {
 	public void start() {
 		InputView inputView = initInputView();
 
-		List<RacingCar> racingCars = prepareInitRacingCar(inputView.getPlayRacingCarCount());
-		startRacing(racingCars, inputView.getPlayCount());
+		List<Car> cars = prepareInitRacingCar(inputView.getPlayRacingCarCount());
+		startRacing(cars, inputView.getPlayCount());
 	}
 
-	public void startRacing(List<RacingCar> racingCars, int playCount) {
+	public void startRacing(List<Car> cars, int playCount) {
 		for (int i = 0; i < playCount; i++) {
-			speedUpForPlayCount(racingCars);
+			speedUpForPlayCount(cars);
 			System.out.println();
 		}
 	}
 
 	//todo 전략패턴
 	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
-	public void speedUpForPlayCount(List<RacingCar> racingCarList) {
-		for (RacingCar racingCar : racingCarList) {
-			racingCar.speedUp(random.nextInt(MAX_RANDOM_BOUND));
-			resultView.print(racingCar.getForwardRecord());
+	public void speedUpForPlayCount(List<Car> cars) {
+		for (Car car : cars) {
+			car.speedUp(random.nextInt(MAX_RANDOM_BOUND));
+			resultView.print(car.getForwardPosition());
 		}
 	}
 
-	public List<RacingCar> prepareInitRacingCar(int playCarCount) {
-		List<RacingCar> racingCarList = new ArrayList<>();
+	public List<Car> prepareInitRacingCar(int playCarCount) {
+		List<Car> cars = new ArrayList<>();
 		for (int i = 0; i < playCarCount; i++) {
-			racingCarList.add(new RacingCar());
+			cars.add(new Car());
 		}
-		return racingCarList;
+		return cars;
 
 	}
 

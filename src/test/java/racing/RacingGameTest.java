@@ -1,7 +1,7 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-import racing.model.RacingCar;
+import racing.model.Car;
 
 import java.util.List;
 
@@ -16,13 +16,13 @@ class RacingGameTest {
 
 	@Test
 	void 경주에_출전한_차_댓수와_돌아야하는_카운트도_잘도는지_테스트(){
-		List<RacingCar> racingCars  = racingGame.prepareInitRacingCar(RACING_CAR_COUNT);
-		assertThat(racingCars).hasSize(RACING_CAR_COUNT);
+		List<Car> cars = racingGame.prepareInitRacingCar(RACING_CAR_COUNT);
+		assertThat(cars).hasSize(RACING_CAR_COUNT);
 
-		racingGame.startRacing(racingCars, PLAY_COUNT);
+		racingGame.startRacing(cars, PLAY_COUNT);
 
-		for(RacingCar racingCar : racingCars){
-			assertThat(racingCar.getRacingRecord()==PLAY_COUNT).isTrue();
+		for(Car car : cars){
+			assertThat(car.getRacingRecord()==PLAY_COUNT).isTrue();
 		}
 	}
 

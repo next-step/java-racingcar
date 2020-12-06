@@ -2,20 +2,20 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.RacingCar;
+import racing.model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingCarTest {
+class CarTest {
 
-	RacingCar racingCar = new RacingCar();
+	Car car = new Car();
 
 	@Test
 	@DisplayName("랜덤값이 4이상인 경우 한 칸 전진한다.")
 	void test_forward() {
-		assertThat(racingCar.isForward(4)).isTrue();
-		assertThat(racingCar.isForward(0)).isFalse();
-		assertThat(racingCar.isForward(-1)).isFalse();
+		assertThat(car.isForward(4)).isTrue();
+		assertThat(car.isForward(0)).isFalse();
+		assertThat(car.isForward(-1)).isFalse();
 	}
 
 }
