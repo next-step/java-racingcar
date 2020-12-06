@@ -20,12 +20,7 @@ class CarsTest {
 
 	@BeforeEach
 	void setup() {
-		cars = Cars.of(Arrays.asList(
-			Car.createCar(CAR_NAME1),
-			Car.createCar(CAR_NAME2),
-			Car.createCar(CAR_NAME3)
-			)
-		);
+		cars = Cars.of(Arrays.asList(CAR_NAME1, CAR_NAME2, CAR_NAME3));
 		IntStream.range(0, 5).forEach(idx -> {
 			cars.moveCars();
 		});

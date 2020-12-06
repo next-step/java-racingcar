@@ -1,5 +1,6 @@
 package com.woowahan.racing.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,12 +9,16 @@ import com.woowahan.racing.constant.Message;
 public class Cars {
 	private final List<Car> cars;
 
-	private Cars(List<Car> cars) {
-		this.cars = cars;
+	private Cars(List<String> carNames) {
+		this.cars = new ArrayList<>();
+		for (String carName : carNames) {
+			cars.add(Car.createCar(carName));
+		}
 	}
 
-	public static Cars of(List<Car> cars) {
-		return new Cars(cars);
+	public static Cars of(List<String> carNames) {
+
+		return new Cars(carNames);
 	}
 
 	public List<String> getWinners() {
