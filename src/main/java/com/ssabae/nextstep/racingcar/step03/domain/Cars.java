@@ -18,13 +18,11 @@ public class Cars {
 
     private final List<Car> carList;
     private final MoveOperator operator;
-    private final CarPrinter carPrinter;
     private final Random random;
 
     public Cars(Random random) {
         this.carList = new ArrayList<>();
         this.operator = new MoveOperator(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE, MOVEMENT_MIN_VALUE);
-        this.carPrinter = new CarPrinter();
         this.random = random;
     }
 
@@ -41,13 +39,6 @@ public class Cars {
             MoveState operate = operator.operate(randomNumber);
             car.move(operate);
         }
-    }
-
-    public void printCars() {
-        for (Car car : carList) {
-            carPrinter.print(car);
-        }
-        System.out.println();
     }
 
     public List<Car> getCarList() {

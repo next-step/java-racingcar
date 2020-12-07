@@ -18,4 +18,12 @@ public class Car {
     public int getMoveCount() {
         return moveCount;
     }
+
+    public String getPrintString() {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < moveCount; i++) {
+            output.append("-");
+        }
+        return output.toString();
+    }
 }
