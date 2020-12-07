@@ -1,23 +1,27 @@
 package race;
 
 public class OutputView implements GameObserver {
-	private String gameResultMessage;
+	private final RaceGameController raceGameController;
 
-	public OutputView(GameSubject gameSubject) {
-		gameSubject.registerObserver(this);
+	public OutputView(RaceGameController raceGameController) {
+		this.raceGameController = raceGameController;
+		this.raceGameController.registerGameObserver(this);
 	}
 
 	@Override
-	public void update(String message) {
-		this.gameResultMessage = message;
+	public void update() {
 		sendMessageToUser();
 	}
 
 	public String getGameResultMessage() {
-		return gameResultMessage;
+		return this.raceGameController.getNowCarsMoveStatus();
 	}
 
 	public void sendMessageToUser() {
-		System.out.println(gameResultMessage + GameResultMessage.TRY_SEPARATOR);
+		System.out.println(this.raceGameController.getNowCarsMoveStatus() + GameResultMessage.TRY_SEPARATOR);
+
+		if (this.raceGameController.isOverTryTimes()) {
+			System.out.println("Controller에 우승자를 물어보자.");
+		}
 	}
 }

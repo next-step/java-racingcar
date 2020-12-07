@@ -1,6 +1,6 @@
 package race;
 
-public interface GameSubject {
+public interface GameModel {
 	void registerObserver(GameObserver observer);
 
 	void notifyObserver();

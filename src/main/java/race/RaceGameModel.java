@@ -3,17 +3,17 @@ package race;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RaceGame implements GameSubject {
+public class RaceGameModel implements GameModel {
 	private static final String INPUT_NAME_SEPARATOR = ",";
-	private static final String MOVE_SEPARATOR = "-";
 	private final List<GameObserver> gameObserver = new ArrayList<>();
 	private final CarGroup raceCarGroup;
+	private int tryTimes = 0;
 
-	public RaceGame(int carAmount, MovePolicy movePolicy) {
+	public RaceGameModel(int carAmount, MovePolicy movePolicy) {
 		this.raceCarGroup = CarGroup.of(carAmount, movePolicy);
 	}
 
-	public RaceGame(String names, MovePolicy movePolicy) {
+	public RaceGameModel(String names, MovePolicy movePolicy) {
 		this.raceCarGroup = CarGroup.ofNames(INPUT_NAME_SEPARATOR, names, movePolicy);
 	}
 
@@ -24,21 +24,21 @@ public class RaceGame implements GameSubject {
 
 	@Override
 	public void notifyObserver() {
-		this.notifyObserveRun();
+		this.moveRaceCarGroup();
+		this.sendMessageToObserver();
 	}
 
-	private void notifyObserveRun() {
+	private void moveRaceCarGroup() {
+		this.tryTimes++;
 		this.raceCarGroup.moveAll();
-		sendMessageToObserver();
 	}
 
 	private void sendMessageToObserver() {
-		for (GameObserver observer : gameObserver) {
-			observer.update(createGameResultMessage());
-		}
+		this.gameObserver.forEach(GameObserver::update);
 	}
 
-	public String createGameResultMessage() {
-		return new GameResultMessage(MOVE_SEPARATOR).parser(this.raceCarGroup.nowCarStatus());
+	public GameResultMessage createGameResultMessage() {
+
+		return new GameResultMessage(this.tryTimes, this.raceCarGroup.nowCarStatus());
 	}
 }

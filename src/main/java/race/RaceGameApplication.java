@@ -3,9 +3,8 @@ package race;
 public class RaceGameApplication {
 
 	public static void main(String[] args) {
-		InputValue inputValue = InputView.makeGameInputValue();
-		RaceGameProcessor gameProcessor = new RaceGameProcessor(inputValue, new RandomMovePolicy());
-		new OutputView(gameProcessor.getGameSubject());
-		gameProcessor.running();
+		RaceGameController raceGameController = new RaceGameController(new RandomMovePolicy());
+		new OutputView(raceGameController);
+		raceGameController.start();
 	}
 }
