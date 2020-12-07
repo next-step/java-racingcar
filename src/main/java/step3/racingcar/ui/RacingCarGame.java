@@ -1,5 +1,10 @@
 package step3.racingcar.ui;
 
+import java.util.List;
+
+import step3.racingcar.domain.RacingCar;
+import step3.racingcar.domain.RacingCarGenerator;
+
 public class RacingCarGame {
 
 	private final InputView inputView;
@@ -11,6 +16,13 @@ public class RacingCarGame {
 	}
 
 	public void start() {
-		inputView.input();
+		ready();
 	}
+
+	private void ready() {
+		int participateCarCount = inputView.participateCarCountInput();
+		int racingExecuteCountInput = inputView.racingExecuteCountInput();
+		List<RacingCar> racingCars = new RacingCarGenerator().generate(participateCarCount);
+	}
+
 }
