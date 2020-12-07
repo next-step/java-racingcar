@@ -17,4 +17,8 @@ public class Playground {
 		}
 		return entry;
 	}
+
+	public void play() {
+		int numberOfCars = InputView.inputNumberOfCars();
+	}
 }
