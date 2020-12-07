@@ -3,7 +3,6 @@ package calculator;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
-
 /**
  * 사칙연산자 Enum 클래스
  */
