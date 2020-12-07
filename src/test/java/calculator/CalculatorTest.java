@@ -1,10 +1,12 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
     @ParameterizedTest
@@ -21,5 +23,17 @@ public class CalculatorTest {
     void two_more_operation_calculator_test(String input, Integer expected) {
         Integer output = Calculator.equality(input);
         assertThat(output).isEqualTo(expected);
+    }
+
+    @DisplayName("입력이 Null 혹인 빈 문자열인 경우")
+    @Test
+    void null_or_empty_input() {
+        assertThatThrownBy(() -> {
+            Calculator.equality(null);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> {
+            Calculator.equality("");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
