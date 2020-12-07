@@ -11,7 +11,7 @@ public class RacingSimulator {
 
 	private RacingSimulator(InputResult inputResult) {
 		this.inputResult = inputResult;
-		this.partCars = Cars.of(inputResult.getCarNames());
+		this.partCars = Cars.of(inputResult.getCarNames(), new CarGameRandom());
 		this.gameResults = new ArrayList<>();
 	}
 
