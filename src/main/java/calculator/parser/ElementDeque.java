@@ -17,7 +17,9 @@ public class ElementDeque {
                 elements.addLast(operator);
                 continue;
             }
-            elements.addLast(new Operand(Integer.parseInt(s)));
+
+            int intValue = Integer.parseInt(s);
+            elements.addLast(new Operand(intValue));
         }
     }
 

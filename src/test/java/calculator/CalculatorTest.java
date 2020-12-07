@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,8 +26,8 @@ public class CalculatorTest {
         assertThat(output).isEqualTo(expected);
     }
 
-    @DisplayName("입력이 Null 혹인 빈 문자열인 경우")
     @Test
+    @DisplayName("입력이 Null 혹인 빈 문자열인 경우")
     void null_or_empty_input() {
         assertThatThrownBy(() -> {
             Calculator.equality(null);
@@ -34,6 +35,15 @@ public class CalculatorTest {
 
         assertThatThrownBy(() -> {
             Calculator.equality("");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사칙연산 기호가 아닌경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 ? 2", "3 ^ 5", "3 * 4 x 2",})
+    void no_supported_operations(String input) {
+        assertThatThrownBy(() -> {
+            Calculator.equality(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
