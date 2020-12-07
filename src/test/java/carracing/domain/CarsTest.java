@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 class CarsTest {
 
     private static final int NUMBER_OF_CARS = 3;
-    private static final int ONE = 1;
+    private static final int MOVABLE_POSITION_NUMBER_PER_MOVEMENT = 1;
     private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
     private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
     private static final int MIN_POSITION_NUMBER = RandomIntMovementPolicy.MIN_POSITION_NUMBER;
@@ -98,7 +98,7 @@ class CarsTest {
     }
 
     private static List<Integer> provideDuplicatedOnes() {
-        return provideDuplicatedValues(ONE);
+        return provideDuplicatedValues(MOVABLE_POSITION_NUMBER_PER_MOVEMENT);
     }
 
     private static List<Integer> provideDuplicatedValues(int duplicatedValue) {

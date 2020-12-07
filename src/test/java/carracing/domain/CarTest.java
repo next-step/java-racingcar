@@ -20,8 +20,8 @@ import static org.mockito.Mockito.when;
 @DisplayName("자동차를 위한 테스트")
 class CarTest {
 
-    private static final int ONE = 1;
     private static final int INITIATION_POSITION_NUMBER = 0;
+    private static final int FIRST_MOVING_POSITION_NUMBER = INITIATION_POSITION_NUMBER + 1;
     private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
     private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
     private static final int RANDOM_BOUND_NUMBER = RandomIntMovementPolicy.RANDOM_BOUND_NUMBER;
@@ -61,7 +61,7 @@ class CarTest {
         car.move(movementPolicy);
 
         // Then
-        assertThat(car.getPosition().getNumber()).isEqualTo(ONE);
+        assertThat(car.getPosition().getNumber()).isEqualTo(FIRST_MOVING_POSITION_NUMBER);
     }
 
     private static Stream<Arguments> provideMovableCases() {
