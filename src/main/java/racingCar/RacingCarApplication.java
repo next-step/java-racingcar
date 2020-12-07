@@ -8,6 +8,7 @@ package racingCar;
 public class RacingCarApplication {
 	public static void main(String[] args) {
 		int carCount = View.inputCarCount();
-		Game game = new Game(carCount);
+		int matchCount = View.inputMatchCount();
+		Game game = new Game(carCount, matchCount);
 	}
 }

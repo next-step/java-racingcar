@@ -7,10 +7,12 @@ package racingCar;
  **/
 public class Game {
 	private static int carCount;
+	private static int matchCount;
 
-	public Game(int carCount) {
+	public Game(int carCount, int matchCount) {
 		validateCarCount(carCount);
 		this.carCount = carCount;
+		this.matchCount = matchCount;
 	}
 
 	private void validateCarCount(int carCount) {
@@ -19,5 +21,9 @@ public class Game {
 
 	public int getCarCount() {
 		return carCount;
+	}
+
+	public int getMatchCount() {
+		return matchCount;
 	}
 }

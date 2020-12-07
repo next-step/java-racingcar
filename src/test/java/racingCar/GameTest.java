@@ -22,7 +22,8 @@ public class GameTest {
 	@ParameterizedTest
 	@ValueSource(ints = {4,5,6})
 	void userEnterCarCount(int carCount){
-		Game game = new Game(carCount);
+		int matchCount = 1;
+		Game game = new Game(carCount, matchCount);
 		assertThat(game.getCarCount()).isEqualTo(carCount);
 	}
 
@@ -31,9 +32,20 @@ public class GameTest {
 	@Test
 	void validateUserEnterCarCount(){
 		int carCount = 0;
+		int matchCount = 1;
 		assertThatThrownBy(() -> {
-			Game game = new Game(carCount);
+			Game game = new Game(carCount, matchCount);
 		}).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("자동차 수는 1보다 작을 수 없습니다.");
+	}
+
+	@Order(3)
+	@DisplayName("2.사용자는 경주를 시도할 횟수를 입력할 수 있다.")
+	@ParameterizedTest
+	@ValueSource(ints = {4,5,6})
+	void userEnterCarMatchCount(int matchCount){
+		int carCount = 5;
+		Game game = new Game(carCount, matchCount);
+		assertThat(game.getMatchCount()).isEqualTo(matchCount);
 	}
 }
