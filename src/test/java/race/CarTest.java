@@ -26,8 +26,8 @@ class CarTest {
 	@Test
 	void 자동차_이름부여_테스트() {
 		MovePolicy movePolicy = new SimpleMovePolicy();
-		Car newCar = Car.ofName("pobi", movePolicy);
-		assertThat(newCar.getName()).isEqualTo("pobi");
+		Car newCar = Car.ofName(CarName.of("pobi"), movePolicy);
+		assertThat(newCar.getNameValue()).isEqualTo("pobi");
 	}
 
 	@DisplayName("자동차 그룹에 콤마로 구분된 문자열을 받아 각각 이름을 부여하고 생성한다.")

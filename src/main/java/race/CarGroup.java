@@ -17,7 +17,7 @@ public class CarGroup {
 	}
 
 	public boolean ofCarName(String name) {
-		return this.cars.stream().anyMatch(car -> car.getName().equals(name));
+		return this.cars.stream().anyMatch(car -> car.getNameValue().equals(name));
 	}
 
 	public void moveAll() {

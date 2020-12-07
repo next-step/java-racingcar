@@ -30,7 +30,7 @@ public class RaceGameResultMessage {
 	}
 
 	private String amountToSeparatorParser(Car car) {
-		return String.format(RESULT_MESSAGE_FORMAT, car.getName(), parseSeparator(car.nowDistance()));
+		return String.format(RESULT_MESSAGE_FORMAT, car.getNameValue(), parseSeparator(car.nowDistance()));
 	}
 
 	private String parseSeparator(int distance) {
@@ -42,7 +42,7 @@ public class RaceGameResultMessage {
 	public String getDistanceWinner() {
 		return cars.stream().collect(Collectors.toMap(
 			Car::nowDistance,
-			Car::getName,
+			Car::getNameValue,
 			(existWinner, addWinner) -> existWinner + InputValue.INPUT_NAME_SEPARATOR + addWinner,
 			TreeMap::new))
 			.lastEntry()

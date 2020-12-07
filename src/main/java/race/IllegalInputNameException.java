@@ -5,6 +5,6 @@ public class IllegalInputNameException extends IllegalArgumentException {
 
 	@Override
 	public String getMessage() {
-		return String.format(ILLEGAL_INPUT_FORMAT_MESSAGE, InputValue.MAX_INPUT_NAME_LENGTH);
+		return String.format(ILLEGAL_INPUT_FORMAT_MESSAGE, CarName.MAX_INPUT_NAME_LENGTH);
 	}
 }
