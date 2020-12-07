@@ -12,7 +12,7 @@ public class ResultView {
 
     public static void getRoundResult(List<Car> cars, String sign) {
         cars.stream()
-                .map(Car::getDashboard)
+                .map(Car::getDistance)
                 .forEach(d -> printCountBySign(sign, d.getMileage()));
         System.out.println();
     }
