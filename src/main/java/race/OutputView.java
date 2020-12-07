@@ -18,7 +18,7 @@ public class OutputView implements GameObserver {
 	}
 
 	public void sendMessageToUser() {
-		System.out.println(this.raceGameController.getNowCarsMoveStatus() + GameResultMessage.TRY_SEPARATOR);
+		System.out.println(this.raceGameController.getNowCarsMoveStatus() + RaceGameResultMessage.TRY_SEPARATOR);
 
 		if (this.raceGameController.isOverTryTimes()) {
 			System.out.println("Controller에 우승자를 물어보자.");

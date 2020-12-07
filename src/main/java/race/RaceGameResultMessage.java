@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class GameResultMessage {
+public class RaceGameResultMessage {
 	public static final String MESSAGE_SEPARATOR = "";
 	public static final String TRY_SEPARATOR = "\n";
 	public static final String DISTANCE_SEPARATOR = "-";
@@ -12,9 +12,9 @@ public class GameResultMessage {
 	private final int tryTimes;
 	private final List<Car> cars;
 
-	public GameResultMessage(int tryTimes, List<Car> cars) {
+	public RaceGameResultMessage(int tryTimes, CarGroup cars) {
 		this.tryTimes = tryTimes;
-		this.cars = cars;
+		this.cars = cars.nowCarStatus();
 	}
 
 	public int getTryTimes() {

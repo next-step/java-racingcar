@@ -37,8 +37,7 @@ public class RaceGameModel implements GameModel {
 		this.gameObserver.forEach(GameObserver::update);
 	}
 
-	public GameResultMessage createGameResultMessage() {
-
-		return new GameResultMessage(this.tryTimes, this.raceCarGroup.nowCarStatus());
+	public RaceGameResultMessage createGameResultMessage() {
+		return new RaceGameResultMessage(this.tryTimes, this.raceCarGroup);
 	}
 }

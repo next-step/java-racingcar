@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-class RaceGameProcessorTest {
+class RaceGameControllerTest {
 
 	@DisplayName("경주할 자동차 이름을 부여하고 결과 메세지에 이름을 추가한다.")
 	@Test
