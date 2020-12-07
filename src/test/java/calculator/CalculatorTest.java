@@ -38,18 +38,18 @@ public class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("사칙연산 기호가 아닌경우")
     @ParameterizedTest
     @ValueSource(strings = {"1 ? 2", "3 ^ 5", "3 * 4 x 2",})
+    @DisplayName("사칙연산 기호가 아닌경우")
     void no_supported_operations(String input) {
         assertThatThrownBy(() -> {
             Calculator.equality(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("연산 순서가 틀린 경우와 공백문자가 중간에 없는 경우")
     @ParameterizedTest
     @ValueSource(strings = {"1 2 *", "1+ 2", "1 + 2 3 /"})
+    @DisplayName("연산 순서가 틀린 경우와 공백문자가 중간에 없는 경우")
     void no_exact_order(String input) {
         assertThatThrownBy(() -> {
             Calculator.equality(input);

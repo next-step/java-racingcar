@@ -29,8 +29,7 @@ public class CalculatorApp {
 
     private static String scanInput() {
         System.out.println("사칙연산 수식을 입력해 주세요(종료: q): ");
-        String input = scanner.nextLine();
-        return input;
+        return scanner.nextLine();
     }
 
     private static boolean isQuitApp(String input) {
