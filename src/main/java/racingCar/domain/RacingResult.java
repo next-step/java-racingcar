@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingResult {
-    private static final int SAME_SCORE = 0;
-    private static final int CHANGE_WINNER = -1;
     private List<Car> cars;
     private List<Car> winningCars;
 
