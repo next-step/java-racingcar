@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,11 +44,10 @@ class CarTest {
 	@DisplayName("자동차 그룹에 콤마로 구분된 문자열을 받아 각각 이름을 부여하고 생성한다.")
 	@Test
 	void 자동차_그룹_이름부여_테스트() {
-		String names = "pobi,hglee";
+		String inputNames = "pobi,hglee";
 		MovePolicy movePolicy = new SimpleMovePolicy();
-		CarGroup carGroup = CarGroup.ofNames(",", names, movePolicy);
-		Arrays.stream(names.split(",")).forEach(name -> {
-			assertThat(carGroup.ofCarName(name)).isTrue();
-		});
+		List<String> nameList = Arrays.asList(inputNames.split(","));
+		CarGroup carGroup = CarGroup.ofInputValues(InputValue.ofSeparatorValues(inputNames), movePolicy);
+		nameList.forEach(name -> assertThat(carGroup.ofCarName(name)).isTrue());
 	}
 }

@@ -9,12 +9,12 @@ public class RaceGameController {
 
 	public RaceGameController(MovePolicy movePolicy) {
 		this.inputValue = InputView.makeGameInputValue();
-		this.raceGameModel = new RaceGameModel(this.inputValue.names(), movePolicy);
+		this.raceGameModel = new RaceGameModel(this.inputValue, movePolicy);
 	}
 
 	public RaceGameController(InputValue inputValue, MovePolicy movePolicy) {
 		this.inputValue = inputValue;
-		this.raceGameModel = new RaceGameModel(this.inputValue.names(), movePolicy);
+		this.raceGameModel = new RaceGameModel(this.inputValue, movePolicy);
 	}
 
 	public void registerGameObserver(GameObserver gameObserver) {

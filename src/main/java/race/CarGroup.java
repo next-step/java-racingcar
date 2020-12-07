@@ -1,6 +1,5 @@
 package race;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,14 +14,14 @@ public class CarGroup {
 			.collect(Collectors.toList());
 	}
 
-	private CarGroup(String separator, String names, MovePolicy movePolicy) {
-		this.cars = Arrays.stream(names.split(separator))
+	private CarGroup(InputValue inputValue, MovePolicy movePolicy) {
+		this.cars = inputValue.names().stream()
 			.map(name -> Car.ofName(name, movePolicy))
 			.collect(Collectors.toList());
 	}
 
-	public static CarGroup ofNames(String inputNameSeparator, String names, MovePolicy movePolicy) {
-		return new CarGroup(inputNameSeparator, names, movePolicy);
+	public static CarGroup ofInputValues(InputValue names, MovePolicy movePolicy) {
+		return new CarGroup(names, movePolicy);
 	}
 
 	public static CarGroup of(int groupSize, MovePolicy movePolicy) {

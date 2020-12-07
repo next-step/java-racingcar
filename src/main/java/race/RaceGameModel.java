@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceGameModel implements GameModel {
-	private static final String INPUT_NAME_SEPARATOR = ",";
 	private final List<GameObserver> gameObserver = new ArrayList<>();
 	private final CarGroup raceCarGroup;
 	private int tryTimes = 0;
@@ -13,8 +12,8 @@ public class RaceGameModel implements GameModel {
 		this.raceCarGroup = CarGroup.of(carAmount, movePolicy);
 	}
 
-	public RaceGameModel(String names, MovePolicy movePolicy) {
-		this.raceCarGroup = CarGroup.ofNames(INPUT_NAME_SEPARATOR, names, movePolicy);
+	public RaceGameModel(InputValue names, MovePolicy movePolicy) {
+		this.raceCarGroup = CarGroup.ofInputValues(names, movePolicy);
 	}
 
 	@Override
