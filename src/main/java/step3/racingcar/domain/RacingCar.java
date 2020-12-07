@@ -40,4 +40,5 @@ public class RacingCar {
 	public int hashCode() {
 		return id;
 	}
+
 }
