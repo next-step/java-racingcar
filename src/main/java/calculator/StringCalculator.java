@@ -5,7 +5,9 @@ import java.util.List;
 
 public class StringCalculator {
 
-    private static final String splitRegex = " ";
+    private static final String SPLIT_REGEX = " ";
+    private static final String MARK_ADD = "+";
+    private static final String MARK_SUBTRACTION = "-";
     
     private List<String> inputList;
     private int baseValue = 0;
@@ -16,13 +18,45 @@ public class StringCalculator {
         this.inputList = this.splitInput(input);
     }
 
+    public List<String> getInputList() {
+        return inputList;
+    }
+
+    public void setInputList(List<String> inputList) {
+        this.inputList = inputList;
+    }
+
+    public int getBaseValue() {
+        return baseValue;
+    }
+
+    public void setBaseValue(int baseValue) {
+        this.baseValue = baseValue;
+    }
+
+    public int getDifferentValue() {
+        return differentValue;
+    }
+
+    public void setDifferentValue(int differentValue) {
+        this.differentValue = differentValue;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
+
     /**
      * 입력 값을 쪼개어 리스트에 담습니다.
      * @param input
      * @return
      */
     public List<String> splitInput(String input) {
-        return Arrays.asList(input.split(StringCalculator.splitRegex));
+        return Arrays.asList(input.split(StringCalculator.SPLIT_REGEX));
     }
 
     /**
@@ -30,11 +64,11 @@ public class StringCalculator {
      * @return
      */
     public int calculate() {
-        for (int i = 0 ; i < this.inputList.size() ; i++) {
-            this.saveValueAndMark(this.inputList.get(i).trim(), i);
+        for (int i = 0 ; i < this.getInputList().size() ; i++) {
+            this.saveValueAndMark(this.getInputList().get(i).trim(), i);
             executeCalculate(i);
         }
-        return this.baseValue;
+        return this.getBaseValue();
     }
 
     /**
@@ -44,17 +78,30 @@ public class StringCalculator {
      */
     public void saveValueAndMark(String input, int index) {
         System.out.println("set value : " + input);
+        this.isNotData(input);
+
         if(this.isCalculateIndex(index)) {
-            this.differentValue = Integer.parseInt(input);
+            this.setDifferentValue(Integer.parseInt(input));;
             return;
         }
 
         if(this.isNumberDataIndex(index)) {
-            this.baseValue = Integer.parseInt(input);
+            this.setBaseValue(Integer.parseInt(input));
             return;
         }
 
         this.mark = input;
+    }
+
+    /**
+     * 데이터가 null이거나 빈 공백 문자일경우 오류를 발생시킵니다.
+     * @param input
+     * @throws IllegalArgumentException
+     */
+    public void isNotData(String input) throws IllegalArgumentException {
+        if(input == null && input.trim().length() == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -84,7 +131,7 @@ public class StringCalculator {
      */
     private void executeCalculate(int i) {
         if (this.isCalculateIndex(i)) {
-            System.out.printf("f:%s, b:%s, m:%s" ,this.baseValue, this.differentValue, this.mark);
+            System.out.printf("f:%s, b:%s, m:%s\n" ,this.baseValue, this.differentValue, this.mark);
             this.baseValue = this.selectAndExecuteCalculation(this.baseValue, this.differentValue, this.mark);
         }
     }
@@ -97,8 +144,12 @@ public class StringCalculator {
      * @return calculate result
      */
     public int selectAndExecuteCalculation(int a, int b, String mark) {
-        if("+".equals(mark)) {
+        if(StringCalculator.MARK_ADD.equals(mark)) {
             return this.add(a, b);
+        }
+
+        if(StringCalculator.MARK_SUBTRACTION.equals(mark)) {
+            return this.subtraction(a, b);
         }
         throw new IllegalArgumentException("입력값의 기호가 사칙연산 기호가 아닙니다.");
     }
@@ -111,6 +162,16 @@ public class StringCalculator {
      */
     public int add(int a, int b) {
         return a + b;
+    }
+
+    /**
+     * 두 수를 뺍니다
+     * @param a
+     * @param b
+     * @return a - b
+     */
+    public int subtraction(int a, int b) {
+        return a - b;
     }
 
 

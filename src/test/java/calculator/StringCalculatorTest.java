@@ -19,4 +19,15 @@ public class StringCalculatorTest {
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
     }
+
+    @ParameterizedTest
+    @DisplayName("입력 값을 받아서 뺄셈을 수행하여 값을 리턴 받음")
+    @CsvSource(value = {"5 - 3,2", "5 - 3 - 5,-3"})
+    public void subtraction(String input, String expected) {
+        // give
+        StringCalculator stringCalculator = new StringCalculator(input);
+
+        // when then
+        assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
+    }
 }
