@@ -11,9 +11,9 @@ public class Cars {
 
 	private Cars(List<String> carNames) {
 		this.cars = new ArrayList<>();
-		for (String carName : carNames) {
-			cars.add(Car.create(carName));
-		}
+		carNames.forEach(
+			carName -> cars.add(Car.create(carName))
+		);
 	}
 
 	public static Cars of(List<String> carNames) {
