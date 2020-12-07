@@ -5,7 +5,7 @@ package com.ssabae.nextstep.racingcar.step03.domain;
  * @project : java-racingcar
  * @since : 2020-12-06
  */
-public class MoveOperator {
+public class MoveOperator implements Operator<MoveState> {
 
     private final int minValue;
     private final int maxValue;
@@ -17,6 +17,7 @@ public class MoveOperator {
         this.movementMinValue = movementMinValue;
     }
 
+    @Override
     public MoveState operate(int number) {
         if (number < minValue || number > maxValue) {
             String text = String.format("움직일 수 있는 숫자의 허용범위는 %d~%d 까지입니다.", minValue, maxValue);

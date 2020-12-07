@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.ValueSource;
  */
 class MoveOperatorTest {
 
-    MoveOperator operator = new MoveOperator(0, 9, 4);
+    private final Operator<MoveState> operator = new MoveOperator(0, 9, 4);
 
     @ParameterizedTest(name = "{displayName}[{index}] - \"{arguments}\"")
     @DisplayName("숫자에 따른 판정 테스트 - (GO)")
@@ -40,4 +40,5 @@ class MoveOperatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("움직일 수 있는 숫자의 허용범위는 0~9 까지입니다.");
     }
+
 }
