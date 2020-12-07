@@ -42,8 +42,6 @@ public class RacingTest {
         assertAll("racing",
                 () -> assertEquals(cars.get(0).getName(), "bmw"),
                 () -> assertEquals(cars.get(1).getName(), "audi"),
-                () -> assertEquals(cars.get(2).getName(), "benz"))
-                ;
-
+                () -> assertEquals(cars.get(2).getName(), "benz"));
     }
 }
