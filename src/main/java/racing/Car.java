@@ -1,35 +1,32 @@
 package racing;
 
 public class Car {
+//    private Display display;
     private int allMeter = 0;
-    private Display display;
+    private String name;
 
-    public Car(Display display) {
-        this.display = display;
+    public Car( String name){
+        this.name = name;
     }
 
-    public int run(int inputNumber) {
-        allMeter = allMeter + returnMeterByCondition(inputNumber);
-        for (int i = 0; i < allMeter; i++) {
-            display.printMove();
-        }
-        stopRunning();
+    public int run( int randomNumber) {
+        allMeter = allMeter + returnMeterByCondition(randomNumber);
         return allMeter;
     }
+
     protected int returnMeterByCondition(int inputNumber){
         int moveableNumber = 4;
         if (inputNumber < moveableNumber) {
             return 0;
         }
-        this.allMeter = this.allMeter + 1;
-        return allMeter;
+        return  1;
     }
 
-    private void stopRunning() {
-        display.printEmptyLine();
+    public String getName(){
+        return this.name;
     }
-
     public int totalMeter() {
         return this.allMeter;
     }
+
 }

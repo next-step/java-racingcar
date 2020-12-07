@@ -4,27 +4,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingTest {
 
-    private CarRacing cars;
+    private CarRacing carRacing;
     private Display display;
-    private InputUtil inputUtil;
+//    private InputUtil inputUtil;
+    private ParticipateCars participateCars;
     @BeforeEach
     void setup(){
         display = new Display();
-        inputUtil = new InputUtil();
-        cars = new CarRacing(display, inputUtil);
+        String [] carNames = {"Morris", "Daniel", "Choi"};
+        participateCars = new ParticipateCars(carNames);
+        carRacing = new CarRacing( participateCars, display);
     }
 
     @Test
-    @DisplayName("경주에 참가하는 차의 수 확인")
-    void createCar() {
-        int numberOfRacingCar = 5;
-        assertThat(cars.createCar(numberOfRacingCar)).isEqualTo(5);
+    void winnerTest() {
+        carRacing.startRacing(3);
+        String[] winner = carRacing.winner().split(",");
+        assertThat(winner.length).isGreaterThan(0);
     }
-
-
-
 }
