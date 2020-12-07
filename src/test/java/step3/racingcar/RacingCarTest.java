@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step3.racingcar.domain.RacingCar;
+
 public class RacingCarTest {
 
 	@DisplayName("4 이상의 정수 값일 경우 자동차 움직임")
