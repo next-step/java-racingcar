@@ -2,7 +2,7 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class Car {
+public class Car implements Cloneable {
     private static final int LOW_POWER = 3;
     private static final int MOVE_POSITION = 1;
     private CarName carName;
@@ -45,5 +45,12 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    protected Car clone() throws CloneNotSupportedException {
+        Car clone = (Car)super.clone();
+        clone.carName = carName.clone();
+        return clone;
     }
 }

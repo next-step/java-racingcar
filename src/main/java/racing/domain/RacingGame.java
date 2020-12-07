@@ -1,12 +1,14 @@
 package racing.domain;
 
-import racing.view.OutputView;
+import racing.Results;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class RacingGame {
     private final int repeatCount;
-    private Cars cars;
+    private final Cars cars;
 
     public RacingGame(String carNames, int repeatCount, PowerGenerator powerGenerator) {
         this.repeatCount = repeatCount;
@@ -18,15 +20,14 @@ public class RacingGame {
         this.repeatCount = repeatCount;
     }
 
-    public void start() {
-        OutputView.printTitle();
-
+    public Results play() throws CloneNotSupportedException {
+        List<Result> results = new ArrayList<>();
         for (int i = 0; i < repeatCount; i++) {
             cars.move();
-            OutputView.printResult(this.cars);
+            results.add(new Result(cars));
         }
 
-        OutputView.printWinners(this.cars);
+        return new Results(results);
     }
 
     @Override
