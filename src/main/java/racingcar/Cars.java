@@ -21,10 +21,11 @@ public class Cars {
 		}
 	}
 
-	public List<Integer> getMoveResult() {
-		return cars.stream()
-			.map(Car::getMoveCount)
+	public RacingResults racingResults() {
+		List<RacingResult> results = cars.stream()
+			.map(car -> new RacingResult(car.getName(), car.getMoveCount()))
 			.collect(Collectors.toList());
+		return new RacingResults(results);
 	}
 
 	public int sizeOfCars() {

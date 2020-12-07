@@ -22,6 +22,9 @@ public class Car {
 	public int getMoveCount() {
 		return this.moveCount;
 	}
+	public String getName() {
+		return this.name;
+	}
 
 	private void move() {
 		this.moveCount++;

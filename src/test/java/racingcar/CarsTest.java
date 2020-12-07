@@ -55,24 +55,43 @@ public class CarsTest {
 	@ValueSource(ints = {1, 3, 5, 100})
 	@DisplayName("4이상의 숫자가 나오면 반복 횟수만큼 Car 리스트의 moveCount가 모두 누적되어 증가해야한다")
 	void carsMoveTest(int moveCount) {
+		//given
 		Cars cars = new Cars(Arrays.asList("one","two","three","four","five"), fixedNumber4Generator);
-		List<Integer> expectedResult = Arrays.asList(moveCount, moveCount, moveCount, moveCount, moveCount);
+		RacingResults expectedResult = new RacingResults(
+			Arrays.asList(new RacingResult("one", moveCount),
+				new RacingResult("two", moveCount),
+				new RacingResult("three", moveCount),
+				new RacingResult("four", moveCount),
+				new RacingResult("five", moveCount)
+			)
+		);
+		//when
 		for (int i = 0; i < moveCount; i++) {
 			cars.move();
 		}
-		assertThat(cars.getMoveResult()).isEqualTo(expectedResult);
+		//then
+		assertThat(cars.racingResults()).isEqualTo(expectedResult);
 	}
 
 	@ParameterizedTest
 	@ValueSource(ints = {1, 3, 5, 100})
 	@DisplayName("4미만의 숫자는 몇 번을 반복해도 Car 리스트의 moveCount가 0으로 유지돼야한다")
 	void carsStopTest(int moveCount) {
-		List<String> abc = Arrays.asList("a", "b");
+		//given
 		Cars cars = new Cars(Arrays.asList("one","two","three","four","five"), fixedNumber3Generator);
-		List<Integer> expectedResult = Arrays.asList(0, 0, 0, 0, 0);
+		RacingResults expectedResult = new RacingResults(
+			Arrays.asList(new RacingResult("one", 0),
+				new RacingResult("two", 0),
+				new RacingResult("three", 0),
+				new RacingResult("four", 0),
+				new RacingResult("five", 0)
+			)
+		);
+		//when
 		for (int i = 0; i < moveCount; i++) {
 			cars.move();
 		}
-		assertThat(cars.getMoveResult()).isEqualTo(expectedResult);
+		//then
+		assertThat(cars.racingResults()).isEqualTo(expectedResult);
 	}
 }

@@ -15,7 +15,7 @@ public class RacingCar {
 		Cars cars = new Cars(carNameList, new RandomNumberGenerator());
 		for (int i = 0; i < tryCount; i++) {
 			cars.move();
-			ResultView.printMoveResult(cars.getMoveResult());
+			ResultView.printMoveResult(cars.racingResults());
 		}
 	}
 
