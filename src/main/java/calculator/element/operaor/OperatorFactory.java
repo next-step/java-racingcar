@@ -13,7 +13,7 @@ public class OperatorFactory {
         operatorMap.put("/", new Division());
     }
 
-    public static boolean isOperator(String operatorKey) {
+    private static boolean isOperator(String operatorKey) {
         return operatorMap.containsKey(operatorKey);
     }
 

@@ -1,4 +1,4 @@
-package calculator.parser;
+package calculator.deque;
 
 import calculator.element.Element;
 import calculator.element.operand.Operand;

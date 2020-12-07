@@ -3,13 +3,13 @@ package calculator;
 import calculator.element.Element;
 import calculator.element.operand.Operand;
 import calculator.element.operaor.*;
-import calculator.parser.InputParser;
-import calculator.parser.ElementDeque;
+import calculator.deque.ElementDequeFactory;
+import calculator.deque.ElementDeque;
 
 public class Calculator {
 
     static int equality(String input) {
-        ElementDeque elementDeque = InputParser.parseResult(input);
+        ElementDeque elementDeque = ElementDequeFactory.createElementDeque(input);
         return operateMultiple(elementDeque);
     }
 

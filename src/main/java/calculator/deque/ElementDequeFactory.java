@@ -1,13 +1,13 @@
-package calculator.parser;
+package calculator.deque;
 
-public class InputParser {
+public class ElementDequeFactory {
     private static final String SPLIT_SPACE_CHAR = " ";
 
-    public static ElementDeque parseResult(String input) {
+    public static ElementDeque createElementDeque(String input) {
         if(isNullOrEmptyInput(input)) {
             throw new IllegalArgumentException("입력이 없습니다.");
         }
-        String[] splitInput = parseInput(input);
+        String[] splitInput = splitInput(input);
         return new ElementDeque(splitInput);
     }
 
@@ -18,7 +18,7 @@ public class InputParser {
         return input.trim().equals("");
     }
 
-    private static String[] parseInput(String input) {
+    private static String[] splitInput(String input) {
         return input.split(SPLIT_SPACE_CHAR);
     }
 }
