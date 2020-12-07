@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ class RacingCarTest {
 
     @Test
     @DisplayName("자동자 주행 테스트")
-    void runTest() {
+    void racingCar_run_test() {
         // given
         RacingCar racingCar = new RacingCar();
 
@@ -17,7 +17,7 @@ class RacingCarTest {
         racingCar.run(() -> true);
 
         // then
-        assertThat(racingCar.getCarPosition()).isPositive();
+        assertThat(racingCar.getCarPosition()).isEqualTo(1);
     }
 
 }
