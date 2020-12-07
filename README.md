@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+* 입력
+    * 자동차 대수
+    * 시도할 회수
+* 회수 반복
+    * 0~9의 random 값 생성
+    * random 값이 4이상일 경우 전진
+    * 현재 결과 출력
