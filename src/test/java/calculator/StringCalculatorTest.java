@@ -41,4 +41,15 @@ public class StringCalculatorTest {
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
     }
+
+    @ParameterizedTest
+    @DisplayName("입력 값을 받아서 나눗셈을 수행하여 값을 리턴 받음")
+    @CsvSource(value = {"6 / 2,3", "12 / 3 / 2,2"})
+    public void division(String input, String expected) {
+        // give
+        StringCalculator stringCalculator = new StringCalculator(input);
+
+        // when then
+        assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
+    }
 }

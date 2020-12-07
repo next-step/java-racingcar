@@ -9,6 +9,7 @@ public class StringCalculator {
     private static final String MARK_ADD = "+";
     private static final String MARK_SUBTRACTION = "-";
     private static final String MARK_MULTIPLICATION = "*";
+    private static final String MARK_DIVISION = "/";
     
     private List<String> inputList;
     private int baseValue = 0;
@@ -64,7 +65,7 @@ public class StringCalculator {
      * 입력 된 문자열 값을 계산합니다.
      * @return
      */
-    public int calculate() {
+    public int calculate() throws IllegalArgumentException {
         for (int i = 0 ; i < this.getInputList().size() ; i++) {
             this.saveValueAndMark(this.getInputList().get(i).trim(), i);
             executeCalculate(i);
@@ -77,7 +78,7 @@ public class StringCalculator {
      * @param input
      * @param index
      */
-    public void saveValueAndMark(String input, int index) {
+    public void saveValueAndMark(String input, int index) throws IllegalArgumentException {
         System.out.println("set value : " + input);
         this.isNotData(input);
 
@@ -100,7 +101,7 @@ public class StringCalculator {
      * @throws IllegalArgumentException
      */
     public void isNotData(String input) throws IllegalArgumentException {
-        if(input == null && input.trim().length() == 0) {
+        if(input == null || input.trim().length() == 0) {
             throw new IllegalArgumentException();
         }
     }
@@ -157,6 +158,10 @@ public class StringCalculator {
             return this.multiplication(a, b);
         }
 
+        if(StringCalculator.MARK_DIVISION.equals(mark)) {
+            return this.division(a, b);
+        }
+
         throw new IllegalArgumentException("입력값의 기호가 사칙연산 기호가 아닙니다.");
     }
 
@@ -190,4 +195,13 @@ public class StringCalculator {
         return a * b;
     }
 
+    /**
+     * 두 수를 나눕니다
+     * @param a
+     * @param b
+     * @return a - b
+     */
+    public int division(int a, int b) {
+        return a / b;
+    }
 }
