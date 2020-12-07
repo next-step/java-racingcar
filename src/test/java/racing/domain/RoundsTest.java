@@ -34,7 +34,7 @@ class RoundsTest {
         assertThrows(RoundOutOfRangeException.class, () -> Rounds.of(value));
     }
 
-    @DisplayName("게임 보고서(GameReport)를 만들 수 있다.")
+    @DisplayName("게임 보고서를 만들 수 있다.")
     @Test
     void play() {
         // given

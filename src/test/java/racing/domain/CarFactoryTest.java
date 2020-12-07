@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("자동차 공장(CarFactory) 테스트")
 public class CarFactoryTest {
 
-    @DisplayName("자동차들(Cars) 을 만들 수 있다.")
+    @DisplayName("자동차들을 만들 수 있다.")
     @Test
     void create() {
         // given

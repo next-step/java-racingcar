@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("자동차경주(RacingGame) 테스트")
 public class RacingGameTest {
 
-    @DisplayName("이동 규칙(MoveAble)의 생성자 주입으로 생성된다.")
+    @DisplayName("이동 규칙의 생성자 주입으로 생성된다.")
     @Test
     void create() {
         // given
@@ -23,7 +23,7 @@ public class RacingGameTest {
         assertThat(racingGame).isNotNull();
     }
 
-    @DisplayName("게임 보고서(GameReport)를 만들 수 있다.")
+    @DisplayName("게임 보고서를 만들 수 있다.")
     @Test
     void report() {
         // given

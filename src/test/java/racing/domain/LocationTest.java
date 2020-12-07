@@ -8,7 +8,7 @@ import racing.exception.LocationOutOfRangeException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DisplayName("`위치(Location)` 테스")
+@DisplayName("위치(Location) 테스트")
 public class LocationTest {
 
     @DisplayName("0과 양수를 허용한다.")

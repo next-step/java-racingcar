@@ -23,14 +23,14 @@ public class CarsTest {
         ));
     }
 
-    @DisplayName("자동차들(Cars)은 자동차(Car)로 생성된다.")
+    @DisplayName("자동차들은 자동차로 생성된다.")
     @Test
     void create() {
         // when / then
         assertThat(cars).isNotNull();
     }
 
-    @DisplayName("각 판마다 자동차(Car)들을 움직일 수 있다.")
+    @DisplayName("각 판마다 자동차들을 움직일 수 있다.")
     @Test
     void forward() {
         // given
@@ -47,7 +47,7 @@ public class CarsTest {
                 Car.of("4", 5))));
     }
 
-    @DisplayName("판 보고서(RoundReport)를 만들 수 있다.")
+    @DisplayName("판 보고서를 만들 수 있다.")
     @Test
     void report() {
         // when
