@@ -1,17 +1,19 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarsTest {
     private static final String COMMA = ",";
-    private final String TEST_CAR_NAME = "TEST_CAR";
+    private final String TEST_CAR_NAME = "T_CAR";
     private final int ALWAYS_TRUE_CONDITION = 9;
 
     @DisplayName("경기에 참가하는 자동차의 대수는 사용자가 정한다")
@@ -53,5 +55,32 @@ public class CarsTest {
 
         //then
         assertEquals(expected, expectedCarNames.containsAll(inputCarNames));
+    }
+
+    @DisplayName("각 자동차에 이름을 부여할 수 있다")
+    @ParameterizedTest
+    @CsvSource(value = {"A,B,C", "D,E", "Q,W,E,R,T"}, delimiter = ' ')
+    public void giveCarNames(String carNamesInput) {
+        //given when
+        List<String> carNames = Arrays.asList(carNamesInput.split(COMMA));
+        Cars cars = new Cars(carNames, new FixedCondition(ALWAYS_TRUE_CONDITION));
+
+        //then
+        for (int i = 0; i < carNames.size(); i++) {
+            assertEquals(carNames.get(i), cars.getCars().get(i).carName());
+        }
+    }
+
+    @Test
+    @DisplayName("자동차의 이름은 5자를 초과할 수 없다")
+    public void carNameCanNotExceedFive(){
+        //given
+        String failName = TEST_CAR_NAME + TEST_CAR_NAME;
+        List<String> carNames = Arrays.asList(failName.split(COMMA));
+
+        //when then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Cars(carNames, new FixedCondition(ALWAYS_TRUE_CONDITION)))
+                .withMessageMatching("자동차의 이름은 5자를 초과할 수 없습니다");
     }
 }
