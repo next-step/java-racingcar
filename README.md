@@ -23,4 +23,4 @@
 - [x] 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다.
 - [x] 반복적인 패턴을 찾아 반복문으로 구현한다.
 - [x] 연산 순서가 틀린 경우 IllegalArgumentException throw
-- [ ] 표준 입출력으로 동작하는 application 작성
+- [x] 표준 입출력으로 동작하는 application 작성

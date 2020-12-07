@@ -47,7 +47,7 @@ public class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("연산 순서가 틀린 경우와 공백문자가 없는 경우")
+    @DisplayName("연산 순서가 틀린 경우와 공백문자가 중간에 없는 경우")
     @ParameterizedTest
     @ValueSource(strings = {"1 2 *", "1+ 2", "1 + 2 3 /"})
     void no_exact_order(String input) {
