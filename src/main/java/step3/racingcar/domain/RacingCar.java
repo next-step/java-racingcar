@@ -8,6 +8,11 @@ public class RacingCar {
 		this.id = id;
 	}
 
+	public RacingCar(final int id, final int moveDistance) {
+		this.id = id;
+		this.moveDistance = moveDistance;
+	}
+
 	public void move(final int value) {
 		if (value < 4) {
 			return;
@@ -41,4 +46,7 @@ public class RacingCar {
 		return id;
 	}
 
+	public int getId() {
+		return this.id;
+	}
 }

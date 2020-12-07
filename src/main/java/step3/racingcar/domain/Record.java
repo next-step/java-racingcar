@@ -10,7 +10,10 @@ public class Record {
 
 	public Record(final int round, final List<RacingCar> carList) {
 		this.round = round;
-		this.carList = new ArrayList<>(carList);
+		this.carList = new ArrayList<>(carList.size());
+		for (RacingCar racingCar : carList) {
+			this.carList.add(new RacingCar(racingCar.getId(), racingCar.getMoveDistance()));
+		}
 	}
 
 	public List<RacingCar> getCarList() {
