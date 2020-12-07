@@ -14,4 +14,12 @@ public class CalculatorTest {
         Integer output = Calculator.equality(input);
         assertThat(output).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource({"1 + 2 + 3, 6", "1 - 2 + 1,0", "3 * 4 / 2,6", "12 / 2 - 4,2", "1 + 2 + 3 / 3, 2"})
+    @DisplayName("연산자 2개 이상 case 테스트")
+    void two_more_operation_calculator_test(String input, Integer expected) {
+        Integer output = Calculator.equality(input);
+        assertThat(output).isEqualTo(expected);
+    }
 }

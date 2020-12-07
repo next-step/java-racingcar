@@ -1,24 +1,25 @@
 package calculator;
 
-import calculator.operaor.*;
+import calculator.element.Element;
+import calculator.element.operand.Operand;
+import calculator.element.operaor.*;
 import calculator.parser.InputParser;
-import calculator.parser.InputDeque;
+import calculator.parser.ElementDeque;
 
 public class Calculator {
 
-    public static final String SPLIT_SPACE_CHAR = " ";
-
     static Integer equality(String input) {
-        InputDeque inputDeque = InputParser.parseResult(input);
+        ElementDeque elementDeque = InputParser.parseResult(input);
 
-        int operandA = Integer.parseInt(inputDeque.popInputItem());
-        Operator operator = OperatorFactory.getOperator(inputDeque.popInputItem());
-        int operandB = Integer.parseInt(inputDeque.popInputItem());
+        while(! elementDeque.isQuitCalculate()) {
+            Operand operandA = (Operand) elementDeque.popElement();
+            Operator operator = (Operator) elementDeque.popElement();
+            Operand operandB = (Operand) elementDeque.popElement();
+            Element result = operator.operate(operandA, operandB);
+            elementDeque.addResult(result);
+        }
 
-        return operator.operate(operandA, operandB);
-    }
-
-    private static String[] parseInput(String input) {
-        return input.split(SPLIT_SPACE_CHAR);
+        Operand operand = (Operand) elementDeque.popElement();
+        return operand.getValue();
     }
 }

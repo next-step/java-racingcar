@@ -1,4 +1,4 @@
-package calculator.operaor;
+package calculator.element.operaor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +11,10 @@ public class OperatorFactory {
         operatorMap.put("-", new Minus());
         operatorMap.put("*", new Multiply());
         operatorMap.put("/", new Division());
+    }
+
+    public static boolean isOperator(String operatorKey) {
+        return operatorMap.containsKey(operatorKey);
     }
 
     public static Operator getOperator(String operatorKey) {

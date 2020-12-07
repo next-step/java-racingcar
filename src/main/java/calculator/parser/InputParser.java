@@ -3,9 +3,9 @@ package calculator.parser;
 public class InputParser {
     public static final String SPLIT_SPACE_CHAR = " ";
 
-    public static InputDeque parseResult(String input) {
+    public static ElementDeque parseResult(String input) {
         String[] splitInput = parseInput(input);
-        return new InputDeque(splitInput);
+        return new ElementDeque(splitInput);
     }
 
     private static String[] parseInput(String input) {

@@ -16,7 +16,7 @@
 - [x] 나눗셈
 - [x] 연산자가 1개일 경우 계산하기 예) 3 * 4 = 7
 - [x] 입력값 파싱 담당 class 분리
-- [ ] 연산자가 2개 이상일 경우 계산하기 예) 3 * 4 - 2 = 5
+- [x] 연산자가 2개 이상일 경우 계산하기 예) 3 * 4 - 2 = 5
 - [ ] 입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 - [ ] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
 - [ ] 사칙 연산을 모두 포함하는 기능 구현
