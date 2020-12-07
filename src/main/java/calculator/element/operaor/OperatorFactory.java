@@ -18,6 +18,9 @@ public class OperatorFactory {
     }
 
     public static Operator getOperator(String operatorKey) {
+        if(! isOperator(operatorKey)) {
+            throw new IllegalArgumentException();
+        }
         return operatorMap.get(operatorKey);
     }
 }

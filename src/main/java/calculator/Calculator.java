@@ -10,7 +10,10 @@ public class Calculator {
 
     static Integer equality(String input) {
         ElementDeque elementDeque = InputParser.parseResult(input);
+        return operateMultiple(elementDeque);
+    }
 
+    private static Integer operateMultiple(ElementDeque elementDeque) {
         while(! elementDeque.isQuitCalculate()) {
             Operand operandA = (Operand) elementDeque.popElement();
             Operator operator = (Operator) elementDeque.popElement();
@@ -19,7 +22,6 @@ public class Calculator {
             elementDeque.addResult(result);
         }
 
-        Operand operand = (Operand) elementDeque.popElement();
-        return operand.getValue();
+        return ((Operand) elementDeque.popElement()).getValue();
     }
 }

@@ -11,16 +11,31 @@ public class ElementDeque {
     Deque<Element> elements = new ArrayDeque<>();
 
     public ElementDeque(String[] splitInput) {
-        for (String s : splitInput) {
-            if(OperatorFactory.isOperator(s)) {
-                Operator operator = OperatorFactory.getOperator(s);
-                elements.addLast(operator);
-                continue;
-            }
-
-            int intValue = Integer.parseInt(s);
-            elements.addLast(new Operand(intValue));
+        for (int index = 0; index < splitInput.length; index++) {
+            addElement(splitInput[index], index);
         }
+    }
+
+    private void addElement(String elementStr, int index) {
+        if(isOperandPosition(index)) {
+            addOperand(elementStr);
+        } else {
+            addOperator(elementStr);
+        }
+    }
+
+    private void addOperand(String elementStr) {
+        int intValue = Integer.parseInt(elementStr);
+        elements.addLast(new Operand(intValue));
+    }
+
+    private void addOperator(String elementStr) {
+        Operator operator = OperatorFactory.getOperator(elementStr);
+        elements.addLast(operator);
+    }
+
+    private boolean isOperandPosition(int index) {
+        return index % 2 == 0;
     }
 
     public void addResult(Element operand) {

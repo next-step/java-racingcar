@@ -46,4 +46,13 @@ public class CalculatorTest {
             Calculator.equality(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("연산 순서가 틀린 경우와 공백문자가 없는 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 2 *", "1+ 2", "1 + 2 3 /"})
+    void no_exact_order(String input) {
+        assertThatThrownBy(() -> {
+            Calculator.equality(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
