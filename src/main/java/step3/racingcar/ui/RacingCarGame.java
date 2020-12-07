@@ -4,6 +4,7 @@ import java.util.List;
 
 import step3.racingcar.domain.RacingCar;
 import step3.racingcar.domain.RacingCarGenerator;
+import step3.racingcar.number.RandomNumberGenerator;
 
 public class RacingCarGame {
 
@@ -16,13 +17,16 @@ public class RacingCarGame {
 	}
 
 	public void start() {
-		ready();
-	}
-
-	private void ready() {
 		int participateCarCount = inputView.participateCarCountInput();
 		int racingExecuteCountInput = inputView.racingExecuteCountInput();
 		List<RacingCar> racingCars = new RacingCarGenerator().generate(participateCarCount);
+		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
+		for (int i = 0; i < racingExecuteCountInput; i++) {
+			for (RacingCar racingCar : racingCars) {
+				racingCar.move(randomNumberGenerator.generate());
+			}
+		}
 	}
 
 }
