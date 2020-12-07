@@ -39,4 +39,15 @@ public class OperatorTest {
 		//Then
 		assertThat(calculate).isEqualTo(3);
 	}
+
+	@Test
+	@DisplayName("나눗셈 연산자 테스트")
+	public void division_test() throws Exception {
+		//Given
+		Division division = new Division();
+		//When
+		int calculate = division.calculate(1, 3);
+		//Then
+		assertThat(calculate).isEqualTo(0);
+	}
 }
