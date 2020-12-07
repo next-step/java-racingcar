@@ -33,4 +33,8 @@ public class RaceGameController {
 	public boolean isOverTryTimes() {
 		return inputValue.numberOfTryTimes() <= raceGameModel.createGameResultMessage().getTryTimes();
 	}
+
+	public String getRaceGameWinner() {
+		return raceGameModel.createGameResultMessage().getDistanceWinner();
+	}
 }
