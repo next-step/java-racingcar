@@ -9,9 +9,14 @@ public class RacingCarUtils {
         return new Random().nextInt(BOUNDARY);
     }
 
-    public static void checkCarNameRule(String car) {
-        if (car.length() > 5) {
-            throw new IllegalArgumentException("can not exceed 5 characters : " + car);
+    public static void checkCarNameRule(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("can not exceed 5 characters : " + carName);
         }
+    }
+
+    public static String[] splitCarNames(String carNames) {
+        String[] cars = carNames.split(",");
+        return cars;
     }
 }

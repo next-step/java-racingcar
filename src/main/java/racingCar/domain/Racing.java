@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingCar.RacingCarUtils.checkCarNameRule;
+import static racingCar.RacingCarUtils.splitCarNames;
 
 public class Racing {
     private List<Car> cars;
@@ -20,7 +20,6 @@ public class Racing {
 
     public Racing(String carNames, MoveStrategy moveStrategy) {
         this.cars = Arrays.stream(splitCarNames(carNames)).map(name -> new Car(name)).collect(Collectors.toList());
-        //this.cars = Stream.generate(() -> new Car()).limit(carNums).collect(Collectors.toList());
         this.moveStrategy = moveStrategy;
     }
 
@@ -28,14 +27,6 @@ public class Racing {
         for (Car car : cars) {
             car.racing(RacingCarUtils.randomValueGenerator(), moveStrategy);
         }
-    }
-
-    public String[] splitCarNames(String carNames) {
-        String[] cars = carNames.split(",");
-        for(String car : cars) {
-            checkCarNameRule(car);
-        }
-        return cars;
     }
 
     public List<Car> getRacingCars() {
