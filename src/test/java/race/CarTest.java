@@ -22,17 +22,6 @@ class CarTest {
 		assertThat(car.nowDistance()).isEqualTo(10);
 	}
 
-	@DisplayName("자동차를 여러대 이동시키고 최종 거리가 일치하는지 확인한다.")
-	@Test
-	void 자동차_여러대_이동_TEST() {
-		MovePolicy movePolicy = new SimpleMovePolicy();
-		CarGroup carGroup = CarGroup.of(10, movePolicy);
-		IntStream.range(0, 5).forEach(i -> {
-			carGroup.moveAll();
-		});
-		assertThat(carGroup.ofCarIndex(1).nowDistance()).isEqualTo(5);
-	}
-
 	@DisplayName("자동차에 이름을 부여한다.")
 	@Test
 	void 자동차_이름부여_테스트() {

@@ -8,10 +8,6 @@ public class RaceGameModel implements GameModel {
 	private final CarGroup raceCarGroup;
 	private int tryTimes = 0;
 
-	public RaceGameModel(int carAmount, MovePolicy movePolicy) {
-		this.raceCarGroup = CarGroup.of(carAmount, movePolicy);
-	}
-
 	public RaceGameModel(InputValue names, MovePolicy movePolicy) {
 		this.raceCarGroup = CarGroup.ofInputValues(names, movePolicy);
 	}

@@ -22,11 +22,10 @@ class OutputViewTest {
 	@Test
 	void 경주게임_결과메세지_TEST() {
 		gameProcessor.start();
-		String expected = "-----\n" +
-			"-----\n" +
-			"-----\n" +
-			"-----\n" +
-			"-----";
+		String expected = "1 : -----\n" +
+			"2 : -----\n" +
+			"3 : -----\n" +
+			"4 : -----";
 		assertThat(outputView.getGameResultMessage()).isEqualTo(expected);
 	}
 }

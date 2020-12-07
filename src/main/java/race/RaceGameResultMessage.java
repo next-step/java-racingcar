@@ -9,6 +9,7 @@ public class RaceGameResultMessage {
 	public static final String MESSAGE_SEPARATOR = "";
 	public static final String TRY_SEPARATOR = "\n";
 	public static final String DISTANCE_SEPARATOR = "-";
+	public static final String RESULT_MESSAGE_FORMAT = "%s : %s";
 
 	private final int tryTimes;
 	private final List<Car> cars;
@@ -29,14 +30,13 @@ public class RaceGameResultMessage {
 	}
 
 	private String amountToSeparatorParser(Car car) {
-		StringBuilder stringBuilder = new StringBuilder();
-		if (car.getName() != null && !"".equals(car.getName())) {
-			stringBuilder.append(car.getName()).append(" : ");
-		}
-		stringBuilder.append(IntStream.range(Car.START_DISTANCE, car.nowDistance())
+		return String.format(RESULT_MESSAGE_FORMAT, car.getName(), parseSeparator(car.nowDistance()));
+	}
+
+	private String parseSeparator(int distance) {
+		return IntStream.range(Car.START_DISTANCE, distance)
 			.mapToObj(i -> DISTANCE_SEPARATOR)
-			.collect(Collectors.joining(MESSAGE_SEPARATOR)));
-		return stringBuilder.toString();
+			.collect(Collectors.joining(MESSAGE_SEPARATOR));
 	}
 
 	public String getDistanceWinner() {

@@ -7,15 +7,8 @@ public class InputValue {
 	public static final String INPUT_NAME_SEPARATOR = ",";
 	public static final int MAX_INPUT_NAME_LENGTH = 5;
 
-	private List<String> names;
-	private int numberOfCar;
+	private final List<String> names;
 	private int numberOfTryTimes;
-
-
-	public InputValue(int numberOfCar, int numberOfTryTimes) {
-		this.numberOfCar = numberOfCar;
-		this.numberOfTryTimes = numberOfTryTimes;
-	}
 
 	public InputValue(String names, int numberOfTryTimes) {
 		this.names = generateNames(names);
@@ -50,10 +43,6 @@ public class InputValue {
 
 	public List<String> names() {
 		return names;
-	}
-
-	public int numberOfCar() {
-		return numberOfCar;
 	}
 
 	public int numberOfTryTimes() {
