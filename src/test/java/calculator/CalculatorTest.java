@@ -36,6 +36,10 @@ public class CalculatorTest {
         assertThatThrownBy(() -> {
             Calculator.equality("");
         }).isInstanceOf(IllegalArgumentException.class);
+        
+        assertThatThrownBy(() -> {
+            Calculator.equality(" ");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest

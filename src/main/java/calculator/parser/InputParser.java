@@ -5,14 +5,17 @@ public class InputParser {
 
     public static ElementDeque parseResult(String input) {
         if(isNullOrEmptyInput(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력이 없습니다.");
         }
         String[] splitInput = parseInput(input);
         return new ElementDeque(splitInput);
     }
 
     private static boolean isNullOrEmptyInput(String input) {
-        return input == null || input.equals("");
+        if (input == null)
+            return true;
+
+        return input.trim().equals("");
     }
 
     private static String[] parseInput(String input) {

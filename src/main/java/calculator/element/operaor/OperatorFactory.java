@@ -19,7 +19,7 @@ public class OperatorFactory {
 
     public static Operator getOperator(String operatorKey) {
         if(! isOperator(operatorKey)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("사칙 연산에 해당하지 않은 연산자입니다.");
         }
         return operatorMap.get(operatorKey);
     }
