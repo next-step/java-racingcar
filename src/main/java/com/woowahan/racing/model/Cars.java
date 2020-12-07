@@ -36,11 +36,15 @@ public class Cars {
 		return GameResult.of(this.cars);
 	}
 
-	private int findMaxDistance() {
+	int findMaxDistance() {
 		return this.cars
 			.stream()
 			.mapToInt(Car::getDistance)
 			.max()
 			.orElseThrow(() -> new NullPointerException(Message.MSG_NOT_FOUND_DISTANCE));
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 }

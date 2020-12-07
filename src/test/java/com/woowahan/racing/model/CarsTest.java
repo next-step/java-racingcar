@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -34,10 +35,27 @@ class CarsTest {
 
 	@DisplayName("getWinners메서드는 우승자를 최소 1명 이상 반환한다.")
 	@Test
-	void getWinners() {
+	void getWinnersMin() {
 
 		List<String> result = cars.getWinners();
 		assertThat(result.size()).isGreaterThanOrEqualTo(MIN_WINNER_COUNT);
+	}
+
+	@DisplayName("getWinners메서드 우승자의 이름을 반환하는데 우승자의 이름으로 찾은 Car는 전체 차중에 maxDistance값을 가진다.")
+	@Test
+	void getWinners() {
+
+		List<String> winners = cars.getWinners();
+
+		List<Car> winnersCars = cars.getCars()
+			.stream()
+			.filter(car -> winners.contains(car.getName()))
+			.collect(Collectors.toList());
+
+		int maxDistance = cars.findMaxDistance();
+		for (Car car : winnersCars) {
+			assertThat(maxDistance).isEqualTo(car.getDistance());
+		}
 	}
 
 }
