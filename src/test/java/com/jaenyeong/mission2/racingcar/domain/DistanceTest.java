@@ -65,4 +65,31 @@ class DistanceTest extends BaseTest {
 
         assertThat(distance.getDist()).isBetween(0, randomValue);
     }
+
+    @ParameterizedTest
+    @MethodSource("randomIntValues")
+    @DisplayName("랜덤 값이 아닌 직접 5 값을 삽입하는 경우 올바른 값을 반환되는지 확인하는 테스트")
+    void checkDistanceWhenGiven4Value(final int randomValue) {
+        Distance distance = new Distance(() -> 4);
+
+        for (int i = 0; i < randomValue; i++) {
+            distance = distance.move();
+        }
+
+        assertEquals(distance.getDist(), randomValue);
+    }
+
+    @ParameterizedTest
+    @MethodSource("randomIntValues")
+    @DisplayName("랜덤 값이 아닌 직접 5 값을 삽입하는 경우 올바른 값을 반환되는지 확인하는 테스트")
+    void checkDistanceWhenGiven3Value(final int randomValue) {
+        Distance distance = new Distance(() -> 3);
+
+        for (int i = 0; i < randomValue; i++) {
+            distance = distance.move();
+        }
+
+        final int stop = 0;
+        assertEquals(distance.getDist(), stop);
+    }
 }
