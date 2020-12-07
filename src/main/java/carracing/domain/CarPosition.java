@@ -4,7 +4,7 @@ package carracing.domain;
  * 자동차의 위치를 저장하는 클래스
  */
 public class CarPosition {
-    private final int number;
+    private int number;
 
     CarPosition(int number) {
         validateNumber(number);
@@ -19,6 +19,10 @@ public class CarPosition {
 
     private boolean isNegativeNumber(int position) {
         return position < 0;
+    }
+
+    public void move() {
+        this.number++;
     }
 
     public int getNumber() {
