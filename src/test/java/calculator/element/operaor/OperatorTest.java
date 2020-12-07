@@ -2,10 +2,12 @@ package calculator.element.operaor;
 
 import calculator.element.operand.Operand;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class OperatorTest {
 
@@ -50,5 +52,14 @@ public class OperatorTest {
         Operand result = operator.operate(new Operand(inputA), new Operand(inputB));
 
         assertThat(result.getValue()).isEqualTo(expectedOutput);
+    }
+
+    @Test
+    @DisplayName("나눗셈 연산 테스트 - 나누기 0 을 실행할 경우엔 IllegalArgumentException 이 발생한다.")
+    public void divideByZero() {
+        assertThatThrownBy(() -> {
+            Operator operator = new Division();
+            operator.operate(new Operand(3), new Operand(0));
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
