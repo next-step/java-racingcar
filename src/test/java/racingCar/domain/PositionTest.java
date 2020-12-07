@@ -60,4 +60,13 @@ public class PositionTest {
         assertThat(comparePos1.compareTo(comparePos2)).isEqualTo(-1);
     }
 
+    @Test
+    @DisplayName("Position 비교 test")
+    void equalsTest() {
+        comparePos1.move();
+        comparePos2.move();
+        assertThat(comparePos1.equals(comparePos2)).isEqualTo(true);
+    }
+
+
 }

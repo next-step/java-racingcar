@@ -20,7 +20,7 @@ public class RacingCarMain {
       }
 
       RacingResult result = new RacingResult(racing.getRacingCars());
-      result.getWinners();
+      result.calculateResult();
       System.out.println(result.toString());
   }
 

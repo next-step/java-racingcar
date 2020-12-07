@@ -1,35 +1,28 @@
 package racingCar.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class RacingResult {
     private static final int SAME_SCORE = 0;
     private static final int CHANGE_WINNER = -1;
     private List<Car> cars;
-    List<Car> winningCars = new ArrayList<>();
+    private List<Car> winningCars;
 
     public RacingResult(List<Car> cars) {
         this.cars = cars;
+        this.winningCars = new ArrayList<>();
     }
 
-    public void getWinners() {
-        winningCars.add(cars.get(0));
-        for(int i = 1; i < cars.size(); i++) {
-            compareCars(winningCars, cars.get(i));
-        }
-    }
+    public void calculateResult() {
+        Position maxPosition = cars.stream().max(Car::compareTo).get().getPosition();
 
-    private void compareCars(List<Car> winningCars, Car car) {
-        Car winnerCar = winningCars.get(0);
-        int result = winnerCar.compareTo(car);
-
-        if(result == SAME_SCORE) {
-            winningCars.add(car);
-        }
-        if(result == CHANGE_WINNER) {
-            winningCars.clear();
-            winningCars.add(car);
+        for(Car car : cars) {
+            if(maxPosition.equals(car.getPosition())) {
+                winningCars.add(car);
+            }
         }
     }
 
