@@ -36,6 +36,12 @@ public class CalculatorTest {
 	}
 
 	@Test
+	@DisplayName("0으로 나누는 경우 IllegalArgumentException throw")
+	void zeroDivisionTest() {
+		assertThatThrownBy(() -> Calculator.calculate(1, "/", 0)).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
 	@DisplayName("연산기호가 사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
 	void throwIllegalArgumentExceptionWhenOperationIsNotFourArithmeticTest() {
 		assertThatThrownBy(() -> Calculator.calculate(8, "%", 2)).isInstanceOf(IllegalArgumentException.class);
