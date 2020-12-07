@@ -18,6 +18,8 @@ class CarTest {
 		// given
 		Car car = new Car(value -> {
 			throw new UnsupportedOperationException();
+		}, () -> {
+			throw new UnsupportedOperationException();
 		});
 
 		// when
@@ -29,15 +31,16 @@ class CarTest {
 
 	@ParameterizedTest
 	@CsvSource(value = {"0,0,true", "1,2,true", "9,8,false"})
-	@DisplayName("Car.getChanceForMoveForward(int chance) 호출로 chance 의 값이 조건을 충족했을 때 차량의 position 이 1 증가하는지 확인")
+	@DisplayName("Car.getChanceForMoveForward() 호출시 moveCondition, moveChanceGenerator 에 따라 전진하는지 테스트")
 	void getChanceForMoveForward(int condition, int chance, boolean isMoved) {
 		// given
 		IntPredicate moveCondition = value -> value >= condition;
-		Car car = new Car(moveCondition);
+		MoveChanceGenerator fixedChanceGenerator = () -> chance;
+		Car car = new Car(moveCondition, fixedChanceGenerator);
 
 		// when
 		final int beforePosition = car.getPosition();
-		car.getMoveForwardChance(chance);
+		car.getMoveForwardChance();
 		final int afterPosition = car.getPosition();
 
 		// then
