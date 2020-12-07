@@ -3,7 +3,6 @@ package racinggame.domain;
 import racinggame.domain.car.CarName;
 import racinggame.domain.car.RacingCar;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +23,9 @@ public class GameResult {
 
     private int selectMaxPosition() {
         return racingCars.stream()
-                .max(Comparator.comparingInt(RacingCar::getPosition))
-                .get()
-                .getPosition();
+                .map(RacingCar::getPosition)
+                .max(Integer::compare)
+                .orElse(0);
     }
 
     public List<RacingCar> getRacingCars() {

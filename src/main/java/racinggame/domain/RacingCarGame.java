@@ -15,7 +15,9 @@ public class RacingCarGame {
     private final Map<Integer, GameResult> gameResults;
 
     public RacingCarGame(final List<String> names, final int gameCount) {
-        this.carNames = names.stream().map(CarName::new).collect(Collectors.toList());
+        this.carNames = names.stream()
+                .map(CarName::new)
+                .collect(Collectors.toList());
         this.gameCount = gameCount;
         this.gameResults = new HashMap<>();
     }

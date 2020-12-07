@@ -13,15 +13,13 @@ public class StringCalculator {
     }
 
     public double calculate() {
-        Queue<String> expressions = Arrays.stream(expression.split(SPLIT_TEXT))
-                .collect(Collectors.toCollection(LinkedList::new));
+        Queue<String> expressions = splitExpression();
 
-        Calculator calculator = new Calculator();
-        double sum = expressions.size() == 0 ? 0 : Double.parseDouble(expressions.poll());
+        double sum = Double.parseDouble(Objects.requireNonNull(expressions.poll()));
         while (!expressions.isEmpty()) {
-            String operator = expressions.poll();
+            Operator operator = Operator.findByType(expressions.poll());
             double num = Double.parseDouble(Objects.requireNonNull(expressions.poll()));
-            sum = calculator.calculate(operator, sum, num);
+            sum = operator.calculate(sum, num);
         }
         return sum;
     }
@@ -30,5 +28,10 @@ public class StringCalculator {
         if (expression == null || expression.isEmpty()) {
             throw new IllegalArgumentException("사칙연산 형식대로 입력해 주세요.");
         }
+    }
+
+    private Queue<String> splitExpression() {
+        return Arrays.stream(expression.split(SPLIT_TEXT))
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 }
