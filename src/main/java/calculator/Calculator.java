@@ -15,13 +15,13 @@ public class Calculator {
 
     private static int operateMultiple(ElementDeque elementDeque) {
         while(! elementDeque.isQuitCalculate()) {
-            Operand operandA = (Operand) elementDeque.popElement();
-            Operator operator = (Operator) elementDeque.popElement();
-            Operand operandB = (Operand) elementDeque.popElement();
+            Operand operandA = elementDeque.popOperand();
+            Operator operator = elementDeque.popOperator();
+            Operand operandB = elementDeque.popOperand();
             Element result = operator.operate(operandA, operandB);
             elementDeque.addResult(result);
         }
 
-        return ((Operand) elementDeque.popElement()).getValue();
+        return elementDeque.popOperand().getValue();
     }
 }

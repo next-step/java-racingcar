@@ -42,8 +42,12 @@ public class ElementDeque {
         elements.addFirst(operand);
     }
 
-    public Element popElement() {
-        return elements.pop();
+    public Operand popOperand() {
+        return (Operand) elements.pop();
+    }
+
+    public Operator popOperator() {
+        return (Operator) elements.pop();
     }
 
     public boolean isQuitCalculate() {

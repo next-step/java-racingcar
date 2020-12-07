@@ -1,7 +1,7 @@
 package calculator.parser;
 
 public class InputParser {
-    public static final String SPLIT_SPACE_CHAR = " ";
+    private static final String SPLIT_SPACE_CHAR = " ";
 
     public static ElementDeque parseResult(String input) {
         if(isNullOrEmptyInput(input)) {
