@@ -28,4 +28,15 @@ public class OperatorTest {
 		//Then
 		assertThat(calculate).isEqualTo(-2);
 	}
+
+	@Test
+	@DisplayName("곱셈 연산자 테스트")
+	public void multiplication_test() throws Exception {
+		//Given
+		Multiplication multiplication = new Multiplication();
+		//When
+		int calculate = multiplication.calculate(1, 3);
+		//Then
+		assertThat(calculate).isEqualTo(3);
+	}
 }
