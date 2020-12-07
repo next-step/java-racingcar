@@ -69,13 +69,9 @@ public class StringCalculator {
 			.boxed()
 			.collect(
 				Collectors.groupingBy(
-					StringCalculator::classifyClassTypeByEvenOrOdd,
+					OperationElement::classifyClassTypeByEvenOrOdd,
 					Collectors.mapping(index -> strings[index], Collectors.toList())
 				));
-	}
-
-	private static OperationElement classifyClassTypeByEvenOrOdd(int index) {
-		return isEven(index) ? OperationElement.OPERAND : OperationElement.OPERATOR;
 	}
 
 	public int calculate() {
