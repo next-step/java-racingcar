@@ -1,10 +1,13 @@
 package racing.domain;
 
+import racing.exception.NameFormatException;
+import racing.exception.NameOutOfRangeException;
+
 import java.util.Objects;
 
 public class CarName {
 
-    private static final int MAX_LENGTH = 5;
+    public static final int MAX_LENGTH = 5;
 
     private final String value;
 
@@ -14,11 +17,12 @@ public class CarName {
 
     public static CarName of(final String value) {
         if (Objects.isNull(value) || value.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new NameFormatException();
         }
 
+
         if (value.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new NameOutOfRangeException(value);
         }
 
         return new CarName(value);
