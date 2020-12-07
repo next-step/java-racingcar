@@ -9,17 +9,17 @@ import java.util.stream.IntStream;
 
 public class MathematicalExpression {
 
-    private List<BigDecimal> numbers;
-    private List<Operator> operators;
+    private Numbers numbers;
+    private Operators operators;
     private int operationCount;
 
     public MathematicalExpression(List<BigDecimal> numbers, List<Operator> operators) {
         if (numbers.size() - 1 != operators.size()) {
             throw new IllegalArgumentException();
         }
-        this.numbers = numbers;
-        this.operators = operators;
-        this.operationCount = operators.size();
+        this.numbers = new Numbers(numbers);
+        this.operators = new Operators(operators);
+        this.operationCount = this.operators.size();
     }
 
     public static MathematicalExpression of(String text) {
