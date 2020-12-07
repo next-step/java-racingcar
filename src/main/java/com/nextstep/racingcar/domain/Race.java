@@ -2,7 +2,6 @@ package com.nextstep.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -11,17 +10,13 @@ public class Race {
 
     private int moveCount;
     private List<Car> cars = new ArrayList<>();
-    private Consumer<List<Car>> movePrinter = null;
+    private List<RaceRecord> raceRecords = new ArrayList<>();
 
     public Race(List<CarName> carNames, int moveCount, Supplier<Integer> numberGenerator) {
         this.moveCount = moveCount;
         for (CarName carName : carNames) {
             cars.add(new Car(carName, numberGenerator));
         }
-    }
-
-    public void setMovePrinter(Consumer<List<Car>> movePrinter) {
-        this.movePrinter = movePrinter;
     }
 
     public void run() {
@@ -31,16 +26,16 @@ public class Race {
     }
 
     private void move() {
+        RaceRecord raceRecord = new RaceRecord();
         for (Car car : cars) {
             car.tryMove();
+            raceRecord.addCarRecord(car.record());
         }
-        movePrint();
+        raceRecords.add(raceRecord);
     }
 
-    private void movePrint() {
-        if (movePrinter != null) {
-            movePrinter.accept(cars);
-        }
+    public List<RaceRecord> getRaceRecords() {
+        return raceRecords;
     }
 
     public String getWinnerNames() {

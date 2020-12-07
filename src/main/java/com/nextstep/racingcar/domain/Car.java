@@ -1,8 +1,6 @@
 package com.nextstep.racingcar.domain;
 
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Car {
     private static final int THRESHOLD = 3;
@@ -44,9 +42,7 @@ public class Car {
         return name.toString();
     }
 
-    public String getPositionString(String mark) {
-        return Stream.generate(() -> mark)
-                .limit(position)
-                .collect(Collectors.joining());
+    public CarRecord record() {
+        return new CarRecord(name.toString(), position);
     }
 }

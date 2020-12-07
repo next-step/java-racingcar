@@ -1,13 +1,12 @@
 package com.nextstep.racingcar.view;
 
-import com.nextstep.racingcar.domain.Car;
-import com.nextstep.racingcar.domain.CarName;
-import com.nextstep.racingcar.domain.Parser;
-import com.nextstep.racingcar.domain.Race;
+import com.nextstep.racingcar.domain.*;
 
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RaceManager {
     private static final int BOUND = 10;
@@ -26,6 +25,7 @@ public class RaceManager {
 
         printResultHeader();
         race.run();
+        printRaceRecords(race.getRaceRecords());
         printWinner(race.getWinnerNames());
     }
 
@@ -42,16 +42,27 @@ public class RaceManager {
         List<CarName> carNames = inputCarNames();
         int moveCount = inputMoveLimit();
 
-        Race race = new Race(carNames, moveCount, this::getRandomValue);
-        race.setMovePrinter(this::movePrint);
-        return race;
+        return new Race(carNames, moveCount, this::getRandomValue);
     }
 
-    private void movePrint(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car + DELIMITER + car.getPositionString(MARK));
+    private void printRaceRecords(List<RaceRecord> raceRecords) {
+        for (RaceRecord raceRecord : raceRecords) {
+            raceRecord.forEach(this::printCarRecord);
+            System.out.println();
         }
-        System.out.println();
+    }
+
+
+    private void printCarRecord(CarRecord record) {
+        String carName = record.getName();
+        int carPosition = record.getPosition();
+        System.out.println(carName + DELIMITER + getPositionString(carPosition));
+    }
+
+    private String getPositionString(int position) {
+        return Stream.generate(() -> MARK)
+                .limit(position)
+                .collect(Collectors.joining());
     }
 
     private List<CarName> inputCarNames() {

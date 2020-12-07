@@ -82,11 +82,12 @@ public class CarTest {
         assertThat(winner.toString()).isEqualTo(expected);
     }
 
-    @DisplayName("position 만큼 - 문자열이 들어간 이름이 나오는지 테스트")
+    @DisplayName("현재 position에 맞는 CarRecord 정보가 나오는지 확인")
     @ParameterizedTest
-    @CsvSource({"1, test : -", "3, test : ---"})
-    public void getPositionString(int moveCount, String expected) {
+    @CsvSource({"1, 1", "3, 3"})
+    public void record(int moveCount, int expected) {
         Car car = createMovedCar(moveCount);
-        assertThat(car.getPositionString(DASH)).isEqualTo(expected);
+        CarRecord record = car.record();
+        assertThat(record.getPosition()).isEqualTo(expected);
     }
 }
