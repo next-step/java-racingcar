@@ -72,10 +72,10 @@ class CarTest {
         return arguments.stream();
     }
 
-    @DisplayName("자동차가 움직일 수 있는 경우, 자동자의 위치가 변경되는지 확인")
+    @DisplayName("자동차가 움직일 수 없는 경우, 자동자의 위치가 변경되는지 확인")
     @ParameterizedTest
     @MethodSource("provideUnmovableCases")
-    void checkMoveCarTest(int unmovableNumber) {
+    void checkUnmovableCarTest(int unmovableNumber) {
         // Given
         Car car = new Car();
 

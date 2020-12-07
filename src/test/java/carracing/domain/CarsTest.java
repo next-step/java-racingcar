@@ -22,6 +22,8 @@ class CarsTest {
 
     private static final int NUMBER_OF_CARS = 3;
     private static final int MOVABLE_POSITION_NUMBER_PER_MOVEMENT = 1;
+    private static final int INITIATION_POSITION_NUMBER = 0;
+    private static final int FIRST_MOVING_POSITION_NUMBER = INITIATION_POSITION_NUMBER + MOVABLE_POSITION_NUMBER_PER_MOVEMENT;
     private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
     private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
     private static final int MIN_POSITION_NUMBER = RandomIntMovementPolicy.MIN_POSITION_NUMBER;
@@ -49,7 +51,7 @@ class CarsTest {
     @DisplayName("자동차들의 이동이 가능한 경우, 이동했을 때 실제 이동하였는지 확인")
     @ParameterizedTest
     @MethodSource("provideMovableCases")
-    void checkMovableCarsTest(int movableNumber, List<Integer> expected) {
+    void checkMovableCarsTest(int movableNumber) {
         // Given
         Cars cars = new Cars(NUMBER_OF_CARS);
 
@@ -60,7 +62,9 @@ class CarsTest {
         List<Integer> positionOfCars = convertPositionOfCars(cars);
 
         // Then
-        assertThat(positionOfCars).isEqualTo(expected);
+        assertThat(positionOfCars)
+                .hasSize(NUMBER_OF_CARS)
+                .containsOnly(FIRST_MOVING_POSITION_NUMBER);
     }
 
     @DisplayName("자동차들의 이동이 불가능 경우, 이동했을 때 실제 이동하였는지 확인")
@@ -69,7 +73,6 @@ class CarsTest {
     void checkUnmovableCarsTest(int unmovableNumber) {
         // Given
         Cars cars = new Cars(NUMBER_OF_CARS);
-        List<Integer> expected = convertPositionOfCars(cars);
 
         // When
         when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
@@ -78,7 +81,9 @@ class CarsTest {
         List<Integer> positionOfCars = convertPositionOfCars(cars);
 
         // Then
-        assertThat(positionOfCars).isEqualTo(expected);
+        assertThat(positionOfCars)
+                .hasSize(NUMBER_OF_CARS)
+                .containsOnly(INITIATION_POSITION_NUMBER);
     }
 
     private List<Integer> convertPositionOfCars(Cars cars) {
@@ -92,21 +97,9 @@ class CarsTest {
     private static Stream<Arguments> provideMovableCases() {
         List<Arguments> arguments = new ArrayList<>();
         for (int i = BASE_POSITION_NUMBER; i <= MAX_POSITION_NUMBER; i++) {
-            arguments.add(Arguments.of(i, provideDuplicatedOnes()));
+            arguments.add(Arguments.of(i));
         }
         return arguments.stream();
-    }
-
-    private static List<Integer> provideDuplicatedOnes() {
-        return provideDuplicatedValues(MOVABLE_POSITION_NUMBER_PER_MOVEMENT);
-    }
-
-    private static List<Integer> provideDuplicatedValues(int duplicatedValue) {
-        List<Integer> results = new ArrayList<>(NUMBER_OF_CARS);
-        for (int i = 0; i < NUMBER_OF_CARS; i++) {
-            results.add(duplicatedValue);
-        }
-        return results;
     }
 
     private static Stream<Arguments> provideUnmovableCases() {
