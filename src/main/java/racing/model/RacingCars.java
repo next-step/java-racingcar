@@ -9,10 +9,10 @@ public class RacingCars {
 
 	public RacingCars(int racingCarNumber) {
 
-		this.racingCars = getRacingCars(racingCarNumber);
+		this.racingCars = initRacingCars(racingCarNumber);
 	}
 
-	private List<RacingCar> getRacingCars(int racingCarNumber) {
+	private List<RacingCar> initRacingCars(int racingCarNumber) {
 
 		List<RacingCar> racingCars    = new ArrayList<>();
 		for (int i = 0; i < racingCarNumber; i++) {
@@ -23,11 +23,13 @@ public class RacingCars {
 		return racingCars;
 	}
 
-	public void start(int racingCount) {
+	public void start() {
 
-		for (int i = 0; i < racingCount; i++) {
+		racingCars.forEach(RacingCar::racing);
+	}
 
-			racingCars.forEach(RacingCar::racing);
-		}
+	public List<RacingCar> getRacingCars() {
+
+		return this.racingCars;
 	}
 }

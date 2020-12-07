@@ -9,8 +9,34 @@ import org.junit.jupiter.api.Test;
 
 import racing.model.RacingCar;
 import racing.model.RacingCars;
+import racing.view.UserOutput;
 
 public class RacingCarTest {
+
+	@Test
+	@DisplayName("레이싱 복수 객체 주행 출력 테스트")
+	void printCarsTest() {
+
+		RacingCars cars = new RacingCars(5);
+
+		for (int i = 0; i < 10; i++) {
+			cars.start();
+			UserOutput.printCarLocation(cars.getRacingCars());
+		}
+	}
+
+
+	@Test
+	@DisplayName("레이싱 단일 객체 주행 출력 테스트")
+	void printCarTest() {
+
+		RacingCar car = new RacingCar();
+
+		for (int i = 0; i < 10; i++) {
+			car.racing();
+			UserOutput.printCarLocation(car.getDistance());
+		}
+	}
 
 	@Test
 	@DisplayName("자동차 여러대 객체 생성 및 주행 테스트")
@@ -18,7 +44,9 @@ public class RacingCarTest {
 
 		RacingCars cars = new RacingCars(5);
 
-		cars.start(3);
+		for (int i = 0; i < 10; i++) {
+			cars.start();
+		}
 	}
 
 	@Test
