@@ -1,12 +1,14 @@
 package racing.domain;
 
+import racing.exception.LocationOutOfRangeException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Location {
 
-    private static final int MIN_VALUE = 0;
+    public static final int MIN_VALUE = 0;
     private static final int MOVE_DISTANCE = 1;
 
     private static final Map<Integer, Location> CACHE = new HashMap<>();
@@ -19,7 +21,7 @@ public class Location {
 
     public static Location valueOf(final int value) {
         if (value < MIN_VALUE) {
-            throw new IllegalArgumentException(String.format("음수 값(%d)는 허용하지 않습니다.", value));
+            throw new LocationOutOfRangeException(value);
         }
         return CACHE.computeIfAbsent(value, Location::new);
     }

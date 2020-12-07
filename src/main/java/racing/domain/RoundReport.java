@@ -33,7 +33,7 @@ public class RoundReport {
     private int winnerLocation() {
         return carReports.stream()
                 .max(Comparator.comparing(CarReport::getLocation))
-                .orElseThrow(IllegalArgumentException::new)
+                .get()
                 .getLocation();
     }
 }

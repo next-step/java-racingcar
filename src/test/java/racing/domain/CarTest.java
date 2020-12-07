@@ -18,14 +18,14 @@ public class CarTest {
         car = Car.of("1");
     }
 
-    @DisplayName("자동차 인덱스(CarIndex)로 자동차를 만들 수 있다.")
+    @DisplayName("자동차 인덱스로 자동차를 만들 수 있다.")
     @Test
     void create() {
         // then
         assertThat(car).isNotNull();
     }
 
-    @DisplayName("이동 규칙(Moveable)에 따라 움직이거나 멈춰 있을 수 있다.")
+    @DisplayName("이동 규칙에 따라 움직이거나 멈춰 있을 수 있다.")
     @ParameterizedTest
     @CsvSource({
             "true,0,1",
@@ -42,7 +42,7 @@ public class CarTest {
         assertThat(forward).isEqualTo(Car.of(name, expected));
     }
 
-    @DisplayName("자동차 보고서(CarReport)를 만들 수 있다.")
+    @DisplayName("자동차 보고서를 만들 수 있다.")
     @Test
     void report() {
         // when

@@ -3,11 +3,12 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.exception.LocationOutOfRangeException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DisplayName("`위치(Location)` 테스")
+@DisplayName("위치(Location) 테스트")
 public class LocationTest {
 
     @DisplayName("0과 양수를 허용한다.")
@@ -27,7 +28,7 @@ public class LocationTest {
     @ValueSource(ints = {-1, -100})
     void notAllowNegative(int value) {
         // when / then
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(LocationOutOfRangeException.class, () -> {
             Location ignore = Location.valueOf(value);
         }, String.format("음수 값(%d)는 허용하지 않습니다.", value));
     }

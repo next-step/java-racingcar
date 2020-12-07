@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("넥스트스탭 자동차 공장(NextStepCarFactory)")
 class NextStepCarFactoryTest {
 
-    @DisplayName("")
+    @DisplayName("[X] ',' 구분자로 자동차를 만들 수 있습니다.")
     @Test
     void create() {
         // given

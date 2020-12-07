@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.exception.NameFormatException;
+import racing.exception.NameOutOfRangeException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -26,14 +28,14 @@ public class CarNameTest {
     @Test
     void createNotNull() {
         // when / then
-        assertThrows(IllegalArgumentException.class, () -> CarName.of(null));
+        assertThrows(NameFormatException.class, () -> CarName.of(null));
     }
 
     @DisplayName("빈 값은 허용하지 않는다.")
     @Test
     void createNotEmpty() {
         // when / then
-        assertThrows(IllegalArgumentException.class, () -> CarName.of(""));
+        assertThrows(NameFormatException.class, () -> CarName.of(""));
     }
 
     @DisplayName("5자를 초과할 수 없다.")
@@ -41,6 +43,6 @@ public class CarNameTest {
     @ValueSource(strings = {"여섯글자이름", "일곱그을자이름"})
     void createLengthOver(String value) {
         // when / then
-        assertThrows(IllegalArgumentException.class, () -> CarName.of(value));
+        assertThrows(NameOutOfRangeException.class, () -> CarName.of(value));
     }
 }

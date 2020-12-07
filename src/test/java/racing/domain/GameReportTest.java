@@ -29,7 +29,7 @@ public class GameReportTest {
         ));
     }
 
-    @DisplayName("게임 보고서는 판 보고서(RoundReport)로 구성된다.")
+    @DisplayName("게임 보고서는 판 보고서로 구성된다.")
     @Test
     void create() {
         // when / then
