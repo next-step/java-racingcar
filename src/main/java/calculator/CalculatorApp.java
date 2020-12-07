@@ -20,7 +20,7 @@ public class CalculatorApp {
 
     private static void calculate(String input) {
         try {
-            Integer result = Calculator.equality(input);
+            int result = Calculator.equality(input);
             System.out.printf("정답은 %d 입니다.%n", result);
         } catch (IllegalArgumentException ex) {
             System.out.println("정확하지 않은 수식입니다.");

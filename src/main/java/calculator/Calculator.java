@@ -8,12 +8,12 @@ import calculator.parser.ElementDeque;
 
 public class Calculator {
 
-    static Integer equality(String input) {
+    static int equality(String input) {
         ElementDeque elementDeque = InputParser.parseResult(input);
         return operateMultiple(elementDeque);
     }
 
-    private static Integer operateMultiple(ElementDeque elementDeque) {
+    private static int operateMultiple(ElementDeque elementDeque) {
         while(! elementDeque.isQuitCalculate()) {
             Operand operandA = (Operand) elementDeque.popElement();
             Operator operator = (Operator) elementDeque.popElement();

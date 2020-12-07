@@ -3,13 +3,13 @@ package calculator.element.operand;
 import calculator.element.Element;
 
 public class Operand implements Element {
-    private final Integer operand;
+    private final int operand;
 
     public Operand(int operand) {
         this.operand = operand;
     }
 
-    public Integer getValue() {
+    public int getValue() {
         return operand;
     }
 }
