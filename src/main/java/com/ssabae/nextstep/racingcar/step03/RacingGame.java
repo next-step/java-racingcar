@@ -16,8 +16,8 @@ public class RacingGame {
     private final CarsPrinter carsPrinter;
 
     public RacingGame() {
-        inputHelper = new UserInputHelper();
-        random = new Random();
+        this.inputHelper = new UserInputHelper();
+        this.random = new Random();
         this.carsPrinter = new CarsPrinter();
     }
 
@@ -25,13 +25,12 @@ public class RacingGame {
         int carsCount = inputHelper.inputCarsCount();
         int tryCount = inputHelper.inputTryCount();
 
-        Cars cars = new Cars(random);
-        cars.initCars(carsCount);
-
+        Cars cars = new Cars(random, carsCount);
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             cars.moving();
             carsPrinter.print(cars);
         }
+
     }
 }

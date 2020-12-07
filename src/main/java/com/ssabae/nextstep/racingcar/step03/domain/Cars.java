@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 /**
  * @author : leesangbae
@@ -17,20 +18,17 @@ public class Cars {
     private static final int MOVEMENT_MIN_VALUE = 4;
 
     private final List<Car> carList;
-    private final MoveOperator operator;
+    private final Operator<MoveState> operator;
     private final Random random;
 
-    public Cars(Random random) {
+    private final Stream<Car> generate = Stream.generate(Car::new);
+
+    public Cars(Random random, int count) {
         this.carList = new ArrayList<>();
         this.operator = new MoveOperator(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE, MOVEMENT_MIN_VALUE);
         this.random = random;
-    }
-
-    public void initCars(int count) {
-        carList.clear();
-        for (int i = 0; i < count; i++) {
-            carList.add(new Car());
-        }
+        this.generate.limit(count)
+                .forEach(carList::add);
     }
 
     public void moving() {

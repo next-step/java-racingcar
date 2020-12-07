@@ -18,9 +18,7 @@ class CarsTest {
     @DisplayName("Cars 내부 Method Test")
     void carsTest() {
         Random random = new MockRandom();
-        Cars cars = new Cars(random);
-
-        cars.initCars(1);
+        Cars cars = new Cars(random, 1);
         cars.moving();
 
         List<Car> carList = cars.getCarList();
