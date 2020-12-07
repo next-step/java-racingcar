@@ -27,16 +27,22 @@ public class RacingGame {
     }
 
     private void runningGame() {
+        processSetCountOfCars();
+
+        racingGivenNumberOfTimes(processSetRaceTryTimes());
+
+        processResultOfRacing();
+    }
+
+    private void processSetCountOfCars() {
         output.printHowManyUseCars();
         final int howManyUseCars = input.inputHowManyUseCars();
         this.cars = new Cars(howManyUseCars);
+    }
 
+    private int processSetRaceTryTimes() {
         output.printHowManyTryTimes();
-        final int howManyTryTimes = input.inputHowManyTryTimes();
-        racingGivenNumberOfTimes(howManyTryTimes);
-
-        output.printExecutionResult();
-        output.printAllRacingHistoriesResult(new RacingHistoryDto(howManyTryTimes, cars));
+        return input.inputHowManyTryTimes();
     }
 
     private void racingGivenNumberOfTimes(final int tryTimes) {
@@ -44,5 +50,10 @@ public class RacingGame {
             currentTurn++;
             this.cars.moveRacingCars();
         }
+    }
+
+    private void processResultOfRacing() {
+        output.printExecutionResult();
+        output.printAllRacingHistoriesResult(new RacingHistoryDto((currentTurn - 1), cars));
     }
 }
