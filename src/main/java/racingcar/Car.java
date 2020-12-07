@@ -1,5 +1,7 @@
 package racingcar;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Car {
 	private String name;
 	private int moveCount = 0;
@@ -19,11 +21,8 @@ public class Car {
 		return this.moveCount;
 	}
 
-	public int getMoveCount() {
-		return this.moveCount;
-	}
-	public String getName() {
-		return this.name;
+	public RacingResult racingResult() {
+		return new RacingResult(this.name, this.moveCount);
 	}
 
 	private void move() {
@@ -31,6 +30,6 @@ public class Car {
 	}
 
 	private boolean validateName(String name) {
-		return name.length() <= 5;
+		return !StringUtils.isEmpty(name) && name.length() <= 5;
 	}
 }

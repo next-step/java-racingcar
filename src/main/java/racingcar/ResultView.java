@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class ResultView {
 	private static final String RESULT_HEADER = "실행결과";
 	private static final String MOVE_SYMBOL = "-";

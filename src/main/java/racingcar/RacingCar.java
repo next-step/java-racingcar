@@ -13,11 +13,13 @@ public class RacingCar {
 
 		List<String> carNameList = parseNames(carNames);
 		Cars cars = new Cars(carNameList, new RandomNumberGenerator());
+		RacingResults racingResults = cars.racingResults();
 		for (int i = 0; i < tryCount; i++) {
 			cars.move();
-			ResultView.printMoveResult(cars.racingResults());
+			racingResults = cars.racingResults();
+			ResultView.printMoveResult(racingResults);
 		}
-		ResultView.printWinner(cars.racingResults());
+		ResultView.printWinner(racingResults);
 	}
 
 	private static List<String> parseNames(String carNames) {

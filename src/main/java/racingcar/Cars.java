@@ -23,7 +23,7 @@ public class Cars {
 
 	public RacingResults racingResults() {
 		List<RacingResult> results = cars.stream()
-			.map(car -> new RacingResult(car.getName(), car.getMoveCount()))
+			.map(Car::racingResult)
 			.collect(Collectors.toList());
 		return new RacingResults(results);
 	}
