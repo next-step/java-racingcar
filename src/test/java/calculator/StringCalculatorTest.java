@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -13,45 +15,40 @@ import static org.assertj.core.api.Assertions.*;
 public class StringCalculatorTest {
 
     private StringCalculator calculator;
-    private StringValidator validator;
 
     @BeforeEach
     void init() {
         calculator = new StringCalculator();
-        validator = new StringValidator();
     }
 
     @Test
     @DisplayName("덧셈 테스트")
     void plus() {
-        int result = calculator.plus(1, 2);
+        int result = Operator.PLUS.apply(1, 2);
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     @DisplayName("뺄셈 테스트")
     void minus() {
-        int result = calculator.minus(5, 3);
+        int result = Operator.MINUS.apply(5, 3);
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     @DisplayName("곱셈 테스트")
     void multiply() {
-        int result = calculator.multiply(1, 2);
+        int result = Operator.MULTIPLY.apply(1, 2);
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     @DisplayName("나눗셈 테스트")
     void divide() {
-        int result = calculator.divide(5, 3);
+        int result = Operator.DIVIDE.apply(5, 3);
         assertThat(result).isEqualTo(1);
     }
 
-    static Stream<String> inputStrings() {
-        return Stream.of("2 + 3 * 4 / 2", "1 + 2 * 3 / 4");
-    }
     static Stream<String> blankStrings() {
         return Stream.of("", "   ", null);
     }
@@ -60,11 +57,11 @@ public class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @MethodSource("inputStrings")
+    @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 + 2 * 3 / 4:2"}, delimiter = ':')
     @DisplayName("입력값 유효성 검증")
-    void validation(String input) {
-        boolean result = validator.valid(input);
-        assertThat(result).isEqualTo(true);
+    void validation(String input, int expected) {
+        int result = calculator.calculate(input);
+        assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -72,8 +69,8 @@ public class StringCalculatorTest {
     @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
     void validationBlank(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            boolean result = validator.valid(input);
-            assertThat(result).isEqualTo(true);
+            assertThat(new Number(input).getItem()).isEqualTo(0);
+            assertThat(new Symbol(input).getItem()).isEqualTo("");
         });
     }
 
@@ -81,10 +78,9 @@ public class StringCalculatorTest {
     @MethodSource("notOperationSymbols")
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
     void validationOperationSymbol(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            boolean result = validator.valid(input);
-            assertThat(result).isEqualTo(true);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() ->
+            assertThat(new Symbol(input).getItem()).isEqualTo(input)
+        );
     }
 
     @Test
