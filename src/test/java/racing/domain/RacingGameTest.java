@@ -3,6 +3,8 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("자동차경주(RacingGame) 테스트")
@@ -27,11 +29,10 @@ public class RacingGameTest {
         // given
         Moveable moveable = () -> true;
         int round = 5;
-        int carCount = 5;
 
-        // when
+        // when””
         RacingGame racingGame = new RacingGame(moveable);
-        GameReport gameReport = racingGame.play(round, carCount);
+        GameReport gameReport = racingGame.play(round, Cars.of(new ArrayList<>()));
 
         // then
         assertThat(gameReport).isNotNull();

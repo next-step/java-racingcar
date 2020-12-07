@@ -1,22 +1,22 @@
 package racing.application;
 
-import racing.domain.GameReport;
-import racing.domain.Moveable;
-import racing.domain.RacingGame;
-
-import java.util.Objects;
+import racing.domain.*;
 
 public class RacingService {
 
     private final Moveable moveable;
 
-    public RacingService(final Moveable moveable) {
-        this.moveable = Objects.requireNonNull(moveable);
+    private final CarFactory carFactory;
+
+
+    public RacingService(final Moveable moveable, final CarFactory carFactory) {
+        this.carFactory = carFactory;
+        this.moveable = moveable;
     }
 
-
-    public GameReport play(final int carCount, final int round) {
+    public GameReport play(final String carNames, final int round) {
         RacingGame racingGame = new RacingGame(moveable);
-        return racingGame.play(round, carCount);
+        Cars cars = carFactory.create(carNames);
+        return racingGame.play(round, cars);
     }
 }

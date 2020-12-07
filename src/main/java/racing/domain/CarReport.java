@@ -1,27 +1,33 @@
 package racing.domain;
 
-import java.util.Objects;
-
 public class CarReport {
 
-    private final CarIndex carIndex;
+    private final String name;
 
-    private final Location location;
+    private final int location;
 
-    private CarReport(final CarIndex carIndex, final Location location) {
-        this.carIndex = Objects.requireNonNull(carIndex);
-        this.location = Objects.requireNonNull(location);
+    public CarReport(final String name, final int location) {
+        this.name = name;
+        this.location = location;
     }
 
-    public static CarReport of(final int index, final int location) {
-        return of(CarIndex.valueOf(index), Location.valueOf(location));
+    public static CarReport of(final String name, final int location) {
+        return new CarReport(name, location);
     }
 
-    public static CarReport of(final CarIndex carIndex, final Location location) {
-        return new CarReport(carIndex, location);
+    public static CarReport of(final CarName name, final Location location) {
+        return new CarReport(name.getValue(), location.getValue());
     }
 
     public int getLocation() {
-        return location.getValue();
+        return location;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isLocation(final int location) {
+        return this.location == location;
     }
 }

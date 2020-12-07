@@ -6,29 +6,29 @@ public class Car {
 
     private static final int INIT_LOCATION = 0;
 
-    private final CarIndex carIndex;
+    private final CarName carName;
 
     private final Location location;
 
-    private Car(final CarIndex carIndex, final Location location) {
-        this.carIndex = Objects.requireNonNull(carIndex);
+    private Car(final CarName carName, final Location location) {
+        this.carName = Objects.requireNonNull(carName);
         this.location = Objects.requireNonNull(location);
     }
 
-    public static Car of(final int index) {
-        return of(index, INIT_LOCATION);
+    public static Car of(final String name) {
+        return of(name, INIT_LOCATION);
     }
 
-    public static Car of(final int index, final int location) {
-        return of(CarIndex.valueOf(index), Location.valueOf(location));
+    public static Car of(final String name, final int location) {
+        return of(CarName.of(name), Location.valueOf(location));
     }
 
-    public static Car of(final CarIndex carIndex, final Location location) {
-        return new Car(carIndex, location);
+    public static Car of(final CarName name, final Location location) {
+        return new Car(name, location);
     }
 
     public Car forward(final Moveable moveable) {
-        return moveable.isMove() ? of(carIndex, location.forward()) : this;
+        return moveable.isMove() ? of(carName, location.forward()) : this;
     }
 
     @Override
@@ -36,16 +36,16 @@ public class Car {
         if (this == o) return true;
         if (!(o instanceof Car)) return false;
         final Car car = (Car) o;
-        return Objects.equals(carIndex, car.carIndex) &&
+        return Objects.equals(carName, car.carName) &&
                 Objects.equals(location, car.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carIndex, location);
+        return Objects.hash(carName, location);
     }
 
     public CarReport report() {
-        return CarReport.of(carIndex, location);
+        return CarReport.of(carName, location);
     }
 }

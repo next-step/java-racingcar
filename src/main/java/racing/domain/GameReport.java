@@ -19,4 +19,10 @@ public class GameReport {
     public List<RoundReport> getRoundReports() {
         return new ArrayList<>(roundReports);
     }
+
+    public List<String> winner() {
+        int lastRoundIndex = roundReports.size() - 1;
+        return roundReports.get(lastRoundIndex)
+                .winner();
+    }
 }

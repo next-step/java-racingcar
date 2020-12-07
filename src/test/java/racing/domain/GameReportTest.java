@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,9 +17,15 @@ public class GameReportTest {
     @BeforeEach
     void setUp() {
         gameReport = GameReport.of(Arrays.asList(
-                RoundReport.of(Arrays.asList(CarReport.of(1, 3))),
-                RoundReport.of(Arrays.asList(CarReport.of(1, 3))),
-                RoundReport.of(Arrays.asList(CarReport.of(1, 3)))
+                RoundReport.of(Arrays.asList(
+                        CarReport.of("1", 4),
+                        CarReport.of("2", 5),
+                        CarReport.of("3", 6))),
+                RoundReport.of(Arrays.asList(
+                        CarReport.of("1", 6),
+                        CarReport.of("2", 7),
+                        CarReport.of("3", 7)
+                ))
         ));
     }
 
@@ -29,4 +36,13 @@ public class GameReportTest {
         assertThat(gameReport).isNotNull();
     }
 
+    @DisplayName("게임의 우승자들을 구할 수 있다.")
+    @Test
+    void winner() {
+        // when
+        List<String> winners = gameReport.winner();
+
+        // then
+        assertThat(winners).contains("2", "3");
+    }
 }
