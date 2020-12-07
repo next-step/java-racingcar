@@ -48,4 +48,16 @@ public class GameTest {
 		Game game = new Game(carCount, matchCount);
 		assertThat(game.getMatchCount()).isEqualTo(matchCount);
 	}
+
+	@Order(4)
+	@DisplayName("2.1.경기수는 1보다 작을 수 없다.")
+	@Test
+	void validateUserEnterMatchCount(){
+		int carCount = 3;
+		int matchCount = 0;
+		assertThatThrownBy(() -> {
+			Game game = new Game(carCount, matchCount);
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("경기수는 1보다 작을 수 없습니다.");
+	}
 }
