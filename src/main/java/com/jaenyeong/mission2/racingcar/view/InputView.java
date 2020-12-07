@@ -17,14 +17,13 @@ public class InputView implements Input {
     }
 
     private int inputUntilCorrectIntType() {
+        int input = CAN_NOT_READ;
         do {
-            final int input = inputIntValue();
+            input = inputIntValue();
 
-            // TODO 해당 지점을 인덴트 1로 줄이는 방법 찾기
-            if (input != CAN_NOT_READ) {
-                return input;
-            }
-        } while (true);
+        } while (input == CAN_NOT_READ);
+
+        return input;
     }
 
     private int inputIntValue() {
