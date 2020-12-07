@@ -1,5 +1,7 @@
 package carRacing;
 
+import java.util.Random;
+
 public class Car {
     CarInfo[] carInfo;
 
@@ -14,6 +16,11 @@ public class Car {
     }
 
     public void playGame(CarInfo[] carInfo){
-
+        Random random = new Random();
+        int n = 0;
+        for(int i = 0; i < carInfo.length; i++){
+            n = random.nextInt(10);
+            if (n > = 4) carInfo[i].junjiUp();
+        }
     }
 }
