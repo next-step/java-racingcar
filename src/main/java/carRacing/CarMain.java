@@ -10,6 +10,6 @@ public class CarMain {
         String value = scanner.nextLine();
         System.out.println("시도할 회수는 몇 회 인가요?");
         int number = scanner.nextInt();
-
+        car.inputGameInfo(value, number);
     }
 }
