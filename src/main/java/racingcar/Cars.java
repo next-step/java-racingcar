@@ -13,7 +13,7 @@ public class Cars {
 		}
 	}
 
-	public void moveCars() {
+	public void move() {
 		int moveResult;
 		for (Car car : this.cars) {
 			moveResult = car.tryMove(RandomNumberGenerator.createRandomNumber());

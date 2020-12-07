@@ -8,7 +8,7 @@ public class RacingCar {
 		int tryCount = InputView.totalTryCount();
 		System.out.println("실행결과");
 		for (int i = 0; i < tryCount; i++) {
-			cars.moveCars();
+			cars.move();
 			System.out.println();
 		}
 	}

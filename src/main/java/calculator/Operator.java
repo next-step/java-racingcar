@@ -20,7 +20,7 @@ public enum Operator {
 		this.function = function;
 	}
 
-	public Integer calculate(int firstNumber, int secondNumber) {
+	public int calculate(int firstNumber, int secondNumber) {
 		return this.function.apply(firstNumber, secondNumber);
 	}
 
