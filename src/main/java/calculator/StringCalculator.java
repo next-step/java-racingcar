@@ -92,7 +92,7 @@ public class StringCalculator {
             return;
         }
 
-        this.mark = input;
+        this.saveCalculateMark(input);
     }
 
     /**
@@ -127,11 +127,27 @@ public class StringCalculator {
         return index != 0 && this.isNumberDataIndex(index);
     }
 
+    public boolean isCalculateMark(String input) throws IllegalArgumentException {
+        if(StringCalculator.MARK_ADD.equals(input)
+                || StringCalculator.MARK_SUBTRACTION.equals(input)
+                || StringCalculator.MARK_MULTIPLICATION.equals(input)
+                || StringCalculator.MARK_DIVISION.equals(input)) {
+            return true;
+        }
+        throw new IllegalArgumentException("입력값의 기호가 사칙연산 기호가 아닙니다.");
+    }
+
+    public void saveCalculateMark(String input) throws IllegalArgumentException {
+        if(this.isCalculateMark(input)) {
+            this.setMark(input);
+        }
+    }
+
     /**
      * 계산해야하는 인덱스이면 모인 값으로 계산합니다.
      * @param i
      */
-    private void executeCalculate(int i) {
+    private void executeCalculate(int i) throws IllegalArgumentException {
         if (this.isCalculateIndex(i)) {
             System.out.printf("f:%s, b:%s, m:%s\n" ,this.baseValue, this.differentValue, this.mark);
             this.baseValue = this.selectAndExecuteCalculation(this.baseValue, this.differentValue, this.mark);
@@ -145,7 +161,7 @@ public class StringCalculator {
      * @param mark
      * @return calculate result
      */
-    public int selectAndExecuteCalculation(int a, int b, String mark) {
+    public int selectAndExecuteCalculation(int a, int b, String mark) throws IllegalArgumentException {
         if(StringCalculator.MARK_ADD.equals(mark)) {
             return this.add(a, b);
         }
