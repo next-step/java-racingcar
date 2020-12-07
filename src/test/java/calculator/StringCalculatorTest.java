@@ -68,4 +68,15 @@ public class StringCalculatorTest {
             }
         });
     }
+
+    @ParameterizedTest
+    @DisplayName("입력 값을 받아서 사칙연산을 수행하여 값을 리턴 받음")
+    @CsvSource(value = {"2 + 3 * 4 / 2,10", "3 + 3 * 2,12"})
+    public void calculate(String input, String expected) {
+        // give
+        StringCalculator stringCalculator = new StringCalculator(input);
+
+        // when then
+        assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
+    }
 }
