@@ -3,10 +3,11 @@ package com.jaenyeong.mission2.racingcar.domain;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Distance {
+    public static final int STOP = 0;
     private final int dist;
 
     public Distance() {
-        this.dist = 0;
+        this.dist = STOP;
     }
 
     private Distance(final int newDistance) {
