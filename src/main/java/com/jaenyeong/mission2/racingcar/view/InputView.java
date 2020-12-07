@@ -18,11 +18,11 @@ public class InputView implements Input {
 
     private int inputUntilCorrectIntType() {
         do {
-            final int howManyUseCars = inputIntValue();
+            final int input = inputIntValue();
 
             // TODO 해당 지점을 인덴트 1로 줄이는 방법 찾기
-            if (howManyUseCars != CAN_NOT_READ) {
-                return howManyUseCars;
+            if (input != CAN_NOT_READ) {
+                return input;
             }
         } while (true);
     }
