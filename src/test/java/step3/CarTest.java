@@ -32,6 +32,14 @@ public class CarTest {
         assertThat(car.getDistance().getMileage()).isGreaterThanOrEqualTo(0);
     }
 
+    @Test
+    @DisplayName("자동차 전진 실패 테스트")
+    void acceleratorFailTest() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.accelerate(null))
+                .withMessageMatching("moving 전략이 필요합니다");
+    }
+
     @RepeatedTest(value = 10)
     @DisplayName("랜덤 숫자 테스트")
     void randomNumberTest() {

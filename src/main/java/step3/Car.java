@@ -14,6 +14,9 @@ public class Car {
     }
 
     public void accelerate(MovingStrategy movingStrategy) {
+        if (movingStrategy == null) {
+            throw new IllegalArgumentException("moving 전략이 필요합니다");
+        }
         distance.addMileage(movingStrategy.move());
     }
 }
