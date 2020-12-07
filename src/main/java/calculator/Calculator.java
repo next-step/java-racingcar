@@ -1,17 +1,20 @@
 package calculator;
 
 import calculator.operaor.*;
+import calculator.parser.InputParser;
+import calculator.parser.InputDeque;
 
 public class Calculator {
 
     public static final String SPLIT_SPACE_CHAR = " ";
 
     static Integer equality(String input) {
-        String[] splitInput = parseInput(input);
+        InputDeque inputDeque = InputParser.parseResult(input);
 
-        int operandA = Integer.parseInt(splitInput[0]);
-        int operandB = Integer.parseInt(splitInput[2]);
-        Operator operator = OperatorFactory.getOperator(splitInput[1]);
+        int operandA = Integer.parseInt(inputDeque.popInputItem());
+        Operator operator = OperatorFactory.getOperator(inputDeque.popInputItem());
+        int operandB = Integer.parseInt(inputDeque.popInputItem());
+
         return operator.operate(operandA, operandB);
     }
 
