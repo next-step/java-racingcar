@@ -12,7 +12,7 @@ class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"true:0:1", "false:3:3"}, delimiter = ':')
     void move(boolean isMove, int position, int expected) {
-        RacingCar racingCar = new RacingCar(position);
+        RacingCar racingCar = new RacingCar(new CarName("mario"), position);
         racingCar = racingCar.move(isMove);
         assertThat(racingCar.getPosition()).isEqualTo(expected);
     }

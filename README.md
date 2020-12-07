@@ -7,15 +7,8 @@
 
 ---
 ### 모델링
-##### InputView
-* 자동차 수 입력
-* 시도한 횟수 입력
-
-##### RacingCarGame
-* 입력한 자동차 수만큼 게임 시작
-
-##### RandomMove
-* 0~9 생성한 random 값들 중에서 4이상일 경우 이동 -> true
+##### CarName
+* 이름이 5자 초과하는지 확인
 
 ##### Car
 * 이동할 때마다 position(위치) 증가
@@ -23,8 +16,23 @@
 ##### Cars
 * 모든 자동차(Car)들 이동
 
+##### RacingCarGame
+* 입력한 시도 횟수만큼 게임 시작
+
 ##### GameResult
 * 한 게임 끝나고 결과(모든 자동차 위치) 저장
+* 게임 결과에서 가장 멀리간 우승자들을 골라낸다.
+
+##### RandomMove
+* 0~9 생성한 random 값들 중에서 4이상일 경우 이동 -> true
+
+##### InputView
+* 경주할 자동차들 이름 입력 -> (,)로 구분
+* 시도한 횟수 입력
+
+##### OutputView
+* 전진하는 자동차를 출력할 때 자동차 이름도 같이 출력 -> (이름) : (전진하는 수만큼 '-'출력)
+* 우승자 출력 -> 한명 이상일 수 있다
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)

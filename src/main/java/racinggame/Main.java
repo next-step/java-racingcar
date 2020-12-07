@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        int carCount = InputView.carCount();
-        int gameCount = InputView.gameCount();
-        RacingCarGame racingCarGame = new RacingCarGame(carCount, gameCount);
+        RacingCarGame racingCarGame = new RacingCarGame(InputView.carNames(), InputView.gameCount());
         racingCarGame.gameStart();
         OutputView.print(new ArrayList<>(racingCarGame.getGameResults().values()));
+        OutputView.printWinners(racingCarGame.pickLastWinners());
     }
 }
