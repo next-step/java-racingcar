@@ -13,7 +13,7 @@ public class RacingGame {
 	public RacingStatus start() {
 		for (int i = 0; i < turn; i++) {
 			carList.forEach(Car::getMoveForwardChance);
-			racingNotifier.notify(new RacingStatus(this.carList));
+			racingNotifier.notifyRace(new RacingStatus(this.carList));
 		}
 
 		return new RacingStatus(this.carList);

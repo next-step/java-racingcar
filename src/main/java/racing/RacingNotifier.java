@@ -1,5 +1,5 @@
 package racing;
 
 public interface RacingNotifier {
-	void notify(RacingStatus racingStatus);
+	void notifyRace(RacingStatus racingStatus);
 }
