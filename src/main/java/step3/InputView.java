@@ -17,4 +17,13 @@ public class InputView {
 		}
 		return Integer.parseInt(input);
 	}
+
+	public static int inputMoveTryMaxCount() {
+		System.out.println("시도할 회수는 몇 회 인가요?");
+		String input = scanner.nextLine();
+		if (!Pattern.matches("^[0-9]+$", input)) {
+			return inputMoveTryMaxCount();
+		}
+		return Integer.parseInt(input);
+	}
 }

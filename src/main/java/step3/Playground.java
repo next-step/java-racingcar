@@ -20,5 +20,6 @@ public class Playground {
 
 	public void play() {
 		int numberOfCars = InputView.inputNumberOfCars();
+		int moveTryMaxCount = InputView.inputMoveTryMaxCount();
 	}
 }
