@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,11 +7,11 @@ public class Cars {
 	private List<Car> cars;
 	private final NumberGenerator numberGenerator;
 
-	public Cars(int carCount, NumberGenerator numberGenerator) {
-		this.cars = new ArrayList<>();
-		for(int i = 0; i < carCount; i++) {
-			cars.add(new Car());
-		}
+	public Cars(List<String> carNames, NumberGenerator numberGenerator) {
+		this.cars = carNames.stream()
+			.map(name -> new Car(name))
+			.collect(Collectors.toList());
+
 		this.numberGenerator = numberGenerator;
 	}
 
