@@ -1,8 +1,8 @@
 package calculator;
 
 public class Calculator {
-    private final int OPERATION_UNIT = 2;
-    private final int FIRST = 0;
+    private final static int OPERATION_UNIT = 2;
+    private final static int FIRST = 0;
 
     public Integer calculate(String input) {
         String[] inputValues = separateInput(input);

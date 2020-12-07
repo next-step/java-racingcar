@@ -3,8 +3,11 @@ package racing;
 import java.util.List;
 
 public class Cars {
-    public static final int CAN_RUN_MIN_VALUE = 4;
+    private static final int CAN_RUN_MIN_VALUE = 4;
     private List<Car> cars;
+
+    public Cars() {
+    }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -14,7 +17,7 @@ public class Cars {
         for(Car car: cars) {
             decideRun(randomNumGenerator, car);
         }
-        return new Cars(cars);
+        return this;
     }
 
     private void decideRun(RandomNumberGenerator randomNumGenerator, Car car) {
@@ -24,11 +27,14 @@ public class Cars {
         }
     }
 
-    public int size() {
-        return cars.size();
-    }
-
     public List<Car> getCars() {
         return cars;
+    }
+
+    public Cars generate(int number) {
+        for(int i = 0; i < number; i ++){
+            cars.add(new Car());
+        }
+        return this;
     }
 }

@@ -1,8 +1,6 @@
 package racing;
 
 public class ViewResult {
-    private static final int ZERO = 0;
-
     public void view(Cars cars) {
         for (Car car : cars.getCars()) {
             StringBuilder results = createResultMessage(car);
@@ -12,11 +10,7 @@ public class ViewResult {
     }
 
     private StringBuilder createResultMessage(Car car) {
-        StringBuilder results = new StringBuilder();
-        if (car.getMoveCount() == ZERO) {
-            System.out.println("");
-        }
-
+        StringBuilder results = new StringBuilder("");
         for (int i = 0; i < car.getMoveCount(); i++) {
             results.append("-");
         }
