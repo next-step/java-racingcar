@@ -26,14 +26,10 @@ public enum MathOperator {
     public static int operate(String operatorCode, int x, int y) {
         return Arrays
                 .stream(values())
-                .filter(mathOperator -> mathOperator.getOperator().equals(operatorCode))
+                .filter(mathOperator -> mathOperator.operator.equals(operatorCode))
                 .mapToInt(filtered-> filtered.getOperation().apply(x, y))
                 .findFirst()
                 .orElse(0);
-    }
-
-    public String getOperator() {
-        return operator;
     }
 
     private BiFunction<Integer, Integer, Integer> getOperation() {
