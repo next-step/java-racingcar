@@ -1,4 +1,4 @@
-package util;
+package calculator.view;
 
 public class UserOutput {
 

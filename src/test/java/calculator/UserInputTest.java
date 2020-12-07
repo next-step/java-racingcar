@@ -1,17 +1,15 @@
-package util;
+package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import calculator.CalculatorType;
-import calculator.CalculatorVaild;
+import calculator.model.CalculatorType;
+import calculator.model.CalculatorVaild;
 
 class UserInputTest {
 

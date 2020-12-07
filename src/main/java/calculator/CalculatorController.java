@@ -1,8 +1,10 @@
-import calculator.Calculator;
-import util.UserInput;
-import util.UserOutput;
+package calculator;
 
-public class CalculatorMain {
+import calculator.model.Calculator;
+import calculator.view.UserInput;
+import calculator.view.UserOutput;
+
+public class CalculatorController {
 
 	public static void main(String[] args) {
 

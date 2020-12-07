@@ -1,10 +1,9 @@
-package calculator;
+package calculator.model;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
-import util.UserOutput;
+import calculator.view.UserOutput;
 
 public enum CalculatorType {
 

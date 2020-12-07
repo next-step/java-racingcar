@@ -7,7 +7,19 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racing.model.RacingCar;
+import racing.model.RacingCars;
+
 public class RacingCarTest {
+
+	@Test
+	@DisplayName("자동차 여러대 객체 생성 및 주행 테스트")
+	void createCarsRacingTest() {
+
+		RacingCars cars = new RacingCars(5);
+
+		cars.start(3);
+	}
 
 	@Test
 	@DisplayName("랜덤 상수 생성 테스트")
@@ -26,8 +38,10 @@ public class RacingCarTest {
 		RacingCar car = new RacingCar();
 
 		for (int i = 0; i < 10; i++) {
-
-			System.out.println("Racing [" + i + "] Location = " + car.racing());
+			car.racing();
+			System.out.println(car.getDistance());
 		}
+
+		assertThat(car.getDistance()).isLessThan(10);
 	}
 }

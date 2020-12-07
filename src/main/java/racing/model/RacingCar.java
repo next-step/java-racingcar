@@ -1,4 +1,4 @@
-package racing;
+package racing.model;
 
 import java.util.Random;
 
@@ -16,11 +16,14 @@ public class RacingCar {
 		this.location = RACING_START_LOCATION;
 	}
 
-	public int racing() {
+	public void racing() {
 
 		if (randomNumberMaker.nextInt(RACING_RANDOM_BOUND) > RACING_INCREASE_BOUND) {
 			this.location++;
 		}
+	}
+
+	public int getDistance() {
 
 		return this.location;
 	}
