@@ -1,34 +1,26 @@
 package racing.model;
 
-public class Car implements Forwardable {
+import racing.model.inter.ForwardPolicy;
+import racing.util.Constants;
 
-
-	private static final int MAX_NAME_CHARACTER_LENGTH = 5;
-
-	private static final int FORWARD_CRITERIA = 4;
+public class Car {
 
 	private String name;
 
 	private int forwardPosition;
 
-	private int racingRecord;
-
-
-
-	public Car() {
-	}
-
 	public Car(String name) {
-		if (isValidateName(name)) {
-			this.name = name;
-		}
-	}
-
-	private boolean isValidateName(String name) {
-		if (name == null || name.trim().isEmpty() || name.length() > MAX_NAME_CHARACTER_LENGTH) {
+		if (isNotValidateName(name)) {
 			throw new IllegalArgumentException();
 		}
-		return true;
+		this.name = name;
+	}
+
+	private boolean isNotValidateName(String name) {
+		if (name == null || name.trim().isEmpty() || name.length() > Constants.MAX_NAME_CHARACTER_LENGTH) {
+			return true;
+		}
+		return false;
 	}
 
 	public String getName() {
@@ -39,19 +31,10 @@ public class Car implements Forwardable {
 		return forwardPosition;
 	}
 
-	public int getRacingRecord() {
-		return racingRecord;
-	}
-
-	@Override
-	public void speedUp(int randomNumber) {
-		if (isForward(randomNumber)) {
+	public void speedUp(ForwardPolicy forwardPolicy) {
+		if (forwardPolicy.forward()) {
 			this.forwardPosition += 1;
 		}
-		this.racingRecord += 1;
 	}
 
-	private boolean isForward(int randomNumber) {
-		return randomNumber >= FORWARD_CRITERIA;
-	}
 }

@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.model.Car;
+import racing.model.Forward;
+import racing.model.Stop;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -23,22 +25,19 @@ class CarTest {
 		});
 	}
 
-
 	@Test
-	@DisplayName("랜덤값이 4이상이면 전진한다.")
+	@DisplayName("전진 테스트")
 	void test_forward() {
-		Car car = new Car();
-		int inputNumber = 4;
-		car.speedUp(inputNumber);
+		Car car = new Car("테스트카");
+		car.speedUp(new Forward());
 		assertThat(car.getForwardPosition()).isEqualTo(1);
 	}
 
 	@Test
-	@DisplayName("랜덤값이 4보다 작으면 멈춘다.")
+	@DisplayName("멈춤 테스트")
 	void test_stop() {
-		Car car = new Car();
-		int inputNumber = 3;
-		car.speedUp(inputNumber);
+		Car car = new Car("테스트카");
+		car.speedUp(new Stop());
 		assertThat(car.getForwardPosition()).isEqualTo(0);
 	}
 
