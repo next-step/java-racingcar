@@ -4,6 +4,7 @@ import java.util.stream.IntStream;
 
 public class RaceGameController {
 	public static final int START_INCLUSIVE = 0;
+
 	private final InputValue inputValue;
 	private final RaceGameModel raceGameModel;
 
