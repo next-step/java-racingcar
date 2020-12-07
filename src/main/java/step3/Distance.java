@@ -1,6 +1,6 @@
 package step3;
 
-public class Dashboard {
+public class Distance {
     private int mileage;
 
     public int getMileage() {
