@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.domain;
 
 public class CarName {
     private static final int NAME_LIMIT = 5;
@@ -12,11 +12,12 @@ public class CarName {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     private boolean isInvalidName(String name){
         return NAME_LIMIT < name.length();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

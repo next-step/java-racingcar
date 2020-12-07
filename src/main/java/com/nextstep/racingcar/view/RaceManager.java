@@ -1,4 +1,6 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.view;
+
+import com.nextstep.racingcar.domain.*;
 
 import java.util.List;
 import java.util.Random;
@@ -8,6 +10,8 @@ import java.util.stream.Stream;
 
 public class RaceManager {
     private static final int BOUND = 10;
+    private static final String MARK = "-";
+    private static final String DELIMITER = " : ";
 
     private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
@@ -18,13 +22,10 @@ public class RaceManager {
 
     public void run() {
         Race race = createRace();
-        int moveCount = inputMoveLimit();
 
         printResultHeader();
-        for (int i = 0; i < moveCount; i ++) {
-            List<Car> cars = race.moveAndGet();
-            printPosition(cars);
-        }
+        race.run();
+        printRaceRecords(race.getRaceRecords());
         printWinner(race.getWinnerNames());
     }
 
@@ -37,23 +38,31 @@ public class RaceManager {
         System.out.println("실행 결과");
     }
 
-    private void printPosition(List<Car> carList) {
-        for (Car car : carList) {
-            String positionString = getPositionString(car.getPosition());
-            System.out.println(car.getName() + " : " + positionString);
+    private Race createRace() {
+        List<CarName> carNames = inputCarNames();
+        int moveCount = inputMoveLimit();
+
+        return new Race(carNames, moveCount, this::getRandomValue);
+    }
+
+    private void printRaceRecords(List<RaceRecord> raceRecords) {
+        for (RaceRecord raceRecord : raceRecords) {
+            raceRecord.forEach(this::printCarRecord);
+            System.out.println();
         }
-        System.out.println();
+    }
+
+
+    private void printCarRecord(CarRecord record) {
+        String carName = record.getName();
+        int carPosition = record.getPosition();
+        System.out.println(carName + DELIMITER + getPositionString(carPosition));
     }
 
     private String getPositionString(int position) {
-        return Stream.generate(() -> "-")
+        return Stream.generate(() -> MARK)
                 .limit(position)
                 .collect(Collectors.joining());
-    }
-
-    private Race createRace() {
-        List<CarName> carNames = inputCarNames();
-        return new Race(carNames, this::getRandomValue);
     }
 
     private List<CarName> inputCarNames() {
