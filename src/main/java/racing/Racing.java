@@ -17,4 +17,12 @@ public class Racing {
             ResultView.printRacingStatus(cars);
         }
     }
+
+    public void end() {
+        ResultView.printEndGame(ChooseTheWinner());
+    }
+
+    public RaceWinner ChooseTheWinner() {
+        return new RaceWinner(cars);
+    }
 }

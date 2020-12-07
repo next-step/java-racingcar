@@ -5,5 +5,6 @@ public class RacingApplication {
         Cars cars = new Cars(InputView.carNamesMessage(), new RandomCondition());
         Racing racing = new Racing(InputView.tryTimes(), cars);
         racing.start();
+        racing.end();
     }
 }
