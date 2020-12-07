@@ -1,9 +1,8 @@
 package racingCar.domain;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class RacingResult {
     private static final int SAME_SCORE = 0;
@@ -18,12 +17,7 @@ public class RacingResult {
 
     public void calculateResult() {
         Position maxPosition = cars.stream().max(Car::compareTo).get().getPosition();
-
-        for(Car car : cars) {
-            if(maxPosition.equals(car.getPosition())) {
-                winningCars.add(car);
-            }
-        }
+        winningCars = cars.stream().filter(car -> car.getPosition().equals(maxPosition)).collect(Collectors.toList());
     }
 
     @Override
