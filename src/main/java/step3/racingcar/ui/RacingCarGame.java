@@ -25,7 +25,7 @@ public class RacingCarGame {
 
 		List<RacingCar> racingCars = new RacingCarGenerator().generate(participateCarCount);
 
-		for (int round = 0; round < racingExecuteCountInput; round++) {
+		for (int round = 1; round <= racingExecuteCountInput; round++) {
 			play(racingCars);
 			roundRecorder.record(round, racingCars);
 		}
