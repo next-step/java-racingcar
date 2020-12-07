@@ -15,6 +15,20 @@ public class RacingResults {
 		return results;
 	}
 
+	public List<String> winners() {
+		int maxMoveCount = getMaxMoveCount();
+		return this.results.stream()
+			.filter(result -> result.getMoveCount() == maxMoveCount)
+			.map(RacingResult::getName)
+			.collect(Collectors.toList());
+	}
+
+	private int getMaxMoveCount() {
+		return this.results.stream()
+			.mapToInt(RacingResult::getMoveCount)
+			.max().orElse(0);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

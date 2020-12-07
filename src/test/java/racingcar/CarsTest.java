@@ -55,7 +55,6 @@ public class CarsTest {
 	@ValueSource(ints = {1, 3, 5, 100})
 	@DisplayName("4이상의 숫자가 나오면 반복 횟수만큼 Car 리스트의 moveCount가 모두 누적되어 증가해야한다")
 	void carsMoveTest(int moveCount) {
-		//given
 		Cars cars = new Cars(Arrays.asList("one","two","three","four","five"), fixedNumber4Generator);
 		RacingResults expectedResult = new RacingResults(
 			Arrays.asList(new RacingResult("one", moveCount),
@@ -65,11 +64,11 @@ public class CarsTest {
 				new RacingResult("five", moveCount)
 			)
 		);
-		//when
+
 		for (int i = 0; i < moveCount; i++) {
 			cars.move();
 		}
-		//then
+
 		assertThat(cars.racingResults()).isEqualTo(expectedResult);
 	}
 
@@ -77,7 +76,6 @@ public class CarsTest {
 	@ValueSource(ints = {1, 3, 5, 100})
 	@DisplayName("4미만의 숫자는 몇 번을 반복해도 Car 리스트의 moveCount가 0으로 유지돼야한다")
 	void carsStopTest(int moveCount) {
-		//given
 		Cars cars = new Cars(Arrays.asList("one","two","three","four","five"), fixedNumber3Generator);
 		RacingResults expectedResult = new RacingResults(
 			Arrays.asList(new RacingResult("one", 0),
@@ -87,11 +85,11 @@ public class CarsTest {
 				new RacingResult("five", 0)
 			)
 		);
-		//when
+
 		for (int i = 0; i < moveCount; i++) {
 			cars.move();
 		}
-		//then
+
 		assertThat(cars.racingResults()).isEqualTo(expectedResult);
 	}
 }

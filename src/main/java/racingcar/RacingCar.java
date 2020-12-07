@@ -17,6 +17,7 @@ public class RacingCar {
 			cars.move();
 			ResultView.printMoveResult(cars.racingResults());
 		}
+		ResultView.printWinner(cars.racingResults());
 	}
 
 	private static List<String> parseNames(String carNames) {
