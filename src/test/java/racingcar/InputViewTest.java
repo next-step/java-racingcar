@@ -3,6 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,8 +19,7 @@ public class InputViewTest {
     void inputCarCount() {
         inputView.printQuestions("자동차 대수는 몇 대 인가요?");
         Scanner scanner = new Scanner("3");
-        inputView.inputCarCount(scanner);
-        assertThat(inputView.getCarCount()).isEqualTo(3);
+        assertThat(inputView.inputCarCount(scanner)).isEqualTo(3);
     }
 
     @Test
@@ -26,17 +27,19 @@ public class InputViewTest {
     void inputMoveCount() {
         inputView.printQuestions("시도할 회수는 몇 회 인가요?");
         Scanner scanner = new Scanner("5");
-        inputView.inputMoveCount(scanner);
-        assertThat(inputView.getMoveCount()).isEqualTo(5);
+        assertThat(inputView.inputMoveCount(scanner)).isEqualTo(5);
     }
 
     @Test
     @DisplayName("자동차 이름 입력 테스트")
     void inputCarNames() {
+        List<CarName> carNames = Arrays.asList(
+                new CarName("pobi"),
+                new CarName("crong"),
+                new CarName("honux"));
         inputView.printQuestions("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner scanner = new Scanner("pobi,crong,honux");
-        inputView.inputCarNames(scanner);
-        assertThat(inputView.getCarCount()).isEqualTo(3);
+        assertThat(inputView.inputCarNames(scanner)).isEqualTo(carNames);
     }
 
     @Test
@@ -46,7 +49,6 @@ public class InputViewTest {
             inputView.printQuestions("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
             Scanner scanner = new Scanner("pobi,crong,honuxe");
             inputView.inputCarNames(scanner);
-            assertThat(inputView.getCarCount()).isEqualTo(3);
         });
     }
 

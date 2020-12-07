@@ -33,14 +33,28 @@ public class RacingCar {
     }
 
     /**
-     * 경주 시작
+     * 자동차 경주
+     * @return 경주 결과를 담고 있는 경주용 자동차
      */
-    public void race() {
+    public RacingCar race() {
         Random random = new Random();
         for (int i = 0; i < moveCount; i++) {
             int randomNumber = random.nextInt(10);
             checkAdvancedCondition(randomNumber);
         }
+        return this;
+    }
+
+    /**
+     * 자동차 경주 (테스트용)
+     * @param randomNumbers 랜덤숫자 배열
+     * @return 경주 결과를 담고 있는 경주용 자동차
+     */
+    public RacingCar race(int[] randomNumbers) {
+        for (int randomNumber : randomNumbers) {
+            checkAdvancedCondition(randomNumber);
+        }
+        return this;
     }
 
     /**

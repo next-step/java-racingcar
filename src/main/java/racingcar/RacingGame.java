@@ -10,29 +10,27 @@ public class RacingGame {
 
     private final int carCount;     // 자동차 수
     private final int moveCount;    // 이동횟수
-    private final Map<Integer, List<RacingCar>> racingCarMap = new HashMap<>();     // 경주용 자동차 맵
-    private List<CarName> carNames = new ArrayList<>();     // 자동차 이름 목록
+    private Map<Integer, List<RacingCar>> racingCarMap = new HashMap<>();     // 경주용 자동차 맵
     private List<RacingCar> winners = new ArrayList<>();    // 우승 자동차 목록
 
     public RacingGame(int carCount, int moveCount) {
         this.carCount = carCount;
         this.moveCount = moveCount;
-        for (int i = 0; i < moveCount; i++) {
-            setRacingCarMap(i);
-        }
     }
 
-    public RacingGame(List<CarName> carNames, int moveCount) {
-        this.carCount = carNames.size();
-        this.moveCount = moveCount;
-        this.carNames = carNames;
-        for (int i = 0; i < moveCount; i++) {
-            setRacingCarMapForCarNames(i);
-        }
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
     public Map<Integer, List<RacingCar>> getRacingCarMap() {
         return racingCarMap;
+    }
+    public void setRacingCarMap(Map<Integer, List<RacingCar>> racingCarMap) {
+        this.racingCarMap = racingCarMap;
     }
 
     public List<RacingCar> getWinners() {
@@ -40,29 +38,23 @@ public class RacingGame {
     }
 
     /**
-     * 실행횟수에 따른 경주용 자동차 목록 저장
-     * @param racingCarMapKey 실행횟수 번호
+     * 게임 시작
      */
-    private void setRacingCarMap(int racingCarMapKey) {
-        List<RacingCar> racingCarList = new ArrayList<>();
-        for (int j = 0; j < carCount; j++) {
-            RacingCar car = new RacingCar(moveCount);
-            car.race();
-            racingCarList.add(car);
+    public void start() {
+        for (int index = 0; index < moveCount; index++) {
+            setRacingCarMap(index);
         }
-        racingCarMap.put(racingCarMapKey, racingCarList);
     }
 
     /**
      * 실행횟수에 따른 경주용 자동차 목록 저장
      * @param racingCarMapKey 실행횟수 번호
      */
-    private void setRacingCarMapForCarNames(int racingCarMapKey) {
+    public void setRacingCarMap(int racingCarMapKey) {
         List<RacingCar> racingCarList = new ArrayList<>();
         for (int j = 0; j < carCount; j++) {
-            RacingCar car = new RacingCar(moveCount, carNames.get(j));
-            car.race();
-            racingCarList.add(car);
+            RacingCar car = new RacingCar(moveCount);
+            racingCarList.add(car.race());
         }
         racingCarMap.put(racingCarMapKey, racingCarList);
     }

@@ -12,6 +12,7 @@ public class ResultViewTest {
     @DisplayName("자동차 상태를 출력하는 기능")
     void print() {
         RacingGame racingGame = new RacingGame(3, 5);
+        racingGame.start();
         ResultView resultView = new ResultView(racingGame);
         resultView.print();
     }
@@ -23,7 +24,8 @@ public class ResultViewTest {
                 new CarName("pobi"),
                 new CarName("crong"),
                 new CarName("honux"));
-        RacingGame racingGame = new RacingGame(carNames, 5);
+        RacingGame racingGame = new RacingGameWithCarName(carNames, 5);
+        racingGame.start();
         ResultView resultView = new ResultView(racingGame);
         resultView.print();
     }
@@ -35,7 +37,8 @@ public class ResultViewTest {
                 new CarName("pobi"),
                 new CarName("crong"),
                 new CarName("honux"));
-        RacingGame racingGame = new RacingGame(carNames, 5);
+        RacingGame racingGame = new RacingGameWithCarName(carNames, 5);
+        racingGame.start();
         racingGame.pickWinner();
         ResultView resultView = new ResultView(racingGame);
         resultView.printWinners();

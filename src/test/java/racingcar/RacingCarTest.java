@@ -30,18 +30,20 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("전진하는 조건이 없을 경우 테스트")
+    @DisplayName("전진하는 조건이 없을 경우(램덤숫자 1, 2, 3) 테스트")
     void raceNotAdvanced() {
         racingCar = new RacingCar(3, name);
-        Arrays.asList(1, 2, 3).forEach(racingCar::checkAdvancedCondition);
+        // Arrays.asList(1, 2, 3).forEach(racingCar::checkAdvancedCondition);
+        racingCar = racingCar.race(new int[] {1, 2, 3});
         assertThat(racingCar.getAdvancedCount()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("전진하는 조건이 있을 경우 테스트")
+    @DisplayName("전진하는 조건이 있을 경우(랜덤숫자 1, 4, 9) 테스트")
     void raceAdvanced() {
         racingCar = new RacingCar(3, name);
-        Arrays.asList(1, 4, 9).forEach(racingCar::checkAdvancedCondition);
+        // Arrays.asList(1, 4, 9).forEach(racingCar::checkAdvancedCondition);
+        racingCar = racingCar.race(new int[] {1, 4, 9});
         assertThat(racingCar.getAdvancedCount()).isEqualTo(2);
     }
 

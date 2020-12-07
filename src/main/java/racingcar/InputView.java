@@ -9,22 +9,7 @@ import java.util.Scanner;
  */
 public class InputView {
 
-    private int carCount;   // 경주용 자동차 수
-    private int moveCount;  // 이동 횟수, 시도 횟수
-    private List<CarName> carNames = new ArrayList<>();  // 경주 자동차 이름 목록
     private static final String NAME_SPLIT_REGEX = ",";
-
-    public int getCarCount() {
-        return carCount;
-    }
-
-    public int getMoveCount() {
-        return moveCount;
-    }
-
-    public List<CarName> getCarNames() {
-        return carNames;
-    }
 
     /**
      * 입력질문 출력
@@ -37,29 +22,33 @@ public class InputView {
     /**
      * 자동차 수 입력받기
      * @param scanner 입력 스캐너
+     * @return 자동차 수
      */
-    public void inputCarCount(Scanner scanner) {
-        this.carCount = scanner.nextInt();
+    public int inputCarCount(Scanner scanner) {
+        return scanner.nextInt();
     }
 
     /**
      * 이동횟수 입력받기
      * @param scanner 입력 스캐너
+     * @return 이동횟수
      */
-    public void inputMoveCount(Scanner scanner) {
-        this.moveCount = scanner.nextInt();
+    public int inputMoveCount(Scanner scanner) {
+        return scanner.nextInt();
     }
 
     /**
      * 자동차 이름 입력받기
      * @param scanner 입력 스캐너
+     * @return 자동차 이름 목록
      */
-    public void inputCarNames(Scanner scanner) {
+    public List<CarName> inputCarNames(Scanner scanner) {
+        List<CarName> carNames = new ArrayList<>();
         String[] names = scanner.next().split(NAME_SPLIT_REGEX);
         for (String name : names) {
-            this.carNames.add(new CarName(name));
+            carNames.add(new CarName(name));
         }
-        this.carCount = names.length;
+        return carNames;
     }
 
 }
