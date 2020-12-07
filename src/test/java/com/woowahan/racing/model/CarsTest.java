@@ -22,7 +22,7 @@ class CarsTest {
 	private static final String CAR_NAME1 = "자동차1";
 	private static final String CAR_NAME2 = "자동차2";
 	private static final String CAR_NAME3 = "자동차3";
-	private static final int MIN_WINNER_COUNT = 1;
+
 	@Mock
 	GameRandom gameRandom;
 
