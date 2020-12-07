@@ -9,33 +9,32 @@ import racingcar.domain.Scoreboard;
 
 public class Racing {
     
-    public List<Integer> moveCar(Scoreboard board){
-        List<Integer> result = new ArrayList<>();
+    public Scoreboard moveCar(Scoreboard board){
         for(int j = 0; j < board.getMove(); j++){
-            List<Integer> moveResult = tryToMoveResult(board.getCars());
-            result.addAll(moveResult);
+            board = tryToMoveResult(board, j);
         }
-        return result;
+        return board;
     }
 
-    public List<Integer> tryToMoveResult(final List<Car> cars){
+    public Scoreboard tryToMoveResult(Scoreboard board, int j){
         List<Integer> result = new ArrayList<>();
-        for(int k = 0; k < cars.size(); k++){
-            if(tryToMove() == true){
-                final Car car = cars.get(k);
+        for(int k = 0; k < board.getRacingCar().getCars().size(); k++){
+            if(tryToMove()){
+                Car car = board.getRacingCar().getCars().get(k);
                 car.moveLocation();
-                cars.set(k, car);
+                board.getRacingCar().getCars().set(k, car);
             }
-            result.add(cars.get(k).getLocation());
+            result.add(board.getRacingCar().getCars().get(k).getLocation());
         }
-        result.add(0);
-        return result;
+        board.getHistory().putRacingResult(j, result);
+
+        return board;
     }
 
     public boolean tryToMove(){
         boolean result = false;
-        final Random random = new Random();
-        final int move = random.nextInt(10);
+        Random random = new Random();
+        int move = random.nextInt(10);
 
         if(move >=4){
             result = true;

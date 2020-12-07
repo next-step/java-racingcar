@@ -4,13 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import racingcar.domain.Scoreboard;
-import racingcar.view.ResultView;
-
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
 
 public class RacingGameTest {
@@ -18,20 +14,23 @@ public class RacingGameTest {
 
     @BeforeEach
     void init() {
-        racingGame = new RacingGame(new Racing(), new ResultView());
+        racingGame = new RacingGame(new Racing());
     }
 
     @Test
     void placetForRacingTest(){
-
+        String[] a = {"test","test1","test2"};
+        String[] b ={"5"};
         //given
-        List<Integer> list =new ArrayList<Integer>(Arrays.asList(3,5));
+        Map<Integer, String[]> list = Map.of( 
+                                                0 , a, 
+                                               1 , b );
 
         //when
-        Scoreboard board = racingGame.placetForRacing(list);
+        Scoreboard board = racingGame.placetForRacingByName(list);
 
         //then
-        assertThat(board.getCars().size()).isEqualTo(3);
+        assertThat(board.getRacingCar().getCars().size()).isEqualTo(3);
         assertThat(board.getMove()).isEqualTo(5);
     }
     

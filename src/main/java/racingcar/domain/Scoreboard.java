@@ -1,26 +1,33 @@
 package racingcar.domain;
 
-import java.util.List;
-import java.util.stream.Stream;
-
 public class Scoreboard {
-    private List<Car> cars;
+    private RacingCar racingaCar;
     private int move;
+    private RacingHistory history;
 
     public void setMove(int move){
         this.move = move;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public RacingCar getRacingCar() {
+        return racingaCar;
     }
 
     public int getMove() {
         return move;
     }
+
+    public RacingHistory getHistory() {
+        return history;
+    }
+
+    public void setHistory(RacingHistory history) {
+        this.history = history;
+    }
     
-    public Scoreboard(List<Car> cars){
-        this.cars = cars;
+    public Scoreboard(RacingCar cars){
+        this.racingaCar = cars;
+        this.history = new RacingHistory();
     }
 
 }
