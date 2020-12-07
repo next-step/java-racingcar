@@ -24,6 +24,7 @@ class CarTest {
     private static final int INITIATION_POSITION_NUMBER = 0;
     private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
     private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
+    private static final int RANDOM_BOUND_NUMBER = RandomIntMovementPolicy.RANDOM_BOUND_NUMBER;
 
     private RandomGenerator randomGenerator;
     private MovementPolicy movementPolicy;
@@ -55,7 +56,7 @@ class CarTest {
         Car car = new Car();
 
         // When
-        when(randomGenerator.generateZeroToNineInt())
+        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
                 .thenReturn(movableNumber);
         car.move(movementPolicy);
 
@@ -79,7 +80,7 @@ class CarTest {
         Car car = new Car();
 
         // When
-        when(randomGenerator.generateZeroToNineInt())
+        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
                 .thenReturn(unmovableNumber);
         car.move(movementPolicy);
 

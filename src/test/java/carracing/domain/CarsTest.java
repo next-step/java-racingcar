@@ -25,6 +25,7 @@ class CarsTest {
     private static final int BASE_POSITION_NUMBER = RandomIntMovementPolicy.BASE_POSITION_NUMBER;
     private static final int MAX_POSITION_NUMBER = RandomIntMovementPolicy.MAX_POSITION_NUMBER;
     private static final int MIN_POSITION_NUMBER = RandomIntMovementPolicy.MIN_POSITION_NUMBER;
+    private static final int RANDOM_BOUND_NUMBER = RandomIntMovementPolicy.RANDOM_BOUND_NUMBER;
 
     private RandomGenerator randomGenerator;
     private MovementPolicy movementPolicy;
@@ -53,7 +54,7 @@ class CarsTest {
         Cars cars = new Cars(NUMBER_OF_CARS);
 
         // When
-        when(randomGenerator.generateZeroToNineInt())
+        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
                 .thenReturn(movableNumber);
         cars.moveCars(movementPolicy);
         List<Integer> positionOfCars = convertPositionOfCars(cars);
@@ -71,7 +72,7 @@ class CarsTest {
         List<Integer> expected = convertPositionOfCars(cars);
 
         // When
-        when(randomGenerator.generateZeroToNineInt())
+        when(randomGenerator.generateZeroOrPositiveNumber(RANDOM_BOUND_NUMBER))
                 .thenReturn(unmovableNumber);
         cars.moveCars(movementPolicy);
         List<Integer> positionOfCars = convertPositionOfCars(cars);
