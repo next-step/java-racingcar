@@ -21,5 +21,11 @@ public class Playground {
 	public void play() {
 		int numberOfCars = InputView.inputNumberOfCars();
 		int moveTryMaxCount = InputView.inputMoveTryMaxCount();
+		Game racingGame = createRacingGame(numberOfCars, moveTryMaxCount);
+		ResultView.printGameStart();
+		while (racingGame.isContinue()) {
+			racingGame.play();
+			ResultView.printCarsLocation(racingGame.getGameCars());
+		}
 	}
 }
