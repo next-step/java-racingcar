@@ -30,4 +30,15 @@ public class StringCalculatorTest {
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
     }
+
+    @ParameterizedTest
+    @DisplayName("입력 값을 받아서 곱셈을 수행하여 값을 리턴 받음")
+    @CsvSource(value = {"2 * 3,6", "2 * 3 * 5,30"})
+    public void multiplication(String input, String expected) {
+        // give
+        StringCalculator stringCalculator = new StringCalculator(input);
+
+        // when then
+        assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
+    }
 }

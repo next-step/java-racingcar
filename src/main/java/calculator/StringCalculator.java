@@ -8,6 +8,7 @@ public class StringCalculator {
     private static final String SPLIT_REGEX = " ";
     private static final String MARK_ADD = "+";
     private static final String MARK_SUBTRACTION = "-";
+    private static final String MARK_MULTIPLICATION = "*";
     
     private List<String> inputList;
     private int baseValue = 0;
@@ -151,6 +152,11 @@ public class StringCalculator {
         if(StringCalculator.MARK_SUBTRACTION.equals(mark)) {
             return this.subtraction(a, b);
         }
+
+        if(StringCalculator.MARK_MULTIPLICATION.equals(mark)) {
+            return this.multiplication(a, b);
+        }
+
         throw new IllegalArgumentException("입력값의 기호가 사칙연산 기호가 아닙니다.");
     }
 
@@ -174,5 +180,14 @@ public class StringCalculator {
         return a - b;
     }
 
+    /**
+     * 두 수를 곱합니다
+     * @param a
+     * @param b
+     * @return a - b
+     */
+    public int multiplication(int a, int b) {
+        return a * b;
+    }
 
 }
