@@ -10,14 +10,14 @@ public class InputView {
 		this.scanner = new Scanner(System.in);
 	}
 
-	private int participateCarCountInput() {
+	public int participateCarCountInput() {
 		System.out.println("자동차 대수는 몇 대 인가요?");
 		int participateCarCount = inputInteger();
 		validateGreaterThenZero(participateCarCount);
 		return participateCarCount;
 	}
 
-	private int racingExecuteCountInput() {
+	public int racingExecuteCountInput() {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		int racingExecuteCount = inputInteger();
 		validateGreaterThenZero(racingExecuteCount);
