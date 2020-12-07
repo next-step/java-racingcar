@@ -60,4 +60,5 @@ public class GameTest {
 		}).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("경기수는 1보다 작을 수 없습니다.");
 	}
+
 }
