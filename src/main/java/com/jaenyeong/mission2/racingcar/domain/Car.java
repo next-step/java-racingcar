@@ -1,27 +1,30 @@
 package com.jaenyeong.mission2.racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Car {
-    private Distance dist;
-    private final RacingHistory history;
+    private Distance currDist;
+    private List<Distance> history;
 
     public Car() {
-        this.dist = new Distance();
-        this.history = new RacingHistory();
+        this.currDist = new Distance();
+        this.history = new ArrayList<>();
     }
 
     public void move() {
-        dist = dist.move();
-
-        history.writeRaceDistanceHistory(dist.getDist());
+        currDist = currDist.move();
+        history.add(currDist);
     }
 
     public int getCurrentDistance() {
-        return dist.getDist();
+        return currDist.getDist();
     }
 
     public List<Integer> getRacingHistory() {
-        return history.getDistanceForAllTurn();
+        return history.stream()
+            .map(Distance::getDist)
+            .collect(Collectors.toList());
     }
 }

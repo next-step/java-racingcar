@@ -10,6 +10,7 @@ import com.jaenyeong.mission2.racingcar.view.OutputView;
 public class RacingGame {
     private final Output output;
     private final Input input;
+    private int currentTurn = 1;
     private Cars cars;
 
     public RacingGame() {
@@ -40,6 +41,7 @@ public class RacingGame {
 
     private void racingGivenNumberOfTimes(final int tryTimes) {
         for (int i = 0; i < tryTimes; i++) {
+            currentTurn++;
             this.cars.moveRacingCars();
         }
     }
