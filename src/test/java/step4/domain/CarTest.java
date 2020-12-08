@@ -1,15 +1,11 @@
-package step3.domain;
+package step4.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
-import step3.domain.strategy.MovingStrategy;
-import step3.domain.strategy.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -17,7 +13,15 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("jack");
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자를 초과하면 IllegalArgumentException 발생")
+    void length_IllegalArgumentException() {
+        assertThatThrownBy(() -> {
+            car = new Car("jackcoding");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
