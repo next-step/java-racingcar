@@ -16,18 +16,10 @@ class Car {
 	}
 
 	public void getMoveForwardChance() {
-		final int chance = getMoveChanceGenerator().generateChance();
-		if (getMoveCondition().test(chance)) {
+		final int chance = this.moveChanceGenerator.generateChance();
+		if (this.moveCondition.test(chance)) {
 			moveForward();
 		}
-	}
-
-	private MoveChanceGenerator getMoveChanceGenerator() {
-		return this.moveChanceGenerator;
-	}
-
-	private IntPredicate getMoveCondition() {
-		return this.moveCondition;
 	}
 
 	void moveForward() {
