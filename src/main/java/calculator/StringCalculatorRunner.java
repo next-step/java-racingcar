@@ -4,11 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class StringCalculatorRunner {
-    private Scanner scanner;
-
-    public StringCalculatorRunner() {
-        this.scanner = new Scanner(System.in);
-    }
+    private final Scanner scanner = new Scanner(System.in);
 
     /**
      * running baseball game.
