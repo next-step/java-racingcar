@@ -16,13 +16,13 @@ public class Car {
     public Car() {
     }
 
-    private boolean canMovingForwad(int randomNumber) {
-        return randomNumber > MIN_FORWARD_NUMBER;
+    private boolean canMovingForward(int randomNumber) {
+        return randomNumber >= MIN_FORWARD_NUMBER;
     }
 
     public boolean tryMovingForward() {
         int randomNumber = random.nextInt(MAX_RANGE);
-        if (canMovingForwad(randomNumber)) {
+        if (canMovingForward(randomNumber)) {
             position++;
             return true;
         }
