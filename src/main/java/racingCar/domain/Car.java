@@ -1,9 +1,13 @@
 package racingCar.domain;
 
-public class Car {
-    private Position curPosition;
+import static racingCar.RacingCarUtils.checkCarNameRule;
 
-    public Car() {
+public class Car implements Comparable<Car> {
+    private Position curPosition;
+    private String name;
+
+    public Car(String name) {
+        checkCarNameRule(this.name = name);
         curPosition = new Position();
     }
 
@@ -13,18 +17,27 @@ public class Car {
         }
     }
 
-    public int getPosition() {
-        return curPosition.getPosition();
+    public Position getPosition() {
+        return curPosition;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
         int i = 0;
-        String result = "";
+        String result = this.name + " : ";
         while(i < curPosition.getPosition()) {
             result += "-";
             i++;
         }
         return result;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.curPosition.compareTo(o.curPosition);
     }
 }

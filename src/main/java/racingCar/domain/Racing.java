@@ -2,22 +2,24 @@ package racingCar.domain;
 
 import racingCar.RacingCarUtils;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static racingCar.RacingCarUtils.splitCarNames;
 
 public class Racing {
     private List<Car> cars;
     private MoveStrategy moveStrategy;
 
-    public Racing(int carNums) {
-        this.cars = Stream.generate(() -> new Car()).limit(carNums).collect(Collectors.toList());
+    public Racing(String carNames) {
+        this.cars = Arrays.stream(splitCarNames(carNames)).map(name -> new Car(name)).collect(Collectors.toList());
         this.moveStrategy = new RandomMoveStrategy();
     }
 
-    public Racing(int carNums, MoveStrategy moveStrategy) {
-        this.cars = Stream.generate(() -> new Car()).limit(carNums).collect(Collectors.toList());
+    public Racing(String carNames, MoveStrategy moveStrategy) {
+        this.cars = Arrays.stream(splitCarNames(carNames)).map(name -> new Car(name)).collect(Collectors.toList());
         this.moveStrategy = moveStrategy;
     }
 
