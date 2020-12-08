@@ -1,6 +1,7 @@
 package step4.view;
 
 import step4.domain.Car;
+import step4.domain.Cars;
 
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public static void outputMessageAboutMove(List<Car> cars) {
-        cars.forEach(car -> {
+    public static void outputMessageAboutMove(Cars cars) {
+        cars.getCars().forEach(car -> {
             StringBuilder builder = new StringBuilder();
             builder.append(car.getName());
             builder.append(" : ");
