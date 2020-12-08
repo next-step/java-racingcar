@@ -12,8 +12,7 @@ public class RandomNumberTest {
 	@DisplayName("0~9 범위의 난수 생성")
 	@Test
 	void given_random_number_generator_when_generate_then_return_random_value_between_zero_to_nine() {
-		RandomNumberGenerator generator = new RandomNumberGenerator();
-		int result = generator.generate();
+		int result = RandomNumberGenerator.generate();
 		assertThat(result).isBetween(0, 9);
 	}
 

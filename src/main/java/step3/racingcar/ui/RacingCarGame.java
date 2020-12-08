@@ -23,7 +23,7 @@ public class RacingCarGame {
 
 		RoundRecorder roundRecorder = new RoundRecorder(racingExecuteCountInput);
 
-		List<RacingCar> racingCars = new RacingCarGenerator().generate(participateCarCount);
+		List<RacingCar> racingCars = RacingCarGenerator.generate(participateCarCount);
 
 		for (int round = 1; round <= racingExecuteCountInput; round++) {
 			play(racingCars);

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step3.racingcar.domain.RacingCar;
+import step3.racingcar.domain.RacingCarGenerator;
+import step3.racingcar.domain.RacingCars;
 
 public class RacingCarTest {
 
@@ -18,6 +20,14 @@ public class RacingCarTest {
 		car.move(1);
 		car.move(5);
 		assertThat(car.getMoveDistance()).isEqualTo(2);
+	}
+
+	@DisplayName("레이싱카 일급 콜렉션 생성")
+	@Test
+	void given_count_when_generate_then_return_racingcars() {
+		final int participateCarCount = 3;
+		RacingCars racingCars = RacingCarGenerator.generate(participateCarCount);
+		assertThat(racingCars.getRacingCars().size()).isEqualTo(participateCarCount);
 	}
 
 }
