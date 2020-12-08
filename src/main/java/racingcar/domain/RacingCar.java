@@ -4,12 +4,16 @@ import java.util.Objects;
 
 public class RacingCar {
 
+    private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,6}$";
+    private String carName;
     private int carPosition;
 
-    public RacingCar() {
+    public RacingCar(String carName) {
+        this.carName = carName;
     }
 
-    public RacingCar(int carPosition) {
+    public RacingCar(String carName, int carPosition) {
+        this.carName = carName;
         this.carPosition = carPosition;
     }
 
@@ -17,11 +21,19 @@ public class RacingCar {
         if(racingRule.isAbleToMove()) {
             carPosition++;
         }
-        return new RacingCar(this.carPosition);
+        return new RacingCar(this.carName, this.carPosition);
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getCarPosition() {
         return carPosition;
+    }
+
+    public static boolean validateCarName(String racingCarName) {
+        return racingCarName.matches(racingCarNamePattern);
     }
 
     @Override
