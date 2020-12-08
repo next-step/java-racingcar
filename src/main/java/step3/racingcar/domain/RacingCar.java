@@ -6,11 +6,18 @@ public class RacingCar {
 	private int moveDistance;
 
 	public RacingCar(final String name) {
+		validate(name);
 		this.name = name;
 	}
 
+	private void validate(final String name) {
+		if (name == null || name.isEmpty()) {
+			throw new IllegalArgumentException("자동차 이름은 필수 값입니다");
+		}
+	}
+
 	public RacingCar(final String name, final int moveDistance) {
-		this.name = name;
+		this(name);
 		this.moveDistance = moveDistance;
 	}
 
