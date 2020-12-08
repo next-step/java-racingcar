@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.car.Car;
 
 import java.util.List;
 import java.util.Random;
@@ -35,14 +36,9 @@ class RacingNotifyViewTest {
 	}
 
 	private Car createRandomPositionCar(int position) {
-		Car car = new Car(value -> {
-			throw new UnsupportedOperationException();
-		}, () -> {
-			throw new UnsupportedOperationException();
-		});
-
+		Car car = new Car(value -> true, () -> 1);
 		for (int i = 0; i < position; i++) {
-			car.moveForward();
+			car.getMoveForwardChance();
 		}
 		return car;
 	}

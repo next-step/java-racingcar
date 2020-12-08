@@ -1,5 +1,7 @@
 package racing;
 
+import racing.car.Car;
+
 import java.util.List;
 
 public class RacingStatus {
