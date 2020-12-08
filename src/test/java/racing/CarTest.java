@@ -7,13 +7,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarTest {
+    private final String TEST_CAR_NAME = "T_CAR";
 
     @DisplayName("자동차는 전진 하거나 멈출 수 있다")
     @ParameterizedTest
     @CsvSource(value = {"0, 0", "4, 1", "9, 1"})
     public void move(int condition, int expected){
         //given
-        Car car = new Car(new FixedCondition(condition));
+        Car car = new Car(new FixedCondition(condition), TEST_CAR_NAME);
 
         //when
         car.move();
@@ -27,7 +28,7 @@ public class CarTest {
     @CsvSource(value = {"0, 0", "4, 1", "9, 1"})
     public void movingCar(int condition, int expected) {
         //given
-        Car car = new Car(new FixedCondition(condition));
+        Car car = new Car(new FixedCondition(condition), TEST_CAR_NAME);
 
         //when
         car.move();

@@ -12,9 +12,16 @@ public class Racing {
     public void start() {
         ResultView.printResultMessage();
         for (int i = 0; i < tryTimes; i++) {
-            ResultView.printLineBreak();
             cars.move();
             ResultView.printRacingStatus(cars);
         }
+    }
+
+    public void end() {
+        ResultView.printEndGame(ChooseTheWinner());
+    }
+
+    public RaceWinner ChooseTheWinner() {
+        return new RaceWinner(cars);
     }
 }
