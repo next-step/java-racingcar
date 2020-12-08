@@ -2,13 +2,16 @@ package step3.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import step3.racingcar.domain.RacingCar;
 import step3.racingcar.domain.RacingCarGenerator;
 import step3.racingcar.domain.RacingCars;
-import step3.racingcar.ui.InputView;
+import step3.racingcar.domain.Referee;
 
 public class RacingCarTest {
 
@@ -39,6 +42,18 @@ public class RacingCarTest {
 		final int expectedRacingCarsCount = racingCarNames.length;
 		RacingCars racingCars = RacingCarGenerator.generate(racingCarNames);
 		assertThat(racingCars.getRacingCars()).hasSize(expectedRacingCarsCount);
+	}
+
+	@DisplayName("자동차 경주 결과 최고점 구하기")
+	@Test
+	void given_racing_cars_when_get_max_movedistance_then_return_max_movedistance() {
+		RacingCars racingCars = new RacingCars(Stream.of(
+			new RacingCar("hoonmaro", 5),
+			new RacingCar("pobi", 3),
+			new RacingCar("pororo", 5)
+			).collect(Collectors.toList()));
+
+		assertThat(racingCars.getMaxMoveDistance()).isEqualTo(5);
 	}
 
 }

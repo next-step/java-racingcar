@@ -30,4 +30,13 @@ public class RacingCars {
 	public List<RacingCar> getRacingCars() {
 		return racingCars;
 	}
+
+	public int getMaxMoveDistance() {
+		int maxMoveDistance = 0;
+		for (final RacingCar racingCar : this.racingCars) {
+			maxMoveDistance = Math.max(maxMoveDistance, racingCar.getMoveDistance());
+		}
+		return maxMoveDistance;
+	}
+
 }
