@@ -50,5 +50,9 @@ public class CarsTest {
     }
   }
 
-
+  @Test
+  void getWinnerCarTest() {
+    cars.race(createTestRacingRule(true));
+    assertThat(cars.getWinnerCars().size()).isEqualTo(3);
+  }
 }

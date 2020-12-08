@@ -12,6 +12,7 @@ public class RacingGame {
       cars.race(new RandomRacingRule());
       RacingGameView.printRacingGameResult(cars);
     }
+    RacingGameView.printWinnerResult(cars);
   }
 
 }
