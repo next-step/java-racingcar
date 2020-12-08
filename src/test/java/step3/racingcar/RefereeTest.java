@@ -20,9 +20,9 @@ public class RefereeTest {
 	@BeforeEach
 	public void setup() {
 		racingCars = new RacingCars(Stream.of(
-			new RacingCar("hoonmaro", 5),
+			new RacingCar("hong", 5),
 			new RacingCar("pobi", 3),
-			new RacingCar("pororo", 5)
+			new RacingCar("lee", 5)
 		).collect(Collectors.toList()));
 	}
 

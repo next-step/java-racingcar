@@ -14,6 +14,10 @@ public class RacingCar {
 		if (name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("자동차 이름은 필수 값입니다");
 		}
+
+		if (name.length() > 5) {
+			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+		}
 	}
 
 	public RacingCar(final String name, final int moveDistance) {

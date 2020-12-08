@@ -55,16 +55,6 @@ public class InputView {
 		if (carNames.length == 0) {
 			throw new IllegalArgumentException("쉼표만 포함된 문자열입니다.");
 		}
-
-		for (String carName : carNames) {
-			validateCarNameLength(carName);
-		}
-	}
-
-	private void validateCarNameLength(final String carName) {
-		if (carName.length() > 5) {
-			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-		}
 	}
 
 	private void validateInputCarNames(final String carNamesInput) {
