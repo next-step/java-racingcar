@@ -1,6 +1,7 @@
 package step3.racingcar.domain;
 
 public class RacingCar {
+
 	private final int id;
 	private int moveDistance;
 
@@ -14,7 +15,9 @@ public class RacingCar {
 	}
 
 	public void move(final int value) {
-		if (value < 4) {
+		final int CAR_MOVABLE_VALUE = 4;
+
+		if (value < CAR_MOVABLE_VALUE) {
 			return;
 		}
 
