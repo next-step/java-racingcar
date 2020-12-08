@@ -23,7 +23,8 @@ public class CarTest {
 	@ValueSource(ints = {4, 5, 6})
 	void moveWhenArgOverFour(int arg) {
 		Car car = new Car();
-		assertThat(car.move(arg)).isEqualTo(1);
+		car.move(arg);
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
 	@Order(2)
@@ -32,6 +33,7 @@ public class CarTest {
 	@ValueSource(ints = {1, 2, 3})
 	void notMoveWhenArgUnderFour(int arg) {
 		Car car = new Car();
-		assertThat(car.move(arg)).isEqualTo(0);
+		car.move(arg);
+		assertThat(car.getPosition()).isEqualTo(0);
 	}
 }

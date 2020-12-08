@@ -9,36 +9,38 @@ import java.util.List;
  * @description :
  **/
 public class Cars {
+
 	private List<Car> cars;
 	private int matchCount;
 	private int lapCount;
+	private RaceHistory raceHistory;
 
 	public Cars(int carCount, int matchCount) {
 		this.cars = new ArrayList<>();
 		createCars(carCount);
 		this.matchCount = matchCount;
 		this.lapCount = 0;
+		raceHistory = new RaceHistory();
 	}
 
-	public void add(Car car) {
-		cars.add(car);
-	}
-
-	public int getCount(){
+	public int getCount() {
 		return cars.size();
 	}
 
 	public Cars race() {
-		while(matchCount != lapCount){
+		while (matchCount != lapCount) {
 			runLap();
 		}
 		return this;
 	}
 
 	public void runLap() {
-		for(Car car : cars){
+		List<Car> lapFinishCars = new ArrayList<>();
+		for (Car car : cars) {
 			car.randomMove();
+			lapFinishCars.add(new Car(car));
 		}
+		raceHistory.add(lapFinishCars);
 		lapCount++;
 	}
 
@@ -47,9 +49,17 @@ public class Cars {
 	}
 
 	private void createCars(int arg) {
-		for(int i=0; i< arg; i++){
-			Car car = new Car();
-			add(car);
+		for (int i = 0; i < arg; i++) {
+			cars.add(new Car());
 		}
 	}
+
+	public RaceHistory getHistory() {
+		return raceHistory;
+	}
+
+	public List<Car> get() {
+		return cars;
+	}
+
 }
