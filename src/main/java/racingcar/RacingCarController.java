@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Random;
 
 public class RacingCarController {
@@ -7,21 +8,31 @@ public class RacingCarController {
     private static final int RANDOM_BOUND = 10;
     private final Random random = new Random();
 
-    private final RacingCar racingCar;
+    private final List<RacingCar> racingCars;
 
-    public RacingCarController(RacingCar racingCar) {
-        this.racingCar = racingCar;
+    public RacingCarController(List<RacingCar> racingCars) {
+        this.racingCars = racingCars;
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
+
+    public void moveForwardAll() {
+        for (RacingCar racingCar : this.racingCars) {
+            this.moveForward(racingCar);
+        }
     }
 
     /**
      * 전진해야하는 조건에 맞으면 자동차를 전진시킵니다
      * @return
      */
-    public int moveForward() {
+    int moveForward(RacingCar racingCar) {
         if (this.isMovable(this.makeRandom())) {
-            return this.racingCar.addDistance();
+            return racingCar.addDistance();
         }
-        return this.racingCar.getDistance();
+        return racingCar.getDistance();
     }
 
     /**
