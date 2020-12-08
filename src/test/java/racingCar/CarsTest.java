@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -31,7 +32,7 @@ public class CarsTest {
 	}
 
 	@Order(2)
-	@DisplayName("1. 사용자가 입력한 경주 횟수만큼 경주가 반복된다.")
+	@DisplayName("2. 사용자가 입력한 경주 횟수만큼 경주가 반복된다.")
 	@ParameterizedTest
 	@ValueSource(ints = {2, 4, 6})
 	void repeatRaceCount(int arg){
@@ -42,6 +43,19 @@ public class CarsTest {
 		}
 		cars.race(arg);
 		assertThat(cars.getRaceCount()).isEqualTo(arg);
+	}
 
+	@Order(3)
+	@DisplayName("3. 차들이 경주를 완료하면 랩카운트가 증가한다")
+	@Test
+	void addLapCount(){
+		Cars cars = new Cars();
+		int generateDummyCars = 3;
+		for(int i=0; i< generateDummyCars; i++){
+			Car car = new Car();
+			cars.add(car);
+		}
+		cars.runLap();
+		assertThat(cars.getLapCount()).isEqualTo(1);
 	}
 }

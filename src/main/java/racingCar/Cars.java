@@ -11,10 +11,12 @@ import java.util.List;
 public class Cars {
 	private List<Car> cars;
 	private int raceCount;
+	private int lapCount;
 
 	public Cars() {
 		this.cars = new ArrayList<>();
 		this.raceCount = 0;
+		this.lapCount = 0;
 	}
 
 	public void add(Car car) {
@@ -27,11 +29,23 @@ public class Cars {
 
 	public void race(int arg) {
 		for (int i = 0; i < arg; i++) {
+			runLap();
 			raceCount++;
 		}
 	}
 
 	public int getRaceCount() {
 		return raceCount;
+	}
+
+	public void runLap() {
+		for(Car car : cars){
+			car.randomMove();
+		}
+		lapCount++;
+	}
+
+	public int getLapCount() {
+		return lapCount;
 	}
 }

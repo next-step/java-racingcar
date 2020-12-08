@@ -1,5 +1,7 @@
 package racingCar;
 
+import java.util.Random;
+
 /**
  * @author : byungkyu
  * @date : 2020/12/07
@@ -22,5 +24,11 @@ public class Car {
 
 	private boolean isMovable(int arg) {
 		return arg >= MOVABLE_MINIMUM_VALUE;
+	}
+
+	public void randomMove() {
+		Random random = new Random();
+		int condition = random.nextInt(10);
+		this.move(condition);
 	}
 }
