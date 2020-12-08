@@ -49,12 +49,23 @@ class CalculatorTest {
 
 	@DisplayName("덧셈 테스트")
 	@ParameterizedTest
-	@CsvSource(value = {"1 + 2:3", "2 + 4 + 5:11", "5 + 6 + 7 + 8:26"}, delimiter = ':')
+	@CsvSource(value = {"1 + 2:3", "2 + 4 + 5:11", "5 + 6 + 7 + 8:26", "-5 + 4:-1"}, delimiter = ':')
 	public void 덧셈_테스트(String expression, long expectedResult) throws Exception {
 	    // given
 	    // when
 		long actualResult = calculator.calculate(expression);
 	    // then
 		assertThat(actualResult).isEqualTo(expectedResult);
+	}
+
+	@DisplayName("뺄셈 테스트")
+	@ParameterizedTest
+	@CsvSource(value = {"6 - 2:4", "-2 - 4 - 5:-11", "9 - 1 - 2:6"}, delimiter = ':')
+	public void 뺄셈_테스트(String expression, long expectedResult) throws Exception {
+	    // given
+	    // when
+		long actualResult = calculator.calculate(expression);
+	    // then
+	    assertThat(actualResult).isEqualTo(expectedResult);
 	}
 }
