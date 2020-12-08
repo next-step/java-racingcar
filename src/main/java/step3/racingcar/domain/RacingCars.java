@@ -22,7 +22,7 @@ public class RacingCars {
 	public RacingCars copy() {
 		List<RacingCar> copiedRacingCars = new ArrayList<>();
 		for (RacingCar racingCar : this.racingCars) {
-			copiedRacingCars.add(new RacingCar(racingCar.getId(), racingCar.getMoveDistance()));
+			copiedRacingCars.add(racingCar.copy());
 		}
 		return new RacingCars(copiedRacingCars);
 	}

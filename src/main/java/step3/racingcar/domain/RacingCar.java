@@ -52,4 +52,8 @@ public class RacingCar {
 	public int getId() {
 		return this.id;
 	}
+
+	public RacingCar copy() {
+		return new RacingCar(this.id, this.moveDistance);
+	}
 }
