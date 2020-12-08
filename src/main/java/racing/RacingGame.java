@@ -1,11 +1,11 @@
 package racing;
 
 import racing.car.Car;
+import racing.car.MoveForwardStrategy;
+import racing.car.RandomMoveForwardStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 	private final List<Car> carList;
@@ -13,13 +13,19 @@ public class RacingGame {
 	private final RacingNotifier racingNotifier;
 
 	public RacingGame(int carNum, int turn, RacingNotifier racingNotifier) {
-		this.carList = IntStream.range(0, carNum).mapToObj(value -> createDefaultCar()).collect(Collectors.toList());
+		this.carList = createCarList(carNum);
 		this.turn = turn;
 		this.racingNotifier = racingNotifier;
 	}
 
-	private static Car createDefaultCar() {
-		return new Car(value -> value >= 4, () -> new Random().nextInt(10));
+	private List<Car> createCarList(int carNum) {
+		MoveForwardStrategy strategy = new RandomMoveForwardStrategy();
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < carNum; i++) {
+			Car car = new Car(strategy);
+			carList.add(car);
+		}
+		return carList;
 	}
 
 	public RacingStatus start() {

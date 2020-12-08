@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.Car;
+import racing.car.MoveForwardStrategy;
 
 import java.util.List;
 import java.util.Random;
@@ -36,11 +37,25 @@ class RacingNotifyViewTest {
 	}
 
 	private Car createRandomPositionCar(int position) {
-		Car car = new Car(value -> true, () -> 1);
+		Car car = new Car(createAlwaysMoveForwardStrategy());
 		for (int i = 0; i < position; i++) {
 			car.getMoveForwardChance();
 		}
 		return car;
+	}
+
+	private static MoveForwardStrategy createAlwaysMoveForwardStrategy() {
+		return new MoveForwardStrategy() {
+			@Override
+			public int createMoveForwardChance() {
+				return 0;
+			}
+
+			@Override
+			public boolean isSatisfiedToMoveForward(int chance) {
+				return true;
+			}
+		};
 	}
 
 }

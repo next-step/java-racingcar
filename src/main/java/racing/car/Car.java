@@ -1,24 +1,18 @@
 package racing.car;
 
-import java.util.function.IntPredicate;
-
 public class Car {
 
-	// TODO : refactor : moveCondition 과 moveChanceGenerator 합치기 ?
-	private final IntPredicate moveCondition;
-	private final MoveChanceGenerator moveChanceGenerator;
+	private final MoveForwardStrategy moveForwardStrategy;
 	private int position;
 
-	public Car(IntPredicate moveCondition, MoveChanceGenerator moveChanceGenerator) {
-		this.moveCondition = moveCondition;
-		this.moveChanceGenerator = moveChanceGenerator;
+	public Car(MoveForwardStrategy moveForwardStrategy) {
+		this.moveForwardStrategy = moveForwardStrategy;
 		this.position = 0;
 	}
 
 	public void getMoveForwardChance() {
-		final int chance = this.moveChanceGenerator.generateChance();
-		if (this.moveCondition.test(chance)) {
-			moveForward();
+		if (this.moveForwardStrategy.isMovableChance()) {
+			moveForward();;
 		}
 	}
 
