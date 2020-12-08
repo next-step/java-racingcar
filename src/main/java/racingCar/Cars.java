@@ -10,9 +10,11 @@ import java.util.List;
  **/
 public class Cars {
 	private List<Car> cars;
+	private int raceCount;
 
 	public Cars() {
 		this.cars = new ArrayList<>();
+		this.raceCount = 0;
 	}
 
 	public void add(Car car) {
@@ -21,5 +23,15 @@ public class Cars {
 
 	public int getCount(){
 		return cars.size();
+	}
+
+	public void race(int arg) {
+		for (int i = 0; i < arg; i++) {
+			raceCount++;
+		}
+	}
+
+	public int getRaceCount() {
+		return raceCount;
 	}
 }

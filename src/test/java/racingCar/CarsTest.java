@@ -21,12 +21,27 @@ public class CarsTest {
 	@DisplayName("1. 사용자가 입력한 자동차의 수 만큼 자동차가 생성된다.")
 	@ParameterizedTest
 	@ValueSource(ints = {2, 3, 4})
-	void moveWhenArgOverFour(int arg) {
+	void createCar(int arg) {
 		Cars cars = new Cars();
 		for(int i=0; i< arg; i++){
 			Car car = new Car();
 			cars.add(car);
 		}
 		assertThat(cars.getCount()).isEqualTo(arg);
+	}
+
+	@Order(2)
+	@DisplayName("1. 사용자가 입력한 경주 횟수만큼 경주가 반복된다.")
+	@ParameterizedTest
+	@ValueSource(ints = {2, 4, 6})
+	void repeatRaceCount(int arg){
+		Cars cars = new Cars();
+		for(int i=0; i< 4; i++){
+			Car car = new Car();
+			cars.add(car);
+		}
+		cars.race(arg);
+		assertThat(cars.getRaceCount()).isEqualTo(arg);
+
 	}
 }
