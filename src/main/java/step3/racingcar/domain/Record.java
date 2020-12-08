@@ -6,18 +6,18 @@ import java.util.List;
 public class Record {
 
 	private final int round;
-	private final List<RacingCar> carList;
+	private final List<RacingCar> cars;
 
-	public Record(final int round, final List<RacingCar> carList) {
+	public Record(final int round, final List<RacingCar> cars) {
 		this.round = round;
-		this.carList = new ArrayList<>(carList.size());
-		for (RacingCar racingCar : carList) {
-			this.carList.add(new RacingCar(racingCar.getId(), racingCar.getMoveDistance()));
+		this.cars = new ArrayList<>(cars.size());
+		for (RacingCar racingCar : cars) {
+			this.cars.add(new RacingCar(racingCar.getId(), racingCar.getMoveDistance()));
 		}
 	}
 
-	public List<RacingCar> getCarList() {
-		return carList;
+	public List<RacingCar> getCars() {
+		return cars;
 	}
 
 	@Override

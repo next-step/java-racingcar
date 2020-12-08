@@ -16,7 +16,7 @@ public class ResultView {
 	}
 
 	private void printEachRecord(final Record record) {
-		for (RacingCar car : record.getCarList()) {
+		for (RacingCar car : record.getCars()) {
 			printCarMoved(car.getMoveDistance());
 			System.out.println();
 		}
