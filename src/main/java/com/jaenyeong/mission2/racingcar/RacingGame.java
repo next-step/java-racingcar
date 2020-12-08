@@ -7,6 +7,9 @@ import com.jaenyeong.mission2.racingcar.view.InputView;
 import com.jaenyeong.mission2.racingcar.view.Output;
 import com.jaenyeong.mission2.racingcar.view.OutputView;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RacingGame {
     private final Output output;
     private final Input input;
@@ -26,7 +29,8 @@ public class RacingGame {
     }
 
     private void runningGame() {
-        final Cars cars = processSetCountOfCars();
+//        final Cars cars = processSetCountOfCars();
+        final Cars cars = processSetCarsByNamesOfCars();
 
         racingGivenNumberOfTimes(processSetRaceTryTimes(), cars);
 
@@ -40,6 +44,17 @@ public class RacingGame {
 
     protected Cars getCars(final int howManyUseCars) {
         return new Cars(howManyUseCars);
+    }
+
+    private Cars processSetCarsByNamesOfCars() {
+        output.printNamesOfTheCarsToBeRaced();
+        String carNames = input.inputNamesOfTheCarsToBeRaced();
+
+        return getCars(Arrays.asList(carNames.split(",")));
+    }
+
+    protected Cars getCars(final List<String> nameOfCars) {
+        return new Cars(nameOfCars);
     }
 
     protected int processSetRaceTryTimes() {
