@@ -9,6 +9,13 @@ public class Car {
     private final Random random = new Random();
     private int position = 1;
 
+    public Car(int position) {
+        this.position = position;
+    }
+
+    public Car() {
+    }
+
     private boolean canMovingForwad(int randomNumber) {
         return randomNumber > MIN_FORWARD_NUMBER;
     }
@@ -24,5 +31,16 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < position; i++) {
+            result.append("-");
+        }
+
+        return result.toString();
     }
 }

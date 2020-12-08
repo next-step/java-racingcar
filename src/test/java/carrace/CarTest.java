@@ -18,4 +18,19 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(forward ? 2 : 1);
     }
 
+    @Test
+    void carPositionTest() {
+        Car car = new Car(1);
+        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.toString()).isEqualTo("-");
+
+        car = new Car(2);
+        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.toString()).isEqualTo("--");
+
+        car = new Car(5);
+        assertThat(car.getPosition()).isEqualTo(5);
+        assertThat(car.toString()).isEqualTo("-----");
+    }
+
 }
