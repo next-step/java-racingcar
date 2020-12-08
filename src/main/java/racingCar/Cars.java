@@ -48,4 +48,11 @@ public class Cars {
 	public int getLapCount() {
 		return lapCount;
 	}
+
+	public void createCars(int arg) {
+		for(int i=0; i< arg; i++){
+			Car car = new Car();
+			add(car);
+		}
+	}
 }

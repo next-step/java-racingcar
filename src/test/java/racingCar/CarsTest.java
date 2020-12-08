@@ -24,10 +24,7 @@ public class CarsTest {
 	@ValueSource(ints = {2, 3, 4})
 	void createCar(int arg) {
 		Cars cars = new Cars();
-		for(int i=0; i< arg; i++){
-			Car car = new Car();
-			cars.add(car);
-		}
+		cars.createCars(arg);
 		assertThat(cars.getCount()).isEqualTo(arg);
 	}
 
@@ -37,10 +34,7 @@ public class CarsTest {
 	@ValueSource(ints = {2, 4, 6})
 	void repeatRaceCount(int arg){
 		Cars cars = new Cars();
-		for(int i=0; i< 4; i++){
-			Car car = new Car();
-			cars.add(car);
-		}
+		cars.createCars(arg);
 		cars.race(arg);
 		assertThat(cars.getRaceCount()).isEqualTo(arg);
 	}
@@ -51,10 +45,7 @@ public class CarsTest {
 	void addLapCount(){
 		Cars cars = new Cars();
 		int generateDummyCars = 3;
-		for(int i=0; i< generateDummyCars; i++){
-			Car car = new Car();
-			cars.add(car);
-		}
+		cars.createCars(generateDummyCars);
 		cars.runLap();
 		assertThat(cars.getLapCount()).isEqualTo(1);
 	}
