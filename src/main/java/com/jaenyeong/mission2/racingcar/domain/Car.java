@@ -5,21 +5,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Car {
-    private Distance currDist;
     private List<Distance> history;
 
     public Car() {
-        this.currDist = new Distance();
         this.history = new ArrayList<>();
+        this.history.add(new Distance());
     }
 
     public void move() {
-        currDist = currDist.move();
-        history.add(currDist);
+        history.add(getLastDistance().move());
+    }
+
+    private Distance getLastDistance() {
+        return history.get(history.size() - 1);
     }
 
     public int getCurrentDistance() {
-        return currDist.getDist();
+        return getLastDistance().getDist();
     }
 
     public List<Integer> getRacingHistory() {
