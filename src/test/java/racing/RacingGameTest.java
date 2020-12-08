@@ -3,6 +3,7 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.car.CarGroup;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,10 +17,10 @@ class RacingGameTest {
 		RacingGame racingGame = new RacingGame(carNum, 5, racingStatus -> {});
 
 		// when
-		RacingStatus racingStatus = racingGame.start();
+		CarGroup carGroup = racingGame.start();
 
 		// then
-		assertThat(racingStatus.getCarList()).hasSize(carNum);
+		assertThat(carGroup.stream()).hasSize(carNum);
 	}
 
 	@ParameterizedTest

@@ -1,5 +1,7 @@
 package racing;
 
+import racing.car.CarGroup;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,8 +10,8 @@ public class RacingNotifyView implements RacingNotifier {
 	private static final String POSITION_WORD = "-";
 
 	@Override
-	public void notifyRace(RacingStatus racingStatus) {
-		List<String> positions = racingStatus.getCarList().stream()
+	public void notifyRace(CarGroup carGroup) {
+		List<String> positions = carGroup.stream()
 				.map(car -> getPositionAsString(car.getPosition()))
 				.collect(Collectors.toList());
 
