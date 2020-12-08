@@ -79,4 +79,16 @@ class CalculatorTest {
 	    // then
 		assertThat(actualResult).isEqualTo(expectedResult);
 	}
+
+	@DisplayName("나눗셈 테스트")
+	@ParameterizedTest
+	@CsvSource(value = {"6 / 2:2", "-4 / 2 / 2:-1", "-30 / -1 / 3 / 5:2"}, delimiter = ':')
+	public void 나눗셈_테스트(String expression, long expectedResult) throws Exception {
+	    // given
+	    // when
+		// when
+		long actualResult = calculator.calculate(expression);
+		// then
+		assertThat(actualResult).isEqualTo(expectedResult);
+	}
 }
