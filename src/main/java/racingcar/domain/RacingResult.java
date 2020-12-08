@@ -1,10 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
 public class RacingResult {
-	private String name;
-	private int moveCount;
+	private final String name;
+	private final int moveCount;
 
 	public RacingResult(String name, int moveCount) {
 		this.name = name;

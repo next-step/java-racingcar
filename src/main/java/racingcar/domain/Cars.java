@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +9,7 @@ public class Cars {
 
 	public Cars(List<String> carNames, NumberGenerator numberGenerator) {
 		this.cars = carNames.stream()
-			.map(name -> new Car(name))
+			.map(Car::new)
 			.collect(Collectors.toList());
 
 		this.numberGenerator = numberGenerator;

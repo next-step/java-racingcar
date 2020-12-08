@@ -1,4 +1,10 @@
-package racingcar;
+package racingcar.view;
+
+import java.util.List;
+
+import racingcar.domain.RacingResult;
+import racingcar.domain.RacingResults;
+import racingcar.domain.TotalRacingResults;
 
 public class ResultView {
 	private static final String RESULT_HEADER = "실행결과";
@@ -11,6 +17,13 @@ public class ResultView {
 		System.out.println(RESULT_HEADER);
 	}
 
+	public static void printTotalRacingResult(TotalRacingResults totalRacingResults) {
+		for (RacingResults results : totalRacingResults.getTotalResults()) {
+			printMoveResult(results);
+		}
+		printWinner(totalRacingResults.winners());
+	}
+
 	public static void printMoveResult(RacingResults results) {
 		for (RacingResult result : results.getResults()) {
 			printMove(result);
@@ -18,9 +31,9 @@ public class ResultView {
 		System.out.println();
 	}
 
-	public static void printWinner(RacingResults results) {
-		String winners = String.join(SEPARATOR_WINNERS_NAME, results.winners());
-		System.out.println(winners + ANNOUNCEMENT_WINNER);
+	public static void printWinner(List<String> winners) {
+		String winnersName = String.join(SEPARATOR_WINNERS_NAME, winners);
+		System.out.println(winnersName + ANNOUNCEMENT_WINNER);
 	}
 
 	private static void printMove(RacingResult result) {

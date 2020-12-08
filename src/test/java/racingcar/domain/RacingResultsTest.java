@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,5 +41,13 @@ public class RacingResultsTest {
 		List<String> winners = results.winners();
 		assertThat(winners.size()).isEqualTo(2);
 		assertThat(winners).containsExactly("two", "five");
+	}
+
+	@Test
+	@DisplayName("RacingResults 생성자에 Null을 전달해도 빈 List로 정상적으로 생성되어야한다")
+	void nullContructorTest() {
+		RacingResults results = new RacingResults(null);
+		List<String> winners = results.winners();
+		assertThat(winners).isEmpty();
 	}
 }

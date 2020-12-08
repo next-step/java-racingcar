@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,11 +14,10 @@ public class Car {
 		this.name = name;
 	}
 
-	public int tryMove(int randomNumber) {
+	public void tryMove(int randomNumber) {
 		if (randomNumber >= STANDARD_TO_MOVE) {
 			this.move();
 		}
-		return this.moveCount;
 	}
 
 	public RacingResult racingResult() {

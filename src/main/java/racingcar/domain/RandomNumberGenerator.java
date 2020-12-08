@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomNumberGenerator implements NumberGenerator{
+public class RandomNumberGenerator implements NumberGenerator {
 	private static final Random random = new Random();
 	private static final int RANDOM_NUMBER_LIMIT = 10;
 
