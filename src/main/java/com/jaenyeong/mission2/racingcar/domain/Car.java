@@ -11,7 +11,6 @@ public class Car {
 
     public Car() {
         this.history = new ArrayList<>();
-        this.history.add(new Distance());
     }
 
     public Car(final String name) {
@@ -21,7 +20,6 @@ public class Car {
         }
 
         this.history = new ArrayList<>();
-        this.history.add(new Distance());
         this.name = name.trim();
     }
 
@@ -30,6 +28,10 @@ public class Car {
     }
 
     private Distance getLastDistance() {
+        if (history.size() <= 0) {
+            return new Distance();
+        }
+
         return history.get(history.size() - 1);
     }
 
