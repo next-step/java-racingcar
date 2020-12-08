@@ -1,10 +1,15 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
     private static final int CAN_RUN_MIN_VALUE = 4;
-    private List<Car> cars;
+    private static final String NAME_SEPARATOR = ",";
+    private static final String EMPTY_STRING = "";
+    private static final int MAX_NAME_LENGTH = 5;
+    private List<Car> cars = new ArrayList<>();
 
     public Cars() {
     }
@@ -36,5 +41,22 @@ public class Cars {
             cars.add(new Car());
         }
         return this;
+    }
+
+    public Cars generateCarsWithName(String names) {
+        validate(names);
+        String[] carNames = names.split(NAME_SEPARATOR);
+        Arrays.stream(carNames).forEach(name -> cars.add(new Car(name)));
+        return this;
+    }
+
+    private void validate(String names) {
+        if(names == null || EMPTY_STRING.equals(names)) {
+            throw new IllegalArgumentException("이름을 입력 하세요");
+        }
+
+        if(names.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름 다섯자 초과");
+        }
     }
 }

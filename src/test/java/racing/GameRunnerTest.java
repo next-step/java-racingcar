@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,15 +36,6 @@ class GameRunnerTest {
         assertThat(results.getCars().get(0).getMoveCount()).isEqualTo(3);
         assertThat(results.getCars().get(1).getMoveCount()).isEqualTo(3);
     }
-
-//    @Test
-//    void namㅡㅡㅡㅡㅡe() {
-//        List<Car> cars = Arrays.asList(new Car());
-//        Cars c1 = new Cars(cars);
-//        Cars c2 = new Cars(c1.getCars());
-//        c1.getCars().get(0).move();
-//        assertThat(c2.getCars().get(0).getMoveCount()).isEqualTo(1);
-//    }
 
     private GameRunner createTestGameRunner(int carNumber, int moveNumber) {
         List<Car> cars = new ArrayList<>();

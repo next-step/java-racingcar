@@ -3,10 +3,12 @@ package racing;
 public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int numberOfCars = inputView.requestNumberOfCar();
+//        int numberOfCars = inputView.requestNumberOfCar();
+        String carNames = inputView.requestCarNames();
         int numberOfMove = inputView.requestNumberOfMove();
         Cars cars = new Cars();
-        cars.generate(numberOfCars);
+//        cars.generate(numberOfCars);
+        cars.generateCarsWithName(carNames);
         GameRunner gameRunner = new GameRunner(cars, numberOfMove);
         RandomNumberGenerator randomNumberGenerator = new CarRandomNumberGenerator();
         gameRunner.play(randomNumberGenerator);
