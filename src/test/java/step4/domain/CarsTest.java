@@ -7,30 +7,21 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step4.domain.Cars;
-import step4.domain.judge.Judge;
-import step4.domain.judge.LongPositionJudge;
-import step4.domain.strategy.MovingStrategy;
-import step4.domain.strategy.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static step4.domain.CarFactory.produceCars;
 
 class CarsTest {
     private static final String CARS_NAME = "pobi,jack,honux";
 
     private Cars cars;
-    private Judge judge;
 
     @BeforeEach
     void setUp() {
-        judge = new LongPositionJudge();
         cars = new Cars(produceCars(CARS_NAME));
     }
 
@@ -57,7 +48,7 @@ class CarsTest {
     @DisplayName("우승한 자동차를 찾는 기능 테스트")
     void judge(String[] carNames, int[] distance, String expected) {
         Cars cars = new Cars(getCars(carNames, distance));
-        assertEquals(cars.winnerCars(judge), expected);
+        assertEquals(cars.winnerCars(), expected);
     }
 
     private List<Car> getCars(String[] carNames, int[] distance) {

@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarTest {
 
     Car car;
+
     @BeforeEach
     void setUp() {
         car = new Car("jack");
