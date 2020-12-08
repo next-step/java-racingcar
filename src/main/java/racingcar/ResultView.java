@@ -2,16 +2,19 @@ package racingcar;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 자동차 경주 출력 클래스
  */
 public class ResultView {
 
-    private Map<Integer, List<RacingCar>> racingCarMap;
+    private final Map<Integer, List<RacingCar>> racingCarMap;     // 경주용 자동차 맵
+    private final List<RacingCar> winners;                        // 우승 자동차 목록
 
     public ResultView(RacingGame racingGame) {
         this.racingCarMap = racingGame.getRacingCarMap();
+        this.winners = racingGame.getWinners();
     }
 
     /**
@@ -23,6 +26,7 @@ public class ResultView {
             printRacingCarList(racingCarMap.get(key));
             System.out.println();
         }
+        printWinners();
     }
 
     /**
@@ -31,8 +35,19 @@ public class ResultView {
      */
     private void printRacingCarList(List<RacingCar> racingCarList) {
         for (RacingCar car : racingCarList) {
+            printCarName(car);
             printAdvanced(car.getAdvancedCount());
             System.out.println();
+        }
+    }
+
+    /**
+     * 자동차 이름 출력
+     * @param car 경주용 자동차
+     */
+    private void printCarName(RacingCar car) {
+        if (car.isExistName()) {
+            System.out.print(car.getCarName().getName() + " : ");
         }
     }
 
@@ -46,4 +61,16 @@ public class ResultView {
         }
     }
 
+    /**
+     * 자동차 경주 우승자 출력
+     */
+    public void printWinners() {
+        String winnerCarNames = winners.stream()
+                .map(RacingCar::getCarName)
+                .map(CarName::getName)
+                .collect(Collectors.joining(", "));
+        if (winnerCarNames.length() > 0) {
+            System.out.println(winnerCarNames + "가 최종 우승했습니다.");
+        }
+    }
 }
