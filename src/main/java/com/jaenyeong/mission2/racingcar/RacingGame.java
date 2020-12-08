@@ -10,8 +10,7 @@ import com.jaenyeong.mission2.racingcar.view.OutputView;
 public class RacingGame {
     private final Output output;
     private final Input input;
-    private int currentTurn = 1;
-    private Cars cars;
+    private int currentTurn = 0;
 
     public RacingGame() {
         this.output = new OutputView();
@@ -27,33 +26,44 @@ public class RacingGame {
     }
 
     private void runningGame() {
-        processSetCountOfCars();
+        final Cars cars = processSetCountOfCars();
 
-        racingGivenNumberOfTimes(processSetRaceTryTimes());
+        racingGivenNumberOfTimes(processSetRaceTryTimes(), cars);
 
-        processResultOfRacing();
+        processResultOfRacing(cars);
     }
 
-    private void processSetCountOfCars() {
+    private Cars processSetCountOfCars() {
         output.printHowManyUseCars();
-        final int howManyUseCars = input.inputHowManyUseCars();
-        this.cars = new Cars(howManyUseCars);
+        return getCars(input.inputHowManyUseCars());
     }
 
-    private int processSetRaceTryTimes() {
+    protected Cars getCars(final int howManyUseCars) {
+        return new Cars(howManyUseCars);
+    }
+
+    protected int processSetRaceTryTimes() {
         output.printHowManyTryTimes();
         return input.inputHowManyTryTimes();
     }
 
-    private void racingGivenNumberOfTimes(final int tryTimes) {
+    protected void racingGivenNumberOfTimes(final int tryTimes, final Cars cars) {
         for (int i = 0; i < tryTimes; i++) {
             currentTurn++;
-            this.cars.moveRacingCars();
+            cars.moveRacingCars();
         }
     }
 
-    private void processResultOfRacing() {
+    private void processResultOfRacing(final Cars cars) {
         output.printExecutionResult();
-        output.printAllRacingHistoriesResult(new RacingHistoryDto((currentTurn - 1), cars));
+        output.printAllRacingHistoriesResult(getHistoryDto(cars));
+    }
+
+    protected RacingHistoryDto getHistoryDto(final Cars cars) {
+        return new RacingHistoryDto((currentTurn), cars);
+    }
+
+    public int getCurrentTurn() {
+        return currentTurn;
     }
 }
