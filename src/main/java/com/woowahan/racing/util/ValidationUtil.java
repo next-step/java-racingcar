@@ -29,11 +29,11 @@ public class ValidationUtil {
 		return value == null || "".equals(value);
 	}
 
-	public static boolean isLengthEmptyOrGreaterThanFive(String value) {
-		return isNullOrEmpty(value) || value.length() > 5;
+	public static boolean validateCarName(String value) {
+		return !isNullOrEmpty(value) && value.length() <= 5;
 	}
 
-	public static boolean hasLengthEmptyOrGreaterThanFive(List<String> strings) {
-		return strings.stream().anyMatch(ValidationUtil::isLengthEmptyOrGreaterThanFive);
+	public static boolean allValidateName(List<String> strings) {
+		return strings.stream().allMatch(ValidationUtil::validateCarName);
 	}
 }

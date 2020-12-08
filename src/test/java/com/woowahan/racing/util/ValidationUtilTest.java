@@ -76,46 +76,46 @@ class ValidationUtilTest {
 		);
 	}
 
-	@DisplayName("isLengthLessThanFive메서드는 전달된 문자열이 문자열이 null or empty이거나 5자를 초과하면 true를 반환한다.")
+	@DisplayName("validateCarName메서드는 전달된 문자열이 문자열이 null or empty이거나 5자를 초과하면 true를 반환한다.")
 	@ParameterizedTest
-	@MethodSource("argIsLengthEmptyOrGreaterThanFive")
-	void isLengthEmptyOrGreaterThanFive(String value, boolean expected) {
+	@MethodSource("argValidateCarName")
+	void validateCarName(String value, boolean expected) {
 
-		boolean result = ValidationUtil.isLengthEmptyOrGreaterThanFive(value);
+		boolean result = ValidationUtil.validateCarName(value);
 
 		assertThat(result).isEqualTo(expected);
 	}
 
-	public static Stream argIsLengthEmptyOrGreaterThanFive() {
+	public static Stream argValidateCarName() {
 		return Stream.of(
-			Arguments.of("abcde", false),
-			Arguments.of("가나다라마", false),
-			Arguments.of("abc", false),
-			Arguments.of("가나다라마바", true),
-			Arguments.of("abcdefgh", true),
-			Arguments.of("", true),
-			Arguments.of(null, true)
+			Arguments.of("abcde", true),
+			Arguments.of("가나다라마", true),
+			Arguments.of("abc", true),
+			Arguments.of("가나다라마바", false),
+			Arguments.of("abcdefgh", false),
+			Arguments.of("", false),
+			Arguments.of(null, false)
 		);
 	}
 
-	@DisplayName("hasLengthEmptyOrGreaterThanFive메서드에 전달된 파라미터 리스트 값중에 하나라도 문자열이 null or empty이거나 5자를 초과하면 true를 반환한다.")
+	@DisplayName("allValidateName메서드에 전달된 파라미터 리스트 값중에 하나라도 문자열이 null or empty이거나 5자를 초과하면 true를 반환한다.")
 	@ParameterizedTest
-	@MethodSource("argHasLengthEmptyOrGreaterThanFive")
-	void hasLengthEmptyOrGreaterThanFive(List<String> value, boolean expected) {
+	@MethodSource("argAllValidateName")
+	void allValidateName(List<String> value, boolean expected) {
 
-		boolean result = ValidationUtil.hasLengthEmptyOrGreaterThanFive(value);
+		boolean result = ValidationUtil.allValidateName(value);
 
 		assertThat(result).isEqualTo(expected);
 	}
 
-	public static Stream argHasLengthEmptyOrGreaterThanFive() {
+	public static Stream argAllValidateName() {
 		return Stream.of(
-			Arguments.of(Arrays.asList("a", "ab", "abcde"), false),
-			Arguments.of(Arrays.asList("a", "ab", "abcdef"), true),
-			Arguments.of(Arrays.asList("", "ab", "abcde"), true),
-			Arguments.of(Arrays.asList(null, "ab", "abcde"), true),
-			Arguments.of(Arrays.asList("가나다"), false),
-			Arguments.of(Arrays.asList("가나다라마", "abcde"), false)
+			Arguments.of(Arrays.asList("a", "ab", "abcde"), true),
+			Arguments.of(Arrays.asList("a", "ab", "abcdef"), false),
+			Arguments.of(Arrays.asList("", "ab", "abcde"), false),
+			Arguments.of(Arrays.asList(null, "ab", "abcde"), false),
+			Arguments.of(Arrays.asList("가나다"), true),
+			Arguments.of(Arrays.asList("가나다라마", "abcde"), true)
 		);
 	}
 

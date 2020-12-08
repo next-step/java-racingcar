@@ -11,7 +11,7 @@ public class RacingSimulator {
 
 	private RacingSimulator(InputResult inputResult) {
 		this.inputResult = inputResult;
-		this.partCars = Cars.of(participateCars());
+		this.partCars = Cars.of(inputResult.getCarNames());
 		this.gameResults = new ArrayList<>();
 	}
 
@@ -19,17 +19,9 @@ public class RacingSimulator {
 		return new RacingSimulator(inputResult);
 	}
 
-	private List<Car> participateCars() {
-		List<Car> cars = new ArrayList<>();
-		for (String carName : inputResult.getCarNames()) {
-			cars.add(Car.createCar(carName));
-		}
-		return cars;
-	}
-
 	public List<GameResult> run() {
 		for (int i = 0; i < inputResult.getTryCount(); i++) {
-			gameResults.add(partCars.moveCars());
+			gameResults.add(partCars.moveCars(new CarGameRandom()));
 		}
 		return this.gameResults;
 	}

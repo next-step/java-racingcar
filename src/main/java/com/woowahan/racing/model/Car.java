@@ -13,14 +13,14 @@ public class Car {
 	}
 
 	private Car(String name, int distance) {
-		if (ValidationUtil.isLengthEmptyOrGreaterThanFive(name)) {
+		if (!ValidationUtil.validateCarName(name)) {
 			throw new IllegalArgumentException(Message.MSG_CAR_NAME_LENGTH_ERROR);
 		}
 		this.name = name;
 		this.distance = distance;
 	}
 
-	public static Car createCar(String name) {
+	public static Car create(String name) {
 		return new Car(name);
 	}
 
