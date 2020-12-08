@@ -1,14 +1,15 @@
 package carrace;
 
 public class Car {
-	private int position;
+	private int position = 1;
 
 	public int getPosition() {
 		return position;
 	}
 
-	public void move(int step) {
-		this.position += checkMovePossible(step);
+	public int move(int step) {
+		position += checkMovePossible(step);
+		return position;
 	}
 
 	private int checkMovePossible(int randomNumber) {
