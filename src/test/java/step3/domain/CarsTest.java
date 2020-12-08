@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
-  private static final int NUMBER_OF_CAR = 5;
   private Cars cars;
 
   private RacingRule createTestRacingRule(boolean canMove) {
@@ -28,14 +27,14 @@ public class CarsTest {
 
   @BeforeEach
   void before() {
-    cars = new Cars(NUMBER_OF_CAR);
+    cars = new Cars("pobi,crong,honux");
   }
 
   @DisplayName("모두 이동 가능한 조건이라, 이동한 경우")
   @Test
   public void canMoveIsTrue() {
     cars.race(createTestRacingRule(true));
-    assertThat(cars.getCars().size()).isEqualTo(NUMBER_OF_CAR);
+    assertThat(cars.getCars().size()).isEqualTo(3);
     for (Car car : cars.getCars()) {
       assertThat(car.getDistance()).isEqualTo(2);
     }
@@ -45,7 +44,7 @@ public class CarsTest {
   @Test
   public void canMoveIsFalse() {
     cars.race(createTestRacingRule(false));
-    assertThat(cars.getCars().size()).isEqualTo(NUMBER_OF_CAR);
+    assertThat(cars.getCars().size()).isEqualTo(3);
     for (Car car : cars.getCars()) {
       assertThat(car.getDistance()).isEqualTo(1);
     }

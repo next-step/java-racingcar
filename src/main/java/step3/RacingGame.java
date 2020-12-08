@@ -6,8 +6,8 @@ import step3.view.RacingGameView;
 
 public class RacingGame {
 
-  public void start(int numberOfCar, int gameCount) {
-    Cars cars = new Cars(numberOfCar);
+  public void start(String carNames, int gameCount) {
+    Cars cars = new Cars(carNames);
     for (int i = 0; i < gameCount; i++) {
       cars.race(new RandomRacingRule());
       RacingGameView.printRacingGameResult(cars);
