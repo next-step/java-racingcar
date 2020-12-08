@@ -45,12 +45,13 @@ public class RacingCar implements Comparable<RacingCar> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
-        return carPosition == racingCar.carPosition;
+        return carPosition == racingCar.carPosition &&
+                Objects.equals(carName, racingCar.carName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carPosition);
+        return Objects.hash(carName, carPosition);
     }
 
     @Override

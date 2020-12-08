@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RacingRound {
@@ -34,6 +35,19 @@ public class RacingRound {
                 .filter(maxPositionCar::isSamePosition)
                 .map(RacingCar::getCarName)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingRound that = (RacingRound) o;
+        return Objects.equals(racingCars, that.racingCars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingCars);
     }
 
 }
