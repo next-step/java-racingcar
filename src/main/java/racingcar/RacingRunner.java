@@ -14,8 +14,7 @@ public class RacingRunner {
 
     public void run() {
         this.inputCarAmount();
-        this.racingCarController.moveForwardAll();
-        this.printResult();
+        this.playRound(this.inputRacingRound());
     }
 
     /**
@@ -24,6 +23,28 @@ public class RacingRunner {
     private void inputCarAmount() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         this.racingCarController = new RacingCarController(this.inputView.createRacingCars(scanner.nextInt()));
+    }
+
+    /**
+     * 몇 회차까지 진행 할 지 입력받습니다.
+     * @return round
+     */
+    private int inputRacingRound() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        return scanner.nextInt();
+    }
+
+    /**
+     * 주어진 회차만큼 진행합니다.
+     * @param round
+     */
+    public void playRound(int round) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < round; i++) {
+            this.racingCarController.moveForwardAll();
+            this.printResult();
+            System.out.println();
+        }
     }
 
     /**
