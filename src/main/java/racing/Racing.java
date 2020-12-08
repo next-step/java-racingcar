@@ -12,7 +12,6 @@ public class Racing {
     public void start() {
         ResultView.printResultMessage();
         for (int i = 0; i < tryTimes; i++) {
-            ResultView.printLineBreak();
             cars.move();
             ResultView.printRacingStatus(cars);
         }

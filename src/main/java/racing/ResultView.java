@@ -15,6 +15,7 @@ public class ResultView {
     }
 
     static void printRacingStatus(Cars cars) {
+        printLineBreak();
         cars.getCars().forEach(ResultView::printCarStatus);
     }
 
@@ -44,7 +45,7 @@ public class ResultView {
         }
     }
 
-    static void printLineBreak() {
+    private static void printLineBreak() {
         System.out.println();
     }
 
