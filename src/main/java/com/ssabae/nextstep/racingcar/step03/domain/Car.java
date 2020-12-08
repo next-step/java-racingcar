@@ -8,6 +8,11 @@ package com.ssabae.nextstep.racingcar.step03.domain;
 public class Car {
 
     private int moveCount;
+    private final String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public void move(MoveState state) {
         if (state == MoveState.GO) {

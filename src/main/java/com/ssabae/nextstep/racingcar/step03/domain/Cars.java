@@ -1,10 +1,11 @@
 package com.ssabae.nextstep.racingcar.step03.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * @author : leesangbae
@@ -21,14 +22,19 @@ public class Cars {
     private final Operator<MoveState> operator;
     private final Random random;
 
-    private final Stream<Car> generate = Stream.generate(Car::new);
-
-    public Cars(Random random, int count) {
+    public Cars(Random random, String names) {
         this.carList = new ArrayList<>();
         this.operator = new MoveOperator(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE, MOVEMENT_MIN_VALUE);
         this.random = random;
-        this.generate.limit(count)
-                .forEach(carList::add);
+        addCarList(splitCarNames(names));
+    }
+
+    private List<String> splitCarNames(String names) {
+        return Arrays.asList(names.split(","));
+    }
+
+    private void addCarList(List<String> names) {
+        names.forEach(name -> carList.add(new Car(name)));
     }
 
     public void moving() {
