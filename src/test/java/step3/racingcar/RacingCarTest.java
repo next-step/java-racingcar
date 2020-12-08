@@ -71,4 +71,12 @@ public class RacingCarTest {
 			.withMessage("자동차 이름은 필수 값입니다");
 	}
 
+	@DisplayName("자동차 이름 문자열 null 일 경우 익셉션 발생")
+	@Test
+	void given_null_car_name_when_new_racingcar_return_exception() {
+		assertThatIllegalArgumentException()
+			.isThrownBy(() -> new RacingCar(null))
+			.withMessage("자동차 이름은 필수 값입니다");
+	}
+
 }
