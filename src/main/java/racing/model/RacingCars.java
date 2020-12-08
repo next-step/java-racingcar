@@ -24,13 +24,13 @@ public class RacingCars {
 	 */
 	private List<RacingCar> initRacingCars(int racingCarNumber) {
 
-		List<RacingCar> racingCars    = new ArrayList<>();
+		List<RacingCar> initRacingCars = new ArrayList<>();
 		for (int i = 0; i < racingCarNumber; i++) {
 
-			racingCars.add(new RacingCar());
+			initRacingCars.add(new RacingCar());
 		}
 
-		return racingCars;
+		return initRacingCars;
 	}
 
 	/**
