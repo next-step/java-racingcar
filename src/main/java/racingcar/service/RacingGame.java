@@ -13,6 +13,7 @@ public class RacingGame {
     private int countOfRound;
     private RacingCars racingCars;
     private List<RacingRound> racingRounds = new ArrayList<>();
+    private MoveRule moveRule = new RacingRule();
 
     public RacingGame(int countOfCar, int countOfRound) {
         this.racingCars = new RacingCars(countOfCar);
@@ -31,7 +32,7 @@ public class RacingGame {
     }
 
     public MoveRule adjustRule() {
-        return new RacingRule();
+        return this.moveRule;
     }
 
 }
