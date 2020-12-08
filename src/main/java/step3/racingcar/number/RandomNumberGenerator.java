@@ -5,6 +5,7 @@ import java.util.Random;
 public class RandomNumberGenerator {
 
 	public int generate() {
-		return new Random().nextInt(10);
+		final int RANDOM_NUMBER_BOUNDARY = 10;
+		return new Random().nextInt(RANDOM_NUMBER_BOUNDARY);
 	}
 }
