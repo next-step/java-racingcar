@@ -1,6 +1,5 @@
 package racing;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,24 +15,15 @@ class NumberUtilTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "3", "10", "6"})
     void toInt(String inputNumber) {
-        assertThat(NumberUtil.toInt(inputNumber)).isExactlyInstanceOf(Integer.class);
+        assertThat(NumberParserUtil.toInt(inputNumber)).isExactlyInstanceOf(Integer.class);
     }
 
     @Test
     void toIntException() {
         assertThatExceptionOfType(NumberFormatException.class).isThrownBy(() -> {
-                   NumberUtil.toInt("rk");
+                   NumberParserUtil.toInt("rk");
                 }
         ).withMessage("Missmatch integer type");
-    }
-
-    @Test
-    @DisplayName("Random Number가 0이상 9 이하여야한다.")
-    void getRandomNumber() {
-        assertAll(() -> {
-            assertThat(NumberUtil.getRandomNumber()).isGreaterThan(0);
-            assertThat(NumberUtil.getRandomNumber()).isLessThan(10);
-        });
     }
 
 }

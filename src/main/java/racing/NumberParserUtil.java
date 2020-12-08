@@ -2,8 +2,7 @@ package racing;
 
 import java.util.Random;
 
-public class NumberUtil {
-    private static final Random random = new Random();
+public class NumberParserUtil {
 
     public static int toInt(String strNumber) {
         int parseInt;
@@ -15,8 +14,4 @@ public class NumberUtil {
         return parseInt;
     }
 
-    public static int getRandomNumber() {
-        int number = random.nextInt(10);
-        return number;
-    }
 }
