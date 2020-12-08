@@ -11,6 +11,7 @@ public class Car {
   }
 
   public Car(String name) {
+    valid(name);
     this.distance = INIT_POSITION;
     this.name = name;
   }
@@ -25,5 +26,11 @@ public class Car {
 
   public String getName() {
     return this.name;
+  }
+
+  private static void valid(String input) {
+    if (input == null || input.equals("") || input.length() > 5) {
+      throw new IllegalArgumentException();
+    }
   }
 }
