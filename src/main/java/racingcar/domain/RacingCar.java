@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
     private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,6}$";
     private String carName;
@@ -36,6 +36,10 @@ public class RacingCar {
         return racingCarName.matches(racingCarNamePattern);
     }
 
+    public boolean isSamePosition(RacingCar other) {
+        return other.getCarPosition() == this.carPosition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,5 +51,10 @@ public class RacingCar {
     @Override
     public int hashCode() {
         return Objects.hash(carPosition);
+    }
+
+    @Override
+    public int compareTo(RacingCar other) {
+        return this.carPosition - other.getCarPosition();
     }
 }
