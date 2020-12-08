@@ -63,4 +63,12 @@ public class RacingCarTest {
 			.withMessage("자동차 이름은 5자를 초과할 수 없습니다.");
 	}
 
+	@DisplayName("자동차 이름 빈 문자열 일 경우 익셉션 발생")
+	@Test
+	void given_empty_car_name_when_new_racingcar_return_exception() {
+		assertThatIllegalArgumentException()
+			.isThrownBy(() -> new RacingCar(""))
+			.withMessage("자동차 이름은 필수 값입니다");
+	}
+
 }
