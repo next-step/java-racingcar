@@ -1,5 +1,6 @@
-package carrace;
+package carrace.domain;
 
+import carrace.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

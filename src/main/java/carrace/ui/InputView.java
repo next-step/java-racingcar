@@ -1,4 +1,4 @@
-package carrace;
+package carrace.ui;
 
 import java.util.Scanner;
 

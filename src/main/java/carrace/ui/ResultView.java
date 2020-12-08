@@ -1,4 +1,7 @@
-package carrace;
+package carrace.ui;
+
+import carrace.domain.Car;
+import carrace.domain.RaceTrack;
 
 import java.util.List;
 

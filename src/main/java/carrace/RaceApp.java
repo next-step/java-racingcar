@@ -1,5 +1,9 @@
 package carrace;
 
+import carrace.domain.RaceTrack;
+import carrace.ui.InputView;
+import carrace.ui.ResultView;
+
 public class RaceApp {
     public static void main(String[] args) throws InterruptedException {
         int carCount = InputView.scanCarCount();
