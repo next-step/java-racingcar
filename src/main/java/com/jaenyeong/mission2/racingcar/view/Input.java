@@ -6,4 +6,6 @@ public interface Input {
     int inputHowManyUseCars();
 
     int inputHowManyTryTimes();
+
+    String inputNamesOfTheCarsToBeRaced();
 }

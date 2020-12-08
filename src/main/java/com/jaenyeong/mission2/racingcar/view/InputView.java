@@ -44,4 +44,9 @@ public class InputView implements Input {
     public int inputHowManyTryTimes() {
         return inputUntilCorrectIntType();
     }
+
+    @Override
+    public String inputNamesOfTheCarsToBeRaced() {
+        return scanner.nextLine();
+    }
 }
