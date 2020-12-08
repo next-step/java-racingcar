@@ -14,6 +14,12 @@ public final class Cars {
         }
     }
 
+    public Cars(String... names) {
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+    }
+
     public List<Car> getCars() {
         return cars;
     }
