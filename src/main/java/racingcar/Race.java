@@ -1,26 +1,35 @@
 package racingcar;
 
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    int number;
-    int count;
+    public void play() {
+        InputView inputView = new InputView();
+        inputView.input();
 
-    Car car;
+        int numberOfCar = inputView.getNumber();
+        int playCount = inputView.getCount();
 
-    public Race() {}
+        ResultView resultView = new ResultView();
 
-    public Race(int number, int count) {
-        this.number = number;
-        this.count = count;
+        List<Car> cars = ready(numberOfCar);
+
+        System.out.println("\n실행결과");
+        for (int i = 0; i < playCount; i++) {
+            resultView.resultRacing(cars);
+        }
     }
 
-    public int getNumber() {
-        return this.number;
-    }
+    private List<Car> ready(int numberOfCar) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < numberOfCar; i++) {
+            cars.add(new Car());
+        }
 
-    public int getCount() {
-        return this.count;
+        return cars;
     }
 }
