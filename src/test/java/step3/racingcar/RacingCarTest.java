@@ -36,7 +36,7 @@ public class RacingCarTest {
 	void given_count_when_generate_then_return_racingcars() {
 		final int participateCarCount = 3;
 		RacingCars racingCars = RacingCarGenerator.generate(participateCarCount);
-		assertThat(racingCars.getRacingCars().size()).isEqualTo(participateCarCount);
+		assertThat(racingCars.getRacingCars()).hasSize(participateCarCount);
 	}
 
 }
