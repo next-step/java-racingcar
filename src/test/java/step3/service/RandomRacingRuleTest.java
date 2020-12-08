@@ -1,8 +1,7 @@
-package step3.domain;
+package step3.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.service.RandomRacingRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
