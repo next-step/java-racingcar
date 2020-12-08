@@ -59,7 +59,8 @@
 - 자동차 경주 현황을 화면에 출력하는 콘솔 `OutputConsole` 구현
     - [ ] 각 회차 `Cars`의 각 `Car`의 `CarName`과 `CarPosition` 현황을 출력한다.
 - 자동차 경주 게임을 구성하는 `CarRacingGame` 구현
-    - [ ] 자동차 경주를 시작한다.
+    - [ ] `InputConsole`와 `OutputConsole`를 활용하여 콘솔을 구성한다.
+    - [ ] `Cars`를 초기화하여 자동차 경주 게임을 시작한다.
 
 ## 게임 실행 예시
 
