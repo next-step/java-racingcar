@@ -1,7 +1,7 @@
 package step3;
 
 import step3.domain.Cars;
-import step3.domain.RandomRacingRule;
+import step3.service.RandomRacingRule;
 import step3.view.RacingGameView;
 
 public class RacingGame {
