@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
  * @project : java-racingcar
  * @since : 2020-12-07
  */
+@DisplayName("Car 객체 이동하는 Operator Test Class")
 class MoveOperatorTest {
 
     private final Operator<MoveState> operator = new MoveOperator(0, 9, 4);
