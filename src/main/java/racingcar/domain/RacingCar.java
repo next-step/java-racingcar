@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class RacingCar implements Comparable<RacingCar> {
 
-    private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,6}$";
+    private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,4}$";
     private String carName;
     private int carPosition;
 
