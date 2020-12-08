@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiFunction;
 
 public class StringCalculator {
 
@@ -119,62 +120,7 @@ public class StringCalculator {
      * @return calculate result
      */
     private int selectAndExecuteCalculation(int a, int b, String mark) throws IllegalArgumentException {
-        if(StringCalculator.MARK_ADD.equals(mark)) {
-            return this.add(a, b);
-        }
+        return Operator.valueOfOperator(mark).calculate(a, b);
 
-        if(StringCalculator.MARK_SUBTRACTION.equals(mark)) {
-            return this.subtraction(a, b);
-        }
-
-        if(StringCalculator.MARK_MULTIPLICATION.equals(mark)) {
-            return this.multiplication(a, b);
-        }
-
-        if(StringCalculator.MARK_DIVISION.equals(mark)) {
-            return this.division(a, b);
-        }
-
-        throw new IllegalArgumentException("입력값의 기호가 사칙연산 기호가 아닙니다.");
-    }
-
-    /**
-     * 두 수를 더합니다.
-     * @param a
-     * @param b
-     * @return a + b
-     */
-    public int add(int a, int b) {
-        return a + b;
-    }
-
-    /**
-     * 두 수를 뺍니다
-     * @param a
-     * @param b
-     * @return a - b
-     */
-    public int subtraction(int a, int b) {
-        return a - b;
-    }
-
-    /**
-     * 두 수를 곱합니다
-     * @param a
-     * @param b
-     * @return a - b
-     */
-    public int multiplication(int a, int b) {
-        return a * b;
-    }
-
-    /**
-     * 두 수를 나눕니다
-     * @param a
-     * @param b
-     * @return a - b
-     */
-    public int division(int a, int b) {
-        return a / b;
     }
 }
