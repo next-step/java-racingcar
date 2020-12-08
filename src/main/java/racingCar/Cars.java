@@ -10,12 +10,13 @@ import java.util.List;
  **/
 public class Cars {
 	private List<Car> cars;
-	private int raceCount;
+	private int matchCount;
 	private int lapCount;
 
-	public Cars() {
+	public Cars(int carCount, int matchCount) {
 		this.cars = new ArrayList<>();
-		this.raceCount = 0;
+		createCars(carCount);
+		this.matchCount = matchCount;
 		this.lapCount = 0;
 	}
 
@@ -27,15 +28,11 @@ public class Cars {
 		return cars.size();
 	}
 
-	public void race(int arg) {
-		for (int i = 0; i < arg; i++) {
+	public Cars race() {
+		while(matchCount != lapCount){
 			runLap();
-			raceCount++;
 		}
-	}
-
-	public int getRaceCount() {
-		return raceCount;
+		return this;
 	}
 
 	public void runLap() {
@@ -49,7 +46,7 @@ public class Cars {
 		return lapCount;
 	}
 
-	public void createCars(int arg) {
+	private void createCars(int arg) {
 		for(int i=0; i< arg; i++){
 			Car car = new Car();
 			add(car);

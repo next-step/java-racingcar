@@ -31,4 +31,9 @@ public class Game {
 	public int getMatchCount() {
 		return matchCount;
 	}
+
+	public Cars start() {
+		Cars cars = new Cars(carCount, matchCount);
+		return cars.race();
+	}
 }
