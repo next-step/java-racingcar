@@ -15,12 +15,12 @@ public class RacingCarGame {
 	}
 
 	public void start() {
-		int participateCarCount = inputView.participateCarCountInput();
+		String carNames = inputView.InputCarNames();
 		int racingExecuteCountInput = inputView.racingExecuteCountInput();
 
 		RoundRecorder roundRecorder = new RoundRecorder(racingExecuteCountInput);
 
-		RacingCars racingCars = RacingCarGenerator.generate("hoonmaro");
+		RacingCars racingCars = RacingCarGenerator.generate(carNames);
 
 		for (int round = 1; round <= racingExecuteCountInput; round++) {
 			racingCars.moveAll();
