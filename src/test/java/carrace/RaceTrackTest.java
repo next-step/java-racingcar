@@ -24,4 +24,15 @@ class RaceTrackTest {
         assertThat(car3.toString()).isIn("--------", "---------");
     }
 
+    @RepeatedTest(30)
+    void startingPointNextTest() {
+        RaceTrack raceTrack = new RaceTrack(3);
+        raceTrack.next();
+
+        for (Car car : raceTrack.getCarList()) {
+            assertThat(car.getPosition()).isIn(1, 2);
+            assertThat(car.toString()).isIn("-", "--");
+        }
+    }
+
 }
