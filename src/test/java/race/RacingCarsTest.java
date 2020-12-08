@@ -24,7 +24,7 @@ public class RacingCarsTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 3})
     void createTest(int numOfCar) {
-        RacingCars cars = RacingCars.createCars(numOfCar, movePolicy);
+        cars = RacingCars.createCars(numOfCar, movePolicy);
 
         assertThat(cars.size()).isEqualTo(numOfCar);
     }
@@ -33,7 +33,7 @@ public class RacingCarsTest {
     @ParameterizedTest
     @CsvSource(value = {"1,3", "3,1", "2,2"})
     void moveTest(int numOfCar, int numOfTry) {
-        RacingCars cars = RacingCars.createCars(numOfCar, movePolicy);
+        cars = RacingCars.createCars(numOfCar, movePolicy);
 
         for (int i = 0; i < numOfTry; i++) {
             cars.step();
