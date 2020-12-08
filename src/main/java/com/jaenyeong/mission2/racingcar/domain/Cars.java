@@ -14,6 +14,13 @@ public class Cars {
         }
     }
 
+    public Cars(final List<String> namesOfCars) {
+        this.racingCars = new ArrayList<>();
+        for (String name : namesOfCars) {
+            this.racingCars.add(new Car(name));
+        }
+    }
+
     public int getHowManyRacingCars() {
         return this.racingCars.size();
     }
