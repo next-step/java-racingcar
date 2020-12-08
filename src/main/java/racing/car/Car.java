@@ -12,7 +12,7 @@ public class Car {
 
 	public void getMoveForwardChance() {
 		if (this.moveForwardStrategy.isMovableChance()) {
-			moveForward();;
+			moveForward();
 		}
 	}
 
