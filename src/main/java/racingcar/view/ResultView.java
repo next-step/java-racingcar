@@ -10,6 +10,7 @@ public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String RUN_MARK = "-";
     private static final String NEW_LINE = "\n";
+    private static final String SEPARATOR = " : ";
 
     private ResultView() {
     }
@@ -29,14 +30,15 @@ public class ResultView {
         StringBuilder builder = new StringBuilder();
         racingRound.getRacingCars()
                 .forEach(racingCar -> builder
-                        .append(makeCarResult(racingCar.getCarPosition()))
+                        .append(makeCarResult(racingCar.getCarName(), racingCar.getCarPosition()))
                         .append(NEW_LINE));
 
         return builder.toString();
     }
 
-    public static String makeCarResult(int position) {
+    public static String makeCarResult(String carName, int position) {
         StringBuilder builder = new StringBuilder();
+        builder.append(carName).append(SEPARATOR);
         for (int i = 0; i < position; i++) {
             builder.append(RUN_MARK);
         }
