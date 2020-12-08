@@ -3,7 +3,7 @@ package race;
 import java.util.stream.Collectors;
 
 public class OutputView {
-	private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
+	private static final String WINNER_MESSAGE = "\n%s가 최종 우승했습니다.";
 
 	public static void printDistanceStatus(RaceGameHistory raceGameHistory) {
 		String result = raceGameHistory.getHistory()

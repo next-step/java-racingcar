@@ -6,11 +6,10 @@ public class RaceGameApplication {
 		try {
 			String names = InputView.askNameOfCarToUser();
 			int tryTimesToUser = InputView.askNumberOfTryTimesToUser();
-			CarGroup carGroup = CarGroup.ofCarNames(names, new SimpleMovePolicy());
-			RaceGameModel raceGameModel = new RaceGameModel(carGroup);
-			RaceGameHistory raceGameHistory = raceGameModel.start(tryTimesToUser);
-			OutputView.printDistanceStatus(raceGameHistory);
-			OutputView.printRaceGameWinner(raceGameHistory);
+			RaceGameFactory raceGameFactory = new RandomRaceGameFactory(names, tryTimesToUser);
+			RaceGameHistory history = raceGameFactory.start();
+			OutputView.printDistanceStatus(history);
+			OutputView.printRaceGameWinner(history);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

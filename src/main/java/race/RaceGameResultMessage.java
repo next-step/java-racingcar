@@ -7,7 +7,8 @@ import java.util.stream.IntStream;
 
 public class RaceGameResultMessage {
 	public static final String MESSAGE_SEPARATOR = "";
-	public static final String TRY_SEPARATOR = "\n";
+	public static final String CAR_SEPARATOR = "\n";
+	public static final String TRY_SEPARATOR = "\n\n";
 	public static final String DISTANCE_SEPARATOR = "-";
 	public static final String RESULT_MESSAGE_FORMAT = "%s : %s";
 
@@ -20,7 +21,7 @@ public class RaceGameResultMessage {
 	public String parser() {
 		return cars.stream()
 			.map(this::amountToSeparatorParser)
-			.collect(Collectors.joining(TRY_SEPARATOR));
+			.collect(Collectors.joining(CAR_SEPARATOR));
 	}
 
 	private String amountToSeparatorParser(Car car) {

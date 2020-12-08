@@ -19,7 +19,7 @@ public class CarGroup {
 		return new CarGroup(generateCarNames(names), movePolicy);
 	}
 
-	public static List<CarName> generateCarNames(String names) {
+	private static List<CarName> generateCarNames(String names) {
 		return makeSeparatorNames(names).stream()
 			.map(CarName::of)
 			.collect(Collectors.toList());
@@ -41,9 +41,4 @@ public class CarGroup {
 
 		return Collections.unmodifiableList(moveCars);
 	}
-
-	public List<Car> nowCarStatus() {
-		return cars;
-	}
-
 }
