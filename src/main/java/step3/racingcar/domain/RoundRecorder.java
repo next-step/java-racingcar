@@ -11,7 +11,7 @@ public class RoundRecorder {
 		this.records = new ArrayList<>(round);
 	}
 
-	public void record(final int round, final List<RacingCar> racingCars) {
+	public void record(final int round, final RacingCars racingCars) {
 		records.add(new Record(round, racingCars));
 	}
 

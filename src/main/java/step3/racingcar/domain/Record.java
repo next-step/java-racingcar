@@ -1,22 +1,16 @@
 package step3.racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Record {
 
 	private final int round;
-	private final List<RacingCar> cars;
+	private final RacingCars cars;
 
-	public Record(final int round, final List<RacingCar> cars) {
+	public Record(final int round, final RacingCars cars) {
 		this.round = round;
-		this.cars = new ArrayList<>(cars.size());
-		for (RacingCar racingCar : cars) {
-			this.cars.add(new RacingCar(racingCar.getId(), racingCar.getMoveDistance()));
-		}
+		this.cars = cars.copy();
 	}
 
-	public List<RacingCar> getCars() {
+	public RacingCars getCars() {
 		return cars;
 	}
 

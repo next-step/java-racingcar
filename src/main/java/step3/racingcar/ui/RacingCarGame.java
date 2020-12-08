@@ -1,11 +1,8 @@
 package step3.racingcar.ui;
 
-import java.util.List;
-
-import step3.racingcar.domain.RacingCar;
 import step3.racingcar.domain.RacingCarGenerator;
+import step3.racingcar.domain.RacingCars;
 import step3.racingcar.domain.RoundRecorder;
-import step3.racingcar.number.RandomNumberGenerator;
 
 public class RacingCarGame {
 
@@ -23,10 +20,10 @@ public class RacingCarGame {
 
 		RoundRecorder roundRecorder = new RoundRecorder(racingExecuteCountInput);
 
-		List<RacingCar> racingCars = RacingCarGenerator.generate(participateCarCount);
+		RacingCars racingCars = RacingCarGenerator.generate(participateCarCount);
 
 		for (int round = 1; round <= racingExecuteCountInput; round++) {
-			play(racingCars);
+			racingCars.moveAll();
 			roundRecorder.record(round, racingCars);
 		}
 
@@ -34,11 +31,9 @@ public class RacingCarGame {
 
 	}
 
-	private void play(final List<RacingCar> racingCars) {
-		RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-		for (RacingCar racingCar : racingCars) {
-			racingCar.move(randomNumberGenerator.generate());
-		}
+	private void play(final RacingCars racingCars) {
+
+
 	}
 
 }

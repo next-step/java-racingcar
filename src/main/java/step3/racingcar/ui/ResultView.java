@@ -1,6 +1,7 @@
 package step3.racingcar.ui;
 
 import step3.racingcar.domain.RacingCar;
+import step3.racingcar.domain.RacingCars;
 import step3.racingcar.domain.Record;
 import step3.racingcar.domain.RoundRecorder;
 
@@ -10,13 +11,13 @@ public class ResultView {
 		System.out.println();
 		System.out.println("실행 결과");
 		for (Record record : roundRecorder.getRecords()) {
-			printEachRecord(record);
+			printEachRecord(record.getCars());
 			System.out.println();
 		}
 	}
 
-	private void printEachRecord(final Record record) {
-		for (RacingCar car : record.getCars()) {
+	private void printEachRecord(final RacingCars racingCars) {
+		for (RacingCar car : racingCars.getRacingCars()) {
 			printCarMoved(car.getMoveDistance());
 			System.out.println();
 		}
