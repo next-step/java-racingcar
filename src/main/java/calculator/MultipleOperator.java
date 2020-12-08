@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 public class MultipleOperator implements Operator {
 	@Override

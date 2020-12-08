@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 public class PlusOperator implements Operator {
 	@Override

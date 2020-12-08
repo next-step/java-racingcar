@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 

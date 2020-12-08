@@ -1,4 +1,4 @@
-package step1;
+package setstring;
 
 import static org.assertj.core.api.Assertions.*;
 
