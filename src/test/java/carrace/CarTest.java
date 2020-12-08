@@ -16,7 +16,7 @@ class CarTest {
 	}
 	
 	@ParameterizedTest
-	@CsvSource(value = {"2:2", "3:3", "4:4"}, delimiter = ':')
+	@CsvSource(value = {"2:0", "3:0", "4:4", "5:5", "6:6"}, delimiter = ':')
 	public void 차_이동_테스트(int step, int expectedResult) throws Exception {
 	    // given
 		// when
