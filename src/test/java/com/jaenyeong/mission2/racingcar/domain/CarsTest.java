@@ -49,17 +49,9 @@ class CarsTest extends BaseTest {
         for (int i = 0; i < randomValue; i++) {
             cars.moveRacingCars();
         }
-
-        final List<List<Integer>> racingHistories = cars.getRaceHistoriesForAllCars();
-        for (List<Integer> history : racingHistories) {
-            checkAllRacingHistoriesForOneCar(history, randomValue);
-        }
-    }
-
-    private void checkAllRacingHistoriesForOneCar(final List<Integer> history, final int moveTurn) {
         final int start = 0;
-        for (int distance : history) {
-            assertThat(distance).isBetween(start, moveTurn);
+        for (int distance : cars.getDistanceRacingCars()) {
+            assertThat(distance).isBetween(start, randomValue);
         }
     }
 }

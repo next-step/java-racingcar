@@ -2,7 +2,7 @@ package com.jaenyeong.mission2.racingcar.view;
 
 import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 
-import java.util.List;
+import java.util.Map;
 
 public class OutputView implements Output {
 
@@ -36,20 +36,20 @@ public class OutputView implements Output {
 
     @Override
     public void printAllRacingHistoriesResult(final RacingHistoryDto historyDto) {
-        final List<List<Integer>> racingHistories = historyDto.parsingRacingHistoryToPrintFormat();
+        final Map<Integer, Map<String, Integer>> history = historyDto.parsePrintFormat();
 
-        racingHistories.forEach(this::printRacingHistoryForTurn);
+        history.forEach((turn, car) -> {
+                car.forEach((carName, dist) -> printMessage(convertFormatPrintRacingHistory(carName, dist)));
+                printMessage("");
+            }
+        );
     }
 
-    private void printRacingHistoryForTurn(final List<Integer> racingHistory) {
-        for (int distance : racingHistory) {
-            printMessage(convertFormatPrintRacingHistory(distance));
-        }
-        System.out.println();
-    }
-
-    private String convertFormatPrintRacingHistory(final int distance) {
+    private String convertFormatPrintRacingHistory(final String carName, final int distance) {
         final StringBuilder sb = new StringBuilder();
+        sb.append(carName)
+            .append(" : ");
+
         for (int i = 0; i < distance; i++) {
             sb.append(DASH);
         }

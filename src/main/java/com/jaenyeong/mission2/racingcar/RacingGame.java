@@ -29,17 +29,11 @@ public class RacingGame {
     }
 
     private void runningGame() {
-//        final Cars cars = processSetCountOfCars();
         final Cars cars = processSetCarsByNamesOfCars();
 
         racingGivenNumberOfTimes(processSetRaceTryTimes(), cars);
 
         processResultOfRacing(cars);
-    }
-
-    private Cars processSetCountOfCars() {
-        output.printHowManyUseCars();
-        return getCars(input.inputHowManyUseCars());
     }
 
     protected Cars getCars(final int howManyUseCars) {

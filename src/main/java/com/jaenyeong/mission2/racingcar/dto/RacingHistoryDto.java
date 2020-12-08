@@ -2,38 +2,36 @@ package com.jaenyeong.mission2.racingcar.dto;
 
 import com.jaenyeong.mission2.racingcar.domain.Cars;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingHistoryDto {
     private final int maxTurn;
-    private final List<List<Integer>> racingHistory;
+    private final Map<String, List<Integer>> history;
 
     public RacingHistoryDto(final int turn, final Cars cars) {
         this.maxTurn = turn;
-        this.racingHistory = cars.getRaceHistoriesForAllCars();
+        this.history = cars.getRaceHistoriesForAllCars();
     }
 
-    public List<List<Integer>> getRacingHistory() {
-        return racingHistory;
-    }
-
-    public List<List<Integer>> parsingRacingHistoryToPrintFormat() {
-        final List<List<Integer>> parseHistories = new ArrayList<>();
+    public Map<Integer, Map<String, Integer>> parsePrintFormat() {
+        final Map<Integer, Map<String, Integer>> printHistory = new HashMap<>();
 
         for (int turn = 0; turn < maxTurn; turn++) {
-            parseHistories.add(getRacingHistoriesForTurn(turn));
+            getHistoryOfCarByThisTurn(printHistory, turn);
         }
 
-        return parseHistories;
+        return printHistory;
     }
 
-    private List<Integer> getRacingHistoriesForTurn(final int turn) {
-        final List<Integer> historyForTurn = new ArrayList<>();
-        for (List<Integer> car : racingHistory) {
-            historyForTurn.add(car.get(turn));
+    private void getHistoryOfCarByThisTurn(final Map<Integer, Map<String, Integer>> printHistory, final int turn) {
+        final Map<String, Integer> distOfTurn = new HashMap<>();
+
+        for (Map.Entry<String, List<Integer>> car : history.entrySet()) {
+            distOfTurn.put(car.getKey(), car.getValue().get(turn));
         }
 
-        return historyForTurn;
+        printHistory.put(turn, distOfTurn);
     }
 }
