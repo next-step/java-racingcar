@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,10 @@ public class RaceWinner {
 
     public RaceWinner(Cars cars) {
         List<Car> carList = cars.getCars();
-        carList.sort((car1, car2) -> car2.getPosition() - car1.getPosition());
-        int winner_distance = carList.get(0).getPosition();
+        carList.sort((car1, car2) -> car2.position() - car1.position());
+        int winner_distance = carList.get(0).position();
         winners.addAll(carList.stream()
-                .filter(car -> car.getPosition() == winner_distance)
+                .filter(car -> car.position() == winner_distance)
                 .collect(Collectors.toList()));
     }
 

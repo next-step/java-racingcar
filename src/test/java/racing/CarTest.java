@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.domain.Car;
+import racing.domain.condition.FixedCondition;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,7 +22,7 @@ public class CarTest {
         car.move();
 
         //then
-        assertEquals(car.getPosition(), expected);
+        assertEquals(car.position(), expected);
     }
 
     @DisplayName("0 ~ 9 사이의 random 값을 구한 후 random 값이 4이상일 경우 전진한다")
@@ -34,6 +36,6 @@ public class CarTest {
         car.move();
         
         //then
-        assertEquals(car.getPosition(), expected);
+        assertEquals(car.position(), expected);
     }
 }

@@ -1,4 +1,4 @@
-package racing;
+package racing.domain.condition;
 
 public class FixedCondition implements MovingCondition {
     private final int possibleCondition;

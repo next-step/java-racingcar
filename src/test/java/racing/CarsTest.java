@@ -4,6 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.condition.FixedCondition;
+import racing.domain.condition.RandomCondition;
+import racing.view.InputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,7 +46,7 @@ public class CarsTest {
 
         //then
         for (Car car : cars.getCars()) {
-            assertEquals(expectedPosition, car.getPosition());
+            assertEquals(expectedPosition, car.position());
         }
     }
 

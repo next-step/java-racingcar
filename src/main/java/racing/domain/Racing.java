@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.view.ResultView;
 
 public class Racing {
     private final int tryTimes;

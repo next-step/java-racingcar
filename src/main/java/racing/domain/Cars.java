@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.domain.condition.MovingCondition;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;

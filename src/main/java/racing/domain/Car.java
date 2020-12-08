@@ -1,13 +1,15 @@
-package racing;
+package racing.domain;
+
+import racing.domain.condition.MovingCondition;
 
 public class Car {
     private static final String WRONG_INPUT_CAR_NAME = "자동차의 이름은 5자를 초과할 수 없습니다";
     private static final int MOVING_CONDITION_COUNT = 3;
     private static final int MOVING_DISTANCE = 1;
-    private final MovingCondition movingCondition;
 
-    private int position;
+    private final MovingCondition movingCondition;
     private final String name;
+    private int position;
 
     public Car(MovingCondition condition, String carName) {
         movingCondition = condition;
@@ -15,7 +17,7 @@ public class Car {
         name = carName;
     }
 
-    public int getPosition() {
+    public int position() {
         return position;
     }
 
