@@ -5,11 +5,6 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 public class StringCalculator {
-
-    private static final String MARK_ADD = "+";
-    private static final String MARK_SUBTRACTION = "-";
-    private static final String MARK_MULTIPLICATION = "*";
-    private static final String MARK_DIVISION = "/";
     
     private List<String> inputList;
     private int baseValue = 0;
@@ -87,13 +82,7 @@ public class StringCalculator {
     }
 
     private boolean isCalculateMark(String input) {
-        if(StringCalculator.MARK_ADD.equals(input)
-                || StringCalculator.MARK_SUBTRACTION.equals(input)
-                || StringCalculator.MARK_MULTIPLICATION.equals(input)
-                || StringCalculator.MARK_DIVISION.equals(input)) {
-            return true;
-        }
-        throw new IllegalArgumentException("입력값의 기호가 사칙연산 기호가 아닙니다.");
+        return Operator.valueOfOperator(input) != null;
     }
 
     private void saveCalculateMark(String input) throws IllegalArgumentException {
