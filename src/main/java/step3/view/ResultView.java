@@ -17,11 +17,25 @@ public class ResultView {
         System.out.println();
     }
 
+    public static void getRoundResultWithName(List<Car> cars, String sign) {
+        cars.stream()
+                .forEach(c -> printCountBySignWithName(sign, c.getName().getName(), c.getDistance().getMileage()));
+        System.out.println();
+    }
+
     public static void printCountBySign(String sign, int repeatCount) {
         String result = "";
         for (int i = 0; i < repeatCount; i++) {
             result += sign;
         }
         System.out.println(result);
+    }
+
+    public static void printCountBySignWithName(String sign, String name, int repeatCount) {
+        String result = "";
+        for (int i = 0; i < repeatCount; i++) {
+            result += sign;
+        }
+        System.out.println(name + " : "  + result);
     }
 }
