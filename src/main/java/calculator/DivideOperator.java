@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 public class DivideOperator implements Operator {
 	@Override

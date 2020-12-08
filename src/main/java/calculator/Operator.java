@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 public interface Operator {
 	long operation(long a, long b);

@@ -1,21 +1,24 @@
-package step2;
+package calculator;
 
 public class Calculator {
 	public long calculate(String expression) {
 		validateInput(expression);
+
 		String[] expressionArray = expression.split(" ");
 		validateArray(expressionArray);
+
 		long result = getLongNumber(expressionArray[0]);
 		for (int i = 1; i < expressionArray.length; i+=2) {
-			Operator operator = validateOperator(expressionArray[i]);
 			long second = getLongNumber(expressionArray[i+1]);
+			Operator operator = getOperator(expressionArray[i]);
 			result = operator.operation(result, second);
 		}
+
 		return result;
 	}
 
 	private void validateInput(String s) {
-		if (s == null || s.trim().equals("")) {
+		if (s == null || s.trim().isEmpty()) {
 			throw new IllegalArgumentException("계산할 문자열을 입력해주세요.");
 		}
 	}
@@ -37,7 +40,7 @@ public class Calculator {
 		}
 	}
 
-	private Operator validateOperator(String symbol) {
+	private Operator getOperator(String symbol) {
 		Operator operator = OperatorFactory.getOperator(symbol);
 		if (operator == null) {
 			throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
