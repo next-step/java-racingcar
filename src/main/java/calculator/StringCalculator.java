@@ -20,44 +20,13 @@ public class StringCalculator {
         this.inputList = this.splitInput(input);
     }
 
-    public List<String> getInputList() {
-        return inputList;
-    }
-
-    public void setInputList(List<String> inputList) {
-        this.inputList = inputList;
-    }
-
-    public int getBaseValue() {
-        return baseValue;
-    }
-
-    public void setBaseValue(int baseValue) {
-        this.baseValue = baseValue;
-    }
-
-    public int getDifferentValue() {
-        return differentValue;
-    }
-
-    public void setDifferentValue(int differentValue) {
-        this.differentValue = differentValue;
-    }
-
-    public String getMark() {
-        return mark;
-    }
-
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
 
     /**
      * 입력 값을 쪼개어 리스트에 담습니다.
      * @param input
      * @return
      */
-    public List<String> splitInput(String input) {
+    private List<String> splitInput(String input) {
         return Arrays.asList(input.split(StringCalculator.SPLIT_REGEX));
     }
 
@@ -66,11 +35,11 @@ public class StringCalculator {
      * @return
      */
     public int calculate() throws IllegalArgumentException {
-        for (int i = 0 ; i < this.getInputList().size() ; i++) {
-            this.saveValueAndMark(this.getInputList().get(i).trim(), i);
+        for (int i = 0 ; i < this.inputList.size() ; i++) {
+            this.saveValueAndMark(this.inputList.get(i), i);
             executeCalculate(i);
         }
-        return this.getBaseValue();
+        return this.baseValue;
     }
 
     /**
@@ -78,17 +47,16 @@ public class StringCalculator {
      * @param input
      * @param index
      */
-    public void saveValueAndMark(String input, int index) throws IllegalArgumentException {
-        System.out.println("set value : " + input);
-        this.isNotData(input);
+    private void saveValueAndMark(String input, int index) throws IllegalArgumentException {
+        this.validateEmptyData(input);
 
         if(this.isCalculateIndex(index)) {
-            this.setDifferentValue(Integer.parseInt(input));;
+            this.differentValue = Integer.parseInt(input);;
             return;
         }
 
         if(this.isNumberDataIndex(index)) {
-            this.setBaseValue(Integer.parseInt(input));
+            this.baseValue = Integer.parseInt(input);
             return;
         }
 
@@ -100,7 +68,7 @@ public class StringCalculator {
      * @param input
      * @throws IllegalArgumentException
      */
-    public void isNotData(String input) throws IllegalArgumentException {
+    private void validateEmptyData(String input) {
         if(input == null || input.trim().length() == 0) {
             throw new IllegalArgumentException();
         }
@@ -112,7 +80,7 @@ public class StringCalculator {
      * @param index 
      * @return
      */
-    public boolean isNumberDataIndex(int index) {
+    private boolean isNumberDataIndex(int index) {
         return index % 2 == 0;
     }
 
@@ -123,11 +91,11 @@ public class StringCalculator {
      * @param index 
      * @return
      */
-    public boolean isCalculateIndex(int index) {
+    private boolean isCalculateIndex(int index) {
         return index != 0 && this.isNumberDataIndex(index);
     }
 
-    public boolean isCalculateMark(String input) throws IllegalArgumentException {
+    private boolean isCalculateMark(String input) throws IllegalArgumentException {
         if(StringCalculator.MARK_ADD.equals(input)
                 || StringCalculator.MARK_SUBTRACTION.equals(input)
                 || StringCalculator.MARK_MULTIPLICATION.equals(input)
@@ -137,9 +105,9 @@ public class StringCalculator {
         throw new IllegalArgumentException("입력값의 기호가 사칙연산 기호가 아닙니다.");
     }
 
-    public void saveCalculateMark(String input) throws IllegalArgumentException {
+    private void saveCalculateMark(String input) throws IllegalArgumentException {
         if(this.isCalculateMark(input)) {
-            this.setMark(input);
+            this.mark = input;
         }
     }
 
@@ -149,7 +117,6 @@ public class StringCalculator {
      */
     private void executeCalculate(int i) throws IllegalArgumentException {
         if (this.isCalculateIndex(i)) {
-            System.out.printf("f:%s, b:%s, m:%s\n" ,this.baseValue, this.differentValue, this.mark);
             this.baseValue = this.selectAndExecuteCalculation(this.baseValue, this.differentValue, this.mark);
         }
     }
@@ -161,7 +128,7 @@ public class StringCalculator {
      * @param mark
      * @return calculate result
      */
-    public int selectAndExecuteCalculation(int a, int b, String mark) throws IllegalArgumentException {
+    private int selectAndExecuteCalculation(int a, int b, String mark) throws IllegalArgumentException {
         if(StringCalculator.MARK_ADD.equals(mark)) {
             return this.add(a, b);
         }
