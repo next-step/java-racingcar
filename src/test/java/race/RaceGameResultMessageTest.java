@@ -11,9 +11,9 @@ class RaceGameResultMessageTest {
 	@Test
 	void 가장_거리를_멀리간_자동차_결과_메세지_TEST() {
 		RaceGameFactory raceGameFactory = new SimpleRaceGameFactory("pobi,hglee", 5);
-		RaceGameHistory raceGameHistory = raceGameFactory.start();
+		RaceGameResult raceGameResult = raceGameFactory.start();
 
-		assertThat(raceGameHistory.getDistanceWinner()).isEqualTo("pobi,hglee");
+		assertThat(raceGameResult.getDistanceWinner()).isEqualTo("pobi,hglee");
 
 	}
 }

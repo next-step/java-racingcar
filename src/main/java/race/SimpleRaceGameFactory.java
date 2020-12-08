@@ -11,11 +11,11 @@ public class SimpleRaceGameFactory implements RaceGameFactory {
 	}
 
 	@Override
-	public RaceGameHistory start() {
-		RaceGameHistory raceGameHistory = new RaceGameHistory();
+	public RaceGameResult start() {
+		RaceGameResult raceGameResult = new RaceGameResult();
 		for (int currentTryCount = 0; currentTryCount < this.tryTimes; currentTryCount++) {
-			raceGameHistory.addHistory(new RaceGameResultMessage(this.carGroup.moveAll()));
+			raceGameResult.addHistory(new RaceGameResultMessage(this.carGroup.moveAll()));
 		}
-		return raceGameHistory;
+		return raceGameResult;
 	}
 }

@@ -3,11 +3,11 @@ package race;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RaceGameHistory {
+public class RaceGameResult {
 
 	private final List<RaceGameResultMessage> history;
 
-	public RaceGameHistory() {
+	public RaceGameResult() {
 		this.history = new ArrayList<>();
 	}
 

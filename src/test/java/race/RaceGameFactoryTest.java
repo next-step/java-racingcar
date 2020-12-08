@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceGameFactoryTest {
-	RaceGameHistory gameResultMessage;
+	RaceGameResult gameResultMessage;
 
 	@BeforeEach
 	void setUp() {

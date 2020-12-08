@@ -7,7 +7,7 @@ public class RaceGameApplication {
 			String names = InputView.askNameOfCarToUser();
 			int tryTimesToUser = InputView.askNumberOfTryTimesToUser();
 			RaceGameFactory raceGameFactory = new RandomRaceGameFactory(names, tryTimesToUser);
-			RaceGameHistory history = raceGameFactory.start();
+			RaceGameResult history = raceGameFactory.start();
 			OutputView.printDistanceStatus(history);
 			OutputView.printRaceGameWinner(history);
 		} catch (Exception e) {
