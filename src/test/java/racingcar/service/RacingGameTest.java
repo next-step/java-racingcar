@@ -1,7 +1,6 @@
 package racingcar.service;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingRound;
@@ -16,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-public class RacingGameTest {
+class RacingGameTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi,crong,honux,YKJ"})
@@ -58,4 +57,5 @@ public class RacingGameTest {
                     InputValidator.validateCarNames(racingCarNames);
                 }).withMessageMatching(InputValidator.INVALID_NAME_ERROR_MESSAGE);
     }
+
 }

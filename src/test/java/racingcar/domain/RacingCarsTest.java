@@ -1,11 +1,8 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +39,7 @@ class RacingCarsTest {
 
         // then
         assertThat(racingCars.getParticipatingCars())
-                .containsExactly(new RacingCar("pobi"), new RacingCar("crong"), new RacingCar("honux"), new RacingCar("YKJ"));
+                .containsExactly(new RacingCar("pobi", 1), new RacingCar("crong", 1), new RacingCar("honux", 1), new RacingCar("YKJ", 1));
     }
 
 }
