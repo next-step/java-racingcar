@@ -15,8 +15,8 @@ public class RacingCarGame {
 	}
 
 	public void start() {
-		String carNames = inputView.InputCarNames();
-		int racingExecuteCountInput = inputView.racingExecuteCountInput();
+		final String[] carNames = inputView.InputCarNames();
+		final int racingExecuteCountInput = inputView.racingExecuteCountInput();
 
 		RoundRecorder roundRecorder = new RoundRecorder(racingExecuteCountInput);
 

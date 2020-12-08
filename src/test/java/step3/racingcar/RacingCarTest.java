@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import step3.racingcar.domain.RacingCar;
 import step3.racingcar.domain.RacingCarGenerator;
 import step3.racingcar.domain.RacingCars;
+import step3.racingcar.ui.InputView;
 
 public class RacingCarTest {
 
@@ -34,8 +35,8 @@ public class RacingCarTest {
 	@DisplayName("레이싱카 일급 콜렉션 생성")
 	@Test
 	void given_car_names_when_generate_then_return_racingcars() {
-		final String racingCarNames = "pobi,hoonmaro,conan,tayo,pororo";
-		final int expectedRacingCarsCount = racingCarNames.split(RacingCarGenerator.CAR_NAME_DELIMITER).length;
+		final String[] racingCarNames = new String[]{"pobi","hoonmaro","conan","tayo","pororo"};
+		final int expectedRacingCarsCount = racingCarNames.length;
 		RacingCars racingCars = RacingCarGenerator.generate(racingCarNames);
 		assertThat(racingCars.getRacingCars()).hasSize(expectedRacingCarsCount);
 	}

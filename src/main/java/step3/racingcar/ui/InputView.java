@@ -39,15 +39,36 @@ public class InputView {
 		}
 	}
 
-	public String InputCarNames() {
+	public String[] InputCarNames() {
+		final String CAR_NAME_DELIMITER = ",";
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-		String carNames = scanner.nextLine();
-		validateInputCarNames(carNames);
+		String input = scanner.nextLine();
+		validateInputCarNames(input);
+
+		String[] carNames = input.split(CAR_NAME_DELIMITER);
+		validateCarNames(carNames);
+
 		return carNames;
 	}
 
-	private void validateInputCarNames(final String carNames) {
-		if (carNames == null || carNames.isEmpty()) {
+	private void validateCarNames(final String[] carNames) {
+		if (carNames.length == 0) {
+			throw new IllegalArgumentException("쉼표만 포함된 문자열입니다.");
+		}
+
+		for (String carName : carNames) {
+			validateCarNameLength(carName);
+		}
+	}
+
+	private void validateCarNameLength(final String carName) {
+		if (carName.length() > 5) {
+			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+		}
+	}
+
+	private void validateInputCarNames(final String carNamesInput) {
+		if (carNamesInput == null || carNamesInput.isEmpty()) {
 			throw new IllegalArgumentException("경주할 자동차 이름은 필수 값입니다.");
 		}
 	}
