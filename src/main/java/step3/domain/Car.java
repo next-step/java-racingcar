@@ -2,7 +2,7 @@ package step3.domain;
 
 public class Car {
 
-  public static final int INIT_POSITION = 1;
+  private static final int INIT_POSITION = 1;
   private int distance;
 
   public Car() {

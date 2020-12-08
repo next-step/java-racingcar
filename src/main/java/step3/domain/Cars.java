@@ -1,6 +1,6 @@
 package step3.domain;
 
-import step3.RacingRule;
+import step3.service.RacingRule;
 
 import java.util.Collections;
 import java.util.List;
