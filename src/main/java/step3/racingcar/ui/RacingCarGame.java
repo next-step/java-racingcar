@@ -31,9 +31,4 @@ public class RacingCarGame {
 
 	}
 
-	private void play(final RacingCars racingCars) {
-
-
-	}
-
 }
