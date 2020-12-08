@@ -36,10 +36,6 @@ public class RacingGame {
         processResultOfRacing(cars);
     }
 
-    protected Cars getCars(final int howManyUseCars) {
-        return new Cars(howManyUseCars);
-    }
-
     private Cars processSetCarsByNamesOfCars() {
         output.printNamesOfTheCarsToBeRaced();
         String carNames = input.inputNamesOfTheCarsToBeRaced();
@@ -64,8 +60,11 @@ public class RacingGame {
     }
 
     private void processResultOfRacing(final Cars cars) {
+        final RacingHistoryDto historyDto = getHistoryDto(cars);
+
         output.printExecutionResult();
-        output.printAllRacingHistoriesResult(getHistoryDto(cars));
+        output.printAllRacingHistoriesResult(historyDto);
+        output.printWinner(historyDto);
     }
 
     protected RacingHistoryDto getHistoryDto(final Cars cars) {

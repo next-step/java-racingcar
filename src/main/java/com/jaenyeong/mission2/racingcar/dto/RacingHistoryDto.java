@@ -9,10 +9,12 @@ import java.util.Map;
 public class RacingHistoryDto {
     private final int maxTurn;
     private final Map<String, List<Integer>> history;
+    private final List<String> winners;
 
     public RacingHistoryDto(final int turn, final Cars cars) {
         this.maxTurn = turn;
         this.history = cars.getRaceHistoriesForAllCars();
+        this.winners = cars.getWinners();
     }
 
     public Map<Integer, Map<String, Integer>> parsePrintFormat() {
@@ -33,5 +35,9 @@ public class RacingHistoryDto {
         }
 
         printHistory.put(turn, distOfTurn);
+    }
+
+    public List<String> getWinners() {
+        return winners;
     }
 }

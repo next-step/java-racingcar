@@ -1,6 +1,5 @@
 package com.jaenyeong.mission2.racingcar.domain;
 
-import com.jaenyeong.mission01.stringcalculator.Operator;
 import com.jaenyeong.mission2.racingcar.common.BaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -76,7 +75,7 @@ class CarTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @MethodSource("countAndValidName")
+    @MethodSource("validName")
     @DisplayName("Car 클래스 초기화 선언시 이름을 받는 생성자 및 이름 유효성 테스트")
     void checkCarName(final String carName) {
         final Car car = new Car(carName);
@@ -84,7 +83,7 @@ class CarTest extends BaseTest {
         assertEquals(car.getName(), carName);
     }
 
-    private static Stream<Arguments> countAndValidName() {
+    private static Stream<Arguments> validName() {
         return Stream.of(
             Arguments.of("재녕"),
             Arguments.of("King"),

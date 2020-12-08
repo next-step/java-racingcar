@@ -3,10 +3,9 @@ package com.jaenyeong.mission2.racingcar.view;
 import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class OutputView implements Output {
-
-    public static final String DASH = "-";
 
     @Override
     public void printHowManyUseCars() {
@@ -54,6 +53,13 @@ public class OutputView implements Output {
             sb.append(DASH);
         }
         return sb.toString();
+    }
+
+    @Override
+    public void printWinner(final RacingHistoryDto historyDto) {
+        final StringJoiner sj = new StringJoiner(", ");
+        historyDto.getWinners().forEach(sj::add);
+        printMessage(sj.toString() + FINALLY_WINNER);
     }
 
     private void printMessage(final String message) {
