@@ -19,6 +19,11 @@ public class OutputView implements Output {
     }
 
     @Override
+    public void printNamesOfTheCarsToBeRaced() {
+        printMessage(NAMES_OF_CARS_TO_BE_RACED);
+    }
+
+    @Override
     public void printErrWhenInvalidDataTypeInput() {
         printMessage(ERR_INVALID_INPUT_DATA_TYPE);
     }
