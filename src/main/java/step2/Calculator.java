@@ -1,14 +1,10 @@
 package step2;
 
-import java.util.Arrays;
-
-import sun.rmi.runtime.Log;
-
 public class Calculator {
 	public long calculate(String expression) {
-		// 입력값 null이거나 빈 공백문자열인지 체크
 		validateInput(expression);
 		String[] expressionArray = expression.split(" ");
+		validateArray(expressionArray);
 		long result = getLongNumber(expressionArray[0]);
 		for (int i = 1; i < expressionArray.length; i+=2) {
 			Operator operator = validateOperator(expressionArray[i]);
@@ -16,6 +12,18 @@ public class Calculator {
 			result = operator.operation(result, second);
 		}
 		return result;
+	}
+
+	private void validateInput(String s) {
+		if (s == null || s.trim().equals("")) {
+			throw new IllegalArgumentException("계산할 문자열을 입력해주세요.");
+		}
+	}
+
+	private void validateArray(String[] expressionArray) {
+		if (expressionArray.length < 3 || (expressionArray.length % 2 != 1)) {
+			throw new IllegalArgumentException("수식을 잘못 입력하셨습니다.");
+		}
 	}
 
 	private long getLongNumber(String number) {
@@ -35,11 +43,5 @@ public class Calculator {
 			throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
 		}
 		return operator;
-	}
-
-	private void validateInput(String s) {
-		if (s == null || s.trim().equals("")) {
-			throw new IllegalArgumentException("계산할 문자열을 입력해주세요.");
-		}
 	}
 }
