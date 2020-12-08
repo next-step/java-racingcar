@@ -8,6 +8,7 @@ public class OperatorFactory {
 	public static void init() {
 		operatorMap.put("+", new PlusOperator());
 		operatorMap.put("-", new MinusOperator());
+		operatorMap.put("*", new MultipleOperator());
 	}
 	public static Operator getOperator(String symbol) {
 		return operatorMap.get(symbol);
