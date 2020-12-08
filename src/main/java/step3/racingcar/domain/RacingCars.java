@@ -2,6 +2,7 @@ package step3.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import step3.racingcar.number.RandomNumberGenerator;
 
@@ -39,4 +40,9 @@ public class RacingCars {
 		return maxMoveDistance;
 	}
 
+	public String getNames() {
+		final String WINNER_CAR_NAMES_DELIMITER = ", ";
+		return this.racingCars.stream().map(RacingCar::toString)
+			.collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
+	}
 }

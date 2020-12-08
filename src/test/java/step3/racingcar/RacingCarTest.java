@@ -43,4 +43,16 @@ public class RacingCarTest {
 		assertThat(racingCars.getRacingCars()).hasSize(expectedRacingCarsCount);
 	}
 
+	@DisplayName("자동차 콜렉션에서 이름 구하기")
+	@Test
+	void given_racing_cars_when_get_names_then_return_racingcar_names() {
+		RacingCars racingCars = new RacingCars(Stream.of(
+			new RacingCar("hoonmaro", 5),
+			new RacingCar("pobi", 3),
+			new RacingCar("pororo", 5)
+		).collect(Collectors.toList()));
+
+		assertThat(racingCars.getNames()).isEqualTo("hoonmaro, pobi, pororo");
+	}
+
 }

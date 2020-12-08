@@ -39,6 +39,11 @@ public class RacingCar {
 		return this.moveDistance;
 	}
 
+	public RacingCar copy() {
+		return new RacingCar(this.name, this.moveDistance);
+	}
+
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
@@ -60,7 +65,8 @@ public class RacingCar {
 		return result;
 	}
 
-	public RacingCar copy() {
-		return new RacingCar(this.name, this.moveDistance);
+	@Override
+	public String toString() {
+		return this.name;
 	}
 }

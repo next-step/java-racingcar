@@ -2,6 +2,7 @@ package step3.racingcar.ui;
 
 import step3.racingcar.domain.RacingCarGenerator;
 import step3.racingcar.domain.RacingCars;
+import step3.racingcar.domain.Referee;
 import step3.racingcar.domain.RoundRecorder;
 
 public class RacingCarGame {
@@ -27,7 +28,10 @@ public class RacingCarGame {
 			roundRecorder.record(round, racingCars);
 		}
 
-		resultView.printResult(roundRecorder);
+		Referee referee = new Referee(racingCars);
+
+		resultView.printRacingRounds(roundRecorder);
+		resultView.printWinners(referee);
 
 	}
 
