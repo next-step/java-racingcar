@@ -2,10 +2,12 @@ package racingcar.service;
 
 import racingcar.domain.MoveRule;
 
+import java.util.List;
+
 public class RacingGameStub extends RacingGame {
 
-    public RacingGameStub(int countOfCar, int countOfRound) {
-        super(countOfCar, countOfRound);
+    public RacingGameStub(List<String> racingCarNames, int racingCount) {
+        super(racingCarNames, racingCount);
     }
 
     @Override

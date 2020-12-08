@@ -18,20 +18,19 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class RacingGameTest {
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,crong,honux,YKJ"})
     @DisplayName("자동차 경주 게임 동작 테스트")
-    void startTest() {
+    void startTest(String carNames) {
 
         // given
-        int countOfCar = 3;
-        int countOfRound = 3;
-
-        String expectedMark1 = "-\n-\n-\n";
-        String expectedMark2 = "--\n--\n--\n";
-        String expectedMark3 = "---\n---\n---\n";
+        String expectedMark1 = "pobi : -\ncrong : -\nhonux : -\nYKJ : -\n";
+        String expectedMark2 = "pobi : --\ncrong : --\nhonux : --\nYKJ : --\n";
+        String expectedMark3 = "pobi : ---\ncrong : ---\nhonux : ---\nYKJ : ---\n";
 
         // when
-        RacingGameStub racingGameStub = new RacingGameStub(countOfCar, countOfRound);
+        List<String> racingCarNames = Arrays.asList(carNames.split(","));
+        RacingGameStub racingGameStub = new RacingGameStub(racingCarNames, racingCarNames.size());
         racingGameStub.start();
 
         List<RacingRound> racingResult = racingGameStub.getRacingResult();
@@ -42,7 +41,7 @@ public class RacingGameTest {
 
         // then
         assertAll(
-                () -> assertThat(displayResult).hasSize(3),
+                () -> assertThat(displayResult).hasSize(4),
                 () -> assertThat(displayResult).contains(expectedMark1),
                 () -> assertThat(displayResult).contains(expectedMark2),
                 () -> assertThat(displayResult).contains(expectedMark3)
@@ -51,12 +50,12 @@ public class RacingGameTest {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {0, -1, -3})
-    @DisplayName("입력 유효성 검사 테스트")
-    public void validate_input_test(int inputText) {
+    @ValueSource(strings = {"YANG,KYUNG,JUN7575"})
+    @DisplayName("자동차 이름 유효성 검사 테스트")
+    public void validate_car_names(String racingCarNames) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateInput(inputText);
-                }).withMessageMatching(InputValidator.INVALID_INPUT_ERROR_MESSAGE);
+                    InputValidator.validateCarNames(racingCarNames);
+                }).withMessageMatching(InputValidator.INVALID_NAME_ERROR_MESSAGE);
     }
 }
