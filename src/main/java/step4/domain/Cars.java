@@ -1,9 +1,9 @@
 package step4.domain;
 
-import step4.domain.judge.Judge;
 import step4.domain.strategy.MovingStrategy;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -18,8 +18,15 @@ public class Cars {
                 .forEach(car -> car.move(movingStrategy));
     }
 
-    public String winnerCars(Judge judge) {
-        return (String) judge.judge(cars);
+    public String winnerCars() {
+        int longDistance = cars.stream()
+                .map(car -> car.getPosition())
+                .max(Integer::compareTo).get();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == longDistance)
+                .map(car -> car.getName())
+                .collect(Collectors.joining(", "));
     }
 
     public List<Car> getCars() {
