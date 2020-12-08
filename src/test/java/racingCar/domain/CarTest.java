@@ -43,15 +43,6 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 위치 toString")
-    void drawPosition() {
-        car.racing(4, new RandomMoveStrategy());
-        car.racing(2, new RandomMoveStrategy());
-        car.racing(7, new RandomMoveStrategy());
-        assertThat(car.toString()).isEqualTo("louis : --");
-    }
-
-    @Test
     @DisplayName("자동차 이름 Test")
     void carName() {
         assertThat(car.getName()).isEqualTo("louis");

@@ -20,6 +20,6 @@ public class RacingResultTest {
     void winnerCheck() {
         RacingResult result = new RacingResult(cars.getRacingCars());
         result.calculateResult();
-        assertThat(result.toString()).isEqualTo("benz, bmw, audi가 최종 우승했습니다.");
+        assertThat(cars.getRacingCars().size()).isEqualTo(result.getWinningCars().size());
     }
 }

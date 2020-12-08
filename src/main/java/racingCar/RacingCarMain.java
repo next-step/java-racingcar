@@ -21,7 +21,7 @@ public class RacingCarMain {
 
       RacingResult result = new RacingResult(racing.getRacingCars());
       result.calculateResult();
-      System.out.println(result.toString());
+      System.out.println(OutputView.printWinnerCar(result));
   }
 
 }
