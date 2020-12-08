@@ -10,21 +10,21 @@ public class ResultView {
     private static final String RACING_END_MESSAGE = "가 최종 우승했습니다.";
 
 
-    public static void printResultMessage() {
+    static void printResultMessage() {
         System.out.println(EXECUTION_RESULT);
     }
 
-    public static void printRacingStatus(Cars cars) {
+    static void printRacingStatus(Cars cars) {
         cars.getCars().forEach(ResultView::printCarStatus);
     }
 
-    public static void printEndGame(RaceWinner raceWinner) {
+    static void printEndGame(RaceWinner raceWinner) {
         printLineBreak();
         printRacingWinner(raceWinner);
         printRacingEndMessage();
     }
 
-    public static void printCarStatus(Car car) {
+    private static void printCarStatus(Car car) {
         printCarName(car);
         for (int i = 0; i < car.getPosition(); i++) {
             printCarSymbol(car);
@@ -32,23 +32,23 @@ public class ResultView {
         printLineBreak();
     }
 
-    public static void printCarName(Car car) {
+    private static void printCarName(Car car) {
         if (car.getPosition() > 0) {
             System.out.print(car.carName() + CAR_NAME_SEPARATOR);
         }
     }
 
-    public static void printCarSymbol(Car car) {
+    private static void printCarSymbol(Car car) {
         if (car.getPosition() > 0) {
             System.out.print(CAR_SYMBOL);
         }
     }
 
-    public static void printLineBreak() {
+    static void printLineBreak() {
         System.out.println();
     }
 
-    public static void printRacingWinner(RaceWinner raceWinner) {
+    private static void printRacingWinner(RaceWinner raceWinner) {
         Iterator<Car> carIterator = raceWinner.getWinners().iterator();
         while (carIterator.hasNext()) {
             System.out.print(carIterator.next().carName());
@@ -58,7 +58,7 @@ public class ResultView {
         }
     }
 
-    public static void printRacingEndMessage() {
+    private static void printRacingEndMessage() {
         System.out.println(RACING_END_MESSAGE);
     }
 }
