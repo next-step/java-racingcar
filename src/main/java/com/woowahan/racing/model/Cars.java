@@ -8,19 +8,17 @@ import com.woowahan.racing.constant.Message;
 
 public class Cars {
 	private final List<Car> cars;
-	private final GameRandom gameRandom;
 
-	private Cars(List<String> carNames, GameRandom gameRandom) {
+	private Cars(List<String> carNames) {
 		this.cars = new ArrayList<>();
-		this.gameRandom = gameRandom;
 		carNames.forEach(
 			carName -> cars.add(Car.create(carName))
 		);
 	}
 
-	public static Cars of(List<String> carNames, GameRandom gameRandom) {
+	public static Cars of(List<String> carNames) {
 
-		return new Cars(carNames, gameRandom);
+		return new Cars(carNames);
 	}
 
 	public List<String> getWinners() {
@@ -31,7 +29,7 @@ public class Cars {
 			.collect(Collectors.toList());
 	}
 
-	public GameResult moveCars() {
+	public GameResult moveCars(GameRandom gameRandom) {
 		for (Car car : this.cars) {
 			car.move(gameRandom.isWin());
 		}

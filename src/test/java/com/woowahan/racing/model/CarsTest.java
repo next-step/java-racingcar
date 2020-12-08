@@ -28,14 +28,14 @@ class CarsTest {
 
 	@BeforeEach
 	void setup() {
-		cars = Cars.of(Arrays.asList(CAR_NAME1, CAR_NAME2, CAR_NAME3), gameRandom);
+		cars = Cars.of(Arrays.asList(CAR_NAME1, CAR_NAME2, CAR_NAME3));
 
 		given(gameRandom.isWin()).willReturn(false)
 			.willReturn(true)  // CAR_NAME2 두번째 차만 한번 이동하고 나머지는 false
 			.willReturn(false);
 
 		IntStream.range(0, 5).forEach(idx -> {
-			cars.moveCars();
+			cars.moveCars(gameRandom);
 		});
 	}
 
