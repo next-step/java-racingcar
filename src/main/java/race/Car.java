@@ -16,6 +16,12 @@ public class Car {
 		this.movePolicy = movePolicy;
 	}
 
+	public Car(int distance, CarName name, MovePolicy movePolicy) {
+		this.distance = distance;
+		this.movePolicy = movePolicy;
+		this.name = name;
+	}
+
 	public static Car of(MovePolicy movePolicy) {
 		return new Car(movePolicy);
 	}
@@ -24,10 +30,11 @@ public class Car {
 		return new Car(carName, movePolicy);
 	}
 
-	public void move() {
+	public Car move() {
 		if (movePolicy.move()) {
 			addDistance();
 		}
+		return new Car(this.distance, this.name, this.movePolicy);
 	}
 
 	private void addDistance() {

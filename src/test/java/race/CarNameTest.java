@@ -16,4 +16,5 @@ class CarNameTest {
 			.isInstanceOf(IllegalInputNameException.class)
 			.hasMessageContaining(String.format(IllegalInputNameException.ILLEGAL_INPUT_FORMAT_MESSAGE, CarName.MAX_INPUT_NAME_LENGTH));
 	}
+
 }

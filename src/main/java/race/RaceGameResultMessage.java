@@ -11,16 +11,10 @@ public class RaceGameResultMessage {
 	public static final String DISTANCE_SEPARATOR = "-";
 	public static final String RESULT_MESSAGE_FORMAT = "%s : %s";
 
-	private final int tryTimes;
 	private final List<Car> cars;
 
-	public RaceGameResultMessage(int tryTimes, CarGroup cars) {
-		this.tryTimes = tryTimes;
-		this.cars = cars.nowCarStatus();
-	}
-
-	public int getTryTimes() {
-		return tryTimes;
+	public RaceGameResultMessage(List<Car> cars) {
+		this.cars = cars;
 	}
 
 	public String parser() {
@@ -43,7 +37,7 @@ public class RaceGameResultMessage {
 		return cars.stream().collect(Collectors.toMap(
 			Car::nowDistance,
 			Car::getNameValue,
-			(existWinner, addWinner) -> existWinner + InputValue.INPUT_NAME_SEPARATOR + addWinner,
+			(existWinner, addWinner) -> existWinner + CarGroup.INPUT_NAME_SEPARATOR + addWinner,
 			TreeMap::new))
 			.lastEntry()
 			.getValue();

@@ -1,28 +1,20 @@
 package race;
 
-public class OutputView implements GameObserver {
-	private final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
-	private final RaceGameController raceGameController;
+import java.util.stream.Collectors;
 
-	public OutputView(RaceGameController raceGameController) {
-		this.raceGameController = raceGameController;
-		this.raceGameController.registerGameObserver(this);
+public class OutputView {
+	private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
+
+	public static void printDistanceStatus(RaceGameHistory raceGameHistory) {
+		String result = raceGameHistory.getHistory()
+			.stream()
+			.map(RaceGameResultMessage::parser)
+			.collect(Collectors.joining(RaceGameResultMessage.TRY_SEPARATOR));
+
+		System.out.println(result);
 	}
 
-	@Override
-	public void update() {
-		sendMessageToUser();
-	}
-
-	public String getGameResultMessage() {
-		return this.raceGameController.getNowCarsMoveStatus();
-	}
-
-	public void sendMessageToUser() {
-		System.out.println(this.raceGameController.getNowCarsMoveStatus() + RaceGameResultMessage.TRY_SEPARATOR);
-
-		if (this.raceGameController.isOverTryTimes()) {
-			System.out.println(String.format(WINNER_MESSAGE, this.raceGameController.getRaceGameWinner()));
-		}
+	public static void printRaceGameWinner(RaceGameHistory raceGameHistory) {
+		System.out.println(String.format(WINNER_MESSAGE, raceGameHistory.getDistanceWinner()));
 	}
 }

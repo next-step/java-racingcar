@@ -7,13 +7,13 @@ public class InputView {
 	private static final String numberOfTryTimesMessage = "시도할 회수는 몇 회 인가요?";
 	private static final Scanner in = new Scanner(System.in);
 
-	public static InputValue makeGameInputValue() {
+	public static String askNameOfCarToUser() {
 		System.out.println(nameOfCarMessage);
-		String nameOfCar = in.next();
+		return in.next();
+	}
 
+	public static int askNumberOfTryTimesToUser() {
 		System.out.println(numberOfTryTimesMessage);
-		int numberOfTryTimes = in.nextInt();
-
-		return new InputValue(nameOfCar, numberOfTryTimes);
+		return in.nextInt();
 	}
 }

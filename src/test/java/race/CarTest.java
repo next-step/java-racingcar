@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -36,7 +37,17 @@ class CarTest {
 		String inputNames = "pobi,hglee";
 		MovePolicy movePolicy = new SimpleMovePolicy();
 		List<String> nameList = Arrays.asList(inputNames.split(","));
-		CarGroup carGroup = CarGroup.ofInputValues(InputValue.ofSeparatorValues(inputNames), movePolicy);
+		CarGroup carGroup = CarGroup.ofCarNames("pobi,hglee", movePolicy);
 		nameList.forEach(name -> assertThat(carGroup.ofCarName(name)).isTrue());
+	}
+
+	@DisplayName("사용자 입력값 중 5자를 초과한 이름이 포함된 여부 확인 테스트")
+	@Test
+	void 입력값_허용치_초과_테스트() {
+		assertThatThrownBy(() -> {
+			CarGroup.ofCarNames("test101010,test", new SimpleMovePolicy());
+		})
+			.isInstanceOf(IllegalInputNameException.class)
+			.hasMessageContaining(String.format(IllegalInputNameException.ILLEGAL_INPUT_FORMAT_MESSAGE, CarName.MAX_INPUT_NAME_LENGTH));
 	}
 }
