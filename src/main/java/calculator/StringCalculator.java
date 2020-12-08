@@ -5,7 +5,6 @@ import java.util.List;
 
 public class StringCalculator {
 
-    private static final String SPLIT_REGEX = " ";
     private static final String MARK_ADD = "+";
     private static final String MARK_SUBTRACTION = "-";
     private static final String MARK_MULTIPLICATION = "*";
@@ -16,19 +15,10 @@ public class StringCalculator {
     private int differentValue = 0;
     private String mark;
 
-    public StringCalculator(String input) {
-        this.inputList = this.splitInput(input);
+    public StringCalculator(List<String> inputList) {
+        this.inputList = inputList;
     }
 
-
-    /**
-     * 입력 값을 쪼개어 리스트에 담습니다.
-     * @param input
-     * @return
-     */
-    private List<String> splitInput(String input) {
-        return Arrays.asList(input.split(StringCalculator.SPLIT_REGEX));
-    }
 
     /**
      * 입력 된 문자열 값을 계산합니다.
@@ -95,7 +85,7 @@ public class StringCalculator {
         return index != 0 && this.isNumberDataIndex(index);
     }
 
-    private boolean isCalculateMark(String input) throws IllegalArgumentException {
+    private boolean isCalculateMark(String input) {
         if(StringCalculator.MARK_ADD.equals(input)
                 || StringCalculator.MARK_SUBTRACTION.equals(input)
                 || StringCalculator.MARK_MULTIPLICATION.equals(input)

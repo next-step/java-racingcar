@@ -16,7 +16,7 @@ public class StringCalculatorTest {
     @CsvSource(value = {"2 + 3,5", "2 + 3 + 5,10"})
     public void add(String input, String expected) {
         // give
-        StringCalculator stringCalculator = new StringCalculator(input);
+        StringCalculator stringCalculator = new StringCalculator(InputView.splitInput(input));
 
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
@@ -27,7 +27,7 @@ public class StringCalculatorTest {
     @CsvSource(value = {"5 - 3,2", "5 - 3 - 5,-3"})
     public void subtraction(String input, String expected) {
         // give
-        StringCalculator stringCalculator = new StringCalculator(input);
+        StringCalculator stringCalculator = new StringCalculator(InputView.splitInput(input));
 
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
@@ -38,7 +38,7 @@ public class StringCalculatorTest {
     @CsvSource(value = {"2 * 3,6", "2 * 3 * 5,30"})
     public void multiplication(String input, String expected) {
         // give
-        StringCalculator stringCalculator = new StringCalculator(input);
+        StringCalculator stringCalculator = new StringCalculator(InputView.splitInput(input));
 
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
@@ -49,7 +49,7 @@ public class StringCalculatorTest {
     @CsvSource(value = {"6 / 2,3", "12 / 3 / 2,2"})
     public void division(String input, String expected) {
         // give
-        StringCalculator stringCalculator = new StringCalculator(input);
+        StringCalculator stringCalculator = new StringCalculator(InputView.splitInput(input));
 
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));
@@ -61,7 +61,7 @@ public class StringCalculatorTest {
     public void wrongDataOccurredException(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             try {
-                new StringCalculator(input).calculate();
+                new StringCalculator(InputView.splitInput(input)).calculate();
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
                 throw e;
@@ -74,7 +74,7 @@ public class StringCalculatorTest {
     @CsvSource(value = {"2 + 3 * 4 / 2,10", "3 + 3 * 2,12"})
     public void calculate(String input, String expected) {
         // give
-        StringCalculator stringCalculator = new StringCalculator(input);
+        StringCalculator stringCalculator = new StringCalculator(InputView.splitInput(input));
 
         // when then
         assertThat(stringCalculator.calculate()).isEqualTo(Integer.parseInt(expected));

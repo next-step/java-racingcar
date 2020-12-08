@@ -18,7 +18,7 @@ public class StringCalculatorRunner {
         String input = this.scanner.nextLine();
         try {
             System.out.println("입력 : " + input);
-            StringCalculator stringCalculator = new StringCalculator(input);
+            StringCalculator stringCalculator = new StringCalculator(InputView.splitInput(input));
             System.out.println("결과 : " + stringCalculator.calculate());
         } catch (Exception e) {
             System.out.println("올바른 값을 입력해주세요.");
