@@ -18,19 +18,8 @@ public class CarsTest {
 
 	@BeforeEach
 	void setUp() {
-		fixedNumber4Generator = new NumberGenerator() {
-			@Override
-			public int createNumber() {
-				return 4;
-			}
-		};
-
-		fixedNumber3Generator = new NumberGenerator() {
-			@Override
-			public int createNumber() {
-				return 3;
-			}
-		};
+		fixedNumber4Generator = () -> 4;
+		fixedNumber3Generator = () -> 3;
 	}
 
 	@ParameterizedTest

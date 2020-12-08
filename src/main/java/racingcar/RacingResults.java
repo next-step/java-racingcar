@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -8,6 +9,9 @@ public class RacingResults {
 	private List<RacingResult> results;
 
 	public RacingResults(List<RacingResult> results) {
+		if (results == null) {
+			results = new ArrayList<>();
+		}
 		this.results = results;
 	}
 
