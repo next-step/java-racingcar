@@ -18,4 +18,9 @@ public class CarsPrinter {
     private void printCar(Car car) {
         System.out.println(car.getPrintString());
     }
+
+    public void printWinner(Cars cars) {
+        String names = cars.getWinnerNames();
+        System.out.println(names + "가 최종 우승했습니다.");
+    }
 }

@@ -31,5 +31,6 @@ public class RacingGame {
             cars.moving();
             carsPrinter.print(cars);
         }
+        carsPrinter.printWinner(cars);
     }
 }

@@ -3,6 +3,7 @@ package com.ssabae.nextstep.racingcar.step03.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -47,5 +48,20 @@ public class Cars {
 
     public List<Car> getCarList() {
         return Collections.unmodifiableList(carList);
+    }
+
+    public String getWinnerNames() {
+        int maxMoveCount = getMaxMoveCount();
+        return carList.stream()
+                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+    }
+
+    private int getMaxMoveCount() {
+        return carList.stream()
+                .map(Car::getMoveCount)
+                .max(Comparator.comparingInt(o -> o))
+                .orElse(0);
     }
 }
