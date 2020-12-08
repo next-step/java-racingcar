@@ -22,4 +22,8 @@ public class Car {
   public int getDistance() {
     return this.distance;
   }
+
+  public String getName() {
+    return this.name;
+  }
 }
