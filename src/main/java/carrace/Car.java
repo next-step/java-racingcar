@@ -8,6 +8,13 @@ public class Car {
 	}
 
 	public void move(int step) {
-		this.position += step;
+		this.position += checkMovePossible(step);
+	}
+
+	private int checkMovePossible(int randomNumber) {
+		if (randomNumber < 4) {
+			return 0;
+		}
+		return randomNumber;
 	}
 }
