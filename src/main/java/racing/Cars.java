@@ -44,18 +44,23 @@ public class Cars {
     }
 
     public Cars generateCarsWithName(String names) {
-        validate(names);
+        validateEmpty(names);
         String[] carNames = names.split(NAME_SEPARATOR);
-        Arrays.stream(carNames).forEach(name -> cars.add(new Car(name)));
+        for(String name: carNames) {
+            validateNameLength(name);
+            cars.add(new Car(name));
+        }
         return this;
     }
 
-    private void validate(String names) {
+    private void validateEmpty(String names) {
         if(names == null || EMPTY_STRING.equals(names)) {
             throw new IllegalArgumentException("이름을 입력 하세요");
         }
+    }
 
-        if(names.length() > MAX_NAME_LENGTH) {
+    private void validateNameLength(String name) {
+        if(name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("이름 다섯자 초과");
         }
     }

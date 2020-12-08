@@ -30,10 +30,10 @@ class CarsTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"소나", "럭스"})
+    @ValueSource(strings = {"소나", "탐켄치"})
     @DisplayName("입력한 이름을 가진 Cars 생성")
     void generate_cars_with_name(String name) {
-        String testNames = "럭스,소나";
+        String testNames = "소나,탐켄치";
         Cars generateCars = cars.generateCarsWithName(testNames);
         List<String> carNames = generateCars.getCars().stream().map(Car::getName).collect(Collectors.toList());
         assertThat(carNames.contains(name)).isTrue();
