@@ -2,9 +2,12 @@ package stringcalculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import stringcalculator.arithmeticcomponent.ArithmeticResult;
 import stringcalculator.console.InputExpression;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,10 +16,9 @@ class StringCalculatorTest {
 
     @DisplayName("계산 결과가 올바른지 확인")
     @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2=10", "1 + 2 * 4 / 2 + 6=12"}, delimiter = '=')
-    void calculate(String expression, String result) {
+    @MethodSource("provideExpressionAndExpected")
+    void calculate(String expression, int expected) {
         // Given
-        int expectedResult = Integer.parseInt(result);
         InputExpression inputExpression = new InputExpression(expression);
 
         // When
@@ -24,6 +26,13 @@ class StringCalculatorTest {
         int actualResult = arithmeticResult.getNumber();
 
         // Then
-        assertThat(actualResult).isEqualTo(expectedResult);
+        assertThat(actualResult).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideExpressionAndExpected() {
+        return Stream.of(
+                Arguments.of("2 + 3 * 4 / 2", 10),
+                Arguments.of("1 + 2 * 4 / 2 + 6", 12)
+        );
     }
 }

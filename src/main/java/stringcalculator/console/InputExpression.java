@@ -19,7 +19,7 @@ public class InputExpression {
     }
 
     private static boolean isEmpty(String infixExpression) {
-        return infixExpression == null || infixExpression.equals("");
+        return infixExpression == null || infixExpression.isEmpty();
     }
 
     public String getExpression() {

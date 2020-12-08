@@ -28,11 +28,7 @@ class ArithmeticExpressionTest {
         ArithmeticExpression arithmeticExpression = new ArithmeticExpression(arithmeticOperator, arithmeticOperand1, arithmeticOperand2);
 
         // Then
-        assertAll(
-                () -> assertThat(arithmeticExpression.getOperator().getOperator()).isEqualTo(operator),
-                () -> assertThat(arithmeticExpression.getOperand1().getNumber()).isEqualTo(number1),
-                () -> assertThat(arithmeticExpression.getOperand2().getNumber()).isEqualTo(number2)
-        );
+        assertThat(arithmeticExpression).isNotNull();
     }
 
     @DisplayName("1회 연산에 필요한 수식에서 연산자가 없는 경우, 예외를 발생시키는지 확인")
