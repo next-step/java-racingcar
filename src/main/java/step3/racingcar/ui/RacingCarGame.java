@@ -20,7 +20,7 @@ public class RacingCarGame {
 
 		RoundRecorder roundRecorder = new RoundRecorder(racingExecuteCountInput);
 
-		RacingCars racingCars = RacingCarGenerator.generate(participateCarCount);
+		RacingCars racingCars = RacingCarGenerator.generate("hoonmaro");
 
 		for (int round = 1; round <= racingExecuteCountInput; round++) {
 			racingCars.moveAll();

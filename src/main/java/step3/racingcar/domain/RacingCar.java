@@ -2,15 +2,15 @@ package step3.racingcar.domain;
 
 public class RacingCar {
 
-	private final int id;
+	private final String name;
 	private int moveDistance;
 
-	public RacingCar(final int id) {
-		this.id = id;
+	public RacingCar(final String name) {
+		this.name = name;
 	}
 
-	public RacingCar(final int id, final int moveDistance) {
-		this.id = id;
+	public RacingCar(final String name, final int moveDistance) {
+		this.name = name;
 		this.moveDistance = moveDistance;
 	}
 
@@ -41,19 +41,19 @@ public class RacingCar {
 
 		final RacingCar racingCar = (RacingCar)o;
 
-		return id == racingCar.id;
+		if (moveDistance != racingCar.moveDistance)
+			return false;
+		return name != null ? name.equals(racingCar.name) : racingCar.name == null;
 	}
 
 	@Override
 	public int hashCode() {
-		return id;
-	}
-
-	public int getId() {
-		return this.id;
+		int result = name != null ? name.hashCode() : 0;
+		result = 31 * result + moveDistance;
+		return result;
 	}
 
 	public RacingCar copy() {
-		return new RacingCar(this.id, this.moveDistance);
+		return new RacingCar(this.name, this.moveDistance);
 	}
 }
