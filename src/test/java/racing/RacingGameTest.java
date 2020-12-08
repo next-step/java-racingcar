@@ -1,21 +1,43 @@
 package racing;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.RacingCar;
+import racing.model.Car;
+import racing.model.Forward;
+import racing.model.Stop;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-	RacingCar racingCar = new RacingCar();
+	RacingGame racingGame = new RacingGame();
 
+	//todo Refactoring
+	//실질 로직을 테스트하는 건 prepareInitRacingCar만 유효함. UI 기능은 테스트X
 	@Test
-	@DisplayName("랜덤값이 4이상인 경우 한 칸 전진한다.")
-	void test_forward() {
-		assertThat(racingCar.isForward(4)).isTrue();
-		assertThat(racingCar.isForward(0)).isFalse();
-		assertThat(racingCar.isForward(-1)).isFalse();
+	void 경주에_출전한_차_댓수와_전진멈춤_테스트_테스트() {
+		String inputName = "a, bb, ccc, dddd";
+		List<Car> cars = racingGame.prepareInitRacingCar(inputName);
+		assertThat(cars.size()).isEqualTo(inputName.split(",").length);
+
+		for (Car car : cars) {
+			car.speedUp(new Stop());
+			assertThat(car.getForwardPosition()).isEqualTo(0);
+		}
+		for (Car car : cars) {
+			car.speedUp(new Forward());
+			assertThat(car.getForwardPosition()).isEqualTo(1);
+		}
+		for (Car car : cars) {
+			car.speedUp(new Forward());
+			assertThat(car.getForwardPosition()).isEqualTo(2);
+		}
+		for (Car car : cars) {
+			car.speedUp(new Stop());
+			assertThat(car.getForwardPosition()).isEqualTo(2);
+		}
+
 	}
 
 }

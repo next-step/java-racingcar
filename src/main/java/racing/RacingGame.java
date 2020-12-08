@@ -1,44 +1,60 @@
 package racing;
 
-import racing.model.RacingCar;
+import racing.model.*;
+import racing.util.Constants;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RacingGame {
-
-	private static final int MAX_RANDOM_BOUND = 10;
-
-	Random random = new Random();
 
 	ResultView resultView = new ResultView();
 
 	public void start() {
 		InputView inputView = new InputView();
-		inputView.inputUI();
+		inputView.inputCarsName();
+		inputView.inputPlayCount();
 
-		List<RacingCar> racingCarList = prepareInitRacingCar(inputView.getPlayCarCount());
-		for (int i = 0; i < inputView.getPlayCount(); i++) {
-			speedUpForPlayCount(racingCarList);
+		List<Car> cars = prepareInitRacingCar(inputView.getInputName());
+		startRacing(cars, inputView.getPlayCount());
+		printWinner(cars);
+	}
+
+	public void printWinner(List<Car> cars) {
+		List<Integer> positionList = new ArrayList<>();
+		Map<Integer, String> map = new HashMap<>();
+		for (Car car : cars) {
+			positionList.add(car.getForwardPosition());
+			map.merge(car.getForwardPosition(), car.getName(), (k, v) -> map.get(car.getForwardPosition()) + Constants.CAR_NAME_DELIMITER + car.getName());
+		}
+		Integer maxPosition = Collections.max(positionList);
+		System.out.println(map.get(maxPosition) + "가 최종 우승했습니다.");
+	}
+
+	public void startRacing(List<Car> cars, int playCount) {
+		for (int i = 0; i < playCount; i++) {
+			speedUpForPlayCount(cars);
 			System.out.println();
 		}
 	}
 
-	private void speedUpForPlayCount(List<RacingCar> racingCarList) {
-		for (RacingCar racingCar : racingCarList) {
-			racingCar.recordResult(racingCar.isForward(random.nextInt(MAX_RANDOM_BOUND)));
-			resultView.print(racingCar.getForwardRecord());
+	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
+	public void speedUpForPlayCount(List<Car> cars) {
+		for (Car car : cars) {
+			car.speedUp(new RandomForward());
+			resultView.print(car.getName(), car.getForwardPosition());
 		}
 	}
 
-	private List<RacingCar> prepareInitRacingCar(int playCarCount) {
-		List<RacingCar> racingCarList = new ArrayList<>();
-		for (int i = 0; i < playCarCount; i++) {
-			racingCarList.add(new RacingCar());
+	public List<Car> prepareInitRacingCar(String inputName) {
+		String[] carNames = inputName.split(Constants.CAR_NAME_DELIMITER);
+		List<Car> cars = new ArrayList<>();
+		for (String name : carNames) {
+			cars.add(new Car(name));
 		}
-		return racingCarList;
+		return cars;
+
 	}
+
 }
