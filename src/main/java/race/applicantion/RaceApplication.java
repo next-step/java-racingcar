@@ -17,6 +17,7 @@ public class RaceApplication {
         RacingCars cars = RacingCars.createCars(numOfCar, new RandomMovePolicy());
         for (int i = 0; i < numOfTry; i++) {
             cars.step();
+            ConsoleView.showResult(cars);
         }
     }
 }
