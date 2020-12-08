@@ -9,7 +9,7 @@ public class RacingRule implements MoveRule {
     private Random random = new Random();
 
     @Override
-    public boolean checkMovement() {
+    public boolean isAbleToMove() {
         int randomNumberRange = RANDOM_NUMBER_RANGE + 1;
         return MOVE_CONDITION <= random.nextInt(randomNumberRange);
     }

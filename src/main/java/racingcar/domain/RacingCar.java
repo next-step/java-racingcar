@@ -14,7 +14,7 @@ public class RacingCar {
     }
 
     public RacingCar run(MoveRule racingRule) {
-        if(racingRule.checkMovement()) {
+        if(racingRule.isAbleToMove()) {
             carPosition++;
         }
         return new RacingCar(this.carPosition);
