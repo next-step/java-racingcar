@@ -18,14 +18,7 @@ public class RacingResult {
         winningCars = cars.stream().filter(car -> car.getPosition().equals(maxPosition)).collect(Collectors.toList());
     }
 
-    @Override
-    public String toString() {
-        String winners = "";
-        for(Car car : winningCars) {
-            winners += car.getName() +", ";
-        }
-        winners = winners.replaceAll(", $", "");
-        return winners +
-                "가 최종 우승했습니다.";
+    public List<Car> getWinningCars() {
+        return winningCars;
     }
 }
