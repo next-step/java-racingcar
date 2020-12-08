@@ -91,4 +91,16 @@ class CalculatorTest {
 		// then
 		assertThat(actualResult).isEqualTo(expectedResult);
 	}
+
+	@DisplayName("사칙연산 모두 포함하는 수식 테스트")
+	@ParameterizedTest
+	@CsvSource(value = {"6 / 2 * 2 - 1 + -3:2", "-4 * -2 + 5 - -2:15", "-30 - -2 / 7 * 5:-20"}, delimiter = ':')
+	public void 전체_수식_테스트(String expression, long expectedResult) throws Exception {
+		// given
+		// when
+		// when
+		long actualResult = calculator.calculate(expression);
+		// then
+		assertThat(actualResult).isEqualTo(expectedResult);
+	}
 }
