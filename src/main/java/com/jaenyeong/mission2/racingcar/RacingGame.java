@@ -29,14 +29,14 @@ public class RacingGame {
     }
 
     private void runningGame() {
-        final Cars cars = processSetCarsByNamesOfCars();
+        final Cars cars = setCarsByNamesOfCars();
 
-        racingGivenNumberOfTimes(processSetRaceTryTimes(), cars);
+        racingGivenNumberOfTimes(setRaceTryTimes(), cars);
 
-        processResultOfRacing(cars);
+        resultOfRacing(cars);
     }
 
-    private Cars processSetCarsByNamesOfCars() {
+    private Cars setCarsByNamesOfCars() {
         output.printNamesOfTheCarsToBeRaced();
         String carNames = input.inputNamesOfTheCarsToBeRaced();
 
@@ -47,7 +47,7 @@ public class RacingGame {
         return new Cars(nameOfCars);
     }
 
-    protected int processSetRaceTryTimes() {
+    protected int setRaceTryTimes() {
         output.printHowManyTryTimes();
         return input.inputHowManyTryTimes();
     }
@@ -59,7 +59,7 @@ public class RacingGame {
         }
     }
 
-    private void processResultOfRacing(final Cars cars) {
+    private void resultOfRacing(final Cars cars) {
         final RacingHistoryDto historyDto = getHistoryDto(cars);
 
         output.printExecutionResult();
