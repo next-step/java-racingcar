@@ -11,14 +11,14 @@ public class CarTest {
   @DisplayName("Car객체 생성 시 distance 초기값이 1인지 확인한다.")
   @Test
   void initTest() {
-    Car car = new Car();
+    Car car = new Car("name");
     assertThat(car.getDistance()).isEqualTo(1);
   }
 
   @DisplayName("move 와 getDistance 가 잘 동작하는지 확인")
   @Test
   public void moveTest() {
-    Car car = new Car();
+    Car car = new Car("name");
     car.move();
     assertThat(car.getDistance()).isEqualTo(2);
   }

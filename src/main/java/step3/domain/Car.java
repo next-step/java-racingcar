@@ -2,17 +2,12 @@ package step3.domain;
 
 public class Car {
 
-  private String name;
-  private static final int INIT_POSITION = 1;
-  private int distance;
-
-  public Car() {
-    this.distance = INIT_POSITION;
-  }
+  public static final int MAX_LENGTH = 5;
+  private final String name;
+  private int distance = 1;
 
   public Car(String name) {
     valid(name);
-    this.distance = INIT_POSITION;
     this.name = name;
   }
 
@@ -29,7 +24,7 @@ public class Car {
   }
 
   private static void valid(String input) {
-    if (input == null || input.equals("") || input.length() > 5) {
+    if (input == null || "".equals(input) || input.length() > MAX_LENGTH) {
       throw new IllegalArgumentException();
     }
   }

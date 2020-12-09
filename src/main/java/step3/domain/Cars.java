@@ -6,11 +6,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
-  private static final String SPLIT_FLAG = ",";
   private final List<Car> cars;
 
-  public Cars(String carNames) {
-    this.cars = splitCarNames(carNames).stream()
+  public Cars(List<String> carNames) {
+    this.cars = carNames.stream()
         .map(Car::new)
         .collect(Collectors.toList());
   }
@@ -31,10 +30,6 @@ public class Cars {
     return this.getCars().stream()
         .filter(car -> car.getDistance() == maxDistanceOfCars())
         .collect(Collectors.toList());
-  }
-
-  private List<String> splitCarNames(String carNames) {
-    return Arrays.asList(carNames.split(SPLIT_FLAG));
   }
 
   private int maxDistanceOfCars() {

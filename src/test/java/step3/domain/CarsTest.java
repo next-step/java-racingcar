@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.service.RacingRule;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
@@ -27,7 +29,7 @@ public class CarsTest {
 
   @BeforeEach
   void before() {
-    cars = new Cars("pobi,crong,honux");
+    cars = new Cars(Arrays.asList("pobi", "crong", "honux"));
   }
 
   @DisplayName("모두 이동 가능한 조건이라, 이동한 경우")
