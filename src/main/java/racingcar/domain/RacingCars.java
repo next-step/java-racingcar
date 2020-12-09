@@ -16,8 +16,8 @@ public class RacingCars {
     }
 
     private List<RacingCar> participate(List<String> carNames) {
-        for (int i = 0; i < carNames.size(); i++) {
-            racingCars.add(new RacingCar(carNames.get(i)));
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
         return this.racingCars;
     }
