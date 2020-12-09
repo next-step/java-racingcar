@@ -1,5 +1,6 @@
 package racing;
 
+import racing.car.Car;
 import racing.car.CarGroup;
 
 import java.util.List;
@@ -12,11 +13,17 @@ public class RacingNotifyView implements RacingNotifier {
 	@Override
 	public void notifyRace(CarGroup carGroup) {
 		List<String> positions = carGroup.stream()
-				.map(car -> getPositionAsString(car.getPosition()))
+				.map(RacingNotifyView::createCarStatusAsString)
 				.collect(Collectors.toList());
 
 		String allPosition = String.join("\n", positions);
 		System.out.println(String.format("%s\n", allPosition));
+	}
+
+	private static String createCarStatusAsString(Car car) {
+		String carName = car.getCarName();
+		String position = getPositionAsString(car.getPosition());
+		return String.format("%s : %s", carName, position);
 	}
 
 	private static String getPositionAsString(int position) {
