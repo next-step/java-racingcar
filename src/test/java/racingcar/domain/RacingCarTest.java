@@ -11,13 +11,26 @@ class RacingCarTest {
     @DisplayName("자동자 주행 테스트")
     void racingCar_run_test() {
         // given
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("YKJ", 0);
 
         // when
         racingCar.run(() -> true);
 
         // then
-        assertThat(racingCar.getCarPosition()).isEqualTo(1);
+        assertThat(racingCar).isEqualTo(new RacingCar("YKJ", 1));
+    }
+
+    @Test
+    @DisplayName("자동자 정지 테스트")
+    void racingCar_stop_test() {
+        // given
+        RacingCar racingCar = new RacingCar("YKJ", 0);
+
+        // when
+        racingCar.run(() -> false);
+
+        // then
+        assertThat(racingCar).isEqualTo(new RacingCar("YKJ", 0));
     }
 
 }

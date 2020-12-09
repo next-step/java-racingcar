@@ -10,14 +10,14 @@ public class RacingCars {
 
     private final List<RacingCar> racingCars;
 
-    public RacingCars(int countOfCar) {
+    public RacingCars(List<String> carNames) {
         this.racingCars = new ArrayList<>();
-        participate(countOfCar);
+        participate(carNames);
     }
 
-    private List<RacingCar> participate(int countOfCar) {
-        for (int i = 0; i < countOfCar; i++) {
-            racingCars.add(new RacingCar());
+    private List<RacingCar> participate(List<String> carNames) {
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
         return this.racingCars;
     }
