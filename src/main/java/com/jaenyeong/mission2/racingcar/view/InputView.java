@@ -6,22 +6,16 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class InputView implements Input {
-    public static final int EMPTY = 0;
-    final Output output;
-    final Scanner scanner;
+    private final Output output;
+    private final Scanner scanner;
 
     public InputView(final Output output) {
         this.output = output;
         this.scanner = new Scanner(System.in);
     }
 
-    @Override
-    public int inputHowManyUseCars() {
-        return inputUntilCorrectIntType();
-    }
-
     private int inputUntilCorrectIntType() {
-        int input = CAN_NOT_READ;
+        int input;
         do {
             input = inputIntValue();
 

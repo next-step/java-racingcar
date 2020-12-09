@@ -5,9 +5,8 @@ import java.util.List;
 
 public interface Input {
     int CAN_NOT_READ = -1;
+    int EMPTY = 0;
     String SEPARATOR = ",";
-
-    int inputHowManyUseCars();
 
     int inputHowManyTryTimes();
 
