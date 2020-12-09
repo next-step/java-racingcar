@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Game : 자동차 게임을 진행함에 필요한 상태들을 가지고 있고, 게임을 진행하는 등의 역할을 수행함.")
 class GameTest {
 
+	private final int ALWAYS_MOVE = 9;
+	private final int NEVER_MOVE = 1;
+
 	@DisplayName("getGameCars : 자동차 게임에 참가한 자동차들 목록을 가져옴.")
 	@Test
 	void getGameCars() {
@@ -82,6 +85,25 @@ class GameTest {
 					.isGreaterThanOrEqualTo(0)
 					.isLessThanOrEqualTo(moveTryMaxCount)
 			);
+		}
+	}
+
+	@DisplayName("getHeadCars : 현재 게임 상황에서 가장 선두인 차들을 가져옴")
+	@Test
+	void getHeadCars() {
+		Car winner1 = new Car(() -> ALWAYS_MOVE);
+		Car winner2 = new Car(() -> ALWAYS_MOVE);
+		Car loser = new Car(() -> NEVER_MOVE);
+
+		List<Car> entry = Arrays.asList(winner1, winner2, loser);
+		int moveTryMaxCount = 5;
+
+		Game game = new Game(entry, moveTryMaxCount);
+		while (game.isContinue()) {
+			game.play();
+			assertThat(game.getHeadCars())
+				.hasSize(2)
+				.contains(winner1, winner2);
 		}
 	}
 }
