@@ -17,7 +17,7 @@ public class CarNameTest {
     void createNameTest(String name) {
         CarName carName = new CarName(name);
 
-        assertThat(carName.getName()).isEqualTo(name);
+        assertThat(carName.get()).isEqualTo(name);
     }
 
     @DisplayName("자동차 이름 문자열 길이 초과 예외처리를 확인한다.")

@@ -9,7 +9,7 @@ public class RacingCars {
 
     private final List<Car> cars;
 
-    private RacingCars(List<Car> cars) {
+    public RacingCars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
     }
 
@@ -18,6 +18,17 @@ public class RacingCars {
                 .mapToObj(i -> new Car(movePolicy))
                 .collect(Collectors.toList());
         return new RacingCars(cars);
+    }
+
+    public static RacingCars createCarsWitNames(CarNames carNames, MovePolicy movePolicy) {
+        List<Car> cars = IntStream.range(0, carNames.size())
+                .mapToObj(index -> new Car(carNames.get(index), movePolicy))
+                .collect(Collectors.toList());
+        return new RacingCars(cars);
+    }
+
+    public static RacingCars createRandomMoveCars(CarNames carNames) {
+        return createCarsWitNames(carNames, new RandomMovePolicy());
     }
 
     public void step() {
@@ -32,5 +43,9 @@ public class RacingCars {
 
     public int size() {
         return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

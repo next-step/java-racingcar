@@ -1,5 +1,6 @@
 package race.view;
 
+import race.domain.Car;
 import race.domain.RacingCars;
 
 import java.util.Scanner;
@@ -11,9 +12,9 @@ public class ConsoleView {
 
     private static final String MOVEMENT_SYMBOL = "-";
 
-    public static int inputNumOfCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    public static String inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.nextLine();
     }
 
     public static int inputNumOfTry() {
@@ -23,9 +24,18 @@ public class ConsoleView {
 
     public static void showResult(RacingCars cars) {
         System.out.println("실행 결과");
-        for (Integer distance : cars.getDistanceOfCars()) {
-            IntStream.range(0, distance).forEach(i -> System.out.print(MOVEMENT_SYMBOL));
+        for (Car car : cars.getCars()) {
+            showName(car.getCarName());
+            showDistance(car.getMovedDistance());
             System.out.println();
         }
+    }
+
+    private static void showName(String name) {
+        System.out.print(name + " : ");
+    }
+
+    private static void showDistance(int distance) {
+        IntStream.range(0, distance).forEach(i -> System.out.print(MOVEMENT_SYMBOL));
     }
 }
