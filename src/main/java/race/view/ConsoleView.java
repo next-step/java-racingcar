@@ -38,4 +38,8 @@ public class ConsoleView {
     private static void showDistance(int distance) {
         IntStream.range(0, distance).forEach(i -> System.out.print(MOVEMENT_SYMBOL));
     }
+
+    public static void showError(String message) {
+        System.err.println(message);
+    }
 }
