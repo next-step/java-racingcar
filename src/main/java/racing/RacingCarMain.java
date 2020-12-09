@@ -1,6 +1,6 @@
 package racing;
 
-import racing.model.RacingCars;
+import racing.model.RacingGame;
 import racing.view.UserInput;
 import racing.view.UserOutput;
 
@@ -29,16 +29,16 @@ public class RacingCarMain {
 		int tryRaceNumber = userInputPlayTryNumber();
 
 		// 경주 차량 객체 생성
-		RacingCars cars = new RacingCars(carRaceNumber);
+		RacingGame racingGame = new RacingGame(carRaceNumber);
 
 		// 입력한 주행 횟수 만큼 반복
 		for (int i = 0; i < tryRaceNumber; i++) {
 
 			// 레이싱 차량들 랜덤 주행 시작
-			cars.start();
+			racingGame.start();
 
 			// 주행 결과 출력
-			UserOutput.printCarLocation(cars.getRacingCars());
+			UserOutput.printCarLocation(racingGame.getCars());
 		}
 	}
 

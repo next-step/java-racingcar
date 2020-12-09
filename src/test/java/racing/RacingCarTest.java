@@ -7,7 +7,6 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racing.model.MoveState;
 import racing.model.RacingCar;
 
 class RacingCarTest {
@@ -19,7 +18,7 @@ class RacingCarTest {
 
 		RacingCar car = new RacingCar();
 
-		car.move(() -> car.checkCar().isMove());
+		car.move(() -> car.axel().isMove());
 
 		assertThat(car.getDistance()).isPositive();
 	}

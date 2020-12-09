@@ -17,19 +17,8 @@ public class RacingCar {
 
 	public RacingCar() {
 
-		// 객\체 생성 시 초기화
+		// 객체 생성 시 초기화
 		this.location = RACING_START_LOCATION;
-	}
-
-	/**
-	 * 랜덤값 생성하여, 4 이상 일 경우 자동차 주행(거리 + 1)
-	 */
-	public void racing() {
-
-		// 랜던값 생성
-		if (randomNumberMaker.nextInt(RACING_RANDOM_BOUND) > RACING_INCREASE_BOUND) {
-			this.location++;
-		}
 	}
 
 	/**
@@ -49,7 +38,7 @@ public class RacingCar {
 		}
 	}
 
-	public MoveState checkCar() {
+	public MoveState axel() {
 
 		if (randomNumberMaker.nextInt(RACING_RANDOM_BOUND) > RACING_INCREASE_BOUND) {
 

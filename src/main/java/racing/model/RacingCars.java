@@ -38,7 +38,12 @@ public class RacingCars {
 	 */
 	public void start() {
 
-		racingCars.forEach(RacingCar::racing);
+		// 가독성이 안좋아서 수정
+		// this.racingCars.forEach((racingCar -> racingCar.move(()->racingCar.checkCar().isMove())));
+		for (RacingCar car : this.racingCars) {
+
+			car.move(() -> car.axel().isMove());
+		}
 	}
 
 	/**
