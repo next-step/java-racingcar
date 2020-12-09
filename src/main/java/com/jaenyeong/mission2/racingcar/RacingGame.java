@@ -38,10 +38,10 @@ public class RacingGame {
     private Cars setCarsByNamesOfCars() {
         output.printNamesOfTheCarsToBeRaced();
 
-        return getCars(input.inputNamesOfTheCarsToBeRaced());
+        return createCarsInstance(input.inputNamesOfTheCarsToBeRaced());
     }
 
-    protected Cars getCars(final List<String> nameOfCars) {
+    protected Cars createCarsInstance(final List<String> nameOfCars) {
         return new Cars(nameOfCars);
     }
 
