@@ -1,7 +1,6 @@
 package edu.nextstep.racing;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class ResultView {
 
@@ -26,5 +25,19 @@ public class ResultView {
 			result.append("-");
 		}
 		return result.toString();
+	}
+
+	public static void printWinners(List<Car> cars) {
+		if (cars == null || cars.isEmpty()) {
+			System.out.println("\n최종 우승자는 없습니다.");
+			return;
+		}
+		StringBuilder result = new StringBuilder("\n" + cars.get(0).getName());
+		for (int i = 1; i < cars.size(); i++) {
+			result.append(", ");
+			result.append(cars.get(i).getName());
+		}
+		result.append("가 최종 우승했습니다.");
+		System.out.println(result);
 	}
 }

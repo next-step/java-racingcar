@@ -14,6 +14,7 @@ public class Playground {
 			racingGame.play();
 			ResultView.printCarsLocation(racingGame.getGameCars());
 		}
+		ResultView.printWinners(racingGame.getHeadCars());
 	}
 
 	public Game createRacingGame(String[] nameOfCars, int moveTryMaxCount) {
