@@ -11,8 +11,7 @@ class CalculatorTest {
 	@DisplayName("input을 입력으로 결과값을 계산하는 기능 테스트")
 	public void calculate_input_test(String input, int answer) throws Exception {
 		//Given
-		Operators operators = new Operators();
-		Calculator calculator = new Calculator(operators);
+		Calculator calculator = new Calculator();
 
 		//When
 		int result = calculator.calculateInput(input);

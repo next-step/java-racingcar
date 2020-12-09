@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 public class OperatorTest {
 
 	@Test
-	@DisplayName("덧셈 연산자 테스")
+	@DisplayName("덧셈 연산자 테스트")
 	public void addition_test() throws Exception {
 		//Given
-		Addition addition = new Addition();
+		Operators addition = Operators.PLUS;
 		//When
 		int calculate = addition.calculate(1, 0);
 		//Then
@@ -22,7 +22,7 @@ public class OperatorTest {
 	@DisplayName("뺄셈 연산자 테스트")
 	public void subtraction_test() throws Exception {
 		//Given
-		Subtraction subtraction = new Subtraction();
+		Operators subtraction = Operators.MINUS;
 		//When
 		int calculate = subtraction.calculate(1, 3);
 		//Then
@@ -33,7 +33,7 @@ public class OperatorTest {
 	@DisplayName("곱셈 연산자 테스트")
 	public void multiplication_test() throws Exception {
 		//Given
-		Multiplication multiplication = new Multiplication();
+		Operators multiplication = Operators.MULTIPLY;
 		//When
 		int calculate = multiplication.calculate(1, 3);
 		//Then
@@ -44,7 +44,7 @@ public class OperatorTest {
 	@DisplayName("나눗셈 연산자 테스트")
 	public void division_test() throws Exception {
 		//Given
-		Division division = new Division();
+		Operators division = Operators.DIVIDE;
 		//When
 		int calculate = division.calculate(1, 3);
 		//Then

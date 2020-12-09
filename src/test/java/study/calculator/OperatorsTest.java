@@ -3,7 +3,7 @@ package study.calculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class OperatorStatusTest {
+class OperatorsTest {
 
 	@Test
 	public void plus_operator_validation_success_test() throws Exception {
@@ -11,10 +11,10 @@ class OperatorStatusTest {
 		String operator = "+";
 
 		//When
-		OperatorStatus operatorStatus = OperatorStatus.mapOperatorStatus(operator);
+		Operators operatorStatus = Operators.mapOperatorStatus(operator);
 
 		//Then
-		Assertions.assertThat(operatorStatus).isEqualTo(OperatorStatus.PLUS);
+		Assertions.assertThat(operatorStatus).isEqualTo(Operators.PLUS);
 	}
 
 	@Test
@@ -23,10 +23,10 @@ class OperatorStatusTest {
 		String operator = "-";
 
 		//When
-		OperatorStatus operatorStatus = OperatorStatus.mapOperatorStatus(operator);
+		Operators operatorStatus = Operators.mapOperatorStatus(operator);
 
 		//Then
-		Assertions.assertThat(operatorStatus).isEqualTo(OperatorStatus.MINUS);
+		Assertions.assertThat(operatorStatus).isEqualTo(Operators.MINUS);
 	}
 
 	@Test
@@ -35,10 +35,10 @@ class OperatorStatusTest {
 		String operator = "*";
 
 		//When
-		OperatorStatus operatorStatus = OperatorStatus.mapOperatorStatus(operator);
+		Operators operatorStatus = Operators.mapOperatorStatus(operator);
 
 		//Then
-		Assertions.assertThat(operatorStatus).isEqualTo(OperatorStatus.MULTIPLY);
+		Assertions.assertThat(operatorStatus).isEqualTo(Operators.MULTIPLY);
 	}
 
 	@Test
@@ -47,10 +47,10 @@ class OperatorStatusTest {
 		String operator = "/";
 
 		//When
-		OperatorStatus operatorStatus = OperatorStatus.mapOperatorStatus(operator);
+		Operators operatorStatus = Operators.mapOperatorStatus(operator);
 
 		//Then
-		Assertions.assertThat(operatorStatus).isEqualTo(OperatorStatus.DIVIDE);
+		Assertions.assertThat(operatorStatus).isEqualTo(Operators.DIVIDE);
 	}
 
 	@Test
@@ -60,7 +60,7 @@ class OperatorStatusTest {
 
 		//When and Then
 		Assertions.assertThatThrownBy(() -> {
-			OperatorStatus operatorStatus = OperatorStatus.mapOperatorStatus(operator);
+			Operators operatorStatus = Operators.mapOperatorStatus(operator);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
