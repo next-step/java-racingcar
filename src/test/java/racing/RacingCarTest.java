@@ -14,8 +14,19 @@ class RacingCarTest {
 
 	@Test
 	@DisplayName("자동차 단일 객체 생성 및 주행 테스트")
-	void createCarObjectTest() {
+	void carStayTest() {
 
+		RacingCar car = new RacingCar();
+
+		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
+		car.move(() -> MoveState.STAY);
+
+		assertThat(car.getDistance()).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("자동차 단일 객체 생성 및 주행 테스트")
+	void carMoveTest() {
 		RacingCar car = new RacingCar();
 
 		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
