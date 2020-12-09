@@ -18,26 +18,13 @@ public class InputValidator {
     private InputValidator() {
     }
 
-    public static List<String> validateCarNames(String inputCarName) {
-
-        List<String> carNames = convertList(inputCarName);
-
-        boolean isCorrectCarName = carNames.stream()
-                .allMatch(carName -> RacingCar.validateCarName(carName));
-
-        if(!isCorrectCarName) {
-            throw new IllegalArgumentException(INVALID_NAME_ERROR_MESSAGE);
-        }
-
-        return carNames;
-    }
-
-    private static List<String> convertList(String text) {
-        if (isEmpty(text)) {
+    public static List<String> validateCarName(String inputCarName) {
+        if (isEmpty(inputCarName)) {
             throw new IllegalArgumentException(NO_NAME_ERROR_MESSAGE);
         }
-        text = removeBlank(text.trim());
-        return Arrays.asList(text.split(COMMA));
+
+        inputCarName = removeBlank(inputCarName.trim());
+        return Arrays.asList(inputCarName.split(COMMA));
     }
 
     private static String removeBlank(String input) {
@@ -45,10 +32,10 @@ public class InputValidator {
     }
 
     private static boolean isEmpty(String text) {
-        return null == text || text.isEmpty();
+        return text == null || text.isEmpty();
     }
 
-    public static int validateInput(int count) {
+    public static int validateRound(int count) {
         if(count < MIN_VALUE) {
             throw new IllegalArgumentException(INVALID_ROUND_ERROR_MESSAGE);
         }

@@ -3,6 +3,7 @@ package racingcar.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.RacingCar;
 import racingcar.domain.RacingRound;
 import racingcar.view.InputValidator;
 import racingcar.view.ResultView;
@@ -49,12 +50,12 @@ class RacingGameTest {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"YANG,KYUNG,JUN7575"})
+    @ValueSource(strings = {"pobi75","crong75","YKJ7575"})
     @DisplayName("자동차 이름 유효성 검사 테스트")
     public void validate_car_names(String racingCarNames) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    InputValidator.validateCarNames(racingCarNames);
+                    RacingCar racingCar = new RacingCar(racingCarNames, 0);
                 }).withMessageMatching(InputValidator.INVALID_NAME_ERROR_MESSAGE);
     }
 

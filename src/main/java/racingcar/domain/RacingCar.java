@@ -2,19 +2,31 @@ package racingcar.domain;
 
 import java.util.Objects;
 
+import static racingcar.view.InputValidator.INVALID_NAME_ERROR_MESSAGE;
+
 public class RacingCar implements Comparable<RacingCar> {
 
-    private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,4}$";
+    private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,5}$";
     private String carName;
     private int carPosition;
 
     public RacingCar(String carName) {
+        checkCarName(carName);
         this.carName = carName;
     }
 
     public RacingCar(String carName, int carPosition) {
+        checkCarName(carName);
         this.carName = carName;
         this.carPosition = carPosition;
+    }
+
+    private void checkCarName(String racingCarName) {
+        boolean isCorrectCarName = racingCarName.matches(racingCarNamePattern);
+
+        if(!isCorrectCarName) {
+            throw new IllegalArgumentException(INVALID_NAME_ERROR_MESSAGE);
+        }
     }
 
     public RacingCar run(MoveRule racingRule) {
@@ -32,12 +44,8 @@ public class RacingCar implements Comparable<RacingCar> {
         return carPosition;
     }
 
-    public static boolean validateCarName(String racingCarName) {
-        return racingCarName.matches(racingCarNamePattern);
-    }
-
     public boolean isSamePosition(RacingCar other) {
-        return other.getCarPosition() == this.carPosition;
+        return other.carPosition == this.carPosition;
     }
 
     @Override

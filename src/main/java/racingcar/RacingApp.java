@@ -10,8 +10,8 @@ import java.util.List;
 public class RacingApp {
 
     public static void main(String[] args) {
-        List<String> carNames = InputValidator.validateCarNames(InputView.getInputCarName());
-        int countOfRacingRound = InputValidator.validateInput(InputView.getCountOfRacingRound());
+        List<String> carNames = InputValidator.validateCarName(InputView.getInputCarName());
+        int countOfRacingRound = InputValidator.validateRound(InputView.getCountOfRacingRound());
 
         RacingGame racingGame = new RacingGame(carNames, countOfRacingRound);
         racingGame.start();
