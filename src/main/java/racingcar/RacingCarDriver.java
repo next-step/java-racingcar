@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RacingCarController {
+public class RacingCarDriver {
 
     private static final int RANDOM_BOUND = 10;
+    private static final int MOVABLE_MIN_VALUE = 4;
     private final Random random = new Random();
 
-    private final List<RacingCar> racingCars;
+    private List<RacingCar> racingCars;
 
-    public RacingCarController(List<RacingCar> racingCars) {
-        this.racingCars = racingCars;
+    public RacingCarDriver(int amount) {
+        this(RacingCarDriver.createRacingCars(amount));
     }
 
-    public RacingCarController(int amount) {
-        this(RacingCarController.createRacingCars(amount));
+    public RacingCarDriver(List<RacingCar> racingCars) {
+        if (racingCars != null) {
+            this.racingCars = racingCars;
+        }
     }
 
     /**
@@ -54,7 +57,7 @@ public class RacingCarController {
      * @return
      */
     private int makeRandom() {
-        return this.random.nextInt(RacingCarController.RANDOM_BOUND);
+        return this.random.nextInt(RacingCarDriver.RANDOM_BOUND);
     }
 
     /**
@@ -63,11 +66,11 @@ public class RacingCarController {
      * @return
      */
     boolean isMovable(int value) {
-        return value >= 4;
+        return value >= MOVABLE_MIN_VALUE;
     }
+
     /**
      * 자동차의 현재 위치를 받아서 리스트에 담습니다.
-     * @param racingCarController
      * @return
      */
     public List<Integer> getNowDistance() {

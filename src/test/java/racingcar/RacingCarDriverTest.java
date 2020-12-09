@@ -5,12 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingCarControllerTest {
+public class RacingCarDriverTest {
 
     @Test
     @DisplayName("차를 한대 등록하여 한칸 전진 시킨다.")
@@ -19,7 +16,7 @@ public class RacingCarControllerTest {
 //        RacingCarController racingCarController
 //                = new RacingCarController(new InputView().createRacingCars(1));
         RacingCar racingCar = new RacingCar();
-        RacingCarController racingCarController = new RacingCarController(null);
+        RacingCarDriver racingCarController = new RacingCarDriver(null);
         // when & then
         assertThat(racingCarController.moveForward(racingCar)).isLessThanOrEqualTo(1);
     }
@@ -30,7 +27,7 @@ public class RacingCarControllerTest {
     public void isMovable(String input, String expected) {
         // given
         RacingCar racingCar = new RacingCar();
-        RacingCarController racingCarController = new RacingCarController(null);
+        RacingCarDriver racingCarController = new RacingCarDriver(null);
 
         // when & then
         assertThat(racingCarController.isMovable(Integer.parseInt(input)))

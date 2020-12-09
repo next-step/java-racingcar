@@ -8,7 +8,7 @@ public class RacingRunner {
     private final InputView inputView = new InputView();
     private final ResultView resultView = new ResultView();
 
-    private RacingCarController racingCarController;
+    private RacingCarDriver racingCarController;
 
     public void run() {
         this.racingCarController = this.inputView.inputCarAmount(this.scanner);

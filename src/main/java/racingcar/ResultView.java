@@ -1,8 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ResultView {
 
     private static final String RESULT_DASH = "-";
@@ -10,7 +7,7 @@ public class ResultView {
     /**
      * 현재 결과를 출력합니다
      */
-    public void printResult(RacingCarController racingCarController) {
+    public void printResult(RacingCarDriver racingCarController) {
         for (int distance : racingCarController.getNowDistance()) {
             this.printDash(distance);
         }
