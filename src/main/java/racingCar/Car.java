@@ -19,7 +19,7 @@ public class Car {
 	public Car(String carName) {
 		validateCarName(carName);
 		this.name = carName;
-		position = 0;
+		this.position = 0;
 	}
 
 	private void validateCarName(String carName) {
@@ -27,6 +27,7 @@ public class Car {
 	}
 
 	public Car(Car copyCar) {
+		this.name = copyCar.name;
 		this.position = copyCar.position;
 	}
 

@@ -20,12 +20,13 @@ public class CarsTest {
 
 	@Order(1)
 	@DisplayName("1. 사용자가 입력한 자동차의 수 만큼 자동차가 생성된다.")
-	@ParameterizedTest
-	@ValueSource(ints = {2, 3, 4})
-	void createCar(int carCount) {
+	@Test
+	void createCar() {
+		String userInput = "pobi,crong,honux";
+		String[] carNames = userInput.split(",");
 		int matchCount = 3;
-		Cars cars = new Cars(carCount, matchCount);
-		assertThat(cars.getCount()).isEqualTo(carCount);
+		Cars cars = new Cars(carNames, matchCount);
+		assertThat(cars.getCount()).isEqualTo(carNames.length);
 	}
 
 	@Order(2)
@@ -33,8 +34,10 @@ public class CarsTest {
 	@ParameterizedTest
 	@ValueSource(ints = {2, 4, 6})
 	void repeatRaceCount(int carCount){
+		String userInput = "pobi,crong,honux";
+		String[] carNames = userInput.split(",");
 		int matchCount = 3;
-		Cars cars = new Cars(carCount, matchCount);
+		Cars cars = new Cars(carNames, matchCount);
 		cars.race();
 		assertThat(cars.getLapCount()).isEqualTo(matchCount);
 	}
@@ -43,9 +46,10 @@ public class CarsTest {
 	@DisplayName("3. 차들이 경주를 완료하면 랩카운트가 증가한다")
 	@Test
 	void addLapCount(){
+		String userInput = "pobi,crong,honux";
+		String[] carNames = userInput.split(",");
 		int matchCount = 3;
-		int carCount = 2;
-		Cars cars = new Cars(carCount, matchCount);
+		Cars cars = new Cars(carNames, matchCount);
 		cars.runLap();
 		assertThat(cars.getLapCount()).isEqualTo(1);
 	}

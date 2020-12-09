@@ -2,6 +2,7 @@ package racingCar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * @author : byungkyu
@@ -15,9 +16,9 @@ public class Cars {
 	private int lapCount;
 	private RaceHistory raceHistory;
 
-	public Cars(int carCount, int matchCount) {
+	public Cars(String[] carNames, int matchCount) {
 		this.cars = new ArrayList<>();
-		createCars(carCount);
+		createCars(carNames);
 		this.matchCount = matchCount;
 		this.lapCount = 0;
 		raceHistory = new RaceHistory();
@@ -48,10 +49,8 @@ public class Cars {
 		return lapCount;
 	}
 
-	private void createCars(int arg) {
-		for (int i = 0; i < arg; i++) {
-			cars.add(new Car());
-		}
+	private void createCars(String[] carNames) {
+		IntStream.range(0, carNames.length).forEach(i -> cars.add(new Car(carNames[i])));
 	}
 
 	public RaceHistory getHistory() {

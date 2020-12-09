@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class Game {
 	private static int carCount;
 	private static int matchCount;
+	private static String[] carNames;
 
 	public Game(int carCount, int matchCount) {
 		validateCarCount(carCount);
@@ -20,10 +21,12 @@ public class Game {
 
 	public Game(String userInputCarNames, int matchCount) {
 		String[] carNames = splitCarNames(userInputCarNames);
+
 		validateCarCount(carNames.length);
 		validateMatchCount(matchCount);
-		this.carCount = carNames.length;
+
 		this.matchCount = matchCount;
+		this.carNames = carNames;
 	}
 
 	private String[] splitCarNames(String userInputCarNames) {
@@ -41,7 +44,7 @@ public class Game {
 	}
 
 	public int getCarCount() {
-		return carCount;
+		return carNames.length;
 	}
 
 	public int getMatchCount() {
@@ -49,7 +52,7 @@ public class Game {
 	}
 
 	public Cars start() {
-		Cars cars = new Cars(carCount, matchCount);
+		Cars cars = new Cars(carNames, matchCount);
 		return cars.race();
 	}
 }
