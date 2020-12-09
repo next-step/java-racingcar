@@ -1,14 +1,12 @@
 package racingcar;
 
+import racingcar.rule.RacingRule;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RacingCarDriver {
-
-    private static final int RANDOM_BOUND = 10;
-    private static final int MOVABLE_MIN_VALUE = 4;
-    private final Random random = new Random();
 
     private List<RacingCar> racingCars;
 
@@ -35,39 +33,16 @@ public class RacingCarDriver {
         return racingCars;
     }
 
-    public void moveForwardAll() {
+    /**
+     * 주어진 룰에 맞게 생성된 숫자로 등록된 모든 자동차를 전진시킵니다.
+     * @param racingRule
+     */
+    public void moveForwardAll(RacingRule racingRule) {
         for (RacingCar racingCar : this.racingCars) {
-            this.moveForward(racingCar);
+            racingCar.move(racingRule.getNumber());
         }
     }
 
-    /**
-     * 전진해야하는 조건에 맞으면 자동차를 전진시킵니다
-     * @return
-     */
-    int moveForward(RacingCar racingCar) {
-        if (this.isMovable(this.makeRandom())) {
-            return racingCar.addDistance();
-        }
-        return racingCar.getDistance();
-    }
-
-    /**
-     * 0 ~ 9 사이의 랜덤한 숫자를 만듭니다.
-     * @return
-     */
-    private int makeRandom() {
-        return this.random.nextInt(RacingCarDriver.RANDOM_BOUND);
-    }
-
-    /**
-     * 주어진 값이 전진해야하는 조건이 맞는지 체크합니다.
-     * @param value
-     * @return
-     */
-    boolean isMovable(int value) {
-        return value >= MOVABLE_MIN_VALUE;
-    }
 
     /**
      * 자동차의 현재 위치를 받아서 리스트에 담습니다.

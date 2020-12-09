@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.rule.RacingRule;
+import racingcar.rule.RandomRacingRule;
+
 import java.util.Scanner;
 
 public class RacingRunner {
@@ -21,9 +24,11 @@ public class RacingRunner {
      * @param round
      */
     public void playRound(int round) {
+        RacingRule racingRule = new RandomRacingRule();
+
         System.out.println("실행 결과");
         for (int i = 0; i < round; i++) {
-            this.racingCarController.moveForwardAll();
+            this.racingCarController.moveForwardAll(racingRule);
             this.resultView.printResult(this.racingCarController);
             System.out.println();
         }
