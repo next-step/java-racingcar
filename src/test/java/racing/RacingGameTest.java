@@ -1,25 +1,19 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.converter.ArgumentConversionException;
-import org.junit.jupiter.params.converter.ConvertWith;
-import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.RacingGame;
 import racing.model.Car;
 import racing.model.FinalRacingResult;
-import racing.model.Forward;
-import racing.model.Stop;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RacingGameTest {
 
 	/*
@@ -51,40 +45,20 @@ class RacingGameTest {
 		});
 	}
 
-	@ParameterizedTest
+	@Test
 	@DisplayName("전진 테스트")
-	@ValueSource(ints = {1, 2, 3})
-	protected void test_forward(@ConvertWith(ForwardConverter.class) Forward forward) {
+	protected void test_forward() {
 		Car car = new Car("테스트카");
-		car.speedUp(forward);
+		car.speedUp(() -> { return true; });
 		assertThat(car.getForwardPosition()).isEqualTo(1);
 	}
 
-	@ParameterizedTest
+	@Test
 	@DisplayName("멈춤 테스트")
-	@ValueSource(ints = {1, 2, 3})
-	void test_stop(@ConvertWith(StopConverter.class) Stop stop) {
+	void testx_stop() {
 		Car car = new Car("테스트카");
-		car.speedUp(stop);
+		car.speedUp(() -> { return false; });
 		assertThat(car.getForwardPosition()).isEqualTo(0);
-	}
-
-	static class ForwardConverter extends SimpleArgumentConverter {
-		@Override
-		protected Object convert(Object source, Class<?> targetType) throws ArgumentConversionException {
-			assertEquals(Forward.class, targetType);
-			return new Forward();
-
-		}
-	}
-
-	static class StopConverter extends SimpleArgumentConverter {
-		@Override
-		protected Object convert(Object source, Class<?> targetType) throws ArgumentConversionException {
-			assertEquals(Stop.class, targetType);
-			return new Stop();
-
-		}
 	}
 
 }

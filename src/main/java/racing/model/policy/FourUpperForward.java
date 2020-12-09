@@ -4,13 +4,13 @@ import racing.model.inter.ForwardPolicy;
 
 import java.util.Random;
 
-public class RandomForward implements ForwardPolicy {
+public class FourUpperForward implements ForwardPolicy {
 
-	public static final int FORWARD_CRITERIA = 4;
+	private static final int FORWARD_CRITERIA = 4;
 
-	public static final int MAX_RANDOM_BOUND = 10;
+	private static final int MAX_RANDOM_BOUND = 10;
 
-	Random random = new Random();
+	private Random random = new Random();
 
 	@Override
 	public boolean forward() {
