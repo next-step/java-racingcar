@@ -11,14 +11,10 @@ public class NumberUtil {
         return new BigDecimal(text);
     }
 
-
     private static boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
         try {
             double d = Double.parseDouble(strNum);
-        } catch (NumberFormatException nfe) {
+        } catch (NumberFormatException | NullPointerException e) {
             return false;
         }
         return true;
