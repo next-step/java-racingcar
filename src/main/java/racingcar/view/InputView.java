@@ -3,9 +3,8 @@ package racingcar.view;
 import java.util.Scanner;
 
 public class InputView {
-    int number;
-    int count;
-
+    private int number;
+    private int count;
     private final Scanner scanner;
 
     public InputView() {
