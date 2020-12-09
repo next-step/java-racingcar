@@ -2,11 +2,11 @@ package racing.view;
 
 public class ResultView {
 
-	public static final String FORWARD_MARKER = "-";
+	private static final String FORWARD_MARKER = "-";
 
-	public static final String CAR_NAME_MARKER = " : ";
+	private static final String CAR_NAME_MARKER = " : ";
 
-	StringBuilder stringBuilder = new StringBuilder();
+	private StringBuilder stringBuilder = new StringBuilder();
 
 	public void print(String carName, int forwardResult) {
 		stringBuilder.setLength(0);

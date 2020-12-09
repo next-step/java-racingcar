@@ -1,6 +1,6 @@
 package racing.model;
 
-import racing.model.inter.ForwardPolicy;
+import racing.model.policy.inter.ForwardPolicy;
 
 public class Car {
 
