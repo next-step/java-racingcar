@@ -17,7 +17,7 @@ class CarGroupTest {
 	@CsvSource(value = {"0,0", "1,1", "999,999"})
 	void getMoveForwardChance(int carNum, int expectedCallCount) {
 		// given
-		Counter moveForwardCallCounter = new Counter();
+		TestUtils.Counter moveForwardCallCounter = TestUtils.createCounter();
 		List<String> carNameList = TestUtils.createAnyCarNameList(carNum);
 		CarGroup carGroup = CarGroup.of(carNameList, createStrategyForCallCount(moveForwardCallCounter));
 
@@ -111,7 +111,7 @@ class CarGroupTest {
 		return new Car(name, alwaysMoveStrategy);
 	}
 
-	private static MoveForwardStrategy createStrategyForCallCount(Counter counter) {
+	private static MoveForwardStrategy createStrategyForCallCount(TestUtils.Counter counter) {
 		return new MoveForwardStrategy() {
 			@Override
 			public int createMoveForwardChance() {
@@ -124,21 +124,5 @@ class CarGroupTest {
 				return false;
 			}
 		};
-	}
-
-	private static class Counter {
-		private int count;
-
-		Counter() {
-			count = 0;
-		}
-
-		void addCount() {
-			count++;
-		}
-
-		int getCount() {
-			return count;
-		}
 	}
 }

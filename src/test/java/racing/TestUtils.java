@@ -16,4 +16,25 @@ public class TestUtils {
 		}
 		return carNameList;
 	}
+
+	public static Counter createCounter() {
+		return new Counter();
+	}
+
+
+	public static class Counter {
+		private int count;
+
+		Counter() {
+			count = 0;
+		}
+
+		public void addCount() {
+			count++;
+		}
+
+		public int getCount() {
+			return count;
+		}
+	}
 }

@@ -32,7 +32,7 @@ class RacingGameTest {
 	@DisplayName("매 진행이 끝날때마다 자동차 경주상황을 전달받아야 한다.")
 	void start_notifyGameStatus(int turn) {
 		// given
-		final NotifyCounter notifyCounter = new NotifyCounter();
+		final TestUtils.Counter notifyCounter = new TestUtils.Counter();
 		RacingNotifier racingNotifier = new RacingNotifier() {
 			@Override
 			public void notifyRace(CarGroup carGroup) {
@@ -66,24 +66,5 @@ class RacingGameTest {
 
 			}
 		};
-	}
-
-	/**
-	 * Racing turn 횟수 카운터
-	 */
-	private static class NotifyCounter {
-		private int count;
-
-		NotifyCounter() {
-			count = 0;
-		}
-
-		void addCount() {
-			count++;
-		}
-
-		int getCount() {
-			return count;
-		}
 	}
 }
