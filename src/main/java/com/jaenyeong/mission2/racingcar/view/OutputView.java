@@ -6,8 +6,6 @@ import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 import java.util.StringJoiner;
 
 public class OutputView implements Output {
-    public static final int START_TURN = 1;
-    public static final String EMPTY = "";
 
     @Override
     public void printHowManyTryTimes() {
@@ -25,7 +23,7 @@ public class OutputView implements Output {
     }
 
     @Override
-    public void printExecutionResult() {
+    public void printTextExecutionResult() {
         printMessage(EMPTY);
         printMessage(EXECUTION_RESULT);
     }

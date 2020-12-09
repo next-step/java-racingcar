@@ -3,6 +3,8 @@ package com.jaenyeong.mission2.racingcar.view;
 import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 
 public interface Output {
+    int START_TURN = 1;
+    String EMPTY = "";
     String HOW_MANY_TRY_TIMES = "시도할 횟수는 몇 대 인가요?";
     String NAMES_OF_CARS_TO_BE_RACED = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     String EXECUTION_RESULT = "실행 결과";
@@ -16,7 +18,7 @@ public interface Output {
 
     void printErrWhenInvalidDataTypeInput();
 
-    void printExecutionResult();
+    void printTextExecutionResult();
 
     void printAllRacingHistoriesResult(RacingHistoryDto cars);
 
