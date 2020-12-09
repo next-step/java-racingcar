@@ -4,7 +4,7 @@ import racing.model.RacingCars;
 import racing.view.UserInput;
 import racing.view.UserOutput;
 
-public class RacingController {
+public class RacingCarMain {
 
 	public static void main(String[] args) {
 

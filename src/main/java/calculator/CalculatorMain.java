@@ -4,7 +4,7 @@ import calculator.model.Calculator;
 import calculator.view.UserInput;
 import calculator.view.UserOutput;
 
-public class CalculatorController {
+public class CalculatorMain {
 
 	public static void main(String[] args) {
 
