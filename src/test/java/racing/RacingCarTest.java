@@ -12,6 +12,18 @@ import racing.model.RacingCar;
 
 class RacingCarTest {
 
+
+	@Test
+	@DisplayName("자동차 랜덤 레이스 움직임 구현")
+	void randomRaceCarTest() {
+
+		RacingCar car = new RacingCar();
+
+		car.move(() -> car.checkCar().isMove());
+
+		assertThat(car.getDistance()).isPositive();
+	}
+
 	@Test
 	@DisplayName("자동차 단일 객체 생성 및 주행 테스트")
 	void carStayTest() {
@@ -21,7 +33,7 @@ class RacingCarTest {
 		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
 		car.move(() -> true);
 
-		assertThat(car.getDistance()).isEqualTo(2);
+		assertThat(car.getDistance()).isEqualTo(1);
 	}
 
 	@Test
@@ -32,7 +44,7 @@ class RacingCarTest {
 		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
 		car.move(() -> false);
 
-		assertThat(car.getDistance()).isEqualTo(1);
+		assertThat(car.getDistance()).isZero();
 	}
 
 	@Test
