@@ -1,6 +1,8 @@
-import calculator.Calculator;
-import util.UserInput;
-import util.UserOutput;
+package calculator;
+
+import calculator.model.Calculator;
+import calculator.view.UserInput;
+import calculator.view.UserOutput;
 
 public class CalculatorMain {
 

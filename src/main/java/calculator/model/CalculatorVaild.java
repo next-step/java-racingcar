@@ -1,6 +1,6 @@
-package calculator;
+package calculator.model;
 
-import util.UserOutput;
+import calculator.view.UserOutput;
 
 public class CalculatorVaild {
 

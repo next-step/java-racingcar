@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import calculator.model.Calculator;
+import calculator.model.CalculatorType;
+
 class CalculatorServiceTest {
 
 	Calculator calculator = null;
