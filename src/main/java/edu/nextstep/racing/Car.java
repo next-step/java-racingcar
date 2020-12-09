@@ -6,6 +6,7 @@ public class Car {
 	public static final int STOP_LIMIT_NUMBER = 4;
 	private Supplier<Integer> numberGenerator;
 	private int location;
+	private String name;
 
 	public Car() {
 		this(NumberUtil::generateRandomDigit);
@@ -27,5 +28,13 @@ public class Car {
 
 	public int getLocation() {
 		return location;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

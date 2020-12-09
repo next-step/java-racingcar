@@ -6,9 +6,9 @@ import java.util.List;
 public class Playground {
 
 	public void play() {
-		int numberOfCars = InputView.inputNumberOfCars();
+		String[] nameOfCars = InputView.inputNameOfCars();
 		int moveTryMaxCount = InputView.inputMoveTryMaxCount();
-		Game racingGame = createRacingGame(numberOfCars, moveTryMaxCount);
+		Game racingGame = createRacingGame(nameOfCars, moveTryMaxCount);
 		ResultView.printGameStart();
 		while (racingGame.isContinue()) {
 			racingGame.play();
@@ -16,15 +16,17 @@ public class Playground {
 		}
 	}
 
-	public Game createRacingGame(int numberOfCars, int moveTryMaxCount) {
-		List<Car> gameCars = createGameCars(numberOfCars);
+	public Game createRacingGame(String[] nameOfCars, int moveTryMaxCount) {
+		List<Car> gameCars = createGameCars(nameOfCars);
 		return new Game(gameCars, moveTryMaxCount);
 	}
 
-	public List<Car> createGameCars(int numberOfCars) {
+	public List<Car> createGameCars(String[] nameOfCars) {
 		List<Car> entry = new ArrayList<>();
-		for (int i = 0; i < numberOfCars; i++) {
-			entry.add(new Car());
+		for (String name : nameOfCars) {
+			Car car = new Car();
+			car.setName(name);
+			entry.add(car);
 		}
 		return entry;
 	}
