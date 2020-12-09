@@ -1,12 +1,8 @@
 package carrace.domain;
 
-import java.util.Random;
 
 public class Car {
-    private static final int MAX_RANGE = 9;
     private static final int MIN_FORWARD_NUMBER = 4;
-
-    private final Random random = new Random();
     private int position;
 
     public Car(int position) {
@@ -17,17 +13,19 @@ public class Car {
         position = 1;
     }
 
-    private boolean canMovingForward(int randomNumber) {
+    private boolean canMoveForward(int randomNumber) {
         return randomNumber >= MIN_FORWARD_NUMBER;
     }
 
-    public boolean tryMovingForward() {
-        int randomNumber = random.nextInt(MAX_RANGE);
-        if (canMovingForward(randomNumber)) {
-            position++;
-            return true;
+    public void tryToMoveForward(RacingRule racingRule) {
+        int generateNumber = racingRule.generateNumber();
+        if (canMoveForward(generateNumber)) {
+            moveForward();
         }
-        return false;
+    }
+
+    private void moveForward() {
+        position++;
     }
 
     public int getPosition() {

@@ -6,6 +6,7 @@ import java.util.List;
 
 public class RaceTrack {
     private final List<Car> carList = new ArrayList<>();
+    private final RandomRacingRule racingRule = new RandomRacingRule();
 
     public RaceTrack(int carCount) {
         this.carList.addAll(CarFactory.makeCars(carCount));
@@ -17,7 +18,7 @@ public class RaceTrack {
 
     public void next() {
         for (Car car : carList) {
-            car.tryMovingForward();
+            car.tryToMoveForward(racingRule);
         }
     }
 
