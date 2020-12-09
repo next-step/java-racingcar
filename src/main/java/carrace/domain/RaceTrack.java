@@ -6,13 +6,15 @@ import java.util.List;
 
 public class RaceTrack {
     private final List<Car> carList = new ArrayList<>();
-    private final RandomRacingRule racingRule = new RandomRacingRule();
+    private final RacingRule racingRule;
 
-    public RaceTrack(int carCount) {
+    public RaceTrack(RacingRule racingRule, int carCount) {
+        this.racingRule = racingRule;
         this.carList.addAll(CarFactory.makeCars(carCount));
     }
 
-    public RaceTrack(Car... cars) {
+    public RaceTrack(RacingRule racingRule, Car... cars) {
+        this.racingRule = racingRule;
         carList.addAll(Arrays.asList(cars));
     }
 

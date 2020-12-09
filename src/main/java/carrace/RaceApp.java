@@ -1,6 +1,7 @@
 package carrace;
 
 import carrace.domain.RaceTrack;
+import carrace.domain.RandomRacingRule;
 import carrace.ui.InputView;
 import carrace.ui.ResultView;
 
@@ -13,7 +14,7 @@ public class RaceApp {
     }
 
     private static void startRace(int carCount, int tryCount) throws InterruptedException {
-        RaceTrack raceTrack = new RaceTrack(carCount);
+        RaceTrack raceTrack = new RaceTrack(new RandomRacingRule(), carCount);
 
         ResultView.printResultTitle();
         ResultView.printResult(raceTrack);
