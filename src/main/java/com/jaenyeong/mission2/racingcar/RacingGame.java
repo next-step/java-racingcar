@@ -7,7 +7,6 @@ import com.jaenyeong.mission2.racingcar.view.InputView;
 import com.jaenyeong.mission2.racingcar.view.Output;
 import com.jaenyeong.mission2.racingcar.view.OutputView;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
@@ -38,9 +37,8 @@ public class RacingGame {
 
     private Cars setCarsByNamesOfCars() {
         output.printNamesOfTheCarsToBeRaced();
-        String carNames = input.inputNamesOfTheCarsToBeRaced();
 
-        return getCars(Arrays.asList(carNames.split(",")));
+        return getCars(input.inputNamesOfTheCarsToBeRaced());
     }
 
     protected Cars getCars(final List<String> nameOfCars) {
