@@ -30,9 +30,9 @@
 
 ## 기능 구현 목록
 
-- 자동차의 위치 정보인 `CarName` 구현
+- 자동차의 이름 정보인 `CarName` 구현
     - [ ] `CarName`는 1글자 이상, 5글자 이하 문자열을 가진다.
-- 자동차의 위치 정보인 `CarNames` 구현
+- 자동차들의 이름 정보인 `CarNames` 구현
     - [ ] `CarNames`는 1개 이상 `CarName`으로 생성한다.
 - 자동차의 위치 정보인 `CarPosition` 구현
     - [ ] `CarPosition`는 0또는 양의 정수를 가진다.
