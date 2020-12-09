@@ -22,6 +22,7 @@ public class RacingGame {
 			racingNotifier.notifyRace(this.carGroup);
 		}
 
+		racingNotifier.notifyWinner(this.carGroup.getWinnerNameList());
 		return this.carGroup;
 	}
 }

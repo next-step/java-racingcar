@@ -1,7 +1,10 @@
 package racing.car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CarGroup {
@@ -33,5 +36,22 @@ public class CarGroup {
 		for (Car car : carList) {
 			car.getMoveForwardChance();
 		}
+	}
+
+	public List<String> getWinnerNameList() {
+		OptionalInt maxPosition = this.stream()
+				.mapToInt(Car::getPosition)
+				.max();
+
+		if (!maxPosition.isPresent()) {
+			return Collections.emptyList();
+		}
+
+		List<String> winnerNameList = this.stream()
+				.filter(car -> car.getPosition() == maxPosition.getAsInt())
+				.map(Car::getCarName)
+				.collect(Collectors.toList());
+
+		return winnerNameList;
 	}
 }

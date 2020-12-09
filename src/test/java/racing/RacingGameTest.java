@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.CarGroup;
 
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +17,8 @@ class RacingGameTest {
 	@DisplayName("차량 대수를 입력받고 그 차량 수 만큼 자동차 경주를 진행")
 	void start_carNum(int carNum) {
 		// given
-		RacingGame racingGame = new RacingGame(TestUtils.createAnyCarNameList(carNum), 5, racingStatus -> {});
+		List<String> anyCarNameList = TestUtils.createAnyCarNameList(carNum);
+		RacingGame racingGame = new RacingGame(anyCarNameList, 5, createEmptyRacingNotifier());
 
 		// when
 		CarGroup carGroup = racingGame.start();
@@ -31,7 +33,18 @@ class RacingGameTest {
 	void start_notifyGameStatus(int turn) {
 		// given
 		final NotifyCounter notifyCounter = new NotifyCounter();
-		RacingNotifier racingNotifier = racingStatus -> notifyCounter.addCount();
+		RacingNotifier racingNotifier = new RacingNotifier() {
+			@Override
+			public void notifyRace(CarGroup carGroup) {
+				notifyCounter.addCount();
+			}
+
+			@Override
+			public void notifyWinner(List<String> winnerNameList) {
+				// do nothing;
+			}
+		};
+
 		RacingGame racingGame = new RacingGame(Collections.emptyList(), turn, racingNotifier);
 
 		// when
@@ -39,6 +52,20 @@ class RacingGameTest {
 
 		// then
 		assertThat(notifyCounter.getCount()).isEqualTo(turn);
+	}
+
+	private static RacingNotifier createEmptyRacingNotifier() {
+		return new RacingNotifier() {
+			@Override
+			public void notifyRace(CarGroup carGroup) {
+
+			}
+
+			@Override
+			public void notifyWinner(List<String> winnerNameList) {
+
+			}
+		};
 	}
 
 	/**
