@@ -7,23 +7,10 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racing.model.MoveState;
 import racing.model.RacingCar;
-import racing.model.RacingCars;
-import racing.view.UserOutput;
 
-public class RacingCarTest {
-
-	@Test
-	@DisplayName("레이싱 단일 객체 주행 출력 테스트")
-	void printCarTest() {
-
-		RacingCar car = new RacingCar();
-
-		for (int i = 0; i < 10; i++) {
-			car.racing();
-			UserOutput.printCarLocation(car.getDistance());
-		}
-	}
+class RacingCarTest {
 
 	@Test
 	@DisplayName("자동차 단일 객체 생성 및 주행 테스트")
@@ -31,12 +18,10 @@ public class RacingCarTest {
 
 		RacingCar car = new RacingCar();
 
-		for (int i = 0; i < 10; i++) {
-			car.racing();
-			System.out.println(car.getDistance());
-		}
+		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
+		car.move(() -> MoveState.MOVE);
 
-		assertThat(car.getDistance()).isLessThan(10);
+		assertThat(car.getDistance()).isEqualTo(2);
 	}
 
 	@Test

@@ -40,4 +40,14 @@ public class RacingCar {
 
 		return this.location;
 	}
+
+	public void move(CarConditional carConditional) {
+
+		if (carConditional.racing().isMove()) {
+
+			this.location++;
+		}
+	}
+
+
 }
