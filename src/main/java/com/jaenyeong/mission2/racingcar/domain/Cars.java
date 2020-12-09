@@ -30,8 +30,8 @@ public class Cars {
     public Map<String, List<Integer>> getRaceHistoriesForAllCars() {
         final Map<String, List<Integer>> history = new HashMap<>();
 
-        for (Car c : racingCars) {
-            history.put(c.getName(), c.getRacingHistory());
+        for (Car car : racingCars) {
+            history.put(car.getName(), car.getRacingHistory());
         }
 
         return history;
@@ -42,9 +42,9 @@ public class Cars {
 
         final int winDist = getWinDistance();
 
-        for (Car c : racingCars) {
-            if (winDist <= c.getCurrentDistance()) {
-                winners.add(c.getName());
+        for (Car car : racingCars) {
+            if (winDist <= car.getCurrentDistance()) {
+                winners.add(car.getName());
             }
         }
 
