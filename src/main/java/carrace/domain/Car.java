@@ -32,14 +32,4 @@ public class Car {
         return position;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < position; i++) {
-            result.append("-");
-        }
-
-        return result.toString();
-    }
 }

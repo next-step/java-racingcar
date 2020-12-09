@@ -12,9 +12,26 @@ public class ResultView {
 
     public static void printResult(RaceTrack raceTrack) {
         List<Car> carList = raceTrack.getCarList();
-        for (Car car : carList) {
-            System.out.println(car);
-        }
+        printCarListPosition(carList);
         System.out.println();
+    }
+
+    private static void printCarListPosition(List<Car> carList) {
+        for (Car car : carList) {
+            printCarPosition(car);
+        }
+    }
+
+    private static void printCarPosition(Car car) {
+        int position = car.getPosition();
+        System.out.println(convertPosition(position));
+    }
+
+    private static String convertPosition(int position) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            result.append("-");
+        }
+        return result.toString();
     }
 }

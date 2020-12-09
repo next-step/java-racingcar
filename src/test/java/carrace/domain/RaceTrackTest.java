@@ -1,6 +1,5 @@
 package carrace.domain;
 
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,10 +19,6 @@ class RaceTrackTest {
         assertThat(car1.getPosition()).isIn(3);
         assertThat(car2.getPosition()).isIn(5);
         assertThat(car3.getPosition()).isIn(9);
-
-        assertThat(car1.toString()).isEqualTo("---");
-        assertThat(car2.toString()).isEqualTo("-----");
-        assertThat(car3.toString()).isEqualTo("---------");
     }
 
     @Test
@@ -34,7 +29,6 @@ class RaceTrackTest {
 
         for (Car car : raceTrack.getCarList()) {
             assertThat(car.getPosition()).isEqualTo(2);
-            assertThat(car.toString()).isEqualTo("--");
         }
     }
 
