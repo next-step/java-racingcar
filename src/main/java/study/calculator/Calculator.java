@@ -1,7 +1,7 @@
 package study.calculator;
 
 public class Calculator {
-	private InputScanner inputScanner = new InputScanner();
+	private final InputScanner inputScanner = new InputScanner();
 
 	public void powerOn() {
 		String input = inputScanner.scan();

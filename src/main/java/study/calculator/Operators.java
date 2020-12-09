@@ -27,7 +27,7 @@ public enum Operators implements Operator {
 	},
 	;
 
-	private String operator;
+	private final String operator;
 
 	Operators(String operator) {
 		this.operator = operator;
