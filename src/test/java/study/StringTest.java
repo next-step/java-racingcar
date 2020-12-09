@@ -40,11 +40,18 @@ class StringTest {
         char charAt3 = input.charAt(2);
         assertThat(charAt3).isEqualTo('c');
 
+    }
+
+    @Test
+    @DisplayName("String 클래스의 charAt 테스트")
+    void exception_test_charAt() {
+        String input = "abc";
 
         assertThatThrownBy(() -> {
             char charAt4 = input.charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
             .hasMessageContaining("String index out of range: 3");
     }
+
 
 }
