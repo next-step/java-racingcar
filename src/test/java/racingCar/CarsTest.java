@@ -31,9 +31,8 @@ public class CarsTest {
 
 	@Order(2)
 	@DisplayName("2. 사용자가 입력한 경주 횟수만큼 경주가 반복된다.")
-	@ParameterizedTest
-	@ValueSource(ints = {2, 4, 6})
-	void repeatRaceCount(int carCount){
+	@Test
+	void repeatRaceCount(){
 		String userInput = "pobi,crong,honux";
 		String[] carNames = userInput.split(",");
 		int matchCount = 3;
