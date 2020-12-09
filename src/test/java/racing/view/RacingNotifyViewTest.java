@@ -1,4 +1,4 @@
-package racing;
+package racing.view;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -7,9 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.TestUtils;
 import racing.car.CarGroup;
 import racing.car.RandomMoveForwardStrategy;
-import racing.view.RacingNotifyView;
 
 import java.util.Arrays;
 import java.util.Collections;
