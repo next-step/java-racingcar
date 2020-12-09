@@ -3,6 +3,10 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.car.CarGroup;
+
+import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,13 +17,14 @@ class RacingGameTest {
 	@DisplayName("차량 대수를 입력받고 그 차량 수 만큼 자동차 경주를 진행")
 	void start_carNum(int carNum) {
 		// given
-		RacingGame racingGame = new RacingGame(carNum, 5, racingStatus -> {});
+		List<String> anyCarNameList = TestUtils.createAnyCarNameList(carNum);
+		RacingGame racingGame = new RacingGame(anyCarNameList, 5, createEmptyRacingNotifier());
 
 		// when
-		RacingStatus racingStatus = racingGame.start();
+		CarGroup carGroup = racingGame.start();
 
 		// then
-		assertThat(racingStatus.getCarList()).hasSize(carNum);
+		assertThat(carGroup.stream()).hasSize(carNum);
 	}
 
 	@ParameterizedTest
@@ -27,9 +32,20 @@ class RacingGameTest {
 	@DisplayName("매 진행이 끝날때마다 자동차 경주상황을 전달받아야 한다.")
 	void start_notifyGameStatus(int turn) {
 		// given
-		final NotifyCounter notifyCounter = new NotifyCounter();
-		RacingNotifier racingNotifier = racingStatus -> notifyCounter.addCount();
-		RacingGame racingGame = new RacingGame(0, turn, racingNotifier);
+		final TestUtils.Counter notifyCounter = new TestUtils.Counter();
+		RacingNotifier racingNotifier = new RacingNotifier() {
+			@Override
+			public void notifyRace(CarGroup carGroup) {
+				notifyCounter.addCount();
+			}
+
+			@Override
+			public void notifyWinner(List<String> winnerNameList) {
+				// do nothing;
+			}
+		};
+
+		RacingGame racingGame = new RacingGame(Collections.emptyList(), turn, racingNotifier);
 
 		// when
 		racingGame.start();
@@ -38,22 +54,17 @@ class RacingGameTest {
 		assertThat(notifyCounter.getCount()).isEqualTo(turn);
 	}
 
-	/**
-	 * Racing turn 횟수 카운터
-	 */
-	private static class NotifyCounter {
-		private int count;
+	private static RacingNotifier createEmptyRacingNotifier() {
+		return new RacingNotifier() {
+			@Override
+			public void notifyRace(CarGroup carGroup) {
 
-		NotifyCounter() {
-			count = 0;
-		}
+			}
 
-		void addCount() {
-			count++;
-		}
+			@Override
+			public void notifyWinner(List<String> winnerNameList) {
 
-		int getCount() {
-			return count;
-		}
+			}
+		};
 	}
 }
