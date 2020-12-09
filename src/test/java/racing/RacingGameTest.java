@@ -29,7 +29,7 @@ class RacingGameTest {
 	RacingGame racingGame = new RacingGame();
 
 
-
+	// 통합 테스트 : 전체 과정을 통과하는 상위 메소드를 테스트하는 것
 
 	@ParameterizedTest
 	@NullSource
