@@ -6,12 +6,12 @@ public class Car {
 	private final MoveForwardStrategy moveForwardStrategy;
 	private int position;
 
-	public Car(String carName, MoveForwardStrategy moveForwardStrategy) {
+	Car(String carName, MoveForwardStrategy moveForwardStrategy) {
 		this.carName = carName;
 		this.moveForwardStrategy = moveForwardStrategy;
 	}
 
-	public void getMoveForwardChance() {
+	void getMoveForwardChance() {
 		if (this.moveForwardStrategy.isMovableChance()) {
 			this.moveForward();
 		}
