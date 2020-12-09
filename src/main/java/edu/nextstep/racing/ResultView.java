@@ -20,7 +20,8 @@ public class ResultView {
 	}
 
 	public static String viewCarLocation(Car car) {
-		StringBuilder result = new StringBuilder();
+		StringBuilder result = new StringBuilder(car.getName());
+		result.append(" : ");
 		for (int i = 0; i < car.getLocation(); i++) {
 			result.append("-");
 		}
