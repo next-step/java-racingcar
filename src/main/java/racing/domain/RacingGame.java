@@ -1,6 +1,11 @@
 package racing.domain;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import racing.model.*;
+import racing.model.policy.BooleanForward;
+import racing.model.policy.FourUpperForward;
+import racing.model.policy.TwoUnderForward;
+import racing.model.policy.inter.ForwardPolicy;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -8,17 +13,21 @@ import java.util.*;
 
 public class RacingGame {
 
-	public static final String CAR_NAME_DELIMITER = ",";
+	private static final String CAR_NAME_DELIMITER = ",";
 
-	Scanner scanner = new Scanner(System.in);
+	private Scanner scanner = new Scanner(System.in);
 
-	ResultView resultView = new ResultView();
+	private ResultView resultView = new ResultView();
 
-	InputView inputView = new InputView();
+	private InputView inputView = new InputView();
 
-	public String inputName;
+	private String inputName;
 
-	public int playCount;
+	private int playCount;
+
+//	private ForwardPolicy forwardPolicy = new FourUpperForward();
+//	private ForwardPolicy forwardPolicy = new TwoUnderForward();
+	private ForwardPolicy forwardPolicy = new BooleanForward();
 
 	public void start() {
 		printInputUI();
@@ -28,17 +37,6 @@ public class RacingGame {
 		printFinalWinnerUI(finalWinner.getWinnerName());
 	}
 
-	public FinalRacingResult racing(String inputName, int playCount) {
-		List<Car> cars = prepareInitRacingCar(inputName);
-		startRacing(cars, playCount);
-		FinalRacingResult finalWinner = findWinner(cars);
-		return finalWinner;
-	}
-
-	private void printFinalWinnerUI(String winnerName) {
-		resultView.printFinalWinner(winnerName);
-	}
-
 	private void printInputUI() {
 		inputView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 		this.inputName = scanner.next();
@@ -46,7 +44,38 @@ public class RacingGame {
 		this.playCount = scanner.nextInt();
 	}
 
-	public FinalRacingResult findWinner(List<Car> cars) {
+	public FinalRacingResult racing(String inputName, int playCount) {
+		List<Car> cars = prepareInitRacingCar(inputName);
+		startRacing(cars, playCount);
+		FinalRacingResult finalWinner = findWinner(cars);
+		return finalWinner;
+	}
+
+	private List<Car> prepareInitRacingCar(String inputName) {
+		String[] carNames = inputName.split(CAR_NAME_DELIMITER);
+		List<Car> cars = new ArrayList<>();
+		for (String name : carNames) {
+			cars.add(new Car(name));
+		}
+		return cars;
+	}
+
+	private void startRacing(List<Car> cars, int playCount) {
+		for (int i = 0; i < playCount; i++) {
+			speedUpForPlayCount(cars);
+			System.out.println();
+		}
+	}
+
+	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
+	private void speedUpForPlayCount(List<Car> cars) {
+		for (Car car : cars) {
+			car.speedUp(forwardPolicy);
+			resultView.print(car.getName(), car.getForwardPosition());
+		}
+	}
+
+	private FinalRacingResult findWinner(List<Car> cars) {
 		List<Integer> positionList = new ArrayList<>();
 		Map<Integer, String> map = new HashMap<>();
 		for (Car car : cars) {
@@ -60,29 +89,8 @@ public class RacingGame {
 		return finalRacingResult;
 	}
 
-	public void startRacing(List<Car> cars, int playCount) {
-		for (int i = 0; i < playCount; i++) {
-			speedUpForPlayCount(cars);
-			System.out.println();
-		}
-	}
-
-	//https://github.com/next-step/java-racingcar/pull/1623#discussion_r536464659
-	public void speedUpForPlayCount(List<Car> cars) {
-		for (Car car : cars) {
-			car.speedUp(new RandomForward());
-			resultView.print(car.getName(), car.getForwardPosition());
-		}
-	}
-
-	public List<Car> prepareInitRacingCar(String inputName) {
-		String[] carNames = inputName.split(CAR_NAME_DELIMITER);
-		List<Car> cars = new ArrayList<>();
-		for (String name : carNames) {
-			cars.add(new Car(name));
-		}
-		return cars;
-
+	private void printFinalWinnerUI(String winnerName) {
+		resultView.printFinalWinner(winnerName);
 	}
 
 }

@@ -1,6 +1,6 @@
-package racing.model;
+package racing.model.policy;
 
-import racing.model.inter.ForwardPolicy;
+import racing.model.policy.inter.ForwardPolicy;
 
 import java.util.Random;
 
