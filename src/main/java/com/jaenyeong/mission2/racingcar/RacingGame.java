@@ -60,7 +60,7 @@ public class RacingGame {
     private void resultOfRacing(final Cars cars) {
         final RacingHistoryDto historyDto = getHistoryDto(cars);
 
-        output.printExecutionResult();
+        output.printTextExecutionResult();
         output.printAllRacingHistoriesResult(historyDto);
         output.printWinner(historyDto);
     }
