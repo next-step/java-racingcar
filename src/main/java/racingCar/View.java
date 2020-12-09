@@ -23,23 +23,24 @@ public class View {
 
 	public static void printResult(Cars resultCars) {
 		RaceHistory history = resultCars.getHistory();
-		List<List<Car>> totalHistory = history.get();
+		List<LapHistory> lapHistories = history.get();
 		System.out.println("실행 결과");
-		for (List<Car> lap : totalHistory) {
-			printLapResult(lap);
+		for (LapHistory lapHistory : lapHistories) {
+			printLapResult(lapHistory);
 			System.out.println("");
 		}
 	}
 
-	private static void printLapResult(List<Car> lap) {
-		for (Car car : lap) {
-			printPosition(car);
+	private static void printLapResult(LapHistory lapHistory) {
+		for (CarHistory carHistory : lapHistory.get()) {
+			printPosition(carHistory);
 			System.out.println("");
 		}
 	}
 
-	private static void printPosition(Car car) {
-		for (int i = 0; i < car.getPosition(); i++) {
+	private static void printPosition(CarHistory carHistory) {
+		System.out.print(carHistory.getName() + " : ");
+		for (int i = 0; i < carHistory.getPosition(); i++) {
 			System.out.print("-");
 		}
 	}

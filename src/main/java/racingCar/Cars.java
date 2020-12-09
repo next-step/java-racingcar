@@ -36,12 +36,12 @@ public class Cars {
 	}
 
 	public void runLap() {
-		List<Car> lapFinishCars = new ArrayList<>();
+		LapHistory lapHistory = new LapHistory();
 		for (Car car : cars) {
 			car.randomMove();
-			lapFinishCars.add(new Car(car));
+			lapHistory.add(new CarHistory(car));
 		}
-		raceHistory.add(lapFinishCars);
+		raceHistory.add(lapHistory);
 		lapCount++;
 	}
 
