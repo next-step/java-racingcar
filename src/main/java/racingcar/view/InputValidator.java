@@ -4,6 +4,7 @@ import racingcar.domain.RacingCar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class InputValidator {
 
@@ -32,7 +33,7 @@ public class InputValidator {
     }
 
     private static boolean isEmpty(String text) {
-        return text == null || text.isEmpty();
+        return Objects.isNull(text) || text.isEmpty();
     }
 
     public static int validateRound(int count) {
