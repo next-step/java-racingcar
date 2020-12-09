@@ -20,7 +20,7 @@ class CarNameTest {
     @DisplayName("유효한 자동차 이름 정보가 생성되는지 확인")
     @ParameterizedTest
     @MethodSource("provideValidNames")
-    void createValidPositionTest(String expected) {
+    void createValidNameTest(String expected) {
         // When
         CarName carName = new CarName(expected);
 

@@ -23,7 +23,7 @@ class CarNamesTest {
     @DisplayName("유효한 자동차들의 이름이 생성되는지 확인")
     @ParameterizedTest
     @MethodSource("provideValidCarNames")
-    void createValidPositionTest(List<CarName> validCarNames) {
+    void createValidCarNamesTest(List<CarName> validCarNames) {
         // When
         CarNames actual = new CarNames(validCarNames);
 
