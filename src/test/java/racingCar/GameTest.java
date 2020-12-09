@@ -17,35 +17,25 @@ import org.junit.jupiter.params.provider.ValueSource;
  **/
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GameTest {
+
 	@Order(1)
-	@DisplayName("1.사용자는 자동차의 수를 입력할 수 있다.")
-	@ParameterizedTest
-	@ValueSource(ints = {4,5,6})
-	void userEnterCarCount(int carCount){
+	@DisplayName("1.경주할 자동차 이름을 입력할 수 있다.")
+	@Test
+	void userEnterCarCarNames(){
+		String userInputCarNames = "pobi,crong,honux";
 		int matchCount = 1;
-		Game game = new Game(carCount, matchCount);
-		assertThat(game.getCarCount()).isEqualTo(carCount);
+		Game game = new Game(userInputCarNames, matchCount);
+		assertThat(game.getCarCount()).isEqualTo(3);
 	}
 
-	@Order(2)
-	@DisplayName("1.1.자동차 수는 1보다 작을 수 없다.")
-	@Test
-	void validateUserEnterCarCount(){
-		int carCount = 0;
-		int matchCount = 1;
-		assertThatThrownBy(() -> {
-			Game game = new Game(carCount, matchCount);
-		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("자동차 수는 1보다 작을 수 없습니다.");
-	}
 
 	@Order(3)
 	@DisplayName("2.사용자는 경주를 시도할 횟수를 입력할 수 있다.")
 	@ParameterizedTest
 	@ValueSource(ints = {4,5,6})
 	void userEnterCarMatchCount(int matchCount){
-		int carCount = 5;
-		Game game = new Game(carCount, matchCount);
+		String userInputCarNames = "pobi,crong,honux";
+		Game game = new Game(userInputCarNames, matchCount);
 		assertThat(game.getMatchCount()).isEqualTo(matchCount);
 	}
 
@@ -53,10 +43,10 @@ public class GameTest {
 	@DisplayName("2.1.경기수는 1보다 작을 수 없다.")
 	@Test
 	void validateUserEnterMatchCount(){
-		int carCount = 3;
+		String userInputCarNames = "pobi,crong,honux";
 		int matchCount = 0;
 		assertThatThrownBy(() -> {
-			Game game = new Game(carCount, matchCount);
+			Game game = new Game(userInputCarNames, matchCount);
 		}).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("경기수는 1보다 작을 수 없습니다.");
 	}
