@@ -1,10 +1,9 @@
-package step3;
+package edu.nextstep.racing;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class ResultView {
-	public static Scanner scanner = new Scanner(System.in);
 
 	private ResultView() {
 	}

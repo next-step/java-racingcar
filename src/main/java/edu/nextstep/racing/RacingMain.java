@@ -1,6 +1,6 @@
-package step3;
+package edu.nextstep.racing;
 
-public class Step3Main {
+public class RacingMain {
 
 	public static void main(String[] args) {
 		new Playground().play();

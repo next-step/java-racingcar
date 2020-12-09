@@ -1,4 +1,6 @@
-package step3;
+package edu.nextstep.racing;
+
+import java.util.function.Supplier;
 
 public class Car {
 	private int location;

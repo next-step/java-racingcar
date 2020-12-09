@@ -1,4 +1,4 @@
-package step3;
+package edu.nextstep.racing;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;

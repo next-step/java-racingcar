@@ -1,4 +1,4 @@
-package step3;
+package edu.nextstep.racing;
 
 import java.util.List;
 
@@ -12,12 +12,9 @@ public class Game {
 		this.moveTryMaxCount = moveTryMaxCount;
 	}
 
-	public List<Car> getGameCars() {
-		return gameCars;
-	}
-
-	public int getMoveTryMaxCount() {
-		return moveTryMaxCount;
+	public void play() {
+		tryToMoveAllGameCars();
+		moveTryCurrentCount++;
 	}
 
 	public void tryToMoveAllGameCars() {
@@ -30,8 +27,11 @@ public class Game {
 		return moveTryCurrentCount < moveTryMaxCount;
 	}
 
-	public void play() {
-		tryToMoveAllGameCars();
-		moveTryCurrentCount++;
+	public List<Car> getGameCars() {
+		return gameCars;
+	}
+
+	public int getMoveTryMaxCount() {
+		return moveTryMaxCount;
 	}
 }

@@ -1,11 +1,10 @@
-package step3;
+package edu.nextstep.racing;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 
 @DisplayName("NumberUtil : 자동차 게임에 필요한 난수등을 생성하는 메소드를 포함함")
 public class NumberUtilTest {
@@ -21,7 +20,6 @@ public class NumberUtilTest {
 	}
 
 	@DisplayName("generateRandomDigitTest : 0~9 사이의 숫자를 하나 랜덤으로 생성함")
-	@RepeatedTest(value = 10)
 	public void generateRandomDigitTest() {
 		int number = NumberUtil.generateRandomDigit();
 		System.out.print(number + " ");
