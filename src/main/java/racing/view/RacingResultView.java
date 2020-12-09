@@ -6,7 +6,7 @@ import racing.domain.RaceWinner;
 
 import java.util.Iterator;
 
-public class ResultView {
+public class RacingResultView {
     private static final String EXECUTION_RESULT = "실행 결과";
     private static final String CAR_SYMBOL = "-";
     private static final String CAR_NAME_SEPARATOR = " : ";
@@ -19,12 +19,12 @@ public class ResultView {
     }
 
     public static void printRacingStatus(Cars cars) {
-        printLineBreak();
-        cars.getCars().forEach(ResultView::printCarStatus);
+        OutputView.printLineBreak();
+        cars.getCars().forEach(RacingResultView::printCarStatus);
     }
 
     public static void printEndGame(RaceWinner raceWinner) {
-        printLineBreak();
+        OutputView.printLineBreak();
         printRacingWinner(raceWinner);
         printRacingEndMessage();
     }
@@ -34,7 +34,7 @@ public class ResultView {
         for (int i = 0; i < car.position(); i++) {
             printCarSymbol(car);
         }
-        printLineBreak();
+        OutputView.printLineBreak();
     }
 
     private static void printCarName(Car car) {
@@ -47,10 +47,6 @@ public class ResultView {
         if (car.position() > 0) {
             System.out.print(CAR_SYMBOL);
         }
-    }
-
-    private static void printLineBreak() {
-        System.out.println();
     }
 
     private static void printRacingWinner(RaceWinner raceWinner) {
