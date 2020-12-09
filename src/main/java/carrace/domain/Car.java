@@ -7,13 +7,14 @@ public class Car {
     private static final int MIN_FORWARD_NUMBER = 4;
 
     private final Random random = new Random();
-    private int position = 1;
+    private int position;
 
     public Car(int position) {
         this.position = position;
     }
 
     public Car() {
+        position = 1;
     }
 
     private boolean canMovingForward(int randomNumber) {
