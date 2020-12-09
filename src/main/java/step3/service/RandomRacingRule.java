@@ -1,6 +1,4 @@
-package step3.domain;
-
-import step3.RacingRule;
+package step3.service;
 
 import java.util.Random;
 

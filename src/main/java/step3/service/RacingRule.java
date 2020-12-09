@@ -1,4 +1,4 @@
-package step3;
+package step3.service;
 
 public interface RacingRule {
   // 전진여부를 결정한다.

@@ -7,7 +7,7 @@ public class RacingGameTest {
   @Test
   public void start() {
     RacingGame game = new RacingGame();
-    game.start(3, 5);
+    game.start("pobi,crong,honux", 5);
   }
 
 }
