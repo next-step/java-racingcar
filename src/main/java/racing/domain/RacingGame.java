@@ -21,16 +21,29 @@ public class RacingGame {
 	public int playCount;
 
 	public void start() {
+		printInputUI();
+
+		FinalRacingResult finalWinner = racing(this.inputName, this.playCount);
+
+		printFinalWinnerUI(finalWinner.getWinnerName());
+	}
+
+	public FinalRacingResult racing(String inputName, int playCount) {
+		List<Car> cars = prepareInitRacingCar(inputName);
+		startRacing(cars, playCount);
+		FinalRacingResult finalWinner = findWinner(cars);
+		return finalWinner;
+	}
+
+	private void printFinalWinnerUI(String winnerName) {
+		resultView.printFinalWinner(winnerName);
+	}
+
+	private void printInputUI() {
 		inputView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 		this.inputName = scanner.next();
 		inputView.print("시도할 회수는 몇 회 인가요?");
 		this.playCount = scanner.nextInt();
-
-		List<Car> cars = prepareInitRacingCar(this.inputName);
-		startRacing(cars, this.playCount);
-		FinalRacingResult finalWinner = findWinner(cars);
-
-		resultView.printFinalWinner(finalWinner.getWinnerName());
 	}
 
 	public FinalRacingResult findWinner(List<Car> cars) {
