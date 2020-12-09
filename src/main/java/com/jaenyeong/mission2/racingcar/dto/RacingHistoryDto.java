@@ -4,25 +4,20 @@ import com.jaenyeong.mission2.racingcar.domain.Car;
 import com.jaenyeong.mission2.racingcar.domain.Cars;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingHistoryDto {
     private final int maxTurn;
     private final List<String> winners;
-    private final List<CarDto> history;
+    private final List<Car> carList;
 
     public RacingHistoryDto(final int turn, final Cars cars) {
         this.maxTurn = turn;
         this.winners = cars.getWinners();
-
-        history = setHistory(cars);
+        carList = setHistory(cars);
     }
 
-    private List<CarDto> setHistory(final Cars cars) {
-        final List<Car> copy = cars.copyCars();
-        return copy.stream()
-            .map(CarDto::new)
-            .collect(Collectors.toList());
+    private List<Car> setHistory(final Cars cars) {
+        return cars.copyCars();
     }
 
     public int getMaxTurn() {
@@ -33,7 +28,7 @@ public class RacingHistoryDto {
         return winners;
     }
 
-    public List<CarDto> getHistory() {
-        return history;
+    public List<Car> getCarList() {
+        return carList;
     }
 }

@@ -50,6 +50,10 @@ public class Car {
         return getLastDistance().getDist();
     }
 
+    public int getDistanceByTurn(final int turn) {
+        return history.get(turn - 1).getDist();
+    }
+
     public Car copyCar() {
         return new Car(this.name, this.history);
     }

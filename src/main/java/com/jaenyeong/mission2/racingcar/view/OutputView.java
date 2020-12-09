@@ -1,6 +1,6 @@
 package com.jaenyeong.mission2.racingcar.view;
 
-import com.jaenyeong.mission2.racingcar.dto.CarDto;
+import com.jaenyeong.mission2.racingcar.domain.Car;
 import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 
 import java.util.StringJoiner;
@@ -39,13 +39,13 @@ public class OutputView implements Output {
     public void printAllRacingHistoriesResult(final RacingHistoryDto historyDto) {
         for (int turn = START_TURN; turn <= historyDto.getMaxTurn(); turn++) {
             printCarByTurn(historyDto, turn);
+            printMessage("");
         }
     }
 
     private void printCarByTurn(final RacingHistoryDto history, final int turn) {
-        for (CarDto car : history.getHistory()) {
+        for (Car car : history.getCarList()) {
             printMessage(convertFormatPrintRacingHistory(car.getName(), car.getDistanceByTurn(turn)));
-            printMessage("");
         }
     }
 

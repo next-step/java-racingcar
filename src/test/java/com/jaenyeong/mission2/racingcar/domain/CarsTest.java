@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,9 +19,11 @@ class CarsTest extends BaseTest {
     @MethodSource("countAndValidName")
     @DisplayName("Cars 객체 초기화 시 주어진 숫자만큼 Car 객체가 생성되는지 확인하는 테스트")
     void carsInitWhenGivenTheNumberOfCars(final int randomValue, final List<String> names) {
-        final Cars cars = new Cars(names);
+        for (int i = 0; i < randomValue; i++) {
+            final Cars cars = new Cars(names);
 
-        assertEquals(cars.getHowManyRacingCars(), randomValue);
+            assertEquals(cars.getHowManyRacingCars(), names.size());
+        }
     }
 
     @ParameterizedTest
