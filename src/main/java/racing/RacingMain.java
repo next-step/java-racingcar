@@ -13,6 +13,6 @@ public class RacingMain {
         int tryNumber = new NumberParserUtil().toInt(inputUtil.inputNumber());
         CarRacing carRacing = new CarRacing(participateCars, display);
         carRacing.startRacing(tryNumber);
-        display.printWinnner( carRacing.winner());
+        display.printWinnner( carRacing.presentWinner());
     }
 }

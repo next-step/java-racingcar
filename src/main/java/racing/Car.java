@@ -8,6 +8,10 @@ public class Car {
     public Car( String name){
         this.name = name;
     }
+    public Car( String name, int totalMeter){
+        this.name = name;
+        this.allMeter = totalMeter;
+    }
 
     public int run( int randomNumber) {
         allMeter = allMeter + returnMeterByCondition(randomNumber);
@@ -29,4 +33,14 @@ public class Car {
         return this.allMeter;
     }
 
+    public int compareMeter(Car carB) {
+        if( this.totalMeter() > carB.totalMeter()){
+              return 1;
+        }
+        if( this.totalMeter() < carB.totalMeter()){
+            return -1;
+        }
+        return 0;
+
+    }
 }

@@ -25,7 +25,7 @@ class CarRacingTest {
     @Test
     void winnerTest() {
         carRacing.startRacing(3);
-        String[] winner = carRacing.winner().split(",");
+        String[] winner = carRacing.presentWinner().split(",");
         assertThat(winner.length).isGreaterThan(0);
     }
 }

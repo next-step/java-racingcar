@@ -13,23 +13,20 @@ public class InputUtil {
     public String[] inputCarsName() {
         String inputNames = this.scanner.nextLine();
         String[] carsName = inputNames.split(",");
-        carNameValidation(carsName);
+        validationCars(carsName);
         return carsName;
     }
 
-    private boolean carNameValidation(String [] carsName){
-        boolean result = false;
+    private void validationCars(String [] carsName){
         for(String car : carsName){
-            result = carNameLimitCharacter(car);
+            carNameLimitCharacter(car);
         }
-        return result;
     }
 
-    private boolean carNameLimitCharacter(String car) {
+    private void carNameLimitCharacter(String car) {
         if(car.trim().length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
-        return true;
     }
 
 }
