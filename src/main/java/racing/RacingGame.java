@@ -18,11 +18,11 @@ public class RacingGame {
 
 	public CarGroup start() {
 		for (int i = 0; i < turn; i++) {
-			carGroup.getMoveForwardChance();
-			racingNotifier.notifyRace(this.carGroup);
+			this.carGroup.getMoveForwardChance();
+			this.racingNotifier.notifyRace(this.carGroup);
 		}
 
-		racingNotifier.notifyWinner(this.carGroup.getWinnerNameList());
+		this.racingNotifier.notifyWinner(this.carGroup.getWinnerNameList());
 		return this.carGroup;
 	}
 }

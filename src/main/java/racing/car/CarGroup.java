@@ -29,11 +29,11 @@ public class CarGroup {
 	}
 
 	public Stream<Car> stream() {
-		return carList.stream();
+		return this.carList.stream();
 	}
 
 	public void getMoveForwardChance() {
-		for (Car car : carList) {
+		for (Car car : this.carList) {
 			car.getMoveForwardChance();
 		}
 	}

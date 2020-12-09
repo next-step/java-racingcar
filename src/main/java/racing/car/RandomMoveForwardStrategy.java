@@ -9,12 +9,12 @@ public class RandomMoveForwardStrategy implements MoveForwardStrategy {
 	private final Random random;
 
 	public RandomMoveForwardStrategy() {
-		random = new Random();
+		this.random = new Random();
 	}
 
 	@Override
 	public int createMoveForwardChance() {
-		return random.nextInt(BOUND_MAX);
+		return this.random.nextInt(BOUND_MAX);
 	}
 
 	@Override

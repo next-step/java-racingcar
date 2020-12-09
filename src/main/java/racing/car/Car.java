@@ -13,12 +13,12 @@ public class Car {
 
 	public void getMoveForwardChance() {
 		if (this.moveForwardStrategy.isMovableChance()) {
-			moveForward();
+			this.moveForward();
 		}
 	}
 
 	public String getCarName() {
-		return carName;
+		return this.carName;
 	}
 
 	public int getPosition() {
