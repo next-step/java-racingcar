@@ -7,15 +7,16 @@ import java.util.stream.Stream;
 public class CarGroup {
 	private final List<Car> carList;
 
-	public CarGroup(int carNum, MoveForwardStrategy moveForwardStrategy) {
+	public CarGroup(List<String> carNameList, MoveForwardStrategy moveForwardStrategy) {
 		this.carList = new ArrayList<>();
-		for (int i = 0; i < carNum; i++) {
-			carList.add(createCar(moveForwardStrategy));
+		for (String carName : carNameList) {
+			final Car car = createCar(carName, moveForwardStrategy);
+			carList.add(car);
 		}
 	}
-	
-	private static Car createCar(MoveForwardStrategy moveForwardStrategy) {
-		return new Car(moveForwardStrategy);
+
+	private static Car createCar(String carName, MoveForwardStrategy moveForwardStrategy) {
+		return new Car(carName, moveForwardStrategy);
 	}
 
 	public Stream<Car> stream() {

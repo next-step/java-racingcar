@@ -2,6 +2,9 @@ package racing.car;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.TestUtils;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +16,8 @@ class CarGroupTest {
 	void getMoveForwardChance(int carNum, int expectedCallCount) {
 		// given
 		Counter moveForwardCallCounter = new Counter();
-		CarGroup carGroup = new CarGroup(carNum, createStrategyForCallCount(moveForwardCallCounter));
+		List<String> carNameList = TestUtils.createAnyCarNameList(carNum);
+		CarGroup carGroup = new CarGroup(carNameList, createStrategyForCallCount(moveForwardCallCounter));
 
 		// when
 		carGroup.getMoveForwardChance();

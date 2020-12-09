@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.CarGroup;
 
+import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
@@ -14,7 +16,7 @@ class RacingGameTest {
 	@DisplayName("차량 대수를 입력받고 그 차량 수 만큼 자동차 경주를 진행")
 	void start_carNum(int carNum) {
 		// given
-		RacingGame racingGame = new RacingGame(carNum, 5, racingStatus -> {});
+		RacingGame racingGame = new RacingGame(TestUtils.createAnyCarNameList(carNum), 5, racingStatus -> {});
 
 		// when
 		CarGroup carGroup = racingGame.start();
@@ -30,7 +32,7 @@ class RacingGameTest {
 		// given
 		final NotifyCounter notifyCounter = new NotifyCounter();
 		RacingNotifier racingNotifier = racingStatus -> notifyCounter.addCount();
-		RacingGame racingGame = new RacingGame(0, turn, racingNotifier);
+		RacingGame racingGame = new RacingGame(Collections.emptyList(), turn, racingNotifier);
 
 		// when
 		racingGame.start();

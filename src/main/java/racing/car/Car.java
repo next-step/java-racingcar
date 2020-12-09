@@ -2,12 +2,13 @@ package racing.car;
 
 public class Car {
 
+	private final String carName;
 	private final MoveForwardStrategy moveForwardStrategy;
 	private int position;
 
-	public Car(MoveForwardStrategy moveForwardStrategy) {
+	public Car(String carName, MoveForwardStrategy moveForwardStrategy) {
+		this.carName = carName;
 		this.moveForwardStrategy = moveForwardStrategy;
-		this.position = 0;
 	}
 
 	public void getMoveForwardChance() {

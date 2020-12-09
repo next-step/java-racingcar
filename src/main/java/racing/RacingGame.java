@@ -3,13 +3,15 @@ package racing;
 import racing.car.CarGroup;
 import racing.car.RandomMoveForwardStrategy;
 
+import java.util.List;
+
 public class RacingGame {
 	private final CarGroup carGroup;
 	private final int turn;
 	private final RacingNotifier racingNotifier;
 
-	public RacingGame(int carNum, int turn, RacingNotifier racingNotifier) {
-		this.carGroup = new CarGroup(carNum, new RandomMoveForwardStrategy());
+	public RacingGame(List<String> carNameList, int turn, RacingNotifier racingNotifier) {
+		this.carGroup = new CarGroup(carNameList, new RandomMoveForwardStrategy());
 		this.turn = turn;
 		this.racingNotifier = racingNotifier;
 	}

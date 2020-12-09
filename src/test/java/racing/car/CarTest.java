@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,7 +15,7 @@ class CarTest {
 	@DisplayName("Car.moveForward() 메소드로 Car.position 이 증가했는지 확인")
 	void moveForward(int moveCount, int expectedPosition) {
 		// given
-		Car car = new Car(createEmptyMoveForwardStrategy());
+		Car car = new Car("", createEmptyMoveForwardStrategy());
 
 		// when
 		IntStream.range(0, moveCount).forEach(value -> car.moveForward());
@@ -31,7 +30,7 @@ class CarTest {
 	void getChanceForMoveForward(int condition, int chance, boolean isMoved) {
 		// given
 		MoveForwardStrategy moveForwardStrategy = createMoveForwardStrategy(condition, chance);
-		Car car = new Car(moveForwardStrategy);
+		Car car = new Car("", moveForwardStrategy);
 
 		// when
 		final int beforePosition = car.getPosition();
