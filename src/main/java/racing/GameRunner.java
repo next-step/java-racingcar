@@ -16,6 +16,8 @@ public class GameRunner {
             Cars results = cars.run(randomNumGenerator);
             viewResult.view(results);
         }
+        Cars winnerCars = cars.decideWinner();
+        viewResult.showWinnerCars(winnerCars);
         return cars;
     }
 }
