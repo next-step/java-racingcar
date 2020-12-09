@@ -8,8 +8,8 @@ import java.util.Random;
  * @description :
  **/
 public class Car {
-	private int position;
 	private static final int MOVABLE_MINIMUM_VALUE = 4;
+	private int position;
 
 	public Car() {
 		position = 0;
