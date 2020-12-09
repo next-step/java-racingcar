@@ -3,9 +3,9 @@ package com.jaenyeong.mission2.racingcar.view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import static com.jaenyeong.mission2.racingcar.util.Parser.separateInputBySeparator;
+import static com.jaenyeong.mission2.racingcar.util.Validation.invalidNamesOfCars;
 
 public class InputView implements Input {
     private final Output output;
@@ -77,17 +77,5 @@ public class InputView implements Input {
         }
 
         return false;
-    }
-
-    private boolean invalidNamesOfCars(final List<String> carNames) {
-        if (carNames.size() <= EMPTY) {
-            return true;
-        }
-
-        final List<String> collect = carNames.stream()
-            .filter((name) -> name.length() > EMPTY)
-            .collect(Collectors.toList());
-
-        return !(carNames.size() == collect.size());
     }
 }
