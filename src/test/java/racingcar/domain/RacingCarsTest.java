@@ -23,12 +23,12 @@ class RacingCarsTest {
         );
 
         racingCars = new RacingCars(carNames);
-    };
+    }
 
     @Test
     @DisplayName("자동차 경주 참가 테스트")
     void participate_racing_test() {
-        assertThat(racingCars.getParticipatingCars().size()).isEqualTo(4);
+        assertThat(racingCars.getParticipatingCars()).hasSize(4);
     }
 
     @Test
