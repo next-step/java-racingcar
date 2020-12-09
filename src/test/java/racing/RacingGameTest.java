@@ -6,10 +6,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.converter.SimpleArgumentConverter;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.RacingGame;
 import racing.model.Car;
+import racing.model.FinalRacingResult;
 import racing.model.Forward;
 import racing.model.Stop;
 
@@ -28,8 +30,16 @@ class RacingGameTest {
 	//테스트 가능한 구조를 위해 변경하는 과정과 프로덕션 코드, 테스트 코드 각각에 다른 재료를 넣어서 테스트를 할 수 있다는 사실이 중요
 	RacingGame racingGame = new RacingGame();
 
-
 	// 통합 테스트 : 전체 과정을 통과하는 상위 메소드를 테스트하는 것
+
+	@ParameterizedTest
+	@CsvSource(value = {"aCar,bCar,cCar,dCar,eCar:5", "aCar,bCar:3", "aCar,bCar,cCar:2"}, delimiter = ':')
+	@DisplayName("자동차 경주 통합 테스")
+	void test_RacingCar(String inputName, int playCount) {
+		FinalRacingResult finalRacingResult = racingGame.racing(inputName, playCount);
+		assertThat(finalRacingResult).isNotNull();
+
+	}
 
 	@ParameterizedTest
 	@NullSource
@@ -43,7 +53,7 @@ class RacingGameTest {
 
 	@ParameterizedTest
 	@DisplayName("전진 테스트")
-	@ValueSource(ints = {1,2,3})
+	@ValueSource(ints = {1, 2, 3})
 	protected void test_forward(@ConvertWith(ForwardConverter.class) Forward forward) {
 		Car car = new Car("테스트카");
 		car.speedUp(forward);
@@ -52,7 +62,7 @@ class RacingGameTest {
 
 	@ParameterizedTest
 	@DisplayName("멈춤 테스트")
-	@ValueSource(ints = {1,2,3})
+	@ValueSource(ints = {1, 2, 3})
 	void test_stop(@ConvertWith(StopConverter.class) Stop stop) {
 		Car car = new Car("테스트카");
 		car.speedUp(stop);
