@@ -7,6 +7,8 @@ import com.jaenyeong.mission2.racingcar.view.InputView;
 import com.jaenyeong.mission2.racingcar.view.Output;
 import com.jaenyeong.mission2.racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingGame {
     private final Output output;
     private final Input input;
@@ -26,23 +28,24 @@ public class RacingGame {
     }
 
     private void runningGame() {
-        final Cars cars = processSetCountOfCars();
+        final Cars cars = setCarsByNamesOfCars();
 
-        racingGivenNumberOfTimes(processSetRaceTryTimes(), cars);
+        racingGivenNumberOfTimes(setRaceTryTimes(), cars);
 
-        processResultOfRacing(cars);
+        resultOfRacing(cars);
     }
 
-    private Cars processSetCountOfCars() {
-        output.printHowManyUseCars();
-        return getCars(input.inputHowManyUseCars());
+    private Cars setCarsByNamesOfCars() {
+        output.printNamesOfTheCarsToBeRaced();
+
+        return getCars(input.inputNamesOfTheCarsToBeRaced());
     }
 
-    protected Cars getCars(final int howManyUseCars) {
-        return new Cars(howManyUseCars);
+    protected Cars getCars(final List<String> nameOfCars) {
+        return new Cars(nameOfCars);
     }
 
-    protected int processSetRaceTryTimes() {
+    protected int setRaceTryTimes() {
         output.printHowManyTryTimes();
         return input.inputHowManyTryTimes();
     }
@@ -54,9 +57,12 @@ public class RacingGame {
         }
     }
 
-    private void processResultOfRacing(final Cars cars) {
+    private void resultOfRacing(final Cars cars) {
+        final RacingHistoryDto historyDto = getHistoryDto(cars);
+
         output.printExecutionResult();
-        output.printAllRacingHistoriesResult(getHistoryDto(cars));
+        output.printAllRacingHistoriesResult(historyDto);
+        output.printWinner(historyDto);
     }
 
     protected RacingHistoryDto getHistoryDto(final Cars cars) {

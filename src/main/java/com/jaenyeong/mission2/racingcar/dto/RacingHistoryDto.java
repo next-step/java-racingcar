@@ -1,39 +1,34 @@
 package com.jaenyeong.mission2.racingcar.dto;
 
+import com.jaenyeong.mission2.racingcar.domain.Car;
 import com.jaenyeong.mission2.racingcar.domain.Cars;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingHistoryDto {
     private final int maxTurn;
-    private final List<List<Integer>> racingHistory;
+    private final List<String> winners;
+    private final List<Car> carList;
 
     public RacingHistoryDto(final int turn, final Cars cars) {
         this.maxTurn = turn;
-        this.racingHistory = cars.getRaceHistoriesForAllCars();
+        this.winners = cars.getWinners();
+        carList = setHistory(cars);
     }
 
-    public List<List<Integer>> getRacingHistory() {
-        return racingHistory;
+    private List<Car> setHistory(final Cars cars) {
+        return cars.copyCars();
     }
 
-    public List<List<Integer>> parsingRacingHistoryToPrintFormat() {
-        final List<List<Integer>> parseHistories = new ArrayList<>();
-
-        for (int turn = 0; turn < maxTurn; turn++) {
-            parseHistories.add(getRacingHistoriesForTurn(turn));
-        }
-
-        return parseHistories;
+    public int getMaxTurn() {
+        return maxTurn;
     }
 
-    private List<Integer> getRacingHistoriesForTurn(final int turn) {
-        final List<Integer> historyForTurn = new ArrayList<>();
-        for (List<Integer> car : racingHistory) {
-            historyForTurn.add(car.get(turn));
-        }
+    public List<String> getWinners() {
+        return winners;
+    }
 
-        return historyForTurn;
+    public List<Car> getCarList() {
+        return carList;
     }
 }

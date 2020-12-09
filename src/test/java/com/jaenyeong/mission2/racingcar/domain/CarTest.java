@@ -3,11 +3,14 @@ package com.jaenyeong.mission2.racingcar.domain;
 import com.jaenyeong.mission2.racingcar.common.BaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("도메인 차의 역할을 담당하는 Car 클래스 테스트")
@@ -69,5 +72,49 @@ class CarTest extends BaseTest {
         for (final int distance : history) {
             assertThat(distance).isBetween(start, randomValue);
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("validName")
+    @DisplayName("Car 클래스 초기화 선언시 이름을 받는 생성자 및 이름 유효성 테스트")
+    void checkCarName(final String carName) {
+        final Car car = new Car(carName);
+
+        assertEquals(car.getName(), carName);
+    }
+
+    private static Stream<Arguments> validName() {
+        return Stream.of(
+            Arguments.of("재녕"),
+            Arguments.of("King"),
+            Arguments.of("Apple"),
+            Arguments.of("12345"),
+            Arguments.of("1234"),
+            Arguments.of("123"),
+            Arguments.of("12"),
+            Arguments.of("1")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("invalidName")
+    @DisplayName("Car 클래스 초기화 선언시 올바르지 않은 이름을 받았을 때 테스트")
+    void checkCarNameWhenGivenInvalidName(final String carName) {
+        assertThatThrownBy(() -> {
+            final Car car = new Car(carName);
+            assertEquals(car.getName(), carName);
+        })
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("invalid name");
+    }
+
+    private static Stream<Arguments> invalidName() {
+        return Stream.of(
+            Arguments.of("Jaenyeong"),
+            Arguments.of(""),
+            Arguments.of("ABCDEFG"),
+            Arguments.of("      "),
+            Arguments.of("12367097691238789")
+        );
     }
 }

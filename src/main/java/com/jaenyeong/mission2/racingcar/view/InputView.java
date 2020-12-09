@@ -1,8 +1,12 @@
 package com.jaenyeong.mission2.racingcar.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView implements Input {
+    public static final int EMPTY = 0;
     final Output output;
     final Scanner scanner;
 
@@ -43,5 +47,51 @@ public class InputView implements Input {
     @Override
     public int inputHowManyTryTimes() {
         return inputUntilCorrectIntType();
+    }
+
+    @Override
+    public List<String> inputNamesOfTheCarsToBeRaced() {
+        List<String> carNames;
+        boolean invalid;
+
+        do {
+            carNames = inputNamesOfCars();
+
+            invalid = trySetNamesOfCars(carNames);
+        } while (invalid);
+
+        return carNames;
+    }
+
+    private List<String> inputNamesOfCars() {
+        try {
+            String input = scanner.nextLine();
+            return separateInputBySeparator(input);
+
+        } catch (Exception e) {
+            scanner.next();
+            return new ArrayList<>();
+        }
+    }
+
+    private boolean trySetNamesOfCars(final List<String> carNames) {
+        if (invalidNamesOfCars(carNames)) {
+            printErrorMessage();
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean invalidNamesOfCars(final List<String> carNames) {
+        if (carNames.size() <= EMPTY) {
+            return true;
+        }
+
+        final List<String> collect = carNames.stream()
+            .filter((name) -> name.length() > EMPTY)
+            .collect(Collectors.toList());
+
+        return !(carNames.size() == collect.size());
     }
 }
