@@ -2,6 +2,7 @@ package racingCar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -15,13 +16,17 @@ public class Cars {
 	private int matchCount;
 	private int lapCount;
 	private RaceHistory raceHistory;
+	private List<Car> winners;
+	private int winnerPosition;
 
 	public Cars(String[] carNames, int matchCount) {
 		this.cars = new ArrayList<>();
 		createCars(carNames);
 		this.matchCount = matchCount;
 		this.lapCount = 0;
+		this.winnerPosition = 0;
 		raceHistory = new RaceHistory();
+
 	}
 
 	public int getCount() {
@@ -32,17 +37,30 @@ public class Cars {
 		while (matchCount != lapCount) {
 			runLap();
 		}
+		setWinners();
 		return this;
+	}
+
+	private void setWinners() {
+		winners = cars.stream().filter(car -> car.getPosition() == winnerPosition)
+			.collect(Collectors.toList());
 	}
 
 	public void runLap() {
 		LapHistory lapHistory = new LapHistory();
 		for (Car car : cars) {
 			car.randomMove();
+			setWinnerPosition(car.getPosition());
 			lapHistory.add(new CarHistory(car));
 		}
 		raceHistory.add(lapHistory);
 		lapCount++;
+	}
+
+	private void setWinnerPosition(int position) {
+		if (position > winnerPosition) {
+			winnerPosition = position;
+		}
 	}
 
 	public int getLapCount() {
@@ -61,4 +79,7 @@ public class Cars {
 		return cars;
 	}
 
+	public List<Car> getWinners() {
+		return winners;
+	}
 }

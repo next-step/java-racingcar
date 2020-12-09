@@ -23,7 +23,6 @@ public class RaceHistory {
 		return carHistories;
 	}
 
-
 	public void add(LapHistory lapHistory) {
 		carHistories.add(lapHistory);
 	}

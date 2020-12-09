@@ -7,8 +7,6 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * @author : byungkyu
@@ -32,7 +30,7 @@ public class CarsTest {
 	@Order(2)
 	@DisplayName("2. 사용자가 입력한 경주 횟수만큼 경주가 반복된다.")
 	@Test
-	void repeatRaceCount(){
+	void repeatRaceCount() {
 		String userInput = "pobi,crong,honux";
 		String[] carNames = userInput.split(",");
 		int matchCount = 3;
@@ -44,12 +42,24 @@ public class CarsTest {
 	@Order(3)
 	@DisplayName("3. 차들이 경주를 완료하면 랩카운트가 증가한다")
 	@Test
-	void addLapCount(){
+	void addLapCount() {
 		String userInput = "pobi,crong,honux";
 		String[] carNames = userInput.split(",");
 		int matchCount = 3;
 		Cars cars = new Cars(carNames, matchCount);
 		cars.runLap();
 		assertThat(cars.getLapCount()).isEqualTo(1);
+	}
+
+	@Order(4)
+	@DisplayName("4. 차들이 경주를 완료하면 우승자는 한명 이상일 수 있다.")
+	@Test
+	void racingWinnerExist() {
+		String userInput = "pobi,crong,honux";
+		String[] carNames = userInput.split(",");
+		int matchCount = 3;
+		Cars cars = new Cars(carNames, matchCount);
+		cars.race();
+		assertThat(cars.getWinners().size()).isGreaterThanOrEqualTo(1);
 	}
 }

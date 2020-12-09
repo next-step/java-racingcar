@@ -2,6 +2,7 @@ package racingCar;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * @author : byungkyu
@@ -29,6 +30,12 @@ public class View {
 			printLapResult(lapHistory);
 			System.out.println("");
 		}
+		printWinners(resultCars);
+	}
+
+	private static void printWinners(Cars resultCars) {
+		System.out.println(resultCars.getWinners().stream().map(car -> car.getName()).collect(Collectors.joining(","))
+			+ "가 최종 우승했습니다.");
 	}
 
 	private static void printLapResult(LapHistory lapHistory) {

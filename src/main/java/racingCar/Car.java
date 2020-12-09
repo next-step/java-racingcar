@@ -12,6 +12,7 @@ public class Car {
 	private static final int CAR_NAME_LENGTH_MAXIMUM_VALUE = 5;
 	private int position;
 	private String name;
+
 	public Car() {
 		position = 0;
 	}
@@ -23,7 +24,8 @@ public class Car {
 	}
 
 	private void validateCarName(String carName) {
-		if(carName.length() > CAR_NAME_LENGTH_MAXIMUM_VALUE) throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다.");
+		if (carName.length() > CAR_NAME_LENGTH_MAXIMUM_VALUE)
+			throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다.");
 	}
 
 	public Car(Car copyCar) {

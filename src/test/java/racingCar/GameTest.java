@@ -21,19 +21,18 @@ public class GameTest {
 	@Order(1)
 	@DisplayName("1.경주할 자동차 이름을 입력할 수 있다.")
 	@Test
-	void userEnterCarCarNames(){
+	void userEnterCarCarNames() {
 		String userInputCarNames = "pobi,crong,honux";
 		int matchCount = 1;
 		Game game = new Game(userInputCarNames, matchCount);
 		assertThat(game.getCarCount()).isEqualTo(3);
 	}
 
-
 	@Order(3)
 	@DisplayName("2.사용자는 경주를 시도할 횟수를 입력할 수 있다.")
 	@ParameterizedTest
-	@ValueSource(ints = {4,5,6})
-	void userEnterCarMatchCount(int matchCount){
+	@ValueSource(ints = {4, 5, 6})
+	void userEnterCarMatchCount(int matchCount) {
 		String userInputCarNames = "pobi,crong,honux";
 		Game game = new Game(userInputCarNames, matchCount);
 		assertThat(game.getMatchCount()).isEqualTo(matchCount);
@@ -42,7 +41,7 @@ public class GameTest {
 	@Order(4)
 	@DisplayName("2.1.경기수는 1보다 작을 수 없다.")
 	@Test
-	void validateUserEnterMatchCount(){
+	void validateUserEnterMatchCount() {
 		String userInputCarNames = "pobi,crong,honux";
 		int matchCount = 0;
 		assertThatThrownBy(() -> {

@@ -1,23 +1,13 @@
 package racingCar;
 
-import java.util.Arrays;
-
 /**
  * @author : byungkyu
  * @date : 2020/12/07
  * @description :
  **/
 public class Game {
-	private static int carCount;
 	private static int matchCount;
 	private static String[] carNames;
-
-	public Game(int carCount, int matchCount) {
-		validateCarCount(carCount);
-		validateMatchCount(matchCount);
-		this.carCount = carCount;
-		this.matchCount = matchCount;
-	}
 
 	public Game(String userInputCarNames, int matchCount) {
 		String[] carNames = splitCarNames(userInputCarNames);
