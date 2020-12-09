@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static com.jaenyeong.mission2.racingcar.util.Parser.separateInputBySeparator;
+
 public class InputView implements Input {
     private final Output output;
     private final Scanner scanner;
@@ -12,6 +14,11 @@ public class InputView implements Input {
     public InputView(final Output output) {
         this.output = output;
         this.scanner = new Scanner(System.in);
+    }
+
+    @Override
+    public int inputHowManyTryTimes() {
+        return inputUntilCorrectIntType();
     }
 
     private int inputUntilCorrectIntType() {
@@ -36,11 +43,6 @@ public class InputView implements Input {
 
     private void printErrorMessage() {
         output.printErrWhenInvalidDataTypeInput();
-    }
-
-    @Override
-    public int inputHowManyTryTimes() {
-        return inputUntilCorrectIntType();
     }
 
     @Override
