@@ -1,6 +1,8 @@
 package com.jaenyeong.mission2.racingcar.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -27,14 +29,10 @@ public class Cars {
             .collect(Collectors.toList());
     }
 
-    public Map<String, List<Integer>> getRaceHistoriesForAllCars() {
-        final Map<String, List<Integer>> history = new HashMap<>();
-
-        for (Car car : racingCars) {
-            history.put(car.getName(), car.getRacingHistory());
-        }
-
-        return history;
+    public List<Car> copyCars() {
+        return racingCars.stream()
+            .map(Car::copyCar)
+            .collect(Collectors.toList());
     }
 
     public List<String> getWinners() {

@@ -1,11 +1,13 @@
 package com.jaenyeong.mission2.racingcar.view;
 
+import com.jaenyeong.mission2.racingcar.dto.CarDto;
 import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 
-import java.util.Map;
 import java.util.StringJoiner;
 
 public class OutputView implements Output {
+
+    public static final int START_TURN = 1;
 
     @Override
     public void printHowManyUseCars() {
@@ -35,13 +37,16 @@ public class OutputView implements Output {
 
     @Override
     public void printAllRacingHistoriesResult(final RacingHistoryDto historyDto) {
-        final Map<Integer, Map<String, Integer>> history = historyDto.parsePrintFormat();
+        for (int turn = START_TURN; turn <= historyDto.getMaxTurn(); turn++) {
+            printCarByTurn(historyDto, turn);
+        }
+    }
 
-        history.forEach((turn, car) -> {
-                car.forEach((carName, dist) -> printMessage(convertFormatPrintRacingHistory(carName, dist)));
-                printMessage("");
-            }
-        );
+    private void printCarByTurn(final RacingHistoryDto history, final int turn) {
+        for (CarDto car : history.getHistory()) {
+            printMessage(convertFormatPrintRacingHistory(car.getName(), car.getDistanceByTurn(turn)));
+            printMessage("");
+        }
     }
 
     private String convertFormatPrintRacingHistory(final String carName, final int distance) {

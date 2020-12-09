@@ -64,14 +64,14 @@ class CarsTest extends BaseTest {
         moveCars(randomValue, cars);
 
         final int winDist = cars.getWinDistance();
-        final Map<String, List<Integer>> histories = cars.getRaceHistoriesForAllCars();
+        final List<Car> copyCars = cars.copyCars();
 
         final List<String> winnerNames = new ArrayList<>();
 
-        for (Map.Entry<String, List<Integer>> history : histories.entrySet()) {
-            final int lastDist = history.getValue().get(randomValue - 1);
+        for (Car car : copyCars) {
+            final int lastDist = car.getCurrentDistance();
             if (lastDist == winDist) {
-                winnerNames.add(history.getKey());
+                winnerNames.add(car.getName());
             }
         }
 

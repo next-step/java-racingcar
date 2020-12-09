@@ -23,6 +23,11 @@ public class Car {
         this.name = name.trim();
     }
 
+    private Car(final String name, List<Distance> history) {
+        this.name = name;
+        this.history = new ArrayList<>(history);
+    }
+
     public void move() {
         history.add(getLastDistance().move());
     }
@@ -35,14 +40,18 @@ public class Car {
         return history.get(history.size() - 1);
     }
 
-    public int getCurrentDistance() {
-        return getLastDistance().getDist();
-    }
-
     public List<Integer> getRacingHistory() {
         return history.stream()
             .map(Distance::getDist)
             .collect(Collectors.toList());
+    }
+
+    public int getCurrentDistance() {
+        return getLastDistance().getDist();
+    }
+
+    public Car copyCar() {
+        return new Car(this.name, this.history);
     }
 
     public String getName() {

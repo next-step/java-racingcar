@@ -1,43 +1,39 @@
 package com.jaenyeong.mission2.racingcar.dto;
 
+import com.jaenyeong.mission2.racingcar.domain.Car;
 import com.jaenyeong.mission2.racingcar.domain.Cars;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RacingHistoryDto {
     private final int maxTurn;
-    private final Map<String, List<Integer>> history;
     private final List<String> winners;
+    private final List<CarDto> history;
 
     public RacingHistoryDto(final int turn, final Cars cars) {
         this.maxTurn = turn;
-        this.history = cars.getRaceHistoriesForAllCars();
         this.winners = cars.getWinners();
+
+        history = setHistory(cars);
     }
 
-    public Map<Integer, Map<String, Integer>> parsePrintFormat() {
-        final Map<Integer, Map<String, Integer>> printHistory = new HashMap<>();
-
-        for (int turn = 0; turn < maxTurn; turn++) {
-            getHistoryOfCarByThisTurn(printHistory, turn);
-        }
-
-        return printHistory;
+    private List<CarDto> setHistory(final Cars cars) {
+        final List<Car> copy = cars.copyCars();
+        return copy.stream()
+            .map(CarDto::new)
+            .collect(Collectors.toList());
     }
 
-    private void getHistoryOfCarByThisTurn(final Map<Integer, Map<String, Integer>> printHistory, final int turn) {
-        final Map<String, Integer> distOfTurn = new HashMap<>();
-
-        for (Map.Entry<String, List<Integer>> car : history.entrySet()) {
-            distOfTurn.put(car.getKey(), car.getValue().get(turn));
-        }
-
-        printHistory.put(turn, distOfTurn);
+    public int getMaxTurn() {
+        return maxTurn;
     }
 
     public List<String> getWinners() {
         return winners;
+    }
+
+    public List<CarDto> getHistory() {
+        return history;
     }
 }
