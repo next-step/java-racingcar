@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.model;
 
 import java.util.Map;
 

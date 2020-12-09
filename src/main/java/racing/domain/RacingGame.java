@@ -10,13 +10,24 @@ public class RacingGame {
 
 	public static final String CAR_NAME_DELIMITER = ",";
 
+	Scanner scanner = new Scanner(System.in);
+
 	ResultView resultView = new ResultView();
 
-	public void start() {
-		InputView inputView = new InputView();
+	InputView inputView = new InputView();
 
-		List<Car> cars = prepareInitRacingCar(inputView.getInputName());
-		startRacing(cars, inputView.getPlayCount());
+	public String inputName;
+
+	public int playCount;
+
+	public void start() {
+		inputView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+		this.inputName = scanner.next();
+		inputView.print("시도할 회수는 몇 회 인가요?");
+		this.playCount = scanner.nextInt();
+
+		List<Car> cars = prepareInitRacingCar(this.inputName);
+		startRacing(cars, this.playCount);
 		FinalRacingResult finalWinner = findWinner(cars);
 
 		resultView.printFinalWinner(finalWinner.getWinnerName());
