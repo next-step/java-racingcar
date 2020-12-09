@@ -20,7 +20,7 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    public static RacingCars createCarsWitNames(CarNames carNames, MovePolicy movePolicy) {
+    public static RacingCars createCars(CarNames carNames, MovePolicy movePolicy) {
         List<Car> cars = IntStream.range(0, carNames.size())
                 .mapToObj(index -> new Car(carNames.get(index), movePolicy))
                 .collect(Collectors.toList());
@@ -28,7 +28,7 @@ public class RacingCars {
     }
 
     public static RacingCars createRandomMoveCars(CarNames carNames) {
-        return createCarsWitNames(carNames, new RandomMovePolicy());
+        return createCars(carNames, new RandomMovePolicy());
     }
 
     public void step() {
