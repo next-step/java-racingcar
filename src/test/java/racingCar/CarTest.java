@@ -36,4 +36,15 @@ public class CarTest {
 		car.move(arg);
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
+
+	@Order(3)
+	@DisplayName("2. 자동차의 이름은 5자를 초과할 수 없다.")
+	@ParameterizedTest
+	@ValueSource(strings = {"pobiconan", "nextstep", "lannstark"})
+	void carNameCannotOverFive(String carName) {
+		assertThatThrownBy(() -> {
+			Car car = new Car(carName);
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("자동차의 이름은 5자를 초과할 수 없습니다.");
+	}
 }
