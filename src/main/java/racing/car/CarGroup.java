@@ -7,12 +7,18 @@ import java.util.stream.Stream;
 public class CarGroup {
 	private final List<Car> carList;
 
-	public CarGroup(List<String> carNameList, MoveForwardStrategy moveForwardStrategy) {
-		this.carList = new ArrayList<>();
+	public static CarGroup of(List<String> carNameList, MoveForwardStrategy moveForwardStrategy) {
+		List<Car> carList = new ArrayList<>();
 		for (String carName : carNameList) {
 			final Car car = createCar(carName, moveForwardStrategy);
 			carList.add(car);
 		}
+
+		return new CarGroup(carList);
+	}
+
+	CarGroup(List<Car> carList) {
+		this.carList = carList;
 	}
 
 	private static Car createCar(String carName, MoveForwardStrategy moveForwardStrategy) {

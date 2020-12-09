@@ -11,7 +11,7 @@ public class RacingGame {
 	private final RacingNotifier racingNotifier;
 
 	public RacingGame(List<String> carNameList, int turn, RacingNotifier racingNotifier) {
-		this.carGroup = new CarGroup(carNameList, new RandomMoveForwardStrategy());
+		this.carGroup = CarGroup.of(carNameList, new RandomMoveForwardStrategy());
 		this.turn = turn;
 		this.racingNotifier = racingNotifier;
 	}

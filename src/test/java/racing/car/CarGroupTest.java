@@ -17,7 +17,7 @@ class CarGroupTest {
 		// given
 		Counter moveForwardCallCounter = new Counter();
 		List<String> carNameList = TestUtils.createAnyCarNameList(carNum);
-		CarGroup carGroup = new CarGroup(carNameList, createStrategyForCallCount(moveForwardCallCounter));
+		CarGroup carGroup = CarGroup.of(carNameList, createStrategyForCallCount(moveForwardCallCounter));
 
 		// when
 		carGroup.getMoveForwardChance();
