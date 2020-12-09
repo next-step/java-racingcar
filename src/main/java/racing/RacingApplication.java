@@ -7,7 +7,7 @@ import racing.domain.condition.RandomCondition;
 
 public class RacingApplication {
     public static void main(String[] args) {
-        Cars cars = new Cars(InputView.carNamesMessage(), new RandomCondition());
+        Cars cars = new Cars(InputView.carNames(), new RandomCondition());
         Racing racing = new Racing(InputView.tryTimes(), cars);
         racing.start();
         racing.end();
