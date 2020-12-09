@@ -18,4 +18,26 @@ public class ResultViewTest {
             ResultView.getRoundResult(racingCarGame.getCars(), "-");
         }
     }
+
+    @Test
+    @DisplayName("자동차 이름과 경주 결과 출력 테스트")
+    void printRoundResultWithNameTest() {
+        RacingCarGame racingCarGame = new RacingCarGame(new String[]{"BLACK", "WHITE", "BLUE"});
+
+        for (int i = 0; i < 5; i++) {
+            racingCarGame.play(new RandomMovingStrategy());
+            ResultView.getRoundResultWithName(racingCarGame.getCars(), "-");
+        }
+    }
+
+    @Test
+    @DisplayName("자동차 경주 우승자 출력 테스트")
+    void printWinnerTest() {
+        RacingCarGame racingCarGame = new RacingCarGame(new String[]{"BLACK", "WHITE", "BLUE"});
+
+        for (int i = 0; i < 5; i++) {
+            racingCarGame.play(new RandomMovingStrategy());
+        }
+        ResultView.printWinner(racingCarGame.getCars());
+    }
 }

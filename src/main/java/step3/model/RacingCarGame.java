@@ -11,6 +11,10 @@ public class RacingCarGame {
         this.cars = new Cars(CarCount);
     }
 
+    public RacingCarGame(String... names) {
+        this.cars = new Cars(names);
+    }
+
     public List<Car> getCars() {
         return cars.getCars();
     }
