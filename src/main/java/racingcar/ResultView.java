@@ -5,16 +5,25 @@ import java.util.List;
 
 public class ResultView {
 
+    private static final String RESULT_DASH = "-";
+
     /**
-     * 자동차의 현재 위치를 받아서 리스트에 담습니다.
-     * @param racingCarController
-     * @return
+     * 현재 결과를 출력합니다
      */
-    public List<Integer> getNowDistance(RacingCarController racingCarController) {
-        List<Integer> nowDistances = new ArrayList<>();
-        for (RacingCar racingCar : racingCarController.getRacingCars()) {
-            nowDistances.add(racingCar.getDistance());
+    public void printResult(RacingCarController racingCarController) {
+        for (int distance : racingCarController.getNowDistance()) {
+            this.printDash(distance);
         }
-        return nowDistances;
+    }
+
+    /**
+     * 주어진 거리만큼 '-'를 출력합니다.
+     * @param distance
+     */
+    private void printDash(int distance) {
+        for (int i = 0; i < distance; i++) {
+            System.out.print(ResultView.RESULT_DASH);
+        }
+        System.out.println();
     }
 }
