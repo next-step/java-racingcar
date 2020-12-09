@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.CarGroup;
 import racing.car.RandomMoveForwardStrategy;
+import racing.view.RacingNotifyView;
 
 import java.util.Arrays;
 import java.util.Collections;

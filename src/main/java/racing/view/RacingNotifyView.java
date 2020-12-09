@@ -1,5 +1,6 @@
-package racing;
+package racing.view;
 
+import racing.RacingNotifier;
 import racing.car.Car;
 import racing.car.CarGroup;
 
