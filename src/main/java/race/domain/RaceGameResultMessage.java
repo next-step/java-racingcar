@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 import java.util.List;
 import java.util.TreeMap;
@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RaceGameResultMessage {
-	public static final String MESSAGE_SEPARATOR = "";
-	public static final String CAR_SEPARATOR = "\n";
 	public static final String TRY_SEPARATOR = "\n\n";
-	public static final String DISTANCE_SEPARATOR = "-";
-	public static final String RESULT_MESSAGE_FORMAT = "%s : %s";
+	private static final String CAR_SEPARATOR = "\n";
+	private static final String MESSAGE_SEPARATOR = "";
+	private static final String DISTANCE_SEPARATOR = "-";
+	private static final String RESULT_MESSAGE_FORMAT = "%s : %s";
 
 	private final List<Car> cars;
 

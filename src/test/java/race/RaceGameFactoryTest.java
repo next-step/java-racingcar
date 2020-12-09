@@ -3,6 +3,9 @@ package race;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.RaceGameFactory;
+import race.domain.RaceGameResult;
+import race.domain.SimpleRaceGameFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +25,7 @@ class RaceGameFactoryTest {
 			"crong : -----\n" +
 			"honux : -----";
 
-		assertThat(gameResultMessage.getLastHistory().parser()).isEqualTo(expected);
+		assertThat(gameResultMessage.getLastGameResult().parser()).isEqualTo(expected);
 	}
 
 	@DisplayName("경주 게임의 승자가 테스트 결과와 일치해야한다")

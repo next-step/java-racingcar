@@ -2,6 +2,12 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.Car;
+import race.domain.CarGroup;
+import race.domain.CarName;
+import race.domain.IllegalInputNameException;
+import race.domain.MovePolicy;
+import race.domain.SimpleMovePolicy;
 
 import java.util.Arrays;
 import java.util.List;

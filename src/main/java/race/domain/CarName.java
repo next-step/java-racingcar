@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class CarName {
 	public static final int MAX_INPUT_NAME_LENGTH = 5;

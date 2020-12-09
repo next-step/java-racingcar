@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class Car {
 	public static final int START_DISTANCE = 0;

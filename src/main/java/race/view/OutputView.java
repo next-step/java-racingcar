@@ -1,17 +1,12 @@
-package race;
+package race.view;
 
-import java.util.stream.Collectors;
+import race.domain.RaceGameResult;
 
 public class OutputView {
 	private static final String WINNER_MESSAGE = "\n%s가 최종 우승했습니다.";
 
 	public static void printDistanceStatus(RaceGameResult raceGameResult) {
-		String result = raceGameResult.getHistory()
-			.stream()
-			.map(RaceGameResultMessage::parser)
-			.collect(Collectors.joining(RaceGameResultMessage.TRY_SEPARATOR));
-
-		System.out.println(result);
+		System.out.println(raceGameResult.getGameResults());
 	}
 
 	public static void printRaceGameWinner(RaceGameResult raceGameResult) {
