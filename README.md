@@ -8,7 +8,7 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-## TODO 리스트
+## 2단계 - 문자열 계산기 TODO
 
 - [x] 덧셈
 - [x] 뺄셈
@@ -24,3 +24,12 @@
 - [x] 반복적인 패턴을 찾아 반복문으로 구현한다.
 - [x] 연산 순서가 틀린 경우 IllegalArgumentException throw
 - [x] 표준 입출력으로 동작하는 application 작성
+
+## 3단계 - 자동차 경주 TODO
+
+- [x] 자동차 대수 입력
+- [x] 시도 횟수 입력
+- [x] 자동차 랜덤 전진하기
+- [x] 자동차 위치 조회
+- [x] 자동차 위치(결과) 출력
+- [x] 자동차 위치(결과) 출력
