@@ -1,9 +1,10 @@
 package racing.model;
 
-import racing.model.inter.ForwardPolicy;
-import racing.util.Constants;
+import racing.model.policy.inter.ForwardPolicy;
 
 public class Car {
+
+	public static final int MAX_NAME_CHARACTER_LENGTH = 5;
 
 	private String name;
 
@@ -17,7 +18,7 @@ public class Car {
 	}
 
 	private boolean isNotValidateName(String name) {
-		if (name == null || name.trim().isEmpty() || name.length() > Constants.MAX_NAME_CHARACTER_LENGTH) {
+		if (name == null || name.trim().isEmpty() || name.length() > MAX_NAME_CHARACTER_LENGTH) {
 			return true;
 		}
 		return false;

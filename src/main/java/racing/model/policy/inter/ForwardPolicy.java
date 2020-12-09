@@ -1,4 +1,4 @@
-package racing.model.inter;
+package racing.model.policy.inter;
 
 public interface ForwardPolicy {
 	boolean forward();
