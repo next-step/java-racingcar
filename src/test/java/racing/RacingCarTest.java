@@ -19,9 +19,9 @@ class RacingCarTest {
 		RacingCar car = new RacingCar();
 
 		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
-		car.move(() -> MoveState.STAY);
+		car.move(() -> true);
 
-		assertThat(car.getDistance()).isEqualTo(1);
+		assertThat(car.getDistance()).isEqualTo(2);
 	}
 
 	@Test
@@ -30,9 +30,9 @@ class RacingCarTest {
 		RacingCar car = new RacingCar();
 
 		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
-		car.move(() -> MoveState.MOVE);
+		car.move(() -> false);
 
-		assertThat(car.getDistance()).isEqualTo(2);
+		assertThat(car.getDistance()).isEqualTo(1);
 	}
 
 	@Test
