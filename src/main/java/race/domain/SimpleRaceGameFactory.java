@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class SimpleRaceGameFactory implements RaceGameFactory {
 
@@ -14,7 +14,7 @@ public class SimpleRaceGameFactory implements RaceGameFactory {
 	public RaceGameResult start() {
 		RaceGameResult raceGameResult = new RaceGameResult();
 		for (int currentTryCount = 0; currentTryCount < this.tryTimes; currentTryCount++) {
-			raceGameResult.addHistory(new RaceGameResultMessage(this.carGroup.moveAll()));
+			raceGameResult.addResult(new RaceGameResultMessage(this.carGroup.moveAll()));
 		}
 		return raceGameResult;
 	}

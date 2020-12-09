@@ -1,4 +1,4 @@
-package race;
+package race.domain;
 
 public class SimpleMovePolicy implements MovePolicy {
 	@Override

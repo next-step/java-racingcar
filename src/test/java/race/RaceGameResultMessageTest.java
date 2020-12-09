@@ -2,6 +2,9 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.RaceGameFactory;
+import race.domain.RaceGameResult;
+import race.domain.SimpleRaceGameFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

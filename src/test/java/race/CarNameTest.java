@@ -2,6 +2,8 @@ package race;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import race.domain.CarName;
+import race.domain.IllegalInputNameException;
 
 import static org.assertj.core.api.Assertions.*;
 
