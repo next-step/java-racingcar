@@ -4,7 +4,7 @@ public class CalculateNumber {
     private static final String VALID_EMPTY_NUMBER_MESSAGE = "숫자 값이 없습니다.";
     private static final String VALID_NO_NUMBER_MESSAGE = "숫자가 아닙니다.";
 
-    private int number;
+    private final int number;
 
     public CalculateNumber(String number) {
         validEmpty(number);
