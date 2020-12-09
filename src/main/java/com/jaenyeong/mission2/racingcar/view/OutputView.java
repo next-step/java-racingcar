@@ -5,6 +5,8 @@ import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 
 import java.util.StringJoiner;
 
+import static com.jaenyeong.mission2.racingcar.util.Parser.parseToPrintFormatFromRacingHistory;
+
 public class OutputView implements Output {
 
     @Override
@@ -38,19 +40,8 @@ public class OutputView implements Output {
 
     private void printCarByTurn(final RacingHistoryDto history, final int turn) {
         for (Car car : history.getCarList()) {
-            printMessage(convertFormatPrintRacingHistory(car.getName(), car.getDistanceByTurn(turn)));
+            printMessage(parseToPrintFormatFromRacingHistory(car.getName(), car.getDistanceByTurn(turn)));
         }
-    }
-
-    private String convertFormatPrintRacingHistory(final String carName, final int distance) {
-        final StringBuilder sb = new StringBuilder();
-        sb.append(carName)
-            .append(" : ");
-
-        for (int i = 0; i < distance; i++) {
-            sb.append(DASH);
-        }
-        return sb.toString();
     }
 
     @Override
