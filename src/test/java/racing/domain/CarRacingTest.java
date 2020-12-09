@@ -1,25 +1,21 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import racing.domain.CarRacing;
+import racing.domain.ParticipateCars;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarRacingTest {
 
     private CarRacing carRacing;
-    private Display display;
-//    private InputUtil inputUtil;
     private ParticipateCars participateCars;
     @BeforeEach
     void setup(){
-        display = new Display();
         String [] carNames = {"Morris", "Daniel", "Choi"};
         participateCars = new ParticipateCars(carNames);
-        carRacing = new CarRacing( participateCars, display);
+        carRacing = new CarRacing( participateCars);
     }
 
     @Test

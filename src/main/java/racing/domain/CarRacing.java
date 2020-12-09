@@ -1,22 +1,25 @@
-package racing;
+package racing.domain;
+
+import racing.view.Display;
 
 public class CarRacing {
     private ParticipateCars participateCars;
     private Display display;
 
-    public CarRacing(ParticipateCars participateCars, Display display) {
+    public CarRacing(ParticipateCars participateCars) {
         this.participateCars = participateCars;
         this.display = display;
     }
 
     public void startRacing(int racingCount) {
-        for (int i = 0; i < racingCount; i++) {
-            this.participateCars.moveCar();
-            display.displayRacingResult(this.participateCars);
-        }
+        this.participateCars.moveCar();
     }
 
     public String presentWinner(){
         return this.participateCars.winner();
+    }
+
+    public ParticipateCars showParticipateCars() {
+        return this.participateCars;
     }
 }

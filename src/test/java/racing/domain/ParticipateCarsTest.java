@@ -1,9 +1,10 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.ParticipateCars;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

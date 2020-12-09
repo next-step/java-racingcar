@@ -1,5 +1,11 @@
 package racing;
 
+import racing.domain.CarRacing;
+import racing.domain.ParticipateCars;
+import racing.util.InputUtil;
+import racing.util.NumberParserUtil;
+import racing.view.Display;
+
 public class RacingMain {
     public static void main(String[] args) {
         Display display = new Display();
@@ -11,8 +17,11 @@ public class RacingMain {
 
         display.printLine("자동차 경주의 수는 몇 번 인가요?");
         int tryNumber = new NumberParserUtil().toInt(inputUtil.inputNumber());
-        CarRacing carRacing = new CarRacing(participateCars, display);
-        carRacing.startRacing(tryNumber);
+        CarRacing carRacing = new CarRacing(participateCars);
+        for(int i = 0; i < tryNumber; i++){
+            carRacing.startRacing(tryNumber);
+            display.displayRacingResult(carRacing.showParticipateCars());
+        }
         display.printWinnner( carRacing.presentWinner());
     }
 }

@@ -1,8 +1,8 @@
-package racing;
+package racing.view;
 
 
-import java.util.List;
-import java.util.stream.Collectors;
+import racing.domain.Car;
+import racing.domain.ParticipateCars;
 
 public class Display {
     private static final char sign = '-';
