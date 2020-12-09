@@ -34,6 +34,9 @@ class RacingNotifyViewTest {
 		CarGroup carGroup = CarGroup.of(TestUtils.createAnyCarNameList(carNum), new RandomMoveForwardStrategy());
 
 		// when
+		carGroup.getMoveForwardChance();
+		carGroup.getMoveForwardChance();
+		carGroup.getMoveForwardChance();
 		racingNotifyView.notifyRace(carGroup);
 	}
 
