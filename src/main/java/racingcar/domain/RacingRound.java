@@ -9,14 +9,11 @@ import java.util.stream.Collectors;
 public class RacingRound {
 
     private static final String RACING_CAR_EMPTY_MESSAGE = "참가한 자동차 리스트가 비었습니다.";
+
     private final List<RacingCar> racingCars;
 
     public RacingRound(List<RacingCar> racingCars) {
         this.racingCars = new ArrayList<>(racingCars);
-    }
-
-    public List<RacingCar> getRacingCars() {
-        return Collections.unmodifiableList(racingCars);
     }
 
     public List<String> getWinners() {
@@ -35,6 +32,10 @@ public class RacingRound {
                 .filter(maxPositionCar::isSamePosition)
                 .map(RacingCar::getCarName)
                 .collect(Collectors.toList());
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return Collections.unmodifiableList(racingCars);
     }
 
     @Override
