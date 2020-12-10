@@ -1,10 +1,13 @@
 package study.racingcar;
 
+import java.util.Random;
+
 public class Car {
 	private int position;
 	private int fuelGage;
 	private final int gasMileage;
 	private static final int INITIAL_GAS_MILEAGE = 4;
+	private final Random random = new Random();
 
 	public Car() {
 		this.position = 0;
@@ -13,7 +16,7 @@ public class Car {
 	}
 
 	public void fillUpFuel(int fuel) {
-		fuelGage += fuel;
+		fuelGage = fuel;
 	}
 
 	public void pushGasPedal() {
@@ -28,4 +31,5 @@ public class Car {
 	public int getPosition() {
 		return position;
 	}
+
 }
