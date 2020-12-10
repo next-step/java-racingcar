@@ -11,7 +11,7 @@ class CarTest {
 
 	@BeforeEach
 	public void init() {
-		car = new Car(new RandomMoveStrategy());
+		car = new Car("자동차", new RandomMoveStrategy());
 	}
 	
 	@ParameterizedTest
