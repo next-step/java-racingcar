@@ -18,8 +18,7 @@ public class RacingCarDriverTest {
     @DisplayName("주어진 숫자에 맞게 자동차가 진행했는지 거리를 테스트")
     public void moveForwardAll(String input, String expected) {
         // given
-        FixedRacingRule racingRule = new FixedRacingRule();
-        racingRule.setNumber(Integer.parseInt(input));
+        FixedRacingRule racingRule = new FixedRacingRule(Integer.parseInt(input));
         RacingCarDriver racingCarDriver = new RacingCarDriver(1);
 
         // when

@@ -25,11 +25,11 @@ public class RacingRunner {
     public void playRound(int round) {
         RacingRule racingRule = new RandomRacingRule();
 
-        System.out.println("실행 결과");
+        this.resultView.printStartResult();
         for (int i = 0; i < round; i++) {
             this.racingCarController.moveForwardAll(racingRule);
             this.resultView.printResult(this.racingCarController);
-            System.out.println();
+            this.resultView.printEndRound();
         }
     }
 
