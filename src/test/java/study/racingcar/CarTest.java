@@ -22,4 +22,26 @@ public class CarTest {
 
 		assertThat(bfPos + 1).isEqualTo(position);
 	}
+
+	@Test
+	void fuel_fill_up_test() throws Exception {
+		int bfPos = car.getPosition();
+		car.fillUpFuel(4);
+		car.pushGasPedal();
+
+		int position = car.getPosition();
+
+		assertThat(bfPos + 1).isEqualTo(position);
+	}
+
+	@Test
+	void fuel_fill_up_fail_test() throws Exception {
+		int bfPos = car.getPosition();
+		car.fillUpFuel(3);
+		car.pushGasPedal();
+
+		int position = car.getPosition();
+
+		assertThat(bfPos).isEqualTo(position);
+	}
 }

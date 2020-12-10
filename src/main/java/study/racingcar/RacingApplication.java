@@ -7,5 +7,6 @@ public class RacingApplication {
 
 		inputView.inputRacingLab();
 		inputView.inputRacingParticipant();
+		
 	}
 }
