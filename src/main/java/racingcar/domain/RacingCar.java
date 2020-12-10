@@ -10,17 +10,6 @@ public class RacingCar implements Comparable<RacingCar> {
     private String carName;
     private int carPosition;
 
-    /*public RacingCar(String carName) {
-        checkCarName(carName);
-        this.carName = carName;
-    }
-
-    public RacingCar(String carName, int carPosition) {
-        checkCarName(carName);
-        this.carName = carName;
-        this.carPosition = carPosition;
-    }*/
-
     private void checkCarName(String racingCarName) {
         boolean isCorrectCarName = racingCarName.matches(racingCarNamePattern);
 
