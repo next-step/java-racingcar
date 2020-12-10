@@ -1,8 +1,14 @@
-package racingCar;
+package racingCar.view;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import racingCar.domain.CarHistory;
+import racingCar.domain.Cars;
+import racingCar.domain.Game;
+import racingCar.domain.LapHistory;
+import racingCar.domain.RaceHistory;
 
 /**
  * @author : byungkyu
@@ -12,17 +18,12 @@ import java.util.stream.Collectors;
 public class View {
 	private static final Scanner scanner = new Scanner(System.in);
 
-	public static int inputCarCount() {
-		System.out.println("자동차 대수는 몇 대 인가요?");
-		return scanner.nextInt();
-	}
-
 	public static int inputMatchCount() {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		return scanner.nextInt();
 	}
 
-	public static void printResult(Cars resultCars) {
+	private static void printResult(Cars resultCars) {
 		RaceHistory history = resultCars.getHistory();
 		List<LapHistory> lapHistories = history.get();
 		System.out.println("실행 결과");
@@ -34,8 +35,10 @@ public class View {
 	}
 
 	private static void printWinners(Cars resultCars) {
-		System.out.println(resultCars.getWinners().stream().map(car -> car.getName()).collect(Collectors.joining(","))
-			+ "가 최종 우승했습니다.");
+		String result = resultCars.getWinners().stream()
+			.map(car -> car.getName())
+			.collect(Collectors.joining(","));
+		System.out.println(result + "가 최종 우승했습니다.");
 	}
 
 	private static void printLapResult(LapHistory lapHistory) {
@@ -55,5 +58,11 @@ public class View {
 	public static String requireCarNames() {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 		return scanner.nextLine();
+	}
+
+	public static void startGame() {
+		Game game = new Game(View.requireCarNames(), View.inputMatchCount());
+		Cars resultCars = game.start();
+		printResult(resultCars);
 	}
 }

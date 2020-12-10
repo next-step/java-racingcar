@@ -1,5 +1,7 @@
 package racingCar;
 
+import racingCar.view.View;
+
 /**
  * @author : byungkyu
  * @date : 2020/12/07
@@ -7,8 +9,6 @@ package racingCar;
  **/
 public class RacingCarApplication {
 	public static void main(String[] args) {
-		Game game = new Game(View.requireCarNames(), View.inputMatchCount());
-		Cars resultCars = game.start();
-		View.printResult(resultCars);
+		View.startGame();
 	}
 }
