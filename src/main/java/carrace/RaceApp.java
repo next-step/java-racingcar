@@ -2,7 +2,7 @@ package carrace;
 
 import carrace.domain.RaceTrack;
 import carrace.domain.RandomRacingRule;
-import carrace.ui.InputView;
+import carrace.ui.input.InputView;
 import carrace.ui.ResultView;
 
 public class RaceApp {
