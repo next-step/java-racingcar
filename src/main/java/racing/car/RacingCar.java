@@ -1,12 +1,12 @@
 package racing.car;
 
-public class Car {
+public class RacingCar {
 
 	private final String carName;
 	private final MoveForwardStrategy moveForwardStrategy;
 	private int position;
 
-	Car(String carName, MoveForwardStrategy moveForwardStrategy) {
+	RacingCar(String carName, MoveForwardStrategy moveForwardStrategy) {
 		this.carName = carName;
 		this.moveForwardStrategy = moveForwardStrategy;
 	}

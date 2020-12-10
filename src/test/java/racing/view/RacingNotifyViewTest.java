@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.TestUtils;
-import racing.car.CarGroup;
+import racing.car.RacingCarGroup;
 import racing.car.RandomMoveForwardStrategy;
 
 import java.util.Arrays;
@@ -32,13 +32,13 @@ class RacingNotifyViewTest {
 	@DisplayName("현재 레이스의 상태를 표시할 때 exception 이 나지 않는지 체크")
 	void notifyRace(int carNum) {
 		// given
-		CarGroup carGroup = CarGroup.of(TestUtils.createAnyCarNameList(carNum), new RandomMoveForwardStrategy());
+		RacingCarGroup racingCarGroup = RacingCarGroup.of(TestUtils.createAnyCarNameList(carNum), new RandomMoveForwardStrategy());
 
 		// when
-		carGroup.getMoveForwardChance();
-		carGroup.getMoveForwardChance();
-		carGroup.getMoveForwardChance();
-		racingNotifyView.notifyRace(carGroup);
+		racingCarGroup.getMoveForwardChance();
+		racingCarGroup.getMoveForwardChance();
+		racingCarGroup.getMoveForwardChance();
+		racingNotifyView.notifyRace(racingCarGroup);
 	}
 
 	@ParameterizedTest

@@ -1,10 +1,10 @@
 package racing;
 
-import racing.car.CarGroup;
+import racing.car.RacingCarGroup;
 
 import java.util.List;
 
 public interface RacingNotifier {
-	void notifyRace(CarGroup carGroup);
+	void notifyRace(RacingCarGroup racingCarGroup);
 	void notifyWinner(List<String> winnerNameList);
 }

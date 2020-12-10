@@ -8,34 +8,34 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarTest {
+class RacingCarTest {
 
 	@ParameterizedTest
 	@CsvSource(value = {"0,0", "1,1", "9999999,9999999"})
-	@DisplayName("Car.moveForward() 메소드로 Car.position 이 증가했는지 확인")
+	@DisplayName("RacingCar.moveForward() 메소드로 RacingCar.position 이 증가했는지 확인")
 	void moveForward(int moveCount, int expectedPosition) {
 		// given
-		Car car = new Car("", createEmptyMoveForwardStrategy());
+		RacingCar racingCar = new RacingCar("", createEmptyMoveForwardStrategy());
 
 		// when
-		IntStream.range(0, moveCount).forEach(value -> car.moveForward());
+		IntStream.range(0, moveCount).forEach(value -> racingCar.moveForward());
 
 		// then
-		assertThat(car.getPosition()).isEqualTo(expectedPosition);
+		assertThat(racingCar.getPosition()).isEqualTo(expectedPosition);
 	}
 
 	@ParameterizedTest
 	@CsvSource(value = {"0,0,true", "1,2,true", "9,8,false"})
-	@DisplayName("Car.getChanceForMoveForward() 호출시 moveCondition, moveChanceGenerator 에 따라 전진하는지 테스트")
+	@DisplayName("RacingCar.getChanceForMoveForward() 호출시 moveCondition, moveChanceGenerator 에 따라 전진하는지 테스트")
 	void getChanceForMoveForward(int condition, int chance, boolean isMoved) {
 		// given
 		MoveForwardStrategy moveForwardStrategy = createMoveForwardStrategy(condition, chance);
-		Car car = new Car("", moveForwardStrategy);
+		RacingCar racingCar = new RacingCar("", moveForwardStrategy);
 
 		// when
-		final int beforePosition = car.getPosition();
-		car.getMoveForwardChance();
-		final int afterPosition = car.getPosition();
+		final int beforePosition = racingCar.getPosition();
+		racingCar.getMoveForwardChance();
+		final int afterPosition = racingCar.getPosition();
 
 		// then
 		assertThat(beforePosition + 1 == afterPosition).isEqualTo(isMoved);

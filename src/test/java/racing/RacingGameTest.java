@@ -3,7 +3,7 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.car.CarGroup;
+import racing.car.RacingCarGroup;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,10 +21,10 @@ class RacingGameTest {
 		RacingGame racingGame = new RacingGame(anyCarNameList, 5, createEmptyRacingNotifier());
 
 		// when
-		CarGroup carGroup = racingGame.start();
+		RacingCarGroup racingCarGroup = racingGame.start();
 
 		// then
-		assertThat(carGroup.stream()).hasSize(carNum);
+		assertThat(racingCarGroup.stream()).hasSize(carNum);
 	}
 
 	@ParameterizedTest
@@ -35,7 +35,7 @@ class RacingGameTest {
 		final TestUtils.Counter notifyCounter = new TestUtils.Counter();
 		RacingNotifier racingNotifier = new RacingNotifier() {
 			@Override
-			public void notifyRace(CarGroup carGroup) {
+			public void notifyRace(RacingCarGroup carGroup) {
 				notifyCounter.addCount();
 			}
 
@@ -57,7 +57,7 @@ class RacingGameTest {
 	private static RacingNotifier createEmptyRacingNotifier() {
 		return new RacingNotifier() {
 			@Override
-			public void notifyRace(CarGroup carGroup) {
+			public void notifyRace(RacingCarGroup racingCarGroup) {
 
 			}
 
