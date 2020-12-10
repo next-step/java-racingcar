@@ -1,10 +1,15 @@
 package step3;
 
-public class Car {
+public class Car implements Cloneable {
 	private static final int MIN_MOVABLE_NUMBER = 4;
 
 	private int position;
 	private final NumberGenerator numberGenerator;
+
+	Car(int position, NumberGenerator numberGenerator) {
+		this.position = position;
+		this.numberGenerator = numberGenerator;
+	}
 
 	public Car(NumberGenerator numberGenerator) {
 		this.numberGenerator = numberGenerator;
@@ -28,5 +33,14 @@ public class Car {
 
 	public int getPosition() {
 		return this.position;
+	}
+
+	@Override
+	public Car clone() {
+		try {
+			return (Car)super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new IllegalStateException(Message.CLONE_NOT_SUPPORTED);
+		}
 	}
 }

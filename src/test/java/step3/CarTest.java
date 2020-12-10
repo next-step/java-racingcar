@@ -2,6 +2,7 @@ package step3;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -22,4 +23,16 @@ public class CarTest {
 		car.goOrStop();
 		assertThat(car.getPosition()).isEqualTo(expected);
 	}
+
+	@Test
+	void cloneTest() {
+		Car car = new Car(new DefaultNumberGenerator(4));
+		Car cloneCar = car.clone();
+
+		car.goOrStop();
+
+		assertThat(car).isNotEqualTo(cloneCar);
+		assertThat(car.getPosition()).isNotEqualTo(cloneCar.getPosition());
+	}
+
 }
