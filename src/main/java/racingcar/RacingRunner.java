@@ -25,7 +25,7 @@ public class RacingRunner {
         this.resultView.printStartResult();
         for (int i = 0; i < round; i++) {
             this.racingCarDriver.moveForwardAll(racingRule);
-            this.resultView.printResult(this.racingCarDriver);
+            this.resultView.printResultWithName((NamedRacingCarDriver) this.racingCarDriver);
             this.resultView.printEndRound();
         }
     }

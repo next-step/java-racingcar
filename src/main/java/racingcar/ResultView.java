@@ -37,4 +37,15 @@ public class ResultView {
     public void printEndRound() {
         System.out.println();
     }
+
+    /**
+     * 현재 결과를 출력합니다
+     */
+    public void printResultWithName(NamedRacingCarDriver namedRacingCarDriver) {
+        for (RacingCar racingCar : namedRacingCarDriver.getRacingCars()) {
+            NamedRacingCar namedRacingCar = (NamedRacingCar) racingCar;
+            System.out.print(namedRacingCar.getName() + " : ");
+            this.printDash(namedRacingCar.getDistance());
+        }
+    }
 }
