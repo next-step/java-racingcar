@@ -20,7 +20,7 @@ class RacingRacingCarGroupTest {
 	void getMoveForwardChance(int carNum, int expectedCallCount) {
 		// given
 		TestUtils.Counter moveForwardCallCounter = TestUtils.createCounter();
-		List<String> carNameList = TestUtils.createAnyCarNameList(carNum);
+		List<CarName> carNameList = TestUtils.createAnyCarNameList(carNum);
 		RacingCarGroup racingCarGroup = RacingCarGroup.of(carNameList, createStrategyForCallCount(moveForwardCallCounter));
 
 		// when
@@ -41,10 +41,11 @@ class RacingRacingCarGroupTest {
 
 		// when
 		racingCarGroup.getMoveForwardChance();
-		List<String> winnerNameList = racingCarGroup.getWinnerNameList();
+		List<CarName> winnerNameList = racingCarGroup.getWinnerNameList();
 
 		// then
-		assertThat(winnerNameList).containsExactlyInAnyOrder("win1", "win2", "win3");
+		assertThat(winnerNameList)
+				.containsExactlyInAnyOrder(new CarName("win1"), new CarName("win2"), new CarName("win3"));
 	}
 
 	@Test
@@ -58,10 +59,11 @@ class RacingRacingCarGroupTest {
 
 		// when
 		racingCarGroup.getMoveForwardChance();
-		List<String> winnerNameList = racingCarGroup.getWinnerNameList();
+		List<CarName> winnerNameList = racingCarGroup.getWinnerNameList();
 
 		// then
-		assertThat(winnerNameList).containsExactlyInAnyOrder("win1", "win2", "win3");
+		assertThat(winnerNameList)
+				.containsExactlyInAnyOrder(new CarName("win1"), new CarName("win2"), new CarName("win3"));
 	}
 
 	@Test
@@ -69,16 +71,16 @@ class RacingRacingCarGroupTest {
 	void getWinnerList_한명만움직임() {
 		// given
 		RacingCar moved1 = createAlwaysMovedCar("win1");
-		RacingCar notMoved1 = createNotMovedCar("loose1");
-		RacingCar notMoved2 = createNotMovedCar("loose2");
+		RacingCar notMoved1 = createNotMovedCar("loos1");
+		RacingCar notMoved2 = createNotMovedCar("loos2");
 		RacingCarGroup racingCarGroup = new RacingCarGroup(Arrays.asList(moved1, notMoved1, notMoved2));
 
 		// when
 		racingCarGroup.getMoveForwardChance();
-		List<String> winnerNameList = racingCarGroup.getWinnerNameList();
+		List<CarName> winnerNameList = racingCarGroup.getWinnerNameList();
 
 		// then
-		assertThat(winnerNameList).containsExactly("win1");
+		assertThat(winnerNameList).containsExactly(new CarName("win1"));
 	}
 
 	@ParameterizedTest
@@ -87,8 +89,8 @@ class RacingRacingCarGroupTest {
 	void size(int carNum) {
 		// given
 		List<RacingCar> racingCarList = new ArrayList<>();
-		List<String> carNameList = TestUtils.createAnyCarNameList(carNum);
-		for (String carName : carNameList) {
+		List<CarName> carNameList = TestUtils.createAnyCarNameList(carNum);
+		for (CarName carName : carNameList) {
 			racingCarList.add(new RacingCar(carName, () -> true));
 		}
 		RacingCarGroup racingCarGroup = new RacingCarGroup(racingCarList);
@@ -101,23 +103,24 @@ class RacingRacingCarGroupTest {
 	@DisplayName("CarGroup.getToStringList() 테스트")
 	void getToStringList() {
 		// given
-		RacingCar car1 = new RacingCar("blue", () -> true);
-		RacingCar car2 = new RacingCar("yellow", () -> true);
+		RacingCar car1 = new RacingCar(new CarName("blue"), () -> true);
+		RacingCar car2 = new RacingCar(new CarName("green"), () -> true);
 		RacingCarGroup racingCarGroup = new RacingCarGroup(Arrays.asList(car1, car2));
 
 		// when
-		List<String> toStringList = racingCarGroup.getToStringList(RacingCar::getCarName);
+		List<String> toStringList = racingCarGroup.getToStringList(
+				racingCar -> String.format("%s", racingCar.getCarName()));
 
 		// then
-		assertThat(toStringList).containsExactly("blue", "yellow");
+		assertThat(toStringList).containsExactly("blue", "green");
 	}
 
 	private RacingCar createNotMovedCar(String name) {
-		return new RacingCar(name, () -> false);
+		return new RacingCar(new CarName(name), () -> false);
 	}
 
 	private RacingCar createAlwaysMovedCar(String name) {
-		return new RacingCar(name, () -> true);
+		return new RacingCar(new CarName(name), () -> true);
 	}
 
 	private static MoveChanceGenerator createStrategyForCallCount(TestUtils.Counter counter) {

@@ -16,7 +16,7 @@ class RacingCarTest {
 	@DisplayName("RacingCar.moveForward() 메소드로 RacingCar.position 이 증가했는지 확인")
 	void moveForward(int moveCount, int expectedPosition) {
 		// given
-		RacingCar racingCar = new RacingCar("", () -> {
+		RacingCar racingCar = new RacingCar(new CarName("hi"), () -> {
 			throw new UnsupportedOperationException();
 		});
 
@@ -33,7 +33,7 @@ class RacingCarTest {
 	void getChanceForMoveForward(int condition, int chance, boolean isMoved) {
 		// given
 		MoveChanceGenerator moveChanceGenerator = () -> condition <= chance;
-		RacingCar racingCar = new RacingCar("", moveChanceGenerator);
+		RacingCar racingCar = new RacingCar(new CarName("hi"), moveChanceGenerator);
 
 		// when
 		final int beforePosition = racingCar.getPosition();
@@ -49,7 +49,7 @@ class RacingCarTest {
 	@DisplayName("RacingCar.toString() 테스트")
 	void racingCarToString(String name, int position) {
 		// given
-		RacingCar racingCar = new RacingCar(name, () -> true, position);
+		RacingCar racingCar = new RacingCar(new CarName(name), () -> true, position);
 
 		// when
 		String toString = racingCar.toString(rc ->

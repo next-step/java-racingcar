@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 public class RacingCarGroup {
 	private final List<RacingCar> racingCarList;
 
-	public static RacingCarGroup of(List<String> carNameList, MoveChanceGenerator moveChanceGenerator) {
+	public static RacingCarGroup of(List<CarName> carNameList, MoveChanceGenerator moveChanceGenerator) {
 		List<RacingCar> racingCarList = new ArrayList<>();
-		for (String carName : carNameList) {
+		for (CarName carName : carNameList) {
 			final RacingCar racingCar = new RacingCar(carName, moveChanceGenerator);
 			racingCarList.add(racingCar);
 		}
@@ -30,7 +30,7 @@ public class RacingCarGroup {
 		}
 	}
 
-	public List<String> getWinnerNameList() {
+	public List<CarName> getWinnerNameList() {
 		OptionalInt maxPosition = getMaxPosition();
 		if (!maxPosition.isPresent()) {
 			return Collections.emptyList();

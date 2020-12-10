@@ -3,6 +3,7 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.car.CarName;
 import racing.car.RacingCarGroup;
 
 import java.util.Collections;
@@ -17,7 +18,7 @@ class RacingGameTest {
 	@DisplayName("차량 대수를 입력받고 그 차량 수 만큼 자동차 경주를 진행")
 	void start_carNum(int carNum) {
 		// given
-		List<String> anyCarNameList = TestUtils.createAnyCarNameList(carNum);
+		List<CarName> anyCarNameList = TestUtils.createAnyCarNameList(carNum);
 		RacingGame racingGame = new RacingGame(anyCarNameList, 5, createEmptyRacingNotifier());
 
 		// when
@@ -40,7 +41,7 @@ class RacingGameTest {
 			}
 
 			@Override
-			public void notifyWinner(List<String> winnerNameList) {
+			public void notifyWinner(List<CarName> winnerNameList) {
 				// do nothing;
 			}
 		};
@@ -62,7 +63,7 @@ class RacingGameTest {
 			}
 
 			@Override
-			public void notifyWinner(List<String> winnerNameList) {
+			public void notifyWinner(List<CarName> winnerNameList) {
 
 			}
 		};

@@ -5,15 +5,15 @@ import java.util.function.Function;
 
 public class RacingCar {
 
-	private final String carName;
+	private final CarName carName;
 	private final MoveChanceGenerator moveChanceGenerator;
 	private int position;
 
-	RacingCar(String carName, MoveChanceGenerator moveChanceGenerator) {
+	RacingCar(CarName carName, MoveChanceGenerator moveChanceGenerator) {
 		this(carName, moveChanceGenerator, 0);
 	}
 
-	RacingCar(String carName, MoveChanceGenerator moveChanceGenerator, int position) {
+	RacingCar(CarName carName, MoveChanceGenerator moveChanceGenerator, int position) {
 		this.carName = carName;
 		this.moveChanceGenerator = moveChanceGenerator;
 		this.position = position;
@@ -25,7 +25,7 @@ public class RacingCar {
 		}
 	}
 
-	public String getCarName() {
+	public CarName getCarName() {
 		return this.carName;
 	}
 

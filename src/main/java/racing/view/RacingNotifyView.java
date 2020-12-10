@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.RacingNotifier;
+import racing.car.CarName;
 import racing.car.RacingCar;
 import racing.car.RacingCarGroup;
 
@@ -19,7 +20,7 @@ public class RacingNotifyView implements RacingNotifier {
 	}
 
 	@Override
-	public void notifyWinner(List<String> winnerNameList) {
+	public void notifyWinner(List<CarName> winnerNameList) {
 		if (winnerNameList.isEmpty()) {
 			throw new IllegalArgumentException("우승자가 없습니다");
 		}
@@ -31,7 +32,7 @@ public class RacingNotifyView implements RacingNotifier {
 
 	private static Function<RacingCar, String> getRacingCarStringFunction() {
 		return racingCar -> {
-			String carName = racingCar.getCarName();
+			CarName carName = racingCar.getCarName();
 			String position = getPositionAsString(racingCar.getPosition());
 			return String.format("%s : %s", carName, position);
 		};
