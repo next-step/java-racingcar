@@ -2,24 +2,50 @@ package racing;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Random;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racing.model.RacingCar;
+import racing.model.service.ForwardCarConditional;
+import racing.model.service.RandomCarConditional;
+import racing.model.service.StopCarConditional;
 
 class RacingCarTest {
 
 	@Test
 	@DisplayName("자동차 랜덤 레이스 움직임 구현")
-	void randomRaceCarTest() {
+	void RandomCarConditionalTest() {
 
 		RacingCar car = new RacingCar();
+		RandomCarConditional randomCarConditional = new RandomCarConditional();
 
-		car.move(() -> car.axel().isMove());
+		car.move(randomCarConditional);
 
 		assertThat(car.getDistance()).isPositive();
+	}
+
+	@Test
+	@DisplayName("자동차 랜덤 레이스 움직임 구현")
+	void ForwardCarConditionalTest() {
+
+		RacingCar car = new RacingCar();
+		ForwardCarConditional forwardCarConditional = new ForwardCarConditional();
+
+		car.move(forwardCarConditional);
+
+		assertThat(car.getDistance()).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("자동차 멈춤 전략 테스트 적용")
+	void StopCarConditionalTest() {
+
+		RacingCar car = new RacingCar();
+		StopCarConditional stopCarConditional = new StopCarConditional();
+
+		car.move(stopCarConditional);
+
+		assertThat(car.getDistance()).isZero();
 	}
 
 	@Test
@@ -43,15 +69,5 @@ class RacingCarTest {
 		car.move(() -> false);
 
 		assertThat(car.getDistance()).isZero();
-	}
-
-	@Test
-	@DisplayName("랜덤 상수 생성 테스트")
-	void randomTest() {
-
-		int number = new Random().nextInt(10);
-
-		System.out.println(number);
-		assertThat(number).isLessThan(10);
 	}
 }

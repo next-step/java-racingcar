@@ -3,6 +3,8 @@ package racing.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import racing.model.service.RandomCarConditional;
+
 public class RacingCars {
 
 	// 레이싱 차량 저장 리스트
@@ -38,12 +40,9 @@ public class RacingCars {
 	 */
 	public void start() {
 
-		// 가독성이 안좋아서 수정
-		// this.racingCars.forEach((racingCar -> racingCar.move(()->racingCar.checkCar().isMove())));
-		for (RacingCar car : this.racingCars) {
-
-			car.move(() -> car.axel().isMove());
-		}
+		RandomCarConditional randomCarConditional = new RandomCarConditional();
+		
+		this.racingCars.forEach(racingCar -> racingCar.move(randomCarConditional));
 	}
 
 	/**
