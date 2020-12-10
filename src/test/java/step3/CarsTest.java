@@ -13,7 +13,7 @@ public class CarsTest {
 	@Test
 	@DisplayName("carNumber만큼 car를 생성한다.")
 	void constructorTest() {
-		Cars cars = new Cars(3, new DefaultNumberGenerator(4));
+		Cars cars = new Cars(3, DefaultNumberGenerator.getMustGoGenerator());
 
 		assertThat(cars).isNotNull();
 		assertThat(cars.get(0)).isNotNull();
@@ -27,7 +27,7 @@ public class CarsTest {
 	@ValueSource(ints = {3, 5, 9})
 	@DisplayName("carNumber만큼 car를 생성한다.")
 	void goOrStopTest(int tryNumber) {
-		Cars cars = new Cars(3, new DefaultNumberGenerator(4));
+		Cars cars = new Cars(3, DefaultNumberGenerator.getMustGoGenerator());
 
 		for (int i = 0; i < tryNumber; i++) {
 			cars.goOrStop();
@@ -41,7 +41,7 @@ public class CarsTest {
 	@Test
 	@DisplayName("깊은 복제로 새로운 Car 객체를 생성하고 리스트를 반환한다.")
 	void cloneListTest() {
-		Cars cars = new Cars(3, new DefaultNumberGenerator(4));
+		Cars cars = new Cars(3, DefaultNumberGenerator.getMustGoGenerator());
 		List<Car> cloneCars = cars.cloneList();
 
 		assertThat(cars.get(0)).isNotEqualTo(cloneCars.get(0));

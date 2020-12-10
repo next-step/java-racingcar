@@ -17,7 +17,7 @@ public class RecordsTest {
 	@DisplayName("저장된 Car들의 position값을 반환한다.")
 	void getResultTest(int one, int two, int three) {
 		Records records = new Records();
-		DefaultNumberGenerator numberGenerator = new DefaultNumberGenerator(5);
+		DefaultNumberGenerator numberGenerator = DefaultNumberGenerator.getMustGoGenerator();
 
 		List<Car> cars = new ArrayList<>();
 		cars.add(new Car(one, numberGenerator));
