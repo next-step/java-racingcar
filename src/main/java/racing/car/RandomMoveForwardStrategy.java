@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RandomMoveForwardStrategy implements MoveForwardStrategy {
 
-	private final int BOUND_MAX = 10;
-	private final int CHANCE_MINIMUM = 4;
+	public final int BOUND_MAX = 10;
+	public final int CHANCE_MINIMUM = 4;
 	private final Random random;
 
 	public RandomMoveForwardStrategy() {
