@@ -1,4 +1,4 @@
-package calculator;
+package calculator.domain;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
