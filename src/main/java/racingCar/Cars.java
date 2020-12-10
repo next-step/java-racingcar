@@ -49,7 +49,8 @@ public class Cars {
 	public void runLap() {
 		LapHistory lapHistory = new LapHistory();
 		for (Car car : cars) {
-			car.randomMove();
+			//car.randomMove();
+			car.move();
 			setWinnerPosition(car.getPosition());
 			lapHistory.add(new CarHistory(car));
 		}
@@ -68,7 +69,8 @@ public class Cars {
 	}
 
 	private void createCars(String[] carNames) {
-		IntStream.range(0, carNames.length).forEach(i -> cars.add(new Car(carNames[i])));
+		MoveUtil moveUtil = new MoveUtil();
+		IntStream.range(0, carNames.length).forEach(i -> cars.add(new Car(moveUtil, carNames[i])));
 	}
 
 	public RaceHistory getHistory() {

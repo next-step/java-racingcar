@@ -2,6 +2,7 @@ package racingCar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -21,9 +22,16 @@ public class CarTest {
 	@DisplayName("1. 자동차의 전진 조건값이 4이상일 경우 이동한다.")
 	@ParameterizedTest
 	@ValueSource(ints = {4, 5, 6})
-	void moveWhenArgOverFour(int arg) {
-		Car car = new Car();
-		car.move(arg);
+	void moveWhenArgOverFour(int arg){
+		MoveUtil moveUtil = new MoveUtil(){
+			@Override
+			public int move() {
+				return arg;
+			}
+		};
+
+		Car car = new Car(moveUtil, "car");
+		car.move();
 		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
@@ -32,8 +40,15 @@ public class CarTest {
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
 	void notMoveWhenArgUnderFour(int arg) {
-		Car car = new Car();
-		car.move(arg);
+		MoveUtil moveUtil = new MoveUtil(){
+			@Override
+			public int move() {
+				return arg;
+			}
+		};
+
+		Car car = new Car(moveUtil, "car");
+		car.move();
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
 
@@ -42,8 +57,15 @@ public class CarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"pobiconan", "nextstep", "lannstark"})
 	void carNameCannotOverFive(String carName) {
+		MoveUtil moveUtil = new MoveUtil(){
+			@Override
+			public int move() {
+				return 4;
+			}
+		};
+
 		assertThatThrownBy(() -> {
-			Car car = new Car(carName);
+			Car car = new Car(moveUtil, carName);
 		}).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("자동차의 이름은 5자를 초과할 수 없습니다.");
 	}

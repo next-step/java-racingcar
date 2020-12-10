@@ -12,15 +12,13 @@ public class Car {
 	private static final int CAR_NAME_LENGTH_MAXIMUM_VALUE = 5;
 	private int position;
 	private String name;
+	private MoveUtil moveUtil;
 
-	public Car() {
-		position = 0;
-	}
-
-	public Car(String carName) {
+	public Car(MoveUtil moveUtil, String carName) {
 		validateCarName(carName);
 		this.name = carName;
 		this.position = 0;
+		this.moveUtil = moveUtil;
 	}
 
 	private void validateCarName(String carName) {
@@ -28,25 +26,15 @@ public class Car {
 			throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다.");
 	}
 
-	public Car(Car copyCar) {
-		this.name = copyCar.name;
-		this.position = copyCar.position;
-	}
-
-	public void move(int arg) {
-		if (isMovable(arg)) {
+	public void move() {
+		int moveCondition = moveUtil.move();
+		if (isMovable(moveCondition)) {
 			position++;
 		}
 	}
 
 	private boolean isMovable(int arg) {
 		return arg >= MOVABLE_MINIMUM_VALUE;
-	}
-
-	public void randomMove() {
-		Random random = new Random();
-		int condition = random.nextInt(10);
-		move(condition);
 	}
 
 	public int getPosition() {
@@ -56,4 +44,5 @@ public class Car {
 	public String getName() {
 		return name;
 	}
+
 }
