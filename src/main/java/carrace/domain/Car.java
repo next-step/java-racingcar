@@ -38,6 +38,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getRacingResult() {
         StringBuilder result = new StringBuilder();
         result.append(name).append(" : ");
