@@ -1,10 +1,12 @@
 package com.ssabae.nextstep.racingcar.step03.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * @author : leesangbae
@@ -21,14 +23,16 @@ public class Cars {
     private final Operator<MoveState> operator;
     private final Random random;
 
-    private final Stream<Car> generate = Stream.generate(Car::new);
-
-    public Cars(Random random, int count) {
-        this.carList = new ArrayList<>();
+    public Cars(Random random, String names) {
         this.operator = new MoveOperator(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE, MOVEMENT_MIN_VALUE);
         this.random = random;
-        this.generate.limit(count)
-                .forEach(carList::add);
+
+        List<String> carNames = splitCarNames(names);
+        this.carList = Collections.unmodifiableList(carNames.stream().map(Car::new).collect(Collectors.toList()));
+    }
+
+    private List<String> splitCarNames(String names) {
+        return Arrays.asList(names.split(","));
     }
 
     public void moving() {
@@ -40,6 +44,21 @@ public class Cars {
     }
 
     public List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
+        return carList;
+    }
+
+    public String getWinnerNames() {
+        int maxMoveCount = getMaxMoveCount();
+        return carList.stream()
+                .filter(car -> car.getMoveCount() == maxMoveCount)
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+    }
+
+    private int getMaxMoveCount() {
+        return carList.stream()
+                .map(Car::getMoveCount)
+                .max(Comparator.comparingInt(o -> o))
+                .orElse(0);
     }
 }

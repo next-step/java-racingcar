@@ -6,5 +6,6 @@ package com.ssabae.nextstep.racingcar.step03.domain;
  * @since : 2020-12-07
  */
 public interface Operator<T> {
+
     T operate(int number);
 }

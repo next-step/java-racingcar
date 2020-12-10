@@ -1,7 +1,7 @@
 package com.ssabae.nextstep.racingcar.step03;
 
-import com.ssabae.nextstep.racingcar.step03.domain.CarsPrinter;
 import com.ssabae.nextstep.racingcar.step03.domain.Cars;
+import com.ssabae.nextstep.racingcar.step03.domain.CarsPrinter;
 import java.util.Random;
 
 /**
@@ -22,15 +22,15 @@ public class RacingGame {
     }
 
     public void playGame() {
-        int carsCount = inputHelper.inputCarsCount();
+        String carNames = inputHelper.inputCarNames();
         int tryCount = inputHelper.inputTryCount();
 
-        Cars cars = new Cars(random, carsCount);
+        Cars cars = new Cars(random, carNames);
         System.out.println("실행 결과");
         for (int i = 0; i < tryCount; i++) {
             cars.moving();
             carsPrinter.print(cars);
         }
-
+        carsPrinter.printWinner(cars);
     }
 }
