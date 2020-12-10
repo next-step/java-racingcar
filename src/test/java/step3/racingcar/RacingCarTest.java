@@ -2,8 +2,7 @@ package step3.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,11 +45,11 @@ public class RacingCarTest {
 	@DisplayName("자동차 콜렉션에서 이름 구하기")
 	@Test
 	void given_racing_cars_when_get_names_then_return_racingcar_names() {
-		RacingCars racingCars = new RacingCars(Stream.of(
+		RacingCars racingCars = new RacingCars(Arrays.asList(
 			new RacingCar("hong", 5),
 			new RacingCar("pobi", 3),
 			new RacingCar("lee", 5)
-		).collect(Collectors.toList()));
+		));
 
 		assertThat(racingCars.getNames()).isEqualTo("hong, pobi, lee");
 	}
