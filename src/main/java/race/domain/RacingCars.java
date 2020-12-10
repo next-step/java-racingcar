@@ -41,11 +41,20 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public Car get(int index) {
+        return cars.get(index);
+    }
+
     public int size() {
         return cars.size();
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Car> getMostMovingCars() {
+        int mostMovingDistance = cars.stream()
+                .mapToInt(Car::getMovedDistance)
+                .max().orElseThrow(() -> new IllegalStateException("자동차 중 거리가 없는 값이 존재합니다."));
+        return cars.stream()
+                .filter(car -> car.getMovedDistance() == mostMovingDistance)
+                .collect(Collectors.toList());
     }
 }

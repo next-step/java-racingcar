@@ -27,7 +27,7 @@ public class Car {
         this.distance += distance;
     }
 
-    public String getCarName() {
+    public String getName() {
         return carName.get();
     }
 }
