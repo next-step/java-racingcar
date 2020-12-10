@@ -44,7 +44,7 @@ public class Cars {
 	}
 
 	private void setWinners() {
-		winners = cars.stream().filter(car -> car.getPosition() == winnerPosition)
+		winners = cars.stream().filter(car -> car.isWinner(winnerPosition))
 			.collect(Collectors.toList());
 	}
 
@@ -86,4 +86,5 @@ public class Cars {
 	public List<Car> getWinners() {
 		return winners;
 	}
+
 }
