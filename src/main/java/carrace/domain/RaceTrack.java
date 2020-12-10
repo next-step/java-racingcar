@@ -13,6 +13,13 @@ public class RaceTrack {
         this.carList.addAll(CarFactory.makeCars(carCount));
     }
 
+    public RaceTrack(RacingRule racingRule, String[] carNames) {
+        this.racingRule = racingRule;
+        for (String carName : carNames) {
+            carList.add(new Car(1, carName));
+        }
+    }
+
     public RaceTrack(RacingRule racingRule, Car... cars) {
         this.racingRule = racingRule;
         carList.addAll(Arrays.asList(cars));

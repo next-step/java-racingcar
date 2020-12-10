@@ -21,17 +21,17 @@ class CarTest {
 
     @Test
     void carPositionTest() {
-        Car car = new Car(1);
+        Car car = new Car(1, "pobi");
         assertThat(car.getPosition()).isEqualTo(1);
-        assertThat(car.toString()).isEqualTo("-");
+        assertThat(car.getRacingResult()).isEqualTo("pobi : -");
 
-        car = new Car(2);
+        car = new Car(2, "crong");
         assertThat(car.getPosition()).isEqualTo(2);
-        assertThat(car.toString()).isEqualTo("--");
+        assertThat(car.getRacingResult()).isEqualTo("crong : --");
 
-        car = new Car(5);
+        car = new Car(5, "honux");
         assertThat(car.getPosition()).isEqualTo(5);
-        assertThat(car.toString()).isEqualTo("-----");
+        assertThat(car.getRacingResult()).isEqualTo("honux : -----");
     }
 
 }

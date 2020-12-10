@@ -1,12 +1,14 @@
 package carrace.ui;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.regex.PatternSyntaxException;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int scanCarCount() {
-        return repeatScanCount("자동차 대수는 몇 대 인가요?");
+    public static String[] scanCarName() {
+        return repeatScanName("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
     public static int scanTryCount() {
@@ -29,5 +31,20 @@ public class InputView {
 
     private static int scanCount() {
         return Integer.parseInt(scanner.nextLine());
+    }
+
+    private static String[] repeatScanName(String message) {
+        while(true) {
+            try {
+                System.out.println(message);
+                return scanName();
+            } catch (PatternSyntaxException | NoSuchElementException ex) {
+                System.out.println("이름 입력 양식이 올바르지 않습니다.");
+            }
+        }
+    }
+
+    private static String[] scanName() {
+        return scanner.nextLine().split(",");
     }
 }
