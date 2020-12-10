@@ -27,7 +27,6 @@ class CarTest {
 
         assertThat(car.getMoveCount()).isEqualTo(2);
         assertThat(car.getName()).isEqualTo("Test");
-        assertThat(car.getPrintString()).isEqualTo("Test : --");
 
     }
 
@@ -42,7 +41,6 @@ class CarTest {
 
         assertThat(car.getMoveCount()).isEqualTo(0);
         assertThat(car.getName()).isEqualTo("Test");
-        assertThat(car.getPrintString()).isEqualTo("Test : ");
     }
 
 

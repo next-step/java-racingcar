@@ -24,18 +24,15 @@ public class Cars {
     private final Random random;
 
     public Cars(Random random, String names) {
-        this.carList = new ArrayList<>();
         this.operator = new MoveOperator(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE, MOVEMENT_MIN_VALUE);
         this.random = random;
-        addCarList(splitCarNames(names));
+
+        List<String> carNames = splitCarNames(names);
+        this.carList = Collections.unmodifiableList(carNames.stream().map(Car::new).collect(Collectors.toList()));
     }
 
     private List<String> splitCarNames(String names) {
         return Arrays.asList(names.split(","));
-    }
-
-    private void addCarList(List<String> names) {
-        names.forEach(name -> carList.add(new Car(name)));
     }
 
     public void moving() {
@@ -47,7 +44,7 @@ public class Cars {
     }
 
     public List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
+        return carList;
     }
 
     public String getWinnerNames() {

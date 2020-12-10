@@ -16,7 +16,12 @@ public class CarsPrinter {
     }
 
     private void printCar(Car car) {
-        System.out.println(car.getPrintString());
+        StringBuilder output = new StringBuilder();
+        output.append(String.format("%s : ", car.getName()));
+        for (int i = 0; i < car.getMoveCount(); i++) {
+            output.append("-");
+        }
+        System.out.println(output.toString());
     }
 
     public void printWinner(Cars cars) {

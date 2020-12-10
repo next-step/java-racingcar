@@ -35,12 +35,4 @@ public class Car {
         return name;
     }
 
-    public String getPrintString() {
-        StringBuilder output = new StringBuilder();
-        output.append(String.format("%s : ", this.name));
-        for (int i = 0; i < moveCount; i++) {
-            output.append("-");
-        }
-        return output.toString();
-    }
 }
