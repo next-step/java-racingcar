@@ -1,11 +1,13 @@
 package step3;
 
+import java.util.List;
+
 public class RacingGame {
 
     private Cars cars;
 
-    public RacingGame(int carCount) {
-        this.cars = new Cars(carCount);
+    public RacingGame(List<String> carNameList) {
+        this.cars = new Cars(carNameList);
     }
 
     public void play() {
@@ -14,6 +16,10 @@ public class RacingGame {
 
     public String getPlayResult(){
         return cars.getWayResult();
+    }
+
+    public List<Car> getWinners() {
+        return cars.getWinners();
     }
 
 }

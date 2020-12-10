@@ -20,7 +20,7 @@ public class CarTest {
     public void 차_이동_테스트(String input) {
         int moveCount = Integer.parseInt(input.split(SEPARATOR)[0]);
         String expected = input.split(SEPARATOR)[1];
-        Car car = new Car();
+        Car car = new Car("Dummy");
         for (int i = 0; i < moveCount; i++) {
             car.move();
         }

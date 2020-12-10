@@ -21,7 +21,7 @@ public class CarMoverTest {
         int number = Integer.parseInt(input.split(SEPARATOR)[0]);
         String expected = input.split(SEPARATOR)[1];
 
-        Car car = new Car();
+        Car car = new Car("Dummy");
         CarMover carMover = new CarMover();
         carMover.moveOrNot(car, number);
         assertThat(car.getWayResult()).isEqualTo(expected);
