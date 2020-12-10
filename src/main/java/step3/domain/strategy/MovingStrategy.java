@@ -1,4 +1,4 @@
-package step3.model;
+package step3.domain.strategy;
 
 public interface MovingStrategy {
     int move();

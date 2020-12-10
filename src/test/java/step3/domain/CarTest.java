@@ -1,6 +1,7 @@
-package step3;
+package step3.domain;
 
-import step3.model.RandomMovingStrategy;
+import step3.RandomNumberProvider;
+import step3.domain.strategy.RandomMovingStrategy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -48,7 +49,7 @@ public class CarTest {
     @RepeatedTest(value = 5)
     @DisplayName("자동차 전진 테스트")
     void acceleratorTest() {
-        car.accelerate(new RandomMovingStrategy());
+        car.accelerate(new RandomMovingStrategy(3, 1));
         assertThat(car.getDistance().getMileage()).isGreaterThanOrEqualTo(0);
     }
 

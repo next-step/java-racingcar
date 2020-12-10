@@ -1,6 +1,6 @@
-package step3.model;
+package step3.domain;
 
-import step3.Car;
+import step3.domain.strategy.MovingStrategy;
 
 import java.util.List;
 
@@ -17,6 +17,18 @@ public class RacingCarGame {
 
     public List<Car> getCars() {
         return cars.getCars();
+    }
+
+    private Distance getMaxDistance() {
+        return cars.pickDistance("max");
+    }
+
+    private Distance getMinDistance() {
+        return cars.pickDistance("min");
+    }
+
+    public List<String> getWinnerCarNames() {
+        return cars.getWinnerCarNames(getMaxDistance());
     }
 
     public void play(MovingStrategy movingStrategy) {

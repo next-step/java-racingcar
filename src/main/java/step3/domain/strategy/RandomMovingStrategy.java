@@ -1,10 +1,15 @@
-package step3.model;
+package step3.domain.strategy;
 
 import step3.RandomNumberProvider;
 
 public class RandomMovingStrategy implements MovingStrategy {
-    private final int MOVEMENT_CONDITION = 3;
-    private final int MOVEMENT_DISTANCE = 1;
+    private final int MOVEMENT_CONDITION;
+    private final int MOVEMENT_DISTANCE;
+
+    public RandomMovingStrategy(int movementCondition, int movementDistance) {
+        this.MOVEMENT_CONDITION = movementCondition;
+        this.MOVEMENT_DISTANCE = movementDistance;
+    }
 
     @Override
     public int move() {

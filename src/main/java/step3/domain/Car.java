@@ -1,6 +1,6 @@
-package step3;
+package step3.domain;
 
-import step3.model.MovingStrategy;
+import step3.domain.strategy.MovingStrategy;
 
 public class Car {
     private Distance distance;
