@@ -19,23 +19,27 @@ class RacingGameTest extends BaseTest {
     @MethodSource("countAndValidName")
     @DisplayName("Cars 객체의 수를 전달하여 원하는 수만큼 생성 됐는지 확인하는 테스트")
     void checkExpectedNumberOfCars(final int randomValue, final List<String> carNames) {
-        final RacingGame game = new RacingGame();
+        for (int i = 0; i < randomValue; i++) {
+            final RacingGame game = new RacingGame();
 
-        final Cars cars = game.getCars(carNames);
+            final Cars cars = game.createCarsInstance(carNames);
 
-        assertEquals(cars.getHowManyRacingCars(), randomValue);
+            assertEquals(cars.getHowManyRacingCars(), carNames.size());
+        }
     }
 
     @ParameterizedTest
     @MethodSource("countAndValidName")
     @DisplayName("Cars 객체의 수를 전달하여 원하는 수가 아닌 수를 반환하는 경우에 대해 확인하는 테스트")
     void checkIsNotExpectedNumberOfCars(final int randomValue, final List<String> carNames) {
-        final RacingGame game = new RacingGame();
+        for (int i = 0; i < randomValue; i++) {
+            final RacingGame game = new RacingGame();
 
-        final Cars cars = game.getCars(carNames);
+            final Cars cars = game.createCarsInstance(carNames);
 
-        assertNotEquals(cars.getHowManyRacingCars(), randomValue + 1);
-        assertNotEquals(cars.getHowManyRacingCars(), randomValue - 1);
+            assertNotEquals(cars.getHowManyRacingCars(), carNames.size() + 1);
+            assertNotEquals(cars.getHowManyRacingCars(), carNames.size() - 1);
+        }
     }
 
     @ParameterizedTest
@@ -55,7 +59,7 @@ class RacingGameTest extends BaseTest {
     void checkRacingOfCarsWhenGivenNumberOfTryTimes(final int randomValue, final List<String> carNames) {
         final RacingGame game = new RacingGame();
 
-        final Cars cars = game.getCars(carNames);
+        final Cars cars = game.createCarsInstance(carNames);
 
         game.racingGivenNumberOfTimes(randomValue, cars);
 

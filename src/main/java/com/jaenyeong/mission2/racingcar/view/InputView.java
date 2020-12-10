@@ -3,12 +3,13 @@ package com.jaenyeong.mission2.racingcar.view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+
+import static com.jaenyeong.mission2.racingcar.util.Parser.separateInputBySeparator;
+import static com.jaenyeong.mission2.racingcar.util.Validation.invalidNamesOfCars;
 
 public class InputView implements Input {
-    public static final int EMPTY = 0;
-    final Output output;
-    final Scanner scanner;
+    private final Output output;
+    private final Scanner scanner;
 
     public InputView(final Output output) {
         this.output = output;
@@ -16,12 +17,12 @@ public class InputView implements Input {
     }
 
     @Override
-    public int inputHowManyUseCars() {
+    public int inputHowManyTryTimes() {
         return inputUntilCorrectIntType();
     }
 
     private int inputUntilCorrectIntType() {
-        int input = CAN_NOT_READ;
+        int input;
         do {
             input = inputIntValue();
 
@@ -42,11 +43,6 @@ public class InputView implements Input {
 
     private void printErrorMessage() {
         output.printErrWhenInvalidDataTypeInput();
-    }
-
-    @Override
-    public int inputHowManyTryTimes() {
-        return inputUntilCorrectIntType();
     }
 
     @Override
@@ -81,17 +77,5 @@ public class InputView implements Input {
         }
 
         return false;
-    }
-
-    private boolean invalidNamesOfCars(final List<String> carNames) {
-        if (carNames.size() <= EMPTY) {
-            return true;
-        }
-
-        final List<String> collect = carNames.stream()
-            .filter((name) -> name.length() > EMPTY)
-            .collect(Collectors.toList());
-
-        return !(carNames.size() == collect.size());
     }
 }

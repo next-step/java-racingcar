@@ -5,14 +5,9 @@ import com.jaenyeong.mission2.racingcar.dto.RacingHistoryDto;
 
 import java.util.StringJoiner;
 
+import static com.jaenyeong.mission2.racingcar.util.Parser.parseToPrintFormatFromRacingHistory;
+
 public class OutputView implements Output {
-
-    public static final int START_TURN = 1;
-
-    @Override
-    public void printHowManyUseCars() {
-        printMessage(HOW_MANY_USE_CARS);
-    }
 
     @Override
     public void printHowManyTryTimes() {
@@ -30,8 +25,8 @@ public class OutputView implements Output {
     }
 
     @Override
-    public void printExecutionResult() {
-        printMessage("");
+    public void printTextExecutionResult() {
+        printMessage(EMPTY);
         printMessage(EXECUTION_RESULT);
     }
 
@@ -39,25 +34,14 @@ public class OutputView implements Output {
     public void printAllRacingHistoriesResult(final RacingHistoryDto historyDto) {
         for (int turn = START_TURN; turn <= historyDto.getMaxTurn(); turn++) {
             printCarByTurn(historyDto, turn);
-            printMessage("");
+            printMessage(EMPTY);
         }
     }
 
     private void printCarByTurn(final RacingHistoryDto history, final int turn) {
         for (Car car : history.getCarList()) {
-            printMessage(convertFormatPrintRacingHistory(car.getName(), car.getDistanceByTurn(turn)));
+            printMessage(parseToPrintFormatFromRacingHistory(car.getName(), car.getDistanceByTurn(turn)));
         }
-    }
-
-    private String convertFormatPrintRacingHistory(final String carName, final int distance) {
-        final StringBuilder sb = new StringBuilder();
-        sb.append(carName)
-            .append(" : ");
-
-        for (int i = 0; i < distance; i++) {
-            sb.append(DASH);
-        }
-        return sb.toString();
     }
 
     @Override
