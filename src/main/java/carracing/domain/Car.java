@@ -21,7 +21,7 @@ public class Car {
     }
 
     public boolean isWon(int winningPositionNumber) {
-        return winningPositionNumber == this.position.getNumber();
+        return position.isSameWith(winningPositionNumber);
     }
 
     public CarPosition getPosition() {
