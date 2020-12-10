@@ -1,8 +1,12 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
+
+    private static final String SPLIT_REGEX = ",";
 
     private final Scanner scanner = new Scanner(System.in);
 
@@ -23,4 +27,31 @@ public class InputView {
         return this.scanner.nextInt();
     }
 
+    /**
+     * 참가자 리스트를 받습니다.
+     * @return round
+     */
+    public NamedRacingCarDriver inputParticipants() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return new NamedRacingCarDriver(this.makeParticipantsList(this.scanner.nextLine()));
+    }
+
+    /**
+     * @param inputs
+     * @return
+     */
+    public String[] makeParticipantsList(String inputs) {
+        List<String> participants = new ArrayList<>();
+        for (String input : inputs.split(InputView.SPLIT_REGEX)) {
+            participants.add(this.validateName(input.trim()));
+        }
+        return participants.toArray(new String[participants.size()]);
+    }
+
+    public String validateName(String name) {
+        if(name != null && name.length() <= 5) {
+            return name;
+        }
+        throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
+    }
 }

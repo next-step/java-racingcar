@@ -57,4 +57,8 @@ public class RacingCarDriver {
         }
         return nowDistances;
     }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
 }

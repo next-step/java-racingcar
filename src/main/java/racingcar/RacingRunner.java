@@ -3,20 +3,17 @@ package racingcar;
 import racingcar.rule.RacingRule;
 import racingcar.rule.RandomRacingRule;
 
-import java.util.Scanner;
-
 public class RacingRunner {
 
     private final InputView inputView = new InputView();
     private final ResultView resultView = new ResultView();
 
-    private RacingCarDriver racingCarController;
+    private RacingCarDriver racingCarDriver;
 
     public void run() {
-        this.racingCarController = this.inputView.inputCarAmount();
+        this.racingCarDriver = this.inputView.inputParticipants();
         this.playRound(this.inputView.inputRacingRound());
     }
-
 
     /**
      * 주어진 회차만큼 진행합니다.
@@ -27,8 +24,8 @@ public class RacingRunner {
 
         this.resultView.printStartResult();
         for (int i = 0; i < round; i++) {
-            this.racingCarController.moveForwardAll(racingRule);
-            this.resultView.printResult(this.racingCarController);
+            this.racingCarDriver.moveForwardAll(racingRule);
+            this.resultView.printResult(this.racingCarDriver);
             this.resultView.printEndRound();
         }
     }
