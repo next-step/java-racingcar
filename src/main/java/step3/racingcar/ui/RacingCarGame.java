@@ -2,6 +2,7 @@ package step3.racingcar.ui;
 
 import step3.racingcar.domain.RacingCarGenerator;
 import step3.racingcar.domain.RacingCars;
+import step3.racingcar.domain.Referee;
 import step3.racingcar.domain.RoundRecorder;
 
 public class RacingCarGame {
@@ -15,24 +16,22 @@ public class RacingCarGame {
 	}
 
 	public void start() {
-		int participateCarCount = inputView.participateCarCountInput();
-		int racingExecuteCountInput = inputView.racingExecuteCountInput();
+		final String[] carNames = inputView.InputCarNames();
+		final int racingExecuteCountInput = inputView.racingExecuteCountInput();
 
 		RoundRecorder roundRecorder = new RoundRecorder(racingExecuteCountInput);
 
-		RacingCars racingCars = RacingCarGenerator.generate(participateCarCount);
+		RacingCars racingCars = RacingCarGenerator.generate(carNames);
 
 		for (int round = 1; round <= racingExecuteCountInput; round++) {
 			racingCars.moveAll();
 			roundRecorder.record(round, racingCars);
 		}
 
-		resultView.printResult(roundRecorder);
+		Referee referee = new Referee(racingCars);
 
-	}
-
-	private void play(final RacingCars racingCars) {
-
+		resultView.printRacingRounds(roundRecorder);
+		resultView.printWinners(referee);
 
 	}
 

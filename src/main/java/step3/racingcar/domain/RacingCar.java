@@ -2,15 +2,26 @@ package step3.racingcar.domain;
 
 public class RacingCar {
 
-	private final int id;
+	private final String name;
 	private int moveDistance;
 
-	public RacingCar(final int id) {
-		this.id = id;
+	public RacingCar(final String name) {
+		validate(name);
+		this.name = name;
 	}
 
-	public RacingCar(final int id, final int moveDistance) {
-		this.id = id;
+	private void validate(final String name) {
+		if (name == null || name.isEmpty()) {
+			throw new IllegalArgumentException("자동차 이름은 필수 값입니다");
+		}
+
+		if (name.length() > 5) {
+			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+		}
+	}
+
+	public RacingCar(final String name, final int moveDistance) {
+		this(name);
 		this.moveDistance = moveDistance;
 	}
 
@@ -32,6 +43,11 @@ public class RacingCar {
 		return this.moveDistance;
 	}
 
+	public RacingCar copy() {
+		return new RacingCar(this.name, this.moveDistance);
+	}
+
+
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
@@ -41,15 +57,20 @@ public class RacingCar {
 
 		final RacingCar racingCar = (RacingCar)o;
 
-		return id == racingCar.id;
+		if (moveDistance != racingCar.moveDistance)
+			return false;
+		return name != null ? name.equals(racingCar.name) : racingCar.name == null;
 	}
 
 	@Override
 	public int hashCode() {
-		return id;
+		int result = name != null ? name.hashCode() : 0;
+		result = 31 * result + moveDistance;
+		return result;
 	}
 
-	public int getId() {
-		return this.id;
+	@Override
+	public String toString() {
+		return this.name;
 	}
 }
