@@ -11,7 +11,6 @@ import racing.model.RacingCar;
 
 class RacingCarTest {
 
-
 	@Test
 	@DisplayName("자동차 랜덤 레이스 움직임 구현")
 	void randomRaceCarTest() {

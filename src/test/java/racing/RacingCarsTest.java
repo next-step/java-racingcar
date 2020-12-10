@@ -3,7 +3,6 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racing.model.RacingCar;
 import racing.model.RacingCars;
 import racing.view.UserOutput;
 
@@ -20,6 +19,5 @@ public class RacingCarsTest {
 			UserOutput.printCarLocation(cars.getRacingCars());
 		}
 	}
-
 
 }

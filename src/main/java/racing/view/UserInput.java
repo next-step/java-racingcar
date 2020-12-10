@@ -2,7 +2,7 @@ package racing.view;
 
 import java.util.Scanner;
 
-public class UserInput{
+public class UserInput {
 
 	private static final Scanner SCANNER = new Scanner(System.in);
 

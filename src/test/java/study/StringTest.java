@@ -18,15 +18,15 @@ public class StringTest {
 		 * Assertj contains(param)
 		 * 비교하는 대상에 value 가 포함 여부 확인 메서드
 		 */
-		assertThat(result).contains("1");	// ture
-		assertThat(result).contains("2");	// ture
+		assertThat(result).contains("1");    // ture
+		assertThat(result).contains("2");    // ture
 		//assertThat(result).contains("3");	// false: 포함되지 않은 value
 
 		/*
 		 * Assertj containsExactly(params)
 		 * 비교하는 대상의 index 와 value 가 동일한지 판단 확인 메서드
 		 */
-		assertThat(result).containsExactly("1","2");	// true
+		assertThat(result).containsExactly("1", "2");    // true
 		//assertThat(result).containsExactly("1","3");	// false: 포함되지 않은 value 존재
 		//assertThat(result).containsExactly("1");		// false: 비교 대상과 동일하지 않다.
 
@@ -38,7 +38,6 @@ public class StringTest {
 		// userInputSplitTest("1,2", new String[] {"2", "1"});
 	}
 
-
 	@Test
 	@DisplayName("요구사항2: subString 활용 학습 ")
 	void subStringTest() {
@@ -49,7 +48,7 @@ public class StringTest {
 		 * substring(param1, param2)
 		 * 문자열의 시작/ 시작과 끝을 지정한 index 의 문자를 리턴
 		 */
-		assertThat(data.substring(1,4)).contains("1,2");
+		assertThat(data.substring(1, 4)).contains("1,2");
 
 		userInputSubStringTest("(1,2)", "1,2");
 		userInputSubStringTest("(1,2,3,4,5)", "1,2,3,4,5");
@@ -118,7 +117,8 @@ public class StringTest {
 		String startSeparator = "(";
 		String endSeparator = ")";
 
-		String subStringResult = inputTestStr.substring(inputTestStr.indexOf(startSeparator), inputTestStr.indexOf(endSeparator));
+		String subStringResult = inputTestStr.substring(inputTestStr.indexOf(startSeparator),
+			inputTestStr.indexOf(endSeparator));
 
 		assertThat(subStringResult).contains(resultTestStr);
 	}

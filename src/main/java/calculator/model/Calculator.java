@@ -2,11 +2,9 @@ package calculator.model;
 
 public class Calculator {
 
-
 	private int result;
 	private int calculateNumber;
 	private CalculatorType calculatorType;
-
 
 	public Calculator(int firstNumber) {
 
@@ -20,7 +18,7 @@ public class Calculator {
 	public static int start(String userInputStr) throws IllegalArgumentException {
 
 		CalculatorVaild.validCalculatorString(userInputStr);
-		
+
 		String[] userInputArr = userInputStr.split(" ");
 		Calculator calculator = new Calculator(Integer.parseInt(userInputArr[0]));
 
@@ -64,6 +62,5 @@ public class Calculator {
 
 		return this.result;
 	}
-
 
 }

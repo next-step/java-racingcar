@@ -62,7 +62,7 @@ public class SetTest {
 	 * 다양한 타입의 인수를 사용할 수 있다.
 	 */
 	@ParameterizedTest
-	@CsvSource(value= {"1,2,3:true", "4,5:false"}, delimiter = ':')
+	@CsvSource(value = {"1,2,3:true", "4,5:false"}, delimiter = ':')
 	@DisplayName("요구사항3: Set 객체의 value 포함 상태 체크")
 	void setCheckContainsYorN(String values, boolean result) {
 
@@ -82,7 +82,6 @@ public class SetTest {
 
 		assertThat(numbers.contains(values)).isTrue();
 	}
-
 
 	private void userInputSetSizeTest(int size) {
 
