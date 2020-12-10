@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class InputView {
 
+	public static final String CAR_NAME_SPLITTER = ",";
+
 	private final Scanner scanner = new Scanner(System.in);
 
 	public List<String> inputCarNameList() {
@@ -14,11 +16,11 @@ public class InputView {
 			System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
 			carNameInput = this.scanner.next();
 		} while (!validateCarNameInput(carNameInput));
-		return Arrays.asList(carNameInput.split(","));
+		return Arrays.asList(carNameInput.split(CAR_NAME_SPLITTER));
 	}
 
 	private boolean validateCarNameInput(String carNameInput) {
-		List<String> carNameList = Arrays.asList(carNameInput.split(","));
+		List<String> carNameList = Arrays.asList(carNameInput.split(CAR_NAME_SPLITTER));
 		try {
 			carNameList.forEach(this::isValidateCarName);
 			return true;
