@@ -19,10 +19,10 @@ public class RaceHistoryTest {
 	@Order(1)
 	@DisplayName("1.경주횟수만큼 경주기록이 생성된다.")
 	@ParameterizedTest
-	@ValueSource(ints = {4,5,6})
-	void createRaceHistory(int matchCount){
-		int carCount = 3;
-		Game game = new Game(carCount, matchCount);
+	@ValueSource(ints = {4, 5, 6})
+	void createRaceHistory(int matchCount) {
+		String userInputCarNames = "pobi,crong,honux";
+		Game game = new Game(userInputCarNames, matchCount);
 		Cars raceCars = game.start();
 		RaceHistory raceHistory = raceCars.getHistory();
 		assertThat(raceHistory.getCount()).isEqualTo(matchCount);
