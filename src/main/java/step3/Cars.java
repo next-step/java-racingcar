@@ -18,6 +18,10 @@ public class Cars {
 		return cars.get(index);
 	}
 
+	public void goOrStop(){
+		cars.forEach(Car::goOrStop);
+	}
+
 	public List<Car> cloneList() {
 		return this.cars.stream()
 			.map(Car::clone)

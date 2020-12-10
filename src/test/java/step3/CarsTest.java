@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarsTest {
 	@Test
@@ -19,6 +21,21 @@ public class CarsTest {
 		assertThat(cars.get(2)).isNotNull();
 		assertThatExceptionOfType(IndexOutOfBoundsException.class)
 			.isThrownBy(() -> cars.get(3));
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {3, 5, 9})
+	@DisplayName("carNumber만큼 car를 생성한다.")
+	void goOrStopTest(int tryNumber) {
+		Cars cars = new Cars(3, new DefaultNumberGenerator(4));
+
+		for (int i = 0; i < tryNumber; i++) {
+			cars.goOrStop();
+		}
+
+		assertThat(cars.get(0).getPosition()).isEqualTo(tryNumber);
+		assertThat(cars.get(1).getPosition()).isEqualTo(tryNumber);
+		assertThat(cars.get(2).getPosition()).isEqualTo(tryNumber);
 	}
 
 	@Test
