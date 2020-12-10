@@ -5,10 +5,10 @@ public class CarRacingGameStarter {
 		InputView inputView = new InputView();
 		ResultView resultView = new ResultView();
 
-		int carCount = inputView.printAndGetCarCount();
+		String carNames = inputView.printAndGetCarName();
 		int moveCount = inputView.printAndGetMoveCount();
 
 		CarRacingGame carRacingGame = new CarRacingGame();
-		carRacingGame.start(carCount, moveCount, resultView);
+		carRacingGame.start(carNames, moveCount, resultView);
 	}
 }
