@@ -7,15 +7,14 @@ import java.util.Scanner;
 
 public class RacingRunner {
 
-    private final Scanner scanner = new Scanner(System.in);
     private final InputView inputView = new InputView();
     private final ResultView resultView = new ResultView();
 
     private RacingCarDriver racingCarController;
 
     public void run() {
-        this.racingCarController = this.inputView.inputCarAmount(this.scanner);
-        this.playRound(this.inputView.inputRacingRound(this.scanner));
+        this.racingCarController = this.inputView.inputCarAmount();
+        this.playRound(this.inputView.inputRacingRound());
     }
 
 
