@@ -14,12 +14,7 @@ public class CarsTest {
   private Cars cars;
 
   private RacingRule createRandomRacingRule(int number) {
-    return new RacingRule() {
-      @Override
-      public int getTargetNumber() {
-        return number;
-      }
-    };
+    return () -> number;
   }
 
   @BeforeEach
