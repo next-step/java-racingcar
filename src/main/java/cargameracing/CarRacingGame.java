@@ -14,9 +14,10 @@ public class CarRacingGame {
         }
     }
 
-    public void playGame(int carCount) {
-        for (int j = 0; j < carCount; j++ )
+    public void playGame() {
+        for (int j = 0; j < cars.length; j++) {
             cars[j].junjinUp();
+        }
     }
 
     public Car[] getCars() {
