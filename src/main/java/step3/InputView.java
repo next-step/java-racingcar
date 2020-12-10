@@ -5,19 +5,19 @@ import java.util.Scanner;
 
 public class InputView {
 
-	public int waiteInputCarCount() {
+	public static int waiteInputCarCount() {
 		System.out.println(Message.INPUT_CAR_COUNT);
 
 		return waiteInputNumber();
 	}
 
-	public int waiteInputTryCount() {
+	public static int waiteInputTryCount() {
 		System.out.println(Message.INPUT_TRY_COUNT);
 
 		return waiteInputNumber();
 	}
 
-	private int waiteInputNumber() {
+	private static int waiteInputNumber() {
 		try {
 			return new Scanner(System.in).nextInt();
 		} catch (InputMismatchException exception) {
