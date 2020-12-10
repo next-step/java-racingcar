@@ -1,5 +1,7 @@
 package racingcar;
 
+import calculator.InputView;
+import calculator.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,6 +11,7 @@ import racingcar.rule.FixedRacingRule;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class NamedRacingCarDriverTest {
 
@@ -40,6 +43,14 @@ public class NamedRacingCarDriverTest {
         // then
         assertThat(((NamedRacingCar) racingCars.get(racingCars.size() - 1)).getName())
                 .isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("이름이 다섯글자 이상이 왔을 때 오류가 발생하는지 테스트")
+    public void createNamedRacingCarsNameOverFiveError() {
+        assertThatThrownBy(() -> {
+            new NamedRacingCarDriver(new String[]{"123456"});
+        });
     }
 
     @ParameterizedTest

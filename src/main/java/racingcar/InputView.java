@@ -43,15 +43,9 @@ public class InputView {
     public String[] makeParticipantsList(String inputs) {
         List<String> participants = new ArrayList<>();
         for (String input : inputs.split(InputView.SPLIT_REGEX)) {
-            participants.add(this.validateName(input.trim()));
+            participants.add(input.trim());
         }
         return participants.toArray(new String[participants.size()]);
     }
 
-    public String validateName(String name) {
-        if(name != null && name.length() <= 5) {
-            return name;
-        }
-        throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
-    }
 }

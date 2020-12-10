@@ -16,9 +16,16 @@ public class NamedRacingCarDriver extends RacingCarDriver{
     public static List<RacingCar> createNamedRacingCars(String[] participants) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String participant : participants) {
-            racingCars.add(new NamedRacingCar(participant));
+            racingCars.add(new NamedRacingCar(NamedRacingCarDriver.validateName(participant)));
         }
         return racingCars;
+    }
+
+    public static String validateName(String name) {
+        if(name != null && name.length() <= 5) {
+            return name;
+        }
+        throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
     }
 
 }
