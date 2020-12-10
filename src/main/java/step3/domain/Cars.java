@@ -8,13 +8,11 @@ import java.util.stream.Collectors;
 public class Cars {
   private final List<Car> cars;
 
-  public Cars(List<String> carNames) {
-    if (carNames == null) {
+  public Cars(List<Car> cars) {
+    if (cars == null) {
       throw new IllegalArgumentException();
     }
-    this.cars = carNames.stream()
-        .map(Car::new)
-        .collect(Collectors.toList());
+    this.cars = cars;
   }
 
   public void race(RacingRule racingRule) {

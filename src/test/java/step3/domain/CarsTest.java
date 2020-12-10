@@ -19,7 +19,11 @@ public class CarsTest {
 
   @BeforeEach
   void before() {
-    cars = new Cars(Arrays.asList("pobi", "crong", "honux"));
+    cars = new Cars(Arrays.asList(
+        new Car("pobi"),
+        new Car("crong"),
+        new Car("honux")
+    ));
   }
 
   @DisplayName("모두 이동 가능한 조건이라, 이동한 경우")
@@ -42,9 +46,28 @@ public class CarsTest {
     }
   }
 
+  @DisplayName("게임의 단독승자를 확인")
   @Test
   void getWinnerCarTest() {
-    cars.race(createRandomRacingRule(5));
-    assertThat(cars.getWinnerCarNames().size()).isEqualTo(3);
+    Cars cars = new Cars(Arrays.asList(
+        new Car("A", 1),
+        new Car("B", 2),
+        new Car("C", 3)
+    ));
+    assertThat(cars.getWinnerCarNames().size()).isEqualTo(1);
+    assertThat(cars.getWinnerCarNames().get(0)).isEqualTo("C");
+  }
+
+  @DisplayName("게임의 여러 승자를 확인")
+  @Test
+  void getWinnerCarMultiTest() {
+    Cars cars = new Cars(Arrays.asList(
+        new Car("A", 1),
+        new Car("B", 3),
+        new Car("C", 3)
+    ));
+    assertThat(cars.getWinnerCarNames().size()).isEqualTo(2);
+    assertThat(cars.getWinnerCarNames().get(0)).isEqualTo("B");
+    assertThat(cars.getWinnerCarNames().get(1)).isEqualTo("C");
   }
 }
