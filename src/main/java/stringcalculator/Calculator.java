@@ -1,4 +1,4 @@
-package calculator;
+package stringcalculator;
 
 public class Calculator {
 	public long calculate(String expression) {

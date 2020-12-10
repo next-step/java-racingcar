@@ -1,4 +1,4 @@
-package calculator;
+package stringcalculator;
 
 public class DivideOperator implements Operator {
 	@Override
