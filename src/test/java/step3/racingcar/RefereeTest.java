@@ -29,7 +29,8 @@ public class RefereeTest {
 	@DisplayName("자동차 경주 결과 최고점 구하기")
 	@Test
 	void given_racing_cars_when_get_max_movedistance_then_return_max_movedistance() {
-		assertThat(racingCars.getMaxMoveDistance()).isEqualTo(5);
+		Referee referee = new Referee(racingCars);
+		assertThat(referee.getMaxMoveDistance()).isEqualTo(5);
 	}
 
 	@DisplayName("자동차 경주 우승자 구하기")

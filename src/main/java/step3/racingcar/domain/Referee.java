@@ -40,4 +40,8 @@ public class Referee {
 		return this.winners;
 	}
 
+	public int getMaxMoveDistance() {
+		return maxMoveDistance;
+	}
+
 }
