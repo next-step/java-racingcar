@@ -103,8 +103,6 @@ class RacingRacingCarGroupTest {
 		// given
 		RacingCar car1 = new RacingCar("blue", () -> true);
 		RacingCar car2 = new RacingCar("yellow", () -> true);
-		car2.moveForward();
-		car2.moveForward();
 		RacingCarGroup racingCarGroup = new RacingCarGroup(Arrays.asList(car1, car2));
 
 		// when

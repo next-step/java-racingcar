@@ -10,8 +10,13 @@ public class RacingCar {
 	private int position;
 
 	RacingCar(String carName, MoveChanceGenerator moveChanceGenerator) {
+		this(carName, moveChanceGenerator, 0);
+	}
+
+	RacingCar(String carName, MoveChanceGenerator moveChanceGenerator, int position) {
 		this.carName = carName;
 		this.moveChanceGenerator = moveChanceGenerator;
+		this.position = position;
 	}
 
 	void getMoveForwardChance() {

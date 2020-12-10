@@ -44,19 +44,18 @@ class RacingCarTest {
 		assertThat(beforePosition + 1 == afterPosition).isEqualTo(isMoved);
 	}
 
-	@Test
+	@ParameterizedTest
+	@CsvSource(value = {"hi,2", "peter,0"})
 	@DisplayName("RacingCar.toString() 테스트")
-	void racingCarToString() {
+	void racingCarToString(String name, int position) {
 		// given
-		RacingCar racingCar = new RacingCar("hi", () -> true);
-		racingCar.moveForward();
-		racingCar.moveForward();
+		RacingCar racingCar = new RacingCar(name, () -> true, position);
 
 		// when
 		String toString = racingCar.toString(rc ->
 				String.format("%s %s", racingCar.getCarName(), racingCar.getPosition()));
 
 		// then
-		assertThat(toString).isEqualTo("hi 2");
+		assertThat(toString).isEqualTo(String.format("%s %s", name, position));
 	}
 }
