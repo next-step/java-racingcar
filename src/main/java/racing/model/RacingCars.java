@@ -16,7 +16,24 @@ public class RacingCars {
 	 */
 	public RacingCars(int racingCarNumber) {
 
-		this.cars = initRacingCars(racingCarNumber);
+		this.cars = initNumberRacingCars(racingCarNumber);
+	}
+
+	public RacingCars(String[] names) {
+
+		this.cars = initNameRacingCars(names);
+	}
+
+	private List<RacingCar> initNameRacingCars(String[] names) {
+
+		List<RacingCar> racingCars = new ArrayList<>();
+
+		for (String name : names) {
+
+			racingCars.add(new RacingCar(name));
+		}
+
+		return racingCars;
 	}
 
 	/**
@@ -24,7 +41,7 @@ public class RacingCars {
 	 * @param racingCarNumber : 유저가 입력한 레이싱 경주 차량 댓수
 	 * @return : 생성한 경주 차량 리스트 리턴
 	 */
-	private List<RacingCar> initRacingCars(int racingCarNumber) {
+	private List<RacingCar> initNumberRacingCars(int racingCarNumber) {
 
 		List<RacingCar> initRacingCars = new ArrayList<>();
 		for (int i = 0; i < racingCarNumber; i++) {
