@@ -14,11 +14,20 @@ class RacingRoundTest {
     void racing_one_winner_test() {
         // given
         List<RacingCar> racingCars = Arrays.asList(
-                new RacingCar("pobi", 0),
-                new RacingCar("crong", 1),
-                new RacingCar("honux", 2),
-                new RacingCar("YKJ", 3)
+                new RacingCar.RacingCarBuilder("pobi")
+                        .carPosition(0)
+                        .build(),
+                new RacingCar.RacingCarBuilder("crong")
+                        .carPosition(1)
+                        .build(),
+                new RacingCar.RacingCarBuilder("honux")
+                        .carPosition(2)
+                        .build(),
+                new RacingCar.RacingCarBuilder("YKJ")
+                        .carPosition(3)
+                        .build()
         );
+
         RacingRound racingRound = new RacingRound(racingCars);
 
         // when
@@ -34,11 +43,20 @@ class RacingRoundTest {
     void racing_two_winner_test() {
         // given
         List<RacingCar> racingCars = Arrays.asList(
-                new RacingCar("pobi", 3),
-                new RacingCar("crong", 1),
-                new RacingCar("honux", 2),
-                new RacingCar("YKJ", 3)
+                new RacingCar.RacingCarBuilder("pobi")
+                        .carPosition(3)
+                        .build(),
+                new RacingCar.RacingCarBuilder("crong")
+                        .carPosition(1)
+                        .build(),
+                new RacingCar.RacingCarBuilder("honux")
+                        .carPosition(2)
+                        .build(),
+                new RacingCar.RacingCarBuilder("YKJ")
+                        .carPosition(3)
+                        .build()
         );
+
         RacingRound racingRound = new RacingRound(racingCars);
 
         // when

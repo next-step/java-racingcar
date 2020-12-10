@@ -17,7 +17,8 @@ public class RacingCars {
 
     private List<RacingCar> participate(List<String> carNames) {
         for (String carName : carNames) {
-            racingCars.add(new RacingCar(carName));
+            racingCars.add(new RacingCar.RacingCarBuilder(carName)
+                    .build());
         }
         return this.racingCars;
     }

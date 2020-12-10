@@ -52,10 +52,12 @@ class RacingGameTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobi75","crong75","YKJ7575"})
     @DisplayName("자동차 이름 유효성 검사 테스트")
-    public void validate_car_names(String racingCarNames) {
+    public void validate_car_names(String racingCarName) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    RacingCar racingCar = new RacingCar(racingCarNames, 0);
+                    RacingCar racingCar = new RacingCar.RacingCarBuilder(racingCarName)
+                            .carPosition(0)
+                            .build();
                 }).withMessageMatching(InputValidator.INVALID_NAME_ERROR_MESSAGE);
     }
 

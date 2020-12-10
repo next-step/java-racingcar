@@ -10,7 +10,7 @@ public class RacingCar implements Comparable<RacingCar> {
     private String carName;
     private int carPosition;
 
-    public RacingCar(String carName) {
+    /*public RacingCar(String carName) {
         checkCarName(carName);
         this.carName = carName;
     }
@@ -19,7 +19,7 @@ public class RacingCar implements Comparable<RacingCar> {
         checkCarName(carName);
         this.carName = carName;
         this.carPosition = carPosition;
-    }
+    }*/
 
     private void checkCarName(String racingCarName) {
         boolean isCorrectCarName = racingCarName.matches(racingCarNamePattern);
@@ -33,7 +33,9 @@ public class RacingCar implements Comparable<RacingCar> {
         if(racingRule.isAbleToMove()) {
             carPosition++;
         }
-        return new RacingCar(this.carName, this.carPosition);
+        return new RacingCar.RacingCarBuilder(this.carName)
+                .carPosition(this.carPosition)
+                .build();
     }
 
     public String getCarName() {
@@ -46,6 +48,31 @@ public class RacingCar implements Comparable<RacingCar> {
 
     public boolean isSamePosition(RacingCar other) {
         return other.carPosition == this.carPosition;
+    }
+
+    private RacingCar(RacingCarBuilder builder) {
+        checkCarName(builder.carName);
+        this.carName = builder.carName;
+        this.carPosition = builder.carPosition;
+    }
+
+    public static class RacingCarBuilder {
+
+        private String carName;
+        private int carPosition;
+
+        public RacingCarBuilder(String carName) {
+            this.carName = carName;
+        }
+
+        public RacingCarBuilder carPosition(int carPosition) {
+            this.carPosition = carPosition;
+            return this;
+        }
+
+        public RacingCar build() {
+            return new RacingCar(this);
+        }
     }
 
     @Override
