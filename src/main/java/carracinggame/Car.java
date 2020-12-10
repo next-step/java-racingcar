@@ -3,7 +3,7 @@ package carracinggame;
 public class Car {
 	private int position = 1;
 
-	private MoveStrategy moveStrategy;
+	private final MoveStrategy moveStrategy;
 
 	public Car(MoveStrategy moveStrategy) {
 		this.moveStrategy = moveStrategy;
@@ -13,7 +13,9 @@ public class Car {
 		return position;
 	}
 
-	public void move(int moveDistance) {
-		position = moveStrategy.move(position, moveDistance);
+	public void move() {
+		if (moveStrategy.isPossibleMove()) {
+			position++;
+		}
 	}
 }

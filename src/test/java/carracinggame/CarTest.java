@@ -11,15 +11,15 @@ class CarTest {
 
 	@BeforeEach
 	public void init() {
-		car = new Car(new CarMoveStrategy());
+		car = new Car(new RandomMoveStrategy());
 	}
 	
 	@ParameterizedTest
 	@CsvSource(value = {"2:0", "3:0", "4:4", "5:5", "6:6"}, delimiter = ':')
-	public void 차_이동_테스트(int step, int expectedResult) throws Exception {
+	public void 차_이동_테스트(int expectedResult) throws Exception {
 		// given
 		// when
-		car.move(step);
+		car.move();
 		// then
 		int actualResult = car.getPosition();
 		assertThat(actualResult).isEqualTo(expectedResult);

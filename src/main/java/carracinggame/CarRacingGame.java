@@ -2,31 +2,24 @@ package carracinggame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarRacingGame {
-	public static Random random = new Random();
-	public static InputView inputView = new InputView();
-	public static ResultView resultView = new ResultView();
-	public static void main(String[] args) {
-		int carCount = inputView.printAndGetCarCount();
-		int moveCount = inputView.printAndGetMoveCount();
-
+	public void start(int carCount, int moveCount, ResultView resultView) {
 		List<Car> carList = new ArrayList<>();
 		for (int i = 0; i < carCount; i++) {
-			carList.add(new Car(new CarMoveStrategy()));
+			carList.add(new Car(new RandomMoveStrategy()));
 		}
 
 		resultView.nextLine();
 		resultView.printResultText();
 		for (int i = 0; i < moveCount; i++) {
-			startCarRacing(carList);
+			startOneRound(carList, resultView);
 		}
 	}
 
-	public static void startCarRacing(List<Car> carList) {
+	public void startOneRound(List<Car> carList, ResultView resultView) {
 		for (Car car : carList) {
-			car.move(random.nextInt(10));
+			car.move();
 			resultView.printCarPosition(car.getPosition());
 		}
 		resultView.nextLine();
