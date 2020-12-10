@@ -1,4 +1,4 @@
-package step3;
+package edu.nextstep.racing;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -26,4 +26,21 @@ public class InputView {
 		}
 		return Integer.parseInt(input);
 	}
+
+	public static String[] inputNameOfCars() {
+		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+		String input = scanner.nextLine();
+		if (!isValidInput(input)) {
+			return inputNameOfCars();
+		}
+		return input.split(",");
+	}
+
+	public static boolean isValidInput(String input) {
+		if (input == null) {
+			return false;
+		}
+		return Pattern.matches("[^,\\s]{1,5}(,[^,\\s]{1,5})*", input);
+	}
+
 }
