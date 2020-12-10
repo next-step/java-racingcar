@@ -44,14 +44,14 @@ public class Cars {
 	}
 
 	private void setWinners() {
-		winners = cars.stream().filter(car -> car.isWinner(winnerPosition))
+		winners = cars.stream()
+			.filter(car -> car.isWinner(winnerPosition))
 			.collect(Collectors.toList());
 	}
 
 	public void runLap() {
 		LapHistory lapHistory = new LapHistory();
 		for (Car car : cars) {
-			//car.randomMove();
 			car.move();
 			setWinnerPosition(car.getPosition());
 			lapHistory.add(new CarHistory(car));
