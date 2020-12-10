@@ -2,7 +2,9 @@ package step3.domain;
 
 public class Car {
 
-  public static final int MAX_LENGTH = 5;
+  private static final int STANDARD_FOR_MOVING = 4;
+  private static final int MAX_LENGTH = 5;
+
   private final String name;
   private int distance = 1;
 
@@ -11,8 +13,10 @@ public class Car {
     this.name = name;
   }
 
-  public void move() {
-    this.distance++;
+  public void move(int targetNumber) {
+    if (canMove(targetNumber)) {
+      this.distance++;
+    }
   }
 
   public int getDistance() {
@@ -21,6 +25,10 @@ public class Car {
 
   public String getName() {
     return this.name;
+  }
+
+  private boolean canMove(int targetNumber) {
+    return targetNumber > STANDARD_FOR_MOVING;
   }
 
   private static void valid(String input) {

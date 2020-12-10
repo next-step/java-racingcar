@@ -10,11 +10,12 @@ import java.util.List;
 public class RacingGame {
 
   private static final String SPLIT_FLAG = ",";
+  private static final int RANDOM_BOUND = 10;
 
   public void start(String carNames, int gameCount) {
     Cars cars = new Cars(splitCarNames(carNames));
     for (int i = 0; i < gameCount; i++) {
-      cars.race(new RandomRacingRule());
+      cars.race(new RandomRacingRule(RANDOM_BOUND));
       RacingGameOutputView.printRacingGameResult(cars);
     }
     RacingGameOutputView.printWinnerResult(cars);

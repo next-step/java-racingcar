@@ -13,16 +13,11 @@ public class CarsTest {
 
   private Cars cars;
 
-  private RacingRule createTestRacingRule(boolean canMove) {
+  private RacingRule createRandomRacingRule(int number) {
     return new RacingRule() {
       @Override
-      public boolean canMove(int targetNumber) {
-        return canMove;
-      }
-
-      @Override
       public int getTargetNumber() {
-        return 0;
+        return number;
       }
     };
   }
@@ -34,8 +29,8 @@ public class CarsTest {
 
   @DisplayName("모두 이동 가능한 조건이라, 이동한 경우")
   @Test
-  public void canMoveIsTrue() {
-    cars.race(createTestRacingRule(true));
+  public void canMove() {
+    cars.race(createRandomRacingRule(5));
     assertThat(cars.getCars().size()).isEqualTo(3);
     for (Car car : cars.getCars()) {
       assertThat(car.getDistance()).isEqualTo(2);
@@ -44,8 +39,8 @@ public class CarsTest {
 
   @DisplayName("모두 이동 가능하지 못한 조건이라, 이동 못한 경우")
   @Test
-  public void canMoveIsFalse() {
-    cars.race(createTestRacingRule(false));
+  public void cannotMove() {
+    cars.race(createRandomRacingRule(1));
     assertThat(cars.getCars().size()).isEqualTo(3);
     for (Car car : cars.getCars()) {
       assertThat(car.getDistance()).isEqualTo(1);
@@ -54,7 +49,7 @@ public class CarsTest {
 
   @Test
   void getWinnerCarTest() {
-    cars.race(createTestRacingRule(true));
-    assertThat(cars.getWinnerCars().size()).isEqualTo(3);
+    cars.race(createRandomRacingRule(5));
+    assertThat(cars.getWinnerCarNames().size()).isEqualTo(3);
   }
 }

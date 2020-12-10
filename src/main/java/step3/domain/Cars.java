@@ -9,26 +9,26 @@ public class Cars {
   private final List<Car> cars;
 
   public Cars(List<String> carNames) {
+    if (carNames == null) {
+      throw new IllegalArgumentException();
+    }
     this.cars = carNames.stream()
         .map(Car::new)
         .collect(Collectors.toList());
   }
 
   public void race(RacingRule racingRule) {
-    cars.forEach(car -> {
-      if (racingRule.canMove(racingRule.getTargetNumber())) {
-        car.move();
-      }
-    });
+    cars.forEach(car -> car.move(racingRule.getTargetNumber()));
   }
 
   public List<Car> getCars() {
     return Collections.unmodifiableList(this.cars);
   }
 
-  public List<Car> getWinnerCars() {
+  public List<String> getWinnerCarNames() {
     return this.getCars().stream()
         .filter(car -> car.getDistance() == maxDistanceOfCars())
+        .map(Car::getName)
         .collect(Collectors.toList());
   }
 
