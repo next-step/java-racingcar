@@ -5,9 +5,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import race.domain.CarName;
+import race.exception.IncorrectCarNameException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarNameTest {
 
@@ -24,7 +25,7 @@ public class CarNameTest {
     @ParameterizedTest
     @ValueSource(strings = {"HYUNDAI", "Yonggu"})
     void lengthFiveValidTest(String name) {
-        assertThatIllegalArgumentException()
+        assertThatExceptionOfType(IncorrectCarNameException.class)
                 .isThrownBy(() -> new CarName(name))
                 .withMessage("자동차 이름은 5자를 초과할 수 없습니다.");
     }
@@ -33,7 +34,7 @@ public class CarNameTest {
     @ParameterizedTest
     @NullAndEmptySource
     void nullAndEmptyValidTest(String name) {
-        assertThatIllegalArgumentException()
+        assertThatExceptionOfType(IncorrectCarNameException.class)
                 .isThrownBy(() -> new CarName(name))
                 .withMessage("자동차 이름의 문자열은 필수값입니다.");
     }
