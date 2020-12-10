@@ -9,21 +9,21 @@ import java.util.List;
  * @description :
  **/
 public class RaceHistory {
-	private List<List<Car>> history;
+	private List<LapHistory> carHistories;
 
 	public RaceHistory() {
-		this.history = new ArrayList<>();
+		this.carHistories = new ArrayList<>();
 	}
 
 	public int getCount() {
-		return history.size();
+		return carHistories.size();
 	}
 
-	public List<List<Car>> get() {
-		return history;
+	public List<LapHistory> get() {
+		return carHistories;
 	}
 
-	public void add(List<Car> lapHistory) {
-		history.add(lapHistory);
+	public void add(LapHistory lapHistory) {
+		carHistories.add(lapHistory);
 	}
 }

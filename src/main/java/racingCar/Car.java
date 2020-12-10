@@ -8,14 +8,28 @@ import java.util.Random;
  * @description :
  **/
 public class Car {
-	private int position;
 	private static final int MOVABLE_MINIMUM_VALUE = 4;
+	private static final int CAR_NAME_LENGTH_MAXIMUM_VALUE = 5;
+	private int position;
+	private String name;
 
 	public Car() {
 		position = 0;
 	}
 
+	public Car(String carName) {
+		validateCarName(carName);
+		this.name = carName;
+		this.position = 0;
+	}
+
+	private void validateCarName(String carName) {
+		if (carName.length() > CAR_NAME_LENGTH_MAXIMUM_VALUE)
+			throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다.");
+	}
+
 	public Car(Car copyCar) {
+		this.name = copyCar.name;
 		this.position = copyCar.position;
 	}
 
@@ -37,5 +51,9 @@ public class Car {
 
 	public int getPosition() {
 		return position;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
