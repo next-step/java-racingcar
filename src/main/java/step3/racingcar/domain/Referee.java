@@ -14,11 +14,10 @@ public class Referee {
 	}
 
 	private int getMaxMoveDistance(final RacingCars racingCars) {
-		int maxMoveDistance = 0;
-		for (final RacingCar racingCar : racingCars.getRacingCars()) {
-			maxMoveDistance = Math.max(maxMoveDistance, racingCar.getMoveDistance());
-		}
-		return maxMoveDistance;
+		return racingCars.getRacingCars().stream()
+			.mapToInt(RacingCar::getMoveDistance)
+			.max()
+			.orElse(0);
 	}
 
 	private RacingCars judgeWinners(final RacingCars racingCars) {
