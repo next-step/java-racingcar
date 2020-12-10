@@ -23,13 +23,13 @@ public class RacingCarMain {
 	private static void racingGameStart() throws IllegalArgumentException {
 
 		// 유저: 주행할 차량 댓수 입력
-		int carRaceNumber = userInputPlayCarNumber();
+		String carRaceNumber = userInputPlayCarNumber();
 
 		// 유저: 레이싱 주행 횟수 입력
 		int tryRaceNumber = userInputPlayTryNumber();
 
 		// 경주 차량 객체 생성
-		RacingGame racingGame = new RacingGame(carRaceNumber);
+		RacingGame racingGame = new RacingGame(carRaceNumber.split(","));
 
 		// 입력한 주행 횟수 만큼 반복
 		for (int i = 0; i < tryRaceNumber; i++) {
@@ -40,6 +40,8 @@ public class RacingCarMain {
 			// 주행 결과 출력
 			UserOutput.printCarLocation(racingGame.getRacingCars());
 		}
+
+		UserOutput.printWinnerRacingGame(racingGame.getWinner());
 	}
 
 	/**
@@ -57,12 +59,11 @@ public class RacingCarMain {
 	/**
 	 * 유저: 랜덤 레이싱 주행 횟수 입력 메서드
 	 * @return 레이싱 주행 횟수
-	 * @throws IllegalArgumentException : 유저 입력 숫자가 아닐 시 에러 Throw
 	 */
-	private static int userInputPlayCarNumber() {
+	private static String userInputPlayCarNumber() {
 
 		UserOutput.printUserInputCarNumberMsg();
 
-		return Integer.parseInt(UserInput.userInput());
+		return UserInput.userInput();
 	}
 }
