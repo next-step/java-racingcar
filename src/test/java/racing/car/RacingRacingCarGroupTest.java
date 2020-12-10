@@ -97,6 +97,23 @@ class RacingRacingCarGroupTest {
 		assertThat(racingCarGroup.size()).isEqualTo(carNum);
 	}
 
+	@Test
+	@DisplayName("CarGroup.getToStringList() 테스트")
+	void getToStringList() {
+		// given
+		RacingCar car1 = new RacingCar("blue", () -> true);
+		RacingCar car2 = new RacingCar("yellow", () -> true);
+		car2.moveForward();
+		car2.moveForward();
+		RacingCarGroup racingCarGroup = new RacingCarGroup(Arrays.asList(car1, car2));
+
+		// when
+		List<String> toStringList = racingCarGroup.getToStringList(RacingCar::getCarName);
+
+		// then
+		assertThat(toStringList).containsExactly("blue", "yellow");
+	}
+
 	private RacingCar createNotMovedCar(String name) {
 		return new RacingCar(name, () -> false);
 	}

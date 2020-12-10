@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingCarGroup {
 	private final List<RacingCar> racingCarList;
@@ -22,10 +22,6 @@ public class RacingCarGroup {
 
 	RacingCarGroup(List<RacingCar> racingCarList) {
 		this.racingCarList = racingCarList;
-	}
-
-	public Stream<RacingCar> stream() {
-		return this.racingCarList.stream();
 	}
 
 	public void getMoveForwardChance() {
@@ -54,5 +50,11 @@ public class RacingCarGroup {
 
 	public int size() {
 		return racingCarList.size();
+	}
+
+	public List<String> getToStringList(Function<RacingCar, String> stringMapper) {
+		return this.racingCarList.stream()
+				.map(stringMapper)
+				.collect(Collectors.toList());
 	}
 }

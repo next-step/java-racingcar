@@ -1,6 +1,7 @@
 package racing.car;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 public class RacingCar {
 
@@ -33,5 +34,9 @@ public class RacingCar {
 
 	void moveForward() {
 		this.position++;
+	}
+
+	String toString(Function<RacingCar, String> stringFunction) {
+		return stringFunction.apply(this);
 	}
 }

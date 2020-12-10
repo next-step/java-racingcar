@@ -5,7 +5,7 @@ import racing.car.RacingCar;
 import racing.car.RacingCarGroup;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
 public class RacingNotifyView implements RacingNotifier {
 
@@ -13,12 +13,9 @@ public class RacingNotifyView implements RacingNotifier {
 
 	@Override
 	public void notifyRace(RacingCarGroup racingCarGroup) {
-		List<String> positions = racingCarGroup.stream()
-				.map(RacingNotifyView::createCarStatusAsString)
-				.collect(Collectors.toList());
-
-		String allPosition = String.join("\n", positions);
-		System.out.println(String.format("%s\n", allPosition));
+		List<String> eachCarStatus = racingCarGroup.getToStringList(getRacingCarStringFunction());
+		String allCarStatus = String.join("\n", eachCarStatus);
+		System.out.println(String.format("%s\n", allCarStatus));
 	}
 
 	@Override
@@ -32,10 +29,12 @@ public class RacingNotifyView implements RacingNotifier {
 		System.out.print(msg);
 	}
 
-	private static String createCarStatusAsString(RacingCar racingCar) {
-		String carName = racingCar.getCarName();
-		String position = getPositionAsString(racingCar.getPosition());
-		return String.format("%s : %s", carName, position);
+	private static Function<RacingCar, String> getRacingCarStringFunction() {
+		return racingCar -> {
+			String carName = racingCar.getCarName();
+			String position = getPositionAsString(racingCar.getPosition());
+			return String.format("%s : %s", carName, position);
+		};
 	}
 
 	private static String getPositionAsString(int position) {

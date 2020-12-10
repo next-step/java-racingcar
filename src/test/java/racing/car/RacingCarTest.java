@@ -1,6 +1,7 @@
 package racing.car;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -41,5 +42,21 @@ class RacingCarTest {
 
 		// then
 		assertThat(beforePosition + 1 == afterPosition).isEqualTo(isMoved);
+	}
+
+	@Test
+	@DisplayName("RacingCar.toString() 테스트")
+	void racingCarToString() {
+		// given
+		RacingCar racingCar = new RacingCar("hi", () -> true);
+		racingCar.moveForward();
+		racingCar.moveForward();
+
+		// when
+		String toString = racingCar.toString(rc ->
+				String.format("%s %s", racingCar.getCarName(), racingCar.getPosition()));
+
+		// then
+		assertThat(toString).isEqualTo("hi 2");
 	}
 }
