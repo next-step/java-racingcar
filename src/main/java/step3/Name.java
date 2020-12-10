@@ -2,7 +2,7 @@ package step3;
 
 public class Name {
     private String name;
-    private final int MAX_LENGTH = 5;
+    private static final int MAX_LENGTH = 5;
 
     public Name(String name) {
         checkNameValue(name);

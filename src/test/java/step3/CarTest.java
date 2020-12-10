@@ -48,7 +48,7 @@ public class CarTest {
     @RepeatedTest(value = 5)
     @DisplayName("자동차 전진 테스트")
     void acceleratorTest() {
-        car.accelerate(new RandomMovingStrategy());
+        car.accelerate(new RandomMovingStrategy(3, 1));
         assertThat(car.getDistance().getMileage()).isGreaterThanOrEqualTo(0);
     }
 
