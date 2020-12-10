@@ -9,8 +9,16 @@ public class Referee {
 	private final RacingCars winners;
 
 	public Referee(final RacingCars racingCars) {
-		this.maxMoveDistance = racingCars.getMaxMoveDistance();
+		this.maxMoveDistance = getMaxMoveDistance(racingCars);
 		this.winners = judgeWinners(racingCars);
+	}
+
+	private int getMaxMoveDistance(final RacingCars racingCars) {
+		int maxMoveDistance = 0;
+		for (final RacingCar racingCar : racingCars.getRacingCars()) {
+			maxMoveDistance = Math.max(maxMoveDistance, racingCar.getMoveDistance());
+		}
+		return maxMoveDistance;
 	}
 
 	private RacingCars judgeWinners(final RacingCars racingCars) {

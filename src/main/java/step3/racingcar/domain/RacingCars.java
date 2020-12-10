@@ -32,17 +32,10 @@ public class RacingCars {
 		return racingCars;
 	}
 
-	public int getMaxMoveDistance() {
-		int maxMoveDistance = 0;
-		for (final RacingCar racingCar : this.racingCars) {
-			maxMoveDistance = Math.max(maxMoveDistance, racingCar.getMoveDistance());
-		}
-		return maxMoveDistance;
-	}
-
 	public String getNames() {
 		final String WINNER_CAR_NAMES_DELIMITER = ", ";
 		return this.racingCars.stream().map(RacingCar::toString)
 			.collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
 	}
+
 }
