@@ -31,6 +31,7 @@ public class SetTest {
 
 		// Set 은 중복값을 허용하지 않는다.
 		userInputSetSizeTest(3);
+		userInputSetSizeTest(4);
 
 		// Set 중복값을 허용하지 않기 때문에, numbers set 의 사이즈는 3이다.
 		// userInputSetSizeTest(4); // false

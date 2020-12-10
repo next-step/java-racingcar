@@ -13,6 +13,16 @@ import racing.model.service.StopCarConditional;
 class RacingCarTest {
 
 	@Test
+	@DisplayName("자동차 이름 추가")
+	void carNameAddTest() {
+
+		String carName = "포르쉐";
+		RacingCar car = new RacingCar(carName);
+
+		assertThat(car.getCarName()).isEqualTo(carName);
+	}
+
+	@Test
 	@DisplayName("자동차 랜덤 레이스 움직임 구현")
 	void RandomCarConditionalTest() {
 
