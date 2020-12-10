@@ -3,6 +3,10 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.condition.FixedCondition;
+import racing.domain.Racing;
 
 import java.util.Arrays;
 
@@ -24,7 +28,7 @@ public class RacingTest {
 
         //then
         for (Car car : cars.getCars()) {
-            assertEquals(movingCount, car.getPosition());
+            assertEquals(movingCount, car.position());
         }
     }
 }

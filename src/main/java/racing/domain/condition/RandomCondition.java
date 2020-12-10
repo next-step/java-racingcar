@@ -1,4 +1,4 @@
-package racing;
+package racing.domain.condition;
 
 import java.util.Random;
 

@@ -2,6 +2,11 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.Racing;
+import racing.domain.condition.FixedCondition;
+import racing.domain.condition.RandomCondition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,9 +32,9 @@ public class RaceWinnerTest {
         int max_position = 0;
         String winnerCarName = "";
         for (Car car : cars.getCars()) {
-            if (max_position < car.getPosition()) {
+            if (max_position < car.position()) {
                 winnerCarName = car.carName();
-                max_position = car.getPosition();
+                max_position = car.position();
             }
         }
 

@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.view.OutputView;
 
 public class Racing {
     private final int tryTimes;
@@ -10,15 +12,15 @@ public class Racing {
     }
 
     public void start() {
-        ResultView.printResultMessage();
+        OutputView.racingResult();
         for (int i = 0; i < tryTimes; i++) {
             cars.move();
-            ResultView.printRacingStatus(cars);
+            OutputView.racingStatus(cars);
         }
     }
 
     public void end() {
-        ResultView.printEndGame(ChooseTheWinner());
+        OutputView.racingEnd(ChooseTheWinner());
     }
 
     public RaceWinner ChooseTheWinner() {

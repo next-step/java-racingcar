@@ -1,8 +1,12 @@
-package racing;
+package racing.view;
+
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.RaceWinner;
 
 import java.util.Iterator;
 
-public class ResultView {
+public class RacingResultView {
     private static final String EXECUTION_RESULT = "실행 결과";
     private static final String CAR_SYMBOL = "-";
     private static final String CAR_NAME_SEPARATOR = " : ";
@@ -10,43 +14,39 @@ public class ResultView {
     private static final String RACING_END_MESSAGE = "가 최종 우승했습니다.";
 
 
-    static void printResultMessage() {
+    public static void printResultMessage() {
         System.out.println(EXECUTION_RESULT);
     }
 
-    static void printRacingStatus(Cars cars) {
-        printLineBreak();
-        cars.getCars().forEach(ResultView::printCarStatus);
+    public static void printRacingStatus(Cars cars) {
+        OutputView.printLineBreak();
+        cars.getCars().forEach(RacingResultView::printCarStatus);
     }
 
-    static void printEndGame(RaceWinner raceWinner) {
-        printLineBreak();
+    public static void printEndGame(RaceWinner raceWinner) {
+        OutputView.printLineBreak();
         printRacingWinner(raceWinner);
         printRacingEndMessage();
     }
 
     private static void printCarStatus(Car car) {
         printCarName(car);
-        for (int i = 0; i < car.getPosition(); i++) {
+        for (int i = 0; i < car.position(); i++) {
             printCarSymbol(car);
         }
-        printLineBreak();
+        OutputView.printLineBreak();
     }
 
     private static void printCarName(Car car) {
-        if (car.getPosition() > 0) {
+        if (car.position() > 0) {
             System.out.print(car.carName() + CAR_NAME_SEPARATOR);
         }
     }
 
     private static void printCarSymbol(Car car) {
-        if (car.getPosition() > 0) {
+        if (car.position() > 0) {
             System.out.print(CAR_SYMBOL);
         }
-    }
-
-    private static void printLineBreak() {
-        System.out.println();
     }
 
     private static void printRacingWinner(RaceWinner raceWinner) {
