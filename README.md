@@ -38,21 +38,6 @@
 * [자바 코드 컨벤션1](https://google.github.io/styleguide/javaguide.html ) [자바 코드 컨벤션2](https://myeonguni.tistory.com/1596) 준수
 * else 예약어를 사용하지 않는다.
 
-## 기능 목록 및 commit 로그 요구사항
-
-* 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가
-* git 의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가
-
-```
-feat (feature)
-fix (bug fix)
-docs (documentation)
-style (formatting, missing semi colons, …)
-refactor
-test (when adding missing tests)
-chore (maintain)
-```
-
 # Step3 자동차 경주
 
 ## 기능 구현 목록
