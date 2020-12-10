@@ -9,7 +9,6 @@ public class UserOutput {
 	private static final String PRINT_USER_INPUT_TRY_NUMBER_MSG = "시도할 회수는 몇 회 인가요?";
 	private static final String PRINT_USER_CALCULATE_RESULT = "계산 결과: ";
 	private static final String PRINT_NEXT_LINE = "\n";
-	private static final String PRINT_USER_INPUT_ERROR_MSG = "입력을 잘못하셨습니다. 숫자만 입력해 주세요.";
 	private static final String PRINT_RACING_CAR_WINNER_MSG = "가 최종 우승했습니다.";
 
 	private static final String PRINT_RACING_CAR_LOCATION = "-";
@@ -19,9 +18,9 @@ public class UserOutput {
 		System.out.print(message);
 	}
 
-	public static void printUserErrorMsg() {
+	public static void printUserErrorMsg(String msg) {
 
-		messagePrint(PRINT_USER_INPUT_ERROR_MSG + PRINT_NEXT_LINE);
+		messagePrint(msg + PRINT_NEXT_LINE);
 	}
 
 	public static void printUserInputCarNumberMsg() {

@@ -25,8 +25,12 @@ public class CarName {
 
 	private void carNameValidation(String carName) {
 
-		if (carName == null || carName.isEmpty() || carName.length() > CAR_NAME_MAX_LENGTH) {
-			throw new IllegalArgumentException("[#ERROR#]Car Name IllegalArgumentException");
+		if (carName == null || carName.isEmpty()) {
+			throw new IllegalArgumentException("차량 이름을 입력해 주세요.");
+		}
+
+		if (carName.length() > CAR_NAME_MAX_LENGTH) {
+			throw new IllegalArgumentException("차량 이름은 최대 5자를 초과할 수 없습니다.");
 		}
 	}
 

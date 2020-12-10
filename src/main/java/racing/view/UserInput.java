@@ -10,9 +10,30 @@ public class UserInput {
 	 * 유저 문자열 계산기 문자 입력 메서드
 	 * @return 유저 입력 값
 	 */
-	public static String userInput() {
+	public static String userInputString() {
 
 		return UserInput.userSystemInput();
+	}
+
+	public static int userInputNumber() {
+
+		String inputStr = UserInput.userSystemInput();
+
+		if (!isNumber(inputStr)) {
+			throw new IllegalArgumentException("숫자만 입력해 주세요.");
+		}
+
+		return Integer.parseInt(inputStr);
+	}
+
+	public static boolean isNumber(String inputNumber) {
+
+		try {
+			Integer.parseInt(inputNumber);
+			return true;
+		} catch (NumberFormatException numberFormatException) {
+			return false;
+		}
 	}
 
 	/**

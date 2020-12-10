@@ -1,8 +1,8 @@
 package racing;
 
 import racing.model.RacingGame;
-import racing.view.UserInput;
 import racing.view.UserOutput;
+import racing.view.UserView;
 
 public class RacingCarMain {
 
@@ -15,55 +15,31 @@ public class RacingCarMain {
 		} catch (IllegalArgumentException illegalArgumentException) {
 
 			// 유저 입력 에서 시, 에러 결과 출력
-			UserOutput.printUserErrorMsg();
+			UserOutput.printUserErrorMsg(illegalArgumentException.getMessage());
 		}
 
 	}
 
 	private static void racingGameStart() throws IllegalArgumentException {
 
-		// 유저: 주행할 차량 댓수 입력
-		String carRaceNumber = userInputPlayCarNumber();
+		UserView view = new UserView();
 
-		// 유저: 레이싱 주행 횟수 입력
-		int tryRaceNumber = userInputPlayTryNumber();
+		view.getUserInputAboutRacingGame();
 
 		// 경주 차량 객체 생성
-		RacingGame racingGame = new RacingGame(carRaceNumber.split(","));
+		RacingGame racingGame = new RacingGame(view.getCarNames());
 
 		// 입력한 주행 횟수 만큼 반복
-		for (int i = 0; i < tryRaceNumber; i++) {
+		for (int i = 0; i < view.getTryRacingNumber(); i++) {
 
 			// 레이싱 차량들 랜덤 주행 시작
 			racingGame.start();
 
 			// 주행 결과 출력
-			UserOutput.printCarLocation(racingGame.getRacingCars());
+			view.getUserOutputCarLocation(racingGame.getRacingCars());
 		}
 
-		UserOutput.printWinnerRacingGame(racingGame.getWinner());
+		view.getUserOutputWinnerRacingGame(racingGame.getWinner());
 	}
 
-	/**
-	 * 유저: 주행할 차량 댓수 입력 메서드
-	 * @return 주행할 차량 수
-	 * @throws IllegalArgumentException : 유저 입력 숫자가 아닐 시 에러 Throw
-	 */
-	private static int userInputPlayTryNumber() {
-
-		UserOutput.printUserInputTryNumberMsg();
-
-		return Integer.parseInt(UserInput.userInput());
-	}
-
-	/**
-	 * 유저: 랜덤 레이싱 주행 횟수 입력 메서드
-	 * @return 레이싱 주행 횟수
-	 */
-	private static String userInputPlayCarNumber() {
-
-		UserOutput.printUserInputCarNumberMsg();
-
-		return UserInput.userInput();
-	}
 }
