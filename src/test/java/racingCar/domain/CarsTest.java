@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -7,6 +7,8 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+
+import racingCar.domain.Cars;
 
 /**
  * @author : byungkyu

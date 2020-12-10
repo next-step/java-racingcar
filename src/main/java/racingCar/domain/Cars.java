@@ -1,9 +1,11 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import racingCar.domain.move.MoveUtil;
 
 /**
  * @author : byungkyu

@@ -1,8 +1,13 @@
-package racingCar;
+package racingCar.view;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import racingCar.domain.CarHistory;
+import racingCar.domain.Cars;
+import racingCar.domain.LapHistory;
+import racingCar.domain.RaceHistory;
 
 /**
  * @author : byungkyu

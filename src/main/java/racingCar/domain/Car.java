@@ -1,6 +1,6 @@
-package racingCar;
+package racingCar.domain;
 
-import java.util.Random;
+import racingCar.domain.move.MoveUtil;
 
 /**
  * @author : byungkyu
