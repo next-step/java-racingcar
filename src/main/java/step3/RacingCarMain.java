@@ -1,7 +1,7 @@
 package step3;
 
-import step3.model.RacingCarGame;
-import step3.model.RandomMovingStrategy;
+import step3.domain.RacingCarGame;
+import step3.domain.strategy.RandomMovingStrategy;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -17,9 +17,9 @@ public class RacingCarMain {
 
     public static void playRound(int roundCount, RacingCarGame racingCarGame) {
         for (int r = 0; r < roundCount; r++) {
-            racingCarGame.play(new RandomMovingStrategy());
+            racingCarGame.play(new RandomMovingStrategy(3, 1));
             ResultView.getRoundResultWithName(racingCarGame.getCars(), "-"); // 결과 보기
         }
-        ResultView.printWinner(racingCarGame.getCars());
+        ResultView.printWinner(racingCarGame.getWinnerCarNames(), ", "); // 우승자(들)
     }
 }
