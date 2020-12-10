@@ -8,7 +8,10 @@ import racingcar.rule.FixedRacingRule;
 import racingcar.rule.RacingRule;
 import racingcar.rule.RandomRacingRule;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingCarDriverTest {
 
@@ -27,5 +30,18 @@ public class RacingCarDriverTest {
 
         // then
         assertThat(distance).isEqualTo(Integer.parseInt(expected));
+    }
+
+    @Test
+    @DisplayName("주어진 숫자에 맞게 자동차가 생성되었는지 테스트")
+    public void createRacingCars() {
+        // given
+        int amount = 0;
+
+        // when
+        List<RacingCar> racingCars = RacingCarDriver.createRacingCars(amount);
+
+        // then
+        assertThat(racingCars.size()).isEqualTo(amount);
     }
 }
