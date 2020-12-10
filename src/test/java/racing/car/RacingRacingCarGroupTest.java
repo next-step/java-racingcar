@@ -4,8 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.TestUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -77,6 +79,22 @@ class RacingRacingCarGroupTest {
 
 		// then
 		assertThat(winnerNameList).containsExactly("win1");
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {0, 5, 999})
+	@DisplayName("CarGroup.size() 테스트")
+	void size(int carNum) {
+		// given
+		List<RacingCar> racingCarList = new ArrayList<>();
+		List<String> carNameList = TestUtils.createAnyCarNameList(carNum);
+		for (String carName : carNameList) {
+			racingCarList.add(new RacingCar(carName, () -> true));
+		}
+		RacingCarGroup racingCarGroup = new RacingCarGroup(racingCarList);
+
+		// when & then
+		assertThat(racingCarGroup.size()).isEqualTo(carNum);
 	}
 
 	private RacingCar createNotMovedCar(String name) {

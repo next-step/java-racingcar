@@ -35,19 +35,24 @@ public class RacingCarGroup {
 	}
 
 	public List<String> getWinnerNameList() {
-		OptionalInt maxPosition = this.stream()
-				.mapToInt(RacingCar::getPosition)
-				.max();
-
+		OptionalInt maxPosition = getMaxPosition();
 		if (!maxPosition.isPresent()) {
 			return Collections.emptyList();
 		}
 
-		List<String> winnerNameList = this.stream()
-				.filter(racingCar -> racingCar.getPosition() == maxPosition.getAsInt())
+		return this.racingCarList.stream()
+				.filter(racingCar -> racingCar.isEqualPosition(maxPosition.getAsInt()))
 				.map(RacingCar::getCarName)
 				.collect(Collectors.toList());
+	}
 
-		return winnerNameList;
+	private OptionalInt getMaxPosition() {
+		return this.racingCarList.stream()
+				.mapToInt(RacingCar::getPosition)
+				.max();
+	}
+
+	public int size() {
+		return racingCarList.size();
 	}
 }

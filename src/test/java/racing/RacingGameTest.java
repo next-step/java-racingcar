@@ -24,7 +24,7 @@ class RacingGameTest {
 		RacingCarGroup racingCarGroup = racingGame.start();
 
 		// then
-		assertThat(racingCarGroup.stream()).hasSize(carNum);
+		assertThat(racingCarGroup.size()).isEqualTo(carNum);
 	}
 
 	@ParameterizedTest

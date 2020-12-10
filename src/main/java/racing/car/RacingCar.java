@@ -1,5 +1,7 @@
 package racing.car;
 
+import java.util.Objects;
+
 public class RacingCar {
 
 	private final String carName;
@@ -23,6 +25,10 @@ public class RacingCar {
 
 	public int getPosition() {
 		return this.position;
+	}
+
+	boolean isEqualPosition(int position) {
+		return Objects.equals(this.position, position);
 	}
 
 	void moveForward() {
