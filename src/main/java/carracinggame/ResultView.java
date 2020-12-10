@@ -1,4 +1,4 @@
-package carrace;
+package carracinggame;
 
 public class ResultView {
 	public void printResultText() {

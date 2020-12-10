@@ -1,8 +1,10 @@
-package carrace;
+package carracinggame;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class CarStarter {
+public class CarRacingGame {
 	public static Random random = new Random();
 	public static InputView inputView = new InputView();
 	public static ResultView resultView = new ResultView();
@@ -10,20 +12,22 @@ public class CarStarter {
 		int carCount = inputView.printAndGetCarCount();
 		int moveCount = inputView.printAndGetMoveCount();
 
-		Car[] carArray = new Car[carCount];
-		for (int i = 0; i < carArray.length; i++) {
-			carArray[i] = new Car();
+		List<Car> carList = new ArrayList<>();
+		for (int i = 0; i < carCount; i++) {
+			carList.add(new Car(new CarMoveStrategy()));
 		}
+
 		resultView.nextLine();
 		resultView.printResultText();
 		for (int i = 0; i < moveCount; i++) {
-			moveCars(carArray);
+			startCarRacing(carList);
 		}
 	}
 
-	public static void moveCars(Car[] carArray) {
-		for (Car car : carArray) {
-			resultView.printCarPosition(car.move(random.nextInt(10)));
+	public static void startCarRacing(List<Car> carList) {
+		for (Car car : carList) {
+			car.move(random.nextInt(10));
+			resultView.printCarPosition(car.getPosition());
 		}
 		resultView.nextLine();
 	}
