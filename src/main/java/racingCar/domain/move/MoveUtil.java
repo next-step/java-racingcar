@@ -7,7 +7,7 @@ import java.util.Random;
  * @date : 2020/12/10
  * @description :
  **/
-public class MoveUtil implements RandomMove{
+public class MoveUtil implements RandomMove {
 
 	@Override
 	public int move() {

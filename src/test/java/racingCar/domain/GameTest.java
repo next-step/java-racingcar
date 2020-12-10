@@ -10,8 +10,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racingCar.domain.Game;
-
 /**
  * @author : byungkyu
  * @date : 2020/12/07

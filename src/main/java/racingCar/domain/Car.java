@@ -45,7 +45,7 @@ public class Car {
 		return name;
 	}
 
-	public boolean isWinner(int winnerPosition){
+	public boolean isWinner(int winnerPosition) {
 		return position == winnerPosition;
 	}
 }

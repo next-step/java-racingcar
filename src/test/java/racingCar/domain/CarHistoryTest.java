@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import racingCar.domain.Car;
-import racingCar.domain.CarHistory;
 import racingCar.domain.move.MoveUtil;
 
 /**

@@ -1,6 +1,7 @@
 package racingCar.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -19,14 +20,12 @@ public class Cars {
 	private int lapCount;
 	private RaceHistory raceHistory;
 	private List<Car> winners;
-	private int winnerPosition;
 
 	public Cars(String[] carNames, int matchCount) {
 		this.cars = new ArrayList<>();
 		createCars(carNames);
 		this.matchCount = matchCount;
 		this.lapCount = 0;
-		this.winnerPosition = 0;
 		raceHistory = new RaceHistory();
 
 	}
@@ -44,26 +43,27 @@ public class Cars {
 	}
 
 	private void setWinners() {
+		int finalWinnerPosition = getWinnerPosition();
 		winners = cars.stream()
-			.filter(car -> car.isWinner(winnerPosition))
+			.filter(car -> car.isWinner(finalWinnerPosition))
 			.collect(Collectors.toList());
+	}
+
+	private int getWinnerPosition() {
+		return cars.stream()
+			.max(Comparator.comparing(Car::getPosition))
+			.map(car -> car.getPosition())
+			.orElse(0);
 	}
 
 	public void runLap() {
 		LapHistory lapHistory = new LapHistory();
 		for (Car car : cars) {
 			car.move();
-			setWinnerPosition(car.getPosition());
 			lapHistory.add(new CarHistory(car));
 		}
 		raceHistory.add(lapHistory);
 		lapCount++;
-	}
-
-	private void setWinnerPosition(int position) {
-		if (position > winnerPosition) {
-			winnerPosition = position;
-		}
 	}
 
 	public int getLapCount() {

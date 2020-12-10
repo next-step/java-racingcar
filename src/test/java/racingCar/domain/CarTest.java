@@ -9,7 +9,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racingCar.domain.Car;
 import racingCar.domain.move.MoveUtil;
 
 /**
@@ -24,8 +23,8 @@ public class CarTest {
 	@DisplayName("1. 자동차의 전진 조건값이 4이상일 경우 이동한다.")
 	@ParameterizedTest
 	@ValueSource(ints = {4, 5, 6})
-	void moveWhenArgOverFour(int arg){
-		MoveUtil moveUtil = new MoveUtil(){
+	void moveWhenArgOverFour(int arg) {
+		MoveUtil moveUtil = new MoveUtil() {
 			@Override
 			public int move() {
 				return arg;
@@ -42,7 +41,7 @@ public class CarTest {
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
 	void notMoveWhenArgUnderFour(int arg) {
-		MoveUtil moveUtil = new MoveUtil(){
+		MoveUtil moveUtil = new MoveUtil() {
 			@Override
 			public int move() {
 				return arg;
@@ -59,7 +58,7 @@ public class CarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"pobiconan", "nextstep", "lannstark"})
 	void carNameCannotOverFive(String carName) {
-		MoveUtil moveUtil = new MoveUtil(){
+		MoveUtil moveUtil = new MoveUtil() {
 			@Override
 			public int move() {
 				return 4;
