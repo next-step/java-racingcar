@@ -8,7 +8,7 @@ import racing.model.service.RandomCarConditional;
 public class RacingCars {
 
 	// 레이싱 차량 저장 리스트
-	private final List<RacingCar> racingCars;
+	private final List<RacingCar> cars;
 
 	/**
 	 * 객체 생성 시 입력받은 수 만큼 자동차 객체를 만들어 주는 생성자
@@ -16,7 +16,7 @@ public class RacingCars {
 	 */
 	public RacingCars(int racingCarNumber) {
 
-		this.racingCars = initRacingCars(racingCarNumber);
+		this.cars = initRacingCars(racingCarNumber);
 	}
 
 	/**
@@ -41,16 +41,16 @@ public class RacingCars {
 	public void start() {
 
 		RandomCarConditional randomCarConditional = new RandomCarConditional();
-		
-		this.racingCars.forEach(racingCar -> racingCar.move(randomCarConditional));
+
+		this.cars.forEach(racingCar -> racingCar.move(randomCarConditional));
 	}
 
 	/**
 	 * 거리를 출력하기 위해 자동차 객체 리턴
 	 * @return : 자동차 객체 리스트 리턴
 	 */
-	public List<RacingCar> getRacingCars() {
+	public List<RacingCar> getCars() {
 
-		return this.racingCars;
+		return this.cars;
 	}
 }

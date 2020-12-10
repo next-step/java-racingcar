@@ -38,7 +38,7 @@ public class RacingCarMain {
 			racingGame.start();
 
 			// 주행 결과 출력
-			UserOutput.printCarLocation(racingGame.getCars());
+			UserOutput.printCarLocation(racingGame.getRacingCars());
 		}
 	}
 

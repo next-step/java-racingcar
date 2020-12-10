@@ -11,7 +11,7 @@ public class RacingCar {
 	private int location;
 
 	// 자동차 이름
-	private String carName;
+	private CarName carName;
 
 	public RacingCar() {
 
@@ -22,7 +22,7 @@ public class RacingCar {
 	public RacingCar(String carName) {
 
 		this();
-		this.carName = carName;
+		this.carName = new CarName(carName);
 	}
 
 	public void move(CarConditional carConditional) {
@@ -42,6 +42,6 @@ public class RacingCar {
 	}
 
 	public String getCarName() {
-		return this.carName;
+		return this.carName.getName();
 	}
 }

@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import racing.model.RacingCar;
 import racing.model.service.ForwardCarConditional;
@@ -12,11 +14,19 @@ import racing.model.service.StopCarConditional;
 
 class RacingCarTest {
 
-	@Test
-	@DisplayName("자동차 이름 추가")
-	void carNameAddTest() {
+	@ParameterizedTest
+	@ValueSource(strings = {" ", "SONATA", "", "그랜드 스타렉스"})
+	@DisplayName("자동차 이름 추가 객체 생성 테스트")
+	void carNameExceptionTest(String carName) {
 
-		String carName = "포르쉐";
+		assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar(carName));
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"포르쉐", "K5", "520i"})
+	@DisplayName("자동차 이름 추가 객체 생성 테스트")
+	void carNameAddTest(String carName) {
+
 		RacingCar car = new RacingCar(carName);
 
 		assertThat(car.getCarName()).isEqualTo(carName);

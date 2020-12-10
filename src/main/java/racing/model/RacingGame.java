@@ -4,20 +4,20 @@ import java.util.List;
 
 public class RacingGame {
 
-	private RacingCars cars;
+	private final RacingCars racingCars;
 
 	public RacingGame(int carNumber) {
 
-		this.cars = new RacingCars(carNumber);
+		this.racingCars = new RacingCars(carNumber);
 	}
 
 	public void start() {
 
-		this.cars.start();
+		this.racingCars.start();
 	}
 
-	public List<RacingCar> getCars() {
+	public List<RacingCar> getRacingCars() {
 
-		return this.cars.getRacingCars();
+		return this.racingCars.getCars();
 	}
 }
