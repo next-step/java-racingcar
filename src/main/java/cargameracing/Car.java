@@ -7,14 +7,19 @@ import java.util.Random;
  * @author minji
  */
 public class Car {
+    Random random = new Random();
     private int junjin;
 
     public void junjinUp() {
-        Random random = new Random();
-        int n = random.nextInt(10);
-        if (n >= 4) {
+        int num = randomValue();
+        if (num >= 4) {
             ++junjin;
         }
+    }
+
+    public int randomValue() {
+        int randomNum = random.nextInt(10);
+        return randomNum;
     }
 
     public int getJunjin() {
