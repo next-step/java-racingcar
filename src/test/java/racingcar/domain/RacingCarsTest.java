@@ -39,7 +39,19 @@ class RacingCarsTest {
 
         // then
         assertThat(racingCars.getParticipatingCars())
-                .containsExactly(new RacingCar("pobi", 1), new RacingCar("crong", 1), new RacingCar("honux", 1), new RacingCar("YKJ", 1));
+                .containsExactly(
+                        new RacingCar.RacingCarBuilder("pobi")
+                                .carPosition(1)
+                                .build(),
+                        new RacingCar.RacingCarBuilder("crong")
+                                .carPosition(1)
+                                .build(),
+                        new RacingCar.RacingCarBuilder("honux")
+                                .carPosition(1)
+                                .build(),
+                        new RacingCar.RacingCarBuilder("YKJ")
+                                .carPosition(1)
+                                .build());
     }
 
 }
