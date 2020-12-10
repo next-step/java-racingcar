@@ -1,3 +1,54 @@
+# 자동차 경주
+
+* [Step3 정리](#step3-자동차-경주)
+* [Step4 정리](#step4-자동차-경주(우승자))
+* [Git Commit 전략](#git-commit-로그-요구사항)
+* [Java Code Convention](#java-code-convention)
+
+# Step4 자동차 경주(우승자)
+
+## 기능 구현 목록
+
+* 문자열 이름을 갖는 자동차 객체 생성 테스트(단일 -> 복수 객체)
+* 레이싱 종류 후, 1등 탐색
+* 자동차 이름 출력
+* 1등 출력
+* 자동차 이름 입력 벨리데이션
+
+## 기능 요구사항
+
+* 각 자동차 객체에 이름을 부여
+    - 자동차 이름은 5자를 초과 할 수 없다.
+* 전진하는 자동차를 출력할 때, 자동차 이름 출력
+* 입력받은 자동차 이름은 `,` 기준으로 구분한다.
+* 자동차 경주 게임을 완료한 후, 우승자를 출력
+    + 우승자는 한명 이상
+
+## 프로그래밍 요구사항
+
+* indent depth 1까지 허용
+* 메소드 길이가 15라인을 넘어가지 않도록 구현
+* 모든 로직에 단위 테스트 구현
+    + 단, UI(System.in, System.out) 로직은 제외
+    + 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분
+* [자바 코드 컨벤션1](https://google.github.io/styleguide/javaguide.html ) [자바 코드 컨벤션2](https://myeonguni.tistory.com/1596) 준수
+* else 예약어를 사용하지 않는다.
+
+## 기능 목록 및 commit 로그 요구사항
+
+* 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가
+* git 의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가
+
+```
+feat (feature)
+fix (bug fix)
+docs (documentation)
+style (formatting, missing semi colons, …)
+refactor
+test (when adding missing tests)
+chore (maintain)
+```
+
 # Step3 자동차 경주
 
 ## 기능 구현 목록
@@ -27,7 +78,9 @@
 * 자바 코드 컨벤션을 지키면서 프로그래밍한다.
 * else 예약어를 사용하지 않는다.
 
-## 기능 목록 및 commit 로그 요구사항
+---
+
+# Git Commit 로그 요구사항
 
 * 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가
 * git 의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가
@@ -42,13 +95,9 @@ test (when adding missing tests)
 chore (maintain)
 ```
 
-## 진행 방법
+# Java Code Convention
 
-* 자동차 경주 게임 요구사항을 파악한다.
-* 요구사항에 대한 구현을 완료한 후 자신의 github 아이디에 해당하는 브랜치에 Pull Request(이하 PR)를 통해 코드 리뷰 요청을 한다.
-* 코드 리뷰 피드백에 대한 개선 작업을 하고 다시 PUSH한다.
-* 모든 피드백을 완료하면 다음 단계를 도전하고 앞의 과정을 반복한다.
+코드 컨벤션
 
-## 온라인 코드 리뷰 과정
-
-* [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+* [자바 코드 컨벤션1](https://google.github.io/styleguide/javaguide.html )
+* [자바 코드 컨벤션2](https://myeonguni.tistory.com/1596) 
