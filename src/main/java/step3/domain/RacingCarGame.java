@@ -1,7 +1,5 @@
 package step3.domain;
 
-import step3.Car;
-import step3.Distance;
 import step3.domain.strategy.MovingStrategy;
 
 import java.util.List;

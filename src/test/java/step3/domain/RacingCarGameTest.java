@@ -1,6 +1,5 @@
 package step3.domain;
 
-import step3.Car;
 import step3.domain.strategy.RandomMovingStrategy;
 
 import org.junit.jupiter.api.BeforeEach;

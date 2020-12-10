@@ -1,6 +1,7 @@
-package step3;
+package step3.domain;
 
-import step3.model.RandomMovingStrategy;
+import step3.RandomNumberProvider;
+import step3.domain.strategy.RandomMovingStrategy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
