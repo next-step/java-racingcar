@@ -1,7 +1,7 @@
 package racing;
 
 import racing.car.RacingCarGroup;
-import racing.car.RandomMoveForwardStrategy;
+import racing.car.RandomMoveChanceGenerator;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ class RacingGame {
 	private final RacingNotifier racingNotifier;
 
 	RacingGame(List<String> carNameList, int turn, RacingNotifier racingNotifier) {
-		this.racingCarGroup = RacingCarGroup.of(carNameList, new RandomMoveForwardStrategy());
+		this.racingCarGroup = RacingCarGroup.of(carNameList, new RandomMoveChanceGenerator());
 		this.turn = turn;
 		this.racingNotifier = racingNotifier;
 	}

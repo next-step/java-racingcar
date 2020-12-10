@@ -3,16 +3,16 @@ package racing.car;
 public class RacingCar {
 
 	private final String carName;
-	private final MoveForwardStrategy moveForwardStrategy;
+	private final MoveChanceGenerator moveChanceGenerator;
 	private int position;
 
-	RacingCar(String carName, MoveForwardStrategy moveForwardStrategy) {
+	RacingCar(String carName, MoveChanceGenerator moveChanceGenerator) {
 		this.carName = carName;
-		this.moveForwardStrategy = moveForwardStrategy;
+		this.moveChanceGenerator = moveChanceGenerator;
 	}
 
 	void getMoveForwardChance() {
-		if (this.moveForwardStrategy.isMovableChance()) {
+		if (this.moveChanceGenerator.getMoveChance()) {
 			this.moveForward();
 		}
 	}

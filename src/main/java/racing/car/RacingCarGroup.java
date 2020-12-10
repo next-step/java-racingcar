@@ -10,10 +10,10 @@ import java.util.stream.Stream;
 public class RacingCarGroup {
 	private final List<RacingCar> racingCarList;
 
-	public static RacingCarGroup of(List<String> carNameList, MoveForwardStrategy moveForwardStrategy) {
+	public static RacingCarGroup of(List<String> carNameList, MoveChanceGenerator moveChanceGenerator) {
 		List<RacingCar> racingCarList = new ArrayList<>();
 		for (String carName : carNameList) {
-			final RacingCar racingCar = createCar(carName, moveForwardStrategy);
+			final RacingCar racingCar = new RacingCar(carName, moveChanceGenerator);
 			racingCarList.add(racingCar);
 		}
 
@@ -22,10 +22,6 @@ public class RacingCarGroup {
 
 	RacingCarGroup(List<RacingCar> racingCarList) {
 		this.racingCarList = racingCarList;
-	}
-
-	private static RacingCar createCar(String carName, MoveForwardStrategy moveForwardStrategy) {
-		return new RacingCar(carName, moveForwardStrategy);
 	}
 
 	public Stream<RacingCar> stream() {

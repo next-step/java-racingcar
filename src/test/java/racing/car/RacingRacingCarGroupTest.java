@@ -80,49 +80,17 @@ class RacingRacingCarGroupTest {
 	}
 
 	private RacingCar createNotMovedCar(String name) {
-		MoveForwardStrategy notMoveStrategy = new MoveForwardStrategy() {
-			@Override
-			public int createMoveForwardChance() {
-				return 0;
-			}
-
-			@Override
-			public boolean isSatisfiedToMoveForward(int chance) {
-				return false;
-			}
-		};
-
-		return new RacingCar(name, notMoveStrategy);
+		return new RacingCar(name, () -> false);
 	}
 
 	private RacingCar createAlwaysMovedCar(String name) {
-		MoveForwardStrategy alwaysMoveStrategy = new MoveForwardStrategy() {
-			@Override
-			public int createMoveForwardChance() {
-				return 0;
-			}
-
-			@Override
-			public boolean isSatisfiedToMoveForward(int chance) {
-				return true;
-			}
-		};
-
-		return new RacingCar(name, alwaysMoveStrategy);
+		return new RacingCar(name, () -> true);
 	}
 
-	private static MoveForwardStrategy createStrategyForCallCount(TestUtils.Counter counter) {
-		return new MoveForwardStrategy() {
-			@Override
-			public int createMoveForwardChance() {
-				return 0;
-			}
-
-			@Override
-			public boolean isSatisfiedToMoveForward(int chance) {
-				counter.addCount();
-				return false;
-			}
+	private static MoveChanceGenerator createStrategyForCallCount(TestUtils.Counter counter) {
+		return () -> {
+			counter.addCount();
+			return false;
 		};
 	}
 }
