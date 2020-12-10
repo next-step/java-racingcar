@@ -4,14 +4,12 @@ import racing.view.Display;
 
 public class CarRacing {
     private ParticipateCars participateCars;
-    private Display display;
 
     public CarRacing(ParticipateCars participateCars) {
         this.participateCars = participateCars;
-        this.display = display;
     }
 
-    public void startRacing(int racingCount) {
+    public void startRacing() {
         this.participateCars.moveCar();
     }
 

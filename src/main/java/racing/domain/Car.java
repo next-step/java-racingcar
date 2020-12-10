@@ -1,14 +1,13 @@
 package racing.domain;
 
-public class Car {
-//    private Display display;
+public class Car implements Comparable<Car> {
     private int allMeter = 0;
     private String name;
 
-    public Car( String name){
+    public Car(String name){
         this.name = name;
     }
-    public Car( String name, int totalMeter){
+    public Car(String name, int totalMeter) {
         this.name = name;
         this.allMeter = totalMeter;
     }
@@ -42,5 +41,16 @@ public class Car {
         }
         return 0;
 
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        if( this.totalMeter() > otherCar.totalMeter()){
+            return 1;
+        }
+        if( this.totalMeter() < otherCar.totalMeter()){
+            return -1;
+        }
+        return 0;
     }
 }

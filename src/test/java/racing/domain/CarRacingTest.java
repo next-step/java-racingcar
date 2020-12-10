@@ -20,7 +20,7 @@ class CarRacingTest {
 
     @Test
     void winnerTest() {
-        carRacing.startRacing(3);
+        carRacing.startRacing();
         String[] winner = carRacing.presentWinner().split(",");
         assertThat(winner.length).isGreaterThan(0);
     }

@@ -2,6 +2,7 @@ package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import racing.domain.Car;
 import racing.domain.ParticipateCars;
 

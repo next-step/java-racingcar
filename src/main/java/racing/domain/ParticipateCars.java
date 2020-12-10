@@ -45,8 +45,8 @@ public class ParticipateCars {
 
     protected List<String> findWinnerName(int maxTotalMeter,List<Car> cars) {
         List<String> winner = new ArrayList<>();
-        cars.forEach( (car)->{
-            if(car.totalMeter() == maxTotalMeter){
+        cars.forEach(car->{
+            if (car.totalMeter() == maxTotalMeter) {
                 winner.add(car.getName());
             }
         });
@@ -54,22 +54,21 @@ public class ParticipateCars {
     }
 
     protected int findMaxTotalMeter(List<Car> cars){
-        Comparator<Car> comparable = (carA, carB) -> carA.compareMeter(carB);
-        Optional<Car> carOptional = cars.stream().max(comparable);
-        if(carOptional.isPresent()){
-            return carOptional.get().totalMeter();
-        }
-        throw new RuntimeException("자동차가 존재하지 않습니다.");
+        return cars.stream()
+                    .max(Car::compareTo)
+                    .map(Car::totalMeter)
+                    .get();
     }
 
 
 
     private String winnerName(List<String> winners, int numOfWinnerOption) {
         String winner = "";
-        if (winners.size() < numOfWinnerOption) {
+        int numberOfWinners = winners.size();
+        if (numberOfWinners < numOfWinnerOption) {
             winner = winners.get(0);
         }
-        if (winners.size() > numOfWinnerOption || winners.size() == numOfWinnerOption) {
+        if (numberOfWinners > numOfWinnerOption || winners.size() == numOfWinnerOption) {
             winner = winners.stream().collect(Collectors.joining(","));
         }
         return winner;

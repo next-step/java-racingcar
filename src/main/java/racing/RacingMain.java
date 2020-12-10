@@ -18,8 +18,8 @@ public class RacingMain {
         display.printLine("자동차 경주의 수는 몇 번 인가요?");
         int tryNumber = new NumberParserUtil().toInt(inputUtil.inputNumber());
         CarRacing carRacing = new CarRacing(participateCars);
-        for(int i = 0; i < tryNumber; i++){
-            carRacing.startRacing(tryNumber);
+        for (int i = 0; i < tryNumber; i++ ) {
+            carRacing.startRacing();
             display.displayRacingResult(carRacing.showParticipateCars());
         }
         display.printWinnner( carRacing.presentWinner());
