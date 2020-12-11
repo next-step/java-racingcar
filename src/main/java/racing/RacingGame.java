@@ -17,13 +17,12 @@ class RacingGame {
 		this.racingNotifier = racingNotifier;
 	}
 
-	RacingCarGroup start() {
+	void start() {
 		for (int i = 0; i < turn; i++) {
 			this.racingCarGroup.getMoveForwardChance();
 			this.racingNotifier.notifyRace(this.racingCarGroup);
 		}
 
 		this.racingNotifier.notifyWinner(this.racingCarGroup.getWinnerNameList());
-		return this.racingCarGroup;
 	}
 }
