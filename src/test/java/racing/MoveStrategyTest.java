@@ -5,16 +5,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarsTest {
+public class MoveStrategyTest {
 
     @Test
-    @DisplayName("주어진 자동차 수 만큼 생성하는지 확인")
-    void testCreateCars() {
+    @DisplayName("주어진 이동 전략에 따라 이동하는지?")
+    void testAlwaysMoveStrategy() {
         // given
-        int count = 3;
-        // when
         Cars cars = new Cars(3, () -> true);
         // when
-        assertThat(cars.size()).isEqualTo(count);
+        cars.moveAll();
+        // then
+        cars.iterateCar(distance -> assertThat(distance).isEqualTo(1));
     }
 }
