@@ -1,6 +1,7 @@
 package carrace.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RaceTrack {
     private static final int START_POSITION = 1;
@@ -38,33 +39,14 @@ public class RaceTrack {
     }
 
     public List<Car> getWinner() {
-        List<Car> sortedList = new ArrayList<>(carList);
-        sortedList.sort(new CarPositionComparator());
+        int max = carList.stream()
+                .map(Car::getPosition)
+                .max(Integer::compare)
+                .orElseThrow(IllegalStateException::new);
 
-        List<Car> winners = new ArrayList<>();
-
-        Car fistIndexCar = sortedList.get(0);
-        winners.add(fistIndexCar);
-
-        for (Car car : sortedList.subList(1, sortedList.size())) {
-            if(fistIndexCar.getPosition() == car.getPosition()) {
-                winners.add(car);
-            }
-        }
-
-        return winners;
+        return carList.stream()
+                .filter(car -> car.getPosition() == max)
+                .collect(Collectors.toList());
     }
 
-    private static class CarPositionComparator implements Comparator<Car> {
-
-        @Override
-        public int compare(Car car1, Car car2) {
-            if(car1.getPosition() < car2.getPosition()) {
-                return 1;
-            } else if (car1.getPosition() == car2.getPosition()) {
-                return 0;
-            }
-            return -1;
-        }
-    }
 }
