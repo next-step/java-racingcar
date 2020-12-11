@@ -5,17 +5,15 @@ import java.util.Random;
 public class RandomRacingRule implements RacingRule {
 
   private static final Random random = new Random();
-  private static final int STANDARD_FOR_MOVING = 4;
-  private static final int RANDOM_BOUND = 10;
+  private final int bound;
 
-  @Override
-  public boolean canMove(int targetNumber) {
-    return targetNumber > STANDARD_FOR_MOVING;
+  public RandomRacingRule(int bound) {
+    this.bound = bound;
   }
 
   @Override
   public int getTargetNumber() {
-    return random.nextInt(RANDOM_BOUND);
+    return random.nextInt(bound);
   }
 
 }

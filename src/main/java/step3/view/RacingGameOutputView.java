@@ -20,9 +20,7 @@ public class RacingGameOutputView {
   }
 
   public static void printWinnerResult(Cars cars) {
-    String winnerNames = cars.getWinnerCars().stream()
-        .map(Car::getName)
-        .collect(Collectors.joining(COMMA_AND_SPACE_MARK));
+    String winnerNames = String.join(COMMA_AND_SPACE_MARK, cars.getWinnerCarNames());
     System.out.println(winnerNames + "가 최종 우승했습니다.");
   }
 

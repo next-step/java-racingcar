@@ -1,26 +1,39 @@
 package step3.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.service.RacingRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-  @DisplayName("Car객체 생성 시 distance 초기값이 1인지 확인한다.")
-  @Test
-  void initTest() {
-    Car car = new Car("name");
-    assertThat(car.getDistance()).isEqualTo(1);
+  private Car car;
+
+  @BeforeEach
+  void before() {
+    car = new Car("name");
   }
 
-  @DisplayName("move 와 getDistance 가 잘 동작하는지 확인")
+  @DisplayName("객체 생성 확인")
   @Test
-  public void moveTest() {
-    Car car = new Car("name");
-    car.move();
+  void constructorTest() {
+    assertThat(car.getDistance()).isEqualTo(1);
+    assertThat(car.getName()).isEqualTo("name");
+  }
+
+  @DisplayName("이동할 수 있는지 확인")
+  @Test
+  void canMoveTest() {
+    car.move(5);
     assertThat(car.getDistance()).isEqualTo(2);
+  }
+
+  @DisplayName("이동할 수 없는지 확인")
+  @Test
+  void cannotMoveTest() {
+    car.move(1);
+    assertThat(car.getDistance()).isEqualTo(1);
   }
 
 }

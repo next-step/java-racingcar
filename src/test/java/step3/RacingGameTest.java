@@ -6,8 +6,8 @@ public class RacingGameTest {
 
   @Test
   public void start() {
-    RacingGame game = new RacingGame();
-    game.start("pobi,crong,honux", 5);
+    RacingGame game = new RacingGame("pobi,crong,honux", 5);
+    game.race();
   }
 
 }
