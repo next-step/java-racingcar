@@ -1,8 +1,11 @@
 package racingcar;
 
+import racingcar.rule.RacingRule;
+
 public class RacingCar {
 
     private static final int MOVABLE_MIN_VALUE = 4;
+    private static final int NAME_MAX_LENGTH = 5;
 
     private String name;
 
@@ -26,16 +29,12 @@ public class RacingCar {
     }
 
     /**
-     * 자동차의 거리를 1증가시킵니다.
-     * @return added distance
+     * 주어진 수만큼 위치 이동
+     * @param number 
      */
-    public int addDistance() {
-        return ++this.distance;
-    }
-
     public void move(int number) {
         if(this.canMove(number)) {
-            this.addDistance();
+            ++this.distance;
         }
     }
 
@@ -54,7 +53,7 @@ public class RacingCar {
      * @return
      */
     private String validateName(String name) {
-        if(name != null && name.length() <= 5) {
+        if(name != null && name.length() <= RacingCar.NAME_MAX_LENGTH) {
             return name;
         }
         throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
