@@ -15,27 +15,6 @@ public class UserInput {
 		return UserInput.userSystemInput();
 	}
 
-	public static int userInputNumber() {
-
-		String inputStr = UserInput.userSystemInput();
-
-		if (!isNumber(inputStr)) {
-			throw new IllegalArgumentException("숫자만 입력해 주세요.");
-		}
-
-		return Integer.parseInt(inputStr);
-	}
-
-	public static boolean isNumber(String inputNumber) {
-
-		try {
-			Integer.parseInt(inputNumber);
-			return true;
-		} catch (NumberFormatException numberFormatException) {
-			return false;
-		}
-	}
-
 	/**
 	 * 유저에게 입력 받는 메서드
 	 * @return 입력한 문자열

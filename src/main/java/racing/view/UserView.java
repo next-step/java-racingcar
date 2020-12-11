@@ -4,12 +4,13 @@ import java.util.List;
 
 import racing.model.CarNames;
 import racing.model.RacingCar;
+import racing.model.TryRaceNumber;
 
 public class UserView {
 
 	private CarNames carNames;
 
-	private int tryRacingNumber;
+	private TryRaceNumber tryRaceNum;
 
 	public void getUserInputAboutRacingGame() {
 
@@ -17,7 +18,7 @@ public class UserView {
 		this.carNames = userInputPlayCarNames();
 
 		// 유저: 레이싱 주행 횟수 입력
-		this.tryRacingNumber = userInputPlayTryNumber();
+		this.tryRaceNum = userInputPlayTryNumber();
 	}
 
 	/**
@@ -25,11 +26,11 @@ public class UserView {
 	 * @return 레이싱 주행 횟수
 	 * @throws IllegalArgumentException : 유저 입력 숫자가 아닐 시 에러 Throw
 	 */
-	private static int userInputPlayTryNumber() {
+	private static TryRaceNumber userInputPlayTryNumber() {
 
 		UserOutput.printUserInputTryNumberMsg();
 
-		return UserInput.userInputNumber();
+		return new TryRaceNumber(UserInput.userInputString());
 	}
 
 	/**
@@ -43,23 +44,28 @@ public class UserView {
 		return new CarNames(UserInput.userInputString());
 	}
 
-	public CarNames getCarNames() {
-		return this.carNames;
-	}
-
-	public int getTryRacingNumber() {
-		return this.tryRacingNumber;
-	}
-
-	public void getUserOutputCarLocation(List<RacingCar> racingCars) {
-		UserOutput.printCarLocation(racingCars);
-	}
-
 	public void getUserOutputWinnerRacingGame(String winnerCarsName) {
+
 		UserOutput.printWinnerRacingGame(winnerCarsName);
 	}
 
+	public CarNames getCarNames() {
+
+		return this.carNames;
+	}
+
 	public void getUserOutputError(String errorMessage) {
+
 		UserOutput.printUserErrorMsg(errorMessage);
+	}
+
+	public void getUserOutputCarLocation(List<RacingCar> racingCars) {
+
+		UserOutput.printCarLocation(racingCars);
+	}
+
+	public boolean isTryGame() {
+
+		return this.tryRaceNum.isTryGame();
 	}
 }
