@@ -13,7 +13,7 @@ public class CarsTest {
         // given
         int count = 3;
         // when
-        Cars cars = new Cars(3, () -> true);
+        Cars cars = new Cars(3);
         // when
         assertThat(cars.size()).isEqualTo(count);
     }

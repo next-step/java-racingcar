@@ -6,11 +6,9 @@ import java.util.function.IntConsumer;
 
 public class Cars {
 
-    private List<Car> cars = new ArrayList<>();
-    private final MoveStrategy strategy;
+    private final List<Car> cars = new ArrayList<>();
 
-    public Cars(int count, MoveStrategy strategy) {
-        this.strategy = strategy;
+    public Cars(int count) {
         for (int j = 0; j < count; j++) {
             cars.add(new Car());
         }
@@ -20,9 +18,9 @@ public class Cars {
         return cars.size();
     }
 
-    public void moveAll() {
+    public void moveAll(MoveStrategy strategy) {
         for (Car car : cars) {
-            tryMove(car);
+            tryMove(car, strategy);
         }
     }
 
@@ -32,7 +30,7 @@ public class Cars {
         }
     }
 
-    private void tryMove(Car car) {
+    private void tryMove(Car car, MoveStrategy strategy) {
         if (strategy.movable()) {
             car.move();
         }
