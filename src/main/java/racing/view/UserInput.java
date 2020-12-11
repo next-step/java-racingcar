@@ -2,7 +2,7 @@ package racing.view;
 
 import java.util.Scanner;
 
-public class UserInput{
+public class UserInput {
 
 	private static final Scanner SCANNER = new Scanner(System.in);
 
@@ -10,7 +10,7 @@ public class UserInput{
 	 * 유저 문자열 계산기 문자 입력 메서드
 	 * @return 유저 입력 값
 	 */
-	public static String userInput() {
+	public static String userInputString() {
 
 		return UserInput.userSystemInput();
 	}

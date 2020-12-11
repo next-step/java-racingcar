@@ -13,12 +13,13 @@ import calculator.model.CalculatorType;
 class CalculatorServiceTest {
 
 	Calculator calculator = null;
+
 	@Test
 	@DisplayName("계산식 ENUM 계산 테스트, 나누었을때, 정수로 출력되는지 확인")
 	void enumModest() {
 
 		CalculatorType calculatorTypeTest = CalculatorType.getOperator("/");
-		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(2);
+		assertThat(calculatorTypeTest.calculate(10, 4)).isEqualTo(2);
 	}
 
 	@Test
@@ -26,7 +27,7 @@ class CalculatorServiceTest {
 	void enumMultiTest() {
 
 		CalculatorType calculatorTypeTest = CalculatorType.getOperator("*");
-		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(40);
+		assertThat(calculatorTypeTest.calculate(10, 4)).isEqualTo(40);
 	}
 
 	@Test
@@ -34,7 +35,7 @@ class CalculatorServiceTest {
 	void enumMinusTest() {
 
 		CalculatorType calculatorTypeTest = CalculatorType.getOperator("-");
-		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(6);
+		assertThat(calculatorTypeTest.calculate(10, 4)).isEqualTo(6);
 	}
 
 	@Test
@@ -42,7 +43,7 @@ class CalculatorServiceTest {
 	void enumPlusTest() {
 
 		CalculatorType calculatorTypeTest = CalculatorType.getOperator("+");
-		assertThat(calculatorTypeTest.calculate(10,4)).isEqualTo(14);
+		assertThat(calculatorTypeTest.calculate(10, 4)).isEqualTo(14);
 	}
 
 	@Test
@@ -57,7 +58,7 @@ class CalculatorServiceTest {
 
 		// 두번 째, 계산 부호와 입력 수 반복 계산
 		for (int i = 1; i < userInputArr.length; i = i + 2) {
-			calculator.calculate(userInputArr[i], Integer.parseInt(userInputArr[i+1]));
+			calculator.calculate(userInputArr[i], Integer.parseInt(userInputArr[i + 1]));
 		}
 
 		assertThat(calculator.getResult()).isEqualTo(10);

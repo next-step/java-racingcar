@@ -7,6 +7,7 @@ public class UserInput extends UserOutput {
 	private static final Scanner SCANNER = new Scanner(System.in);
 
 	public static final String GAME_RESTART = "1";
+
 	/**
 	 * 유저 게임 재시작 입력 메서드
 	 * @return 유저 입력 값

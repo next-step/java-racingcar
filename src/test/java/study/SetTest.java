@@ -31,6 +31,7 @@ public class SetTest {
 
 		// Set 은 중복값을 허용하지 않는다.
 		userInputSetSizeTest(3);
+		userInputSetSizeTest(4);
 
 		// Set 중복값을 허용하지 않기 때문에, numbers set 의 사이즈는 3이다.
 		// userInputSetSizeTest(4); // false
@@ -62,7 +63,7 @@ public class SetTest {
 	 * 다양한 타입의 인수를 사용할 수 있다.
 	 */
 	@ParameterizedTest
-	@CsvSource(value= {"1,2,3:true", "4,5:false"}, delimiter = ':')
+	@CsvSource(value = {"1,2,3:true", "4,5:false"}, delimiter = ':')
 	@DisplayName("요구사항3: Set 객체의 value 포함 상태 체크")
 	void setCheckContainsYorN(String values, boolean result) {
 
@@ -82,7 +83,6 @@ public class SetTest {
 
 		assertThat(numbers.contains(values)).isTrue();
 	}
-
 
 	private void userInputSetSizeTest(int size) {
 

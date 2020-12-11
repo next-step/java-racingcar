@@ -1,50 +1,54 @@
 package racing.model;
 
-import java.util.Random;
+import racing.model.service.CarConditional;
 
 public class RacingCar {
 
-	// 경주 주행 기준 상수
-	private static final int RACING_RANDOM_BOUND = 10;
-	private static final int RACING_INCREASE_BOUND = 3;
+	// 자동차 경주 시작 위치 0
 	private static final int RACING_START_LOCATION = 0;
 
-	// 자동차 주행 랜덤값 객체
-	private static final Random randomNumberMaker = new Random();
-
 	// 자동차 주행 거리
-	private int location;
+	private final Location location;
 
-	public RacingCar() {
+	// 자동차 이름
+	private final CarName carName;
 
-		// 객체 생성 시 초기화
-		this.location = RACING_START_LOCATION;
+	public RacingCar(CarName carName) {
+
+		this(carName, RACING_START_LOCATION);
+	}
+
+	public RacingCar(CarName carName, int location) {
+
+		this.carName = carName;
+		this.location = new Location(location);
 	}
 
 	/**
-	 * 자동차 주행 거리 리턴
-	 * @return : 자동차 주행 거리 정수 리턴
+	 * 자동차 랜덤 주행 메서드
+	 * @param carConditional: carConditional 인터페이스를 상속 받는 객체
 	 */
-	public int getDistance() {
-
-		return this.location;
-	}
-
 	public void move(CarConditional carConditional) {
 
 		if (carConditional.isMove()) {
 
-			this.location++;
+			this.location.move();
 		}
 	}
 
-	public MoveState axel() {
+	/**
+	 * 자동차 주행 거리 리턴 메서드
+	 * @return : 자동차 주행 거리 정수 리턴
+	 */
+	public int getDistance() {
+		return this.location.getDistance();
+	}
 
-		if (randomNumberMaker.nextInt(RACING_RANDOM_BOUND) > RACING_INCREASE_BOUND) {
-
-			return MoveState.MOVE;
-		}
-
-		return MoveState.STAY;
+	/**
+	 * 자동차 명 리턴 메서드
+	 * @return : 자동차 명 리턴
+	 */
+	public String getCarName() {
+		return this.carName.getName();
 	}
 }
