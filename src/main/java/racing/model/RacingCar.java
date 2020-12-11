@@ -8,28 +8,27 @@ public class RacingCar {
 	private static final int RACING_START_LOCATION = 0;
 
 	// 자동차 주행 거리
-	private int location;
+	private final Location location;
 
 	// 자동차 이름
-	private CarName carName;
-
-	public RacingCar() {
-
-		// 객체 생성 시 초기화
-		this.location = RACING_START_LOCATION;
-	}
+	private final CarName carName;
 
 	public RacingCar(CarName carName) {
 
-		this();
+		this(carName, RACING_START_LOCATION);
+	}
+
+	public RacingCar(CarName carName, int location) {
+
 		this.carName = carName;
+		this.location = new Location(location);
 	}
 
 	public void move(CarConditional carConditional) {
 
 		if (carConditional.isMove()) {
 
-			this.location++;
+			this.location.move();
 		}
 	}
 
@@ -38,7 +37,7 @@ public class RacingCar {
 	 * @return : 자동차 주행 거리 정수 리턴
 	 */
 	public int getDistance() {
-		return this.location;
+		return this.location.getDistance();
 	}
 
 	public String getCarName() {

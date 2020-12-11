@@ -10,12 +10,12 @@ import racing.model.service.RandomCarConditional;
 import racing.model.service.StopCarConditional;
 
 class RacingCarTest {
-	
+
 	@Test
 	@DisplayName("자동차 랜덤 레이스 움직임 구현")
 	void RandomCarConditionalTest() {
 
-		RacingCar car = new RacingCar();
+		RacingCar car = new RacingCar(new CarName("테스트"));
 		RandomCarConditional randomCarConditional = new RandomCarConditional();
 
 		car.move(randomCarConditional);
@@ -30,7 +30,7 @@ class RacingCarTest {
 	@DisplayName("자동차 전진 움직임 구현")
 	void ForwardCarConditionalTest() {
 
-		RacingCar car = new RacingCar();
+		RacingCar car = new RacingCar(new CarName("테스트"));
 		ForwardCarConditional forwardCarConditional = new ForwardCarConditional();
 
 		car.move(forwardCarConditional);
@@ -42,7 +42,7 @@ class RacingCarTest {
 	@DisplayName("자동차 멈춤 전략 테스트 적용")
 	void StopCarConditionalTest() {
 
-		RacingCar car = new RacingCar();
+		RacingCar car = new RacingCar(new CarName("테스트"));
 		StopCarConditional stopCarConditional = new StopCarConditional();
 
 		car.move(stopCarConditional);
@@ -54,7 +54,7 @@ class RacingCarTest {
 	@DisplayName("자동차 단일 객체 생성 및 주행 테스트")
 	void carStayTest() {
 
-		RacingCar car = new RacingCar();
+		RacingCar car = new RacingCar(new CarName("테스트"));
 
 		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
 		car.move(() -> true);
@@ -65,7 +65,7 @@ class RacingCarTest {
 	@Test
 	@DisplayName("자동차 단일 객체 생성 및 주행 테스트")
 	void carMoveTest() {
-		RacingCar car = new RacingCar();
+		RacingCar car = new RacingCar(new CarName("테스트"));
 
 		// 람다식으로 자동차 상태값으로 움직임을 제어로 변경
 		car.move(() -> false);
