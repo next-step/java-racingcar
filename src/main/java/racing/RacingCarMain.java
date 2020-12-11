@@ -15,6 +15,7 @@ public class RacingCarMain {
 
 			// 레이싱 시작
 			racingGameStart(view);
+
 		} catch (IllegalArgumentException exception) {
 
 			// 유저 입력 에서 시, 에러 결과 출력
@@ -35,11 +36,9 @@ public class RacingCarMain {
 	}
 
 	private static void play(RacingGame racingGame, UserView view) {
-
-		int gameTryNumber = view.getTryRacingNumber();
-
+		
 		// 입력한 주행 횟수 만큼 반복
-		while (gameTryNumber-- != 0) {
+		while (view.isTryGame()) {
 
 			// 레이싱 차량들 랜덤 주행 시작
 			racingGame.start(new RandomCarConditional());
