@@ -9,12 +9,8 @@ import java.util.stream.IntStream;
 public class ResultView {
     private static final String MOVE_COUNT_VIEW = "-";
 
-    public static void readyPrint(Cars cars) {
+    public static void readyPrint() {
         System.out.println("\n실행결과");
-
-        List<Car> carList = cars.getCars();
-        carList.forEach(car -> makeLocationView(car.getLocation()));
-        System.out.println();
     }
 
     public static void print(Cars cars) {
