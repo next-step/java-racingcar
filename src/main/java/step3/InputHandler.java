@@ -17,7 +17,7 @@ public class InputHandler {
         String text = scanner.nextLine();
         try {
             return Integer.parseInt(text);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             return getCarCount();
         }
     }
@@ -27,7 +27,7 @@ public class InputHandler {
         String text = scanner.nextLine();
         try {
             return Integer.parseInt(text);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException| NullPointerException e) {
             return getRoundCount();
         }
     }

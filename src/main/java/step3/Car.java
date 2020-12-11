@@ -3,7 +3,6 @@ package step3;
 import java.util.stream.IntStream;
 
 public class Car {
-
     public static final String NOT_MOVED = " ";
     public static final String WAY = "-";
 
@@ -11,6 +10,10 @@ public class Car {
 
     public void move() {
         this.moveCount++;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 
     public String getWayResult() {

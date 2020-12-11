@@ -15,7 +15,7 @@ public class CarMoverTest {
             "2" + SEPARATOR + Car.NOT_MOVED,
             "3" + SEPARATOR + Car.NOT_MOVED,
             "4" + SEPARATOR + Car.WAY,
-            "10" + SEPARATOR + Car.WAY
+            "9" + SEPARATOR + Car.WAY
     })
     public void 숫자에따라_차의_움직이는_여부_확인(String input) {
         int number = Integer.parseInt(input.split(SEPARATOR)[0]);
@@ -26,5 +26,18 @@ public class CarMoverTest {
         carMover.moveOrNot(car, number);
         assertThat(car.getWayResult()).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "-1",
+            "10"
+    })
+    public void 무작위_숫자가_잘못된_경우(String input) {
+        int number = Integer.parseInt(input);
+        Car car = new Car();
+        CarMover carMover = new CarMover();
+        assertThatThrownBy(() -> carMover.moveOrNot(car, number)).isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
