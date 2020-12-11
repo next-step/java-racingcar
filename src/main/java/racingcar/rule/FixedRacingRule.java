@@ -2,7 +2,7 @@ package racingcar.rule;
 
 public class FixedRacingRule implements RacingRule {
 
-    private int number;
+    private final int number;
 
     public FixedRacingRule(int number) {
         if(!isWithinRange(number)) {
