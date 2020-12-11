@@ -4,23 +4,13 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import racing.model.service.ForwardCarConditional;
 import racing.model.service.RandomCarConditional;
 import racing.model.service.StopCarConditional;
 
 class RacingCarTest {
-
-	@ParameterizedTest
-	@ValueSource(strings = {" ", "SONATA", "", "그랜드 스타렉스"})
-	@DisplayName("자동차 이름 추가 객체 생성 테스트")
-	void carNameExceptionTest(String carName) {
-
-		assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar(new CarName(carName)));
-	}
-
+	
 	@Test
 	@DisplayName("자동차 랜덤 레이스 움직임 구현")
 	void RandomCarConditionalTest() {
