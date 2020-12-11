@@ -17,7 +17,7 @@ public class RacingCar {
     }
 
     public RacingCar(String name, int distance) {
-        this.name = name;
+        this.name = validateName(name);
         this.distance = distance;
     }
 
@@ -46,5 +46,17 @@ public class RacingCar {
      */
     private boolean canMove(int number) {
         return number >= RacingCar.MOVABLE_MIN_VALUE;
+    }
+
+    /**
+     * 이름의 길이 값을 검증
+     * @param name 
+     * @return
+     */
+    private String validateName(String name) {
+        if(name != null && name.length() <= 5) {
+            return name;
+        }
+        throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
     }
 }

@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
 
@@ -22,5 +23,13 @@ public class RacingCarTest {
 
         // then
         assertThat(racingCar.getDistance()).isEqualTo(Integer.parseInt(expected));
+    }
+
+    @Test
+    @DisplayName("이름이 다섯글자 이상이 왔을 때 오류가 발생하는지 테스트")
+    public void createNamedRacingCarsNameOverFiveError() {
+        assertThatThrownBy(() -> {
+            new RacingCar("tester");
+        });
     }
 }

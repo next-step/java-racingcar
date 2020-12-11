@@ -10,10 +10,6 @@ public class RacingCarDriver {
 
     private List<RacingCar> racingCars;
 
-    public RacingCarDriver(String[] participants) {
-        this(RacingCarDriver.createRacingCars(participants));
-    }
-
     public RacingCarDriver(List<RacingCar> racingCars) {
         if (racingCars != null) {
             this.racingCars = racingCars;
@@ -22,20 +18,14 @@ public class RacingCarDriver {
         }
     }
 
-    public static List<RacingCar> createRacingCars(String[] participants) {
+    public static List<RacingCar> createRacingCars(List<String> participants) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String participant : participants) {
-            racingCars.add(new RacingCar(validateName(participant)));
+            racingCars.add(new RacingCar(participant));
         }
         return racingCars;
     }
 
-    public static String validateName(String name) {
-        if(name != null && name.length() <= 5) {
-            return name;
-        }
-        throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
-    }
 
     /**
      * 주어진 룰에 맞게 생성된 숫자로 등록된 모든 자동차를 전진시킵니다.

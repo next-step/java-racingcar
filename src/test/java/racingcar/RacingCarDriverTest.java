@@ -8,6 +8,7 @@ import racingcar.rule.FixedRacingRule;
 import racingcar.rule.RacingRule;
 import racingcar.rule.RandomRacingRule;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,13 +19,15 @@ public class RacingCarDriverTest {
     @DisplayName("주어진 목록에 맞게 자동차가 생성되었는지 테스트")
     public void createNamedRacingCarsCount(String input, String expected) {
         // given
-        RacingCarDriver racingCarDriver = new RacingCarDriver(input.split(","));
+        List<RacingCar> sourceRacingCars
+                = RacingCarDriver.createRacingCars(new InputView().makeParticipantsList(input));
+        RacingCarDriver racingCarDriver = new RacingCarDriver(sourceRacingCars);
 
         // when
-        List<RacingCar> racingCars = racingCarDriver.getRacingCars();
+        List<RacingCar> targetRacingCars = racingCarDriver.getRacingCars();
 
         // then
-        assertThat(racingCars.size()).isEqualTo(Integer.parseInt(expected));
+        assertThat(targetRacingCars.size()).isEqualTo(Integer.parseInt(expected));
     }
 
     @ParameterizedTest
@@ -32,22 +35,16 @@ public class RacingCarDriverTest {
     @DisplayName("주어진 목록에 맞게 자동차가 생성되었는지 테스트")
     public void createNamedRacingCarsName(String input, String expected) {
         // given
-        RacingCarDriver racingCarDriver = new RacingCarDriver(input.split(","));
+        List<RacingCar> sourceRacingCars
+                = RacingCarDriver.createRacingCars(new InputView().makeParticipantsList(input));
+        RacingCarDriver racingCarDriver = new RacingCarDriver(sourceRacingCars);
 
         // when
-        List<RacingCar> racingCars = racingCarDriver.getRacingCars();
+        List<RacingCar> targetRacingCars = racingCarDriver.getRacingCars();
 
         // then
-        assertThat(racingCars.get(racingCars.size() - 1).getName())
+        assertThat(targetRacingCars.get(targetRacingCars.size() - 1).getName())
                 .isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("이름이 다섯글자 이상이 왔을 때 오류가 발생하는지 테스트")
-    public void createNamedRacingCarsNameOverFiveError() {
-        assertThatThrownBy(() -> {
-            new RacingCarDriver(new String[]{"123456"});
-        });
     }
 
     @ParameterizedTest
@@ -56,7 +53,7 @@ public class RacingCarDriverTest {
     public void moveForwardAll(String input, String expected) {
         // given
         FixedRacingRule racingRule = new FixedRacingRule(Integer.parseInt(input));
-        RacingCarDriver racingCarDriver = new RacingCarDriver(new String[]{"car1"});
+        RacingCarDriver racingCarDriver = new RacingCarDriver(Arrays.asList(new RacingCar("test1")));
 
         // when
         racingCarDriver.moveForwardAll(racingRule);

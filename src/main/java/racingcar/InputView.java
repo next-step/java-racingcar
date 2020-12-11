@@ -1,8 +1,8 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputView {
 
@@ -25,20 +25,21 @@ public class InputView {
      */
     public RacingCarDriver inputParticipants() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return new RacingCarDriver(this.makeParticipantsList(this.scanner.nextLine()));
+        return new RacingCarDriver(RacingCarDriver.createRacingCars(
+                this.makeParticipantsList(this.scanner.nextLine())
+        ));
     }
 
     /**
+     * 참가자 명단을 쪼개어 리스트로 반환
      * @param inputs
      * @return
      */
-    public String[] makeParticipantsList(String inputs) {
-        List<String> participants = new ArrayList<>();
-        for (String input : inputs.split(InputView.SPLIT_REGEX)) {
-            participants.add(input.trim());
-        }
-        return participants.toArray(new String[participants.size()]);
-
+    public List<String> makeParticipantsList(String inputs) {
+        return Stream.of(inputs.split(InputView.SPLIT_REGEX))
+                .map(String::trim)
+                .collect(Collectors.toList())
+                ;
     }
 
 }
