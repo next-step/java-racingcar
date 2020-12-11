@@ -77,14 +77,7 @@ public class UserView {
 	 */
 	public boolean isTryGame() {
 
-	public CarNames getCarNames() {
-
-		return this.carNames;
-	}
-
-	public void getUserOutputError(String errorMessage) {
-
-		UserOutput.printUserErrorMsg(errorMessage);
+		return this.tryRaceNum.isTryGame();
 	}
 
 	/**
