@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,7 +30,7 @@ class CarsTest {
     private static final int MIN_POSITION_NUMBER = RandomIntMovementPolicy.MIN_POSITION_NUMBER;
     private static final int MOVABLE_POSITION_NUMBER = BASE_POSITION_NUMBER;
     private static final String TEST_CAR_NAMES = "pobi,crong,honux";
-    private static final String DELIMITER = ",";
+    private static final String DELIMITER = CarNames.DELIMITER;
 
     private RandomGenerator randomGenerator;
     private MovementPolicy movementPolicy;
@@ -136,22 +135,18 @@ class CarsTest {
 
     private static Stream<Arguments> provideValidCarNames() {
         List<Arguments> arguments = new ArrayList<>();
-        arguments.add(Arguments.of(convertTestCarNames()));
+        arguments.add(Arguments.of(convertCarNamesForTest()));
         return arguments.stream();
     }
 
-    private static CarNames convertTestCarNames() {
-        String[] testCarNames = TEST_CAR_NAMES.split(DELIMITER);
-        List<CarName> carNames = Arrays.stream(testCarNames)
-                .map(CarName::new)
-                .collect(Collectors.toList());
-        return new CarNames(carNames);
+    private static CarNames convertCarNamesForTest() {
+        return new CarNames(TEST_CAR_NAMES);
     }
 
     private static Stream<Arguments> provideMovableCases() {
         List<Arguments> arguments = new ArrayList<>();
         for (int i = BASE_POSITION_NUMBER; i <= MAX_POSITION_NUMBER; i++) {
-            arguments.add(Arguments.of(i, convertTestCarNames()));
+            arguments.add(Arguments.of(i, convertCarNamesForTest()));
         }
         return arguments.stream();
     }
@@ -159,7 +154,7 @@ class CarsTest {
     private static Stream<Arguments> provideUnmovableCases() {
         List<Arguments> arguments = new ArrayList<>();
         for (int i = MIN_POSITION_NUMBER; i < BASE_POSITION_NUMBER; i++) {
-            arguments.add(Arguments.of(i, convertTestCarNames()));
+            arguments.add(Arguments.of(i, convertCarNamesForTest()));
         }
         return arguments.stream();
     }

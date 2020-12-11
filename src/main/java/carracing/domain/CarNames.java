@@ -1,38 +1,40 @@
 package carracing.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 자동차들의 이름을 저장하는 클래스
  */
 public class CarNames {
+    public static final String DELIMITER = ",";
+
     private List<CarName> carNames;
 
-    public CarNames(List<CarName> carNames) {
+    public CarNames(String carNames) {
         validateCarNames(carNames);
         initiateCarNames(carNames);
     }
 
-    private void validateCarNames(List<CarName> carNames) {
+    private void validateCarNames(String carNames) {
         if (isCarNamesEmpty(carNames)) {
             throw new IllegalArgumentException("자동차들의 이름은 비어있을 수 없습니다.");
         }
     }
 
-    private boolean isCarNamesEmpty(List<CarName> carNames) {
+    private boolean isCarNamesEmpty(String carNames) {
         return carNames == null || carNames.isEmpty();
     }
 
-    private void initiateCarNames(List<CarName> carNames) {
-        this.carNames = new ArrayList<>(carNames.size());
-        for (CarName carName : carNames) {
-            addCarName(carName);
-        }
+    private void initiateCarNames(String carNames) {
+        this.carNames = convertCarNames(carNames);
     }
 
-    private void addCarName(CarName carName) {
-        carNames.add(carName);
+    private List<CarName> convertCarNames(String carNames) {
+        return Arrays.stream(carNames.split(DELIMITER))
+                .map(CarName::new)
+                .collect(Collectors.toList());
     }
 
     public List<CarName> getNames() {
