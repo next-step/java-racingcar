@@ -1,5 +1,8 @@
 package racing;
 
+import racing.domain.CarRacing;
+import racing.domain.Cars;
+
 import static racing.view.CarRacingInputView.countOfCars;
 import static racing.view.CarRacingInputView.countOfRace;
 import static racing.view.CarRacingResultView.*;

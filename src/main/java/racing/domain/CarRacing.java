@@ -1,8 +1,8 @@
-package racing;
+package racing.domain;
 
 import java.util.function.IntConsumer;
 
-import static racing.CarRacingProperty.*;
+import static racing.domain.CarRacingProperty.*;
 
 public class CarRacing {
 

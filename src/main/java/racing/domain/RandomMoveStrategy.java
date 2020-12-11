@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import org.apache.commons.lang3.RandomUtils;
 
