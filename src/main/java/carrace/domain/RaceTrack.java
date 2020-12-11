@@ -3,6 +3,7 @@ package carrace.domain;
 import java.util.*;
 
 public class RaceTrack {
+    private static final int START_POSITION = 1;
     private final List<Car> carList = new ArrayList<>();
     private final RacingRule racingRule;
 
@@ -12,9 +13,12 @@ public class RaceTrack {
     }
 
     public RaceTrack(RacingRule racingRule, String[] carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException();
+        }
         this.racingRule = racingRule;
         for (String carName : carNames) {
-            carList.add(new Car(1, carName));
+            carList.add(new Car(START_POSITION, carName));
         }
     }
 
