@@ -1,29 +1,32 @@
 package racingcar;
 
+import racingcar.domain.Distance;
+import racingcar.domain.Name;
+
 public class RacingCar {
 
     private static final int MOVABLE_MIN_VALUE = 4;
-    private static final int NAME_MAX_LENGTH = 5;
+    private static final int MOVE_DISTANCE = 1;
 
-    private final String name;
+    private final Name name;
 
-    private int distance;
+    private final Distance distance;
 
     public RacingCar(String name) {
         this(name, 0);
     }
 
     public RacingCar(String name, int distance) {
-        this.name = validateName(name);
-        this.distance = distance;
+        this.name = new Name(name);
+        this.distance = new Distance(distance);
     }
 
     public String getName() {
-        return name;
+        return this.name.getName();
     }
 
     public int getDistance() {
-        return distance;
+        return this.distance.getDistance();
     }
 
     /**
@@ -32,7 +35,7 @@ public class RacingCar {
      */
     public void move(int number) {
         if(this.canMove(number)) {
-            ++this.distance;
+            this.distance.addDistance(RacingCar.MOVE_DISTANCE);
         }
     }
 
@@ -45,15 +48,4 @@ public class RacingCar {
         return number >= RacingCar.MOVABLE_MIN_VALUE;
     }
 
-    /**
-     * 이름의 길이 값을 검증
-     * @param name 
-     * @return
-     */
-    private String validateName(String name) {
-        if(name != null && name.length() <= RacingCar.NAME_MAX_LENGTH) {
-            return name;
-        }
-        throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
-    }
 }
