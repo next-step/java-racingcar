@@ -17,8 +17,12 @@ public class CarPosition {
         }
     }
 
-    private boolean isNegativeNumber(int position) {
-        return position < 0;
+    private boolean isNegativeNumber(int number) {
+        return number < 0;
+    }
+
+    public boolean isSameWith(int number) {
+        return this.number == number;
     }
 
     public void move() {
