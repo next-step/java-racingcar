@@ -1,9 +1,9 @@
-package carrace.ui.input;
+package carrace.view.input;
 
 
-import carrace.ui.input.scanner.CountInputScanner;
-import carrace.ui.input.scanner.InputScanner;
-import carrace.ui.input.scanner.NameInputScanner;
+import carrace.view.input.scanner.CountInputScanner;
+import carrace.view.input.scanner.InputScanner;
+import carrace.view.input.scanner.NameInputScanner;
 
 public class InputView<T> {
     private static final InputScanner<String[]> nameInputScanner = new NameInputScanner();

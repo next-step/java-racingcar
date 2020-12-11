@@ -1,4 +1,4 @@
-package carrace.ui;
+package carrace.view;
 
 import carrace.domain.Car;
 import carrace.domain.RaceTrack;

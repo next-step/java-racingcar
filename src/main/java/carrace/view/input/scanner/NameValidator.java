@@ -1,4 +1,4 @@
-package carrace.ui.input.scanner;
+package carrace.view.input.scanner;
 
 public class NameValidator {
     public static void validateCarNames(String[] carNames) {

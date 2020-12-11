@@ -1,6 +1,6 @@
-package carrace.ui;
+package carrace.view;
 
-import carrace.ui.input.scanner.NameValidator;
+import carrace.view.input.scanner.NameValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

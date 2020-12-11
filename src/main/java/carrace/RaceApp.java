@@ -2,8 +2,8 @@ package carrace;
 
 import carrace.domain.RaceTrack;
 import carrace.domain.RandomRacingRule;
-import carrace.ui.input.InputView;
-import carrace.ui.ResultView;
+import carrace.view.input.InputView;
+import carrace.view.ResultView;
 
 public class RaceApp {
     public static void main(String[] args) throws InterruptedException {
