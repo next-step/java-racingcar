@@ -8,6 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class RacingCarGroup {
+	public static final String MESSAGE_EMPTY_CAR_LIST = "racingCarList 가 비어있습니다.";
 	private final List<RacingCar> racingCarList;
 
 	public static RacingCarGroup of(List<CarName> carNameList, MoveChanceGenerator moveChanceGenerator) {
@@ -21,6 +22,9 @@ public class RacingCarGroup {
 	}
 
 	RacingCarGroup(List<RacingCar> racingCarList) {
+		if (racingCarList.size() == 0) {
+			throw new IllegalArgumentException(MESSAGE_EMPTY_CAR_LIST);
+		}
 		this.racingCarList = racingCarList;
 	}
 
@@ -31,21 +35,19 @@ public class RacingCarGroup {
 	}
 
 	public List<CarName> getWinnerNameList() {
-		OptionalInt maxPosition = getMaxPosition();
-		if (!maxPosition.isPresent()) {
-			return Collections.emptyList();
-		}
+		int maxPosition = getMaxPosition();
 
 		return this.racingCarList.stream()
-				.filter(racingCar -> racingCar.isEqualPosition(maxPosition.getAsInt()))
+				.filter(racingCar -> racingCar.isEqualPosition(maxPosition))
 				.map(RacingCar::getCarName)
 				.collect(Collectors.toList());
 	}
 
-	private OptionalInt getMaxPosition() {
+	private int getMaxPosition() {
 		return this.racingCarList.stream()
 				.mapToInt(RacingCar::getPosition)
-				.max();
+				.max()
+				.orElseThrow(() -> new IllegalArgumentException(MESSAGE_EMPTY_CAR_LIST));
 	}
 
 	public int size() {

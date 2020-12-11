@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingRacingCarGroupTest {
 
 	@ParameterizedTest
-	@CsvSource(value = {"0,0", "1,1", "999,999"})
+	@CsvSource(value = {"1,1", "999,999"})
 	void getMoveForwardChance(int carNum, int expectedCallCount) {
 		// given
 		TestUtils.Counter moveForwardCallCounter = TestUtils.createCounter();
@@ -84,7 +84,7 @@ class RacingRacingCarGroupTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {0, 5, 999})
+	@ValueSource(ints = {5, 999})
 	@DisplayName("CarGroup.size() 테스트")
 	void size(int carNum) {
 		// given
