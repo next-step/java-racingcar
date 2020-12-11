@@ -10,7 +10,6 @@ class CarTest {
     void move() {
         Car car = new Car();
         RandomGenerator randomGenerator = new RandomGenerator() {
-            @Override
             public boolean isMovable() {
                 return true;
             }
@@ -23,7 +22,6 @@ class CarTest {
     void stop() {
         Car car = new Car();
         RandomGenerator randomGenerator = new RandomGenerator() {
-            @Override
             public boolean isMovable() {
                 return false;
             }
