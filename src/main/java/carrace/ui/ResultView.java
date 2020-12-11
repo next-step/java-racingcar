@@ -4,6 +4,7 @@ import carrace.domain.Car;
 import carrace.domain.RaceTrack;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class ResultView {
     public static void printResultTitle() {
@@ -18,20 +19,23 @@ public class ResultView {
 
     private static void printCarListPosition(List<Car> carList) {
         for (Car car : carList) {
-            printCarPosition(car);
+            System.out.println(car.getRacingResult());
         }
     }
 
-    private static void printCarPosition(Car car) {
-        int position = car.getPosition();
-        System.out.println(convertPosition(position));
-    }
+    public static void printWinner(RaceTrack raceTrack) {
+        List<Car> winners = raceTrack.getWinner();
 
-    private static String convertPosition(int position) {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            result.append("-");
+        StringJoiner carNameJoiner = new StringJoiner(", ");
+        for (Car winner : winners) {
+            String name = winner.getName();
+            carNameJoiner.add(name);
         }
-        return result.toString();
+        result.append(carNameJoiner);
+        result.append("가 최종 우승했습니다.");
+
+        System.out.println(result);
     }
+
 }
