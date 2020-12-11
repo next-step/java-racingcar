@@ -16,7 +16,7 @@ class CarNameTest {
 
 		// Exception 조건은 3가지 (IllegalArgumentException)
 		// 1. null
-		// 2. 빈값 ("")
+		// 2. 빈값 ("") or 공백("   ")
 		// 3. 길이가 5 이상인 문자열
 		assertThatIllegalArgumentException().isThrownBy(() -> new CarName(carName));
 	}

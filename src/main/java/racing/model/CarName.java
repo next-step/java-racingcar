@@ -1,5 +1,7 @@
 package racing.model;
 
+import racing.util.StringValid;
+
 public class CarName {
 
 	public static final int CAR_NAME_MAX_LENGTH = 5;
@@ -12,21 +14,15 @@ public class CarName {
 
 	private String setCarName(String carName) {
 
-		carName = removeBlank(carName);
-		carNameValidation(carName);
+		validationCarName(carName);
 
 		return carName;
 	}
 
-	private String removeBlank(String carName) {
+	private void validationCarName(String carName) {
 
-		return carName.replace(" ", "");
-	}
-
-	private void carNameValidation(String carName) {
-
-		if (carName == null || carName.isEmpty()) {
-			throw new IllegalArgumentException("차량 이름을 입력해 주세요.");
+		if (StringValid.isEmptyStr(carName)) {
+			throw new IllegalArgumentException("차량 이름이 없습니다.");
 		}
 
 		if (carName.length() > CAR_NAME_MAX_LENGTH) {
