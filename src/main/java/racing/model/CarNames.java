@@ -45,4 +45,9 @@ public class CarNames {
 
 		return Arrays.asList(carNames.split(RACING_CAR_NAME_SEPARATOR));
 	}
+
+	public List<CarName> getCarNames() {
+
+		return this.names;
+	}
 }

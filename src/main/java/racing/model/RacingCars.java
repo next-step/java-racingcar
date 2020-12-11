@@ -11,25 +11,16 @@ public class RacingCars {
 	// 레이싱 차량 저장 리스트
 	private final List<RacingCar> cars;
 
-	/**
-	 * 객체 생성 시 입력받은 수 만큼 자동차 객체를 만들어 주는 생성자
-	 * @param racingCarNumber : 유저가 입력한 레이싱 경주 차량 댓수
-	 */
-	public RacingCars(int racingCarNumber) {
-
-		this.cars = initNumberRacingCars(racingCarNumber);
-	}
-
-	public RacingCars(String[] names) {
+	public RacingCars(CarNames names) {
 
 		this.cars = initNameRacingCars(names);
 	}
 
-	private List<RacingCar> initNameRacingCars(String[] names) {
+	private List<RacingCar> initNameRacingCars(CarNames names) {
 
 		List<RacingCar> racingCars = new ArrayList<>();
 
-		for (String name : names) {
+		for (CarName name : names.getCarNames()) {
 
 			racingCars.add(new RacingCar(name));
 		}

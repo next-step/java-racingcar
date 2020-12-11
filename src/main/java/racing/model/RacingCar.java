@@ -19,10 +19,10 @@ public class RacingCar {
 		this.location = RACING_START_LOCATION;
 	}
 
-	public RacingCar(String carName) {
+	public RacingCar(CarName carName) {
 
 		this();
-		this.carName = new CarName(carName);
+		this.carName = carName;
 	}
 
 	public void move(CarConditional carConditional) {

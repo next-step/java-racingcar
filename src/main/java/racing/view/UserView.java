@@ -2,11 +2,12 @@ package racing.view;
 
 import java.util.List;
 
+import racing.model.CarNames;
 import racing.model.RacingCar;
 
 public class UserView {
 
-	private String carNames;
+	private CarNames carNames;
 
 	private int tryRacingNumber;
 
@@ -20,8 +21,8 @@ public class UserView {
 	}
 
 	/**
-	 * 유저: 주행할 차량 댓수 입력 메서드
-	 * @return 주행할 차량 수
+	 * 유저: 랜덤 레이싱 주행 횟수 입력 메서드
+	 * @return 레이싱 주행 횟수
 	 * @throws IllegalArgumentException : 유저 입력 숫자가 아닐 시 에러 Throw
 	 */
 	private static int userInputPlayTryNumber() {
@@ -32,22 +33,22 @@ public class UserView {
 	}
 
 	/**
-	 * 유저: 랜덤 레이싱 주행 횟수 입력 메서드
-	 * @return 레이싱 주행 횟수
+	 * 유저: 주행할 차량 댓수 입력 메서드
+	 * @return 주행할 차량 수
 	 */
-	private static String userInputPlayCarNames() {
+	private static CarNames userInputPlayCarNames() {
 
 		UserOutput.printUserInputCarNumberMsg();
 
-		return UserInput.userInputString();
+		return new CarNames(UserInput.userInputString());
 	}
 
-	public String[] getCarNames() {
-		return carNames.split(",");
+	public CarNames getCarNames() {
+		return this.carNames;
 	}
 
 	public int getTryRacingNumber() {
-		return tryRacingNumber;
+		return this.tryRacingNumber;
 	}
 
 	public void getUserOutputCarLocation(List<RacingCar> racingCars) {

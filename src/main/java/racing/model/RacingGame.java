@@ -8,7 +8,7 @@ public class RacingGame {
 
 	private final RacingCars racingCars;
 
-	public RacingGame(String[] names) {
+	public RacingGame(CarNames names) {
 
 		this.racingCars = new RacingCars(names);
 	}
