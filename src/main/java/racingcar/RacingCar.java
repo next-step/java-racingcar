@@ -1,19 +1,13 @@
 package racingcar;
 
-import racingcar.rule.RacingRule;
-
 public class RacingCar {
 
     private static final int MOVABLE_MIN_VALUE = 4;
     private static final int NAME_MAX_LENGTH = 5;
 
-    private String name;
+    private final String name;
 
     private int distance;
-
-    public int getDistance() {
-        return distance;
-    }
 
     public RacingCar(String name) {
         this(name, 0);
@@ -26,6 +20,10 @@ public class RacingCar {
 
     public String getName() {
         return name;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
     /**

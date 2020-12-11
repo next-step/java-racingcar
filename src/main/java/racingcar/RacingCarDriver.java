@@ -13,9 +13,9 @@ public class RacingCarDriver {
     public RacingCarDriver(List<RacingCar> racingCars) {
         if (racingCars != null) {
             this.racingCars = racingCars;
-        } else {
-            this.racingCars = new ArrayList<>();
+            return;
         }
+        this.racingCars = new ArrayList<>();
     }
 
     public static List<RacingCar> createRacingCars(List<String> participants) {
