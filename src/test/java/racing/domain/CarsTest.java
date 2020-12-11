@@ -14,7 +14,18 @@ public class CarsTest {
         int count = 3;
         // when
         Cars cars = new Cars(3);
-        // when
+        // then
         assertThat(cars.size()).isEqualTo(count);
+    }
+
+    @Test
+    @DisplayName("모든 자동차 전진")
+    void testMoveAll() {
+        // given
+        Cars cars = new Cars(3);
+        // when
+        cars.moveAll(() -> true);
+        // then
+        cars.iterateCar(distance -> assertThat(distance).isEqualTo(1));
     }
 }
