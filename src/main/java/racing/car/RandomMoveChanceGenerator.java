@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RandomMoveChanceGenerator implements MoveChanceGenerator {
 
-	public static final int BOUND_MAX = 10;
-	public static final int CHANCE_MINIMUM = 4;
+	private static final int BOUND_MAX = 10;
+	private static final int CHANCE_MINIMUM = 4;
 	private final Random random;
 
 	public RandomMoveChanceGenerator() {

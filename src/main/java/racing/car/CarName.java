@@ -3,11 +3,11 @@ package racing.car;
 import java.util.Objects;
 
 public class CarName implements CharSequence {
-	public static final int MAX_LENGTH = 5;
-	public static final String MESSAGE_MAX_LENGTH_OVER = "차 이름은 무조건 5자 이하여야 합니다";
-	public static final String MESSAGE_EMPTY = "차 이름이 비어있으면 안됩니다.";
-	public static final String MESSAGE_CONTAIN_SPACE = "차 이름에 공백이 들어가서는 안됩니다";
-	public static final String SPACE = " ";
+	private static final int MAX_LENGTH = 5;
+	private static final String MESSAGE_MAX_LENGTH_OVER = "차 이름은 무조건 5자 이하여야 합니다";
+	private static final String MESSAGE_EMPTY = "차 이름이 비어있으면 안됩니다.";
+	private static final String MESSAGE_CONTAIN_SPACE = "차 이름에 공백이 들어가서는 안됩니다";
+	private static final String SPACE = " ";
 	private final String name;
 
 	public CarName(String name) {

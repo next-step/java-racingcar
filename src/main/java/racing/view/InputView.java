@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class InputView {
 
-	public static final String CAR_NAME_SPLITTER = ",";
+	private static final String CAR_NAME_SPLITTER = ",";
 
 	private final Scanner scanner = new Scanner(System.in);
 

@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class RacingCarGroup {
-	public static final String MESSAGE_EMPTY_CAR_LIST = "racingCarList 가 비어있습니다.";
+	private static final String MESSAGE_EMPTY_CAR_LIST = "racingCarList 가 비어있습니다.";
 	private final List<RacingCar> racingCarList;
 
 	public static RacingCarGroup of(List<CarName> carNameList, MoveChanceGenerator moveChanceGenerator) {
