@@ -57,7 +57,6 @@ class RacingGameTest {
 			// 모든 차량이 주행을 2번했기 때문에 2
 			assertThat(car.getDistance()).isEqualTo(2);
 		}
-
 	}
 
 	@ParameterizedTest

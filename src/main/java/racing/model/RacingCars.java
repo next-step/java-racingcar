@@ -2,6 +2,7 @@ package racing.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racing.model.service.RandomCarConditional;
 
@@ -69,5 +70,20 @@ public class RacingCars {
 	public List<RacingCar> getCars() {
 
 		return this.cars;
+	}
+
+	public String getWinnerNames() {
+
+		// 최대 주행거리
+		int maxDistance = this.cars.stream()
+			.mapToInt(RacingCar::getDistance)
+			.max()
+			.orElse(0);
+
+		// 최대 주행거리 운전자명 집계
+		return this.cars.stream()
+			.filter(racingCar -> racingCar.getDistance() == maxDistance)
+			.map(RacingCar::getCarName)
+			.collect(Collectors.joining(", "));
 	}
 }

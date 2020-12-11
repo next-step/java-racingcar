@@ -1,16 +1,8 @@
 package racing.model;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class RacingGame {
 
 	private final RacingCars racingCars;
-
-	public RacingGame(int carNumber) {
-
-		this.racingCars = new RacingCars(carNumber);
-	}
 
 	public RacingGame(String[] names) {
 
@@ -28,18 +20,7 @@ public class RacingGame {
 	}
 
 	public String getWinner() {
-
-		List<RacingCar> cars = this.racingCars.getCars();
-
-		// 최대 주행거리
-		int maxDistance = cars.stream()
-			.mapToInt(RacingCar::getDistance)
-			.max()
-			.orElse(0);
-
-		return cars.stream()
-			.filter(racingCar -> racingCar.getDistance() == maxDistance)
-			.map(RacingCar::getCarName)
-			.collect(Collectors.joining(", "));
+		
+		return this.racingCars.getWinnerNames();
 	}
 }
