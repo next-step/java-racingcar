@@ -2,6 +2,7 @@ package carrace.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarFactory {
 
@@ -15,10 +16,11 @@ public class CarFactory {
     }
 
     public static List<Car> makeCarList(List<CarName> carNames) {
-        List<Car> carList = new ArrayList<>();
-        for (CarName carName : carNames) {
-            carList.add(new Car(carName));
+        if (carNames == null) {
+           throw new IllegalArgumentException();
         }
-        return carList;
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }
