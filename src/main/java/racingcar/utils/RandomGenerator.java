@@ -7,11 +7,11 @@ public class RandomGenerator {
     private static final int MOVE_CONDITION = 4;
     private final Random random = new Random();
 
-    public int getRandom() {
+    private int getRandom() {
         return random.nextInt(RANDOM_MAX);
     }
 
     public boolean isMovable() {
-        return getRandom() >= MOVE_CONDITION;
+        return getRandom() <= MOVE_CONDITION;
     }
 }
