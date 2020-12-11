@@ -15,7 +15,7 @@ public class CarName {
 
     private void validateName(String name) {
         if (!isValidName(name)) {
-            throw new IllegalArgumentException("자동차의 이름은 1이상 5이하 글자가 입력되어야합니다.");
+            throw new IllegalArgumentException("자동차의 이름은 " + MIN_NAME_SIZE + "이상 " + MAX_NAME_SIZE + "이하 글자가 입력되어야합니다.");
         }
     }
 
