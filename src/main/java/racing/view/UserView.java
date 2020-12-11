@@ -49,7 +49,6 @@ public class UserView {
 	 * @param winnerCarsName: 주행 결과 우승자 문자열
 	 */
 	public void getUserOutputWinnerRacingGame(String winnerCarsName) {
-
 		UserOutput.printWinnerRacingGame(winnerCarsName);
 	}
 
