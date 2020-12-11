@@ -13,7 +13,7 @@ public class RacingRunner {
     public void run() {
         this.racingCarDriver = this.inputView.inputParticipants();
         this.playRound(this.inputView.inputRacingRound());
-        this.resultView.printWinner((NamedRacingCarDriver) this.racingCarDriver);
+        this.resultView.printWinner(this.racingCarDriver);
     }
 
     /**
@@ -26,7 +26,7 @@ public class RacingRunner {
         this.resultView.printStartResult();
         for (int i = 0; i < round; i++) {
             this.racingCarDriver.moveForwardAll(racingRule);
-            this.resultView.printResultWithName((NamedRacingCarDriver) this.racingCarDriver);
+            this.resultView.printResultWithName(this.racingCarDriver);
             this.resultView.printEndRound();
         }
     }

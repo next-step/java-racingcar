@@ -4,10 +4,25 @@ public class RacingCar {
 
     private static final int MOVABLE_MIN_VALUE = 4;
 
+    private String name;
+
     private int distance;
 
     public int getDistance() {
         return distance;
+    }
+
+    public RacingCar(String name) {
+        this(name, 0);
+    }
+
+    public RacingCar(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
+    public String getName() {
+        return name;
     }
 
     /**

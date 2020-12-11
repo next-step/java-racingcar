@@ -10,8 +10,8 @@ public class RacingCarDriver {
 
     private List<RacingCar> racingCars;
 
-    public RacingCarDriver(int amount) {
-        this(RacingCarDriver.createRacingCars(amount));
+    public RacingCarDriver(String[] participants) {
+        this(RacingCarDriver.createRacingCars(participants));
     }
 
     public RacingCarDriver(List<RacingCar> racingCars) {
@@ -22,17 +22,19 @@ public class RacingCarDriver {
         }
     }
 
-    /**
-     * 주어진 수 만큼 자동차를 만들어 리스트에 담아 리턴합니다.
-     * @param amount
-     * @return
-     */
-    public static List<RacingCar> createRacingCars(int amount) {
-        List<RacingCar> racingCars = new ArrayList<>(amount);
-        for (int i = 0; i < amount; i++) {
-            racingCars.add(new RacingCar());
+    public static List<RacingCar> createRacingCars(String[] participants) {
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (String participant : participants) {
+            racingCars.add(new RacingCar(validateName(participant)));
         }
         return racingCars;
+    }
+
+    public static String validateName(String name) {
+        if(name != null && name.length() <= 5) {
+            return name;
+        }
+        throw new IllegalArgumentException("이름의 길이가 적절하지 않습니다.");
     }
 
     /**
@@ -44,7 +46,6 @@ public class RacingCarDriver {
             racingCar.move(racingRule.getNumber());
         }
     }
-
 
     /**
      * 자동차의 현재 위치를 받아서 리스트에 담습니다.

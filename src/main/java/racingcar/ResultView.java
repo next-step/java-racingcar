@@ -46,20 +46,19 @@ public class ResultView {
     /**
      * 현재 결과를 출력합니다
      */
-    public void printResultWithName(NamedRacingCarDriver namedRacingCarDriver) {
-        for (RacingCar racingCar : namedRacingCarDriver.getRacingCars()) {
-            NamedRacingCar namedRacingCar = (NamedRacingCar) racingCar;
-            System.out.print(namedRacingCar.getName() + " : ");
-            this.printDash(namedRacingCar.getDistance());
+    public void printResultWithName(RacingCarDriver racingCarDriver) {
+        for (RacingCar racingCar : racingCarDriver.getRacingCars()) {
+            System.out.print(racingCar.getName() + " : ");
+            this.printDash(racingCar.getDistance());
         }
     }
 
     /**
      * 우승자를 출력합니다.
-     * @param namedRacingCarDriver
+     * @param racingCarDriver
      */
-    public void printWinner(NamedRacingCarDriver namedRacingCarDriver) {
-        List<String> winners = this.getWinner(namedRacingCarDriver);
+    public void printWinner(RacingCarDriver racingCarDriver) {
+        List<String> winners = this.getWinner(racingCarDriver);
         for (int i = 0; i < winners.size(); i++) {
             this.printDelimiter(i);
             System.out.print(winners.get(i));
@@ -79,19 +78,15 @@ public class ResultView {
 
     /**
      * 우승자가 누구인지 가져옵니다.
-     * @param namedRacingCarDriver
+     * @param racingCarDriver
      * @return
      */
-    private List<String> getWinner(NamedRacingCarDriver namedRacingCarDriver) {
+    private List<String> getWinner(RacingCarDriver racingCarDriver) {
         int longestDistance = 0;
-        for (RacingCar racingCar : namedRacingCarDriver.getRacingCars()) {
-            NamedRacingCar namedRacingCar = (NamedRacingCar) racingCar;
-
-            int distance = namedRacingCar.getDistance();
-
+        for (RacingCar racingCar : racingCarDriver.getRacingCars()) {
+            int distance = racingCar.getDistance();
             longestDistance = this.validateLongestDistance(longestDistance, distance);
-
-            this.addLongestDistance(longestDistance, distance, namedRacingCar.getName());
+            this.addLongestDistance(longestDistance, distance, racingCar.getName());
 
         }
         return this.winners;

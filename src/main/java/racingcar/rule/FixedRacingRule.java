@@ -1,6 +1,6 @@
 package racingcar.rule;
 
-public class FixedRacingRule implements RacingRule{
+public class FixedRacingRule implements RacingRule {
 
     private static final int MIN_VALUE = 0;
     private static final int MAX_VALUE = 9;

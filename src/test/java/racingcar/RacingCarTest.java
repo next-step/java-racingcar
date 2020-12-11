@@ -15,7 +15,7 @@ public class RacingCarTest {
     @DisplayName("주어진 숫자에 맞게 자동차가 진행했는지 테스트")
     public void move(String input, String expected) {
         // given
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("test1");
 
         // when
         racingCar.move(Integer.parseInt(input));

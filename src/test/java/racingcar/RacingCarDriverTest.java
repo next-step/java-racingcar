@@ -10,11 +10,45 @@ import racingcar.rule.RandomRacingRule;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarDriverTest {
+    @ParameterizedTest
+    @CsvSource(value = {"a:1", "a,b:2", "a,b,c:3"}, delimiter = ':')
+    @DisplayName("주어진 목록에 맞게 자동차가 생성되었는지 테스트")
+    public void createNamedRacingCarsCount(String input, String expected) {
+        // given
+        RacingCarDriver racingCarDriver = new RacingCarDriver(input.split(","));
 
+        // when
+        List<RacingCar> racingCars = racingCarDriver.getRacingCars();
+
+        // then
+        assertThat(racingCars.size()).isEqualTo(Integer.parseInt(expected));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"a:a", "a,b:b", "a,b,c:c"}, delimiter = ':')
+    @DisplayName("주어진 목록에 맞게 자동차가 생성되었는지 테스트")
+    public void createNamedRacingCarsName(String input, String expected) {
+        // given
+        RacingCarDriver racingCarDriver = new RacingCarDriver(input.split(","));
+
+        // when
+        List<RacingCar> racingCars = racingCarDriver.getRacingCars();
+
+        // then
+        assertThat(racingCars.get(racingCars.size() - 1).getName())
+                .isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("이름이 다섯글자 이상이 왔을 때 오류가 발생하는지 테스트")
+    public void createNamedRacingCarsNameOverFiveError() {
+        assertThatThrownBy(() -> {
+            new RacingCarDriver(new String[]{"123456"});
+        });
+    }
 
     @ParameterizedTest
     @CsvSource(value = {"3,0", "4,1", "9,1", "0,0"})
@@ -22,7 +56,7 @@ public class RacingCarDriverTest {
     public void moveForwardAll(String input, String expected) {
         // given
         FixedRacingRule racingRule = new FixedRacingRule(Integer.parseInt(input));
-        RacingCarDriver racingCarDriver = new RacingCarDriver(1);
+        RacingCarDriver racingCarDriver = new RacingCarDriver(new String[]{"car1"});
 
         // when
         racingCarDriver.moveForwardAll(racingRule);
@@ -30,18 +64,5 @@ public class RacingCarDriverTest {
 
         // then
         assertThat(distance).isEqualTo(Integer.parseInt(expected));
-    }
-
-    @Test
-    @DisplayName("주어진 숫자에 맞게 자동차가 생성되었는지 테스트")
-    public void createRacingCars() {
-        // given
-        int amount = 0;
-
-        // when
-        List<RacingCar> racingCars = RacingCarDriver.createRacingCars(amount);
-
-        // then
-        assertThat(racingCars.size()).isEqualTo(amount);
     }
 }
