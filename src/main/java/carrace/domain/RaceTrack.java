@@ -46,4 +46,26 @@ public class RaceTrack {
                 .collect(Collectors.toList());
     }
 
+    public String getRacingResult() {
+        StringBuilder result = new StringBuilder();
+        for (Car car : carList) {
+            result.append(car.getRacingResult()).append(System.lineSeparator());
+        }
+        return result.toString();
+    }
+
+    public String getWinnerResult() {
+        List<Car> winners = this.getWinner();
+        StringBuilder result = new StringBuilder();
+        StringJoiner carNameJoiner = new StringJoiner(", ");
+        for (Car winner : winners) {
+            String name = winner.getName();
+            carNameJoiner.add(name);
+        }
+        result.append(carNameJoiner);
+        result.append("가 최종 우승했습니다.");
+
+        return result.toString();
+    }
+
 }

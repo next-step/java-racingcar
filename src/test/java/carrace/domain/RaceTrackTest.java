@@ -91,4 +91,30 @@ class RaceTrackTest {
         //then
         assertThat(winner).contains(car1, car2, car3, car4, car5);
     }
+
+    @Test
+    public void getRacingResultTest() {
+        Car car1 = new Car(2, "a");
+        Car car2 = new Car(4, "b");
+        Car car3 = new Car(8, "c");
+        RacingRule racingRule = new FixedRacingRule();
+        RaceTrack raceTrack = new RaceTrack(racingRule, car1, car2, car3);
+        assertThat(raceTrack.getRacingResult()).isEqualTo(
+                "a : --\n" +
+                "b : ----\n" +
+                "c : --------\n"
+        );
+    }
+
+    @Test
+    public void getWinnerResultTest() {
+        Car car1 = new Car(2, "a");
+        Car car2 = new Car(4, "b");
+        Car car3 = new Car(8, "c");
+        RacingRule racingRule = new FixedRacingRule();
+        RaceTrack raceTrack = new RaceTrack(racingRule, car1, car2, car3);
+        assertThat(raceTrack.getWinnerResult()).isEqualTo(
+                "c가 최종 우승했습니다."
+        );
+    }
 }
