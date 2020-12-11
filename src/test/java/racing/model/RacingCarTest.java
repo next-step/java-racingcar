@@ -1,4 +1,4 @@
-package racing;
+package racing.model;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import racing.model.RacingCar;
 import racing.model.service.ForwardCarConditional;
 import racing.model.service.RandomCarConditional;
 import racing.model.service.StopCarConditional;
@@ -19,17 +18,7 @@ class RacingCarTest {
 	@DisplayName("자동차 이름 추가 객체 생성 테스트")
 	void carNameExceptionTest(String carName) {
 
-		assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar(carName));
-	}
-
-	@ParameterizedTest
-	@ValueSource(strings = {"포르쉐", "K5", "520i"})
-	@DisplayName("자동차 이름 추가 객체 생성 테스트")
-	void carNameAddTest(String carName) {
-
-		RacingCar car = new RacingCar(carName);
-
-		assertThat(car.getCarName()).isEqualTo(carName);
+		assertThatIllegalArgumentException().isThrownBy(() -> new RacingCar(new CarName(carName)));
 	}
 
 	@Test
@@ -40,12 +29,15 @@ class RacingCarTest {
 		RandomCarConditional randomCarConditional = new RandomCarConditional();
 
 		car.move(randomCarConditional);
+		car.move(randomCarConditional);
+		car.move(randomCarConditional);
+		car.move(randomCarConditional);
 
 		assertThat(car.getDistance()).isPositive();
 	}
 
 	@Test
-	@DisplayName("자동차 랜덤 레이스 움직임 구현")
+	@DisplayName("자동차 전진 움직임 구현")
 	void ForwardCarConditionalTest() {
 
 		RacingCar car = new RacingCar();
