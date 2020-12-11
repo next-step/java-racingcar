@@ -9,8 +9,6 @@ import racingcar.view.ResultView;
 import java.util.List;
 
 public class RacingMain {
-    private static Cars cars;
-
     public static void main(String[] args) {
         InputView inputView = new InputView();
         int playCount = inputView.inputCountOfPlay();

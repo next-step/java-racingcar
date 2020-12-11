@@ -6,9 +6,9 @@ public class RacingGame {
     private static final int END_GAME = 0;
 
     private int playCount;
-    private int carCount;
+    final int carCount;
 
-    private Cars cars;
+    private final Cars cars;
 
     public RacingGame(int carCount,int playCount) {
         this.carCount = carCount;

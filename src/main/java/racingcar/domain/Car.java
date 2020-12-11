@@ -6,7 +6,7 @@ public class Car {
     private static final int INITIAL_LOCATION = 1;
     private int location;
 
-    private RandomGenerator randomGenerator = new RandomGenerator();
+    private final RandomGenerator randomGenerator = new RandomGenerator();
 
     public Car() {
         this(INITIAL_LOCATION);
