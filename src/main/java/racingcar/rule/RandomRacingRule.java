@@ -1,12 +1,8 @@
 package racingcar.rule;
 
-import racingcar.RacingCarDriver;
-
 import java.util.Random;
 
 public class RandomRacingRule implements RacingRule {
-
-    private static final int RANDOM_BOUND = 10;
 
     private final Random random = new Random();
 
@@ -16,6 +12,6 @@ public class RandomRacingRule implements RacingRule {
      */
     @Override
     public int getNumber() {
-        return this.random.nextInt(RandomRacingRule.RANDOM_BOUND);
+        return this.random.nextInt(RandomRacingRule.MAX_BOUND);
     }
 }
