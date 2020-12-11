@@ -1,33 +1,25 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
+
 import java.util.Scanner;
 
 public class InputView {
-    private int number;
-    private int count;
     private final Scanner scanner;
 
     public InputView() {
         this.scanner = new Scanner(System.in);
     }
 
-    public void input() {
+    public int inputCountOfCar() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        int number = scanner.nextInt();
-        this.number = number;
 
+        return scanner.nextInt();
+    }
+
+    public int inputCountOfPlay() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        int count = scanner.nextInt();
-        this.count = count;
 
-        System.out.println("\n실행결과");
-    }
-
-    public int getNumber() {
-        return this.number;
-    }
-
-    public int getCount() {
-        return this.count;
+        return scanner.nextInt();
     }
 }
