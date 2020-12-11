@@ -1,5 +1,9 @@
 package racing.model;
 
+import java.util.List;
+
+import racing.model.service.CarConditional;
+
 public class RacingGame {
 
 	private final RacingCars racingCars;
@@ -9,18 +13,18 @@ public class RacingGame {
 		this.racingCars = new RacingCars(names);
 	}
 
-	public void start() {
+	public void start(CarConditional carConditional) {
 
-		this.racingCars.start();
+		this.racingCars.start(carConditional);
 	}
 
-	public RacingCars getRacingCars() {
+	public List<RacingCar> getRacingCars() {
 
-		return this.racingCars;
+		return this.racingCars.getCars();
 	}
 
 	public String getWinner() {
-		
+
 		return this.racingCars.getWinnerNames();
 	}
 }

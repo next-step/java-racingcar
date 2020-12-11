@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racing.model.RacingCar;
 import racing.model.RacingGame;
 import racing.model.service.ForwardCarConditional;
+import racing.model.service.RandomCarConditional;
+import racing.model.service.StopCarConditional;
 
 class RacingGameTest {
 
@@ -17,14 +19,14 @@ class RacingGameTest {
 	@DisplayName("우승자 랜덤 테스트")
 	void getRandomWinnerTest(String winnerNames) {
 
-		ForwardCarConditional forwardCarConditional = new ForwardCarConditional();
+		RandomCarConditional random = new RandomCarConditional();
 
 		// 자동차 경주 게임 객체 생성
 		RacingGame game = new RacingGame(winnerNames.split(","));
 
-		game.start();
-		game.start();
-		game.start();
+		game.start(random);
+		game.start(random);
+		game.start(random);
 
 		// 최소 한명의 우승자가 나와야 한다.
 		assertThat(game.getWinner()).isNotEmpty();
@@ -40,19 +42,13 @@ class RacingGameTest {
 		// 자동차 경주 게임 객체 생성
 		RacingGame game = new RacingGame(winnerNames.split(","));
 
-		for (RacingCar car : game.getRacingCars().getCars()) {
-
-			car.move(forwardCarConditional);
-		}
-
-		// Stream 으로 작성 연습
-		game.getRacingCars().getCars()
-			.forEach(racingCar -> racingCar.move(forwardCarConditional));
+		game.start(forwardCarConditional);
+		game.start(forwardCarConditional);
 
 		// 모든 차량이 주행을 동일하게 했기 때문에 모든 차량이 우승자 이여야 한다.
 		assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
 
-		for (RacingCar car : game.getRacingCars().getCars()) {
+		for (RacingCar car : game.getRacingCars()) {
 
 			// 모든 차량이 주행을 2번했기 때문에 2
 			assertThat(car.getDistance()).isEqualTo(2);
@@ -68,6 +64,12 @@ class RacingGameTest {
 		RacingGame game = new RacingGame(winnerNames.split(","));
 
 		// 주행을 안했기 때문에, 차량 리스트 전부가 우승자이여야 한다.
+		assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
+
+		game.start(new StopCarConditional());
+		game.start(new StopCarConditional());
+		game.start(new StopCarConditional());
+
 		assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
 	}
 
@@ -89,6 +91,6 @@ class RacingGameTest {
 		String[] names = carNames.split(",");
 		RacingGame game = new RacingGame(names);
 
-		assertThat(game.getRacingCars().getCars().size()).isEqualTo(names.length);
+		assertThat(game.getRacingCars().size()).isEqualTo(names.length);
 	}
 }

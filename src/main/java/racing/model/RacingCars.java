@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import racing.model.service.RandomCarConditional;
+import racing.model.service.CarConditional;
 
 public class RacingCars {
 
@@ -55,12 +55,11 @@ public class RacingCars {
 
 	/**
 	 * 자동차 객체 리스트에 있는 모든 차량 레이스 시작
+	 * @param carConditional: 레이싱 자동차 움직임 제어
 	 */
-	public void start() {
+	public void start(CarConditional carConditional) {
 
-		RandomCarConditional randomCarConditional = new RandomCarConditional();
-
-		this.cars.forEach(racingCar -> racingCar.move(randomCarConditional));
+		this.cars.forEach(racingCar -> racingCar.move(carConditional));
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package racing.view;
 
-import racing.model.RacingCars;
+import java.util.List;
+
+import racing.model.RacingCar;
 
 public class UserView {
 
@@ -48,13 +50,15 @@ public class UserView {
 		return tryRacingNumber;
 	}
 
-	public void getUserOutputCarLocation(RacingCars racingCars) {
-
+	public void getUserOutputCarLocation(List<RacingCar> racingCars) {
 		UserOutput.printCarLocation(racingCars);
 	}
 
 	public void getUserOutputWinnerRacingGame(String winnerCarsName) {
-
 		UserOutput.printWinnerRacingGame(winnerCarsName);
+	}
+
+	public void getUserOutputError(String errorMessage) {
+		UserOutput.printUserErrorMsg(errorMessage);
 	}
 }

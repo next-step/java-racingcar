@@ -1,7 +1,8 @@
 package racing.view;
 
+import java.util.List;
+
 import racing.model.RacingCar;
-import racing.model.RacingCars;
 
 public class UserOutput {
 
@@ -48,9 +49,9 @@ public class UserOutput {
 		messagePrint(PRINT_NEXT_LINE);
 	}
 
-	public static void printCarLocation(RacingCars racingCars) {
+	public static void printCarLocation(List<RacingCar> racingCars) {
 
-		for (RacingCar car : racingCars.getCars()) {
+		for (RacingCar car : racingCars) {
 			printCarName(car.getCarName());
 			printCarLocation(car.getDistance());
 		}
