@@ -1,8 +1,8 @@
-package racing;
+package racing.view;
 
 
-import java.util.List;
-import java.util.stream.Collectors;
+import racing.domain.Car;
+import racing.domain.ParticipateCars;
 
 public class Display {
     private static final char sign = '-';
@@ -11,7 +11,8 @@ public class Display {
     }
 
     public void displayRacingResult(ParticipateCars participateCars) {
-        participateCars.getCars().forEach((car)->{
+        participateCars.getCars()
+                .forEach((car)->{
             printMoveCar(car);
         });
         printEmptyLine();
@@ -20,8 +21,8 @@ public class Display {
         int totalMeter = car.totalMeter();
         String carName = car.getName();
         System.out.print(carName + ":");
-        for(int i = 0 ; i < totalMeter ; i ++){
-            System.out.print( this.sign);
+        for(int i = 0; i < totalMeter; i++) {
+            System.out.print(this.sign);
         }
         printEmptyLine();
     }

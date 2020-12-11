@@ -1,8 +1,12 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import racing.domain.Car;
+import racing.domain.ParticipateCars;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,4 +40,18 @@ class ParticipateCarsTest {
         assertThat(participateCars.getCars().size()).isEqualTo(3);
     }
 
+    @Test
+    void findMaxTotalMeterTest() {
+        List<Car> testCarList = Arrays.asList( new Car("Car1",4), new Car("Car2",4), new Car("Car3",2) );
+        int maxTotalMeter = participateCars.findMaxTotalMeter(testCarList);
+        assertThat(maxTotalMeter).isEqualTo(4);
+    }
+
+    @Test
+    void findWinnerName() {
+        List<Car> testCarList = Arrays.asList( new Car("Car1",4), new Car("Car2",4), new Car("Car3",2) );
+        int maxMeter = 4;
+        List<String> winnerNames = participateCars.findWinnerName(maxMeter, testCarList);
+        assertThat(winnerNames.size()).isEqualTo(2);
+    }
 }
