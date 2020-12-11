@@ -8,7 +8,6 @@ public class UserOutput {
 
 	private static final String PRINT_USER_INPUT_CAR_NUMBER_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 	private static final String PRINT_USER_INPUT_TRY_NUMBER_MSG = "시도할 회수는 몇 회 인가요?";
-	private static final String PRINT_USER_CALCULATE_RESULT = "계산 결과: ";
 	private static final String PRINT_NEXT_LINE = "\n";
 	private static final String PRINT_RACING_CAR_WINNER_MSG = "가 최종 우승했습니다.";
 
@@ -32,11 +31,6 @@ public class UserOutput {
 	public static void printUserInputTryNumberMsg() {
 
 		messagePrint(PRINT_USER_INPUT_TRY_NUMBER_MSG + PRINT_NEXT_LINE);
-	}
-
-	public static void printCalculatorResult(int result) {
-
-		messagePrint(PRINT_USER_CALCULATE_RESULT + result + PRINT_NEXT_LINE);
 	}
 
 	public static void printCarLocation(int distance) {

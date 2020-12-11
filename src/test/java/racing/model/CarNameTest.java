@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class CarNameTest {
 
 	@ParameterizedTest
-	@ValueSource(strings = {"", "아이언맨슈트"})
+	@ValueSource(strings = {"", "   ", "아이언맨슈트"})
 	@DisplayName("CarName Exception 테스트")
 	void initExceptionTest(String carName) {
 
@@ -37,5 +37,6 @@ class CarNameTest {
 
 		assertThat(car).isNotNull();
 		assertThat(car.getName()).isEqualTo(carName);
+		assertThat(car).isEqualTo(new CarName(carName));
 	}
 }

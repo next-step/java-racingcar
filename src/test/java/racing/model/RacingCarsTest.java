@@ -11,7 +11,7 @@ class RacingCarsTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"코브라,뱀", "520i,XC90,GV80", "M6,i30,A6,G90,EQ900"})
 	@DisplayName("레이싱 복수 이름 추가 객체 생성 테스트")
-	void createRacingCarsAddNameTest(CarNames carNames) {
+	void initRacingCarsAddNameTest(CarNames carNames) {
 
 		assertThat(new RacingCars(carNames)).isNotNull();
 	}

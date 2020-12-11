@@ -44,10 +44,38 @@ public class UserView {
 		return new CarNames(UserInput.userInputString());
 	}
 
+	/**
+	 * 우승주 출력 메서드
+	 * @param winnerCarsName: 주행 결과 우승자 문자열
+	 */
 	public void getUserOutputWinnerRacingGame(String winnerCarsName) {
 
 		UserOutput.printWinnerRacingGame(winnerCarsName);
 	}
+
+	/**
+	 * 유저 주행거리 출력 메서드
+	 * @param racingCars: 레이싱 참가 차량 리스트
+	 */
+	public void getUserOutputCarLocation(List<RacingCar> racingCars) {
+
+		UserOutput.printCarLocation(racingCars);
+	}
+
+	/**
+	 * 유저 입력 에러 메세지 출력 메서드
+	 * @param errorMessage: 유저 에러 메세지
+	 */
+	public void getUserOutputError(String errorMessage) {
+
+		UserOutput.printUserErrorMsg(errorMessage);
+	}
+
+	/**
+	 * 레이싱 사이클 진행 여무 확인 메서드
+	 * @return 유저 입력 횟수 true / false
+	 */
+	public boolean isTryGame() {
 
 	public CarNames getCarNames() {
 
@@ -59,13 +87,12 @@ public class UserView {
 		UserOutput.printUserErrorMsg(errorMessage);
 	}
 
-	public void getUserOutputCarLocation(List<RacingCar> racingCars) {
+	/**
+	 * 유저 입력 리턴 메서드
+	 * @return : 유저가 입력한 차량 리스트 문자열 리턴
+	 */
+	public CarNames getCarNames() {
 
-		UserOutput.printCarLocation(racingCars);
-	}
-
-	public boolean isTryGame() {
-
-		return this.tryRaceNum.isTryGame();
+		return this.carNames;
 	}
 }

@@ -33,18 +33,18 @@ class RacingGameTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"코브라,뱀", "520i,XC90,GV80", "M6,i30,A6,G90,EQ900"})
 	@DisplayName("우승자 공동우승 테스트")
-	void getAllWinnerTest(CarNames winnerNames) {
+	void getAllWinnerTest(String winnerNames) {
 
 		ForwardCarConditional forwardCarConditional = new ForwardCarConditional();
 
 		// 자동차 경주 게임 객체 생성
-		RacingGame game = new RacingGame(winnerNames);
+		RacingGame game = new RacingGame(new CarNames(winnerNames));
 
 		game.start(forwardCarConditional);
 		game.start(forwardCarConditional);
 
 		// 모든 차량이 주행을 동일하게 했기 때문에 모든 차량이 우승자 이여야 한다.
-		// assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
+		assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
 
 		for (RacingCar car : game.getRacingCars()) {
 
@@ -56,25 +56,25 @@ class RacingGameTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"코브라,뱀", "520i,XC90,GV80", "M6,i30,A6,G90,EQ900"})
 	@DisplayName("우승자 주행거리 0 테스트")
-	void getZeroWinnerTest(CarNames winnerNames) {
+	void getZeroWinnerTest(String winnerNames) {
 
 		// 자동차 경주 게임 객체 생성 // 모든차량 주행거리 0
-		RacingGame game = new RacingGame(winnerNames);
+		RacingGame game = new RacingGame(new CarNames(winnerNames));
 
 		// 주행을 안했기 때문에, 차량 리스트 전부가 우승자이여야 한다.
-		// assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
+		assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
 
 		game.start(new StopCarConditional());
 		game.start(new StopCarConditional());
 		game.start(new StopCarConditional());
 
-		// assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
+		assertThat(game.getWinner().replace(" ", "")).isEqualTo(winnerNames);
 	}
 
 	@ParameterizedTest
 	@ValueSource(strings = {"코브라,뱀", "520i,XC90,GV80", "M6,i30,A6,G90,EQ900"})
 	@DisplayName("레이싱 게임 객체 생성 테스트")
-	void createRacingGameTest(CarNames carNames) {
+	void initRacingGameTest(CarNames carNames) {
 
 		RacingGame game = new RacingGame(carNames);
 

@@ -24,6 +24,10 @@ public class RacingCar {
 		this.location = new Location(location);
 	}
 
+	/**
+	 * 자동차 랜덤 주행 메서드
+	 * @param carConditional: carConditional 인터페이스를 상속 받는 객체
+	 */
 	public void move(CarConditional carConditional) {
 
 		if (carConditional.isMove()) {
@@ -33,13 +37,17 @@ public class RacingCar {
 	}
 
 	/**
-	 * 자동차 주행 거리 리턴
+	 * 자동차 주행 거리 리턴 메서드
 	 * @return : 자동차 주행 거리 정수 리턴
 	 */
 	public int getDistance() {
 		return this.location.getDistance();
 	}
 
+	/**
+	 * 자동차 명 리턴 메서드
+	 * @return : 자동차 명 리턴
+	 */
 	public String getCarName() {
 		return this.carName.getName();
 	}

@@ -2,12 +2,30 @@ package racing.model;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarNamesTest {
+
+	@Test
+	@DisplayName("우승자 탐색을 위한 가상 경주 데이터 테스트")
+	void findWinnerTest() {
+
+		RacingCars cars = new RacingCars(
+			Arrays.asList(
+				new RacingCar(new CarName("K3"), 3),
+				new RacingCar(new CarName("k5"), 6),
+				new RacingCar(new CarName("K7"), 5),
+				new RacingCar(new CarName("k9"), 6)
+			)
+		);
+
+		assertThat(cars.getWinnerNames()).isEqualTo("k5, k9");
+	}
 
 	@Test
 	@DisplayName("CarNames NULL 객체 생성 테스트")
