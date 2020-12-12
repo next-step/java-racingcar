@@ -10,7 +10,7 @@ import edu.nextstep.racing.domain.game.MoveCount;
 @DisplayName("MoveCount : 게임에 필요한 상태값인, 최대이동횟수와 현재이동횟수를 내부 변수로 가짐.")
 class MoveCountTest {
 
-	@DisplayName("MoveCount : 현재이동횟수가 최대이동횟수보다 작으면 현재이동횟수가 1 증가함. 그렇지 않으면 현재이동횟수는 변화 없음.")
+	@DisplayName("countUp : 현재이동횟수가 최대이동횟수보다 작으면 현재이동횟수가 1 증가함. 그렇지 않으면 현재이동횟수는 변화 없음.")
 	@Test
 	void countUp() {
 		MoveCount moveCount = new MoveCount(2);
@@ -22,7 +22,7 @@ class MoveCountTest {
 		assertThat(moveCount.getCurrent()).isEqualTo(2);
 	}
 
-	@DisplayName("MoveCount : 현재이동횟수가 최대이동횟수보다 작으면 true를 리턴함.")
+	@DisplayName("isContinue : 현재이동횟수가 최대이동횟수보다 작으면 true를 리턴함.")
 	@Test
 	void isContinue() {
 		MoveCount moveCount = new MoveCount(1);
