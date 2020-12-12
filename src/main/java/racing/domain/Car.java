@@ -6,9 +6,6 @@ public class Car {
     private Position position;
     private Name name;
 
-    public Car() {
-    }
-
     public Car(String name) {
         this.position = new Position();
         this.name = new Name(name);

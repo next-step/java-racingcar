@@ -15,8 +15,8 @@ public class GameRunner {
         ViewResult viewResult = new ViewResult();
         viewResult.showFirstLine();
         for(int i = 0; i < requestMoveCount; i++) {
-            Cars results = cars.run();
-            viewResult.view(results);
+            cars.run();
+            viewResult.view(cars);
         }
         Cars winnerCars = cars.findWinner();
         viewResult.showWinnerCars(winnerCars);

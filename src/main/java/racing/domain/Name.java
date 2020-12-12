@@ -2,8 +2,8 @@ package racing.domain;
 import java.util.Objects;
 
 public class Name {
-    private final String name;
     private static final int MAX_NAME_LENGTH = 5;
+    private final String name;
 
     public Name(String name) {
         if(name == null || name.isEmpty()) {
@@ -20,9 +20,9 @@ public class Name {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Name name1 = (Name) o;
+        Name that = (Name) o;
 
-        return Objects.equals(name, name1.name);
+        return Objects.equals(name, that.name);
     }
 
     @Override

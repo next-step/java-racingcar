@@ -3,43 +3,37 @@ package racing.domain;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 public class Cars {
     private static final String NAME_SEPARATOR = ",";
     private static final int MAX_BOUND = 10;
+    private static final Random random = new Random();
+    private final List<Car> cars;
 
-    private List<Car> cars = new ArrayList<>();
-
-    public Cars() {
+    public Cars(String names) {
+        this.cars = Arrays.stream(names.split(NAME_SEPARATOR))
+                .map(Car::new)
+                .collect(toList());
     }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public Cars run() {
+    public void run() {
         for(Car car: cars) {
             car.move(getRandomNum());
         }
-        return this;
     }
 
     private RandomNumber getRandomNum() {
-        Random random = new Random();
         return new RandomNumber(random.nextInt(MAX_BOUND));
     }
 
     public List<Car> getCars() {
         return cars;
     }
-
-    public Cars generateCarsWithName(String names) {
-        String[] carNames = names.split(NAME_SEPARATOR);
-        for(String name: carNames) {
-            cars.add(new Car(name));
-        }
-        return this;
-    }
-
 
     private int getMaxPosition() {
         int maxPosition = 0;
@@ -50,14 +44,16 @@ public class Cars {
     }
 
     public Cars findWinner() {
-        List<Car> winners = new ArrayList<>();
         int maxPosition = getMaxPosition();
-        for(Car car: cars) {
-            if(car.isWinner(maxPosition)){
-                winners.add(car);
-            }
-        }
-        return new Cars(winners );
+        List<Car> winners = cars.stream()
+                .filter(car -> car.isWinner(maxPosition))
+                .collect(Collectors.toList());
+        return new Cars(winners);
+    }
+
+    public String getNames() {
+        return cars.stream()
+                .map(it -> it.getName().toString()).collect(Collectors.joining(NAME_SEPARATOR));
     }
 
     @Override
@@ -65,19 +61,14 @@ public class Cars {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Cars cars1 = (Cars) o;
+        Cars that = (Cars) o;
 
-        return Objects.equals(cars, cars1.cars);
+        return Objects.equals(cars, that.cars);
     }
 
     @Override
     public int hashCode() {
         return cars != null ? cars.hashCode() : 0;
-    }
-
-    public String getNames() {
-        return cars.stream()
-                .map(it -> it.getName().toString()).collect(Collectors.joining(NAME_SEPARATOR));
     }
 
     @Override

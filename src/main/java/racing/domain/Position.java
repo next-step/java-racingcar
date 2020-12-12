@@ -33,9 +33,9 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Position position1 = (Position) o;
+        Position that = (Position) o;
 
-        return position == position1.position;
+        return position == that.position;
     }
 
     @Override

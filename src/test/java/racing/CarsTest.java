@@ -1,6 +1,5 @@
 package racing;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,19 +12,12 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-    Cars cars;
-
-    @BeforeEach
-    void setUp() {
-        cars = new Cars();
-    }
-
     @ParameterizedTest
     @ValueSource(strings = {"소나", "탐켄치"})
     @DisplayName("입력한 이름을 가진 Cars 생성")
     void generate_cars_with_name(String name) {
         String testNames = "소나,탐켄치";
-        Cars generateCars = cars.generateCarsWithName(testNames);
+        Cars generateCars = new Cars(testNames);
         assertThat(generateCars).isEqualTo(new Cars(Arrays.asList(new Car("소나"), new Car("탐켄치"))));
     }
 
