@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

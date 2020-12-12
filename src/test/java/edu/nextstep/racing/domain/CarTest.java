@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import edu.nextstep.racing.domain.Car;
 
 @DisplayName("Car : 자동차의 상태, 이동로직 등을 각각 객체화하기 위한 클래스")
 class CarTest {

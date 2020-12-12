@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.view;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import edu.nextstep.racing.view.InputView;
 
 class InputViewTest {
 

@@ -3,7 +3,12 @@ package edu.nextstep.racing;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Playground {
+import edu.nextstep.racing.domain.Car;
+import edu.nextstep.racing.domain.Game;
+import edu.nextstep.racing.view.InputView;
+import edu.nextstep.racing.view.ResultView;
+
+public class GameController {
 
 	public void play() {
 		String[] nameOfCars = InputView.inputNameOfCars();

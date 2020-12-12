@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.view;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -8,6 +8,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import edu.nextstep.racing.domain.Car;
+import edu.nextstep.racing.domain.Game;
+import edu.nextstep.racing.view.ResultView;
 
 @DisplayName("ResultView : 실행 결과 표시 UI 로직을 담당하는 View 클래스")
 class ResultViewTest {

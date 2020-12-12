@@ -7,14 +7,16 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.nextstep.racing.domain.Car;
+
 @DisplayName("Playground : Game과 Car 객체를 엮어, 실제 Game이 세팅되고 Play될 수 있도록 함.")
-class PlaygroundTest {
+class GameControllerTest {
 
 	@DisplayName("createGameCars : 자동차 이름들을 파라미터로 받아 목록길이만큼의 이름 달린 자동차들을 생성하여 리턴해야 함.")
 	@Test
 	void createGameCars() {
 		String[] namesOfCars = new String[]{"pobi", "crong", "honux"};
-		List<Car> gameCars = new Playground().createGameCars(namesOfCars);
+		List<Car> gameCars = new GameController().createGameCars(namesOfCars);
 		assertThat(gameCars).hasSize(3);
 		assertThat(gameCars.get(0).getName()).isEqualTo("pobi");
 		assertThat(gameCars.get(1).getName()).isEqualTo("crong");
@@ -26,7 +28,7 @@ class PlaygroundTest {
 	void createRacingGame() {
 		String[] namesOfCars = new String[]{"pobi", "crong", "honux"};
 		int moveTryMaxCount = 5;
-		assertThat(new Playground().createRacingGame(namesOfCars, moveTryMaxCount))
+		assertThat(new GameController().createRacingGame(namesOfCars, moveTryMaxCount))
 			.isNotNull()
 			.satisfies(game -> {
 				assertThat(game.getGameCars()).hasSize(namesOfCars.length);

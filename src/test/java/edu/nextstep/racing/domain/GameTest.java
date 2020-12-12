@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import edu.nextstep.racing.domain.Car;
+import edu.nextstep.racing.domain.Game;
 
 @DisplayName("Game : 자동차 게임을 진행함에 필요한 상태들을 가지고 있고, 게임을 진행하는 등의 역할을 수행함.")
 class GameTest {

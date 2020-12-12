@@ -1,6 +1,8 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 import java.util.function.Supplier;
+
+import edu.nextstep.racing.util.NumberUtil;
 
 public class Car {
 	public static final int STOP_LIMIT_NUMBER = 4;
