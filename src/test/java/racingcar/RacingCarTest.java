@@ -28,8 +28,16 @@ public class RacingCarTest {
     @Test
     @DisplayName("이름이 다섯글자 이상이 왔을 때 오류가 발생하는지 테스트")
     public void createNamedRacingCarsNameOverFiveError() {
-        assertThatThrownBy(() -> {
-            new RacingCar("tester");
+        // given
+        String tester = "tester";
+
+        // when
+        Throwable thrown = catchThrowable(() -> {
+            new RacingCar(tester);
         });
+
+        // then
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("이름의 길이가 적절하지 않습니다.");
     }
 }
