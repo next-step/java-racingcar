@@ -8,10 +8,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarNameTest {
     @Test
-    @DisplayName("자동차 이름 출력")
+    @DisplayName("자동차 이름 조회")
     void getResultTest() {
         CarName carName = new CarName("leon");
-        assertThat(carName.getResult()).isEqualTo("leon : ");
+        assertThat(carName.getName()).isEqualTo("leon");
     }
 
     @Test

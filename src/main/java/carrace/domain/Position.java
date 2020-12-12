@@ -14,12 +14,4 @@ public class Position {
     public void forward() {
         position++;
     }
-
-    public String getResult() {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            result.append("-");
-        }
-        return result.toString();
-    }
 }

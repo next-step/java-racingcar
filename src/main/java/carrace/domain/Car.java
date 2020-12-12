@@ -52,8 +52,4 @@ public class Car {
         return carName.getName();
     }
 
-    public String getRacingResult() {
-        return carName.getResult() + position.getResult();
-    }
-
 }

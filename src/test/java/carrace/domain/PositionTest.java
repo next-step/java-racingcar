@@ -23,10 +23,4 @@ class PositionTest {
         assertThat(position.getPosition()).isEqualTo(6);
     }
 
-    @Test
-    @DisplayName("자동차 위치 출력 테스트")
-    void getResult() {
-        Position position = new Position(5);
-        assertThat(position.getResult()).isEqualTo("-----");
-    }
 }

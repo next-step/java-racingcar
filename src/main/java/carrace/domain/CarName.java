@@ -20,7 +20,4 @@ public class CarName {
         return name;
     }
 
-    public String getResult() {
-        return name + " : ";
-    }
 }
