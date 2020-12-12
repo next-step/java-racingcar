@@ -14,21 +14,22 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(int no) {
-        validateTotal(no);
+        validateCars(no);
         for (int i = 0; i < no; i++) {
             this.cars.add(new Car());
         }
     }
 
-    private void validateTotal(int no) {
-        if (ValidateUtils.validateMin(no)) {
+    private void validateCars(int carCount) {
+        if (ValidateUtils.validateMin(carCount)) {
             throw new IllegalArgumentException(VALID_MIN_NO);
         }
     }
 
     public void run() {
         for (Car car : cars) {
-            car.play(randomNumber.condition());
+            int randomCondition = randomNumber.condition();
+            car.play(randomCondition);
         }
         racingResult.report(cars);
     }

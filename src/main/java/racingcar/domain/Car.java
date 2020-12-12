@@ -6,7 +6,7 @@ public class Car {
     private static final int MOVABLE_CONDITION = 4;
     private static final String OUT_OF_RANGE_CONDITION = "전진 조건 범위를 초과하였습니다.";
 
-    private Position position;
+    private Position position = new Position();
 
     public Car() {}
 
@@ -39,4 +39,7 @@ public class Car {
         return this.position.isMoved();
     }
 
+    public boolean isStop() {
+        return this.position.isStop();
+    }
 }

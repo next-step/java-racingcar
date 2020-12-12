@@ -15,4 +15,8 @@ public class Position {
     public boolean isMoved() {
         return position != STOP_POSITION;
     }
+
+    public boolean isStop() {
+        return position == STOP_POSITION;
+    }
 }

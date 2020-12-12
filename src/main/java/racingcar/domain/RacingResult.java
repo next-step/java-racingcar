@@ -4,7 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class RacingResult {
-    private static final String RACE_VIEW = "-";
+    private static final String MOVE_VIEW = "-";
+    private static final String STOP_VIEW = "";
     private static final String NEW_LINE = "\n";
     private final StringBuilder racingRounge = new StringBuilder();
 
@@ -18,14 +19,22 @@ public class RacingResult {
 
     private void raceView(Car car) {
         if (car.isMoved()) {
-            addRaceView(car);
+            moveView(car);
+        }
+
+        if (car.isStop()) {
+            stopView();
         }
     }
 
-    private void addRaceView(Car car) {
+    private void moveView(Car car) {
         for (int i = 0; i < car.position(); i++) {
-            racingRounge.append(RACE_VIEW);
+            racingRounge.append(MOVE_VIEW);
         }
+    }
+
+    private void stopView() {
+        racingRounge.append(STOP_VIEW);
     }
 
     public StringBuilder racingRounge() {
