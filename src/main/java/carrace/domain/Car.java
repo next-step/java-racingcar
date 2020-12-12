@@ -2,21 +2,31 @@ package carrace.domain;
 
 
 public class Car {
+    private static final int DEFAULT_POSITION = 1;
     private static final int MIN_FORWARD_NUMBER = 4;
-    private int position;
-    private String name;
 
-    public Car(int position, String name) {
-        this.position = position;
-        this.name = name;
+    private final Position position;
+    private final CarName carName;
+
+    public Car() {
+        this(DEFAULT_POSITION);
     }
 
     public Car(int position) {
-        this.position = position;
+        this(position, "");
     }
 
-    public Car() {
-        position = 1;
+    public Car(CarName name) {
+        this(DEFAULT_POSITION, name);
+    }
+
+    public Car(int position, String name) {
+        this(position, new CarName(name));
+    }
+
+    public Car(int position, CarName name) {
+        this.position = new Position(position);
+        this.carName = name;
     }
 
     private boolean canMoveForward(int randomNumber) {
@@ -31,25 +41,15 @@ public class Car {
     }
 
     private void moveForward() {
-        position++;
+        position.forward();
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public String getName() {
-        return name;
-    }
-
-    public String getRacingResult() {
-        StringBuilder result = new StringBuilder();
-        result.append(name).append(" : ");
-
-        for (int i = 0; i < position; i++) {
-            result.append("-");
-        }
-        return result.toString();
+        return carName.getName();
     }
 
 }

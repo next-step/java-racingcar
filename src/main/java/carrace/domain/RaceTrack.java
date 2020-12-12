@@ -4,23 +4,20 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RaceTrack {
-    private static final int START_POSITION = 1;
     private final List<Car> carList = new ArrayList<>();
     private final RacingRule racingRule;
 
     public RaceTrack(RacingRule racingRule, int carCount) {
         this.racingRule = racingRule;
-        this.carList.addAll(CarFactory.makeCars(carCount));
+        this.carList.addAll(CarFactory.makeCarList(carCount));
     }
 
-    public RaceTrack(RacingRule racingRule, String[] carNames) {
+    public RaceTrack(RacingRule racingRule, List<CarName> carNames) {
         if (carNames == null) {
             throw new IllegalArgumentException();
         }
         this.racingRule = racingRule;
-        for (String carName : carNames) {
-            carList.add(new Car(START_POSITION, carName));
-        }
+        this.carList.addAll(CarFactory.makeCarList(carNames));
     }
 
     public RaceTrack(RacingRule racingRule, Car... cars) {

@@ -19,19 +19,4 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
-    @Test
-    void carPositionTest() {
-        Car car = new Car(1, "pobi");
-        assertThat(car.getPosition()).isEqualTo(1);
-        assertThat(car.getRacingResult()).isEqualTo("pobi : -");
-
-        car = new Car(2, "crong");
-        assertThat(car.getPosition()).isEqualTo(2);
-        assertThat(car.getRacingResult()).isEqualTo("crong : --");
-
-        car = new Car(5, "honux");
-        assertThat(car.getPosition()).isEqualTo(5);
-        assertThat(car.getRacingResult()).isEqualTo("honux : -----");
-    }
-
 }

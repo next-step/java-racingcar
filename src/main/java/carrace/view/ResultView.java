@@ -1,4 +1,4 @@
-package carrace.ui;
+package carrace.view;
 
 import carrace.domain.Car;
 import carrace.domain.RaceTrack;
@@ -19,23 +19,35 @@ public class ResultView {
 
     private static void printCarListPosition(List<Car> carList) {
         for (Car car : carList) {
-            System.out.println(car.getRacingResult());
+            System.out.println(getCarResult(car));
         }
+    }
+
+    private static String getCarResult(Car car) {
+        int position = car.getPosition();
+        String name = car.getName();
+
+        StringBuilder result = new StringBuilder();
+        result.append(name).append(" : ");
+        for (int i = 0; i < position; i++) {
+            result.append("-");
+        }
+        return result.toString();
     }
 
     public static void printWinner(RaceTrack raceTrack) {
         List<Car> winners = raceTrack.getWinner();
 
-        StringBuilder result = new StringBuilder();
+        StringBuilder winnerResult = new StringBuilder();
         StringJoiner carNameJoiner = new StringJoiner(", ");
         for (Car winner : winners) {
             String name = winner.getName();
             carNameJoiner.add(name);
         }
-        result.append(carNameJoiner);
-        result.append("가 최종 우승했습니다.");
+        winnerResult.append(carNameJoiner);
+        winnerResult.append("가 최종 우승했습니다.");
 
-        System.out.println(result);
+        System.out.println(winnerResult);
     }
 
 }

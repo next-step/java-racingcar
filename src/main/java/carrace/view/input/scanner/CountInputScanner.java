@@ -1,4 +1,4 @@
-package carrace.ui.input.scanner;
+package carrace.view.input.scanner;
 
 import java.util.Scanner;
 
