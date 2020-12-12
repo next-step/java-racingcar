@@ -47,7 +47,7 @@ public class ResultView {
      * @param racingCarDriver
      */
     public static void printWinner(RacingCarDriver racingCarDriver) {
-        List<String> winners = racingCarDriver.getWinner();
+        List<String> winners = racingCarDriver.findWinner();
         for (int i = 0; i < winners.size(); i++) {
             ResultView.printDelimiter(i);
             System.out.print(winners.get(i));

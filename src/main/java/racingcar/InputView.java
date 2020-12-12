@@ -25,9 +25,7 @@ public class InputView {
      */
     public RacingCarDriver inputParticipants() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return new RacingCarDriver(RacingCarDriver.createRacingCars(
-                this.makeParticipantsList(this.scanner.nextLine())
-        ));
+        return new RacingCarDriver(this.makeParticipantsList(this.scanner.nextLine()));
     }
 
     /**

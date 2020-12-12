@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.RacingCars;
 import racingcar.rule.FixedRacingRule;
 import racingcar.rule.RacingRule;
 import racingcar.rule.RandomRacingRule;
@@ -20,9 +21,7 @@ public class RacingCarDriverTest {
     @DisplayName("주어진 목록에 맞게 자동차가 생성되었는지 테스트")
     public void createNamedRacingCarsCount(String input, String expected) {
         // given
-        List<RacingCar> sourceRacingCars
-                = RacingCarDriver.createRacingCars(new InputView().makeParticipantsList(input));
-        RacingCarDriver racingCarDriver = new RacingCarDriver(sourceRacingCars);
+        RacingCarDriver racingCarDriver = new RacingCarDriver(new InputView().makeParticipantsList(input));
 
         // when
         List<RacingCar> targetRacingCars = racingCarDriver.getRacingCars();
@@ -36,9 +35,7 @@ public class RacingCarDriverTest {
     @DisplayName("주어진 목록에 맞게 자동차가 생성되었는지 테스트")
     public void createNamedRacingCarsName(String input, String expected) {
         // given
-        List<RacingCar> sourceRacingCars
-                = RacingCarDriver.createRacingCars(new InputView().makeParticipantsList(input));
-        RacingCarDriver racingCarDriver = new RacingCarDriver(sourceRacingCars);
+        RacingCarDriver racingCarDriver = new RacingCarDriver(new InputView().makeParticipantsList(input));
 
         // when
         List<RacingCar> targetRacingCars = racingCarDriver.getRacingCars();
@@ -54,7 +51,7 @@ public class RacingCarDriverTest {
     public void moveForwardAll(String input, String expected) {
         // given
         FixedRacingRule racingRule = new FixedRacingRule(Integer.parseInt(input));
-        RacingCarDriver racingCarDriver = new RacingCarDriver(Arrays.asList(new RacingCar("test1")));
+        RacingCarDriver racingCarDriver = new RacingCarDriver(Arrays.asList("test1"));
 
         // when
         racingCarDriver.moveForwardAll(racingRule);
@@ -76,10 +73,10 @@ public class RacingCarDriverTest {
                 = Arrays.asList(new RacingCar("test1", distances.get(0))
                                 , new RacingCar("test2", distances.get(1))
                                 , new RacingCar("test3", distances.get(2)));
-        RacingCarDriver racingCarDriver = new RacingCarDriver(sourceRacingCars);
+        RacingCarDriver racingCarDriver = new RacingCarDriver(new RacingCars(sourceRacingCars));
 
         // when
-        String winner = racingCarDriver.getWinner().toString();
+        String winner = racingCarDriver.findWinner().toString();
 
         // then
         assertThat(winner).contains(expected.split(","));

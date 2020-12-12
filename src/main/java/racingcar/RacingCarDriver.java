@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.domain.RacingCars;
+import racingcar.domain.Winner;
 import racingcar.rule.RacingRule;
 
 import java.util.ArrayList;
@@ -8,23 +10,19 @@ import java.util.Random;
 
 public class RacingCarDriver {
 
-    private final List<RacingCar> racingCars;
-    private List<String> winners = new ArrayList<>();
+    private final RacingCars racingCars;
+    private final Winner winner = new Winner();
 
-    public RacingCarDriver(List<RacingCar> racingCars) {
-        if (racingCars != null) {
-            this.racingCars = racingCars;
-            return;
-        }
-        this.racingCars = new ArrayList<>();
+    public RacingCarDriver(RacingCars racingCars) {
+        this.racingCars = racingCars;
     }
 
-    public static List<RacingCar> createRacingCars(List<String> participants) {
+    public RacingCarDriver(List<String> participants) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String participant : participants) {
             racingCars.add(new RacingCar(participant));
         }
-        return racingCars;
+        this.racingCars = new RacingCars(racingCars);
     }
 
 
@@ -33,7 +31,7 @@ public class RacingCarDriver {
      * @param racingRule
      */
     public void moveForwardAll(RacingRule racingRule) {
-        for (RacingCar racingCar : this.racingCars) {
+        for (RacingCar racingCar : this.racingCars.getRacingCars()) {
             racingCar.move(racingRule.getNumber());
         }
     }
@@ -44,54 +42,17 @@ public class RacingCarDriver {
      */
     public List<Integer> getNowDistance() {
         List<Integer> nowDistances = new ArrayList<>();
-        for (RacingCar racingCar : this.racingCars) {
+        for (RacingCar racingCar : this.racingCars.getRacingCars()) {
             nowDistances.add(racingCar.getDistance());
         }
         return nowDistances;
     }
 
     public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return racingCars.getRacingCars();
     }
 
-
-    /**
-     * 우승자가 누구인지 가져옵니다.
-     * @return
-     */
-    public List<String> getWinner() {
-        int longestDistance = 0;
-        for (RacingCar racingCar : this.getRacingCars()) {
-            int distance = racingCar.getDistance();
-            longestDistance = this.validateLongestDistance(longestDistance, distance);
-            this.addLongestDistance(longestDistance, distance, racingCar.getName());
-        }
-        return this.winners;
-    }
-
-    /**
-     * 주어진 거리가 가장 긴 거리이면 새로운 우승자 명단을 만들고 가장 긴 거리를 변경합니다.
-     * @param longestDistance
-     * @param distance
-     * @return longestDistance
-     */
-    private int validateLongestDistance(int longestDistance, int distance) {
-        if(distance > longestDistance) {
-            this.winners = new ArrayList<>();
-            longestDistance = distance;
-        }
-        return longestDistance;
-    }
-
-    /**
-     * 주어진 거리가 가장 긴 거리이면 우승자 명단에 이름을 추가합니다.
-     * @param longestDistance
-     * @param distance
-     * @param name
-     */
-    private void addLongestDistance(int longestDistance, int distance, String name) {
-        if(distance >= longestDistance) {
-            this.winners.add(name);
-        }
+    public List<String> findWinner() {
+        return this.winner.getWinner(this.racingCars);
     }
 }
