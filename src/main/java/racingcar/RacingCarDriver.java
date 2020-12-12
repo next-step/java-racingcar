@@ -11,7 +11,6 @@ import java.util.Random;
 public class RacingCarDriver {
 
     private final RacingCars racingCars;
-    private final Winner winner = new Winner();
 
     public RacingCarDriver(RacingCars racingCars) {
         this.racingCars = racingCars;
@@ -53,6 +52,6 @@ public class RacingCarDriver {
     }
 
     public List<String> findWinner() {
-        return this.winner.getWinner(this.racingCars);
+        return this.racingCars.findWinner();
     }
 }

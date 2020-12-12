@@ -3,8 +3,10 @@ package racingcar.domain;
 import racingcar.RacingCar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
@@ -40,5 +42,29 @@ public class RacingCars {
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    /**
+     * 우승자(가장 멀리 간 자동차)의 이름을 리스트에 담습니다.
+     * @return
+     */
+    public List<String> findWinner() {
+        int longestDistance = this.findLongestDistance();
+        return this.racingCars.stream()
+                .filter(racingCar -> {
+                    return racingCar.getDistance() >= longestDistance;})
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 가장 긴 거리를 찾습니다.
+     * @return longest distance
+     */
+    private int findLongestDistance() {
+        return this.racingCars.stream()
+                .max(Comparator.comparingInt(RacingCar::getDistance))
+                .map(RacingCar::getDistance)
+                .orElseThrow(RuntimeException::new);
     }
 }
