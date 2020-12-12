@@ -6,6 +6,7 @@ import racingcar.rule.RacingRule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarDriver {
 
@@ -39,11 +40,9 @@ public class RacingCarDriver {
      * @return
      */
     public List<Integer> getNowDistance() {
-        List<Integer> nowDistances = new ArrayList<>();
-        for (RacingCar racingCar : this.racingCars.getRacingCars()) {
-            nowDistances.add(racingCar.getDistance());
-        }
-        return nowDistances;
+        return this.racingCars.getRacingCars().stream()
+                .map(racingCar -> racingCar.getDistance())
+                .collect(Collectors.toList());
     }
 
     public List<RacingCar> getRacingCars() {
