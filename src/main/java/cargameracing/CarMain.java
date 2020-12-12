@@ -18,7 +18,7 @@ public class CarMain {
 
         System.out.println("실행 결과");
         for (int i = 0; i < playCount; i++) {
-            carRacingGame.playGame();
+            carRacingGame.playGame(new RandomMovingStrategy());
             // CarRacingGameOutputView : 출력 View 객체
             CarRacingGameOutputView.displayResult(carRacingGame.getCars());
             System.out.println();

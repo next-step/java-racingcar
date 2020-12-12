@@ -1,5 +1,7 @@
 package cargameracing;
 
+import java.util.Random;
+
 /**
  * Domain(Model) Role
  * @author minji
@@ -14,14 +16,13 @@ public class CarRacingGame {
         }
     }
 
-    public void playGame() {
+    public void playGame(MovingStrategy movingStrategy) {
         for (int j = 0; j < cars.length; j++) {
-            cars[j].junjinUp();
+            cars[j].junjinUp(movingStrategy);
         }
     }
 
     public Car[] getCars() {
         return cars;
     }
-
 }
