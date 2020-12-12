@@ -17,7 +17,7 @@ public class GameController {
 		ResultView.printGameStart();
 		while (racingGame.isContinue()) {
 			racingGame.play();
-			ResultView.printCarsLocation(racingGame.getGameCars());
+			ResultView.printCarsLocation(racingGame.getCars());
 		}
 		ResultView.printWinners(racingGame.getHeadCars());
 	}
@@ -28,12 +28,10 @@ public class GameController {
 	}
 
 	public List<Car> createGameCars(String[] nameOfCars) {
-		List<Car> entry = new ArrayList<>();
+		List<Car> gameCars = new ArrayList<>();
 		for (String name : nameOfCars) {
-			Car car = new Car();
-			car.setName(name);
-			entry.add(car);
+			gameCars.add(new Car(name));
 		}
-		return entry;
+		return gameCars;
 	}
 }

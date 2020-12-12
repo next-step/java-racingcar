@@ -4,34 +4,23 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
-import edu.nextstep.racing.domain.Car;
-
-@DisplayName("Car : 자동차의 상태, 이동로직 등을 각각 객체화하기 위한 클래스")
+@DisplayName("Car : 자동차 이름, 위치, 이동전략 등을 가지고 있으며, 이를 이용해 이동을 하고 자동차끼리 대소비교 가능.")
 class CarTest {
 
-	@DisplayName("checkIfMove : Car객체에 정의된 numberGenerator가 생성한 값이 STOP_LIMIT_NUMBER인 4 이상이면 true 리턴.")
-	@ParameterizedTest
-	@CsvSource(value = {"3, false", "4, true", "5, true"})
-	void checkIfMove(int number, boolean result) {
-		Car car = new Car(() -> number);
-		assertThat(car.checkIfMove()).isEqualTo(result);
-	}
-
-	@DisplayName("getLocation : 자동차의 현재 위치를 가져올 수 있음. 최초 위치는 0.")
+	@DisplayName("move : 자동차의 이동을 시도할 수 있음. 시도가 성공하면 자동차의 위치가 1 증가함.")
 	@Test
-	void getLocation() {
-		assertThat(new Car().getLocation()).isEqualTo(0);
+	void move() {
+		Car car = new Car("pobi", 2, Car.ALWAYS_MOVE_STRATEGY);
+		car.move();
+		assertThat(car.getLocation()).isEqualTo(new Location(3));
 	}
 
-	@DisplayName("tryToMove : 자동차의 이동을 시도할 수 있음. 시도가 성공하면 자동차의 위치가 1 증가함.")
-	@ParameterizedTest
-	@CsvSource(value = {"3, 0", "4, 1", "5, 1"})
-	void tryToMove(int number, int result) {
-		Car car = new Car(() -> number);
-		car.tryToMove();
-		assertThat(car.getLocation()).isEqualTo(result);
+	@DisplayName("compareTo : 자동차끼리 현재 위치를 기준으로 서로 대소를 비교할 수 있음.")
+	@Test
+	void compareTo() {
+		assertThat(new Car("name", 2)).isGreaterThan(new Car("name", 1));
+		assertThat(new Car("name", 2)).isEqualByComparingTo(new Car("name", 2));
+		assertThat(new Car("name", 2)).isLessThan(new Car("name", 3));
 	}
 }

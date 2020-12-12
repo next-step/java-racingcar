@@ -42,5 +42,4 @@ public class InputView {
 		}
 		return Pattern.matches("[^,\\s]{1,5}(,[^,\\s]{1,5})*", input);
 	}
-
 }

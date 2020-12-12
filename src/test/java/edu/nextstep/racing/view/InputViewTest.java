@@ -7,8 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import edu.nextstep.racing.view.InputView;
-
+@DisplayName("InputView : 사용자 입력 UI 로직을 담당하는 View 클래스")
 class InputViewTest {
 
 	@DisplayName("isValidInput : 입력된 문자열이 쉼표로 구분되는 최대 다섯글자의 공백이 아닌 패턴을 만족하면 true를 리턴")
@@ -25,5 +24,4 @@ class InputViewTest {
 	void isValidInput_ShouldFalse(String input) {
 		assertThat(InputView.isValidInput(input)).isFalse();
 	}
-
 }

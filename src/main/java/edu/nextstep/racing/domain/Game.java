@@ -1,57 +1,32 @@
 package edu.nextstep.racing.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class Game {
-	private List<Car> gameCars;
-	private int moveTryMaxCount;
-	private int moveTryCurrentCount;
+	private final Cars cars;
+	private final MoveCount moveCount;
 
-	public Game(List<Car> gameCars, int moveTryMaxCount) {
-		this.gameCars = gameCars;
-		this.moveTryMaxCount = moveTryMaxCount;
+	public Game(List<Car> cars, int maxMoveCount) {
+		this.cars = new Cars(cars);
+		this.moveCount = new MoveCount(maxMoveCount);
 	}
 
 	public void play() {
-		tryToMoveAllGameCars();
-		moveTryCurrentCount++;
-	}
-
-	public void tryToMoveAllGameCars() {
-		for (Car gameCar : gameCars) {
-			gameCar.tryToMove();
+		if (moveCount.isContinue()) {
+			cars.moveAll();
+			moveCount.countUp();
 		}
-	}
-
-	public List<Car> getHeadCars() {
-		if (gameCars == null || gameCars.isEmpty()) {
-			return Collections.emptyList();
-		}
-
-		PriorityQueue<Car> carRanking = new PriorityQueue<>((car1, car2) -> car2.getLocation() - car1.getLocation());
-		carRanking.addAll(gameCars);
-
-		List<Car> headCars = new ArrayList<>();
-		int maxLocation = carRanking.peek().getLocation();
-		while (!carRanking.isEmpty() && carRanking.peek().getLocation() == maxLocation) {
-			headCars.add(carRanking.poll());
-		}
-
-		return headCars;
 	}
 
 	public boolean isContinue() {
-		return moveTryCurrentCount < moveTryMaxCount;
+		return moveCount.isContinue();
 	}
 
-	public List<Car> getGameCars() {
-		return gameCars;
+	public Cars getHeadCars() {
+		return cars.getHeadCars();
 	}
 
-	public int getMoveTryMaxCount() {
-		return moveTryMaxCount;
+	public Cars getCars() {
+		return cars;
 	}
 }
