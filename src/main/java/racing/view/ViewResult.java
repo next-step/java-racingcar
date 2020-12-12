@@ -1,4 +1,7 @@
-package racing;
+package racing.view;
+
+import racing.domain.Car;
+import racing.domain.Cars;
 
 public class ViewResult {
     private static final String DELIMITER_SEMICOLON = " : ";

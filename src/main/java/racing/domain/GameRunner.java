@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.view.ViewResult;
 
 public class GameRunner {
     private Cars cars;

@@ -1,5 +1,11 @@
 package racing;
 
+import racing.domain.CarRandomNumberGenerator;
+import racing.domain.Cars;
+import racing.domain.GameRunner;
+import racing.domain.RandomNumberGenerator;
+import racing.view.InputView;
+
 public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
