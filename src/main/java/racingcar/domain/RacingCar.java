@@ -1,7 +1,4 @@
-package racingcar;
-
-import racingcar.domain.Distance;
-import racingcar.domain.Name;
+package racingcar.domain;
 
 public class RacingCar {
 

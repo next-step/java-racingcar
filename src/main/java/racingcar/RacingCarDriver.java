@@ -1,12 +1,11 @@
 package racingcar;
 
+import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.domain.Winner;
 import racingcar.rule.RacingRule;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCarDriver {
 
