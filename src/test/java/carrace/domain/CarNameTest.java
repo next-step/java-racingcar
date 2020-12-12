@@ -15,7 +15,7 @@ class CarNameTest {
     }
 
     @Test
-    @DisplayName("자동차 이름 길이 6자 제한 초과")
+    @DisplayName("자동차 이름 길이 6자 이상 제한 초과")
     void validationTest() {
         assertThatThrownBy(() -> {
             new CarName("leon15");
