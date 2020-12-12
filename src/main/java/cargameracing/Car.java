@@ -7,6 +7,7 @@ import java.util.Random;
  * @author minji
  */
 public class Car {
+    private Name name;
     private int junjin;
 
     public void junjinUp(MovingStrategy MovingStrategy) {
