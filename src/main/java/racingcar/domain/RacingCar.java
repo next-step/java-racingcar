@@ -1,9 +1,5 @@
 package racingcar.domain;
 
-import racingcar.util.ValidateUtils;
-
-import java.util.List;
-
 public class RacingCar {
     private final Cars cars;
     private final Count count;

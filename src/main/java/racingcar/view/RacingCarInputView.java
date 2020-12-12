@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import calculator.domain.StringCalculator;
 import racingcar.domain.Cars;
 import racingcar.domain.Count;
 

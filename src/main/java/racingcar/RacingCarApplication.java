@@ -9,9 +9,9 @@ import racingcar.view.RacingCarOutView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        Cars intputCars =  RacingCarInputView.getCars();
+        Cars intputCars = RacingCarInputView.getCars();
         Count intputCount = RacingCarInputView.getCount();
-        RacingCar racingCar = new RacingCar(intputCars,intputCount);
+        RacingCar racingCar = new RacingCar(intputCars, intputCount);
         racingCar.start();
         Cars cars = racingCar.getCars();
         RacingResult result = cars.getRacingResult();
