@@ -8,8 +8,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.TestUtils;
-import racing.car.CarGroup;
-import racing.car.RandomMoveForwardStrategy;
+import racing.car.CarName;
+import racing.car.RacingCarGroup;
+import racing.car.RandomMoveChanceGenerator;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,23 +29,23 @@ class RacingNotifyViewTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {0, 5, 999})
+	@ValueSource(ints = {1, 5, 999})
 	@DisplayName("현재 레이스의 상태를 표시할 때 exception 이 나지 않는지 체크")
 	void notifyRace(int carNum) {
 		// given
-		CarGroup carGroup = CarGroup.of(TestUtils.createAnyCarNameList(carNum), new RandomMoveForwardStrategy());
+		RacingCarGroup racingCarGroup = RacingCarGroup.of(TestUtils.createAnyCarNameList(carNum), new RandomMoveChanceGenerator());
 
 		// when
-		carGroup.getMoveForwardChance();
-		carGroup.getMoveForwardChance();
-		carGroup.getMoveForwardChance();
-		racingNotifyView.notifyRace(carGroup);
+		racingCarGroup.getMoveForwardChance();
+		racingCarGroup.getMoveForwardChance();
+		racingCarGroup.getMoveForwardChance();
+		racingNotifyView.notifyRace(racingCarGroup);
 	}
 
 	@ParameterizedTest
 	@MethodSource(value = "generateParam_notifyWinner")
 	@DisplayName("현재 레이스의 승리자를 표시할 때 exception 이 나지 않는지 체크")
-	void notifyWinner(List<String> winnerNameList) {
+	void notifyWinner(List<CarName> winnerNameList) {
 		// when
 		racingNotifyView.notifyWinner(winnerNameList);
 	}
@@ -53,7 +54,7 @@ class RacingNotifyViewTest {
 	@DisplayName("현재 레이스의 승리자를 표시할 때 빈 리스트를 받을 경우 테스트")
 	void notifyWinner_emptyList() {
 		// given
-		List<String> empty = Collections.emptyList();
+		List<CarName> empty = Collections.emptyList();
 
 		// when
 		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> notifyWinner(empty));
@@ -61,8 +62,8 @@ class RacingNotifyViewTest {
 
 	private static Stream<Arguments> generateParam_notifyWinner() {
 		return Stream.of(
-				Arguments.of(Collections.singletonList("peter")),
-				Arguments.of(Arrays.asList("peter", "tearight"))
+				Arguments.of(Collections.singletonList(new CarName("peter"))),
+				Arguments.of(Arrays.asList(new CarName("peter"), new CarName("tear")))
 		);
 	}
 

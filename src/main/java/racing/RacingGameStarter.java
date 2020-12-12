@@ -1,5 +1,6 @@
 package racing;
 
+import racing.car.CarName;
 import racing.view.InputView;
 import racing.view.RacingNotifyView;
 
@@ -9,7 +10,7 @@ public class RacingGameStarter {
 
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
-		List<String> carNameList = inputView.inputCarNameList();
+		List<CarName> carNameList = inputView.inputCarNameList();
 		int raceTurn = inputView.inputRaceTurn();
 
 		RacingGame racingGame = new RacingGame(carNameList, raceTurn, new RacingNotifyView());

@@ -1,28 +1,28 @@
 package racing;
 
-import racing.car.CarGroup;
-import racing.car.RandomMoveForwardStrategy;
+import racing.car.CarName;
+import racing.car.RacingCarGroup;
+import racing.car.RandomMoveChanceGenerator;
 
 import java.util.List;
 
 class RacingGame {
-	private final CarGroup carGroup;
+	private final RacingCarGroup racingCarGroup;
 	private final int turn;
 	private final RacingNotifier racingNotifier;
 
-	RacingGame(List<String> carNameList, int turn, RacingNotifier racingNotifier) {
-		this.carGroup = CarGroup.of(carNameList, new RandomMoveForwardStrategy());
+	RacingGame(List<CarName> carNameList, int turn, RacingNotifier racingNotifier) {
+		this.racingCarGroup = RacingCarGroup.of(carNameList, new RandomMoveChanceGenerator());
 		this.turn = turn;
 		this.racingNotifier = racingNotifier;
 	}
 
-	CarGroup start() {
+	void start() {
 		for (int i = 0; i < turn; i++) {
-			this.carGroup.getMoveForwardChance();
-			this.racingNotifier.notifyRace(this.carGroup);
+			this.racingCarGroup.getMoveForwardChance();
+			this.racingNotifier.notifyRace(this.racingCarGroup);
 		}
 
-		this.racingNotifier.notifyWinner(this.carGroup.getWinnerNameList());
-		return this.carGroup;
+		this.racingNotifier.notifyWinner(this.racingCarGroup.getWinnerNameList());
 	}
 }

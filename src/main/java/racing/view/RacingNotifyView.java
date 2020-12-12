@@ -1,28 +1,26 @@
 package racing.view;
 
 import racing.RacingNotifier;
-import racing.car.Car;
-import racing.car.CarGroup;
+import racing.car.CarName;
+import racing.car.RacingCar;
+import racing.car.RacingCarGroup;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
 public class RacingNotifyView implements RacingNotifier {
 
 	private static final String POSITION_WORD = "-";
 
 	@Override
-	public void notifyRace(CarGroup carGroup) {
-		List<String> positions = carGroup.stream()
-				.map(RacingNotifyView::createCarStatusAsString)
-				.collect(Collectors.toList());
-
-		String allPosition = String.join("\n", positions);
-		System.out.println(String.format("%s\n", allPosition));
+	public void notifyRace(RacingCarGroup racingCarGroup) {
+		List<String> eachCarStatus = racingCarGroup.getToStringList(getRacingCarStringFunction());
+		String allCarStatus = String.join("\n", eachCarStatus);
+		System.out.println(String.format("%s\n", allCarStatus));
 	}
 
 	@Override
-	public void notifyWinner(List<String> winnerNameList) {
+	public void notifyWinner(List<CarName> winnerNameList) {
 		if (winnerNameList.isEmpty()) {
 			throw new IllegalArgumentException("우승자가 없습니다");
 		}
@@ -32,10 +30,12 @@ public class RacingNotifyView implements RacingNotifier {
 		System.out.print(msg);
 	}
 
-	private static String createCarStatusAsString(Car car) {
-		String carName = car.getCarName();
-		String position = getPositionAsString(car.getPosition());
-		return String.format("%s : %s", carName, position);
+	private static Function<RacingCar, String> getRacingCarStringFunction() {
+		return racingCar -> {
+			CarName carName = racingCar.getCarName();
+			String position = getPositionAsString(racingCar.getPosition());
+			return String.format("%s : %s", carName, position);
+		};
 	}
 
 	private static String getPositionAsString(int position) {
