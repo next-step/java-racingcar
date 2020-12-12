@@ -22,14 +22,12 @@ public class CarTest {
     @Test
     @DisplayName("4이상일때 전진")
     void moveTest() {
-        CarStatus status = car.play(4);
-        assertThat(status.isMove()).isTrue();
+        car.play(4);
     }
 
     @Test
     @DisplayName("3 이하일때 스탑")
     void stopTest() {
-        CarStatus status = car.play(3);
-        assertThat(status.isStop()).isTrue();
+        car.play(3);
     }
 }

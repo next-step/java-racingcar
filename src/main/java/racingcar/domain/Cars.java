@@ -1,35 +1,43 @@
 package racingcar.domain;
 
+import racingcar.util.ValidateUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Cars {
-    private static final int MIN_NO = 1;
     private static final String VALID_MIN_NO = "최소 자동차 1대 이상입니다.";
-    private final List<Car> cars;
+
+    private final RacingResult racingResult = new RacingResult();
+    private final RandomNumber randomNumber = new RandomNumber();
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars(int no) {
         validateTotal(no);
-        this.cars = mapCars(no);
-    }
-
-    private List<Car> mapCars(int no) {
-        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < no; i++) {
-            cars.add(new Car());
+            this.cars.add(new Car());
         }
-
-        return cars;
     }
 
     private void validateTotal(int no) {
-        if (no < MIN_NO) {
+        if (ValidateUtils.validateMin(no)) {
             throw new IllegalArgumentException(VALID_MIN_NO);
         }
     }
 
+    public void run() {
+        for (Car car : cars) {
+            car.play(randomNumber.condition());
+        }
+        racingResult.report(cars);
+    }
+
     public List<Car> cars() {
         return Collections.unmodifiableList(this.cars);
+    }
+
+    public RacingResult getRacingResult() {
+        return racingResult;
     }
 }
