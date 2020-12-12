@@ -1,7 +1,9 @@
-package step3;
+package step3.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import step3.utils.Message;
 
 public class InputView {
 
