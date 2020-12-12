@@ -1,15 +1,11 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int CAN_RUN_MIN_VALUE = 4;
     private static final String NAME_SEPARATOR = ",";
-    private static final String EMPTY_STRING = "";
-    private static final int MAX_NAME_LENGTH = 5;
+
     private List<Car> cars = new ArrayList<>();
 
     public Cars() {
@@ -21,16 +17,9 @@ public class Cars {
 
     public Cars run(RandomNumberGenerator randomNumGenerator) {
         for(Car car: cars) {
-            decideRun(randomNumGenerator, car);
+            car.move(randomNumGenerator.getRandomNum());
         }
         return this;
-    }
-
-    private void decideRun(RandomNumberGenerator randomNumGenerator, Car car) {
-        int randomNum = randomNumGenerator.getRandomNum();
-        if(randomNum >= CAN_RUN_MIN_VALUE) {
-            car.move();
-        }
     }
 
     public List<Car> getCars() {
@@ -38,43 +27,49 @@ public class Cars {
     }
 
     public Cars generateCarsWithName(String names) {
-        validateEmpty(names);
         String[] carNames = names.split(NAME_SEPARATOR);
         for(String name: carNames) {
-            validateNameLength(name);
             cars.add(new Car(name));
         }
         return this;
     }
 
-    private void validateEmpty(String names) {
-        if(names == null || EMPTY_STRING.equals(names)) {
-            throw new IllegalArgumentException("이름을 입력 하세요");
-        }
-    }
-
-    private void validateNameLength(String name) {
-        if(name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("이름 다섯자 초과");
-        }
-    }
-
-    public int getMaxMoveCount() {
+    private int getMaxMoveCount() {
         return cars.stream()
                 .max(Comparator.comparing(Car::getMoveCount))
                 .map(Car::getMoveCount)
                 .get();
     }
 
-    public Cars findCarByMoveCount(int maxMoveCount) {
+    private Cars findCarByMoveCount(int maxMoveCount) {
         List<Car> results = cars.stream()
                 .filter(it -> it.getMoveCount() == maxMoveCount)
                 .collect(Collectors.toList());
         return new Cars(results);
     }
 
-    public Cars decideWinner() {
+    public Cars findWinner() {
         int maxMoveCount = getMaxMoveCount();
         return findCarByMoveCount(maxMoveCount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cars cars1 = (Cars) o;
+
+        return Objects.equals(cars, cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return cars != null ? cars.hashCode() : 0;
+    }
+
+    public String getNames() {
+        return cars.stream()
+                .map(it -> it.getName().toString()).collect(Collectors.joining(NAME_SEPARATOR));
     }
 }

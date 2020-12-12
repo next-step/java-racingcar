@@ -40,7 +40,7 @@ class GameRunnerTest {
     private GameRunner createTestGameRunner(int carNumber, int moveNumber) {
         List<Car> cars = new ArrayList<>();
         for(int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
+            cars.add(new Car("test" + i));
         }
         return new GameRunner(new Cars(cars), moveNumber);
     }

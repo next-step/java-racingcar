@@ -1,7 +1,5 @@
 package racing;
 
-import java.util.stream.Collectors;
-
 public class ViewResult {
     private static final String DELIMITER_SEMICOLON = " : ";
     private static final String MOVE_BAR = "-";
@@ -28,8 +26,7 @@ public class ViewResult {
     }
 
     public void showWinnerCars(Cars winnerCars) {
-        java.lang.String namse = winnerCars.getCars().stream()
-                .map(Car::getName).collect(Collectors.joining(","));
-        System.out.println(namse + "가 최종 우승했습니다.");
+        String names = winnerCars.getNames();
+        System.out.println(names + "가 최종 우승했습니다.");
     }
 }

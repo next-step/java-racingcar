@@ -14,12 +14,18 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차 5번 이동 후 moveCount = 5")
-    void move_3_test() {
+    @DisplayName("자동차 랜덤숫자 d일때 이동안함")
+    void randomno_3_then_move_0() {
         Car car = new Car();
-        for(int i = 1; i <= 5; i++) {
-            car.move();
-        }
-        assertThat(car.getMoveCount()).isEqualTo(5);
+        car.move(3);
+        assertThat(car.getMoveCount()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("랜덤숫자 4일때 자동차 이동")
+    void randomno_4_then_move() {
+        Car car = new Car();
+        car.move(4);
+        assertThat(car.getMoveCount()).isEqualTo(1);
     }
 }
