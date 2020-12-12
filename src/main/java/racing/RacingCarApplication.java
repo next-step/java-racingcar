@@ -1,9 +1,7 @@
 package racing;
 
-import racing.domain.CarRandomNumberGenerator;
 import racing.domain.Cars;
 import racing.domain.GameRunner;
-import racing.domain.RandomNumberGenerator;
 import racing.view.InputView;
 
 public class RacingCarApplication {
@@ -14,7 +12,6 @@ public class RacingCarApplication {
         Cars cars = new Cars();
         cars.generateCarsWithName(carNames);
         GameRunner gameRunner = new GameRunner(cars, numberOfMove);
-        RandomNumberGenerator randomNumberGenerator = new CarRandomNumberGenerator();
-        gameRunner.play(randomNumberGenerator);
+        gameRunner.play();
     }
 }

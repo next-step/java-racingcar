@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private static final String NAME_SEPARATOR = ",";
+    private static final int MAX_BOUND = 10;
 
     private List<Car> cars = new ArrayList<>();
 
@@ -15,11 +16,16 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars run(RandomNumberGenerator randomNumGenerator) {
+    public Cars run() {
         for(Car car: cars) {
-            car.move(randomNumGenerator.getRandomNum());
+            car.move(getRandomNum());
         }
         return this;
+    }
+
+    private RandomNumber getRandomNum() {
+        Random random = new Random();
+        return new RandomNumber(random.nextInt(MAX_BOUND));
     }
 
     public List<Car> getCars() {
@@ -34,23 +40,24 @@ public class Cars {
         return this;
     }
 
-    private int getMaxMoveCount() {
-        return cars.stream()
-                .max(Comparator.comparing(Car::getMoveCount))
-                .map(Car::getMoveCount)
-                .get();
-    }
 
-    private Cars findCarByMoveCount(int maxMoveCount) {
-        List<Car> results = cars.stream()
-                .filter(it -> it.getMoveCount() == maxMoveCount)
-                .collect(Collectors.toList());
-        return new Cars(results);
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for(Car car: cars) {
+            maxPosition = car.max(maxPosition);
+        }
+        return maxPosition;
     }
 
     public Cars findWinner() {
-        int maxMoveCount = getMaxMoveCount();
-        return findCarByMoveCount(maxMoveCount);
+        List<Car> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition();
+        for(Car car: cars) {
+            if(car.isWinner(maxPosition)){
+                winners.add(car);
+            }
+        }
+        return new Cars(winners );
     }
 
     @Override
@@ -71,5 +78,12 @@ public class Cars {
     public String getNames() {
         return cars.stream()
                 .map(it -> it.getName().toString()).collect(Collectors.joining(NAME_SEPARATOR));
+    }
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "cars=" + cars +
+                '}';
     }
 }

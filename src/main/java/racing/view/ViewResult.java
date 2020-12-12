@@ -18,7 +18,7 @@ public class ViewResult {
 
     private StringBuilder createResultMessage(Car car) {
         StringBuilder results = new StringBuilder("");
-        for (int i = 0; i < car.getMoveCount(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             results.append(MOVE_BAR);
         }
         return results;

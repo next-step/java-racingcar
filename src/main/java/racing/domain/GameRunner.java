@@ -11,11 +11,11 @@ public class GameRunner {
         this.requestMoveCount = requestMoveCount;
     }
 
-    public Cars play(RandomNumberGenerator randomNumGenerator) {
+    public Cars play() {
         ViewResult viewResult = new ViewResult();
         viewResult.showFirstLine();
         for(int i = 0; i < requestMoveCount; i++) {
-            Cars results = cars.run(randomNumGenerator);
+            Cars results = cars.run();
             viewResult.view(results);
         }
         Cars winnerCars = cars.findWinner();

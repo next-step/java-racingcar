@@ -3,15 +3,19 @@ package racing.domain;
 import java.util.Objects;
 
 public class Car {
-    private int moveCount;
+    private Position position;
     private Name name;
-    private static final int CAN_RUN_MIN_VALUE = 4;
 
     public Car() {
     }
 
     public Car(String name) {
-        this.moveCount = 0;
+        this.position = new Position();
+        this.name = new Name(name);
+    }
+
+    public Car(String name, int position) {
+        this.position = new Position(position);
         this.name = new Name(name);
     }
 
@@ -19,14 +23,21 @@ public class Car {
         return this.name;
     }
 
-    public void move(int randomNo) {
-        if(randomNo >= CAN_RUN_MIN_VALUE) {
-            moveCount++ ;
+    public void move(RandomNumber randomNumber) {
+        if(randomNumber.canMove()) {
+            position.move();
         }
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public boolean isWinner(int maxPosition) {
+        return position.samePosition(maxPosition);
+    }
+
+    public int max(int maxPosition) {
+        if(position.isGreaterThan(maxPosition)) {
+            return position.getPosition();
+        }
+        return maxPosition;
     }
 
     @Override
@@ -36,14 +47,18 @@ public class Car {
 
         Car car = (Car) o;
 
-        if (moveCount != car.moveCount) return false;
+        if (!Objects.equals(position, car.position)) return false;
         return Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        int result = moveCount;
+        int result = position != null ? position.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    public int getPosition() {
+        return this.position.getPosition();
     }
 }

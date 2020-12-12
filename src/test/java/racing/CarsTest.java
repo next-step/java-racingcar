@@ -32,11 +32,9 @@ class CarsTest {
     @Test
     @DisplayName("우승자동차 한대인 경우")
     void winner_car_test() {
-        Car first = new Car("소나");
-        Car second = new Car("제드");
+        Car first = new Car("소나", 2);
+        Car second = new Car("제드", 1);
         Cars cars = new Cars(Arrays.asList(first, second));
-        moveCar(first, 2);
-        moveCar(second, 1);
 
         Cars winner = cars.findWinner();
         assertThat(winner).isEqualTo(new Cars(Arrays.asList(first)));
@@ -45,22 +43,13 @@ class CarsTest {
     @Test
     @DisplayName("우승자동차 여러대인 경우")
     void multi_winner_cars_test() {
-        Car first = new Car("소나");
-        Car second = new Car("제드");
-        Car third = new Car("가렌");
+        Car first = new Car("소나", 5);
+        Car second = new Car("제드", 4);
+        Car third = new Car("가렌", 5);
         Cars cars = new Cars(Arrays.asList(first, second, third));
-        moveCar(first, 2);
-        moveCar(second, 1);
-        moveCar(third, 2);
 
         Cars winner = cars.findWinner();
 
         assertThat(winner).isEqualTo(new Cars(Arrays.asList(first, third)));
-    }
-
-    private void moveCar(Car car, int moveCnt) {
-        for(int i=0; i < moveCnt; i++){
-            car.move(4);
-        }
     }
 }

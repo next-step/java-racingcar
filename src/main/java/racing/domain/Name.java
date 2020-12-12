@@ -2,7 +2,7 @@ package racing.domain;
 import java.util.Objects;
 
 public class Name {
-    private String name;
+    private final String name;
     private static final int MAX_NAME_LENGTH = 5;
 
     public Name(String name) {
