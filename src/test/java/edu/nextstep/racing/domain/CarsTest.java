@@ -7,6 +7,10 @@ import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.nextstep.racing.domain.game.cars.car.Car;
+import edu.nextstep.racing.domain.game.cars.Cars;
+import edu.nextstep.racing.domain.game.cars.car.Location;
+
 @DisplayName("Cars : 자동차 목록의 일급컬렉션")
 class CarsTest {
 

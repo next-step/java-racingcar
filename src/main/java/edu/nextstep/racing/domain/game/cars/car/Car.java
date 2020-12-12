@@ -1,4 +1,4 @@
-package edu.nextstep.racing.domain;
+package edu.nextstep.racing.domain.game.cars.car;
 
 import java.util.function.Supplier;
 

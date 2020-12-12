@@ -1,9 +1,11 @@
-package edu.nextstep.racing.domain;
+package edu.nextstep.racing.domain.game.cars;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
+
+import edu.nextstep.racing.domain.game.cars.car.Car;
 
 public class Cars {
 	private final List<Car> cars;

@@ -3,8 +3,8 @@ package edu.nextstep.racing;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.nextstep.racing.domain.Car;
-import edu.nextstep.racing.domain.Game;
+import edu.nextstep.racing.domain.game.cars.car.Car;
+import edu.nextstep.racing.domain.game.Game;
 import edu.nextstep.racing.view.InputView;
 import edu.nextstep.racing.view.ResultView;
 

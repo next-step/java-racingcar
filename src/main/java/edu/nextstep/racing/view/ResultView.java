@@ -1,7 +1,7 @@
 package edu.nextstep.racing.view;
 
-import edu.nextstep.racing.domain.Car;
-import edu.nextstep.racing.domain.Cars;
+import edu.nextstep.racing.domain.game.cars.car.Car;
+import edu.nextstep.racing.domain.game.cars.Cars;
 
 public class ResultView {
 

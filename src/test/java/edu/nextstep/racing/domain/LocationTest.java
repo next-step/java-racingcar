@@ -5,6 +5,9 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.nextstep.racing.domain.game.cars.car.Car;
+import edu.nextstep.racing.domain.game.cars.car.Location;
+
 @DisplayName("Location : 자동차의 위치에 대한 원시값 포장 클래스")
 class LocationTest {
 

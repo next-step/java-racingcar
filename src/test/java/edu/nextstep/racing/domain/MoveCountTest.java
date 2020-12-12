@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.nextstep.racing.domain.game.MoveCount;
+
 @DisplayName("MoveCount : 게임에 필요한 상태값인, 최대이동횟수와 현재이동횟수를 내부 변수로 가짐.")
 class MoveCountTest {
 

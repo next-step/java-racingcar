@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import edu.nextstep.racing.domain.Car;
-import edu.nextstep.racing.domain.Name;
+import edu.nextstep.racing.domain.game.cars.car.Car;
+import edu.nextstep.racing.domain.game.cars.car.Name;
 
 @DisplayName("GameController : Game을 play하고 그 결과가 view로 표시될 수 있도록 하는 MVC모델의 Controller 클래스")
 class GameControllerTest {

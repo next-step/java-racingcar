@@ -1,6 +1,9 @@
-package edu.nextstep.racing.domain;
+package edu.nextstep.racing.domain.game;
 
 import java.util.List;
+
+import edu.nextstep.racing.domain.game.cars.Cars;
+import edu.nextstep.racing.domain.game.cars.car.Car;
 
 public class Game {
 	private final Cars cars;

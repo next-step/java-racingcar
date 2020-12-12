@@ -1,4 +1,4 @@
-package edu.nextstep.racing.domain;
+package edu.nextstep.racing.domain.game;
 
 import java.util.Objects;
 

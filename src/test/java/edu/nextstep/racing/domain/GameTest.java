@@ -7,6 +7,10 @@ import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.nextstep.racing.domain.game.cars.car.Car;
+import edu.nextstep.racing.domain.game.cars.car.Location;
+import edu.nextstep.racing.domain.game.Game;
+
 @DisplayName("Game : 인스턴스 변수인 자동차목록과 이동횟수를 사용해 게임을 play 시킴")
 class GameTest {
 

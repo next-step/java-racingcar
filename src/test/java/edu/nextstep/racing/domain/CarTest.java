@@ -5,6 +5,9 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.nextstep.racing.domain.game.cars.car.Car;
+import edu.nextstep.racing.domain.game.cars.car.Location;
+
 @DisplayName("Car : 자동차 이름, 위치, 이동전략 등을 가지고 있으며, 이를 이용해 이동을 하고 자동차끼리 대소비교 가능.")
 class CarTest {
 

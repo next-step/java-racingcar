@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import edu.nextstep.racing.domain.Car;
+import edu.nextstep.racing.domain.game.cars.car.Car;
 
 @DisplayName("ResultView : 실행 결과 표시 UI 로직을 담당하는 View 클래스")
 class ResultViewTest {
