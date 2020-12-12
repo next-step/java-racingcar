@@ -29,7 +29,7 @@ public class ResultView {
 	}
 
 	public static void printWinners(Cars cars) {
-		StringBuilder result = new StringBuilder("\n" + cars.getAll().get(0).getName().getValue());
+		StringBuilder result = new StringBuilder(cars.getAll().get(0).getName().getValue());
 		for (int i = 1; i < cars.getAll().size(); i++) {
 			result.append(", ");
 			result.append(cars.getAll().get(i).getName().getValue());
