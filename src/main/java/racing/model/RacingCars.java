@@ -70,7 +70,7 @@ public class RacingCars {
 
 		// 최대 주행거리 운전자명 집계
 		return this.cars.stream()
-			.filter(racingCar -> racingCar.getDistance() == maxDistance)
+			.filter(racingCar -> racingCar.isWinner(maxDistance))
 			.map(RacingCar::getCarName)
 			.collect(Collectors.joining(", "));
 	}

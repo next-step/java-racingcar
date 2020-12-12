@@ -36,7 +36,7 @@ public class RacingCarMain {
 	}
 
 	private static void play(RacingGame racingGame, UserView view) {
-		
+
 		// 입력한 주행 횟수 만큼 반복
 		while (view.isTryGame()) {
 

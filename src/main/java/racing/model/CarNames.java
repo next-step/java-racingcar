@@ -1,8 +1,8 @@
 package racing.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import racing.util.StringValid;
 
@@ -40,14 +40,9 @@ public class CarNames {
 	 */
 	private List<CarName> getCarNameList(String carNames) {
 
-		List<CarName> carNameList = new ArrayList<>();
-
-		for (String carName : namesToList(carNames)) {
-
-			carNameList.add(new CarName(carName));
-		}
-
-		return carNameList;
+		return namesToList(carNames).stream()
+			.map(CarName::new)
+			.collect(Collectors.toList());
 	}
 
 	/**
