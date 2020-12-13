@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class View {
     private static Scanner scanner = new Scanner(System.in);
 
-    public String readExpression() {
+    public static String readExpression() {
         System.out.println("수식을 입력하세요.");
 
         return scanner.nextLine();
