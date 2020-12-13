@@ -37,14 +37,14 @@ public class CarRacing {
 
     public String[] getWinnerCarNames() {
         int maxMovedDistance = cars.getMaxMovedDistance();
-        List<String> winners = new ArrayList<>();
-        cars.iterateCar(carContext -> addWinnerCar(winners, carContext, maxMovedDistance));
-        return winners.toArray(new String[0]);
+        List<String> winnerCarNames = new ArrayList<>();
+        cars.iterateCar(carContext -> addWinnerCarName(winnerCarNames, carContext, maxMovedDistance));
+        return winnerCarNames.toArray(new String[0]);
     }
 
-    private void addWinnerCar(List<String> winners, CarContext carContext, int maxMovedDistance) {
+    private void addWinnerCarName(List<String> winnerCarNames, CarContext carContext, int maxMovedDistance) {
         if (carContext.getMovedDistance() == maxMovedDistance) {
-            winners.add(carContext.getName());
+            winnerCarNames.add(carContext.getName());
         }
     }
 }
