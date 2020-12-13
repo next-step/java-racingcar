@@ -11,7 +11,7 @@ public class CarTest {
     @DisplayName("자동차 전진")
     void testCarMove() {
         // given
-        Car car = new Car();
+        Car car = new Car("monds");
         // when
         car.move();
         // then
