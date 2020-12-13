@@ -1,6 +1,7 @@
 package study.racingcar;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,33 +10,51 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class CarTest {
 
-	@BeforeEach
-	void setUp() {
+    Car car;
 
-	}
+    @BeforeEach
+    void setUp() {
+        car = new Car("truly");
 
-	@ParameterizedTest
-	@CsvSource(value = {"2, 0", "3, 0", "4, 1", "5, 1"})
-	void move_test(int randomNo, int result) throws Exception {
-		Car car = new Car();
+    }
 
-		car.move(randomNo);
+    @ParameterizedTest
+    @CsvSource(value = {"2, 0", "3, 0", "4, 1", "5, 1"})
+    void move_test(int randomNo, int result) throws Exception {
 
-		int position = car.getPosition();
+        car.move(randomNo);
 
-		assertThat(result).isEqualTo(position);
-	}
+        int position = car.getPosition();
 
-	@Test
-	void advanced_test() throws Exception {
-		Car car = new Car();
+        assertThat(result).isEqualTo(position);
+    }
 
-		int bfPos = car.getPosition();
-		car.advanced();
+    @Test
+    void advanced_test() throws Exception {
 
-		int position = car.getPosition();
+        int bfPos = car.getPosition();
+        car.advanced();
 
-		assertThat(bfPos + 1).isEqualTo(position);
-	}
+        int position = car.getPosition();
+
+        assertThat(bfPos + 1).isEqualTo(position);
+    }
+
+    @Test
+    void name_test() throws Exception {
+        String inputName = "truly";
+        Car car = new Car(inputName);
+        String carName = car.getName();
+
+        assertThat(inputName).isEqualTo(carName);
+    }
+
+    @Test
+    void name_exception_test() throws Exception {
+        String inputName = "sparkle";
+        assertThatThrownBy(() -> {
+            Car car = new Car(inputName);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
 }

@@ -9,8 +9,8 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 # Step 4    
-- [ ] Step 3 리뷰 사항 반영
-- [ ] 자동차별로 이름 지정 기능
+- [x] Step 3 리뷰 사항 반영
+- [x] 자동차별로 이름 지정 기능
 - [ ] 전진 결과 출력시 자동차 이름 같이 출력
 - [ ] 자동차 입력을 쉼표를 기준으로 분리하는 기능
 - [ ] 우승자 출력 기능
