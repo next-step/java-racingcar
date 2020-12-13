@@ -11,10 +11,10 @@ public class CalculateNumbers {
 
     public CalculateNumbers(String[] numbers) {
         validNumber(numbers);
-        this.numbers = mapCaculateNumber(numbers);
+        this.numbers = mapCalculateNumber(numbers);
     }
 
-    private List<CalculateNumber> mapCaculateNumber(String[] numbers) {
+    private List<CalculateNumber> mapCalculateNumber(String[] numbers) {
         List<CalculateNumber> calculateNumbers = new ArrayList<>();
         for (int i = 0; i < numbers.length; i += 2) {
             calculateNumbers.add(new CalculateNumber(numbers[i]));

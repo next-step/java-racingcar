@@ -1,6 +1,7 @@
 package calculator.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Operators {
@@ -24,7 +25,7 @@ public class Operators {
         for (int i = 0; i < inputs.length - 2; i += 2) {
             operators.add(Operator.valueOfOperator(inputs[i + 1]));
         }
-        return operators;
+        return Collections.unmodifiableList(operators);
     }
 
     private void validEmpty(String[] numbers) {
