@@ -2,7 +2,7 @@ package step2;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class OperatorTest {
 
@@ -24,5 +24,12 @@ public class OperatorTest {
     @Test
     void division() {
         assertThat(Operator.DIVISION.calculate(8, 5)).isEqualTo(1);
+    }
+
+    @Test
+    void division_zero() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            assertThat(Operator.DIVISION.calculate(5, 0));
+        }).withMessage("0으로 나눌 수 없습니다.");
     }
 }
