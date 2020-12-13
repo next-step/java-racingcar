@@ -39,7 +39,7 @@ public class OperatorTest {
     @DisplayName("입력받은 Operator에 속하지 않는 문자열일 경우 Exception을 반환한다.")
     void assertOperator() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Operator operator = Operator.from("$");
+            Operator.from("$");
         }).withMessage("사칙 연산자에 해당하는 기호가 아닙니다.");
     }
 }
