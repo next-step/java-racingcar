@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.RacingCarDriver;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.ArrayList;
+import racingcar.domain.RacingCar;
+import racingcar.RacingCarDriver;
+
 import java.util.List;
 
 public class ResultView {

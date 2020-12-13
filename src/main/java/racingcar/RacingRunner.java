@@ -2,6 +2,8 @@ package racingcar;
 
 import racingcar.rule.RacingRule;
 import racingcar.rule.RandomRacingRule;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingRunner {
 

@@ -1,17 +1,16 @@
 package racingcar;
 
+import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.domain.Winner;
 import racingcar.rule.RacingRule;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingCarDriver {
 
     private final RacingCars racingCars;
-    private final Winner winner = new Winner();
 
     public RacingCarDriver(RacingCars racingCars) {
         this.racingCars = racingCars;
@@ -41,11 +40,9 @@ public class RacingCarDriver {
      * @return
      */
     public List<Integer> getNowDistance() {
-        List<Integer> nowDistances = new ArrayList<>();
-        for (RacingCar racingCar : this.racingCars.getRacingCars()) {
-            nowDistances.add(racingCar.getDistance());
-        }
-        return nowDistances;
+        return this.racingCars.getRacingCars().stream()
+                .map(racingCar -> racingCar.getDistance())
+                .collect(Collectors.toList());
     }
 
     public List<RacingCar> getRacingCars() {
@@ -53,6 +50,6 @@ public class RacingCarDriver {
     }
 
     public List<String> findWinner() {
-        return this.winner.getWinner(this.racingCars);
+        return this.racingCars.findWinner();
     }
 }

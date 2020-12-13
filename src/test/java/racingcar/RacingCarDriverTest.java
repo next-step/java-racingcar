@@ -1,13 +1,12 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
 import racingcar.rule.FixedRacingRule;
-import racingcar.rule.RacingRule;
-import racingcar.rule.RandomRacingRule;
+import racingcar.view.InputView;
 
 import java.util.Arrays;
 import java.util.List;
