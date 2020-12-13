@@ -6,24 +6,22 @@ public class RacingGame {
     private static final int END_GAME = 0;
 
     private int playCount;
-    final int carCount;
 
     private final Cars cars;
 
-    public RacingGame(int carCount,int playCount) {
-        this.carCount = carCount;
+    public RacingGame(String[] carNameArr, int playCount) {
         this.playCount = playCount;
 
-        this.cars = new Cars(carCount);
+        this.cars = new Cars(carNameArr);
     }
 
     public void start() {
-        ResultView.readyPrint();
-
+        ResultView.readyPrint(this.cars);
         while(isEnd()) {
-            ResultView.print(this.cars);
             cars.move();
+            ResultView.print(this.cars);
         }
+        ResultView.winnersPrint(this.cars);
     }
 
     public boolean isEnd() {
