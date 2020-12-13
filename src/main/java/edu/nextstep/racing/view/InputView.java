@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.view;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -42,5 +42,4 @@ public class InputView {
 		}
 		return Pattern.matches("[^,\\s]{1,5}(,[^,\\s]{1,5})*", input);
 	}
-
 }

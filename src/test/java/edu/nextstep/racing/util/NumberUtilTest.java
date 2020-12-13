@@ -1,10 +1,12 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.util;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+
+import edu.nextstep.racing.util.NumberUtil;
 
 @DisplayName("NumberUtil : 자동차 게임에 필요한 난수등을 생성하는 메소드를 포함함")
 public class NumberUtilTest {
