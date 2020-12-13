@@ -1,7 +1,6 @@
 package study.calculator;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Operators implements Operator {
 	PLUS("+", (x, y) -> x + y),
@@ -17,12 +16,15 @@ public enum Operators implements Operator {
 		this.operator = operator;
 	}
 
-	public static Operators mapOperatorStatus(String operator) {
-		Operators[] values = Operators.values();
-		Optional<Operators> first = Arrays.stream(values)
-			.filter(value -> value.token.equals(operator))
-			.findFirst();
-		return first.orElseThrow(IllegalArgumentException::new);
+	public static Operators mapOperatorStatus(String token) {
+		return Arrays.stream(Operators.values())
+			.filter(operator -> operator.isEquals(token))
+			.findFirst()
+			.orElseThrow(IllegalArgumentException::new);
+	}
+
+	private boolean isEquals(String token) {
+		return this.token.equals(token);
 	}
 
 	@Override

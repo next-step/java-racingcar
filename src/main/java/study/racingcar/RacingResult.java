@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingResult {
-	private final List<Integer> results = new ArrayList<>();
 
-	public void addResult(int position) {
-		results.add(position);
-	}
+    private final List<Car> results = new ArrayList<>();
 
-	public List<Integer> getResults() {
-		return results;
-	}
+    public RacingResult(List<Car> asList) {
+        results.addAll(asList);
+    }
+
+    public void addResult(Car position) {
+        results.add(position);
+    }
+
+    public List<Car> getResults() {
+        return results;
+    }
 }

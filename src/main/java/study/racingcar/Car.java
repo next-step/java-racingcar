@@ -1,35 +1,26 @@
 package study.racingcar;
 
-import java.util.Random;
-
 public class Car {
-	private int position;
-	private int fuelGage;
-	private final int gasMileage;
-	private static final int INITIAL_GAS_MILEAGE = 4;
-	private final Random random = new Random();
 
-	public Car() {
-		this.position = 0;
-		this.fuelGage = 0;
-		this.gasMileage = INITIAL_GAS_MILEAGE;
-	}
+    private static final int FORWARD_NUM = 4;
+    private int position;
 
-	public void fillUpFuel(int fuel) {
-		fuelGage = fuel;
-	}
+    public Car() {
+        this.position = 0;
+    }
 
-	public void pushGasPedal() {
-		if (gasMileage <= fuelGage)
-			advanced();
-	}
+    public void move(int randomNo) {
+        if (FORWARD_NUM <= randomNo) {
+            advanced();
+        }
+    }
 
-	public void advanced() {
-		this.position += 1;
-	}
+    public void advanced() {
+        this.position += 1;
+    }
 
-	public int getPosition() {
-		return position;
-	}
+    public int getPosition() {
+        return position;
+    }
 
 }
