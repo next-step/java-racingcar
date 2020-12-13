@@ -3,7 +3,7 @@ package step3.utils;
 import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
-	public static RandomNumberGenerator randomNumberGenerator;
+	private static RandomNumberGenerator randomNumberGenerator;
 	private static final Random random = new Random();
 
 	public static RandomNumberGenerator getInstance() {

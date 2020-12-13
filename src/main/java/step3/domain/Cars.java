@@ -3,8 +3,9 @@ package step3.domain;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import step3.utils.RandomNumberGenerator;
+import step3.utils.NumberGenerator;
 
 public class Cars {
 	private final List<Car> cars;
@@ -13,12 +14,19 @@ public class Cars {
 		this.cars = Collections.unmodifiableList(cars);
 	}
 
-	public void goOrStop() {
-		cars.forEach(car -> car.goOrStop(getNumber()));
+	public Cars(CarNumber carNumber) {
+		this(createCars(carNumber));
 	}
 
-	public int getNumber() {
-		return RandomNumberGenerator.getInstance().generate();
+	static List<Car> createCars(CarNumber carNumber) {
+		return IntStream.range(0, carNumber.getNumber())
+			.boxed()
+			.map(integer -> new Car())
+			.collect(Collectors.toList());
+	}
+
+	public void goOrStop(NumberGenerator numberGenerator) {
+		cars.forEach(car -> car.goOrStop(numberGenerator.generate()));
 	}
 
 	public List<Car> getCars() {

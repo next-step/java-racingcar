@@ -7,13 +7,13 @@ import step3.utils.ValidationUtils;
 public class Position {
 	private int position;
 
+	public Position() {
+		this(0);
+	}
+
 	public Position(int position) {
 		ValidationUtils.validPositive(position);
 		this.position = position;
-	}
-
-	public Position() {
-		this(0);
 	}
 
 	public void go() {
