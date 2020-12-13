@@ -30,7 +30,7 @@ class CarsTest {
     private static final int MIN_POSITION_NUMBER = RandomIntMovementPolicy.MIN_POSITION_NUMBER;
     private static final int MOVABLE_POSITION_NUMBER = BASE_POSITION_NUMBER;
     private static final String TEST_CAR_NAMES = "pobi,crong,honux";
-    private static final String DELIMITER = CarNames.DELIMITER;
+    private static final String DELIMITER = CarNameGroup.DELIMITER;
 
     private RandomGenerator randomGenerator;
     private MovementPolicy movementPolicy;
@@ -44,9 +44,9 @@ class CarsTest {
     @DisplayName("조건에 맞는 자동차 이름을 전달했을 때, 자동차들의 생성여부 확인")
     @ParameterizedTest
     @MethodSource("provideValidCarNames")
-    void createCarsTest(CarNames carNames) {
+    void createCarsTest(CarNameGroup carNameGroup) {
         // When
-        Cars cars = new Cars(carNames);
+        Cars cars = new Cars(carNameGroup);
 
         // Then
         assertThat(cars.getCars().size()).isEqualTo(NUMBER_OF_CARS);
@@ -55,19 +55,19 @@ class CarsTest {
     @DisplayName("비어있는 자동차들의 이름을 전달했을 때, 자동차 생성 예외 발생 여부 확인")
     @ParameterizedTest
     @NullSource
-    void checkExceptionWithInvalidCarNamesTest(CarNames carNames) {
+    void checkExceptionWithInvalidCarNamesTest(CarNameGroup carNameGroup) {
         // When && Then
         assertThatIllegalArgumentException().isThrownBy(
-                () -> new Cars(carNames)
+                () -> new Cars(carNameGroup)
         );
     }
 
     @DisplayName("우승한 자동차 검색이 가능한지 확인")
     @ParameterizedTest
     @MethodSource("provideValidCarNames")
-    void retrieveWinningCarsTest(CarNames carNames) {
+    void retrieveWinningCarsTest(CarNameGroup carNameGroup) {
         // Given
-        Cars cars = new Cars(carNames);
+        Cars cars = new Cars(carNameGroup);
 
         // When
         when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
@@ -82,9 +82,9 @@ class CarsTest {
     @DisplayName("자동차들의 이동이 가능한 경우, 이동했을 때 실제 이동하였는지 확인")
     @ParameterizedTest
     @MethodSource("provideMovableCases")
-    void checkMovableCarsTest(int movableNumber, CarNames carNames) {
+    void checkMovableCarsTest(int movableNumber, CarNameGroup carNameGroup) {
         // Given
-        Cars cars = new Cars(carNames);
+        Cars cars = new Cars(carNameGroup);
 
         // When
         when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
@@ -101,9 +101,9 @@ class CarsTest {
     @DisplayName("자동차들의 이동이 불가능 경우, 이동했을 때 실제 이동하였는지 확인")
     @ParameterizedTest
     @MethodSource("provideUnmovableCases")
-    void checkUnmovableCarsTest(int unmovableNumber, CarNames carNames) {
+    void checkUnmovableCarsTest(int unmovableNumber, CarNameGroup carNameGroup) {
         // Given
-        Cars cars = new Cars(carNames);
+        Cars cars = new Cars(carNameGroup);
 
         // When
         when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
@@ -139,8 +139,8 @@ class CarsTest {
         return arguments.stream();
     }
 
-    private static CarNames convertCarNamesForTest() {
-        return new CarNames(TEST_CAR_NAMES);
+    private static CarNameGroup convertCarNamesForTest() {
+        return new CarNameGroup(TEST_CAR_NAMES);
     }
 
     private static Stream<Arguments> provideMovableCases() {

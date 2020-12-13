@@ -10,19 +10,19 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(CarNames carNames) {
-        validateCars(carNames);
-        initiateCars(carNames);
+    public Cars(CarNameGroup carNameGroup) {
+        validateCars(carNameGroup);
+        initiateCars(carNameGroup);
     }
 
-    private void validateCars(CarNames carNames) {
-        if (carNames == null) {
+    private void validateCars(CarNameGroup carNameGroup) {
+        if (carNameGroup == null) {
             throw new IllegalArgumentException("자동차들을 초기화 하기 위해서는 1개 이상의 자동차 이름이 필요합니다.");
         }
     }
 
-    private void initiateCars(CarNames carNames) {
-        List<CarName> names = carNames.getNames();
+    private void initiateCars(CarNameGroup carNameGroup) {
+        List<CarName> names = carNameGroup.getNames();
         int numberOfCars = names.size();
         cars = new ArrayList<>(numberOfCars);
         for (CarName name : names) {

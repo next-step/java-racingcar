@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 /**
  * 자동차들의 이름을 저장하는 클래스
  */
-public class CarNames {
+public class CarNameGroup {
     public static final String DELIMITER = ",";
 
     private List<CarName> carNames;
 
-    public CarNames(String carNames) {
+    public CarNameGroup(String carNames) {
         validateCarNames(carNames);
         initiateCarNames(carNames);
     }
