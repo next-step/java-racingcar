@@ -1,5 +1,6 @@
 package step2;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -23,6 +24,13 @@ public enum Operator {
     Operator(String symbol, BiFunction<Integer, Integer, Integer> calculation) {
         this.symbol = symbol;
         this.calculation = calculation;
+    }
+
+    public static Operator from(String symbol) {
+        return Arrays.stream(values())
+                .filter(value -> value.symbol.equals(symbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("사칙 연산자에 해당하는 기호가 아닙니다."));
     }
 
     public int calculate(int left, int right) {
