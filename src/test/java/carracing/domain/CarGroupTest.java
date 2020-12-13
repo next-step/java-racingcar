@@ -19,7 +19,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @DisplayName("자동차 경주의 자동차들을 위한 테스트")
-class CarsTest {
+class CarGroupTest {
 
     private static final int NUMBER_OF_CARS = 3;
     private static final int MOVABLE_POSITION_NUMBER_PER_MOVEMENT = 1;
@@ -46,10 +46,10 @@ class CarsTest {
     @MethodSource("provideValidCarNames")
     void createCarsTest(CarNameGroup carNameGroup) {
         // When
-        Cars cars = new Cars(carNameGroup);
+        CarGroup carGroup = new CarGroup(carNameGroup);
 
         // Then
-        assertThat(cars.getCars().size()).isEqualTo(NUMBER_OF_CARS);
+        assertThat(carGroup.getCars().size()).isEqualTo(NUMBER_OF_CARS);
     }
 
     @DisplayName("비어있는 자동차들의 이름을 전달했을 때, 자동차 생성 예외 발생 여부 확인")
@@ -58,7 +58,7 @@ class CarsTest {
     void checkExceptionWithInvalidCarNamesTest(CarNameGroup carNameGroup) {
         // When && Then
         assertThatIllegalArgumentException().isThrownBy(
-                () -> new Cars(carNameGroup)
+                () -> new CarGroup(carNameGroup)
         );
     }
 
@@ -67,13 +67,13 @@ class CarsTest {
     @MethodSource("provideValidCarNames")
     void retrieveWinningCarsTest(CarNameGroup carNameGroup) {
         // Given
-        Cars cars = new Cars(carNameGroup);
+        CarGroup carGroup = new CarGroup(carNameGroup);
 
         // When
         when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
                 .thenReturn(MOVABLE_POSITION_NUMBER);
-        cars.moveCars(movementPolicy);
-        String actual = convertWinningCarNames(cars);
+        carGroup.moveCars(movementPolicy);
+        String actual = convertWinningCarNames(carGroup);
 
         // Then
         assertThat(actual).isEqualTo(TEST_CAR_NAMES);
@@ -84,13 +84,13 @@ class CarsTest {
     @MethodSource("provideMovableCases")
     void checkMovableCarsTest(int movableNumber, CarNameGroup carNameGroup) {
         // Given
-        Cars cars = new Cars(carNameGroup);
+        CarGroup carGroup = new CarGroup(carNameGroup);
 
         // When
         when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
                 .thenReturn(movableNumber);
-        cars.moveCars(movementPolicy);
-        List<Integer> positionOfCars = convertPositionOfCars(cars);
+        carGroup.moveCars(movementPolicy);
+        List<Integer> positionOfCars = convertPositionOfCars(carGroup);
 
         // Then
         assertThat(positionOfCars)
@@ -103,13 +103,13 @@ class CarsTest {
     @MethodSource("provideUnmovableCases")
     void checkUnmovableCarsTest(int unmovableNumber, CarNameGroup carNameGroup) {
         // Given
-        Cars cars = new Cars(carNameGroup);
+        CarGroup carGroup = new CarGroup(carNameGroup);
 
         // When
         when(randomGenerator.generateZeroOrPositiveNumber(MAX_POSITION_NUMBER))
                 .thenReturn(unmovableNumber);
-        cars.moveCars(movementPolicy);
-        List<Integer> positionOfCars = convertPositionOfCars(cars);
+        carGroup.moveCars(movementPolicy);
+        List<Integer> positionOfCars = convertPositionOfCars(carGroup);
 
         // Then
         assertThat(positionOfCars)
@@ -117,16 +117,16 @@ class CarsTest {
                 .containsOnly(INITIATION_POSITION_NUMBER);
     }
 
-    private String convertWinningCarNames(Cars cars) {
-        return cars.retrieveWinningCars()
+    private String convertWinningCarNames(CarGroup carGroup) {
+        return carGroup.retrieveWinningCars()
                 .stream()
                 .map(Car::getName)
                 .map(CarName::getName)
                 .collect(Collectors.joining(DELIMITER));
     }
 
-    private List<Integer> convertPositionOfCars(Cars cars) {
-        return cars.getCars()
+    private List<Integer> convertPositionOfCars(CarGroup carGroup) {
+        return carGroup.getCars()
                 .stream()
                 .map(Car::getPosition)
                 .map(CarPosition::getNumber)

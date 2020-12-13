@@ -3,7 +3,7 @@ package carracing.controller;
 import carracing.view.InputView;
 import carracing.view.OutputView;
 import carracing.domain.CarNameGroup;
-import carracing.domain.Cars;
+import carracing.domain.CarGroup;
 import carracing.domain.MovementPolicy;
 import carracing.domain.RandomIntMovementPolicy;
 import carracing.util.RandomGenerator;
@@ -23,11 +23,11 @@ public class CarRacingGameController {
     }
 
     private void initiate(CarNameGroup carNameGroup, int numberOfTrials) {
-        Cars cars = new Cars(carNameGroup);
+        CarGroup carGroup = new CarGroup(carNameGroup);
         for (int i = 0; i < numberOfTrials; i++) {
-            cars.moveCars(movementPolicy);
-            OutputView.printStatusOfRacing(cars);
+            carGroup.moveCars(movementPolicy);
+            OutputView.printStatusOfRacing(carGroup);
         }
-        OutputView.printWinningCarsOfRacing(cars);
+        OutputView.printWinningCarsOfRacing(carGroup);
     }
 }

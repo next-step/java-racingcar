@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 /**
  * 자동차 경주를 같이하는 자동차들을 표현한 클래스
  */
-public class Cars {
+public class CarGroup {
     private List<Car> cars;
 
-    public Cars(CarNameGroup carNameGroup) {
+    public CarGroup(CarNameGroup carNameGroup) {
         validateCars(carNameGroup);
         initiateCars(carNameGroup);
     }
