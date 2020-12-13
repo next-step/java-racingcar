@@ -20,6 +20,9 @@ public class CarName {
     }
 
     private boolean isInvalidName(String name) {
+        if (name == null) {
+            return true;
+        }
         int nameLength = name.length();
         return nameLength < MIN_NAME_SIZE || nameLength > MAX_NAME_SIZE;
     }
