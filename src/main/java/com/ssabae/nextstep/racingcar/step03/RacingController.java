@@ -1,7 +1,8 @@
 package com.ssabae.nextstep.racingcar.step03;
 
 import com.ssabae.nextstep.racingcar.step03.domain.Cars;
-import com.ssabae.nextstep.racingcar.step03.domain.CarsPrinter;
+import com.ssabae.nextstep.racingcar.step03.view.CarsPrinter;
+import com.ssabae.nextstep.racingcar.step03.view.UserInputHelper;
 import java.util.Random;
 
 /**
@@ -9,13 +10,13 @@ import java.util.Random;
  * @project : java-racingcar
  * @since : 2020-12-06
  */
-public class RacingGame {
+public class RacingController {
 
     private final UserInputHelper inputHelper;
     private final Random random;
     private final CarsPrinter carsPrinter;
 
-    public RacingGame() {
+    public RacingController() {
         this.inputHelper = new UserInputHelper();
         this.random = new Random();
         this.carsPrinter = new CarsPrinter();

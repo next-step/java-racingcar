@@ -1,6 +1,5 @@
 package com.ssabae.nextstep.racingcar.step03.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,7 +27,8 @@ public class Cars {
         this.random = random;
 
         List<String> carNames = splitCarNames(names);
-        this.carList = Collections.unmodifiableList(carNames.stream().map(Car::new).collect(Collectors.toList()));
+        this.carList = Collections
+                .unmodifiableList(carNames.stream().map(Car::new).collect(Collectors.toList()));
     }
 
     private List<String> splitCarNames(String names) {

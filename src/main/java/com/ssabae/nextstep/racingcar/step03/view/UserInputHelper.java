@@ -1,4 +1,4 @@
-package com.ssabae.nextstep.racingcar.step03;
+package com.ssabae.nextstep.racingcar.step03.view;
 
 import java.util.Scanner;
 
