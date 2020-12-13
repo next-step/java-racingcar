@@ -6,11 +6,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
+    private static final int INITIAL_LOCATION = 1;
     private static final int DEFAULT_VALUE = 0;
     private final List<Car> participants = new ArrayList<>();
 
     public Cars(String[] carNameArr) {
-        Arrays.stream(carNameArr).map(Car::new).forEach(participants::add);
+        Arrays.stream(carNameArr).map(carName -> new Car(carName, INITIAL_LOCATION))
+                .forEachOrdered(participants::add);
     }
 
     public List<Car> getCars() {
