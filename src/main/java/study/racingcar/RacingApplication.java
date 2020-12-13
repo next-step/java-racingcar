@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import java.util.List;
+
 public class RacingApplication {
 
     public static void main(String[] args) {
@@ -15,8 +17,9 @@ public class RacingApplication {
             racingContest.play();
             RacingResult racingResult = racingContest.gerResult();
             outputView.printRacingResult(racingResult);
-
         }
+        List<Car> winners = racingContest.findWinners();
+        outputView.printWinner(winners);
 
     }
 }

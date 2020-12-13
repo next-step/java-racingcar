@@ -40,4 +40,8 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public boolean matchPosition(Integer max) {
+        return max == position ? true : false;
+    }
 }

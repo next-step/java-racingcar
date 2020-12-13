@@ -1,5 +1,7 @@
 package study.racingcar;
 
+import java.util.List;
+
 public class RacingContest {
 
     private Cars cars;
@@ -29,5 +31,9 @@ public class RacingContest {
     public void play() {
         cars.moveAll();
         currentTry++;
+    }
+
+    public List<Car> findWinners() {
+        return cars.findWinner();
     }
 }

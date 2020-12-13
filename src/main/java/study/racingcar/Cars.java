@@ -1,8 +1,10 @@
 package study.racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -36,7 +38,20 @@ public class Cars {
     }
 
     public void moveAll(int randomNo) {
-
         cars.forEach(car -> car.move(randomNo));
+    }
+
+    public List<Car> findWinner() {
+        List<Integer> collect = cars.stream()
+            .sorted(Comparator.comparingInt(Car::getPosition).reversed())
+            .map(Car::getPosition)
+            .collect(Collectors.toList());
+        Integer max = collect.get(0);
+
+        return cars.stream()
+            .filter(car -> car.matchPosition(max))
+            .collect(Collectors.toList());
+
+
     }
 }
