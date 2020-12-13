@@ -1,17 +1,17 @@
 package racingcar.domain;
 
-import java.util.List;
+import racingcar.utils.RandomGenerator;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
 
-    private List<Car> carList;
+    private final List<Car> carList = new ArrayList<>();
 
-    public Cars(int carCount) {
-        this.carList = Stream.generate(Car::new)
-                .limit(carCount)
-                .collect(Collectors.toList());
+    public Cars(String[] carNameArr) {
+        Arrays.stream(carNameArr).map(Car::new).forEach(carList::add);
     }
 
     public List<Car> getCars() {
@@ -19,6 +19,20 @@ public class Cars {
     }
 
     public void move() {
-        carList.forEach(Car::move);
+        carList.forEach(car -> car.move(new RandomGenerator()));
+    }
+
+    public int getMaxLocation() {
+        return this.carList.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElse(0);
+    }
+
+    public String getWinnerCarNames() {
+        return this.carList.stream()
+                .filter(car -> car.getLocation() == getMaxLocation())
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 }
