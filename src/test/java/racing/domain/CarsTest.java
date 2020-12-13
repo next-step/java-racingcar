@@ -15,7 +15,7 @@ public class CarsTest {
     @CsvSource(value = {
         "monds:1",
         "pobi,crong,honux:3"
-    })
+    }, delimiter = ':')
     @DisplayName("주어진 자동차 수 만큼 생성하는지 확인")
     void testCreateCars(String input, int count) {
         Cars cars = new Cars(input);

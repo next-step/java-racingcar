@@ -18,7 +18,7 @@ public class CarRacingTest {
         // given
         int raceCount = 5;
         AtomicInteger count = new AtomicInteger();
-        Cars cars = new Cars(3);
+        Cars cars = new Cars("pobi,crong,honux");
         CarRacing racing = new CarRacing(cars, new RandomMoveStrategy(0, 9), raceCount);
         // when
         racing.race(dist -> {}, count::getAndIncrement);
@@ -30,6 +30,9 @@ public class CarRacingTest {
     @ValueSource(ints = { -1, 0 })
     @DisplayName("레이스 숫자 1 미만 시 예외 발생")
     void testCountOfRaceLessThanOneThrowException(int countOfRace) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(countOfRace));
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Cars cars = new Cars("pobi,crong,honux");
+            new CarRacing(cars, countOfRace);
+        });
     }
 }
