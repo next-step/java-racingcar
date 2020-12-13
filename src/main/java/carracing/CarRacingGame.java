@@ -1,7 +1,7 @@
 package carracing;
 
-import carracing.console.InputConsole;
-import carracing.console.OutputConsole;
+import carracing.view.InputView;
+import carracing.view.OutputView;
 import carracing.domain.CarNames;
 import carracing.domain.Cars;
 import carracing.domain.MovementPolicy;
@@ -16,9 +16,9 @@ public class CarRacingGame {
     private final MovementPolicy movementPolicy = new RandomIntMovementPolicy(randomGenerator);
 
     public void run() {
-        CarNames carNames = new CarNames(InputConsole.readCarNames());
-        int numberOfTrials = InputConsole.readNumberOfTrials();
-        OutputConsole.printResultMessage();
+        CarNames carNames = new CarNames(InputView.readCarNames());
+        int numberOfTrials = InputView.readNumberOfTrials();
+        OutputView.printResultMessage();
         initiate(carNames, numberOfTrials);
     }
 
@@ -26,8 +26,8 @@ public class CarRacingGame {
         Cars cars = new Cars(carNames);
         for (int i = 0; i < numberOfTrials; i++) {
             cars.moveCars(movementPolicy);
-            OutputConsole.printStatusOfRacing(cars);
+            OutputView.printStatusOfRacing(cars);
         }
-        OutputConsole.printWinningCarsOfRacing(cars);
+        OutputView.printWinningCarsOfRacing(cars);
     }
 }
