@@ -45,4 +45,17 @@ public class CarTest {
     void testCarNameWithNullOrEmpty(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> new Car(input));
     }
+
+    @Test
+    @DisplayName("context를 통해 속성 값 가져오기")
+    void testCarContext() {
+        // given
+        String name = "monds";
+        Car car = new Car(name);
+        // when
+        car.move();
+        // when
+        assertThat(car.getContext().getName()).isEqualTo(name);
+        assertThat(car.getContext().getMovedDistance()).isEqualTo(1);
+    }
 }

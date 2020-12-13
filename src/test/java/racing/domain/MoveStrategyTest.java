@@ -15,7 +15,7 @@ public class MoveStrategyTest {
         // when
         cars.moveAll(() -> true);
         // then
-        cars.iterateCar(distance -> assertThat(distance).isEqualTo(1));
+        cars.iterateCar(distance -> assertThat(distance.getMovedDistance()).isEqualTo(1));
     }
 
     @Test
@@ -26,7 +26,7 @@ public class MoveStrategyTest {
         // when
         cars.moveAll(new RandomMoveStrategy(9, 9));
         // then
-        cars.iterateCar(distance -> assertThat(distance).isEqualTo(1));
+        cars.iterateCar(distance -> assertThat(distance.getMovedDistance()).isEqualTo(1));
     }
 
     @Test
@@ -37,6 +37,6 @@ public class MoveStrategyTest {
         // when
         cars.moveAll(new RandomMoveStrategy(1, 1));
         // then
-        cars.iterateCar(distance -> assertThat(distance).isEqualTo(0));
+        cars.iterateCar(distance -> assertThat(distance.getMovedDistance()).isEqualTo(0));
     }
 }

@@ -3,8 +3,10 @@ package racing.domain;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.IntConsumer;
+import java.util.function.Consumer;
 
 import static racing.common.Verify.checkArgument;
 
@@ -35,10 +37,15 @@ public class Cars {
         }
     }
 
-    public void iterateCar(IntConsumer distanceConsumer) {
+    public void iterateCar(Consumer<CarContext> carConsumer) {
         for (Car car : cars) {
-            distanceConsumer.accept(car.getMovedDistance());
+            carConsumer.accept(car.getContext());
         }
+    }
+
+    public int getMaxMovedDistance() {
+        return Collections.max(cars, Comparator.comparingInt(Car::getMovedDistance))
+                          .getMovedDistance();
     }
 
     private void tryMove(Car car, MoveStrategy strategy) {

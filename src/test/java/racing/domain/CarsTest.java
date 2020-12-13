@@ -30,7 +30,7 @@ public class CarsTest {
         // when
         cars.moveAll(() -> true);
         // then
-        cars.iterateCar(distance -> assertThat(distance).isEqualTo(1));
+        cars.iterateCar(distance -> assertThat(distance.getMovedDistance()).isEqualTo(1));
     }
 
     @ParameterizedTest
@@ -38,5 +38,16 @@ public class CarsTest {
     @DisplayName("자동차 이름이 null 또는 empty 일 경우 예외")
     void testCreateCarsWithNullOrEmptyInput(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> new Cars(input));
+    }
+
+    @Test
+    @DisplayName("최대 이동 거리")
+    void testGetMaxMoveDistance() {
+        // given
+        Cars cars = new Cars("pobi,crong,honux");
+        // when
+        cars.moveAll(() -> true);
+        // then
+        assertThat(cars.getMaxMovedDistance()).isEqualTo(1);
     }
 }

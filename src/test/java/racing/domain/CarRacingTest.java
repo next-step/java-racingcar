@@ -18,8 +18,7 @@ public class CarRacingTest {
         // given
         int raceCount = 5;
         AtomicInteger count = new AtomicInteger();
-        Cars cars = new Cars("pobi,crong,honux");
-        CarRacing racing = new CarRacing(cars, new RandomMoveStrategy(0, 9), raceCount);
+        CarRacing racing = new CarRacing("pobi,crong,honux", new RandomMoveStrategy(0, 9), raceCount);
         // when
         racing.race(dist -> {}, count::getAndIncrement);
         // then
@@ -30,9 +29,18 @@ public class CarRacingTest {
     @ValueSource(ints = { -1, 0 })
     @DisplayName("레이스 숫자 1 미만 시 예외 발생")
     void testCountOfRaceLessThanOneThrowException(int countOfRace) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Cars cars = new Cars("pobi,crong,honux");
-            new CarRacing(cars, countOfRace);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> new CarRacing("pobi,crong,honux", countOfRace));
+    }
+
+    @Test
+    @DisplayName("레이스 종료 후 우승자 확인")
+    void testRacingWinners() {
+        // given
+        String[] names = {"pobi", "crong", "honux"};
+        CarRacing racing = new CarRacing(String.join(",", names), () -> true, 5);
+        // when
+        racing.race(carContext -> {}, () -> {});
+        // when
+        assertThat(racing.getWinnerCarNames()).isEqualTo(names);
     }
 }
