@@ -21,9 +21,9 @@ public class CarRacing {
         this.raceCount = raceCount;
     }
 
-    public void race(IntConsumer consumer) {
+    public void race(IntConsumer carConsumer) {
         cars.moveAll(moveStrategy);
-        cars.iterateCar(consumer);
+        cars.iterateCar(carConsumer);
         raceCount--;
     }
 
