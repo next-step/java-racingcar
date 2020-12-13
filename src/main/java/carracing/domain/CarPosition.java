@@ -4,7 +4,13 @@ package carracing.domain;
  * 자동차의 위치를 저장하는 클래스
  */
 public class CarPosition {
+    private static final int INITIATION_POSITION_NUMBER = 0;
+
     private int number;
+
+    public CarPosition() {
+        this.number = INITIATION_POSITION_NUMBER;
+    }
 
     CarPosition(int number) {
         validateNumber(number);
