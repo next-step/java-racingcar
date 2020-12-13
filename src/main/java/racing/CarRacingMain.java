@@ -13,9 +13,8 @@ public class CarRacingMain {
         CarRacing carRacing = new CarRacing(cars, countOfRace());
 
         printRacingResultHeader();
-        while (!carRacing.isComplete()) {
-            carRacing.race(printRacingResult());
-            printRaceFooter();
-        }
+
+        carRacing.race(printRacingResult(), printRaceFooter());
+
     }
 }

@@ -17,7 +17,7 @@ public class CarRacingResultView {
         };
     }
 
-    public static void printRaceFooter() {
-        System.out.println();
+    public static Runnable printRaceFooter() {
+        return System.out::println;
     }
 }
