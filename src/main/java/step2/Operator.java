@@ -12,18 +12,16 @@ public enum Operator {
         return left / right;
     });
 
-    private static void assertZero(int right) {
-        if(right == 0) {
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-        }
-    }
-
     private String symbol;
     private BiFunction<Integer, Integer, Integer> calculation;
 
     Operator(String symbol, BiFunction<Integer, Integer, Integer> calculation) {
         this.symbol = symbol;
         this.calculation = calculation;
+    }
+
+    public int calculate(int left, int right) {
+        return calculation.apply(left, right);
     }
 
     public static Operator from(String symbol) {
@@ -33,7 +31,9 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException("사칙 연산자에 해당하는 기호가 아닙니다."));
     }
 
-    public int calculate(int left, int right) {
-        return calculation.apply(left, right);
+    private static void assertZero(int right) {
+        if(right == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
     }
 }
