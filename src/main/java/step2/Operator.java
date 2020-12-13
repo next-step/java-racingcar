@@ -3,16 +3,16 @@ package step2;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    ADD("+", (Integer num1, Integer num2) -> num1 + num2),
-    SUBTRACT("-", (Integer num1, Integer num2) -> num1 - num2),
-    MULTIPLY("*", (Integer num1, Integer num2) -> num1 * num2),
-    DIVISION("/", (Integer num1, Integer num2) -> {
-        assertZero(num2);
-        return num1 / num2;
+    ADD("+", (Integer left, Integer right) -> left + right),
+    SUBTRACT("-", (Integer left, Integer right) -> left - right),
+    MULTIPLY("*", (Integer left, Integer right) -> left * right),
+    DIVISION("/", (Integer left, Integer right) -> {
+        assertZero(right);
+        return left / right;
     });
 
-    private static void assertZero(int num2) {
-        if(num2 == 0) {
+    private static void assertZero(int right) {
+        if(right == 0) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
     }
@@ -25,7 +25,7 @@ public enum Operator {
         this.calculation = calculation;
     }
 
-    public int calculate(int num1, int num2) {
-        return calculation.apply(num1, num2);
+    public int calculate(int left, int right) {
+        return calculation.apply(left, right);
     }
 }
