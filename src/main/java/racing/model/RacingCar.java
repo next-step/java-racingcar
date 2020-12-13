@@ -51,4 +51,9 @@ public class RacingCar {
 	public String getCarName() {
 		return this.carName.getName();
 	}
+
+	public boolean isWinner(int maxDistance) {
+
+		return getDistance() == maxDistance;
+	}
 }

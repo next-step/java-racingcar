@@ -11,14 +11,8 @@ public class CarName {
 
 	public CarName(String carName) {
 
-		this.name = setCarName(carName);
-	}
-
-	private String setCarName(String carName) {
-
 		validationCarName(carName);
-
-		return carName;
+		this.name = carName;
 	}
 
 	/**
