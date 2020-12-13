@@ -1,9 +1,9 @@
 package edu.nextstep.racing.domain.game.cars.car;
 
 import java.util.Objects;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
-public class Location implements Comparable {
+public class Location implements Comparable<Location> {
 	private final int location;
 
 	public Location(int location) {
@@ -13,8 +13,8 @@ public class Location implements Comparable {
 		this.location = location;
 	}
 
-	public Location move(Supplier<Boolean> movable) {
-		if (movable.get()) {
+	public Location move(BooleanSupplier movable) {
+		if (movable.getAsBoolean()) {
 			return new Location(location + 1);
 		}
 		return this;
@@ -22,11 +22,6 @@ public class Location implements Comparable {
 
 	public int getValue() {
 		return location;
-	}
-
-	@Override
-	public int compareTo(Object o) {
-		return location - ((Location)o).location;
 	}
 
 	@Override
@@ -44,5 +39,10 @@ public class Location implements Comparable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(location);
+	}
+
+	@Override
+	public int compareTo(Location other) {
+		return location - other.location;
 	}
 }

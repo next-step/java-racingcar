@@ -7,6 +7,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.nextstep.racing.domain.game.cars.Cars;
 import edu.nextstep.racing.domain.game.cars.car.Car;
 import edu.nextstep.racing.domain.game.cars.car.Location;
 import edu.nextstep.racing.domain.game.Game;
@@ -17,10 +18,10 @@ class GameTest {
 	@DisplayName("play : 자동차 게임을 1회 진행함. 참가한 모든 자동차들의 위치가 전략에 따라 1 또는 0 증가하여야 함.")
 	@Test
 	void play() {
-		Car car1 = new Car("pobi", 1, Car.ALWAYS_MOVE_STRATEGY);
-		Car car2 = new Car("crong", 2, Car.ALWAYS_MOVE_STRATEGY);
-		Car car3 = new Car("honux", 3, Car.NEVER_MOVE_STRATEGY);
-		Game game = new Game(Arrays.asList(car1, car2, car3), 5);
+		Car car1 = new Car("pobi", 1, () -> true);
+		Car car2 = new Car("crong", 2, () -> true);
+		Car car3 = new Car("honux", 3, () -> false);
+		Game game = new Game(new Cars(Arrays.asList(car1, car2, car3)), 5);
 		game.play();
 		assertThat(game.getCars().getAll().get(0).getLocation()).isEqualTo(new Location(2));
 		assertThat(game.getCars().getAll().get(1).getLocation()).isEqualTo(new Location(3));

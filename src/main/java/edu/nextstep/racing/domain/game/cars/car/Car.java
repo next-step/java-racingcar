@@ -1,16 +1,14 @@
 package edu.nextstep.racing.domain.game.cars.car;
 
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 import edu.nextstep.racing.util.NumberUtil;
 
-public class Car implements Comparable {
-	public static final Supplier<Boolean> ALWAYS_MOVE_STRATEGY = () -> true;
-	public static final Supplier<Boolean> NEVER_MOVE_STRATEGY = () -> false;
+public class Car implements Comparable<Car> {
 	private static final int STOP_LIMIT_NUMBER = 4;
-	public static final Supplier<Boolean> RANDOM_MOVE_STRATEGY = () ->
+	public static final BooleanSupplier RANDOM_MOVE_STRATEGY = () ->
 		NumberUtil.generateRandomDigit() >= STOP_LIMIT_NUMBER;
-	private final Supplier<Boolean> moveStrategy;
+	private final BooleanSupplier moveStrategy;
 	private final Name name;
 	private Location location;
 
@@ -22,11 +20,11 @@ public class Car implements Comparable {
 		this(name, location, RANDOM_MOVE_STRATEGY);
 	}
 
-	public Car(String name, Supplier<Boolean> movestrategy) {
+	public Car(String name, BooleanSupplier movestrategy) {
 		this(name, 0, movestrategy);
 	}
 
-	public Car(String name, int location, Supplier<Boolean> moveStrategy) {
+	public Car(String name, int location, BooleanSupplier moveStrategy) {
 		this.name = new Name(name);
 		this.location = new Location(location);
 		this.moveStrategy = moveStrategy;
@@ -40,12 +38,12 @@ public class Car implements Comparable {
 		return location;
 	}
 
-	public Name getName() {
-		return name;
+	public String getName() {
+		return name.getValue();
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		return location.compareTo(((Car)o).getLocation());
+	public int compareTo(Car other) {
+		return location.compareTo(other.getLocation());
 	}
 }

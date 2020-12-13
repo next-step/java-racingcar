@@ -28,9 +28,9 @@ class CarsTest {
 	@DisplayName("moveAll : 모든 자동차를 각 차의 이동전략에 따라 이동함.")
 	@Test
 	void moveAll() {
-		Car car1 = new Car("pobi", 1, Car.ALWAYS_MOVE_STRATEGY);
-		Car car2 = new Car("crong", 3, Car.ALWAYS_MOVE_STRATEGY);
-		Car car3 = new Car("honux", 3, Car.NEVER_MOVE_STRATEGY);
+		Car car1 = new Car("pobi", 1, () -> true);
+		Car car2 = new Car("crong", 3,() -> true);
+		Car car3 = new Car("honux", 3, () -> false);
 		Cars cars = new Cars(Arrays.asList(car1, car2, car3));
 
 		cars.moveAll();

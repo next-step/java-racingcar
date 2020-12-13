@@ -3,6 +3,7 @@ package edu.nextstep.racing;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.nextstep.racing.domain.game.cars.Cars;
 import edu.nextstep.racing.domain.game.cars.car.Car;
 import edu.nextstep.racing.domain.game.Game;
 import edu.nextstep.racing.view.InputView;
@@ -23,15 +24,15 @@ public class GameController {
 	}
 
 	public Game createRacingGame(String[] nameOfCars, int moveTryMaxCount) {
-		List<Car> gameCars = createGameCars(nameOfCars);
+		Cars gameCars = createGameCars(nameOfCars);
 		return new Game(gameCars, moveTryMaxCount);
 	}
 
-	public List<Car> createGameCars(String[] nameOfCars) {
+	public Cars createGameCars(String[] nameOfCars) {
 		List<Car> gameCars = new ArrayList<>();
 		for (String name : nameOfCars) {
 			gameCars.add(new Car(name));
 		}
-		return gameCars;
+		return new Cars(gameCars);
 	}
 }

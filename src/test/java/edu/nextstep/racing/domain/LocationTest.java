@@ -14,7 +14,7 @@ class LocationTest {
 	@DisplayName("move : 변수로 주어진 메소드의 실행 결과가 true이면 위치를 1 증가시킴.")
 	@Test
 	void move() {
-		assertThat(new Location(2).move(Car.ALWAYS_MOVE_STRATEGY)).isEqualTo(new Location(3));
+		assertThat(new Location(2).move(() -> true)).isEqualTo(new Location(3));
 	}
 
 	@DisplayName("compareTo : 인스턴스 변수 location에 따라 객체 대소 비교가 가능함.")

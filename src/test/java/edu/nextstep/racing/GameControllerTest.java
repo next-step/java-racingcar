@@ -2,13 +2,10 @@ package edu.nextstep.racing;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import edu.nextstep.racing.domain.game.cars.car.Car;
-import edu.nextstep.racing.domain.game.cars.car.Name;
+import edu.nextstep.racing.domain.game.cars.Cars;
 
 @DisplayName("GameController : Game을 play하고 그 결과가 view로 표시될 수 있도록 하는 MVC모델의 Controller 클래스")
 class GameControllerTest {
@@ -17,11 +14,11 @@ class GameControllerTest {
 	@Test
 	void createGameCars() {
 		String[] namesOfCars = new String[] {"pobi", "crong", "honux"};
-		List<Car> gameCars = new GameController().createGameCars(namesOfCars);
-		assertThat(gameCars).hasSize(3);
-		assertThat(gameCars.get(0).getName()).isEqualTo(new Name("pobi"));
-		assertThat(gameCars.get(1).getName()).isEqualTo(new Name("crong"));
-		assertThat(gameCars.get(2).getName()).isEqualTo(new Name("honux"));
+		Cars gameCars = new GameController().createGameCars(namesOfCars);
+		assertThat(gameCars.getAll()).hasSize(3);
+		assertThat(gameCars.getAll().get(0).getName()).isEqualTo("pobi");
+		assertThat(gameCars.getAll().get(1).getName()).isEqualTo("crong");
+		assertThat(gameCars.getAll().get(2).getName()).isEqualTo("honux");
 	}
 
 	@DisplayName("createRacingGame : 파라미터로 넘겨준 만큼의 자동차 대수를 가지는 새 게임을 생성해 리턴해야 함")

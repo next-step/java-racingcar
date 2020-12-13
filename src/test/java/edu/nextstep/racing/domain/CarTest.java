@@ -14,7 +14,7 @@ class CarTest {
 	@DisplayName("move : 자동차의 이동을 시도할 수 있음. 시도가 성공하면 자동차의 위치가 1 증가함.")
 	@Test
 	void move() {
-		Car car = new Car("pobi", 2, Car.ALWAYS_MOVE_STRATEGY);
+		Car car = new Car("pobi", 2, () -> true);
 		car.move();
 		assertThat(car.getLocation()).isEqualTo(new Location(3));
 	}
