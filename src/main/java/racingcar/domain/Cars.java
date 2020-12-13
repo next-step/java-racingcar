@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
-
+    private static final int DEFAULT_VALUE = 0;
     private final List<Car> carList = new ArrayList<>();
 
     public Cars(String[] carNameArr) {
@@ -26,7 +26,7 @@ public class Cars {
         return this.carList.stream()
                 .mapToInt(Car::getLocation)
                 .max()
-                .orElse(0);
+                .orElse(DEFAULT_VALUE);
     }
 
     public String getWinnerCarNames() {
