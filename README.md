@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## [Step2] 문자열 계산기  
+
+### 객체 도출
+
+* StringCalculator: 문자열 계산기
+    * 입력받은 문자열 및 Operator에 따라 계산을 수행한다.
+* Operator: 수식 기호 (Enum)
+    * 수식 기호에 맞게 계산 수행 로직을 갖는다.
