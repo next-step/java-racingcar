@@ -14,7 +14,7 @@ public class CarRacingTest {
         int raceCount = 5;
         int count = 0;
         Cars cars = new Cars(3);
-        CarRacing racing = new CarRacing(cars, new RandomMoveStrategy(0, 9, 4), raceCount);
+        CarRacing racing = new CarRacing(cars, new RandomMoveStrategy(0, 9), raceCount);
         // when
         while (!racing.isComplete()) {
             racing.race(dist -> {});
@@ -30,7 +30,7 @@ public class CarRacingTest {
     void testRaceNotComplete() {
         // given
         Cars cars = new Cars(3);
-        CarRacing racing = new CarRacing(cars, new RandomMoveStrategy(0, 9, 4), 5);
+        CarRacing racing = new CarRacing(cars, new RandomMoveStrategy(0, 9), 5);
         // when
         racing.race(dist -> {});
         // then

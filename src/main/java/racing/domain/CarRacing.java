@@ -2,7 +2,8 @@ package racing.domain;
 
 import java.util.function.IntConsumer;
 
-import static racing.domain.CarRacingProperty.*;
+import static racing.domain.CarRacingProperty.MAX_RANDOM_NUMBER;
+import static racing.domain.CarRacingProperty.MIN_RANDOM_NUMBER;
 
 public class CarRacing {
 
@@ -11,7 +12,7 @@ public class CarRacing {
     private int raceCount;
 
     public CarRacing(Cars cars, int raceCount) {
-        this(cars, new RandomMoveStrategy(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, MIN_MOVABLE_NUMBER), raceCount);
+        this(cars, new RandomMoveStrategy(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER), raceCount);
     }
 
     public CarRacing(Cars cars, MoveStrategy moveStrategy, int raceCount) {

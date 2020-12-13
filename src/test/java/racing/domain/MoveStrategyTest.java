@@ -24,7 +24,7 @@ public class MoveStrategyTest {
         // given
         Cars cars = new Cars(3);
         // when
-        cars.moveAll(new RandomMoveStrategy(9, 9, 4));
+        cars.moveAll(new RandomMoveStrategy(9, 9));
         // then
         cars.iterateCar(distance -> assertThat(distance).isEqualTo(1));
     }
@@ -35,7 +35,7 @@ public class MoveStrategyTest {
         // given
         Cars cars = new Cars(3);
         // when
-        cars.moveAll(new RandomMoveStrategy(1, 1, 4));
+        cars.moveAll(new RandomMoveStrategy(1, 1));
         // then
         cars.iterateCar(distance -> assertThat(distance).isEqualTo(0));
     }

@@ -4,18 +4,18 @@ import org.apache.commons.lang3.RandomUtils;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
+    private static final int MOVABLE_MIN_NUM = 4;
+
     private final int min;
     private final int max;
-    private final int movableMinNum;
 
-    public RandomMoveStrategy(int min, int max, int movableMinNum) {
+    public RandomMoveStrategy(int min, int max) {
         this.min = min;
         this.max = max;
-        this.movableMinNum = movableMinNum;
     }
 
     @Override
     public boolean movable() {
-        return RandomUtils.nextInt(min, max) >= movableMinNum;
+        return RandomUtils.nextInt(min, max) >= MOVABLE_MIN_NUM;
     }
 }
