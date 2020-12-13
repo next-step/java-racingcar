@@ -12,6 +12,12 @@ public class RacingContest {
         this.currentTry = 0;
     }
 
+    public RacingContest(String racingParticipantByName, int tryNo) {
+        cars = new Cars(racingParticipantByName);
+        this.tryNo = tryNo;
+        this.currentTry = 0;
+    }
+
     public RacingResult gerResult() {
         return cars.getResult();
     }

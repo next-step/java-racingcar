@@ -6,10 +6,10 @@ public class RacingApplication {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        int racingParticipant = inputView.inputRacingParticipant();
+        String racingParticipantByName = inputView.inputRacingParticipantByName();
         int tryNo = inputView.inputTryNo();
 
-        RacingContest racingContest = new RacingContest(racingParticipant, tryNo);
+        RacingContest racingContest = new RacingContest(racingParticipantByName, tryNo);
 
         while (racingContest.isPlaying()) {
             racingContest.play();

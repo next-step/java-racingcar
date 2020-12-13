@@ -6,10 +6,10 @@ public class Car {
     private int position;
     private final String name;
 
-    public Car() {
-        this.position = 0;
-        this.name = "";
-    }
+//    public Car() {
+//        this.position = 0;
+//        this.name = "";
+//    }
 
     public Car(String name) {
         validateName(name);
