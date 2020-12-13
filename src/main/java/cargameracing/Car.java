@@ -10,6 +10,10 @@ public class Car {
     private Name name;
     private int junjin;
 
+    public Car(Name name) {
+        this.name = name;
+    }
+
     public void junjinUp(MovingStrategy MovingStrategy) {
         if (MovingStrategy.isMove()) {
             this.junjin++;

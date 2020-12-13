@@ -9,6 +9,7 @@ public class NameTest {
     void nameLength() {
         assertThatThrownBy(()->{
             new Name("asdbcd");
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없음");
         }).isInstanceOf(Exception.class);
     }
 }

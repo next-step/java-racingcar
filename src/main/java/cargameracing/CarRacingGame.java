@@ -1,5 +1,6 @@
 package cargameracing;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -9,10 +10,11 @@ import java.util.Random;
 public class CarRacingGame {
     Car[] cars;
 
-    public CarRacingGame(int carCount) {
-        cars = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
-            cars[i] = new Car();
+    public CarRacingGame(List<Name> carName){
+        int count = carName.size();
+        cars = new Car[count];
+        for (int i = 0; i < count; i++) {
+            cars[i] = new Car(carName.get(i));
         }
     }
 
