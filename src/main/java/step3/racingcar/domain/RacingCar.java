@@ -2,26 +2,20 @@ package step3.racingcar.domain;
 
 public class RacingCar {
 
-	private final String name;
+	private final Name name;
 	private int moveDistance;
 
 	public RacingCar(final String name) {
-		validate(name);
-		this.name = name;
-	}
-
-	private void validate(final String name) {
-		if (name == null || name.isEmpty()) {
-			throw new IllegalArgumentException("자동차 이름은 필수 값입니다");
-		}
-
-		if (name.length() > 5) {
-			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-		}
+		this(name, 0);
 	}
 
 	public RacingCar(final String name, final int moveDistance) {
-		this(name);
+		this.name = new Name(name);
+		this.moveDistance = moveDistance;
+	}
+
+	private RacingCar(final Name name, final int moveDistance) {
+		this.name = name;
 		this.moveDistance = moveDistance;
 	}
 
@@ -47,7 +41,6 @@ public class RacingCar {
 		return new RacingCar(this.name, this.moveDistance);
 	}
 
-
 	@Override
 	public boolean equals(final Object o) {
 		if (this == o)
@@ -69,8 +62,8 @@ public class RacingCar {
 		return result;
 	}
 
-	@Override
-	public String toString() {
-		return this.name;
+	public String getName() {
+		return this.name.getName();
 	}
+
 }
