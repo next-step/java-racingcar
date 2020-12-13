@@ -28,6 +28,7 @@ public class OperatorTest {
     }
 
     @Test
+    @DisplayName("0으로 나눗셈을 할 경우 에러 처리한다.")
     void division_zero() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Operator.DIVISION.calculate(5, 0);
