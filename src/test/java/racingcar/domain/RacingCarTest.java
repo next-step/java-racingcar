@@ -11,8 +11,7 @@ public class RacingCarTest {
     void racingTest() {
         RacingCar racingCar = new RacingCar(new Cars(3), new Count(5));
         racingCar.start();
-        Cars cars = racingCar.getCars();
-        RacingResult result = cars.getRacingResult();
+        RacingResult result = racingCar.getRacingResult();
         RacingCarOutView.showResult(result.racingRounge());
     }
 

@@ -14,7 +14,12 @@ public class CarTest {
     void validateOutOfConditionRange() {
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            car.play(10);
+            car.play(new RandomNumber() {
+                @Override
+                public int getRandomRangeNo() {
+                    return 10;
+                }
+            });
         })
                 .withMessageContaining("전진 조건 범위를 초과하였습니다.");
     }
@@ -22,12 +27,22 @@ public class CarTest {
     @Test
     @DisplayName("4이상일때 전진")
     void moveTest() {
-        car.play(4);
+        car.play(new RandomNumber() {
+            @Override
+            public int getRandomRangeNo() {
+                return 4;
+            }
+        });
     }
 
     @Test
     @DisplayName("3 이하일때 스탑")
     void stopTest() {
-        car.play(3);
+        car.play(new RandomNumber() {
+            @Override
+            public int getRandomRangeNo() {
+                return 3;
+            }
+        });
     }
 }

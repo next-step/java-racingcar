@@ -10,7 +10,7 @@ public class RandomNumberTest {
     @DisplayName("랜덤번호 0~9 범위의 생성 ")
     void createRandomNumber() {
         RandomNumber randomNumber = new RandomNumber();
-        int no = randomNumber.condition();
+        int no = randomNumber.getRandomRangeNo();
         System.out.println(no);
         assertThat(no).isGreaterThanOrEqualTo(0)
                 .isLessThanOrEqualTo(9);

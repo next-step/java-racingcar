@@ -13,8 +13,7 @@ public class RacingCarApplication {
         Count intputCount = RacingCarInputView.getCount();
         RacingCar racingCar = new RacingCar(intputCars, intputCount);
         racingCar.start();
-        Cars cars = racingCar.getCars();
-        RacingResult result = cars.getRacingResult();
+        RacingResult result =  racingCar.getRacingResult();
         RacingCarOutView.showResult(result.racingRounge());
     }
 }

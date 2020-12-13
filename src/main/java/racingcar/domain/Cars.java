@@ -2,22 +2,23 @@ package racingcar.domain;
 
 import racingcar.util.ValidateUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
     private static final String VALID_MIN_NO = "최소 자동차 1대 이상입니다.";
-
-    private final RacingResult racingResult = new RacingResult();
-    private final RandomNumber randomNumber = new RandomNumber();
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
     public Cars(int no) {
-        validateCars(no);
-        for (int i = 0; i < no; i++) {
-            this.cars.add(new Car());
-        }
+        this.cars = Stream.generate(() -> new Car())
+                .limit(no)
+                .collect(Collectors.toList());
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     private void validateCars(int carCount) {
@@ -28,17 +29,11 @@ public class Cars {
 
     public void run() {
         for (Car car : cars) {
-            int randomCondition = randomNumber.condition();
-            car.play(randomCondition);
+            car.play(new RandomNumber());
         }
-        racingResult.report(cars);
     }
 
-    public List<Car> cars() {
+    public List<Car> getCars() {
         return Collections.unmodifiableList(this.cars);
-    }
-
-    public RacingResult getRacingResult() {
-        return racingResult;
     }
 }

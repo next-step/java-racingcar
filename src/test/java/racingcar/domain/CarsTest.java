@@ -12,7 +12,14 @@ public class CarsTest {
     @DisplayName("자동차 생성 횟수 확인")
     void createCars() {
         Cars cars = new Cars(3);
-        List<Car> createCars = cars.cars();
+        List<Car> createCars = cars.getCars();
         assertThat(createCars.size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("런 테스트")
+    void runTest() {
+        Cars cars = new Cars(3);
+        cars.run();
     }
 }
