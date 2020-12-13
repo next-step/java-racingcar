@@ -1,6 +1,7 @@
-package racing;
+package racing.view;
 
-import java.util.stream.Collectors;
+import racing.domain.Car;
+import racing.domain.Cars;
 
 public class ViewResult {
     private static final String DELIMITER_SEMICOLON = " : ";
@@ -17,7 +18,7 @@ public class ViewResult {
 
     private StringBuilder createResultMessage(Car car) {
         StringBuilder results = new StringBuilder("");
-        for (int i = 0; i < car.getMoveCount(); i++) {
+        for (int i = 0; i < car.getPosition(); i++) {
             results.append(MOVE_BAR);
         }
         return results;
@@ -28,8 +29,7 @@ public class ViewResult {
     }
 
     public void showWinnerCars(Cars winnerCars) {
-        java.lang.String namse = winnerCars.getCars().stream()
-                .map(Car::getName).collect(Collectors.joining(","));
-        System.out.println(namse + "가 최종 우승했습니다.");
+        String names = winnerCars.getNames();
+        System.out.println(names + "가 최종 우승했습니다.");
     }
 }

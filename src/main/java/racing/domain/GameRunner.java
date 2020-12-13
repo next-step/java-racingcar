@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.view.ViewResult;
 
 public class GameRunner {
     private Cars cars;
@@ -9,14 +11,14 @@ public class GameRunner {
         this.requestMoveCount = requestMoveCount;
     }
 
-    public Cars play(RandomNumberGenerator randomNumGenerator) {
+    public Cars play() {
         ViewResult viewResult = new ViewResult();
         viewResult.showFirstLine();
         for(int i = 0; i < requestMoveCount; i++) {
-            Cars results = cars.run(randomNumGenerator);
-            viewResult.view(results);
+            cars.run();
+            viewResult.view(cars);
         }
-        Cars winnerCars = cars.decideWinner();
+        Cars winnerCars = cars.findWinner();
         viewResult.showWinnerCars(winnerCars);
         return cars;
     }
