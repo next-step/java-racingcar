@@ -2,8 +2,11 @@ package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarsTest {
 
@@ -27,5 +30,12 @@ public class CarsTest {
         cars.moveAll(() -> true);
         // then
         cars.iterateCar(distance -> assertThat(distance).isEqualTo(1));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = { -1, 0 })
+    @DisplayName("자동차 숫자 1 미만 시 예외 발생")
+    void testCountOfCarLessThanOneThrowException(int countOfCar) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(countOfCar));
     }
 }

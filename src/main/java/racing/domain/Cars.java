@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.IntConsumer;
 
+import static racing.common.Verify.checkArgument;
+
 public class Cars {
+
+    private static final String CAR_COUNT_ERROR_MESSAGE = "The number of cars must be at least 1";
 
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(int count) {
+        checkArgument(count > 0, CAR_COUNT_ERROR_MESSAGE);
+
         for (int j = 0; j < count; j++) {
             cars.add(new Car());
         }
