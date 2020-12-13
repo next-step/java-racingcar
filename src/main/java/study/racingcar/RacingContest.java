@@ -1,46 +1,39 @@
 package study.racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingContest {
-	private List<Car> cars;
-	private final int tryNo;
-	private final Random random = new Random();
-	private int currentTry;
 
-	public RacingContest(int racingParticipantNo, int tryNo) {
-		cars = new ArrayList<>();
-		for (int i = 0; i < racingParticipantNo; i++) {
-			this.cars.add(new Car());
-		}
-		this.tryNo = tryNo;
-	}
+    private Cars cars;
+    private final int tryNo;
+    private int currentTry;
 
-	public void start() {
-		currentTry = 0;
-	}
+    public RacingContest(int racingParticipantNo, int tryNo) {
+        cars = new Cars(racingParticipantNo);
+        this.tryNo = tryNo;
+        this.currentTry = 0;
+    }
 
-	public RacingResult gerResult() {
-		RacingResult racingResult = new RacingResult();
+    public RacingContest(String racingParticipantByName, int tryNo) {
+        cars = new Cars(racingParticipantByName);
+        this.tryNo = tryNo;
+        this.currentTry = 0;
+    }
 
-		cars.forEach(car -> {
-			racingResult.addResult(car.getPosition());
-		});
+    public RacingResult gerResult() {
+        return cars.getResult();
+    }
 
-		return racingResult;
-	}
+    public boolean isPlaying() {
+        return currentTry < tryNo;
+    }
 
-	public boolean isPlaying() {
-		return currentTry < tryNo;
-	}
+    public void play() {
+        cars.moveAll();
+        currentTry++;
+    }
 
-	public void play() {
-		cars.forEach(car -> {
-			car.fillUpFuel(random.nextInt() % 10);
-			car.pushGasPedal();
-		});
-		currentTry++;
-	}
+    public List<Car> findWinners() {
+        return cars.findWinner();
+    }
 }
