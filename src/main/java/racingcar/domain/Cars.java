@@ -2,28 +2,32 @@ package racingcar.domain;
 
 import racingcar.util.ValidateUtils;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
-    private static final String VALID_MIN_NO = "최소 자동차 1대 이상입니다.";
+    private static final String NAME_SEPARATOR = ",";
+    private static final String VALID_SEPARATOR_MESSAGE = "자동차 이름 구분자 쉼표(,)가 없습니다.";
     private final List<Car> cars;
 
-    public Cars(int no) {
-        this.cars = Stream.generate(() -> new Car())
-                .limit(no)
-                .collect(Collectors.toList());
+    public Cars(String names) {
+        validateCars(names);
+        this.cars = Arrays.stream(names.split(NAME_SEPARATOR))
+                .map(name -> new Car(new Name(name)))
+                .collect(toList());
     }
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    private void validateCars(String names) {
+        ValidateUtils.validateEmpty(names);
+        validateSeparator(names);
     }
 
-    private void validateCars(int carCount) {
-        if (ValidateUtils.validateMin(carCount)) {
-            throw new IllegalArgumentException(VALID_MIN_NO);
+    private void validateSeparator(String names) {
+        if (!names.contains(NAME_SEPARATOR)) {
+            throw new IllegalArgumentException(VALID_SEPARATOR_MESSAGE);
         }
     }
 
