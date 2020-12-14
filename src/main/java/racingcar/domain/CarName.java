@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 public class CarName {
 
-    private String name;    // 자동차 이름
+    private final String name;    // 자동차 이름
 
     public CarName(String name) {
         // 유효성 검사

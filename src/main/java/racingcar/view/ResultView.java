@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.List;
-import java.util.Map;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
+
 import java.util.stream.Collectors;
 
 /**
@@ -9,36 +10,24 @@ import java.util.stream.Collectors;
  */
 public class ResultView {
 
-    private final Map<Integer, List<RacingCar>> racingCarMap;     // 경주용 자동차 맵
-    private final List<RacingCar> winners;                        // 우승 자동차 목록
-
-    public ResultView(RacingGame racingGame) {
-        this.racingCarMap = racingGame.getRacingCarMap();
-        this.winners = racingGame.getWinners();
-    }
-
     /**
      * 실행결과 출력
      */
     public void print() {
         System.out.println("실행결과");
-        for (Integer key : racingCarMap.keySet()) {
-            printRacingCarList(racingCarMap.get(key));
-            System.out.println();
-        }
-        printWinners();
     }
 
     /**
      * 자동차 목록별 실행결과 출력
-     * @param racingCarList 자동차 목록
+     * @param cars 자동차 목록
      */
-    private void printRacingCarList(List<RacingCar> racingCarList) {
-        for (RacingCar car : racingCarList) {
+    public void printRacingCars(RacingCars cars) {
+        for (RacingCar car : cars.getRacingCars()) {
             printCarName(car);
             printAdvanced(car.getAdvancedCount());
             System.out.println();
         }
+        System.out.println();
     }
 
     /**
@@ -47,7 +36,7 @@ public class ResultView {
      */
     private void printCarName(RacingCar car) {
         if (car.isExistName()) {
-            System.out.print(car.getCarName().getName() + " : ");
+            System.out.print(car.getCarName() + " : ");
         }
     }
 
@@ -64,10 +53,10 @@ public class ResultView {
     /**
      * 자동차 경주 우승자 출력
      */
-    public void printWinners() {
-        String winnerCarNames = winners.stream()
+    public void printWinners(RacingCars winners) {
+        String winnerCarNames = winners.getRacingCars()
+                .stream()
                 .map(RacingCar::getCarName)
-                .map(CarName::getName)
                 .collect(Collectors.joining(", "));
         if (winnerCarNames.length() > 0) {
             System.out.println(winnerCarNames + "가 최종 우승했습니다.");
