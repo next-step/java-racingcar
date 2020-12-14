@@ -24,7 +24,7 @@ public enum Operator {
         return calculation.apply(left, right);
     }
 
-    public static Operator from(String symbol) {
+    public static Operator fromString(String symbol) {
         return Arrays.stream(values())
                 .filter(value -> value.symbol.equals(symbol))
                 .findFirst()

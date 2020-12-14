@@ -2,7 +2,6 @@ package step2.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step2.domain.Operator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -41,7 +40,7 @@ public class OperatorTest {
     @DisplayName("입력받은 Operator에 속하지 않는 문자열일 경우 Exception을 반환한다.")
     void assertOperator() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Operator.from("$");
+            Operator.fromString("$");
         }).withMessage("사칙 연산자에 해당하는 기호가 아닙니다.");
     }
 }
