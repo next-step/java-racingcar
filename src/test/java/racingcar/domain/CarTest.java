@@ -15,7 +15,7 @@ class CarTest {
     @Test
     @DisplayName("자동차 이동 테스트")
     void move() {
-        Car car = new Car("chh");
+        Car car = new Car("chh", 1);
         car.move(() -> true);
         assertThat(car.getLocation()).isEqualTo(2);
     }
@@ -23,7 +23,7 @@ class CarTest {
     @Test
     @DisplayName("자동차 정지 테스트")
     void stop() {
-        Car car = new Car("chh");
+        Car car = new Car("chh", 1);
         car.move(() -> false);
         assertThat(car.getLocation()).isEqualTo(1);
     }
