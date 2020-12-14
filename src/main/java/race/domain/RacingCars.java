@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingCars {
+    private static final String NAME_DELIMITER = ",";
 
     private final List<Car> cars;
 
@@ -20,15 +21,16 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    public static RacingCars createCars(CarNames carNames, MovePolicy movePolicy) {
+    public static RacingCars createCars(String strCarNames, MovePolicy movePolicy) {
+        CarNames carNames = CarNames.createWithDelimiter(strCarNames, NAME_DELIMITER);
         List<Car> cars = IntStream.range(0, carNames.size())
                 .mapToObj(index -> new Car(carNames.get(index), movePolicy))
                 .collect(Collectors.toList());
         return new RacingCars(cars);
     }
 
-    public static RacingCars createRandomMoveCars(CarNames carNames) {
-        return createCars(carNames, new RandomMovePolicy());
+    public static RacingCars createRandomMoveCars(String strCarNames) {
+        return createCars(strCarNames, new RandomMovePolicy());
     }
 
     public void step() {
