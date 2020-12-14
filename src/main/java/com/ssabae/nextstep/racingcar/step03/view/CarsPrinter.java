@@ -1,5 +1,7 @@
-package com.ssabae.nextstep.racingcar.step03.domain;
+package com.ssabae.nextstep.racingcar.step03.view;
 
+import com.ssabae.nextstep.racingcar.step03.domain.Car;
+import com.ssabae.nextstep.racingcar.step03.domain.Cars;
 import java.util.List;
 
 /**

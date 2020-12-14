@@ -8,7 +8,7 @@ package com.ssabae.nextstep.racingcar.step03;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.playGame();
+        RacingController racingController = new RacingController();
+        racingController.playGame();
     }
 }
