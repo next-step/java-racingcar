@@ -15,6 +15,7 @@ public class CarRacingGameOutputView {
 
     public static void gameResult(Car car) {
         int junjinCount = car.getJunjin();
+        System.out.print(car.getName() + " : ");
         for (int j = 0; j < junjinCount; j++) {
             System.out.print("-");
         }

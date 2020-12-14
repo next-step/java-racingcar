@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author minji
  */
 public class CarMain {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String names = scanner.nextLine();
@@ -17,7 +17,6 @@ public class CarMain {
 
         // CarRacingGameInputView : 입력 View 객체
         CarRacingGameInputView input = new CarRacingGameInputView(names);
-        //CarRacingGameInputView input = new CarRacingGameInputView("avante");
         List<Name> carName = input.getCarName();
 
         // CarRacingGame : 도메인 객체 (자동차 경주 게임에 대한 역할 담당)
