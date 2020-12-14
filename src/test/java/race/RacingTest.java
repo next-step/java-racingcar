@@ -31,7 +31,8 @@ public class RacingTest {
         RacingWinners winners = racing.judgeWinners();
 
         List<Car> winnerCars = IntStream.range(0, numOfWinner)
-                .mapToObj(cars::get).collect(Collectors.toList());
+                .mapToObj(cars::get)
+                .collect(Collectors.toList());
 
         assertThat(winners.isWinners(winnerCars)).isTrue();
     }
