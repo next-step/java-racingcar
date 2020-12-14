@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Text {
+    private static final int CUSTOM_SPLITTER_INDEX = 4;
+    private static final int CUSTOM_SPLITTER_START_INDEX = 2;
+    private static final int CUSTOM_SPLITTER_END_INDEX = 3;
+    private static final String CUSTOM_SPLITTER_BEGIN_TEXT = "//";
+    private static final String CUSTOM_SPLITTER_SPLITTER = "\\n";
 
     private SplitterRegex regex;
     private List<String> values;
@@ -34,7 +39,7 @@ public class Text {
     }
 
     private String cutCustomSplitterPrefix(String value) {
-        return value.substring(4);
+        return value.substring(CUSTOM_SPLITTER_INDEX);
     }
 
     private List<String> textToList(String text) {
@@ -47,14 +52,14 @@ public class Text {
     }
 
     private String getCustomSplitter(String value) {
-        return value.substring(2, 3);
+        return value.substring(CUSTOM_SPLITTER_START_INDEX, CUSTOM_SPLITTER_END_INDEX);
     }
 
     private boolean hasCustomSplitter(String value) {
-        String[] split = value.split("\\n");
-        return split.length == 2
-                && split[0].length() == 3
-                && split[0].startsWith("//");
+        String[] split = value.split(CUSTOM_SPLITTER_SPLITTER);
+        return split.length == CUSTOM_SPLITTER_START_INDEX
+                && split[0].length() == CUSTOM_SPLITTER_END_INDEX
+                && split[0].startsWith(CUSTOM_SPLITTER_BEGIN_TEXT);
     }
 
 
