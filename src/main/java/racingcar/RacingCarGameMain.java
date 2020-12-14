@@ -1,10 +1,12 @@
 package racingcar;
 
-import racingcar.domain.*;
+import racingcar.domain.CarNames;
+import racingcar.domain.RacingCars;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingGameWithCarName;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class RacingCarGameMain {
@@ -24,7 +26,7 @@ public class RacingCarGameMain {
 
         resultView.print();
         while (racingGame.hasTryCount()) {
-            RacingCars cars = racingGame.start();
+            RacingCars cars = racingGame.start(carNames.size(), moveCount);
             resultView.printRacingCars(cars);
         }
         resultView.printWinners(racingGame.pickWinners());
