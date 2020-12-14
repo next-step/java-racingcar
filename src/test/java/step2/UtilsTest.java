@@ -14,4 +14,10 @@ public class UtilsTest {
         assertThat(Utils.isNullOrEmpty(null)).isTrue();
         assertThat(Utils.isNullOrEmpty("not null")).isFalse();
     }
+
+    @Test
+    @DisplayName("String을 Integer로 변환한다.")
+    void parseStringToInt() {
+        assertThat(Utils.parseStringToInt("5")).isEqualTo(5);
+    }
 }

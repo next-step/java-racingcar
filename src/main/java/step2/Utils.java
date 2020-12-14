@@ -6,4 +6,8 @@ public class Utils {
     public static boolean isNullOrEmpty(String string) {
         return Objects.isNull(string) || string.trim().isEmpty();
     }
+
+    public static Integer parseStringToInt(String string) {
+        return Integer.parseInt(string);
+    }
 }

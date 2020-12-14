@@ -2,6 +2,8 @@ package step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -31,5 +33,12 @@ public class CalculatorTest {
         String expression = "2 + 3 * 4 / 2";
 
         assertThat(Calculator.splitExpression(expression)).containsExactly("2", "+", "3", "*", "4", "/", "2");
+    }
+
+    @DisplayName("최종 계산 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2 * 9:90", "1 + 3 * 2 / 4 / 1:2"}, delimiter = ':')
+    void calculate(String input, Integer expected) {
+        assertThat(Calculator.calculate(input)).isEqualTo(expected);
     }
 }
