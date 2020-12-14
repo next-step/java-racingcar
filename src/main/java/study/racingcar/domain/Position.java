@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import java.util.Objects;
 
@@ -20,7 +20,7 @@ public class Position {
     public void move() {
         this.position += 1;
     }
-    
+
     public int compare(Position position) {
         return Integer.compare(this.position, position.position);
     }

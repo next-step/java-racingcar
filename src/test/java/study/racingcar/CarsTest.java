@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.domain.Car;
+import study.racingcar.domain.Cars;
+import study.racingcar.domain.Position;
+import study.racingcar.dto.WinnerResults;
 
 class CarsTest {
 
@@ -19,8 +23,7 @@ class CarsTest {
         cars.moveAll(() -> true);
 
         //Then
-        RacingResult result = cars.getResult();
-        List<Car> results = result.getResults();
+        List<Car> results = cars.getResult();
 
         results.forEach(car ->
             assertThat(car.getPosition()).isEqualTo(new Position(1)));
@@ -37,8 +40,7 @@ class CarsTest {
         cars.moveAll(() -> false);
 
         //Then
-        RacingResult result = cars.getResult();
-        List<Car> results = result.getResults();
+        List<Car> results = cars.getResult();
 
         results.forEach(car ->
             assertThat(car.getPosition()).isEqualTo(new Position(0)));

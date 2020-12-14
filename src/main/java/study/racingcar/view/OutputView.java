@@ -1,4 +1,8 @@
-package study.racingcar;
+package study.racingcar.view;
+
+import study.racingcar.domain.Car;
+import study.racingcar.dto.RacingResult;
+import study.racingcar.dto.WinnerResults;
 
 public class OutputView {
 

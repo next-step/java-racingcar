@@ -9,7 +9,7 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 # Step 5
-- [ ] MVC 패턴의 형태로 패키지 리팩토링
+- [x] MVC 패턴의 형태로 패키지 리팩토링
 
 # Step 4    
 - [x] Step 3 리뷰 사항 반영

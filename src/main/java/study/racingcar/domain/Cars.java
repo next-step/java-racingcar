@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,18 +11,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public RacingResult getResult() {
-        return new RacingResult(cars);
+    public List<Car> getResult() {
+        return cars;
     }
 
     public void moveAll(MovingStrategy movingStrategy) {
         cars.forEach(car -> car.move(movingStrategy));
     }
 
-    public WinnerResults findWinners() {
+    public List<Car> findWinners() {
         Car winner = findFirstWinner();
         Position winnerPosition = winner.getPosition();
-        return new WinnerResults(filterByPosition(winnerPosition));
+        return filterByPosition(winnerPosition);
     }
 
     private List<Car> filterByPosition(Position winnerPosition) {

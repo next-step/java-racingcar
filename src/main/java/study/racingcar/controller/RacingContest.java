@@ -1,4 +1,10 @@
-package study.racingcar;
+package study.racingcar.controller;
+
+import study.racingcar.domain.CarGenerator;
+import study.racingcar.domain.Cars;
+import study.racingcar.domain.RandomMovingStrategy;
+import study.racingcar.dto.RacingResult;
+import study.racingcar.dto.WinnerResults;
 
 public class RacingContest {
 
@@ -13,7 +19,7 @@ public class RacingContest {
     }
 
     public RacingResult gerResult() {
-        return cars.getResult();
+        return new RacingResult(cars.getResult());
     }
 
     public boolean isPlaying() {
@@ -26,6 +32,6 @@ public class RacingContest {
     }
 
     public WinnerResults findWinners() {
-        return cars.findWinners();
+        return new WinnerResults(cars.findWinners());
     }
 }

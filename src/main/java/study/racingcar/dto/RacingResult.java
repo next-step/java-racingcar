@@ -1,7 +1,8 @@
-package study.racingcar;
+package study.racingcar.dto;
 
 import java.util.Collections;
 import java.util.List;
+import study.racingcar.domain.Car;
 
 public class RacingResult {
 
