@@ -1,8 +1,9 @@
 package step3;
 
-import step2.MathematicalExpression;
-
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputHandler {
 
@@ -12,14 +13,11 @@ public class InputHandler {
         this.scanner = new Scanner(System.in);
     }
 
-    public int getCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public List<String> getCarNameList() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
         String text = scanner.nextLine();
-        try {
-            return Integer.parseInt(text);
-        } catch (NumberFormatException | NullPointerException e) {
-            return getCarCount();
-        }
+        return Arrays.stream(text.split(","))
+                .collect(Collectors.toList());
     }
 
     public int getRoundCount() {
@@ -27,9 +25,10 @@ public class InputHandler {
         String text = scanner.nextLine();
         try {
             return Integer.parseInt(text);
-        } catch (NumberFormatException| NullPointerException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             return getRoundCount();
         }
     }
 
 }
+

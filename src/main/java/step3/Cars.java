@@ -1,18 +1,20 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private List<Car> cars;
     private CarMover carMover;
 
-    public Cars(int carCount) {
+    public Cars(List<String> carNameList) {
         this.carMover = new CarMover();
         this.cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+        for (int i = 0; i < carNameList.size(); i++) {
+            this.cars.add(new Car(carNameList.get(i)));
         }
     }
 
@@ -28,4 +30,15 @@ public class Cars {
         });
         return stringBuilder.toString();
     }
+
+    public List<Car> getWinners() {
+        int winnerMoveCount = this.cars.stream()
+                .max(Comparator.comparing(Car::getMoveCount))
+                .get()
+                .getMoveCount();
+        return this.cars.stream()
+                .filter(car -> car.isWinner(winnerMoveCount))
+                .collect(Collectors.toList());
+    }
 }
+
