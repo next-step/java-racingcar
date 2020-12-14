@@ -6,8 +6,8 @@ public class RacingCarGame {
 	private final Cars cars;
 	private final TryNumber tryNumber;
 
-	public RacingCarGame(CarNumber carNumber, TryNumber tryNumber) {
-		this.cars = new Cars(carNumber);
+	public RacingCarGame(Names names, TryNumber tryNumber) {
+		this.cars = new Cars(names);
 		this.tryNumber = tryNumber;
 	}
 

@@ -1,6 +1,8 @@
 package step3.view;
 
+import step3.domain.Car;
 import step3.domain.Cars;
+import step3.domain.Name;
 import step3.domain.Position;
 
 public class ResultView {
@@ -8,12 +10,19 @@ public class ResultView {
 
 	public static void printResult(Cars cars) {
 		cars.getCars()
-			.forEach(car -> {
-				printResult(car.getPosition());
-				System.out.println();
-			});
+			.forEach(ResultView::printResult);
 
 		System.out.println();
+	}
+
+	private static void printResult(Car car) {
+		printResult(car.getName());
+		printResult(car.getPosition());
+		System.out.println();
+	}
+
+	private static void printResult(Name name) {
+		System.out.print(name.getName() + " : ");
 	}
 
 	private static void printResult(Position position) {

@@ -7,10 +7,10 @@ import step3.utils.Message;
 
 public class InputView {
 
-	public static int waiteInputCarCount() {
-		System.out.println(Message.INPUT_CAR_COUNT);
+	public static String waiteInputCarNames() {
+		System.out.println(Message.INPUT_CAR_NAME);
 
-		return waiteInputNumber();
+		return new Scanner(System.in).nextLine();
 	}
 
 	public static int waiteInputTryCount() {

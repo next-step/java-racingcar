@@ -5,13 +5,15 @@ import java.util.Objects;
 public class Car {
 	private static final int MIN_MOVABLE_NUMBER = 4;
 
+	private final Name name;
 	private final Position position;
 
-	public Car() {
-		this.position = new Position();
+	public Car(String name) {
+		this(name, 0);
 	}
 
-	public Car(int position) {
+	public Car(String name, int position) {
+		this.name = new Name(name);
 		this.position = new Position(position);
 	}
 
@@ -30,7 +32,11 @@ public class Car {
 	}
 
 	public Position getPosition() {
-		return this.position;
+		return position;
+	}
+
+	public Name getName(){
+		return name;
 	}
 
 	@Override
@@ -40,11 +46,11 @@ public class Car {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		Car car = (Car)o;
-		return Objects.equals(position, car.position);
+		return Objects.equals(name, car.name) && Objects.equals(position, car.position);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(position);
+		return Objects.hash(name, position);
 	}
 }
