@@ -1,57 +1,39 @@
 package study.racingcar;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
-    private final Random random = new Random();
+    private final List<Car> cars;
 
-    public Cars(int racingParticipantNo) {
-        for (int i = 0; i < racingParticipantNo; i++) {
-            this.cars.add(new Car("danie"));
-        }
-    }
-
-    public Cars(String racingParticipantByName) {
-        String[] split = racingParticipantByName.split(",");
-        if (split.length == 0) {
-            throw new IllegalArgumentException();
-        }
-        for (String name : split) {
-            this.cars.add(new Car(name.trim()));
-        }
-
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public RacingResult getResult() {
         return new RacingResult(cars);
     }
 
-    public void moveAll() {
-
-        cars.forEach(car -> car.move(random.nextInt() % 10));
+    public void moveAll(MovingStrategy movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 
-    public void moveAll(int randomNo) {
-        cars.forEach(car -> car.move(randomNo));
+    public WinnerResults findWinners() {
+        Car winner = findFirstWinner();
+        Position winnerPosition = winner.getPosition();
+        return new WinnerResults(filterByPosition(winnerPosition));
     }
 
-    public List<Car> findWinner() {
-        List<Integer> collect = cars.stream()
-            .sorted(Comparator.comparingInt(Car::getPosition).reversed())
-            .map(Car::getPosition)
-            .collect(Collectors.toList());
-        Integer max = collect.get(0);
-
+    private List<Car> filterByPosition(Position winnerPosition) {
         return cars.stream()
-            .filter(car -> car.matchPosition(max))
+            .filter(car -> car.matchPosition(winnerPosition))
             .collect(Collectors.toList());
+    }
 
-
+    private Car findFirstWinner() {
+        return cars.stream()
+            .max(Car::compare)
+            .orElseThrow(IllegalArgumentException::new);
     }
 }

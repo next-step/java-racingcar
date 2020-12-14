@@ -1,7 +1,5 @@
 package study.racingcar;
 
-import java.util.List;
-
 public class RacingApplication {
 
     public static void main(String[] args) {
@@ -12,14 +10,13 @@ public class RacingApplication {
         int tryNo = inputView.inputTryNo();
 
         RacingContest racingContest = new RacingContest(racingParticipantByName, tryNo);
-
         while (racingContest.isPlaying()) {
             racingContest.play();
             RacingResult racingResult = racingContest.gerResult();
             outputView.printRacingResult(racingResult);
         }
-        List<Car> winners = racingContest.findWinners();
-        outputView.printWinner(winners);
 
+        WinnerResults winners = racingContest.findWinners();
+        outputView.printWinner(winners);
     }
 }

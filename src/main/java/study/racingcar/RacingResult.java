@@ -1,18 +1,14 @@
 package study.racingcar;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingResult {
 
-    private final List<Car> results = new ArrayList<>();
+    private final List<Car> results;
 
     public RacingResult(List<Car> asList) {
-        results.addAll(asList);
-    }
-
-    public void addResult(Car position) {
-        results.add(position);
+        results = Collections.unmodifiableList(asList);
     }
 
     public List<Car> getResults() {

@@ -1,12 +1,10 @@
 package study.racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 public class CarTest {
 
@@ -18,43 +16,24 @@ public class CarTest {
 
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"2, 0", "3, 0", "4, 1", "5, 1"})
-    void move_test(int randomNo, int result) throws Exception {
+    @Test
+    @DisplayName("Car 클래스의 move 성공 테스트")
+    void move_test() throws Exception {
+        car.move(() -> true);
 
-        car.move(randomNo);
+        Position position = car.getPosition();
 
-        int position = car.getPosition();
-
-        assertThat(result).isEqualTo(position);
+        assertThat(new Position(1)).isEqualTo(position);
     }
 
     @Test
-    void advanced_test() throws Exception {
+    @DisplayName("Car 클래스의 move 실패 테스트")
+    void stop_test() throws Exception {
+        car.move(() -> false);
 
-        int bfPos = car.getPosition();
-        car.advanced();
+        Position position = car.getPosition();
 
-        int position = car.getPosition();
-
-        assertThat(bfPos + 1).isEqualTo(position);
+        assertThat(new Position(0)).isEqualTo(position);
     }
-
-    @Test
-    void name_test() throws Exception {
-        String inputName = "truly";
-        Car car = new Car(inputName);
-        String carName = car.getName();
-
-        assertThat(inputName).isEqualTo(carName);
-    }
-
-    @Test
-    void name_exception_test() throws Exception {
-        String inputName = "sparkle";
-        assertThatThrownBy(() -> {
-            Car car = new Car(inputName);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
+    
 }

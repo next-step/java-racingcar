@@ -1,47 +1,63 @@
 package study.racingcar;
 
+import java.util.Objects;
+
 public class Car {
 
-    private static final int FORWARD_NUM = 4;
-    private int position;
-    private final String name;
-
-//    public Car() {
-//        this.position = 0;
-//        this.name = "";
-//    }
+    private final Position position;
+    private final Name name;
 
     public Car(String name) {
-        validateName(name);
-        this.position = 0;
-        this.name = name;
+        this.position = new Position();
+        this.name = new Name(name) {
+        };
     }
 
-    private void validateName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException();
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
+            this.position.move();
         }
     }
 
-    public void move(int randomNo) {
-        if (FORWARD_NUM <= randomNo) {
-            advanced();
-        }
-    }
-
-    public void advanced() {
-        this.position += 1;
-    }
-
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public String getName() {
+    public int compare(Car car) {
+        return this.position.compare(car.position);
+    }
+
+    public Name getName() {
         return name;
     }
 
-    public boolean matchPosition(Integer max) {
-        return max == position ? true : false;
+    public boolean matchPosition(Position positionNum) {
+        return position.equals(positionNum);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(position, car.position) &&
+            Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+            "position=" + position +
+            ", name=" + name +
+            '}';
     }
 }

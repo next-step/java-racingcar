@@ -1,21 +1,13 @@
 package study.racingcar;
 
-import java.util.List;
-
 public class RacingContest {
 
     private Cars cars;
     private final int tryNo;
     private int currentTry;
 
-    public RacingContest(int racingParticipantNo, int tryNo) {
-        cars = new Cars(racingParticipantNo);
-        this.tryNo = tryNo;
-        this.currentTry = 0;
-    }
-
     public RacingContest(String racingParticipantByName, int tryNo) {
-        cars = new Cars(racingParticipantByName);
+        cars = new Cars(CarGenerator.generateByString(racingParticipantByName));
         this.tryNo = tryNo;
         this.currentTry = 0;
     }
@@ -29,11 +21,11 @@ public class RacingContest {
     }
 
     public void play() {
-        cars.moveAll();
+        cars.moveAll(new RandomMovingStrategy());
         currentTry++;
     }
 
-    public List<Car> findWinners() {
-        return cars.findWinner();
+    public WinnerResults findWinners() {
+        return cars.findWinners();
     }
 }
