@@ -1,17 +1,13 @@
-package step2;
+package step2.view;
 
 import java.util.Scanner;
 
-public class View {
+public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static String readExpression() {
         System.out.println("수식을 입력하세요.");
 
         return scanner.nextLine();
-    }
-
-    public static void printResult(int result) {
-        System.out.println("결과: " + result);
     }
 }

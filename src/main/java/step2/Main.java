@@ -1,10 +1,14 @@
 package step2;
 
+import step2.domain.Calculator;
+import step2.view.InputView;
+import step2.view.OutputView;
+
 public class Main {
 
     public static void main(String[] args) {
-        String expression = View.readExpression();
+        String expression = InputView.readExpression();
 
-        View.printResult(Calculator.calculate(expression));
+        OutputView.printResult(Calculator.calculate(expression));
     }
 }

@@ -1,4 +1,4 @@
-package step2;
+package step2.domain;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;

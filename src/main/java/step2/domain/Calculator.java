@@ -1,4 +1,6 @@
-package step2;
+package step2.domain;
+
+import step2.StringUtils;
 
 public class Calculator {
     public static final String NULL_OR_EMPTY_STRING_EXCEPTION_MESSAGE = "빈 값이 입력되었습니다.";
@@ -8,13 +10,13 @@ public class Calculator {
         String[] elements = splitExpression(expression);
         assertExpression(elements);
 
-        int result = Utils.parseStringToInt(elements[0]);
+        int result = StringUtils.parseStringToInt(elements[0]);
 
         for(int i = 0; i < elements.length - 1; i += 2) {
             String operator = elements[i+1];
 
             int left = result;
-            int right = Utils.parseStringToInt(elements[i+2]);
+            int right = StringUtils.parseStringToInt(elements[i+2]);
 
             result = Operator.from(operator)
                     .calculate(left, right);
@@ -34,7 +36,7 @@ public class Calculator {
     }
 
     public static void assertNullOrEmpty(String string) {
-        if(Utils.isNullOrEmpty(string)) {
+        if(StringUtils.isNullOrEmpty(string)) {
             throw new IllegalArgumentException(NULL_OR_EMPTY_STRING_EXCEPTION_MESSAGE);
         }
     }
