@@ -20,6 +20,17 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
+    public static RacingCars createCars(CarNames carNames, MovePolicy movePolicy) {
+        List<Car> cars = IntStream.range(0, carNames.size())
+                .mapToObj(index -> new Car(carNames.get(index), movePolicy))
+                .collect(Collectors.toList());
+        return new RacingCars(cars);
+    }
+
+    public static RacingCars createRandomMoveCars(CarNames carNames) {
+        return createCars(carNames, new RandomMovePolicy());
+    }
+
     public void step() {
         cars.forEach(Car::move);
     }
@@ -30,7 +41,25 @@ public class RacingCars {
                 .collect(Collectors.toList());
     }
 
+    public Car get(int index) {
+        return cars.get(index);
+    }
+
     public int size() {
         return cars.size();
+    }
+
+    public List<Car> getMostMovingCars() {
+        int mostMovingDistance = getMostMovingDistance();
+        return cars.stream()
+                .filter(car -> car.getMovedDistance() == mostMovingDistance)
+                .collect(Collectors.toList());
+    }
+
+    private int getMostMovingDistance() {
+        return cars.stream()
+                .mapToInt(Car::getMovedDistance)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("자동차 중 거리가 없는 값이 존재합니다."));
     }
 }

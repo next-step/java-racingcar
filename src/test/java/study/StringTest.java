@@ -45,7 +45,7 @@ public class StringTest {
 
     @DisplayName("charAt 메소드가 정상 동작하는지 확인")
     @ParameterizedTest
-    @CsvSource(value = {"1,a", "2,b", "3,c"})
+    @CsvSource(value = {"0,a", "1,b", "2,c"})
     void charAtTest(int index, char expected) {
         final String input = "abc";
 
