@@ -32,13 +32,7 @@ public class Cars {
     }
 
     public List<Car> getWinners() {
-        int winnerMoveCount = this.cars.stream()
-                .max(Comparator.comparing(Car::getMoveCount))
-                .get()
-                .getMoveCount();
-        return this.cars.stream()
-                .filter(car -> car.isWinner(winnerMoveCount))
-                .collect(Collectors.toList());
+        return CarWinnerDiscriminator.discriminate(this.cars);
     }
 }
 

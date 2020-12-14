@@ -49,7 +49,7 @@ public class CarTest {
     @Test
     public void 자동차_이름_제한_테스트() {
         assertThatThrownBy(() -> {
-            Car car = new Car("12345");
+            Car car = new Car("123456");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 

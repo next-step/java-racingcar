@@ -1,26 +1,28 @@
 
 package step3;
 
+import java.awt.print.Printable;
 import java.util.List;
 
 public class RacingGame {
 
     private Cars cars;
+    private int roundCount;
 
-    public RacingGame(List<String> carNameList) {
+    public RacingGame(List<String> carNameList, int roundCount) {
+        this.roundCount = roundCount;
         this.cars = new Cars(carNameList);
     }
 
     public void play() {
-        cars.play();
+        for (int i = 0; i < roundCount; i++) {
+            cars.play();
+            System.out.println(cars.getWayResult());
+        }
     }
 
-    public String getPlayResult(){
-        return cars.getWayResult();
-    }
-
-    public List<Car> getWinners() {
-        return cars.getWinners();
+    public MatchResult getMatchResult() {
+        return new MatchResult(cars.getWinners());
     }
 
 }

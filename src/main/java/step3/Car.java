@@ -12,7 +12,7 @@ public class Car {
     private int moveCount;
 
     public Car(String name) {
-        if (name.length() >= CAR_NAME_LIMITATION) {
+        if (name.length() > CAR_NAME_LIMITATION) {
             throw new IllegalArgumentException("Car name is too long");
         }
         this.name = name;
