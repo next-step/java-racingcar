@@ -2,7 +2,9 @@ package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.MoveStrategy;
 import racingcar.domain.RacingGame;
+import racingcar.utils.RandomGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
