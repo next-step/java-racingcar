@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.CarName;
+import racingcar.domain.CarNames;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,13 +45,13 @@ public class InputView {
      * @param scanner 입력 스캐너
      * @return 자동차 이름 목록
      */
-    public List<CarName> inputCarNames(Scanner scanner) {
+    public CarNames inputCarNames(Scanner scanner) {
         List<CarName> carNames = new ArrayList<>();
         String[] names = scanner.next().split(NAME_SPLIT_REGEX);
         for (String name : names) {
             carNames.add(new CarName(name));
         }
-        return carNames;
+        return new CarNames(carNames);
     }
 
 }
