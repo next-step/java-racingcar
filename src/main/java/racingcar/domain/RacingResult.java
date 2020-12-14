@@ -4,17 +4,22 @@ import java.util.List;
 
 public class RacingResult {
     private static final String MOVE_VIEW = "-";
-    private static final String DEFAULT_VIEW = "";
     private static final String NEW_LINE = "\n";
+    private static final String NAME_VIEW = " : ";
     private final StringBuilder racingRounge = new StringBuilder();
 
     public void report(List<Car> cars) {
-        racingRounge.append(DEFAULT_VIEW);
         for (Car car : cars) {
+            nameView(car);
             raceView(car);
             racingRounge.append(NEW_LINE);
         }
         racingRounge.append(NEW_LINE);
+    }
+
+    private void nameView(Car car) {
+        racingRounge.append(car.name());
+        racingRounge.append(NAME_VIEW);
     }
 
     private void raceView(Car car) {

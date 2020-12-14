@@ -20,4 +20,8 @@ public class Name {
             throw new IllegalArgumentException(OUT_OF_NAME_SIZE);
         }
     }
+
+    public String getName() {
+        return this.name;
+    }
 }

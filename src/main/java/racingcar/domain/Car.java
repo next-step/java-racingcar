@@ -24,4 +24,8 @@ public class Car {
     public boolean isMoved() {
         return this.position.isMoved();
     }
+
+    public String name() {
+        return this.name.getName();
+    }
 }
