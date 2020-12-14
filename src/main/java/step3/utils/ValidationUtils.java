@@ -2,7 +2,7 @@ package step3.utils;
 
 public class ValidationUtils {
 
-	public static void validPositive(int value) {
+	public static void validatePositive(int value) {
 		if (isNegative(value)) {
 			throw new IllegalArgumentException(Message.INVALID_POSITIVE_NUMBER);
 		}

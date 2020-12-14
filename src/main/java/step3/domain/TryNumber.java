@@ -6,7 +6,7 @@ public class TryNumber {
 	private int number;
 
 	public TryNumber(int number) {
-		ValidationUtils.validPositive(number);
+		ValidationUtils.validatePositive(number);
 		this.number = number;
 	}
 
