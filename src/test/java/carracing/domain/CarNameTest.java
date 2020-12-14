@@ -1,18 +1,19 @@
 package carracing.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-
 @DisplayName("자동차 이름을 위한 테스트")
 class CarNameTest {
+
     private static final int MIN_NAME_SIZE = CarName.MIN_NAME_SIZE;
     private static final int MAX_NAME_SIZE = CarName.MAX_NAME_SIZE;
     private static final String TEST_NAME_LETTER = "T";
@@ -44,8 +45,12 @@ class CarNameTest {
         return provideNames(MIN_NAME_SIZE, MAX_NAME_SIZE);
     }
 
-    private static List<String> provideInvalidNames() {
-        return Arrays.asList(provideName(INVALID_MIN_BOUND_NAME_SIZE), provideName(INVALID_MAX_BOUND_NAME_SIZE));
+    private static Stream<Object> provideInvalidNames() {
+        return Stream.of(
+                null,
+                provideName(INVALID_MIN_BOUND_NAME_SIZE),
+                provideName(INVALID_MAX_BOUND_NAME_SIZE)
+        );
     }
 
     private static List<String> provideNames(int startSize, int endSize) {

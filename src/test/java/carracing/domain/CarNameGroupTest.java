@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @DisplayName("자동차들의 이름을 위한 테스트")
-class CarNamesTest {
+class CarNameGroupTest {
     private static final String TEST_CAR_NAMES = "pobi,crong,honux";
 
     @DisplayName("유효한 자동차들의 이름이 생성되는지 확인")
@@ -17,7 +17,7 @@ class CarNamesTest {
     @ValueSource(strings = {TEST_CAR_NAMES})
     void createValidCarNamesTest(String validCarNames) {
         // When
-        CarNames actual = new CarNames(validCarNames);
+        CarNameGroup actual = new CarNameGroup(validCarNames);
 
         // Then
         assertThat(actual).isNotNull();
@@ -29,7 +29,7 @@ class CarNamesTest {
     void checkExceptionWithInvalidCarNamesTest(String invalidCarNames) {
         // When & Then
         assertThatIllegalArgumentException().isThrownBy(
-                () -> new CarNames(invalidCarNames)
+                () -> new CarNameGroup(invalidCarNames)
         );
     }
 }

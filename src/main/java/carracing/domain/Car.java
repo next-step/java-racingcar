@@ -4,14 +4,19 @@ package carracing.domain;
  * 자동차 정보를 가지는 자동차 클래스
  */
 public class Car {
-    private static final int INITIATION_POSITION_NUMBER = 0;
-
     private final CarName name;
     private final CarPosition position;
 
     Car(CarName name) {
+        validate(name);
         this.name = name;
-        this.position = new CarPosition(INITIATION_POSITION_NUMBER);
+        this.position = new CarPosition();
+    }
+
+    private void validate(CarName name) {
+        if (name == null) {
+            throw new IllegalArgumentException("자동차의 이름은 비어있을 수 없습니다.");
+        }
     }
 
     public void move(MovementPolicy movementPolicy) {
