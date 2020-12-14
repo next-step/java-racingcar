@@ -19,5 +19,6 @@ public class RacingCarGameClient {
 			game.play();
 			ResultView.printResult(game.getCars());
 		}
+		ResultView.printWinners(game.getCars());
 	}
 }

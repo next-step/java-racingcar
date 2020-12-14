@@ -2,6 +2,7 @@ package step3.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -40,5 +41,19 @@ public class CarsTest {
 	@DisplayName("입력된 carNumber만큰 Car 리스트를 생성한다.")
 	void createCarsTest() {
 		assertThat(Cars.createCars(names)).hasSize(3);
+	}
+
+	@Test
+	@DisplayName("우승한 자동차 List를 반환한다.")
+	void findWinner() {
+		Cars cars = new Cars(Arrays.asList(
+			new Car("test1", 2),
+			new Car("test2", 3),
+			new Car("test3", 5),
+			new Car("test4", 3),
+			new Car("test5", 5)
+		));
+
+		assertThat(cars.findWinners()).contains(new Car("test3", 5), new Car("test5", 5));
 	}
 }

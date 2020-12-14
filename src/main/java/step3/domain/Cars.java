@@ -9,8 +9,12 @@ import step3.utils.NumberGenerator;
 public class Cars {
 	private final List<Car> cars;
 
+	public Cars(List<Car> cars) {
+		this.cars = Collections.unmodifiableList(cars);
+	}
+
 	public Cars(Names names) {
-		this.cars = Collections.unmodifiableList((createCars(names)));
+		this(createCars(names));
 	}
 
 	static List<Car> createCars(Names names) {
@@ -26,5 +30,22 @@ public class Cars {
 
 	public List<Car> getCars() {
 		return this.cars;
+	}
+
+	public List<Car> findWinners() {
+		int maxPosition = findMaxPosition();
+		List<Car> winners = cars.stream()
+			.filter(car -> car.getPosition().isMaxPosition(maxPosition))
+			.collect(Collectors.toList());
+
+		return Collections.unmodifiableList(winners);
+	}
+
+	private int findMaxPosition() {
+		return cars.stream()
+			.map(Car::getPosition)
+			.mapToInt(Position::getPosition)
+			.max()
+			.orElse(0);
 	}
 }

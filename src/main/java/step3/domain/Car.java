@@ -35,7 +35,7 @@ public class Car {
 		return position;
 	}
 
-	public Name getName(){
+	public Name getName() {
 		return name;
 	}
 
