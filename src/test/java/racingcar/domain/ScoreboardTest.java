@@ -1,0 +1,31 @@
+package racingcar.domain;
+
+import org.junit.jupiter.api.Test;
+
+import racingcar.service.Racing;
+
+import static org.assertj.core.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ScoreboardTest {
+    
+    @Test
+    void scoreboardDomainTest(){
+        Car car1 = new Car("test1");
+        Car car2 = new Car("test2");
+        List<Car> list= new ArrayList<>(List.of(car1, car2));
+        RacingCar cars = new RacingCar(list);
+
+        Scoreboard board = new Scoreboard(cars);
+
+        Scoreboard board2 = new Scoreboard(cars);
+
+        Racing racing = new Racing();
+        
+        racing.tryToMove(board, 0, 5);
+
+        assertThat(board).isEqualTo(board2);
+    }
+}

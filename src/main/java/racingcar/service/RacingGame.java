@@ -16,19 +16,19 @@ public class RacingGame {
         this.racing = racing;
     }
 
-    public Scoreboard setInRacingByName(Map<Integer, String[]> map){
-        Scoreboard result = racing.moveCar(placetForRacingByName(map));
+    public Scoreboard setInRacingByName(String[] racer, int move){
+        Scoreboard result = racing.moveCar(placetForRacingByName(racer, move));
         return result;
     }
 
-    public Scoreboard placetForRacingByName(Map<Integer, String[]> input){
+    public Scoreboard placetForRacingByName(String[] racer, int move){
         List<Car> carList = new ArrayList<>(); 
-        for(String carName : input.get(0)){
+        for(String carName : racer){
             Car car = new Car(carName);
             carList.add(car);
         }
         Scoreboard board = new Scoreboard(new RacingCar(carList));
-        board.setMove(Integer.valueOf(input.get(1)[0]));
+        board.setMove(move);
         return board;
     }
 

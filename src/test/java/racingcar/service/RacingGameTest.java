@@ -19,15 +19,12 @@ public class RacingGameTest {
 
     @Test
     void placetForRacingTest(){
-        String[] a = {"test","test1","test2"};
-        String[] b ={"5"};
+        String[] racer = {"test","test1","test2"};
+        int move = 5;
         //given
-        Map<Integer, String[]> list = Map.of( 
-                                                0 , a, 
-                                               1 , b );
 
         //when
-        Scoreboard board = racingGame.placetForRacingByName(list);
+        Scoreboard board = racingGame.placetForRacingByName(racer, move);
 
         //then
         assertThat(board.getRacingCar().getCars().size()).isEqualTo(3);

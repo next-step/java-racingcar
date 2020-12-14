@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Scoreboard {
     private RacingCar racingaCar;
     private int move;
@@ -28,6 +30,19 @@ public class Scoreboard {
     public Scoreboard(RacingCar cars){
         this.racingaCar = cars;
         this.history = new RacingHistory();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Scoreboard scoreboard = (Scoreboard) obj;
+        return Objects.equals(racingaCar, scoreboard.getRacingCar());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingaCar);
     }
 
 }

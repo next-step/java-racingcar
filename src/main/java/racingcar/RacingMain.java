@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.Map;
-
 import racingcar.domain.Scoreboard;
 import racingcar.service.Racing;
 import racingcar.service.RacingGame;
@@ -13,9 +11,11 @@ public class RacingMain {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         RacingGame racingGame = new RacingGame(new Racing());
-        Map<Integer, String[]> input = inputView.inputRacingByName();
 
-        Scoreboard result = racingGame.setInRacingByName(input);
+        String[] racers = inputView.getRacerNames();
+        int move = inputView.getNumberOfRacing();
+
+        Scoreboard result = racingGame.setInRacingByName(racers, move);
         ResultView resultView = new ResultView();
         resultView.racingResult(result);
     }

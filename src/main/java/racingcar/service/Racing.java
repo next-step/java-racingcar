@@ -19,11 +19,7 @@ public class Racing {
     public Scoreboard tryToMoveResult(Scoreboard board, int j){
         List<Integer> result = new ArrayList<>();
         for(int k = 0; k < board.getRacingCar().getCars().size(); k++){
-            if(tryToMove()){
-                Car car = board.getRacingCar().getCars().get(k);
-                car.moveLocation();
-                board.getRacingCar().getCars().set(k, car);
-            }
+            tryToMove(board, k, randomMove());
             result.add(board.getRacingCar().getCars().get(k).getLocation());
         }
         board.getHistory().putRacingResult(j, result);
@@ -31,16 +27,20 @@ public class Racing {
         return board;
     }
 
-    public boolean tryToMove(){
-        boolean result = false;
+    public Scoreboard tryToMove(Scoreboard board, int k, int tryMove){
+        if(tryMove >=4){
+            Car car = board.getRacingCar().getCars().get(k);
+            car.moveLocation();
+            board.getRacingCar().getCars().set(k, car);
+        }
+        return board;
+    }
+    
+    public int randomMove(){
         Random random = new Random();
         int move = random.nextInt(10);
 
-        if(move >=4){
-            result = true;
-        }
-
-        return result;
+        return move;
     }
     
 }

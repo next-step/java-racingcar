@@ -22,6 +22,6 @@ public class RacingHistory {
 
 	public RacingHistory() {
         this.racingResult = new HashMap<>();
-	}
+    }
     
 }

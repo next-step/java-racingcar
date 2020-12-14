@@ -8,8 +8,7 @@ import racingcar.domain.Scoreboard;
 
 import static org.assertj.core.api.Assertions.*;
 
-
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingTest {
@@ -24,6 +23,23 @@ public class RacingTest {
         racing.moveCar(scoreboard);
 
         assertThat(scoreboard.getRacingCar()).isEqualTo(cars);
+
+    }
+
+    @Test
+    void tryToMoveTest(){
+        Car car1 = new Car("test1");
+        Car car2 = new Car("test2");
+        List<Car> list= new ArrayList<>(List.of(car1, car2));
+        RacingCar cars = new RacingCar(list);
+        Scoreboard board = new Scoreboard(cars);
+
+        Racing racing = new Racing();
+
+        racing.tryToMove(board, 0, 5);
+
+        assertThat(board.getRacingCar().getCars().size()).isEqualTo(2);
+        assertThat(board.getRacingCar().getCars().get(0).getLocation()).isEqualTo(2);
 
     }
     
