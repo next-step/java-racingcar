@@ -19,3 +19,6 @@ bin/
 *.iws
 *.iml
 *.ipr
+
+/gradle/
+/build/
