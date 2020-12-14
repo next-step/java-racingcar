@@ -1,14 +1,11 @@
 package race.applicantion;
 
-import race.domain.CarNames;
 import race.domain.Racing;
 import race.domain.RacingCars;
 import race.exception.IncorrectCarNameException;
 import race.view.ConsoleView;
 
 public class RaceApplication {
-
-    private static String NAME_DELIMITER = ",";
 
     public static void main(String[] args) {
         String carNames = ConsoleView.inputCarNames();
@@ -22,8 +19,7 @@ public class RaceApplication {
     }
 
     private static void race(String strCarNames, int numOfTry) {
-        CarNames carNames = CarNames.createWithDelimiter(strCarNames, NAME_DELIMITER);
-        RacingCars cars = RacingCars.createRandomMoveCars(carNames);
+        RacingCars cars = RacingCars.createRandomMoveCars(strCarNames);
         Racing racing = new Racing(cars);
         for (int i = 0; i < numOfTry; i++) {
             racing.play();

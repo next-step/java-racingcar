@@ -14,7 +14,8 @@ public class Racing {
         racingCars.step();
     }
 
-    public List<Car> judgeWinners() {
-        return racingCars.getMostMovingCars();
+    public RacingWinners judgeWinners() {
+        List<Car> mostMovingCars = racingCars.getMostMovingCars();
+        return new RacingWinners(mostMovingCars);
     }
 }
