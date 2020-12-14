@@ -3,6 +3,7 @@ package racingcar.domain;
 public class Car {
     private Position position = new Position();
     private final Name name;
+
     public Car(Name name) {
         this.name = name;
     }
@@ -27,5 +28,9 @@ public class Car {
 
     public String name() {
         return this.name.getName();
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position() == maxPosition;
     }
 }
