@@ -87,13 +87,6 @@ public class CarsTest {
         }
 
         @Test
-        @DisplayName("자동차들의 이동 값이 최대이면 최종 우승자로 선별")
-        void getMaxPosition() {
-            Cars cars = new Cars(Arrays.asList(car1, car2, car3, car4));
-            assertThat(cars.getMaxposition()).isEqualTo(7);
-        }
-
-        @Test
         @DisplayName("최종 우승자로 선별")
         void getWinners() {
             Cars cars = new Cars(Arrays.asList(car1, car2, car3, car4));
@@ -101,7 +94,7 @@ public class CarsTest {
             assertThat(winnerName(winners)).isEqualTo("woowa,revie");
         }
 
-        private String winnerName(List<Car> cars) {
+        String winnerName(List<Car> cars) {
             final String separator = ",";
             return cars.stream().map(Car::name)
                     .collect(Collectors.joining(separator));

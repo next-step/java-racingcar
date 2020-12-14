@@ -44,7 +44,7 @@ public class Cars {
         return Collections.unmodifiableList(this.cars);
     }
 
-    public int getMaxposition() {
+    private int getMaxposition() {
         return this.cars.stream()
                 .mapToInt(Car::position)
                 .max()
