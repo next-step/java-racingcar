@@ -3,11 +3,12 @@ package race.domain;
 public class Car {
 
     private final MovePolicy movePolicy;
-    private CarName carName;
+    private final CarName carName;
     private int distance;
 
     public Car(MovePolicy movePolicy) {
         this.movePolicy = movePolicy;
+        this.carName = null;
     }
 
     public Car(CarName carName, MovePolicy movePolicy) {
@@ -28,6 +29,9 @@ public class Car {
     }
 
     public String getName() {
+        if (carName == null) {
+            return "";
+        }
         return carName.get();
     }
 }

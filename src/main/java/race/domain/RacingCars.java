@@ -9,7 +9,7 @@ public class RacingCars {
 
     private final List<Car> cars;
 
-    public RacingCars(List<Car> cars) {
+    private RacingCars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
     }
 
@@ -50,11 +50,16 @@ public class RacingCars {
     }
 
     public List<Car> getMostMovingCars() {
-        int mostMovingDistance = cars.stream()
-                .mapToInt(Car::getMovedDistance)
-                .max().orElseThrow(() -> new IllegalStateException("자동차 중 거리가 없는 값이 존재합니다."));
+        int mostMovingDistance = getMostMovingDistance();
         return cars.stream()
                 .filter(car -> car.getMovedDistance() == mostMovingDistance)
                 .collect(Collectors.toList());
+    }
+
+    private int getMostMovingDistance() {
+        return cars.stream()
+                .mapToInt(Car::getMovedDistance)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("자동차 중 거리가 없는 값이 존재합니다."));
     }
 }

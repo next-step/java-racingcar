@@ -9,7 +9,7 @@ public class CarNames {
 
     private final List<CarName> carNames;
 
-    public CarNames(List<CarName> carNames) {
+    private CarNames(List<CarName> carNames) {
         this.carNames = Collections.unmodifiableList(carNames);
     }
 
