@@ -1,22 +1,27 @@
 package calculator;
 
-import java.util.function.IntBinaryOperator;
+import java.util.Arrays;
+import java.util.List;
 
-public enum StringCalculator{
-    PLUS(Integer::sum),
-    MINUS((firstValue, secondValue) -> firstValue - secondValue),
-    MULTIPLY((firstValue, secondValue) -> firstValue * secondValue),
-    DIVISION((firstValue, secondValue) -> firstValue / secondValue);
+public class StringCalculator {
 
-    private final IntBinaryOperator intBinaryOperator;
+    public int calculation(String input) {
+        nullAndEmptyCheck(input);
+        List<String> inputArray = Arrays.asList(input.split(" "));
+        int result = parseInt(inputArray.get(0));
 
-    StringCalculator(IntBinaryOperator intBinaryOperator) {
-        this.intBinaryOperator = intBinaryOperator;
+        for(int i=1; i < inputArray.size(); i += 2) {
+            result = Operation.arithmeticOperationCheck(inputArray.get(i)).operation(result, parseInt(inputArray.get(i+1)));
+        }
+        return result;
     }
 
-    public int applyAsInt(int left, int right) {
-        return intBinaryOperator.applyAsInt(left, right);
+    private int parseInt(String input) {
+        return Integer.parseInt(input);
     }
 
-
+    void nullAndEmptyCheck(String input) {
+        if(input == null || input.isEmpty())
+            Exception.IllegalArgumentException("null 또는 빈값을 허용하지 않습니다.");
+    }
 }
