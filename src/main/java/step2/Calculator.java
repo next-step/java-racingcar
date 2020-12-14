@@ -16,7 +16,8 @@ public class Calculator {
             int left = result;
             int right = Utils.parseStringToInt(elements[i+2]);
 
-            result = Operator.from(operator).calculate(left, right);
+            result = Operator.from(operator)
+                    .calculate(left, right);
         }
 
         return result;
