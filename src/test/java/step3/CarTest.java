@@ -3,6 +3,8 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,13 +17,11 @@ public class CarTest {
         car = new Car();
     }
 
-    @Test
     @DisplayName("움직임 여부를 받아 움직이면, 움직인 거리가 +1 된다. 움직이지 않은 경우는 움직인 거리는 그대로 유지된다.")
-    void move() {
-        car.move(true);
-        assertThat(car.getDistance()).isEqualTo(1);
-
-        car.move(false);
-        assertThat(car.getDistance()).isEqualTo(1);
+    @ParameterizedTest
+    @CsvSource({"true,1", "false,0"})
+    void move(boolean input, int expected) {
+        car.move(input);
+        assertThat(car.getDistance()).isEqualTo(expected);
     }
 }
