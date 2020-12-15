@@ -1,11 +1,16 @@
 package step3;
 
-public class RandomMoveRule {
+public class RandomMoveRule implements MoveRule {
 
     private RandomMoveRule() {
     }
 
-    public static boolean canMove(int number) {
+    @Override
+    public boolean canMove() {
+        return canMoveWithNumber(RandomNumberGenerator.generate());
+    }
+
+    public static boolean canMoveWithNumber(int number) {
         return number >= 4;
     }
 }
