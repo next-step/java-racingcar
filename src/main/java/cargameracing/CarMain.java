@@ -20,10 +20,10 @@ public class CarMain {
         List<String> carName = input.getCarName();
 
         // CarRacingGame : 도메인 객체 (자동차 경주 게임에 대한 역할 담당)
-        CarRacingGame carRacingGame = new CarRacingGame(carName);
+        CarRacingGame carRacingGame = new CarRacingGame(carName, playCount);
 
         System.out.println("실행 결과");
-        for (int i = 0; i < playCount; i++) {
+       while(carRacingGame.tryNo.racing()) {
             carRacingGame.playGame(new RandomMovingStrategy());
             // CarRacingGameOutputView : 출력 View 객체
             CarRacingGameOutputView.displayResult(carRacingGame.getCars());

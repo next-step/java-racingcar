@@ -1,7 +1,6 @@
 package cargameracing;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Domain(Model) Role
@@ -9,13 +8,15 @@ import java.util.Random;
  */
 public class CarRacingGame {
     Car[] cars;
+    TryNo tryNo;
 
-    public CarRacingGame(List<String> carName){
+    public CarRacingGame(List<String> carName, int playCount){
         int count = carName.size();
         cars = new Car[count];
         for (int i = 0; i < count; i++) {
             cars[i] = new Car(carName.get(i));
         }
+        this.tryNo = new TryNo(playCount);
     }
 
     public void playGame(MovingStrategy movingStrategy) {

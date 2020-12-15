@@ -13,7 +13,7 @@ public class CarRacingGameTest {
 
     @BeforeEach
     public void setUp() {
-        racingGame = new CarRacingGame(Arrays.asList("tico", "bmw"));
+        racingGame = new CarRacingGame(Arrays.asList("tico", "bmw"), playCount);
     }
 
     @Test
