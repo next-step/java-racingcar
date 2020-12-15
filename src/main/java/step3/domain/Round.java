@@ -10,8 +10,8 @@ public class Round {
         this.distance = distance;
     }
 
-    public boolean isRound(int roundNumber) {
-        return roundTime == roundNumber;
+    public boolean isRound(int target) {
+        return roundTime == target;
     }
 
     public int getDistance() {
