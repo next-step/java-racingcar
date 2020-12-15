@@ -18,6 +18,11 @@ public class Cars {
         }
     }
 
+    public Cars(ArrayList<Car> cars) {
+        this.carMover = new CarMover();
+        this.cars = cars;
+    }
+
     public void play() {
         cars.forEach(car -> carMover.moveOrNot(car, NumberUtil.generateRandomIntZeroToTen()));
     }
