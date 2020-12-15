@@ -27,13 +27,14 @@ public class Car {
     }
 
     public int getDistanceByRound(int roundNumber) {
-        for(Round round : roundHistory) {
-            if(round.isRound(roundNumber)) {
-                return round.getDistance();
-            }
-        }
 
-        throw new IllegalStateException(NO_ROUND_EXCEPTION_MESSAGE);
+        return roundHistory.stream()
+                .filter(round -> round.isRound(roundNumber))
+                .map(Round::getDistance)
+                .findFirst()
+                .orElseThrow(() -> {
+                    throw new IllegalStateException(NO_ROUND_EXCEPTION_MESSAGE);
+                });
     }
 
     public int getDistance() {
