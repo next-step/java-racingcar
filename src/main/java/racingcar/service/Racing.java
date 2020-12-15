@@ -8,6 +8,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Scoreboard;
 
 public class Racing {
+    public static final int MOVE = 4;
     
     public Scoreboard moveCar(Scoreboard board){
         for(int j = 0; j < board.getMove(); j++){
@@ -28,10 +29,9 @@ public class Racing {
     }
 
     public Scoreboard tryToMove(Scoreboard board, int k, int tryMove){
-        if(tryMove >=4){
+        if (tryMove >= MOVE) {
             Car car = board.getRacingCar().getCars().get(k);
             car.moveLocation();
-            board.getRacingCar().getCars().set(k, car);
         }
         return board;
     }

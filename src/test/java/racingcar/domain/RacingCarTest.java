@@ -28,5 +28,20 @@ public class RacingCarTest {
 
         assertThat(cars.getCars().get(0)).isEqualTo(board2.getRacingCar().getCars().get(0));
     }
+
+    @Test
+    void getWinnerListTest(){
+        Car car1 = new Car("test1");
+        Car car2 = new Car("test2");
+
+        RacingCar racingCar = new RacingCar(List.of(car1, car2));
+
+        racingCar.getCars().get(0).moveLocation();
+
+        List<String> winner = racingCar.getWinnerList(2);
+
+        assertThat(winner.size()).isEqualTo(1);
+        assertThat(winner.get(0)).isEqualTo("test1");
+    }
     
 }

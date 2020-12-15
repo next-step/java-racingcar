@@ -20,9 +20,11 @@ public class RacingTest {
         Car car2 = new Car("test2");
         RacingCar cars = new RacingCar(List.of(car1, car2));
         Scoreboard scoreboard = new Scoreboard(cars);
+        Scoreboard scoreboard2 = new Scoreboard(cars);
+
         racing.moveCar(scoreboard);
 
-        assertThat(scoreboard.getRacingCar()).isEqualTo(cars);
+        assertThat(scoreboard.getRacingCar()).isEqualTo(scoreboard2.getRacingCar());
 
     }
 
