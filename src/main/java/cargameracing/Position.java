@@ -1,5 +1,7 @@
 package cargameracing;
 
+import javafx.geometry.Pos;
+
 import java.util.Objects;
 
 public class Position {
@@ -13,8 +15,9 @@ public class Position {
         this.junjin = position;
     }
 
-    public void move() {
+    public Position move() {
         this.junjin += 1;
+        return this;
     }
 
     public int getPosition() {

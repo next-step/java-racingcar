@@ -17,7 +17,7 @@ public class CarMain {
 
         // CarRacingGameInputView : 입력 View 객체
         CarRacingGameInputView input = new CarRacingGameInputView(names);
-        List<Name> carName = input.getCarName();
+        List<String> carName = input.getCarName();
 
         // CarRacingGame : 도메인 객체 (자동차 경주 게임에 대한 역할 담당)
         CarRacingGame carRacingGame = new CarRacingGame(carName);

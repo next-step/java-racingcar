@@ -10,7 +10,7 @@ import java.util.Random;
 public class CarRacingGame {
     Car[] cars;
 
-    public CarRacingGame(List<Name> carName){
+    public CarRacingGame(List<String> carName){
         int count = carName.size();
         cars = new Car[count];
         for (int i = 0; i < count; i++) {

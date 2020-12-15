@@ -9,6 +9,6 @@ public class NameTest {
     void nameLength() {
         assertThatThrownBy(()->{
             new Name("avante");
-        }).isInstanceOf(Exception.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }

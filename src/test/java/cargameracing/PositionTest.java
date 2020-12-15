@@ -9,7 +9,7 @@ public class PositionTest {
     void move() {
         Position source = new Position(1);
         Position target = new Position(2);
-        //assertThat(target).isEqualTo(source.move());
+        assertThat(source.move()).isEqualTo(target);
     }
 
     @Test
