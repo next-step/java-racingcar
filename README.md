@@ -31,4 +31,13 @@
   * 전진 여부를 입력받아 전진하거나 멈추는 책임을 갖는다.
   * 매 Round 별 움직임을 저장하는 History 정보도 필요하다.  
 * RandomNumberGenerator: 유틸성 객체  
-  * 랜덤 숫자를 생성하는 역할을 한다.  
+  * 랜덤 숫자를 생성하는 역할을 한다.
+* Round: 매 라운드 정보를 담는 객체  
+  * 매 라운드 정보를 담아 Car가 갖는다.
+  * Round Time과 움직인 거리 정보를 갖는다.  
+* MoveRule: 게임에서 움직일 규칙 객체  
+  * carMove 여부를 결정해주는 규칙을 갖는다.  
+  * 게임의 룰이 변경될 경우를 고려하여 interface 형태로 구현한다.  
+* RandomMoveRule: MoveRule의 콘크리트 객체  
+  * 주어진대로 랜덤 수에 따라 움직임을 결정한다.  
+  * MoveRule을 구현한다.
