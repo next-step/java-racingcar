@@ -6,10 +6,15 @@ import step3.domain.Cars;
 public class OutputView {
 
     private static final String DISTANCE_CHARACTER = "-";
+    private static final String RESULT_MESSAGE = "실행 결과";
 
     public void printResult(Cars cars, int rountCount) {
+        System.out.println(RESULT_MESSAGE);
+
         for(int i = 0; i < rountCount; i++) {
             printCarsDistance(i, cars);
+
+            System.out.println("");
         }
     }
 

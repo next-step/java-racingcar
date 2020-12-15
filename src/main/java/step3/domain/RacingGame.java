@@ -18,4 +18,8 @@ public class RacingGame {
             cars.moveAll(i, moveRule);
         };
     }
+
+    public Cars getCars() {
+        return cars;
+    }
 }
