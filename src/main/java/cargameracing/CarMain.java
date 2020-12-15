@@ -29,5 +29,6 @@ public class CarMain {
             CarRacingGameOutputView.displayResult(carRacingGame.getCars());
             System.out.println();
         }
+        CarRacingGameOutputView.displayWinner(carRacingGame.getCars());
     }
 }

@@ -3,14 +3,14 @@ package cargameracing;
 import java.util.Objects;
 
 public class Name {
-    public static final int FORWARD_NUM = 5;
+    static final int NAME_LENGTH = 5;
     private final String name;
 
     public Name(String name){
         if (name.trim().length() == 0) {
             throw new IllegalArgumentException("자동차 이름이 빈값이면 안됩니다.");
         }
-        if (name.length() > FORWARD_NUM) {
+        if (name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없음");
         }
         this.name = name;

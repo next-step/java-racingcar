@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class Car {
     private Name name;
-    private int junjin;
+    private Position junjin = new Position();
 
     public Car(Name name) {
         this.name = name;
@@ -16,12 +16,18 @@ public class Car {
 
     public void junjinUp(MovingStrategy MovingStrategy) {
         if (MovingStrategy.isMove()) {
-            this.junjin++;
+            junjin.move();
         }
     }
 
-    public String getName() { return name.getName();};
-    public int getJunjin() {
-        return junjin;
+/*
+    public void junjinUp(MovingStrategy MovingStrategy) {
+        if (MovingStrategy.isMove()) {
+            this.junjin++;
+        }
     }
+*/
+
+    public String getName() { return name.getName(); }
+    public int getJunjin() { return junjin.getPosition(); }
 }
