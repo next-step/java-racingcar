@@ -34,7 +34,7 @@ public class RacingCars {
 
 	public String getNames() {
 		final String WINNER_CAR_NAMES_DELIMITER = ", ";
-		return this.racingCars.stream().map(RacingCar::toString)
+		return this.racingCars.stream().map(RacingCar::getName)
 			.collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
 	}
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Referee {
 
-	private final int maxMoveDistance;
+	private final MoveDistance maxMoveDistance;
 	private final RacingCars winners;
 
 	public Referee(final RacingCars racingCars) {
@@ -13,11 +13,11 @@ public class Referee {
 		this.winners = judgeWinners(racingCars);
 	}
 
-	private int getMaxMoveDistance(final RacingCars racingCars) {
-		return racingCars.getRacingCars().stream()
+	private MoveDistance getMaxMoveDistance(final RacingCars racingCars) {
+		return new MoveDistance(racingCars.getRacingCars().stream()
 			.mapToInt(RacingCar::getMoveDistance)
 			.max()
-			.orElse(0);
+			.orElse(0));
 	}
 
 	private RacingCars judgeWinners(final RacingCars racingCars) {
@@ -29,10 +29,9 @@ public class Referee {
 	}
 
 	private void addWinner(final List<RacingCar> winners, final RacingCar racingCar) {
-		if (this.maxMoveDistance != racingCar.getMoveDistance()) {
-			return;
+		if (racingCar.isSameMoveDistance(this.maxMoveDistance)) {
+			winners.add(racingCar);
 		}
-		winners.add(racingCar);
 	}
 
 	public RacingCars getWinners() {
@@ -40,7 +39,7 @@ public class Referee {
 	}
 
 	public int getMaxMoveDistance() {
-		return maxMoveDistance;
+		return maxMoveDistance.getMoveDistance();
 	}
 
 }

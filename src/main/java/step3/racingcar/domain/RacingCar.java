@@ -2,26 +2,19 @@ package step3.racingcar.domain;
 
 public class RacingCar {
 
-	private final String name;
-	private int moveDistance;
+	private final Name name;
+	private final MoveDistance moveDistance;
 
 	public RacingCar(final String name) {
-		validate(name);
-		this.name = name;
-	}
-
-	private void validate(final String name) {
-		if (name == null || name.isEmpty()) {
-			throw new IllegalArgumentException("자동차 이름은 필수 값입니다");
-		}
-
-		if (name.length() > 5) {
-			throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-		}
+		this(name, 0);
 	}
 
 	public RacingCar(final String name, final int moveDistance) {
-		this(name);
+		this(new Name(name), new MoveDistance(moveDistance));
+	}
+
+	private RacingCar(final Name name, final MoveDistance moveDistance) {
+		this.name = name;
 		this.moveDistance = moveDistance;
 	}
 
@@ -36,15 +29,23 @@ public class RacingCar {
 	}
 
 	private void increaseMoveDistance() {
-		this.moveDistance += 1;
+		this.moveDistance.increase();
 	}
 
 	public int getMoveDistance() {
-		return this.moveDistance;
+		return this.moveDistance.getMoveDistance();
+	}
+
+	public String getName() {
+		return this.name.getName();
 	}
 
 	public RacingCar copy() {
 		return new RacingCar(this.name, this.moveDistance);
+	}
+
+	public boolean isSameMoveDistance(final MoveDistance moveDistance) {
+		return this.moveDistance.equals(moveDistance);
 	}
 
 
@@ -57,20 +58,16 @@ public class RacingCar {
 
 		final RacingCar racingCar = (RacingCar)o;
 
-		if (moveDistance != racingCar.moveDistance)
+		if (name != null ? !name.equals(racingCar.name) : racingCar.name != null)
 			return false;
-		return name != null ? name.equals(racingCar.name) : racingCar.name == null;
+		return moveDistance != null ? moveDistance.equals(racingCar.moveDistance) : racingCar.moveDistance == null;
 	}
 
 	@Override
 	public int hashCode() {
 		int result = name != null ? name.hashCode() : 0;
-		result = 31 * result + moveDistance;
+		result = 31 * result + (moveDistance != null ? moveDistance.hashCode() : 0);
 		return result;
 	}
 
-	@Override
-	public String toString() {
-		return this.name;
-	}
 }
