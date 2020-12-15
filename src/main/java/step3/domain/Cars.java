@@ -19,4 +19,8 @@ public class Cars {
             car.move(roundTime, moveRule.canMove());
         }
     }
+
+    public List<Car> getValue() {
+        return cars;
+    }
 }

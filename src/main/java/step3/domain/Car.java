@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Car {
     private static final int INIT_DISTANCE = 0;
+    public static final String NO_ROUND_EXCEPTION_MESSAGE = "해당하는 라운드의 경기기록이 없습니다.";
 
     private int distance;
     private List<Round> roundHistory = new ArrayList<>();
@@ -31,5 +32,15 @@ public class Car {
 
     public List<Round> getRoundHistory() {
         return roundHistory;
+    }
+
+    public int getDistanceByRound(int roundNumber) {
+        for(Round round : roundHistory) {
+            if(round.isRound(roundNumber)) {
+                return round.getDistance();
+            }
+        }
+
+        throw new IllegalStateException(NO_ROUND_EXCEPTION_MESSAGE);
     }
 }

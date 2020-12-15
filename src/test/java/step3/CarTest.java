@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import step3.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+import static step3.domain.Car.NO_ROUND_EXCEPTION_MESSAGE;
 
 public class CarTest {
 
@@ -35,5 +37,18 @@ public class CarTest {
         car.move(1, true);
 
         assertThat(car.getRoundHistory().size()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("원하는 라운드를 입력하면 해당 라운드의 거리를 반환한다. 경기하지 않은 Round가 입력될 경우 Exception을 반환한다.")
+    void getDistanceByRound() {
+        car.move(1, true);
+        car.move(2, true);
+        car.move(3, false);
+
+        assertThat(car.getDistanceByRound(3)).isEqualTo(2);
+        assertThatIllegalStateException().isThrownBy(() -> {
+            car.getDistanceByRound(4);
+        }).withMessage(NO_ROUND_EXCEPTION_MESSAGE);
     }
 }
