@@ -14,7 +14,7 @@ public class StringAddCalculator {
         } catch (IllegalArgumentException e) {
             return 0;
         }
-        return textObj.getValues().stream()
+        return textObj.getValues().getValues().stream()
                 .mapToInt(Integer::parseInt)
                 .reduce(0, Integer::sum);
     }

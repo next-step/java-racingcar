@@ -30,7 +30,7 @@ public class TextTest {
     @Test
     public void 텍스트스_값_확인() {
         Text text = new Text("1,2,3,4,5", DUMMY_SPLITTER);
-        List<String> result = text.getValues();
+        List<String> result = text.getValues().getValues();
         assertThat(result.get(0)).isEqualTo("1");
         assertThat(result.get(1)).isEqualTo("2");
         assertThat(result.get(2)).isEqualTo("3");
@@ -41,7 +41,7 @@ public class TextTest {
     @Test
     public void 텍스트_값_확인_커스텀_글자() {
         Text text = new Text("//c\n1,2,3,4,5", DUMMY_SPLITTER);
-        List<String> result = text.getValues();
+        List<String> result = text.getValues().getValues();
         assertThat(result.get(0)).isEqualTo("1");
         assertThat(result.get(1)).isEqualTo("2");
         assertThat(result.get(2)).isEqualTo("3");
