@@ -1,17 +1,19 @@
 package step3.domain;
 
+import step3.utils.RandomNumberGenerator;
+
 public class RacingCarGame {
 	private final Cars cars;
 	private final TryNumber tryNumber;
 
-	public RacingCarGame(CarNumber carNumber, TryNumber tryNumber) {
-		this.cars = new Cars(carNumber.createCars());
+	public RacingCarGame(Names names, TryNumber tryNumber) {
+		this.cars = new Cars(names);
 		this.tryNumber = tryNumber;
 	}
 
 	public void play() {
 		tryNumber.play();
-		cars.goOrStop();
+		cars.goOrStop(RandomNumberGenerator.getInstance());
 	}
 
 	public Cars getCars() {

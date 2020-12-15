@@ -8,12 +8,8 @@ public class Position {
 	private int position;
 
 	public Position(int position) {
-		ValidationUtils.validPositive(position);
+		ValidationUtils.validatePositive(position);
 		this.position = position;
-	}
-
-	public Position() {
-		this(0);
 	}
 
 	public void go() {
@@ -22,6 +18,10 @@ public class Position {
 
 	public int getPosition() {
 		return this.position;
+	}
+
+	public boolean isMaxPosition(int maxPosition) {
+		return position == maxPosition;
 	}
 
 	@Override
