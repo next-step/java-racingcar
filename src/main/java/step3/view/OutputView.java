@@ -7,14 +7,15 @@ public class OutputView {
 
     private static final String DISTANCE_CHARACTER = "-";
     private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String EMPTY_STRING = "";
 
     public void printResult(Cars cars, int rountCount) {
-        System.out.println(RESULT_MESSAGE);
+        ViewUtils.printLine(RESULT_MESSAGE);
 
         for(int i = 0; i < rountCount; i++) {
             printCarsDistance(i, cars);
 
-            System.out.println("");
+            ViewUtils.printLine(EMPTY_STRING);
         }
     }
 
@@ -33,6 +34,6 @@ public class OutputView {
             builder.append(DISTANCE_CHARACTER);
         }
 
-        System.out.println(builder.toString());
+        ViewUtils.printLine(builder.toString());
     }
 }
