@@ -1,4 +1,6 @@
-package step3;
+package step3.domain.rule;
+
+import step3.util.RandomNumberGenerator;
 
 public class RandomMoveRule implements MoveRule {
     public static final int NUMBER_CAN_MOVE = 4;

@@ -2,9 +2,10 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.rule.RandomMoveRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static step3.RandomMoveRule.NUMBER_CAN_MOVE;
+import static step3.domain.rule.RandomMoveRule.NUMBER_CAN_MOVE;
 
 public class RandomMoveRuleTest {
     private static final int NUMBER_CAN_NOT_MOVE = 3;
