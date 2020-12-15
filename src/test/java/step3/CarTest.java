@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -20,7 +21,18 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"true,1", "false,0"})
     void move(boolean input, int expected) {
-        car.move(input);
+        car.move(1, input);
+
         assertThat(car.getDistance()).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("자동차가 한번 움직일 경우, roundHistory 정보가 하나 늘어나냐 한다.")
+    void move_roundHistory() {
+        assertThat(car.getRoundHistory().size()).isEqualTo(0);
+
+        car.move(1, true);
+
+        assertThat(car.getRoundHistory().size()).isEqualTo(1);
     }
 }
