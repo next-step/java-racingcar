@@ -26,14 +26,6 @@ public class Car {
         roundHistory.add(new Round(roundTime, this.distance));
     }
 
-    public int getDistance() {
-        return distance;
-    }
-
-    public List<Round> getRoundHistory() {
-        return roundHistory;
-    }
-
     public int getDistanceByRound(int roundNumber) {
         for(Round round : roundHistory) {
             if(round.isRound(roundNumber)) {
@@ -43,4 +35,13 @@ public class Car {
 
         throw new IllegalStateException(NO_ROUND_EXCEPTION_MESSAGE);
     }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public List<Round> getRoundHistory() {
+        return roundHistory;
+    }
+
 }

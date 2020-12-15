@@ -7,15 +7,15 @@ public class OutputView {
 
     private static final String DISTANCE_CHARACTER = "-";
 
-    public void printResult(Cars cars, int roundTime) {
-        for(int i = 0; i < roundTime; i++) {
+    public void printResult(Cars cars, int rountCount) {
+        for(int i = 0; i < rountCount; i++) {
             printCarsDistance(i, cars);
         }
     }
 
-    private void printCarsDistance(int round, Cars cars) {
+    private void printCarsDistance(int roundTime, Cars cars) {
         for(Car car : cars.getValue()) {
-            int distance = car.getDistanceByRound(round);
+            int distance = car.getDistanceByRound(roundTime);
 
             printDistance(distance);
         }
