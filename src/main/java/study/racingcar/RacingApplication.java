@@ -1,6 +1,10 @@
 package study.racingcar;
 
-import java.util.List;
+import study.racingcar.controller.RacingContest;
+import study.racingcar.dto.RacingResult;
+import study.racingcar.dto.WinnerResults;
+import study.racingcar.view.InputView;
+import study.racingcar.view.OutputView;
 
 public class RacingApplication {
 
@@ -12,14 +16,13 @@ public class RacingApplication {
         int tryNo = inputView.inputTryNo();
 
         RacingContest racingContest = new RacingContest(racingParticipantByName, tryNo);
-
         while (racingContest.isPlaying()) {
             racingContest.play();
             RacingResult racingResult = racingContest.gerResult();
             outputView.printRacingResult(racingResult);
         }
-        List<Car> winners = racingContest.findWinners();
-        outputView.printWinner(winners);
 
+        WinnerResults winners = racingContest.findWinners();
+        outputView.printWinner(winners);
     }
 }
