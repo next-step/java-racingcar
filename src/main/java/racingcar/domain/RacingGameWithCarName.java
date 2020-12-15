@@ -4,8 +4,8 @@ public class RacingGameWithCarName extends RacingGame {
 
     private final CarNames carNames;     // 자동차 이름 목록
 
-    public RacingGameWithCarName(CarNames carNames, int moveCount) {
-        super(carNames.size(), moveCount);
+    public RacingGameWithCarName(CarNames carNames, int tryCount) {
+        super(tryCount);
         this.carNames = carNames;
     }
 

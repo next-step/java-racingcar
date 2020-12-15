@@ -12,10 +12,10 @@ public class ResultViewTest {
     @DisplayName("자동차 상태를 출력하는 기능")
     void print() {
         ResultView resultView = new ResultView();
-        RacingGame racingGame = new RacingGame(3, 5);
+        RacingGame racingGame = new RacingGame(5);
         resultView.print();
         while (racingGame.hasTryCount()) {
-            RacingCars cars = racingGame.start();
+            RacingCars cars = racingGame.start(3, 5);
             resultView.printRacingCars(cars);
         }
     }
@@ -31,7 +31,7 @@ public class ResultViewTest {
         RacingGame racingGame = new RacingGameWithCarName(carNames, 5);
         resultView.print();
         while (racingGame.hasTryCount()) {
-            RacingCars cars = racingGame.start();
+            RacingCars cars = racingGame.start(carNames.size(), 5);
             resultView.printRacingCars(cars);
         }
     }
@@ -47,7 +47,7 @@ public class ResultViewTest {
         RacingGame racingGame = new RacingGameWithCarName(carNames, 5);
         resultView.print();
         while (racingGame.hasTryCount()) {
-            RacingCars cars = racingGame.start();
+            RacingCars cars = racingGame.start(carNames.size(), 5);
             resultView.printRacingCars(cars);
         }
         resultView.printWinners(racingGame.pickWinners());
