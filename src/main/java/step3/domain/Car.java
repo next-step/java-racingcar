@@ -11,8 +11,12 @@ public class Car {
         if(ranNumberRangeCheck(randomNum))
             throw new IllegalArgumentException();
 
-        if(MOVE_CONDITION <= randomNum)
+        if(moveConditionCheck(randomNum))
             moveDistance++;
+    }
+
+    private boolean moveConditionCheck(int randomNum) {
+        return MOVE_CONDITION <= randomNum;
     }
 
     public boolean ranNumberRangeCheck(int randomNum) {
