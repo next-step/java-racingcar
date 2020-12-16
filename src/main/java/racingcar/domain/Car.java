@@ -30,7 +30,7 @@ public class Car {
         return this.name.getName();
     }
 
-    public boolean isMaxPosition(int maxPosition) {
-        return this.position() == maxPosition;
+    public boolean isEqualsPosition(int position) {
+        return this.position() == position;
     }
 }

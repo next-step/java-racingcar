@@ -12,19 +12,19 @@ public class RacingResult {
 
     public void reportRacing(List<Car> cars) {
         for (Car car : cars) {
-            nameView(car);
-            raceView(car);
+            appendNamedView(car);
+            appendRacingView(car);
             racingRounge.append(NEW_LINE);
         }
         racingRounge.append(NEW_LINE);
     }
 
-    private void nameView(Car car) {
+    private void appendNamedView(Car car) {
         racingRounge.append(car.name());
         racingRounge.append(NAME_VIEW);
     }
 
-    private void raceView(Car car) {
+    private void appendRacingView(Car car) {
         if (car.isMoved()) {
             moveView(car);
         }
@@ -40,12 +40,12 @@ public class RacingResult {
         return racingRounge;
     }
 
-    private String winner(List<Car> cars) {
+    private String getWinnersView(List<Car> cars) {
         return cars.stream().map(Car::name)
                 .collect(Collectors.joining(WINNER_SEPARATOR));
     }
 
     public void reportWinner(List<Car> cars) {
-        racingRounge.append(winner(cars));
+        racingRounge.append(getWinnersView(cars));
     }
 }
