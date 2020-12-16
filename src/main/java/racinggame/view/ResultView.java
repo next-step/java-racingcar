@@ -1,35 +1,33 @@
 package racinggame.view;
 
-import racinggame.domain.Car;
+import racinggame.dto.GameResultDto;
+import racinggame.dto.MoveResultDto;
+import racinggame.dto.RoundResultDto;
 
 public class ResultView {
-	public void printResultText() {
+	public String getCarPositionUi(int position) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < position; i++) {
+			sb.append("-");
+		}
+		return sb.toString();
+	}
+
+	public void printWinnerNames(GameResultDto gameResultDto) {
+		System.out.println(gameResultDto.getWinnerNames() + "가 최종 우승했습니다.");
+	}
+
+	private void printRoundResult(RoundResultDto roundResultDto) {
+		for (MoveResultDto moveResultDto : roundResultDto.getRoundResult()) {
+			System.out.println(moveResultDto.getName() + " : " + getCarPositionUi(moveResultDto.getPosition()));
+		}
+	}
+
+	public void printGameResult(GameResultDto gameResultDto) {
 		System.out.println("실행 결과");
-	}
-
-	public void printCarPosition(int position) {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < position; i++) {
-			sb.append("-");
+		for (RoundResultDto roundResultDto : gameResultDto.getGameResult()) {
+			printRoundResult(roundResultDto);
+			System.out.println();
 		}
-		System.out.println(sb.toString());
-	}
-
-	public void printCarInfo(Car car) {
-		int position = car.getPosition();
-		StringBuilder sb = new StringBuilder();
-		sb.append(car.getName()).append(" : ");
-		for (int i = 0; i < position; i++) {
-			sb.append("-");
-		}
-		System.out.println(sb.toString());
-	}
-
-	public void nextLine() {
-		System.out.println();
-	}
-
-	public void printWinnerNames(String winnerNames) {
-		System.out.println(winnerNames + "가 최종 우승했습니다.");
 	}
 }

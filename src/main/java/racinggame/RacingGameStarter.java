@@ -1,10 +1,11 @@
 package racinggame;
 
-import racinggame.domain.CarRacingGame;
+import racinggame.domain.RacingGame;
+import racinggame.dto.GameResultDto;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
-public class CarRacingGameStarter {
+public class RacingGameStarter {
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
 		ResultView resultView = new ResultView();
@@ -12,7 +13,10 @@ public class CarRacingGameStarter {
 		String carNames = inputView.printAndGetCarName();
 		int moveCount = inputView.printAndGetMoveCount();
 
-		CarRacingGame carRacingGame = new CarRacingGame();
-		carRacingGame.start(carNames, moveCount, resultView);
+		RacingGame racingGame = new RacingGame();
+		racingGame.start(carNames, moveCount);
+
+		resultView.printGameResult(racingGame.getGameResultDto());
+		resultView.printWinnerNames(racingGame.getGameResultDto());
 	}
 }

@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import racinggame.domain.Car;
+import racinggame.domain.RandomMoveStrategy;
 
 class CarTest {
 	Car car;
