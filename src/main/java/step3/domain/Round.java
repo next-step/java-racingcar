@@ -2,8 +2,8 @@ package step3.domain;
 
 public class Round {
 
-    private int roundTime;
-    private int distance;
+    private final int roundTime;
+    private final int distance;
 
     public Round(int roundTime, int distance) {
         this.roundTime = roundTime;
