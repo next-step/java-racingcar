@@ -13,10 +13,6 @@ public class ResultView {
 		return sb.toString();
 	}
 
-	public void printWinnerNames(GameResultDto gameResultDto) {
-		System.out.println(gameResultDto.getWinnerNames() + "가 최종 우승했습니다.");
-	}
-
 	private void printRoundResult(RoundResultDto roundResultDto) {
 		for (MoveResultDto moveResultDto : roundResultDto.getRoundResult()) {
 			System.out.println(moveResultDto.getName() + " : " + getCarPositionUi(moveResultDto.getPosition()));
@@ -29,5 +25,9 @@ public class ResultView {
 			printRoundResult(roundResultDto);
 			System.out.println();
 		}
+	}
+
+	public void printWinnerNames(GameResultDto gameResultDto) {
+		System.out.println(gameResultDto.getWinnerNames() + "가 최종 우승했습니다.");
 	}
 }

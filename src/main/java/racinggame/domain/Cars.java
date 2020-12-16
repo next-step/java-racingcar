@@ -9,6 +9,8 @@ import racinggame.dto.MoveResultDto;
 import racinggame.dto.RoundResultDto;
 
 public class Cars {
+	private final static int CAR_NAME_LENGTH = 5;
+
 	private final List<Car> carList;
 
 	public Cars(String carNames) {
@@ -32,7 +34,7 @@ public class Cars {
 			throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
 		}
 
-		if (carName.length() > 5) {
+		if (carName.length() > CAR_NAME_LENGTH) {
 			throw new IllegalArgumentException("자동차 이름 길이는 5자 이하만 가능합니다.");
 		}
 	}
@@ -60,19 +62,19 @@ public class Cars {
 		return new GameResultDto(getWinnerNames(roundResultDtoList), roundResultDtoList);
 	}
 
-	private String getWinnerNames(List<RoundResultDto> roundResultDtoList) {
-		int maxPosition = getMaxPosition(roundResultDtoList.get(roundResultDtoList.size()-1));
-		return roundResultDtoList.get(roundResultDtoList.size()-1).getRoundResult().stream()
-			.filter(mr -> mr.getPosition() == maxPosition)
-			.map(MoveResultDto::getName)
-			.collect(Collectors.joining(","));
-	}
-
 	private int getMaxPosition(RoundResultDto lastRoundResultDto) {
 		int maxPosition = 0;
 		for (MoveResultDto moveResultDto : lastRoundResultDto.getRoundResult()) {
 			maxPosition = Math.max(maxPosition, moveResultDto.getPosition());
 		}
 		return maxPosition;
+	}
+
+	private String getWinnerNames(List<RoundResultDto> roundResultDtoList) {
+		int maxPosition = getMaxPosition(roundResultDtoList.get(roundResultDtoList.size()-1));
+		return roundResultDtoList.get(roundResultDtoList.size()-1).getRoundResult().stream()
+			.filter(mr -> mr.getPosition() == maxPosition)
+			.map(MoveResultDto::getName)
+			.collect(Collectors.joining(", "));
 	}
 }
