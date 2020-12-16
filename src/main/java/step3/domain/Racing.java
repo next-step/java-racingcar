@@ -19,7 +19,6 @@ public class Racing {
 
     public List<Car> carRegistration(int INPUT_NUMBER_OF_CAR_CREATE) {
         IntStream.range(0,INPUT_NUMBER_OF_CAR_CREATE).forEach(i -> car.add(new Car()));
-
         return car;
     }
 
@@ -28,7 +27,6 @@ public class Racing {
     }
 
     public void numberOfCarMove() {
-        for(int i = 0; i< INPUT_NUMBER_OF_MOVE; i++)
-            carsMove();
+        IntStream.range(0,INPUT_NUMBER_OF_MOVE).forEach(i -> carsMove());
     }
 }
