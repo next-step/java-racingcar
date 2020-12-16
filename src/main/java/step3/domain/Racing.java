@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Racing {
 
@@ -17,8 +18,7 @@ public class Racing {
     }
 
     public List<Car> carRegistration(int INPUT_NUMBER_OF_CAR_CREATE) {
-        for(int i = 0; i<INPUT_NUMBER_OF_CAR_CREATE; i++)
-            car.add(new Car());
+        IntStream.range(0,INPUT_NUMBER_OF_CAR_CREATE).forEach(i -> car.add(new Car()));
 
         return car;
     }
