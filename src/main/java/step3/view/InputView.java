@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
-    public int input() {
+    public int input(String message) {
+        System.out.println(message);
         return scanner.nextInt();
     }
 }

@@ -14,9 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
 
-    private Racing racing = new Racing() {
-
-    };
+    private Racing racing;
     private List<Car> carList;
 
     @BeforeEach
@@ -36,7 +34,7 @@ public class RacingTest {
     @DisplayName("자동차 대수 만큼 전진 로직 루프 테스트 코드")
     void carsMove() {
         carList = Arrays.asList(new Car(), new Car(), new Car());
-        racing.carsMove(carList);
+        racing.carsMove();
         List<Integer> moveList = new ArrayList<>();
         for(Car car : carList)
             moveList.add(car.getPosition());
@@ -53,7 +51,9 @@ public class RacingTest {
                 super.move(5);
             }
         };
-        assertThat(racing.numberOfCarMove(car)).isEqualTo(5);
+        racing.car.add(car);
+        racing.numberOfCarMove();
+        assertThat(racing.car.get(0).getPosition()).isEqualTo(5);
 
     }
 }
