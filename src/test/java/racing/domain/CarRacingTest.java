@@ -20,7 +20,7 @@ public class CarRacingTest {
         AtomicInteger count = new AtomicInteger();
         CarRacing racing = new CarRacing("pobi,crong,honux", new RandomMoveStrategy(0, 9), raceCount);
         // when
-        racing.race(dist -> {}, count::getAndIncrement);
+        racing.race((name, dist) -> {}, count::getAndIncrement);
         // then
         assertThat(count.get()).isEqualTo(raceCount);
     }
@@ -39,7 +39,7 @@ public class CarRacingTest {
         String[] names = {"pobi", "crong", "honux"};
         CarRacing racing = new CarRacing(String.join(",", names), () -> true, 5);
         // when
-        racing.race(carContext -> {}, () -> {});
+        racing.race((name, dist) -> {}, () -> {});
         // when
         assertThat(racing.getWinnerCarNames()).isEqualTo(names);
     }

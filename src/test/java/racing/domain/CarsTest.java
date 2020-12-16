@@ -30,7 +30,7 @@ public class CarsTest {
         // when
         cars.moveAll(() -> true);
         // then
-        cars.iterateCar(distance -> assertThat(distance.getMovedDistance()).isEqualTo(1));
+        cars.iterateCar((name, distance) -> assertThat(distance).isEqualTo(1));
     }
 
     @ParameterizedTest

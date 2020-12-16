@@ -2,7 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 
 import static racing.common.Verify.checkArgument;
 import static racing.domain.CarRacingProperty.MAX_RANDOM_NUMBER;
@@ -27,7 +27,7 @@ public class CarRacing {
         this.raceCount = raceCount;
     }
 
-    public void race(Consumer<CarContext> carConsumer, Runnable roundEnded) {
+    public void race(BiConsumer<String, Integer> carConsumer, Runnable roundEnded) {
         for (int i = 0; i < raceCount; i++) {
             cars.moveAll(moveStrategy);
             cars.iterateCar(carConsumer);
@@ -38,13 +38,16 @@ public class CarRacing {
     public String[] getWinnerCarNames() {
         int maxMovedDistance = cars.getMaxMovedDistance();
         List<String> winnerCarNames = new ArrayList<>();
-        cars.iterateCar(carContext -> addWinnerCarName(winnerCarNames, carContext, maxMovedDistance));
+        cars.iterateCar((name, distance) -> addWinnerCarName(winnerCarNames, name, distance, maxMovedDistance));
         return winnerCarNames.toArray(new String[0]);
     }
 
-    private void addWinnerCarName(List<String> winnerCarNames, CarContext carContext, int maxMovedDistance) {
-        if (carContext.getMovedDistance() == maxMovedDistance) {
-            winnerCarNames.add(carContext.getName());
+    private void addWinnerCarName(List<String> winnerCarNames,
+                                  String carName,
+                                  int distance,
+                                  int maxMovedDistance) {
+        if (distance == maxMovedDistance) {
+            winnerCarNames.add(carName);
         }
     }
 }

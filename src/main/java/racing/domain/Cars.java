@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 
 import static racing.common.Verify.checkArgument;
 
@@ -37,9 +37,9 @@ public class Cars {
         }
     }
 
-    public void iterateCar(Consumer<CarContext> carConsumer) {
+    public void iterateCar(BiConsumer<String, Integer> carConsumer) {
         for (Car car : cars) {
-            carConsumer.accept(car.getContext());
+            carConsumer.accept(car.getName(), car.getMovedDistance());
         }
     }
 

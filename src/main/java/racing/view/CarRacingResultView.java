@@ -1,9 +1,7 @@
 package racing.view;
 
-import racing.domain.CarContext;
-
 import java.util.Arrays;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 
 public class CarRacingResultView {
 
@@ -11,11 +9,11 @@ public class CarRacingResultView {
         System.out.println("\n실행 결과");
     }
 
-    public static Consumer<CarContext> printRacingResult() {
-        return carContext -> {
-            char[] chars = new char[carContext.getMovedDistance()];
+    public static BiConsumer<String, Integer> printRacingResult() {
+        return (name, distance) -> {
+            char[] chars = new char[distance];
             Arrays.fill(chars, '-');
-            System.out.println(carContext.getName() + " : " + new String(chars));
+            System.out.println(name + " : " + new String(chars));
         };
     }
 
