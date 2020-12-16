@@ -9,16 +9,15 @@ import java.util.Scanner;
  * @author minji
  */
 public class CarRacingGameInputView {
-    String[] carName;
+    private String[] carName;
 
-    CarRacingGameInputView(String names) {
+    CarRacingGameInputView(String names, int playCount) {
         this.carName = names.split(",");
     }
 
     public List<String> getCarName() {
         List<String> carNames = new ArrayList<String>();
-        for (int i = 0; i < carName.length; i++){
-            String name = carName[i];
+        for (String name:carName){
             carNames.add(name);
         }
         return carNames;

@@ -16,19 +16,19 @@ public class CarMain {
         int playCount = scanner.nextInt();
 
         // CarRacingGameInputView : 입력 View 객체
-        CarRacingGameInputView input = new CarRacingGameInputView(names);
+        CarRacingGameInputView input = new CarRacingGameInputView(names, playCount);
         List<String> carName = input.getCarName();
 
         // CarRacingGame : 도메인 객체 (자동차 경주 게임에 대한 역할 담당)
         CarRacingGame carRacingGame = new CarRacingGame(carName, playCount);
 
         System.out.println("실행 결과");
-       while(carRacingGame.tryNo.racing()) {
+       while(carRacingGame.getTryNo().racing()) {
             carRacingGame.playGame(new RandomMovingStrategy());
             // CarRacingGameOutputView : 출력 View 객체
             CarRacingGameOutputView.displayResult(carRacingGame.getCars());
             System.out.println();
         }
-        CarRacingGameOutputView.displayWinner(carRacingGame.getCars());
+        carRacingGame.displayFinalWinners();
     }
 }

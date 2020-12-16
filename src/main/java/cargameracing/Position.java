@@ -8,7 +8,7 @@ public class Position {
     public int junjin;
 
     public Position() {
-        new Position(0);
+        this(0);
     }
 
     public Position(int position) {
