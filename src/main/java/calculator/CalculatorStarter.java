@@ -1,4 +1,4 @@
-package stringcalculator;
+package calculator;
 
 import java.io.IOException;
 import java.util.Scanner;

@@ -1,4 +1,6 @@
-package carracinggame;
+package racinggame.view;
+
+import racinggame.domain.Car;
 
 public class ResultView {
 	public void printResultText() {

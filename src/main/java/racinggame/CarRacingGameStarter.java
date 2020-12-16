@@ -1,4 +1,8 @@
-package carracinggame;
+package racinggame;
+
+import racinggame.domain.CarRacingGame;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 public class CarRacingGameStarter {
 	public static void main(String[] args) {

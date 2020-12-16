@@ -1,4 +1,4 @@
-package stringcalculator;
+package calculator;
 
 public class PlusOperator implements Operator {
 	@Override

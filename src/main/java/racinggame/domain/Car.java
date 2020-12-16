@@ -1,4 +1,6 @@
-package carracinggame;
+package racinggame.domain;
+
+import racinggame.MoveStrategy;
 
 public class Car {
 	private int position = 1;

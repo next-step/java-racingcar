@@ -1,8 +1,11 @@
-package carracinggame;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import racinggame.RandomMoveStrategy;
+import racinggame.view.ResultView;
 
 public class CarRacingGame {
 	public void start(String carNames, int moveCount, ResultView resultView) {
