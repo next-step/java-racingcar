@@ -31,6 +31,10 @@ public class Car {
 		return value >= MIN_MOVABLE_NUMBER;
 	}
 
+	public boolean isMaxPosition(int maxPosition) {
+		return position.isMaxPosition(maxPosition);
+	}
+
 	public Position getPosition() {
 		return position;
 	}

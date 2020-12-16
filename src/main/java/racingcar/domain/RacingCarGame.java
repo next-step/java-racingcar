@@ -7,7 +7,7 @@ public class RacingCarGame {
 	private final TryNumber tryNumber;
 
 	public RacingCarGame(Names names, TryNumber tryNumber) {
-		this.cars = new Cars(names);
+		this.cars = CarsCreator.create(names);
 		this.tryNumber = tryNumber;
 	}
 

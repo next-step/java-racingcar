@@ -13,17 +13,6 @@ public class Cars {
 		this.cars = Collections.unmodifiableList(cars);
 	}
 
-	public Cars(Names names) {
-		this(createCars(names));
-	}
-
-	static List<Car> createCars(Names names) {
-		return names.getNameList()
-			.stream()
-			.map(Car::new)
-			.collect(Collectors.toList());
-	}
-
 	public void goOrStop(NumberGenerator numberGenerator) {
 		cars.forEach(car -> car.goOrStop(numberGenerator.generate()));
 	}
@@ -35,7 +24,7 @@ public class Cars {
 	public List<Car> findWinners() {
 		int maxPosition = findMaxPosition();
 		List<Car> winners = cars.stream()
-			.filter(car -> car.getPosition().isMaxPosition(maxPosition))
+			.filter(car -> car.isMaxPosition(maxPosition))
 			.collect(Collectors.toList());
 
 		return Collections.unmodifiableList(winners);
