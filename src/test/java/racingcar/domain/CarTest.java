@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
-    private final Car car = new Car();
+    private final Car car = new Car(new Name("mkkim90"));
 
     @Test
     @DisplayName("조건 0~9 범위 유효성 검증")

@@ -2,28 +2,35 @@ package racingcar.domain;
 
 import racingcar.util.ValidateUtils;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
-    private static final String VALID_MIN_NO = "최소 자동차 1대 이상입니다.";
+    private static final String NAME_SEPARATOR = ",";
+    private static final String VALID_SEPARATOR_MESSAGE = "자동차 이름 구분자 쉼표(,)가 없습니다.";
+    private static final String VALID_MAX_POSITION_MESSAGE = "최대 이동 차가 존재하지 않습니다.";
     private final List<Car> cars;
 
-    public Cars(int no) {
-        this.cars = Stream.generate(() -> new Car())
-                .limit(no)
-                .collect(Collectors.toList());
+    public Cars(String names) {
+        validateCars(names);
+        this.cars = Arrays.stream(names.split(NAME_SEPARATOR))
+                .map(name -> new Car(new Name(name)))
+                .collect(toList());
     }
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    private void validateCars(int carCount) {
-        if (ValidateUtils.validateMin(carCount)) {
-            throw new IllegalArgumentException(VALID_MIN_NO);
+    private void validateCars(String names) {
+        ValidateUtils.validateEmpty(names);
+        validateSeparator(names);
+    }
+
+    private void validateSeparator(String names) {
+        if (!names.contains(NAME_SEPARATOR)) {
+            throw new IllegalArgumentException(VALID_SEPARATOR_MESSAGE);
         }
     }
 
@@ -35,5 +42,18 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(this.cars);
+    }
+
+    private int getMaxposition() {
+        return this.cars.stream()
+                .mapToInt(Car::position)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException(VALID_MAX_POSITION_MESSAGE));
+    }
+
+    public List<Car> getWinners() {
+        return this.cars.stream()
+                .filter(car -> car.isEqualsPosition(getMaxposition()))
+                .collect(toList());
     }
 }

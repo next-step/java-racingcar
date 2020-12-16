@@ -13,9 +13,9 @@ public class RacingCar {
     public void start() {
         for (int i = 0; i < count.getCount(); i++) {
             cars.run();
-            racingResult.report(cars.getCars());
+            racingResult.reportRacing(cars.getCars());
         }
-
+        racingResult.reportWinner(cars.getWinners());
     }
 
     public RacingResult getRacingResult() {

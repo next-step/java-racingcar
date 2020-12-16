@@ -1,23 +1,30 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingResult {
     private static final String MOVE_VIEW = "-";
-    private static final String DEFAULT_VIEW = "";
     private static final String NEW_LINE = "\n";
+    private static final String NAME_VIEW = " : ";
+    private static final String WINNER_SEPARATOR = ",";
     private final StringBuilder racingRounge = new StringBuilder();
 
-    public void report(List<Car> cars) {
-        racingRounge.append(DEFAULT_VIEW);
+    public void reportRacing(List<Car> cars) {
         for (Car car : cars) {
-            raceView(car);
+            appendNamedView(car);
+            appendRacingView(car);
             racingRounge.append(NEW_LINE);
         }
         racingRounge.append(NEW_LINE);
     }
 
-    private void raceView(Car car) {
+    private void appendNamedView(Car car) {
+        racingRounge.append(car.name());
+        racingRounge.append(NAME_VIEW);
+    }
+
+    private void appendRacingView(Car car) {
         if (car.isMoved()) {
             moveView(car);
         }
@@ -31,5 +38,14 @@ public class RacingResult {
 
     public StringBuilder racingRounge() {
         return racingRounge;
+    }
+
+    private String getWinnersView(List<Car> cars) {
+        return cars.stream().map(Car::name)
+                .collect(Collectors.joining(WINNER_SEPARATOR));
+    }
+
+    public void reportWinner(List<Car> cars) {
+        racingRounge.append(getWinnersView(cars));
     }
 }
