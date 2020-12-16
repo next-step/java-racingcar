@@ -39,6 +39,6 @@ public class RacingTest {
         List<Integer> moveList = new ArrayList<>();
         for(Car car : carList)
             moveList.add(car.getPosition());
-        assertThat(moveList).containsOnly(0,1);
+        assertThat(moveList).containsAnyOf(0,1);
     }
 }
