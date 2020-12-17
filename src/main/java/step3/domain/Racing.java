@@ -18,8 +18,9 @@ public class Racing {
     }
 
     public List<Car> carRegistration(int INPUT_NUMBER_OF_CAR_CREATE) {
-        IntStream.range(0,INPUT_NUMBER_OF_CAR_CREATE).forEach(i -> car.add(new Car()));
-        return car;
+    retrun Stream.generator(Car::new)
+    .limit(INPUT_NUMBER_OF_CAR_CREATE)
+    .collect(toList());
     }
 
     public void carsMove() {
