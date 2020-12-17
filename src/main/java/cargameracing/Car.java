@@ -7,22 +7,19 @@ import java.util.Random;
  * @author minji
  */
 public class Car {
-    Random random = new Random();
-    private int junjin;
+    private Name name;
+    private Position junjin = new Position();
 
-    public void junjinUp() {
-        int num = randomValue();
-        if (num >= 4) {
-            ++junjin;
+    public Car(String name) {
+        this.name = new Name(name);
+    }
+
+    public void junjinUp(MovingStrategy MovingStrategy) {
+        if (MovingStrategy.isMove()) {
+            junjin.move();
         }
     }
 
-    public int randomValue() {
-        int randomNum = random.nextInt(10);
-        return randomNum;
-    }
-
-    public int getJunjin() {
-        return junjin;
-    }
+    public String getName() { return name.getName(); }
+    public int getJunjin() { return junjin.getPosition(); }
 }

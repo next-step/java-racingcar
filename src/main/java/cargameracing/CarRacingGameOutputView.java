@@ -1,11 +1,13 @@
 package cargameracing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * View Role
  * @author minji
  */
 public class CarRacingGameOutputView {
-
     public static void displayResult(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
             gameResult(cars[i]);
@@ -15,6 +17,7 @@ public class CarRacingGameOutputView {
 
     public static void gameResult(Car car) {
         int junjinCount = car.getJunjin();
+        System.out.print(car.getName() + " : ");
         for (int j = 0; j < junjinCount; j++) {
             System.out.print("-");
         }

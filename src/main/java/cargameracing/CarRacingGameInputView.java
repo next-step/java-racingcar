@@ -1,5 +1,7 @@
 package cargameracing;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -7,26 +9,17 @@ import java.util.Scanner;
  * @author minji
  */
 public class CarRacingGameInputView {
-    int carCount;
-    int playCount;
+    private String[] carName;
 
-    CarRacingGameInputView() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        String value = scanner.nextLine();
-        int carCount = Integer.parseInt(value);
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int playCount = scanner.nextInt();
-        this.carCount = carCount;
-        this.playCount = playCount;
+    CarRacingGameInputView(String names, int playCount) {
+        this.carName = names.split(",");
     }
 
-    public int getCarCount() {
-        return carCount;
+    public List<String> getCarName() {
+        List<String> carNames = new ArrayList<String>();
+        for (String name:carName){
+            carNames.add(name);
+        }
+        return carNames;
     }
-
-    public int getPlayCount() {
-        return playCount;
-    }
-
 }
