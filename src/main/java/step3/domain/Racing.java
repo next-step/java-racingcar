@@ -5,12 +5,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class Racing {
 
-    public List<Car> car = new ArrayList<>();
+    private List<Car> car = new ArrayList<>();
     public static int INPUT_NUMBER_OF_MOVE = 0;
     public static int INPUT_NUMBER_OF_CAR_CREATE = 0;
+
+    public void setCar(List<Car> car) {
+        this.car = car;
+    }
+
+    public List<Car> getCar() {
+        return car;
+    }
 
     private int randomNumber() {
         Random random = new Random();
@@ -18,9 +29,9 @@ public class Racing {
     }
 
     public List<Car> carRegistration(int INPUT_NUMBER_OF_CAR_CREATE) {
-    retrun Stream.generator(Car::new)
-    .limit(INPUT_NUMBER_OF_CAR_CREATE)
-    .collect(toList());
+        return Stream.generate(Car::new)
+        .limit(INPUT_NUMBER_OF_CAR_CREATE)
+        .collect(toList());
     }
 
     public void carsMove() {

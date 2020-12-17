@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -51,9 +52,9 @@ public class RacingTest {
                 super.move(5);
             }
         };
-        racing.car.add(car);
+        racing.setCar(Collections.singletonList(car));
         racing.numberOfCarMove();
-        assertThat(racing.car.get(0).getPosition()).isEqualTo(5);
+        assertThat(racing.getCar().get(0).getPosition()).isEqualTo(5);
 
     }
 }
