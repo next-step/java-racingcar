@@ -1,22 +1,29 @@
 package racing.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.IntConsumer;
+import java.util.function.BiConsumer;
 
 import static racing.common.Verify.checkArgument;
 
 public class Cars {
 
-    private static final String CAR_COUNT_ERROR_MESSAGE = "The number of cars must be at least 1";
+    public static final String CAR_NAME_DELIMITER = ",";
+
+    private static final String INVALID_INPUT_MESSAGE = "input cannot be null or empty";
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(int count) {
-        checkArgument(count > 0, CAR_COUNT_ERROR_MESSAGE);
+    public Cars(String input) {
+        checkArgument(StringUtils.isNotBlank(input), INVALID_INPUT_MESSAGE);
 
-        for (int j = 0; j < count; j++) {
-            cars.add(new Car());
+        String[] carNames = input.split(CAR_NAME_DELIMITER);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 
@@ -30,10 +37,15 @@ public class Cars {
         }
     }
 
-    public void iterateCar(IntConsumer distanceConsumer) {
+    public void iterateCar(BiConsumer<String, Integer> carConsumer) {
         for (Car car : cars) {
-            distanceConsumer.accept(car.getMovedDistance());
+            carConsumer.accept(car.getName(), car.getMovedDistance());
         }
+    }
+
+    public int getMaxMovedDistance() {
+        return Collections.max(cars, Comparator.comparingInt(Car::getMovedDistance))
+                          .getMovedDistance();
     }
 
     private void tryMove(Car car, MoveStrategy strategy) {

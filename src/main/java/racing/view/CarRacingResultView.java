@@ -1,23 +1,27 @@
 package racing.view;
 
 import java.util.Arrays;
-import java.util.function.IntConsumer;
+import java.util.function.BiConsumer;
 
 public class CarRacingResultView {
 
     public static void printRacingResultHeader() {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
     }
 
-    public static IntConsumer printRacingResult() {
-        return distance -> {
+    public static BiConsumer<String, Integer> printRacingResult() {
+        return (name, distance) -> {
             char[] chars = new char[distance];
             Arrays.fill(chars, '-');
-            System.out.println(new String(chars));
+            System.out.println(name + " : " + new String(chars));
         };
     }
 
     public static Runnable printRaceFooter() {
         return System.out::println;
+    }
+
+    public static void printRacingWinners(String[] winners) {
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 }
