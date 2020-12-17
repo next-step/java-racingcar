@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import com.sun.deploy.util.StringUtils;
 import racingcar.util.ValidateUtils;
 
 public class Name {
