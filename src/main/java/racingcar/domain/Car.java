@@ -15,7 +15,7 @@ public class Car {
     }
 
     private void move() {
-       this.position.add();
+        this.position.add();
     }
 
     public int position() {

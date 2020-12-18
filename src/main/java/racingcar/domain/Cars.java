@@ -2,7 +2,9 @@ package racingcar.domain;
 
 import racingcar.util.ValidateUtils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 

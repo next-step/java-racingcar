@@ -13,7 +13,7 @@ public class Count {
     }
 
     private void validateCount(int count) {
-        if(ValidateUtils.validateMin(count)) {
+        if (ValidateUtils.validateMin(count)) {
             throw new IllegalArgumentException(VALID_MIN_COUNT);
         }
     }
