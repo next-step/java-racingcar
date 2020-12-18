@@ -13,6 +13,7 @@ public class CarRacingMain {
         printRacingResultHeader();
 
         carRacing.race(printRacingResult(), printRaceFooter());
+
         printRacingWinners(carRacing.getWinnerCarNames());
     }
 }
