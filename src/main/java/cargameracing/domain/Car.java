@@ -1,6 +1,4 @@
-package cargameracing;
-
-import java.util.Random;
+package cargameracing.domain;
 
 /**
  * Car Object

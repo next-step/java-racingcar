@@ -1,4 +1,4 @@
-package cargameracing;
+package cargameracing.domain;
 
 public class TryNo {
     private int tryNo;

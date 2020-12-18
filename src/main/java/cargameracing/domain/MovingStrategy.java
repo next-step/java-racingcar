@@ -1,4 +1,4 @@
-package cargameracing;
+package cargameracing.domain;
 
 @FunctionalInterface
 public interface MovingStrategy {

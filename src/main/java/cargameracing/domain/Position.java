@@ -1,6 +1,4 @@
-package cargameracing;
-
-import javafx.geometry.Pos;
+package cargameracing.domain;
 
 import java.util.Objects;
 
