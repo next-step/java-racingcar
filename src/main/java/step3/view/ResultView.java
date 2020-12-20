@@ -5,7 +5,6 @@ import step3.domain.Car;
 import java.util.List;
 import java.util.stream.IntStream;
 
-
 public class ResultView {
 
     public void carPositionPrints(List<Car> car) {

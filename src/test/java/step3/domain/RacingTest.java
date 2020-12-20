@@ -45,15 +45,14 @@ public class RacingTest {
     @Test
     @DisplayName("전진 횟수 만큼 전진 로직 루프 테스트 코드")
     void numberOfCarMove() {
-        Racing.INPUT_NUMBER_OF_MOVE = 5;
         Car car = new Car() {
             @Override
-            public void move(int randomNum) {
-                super.move(5);
+            public void move(MovingStrategy movingStrategy) {
+                super.move(() -> true);
             }
         };
         racing.setCar(Collections.singletonList(car));
-        racing.numberOfCarMove();
+        racing.numberOfCarMove(5);
         assertThat(racing.getCar().get(0).getPosition()).isEqualTo(5);
 
     }

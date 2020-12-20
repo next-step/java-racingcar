@@ -1,19 +1,14 @@
 package step3.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
 public class Racing {
-
     private List<Car> car = new ArrayList<>();
-    public static int INPUT_NUMBER_OF_MOVE = 0;
-    public static int INPUT_NUMBER_OF_CAR_CREATE = 0;
 
     public void setCar(List<Car> car) {
         this.car = car;
@@ -23,22 +18,17 @@ public class Racing {
         return car;
     }
 
-    private int randomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
-    public List<Car> carRegistration(int INPUT_NUMBER_OF_CAR_CREATE) {
+    public List<Car> carRegistration(int createCar) {
         return Stream.generate(Car::new)
-        .limit(INPUT_NUMBER_OF_CAR_CREATE)
+        .limit(createCar)
         .collect(toList());
     }
 
     public void carsMove() {
-        car.forEach(s -> s.move(randomNumber()));
+        car.forEach(s -> s.move(new CarMovingStrategy()));
     }
 
-    public void numberOfCarMove() {
-        IntStream.range(0,INPUT_NUMBER_OF_MOVE).forEach(i -> carsMove());
+    public void numberOfCarMove(int moveCount) {
+        IntStream.range(0,moveCount).forEach(i -> carsMove());
     }
 }

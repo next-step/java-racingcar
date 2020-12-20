@@ -9,12 +9,12 @@ public class RacingMain {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        Racing.INPUT_NUMBER_OF_CAR_CREATE = inputView.input("자동차 대수는 몇 대 인가요?");
-        Racing.INPUT_NUMBER_OF_MOVE = inputView.input("시도할 회수는 몇 회 인가요?");
+        int createCars = inputView.input("자동차 대수는 몇 대 인가요?");
+        int moveCount = inputView.input("시도할 회수는 몇 회 인가요?");
 
         Racing racing = new Racing();
-        racing.setCar(racing.carRegistration(Racing.INPUT_NUMBER_OF_CAR_CREATE));
-        racing.numberOfCarMove();
+        racing.setCar(racing.carRegistration(createCars));
+        racing.numberOfCarMove(moveCount);
 
         resultView.carPositionPrints(racing.getCar());
     }
