@@ -11,13 +11,12 @@ import racinggame.dto.RoundResultDto;
 public class Cars {
 	private final static int CAR_NAME_LENGTH = 5;
 
-	private final List<Car> carList;
+	private final List<Car> carList = new ArrayList<>();
 
-	public Cars(String carNames) {
+	public void createCarsWithCarNames(String carNames) {
 		isEmptyOrNullCarName(carNames);
 		String[] carNamesArray = carNames.split(",");
 		isValidCarNames(carNamesArray);
-		carList = new ArrayList<>();
 		for (String carName : carNamesArray) {
 			carList.add(new Car(carName, new RandomMoveStrategy()));
 		}
@@ -73,7 +72,7 @@ public class Cars {
 	private String getWinnerNames(List<RoundResultDto> roundResultDtoList) {
 		int maxPosition = getMaxPosition(roundResultDtoList.get(roundResultDtoList.size()-1));
 		return roundResultDtoList.get(roundResultDtoList.size()-1).getRoundResult().stream()
-			.filter(mr -> mr.getPosition() == maxPosition)
+			.filter(mr -> mr.isEqualPosition(maxPosition))
 			.map(MoveResultDto::getName)
 			.collect(Collectors.joining(", "));
 	}

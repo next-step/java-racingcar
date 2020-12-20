@@ -14,9 +14,9 @@ public class RacingGameStarter {
 		int moveCount = inputView.printAndGetMoveCount();
 
 		RacingGame racingGame = new RacingGame();
-		racingGame.start(carNames, moveCount);
+		GameResultDto gameResult = racingGame.start(carNames, moveCount);
 
-		resultView.printGameResult(racingGame.getGameResultDto());
-		resultView.printWinnerNames(racingGame.getGameResultDto());
+		resultView.printGameResult(gameResult);
+		resultView.printWinnerNames(gameResult);
 	}
 }
