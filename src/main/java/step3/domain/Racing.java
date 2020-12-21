@@ -1,34 +1,26 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
 
 public class Racing {
-    private List<Car> car = new ArrayList<>();
+    private Cars cars;
 
-    public void setCar(List<Car> car) {
-        this.car = car;
+    public void init(int createCarCount, int moveCount) {
+        cars = new Cars();
+        cars.carRegistration(createCarCount);
+        numberOfCarMove(moveCount);
     }
 
-    public List<Car> getCar() {
-        return car;
+    protected void carsMove() {
+        cars.getCars().forEach(s -> s.move(new CarMovingStrategy()));
     }
 
-    public List<Car> carRegistration(int createCar) {
-        return Stream.generate(Car::new)
-        .limit(createCar)
-        .collect(toList());
-    }
-
-    public void carsMove() {
-        car.forEach(s -> s.move(new CarMovingStrategy()));
-    }
-
-    public void numberOfCarMove(int moveCount) {
+    private void numberOfCarMove(int moveCount) {
         IntStream.range(0,moveCount).forEach(i -> carsMove());
+    }
+
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 }

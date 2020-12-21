@@ -13,10 +13,8 @@ public class RacingMain {
         int moveCount = inputView.input("시도할 회수는 몇 회 인가요?");
 
         Racing racing = new Racing();
-        racing.setCar(racing.carRegistration(createCars));
-        racing.numberOfCarMove(moveCount);
+        racing.init(createCars,moveCount);
 
-        resultView.carPositionPrints(racing.getCar());
+        resultView.carPositionPrints(racing.getCars());
     }
-
 }
