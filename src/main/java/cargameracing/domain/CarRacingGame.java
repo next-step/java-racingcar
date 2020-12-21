@@ -1,4 +1,4 @@
-package cargameracing;
+package cargameracing.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,11 +22,6 @@ public class CarRacingGame {
     }
 
     public void playGame(MovingStrategy movingStrategy) {
-/*
-        for (int j = 0; j < cars.length; j++) {
-            cars[j].junjinUp(movingStrategy);
-        }
-*/
         Arrays.stream(cars)
                 .forEach(cars -> cars.junjinUp(movingStrategy));
     }
@@ -36,11 +31,11 @@ public class CarRacingGame {
     }
     public TryNo getTryNo() { return this.tryNo; }
 
-    public void displayFinalWinners() {
-        filterWinners();
+    public List<String> displayFinalWinners() {
+       return filterWinners();
     }
 
-    public void filterWinners() {
+    public List<String> filterWinners() {
         int maxPosition = getMaxPosition();
 
         List<String> winners = new ArrayList<>();
@@ -49,19 +44,7 @@ public class CarRacingGame {
                 winners.add(car.getName());
             }
         }
-        displayWinners(winners);
-    }
-
-    public void displayWinners(List<String> winners) {
-        for (int i = 0; i < winners.size(); i++) {
-            if (i != winners.size() - 1) {
-                System.out.print(winners.get(i) + ", ");
-            }
-            if (i == winners.size() - 1) {
-                System.out.print(winners.get(i));
-            }
-        }
-        System.out.print("가 최종 우승했습니다.");
+        return winners;
     }
 
     public int getMaxPosition() {

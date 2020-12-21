@@ -1,4 +1,4 @@
-package cargameracing;
+package cargameracing.domain;
 
 import java.util.Objects;
 

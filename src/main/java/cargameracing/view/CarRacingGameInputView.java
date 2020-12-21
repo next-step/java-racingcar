@@ -1,4 +1,4 @@
-package cargameracing;
+package cargameracing.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class CarRacingGameInputView {
     private String[] carName;
 
-    CarRacingGameInputView(String names, int playCount) {
+    public CarRacingGameInputView(String names, int playCount) {
         this.carName = names.split(",");
     }
 

@@ -1,4 +1,9 @@
-package cargameracing;
+package cargameracing.controller;
+
+import cargameracing.domain.CarRacingGame;
+import cargameracing.view.CarRacingGameInputView;
+import cargameracing.view.CarRacingGameOutputView;
+import cargameracing.domain.RandomMovingStrategy;
 
 import java.util.List;
 import java.util.Scanner;
@@ -21,14 +26,15 @@ public class CarMain {
 
         // CarRacingGame : 도메인 객체 (자동차 경주 게임에 대한 역할 담당)
         CarRacingGame carRacingGame = new CarRacingGame(carName, playCount);
-
+        CarRacingGameOutputView output = new CarRacingGameOutputView();
+        
         System.out.println("실행 결과");
        while(carRacingGame.getTryNo().racing()) {
             carRacingGame.playGame(new RandomMovingStrategy());
             // CarRacingGameOutputView : 출력 View 객체
-            CarRacingGameOutputView.displayResult(carRacingGame.getCars());
+           output.displayResult(carRacingGame.getCars());
             System.out.println();
         }
-        carRacingGame.displayFinalWinners();
+        output.displayFinalWinners(carRacingGame.displayFinalWinners());
     }
 }
