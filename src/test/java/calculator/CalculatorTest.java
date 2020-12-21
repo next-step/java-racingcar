@@ -1,4 +1,4 @@
-package stringcalculator;
+package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 

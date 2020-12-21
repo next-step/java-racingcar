@@ -1,10 +1,13 @@
-package carracinggame;
+package racinggame;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import racinggame.domain.Car;
+import racinggame.domain.RandomMoveStrategy;
 
 class CarTest {
 	Car car;
