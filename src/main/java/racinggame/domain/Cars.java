@@ -9,22 +9,13 @@ import racinggame.dto.MoveResultDto;
 import racinggame.dto.RoundResultDto;
 
 public class Cars {
-	private final static int CAR_NAME_LENGTH = 5;
+	private final List<Car> carList;
 
-	private final List<Car> carList = new ArrayList<>();
-
-	public void createCarsWithCarNames(String carNames) {
-		isEmptyOrNullCarName(carNames);
-		String[] carNamesArray = carNames.split(",");
+	public Cars(String[] carNamesArray) {
 		isValidCarNames(carNamesArray);
+		carList = new ArrayList<>();
 		for (String carName : carNamesArray) {
 			carList.add(new Car(carName, new RandomMoveStrategy()));
-		}
-	}
-
-	private void isEmptyOrNullCarName(String carName) {
-		if (carName == null || carName.isEmpty()) {
-			throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
 		}
 	}
 
@@ -33,7 +24,7 @@ public class Cars {
 			throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
 		}
 
-		if (carName.length() > CAR_NAME_LENGTH) {
+		if (carName.length() > 5) {
 			throw new IllegalArgumentException("자동차 이름 길이는 5자 이하만 가능합니다.");
 		}
 	}
@@ -61,19 +52,19 @@ public class Cars {
 		return new GameResultDto(getWinnerNames(roundResultDtoList), roundResultDtoList);
 	}
 
-	private int getMaxPosition(RoundResultDto lastRoundResultDto) {
-		int maxPosition = 0;
-		for (MoveResultDto moveResultDto : lastRoundResultDto.getRoundResult()) {
-			maxPosition = Math.max(maxPosition, moveResultDto.getPosition());
-		}
-		return maxPosition;
-	}
-
 	private String getWinnerNames(List<RoundResultDto> roundResultDtoList) {
 		int maxPosition = getMaxPosition(roundResultDtoList.get(roundResultDtoList.size()-1));
 		return roundResultDtoList.get(roundResultDtoList.size()-1).getRoundResult().stream()
 			.filter(mr -> mr.isEqualPosition(maxPosition))
 			.map(MoveResultDto::getName)
 			.collect(Collectors.joining(", "));
+	}
+
+	private int getMaxPosition(RoundResultDto lastRoundResultDto) {
+		int maxPosition = 0;
+		for (MoveResultDto moveResultDto : lastRoundResultDto.getRoundResult()) {
+			maxPosition = Math.max(maxPosition, moveResultDto.getPosition());
+		}
+		return maxPosition;
 	}
 }
