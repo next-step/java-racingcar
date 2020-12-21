@@ -12,7 +12,12 @@ public enum Operation {
     PLUS("+", Integer::sum),
     MINUS("-", (firstValue, secondValue) -> firstValue - secondValue),
     MULTIPLY("*", (firstValue, secondValue) -> firstValue * secondValue),
-    DIVISION("/", (firstValue, secondValue) -> firstValue / secondValue);
+    DIVISION("/", (firstValue, secondValue) -> {
+        if(firstValue == 0 || secondValue == 0)
+           throw new ArithmeticException();
+        return firstValue / secondValue;
+    });
+
 
     private final String arithmeticOperation;
     private final IntBinaryOperator intBinaryOperator;

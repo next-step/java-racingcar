@@ -1,6 +1,7 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -35,6 +36,15 @@ public class OperationTest {
     @CsvSource(value = {"50:5:10", "6:2:3", "60:10:6"}, delimiter = ':')
     void division(int firstValue, int secondValue, int result) {
         assertThat(DIVISION.operation(firstValue,secondValue)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("나눗셈 0으로 나눴을 시 예외처리 테스트 코드")
+    void divisionValueZero() {
+        assertThatExceptionOfType(ArithmeticException.class)
+                .isThrownBy(() -> {
+                    assertThat(DIVISION.operation(0,2)).isEqualTo(0);
+                });
     }
 
     @ParameterizedTest
