@@ -20,12 +20,12 @@ public class RacingTest {
 
     @Test
     @DisplayName("자동차 대수 만큼 전진 로직 루프 테스트 코드")
-    void carsMove() {
-        racing.setCars(Racing.racingGameStart(5));
+    void moveCars() {
+        racing.setCars(Racing.registerCars(5));
         racing.numberOfCarMove(1);
         List<Integer> moveList = new ArrayList<>();
         for(Car car : racing.getCars())
-            moveList.add(car.getPosition());
+            moveList.add(car.getMoveDistance());
         assertThat(moveList).containsAnyOf(0,1);
     }
 
@@ -34,12 +34,12 @@ public class RacingTest {
     void numberOfCarMove() {
         racing = new Racing() {
             @Override
-            protected void carsMove() {
+            protected void moveOfCars() {
                 racing.getCars().forEach(car -> car.move(() -> true));
             }
         };
-        racing.setCars(Racing.racingGameStart(1));
+        racing.setCars(Racing.registerCars(1));
         racing.numberOfCarMove(5);
-        assertThat(racing.getCars().get(0).getPosition()).isEqualTo(5);
+        assertThat(racing.getCars().get(0).getMoveDistance()).isEqualTo(5);
     }
 }

@@ -8,16 +8,16 @@ public class Racing {
     private final CarMovingStrategy carMovingStrategy = new CarMovingStrategy();
 
 
-    public static Cars racingGameStart(int createCarCount) {
+    public static Cars registerCars(int createCarCount) {
         return new Cars(createCarCount);
     }
 
-    protected void carsMove() {
+    protected void moveOfCars() {
         cars.getCars().forEach(s -> s.move(carMovingStrategy));
     }
 
     public void numberOfCarMove(int moveCount) {
-        IntStream.range(0,moveCount).forEach(i -> carsMove());
+        IntStream.range(0,moveCount).forEach(i -> moveOfCars());
     }
 
     public List<Car> getCars() {

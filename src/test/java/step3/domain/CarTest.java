@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Collections;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
@@ -23,19 +21,19 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 전진 유무 체크")
-    void carMove() {
+    void moveOfCar() {
         car.move(() -> false);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getMoveDistance()).isEqualTo(0);
 
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getMoveDistance()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 4, 6})
     @DisplayName("차량 객체 생성 테스트 코드")
-    void carRegistration(int count) {
-        cars.carRegistration(count);
+    void registerCars(int count) {
+        cars.registerCar(count);
         assertThat(cars.getCars().size()).isEqualTo(count);
     }
 }

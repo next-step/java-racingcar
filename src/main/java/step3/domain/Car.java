@@ -9,7 +9,7 @@ public class Car {
             moveDistance++;
     }
 
-    public int getPosition() {
+    public int getMoveDistance() {
         return moveDistance;
     }
 }

@@ -12,7 +12,7 @@ public class ResultView {
     }
 
     private void carPositionPrint(Car car) {
-        IntStream.range(0,car.getPosition()).forEach(i -> System.out.print("-"));
+        IntStream.range(0,car.getMoveDistance()).forEach(i -> System.out.print("-"));
         writeNewLine();
     }
 
