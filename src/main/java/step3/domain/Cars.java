@@ -10,6 +10,13 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
+    public Cars() {
+    }
+
+    public Cars(int createCarCount) {
+        carRegistration(createCarCount);
+    }
+
     public List<Car> getCars() {
         return cars;
     }
