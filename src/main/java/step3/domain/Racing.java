@@ -5,13 +5,15 @@ import java.util.stream.IntStream;
 
 public class Racing {
     private Cars cars;
+    private final CarMovingStrategy carMovingStrategy = new CarMovingStrategy();
+
 
     public static Cars racingGameStart(int createCarCount) {
         return new Cars(createCarCount);
     }
 
     protected void carsMove() {
-        cars.getCars().forEach(s -> s.move(new CarMovingStrategy()));
+        cars.getCars().forEach(s -> s.move(carMovingStrategy));
     }
 
     public void numberOfCarMove(int moveCount) {
