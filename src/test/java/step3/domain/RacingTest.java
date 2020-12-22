@@ -23,10 +23,8 @@ public class RacingTest {
     void moveCars() {
         racing.setCars(Racing.registerCars(5));
         racing.numberOfCarMove(1);
-        List<Integer> moveList = new ArrayList<>();
         for(Car car : racing.getCars())
-            moveList.add(car.getMoveDistance());
-        assertThat(moveList).containsAnyOf(0,1);
+            assertThat(car.getMoveDistance()).isIn(0,1);
     }
 
     @Test
