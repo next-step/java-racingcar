@@ -56,4 +56,8 @@ public class Car {
     public List<Round> getRoundHistory() {
         return roundHistory;
     }
+
+    public String getName() {
+        return name;
+    }
 }

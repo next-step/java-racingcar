@@ -21,6 +21,7 @@ public class OutputView {
 
     private void printCarsDistance(int roundTime, Cars cars) {
         for(Car car : cars.getValue()) {
+            ViewUtils.print(car.getName() + " : ");
             int distance = car.getDistanceByRound(roundTime);
 
             printDistance(distance);

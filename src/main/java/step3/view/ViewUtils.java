@@ -13,6 +13,8 @@ public class ViewUtils {
 
     public static String nextLine() { return SCANNER.nextLine(); }
 
+    public static void print(String line) { System.out.print(line);}
+
     public static void printLine(String line) {
         System.out.println(line);
     }
