@@ -23,10 +23,10 @@ public class CarTest {
     @DisplayName("자동차 전진 유무 체크")
     void moveOfCar() {
         car.move(() -> false);
-        assertThat(car.getMoveDistance()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
 
         car.move(() -> true);
-        assertThat(car.getMoveDistance()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest

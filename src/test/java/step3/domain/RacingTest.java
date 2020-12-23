@@ -24,7 +24,7 @@ public class RacingTest {
         racing.setCars(Racing.registerCars(5));
         racing.numberOfCarMove(1);
         for(Car car : racing.getCars())
-            assertThat(car.getMoveDistance()).isIn(0,1);
+            assertThat(car.getPosition()).isIn(0,1);
     }
 
     @Test
@@ -38,6 +38,6 @@ public class RacingTest {
         };
         racing.setCars(Racing.registerCars(1));
         racing.numberOfCarMove(5);
-        assertThat(racing.getCars().get(0).getMoveDistance()).isEqualTo(5);
+        assertThat(racing.getCars().get(0).getPosition()).isEqualTo(5);
     }
 }
