@@ -5,16 +5,18 @@ import step3.domain.rule.MoveRule;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars(int carCount) {
-        cars.addAll(Stream.generate(Car::new)
-                .limit(carCount)
-                .collect(Collectors.toList()));
+    public Cars(String[] carNames) {
+        for(int i = 0; i < carNames.length; i++) {
+            cars.add(createCar(carNames[i]));
+        }
+    }
+
+    private Car createCar(String carName) {
+        return new Car(carName);
     }
 
     public void moveAll(int roundTime, MoveRule moveRule) {

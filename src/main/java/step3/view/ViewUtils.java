@@ -11,6 +11,8 @@ public class ViewUtils {
         return SCANNER.nextInt();
     }
 
+    public static String nextLine() { return SCANNER.nextLine(); }
+
     public static void printLine(String line) {
         System.out.println(line);
     }

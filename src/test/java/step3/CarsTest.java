@@ -13,8 +13,9 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(2);
+        cars = new Cars(new String[] {"test1", "test2"});
     }
+
     @Test
     @DisplayName("moveRule의 결과에 따라 모든 Car들이 잘 이동했는지 확인한다.")
     void moveAll_true() {

@@ -10,10 +10,10 @@ public class Main {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
 
-        int carCount = inputView.getCarCount();
+        String[] carNames = inputView.getCarNames();
         int roundCount = inputView.getRoundCount();
 
-        RacingGame racingGame = new RacingGame(roundCount, carCount, new RandomMoveRule());
+        RacingGame racingGame = new RacingGame(roundCount, carNames, new RandomMoveRule());
 
         racingGame.play();
 
