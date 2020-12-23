@@ -1,4 +1,4 @@
-package calculator;
+package util;
 
 public class Exception {
     public static void IllegalArgumentException(String msg) {

@@ -1,6 +1,6 @@
-package step3.view;
+package step4.view;
 
-import step3.domain.Car;
+import step4.domain.Car;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -12,11 +12,20 @@ public class ResultView {
     }
 
     private void carPositionPrint(Car car) {
+        carNamePrint(car);
         IntStream.range(0,car.getPosition()).forEach(i -> System.out.print("-"));
         writeNewLine();
     }
 
+    private void carNamePrint(Car car) {
+        System.out.print(car.getName() + " : ");
+    }
+
     private void writeNewLine() {
         System.out.println();
+    }
+
+    public void winnerNamePrints(String winners) {
+        System.out.print(winners + "가 최종 우승했습니다.");
     }
 }
