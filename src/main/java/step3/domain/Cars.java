@@ -47,25 +47,25 @@ public class Cars {
         return winnerNames;
     }
 
-    private boolean isWinner(int position) {
-        int winnerPosition = getMaxPosition(getFinalPositionList());
+    private boolean isWinner(int distance) {
+        int winnerDistance = getMaxDistance(getFinalDistanceList());
 
-        if(winnerPosition == position) {
+        if(winnerDistance == distance) {
             return true;
         }
         return false;
     }
 
-    private static int getMaxPosition(List<Integer> finalPositions) {
-        return Collections.max(finalPositions);
+    private static int getMaxDistance(List<Integer> finalDistances) {
+        return Collections.max(finalDistances);
     }
 
-    private List<Integer> getFinalPositionList() {
-        List<Integer> finalPositionList = new ArrayList<>();
+    private List<Integer> getFinalDistanceList() {
+        List<Integer> finalDistanceList = new ArrayList<>();
 
         for(Car car: cars) {
-            finalPositionList.add(car.getDistance());
+            finalDistanceList.add(car.getDistance());
         }
-        return finalPositionList;
+        return finalDistanceList;
     }
 }
