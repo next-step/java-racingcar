@@ -1,4 +1,4 @@
-package step3.domain;
+package step4.domain;
 
 
 import util.Exception;
@@ -8,6 +8,10 @@ public class Name {
 
     private final String name;
     private static final int NAME_LENGTH = 5;
+
+    public String getName() {
+        return name;
+    }
 
     public Name(String name) {
         if(name.trim().isEmpty())

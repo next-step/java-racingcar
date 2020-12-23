@@ -1,4 +1,4 @@
-package step3.domain;
+package step4.domain;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -7,9 +7,8 @@ public class Racing {
     private Cars cars;
     private final CarMovingStrategy carMovingStrategy = new CarMovingStrategy();
 
-
-    public static Cars registerCars(int createCarCount) {
-        return new Cars(createCarCount);
+    public static Cars registerCars(String carNames) {
+        return new Cars(carNames);
     }
 
     protected void moveOfCars() {
@@ -22,6 +21,10 @@ public class Racing {
 
     public List<Car> getCars() {
         return cars.getCars();
+    }
+
+    public String getWinners() {
+        return cars.getWinnerNames();
     }
 
     public void setCars(Cars cars) {
