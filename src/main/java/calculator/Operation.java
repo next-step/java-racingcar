@@ -1,12 +1,7 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.function.IntBinaryOperator;
-
-import static calculator.Exception.*;
 
 public enum Operation {
     PLUS("+", Integer::sum),
