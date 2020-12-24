@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
@@ -28,40 +30,19 @@ public class Cars {
     }
 
     public List<String> getWinnerNames() {
-        List<String> winnerNames = new ArrayList<String>();
+        int winnerDistance = getMaxDistance();
 
-        for(Car car: cars) {
-            addWinnerName(winnerNames, car);
-        }
-        return winnerNames;
+        return cars.stream()
+                .filter(car -> car.getDistance() == winnerDistance)
+                .map(car -> car.getName())
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
 
-    private List<String> addWinnerName(List<String> winnerNames, Car car) {
-        if(isWinner(car.getDistance())) {
-            winnerNames.add(car.getName());
-        }
-        return winnerNames;
-    }
+    private int getMaxDistance() {
 
-    private boolean isWinner(int distance) {
-        int winnerDistance = getMaxDistance(getFinalDistanceList());
-
-        if(winnerDistance == distance) {
-            return true;
-        }
-        return false;
-    }
-
-    private static int getMaxDistance(List<Integer> finalDistances) {
-        return Collections.max(finalDistances);
-    }
-
-    private List<Integer> getFinalDistanceList() {
-        List<Integer> finalDistanceList = new ArrayList<>();
-
-        for(Car car: cars) {
-            finalDistanceList.add(car.getDistance());
-        }
-        return finalDistanceList;
+        return cars.stream()
+                .map(car -> car.getDistance())
+                .max(Integer::compareTo)
+                .get();
     }
 }
