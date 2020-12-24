@@ -12,22 +12,22 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars(String  carNames) {
-        registerCar(carNames);
-    }
-
     public List<Car> getCars() {
         return cars;
     }
 
-    public String getWinnerNames() {
-        return getWinners().stream().map(Car::getName)
-                .collect(Collectors.joining(", "));
+    public Cars(String  carNames) {
+        registerCar(carNames);
     }
 
     private void registerCar(String carNames) {
         Stream<String> registerCarNames = Arrays.stream(carNames.split(","));
         registerCarNames.forEach(carName -> cars.add(new Car(carName)));
+    }
+
+    public String getWinnerNames() {
+        return getWinners().stream().map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     private List<Car> getWinners() {
