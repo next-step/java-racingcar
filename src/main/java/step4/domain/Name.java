@@ -2,6 +2,7 @@ package step4.domain;
 
 
 import util.Exception;
+
 import java.util.Objects;
 
 public class Name {
@@ -14,13 +15,21 @@ public class Name {
     }
 
     public Name(String name) {
-        if(name.trim().isEmpty()) {
-            Exception.IllegalArgumentException("자동차 이름이 존재해야 합니다.");
+
+        if(nullCheckString(name)) {
+            Exception.nullPointerException("자동차 이름이 존재해야 합니다.");
+        }
+        if(name.isBlank()) {
+            Exception.illegalArgumentException("자동차 이름이 빈값일 수 없습니다.");
         }
         if(name.length() > NAME_LENGTH) {
-            Exception.IllegalArgumentException("자동차 이름의 길이는 5글자를 넘기면 안됩니다.");
+            Exception.illegalArgumentException("자동차 이름의 길이는 5글자를 넘기면 안됩니다.");
         }
         this.name = name;
+    }
+
+    private boolean nullCheckString(String name) {
+        return name == null;
     }
 
     @Override

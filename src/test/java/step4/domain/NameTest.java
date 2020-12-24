@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 public class NameTest {
 
@@ -11,7 +12,7 @@ public class NameTest {
     @DisplayName("자동차 이름 빈값 체크")
     void validateIsBlank() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Name("");
+            new Name(" ");
         });
     }
 
@@ -20,6 +21,14 @@ public class NameTest {
     void validateLength() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
            new Name("justhis");
+        });
+    }
+
+    @Test
+    @DisplayName("자동차 이름 Null 체크")
+    void validateNull() {
+        assertThatNullPointerException().isThrownBy(() -> {
+            new Name(null);
         });
     }
 }

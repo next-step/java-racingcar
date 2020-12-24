@@ -27,6 +27,6 @@ public class StringCalculator {
 
     protected void nullAndEmptyCheck(String input) {
         if(input == null || input.isEmpty())
-            Exception.IllegalArgumentException("null 또는 빈값을 허용하지 않습니다.");
+            Exception.illegalArgumentException("null 또는 빈값을 허용하지 않습니다.");
     }
 }
