@@ -7,10 +7,10 @@ public class RacingGame {
     private Cars cars;
     private MoveRule moveRule;
 
-    public RacingGame(int roundCount, int carCount, MoveRule moveRule) {
+    public RacingGame(int roundCount, String[] carNames, MoveRule moveRule) {
         this.roundCount = roundCount;
         this.moveRule = moveRule;
-        this.cars = new Cars(carCount);
+        this.cars = new Cars(carNames);
     }
 
     public void play() {

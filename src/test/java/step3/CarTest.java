@@ -7,8 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step3.domain.Car;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+import static org.assertj.core.api.Assertions.*;
+import static step3.domain.Car.NAME_LENGTH_EXCEPTION_MESSAGE;
 import static step3.domain.Car.NO_ROUND_EXCEPTION_MESSAGE;
 
 public class CarTest {
@@ -17,7 +17,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("test");
     }
 
     @DisplayName("움직임 여부를 받아 움직이면, 움직인 거리가 +1 된다. 움직이지 않은 경우는 움직인 거리는 그대로 유지된다.")
@@ -50,5 +50,13 @@ public class CarTest {
         assertThatIllegalStateException().isThrownBy(() -> {
             car.getDistanceByRound(4);
         }).withMessage(NO_ROUND_EXCEPTION_MESSAGE);
+    }
+
+    @Test
+    @DisplayName("자동차의 이름은 5자를 초과할 수 없다.")
+    void assertName() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Car("yeoseon");
+        }).withMessage(NAME_LENGTH_EXCEPTION_MESSAGE);
     }
 }

@@ -13,8 +13,9 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        cars = new Cars(2);
+        cars = new Cars(new String[] {"test1", "test2"});
     }
+
     @Test
     @DisplayName("moveRule의 결과에 따라 모든 Car들이 잘 이동했는지 확인한다.")
     void moveAll_true() {
@@ -31,5 +32,13 @@ public class CarsTest {
 
         assertThat(cars.getValue().get(0).getDistance()).isEqualTo(0);
         assertThat(cars.getValue().get(1).getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차의 distance가 가장 큰 winner 목록을 구한다.")
+    void getWinnerNames() {
+        cars.moveAll(1, () -> true);
+
+        assertThat(cars.getWinnerNames()).containsExactly("test1", "test2");
     }
 }
