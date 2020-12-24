@@ -9,7 +9,7 @@ public class Car {
     public static final String NAME_LENGTH_EXCEPTION_MESSAGE = "자동차의 이름은 5자를 초과할 수 없습니다.";
     private static final int NAME_LENGTH_LIMIT = 5;
 
-    private String name;
+    private final String name;
     private int distance;
     private List<Round> roundHistory = new ArrayList<>();
 
