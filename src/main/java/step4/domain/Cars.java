@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
+
 public class Cars {
 
     private List<Car> cars = new ArrayList<>();
@@ -21,8 +23,9 @@ public class Cars {
     }
 
     private void registerCar(String carNames) {
-        Stream<String> registerCarNames = Arrays.stream(carNames.split(","));
-        registerCarNames.forEach(carName -> cars.add(new Car(carName)));
+        cars = Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .collect(toList());
     }
 
     public String getWinnerNames() {
@@ -34,6 +37,6 @@ public class Cars {
         Optional<Car> winner = cars.stream().max(Comparator.comparingInt(Car::getPosition));
         return cars.stream()
                 .filter(car -> car.isSamePosition(winner.get().getPosition()))
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 }
