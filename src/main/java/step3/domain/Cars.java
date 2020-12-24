@@ -3,28 +3,24 @@ package step3.domain;
 import step3.domain.rule.MoveRule;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
     public Cars(String[] carNames) {
-        for(int i = 0; i < carNames.length; i++) {
-            cars.add(createCar(carNames[i]));
-        }
-    }
-
-    private Car createCar(String carName) {
-        return new Car(carName);
+        cars = Arrays.stream(carNames)
+                .map(carName -> new Car(carName))
+                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
     }
 
     public void moveAll(int roundTime, MoveRule moveRule) {
         cars.forEach(car -> car.move(roundTime, moveRule.canMove()));
-    }
-
-    public Car getCar(int index) {
-        return cars.get(index);
     }
 
     public List<Car> getValue() {
