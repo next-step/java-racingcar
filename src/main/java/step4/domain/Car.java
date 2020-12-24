@@ -19,10 +19,6 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public int getPosition() {
-        return moveDistance.getMoveDistance();
-    }
-
     public String getName() {
         return name.getName();
     }
@@ -33,8 +29,15 @@ public class Car {
         }
     }
 
-    public boolean isSamePosition(int winnerPosition) {
-        return this.getPosition() == winnerPosition;
+    public boolean isWinner(int maxPosition) {
+        return moveDistance.isSamePosition(maxPosition);
     }
 
+    public int max(int maxPosition) {
+        return moveDistance.isMaxPosition(maxPosition);
+    }
+
+    public int carPosition() {
+        return moveDistance.getMoveDistance();
+    }
 }

@@ -15,6 +15,14 @@ public class MoveDistance {
         moveDistance += 1;
     }
 
+    public boolean isSamePosition(int maxPosition) {
+        return this.moveDistance == maxPosition;
+    }
+
+    public int isMaxPosition(int maxPosition) {
+        return Math.max(moveDistance, maxPosition);
+    }
+
     public int getMoveDistance() {
         return moveDistance;
     }

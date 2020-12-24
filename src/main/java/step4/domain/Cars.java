@@ -1,14 +1,17 @@
 package step4.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
 
     private List<Car> cars = new ArrayList<>();
+    private final CarMovingStrategy carMovingStrategy = new CarMovingStrategy();
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -29,14 +32,26 @@ public class Cars {
     }
 
     public String getWinnerNames() {
-        return getWinners().stream().map(Car::getName)
-                .collect(Collectors.joining(", "));
+        return getWinners().stream()
+                .map(Car::getName)
+                .collect(joining(", "));
     }
 
     private List<Car> getWinners() {
-        Optional<Car> winner = cars.stream().max(Comparator.comparingInt(Car::getPosition));
         return cars.stream()
-                .filter(car -> car.isSamePosition(winner.get().getPosition()))
+                .filter(car -> car.isWinner(getMaxPosition()))
                 .collect(toList());
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for(Car car : cars) {
+           maxPosition = car.max(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    public void moveOfCars() {
+        cars.forEach(s -> s.move(carMovingStrategy));
     }
 }

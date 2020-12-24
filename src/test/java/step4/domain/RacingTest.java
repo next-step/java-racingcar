@@ -23,7 +23,7 @@ public class RacingTest {
         racing.setCars(Racing.registerCars("jthis,zino,vj"));
         racing.numberOfCarMove(1);
         for(Car car : racing.getCars())
-            assertThat(car.getPosition()).isIn(0,1);
+            assertThat(car.carPosition()).isIn(0,1);
     }
 
     @Test
@@ -31,13 +31,13 @@ public class RacingTest {
     void numberOfCarMove() {
         racing = new Racing() {
             @Override
-            protected void moveOfCars() {
+            protected void race() {
                 racing.getCars().forEach(car -> car.move(() -> true));
             }
         };
         racing.setCars(Racing.registerCars("jthis"));
         racing.numberOfCarMove(5);
-        assertThat(racing.getCars().get(0).getPosition()).isEqualTo(5);
+        assertThat(racing.getCars().get(0).carPosition()).isEqualTo(5);
     }
 
     @Test

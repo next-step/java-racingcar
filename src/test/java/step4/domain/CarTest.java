@@ -1,6 +1,5 @@
 package step4.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +12,10 @@ public class CarTest {
     void moveOfCar() {
         Car car = new Car("car");
         car.move(() -> false);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.carPosition()).isEqualTo(0);
 
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.carPosition()).isEqualTo(1);
     }
 
     @Test
