@@ -14,10 +14,12 @@ public class Name {
     }
 
     public Name(String name) {
-        if(name.trim().isEmpty())
-           Exception.IllegalArgumentException("자동차 이름이 존재해야 합니다.");
-        if(name.length() > NAME_LENGTH)
+        if(name.trim().isEmpty()) {
+            Exception.IllegalArgumentException("자동차 이름이 존재해야 합니다.");
+        }
+        if(name.length() > NAME_LENGTH) {
             Exception.IllegalArgumentException("자동차 이름의 길이는 5글자를 넘기면 안됩니다.");
+        }
         this.name = name;
     }
 

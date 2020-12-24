@@ -28,8 +28,9 @@ public class Car {
     }
 
     public void move(MovingStrategy movingStrategy) {
-        if(movingStrategy.movable())
+        if(movingStrategy.movable()) {
             moveDistance.move();
+        }
     }
 
     public boolean isSamePosition(int winnerPosition) {
