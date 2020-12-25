@@ -3,7 +3,6 @@ package step4.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
@@ -15,10 +14,6 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public Cars(String  carNames) {
@@ -53,5 +48,13 @@ public class Cars {
 
     public void moveOfCars() {
         cars.forEach(s -> s.move(carMovingStrategy));
+    }
+
+    public int getSize() {
+        return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

@@ -22,6 +22,6 @@ public class CarTest {
     @DisplayName("차량 객체 생성 테스트 코드")
     void registerCars() {
         Cars cars = new Cars("a,b,c");
-        assertThat(cars.getCars().size()).isEqualTo(3);
+        assertThat(cars.getSize()).isEqualTo(3);
     }
 }

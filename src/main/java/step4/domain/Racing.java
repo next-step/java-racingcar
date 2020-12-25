@@ -18,8 +18,12 @@ public class Racing {
         IntStream.range(0,moveCount).forEach(i -> race());
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public List<Car> getCarList() {
+        return getObjectCars().getCars();
+    }
+
+    public Cars getObjectCars() {
+        return cars;
     }
 
     public String getWinners() {
