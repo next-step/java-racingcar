@@ -1,10 +1,21 @@
-package step4.domain;
+package step5.service;
+
+import step5.domain.Car;
+import step5.domain.Cars;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Racing {
     private Cars cars;
+
+    public Racing() {
+    }
+
+    public Racing(String carNames, int moveCount) {
+        this.cars = registerCars(carNames);
+        numberOfCarMove(moveCount);
+    }
 
     public static Cars registerCars(String carNames) {
         return new Cars(carNames);
@@ -28,9 +39,5 @@ public class Racing {
 
     public String getWinners() {
         return cars.getWinnerNames();
-    }
-
-    public void setCars(Cars cars) {
-        this.cars = cars;
     }
 }

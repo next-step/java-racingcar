@@ -1,6 +1,6 @@
-package step4.view;
+package step5.view;
 
-import step4.domain.Car;
+import step5.domain.Car;
 
 import java.util.List;
 import java.util.stream.IntStream;
