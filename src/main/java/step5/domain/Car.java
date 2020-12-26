@@ -1,4 +1,4 @@
-package step4.domain;
+package step5.domain;
 
 public class Car {
 
@@ -19,21 +19,25 @@ public class Car {
         this.name = new Name(name);
     }
 
-    public int getPosition() {
-        return moveDistance.getMoveDistance();
-    }
-
     public String getName() {
         return name.getName();
     }
 
     public void move(MovingStrategy movingStrategy) {
-        if(movingStrategy.movable())
+        if(movingStrategy.movable()) {
             moveDistance.move();
+        }
     }
 
-    public boolean isSamePosition(int winnerPosition) {
-        return this.getPosition() == winnerPosition;
+    public boolean isWinner(int maxPosition) {
+        return moveDistance.isSamePosition(maxPosition);
     }
 
+    public int max(int maxPosition) {
+        return moveDistance.isMaxPosition(maxPosition);
+    }
+
+    public int carPosition() {
+        return moveDistance.getMoveDistance();
+    }
 }

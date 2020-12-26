@@ -1,4 +1,4 @@
-package step4.domain;
+package step5.domain;
 
 public class MoveDistance {
 
@@ -13,6 +13,14 @@ public class MoveDistance {
 
     public void move() {
         moveDistance += 1;
+    }
+
+    public boolean isSamePosition(int maxPosition) {
+        return this.moveDistance == maxPosition;
+    }
+
+    public int isMaxPosition(int maxPosition) {
+        return Math.max(moveDistance, maxPosition);
     }
 
     public int getMoveDistance() {

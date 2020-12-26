@@ -1,8 +1,10 @@
-package step4.domain;
+package step5.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step5.domain.Car;
+import step5.domain.Cars;
 
 import java.util.Arrays;
 
@@ -20,10 +22,9 @@ public class RacingTest {
     @Test
     @DisplayName("자동차 대수 만큼 전진 로직 루프 테스트 코드")
     void moveCars() {
-        racing.setCars(Racing.registerCars("jthis,zino,vj"));
-        racing.numberOfCarMove(1);
-        for(Car car : racing.getCars())
-            assertThat(car.getPosition()).isIn(0,1);
+        racing = new Racing("jthis,zino,vj",1);
+        for(Car car : racing.getCarList())
+            assertThat(car.carPosition()).isIn(0,1);
     }
 
     @Test
@@ -31,13 +32,12 @@ public class RacingTest {
     void numberOfCarMove() {
         racing = new Racing() {
             @Override
-            protected void moveOfCars() {
-                racing.getCars().forEach(car -> car.move(() -> true));
+            protected void race() {
+                racing.getCarList().forEach(car -> car.move(() -> true));
             }
         };
-        racing.setCars(Racing.registerCars("jthis"));
-        racing.numberOfCarMove(5);
-        assertThat(racing.getCars().get(0).getPosition()).isEqualTo(5);
+
+        assertThat(racing.getCarList().get(0).carPosition()).isEqualTo(5);
     }
 
     @Test
@@ -48,8 +48,7 @@ public class RacingTest {
                 new Car(4, "b"),
                 new Car(5, "c")));
 
-        racing.setCars(cars);
-        assertThat(racing.getWinners()).isEqualTo("c");
+        assertThat(cars.getWinnerNames()).isEqualTo("c");
     }
 
     @Test
@@ -60,7 +59,6 @@ public class RacingTest {
                 new Car(3, "b"),
                 new Car(3, "c")));
 
-        racing.setCars(cars);
-        assertThat(racing.getWinners()).isEqualTo("a, b, c");
+        assertThat(cars.getWinnerNames()).isEqualTo("a, b, c");
     }
 }

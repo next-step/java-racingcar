@@ -1,6 +1,6 @@
-package step4.view;
+package step5.view;
 
-import step4.domain.Car;
+import step5.domain.Car;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -13,7 +13,7 @@ public class ResultView {
 
     private void carPositionPrint(Car car) {
         carNamePrint(car);
-        IntStream.range(0,car.getPosition()).forEach(i -> System.out.print("-"));
+        IntStream.range(0,car.carPosition()).forEach(i -> System.out.print("-"));
         writeNewLine();
     }
 
