@@ -7,3 +7,14 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현할 기능 목록
+ - 사칙연산 하는 static 메서드를 보유하고 있는 util class
+  - 덧셈
+  - 뺄셈
+  - 나눗셈
+  - 곱셈
+ - 메인으로 동작하는 문자열 계산기 class
+  - 사칙연산 입력 받는 기능 - IllegalArgumentException throw 필요
+  - util class의 static method를 이용해 사칙 연산을 하는 기능
+  - 연산 결과를 반환하는 기능
