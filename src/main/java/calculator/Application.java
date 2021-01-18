@@ -10,10 +10,11 @@ import java.util.List;
 public class Application {
     public void start() {
         ArrayDeque<String> expression = userInput();
-
-        Calculator calculator = new Calculator();
-        Double result = calculator.calculate(expression);
-        System.out.println(result);
+        if (expression != null){
+            Calculator calculator = new Calculator();
+            Double result = calculator.calculate(expression);
+            System.out.println(result);
+        }
     }
 
     public ArrayDeque<String> userInput() {
@@ -24,12 +25,15 @@ public class Application {
             Validator.checkEmptyInput(input);
             dequeInput = stringToDeque(input);
             Validator.checkExpression(dequeInput);
+            return dequeInput;
         } catch (IOException e) {
             System.out.println("Input Array");
         } catch (IllegalArgumentException ie) {
             ie.printStackTrace();
+        } finally {
+            return null;
+
         }
-        return dequeInput;
     }
 
     public ArrayDeque<String> stringToDeque(String input) {
