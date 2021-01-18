@@ -1,6 +1,23 @@
 package calculator;
 
+import java.util.ArrayDeque;
+
 public class Calculator {
+    public Double calculate(ArrayDeque<String> expression) {
+        Double result = Double.parseDouble(expression.pop());
+        while(!expression.isEmpty()){
+            String operator = expression.pop();
+            Double number = Double.parseDouble(expression.pop());
+            try {
+                result = selectOperator(operator, result, number);
+            } catch (ArithmeticException e){
+                e.printStackTrace();
+                return 0.0;
+            }
+        }
+        return result;
+    }
+
     public Double selectOperator (String operator, Double num1, Double num2) throws ArithmeticException{
         double result = 0;
         switch (operator) {
