@@ -18,6 +18,7 @@ public class Application {
             String input = br.readLine();
             Validator.checkEmptyInput(input);
             dequeInput = stringToDeque(input);
+            Validator.checkExpression(dequeInput);
         } catch (IOException e) {
             System.out.println("Input Array");
         } catch (IllegalArgumentException ie) {
