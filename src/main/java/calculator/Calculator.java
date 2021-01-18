@@ -1,6 +1,25 @@
 package calculator;
 
 public class Calculator {
+    public Double selectOperator (String operator, Double num1, Double num2) throws ArithmeticException{
+        double result = 0;
+        switch (operator) {
+            case "+":
+                result = add(num1, num2);
+                break;
+            case "-":
+                result = sub(num1, num2);
+                break;
+            case "*":
+                result = mul(num1, num2);
+                break;
+            case "/":
+                result = div(num1, num2);
+                break;
+        }
+        return result;
+    }
+
     public Double add(Double num1, Double num2) {
         return num1 + num2;
     }
