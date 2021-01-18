@@ -1,6 +1,5 @@
 package calculator;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
