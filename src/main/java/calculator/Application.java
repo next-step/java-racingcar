@@ -16,12 +16,14 @@ public class Application {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(System.in))) {
             String input = br.readLine();
+            Validator.checkEmptyInput(input);
             dequeInput = stringToDeque(input);
-            return dequeInput;
         } catch (IOException e) {
             System.out.println("Input Array");
-            return dequeInput;
+        } catch (IllegalArgumentException ie) {
+            ie.printStackTrace();
         }
+        return dequeInput;
     }
 
     public ArrayDeque<String> stringToDeque(String input) {
