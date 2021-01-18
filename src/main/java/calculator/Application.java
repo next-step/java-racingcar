@@ -9,6 +9,11 @@ import java.util.List;
 
 public class Application {
     public void start() {
+        ArrayDeque<String> expression = userInput();
+
+        Calculator calculator = new Calculator();
+        Double result = calculator.calculate(expression);
+        System.out.println(result);
     }
 
     public ArrayDeque<String> userInput() {
