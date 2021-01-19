@@ -21,7 +21,7 @@ public class Calculator {
 
         // FIXME: 값을 내는 별도의 메소드 필요
         validateFormula();
-        sanitizeOperator(operands);
+        sanitizeOperator(operators);
         doubleOperands = stringToDouble(operands);
         System.out.println(calculateFormula(operators, doubleOperands));
     }
@@ -53,14 +53,15 @@ public class Calculator {
     }
 
     private void validateFormula() {
-        validateOperand(operators);
+        validateOperand(operands);
         validateOperator(operators, operands);
     }
 
-    private void validateOperand(ArrayList<String> operators) {
-        for(String operator:operators) {
-            boolean isDigit = operator.chars().allMatch( Character::isDigit );
-            if (isDigit) {
+    private void validateOperand(ArrayList<String> operands) {
+        for(String operand:operands) {
+            System.out.println(">>" + operand);
+            boolean isDigit = operand.chars().allMatch( Character::isDigit );
+            if (!isDigit) {
                 throw new IllegalArgumentException("잘못된 피연산자입니다.");
             }
         }
