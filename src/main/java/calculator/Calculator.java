@@ -6,21 +6,24 @@ import java.util.Arrays;
 public class Calculator {
 
     private final String formula;
-//    private String[] operators;
-//    private String[] operands;
     private ArrayList<String> operators;
     private ArrayList<String> operands;
+    private ArrayList<Double> doubleOperands;
 
     public Calculator(String formula) {
         this.formula = formula;
     }
 
-    private void splitFormula(String formula) {
-        String eq = "2".replaceAll(" ", "");
+    private void splitFormula() {
+        String eq = formula.replaceAll(" ", "");
         operators = new ArrayList<>(Arrays.asList(eq.split("[0-9]+")));
         operands = new ArrayList<>(Arrays.asList(eq.split("[-+*/()]")));
 
-        // TODO! String -> Double
+        // FIXME: 값을 내는 별도의 메소드 필요
+        validateFormula();
+        sanitizeOperator(operands);
+        doubleOperands = stringToDouble(operands);
+        System.out.println(calculateFormula(operators, doubleOperands));
     }
 
     public static ArrayList<Double> stringToDouble(ArrayList<String> array) {
@@ -49,11 +52,8 @@ public class Calculator {
         return result;
     }
 
-    private void validateFormula(String formula) {
-        // 피연산자 검사
+    private void validateFormula() {
         validateOperand(operators);
-
-        // 연산자 검사
         validateOperator(operators, operands);
     }
 
@@ -68,18 +68,12 @@ public class Calculator {
 
     private void validateOperator(ArrayList<String> operators, ArrayList<String> operands) {
         sanitizeOperator(operands);
-
-        // 연산자의 수 = 숫자 의 수 - 1
-        if (operators.size() == operands.size() - 1) {
-
+        if (operators.size() == operands.size() + 1) {
+            throw new IllegalArgumentException("잘못된 연산자입니다.");
         }
     }
 
-    private void sanitizeOperator(ArrayList<String> operands) {
+    private void sanitizeOperator(ArrayList<String> operators) {
         operators.remove("");
     }
 }
-
-// 2 +  @3 * 4 / 2
-// [, +@, *, /]
-// [2, @3, 4, 2]
