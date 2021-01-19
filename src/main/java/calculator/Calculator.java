@@ -1,8 +1,6 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Calculator {
     String [] inputs;
@@ -38,5 +36,36 @@ public class Calculator {
         inputs = input.split(" ");
 
     }
+
+    public void start() {
+        getUserInput();
+        takeArguments();
+        // 1 + 2 - 1
+        // 1 + 2  = 3
+        // 3 - 1 = 2
+        // while (!q.isEmpty()) {
+        // 계산  }
+    }
+
+    private void takeArguments() {
+
+        for (int i=0; i<inputs.length; i++) {
+            calculate(i);
+        }
+
+    }
+
+    private void calculate(int index) {
+
+    }
+
+//    private boolean isNumber(String input) {
+//        char ch = input.charAt(0);
+//        if (Character.isDigit(ch)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
 }
