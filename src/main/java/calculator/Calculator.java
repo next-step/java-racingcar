@@ -54,7 +54,7 @@ public class Calculator {
         if (Double.isInfinite(divResult) || Double.isNaN(divResult)){
             throw new ArithmeticException("0 또는 0.0 으로 나눌 수 없습니다.");
         }
-        return num1 / num2;
+        return divResult;
     }
 
 
