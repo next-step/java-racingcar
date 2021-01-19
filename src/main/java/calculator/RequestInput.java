@@ -16,7 +16,6 @@ public class RequestInput {
         return inputArray;
     }
 
-
     public CalculationInfo convertToCalculationInfo(String[] inputArray, int index, Integer total) {
         CalculationInfo calculationInfo = new CalculationInfo();
         calculationInfo.setDividend(total);
