@@ -16,7 +16,7 @@ public class StringCalculator {
         for (int i = 1; i < elements.length; i += 2) {
             String operator = elements[i];
             int num = toInt(elements[i + 1]);
-            result = action(result, num, operator);
+            result = Operator.calculate(operator, result, num);
         }
         return result;
     }

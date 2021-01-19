@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,27 +16,6 @@ public class StringCalculatorTest {
     @BeforeEach
     void setUp() {
         stringCalculator = new StringCalculator();
-    }
-
-    @ParameterizedTest
-    @DisplayName("Check action is well actioned")
-    @CsvSource({
-            "'+', 16",
-            "'-', 8",
-            "'*', 48",
-            "'/', 3"
-    })
-    void action(String op, int expected) {
-        int result = stringCalculator.action(12, 4, op);
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
-    void actionShouldThrowException() {
-        assertThatThrownBy(
-                () -> stringCalculator.action(1, 2, "N")
-        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
