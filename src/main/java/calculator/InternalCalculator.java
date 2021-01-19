@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.ArrayList;
+
 public class InternalCalculator {
 
     private static RequestInput requestInput = new RequestInput();
