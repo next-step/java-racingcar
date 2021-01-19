@@ -1,5 +1,7 @@
 package caculator;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -15,8 +17,15 @@ public enum Operator {
     }),
     ;
 
+    private static final Map<String, Operator> operations = new HashMap<>() {{
+        put("+", PLUS);
+        put("-", MINUS);
+        put("*", MULTIPLY);
+        put("/", DIVIDE);
+    }};
+
     private final String sign;
-    private final BiFunction<Integer, Integer, Integer> expression;
+    private final BiFunction<Double, Double, Double> expression;
 
     Operator(final String sign, final BiFunction<Integer, Integer, Integer> expression) {
         this.sign = sign;

@@ -8,10 +8,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@DisplayName("ddd")
+@DisplayName("Operator 테스트")
 class OperatorTest {
 
-    @DisplayName("3423")
     @ParameterizedTest
     @CsvSource({
             "'+', 16",
