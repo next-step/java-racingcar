@@ -1,3 +1,5 @@
+package caculator;
+
 import java.util.Scanner;
 
 public class Input {

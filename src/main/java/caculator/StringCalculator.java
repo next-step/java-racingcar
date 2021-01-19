@@ -1,3 +1,5 @@
+package caculator;
+
 public class StringCalculator {
 
     public int calculate(final String s) throws IllegalArgumentException {
