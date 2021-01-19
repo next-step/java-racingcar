@@ -11,6 +11,18 @@ public class Car {
         this.distance = 0;
     }
 
+    public void moveForward() {
+        this.distance++;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getDistance() {
+        return this.distance;
+    }
+
     public static ArrayList<Car> asCarsList(String carNames) {
         String[] names = carNames.split(",");
         ArrayList<Car> carsList = new ArrayList<>();
