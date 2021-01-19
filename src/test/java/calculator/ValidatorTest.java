@@ -23,6 +23,7 @@ class ValidatorTest {
         System.out.println("end validator test");
     }
 
+    @DisplayName("checkEmptyInputTest: 인풋 빈 값인지 확인")
     @ParameterizedTest
     @ValueSource(strings = {"", "  ", "    "})
     void checkEmptyInputTest(String input) {
