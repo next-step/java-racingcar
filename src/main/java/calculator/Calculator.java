@@ -48,15 +48,28 @@ public class Calculator {
     }
 
     private void takeArguments() {
+        double result = Double.parseDouble(inputs[0]);
 
-        for (int i=0; i<inputs.length; i++) {
-            calculate(i);
+        for (int i=1; i<inputs.length; i++) {
+            String operator = inputs[i];
+            String operand = inputs[i+1];
+            isAvailable(operator, operand);
+
+            result = calculate(result, operator, Double.parseDouble(operand));
         }
 
     }
 
-    private void calculate(int index) {
-
+    private double calculate(double arg1, String op, double arg2) {
+        if (op.equals("+")) {
+            return add(arg1, arg2);
+        } else if (op.equals("-")) {
+            return substract(arg1, arg2);
+        } else if (op.equals("*")) {
+            return multiply(arg1, arg2);
+        } else {
+            return divide(arg1, arg2);
+        }
     }
 
 //    private boolean isNumber(String input) {
