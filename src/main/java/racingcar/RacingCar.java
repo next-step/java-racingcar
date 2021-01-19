@@ -21,10 +21,20 @@ public class RacingCar implements Car {
 
     @Override
     public void print() {
-        StringBuilder stringBuilder = new StringBuilder(name + ":");
+        StringBuilder stringBuilder = new StringBuilder(name + " : ");
         for (int i = 0; i < position; i++) {
             stringBuilder.append("-");
         }
         System.out.println(stringBuilder);
+    }
+
+    @Override
+    public int getPosition() {
+        return position;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
