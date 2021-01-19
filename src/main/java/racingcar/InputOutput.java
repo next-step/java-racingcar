@@ -6,15 +6,23 @@ public class InputOutput {
     public static Scanner scanner = new Scanner(System.in);
 
     public static String inputCarsName() {
-        String carsName = scanner.next();
+        String carsName = null;
+        boolean isValidCarsName = false;
+        while (!isValidCarsName) {
+            carsName = scanner.next();
+            isValidCarsName = validateCarsName(carsName);
+        }
+        return carsName;
+    }
+    private static boolean validateCarsName(String carsName) {
         try {
             Validator.checkEmptyElement(carsName);
             Validator.checkLastValueComma(carsName);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
-        return carsName;
+        return true;
     }
 
     public static int inputStages() {
