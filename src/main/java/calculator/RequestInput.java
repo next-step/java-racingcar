@@ -6,30 +6,26 @@ public class RequestInput {
 
     static final Scanner sc = new Scanner(System.in);
 
-    public CalculationInfo askUserForSuitableInput() {
-        //TODO: 유저에게 값 입력 요구하는 문구 출력
-        String input = sc.next();
-        String[] inputArray = StringUtils.splitInput(input);
-        int index = 0;
-        while (true) {
-            if (index % 3 == 0) {
-                //TODO: internalCalculator 호출
-                //TODO: 예외처리 된 아이 한정으로 다시 값 입력 요구
-            }
-            CalculationInfo calculationInfo = convertToCalculationInfo(inputArray, index);
-            index++;
+    public String[] askUserForSuitableInput() {
+        boolean isSuitable = false;
+        String[] inputArray = {};
+        while (!isSuitable) {
+            // TODO : 입력 요청 출력
+            String input = sc.next();
+            inputArray = StringUtils.splitInput(input);
+            isSuitable = ValidateUtils.validateInput(inputArray);
         }
+        return inputArray;
     }
 
-    public CalculationInfo convertToCalculationInfo(String[] inputArray, int index) {
+
+    public CalculationInfo convertToCalculationInfo(String[] inputArray, int index, int sum) {
         CalculationInfo calculationInfo = new CalculationInfo();
-        calculationInfo.setDividend(Integer.getInteger(inputArray[index]));
+        calculationInfo.setDividend(sum);
         calculationInfo.setDivisor(Integer.getInteger(inputArray[index + 1]));
-        try {
-            calculationInfo.setOperator(Operator.valueOf(inputArray[index + 2]));
-        } catch (java.lang.IllegalArgumentException e) {
-            calculationInfo.setResumeInputRequest(true);
-        }
+        calculationInfo.setOperator(Operator.valueOf(inputArray[index + 2]));
         return calculationInfo;
     }
 }
+
+// 2 + 3 * 4 / 2
