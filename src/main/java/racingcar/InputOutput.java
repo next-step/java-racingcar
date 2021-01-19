@@ -16,4 +16,24 @@ public class InputOutput {
         }
         return carsName;
     }
+
+    public static int inputStages() {
+        String stages = null;
+        boolean isValidStages = false;
+        while (!isValidStages) {
+            stages = scanner.next();
+            isValidStages = validateStages(stages);
+        }
+        return Integer.parseInt(stages);
+    }
+
+    private static boolean validateStages(String stages) {
+        try {
+            Validator.checkNumber(stages);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
