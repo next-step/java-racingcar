@@ -97,6 +97,14 @@ public class CalculatorTest {
         assertThatThrownBy(() -> calc.div(321.2, 0.0)).isInstanceOf(ArithmeticException.class);
         assertThatThrownBy(() -> calc.div(42141.2, -0.0)).isInstanceOf(ArithmeticException.class);
         assertThatThrownBy(() -> calc.div(321.2, Double.valueOf("NaN"))).isInstanceOf(ArithmeticException.class);
+    }
 
+    @DisplayName("selectOperator : 연산자 마다 알맞은 연산 되는지 확인")
+    @Test
+    void selectOperatorTest() {
+        assertThat(calc.selectOperator("+", 1.1, 2.2)).isCloseTo(3.3, within(0.01));
+        assertThat(calc.selectOperator("-", 432.8, 2.1)).isCloseTo(430.7, within(0.01));
+        assertThat(calc.selectOperator("*", 2.1, 432.8)).isCloseTo(908.88, within(0.001));
+        assertThat(calc.selectOperator("/", 0.1, 0.91)).isCloseTo(0.1098, within(0.0001));
     }
 }
