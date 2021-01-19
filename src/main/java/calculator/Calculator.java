@@ -1,6 +1,9 @@
 package calculator;
 
+import java.util.Scanner;
+
 public class Calculator {
+    String[] inputStrings;
 
     public double add(double a, double b) {
         return a + b;
@@ -16,4 +19,22 @@ public class Calculator {
     public double divide(double a, double b) {
         return  a / b;
     }
+
+    public void getUserInput() {
+        System.out.println("계산식을 입력해주세요.");
+
+        Scanner sc = new Scanner(System.in);
+        String input = sc.next();
+
+        try {
+            if (input == null || input.trim().isEmpty()) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("올바른 계산식을 입력해주세요.");
+        }
+
+        inputStrings = input.split(" ");
+    }
+
 }
