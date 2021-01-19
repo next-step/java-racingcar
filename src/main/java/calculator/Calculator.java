@@ -26,25 +26,27 @@ public class Calculator {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
-        try {
-            if (input == null || input.trim().isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("올바른 계산식을 입력해주세요.");
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException();
         }
+
         inputs = input.split(" ");
 
     }
 
     public void start() {
-        getUserInput();
-        takeArguments();
-        // 1 + 2 - 1
-        // 1 + 2  = 3
-        // 3 - 1 = 2
-        // while (!q.isEmpty()) {
-        // 계산  }
+        try {
+            getUserInput();
+            checkInputs();
+            takeArguments();
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("올바른 계산식을 입력해주세요.");
+        }
+    }
+
+    private void checkInputs() {
+
     }
 
     private void takeArguments() {
@@ -53,7 +55,6 @@ public class Calculator {
         for (int i=1; i<inputs.length; i++) {
             String operator = inputs[i];
             String operand = inputs[i+1];
-            isAvailable(operator, operand);
 
             result = calculate(result, operator, Double.parseDouble(operand));
         }
@@ -67,18 +68,20 @@ public class Calculator {
             return substract(arg1, arg2);
         } else if (op.equals("*")) {
             return multiply(arg1, arg2);
-        } else {
+        } else if(op.equals("/")){
             return divide(arg1, arg2);
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 
-//    private boolean isNumber(String input) {
-//        char ch = input.charAt(0);
-//        if (Character.isDigit(ch)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    private boolean isAvailable(String input) {
+        char ch = input.charAt(0);
+        if (Character.isDigit(ch)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
