@@ -12,6 +12,21 @@ public class Racing {
         this.stages = stages;
     }
 
+    public void start(){
+    }
+
+    public void moveCars() {
+        for(Car car : carsList){
+            decideMove(car);
+        }
+    }
+
+    public void decideMove(Car car) {
+        if(getRandomNumber() >= 4){
+            car.moveForward();
+        }
+    }
+
     public int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(10);
