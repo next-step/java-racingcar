@@ -54,12 +54,36 @@ public class RacingGameController {
         for(int i=0; i<cars.size(); i++) {
             moveEachCar(cars.get(i));
         }
+        printAllCarStatus();
+        System.out.println();
+    }
+
+    public void printAllCarStatus() {
+        for (int i=0; i<cars.size(); i++) {
+            String name = cars.get(i).getName();
+            int status = cars.get(i).getStatus();
+            printEachCarStatus(name, status);
+        }
+    }
+
+    public void printEachCarStatus(String name, int status) {
+        System.out.print(name+" : ");
+        for (int j=0; j<status; j++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     public void start() {
+        getCarsName();
+        getRound();
+
+        System.out.println("실행 결과");
         for(int i=0; i<numberOfRound; i++) {
             playRound();
         }
+
+        findWinner();
     }
 
     public void moveEachCar(RacingCar racingCar) {
