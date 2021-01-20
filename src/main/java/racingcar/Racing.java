@@ -13,6 +13,10 @@ public class Racing {
     }
 
     public void start(){
+        for(int current = stages; current > 0; --current){
+            moveCars();
+            InputOutput.printCurrentCarsState(carsList);
+        }
     }
 
     public void moveCars() {
