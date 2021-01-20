@@ -21,11 +21,7 @@ public class ValidateUtils {
 
     private static boolean validateAppropriateOperator(String[] inputArray) throws IllegalArgumentException {
         for (int i = 1; i < inputArray.length; i += 2) {
-            try {
                 Operator.validateOperator(inputArray[i]);
-            } catch (java.lang.IllegalArgumentException e) {
-                throw new IllegalArgumentException();
-            }
         }
         return true;
     }
