@@ -3,21 +3,22 @@ package calculator;
 import java.util.*;
 
 public class Calculator {
-    String [] inputs;
+    String[] inputs;
 
     public double add(double a, double b) {
         return a + b;
     }
 
     public double substract(double a, double b) {
-        return  a - b;
+        return a - b;
     }
+
     public double multiply(double a, double b) {
         return a * b;
     }
 
     public double divide(double a, double b) {
-        return  a / b;
+        return a / b;
     }
 
     public void getUserInput() {
@@ -31,7 +32,6 @@ public class Calculator {
         }
 
         inputs = input.split(" ");
-
     }
 
     public void start() {
@@ -39,26 +39,24 @@ public class Calculator {
             getUserInput();
             checkInputs();
             takeArguments();
-
         } catch (IllegalArgumentException e) {
             System.out.println("올바른 계산식을 입력해주세요.");
         }
     }
 
 
-
     private void takeArguments() {
         double result = Double.parseDouble(inputs[0]);
 
-        for (int i=1; i<inputs.length; i+=2) {
+        for (int i = 1; i < inputs.length; i += 2) {
             String operator = inputs[i];
-            String operand = inputs[i+1];
+            String operand = inputs[i + 1];
 
             result = calculate(result, operator, Double.parseDouble(operand));
         }
         System.out.println(result);
     }
-    // "1 1"
+
     private double calculate(double arg1, String op, double arg2) {
         if (op.equals("+")) {
             return add(arg1, arg2);
@@ -66,7 +64,7 @@ public class Calculator {
             return substract(arg1, arg2);
         } else if (op.equals("*")) {
             return multiply(arg1, arg2);
-        } else if(op.equals("/")){
+        } else if (op.equals("/")) {
             return divide(arg1, arg2);
         } else {
             throw new IllegalArgumentException();
@@ -81,14 +79,15 @@ public class Calculator {
             return false;
         }
     }
-    private void checkInputs() {
 
+    private void checkInputs() {
         for (String input : inputs) {
             if (!isNumeric(input) && !isOp(input)) {
                 throw new IllegalArgumentException();
             }
         }
     }
+
     private boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
@@ -100,6 +99,7 @@ public class Calculator {
         }
         return true;
     }
+
     private boolean isOp(String op) {
         String OPERATORS = "+-*/";
         if (op.length() != 1) {

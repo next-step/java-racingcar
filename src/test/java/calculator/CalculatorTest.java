@@ -20,10 +20,16 @@ public class CalculatorTest {
     }
 
     @Test
-    void getUserInput() {
+    void 사칙연산_테스트() {
+
+        String input = "1 + 2";
+        String output = "3.0";
+
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
         calculator.start();
-        String[] testStrings = {"1", "+", "2"};
-//        Assertions.assertThat(calculator.inputStrings).containsAll(testStrings);
+        Assertions.assertThat(output).isEqualTo(out.toString());
+
     }
 
     @Test
