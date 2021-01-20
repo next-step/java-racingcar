@@ -62,4 +62,18 @@ public class InputOutput {
         }
         System.out.println(carInfo);
     }
+
+    public static void printWinners(ArrayList<Car> carsList, int maxDistance) {
+        System.out.print("최종 우승자 : ");
+        for(Car car : carsList) {
+            printWinner(car, maxDistance);
+        }
+        System.out.println("");
+    }
+
+    private static void printWinner(Car car, int maxDistance) {
+        if(car.getDistance() == maxDistance) {
+            System.out.print(car.getName() + " ");
+        }
+    }
 }

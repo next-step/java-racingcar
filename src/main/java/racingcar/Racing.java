@@ -17,6 +17,7 @@ public class Racing {
             moveCars();
             InputOutput.printCurrentCarsState(carsList);
         }
+        InputOutput.printWinners(this.carsList, getMaxDistance());
     }
 
     public void moveCars() {
@@ -34,5 +35,13 @@ public class Racing {
     public int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(10);
+    }
+
+    public int getMaxDistance() {
+        int maxDistance = 0;
+        for(Car car : this.carsList) {
+            maxDistance = Math.max(maxDistance, car.getDistance());
+        }
+        return maxDistance;
     }
 }
