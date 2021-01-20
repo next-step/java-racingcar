@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputOutput {
@@ -43,5 +44,22 @@ public class InputOutput {
             return false;
         }
         return true;
+    }
+
+    public static void printCurrentCarsState(ArrayList<Car> carsList){
+        System.out.println("\n실행 결과");
+        for(Car car : carsList){
+            printCarInfo(car);
+        }
+    }
+
+    private static void printCarInfo(Car car){
+        StringBuffer carInfo = new StringBuffer();
+        carInfo.append(car.getName());
+        carInfo.append(" : ");
+        for(int i = 0; i < car.getDistance(); ++i){
+            carInfo.append("-");
+        }
+        System.out.println(carInfo);
     }
 }
