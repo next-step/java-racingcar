@@ -11,20 +11,9 @@ public class InputOutput {
         boolean isValidCarsName = false;
         while (!isValidCarsName) {
             carsName = scanner.next();
-            isValidCarsName = validateCarsName(carsName);
+            isValidCarsName = Validator.validateCarsName(carsName);
         }
         return carsName;
-    }
-    private static boolean validateCarsName(String carsName) {
-        try {
-            Validator.checkEmptyElement(carsName);
-            Validator.checkLastValueComma(carsName);
-            Validator.checkCarNameLength(carsName);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
     }
 
     public static int inputStages() {
@@ -32,19 +21,9 @@ public class InputOutput {
         boolean isValidStages = false;
         while (!isValidStages) {
             stages = scanner.next();
-            isValidStages = validateStages(stages);
+            isValidStages = Validator.validateStages(stages);
         }
         return Integer.parseInt(stages);
-    }
-
-    private static boolean validateStages(String stages) {
-        try {
-            Validator.checkNumber(stages);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
     }
 
     public static void printCurrentCarsState(ArrayList<Car> carsList){
