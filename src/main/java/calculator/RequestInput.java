@@ -10,8 +10,8 @@ public class RequestInput {
         boolean isSuitable = false;
         String[] inputArray = {};
         while (!isSuitable) {
-            // TODO : 입력 요청 출력
-            String input = sc.next();
+            PrintUtils.printInputRequest();
+            String input = sc.nextLine();
             inputArray = StringUtils.splitInput(input);
             isSuitable = ValidateUtils.validateInput(inputArray);
         }
@@ -19,13 +19,11 @@ public class RequestInput {
     }
 
 
-    public CalculationInfo convertToCalculationInfo(String[] inputArray, int index, int sum) {
+    public CalculationInfo convertToCalculationInfo(String[] inputArray, int index, int total) {
         CalculationInfo calculationInfo = new CalculationInfo();
-        calculationInfo.setDividend(sum);
-        calculationInfo.setDivisor(Integer.getInteger(inputArray[index + 1]));
-        calculationInfo.setOperator(Operator.valueOf(inputArray[index + 2]));
+        calculationInfo.setDividend(total);
+        calculationInfo.setDivisor(Integer.parseInt(inputArray[index + 2]));
+        calculationInfo.setOperator(Operator.validateOperator(inputArray[index + 1]));
         return calculationInfo;
     }
 }
-
-// 2 + 3 * 4 / 2
