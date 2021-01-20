@@ -4,9 +4,9 @@ public class RacingCar {
     private String name;
     private int status;
 
-    public RacingCar(String name, int status) {
+    public RacingCar(String name) {
         this.name = name;
-        this.status = status;
+        this.status = 0;
     }
 
     public String getName() {
