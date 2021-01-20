@@ -78,16 +78,3 @@ public class CarTest {
     }
 }
 
-class FalseMoveChecker extends MoveChecker {
-    @Override
-    public boolean isMoving() {
-        return false;
-    }
-}
-
-class TrueMoveChecker extends MoveChecker {
-    @Override
-    public boolean isMoving() {
-        return true;
-    }
-}
