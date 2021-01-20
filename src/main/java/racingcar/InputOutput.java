@@ -19,6 +19,7 @@ public class InputOutput {
         try {
             Validator.checkEmptyElement(carsName);
             Validator.checkLastValueComma(carsName);
+            Validator.checkCarNameLength(carsName);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return false;

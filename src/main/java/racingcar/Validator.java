@@ -26,4 +26,17 @@ public class Validator {
             throw new IllegalArgumentException("숫자가 아닙니다. 다시 입력해주세요.");
         }
     }
+
+    public static void checkCarNameLength(String input) throws IllegalArgumentException{
+        String[] carsNames = input.split(",");
+        for(String carName : carsNames) {
+            checkGreaterThan5(carName);
+        }
+    }
+
+    private static void checkGreaterThan5(String carName) throws IllegalArgumentException{
+        if(carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
+    }
 }
