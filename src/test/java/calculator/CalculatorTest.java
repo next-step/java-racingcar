@@ -8,30 +8,32 @@ import java.io.*;
 
 public class CalculatorTest {
     private static Calculator calculator;
+    private static final String inputMsg = "계산식을 입력해주세요.\n";
     private static final String errMsg = "계산식을 입력해주세요.\n올바른 계산식을 입력해주세요.\n";
     private static OutputStream out;
     private static InputStream in;
-
+    private static final int NUMBER_OF_TESTCASE = 4;
 
 
     @BeforeAll
     static void initAll() {
         calculator = new Calculator();
-        out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
     }
 
     @Test
     void 사칙연산_테스트() {
 
-        String input = "1 + 2";
-        String output = "3.0";
+        String[] input = {"1 + 2", "1 - 2", "1 * 2", "1 / 2"};
+        String[] output = {"3.0", "-1.0", "2.0", "0.5"};
 
-        in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        calculator.start();
-        Assertions.assertThat(output).isEqualTo(out.toString());
-
+        for (int i = 0; i < NUMBER_OF_TESTCASE; i++) {
+            in = new ByteArrayInputStream(input[i].getBytes());
+            System.setIn(in);
+            out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            calculator.start();
+            Assertions.assertThat(inputMsg + output[i]).isEqualTo(out.toString());
+        }
     }
 
     @Test
@@ -41,6 +43,8 @@ public class CalculatorTest {
 
         in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
+        out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
         calculator.start();
         Assertions.assertThat(errMsg).isEqualTo(out.toString());
 
@@ -53,6 +57,8 @@ public class CalculatorTest {
 
         in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
+        out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
         calculator.start();
         Assertions.assertThat(errMsg).isEqualTo(out.toString());
     }

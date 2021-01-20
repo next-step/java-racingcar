@@ -54,7 +54,7 @@ public class Calculator {
 
             result = calculate(result, operator, Double.parseDouble(operand));
         }
-        System.out.println(result);
+        System.out.print(result);
     }
 
     private double calculate(double arg1, String op, double arg2) {
