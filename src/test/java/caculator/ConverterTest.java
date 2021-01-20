@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("숫자 변환기 테스트")
 public class ConverterTest {
     @DisplayName("숫자 문자열이 숫자로 잘 바뀌는지 확인")
     @Test
@@ -15,7 +16,7 @@ public class ConverterTest {
     }
 
     @Test
-    @DisplayName("Check toInt should throws exception with not number convertable string")
+    @DisplayName("숫자가 아닌 문자열일 경우 IllegalArgumentException 발생")
     void toDoubleShouldThrowException() {
         assertThatThrownBy(
                 () -> Converter.toDouble("STRING")

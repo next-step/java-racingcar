@@ -1,11 +1,11 @@
 package caculator;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 
 public enum Operator {
-
     PLUS("+", (x, y) -> x + y),
     MINUS("-", (x, y) -> x - y),
     MULTIPLY("*", (x, y) -> x * y),
@@ -17,13 +17,6 @@ public enum Operator {
     }),
     ;
 
-    private static final Map<String, Operator> operations = new HashMap<>() {{
-        put("+", PLUS);
-        put("-", MINUS);
-        put("*", MULTIPLY);
-        put("/", DIVIDE);
-    }};
-
     private final String sign;
     private final BiFunction<Double, Double, Double> expression;
 
@@ -33,11 +26,16 @@ public enum Operator {
     }
 
     public static double calculate(String sign, double x, double y) {
-        Operator operator = operations.get(sign);
-        if (operator == null) {
-            throw new IllegalArgumentException("");
-        }
+        return Arrays.stream(
+            Operator.values()
+        ).filter(
+            op -> op.sign.equals(sign)
+        ).findAny(
 
-        return operator.expression.apply(x, y);
+        ).orElseThrow(
+            () -> new IllegalArgumentException("")
+        ).expression.apply(
+            x, y
+        );
     }
 }

@@ -1,7 +1,6 @@
 package caculator;
 
 public class StringCalculator {
-
     public double calculate(final String s) throws IllegalArgumentException {
         if (s == null) {
             throw new IllegalArgumentException("");
@@ -14,9 +13,9 @@ public class StringCalculator {
 
         double result = Converter.toDouble(elements[0]);
         for (int i = 1; i < elements.length; i += 2) {
-            String operator = elements[i];
+            String op = elements[i];
             double num = Converter.toDouble(elements[i + 1]);
-            result = Operator.calculate(operator, result, num);
+            result = Operator.calculate(op, result, num);
         }
         return result;
     }

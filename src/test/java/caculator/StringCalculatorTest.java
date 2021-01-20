@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("계산기 통합 테스트")
 public class StringCalculatorTest {
 
     private StringCalculator stringCalculator;
@@ -18,7 +19,7 @@ public class StringCalculatorTest {
         stringCalculator = new StringCalculator();
     }
 
-    @DisplayName("덧셈")
+    @DisplayName("하나의 연산을 잘 수행하는지 확인인")
     @Test
     void add() {
         // given & when
@@ -28,17 +29,7 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(11);
     }
 
-    @DisplayName("뺄셈")
-    @Test
-    void minus() {
-        // given & when
-        double result = stringCalculator.calculate("5 - 1");
-
-        // then
-        assertThat(result).isEqualTo(4);
-    }
-
-    @DisplayName("여러 연산이 혼합되어 있는 경우")
+    @DisplayName("여러개의 연산을 잘 수행하는지 확")
     @Test
     void multipleOperation() {
         // given & when
@@ -66,18 +57,10 @@ public class StringCalculatorTest {
 
     @DisplayName("입력값이 완성되지 않은 계산식일경우 예외를 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"1 + 2 + "})
+    @ValueSource(strings = {"1 + 2 + ", "1 + 1 1"})
     void inputWrongFormatShouldThrowException(String s) {
         assertThatThrownBy(
                 () -> stringCalculator.calculate(s)
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("0으로 나누려고 시도할경우 예외를 발생")
-    @Test
-    void divideWithZeroShouldThrowException() {
-        assertThatThrownBy(
-                () -> stringCalculator.calculate("1 / 0")
         ).isInstanceOf(IllegalArgumentException.class);
     }
 }
