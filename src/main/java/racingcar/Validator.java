@@ -7,9 +7,8 @@ import java.util.Set;
 public class Validator {
     public static boolean validateCarsName(String carsName) {
         try {
-            checkEmptyElement(carsName);
+            checkCarName(carsName);
             checkLastValueComma(carsName);
-            checkCarNameLength(carsName);
             checkDuplicateName(carsName);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
@@ -18,9 +17,10 @@ public class Validator {
         return true;
     }
 
-    public static void checkEmptyElement(String input) throws IllegalArgumentException {
-        for(String element : input.split(",")){
-            checkEmptyInput(element);
+    public static void checkCarName(String input) throws IllegalArgumentException {
+        for(String carName : input.split(",")){
+            checkEmptyInput(carName);
+            checkGreaterThan5(carName);
         }
     }
 
@@ -33,14 +33,6 @@ public class Validator {
     public static void checkLastValueComma(String input) throws IllegalArgumentException {
         if (input.charAt(input.length()-1) == ','){
             throw new IllegalArgumentException("마지막 값이 제대로 입력되지 않았습니다. 다시 입력해 주세요.");
-        }
-    }
-
-
-    public static void checkCarNameLength(String input) throws IllegalArgumentException{
-        String[] carsNames = input.split(",");
-        for(String carName : carsNames) {
-            checkGreaterThan5(carName);
         }
     }
 
