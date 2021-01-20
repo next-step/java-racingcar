@@ -7,6 +7,7 @@ public class StringUtilsTest {
 
     @Test
     public void splitInputTest() {
-        assertThat(StringUtils.splitInput(" ")).containsExactly(" ");
+        assertThat(StringUtils.splitInput(" ")).containsExactly();
+        assertThat(StringUtils.splitInput("2 + 3 * 4 / 2")).containsExactly("2","+","3","*","4","/","2");
     }
 }
