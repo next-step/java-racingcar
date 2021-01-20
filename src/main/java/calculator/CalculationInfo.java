@@ -1,6 +1,7 @@
 package calculator;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -9,9 +10,4 @@ public class CalculationInfo {
     private int dividend;
     private int divisor;
     private Operator operator;
-    private boolean resumeInputRequest;
-
-    public CalculationInfo(){
-        resumeInputRequest = false;
-    }
 }
