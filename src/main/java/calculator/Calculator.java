@@ -45,22 +45,20 @@ public class Calculator {
         }
     }
 
-    private void checkInputs() {
 
-    }
 
     private void takeArguments() {
         double result = Double.parseDouble(inputs[0]);
 
-        for (int i=1; i<inputs.length; i++) {
+        for (int i=1; i<inputs.length; i+=2) {
             String operator = inputs[i];
             String operand = inputs[i+1];
 
             result = calculate(result, operator, Double.parseDouble(operand));
         }
-
+        System.out.println(result);
     }
-
+    // "1 1"
     private double calculate(double arg1, String op, double arg2) {
         if (op.equals("+")) {
             return add(arg1, arg2);
@@ -83,5 +81,33 @@ public class Calculator {
             return false;
         }
     }
+    private void checkInputs() {
 
+        for (String input : inputs) {
+            if (!isNumeric(input) && !isOp(input)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+    private boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+    private boolean isOp(String op) {
+        String OPERATORS = "+-*/";
+        if (op.length() != 1) {
+            return false;
+        } else if (OPERATORS.contains(op)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
