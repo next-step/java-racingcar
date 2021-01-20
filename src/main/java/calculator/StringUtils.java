@@ -1,7 +1,5 @@
 package calculator;
 
-import java.util.ArrayList;
-
 public class StringUtils {
 
     public static String[] splitInput(String input) {
