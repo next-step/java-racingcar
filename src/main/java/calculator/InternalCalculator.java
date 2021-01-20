@@ -1,7 +1,5 @@
 package calculator;
 
-import java.util.ArrayList;
-
 public class InternalCalculator {
 
     private static RequestInput requestInput = new RequestInput();
@@ -33,5 +31,6 @@ public class InternalCalculator {
             default:
                 throw new IllegalArgumentException();
         }
+        return 0;
     }
 }
