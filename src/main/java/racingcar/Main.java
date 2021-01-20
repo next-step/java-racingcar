@@ -9,5 +9,6 @@ public class Main {
         int stages = InputOutput.inputStages();
 
         Racing racing = new Racing(carsList, stages);
+        racing.start();
     }
 }
