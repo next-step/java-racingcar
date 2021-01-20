@@ -5,6 +5,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGameController {
+
+    private final int LOWER_BOUND_MOVE = 4;
+
     private ArrayList<RacingCar> cars = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
     private int numberOfRound;
@@ -48,6 +51,20 @@ public class RacingGameController {
     }
 
     public void playRound() {
+        for(int i=0; i<cars.size(); i++) {
+            moveEachCar(cars.get(i));
+        }
+    }
 
+    public void start() {
+        for(int i=0; i<numberOfRound; i++) {
+            playRound();
+        }
+    }
+
+    public void moveEachCar(RacingCar racingCar) {
+        if(getRandomNumber() >= LOWER_BOUND_MOVE) {
+            racingCar.movingForward();
+        }
     }
 }
