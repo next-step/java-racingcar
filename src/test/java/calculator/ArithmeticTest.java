@@ -11,7 +11,6 @@ public class ArithmeticTest {
     @Test
     @DisplayName("사칙연산 테스트")
     public void arithmeticTest() {
-        // TODO: 중복을 줄일 수 있는 섹다른 방법 알아보기
         assertThat(Arithmetic.calculate("+", 1, 2)).isEqualTo(3);
         assertThat(Arithmetic.calculate("-", 2, 1)).isEqualTo(1);
         assertThat(Arithmetic.calculate("*", 1, 2)).isEqualTo(2);
