@@ -18,9 +18,9 @@ class OperatorTest {
             "'*', 48",
             "'/', 3"
     })
-    void calculate(String operator, int expected) {
+    void calculate(String operator, double expected) {
         // given & when
-        int result = Operator.calculate(operator, 12, 4);
+        double result = Operator.calculate(operator, 12, 4);
 
         // then
         assertThat(result).isEqualTo(expected);

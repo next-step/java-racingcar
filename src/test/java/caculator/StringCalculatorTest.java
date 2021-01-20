@@ -18,26 +18,11 @@ public class StringCalculatorTest {
         stringCalculator = new StringCalculator();
     }
 
-    @Test
-    @DisplayName("Check toInt convert string to int well")
-    void toInt() {
-        int result = stringCalculator.toInt("10");
-        assertThat(result).isEqualTo(10);
-    }
-
-    @Test
-    @DisplayName("Check toInt should throws exception with not number convertable string")
-    void toIntShouldThrowException() {
-        assertThatThrownBy(
-                () -> stringCalculator.toInt("STRING")
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("덧셈")
     @Test
     void add() {
         // given & when
-        int result = stringCalculator.calculate("2 + 3 + 6");
+        double result = stringCalculator.calculate("2 + 3 + 6");
 
         // then
         assertThat(result).isEqualTo(11);
@@ -47,7 +32,7 @@ public class StringCalculatorTest {
     @Test
     void minus() {
         // given & when
-        int result = stringCalculator.calculate("5 - 1");
+        double result = stringCalculator.calculate("5 - 1");
 
         // then
         assertThat(result).isEqualTo(4);
@@ -57,7 +42,7 @@ public class StringCalculatorTest {
     @Test
     void multipleOperation() {
         // given & when
-        int result = stringCalculator.calculate("2 + 3 * 4 / 2");
+        double result = stringCalculator.calculate("2 + 3 * 4 / 2");
 
         // then
         assertThat(result).isEqualTo(10);
@@ -68,7 +53,7 @@ public class StringCalculatorTest {
     void inputNullShouldThrowException() {
         assertThatThrownBy(
                 () -> stringCalculator.calculate(null)
-        );
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력값이 공백일 경우 예외를 발생")
@@ -76,7 +61,7 @@ public class StringCalculatorTest {
     void inputSpaceShouldThrowException() {
         assertThatThrownBy(
                 () -> stringCalculator.calculate(" ")
-        );
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력값이 완성되지 않은 계산식일경우 예외를 발생")
@@ -85,7 +70,7 @@ public class StringCalculatorTest {
     void inputWrongFormatShouldThrowException(String s) {
         assertThatThrownBy(
                 () -> stringCalculator.calculate(s)
-        );
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("0으로 나누려고 시도할경우 예외를 발생")
@@ -93,6 +78,6 @@ public class StringCalculatorTest {
     void divideWithZeroShouldThrowException() {
         assertThatThrownBy(
                 () -> stringCalculator.calculate("1 / 0")
-        );
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -27,26 +27,17 @@ public enum Operator {
     private final String sign;
     private final BiFunction<Double, Double, Double> expression;
 
-    Operator(final String sign, final BiFunction<Integer, Integer, Integer> expression) {
+    Operator(String sign, final BiFunction<Double, Double, Double> expression) {
         this.sign = sign;
         this.expression = expression;
     }
 
-    public static int calculate(String operator, int x, int y) {
-        return getOperator(operator).expression.apply(x, y);
-    }
-
-    private static Operator getOperator(final String sign) {
-        if (sign.equals("+")) {
-            return PLUS;
-        } else if (sign.equals("-")) {
-            return MINUS;
-        } else if (sign.equals("*")) {
-            return MULTIPLY;
-        } else if (sign.equals("/")) {
-            return DIVIDE;
-        } else {
+    public static double calculate(String sign, double x, double y) {
+        Operator operator = operations.get(sign);
+        if (operator == null) {
             throw new IllegalArgumentException("");
         }
+
+        return operator.expression.apply(x, y);
     }
 }
