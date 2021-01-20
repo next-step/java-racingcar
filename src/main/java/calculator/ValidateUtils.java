@@ -3,24 +3,28 @@ package calculator;
 public class ValidateUtils {
 
     public static boolean validateInput(String[] input) {
-        return validateInputSize(input.length)
-            && validateAppropriateOperator(input)
-            && validateOperand(input);
+        try {
+            return validateInputSize(input.length)
+                && validateAppropriateOperator(input)
+                && validateOperand(input);
+        } catch(IllegalArgumentException e){
+            return false;
+        }
     }
 
-    private static boolean validateInputSize(int inputSize) {
+    private static boolean validateInputSize(int inputSize) throws IllegalArgumentException {
         if (inputSize < 3) {
-            return false;
+            throw new IllegalArgumentException();
         }
         return true;
     }
 
-    private static boolean validateAppropriateOperator(String[] inputArray) {
+    private static boolean validateAppropriateOperator(String[] inputArray) throws IllegalArgumentException {
         for (int i = 1; i < inputArray.length; i += 2) {
             try {
-                Operator.valueOf(inputArray[i]);
+                Operator.validateOperator(inputArray[i]);
             } catch (java.lang.IllegalArgumentException e) {
-                return false;
+                throw new IllegalArgumentException();
             }
         }
         return true;
