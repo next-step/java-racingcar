@@ -24,5 +24,3 @@ public class RequestInput {
         return calculationInfo;
     }
 }
-
-// 2 + 3 * 4 / 2
