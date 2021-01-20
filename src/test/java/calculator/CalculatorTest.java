@@ -9,13 +9,15 @@ import java.io.*;
 public class CalculatorTest {
     private static Calculator calculator;
     private static final String errMsg = "계산식을 입력해주세요.\n올바른 계산식을 입력해주세요.\n";
-    OutputStream out;
-    InputStream in;
+    private static OutputStream out;
+    private static InputStream in;
+
+
 
     @BeforeAll
     static void initAll() {
         calculator = new Calculator();
-        OutputStream out = new ByteArrayOutputStream();
+        out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
     }
 
@@ -41,7 +43,7 @@ public class CalculatorTest {
     @Test
     void 입력_순서_에러테스트() {
 
-        String input = "+ 1 +";
+        String input = "1 1 +";
 
         in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
