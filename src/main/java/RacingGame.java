@@ -1,4 +1,9 @@
-import racingcar.*;
+import racingcar.controller.PlayGround;
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.domain.CarFactoryImpl;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
