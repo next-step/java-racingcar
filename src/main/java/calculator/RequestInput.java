@@ -1,0 +1,29 @@
+package calculator;
+
+import java.util.Scanner;
+
+public class RequestInput {
+
+    static final Scanner sc = new Scanner(System.in);
+
+    public String[] askUserForSuitableInput() {
+        boolean isSuitable = false;
+        String[] inputArray = {};
+        while (!isSuitable) {
+            PrintUtils.printInputRequest();
+            String input = sc.nextLine();
+            inputArray = StringUtils.splitInput(input);
+            isSuitable = ValidateUtils.validateInput(inputArray);
+        }
+        return inputArray;
+    }
+
+
+    public CalculationInfo convertToCalculationInfo(String[] inputArray, int index, int total) {
+        CalculationInfo calculationInfo = new CalculationInfo();
+        calculationInfo.setDividend(total);
+        calculationInfo.setDivisor(Integer.parseInt(inputArray[index + 2]));
+        calculationInfo.setOperator(Operator.validateOperator(inputArray[index + 1]));
+        return calculationInfo;
+    }
+}

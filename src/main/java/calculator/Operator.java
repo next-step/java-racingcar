@@ -1,0 +1,27 @@
+package calculator;
+
+public enum Operator {
+    ADD("+"),
+    SUBTRACT("-"),
+    MULTIPLY("*"),
+    DIVIDE("/");
+
+    private String operatorString;
+
+    Operator(String operatorString) {
+        this.operatorString = operatorString;
+    }
+
+    public String getValue() {
+        return operatorString;
+    }
+
+    public static Operator validateOperator(String operatorString) {
+        for (Operator operator : values()) {
+            if (operator.getValue().equalsIgnoreCase(operatorString)) {
+                return operator;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+}
