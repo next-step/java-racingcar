@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CarsFactory {
@@ -10,12 +9,14 @@ public class CarsFactory {
 
     public static Cars createCars(String carNames, MoveChecker moveChecker) {
         validateNonNull(carNames);
-        List<String> carNameList = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
         for (String carName : carNames.split(DELIMITER)) {
             validateLength(carName);
-            carNameList.add(carName);
+
+            Car car = new Car(carName, 0);
+            carList.add(car);
         }
-        return new Cars(carNameList, moveChecker);
+        return new Cars(carList, moveChecker);
     }
 
     private static void validateNonNull(String name) {

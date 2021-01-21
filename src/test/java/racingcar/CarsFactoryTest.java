@@ -37,7 +37,11 @@ class CarsFactoryTest {
 
         assertThat(cars).isEqualTo(
             new Cars(
-                Arrays.asList("car1", "car2", "car3"),
+                new ArrayList<Car>() {{
+                    add(new Car("car1", 0));
+                    add(new Car("car2", 0));
+                    add(new Car("car3", 0));
+                }},
                 moveChecker
             )
         );

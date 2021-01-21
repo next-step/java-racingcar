@@ -5,13 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Cars {
-    private final List<Car> cars = new ArrayList<>();
-    private final MoveChecker moveChecker;
+    private List<Car> cars;
+    private MoveChecker moveChecker;
 
-    public Cars(final List<String> cars, final MoveChecker moveChecker) {
-        for (String car : cars) {
-            this.cars.add(new Car(car, 0));
-        }
+    public Cars(final List<Car> cars, MoveChecker moveChecker) {
+        this.cars = cars;
         this.moveChecker = moveChecker;
     }
 

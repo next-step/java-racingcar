@@ -6,7 +6,7 @@ class MockCars extends Cars {
     public int doRoundCallCnt;
     public int printWinnersCallCnt;
 
-    public MockCars(List<String> cars, MoveChecker moveChecker) {
+    public MockCars(List<Car> cars, MoveChecker moveChecker) {
         super(cars, moveChecker);
 
         doRoundCallCnt = 0;

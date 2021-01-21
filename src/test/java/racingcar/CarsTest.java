@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,21 +32,9 @@ class CarsTest {
     @Test
     void doRound() {
         // given
-        List<String> carStrings = Arrays.asList(
-            "car1",
-            "car2",
-            "car3"
-        );
-        Cars cars = new Cars(carStrings, new LookLikeRandomMoveChecker());
-
-        // when
-        cars.doRound();
-
-        // then
-        assertThat(outputStreamCaptor.toString()).isEqualTo(
-                "car1 : -\n" +
-                        "car2 : \n" +
-                        "car3 : \n\n"
-        );
+        List<Car> carList = new ArrayList<Car>() {{
+            new Car("1", 0);
+        }};
+        Cars cars = new Cars(carList, new LookLikeRandomMoveChecker());
     }
 }
