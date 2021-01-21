@@ -1,26 +1,24 @@
-package racingcar;
-
-import java.util.Random;
+package racingcar.domain;
 
 public class RacingCar implements Car {
     private int position = 0;
     private String name;
+    private Engine engine;
 
-    public RacingCar(String name) {
+    public RacingCar(String name, Engine engine) {
         this.name = name;
+        this.engine = engine;
     }
 
     @Override
-    public void go() {
-        Random rand = new Random();
-        int score = rand.nextInt(10);
-        if(score >= 4){
+    public void move() {
+        if(engine.isMove()){
             position++;
         }
     }
 
     @Override
-    public void print() {
+    public void printCurrentPosition() {
         StringBuilder stringBuilder = new StringBuilder(name + " : ");
         for (int i = 0; i < position; i++) {
             stringBuilder.append("-");
