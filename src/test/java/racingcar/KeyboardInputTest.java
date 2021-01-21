@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,19 +28,21 @@ public class KeyboardInputTest {
         System.setOut(standardOut);
     }
 
-    @DisplayName("문자열을 잘 입력 받는지 확인한다")
+    @DisplayName("comma를 포함한 자동차 이름들을 인자로 받아 리스트 형태로 출력")
     @Test
     void getCarNames() {
         // given
-        String inputString = "123";
+        String inputString = "abc,def,ghi";
         provideInput(inputString);
 
         // when
-        String result = input.getCarNames();
+        List<String> carNames = input.getCarNames();
 
         // then
-        assertThat(result).isEqualTo(inputString);
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        assertThat(carNames.get(0)).isEqualTo("abc");
+        assertThat(carNames.get(1)).isEqualTo("def");
+        assertThat(carNames.get(2)).isEqualTo("ghi");
     }
 
     @DisplayName("숫자를 잘 입력받는지 확인한다")
