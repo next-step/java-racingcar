@@ -9,11 +9,12 @@ public class StringCalculator {
         String[] elements = expressionString.split(DELIMITER);
         validateOddNumberOfElements(elements);
 
+        // TODO: 복잡도 줄이기
         double result = Converter.toDouble(elements[0]);
         for (int i = 1; i < elements.length; i += 2) {
             String operator = elements[i];
-            double num = Converter.toDouble(elements[i + 1]);
-            result = Operator.calculate(operator, result, num);
+            double nextOperand = Converter.toDouble(elements[i + 1]);
+            result = Operator.calculate(operator, result, nextOperand);
         }
         return result;
     }

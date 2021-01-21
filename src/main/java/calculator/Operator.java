@@ -11,18 +11,19 @@ public enum Operator {
     MULTIPLY("*", (x, y) -> x * y),
     DIVIDE("/", (x, y) -> {
         if (y == 0) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
         return x / y;
     }),
     ;
 
-    private static final Map<String, Operator> operations = new HashMap<>() {{
-        put("+", PLUS);
-        put("-", MINUS);
-        put("*", MULTIPLY);
-        put("/", DIVIDE);
-    }};
+    private static final Map<String, Operator> operators = new HashMap<>();
+
+    static {
+        for (Operator operator : values()) {
+            operators.put(operator.sign, operator);
+        }
+    }
 
     private final String sign;
     private final BiFunction<Double, Double, Double> expression;
@@ -33,11 +34,10 @@ public enum Operator {
     }
 
     public static double calculate(String sign, double x, double y) {
-        Operator operator = operations.get(sign);
-        if (operator == null) {
-            throw new IllegalArgumentException("");
+        Operator operator = operators.get(sign);
+        if (operator == null || sign.isBlank()) {
+            throw new IllegalArgumentException("유효한 사칙 연산자가 아닙니다.");
         }
-
         return operator.expression.apply(x, y);
     }
 }
