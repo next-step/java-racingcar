@@ -3,7 +3,7 @@ package calculator;
 import java.util.*;
 
 public class CalculatorImpl implements Calculator{
-    private Checker checker = new CheckerImpl();
+    private final Checker checker = new CheckerImpl();
 
     @Override
     public void printInputInformation() {
@@ -55,20 +55,11 @@ public class CalculatorImpl implements Calculator{
 
     private char pollSignBy(Queue<String> queue) {
         String signString = queue.poll();
-        if(!signString.matches("[+-/*]")){
-//            throw new IllegalFormatException("You should input sign +-/*");
-        }
-
         return signString.charAt(0);
     }
 
     private int pollNumberBy(Queue<String> queue){
         String numberString = queue.poll();
-
-//        if(!numberString.matches("[0-9]")){
-//            throw new NumberFormatException("You should input only number character.");
-//        }
-
         return Integer.parseInt(numberString);
     }
 
