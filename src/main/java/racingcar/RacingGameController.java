@@ -55,7 +55,7 @@ public class RacingGameController {
         }
     }
 
-    public void getRound() {
+    private void getRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         numberOfRound = sc.nextInt();
@@ -75,7 +75,7 @@ public class RacingGameController {
         }
     }
 
-    public int getRandomNumber() {
+    private int getRandomNumber() {
         Random rand = new Random();
 
         return rand.nextInt(10);
@@ -105,7 +105,7 @@ public class RacingGameController {
         printWinners(maxStatus);
     }
 
-    private void printWinners(int maxStatus) {
+    public void printWinners(int maxStatus) {
         System.out.print("최종 우승자: ");
 
         for (int i = 0; i < cars.size(); i++) {
