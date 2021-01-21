@@ -30,10 +30,8 @@ public class Application {
             System.out.println("Input Array");
         } catch (IllegalArgumentException ie) {
             ie.printStackTrace();
-        } finally {
-            return null;
-
         }
+        return null;
     }
 
     public ArrayDeque<String> stringToDeque(String input) {
