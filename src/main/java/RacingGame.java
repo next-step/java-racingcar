@@ -16,7 +16,7 @@ public class RacingGame {
         CarFactory carFactory = new CarFactoryImpl();
         List<Car> cars = carFactory.makeCars(names);
 
-        int loopCount = inputView.getTryNo();
+        int loopCount = inputView.getLoopCount();
 
         PlayGround.play(loopCount,cars);
         resultView.printWinner(cars);

@@ -11,7 +11,7 @@ public class InputView {
         return names;
     }
 
-    public int getTryNo(){
+    public int getLoopCount(){
         System.out.println("시도할 횟수는 몇 회인가요?");
         Scanner scanner = new Scanner(System.in);
         int loopCount = scanner.nextInt();
