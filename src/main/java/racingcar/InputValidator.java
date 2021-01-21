@@ -6,7 +6,7 @@ public class InputValidator {
 
     static final int CAR_NAME_SIZE_CONDITION = 5;
 
-    public boolean validateCarName(String[] cars) {
+    public static boolean validateCarName(String[] cars) {
         if (!isNameSizeValid(cars)) {
             return false;
         }
@@ -16,7 +16,7 @@ public class InputValidator {
         return true;
     }
 
-    public boolean validGameCntInput(String cntInput) {
+    public static boolean validGameCntInput(String cntInput) {
         try {
             Integer.parseInt(cntInput);
         } catch (NumberFormatException e) {
@@ -25,12 +25,12 @@ public class InputValidator {
         return true;
     }
 
-    private boolean isNameSizeValid(String[] cars) {
+    private static boolean isNameSizeValid(String[] cars) {
         return Arrays.stream(cars)
             .allMatch(car -> car.length() <= CAR_NAME_SIZE_CONDITION);
     }
 
-    private boolean isNameDistinct(String[] cars) {
+    private static boolean isNameDistinct(String[] cars) {
         return Arrays.stream(cars)
             .distinct()
             .count() == cars.length;
