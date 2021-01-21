@@ -1,6 +1,6 @@
 package racingcar;
 
-class TrueMovementCondition extends MovementCondition {
+class AllForwardMovementCondition extends MovementCondition {
     @Override
     public boolean satisfies() {
         return true;

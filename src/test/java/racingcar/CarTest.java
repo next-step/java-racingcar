@@ -48,7 +48,7 @@ public class CarTest {
     @Test
     public void playWithMove() {
         Car car = new Car("name", 0);
-        MovementCondition movementCondition = new TrueMovementCondition();
+        MovementCondition movementCondition = new AllForwardMovementCondition();
 
         car.moveOrStay(movementCondition);
         int location = car.getLocation();
@@ -60,7 +60,7 @@ public class CarTest {
     @Test
     public void playWithoutMove() {
         Car car = new Car("name", 0);
-        MovementCondition movementCondition = new FalseMovementCondition();
+        MovementCondition movementCondition = new AllStayMovementCondition();
 
         car.moveOrStay(movementCondition);
         int location = car.getLocation();
