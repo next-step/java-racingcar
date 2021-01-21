@@ -2,11 +2,12 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        InputHandler ip = new InputHandler();
+        InputHandler ip = new InputHandler(new Scanner(System.in));
 
         ArrayList<String> carNames = ip.inputCarName();
         Boolean startGame = ip.carNameChecker(carNames); // 자동차 이름 유효성 검사
