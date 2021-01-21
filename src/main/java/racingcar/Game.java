@@ -1,7 +1,9 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Game {
 
@@ -21,42 +23,35 @@ public class Game {
         System.out.println("\n" + Constant.EXECUTION_RESULT);
         for (int i = 0; i < gameCnt; i++) {
             play();
-            print();
+            printStates();
         }
         printWinner();
     }
 
     private void printWinner() {
-        System.out.print(Constant.FINAL_WINNER);
         List<String> winnerList = getWinner();
-        for (int i = 0; i < winnerList.size(); i++) {
-            System.out.print(winnerList.get(i));
-            if (i != winnerList.size() - 1) {
-                System.out.print(", ");
-            }
-        }
+        System.out.print(Constant.FINAL_WINNER);
+        System.out.println(String.join(", ", winnerList));
     }
 
     private List<String> getWinner() {
-        int maxPosition = START_POSITION;
         List<String> winnerList = new ArrayList<>();
-        for (int i = 0; i < carList.size(); i++) {
-            int tmpPosition = carList.get(i).getPosition();
-            maxPosition = Math.max(maxPosition, tmpPosition);
-        }
-
-        for (int i = 0; i < carList.size(); i++) {
-            if (maxPosition == carList.get(i).getPosition()) {
-                winnerList.add(carList.get(i).getName());
+        int maxPosition = START_POSITION;
+        int tmpPosition = carList.stream()
+            .max(Comparator.comparingInt(Car::getPosition))
+            .get().getPosition();
+        maxPosition = Math.max(maxPosition, tmpPosition);
+        int finalMaxPosition = maxPosition;
+        carList.forEach(car -> {
+            if(finalMaxPosition == car.getPosition()) {
+                winnerList.add(car.getName());
             }
-        }
+        });
         return winnerList;
     }
 
-    private void print() {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).printCarState();
-        }
+    private void printStates() {
+        carList.forEach(Car::printCarState);
         System.out.println();
     }
 
