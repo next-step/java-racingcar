@@ -1,12 +1,11 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCarGameApplication {
 
     public static void main(String[] args) {
-        KeyboardInput input = new KeyboardInput(new Scanner(System.in));    // TODO: Input을 인터페이스화 하고, KeyboardInput을 구현체로 추가
+        Input input = new KeyboardInput(System.in);
 
         // TODO: carNames와 tryCount를 여기서 일일이 받지 말고,
         //  내부에서 처리하도록 하는 무언가가 있으면 좋겠다.

@@ -5,9 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,6 +15,7 @@ public class KeyboardInputTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
+    private Input input;
 
     @BeforeEach
     void setUp() {
@@ -29,20 +30,34 @@ public class KeyboardInputTest {
     @DisplayName("문자열을 잘 입력 받는지 확인한다")
     @Test
     void getCarNames() {
-        KeyboardInput input = new KeyboardInput(new Scanner("123"));
+        // given
+        String inputString = "123";
+        provideInput(inputString);
+
+        // when
         String result = input.getCarNames();
 
-        assertThat(result).isEqualTo("123");
+        // then
+        assertThat(result).isEqualTo(inputString);
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
     @DisplayName("숫자를 잘 입력받는지 확인한다")
     @Test
     void getTryCount() {
-        KeyboardInput input = new KeyboardInput(new Scanner("1"));
+        // given
+        String inputString = "1";
+        provideInput(inputString);
+
+        // when
         int result = input.getTryCount();
 
-        assertThat(result).isEqualTo(1);
+        // then
+        assertThat(result).isEqualTo(Integer.parseInt(inputString));
         assertThat(outputStreamCaptor.toString().trim()).isEqualTo("시도할 횟수는 몇 회인가요?");
+    }
+
+    private void provideInput(final String inputString) {
+        input = new KeyboardInput(new ByteArrayInputStream(inputString.getBytes()));
     }
 }
