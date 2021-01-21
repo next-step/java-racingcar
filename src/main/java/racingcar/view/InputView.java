@@ -7,7 +7,7 @@ public class InputView {
     public String[] returnNames(){
         System.out.println("경주할 자동차 이름을 입력하세요:");
         Scanner scanner = new Scanner(System.in);
-        String[] names = scanner.nextLine().split(",");;
+        String[] names = scanner.nextLine().split(",");
         return names;
     }
 
