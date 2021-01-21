@@ -31,7 +31,7 @@ public class Car {
         }
         System.out.println();
     }
-    
+
     public void printCarState() {
         System.out.print(name + " : ");
         for (int i = 0; i < position; i++) {
