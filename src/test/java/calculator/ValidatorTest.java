@@ -1,6 +1,8 @@
 package calculator;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -27,7 +29,8 @@ class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"", "  ", "    "})
     void checkEmptyInputTest(String input) {
-        assertThatThrownBy(() -> Validator.checkEmptyInput(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkEmptyInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     // a static method that returns a Stream of Arguments
@@ -56,6 +59,7 @@ class ValidatorTest {
     @ParameterizedTest
     @MethodSource("provideArrayDequeForWrongExpression")
     void checkExpressionTest(ArrayDeque<String> expression) {
-        assertThatThrownBy(() -> Validator.checkExpression(expression)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkExpression(expression))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
