@@ -1,4 +1,4 @@
-package caculator;
+package calculator;
 
 public class StringCalculator {
     public double calculate(final String s) throws IllegalArgumentException {

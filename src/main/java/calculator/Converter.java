@@ -1,4 +1,4 @@
-package caculator;
+package calculator;
 
 public class Converter {
     public static double toDouble(String s) {
