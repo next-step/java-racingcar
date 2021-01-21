@@ -5,7 +5,7 @@ import java.util.Random;
 public class Car {
     private final String name;
     private int position;
-    private int GO = 4;
+    private final int GO = 4;
 
     public Car(String name) {
         this.name = name;
