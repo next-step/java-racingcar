@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+
     static final int START_POSITION = 0;
     static final int MOVE_THRESHOLD = 4;
     static final int RANDOM_START_INCLUSIVE = 0;
@@ -17,7 +18,7 @@ public class Game {
     }
 
     public void start() {
-        System.out.println( "\n" + Constant.EXECUTION_RESULT);
+        System.out.println("\n" + Constant.EXECUTION_RESULT);
         for (int i = 0; i < gameCnt; i++) {
             play();
             print();

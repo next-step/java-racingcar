@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GameManager {
+
     public void activate(Scanner scanner) {
         String[] cars = inputCarNames(scanner);
         List<Car> carList = createCars(cars);

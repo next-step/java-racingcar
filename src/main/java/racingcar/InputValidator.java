@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Arrays;
 
 public class InputValidator {
+
     static final int CAR_NAME_SIZE_CONDITION = 5;
 
     public boolean validateCarName(String[] cars) {
@@ -26,12 +27,12 @@ public class InputValidator {
 
     private boolean isNameSizeValid(String[] cars) {
         return Arrays.stream(cars)
-                .allMatch(car -> car.length() <= CAR_NAME_SIZE_CONDITION);
+            .allMatch(car -> car.length() <= CAR_NAME_SIZE_CONDITION);
     }
 
     private boolean isNameDistinct(String[] cars) {
         return Arrays.stream(cars)
-                .distinct()
-                .count() == cars.length;
+            .distinct()
+            .count() == cars.length;
     }
 }

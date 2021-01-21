@@ -1,6 +1,7 @@
 package racingcar;
 
 public class Car {
+
     private final String name;
     private int position = 0;
 
@@ -19,7 +20,7 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
-    
+
     public void printCarState() {
         System.out.print(name + " : ");
         for (int i = 0; i < position; i++) {
