@@ -11,7 +11,7 @@ public class Validator {
             checkLastValueComma(carsName);
             checkDuplicateName(carsName);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return false;
         }
         return true;
@@ -54,7 +54,7 @@ public class Validator {
         try {
             Validator.checkNumber(stages);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return false;
         }
         return true;
