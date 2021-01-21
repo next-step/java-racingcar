@@ -2,9 +2,9 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Cars {
-
     private final List<Car> cars = new ArrayList<>();
     private final MoveChecker moveChecker;
 
@@ -13,6 +13,19 @@ public class Cars {
             this.cars.add(new Car(car, 0));
         }
         this.moveChecker = moveChecker;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return cars.equals(cars1.cars) && moveChecker.equals(cars1.moveChecker);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars, moveChecker);
     }
 
     public void doRound() {

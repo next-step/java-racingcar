@@ -6,11 +6,14 @@ import java.util.Scanner;
 public class RacingCarGameApplication {
 
     public static void main(String[] args) {
-        Input input = new Input(new Scanner(System.in));
+        Scanner scanner = new Scanner(System.in);
+        Input input = new Input(scanner);
+
         String carNames = input.getCarNames();
-        int tryCount = input.getTryCount();
-        List<String> cars = InputParser.parseCarNames(carNames);
         MoveChecker moveChecker = new MoveChecker();
+        Cars cars = CarsFactory.createCars(carNames, moveChecker);
+
+        int tryCount = input.getTryCount();
 
         Game game = new Game(cars, tryCount, moveChecker);
         game.start();

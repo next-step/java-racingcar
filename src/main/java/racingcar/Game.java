@@ -6,8 +6,8 @@ public class Game {
     private final Cars cars;
     private final int tryCount;
 
-    public Game(List<String> carNames, int tryCount, final MoveChecker moveChecker) {
-        this.cars = new Cars(carNames, moveChecker);
+    public Game(Cars cars, int tryCount, final MoveChecker moveChecker) {
+        this.cars = cars;
         this.tryCount = tryCount;
     }
 
