@@ -27,7 +27,8 @@ public class Application {
             Validator.checkExpression(dequeInput);
             return dequeInput;
         } catch (IOException e) {
-            System.out.println("Input Array");
+            System.out.println("There is an Error in BufferedReader");
+            e.printStackTrace();
         } catch (IllegalArgumentException ie) {
             ie.printStackTrace();
         }
