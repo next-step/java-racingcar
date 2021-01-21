@@ -15,7 +15,7 @@ public class Game {
 
     private int getMax(List<Car> cars) {
         int max = -1;
-        for (Car car: cars) {
+        for (Car car : cars) {
             max = Math.max(max, car.getPosition());
         }
         return max;

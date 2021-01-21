@@ -11,7 +11,6 @@ public class  InputHandler {
     private static String inputCarName;
     private static int MAX_CAR_NAME_LENGTH = 5;
 
-    // Return> ArrayList
     public ArrayList<String> inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 , 기준으로 구분)");
 
