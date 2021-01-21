@@ -13,11 +13,12 @@ public class GameManager {
 
     private String[] inputCarNames(Scanner scanner) {
         String[] cars;
+        InputValidator inputValidator = new InputValidator();
         do {
             System.out.println(Constant.INPUT_REQUEST_CAR_NAME);
             String carsInput = scanner.next();
             cars = carsInput.split(",");
-        } while (false);
+        } while (!inputValidator.validateCarName(cars));
         return cars;
     }
 
@@ -31,10 +32,11 @@ public class GameManager {
 
     private int inputGameTryCnt(Scanner scanner) {
         String inputCnt;
+        InputValidator inputValidator = new InputValidator();
         do {
             System.out.println(Constant.INPUT_REQUEST_PLAY_TIME);
             inputCnt = scanner.next();
-        } while (false);
+        } while (!inputValidator.validGameCntInput(inputCnt));
         return Integer.parseInt(inputCnt);
     }
 }
