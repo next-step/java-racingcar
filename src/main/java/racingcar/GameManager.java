@@ -1,4 +1,40 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class GameManager {
+    public void activate(Scanner scanner) {
+        String[] cars = inputCarNames(scanner);
+        List<Car> carList = createCars(cars);
+        int gameCnt = inputGameTryCnt(scanner);
+    }
+
+    private String[] inputCarNames(Scanner scanner) {
+        String[] cars;
+        do {
+            System.out.println(Constant.INPUT_REQUEST_CAR_NAME);
+            String carsInput = scanner.next();
+            cars = carsInput.split(",");
+        } while (false);
+        return cars;
+    }
+
+    private static List<Car> createCars(String[] cars) {
+        List<Car> carList = new ArrayList<>();
+        for (String car : cars) {
+            carList.add(new Car(car));
+        }
+        return carList;
+    }
+
+    private int inputGameTryCnt(Scanner scanner) {
+        String inputCnt;
+        do {
+            System.out.println(Constant.INPUT_REQUEST_PLAY_TIME);
+            inputCnt = scanner.next();
+        } while (false);
+        return Integer.parseInt(inputCnt);
+    }
 }
