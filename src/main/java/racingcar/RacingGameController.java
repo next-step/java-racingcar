@@ -14,13 +14,16 @@ public class RacingGameController {
     public void getCarsName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-
         String input = sc.nextLine();
 
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
 
+        setCarsName(input);
+    }
+
+    public void setCarsName(String input) {
         String[] inputs = input.split(",");
         for (int i=0; i<inputs.length; i++){
             cars.add(new RacingCar(inputs[i]));
@@ -102,5 +105,9 @@ public class RacingGameController {
         if(getRandomNumber() >= LOWER_BOUND_MOVE) {
             racingCar.movingForward();
         }
+    }
+
+    public ArrayList<RacingCar> getCars() {
+        return cars;
     }
 }
