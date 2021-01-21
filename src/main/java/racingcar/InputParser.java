@@ -4,11 +4,11 @@ import java.util.List;
 
 public class InputParser {
 
-    private InputParser() {
-    }
-
     private static final String DELIMITER = ",";
     private static final int MAX_CAR_NAME_LENGTH = 5;
+
+    private InputParser() {
+    }
 
     public static List<String> parseCarNames(String input) {
         validateNonNull(input);
