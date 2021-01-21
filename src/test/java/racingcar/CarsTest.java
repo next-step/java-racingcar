@@ -38,7 +38,7 @@ class CarsTest {
         Cars cars = new Cars(carStrings);
 
         // when
-        cars.moveAll(new LookLikeRandomMovementCondition());    // TODO: rename mock object
+        cars.moveAll(new FirstCarForwardMovementCondition());
 
         // then
         assertThat(outputStreamCaptor.toString()).isEqualTo(
