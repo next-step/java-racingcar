@@ -13,7 +13,7 @@ public class InputParser {
     }
 
     public static List<String> parseCarNames(String carNamesInput) {
-        validateNonNull(carNamesInput);
+        validateNonBlank(carNamesInput);
         String[] carNames = carNamesInput.split(DELIMITER);
         List<String> trimmedCarNames = trim(carNames);
         for (String carName : trimmedCarNames) {
@@ -22,8 +22,8 @@ public class InputParser {
         return trimmedCarNames;
     }
 
-    private static void validateNonNull(String name) {
-        if (name == null) { // TODO: isBlank() 구현
+    private static void validateNonBlank(String name) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("입력값이 없습니다.");
         }
     }
