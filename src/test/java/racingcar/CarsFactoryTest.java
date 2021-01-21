@@ -15,7 +15,7 @@ class CarsFactoryTest {
     @Test
     void carNamesNull() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            CarsFactory.createCars(null, new MoveChecker());
+            CarsFactory.createCars(null, new TrueMoveChecker());
         });
         assertThat(exception.getMessage()).isEqualTo("입력값이 없습니다.");
     }
@@ -24,7 +24,7 @@ class CarsFactoryTest {
     @Test
     void carNameLengthLongerThanFive() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            CarsFactory.createCars("car1,gyumin,sanghyun", new MoveChecker());
+            CarsFactory.createCars("car1,gyumin,sanghyun", new TrueMoveChecker());
         });
         assertThat(exception.getMessage()).isEqualTo("자동차 이름은 5자를 초과할 수 없습니다.");
     }
@@ -32,7 +32,7 @@ class CarsFactoryTest {
     @DisplayName("자동차 이름에 따라서 자동차들 객체를 잘 생성하는지 확인")
     @Test
     void createCars() {
-        MoveChecker moveChecker = new MoveChecker();
+        MoveChecker moveChecker = new TrueMoveChecker();
         Cars cars = CarsFactory.createCars("car1,car2,car3", moveChecker);
 
         assertThat(cars).isEqualTo(
