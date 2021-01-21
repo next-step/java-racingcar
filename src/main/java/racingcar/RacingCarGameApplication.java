@@ -15,7 +15,7 @@ public class RacingCarGameApplication {
 
         int tryCount = input.getTryCount();
 
-        Game game = new Game(cars, tryCount, moveChecker);
+        Game game = new Game(cars, tryCount);
         game.start();
     }
 }

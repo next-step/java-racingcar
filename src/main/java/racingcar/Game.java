@@ -1,12 +1,10 @@
 package racingcar;
 
-import java.util.List;
-
 public class Game {
     private final Cars cars;
     private final int tryCount;
 
-    public Game(Cars cars, int tryCount, final MoveChecker moveChecker) {
+    public Game(Cars cars, int tryCount) {
         this.cars = cars;
         this.tryCount = tryCount;
     }
