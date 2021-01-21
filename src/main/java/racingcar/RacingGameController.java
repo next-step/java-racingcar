@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingGameController {
 
@@ -32,17 +30,31 @@ public class RacingGameController {
     public void getRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
-        String input = sc.nextLine();
-        if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException();
-        }
         numberOfRound = sc.nextInt();
 
     }
 
     public void findWinner() {
 
+        int maxStatus = cars.get(0).getStatus();
+        for (int i=1; i<cars.size(); i++) {
+            if(maxStatus < cars.get(i).getStatus()) maxStatus = cars.get(i).getStatus();
+        }
+        printWinners(maxStatus);
     }
+
+    private void printWinners(int maxStatus) {
+        System.out.print("최종 우승자: ");
+        List<String> winners = new ArrayList<>();
+        for(int i=0; i<cars.size(); i++) {
+            if(cars.get(i).getStatus() == maxStatus) {
+               winners.add(cars.get(i).getName());
+            }
+        }
+        String result = String.join(", ",winners);
+        System.out.println(result);
+    }
+
 
     public int getRandomNumber() {
         Random rand = new Random();
