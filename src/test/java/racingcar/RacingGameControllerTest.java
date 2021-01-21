@@ -30,7 +30,6 @@ public class RacingGameControllerTest {
 
     @Test
     void findTwoWinnerTest() {
-
         rgc.setCarsName("pobi,woni,jun");
 
         rgc.getCars().get(0).setStatus(5);
