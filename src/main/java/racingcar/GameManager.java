@@ -1,10 +1,13 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class GameManager {
+
+    private final InputValidator inputValidator = new InputValidator();
 
     public void activate(Scanner scanner) {
         String[] cars = inputCarNames(scanner);
@@ -17,7 +20,6 @@ public class GameManager {
 
     private String[] inputCarNames(Scanner scanner) {
         String[] cars;
-        InputValidator inputValidator = new InputValidator();
         do {
             System.out.println(Constant.INPUT_REQUEST_CAR_NAME);
             String carsInput = scanner.next();
@@ -28,15 +30,12 @@ public class GameManager {
 
     private static List<Car> createCars(String[] cars) {
         List<Car> carList = new ArrayList<>();
-        for (String car : cars) {
-            carList.add(new Car(car));
-        }
+        Arrays.stream(cars).forEach(car -> carList.add(new Car(car)));
         return carList;
     }
 
     private int inputGameTryCnt(Scanner scanner) {
         String inputCnt;
-        InputValidator inputValidator = new InputValidator();
         do {
             System.out.println(Constant.INPUT_REQUEST_PLAY_TIME);
             inputCnt = scanner.next();
