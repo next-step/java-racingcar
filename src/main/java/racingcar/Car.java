@@ -17,8 +17,8 @@ public class Car {
         return this.location;
     }
 
-    public void play(MoveChecker moveChecker) {
-        if (moveChecker.isMoving()) {
+    public void moveOrStay(MovementCondition movementCondition) { // MovementCondition
+        if (movementCondition.satisfies()) {
             this.location++;
         }
     }

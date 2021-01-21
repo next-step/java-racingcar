@@ -47,13 +47,13 @@ public class KeyboardInputTest {
 
     @DisplayName("숫자를 잘 입력받는지 확인한다")
     @Test
-    void getTryCount() {
+    void getRounds() {
         // given
         String inputString = "1";
         provideInput(inputString);
 
         // when
-        int result = input.getTryCount();
+        int result = input.getRounds();
 
         // then
         assertThat(result).isEqualTo(Integer.parseInt(inputString));

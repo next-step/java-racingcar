@@ -38,7 +38,7 @@ class CarsTest {
         Cars cars = new Cars(carStrings);
 
         // when
-        cars.doRound(new LookLikeRandomMoveChecker());
+        cars.moveAll(new LookLikeRandomMovementCondition());
 
         // then
         assertThat(outputStreamCaptor.toString()).isEqualTo(

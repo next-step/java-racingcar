@@ -4,18 +4,17 @@ import java.util.List;
 
 public class RacingGame {
     private final Cars cars;
-    private final int tryCount;
+    private final int rounds;
 
-    public RacingGame(List<String> carNames, int tryCount) {
+    public RacingGame(List<String> carNames, int rounds) {
         // TODO: validate()
         this.cars = new Cars(carNames);
-        this.tryCount = tryCount;
+        this.rounds = rounds;
     }
 
-    public void start() {
-        for (int i = 0; i < tryCount; i++) {
-            // TODO: rename to `move()`
-            cars.doRound(new MoveChecker());
+    public void play() {
+        for (int i = 0; i < rounds; i++) {
+            cars.moveAll(new MovementCondition());
         }
         cars.printWinners();
     }

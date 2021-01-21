@@ -20,7 +20,7 @@ public class KeyboardInput implements Input {
     }
 
     @Override
-    public int getTryCount() {
+    public int getRounds() {
         // TODO: 사용자에게 출력할 메시지는 인자로 받도록
         System.out.println("시도할 횟수는 몇 회인가요?");
         return scanner.nextInt();

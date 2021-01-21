@@ -48,9 +48,9 @@ public class CarTest {
     @Test
     public void playWithMove() {
         Car car = new Car("name", 0);
-        MoveChecker moveChecker = new TrueMoveChecker();
+        MovementCondition movementCondition = new TrueMovementCondition();
 
-        car.play(moveChecker);
+        car.moveOrStay(movementCondition);
         int location = car.getLocation();
 
         assertThat(location).isEqualTo(1);
@@ -60,9 +60,9 @@ public class CarTest {
     @Test
     public void playWithoutMove() {
         Car car = new Car("name", 0);
-        MoveChecker moveChecker = new FalseMoveChecker();
+        MovementCondition movementCondition = new FalseMovementCondition();
 
-        car.play(moveChecker);
+        car.moveOrStay(movementCondition);
         int location = car.getLocation();
 
         assertThat(location).isEqualTo(0);

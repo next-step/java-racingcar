@@ -25,9 +25,9 @@ public class Cars {
         return cars;
     }
 
-    public void doRound(final MoveChecker moveChecker) {
+    public void moveAll(final MovementCondition movementCondition) {
         for (Car car : cars) {
-            car.play(moveChecker);
+            car.moveOrStay(movementCondition);
             car.printNameAndCurrentPosition();
         }
         System.out.println();
