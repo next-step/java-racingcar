@@ -35,24 +35,13 @@ class ValidatorTest {
 
     // a static method that returns a Stream of Arguments
     private static Stream<Arguments> provideArrayDequeForWrongExpression() { // argument source method
-        String[] expression = {"2", "+"};
-        ArrayDeque<String> expressionDeque = new ArrayDeque<>(Arrays.asList(expression));
-
-        String[] expression2 = {"3", "3", "/"};
-        ArrayDeque<String> expressionDeque2 = new ArrayDeque<>(Arrays.asList(expression2));
-
-        String[] expression3 = {"5", "*", "-"};
-        ArrayDeque<String> expressionDeque3 = new ArrayDeque<>(Arrays.asList(expression3));
-
-        String[] expression4 = {"5", ".", "7"};
-        ArrayDeque<String> expressionDeque4 = new ArrayDeque<>(Arrays.asList(expression4));
-
-        return Stream.of(
-                Arguments.of(expressionDeque),
-                Arguments.of(expressionDeque2),
-                Arguments.of(expressionDeque3),
-                Arguments.of(expressionDeque4)
-        );
+        String[][] expressions = {{"2", "+"}, {"3", "3", "/"}, {"5", "*", "-"}, {"5", ".", "7"}};
+        Stream<Arguments> testExpressions = Stream.empty();
+        for(String[] expression : expressions){
+            testExpressions = Stream.concat(testExpressions,
+                    Stream.of(Arguments.of(new ArrayDeque<>(Arrays.asList(expression)))));
+        }
+        return testExpressions;
     }
 
     @DisplayName("checkExpressionTest: 식 확인")
