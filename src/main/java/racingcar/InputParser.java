@@ -1,6 +1,8 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputParser {
 
@@ -10,19 +12,26 @@ public class InputParser {
     private InputParser() {
     }
 
-    public static List<String> parseCarNames(String input) {
-        validateNonNull(input);
-        String[] carNames = input.split(DELIMITER);
-        for (String carName : carNames) {
+    public static List<String> parseCarNames(String carNamesInput) {
+        validateNonNull(carNamesInput);
+        String[] carNames = carNamesInput.split(DELIMITER);
+        List<String> trimmedCarNames = trim(carNames);
+        for (String carName : trimmedCarNames) {
             validateLength(carName);
         }
-        return List.of(carNames);
+        return trimmedCarNames;
     }
 
     private static void validateNonNull(String name) {
-        if (name == null) {
+        if (name == null) { // TODO: isBlank() 구현
             throw new IllegalArgumentException("입력값이 없습니다.");
         }
+    }
+
+    private static List<String> trim(final String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 
     private static void validateLength(final String carName) {
