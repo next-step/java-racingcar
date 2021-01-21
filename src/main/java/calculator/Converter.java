@@ -1,11 +1,11 @@
 package calculator;
 
 public class Converter {
-    public static double toDouble(String s) {
+    public static double toDouble(String numericString) {
         try {
-            return Double.parseDouble(s);
+            return Double.parseDouble(numericString);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("숫자 형태의 문자가 아닙니다.");
         }
     }
 }
