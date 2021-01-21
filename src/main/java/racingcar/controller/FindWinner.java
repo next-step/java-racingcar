@@ -7,10 +7,14 @@ import java.util.List;
 public class FindWinner {
     public static String getWinner(List<Car> cars) {
         StringBuilder winnersBuilder = new StringBuilder();
-        cars.sort((car1, car2) -> car2.getPosition() - car1.getPosition());
-        int maxScore = cars.get(0).getPosition();
+        int maxScore = 0;
         for (Car car : cars) {
-            if (maxScore == car.getPosition()) {
+            int nowPosition = car.getPosition();
+            if (maxScore < nowPosition) {
+                maxScore = nowPosition;
+                winnersBuilder.delete(0,winnersBuilder.length());
+            }
+            if (maxScore == nowPosition) {
                 winnersBuilder.append(car.getName()).append(", ");
             }
         }
