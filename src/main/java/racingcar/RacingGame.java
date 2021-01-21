@@ -2,11 +2,11 @@ package racingcar;
 
 import java.util.List;
 
-public class Game {
+public class RacingGame {
     private final Cars cars;
     private final int tryCount;
 
-    public Game(List<String> carNames, int tryCount) {
+    public RacingGame(List<String> carNames, int tryCount) {
         // TODO: validate()
         this.cars = new Cars(carNames);
         this.tryCount = tryCount;

@@ -14,8 +14,7 @@ public class RacingCarGameApplication {
         int tryCount = input.getTryCount();
         // TODO: rename to `rounds`
 
-        // TODO: rename to `RacingGame`
-        Game game = new Game(carNames, tryCount);
+        RacingGame game = new RacingGame(carNames, tryCount);
         // TODO: rename to `play()`
         game.start();
     }
