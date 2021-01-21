@@ -9,6 +9,9 @@ public class GameManager {
         String[] cars = inputCarNames(scanner);
         List<Car> carList = createCars(cars);
         int gameCnt = inputGameTryCnt(scanner);
+
+        Game game = new Game(gameCnt, carList);
+        game.start();
     }
 
     private String[] inputCarNames(Scanner scanner) {
