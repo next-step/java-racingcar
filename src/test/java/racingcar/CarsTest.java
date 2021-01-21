@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,10 +31,10 @@ class CarsTest {
     @Test
     void doRound() {
         // given
-        List<String> carStrings = List.of(
-                "car1",
-                "car2",
-                "car3"
+        List<String> carStrings = Arrays.asList(
+            "car1",
+            "car2",
+            "car3"
         );
         Cars cars = new Cars(carStrings, new LookLikeRandomMoveChecker());
 

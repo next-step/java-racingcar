@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class InputParser {
@@ -16,7 +17,7 @@ public class InputParser {
         for (String carName : carNames) {
             validateLength(carName);
         }
-        return List.of(carNames);
+        return Arrays.asList(carNames);
     }
 
     private static void validateNonNull(String name) {
