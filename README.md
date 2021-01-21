@@ -8,3 +8,11 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
+## 구현할 기능 목록
+* 경주할 자동차 이름을 입력받는다. (View)
+* 시도할 횟수를 입력받는다. (View)
+* 실행 결과를 보여준다. (View)
+* 각 자동차는 이동할 수 있고, 이름을 가지고 있다. (Model)
+* 각 자동차는 자신의 이동 거리를 보여줄 수 있다. (Model)
+* 최종 우승자를 고른다. (Business)
+* 최종 우승자를 보여준다. (View)
