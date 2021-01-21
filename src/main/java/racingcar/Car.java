@@ -4,9 +4,9 @@ public class Car {
     private final String name;
     private int location;
 
-    public Car(String name, int location) {
+    public Car(String name, int initialLocation) {
         this.name = name;
-        this.location = location;
+        this.location = initialLocation;
     }
 
     public String getName() {

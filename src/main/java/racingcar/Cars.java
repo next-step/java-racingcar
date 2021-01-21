@@ -1,21 +1,31 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
-    private final MoveChecker moveChecker;
+    private static final int INITIAL_LOCATION = 0;
 
-    public Cars(final List<String> cars, final MoveChecker moveChecker) {
-        for (String car : cars) {
-            this.cars.add(new Car(car, 0));
-        }
-        this.moveChecker = moveChecker;
+    private final Set<Car> cars;
+
+    public Cars(final List<String> names) {
+        // TODO: validate?
+        this.cars = createCarsFrom(names);
     }
 
-    public void doRound() {
+    private Set<Car> createCarsFrom(final List<String> carNames) {
+        Set<Car> cars = new LinkedHashSet<>();
+        for (String name : carNames) {
+            Car car = new Car(name, INITIAL_LOCATION);
+            cars.add(car);
+        }
+        return cars;
+    }
+
+    public void doRound(final MoveChecker moveChecker) {
         for (Car car : cars) {
             car.play(moveChecker);
             car.printNameAndCurrentPosition();

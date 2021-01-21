@@ -35,10 +35,10 @@ class CarsTest {
                 "car2",
                 "car3"
         );
-        Cars cars = new Cars(carStrings, new LookLikeRandomMoveChecker());
+        Cars cars = new Cars(carStrings);
 
         // when
-        cars.doRound();
+        cars.doRound(new LookLikeRandomMoveChecker());
 
         // then
         assertThat(outputStreamCaptor.toString()).isEqualTo(

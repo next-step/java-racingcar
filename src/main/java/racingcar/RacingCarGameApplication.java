@@ -12,11 +12,11 @@ public class RacingCarGameApplication {
         //  + carNames별 length 체크까지 내부에서 다 하게끔
         List<String> carNames = input.getCarNames();
         int tryCount = input.getTryCount();
+        // TODO: rename to `rounds`
 
-        // TODO: main에서 아예 MoveChecker를 모르게 하는게 좋을 것 같다.
-        MoveChecker moveChecker = new MoveChecker();
-
-        Game game = new Game(carNames, tryCount, moveChecker);
+        // TODO: rename to `RacingGame`
+        Game game = new Game(carNames, tryCount);
+        // TODO: rename to `play()`
         game.start();
     }
 }
