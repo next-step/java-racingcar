@@ -20,7 +20,7 @@ class MockCars extends Cars {
 
     @Override
     public void printWinners() {
-        printWinnersCallCnt++;
+        printWinnersCallCnt = doRoundCallCnt;
     }
 }
 
