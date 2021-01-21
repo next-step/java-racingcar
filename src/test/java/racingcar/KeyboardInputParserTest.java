@@ -11,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class InputParserTest {
+class KeyboardInputParserTest {
 
     @DisplayName("입력값이 null이거나 비어있는 경우 exception 발생")
     @ParameterizedTest

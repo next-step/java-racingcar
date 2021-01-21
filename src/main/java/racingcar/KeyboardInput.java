@@ -2,10 +2,10 @@ package racingcar;
 
 import java.util.Scanner;
 
-public class Input {
+public class KeyboardInput {
     private final Scanner scanner;
 
-    public Input(Scanner scanner) {
+    public KeyboardInput(Scanner scanner) {
         this.scanner = scanner;
     }
 

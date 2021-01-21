@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InputTest {
+public class KeyboardInputTest {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
@@ -29,7 +29,7 @@ public class InputTest {
     @DisplayName("문자열을 잘 입력 받는지 확인한다")
     @Test
     void getCarNames() {
-        Input input = new Input(new Scanner("123"));
+        KeyboardInput input = new KeyboardInput(new Scanner("123"));
         String result = input.getCarNames();
 
         assertThat(result).isEqualTo("123");
@@ -39,7 +39,7 @@ public class InputTest {
     @DisplayName("숫자를 잘 입력받는지 확인한다")
     @Test
     void getTryCount() {
-        Input input = new Input(new Scanner("1"));
+        KeyboardInput input = new KeyboardInput(new Scanner("1"));
         int result = input.getTryCount();
 
         assertThat(result).isEqualTo(1);

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class RacingCarGameApplication {
 
     public static void main(String[] args) {
-        Input input = new Input(new Scanner(System.in));
+        KeyboardInput input = new KeyboardInput(new Scanner(System.in));    // TODO: Input을 인터페이스화 하고, KeyboardInput을 구현체로 추가
 
         // TODO: carNames와 tryCount를 여기서 일일이 받지 말고,
         //  내부에서 처리하도록 하는 무언가가 있으면 좋겠다.
