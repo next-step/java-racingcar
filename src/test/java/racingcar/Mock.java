@@ -38,17 +38,13 @@ class TrueMoveChecker extends MoveChecker {
     }
 }
 
-class LookLikeRandomMoveChecker extends MoveChecker {
-    private final boolean[] order = {true, false, false};
-    private int cnt;
-
-    public LookLikeRandomMoveChecker() {
-        cnt = 0;
-    }
+class TrueFalseRepeatChecker extends MoveChecker {
+    private boolean isMove = false;
 
     @Override
     public boolean isMoving() {
-        return order[cnt++ % 3];
+        isMove = !isMove;
+        return isMove;
     }
 }
 

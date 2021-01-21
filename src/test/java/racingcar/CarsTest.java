@@ -28,13 +28,54 @@ class CarsTest {
         System.setOut(standardOut);
     }
 
-    @DisplayName("doRound() 호출하면 움직인 후의 위치 출력")
+    @DisplayName("라운드 진행 후에 정보를 잘 출력하는지 확인")
     @Test
     void doRound() {
-        // given
         List<Car> carList = new ArrayList<Car>() {{
-            new Car("1", 0);
+            add(new Car("car1", 0));
+            add(new Car("car2", 2));
+            add(new Car("car3", 3));
         }};
-        Cars cars = new Cars(carList, new LookLikeRandomMoveChecker());
+        Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
+
+        cars.doRound();
+
+        assertThat(outputStreamCaptor.toString()).isEqualTo(
+            "car1 : -\n" + "car2 : --\n" + "car3 : ----\n" + "\n"
+        );
+    }
+
+    @DisplayName("승자가 1명 일때 정보를 잘 출력하는지 확인")
+    @Test
+    void printSingleWinners() {
+        List<Car> carList = new ArrayList<Car>() {{
+            add(new Car("car1", 3));
+            add(new Car("car2", 4));
+            add(new Car("car3", 5));
+        }};
+        Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
+
+        cars.printWinners();
+
+        assertThat(outputStreamCaptor.toString()).isEqualTo(
+            "최종 우승자: car3\n"
+        );
+    }
+
+    @DisplayName("승자가 여러명 일때 정보를 잘 출력하는지 확인")
+    @Test
+    void printMultipleWinners() {
+        List<Car> carList = new ArrayList<Car>() {{
+            add(new Car("car1", 3));
+            add(new Car("car2", 5));
+            add(new Car("car3", 5));
+        }};
+        Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
+
+        cars.printWinners();
+
+        assertThat(outputStreamCaptor.toString()).isEqualTo(
+            "최종 우승자: car2, car3\n"
+        );
     }
 }
