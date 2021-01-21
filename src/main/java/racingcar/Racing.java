@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Racing {
-    private ArrayList<Car> carsList;
-    private int stages;
+    private final ArrayList<Car> carsList;
+    private final int stages;
 
     public Racing(ArrayList<Car> carsList, int stages){
         this.carsList = carsList;
