@@ -8,8 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CarTest {
 
     @BeforeAll
