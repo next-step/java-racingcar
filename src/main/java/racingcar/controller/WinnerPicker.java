@@ -4,7 +4,7 @@ import racingcar.domain.Car;
 
 import java.util.List;
 
-public class FindWinner {
+public class WinnerPicker {
     public static String getWinner(List<Car> cars) {
         StringBuilder winnersBuilder = new StringBuilder();
         int maxScore = 0;
