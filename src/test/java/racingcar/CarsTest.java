@@ -26,9 +26,9 @@ class CarsTest {
         System.setOut(standardOut);
     }
 
-    @DisplayName("doRound() 호출하면 움직인 후의 위치 출력")
+    @DisplayName("moveAll() 호출하면 움직인 후의 위치 출력")
     @Test
-    void doRound() {
+    void moveAll() {
         // given
         List<String> carStrings = List.of(
                 "car1",
@@ -38,7 +38,7 @@ class CarsTest {
         Cars cars = new Cars(carStrings);
 
         // when
-        cars.moveAll(new LookLikeRandomMovementCondition());
+        cars.moveAll(new LookLikeRandomMovementCondition());    // TODO: rename mock object
 
         // then
         assertThat(outputStreamCaptor.toString()).isEqualTo(

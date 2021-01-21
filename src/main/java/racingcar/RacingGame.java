@@ -38,6 +38,6 @@ public class RacingGame {
         for (int i = 0; i < rounds; i++) {
             cars.moveAll(new MovementCondition());
         }
-        cars.printWinners();
+        cars.selectWinners();
     }
 }

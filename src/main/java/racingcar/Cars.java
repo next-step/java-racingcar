@@ -1,9 +1,9 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -12,7 +12,6 @@ public class Cars {
     private final Set<Car> cars;
 
     public Cars(final List<String> names) {
-        // TODO: validate?
         this.cars = createCarsFrom(names);
     }
 
@@ -33,18 +32,17 @@ public class Cars {
         System.out.println();
     }
 
-    public void printWinners() {
-        List<String> winners = getWinners();
+    public void selectWinners() {
+        List<String> winners = getNamesOfWinners();
         System.out.println("최종 우승자: " + String.join(", ", winners));
     }
 
-    private List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
+    private List<String> getNamesOfWinners() {
         int farthest = getFarthestLocation();
-        for (Car car : cars) {
-            addIfEqualLocation(winners, car, farthest);
-        }
-        return winners;
+        return cars.stream()
+                .filter(c -> c.getLocation() == farthest)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     private int getFarthestLocation() {
@@ -60,11 +58,5 @@ public class Cars {
             farthestLocation = car.getLocation();
         }
         return farthestLocation;
-    }
-
-    private void addIfEqualLocation(List<String> winners, Car car, int farthest) {
-        if (car.getLocation() == farthest) {
-            winners.add(car.getName());
-        }
     }
 }
