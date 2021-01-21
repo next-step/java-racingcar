@@ -9,13 +9,13 @@ public class Game {
         int maxPosition = getMax(cars);
         return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(car1 -> car1.getName())
+                .map(Car::getName)
                 .collect(Collectors.joining(","));
     }
 
     private int getMax(List<Car> cars) {
         int max = -1;
-        for (Car car: cars) {
+        for (Car car : cars) {
             max = Math.max(max, car.getPosition());
         }
         return max;
