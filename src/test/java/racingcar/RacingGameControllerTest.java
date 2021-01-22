@@ -1,12 +1,16 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameControllerTest {
     private static RacingGameController rgc;
@@ -23,9 +27,9 @@ public class RacingGameControllerTest {
 
         ArrayList<RacingCar> cars = rgc.getCars();
 
-        Assertions.assertThat(cars.get(0).getName()).isEqualTo("pobi");
-        Assertions.assertThat(cars.get(1).getName()).isEqualTo("woni");
-        Assertions.assertThat(cars.get(2).getName()).isEqualTo("jun");
+        assertThat(cars.get(0).getName()).isEqualTo("pobi");
+        assertThat(cars.get(1).getName()).isEqualTo("woni");
+        assertThat(cars.get(2).getName()).isEqualTo("jun");
     }
 
     @Test
@@ -38,8 +42,16 @@ public class RacingGameControllerTest {
         List<String> answer = new ArrayList<>();
         answer.add("pobi");
         answer.add("jun");
-        rgc.findWinner();
-        Assertions.assertThat(rgc.getWinners()).isEqualTo(answer);
+        rgc.findWinnerWithMaxStatus(5);
+        assertThat(rgc.getWinners()).isEqualTo(answer);
 
     }
+
+    @DisplayName("잘못된 자동차 이름 입력에 대한 유효성 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {",,,", ", , ,", "a, b, ,"})
+    void wrongInputTest(String input) {
+        assertThat(InputValidator.checkCarsNameInput(input)).isEqualTo(false);
+    }
+
 }
