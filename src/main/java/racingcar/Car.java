@@ -1,5 +1,8 @@
 package racingcar;
 
+import lombok.Getter;
+
+@Getter
 public class Car {
 
     private final String name;
@@ -11,14 +14,6 @@ public class Car {
 
     public void updatePosition() {
         this.position++;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return this.position;
     }
 
     public void printCarState() {

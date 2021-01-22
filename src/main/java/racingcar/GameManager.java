@@ -30,9 +30,9 @@ public class GameManager {
 
     private static List<Car> createCars(String[] cars) {
         List<Car> carList = new ArrayList<>();
-        for (String car : cars) {
-            carList.add(new Car(car));
-        }
+        Arrays
+            .stream(cars)
+            .forEach(car -> carList.add(new Car(car)));
         return carList;
     }
 

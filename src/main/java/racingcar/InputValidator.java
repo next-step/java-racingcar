@@ -28,7 +28,7 @@ public class InputValidator {
 
     private boolean isNameSizeValid(String[] cars) {
         return Arrays.stream(cars)
-            .allMatch(car -> car.length() <= CAR_NAME_SIZE_CONDITION);
+            .allMatch(car -> car.length() <= Constant.CAR_NAME_SIZE_CONDITION);
     }
 
     private boolean isNameDistinct(String[] cars) {

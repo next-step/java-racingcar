@@ -1,7 +1,10 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Game {
 
@@ -14,38 +17,27 @@ public class Game {
     }
 
     public void start() {
-        System.out.println("\n" + Constant.EXECUTION_RESULT);
+        PrintUtils.printExecutionResult();
         for (int i = 0; i < gameCnt; i++) {
             play();
             print();
         }
-        printWinner();
-    }
-
-    private void printWinner() {
-        System.out.print(Constant.FINAL_WINNER);
-        List<String> winnerList = getWinner();
-        for (int i = 0; i < winnerList.size(); i++) {
-            System.out.print(winnerList.get(i));
-            if (i != winnerList.size() - 1) {
-                System.out.print(", ");
-            }
-        }
+        PrintUtils.printWinner(getWinner());
     }
 
     private List<String> getWinner() {
-        int maxPosition = START_POSITION;
-        List<String> winnerList = new ArrayList<>();
-        for (int i = 0; i < carList.size(); i++) {
-            int tmpPosition = carList.get(i).getPosition();
-            maxPosition = Math.max(maxPosition, tmpPosition);
-        }
+        Optional<Car> maxPositionCar = carList
+            .stream()
+            .max((a, b) -> Integer.compare(a.getPosition(), b.getPosition()));
+        return returnWinner(maxPositionCar.get().getPosition());
+    }
 
-        for (int i = 0; i < carList.size(); i++) {
-            if (maxPosition == carList.get(i).getPosition()) {
-                winnerList.add(carList.get(i).getName());
-            }
-        }
+    private List<String> returnWinner(final int winnerThreshold) {
+        List<String> winnerList = new ArrayList<>();
+        carList
+            .stream()
+            .filter(car -> winnerThreshold == car.getPosition())
+            .forEach(winner -> winnerList.add(winner.getName()));
         return winnerList;
     }
 
@@ -59,13 +51,14 @@ public class Game {
     private void play() {
         int[] carRandomNum = new int[carList.size()];
         for (int i = 0; i < carList.size(); i++) {
-            carRandomNum[i] = RandomUtils.nextInt(RANDOM_START_INCLUSIVE, RANDOM_END_INCLUSIVE);
+            carRandomNum[i] = RandomUtils
+                .nextInt(Constant.RANDOM_START_INCLUSIVE, Constant.RANDOM_END_INCLUSIVE);
             checkMove(i, carRandomNum[i]);
         }
     }
 
     private void checkMove(int carIdx, int randomNum) {
-        if (randomNum >= MOVE_THRESHOLD) {
+        if (randomNum >= Constant.MOVE_THRESHOLD) {
             carList.get(carIdx).updatePosition();
         }
     }
