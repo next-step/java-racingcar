@@ -19,18 +19,17 @@ public class InternalCalculator {
         Operator operator = calculationInfo.getOperator();
         int dividend = calculationInfo.getDividend();
         int divisor = calculationInfo.getDivisor();
-        if (operator.equals(ADD)) {
-            return CalculatorUtils.add(dividend, divisor);
+        switch (operator) {
+            case ADD:
+                return CalculatorUtils.add(dividend, divisor);
+            case SUBTRACT:
+                return CalculatorUtils.subtract(dividend, divisor);
+            case MULTIPLY:
+                return CalculatorUtils.multiply(dividend, divisor);
+            case DIVIDE:
+                return CalculatorUtils.divide(dividend, divisor);
+            default:
+                throw new IllegalArgumentException();
         }
-        if (operator.equals(SUBTRACT)) {
-            return CalculatorUtils.subtract(dividend, divisor);
-        }
-        if (operator.equals(MULTIPLY)) {
-            return CalculatorUtils.multiply(dividend, divisor);
-        }
-        if (operator.equals(DIVIDE)) {
-            return CalculatorUtils.divide(dividend, divisor);
-        }
-        return 0;
     }
 }

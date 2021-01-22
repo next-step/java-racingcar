@@ -7,7 +7,7 @@ public class ValidateUtils {
             return validateInputSize(input.length)
                 && validateAppropriateOperator(input)
                 && validateOperand(input);
-        } catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return false;
         }
     }

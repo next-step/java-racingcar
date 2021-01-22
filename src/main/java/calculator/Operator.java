@@ -16,7 +16,7 @@ public enum Operator {
         return operatorString;
     }
 
-    public static Operator validateOperator(String operatorString) {
+    public static Operator validateOperator(String operatorString) throws IllegalArgumentException {
         for (Operator operator : values()) {
             if (operator.getValue().equalsIgnoreCase(operatorString)) {
                 return operator;
