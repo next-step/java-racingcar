@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class InputValidator {
 
-    static final int CAR_NAME_SIZE_CONDITION = 5;
-
     public boolean validateCarName(String[] cars) {
         if (!isNameSizeValid(cars)) {
+            PrintUtils.printErrorCarLength();
             return false;
         }
         if (!isNameDistinct(cars)) {
+            PrintUtils.printErrorOverlapCarName();
             return false;
         }
         return true;
@@ -20,6 +20,7 @@ public class InputValidator {
         try {
             Integer.parseInt(cntInput);
         } catch (NumberFormatException e) {
+            PrintUtils.printErrorTryCountNumber();
             return false;
         }
         return true;

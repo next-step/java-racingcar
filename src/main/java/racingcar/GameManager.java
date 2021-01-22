@@ -15,12 +15,12 @@ public class GameManager {
         game.start();
     }
 
-    private String[] inputCarNames(Scanner scanner) {
+    private String[] inputCarNames() {
         String[] cars;
         InputValidator inputValidator = new InputValidator();
         do {
-            System.out.println(Constant.INPUT_REQUEST_CAR_NAME);
-            String carsInput = scanner.next();
+            PrintUtils.printInputRequestCarName();
+            String carsInput = scanner.nextLine();
             cars = carsInput.split(",");
         } while (!inputValidator.validateCarName(cars));
         return cars;
