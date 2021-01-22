@@ -6,15 +6,8 @@ public class RandomUtils {
 
     private static final Random RANDOM = new Random();
 
-    private RandomUtils() {
-    }
-
     public static int nextInt(final int startInclusive, final int endInclusive) {
-        if (startInclusive > endInclusive) {
-            throw new IllegalArgumentException();
-        }
-
-        if (startInclusive < 0) {
+        if (startInclusive > endInclusive || startInclusive < 0) {
             throw new IllegalArgumentException();
         }
 
