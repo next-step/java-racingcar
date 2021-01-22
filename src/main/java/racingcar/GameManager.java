@@ -1,16 +1,18 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class GameManager {
 
-    public void activate(Scanner scanner) {
-        String[] cars = inputCarNames(scanner);
-        List<Car> carList = createCars(cars);
-        int gameCnt = inputGameTryCnt(scanner);
+    final Scanner scanner = new Scanner(System.in);
 
+    public void activate() {
+        String[] cars = inputCarNames();
+        List<Car> carList = createCars(cars);
+        int gameCnt = inputGameTryCnt();
         Game game = new Game(gameCnt, carList);
         game.start();
     }
@@ -34,11 +36,11 @@ public class GameManager {
         return carList;
     }
 
-    private int inputGameTryCnt(Scanner scanner) {
+    private int inputGameTryCnt() {
         String inputCnt;
         InputValidator inputValidator = new InputValidator();
         do {
-            System.out.println(Constant.INPUT_REQUEST_PLAY_TIME);
+            PrintUtils.printInputRequestPlayTime();
             inputCnt = scanner.next();
         } while (!inputValidator.validGameCntInput(inputCnt));
         return Integer.parseInt(inputCnt);

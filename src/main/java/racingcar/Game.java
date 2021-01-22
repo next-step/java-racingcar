@@ -5,11 +5,7 @@ import java.util.List;
 
 public class Game {
 
-    static final int START_POSITION = 0;
-    static final int MOVE_THRESHOLD = 4;
-    static final int RANDOM_START_INCLUSIVE = 0;
-    static final int RANDOM_END_INCLUSIVE = 9;
-    private int gameCnt = 0;
+    private int gameCnt;
     private List<Car> carList;
 
     public Game(int cnt, List<Car> carList) {

@@ -9,4 +9,8 @@ public class Constant {
     static final String ERROR_TRY_COUNT_NUMBER = "[ERROR] 시도횟수는 숫자여야 한다.";
     static final String ERROR_CAR_LENGTH = "[ERROR] 자동차 이름은 5자 이하만 가능하다.";
     static final String ERROR_OVERLAP_CAR_NAME = "[ERROR] 중복된 자동차 이름이 입력되었습니다.";
+    static final int CAR_NAME_SIZE_CONDITION = 5;
+    static final int MOVE_THRESHOLD = 4;
+    static final int RANDOM_START_INCLUSIVE = 0;
+    static final int RANDOM_END_INCLUSIVE = 9;
 }
