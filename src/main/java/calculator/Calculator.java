@@ -21,7 +21,6 @@ public class Calculator {
     public double divide(double a, double b) {
 
         if(Double.isInfinite(a/b) || Double.isNaN(a/b) ) {
-            System.out.println(a/b);
             throw new IllegalArgumentException();
         }
         return a / b;
