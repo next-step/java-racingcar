@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Racing {
+    private static final int MINIMUM_DISTANCE_MOVE = 4;
+    private static final int MAXIMUM_DISTANCE_MOVE = 9;
+
     private final ArrayList<Car> carsList;
     private final int stages;
     private final Random random;
@@ -29,13 +32,13 @@ public class Racing {
     }
 
     public void decideMove(Car car) {
-        if(getRandomNumber() >= 4){
+        if(getRandomNumber() >= MINIMUM_DISTANCE_MOVE){
             car.moveForward();
         }
     }
 
     public int getRandomNumber() {
-        return this.random.nextInt(10);
+        return this.random.nextInt(MAXIMUM_DISTANCE_MOVE + 1);
     }
 
     public int getMaxDistance() {
