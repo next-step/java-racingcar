@@ -66,7 +66,7 @@ public class RacingGameController {
             moveEachCar(cars.get(i));
         }
         printAllCarStatus();
-        System.out.println();
+
     }
 
     public void moveEachCar(RacingCar racingCar) {
@@ -87,6 +87,7 @@ public class RacingGameController {
             int status = cars.get(i).getStatus();
             printEachCarStatus(name, status);
         }
+        System.out.println();
     }
 
     public void printEachCarStatus(String name, int status) {
