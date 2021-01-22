@@ -8,24 +8,30 @@ public class CarsFactory {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     public static Cars createCars(String carNames, MoveChecker moveChecker) {
-        validateNonNull(carNames);
         List<Car> carList = new ArrayList<>();
+
+        validateCarNames(carNames);
         for (String carName : carNames.split(DELIMITER)) {
-            validateLength(carName);
+            validateCarName(carName);
 
             Car car = new Car(carName, 0);
             carList.add(car);
         }
+
         return new Cars(carList, moveChecker);
     }
 
-    private static void validateNonNull(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("입력값이 없습니다.");
+    private static void validateCarNames(String carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException("자동차들의 이름 입력값이 없습니다.");
         }
     }
 
-    private static void validateLength(final String carName) {
+    private static void validateCarName(String carName) {
+        if (carName.trim().isEmpty()) {
+            throw new IllegalArgumentException("자동차 이름은 빈 문자열일 수 없습니다.");
+        }
+
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
