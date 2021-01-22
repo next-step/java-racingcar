@@ -19,15 +19,16 @@ public class ValidateUtils {
         return true;
     }
 
-    private static boolean validateAppropriateOperator(String[] inputArray) throws IllegalArgumentException {
-        for (int i = 1; i < inputArray.length; i += 2) {
-                Operator.validateOperator(inputArray[i]);
+    private static boolean validateAppropriateOperator(String[] inputArray)
+        throws IllegalArgumentException {
+        for (int i = Constant.OPERATOR_START_INDEX; i < inputArray.length; i += 2) {
+            Operator.validateOperator(inputArray[i]);
         }
         return true;
     }
 
     private static boolean validateOperand(String[] inputArray) {
-        for (int i = 0; i < inputArray.length; i += 2) {
+        for (int i = Constant.OPERAND_START_INDEX; i < inputArray.length; i += 2) {
             if (!NumberUtils.isInteger(inputArray[i])) {
                 return false;
             }

@@ -2,10 +2,14 @@ package calculator;
 
 public class PrintUtils {
     public static void printInputRequest() {
-        System.out.println("계산할 문구를 넣어주세요. (ex. 2 + 3 * 4 / 2)");
+        System.out.println(Constant.INPUT_REQUEST);
     }
 
     public static void printResultOutput(int result) {
-        System.out.println("결과값은 " + result + "입니다.");
+        System.out.println(Constant.RESULT + result + Constant.FINAL_SENTENCE);
+    }
+
+    public static void printError(){
+        System.out.println(Constant.INTERNAL_ERROR);
     }
 }
