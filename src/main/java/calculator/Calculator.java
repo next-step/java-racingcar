@@ -66,15 +66,17 @@ public class Calculator {
     public double calculate(double arg1, String op, double arg2) {
         if (op.equals("+")) {
             return add(arg1, arg2);
-        } else if (op.equals("-")) {
-            return subtract(arg1, arg2);
-        } else if (op.equals("*")) {
-            return multiply(arg1, arg2);
-        } else if (op.equals("/")) {
-            return divide(arg1, arg2);
-        } else {
-            throw new IllegalArgumentException();
         }
+        if (op.equals("-")) {
+            return subtract(arg1, arg2);
+        }
+        if (op.equals("*")) {
+            return multiply(arg1, arg2);
+        }
+        if (op.equals("/")) {
+            return divide(arg1, arg2);
+        }
+        throw new IllegalArgumentException();
     }
 
 
