@@ -10,7 +10,7 @@ public class Calculator {
         return a + b;
     }
 
-    public double substract(double a, double b) {
+    public double subtract(double a, double b) {
         return a - b;
     }
 
@@ -19,6 +19,10 @@ public class Calculator {
     }
 
     public double divide(double a, double b) {
+
+        if(Double.isFinite(a/b) || Double.isNaN(a/b) ) {
+            throw new IllegalArgumentException();
+        }
         return a / b;
     }
 
@@ -62,7 +66,7 @@ public class Calculator {
         if (op.equals("+")) {
             return add(arg1, arg2);
         } else if (op.equals("-")) {
-            return substract(arg1, arg2);
+            return subtract(arg1, arg2);
         } else if (op.equals("*")) {
             return multiply(arg1, arg2);
         } else if (op.equals("/")) {
@@ -72,14 +76,6 @@ public class Calculator {
         }
     }
 
-    private boolean isAvailable(String input) {
-        char ch = input.charAt(0);
-        if (Character.isDigit(ch)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     private void checkInputs() {
         for (String input : inputs) {
