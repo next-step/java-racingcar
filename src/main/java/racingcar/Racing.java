@@ -6,10 +6,12 @@ import java.util.Random;
 public class Racing {
     private final ArrayList<Car> carsList;
     private final int stages;
+    private final Random random;
 
     public Racing(ArrayList<Car> carsList, int stages){
         this.carsList = carsList;
         this.stages = stages;
+        this.random = new Random();
     }
 
     public void start(){
@@ -33,8 +35,7 @@ public class Racing {
     }
 
     public int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
+        return this.random.nextInt(10);
     }
 
     public int getMaxDistance() {
