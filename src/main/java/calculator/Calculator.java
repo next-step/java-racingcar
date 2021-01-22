@@ -4,6 +4,10 @@ public class Calculator {
 
     public static void main(String[] args) {
         InternalCalculator calculator = new InternalCalculator();
-        calculator.startCalculator();
+        try {
+            calculator.startCalculator();
+        } catch (IllegalArgumentException e) {
+            PrintUtils.printError();
+        }
     }
 }
