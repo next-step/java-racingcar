@@ -11,6 +11,9 @@ import java.io.PrintStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+    private static final String NAME = "car";
+    private static final int INITIAL_POSITION = 2;
+
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private final PrintStream standardOut = System.out;
 
@@ -24,57 +27,71 @@ public class CarTest {
         System.setOut(standardOut);
     }
 
-    @DisplayName("Car 객체의 name을 잘 들고오는지 확인")
+    @DisplayName("Car 객체의 getName() 테스트")
     @Test
     public void getName() {
-        Car car = new Car("name", 0);
+        // given
+        Car car = new Car(NAME, INITIAL_POSITION);
 
+        // when
         String name = car.getName();
 
-        assertThat(name).isEqualTo("name");
+        // then
+        assertThat(name).isEqualTo(NAME);
     }
 
-    @DisplayName("Car 객체의 location 을 잘 들고오는지 확인")
+    @DisplayName("Car 객체의 getLocation() 테스트")
     @Test
     public void getLocation() {
-        Car car = new Car("name", 2);
+        // given
+        Car car = new Car(NAME, INITIAL_POSITION);
 
+        // when
         int location = car.getLocation();
 
-        assertThat(location).isEqualTo(2);
+        // then
+        assertThat(location).isEqualTo(INITIAL_POSITION);
     }
 
-    @DisplayName("Car가 잘 움직였는가를 확인")
+    @DisplayName("앞으로 전진하는 조건을 주입 받은 경우, moveOrStay 호출 시 위치값 증가")
     @Test
     public void playWithMove() {
-        Car car = new Car("name", 0);
+        // given
+        Car car = new Car(NAME, INITIAL_POSITION);
         MovementCondition movementCondition = new AllForwardMovementCondition();
 
+        // when
         car.moveOrStay(movementCondition);
-        int location = car.getLocation();
 
-        assertThat(location).isEqualTo(1);
+        // then
+        int location = car.getLocation();
+        assertThat(location).isEqualTo(INITIAL_POSITION + 1);
     }
 
-    @DisplayName("Car가 움직이지 않았는가를 확인")
+    @DisplayName("제자리에 머무르는 조건을 주입 받은 경우, moveOrStay 호출 시 위치값 변화 없음")
     @Test
     public void playWithoutMove() {
-        Car car = new Car("name", 0);
+        // given
+        Car car = new Car(NAME, INITIAL_POSITION);
         MovementCondition movementCondition = new AllStayMovementCondition();
 
+        // when
         car.moveOrStay(movementCondition);
-        int location = car.getLocation();
 
-        assertThat(location).isEqualTo(0);
+        // then
+        int location = car.getLocation();
+        assertThat(location).isEqualTo(INITIAL_POSITION);
     }
 
-    @DisplayName("Car의 정보를 잘 출력하는지를 확")
+    @DisplayName("printNameAndCurrentPosition() 호출 시 현재 위치 출력")
     @Test
     public void printNameAndCurrentPosition() {
-        Car car = new Car("name", 3);
+        // given
+        Car car = new Car(NAME, INITIAL_POSITION);
 
+        // when & then
         car.printNameAndCurrentPosition();
-        assertThat(outputStreamCaptor.toString()).isEqualTo("name : ---\n");
+        assertThat(outputStreamCaptor.toString()).isEqualTo("car : --\n");
     }
 }
 
