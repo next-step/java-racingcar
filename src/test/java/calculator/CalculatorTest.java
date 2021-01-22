@@ -22,22 +22,24 @@ public class CalculatorTest {
 
     @BeforeAll
     static void initAll() {
+
         calculator = new Calculator();
     }
 
     private static Stream<Arguments> provideExpressionAndAnswer() {
+
         return Stream.of(
-                Arguments.of(1,"+",12, 13.0),
-                Arguments.of(1,"-", 2, -1.0),
-                Arguments.of(1,"*",5, 5.0),
-                Arguments.of(1,"/",2, 0.5)
+                Arguments.of(1, "+", 12, 13.0),
+                Arguments.of(1, "-", 2, -1.0),
+                Arguments.of(1, "*", 5, 5.0),
+                Arguments.of(1, "/", 2, 5.0)
         );
     }
 
     @DisplayName("정상적인 계산식의 답안을 테스트")
     @ParameterizedTest
     @MethodSource("provideExpressionAndAnswer")
-    void 사칙연산_테스트(double a,String op,double b,double result) {
+    void 사칙연산_테스트(double a, String op, double b, double result) {
 
         Assertions.assertThat(calculator.calculate(a, op, b)).isEqualTo(result);
     }
