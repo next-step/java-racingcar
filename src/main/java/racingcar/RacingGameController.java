@@ -32,7 +32,8 @@ public class RacingGameController {
 
     public void start() {
 
-        getCarsName();
+        String CarsName = getCarsName();
+        setCarsName(CarsName);
         getRound();
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfRound; i++) {
@@ -42,15 +43,17 @@ public class RacingGameController {
         findWinnerWithMaxStatus(maxStatus);
     }
 
-    public void getCarsName() {
+    public String getCarsName() {
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
-        String input = sc.nextLine();
-        if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException();
+        String CarsName = null;
+        boolean isProperInput = false;
+        while (!isProperInput) {
+            CarsName = sc.nextLine();
+            isProperInput = InputValidator.checkCarsNameInput(CarsName);
         }
-        setCarsName(input);
+        return CarsName;
     }
 
     public void setCarsName(String input) {
@@ -73,7 +76,7 @@ public class RacingGameController {
         for (RacingCar car : cars) {
             moveEachCar(car);
         }
-        printAllCarStatus();
+        RacingGamePrinter.printAllCarStatus(cars);
 
     }
 
@@ -89,15 +92,7 @@ public class RacingGameController {
         return rand.nextInt(10);
     }
 
-    public void printAllCarStatus() {
 
-        for (RacingCar car : cars) {
-            String name = car.getName();
-            int status = car.getStatus();
-            RacingGamePrinter.printEachCarStatus(name, status);
-        }
-        System.out.println();
-    }
 
 
     public void findWinnerWithMaxStatus(int maxStatus) {
