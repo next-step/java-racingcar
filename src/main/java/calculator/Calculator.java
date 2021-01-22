@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Calculator {
     String[] inputs;
+    private final String OPERATORS = "+-*/";
 
     public double add(double a, double b) {
         return a + b;
@@ -101,13 +102,9 @@ public class Calculator {
     }
 
     private boolean isOp(String op) {
-        String OPERATORS = "+-*/";
+
         if (op.length() != 1) {
             return false;
-        } else if (OPERATORS.contains(op)) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return OPERATORS.contains(op);
     }
 }
