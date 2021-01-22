@@ -31,6 +31,5 @@ public class InternalCalculator {
             default:
                 throw new IllegalArgumentException();
         }
-        return 0;
     }
 }
