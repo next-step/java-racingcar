@@ -92,12 +92,9 @@ public class Calculator {
     }
 
     private boolean isOp(String op) {
-        if (op.length() != 1) {
-            return false;
-        } else if (OPERATORS_CHARATER.contains(op)) {
+        if (op.length() == 1 && OPERATORS_CHARATER.contains(op)) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }
