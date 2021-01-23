@@ -5,6 +5,7 @@ import java.util.*;
 public class RacingGameController {
 
     private final int LOWER_BOUND_MOVE = 4;
+    private final int UPPER_BOUND_RANDOM_NUMBER = 10;
 
     private final ArrayList<RacingCar> cars;
     private final List<String> winners;
@@ -78,7 +79,7 @@ public class RacingGameController {
     private int getRandomNumber() {
         Random rand = new Random();
 
-        return rand.nextInt(10);
+        return rand.nextInt(UPPER_BOUND_RANDOM_NUMBER);
     }
 
     public void printAllCarStatus() {
