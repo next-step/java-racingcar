@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ValidatorTest {
+class InputValidatorTest {
     @BeforeAll
     static void initAll() {
         System.out.println("start validator test");

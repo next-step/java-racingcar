@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Validator {
+public class InputValidator {
     public static boolean validateCarsName(String carsName) {
         try {
             checkCarName(carsName);
@@ -52,7 +52,7 @@ public class Validator {
 
     public static boolean validateStages(String stages) {
         try {
-            Validator.checkNumber(stages);
+            InputValidator.checkNumber(stages);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return false;
