@@ -100,9 +100,15 @@ public class RacingGameController {
     public void findWinner() {
         int maxStatus = cars.get(0).getStatus();
         for (int i = 1; i < cars.size(); i++) {
-            if (maxStatus < cars.get(i).getStatus()) maxStatus = cars.get(i).getStatus();
+            maxStatus = getMaxStatus(cars.get(i).getStatus(), maxStatus);
         }
         printWinners(maxStatus);
+    }
+
+    public int getMaxStatus(int a, int b) {
+        if (a > b)
+            return a;
+        return b;
     }
 
     public void printWinners(int maxStatus) {
