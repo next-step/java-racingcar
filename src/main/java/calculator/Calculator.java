@@ -3,6 +3,7 @@ package calculator;
 import java.util.*;
 
 public class Calculator {
+    private final String OPERATORS_CHARATER = "+-*/";
     String[] inputs;
 
     public double add(double a, double b) {
@@ -57,13 +58,13 @@ public class Calculator {
     }
 
     private double calculate(double arg1, String op, double arg2) {
-        if (op.equals("+")) {
+        if (op.equals(OPERATORS_CHARATER.substring(0, 1))) {
             return add(arg1, arg2);
-        } else if (op.equals("-")) {
+        } else if (op.equals(OPERATORS_CHARATER.substring(1, 2))) {
             return substract(arg1, arg2);
-        } else if (op.equals("*")) {
+        } else if (op.equals(OPERATORS_CHARATER.substring(2, 3))) {
             return multiply(arg1, arg2);
-        } else if (op.equals("/")) {
+        } else if (op.equals(OPERATORS_CHARATER.substring(3, 4))) {
             return divide(arg1, arg2);
         } else {
             throw new IllegalArgumentException();
@@ -91,10 +92,9 @@ public class Calculator {
     }
 
     private boolean isOp(String op) {
-        String OPERATORS = "+-*/";
         if (op.length() != 1) {
             return false;
-        } else if (OPERATORS.contains(op)) {
+        } else if (OPERATORS_CHARATER.contains(op)) {
             return true;
         } else {
             return false;
