@@ -14,8 +14,6 @@ public class CalculatorTest {
     private static final String errMsg = "계산식을 입력해주세요.\n올바른 계산식을 입력해주세요.\n";
     private static OutputStream out;
     private static InputStream in;
-    private static final int NUMBER_OF_TESTCASE = 4;
-
 
     @BeforeAll
     static void initAll() {
