@@ -70,15 +70,6 @@ public class Calculator {
         }
     }
 
-    private boolean isAvailable(String input) {
-        char ch = input.charAt(0);
-        if (Character.isDigit(ch)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     private void checkInputs() {
         for (String input : inputs) {
             if (!isNumeric(input) && !isOp(input)) {
