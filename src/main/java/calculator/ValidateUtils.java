@@ -13,24 +13,25 @@ public class ValidateUtils {
     }
 
     private static boolean validateInputSize(int inputSize) throws IllegalArgumentException {
-        if (inputSize < 3) {
-            throw new IllegalArgumentException();
+        if (inputSize < Constant.MIN_INPUT_SIZE) {
+            PrintUtils.printErrorInputSize();
+            throw new IllegalArgumentException(Constant.ERROR_INPUT_SIZE);
         }
         return true;
     }
 
-    private static boolean validateAppropriateOperator(String[] inputArray)
-        throws IllegalArgumentException {
+    private static boolean validateAppropriateOperator(String[] inputArray) throws IllegalArgumentException {
         for (int i = Constant.OPERATOR_START_INDEX; i < inputArray.length; i += 2) {
-            Operator.validateOperator(inputArray[i]);
+                Operator.validateOperator(inputArray[i]);
         }
         return true;
     }
 
-    private static boolean validateOperand(String[] inputArray) {
+    private static boolean validateOperand(String[] inputArray) throws IllegalArgumentException {
         for (int i = Constant.OPERAND_START_INDEX; i < inputArray.length; i += 2) {
             if (!NumberUtils.isInteger(inputArray[i])) {
-                return false;
+                PrintUtils.printErrorOperand();
+                throw new IllegalArgumentException(Constant.ERROR_OPERAND);
             }
         }
         return true;

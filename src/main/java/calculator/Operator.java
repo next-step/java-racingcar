@@ -22,6 +22,7 @@ public enum Operator {
                 return operator;
             }
         }
-        throw new IllegalArgumentException();
+        PrintUtils.printErrorOperator();
+        throw new IllegalArgumentException(Constant.ERROR_OPERATOR);
     }
 }
