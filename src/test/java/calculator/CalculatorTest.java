@@ -30,6 +30,4 @@ public class CalculatorTest {
         assertThatThrownBy(() -> calculator.getAnswer("asdfkljasdf")).isInstanceOf(IllegalArgumentException.class).hasMessage("잘못된 식입니다.");
         assertThatThrownBy(() -> calculator.getAnswer("1 > 2")).isInstanceOf(IllegalArgumentException.class).hasMessage("잘못된 식입니다.");
     }
-
-
 }
