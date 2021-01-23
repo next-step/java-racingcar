@@ -114,16 +114,14 @@ public class RacingGameController {
     public void printWinners(int maxStatus) {
         System.out.print("최종 우승자: ");
 
-        for (int i = 0; i < cars.size(); i++) {
-            findEachWinner(i, maxStatus);
-        }
+        cars.forEach(car -> findEachWinner(car, maxStatus));
         String result = String.join(", ", winners);
         System.out.println(result);
     }
 
-    private void findEachWinner(int index, int maxStatus) {
-        if (cars.get(index).getStatus() == maxStatus) {
-            winners.add(cars.get(index).getName());
+    private void findEachWinner(RacingCar car, int maxStatus) {
+        if (car.getStatus() == maxStatus) {
+            winners.add(car.getName());
         }
     }
 
