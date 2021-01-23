@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class  InputHandler {
+public class InputHandler {
     public static Scanner scanner = new Scanner(System.in);
     private static ArrayList<String> carNames;
     private static String inputCarName;

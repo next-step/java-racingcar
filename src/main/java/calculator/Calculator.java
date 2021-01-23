@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Calculator {
@@ -18,8 +19,8 @@ public class Calculator {
 
     private void splitFormula(String formula) {
         String equation = formula.replaceAll(" ", "");
-        operators = Arrays.asList(equation.split("[0-9]+"));
-        operands = Arrays.asList(equation.split("[-+*/()]"));
+        operators = new ArrayList<>(Arrays.asList(equation.split("[0-9]+")));
+        operands = new ArrayList<>(Arrays.asList(equation.split("[-+*/()]")));
     }
 
     private void validateFormula() {
@@ -53,7 +54,12 @@ public class Calculator {
     }
 
     private void sanitizeOperator(List<String> operators) {
-        operators.remove("");
+        for (Iterator<String> it = operators.iterator(); it.hasNext();) {
+            String value = it.next();
+            if (value.equals("")) {
+                it.remove();
+            }
+        }
     }
 
     /**

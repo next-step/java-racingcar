@@ -9,7 +9,6 @@ import java.util.List;
 
 public class GameTest {
 
-
     @Test
     @DisplayName("getWinners 테스트")
     public void getWinnersTest() {
