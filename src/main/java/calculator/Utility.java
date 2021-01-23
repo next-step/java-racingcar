@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Utility {
+
     /**
      * Split string formula by using regex.
      * @param formula String of math equations

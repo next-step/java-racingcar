@@ -3,6 +3,7 @@ package calculator;
 import java.util.ArrayList;
 
 public class Validator {
+
     public static void validateFormula(ArrayList<String> operands, ArrayList<String> operators) {
         validateOperand(operands);
         validateOperator(operators, operands);

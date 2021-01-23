@@ -17,8 +17,8 @@ public class InputHandlerTest {
         InputHandler inputHandler = new InputHandler(new Scanner(System.in));
         ArrayList<String> test = new ArrayList<>(Arrays.asList("asd", "aaaaaa"));
         ArrayList<String> test2 = new ArrayList<>(Arrays.asList("asd", "aaa"));
-        assertThat(inputHandler.carNameChecker(test)).isFalse();
-        assertThat(inputHandler.carNameChecker(test2)).isTrue();
+        assertThat(inputHandler.checkCarName(test)).isFalse();
+        assertThat(inputHandler.checkCarName(test2)).isTrue();
     }
 
 }

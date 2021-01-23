@@ -1,8 +1,7 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
+
     private final String name;
     private int position;
     private final int GO = 4;
@@ -20,9 +19,7 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        Random random = new Random();
-        int token = random.nextInt(10);
+    public void move(int token) {
         if (token >= GO) {
             position++;
         }

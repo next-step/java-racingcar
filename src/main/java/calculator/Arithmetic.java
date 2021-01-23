@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.function.BiFunction;
 
 public class Arithmetic {
+
     private static final Map<String, BiFunction<Double, Double, Double>> operations = new HashMap<>();
 
     static {

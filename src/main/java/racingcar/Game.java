@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -21,9 +22,14 @@ public class Game {
         return max;
     }
 
-    public void round(List<Car> cars) {
+    private int generateToken() {
+        Random random = new Random(10);
+        return random.nextInt(10);
+    }
+
+    public void proceedRound(List<Car> cars) {
         for (Car car : cars) {
-            car.move();
+            car.move(generateToken());
         }
     }
 }

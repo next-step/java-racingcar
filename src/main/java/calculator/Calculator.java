@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Calculator {
+
     private ArrayList<String> operators;
     private ArrayList<String> operands;
 
@@ -28,10 +29,8 @@ public class Calculator {
 
     private double calculateFormula(ArrayList<String> operators, ArrayList<Double> operands) {
         double result = operands.get(0);
-        int j = 0;
         for (int i = 1; i < operands.size(); i++) {
-            result = Arithmetic.calculate(operators.get(j), result, operands.get(i));
-            j++;
+            result = Arithmetic.calculate(operators.get(i-1), result, operands.get(i));
         }
         return result;
     }

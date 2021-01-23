@@ -9,12 +9,11 @@ import java.util.List;
 
 public class GameTest {
 
-
     @Test
     @DisplayName("getWinners 테스트")
     public void getWinnersTest() {
         final Game game = new Game();
-        List<Car> test = GenerateCar.ofCars("a,b,c");
+        List<Car> test = CarGenerator.genearteCarList("a,b,c");
         assertThat(game.getWinners(test)).isEqualTo("a,b,c");
     }
 
