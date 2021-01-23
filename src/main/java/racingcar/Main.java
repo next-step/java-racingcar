@@ -6,6 +6,7 @@ import racingcar.domain.Game;
 import racingcar.domain.NameValidator;
 import racingcar.view.InputHandler;
 import racingcar.view.OutputHandler;
+import racingcar.domain.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,9 @@ public class Main {
     public static void main(String[] args) {
         InputHandler inputHandler = new InputHandler(new Scanner(System.in));
 
-        ArrayList<String> carNames = inputHandler.getCarName();
-        Boolean startGame = NameValidator.checkCarName(carNames);
+        ArrayList<String> carNames = Utility.nameStringToArray(inputHandler.getCarName());
 
-        if (!startGame) {
+        if (!NameValidator.checkCarName(carNames)) {
             OutputHandler.exitMessage();
             System.exit(0);
         }
