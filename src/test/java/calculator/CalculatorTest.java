@@ -3,6 +3,8 @@ package calculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.*;
 
@@ -20,20 +22,20 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @Test
-    void 사칙연산_테스트() {
-
-        String[] input = {"1 + 2", "1 - 2", "1 * 2", "1 / 2"};
-        String[] output = {"3.0", "-1.0", "2.0", "0.5"};
-
-        for (int i = 0; i < NUMBER_OF_TESTCASE; i++) {
-            in = new ByteArrayInputStream(input[i].getBytes());
-            System.setIn(in);
-            out = new ByteArrayOutputStream();
-            System.setOut(new PrintStream(out));
-            calculator.start();
-            Assertions.assertThat(inputMsg + output[i]).isEqualTo(out.toString());
-        }
+    @ParameterizedTest
+    @CsvSource({
+            "'1 + 2', '3.0'",
+            "'1 - 2', '-1.0'",
+            "'1 * 2', '2.0'",
+            "'1 / 2', '0.5'"
+    })
+    void 사칙연산_테스트(String input, String output) {
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        calculator.start();
+        Assertions.assertThat(inputMsg + output).isEqualTo(out.toString());
     }
 
     @Test
