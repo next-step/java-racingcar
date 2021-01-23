@@ -38,14 +38,13 @@ public class Calculator {
         try {
             getUserInput();
             checkInputs();
-            takeArguments();
+            calculateResult();
         } catch (IllegalArgumentException e) {
             System.out.println("올바른 계산식을 입력해주세요.");
         }
     }
 
-
-    private void takeArguments() {
+    private void calculateResult() {
         double result = Double.parseDouble(inputs[0]);
 
         for (int i = 1; i < inputs.length; i += 2) {
