@@ -1,5 +1,11 @@
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.CarGenerator;
+import racingcar.domain.Game;
+import racingcar.view.InputHandler;
+import racingcar.view.OutputHandler;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
