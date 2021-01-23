@@ -26,8 +26,16 @@ public class CalculatorTest {
     public void getAnswerTest() {
         final Calculator calculator = new Calculator();
         assertThat(calculator.getAnswer("1 + 2")).isEqualTo(3);
+<<<<<<< HEAD
         assertThat(calculator.getAnswer("2 + 3 * 4 / 2")).isEqualTo(10);
         assertThatThrownBy(() -> calculator.getAnswer("asdfkljasdf")).isInstanceOf(IllegalArgumentException.class).hasMessage("잘못된 식입니다.");
         assertThatThrownBy(() -> calculator.getAnswer("1 > 2")).isInstanceOf(IllegalArgumentException.class).hasMessage("잘못된 식입니다.");
     }
+=======
+        assertThatThrownBy(() -> calculator.getAnswer("asdfkljasdf")).isInstanceOf(IllegalArgumentException.class).hasMessage("잘못된 식입니다.");
+        assertThatThrownBy(() -> calculator.getAnswer("1 > 2")).isInstanceOf(IllegalArgumentException.class).hasMessage("잘못된 식입니다.");
+    }
+
+
+>>>>>>> 972cfa0 (feat: add getAnswer method)
 }
