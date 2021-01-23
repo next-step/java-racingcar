@@ -1,4 +1,6 @@
-package racingcar;
+package domain;
+
+import view.InputOutput;
 
 import java.util.ArrayList;
 

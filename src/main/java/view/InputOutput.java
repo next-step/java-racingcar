@@ -1,4 +1,6 @@
-package racingcar;
+package view;
+
+import domain.Car;
 
 import java.util.ArrayList;
 import java.util.Scanner;
