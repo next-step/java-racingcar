@@ -15,8 +15,8 @@ public class Racing {
     public void moveCars() {
         for (Car car : carsList) {
             decideMove(car);
-            this.lowerStage();
         }
+        this.lowerStage();
     }
 
     public ArrayList<Car> getCarsList() {
