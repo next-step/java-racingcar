@@ -20,10 +20,9 @@ public class ValidateUtils {
         return true;
     }
 
-    private static boolean validateAppropriateOperator(String[] inputArray)
-        throws IllegalArgumentException {
+    private static boolean validateAppropriateOperator(String[] inputArray) throws IllegalArgumentException {
         for (int i = Constant.OPERATOR_START_INDEX; i < inputArray.length; i += 2) {
-            Operator.validateOperator(inputArray[i]);
+                Operator.validateOperator(inputArray[i]);
         }
         return true;
     }
