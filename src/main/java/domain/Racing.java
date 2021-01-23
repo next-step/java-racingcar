@@ -15,6 +15,7 @@ public class Racing {
     public void moveCars() {
         for (Car car : carsList) {
             decideMove(car);
+            this.lowerStage();
         }
     }
 
@@ -24,7 +25,6 @@ public class Racing {
 
     public boolean isEnd() {
         if (stages > 0) {
-            this.lowerStage();
             return false;
         }
         return true;
