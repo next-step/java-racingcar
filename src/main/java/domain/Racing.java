@@ -1,6 +1,6 @@
 package domain;
 
-import view.InputOutput;
+import view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,9 +17,9 @@ public class Racing {
     public void start(){
         for(int current = stages; current > 0; --current){
             moveCars();
-            InputOutput.printCurrentCarsState(carsList);
+            ResultView.printCurrentCarsState(carsList);
         }
-        InputOutput.printWinners(this.carsList, getMaxDistance());
+        ResultView.printWinners(this.carsList, getMaxDistance());
     }
 
     public void moveCars() {
