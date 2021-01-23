@@ -18,6 +18,23 @@ public class Racing {
         }
     }
 
+    public ArrayList<Car> getCarsList() {
+        return this.carsList;
+    }
+
+    public boolean isEnd() {
+        if (stages > 0) {
+            this.lowerStage();
+            return false;
+        }
+        return true;
+    }
+
+    private void lowerStage() {
+        --this.stages;
+    }
+
+
     public void decideMove(Car car) {
         if (getRandomNumber() >= 4) {
             car.moveForward();
