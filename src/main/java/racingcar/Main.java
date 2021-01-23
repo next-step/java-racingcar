@@ -17,19 +17,18 @@ public class Main {
         InputHandler inputHandler = new InputHandler(new Scanner(System.in));
 
         ArrayList<String> carNames = inputHandler.getCarName();
-        Boolean startGame = NameValidator.checkCarName(carNames); // 자동차 이름 유효성 검사
+        Boolean startGame = NameValidator.checkCarName(carNames);
 
         if (!startGame) {
             OutputHandler.exitMessage();
             System.exit(0);
         }
 
-        int laps = inputHandler.getLaps(); // 랩 횟수 입력 받기
+        int laps = inputHandler.getLaps();
 
         List<Car> cars = CarGenerator.generateCars(carNames);
 
         Game game = new Game();
-
         for(int i = 0; i < laps; i++) {
             game.proceedRound(cars);
             OutputHandler.displayDash(cars);
