@@ -14,7 +14,7 @@ public class OutputHandler {
     }
 
     public static void racingResult(String winners) {
-        System.out.printf("최종 우승자: %s%n", winners);
+        System.out.println("최종 우승자: " + winners);
     }
 
     public static void exitMessage() {

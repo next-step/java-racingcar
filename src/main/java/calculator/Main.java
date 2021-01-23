@@ -11,6 +11,6 @@ public class Main {
         String formula = input.getFormula();
         Double answer = calculator.getAnswer(formula);
 
-        System.out.printf("결과는: %s%n", answer.toString());
+        System.out.println("결과는: " + answer.toString());
     }
 }
