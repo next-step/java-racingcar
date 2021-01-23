@@ -1,7 +1,5 @@
 package domain;
 
-import view.ResultView;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,27 +7,19 @@ public class Racing {
     private ArrayList<Car> carsList;
     private int stages;
 
-    public Racing(ArrayList<Car> carsList, int stages){
+    public Racing(ArrayList<Car> carsList, int stages) {
         this.carsList = carsList;
         this.stages = stages;
     }
 
-    public void start(){
-        for(int current = stages; current > 0; --current){
-            moveCars();
-            ResultView.printCurrentCarsState(carsList);
-        }
-        ResultView.printWinners(this.carsList, getMaxDistance());
-    }
-
     public void moveCars() {
-        for(Car car : carsList){
+        for (Car car : carsList) {
             decideMove(car);
         }
     }
 
     public void decideMove(Car car) {
-        if(getRandomNumber() >= 4){
+        if (getRandomNumber() >= 4) {
             car.moveForward();
         }
     }
@@ -41,7 +31,7 @@ public class Racing {
 
     public int getMaxDistance() {
         int maxDistance = 0;
-        for(Car car : this.carsList) {
+        for (Car car : this.carsList) {
             maxDistance = Math.max(maxDistance, car.getDistance());
         }
         return maxDistance;
