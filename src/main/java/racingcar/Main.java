@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.CarGenerator;
 import racingcar.domain.Game;
+import racingcar.domain.NameValidator;
 import racingcar.view.InputHandler;
 import racingcar.view.OutputHandler;
 
@@ -16,15 +17,16 @@ public class Main {
         InputHandler inputHandler = new InputHandler(new Scanner(System.in));
 
         ArrayList<String> carNames = inputHandler.getCarName();
-        Boolean startGame = inputHandler.checkCarName(carNames); // 자동차 이름 유효성 검사
+        Boolean startGame = NameValidator.checkCarName(carNames); // 자동차 이름 유효성 검사
 
         if (!startGame) {
             OutputHandler.exitMessage();
+            System.exit(0);
         }
 
-        int laps = inputHandler.inputLaps(); // 랩 횟수 입력 받기
+        int laps = inputHandler.getLaps(); // 랩 횟수 입력 받기
 
-        List<Car> cars = CarGenerator.genearteCarList(inputHandler.getCarNameStr());
+        List<Car> cars = CarGenerator.generateCars(carNames);
 
         Game game = new Game();
 

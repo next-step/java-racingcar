@@ -2,24 +2,21 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.view.InputHandler;
+import racingcar.domain.NameValidator;
 
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
-public class InputHandlerTest {
+public class NameValidatorTest {
 
     @Test
     @DisplayName("잘못된 이름 테스트")
     public void carNameCheckerTest() {
-        InputHandler inputHandler = new InputHandler(new Scanner(System.in));
         ArrayList<String> test = new ArrayList<>(Arrays.asList("asd", "aaaaaa"));
         ArrayList<String> test2 = new ArrayList<>(Arrays.asList("asd", "aaa"));
-        assertThat(inputHandler.checkCarName(test)).isFalse();
-        assertThat(inputHandler.checkCarName(test2)).isTrue();
+        assertThat(NameValidator.checkCarName(test)).isFalse();
+        assertThat(NameValidator.checkCarName(test2)).isTrue();
     }
-
 }

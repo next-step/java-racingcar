@@ -8,6 +8,8 @@ import racingcar.domain.Game;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameTest {
@@ -16,7 +18,8 @@ public class GameTest {
     @DisplayName("getWinners 테스트")
     public void getWinnersTest() {
         final Game game = new Game();
-        List<Car> test = CarGenerator.genearteCarList("a,b,c");
+        final ArrayList<String> cars= new ArrayList<>(Arrays.asList("a", "b", "c"));
+        List<Car> test = CarGenerator.generateCars(cars);
         assertThat(game.getWinners(test)).isEqualTo("a,b,c");
     }
 

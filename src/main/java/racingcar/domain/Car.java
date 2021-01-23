@@ -4,6 +4,7 @@ public class Car {
 
     private final String name;
     private int position;
+
     private final int GO = 4;
 
     public Car(String name) {
