@@ -27,6 +27,10 @@ public class Racing {
         Output.printWinners(this.carsList, getMaxDistance());
     }
 
+    public ArrayList<Car> getCarsList() {
+        return carsList;
+    }
+
     public void race() {
         for(Car car : this.carsList){
             decideMove(car);
