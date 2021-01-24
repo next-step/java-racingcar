@@ -1,12 +1,14 @@
 package racingcar;
 
+import racingcar.view.Input;
+
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        String carNames = InputOutput.inputCarsName();
+        String carNames = Input.inputCarsName();
         ArrayList<Car> carsList = Car.asCarsList(carNames);
-        int stages = InputOutput.inputStages();
+        int stages = Input.inputStages();
 
         Racing racing = new Racing(carsList, stages);
         racing.start();

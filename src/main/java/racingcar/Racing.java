@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.view.Output;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,9 +22,9 @@ public class Racing {
     public void start(){
         for(int current = stages; current > 0; --current){
             moveCars();
-            InputOutput.printCurrentCarsState(this.carsList);
+            Output.printCurrentCarsState(this.carsList);
         }
-        InputOutput.printWinners(this.carsList, getMaxDistance());
+        Output.printWinners(this.carsList, getMaxDistance());
     }
 
     public void moveCars() {

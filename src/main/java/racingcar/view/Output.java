@@ -1,31 +1,9 @@
-package racingcar;
+package racingcar.view;
 
+import racingcar.Car;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class InputOutput {
-    public static Scanner scanner = new Scanner(System.in);
-
-    public static String inputCarsName() {
-        String carsName = null;
-        boolean isValidCarsName = false;
-        while (!isValidCarsName) {
-            carsName = scanner.next();
-            isValidCarsName = Validator.validateCarsName(carsName);
-        }
-        return carsName;
-    }
-
-    public static int inputStages() {
-        String stages = null;
-        boolean isValidStages = false;
-        while (!isValidStages) {
-            stages = scanner.next();
-            isValidStages = Validator.validateStages(stages);
-        }
-        return Integer.parseInt(stages);
-    }
-
+public class Output {
     public static void printCurrentCarsState(ArrayList<Car> carsList){
         System.out.println("\n실행 결과");
         for(Car car : carsList){
