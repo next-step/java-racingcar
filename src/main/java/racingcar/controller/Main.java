@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.Racing;
 import racingcar.view.Input;
+import racingcar.view.Output;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,10 @@ public class Main {
         int stages = Input.inputStages();
 
         Racing racing = new Racing(carsList, stages);
-        racing.start();
+        for(int current = stages; current > 0; --current){
+            racing.race();
+            Output.printCurrentCarsState(racing.getCarsList());
+        }
+        Output.printWinners(racing.getCarsList(), racing.getMaxDistance());
     }
 }

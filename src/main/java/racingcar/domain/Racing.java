@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.Output;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,14 +15,6 @@ public class Racing {
         this.carsList = carsList;
         this.stages = stages;
         this.random = new Random();
-    }
-
-    public void start(){
-        for(int current = stages; current > 0; --current){
-            race();
-            Output.printCurrentCarsState(this.carsList);
-        }
-        Output.printWinners(this.carsList, getMaxDistance());
     }
 
     public ArrayList<Car> getCarsList() {
