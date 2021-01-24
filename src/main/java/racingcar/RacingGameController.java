@@ -1,6 +1,8 @@
 package racingcar;
 
 
+import racingcar.view.RacingGamePrinter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,10 +18,12 @@ public class RacingGameController {
     private int numberOfRound;
     private final Random rand;
 
-    public RacingGameController() {
-        cars = new ArrayList<>();
-        winners = new ArrayList<>();
-        rand = new Random();
+    public RacingGameController(String carsName, int numberOfRound) {
+        this.cars = new ArrayList<>();
+        setCarsName(carsName);
+        this.winners = new ArrayList<>();
+        this.rand = new Random();
+        this.numberOfRound = numberOfRound;
     }
 
     public ArrayList<RacingCar> getCars() {
@@ -30,31 +34,6 @@ public class RacingGameController {
         return winners;
     }
 
-    public void start() {
-
-        String CarsName = getCarsName();
-        setCarsName(CarsName);
-        getRound();
-        System.out.println("실행 결과");
-        for (int i = 0; i < numberOfRound; i++) {
-            playRound();
-        }
-        int maxStatus = getMaxStatusAmongPlayers();
-        findWinnerWithMaxStatus(maxStatus);
-    }
-
-    public String getCarsName() {
-
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-
-        String CarsName = null;
-        boolean isProperInput = false;
-        while (!isProperInput) {
-            CarsName = sc.nextLine();
-            isProperInput = InputValidator.checkCarsNameInput(CarsName);
-        }
-        return CarsName;
-    }
 
     public void setCarsName(String input) {
 
@@ -64,19 +43,21 @@ public class RacingGameController {
         }
     }
 
-    private void getRound() throws IllegalArgumentException {
-
-        System.out.println("시도할 횟수는 몇 회인가요?");
-
-        numberOfRound = sc.nextInt();
+    public boolean isEnd() {
+        if (numberOfRound > 0) {
+            numberOfRound--;
+            return false;
+        }
+        return true;
     }
+
 
     public void playRound() {
 
         for (RacingCar car : cars) {
             moveEachCar(car);
         }
-        RacingGamePrinter.printAllCarStatus(cars);
+
 
     }
 
@@ -100,7 +81,6 @@ public class RacingGameController {
         for (int i = 0; i < cars.size(); i++) {
             findEachWinner(i, maxStatus);
         }
-        RacingGamePrinter.printWinners(winners);
     }
 
     public int getMaxStatusAmongPlayers() {
