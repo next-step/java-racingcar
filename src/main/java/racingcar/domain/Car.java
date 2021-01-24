@@ -32,6 +32,10 @@ public class Car {
         return this.location;
     }
 
+    public ResultCar getResult() {
+        return new ResultCar(name, location);
+    }
+
     public void play(MoveChecker moveChecker) {
         if (moveChecker.isMoving()) {
             this.location++;

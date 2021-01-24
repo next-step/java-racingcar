@@ -26,7 +26,7 @@ public class Output {
 
     private void printResultCar(ResultCar result) {
         System.out.println(
-            result.getCar() + CAR_DELIMITER + result.getLocation()
+            result.getCarName() + CAR_DELIMITER + result.getLocation()
         );
     }
 }

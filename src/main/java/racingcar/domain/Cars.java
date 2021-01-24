@@ -34,6 +34,15 @@ public class Cars {
         System.out.println();
     }
 
+    public List<ResultCar> getNextRound() {
+        List<ResultCar> resultCars = new ArrayList<>();
+        for (Car car : cars) {
+            ResultCar resultCar = car.getResult();
+            resultCars.add(resultCar);
+        }
+        return resultCars;
+    }
+
     public List<String> getWinners() {
         List<String> winners = new ArrayList<>();
         int farthest = getFarthestLocation();

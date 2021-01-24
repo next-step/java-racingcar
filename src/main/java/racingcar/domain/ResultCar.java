@@ -1,16 +1,16 @@
 package racingcar.domain;
 
 public class ResultCar {
-    private String car;
+    private String carName;
     private int location;
 
-    public ResultCar(String car, int location) {
-        this.car = car;
+    public ResultCar(String carName, int location) {
+        this.carName = carName;
         this.location = location;
     }
 
-    public String getCar() {
-        return car;
+    public String getCarName() {
+        return carName;
     }
 
     public int getLocation() {
