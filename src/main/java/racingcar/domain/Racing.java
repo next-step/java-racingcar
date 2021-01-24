@@ -21,13 +21,13 @@ public class Racing {
 
     public void start(){
         for(int current = stages; current > 0; --current){
-            moveCars();
+            race();
             Output.printCurrentCarsState(this.carsList);
         }
         Output.printWinners(this.carsList, getMaxDistance());
     }
 
-    public void moveCars() {
+    public void race() {
         for(Car car : this.carsList){
             decideMove(car);
         }
