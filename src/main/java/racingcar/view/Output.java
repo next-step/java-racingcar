@@ -4,6 +4,10 @@ import racingcar.domain.Car;
 import java.util.ArrayList;
 
 public class Output {
+    public static void printInputMessage(String inputInfo){
+        System.out.println(inputInfo + "을(를) 입력해주세요.");
+    }
+
     public static void printCurrentCarsState(ArrayList<Car> carsList){
         System.out.println("\n실행 결과");
         for(Car car : carsList){
