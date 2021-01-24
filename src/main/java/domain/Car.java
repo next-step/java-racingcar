@@ -8,4 +8,16 @@ public class Car {
         this.name = name;
         this.status = 0;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void move() {
+
+    }
 }

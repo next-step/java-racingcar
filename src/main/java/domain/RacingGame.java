@@ -1,5 +1,7 @@
 package domain;
 
+import view.ResultView;
+
 import java.util.ArrayList;
 
 public class RacingGame {
@@ -14,6 +16,8 @@ public class RacingGame {
 
         this.tryNo = tryNo;
         this.nowNo = 0;
+
+        ResultView.printStartSign();
     }
 
     public Boolean isEnd() {
@@ -21,6 +25,9 @@ public class RacingGame {
     }
 
     public void race() {
-
+        for (Car car : cars) {
+            car.move();
+            ResultView.printCarStatus(car);
+        }
     }
 }
