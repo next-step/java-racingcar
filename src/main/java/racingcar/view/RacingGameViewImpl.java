@@ -1,31 +1,28 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.utils.NameChecker;
-import racingcar.utils.NameCheckerImpl;
+import racingcar.resources.RacingGameResource;
+import racingcar.utils.StringDecoration;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameViewImpl implements RacingGameView {
     private final Scanner scanner = new Scanner(System.in);
-    private final NameChecker nameChecker = new NameCheckerImpl();
+    private final StringDecoration stringDecoration = new StringDecoration();
 
     @Override
     public String[] inputCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요:");
+        System.out.println(RacingGameResource.INPUT_CAR_NAME_HINT);
         String inputLine = scanner.nextLine();
-        String[] carNames = nameChecker.splitName(inputLine);
-        for (String carName : carNames) {
-            nameChecker.checkAvailableCarName(carName);
-        }
+        String[] carNames = stringDecoration.splitCarName(inputLine);
 
         return carNames;
     }
 
     @Override
     public int inputPlayCount() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(RacingGameResource.INPUT_PLAY_COUNT_HINT);
         int playCount = scanner.nextInt();
         System.out.println();
         return playCount;
@@ -33,19 +30,15 @@ public class RacingGameViewImpl implements RacingGameView {
 
     @Override
     public void printWinner(List<Car> winners) {
-        StringBuilder winnersBuilder = new StringBuilder();
-        for (Car winner : winners) {
-            winnersBuilder.append(winner.getName()).append(", ");
-        }
-        String winnerText = winnersBuilder.substring(0, winnersBuilder.length() - 2);
-        System.out.println("최종 우승자: " + winnerText);
+        String winnerResult = stringDecoration.decorateWinner(winners);
+        System.out.println(RacingGameResource.FINAL_WINNER_DECORATION + winnerResult);
     }
 
     @Override
-    public void printCars(List<Car> cars) {
+    public void printCarsPosition(List<Car> cars) {
         for (Car car : cars) {
-            car.move();
-            car.printCurrentPosition();
+            String carPrintResult = stringDecoration.decorateCarPosition(car);
+            System.out.println(carPrintResult);
         }
         System.out.println();
     }
