@@ -4,19 +4,15 @@ import java.util.Scanner;
 
 public class InputHandler {
 
-    private final Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public InputHandler(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    public String getCarName() {
+    public static String getCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 , 기준으로 구분)");
         return scanner.nextLine();
     }
 
-    public int getLaps() {
-        System.out.println("숫자 입력");
+    public static int getLaps() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
         return scanner.nextInt();
     }
 }
