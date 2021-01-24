@@ -10,7 +10,7 @@ public class RacingGame {
 
     public RacingGame(String carNames, int tryNo){
         CarFactory carFactory = new CarFactory();
-        cars = carFactory.getCars(carNames);
+        cars = carFactory.generateCars(carNames);
 
         this.tryNo = tryNo;
         this.nowNo = 0;
