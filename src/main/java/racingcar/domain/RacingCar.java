@@ -2,8 +2,8 @@ package racingcar.domain;
 
 public class RacingCar implements Car {
     private int position = 0;
-    private String name;
-    private Engine engine;
+    private final String name;
+    private final Engine engine;
 
     public RacingCar(String name, Engine engine) {
         this.name = name;
