@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.io.*;
+import racingcar.view.*;
 
 public class ApplicationContext {
 

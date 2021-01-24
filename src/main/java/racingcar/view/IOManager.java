@@ -1,9 +1,9 @@
-package racingcar.io;
+package racingcar.view;
 
 import java.util.List;
 
-import static racingcar.io.InputMessages.ENTER_CAR_NAMES;
-import static racingcar.io.InputMessages.ENTER_ROUNDS;
+import static racingcar.view.InputMessages.ENTER_CAR_NAMES;
+import static racingcar.view.InputMessages.ENTER_ROUNDS;
 
 public class IOManager {
 

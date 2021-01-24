@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.io.IOManager;
+import racingcar.view.IOManager;
 
 import java.util.List;
 
