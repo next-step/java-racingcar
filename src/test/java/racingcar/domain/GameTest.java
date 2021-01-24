@@ -42,7 +42,7 @@ class GameTest {
 
         ResultRound resultRound = game.nextRound();
 
-        assertThat(resultRound).isEqualTo(mockCars.getRound());
+        assertThat(resultRound).isEqualTo(mockCars.getNextRound());
     }
 
     @DisplayName("승리자의 결과를 잘 가져오는지 확인")

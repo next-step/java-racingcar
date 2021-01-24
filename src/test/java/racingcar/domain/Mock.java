@@ -4,17 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class MockCars extends Cars {
-    public int doRoundCallCnt;
-
     public MockCars(List<Car> cars, MoveChecker moveChecker) {
         super(cars, moveChecker);
-
-        doRoundCallCnt = 0;
-    }
-
-    @Override
-    public void doRound() {
-        doRoundCallCnt++;
     }
 
     @Override
@@ -23,7 +14,7 @@ class MockCars extends Cars {
     }
 
     @Override
-    public ResultRound getRound() {
+    public ResultRound getNextRound() {
         return null;
     }
 }

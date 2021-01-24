@@ -26,15 +26,11 @@ public class Cars {
         return Objects.hash(cars, moveChecker);
     }
 
-    public void doRound() {
-        for (Car car : cars) {
-            car.play(moveChecker);
-        }
-    }
-
-    public ResultRound getRound() {
+    public ResultRound getNextRound() {
         List<ResultCar> resultCars = new ArrayList<>();
         for (Car car : cars) {
+            car.play(moveChecker);
+
             ResultCar resultCar = car.getResult();
             resultCars.add(resultCar);
         }
