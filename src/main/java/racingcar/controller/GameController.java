@@ -1,13 +1,14 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import racingcar.util.Constant;
+import racingcar.domain.Car;
+import racingcar.util.InputValidator;
 
-public class GameManager {
-
-    private final InputValidator inputValidator = new InputValidator();
+public class GameController {
 
     public void activate(Scanner scanner) {
         String[] cars = inputCarNames(scanner);
@@ -24,7 +25,7 @@ public class GameManager {
             System.out.println(Constant.INPUT_REQUEST_CAR_NAME);
             String carsInput = scanner.next();
             cars = carsInput.split(",");
-        } while (!inputValidator.validateCarName(cars));
+        } while (!InputValidator.validateCarName(cars));
         return cars;
     }
 
@@ -39,7 +40,7 @@ public class GameManager {
         do {
             System.out.println(Constant.INPUT_REQUEST_PLAY_TIME);
             inputCnt = scanner.next();
-        } while (!inputValidator.validGameCntInput(inputCnt));
+        } while (!InputValidator.validGameCntInput(inputCnt));
         return Integer.parseInt(inputCnt);
     }
 }
