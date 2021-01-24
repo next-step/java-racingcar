@@ -1,11 +1,9 @@
-package racingcar.input;
-
-import racingcar.Output;
+package racingcar.io;
 
 import java.util.List;
 
-import static racingcar.input.InputMessages.ENTER_CAR_NAMES;
-import static racingcar.input.InputMessages.ENTER_ROUNDS;
+import static racingcar.io.InputMessages.ENTER_CAR_NAMES;
+import static racingcar.io.InputMessages.ENTER_ROUNDS;
 
 public class IOManager {
 

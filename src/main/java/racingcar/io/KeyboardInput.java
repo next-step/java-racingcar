@@ -1,4 +1,4 @@
-package racingcar.input;
+package racingcar.io;
 
 import java.io.InputStream;
 import java.util.List;

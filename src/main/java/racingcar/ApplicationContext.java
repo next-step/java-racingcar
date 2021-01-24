@@ -1,8 +1,6 @@
 package racingcar;
 
-import racingcar.input.IOManager;
-import racingcar.input.Input;
-import racingcar.input.KeyboardInput;
+import racingcar.io.*;
 
 public class ApplicationContext {
 

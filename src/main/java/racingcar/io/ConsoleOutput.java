@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.io;
 
 public class ConsoleOutput implements Output {
     @Override
