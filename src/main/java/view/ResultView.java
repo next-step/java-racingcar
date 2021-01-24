@@ -9,7 +9,7 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printCars(ArrayList<Car> cars){
+    public static void printCars(ArrayList<Car> cars) {
         for (Car car : cars) {
             printEachCar(car);
         }
@@ -22,5 +22,11 @@ public class ResultView {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public static void printWinners(ArrayList<String> winners) {
+        System.out.println("최종 우승자: ");
+        String result = String.join(", ", winners);
+        System.out.println(result);
     }
 }
