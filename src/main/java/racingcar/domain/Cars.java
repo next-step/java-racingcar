@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.LinkedHashSet;
 import java.util.List;
