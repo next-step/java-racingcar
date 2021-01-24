@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.input;
 
 public class InputMessages {
 

@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.input;
 
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
-import static racingcar.InputMessages.ENTER_CAR_NAMES;
-import static racingcar.InputMessages.ENTER_ROUNDS;
+import static racingcar.input.InputMessages.ENTER_CAR_NAMES;
+import static racingcar.input.InputMessages.ENTER_ROUNDS;
 
 public class KeyboardInput implements Input {
     private final Scanner scanner;

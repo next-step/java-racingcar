@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.input;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
