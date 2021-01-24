@@ -18,15 +18,6 @@ public class RacingCar implements Car {
     }
 
     @Override
-    public void printCurrentPosition() {
-        StringBuilder stringBuilder = new StringBuilder(name + " : ");
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append("-");
-        }
-        System.out.println(stringBuilder);
-    }
-
-    @Override
     public int getPosition() {
         return position;
     }
