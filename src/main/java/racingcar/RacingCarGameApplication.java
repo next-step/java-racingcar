@@ -8,19 +8,24 @@ import java.util.Scanner;
 public class RacingCarGameApplication {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Input input = new Input(scanner);
+        Input input = new Input(
+            new Scanner(System.in)
+        );
+        Output output = new Output();
 
-        String carNames = input.getCarNames();
-        MoveChecker moveChecker = new MoveChecker();
-        Cars cars = CarsFactory.createCars(carNames, moveChecker);
-
+        Cars cars = CarsFactory.createCars(
+            input.getCarNames(), new MoveChecker()
+        );
         int tryCount = input.getTryCount();
 
         Game game = new Game(cars, tryCount);
-        game.start();
 
-        Output output = new Output();
-        output.printWinners(game.getResultWinners());
+        output.printRoundStart();
+        while (game.hasNextRound()) {
+            ResultRound resultRound = game.nextRound();
+            output.printRound(resultRound);
+        }
+        ResultWinners resultWinners = game.computeWinner();
+        output.printWinners(resultWinners);
     }
 }

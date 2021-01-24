@@ -18,10 +18,13 @@ class MockCars extends Cars {
     }
 
     @Override
-    public List<String> getWinners() {
-        return new ArrayList<String>() {{
-            add("fake winner");
-        }};
+    public ResultWinners getWinners() {
+        return null;
+    }
+
+    @Override
+    public ResultRound getRound() {
+        return null;
     }
 }
 

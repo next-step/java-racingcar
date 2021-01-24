@@ -13,22 +13,14 @@ public class Game {
         return tryCount > 0;
     }
 
-    public ResultRound getNextRoundResult() {
+    public ResultRound nextRound() {
         tryCount--;
-        return new ResultRound(
-            cars.getNextRound()
-        );
+        cars.doRound();
+
+        return cars.getRound();
     }
 
-    public void start() {
-        for (int i = 0; i < tryCount; i++) {
-            cars.doRound();
-        }
-    }
-
-    public ResultWinners getResultWinners() {
-        return new ResultWinners(
-            cars.getWinners()
-        );
+    public ResultWinners computeWinner() {
+        return cars.getWinners();
     }
 }

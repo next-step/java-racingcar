@@ -27,23 +27,6 @@ class CarsTest {
         System.setOut(standardOut);
     }
 
-    @DisplayName("라운드 진행 후에 정보를 잘 출력하는지 확인")
-    @Test
-    void doRound() {
-        List<Car> carList = new ArrayList<Car>() {{
-            add(new Car("car1", 0));
-            add(new Car("car2", 2));
-            add(new Car("car3", 3));
-        }};
-        Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
-
-        cars.doRound();
-
-        assertThat(outputStreamCaptor.toString()).isEqualTo(
-            "car1 : -\n" + "car2 : --\n" + "car3 : ----\n" + "\n"
-        );
-    }
-
     @DisplayName("승자가 1명 일때 정보를 잘 가져오는 확인")
     @Test
     void getWinnersSingle() {
@@ -54,12 +37,14 @@ class CarsTest {
         }};
         Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
 
-        List<String> winners = cars.getWinners();
+        ResultWinners winners = cars.getWinners();
 
         assertThat(winners).isEqualTo(
-            new ArrayList<String>() {{
-                add("car3");
-            }}
+            new ResultWinners(
+                new ArrayList<String>() {{
+                    add("car3");
+                }}
+            )
         );
     }
 
@@ -73,13 +58,15 @@ class CarsTest {
         }};
         Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
 
-        List<String> winners = cars.getWinners();
+        ResultWinners winners = cars.getWinners();
 
         assertThat(winners).isEqualTo(
-            new ArrayList<String>() {{
-                add("car2");
-                add("car3");
-            }}
+            new ResultWinners(
+                new ArrayList<String>() {{
+                    add("car2");
+                    add("car3");
+                }}
+            )
         );
     }
 }

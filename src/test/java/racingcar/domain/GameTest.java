@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,35 +9,49 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameTest {
-    @DisplayName("게임 시작시 라운드 진행이 잘 되는지 확인")
-    @Test
-    void start() {
-        MockCars mockCars = new MockCars(
+    private MockCars mockCars;
+
+    @BeforeEach()
+    void setup() {
+        mockCars = new MockCars(
             new ArrayList<>(),
             new TrueMoveChecker()
         );
-        Game game = new Game(mockCars, 5);
-
-        game.start();
-
-        assertThat(5).isEqualTo(mockCars.doRoundCallCnt);
     }
 
-    @DisplayName("게임 결과인 승자를 잘 가져오는지 확인")
+    @DisplayName("다음 라운드가 남아있는지를 확인")
     @Test
+    void hasNextRoundRemained() {
+        Game game = new Game(mockCars, 1);
+
+        assertThat(game.hasNextRound()).isEqualTo(true);
+    }
+
+    @DisplayName("다음 라운드가 남아있는지 않은지를 확인")
+    @Test
+    void hasNextRoundNotRemained() {
+        Game game = new Game(mockCars, 0);
+
+        assertThat(game.hasNextRound()).isEqualTo(false);
+    }
+
+    @DisplayName("다음 라운드를 진행한 결과를 잘 가져오는지 확인")
+    @Test
+    void nextRound() {
+        Game game = new Game(mockCars, 1);
+
+        ResultRound resultRound = game.nextRound();
+
+        assertThat(resultRound).isEqualTo(mockCars.getRound());
+    }
+
+    @DisplayName("승리자의 결과를 잘 가져오는지 확인")
+   @Test
     void getResultWinners() {
-        MockCars mockCars = new MockCars(
-            new ArrayList<>(),
-            new TrueMoveChecker()
-        );
-        Game game = new Game(mockCars, 5);
+        Game game = new Game(mockCars, 1);
 
-        ResultWinners result = game.getResultWinners();
+        ResultWinners resultWinners = game.computeWinner();
 
-        assertThat(result).isEqualTo(
-            new ResultWinners(
-                mockCars.getWinners()
-            )
-        );
+        assertThat(resultWinners).isEqualTo(mockCars.getWinners());
     }
 }

@@ -29,27 +29,25 @@ public class Cars {
     public void doRound() {
         for (Car car : cars) {
             car.play(moveChecker);
-            car.printNameAndCurrentPosition();
         }
-        System.out.println();
     }
 
-    public List<ResultCar> getNextRound() {
+    public ResultRound getRound() {
         List<ResultCar> resultCars = new ArrayList<>();
         for (Car car : cars) {
             ResultCar resultCar = car.getResult();
             resultCars.add(resultCar);
         }
-        return resultCars;
+        return new ResultRound(resultCars);
     }
 
-    public List<String> getWinners() {
+    public ResultWinners getWinners() {
         List<String> winners = new ArrayList<>();
         int farthest = getFarthestLocation();
         for (Car car : cars) {
             addIfEqualLocation(winners, car, farthest);
         }
-        return winners;
+        return new ResultWinners(winners);
     }
 
     private int getFarthestLocation() {
