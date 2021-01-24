@@ -15,7 +15,8 @@ public class Game {
 
     public ResultRound nextRound() {
         tryCount--;
-        return cars.getNextRound();
+        cars.doRound();
+        return cars.getRound();
     }
 
     public ResultWinners computeWinner() {

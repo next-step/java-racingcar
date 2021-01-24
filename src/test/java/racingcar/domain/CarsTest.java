@@ -9,9 +9,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
-    @DisplayName("다음 라운드 정보를 잘 가져오는지 확인")
+    @DisplayName("라운드를 잘 진행하는지 확인")
     @Test
-    void getNextRound() {
+    void doRound() {
         List<Car> carList = new ArrayList<Car>() {{
             add(new Car("car1", 3));
             add(new Car("car2", 4));
@@ -19,7 +19,8 @@ class CarsTest {
         }};
         Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
 
-        ResultRound winners = cars.getNextRound();
+        cars.doRound();
+        ResultRound winners = cars.getRound();
 
         assertThat(winners).isEqualTo(
             new ResultRound(
@@ -27,6 +28,29 @@ class CarsTest {
                     add(new ResultCar("car1", 4));
                     add(new ResultCar("car2", 4));
                     add(new ResultCar("car3", 6));
+                }}
+            )
+        );
+    }
+
+    @DisplayName("다음 라운드 정보를 잘 가져오는지 확인")
+    @Test
+    void getRound() {
+        List<Car> carList = new ArrayList<Car>() {{
+            add(new Car("car1", 3));
+            add(new Car("car2", 4));
+            add(new Car("car3", 5));
+        }};
+        Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
+
+        ResultRound winners = cars.getRound();
+
+        assertThat(winners).isEqualTo(
+            new ResultRound(
+                new ArrayList<ResultCar>() {{
+                    add(new ResultCar("car1", 3));
+                    add(new ResultCar("car2", 4));
+                    add(new ResultCar("car3", 5));
                 }}
             )
         );

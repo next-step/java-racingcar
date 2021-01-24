@@ -5,24 +5,27 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameTest {
-    private MockCars mockCars;
+    private MockCars cars;
 
     @BeforeEach()
     void setup() {
-        mockCars = new MockCars(
-            new ArrayList<>(),
-            new TrueMoveChecker()
-        );
+        List<Car> carList = new ArrayList<Car>() {{
+            add(new Car("car1", 3));
+            add(new Car("car2", 4));
+            add(new Car("car3", 5));
+        }};
+        cars = new MockCars(carList, new TrueFalseRepeatChecker());
     }
 
     @DisplayName("다음 라운드가 남아있는지를 확인")
     @Test
     void hasNextRoundRemained() {
-        Game game = new Game(mockCars, 1);
+        Game game = new Game(cars, 1);
 
         assertThat(game.hasNextRound()).isEqualTo(true);
     }
@@ -30,28 +33,30 @@ class GameTest {
     @DisplayName("다음 라운드가 남아있는지 않은지를 확인")
     @Test
     void hasNextRoundNotRemained() {
-        Game game = new Game(mockCars, 0);
+        Game game = new Game(cars, 0);
 
         assertThat(game.hasNextRound()).isEqualTo(false);
     }
 
-    @DisplayName("다음 라운드를 진행한 결과를 잘 가져오는지 확인")
+    @DisplayName("라운드 진행 후 현재 라운드를 잘 가져오는지 확인")
     @Test
     void nextRound() {
-        Game game = new Game(mockCars, 1);
+        Game game = new Game(cars, 1);
 
         ResultRound resultRound = game.nextRound();
 
-        assertThat(resultRound).isEqualTo(mockCars.getNextRound());
+        assertThat(cars.playCnt).isEqualTo(1);
+        assertThat(game.hasNextRound()).isEqualTo(false);
+        assertThat(resultRound).isEqualTo(cars.getRound());
     }
 
-    @DisplayName("승리자의 결과를 잘 가져오는지 확인")
-   @Test
+    @DisplayName("승리 결과를 잘 가져오는지 확인")
+    @Test
     void getResultWinners() {
-        Game game = new Game(mockCars, 1);
+        Game game = new Game(cars, 0);
 
         ResultWinners resultWinners = game.computeWinner();
 
-        assertThat(resultWinners).isEqualTo(mockCars.getWinners());
+        assertThat(resultWinners).isEqualTo(cars.getWinners());
     }
 }

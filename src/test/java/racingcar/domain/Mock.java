@@ -1,21 +1,18 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class MockCars extends Cars {
+    public int playCnt;
+
     public MockCars(List<Car> cars, MoveChecker moveChecker) {
         super(cars, moveChecker);
+        playCnt = 0;
     }
 
     @Override
-    public ResultWinners getWinners() {
-        return null;
-    }
-
-    @Override
-    public ResultRound getNextRound() {
-        return null;
+    public void doRound() {
+        playCnt++;
     }
 }
 
