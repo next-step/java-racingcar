@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.Validator;
+import racingcar.validate.Validator;
 import java.util.Scanner;
 
 public class Input {
