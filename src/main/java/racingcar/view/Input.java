@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.view;
 
 import java.util.Scanner;
 
