@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.ExceptionMessages.CAR_NAME_CANNOT_EXCEED_5_CHARACTERS;
+import static racingcar.ExceptionMessages.NO_INPUT_VALUES;
+
 public class InputParser {
 
     private static final String DELIMITER = ",";
@@ -24,7 +27,7 @@ public class InputParser {
 
     private static void validateNonBlank(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("입력값이 없습니다.");
+            throw new IllegalArgumentException(NO_INPUT_VALUES);
         }
     }
 
@@ -36,7 +39,7 @@ public class InputParser {
 
     private static void validateLength(final String carName) {
         if (carName.length() > MAX_CAR_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(CAR_NAME_CANNOT_EXCEED_5_CHARACTERS);
         }
     }
 }

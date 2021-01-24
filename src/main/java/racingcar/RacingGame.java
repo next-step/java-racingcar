@@ -2,6 +2,8 @@ package racingcar;
 
 import java.util.List;
 
+import static racingcar.ExceptionMessages.*;
+
 public class RacingGame {
     private final Cars cars;
     private final int rounds;
@@ -16,7 +18,7 @@ public class RacingGame {
 
     private void validateSize(final List<String> carNames) {
         if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름이 비어 있습니다.");
+            throw new IllegalArgumentException(CAR_NAMES_ARE_EMPTY);
         }
     }
 
@@ -28,13 +30,13 @@ public class RacingGame {
 
     private void throwExceptionIfCarNameIsNullOrBlank(final String carName) {
         if (carName == null || carName.isBlank()) {
-            throw new IllegalArgumentException("이름이 없는 자동차가 있습니다.");
+            throw new IllegalArgumentException(NO_NAME_CAR_EXISTS);
         }
     }
 
     private void validateRounds(final int rounds) {
         if (rounds < 1) {
-            throw new IllegalArgumentException("라운드는 최소 1 이상이어야 합니다.");
+            throw new IllegalArgumentException(ROUNDS_MUST_BE_AT_LEAST_ONE);
         }
     }
 
