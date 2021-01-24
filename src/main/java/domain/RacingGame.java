@@ -20,6 +20,10 @@ public class RacingGame {
         ResultView.printStartSign();
     }
 
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
+
     public Boolean isEnd() {
         return nowNo == tryNo;
     }
@@ -27,8 +31,6 @@ public class RacingGame {
     public void race() {
         for (Car car : cars) {
             car.move();
-            ResultView.printCarStatus(car);
         }
-        ResultView.printEmptyLine();
     }
 }
