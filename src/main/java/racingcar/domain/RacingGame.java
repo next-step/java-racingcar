@@ -1,14 +1,14 @@
-package racingcar;
+package racingcar.domain;
 
 
-import racingcar.view.RacingGamePrinter;
+import racingcar.model.RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class RacingGameController {
+public class RacingGame {
 
     private final int LOWER_BOUND_MOVE = 4;
 
@@ -18,7 +18,7 @@ public class RacingGameController {
     private int numberOfRound;
     private final Random rand;
 
-    public RacingGameController(String carsName, int numberOfRound) {
+    public RacingGame(String carsName, int numberOfRound) {
 
         this.cars = new ArrayList<>();
         setCarsName(carsName);

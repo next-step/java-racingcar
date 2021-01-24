@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.lang.reflect.Array;
 

@@ -1,4 +1,4 @@
-import racingcar.RacingGameController;
+import racingcar.domain.RacingGame;
 import racingcar.view.RacingGameInputView;
 import racingcar.view.RacingGamePrinter;
 
@@ -8,7 +8,7 @@ public class Main {
         String carNames = RacingGameInputView.getCarsName();
         int round = RacingGameInputView.getRound();
 
-        RacingGameController racingGame = new RacingGameController(carNames, round);
+        RacingGame racingGame = new RacingGame(carNames, round);
         while (!racingGame.isEnd()) {
             racingGame.playRound();
             RacingGamePrinter.printAllCarStatus(racingGame.getCars());

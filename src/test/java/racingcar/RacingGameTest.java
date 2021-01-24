@@ -1,28 +1,25 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.view.RacingGameInputView;
+import racingcar.domain.RacingGame;
+import racingcar.model.RacingCar;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingGameControllerTest {
+public class RacingGameTest {
 
-    private static RacingGameController rgc;
+    private static RacingGame rgc;
 
     @DisplayName("getCars() 의 유효성 검증")
     @Test
     void setCarsNameTest() {
 
-        rgc = new RacingGameController("pobi,woni,jun", 5);
+        rgc = new RacingGame("pobi,woni,jun", 5);
 
         ArrayList<RacingCar> cars = rgc.getCars();
 
@@ -35,7 +32,7 @@ public class RacingGameControllerTest {
     @Test
     void findTwoWinnerTest() {
 
-        rgc = new RacingGameController("pobi,woni,jun", 5);
+        rgc = new RacingGame("pobi,woni,jun", 5);
 
         rgc.getCars().get(0).setStatus(5);
         rgc.getCars().get(1).setStatus(2);
