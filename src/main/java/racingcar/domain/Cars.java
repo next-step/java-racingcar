@@ -43,31 +43,19 @@ public class Cars {
 
     public ResultWinners getWinners() {
         List<String> winners = new ArrayList<>();
-        int farthest = getFarthestLocation();
+        int maxLocation = getMaxLocation();
+
         for (Car car : cars) {
-            addIfEqualLocation(winners, car, farthest);
+            car.addCarNameIfEqualLocation(winners, maxLocation);
         }
         return new ResultWinners(winners);
     }
 
-    private int getFarthestLocation() {
-        int farthestLocation = 0;
+    private int getMaxLocation() {
+        int maxLocation = 0;
         for (Car car : cars) {
-            farthestLocation = max(farthestLocation, car);
+            maxLocation = car.getMaxLocation(maxLocation);
         }
-        return farthestLocation;
-    }
-
-    private int max(int farthestLocation, final Car car) {
-        if (car.getLocation() > farthestLocation) {
-            farthestLocation = car.getLocation();
-        }
-        return farthestLocation;
-    }
-
-    private void addIfEqualLocation(List<String> winners, Car car, int farthest) {
-        if (car.getLocation() == farthest) {
-            winners.add(car.getName());
-        }
+        return maxLocation;
     }
 }
