@@ -20,12 +20,16 @@ public class StartRace {
         Game game = new Game();
         for (int i = 0; i < laps; i++) {
             game.round(cars);
-            for (Car car : cars) {
-                ResultView.displayRound(car.getName(), car.getPosition());
-            }
-            ResultView.endOfRound();
+            doRace(cars);
         }
 
         ResultView.displayWinner(game.getWinners(cars));
+    }
+
+    public static void doRace(List<Car> cars) {
+        for (Car car : cars) {
+            ResultView.displayRound(car.getName(), car.getPosition());
+        }
+        ResultView.endOfRound();
     }
 }
