@@ -44,9 +44,9 @@ class CarsTest {
         );
     }
 
-    @DisplayName("승자가 1명 일때 정보를 잘 출력하는지 확인")
+    @DisplayName("승자가 1명 일때 정보를 잘 가져오는 확인")
     @Test
-    void printSingleWinners() {
+    void getWinnersSingle() {
         List<Car> carList = new ArrayList<Car>() {{
             add(new Car("car1", 3));
             add(new Car("car2", 4));
@@ -54,16 +54,18 @@ class CarsTest {
         }};
         Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
 
-        cars.printWinners();
+        List<String> winners = cars.getWinners();
 
-        assertThat(outputStreamCaptor.toString()).isEqualTo(
-            "최종 우승자: car3\n"
+        assertThat(winners).isEqualTo(
+            new ArrayList<String>() {{
+                add("car3");
+            }}
         );
     }
 
-    @DisplayName("승자가 여러명 일때 정보를 잘 출력하는지 확인")
+    @DisplayName("승자가 여러명 일때 정보를 잘 가져오는지 확인")
     @Test
-    void printMultipleWinners() {
+    void getWinnersMultiple() {
         List<Car> carList = new ArrayList<Car>() {{
             add(new Car("car1", 3));
             add(new Car("car2", 5));
@@ -71,10 +73,13 @@ class CarsTest {
         }};
         Cars cars = new Cars(carList, new TrueFalseRepeatChecker());
 
-        cars.printWinners();
+        List<String> winners = cars.getWinners();
 
-        assertThat(outputStreamCaptor.toString()).isEqualTo(
-            "최종 우승자: car2, car3\n"
+        assertThat(winners).isEqualTo(
+            new ArrayList<String>() {{
+                add("car2");
+                add("car3");
+            }}
         );
     }
 }

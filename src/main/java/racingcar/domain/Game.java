@@ -13,6 +13,11 @@ public class Game {
         for (int i = 0; i < tryCount; i++) {
             cars.doRound();
         }
-        cars.printWinners();
+    }
+
+    public ResultWinners getResultWinners() {
+        return new ResultWinners(
+            cars.getWinners()
+        );
     }
 }

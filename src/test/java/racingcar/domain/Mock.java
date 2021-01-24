@@ -1,16 +1,15 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class MockCars extends Cars {
     public int doRoundCallCnt;
-    public int printWinnersCallCnt;
 
     public MockCars(List<Car> cars, MoveChecker moveChecker) {
         super(cars, moveChecker);
 
         doRoundCallCnt = 0;
-        printWinnersCallCnt = 0;
     }
 
     @Override
@@ -19,8 +18,10 @@ class MockCars extends Cars {
     }
 
     @Override
-    public void printWinners() {
-        printWinnersCallCnt = doRoundCallCnt;
+    public List<String> getWinners() {
+        return new ArrayList<String>() {{
+            add("fake winner");
+        }};
     }
 }
 

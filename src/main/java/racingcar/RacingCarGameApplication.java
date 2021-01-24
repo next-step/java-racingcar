@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.*;
+import racingcar.view.Output;
 
 import java.util.Scanner;
 
@@ -18,5 +19,8 @@ public class RacingCarGameApplication {
 
         Game game = new Game(cars, tryCount);
         game.start();
+
+        Output output = new Output();
+        output.printWinners(game.getResultWinners());
     }
 }

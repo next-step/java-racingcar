@@ -34,12 +34,7 @@ public class Cars {
         System.out.println();
     }
 
-    public void printWinners() {
-        List<String> winners = getWinners();
-        System.out.println("최종 우승자: " + String.join(", ", winners));
-    }
-
-    private List<String> getWinners() {
+    public List<String> getWinners() {
         List<String> winners = new ArrayList<>();
         int farthest = getFarthestLocation();
         for (Car car : cars) {
