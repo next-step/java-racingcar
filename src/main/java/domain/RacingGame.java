@@ -3,12 +3,15 @@ package domain;
 import java.util.ArrayList;
 
 public class RacingGame {
-    private ArrayList<Car> cars;
     private int tryNo;
     private int nowNo;
 
+    private ArrayList<Car> cars;
+
     public RacingGame(String carNames, int tryNo){
-        cars = CarFactory.getCars(carNames);
+        CarFactory carFactory = new CarFactory();
+        cars = carFactory.getCars(carNames);
+
         this.tryNo = tryNo;
         this.nowNo = 0;
     }

@@ -5,7 +5,7 @@ import controller.CarNameHandler;
 import java.util.ArrayList;
 
 public class CarFactory {
-    public static ArrayList<Car> getCars(String carNames) {
+    public ArrayList<Car> getCars(String carNames) {
         CarNameHandler carNameHandler = new CarNameHandler();
         String[] carNamesSplit = carNameHandler.splitCarNames(carNames);
         carNameHandler.checkCarNames(carNamesSplit);
