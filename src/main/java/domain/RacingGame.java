@@ -33,6 +33,7 @@ public class RacingGame {
         for (Car car : cars) {
             car.move();
         }
+        nowNo++;
     }
 
     public ArrayList<String> getWinners() {

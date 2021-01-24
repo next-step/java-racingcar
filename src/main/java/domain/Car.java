@@ -26,7 +26,7 @@ public class Car {
     }
 
     public void move() {
-        Random random = new Random(System.currentTimeMillis());
+        Random random = new Random();
         if (random.nextInt(RANDOM_UPPER_BOUND) >= 4) {
             this.status++;
         }
