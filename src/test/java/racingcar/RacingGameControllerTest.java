@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.view.RacingGameInputView;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -16,14 +17,14 @@ public class RacingGameControllerTest {
     private static RacingGameController rgc;
     private static InputStream in;
 
-    @BeforeAll
-    static void initAll() {
-        rgc = new RacingGameController();
-    }
+//    @BeforeAll
+//    static void initAll() {
+//        rgc = new RacingGameController();
+//    }
 
     @Test
     void setCarsNameTest() {
-        rgc.setCarsName("pobi,woni,jun");
+        rgc = new RacingGameController("pobi,woni,jun",5);
 
         ArrayList<RacingCar> cars = rgc.getCars();
 
@@ -34,7 +35,7 @@ public class RacingGameControllerTest {
 
     @Test
     void findTwoWinnerTest() {
-        rgc.setCarsName("pobi,woni,jun");
+        rgc = new RacingGameController("pobi,woni,jun",5);
 
         rgc.getCars().get(0).setStatus(5);
         rgc.getCars().get(1).setStatus(2);
@@ -50,8 +51,15 @@ public class RacingGameControllerTest {
     @DisplayName("잘못된 자동차 이름 입력에 대한 유효성 테스트")
     @ParameterizedTest
     @ValueSource(strings = {",,,", ", , ,", "a, b, ,"})
-    void wrongInputTest(String input) {
+    void wrongCarsNameInputTest(String input) {
         assertThat(InputValidator.checkCarsNameInput(input)).isEqualTo(false);
+    }
+
+    @DisplayName("잘못된 라운드 입력에 대한 유효성 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"WOW!!", "??", "abc"})
+    void wrongRoundNumberInputTest(String input) {
+        assertThat(InputValidator.checkRoundNumberInput(input)).isEqualTo(false);
     }
 
 }
