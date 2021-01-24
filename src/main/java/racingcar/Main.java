@@ -3,10 +3,10 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.CarGenerator;
 import racingcar.domain.Game;
-import racingcar.domain.NameValidator;
+import racingcar.controller.NameValidator;
 import racingcar.view.InputHandler;
 import racingcar.view.OutputHandler;
-import racingcar.domain.Utility;
+import racingcar.controller.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
