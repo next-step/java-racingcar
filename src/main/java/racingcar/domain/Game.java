@@ -1,10 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Game {
+
+    private final int RANDOM_MAX_RANGE = 10;
 
     public String getWinners(List<Car> cars) {
         int maxPosition = getMax(cars);
@@ -23,8 +25,8 @@ public class Game {
     }
 
     private int generateToken() {
-        Random random = new Random(10);
-        return random.nextInt(10);
+        Random random = new Random();
+        return random.nextInt(RANDOM_MAX_RANGE);
     }
 
     public void proceedRound(List<Car> cars) {
