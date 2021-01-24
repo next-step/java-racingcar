@@ -16,4 +16,8 @@ public class RacingGame {
     public Boolean isEnd() {
         return nowNo == tryNo;
     }
+
+    public void race() {
+
+    }
 }
