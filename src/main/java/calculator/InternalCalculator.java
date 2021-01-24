@@ -1,6 +1,9 @@
 package calculator;
 
-import static calculator.Operator.*;
+import static calculator.Operator.ADD;
+import static calculator.Operator.DIVIDE;
+import static calculator.Operator.MULTIPLY;
+import static calculator.Operator.SUBTRACT;
 
 public class InternalCalculator {
 
