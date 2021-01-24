@@ -27,7 +27,7 @@ public class Car {
 
     public void move() {
         Random random = new Random();
-        if (random.nextInt(RANDOM_UPPER_BOUND) >= 4) {
+        if (random.nextInt(RANDOM_UPPER_BOUND) >= MOVE_THRESHOLD) {
             this.status++;
         }
     }
