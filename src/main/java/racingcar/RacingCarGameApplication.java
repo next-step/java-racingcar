@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.domain.*;
+
 import java.util.Scanner;
 
 public class RacingCarGameApplication {
