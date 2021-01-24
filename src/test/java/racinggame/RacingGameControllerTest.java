@@ -1,4 +1,4 @@
-package racingcar;
+package racinggame;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,7 +21,7 @@ public class RacingGameControllerTest {
     void setCarsNameTest() {
         rgc.setCarsName("pobi,woni,jun");
 
-        ArrayList<RacingCar> cars = rgc.getCars();
+        ArrayList<Car> cars = rgc.getCars();
 
         Assertions.assertThat(cars.get(0).getName()).isEqualTo("pobi");
         Assertions.assertThat(cars.get(1).getName()).isEqualTo("woni");

@@ -1,4 +1,4 @@
-package racingcar;
+package racinggame;
 
 import java.util.*;
 
@@ -7,7 +7,7 @@ public class RacingGameController {
     private final int LOWER_BOUND_MOVE = 4;
     private final int UPPER_BOUND_RANDOM_NUMBER = 10;
 
-    private final ArrayList<RacingCar> cars;
+    private final ArrayList<Car> cars;
     private final List<String> winners;
     private final Scanner sc = new Scanner(System.in);
     private int numberOfRound;
@@ -17,7 +17,7 @@ public class RacingGameController {
         winners = new ArrayList<>();
     }
 
-    public ArrayList<RacingCar> getCars() {
+    public ArrayList<Car> getCars() {
         return cars;
     }
 
@@ -52,7 +52,7 @@ public class RacingGameController {
     public void setCarsName(String input) {
         String[] inputs = input.split(",");
         for (int i = 0; i < inputs.length; i++) {
-            cars.add(new RacingCar(inputs[i]));
+            cars.add(new Car(inputs[i]));
         }
     }
 
@@ -70,9 +70,9 @@ public class RacingGameController {
         System.out.println();
     }
 
-    public void moveEachCar(RacingCar racingCar) {
+    public void moveEachCar(Car car) {
         if (getRandomNumber() >= LOWER_BOUND_MOVE) {
-            racingCar.movingForward();
+            car.movingForward();
         }
     }
 
@@ -120,7 +120,7 @@ public class RacingGameController {
         System.out.println(result);
     }
 
-    private void findEachWinner(RacingCar car, int maxStatus) {
+    private void findEachWinner(Car car, int maxStatus) {
         if (car.getStatus() == maxStatus) {
             winners.add(car.getName());
         }

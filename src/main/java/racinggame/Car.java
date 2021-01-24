@@ -1,10 +1,10 @@
-package racingcar;
+package racinggame;
 
-public class RacingCar {
+public class Car {
     private String name;
     private int status;
 
-    public RacingCar(String name) {
+    public Car(String name) {
         this.name = name;
         this.status = 0;
     }
