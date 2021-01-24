@@ -22,9 +22,13 @@ public class RacingGame {
 
     private void validateNonBlankNames(final List<String> carNames) {
         for (String carName : carNames) {
-            if (carName == null || carName.isBlank()) {
-                throw new IllegalArgumentException("이름이 없는 자동차가 있습니다.");
-            }
+            throwExceptionIfCarNameIsNullOrBlank(carName);
+        }
+    }
+
+    private void throwExceptionIfCarNameIsNullOrBlank(final String carName) {
+        if (carName == null || carName.isBlank()) {
+            throw new IllegalArgumentException("이름이 없는 자동차가 있습니다.");
         }
     }
 
