@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Scanner;
 import racingcar.controller.GameController;
 import racingcar.domain.RacingGame;
@@ -18,9 +19,9 @@ public class RacingCar {
         RacingGame racingGame = new RacingGame(inputView.inputGameTryCnt(scanner));
 
         GameController gameController = new GameController(carRepository, racingGame);
-        gameController.playGame();
+        List<String> winnerList = gameController.playGame();
 
         ResultView resultView = new ResultView();
-        resultView.printResult();
+        resultView.printWinner(winnerList);
     }
 }
