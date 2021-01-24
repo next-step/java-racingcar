@@ -19,6 +19,7 @@ public class RacingGameController {
     private final Random rand;
 
     public RacingGameController(String carsName, int numberOfRound) {
+
         this.cars = new ArrayList<>();
         setCarsName(carsName);
         this.winners = new ArrayList<>();
@@ -44,6 +45,7 @@ public class RacingGameController {
     }
 
     public boolean isEnd() {
+
         if (numberOfRound > 0) {
             numberOfRound--;
             return false;
@@ -57,8 +59,6 @@ public class RacingGameController {
         for (RacingCar car : cars) {
             moveEachCar(car);
         }
-
-
     }
 
     public void moveEachCar(RacingCar racingCar) {

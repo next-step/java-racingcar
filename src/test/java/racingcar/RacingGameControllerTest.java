@@ -9,22 +9,20 @@ import racingcar.view.RacingGameInputView;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameControllerTest {
+
     private static RacingGameController rgc;
-    private static InputStream in;
 
-//    @BeforeAll
-//    static void initAll() {
-//        rgc = new RacingGameController();
-//    }
-
+    @DisplayName("getCars() 의 유효성 검증")
     @Test
     void setCarsNameTest() {
-        rgc = new RacingGameController("pobi,woni,jun",5);
+
+        rgc = new RacingGameController("pobi,woni,jun", 5);
 
         ArrayList<RacingCar> cars = rgc.getCars();
 
@@ -33,33 +31,20 @@ public class RacingGameControllerTest {
         assertThat(cars.get(2).getName()).isEqualTo("jun");
     }
 
+    @DisplayName("승리자 선정 로직 검증")
     @Test
     void findTwoWinnerTest() {
-        rgc = new RacingGameController("pobi,woni,jun",5);
+
+        rgc = new RacingGameController("pobi,woni,jun", 5);
 
         rgc.getCars().get(0).setStatus(5);
         rgc.getCars().get(1).setStatus(2);
         rgc.getCars().get(2).setStatus(5);
-        List<String> answer = new ArrayList<>();
-        answer.add("pobi");
-        answer.add("jun");
+        List<String> answer = new ArrayList<>(Arrays.asList("pobi","jun"));
         rgc.findWinnerWithMaxStatus(5);
         assertThat(rgc.getWinners()).isEqualTo(answer);
 
     }
 
-    @DisplayName("잘못된 자동차 이름 입력에 대한 유효성 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {",,,", ", , ,", "a, b, ,"})
-    void wrongCarsNameInputTest(String input) {
-        assertThat(InputValidator.checkCarsNameInput(input)).isEqualTo(false);
-    }
-
-    @DisplayName("잘못된 라운드 입력에 대한 유효성 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {"WOW!!", "??", "abc"})
-    void wrongRoundNumberInputTest(String input) {
-        assertThat(InputValidator.checkRoundNumberInput(input)).isEqualTo(false);
-    }
 
 }
