@@ -14,4 +14,8 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void printEmptyLine() {
+        System.out.println();
+    }
 }

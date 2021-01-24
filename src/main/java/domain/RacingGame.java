@@ -29,5 +29,6 @@ public class RacingGame {
             car.move();
             ResultView.printCarStatus(car);
         }
+        ResultView.printEmptyLine();
     }
 }
