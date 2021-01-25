@@ -3,11 +3,14 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.repository.CarRepository;
 import racingcar.util.Constant;
 import racingcar.util.RandomUtils;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class GameController {
     static final int START_POSITION = 0;
@@ -15,21 +18,27 @@ public class GameController {
     static final int RANDOM_START_INCLUSIVE = 0;
     static final int RANDOM_END_INCLUSIVE = 9;
 
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
     private RacingGame racingGame;
+    private final InputView inputView;
+    private final ResultView resultView;
 
-    public GameController(CarRepository carRepository, RacingGame racingGame) {
-        this.carRepository = carRepository;
-        this.racingGame = racingGame;
+    public GameController() {
+        inputView = new InputView();
+        carRepository = new CarRepository();
+        resultView = new ResultView();
     }
 
-    public List<String> playGame() {
+    public void startGame(Scanner scanner) {
+        carRepository.createCars(inputView.inputCarNames(scanner));
+        racingGame = new RacingGame(inputView.inputGameTryCnt(scanner));
+
         System.out.println("\n" + Constant.EXECUTION_RESULT);
         for (int i = 0; i < racingGame.getTryCnt(); i++) {
             play();
-            printStates();
+            resultView.printStates(carRepository.getCarList());
         }
-        return getWinner();
+        resultView.printWinner(getWinner());
     }
 
     private void play() {
@@ -44,17 +53,6 @@ public class GameController {
         if (randomNum >= MOVE_THRESHOLD) {
             carRepository.getCarList().get(carIdx).updatePosition();
         }
-    }
-
-    private void printStates() {
-        carRepository.getCarList().forEach(car -> {
-            System.out.print(car.getName() + " : ");
-            for (int i = 0; i < car.getPosition(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        });
-        System.out.println();
     }
 
     private List<String> getWinner() {
