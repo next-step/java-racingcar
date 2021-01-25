@@ -1,17 +1,13 @@
-package racingcar.view;
+package racingcar.util;
 
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.Constant;
 
-public class PrintView {
+public class PrintUtils {
 
-    public static void printErrorCarLength() {
-        System.out.println(Constant.ERROR_CAR_LENGTH);
-    }
-
-    public static void printErrorOverlapCarName() {
-        System.out.println(Constant.ERROR_OVERLAP_CAR_NAME);
+    public static void printErrorCarName() {
+        System.out.println(Constant.ERROR_CAR_NAME);
     }
 
     public static void printErrorTryCountNumber() {
@@ -39,10 +35,17 @@ public class PrintView {
         System.out.println(Constant.INPUT_REQUEST_PLAY_TIME);
     }
 
-    public void printCarState(Car car) {
+    public static void printCarState(Car car) {
         System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    public static void printCarStep(List<Car> carList) {
+        for (Car car : carList) {
+            PrintUtils.printCarState(car);
         }
         System.out.println();
     }
