@@ -10,7 +10,5 @@ public class Constant {
     public static final String ERROR_CAR_NAME = "[ERROR] 자동차 이름은 중복 없이 1자 이상 5자 이하만 가능합니다.";
     public static final int CAR_NAME_SIZE_CONDITION = 5;
     public static final int MOVE_THRESHOLD = 4;
-    public static final int RANDOM_START_INCLUSIVE = 0;
-    public static final int RANDOM_END_INCLUSIVE = 9;
     public static final int CAR_NAME_SIZE_MIN = 0;
 }

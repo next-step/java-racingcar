@@ -1,8 +1,8 @@
 package racingcar.util;
 
 import java.util.List;
-import racingcar.domain.Car;
 import racingcar.Constant;
+import racingcar.domain.Car;
 
 public class PrintUtils {
 
@@ -18,13 +18,13 @@ public class PrintUtils {
         System.out.println("\n" + Constant.EXECUTION_RESULT);
     }
 
-    public static void printWinner(List<String> winnerList) {
+    public static void printWinner(List<Car> winnerList) {
         System.out.print(Constant.FINAL_WINNER);
         winnerList
             .stream()
             .limit(winnerList.size() - 1)
-            .forEach(winner -> System.out.print(winner + ", "));
-        System.out.print(winnerList.get(winnerList.size() - 1));
+            .forEach(winner -> System.out.print(winner.getName() + ", "));
+        System.out.print(winnerList.get(winnerList.size() - 1).getName());
     }
 
     public static void printInputRequestCarName() {

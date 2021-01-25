@@ -1,8 +1,8 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import racingcar.Constant;
@@ -13,36 +13,32 @@ import racingcar.util.RandomUtils;
 @AllArgsConstructor
 public class Game {
 
+    private static final int RANDOM_START = 0;
+    private static final int RANDOM_END = 9;
     private int gameCnt;
     private List<Car> carInfos;
 
-    public List<String> getWinner() {
-        Optional<Car> maxPositionCar = carInfos
+    public List<Car> getWinner() {
+        return carInfos
             .stream()
-            .max((a, b) -> Integer.compare(a.getPosition(), b.getPosition()));
-        return returnWinner(maxPositionCar.get().getPosition());
-    }
-
-    private List<String> returnWinner(final int winnerThreshold) {
-        List<String> winnerList = new ArrayList<>();
-        carInfos
-            .stream()
-            .filter(car -> winnerThreshold == car.getPosition())
-            .forEach(winner -> winnerList.add(winner.getName()));
-        return winnerList;
+            .max((a, b) -> Integer.compare(a.getPosition(), b.getPosition()))
+            .map(winnerThreshold -> carInfos
+                .stream()
+                .filter(car -> winnerThreshold.getPosition() == car.getPosition())
+                .collect(Collectors.toList())
+            )
+            .get();
     }
 
     public void play() {
         PrintUtils.printExecutionResult();
-        for (int i = 0; i < gameCnt; i++) {
-            carInfos.stream().forEach(car -> {
-                int carRandomNum = RandomUtils.nextInt(
-                        Constant.RANDOM_START_INCLUSIVE,
-                        Constant.RANDOM_END_INCLUSIVE);
-                checkMove(car, carRandomNum);
+        Stream.iterate(0, i -> i + 1)
+            .limit(gameCnt)
+            .forEach(i -> {
+                carInfos.stream()
+                    .forEach(car -> checkMove(car, RandomUtils.nextInt(RANDOM_START, RANDOM_END)));
+                PrintUtils.printCarStep(carInfos);
             });
-            PrintUtils.printCarStep(carInfos);
-        }
     }
 
     public void checkMove(Car car, int randomNum) {
