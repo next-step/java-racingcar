@@ -58,14 +58,14 @@ public class RacingGame {
         return maxStatus;
     }
 
-    public int getMax(int a, int b) {
+    private int getMax(int a, int b) {
         if (a > b) {
             return a;
         }
         return b;
     }
 
-    public void findWinner(Car car, int maxStatus) {
+    private void findWinner(Car car, int maxStatus) {
         if (car.getStatus() == maxStatus) {
             winners.add(car.getName());
         }
