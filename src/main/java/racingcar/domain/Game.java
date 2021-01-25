@@ -14,10 +14,10 @@ import racingcar.util.RandomUtils;
 public class Game {
 
     private int gameCnt;
-    private List<Car> carList;
+    private List<Car> carInfos;
 
     public List<String> getWinner() {
-        Optional<Car> maxPositionCar = carList
+        Optional<Car> maxPositionCar = carInfos
             .stream()
             .max((a, b) -> Integer.compare(a.getPosition(), b.getPosition()));
         return returnWinner(maxPositionCar.get().getPosition());
@@ -25,7 +25,7 @@ public class Game {
 
     private List<String> returnWinner(final int winnerThreshold) {
         List<String> winnerList = new ArrayList<>();
-        carList
+        carInfos
             .stream()
             .filter(car -> winnerThreshold == car.getPosition())
             .forEach(winner -> winnerList.add(winner.getName()));
@@ -35,13 +35,13 @@ public class Game {
     public void play() {
         PrintUtils.printExecutionResult();
         for (int i = 0; i < gameCnt; i++) {
-            carList.stream().forEach(car -> {
+            carInfos.stream().forEach(car -> {
                 int carRandomNum = RandomUtils.nextInt(
                         Constant.RANDOM_START_INCLUSIVE,
                         Constant.RANDOM_END_INCLUSIVE);
                 checkMove(car, carRandomNum);
             });
-            PrintUtils.printCarStep(carList);
+            PrintUtils.printCarStep(carInfos);
         }
     }
 

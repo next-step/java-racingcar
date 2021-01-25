@@ -12,9 +12,9 @@ public class RacingCarController {
 
     public Game initializeGameInfo() {
         String[] cars = racingCarView.inputCarNames();
-        List<Car> carList = racingCarView.createCars(cars);
+        List<Car> carInfos = racingCarView.createCars(cars);
         int gameCnt = racingCarView.inputGameTryCnt();
-        return new Game(gameCnt, carList);
+        return new Game(gameCnt, carInfos);
     }
 
     public void start(Game game) {
