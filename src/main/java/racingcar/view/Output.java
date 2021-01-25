@@ -11,4 +11,6 @@ public interface Output {
     void printMidResult(List<Car> cars);
 
     void printWinners(List<String> winners);
+
+    void startPrintingGameResult();
 }

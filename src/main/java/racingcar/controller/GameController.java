@@ -23,8 +23,7 @@ public class GameController {
         int rounds = getRounds();
         RacingGame game = new RacingGame(carNames, rounds);
 
-        output.println("");
-        output.println("실행 결과");
+        output.startPrintingGameResult();
         while (!game.ends()) {
             game.playOneRound();
             output.printMidResult(game.getCars());

@@ -27,4 +27,10 @@ public class ConsoleOutput implements Output {
     public void printWinners(final List<String> winners) {
         System.out.println("최종 우승자: " + String.join(", ", winners));
     }
+
+    @Override
+    public void startPrintingGameResult() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
 }
