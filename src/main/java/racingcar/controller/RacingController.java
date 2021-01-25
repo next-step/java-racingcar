@@ -10,20 +10,11 @@ import java.util.List;
 public class RacingController {
     private Racing racing;
     private List<Car> cars;
-    private String carNames;
     private int stages;
 
-    public RacingController() {
-        initRacing();
-    }
-
-    public void initRacing() {
-        Output.printInputMessage("경주할 자동차 이름들");
-        this.carNames = Input.inputCarsName();
+    public RacingController(String carNames, int stages) {
         this.cars = Car.asCars(carNames);
-
-        Output.printInputMessage("시도할 횟수");
-        this.stages = Input.inputStages();
+        this.stages = stages;
     }
 
     public void startRacing() {
