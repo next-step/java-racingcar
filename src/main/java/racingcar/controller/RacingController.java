@@ -8,9 +8,9 @@ import racingcar.view.Output;
 import java.util.List;
 
 public class RacingController {
+    private final List<Car> cars;
+    private final int stages;
     private Racing racing;
-    private List<Car> cars;
-    private int stages;
 
     public RacingController(String carNames, int stages) {
         this.cars = Car.asCars(carNames);
