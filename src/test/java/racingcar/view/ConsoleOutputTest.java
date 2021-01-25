@@ -2,7 +2,6 @@ package racingcar.view;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -25,7 +24,6 @@ class ConsoleOutputTest {
         System.setOut(standardOut);
     }
 
-    @DisplayName("")
     @Test
     void printOutput() {
         // given
