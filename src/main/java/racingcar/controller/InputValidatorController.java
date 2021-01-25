@@ -1,10 +1,10 @@
-package view;
+package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class InputValidator {
+public class InputValidatorController {
     public static boolean validateCarsName(String carsName) {
         try {
             checkCarName(carsName);
@@ -52,7 +52,7 @@ public class InputValidator {
 
     public static boolean validateStages(String stages) {
         try {
-            InputValidator.checkNumber(stages);
+            InputValidatorController.checkNumber(stages);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return false;

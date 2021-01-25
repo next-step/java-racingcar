@@ -1,4 +1,6 @@
-package view;
+package racingcar.view;
+
+import racingcar.controller.InputValidatorController;
 
 import java.util.Scanner;
 
@@ -10,7 +12,7 @@ public class InputView {
         boolean isValidCarsName = false;
         while (!isValidCarsName) {
             carsName = scanner.next();
-            isValidCarsName = InputValidator.validateCarsName(carsName);
+            isValidCarsName = InputValidatorController.validateCarsName(carsName);
         }
         return carsName;
     }
@@ -20,7 +22,7 @@ public class InputView {
         boolean isValidStages = false;
         while (!isValidStages) {
             stages = scanner.next();
-            isValidStages = InputValidator.validateStages(stages);
+            isValidStages = InputValidatorController.validateStages(stages);
         }
         return Integer.parseInt(stages);
     }

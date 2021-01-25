@@ -1,29 +1,31 @@
-package domain;
+package racingcar.domain;
+
+import racingcar.domain.CarDomain;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Racing {
+public class RacingDomain {
     private static final int THRESHOLD = 4;
     private static final int RANDOM_BOUND = 10;
     private static final int STAGE_END_BOUND = 0;
 
-    private ArrayList<Car> carsList;
+    private ArrayList<CarDomain> carsList;
     private int stages;
 
-    public Racing(ArrayList<Car> carsList, int stages) {
+    public RacingDomain(ArrayList<CarDomain> carsList, int stages) {
         this.carsList = carsList;
         this.stages = stages;
     }
 
     public void moveCars() {
-        for (Car car : carsList) {
-            decideMove(car);
+        for (CarDomain carDomain : carsList) {
+            decideMove(carDomain);
         }
         this.lowerStage();
     }
 
-    public ArrayList<Car> getCarsList() {
+    public ArrayList<CarDomain> getCarsList() {
         return this.carsList;
     }
 
@@ -39,9 +41,9 @@ public class Racing {
     }
 
 
-    public void decideMove(Car car) {
+    public void decideMove(CarDomain carDomain) {
         if (getRandomNumber() >= THRESHOLD) {
-            car.moveForward();
+            carDomain.moveForward();
         }
     }
 
@@ -52,8 +54,8 @@ public class Racing {
 
     public int getMaxDistance() {
         int maxDistance = 0;
-        for (Car car : this.carsList) {
-            maxDistance = Math.max(maxDistance, car.getDistance());
+        for (CarDomain carDomain : this.carsList) {
+            maxDistance = Math.max(maxDistance, carDomain.getDistance());
         }
         return maxDistance;
     }
