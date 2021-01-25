@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.Arrays;
+import racingcar.util.PrintUtils;
 
 public class InputValidator {
 

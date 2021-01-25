@@ -1,8 +1,10 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.Constant;
 
-public class PrintUtils {
+public class PrintView {
 
     public static void printErrorCarLength() {
         System.out.println(Constant.ERROR_CAR_LENGTH);
@@ -35,6 +37,14 @@ public class PrintUtils {
 
     public static void printInputRequestPlayTime() {
         System.out.println(Constant.INPUT_REQUEST_PLAY_TIME);
+    }
+
+    public void printCarState(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
 }
