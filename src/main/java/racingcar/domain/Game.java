@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import racingcar.domain.Car;
+import racingcar.Constant;
 import racingcar.util.PrintUtils;
 import racingcar.util.RandomUtils;
 
@@ -15,14 +15,6 @@ public class Game {
 
     private int gameCnt;
     private List<Car> carList;
-
-    public int getGameCnt() {
-        return gameCnt;
-    }
-
-    public List<Car> getCarList() {
-        return carList;
-    }
 
     public List<String> getWinner() {
         Optional<Car> maxPositionCar = carList

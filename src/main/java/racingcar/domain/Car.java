@@ -1,8 +1,5 @@
-package racingcar;
+package racingcar.domain;
 
-import lombok.Getter;
-
-@Getter
 public class Car {
 
     private final String name;
@@ -16,27 +13,7 @@ public class Car {
         this.position++;
     }
 
-    public void printCarState() {
-        System.out.print(name + " : ");
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
+    public int getPosition(){ return position; }
 
-    public void printCarState() {
-        System.out.print(name + " : ");
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
-
-    public void printCarState() {
-        System.out.print(name + " : ");
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
+    public String getName(){ return name; }
 }
