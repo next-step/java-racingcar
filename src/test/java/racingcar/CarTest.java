@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import java.util.ArrayList;
+import java.util.List;
 
 class CarTest {
 
@@ -26,7 +26,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"김보배,윤동희,김규민,제이슨,팀,짱짱짱짱,아자", "이즈리얼,코그모,이블린,피즈"})
     void asCarsListTest(String input) {
-        ArrayList<Car> carList = Car.asCarsList(input);
+        List<Car> carList = Car.asCarsList(input);
         String[] expectedCarsName = input.split(",");
         for(int i =0; i < carList.size(); ++i){
             assertThat(carList.get(i).getName()).isEqualTo(expectedCarsName[i]);

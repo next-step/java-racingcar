@@ -5,11 +5,11 @@ import racingcar.domain.Racing;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RacingController {
     private Racing racing;
-    private ArrayList<Car> carsList;
+    private List<Car> carsList;
     private String carNames;
     private int stages;
 

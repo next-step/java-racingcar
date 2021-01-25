@@ -1,14 +1,14 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Output {
     public static void printInputMessage(String inputInfo){
         System.out.println(inputInfo + "을(를) 입력해주세요.");
     }
 
-    public static void printCurrentCarsState(ArrayList<Car> carsList){
+    public static void printCurrentCarsState(List<Car> carsList){
         System.out.println("\n실행 결과");
         for(Car car : carsList){
             printCarInfo(car);
@@ -25,7 +25,7 @@ public class Output {
         System.out.println(carInfo);
     }
 
-    public static void printWinners(ArrayList<Car> carsList, int maxDistance) {
+    public static void printWinners(List<Car> carsList, int maxDistance) {
         System.out.print("최종 우승자 : ");
         for(Car car : carsList) {
             printWinner(car, maxDistance);

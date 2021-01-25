@@ -1,23 +1,23 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Racing {
     private static final int MINIMUM_DISTANCE_MOVE = 4;
     private static final int MAXIMUM_DISTANCE_MOVE = 9;
 
-    private final ArrayList<Car> carsList;
+    private final List<Car> carsList;
     private final int stages;
     private final Random random;
 
-    public Racing(ArrayList<Car> carsList, int stages){
+    public Racing(List<Car> carsList, int stages){
         this.carsList = carsList;
         this.stages = stages;
         this.random = new Random();
     }
 
-    public ArrayList<Car> getCarsList() {
+    public List<Car> getCarsList() {
         return carsList;
     }
 

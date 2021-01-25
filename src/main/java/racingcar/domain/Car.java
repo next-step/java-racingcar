@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
     private String name;
@@ -23,9 +24,9 @@ public class Car {
         return this.distance;
     }
 
-    public static ArrayList<Car> asCarsList(String carNames) {
+    public static List<Car> asCarsList(String carNames) {
         String[] names = carNames.split(",");
-        ArrayList<Car> carsList = new ArrayList<>();
+        List<Car> carsList = new ArrayList<>();
         for (String name : names) {
             carsList.add(new Car(name));
         }
