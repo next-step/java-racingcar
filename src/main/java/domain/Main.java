@@ -12,8 +12,8 @@ public class Main {
         int stages = InputView.inputStages();
 
         // 레이싱 게임 진행
-        ArrayList<Car> carsList = Car.asCarsList(carNames);
-        Racing racing = new Racing(carsList, stages);
+        ArrayList<Car> cars = Car.asCarsList(carNames);
+        Racing racing = new Racing(cars, stages);
 
         while(!racing.isEnd()) {
             racing.moveCars(); // 1회의 레이싱 상태 갱신
