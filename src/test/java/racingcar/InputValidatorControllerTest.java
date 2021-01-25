@@ -5,10 +5,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.controller.InputValidatorController;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ValidatorTest {
+class InputValidatorControllerTest {
 
     @BeforeAll
     static void initAll() {
@@ -24,7 +25,7 @@ class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {" ", ""})
     void checkEmptyInputTest(String input) {
-        assertThatThrownBy(() -> Validator.checkEmptyInput(input))
+        assertThatThrownBy(() -> InputValidatorController.checkEmptyInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -32,7 +33,7 @@ class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"뽀로로,루피,", "뽀로,,로로,", "로로,뽀로로,", "루피뽀롱,"})
     void checkLastValueCommaTest(String input) {
-        assertThatThrownBy(() -> Validator.checkLastValueComma(input))
+        assertThatThrownBy(() -> InputValidatorController.checkLastValueComma(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -40,7 +41,7 @@ class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"뽀로로D바보", "루뽀루루뽀루", "로몽키디뿌루루피", "뽀롱뽀롱루피뽀롱"})
     void checkGreaterThan5Test(String input) {
-        assertThatThrownBy(() -> Validator.checkGreaterThan5(input))
+        assertThatThrownBy(() -> InputValidatorController.checkGreaterThan5(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -48,7 +49,7 @@ class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"루피,루피,뽀로로,배찌", "흰수염뽀로롱이,루피,흰수염뽀로롱이,", ",,그리리기리기,언더더씨,배찌,배찌,배"})
     void checkDuplicateNameTest(String input) {
-        assertThatThrownBy(() -> Validator.checkDuplicateName(input))
+        assertThatThrownBy(() -> InputValidatorController.checkDuplicateName(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -56,7 +57,7 @@ class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"44d", "4 4", "ddd987", "ddd"})
     void checkNumberTest(String input) {
-        assertThatThrownBy(() -> Validator.checkNumber(input))
+        assertThatThrownBy(() -> InputValidatorController.checkNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

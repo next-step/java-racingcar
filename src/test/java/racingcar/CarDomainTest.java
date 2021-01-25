@@ -5,10 +5,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.CarDomain;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 
-class CarTest {
+class CarDomainTest {
 
     @BeforeAll
     static void initAll() {
@@ -24,10 +26,10 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"김보배,윤동희,김규민,제이슨,팀,짱짱짱짱,아자", "이즈리얼,코그모,이블린,피즈"})
     void asCarsListTest(String input) {
-        ArrayList<Car> carList = Car.asCarsList(input);
+        ArrayList<CarDomain> carDomainList = CarDomain.asCarsList(input);
         String[] expectedCarsName = input.split(",");
-        for(int i =0; i < carList.size(); ++i){
-            assertThat(carList.get(i).getName()).isEqualTo(expectedCarsName[i]);
+        for(int i = 0; i < carDomainList.size(); ++i){
+            assertThat(carDomainList.get(i).getName()).isEqualTo(expectedCarsName[i]);
         }
     }
 }

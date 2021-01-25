@@ -1,12 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 
-public class Car {
-    private String name;
+public class CarDomain {
+    private final String name;
     private int distance;
 
-    public Car(String name) {
+    public CarDomain(String name) {
         this.name = name;
         this.distance = 0;
     }
@@ -23,11 +23,11 @@ public class Car {
         return this.distance;
     }
 
-    public static ArrayList<Car> asCarsList(String carNames) {
+    public static ArrayList<CarDomain> asCarsList(String carNames) {
         String[] names = carNames.split(",");
-        ArrayList<Car> carsList = new ArrayList<>();
+        ArrayList<CarDomain> carsList = new ArrayList<>();
         for (String name : names) {
-            carsList.add(new Car(name));
+            carsList.add(new CarDomain(name));
         }
         return carsList;
     }
