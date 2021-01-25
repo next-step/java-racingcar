@@ -12,6 +12,11 @@ public class Car {
         this.distance = 0;
     }
 
+    public Car(String name, int distance){
+        this.name = name;
+        this.distance = distance;
+    }
+
     public void moveForward() {
         this.distance++;
     }
