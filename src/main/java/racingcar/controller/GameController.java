@@ -4,10 +4,10 @@ import racingcar.domain.RacingGame;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
+import java.util.InputMismatchException;
 import java.util.List;
 
-import static racingcar.view.InputMessages.ENTER_CAR_NAMES;
-import static racingcar.view.InputMessages.ENTER_ROUNDS;
+import static racingcar.view.InputMessages.*;
 
 public class GameController {
     private final Input input;
@@ -32,7 +32,17 @@ public class GameController {
 
     private int getRounds() {
         output.println(ENTER_ROUNDS);
-        return input.getRounds();
+        int rounds = 0;
+        boolean isCorrectInput = false;
+        while (!isCorrectInput) {
+            try {
+                rounds = input.getRounds();
+                isCorrectInput = true;
+            } catch (InputMismatchException exception) {
+                output.println(ROUNDS_MUST_BE_NUMERIC);
+            }
+        }
+        return rounds;
     }
 
     private void play(final RacingGame game) {
