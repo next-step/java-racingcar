@@ -8,9 +8,9 @@ public class Output {
         System.out.println(inputInfo + "을(를) 입력해주세요.");
     }
 
-    public static void printCurrentCarsState(List<Car> carsList){
+    public static void printCurrentCarsState(List<Car> cars){
         System.out.println("\n실행 결과");
-        for(Car car : carsList){
+        for(Car car : cars){
             printCarInfo(car);
         }
     }
@@ -25,9 +25,9 @@ public class Output {
         System.out.println(carInfo);
     }
 
-    public static void printWinners(List<Car> carsList, int maxDistance) {
+    public static void printWinners(List<Car> cars, int maxDistance) {
         System.out.print("최종 우승자 : ");
-        for(Car car : carsList) {
+        for(Car car : cars) {
             printWinner(car, maxDistance);
         }
         System.out.println("");

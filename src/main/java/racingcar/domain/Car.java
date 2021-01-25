@@ -24,12 +24,12 @@ public class Car {
         return this.distance;
     }
 
-    public static List<Car> asCarsList(String carNames) {
+    public static List<Car> asCars(String carNames) {
         String[] names = carNames.split(",");
-        List<Car> carsList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            carsList.add(new Car(name));
+            cars.add(new Car(name));
         }
-        return carsList;
+        return cars;
     }
 }

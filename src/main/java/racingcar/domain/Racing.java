@@ -7,22 +7,22 @@ public class Racing {
     private static final int MINIMUM_DISTANCE_MOVE = 4;
     private static final int MAXIMUM_DISTANCE_MOVE = 9;
 
-    private final List<Car> carsList;
+    private final List<Car> cars;
     private final int stages;
     private final Random random;
 
-    public Racing(List<Car> carsList, int stages){
-        this.carsList = carsList;
+    public Racing(List<Car> cars, int stages){
+        this.cars = cars;
         this.stages = stages;
         this.random = new Random();
     }
 
-    public List<Car> getCarsList() {
-        return carsList;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void race() {
-        for(Car car : this.carsList){
+        for(Car car : this.cars){
             decideMove(car);
         }
     }
@@ -39,7 +39,7 @@ public class Racing {
 
     public int getMaxDistance() {
         int maxDistance = 0;
-        for(Car car : this.carsList) {
+        for(Car car : this.cars) {
             maxDistance = Math.max(maxDistance, car.getDistance());
         }
         return maxDistance;
