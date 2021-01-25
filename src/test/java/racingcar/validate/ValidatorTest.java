@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.validate;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
