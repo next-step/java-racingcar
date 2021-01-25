@@ -3,10 +3,13 @@ package domain;
 import view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RacingGame {
     private int tryNo;
     private int nowNo;
+
+    Random random;
 
     private ArrayList<Car> cars;
     private ArrayList<String> winners;
@@ -17,6 +20,8 @@ public class RacingGame {
 
         this.tryNo = tryNo;
         this.nowNo = 0;
+
+        random = new Random(System.currentTimeMillis());
 
         ResultView.printStartSign();
     }
@@ -31,7 +36,7 @@ public class RacingGame {
 
     public void race() {
         for (Car car : cars) {
-            car.move();
+            car.move(random);
         }
         nowNo++;
     }
