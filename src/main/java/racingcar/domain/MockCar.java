@@ -1,8 +1,8 @@
 package racingcar.domain;
 
 public class MockCar implements Car{
-    private String name;
-    private int position;
+    private final String name;
+    private final int position;
 
     public MockCar(String name, int position){
         this.name = name;
@@ -11,11 +11,6 @@ public class MockCar implements Car{
 
     @Override
     public void move() {
-
-    }
-
-    @Override
-    public void printCurrentPosition() {
 
     }
 
