@@ -3,6 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
@@ -31,5 +32,13 @@ class CarTest {
         for(int i =0; i < cars.size(); ++i){
             assertThat(cars.get(i).getName()).isEqualTo(expectedCarsName[i]);
         }
+    }
+
+    @DisplayName("moveForwardTest: 차량 전진 확인")
+    @Test
+    void moveForwardTest() {
+        Car car = new Car("차량A", 123);
+        car.moveForward();
+        assertThat(car.getDistance()).isEqualTo(124);
     }
 }
