@@ -23,12 +23,12 @@ public class Racing {
 
     public void race() {
         for(Car car : this.cars){
-            decideMove(car);
+            decideMove(car, getRandomNumber());
         }
     }
 
-    public void decideMove(Car car) {
-        if(getRandomNumber() >= MINIMUM_DISTANCE_MOVE){
+    public void decideMove(Car car, int conditionNumber) {
+        if(conditionNumber >= MINIMUM_DISTANCE_MOVE){
             car.moveForward();
         }
     }
