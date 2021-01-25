@@ -21,14 +21,7 @@ public class Car {
         if (movementCondition.satisfies()) {
             this.location++;
             // TODO: 외부에 공개된 메서드에 의해 객체 내부의 상태가 바뀔 수 있는 구조. 개선해보기
+            //  항상 새로운 Car 객체를 생성하도록? 그럼 어떤 tradeoff가 있을까?
         }
-    }
-
-    public void printNameAndCurrentPosition() {
-        System.out.print(this.name + " : ");
-        for (int i = 0; i < this.location; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
     }
 }

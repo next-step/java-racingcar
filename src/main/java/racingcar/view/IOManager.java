@@ -16,12 +16,12 @@ public class IOManager {
     }
 
     public List<String> getCarNames() {
-        output.printOutput(ENTER_CAR_NAMES);
+        output.println(ENTER_CAR_NAMES);
         return input.getCarNames();
     }
 
     public int getRounds() {
-        output.printOutput(ENTER_ROUNDS);
+        output.println(ENTER_ROUNDS);
         return input.getRounds();
     }
 }

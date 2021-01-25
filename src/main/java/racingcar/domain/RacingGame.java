@@ -6,14 +6,16 @@ import static racingcar.ExceptionMessages.*;
 
 public class RacingGame {
     private final Cars cars;
-    private final int rounds;
+    private final int finalRound;
+    private int currentRound;
 
     public RacingGame(List<String> carNames, int rounds) {
         validateSize(carNames);
         validateNonBlankNames(carNames);
         validateRounds(rounds);
         this.cars = new Cars(carNames);
-        this.rounds = rounds;
+        this.finalRound = rounds;
+        this.currentRound = 0;
     }
 
     private void validateSize(final List<String> carNames) {
@@ -40,10 +42,20 @@ public class RacingGame {
         }
     }
 
-    public void play() {
-        for (int i = 0; i < rounds; i++) {
-            cars.moveAll(new MovementCondition());
-        }
-        cars.selectWinners();
+    public boolean ends() {
+        return currentRound == finalRound;
+    }
+
+    public void playOneRound() {
+        cars.moveAll(new MovementCondition());
+        currentRound++;
+    }
+
+    public List<Car> getCars() {
+        return this.cars.getCars();
+    }
+
+    public List<String> getWinners() {
+        return cars.selectWinners();
     }
 }

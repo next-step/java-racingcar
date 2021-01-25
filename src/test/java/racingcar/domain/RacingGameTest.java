@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,5 +60,19 @@ class RacingGameTest {
                 () -> new RacingGame(carNames, 0)
         );
         assertThat(exception.getMessage()).isEqualTo("라운드는 최소 1 이상이어야 합니다.");
+    }
+
+    @DisplayName("총 라운드와 현재 라운드가 같은 경우, ends()가 true를 리턴")
+    @Test
+    void ends() {
+        // given
+        RacingGame game = new RacingGame(List.of("car1", "car2", "car3"), 3);
+
+        // when
+        IntStream.range(0, 3)
+                .forEach(i -> game.playOneRound());
+
+        // then
+        assertThat(game.ends()).isTrue();
     }
 }

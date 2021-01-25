@@ -19,11 +19,26 @@ public class GameController {
     }
 
     public void start() {
-        output.printOutput(ENTER_CAR_NAMES);
-        List<String> carNames = input.getCarNames();
-        output.printOutput(ENTER_ROUNDS);
-        int rounds = input.getRounds();
+        List<String> carNames = getCarNames();
+        int rounds = getRounds();
         RacingGame game = new RacingGame(carNames, rounds);
-        game.play();
+
+        output.println("");
+        output.println("실행 결과");
+        while (!game.ends()) {
+            game.playOneRound();
+            output.printMidResult(game.getCars());
+        }
+        output.printWinners(game.getWinners());
+    }
+
+    private List<String> getCarNames() {
+        output.println(ENTER_CAR_NAMES);
+        return input.getCarNames();
+    }
+
+    private int getRounds() {
+        output.println(ENTER_ROUNDS);
+        return input.getRounds();
     }
 }
