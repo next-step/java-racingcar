@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Racing {
+    private static final int THRESHOLD = 4;
+    private static final int RANDOM_BOUND = 10;
+    private static final int STAGE_END_BOUND = 0;
+
     private ArrayList<Car> carsList;
     private int stages;
 
@@ -24,7 +28,7 @@ public class Racing {
     }
 
     public boolean isEnd() {
-        if (stages > 0) {
+        if (stages > STAGE_END_BOUND) {
             return false;
         }
         return true;
@@ -36,14 +40,14 @@ public class Racing {
 
 
     public void decideMove(Car car) {
-        if (getRandomNumber() >= 4) {
+        if (getRandomNumber() >= THRESHOLD) {
             car.moveForward();
         }
     }
 
     public int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_BOUND);
     }
 
     public int getMaxDistance() {
