@@ -1,6 +1,10 @@
 package racingcar;
 
-import racingcar.view.*;
+import racingcar.controller.GameController;
+import racingcar.view.ConsoleOutput;
+import racingcar.view.Input;
+import racingcar.view.KeyboardInput;
+import racingcar.view.Output;
 
 public class ApplicationContext {
 
@@ -12,7 +16,9 @@ public class ApplicationContext {
         this.output = new ConsoleOutput();
     }
 
-    public IOManager getIOManager() {
-        return new IOManager(input, output);
+    public GameController getGameController() {
+        Input input = new KeyboardInput(System.in);
+        Output output = new ConsoleOutput();
+        return new GameController(input, output);
     }
 }
