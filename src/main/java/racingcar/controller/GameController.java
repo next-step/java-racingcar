@@ -26,7 +26,7 @@ public class GameController {
         output.startPrintingGameResult();
         while (!game.ends()) {
             game.playOneRound();
-            output.printMidResult(game.getCars());
+            output.printThisRound(game.getCars());
         }
         output.printWinners(game.getWinners());
     }

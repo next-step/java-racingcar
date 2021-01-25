@@ -8,7 +8,7 @@ public interface Output {
 
     void println(final String outputMessage);
 
-    void printMidResult(List<Car> cars);
+    void printThisRound(List<Car> cars);
 
     void printWinners(List<String> winners);
 

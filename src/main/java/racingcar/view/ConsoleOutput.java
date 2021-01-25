@@ -12,7 +12,7 @@ public class ConsoleOutput implements Output {
     }
 
     @Override
-    public void printMidResult(final List<Car> cars) {
+    public void printThisRound(final List<Car> cars) {
         cars.forEach(car -> {
             System.out.print(car.getName() + " : ");
             IntStream.range(0, car.getLocation())
