@@ -22,13 +22,7 @@ public class GameController {
         List<String> carNames = getCarNames();
         int rounds = getRounds();
         RacingGame game = new RacingGame(carNames, rounds);
-
-        output.startPrintingGameResult();
-        while (!game.ends()) {
-            game.playOneRound();
-            output.printThisRound(game.getCars());
-        }
-        output.printWinners(game.getWinners());
+        play(game);
     }
 
     private List<String> getCarNames() {
@@ -39,5 +33,14 @@ public class GameController {
     private int getRounds() {
         output.println(ENTER_ROUNDS);
         return input.getRounds();
+    }
+
+    private void play(final RacingGame game) {
+        output.startPrintingGameResult();
+        while (!game.ends()) {
+            game.playOneRound();
+            output.printThisRound(game.getCars());
+        }
+        output.printWinners(game.getWinners());
     }
 }
