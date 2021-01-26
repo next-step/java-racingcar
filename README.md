@@ -2,27 +2,33 @@
 
 ## 자동차 경주 기능 목록
 
-* Application
-  ```
-  자동차 경주 게임을 시작하는 클래스
-    ```
-* Car
-  ```
-  계산할 때 필요한 정보 저장해두는 클래스
-    ```
-* Constant
-* Game
-  ```
-  게임 내부에 필요한 메소드를 포함하는 클래스
-    ```
-* GameManager
-  ```
-  자동차 경주 게임에서 필요한 정보를 생성하는 클래스
-  
-    ```
-* InputValidator
-* PrintUtils
-* RandomUtils
+```
+|--- RacingCarApplication - 자동차 경주 게임 실행
+|
+|--- controller
+|       |
+|       |--- RacingCarController
+|
+|--- domain
+|       |
+|       |--- car
+|       |
+|       |
+|       |--- game
+|       |
+|
+|---- util
+|       |
+|       |--- PrintUtils
+|       |
+|       |--- RandomUtils
+|       |
+|       |--- ValidateUtils
+|       
+|--- view
+|       |
+|       |--- RacingCarView
+```
 
 
 ## 진행 방법

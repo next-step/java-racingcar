@@ -8,22 +8,23 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.util.ValidateUtils;
 
-class InputValidatorTest {
+class ValidateUtilsTest {
 
-    private InputValidator inputValidator = new InputValidator();
+    private ValidateUtils validateUtils = new ValidateUtils();
 
     @ParameterizedTest
     @MethodSource("provideStringArrayForIsValidateSource")
     void validateCarName(String[] carArray, boolean expected) {
-        assertEquals(expected, inputValidator.validateCarName(carArray));
+        assertEquals(expected, validateUtils.validateCarName(carArray));
     }
 
     @Test
     void validGameCntInput() {
-        assertThat(inputValidator.validGameCntInput("123")).isTrue();
-        assertThat(inputValidator.validGameCntInput("dgdsgsd")).isFalse();
-        assertThat(inputValidator.validGameCntInput("")).isFalse();
+        assertThat(validateUtils.validGameCntInput("123")).isTrue();
+        assertThat(validateUtils.validGameCntInput("dgdsgsd")).isFalse();
+        assertThat(validateUtils.validGameCntInput("")).isFalse();
     }
 
     private static Stream<Arguments> provideStringArrayForIsValidateSource() {

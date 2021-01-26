@@ -1,16 +1,13 @@
-package racingcar;
+package racingcar.util;
 
 import java.util.Arrays;
+import racingcar.Constant;
 
-public class InputValidator {
+public class ValidateUtils {
 
     public boolean validateCarName(String[] cars) {
-        if (!isNameSizeValid(cars)) {
-            PrintUtils.printErrorCarLength();
-            return false;
-        }
-        if (!isNameDistinct(cars)) {
-            PrintUtils.printErrorOverlapCarName();
+        if (!isNameSizeValid(cars) || !isNameDistinct(cars)) {
+            PrintUtils.printErrorCarName();
             return false;
         }
         return true;
