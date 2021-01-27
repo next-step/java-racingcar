@@ -1,11 +1,14 @@
-package racingcar;
+package racingcarRefactor;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
+import racingcarRefactor.domain.Car;
+import racingcarRefactor.domain.Game;
+import racingcarRefactor.domain.GenerateCar;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest {
 

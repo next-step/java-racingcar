@@ -17,7 +17,13 @@ public class ArithmeticTest {
         assertThat(Arithmetic.calculate("/", 1, 2)).isEqualTo(0.5);
         assertThat(Arithmetic.calculate("/", 4, 2)).isEqualTo(2);
         assertThat(Arithmetic.calculate("-", 1, 2)).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("사칙연산 예외 발생 테스트")
+    public void arithmeticExceptionTest() {
         assertThatThrownBy(() -> Arithmetic.calculate("/", 2, 0)).isInstanceOf(IllegalArgumentException.class).hasMessage("분모가 0이 되면 안됩니다.");
     }
+
 
 }

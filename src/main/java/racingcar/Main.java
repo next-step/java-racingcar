@@ -12,6 +12,7 @@ public class Main {
         Boolean startGame = ip.carNameChecker(carNames);
         if (!startGame) {
             OutputHandler.exitMessage();
+            System.exit(0);
         }
 
         int laps = ip.inputLaps();
