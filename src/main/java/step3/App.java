@@ -9,8 +9,9 @@ public class App {
         InputHandler inputHandler = new InputHandler();
 
         RacingGame game = new RacingGame(inputHandler.getCarNameList(), inputHandler.getRoundCount());
-        game.play();
-        game.getMatchResult().print();
+        RacingWinners winners = game.playAndGetWinners();
+        MatchResult matchResult = new MatchResult(winners.getWinners());
+        OutView.print(matchResult);
     }
 
 }

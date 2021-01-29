@@ -14,15 +14,11 @@ public class RacingGame {
         this.cars = new Cars(carNameList);
     }
 
-    public void play() {
+    public RacingWinners playAndGetWinners() {
         for (int i = 0; i < roundCount; i++) {
-            cars.play();
-            System.out.println(cars.getWayResult());
+            System.out.println(cars.playAndGetResult());
         }
-    }
-
-    public MatchResult getMatchResult() {
-        return new MatchResult(cars.getWinners());
+        return new RacingWinners(cars.getWinners());
     }
 
 }

@@ -23,21 +23,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void play() {
-        cars.forEach(car -> carMover.moveOrNot(car, NumberUtil.generateRandomIntZeroToTen()));
+    public List<Car> getWinners() {
+        return CarWinnerDiscriminator.discriminate(this.cars);
     }
 
-    public String getWayResult() {
+    public String playAndGetResult() {
+        cars.forEach(car -> carMover.moveOrNot(car, NumberUtil.generateRandomIntZeroToTen()));
         StringBuilder stringBuilder = new StringBuilder();
         cars.forEach(car -> {
             stringBuilder.append(car.getWayResult());
             stringBuilder.append(System.lineSeparator());
         });
         return stringBuilder.toString();
-    }
-
-    public List<Car> getWinners() {
-        return CarWinnerDiscriminator.discriminate(this.cars);
     }
 }
 
