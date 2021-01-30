@@ -17,8 +17,6 @@ public class ApplicationContext {
     }
 
     public GameController getGameController() {
-        Input input = new KeyboardInput(System.in);
-        Output output = new ConsoleOutput();
         return new GameController(input, output);
     }
 }
