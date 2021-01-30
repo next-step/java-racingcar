@@ -4,7 +4,6 @@ import racingcar.domain.RacingGame;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
-import java.util.InputMismatchException;
 import java.util.List;
 
 import static racingcar.view.InputMessages.*;
@@ -38,7 +37,7 @@ public class GameController {
             try {
                 rounds = input.getRounds();
                 isCorrectInput = true;
-            } catch (InputMismatchException exception) {
+            } catch (NumberFormatException exception) {
                 output.println(ROUNDS_MUST_BE_NUMERIC);
             }
         }
