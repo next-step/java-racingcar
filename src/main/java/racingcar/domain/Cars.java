@@ -1,22 +1,21 @@
-package racingcar;
+package racingcar.domain;
 
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
 
     private static final int INITIAL_LOCATION = 0;
 
-    private final Set<Car> cars;
+    private final List<Car> cars;
 
     public Cars(final List<String> names) {
         this.cars = createCarsFrom(names);
     }
 
-    private Set<Car> createCarsFrom(final List<String> carNames) {
-        Set<Car> cars = new LinkedHashSet<>();
+    private List<Car> createCarsFrom(final List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String name : carNames) {
             Car car = new Car(name, INITIAL_LOCATION);
             cars.add(car);
@@ -27,14 +26,15 @@ public class Cars {
     public void moveAll(final MovementCondition movementCondition) {
         for (Car car : cars) {
             car.moveOrStay(movementCondition);
-            car.printNameAndCurrentPosition();
         }
-        System.out.println();
     }
 
-    public void selectWinners() {
-        List<String> winners = getNamesOfWinners();
-        System.out.println("최종 우승자: " + String.join(", ", winners));
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public List<String> selectWinners() {
+        return getNamesOfWinners();
     }
 
     private List<String> getNamesOfWinners() {
