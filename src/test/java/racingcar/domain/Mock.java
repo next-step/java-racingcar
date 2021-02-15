@@ -1,26 +1,18 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 
 class MockCars extends Cars {
-    public int doRoundCallCnt;
-    public int printWinnersCallCnt;
+    public int playCnt;
 
     public MockCars(List<Car> cars, MoveChecker moveChecker) {
         super(cars, moveChecker);
-
-        doRoundCallCnt = 0;
-        printWinnersCallCnt = 0;
+        playCnt = 0;
     }
 
     @Override
     public void doRound() {
-        doRoundCallCnt++;
-    }
-
-    @Override
-    public void printWinners() {
-        printWinnersCallCnt = doRoundCallCnt;
+        playCnt++;
     }
 }
 

@@ -1,5 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -24,12 +25,8 @@ public class Car {
         return Objects.hash(name, location);
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int getLocation() {
-        return this.location;
+    public ResultCar getResult() {
+        return new ResultCar(name, location);
     }
 
     public void play(MoveChecker moveChecker) {
@@ -38,11 +35,16 @@ public class Car {
         }
     }
 
-    public void printNameAndCurrentPosition() {
-        System.out.print(this.name + " : ");
-        for (int i = 0; i < this.location; i++) {
-            System.out.print("-");
+    public int getMaxLocation(int location) {
+        if (this.location > location) {
+            return this.location;
         }
-        System.out.println();
+        return location;
+    }
+
+    public void addCarNameIfEqualLocation(List<String> list, int location) {
+        if (this.location == location) {
+            list.add(name);
+        }
     }
 }
