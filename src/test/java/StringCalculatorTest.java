@@ -63,9 +63,11 @@ class StringCalculatorTest {
     @DisplayName("예외")
     void exceptions() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(null));
+                .isThrownBy(() -> calculator.calculate(null))
+                .withMessageContaining("Unvalid parameter");
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(""));
+                .isThrownBy(() -> calculator.calculate(""))
+                .withMessageContaining("Unvalid parameter");
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calculator.calculate("2 @ 3 * 4 / 2"));
         assertThatExceptionOfType(IllegalArgumentException.class)
