@@ -13,4 +13,13 @@ public class SplitTest {
 
 		assertThat(splitedText).containsExactly("1", "2");
 	}
+
+	@Test
+	void testSplitForOneNumber() {
+		String source = "1";
+
+		String[] splitedText = source.split(",");
+
+		assertThat(splitedText).contains("1");
+	}
 }
