@@ -8,6 +8,8 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class SetTest {
 	private Set<Integer> numbers;
@@ -25,5 +27,12 @@ class SetTest {
 	@DisplayName("Set 크기를 확인한다")
 	void testSize() {
 		assertThat(numbers.size()).isEqualTo(3);
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = {1, 2, 3})
+	@DisplayName("ParameterrizedTest를 이용해 contain 메소드를 테스트한다")
+	void contains(int number) {
+		assertThat(numbers.contains(number)).isTrue();
 	}
 }
