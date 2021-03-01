@@ -43,7 +43,7 @@ public class StringTest {
     String testStr = "abc";
 
     assertThatThrownBy(()-> testStr.charAt(testStr.length()))
-            .isInstanceOf(IndexOutOfBoundsException.class)
-            .withFailMessage("String Out of Memory : \\d");
+            .isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("String index out of range: " + testStr.length());
+
   }
 }
