@@ -36,4 +36,16 @@ class StringTest {
 
     assertThat(actual).isEqualTo("1,2");
   }
+
+  @Test
+  @DisplayName("abc가 주어졌을 때, charAt()으로 특정 위치의 문자를 가져오는지 확인")
+  void charAt() {
+    String abc = "abc";
+
+    assertAll(
+        () -> assertThat(abc.charAt(0)).isEqualTo('a'),
+        () -> assertThat(abc.charAt(1)).isEqualTo('b'),
+        () -> assertThat(abc.charAt(2)).isEqualTo('c')
+    );
+  }
 }
