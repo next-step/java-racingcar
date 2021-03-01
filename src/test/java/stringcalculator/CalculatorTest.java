@@ -16,7 +16,7 @@ class CalculatorTest {
   int x;
   int y;
 
-  static Stream<String> emptyStrings() {
+  static Stream<String> blankStrings() {
     return Stream.of("", "     ", null);
   }
 
@@ -60,9 +60,9 @@ class CalculatorTest {
   }
 
   @ParameterizedTest
-  @DisplayName("empty로 간주할 수 있는 문자열이 입력될 경우 예외가 발생한다.")
-  @MethodSource("emptyStrings")
-  void emptyStringInput(String expression) {
+  @DisplayName("blank로 간주할 수 있는 문자열이 입력될 경우 예외가 발생한다.")
+  @MethodSource("blankStrings")
+  void blankStringInput(String expression) {
     assertThatThrownBy(() -> calculator.calculate(expression))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessage("식을 입력해주세요.");
