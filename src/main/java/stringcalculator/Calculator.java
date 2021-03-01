@@ -1,5 +1,8 @@
 package stringcalculator;
 
+import static stringcalculator.StringUtils.isBlankString;
+import static stringcalculator.StringUtils.split;
+
 public class Calculator {
 
   public int calculate(String expression) {
@@ -26,13 +29,5 @@ public class Calculator {
     }
 
     throw new IllegalArgumentException("해당 연산자는 지원하지 않습니다.");
-  }
-
-  private String[] split(String expression) {
-    return expression.split(" ");
-  }
-
-  private boolean isBlankString(String string) {
-    return string == null || string.trim().isEmpty();
   }
 }
