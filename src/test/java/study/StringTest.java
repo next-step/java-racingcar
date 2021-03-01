@@ -1,12 +1,15 @@
 package study;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class StringTest {
+
+  String abc = "abc";
 
   @Test
   @DisplayName("1,2를 split한 값이 1과 2를 포함하는지, 순서대로 포함하는지 확인")
@@ -41,12 +44,18 @@ class StringTest {
   @Test
   @DisplayName("abc가 주어졌을 때, charAt()으로 특정 위치의 문자를 가져오는지 확인")
   void charAt() {
-    String abc = "abc";
-
     assertAll(
         () -> assertThat(abc.charAt(0)).isEqualTo('a'),
         () -> assertThat(abc.charAt(1)).isEqualTo('b'),
         () -> assertThat(abc.charAt(2)).isEqualTo('c')
     );
+  }
+
+  @Test
+  @DisplayName("abc가 주어졌을 때, charAt()에서 위치 값을 벗어난 경우 예외가 발생하는지 확인")
+  void charAtThrowsIndexOutOfBoundsException() {
+    assertThatThrownBy(() -> abc.charAt(3))
+        .isInstanceOf(StringIndexOutOfBoundsException.class)
+        .hasMessageMatching("String index out of range: -?\\d");
   }
 }
