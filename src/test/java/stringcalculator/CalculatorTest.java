@@ -15,7 +15,7 @@ class CalculatorTest {
   @BeforeEach
   void setUp() {
     calculator = new Calculator();
-    x = 4;
+    x = 6;
     y = 2;
   }
 
@@ -41,5 +41,13 @@ class CalculatorTest {
     int actual = calculator.calculate(x + " * " + y);
 
     assertThat(actual).isEqualTo(x * y);
+  }
+
+  @Test
+  @DisplayName("나눗셈기능이 동작해야 한다.")
+  void divide() {
+    int actual = calculator.calculate(x + " / " + y);
+
+    assertThat(actual).isEqualTo(x / y);
   }
 }
