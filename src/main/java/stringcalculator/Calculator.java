@@ -11,6 +11,9 @@ public class Calculator {
     if ("+".equals(operator)) {
       return x + y;
     }
+    if ("*".equals(operator)) {
+      return x * y;
+    }
 
     return x - y;
   }
