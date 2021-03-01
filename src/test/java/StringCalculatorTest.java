@@ -49,7 +49,13 @@ class StringCalculatorTest {
     @Test
     @DisplayName("계산기")
     void calculate() {
-        assertThat(calculator.calculate("2 + 3 * 4 / 2")).isEqualTo(20);
+        assertThat(calculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
+        assertThat(calculator.calculate("10 + 2 * 3 / 9")).isEqualTo(4);
+        assertThat(calculator.calculate("10 * 5 / 2 - 25")).isEqualTo(0);
+        assertThat(calculator.calculate("0 * 0 * 0 * 0")).isEqualTo(0);
+        assertThat(calculator.calculate("0 + 0 + 0 + 0")).isEqualTo(0);
+        assertThat(calculator.calculate("0 - 0 - 0 - 0")).isEqualTo(0);
+        assertThat(calculator.calculate("10 * 10 / 10 / 10")).isEqualTo(1);
     }
 
     @BeforeEach
