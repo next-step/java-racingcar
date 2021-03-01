@@ -28,7 +28,11 @@ class StringCalculatorTest {
     @Test
     @DisplayName("곱셈")
     void multiply() {
-
+        assertThat(calculator.multiply(2,3)).isEqualTo(6);
+        assertThat(calculator.multiply(0,9)).isEqualTo(0);
+        assertThat(calculator.multiply(0,11)).isEqualTo(0);
+        assertThat(calculator.multiply(13,1)).isEqualTo(13);
+        assertThat(calculator.multiply(3,1)).isEqualTo(3);
     }
 
     @Test
