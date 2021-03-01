@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class SetTest {
@@ -34,5 +35,14 @@ class SetTest {
 	@DisplayName("ParameterrizedTest를 이용해 contain 메소드를 테스트한다")
 	void contains(int number) {
 		assertThat(numbers.contains(number)).isTrue();
+	}
+
+
+	@ParameterizedTest
+	@CsvSource({"1, 4", "2, 5", "3, 6"})
+	@DisplayName("contains 메소드 실행 결과가 false 인 경우를 테스트한다")
+	void containsWithException(int numberOfTrue, int numberOfFalse) {
+		assertThat(numbers.contains(numberOfTrue)).isTrue();
+		assertThat(numbers.contains(numberOfFalse)).isFalse();
 	}
 }
