@@ -32,4 +32,12 @@ public class SetTest {
     assertThat(numbers.size()).isEqualTo(3);
   }
 
+  @DisplayName("요구사항2: contains")
+  @Test
+  void contains() {
+    assertThat(numbers).contains(1);
+    assertThat(numbers).contains(2);
+    assertThat(numbers).contains(3);
+  }
+
 }
