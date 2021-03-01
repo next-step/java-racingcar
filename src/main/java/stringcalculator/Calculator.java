@@ -3,6 +3,8 @@ package stringcalculator;
 public class Calculator {
 
   public int calculate(String expression) {
-    return 0;
+    String[] tokens = expression.split(" ");
+
+    return Integer.parseInt(tokens[0]) + Integer.parseInt(tokens[2]);
   }
 }
