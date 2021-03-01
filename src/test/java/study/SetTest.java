@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class SetTest {
 
@@ -29,10 +29,10 @@ class SetTest {
     assertThat(numbers.size()).isEqualTo(3);
   }
 
-  @ParameterizedTest(name = "{arguments}은/는 numbers 안에 있다.")
-  @DisplayName("numbers에 1, 2, 3이 존재하는지 확인")
-  @ValueSource(ints = {1, 2, 3})
-  void numbersContains(int input) {
-    assertThat(numbers.contains(input)).isTrue();
+  @ParameterizedTest(name = "{0}은/는 numbers 안에 있는가? {1}")
+  @DisplayName("numbers에 1, 2, 3이 존재하고, 4, 5는 존재하지 않는지 확인")
+  @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+  void numbersContains(int input, boolean expected) {
+    assertThat(numbers.contains(input)).isEqualTo(expected);
   }
 }
