@@ -19,3 +19,4 @@
 
 - [ParameterizedTest에서 null 값 넣는 법](https://blog.oio.de/2018/10/26/use-null-values-in-junit-5-parameterized-tests/)
 - [blank, empty String 검증하는 코드](https://www.baeldung.com/java-blank-empty-strings)
+- [ParameterizedTest에서 여러 Value를 MethodSource로 넣는 법](https://www.arhohuttunen.com/junit-5-parameterized-tests/)
