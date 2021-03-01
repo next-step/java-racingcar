@@ -18,6 +18,11 @@ class StringCalculatorTest {
     @Test
     @DisplayName("뺄셈")
     void subtract() {
+        assertThat(calculator.subtract(2,3)).isEqualTo(-1);
+        assertThat(calculator.subtract(0,9)).isEqualTo(-9);
+        assertThat(calculator.subtract(0,11)).isEqualTo(-11);
+        assertThat(calculator.subtract(13,1)).isEqualTo(12);
+        assertThat(calculator.subtract(3,1)).isEqualTo(2);
     }
 
     @Test
