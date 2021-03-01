@@ -4,6 +4,6 @@ public class StringCalculator {
     }
 
     public int subtract(int left, int right) {
-        return 0;
+        return left - right;
     }
 }
