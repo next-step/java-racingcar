@@ -38,7 +38,12 @@ class StringCalculatorTest {
     @Test
     @DisplayName("나눗셈")
     void divide() {
-
+        assertThat(calculator.divide(2, 3)).isEqualTo(0);
+        assertThat(calculator.divide(0,9)).isEqualTo(0);
+        assertThat(calculator.divide(0,11)).isEqualTo(0);
+        assertThat(calculator.divide(13,1)).isEqualTo(13);
+        assertThat(calculator.divide(3,1)).isEqualTo(3);
+        assertThat(calculator.divide(4,2)).isEqualTo(2);
     }
 
     @BeforeEach
