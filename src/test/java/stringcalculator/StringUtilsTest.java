@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringUtilsTest {
 
@@ -24,5 +25,19 @@ class StringUtilsTest {
   @MethodSource("strings")
   void blankString(String input, boolean expected) {
     assertThat(StringUtils.isBlankString(input)).isEqualTo(expected);
+  }
+
+  @ParameterizedTest
+  @DisplayName("문자열이 공백문자로 분리되는지 확인")
+  @ValueSource(strings = {
+      "1 * 3",
+      "1 / 3",
+      "1 + 2 * 3"})
+  void split(String expression) {
+    String[] expected = expression.split(" ");
+
+    assertThat(StringUtils.split(expression))
+        .usingFieldByFieldElementComparator()
+        .isEqualTo(expected);
   }
 }
