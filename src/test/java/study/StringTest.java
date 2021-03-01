@@ -26,4 +26,14 @@ class StringTest {
 
     assertThat(actual).contains("1");
   }
+
+  @Test
+  @DisplayName("(1,2)가 주어졌을 때, ()를 제거하고 1,2 반환")
+  void removeBracket() {
+    String bracketedString = "(1,2)";
+    String actual = bracketedString
+        .substring(bracketedString.indexOf("(") + 1, bracketedString.lastIndexOf(")"));
+
+    assertThat(actual).isEqualTo("1,2");
+  }
 }
