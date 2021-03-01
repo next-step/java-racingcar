@@ -21,8 +21,11 @@ public class Calculator {
     if ("/".equals(operator)) {
       return x / y;
     }
+    if ("-".equals(operator)) {
+      return x - y;
+    }
 
-    return x - y;
+    throw new IllegalArgumentException("해당 연산자는 지원하지 않습니다.");
   }
 
   private boolean isBlankString(String string) {

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CalculatorTest {
 
@@ -66,5 +67,14 @@ class CalculatorTest {
     assertThatThrownBy(() -> calculator.calculate(expression))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessage("식을 입력해주세요.");
+  }
+
+  @ParameterizedTest
+  @DisplayName("지원하지 않는 연산자를 사용하는 경우 예외가 발생한다.")
+  @ValueSource(strings = {"2 & 3", "2 ^ 7", "4 % 2"})
+  void wrongOperator(String expression) {
+    assertThatThrownBy(() -> calculator.calculate(expression))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("해당 연산자는 지원하지 않습니다.");
   }
 }
