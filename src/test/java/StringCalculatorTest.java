@@ -46,6 +46,12 @@ class StringCalculatorTest {
         assertThat(calculator.divide(4,2)).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("계산기")
+    void calculate() {
+        assertThat(calculator.calculate("2 + 3 * 4 / 2")).isEqualTo(20);
+    }
+
     @BeforeEach
     void createInstance() {
         calculator = new StringCalculator();

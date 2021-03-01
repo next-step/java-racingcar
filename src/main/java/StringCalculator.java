@@ -14,4 +14,8 @@ public class StringCalculator {
     public int divide(int left, int right) {
         return left / right;
     }
+
+    public int calculate(String s) {
+        return 0;
+    }
 }
