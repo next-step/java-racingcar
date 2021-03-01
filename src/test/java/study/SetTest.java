@@ -7,6 +7,8 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * @author choijaeyong on 2021/03/02.
@@ -33,11 +35,10 @@ public class SetTest {
   }
 
   @DisplayName("요구사항2: contains")
-  @Test
-  void contains() {
-    assertThat(numbers).contains(1);
-    assertThat(numbers).contains(2);
-    assertThat(numbers).contains(3);
+  @ParameterizedTest
+  @ValueSource(ints = {1,2,3})
+  void contains(int input) {
+    assertThat(numbers).contains(input);
   }
 
 }
