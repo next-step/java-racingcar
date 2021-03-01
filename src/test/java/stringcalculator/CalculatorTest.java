@@ -1,7 +1,7 @@
 package stringcalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -64,17 +64,17 @@ class CalculatorTest {
   @DisplayName("blank로 간주할 수 있는 문자열이 입력될 경우 예외가 발생한다.")
   @MethodSource("blankStrings")
   void blankStringInput(String expression) {
-    assertThatThrownBy(() -> calculator.calculate(expression))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessage("식을 입력해주세요.");
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> calculator.calculate(expression))
+        .withMessage("식을 입력해주세요.");
   }
 
   @ParameterizedTest
   @DisplayName("지원하지 않는 연산자를 사용하는 경우 예외가 발생한다.")
   @ValueSource(strings = {"2 & 3", "2 ^ 7", "4 % 2"})
   void wrongOperator(String expression) {
-    assertThatThrownBy(() -> calculator.calculate(expression))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessage("해당 연산자는 지원하지 않습니다.");
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> calculator.calculate(expression))
+        .withMessage("해당 연산자는 지원하지 않습니다.");
   }
 }
