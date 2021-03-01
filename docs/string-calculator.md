@@ -14,3 +14,8 @@
 - 입력값 예외 처리(null 또는 빈 문자열)
 - 사칙연산 기호가 아닌경우 예외처리
 - 사칙연산 모두 사용하는 기능 구현
+
+## 학습한 내용
+
+- [ParameterizedTest에서 null 값 넣는 법](https://blog.oio.de/2018/10/26/use-null-values-in-junit-5-parameterized-tests/)
+- [blank, empty String 검증하는 코드](https://www.baeldung.com/java-blank-empty-strings)
