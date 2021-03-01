@@ -26,4 +26,12 @@ class CalculatorTest {
 
     assertThat(actual).isEqualTo(x + y);
   }
+
+  @Test
+  @DisplayName("뺄셈기능이 동작해야 한다.")
+  void subtract() {
+    int actual = calculator.calculate(x + " - " + y);
+
+    assertThat(actual).isEqualTo(x - y);
+  }
 }
