@@ -29,7 +29,7 @@ class SetTest {
     assertThat(numbers.size()).isEqualTo(3);
   }
 
-  @ParameterizedTest
+  @ParameterizedTest(name = "{arguments}은/는 numbers 안에 있다.")
   @DisplayName("numbers에 1, 2, 3이 존재하는지 확인")
   @ValueSource(ints = {1, 2, 3})
   void numbersContains(int input) {
