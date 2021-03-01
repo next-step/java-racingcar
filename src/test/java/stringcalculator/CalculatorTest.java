@@ -34,4 +34,12 @@ class CalculatorTest {
 
     assertThat(actual).isEqualTo(x - y);
   }
+
+  @Test
+  @DisplayName("곱셈기능이 동작해야 한다.")
+  void multiply() {
+    int actual = calculator.calculate(x + " * " + y);
+
+    assertThat(actual).isEqualTo(x * y);
+  }
 }
