@@ -3,6 +3,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 class StringCalculatorTest {
     StringCalculator calculator;
@@ -56,6 +57,19 @@ class StringCalculatorTest {
         assertThat(calculator.calculate("0 + 0 + 0 + 0")).isEqualTo(0);
         assertThat(calculator.calculate("0 - 0 - 0 - 0")).isEqualTo(0);
         assertThat(calculator.calculate("10 * 10 / 10 / 10")).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("예외")
+    void exceptions() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate(null));
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate(""));
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate("2 @ 3 * 4 / 2"));
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate("2 @ 3 * 4 . 2"));
     }
 
     @BeforeEach
