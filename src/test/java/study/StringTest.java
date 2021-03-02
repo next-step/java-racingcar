@@ -20,4 +20,11 @@ public class StringTest {
         assertThat(result).containsExactly("1");
     }
 
+    @Test
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 \"1,2\"를 반환하도록 구현")
+    void substring() {
+        String testStr = "(1,2)";
+        String result = testStr.substring(1, testStr.length() - 1);
+        assertThat(result).contains("1,2");
+    }
 }
