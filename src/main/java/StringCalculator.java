@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class StringCalculator {
     public int add(int left, int right) {
         return left + right;
@@ -19,7 +16,9 @@ public class StringCalculator {
     }
 
     public int calculate(String params) {
-        if (params == null || params.length() == 0) throw new IllegalArgumentException("Unvalid parameter");
+        if (params == null || params.length() == 0) {
+            throw new IllegalArgumentException("Unvalid parameter");
+        }
         String[] strings = params.split(" ");
         int result = Integer.parseInt(strings[0]);
         int index = 1;
