@@ -32,28 +32,28 @@ public class SetTest {
 
     @Test
     @DisplayName("요구사항 1: Set의 size() 메소드를 활용해 Set의 크기를 확인하는 학습 테스트")
-    void setSizeTest() {
+    void getSetSize() {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest(name = "{0} 값을 포함되어 있는 지 확인")
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("요구사항 2: Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 학습 테스트")
-    void setContainsTest(int given) {
+    void containsValueTest(int given) {
         assertThat(numbers.contains(given)).isTrue();
     }
 
     @ParameterizedTest(name = "{0} 값을 포함되어 있는 지 확인")
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("요구사항 2: ParameterizedTest를 활용해 위 테스트 코드의 중복 코드를 제거")
-    void setContainsParameterizedTest(int given) {
+    void containsValueIsTrueParameterizedTest(int given) {
         assertThat(numbers.contains(given)).isTrue();
     }
 
     @ParameterizedTest(name = "{0} 값이 포함되어 있는지 여부를 판단: {1}")
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     @DisplayName("요구사항 3: 위 테스트에서 입력 값에 따라 true / false 모두 테스트도 가능하도록 구현")
-    void setContainsNotValueException(int input, boolean excepted) {
-        assertThat(numbers.contains(input)).isEqualTo(excepted);
+    void containsValueTrueAndFalse(int given, boolean expected) {
+        assertThat(numbers.contains(given)).isEqualTo(expected);
     }
 }
