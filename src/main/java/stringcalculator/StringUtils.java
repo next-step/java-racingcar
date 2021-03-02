@@ -26,11 +26,27 @@ public class StringUtils {
         .collect(Collectors.toList());
   }
 
+  public static List<Operator> extractOperators(String expression) {
+    return Arrays.stream(split(expression))
+        .filter(StringUtils::isOperator)
+        .map(Operator::operatorOf)
+        .collect(Collectors.toList());
+  }
+
   public static boolean isInteger(String token) {
     try {
       Integer.parseInt(token);
       return true;
     } catch (NumberFormatException e) {
+      return false;
+    }
+  }
+
+  public static boolean isOperator(String token) {
+    try {
+      Operator.operatorOf(token);
+      return true;
+    } catch (IllegalArgumentException e) {
       return false;
     }
   }

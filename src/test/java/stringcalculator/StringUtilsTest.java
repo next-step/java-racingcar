@@ -2,6 +2,10 @@ package stringcalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static stringcalculator.Operator.DIVIDE;
+import static stringcalculator.Operator.MINUS;
+import static stringcalculator.Operator.MULTIPLY;
+import static stringcalculator.Operator.PLUS;
 import static stringcalculator.StringUtils.DELIMITER;
 
 import java.util.List;
@@ -31,6 +35,14 @@ class StringUtilsTest {
     );
   }
 
+  static Stream<Arguments> expressionAndOperators() {
+    return Stream.of(
+        arguments("1 + 2 * 3", Lists.list(PLUS, MULTIPLY)),
+        arguments("3 + 1 / 2", Lists.list(PLUS, DIVIDE)),
+        arguments("3 * 4 * 2 - 10", Lists.list(MULTIPLY, MULTIPLY, MINUS))
+    );
+  }
+
   @ParameterizedTest
   @DisplayName("빈 문자열 확인")
   @MethodSource("strings")
@@ -57,6 +69,15 @@ class StringUtilsTest {
   @MethodSource("expressionAndNumbers")
   void multipleOperatorExtractNumbers(String expression, List<Integer> expected) {
     assertThat(StringUtils.extractNumbers(expression))
+        .hasSize(expected.size())
+        .isEqualTo(expected);
+  }
+
+  @ParameterizedTest
+  @DisplayName("여러 개의 연산자를 받았을 때 연산자만 추출해서 반환한다.")
+  @MethodSource("expressionAndOperators")
+  void multipleOperatorExtractOperators(String expression, List<Operator> expected) {
+    assertThat(StringUtils.extractOperators(expression))
         .hasSize(expected.size())
         .isEqualTo(expected);
   }
