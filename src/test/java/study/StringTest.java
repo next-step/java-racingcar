@@ -26,6 +26,14 @@ class StringTest {
     }
 
     @Test
+    @DisplayName("문자열에서 괄호를 제거한다.")
+    void extractStringInTheMiddle() {
+        String result = "(1,2)".substring(1, 4);
+
+        assertThat(result).isEqualTo("1,2");
+    }
+
+    @Test
     @DisplayName("문자열의 특정 위치를 지정하면 거기에 있는 문자를 반환한다.")
     void getCharInAnyPosition() {
         String data = "abc";
