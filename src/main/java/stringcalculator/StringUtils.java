@@ -7,7 +7,7 @@ public class StringUtils {
   private StringUtils() {
   }
 
-  public static boolean isBlankString(String string) {
+  public static boolean isBlank(String string) {
     return string == null || string.trim().isEmpty();
   }
 

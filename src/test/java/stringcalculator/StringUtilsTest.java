@@ -25,7 +25,7 @@ class StringUtilsTest {
   @DisplayName("빈 문자열 확인")
   @MethodSource("strings")
   void blankString(String input, boolean expected) {
-    assertThat(StringUtils.isBlankString(input)).isEqualTo(expected);
+    assertThat(StringUtils.isBlank(input)).isEqualTo(expected);
   }
 
   @ParameterizedTest
