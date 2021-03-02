@@ -1,6 +1,6 @@
 package stringcalculator;
 
-public class NoneExpression implements Expression{
+public class NoneExpression implements Expression {
     private int value;
 
     public NoneExpression(int value) {

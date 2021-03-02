@@ -1,6 +1,6 @@
 package stringcalculator;
 
-public class AdditionExpression implements Expression{
+public class AdditionExpression implements Expression {
     private Expression augend;
     private Expression addend;
 

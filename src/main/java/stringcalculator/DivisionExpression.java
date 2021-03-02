@@ -1,6 +1,6 @@
 package stringcalculator;
 
-public class DivisionExpression implements Expression{
+public class DivisionExpression implements Expression {
 
     private Expression dividend;
 
