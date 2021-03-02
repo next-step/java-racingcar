@@ -13,6 +13,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import camp.nextstep.edu.entity.Operation;
+
 public class StringCaculatorTest {
 
 	private static final String numericRegex = "^[0-9]+";
@@ -141,6 +143,27 @@ public class StringCaculatorTest {
 						}
 					});
 				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
+	}
+
+	@ParameterizedTest
+	@DisplayName("전체 사칙연산")
+	@CsvSource(value = {"21 + 1 / 11 * 5=10"}, delimiter = '=')
+	void operation(String input, int expected) {
+
+		List<String> inputSplitedByBlank = Arrays.asList(input.split(" "));
+		List<String> inputs = inputSplitedByBlank.subList(1, inputSplitedByBlank.size());
+
+		int result = Integer.parseInt(inputSplitedByBlank.get(0));
+		String op = "";
+		for (String word : inputs) {
+			if (word.matches(numericRegex)) {
+				result = Operation.getResult(result, Integer.parseInt(word), op);
+			} else if (word.matches(operationRegex)) {
+				op = word;
+			}
+		}
+
+		assertThat(result).isEqualTo(expected);
 	}
 
 	public boolean isOperation(String word) {
