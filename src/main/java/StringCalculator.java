@@ -8,7 +8,7 @@ public class StringCalculator {
         String[] strings = params.split(" ");
         int result = Integer.parseInt(strings[0]);
         int index = 1;
-        IntBinaryOperator binaryOperator = null;
+        IntBinaryOperator binaryOperator;
         while (index < strings.length) {
             if ("+-*/".contains(strings[index])) {
                 binaryOperator = getOperator(strings[index]);
