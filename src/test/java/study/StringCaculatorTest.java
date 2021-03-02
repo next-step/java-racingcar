@@ -14,7 +14,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import camp.nextstep.edu.entity.CalculatorInput;
 import camp.nextstep.edu.exception.UserException;
 import camp.nextstep.edu.module.Calculator;
 
@@ -115,7 +114,11 @@ public class StringCaculatorTest {
 		list.add(null);
 
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> list.forEach(CalculatorInput::new))
+				.isThrownBy(() -> list.forEach(word -> {
+					if (word == null || word.equals("")) {
+						throw new UserException();
+					}
+				}))
 				.withMessageMatching("정상적인 사용자 값이 아닙니다.");
 	}
 
@@ -140,11 +143,5 @@ public class StringCaculatorTest {
 	void operation(String input, int expected) {
 		int result = new Calculator().getResult(input);
 		assertThat(result).isEqualTo(expected);
-	}
-
-
-	public String getStringIfNullBlank(String param) {
-		return Optional.ofNullable(param)
-				.orElse("");
 	}
 }
