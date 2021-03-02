@@ -3,7 +3,7 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
@@ -24,4 +24,21 @@ public class StringTest {
         assertThat(result).contains("1,2");
     }
 
+    @Test
+    @DisplayName("요구사항 3-1")
+    void 요구사항3_1() {
+        String data = "abc";
+        char result = data.charAt(0);
+        assertThat(result).isEqualTo('a');
+    }
+
+    @Test
+    @DisplayName("요구사항 3-2")
+    void 요구사항3_2() {
+        String data = "abc";
+        assertThatThrownBy(() -> {
+            char result = data.charAt(4);
+            assertThat(result).isEqualTo('a');
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
+    }
 }
