@@ -2,12 +2,14 @@ package stringcalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -19,6 +21,14 @@ class CalculatorTest {
 
   static Stream<String> blankStrings() {
     return Stream.of("", "     ", null);
+  }
+
+  static Stream<Arguments> expressions() {
+    return Stream.of(
+        arguments("1 + 2 * 3", 9),
+        arguments("3 + 1 / 2", 2),
+        arguments("3 * 4 * 2 - 10", 14)
+    );
   }
 
   @BeforeEach
@@ -76,5 +86,12 @@ class CalculatorTest {
     assertThatIllegalArgumentException()
         .isThrownBy(() -> calculator.calculate(expression))
         .withMessage("해당 연산자는 지원하지 않습니다.");
+  }
+
+  @ParameterizedTest
+  @DisplayName("여러 개의 연산자를 사용할 때에도 동작해야한다.")
+  @MethodSource("expressions")
+  void multipleOperator(String expression, int expected) {
+    assertThat(calculator.calculate(expression)).isEqualTo(expected);
   }
 }
