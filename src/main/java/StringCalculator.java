@@ -24,20 +24,16 @@ public class StringCalculator {
 
     public IntBinaryOperator getOperator(String operatorString) {
         if (operatorString.equals("+")) {
-            IntBinaryOperator add = (left, right) -> left + right;
-            return add;
+            return (left, right) -> left + right;
         }
         if (operatorString.equals("-")) {
-            IntBinaryOperator subtract = (left, right) -> left - right;
-            return subtract;
+            return (left, right) -> left - right;
         }
         if (operatorString.equals("*")) {
-            IntBinaryOperator multiply = (left, right) -> left * right;
-            return multiply;
+            return (left, right) -> left * right;
         }
         if (operatorString.equals("/")) {
-            IntBinaryOperator divide = (left, right) -> left / right;
-            return divide;
+            return (left, right) -> left / right;
         }
         throw new IllegalArgumentException("Unvalid Operator");
     }
