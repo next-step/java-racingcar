@@ -16,7 +16,7 @@ class ValidatorTest {
   @ParameterizedTest
   @DisplayName("입력된 식을 검증한다.")
   @MethodSource("strings")
-  void validate(String expression) {
+  void validateExpression(String expression) {
     assertThatIllegalArgumentException()
         .isThrownBy(() -> Validator.validateExpression(expression))
         .withMessage("식을 입력해주세요.");
