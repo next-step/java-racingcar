@@ -11,23 +11,10 @@ public class Calculator {
     }
 
     String[] tokens = split(expression);
-    String operator = tokens[1];
+    Operator operator = Operator.operatorOf(tokens[1]);
+
     int x = Integer.parseInt(tokens[0]);
     int y = Integer.parseInt(tokens[2]);
-
-    if ("+".equals(operator)) {
-      return x + y;
-    }
-    if ("*".equals(operator)) {
-      return x * y;
-    }
-    if ("/".equals(operator)) {
-      return x / y;
-    }
-    if ("-".equals(operator)) {
-      return x - y;
-    }
-
-    throw new IllegalArgumentException("해당 연산자는 지원하지 않습니다.");
+    return operator.operate(x, y);
   }
 }
