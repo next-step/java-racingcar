@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
+    @DisplayName("요구사항 1, 문자 split 테스트")
     void split(){
         String testString1 = "1,2";
         String testString2 = "1";
@@ -24,6 +25,7 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("요구사항 2, 문자 substring() 메소드 활용해 () 제거하고 '1,2' 반환하는 테스트")
     void substring(){
         String testString = "(1,2)";
 
@@ -33,6 +35,7 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("요구사항 3-1, 문자 charAt() 활용해 특정 위치 문자를 가져오는 학습 테스트")
     void charAt(){
         String testString = "abc";
 
@@ -43,7 +46,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("charAt 범위를 벗어나는 경우 StringIndexOutOfBoundsException 발생")
+    @DisplayName("요구사항 3-2, charAt 범위를 벗어나는 경우 StringIndexOutOfBoundsException 발생 테스트")
     void charAtException(){
         String testString = "abc";
 
