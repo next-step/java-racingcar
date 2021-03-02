@@ -1,14 +1,12 @@
 package stringcalculator;
 
-import static stringcalculator.StringUtils.isBlankString;
 import static stringcalculator.StringUtils.split;
+import static stringcalculator.Validator.validateExpression;
 
 public class Calculator {
 
   public int calculate(String expression) {
-    if (isBlankString(expression)) {
-      throw new IllegalArgumentException("식을 입력해주세요.");
-    }
+    validateExpression(expression);
 
     String[] tokens = split(expression);
     Operator operator = Operator.operatorOf(tokens[1]);
