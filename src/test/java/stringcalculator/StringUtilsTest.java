@@ -2,6 +2,7 @@ package stringcalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static stringcalculator.StringUtils.DELIMITER;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
@@ -34,7 +35,7 @@ class StringUtilsTest {
       "1 / 3",
       "1 + 2 * 3"})
   void split(String expression) {
-    String[] expected = expression.split(" ");
+    String[] expected = expression.split(DELIMITER);
 
     assertThat(StringUtils.split(expression))
         .usingFieldByFieldElementComparator()

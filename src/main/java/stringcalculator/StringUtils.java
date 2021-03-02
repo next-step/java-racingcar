@@ -2,6 +2,8 @@ package stringcalculator;
 
 public class StringUtils {
 
+  public static final String DELIMITER = " ";
+
   private StringUtils() {
   }
 
@@ -10,6 +12,6 @@ public class StringUtils {
   }
 
   public static String[] split(String expression) {
-    return expression.split(" ");
+    return expression.split(DELIMITER);
   }
 }
