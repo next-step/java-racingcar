@@ -72,6 +72,8 @@ class StringCalculatorTest {
                 .isThrownBy(() -> calculator.calculate("2 @ 3 * 4 / 2"));
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calculator.calculate("2 @ 3 * 4 . 2"));
+        assertThatExceptionOfType(NullPointerException.class)
+                .isThrownBy(() -> calculator.calculate("0 / 0"));
     }
 
     @BeforeEach
