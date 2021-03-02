@@ -16,14 +16,14 @@ public class StringTest {
 	}
 
 	@Test
-	@DisplayName("comma가 없는 케이스에서 배열 체크")
+	@DisplayName("comma가 없는 케이스에서 split 여부 체크")
 	void 요구사항1_2() {
 		String[] onlyOne = "1".split(",");
 		assertThat(onlyOne).containsExactly("1");
 	}
 
 	@Test
-	@DisplayName("substr 첫요소 끝요소")
+	@DisplayName("첫문자 마지막문자를 제외한 문자 체크")
 	void 요구사항2() {
 		String param = "(1,2)";
 		String result = "1,2";
@@ -32,7 +32,7 @@ public class StringTest {
 	}
 
 	@Test
-	@DisplayName("charat 이용하여 문자열 인덱스에 있는 문자 확인")
+	@DisplayName("charat 이용하여 문자열 인덱스에 있는 문자 체크")
 	void 요구사항3_1() {
 		String param = "abc";
 
@@ -45,7 +45,7 @@ public class StringTest {
 
 	@Test
 	@DisplayName("charAt 사용시 StringIndexOutOfBoundsException 발생 case")
-	void charAt_이용하여_StringIndexOutOfBoundsException발생() {
+	void 요구사항3_2() {
 		String param = "abc";
 
 		assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
@@ -53,7 +53,7 @@ public class StringTest {
 				.withMessageMatching("String index out of range: \\d+");
 	}
 
-	public String getStringExceptStartEnd(String param) {
+	String getStringExceptStartEnd(String param) {
 		return param.substring(1, param.length() - 1);
 	}
 }
