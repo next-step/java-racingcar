@@ -1,8 +1,7 @@
+import operator.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.function.IntBinaryOperator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
@@ -12,45 +11,45 @@ class StringCalculatorTest {
     @Test
     @DisplayName("덧셈")
     void add() {
-        IntBinaryOperator operator = calculator.getOperator("+");
-        assertThat(operator.applyAsInt(2,3)).isEqualTo(5);
-        assertThat(operator.applyAsInt(0,9)).isEqualTo(9);
-        assertThat(operator.applyAsInt(0,11)).isEqualTo(11);
-        assertThat(operator.applyAsInt(13,1)).isEqualTo(14);
+        Operator operator = new Add();
+        assertThat(operator.operation(2,3)).isEqualTo(5);
+        assertThat(operator.operation(0,9)).isEqualTo(9);
+        assertThat(operator.operation(0,11)).isEqualTo(11);
+        assertThat(operator.operation(13,1)).isEqualTo(14);
     }
 
     @Test
     @DisplayName("뺄셈")
     void subtract() {
-        IntBinaryOperator operator = calculator.getOperator("-");
-        assertThat(operator.applyAsInt(2,3)).isEqualTo(-1);
-        assertThat(operator.applyAsInt(0,9)).isEqualTo(-9);
-        assertThat(operator.applyAsInt(0,11)).isEqualTo(-11);
-        assertThat(operator.applyAsInt(13,1)).isEqualTo(12);
-        assertThat(operator.applyAsInt(3,1)).isEqualTo(2);
+        Operator operator = new Subtract();
+        assertThat(operator.operation(2,3)).isEqualTo(-1);
+        assertThat(operator.operation(0,9)).isEqualTo(-9);
+        assertThat(operator.operation(0,11)).isEqualTo(-11);
+        assertThat(operator.operation(13,1)).isEqualTo(12);
+        assertThat(operator.operation(3,1)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("곱셈")
     void multiply() {
-        IntBinaryOperator operator = calculator.getOperator("*");
-        assertThat(operator.applyAsInt(2,3)).isEqualTo(6);
-        assertThat(operator.applyAsInt(0,9)).isEqualTo(0);
-        assertThat(operator.applyAsInt(0,11)).isEqualTo(0);
-        assertThat(operator.applyAsInt(13,1)).isEqualTo(13);
-        assertThat(operator.applyAsInt(3,1)).isEqualTo(3);
+        Operator operator = new Multiply();
+        assertThat(operator.operation(2,3)).isEqualTo(6);
+        assertThat(operator.operation(0,9)).isEqualTo(0);
+        assertThat(operator.operation(0,11)).isEqualTo(0);
+        assertThat(operator.operation(13,1)).isEqualTo(13);
+        assertThat(operator.operation(3,1)).isEqualTo(3);
     }
 
     @Test
     @DisplayName("나눗셈")
     void divide() {
-        IntBinaryOperator operator = calculator.getOperator("/");
-        assertThat(operator.applyAsInt(2, 3)).isEqualTo(0);
-        assertThat(operator.applyAsInt(0,9)).isEqualTo(0);
-        assertThat(operator.applyAsInt(0,11)).isEqualTo(0);
-        assertThat(operator.applyAsInt(13,1)).isEqualTo(13);
-        assertThat(operator.applyAsInt(3,1)).isEqualTo(3);
-        assertThat(operator.applyAsInt(4,2)).isEqualTo(2);
+        Operator operator = new Divide();
+        assertThat(operator.operation(2, 3)).isEqualTo(0);
+        assertThat(operator.operation(0,9)).isEqualTo(0);
+        assertThat(operator.operation(0,11)).isEqualTo(0);
+        assertThat(operator.operation(13,1)).isEqualTo(13);
+        assertThat(operator.operation(3,1)).isEqualTo(3);
+        assertThat(operator.operation(4,2)).isEqualTo(2);
     }
 
     @Test

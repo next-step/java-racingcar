@@ -1,45 +1,42 @@
-import java.util.function.IntBinaryOperator;
+import operator.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class StringCalculator {
+    Map<String, Operator> operationMap;
     public int getMathAnswer(String params) {
         if (params == null || params.length() == 0) {
             throw new IllegalArgumentException("Unvalid parameter");
         }
         String[] strings = params.split(" ");
-        int answer = Integer.parseInt(strings[0]);
-        answer = calculate(strings, answer);
-        return answer;
+        setCharacterOperatorMap();
+        int calculate = calculate(strings);
+        return calculate;
     }
 
-    private int calculate(String[] strings, int result) {
+    private void setCharacterOperatorMap() {
+        operationMap = new HashMap<>();
+        operationMap.put("+", new Add());
+        operationMap.put("-", new Subtract());
+        operationMap.put("*", new Multiply());
+        operationMap.put("/", new Divide());
+    }
+
+    private int calculate(String[] strings) {
         int index = 1;
-        IntBinaryOperator binaryOperator;
+        int result = Integer.parseInt(strings[0]);
         while (index < strings.length) {
-            if ("+-*/".contains(strings[index])) {
-                binaryOperator = getOperator(strings[index]);
-                result = binaryOperator.applyAsInt(result, Integer.parseInt(strings[index +1]));
+            if (!operationMap.containsKey(strings[index])) {
+                Integer isInteger = Integer.valueOf(strings[index]);
+            }
+            if (operationMap.containsKey(strings[index])) {
+                Operator operator = operationMap.get(strings[index]);
+                result = operator.operation(result, Integer.parseInt(strings[index +1]));
                 index += 1;
             }
-            int i = Integer.parseInt(strings[index]);
-            System.out.println(i);
             index++;
         }
         return result;
-    }
-
-    public IntBinaryOperator getOperator(String operatorString) {
-        if (operatorString.equals("+")) {
-            return (left, right) -> left + right;
-        }
-        if (operatorString.equals("-")) {
-            return (left, right) -> left - right;
-        }
-        if (operatorString.equals("*")) {
-            return (left, right) -> left * right;
-        }
-        if (operatorString.equals("/")) {
-            return (left, right) -> left / right;
-        }
-        throw new IllegalArgumentException("Unvalid Operator");
     }
 }
