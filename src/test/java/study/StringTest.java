@@ -16,4 +16,12 @@ public class StringTest {
         assertThat(result2).contains("1");
     }
 
+    @Test
+    @DisplayName("요구사항 2")
+    void 요구사항2() {
+        String data = "(1,2)";
+        String result = data.substring(0,data.length());
+        assertThat(result).contains("1,2");
+    }
+
 }
