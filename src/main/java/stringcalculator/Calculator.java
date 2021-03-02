@@ -9,8 +9,9 @@ public class Calculator {
   public int calculate(String expression) {
     validateExpression(expression);
 
-    List<Integer> numbers = StringUtils.extractNumbers(expression);
-    List<Operator> operators = StringUtils.extractOperators(expression);
+    Extractor extractor = new Extractor(StringUtils.split(expression));
+    List<Integer> numbers = extractor.getNumbers();
+    List<Operator> operators = extractor.getOperators();
     int result = numbers.get(0);
 
     for (int i = 0; i < operators.size(); i++) {

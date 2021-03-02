@@ -1,9 +1,5 @@
 package stringcalculator;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class StringUtils {
 
   public static final String DELIMITER = " ";
@@ -17,20 +13,6 @@ public class StringUtils {
 
   public static String[] split(String expression) {
     return expression.split(DELIMITER);
-  }
-
-  public static List<Integer> extractNumbers(String expression) {
-    return Arrays.stream(split(expression))
-        .filter(StringUtils::isInteger)
-        .map(Integer::valueOf)
-        .collect(Collectors.toList());
-  }
-
-  public static List<Operator> extractOperators(String expression) {
-    return Arrays.stream(split(expression))
-        .filter(token -> !isInteger(token))
-        .map(Operator::operatorOf)
-        .collect(Collectors.toList());
   }
 
   public static boolean isInteger(String token) {
