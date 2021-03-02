@@ -56,30 +56,30 @@ class StringCalculatorTest {
     @Test
     @DisplayName("계산기")
     void calculate() {
-        assertThat(calculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
-        assertThat(calculator.calculate("10 + 2 * 3 / 9")).isEqualTo(4);
-        assertThat(calculator.calculate("10 * 5 / 2 - 25")).isEqualTo(0);
-        assertThat(calculator.calculate("0 * 0 * 0 * 0")).isEqualTo(0);
-        assertThat(calculator.calculate("0 + 0 + 0 + 0")).isEqualTo(0);
-        assertThat(calculator.calculate("0 - 0 - 0 - 0")).isEqualTo(0);
-        assertThat(calculator.calculate("10 * 10 / 10 / 10")).isEqualTo(1);
+        assertThat(calculator.getMathAnswer("2 + 3 * 4 / 2")).isEqualTo(10);
+        assertThat(calculator.getMathAnswer("10 + 2 * 3 / 9")).isEqualTo(4);
+        assertThat(calculator.getMathAnswer("10 * 5 / 2 - 25")).isEqualTo(0);
+        assertThat(calculator.getMathAnswer("0 * 0 * 0 * 0")).isEqualTo(0);
+        assertThat(calculator.getMathAnswer("0 + 0 + 0 + 0")).isEqualTo(0);
+        assertThat(calculator.getMathAnswer("0 - 0 - 0 - 0")).isEqualTo(0);
+        assertThat(calculator.getMathAnswer("10 * 10 / 10 / 10")).isEqualTo(1);
     }
 
     @Test
     @DisplayName("예외")
     void exceptions() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(null))
+                .isThrownBy(() -> calculator.getMathAnswer(null))
                 .withMessageContaining("Unvalid parameter");
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(""))
+                .isThrownBy(() -> calculator.getMathAnswer(""))
                 .withMessageContaining("Unvalid parameter");
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate("2 @ 3 * 4 / 2"));
+                .isThrownBy(() -> calculator.getMathAnswer("2 @ 3 * 4 / 2"));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate("2 @ 3 * 4 . 2"));
+                .isThrownBy(() -> calculator.getMathAnswer("2 @ 3 * 4 . 2"));
         assertThatExceptionOfType(ArithmeticException.class)
-                .isThrownBy(() -> calculator.calculate("0 / 0"));
+                .isThrownBy(() -> calculator.getMathAnswer("0 / 0"));
     }
 
     @BeforeEach
