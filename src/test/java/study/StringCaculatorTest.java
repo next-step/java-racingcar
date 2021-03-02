@@ -1,11 +1,12 @@
 package study;
 
+import static camp.nextstep.edu.util.StringUtil.*;
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,12 +14,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import camp.nextstep.edu.entity.Operation;
+import camp.nextstep.edu.entity.CalculatorInput;
+import camp.nextstep.edu.exception.UserException;
+import camp.nextstep.edu.module.Calculator;
 
 public class StringCaculatorTest {
-
-	private static final String numericRegex = "^[0-9]+";
-	private static final String operationRegex = "[-*/+]";
 
 	@ParameterizedTest
 	@DisplayName("더하기 연산")
@@ -30,7 +30,7 @@ public class StringCaculatorTest {
 
 		int result = Integer.parseInt(inputSplitedByBlank.get(0));
 		for (String word : inputs) {
-			if (word.matches(numericRegex)) {
+			if (isNumeric(word)) {
 				result += Integer.parseInt(word);
 			}
 		}
@@ -48,7 +48,7 @@ public class StringCaculatorTest {
 
 		int result = Integer.parseInt(inputSplitedByBlank.get(0));
 		for (String word : inputs) {
-			if (word.matches(numericRegex)) {
+			if (isNumeric(word)) {
 				result -= Integer.parseInt(word);
 			}
 		}
@@ -66,7 +66,7 @@ public class StringCaculatorTest {
 
 		int result = Integer.parseInt(inputSplitedByBlank.get(0));
 		for (String word : inputs) {
-			if (word.matches(numericRegex)) {
+			if (isNumeric(word)) {
 				result /= Integer.parseInt(word);
 			}
 		}
@@ -84,7 +84,7 @@ public class StringCaculatorTest {
 
 		int result = Integer.parseInt(inputSplitedByBlank.get(0));
 		for (String word : inputs) {
-			if (word.matches(numericRegex)) {
+			if (isNumeric(word)) {
 				result *= Integer.parseInt(word);
 			}
 		}
@@ -96,38 +96,27 @@ public class StringCaculatorTest {
 	@DisplayName("0번째가 숫자가아닌경우")
 	@ValueSource(strings = {"= 2 + 3"})
 	void numeric_exception_test(String input) {
-		assertThatExceptionOfType(NumberFormatException.class)
+		assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> {
 					List<String> inputSplitedByBlank = Arrays.asList(input.split(" "));
-					List<String> inputs = inputSplitedByBlank.subList(1, inputSplitedByBlank.size());
-
-					int result = Integer.parseInt(inputSplitedByBlank.get(0));
-				}).withMessageMatching("For input string: \".\"");
+					if (!isNumeric(inputSplitedByBlank.get(0))) {
+						throw new UserException();
+					}
+				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
 
 	}
 
 	@Test
 	@DisplayName("입력 값이 null이거나 빈 공백 문자일 경우")
 	void illegalArgumentException_test() {
-		List<String> params = new ArrayList<>();
+		List<String> list = new ArrayList<>();
 
-		params.add("");
-		params.add(null);
+		list.add("");
+		list.add(null);
 
-		assertAll(
-				() -> assertThatExceptionOfType(IllegalArgumentException.class)
-						.isThrownBy(() -> {
-							if (params.get(0) == null || "".equals(params.get(0))) {
-								throw new IllegalArgumentException("정상적인 사용자 값이 아닙니다.");
-							}
-						}).withMessageMatching("정상적인 사용자 값이 아닙니다."),
-				() -> assertThatExceptionOfType(IllegalArgumentException.class)
-						.isThrownBy(() -> {
-							if (params.get(1) == null || "".equals(params.get(1))) {
-								throw new IllegalArgumentException("정상적인 사용자 값이 아닙니다.");
-							}
-						}).withMessageMatching("정상적인 사용자 값이 아닙니다.")
-		);
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> list.forEach(CalculatorInput::new))
+				.withMessageMatching("정상적인 사용자 값이 아닙니다.");
 	}
 
 	@ParameterizedTest
@@ -138,8 +127,8 @@ public class StringCaculatorTest {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> {
 					list.forEach(word -> {
-						if (!isNumeric(word) || word == null || "".equals(word) || !isOperation(word)) {
-							throw new IllegalArgumentException("정상적인 사용자 값이 아닙니다.");
+						if (!isNumeric(word) || !isOperation(word)) {
+							throw new UserException();
 						}
 					});
 				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
@@ -147,30 +136,15 @@ public class StringCaculatorTest {
 
 	@ParameterizedTest
 	@DisplayName("전체 사칙연산")
-	@CsvSource(value = {"21 + 1 / 11 * 5=10"}, delimiter = '=')
+	@CsvSource(value = {"22 + 1 / 11 * 5=10", "2 + 1 / 5 * 3=0"}, delimiter = '=')
 	void operation(String input, int expected) {
-
-		List<String> inputSplitedByBlank = Arrays.asList(input.split(" "));
-		List<String> inputs = inputSplitedByBlank.subList(1, inputSplitedByBlank.size());
-
-		int result = Integer.parseInt(inputSplitedByBlank.get(0));
-		String op = "";
-		for (String word : inputs) {
-			if (word.matches(numericRegex)) {
-				result = Operation.getResult(result, Integer.parseInt(word), op);
-			} else if (word.matches(operationRegex)) {
-				op = word;
-			}
-		}
-
+		int result = new Calculator().getResult(input);
 		assertThat(result).isEqualTo(expected);
 	}
 
-	public boolean isOperation(String word) {
-		return word.matches(operationRegex);
-	}
 
-	public boolean isNumeric(String word) {
-		return word.matches(numericRegex);
+	public String getStringIfNullBlank(String param) {
+		return Optional.ofNullable(param)
+				.orElse("");
 	}
 }
