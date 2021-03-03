@@ -7,11 +7,11 @@ package stringCalculator;
  */
 public class Calculator {
 
-  public int plus(int firstNumber, int secondNumber) {
-    return firstNumber + secondNumber;
+  public int calculate(String input) {
+    String[] numberAndOperation = input.split(" ");
+    if ("+".equals(numberAndOperation[1]))
+      return Integer.parseInt(numberAndOperation[0]) + Integer.parseInt(numberAndOperation[2]);
+    return Integer.parseInt(numberAndOperation[0]) - Integer.parseInt(numberAndOperation[2]);
   }
 
-  public int subtract(int firstNumber, int secondNumber) {
-    return firstNumber - secondNumber;
-  }
 }
