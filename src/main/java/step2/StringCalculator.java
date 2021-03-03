@@ -19,6 +19,6 @@ public class StringCalculator {
     }
 
     public int divide(Integer dividend, Integer divisor) {
-        return 0;
+        return dividend / divisor;
     }
 }
