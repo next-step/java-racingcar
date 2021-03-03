@@ -22,10 +22,10 @@ public enum Operation {
 	public static int getResult(int prev, int current, String inputOp) {
 		try {
 			BiFunction<Integer, Integer, Integer> exactOperation = Arrays.stream(values())
-					.filter(oper -> oper.op.equals(inputOp))
-					.findFirst()
-					.get()
-					.operation;
+				.filter(oper -> oper.op.equals(inputOp))
+				.findFirst()
+				.get()
+				.operation;
 			return exactOperation.apply(prev, current);
 		} catch (NoSuchElementException | ArithmeticException e) {
 			throw new UserException();
@@ -34,6 +34,6 @@ public enum Operation {
 
 	public static boolean isOperation(String inputOp) {
 		return Arrays.stream(values())
-				.anyMatch(oper -> oper.op.equals(inputOp));
+			.anyMatch(oper -> oper.op.equals(inputOp));
 	}
 }

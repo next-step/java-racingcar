@@ -96,12 +96,12 @@ public class StringCaculatorTest {
 	@ValueSource(strings = {"= 2 + 3"})
 	void numeric_exception_test(String input) {
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> {
-					List<String> inputSplitedByBlank = Arrays.asList(input.split(" "));
-					if (!isNumeric(inputSplitedByBlank.get(0))) {
-						throw new UserException();
-					}
-				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
+			.isThrownBy(() -> {
+				List<String> inputSplitedByBlank = Arrays.asList(input.split(" "));
+				if (!isNumeric(inputSplitedByBlank.get(0))) {
+					throw new UserException();
+				}
+			}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
 
 	}
 
@@ -114,12 +114,12 @@ public class StringCaculatorTest {
 		list.add(null);
 
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> list.forEach(word -> {
-					if (word == null || word.equals("")) {
-						throw new UserException();
-					}
-				}))
-				.withMessageMatching("정상적인 사용자 값이 아닙니다.");
+			.isThrownBy(() -> list.forEach(word -> {
+				if (word == null || word.equals("")) {
+					throw new UserException();
+				}
+			}))
+			.withMessageMatching("정상적인 사용자 값이 아닙니다.");
 	}
 
 	@ParameterizedTest
@@ -128,13 +128,13 @@ public class StringCaculatorTest {
 	void 사칙연산이_아닌경우_IllegalArgumentException(String input) {
 		List<String> list = Arrays.asList(input.split(" "));
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> {
-					list.forEach(word -> {
-						if (!Operation.isOperation(word)) {
-							throw new UserException();
-						}
-					});
-				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
+			.isThrownBy(() -> {
+				list.forEach(word -> {
+					if (!Operation.isOperation(word)) {
+						throw new UserException();
+					}
+				});
+			}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
 	}
 
 	@ParameterizedTest
@@ -142,7 +142,7 @@ public class StringCaculatorTest {
 	@ValueSource(strings = {"+", "-", "/", "*"})
 	void Operation_성공(String input) {
 		assertThat(Operation.getResult(1, 1, input))
-				.isGreaterThanOrEqualTo(0);
+			.isGreaterThanOrEqualTo(0);
 	}
 
 	@ParameterizedTest
@@ -150,9 +150,9 @@ public class StringCaculatorTest {
 	@ValueSource(strings = {"%", "!", "~"})
 	void Opeartion_exception(String input) {
 		assertThatExceptionOfType(IllegalArgumentException.class)
-				.isThrownBy(() -> {
-					Operation.getResult(1, 1, input);
-				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
+			.isThrownBy(() -> {
+				Operation.getResult(1, 1, input);
+			}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
 	}
 
 	@ParameterizedTest
@@ -164,9 +164,20 @@ public class StringCaculatorTest {
 
 	@ParameterizedTest
 	@DisplayName("전체 사칙연산")
-	@CsvSource(value = {"22 + 1 / 11 * 5=10", "2 + 1 / 5 * 3=0"}, delimiter = '=')
+	@CsvSource(value = {"22 + 1 / 11 * 5=10", "2 + 1 / 5 * 3=0", "10 + 2 - 2 / 5 * 4=8"}, delimiter = '=')
 	void operation(String input, int expected) {
 		int result = new Calculator().getResult(input);
 		assertThat(result).isEqualTo(expected);
+	}
+
+	@ParameterizedTest
+	@DisplayName("전체 사칙연산 Exception")
+	@CsvSource(value = {"22 22 + 1 / 11 * 5=10", "2 3 + 1 / 5 * 3=0", "10 4 + 2 - 2 / 5 * 4=8"}, delimiter = '=')
+	void operation_exception(String input) {
+		assertThatExceptionOfType(IllegalArgumentException.class)
+			.isThrownBy(() -> {
+				new Calculator().getResult(input);
+			})
+			.withMessageMatching("정상적인 사용자 값이 아닙니다.");
 	}
 }

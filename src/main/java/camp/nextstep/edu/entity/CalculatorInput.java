@@ -3,13 +3,15 @@ package camp.nextstep.edu.entity;
 import static camp.nextstep.edu.util.StringUtil.*;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Optional;
+import java.util.Queue;
 
 import camp.nextstep.edu.exception.UserException;
 
 public class CalculatorInput {
 
-	private List<String> inputs;
+	private Queue<String> inputs;
 	private int initialNumber;
 
 	public CalculatorInput(String input) {
@@ -24,25 +26,20 @@ public class CalculatorInput {
 	}
 
 	private void init(String input) {
-		List<String> inputSplitedByBlank = Arrays.asList(input.split(" "));
-		this.inputs = inputSplitedByBlank.subList(1, inputSplitedByBlank.size());
-
-		if (!isNumeric(inputSplitedByBlank.get(0))) {
+		this.inputs = new LinkedList<>(Arrays.asList(input.split(" ")));
+		String initialNumberInputString = Optional.ofNullable(this.inputs.poll()).orElse("");
+		if (!isNumeric(initialNumberInputString)) {
 			throw new UserException();
 		}
 
-		this.initialNumber = Integer.parseInt(inputSplitedByBlank.get(0));
+		this.initialNumber = Integer.parseInt(initialNumberInputString);
 	}
 
-	public List<String> getInputs() {
+	public Queue<String> getInputs() {
 		return inputs;
 	}
 
 	public int getInitialNumber() {
 		return initialNumber;
-	}
-
-	public void setInitialNumber(int initialNumber) {
-		this.initialNumber = initialNumber;
 	}
 }

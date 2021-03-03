@@ -7,7 +7,7 @@ public class StringUtil {
 
 	public static String getStringIfNullBlank(String param) {
 		return Optional.ofNullable(param)
-				.orElse("");
+			.orElse("");
 	}
 
 	public static boolean isNumeric(String word) {
