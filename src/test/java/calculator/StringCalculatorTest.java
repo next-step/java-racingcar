@@ -12,10 +12,6 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
-    String[] data = "5 * 3 - 5 / 2".split(" ");
-
-    int result = 0;
-    int temp = 0;
 
     @DisplayName("사용자가 입력한 입력 값이 null이 오거나 빈 공백 문자일 경우")
     @Test
@@ -23,7 +19,7 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator("5 + 3");
 
         assertThatThrownBy(() -> {
-            stringCalculator.checkInputValue("");
+            stringCalculator.checkInputValue("5 + 3");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 값이 null이거나 빈 공백 문자입니다.");
     }
@@ -36,99 +32,29 @@ public class StringCalculatorTest {
         assertThat(Character.isDigit(data.charAt(0))).isTrue();
     }
 
-
-    @DisplayName("단순 덧셈 테스트")
+    @DisplayName("단순 사칙연산 테스트")
+    @ParameterizedTest()
+    @CsvSource(value = {"5 + 3:8", "5 - 3:2", "5 * 3:15", "10 / 2:5"}, delimiter = ':')
     @Test
-    void simple_addition_test() {
-        StringCalculator stringCalculator = new StringCalculator("5 + 3");
+    void four_rule_calculations_test(String input, Integer result) {
+        StringCalculator stringCalculator = new StringCalculator(input);
         stringCalculator.calculate(stringCalculator.input);
 
-        assertThat(stringCalculator.result).isEqualTo(8);
+        assertThat(stringCalculator.result).isEqualTo(result);
+        assertThat(stringCalculator.result).isEqualTo(result);
+        assertThat(stringCalculator.result).isEqualTo(result);
+        assertThat(stringCalculator.result).isEqualTo(result);
+
     }
 
-    @DisplayName("단순 뺄셈 테스트")
+    @DisplayName("2 + 3 / 4 * 2 값 테스트")
     @Test
-    void simple_substraction_test() {
-        StringCalculator stringCalculator = new StringCalculator("5 - 3");
+    void step2_example_value_test() {
+        StringCalculator stringCalculator = new StringCalculator("2 + 3 * 4 / 2");
         stringCalculator.calculate(stringCalculator.input);
 
-        assertThat(stringCalculator.result).isEqualTo(2);
-    }
+        assertThat(stringCalculator.result).isEqualTo(10);
 
-    @DisplayName("단순 곱하기 테스트")
-    @Test
-    void simple_multiplication_test() {
-        StringCalculator stringCalculator = new StringCalculator("5 * 3");
-        stringCalculator.calculate(stringCalculator.input);
-
-        assertThat(stringCalculator.result).isEqualTo(15);
-    }
-
-    @DisplayName("단순 나누기 테스트")
-    @Test
-    void simple_division_test() {
-        StringCalculator stringCalculator = new StringCalculator("10 / 2");
-        stringCalculator.calculate(stringCalculator.input);
-
-        assertThat(stringCalculator.result).isEqualTo(5);
-    }
-
-    @Test
-    @DisplayName("n자릿수 덧셈")
-    void addition_of_n_test() {
-        StringCalculator stringCalculator = new StringCalculator("10 + 20");
-        stringCalculator.calculate(stringCalculator.input);
-
-        assertThat(stringCalculator.result).isEqualTo(30);
-    }
-
-    @DisplayName("n자릿수 나눗셈")
-    @Test
-    void divide_of_n_test() {
-        StringCalculator stringCalculator = new StringCalculator("20 / 10");
-        stringCalculator.calculate(stringCalculator.input);
-
-        assertThat(stringCalculator.result).isEqualTo(2);
-    }
-
-    @DisplayName("4칙 연산 테스트")
-    @Test
-    void four_rule_calculations_test() {
-
-        temp = Integer.parseInt(data[0]);
-
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                operation(data[i], data[i + 1]);
-            }
-        }
-        assertThat(result).isEqualTo(5);
-    }
-
-    public void operation(String operation, String value2) {
-
-        switch (operation) {
-            case "+":
-                temp += Integer.parseInt(value2);
-                break;
-
-            case "-":
-                temp -= Integer.parseInt(value2);
-                break;
-
-            case "*":
-                temp *= Integer.parseInt(value2);
-                break;
-
-            case "/":
-                temp /= Integer.parseInt(value2);
-                break;
-            default:
-                throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
-        }
-
-        result = temp;
 
     }
-
 }
