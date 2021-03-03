@@ -27,8 +27,13 @@ public enum Operation {
 					.get()
 					.operation;
 			return exactOperation.apply(prev, current);
-		} catch (NoSuchElementException e) {
+		} catch (NoSuchElementException | ArithmeticException e) {
 			throw new UserException();
 		}
+	}
+
+	public static boolean isOperation(String inputOp) {
+		return Arrays.stream(values())
+				.anyMatch(oper -> oper.op.equals(inputOp));
 	}
 }

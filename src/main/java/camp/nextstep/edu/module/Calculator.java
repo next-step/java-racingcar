@@ -18,7 +18,7 @@ public class Calculator {
 
 			if (isNumeric(numberOrOperation)) {
 				result = Operation.getResult(result, Integer.parseInt(numberOrOperation), operation);
-			} else if (isOperation(numberOrOperation)) {
+			} else if (Operation.isOperation(numberOrOperation)) {
 				operation = numberOrOperation;
 			} else {
 				throw new UserException();

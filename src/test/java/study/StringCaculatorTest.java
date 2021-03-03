@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import camp.nextstep.edu.entity.Operation;
 import camp.nextstep.edu.exception.UserException;
 import camp.nextstep.edu.module.Calculator;
 
@@ -124,17 +124,42 @@ public class StringCaculatorTest {
 
 	@ParameterizedTest
 	@DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
-	@ValueSource(strings = {"1 , 2", "1 : 1"})
+	@ValueSource(strings = {",", ":"})
 	void 사칙연산이_아닌경우_IllegalArgumentException(String input) {
 		List<String> list = Arrays.asList(input.split(" "));
 		assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> {
 					list.forEach(word -> {
-						if (!isNumeric(word) || !isOperation(word)) {
+						if (!Operation.isOperation(word)) {
 							throw new UserException();
 						}
 					});
 				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
+	}
+
+	@ParameterizedTest
+	@DisplayName("Operation 성공케이스")
+	@ValueSource(strings = {"+", "-", "/", "*"})
+	void Operation_성공(String input) {
+		assertThat(Operation.getResult(1, 1, input))
+				.isGreaterThanOrEqualTo(0);
+	}
+
+	@ParameterizedTest
+	@DisplayName("Opeartion 실패케이스")
+	@ValueSource(strings = {"%", "!", "~"})
+	void Opeartion_exception(String input) {
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					Operation.getResult(1, 1, input);
+				}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
+	}
+
+	@ParameterizedTest
+	@DisplayName("isOperation check")
+	@CsvSource(value = {"/:true", "+:true", "-:true", "*:true", "%:false", "!:false"}, delimiter = ':')
+	void Operation_isOperation_check(String input, boolean expected) {
+		assertThat(Operation.isOperation(input)).isEqualTo(expected);
 	}
 
 	@ParameterizedTest
