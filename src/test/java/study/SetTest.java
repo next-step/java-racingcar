@@ -29,10 +29,10 @@ class SetTest {
     assertThat(numbers.size()).isEqualTo(3);
   }
 
-  @ParameterizedTest(name = "{0}은/는 numbers 안에 있는가? {1}")
+  @ParameterizedTest(name = "{0}은/는 numbers 안에 있는가? {2}")
   @DisplayName("numbers에 1, 2, 3이 존재하고, 4, 5는 존재하지 않는지 확인")
-  @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
-  void numbersContains(int input, boolean expected) {
+  @CsvSource({"1,true,있다.", "2,true,있다.", "3,true,있다.", "4,false,없다.", "5,false,없다."})
+  void numbersContains(int input, boolean expected, String description) {
     assertThat(numbers.contains(input)).isEqualTo(expected);
   }
 }
