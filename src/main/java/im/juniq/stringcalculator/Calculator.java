@@ -20,6 +20,12 @@ public class Calculator {
 	private int calculate(int leftNumber, String operator, int rightNumber) {
 		if ("+".equals(operator)) {
 			return Integer.valueOf(leftNumber) + Integer.valueOf(rightNumber);
+		} else if ("-".equals(operator)) {
+			return Integer.valueOf(leftNumber) - Integer.valueOf(rightNumber);
+		} else if ("*".equals(operator)) {
+			return Integer.valueOf(leftNumber) * Integer.valueOf(rightNumber);
+		} else if ("/".equals(operator)) {
+			return Integer.valueOf(leftNumber) / Integer.valueOf(rightNumber);
 		}
 		throw new IllegalArgumentException();
 	}
