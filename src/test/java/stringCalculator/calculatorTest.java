@@ -48,5 +48,13 @@ public class calculatorTest {
         .hasMessage("input is null or empty");
   }
 
+  @DisplayName("사칙연산 기호가 아닌 경우")
+  @Test
+  void given_not_contains_operation() {
+    assertThatThrownBy(() -> calculator.calculate("2 # 4"))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("input not contains operation");
+  }
+
 
 }

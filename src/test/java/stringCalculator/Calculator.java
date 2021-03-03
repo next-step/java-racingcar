@@ -12,6 +12,11 @@ public class Calculator {
       throw new IllegalArgumentException("input is null or empty");
 
     String[] numberAndOperation = input.split(" ");
+
+    if (!("+".equals(numberAndOperation[1]) || "-".equals(numberAndOperation[1]) ||
+    "*".equals(numberAndOperation[1]) || "/".equals(numberAndOperation[1])))
+      throw new IllegalArgumentException("input not contains operation");
+
     if ("+".equals(numberAndOperation[1]))
       return Integer.parseInt(numberAndOperation[0]) + Integer.parseInt(numberAndOperation[2]);
 
