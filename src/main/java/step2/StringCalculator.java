@@ -8,13 +8,22 @@ import java.util.List;
  */
 public class StringCalculator {
 
-    private static final String EXCEPT_NUMBERS = "[^\\d]";
+    private static final String NUMBERS_REGEXP = "[0-9]";
+    private static final String EMPTY_SPACE = "";
+
     List<String> operations = Arrays.asList("+", "-", "*", "/");
 
-    // default method
     public int apply(String input) {
-        if (isBlank(input) || isValidSymbol(input))
+        // 입력시 유효성 검사 체크
+        if (isBlank(input) || !isValidSymbol(input)) {
             throw new IllegalArgumentException();
+        }
+
+        // 데이터 가공을 할건데
+        String[] split = input.split("");
+        for( String item : split) {
+            System.out.println(item);
+        }
 
         return 0;
     }
@@ -37,11 +46,12 @@ public class StringCalculator {
     }
 
     // validation
-    private boolean isValidSymbol(String input) {
-        return input.matches(EXCEPT_NUMBERS);
+    public boolean isValidSymbol(String input) {
+        String s = input.replaceAll(NUMBERS_REGEXP, EMPTY_SPACE);
+        return operations.contains(s.trim());
     }
 
-    private boolean isBlank(String input) {
+    public boolean isBlank(String input) {
         return input == null || input.trim().isEmpty();
     }
 }
