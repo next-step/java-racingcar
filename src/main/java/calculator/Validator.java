@@ -18,27 +18,11 @@ public class Validator {
     }
 
     public void isNotOperation(String input) {
-        if(!isPlus(input) || !isMinus(input)  || !isDivide(input) || !isMultiply(input)) {
+        if(!Operator.isOperation(input)) {
             throw new IllegalArgumentException();
         }
-
     }
 
-    private boolean isPlus(String input) {
-        return input.equals("+");
-    }
-
-    private boolean isMinus(String input) {
-        return input.equals("-");
-    }
-
-    private boolean isMultiply(String input) {
-        return input.equals("*");
-    }
-
-    private boolean isDivide(String input) {
-        return input.equals("/");
-    }
 
     public void isNumberAndOperation(String[] data) {
         isBlankOrEmpty(data[0]);
