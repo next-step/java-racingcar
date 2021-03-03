@@ -9,4 +9,8 @@ public class StringCalculator {
     public int plus(int a, int b) {
         return a + b;
     }
+
+    public int subtract(int minuend, int subtrahend) {
+        return 0;
+    }
 }
