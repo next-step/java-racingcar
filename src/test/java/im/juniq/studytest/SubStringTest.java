@@ -11,6 +11,6 @@ class SubStringTest {
 
 		String substringText = source.substring(1, source.length() - 1);
 
-		assertThat("1,2").isEqualTo(substringText);
+		assertThat(substringText).isEqualTo("1,2");
 	}
 }
