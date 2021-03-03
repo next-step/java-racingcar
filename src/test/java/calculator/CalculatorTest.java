@@ -73,7 +73,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings={"+","-","/","*","&","#"})
+    @ValueSource(strings={"&","#","%"})
     @DisplayName("사칙연산 기호가 아닌 경우 확인")
     void isNotOperationTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {

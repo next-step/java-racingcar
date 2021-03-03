@@ -2,7 +2,7 @@ package calculator;
 
 
 public class Calculator {
-//left = Operator.find(operator).calculate(left, right);
+
     public int calculate(String[] data) {
         int numberOne = Integer.parseInt(data[0]);
         for(int i = 1; i< data.length; i = i + 2) {
