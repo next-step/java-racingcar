@@ -1,14 +1,25 @@
 package step2;
 
-import java.awt.datatransfer.StringSelection;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 문자열 사칙 연산 계산기
- *
  */
 public class StringCalculator {
 
+    private static final String EXCEPT_NUMBERS = "[^\\d]";
+    List<String> operations = Arrays.asList("+", "-", "*", "/");
+
+    // default method
+    public int apply(String input) {
+        if (isBlank(input) || isValidSymbol(input))
+            throw new IllegalArgumentException();
+
+        return 0;
+    }
+
+    // operation
     public int plus(int a, int b) {
         return a + b;
     }
@@ -25,9 +36,9 @@ public class StringCalculator {
         return dividend / divisor;
     }
 
-    public int apply(String input) {
-        if(isBlank(input)) throw new IllegalArgumentException();
-        return 0;
+    // validation
+    private boolean isValidSymbol(String input) {
+        return input.matches(EXCEPT_NUMBERS);
     }
 
     private boolean isBlank(String input) {
