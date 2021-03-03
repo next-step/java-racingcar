@@ -10,7 +10,7 @@ public class StringTest {
 
     @DisplayName("요구사항1: 1,2를 ,로 split하면 1과 2로 분리된다.")
     @Test
-    public void testSplitStringByCommaContains() {
+    public void splitStringByCommaContainsTest() {
         String testStr = "1,2";
 
         assertThat(splitStringByComma(testStr)).contains("1");
@@ -19,7 +19,7 @@ public class StringTest {
 
     @DisplayName("요구사항1: 1를 split하면 1만을 포함하는 배열로 반환한다.")
     @Test
-    public void testSplitStringByCommaExactly() {
+    public void splitStringByCommaExactlyTest() {
         String testStr = "1";
 
         assertThat(splitStringByComma(testStr)).containsExactly("1");
@@ -27,7 +27,7 @@ public class StringTest {
 
     @DisplayName("요구사항2: (1,2)는 1,2로 반환한다.")
     @Test
-    public void testSubtractFirstAndLastString() {
+    public void subtractFirstAndLastStringTest() {
         String testStr = "(1,2)";
 
         assertThat(subtractFirstAndLastString(testStr)).isEqualTo("1,2");
@@ -35,7 +35,7 @@ public class StringTest {
 
     @DisplayName("요구사항3: charAt()을 활용하여 특정위치의 문자를 가져온다")
     @Test
-    public void testGetStringAt() {
+    public void getStringAtTest() {
         String testStr = "abc";
         int getStringIndex = 1;
         String expectedValue = "b";
@@ -45,7 +45,7 @@ public class StringTest {
 
     @DisplayName("요구사항3: charAt()의 문자열 범위밖 지정시 StringIndexOutOfBoundsException 발생한다.")
     @Test
-    public void testGetStringAtWithStringIndexOutOfBoundsException() {
+    public void getStringAtWithStringIndexOutOfBoundsExceptionTest() {
         String testStr = "abc";
         int getStringIndex = 3;
 
