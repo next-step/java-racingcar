@@ -23,4 +23,13 @@ public class StringTest {
         String numbers = "(1,2)";
         assertThat(numbers.substring(1, numbers.length() - 1)).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("요구사항 3 : \"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오고, 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는 테스트")
+    void getChar() {
+        String alphabet = "abc";
+        assertThat(alphabet.charAt(0)).isEqualTo('a');
+        assertThatThrownBy(() -> alphabet.charAt(-1)).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("index out of range: -1");
+    }
 }
