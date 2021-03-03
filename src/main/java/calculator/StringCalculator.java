@@ -2,31 +2,31 @@ package calculator;
 
 public class StringCalculator {
 
-    String[] input;
+    String[] inputDatas;
 
     int result = 0;
     int temp = 0;
 
     public StringCalculator(String userInput) {
         checkInputValue(userInput);
-        input = userInput.split(" ");
-        calculate(input);
+        inputDatas = userInput.split(" ");
+        calculate(inputDatas);
     }
 
 
     // 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-    public void checkInputValue(String input) {
-        if (input.equals(null) || input.equals("")) {
+    public void checkInputValue(String userInput) {
+        if (userInput == null || userInput.equals(" ")) {
             throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
         }
     }
 
     public void calculate(String[] data) {
 
-        temp = Integer.parseInt(input[0]);
+        temp = Integer.parseInt(inputDatas[0]);
 
         for (int i = 0; i < data.length; i++) {
-            if (isDigit(data[i]) == false) {
+            if (!isDigit(data[i])) {
                 findOperation(data[i], data[i + 1]);
             }
         }
@@ -63,20 +63,20 @@ public class StringCalculator {
 
 
     // 사칙연산별 메소드
-    public int additional(int b) {
-        return temp += b;
+    public int additional(int operand) {
+        return temp += operand;
     }
 
-    public int substraction(int b) {
-        return temp -= b;
+    public int substraction(int operand) {
+        return temp -= operand;
     }
 
-    public int multiplication(int b) {
-        return temp *= b;
+    public int multiplication(int operand) {
+        return temp *= operand;
     }
 
-    public int division(int b) {
-        return temp /= b;
+    public int division(int operand) {
+        return temp /= operand;
     }
 
 
