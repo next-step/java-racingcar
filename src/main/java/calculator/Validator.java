@@ -20,10 +20,28 @@ public class Validator {
         return input.equals(" ");
     }
 
+    public void isNotOperation(String input) {
 
+        if(!isPlus(input) || !isMinus(input)  || !isDivide(input) || !isMultiply(input)) {
+            throw new IllegalArgumentException();
+        }
 
-    public boolean isNotOperation(String input) {
-        return true;
+    }
+
+    private boolean isPlus(String input) {
+        return input.equals("+");
+    }
+
+    private boolean isMinus(String input) {
+        return input.equals("-");
+    }
+
+    private boolean isMultiply(String input) {
+        return input.equals("*");
+    }
+
+    private boolean isDivide(String input) {
+        return input.equals("/");
     }
 
     public boolean isNumberAndOperation(String[] splitData) {
