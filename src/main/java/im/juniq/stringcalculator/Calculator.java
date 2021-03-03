@@ -6,9 +6,16 @@ public class Calculator {
 
 	public Calculator(String input) {
 		this.input = input;
+		validInputIsNullAndBlank();
 	}
 
-	public int calculate() {
+	private void validInputIsNullAndBlank() {
+		if (input == null || "".equals(input)) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	public int run() {
 		String[] terms = input.split(SEPARATOR);
 		int result = Integer.valueOf(terms[0]);
 		for (int i = 1; i < terms.length - 1; i += 2) {
@@ -20,11 +27,14 @@ public class Calculator {
 	private int calculate(int leftNumber, String operator, int rightNumber) {
 		if ("+".equals(operator)) {
 			return Integer.valueOf(leftNumber) + Integer.valueOf(rightNumber);
-		} else if ("-".equals(operator)) {
+		}
+		if ("-".equals(operator)) {
 			return Integer.valueOf(leftNumber) - Integer.valueOf(rightNumber);
-		} else if ("*".equals(operator)) {
+		}
+		if ("*".equals(operator)) {
 			return Integer.valueOf(leftNumber) * Integer.valueOf(rightNumber);
-		} else if ("/".equals(operator)) {
+		}
+		if ("/".equals(operator)) {
 			return Integer.valueOf(leftNumber) / Integer.valueOf(rightNumber);
 		}
 		throw new IllegalArgumentException();
