@@ -5,7 +5,7 @@ package calculator;
 import java.util.function.BiFunction;
 
 public enum Calculator {
-    PLUS((a,b) -> (a-b)),
+    PLUS((a,b) -> (a+b)),
     MINUS((a,b) -> (a-b)),
     MULTIPLE((a,b) -> (a*b)),
     DIVIDE((a,b) -> (a/b));

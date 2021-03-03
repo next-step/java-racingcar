@@ -5,15 +5,17 @@ import java.util.Map;
 
 public class StringCalculator {
 
-    private final Map<String, String> matchOperation = new HashMap<String, String>(){{
+    private final Map<String, String> matchOperation = new HashMap<String, String>();
+
+    private void initMap() {
         matchOperation.put("+", "PLUS");
         matchOperation.put("-", "MINUS");
         matchOperation.put("*", "MULTIPLE");
         matchOperation.put("/", "DIVIDE");
-    }};
+    }
 
     public void isBlankOrNull(String data) {
-        if (data.equals("") || data == null) {
+        if (data.equals(" ") || data.equals("")) {
             throw new IllegalArgumentException("입력 값이 null 이거나 빈 공백이면 에러가 발생합니다.");
         }
     }
@@ -27,6 +29,7 @@ public class StringCalculator {
     public int getResult(String input) {
         String datas[] = input.split(" ");
         String operation = "";
+        initMap();
 
         int result = Integer.parseInt(datas[0]);
         for (int i=1; i < datas.length; i+=2) {
