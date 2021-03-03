@@ -13,4 +13,8 @@ public class StringCalculator {
     public int subtract(int minuend, int subtrahend) {
         return minuend - subtrahend;
     }
+
+    public int multiply(Integer multiplicand, Integer multiplier) {
+        return 0;
+    }
 }

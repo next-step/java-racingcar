@@ -2,10 +2,8 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +20,7 @@ class StringCalculatorTest {
 
     @DisplayName("덧셈 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"3,1"}, delimiter = ',')
+    @CsvSource(value = {"3,1"})
     void plusOperatorTest(Integer a, Integer b) {
         int sum = calculator.plus(a, b);
         assertThat(sum).isEqualTo(a + b);
@@ -30,10 +28,17 @@ class StringCalculatorTest {
 
     @DisplayName("뺄셈 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"3,1"}, delimiter = ',')
+    @CsvSource(value = {"3,1"})
     void subtractOperatorTest(Integer minuend, Integer subtrahend) {
         int result = calculator.subtract(minuend, subtrahend);
         assertThat(result).isEqualTo(minuend - subtrahend);
     }
 
+    @DisplayName("곱하기 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"2,4"})
+    void multiplyOperatorTest(Integer multiplicand, Integer multiplier) {
+        int result = calculator.multiply(multiplicand, multiplier);
+        assertThat(result).isEqualTo(multiplicand * multiplier);
+    }
 }
