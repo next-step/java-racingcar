@@ -7,6 +7,6 @@ package step2;
 public class StringCalculator {
 
     public int plus(int a, int b) {
-        return 0;
+        return a + b;
     }
 }
