@@ -1,9 +1,11 @@
 package stringCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,7 +19,7 @@ public class calculatorTest {
     calculator = new Calculator();
   }
 
-  @DisplayName("덧셈,뺄셈,곱셈,나눗셈 테스트")
+  @DisplayName("사칙연산 테스트")
   @ParameterizedTest
   @CsvSource(value = {
       "1 + 2:3", "2 + 3:5", "3 + 4:7", "6 + 8:14", "12 + 15:27",
@@ -29,5 +31,14 @@ public class calculatorTest {
     int result = calculator.calculate(input);
     assertThat(result).isEqualTo(Integer.parseInt(expected));
   }
+
+  @DisplayName("입력 값이 null")
+  @Test
+  void given_input_null() {
+    assertThatThrownBy(() -> calculator.calculate(null))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("input is empty");
+  }
+
 
 }
