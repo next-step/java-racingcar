@@ -7,11 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
@@ -20,37 +17,45 @@ public class CalculatorTest {
     private Validator validator;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         calculator = new Calculator();
         validator = new Validator();
     }
 
     @Test
     @DisplayName("덧셈")
-    public void addTest() {
+    void addTest() {
         String[] data = {"4","+","2"};
         assertEquals(6,calculator.calculate(data));
     }
 
     @Test
     @DisplayName("뺄셈")
-    public void minusTest() {
+    void minusTest() {
         String[] data = {"4","-","2"};
         assertEquals(2,calculator.calculate(data));
     }
 
     @Test
     @DisplayName("곱셈")
-    public void multipleTest() {
+    void multipleTest() {
         String[] data = {"4","*","2"};
         assertEquals(8,calculator.calculate(data));
     }
 
     @Test
     @DisplayName("나눗셈")
-    public void divideTest() {
+    void divideTest() {
         String[] data = {"4","/","2"};
         assertEquals(2,calculator.calculate(data));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"4 + 2,true","4 - 2,true","4 * 2,true","4 / 2,true","4 # 2,false"})
+    @DisplayName("사칙연산을 모두 포함해서 확인")
+    void numberAndOperationTest(String input,String expected){
+        String[] splitData = input.split(" ");
+        assertEquals(expected,validator.isNumberAndOperation(splitData));
     }
 
     static Stream<String> blankStrings() {
@@ -59,20 +64,20 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @MethodSource("blankStrings")
-    @DisplayName("입력값이 null이거나 빈 공백 문자열인 경우")
-    void isBlank(String input) {
+    @DisplayName("입력값이 null이거나 빈 공백 문자열인 경우 확인")
+    void isBlankTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             validator.isBlank(input);
-        }).isInstanceOf(IllegalArgumentException.class);
+        });
     }
 
     @ParameterizedTest
     @ValueSource(strings={"+","-","/","*","&","#"})
-    @DisplayName("사칙연산 기호가 아닌 경우")
-    void checkNull(String input) {
+    @DisplayName("사칙연산 기호가 아닌 경우 확인")
+    void isNotOperationTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             validator.isNotOperation(input);
-        }).isInstanceOf(IllegalArgumentException.class);
+        });
     }
 
 
