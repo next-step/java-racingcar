@@ -11,7 +11,10 @@ public class Calculator {
     String[] numberAndOperation = input.split(" ");
     if ("+".equals(numberAndOperation[1]))
       return Integer.parseInt(numberAndOperation[0]) + Integer.parseInt(numberAndOperation[2]);
-    return Integer.parseInt(numberAndOperation[0]) - Integer.parseInt(numberAndOperation[2]);
+    if ("-".equals(numberAndOperation[1]))
+      return Integer.parseInt(numberAndOperation[0]) - Integer.parseInt(numberAndOperation[2]);
+
+    return Integer.parseInt(numberAndOperation[0]) * Integer.parseInt(numberAndOperation[2]);
   }
 
 }
