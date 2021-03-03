@@ -37,7 +37,15 @@ public class calculatorTest {
   void given_input_null() {
     assertThatThrownBy(() -> calculator.calculate(null))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessage("input is empty");
+        .hasMessage("input is null or empty");
+  }
+
+  @DisplayName("입력 값이 빈 공백문자")
+  @Test
+  void given_input_empty() {
+    assertThatThrownBy(() -> calculator.calculate(""))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("input is null or empty");
   }
 
 

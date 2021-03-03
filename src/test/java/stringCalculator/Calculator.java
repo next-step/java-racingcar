@@ -8,8 +8,8 @@ package stringCalculator;
 public class Calculator {
 
   public int calculate(String input) {
-    if (input == null)
-      throw new IllegalArgumentException("input is empty");
+    if (input == null || "".equals(input))
+      throw new IllegalArgumentException("input is null or empty");
 
     String[] numberAndOperation = input.split(" ");
     if ("+".equals(numberAndOperation[1]))
