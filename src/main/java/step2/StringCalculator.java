@@ -1,6 +1,7 @@
 package step2;
 
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class StringCalculator {
@@ -25,27 +26,25 @@ public class StringCalculator {
      */
 
 
-    public int Cal(String input) {
+    public int calculateToStringInput(String input) {
         inputValidation(input);
 
-        int result = 0;
         String[] inputs = input.split(" ");
         int leftNumber = Integer.parseInt(inputs[0]);
 
-        for (int i = 0; i < input.length(); i += 2) {
+        for (int i = 0; i < inputs.length-1; i += 2) {
             int rightNumber = Integer.parseInt(inputs[i + 2]);
             leftNumber = CalculatorType.findByCalculator(inputs[i + 1]).getCalculator(leftNumber, rightNumber);
-            result += leftNumber;
         }
 
-        return result;
+        return leftNumber;
     }
 
     //입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
     //다수의 valdate가 필요하다면 Validation 클래스를 따로 만들 예정
-    public void inputValidation (String input){
-        if(input.isBlank()){
-            throw new IllegalArgumentException("입력값이 없습니다. 다시 입력해주세요");
+    private void inputValidation (String input){
+        if(input == null || "".equals(input)){
+            throw new IllegalArgumentException("입력값이 없거나 공백입니다.");
         }
     }
 
