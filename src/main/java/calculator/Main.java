@@ -7,6 +7,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String userinput = scanner.nextLine();
 
-        new StringCalculator().splitUserInput(userinput);
+        new StringCalculator(userinput);
     }
 }
