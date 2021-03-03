@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
 
@@ -25,6 +26,17 @@ public class StringCalculatorTest {
                 result = Integer.parseInt(data[i - 1]) + Integer.parseInt(data[i + 1]);
             }
         }
+    }
+
+    @DisplayName("입력 값이 null이 오거나 빈 공백 문자일 경우")
+    @Test
+    void check_user_input_value() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThatThrownBy(() -> {
+            stringCalculator.checkInputValue(" ");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력 값이 null이거나 빈 공백 문자입니다.");
     }
 
     @DisplayName("단순 덧셈 테스트")
