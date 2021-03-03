@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
@@ -51,23 +52,23 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"4+2-3,true","4-2+3,true","4*2+3,true","4#2,false","4+3#2,false"})
+    @ValueSource(strings = {"4+2-3","4-2+3","4*2+3","4#2","4+3#2"})
     @DisplayName("사칙연산을 모두 포함해서 확인")
-    void numberAndOperationTest(String input,String expected){
-        String[] splitData = input.split("");
-        assertEquals(expected,validator.isNumberAndOperation(splitData));
+    void numberAndOperationTest(String input){
+        String[] data = input.split("");
+        assertThatThrownBy(() -> {
+            validator.isNumberAndOperation(data);
+        }).isInstanceOf(Exception.class);
+
     }
 
-    static Stream<String> blankStrings() {
-        return Stream.of(""," ",null);
-    }
 
     @ParameterizedTest
-    @MethodSource("blankStrings")
+    @ValueSource(strings={""," "})
     @DisplayName("입력값이 null이거나 빈 공백 문자열인 경우 확인")
     void isBlankTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            validator.isBlankOrEmptyOrNull(input);
+            validator.isBlankOrEmpty(input);
         });
     }
 

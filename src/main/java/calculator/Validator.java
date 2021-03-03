@@ -1,9 +1,10 @@
 package calculator;
 
+
 public class Validator {
 
-    public void isBlankOrEmptyOrNull(String input) {
-        if(isBlank(input) || isNull(input) || isEmpty(input)) {
+    public void isBlankOrEmpty(String input) {
+        if(isBlank(input) || isEmpty(input)) {
             throw new IllegalArgumentException();
         }
     }
@@ -12,16 +13,11 @@ public class Validator {
         return input.equals("");
     }
 
-    private boolean isNull(String input) {
-        return input == null;
-    }
-
     public boolean isBlank(String input) {
         return input.equals(" ");
     }
 
     public void isNotOperation(String input) {
-
         if(!isPlus(input) || !isMinus(input)  || !isDivide(input) || !isMultiply(input)) {
             throw new IllegalArgumentException();
         }
@@ -44,7 +40,11 @@ public class Validator {
         return input.equals("/");
     }
 
-    public boolean isNumberAndOperation(String[] splitData) {
-        return true;
+    public void isNumberAndOperation(String[] data) {
+        isBlankOrEmpty(data[0]);
+        for(int i = 1; i< data.length; i = i + 2) {
+            isNotOperation(data[i]);
+            isBlankOrEmpty(data[i+1]);
+        }
     }
 }
