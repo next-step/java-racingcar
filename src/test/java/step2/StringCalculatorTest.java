@@ -4,13 +4,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 /**
  * 문자열 사칙 연산 계산기 테스트
  */
 class StringCalculatorTest {
+    static Stream<String> blankStrings() {
+        return Stream.of(null, "", "  ");
+    }
     private StringCalculator calculator;
 
     @BeforeEach
@@ -48,5 +57,17 @@ class StringCalculatorTest {
     void divideOperatorTest(Integer dividend, Integer divisor) {
         int result = calculator.divide(dividend, divisor);
         assertThat(result).isEqualTo(dividend / divisor);
+    }
+
+    @DisplayName("입력 값이 `null`이거나 `빈 공백` 문자인 경우 IllegalArgumentException throw")
+    @ParameterizedTest(name = "입력 값이 `{0}` 인 경우 IllegalArgumentException throw")
+    @MethodSource("isBlank_ShouldReturnTrueForNullOrBlankStringsOneArgument")
+    void isBlank_ShouldReturnTrueForNullOrBlankStringsOneArgument(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> calculator.apply(input));
+    }
+
+    private static Stream<String> isBlank_ShouldReturnTrueForNullOrBlankStringsOneArgument() {
+        return Stream.of(null, "", "  ");
     }
 }
