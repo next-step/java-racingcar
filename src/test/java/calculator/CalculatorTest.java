@@ -67,7 +67,7 @@ public class CalculatorTest {
     @DisplayName("입력값이 null이거나 빈 공백 문자열인 경우 확인")
     void isBlankTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            validator.isBlank(input);
+            validator.isBlankOrEmptyOrNull(input);
         });
     }
 
