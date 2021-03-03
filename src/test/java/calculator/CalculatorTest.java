@@ -51,10 +51,10 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"4 + 2,true","4 - 2,true","4 * 2,true","4 / 2,true","4 # 2,false"})
+    @CsvSource({"4+2-3,true","4-2+3,true","4*2+3,true","4#2,false","4+3#2,false"})
     @DisplayName("사칙연산을 모두 포함해서 확인")
     void numberAndOperationTest(String input,String expected){
-        String[] splitData = input.split(" ");
+        String[] splitData = input.split("");
         assertEquals(expected,validator.isNumberAndOperation(splitData));
     }
 
