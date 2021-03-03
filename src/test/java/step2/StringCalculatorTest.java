@@ -35,4 +35,5 @@ class StringCalculatorTest {
         int result = calculator.subtract(minuend, subtrahend);
         assertThat(result).isEqualTo(minuend - subtrahend);
     }
+
 }

@@ -11,6 +11,6 @@ public class StringCalculator {
     }
 
     public int subtract(int minuend, int subtrahend) {
-        return 0;
+        return minuend - subtrahend;
     }
 }
