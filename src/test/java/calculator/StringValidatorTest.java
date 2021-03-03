@@ -13,21 +13,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 class StringValidatorTest {
 
   @ParameterizedTest
-  @CsvSource(value = {"123a,false", "11,true", "123,true", " 1a2, false"}, delimiter = ',')
-  @DisplayName("isNumber Method 는 문자열이 숫자인지 반환한다.")
-  public void isNumberTest(String input, boolean expected) {
-    boolean number = StringValidator.isNumber(input);
-    assertThat(number).isEqualTo(expected);
-  }
-
-  @Test
-  @DisplayName("isNumber(null) 은 false 를 반환한다.")
-  public void isNumberNullTest() {
-    boolean number = StringValidator.isNumber(null);
-    assertThat(number).isFalse();
-  }
-
-  @ParameterizedTest
   @DisplayName("isOperator() 는 + - * / 만 true를 리턴한다.")
   @CsvSource(value = {"+,true", "-,true", "\\,false", "/,true", "&,false", "*,true"})
   public void isOperatorTest(String input, boolean expected) throws Exception {
