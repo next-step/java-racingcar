@@ -17,4 +17,8 @@ public class StringCalculator {
     public int multiply(Integer multiplicand, Integer multiplier) {
         return multiplicand * multiplier;
     }
+
+    public int divide(Integer dividend, Integer divisor) {
+        return 0;
+    }
 }

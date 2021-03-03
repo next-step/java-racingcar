@@ -41,4 +41,12 @@ class StringCalculatorTest {
         int result = calculator.multiply(multiplicand, multiplier);
         assertThat(result).isEqualTo(multiplicand * multiplier);
     }
+
+    @DisplayName("나누기 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"6,3"})
+    void divideOperatorTest(Integer dividend, Integer divisor) {
+        int result = calculator.divide(dividend, divisor);
+        assertThat(result).isEqualTo(dividend / divisor);
+    }
 }
