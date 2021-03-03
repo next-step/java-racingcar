@@ -5,10 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
@@ -17,110 +17,78 @@ public class StringCalculatorTest {
     int result = 0;
     int temp = 0;
 
-    @DisplayName("연산에 필요한 문자열 자르기")
-    @BeforeEach
-    @Test
-    void split_user_input() {
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                result = Integer.parseInt(data[i - 1]) + Integer.parseInt(data[i + 1]);
-            }
-        }
-    }
-
-    @DisplayName("입력 값이 null이 오거나 빈 공백 문자일 경우")
+    @DisplayName("사용자가 입력한 입력 값이 null이 오거나 빈 공백 문자일 경우")
     @Test
     void check_user_input_value() {
-        StringCalculator stringCalculator = new StringCalculator();
+        StringCalculator stringCalculator = new StringCalculator("5 + 3");
 
         assertThatThrownBy(() -> {
-            stringCalculator.checkInputValue(" ");
+            stringCalculator.checkInputValue("");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 값이 null이거나 빈 공백 문자입니다.");
     }
 
+    @DisplayName("숫자인지 연산자인지 구분하기 위한 테스트")
+    @ParameterizedTest()
+    @ValueSource(strings = {"5", "+", "3"})
+    @Test
+    void isDigit_test(String data) {
+        assertThat(Character.isDigit(data.charAt(0))).isTrue();
+    }
+
+
     @DisplayName("단순 덧셈 테스트")
     @Test
     void simple_addition_test() {
-        String[] data = "5 + 3 ".split(" ");
+        StringCalculator stringCalculator = new StringCalculator("5 + 3");
+        stringCalculator.calculate(stringCalculator.input);
 
-        int addResult = 0;
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                addResult = Integer.parseInt(data[i - 1]) + Integer.parseInt(data[i + 1]);
-            }
-        }
-        assertThat(addResult).isEqualTo(8);
+        assertThat(stringCalculator.result).isEqualTo(8);
     }
 
     @DisplayName("단순 뺄셈 테스트")
     @Test
     void simple_substraction_test() {
-        String[] data = "5 - 3 ".split(" ");
+        StringCalculator stringCalculator = new StringCalculator("5 - 3");
+        stringCalculator.calculate(stringCalculator.input);
 
-        int subResult = 0;
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                subResult = Integer.parseInt(data[i - 1]) - Integer.parseInt(data[i + 1]);
-            }
-        }
-        assertThat(subResult).isEqualTo(2);
+        assertThat(stringCalculator.result).isEqualTo(2);
     }
 
     @DisplayName("단순 곱하기 테스트")
     @Test
     void simple_multiplication_test() {
-        String[] data = "5 * 3 ".split(" ");
+        StringCalculator stringCalculator = new StringCalculator("5 * 3");
+        stringCalculator.calculate(stringCalculator.input);
 
-        int mulResult = 0;
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                mulResult = Integer.parseInt(data[i - 1]) * Integer.parseInt(data[i + 1]);
-            }
-        }
-        assertThat(mulResult).isEqualTo(15);
+        assertThat(stringCalculator.result).isEqualTo(15);
     }
 
     @DisplayName("단순 나누기 테스트")
     @Test
     void simple_division_test() {
-        String[] data = "10 / 2 ".split(" ");
+        StringCalculator stringCalculator = new StringCalculator("10 / 2");
+        stringCalculator.calculate(stringCalculator.input);
 
-        int divResult = 0;
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                divResult = Integer.parseInt(data[i - 1]) / Integer.parseInt(data[i + 1]);
-            }
-        }
-        assertThat(divResult).isEqualTo(5);
+        assertThat(stringCalculator.result).isEqualTo(5);
     }
 
     @Test
     @DisplayName("n자릿수 덧셈")
     void addition_of_n_test() {
-        String[] data = "123 + 50".split(" ");
-        int result = 0;
+        StringCalculator stringCalculator = new StringCalculator("10 + 20");
+        stringCalculator.calculate(stringCalculator.input);
 
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                result = Integer.parseInt(data[i - 1]) + Integer.parseInt(data[i + 1]);
-            }
-        }
-        assertThat(result).isEqualTo(173);
+        assertThat(stringCalculator.result).isEqualTo(30);
     }
 
     @DisplayName("n자릿수 나눗셈")
     @Test
     void divide_of_n_test() {
-        String[] data = "20 / 2".split(" ");
-        int result = 0;
+        StringCalculator stringCalculator = new StringCalculator("20 / 10");
+        stringCalculator.calculate(stringCalculator.input);
 
-        for (int i = 0; i < data.length; i++) {
-            if (!Character.isDigit(data[i].charAt(0))) {
-                result = Integer.parseInt(data[i - 1]) / Integer.parseInt(data[i + 1]);
-            }
-        }
-        assertThat(result).isEqualTo(10);
+        assertThat(stringCalculator.result).isEqualTo(2);
     }
 
     @DisplayName("4칙 연산 테스트")
