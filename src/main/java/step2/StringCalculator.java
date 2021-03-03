@@ -15,6 +15,6 @@ public class StringCalculator {
     }
 
     public int multiply(Integer multiplicand, Integer multiplier) {
-        return 0;
+        return multiplicand * multiplier;
     }
 }
