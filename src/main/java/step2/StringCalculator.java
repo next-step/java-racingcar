@@ -41,7 +41,7 @@ public class StringCalculator {
     }
 
     //입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-    //다수의 valdate가 필요하다면 Validation 클래스를 따로 만들 예정
+    //다수의 valdate가 필요하다면 Validation 클래스를 따로 만들어야함
     private void inputValidation (String input){
         if(input == null || "".equals(input)){
             throw new IllegalArgumentException("입력값이 없거나 공백입니다.");
