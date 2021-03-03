@@ -3,7 +3,6 @@ package stringCalculator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,14 +11,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class calculatorTest {
 
-  private Calculator calculator;
+  private final Calculator calculator = new Calculator();
 
-  @BeforeEach
-  void setUp() {
-    calculator = new Calculator();
-  }
-
-  @DisplayName("사칙연산 테스트")
+  @DisplayName("주어진 숫자가 두개일 때 사칙연산 테스트")
   @ParameterizedTest
   @CsvSource(value = {
       "1 + 2:3", "2 + 3:5", "3 + 4:7", "6 + 8:14", "12 + 15:27",
@@ -28,6 +22,16 @@ public class calculatorTest {
       "10 / 2:5", "22 / 2:11", "6 / 3:2", "15 / 3:5", "20 / 5:4"
   }, delimiter = ':')
   void calculate(String input, String expected) {
+    int result = calculator.calculate(input);
+    assertThat(result).isEqualTo(Integer.parseInt(expected));
+  }
+
+  @DisplayName("주어진 숫자가 여러개일 때 사칙연산 테스트")
+  @ParameterizedTest
+  @CsvSource(value = {
+      "1 + 2 + 3 + 4:10" , "2 + 3 * 4 / 2:10"
+  }, delimiter = ':')
+  void given_many_number_calculate(String input, String expected) {
     int result = calculator.calculate(input);
     assertThat(result).isEqualTo(Integer.parseInt(expected));
   }

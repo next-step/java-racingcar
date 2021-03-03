@@ -6,18 +6,26 @@ public class Calculator {
     if (input == null || "".equals(input))
       throw new IllegalArgumentException("input is null or empty");
 
-    String[] numberAndOperation = input.split(" ");
+    String[] strs = input.split(" ");
+    Integer result = Integer.valueOf(strs[0]);
+    for (int i=0 ; i+2 < strs.length ; i = i+2) {
+      result = twoNumberCalculate(result, strs[i + 1], Integer.parseInt(strs[i + 2]));
+    }
+    return result;
+  }
 
-    if (Operation.PLUS == Operation.ofCode(numberAndOperation[1]))
-      return Integer.parseInt(numberAndOperation[0]) + Integer.parseInt(numberAndOperation[2]);
+  private int twoNumberCalculate(Integer firstNumber, String operation, Integer secondNumber) {
+    if (Operation.PLUS == Operation.ofCode(operation))
+      return firstNumber + secondNumber;
 
-    if (Operation.MINUS == Operation.ofCode(numberAndOperation[1]))
-      return Integer.parseInt(numberAndOperation[0]) - Integer.parseInt(numberAndOperation[2]);
+    if (Operation.MINUS == Operation.ofCode(operation))
+      return firstNumber - secondNumber;
 
-    if (Operation.MULTIPLE == Operation.ofCode(numberAndOperation[1]))
-      return Integer.parseInt(numberAndOperation[0]) * Integer.parseInt(numberAndOperation[2]);
+    if (Operation.MULTIPLE == Operation.ofCode(operation))
+      return firstNumber * secondNumber;
 
-    return Integer.parseInt(numberAndOperation[0]) / Integer.parseInt(numberAndOperation[2]);
+    return firstNumber / secondNumber;
+
   }
 
 }
