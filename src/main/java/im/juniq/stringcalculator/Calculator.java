@@ -1,5 +1,7 @@
 package im.juniq.stringcalculator;
 
+import java.util.function.BinaryOperator;
+
 public class Calculator {
 	private static final String SEPARATOR = " ";
 	private String input;
@@ -25,48 +27,29 @@ public class Calculator {
 	}
 
 	private int calculateEachTerm(String[] terms) {
-		int criterion = Integer.valueOf(terms[0]);
+		int criterion = Integer.parseInt(terms[0]);
 		for (int i = 1; i < terms.length - 1; i += 2) {
-			criterion = calculate(criterion, terms[i], Integer.valueOf(terms[i + 1]));
+			criterion = calculate(criterion, terms[i], Integer.parseInt(terms[i + 1]));
 		}
 		return criterion;
 	}
 
 	private int calculate(int leftNumber, String operator, int rightNumber) {
-		return Operator.findByNotation(operator).calculate(leftNumber, rightNumber);
+		return Operator.findByNotation(operator).calculate.apply(leftNumber, rightNumber);
 	}
 
-	public enum Operator {
-		addition("+"){
-			@Override
-			public int calculate(int leftNumber, int rightNumber) {
-				return leftNumber + rightNumber;
-			}
-		},
-		subtraction("-"){
-			@Override
-			public int calculate(int leftNumber, int rightNumber) {
-				return leftNumber - rightNumber;
-			}
-		},
-		multiplication("*"){
-			@Override
-			public int calculate(int leftNumber, int rightNumber) {
-				return leftNumber * rightNumber;
-			}
-		},
-		division("/"){
-			@Override
-			public int calculate(int leftNumber, int rightNumber) {
-				return leftNumber / rightNumber;
-			}
-		};
+	private enum Operator {
+		ADDITION("+", (leftNumber, rightNumber) -> leftNumber + rightNumber),
+		SUBTRACTION("-", (leftNumber, rightNumber) -> leftNumber - rightNumber),
+		MULTIPLICATION("*", (leftNumber, rightNumber) -> leftNumber * rightNumber),
+		DIVISION("/", (leftNumber, rightNumber) -> leftNumber / rightNumber);
 
 		private String notation;
-		public abstract int calculate(int leftNumber, int rightNumber);
+		private BinaryOperator<Integer> calculate;
 
-		Operator(String notation) {
+		Operator(String notation, BinaryOperator<Integer> calculate) {
 			this.notation = notation;
+			this.calculate = calculate;
 		}
 
 		public static Operator findByNotation(String notation) {
