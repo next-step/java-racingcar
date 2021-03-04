@@ -43,7 +43,7 @@ public class SetTest {
     @DisplayName("요구사항3, Set 포함여부 true, false 확인")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "5:false"}, delimiter = ':')
-    void returnCheck(String input, String expected) {
-        assertEquals(numbers.contains(Integer.parseInt(input)), Boolean.valueOf(expected));
+    void returnCheck(int input, boolean expected) {
+        assertEquals(numbers.contains(input), expected);
     }
 }
