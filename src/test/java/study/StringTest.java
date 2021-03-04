@@ -24,12 +24,23 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("(1, 2)를 괄호 제거 후 1과 2로 분리되는 지 확인")
+    @DisplayName("(1, 2)를 괄호 제거 후 1과 2로 분리되는지 확인")
     void subStringTest() {
         String str = "(1,2)";
         String actual = str.substring(1, str.length() - 1);
 
         assertThat(actual).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("abc에서 charAt()으로 특정 위치의 문자를 가져오는지 확인")
+    void charAtTest() {
+        String str = "abc";
+
+        assertThat(str.charAt(0)).isEqualTo('a');
+        assertThat(str.charAt(1)).isEqualTo('b');
+        assertThat(str.charAt(2)).isEqualTo('c');
+    }
+
 
 }
