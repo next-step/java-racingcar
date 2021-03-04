@@ -4,15 +4,12 @@ import java.util.Random;
 
 public class RandomGenerator {
 
-	private static final Random random;
-	private static final int RANDOM_RANGE;
-
-	static {
-		random = new Random();
-		RANDOM_RANGE = 10;
-	}
+	private final Random random;
+	private final int RANDOM_RANGE;
 
 	private RandomGenerator() {
+		this.random = new Random();
+		this.RANDOM_RANGE = 10;
 	}
 
 	private static class LazyHolder {
