@@ -42,7 +42,6 @@ public class StringCalculatorTest {
 
         assertThat(stringCalculator.result).isEqualTo(result);
 
-
     }
 
     @DisplayName("2 + 3 / 4 * 2 값 테스트")
