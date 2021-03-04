@@ -21,4 +21,18 @@ class ValidatorTest {
         //then
         assertThatNullPointerException().isThrownBy(() -> stringCalculator.calculate(splitExpression));
     }
+
+    @Test
+    @DisplayName("입력 값 빈 공백 문자일일 경우 에러")
+    public void validateEmpty() throws Exception {
+        //given
+        String expression = "     ";
+
+        //when
+        String[] splitExpression = expression.split(" ");
+        StringCalculator stringCalculator = new StringCalculator();
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(splitExpression));
+    }
 }
