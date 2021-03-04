@@ -6,6 +6,7 @@ import calculator.utils.Validator;
 public class StringCalculator {
 
     public int calculate(String[] expression) {
+        Validator.validateNull(expression);
         Validator.validateEmpty(expression);
         Validator.validateLength(expression);
         int sum = Integer.parseInt(expression[0]);

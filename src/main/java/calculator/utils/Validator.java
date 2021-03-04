@@ -8,6 +8,12 @@ public class Validator {
     private Validator() {
     }
 
+    public static void validateNull(String[] expression) {
+        if (expression == null) {
+            throw new NullPointerException("Null 값인지 확인해주세요.");
+        }
+    }
+
     public static void validateEmpty(String[] expression) {
         if (expression.length == EMPTY) {
             throw new IllegalArgumentException("비어있는 값인지 확인해주세요.");
