@@ -18,14 +18,14 @@ public class RacingGame {
         return cars;
     }
 
-    public boolean isRandomOver4() {
+    public int getRandomNumber() {
         Random random = new Random();
 
-        return random.nextInt(10) >= 4;
+        return random.nextInt(10);
     }
 
-    public void updateByRandom(Car car, boolean isRandomOver4) {
-        if (isRandomOver4) {
+    public void updateByRandom(Car car, int randomNumber) {
+        if (randomNumber >= 4) {
             int countMove = car.getCountMove();
             car.setCountMove(++countMove);
         }
@@ -33,8 +33,8 @@ public class RacingGame {
 
     public void playRacing(List<Car> cars) {
         for (Car car : cars) {
-            boolean isRandomOver4 = isRandomOver4();
-            updateByRandom(car, isRandomOver4);
+            int randomNum = getRandomNumber();
+            updateByRandom(car, randomNum);
         }
     }
 
