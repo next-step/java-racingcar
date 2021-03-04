@@ -8,6 +8,10 @@ public class StringCalculator {
     private List<String> operators = new ArrayList<>();
     private int result;
 
+    public int getResult() {
+        return result;
+    }
+
     public StringCalculator(String text) {
         if (text == null || text.equals("")) {
             throw new IllegalArgumentException();
