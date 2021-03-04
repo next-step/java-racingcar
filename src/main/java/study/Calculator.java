@@ -36,38 +36,7 @@ public class Calculator {
     String op = inputQueue.poll();
     Integer rValue = Integer.parseInt(inputQueue.poll());
 
-    result = chooseOperator(op, lValue, rValue);
-  }
-
-  private Integer chooseOperator(String op, Integer lValue, Integer rValue) {
-    switch (op) {
-      case "+":
-        return add(lValue, rValue);
-      case "-":
-        return subtract(lValue, rValue);
-      case "*":
-        return multiply(lValue, rValue);
-      case "/":
-        return divide(lValue, rValue);
-      default:
-        return result;
-    }
-  }
-
-  private Integer add(Integer lValue, Integer rValue) {
-    return lValue + rValue;
-  }
-
-  private Integer subtract(Integer lValue, Integer rValue) {
-    return lValue - rValue;
-  }
-
-  private Integer multiply(Integer lValue, Integer rValue) {
-    return lValue * rValue;
-  }
-
-  private Integer divide(Integer lValue, Integer rValue) {
-    return lValue / rValue;
+    result = Operation.findOperationByOperator(op).eval(lValue, rValue);
   }
 
 }
