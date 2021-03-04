@@ -26,7 +26,7 @@ public enum Operator {
             case "/":
                 return DIVISION;
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("지원하지 않는 연산자입니다. 사칙 연산자를 사용해주세요.");
         }
     }
 

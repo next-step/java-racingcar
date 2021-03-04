@@ -26,7 +26,7 @@ public class Calculator {
 
     private void validate(String expression) {
         if (expression == null || expression.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("수식이 입력되지 않았습니다. 올바른 수식을 다시 입력해주세요.");
         }
     }
 
