@@ -9,6 +9,10 @@ public class StringCalculator {
     private int result;
 
     public StringCalculator(String text) {
+        if (text == null || text.equals("")) {
+            throw new IllegalArgumentException();
+        }
+
         this.text = text;
         this.textArray = text.split(" ");
     }
@@ -29,9 +33,15 @@ public class StringCalculator {
         result /= a;
     }
 
+    public void checkOperator(String op) {
+        if (op.matches("[^-+/*]")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public int calculate() {
         for (String s : textArray) {
-            if (s.matches("\\d+") && operators.size() > 0) {
+            if (s.matches("\\d") && operators.size() > 0) {
                 int a = Integer.parseInt(s);
                 String op = operators.remove(0);
 
@@ -52,6 +62,7 @@ public class StringCalculator {
             } else if (s.matches("\\d+") && operators.size() == 0) {
                 result += Integer.parseInt(s);
             } else {
+                checkOperator(s);
                 operators.add(s);
             }
         }
