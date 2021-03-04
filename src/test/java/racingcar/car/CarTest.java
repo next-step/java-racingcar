@@ -63,4 +63,23 @@ class CarTest {
             assertThat(car.moveForward(randomNumber)).isEqualTo(0);
         }
     }
+
+    @Test
+    @DisplayName("2대만 테스트 (일단 간단히)")
+    void simpleRacingCar() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new NextStepCar());
+        cars.add(new NextStepCar());
+
+        Random random = new Random();
+        cars.get(0).moveForward(random.nextInt(10));
+        cars.get(0).moveForward(random.nextInt(10));
+        cars.get(0).moveForward(random.nextInt(10));
+
+        cars.get(1).moveForward(random.nextInt(10));
+        cars.get(1).moveForward(random.nextInt(10));
+        cars.get(1).moveForward(random.nextInt(10));
+
+        assertThat(cars.get(0).getPosition()).isNotEqualTo(cars.get(1).getPosition());
+    }
 }
