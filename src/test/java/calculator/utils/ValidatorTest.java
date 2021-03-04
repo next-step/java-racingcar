@@ -35,4 +35,18 @@ class ValidatorTest {
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(splitExpression));
     }
+
+    @Test
+    @DisplayName("분리된 값 길이 3 미만일 경우 에러")
+    public void validateLength() throws Exception {
+        //given
+        String expression = "3 + ";
+
+        //when
+        String[] splitExpression = expression.split(" ");
+        StringCalculator stringCalculator = new StringCalculator();
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(splitExpression));
+    }
 }
