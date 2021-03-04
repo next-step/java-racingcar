@@ -1,5 +1,6 @@
 package calculator;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +14,13 @@ public class StringCalculator {
     }
 
     public int calculate(String value) {
-        // 입력 값이 null이거나 빈 공백 문자일 경우
-        if (value == null || value.trim().isEmpty()) throw new IllegalArgumentException();
+        if (StringUtil.isBlank(value)) throw new IllegalArgumentException();
 
         setSymbols(value);
 
         return calculateSymbols();
     }
+
 
     // TODO: 좀 더 나은 이름
     private void setSymbols(String value) {
