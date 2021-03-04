@@ -21,7 +21,6 @@ class CalculatorTest {
 
         // then
         assertThat(result).isEqualTo(5);
-
     }
 
 }
