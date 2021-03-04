@@ -8,9 +8,7 @@ public class StringCalculator {
     int temp = 0;
 
     public StringCalculator(String userInput) {
-        checkInputValue(userInput);
         inputDatas = userInput.split(" ");
-        calculate(inputDatas);
     }
 
 
