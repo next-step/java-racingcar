@@ -141,8 +141,12 @@ public class StringCaculatorTest {
 	@DisplayName("Operation 성공케이스")
 	@ValueSource(strings = {"+", "-", "/", "*"})
 	void Operation_성공(String input) {
-		assertThat(Operation.getResult(1, 1, input))
-			.isGreaterThanOrEqualTo(0);
+
+		int result = Operation.getInstance(input)
+			.getOperation()
+			.apply(1, 1);
+
+		assertThat(result).isGreaterThanOrEqualTo(0);
 	}
 
 	@ParameterizedTest
@@ -151,7 +155,9 @@ public class StringCaculatorTest {
 	void Opeartion_exception(String input) {
 		assertThatExceptionOfType(IllegalArgumentException.class)
 			.isThrownBy(() -> {
-				Operation.getResult(1, 1, input);
+				Operation.getInstance(input)
+					.getOperation()
+					.apply(1, 1);
 			}).withMessageMatching("정상적인 사용자 값이 아닙니다.");
 	}
 

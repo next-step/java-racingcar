@@ -1,7 +1,6 @@
 package camp.nextstep.edu.entity;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 import java.util.function.BiFunction;
 
 import camp.nextstep.edu.exception.UserException;
@@ -19,17 +18,15 @@ public enum Operation {
 		this.operation = operation;
 	}
 
-	public static int getResult(int prev, int current, String inputOp) {
-		try {
-			BiFunction<Integer, Integer, Integer> exactOperation = Arrays.stream(values())
-				.filter(oper -> oper.op.equals(inputOp))
-				.findFirst()
-				.get()
-				.operation;
-			return exactOperation.apply(prev, current);
-		} catch (NoSuchElementException | ArithmeticException e) {
-			throw new UserException();
-		}
+	public BiFunction<Integer, Integer, Integer> getOperation() {
+		return operation;
+	}
+
+	public static Operation getInstance(String inputOp) {
+		return Arrays.stream(values())
+			.filter(oper -> oper.op.equals(inputOp))
+			.findFirst()
+			.orElseThrow(UserException::new);
 	}
 
 	public static boolean isOperation(String inputOp) {

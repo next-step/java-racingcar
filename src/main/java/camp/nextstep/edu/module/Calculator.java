@@ -22,7 +22,10 @@ public class Calculator {
 
 		String word = inputs.poll();
 		if (isNumeric(word)) {
-			int operationResult = Operation.getResult(result, Integer.parseInt(word), op);
+			int operationResult = Operation.getInstance(op)
+				.getOperation()
+				.apply(result, Integer.parseInt(word));
+
 			return calculate(inputs, operationResult, op);
 		}
 
