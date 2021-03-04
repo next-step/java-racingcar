@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
@@ -68,5 +69,20 @@ class StringCalculatorTest {
 
         //then
         assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("올바르지 않은 사칙 연산")
+    public void validateSymbol() throws Exception {
+        //given
+        String expression = "10 ^ 20 / 2";
+
+        //when
+        String[] splitExpression = expression.split(" ");
+        StringCalculator stringCalculator = new StringCalculator();
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> stringCalculator.calculate(splitExpression));
     }
 }
