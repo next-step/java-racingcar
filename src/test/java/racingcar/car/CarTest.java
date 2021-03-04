@@ -11,14 +11,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
     @Test
-    @DisplayName("자동차 전진")
+    @DisplayName("자동차는 4이상이 입력되어야 전진")
     void canMoveForward () {
         Car car = new NextStepCar();
-        assertThat(car.moveForward()).isEqualTo(1);
-        assertThat(car.moveForward()).isEqualTo(2);
-        assertThat(car.moveForward()).isEqualTo(3);
-        assertThat(car.moveForward()).isEqualTo(4);
-        assertThat(car.moveForward()).isEqualTo(5);
+        assertThat(car.moveForward(4)).isEqualTo(1);
+        assertThat(car.moveForward(4)).isEqualTo(2);
+        assertThat(car.moveForward(4)).isEqualTo(3);
+        assertThat(car.moveForward(4)).isEqualTo(4);
+        assertThat(car.moveForward(4)).isEqualTo(5);
+        assertThat(car.moveForward(1)).isEqualTo(5);
+        assertThat(car.moveForward(1)).isEqualTo(5);
+        assertThat(car.moveForward(1)).isEqualTo(5);
+        assertThat(car.moveForward(1)).isEqualTo(5);
     }
 
     @Test
@@ -32,11 +36,11 @@ class CarTest {
         cars.add(new NextStepCar());
 
         for(Car car: cars) {
-            assertThat(car.moveForward()).isEqualTo(1);
-            assertThat(car.moveForward()).isEqualTo(2);
-            assertThat(car.moveForward()).isEqualTo(3);
-            assertThat(car.moveForward()).isEqualTo(4);
-            assertThat(car.moveForward()).isEqualTo(5);
+            assertThat(car.moveForward(4)).isEqualTo(1);
+            assertThat(car.moveForward(5)).isEqualTo(2);
+            assertThat(car.moveForward(6)).isEqualTo(3);
+            assertThat(car.moveForward(7)).isEqualTo(4);
+            assertThat(car.moveForward(8)).isEqualTo(5);
         }
         assertThat(cars.get(0).getPosition()).isEqualTo(5);
         assertThat(cars.get(1).getPosition()).isEqualTo(5);
@@ -52,11 +56,11 @@ class CarTest {
         int randomNumber = random.nextInt(10);
         if (randomNumber >= 4) {
             Car car = new NextStepCar();
-            assertThat(car.moveForward()).isEqualTo(1);
+            assertThat(car.moveForward(randomNumber)).isEqualTo(1);
         }
         if (randomNumber < 4) {
             Car car = new NextStepCar();
-            assertThat(car.moveForward()).isEqualTo(0);
+            assertThat(car.moveForward(randomNumber)).isEqualTo(0);
         }
     }
 }
