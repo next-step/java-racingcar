@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -19,7 +20,7 @@ public class StringTest {
     @DisplayName("1,를 1만 포함하는 배열로 분리되는지 확인")
     void splitOneValue() {
         String[] actual = "1,".split(",");
-        
+
         assertThat(actual).contains("1");
     }
 
@@ -42,5 +43,13 @@ public class StringTest {
         assertThat(str.charAt(2)).isEqualTo('c');
     }
 
+    @Test
+    @DisplayName("charAt()에서 위치 값을 벗어날 때 예외처리 확인")
+    void charAtIndexOutOfBoundException() {
+        String str = "abc";
 
+        assertThatThrownBy(() -> str.charAt(str.length()))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: " + str.length());
+    }
 }
