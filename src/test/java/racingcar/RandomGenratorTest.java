@@ -12,11 +12,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import camp.nextstep.edu.racingcar.entity.RandomGenerator;
+import camp.nextstep.edu.racingcar.module.RandomGenerator;
 
 public class RandomGenratorTest {
 
 	private static final List<Integer> list;
+	private final RandomGenerator generator = RandomGenerator.getInstance();
 
 	static {
 		list = IntStream.range(0, 10)
@@ -38,10 +39,10 @@ public class RandomGenratorTest {
 	@DisplayName("RandomGenerator test")
 	void RandomGenerator_Test() {
 		Arrays.asList(
-			RandomGenerator.generateRandomNumber(),
-			RandomGenerator.generateRandomNumber(),
-			RandomGenerator.generateRandomNumber(),
-			RandomGenerator.generateRandomNumber()
+			generator.generateRandomNumber(),
+			generator.generateRandomNumber(),
+			generator.generateRandomNumber(),
+			generator.generateRandomNumber()
 		).forEach(System.out::println);
 	}
 }

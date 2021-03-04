@@ -8,14 +8,38 @@ import camp.nextstep.edu.racingcar.entity.Car;
 
 public class RacingCarGame {
 
-	public void moveCars(List<Car> cars, int randomNumber) {
-		cars.forEach(car -> car.move(randomNumber));
+	private final RandomGenerator generator;
+
+	private RacingCarGame() {
+		this.generator = RandomGenerator.getInstance();
+	}
+
+	private static class LazyHolder {
+		static final RacingCarGame INSTANCE = new RacingCarGame();
+	}
+
+	public static RacingCarGame getInstance() {
+		return LazyHolder.INSTANCE;
+	}
+
+	public List<Car> moveCars(List<Car> cars) {
+		return cars.stream()
+			.peek(car -> {
+				int randomNumber = generator.generateRandomNumber();
+				car.move(randomNumber);
+			})
+			.collect(Collectors.toList());
 	}
 
 	public List<Car> generateCars(int input) {
 		return IntStream.range(0, input)
-			.boxed()
-			.map((Integer t) -> new Car())
+			.mapToObj((int value) -> new Car())
+			.collect(Collectors.toList());
+	}
+
+	public List<String> getCarStepString(List<Car> cars) {
+		return cars.stream()
+			.map(Car::getStepString)
 			.collect(Collectors.toList());
 	}
 }

@@ -17,7 +17,7 @@ import camp.nextstep.edu.racingcar.module.RacingCarGame;
 
 public class CarGameTest {
 
-	private static RacingCarGame racingCarGame = new RacingCarGame();
+	private static RacingCarGame racingCarGame = RacingCarGame.getInstance();
 
 	@ParameterizedTest
 	@DisplayName("자동차 대수 control")
@@ -30,7 +30,7 @@ public class CarGameTest {
 	}
 
 	@ParameterizedTest
-	@DisplayName("시도할 횟수 control 무조건 move 시키는 전제 조건")
+	@DisplayName("시도할 횟수")
 	@ValueSource(ints = {1, 2, 3})
 	void 시도_횟수(int input) {
 
@@ -40,15 +40,15 @@ public class CarGameTest {
 		// when
 		IntStream.range(0, input)
 			.forEach(index -> {
-				racingCarGame.moveCars(cars, 5);
+				racingCarGame.moveCars(cars);
 			});
 
 		// then
-		cars.forEach(car -> assertThat(car.getStep()).isEqualTo(input));
+		cars.forEach(car -> assertThat(car.getStep()).isGreaterThanOrEqualTo(0));
 	}
 
 	@Test
-	@DisplayName("Racing Car game 진행 무조건 무브")
+	@DisplayName("Racing Car game 진행")
 	void Racing_car_game_run() {
 		// given
 		List<Car> cars = racingCarGame.generateCars(2);
@@ -57,12 +57,12 @@ public class CarGameTest {
 
 		// when
 		IntStream.range(0, attempt)
-			.forEach((i) ->  racingCarGame.moveCars(cars, randomNumber));
+			.forEach((i) ->  racingCarGame.moveCars(cars));
 
 
 		// then
 		cars.forEach(car -> {
-			assertThat(car.getStep()).isEqualTo(attempt);
+			assertThat(car.getStep()).isGreaterThanOrEqualTo(0);
 		});
 	}
 
