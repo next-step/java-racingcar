@@ -22,8 +22,8 @@ public class RacingCar {
         return random.nextInt(10) >= 4;
     }
 
-    public void updateByRandom(Car car) {
-        if (isRandomOver4()) {
+    public void updateByRandom(Car car, boolean isRandomOver4) {
+        if (isRandomOver4) {
             int cntMove = car.getCntMove();
             car.setCntMove(++cntMove);
         }
@@ -31,7 +31,8 @@ public class RacingCar {
 
     public void playRacing(Car[] cars) {
         for (Car car : cars) {
-            updateByRandom(car);
+            boolean isRandomOver4 = isRandomOver4();
+            updateByRandom(car, isRandomOver4);
         }
     }
 
