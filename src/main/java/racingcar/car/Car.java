@@ -1,5 +1,5 @@
 package racingcar.car;
 
 public interface Car {
-    int move();
+    int moveForward();
 }

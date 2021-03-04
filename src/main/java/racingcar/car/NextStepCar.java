@@ -1,8 +1,10 @@
 package racingcar.car;
 
 public class NextStepCar implements Car{
+    private int position = 0;
+
     @Override
-    public int move() {
-        return 0;
+    public int moveForward() {
+        return ++position;
     }
 }
