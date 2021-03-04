@@ -12,6 +12,8 @@ public class StringCalculator {
         return result;
     }
 
+    public StringCalculator() {}
+
     public StringCalculator(String text) {
         if (text == null || text.equals("")) {
             throw new IllegalArgumentException();
@@ -21,20 +23,20 @@ public class StringCalculator {
         this.textArray = text.split(" ");
     }
 
-    public void add(int a) {
-        result += a;
+    public int add(int a, int b) {
+        return a + b;
     }
 
-    public void subtract(int a) {
-        result -= a;
+    public int subtract(int a, int b) {
+        return a - b;
     }
 
-    public void multiply(int a) {
-        result *= a;
+    public int multiply(int a, int b) {
+        return a * b;
     }
 
-    public void divide(int a) {
-        result /= a;
+    public int divide(int a, int b) {
+        return a / b;
     }
 
     public void checkOperator(String op) {
@@ -47,22 +49,24 @@ public class StringCalculator {
         for (String s : textArray) {
             if (s.matches("\\d") && operators.size() > 0) {
                 int a = Integer.parseInt(s);
+                int temp = 0;
                 String op = operators.remove(0);
 
                 switch (op) {
                     case "+":
-                        add(a);
+                        temp = add(result, a);
                         break;
                     case "-":
-                        subtract(a);
+                        temp = subtract(result, a);
                         break;
                     case "*":
-                        multiply(a);
+                        temp = multiply(result, a);
                         break;
                     case "/":
-                        divide(a);
+                        temp = divide(result, a);
                         break;
                 }
+                result = temp;
             } else if (s.matches("\\d+") && operators.size() == 0) {
                 result += Integer.parseInt(s);
             } else {
