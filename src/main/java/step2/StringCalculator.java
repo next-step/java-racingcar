@@ -28,22 +28,22 @@ public class StringCalculator {
         this.input = input;
     }
 
-    public int CalculationAndOuput() {
+    public int calculationAndOuput() {
         String[] inputs = input.split(" ");
         int leftNumber = Integer.parseInt(inputs[0]);
 
-        for (int i = 0; i < inputs.length-1; i += 2) {
+        for (int i = 0; i < inputs.length - 1; i += 2) {
             int rightNumber = Integer.parseInt(inputs[i + 2]);
             CalculatorType calculatorType = CalculatorType.valueOfType(inputs[i + 1]);
-            leftNumber = calculatorType.calculateNumbers(leftNumber,rightNumber);
+            leftNumber = calculatorType.calculateNumbers(leftNumber, rightNumber);
         }
         return leftNumber;
     }
 
     //입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
     //다수의 valdate가 필요하다면 Validation 클래스를 따로 만들어야함
-    private void inputValidation (String input){
-        if(input == null || "".equals(input)){
+    private void inputValidation(String input) {
+        if (input == null || "".equals(input)) {
             throw new IllegalArgumentException("입력값이 없거나 공백입니다.");
         }
     }

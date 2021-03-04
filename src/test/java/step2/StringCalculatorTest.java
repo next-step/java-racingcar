@@ -1,6 +1,5 @@
 package step2;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -34,7 +33,7 @@ public class StringCalculatorTest {
         init(input);
 
         //when
-        int result = stringCalculator.CalculationAndOuput();
+        int result = stringCalculator.calculationAndOuput();
 
         //then
         assertThat(result).isEqualTo(expectedValue);
@@ -43,28 +42,28 @@ public class StringCalculatorTest {
     @DisplayName("입력값이 null이거나 빈 문자일 경우")
     @ParameterizedTest
     @NullAndEmptySource
-    void inputValitionTest (String input){
+    void inputValitionTest(String input) {
         //given
         init(input);
 
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    stringCalculator.CalculationAndOuput();
+                    stringCalculator.calculationAndOuput();
                 }).withMessageMatching("입력값이 없거나 공백입니다.");
     }
 
     @DisplayName("사칙연산이 아닐경우")
     @ParameterizedTest
     @ValueSource(strings = {"1 X 2 + 4 ! 5", "2 w 5"})
-    void typeValidationTest (String input){
+    void typeValidationTest(String input) {
         //given
         init(input);
 
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    stringCalculator.CalculationAndOuput();
+                    stringCalculator.calculationAndOuput();
                 }).withMessageMatching("사칙연산이 아닙니다.");
     }
 
