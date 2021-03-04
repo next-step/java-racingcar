@@ -3,6 +3,7 @@ package step2;
 import java.util.function.Supplier;
 
 public final class Constants {
+    public static final Integer ZERO = 0;
 
     // 숫자와 사칙 연산 사이의 구분을 빈 공백으로 가정
     public static final String SPLIT_DELIMITER = "\\s";
