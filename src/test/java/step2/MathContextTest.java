@@ -66,7 +66,7 @@ class MathContextTest {
     }
 
     @DisplayName("공식 입력 후 숫자, 연산자 갯수 체크")
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0} 공식 입력 후, 숫자 사이즈: {1}, 연산자 사이즈 {2}")
     @MethodSource(value = "formulaStream")
     void setContext_CheckNumbersAndOperationsSize(String formula, Integer numSize, Integer operationSize) {
         mathContext = new MathContext(formula);
