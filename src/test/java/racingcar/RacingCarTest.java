@@ -2,6 +2,7 @@ package racingcar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,14 +21,13 @@ class RacingCarTest {
         assertThat(cars.length).isEqualTo(3);
     }
 
-    @ParameterizedTest
+    @Test
     @DisplayName("랜덤으로 나온 결과가 4이상인 경우 전진하는지 확인한다.")
     void updateByOver4() {
         boolean randomOver4 = racingCar.isRandomOver4();
 
         Car car = new Car(0);
-        if (randomOver4) {
-            //racingCar.updateByRandom(car);
-        }
+        racingCar.updateByRandom(car, true);
+        assertThat(car.getCntMove()).isEqualTo(1);
     }
 }
