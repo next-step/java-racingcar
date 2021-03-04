@@ -1,6 +1,7 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -53,5 +54,13 @@ class OperatorTest {
                 .isThrownBy(() -> {
                     DIVIDE.calculate(dividend, divisor);
                 });
+    }
+
+    @DisplayName("연산자: 사칙 연산 체크 테스트")
+    @ParameterizedTest(name = "{0} 입력 시 {1}")
+    @CsvSource(value = {"^, false", "+, true"})
+    void isOperation_ValidationFourOperationCalculation(String given, boolean expected) {
+        boolean operation = isOperation(given);
+        assertThat(operation).isEqualTo(expected);
     }
 }

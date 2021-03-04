@@ -1,6 +1,7 @@
 package step2;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiFunction;
 
 import static step2.Constants.ILLEGAL_ARGUMENT_EXCEPTION_SUPPLIER;
@@ -48,6 +49,7 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .anyMatch(o -> isEquals(operation, o));
     }
+
     private static boolean isEquals(String operation, Operator o) {
         return o.getOperator().equals(operation);
     }
