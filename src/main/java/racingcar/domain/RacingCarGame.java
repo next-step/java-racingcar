@@ -6,7 +6,7 @@ import racingcar.dto.ScoreBoardPerPlay;
 
 public class RacingCarGame {
 
-    private RacingCarList participatingRacingCarList;
+    private final RacingCarList participatingRacingCarList;
 
     private int playCount;
 

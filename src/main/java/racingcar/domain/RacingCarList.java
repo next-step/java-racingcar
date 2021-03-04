@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class RacingCarList {
 
-    private List<RacingCar> racingCarList = new ArrayList<>();
+    private final List<RacingCar> racingCarList = new ArrayList<>();
 
     public RacingCarList(int carNumber) {
         for (int i = 0; i < carNumber; i++) {

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FinalScoreBoard {
 
-    private List<ScoreBoardPerPlay> scoreList = new ArrayList<>();
+    private final List<ScoreBoardPerPlay> scoreList = new ArrayList<>();
 
     public List<ScoreBoardPerPlay> getAllScore (){
         return scoreList;
