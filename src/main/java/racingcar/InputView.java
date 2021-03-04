@@ -15,6 +15,6 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int cntTry = scanner.nextInt();
 
-        racingCar.initRacing(cntCar, cntTry);
+        racingCar.startRacing(cntCar, cntTry);
     }
 }
