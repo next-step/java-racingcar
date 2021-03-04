@@ -75,7 +75,15 @@ class CarTest {
         cars.get(0).moveForward(random.nextInt(10));
         cars.get(0).moveForward(random.nextInt(10));
         cars.get(0).moveForward(random.nextInt(10));
+        cars.get(0).moveForward(random.nextInt(10));
+        cars.get(0).moveForward(random.nextInt(10));
+        cars.get(0).moveForward(random.nextInt(10));
+        cars.get(0).moveForward(random.nextInt(10));
 
+        cars.get(1).moveForward(random.nextInt(10));
+        cars.get(1).moveForward(random.nextInt(10));
+        cars.get(1).moveForward(random.nextInt(10));
+        cars.get(1).moveForward(random.nextInt(10));
         cars.get(1).moveForward(random.nextInt(10));
         cars.get(1).moveForward(random.nextInt(10));
         cars.get(1).moveForward(random.nextInt(10));
