@@ -85,4 +85,19 @@ class StringCalculatorTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> stringCalculator.calculate(splitExpression));
     }
+
+    @Test
+    @DisplayName("모든 사칙 연산")
+    public void validateAllSymbol() throws Exception {
+        //given
+        String expression = "10 + 20 / 2 * 2";
+
+        //when
+        String[] splitExpression = expression.split(" ");
+        StringCalculator stringCalculator = new StringCalculator();
+        int result = stringCalculator.calculate(splitExpression);
+
+        //then
+        assertThat(result).isEqualTo(30);
+    }
 }
