@@ -1,16 +1,18 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
 
     private static ResultView resultView = new ResultView();
 
-    public Car[] initRacing(int countCar) {
-        Car[] cars = new Car[countCar];
+    public List<Car> initRacing(int countCar) {
+        List<Car> cars = new ArrayList();
 
         for (int i = 0; i < countCar; i++) {
-            cars[i] = new Car(0);
+             cars.add(new Car(0));
         }
 
         return cars;
@@ -29,7 +31,7 @@ public class RacingGame {
         }
     }
 
-    public void playRacing(Car[] cars) {
+    public void playRacing(List<Car> cars) {
         for (Car car : cars) {
             boolean isRandomOver4 = isRandomOver4();
             updateByRandom(car, isRandomOver4);
@@ -37,7 +39,7 @@ public class RacingGame {
     }
 
     public void startRacing(int countCar, int countTry) {
-        Car[] cars = initRacing(countCar);
+        List<Car> cars = initRacing(countCar);
 
         for (int i = 0; i < countTry; i++) {
             playRacing(cars);

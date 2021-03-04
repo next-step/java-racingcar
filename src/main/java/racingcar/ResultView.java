@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
     public void printEachCar(Car car) {
@@ -8,7 +10,7 @@ public class ResultView {
         }
     }
 
-    public void printResult(Car[] cars) {
+    public void printResult(List<Car> cars) {
         for (Car car : cars) {
             printEachCar(car);
 

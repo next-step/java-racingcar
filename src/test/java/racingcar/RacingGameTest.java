@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
@@ -15,8 +17,8 @@ class RacingGameTest {
     @ValueSource(ints = {3})
     @DisplayName("초기화가 정상적으로 이뤄지는지 확인한다.")
     void initRacing(int countCar) {
-        Car[] cars = racingGame.initRacing(countCar);
-        assertThat(cars.length).isEqualTo(3);
+        List<Car> cars = racingGame.initRacing(countCar);
+        assertThat(cars.size()).isEqualTo(3);
     }
 
     @Test
