@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static RacingCar racingCar = new RacingCar();
+    private static RacingGame racingGame = new RacingGame();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");
-        int cntCar = scanner.nextInt();
+        int countCar = scanner.nextInt();
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        int cntTry = scanner.nextInt();
+        int countTry = scanner.nextInt();
 
-        racingCar.startRacing(cntCar, cntTry);
+        racingGame.startRacing(countCar, countTry);
     }
 }

@@ -2,14 +2,14 @@ package racingcar;
 
 import java.util.Random;
 
-public class RacingCar {
+public class RacingGame {
 
     private static ResultView resultView = new ResultView();
 
-    public Car[] initRacing(int cntCar) {
-        Car[] cars = new Car[cntCar];
+    public Car[] initRacing(int countCar) {
+        Car[] cars = new Car[countCar];
 
-        for (int i = 0; i < cntCar; i++) {
+        for (int i = 0; i < countCar; i++) {
             cars[i] = new Car(0);
         }
 
@@ -24,8 +24,8 @@ public class RacingCar {
 
     public void updateByRandom(Car car, boolean isRandomOver4) {
         if (isRandomOver4) {
-            int cntMove = car.getCntMove();
-            car.setCntMove(++cntMove);
+            int countMove = car.getCountMove();
+            car.setCountMove(++countMove);
         }
     }
 
@@ -36,10 +36,10 @@ public class RacingCar {
         }
     }
 
-    public void startRacing(int cntCar, int cntTry) {
-        Car[] cars = initRacing(cntCar);
+    public void startRacing(int countCar, int countTry) {
+        Car[] cars = initRacing(countCar);
 
-        for (int i = 0; i < cntTry; i++) {
+        for (int i = 0; i < countTry; i++) {
             playRacing(cars);
 
             resultView.printResult(cars);

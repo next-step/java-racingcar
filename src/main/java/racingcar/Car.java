@@ -2,17 +2,17 @@ package racingcar;
 
 public class Car {
 
-    private int cntMove;
+    private int countMove;
 
-    public Car(int cntMove) {
-        this.cntMove = cntMove;
+    public Car(int countMove) {
+        this.countMove = countMove;
     }
 
-    public int getCntMove() {
-        return cntMove;
+    public int getCountMove() {
+        return countMove;
     }
 
-    public void setCntMove(int cntMove) {
-        this.cntMove = cntMove;
+    public void setCountMove(int countMove) {
+        this.countMove = countMove;
     }
 }

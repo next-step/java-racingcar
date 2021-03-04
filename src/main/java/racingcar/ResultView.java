@@ -4,7 +4,7 @@ public class ResultView {
 
     public void printResult(Car[] cars) {
         for (Car car : cars) {
-            for (int i = 0; i < car.getCntMove(); i++) {
+            for (int i = 0; i < car.getCountMove(); i++) {
                 System.out.print("-");
             }
             System.out.println();
