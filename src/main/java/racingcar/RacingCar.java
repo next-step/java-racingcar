@@ -6,7 +6,7 @@ public class RacingCar {
 
     private static ResultView resultView = new ResultView();
 
-    private Car[] initRacing(int cntCar) {
+    public Car[] initRacing(int cntCar) {
         Car[] cars = new Car[cntCar];
 
         for (int i = 0; i < cntCar; i++) {
@@ -16,16 +16,20 @@ public class RacingCar {
         return cars;
     }
 
-    private void updateByRandom(Car car) {
-        Random random = new Random ();
+    public boolean isRandomOver4() {
+        Random random = new Random();
 
-        if (random.nextInt(10) >= 4) {
+        return random.nextInt(10) >= 4;
+    }
+
+    public void updateByRandom(Car car) {
+        if (isRandomOver4()) {
             int cntMove = car.getCntMove();
             car.setCntMove(++cntMove);
         }
     }
 
-    private void playRacing(Car[] cars) {
+    public void playRacing(Car[] cars) {
         for (Car car : cars) {
             updateByRandom(car);
         }
