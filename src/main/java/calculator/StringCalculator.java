@@ -1,6 +1,5 @@
 package calculator;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +15,12 @@ public class StringCalculator {
     public int calculate(String value) {
         if (StringUtil.isBlank(value)) throw new IllegalArgumentException();
 
-        setSymbols(value);
+        setSymbolsWith(value);
 
         return calculateSymbols();
     }
 
-
-    // TODO: 좀 더 나은 이름
-    private void setSymbols(String value) {
+    private void setSymbolsWith(String value) {
         final String[] symbolCandidates = value.split(" ");
 
         for (final String candidate : symbolCandidates) {
@@ -37,7 +34,6 @@ public class StringCalculator {
         }
     }
 
-    // TODO: 좀 더 나은 이름
     private int calculateSymbols() {
         int result = operands.get(0);
 
