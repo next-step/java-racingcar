@@ -39,4 +39,19 @@ class StringCalculatorTest {
         //then
         assertThat(result).isEqualTo(-115);
     }
+
+    @Test
+    @DisplayName("곱셈")
+    public void multiply() throws Exception {
+        //given
+        String expression = "5 * 100 * 20";
+
+        //when
+        String[] splitExpression = expression.split(" ");
+        StringCalculator stringCalculator = new StringCalculator();
+        int result = stringCalculator.calculate(splitExpression);
+
+        //then
+        assertThat(result).isEqualTo(10000);
+    }
 }
