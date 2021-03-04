@@ -52,7 +52,7 @@ class MathContextTest {
         assertThat(numQueue.size()).isEqualTo(numSize);
     }
 
-    @DisplayName("공식 입력 후 ")
+    @DisplayName("공식 입력 후 연산자 개수 체크")
     @ParameterizedTest(name = "{0} 입력 시 연산자 개수 {1} 개")
     @CsvSource(value = {"2 + 1 / 3 * 2 + 1, 4"})
     void setOperations_ShouldReturnLinkedList(String formula, Integer operationSize) {

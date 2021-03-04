@@ -29,8 +29,8 @@ public final class MathContext {
         this.formula = formula.split(SPLIT_DELIMITER);
     }
 
-    // 사용자의 입력 값 -> Operation 값만 필터링 -> Operator로 파싱 -> LinkedList 타입으로 반환
-    public final LinkedList<Operator> setOperations(final String[] userInput) {
+    // 사용자의 입력 값 -> Operator로 파싱 -> LinkedList 타입으로 반환
+    public LinkedList<Operator> setOperations(String[] userInput) {
         return Arrays.stream(userInput)
                 .filter(Operator::isOperation)
                 .map(Operator::getOperator)
@@ -38,7 +38,7 @@ public final class MathContext {
     }
 
     // 사용자의 입력 값 -> 숫자만 필터링 -> 숫자로 파싱 ->  LinkedList 타입으로 반환
-    public final LinkedList<Integer> setNumbers(final String[] userInput) {
+    public LinkedList<Integer> setNumbers(String[] userInput) {
         return Arrays.stream(userInput)
                 .filter(Validator::isNumeric)
                 .map(Integer::parseInt)

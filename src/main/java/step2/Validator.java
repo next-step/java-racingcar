@@ -1,7 +1,9 @@
 package step2;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
+import static step2.Constants.REGEXP;
 import static step2.Constants.ZERO;
 
 /**
@@ -26,5 +28,9 @@ public final class Validator {
         if(a.equals(ZERO)) {
             throw new IllegalArgumentException("divide 연산이 불가합니다.");
         }
+    }
+
+    public static boolean isValidation(String input) {
+        return Pattern.matches(REGEXP, input);
     }
 }
