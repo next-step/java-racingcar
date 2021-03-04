@@ -11,7 +11,7 @@ public class StringTest {
     @DisplayName("1,2를 1과 2로 잘 분리되는지 확인")
     void split() {
         String[] actual = "1,2".split(",");
-        assertThat(actual).contains("1", "2");
+
+        assertThat(actual).containsExactly("1", "2");
     }
-    
 }
