@@ -7,4 +7,8 @@ public class NextStepCar implements Car{
     public int moveForward() {
         return ++position;
     }
+
+    public int getPosition() {
+        return position;
+    }
 }
