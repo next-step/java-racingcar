@@ -54,4 +54,19 @@ class StringCalculatorTest {
         //then
         assertThat(result).isEqualTo(10000);
     }
+
+    @Test
+    @DisplayName("나눗셈")
+    public void divide() throws Exception {
+        //given
+        String expression = "100 / 20 / 2";
+
+        //when
+        String[] splitExpression = expression.split(" ");
+        StringCalculator stringCalculator = new StringCalculator();
+        int result = stringCalculator.calculate(splitExpression);
+
+        //then
+        assertThat(result).isEqualTo(2);
+    }
 }
