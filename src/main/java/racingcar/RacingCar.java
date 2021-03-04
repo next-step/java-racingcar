@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RacingCar {
 
-    private static ResultView resultView;
+    private static ResultView resultView = new ResultView();
 
     public void playRacing(Car[] cars, int cntTry) {
         Random random = new Random();
@@ -13,7 +13,7 @@ public class RacingCar {
             for (Car car : cars) {
                 if (random.nextInt(10) >= 4) {
                     int cntMove = car.getCntMove();
-                    car.setCntMove(cntMove++);
+                    car.setCntMove(++cntMove);
                 }
             }
 

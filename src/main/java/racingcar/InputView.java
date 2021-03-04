@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static RacingCar racingCar;
+    private static RacingCar racingCar = new RacingCar();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
