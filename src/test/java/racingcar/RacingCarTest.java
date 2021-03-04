@@ -14,7 +14,7 @@ public class RacingCarTest {
     @CsvSource(value = {"2:3","1:4","0:4"}, delimiter = ':')
     @DisplayName("자동차 move 테스트")
     void move(int movableCount,int totalMovingTryCount) {
-        RacingCar test = new RacingCar("test", new FixedMovingStrategy(movableCount, totalMovingTryCount - movableCount));
+        RacingCar test = new RacingCar(new FixedMovingStrategy(movableCount, totalMovingTryCount - movableCount));
         for (int i = 0; i < totalMovingTryCount; i++) {
             test.move();
         }

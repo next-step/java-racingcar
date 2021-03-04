@@ -6,18 +6,18 @@ public class RacingCarGameRequest {
 
     private int playCount;
 
-    private List<String> carNameList;
+    private int carNumber;
 
-    public RacingCarGameRequest(int playCount, List<String> carNameList) {
+    public RacingCarGameRequest(int playCount,int carNumber) {
         this.playCount = playCount;
-        this.carNameList = carNameList;
+        this.carNumber = carNumber;
     }
 
     public int getPlayCount() {
         return playCount;
     }
 
-    public List<String> getCarNameList() {
-        return carNameList;
+    public int getCarNumber() {
+        return carNumber;
     }
 }

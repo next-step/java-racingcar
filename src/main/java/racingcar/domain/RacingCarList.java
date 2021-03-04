@@ -10,8 +10,10 @@ public class RacingCarList {
 
     private List<RacingCar> racingCarList = new ArrayList<>();
 
-    public RacingCarList(List<String> carNameList) {
-        racingCarList=carNameList.stream().map(RacingCar::new).collect(Collectors.toList());
+    public RacingCarList(int carNumber) {
+        for (int i = 0; i < carNumber; i++) {
+            racingCarList.add(new RacingCar());
+        }
     }
 
     public void move() {
@@ -19,7 +21,8 @@ public class RacingCarList {
     }
 
     public List<CarScore> getIndividualScore(){
-        return racingCarList.stream().map(CarScore::new)
+        return racingCarList.stream()
+                .map(CarScore::new)
                 .collect(Collectors.toList());
     }
 

@@ -4,21 +4,14 @@ import racingcar.domain.RacingCar;
 
 public class CarScore {
 
-    private String name;
-
     private int travelledDistance;
 
-    public CarScore(String name, int travelledDistance) {
-        this.name = name;
+    public CarScore(int travelledDistance) {
         this.travelledDistance = travelledDistance;
     }
 
     public CarScore(RacingCar racingCar) {
-        this(racingCar.getName(),racingCar.getTravelledDistance());
-    }
-
-    public String getName() {
-        return name;
+        this(racingCar.getTravelledDistance());
     }
 
     public int getTravelledDistance() {

@@ -3,18 +3,15 @@ package racingcar.domain;
 public class RacingCar {
 
     private int travelledDistance;
-
-    private String name;
-
+    
     private final MovingStrategy movingStrategy;
 
-    public RacingCar(String name, MovingStrategy movingStrategy) {
-        this.name = name;
+    public RacingCar(MovingStrategy movingStrategy) {
         this.movingStrategy = movingStrategy;
     }
 
-    public RacingCar(String name) {
-        this(name,new DecidingNumberBasedMovingStrategy());
+    public RacingCar() {
+        this(new DecidingNumberBasedMovingStrategy());
     }
 
     public void move(){
@@ -24,8 +21,5 @@ public class RacingCar {
     public int getTravelledDistance() {
         return travelledDistance;
     }
-
-    public String getName() {
-        return name;
-    }
+    
 }

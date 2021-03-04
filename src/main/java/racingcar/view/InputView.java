@@ -5,12 +5,9 @@ import racingcar.dto.RacingCarGameRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.List;
 
 public class InputView {
 
-    private static final String CAR_NAME_DELIMITER = ",";
     private final BufferedReader br;
 
     public InputView() {
@@ -18,25 +15,31 @@ public class InputView {
     }
 
     public RacingCarGameRequest getUserInput() throws IOException {
-        List<String> carNameList = getParticipatingCarNames();
+        int carNumber = getParticipatingCarNumber();
         int playCount = getPlayingCount();
-        return new RacingCarGameRequest(playCount, carNameList);
+        return new RacingCarGameRequest(playCount, carNumber);
     }
 
-    private List<String> getParticipatingCarNames() throws IOException {
-        System.out.println("자동차 이름을 쉼표(,)로 구분하여 입력해주세요");
-        String[] carNames = br.readLine().trim().split(CAR_NAME_DELIMITER);
-        return Arrays.asList(carNames);
+    private int getParticipatingCarNumber() throws IOException {
+        while (true) {
+            System.out.println(Message.INPUT_CAR_NUMBER.getDescription());
+            String carNumberInString = br.readLine().trim();
+            try {
+                return Integer.parseInt(carNumberInString);
+            } catch (NumberFormatException ex) {
+                System.out.println(Message.WRONG_INPUT.getDescription());
+            }
+        }
     }
 
     private int getPlayingCount() throws IOException {
-        while(true){
-            System.out.println("시도할 회수는 몇 회 인가요?");
+        while (true) {
+            System.out.println(Message.INPUT_PLAY_COUNT.getDescription());
             String countInString = br.readLine().trim();
             try {
                 return Integer.parseInt(countInString);
-            } catch (NumberFormatException ex){
-                System.out.println("잘못입력하셨습니다. 숫자를 입력하세요");
+            } catch (NumberFormatException ex) {
+                System.out.println(Message.WRONG_INPUT.getDescription());
             }
         }
     }

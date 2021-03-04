@@ -21,8 +21,7 @@ public class ResultView {
     }
 
     private void printIndividualScore(CarScore carScore) {
-        System.out.printf("차이름 %s : %s %n",
-                carScore.getName(),createDistanceLine(carScore.getTravelledDistance()));
+        System.out.printf("%s %n", createDistanceLine(carScore.getTravelledDistance()));
     }
 
     private String createDistanceLine (int times) {

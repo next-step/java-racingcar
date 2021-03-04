@@ -16,7 +16,7 @@ public class RacingCarGame {
 
     public RacingCarGame(RacingCarGameRequest userInput) {
         playCount = userInput.getPlayCount();
-        participatingRacingCarList = new RacingCarList(userInput.getCarNameList());
+        participatingRacingCarList = new RacingCarList(userInput.getCarNumber());
         finalScoreBoard = new FinalScoreBoard();
     }
 
