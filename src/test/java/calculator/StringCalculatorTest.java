@@ -10,11 +10,16 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
+    StringCalculator stringCalculator;
+
+    @BeforeEach
+    void setUp() {
+        stringCalculator = new StringCalculator("5 + 3");
+    }
+
     @DisplayName("사용자가 입력한 입력 값이 null이 오거나 빈 공백 문자일 경우")
     @Test
     void check_user_input_value() {
-        StringCalculator stringCalculator = new StringCalculator("5 + 3");
-
         assertThatThrownBy(() -> {
             stringCalculator.checkInputValue(" ");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -23,9 +28,9 @@ public class StringCalculatorTest {
 
     @DisplayName("숫자인지 연산자인지 구분하기 위한 테스트")
     @ParameterizedTest()
-    @ValueSource(strings = {"5", "+", "3"}) // 테스트케이스가 일부로 깨지기 위해 연산자를 대입함
+    @ValueSource(strings = {"5", "+", "3"})
     void isDigit_test(String data) {
-        assertThat(Character.isDigit(data.charAt(0))).isTrue();
+        assertThat(stringCalculator.isDigit(data));
     }
 
     @DisplayName("단순 사칙연산 테스트")
