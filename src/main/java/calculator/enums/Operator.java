@@ -1,5 +1,6 @@
 package calculator.enums;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
@@ -8,12 +9,23 @@ public enum Operator {
     MULTIPLY("*", (number1, number2) -> number1 * number2),
     DIVIDE("/", (number1, number2) -> number1 / number2);
 
-    private String operator;
+    private String symbol;
     private BiFunction<Integer, Integer, Integer> expression;
 
-    Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
-        this.operator = operator;
+    Operator(String symbol, BiFunction<Integer, Integer, Integer> expression) {
+        this.symbol = symbol;
         this.expression = expression;
+    }
+
+    public static Operator findBySymbol(String symbol) {
+        return Arrays.stream(Operator.values())
+                .filter(operator -> symbol.equals(operator.getSymbol()))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("사칙연산 기호를 확인해주세요."));
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 
     public int calculate(int number1, int number2) {
