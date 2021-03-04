@@ -2,11 +2,24 @@ package racingcar;
 
 public class Car {
 
+  public static final String UNIT = "-";
+  private int distance;
+
   public boolean move(int randomNumber) {
-    return randomNumber >= 4;
+    if (randomNumber >= 4) {
+      distance += 1;
+      return true;
+    }
+    return false;
   }
 
   public String showStatus() {
-    return "";
+    StringBuilder distanceBuilder = new StringBuilder();
+
+    for (int i = 0; i < distance; i++) {
+      distanceBuilder.append(UNIT);
+    }
+
+    return distanceBuilder.toString();
   }
 }
