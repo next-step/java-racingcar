@@ -6,11 +6,6 @@ import javax.xml.crypto.Data;
 
 public class Calculator {
 
-    private static final String SIZE_THREE_DOWN_ERROR = "size 3 more";
-    private static final String SIZE_EVEN_ERROR = "even size";
-    private static final String ARITHMETIC_SYMBOLS_ERROR = "not arithmetic symbols";
-    private static final String NOT_A_NUMBER_ERROR = "not a number";
-
     /**
      * 사칙연산 구현
      *
@@ -51,7 +46,7 @@ public class Calculator {
                     result = divide(result, number);
                     break;
                 default :
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException(CalculatorErrorMessage.ARITHMETIC_SYMBOLS_ERROR);
             }
         }
 
@@ -66,11 +61,11 @@ public class Calculator {
 
     private void dataSizeCheck(String[] data) throws Exception {
         if (data.length < 3 ) {
-            throw new Exception(SIZE_THREE_DOWN_ERROR);
+            throw new Exception(CalculatorErrorMessage.SIZE_THREE_DOWN_ERROR);
         }
 
         if (data.length % 2 == 0) {
-            throw new Exception(SIZE_EVEN_ERROR);
+            throw new Exception(CalculatorErrorMessage.SIZE_EVEN_ERROR);
         }
     }
 
@@ -83,7 +78,7 @@ public class Calculator {
     private void stringNullCheck(String number) throws IllegalArgumentException {
         if (number == null
                 || number.trim().isEmpty()) {
-            throw new IllegalArgumentException(NOT_A_NUMBER_ERROR);
+            throw new IllegalArgumentException(CalculatorErrorMessage.NOT_A_NUMBER_ERROR);
         }
     }
 
