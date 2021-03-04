@@ -1,9 +1,6 @@
 package step2;
 
 
-import java.util.Optional;
-import java.util.stream.Stream;
-
 public class StringCalculator {
     /**
      * 기능 요구 사항
@@ -24,19 +21,22 @@ public class StringCalculator {
      * 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다.
      * 반복적인 패턴을 찾아 반복문으로 구현한다.
      */
+    private final String input;
 
-
-    public int calculateToStringInput(String input) {
+    public StringCalculator(String input) {
         inputValidation(input);
+        this.input = input;
+    }
 
+    public int CalculationAndOuput() {
         String[] inputs = input.split(" ");
         int leftNumber = Integer.parseInt(inputs[0]);
 
         for (int i = 0; i < inputs.length-1; i += 2) {
             int rightNumber = Integer.parseInt(inputs[i + 2]);
-            leftNumber = CalculatorType.findByCalculator(inputs[i + 1]).getCalculator(leftNumber, rightNumber);
+            CalculatorType calculatorType = CalculatorType.valueOfType(inputs[i + 1]);
+            leftNumber = calculatorType.calculateNumbers(leftNumber,rightNumber);
         }
-
         return leftNumber;
     }
 

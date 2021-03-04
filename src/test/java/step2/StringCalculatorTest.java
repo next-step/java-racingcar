@@ -1,15 +1,11 @@
 package step2;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.HashSet;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,43 +20,51 @@ public class StringCalculatorTest {
      */
     private StringCalculator stringCalculator;
 
-    @BeforeEach
-    void setUp() {
-        stringCalculator = new StringCalculator();
+
+    void init(String input) {
+        stringCalculator = new StringCalculator(input);
     }
 
     // 사칙연산 테스트
+    @DisplayName("사칙연산 테스트")
     @ParameterizedTest
     @CsvSource({"1 + 2, 3", "2 + 5 + 7, 14", "1 * 5 - 2 + 6, 9", "1 + 2 * 10 - 5 / 5, 5"})
-    @DisplayName("사칙연산 테스트")
     void plusTest(String input, int expectedValue) {
+        //given
+        init(input);
 
         //when
-        int result = stringCalculator.calculateToStringInput(input);
+        int result = stringCalculator.CalculationAndOuput();
 
         //then
         assertThat(result).isEqualTo(expectedValue);
     }
 
+    @DisplayName("입력값이 null이거나 빈 문자일 경우")
     @ParameterizedTest
     @NullAndEmptySource
-    @DisplayName("입력값이 null이거나 빈 문자일 경우")
     void inputValitionTest (String input){
+        //given
+        init(input);
 
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    stringCalculator.calculateToStringInput(input);
-                }).withMessageMatching("입력값이 없거나 공백입니다.");
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1 X 2 + 4 ! 5", "2 w 5"})
-    @DisplayName("사칙연산이 아닐경우")
-    void typeValidationTest (String input){
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    stringCalculator.calculateToStringInput(input);
+                    stringCalculator.CalculationAndOuput();
+                }).withMessageMatching("입력값이 없거나 공백입니다.");
+    }
+
+    @DisplayName("사칙연산이 아닐경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 X 2 + 4 ! 5", "2 w 5"})
+    void typeValidationTest (String input){
+        //given
+        init(input);
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    stringCalculator.CalculationAndOuput();
                 }).withMessageMatching("사칙연산이 아닙니다.");
     }
 
