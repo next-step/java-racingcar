@@ -12,7 +12,7 @@ public class RandomNumberGeneratorTest {
     @ParameterizedTest
     @CsvSource(value = {"0:9","1:3","1:12"}, delimiter = ':')
     @DisplayName("특정 범위내 숫자를 랜덤으로 생성하는지 테스트")
-    void randomNumberGenerate(int min,int max) {
+    void randomNumberGenerate(int min, int max) {
         int maxTryCount=100;
         RandomNumberGenerator numberGenerator = new RandomNumberGenerator(max,min);
         for (int i = 0; i < maxTryCount; i++) {

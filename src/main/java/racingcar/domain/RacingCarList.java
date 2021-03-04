@@ -10,10 +10,14 @@ public class RacingCarList {
 
     private final List<RacingCar> racingCarList = new ArrayList<>();
 
-    public RacingCarList(int carNumber) {
+    public RacingCarList(int carNumber, MovingStrategy movingStrategy) {
         for (int i = 0; i < carNumber; i++) {
-            racingCarList.add(new RacingCar());
+            racingCarList.add(new RacingCar(movingStrategy));
         }
+    }
+
+    public RacingCarList(int carNumber) {
+        this(carNumber, new DecidingNumberBasedMovingStrategy());
     }
 
     public void move() {
