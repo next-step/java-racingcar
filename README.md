@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+# 기능목록
+* 자동차 대수, 시도할 횟수 입력
+* 실행 결과 출력
+* 자동차 생성
+* 자동차 이동
+
+
