@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class RacingCar {
 
+    private static ResultView resultView;
+
     public void playRacing(Car[] cars, int cntTry) {
         Random random = new Random();
 
@@ -14,6 +16,8 @@ public class RacingCar {
                     car.setCntMove(cntMove++);
                 }
             }
+
+            resultView.printResult(cars);
         }
     }
 
