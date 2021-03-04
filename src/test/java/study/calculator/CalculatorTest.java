@@ -1,6 +1,7 @@
 package study.calculator;
 
 import calculator.Calculator;
+import calculator.CalculatorErrorMessage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DisplayName("계산기 종합 테스트")
 public class CalculatorTest {
@@ -74,6 +76,36 @@ public class CalculatorTest {
         });
 
         //then
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 -", "9"})
+    @DisplayName("2글자이하 예외 처리 테스트")
+    public void sizeDownExceptionTeest(String input) throws Exception {
+        //given
+
+        //when
+        Exception ex = assertThrows(Exception.class, () -> {
+            calculator.work(input);
+        });
+
+        //then
+        assertThat(ex.getMessage()).isEqualTo(CalculatorErrorMessage.SIZE_THREE_DOWN_ERROR);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 - 2 -", "9 * 10 +"})
+    @DisplayName("짝수 예외 처리 테스트")
+    public void sizeEvenExceptionTeest(String input) throws Exception {
+        //given
+
+        //when
+        Exception ex = assertThrows(Exception.class, () -> {
+            calculator.work(input);
+        });
+
+        //then
+        assertThat(ex.getMessage()).isEqualTo(CalculatorErrorMessage.SIZE_EVEN_ERROR);
     }
 
 }
