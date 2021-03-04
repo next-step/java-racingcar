@@ -15,7 +15,9 @@ public class RacingCar {
     }
 
     public void move(){
-        if(movingStrategy.isMovable())  travelledDistance++;
+        if(movingStrategy.isMovable()){
+            travelledDistance++;
+        }
     }
 
     public int getTravelledDistance() {

@@ -25,7 +25,9 @@ public class RacingCarGame {
     }
 
     public void play() {
-        if(isDone()) throw  new IllegalStateException("game is over");
+        if(isDone()) {
+            throw new IllegalStateException("game is over");
+        }
         participatingRacingCarList.move();
         currentCount++;
         finalScoreBoard.add(currentCount,participatingRacingCarList.getIndividualScore());

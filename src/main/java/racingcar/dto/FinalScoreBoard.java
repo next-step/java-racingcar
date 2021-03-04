@@ -10,7 +10,8 @@ public class FinalScoreBoard {
     public List<ScoreBoardPerPlay> getAllScore (){
         return scoreList;
     }
-    public void add(int playCountNumber,List<CarScore> carScoreList){
+
+    public void add(int playCountNumber, List<CarScore> carScoreList){
         scoreList.add(new ScoreBoardPerPlay(playCountNumber,carScoreList));
     }
 }

@@ -12,12 +12,14 @@ public class ResultView {
 
     public void printFinalResult(FinalScoreBoard finalScoreBoard){
         System.out.println(Message.FINAL_RESULT.getDescription());
-        finalScoreBoard.getAllScore().forEach(this::printScoreBoardPerPlay);
+        finalScoreBoard.getAllScore()
+                .forEach(this::printScoreBoardPerPlay);
     }
 
     private void printScoreBoardPerPlay(ScoreBoardPerPlay scoreBoardPerPlay) {
         System.out.printf("%s회 %n",scoreBoardPerPlay.getPlayNumber());
-        scoreBoardPerPlay.getScoreList().forEach(this::printIndividualScore);
+        scoreBoardPerPlay.getScoreList()
+                .forEach(this::printIndividualScore);
     }
 
     private void printIndividualScore(CarScore carScore) {
