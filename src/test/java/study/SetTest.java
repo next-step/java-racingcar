@@ -28,5 +28,11 @@ public class SetTest {
     void sizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
     }
-    
+
+    @ParameterizedTest
+    @DisplayName("numbers에 해당 숫자들이 포함되는지 확인")
+    @ValueSource(ints = {1, 2, 3})
+    void contains(int num) {
+        assertThat(numbers.contains(num)).isTrue();
+    }
 }
