@@ -19,6 +19,38 @@ public class StringASMDCalculatorTest {
                 .isEqualTo(10);
     }
 
+    @DisplayName("Additional Success")
+    @ParameterizedTest
+    @CsvSource(value = {"1111 + 1111:2222", "123456789 + 123456789:246913578"}, delimiter = ':')
+    void additionalTest(String sourceString, Long expected) {
+        assertThat(StringASMDCalculator.calculateSentence(sourceString))
+                .isEqualTo(expected);
+    }
+
+    @DisplayName("Subtract Success")
+    @ParameterizedTest
+    @CsvSource(value = {"1111 - 1111:0", "123456789 - 12345678:111111111"}, delimiter = ':')
+    void subtractTest(String sourceString, Long expected) {
+        assertThat(StringASMDCalculator.calculateSentence(sourceString))
+                .isEqualTo(expected);
+    }
+
+    @DisplayName("Division Success")
+    @ParameterizedTest
+    @CsvSource(value = {"133 / 3:44", "3 / 3:1"}, delimiter = ':')
+    void divisionTest(String sourceString, Long expected) {
+        assertThat(StringASMDCalculator.calculateSentence(sourceString))
+                .isEqualTo(expected);
+    }
+
+    @DisplayName("Multiply Success")
+    @ParameterizedTest
+    @CsvSource(value = {"9999 * 9999:99980001", "1 * 0:0"}, delimiter = ':')
+    void multiplyTest(String sourceString, Long expected) {
+        assertThat(StringASMDCalculator.calculateSentence(sourceString))
+                .isEqualTo(expected);
+    }
+
     @DisplayName("Expected Calculates Success")
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "2 + 3 * 0 / 1:0", "12 + 38 * 2 / 25:4"}, delimiter = ':')
