@@ -84,6 +84,16 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
     }
 
+    @DisplayName("\"5 ^ 2\"는 IllegalArgumentException을 던져야 한다.")
+    @Test
+    void calculateWithOtherThanFourOperator() {
+        // Arrange
+        String source = "5 ^ 2";
+
+        // Act & Assert
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
+    }
+
     @DisplayName("\"4 + 3 - 2 * 4 / 5\"는 4를 반환해야 한다.")
     @Test
     void calculateEveryOperator() {
