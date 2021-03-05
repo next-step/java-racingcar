@@ -1,26 +1,44 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class StringCalculator {
 
+    private static final String DELIMITER = " ";
+    private Set<String> opSet = new HashSet<>();
     private String text;
     private String[] textArray;
-    private List<String> operators = new ArrayList<>();
     private int result;
+
+    public void checkText(String text) {
+        if (text == null || text.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkOperator(String[] textArray) {
+        for (int i = 1; i < textArray.length; i += 2) {
+            if (!opSet.contains(textArray[i])) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public void setText(String text) {
+        checkText(text);
+        checkOperator(text.split(DELIMITER));
+        this.text = text;
+        this.textArray = text.split(DELIMITER);
+    }
 
     public int getResult() {
         return result;
     }
 
-    public StringCalculator() {}
-
-    public StringCalculator(String text) {
-        if (text == null || text.equals("")) {
-            throw new IllegalArgumentException();
-        }
-
-        this.text = text;
-        this.textArray = text.split(" ");
+    public StringCalculator() {
+        opSet.add("+");
+        opSet.add("-");
+        opSet.add("*");
+        opSet.add("/");
     }
 
     public int add(int a, int b) {
@@ -39,41 +57,25 @@ public class StringCalculator {
         return a / b;
     }
 
-    public void checkOperator(String op) {
-        if (op.matches("[^-+/*]")) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public int calculate() {
-        for (String s : textArray) {
-            if (s.matches("\\d") && operators.size() > 0) {
-                int a = Integer.parseInt(s);
-                int temp = 0;
-                String op = operators.remove(0);
+        result = Integer.parseInt(textArray[0]);
+        int temp = 0;
+        for (int i = 1; i < textArray.length; i += 2) {
+            int nextNum = Integer.parseInt(textArray[i + 1]);
 
-                switch (op) {
-                    case "+":
-                        temp = add(result, a);
-                        break;
-                    case "-":
-                        temp = subtract(result, a);
-                        break;
-                    case "*":
-                        temp = multiply(result, a);
-                        break;
-                    case "/":
-                        temp = divide(result, a);
-                        break;
-                }
-                result = temp;
-            } else if (s.matches("\\d+") && operators.size() == 0) {
-                result += Integer.parseInt(s);
-            } else {
-                checkOperator(s);
-                operators.add(s);
+            switch (textArray[i]) {
+                case "+":
+                    temp = add(result, nextNum);
+                case "-":
+                    temp = subtract(result, nextNum);
+                case "*":
+                    temp = multiply(result, nextNum);
+                case "/":
+                    temp = divide(result, nextNum);
             }
+            result += temp;
         }
+
         return result;
     }
 }
