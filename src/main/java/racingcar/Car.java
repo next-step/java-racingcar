@@ -2,7 +2,6 @@ package racingcar;
 
 public class Car {
 
-//    private int countMove;
     private String state;
 
     public Car(String state) {
