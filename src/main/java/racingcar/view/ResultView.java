@@ -11,7 +11,7 @@ public class ResultView {
     private static final String EMPTY_SPACE = " ";
 
     public void printFinalResult(FinalScoreBoard finalScoreBoard){
-        System.out.println(Message.FINAL_RESULT.getDescription());
+        System.out.println(MessageConstant.FINAL_RESULT);
         finalScoreBoard.getAllScore()
                 .forEach(this::printScoreBoardPerPlay);
     }

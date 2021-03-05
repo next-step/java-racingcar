@@ -16,24 +16,24 @@ public class InputView {
 
     private int getParticipatingCarNumber() throws IOException {
         while (true) {
-            System.out.println(Message.INPUT_CAR_NUMBER.getDescription());
+            System.out.println(MessageConstant.INPUT_CAR_NUMBER);
             String carNumberInString = SCANNER.nextLine();
             try {
                 return Integer.parseInt(carNumberInString);
             } catch (NumberFormatException ex) {
-                System.out.println(Message.WRONG_INPUT.getDescription());
+                System.out.println(MessageConstant.WRONG_INPUT);
             }
         }
     }
 
     private int getPlayingCount() throws IOException {
         while (true) {
-            System.out.println(Message.INPUT_PLAY_COUNT.getDescription());
+            System.out.println(MessageConstant.INPUT_PLAY_COUNT);
             String countInString = SCANNER.nextLine();
             try {
                 return Integer.parseInt(countInString);
             } catch (NumberFormatException ex) {
-                System.out.println(Message.WRONG_INPUT.getDescription());
+                System.out.println(MessageConstant.WRONG_INPUT);
             }
         }
     }
