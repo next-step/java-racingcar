@@ -1,4 +1,4 @@
-package racing.io;
+package racing;
 
 public class RacingInput {
 

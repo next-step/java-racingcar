@@ -1,4 +1,4 @@
-package racing.io;
+package racing;
 
 import java.util.Scanner;
 
