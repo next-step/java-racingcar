@@ -1,7 +1,7 @@
 # 자동차 경주 게임
 ## 지난 피드백 반영
   * Message enum 가독성을 위해 final 상수 클래스로 변경
-  * ResultView static 함수추출
+  * ResultView static 함수추출 고려
 ## 구현 기능 정리
 * 자동차
   * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
