@@ -1,8 +1,8 @@
 package camp.nextstep.edu.racingcar.module;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import camp.nextstep.edu.racingcar.entity.Car;
 
@@ -31,15 +31,30 @@ public class RacingCarGame {
 			.collect(Collectors.toList());
 	}
 
-	public List<Car> generateCars(int input) {
-		return IntStream.range(0, input)
-			.mapToObj((int value) -> new Car())
+	public List<Car> generateCars(List<String> carNames) {
+		return carNames.stream()
+			.map(Car::new)
 			.collect(Collectors.toList());
 	}
 
 	public List<String> getCarStepString(List<Car> cars) {
 		return cars.stream()
-			.map(Car::getStepString)
+			.map(Car::getStepStringWithName)
 			.collect(Collectors.toList());
+	}
+
+	private int getWinnerStep(List<Car> cars) {
+		return cars.stream()
+			.map(Car::getStep)
+			.max(Comparator.comparingInt(a -> a))
+			.orElse(0);
+	}
+
+	public String getWinnerNames(List<Car> cars) {
+		int winnerStep = getWinnerStep(cars);
+		return cars.stream()
+			.filter(car -> car.getStep() == winnerStep)
+			.map(Car::getCarName)
+			.collect(Collectors.joining(", "));
 	}
 }
