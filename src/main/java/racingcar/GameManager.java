@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Random;
 import java.util.Scanner;
 import racingcar.io.InputView;
 import racingcar.io.Printer;
@@ -16,6 +17,11 @@ public class GameManager {
       int carCount = inputView.inputCarCount();
       int round = inputView.inputRound();
       Printer.printBlankLine();
+
+      Game game = new Game(new Random());
+      game.start(carCount, round);
+
+      Printer.printGameResult(game);
     }
   }
 }
