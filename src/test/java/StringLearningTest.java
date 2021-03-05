@@ -14,7 +14,8 @@ class StringLearningTest {
     }
 
     @Test
-    void 요구사항1(){
+    @DisplayName("요구사항 1) String의 split을 테스트")
+    void splitTest(){
         String test1 = "1,2";
         String[] result1Arr = test1.split(",");
         assertThat(result1Arr).containsExactly("1", "2");
@@ -25,14 +26,15 @@ class StringLearningTest {
     }
 
     @Test
-    void 요구사항2(){
+    @DisplayName("요구사항 2) subString을 테스트")
+    void subStringTest(){
         String test1 = "(1,2)";
         String result = test1.substring(1, test1.length() - 1);
         assertThat(result).contains("1,2");
     }
     @Test
-    @DisplayName("charAt()의 Learning Test - 범위 내의 a, b, c가져오기")
-    void 요구사항3_1(){
+    @DisplayName("요구사항 3) charAt()의 Learning Test - 범위 내의 a, b, c가져오기")
+    void validateCharAtIndexIn(){
         char a = abc.charAt(0);
         char b = abc.charAt(1);
         char c = abc.charAt(2);
@@ -42,8 +44,8 @@ class StringLearningTest {
     }
 
     @Test
-    @DisplayName("charAt()의 Learning Test - 범위 밖의 값을 가져오기")
-    void 요구사항3_2(){
+    @DisplayName("요구사항 3-1) charAt()의 Learning Test - 범위 밖의 값을 가져오기")
+    void validateCharAtIndexOut(){
         assertThatThrownBy(() -> {
             abc.charAt(-1);
         }).isInstanceOf(IndexOutOfBoundsException.class)

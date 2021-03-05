@@ -22,19 +22,19 @@ public class SetLearningTest {
     }
 
     @Test
-    void 요구사항1(){
+    void checkSetSize(){
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void 요구사항2(int number){
+    void checkSetValue(int number){
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1, true", "2, true", "3, true", "4, false", "5, false"})
-    void 요구사항3(int number, boolean isContain){
+    void checkSetValue(int number, boolean isContain){
         assertThat(numbers.contains(number)).isEqualTo(isContain);
     }
 }
