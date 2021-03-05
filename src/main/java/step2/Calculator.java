@@ -1,5 +1,8 @@
 package step2;
 
+import static step2.Operator.validateOperator;
+import static step2.Operator.getOperator;
+
 public class Calculator {
 
     private static final String DELIMITER = " ";
@@ -11,8 +14,8 @@ public class Calculator {
         int result = Integer.parseInt(operation[0]);
 
         for (int i = 2; i < operation.length; i += 2) {
-            Operator.validateOperator(operation[i - 1]);
-            Operator operator = Operator.getOperator(operation[i - 1]);
+            validateOperator(operation[i - 1]);
+            Operator operator = getOperator(operation[i - 1]);
             result = operator.calculate(result, Integer.parseInt(operation[i]));
         }
         return result;
