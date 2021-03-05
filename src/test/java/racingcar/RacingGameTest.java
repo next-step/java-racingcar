@@ -7,7 +7,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,15 +26,40 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다")
-    void carsCanGoOrStop() {
+    @DisplayName("주어진 횟수 동안 n대의 자동차는 전진할 수 있다. -> 한 대로 테스트")
+    void carsCanGo() {
         Car car = new Car("");
+        List<String> states = new ArrayList();
 
-        car.updateByRandom(1);
-        assertThat(car.getState()).isEqualTo("");
+        for (int countTry = 0; countTry < 5; countTry++) {
+            car.updateByRandom(7);
+            states.add(car.getState());
+        }
 
-        car.updateByRandom(7);
-        assertThat(car.getState()).isEqualTo("-");
+        Iterator<String> state = states.iterator();
+        String expectedState = "";
+
+        while (state.hasNext()) {
+            expectedState += "-";
+            assertThat(state.next()).isEqualTo(expectedState);
+        }
+    }
+
+    @Test
+    @DisplayName("주어진 횟수 동안 n대의 자동차는 멈출 수 있다. -> 한 대로 테스트")
+    void carsCanStop() {
+        Car car = new Car("");
+        List<String> states = new ArrayList();
+
+        for (int countTry = 0; countTry < 5; countTry++) {
+            car.updateByRandom(3);
+            states.add(car.getState());
+        }
+
+        Iterator<String> state = states.iterator();
+        while (state.hasNext()) {
+            assertThat(state.next()).isEqualTo("");
+        }
     }
 
     @ParameterizedTest
