@@ -29,9 +29,9 @@ class CalculatorTest {
         assertThat(result).isEqualTo(5);
     }
 
-    @DisplayName("문자열로 들어온 뺄샘 연산식을 계산하는 테스트")
+    @DisplayName("문자열로 들어온 뺄셈 연산식을 계산하는 테스트")
     @Test
-    void minusTest(){
+    void subtractTest(){
         // given
         String express = "5 - 2";
 
@@ -42,9 +42,9 @@ class CalculatorTest {
         assertThat(result).isEqualTo(3);
     }
 
-    @DisplayName("문자열로 들어온 곱샘 연산식을 계산하는 테스트")
+    @DisplayName("문자열로 들어온 곱셈 연산식을 계산하는 테스트")
     @Test
-    void multiplicationTest(){
+    void multiplyTest(){
         // given
         String express = "4 * 5";
 
@@ -53,6 +53,19 @@ class CalculatorTest {
 
         // then
         assertThat(result).isEqualTo(20);
+    }
+
+    @DisplayName("문자열로 들어온 나눗셈 연산식을 계산하는 테스트")
+    @Test
+    void divideTest(){
+        // given
+        String express = "20 / 5";
+
+        // when
+        int result = calculator.calculate(express);
+
+        // then
+        assertThat(result).isEqualTo(4);
     }
 
 
