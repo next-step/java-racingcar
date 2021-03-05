@@ -64,5 +64,17 @@ class CalculatorTest {
         assertThat(result).isEqualTo(expect);
     }
 
+    @DisplayName("문자열로 들어온 연산식을 계산하는 테스트")
+    @ParameterizedTest(name = "연산식 : {0} = {1}")
+    @CsvSource(value = {"10 / 5 * 2 + 5 - 1:8", "12 + 10 - 2 / 4 * 10:50",
+            "-1 - -10 * 5 + 5 / 10:5", "0 - 0 + 0 * 0 / 1:0"}, delimiter = ':')
+    void calculatorTest(String express, int expect){
+        // when
+        int result = calculator.calculate(express);
+
+        // then
+        assertThat(result).isEqualTo(expect);
+    }
+
 
 }
