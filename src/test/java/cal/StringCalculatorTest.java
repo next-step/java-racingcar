@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
@@ -69,7 +70,7 @@ class StringCalculatorTest {
         String source = null;
 
         // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculateStringEquation(source));
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
     }
 
     @DisplayName("입력값이 빈 공백 문자일 경우 IllegalArgumentException을 던져야 한다.")
@@ -79,7 +80,7 @@ class StringCalculatorTest {
         String source = " ";
 
         // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculateStringEquation(source));
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
     }
 
     @DisplayName("\"4 + 3 - 2 * 4 / 5\"는 4를 반환해야 한다.")
