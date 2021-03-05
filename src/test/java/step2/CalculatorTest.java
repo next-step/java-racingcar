@@ -27,4 +27,11 @@ public class CalculatorTest {
         String input = "1 * 4";
         assertEquals(4, Calculator.multiply(input));
     }
+
+    @Test
+    @DisplayName("나누기 테스트 : 1 / 4 = 0")
+    void divide() {
+        String input = "1 / 4";
+        assertEquals(0, Calculator.divide(input));
+    }
 }
