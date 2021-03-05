@@ -63,4 +63,24 @@ class GameTest {
     // then
     assertThat(game.getCarsStatus()).isEqualTo(result);
   }
+
+  static Stream<Arguments> gameResults() {
+    return Stream.of(
+        arguments(1, 1, UNIT),
+        arguments(1, 2, UNIT + UNIT),
+        arguments(2, 2, UNIT + UNIT + System.lineSeparator() + UNIT + UNIT)
+    );
+  }
+
+  @ParameterizedTest
+  @DisplayName("게임은 자동차의 수와 횟수를 입력받아 게임을 진행할 수 있다.")
+  @MethodSource("gameResults")
+  void startGame(int cars, int rounds, String result) {
+    // given
+    // when
+    game.start(cars, rounds);
+
+    // then
+    assertThat(game.getCarsStatus()).isEqualTo(result);
+  }
 }
