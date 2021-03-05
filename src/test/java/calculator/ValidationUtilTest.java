@@ -43,7 +43,7 @@ public class ValidationUtilTest {
         //WHEN
         String[] inputArray = input.split(" ");
         //THEN
-        assertThatExceptionOfType(NullPointerException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> ValidationUtil.validateInputNull(inputArray));
     }
 }

@@ -2,6 +2,7 @@ package calculator;
 
 public class ValidationUtil {
 
+    private  ValidationUtil() {};
     public static void validateInput(String[] input) {
         try {
             validateInputNull(input);
@@ -36,7 +37,7 @@ public class ValidationUtil {
      * */
     public static void validateInputNull(String[] inputArray) throws NullPointerException{
         if(inputArray[0].equalsIgnoreCase("")){
-            throw new NullPointerException();
+            throw new IllegalArgumentException("연산자의 값이 비어있습니다. 다시한번 확인해주세요");
         }
 
     }

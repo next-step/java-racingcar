@@ -12,13 +12,21 @@ public enum Operator {
     private String operator;
     private BiFunction<Integer,Integer,Integer> calculation;
 
-    Operator(String operator, BiFunction<Integer,Integer,Integer> calculation) {
+    Operator(String operator, BiFunction<Integer, Integer, Integer> calculation){
         this.operator = operator;
         this.calculation = calculation;
     }
 
     public String getName() {
         return operator;
+    }
+
+    public static int calculation(String operator, int total, int num){
+        if(num == 0 && operator == "/"){
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다. 값을 다시한번 확인해주세요.");
+        }
+        int result = converterOperator(operator).getCalculation().apply(total, num);
+        return result;
     }
 
     public BiFunction<Integer, Integer, Integer> getCalculation() {
