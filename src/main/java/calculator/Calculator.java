@@ -8,20 +8,20 @@ public class Calculator {
     public Calculator() {
     }
 
-    public int calculate(String express) {
-        if (isBlank(express)) throw new IllegalArgumentException();
-        return getResult(splitBlank(express));
+    public int calculate(String expression) {
+        if (isBlank(expression)) throw new IllegalArgumentException();
+        return getResult(splitBlank(expression));
     }
 
-    private boolean isBlank(String express) {
-        if (express == null) return true;
-        if (express.equals(" ")) return true;
-        if (express.contains("  ")) return true;
+    private boolean isBlank(String expression) {
+        if (expression == null) return true;
+        if (expression.equals(" ")) return true;
+        if (expression.contains("  ")) return true;
         return false;
     }
 
-    private String[] splitBlank(String express) {
-        return express.split(" ");
+    private String[] splitBlank(String expression) {
+        return expression.split(" ");
     }
 
     private int getResult(String[] data) {
