@@ -35,6 +35,7 @@ public class CarRacingInformation {
         return carRacingCount > 0 ? true : false;
     }
 
+
     public void decideMovable() {
         for(Car car : carList) {
             car.decideMovable();

@@ -47,10 +47,4 @@ public class CarRacingInformationTest {
         assertEquals(false,carRacingInformation.checkCarRacingCount());
     }
 
-    @Test
-    @DisplayName("주어진 횟수 이상으로 경주를 시도하는 경우 확인")
-    public void isPlayMoreThanInputCarRacingCount() {
-        
-    }
-
 }
