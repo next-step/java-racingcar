@@ -13,17 +13,16 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class GameTest {
+class CarsTest {
 
-  Game game;
+  Cars cars;
   Random random;
 
   static Stream<Arguments> carMovements() {
     return Stream.of(
-        arguments(1, 1, UNIT),
-        arguments(2, 1, UNIT + System.lineSeparator() + UNIT),
-        arguments(1, 2, UNIT + UNIT),
-        arguments(1, 3, UNIT + UNIT + UNIT)
+        arguments(1, UNIT),
+        arguments(2, UNIT + System.lineSeparator() + UNIT),
+        arguments(3, UNIT + System.lineSeparator() + UNIT + System.lineSeparator() + UNIT)
     );
   }
 
@@ -35,32 +34,33 @@ class GameTest {
         return 4;
       }
     };
-    game = new Game(random);
+    cars = new Cars(random);
   }
 
   @ParameterizedTest
-  @DisplayName("Game은 자동차를 입력받은 만큼 관리할 수 있다.")
+  @DisplayName("Cars는 자동차를 입력받은 만큼 관리할 수 있다.")
   @ValueSource(ints = {1, 2, 3, 4, 5})
-  void gameContainsCars(int size) {
+  void initialize(int size) {
     // given
     // when
-    game.initialize(size);
+    cars.initialize(size);
 
     // then
-    assertThat(game.getCarCount()).isEqualTo(size);
+    assertThat(cars.getCarCount()).isEqualTo(size);
   }
 
+
   @ParameterizedTest
-  @DisplayName("Game은 입력받은 횟수만큼 자동차의 이동을 시도할 수 있다.")
+  @DisplayName("Cars는 차량 전체의 전진을 시도할 수 있다.")
   @MethodSource("carMovements")
-  void moveCars(int cars, int rounds, String result) {
+  void moveCars(int carCount, String result) {
     // given
-    game.initialize(cars);
+    cars.initialize(carCount);
 
     // when
-    game.moveCars(rounds);
+    cars.moveAll();
 
     // then
-    assertThat(game.getCarsStatus()).isEqualTo(result);
+    assertThat(cars.getStatus()).isEqualTo(result);
   }
 }
