@@ -20,4 +20,11 @@ public class CalculatorTest {
         String input = "1 - 4";
         assertEquals(-3, Calculator.minus(input));
     }
+
+    @Test
+    @DisplayName("곱하기 테스트 : 1 * 4 = 4")
+    void multiply() {
+        String input = "1 * 4";
+        assertEquals(4, Calculator.multiply(input));
+    }
 }
