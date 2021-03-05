@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step2.StringCalculator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -114,7 +113,7 @@ class StringCalculatorTest {
 
     @ParameterizedTest
     @CsvSource({"2 + 4 * 2,12", "4 - 2 * 3 * 2 / 3 + 10 - 23,-9", "100 - 50 / 40 * 12 + 35,47"})
-    @DisplayName("사친 연산 모두 확인")
+    @DisplayName("사칙 연산 모두 확인")
     void calculate(String input, int expected) {
         // given
         StringCalculator calculator = new StringCalculator();
