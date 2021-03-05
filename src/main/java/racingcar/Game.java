@@ -18,13 +18,18 @@ public class Game {
     return cars.getCarCount();
   }
 
-  public void moveCars(int rounds) {
-    for (int i = 0; i < rounds; i++) {
+  public void moveCars(int round) {
+    for (int i = 0; i < round; i++) {
       cars.moveAll();
     }
   }
 
   public String getCarsStatus() {
     return cars.getStatus();
+  }
+
+  public void start(int size, int round) {
+    initialize(size);
+    moveCars(round);
   }
 }
