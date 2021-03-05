@@ -6,4 +6,9 @@ public class Calculator {
         String[] operation = input.split(" ");
         return Integer.parseInt(operation[0]) + Integer.parseInt(operation[2]);
     }
+
+    public static int minus(String input) {
+        String[] operation = input.split(" ");
+        return Integer.parseInt(operation[0]) - Integer.parseInt(operation[2]);
+    }
 }
