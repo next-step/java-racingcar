@@ -25,11 +25,10 @@ public class Calculator {
     }
 
     private int getResult(String[] data) {
-        int sum = 0;
+        int sum = stringToInt(data[0]);
         for (int i = 0; i < data.length - 2; i += 2) {
-            // 유효성 검사에서 연산자임을 이미 검증했다 가정하고 코딩을 시작 -> 이부분 아직 미 구현
-            Operator operator = getOperatorByOperatorFactory(data[i+1]);
-            sum += operator.operate(stringToInt(data[i]), stringToInt(data[i+2]));
+            Operator operator = getOperatorByOperatorFactory(data[i + 1]);
+            sum = operator.operate(sum, stringToInt(data[i + 2]));
         }
         return sum;
     }
@@ -43,8 +42,5 @@ public class Calculator {
         return Integer.parseInt(digitValue);
     }
 
-    // 이후, 정규표현식을 이용해서 검증을 하면 좋다는 생각에 메모용으로 주석 남겨놓았습니다.-> 후에 삭제예정
-    // private boolean isPatternMatches(String express){
-    // return !(Pattern.matches("^[0-9\\+\\-*/\\s=]*$", express));}
 
 }
