@@ -53,4 +53,13 @@ public class CalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> Calculator.multiply(" "));
         assertThrows(IllegalArgumentException.class, () -> Calculator.divide(" "));
     }
+
+    @Test
+    @DisplayName("사칙연산 기호가 아니면 IllegalArgumentException")
+    void isOperator() {
+        assertThrows(IllegalArgumentException.class, () -> Calculator.plus("1 # 3"));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.minus("1 ! 3"));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.multiply("1 @ 3"));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.divide("1 ^ 3"));
+    }
 }
