@@ -53,6 +53,8 @@ public class StringCalculator {
             case "/":
                 code = CalculatorType.DIVISION;
                 break;
+            default:
+                throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
         }
 
         return code;
