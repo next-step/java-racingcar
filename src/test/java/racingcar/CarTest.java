@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.Car.UNIT;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,9 +18,9 @@ class CarTest {
   static Stream<Arguments> distances() {
     return Stream.of(
         Arguments.arguments(0, ""),
-        Arguments.arguments(1, "-"),
-        Arguments.arguments(2, "--"),
-        Arguments.arguments(3, "---")
+        Arguments.arguments(1, UNIT),
+        Arguments.arguments(2, UNIT + UNIT),
+        Arguments.arguments(3, UNIT + UNIT + UNIT)
     );
   }
 
