@@ -62,4 +62,11 @@ public class CalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> Calculator.multiply("1 @ 3"));
         assertThrows(IllegalArgumentException.class, () -> Calculator.divide("1 ^ 3"));
     }
+
+    @Test
+    @DisplayName("사칙연산을 모두 포함하는 연산테스트 : 2 + 3 * 4 / 2 = 10")
+    void operation() {
+        String input = "2 + 3 * 4 / 2";
+        assertEquals(10, Calculator.calculate(input));
+    }
 }
