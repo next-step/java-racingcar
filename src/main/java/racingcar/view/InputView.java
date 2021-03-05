@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.RacingCarGameRule;
 import racingcar.dto.RacingCarGameRequest;
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,25 +9,27 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public RacingCarGameRequest getUserInput() throws IOException {
-        int carNumber = getParticipatingCarNumber();
+    private static final String CAR_SEPARATOR = ",";
+
+    public RacingCarGameRequest getUserInput(RacingCarGameRule racingCarGameRule) throws IOException {
+        String[] carNameList = getParticipatingCarNameArray(racingCarGameRule);
         int playCount = getPlayingCount();
-        return new RacingCarGameRequest(playCount, carNumber);
+        return new RacingCarGameRequest(playCount, carNameList);
     }
 
-    private int getParticipatingCarNumber() throws IOException {
+    private String[] getParticipatingCarNameArray(RacingCarGameRule racingCarGameRule) {
         while (true) {
-            System.out.println(MessageConstant.INPUT_CAR_NUMBER);
-            String carNumberInString = SCANNER.nextLine();
+            System.out.println(MessageConstant.INPUT_CAR_NAME);
+            String[] carNameArray=SCANNER.nextLine().trim().split(CAR_SEPARATOR);
             try {
-                return Integer.parseInt(carNumberInString);
-            } catch (NumberFormatException ex) {
+                racingCarGameRule.validateWhetherCarNameLengthLimit(carNameArray);
+            } catch (IllegalArgumentException exception) {
                 System.out.println(MessageConstant.WRONG_INPUT);
             }
         }
     }
 
-    private int getPlayingCount() throws IOException {
+    private int getPlayingCount() {
         while (true) {
             System.out.println(MessageConstant.INPUT_PLAY_COUNT);
             String countInString = SCANNER.nextLine();

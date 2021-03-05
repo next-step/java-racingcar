@@ -14,9 +14,9 @@ public class RacingCarGame {
 
     private FinalScoreBoard finalScoreBoard;
 
-    public RacingCarGame(RacingCarGameRequest userInput) {
+    public RacingCarGame(RacingCarGameRule racingCarGameRule,RacingCarGameRequest userInput) {
         playCount = userInput.getPlayCount();
-        participatingRacingCarList = new RacingCarList(userInput.getCarNumber());
+        participatingRacingCarList = new RacingCarList(racingCarGameRule, userInput.getCarNameArray());
         finalScoreBoard = new FinalScoreBoard();
     }
 

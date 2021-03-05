@@ -3,21 +3,25 @@ package racingcar.domain;
 public class RacingCar {
 
     private int travelledDistance;
+
+    private String name;
     
-    private final MovingStrategy movingStrategy;
+    private final RacingCarGameRule racingCarGameRule;
 
-    public RacingCar(MovingStrategy movingStrategy) {
-        this.movingStrategy = movingStrategy;
-    }
-
-    public RacingCar() {
-        this(new DecidingNumberBasedMovingStrategy());
+    public RacingCar(RacingCarGameRule racingCarGameRule, String name) {
+        racingCarGameRule.validateWhetherCarNameLengthLimit(name);
+        this.racingCarGameRule = racingCarGameRule;
+        this.name = name;
     }
 
     public void move(){
-        if(movingStrategy.isMovable()){
+        if(racingCarGameRule.isCarMovable()){
             travelledDistance++;
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public int getTravelledDistance() {
