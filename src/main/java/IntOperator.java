@@ -17,6 +17,10 @@ public enum IntOperator {
     }
 
     public static IntOperator of(String sign) {
+        if (sign == null) {
+            throw new IllegalArgumentException();
+        }
+
         switch (sign) {
             case "+":
                 return IntOperator.ADD;
@@ -27,6 +31,7 @@ public enum IntOperator {
             case "/":
                 return IntOperator.DIVIDE;
         }
+        
         throw new IllegalArgumentException();
     }
 }

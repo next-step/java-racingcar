@@ -1,12 +1,11 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class IntOperatorTest {
 
@@ -22,6 +21,15 @@ class IntOperatorTest {
     void of(String sign, String name) {
         IntOperator operator = IntOperator.of(sign);
         assertThat(operator).isEqualTo(IntOperator.valueOf(name));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"(", "@", "!", "a"})
+    @NullSource
+    @EmptySource
+    void of(String sign) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> IntOperator.of(sign));
     }
 
     static Stream<Arguments> providerOfIntOperator() {
