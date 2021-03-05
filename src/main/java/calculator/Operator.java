@@ -24,15 +24,15 @@ public enum Operator {
         return value.apply(x,y);
     }
 
+    private String getOperation() {
+        return this.operation;
+    }
+
     public static Operator findOperation(String operation) {
        return Arrays.stream(Operator.values())
                .filter(op -> op.getOperation().equals(operation))
                .findAny()
                .get();
-    }
-
-    private String getOperation() {
-        return this.operation;
     }
 
     public static boolean isOperation(String operation) {
