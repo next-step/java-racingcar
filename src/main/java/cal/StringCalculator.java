@@ -21,7 +21,7 @@ public class StringCalculator {
     }
 
     private void inspectEmptyCharacter(String input) {
-        if (input.contentEquals(" ")) {
+        if (input.contentEquals(" ") || input.contentEquals("")) {
             throw new IllegalArgumentException();
         }
     }
