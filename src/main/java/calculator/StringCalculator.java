@@ -26,8 +26,8 @@ public class StringCalculator {
         for (final String candidate : symbolCandidates) {
             if (IntegerUtil.isInteger(candidate)) {
                 operands.add(Integer.parseInt(candidate));
-            } else if (Operator.isOperator(candidate)) {
-                operators.add(Operator.parseOperator(candidate));
+            } else if (OperatorUtil.isOperator(candidate)) {
+                operators.add(OperatorUtil.parseOperator(candidate));
             } else {
                 throw new IllegalArgumentException();
             }
