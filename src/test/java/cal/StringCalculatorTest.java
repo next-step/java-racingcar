@@ -86,7 +86,7 @@ class StringCalculatorTest {
 
     @DisplayName("\"4 + 3 - 2 * 4 / 5\"는 4를 반환해야 한다.")
     @Test
-    void calculateEveryOperation() {
+    void calculateEveryOperator() {
         // Arrange
         String source = "4 + 3 - 2 * 4 / 5";
 
