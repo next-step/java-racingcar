@@ -16,7 +16,7 @@ public class Calculator {
      * @param formula
      * @throws IllegalArgumentException
      */
-    private void validateInput(String formula) throws Exception {
+    public void validateInput(String formula) throws IllegalArgumentException {
         // 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
         if(StringUtils.isEmpty(formula)) {
             throw new IllegalArgumentException("수식을 입력해 주세요");
@@ -27,7 +27,7 @@ public class Calculator {
         }
     }
 
-    private boolean isValidOperationLayout(String[] formula) throws Exception {
+    private boolean isValidOperationLayout(String[] formula) {
         if(formula.length%2==0) {
             return false;
         }
