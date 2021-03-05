@@ -22,6 +22,16 @@ public class StringCalculatorTest {
                 .hasMessageContaining("입력 값이 null이거나 빈 공백 문자입니다.");
     }
 
+    @DisplayName("사칙연산 기호가 아닌 경우")
+    @Test
+    void non_operator_test() {
+        stringCalculator = new StringCalculator("5 a 3");
+        assertThatThrownBy(() -> {
+            stringCalculator.returnResult(stringCalculator.inputDatas);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("사칙연산 기호가 아닙니다.");
+    }
+
     @DisplayName("숫자인지 연산자인지 구분하기 위한 테스트")
     @ParameterizedTest()
     @ValueSource(strings = {"5", "+", "3"})
