@@ -13,36 +13,35 @@ public class Calculator {
 
     /**
      * 입력값 검증
-     * @param formula
-     * @throws IllegalArgumentException
+     *  - 입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+     *  - 사칙연산 레이아웃 검증
      */
     public void validateInput(String formula) throws IllegalArgumentException {
-        // 입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw
         if(StringUtils.isEmpty(formula)) {
             throw new IllegalArgumentException("수식을 입력해 주세요");
         }
-        // 사칙연산 레이아웃 검증
         if(!this.isValidOperationLayout(formula.split(" "))) {
             throw new IllegalArgumentException("수식의 구성이 올바르지 않습니다. 다시 입력해 주세요");
         }
     }
 
     private boolean isValidOperationLayout(String[] formula) {
-        if(formula.length%2==0) {
+        /*
+        수식 길이검증
+         - 수식은 홀수개의 인자로 구성되어야 한다.
+         - 수식은 최소 3개 이상의 인자로 구성되어야 한다.
+         */
+        if(formula.length%2==0 || formula.length<3) {
             return false;
         }
         /*
         수식검증
-         - 짝수번째 index 값은 숫자여야 함
-         - 홀수번째 index 값은 사칙연산 기호여야 함
+         - 짝수번째 index 값은 숫자여야 한다.
+         - 홀수번째 index 값은 사칙연산 기호여야 한다.
          */
         for (int i = 0; i < formula.length; i++) {
-            if(i%2==0) {
-                try {
-                    Double.parseDouble(formula[i]);
-                } catch (NumberFormatException e) {
-                    return false;
-                }
+            if(i%2==0 && !this.isNumeric(formula[i])) {
+                return false;
             }
             if(i%2!=0 && !this.isArithmeticOperator(formula[i])) {
                 return false;
@@ -52,9 +51,19 @@ public class Calculator {
     }
 
     /**
+     * 입력값이 숫자인지 판별
+     */
+    private boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * 사칙연산 연산자인지 판별
-     * @param operator
-     * @return
      */
     private boolean isArithmeticOperator(String operator) {
         return "+".equals(operator) || "-".equals(operator) || "*".equals(operator) || "/".equals(operator) ;
@@ -70,7 +79,6 @@ public class Calculator {
 
         for (int i = 1; i < formula.length-1; i+=2) {
             String operator = formula[i];
-
             switch (operator) {
                 case "+":
                     result = result + Integer.parseInt(formula[i+1]);
@@ -86,7 +94,6 @@ public class Calculator {
                     break;
             }
         }
-
         return result;
     }
 }

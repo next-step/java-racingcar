@@ -1,7 +1,6 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
@@ -28,7 +27,7 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"2 2 4", "- 2 4", "- & 4"})
+    @ValueSource(strings = {"2 2 4", "- 2 4", "- & 4", "1 -"})
     @DisplayName("입력값 검증테스트 - 사칙연산 레이아웃")
     void validateInput_isValidOperationLayout(String input) {
         // given
@@ -41,9 +40,9 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2 * 8 - 4:12", "3 / 2 + 1:2"}, delimiter = ':')
+    @CsvSource(value = {"2 + 3 * 4 / 2:10", "2 * 8 - 4:12", "3 / 2 + 1:2"}, delimiter = ':')
     @DisplayName("calculate 메소드 테스트")
-    void calculate(String formula, int expected) throws Exception {
+    void calculate(String formula, int expected) {
         // given
         Calculator calculator = new Calculator();
         // when
