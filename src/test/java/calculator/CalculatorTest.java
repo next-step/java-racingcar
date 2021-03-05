@@ -2,11 +2,13 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CalculatorTest {
 
@@ -76,5 +78,28 @@ class CalculatorTest {
         assertThat(result).isEqualTo(expect);
     }
 
+    @DisplayName("공백을 넣었을 때 IllegalArgumentException() 을 발생시키는지 확인하는 테스트")
+    @Test
+    void calculateCheckBlankExpress(){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(" ");
+        });
+    }
+
+    @DisplayName("null 넣었을 때 IllegalArgumentException() 을 발생시키는지 확인하는 테스트")
+    @Test
+    void calculateCheckNullExpress(){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(null);
+        });
+    }
+
+    @DisplayName("공백이 2개 이상인 문자열을 넣었을 때 IllegalArgumentException() 을 발생시키는지 확인하는 테스트")
+    @Test
+    void calculateCheckConsecutiveBlanks(){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate("  ");
+        });
+    }
 
 }
