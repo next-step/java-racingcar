@@ -41,4 +41,7 @@ public class CarRacingInformation {
         carRacingCount--;
     }
 
+    public int getCarRacingCount() {
+        return carRacingCount;
+    }
 }

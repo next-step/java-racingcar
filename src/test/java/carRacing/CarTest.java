@@ -1,8 +1,6 @@
 package carRacing;
 
 import carRacing.model.Car;
-import carRacing.model.CarRacingInformation;
-import carRacing.model.action.Movable;
 import carRacing.model.action.MovableImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

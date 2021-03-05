@@ -8,7 +8,6 @@ import carRacing.view.ResultView;
 public class RacingController {
     private InputView inputView;
     private ResultView resultView;
-    private CarRacingInformation carRacingInformation;
 
     public RacingController() {
         inputView = new InputView();
@@ -17,13 +16,15 @@ public class RacingController {
     public void runGame() {
         int numberOfCar = drawNumberOfCarAndReturn();
         int carRacingCount = drawCarCountAndReturn();
-        carRacingInformation = new CarRacingInformation(numberOfCar,carRacingCount);
+        CarRacingInformation carRacingInformation
+                = new CarRacingInformation(numberOfCar,carRacingCount);
         drawLiterallyExecutionResult();
-        playGame();
+
+        playGame(carRacingInformation);
 
     }
 
-    private void playGame() {
+    private void playGame(CarRacingInformation carRacingInformation) {
         while(carRacingInformation.checkCarRacingCount()) {
             carRacingInformation.decideMovable();
             for(Car car : carRacingInformation.getCarList()) {

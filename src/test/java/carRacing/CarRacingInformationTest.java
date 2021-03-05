@@ -1,14 +1,11 @@
 package carRacing;
 
-import calculator.Validator;
 import carRacing.model.CarRacingInformation;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarRacingInformationTest {
 
@@ -21,8 +18,8 @@ public class CarRacingInformationTest {
                 .doesNotThrowAnyException();
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"-1","0"})
+
+    @Test
     @DisplayName("입력값(자동차 수, 경주 시도 횟수)이 0 이하인 경우 확인")
     public void isZeroOrLess() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -30,15 +27,24 @@ public class CarRacingInformationTest {
         });
     }
 
+    @Test
     @DisplayName("경주 시도횟수가 1씩 줄어드는지")
     public void checkCarRacingCount() {
+        CarRacingInformation carRacingInformation
+                = new CarRacingInformation(3,5);
+        carRacingInformation.minusCarRacingCount();
 
+        assertEquals(4,carRacingInformation.getCarRacingCount());
     }
 
-    //남아있는 시도횟수가 0이하일만 실행인지 확인
-    @DisplayName("남아있는 시도횟수가 0 이하인 경우 게임이 진행되는지 확인")
-    public void isPlayMoreThanInputCarRacingCount() {
 
+    @Test
+    @DisplayName("남아있는 시도횟수가 0 이하인 경우 시도횟수 체크")
+    public void isPlayMoreThanInputCarRacingCount() {
+        CarRacingInformation carRacingInformation
+                = new CarRacingInformation(3,1);
+        carRacingInformation.minusCarRacingCount();
+        assertEquals(false,carRacingInformation.checkCarRacingCount());
     }
 
 }
