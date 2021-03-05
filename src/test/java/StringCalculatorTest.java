@@ -77,19 +77,34 @@ class StringCalculatorTest {
     @Test
     @DisplayName("입력값이 null일 때 예외처리 확인")
     void checkNull() {
+        StringCalculator calculator = new StringCalculator();
 
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.setText(null);
+                });
     }
 
     @Test
     @DisplayName("입력값이 빈 문자열일 때 예외처리 확인")
     void checkEmptyString() {
+        StringCalculator calculator = new StringCalculator();
 
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.setText("");
+                });
     }
 
     @Test
     @DisplayName("사칙연산 기호가 아닌 경우 예외처리 확인")
     void checkOperator() {
+        StringCalculator calculator = new StringCalculator();
 
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.setText("1 + 2 & 3 & 9");
+                });
     }
 
     @Test
