@@ -3,28 +3,28 @@ package step2;
 import java.util.Arrays;
 
 public enum Operator {
-    PLUS("+",(a,b) -> a+b),
-    SUB("-",(a,b) -> a-b),
-    DIV("/",(a,b) -> a/b),
-    MUL("*",(a,b) -> a*b);
+    PLUS("+", (a, b) -> a + b),
+    SUB("-", (a, b) -> a - b),
+    DIV("/", (a, b) -> a / b),
+    MUL("*", (a, b) -> a * b);
 
-    private final String operator;
+    private final String symbol;
 
     private final OperatorInterface operations;
 
-    Operator(String operator, OperatorInterface operations) {
-        this.operator = operator;
+    Operator(String symbol, OperatorInterface operations) {
+        this.symbol = symbol;
         this.operations = operations;
     }
 
-    public static Operator getOperator(String param){
+    public static Operator of(String param) {
         return Arrays.stream(Operator.values())
-                .filter(o -> o.operator.equals(param))
+                .filter(operator -> operator.symbol.equals(param))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("사칙연산 기호가 아닙니다."));
     }
 
-    public int apply(int a, int b){
-        return this.operations.apply(a,b);
+    public int apply(int a, int b) {
+        return this.operations.apply(a, b);
     }
 }

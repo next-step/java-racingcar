@@ -1,7 +1,6 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -59,7 +58,7 @@ public class CalculatorTest {
     void wrongOperatorTest(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                   Operator operator = Operator.getOperator(input);
+                   Operator operator = Operator.of(input);
                 }).withMessage("사칙연산 기호가 아닙니다.");
     }
 
@@ -69,5 +68,15 @@ public class CalculatorTest {
     void stringCalculateTest(String formula, int result) {
         Calculator calculator = new Calculator();
         assertThat(calculator.calculate(formula)).isEqualTo(result);
+    }
+    @ParameterizedTest
+    @ValueSource(strings = {"a + b","# + c"})
+    @DisplayName("숫자형식이 아닐 때 테스트")
+    void wrongNumberTest(String input) {
+        assertThatExceptionOfType(NumberFormatException.class)
+                .isThrownBy(() -> {
+                    Calculator calculator = new Calculator();
+                    calculator.calculate(input);
+                }).withMessage("입력된 문자열은 숫자형식이 아닙니다.");
     }
 }
