@@ -2,56 +2,25 @@ package step2;
 
 public class Calculator {
 
-    public static int plus(String input) {
-        if (isEmpty(input)) {
-            throw new IllegalArgumentException();
+    private static final String DELIMITER = " ";
+
+    public static int calculate(String input) {
+        validateEmptyInput(input);
+
+        String[] operation = input.split(DELIMITER);
+        int result = Integer.parseInt(operation[0]);
+
+        for (int i = 2; i < operation.length; i += 2) {
+            Operator.validateOperator(operation[i - 1]);
+            Operator operator = Operator.getOperator(operation[i - 1]);
+            result = operator.calculate(result, Integer.parseInt(operation[i]));
         }
-        String[] operation = input.split(" ");
-        if (isOperator(operation[1])) {
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(operation[0]) + Integer.parseInt(operation[2]);
+        return result;
     }
 
-    public static int minus(String input) {
-        if (isEmpty(input)) {
+    private static void validateEmptyInput(String input) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
-        String[] operation = input.split(" ");
-        if (isOperator(operation[1])) {
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(operation[0]) - Integer.parseInt(operation[2]);
-    }
-
-    public static int multiply(String input) {
-        if (isEmpty(input)) {
-            throw new IllegalArgumentException();
-        }
-        String[] operation = input.split(" ");
-        if (isOperator(operation[1])) {
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(operation[0]) * Integer.parseInt(operation[2]);
-    }
-
-    public static int divide(String input) {
-        if (isEmpty(input)) {
-            throw new IllegalArgumentException();
-        }
-        String[] operation = input.split(" ");
-        if (isOperator(operation[1])) {
-            throw new IllegalArgumentException();
-        }
-        return Integer.parseInt(operation[0]) / Integer.parseInt(operation[2]);
-    }
-
-    public static boolean isEmpty(String input) {
-        return input == null || input.trim().isEmpty();
-    }
-
-    public static boolean isOperator(String operator) {
-        char op = operator.charAt(0);
-        return !(op == '+' || op == '-' || op == '*' || op == '/');
     }
 }
