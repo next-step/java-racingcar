@@ -2,80 +2,68 @@ package calculator;
 
 public class StringCalculator {
 
-    String[] inputDatas;
-
-    int result = 0;
-    int temp = 0;
+    public String[] inputDatas;
+    public int result = 0;
 
     public StringCalculator(String userInput) {
         inputDatas = userInput.split(" ");
     }
 
 
-    // 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
     public void checkInputValue(String userInput) {
         if (userInput == null || userInput.equals(" ")) {
             throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
         }
     }
 
-    public void calculate(String[] data) {
+    public int returnResult(String[] data) {
 
-        temp = Integer.parseInt(inputDatas[0]);
+        int temp = Integer.parseInt(data[0]); // 맨 처음 연산할 때 피연산자 값을 가져온다.
 
         for (int i = 0; i < data.length; i++) {
             if (!isDigit(data[i])) {
-                findOperation(data[i], data[i + 1]);
+                temp = calculate(Integer.toString(temp), selectCode(data[i]), data[i + 1]); // 앞에서 연산한 값을 누적시킨 후, 뒤에 피연산자와 다시 연산을 반복
             }
         }
 
         result = temp;
-        System.out.println(result);
+
+        return result;
 
     }
 
-    // 숫자인지 연산자인지 구분하기 위해
     public boolean isDigit(String data) {
         return Character.isDigit(data.charAt(0));
     }
 
-    private void findOperation(String operator, String operand) {
+    public CalculatorType selectCode(String operator) {
+
+        CalculatorType code = null;
 
         switch (operator) {
             case "+":
-                additional(Integer.parseInt(operand));
+                code = CalculatorType.ADDITION;
                 break;
             case "-":
-                substraction(Integer.parseInt(operand));
+                code = CalculatorType.SUBSTRACTION;
                 break;
             case "*":
-                multiplication(Integer.parseInt(operand));
+                code = CalculatorType.MULTIPLICATION;
                 break;
             case "/":
-                division(Integer.parseInt(operand));
+                code = CalculatorType.DIVISION;
                 break;
-            default:
-                throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
         }
+
+        return code;
     }
 
+    private int calculate(String operand, CalculatorType code, String operand1) {
 
-    // 사칙연산별 메소드
-    public int additional(int operand) {
-        return temp += operand;
+        int calculateResult = code.calculate(Integer.parseInt(operand), Integer.parseInt(operand1));
+
+        return calculateResult;
+
     }
-
-    public int substraction(int operand) {
-        return temp -= operand;
-    }
-
-    public int multiplication(int operand) {
-        return temp *= operand;
-    }
-
-    public int division(int operand) {
-        return temp /= operand;
-    }
-
 
 }
