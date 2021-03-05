@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -107,9 +109,18 @@ class StringCalculatorTest {
                 });
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"2 + 4 * 2 / 3 - 4 * 2 + 1,1"})
     @DisplayName("사친 연산 모두 확인")
     void calculate() throws Exception {
+        // given
+        StringCalculator calculator = new StringCalculator();
 
+        // when
+        calculator.setText("2 + 4 * 2 / 2 - 4 * 2 + 1");
+        int result = calculator.calculate();
+
+        // then
+        assertThat(result).isEqualTo(4);
     }
 }

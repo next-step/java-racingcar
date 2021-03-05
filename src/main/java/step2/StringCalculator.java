@@ -1,3 +1,5 @@
+package step2;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,21 +61,26 @@ public class StringCalculator {
 
     public int calculate() {
         result = Integer.parseInt(textArray[0]);
-        int temp = 0;
+
         for (int i = 1; i < textArray.length; i += 2) {
+            int temp = 0;
             int nextNum = Integer.parseInt(textArray[i + 1]);
 
             switch (textArray[i]) {
                 case "+":
                     temp = add(result, nextNum);
+                    break;
                 case "-":
                     temp = subtract(result, nextNum);
+                    break;
                 case "*":
                     temp = multiply(result, nextNum);
+                    break;
                 case "/":
                     temp = divide(result, nextNum);
+                    break;
             }
-            result += temp;
+            result = temp;
         }
 
         return result;
