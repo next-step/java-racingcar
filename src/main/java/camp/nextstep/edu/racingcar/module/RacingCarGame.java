@@ -22,13 +22,11 @@ public class RacingCarGame {
 		return LazyHolder.INSTANCE;
 	}
 
-	public List<Car> moveCars(List<Car> cars) {
-		return cars.stream()
-			.peek(car -> {
-				int randomNumber = generator.generateRandomNumber();
-				car.move(randomNumber);
-			})
-			.collect(Collectors.toList());
+	public void moveCars(List<Car> cars) {
+		cars.forEach(car -> {
+			int randomNumber = generator.generateRandomNumber();
+			car.move(randomNumber);
+		});
 	}
 
 	public List<Car> generateCars(List<String> carNames) {
