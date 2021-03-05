@@ -3,7 +3,7 @@ package step2;
 public class Calculator {
 
     public static int plus(String input) {
-        if (input == null) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
@@ -11,7 +11,7 @@ public class Calculator {
     }
 
     public static int minus(String input) {
-        if (input == null) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
@@ -19,7 +19,7 @@ public class Calculator {
     }
 
     public static int multiply(String input) {
-        if (input == null) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
@@ -27,7 +27,7 @@ public class Calculator {
     }
 
     public static int divide(String input) {
-        if (input == null) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
