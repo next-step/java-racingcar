@@ -30,7 +30,7 @@ public class SetCollectionTest {
 		assertThat(numbers).size().isGreaterThan(2)
 								  .isLessThanOrEqualTo(3);
 		
-		//2021-03-05 추가
+		//2021-03-05 피드백 반영
 		assertThat(numbers.size()).isEqualTo(3);
 	}
 	
