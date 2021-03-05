@@ -28,7 +28,7 @@ public class StringCalculator {
 
     private boolean containsNotSymbol(String[] symbolCandidates) {
         return Arrays.stream(symbolCandidates)
-                .anyMatch(e -> !IntegerUtil.isInteger(e) && !OperatorUtil.isOperator(e));
+                .anyMatch(e -> !IntegerUtil.isInteger(e) && !Operator.isOperator(e));
     }
 
     private void setOperandsWith(String[] operandCandidates) {
@@ -43,8 +43,8 @@ public class StringCalculator {
     private void setOperatorsWith(String[] operatorsCandidates) {
         operators.addAll(
                 Arrays.stream(operatorsCandidates)
-                        .filter(OperatorUtil::isOperator)
-                        .map(OperatorUtil::parseOperator)
+                        .filter(Operator::isOperator)
+                        .map(Operator::parseOperator)
                         .collect(Collectors.toList())
         );
     }
