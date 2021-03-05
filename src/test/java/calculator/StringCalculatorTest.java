@@ -12,14 +12,10 @@ public class StringCalculatorTest {
 
     StringCalculator stringCalculator;
 
-    @BeforeEach
-    void setUp() {
-        stringCalculator = new StringCalculator("5 + 3");
-    }
-
     @DisplayName("사용자가 입력한 입력 값이 null이 오거나 빈 공백 문자일 경우")
     @Test
     void check_user_input_value() {
+        stringCalculator = new StringCalculator("5 + 3");
         assertThatThrownBy(() -> {
             stringCalculator.checkInputValue(" ");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -30,28 +26,70 @@ public class StringCalculatorTest {
     @ParameterizedTest()
     @ValueSource(strings = {"5", "+", "3"})
     void isDigit_test(String data) {
+        stringCalculator = new StringCalculator(data);
         assertThat(stringCalculator.isDigit(data));
     }
 
-    @DisplayName("단순 사칙연산 테스트")
-    @ParameterizedTest()
-    @CsvSource(value = {"5 + 3:8", "5 - 3:2", "5 * 3:15", "10 / 2:5"}, delimiter = ':')
-    void four_rule_calculations_test(String input, Integer result) {
-        StringCalculator stringCalculator = new StringCalculator(input);
-        stringCalculator.calculate(stringCalculator.inputDatas);
+    @DisplayName("덧셈 테스트")
+    @Test
+    void addition_test() {
 
-        assertThat(stringCalculator.result).isEqualTo(result);
+        stringCalculator = new StringCalculator("5 + 3");
+        stringCalculator.returnResult(stringCalculator.inputDatas);
+        assertThat(stringCalculator.result).isEqualTo(8);
 
+    }
+
+    @DisplayName("뺄셈 테스트")
+    @Test
+    void substraction_test() {
+
+        stringCalculator = new StringCalculator("5 - 3");
+        stringCalculator.returnResult(stringCalculator.inputDatas);
+        assertThat(stringCalculator.result).isEqualTo(2);
+
+    }
+
+    @DisplayName("곱셈 테스트")
+    @Test
+    void multiplication_test() {
+        stringCalculator = new StringCalculator("5 * 3");
+        stringCalculator.returnResult(stringCalculator.inputDatas);
+        assertThat(stringCalculator.result).isEqualTo(15);
+    }
+
+    @DisplayName("나눗셈 테스트")
+    @Test
+    void division_test() {
+        stringCalculator = new StringCalculator("10 / 2");
+        stringCalculator.returnResult(stringCalculator.inputDatas);
+        assertThat(stringCalculator.result).isEqualTo(5);
+
+    }
+
+    @DisplayName("조금은 복잡한 연산 테스트")
+    @Test
+    void little_complicated_calculate_test() {
+        stringCalculator = new StringCalculator("2 + 3 * 4");
+        stringCalculator.returnResult(stringCalculator.inputDatas);
+        assertThat(stringCalculator.result).isEqualTo(20);
+    }
+
+    @DisplayName("더 복잡한 사칙연산 테스트")
+    @Test
+    void complicated_calculate_test() {
+        stringCalculator = new StringCalculator("10 * 5 / 10 + 9 - 4 * 5");
+        stringCalculator.returnResult(stringCalculator.inputDatas);
+        assertThat(stringCalculator.result).isEqualTo(50);
     }
 
     @DisplayName("2 + 3 / 4 * 2 값 테스트")
     @Test
     void step2_example_value_test() {
-        StringCalculator stringCalculator = new StringCalculator("2 + 3 * 4 / 2");
-        stringCalculator.calculate(stringCalculator.inputDatas);
-
+        stringCalculator = new StringCalculator("2 + 3 * 4 / 2");
+        stringCalculator.returnResult(stringCalculator.inputDatas);
         assertThat(stringCalculator.result).isEqualTo(10);
-
-
     }
+
+
 }
