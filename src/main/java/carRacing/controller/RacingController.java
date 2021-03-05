@@ -5,6 +5,8 @@ import carRacing.model.CarRacingInformation;
 import carRacing.view.InputView;
 import carRacing.view.ResultView;
 
+import java.util.ArrayList;
+
 public class RacingController {
     private InputView inputView;
     private ResultView resultView;
@@ -21,22 +23,22 @@ public class RacingController {
         drawLiterallyExecutionResult();
 
         playGame(carRacingInformation);
-
     }
 
     private void playGame(CarRacingInformation carRacingInformation) {
         while(carRacingInformation.checkCarRacingCount()) {
             carRacingInformation.decideMovable();
-            for(Car car : carRacingInformation.getCarList()) {
-                drawExecutionResult(car.getPoisition());
-            }
+            drawExecutionResult(carRacingInformation.getCarList());
             System.out.print("\n");
             carRacingInformation.minusCarRacingCount();
         }
     }
 
-    private void drawExecutionResult(int position) {
-        resultView.printExecutionResult(position);
+    private void drawExecutionResult(ArrayList<Car> carList) {
+        for(Car car : carList) {
+            resultView.printExecutionResult(car.getPoisition());
+        }
+
     }
 
     private void drawLiterallyExecutionResult() {
