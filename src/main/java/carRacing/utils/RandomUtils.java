@@ -2,7 +2,7 @@ package carRacing.utils;
 
 import java.util.Random;
 
-public class RandomUtils {
+public final class RandomUtils {
     private static Random random = new Random();
 
     public static int nextInt(int end) {
