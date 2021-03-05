@@ -2,6 +2,8 @@ package cal;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -74,10 +76,9 @@ class StringCalculatorTest {
     }
 
     @DisplayName("입력값이 빈 공백 문자일 경우 IllegalArgumentException을 던져야 한다.")
-    @Test
-    void calculateEmptyCharacter() {
-        // Arrange
-        String source = " ";
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void calculateEmptyCharacter(String source) {
 
         // Act & Assert
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
