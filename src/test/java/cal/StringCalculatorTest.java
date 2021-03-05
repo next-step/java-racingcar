@@ -17,7 +17,7 @@ class StringCalculatorTest {
         String source = "3 + 5";
 
         // Act
-        int result = calculator.calculate(source);
+        int result = calculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(8);
@@ -30,7 +30,7 @@ class StringCalculatorTest {
         String source = "6 - 2";
 
         // Act
-        int result = calculator.calculate(source);
+        int result = calculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(4);
@@ -43,7 +43,7 @@ class StringCalculatorTest {
         String source = "2 * 3";
 
         // Act
-        int result = calculator.calculate(source);
+        int result = calculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(6);
@@ -56,7 +56,7 @@ class StringCalculatorTest {
         String source = "8 / 4";
 
         // Act
-        int result = calculator.calculate(source);
+        int result = calculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(2);
@@ -69,7 +69,7 @@ class StringCalculatorTest {
         String source = null;
 
         // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(source));
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculateStringEquation(source));
     }
 
     @DisplayName("입력값이 빈 공백 문자일 경우 IllegalArgumentException을 던져야 한다.")
@@ -79,7 +79,7 @@ class StringCalculatorTest {
         String source = " ";
 
         // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculate(source));
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculateStringEquation(source));
     }
 
     @DisplayName("\"4 + 3 - 2 * 4 / 5\"는 4를 반환해야 한다.")
@@ -89,7 +89,7 @@ class StringCalculatorTest {
         String source = "4 + 3 - 2 * 4 / 5";
 
         // Act
-        int result = calculator.calculate(source);
+        int result = calculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(4);
