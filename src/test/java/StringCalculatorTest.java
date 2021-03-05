@@ -30,9 +30,13 @@ class StringCalculatorTest {
 
         // when
         int result = calculator.subtract(3, 1);
+        int result2 = calculator.subtract(13, 21);
+        int result3 = calculator.subtract(400, 201);
 
         // then
         assertThat(result).isEqualTo(2);
+        assertThat(result2).isEqualTo(-8);
+        assertThat(result3).isEqualTo(199);
     }
 
     @Test
@@ -43,9 +47,13 @@ class StringCalculatorTest {
 
         // when
         int result = calculator.multiply(3, 4);
+        int result2 = calculator.multiply(10, 14);
+        int result3 = calculator.multiply(201, 123);
 
         // then
         assertThat(result).isEqualTo(12);
+        assertThat(result2).isEqualTo(140);
+        assertThat(result3).isEqualTo(24723);
 
     }
 
@@ -57,19 +65,18 @@ class StringCalculatorTest {
 
         // when
         int result = calculator.divide(12, 2);
+        int result2 = calculator.divide(180, 20);
+        int result3 = calculator.divide(150, 23);
 
         // then
         assertThat(result).isEqualTo(6);
+        assertThat(result2).isEqualTo(9);
+        assertThat(result3).isEqualTo(6);
     }
 
     @Test
     @DisplayName("입력값이 null일 때 예외처리 확인")
     void checkNull() {
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    StringCalculator calculator = new StringCalculator(null);
-                });
 
     }
 
@@ -77,35 +84,17 @@ class StringCalculatorTest {
     @DisplayName("입력값이 빈 문자열일 때 예외처리 확인")
     void checkEmptyString() {
 
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    StringCalculator calculator = new StringCalculator("");
-                });
-
     }
 
     @Test
     @DisplayName("사칙연산 기호가 아닌 경우 예외처리 확인")
     void checkOperator() {
 
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    StringCalculator calculator = new StringCalculator("1 $ 2");
-                    calculator.calculate();
-                });
-
     }
 
     @Test
     @DisplayName("사친 연산 모두 확인")
     void calculate() throws Exception {
-        // given
-        StringCalculator calculator = new StringCalculator("1 + 2 / 1 * 2 + 3 - 4");
 
-        // when
-        int result = calculator.calculate();
-
-        // then
-        assertThat(result).isEqualTo(5);
     }
 }
