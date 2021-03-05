@@ -4,7 +4,7 @@ import common.utils.StringUtils;
 
 public class Calculator {
 
-    public int calculate(String formula) throws Exception {
+    public int calculate(String formula) {
         // input validation
         this.validateInput(formula);
         // executing calculation
@@ -17,7 +17,7 @@ public class Calculator {
      * @throws IllegalArgumentException
      */
     public void validateInput(String formula) throws IllegalArgumentException {
-        // 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+        // 입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw
         if(StringUtils.isEmpty(formula)) {
             throw new IllegalArgumentException("수식을 입력해 주세요");
         }
@@ -64,7 +64,29 @@ public class Calculator {
      * 계산실행
      *  - 결과값을 정수로 한정
      */
-    private int executeCalculate(String[] formula) throws Exception {
-        return 0;
+    private int executeCalculate(String[] formula) {
+
+        int result = Integer.parseInt(formula[0]);
+
+        for (int i = 1; i < formula.length-1; i+=2) {
+            String operator = formula[i];
+
+            switch (operator) {
+                case "+":
+                    result = result + Integer.parseInt(formula[i+1]);
+                    break;
+                case "-":
+                    result = result - Integer.parseInt(formula[i+1]);
+                    break;
+                case "*":
+                    result = result * Integer.parseInt(formula[i+1]);
+                    break;
+                case "/":
+                    result = result / Integer.parseInt(formula[i+1]);
+                    break;
+            }
+        }
+
+        return result;
     }
 }
