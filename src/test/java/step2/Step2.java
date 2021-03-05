@@ -1,71 +1,76 @@
 package step2;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import step2.FourOperation.DivideOperation;
+import step2.FourOperation.MinusOperation;
+import step2.FourOperation.MultiplyOperation;
+import step2.FourOperation.PlusOperation;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class Step2 {
 
 
     private Calculator calculator;
-
+    private Method method;
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchMethodException {
         calculator = new Calculator();
     }
 
     @DisplayName("더하기 테스트")
     @Test
-    public void 더하기테스트(){
-        assertThat(calculator.plus(1,2)).isEqualTo(3);
-        assertThat(calculator.plus(2,5)).isEqualTo(7);
-        assertThat(calculator.plus(-1,4)).isEqualTo(3);
+    public void plus() {
+
+        assertThat(new PlusOperation().operation(1,2)).isEqualTo(3);
     }
 
     @DisplayName("빼기 테스트")
     @Test
-    public void 빼기테스트(){
-        assertThat(calculator.minus(3,2)).isEqualTo(1);
-        assertThat(calculator.minus(1,-2)).isEqualTo(3);
-        assertThat(calculator.minus(1,2)).isEqualTo(-1);
+    public void minus() {
+        assertThat(new MinusOperation().operation(20,2)).isEqualTo(18);
     }
 
     @DisplayName("나누기 테스트")
     @Test
-    public void 나누테스트(){
-        assertThat(calculator.divide(2,2)).isEqualTo(1);
-        assertThat(calculator.divide(25,5)).isEqualTo(5);
-        assertThat(calculator.divide(30,5)).isEqualTo(6);
+    public void divide() {
+        assertThat(new DivideOperation().operation(14,2)).isEqualTo(7);
     }
 
     @DisplayName("곱하기 테스트")
     @Test
-    public void 곱하기(){
-        assertThat(calculator.multiply(10,10)).isEqualTo(100);
-        assertThat(calculator.multiply(30,1)).isEqualTo(30);
-        assertThat(calculator.multiply(40,4)).isEqualTo(160);
+    public void multiply() {
+        assertThat(new MultiplyOperation().operation(20,2)).isEqualTo(40);
     }
 
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 ")
-    @Test
-    public void 공백문자열널테스트() {
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void 공백문자열널테스트(String input) throws NoSuchMethodException {
+
+        method = calculator.getClass().getDeclaredMethod("isEmptyInput",String.class);
         assertThatIllegalArgumentException().isThrownBy(
                 () -> {
-                    calculator.isEmptyInput(null);
+                    calculator.fourRuleCalculations(input);
                 });
         assertThatIllegalArgumentException().isThrownBy(
                 () -> {
-                    calculator.isEmptyInput("");
+                    method.invoke(Calculator.class, input);
                 });
     }
 
     @DisplayName("잘 계산 되는지 테스트")
     @Test
     public void 계산테스트() {
-        assertThat(calculator.operation("2 + 3 * 4 / 2")).isEqualTo(10);
+        assertThat(calculator.fourRuleCalculations("2 + 3 * 4 / 2")).isEqualTo(10);
     }
 
 }
