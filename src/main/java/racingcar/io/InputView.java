@@ -34,6 +34,7 @@ public class InputView implements AutoCloseable {
 
   private int input(String message, String unit) {
     System.out.println(message + "는 몇 " + unit + " 인가요?");
+    Printer.printPrompt();
 
     int carCount = scanner.nextInt();
     if (isPositive(carCount)) {

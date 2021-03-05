@@ -15,6 +15,7 @@ public class GameManager {
       Printer.welcomeMessage();
       int carCount = inputView.inputCarCount();
       int round = inputView.inputRound();
+      Printer.printBlankLine();
     }
   }
 }
