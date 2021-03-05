@@ -9,11 +9,15 @@ public class CarRacingInformation {
     public CarRacingInformation(int numberOfCar, int carRacingCount) {
         validate(numberOfCar);
         validate(carRacingCount);
+        makeCarList(numberOfCar);
+        this.carRacingCount = carRacingCount;
+    }
+
+    private void makeCarList(int numberOfCar) {
         carList = new ArrayList<>(numberOfCar);
-        for(int i = 0; i<numberOfCar;i++) {
+        for(int i = 0;i<numberOfCar;i++) {
             carList.add(new Car());
         }
-        this.carRacingCount = carRacingCount;
     }
 
     public void validate(int number) {

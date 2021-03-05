@@ -21,7 +21,6 @@ public class RacingController {
         CarRacingInformation carRacingInformation
                 = new CarRacingInformation(numberOfCar,carRacingCount);
         drawLiterallyExecutionResult();
-
         playGame(carRacingInformation);
     }
 
@@ -38,7 +37,6 @@ public class RacingController {
         for(Car car : carList) {
             resultView.printExecutionResult(car.getPoisition());
         }
-
     }
 
     private void drawLiterallyExecutionResult() {
