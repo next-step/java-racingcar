@@ -42,4 +42,18 @@ class CalculatorTest {
         assertThat(result).isEqualTo(3);
     }
 
+    @DisplayName("문자열로 들어온 곱샘 연산식을 계산하는 테스트")
+    @Test
+    void multiplicationTest(){
+        // given
+        String express = "4 * 5";
+
+        // when
+        int result = calculator.calculate(express);
+
+        // then
+        assertThat(result).isEqualTo(20);
+    }
+
+
 }
