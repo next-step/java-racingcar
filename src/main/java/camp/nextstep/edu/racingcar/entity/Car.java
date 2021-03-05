@@ -7,7 +7,7 @@ import camp.nextstep.edu.exception.UserException;
 
 public class Car {
 	private int step;
-	private String name;
+	private final String name;
 
 	private final static int MOVE_CONDITION = 4;
 	private final static int MAX_NAME_SIZE = 5;
