@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.Scanner;
 import racingcar.io.InputView;
+import racingcar.io.Printer;
 
 public class GameManager {
 
@@ -11,7 +12,7 @@ public class GameManager {
 
   private static void startGame() {
     try (InputView inputView = new InputView(new Scanner(System.in))) {
-
+      Printer.welcomeMessage();
     }
   }
 }
