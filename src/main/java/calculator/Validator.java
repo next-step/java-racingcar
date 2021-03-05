@@ -1,46 +1,29 @@
 package calculator;
 
 
-public class Validator {
+public final class Validator {
 
-    public void isBlankOrEmpty(String input) {
+    public static void isBlankOrEmpty(String input) {
         if(isBlank(input) || isEmpty(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자열입니다.");
         }
     }
 
-    private boolean isEmpty(String input) {
+    private static boolean isEmpty(String input) {
         return input.equals("");
     }
 
-    public boolean isBlank(String input) {
+    public static boolean isBlank(String input) {
         return input.equals(" ");
     }
 
-    public void isNotOperation(String input) {
-        if(!isPlus(input) || !isMinus(input)  || !isDivide(input) || !isMultiply(input)) {
-            throw new IllegalArgumentException();
+    public static void isNotOperation(String input) {
+        if(!Operator.isOperation(input)) {
+            throw new IllegalArgumentException("입력된 사칙연산 기호가 잘못된 사칙연산 기호입니다.");
         }
-
     }
 
-    private boolean isPlus(String input) {
-        return input.equals("+");
-    }
-
-    private boolean isMinus(String input) {
-        return input.equals("-");
-    }
-
-    private boolean isMultiply(String input) {
-        return input.equals("*");
-    }
-
-    private boolean isDivide(String input) {
-        return input.equals("/");
-    }
-
-    public void isNumberAndOperation(String[] data) {
+    public static void isNumberAndOperation(String[] data) {
         isBlankOrEmpty(data[0]);
         for(int i = 1; i< data.length; i = i + 2) {
             isNotOperation(data[i]);
