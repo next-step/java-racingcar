@@ -13,7 +13,7 @@ public class StringUtil {
     }
 
     private boolean isIllegalArgument() {
-        return inputString == null || " ".equals(inputString) ? true : false;
+        return inputString == null || "".equals(inputString.trim()) ? true : false;
     }
 
     public String[] splitBySpace() {
