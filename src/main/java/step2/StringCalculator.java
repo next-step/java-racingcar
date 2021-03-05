@@ -15,12 +15,11 @@ public class StringCalculator {
         String[] numberAndOperatorArray = stringUtil.splitBySpace();
 
         totalValue = Integer.parseInt(numberAndOperatorArray[0]);
-        for(int i = 1; i < numberAndOperatorArray.length; i ++) {
-            if(isOperatorPosition(i)) {
+        for (int i = 1; i < numberAndOperatorArray.length; i ++) {
+            if (isOperatorPosition(i)) {
                 Calculator calculator = new Calculator(totalValue);
                 totalValue = calculator.calculate(numberAndOperatorArray[i], Integer.parseInt(numberAndOperatorArray[i + 1]));
             }
-
         }
 
         return totalValue;

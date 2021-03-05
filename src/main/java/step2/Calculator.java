@@ -8,16 +8,16 @@ public class Calculator {
     }
 
     public int calculate(String operator, int number2) {
-        if("+".equals(operator)) {
+        if ("+".equals(operator)) {
             return add(number1, number2);
         }
-        if("-".equals(operator)) {
+        if ("-".equals(operator)) {
             return subtract(number1, number2);
         }
-        if("*".equals(operator)) {
+        if ("*".equals(operator)) {
             return multiply(number1, number2);
         }
-        if("/".equals(operator)) {
+        if ("/".equals(operator)) {
             return divide(number1, number2);
         }
 

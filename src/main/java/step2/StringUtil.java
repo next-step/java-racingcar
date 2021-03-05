@@ -7,7 +7,7 @@ public class StringUtil {
 
         this.inputString = inputString;
 
-        if(isIllegalArgument()) {
+        if (isIllegalArgument()) {
             throw new IllegalArgumentException();
         }
     }
