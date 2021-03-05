@@ -16,9 +16,12 @@ public class CarRacingInformation {
         this.carRacingCount = carRacingCount;
     }
 
-    private void validate(int numberOfCar) {
-
+    public void validate(int number) {
+        if(number <= 0 ) {
+            throw new IllegalArgumentException("입력값이 0 이하입니다.");
+        }
     }
+
 
     public ArrayList<Car> getCarList() {
         return carList;

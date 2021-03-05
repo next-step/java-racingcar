@@ -1,5 +1,6 @@
 package carRacing.model.action;
 
 public interface Movable {
-    boolean MoveOrNot();
+    int makeRandomValue();
+    boolean MoveOrNot(int ramdomValue);
 }
