@@ -70,6 +70,7 @@ public class StringTest {
             assertThat(abc.charAt(abc.length())).isEqualTo('C');
         }).isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
+
     }
 
 }
