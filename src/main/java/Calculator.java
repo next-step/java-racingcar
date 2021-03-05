@@ -8,7 +8,6 @@ public class Calculator {
   private List<String> splitFormulas = new ArrayList<>();
 
   private int lastIndex;
-  private Operator operator;
 
   //사용자 문자열 입력
   public void enterFormula(String userInput) {
@@ -42,30 +41,10 @@ public class Calculator {
   }
 
   private int calculate(int prev, String operator, int next) {
-    if(operator.equals("+"))
-      return sum(prev, next);
-    if(operator.equals("-"))
-      return sub(prev, next);
-    if(operator.equals("*"))
-      return multiple(prev, next);
-    if(operator.equals("/"))
-      return divide(prev,next);
+    for (Operator op : Operator.values()) {
+      if (operator.equals(op.symbol))
+        return op.apply(prev, next);
+    }
     throw new IllegalArgumentException("ERROR : 잘못된 연산자가 입력되었습니다.");
-  }
-
-  private int multiple(int prev, int next) {
-    return prev * next;
-  }
-
-  private int divide(int prev, int next) {
-    return Math.floorDiv(prev, next);
-  }
-
-  private int sub(int prev, int next) {
-    return prev - next;
-  }
-
-  private int sum(int prev, int next) {
-    return prev + next;
   }
 }

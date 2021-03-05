@@ -57,7 +57,7 @@ class CalculatorTest {
 
     ArithmeticException thrown = assertThrows(
         ArithmeticException.class,
-        () -> calculator.calculate()
+        calculator::calculate
     );
 
     //then
