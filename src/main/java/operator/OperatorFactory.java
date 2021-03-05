@@ -8,6 +8,7 @@ public class OperatorFactory {
         if(operator.equals("+")) return Optional.of(new PlusOperator());
         if(operator.equals("-")) return Optional.of(new MinusOperator());
         if(operator.equals("*")) return Optional.of(new MultiplicationOperator());
+        if(operator.equals("/")) return Optional.of(new DivisionOperator());
         return Optional.empty();
     }
 
