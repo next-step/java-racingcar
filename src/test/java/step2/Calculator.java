@@ -7,6 +7,12 @@ public class Calculator {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
+        if (operation[1].compareTo("+") != 0 &&
+            operation[1].compareTo("*") != 0 &&
+            operation[1].compareTo("-") != 0 &&
+            operation[1].compareTo("/") != 0) {
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(operation[0]) + Integer.parseInt(operation[2]);
     }
 
@@ -15,6 +21,12 @@ public class Calculator {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
+                if (operation[1].compareTo("+") != 0 &&
+            operation[1].compareTo("*") != 0 &&
+            operation[1].compareTo("-") != 0 &&
+            operation[1].compareTo("/") != 0) {
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(operation[0]) - Integer.parseInt(operation[2]);
     }
 
@@ -23,6 +35,12 @@ public class Calculator {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
+                if (operation[1].compareTo("+") != 0 &&
+            operation[1].compareTo("*") != 0 &&
+            operation[1].compareTo("-") != 0 &&
+            operation[1].compareTo("/") != 0) {
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(operation[0]) * Integer.parseInt(operation[2]);
     }
 
@@ -31,6 +49,12 @@ public class Calculator {
             throw new IllegalArgumentException();
         }
         String[] operation = input.split(" ");
+                if (operation[1].compareTo("+") != 0 &&
+            operation[1].compareTo("*") != 0 &&
+            operation[1].compareTo("-") != 0 &&
+            operation[1].compareTo("/") != 0) {
+            throw new IllegalArgumentException();
+        }
         return Integer.parseInt(operation[0]) / Integer.parseInt(operation[2]);
     }
 }
