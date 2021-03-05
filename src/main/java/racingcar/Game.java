@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Game {
 
-  private Random random;
+  public static final int BOUND = 10;
+
+  private final Random random;
   private List<Car> cars;
 
   public Game(Random random) {
@@ -29,10 +32,16 @@ public class Game {
   }
 
   public void moveCars(int rounds) {
-    return;
+    for (int i = 0; i < rounds; i++) {
+      for (Car car : cars) {
+        car.move(random.nextInt(BOUND));
+      }
+    }
   }
 
   public String getCarsStatus() {
-    return "";
+    return cars.stream()
+        .map(Car::showStatus)
+        .collect(Collectors.joining(System.lineSeparator()));
   }
 }
