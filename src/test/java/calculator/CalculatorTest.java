@@ -2,7 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,55 +18,50 @@ class CalculatorTest {
     }
 
     @DisplayName("문자열로 들어온 덧셈 연산식을 계산하는 테스트")
-    @Test
-    void plusTest(){
-        // given
-        String express = "2 + 3";
-
+    @ParameterizedTest(name = "연산식 : {0} = {1}")
+    @CsvSource(value = {"2 + 3:5", "-1 + 1:0", "10 + -3:7", "10 + 5:15", "0 + 0:0"}, delimiter = ':')
+    void plusTest(String express, int expect){
         // when
         int result = calculator.calculate(express);
 
         // then
-        assertThat(result).isEqualTo(5);
+        assertThat(result).isEqualTo(expect);
     }
 
     @DisplayName("문자열로 들어온 뺄셈 연산식을 계산하는 테스트")
-    @Test
-    void subtractTest(){
-        // given
-        String express = "5 - 2";
+    @ParameterizedTest(name = "연산식 : {0} = {1}")
+    @CsvSource(value = {"2 - 3:-1", "-1 - -1:0", "0 - 0:0", "10 - 7:3", "-0 - -0:0"}, delimiter = ':')
+    void subtractTest(String express, int expect){
 
         // when
         int result = calculator.calculate(express);
 
         // then
-        assertThat(result).isEqualTo(3);
+        assertThat(expect).isEqualTo(result);
     }
 
     @DisplayName("문자열로 들어온 곱셈 연산식을 계산하는 테스트")
-    @Test
-    void multiplyTest(){
-        // given
-        String express = "4 * 5";
+    @ParameterizedTest(name = "연산식 : {0} = {1}")
+    @CsvSource(value = {"2 * 3:6", "-1 * -1:1", "0 * 0:0", "32 * 7:224", "-0 * -0:0"}, delimiter = ':')
+    void multiplyTest(String express, int expect){
 
         // when
         int result = calculator.calculate(express);
 
         // then
-        assertThat(result).isEqualTo(20);
+        assertThat(result).isEqualTo(expect);
     }
 
     @DisplayName("문자열로 들어온 나눗셈 연산식을 계산하는 테스트")
-    @Test
-    void divideTest(){
-        // given
-        String express = "20 / 5";
+    @ParameterizedTest(name = "연산식 : {0} = {1}")
+    @CsvSource(value = {"10 / 5:2", "100 / 10:10", "10 / -10:-1", "32 / 4:8", "-1 / -1:1"}, delimiter = ':')
+    void divideTest(String express, int expect){
 
         // when
         int result = calculator.calculate(express);
 
         // then
-        assertThat(result).isEqualTo(4);
+        assertThat(result).isEqualTo(expect);
     }
 
 
