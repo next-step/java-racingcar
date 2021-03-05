@@ -25,10 +25,13 @@ public class SetCollectionTest {
 	}
 	
 	@Test
-	@DisplayName("step1.Test Set Collection size(size > 2, size <= 3)")
+	@DisplayName("step1.Test Set Collection size")
 	void size() {
 		assertThat(numbers).size().isGreaterThan(2)
 								  .isLessThanOrEqualTo(3);
+		
+		//2021-03-05 Ãß°¡
+		assertThat(numbers.size()).isEqualTo(3);
 	}
 	
     @ParameterizedTest
