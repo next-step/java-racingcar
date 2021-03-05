@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomlyMovingCar extends Car {
 
     private static final int RANDOM_BOUND = 10;
-    private static final int MOVE_THRESHOLD = 5;
+    private static final int MOVE_THRESHOLD = 4;
     private final Random random = new Random();
 
     public RandomlyMovingCar() {
