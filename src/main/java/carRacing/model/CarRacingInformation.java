@@ -7,8 +7,8 @@ public class CarRacingInformation {
     private int carRacingCount;
 
     public CarRacingInformation(int numberOfCar, int carRacingCount) {
-        validate(numberOfCar);
-        validate(carRacingCount);
+        isZeroOrLess(numberOfCar);
+        isZeroOrLess(carRacingCount);
         makeCarList(numberOfCar);
         this.carRacingCount = carRacingCount;
     }
@@ -20,7 +20,7 @@ public class CarRacingInformation {
         }
     }
 
-    public void validate(int number) {
+    public void isZeroOrLess(int number) {
         if(number <= 0 ) {
             throw new IllegalArgumentException("입력값이 0 이하입니다.");
         }

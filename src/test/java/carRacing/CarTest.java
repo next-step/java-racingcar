@@ -40,7 +40,7 @@ public class CarTest {
 
     @Test
     @DisplayName("랜덤값이 4 미만일 경우 자동차 멈춤")
-    public void moveCarWithRandomValueSmallerThenFour() {
+    public void moveCarWithRandomValueLessThenFour() {
         Car car = new Car();
         MovableImpl movable = new MovableImpl();
         if(movable.MoveOrNot(3)) {

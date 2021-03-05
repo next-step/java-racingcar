@@ -21,6 +21,7 @@ public class RacingController {
         CarRacingInformation carRacingInformation
                 = new CarRacingInformation(numberOfCar,carRacingCount);
         drawLiterallyExecutionResult();
+
         playGame(carRacingInformation);
     }
 

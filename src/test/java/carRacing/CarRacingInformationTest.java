@@ -40,11 +40,17 @@ public class CarRacingInformationTest {
 
     @Test
     @DisplayName("남아있는 시도횟수가 0 이하인 경우 시도횟수 체크")
-    public void isPlayMoreThanInputCarRacingCount() {
+    public void checkCarRacingCountLessThanZeroAndLess(){
         CarRacingInformation carRacingInformation
                 = new CarRacingInformation(3,1);
         carRacingInformation.minusCarRacingCount();
         assertEquals(false,carRacingInformation.checkCarRacingCount());
+    }
+
+    @Test
+    @DisplayName("주어진 횟수 이상으로 경주를 시도하는 경우 확인")
+    public void isPlayMoreThanInputCarRacingCount() {
+        
     }
 
 }
