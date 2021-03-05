@@ -1,6 +1,7 @@
 package step2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,14 @@ public class CalculatorTest {
     void divide() {
         String input = "1 / 4";
         assertEquals(0, Calculator.divide(input));
+    }
+
+    @Test
+    @DisplayName("입력값이 null이면 IllegalArgumentException")
+    void isInputNull() {
+        assertThrows(IllegalArgumentException.class, () -> Calculator.plus(null));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.minus(null));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.multiply(null));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.divide(null));
     }
 }
