@@ -15,7 +15,7 @@ public class RacingController {
         int numberOfCar = drawNumberOfCarAndReturn();
         int carRacingCount = drawCarCountAndReturn();
 
-        
+
     }
 
     private void drawExecutionResult(int position) {
