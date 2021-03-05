@@ -13,4 +13,11 @@ public class CalculatorTest {
         String input = "1 + 4";
         assertEquals(5, Calculator.plus(input));
     }
+
+    @Test
+    @DisplayName("뺄셈 테스트 : 1 - 4 = -3")
+    void minus() {
+        String input = "1 - 4";
+        assertEquals(-3, Calculator.minus(input));
+    }
 }
