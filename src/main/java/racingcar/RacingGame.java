@@ -12,7 +12,7 @@ public class RacingGame {
         List<Car> cars = new ArrayList();
 
         for (int i = 0; i < countCar; i++) {
-             cars.add(new Car(0));
+             cars.add(new Car(""));
         }
 
         return cars;
@@ -24,17 +24,10 @@ public class RacingGame {
         return random.nextInt(10);
     }
 
-    public void updateByRandom(Car car, int randomNumber) {
-        if (randomNumber >= 4) {
-            int countMove = car.getCountMove();
-            car.setCountMove(++countMove);
-        }
-    }
-
     public void playRacing(List<Car> cars) {
         for (Car car : cars) {
             int randomNum = getRandomNumber();
-            updateByRandom(car, randomNum);
+            car.updateByRandom(randomNum);
         }
     }
 

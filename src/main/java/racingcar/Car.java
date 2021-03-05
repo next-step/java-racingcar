@@ -2,17 +2,20 @@ package racingcar;
 
 public class Car {
 
-    private int countMove;
+//    private int countMove;
+    private String state;
 
-    public Car(int countMove) {
-        this.countMove = countMove;
+    public Car(String state) {
+        this.state = state;
     }
 
-    public int getCountMove() {
-        return countMove;
+    public String getState() {
+        return state;
     }
 
-    public void setCountMove(int countMove) {
-        this.countMove = countMove;
+    public void updateByRandom(int randomNumber) {
+        if (randomNumber >= 4) {
+            state += "-";
+        }
     }
 }

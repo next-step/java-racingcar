@@ -26,33 +26,33 @@ class RacingGameTest {
     @Test
     @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다")
     void carsCanGoOrStop() {
-        Car car = new Car(0);
+        Car car = new Car("");
 
-        racingGame.updateByRandom(car, 7);
-        assertThat(car.getCountMove()).isEqualTo(1);
+        car.updateByRandom(1);
+        assertThat(car.getState()).isEqualTo("");
 
-        racingGame.updateByRandom(car, 1);
-        assertThat(car.getCountMove()).isEqualTo(1);
+        car.updateByRandom(7);
+        assertThat(car.getState()).isEqualTo("-");
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("4이상인 경우 전진하는지 확인한다.")
     void updateByOver4(int number) {
-        Car car = new Car(0);
+        Car car = new Car("");
 
-        racingGame.updateByRandom(car, number);
-        assertThat(car.getCountMove()).isEqualTo(1);
+        car.updateByRandom(number);
+        assertThat(car.getState()).isEqualTo("-");
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("4미만인 경우 멈추는지 확인한다.")
     void stopByUnder4(int number) {
-        Car car = new Car(0);
+        Car car = new Car("");
 
-        racingGame.updateByRandom(car, number);
-        assertThat(car.getCountMove()).isEqualTo(0);
+        car.updateByRandom(number);
+        assertThat(car.getState()).isEqualTo("");
     }
 
     @Test
@@ -61,5 +61,13 @@ class RacingGameTest {
         int randomNumber = racingGame.getRandomNumber();
         assertThat(randomNumber).isGreaterThanOrEqualTo(0);
         assertThat(randomNumber).isLessThanOrEqualTo(9);
+    }
+
+    @Test
+    @DisplayName("자동차의 출력될 상태를 확인한다.")
+    void checkState() {
+        Car car = new Car("");
+
+        assertThat(car.getState()).isEqualTo("");
     }
 }
