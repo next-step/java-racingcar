@@ -44,4 +44,13 @@ public class CalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> Calculator.multiply(null));
         assertThrows(IllegalArgumentException.class, () -> Calculator.divide(null));
     }
+
+    @Test
+    @DisplayName("입력값이 빈 공백이면 IllegalArgumentException")
+    void isInputEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> Calculator.plus(" "));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.minus(" "));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.multiply(" "));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.divide(" "));
+    }
 }
