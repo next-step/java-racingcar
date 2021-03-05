@@ -13,6 +13,8 @@ public class GameManager {
   private static void startGame() {
     try (InputView inputView = new InputView(new Scanner(System.in))) {
       Printer.welcomeMessage();
+      int carCount = inputView.inputCarCount();
+      int round = inputView.inputRound();
     }
   }
 }
