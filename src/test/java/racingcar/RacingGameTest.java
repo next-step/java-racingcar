@@ -36,23 +36,13 @@ class RacingGameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    @DisplayName("4이상인 경우 전진하는지 확인한다.")
-    void updateByOver4(int number) {
+    @CsvSource({"3, ''", "4, -"})
+    @DisplayName("경계값 분석을 통해 4이상인 경우 전진하고, 미만인 경우 멈추는지 확인한다.")
+    void updateByOver4(int number, String state) {
         Car car = new Car("");
 
         car.updateByRandom(number);
-        assertThat(car.getState()).isEqualTo("-");
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    @DisplayName("4미만인 경우 멈추는지 확인한다.")
-    void stopByUnder4(int number) {
-        Car car = new Car("");
-
-        car.updateByRandom(number);
-        assertThat(car.getState()).isEqualTo("");
+        assertThat(car.getState()).isEqualTo(state);
     }
 
     @Test
