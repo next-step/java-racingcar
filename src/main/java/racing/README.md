@@ -18,7 +18,7 @@ else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 
 ### 기능구현 목록
 [X] 자동차 객체 만들기   
 [X] 자동차 객체 테스트 코드 작성  
-[] InputView 만들기   
+[X] InputView 만들기   
 [] 자동차 경주Controller 만들기  
 [] 테스트 코드 작성하기   
 [] ResultView 만들기  
