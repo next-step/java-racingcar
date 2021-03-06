@@ -1,11 +1,11 @@
 package racing;
 
-import java.util.List;
-
 public class ResultView {
 
-    public void printCar(List<Car> carList) {
-        carList.forEach(car -> System.out.println(car.getTrack()));
+    public void printRacingState(Racing racing) {
+        racing.getCarList()
+              .forEach(car -> System.out.println(car.getTrack()));
+
         System.out.println();
     }
 
