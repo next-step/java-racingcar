@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 public class StringCalculatorTest {
 
@@ -23,12 +22,9 @@ public class StringCalculatorTest {
     @Test
     public void stringCalculate_ShouldThrowIllegalArgumentException() {
 
-        String inputString = "10 + 15 - 7 * 3 ^ 9";
+        StringCalculator stringCalculator = new StringCalculator("10 + 15 - 7 * 3 ^ 9");
 
-        StringCalculator stringCalculator = new StringCalculator(inputString);
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> stringCalculator.stringCalculate())
+        assertThatThrownBy(() -> stringCalculator.stringCalculate())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
