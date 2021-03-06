@@ -111,6 +111,21 @@ class CarTest {
         assertThat(nextStepCars.carCount()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("우승자찾기")
+    void winner() {
+        String carNames = "봉,봉봉,봉봉봉,봉봉봉봉";
+        List<Car> carList = new ArrayList<>();
+        int moveIndex = 0;
+        for(String carName: carNames.split(",")) {
+            NextStepCar car = new NextStepCar(carName);
+            car.moveForward(moveIndex++);
+            carList.add(car);
+        }
+        NextStepCars nextStepCars = new NextStepCars(carList);
+        assertThat(nextStepCars.getWinnser()).isEqualTo("봉봉봉봉");
+    }
+
     @BeforeAll
     static void init() {
         car = new NextStepCar("dummy");

@@ -16,4 +16,8 @@ public class NextStepCars {
     public int carCount() {
         return nextStepCars.size();
     }
+
+    public String getWinnser() {
+        return null;
+    }
 }
