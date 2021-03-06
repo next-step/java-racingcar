@@ -29,6 +29,10 @@ public class SetCollectionTest {
 	void size() {
 		assertThat(numbers).size().isGreaterThan(2)
 								  .isLessThanOrEqualTo(3);
+		
+		//2021-03-05 피드백 반영
+		//요구사항에 맞지 않아 isEqualTo를 통해 사이즈 테스트하는 내용을 반영한다.
+		assertThat(numbers.size()).isEqualTo(3);
 	}
 	
     @ParameterizedTest
