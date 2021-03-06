@@ -7,11 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
-
-    StringCalculator calculator = new StringCalculator();
 
     @DisplayName("\"3 + 5\"는 8을 반환해야 한다.")
     @Test
@@ -20,7 +17,7 @@ class StringCalculatorTest {
         String source = "3 + 5";
 
         // Act
-        int result = calculator.calculateStringEquation(source);
+        int result = StringCalculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(8);
@@ -33,7 +30,7 @@ class StringCalculatorTest {
         String source = "6 - 2";
 
         // Act
-        int result = calculator.calculateStringEquation(source);
+        int result = StringCalculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(4);
@@ -46,7 +43,7 @@ class StringCalculatorTest {
         String source = "2 * 3";
 
         // Act
-        int result = calculator.calculateStringEquation(source);
+        int result = StringCalculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(6);
@@ -59,7 +56,7 @@ class StringCalculatorTest {
         String source = "8 / 4";
 
         // Act
-        int result = calculator.calculateStringEquation(source);
+        int result = StringCalculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(2);
@@ -72,7 +69,7 @@ class StringCalculatorTest {
         String source = null;
 
         // Act & Assert
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculateStringEquation(source));
     }
 
     @ParameterizedTest(name = "입력값이 \"{0}\"일 경우 IllegalArgumentException을 던져야 한다.")
@@ -80,7 +77,7 @@ class StringCalculatorTest {
     void calculateEmptyCharacter(String source) {
 
         // Act & Assert
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculateStringEquation(source));
     }
 
     @DisplayName("\"5 ^ 2\"는 IllegalArgumentException을 던져야 한다.")
@@ -90,7 +87,7 @@ class StringCalculatorTest {
         String source = "5 ^ 2";
 
         // Act & Assert
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculateStringEquation(source));
     }
 
     @DisplayName("\"4 + 3 - 2 * 4 / 5\"는 4를 반환해야 한다.")
@@ -100,7 +97,7 @@ class StringCalculatorTest {
         String source = "4 + 3 - 2 * 4 / 5";
 
         // Act
-        int result = calculator.calculateStringEquation(source);
+        int result = StringCalculator.calculateStringEquation(source);
 
         // Assert
         assertThat(result).isEqualTo(4);
