@@ -81,6 +81,11 @@ public class Racing {
     }
 
     private void printWinner(NextStepCars nextStepCars) {
-        System.out.println(Arrays.toString(nextStepCars.getWinner().toArray()) + "가 최종 우승했습니다.");
+        List<String> winners = nextStepCars.getWinner();
+        int i = 0;
+        for(String winner : winners) {
+            System.out.print(winner + ((i == winners.size() - 1) ? "가 최종 우승했습니다." : ","));
+            i++;
+        }
     }
 }

@@ -26,14 +26,15 @@ public class NextStepCars {
         return nextStepCars.size();
     }
 
-    public List<Car> getWinner() {
+    public List<String> getWinner() {
         int winnerPosition = 0;
         for(Car car : this.nextStepCars) {
             winnerPosition = Math.max(winnerPosition, car.getPosition());
         }
         int finalWinnerPosition = winnerPosition;
-        List<Car> collect = this.nextStepCars.stream()
+        List<String> collect = this.nextStepCars.stream()
                 .filter(car -> car.getPosition() == finalWinnerPosition)
+                .map(car -> car.getName())
                 .collect(Collectors.toList());
         return collect;
     }

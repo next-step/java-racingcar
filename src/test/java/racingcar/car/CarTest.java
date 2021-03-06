@@ -125,7 +125,7 @@ class CarTest {
             carList.add(car);
         }
         NextStepCars nextStepCars = new NextStepCars(carList);
-        assertThat(nextStepCars.getWinner().get(0).getName()).isEqualTo("봉봉봉봉");
+        assertThat(nextStepCars.getWinner().get(0)).isEqualTo("봉봉봉봉");
     }
 
     @Test
@@ -145,7 +145,7 @@ class CarTest {
         carList.add(expectedSecondWinner);
 
         NextStepCars nextStepCars = new NextStepCars(carList);
-        List<Car> winners = nextStepCars.getWinner();
+        List<String> winners = nextStepCars.getWinner();
         assertThat(winners.size()).isEqualTo(2);
     }
 
