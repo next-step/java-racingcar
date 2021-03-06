@@ -51,7 +51,7 @@ public class RacingCarGame {
 	public String getWinnerNames(List<Car> cars) {
 		int winnerStep = getWinnerStep(cars);
 		return cars.stream()
-			.filter(car -> car.getStep() == winnerStep)
+			.filter(car -> car.isWinner(winnerStep))
 			.map(Car::getCarName)
 			.collect(Collectors.joining(", "));
 	}
