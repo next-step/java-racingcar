@@ -23,4 +23,11 @@ public class RacingCar {
             carMove();
         }
     }
+
+    public void printPosition(){
+        for(int i=0; i < position; i ++){
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }
