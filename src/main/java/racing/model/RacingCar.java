@@ -1,5 +1,7 @@
 package racing.model;
 
+import java.util.List;
+
 public class RacingCar {
 
   private int position;
@@ -8,12 +10,18 @@ public class RacingCar {
     this.position = position;
   }
 
-  public void move(int moveCount) {
-    this.position += moveCount;
-  }
-
   public int getPosition() {
-    return this.position;
+    return position;
   }
 
+  public int move(int moveCount) {
+    if (isForward(moveCount)) {
+      this.position += moveCount;
+    }
+    return position;
+  }
+
+  public boolean isForward(int moveCount) {
+    return moveCount > 3;
+  }
 }

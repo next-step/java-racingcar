@@ -13,7 +13,7 @@ public class RacingGame {
   /**
    * 입력 받은 값으로 자동차와 게임 턴 설정 메서드
    */
-  public List<RacingCar> setup(int carCount) {
+  public List<RacingCar> setUp(int carCount) {
     carList = new ArrayList<>();
     for (int i = 0; i < carCount; i++) {
       carList.add(new RacingCar(1));
