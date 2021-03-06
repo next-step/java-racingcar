@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CalculatorTest {
 
@@ -45,4 +47,51 @@ public class CalculatorTest {
 		});
 	}
 
+	@DisplayName("덧셈 테스트")
+	@ParameterizedTest
+	@CsvSource(value = { "1,5:6", "3,7:10", "51,4:55"}, delimiter = ':')
+	void addTest(String input, String expected) {
+		String[] data = input.split(",");
+		Integer firstNumber = Integer.valueOf(data[0]);
+		Integer secondNumber = Integer.valueOf(data[1]);
+		Integer expectedNumber =Integer.valueOf(expected);
+
+		assertThat(calculator.add(firstNumber,secondNumber)).isEqualTo(expectedNumber);
+	}
+
+	@DisplayName("뺄셈 테스트")
+	@ParameterizedTest
+	@CsvSource(value = { "1,5:-4", "7,3:4", "51,4:47"}, delimiter = ':')
+	void subtractTest(String input, String expected) {
+		String[] data = input.split(",");
+		int firstNumber = Integer.valueOf(data[0]);
+		int secondNumber = Integer.valueOf(data[1]);
+		int expectedNumber =Integer.valueOf(expected);
+
+		assertThat(calculator.subtract(firstNumber,secondNumber)).isEqualTo(expectedNumber);
+	}
+
+	@DisplayName("곱셈 테스트")
+	@ParameterizedTest
+	@CsvSource(value = { "1,5:5", "7,3:21", "11,4:44"}, delimiter = ':')
+	void multipyTest(String input, String expected) {
+		String[] data = input.split(",");
+		int firstNumber = Integer.valueOf(data[0]);
+		int secondNumber = Integer.valueOf(data[1]);
+		int expectedNumber =Integer.valueOf(expected);
+
+		assertThat(calculator.multiply(firstNumber,secondNumber)).isEqualTo(expectedNumber);
+	}
+
+	@DisplayName("나눗셈 테스트")
+	@ParameterizedTest
+	@CsvSource(value = { "5,5:1", "21,3:7", "15,3:5"}, delimiter = ':')
+	void divideTest(String input, String expected) {
+		String[] data = input.split(",");
+		int firstNumber = Integer.valueOf(data[0]);
+		int secondNumber = Integer.valueOf(data[1]);
+		int expectedNumber =Integer.valueOf(expected);
+
+		assertThat(calculator.divide(firstNumber,secondNumber)).isEqualTo(expectedNumber);
+	}
 }
