@@ -1,9 +1,8 @@
 package racing.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
 
@@ -32,7 +31,7 @@ public class RacingGame {
         }
         return carList;
     }
-    
+
     /**
      * 자동차가 이동할 랜덤값 생성 메서드
      */
@@ -55,4 +54,11 @@ public class RacingGame {
     }
 
 
+    public List<RacingCar> setWinner() {
+        return carList.stream().
+                filter(car -> car.getPosition() == carList.stream()
+                        .mapToInt(RacingCar::getPosition)
+                        .max().orElse(0))
+                .collect(toList());
+    }
 }

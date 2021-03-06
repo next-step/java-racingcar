@@ -10,26 +10,27 @@ import racing.view.ResultView;
 
 public class RacingController {
 
-    private RacingGame racingGame;
-    private Validation validation;
-    private int gameTrun;
-    
+    private final RacingGame racingGame;
+    private final Validation validation;
+    private int gameTurn;
+
+    public RacingController() {
+        this.racingGame = new RacingGame();
+        this.validation = new Validation();
+    }
+
     /**
      * InputView 에서 자동차 갯수와 게임 실행 횟수를 입력받아 게임을 설정함
      */
     public void setUpGame() {
         InputView inputView = new InputView();
-        racingGame = new RacingGame();
-        validation = new Validation();
-        int[] carCountAndTurnCount = inputView.init();
-
-        if (Boolean.TRUE.equals(validation.isZero(carCountAndTurnCount[0])) &&
-                Boolean.TRUE.equals(validation.isZero(carCountAndTurnCount[1]))) {
-            carCountAndTurnCount = inputView.reStart();
+        inputView.init();
+        if (validation.isZero(inputView.getTurnCount())) {
+            inputView.reStart();
         }
+        racingGame.setUp(inputView.getParticipationList());
+        this.gameTurn = inputView.getTurnCount();
 
-        this.gameTrun = carCountAndTurnCount[1];
-        racingGame.setUp(carCountAndTurnCount[0]);
     }
 
     /**
@@ -37,13 +38,17 @@ public class RacingController {
      */
     public void play() {
         ResultView resultView = new ResultView();
-        for (int i = 0; i < gameTrun; i++) {
+        for (int i = 0; i < gameTurn; i++) {
             List<Integer> randomValue = racingGame.createRandomValue();
             List<RacingCar> movedCarList = racingGame.moveAndStop(randomValue);
             resultView.turnResultView(movedCarList);
         }
+        finish(resultView);
     }
 
+    private void finish(ResultView resultView) {
+        resultView.drawWinner(racingGame.setWinner());
+    }
 
     public static void main(String[] args) {
         RacingController racingController = new RacingController();
