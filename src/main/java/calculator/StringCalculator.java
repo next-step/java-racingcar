@@ -2,8 +2,8 @@ package calculator;
 
 public class StringCalculator {
 
-    public String[] inputDatas;
-    public int result = 0;
+    private String[] inputDatas;
+    private int result = 0;
 
     public StringCalculator(String userInput) {
         inputDatas = userInput.split(" ");
