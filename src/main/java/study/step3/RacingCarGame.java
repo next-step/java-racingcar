@@ -2,7 +2,7 @@ package study.step3;
 
 import java.util.Random;
 
-public class RacingCar {
+public class RacingCarGame {
 
     static final int MOVE_POSSIBLE_NUMBER = 4;
 
