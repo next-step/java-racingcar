@@ -1,6 +1,7 @@
 package racing.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -13,14 +14,25 @@ public class RacingGame {
     /**
      * 입력 받은 값으로 자동차와 게임 턴 설정 메서드
      */
-    public List<RacingCar> setUp(int carCount) {
+    public List<RacingCar> setUp(String participationList) {
         carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new RacingCar(0));
-        }
+        String[] racingCarNames = participationList.split(",");
+        carList = createRacingCar(racingCarNames);
+
         return carList;
     }
 
+    /**
+     * 자동차이름을 이용해 생성해주는 메서드
+     */
+    public List<RacingCar> createRacingCar(String[] racingCarNames) {
+        long carId = 1L;
+        for (String racingCarName : racingCarNames) {
+            carList.add(new RacingCar(carId++, racingCarName, 0));
+        }
+        return carList;
+    }
+    
     /**
      * 자동차가 이동할 랜덤값 생성 메서드
      */
