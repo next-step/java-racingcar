@@ -1,7 +1,10 @@
 package racingcar.car;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,19 +13,13 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    @Test
+    static Car car;
+
+    @ParameterizedTest
+    @CsvSource(value = {"4 , 1", "4 , 2", "4 , 3", "4 , 4", "4 , 5", "1 , 5", "1 , 5", "1 , 5", "1 , 5"})
     @DisplayName("자동차는 4이상이 입력되어야 전진")
-    void canMoveForward () {
-        Car car = new NextStepCar();
-        assertThat(car.moveForward(4)).isEqualTo(1);
-        assertThat(car.moveForward(4)).isEqualTo(2);
-        assertThat(car.moveForward(4)).isEqualTo(3);
-        assertThat(car.moveForward(4)).isEqualTo(4);
-        assertThat(car.moveForward(4)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
+    void canMoveForward (int random, int expected) {
+        assertThat(car.moveForward(random)).isEqualTo(expected);
     }
 
     @Test
@@ -89,5 +86,10 @@ class CarTest {
         cars.get(1).moveForward(random.nextInt(10));
 
         assertThat(cars.get(0).getPosition()).isNotEqualTo(cars.get(1).getPosition());
+    }
+
+    @BeforeAll
+    static void init() {
+        car = new NextStepCar();
     }
 }
