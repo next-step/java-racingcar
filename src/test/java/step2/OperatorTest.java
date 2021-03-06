@@ -31,4 +31,12 @@ class OperatorTest {
         Operator operator = Operator.findOperator(symbol);
         assertEquals(operator.calculate(num1, num2), expected);
     }
+
+    @DisplayName("나눗 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"4,/,2,2", "9,/,3,3"})
+    void divisionTest(long num1, String symbol, long num2, long expected) {
+        Operator operator = Operator.findOperator(symbol);
+        assertEquals(operator.calculate(num1, num2), expected);
+    }
 }

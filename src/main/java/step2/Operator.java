@@ -7,7 +7,8 @@ public enum Operator {
 
     PLUS("+", (a, b) -> a + b),
     MINUS("-", (a, b) -> a - b),
-    MULTIPLICATION("*", (a, b) -> a * b);
+    MULTIPLICATION("*", (a, b) -> a * b),
+    DIVISION("/", (a, b) -> a / b);
 
     private String symbol;
     private BiFunction<Long, Long, Long> expression;
