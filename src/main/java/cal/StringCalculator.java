@@ -17,7 +17,7 @@ public class StringCalculator {
         }};
     }
 
-    public static int calculateStringEquation(String input) {
+    public static int calculate(String input) {
         if (isNull(input) || isBlank(input)) {
             throw new IllegalArgumentException();
         }
