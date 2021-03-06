@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.function.BinaryOperator;
 
-public enum Operator {
+public enum Operation {
     PLUS("+", (int1, int2) -> int1 + int2),
     MINUS("-", (int1, int2) -> int1 - int2),
     MULTIPLY("*", (int1, int2) -> int1 * int2),
@@ -10,16 +10,16 @@ public enum Operator {
     private String operator;
     private BinaryOperator<Integer> integerBinaryOperator;
 
-    Operator(String operator, BinaryOperator<Integer> integerBinaryOperator) {
+    Operation(String operator, BinaryOperator<Integer> integerBinaryOperator) {
         this.operator = operator;
         this.integerBinaryOperator = integerBinaryOperator;
     }
 
-    public static Operator of(String operator) {
-        return Arrays.stream(Operator.values())
-                .filter(o -> o.operator.equals(operator))
+    public static Operation of(String value) {
+        return Arrays.stream(Operation.values())
+                .filter(operation -> operation.operator.equals(value))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException(Message.EMPTY_OPERATOR));
     }
 
     public Integer getResult(Integer num1, Integer num2) {

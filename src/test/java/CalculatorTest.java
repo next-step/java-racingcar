@@ -43,7 +43,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1:+:1:2", "1:*:1:1", "1:-:1:0", "1:/:1:1"} , delimiter = ':')
     void calculateTest(int input1, String operator, int input2, int result) {
-        Assertions.assertEquals(result , Operator.of(operator).getResult(input1, input2));
+        Assertions.assertEquals(result , Operation.of(operator).getResult(input1, input2));
     }
 
     @DisplayName("모든 사칙연산 기능 테스트")
@@ -56,6 +56,6 @@ public class CalculatorTest {
     @DisplayName("나눴을때 정수로 떨어지는지 확인하는 테스트")
     @Test
     void divideResultEqualsEssenceTest() {
-        Assertions.assertEquals(0, Operator.of("/").getResult(1, 2));
+        Assertions.assertEquals(0, Operation.of("/").getResult(1, 2));
     }
 }
