@@ -1,4 +1,4 @@
-package operator;
+package calculator.operator;
 
 @FunctionalInterface
 public interface Operator {

@@ -1,11 +1,11 @@
-package calculator;
+package calculator.domain;
 
-import operator.Operation;
+import calculator.operator.Operation;
 
 import java.util.StringTokenizer;
 import static utils.StringUtils.isNullAndBlank;
 import static java.lang.Integer.parseInt;
-import static operator.Operation.getOperation;
+import static calculator.operator.Operation.getOperation;
 
 public class Calculator {
     private final String DELIMITER = " ";
