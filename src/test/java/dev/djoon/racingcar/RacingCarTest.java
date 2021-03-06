@@ -2,6 +2,8 @@ package dev.djoon.racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.djoon.racingcar.actor.Car;
+import dev.djoon.racingcar.actor.OppaCar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -39,7 +41,7 @@ public class RacingCarTest {
 
     // then
     int totalMoveCount = 0;
-    for (Car car : racingCarGame.getCarList) {
+    for (Car car : racingCarGame.getCarList()) {
       totalMoveCount += car.getXPos();
     }
     assertThat(totalMoveCount).isEqualTo(expectedMoveCount);
@@ -55,12 +57,13 @@ public class RacingCarTest {
     racingCarGame.addCar(new OppaCar());
 
     // when
-    racingCarGame.setCondition(Condition.fromValue(condition));
+    racingCarGame.setCondition(Condition.MANUAL);
+    racingCarGame.setConditionValue(condition);
     racingCarGame.start();
 
     // then
     int totalMoveCount = 0;
-    for (Car car : racingCarGame.getCarList) {
+    for (Car car : racingCarGame.getCarList()) {
       totalMoveCount += car.getXPos();
     }
     assertThat(totalMoveCount).isEqualTo(expectedMoveCount);
@@ -78,13 +81,13 @@ public class RacingCarTest {
     }
 
     // when
-    racingCarGame.setCondition(Condition.RANDOM.setSeed(seed));
+    racingCarGame.setCondition(Condition.RANDOM_SEED_FIXED_TO_10);
     racingCarGame.setLoopTimes(loopTimes);
     racingCarGame.start();
 
     // then
     int totalMoveCount = 0;
-    for (Car car : racingCarGame.getCarList) {
+    for (Car car : racingCarGame.getCarList()) {
       totalMoveCount += car.getXPos();
     }
     assertThat(totalMoveCount).isEqualTo(expectedMoveCount);
