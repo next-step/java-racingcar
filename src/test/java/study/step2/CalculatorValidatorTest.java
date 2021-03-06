@@ -23,18 +23,6 @@ public class CalculatorValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> CalculatorValidator.validateEmpty(input));
     }
 
-    @ParameterizedTest(name = "연산기호 유효성 테스트 - 1")
-    @ValueSource(strings = {"+", "-", "*", "/"})
-    void validOperator(String input) {
-        assertThat(CalculatorValidator.validateOperator(input)).isEqualTo(input);
-    }
-
-    @ParameterizedTest(name = "연산기호 유효성 테스트 - 2")
-    @ValueSource(strings = {"^", "$"})
-    void validOperatorException(String input) {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> CalculatorValidator.validateOperator(input));
-    }
-
     @ParameterizedTest(name = "숫자 유효성 테스트 - 1")
     @ValueSource(strings = {"1", "2", "3"})
     void validNumber(String input) {

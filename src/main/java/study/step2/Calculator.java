@@ -1,36 +1,37 @@
 package study.step2;
 
-public class Calculator {
+import study.step2.constant.CalculatorConst;
 
-    public Calculator() {
+public enum Calculator {
+    PLUS("+"),
+    MINUS("-"),
+    MULTIPLE("*"),
+    DIVIDE("/");
+
+    private final String operator;
+
+    Calculator(String operator) {
+        this.operator = operator;
     }
 
-    public int plus(int number1, int number2) {
-        return number1 + number2;
+    private String getOperator() {
+        return operator;
     }
 
-    public int minus(int number1, int number2) {
-        return number1 - number2;
-    }
-
-    public int multiple(int number1, int number2) {
-        return number1 * number2;
-    }
-
-    public int divide(int number1, int number2) {
-        return number1 / number2;
-    }
-
-    public int operate(String operator, int num1, int num2) {
-        if("+".equals(operator)) {
-            return plus(num1, num2);
+    public static int operate(String operator, int number1, int number2) {
+        if(operator.equals(PLUS.getOperator())) {
+            return number1 + number2;
         }
-        if("-".equals(operator)) {
-            return minus(num1, num2);
+        if(operator.equals(MINUS.getOperator())) {
+            return number1 - number2;
         }
-        if("*".equals(operator)) {
-            return multiple(num1, num2);
+        if(operator.equals(MULTIPLE.getOperator())){
+            return number1 * number2;
         }
-        return divide(num1, num2);
+        if(operator.equals(DIVIDE.getOperator())) {
+            return number1 / number2;
+        }
+
+        throw new IllegalArgumentException(CalculatorConst.MESSAGE_NOT_OPERATOR);
     }
 }

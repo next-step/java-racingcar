@@ -1,7 +1,5 @@
 package study.step2.validation;
 
-import java.util.Arrays;
-
 import study.step2.constant.CalculatorConst;
 
 public class CalculatorValidator {
@@ -19,12 +17,5 @@ public class CalculatorValidator {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(CalculatorConst.MESSAGE_NOT_NUMBER);
         }
-    }
-
-    public static String validateOperator(String value) {
-        if(!Arrays.asList(CalculatorConst.OPERATOR).contains(value)) {
-            throw new IllegalArgumentException(CalculatorConst.MESSAGE_NOT_OPERATOR);
-        }
-        return value;
     }
 }
