@@ -1,9 +1,11 @@
 package calculator;
 
 import operator.Operation;
-import utils.StringUtils;
 
 import java.util.StringTokenizer;
+import static utils.StringUtils.isNullAndBlank;
+import static java.lang.Integer.parseInt;
+import static operator.Operation.getOperation;
 
 public class Calculator {
     private final String DELIMITER = " ";
@@ -12,7 +14,7 @@ public class Calculator {
     }
 
     public Integer calculate(String expression) {
-        if (StringUtils.isNullAndBlank(expression)) {
+        if (isNullAndBlank(expression)) {
             throw new IllegalArgumentException();
         }
         return getResult(splitBlank(expression));
@@ -23,20 +25,12 @@ public class Calculator {
     }
 
     private Integer getResult(StringTokenizer token) {
-        Integer sum = stringToInteger(token.nextToken());
+        Integer sum = parseInt(token.nextToken());
         while (token.hasMoreTokens()) {
-            Operation operator = getOperationByToken(token.nextToken());
-            sum = operator.apply(sum, stringToInteger(token.nextToken()));
+            Operation operator = getOperation(token.nextToken());
+            sum = operator.apply(sum, parseInt(token.nextToken()));
         }
         return sum;
-    }
-
-    private int stringToInteger(String digitValue) {
-        return Integer.parseInt(digitValue);
-    }
-
-    private Operation getOperationByToken(String symbol) {
-        return Operation.getOperation(symbol);
     }
 
 }
