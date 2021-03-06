@@ -2,6 +2,8 @@ package study.step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,36 +11,34 @@ public class RacingCarGameTest {
 
     RacingCarGame racingCarGame;
     RacingCar racingCar;
-    InputView inputView;
+    RandomGenerator randomGenerator;
 
     @BeforeEach
     void setup(){
         racingCarGame = new RacingCarGame();
         racingCar = new RacingCar();
-        inputView = new InputView();
+        randomGenerator = new RandomGenerator();
     }
 
     @Test
     void getRandomNumber(){
-        assertThat(racingCar.getRandomNumber()).isLessThan(10);
-        assertThat(racingCar.getRandomNumber()).isLessThanOrEqualTo(9);
-        assertThat(racingCar.getRandomNumber()).isGreaterThan(-1);
-        assertThat(racingCar.getRandomNumber()).isGreaterThanOrEqualTo(0);
+        assertThat(randomGenerator.getRandomNumber()).isLessThan(10);
+        assertThat(randomGenerator.getRandomNumber()).isLessThanOrEqualTo(9);
+        assertThat(randomGenerator.getRandomNumber()).isGreaterThan(-1);
+        assertThat(randomGenerator.getRandomNumber()).isGreaterThanOrEqualTo(0);
     }
 
-    @Test
-    void movePossible(){
-        assertThat(racingCar.movePossible(4)).isEqualTo(true);
-        assertThat(racingCar.movePossible(9)).isEqualTo(true);
-        assertThat(racingCar.movePossible(0)).isEqualTo(false);
-        assertThat(racingCar.movePossible(2)).isEqualTo(false);
+    @ParameterizedTest
+    @CsvSource(value = {"1:false", "4:true", "3:false", "9:true", "0:false"}, delimiter = ':')
+    void movePossible(Integer number, boolean expected){
+        assertThat(racingCar.movePossible(number)).isEqualTo(expected);
     }
 
     @Test
     void carMove(){
-        racingCar.carMove();
-        assertThat(racingCar.getPosition()).isEqualTo(1);
-        racingCar.carMove();
-        assertThat(racingCar.getPosition()).isEqualTo(2);
+        for (int i = 1; i <= 10; i ++) {
+            racingCar.carMove();
+            assertThat(racingCar.getPosition()).isEqualTo(i);
+        }
     }
 }
