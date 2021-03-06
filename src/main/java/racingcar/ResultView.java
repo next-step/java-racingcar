@@ -6,7 +6,7 @@ public class ResultView {
 
     public void printEachCar(Car car) {
         for (int i = 0; i < car.getPosition(); i++) {
-            System.out.println("-");
+            System.out.print("-");
         }
     }
 

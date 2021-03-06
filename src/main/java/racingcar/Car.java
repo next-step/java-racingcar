@@ -12,9 +12,13 @@ public class Car {
         return position;
     }
 
-    public void updateByNumber(int randomNumber) {
-        if (randomNumber >= 4) {
+    public void updateByCondition(int number) {
+        if (isAcceptCondition(number)) {
             position++;
         }
+    }
+
+    public boolean isAcceptCondition(int number) {
+        return number >= 4;
     }
 }

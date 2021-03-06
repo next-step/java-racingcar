@@ -19,9 +19,13 @@ public class RacingGame {
         return cars;
     }
 
+    public int getNumber() {
+        return random.nextInt(10);
+    }
+
     public void playRacing(List<Car> cars) {
         for (Car car : cars) {
-            car.updateByNumber(random.nextInt(10));
+            car.updateByCondition(getNumber());
         }
     }
 
