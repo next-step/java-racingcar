@@ -1,10 +1,6 @@
 package study.step3;
 
-import java.util.Random;
-
 public class RacingCarGame {
-
-    static final int MOVE_POSSIBLE_NUMBER = 4;
 
     public void start() {
 
@@ -15,13 +11,18 @@ public class RacingCarGame {
 
         System.out.println("입력 한 자동차 대수는 : " + numberOfCars);
         System.out.println("입력 한 이동할 횟수는 : " + numberOfAttempts);
+
+        RacingCar[] racingCars = new RacingCar[numberOfCars];
+
+        for(int i=0; i < numberOfAttempts; i++) {
+            carMove(numberOfCars, racingCars);
+        }
     }
 
-    public int getRandomNumber() {
-        return new Random().nextInt(10);
+    public void carMove(int numberOfCars, RacingCar[] racingCars) {
+        for(int i=0; i < numberOfCars; i++){
+            racingCars[i].oneStep();
+        }
     }
 
-    public boolean movePossible(int number) {
-        return number >= MOVE_POSSIBLE_NUMBER;
-    }
 }

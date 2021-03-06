@@ -8,27 +8,37 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarGameTest {
 
     RacingCarGame racingCarGame;
+    RacingCar racingCar;
     InputView inputView;
 
     @BeforeEach
     void setup(){
         racingCarGame = new RacingCarGame();
+        racingCar = new RacingCar();
         inputView = new InputView();
     }
 
     @Test
     void getRandomNumber(){
-        assertThat(racingCarGame.getRandomNumber()).isLessThan(10);
-        assertThat(racingCarGame.getRandomNumber()).isLessThanOrEqualTo(9);
-        assertThat(racingCarGame.getRandomNumber()).isGreaterThan(-1);
-        assertThat(racingCarGame.getRandomNumber()).isGreaterThanOrEqualTo(0);
+        assertThat(racingCar.getRandomNumber()).isLessThan(10);
+        assertThat(racingCar.getRandomNumber()).isLessThanOrEqualTo(9);
+        assertThat(racingCar.getRandomNumber()).isGreaterThan(-1);
+        assertThat(racingCar.getRandomNumber()).isGreaterThanOrEqualTo(0);
     }
 
     @Test
     void movePossible(){
-        assertThat(racingCarGame.movePossible(4)).isEqualTo(true);
-        assertThat(racingCarGame.movePossible(9)).isEqualTo(true);
-        assertThat(racingCarGame.movePossible(0)).isEqualTo(false);
-        assertThat(racingCarGame.movePossible(2)).isEqualTo(false);
+        assertThat(racingCar.movePossible(4)).isEqualTo(true);
+        assertThat(racingCar.movePossible(9)).isEqualTo(true);
+        assertThat(racingCar.movePossible(0)).isEqualTo(false);
+        assertThat(racingCar.movePossible(2)).isEqualTo(false);
+    }
+
+    @Test
+    void carMove(){
+        racingCar.carMove();
+        assertThat(racingCar.getPosition()).isEqualTo(1);
+        racingCar.carMove();
+        assertThat(racingCar.getPosition()).isEqualTo(2);
     }
 }
