@@ -7,12 +7,10 @@ public class Car {
 
   private int distance;
 
-  public boolean move(int randomNumber) {
+  public void move(int randomNumber) {
     if (randomNumber >= THRESHOLD) {
       distance += 1;
-      return true;
     }
-    return false;
   }
 
   public String showStatus() {
