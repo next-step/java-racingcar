@@ -15,4 +15,12 @@ public class RacingCarTest {
         racingCar = new RacingCar();
         inputView = new InputView();
     }
+
+    @Test
+    void getRandomNumber(){
+        assertThat(racingCar.getRandomNumber()).isLessThan(10);
+        assertThat(racingCar.getRandomNumber()).isLessThanOrEqualTo(9);
+        assertThat(racingCar.getRandomNumber()).isGreaterThan(-1);
+        assertThat(racingCar.getRandomNumber()).isGreaterThanOrEqualTo(0);
+    }
 }

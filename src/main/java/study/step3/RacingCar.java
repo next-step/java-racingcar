@@ -1,5 +1,7 @@
 package study.step3;
 
+import java.util.Random;
+
 public class RacingCar {
 
     public void start() {
@@ -11,5 +13,9 @@ public class RacingCar {
 
         System.out.println("입력 한 자동차 대수는 : " + numberOfCars);
         System.out.println("입력 한 이동할 횟수는 : " + numberOfAttempts);
+    }
+
+    public int getRandomNumber() {
+        return new Random().nextInt(10);
     }
 }
