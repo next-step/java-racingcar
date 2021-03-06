@@ -10,17 +10,18 @@ public class RacingCarGame {
     public void start() {
 
         InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
 
         int numberOfCars = inputView.enterNumberOfCars();
         int numberOfAttempts = inputView.enterNumberOfAttempts();
 
-        System.out.println("입력 한 자동차 대수는 : " + numberOfCars);
-        System.out.println("입력 한 이동할 횟수는 : " + numberOfAttempts);
-
         List<RacingCar> racingCars = racingCarsInit(numberOfCars);
+
+        resultView.printStart();
 
         for(int i=0; i < numberOfAttempts; i++) {
             carMove(numberOfCars, racingCars);
+            resultView.print(racingCars);
         }
     }
 
