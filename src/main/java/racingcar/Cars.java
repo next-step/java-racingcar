@@ -32,9 +32,7 @@ public class Cars {
   }
 
   public void moveAll() {
-    for (Car car : cars) {
-      car.move(random.nextInt(BOUND));
-    }
+    cars.forEach(car -> car.move(random.nextInt(BOUND)));
   }
 
   public String getStatus() {
