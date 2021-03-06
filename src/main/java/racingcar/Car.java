@@ -3,10 +3,12 @@ package racingcar;
 public class Car {
 
   public static final String UNIT = "-";
+  public static final int THRESHOLD = 4;
+
   private int distance;
 
   public boolean move(int randomNumber) {
-    if (randomNumber >= 4) {
+    if (randomNumber >= THRESHOLD) {
       distance += 1;
       return true;
     }
