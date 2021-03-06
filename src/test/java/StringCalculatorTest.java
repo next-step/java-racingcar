@@ -120,7 +120,7 @@ class StringUtils {
     }
 
     public enum SortString {
-        INTEGER(1) {
+        INTEGER {
             @Override
             public void addList(List list, String arg) {
                 if (StringUtils.isInteger(arg)) {
@@ -128,7 +128,7 @@ class StringUtils {
                 }
             }
         },
-        CALC_TEXT(2) {
+        CALC_TEXT {
             @Override
             public void addList(List list, String arg) {
                 if (StringUtils.isCalculateText(arg)) {
@@ -137,9 +137,7 @@ class StringUtils {
             }
         };
 
-        private int sortType;
-
-        SortString(int sortType) { this.sortType = sortType; }
+        SortString() { }
 
         public abstract void addList(List list, String arg);
     }
