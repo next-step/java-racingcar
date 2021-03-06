@@ -75,8 +75,7 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculateStringEquation(source));
     }
 
-    @DisplayName("입력값이 빈 공백 문자일 경우 IllegalArgumentException을 던져야 한다.")
-    @ParameterizedTest
+    @ParameterizedTest(name = "입력값이 \"{0}\"일 경우 IllegalArgumentException을 던져야 한다.")
     @ValueSource(strings = {"", " ", "   ", "      "})
     void calculateEmptyCharacter(String source) {
 
