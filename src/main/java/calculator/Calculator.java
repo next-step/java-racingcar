@@ -14,11 +14,6 @@ public class Calculator {
         return this.executeCalculate(formula.split(FORMULA_DELIMITER));
     }
 
-    /**
-     * 입력값 검증
-     *  - 입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-     *  - 사칙연산 레이아웃 검증
-     */
     private void validateInput(String formula) throws IllegalArgumentException {
         if(StringUtils.isEmpty(formula)) {
             throw new IllegalArgumentException("수식을 입력해 주세요");
@@ -29,11 +24,7 @@ public class Calculator {
     }
 
     private boolean isValidOperationLayout(String[] formula) {
-        /*
-        수식 길이검증
-         - 수식은 홀수개의 인자로 구성되어야 한다.
-         - 수식은 최소 3개 이상의 인자로 구성되어야 한다.
-         */
+
         if(this.isEven(formula.length) || formula.length<FORMULA_MIN_LENGTH) {
             return false;
         }
