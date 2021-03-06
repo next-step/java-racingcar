@@ -30,6 +30,10 @@ public class StringCalculator {
     }
   }
 
+  public int parseInt(String numberString) {
+    return Integer.parseInt(numberString);
+  }
+
   private void assignArithmetic(String value) {
     if (this.firstNumber != null && this.arithmetic == null && this.secondNumber == null) {
       this.arithmetic = Arithmetic.findByCode(value);
@@ -56,10 +60,6 @@ public class StringCalculator {
     this.arithmetic = null;
     this.secondNumber = null;
     this.result = null;
-  }
-
-  public int parseInt(String numberString) {
-    return Integer.parseInt(numberString);
   }
 
 }
