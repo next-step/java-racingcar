@@ -1,14 +1,14 @@
 package calculator;
 
 import calculator.enums.Operator;
-import calculator.utils.Validator;
+import calculator.utils.ExpressionValidator;
 
 public class StringCalculator {
 
     public int calculate(String[] expression) {
-        Validator.validateNull(expression);
-        Validator.validateEmpty(expression);
-        Validator.validateLength(expression);
+        ExpressionValidator.validateNull(expression);
+        ExpressionValidator.validateEmpty(expression);
+        ExpressionValidator.validateLength(expression);
         int sum = Integer.parseInt(expression[0]);
 
         for (int i = 1; i < expression.length; i += 2) {

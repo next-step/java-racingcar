@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ValidatorTest {
+class ExpressionValidatorTest {
 
     @Test
     @DisplayName("입력 값 Null일 경우 에러")

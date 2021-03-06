@@ -1,11 +1,11 @@
 package calculator.utils;
 
-public class Validator {
+public class ExpressionValidator {
 
     private static final int EMPTY = 0;
     private static final int LENGTH_MIN = 3;
 
-    private Validator() {
+    private ExpressionValidator() {
     }
 
     public static void validateNull(String[] expression) {
