@@ -11,4 +11,9 @@ public class NextStepCar implements Car{
     public int getPosition() {
         return position;
     }
+
+    @Override
+    public void setName(String carName) {
+
+    }
 }

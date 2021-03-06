@@ -5,12 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
     static Car car;
@@ -86,6 +88,28 @@ class CarTest {
         cars.get(1).moveForward(random.nextInt(10));
 
         assertThat(cars.get(0).getPosition()).isNotEqualTo(cars.get(1).getPosition());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"봉카", "봉일균카", "넥스트스탭카"})
+    @DisplayName("자동차명은 5자이하허용")
+    void carNames(String carName) {
+        Car car = new NextStepCar();
+        assertThatThrownBy(() -> {
+            car.setName(carName);
+        }).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"봉카,봉일균카,넥스트카"})
+    @DisplayName("이름을 입력받다 - 쉼표로 구분")
+    void splitByCommas(String carNames) {
+        List<Car> carList = new ArrayList<>();
+        for(String carName: carNames.split(",")) {
+            carList.add(new NextStepCar());
+        }
+        NextStepCars nextStepCars = new NextStepCars(carList);
+        assertThat(nextStepCars.carCount()).isEqualTo(3);
     }
 
     @BeforeAll

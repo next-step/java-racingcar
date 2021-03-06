@@ -12,4 +12,8 @@ public class NextStepCars {
     public List<Car> getNextStepCars() {
         return nextStepCars;
     }
+
+    public int carCount() {
+        return nextStepCars.size();
+    }
 }
