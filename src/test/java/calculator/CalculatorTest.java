@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CalculatorTest {
 
@@ -98,5 +99,12 @@ public class CalculatorTest {
 	void calculateTest(String input, int expected) {
 		String[] splitData = calculator.splitNumberAndOperator(input);
 		assertThat(calculator.calculate(splitData)).isEqualTo(expected);
+	}
+
+	@DisplayName("String#isBlank Test")
+	@ParameterizedTest
+	@ValueSource(strings = {"", " "})
+	void isBlankTest(String input) {
+		assertThat(input.isBlank()).isEqualTo(true);
 	}
 }

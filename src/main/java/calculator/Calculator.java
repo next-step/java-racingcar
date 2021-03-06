@@ -13,11 +13,11 @@ public class Calculator {
 		int splitInputLength = splitInput.length;
 
 		for (int i = 1; i < splitInputLength - 1; i = i + 2) {
-			isOperator(splitInput[i]);
+			operatorCheck(splitInput[i]);
 		}
 	}
 
-	private void isOperator(String operator) {
+	private void operatorCheck(String operator) {
 		if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
 			return;
 		}
@@ -26,7 +26,7 @@ public class Calculator {
 	}
 
 	public void validateInputEmptyOrNull(String input) {
-		if (input == null || input.isEmpty() || input.equals(" ")) {
+		if (input == null || input.isBlank()) {
 			throw new IllegalArgumentException();
 		}
 	}
@@ -74,6 +74,10 @@ public class Calculator {
 			return subtract(firstNumber, secondNumber);
 		}
 
-		return add(firstNumber, secondNumber);
+		if (operator.equals("+")) {
+			return add(firstNumber, secondNumber);
+		}
+
+		throw new IllegalArgumentException();
 	}
 }
