@@ -6,16 +6,21 @@ import java.util.function.BinaryOperator;
 
 public class StringCalculator {
 
+    private static final Map<String, BinaryOperator<Integer>> operatorMap;
+
+    static {
+        operatorMap = new HashMap<String, BinaryOperator<Integer>>() {{
+            put("+", (x, y) -> x + y);
+            put("-", (x, y) -> x - y);
+            put("*", (x, y) -> x * y);
+            put("/", (x, y) -> x / y);
+        }};
+    }
+
     public static int calculateStringEquation(String input) {
         if (isNull(input) || isBlank(input)) {
             throw new IllegalArgumentException();
         }
-
-        Map<String, BinaryOperator<Integer>> operatorMap = new HashMap<>();
-        operatorMap.put("+", (x, y) -> x + y);
-        operatorMap.put("-", (x, y) -> x - y);
-        operatorMap.put("*", (x, y) -> x * y);
-        operatorMap.put("/", (x, y) -> x / y);
 
         String[] tokenArray = input.split(" ");
 
