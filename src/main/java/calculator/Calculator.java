@@ -4,11 +4,13 @@ import common.utils.StringUtils;
 
 public class Calculator {
 
+    private final String FORMULA_DELIMITER = " ";
+
     public int calculate(String formula) {
         // input validation
         this.validateInput(formula);
         // executing calculation
-        return this.executeCalculate(formula.split(" "));
+        return this.executeCalculate(formula.split(FORMULA_DELIMITER));
     }
 
     /**
@@ -20,7 +22,7 @@ public class Calculator {
         if(StringUtils.isEmpty(formula)) {
             throw new IllegalArgumentException("수식을 입력해 주세요");
         }
-        if(!this.isValidOperationLayout(formula.split(" "))) {
+        if(!this.isValidOperationLayout(formula.split(FORMULA_DELIMITER))) {
             throw new IllegalArgumentException("수식의 구성이 올바르지 않습니다. 다시 입력해 주세요");
         }
     }
