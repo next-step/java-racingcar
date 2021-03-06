@@ -23,14 +23,14 @@ public class Racing {
         int forwartCount = scanner.nextInt();
         Random random = new Random();
 
-        for (int i=0; i<carCount; i++) {
+        for (int i = 0; i < carCount; i++) {
             cars.add(new NextStepCar());
         }
-        for(Car car: cars) {
+        for(Car car : cars) {
             car.moveForward(random.nextInt(10));
         }
-        for (int i=0; i<forwartCount; i++) {
-            for(Car car: cars) {
+        for (int i = 0; i < forwartCount; i++) {
+            for(Car car : cars) {
                 car.moveForward(random.nextInt(10));
                 resultView.print("-".repeat(car.getPosition()));
             }
