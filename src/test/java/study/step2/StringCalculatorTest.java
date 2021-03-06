@@ -23,8 +23,8 @@ class StringCalculatorTest {
     void inputNull() {
         String input = null;
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.input(input);
-        });
+            calculator.calculate(input);
+        }).withMessage(CalculatorError.INPUT_NULL);
     }
 
     @DisplayName("사칙연산 입력, blank")
@@ -32,8 +32,8 @@ class StringCalculatorTest {
     @ValueSource(strings = {"", " "})
     void inputBlank(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.input(input);
-        });
+            calculator.calculate(input);
+        }).withMessage(CalculatorError.INPUT_BLANK);
     }
 
     @DisplayName("사칙연산 계산, 지원하지 않는 사칙연산")
@@ -41,8 +41,8 @@ class StringCalculatorTest {
     @ValueSource(strings = {"1 & 2 * 4", "10 ^ 2 - 1", "5 % 2 # 6"})
     void unsupportOperatorCheck(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.input(input).calculate();
-        });
+            calculator.calculate(input);
+        }).withMessage(CalculatorError.UNSUPPORTED_OPERATOR);
     }
 
     @DisplayName("사칙연산 계산, 나눗셈의 나머지가 0이 아닐 경우")
@@ -50,15 +50,14 @@ class StringCalculatorTest {
     @ValueSource(strings = {"5 / 2 + 1", "11 / 3 * 2", "6 / 2 / 4 "})
     void divideResultIsNotInteger(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.input(input).calculate();
-        });
+            calculator.calculate(input);
+        }).withMessage(CalculatorError.DIVIDE_RESULT_MUST_INTEGER);
     }
 
     @DisplayName("사칙연산 결과값, 성공")
     @ParameterizedTest
     @CsvSource(value = {"-1 + 5 + 37:41", "5 + 2 * 4:28", "10 - 1 * -4 + 2:-34", "10 / 5 + 2 * 4:16"}, delimiter = ':')
     void calculate(String input, int expect) {
-        calculator.input(input).calculate();
-        assertThat(calculator.getResult()).isEqualTo(expect);
+        assertThat(calculator.calculate(input)).isEqualTo(expect);
     }
 }
