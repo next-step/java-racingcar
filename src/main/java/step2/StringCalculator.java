@@ -15,7 +15,7 @@ public class StringCalculator {
         String[] numberAndOperatorArray = stringUtil.splitBySpace();
 
         totalValue = Integer.parseInt(numberAndOperatorArray[0]);
-        for (int i = 1; i < numberAndOperatorArray.length; i ++) {
+        for (int i = 1; i < numberAndOperatorArray.length; i++) {
             if (isOperatorPosition(i)) {
                 Calculator calculator = new Calculator(totalValue);
                 totalValue = calculator.calculate(numberAndOperatorArray[i], Integer.parseInt(numberAndOperatorArray[i + 1]));
@@ -26,6 +26,6 @@ public class StringCalculator {
     }
 
     private boolean isOperatorPosition(int index) {
-        return index%2 == 1;
+        return index % 2 == 1;
     }
 }
