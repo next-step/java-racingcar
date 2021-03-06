@@ -11,14 +11,18 @@ import java.util.List;
 import java.util.Random;
 
 public class Racing {
+    private final String inputQuestion;
+    private final String moveQuestion;
     InputView inputView;
     ResultView resultView;
     Random random;
 
-    public Racing() {
-        inputView = new InputView();
-        resultView = new ResultView();
-        random = new Random();
+    public Racing(String inputQuestion, String moveQuestion) {
+        this.inputView = new InputView();
+        this.resultView = new ResultView();
+        this.random = new Random();
+        this.inputQuestion = inputQuestion;
+        this.moveQuestion = moveQuestion;
     }
 
     /**
@@ -27,9 +31,9 @@ public class Racing {
      */
     private List<Integer> startQuestion() {
         List<Integer> scannerValues = new ArrayList<>();
-        inputView.print("자동차 대수는 몇 대 인가요?");
+        inputView.print(inputQuestion);
         scannerValues.add(inputView.scanner.nextInt());
-        inputView.print("시도할 회수는 몇 회 인가요?");
+        inputView.print(moveQuestion);
         scannerValues.add(inputView.scanner.nextInt());
         return scannerValues;
     }
