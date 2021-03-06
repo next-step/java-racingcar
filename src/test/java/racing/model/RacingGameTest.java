@@ -12,6 +12,7 @@ class RacingGameTest {
 
   private RacingGame racingGame;
 
+
   List<RacingCar> init() {
     racingGame = new RacingGame();
     return racingGame.setUp(3);
@@ -61,16 +62,17 @@ class RacingGameTest {
   void stop() {
     //given
     List<RacingCar> racingCar = init();
-    List<Integer> randomValue = createMoveValue(2, 3, 4);
+    List<Integer> randomValue = createMoveValue(2, 3, 1);
 
     //when
     racingGame.moveAndStop(randomValue);
 
     //then
-    assertEquals(1, racingCar.get(0).getPosition());
-    assertEquals(1, racingCar.get(1).getPosition());
-    assertEquals(1, racingCar.get(2).getPosition());
+    assertEquals(0, racingCar.get(0).getPosition());
+    assertEquals(0, racingCar.get(1).getPosition());
+    assertEquals(0, racingCar.get(2).getPosition());
   }
+
 
   private List<Integer> createMoveValue(int firstCarMovePosition, int secondCarMovePosition,
       int thirdCarMovePosition) {

@@ -16,7 +16,7 @@ public class RacingGame {
   public List<RacingCar> setUp(int carCount) {
     carList = new ArrayList<>();
     for (int i = 0; i < carCount; i++) {
-      carList.add(new RacingCar(1));
+      carList.add(new RacingCar(0));
     }
     return carList;
   }
