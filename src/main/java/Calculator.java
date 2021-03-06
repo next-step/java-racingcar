@@ -21,7 +21,6 @@ public class Calculator {
     * 연산자와 피연산자를 입력받아 계산하여 반환한다.
     * @param operator 연산자 문자열, num1 피연산자1, num2 피연산자2
     * @return 계산한 결과값
-    * @throws IllegalArgumentException 잘못된 연산기호를 받을시 발생한다.
     *  */
     public int operate(String operator, int num1, int num2){
         if(operator.equals("+"))
@@ -30,10 +29,8 @@ public class Calculator {
             return minus(num1, num2);
         if(operator.equals("*"))
             return multiply(num1, num2);
-        if(operator.equals("/"))
-            return divide(num1, num2);
 
-        throw new IllegalArgumentException("잘못된 연산기호입니다.");
+        return divide(num1, num2);
     }
 
     /*
@@ -43,19 +40,33 @@ public class Calculator {
     * @throws IllegalArgumentException 비어있는 문자열을 받을시 발생한다.
     * */
     public int calculate(String input){
-        if(input == null || input.isEmpty())
+        if(input == null || input.isEmpty()) {
             throw new IllegalArgumentException("input 값은 비어있을 수 없습니다.");
-
+        }
         String[] numArr = input.split(" ");
 
         int result = checkOperand(numArr[0]);
         for(int i=1; i<numArr.length; i+=2){
             int operand = checkOperand(numArr[i+1]);
-            result = operate(numArr[i], result, operand);
+            result = operate(checkOperate(numArr[i]), result, operand);
         }
 
         return result;
     }
+
+    /*
+     * 해당 문자가 연산자인지 확인하여 맞다면 그대로 반환한다.
+     * @param operator 연산자 문자열
+     * @return 연산자
+     * @throws IllegalArgumentException 잘못된 연산자를 받을시 발생한다.
+     *  */
+    public String checkOperate(String operate){
+        if(operate.equals("+") || operate.equals("-") || operate.equals("*") || operate.equals("/")){
+            return operate;
+        }
+        throw new IllegalArgumentException("잘못된 연산기호입니다.");
+    }
+
 
     /*
     * String type의 피연산자를 받아 int 형태로 반환한다.

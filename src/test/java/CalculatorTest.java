@@ -10,9 +10,6 @@ public class CalculatorTest {
 
     private Calculator calculator;
 
-//    private static final String[] NUMBERS = {"2, 3", "-1, 5", "-1, -3", "3, -1"};
-//    왜 String[]을 @CsvSource 안에 넣으면 constant가 아니라고 오류가 나는것일까요?
-
     private static final String NUMBER1 = "2, 3";
     private static final String NUMBER2 = "-1, 5";
     private static final String NUMBER3 = "-1, -3";
@@ -78,7 +75,7 @@ public class CalculatorTest {
     void validateFalseOperator(String operator){
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() ->{
-                    calculator.operate(operator, 2, 3);
+                    calculator.checkOperate(operator);
                 }).withMessageMatching("잘못된 연산기호입니다.");
     }
 
