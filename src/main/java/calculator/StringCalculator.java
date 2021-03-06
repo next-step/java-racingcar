@@ -27,14 +27,10 @@ public class StringCalculator {
     }
 
     private int calculate(String operand, CalculatorType code, String operand1) {
-
-        int calculateResult = code.calculate(Integer.parseInt(operand), Integer.parseInt(operand1));
-
-        return calculateResult;
+        return code.calculate(Integer.parseInt(operand), Integer.parseInt(operand1));
     }
 
     private CalculatorType selectCode(String operator) {
-
         return CalculatorType.calculatorType(operator);
     }
 
