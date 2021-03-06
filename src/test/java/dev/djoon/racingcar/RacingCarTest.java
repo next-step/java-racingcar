@@ -33,10 +33,10 @@ public class RacingCarTest {
     for (int i=0; i<numberOfCar; i++) {
       racingCarGame.addCar(new OppaCar());
     }
-
-    // when
     racingCarGame.setCondition(Condition.ALWAYS);
     racingCarGame.setLoopTimes(loopTimes);
+
+    // when
     racingCarGame.start();
 
     // then
@@ -55,10 +55,10 @@ public class RacingCarTest {
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
     racingCarGame.addCar(new OppaCar());
+    racingCarGame.setCondition(condition);
+    racingCarGame.setLoopTimes(1);
 
     // when
-    racingCarGame.setCondition(Condition.MANUAL);
-    racingCarGame.setConditionValue(condition);
     racingCarGame.start();
 
     // then
@@ -70,19 +70,19 @@ public class RacingCarTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"5:10:10:50", "1:1:10:0", "0:0:10:0", "1:0:10:0", "0:30:10:0"}, delimiter = ':')
+  @CsvSource(value = {"5:10:50", "1:1:0", "0:0:0", "1:0:0", "0:30:0"}, delimiter = ':')
   @DisplayName("k 횟수만큼 n 대의 자동차가 0~9 사이 값에서 4 이상일 경우 전진함")
-  public void carsMoveLoopByConditionTest(final int numberOfCar, final int loopTimes, final int seed, final int expectedMoveCount) {
+  public void carsMoveLoopByConditionTest(final int numberOfCar, final int loopTimes, final int expectedMoveCount) {
 
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
     for (int i=0; i<numberOfCar; i++) {
       racingCarGame.addCar(new OppaCar());
     }
+    int[] preCreatedRandomNumbers = new int[] { 3,0,3,0,6,6,7,8,1,4,3,9,1,8,5,0,6,3,3,8,3,9,5,8,5,9,4,0,8,0,8,2,2,6,7,5,0,0,5,3,9,7,2,2,8,9,8,4,1,3 };
+    racingCarGame.setLoopTimes(loopTimes);
 
     // when
-    racingCarGame.setCondition(Condition.RANDOM_SEED_FIXED_TO_10);
-    racingCarGame.setLoopTimes(loopTimes);
     racingCarGame.start();
 
     // then

@@ -6,32 +6,32 @@ public enum Condition {
 
   ALWAYS() {
     @Override
-    public int getValue() {
-      return 4;
+    public boolean isValid() {
+      return true;
     }
   },
-  MANUAL() {
+  NEVER() {
     @Override
-    public int getValue() {
-      return -2;
+    public boolean isValid() {
+      return false;
     }
   },
   RANDOM() {
     @Override
-    public int getValue() {
+    public boolean isValid() {
       Random random = new Random();
-      return random.nextInt(boundary);
-    }
-  },
-  RANDOM_SEED_FIXED_TO_10() {
-    @Override
-    public int getValue() {
-      Random random = new Random();
-      random.setSeed(10);
-      return random.nextInt(boundary);
+      int value = random.nextInt(boundary);
+
+      return isValidValue(value);
     }
   };
 
-  protected static int boundary = 10;
-  public abstract int getValue();
+  protected static final int boundary = 10;
+
+  public abstract boolean isValid();
+
+  public static boolean isValidValue(int value) {
+    return value >= 4;
+  }
+
 }
