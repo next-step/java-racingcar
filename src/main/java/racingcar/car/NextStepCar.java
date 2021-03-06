@@ -14,6 +14,8 @@ public class NextStepCar implements Car{
 
     @Override
     public void setName(String carName) {
-
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("Car name length must be lower than 5");
+        }
     }
 }

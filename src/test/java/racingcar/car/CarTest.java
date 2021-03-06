@@ -91,7 +91,7 @@ class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"봉카", "봉일균카", "넥스트스탭카"})
+    @ValueSource(strings = {"봉봉봉봉봉봉카", "봉봉봉일균카", "넥스트스탭카"})
     @DisplayName("자동차명은 5자이하허용")
     void carNames(String carName) {
         Car car = new NextStepCar();
