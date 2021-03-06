@@ -45,7 +45,7 @@ public class Racing {
         int forwartCount = inputs.get(1);
 
         for (int i = 0; i < carCount; i++) {
-            cars.add(new NextStepCar());
+            cars.add(new NextStepCar("dummy"));
         }
         NextStepCars nextStepCars = new NextStepCars(cars);
 

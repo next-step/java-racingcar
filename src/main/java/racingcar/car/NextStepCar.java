@@ -1,7 +1,15 @@
 package racingcar.car;
 
 public class NextStepCar implements Car{
+    private final String name;
     private int position = 0;
+
+    public NextStepCar(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("Car name length must be lower than 5");
+        }
+        this.name = carName;
+    }
 
     @Override
     public int moveForward(int randomNumber) {
@@ -10,12 +18,5 @@ public class NextStepCar implements Car{
 
     public int getPosition() {
         return position;
-    }
-
-    @Override
-    public void setName(String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException("Car name length must be lower than 5");
-        }
     }
 }

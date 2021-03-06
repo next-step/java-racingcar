@@ -28,11 +28,11 @@ class CarTest {
     @DisplayName("여러대의 자동차 전진")
     void isMoveOrStopCar () {
         List<Car> cars = new ArrayList<>();
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
 
         for(Car car: cars) {
             assertThat(car.moveForward(4)).isEqualTo(1);
@@ -54,11 +54,11 @@ class CarTest {
         Random random = new Random();
         int randomNumber = random.nextInt(10);
         if (randomNumber >= 4) {
-            Car car = new NextStepCar();
+            Car car = new NextStepCar("dummy");
             assertThat(car.moveForward(randomNumber)).isEqualTo(1);
         }
         if (randomNumber < 4) {
-            Car car = new NextStepCar();
+            Car car = new NextStepCar("dummy");
             assertThat(car.moveForward(randomNumber)).isEqualTo(0);
         }
     }
@@ -67,8 +67,8 @@ class CarTest {
     @DisplayName("2대만 테스트 (일단 간단히)")
     void simpleRacingCar() {
         List<Car> cars = new ArrayList<>();
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
 
         Random random = new Random();
         cars.get(0).moveForward(random.nextInt(10));
@@ -94,9 +94,8 @@ class CarTest {
     @ValueSource(strings = {"봉봉봉봉봉봉카", "봉봉봉일균카", "넥스트스탭카"})
     @DisplayName("자동차명은 5자이하허용")
     void carNames(String carName) {
-        Car car = new NextStepCar();
         assertThatThrownBy(() -> {
-            car.setName(carName);
+            Car car = new NextStepCar(carName);
         }).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
@@ -106,7 +105,7 @@ class CarTest {
     void splitByCommas(String carNames) {
         List<Car> carList = new ArrayList<>();
         for(String carName: carNames.split(",")) {
-            carList.add(new NextStepCar());
+            carList.add(new NextStepCar(carName));
         }
         NextStepCars nextStepCars = new NextStepCars(carList);
         assertThat(nextStepCars.carCount()).isEqualTo(3);
@@ -114,6 +113,6 @@ class CarTest {
 
     @BeforeAll
     static void init() {
-        car = new NextStepCar();
+        car = new NextStepCar("dummy");
     }
 }
