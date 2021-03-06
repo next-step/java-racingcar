@@ -11,78 +11,87 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class StringCalculator {
-    String arg;
+    private String arg;
 
     StringCalculator (String arg) {
         this.arg = arg;
-        validationArgument();
+        validation();
     }
 
-    int plus (int a, int b) {
-        return a + b;
-    }
-
-    int minus (int a, int b) {
-        return a - b;
-    }
-
-    int division (int a, int b) {
-        return a / b;
-    }
-
-    void validationDivision (int a, int b) {
-        if (a % b > 0) throw new NumberFormatException("Only integers can be entered");
-    }
-
-    int multiplication (int a, int b) {
-        return a * b;
-    }
-
-    void validationArgument () {
+    void validation () {
         if (StringUtils.isEmpty(arg)) throw new IllegalArgumentException();
 
         for (String x: StringUtils.blankSplit(arg)) {
-            if (!(StringUtils.isInteger(x) && StringUtils.isCalculateText(x))) {
-                throw new IllegalArgumentException();
+            validationArgument(x);
+        }
+    }
+
+    void validationArgument (String x) {
+        if ( !StringUtils.isInteger(x) && !StringUtils.isCalculateText(x))
+            throw new IllegalArgumentException();
+    }
+
+    private enum Calculator {
+        PLUS("+"){
+            @Override
+            public int calculate(int a, int b) {
+                return a + b;
+            }
+        },
+        MINUS("-") {
+            @Override
+            public int calculate(int a, int b) {
+                return a - b;
+            }
+        },
+        DIVISION("/") {
+            @Override
+            public int calculate(int a, int b) {
+                if (a % b > 0) throw new NumberFormatException("Only integers can be entered");
+                return a / b;
+            }
+        },
+        MULTILPICATION("*") {
+            @Override
+            public int calculate(int a, int b) {
+                return a * b;
+            }
+        };
+
+        private final String calcType;
+
+        Calculator(String calcType) { this.calcType = calcType; }
+
+        public abstract int calculate(int a, int b);
+
+        public static Calculator of(String calcType) {
+            switch (calcType) {
+                case "+":
+                    return Calculator.PLUS;
+                case "-":
+                    return Calculator.MINUS;
+                case "/":
+                    return Calculator.DIVISION;
+                case "*":
+                    return Calculator.MULTILPICATION;
+                default:
+                    throw new IllegalArgumentException();
             }
         }
     }
 
-    void validationCalculateString (String x) {
-        if (!StringUtils.isCalculateText(x)) throw new IllegalArgumentException();
-    }
-
-    int executeCalcType (String calcType, int a, int b) {
-        validationCalculateString(calcType);
-
-        int result = 0;
-        if ("+".equals(calcType)) {
-            result = plus(a, b);
-
-        } else if ("-".equals(calcType)) {
-            result = minus(a, b);
-
-        } else if ("/".equals(calcType)) {
-            validationDivision(a, b);
-            result = division(a, b);
-
-        } else if ("*".equals(calcType)) {
-            result = multiplication(a, b);
-        }
-        return result;
-    }
-
     int calculate () {
-        List<Integer> integers = StringUtils.toIntegers(this.arg);
-        List<String> calTypes = StringUtils.toCalcTypes(this.arg);
+        List integers = StringUtils.sortingToList(1, this.arg);
+        List calTypes = StringUtils.sortingToList(2, this.arg);
 
-        Iterator<Integer> integerIter = integers.iterator();
-        Iterator<String> calcTypeIter = calTypes.iterator();
-        int a = integerIter.next();
+        Iterator integerIter = integers.iterator();
+        Iterator calcTypeIter = calTypes.iterator();
+        int a = (int) integerIter.next();
         while (integerIter.hasNext()) {
-            int b = integerIter.next();
-            String calcType = calcTypeIter.next();
-            a = executeCalcType(calcType, a, b);
+            int b = (int) integerIter.next();
+            String calcType = calcTypeIter.next().toString();
+            a = Calculator.of(calcType)
+                    .calculate(a, b);
         }
         return a;
     }
@@ -110,24 +119,48 @@ class StringUtils {
         }
     }
 
-    public static List<Integer> toIntegers (String x) {
-        List<Integer> integers = new ArrayList<>();
-        for (String str: blankSplit(x)) {
-            if (isInteger(str)) {
-                integers.add(Integer.parseInt(str));
+    private enum SortString {
+        INTEGER(1) {
+            @Override
+            public void addList(List list, String arg) {
+                if (StringUtils.isInteger(arg)) {
+                    list.add(Integer.parseInt(arg));
+                }
+            }
+        },
+        CALC_TEXT(2) {
+            @Override
+            public void addList(List list, String arg) {
+                if (StringUtils.isCalculateText(arg)) {
+                    list.add(arg);
+                }
+            }
+        };
+
+        private int sortType;
+
+        SortString(int sortType) { this.sortType = sortType; }
+
+        public abstract void addList(List list, String arg);
+
+        public static SortString of(int sortType) {
+            switch (sortType) {
+                case 1:
+                    return SortString.INTEGER;
+                case 2:
+                    return SortString.CALC_TEXT;
+                default:
+                    throw new IllegalArgumentException();
             }
         }
-        return integers;
     }
 
-    public static List<String> toCalcTypes (String x) {
-        List<String> calcTypes = new ArrayList<>();
-        for (String str: StringUtils.blankSplit(x)) {
-            if (isCalculateText(str)) {
-                calcTypes.add(str);
-            }
+    public static List sortingToList (int sortType, String x) {
+        List<Integer> integers = new ArrayList<>();
+        for (String str: blankSplit(x)) {
+            SortString.of(sortType).addList(integers, str);
         }
-        return calcTypes;
+        return integers;
     }
 }
 
