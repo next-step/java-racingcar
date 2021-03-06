@@ -110,5 +110,10 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(10);
     }
 
+    @Test
+    void selectCodeTest() {
+
+    }
+
 
 }
