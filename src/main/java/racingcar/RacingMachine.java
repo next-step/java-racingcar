@@ -22,6 +22,8 @@ public class RacingMachine {
         ResultView.startGame();
         while (numberOfRounds-- > ROUND_END) {
             cars.move();
+            cars.showResult();
         }
+        ResultView.endGame();
     }
 }

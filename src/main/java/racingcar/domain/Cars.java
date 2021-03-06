@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.ResultView;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,4 +17,10 @@ public class Cars {
         cars.forEach(Car::move);
     }
 
+    public void showResult() {
+        cars.stream()
+                .map(Car::showStatus)
+                .forEach(ResultView::showResult);
+        ResultView.printNewLine();
+    }
 }
