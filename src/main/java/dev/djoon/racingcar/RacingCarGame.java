@@ -1,6 +1,8 @@
 package dev.djoon.racingcar;
 
 import dev.djoon.racingcar.actor.Car;
+import dev.djoon.racingcar.actor.OppaCar;
+import dev.djoon.racingcar.ui.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,20 +14,30 @@ public class RacingCarGame {
 
   public RacingCarGame() {
     carList = new ArrayList<>();
-    condition = Condition.NEVER;
+    condition = Condition.RANDOM;
   }
 
   public void start() {
+    ResultView.printNewGame();
     for (int i=0; i<loopTimes; i++) {
       for (Car car : carList) {
-        if (condition.isValid())
-          car.move();
+        carMoveIfValid(car);
+
+        ResultView.printXPos(car.getXPos());
       }
+      ResultView.printCR();
     }
   }
 
-  public void addCar(Car car) {
-    carList.add(car);
+  public void carMoveIfValid(Car car) {
+    if (condition.isValid())
+      car.move();
+  }
+
+  public void setCarQuantity(int quantity) {
+    for (int i=0; i<quantity; i++) {
+      carList.add(new OppaCar());
+    }
   }
 
   public List<Car> getCarList() {
@@ -42,8 +54,11 @@ public class RacingCarGame {
 
   // 테스트 용도 메소드
   public void setCondition(int conditionValue) {
-    if (Condition.isValidValue(conditionValue))
+    if (Condition.isValidValue(conditionValue)) {
       this.condition = Condition.ALWAYS;
+      return;
+    }
+    this.condition = Condition.NEVER;
   }
 
 }

@@ -30,9 +30,7 @@ public class RacingCarTest {
 
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
-    for (int i=0; i<numberOfCar; i++) {
-      racingCarGame.addCar(new OppaCar());
-    }
+    racingCarGame.setCarQuantity(numberOfCar);
     racingCarGame.setCondition(Condition.ALWAYS);
     racingCarGame.setLoopTimes(loopTimes);
 
@@ -54,7 +52,7 @@ public class RacingCarTest {
 
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.addCar(new OppaCar());
+    racingCarGame.setCarQuantity(1);
     racingCarGame.setCondition(condition);
     racingCarGame.setLoopTimes(1);
 
@@ -76,9 +74,7 @@ public class RacingCarTest {
 
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
-    for (int i=0; i<numberOfCar; i++) {
-      racingCarGame.addCar(new OppaCar());
-    }
+    racingCarGame.setCarQuantity(numberOfCar);
     racingCarGame.setCondition(Condition.RANDOM_SEED_FIXED_TO_10);
     racingCarGame.setLoopTimes(loopTimes);
 

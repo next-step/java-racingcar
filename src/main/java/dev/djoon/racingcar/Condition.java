@@ -38,7 +38,6 @@ public enum Condition {
         value = random.nextInt(boundary);
       round++;
 
-      System.out.println(value);
       return isValidValue(value);
     }
   };
