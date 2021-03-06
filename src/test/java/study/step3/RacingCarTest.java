@@ -23,4 +23,12 @@ public class RacingCarTest {
         assertThat(racingCar.getRandomNumber()).isGreaterThan(-1);
         assertThat(racingCar.getRandomNumber()).isGreaterThanOrEqualTo(0);
     }
+
+    @Test
+    void movePossible(){
+        assertThat(racingCar.movePossible(4)).isEqualTo(true);
+        assertThat(racingCar.movePossible(9)).isEqualTo(true);
+        assertThat(racingCar.movePossible(0)).isEqualTo(false);
+        assertThat(racingCar.movePossible(2)).isEqualTo(false);
+    }
 }
