@@ -1,6 +1,7 @@
 package racing.controller;
 
 import java.util.List;
+
 import racing.model.RacingCar;
 import racing.model.RacingGame;
 import racing.util.Validation;
@@ -9,48 +10,45 @@ import racing.view.ResultView;
 
 public class RacingController {
 
-  private RacingGame racingGame;
-  private Validation validation;
-  private int gameTrun;
-
-
-  public RacingController() {
-    setUpGame();
-    play();
-  }
-
-  /**
-   * InputView ¿¡¼­ ÀÚµ¿Â÷ °¹¼ö¿Í °ÔÀÓ ½ÇÇà È½¼ö¸¦ ÀÔ·Â¹Ş¾Æ °ÔÀÓÀ» ¼³Á¤ÇÔ
-   */
-  public void setUpGame() {
-    InputView inputView = new InputView();
-    racingGame = new RacingGame();
-    validation = new Validation();
-    int[] carCountAndTurnCount = inputView.init();
-
-    if (Boolean.TRUE.equals(validation.isZero(carCountAndTurnCount))) {
-      carCountAndTurnCount = inputView.reStart();
-    }
+    private RacingGame racingGame;
+    private Validation validation;
+    private int gameTrun;
     
-    this.gameTrun = carCountAndTurnCount[1];
-    racingGame.setUp(carCountAndTurnCount[0]);
-  }
+    /**
+     * InputView ì—ì„œ ìë™ì°¨ ê°¯ìˆ˜ì™€ ê²Œì„ ì‹¤í–‰ íšŸìˆ˜ë¥¼ ì…ë ¥ë°›ì•„ ê²Œì„ì„ ì„¤ì •í•¨
+     */
+    public void setUpGame() {
+        InputView inputView = new InputView();
+        racingGame = new RacingGame();
+        validation = new Validation();
+        int[] carCountAndTurnCount = inputView.init();
 
-  /**
-   * °ÔÀÓ ½ÃÀÛ ¸Ş¼­µå 1 ÅÏ¾¿ ÁøÇàÇÏ¸ç °ÔÀÓÀÌ ³¡³¯¶§±îÁö ¹İº¹µÈ´Ù.
-   */
-  public void play() {
-    ResultView resultView = new ResultView();
-    for (int i = 0; i < gameTrun; i++) {
-      List<Integer> randomValue = racingGame.createRandomValue();
-      List<RacingCar> movedCarList = racingGame.moveAndStop(randomValue);
-      resultView.turnResultView(movedCarList);
+        if (Boolean.TRUE.equals(validation.isZero(carCountAndTurnCount[0])) &&
+                Boolean.TRUE.equals(validation.isZero(carCountAndTurnCount[1]))) {
+            carCountAndTurnCount = inputView.reStart();
+        }
+
+        this.gameTrun = carCountAndTurnCount[1];
+        racingGame.setUp(carCountAndTurnCount[0]);
     }
-  }
+
+    /**
+     * ê²Œì„ ì‹œì‘ ë©”ì„œë“œ 1 í„´ì”© ì§„í–‰í•˜ë©° ê²Œì„ì´ ëë‚ ë•Œê¹Œì§€ ë°˜ë³µëœë‹¤.
+     */
+    public void play() {
+        ResultView resultView = new ResultView();
+        for (int i = 0; i < gameTrun; i++) {
+            List<Integer> randomValue = racingGame.createRandomValue();
+            List<RacingCar> movedCarList = racingGame.moveAndStop(randomValue);
+            resultView.turnResultView(movedCarList);
+        }
+    }
 
 
-  public static void main(String[] args) {
-    new RacingController();
-  }
+    public static void main(String[] args) {
+        RacingController racingController = new RacingController();
+        racingController.setUpGame();
+        racingController.play();
+    }
 
 }

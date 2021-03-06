@@ -2,13 +2,8 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 version = '1.0.0'
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
-compileJava.options.encoding = 'UTF-8'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
 repositories {
     mavenCentral()
 }
