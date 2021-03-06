@@ -42,23 +42,6 @@ public class StringCalculator {
     }
   }
 
-  public boolean isNotNullValues(Object... values) {
-    for (Object value : values) {
-      checkNull(value);
-    }
-    boolean isNotNull = this.isNotNull;
-    this.isNotNull = true;
-
-    return isNotNull;
-  }
-
-
-  private void checkNull(Object value) {
-    if (value == null) {
-      this.isNotNull = false;
-    }
-  }
-
   private void calculate() {
     if (this.firstNumber != null && this.arithmetic != null && this.secondNumber != null) {
       this.result = this.arithmetic.calculate(this.firstNumber, this.secondNumber);
