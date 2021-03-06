@@ -2,7 +2,7 @@ package cal;
 
 public class StringCalculator {
 
-    int calculateStringEquation(String input) {
+    public static int calculateStringEquation(String input) {
         if (isNull(input) || isBlank(input)) {
             throw new IllegalArgumentException();
         }
@@ -21,15 +21,15 @@ public class StringCalculator {
         return result;
     }
 
-    private boolean isNull(String input) {
+    private static boolean isNull(String input) {
         return input == null;
     }
 
-    private boolean isBlank(String input) {
+    private static boolean isBlank(String input) {
         return input.trim().equals("");
     }
 
-    private int calculate(int leftHand, int rightHand, String sign) {
+    private static int calculate(int leftHand, int rightHand, String sign) {
         switch (sign) {
             case "+":
                 return leftHand + rightHand;
