@@ -3,8 +3,9 @@ package cal;
 public class StringCalculator {
 
     int calculateStringEquation(String input) {
-        inspectNull(input);
-        inspectEmptyCharacter(input);
+        if (isNull(input) || isBlank(input)) {
+            throw new IllegalArgumentException();
+        }
 
         String[] tokenArray = input.split(" ");
 
@@ -20,16 +21,12 @@ public class StringCalculator {
         return result;
     }
 
-    private void inspectEmptyCharacter(String input) {
-        if (input.contentEquals(" ") || input.contentEquals("")) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isNull(String input) {
+        return input == null;
     }
 
-    private void inspectNull(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isBlank(String input) {
+        return input.trim().equals("");
     }
 
     private int calculate(int leftHand, int rightHand, String sign) {
