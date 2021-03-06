@@ -2,19 +2,16 @@ package cal;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BinaryOperator;
 
 public class StringCalculator {
-
-    interface Operation {
-        int calculate(int a, int b);
-    }
 
     public static int calculateStringEquation(String input) {
         if (isNull(input) || isBlank(input)) {
             throw new IllegalArgumentException();
         }
 
-        Map<String, Operation> operatorMap = new HashMap<>();
+        Map<String, BinaryOperator<Integer>> operatorMap = new HashMap<>();
         operatorMap.put("+", (x, y) -> x + y);
         operatorMap.put("-", (x, y) -> x - y);
         operatorMap.put("*", (x, y) -> x * y);
@@ -31,7 +28,7 @@ public class StringCalculator {
             if (!operatorMap.containsKey(sign)) {
                 throw new IllegalArgumentException();
             }
-            result = operatorMap.get(sign).calculate(result, operand);
+            result = operatorMap.get(sign).apply(result, operand);
         }
 
         return result;
