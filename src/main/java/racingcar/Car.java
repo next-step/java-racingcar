@@ -2,19 +2,19 @@ package racingcar;
 
 public class Car {
 
-    private String state;
+    private int position = 0;
 
-    public Car(String state) {
-        this.state = state;
+    public Car(int position) {
+        this.position = position;
     }
 
-    public String getState() {
-        return state;
+    public int getPosition() {
+        return position;
     }
 
-    public void updateByRandom(int randomNumber) {
+    public void updateByNumber(int randomNumber) {
         if (randomNumber >= 4) {
-            state += "-";
+            position++;
         }
     }
 }
