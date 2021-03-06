@@ -77,7 +77,7 @@ class StringCalculatorTest {
 
     @DisplayName("입력값이 빈 공백 문자일 경우 IllegalArgumentException을 던져야 한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"", " "})
+    @ValueSource(strings = {"", " ", "   ", "      "})
     void calculateEmptyCharacter(String source) {
 
         // Act & Assert
