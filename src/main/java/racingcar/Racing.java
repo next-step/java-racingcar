@@ -10,11 +10,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Racing {
-    public static void main(String[] args) {
+    InputView inputView;
+    ResultView resultView;
+    public Racing() {
+        inputView = new InputView();
+        resultView = new ResultView();
+    }
+
+    public void start() {
         List<Car> cars = new ArrayList<>();
 
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
         inputView.print("자동차 대수는 몇 대 인가요?");
         int carCount = inputView.scanner.nextInt();
         inputView.print("시도할 회수는 몇 회 인가요?");
