@@ -17,11 +17,10 @@ public class GameManager {
       int carCount = inputView.inputCarCount();
       int round = inputView.inputRound();
       Printer.printBlankLine();
+      Printer.printResultMessage();
 
       Game game = new Game(new Random());
       game.start(carCount, round);
-
-      Printer.printGameResult(game);
     }
   }
 }

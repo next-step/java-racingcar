@@ -20,8 +20,12 @@ public class Printer {
     System.out.print(PROMPT);
   }
 
-  public static void printGameResult(Game game) {
+  public static void printResultMessage() {
     System.out.println("실행 결과");
+  }
+
+  public static void printGameResult(Game game) {
     System.out.println(game.getCarsStatus());
+    System.out.println();
   }
 }

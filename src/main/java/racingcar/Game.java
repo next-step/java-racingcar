@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.Random;
+import racingcar.io.Printer;
 
 public class Game {
 
@@ -21,6 +22,7 @@ public class Game {
   public void moveCars(int round) {
     for (int i = 0; i < round; i++) {
       cars.moveAll();
+      Printer.printGameResult(this);
     }
   }
 
