@@ -3,8 +3,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -64,18 +66,10 @@ class StringCalculator {
         public abstract int calculate(int a, int b);
 
         public static Calculator of(String calcType) {
-            switch (calcType) {
-                case "+":
-                    return Calculator.PLUS;
-                case "-":
-                    return Calculator.MINUS;
-                case "/":
-                    return Calculator.DIVISION;
-                case "*":
-                    return Calculator.MULTIPLICATION;
-                default:
-                    throw new IllegalArgumentException();
-            }
+            return Arrays.stream(Calculator.values())
+                    .filter(calculator -> calculator.calcType.equals(calcType))
+                    .findFirst()
+                    .orElseThrow(IllegalArgumentException::new);
         }
     }
 
