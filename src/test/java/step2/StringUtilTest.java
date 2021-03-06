@@ -14,9 +14,7 @@ public class StringUtilTest {
     @DisplayName("입력 문자열이 공백값을 기준으로 배열로 변환된다")
     @Test
     public void splitBySpace_ShouldReturnArray() {
-        String inputString = "10 + 15 - 7 * 3 / 9";
-
-        StringUtil stringUtil = new StringUtil(inputString);
+        StringUtil stringUtil = new StringUtil("10 + 15 - 7 * 3 / 9");
 
         assertThat(stringUtil.splitBySpace()).containsExactly("10", "+", "15", "-", "7", "*", "3", "/", "9");
     }
