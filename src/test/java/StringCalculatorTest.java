@@ -81,8 +81,8 @@ class StringCalculator {
     }
 
     int calculate () {
-        List integers = StringUtils.sortingToList(1, this.arg);
-        List calTypes = StringUtils.sortingToList(2, this.arg);
+        List integers = StringUtils.sortingToList(StringUtils.SortString.INTEGER, this.arg);
+        List calTypes = StringUtils.sortingToList(StringUtils.SortString.CALC_TEXT, this.arg);
 
         Iterator integerIter = integers.iterator();
         Iterator calcTypeIter = calTypes.iterator();
@@ -119,7 +119,7 @@ class StringUtils {
         }
     }
 
-    private enum SortString {
+    public enum SortString {
         INTEGER(1) {
             @Override
             public void addList(List list, String arg) {
@@ -142,25 +142,14 @@ class StringUtils {
         SortString(int sortType) { this.sortType = sortType; }
 
         public abstract void addList(List list, String arg);
-
-        public static SortString of(int sortType) {
-            switch (sortType) {
-                case 1:
-                    return SortString.INTEGER;
-                case 2:
-                    return SortString.CALC_TEXT;
-                default:
-                    throw new IllegalArgumentException();
-            }
-        }
     }
 
-    public static List sortingToList (int sortType, String x) {
-        List<Integer> integers = new ArrayList<>();
+    public static List sortingToList (SortString sortString, String x) {
+        List list = new ArrayList<>();
         for (String str: blankSplit(x)) {
-            SortString.of(sortType).addList(integers, str);
+            sortString.addList(list, str);
         }
-        return integers;
+        return list;
     }
 }
 
