@@ -3,7 +3,7 @@ package dev.djoon.racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.djoon.racingcar.actor.Car;
-import dev.djoon.racingcar.actor.OppaCar;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -26,8 +26,8 @@ public class RacingCarTest {
   @ParameterizedTest
   @CsvSource(value = {"5:10:50", "1:1:1", "0:0:0", "1:0:0", "0:30:0"}, delimiter = ':')
   @DisplayName("주어진 횟수 k만큼 n대의 자동차가 전진함")
-  public void carsMoveLoopTest(final int numberOfCar, final int loopTimes, final int expectedMoveCount) {
-
+  public void carsMoveLoopTest(
+      final int numberOfCar, final int loopTimes, final int expectedMoveCount) {
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
     racingCarGame.setCarQuantity(numberOfCar);
@@ -49,7 +49,6 @@ public class RacingCarTest {
   @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
   @DisplayName("0~9 사이 값에서 4 이상일 경우 자동차가 전진함")
   public void carMovesByConditionTest(final int condition, final int expectedMoveCount) {
-
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
     racingCarGame.setCarQuantity(1);
@@ -70,8 +69,8 @@ public class RacingCarTest {
   @ParameterizedTest
   @CsvSource(value = {"5:10:28", "1:1:0", "0:0:0", "1:0:0", "0:30:0"}, delimiter = ':')
   @DisplayName("k 횟수만큼 n 대의 자동차가 0~9 사이 값에서 4 이상일 경우 전진함")
-  public void carsMoveLoopByConditionTest(final int numberOfCar, final int loopTimes, final int expectedMoveCount) {
-
+  public void carsMoveLoopByConditionTest(
+      final int numberOfCar, final int loopTimes, final int expectedMoveCount) {
     // given
     RacingCarGame racingCarGame = new RacingCarGame();
     racingCarGame.setCarQuantity(numberOfCar);

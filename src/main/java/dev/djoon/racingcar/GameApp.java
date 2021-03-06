@@ -9,6 +9,7 @@ public class GameApp {
     InputView iv = new InputView(System.in);
     iv.inputCarQuantity(game);
     iv.inputLoopTimes(game);
+    iv.close();
 
     game.start();
   }

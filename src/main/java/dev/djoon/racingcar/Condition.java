@@ -1,7 +1,6 @@
 package dev.djoon.racingcar;
 
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public enum Condition {
 
@@ -21,7 +20,7 @@ public enum Condition {
     @Override
     public boolean isValid() {
       Random random = new Random();
-      int value = random.nextInt(boundary);
+      int value = random.nextInt(BOUNDARY_VALUE);
 
       return isValidValue(value);
     }
@@ -32,23 +31,25 @@ public enum Condition {
     public boolean isValid() {
       Random random = new Random();
       random.setSeed(10);
-      int value = random.nextInt(boundary);
+      int value = random.nextInt(BOUNDARY_VALUE);
 
       for (int i=0; i<round; i++)
-        value = random.nextInt(boundary);
+        value = random.nextInt(BOUNDARY_VALUE);
       round++;
 
       return isValidValue(value);
     }
   };
 
+  protected static final int BOUNDARY_VALUE = 10;
+  protected static final int VALID_VALUE = 4;
+
   public static int round = 0; /** 테스트용 변수 **/
-  protected static final int boundary = 10;
 
   public abstract boolean isValid();
 
   public static boolean isValidValue(int value) {
-    return value >= 4;
+    return value >= VALID_VALUE;
   }
 
 }

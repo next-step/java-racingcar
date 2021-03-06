@@ -24,4 +24,8 @@ public class InputView {
     game.setLoopTimes(loopTimes);
   }
 
+  public void close() {
+    this.sc.close();
+  }
+
 }

@@ -7,10 +7,9 @@ public class ResultView {
 
   public static void printXPos(int xPos) {
     System.out.print("-"); /** 기본 출발선(=0) **/
-
-    for (int i=0; i<xPos; i++)
+    for (int i=0; i<xPos; i++) {
       System.out.print("-");
-
+    }
     System.out.println();
   }
 

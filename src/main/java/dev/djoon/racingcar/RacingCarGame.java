@@ -3,12 +3,13 @@ package dev.djoon.racingcar;
 import dev.djoon.racingcar.actor.Car;
 import dev.djoon.racingcar.actor.OppaCar;
 import dev.djoon.racingcar.ui.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarGame {
 
-  private List<Car> carList;
+  private final List<Car> carList;
   private int loopTimes;
   private Condition condition;
 
@@ -22,7 +23,6 @@ public class RacingCarGame {
     for (int i=0; i<loopTimes; i++) {
       for (Car car : carList) {
         carMoveIfValid(car);
-
         ResultView.printXPos(car.getXPos());
       }
       ResultView.printCR();
@@ -30,8 +30,9 @@ public class RacingCarGame {
   }
 
   public void carMoveIfValid(Car car) {
-    if (condition.isValid())
+    if (condition.isValid()) {
       car.move();
+    }
   }
 
   public void setCarQuantity(int quantity) {
@@ -52,7 +53,6 @@ public class RacingCarGame {
     this.condition = condition;
   }
 
-  // 테스트 용도 메소드
   public void setCondition(int conditionValue) {
     if (Condition.isValidValue(conditionValue)) {
       this.condition = Condition.ALWAYS;
