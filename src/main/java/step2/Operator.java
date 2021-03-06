@@ -25,6 +25,7 @@ public enum Operator {
     public static Operator findOperator(String symbol) {
         return Arrays.stream(Operator.values())
                 .filter(e -> e.symbol.equals(symbol))
-                .findFirst().get();
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(CalculatorException.UNSUPPORTED_OPERATOR));
     }
 }
