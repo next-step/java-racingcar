@@ -5,6 +5,7 @@ import common.utils.StringUtils;
 public class Calculator {
 
     private final String FORMULA_DELIMITER = " ";
+    private final int FORMULA_MIN_LENGTH = 3;
 
     public int calculate(String formula) {
         // input validation
@@ -33,7 +34,7 @@ public class Calculator {
          - 수식은 홀수개의 인자로 구성되어야 한다.
          - 수식은 최소 3개 이상의 인자로 구성되어야 한다.
          */
-        if(formula.length%2==0 || formula.length<3) {
+        if(this.isEven(formula.length) || formula.length<FORMULA_MIN_LENGTH) {
             return false;
         }
         /*
@@ -97,5 +98,12 @@ public class Calculator {
             }
         }
         return result;
+    }
+
+    /**
+     * 짝수판별
+     */
+    private boolean isEven(int a) {
+        return a%2==0;
     }
 }
