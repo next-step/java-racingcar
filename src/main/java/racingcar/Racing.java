@@ -7,6 +7,7 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -29,12 +30,12 @@ public class Racing {
      * 입력값들 받는다.
      * @return Scanner를 통한 입력값들
      */
-    private List<Integer> startQuestion() {
-        List<Integer> scannerValues = new ArrayList<>();
+    private List<String> startQuestion() {
+        List<String> scannerValues = new ArrayList<>();
         inputView.print(inputQuestion);
-        scannerValues.add(inputView.scanner.nextInt());
+        scannerValues.add(inputView.scanner.nextLine());
         inputView.print(moveQuestion);
-        scannerValues.add(inputView.scanner.nextInt());
+        scannerValues.add(String.valueOf(inputView.scanner.nextInt()));
         return scannerValues;
     }
 
@@ -42,19 +43,16 @@ public class Racing {
      * 레이싱 시작
      */
     public void start() {
-        List<Car> cars = new ArrayList<>();
+        List<String> inputs = startQuestion();
 
-        List<Integer> inputs = startQuestion();
-        int carCount = inputs.get(0);
-        int forwartCount = inputs.get(1);
+        String carList = inputs.get(0);
+        int forwartCount = Integer.parseInt(inputs.get(1));
 
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new NextStepCar("dummy"));
-        }
-        NextStepCars nextStepCars = new NextStepCars(cars);
+        NextStepCars nextStepCars = new NextStepCars(carList);
 
         startMoveForward(nextStepCars);
         printResultAll(forwartCount, nextStepCars);
+        printWinner(nextStepCars);
     }
 
     /**
@@ -80,5 +78,9 @@ public class Racing {
             }
             System.out.println();
         }
+    }
+
+    private void printWinner(NextStepCars nextStepCars) {
+        System.out.println(Arrays.toString(nextStepCars.getWinner().toArray()) + "가 최종 우승했습니다.");
     }
 }

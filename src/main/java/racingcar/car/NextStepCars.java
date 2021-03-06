@@ -1,13 +1,21 @@
 package racingcar.car;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class NextStepCars {
-    private final List<Car> nextStepCars;
+    private List<Car> nextStepCars;
 
     public NextStepCars(List<Car> nextStepCars) {
         this.nextStepCars = nextStepCars;
+    }
+
+    public NextStepCars(String carList) {
+        nextStepCars = new ArrayList<>();
+        for(String car : carList.split(",")) {
+            nextStepCars.add(new NextStepCar(car));
+        }
     }
 
     public List<Car> getNextStepCars() {
