@@ -4,4 +4,6 @@ public interface Car {
     int moveForward(int randomNumber);
 
     int getPosition();
+
+    String getName();
 }

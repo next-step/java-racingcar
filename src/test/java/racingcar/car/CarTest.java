@@ -1,39 +1,39 @@
 package racingcar.car;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
-    @Test
+    static Car car;
+
+    @ParameterizedTest
+    @CsvSource(value = {"4 , 1", "4 , 2", "4 , 3", "4 , 4", "4 , 5", "1 , 5", "1 , 5", "1 , 5", "1 , 5"})
     @DisplayName("자동차는 4이상이 입력되어야 전진")
-    void canMoveForward () {
-        Car car = new NextStepCar();
-        assertThat(car.moveForward(4)).isEqualTo(1);
-        assertThat(car.moveForward(4)).isEqualTo(2);
-        assertThat(car.moveForward(4)).isEqualTo(3);
-        assertThat(car.moveForward(4)).isEqualTo(4);
-        assertThat(car.moveForward(4)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
-        assertThat(car.moveForward(1)).isEqualTo(5);
+    void canMoveForward (int random, int expected) {
+        assertThat(car.moveForward(random)).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("여러대의 자동차 전진")
     void isMoveOrStopCar () {
         List<Car> cars = new ArrayList<>();
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
 
         for(Car car: cars) {
             assertThat(car.moveForward(4)).isEqualTo(1);
@@ -55,11 +55,11 @@ class CarTest {
         Random random = new Random();
         int randomNumber = random.nextInt(10);
         if (randomNumber >= 4) {
-            Car car = new NextStepCar();
+            Car car = new NextStepCar("dummy");
             assertThat(car.moveForward(randomNumber)).isEqualTo(1);
         }
         if (randomNumber < 4) {
-            Car car = new NextStepCar();
+            Car car = new NextStepCar("dummy");
             assertThat(car.moveForward(randomNumber)).isEqualTo(0);
         }
     }
@@ -68,8 +68,8 @@ class CarTest {
     @DisplayName("2대만 테스트 (일단 간단히)")
     void simpleRacingCar() {
         List<Car> cars = new ArrayList<>();
-        cars.add(new NextStepCar());
-        cars.add(new NextStepCar());
+        cars.add(new NextStepCar("dummy"));
+        cars.add(new NextStepCar("dummy"));
 
         Random random = new Random();
         cars.get(0).moveForward(random.nextInt(10));
@@ -89,5 +89,68 @@ class CarTest {
         cars.get(1).moveForward(random.nextInt(10));
 
         assertThat(cars.get(0).getPosition()).isNotEqualTo(cars.get(1).getPosition());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"봉봉봉봉봉봉카", "봉봉봉일균카", "넥스트스탭카"})
+    @DisplayName("자동차명은 5자이하허용")
+    void carNames(String carName) {
+        assertThatThrownBy(() -> {
+            Car car = new NextStepCar(carName);
+        }).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"봉카,봉일균카,넥스트카"})
+    @DisplayName("이름을 입력받다 - 쉼표로 구분")
+    void splitByCommas(String carNames) {
+        List<Car> carList = new ArrayList<>();
+        for(String carName: carNames.split(",")) {
+            carList.add(new NextStepCar(carName));
+        }
+        NextStepCars nextStepCars = new NextStepCars(carList);
+        assertThat(nextStepCars.carCount()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("우승자찾기 단건")
+    void winnerOnlyOne() {
+        String carNames = "봉,봉봉,봉봉봉,봉봉봉봉";
+        List<Car> carList = new ArrayList<>();
+        int moveIndex = 1;
+
+        for(String carName: carNames.split(",")) {
+            NextStepCar car = new NextStepCar(carName);
+            car.moveForward(moveIndex++);
+            carList.add(car);
+        }
+        NextStepCars nextStepCars = new NextStepCars(carList);
+        assertThat(nextStepCars.getWinner().get(0)).isEqualTo("봉봉봉봉");
+    }
+
+    @Test
+    @DisplayName("우승자찾기 다건")
+    void winnerMultiple() {
+        String carNames = "봉,봉봉,봉봉봉,봉봉봉봉";
+        List<Car> carList = new ArrayList<>();
+        int moveIndex = 1;
+
+        for(String carName: carNames.split(",")) {
+            NextStepCar car = new NextStepCar(carName);
+            car.moveForward(moveIndex++);
+            carList.add(car);
+        }
+        NextStepCar expectedSecondWinner = new NextStepCar("붕");
+        expectedSecondWinner.moveForward(moveIndex-1);
+        carList.add(expectedSecondWinner);
+
+        NextStepCars nextStepCars = new NextStepCars(carList);
+        List<String> winners = nextStepCars.getWinner();
+        assertThat(winners.size()).isEqualTo(2);
+    }
+
+    @BeforeAll
+    static void init() {
+        car = new NextStepCar("dummy");
     }
 }
