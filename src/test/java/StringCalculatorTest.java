@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -51,7 +50,7 @@ class StringCalculator {
                 return a / b;
             }
         },
-        MULTILPICATION("*") {
+        MULTIPLICATION("*") {
             @Override
             public int calculate(int a, int b) {
                 return a * b;
@@ -73,7 +72,7 @@ class StringCalculator {
                 case "/":
                     return Calculator.DIVISION;
                 case "*":
-                    return Calculator.MULTILPICATION;
+                    return Calculator.MULTIPLICATION;
                 default:
                     throw new IllegalArgumentException();
             }
