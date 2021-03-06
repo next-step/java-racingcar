@@ -9,7 +9,6 @@ public class RacingCarGame {
   private List<Car> carList;
   private int loopTimes;
   private Condition condition;
-  private int[] winNumbers;
 
   public RacingCarGame() {
     carList = new ArrayList<>();
@@ -17,14 +16,13 @@ public class RacingCarGame {
   }
 
   public void start() {
-  for (int i=0; i<loopTimes; i++) {
+    for (int i=0; i<loopTimes; i++) {
       for (Car car : carList) {
         if (condition.isValid())
           car.move();
       }
     }
   }
-
 
   public void addCar(Car car) {
     carList.add(car);
@@ -42,6 +40,7 @@ public class RacingCarGame {
     this.condition = condition;
   }
 
+  // 테스트 용도 메소드
   public void setCondition(int conditionValue) {
     if (Condition.isValidValue(conditionValue))
       this.condition = Condition.ALWAYS;
