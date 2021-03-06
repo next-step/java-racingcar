@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -112,18 +113,40 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("우승자찾기")
-    void winner() {
+    @DisplayName("우승자찾기 단건")
+    void winnerOnlyOne() {
         String carNames = "봉,봉봉,봉봉봉,봉봉봉봉";
         List<Car> carList = new ArrayList<>();
-        int moveIndex = 0;
+        int moveIndex = 1;
+
         for(String carName: carNames.split(",")) {
             NextStepCar car = new NextStepCar(carName);
             car.moveForward(moveIndex++);
             carList.add(car);
         }
         NextStepCars nextStepCars = new NextStepCars(carList);
-        assertThat(nextStepCars.getWinnser()).isEqualTo("봉봉봉봉");
+        assertThat(nextStepCars.getWinner().get(0).getName()).isEqualTo("봉봉봉봉");
+    }
+
+    @Test
+    @DisplayName("우승자찾기 다건")
+    void winnerMultiple() {
+        String carNames = "봉,봉봉,봉봉봉,봉봉봉봉";
+        List<Car> carList = new ArrayList<>();
+        int moveIndex = 1;
+
+        for(String carName: carNames.split(",")) {
+            NextStepCar car = new NextStepCar(carName);
+            car.moveForward(moveIndex++);
+            carList.add(car);
+        }
+        NextStepCar expectedSecondWinner = new NextStepCar("붕");
+        expectedSecondWinner.moveForward(moveIndex-1);
+        carList.add(expectedSecondWinner);
+
+        NextStepCars nextStepCars = new NextStepCars(carList);
+        List<Car> winners = nextStepCars.getWinner();
+        assertThat(winners.size()).isEqualTo(2);
     }
 
     @BeforeAll
