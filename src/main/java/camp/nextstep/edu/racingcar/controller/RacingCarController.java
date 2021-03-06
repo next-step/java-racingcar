@@ -1,7 +1,7 @@
 package camp.nextstep.edu.racingcar.controller;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import camp.nextstep.edu.racingcar.entity.Car;
 import camp.nextstep.edu.racingcar.module.RacingCarGame;
@@ -21,15 +21,22 @@ public class RacingCarController {
 	}
 
 	public void run() {
-		int racingCarCount = inputView.getMakeCarInput();
+		String inputCarNames = inputView.getMakeUserCarInput();
+		List<String> carNames = getCarNames(inputCarNames);
 		int attemptCount = inputView.getMakeAttempt();
-		List<Car> cars = racingCarGame.generateCars(racingCarCount);
+
+		List<Car> cars = racingCarGame.generateCars(carNames);
 
 		outputView.showResult();
-		IntStream.range(0, attemptCount)
-			.forEach(key -> {
-				List<Car> movingCars = racingCarGame.moveCars(cars);
-				outputView.showCarSteps(racingCarGame.getCarStepString(movingCars));
-			});
+		for (int i = 0; i < attemptCount; i++) {
+			racingCarGame.moveCars(cars);
+			outputView.showCarSteps(racingCarGame.getCarStepString(cars));
+		}
+
+		outputView.showWinner(racingCarGame.getWinnerNames(cars));
+	}
+
+	private List<String> getCarNames(String input) {
+		return Arrays.asList(input.split(","));
 	}
 }
