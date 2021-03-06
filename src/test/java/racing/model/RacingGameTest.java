@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,7 +17,8 @@ class RacingGameTest {
 
     List<RacingCar> init() {
         racingGame = new RacingGame();
-        return racingGame.setUp(3);
+        String participationList = "SingSing,Boom,SM3";
+        return racingGame.setUp(participationList);
     }
 
     @DisplayName("레이싱 게임 초기화 테스트")
@@ -26,6 +28,9 @@ class RacingGameTest {
 
         //then
         assertEquals(3, racingCar.size());
+        assertEquals("SingSing", racingCar.get(0).getRacingCarName());
+        assertEquals(2L, racingCar.get(1).getRacingCarId());
+        assertThat(racingCar).allSatisfy(car -> assertEquals(0, car.getPosition()));
     }
 
     @DisplayName("랜덤값이 자동차 갯수 만큼 생성되는지 테스트")
@@ -53,8 +58,16 @@ class RacingGameTest {
         racingGame.moveAndStop(randomValue);
 
         //then
-        assertEquals(5, racingCar.get(0).getPosition());
-        assertEquals(7, racingCar.get(1).getPosition());
+        assertEquals(5,
+                racingCar.stream()
+                        .filter(car -> "SingSing".equals(car.getRacingCarName()))
+                        .map(RacingCar::getPosition)
+                        .collect(toList()).get(0));
+        assertEquals(7,
+                racingCar.stream()
+                        .filter(car -> 2L == car.getRacingCarId())
+                        .map(RacingCar::getPosition)
+                        .collect(toList()).get(0));
         assertEquals(8, racingCar.get(2).getPosition());
     }
 
@@ -69,14 +82,13 @@ class RacingGameTest {
         racingGame.moveAndStop(randomValue);
 
         //then
-        assertThat(racingCar).allSatisfy(position -> assertEquals(position.getPosition(), 0));
+        assertThat(racingCar).allSatisfy(car -> assertEquals(car.getPosition(), 0));
     }
 
 
     private List<Integer> createMoveValue(int firstCarMovePosition, int secondCarMovePosition,
                                           int thirdCarMovePosition) {
-        List<Integer> randomValue = List.of(firstCarMovePosition, secondCarMovePosition, thirdCarMovePosition);
-        return randomValue;
+        return List.of(firstCarMovePosition, secondCarMovePosition, thirdCarMovePosition);
     }
 
 
