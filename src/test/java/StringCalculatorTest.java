@@ -40,6 +40,12 @@ class StringCalculator {
 
     void validationArgument () {
         if (StringUtils.isEmpty(arg)) throw new IllegalArgumentException();
+
+        for (String x: StringUtils.blankSplit(arg)) {
+            if (!(StringUtils.isInteger(x) && StringUtils.isCalculateText(x))) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     void validationCalculateString (String x) {
