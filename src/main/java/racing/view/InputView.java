@@ -7,11 +7,11 @@ public class InputView {
 
     Scanner scan = new Scanner(System.in);
 
-    private String racingCarName;
+    private String participationList;
     private int turnCount;
 
     public void init() {
-        this.racingCarName = inputRacingCarName();
+        this.participationList = inputRacingCarName();
         this.turnCount = intputTurnCount();
     }
 
@@ -35,8 +35,8 @@ public class InputView {
         init();
     }
 
-    public String getRacingCarName() {
-        return racingCarName;
+    public String getParticipationList() {
+        return participationList;
     }
 
     public int getTurnCount() {
