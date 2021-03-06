@@ -2,7 +2,6 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -47,14 +46,14 @@ class StringCalculatorTest {
     @MethodSource(value = "blankStrings")
     void isBlank_ThrowsIllegalArgumentException(String given) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> calculator.apply(given));
+                .isThrownBy(() -> calculator.calculate(given));
     }
 
     @DisplayName("사칙 연산을 모두 포함 연산이 가능한 기능 구현 테스트")
     @ParameterizedTest(name = "`{0}`의 연산 결과 값은 : {1}")
     @MethodSource(value = "validSymbolStrings")
     void fourRuleCalculationSerialTest(String given, Integer expected) {
-        assertThat(calculator.apply(given)).isEqualTo(expected);
+        assertThat(calculator.calculate(given)).isEqualTo(expected);
     }
 
     @DisplayName("사칙 연산이 아닌 연산이 포함되어 있는 경우 테스트")
@@ -62,6 +61,6 @@ class StringCalculatorTest {
     @CsvSource(value = {"2 & 1 + 1", "2 $ 1", "1 $ 1 % 1 ^ 1 ! 1"})
     void testCase1(String given) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> calculator.apply(given));
+                .isThrownBy(() -> calculator.calculate(given));
     }
 }

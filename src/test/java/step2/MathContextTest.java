@@ -39,32 +39,6 @@ class MathContextTest {
         assertThat(mathContext.getOperations()).isNotNull();
     }
 
-    @DisplayName("공식 입력 후 숫자만 입력 테스트")
-    @ParameterizedTest(name = "{0} 입력 시 숫자 갯수 {1} 개")
-    @CsvSource(value = {"2 + 1 * 3 / 2, 4", "2 + 1 / 3 * 2 + 1, 5"})
-    void setNumbers_ShouldReturnLinkedList(String formula, Integer numSize) {
-        mathContext = new MathContext("");
-
-        String[] splitFormula = formula.split(SPLIT_DELIMITER);
-        Queue<Integer> numQueue = mathContext.setNumbers(splitFormula);
-
-        assertThat(numQueue).isNotNull();
-        assertThat(numQueue.size()).isEqualTo(numSize);
-    }
-
-    @DisplayName("공식 입력 후 연산자 개수 체크")
-    @ParameterizedTest(name = "{0} 입력 시 연산자 개수 {1} 개")
-    @CsvSource(value = {"2 + 1 / 3 * 2 + 1, 4"})
-    void setOperations_ShouldReturnLinkedList(String formula, Integer operationSize) {
-        mathContext = new MathContext("");
-
-        String[] splitFormula = formula.split(SPLIT_DELIMITER);
-        Queue<Operator> operatorQueue = mathContext.setOperations(splitFormula);
-
-        assertThat(operatorQueue).isNotNull();
-        assertThat(operatorQueue.size()).isEqualTo(operationSize);
-    }
-
     @DisplayName("공식 입력 후 숫자, 연산자 갯수 체크")
     @ParameterizedTest(name = "{0} 공식 입력 후, 숫자 사이즈: {1}, 연산자 사이즈 {2}")
     @MethodSource(value = "formulaStream")

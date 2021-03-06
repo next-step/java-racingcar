@@ -3,7 +3,7 @@ package step2;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static step2.Constants.REGEXP;
+import static step2.Constants.NUMBERS_AND_FOUR_OPERATOR_CALCULATION_REGEXP;
 import static step2.Constants.ZERO;
 
 /**
@@ -31,6 +31,6 @@ public final class Validator {
     }
 
     public static boolean isValidation(String input) {
-        return Pattern.matches(REGEXP, input);
+        return Pattern.matches(NUMBERS_AND_FOUR_OPERATOR_CALCULATION_REGEXP, input);
     }
 }

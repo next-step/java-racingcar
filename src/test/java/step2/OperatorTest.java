@@ -48,7 +48,7 @@ class OperatorTest {
     @DisplayName("연산자: DIVIDE 연산 0을 나눌때 예외처리 테스트")
     @ParameterizedTest(name = "{0} / {1} = {2} 연산 테스트")
     @CsvSource(value = {"0, 3, 2"})
-    void divide_DivideByZeroException(Integer dividend, Integer divisor, Integer expected) {
+    void divide_DivideByZeroException(Integer dividend, Integer divisor) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
                     DIVIDE.calculate(dividend, divisor);

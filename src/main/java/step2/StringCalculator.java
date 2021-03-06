@@ -2,6 +2,7 @@ package step2;
 
 import java.util.Queue;
 
+import static step2.Constants.STRING_NOT_FOUND_EXCEPTION;
 import static step2.Validator.isBlank;
 import static step2.Validator.isValidation;
 
@@ -10,12 +11,12 @@ import static step2.Validator.isValidation;
  */
 public class StringCalculator {
 
-    public Integer apply(String input) {
+    public Integer calculate(String input) {
         if (isBlank(input)) {
-            throw new IllegalArgumentException("값이 존재하지 않습니다.");
+            throw new IllegalArgumentException(STRING_NOT_FOUND_EXCEPTION);
         }
         if(!isValidation(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Constants.CANNOT_CALCULATE_FORMULA);
         }
         // 사용자의 입력 값을 관리할 Context
         MathContext mathContext = new MathContext(input);
@@ -24,6 +25,10 @@ public class StringCalculator {
         Queue<Integer> numbers = mathContext.getNumbers();
         Queue<Operator> operations = mathContext.getOperations();
 
+        return process(numbers, operations);
+    }
+
+    private Integer process(Queue<Integer> numbers, Queue<Operator> operations) {
         Integer result = numbers.poll();
 
         while (!numbers.isEmpty() && !operations.isEmpty()) {
