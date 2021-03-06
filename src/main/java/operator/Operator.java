@@ -3,6 +3,6 @@ package operator;
 @FunctionalInterface
 public interface Operator {
 
-    int operate(int firstValue, int secondValue);
+    int apply(int x, int y);
 
 }
