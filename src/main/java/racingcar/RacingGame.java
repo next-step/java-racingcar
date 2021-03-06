@@ -7,27 +7,21 @@ import java.util.Random;
 public class RacingGame {
 
     private static ResultView resultView = new ResultView();
+    private static Random random = new Random();
 
     public List<Car> initRacing(int countCar) {
         List<Car> cars = new ArrayList();
 
         for (int i = 0; i < countCar; i++) {
-             cars.add(new Car(""));
+             cars.add(new Car(0));
         }
 
         return cars;
     }
 
-    public int getRandomNumber() {
-        Random random = new Random();
-
-        return random.nextInt(10);
-    }
-
     public void playRacing(List<Car> cars) {
         for (Car car : cars) {
-            int randomNum = getRandomNumber();
-            car.updateByRandom(randomNum);
+            car.updateByNumber(random.nextInt(10));
         }
     }
 
