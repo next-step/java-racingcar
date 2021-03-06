@@ -15,25 +15,26 @@ public class RacingController {
 
 
   public RacingController() {
-    play(setUpGame());
+    setUpGame();
+    play();
   }
 
   /**
    * InputView 에서 자동차 갯수와 게임 실행 횟수를 입력받아 게임을 설정함
    */
-  public List<RacingCar> setUpGame() {
+  public void setUpGame() {
     inputView = new InputView();
     racingGame = new RacingGame();
 
     int[] carCountAndTurnCount = inputView.init();
     this.gameTrun = carCountAndTurnCount[1];
-    return racingGame.setup(carCountAndTurnCount[0]);
+    racingGame.setUp(carCountAndTurnCount[0]);
   }
 
   /**
    * 게임 시작 메서드 1 턴씩 진행하며 게임이 끝날때까지 반복된다.
    */
-  public void play(List<RacingCar> carList) {
+  public void play() {
     resultView = new ResultView();
     for (int i = 0; i < gameTrun; i++) {
       List<Integer> randomValue = racingGame.createRandomValue();
