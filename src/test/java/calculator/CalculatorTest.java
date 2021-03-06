@@ -22,7 +22,7 @@ class CalculatorTest {
 
         // when, then
         assertThatIllegalArgumentException()
-                .isThrownBy( () -> calculator.validateInput(input) )
+                .isThrownBy( () -> calculator.calculate(input) )
                 .withMessageMatching("수식을 입력해 주세요");
     }
 
@@ -35,7 +35,7 @@ class CalculatorTest {
 
         // when, then
         assertThatIllegalArgumentException()
-                .isThrownBy( () -> calculator.validateInput(input) )
+                .isThrownBy( () -> calculator.calculate(input) )
                 .withMessageMatching("수식의 구성이 올바르지 않습니다. 다시 입력해 주세요");
     }
 

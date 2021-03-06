@@ -19,7 +19,7 @@ public class Calculator {
      *  - 입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw
      *  - 사칙연산 레이아웃 검증
      */
-    public void validateInput(String formula) throws IllegalArgumentException {
+    private void validateInput(String formula) throws IllegalArgumentException {
         if(StringUtils.isEmpty(formula)) {
             throw new IllegalArgumentException("수식을 입력해 주세요");
         }
