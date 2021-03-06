@@ -4,34 +4,54 @@ import racingcar.dto.CarScore;
 import racingcar.dto.FinalScoreBoard;
 import racingcar.dto.ScoreBoardPerPlay;
 
+import java.util.List;
+
 public class ResultView {
 
     private static final String DISTANCE_REPRESENTATION = "-";
 
     private static final String EMPTY_SPACE = " ";
 
-    public void printFinalResult(FinalScoreBoard finalScoreBoard){
+    private static final String NAME_SEPARATOR = ",";
+
+    public void printFinalResult(FinalScoreBoard finalScoreBoard) {
         System.out.println(MessageConstant.FINAL_RESULT);
-        finalScoreBoard.getAllScore()
-                .forEach(this::printScoreBoardPerPlay);
+        printScoreBoardPerPlay(finalScoreBoard.getAllScore());
+        printWinner(finalScoreBoard.getFinalWinner());
     }
 
-    private void printScoreBoardPerPlay(ScoreBoardPerPlay scoreBoardPerPlay) {
-        System.out.printf("%s회 %n",scoreBoardPerPlay.getPlayNumber());
-        scoreBoardPerPlay.getScoreList()
-                .forEach(this::printIndividualScore);
+    private void printWinner(List<CarScore> carScoreList) {
+        System.out.println();
+        System.out.printf("%s가 최종 우숭했습니다. %n", extractWinnerNameToString(carScoreList));
+    }
+
+    private void printScoreBoardPerPlay(List<ScoreBoardPerPlay> scoreBoardPerPlayList) {
+        for (ScoreBoardPerPlay scoreBoardPerPlay : scoreBoardPerPlayList) {
+            System.out.printf("%s회 %n", scoreBoardPerPlay.getPlayNumber());
+            scoreBoardPerPlay.getScoreList()
+                    .forEach(this::printIndividualScore);
+        }
     }
 
     private void printIndividualScore(CarScore carScore) {
-        System.out.printf("%s %n", createDistanceLine(carScore.getTravelledDistance()));
+        System.out.printf("%s : %s %n", carScore.getCarName(), createDistanceLine(carScore.getTravelledDistance()));
     }
 
-    private String createDistanceLine (int times) {
+    private String extractWinnerNameToString(List<CarScore> carScoreList) {
+        StringBuilder b = new StringBuilder();
+        for (int i = 0; i < carScoreList.size(); ++i) {
+            b.append(carScoreList.get(i).getCarName());
+            b.append(NAME_SEPARATOR);
+        }
+        return b.toString().replaceAll(",$", "");
+    }
+
+    private String createDistanceLine(int times) {
         StringBuilder b = new StringBuilder();
         for (int i = 0; i < times; ++i) {
             b.append(DISTANCE_REPRESENTATION);
             b.append(EMPTY_SPACE);
         }
-       return b.toString();
+        return b.toString();
     }
 }

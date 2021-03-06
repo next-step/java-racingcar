@@ -2,6 +2,7 @@ package racingcar.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ScoreBoardPerPlay {
 
@@ -20,6 +21,14 @@ public class ScoreBoardPerPlay {
 
     public List<CarScore> getScoreList() {
         return scoreList;
+    }
+
+    public List<CarScore> getHighestCarScore() {
+        int maxTravelledDistance = scoreList.stream().mapToInt(CarScore::getTravelledDistance)
+                .max().orElse(0);
+        return scoreList.stream()
+                .filter(carScore -> carScore.getTravelledDistance() == maxTravelledDistance)
+                .collect(Collectors.toList());
     }
 
 }

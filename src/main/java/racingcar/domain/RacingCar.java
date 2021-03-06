@@ -5,7 +5,7 @@ public class RacingCar {
     private int travelledDistance;
 
     private String name;
-    
+
     private final RacingCarGameRule racingCarGameRule;
 
     public RacingCar(RacingCarGameRule racingCarGameRule, String name) {
@@ -14,8 +14,8 @@ public class RacingCar {
         this.name = name;
     }
 
-    public void move(){
-        if(racingCarGameRule.isCarMovable()){
+    public void move() {
+        if (racingCarGameRule.isCarMovable()) {
             travelledDistance++;
         }
     }
@@ -27,5 +27,5 @@ public class RacingCar {
     public int getTravelledDistance() {
         return travelledDistance;
     }
-    
+
 }

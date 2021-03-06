@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomNumberGenerator implements NumberGenerator{
+public class RandomNumberGenerator implements NumberGenerator {
 
     private int maxValue;
 
@@ -15,6 +15,6 @@ public class RandomNumberGenerator implements NumberGenerator{
 
     @Override
     public int generate() {
-        return new Random().nextInt(maxValue+1-minValue) + minValue;
+        return new Random().nextInt(maxValue + 1 - minValue) + minValue;
     }
 }

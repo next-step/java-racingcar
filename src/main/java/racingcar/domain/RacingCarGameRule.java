@@ -15,14 +15,14 @@ public class RacingCarGameRule {
     }
 
     public void validateWhetherCarNameLengthLimit(String carName) {
-        if(carName.length() > MAX_CAR_NAME_LENGTH) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("이름이 너무 깁니다.");
         }
     }
 
     public void validateWhetherCarNameLengthLimit(String[] carNameArray) {
-        for (String s : carNameArray) {
-            validateWhetherCarNameLengthLimit(s);
+        for (String carName : carNameArray) {
+            validateWhetherCarNameLengthLimit(carName);
         }
     }
 
