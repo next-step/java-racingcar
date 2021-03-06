@@ -12,7 +12,6 @@ public class StringCalculatorTest {
 
     StringCalculator stringCalculator;
 
-
     @DisplayName("사용자가 입력한 입력 값이 null이 오거나 빈 공백 문자일 경우")
     @Test
     void check_user_input_value() {
@@ -109,11 +108,5 @@ public class StringCalculatorTest {
         int result = stringCalculator.returnResult(data);
         assertThat(result).isEqualTo(10);
     }
-
-    @Test
-    void selectCodeTest() {
-
-    }
-
 
 }
