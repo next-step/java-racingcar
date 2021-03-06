@@ -12,6 +12,7 @@ public class StringCalculatorTest {
 
     StringCalculator stringCalculator;
 
+
     @DisplayName("사용자가 입력한 입력 값이 null이 오거나 빈 공백 문자일 경우")
     @Test
     void check_user_input_value() {
@@ -27,7 +28,8 @@ public class StringCalculatorTest {
     void non_operator_test() {
         stringCalculator = new StringCalculator("5 a 3");
         assertThatThrownBy(() -> {
-            stringCalculator.returnResult(stringCalculator.inputDatas);
+            String[] datas = "5 a 3".split(" ");
+            stringCalculator.returnResult(datas);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("사칙연산 기호가 아닙니다.");
     }
@@ -45,8 +47,9 @@ public class StringCalculatorTest {
     void addition_test() {
 
         stringCalculator = new StringCalculator("5 + 3");
-        stringCalculator.returnResult(stringCalculator.inputDatas);
-        assertThat(stringCalculator.result).isEqualTo(8);
+        String[] data = "5 + 3".split(" ");
+        int result = stringCalculator.returnResult(data);
+        assertThat(result).isEqualTo(8);
 
     }
 
@@ -55,8 +58,9 @@ public class StringCalculatorTest {
     void substraction_test() {
 
         stringCalculator = new StringCalculator("5 - 3");
-        stringCalculator.returnResult(stringCalculator.inputDatas);
-        assertThat(stringCalculator.result).isEqualTo(2);
+        String[] data = "5 - 3".split(" ");
+        int result = stringCalculator.returnResult(data);
+        assertThat(result).isEqualTo(2);
 
     }
 
@@ -64,16 +68,18 @@ public class StringCalculatorTest {
     @Test
     void multiplication_test() {
         stringCalculator = new StringCalculator("5 * 3");
-        stringCalculator.returnResult(stringCalculator.inputDatas);
-        assertThat(stringCalculator.result).isEqualTo(15);
+        String[] data = "5 * 3".split(" ");
+        int result = stringCalculator.returnResult(data);
+        assertThat(result).isEqualTo(15);
     }
 
     @DisplayName("나눗셈 테스트")
     @Test
     void division_test() {
         stringCalculator = new StringCalculator("10 / 2");
-        stringCalculator.returnResult(stringCalculator.inputDatas);
-        assertThat(stringCalculator.result).isEqualTo(5);
+        String[] data = "10 / 2".split(" ");
+        int result = stringCalculator.returnResult(data);
+        assertThat(result).isEqualTo(5);
 
     }
 
@@ -81,24 +87,27 @@ public class StringCalculatorTest {
     @Test
     void little_complicated_calculate_test() {
         stringCalculator = new StringCalculator("2 + 3 * 4");
-        stringCalculator.returnResult(stringCalculator.inputDatas);
-        assertThat(stringCalculator.result).isEqualTo(20);
+        String[] data = "2 + 3 * 4".split(" ");
+        int result = stringCalculator.returnResult(data);
+        assertThat(result).isEqualTo(20);
     }
 
     @DisplayName("더 복잡한 사칙연산 테스트")
     @Test
     void complicated_calculate_test() {
         stringCalculator = new StringCalculator("10 * 5 / 10 + 9 - 4 * 5");
-        stringCalculator.returnResult(stringCalculator.inputDatas);
-        assertThat(stringCalculator.result).isEqualTo(50);
+        String[] data = "10 * 5 / 10 + 9 - 4 * 5".split(" ");
+        int result = stringCalculator.returnResult(data);
+        assertThat(result).isEqualTo(50);
     }
 
     @DisplayName("2 + 3 / 4 * 2 값 테스트")
     @Test
     void step2_example_value_test() {
         stringCalculator = new StringCalculator("2 + 3 * 4 / 2");
-        stringCalculator.returnResult(stringCalculator.inputDatas);
-        assertThat(stringCalculator.result).isEqualTo(10);
+        String[] data = "2 + 3 * 4 / 2".split(" ");
+        int result = stringCalculator.returnResult(data);
+        assertThat(result).isEqualTo(10);
     }
 
 
