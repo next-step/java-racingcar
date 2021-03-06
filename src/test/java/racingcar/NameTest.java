@@ -23,13 +23,14 @@ public class NameTest {
 	@Test
 	@DisplayName("null or 빈문자열 체크")
 	void 빈_문자열인경우_excpetion() {
+		String exceptionMessage = "자동차 이름은 빈값은 불가합니다.";
 		assertAll(
 			() -> assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> new Name(""))
-				.withMessageMatching("자동차 이름은 빈값은 불가합니다."),
+				.withMessageMatching(exceptionMessage),
 			() -> assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> new Name(null))
-				.withMessageMatching("자동차 이름은 빈값은 불가합니다.")
+				.withMessageMatching(exceptionMessage)
 		);
 	}
 
