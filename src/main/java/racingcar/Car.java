@@ -19,6 +19,10 @@ public class Car {
     }
 
     public boolean isAcceptCondition(int number) {
+        if (number > 9 || number < 0) {
+            throw new IllegalArgumentException("0 ~ 9까지의 값만 사용할 수 있습니다.");
+        }
+
         return number >= 4;
     }
 }

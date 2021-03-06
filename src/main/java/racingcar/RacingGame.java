@@ -2,20 +2,22 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class RacingGame {
 
-    private static ResultView resultView = new ResultView();
     private static Random random = new Random();
+    private static List<Car> cars = new ArrayList();
+    private FinalResult finalResult = new FinalResult();
+    private int countRound = 0;
+    private int thisRound = 0;
 
-    public List<Car> initRacing(int countCar) {
-        List<Car> cars = new ArrayList();
+    public void setPlusCountRound(int addCountRound) {
+        this.countRound += addCountRound;
+    }
 
-        for (int i = 0; i < countCar; i++) {
-             cars.add(new Car(0));
-        }
-
+    public List<Car> preparedRacingCars() {
         return cars;
     }
 
@@ -23,19 +25,37 @@ public class RacingGame {
         return random.nextInt(10);
     }
 
-    public void playRacing(List<Car> cars) {
+    public void playRacing() {
+        EachRound eachRound = new EachRound();
+        int carName = 0;
+
         for (Car car : cars) {
+            carName++;
             car.updateByCondition(getNumber());
+            eachRound.recordRoundPosition(car, "차이름 : " + carName);
         }
+
+        finalResult.recordRoundPosition(thisRound, eachRound.getResult());
+        thisRound++;
     }
 
-    public void startRacing(int countCar, int countTry) {
-        List<Car> cars = initRacing(countCar);
+    public boolean hasNextRound() {
+        return countRound > thisRound;
+    }
 
-        for (int i = 0; i < countTry; i++) {
-            playRacing(cars);
-
-            resultView.printResult(cars);
+    public Map<Integer, Map<String, Integer>> startRacing() {
+        while (hasNextRound()) {
+            playRacing();
         }
+
+        return finalResult.getFinalResult();
+    }
+
+    public void initRacing(int countCar, int countRound) {
+        for (int i = 0; i < countCar; i++) {
+            cars.add(new Car(0));
+        }
+
+        this.countRound = countRound;
     }
 }
