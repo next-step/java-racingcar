@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.function.BiFunction;
+
 public class Calculator {
     private int number1;
 
@@ -8,35 +10,37 @@ public class Calculator {
     }
 
     public int calculate(String operator, int number2) {
-        if ("+".equals(operator)) {
-            return add(number1, number2);
+        return Calculation.findCalculationMethod(operator).calculate(number1, number2);
+    }
+
+    public enum Calculation {
+
+        ADDITION("+", (number1, number2) -> number1 + number2),
+        SUBTRACTION("-", (number1, number2) -> number1 - number2),
+        MULTIPLICATION("*", (number1, number2) -> number1 * number2),
+        DIVISION("/", (number1, number2) -> number1 / number2),
+        ;
+
+        private String operator;
+        private BiFunction<Integer, Integer, Integer> calculationMethod;
+
+        Calculation(String operator, BiFunction<Integer, Integer, Integer> calculationMethod) {
+            this.operator = operator;
+            this.calculationMethod = calculationMethod;
         }
-        if ("-".equals(operator)) {
-            return subtract(number1, number2);
-        }
-        if ("*".equals(operator)) {
-            return multiply(number1, number2);
-        }
-        if ("/".equals(operator)) {
-            return divide(number1, number2);
+
+        private int calculate(int number1, int number2) {
+            return findCalculationMethod(operator).calculationMethod.apply(number1, number2);
         }
 
-        throw new IllegalArgumentException();
+        private static Calculation findCalculationMethod(String operator) {
+            for (Calculation calculation : Calculation.values()) {
+                if (calculation.operator.equals(operator)) {
+                    return calculation;
+                }
+            }
+            throw new IllegalArgumentException();
+        }
     }
 
-    private int add(int number1, int number2) {
-        return number1 + number2;
-    }
-
-    private int subtract(int number1, int number2) {
-        return number1 - number2;
-    }
-
-    private int multiply(int number1, int number2) {
-        return number1 * number2;
-    }
-
-    private int divide(int number1, int number2) {
-        return number1 / number2;
-    }
 }
