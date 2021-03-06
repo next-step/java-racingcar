@@ -5,25 +5,41 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public int[] init() {
-        Scanner scan = new Scanner(System.in);
-        int racingCarCount = 0;
-        int turnCount = 0;
+    Scanner scan = new Scanner(System.in);
+
+    private String racingCarName;
+    private int turnCount;
+
+    public void init() {
+        this.racingCarName = inputRacingCarName();
+        this.turnCount = intputTurnCount();
+    }
+
+    public String inputRacingCarName() {
+        System.out.println("경주할 자동차 이름을 립력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scan.nextLine();
+    }
+
+    public int intputTurnCount() {
+        System.out.println("시도할 회수는 몇회인가요?");
         try {
-            System.out.println("자동차 대수는 몇 대 인가요?");
-            racingCarCount = scan.nextInt();
-            System.out.println("시도할 횟수는 몇 회 인가요?");
             turnCount = scan.nextInt();
         } catch (InputMismatchException e) {
             reStart();
-        } finally {
-            scan.close();
         }
-        return new int[]{racingCarCount, turnCount};
+        return turnCount;
     }
 
-    public int[] reStart() {
+    public void reStart() {
         System.out.println("입력하신 값은 올바른 값이 아닙니다. 다시 입력해주세요");
-        return init();
+        init();
+    }
+
+    public String getRacingCarName() {
+        return racingCarName;
+    }
+
+    public int getTurnCount() {
+        return turnCount;
     }
 }
