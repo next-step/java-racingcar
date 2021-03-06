@@ -53,10 +53,9 @@ public class RacingGame {
         return carList;
     }
 
-
     public List<RacingCar> setWinner() {
-        return carList.stream().
-                filter(car -> car.getPosition() == carList.stream()
+        return carList.stream()
+                .filter(car -> car.getPosition() == carList.stream()
                         .mapToInt(RacingCar::getPosition)
                         .max().orElse(0))
                 .collect(toList());

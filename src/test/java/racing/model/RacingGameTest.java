@@ -85,6 +85,38 @@ class RacingGameTest {
         assertThat(racingCar).allSatisfy(car -> assertEquals(car.getPosition(), 0));
     }
 
+    @DisplayName("우승자 가리는 메서드 테스트")
+    @Test
+    void setWinner() {
+        //given
+        init();
+        List<Integer> moveValue = createMoveValue(3, 5, 2);
+        List<RacingCar> racingCars = racingGame.moveAndStop(moveValue);
+
+        //when
+        List<RacingCar> winner = racingGame.setWinner();
+
+        //then
+        assertEquals(2L, winner.get(0).getRacingCarId());
+    }
+
+    @DisplayName("공동 우승일 경우 테스트")
+    @Test
+    void setCoWinner() {
+        //given
+        init();
+        List<Integer> moveValue = createMoveValue(5, 5, 2);
+        List<RacingCar> racingCars = racingGame.moveAndStop(moveValue);
+
+        //when
+        List<RacingCar> winner = racingGame.setWinner();
+
+        //then
+        assertEquals(2, winner.size());
+        assertEquals(1L, winner.get(0).getRacingCarId());
+        assertEquals(2L, winner.get(1).getRacingCarId());
+    }
+
 
     private List<Integer> createMoveValue(int firstCarMovePosition, int secondCarMovePosition,
                                           int thirdCarMovePosition) {
