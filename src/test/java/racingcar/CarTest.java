@@ -14,11 +14,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import camp.nextstep.edu.racingcar.entity.Car;
 
-public class RacingCarTest {
+public class CarTest {
 
 	@ParameterizedTest
 	@DisplayName("input 값 전진")
@@ -41,9 +40,13 @@ public class RacingCarTest {
 	@DisplayName("Car object move테스트")
 	@MethodSource("getOneToTen")
 	void 차_전진(Integer param) {
+		// given
 		Car car = new Car("전연빈");
-		car.move(param);
 
+		// when
+		car.move(() -> param >= 4);
+
+		// then
 		assertEquals(car.getStep() == 1, param >= 4);
 	}
 
@@ -53,9 +56,9 @@ public class RacingCarTest {
 		Car car = new Car("전연빈");
 
 		// when
-		car.move(5);
-		car.move(5);
-		car.move(5);
+		car.move(() -> true);
+		car.move(() -> true);
+		car.move(() -> true);
 
 		Method method = car.getClass().getDeclaredMethod("getStepString");
 		method.setAccessible(true);
@@ -74,14 +77,4 @@ public class RacingCarTest {
 		assertThat(car.getStepStringWithName().trim())
 			.isEqualTo(expected);
 	}
-
-	@ParameterizedTest
-	@DisplayName("차 이름 5자 이상")
-	@ValueSource(strings = {"abcdeff", "abcdeffff", "feffffeff", "안녕하십니까"})
-	void 차_이름_다섯자_이상(String input) {
-		assertThatExceptionOfType(IllegalArgumentException.class)
-			.isThrownBy(() -> new Car(input))
-			.withMessageMatching("정상적인 사용자 값이 아닙니다.");
-	}
-
 }
