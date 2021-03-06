@@ -9,7 +9,12 @@ public class ResultView {
     }
 
     public void print(List<RacingCar> racingCars) {
-        racingCars.forEach(RacingCar::printPosition);
+        for (RacingCar racingCar : racingCars) {
+            for(int i=0; i < racingCar.getPosition(); i ++){
+                System.out.print("-");
+            }
+            System.out.println();
+        }
         System.out.println();
     }
 }

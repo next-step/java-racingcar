@@ -2,6 +2,7 @@ package study.step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -10,13 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarGameTest {
 
-    RacingCarGame racingCarGame;
-    RacingCar racingCar;
-    RandomGenerator randomGenerator;
+    private RacingCar racingCar;
+    private RandomGenerator randomGenerator;
 
     @BeforeEach
     void setup(){
-        racingCarGame = new RacingCarGame();
         racingCar = new RacingCar();
         randomGenerator = new RandomGenerator();
     }
@@ -31,18 +30,18 @@ public class RacingCarGameTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:false", "4:true", "3:false", "9:true", "0:false"}, delimiter = ':')
-    @DisplayName("값이 4 이상이면 true 4 미만이면 false 확인")
-    void movePossible(Integer number, boolean expected){
-        assertThat(racingCar.movePossible(number)).isEqualTo(expected);
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0" }, delimiter = ':')
+    @DisplayName("값이 4 미만이면 정지 확인")
+    void moveImPossible(Integer number, Integer expected){
+        racingCar.oneStep(number);
+        assertThat(racingCar.getPosition()).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("자동차 이동 시 한번에 하나 씩 정상 증가 확인")
-    void carMove(){
-        for (int i = 1; i <= 10; i ++) {
-            racingCar.carMove();
-            assertThat(racingCar.getPosition()).isEqualTo(i);
-        }
+    @ParameterizedTest
+    @CsvSource(value = {"4:1", "5:1", "6:1", "7:1", "8:1", "9:1" }, delimiter = ':')
+    @DisplayName("값이 4 이상이면 1 전진 확인")
+    void movePossible(Integer number, Integer expected){
+        racingCar.oneStep(number);
+        assertThat(racingCar.getPosition()).isEqualTo(expected);
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingCarGame {
 
-    static final RandomGenerator randomGenerator = new RandomGenerator();
+    private static final RandomGenerator randomGenerator = new RandomGenerator();
 
     public void start() {
 

@@ -2,20 +2,12 @@ package study.step3;
 
 public class RacingCar {
 
-    static final int MOVE_POSSIBLE_NUMBER = 4;
+    private static final int MOVE_POSSIBLE_NUMBER = 4;
 
     private int position = 0;
 
     public int getPosition() {
         return position;
-    }
-
-    public boolean movePossible(int number) {
-        return number >= MOVE_POSSIBLE_NUMBER;
-    }
-
-    public void carMove(){
-        this.position += 1;
     }
 
     public void oneStep(int number){
@@ -24,10 +16,12 @@ public class RacingCar {
         }
     }
 
-    public void printPosition(){
-        for(int i=0; i < position; i ++){
-            System.out.print("-");
-        }
-        System.out.println();
+    private boolean movePossible(int number) {
+        return number >= MOVE_POSSIBLE_NUMBER;
     }
+
+    private void carMove(){
+        this.position += 1;
+    }
+
 }
