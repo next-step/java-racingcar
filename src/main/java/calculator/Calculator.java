@@ -3,34 +3,40 @@ package calculator;
 import operator.Operation;
 import utils.StringUtils;
 
+import java.util.StringTokenizer;
+
 public class Calculator {
+    private final String DELIMITER = " ";
 
     public Calculator() {
     }
 
-    public int calculate(String expression) {
+    public Integer calculate(String expression) {
         if (StringUtils.isNullAndBlank(expression)) {
             throw new IllegalArgumentException();
         }
         return getResult(splitBlank(expression));
     }
 
-    private String[] splitBlank(String expression) {
-        return expression.split(" ");
+    private StringTokenizer splitBlank(String expression) {
+        return new StringTokenizer(expression, DELIMITER);
     }
 
-    private int getResult(String[] data) {
-        int sum = stringToInt(data[0]);
-        for (int i = 0; i < data.length - 2; i += 2) {
-            Operation operator = Operation.getOperation(data[i + 1]);
-            sum = operator.apply(sum, stringToInt(data[i + 2]));
+    private Integer getResult(StringTokenizer token) {
+        Integer sum = stringToInteger(token.nextToken());
+        while (token.hasMoreTokens()) {
+            Operation operator = getOperationByToken(token.nextToken());
+            sum = operator.apply(sum, stringToInteger(token.nextToken()));
         }
         return sum;
     }
 
-    private int stringToInt(String digitValue) {
+    private int stringToInteger(String digitValue) {
         return Integer.parseInt(digitValue);
     }
 
+    private Operation getOperationByToken(String symbol) {
+        return Operation.getOperation(symbol);
+    }
 
 }

@@ -1,6 +1,7 @@
 package utils;
 
 public class StringUtils {
+    private static final int ZERO = 0;
 
     private static class SettingsHolder {
         public static final StringUtils utils = new StringUtils();
@@ -24,7 +25,7 @@ public class StringUtils {
     }
 
     private static boolean isBlank(String expression) {
-        return expression.trim().length() == 0;
+        return expression.trim().length() == ZERO;
     }
 
 
