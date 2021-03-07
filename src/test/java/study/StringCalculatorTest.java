@@ -17,14 +17,14 @@ public class StringCalculatorTest {
     @CsvSource(value={"2 + 3:5","2 - 3:-1","2 * 3:6","4 / 2:2"},delimiter = ':')
     @DisplayName("사칙연산 테스트, +,-,*,/ 통합 테스트")
     void 사칙연산(String input,String expected){
-        assertThat(Calculator.calculate(input)).isEqualTo(expected);
+        assertThat(Calculator.calcuate(input)).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("사칙연산 모두 포함된 경우 테스트")
     void stringCalculate(){
         String input = "2 + 3 * 4 / 2 - 30";
-        assertThat(Calculator.calculate(input)).isEqualTo("-20");
+        assertThat(Calculator.calcuate(input)).isEqualTo(-20);
     }
 
     @ParameterizedTest
