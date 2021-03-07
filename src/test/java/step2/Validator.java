@@ -12,7 +12,7 @@ public class Validator {
 
     // 계산식의 항의 개수가 홀수개인지 확인
     private static void checkExpressionLength(int expressionLength){
-        if(expressionLength % 2 == 1){
+        if(expressionLength % 2 == 0){
             throw new IllegalArgumentException("Invalid number of terms");
         }
     }
