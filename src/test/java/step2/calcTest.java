@@ -25,41 +25,51 @@ public class calcTest {
     @DisplayName("Valid input String is Blank or Null exception case")
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    void validBlankOrNull(String inputStr) {
+    void validBlankOrNull(String strInput) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.validBlankOrNull(inputStr);
+            calculator.validBlankOrNull(strInput);
         });
     }
 
     @ParameterizedTest
     @DisplayName("Valid input String is Blank or Null not exception case")
     @ValueSource(strings = {"2 + 3 * 4 / 2", "123"})
-    void validNotBlankOrNullStr(String inputStr) {
-        assertThatCode(() -> calculator.validBlankOrNull(inputStr)).doesNotThrowAnyException();
+    void validNotBlankOrNullStr(String strInput) {
+        assertThatCode(() -> calculator.validBlankOrNull(strInput)).doesNotThrowAnyException();
+    }
+
+
+    @DisplayName("Valid input operation not exception case")
+    @ParameterizedTest
+    @ValueSource(strings = {"+", "-", "*", "/"})
+    void isOperation(String inputOperation) {
+        Boolean result = calculator.isOperation(inputOperation);
+        assertThat(result).isTrue();
     }
 
     @DisplayName("Valid input operation exception case")
     @ParameterizedTest
     @ValueSource(strings = {"&", "1", "^", "%"})
-    void validNotOperation(String inputOperation) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.validOperation(inputOperation);
-        });
-    }
-
-    @DisplayName("Valid input operation not exception case")
-    @ParameterizedTest
-    @ValueSource(strings = {"+", "-", "*", "/"})
-    void validOperation(String inputOperation) {
-        assertThatCode(() -> calculator.validOperation(inputOperation)).doesNotThrowAnyException();
+    void isNotOperation(String inputOperation) {
+        Boolean result = calculator.isOperation(inputOperation);
+        assertThat(result).isFalse();
     }
 
     @DisplayName("Valid input String has correct operation")
     @Test
-    void validAllOperation() {
-        String[] inputStrArr = {"2", "+", "3", "*", "4", "-", "5", "/", "6"};
-        Boolean result = calculator.isCorrectOperation(inputStrArr);
-        assertThat(result).isTrue();
+    void validOperation() {
+        String[] arrInput = {"2", "+", "3", "*", "4", "-", "5", "/", "6"};
+        assertThatCode(() -> calculator.validOperation(arrInput)).doesNotThrowAnyException();
+
+    }
+
+    @DisplayName("Valid input String has not correct operation")
+    @Test
+    void validNotOperation() {
+        String[] arrInput = {"2", "&", "3", "^", "4", "1", "5", "%", "6"};
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.validOperation(arrInput);
+        });
     }
 
 
@@ -123,8 +133,8 @@ public class calcTest {
     @ParameterizedTest
     @CsvSource({"\"2 + 3 * 4 / 2\",\"10\"", "\"1 + 5 * 4 / 3\",\"8\""})
     @DisplayName("calculate Test")
-    void calculate(String inputStr, String expectResult) {
-        String result = calculator.calculate(inputStr);
+    void calculate(String strInput, String expectResult) {
+        String result = calculator.calculate(strInput);
         assertThat(result).isEqualTo(expectResult);
     }
 

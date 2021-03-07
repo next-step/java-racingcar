@@ -11,13 +11,4 @@ public enum Operation {
     Operation(String strOperation) {
         this.strOperation = strOperation;
     }
-
-
-    Boolean isOperation(String operation) {
-        for (Operation operation : Operation.values()) {
-
-        }
-    }
-
-
 }
