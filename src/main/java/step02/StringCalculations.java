@@ -3,7 +3,7 @@ package step02;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Calculations {
+public class StringCalculations {
     public int calculate(int first, String operator, int second) {
         return OperationManager.calculate(operator, first, second);
     }

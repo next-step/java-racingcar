@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CalculatorTest {
 
     //    private final OperationManager operation = new OperationManager();
-    private final Calculations calculations = new Calculations();
+    private final StringCalculations calculations = new StringCalculations();
 
     @Test
     @DisplayName("덧셈에 대한 테스트")
