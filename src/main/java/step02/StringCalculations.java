@@ -1,39 +1,40 @@
 package step02;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 public class StringCalculations {
-
-    private static final int CALCULATIONS_RESULT_INIT = 0;
 
     public int calculate(int first, String operator, int second) {
         return OperationManager.calculate(operator, first, second);
     }
 
     public int calculate(String data) {
-        if(StringUtils.isBlank(data)) throw new IllegalArgumentException();
-        Queue<String> symbolList = new LinkedList<>();
-        Queue<Integer> numberList = new LinkedList<>();
-        String[] inputData = data.split(" ");
-        int result = CALCULATIONS_RESULT_INIT;
+        if (StringUtils.isBlank(data)) throw new IllegalArgumentException();
 
-        for (String input : inputData) {
-            if (input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/")) {
-                symbolList.add(input);
-                continue;
-            }
-            numberList.add(Integer.parseInt(input));
+        String result;
+        Queue<String> inputData = new LinkedList<>();
+        inputData.addAll(Arrays.asList(data.split(" ")));
+
+        if (isFinishCalculation(inputData)) {
+            return Integer.parseInt(data);
         }
 
-        while (!symbolList.isEmpty()) {
-            if (result == 0) {
-                result = calculate(numberList.poll(), symbolList.poll(), numberList.poll());
-                continue;
-            }
-            result = calculate(result, symbolList.poll(), numberList.poll());
+        result = String.valueOf(calculate(Integer.parseInt(inputData.poll()), inputData.poll(), Integer.parseInt(inputData.poll())));
+
+        if (isFinishCalculation(inputData)) {
+            return Integer.parseInt(result);
         }
 
-        return result;
+        String remainData = inputData.stream().collect(Collectors.joining(" "));
+        result += " " + remainData;
+
+        return calculate(result);
+    }
+
+    private boolean isFinishCalculation(Queue<String> data) {
+        return data.size() <= 1;
     }
 }
