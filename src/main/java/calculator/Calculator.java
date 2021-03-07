@@ -12,7 +12,7 @@ public class Calculator {
     int result = Integer.parseInt(calcArr[0]);
 
     for (int i = 1; i < calcArr.length; i += 2) {
-      result = Operator.operate(result, Integer.parseInt(calcArr[i + 1]), calcArr[i]);
+      result = Operator.calculate(result, Integer.parseInt(calcArr[i + 1]), calcArr[i]);
     }
 
     return result;
