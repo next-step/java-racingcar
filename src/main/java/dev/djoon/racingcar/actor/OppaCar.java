@@ -4,6 +4,7 @@ public class OppaCar extends Car {
 
   public OppaCar() {
     this.enginePower = 1;
-    this.xPos = 0;
+    this.xPosition = 0;
   }
+
 }

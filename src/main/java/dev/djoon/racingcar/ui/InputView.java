@@ -6,26 +6,26 @@ import java.util.Scanner;
 
 public class InputView {
 
-  private Scanner sc;
+  private Scanner scanner;
 
   public InputView(InputStream is) {
-    this.sc = new Scanner(is);
+    this.scanner = new Scanner(is);
   }
 
-  public void inputCarQuantity(RacingCarGame game) {
+  public int inputCarQuantity() {
     System.out.println("자동차 대수는 몇 대 인가요?");
-    int quantity = Integer.parseInt(sc.nextLine());
-    game.setCarQuantity(quantity);
+    int quantity = Integer.parseInt(scanner.nextLine());
+    return quantity;
   }
 
-  public void inputLoopTimes(RacingCarGame game) {
+  public int inputLoopTimes() {
     System.out.println("시도할 횟수는 몇 회 인가요?");
-    int loopTimes = Integer.parseInt(sc.nextLine());
-    game.setLoopTimes(loopTimes);
+    int loopTimes = Integer.parseInt(scanner.nextLine());
+    return loopTimes;
   }
 
   public void close() {
-    this.sc.close();
+    this.scanner.close();
   }
 
 }

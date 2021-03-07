@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.djoon.racingcar.actor.Car;
 
+import dev.djoon.racingcar.actor.OppaCar;
+import dev.djoon.racingcar.util.RandomNumbers;
+import dev.djoon.racingcar.util.TestRandomNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -27,64 +30,52 @@ public class RacingCarTest {
   @CsvSource(value = {"5:10:50", "1:1:1", "0:0:0", "1:0:0", "0:30:0"}, delimiter = ':')
   @DisplayName("주어진 횟수 k만큼 n대의 자동차가 전진함")
   public void carsMoveLoopTest(
-      final int numberOfCar, final int loopTimes, final int expectedMoveCount) {
+      int carQuantity, int loopTimes, int expectedMoveCount) {
     // given
-    RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.setCarQuantity(numberOfCar);
-    racingCarGame.setCondition(Condition.ALWAYS);
-    racingCarGame.setLoopTimes(loopTimes);
+    RacingCarGame racingCarGame = new RacingCarGame(carQuantity, loopTimes);
 
     // when
-    racingCarGame.start();
+    racingCarGame.start(new TestRandomNumbers());
 
     // then
     int totalMoveCount = 0;
     for (Car car : racingCarGame.getCarList()) {
-      totalMoveCount += car.getXPos();
+      totalMoveCount += car.getXPosition();
     }
     assertThat(totalMoveCount).isEqualTo(expectedMoveCount);
   }
 
   @ParameterizedTest
-  @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
+  @CsvSource(value = {"0:False", "1:False", "2:False", "3:False", "4:True", "5:True", "6:True", "7:True", "8:True", "9:True"}, delimiter = ':')
   @DisplayName("0~9 사이 값에서 4 이상일 경우 자동차가 전진함")
-  public void carMovesByConditionTest(final int condition, final int expectedMoveCount) {
+  public void carMovesByConditionTest(int condition, boolean expectedMove) {
     // given
-    RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.setCarQuantity(1);
-    racingCarGame.setCondition(condition);
-    racingCarGame.setLoopTimes(1);
+    Car car = new OppaCar();
 
     // when
-    racingCarGame.start();
+    final boolean isCarMoved = car.moveIfValidCondition(condition);
 
     // then
-    int totalMoveCount = 0;
-    for (Car car : racingCarGame.getCarList()) {
-      totalMoveCount += car.getXPos();
-    }
-    assertThat(totalMoveCount).isEqualTo(expectedMoveCount);
+    assertThat(isCarMoved).isEqualTo(expectedMove);
   }
 
   @ParameterizedTest
   @CsvSource(value = {"5:10:28", "1:1:0", "0:0:0", "1:0:0", "0:30:0"}, delimiter = ':')
   @DisplayName("k 횟수만큼 n 대의 자동차가 0~9 사이 값에서 4 이상일 경우 전진함")
   public void carsMoveLoopByConditionTest(
-      final int numberOfCar, final int loopTimes, final int expectedMoveCount) {
+      int carQuantity, int loopTimes, int expectedMoveCount) {
     // given
-    RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.setCarQuantity(numberOfCar);
-    racingCarGame.setCondition(Condition.RANDOM_SEED_FIXED_TO_10);
-    racingCarGame.setLoopTimes(loopTimes);
+    RacingCarGame racingCarGame = new RacingCarGame(carQuantity, loopTimes);
+    RandomNumbers randomNumbers = new RandomNumbers();
+    randomNumbers.setSeed(10);
 
     // when
-    racingCarGame.start();
-    Condition.round = 0;
+    racingCarGame.start(randomNumbers);
 
     // then
     int totalMoveCount = 0;
     for (Car car : racingCarGame.getCarList()) {
-      totalMoveCount += car.getXPos();
+      totalMoveCount += car.getXPosition();
     }
     assertThat(totalMoveCount).isEqualTo(expectedMoveCount);
   }

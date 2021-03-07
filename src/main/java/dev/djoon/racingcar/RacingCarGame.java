@@ -3,6 +3,8 @@ package dev.djoon.racingcar;
 import dev.djoon.racingcar.actor.Car;
 import dev.djoon.racingcar.actor.OppaCar;
 import dev.djoon.racingcar.ui.ResultView;
+import dev.djoon.racingcar.util.GameConstant;
+import dev.djoon.racingcar.util.RandomNumbers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,33 +13,20 @@ public class RacingCarGame {
 
   private final List<Car> carList;
   private int loopTimes;
-  private Condition condition;
 
-  public RacingCarGame() {
+  public RacingCarGame(int carQuantity, int loopTimes) {
     carList = new ArrayList<>();
-    condition = Condition.RANDOM;
+    fillCarList(carQuantity);
+
+    this.loopTimes = loopTimes;
   }
 
-  public void start() {
+  public void start(RandomNumbers random) {
     ResultView.printNewGame();
-    for (int i=0; i<loopTimes; i++) {
-      for (Car car : carList) {
-        carMoveIfValid(car);
-        ResultView.printXPos(car.getXPos());
-      }
+    for (int i = 0; i < loopTimes; i++) {
+      carsMoveIfValid(random);
+
       ResultView.printCR();
-    }
-  }
-
-  public void carMoveIfValid(Car car) {
-    if (condition.isValid()) {
-      car.move();
-    }
-  }
-
-  public void setCarQuantity(int quantity) {
-    for (int i=0; i<quantity; i++) {
-      carList.add(new OppaCar());
     }
   }
 
@@ -45,20 +34,19 @@ public class RacingCarGame {
     return carList;
   }
 
-  public void setLoopTimes(int loopTimes) {
-    this.loopTimes = loopTimes;
-  }
+  private void carsMoveIfValid(RandomNumbers random) {
+    for (Car car : carList) {
+      int randomValue = random.nextInt(GameConstant.RANDOM_BOUNDARY.value());
+      car.moveIfValidCondition(randomValue);
 
-  public void setCondition(Condition condition) {
-    this.condition = condition;
-  }
-
-  public void setCondition(int conditionValue) {
-    if (Condition.isValidValue(conditionValue)) {
-      this.condition = Condition.ALWAYS;
-      return;
+      ResultView.printXPos(car.getXPosition());
     }
-    this.condition = Condition.NEVER;
+  }
+
+  private void fillCarList(int carQuantity) {
+    for (int i = 0; i < carQuantity; i++) {
+      carList.add(new OppaCar());
+    }
   }
 
 }
