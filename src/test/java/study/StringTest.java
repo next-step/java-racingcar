@@ -1,38 +1,45 @@
 package study;
 
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class StringTest {
     @Test
-    void split(){
+    void splitContainsExactly() {
         String[] test1 = "1,2".split(",");
-        Assertions.assertThat(test1).containsExactly("1","2");
-
-        String[] test2 = "1".split(",");
-        Assertions.assertThat(test2).contains("1");
+        assertThat(test1).containsExactly("1", "2");
     }
 
     @Test
-    void subString(){
-        String test1 = "(1,2)".substring(0,4);
-        Assertions.assertThat(test1).contains("1,2");
+    void splitContains() {
+        String[] test1 = "1".split(",");
+        assertThat(test1).contains("1");
+    }
+
+
+    @Test
+    void subString() {
+        String test1 = "(1,2)".substring(0, 4);
+        assertThat(test1).contains("1,2");
     }
 
     @Test
-    void chatAt(){
+    void chatAt() {
         char test1 = "abc".charAt(1);
-        Assertions.assertThat(test1).isEqualTo('b');
+        assertThat(test1).isEqualTo('b');
     }
 
     @Test
     @DisplayName("String Index Exception Test")
-    void indexOutTest(){
-        Assertions.assertThatThrownBy(()->{
-            int length = "abc".length();
-            char test1 = "abc".charAt(length+1);
-        }).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("String index out of range: 4");
+    void indexOutTest() {
+        String testStr = "abc";
+        assertThatThrownBy(() -> {
+            int length = testStr.length();
+            char test1 = testStr.charAt(length);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class).hasMessageContaining("String index out of range: 3");
     }
 }
