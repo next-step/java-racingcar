@@ -14,15 +14,15 @@ public class Car {
 
     public void move(boolean isMove) {
         if (isMove) {
-            this.position++;
+            position++;
         }
+    }
+
+    public boolean isMove(int randomValue) {
+        return randomValue >= CarConstant.LIMIT;
     }
 
     public int getPosition() {
         return this.position;
-    }
-
-    public boolean isMove(int randomValue) {
-        return randomValue >= 4;
     }
 }

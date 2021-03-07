@@ -3,31 +3,31 @@ package step3;
 public class Rule {
 
     private int carCount;
-    private int moveCount;
+    private int roundCount;
 
     public Rule() {
         this(0, 0);
     }
 
-    public Rule(int carCount, int moveCount) {
+    public Rule(int carCount, int roundCount) {
         this.carCount = carCount;
-        this.moveCount = moveCount;
+        this.roundCount = roundCount;
     }
 
     public void setCarCount(int carCount) {
         this.carCount = carCount;
     }
 
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
+    public void setRoundCount(int moveCount) {
+        this.roundCount = moveCount;
     }
 
     public int getCarCount() {
         return this.carCount;
     }
 
-    public int getMoveCount() {
-        return this.moveCount;
+    public int getRoundCount() {
+        return this.roundCount;
     }
 
 }

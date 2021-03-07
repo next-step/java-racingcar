@@ -1,8 +1,6 @@
 package step3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -38,9 +36,10 @@ public class CarTest {
     @CsvSource(value = {"4", "5", "6", "7", "8", "9"})
     void go(int input) {
         mockRandom(input);
-        int randomValue = RandomUtil.nextInt(input);
 
-        assertTrue(car.isMove(randomValue));
+        given(input);
+
+        assertEquals(1, car.getPosition());
         verify(random).nextInt(input);
     }
 
@@ -49,14 +48,21 @@ public class CarTest {
     @CsvSource(value = {"0", "1", "2", "3"})
     void stop(int input) {
         mockRandom(input);
-        int randomValue = RandomUtil.nextInt(input);
 
-        assertFalse(car.isMove(randomValue));
+        given(input);
+
+        assertEquals(0, car.getPosition());
         verify(random).nextInt(input);
     }
 
     private void mockRandom(int input) {
         when(random.nextInt(anyInt())).thenReturn(input);
         Whitebox.setInternalState(RandomUtil.class, random);
+    }
+
+    private void given(int input) {
+        int randomValue = RandomUtil.nextInt(input);
+        boolean move = car.isMove(randomValue);
+        car.move(move);
     }
 }

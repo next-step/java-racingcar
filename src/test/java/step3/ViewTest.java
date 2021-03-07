@@ -21,21 +21,21 @@ public class ViewTest {
     void enterCarCount(int input, int exp) {
         when(mockScanner.nextInt()).thenReturn(input);
 
-        inputView.enterCarCount();
+        int carCount = inputView.enterCarCount();
 
-        assertEquals(exp, inputView.getCarCount());
+        assertEquals(exp, carCount);
         verify(mockScanner).nextInt();
     }
 
-    @DisplayName("이동횟수 입력 테스트")
+    @DisplayName("시도횟수 입력 테스트")
     @ParameterizedTest
     @CsvSource(value = {"5,5", "4,4"})
     void enterMoveCount(int input, int exp) {
         when(mockScanner.nextInt()).thenReturn(input);
 
-        inputView.enterMoveCount();
+        int roundCount = inputView.enterRoundCount();
 
-        assertEquals(exp, inputView.getMoveCount());
+        assertEquals(exp, roundCount);
         verify(mockScanner).nextInt();
     }
 }
