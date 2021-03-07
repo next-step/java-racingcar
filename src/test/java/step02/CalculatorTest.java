@@ -108,7 +108,7 @@ public class CalculatorTest {
     void getOperator(String symbol) {
         assertThatThrownBy(() -> {
 //            change to private
-            OperationManager.getOperator(symbol);
+//            OperationManager.getOperator(symbol);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
