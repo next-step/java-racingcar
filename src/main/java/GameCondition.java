@@ -5,7 +5,7 @@ public class GameCondition {
         return new Random().nextInt(range);
     }
 
-    public static boolean isStart(int number) {
+    public static boolean isAdvance(int number) {
         return number >= 4;
     }
 }

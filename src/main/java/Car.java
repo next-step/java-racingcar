@@ -1,11 +1,14 @@
 public class Car {
-    private int numberOfAdvances;
+    private int numberOfAdvance = 0;
 
-    public Car(int numberOfAdvances) {
-        this.numberOfAdvances = numberOfAdvances;
+    public int getNumberOfAdvance(){
+        return this.numberOfAdvance;
     }
 
     public void advance() {
-        numberOfAdvances--;
+        int condition = GameCondition.randomNumber(10);
+        if (GameCondition.isAdvance(condition)) {
+            numberOfAdvance++;
+        }
     }
 }
