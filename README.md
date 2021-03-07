@@ -8,7 +8,6 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-#문자열 사칙 연산 계산기 구현
 
 ##기능 요구사항
 - 사용자가 문자열을 입력 가능하도록 한다
