@@ -6,9 +6,10 @@ public class Car {
   public static final int THRESHOLD = 4;
 
   private int distance;
+  private final String name;
 
   public Car(String name) {
-
+    this.name = name;
   }
 
   public void move(int randomNumber) {
@@ -28,6 +29,6 @@ public class Car {
   }
 
   public String getName() {
-    return null;
+    return name;
   }
 }
