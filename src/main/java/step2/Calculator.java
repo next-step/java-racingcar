@@ -14,6 +14,10 @@ public class Calculator {
         Integer[] arrNumbers = getNumbers(arrInput);
         String[] arrOperations = getOperations(arrInput);
         validAllOperation(arrOperations);
+
+        for (Integer i = 0; i < arrNumbers.length; i++) {
+
+        }
         return "";
     }
 
@@ -30,40 +34,11 @@ public class Calculator {
     }
 
     public void validAllOperation(String[] arrInput) {
-        for (int i = 1; i < arrInput.length; i += 2) {
-            validOperation(arrInput[i]);
+        for (String strOperation : arrInput) {
+            Operation.validate(strOperation);
         }
     }
 
-    public void validOperation(String inputOperation) {
-        Operation.of(inputOperation);
-//        Operation.valueOf(inputOperation);
-//        for (Operation operation : Operation.values()) {
-//            result = operation.strOperation.equals(inputOperation) || result;
-//        }
-    }
-
-
-    public String operator(String inputNum1, String inputNum2, String inputOperation) {
-        return "";
-    }
-
-    public Integer minus(Integer input1, Integer input2) {
-        return 1;
-    }
-
-    public Integer plus(Integer input1, Integer input2) {
-        return 1;
-    }
-
-    public Integer multiple(Integer input1, Integer input2) {
-        return 1;
-    }
-
-    public Integer division(Integer input1, Integer input2) {
-        return 1;
-
-    }
 
     public Integer[] getNumbers(String[] arrInput) {
         List<Integer> arrNumbers = new ArrayList<>();

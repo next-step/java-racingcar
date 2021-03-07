@@ -43,27 +43,22 @@ public class calcTest {
     @ParameterizedTest
     @ValueSource(strings = {"+", "-", "*", "/"})
     void isOperation(String inputOperation) {
-//        Boolean result = calculator.validOperation(inputOperation);
-//        assertThat(result).isTrue();
-        assertThatCode(() -> calculator.validOperation(inputOperation)).doesNotThrowAnyException();
+        assertThatCode(() -> Operation.validate(inputOperation)).doesNotThrowAnyException();
     }
 
     @DisplayName("Valid input operation exception case")
     @ParameterizedTest
     @ValueSource(strings = {"&", "1", "^", "%"})
     void isNotOperation(String inputOperation) {
-//        Boolean result = calculator.validOperation(inputOperation);
-//        assertThat(result).isFalse();
-
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.validOperation(inputOperation);
+            Operation.validate(inputOperation);
         });
     }
 
     @DisplayName("Valid input String has correct operation")
     @Test
     void validOperation() {
-        String[] arrInput = {"2", "+", "3", "*", "4", "-", "5", "/", "6"};
+        String[] arrInput = {"+", "*", "-", "/"};
         assertThatCode(() -> calculator.validAllOperation(arrInput)).doesNotThrowAnyException();
 
     }
@@ -71,7 +66,7 @@ public class calcTest {
     @DisplayName("Valid input String has not correct operation")
     @Test
     void validNotOperation() {
-        String[] arrInput = {"2", "&", "3", "^", "4", "1", "5", "%", "6"};
+        String[] arrInput = {"&", "^", "1", "%"};
         assertThatIllegalArgumentException().isThrownBy(() -> {
             calculator.validAllOperation(arrInput);
         });
@@ -84,7 +79,7 @@ public class calcTest {
         Integer input1 = 3;
         Integer input2 = 5;
         Integer expectResult = 8;
-        Integer result = calculator.plus(input1, input2);
+        Integer result = Operation.plus(input1, input2);
 
         assertThat(result).isEqualTo(expectResult);
     }
@@ -95,7 +90,7 @@ public class calcTest {
         Integer input1 = 4;
         Integer input2 = 3;
         Integer expectResult = 1;
-        Integer result = calculator.minus(input1, input2);
+        Integer result = Operation.minus(input1, input2);
 
         assertThat(result).isEqualTo(expectResult);
     }
@@ -106,7 +101,7 @@ public class calcTest {
         Integer input1 = 3;
         Integer input2 = 5;
         Integer expectResult = 15;
-        Integer result = calculator.multiple(input1, input2);
+        Integer result = Operation.multiple(input1, input2);
 
         assertThat(result).isEqualTo(expectResult);
     }
@@ -117,19 +112,19 @@ public class calcTest {
         Integer input1 = 4;
         Integer input2 = 2;
         Integer expectResult = 2;
-        Integer result = calculator.division(input1, input2);
+        Integer result = Operation.division(input1, input2);
 
         assertThat(result).isEqualTo(expectResult);
     }
 
     @ParameterizedTest
-    @CsvSource({"\"+\",\"6\"", "\"-\",\"2\"", "\"*\",\"8\"", "\"/\",\"2\""})
+    @CsvSource({"+,6", "-,2", "*,8", "/,2"})
     @DisplayName("operator Test")
-    void operator(String inputOperation, String expectResult) {
-        String inputNum1 = "4";
-        String inputNum2 = "2";
+    void operator(String inputOperation, Integer expectResult) {
+        Integer inputNum1 = 4;
+        Integer inputNum2 = 2;
 
-        String result = calculator.operator(inputNum1, inputNum2, inputOperation);
+        Integer result = Operation.operator(inputNum1, inputNum2, inputOperation);
 
         assertThat(result).isEqualTo(expectResult);
     }
