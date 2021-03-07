@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
@@ -37,7 +38,7 @@ class CarTest {
 
   @BeforeEach
   void setUp() {
-    car = new Car();
+    car = new Car(EMPTY_STRING);
   }
 
   @ParameterizedTest
@@ -60,5 +61,14 @@ class CarTest {
     }
 
     assertThat(car.showStatus()).isEqualTo(expected);
+  }
+
+  @ParameterizedTest
+  @DisplayName("자동차는 이름을 가지고 생성할 수 있다.")
+  @ValueSource(strings = {"pobi,crong,honux,jk,dion"})
+  void createWithName(String name) {
+    car = new Car(name);
+
+    assertThat(car.getName()).isEqualTo(name);
   }
 }

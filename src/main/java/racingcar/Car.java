@@ -7,6 +7,10 @@ public class Car {
 
   private int distance;
 
+  public Car(String name) {
+
+  }
+
   public void move(int randomNumber) {
     if (randomNumber >= THRESHOLD) {
       distance += 1;
@@ -21,5 +25,9 @@ public class Car {
     }
 
     return distanceBuilder.toString();
+  }
+
+  public String getName() {
+    return null;
   }
 }
