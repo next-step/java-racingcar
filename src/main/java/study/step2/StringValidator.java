@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 public class StringValidator {
     public static final String SPLIT_DELIMITER=" ";

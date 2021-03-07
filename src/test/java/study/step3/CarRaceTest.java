@@ -1,7 +1,10 @@
-package study;
+package study.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.step2.StringValidator;
+import study.step3.Car;
+import study.step3.NumberChecker;
 
 import static org.assertj.core.api.Assertions.*;
 
