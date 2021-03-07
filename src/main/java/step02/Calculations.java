@@ -17,17 +17,17 @@ public class Calculations {
         for (String input : inputData) {
             if (input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/")) {
                 symbolList.add(input);
-            } else {
-                numberList.add(Integer.parseInt(input));
+                continue;
             }
+            numberList.add(Integer.parseInt(input));
         }
 
         while (!symbolList.isEmpty()) {
             if (result == 0) {
                 result = calculate(numberList.poll(), symbolList.poll(), numberList.poll());
-            } else {
-                result = calculate(result, symbolList.poll(), numberList.poll());
+                continue;
             }
+            result = calculate(result, symbolList.poll(), numberList.poll());
         }
 
         return result;
