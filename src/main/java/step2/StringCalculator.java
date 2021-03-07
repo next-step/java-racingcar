@@ -32,10 +32,6 @@ public class StringCalculator {
         this.textArray = text.split(DELIMITER);
     }
 
-    public int getResult() {
-        return result;
-    }
-
     public StringCalculator() {
         OPERATORS.add("+");
         OPERATORS.add("-");
