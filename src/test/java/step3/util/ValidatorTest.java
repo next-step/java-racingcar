@@ -1,4 +1,4 @@
-package step3;
+package step3.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,7 +24,7 @@ public class ValidatorTest {
     }
 
     @DisplayName("유효성 검사: Null, Whitespace 체크")
-    @ParameterizedTest
+    @ParameterizedTest(name = "입력 값 `{0}` 인 경우 : {1} ")
     @MethodSource("blankStrings")
     void isNullAndIsBlank_ShouldReturnTrueOrFalse(String given, boolean expected) {
         assertThat(isNullAndIsBlank(given)).isEqualTo(expected);
