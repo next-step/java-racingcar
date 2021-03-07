@@ -96,6 +96,13 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
+    @CsvSource(value = {"2 + 3 + 5,10", "4 - 2 * 5,10"})
+    @DisplayName("여러 연산자가 들어왔을 경우 테스트")
+    void calculateTest(String data, int expected) {
+        assertThat(calculations.calculate(data)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"hi", "^"})
     @DisplayName("잘못된 연산자에 대한 테스트")
     void getOperator(String symbol) {
