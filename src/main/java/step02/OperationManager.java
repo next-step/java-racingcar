@@ -28,7 +28,7 @@ enum OperationManager {
         return getOperator(symbol).inputData.apply(first, second);
     }
 
-    private static OperationManager getOperator(String operator) {
+    public static OperationManager getOperator(String operator) {
         return Arrays.stream(values())
                 .filter(o -> o.symbol.equals(operator))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다"));

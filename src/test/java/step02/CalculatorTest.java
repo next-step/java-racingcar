@@ -99,8 +99,7 @@ public class CalculatorTest {
     @DisplayName("잘못된 연산자에 대한 테스트")
     void getOperator(String symbol) {
         assertThatThrownBy(() -> {
-//            change to private
-//            OperationManager.getOperator(symbol);
+            OperationManager.getOperator(symbol);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
