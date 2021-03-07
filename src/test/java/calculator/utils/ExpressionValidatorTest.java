@@ -1,12 +1,13 @@
 package calculator.utils;
 
 import calculator.Expression;
-import calculator.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 class ExpressionValidatorTest {
 
@@ -34,11 +35,11 @@ class ExpressionValidatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new Expression(expression));
     }
 
-    @Test
+    @ParameterizedTest(name = "{0}의 길이는 3 미만")
+    @ValueSource(strings = {"3 + ", "- - ", "/ ", "+ 56"})
     @DisplayName("분리된 값 길이 3 미만일 경우 에러")
-    public void validateMinimumLength() throws Exception {
+    public void validateMinimumLength(String expression) throws Exception {
         //given
-        String expression = "3 + ";
 
         //when
 
@@ -46,11 +47,12 @@ class ExpressionValidatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new Expression(expression));
     }
 
-    @Test
+    @ParameterizedTest(name = "{0}의 길이는 짝수")
+    @ValueSource(strings = {"1 + 2 /", "1 - 2 / 3 +", "6 + 2 / 3 * 6 + 8 -"})
     @DisplayName("분리된 값의 길이가 짝수일 경우 에러")
-    public void validateOddLength() throws Exception {
+    public void validateOddLength(String expression) throws Exception {
         //given
-        String expression = "3 + 2 +";
+
         //when
 
         //then
