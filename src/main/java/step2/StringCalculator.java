@@ -7,7 +7,6 @@ public class StringCalculator {
 
     private static final String DELIMITER = " ";
     private static final Set<String> OPERATORS = new HashSet<>();
-    private String text;
     private String[] textArray;
 
     public void setText(String text) {
@@ -30,16 +29,7 @@ public class StringCalculator {
         }
     }
 
-<<<<<<< HEAD
-=======
-    public void setText(String text) {
-        checkText(text);
-        checkOperator(text.split(DELIMITER));
-        this.text = text;
-        this.textArray = text.split(DELIMITER);
-    }
 
->>>>>>> refactor: Remove getResult method
     public StringCalculator() {
         OPERATORS.add("+");
         OPERATORS.add("-");
