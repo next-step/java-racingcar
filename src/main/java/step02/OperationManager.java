@@ -30,7 +30,7 @@ enum OperationManager {
 
     public static OperationManager getOperator(String operator) {
         return Arrays.stream(values())
-                .filter(o -> o.symbol.equals(operator))
+                .filter(mathOperator -> mathOperator.symbol.equals(operator))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다"));
     }
 }
