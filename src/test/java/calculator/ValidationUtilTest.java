@@ -19,7 +19,7 @@ public class ValidationUtilTest {
         String[] inputArray = input.split(" ");
         //THEN
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> ValidationUtil.validateInputSize(inputArray.length));
+                .isThrownBy(() -> ValidationUtil.validateInput(inputArray));
     }
 
     @DisplayName("연산자 값이 사칙연산이 아닐떄 IllegalArgumentException 발생")
@@ -32,7 +32,7 @@ public class ValidationUtilTest {
         String[] inputArray = input.split(" ");
         //THEN
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> ValidationUtil.validateAppropriateOperator(inputArray));
+                .isThrownBy(() -> ValidationUtil.validateInput(inputArray));
     }
 
     @DisplayName("입력 값이 Null일때  NullPointerException 발생")
@@ -44,6 +44,6 @@ public class ValidationUtilTest {
         String[] inputArray = input.split(" ");
         //THEN
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> ValidationUtil.validateInputNull(inputArray));
+                .isThrownBy(() -> ValidationUtil.validateInput(inputArray));
     }
 }
