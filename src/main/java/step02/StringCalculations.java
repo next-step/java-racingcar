@@ -2,6 +2,7 @@ package step02;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
@@ -15,20 +16,19 @@ public class StringCalculations {
         if (StringUtils.isBlank(data)) throw new IllegalArgumentException();
 
         String result;
-        Queue<String> inputData = new LinkedList<>();
-        inputData.addAll(Arrays.asList(data.split(" ")));
+        Queue<String> inputData = new LinkedList<>(Arrays.asList(data.split(" ")));
 
         if (isFinishCalculation(inputData)) {
             return Integer.parseInt(data);
         }
 
-        result = String.valueOf(calculate(Integer.parseInt(inputData.poll()), inputData.poll(), Integer.parseInt(inputData.poll())));
+        result = String.valueOf(calculate(Integer.parseInt(Objects.requireNonNull(inputData.poll())), inputData.poll(), Integer.parseInt(Objects.requireNonNull(inputData.poll()))));
 
         if (isFinishCalculation(inputData)) {
             return Integer.parseInt(result);
         }
 
-        String remainData = inputData.stream().collect(Collectors.joining(" "));
+        String remainData = String.join(" ", inputData);
         result += " " + remainData;
 
         return calculate(result);
