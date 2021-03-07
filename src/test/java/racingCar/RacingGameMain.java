@@ -8,6 +8,7 @@ public class RacingGameMain {
     OutputView.printTryCount();
     int tryCount = InputView.inputNumber();
     RacingGame racingGame = new RacingGame(carNumber, tryCount);
+    OutputView.printResult();
     racingGame.start();
   }
 
