@@ -17,7 +17,14 @@ public class RacingCarGame {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        int numberOfCars = inputView.enterNumberOfCars();
+        String nameOfCars = inputView.enterNameOfCars().trim();
+        String[] carNames = nameOfCars.split(",");
+        int numberOfCars = carNames.length;
+
+        for (String carName : carNames) {
+            gameRestartCheck( carNameValidCheck(carName) );
+        }
+
         int numberOfAttempts = inputView.enterNumberOfAttempts();
 
         List<RacingCar> racingCars = racingCarsInit(numberOfCars);
@@ -27,6 +34,17 @@ public class RacingCarGame {
         for(int i=0; i < numberOfAttempts; i++) {
             carMove(numberOfCars, racingCars);
             resultView.print(racingCars);
+        }
+    }
+
+    public boolean carNameValidCheck(String carName) {
+        return carName.length() <= 5;
+    }
+
+    private void gameRestartCheck(boolean carNameValidResult){
+        if(!carNameValidResult) {
+            System.out.println("자동차의 이름은 최대 5자 입니다. 게임을 다시 시작합니다.\n");
+            start();
         }
     }
 

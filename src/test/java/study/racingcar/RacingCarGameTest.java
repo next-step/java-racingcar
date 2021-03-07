@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import study.racingcar.entity.RacingCar;
+import study.racingcar.service.RacingCarGame;
 import study.racingcar.util.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,11 +14,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarGameTest {
 
     private RacingCar racingCar;
+    private RacingCarGame racingCarGame;
     private RandomGenerator randomGenerator;
 
     @BeforeEach
     void setup(){
         racingCar = new RacingCar();
+        racingCarGame = new RacingCarGame();
         randomGenerator = new RandomGenerator();
     }
 
@@ -45,4 +48,12 @@ public class RacingCarGameTest {
         racingCar.oneStep(number);
         assertThat(racingCar.getPosition()).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"test:true", "testC:true", "testCa:false", "testCar:false"}, delimiter = ':')
+    @DisplayName("자동차 이름 5자 제한")
+    void racingCarNameValidCheck(String carName, boolean expected){
+        assertThat(racingCarGame.carNameValidCheck(carName)).isEqualTo(expected);
+    }
+
 }
