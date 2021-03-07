@@ -32,6 +32,7 @@ public class InputView {
 
     public void reStart() {
         System.out.println("입력하신 값은 올바른 값이 아닙니다. 다시 입력해주세요");
+        scan.nextLine();
         init();
     }
 

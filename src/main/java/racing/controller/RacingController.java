@@ -4,33 +4,22 @@ import java.util.List;
 
 import racing.model.RacingCar;
 import racing.model.RacingGame;
-import racing.util.Validation;
 import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingController {
 
     private final RacingGame racingGame;
-    private final Validation validation;
-    private int gameTurn;
+    private final int gameTurn;
 
     public RacingController() {
-        this.racingGame = new RacingGame();
-        this.validation = new Validation();
-    }
-
-    /**
-     * InputView 에서 자동차 갯수와 게임 실행 횟수를 입력받아 게임을 설정함
-     */
-    public void setUpGame() {
         InputView inputView = new InputView();
         inputView.init();
-        if (validation.isZero(inputView.getTurnCount())) {
+        if (inputView.getTurnCount() == 0) {
             inputView.reStart();
         }
-        racingGame.setUp(inputView.getParticipationList());
+        this.racingGame = new RacingGame(inputView.getParticipationList());
         this.gameTurn = inputView.getTurnCount();
-
     }
 
     /**
@@ -52,7 +41,6 @@ public class RacingController {
 
     public static void main(String[] args) {
         RacingController racingController = new RacingController();
-        racingController.setUpGame();
         racingController.play();
     }
 

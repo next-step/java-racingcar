@@ -3,8 +3,8 @@ package racing.model;
 public class RacingCar {
 
     // 이름이 중복될 수 있는 관게로 ID를 부여한다.
-    private long racingCarId;
-    private String racingCarName;
+    private final long racingCarId;
+    private final String racingCarName;
     private int position;
 
     public RacingCar(long racingCarId, String racingCarName, int position) {

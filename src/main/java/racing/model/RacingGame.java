@@ -8,16 +8,15 @@ public class RacingGame {
 
     private List<RacingCar> carList;
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
-    /**
-     * 입력 받은 값으로 자동차와 게임 턴 설정 메서드
-     */
-    public List<RacingCar> setUp(String participationList) {
+    public RacingGame(String participationList) {
         carList = new ArrayList<>();
         String[] racingCarNames = participationList.split(",");
         carList = createRacingCar(racingCarNames);
+    }
 
+    public List<RacingCar> getCarList() {
         return carList;
     }
 

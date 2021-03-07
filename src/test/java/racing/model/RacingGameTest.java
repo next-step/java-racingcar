@@ -16,9 +16,9 @@ class RacingGameTest {
 
 
     List<RacingCar> init() {
-        racingGame = new RacingGame();
         String participationList = "SingSing,Boom,SM3";
-        return racingGame.setUp(participationList);
+        racingGame = new RacingGame(participationList);
+        return racingGame.getCarList();
     }
 
     @DisplayName("레이싱 게임 초기화 테스트")
