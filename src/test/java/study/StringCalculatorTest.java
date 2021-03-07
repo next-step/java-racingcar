@@ -56,9 +56,9 @@ public class StringCalculatorTest {
     @DisplayName("문자열 연산 테스트")
     void stringCalculate(){
         String input = "2 + 3 * 4 / 2 - 30";
+        if(StringValidator.isBlank(input)) throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
         String[] res = input.split(" ");
         for(int i=0;i<res.length;i++){
-            if(isBlank(res[i])) throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자입니다.");
             if(i % 2 -1 == 0){
                 Integer leftOperand = Integer.parseInt(res[i-1]);
                 Integer rightOperand = Integer.parseInt(res[i+1]);
@@ -75,7 +75,7 @@ public class StringCalculatorTest {
     @ValueSource(strings = {""," "})
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 테스트")
     void returnIllegalArgumentExceptionIfNullOrEmpty(String input){
-        assertTrue(isBlank(input));
+        assertTrue(StringValidator.isBlank(input));
     }
 
     @Test
@@ -91,7 +91,4 @@ public class StringCalculatorTest {
 
     }
 
-    private boolean isBlank(String input){
-        return (input == null || input.trim().isEmpty());
-    }
 }
