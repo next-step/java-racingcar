@@ -1,16 +1,37 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
     @Test
-    void split() {
+    @DisplayName("StringClass 요구사항 1 : 테스트 데이터를 split 메소드를 활용 후 반환값을 검증한다.")
+    void stringTest1() {
         String[] result = "1,2".split(",");
-        //.contains("3");               값이 있는지 체크
-        //.containsExactly("1","2")     + 순서까지 체크
         assertThat(result).containsExactly("1","2");
+        result = "1".split(",");
+        assertThat(result).contains("1");
+    }
+
+    @Test
+    @DisplayName("StringClass 요구사항 2 : 테스트 데이터를 substring 메소드를 활용 후 반환값을 검증한다.")
+    void stringTest2() {
+        String data = "(1,2)";
+        String removeParenthesis = data.substring(data.indexOf("(") +1 , data.indexOf(")"));
+        assertThat(removeParenthesis).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("StringClass 요구사항 3 : 테스트 데이터를 charAt 메소드를 활용 후 예외 결과를 확인한다.")
+    void stringTest3() {
+        String data = "abc";
+        int index = 3;
+        assertThatExceptionOfType( StringIndexOutOfBoundsException.class)
+                .isThrownBy(()->{data.charAt(index);})
+                .withMessage("withMessage, index  = %d", index );
+
     }
 }
