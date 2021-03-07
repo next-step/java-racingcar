@@ -1,4 +1,9 @@
-package study.step3;
+package study.racingcar.service;
+
+import study.racingcar.view.InputView;
+import study.racingcar.entity.RacingCar;
+import study.racingcar.util.RandomGenerator;
+import study.racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

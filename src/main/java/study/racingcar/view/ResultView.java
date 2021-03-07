@@ -1,4 +1,6 @@
-package study.step3;
+package study.racingcar.view;
+
+import study.racingcar.entity.RacingCar;
 
 import java.util.List;
 

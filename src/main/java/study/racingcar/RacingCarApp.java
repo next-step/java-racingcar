@@ -1,4 +1,6 @@
-package study.step3;
+package study.racingcar;
+
+import study.racingcar.service.RacingCarGame;
 
 public class RacingCarApp {
     public static void main(String[] args) {
