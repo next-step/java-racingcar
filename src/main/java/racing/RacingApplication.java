@@ -1,7 +1,8 @@
 package racing;
 
 import racing.car.Car;
-import racing.car.RandomlyMovingCar;
+import racing.car.Movement;
+import racing.car.RandomMovement;
 import racing.view.IntegerInputView;
 import racing.view.InteractiveInputView;
 
@@ -20,7 +21,8 @@ public class RacingApplication {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < carSize; i++) {
-            carList.add(new RandomlyMovingCar());
+            Movement movement = new RandomMovement();
+            carList.add(new Car(movement));
         }
 
         Racing racing = new Racing(carList, moves);
