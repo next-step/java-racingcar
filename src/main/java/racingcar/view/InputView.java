@@ -22,7 +22,7 @@ public class InputView {
         System.out.println(MessageConstant.INPUT_CAR_NAME);
         String[] carNameArray = SCANNER.nextLine().trim().split(CAR_SEPARATOR);
         try {
-            racingCarGameRule.validateWhetherCarNameLengthLimit(carNameArray);
+            racingCarGameRule.validateCarName(carNameArray);
             return carNameArray;
         } catch (IllegalArgumentException exception) {
             System.out.println(MessageConstant.WRONG_INPUT);

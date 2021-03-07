@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.dto.CarScore;
 import racingcar.dto.FinalScoreBoard;
 import racingcar.dto.ScoreBoardPerPlay;
+import racingcar.utils.StringUtil;
 
 import java.util.List;
 
@@ -47,11 +48,6 @@ public class ResultView {
     }
 
     private String createDistanceLine(int times) {
-        StringBuilder b = new StringBuilder();
-        for (int i = 0; i < times; ++i) {
-            b.append(DISTANCE_REPRESENTATION);
-            b.append(EMPTY_SPACE);
-        }
-        return b.toString();
+        return StringUtil.repeat(DISTANCE_REPRESENTATION + EMPTY_SPACE, times);
     }
 }

@@ -26,6 +26,15 @@ public class RacingCarTest {
         return nameBuilder.toString();
     }
 
+
+    @Test
+    @DisplayName("자동차 이름이 비어있을시 예외 발생 테스트")
+    void carNameWithEmpty() {
+        String carName = "";
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                new RacingCar(new RacingCarGameRule(), carName));
+    }
+
     @Test
     @DisplayName("자동차 이름이 5자 초과일시 예외 발생 테스트")
     void carNameWithLongerThanLimit() {

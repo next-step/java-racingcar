@@ -9,7 +9,7 @@ public class RacingCar {
     private final RacingCarGameRule racingCarGameRule;
 
     public RacingCar(RacingCarGameRule racingCarGameRule, String name) {
-        racingCarGameRule.validateWhetherCarNameLengthLimit(name);
+        racingCarGameRule.validateCarName(name);
         this.racingCarGameRule = racingCarGameRule;
         this.name = name;
     }
