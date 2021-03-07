@@ -24,7 +24,7 @@ class StringCalculatorTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
-    
+
     @ParameterizedTest(name = "{0} = {1}")
     @CsvSource(value = {"5 - 5 - 10 : -10", "1 - 2 - 3 - 4 : -8", "5 - 2 - 4 : -1"}, delimiter = ':')
     @DisplayName("뺄셈")
@@ -68,6 +68,21 @@ class StringCalculatorTest {
 
         //then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest(name = "{0}에는 \'/ 0\' 포함")
+    @ValueSource(strings = {"5 + 5 / 0", "27 - 3 / 0", "5 / 0 + 2"})
+    @DisplayName("0으로 나눗셈")
+    public void divisionByZero(String expression) throws Exception {
+        //given
+
+        //when
+        Expression splitExpression = new Expression(expression);
+        StringCalculator stringCalculator = new StringCalculator();
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> stringCalculator.calculate(splitExpression));
     }
 
     @ParameterizedTest(name = "{0}에 올바르지 않는 사칙 연산 포함")
