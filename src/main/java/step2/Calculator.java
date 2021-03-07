@@ -3,12 +3,17 @@ package step2;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculator {
 
     public String calculate(String strInput) {
         validBlankOrNull(strInput);
         String[] arrInput = splitStr(strInput);
-        validOperation(arrInput);
+        Integer[] arrNumbers = getNumbers(arrInput);
+        String[] arrOperations = getOperations(arrInput);
+        validAllOperation(arrOperations);
         return "";
     }
 
@@ -24,20 +29,18 @@ public class Calculator {
         }
     }
 
-    public void validOperation(String[] arrInput) {
+    public void validAllOperation(String[] arrInput) {
         for (int i = 1; i < arrInput.length; i += 2) {
-            if (!isOperation(arrInput[i])) {
-                throw new IllegalArgumentException();
-            }
+            validOperation(arrInput[i]);
         }
     }
 
-    public Boolean isOperation(String inputOperation) {
-        boolean result = false;
-        for (Operation operation : Operation.values()) {
-            result = operation.strOperation.equals(inputOperation) || result;
-        }
-        return result;
+    public void validOperation(String inputOperation) {
+        Operation.of(inputOperation);
+//        Operation.valueOf(inputOperation);
+//        for (Operation operation : Operation.values()) {
+//            result = operation.strOperation.equals(inputOperation) || result;
+//        }
     }
 
 
@@ -62,4 +65,20 @@ public class Calculator {
 
     }
 
+    public Integer[] getNumbers(String[] arrInput) {
+        List<Integer> arrNumbers = new ArrayList<>();
+        for (int i = 0; i < arrInput.length; i += 2) {
+            arrNumbers.add(Integer.parseInt(arrInput[i]));
+        }
+
+        return arrNumbers.toArray(new Integer[0]);
+    }
+
+    public String[] getOperations(String[] arrInput) {
+        List<String> arrOperations = new ArrayList<>();
+        for (int i = 1; i < arrInput.length; i += 2) {
+            arrOperations.add(arrInput[i]);
+        }
+        return arrOperations.toArray(new String[0]);
+    }
 }

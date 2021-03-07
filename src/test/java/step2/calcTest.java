@@ -43,23 +43,28 @@ public class calcTest {
     @ParameterizedTest
     @ValueSource(strings = {"+", "-", "*", "/"})
     void isOperation(String inputOperation) {
-        Boolean result = calculator.isOperation(inputOperation);
-        assertThat(result).isTrue();
+//        Boolean result = calculator.validOperation(inputOperation);
+//        assertThat(result).isTrue();
+        assertThatCode(() -> calculator.validOperation(inputOperation)).doesNotThrowAnyException();
     }
 
     @DisplayName("Valid input operation exception case")
     @ParameterizedTest
     @ValueSource(strings = {"&", "1", "^", "%"})
     void isNotOperation(String inputOperation) {
-        Boolean result = calculator.isOperation(inputOperation);
-        assertThat(result).isFalse();
+//        Boolean result = calculator.validOperation(inputOperation);
+//        assertThat(result).isFalse();
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.validOperation(inputOperation);
+        });
     }
 
     @DisplayName("Valid input String has correct operation")
     @Test
     void validOperation() {
         String[] arrInput = {"2", "+", "3", "*", "4", "-", "5", "/", "6"};
-        assertThatCode(() -> calculator.validOperation(arrInput)).doesNotThrowAnyException();
+        assertThatCode(() -> calculator.validAllOperation(arrInput)).doesNotThrowAnyException();
 
     }
 
@@ -68,7 +73,7 @@ public class calcTest {
     void validNotOperation() {
         String[] arrInput = {"2", "&", "3", "^", "4", "1", "5", "%", "6"};
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.validOperation(arrInput);
+            calculator.validAllOperation(arrInput);
         });
     }
 
@@ -136,6 +141,29 @@ public class calcTest {
     void calculate(String strInput, String expectResult) {
         String result = calculator.calculate(strInput);
         assertThat(result).isEqualTo(expectResult);
+    }
+
+
+    @Test
+    @DisplayName("get number from String arrays")
+    void getNumbers() {
+        String[] arrInput = {"2", "+", "3", "*", "4", "-", "5", "/", "6"};
+        Integer[] expectResult = {2, 3, 4, 5, 6};
+
+        Integer[] result = calculator.getNumbers(arrInput);
+
+        assertThat(result).containsExactly(expectResult);
+    }
+
+    @Test
+    @DisplayName("get operation from String arrays")
+    void getOperations() {
+        String[] arrInput = {"2", "+", "3", "*", "4", "-", "5", "/", "6"};
+        String[] expectResult = {"+", "*", "-", "/"};
+
+        String[] result = calculator.getOperations(arrInput);
+
+        assertThat(result).containsExactly(expectResult);
     }
 
 
