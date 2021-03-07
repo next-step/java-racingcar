@@ -6,7 +6,7 @@ import java.util.Set;
 public class StringCalculator {
 
     private static final String DELIMITER = " ";
-    private Set<String> opSet = new HashSet<>();
+    private static final Set<String> OPERATORS = new HashSet<>();
     private String text;
     private String[] textArray;
     private int result;
@@ -19,7 +19,7 @@ public class StringCalculator {
 
     public void checkOperator(String[] textArray) {
         for (int i = 1; i < textArray.length; i += 2) {
-            if (!opSet.contains(textArray[i])) {
+            if (!OPERATORS.contains(textArray[i])) {
                 throw new IllegalArgumentException();
             }
         }
@@ -37,10 +37,10 @@ public class StringCalculator {
     }
 
     public StringCalculator() {
-        opSet.add("+");
-        opSet.add("-");
-        opSet.add("*");
-        opSet.add("/");
+        OPERATORS.add("+");
+        OPERATORS.add("-");
+        OPERATORS.add("*");
+        OPERATORS.add("/");
     }
 
     public int add(int a, int b) {
