@@ -1,5 +1,7 @@
 package racing;
 
+import racing.car.Car;
+import racing.car.RandomlyMovingCar;
 import racing.view.IntegerInputView;
 import racing.view.InteractiveInputView;
 
@@ -11,7 +13,6 @@ public class RacingApplication {
     public static void main(String[] args) {
         InteractiveInputView<Integer> carSizeInputView = new IntegerInputView("자동차 대수는 몇 대 인가요?");
         InteractiveInputView<Integer> movesInputView = new IntegerInputView("시도할 회수는 몇 회 인가요?");
-        ResultView resultView = new ResultView();
 
         int carSize = carSizeInputView.getUserInput();
         int moves = movesInputView.getUserInput();
@@ -22,8 +23,8 @@ public class RacingApplication {
             carList.add(new RandomlyMovingCar());
         }
 
-        Racing racing = new Racing(carList, resultView, moves);
-        racing.start();
+        Racing racing = new Racing(carList, moves);
+        racing.run();
     }
 
 }
