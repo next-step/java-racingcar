@@ -19,40 +19,33 @@ import org.junit.platform.commons.util.StringUtils;
  */
 public class ArithmeticOperationsCalculator {
 
-	//입력 연산식의 검증을 위한 정규표현식
 	private final String REGEX_EXPRESSION = "[0-9]*( [-+*/] [0-9]*)*";
 	
+	private	final int MIN_EXPRESSION_LENGTH = 1;
+	
+	private String expression;
+	
 	public int calculate(String expression) {
-		
-		//TODO 분리
-		//1. 입력된 연산식의 정합성 검증
 		checkInputValueValidation(expression);
 		
-		//2. 계산 처리
-		//2.1. 공백을 기준으로 split하여 변수 & 기호 분리
-		String[] splitValues = expression.split(" ");
-		
-		//2.2. 분리된 변수와 기호로 연산 수행
+		this.expression = expression.trim();
+		return calculate();
+	}
+	
+	public int calculate() {
 		int result = 0;		//결과값
 		int value1 = 0;		//연산을 위한 숫자값
 		String sign = "";	//연산기호
+
+		String[] expValues = expression.split(" ");
+		result = Integer.parseInt(expValues[0]); 
 		
-		//최초에는 결과값에 첫 번째 변수를 지정 
-		result = Integer.parseInt(splitValues[0]); 
-		
-		//반복문을 수행하여 연산 수행
 		int valuesIndex = 1;
-		while ( valuesIndex <= splitValues.length - 2 ) {
+		while ( valuesIndex <= expValues.length - 2 ) {
+			sign = expValues[valuesIndex];
+			value1 = Integer.parseInt(expValues[valuesIndex + 1]);
 			
-			sign = splitValues[valuesIndex];
-			value1 = Integer.parseInt(splitValues[valuesIndex + 1]);
-			
-			switch(sign) {
-			case "+": result = add(result, value1);			break;
-			case "-": result = minus(result, value1);		break;
-			case "/": result = devide(result, value1);		break;
-			case "*": result = multiply(result, value1);	break;
-			}
+			result = CalculatorTypeEnum.getCalculatorBySign(sign).calculate(result, value1);
 			
 			valuesIndex = valuesIndex + 2;
 		}
@@ -60,25 +53,9 @@ public class ArithmeticOperationsCalculator {
 		return result;
 	}
 	
-	public int add(int param1, int param2) {
-		return param1 + param2;
-	}
-	
-	public int minus(int param1, int param2) {
-		return param1 - param2;
-	}
-	
-	public int multiply(int param1, int param2) {
-		return param1 * param2;
-	}
-	
-	public int devide(int param1, int param2) {
-		return param1 / param2;
-	}
-	
 	public void checkInputValueValidation(String input) {
 		//1. 입력값이 null이거나 빈 공백 문자열인 경우 IllegalArgumentException throw
-		if( StringUtils.isBlank(input) || input.trim().length() < 1 ) {
+		if( StringUtils.isBlank(input) || input.trim().length() < MIN_EXPRESSION_LENGTH ) {
 			throw new IllegalArgumentException("입력값 검증 오류 (null 혹은 공란)");
 		}
 		
