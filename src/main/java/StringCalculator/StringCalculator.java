@@ -2,10 +2,6 @@ package StringCalculator;
 
 import java.util.HashMap;
 
-interface Operation {
-    int operation(int operand0, int operand1);
-}
-
 class Adder implements Operation {
     @Override
     public int operation(int operand0, int operand1) {
