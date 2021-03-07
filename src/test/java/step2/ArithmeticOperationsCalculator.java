@@ -32,7 +32,7 @@ public class ArithmeticOperationsCalculator {
 		return calculate();
 	}
 	
-	public int calculate() {
+	private int calculate() {
 		int result = 0;		//결과값
 		int value1 = 0;		//연산을 위한 숫자값
 		String sign = "";	//연산기호
