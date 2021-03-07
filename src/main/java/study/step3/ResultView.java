@@ -13,5 +13,6 @@ public class ResultView {
         for(int i=0;i<position;i++){
             System.out.print("-");
         }
+        System.out.println();
     }
 }

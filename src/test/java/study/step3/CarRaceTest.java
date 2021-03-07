@@ -21,12 +21,10 @@ public class CarRaceTest {
     }
 
     @Test
-    @DisplayName("랜덤 값 생성 및 4 이상의 경우 전진 테스트")
+    @DisplayName("전진 테스트")
     void 전진테스트(){
-        Car car = new Car();
-        if(NumberChecker.checkCondition()){
-            car.move();
-        }
+        Car car = new RandomRaceCar();
+        car.move();
     }
 
     @Test
