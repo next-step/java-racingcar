@@ -21,10 +21,6 @@ public class ResultView {
     }
 
     private String generateTrack(int location) {
-        if (location == 0) {
-            return "";
-        }
-
         return new String(new char[location]).replace("\0", this.carSymbol);
     }
 
