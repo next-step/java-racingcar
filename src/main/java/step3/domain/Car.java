@@ -5,11 +5,12 @@ package step3.domain;
  */
 public class Car {
 
-    public static final int MOVE_CONDITION = 4;
+    public static final int MOVE_CONDITION_VALUE = 4;
+    public static final int DEFAULT_POSITION = 1;
     private int position;
 
     private Car() {
-        this.position = 1;
+        this.position = DEFAULT_POSITION;
     }
 
     // 자동차 생성
@@ -30,6 +31,6 @@ public class Car {
 
     // 자동차가 전진하기 위한 조건 처리
     private boolean isMove(int value) {
-        return value >= MOVE_CONDITION;
+        return value >= MOVE_CONDITION_VALUE;
     }
 }
