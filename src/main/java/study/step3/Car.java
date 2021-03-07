@@ -5,9 +5,10 @@ public class Car {
     public Car(){
         this.position = 1;
     }
-    public void move(){
+    public int move(){
         if(NumberChecker.checkCondition()){
             position = position + 1;
         }
+        return position;
     }
 }
