@@ -16,7 +16,7 @@ import study.step3.ui.ResultView;
 public class Racing {
     private List<Car> carList;
     private Movement movement;
-    ResultView resultView;
+    private ResultView resultView;
 
     public Racing() {
         carList = new ArrayList<>();
@@ -28,6 +28,10 @@ public class Racing {
         for (int i = 0; i < carCount; i++) {
             carList.add(new Car());
         }
+    }
+
+    public List<Car> getCarList() {
+        return this.carList;
     }
 
     public void run() {
