@@ -43,7 +43,7 @@ public class StringCalculator {
         initOperation();
     }
 
-    public int calc(String input) {
+    public int calculate(String input) {
         String[] tokens = parseInput(input);
 
         int popIndex = 0;
