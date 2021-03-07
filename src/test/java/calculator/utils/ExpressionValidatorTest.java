@@ -45,4 +45,15 @@ class ExpressionValidatorTest {
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> new Expression(expression));
     }
+
+    @Test
+    @DisplayName("분리된 값의 길이가 짝수일 경우 에러")
+    public void validateOddLength() throws Exception {
+        //given
+        String expression = "3 + 2 +";
+        //when
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> new Expression(expression));
+    }
 }
