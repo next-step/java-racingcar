@@ -1,20 +1,43 @@
 package step3;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class CarRacing {
+
+    public static final int RANDOM_RANGE = 10;
+    public List<Car> cars = new ArrayList<>();
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int amountOfCar = scanner.nextInt();
-        int count = scanner.nextInt();
 
-        Map<Integer, Integer> cars = new HashMap<>();
-        for (int i=0; i<amountOfCar; i++) {
-            cars.put(i, 0);
+        CarRacing carRacing = new CarRacing();
+        carRacing.start();
+    }
+
+    public void start() {
+        InputView inputView = new InputView();
+        createCars(cars, inputView.getAmountOfCar());
+        Random random = new Random();
+        System.out.println("\n실행 결과");
+        moveCars(inputView.getCountOfCar(), random);
+    }
+
+    private static void createCars(List<Car> cars, int amountOfCar) {
+        for (int i = 0; i< amountOfCar; i++) {
+            cars.add(new Car(i));
         }
+    }
 
+    private void moveCars(int countOfCar, Random random) {
+        for (int i = 0; i < countOfCar; i++) {
+            updateMoveOfCar(cars, random);
+            System.out.println();
+        }
+    }
 
+    private static void updateMoveOfCar(List<Car> cars, Random random) {
+        cars.forEach(car -> {
+            car.updateMove(random.nextInt(RANDOM_RANGE));
+            car.print();
+        });
     }
 }
