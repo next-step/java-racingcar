@@ -9,6 +9,5 @@ public class Car {
         if(NumberChecker.checkCondition()){
             position = position + 1;
         }
-
     }
 }

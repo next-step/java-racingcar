@@ -2,7 +2,6 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -22,9 +21,14 @@ public class CarRaceTest {
     @DisplayName("랜덤 값 생성 및 4 이상의 경우 전진 테스트")
     void 전진테스트(){
         Car car = new Car();
-        Random random = new Random();
-        if(random.nextInt(10) >= 4){
+        if(NumberChecker.checkCondition()){
             car.move();
         }
+    }
+
+    @Test
+    @DisplayName("전진하는 조건 테스트, 4 이상일 경우 성공")
+    void 전진조건테스트(){
+        assertThat(NumberChecker.checkCondition()).isTrue();
     }
 }
