@@ -5,13 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.racingcar.entity.Car;
+import camp.nextstep.edu.racingcar.entity.Name;
 
 public class RacingCarGame {
 
-	private final RandomGenerator generator;
-
 	private RacingCarGame() {
-		this.generator = RandomGenerator.getInstance();
 	}
 
 	private static class LazyHolder {
@@ -23,10 +21,7 @@ public class RacingCarGame {
 	}
 
 	public void moveCars(List<Car> cars) {
-		cars.forEach(car -> {
-			int randomNumber = generator.generateRandomNumber();
-			car.move(randomNumber);
-		});
+		cars.forEach(car -> car.move(RandomMovingStrategy.getInstance()));
 	}
 
 	public List<Car> generateCars(List<String> carNames) {
@@ -52,7 +47,8 @@ public class RacingCarGame {
 		int winnerStep = getWinnerStep(cars);
 		return cars.stream()
 			.filter(car -> car.isWinner(winnerStep))
-			.map(Car::getCarName)
+			.map(Car::getName)
+			.map(Name::toString)
 			.collect(Collectors.joining(", "));
 	}
 }

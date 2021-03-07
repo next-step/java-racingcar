@@ -3,26 +3,20 @@ package camp.nextstep.edu.racingcar.entity;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import camp.nextstep.edu.exception.UserException;
+import camp.nextstep.edu.racingcar.module.MovingStrategy;
 
 public class Car {
-	private final static int MOVE_CONDITION = 4;
-	private final static int MAX_NAME_SIZE = 5;
 
 	private int step;
-	private final String name;
+	private final Name name;
 
 	public Car(String name) {
-		if (name.length() > MAX_NAME_SIZE) {
-			throw new UserException();
-		}
-
-		this.name = name;
+		this.name = new Name(name);
 		this.step = 0;
 	}
 
-	public void move(int number) {
-		if (number >= MOVE_CONDITION) {
+	public void move(MovingStrategy movingStrategy) {
+		if (movingStrategy.moveable()) {
 			this.step++;
 		}
 	}
@@ -41,7 +35,7 @@ public class Car {
 		return step;
 	}
 
-	public String getCarName() {
+	public Name getName() {
 		return this.name;
 	}
 

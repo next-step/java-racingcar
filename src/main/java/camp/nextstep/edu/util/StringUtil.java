@@ -10,6 +10,10 @@ public class StringUtil {
 			.orElse("");
 	}
 
+	public static boolean isBlank(String param) {
+		return getStringIfNullBlank(param).equals("");
+	}
+
 	public static boolean isNumeric(String word) {
 		return word.matches(numericRegex);
 	}

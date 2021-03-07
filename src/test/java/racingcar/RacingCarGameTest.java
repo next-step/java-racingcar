@@ -19,7 +19,7 @@ import camp.nextstep.edu.racingcar.controller.RacingCarController;
 import camp.nextstep.edu.racingcar.entity.Car;
 import camp.nextstep.edu.racingcar.module.RacingCarGame;
 
-public class CarGameTest {
+public class RacingCarGameTest {
 
 	private static RacingCarGame racingCarGame = RacingCarGame.getInstance();
 
@@ -82,9 +82,9 @@ public class CarGameTest {
 		Car honux = new Car("honux");
 		Car pobi = new Car("pobi");
 
-		crong.move(5);
-		crong.move(5);
-		crong.move(5);
+		crong.move(() -> true);
+		crong.move(() -> true);
+		crong.move(() -> true);
 
 		return Arrays.asList(crong, honux, pobi);
 	}
