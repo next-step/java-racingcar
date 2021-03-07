@@ -131,10 +131,22 @@ public class calcTest {
 
 
     @ParameterizedTest
-    @CsvSource({"\"2 + 3 * 4 / 2\",\"10\"", "\"1 + 5 * 4 / 3\",\"8\""})
+    @CsvSource({"2 + 3 * 4 / 2 - 5, 5", "1 + 5 * 4 / 3, 8"})
     @DisplayName("calculate Test")
-    void calculate(String strInput, String expectResult) {
-        String result = calculator.calculate(strInput);
+    void calculate(String strInput, Integer expectResult) {
+        Integer result = calculator.calculate(strInput);
+        assertThat(result).isEqualTo(expectResult);
+    }
+
+    @Test
+    @DisplayName("loop operator Test")
+    void loopAllOperator() {
+        Integer[] arrNumbers = {2, 3, 4, 2, 5};
+        String[] arrOperation = {"+", "*", "/", "-"};
+        Integer expectResult = 5;
+
+        Integer result = calculator.loopAllOperator(arrNumbers, arrOperation);
+
         assertThat(result).isEqualTo(expectResult);
     }
 

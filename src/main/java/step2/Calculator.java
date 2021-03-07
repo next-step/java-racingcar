@@ -8,17 +8,22 @@ import java.util.List;
 
 public class Calculator {
 
-    public String calculate(String strInput) {
+    public Integer calculate(String strInput) {
         validBlankOrNull(strInput);
         String[] arrInput = splitStr(strInput);
         Integer[] arrNumbers = getNumbers(arrInput);
         String[] arrOperations = getOperations(arrInput);
         validAllOperation(arrOperations);
 
-        for (Integer i = 0; i < arrNumbers.length; i++) {
+        return loopAllOperator(arrNumbers, arrOperations);
+    }
 
+    public Integer loopAllOperator(Integer[] arrNumbers, String[] arrOperation) {
+        Integer result = arrNumbers[0];
+        for (Integer i = 0; i < arrOperation.length; i++) {
+            result = Operation.operator(result, arrNumbers[i + 1], arrOperation[i]);
         }
-        return "";
+        return result;
     }
 
 
@@ -56,4 +61,6 @@ public class Calculator {
         }
         return arrOperations.toArray(new String[0]);
     }
+
+
 }
