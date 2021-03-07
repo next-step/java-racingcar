@@ -56,24 +56,24 @@ public class StringCalculator {
         int result = Integer.parseInt(textArray[0]);
 
         for (int i = 1; i < textArray.length; i += 2) {
-            int temp = 0;
             int nextNum = Integer.parseInt(textArray[i + 1]);
 
             switch (textArray[i]) {
                 case "+":
-                    temp = add(result, nextNum);
+                    result = add(result, nextNum);
                     break;
                 case "-":
-                    temp = subtract(result, nextNum);
+                    result = subtract(result, nextNum);
                     break;
                 case "*":
-                    temp = multiply(result, nextNum);
+                    result = multiply(result, nextNum);
                     break;
                 case "/":
-                    temp = divide(result, nextNum);
+                    result = divide(result, nextNum);
                     break;
+                default:
+                    throw new IllegalArgumentException();
             }
-            result = temp;
         }
 
         return result;
