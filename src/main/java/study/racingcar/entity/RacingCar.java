@@ -17,6 +17,10 @@ public class RacingCar {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void oneStep(int number){
         if(movePossible(number)) {
             carMove();

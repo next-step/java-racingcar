@@ -5,8 +5,8 @@ import study.racingcar.entity.RacingCar;
 import study.racingcar.util.RandomGenerator;
 import study.racingcar.view.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
@@ -35,6 +35,8 @@ public class RacingCarGame {
             carMove(numberOfCars, racingCars);
             resultView.print(racingCars);
         }
+
+        resultView.printsWinner(String.join(", ", getWinnerNames(racingCars)));
     }
 
     public boolean carNameValidCheck(String carName) {
@@ -66,4 +68,19 @@ public class RacingCarGame {
         }
     }
 
+    public List<String> getWinnerNames(List<RacingCar> racingCars) {
+
+        int maxPosition = getMaxPosition(racingCars);
+
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getPosition() == maxPosition)
+                .map(RacingCar::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .max(Comparator.comparingInt(RacingCar::getPosition))
+                .get().getPosition();
+    }
 }

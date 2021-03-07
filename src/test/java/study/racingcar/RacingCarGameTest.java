@@ -9,6 +9,9 @@ import study.racingcar.entity.RacingCar;
 import study.racingcar.service.RacingCarGame;
 import study.racingcar.util.RandomGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarGameTest {
@@ -17,11 +20,16 @@ public class RacingCarGameTest {
     private RacingCarGame racingCarGame;
     private RandomGenerator randomGenerator;
 
+    private RacingCar firstWinnerRacingCar;
+    private RacingCar secondWinnerRacingCar;
+
     @BeforeEach
     void setup(){
         racingCar = new RacingCar(0, "Test");
         racingCarGame = new RacingCarGame();
         randomGenerator = new RandomGenerator();
+        firstWinnerRacingCar = new RacingCar(5, "win1");
+        secondWinnerRacingCar = new RacingCar(5, "win2");
     }
 
     @Test
@@ -54,6 +62,18 @@ public class RacingCarGameTest {
     @DisplayName("자동차 이름 5자 제한")
     void racingCarNameValidCheck(String carName, boolean expected){
         assertThat(racingCarGame.carNameValidCheck(carName)).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("우승자 선정")
+    void getWinner(){
+        List<RacingCar> racingCarList = new ArrayList<>();
+        racingCarList.add(racingCar);
+        racingCarList.add(firstWinnerRacingCar);
+        racingCarList.add(secondWinnerRacingCar);
+
+        assertThat(racingCarGame.getWinnerNames(racingCarList)).contains("win1", "win2");
+        assertThat(String.join(", ", racingCarGame.getWinnerNames(racingCarList))).isEqualTo("win1, win2");
     }
 
 }
