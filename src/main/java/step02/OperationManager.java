@@ -7,7 +7,10 @@ enum OperationManager {
     SUM("+", (first, second) -> first + second),
     NUM("-", (first, second) -> first - second),
     MULTI("*", (first, second) -> first * second),
-    DIV("/", (first, second) -> first / second);
+    DIV("/", (first, second) -> {
+        if(second == 0) { throw new ArithmeticException(); }
+        return first / second;
+    });
 
     private BiFunction<Integer, Integer, Integer> inputData;
     private String symbol;
@@ -15,6 +18,10 @@ enum OperationManager {
     OperationManager(String symbol, BiFunction<Integer, Integer, Integer> inputData) {
         this.symbol = symbol;
         this.inputData = inputData;
+
+        if(inputData == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static int calculate(String symbol, int first, int second) {
