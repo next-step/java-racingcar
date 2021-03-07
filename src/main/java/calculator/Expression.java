@@ -8,12 +8,13 @@ import java.util.List;
 
 public class Expression {
 
+    private static final String DELIMITER = " ";
     private final String[] expression;
     private final List<Integer> operands = new ArrayList<>();
     private final List<Operator> operators = new ArrayList<>();
 
     public Expression(String expression) {
-        this.expression = expression.split(" ");
+        this.expression = expression.split(DELIMITER);
         ExpressionValidator.validateNull(this.expression);
         ExpressionValidator.validateEmpty(this.expression);
         ExpressionValidator.validateMinimumLength(this.expression);
