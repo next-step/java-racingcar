@@ -5,20 +5,20 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RandomlyMovingCarTest {
+class RandomMovementTest {
+
     @Test
     @DisplayName("자동차가 무작위로 움직인다.")
     void moveOrStay() {
-        Car car = new RandomlyMovingCar();
-        int lastLocation = car.getLocation();
+        Movement movement = new RandomMovement();
+        int lastLocation = 0;
 
         boolean isMoved = false;
         boolean isStayed = false;
 
         for (int i = 0; i < 100; i++) {
-            car.move();
 
-            int currentLocation = car.getLocation();
+            int currentLocation = lastLocation + movement.move();
 
             isMoved |= lastLocation != currentLocation;
             isStayed |= lastLocation == currentLocation;
@@ -28,4 +28,5 @@ class RandomlyMovingCarTest {
 
         assertThat(isMoved && isStayed).isTrue();
     }
+
 }

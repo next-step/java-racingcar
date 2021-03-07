@@ -12,17 +12,21 @@ class CarTest {
 
     @BeforeEach
     void init() {
-        car = new Car();
+        car = new Car(() -> 1);
     }
 
     @Test
     @DisplayName("자동차는 한 칸 씩 움직여야 한다.")
     void moveOneSpace() {
-        int location = car.getLocation();
+        int firstLocation = car.getLocation();
+        int round = 5;
 
-        car.move();
+        for (int i = 0; i < round; i++) {
+            car.move();
+        }
 
-        assertThat(car.getLocation()).isEqualTo(location + 1);
+
+        assertThat(car.getLocation()).isEqualTo(firstLocation + round);
     }
 
 }
