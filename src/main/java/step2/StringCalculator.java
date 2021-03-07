@@ -8,7 +8,6 @@ public class StringCalculator {
     private static final String DELIMITER = " ";
     private static final Set<String> OPERATORS = new HashSet<>();
     private String[] textArray;
-    private int result;
 
     public void setText(String text) {
         checkText(text);
@@ -54,7 +53,7 @@ public class StringCalculator {
     }
 
     public int calculate() {
-        result = Integer.parseInt(textArray[0]);
+        int result = Integer.parseInt(textArray[0]);
 
         for (int i = 1; i < textArray.length; i += 2) {
             int temp = 0;
