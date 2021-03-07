@@ -19,7 +19,7 @@ public class RacingCarGameTest {
 
     @BeforeEach
     void setup(){
-        racingCar = new RacingCar();
+        racingCar = new RacingCar(0, "Test");
         racingCarGame = new RacingCarGame();
         randomGenerator = new RandomGenerator();
     }

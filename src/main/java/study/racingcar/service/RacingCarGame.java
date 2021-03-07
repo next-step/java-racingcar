@@ -27,7 +27,7 @@ public class RacingCarGame {
 
         int numberOfAttempts = inputView.enterNumberOfAttempts();
 
-        List<RacingCar> racingCars = racingCarsInit(numberOfCars);
+        List<RacingCar> racingCars = racingCarsInit(carNames, numberOfCars);
 
         resultView.printStart();
 
@@ -48,12 +48,12 @@ public class RacingCarGame {
         }
     }
 
-    private List<RacingCar> racingCarsInit(int numberOfCars) {
+    private List<RacingCar> racingCarsInit(String[] carNames, int numberOfCars) {
 
         List<RacingCar> racingCars = new ArrayList<>();
 
         for (int i=0; i < numberOfCars; i++) {
-            racingCars.add(new RacingCar());
+            racingCars.add(new RacingCar(0, carNames[i]));
         }
 
         return racingCars;

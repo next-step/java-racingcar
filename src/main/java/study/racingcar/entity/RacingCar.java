@@ -6,6 +6,13 @@ public class RacingCar {
 
     private int position = 0;
 
+    private String name;
+
+    public RacingCar(int position, String name) {
+        this.position = position;
+        this.name = name;
+    }
+
     public int getPosition() {
         return position;
     }
