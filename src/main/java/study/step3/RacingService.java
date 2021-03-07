@@ -22,6 +22,7 @@ public class RacingService {
         for(int i=0; i<round; i++) {
             Printer.println((i+1) + RacingConst.MESSAGE_ROUND);
             racing.run();
+            racing.printRacingResult(RacingConst.PRINT_TOKEN);
         }
     }
 }
