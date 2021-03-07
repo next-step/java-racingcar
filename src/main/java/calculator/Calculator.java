@@ -26,7 +26,7 @@ public class Calculator {
 	}
 
 	public void validateInputEmptyOrNull(String input) {
-		if (input == null || input.isBlank()) {
+		if (input == null || input.trim().isEmpty()) {
 			throw new IllegalArgumentException();
 		}
 	}

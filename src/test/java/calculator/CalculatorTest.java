@@ -101,10 +101,10 @@ public class CalculatorTest {
 		assertThat(calculator.calculate(splitData)).isEqualTo(expected);
 	}
 
-	@DisplayName("String#isBlank Test")
+	@DisplayName("String#tim,isEmpty Test")
 	@ParameterizedTest
 	@ValueSource(strings = {"", " "})
 	void isBlankTest(String input) {
-		assertThat(input.isBlank()).isEqualTo(true);
+		assertThat(input.trim().isEmpty()).isEqualTo(true);
 	}
 }
