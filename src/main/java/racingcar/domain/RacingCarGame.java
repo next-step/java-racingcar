@@ -4,6 +4,8 @@ import racingcar.dto.RacingCarGameRequest;
 import racingcar.dto.FinalScoreBoard;
 import racingcar.dto.ScoreBoardPerPlay;
 
+import java.util.Arrays;
+
 public class RacingCarGame {
 
     private final RacingCarList participatingRacingCarList;
@@ -13,24 +15,28 @@ public class RacingCarGame {
     private int currentCount;
 
     private FinalScoreBoard finalScoreBoard;
-
     public RacingCarGame(RacingCarGameRequest userInput) {
         playCount = userInput.getPlayCount();
-        participatingRacingCarList = new RacingCarList(userInput.getCarNumber());
+        participatingRacingCarList = new RacingCarList();
         finalScoreBoard = new FinalScoreBoard();
+        enrollParticipatingCar(new RacingCarGameRule(), userInput.getCarNameArray());
     }
 
-    public boolean isDone(){
+    private void enrollParticipatingCar(RacingCarGameRule racingCarGameRule, String[] carNameArray) {
+        participatingRacingCarList.addBulk(racingCarGameRule, carNameArray);
+    }
+
+    public boolean isDone() {
         return currentCount >= playCount;
     }
 
     public void play() {
-        if(isDone()) {
+        if (isDone()) {
             throw new IllegalStateException("game is over");
         }
         participatingRacingCarList.move();
         currentCount++;
-        finalScoreBoard.add(currentCount,participatingRacingCarList.getIndividualScore());
+        finalScoreBoard.add(currentCount, participatingRacingCarList.getIndividualScore());
     }
 
     public FinalScoreBoard getFinalScoreBoard() {

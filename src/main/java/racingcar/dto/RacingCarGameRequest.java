@@ -1,23 +1,21 @@
 package racingcar.dto;
 
-import java.util.List;
-
 public class RacingCarGameRequest {
 
     private int playCount;
 
-    private int carNumber;
+    private String[] carNameArray;
 
-    public RacingCarGameRequest(int playCount,int carNumber) {
+    public RacingCarGameRequest(int playCount, String[] carNameArray) {
         this.playCount = playCount;
-        this.carNumber = carNumber;
+        this.carNameArray = carNameArray;
     }
 
     public int getPlayCount() {
         return playCount;
     }
 
-    public int getCarNumber() {
-        return carNumber;
+    public String[] getCarNameArray() {
+        return carNameArray;
     }
 }

@@ -1,4 +1,5 @@
 import racingcar.domain.RacingCarGame;
+import racingcar.domain.RacingCarGameRule;
 import racingcar.dto.RacingCarGameRequest;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
