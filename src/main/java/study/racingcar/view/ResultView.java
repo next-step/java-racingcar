@@ -3,7 +3,6 @@ package study.racingcar.view;
 import study.racingcar.entity.RacingCar;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
 

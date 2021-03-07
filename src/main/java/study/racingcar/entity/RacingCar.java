@@ -3,10 +3,8 @@ package study.racingcar.entity;
 public class RacingCar {
 
     private static final int MOVE_POSSIBLE_NUMBER = 4;
-
-    private int position = 0;
-
-    private String name;
+    private int position;
+    private final String name;
 
     public RacingCar(int position, String name) {
         this.position = position;

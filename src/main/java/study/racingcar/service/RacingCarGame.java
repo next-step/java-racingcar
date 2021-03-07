@@ -11,15 +11,13 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
 
     private static final RandomGenerator randomGenerator = new RandomGenerator();
+    private static final InputView inputView = new InputView();
+    private static final ResultView resultView = new ResultView();
 
     public void start() {
 
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
-
         String nameOfCars = inputView.enterNameOfCars().trim();
         String[] carNames = nameOfCars.split(",");
-        int numberOfCars = carNames.length;
 
         for (String carName : carNames) {
             gameRestartCheck( carNameValidCheck(carName) );
@@ -27,14 +25,9 @@ public class RacingCarGame {
 
         int numberOfAttempts = inputView.enterNumberOfAttempts();
 
-        List<RacingCar> racingCars = racingCarsInit(carNames, numberOfCars);
+        List<RacingCar> racingCars = racingCarsInit(carNames);
 
-        resultView.printStart();
-
-        for(int i=0; i < numberOfAttempts; i++) {
-            carMove(numberOfCars, racingCars);
-            resultView.print(racingCars);
-        }
+        racing(numberOfAttempts, racingCars);
 
         resultView.printsWinner(String.join(", ", getWinnerNames(racingCars)));
     }
@@ -43,28 +36,37 @@ public class RacingCarGame {
         return carName.length() <= 5;
     }
 
-    private void gameRestartCheck(boolean carNameValidResult){
-        if(!carNameValidResult) {
+    private void gameRestartCheck(boolean carNameValid){
+        if(!carNameValid) {
             System.out.println("자동차의 이름은 최대 5자 입니다. 게임을 다시 시작합니다.\n");
             start();
         }
     }
 
-    private List<RacingCar> racingCarsInit(String[] carNames, int numberOfCars) {
+    private List<RacingCar> racingCarsInit(String[] carNames) {
 
         List<RacingCar> racingCars = new ArrayList<>();
 
-        for (int i=0; i < numberOfCars; i++) {
-            racingCars.add(new RacingCar(0, carNames[i]));
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(0, carName));
         }
 
         return racingCars;
     }
 
-    public void carMove(int numberOfCars, List<RacingCar> racingCars) {
+    private void racing(int numberOfAttempts, List<RacingCar> racingCars) {
 
-        for(int i=0; i < numberOfCars; i++){
-            racingCars.get(i).oneStep(randomGenerator.getRandomNumber());
+        resultView.printStart();
+        for(int i = 0; i < numberOfAttempts; i++) {
+            carMove(racingCars);
+            resultView.print(racingCars);
+        }
+    }
+
+    private void carMove(List<RacingCar> racingCars) {
+
+        for (RacingCar racingCar : racingCars) {
+            racingCar.oneStep(randomGenerator.getRandomNumber());
         }
     }
 
