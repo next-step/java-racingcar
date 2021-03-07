@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.util.ResultView;
 
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Cars {
@@ -10,7 +10,10 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(int numberOfCars) {
-        cars = Arrays.asList(new Car[numberOfCars]);
+        cars = new LinkedList<>();
+        for (int i = 0 ; i < numberOfCars; i++) {
+            cars.add(new Car());
+        }
     }
 
     public void move() {
