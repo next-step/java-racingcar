@@ -15,12 +15,11 @@ public class RacingCarGame {
     private int currentCount;
 
     private FinalScoreBoard finalScoreBoard;
-
-    public RacingCarGame(RacingCarGameRule racingCarGameRule, RacingCarGameRequest userInput) {
+    public RacingCarGame(RacingCarGameRequest userInput) {
         playCount = userInput.getPlayCount();
         participatingRacingCarList = new RacingCarList();
         finalScoreBoard = new FinalScoreBoard();
-        enrollParticipatingCar(racingCarGameRule, userInput.getCarNameArray());
+        enrollParticipatingCar(new RacingCarGameRule(), userInput.getCarNameArray());
     }
 
     private void enrollParticipatingCar(RacingCarGameRule racingCarGameRule, String[] carNameArray) {

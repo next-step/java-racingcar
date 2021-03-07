@@ -8,12 +8,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        RacingCarGameRule racingCarGameRule = new RacingCarGameRule();
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        RacingCarGameRequest userInput = inputView.getUserInput(racingCarGameRule);
-        RacingCarGame racingCarGame = new RacingCarGame(racingCarGameRule,userInput);
+        RacingCarGameRequest userInput = inputView.getUserInput();
+        RacingCarGame racingCarGame = new RacingCarGame(userInput);
         while(!racingCarGame.isDone()) {
             racingCarGame.play();
         }

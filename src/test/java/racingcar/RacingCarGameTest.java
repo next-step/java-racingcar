@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.MovingStrategy;
 import racingcar.domain.RacingCarGame;
-import racingcar.domain.RacingCarGameRule;
 import racingcar.dto.CarScore;
 import racingcar.dto.FinalScoreBoard;
 import racingcar.dto.RacingCarGameRequest;
@@ -44,7 +43,7 @@ public class RacingCarGameTest {
     @CsvSource(value = {"4:2:false", "5:5:true"}, delimiter = ':')
     @DisplayName("자동차 게임 isDone 메서드를 통해 finalScoreBoard에 정상적으로 추가 되는지 count는 늘어나는지 테스트")
     void play(int totalPlayCount, int actualPlayCount, boolean expected) {
-        RacingCarGame game = new RacingCarGame(new RacingCarGameRule(), createRacingCarGameRequest(totalPlayCount));
+        RacingCarGame game = new RacingCarGame(createRacingCarGameRequest(totalPlayCount));
         for (int i = 0; i < actualPlayCount; i++) {
             game.play();
         }
@@ -56,7 +55,7 @@ public class RacingCarGameTest {
     @CsvSource(value = {"4:6:3"}, delimiter = ':')
     @DisplayName("자동차 게임 최초 요청 횟수보다 더 많이 play했을때 exception 발생 테스트")
     void isPlayThrowExceptionWhenPlayMoreThanPlayCount(int totalPlayCount, int actualPlayCount, int carNumber) {
-        RacingCarGame game = new RacingCarGame(new RacingCarGameRule(), createRacingCarGameRequest(totalPlayCount));
+        RacingCarGame game = new RacingCarGame(createRacingCarGameRequest(totalPlayCount));
         assertThatIllegalStateException().isThrownBy(() -> {
             for (int i = 0; i < actualPlayCount; i++) {
                 game.play();

@@ -33,12 +33,6 @@ public class RacingCarGameRule {
         }
     }
 
-    public void validateCarName(String[] carNameArray) {
-        for (String carName : carNameArray) {
-            validateCarName(carName);
-        }
-    }
-
     public boolean isCarMovable() {
         return movingStrategy.isMovable();
     }

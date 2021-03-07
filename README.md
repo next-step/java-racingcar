@@ -5,6 +5,7 @@
   * CarScore isMatch함수 추출을 통해 캡술화
   * StringUtil 클래스를 추출
   * 자동차이름이 비어있을때 예외 처리 추가
+  * InputView에서 자동차 이름 validation하는 로직 추가(RacingGame에 대한 의존성 제거)
 ## 구현 기능 정리
 * 자동차
   * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
