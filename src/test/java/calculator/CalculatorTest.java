@@ -27,7 +27,20 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"2 2 4", "- 2 4", "- & 4", "1 -"})
+    @ValueSource(strings = {"1 -", "-", "3"})
+    @DisplayName("입력값 검증테스트 - 수식 길이검증 테스트")
+    void validateInput_isValidateLength(String input) {
+        // given
+        Calculator calculator = new Calculator();
+
+        // when, then
+        assertThatIllegalArgumentException()
+                .isThrownBy( () -> calculator.calculate(input) )
+                .withMessageMatching("수식은 최소 2개의 수와 1개의 연산자로 구성되어야 합니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 2 4", "- 2 4", "- & 4"})
     @DisplayName("입력값 검증테스트 - 사칙연산 레이아웃")
     void validateInput_isValidOperationLayout(String input) {
         // given
