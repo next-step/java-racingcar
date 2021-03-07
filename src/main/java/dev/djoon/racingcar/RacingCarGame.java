@@ -36,7 +36,7 @@ public class RacingCarGame {
 
   private void carsMoveIfValid(RandomNumbers random) {
     for (Car car : carList) {
-      int randomValue = random.nextInt(GameConstant.RANDOM_BOUNDARY.value());
+      int randomValue = random.nextInt(GameConstant.RANDOM_BOUNDARY);
       car.moveIfValidCondition(randomValue);
 
       ResultView.printXPos(car.getXPosition());

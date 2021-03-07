@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.djoon.racingcar.actor.Car;
 
 import dev.djoon.racingcar.actor.OppaCar;
+import dev.djoon.racingcar.util.GameConstant;
 import dev.djoon.racingcar.util.RandomNumbers;
 import dev.djoon.racingcar.util.TestRandomNumbers;
 import org.junit.jupiter.api.DisplayName;
@@ -67,7 +68,7 @@ public class RacingCarTest {
     // given
     RacingCarGame racingCarGame = new RacingCarGame(carQuantity, loopTimes);
     RandomNumbers randomNumbers = new RandomNumbers();
-    randomNumbers.setSeed(10);
+    randomNumbers.setSeed(GameConstant.RANDOM_TEST_SEED);
 
     // when
     racingCarGame.start(randomNumbers);

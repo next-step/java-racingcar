@@ -1,5 +1,7 @@
 package dev.djoon.racingcar.actor;
 
+import dev.djoon.racingcar.util.GameConstant;
+
 public abstract class Car {
 
   protected int xPosition;
@@ -14,7 +16,7 @@ public abstract class Car {
   }
 
   public boolean moveIfValidCondition(int number) {
-    if (number >= 4) {
+    if (number >= GameConstant.VALID_BOUNDARY.value()) {
       move();
       return true;
     }

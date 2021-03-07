@@ -5,11 +5,11 @@ import java.util.Random;
 public class RandomNumbers {
   protected final Random random = new Random();
 
-  public int nextInt(int bound) {
-    return random.nextInt(bound);
+  public int nextInt(GameConstant bound) {
+    return random.nextInt(bound.value());
   }
 
-  public void setSeed(long seed) {
-    random.setSeed(seed);
+  public void setSeed(GameConstant seed) {
+    random.setSeed(seed.value());
   }
 }
