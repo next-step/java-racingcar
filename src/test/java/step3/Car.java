@@ -12,11 +12,17 @@ public class Car {
         this.position = position;
     }
 
-    public void move(int distance) {
-        this.position += distance;
+    public void move(boolean isMove) {
+        if (isMove) {
+            this.position++;
+        }
     }
 
     public int getPosition() {
         return this.position;
+    }
+
+    public boolean isMove(int randomValue) {
+        return randomValue >= 4;
     }
 }
