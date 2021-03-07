@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static racingcar.Car.UNIT;
 
@@ -36,9 +37,17 @@ class CarTest {
     );
   }
 
+  static Stream<Arguments> nameAndErrorMessage() {
+    return Stream.of(
+        arguments(null, "비어있는 이름은 유효하지 않은 이름입니다."),
+        arguments("", "비어있는 이름은 유효하지 않은 이름입니다."),
+        arguments("abcdef", "자동차의 이름은 최대 5자입니다.")
+    );
+  }
+
   @BeforeEach
   void setUp() {
-    car = new Car(EMPTY_STRING);
+    car = new Car("a");
   }
 
   @ParameterizedTest
@@ -70,5 +79,14 @@ class CarTest {
     car = new Car(name);
 
     assertThat(car.getName()).isEqualTo(name);
+  }
+
+  @ParameterizedTest
+  @DisplayName("자동차 이름은 1~5자여야 한다. 그 외의 경우 예외를 리턴한다.")
+  @MethodSource("nameAndErrorMessage")
+  void createWithInvalidName(String name, String errorMessage) {
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> new Car(name))
+        .withMessage(errorMessage);
   }
 }
