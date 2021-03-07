@@ -32,4 +32,12 @@ public class ExpressionValidator {
             throw new IllegalArgumentException("입력 수식의 길이가 홀수인지 확인해주세요.");
         }
     }
+
+    public static Integer validateInteger(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("피연산자가 제대로 입력되었는지 확인해주세요.");
+        }
+    }
 }
