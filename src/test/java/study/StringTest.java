@@ -3,7 +3,8 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
 
@@ -29,9 +30,25 @@ public class StringTest {
     void stringTest3() {
         String data = "abc";
         int index = 3;
-        assertThatExceptionOfType( StringIndexOutOfBoundsException.class)
-                .isThrownBy(()->{data.charAt(index);})
-                .withMessage("withMessage, index  = %d", index );
-
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+        .isThrownBy(() -> {
+           data.charAt(index);
+        }).withMessage("String index out of range: "+ index);
     }
+
+    @Test
+    @DisplayName("StringClass 요구사항 3 번외: 작성자가 원하는 형태로 오류 메세지 정의")
+    void stringTest3_Extra() {
+        String data = "abc";
+        int index = 3;
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+            .isThrownBy(() -> {
+                try {
+                    data.charAt(index);
+                }catch (StringIndexOutOfBoundsException e){
+                    throw new StringIndexOutOfBoundsException("custom error message");
+                }
+            }).withMessage("custom error message");
+    }
+
 }

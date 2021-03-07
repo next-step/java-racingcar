@@ -26,7 +26,6 @@ public class SetTest {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
-
     }
 
     @Test
@@ -44,7 +43,7 @@ public class SetTest {
 
     @ParameterizedTest
     @DisplayName("SetClass 요구사항 3 : 입력 값에 따라 결과 값이 다른 경우에 대한 테스트도 가능하도록 구현")
-    @CsvSource(value = {"1:true", "2:true", "3:true", "true:false", "4:false", "5:false"} , delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"} , delimiter = ':')
     void setTest3(int input, String expected){
         assertThat(numbers.contains(input)).isEqualTo(Boolean.valueOf(expected));
     }
