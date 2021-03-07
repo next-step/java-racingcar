@@ -40,16 +40,42 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"2 2 4", "- 2 4", "- & 4"})
-    @DisplayName("입력값 검증테스트 - 사칙연산 레이아웃")
-    void validateInput_isValidOperationLayout(String input) {
+    @ValueSource(strings = {"2 - 3 +", "1 - 5 + 7 8", "- + * /"})
+    @DisplayName("입력값 검증테스트 - 수식의 인자수는 홀수개여야 함")
+    void validateInput_isFormulaEven(String input) {
         // given
         Calculator calculator = new Calculator();
 
         // when, then
         assertThatIllegalArgumentException()
                 .isThrownBy( () -> calculator.calculate(input) )
-                .withMessageMatching("수식의 구성이 올바르지 않습니다. 다시 입력해 주세요");
+                .withMessageMatching("수식은 홀수개의 인자로 구성되어야 합니다. 다시 입력해 주세요");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"- 1 3 + 7", "2 + -", "3 - 2 + * 1 2"})
+    @DisplayName("입력값 검증테스트 - 수식의 짝수번째 인자는 숫자여야 함")
+    void validateInput_isEvenIndexValueNumeric(String input) {
+        // given
+        Calculator calculator = new Calculator();
+
+        // when, then
+        assertThatIllegalArgumentException()
+                .isThrownBy( () -> calculator.calculate(input) )
+                .withMessageMatching("수식의 짝수번째 인자는 숫자여야 합니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 2 - 3 7", "2 + 1 3 5"})
+    @DisplayName("입력값 검증테스트 - 수식의 홀수번째 인자는 연산자여야 함")
+    void validateInput_isOddIndexValueOperator(String input) {
+        // given
+        Calculator calculator = new Calculator();
+
+        // when, then
+        assertThatIllegalArgumentException()
+                .isThrownBy( () -> calculator.calculate(input) )
+                .withMessageMatching("수식의 홀수번째 인자는 연산자여야 합니다.");
     }
 
     @ParameterizedTest
