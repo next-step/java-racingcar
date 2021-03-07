@@ -4,68 +4,84 @@ public class Calcurator {
 
 
     //더하기
-    private int _sum(int a , int b){
-        return a+b;
+    private int _sum(int a, int b) {
+        return a + b;
     }
+
     //뺄셈
-    private int _minus(int a , int b){
-        return a-b;
+    private int _minus(int a, int b) {
+        return a - b;
     }
+
     //곱셈
-    private int _multiply(int a , int b){
-        return a*b;
+    private int _multiply(int a, int b) {
+        return a * b;
     }
+
     //나눗셈
-    private int _divide(int a , int b){
-        return (int)(a/b);
-    }
-
-    void inspect(){
-
+    private int _divide(int a, int b) {
+        return (int) (a / b);
     }
 
 
-    void execute(String expression){
+    private int _changeInt(String numStr){
+        return Integer.parseInt(numStr);
+    }
 
-        String numStr = "";
-        String numStr2 = "";
-        int num =0;
-        int num2 = 0;
-        ArrayList<String> saveExp = new ArrayList<>();
-        String sign = null;
-        int result = 0;
-        for(int i=0;i<expression.length();i++){
-            char ch = expression.charAt(i);
 
-            if('0'<= ch && ch <= '9'){
-                numStr += ch;
-            }
+    private int _executeExp(int num,int resultNum,String sign){
 
-            if(ch == ' '){
-                saveExp.add(numStr);
-                if("+".equals(sign)){
-                    result += _sum(Integer.parseInt(saveExp.get(0)), Integer.parseInt(saveExp.get(1)));
-                }else if("-".equals(sign)){
-                    result += _minus(Integer.parseInt(saveExp.get(0)), Integer.parseInt(saveExp.get(1)));
-                }else if("*".equals(sign)){
-                    result += _multiply(Integer.parseInt(saveExp.get(0)), Integer.parseInt(saveExp.get(1)));
-                }else if("/".equals(sign)){
-                    result +=_divide(Integer.parseInt(saveExp.get(0)), Integer.parseInt(saveExp.get(1)));
-                }
-                saveExp.clear();
-                numStr = "";
-            }
-            if(ch=='+' || ch=='-' || ch=='*' || ch =='/'){
-                sign = String.valueOf(ch);
-            }
+        if("+".equals(sign)){
+            return _sum(num,resultNum);
         }
-        System.out.println("result == " + result);
+
+        if("-".equals(sign)){
+            return _minus(num,resultNum);
+        }
+
+        if("*".equals(sign)){
+            return _multiply(num,resultNum);
+        }
+
+        if("/".equals(sign)){
+            return _divide(num,resultNum);
+        }
+
+        return -1;
     }
 
+
+    private String[] _divideBlank(String expression){
+        return expression.split(" ");
+    }
+
+    void execute(String expression) {
+
+        //빈공백을 중심으로 수식 쪼개기
+        String [] dividedExpArr = _divideBlank(expression);
+        int dividedExpArrSize = dividedExpArr.length;
+        int resultNum = Integer.parseInt(dividedExpArr[0]);
+        for(int i=0; i<dividedExpArrSize; i+=3){
+
+            //int num =
+
+            int num = Integer.parseInt(dividedExpArr[i+2]);
+
+            String sign = dividedExpArr[i+1];
+
+            resultNum +=_executeExp(num,resultNum,sign);
+
+        }
+
+
+        System.out.println("resultNum == " + resultNum);
+
+    }
 
 
     public static void main(String[] args) {
-        String expression = "2 + 4";
+        String expression = "2 + 4 * 5";
         new Calcurator().execute(expression);
+
     }
 }
