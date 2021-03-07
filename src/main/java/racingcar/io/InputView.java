@@ -1,5 +1,7 @@
 package racingcar.io;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView implements AutoCloseable {
@@ -20,19 +22,23 @@ public class InputView implements AutoCloseable {
     closed = true;
   }
 
-  public int inputCarCount() {
-    return input("자동차 대수", "대");
+  public List<String> inputCarNames() {
+    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분하고, 최대 5자입니다.)");
+    Printer.printPrompt();
+
+    String[] namesArray = scanner.next().trim().split(",");
+    return Arrays.asList(namesArray);
   }
 
   public int inputRound() {
-    return input("시도할 회수", "회");
+    return inputInteger("시도할 회수", "회");
   }
 
   private boolean isPositive(int number) {
     return number > 0;
   }
 
-  private int input(String message, String unit) {
+  private int inputInteger(String message, String unit) {
     System.out.println(message + "는 몇 " + unit + " 인가요?");
     Printer.printPrompt();
 

@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -17,12 +16,8 @@ public class Cars {
     this.random = random;
   }
 
-  public void initialize(int size) {
-    List<Car> newCars = new ArrayList<>();
-
-    for (int i = 0; i < size; i++) {
-      newCars.add(new Car());
-    }
+  public void initialize(List<String> names) {
+    List<Car> newCars = names.stream().map(Car::new).collect(Collectors.toList());
 
     this.cars = Collections.unmodifiableList(newCars);
   }

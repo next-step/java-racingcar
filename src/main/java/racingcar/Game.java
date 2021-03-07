@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Random;
 import racingcar.io.Printer;
 
@@ -11,8 +12,8 @@ public class Game {
     this.cars = new Cars(random);
   }
 
-  public void initialize(int size) {
-    cars.initialize(size);
+  public void initialize(List<String> names) {
+    cars.initialize(names);
   }
 
   public int getCarCount() {
@@ -30,8 +31,8 @@ public class Game {
     return cars.getStatus();
   }
 
-  public void start(int size, int round) {
-    initialize(size);
+  public void start(List<String> names, int round) {
+    initialize(names);
     moveCars(round);
   }
 }
