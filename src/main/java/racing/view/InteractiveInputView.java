@@ -2,21 +2,24 @@ package racing.view;
 
 import java.util.Scanner;
 
-public abstract class InteractiveInputView<T> {
+public class InteractiveInputView {
 
-    private final String message;
-
-    protected InteractiveInputView(String message) {
-        this.message = message;
+    private InteractiveInputView() {
     }
 
-    public T getUserInput() {
-        System.out.println(this.message);
+    public static int getInt(String message) {
+        printMessage(message);
 
+        return Integer.parseInt(getUserInput());
+    }
+
+    private static void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    private static String getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        return parse(scanner.next());
+        return scanner.next();
     }
-
-    protected abstract T parse(String s);
 
 }
