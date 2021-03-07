@@ -17,16 +17,29 @@ public enum Arithmetic {
     this.expression = expression;
   }
 
-  public int calculate(int firstNumber, int secondNumber) {
-    return this.expression.apply(firstNumber, secondNumber);
+  public static Arithmetic findByCode(String code) {
+    Arithmetic arithmetic = null;
+    for (Arithmetic value : Arithmetic.values()) {
+      arithmetic = filterArithmetic(arithmetic, value, code);
+    }
+    checkArithmetic(arithmetic);
+    return arithmetic;
   }
 
-  public static Arithmetic findByCode(String code) {
-    for (Arithmetic value : Arithmetic.values()) {
-      if (value.code.equals(code)) {
-        return value;
-      }
+  private static Arithmetic filterArithmetic(Arithmetic arithmetic, Arithmetic value, String code) {
+    if (value.code.equals(code)) {
+      arithmetic = value;
     }
-    throw new IllegalArgumentException("Code is not Arithmetic code.");
+    return arithmetic;
+  }
+
+  private static void checkArithmetic(Arithmetic arithmetic) {
+    if (arithmetic == null) {
+      throw new IllegalArgumentException("Code is not Arithmetic code.");
+    }
+  }
+
+  public int calculate(int firstNumber, int secondNumber) {
+    return expression.apply(firstNumber, secondNumber);
   }
 }

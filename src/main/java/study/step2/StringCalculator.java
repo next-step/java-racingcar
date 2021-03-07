@@ -3,25 +3,24 @@ package study.step2;
 public class StringCalculator {
   private Integer firstNumber;
   private Integer secondNumber;
-  private Integer result;
   private Arithmetic arithmetic;
-  private boolean isNotNull = true;
 
   public int calculate(String expression) {
     String[] splitExpression = expression.split(" ");
-    calculateExpression(splitExpression);
-    int result = this.result;
+    int result = calculateExpression(splitExpression);
     initialize();
     return result;
   }
 
-  private void calculateExpression(String[] splitExpression) {
+  private int calculateExpression(String[] splitExpression) {
+    int result = 0;
     for (String value : splitExpression) {
       assignSecondNumber(value);
       assignArithmetic(value);
       assignFirstNumber(value);
-      calculate();
+      result = calculate(result);
     }
+    return result;
   }
 
   private void assignSecondNumber(String value) {
@@ -41,25 +40,25 @@ public class StringCalculator {
   }
 
   private void assignFirstNumber(String value) {
-    if (this.firstNumber == null && this.arithmetic == null && this.secondNumber == null) {
+    if (this.firstNumber == null) {
       this.firstNumber = parseInt(value);
     }
   }
 
-  private void calculate() {
+  private int calculate(int result) {
     if (this.firstNumber != null && this.arithmetic != null && this.secondNumber != null) {
-      this.result = this.arithmetic.calculate(this.firstNumber, this.secondNumber);
-      this.firstNumber = this.result;
+      result = this.arithmetic.calculate(this.firstNumber, this.secondNumber);
+      this.firstNumber = result;
       this.arithmetic = null;
       this.secondNumber = null;
     }
+    return result;
   }
 
   private void initialize() {
     this.firstNumber = null;
     this.arithmetic = null;
     this.secondNumber = null;
-    this.result = null;
   }
 
 }
