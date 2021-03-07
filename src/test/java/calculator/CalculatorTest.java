@@ -55,7 +55,7 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "2 * 8 - 4:12", "3 / 2 + 1:2"}, delimiter = ':')
     @DisplayName("calculate 메소드 테스트")
-    void calculate(String formula, int expected) {
+    void calculate(String formula, int expected) throws Exception {
         // given
         Calculator calculator = new Calculator();
         // when

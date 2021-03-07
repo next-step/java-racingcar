@@ -4,10 +4,10 @@ import common.utils.StringUtils;
 
 public class Calculator {
 
-    private final String FORMULA_DELIMITER = " ";
-    private final int FORMULA_MIN_LENGTH = 3;
+    private static final String FORMULA_DELIMITER = " ";
+    private static final int FORMULA_MIN_LENGTH = 3;
 
-    public int calculate(String formula) {
+    public int calculate(String formula) throws Exception {
         this.validateInput(formula);
         return this.executeCalculate(formula.split(FORMULA_DELIMITER));
     }
@@ -61,6 +61,13 @@ public class Calculator {
     }
 
     /**
+     * 짝수판별
+     */
+    private boolean isEven(int a) {
+        return a%2==0;
+    }
+
+    /**
      * 입력값이 숫자인지 판별
      */
     private boolean isNumeric(String s) {
@@ -76,41 +83,28 @@ public class Calculator {
      * 사칙연산 연산자인지 판별
      */
     private boolean isArithmeticOperator(String operator) {
-        return "+".equals(operator) || "-".equals(operator) || "*".equals(operator) || "/".equals(operator) ;
+        try {
+            Operator.getEnum(operator);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        return true;
     }
 
     /**
      * 계산실행
      *  - 결과값을 정수로 한정
      */
-    private int executeCalculate(String[] formula) {
+    private int executeCalculate(String[] formula) throws Exception {
 
         int result = Integer.parseInt(formula[0]);
 
-        for (int i = 1; i < formula.length-1; i+=2) {
-            String operator = formula[i];
-            switch (operator) {
-                case "+":
-                    result = result + Integer.parseInt(formula[i+1]);
-                    break;
-                case "-":
-                    result = result - Integer.parseInt(formula[i+1]);
-                    break;
-                case "*":
-                    result = result * Integer.parseInt(formula[i+1]);
-                    break;
-                case "/":
-                    result = result / Integer.parseInt(formula[i+1]);
-                    break;
-            }
+        for (int operatorIndex = 1; operatorIndex < formula.length-1; operatorIndex+=2) {
+            int firstParam  = result;
+            int secondParam = Integer.parseInt(formula[operatorIndex+1]);
+            result = Operator.getEnum(formula[operatorIndex])
+                             .operate(firstParam, secondParam);
         }
         return result;
-    }
-
-    /**
-     * 짝수판별
-     */
-    private boolean isEven(int a) {
-        return a%2==0;
     }
 }
