@@ -7,9 +7,14 @@ public class StringCalculator {
 
     private static final String DELIMITER = " ";
     private static final Set<String> OPERATORS = new HashSet<>();
-    private String text;
     private String[] textArray;
     private int result;
+
+    public void setText(String text) {
+        checkText(text);
+        this.textArray = text.split(DELIMITER);
+        checkOperator(textArray);
+    }
 
     public void checkText(String text) {
         if (text == null || text.isEmpty()) {
@@ -23,13 +28,6 @@ public class StringCalculator {
                 throw new IllegalArgumentException();
             }
         }
-    }
-
-    public void setText(String text) {
-        checkText(text);
-        checkOperator(text.split(DELIMITER));
-        this.text = text;
-        this.textArray = text.split(DELIMITER);
     }
 
     public StringCalculator() {
