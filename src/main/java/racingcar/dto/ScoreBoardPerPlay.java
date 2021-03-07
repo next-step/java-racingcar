@@ -27,7 +27,7 @@ public class ScoreBoardPerPlay {
         int maxTravelledDistance = scoreList.stream().mapToInt(CarScore::getTravelledDistance)
                 .max().orElse(0);
         return scoreList.stream()
-                .filter(carScore -> carScore.getTravelledDistance() == maxTravelledDistance)
+                .filter(carScore -> carScore.isMatch(maxTravelledDistance))
                 .collect(Collectors.toList());
     }
 

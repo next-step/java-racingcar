@@ -28,4 +28,8 @@ public class CarScore {
     public String getCarName() {
         return carName;
     }
+
+    public boolean isMatch(int maxTravelledDistance) {
+        return travelledDistance == maxTravelledDistance;
+    }
 }
