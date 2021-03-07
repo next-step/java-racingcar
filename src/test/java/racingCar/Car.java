@@ -11,4 +11,7 @@ public class Car {
     return this.distance;
   }
 
+  public void print() {
+    OutputView.printCarDistance(this.distance);
+  }
 }

@@ -16,10 +16,14 @@ public class RacingGame {
   }
 
   public void start() {
+    OutputView.printResult();
     for (int i=0 ; i < tryCount ; i++) {
-      cars.forEach(car -> car.move(RandomNumber.create()) );
+      cars.forEach(car -> {
+        car.move(RandomNumber.create());
+        car.print();
+      });
+      OutputView.printEmptyLine();
     }
   }
-
 
 }
