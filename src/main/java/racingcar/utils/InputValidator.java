@@ -18,4 +18,10 @@ public class InputValidator {
             throw new IllegalArgumentException("null 값인지 확인해주세요.");
         }
     }
+
+    public static void validateEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("비어있는 값인지 확인해주세요.");
+        }
+    }
 }
