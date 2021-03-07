@@ -16,7 +16,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value={"2 + 3:5","2 - 3:-1","2 * 3:6","4 / 2:2"},delimiter = ':')
     @DisplayName("사칙연산 테스트, +,-,*,/ 통합 테스트")
-    void 사칙연산(String input,String expected){
+    void 사칙연산(String input,Integer expected){
         assertThat(Calculator.calcuate(input)).isEqualTo(expected);
     }
 
@@ -39,11 +39,11 @@ public class StringCalculatorTest {
     @DisplayName("사칙연산 기호가 아닌 경우 테스트, IllegalArgumentException 발생할 경우 테스트 통과")
     void isFourArithmeticOperations(){
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()->{
-            Operations.findSymbol("+");
-            Operations.findSymbol("-");
-            Operations.findSymbol("*");
-            Operations.findSymbol("/");
-            Operations.findSymbol("%");
+            Operations.getOperator("+");
+            Operations.getOperator("-");
+            Operations.getOperator("*");
+            Operations.getOperator("/");
+            Operations.getOperator("%");
         });
     }
 }
