@@ -1,13 +1,10 @@
 package calculator;
 
-import calculator.enums.Operator;
-import calculator.utils.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
 
@@ -18,7 +15,7 @@ class StringCalculatorTest {
         String expression = "5 + 5 + 10";
 
         //when
-        String[] splitExpression = expression.split(" ");
+        Expression splitExpression = new Expression(expression);
         StringCalculator stringCalculator = new StringCalculator();
         int result = stringCalculator.calculate(splitExpression);
 
@@ -33,7 +30,7 @@ class StringCalculatorTest {
         String expression = "5 - 100 - 20";
 
         //when
-        String[] splitExpression = expression.split(" ");
+        Expression splitExpression = new Expression(expression);
         StringCalculator stringCalculator = new StringCalculator();
         int result = stringCalculator.calculate(splitExpression);
 
@@ -48,7 +45,7 @@ class StringCalculatorTest {
         String expression = "5 * 100 * 20";
 
         //when
-        String[] splitExpression = expression.split(" ");
+        Expression splitExpression = new Expression(expression);
         StringCalculator stringCalculator = new StringCalculator();
         int result = stringCalculator.calculate(splitExpression);
 
@@ -63,7 +60,7 @@ class StringCalculatorTest {
         String expression = "100 / 20 / 2";
 
         //when
-        String[] splitExpression = expression.split(" ");
+        Expression splitExpression = new Expression(expression);
         StringCalculator stringCalculator = new StringCalculator();
         int result = stringCalculator.calculate(splitExpression);
 
@@ -78,12 +75,10 @@ class StringCalculatorTest {
         String expression = "10 ^ 20 / 2";
 
         //when
-        String[] splitExpression = expression.split(" ");
-        StringCalculator stringCalculator = new StringCalculator();
 
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> stringCalculator.calculate(splitExpression));
+                .isThrownBy(() -> new Expression(expression));
     }
 
     @Test
@@ -93,7 +88,7 @@ class StringCalculatorTest {
         String expression = "10 + 20 / 2 * 2";
 
         //when
-        String[] splitExpression = expression.split(" ");
+        Expression splitExpression = new Expression(expression);
         StringCalculator stringCalculator = new StringCalculator();
         int result = stringCalculator.calculate(splitExpression);
 

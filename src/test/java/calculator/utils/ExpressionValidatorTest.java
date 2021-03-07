@@ -1,5 +1,6 @@
 package calculator.utils;
 
+import calculator.Expression;
 import calculator.StringCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,13 +14,12 @@ class ExpressionValidatorTest {
     @DisplayName("입력 값 Null일 경우 에러")
     public void validateNull() throws Exception {
         //given
-        String[] splitExpression = null;
+        String expression = null;
 
         //when
-        StringCalculator stringCalculator = new StringCalculator();
 
         //then
-        assertThatNullPointerException().isThrownBy(() -> stringCalculator.calculate(splitExpression));
+        assertThatNullPointerException().isThrownBy(() -> new Expression(expression));
     }
 
     @Test
@@ -29,24 +29,20 @@ class ExpressionValidatorTest {
         String expression = "     ";
 
         //when
-        String[] splitExpression = expression.split(" ");
-        StringCalculator stringCalculator = new StringCalculator();
 
         //then
-        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(splitExpression));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Expression(expression));
     }
 
     @Test
     @DisplayName("분리된 값 길이 3 미만일 경우 에러")
-    public void validateLength() throws Exception {
+    public void validateMinimumLength() throws Exception {
         //given
         String expression = "3 + ";
 
         //when
-        String[] splitExpression = expression.split(" ");
-        StringCalculator stringCalculator = new StringCalculator();
 
         //then
-        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(splitExpression));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Expression(expression));
     }
 }
