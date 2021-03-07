@@ -17,7 +17,7 @@ public class CarRaceTest {
         assertThatThrownBy(()->{
             StringValidator.checkNumberSyntax(number);
         }).isInstanceOf(NumberFormatException.class)
-        .hasMessageContaining("숫자를 입력하세요");
+        .hasMessageContaining("숫자를 정확히 입력해주세요");
     }
 
     @Test

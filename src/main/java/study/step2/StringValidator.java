@@ -8,7 +8,7 @@ public class StringValidator {
         return (input == null || input.trim().isEmpty());
     }
 
-    public static boolean checkNumberSyntax(String input){
-        return input.matches(NUMBER_CHECK_REGEX);
+    public static void checkNumberSyntax(String input){
+        if(!input.matches(NUMBER_CHECK_REGEX)) throw new NumberFormatException("숫자를 정확히 입력해주세요");
     }
 }
