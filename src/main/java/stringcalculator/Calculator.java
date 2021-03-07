@@ -1,6 +1,6 @@
 package stringcalculator;
 
-import static stringcalculator.Validator.validateExpression;
+import static stringcalculator.StringUtils.isBlank;
 
 import java.util.List;
 
@@ -21,5 +21,11 @@ public class Calculator {
       result = operator.operate(result, y);
     }
     return result;
+  }
+
+  private void validateExpression(String expression) {
+    if (isBlank(expression)) {
+      throw new IllegalArgumentException("식을 입력해주세요.");
+    }
   }
 }
