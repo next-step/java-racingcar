@@ -71,9 +71,11 @@ public class StringCalculator {
     }
 
     private void validateInput(String input) {
-        if (input == null)
+        if (input == null) {
             throw new IllegalArgumentException("input is null");
-        if (input.trim().length() == 0)
+        }
+        if (input.trim().length() == 0) {
             throw new IllegalArgumentException("input is blank");
+        }
     }
 }
