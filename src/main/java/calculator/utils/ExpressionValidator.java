@@ -26,4 +26,10 @@ public class ExpressionValidator {
             throw new IllegalArgumentException("입력 수식의 길이가 3이상인지 확인해주세요.");
         }
     }
+
+    public static void validateOddLength(String[] expression) {
+        if (expression.length % 2 == EVEN_NUMBER) {
+            throw new IllegalArgumentException("입력 수식의 길이가 홀수인지 확인해주세요.");
+        }
+    }
 }
