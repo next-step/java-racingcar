@@ -12,4 +12,10 @@ public class InputValidator {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
     }
+
+    public static void validateNull(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("null 값인지 확인해주세요.");
+        }
+    }
 }
