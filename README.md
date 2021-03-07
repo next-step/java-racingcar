@@ -8,6 +8,17 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
+
+##기능 요구사항
+- 사용자가 문자열을 입력 가능하도록 한다
+- 문자 입력 시 사칙 연산 사이에는 빈칸이 존재하도록 한다
+- 나눗셈의 경우 결과 값을 정수로 떨어지는 값으로 한정한다.
+- 사칙연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서가 결정된다
+- 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+- 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
+- 사칙 연산을 모두 포함하는 기능 구현
+
+
 #String 클래스 테스트
 
 ## 요구사항 1
