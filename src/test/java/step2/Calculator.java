@@ -2,7 +2,7 @@ package step2;
 
 public class Calculator {
     static int calculate(String input){
-        //TODO 식 검사하기
+        Validator.nullEmptyCheck(input);
         String[] expression = input.split(" ");
         int result = Integer.parseInt(expression[0]);
         //TODO 계산식 구현
