@@ -4,15 +4,19 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class StringCalculations {
+
+    private static final int CALCULATIONS_RESULT_INIT = 0;
+
     public int calculate(int first, String operator, int second) {
         return OperationManager.calculate(operator, first, second);
     }
 
     public int calculate(String data) {
+        if(StringUtils.isBlank(data)) throw new IllegalArgumentException();
         Queue<String> symbolList = new LinkedList<>();
         Queue<Integer> numberList = new LinkedList<>();
         String[] inputData = data.split(" ");
-        int result = 0;
+        int result = CALCULATIONS_RESULT_INIT;
 
         for (String input : inputData) {
             if (input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/")) {
