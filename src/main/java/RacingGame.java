@@ -1,64 +1,43 @@
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class RacingGame {
 
-    private Scanner scanner;
+    private List<Car> cars;
 
-    RacingGame () {
-        scanner = new Scanner(System.in);
-    }
-
-    public void end() {
-        if (scanner != null) scanner.close();
-    }
-
-    private int inputIntArgument(String description){
-        System.out.println(description);
-        return scanner.nextInt();
-    }
-
-    private void carsAdvance(List<Car> cars){
-        for (int i = 0; i < cars.size(); i++) {
-            raceCar(cars.get(i));
+    private static int validationArgument(String value){
+        if (!GameCondition.isInteger(value)) {
+            throw new IllegalArgumentException("정수 형태의 숫자만 입력이 가능합니다.");
         }
+        return Integer.parseInt(value);
     }
 
-    private void raceCar(Car car) {
-        car.advance();
-        String progress = Stream.generate(()-> "-")
-                .limit(car.getNumberOfAdvance() == 0 ? 1 : car.getNumberOfAdvance())
-                .reduce((a, b) -> a + b).get();
-        System.out.println(progress);
+    private List<Integer> go() {
+        List<Integer> carProgresses = new ArrayList<>();
+        for(Car car: cars) {
+            car.advance();
+            carProgresses.add(car.getNumberOfAdvance());
+        }
+        return carProgresses;
     }
 
-    private void outputResult(List<Car> cars, int numberOfAttempts){
+    private void race(int numberOfAttempts) {
         for (int i = 0; i < numberOfAttempts; i++) {
-            carsAdvance(cars);
-            System.out.print("\n");
+            List<Integer> result = go();
+            ResultView.showRaceNumberOfTimes(result);
         }
     }
 
     public void start() {
-        try {
-            int numberOfCars = inputIntArgument("자동차 대수는 몇 대 인가요?");
-            int numberOfAttempts = inputIntArgument("시도할 회수는 몇 회 인가요?");
-            List<Car> cars = new CarFactory(numberOfCars).generateCars();
+        InputView inputView = new InputView();
+        String value = inputView.inputIntArgument("자동차 대수는 몇 대 인가요?");
+        int numberOfCars = validationArgument(value);
 
-            outputResult(cars, numberOfAttempts);
+        value = inputView.inputIntArgument("시도할 회수는 몇 회 인가요?");
+        int numberOfAttempts = validationArgument(value);
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        cars = new CarFactory(numberOfCars).generateCars();
 
-        } finally {
-            end();
-        }
+        race(numberOfAttempts);
     }
-
-    public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.start();
-    }
-
 }
