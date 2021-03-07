@@ -19,7 +19,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  */
 public class CalculatorTest {
 
-    //    private final OperationManager operation = new OperationManager();
     private final StringCalculations calculations = new StringCalculations();
 
     @Test
@@ -31,7 +30,6 @@ public class CalculatorTest {
         int expected = 3;
 
         // when
-//        int result = operation.sum(first, second);
         int result = calculations.calculate(first, "+", second);
 
         // then
@@ -42,7 +40,6 @@ public class CalculatorTest {
     @MethodSource("numTestValue")
     @DisplayName("뻴셈에 대한 테스트")
     void num(int first, int second, int expected) {
-//        assertThat(operation.num(first, second)).isEqualTo(expected);
         assertThat(calculations.calculate(first, "-", second)).isEqualTo(expected);
     }
 
@@ -57,7 +54,6 @@ public class CalculatorTest {
     @MethodSource("multiTestValue")
     @DisplayName("곱셈에 대한 테스트")
     void multi(int first, int second, int expected) {
-//        assertThat(operation.multi(first, second)).isEqualTo(expected);
         assertThat(calculations.calculate(first, "*", second)).isEqualTo(expected);
     }
 
@@ -74,7 +70,6 @@ public class CalculatorTest {
     @MethodSource("divTestValue")
     @DisplayName("나눗셈에 대한 테스트")
     void div(int first, int second, int expected) {
-//        assertThat(operation.div(first, second)).isEqualTo(expected);
         assertThat(calculations.calculate(first, "/", second)).isEqualTo(expected);
     }
 
