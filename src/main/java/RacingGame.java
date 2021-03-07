@@ -1,43 +1,35 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private List<Car> cars;
-
-    private static int validationArgument(String value){
-        if (!GameCondition.isInteger(value)) {
-            throw new IllegalArgumentException("정수 형태의 숫자만 입력이 가능합니다.");
-        }
-        return Integer.parseInt(value);
+    private List<Integer> advanceRound(List<Car> cars) {
+        return cars.stream()
+                .map(car -> {
+                    car.advance();
+                    return car.getNumberOfAdvance();
+                })
+                .collect(Collectors.toList());
     }
 
-    private List<Integer> go() {
-        List<Integer> carProgresses = new ArrayList<>();
-        for(Car car: cars) {
-            car.advance();
-            carProgresses.add(car.getNumberOfAdvance());
-        }
-        return carProgresses;
-    }
-
-    private void race(int numberOfAttempts) {
+    private List<List<Integer>> race(List<Car> cars, int numberOfAttempts) {
+        List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < numberOfAttempts; i++) {
-            List<Integer> result = go();
-            ResultView.showRaceNumberOfTimes(result);
+            result.add(advanceRound(cars));
         }
+        return result;
     }
 
     public void start() {
         InputView inputView = new InputView();
-        String value = inputView.inputIntArgument("자동차 대수는 몇 대 인가요?");
-        int numberOfCars = validationArgument(value);
+        int numberOfCars = inputView.inputIntArgument("자동차 대수는 몇 대 인가요?");
+        int numberOfAttempts = inputView.inputIntArgument("시도할 회수는 몇 회 인가요?");
 
-        value = inputView.inputIntArgument("시도할 회수는 몇 회 인가요?");
-        int numberOfAttempts = validationArgument(value);
+        List<Car> cars = new CarFactory(numberOfCars).generateCars();
 
-        cars = new CarFactory(numberOfCars).generateCars();
-
-        race(numberOfAttempts);
+        List<List<Integer>> result = race(cars, numberOfAttempts);
+        ResultView resultView = new ResultView(result);
+        resultView.showRace();
     }
 }
