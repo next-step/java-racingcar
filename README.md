@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+* 자동차경주 기능 목록 정리
+1. (test) 자동차 움직이기 테스트 작성
+2. (test) 자동차 전진 조건 테스트 작성
+3. (feat) 자동차 클래스 및 기능 추가
+4. (feat) InputView UI 클래스 추가
+5. (feat) ResultView UI 클래스 추가
+6. (feat) RaceClass 클래스 추가
