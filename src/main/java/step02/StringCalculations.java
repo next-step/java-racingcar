@@ -8,12 +8,14 @@ import java.util.stream.Collectors;
 
 public class StringCalculations {
 
-    public int calculate(int first, String operator, int second) {
+    private int calculate(int first, String operator, int second) {
         return OperationManager.calculate(operator, first, second);
     }
 
     public int calculate(String data) {
-        if (StringUtils.isBlank(data)) throw new IllegalArgumentException();
+        if (StringUtils.isBlank(data)){
+            throw new IllegalArgumentException("입력값이 비었습니다.");
+        }
 
         String result;
         Queue<String> inputData = new LinkedList<>(Arrays.asList(data.split(" ")));

@@ -8,7 +8,7 @@ enum OperationManager {
     NUM("-", (first, second) -> first - second),
     MULTI("*", (first, second) -> first * second),
     DIV("/", (first, second) -> {
-        if(second == 0) { throw new ArithmeticException(); }
+        if(second == 0) { throw new ArithmeticException("0으로 나누기는 불가능 합니다."); }
         return first / second;
     });
 
@@ -18,10 +18,6 @@ enum OperationManager {
     OperationManager(String symbol, BiFunction<Integer, Integer, Integer> inputData) {
         this.symbol = symbol;
         this.inputData = inputData;
-
-        if(inputData == null) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public static int calculate(String symbol, int first, int second) {
