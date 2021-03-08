@@ -7,6 +7,7 @@ import racingcar.io.Printer;
 public class Game {
 
   private final Cars cars;
+  private Winner winner;
 
   public Game(Random random) {
     this.cars = new Cars(random);
@@ -34,9 +35,18 @@ public class Game {
   public void start(List<String> names, int round) {
     initialize(names);
     moveCars(round);
+    selectWinner();
   }
 
-  public List<String> getWinner() {
-    return cars.getWinner();
+  private void selectWinner() {
+    this.winner = cars.getWinner();
+  }
+
+  public List<String> getWinners() {
+    return winner.getWinners();
+  }
+
+  public String getWinnerListString() {
+    return winner.winnerListString();
   }
 }

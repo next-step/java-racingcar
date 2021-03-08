@@ -30,7 +30,7 @@ public class Printer {
   }
 
   public static void printWinner(Game game) {
-    String winner = String.join(", ", game.getWinner());
-    System.out.println(winner + "이/가 최종 우승했습니다.");
+
+    System.out.println(game.getWinnerListString() + "이/가 최종 우승했습니다.");
   }
 }

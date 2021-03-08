@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static racingcar.Car.UNIT;
 
@@ -105,6 +106,9 @@ class GameTest {
     game.start(Lists.list(names), 2);
 
     // then
-    assertThat(game.getWinner()).contains(names);
+    assertAll(
+        () -> assertThat(game.getWinners()).contains(names),
+        () -> assertThat(game.getWinnerListString()).isEqualTo(String.join(", ", names))
+    );
   }
 }

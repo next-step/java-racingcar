@@ -36,13 +36,13 @@ public class Cars {
         .collect(Collectors.joining(System.lineSeparator()));
   }
 
-  public List<String> getWinner() {
+  public Winner getWinner() {
     final int maxDistance = getMaxDistance();
 
-    return cars.stream()
+    return Winner.of(cars.stream()
         .filter(car -> car.isWinner(maxDistance))
         .map(Car::getName)
-        .collect(Collectors.toList());
+        .collect(Collectors.toList()));
   }
 
   private int getMaxDistance() {

@@ -88,6 +88,6 @@ class CarsTest {
     cars.moveAll();
 
     // then
-    assertThat(cars.getWinner()).contains(names);
+    assertThat(cars.getWinner().getWinners()).contains(names);
   }
 }
