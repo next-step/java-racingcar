@@ -15,7 +15,11 @@ class RandomGeneratorTest {
     @ParameterizedTest(name = "bound: {0} 설정 시 범위 내에 생성되었는지 확인")
     @ValueSource(ints = {10, 5, 3})
     void generateRandomNumber_OneToBound(int bound) {
+        // given
         RandomGenerator randomGenerator = new RandomGenerator();
-        assertThat(randomGenerator.generateOneToTen(bound)).isLessThanOrEqualTo(bound);
+        // when
+        int generatedNumber = randomGenerator.generateOneToTen(bound);
+        // then
+        assertThat(generatedNumber).isLessThanOrEqualTo(bound);
     }
 }

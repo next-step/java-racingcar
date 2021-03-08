@@ -12,16 +12,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 자동차 생성, 이동 테스트
  */
 class CarTest {
-    Car car;
-
-    @BeforeEach
-    void setUp() {
-        car = Car.of();
-    }
 
     @DisplayName("자동차 생성 테스트")
     @Test
     void createdCar_ShouldNotNull() {
+        // given
+        Car car = Car.of();
+        // when
+
+        // then
         assertThat(car).isNotNull();
     }
 
@@ -29,7 +28,11 @@ class CarTest {
     @ParameterizedTest(name = "value 값이 {0} 인 경우 -> position 값 : {1}")
     @CsvSource(value = {"4, 2", "5, 2", "2, 1"})
     void move_CarPosition(int value, int position) {
+        // given
+        Car car = Car.of();
+        // when
         car.move(value);
+        // then
         assertThat(car.getPosition()).isEqualTo(position);
     }
 
@@ -37,9 +40,12 @@ class CarTest {
     @ParameterizedTest(name = "첫 번째 값: {0}, 두 번째 값: {1} -> position 값 : {2}")
     @CsvSource(value = {"4, 5, 3", "1, 2, 1", "6, 3, 2"})
     void moves_CarPosition(int first, int second, int position) {
+        // given
+        Car car = Car.of();
+        // when
         car.move(first);
         car.move(second);
-
+        // then
         assertThat(car.getPosition()).isEqualTo(position);
     }
 }

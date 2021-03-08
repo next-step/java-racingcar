@@ -28,11 +28,13 @@ class RecordTest {
     @ParameterizedTest(name = "기본 Position :: 기댓값 Position =  {0} :: {1} -> {2}")
     @MethodSource(value = "recordParam")
     void record_ReturnPosition(int recordPosition, int expectedPosition, boolean expected) {
+        // given
         Record build = new Record.Builder()
                 .position(recordPosition)
                 .build();
-
+        // when
         int position = build.getPosition();
+        // then
         assertThat(position == expectedPosition).isEqualTo(expected);
     }
 }

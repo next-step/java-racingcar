@@ -27,7 +27,11 @@ class CarGeneratorTest {
     @ParameterizedTest(name = "{0} 입력 값을 통해 생성되는 자동차 인스턴스 갯수 {1}")
     @MethodSource(value = "generateCarValue")
     void test(int createdSize, int expectedSize) {
+        // given
         List<Car> of = CarGenerator.of(createdSize);
-        assertThat(of.size()).isEqualTo(expectedSize);
+        // when
+        int carSize = of.size();
+        // then
+        assertThat(carSize).isEqualTo(expectedSize);
     }
 }
