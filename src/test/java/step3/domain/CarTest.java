@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import step3.move.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static step3.util.Constants.START_IDX;
 
 /**
  * 자동차 생성, 이동 테스트
@@ -22,7 +23,7 @@ class CarTest {
     @Test
     void createdCar_ShouldNotNull() {
         // given
-        Car car = Car.of();
+        Car car = new Car(START_IDX);
         // when
 
         // then
@@ -31,10 +32,10 @@ class CarTest {
 
     @DisplayName("자동차의 이동하는지 확인하는 테스트")
     @ParameterizedTest(name = "{0} 설정 시 -> position 값 : {1}")
-    @CsvSource(value = {"true, 2", "false, 1"})
+    @CsvSource(value = {"true, 1", "false, 0"})
     void move_CarPosition(boolean flag, int position) {
         // given
-        Car car = new Car(getMoveStrategy(flag));
+        Car car = new Car(0, getMoveStrategy(flag));
         // when
         car.move();
         // then
@@ -43,10 +44,10 @@ class CarTest {
 
     @DisplayName("자동차의 연속적인 이동 위치를 확인 테스트")
     @ParameterizedTest(name = "자동차 이동 전략: {0}, position 값 : {1}")
-    @CsvSource(value = {"true, 3", "false, 1"})
+    @CsvSource(value = {"true, 2", "false, 0"})
     void moves_CarPosition(boolean firstFlag, int position) {
         // given
-        Car car = new Car(getMoveStrategy(firstFlag));
+        Car car = new Car(0, getMoveStrategy(firstFlag));
         // when
         car.move();
         car.move();

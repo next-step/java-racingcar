@@ -14,24 +14,22 @@ public class Car {
     private int position;
 
     // 생성하는 쪽에서 무조건 이동하는 전략을 넣지 않고도 기본 값으로 사용할 수 있는 전략을 설정
-    private Car() {
-        this(new ConditionMoveStrategy());
+    public Car(int position) {
+        this(position, new ConditionMoveStrategy());
     }
 
     // 인터페이스를 파라미터로 받아 외부에서 움직임의 기준을 변경할 수 있도록 수정
-    public Car(MoveStrategy moveStrategy) {
+    public Car(int position, MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
+        this.position = position;
     }
 
-    // 자동차 생성
-    public static Car of() {
-        return new Car();
-    }
-
-    public void move(){
+    public Car move(){
         if(moveStrategy.isMovable()) {
             position++;
         }
+        // 이동 하면 새로 생성해야 하는게 맞을까?
+        return new Car(position, moveStrategy);
     }
 
     public int getPosition() {
