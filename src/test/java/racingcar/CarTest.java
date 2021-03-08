@@ -40,10 +40,11 @@ class CarTest {
   }
 
   static Stream<Arguments> nameAndErrorMessage() {
+    String wrongName = "abcdef";
     return Stream.of(
         arguments(null, EMPTY_STRING_ERROR_MESSAGE),
         arguments("", EMPTY_STRING_ERROR_MESSAGE),
-        arguments("abcdef", MAX_LENGTH_ERROR_MESSAGE)
+        arguments(wrongName, MAX_LENGTH_ERROR_MESSAGE + wrongName)
     );
   }
 
