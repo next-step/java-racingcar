@@ -1,6 +1,9 @@
 package StringCalculatorTest;
 
 import StringCalculator.StringCalculator;
+import StringCalculator.InputParser;
+import StringCalculator.SpaceSplittedInputParser;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,7 +17,8 @@ public class StringCalculatorTest {
 
     @BeforeEach
     void setUp() {
-        stringCalculator = new StringCalculator(" ");
+        InputParser SpaceSplittedInputParser = new SpaceSplittedInputParser();
+        stringCalculator = new StringCalculator(SpaceSplittedInputParser);
     }
 
     @ParameterizedTest
