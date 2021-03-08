@@ -2,14 +2,14 @@
 
 ## 구현할 기능 목록
 - [ ] 자동차 대수 입력   
-    - [ ] [ERROR] 음수    
+    - [ ] [ERROR] 0 이하의 값    
     - [ ] [ERROR] 문자    
     - [ ] [ERROR] 공백    
     - [ ] [ERROR] null   
     - [ ] N개의 자동차 생성   
     
 - [ ] 시도 회수 입력    
-    - [ ] [ERROR] 음수    
+    - [ ] [ERROR] 0 이하의 값    
     - [ ] [ERROR] 문자    
     - [ ] [ERROR] 공백    
     - [ ] [ERROR] null   
