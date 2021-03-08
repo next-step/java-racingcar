@@ -1,22 +1,31 @@
 package racing.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
 
     private List<RacingCar> carList;
 
-    private Random random = new Random();
+    private final Random random = new Random();
+
+    public RacingGame(String participationList) {
+        carList = new ArrayList<>();
+        carList = createRacingCar(carNameParsor(participationList));
+    }
+
+    public List<RacingCar> getCarList() {
+        return carList;
+    }
 
     /**
-     * 입력 받은 값으로 자동차와 게임 턴 설정 메서드
+     * 자동차이름을 이용해 생성해주는 메서드
      */
-    public List<RacingCar> setUp(int carCount) {
-        carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new RacingCar(0));
+    public List<RacingCar> createRacingCar(String[] racingCarNames) {
+        long carId = 1L;
+        for (String racingCarName : racingCarNames) {
+            carList.add(new RacingCar(carId++, racingCarName, 0));
         }
         return carList;
     }
@@ -42,5 +51,24 @@ public class RacingGame {
         return carList;
     }
 
+    /**
+     * 우승자를 설정하는 메서드
+     */
+    public List<RacingCar> setWinner() {
+        int winnerPosition = carList.stream()
+                .max(Comparator.comparing(RacingCar::getPosition))
+                .get()
+                .getPosition();
 
+        return carList.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .collect(toList());
+    }
+
+    /**
+     * 자동차 이름을 분할하는 메서드
+     */
+    public String[] carNameParsor(String participationList) {
+        return participationList.split(",");
+    }
 }

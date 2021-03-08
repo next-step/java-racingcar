@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,8 +16,9 @@ class RacingGameTest {
 
 
     List<RacingCar> init() {
-        racingGame = new RacingGame();
-        return racingGame.setUp(3);
+        String participationList = "SingSing,Boom,SM3";
+        racingGame = new RacingGame(participationList);
+        return racingGame.getCarList();
     }
 
     @DisplayName("레이싱 게임 초기화 테스트")
@@ -26,6 +28,8 @@ class RacingGameTest {
 
         //then
         assertEquals(3, racingCar.size());
+        assertEquals("SingSing", racingCar.get(0).getRacingCarName());
+        assertEquals(2L, racingCar.get(1).getRacingCarId());
     }
 
     @DisplayName("랜덤값이 자동차 갯수 만큼 생성되는지 테스트")
@@ -53,9 +57,7 @@ class RacingGameTest {
         racingGame.moveAndStop(randomValue);
 
         //then
-        assertEquals(5, racingCar.get(0).getPosition());
-        assertEquals(7, racingCar.get(1).getPosition());
-        assertEquals(8, racingCar.get(2).getPosition());
+        assertThat(racingCar).allSatisfy(car -> assertEquals(car.getPosition(), 1));
     }
 
     @DisplayName("이동거리가 4미만일때 자동차 정지 테스트")
@@ -69,14 +71,45 @@ class RacingGameTest {
         racingGame.moveAndStop(randomValue);
 
         //then
-        assertThat(racingCar).allSatisfy(position -> assertEquals(position.getPosition(), 0));
+        assertThat(racingCar).allSatisfy(car -> assertEquals(car.getPosition(), 0));
+    }
+
+    @DisplayName("우승자 가리는 메서드 테스트")
+    @Test
+    void setWinner() {
+        //given
+        init();
+        List<Integer> moveValue = createMoveValue(3, 5, 2);
+        List<RacingCar> racingCars = racingGame.moveAndStop(moveValue);
+
+        //when
+        List<RacingCar> winner = racingGame.setWinner();
+
+        //then
+        assertEquals(2L, winner.get(0).getRacingCarId());
+    }
+
+    @DisplayName("공동 우승일 경우 테스트")
+    @Test
+    void setCoWinner() {
+        //given
+        init();
+        List<Integer> moveValue = createMoveValue(5, 5, 2);
+        List<RacingCar> racingCars = racingGame.moveAndStop(moveValue);
+
+        //when
+        List<RacingCar> winner = racingGame.setWinner();
+
+        //then
+        assertEquals(2, winner.size());
+        assertEquals(1L, winner.get(0).getRacingCarId());
+        assertEquals(2L, winner.get(1).getRacingCarId());
     }
 
 
     private List<Integer> createMoveValue(int firstCarMovePosition, int secondCarMovePosition,
                                           int thirdCarMovePosition) {
-        List<Integer> randomValue = List.of(firstCarMovePosition, secondCarMovePosition, thirdCarMovePosition);
-        return randomValue;
+        return List.of(firstCarMovePosition, secondCarMovePosition, thirdCarMovePosition);
     }
 
 
