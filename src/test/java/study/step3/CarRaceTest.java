@@ -11,16 +11,6 @@ import static org.assertj.core.api.Assertions.*;
 public class CarRaceTest {
 
     @Test
-    @DisplayName("UI Input Test")
-    void UI_입력_실패테스트(){
-        String number = "5a";
-        assertThatThrownBy(()->{
-            StringValidator.checkNumberSyntax(number);
-        }).isInstanceOf(NumberFormatException.class)
-        .hasMessageContaining("숫자를 정확히 입력해주세요");
-    }
-
-    @Test
     @DisplayName("전진 테스트")
     void 전진테스트(){
         Car car = new RandomRaceCar();
