@@ -1,61 +1,47 @@
 package RacingCarTest;
 
+import RacingCar.MovementCondition;
 import RacingCar.Racing;
-import org.junit.jupiter.api.Test;
+import RacingCar.RacingResult;
+import RacingCar.SimpleRacingResult;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingTest {
-    @Test
-    void Given_AlwaysMoveCondition_When_Racing_Then_DistanceIncreased() {
-        //given
-        Racing racing = new Racing(new AlwaysMoveCondition());
-        racing.setNumberOfRacing(1);
-
-        //when
-        int distance = racing.racing();
-
-        //then
-        assertThat(distance).isEqualTo(1);
+    private static Stream<Arguments> provideRacingTestSources() {
+        MovementCondition alwaysMoveCondition = new AlwaysMoveCondition();
+        MovementCondition noMoveCondition = new NoMoveCondition();
+        return Stream.of(
+                Arguments.of(alwaysMoveCondition, 1, 1, new int[]{1}),
+                Arguments.of(noMoveCondition, 1, 1, new int[]{0}),
+                Arguments.of(alwaysMoveCondition, 1, 2, new int[]{2}),
+                Arguments.of(noMoveCondition, 1, 2, new int[]{0}),
+                Arguments.of(alwaysMoveCondition, 2, 1, new int[]{1, 1}),
+                Arguments.of(alwaysMoveCondition, 2, 2, new int[]{2, 2}),
+                Arguments.of(alwaysMoveCondition, 5, 4, new int[]{4, 4, 4, 4, 4}),
+                Arguments.of(alwaysMoveCondition, 0, 1, new int[]{0}),
+                Arguments.of(alwaysMoveCondition, 0, 0, new int[]{0}),
+                Arguments.of(alwaysMoveCondition, 1, 0, new int[]{0})
+        );
     }
 
-    @Test
-    void Given_NoMoveCondition_When_Racing_Then_DistanceNotIncreased() {
+    @ParameterizedTest
+    @MethodSource("provideRacingTestSources")
+    void When_Racing_Than_DistanceChanged(MovementCondition movementCondition, int numberOfCars, int numberOfRacing, int[] expected) {
         //given
-        Racing racing = new Racing(new NoMoveCondition());
-        racing.setNumberOfRacing(1);
+        Racing racing = new Racing(movementCondition, numberOfCars, numberOfRacing);
 
         //when
-        int distance = racing.racing();
+        RacingResult result = racing.racing();
 
         //then
-        assertThat(distance).isEqualTo(0);
-    }
-
-    @Test
-    void Given_TwoRacingNoMoveCondition_When_Racing_Then_DistanceNotIncreased() {
-        //given
-        Racing racing = new Racing(new NoMoveCondition());
-        racing.setNumberOfRacing(2);
-
-        //when
-        int distance = racing.racing();
-
-        //then
-        assertThat(distance).isEqualTo(0);
-    }
-
-    @Test
-    void Given_TwoRacingAndAlwaysMoveCondition_When_Racing_Then_DistanceIncreased() {
-        //given
-        Racing racing = new Racing(new AlwaysMoveCondition());
-        racing.setNumberOfRacing(2);
-
-        //when
-        int distance = racing.racing();
-
-        //then
-        assertThat(distance).isEqualTo(2);
+        for (int i = 0; i < numberOfCars; i++) {
+            assertThat(result.getDistance(i)).isEqualTo(expected[i]);
+        }
     }
 }
