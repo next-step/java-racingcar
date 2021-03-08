@@ -5,13 +5,9 @@ import java.util.Scanner;
 import study.step3.utils.Printer;
 
 public class InputView {
-    private Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
 
-    public InputView() {
-        scanner = new Scanner(System.in);
-    }
-
-    public int inputCount(String message) {
+    public static int inputCount(String message) {
         Printer.println(message);
         return Integer.parseInt(scanner.nextLine());
     }

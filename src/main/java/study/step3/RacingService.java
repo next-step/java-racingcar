@@ -10,15 +10,12 @@ public class RacingService {
     public String MESSAGE_ROUND = "라운드";
     public String PRINT_TOKEN = "-";
 
-    private InputView inputView;
-
     public RacingService() {
-        inputView = new InputView();
     }
 
     public void play() {
-        int carCount = inputView.inputCount(MESSAGE_INPUT_CAR);
-        int round = inputView.inputCount(MESSAGE_INPUT_ROUND);
+        int carCount = InputView.inputCount(MESSAGE_INPUT_CAR);
+        int round = InputView.inputCount(MESSAGE_INPUT_ROUND);
 
         Racing racing = new Racing();
         racing.setUp(carCount);
