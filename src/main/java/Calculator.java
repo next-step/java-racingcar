@@ -2,21 +2,19 @@ public class Calculator {
 
     public static final int MINIMUN_SIZE = 2;
 
+
     public Integer progress(String numbersAndOperators) {
         String[] strings = getSplitString(numbersAndOperators);
         Integer result = getNumber(strings[0]);
         int arrayLength = strings.length;
 
-        for (int i = 1; i < arrayLength; i += 2) {
+        for (int i = 1; i < arrayLength; i+=2) {
             arrayIndexValidation(arrayLength, i);
             Integer number = getNumber(strings[i + 1]);
             String operator = strings[i];
-
-            result =
-                    Operation.of(operator)
-                            .getResult(result, number);
+          
+            result = Operator.of(operator).getResult(result , number);
         }
-
         return result;
     }
 

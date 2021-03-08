@@ -43,7 +43,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1:+:1:2", "1:*:1:1", "1:-:1:0", "1:/:1:1"} , delimiter = ':')
     void calculateTest(int input1, String operator, int input2, int result) {
-        Assertions.assertEquals(result , Operation.of(operator).getResult(input1, input2));
+        Assertions.assertEquals(result , Operator.of(operator).getResult(input1, input2));
     }
 
     @DisplayName("모든 사칙연산 기능 테스트")
