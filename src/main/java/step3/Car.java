@@ -1,16 +1,11 @@
 package step3;
 
-import java.util.Random;
-
 public class Car {
 
-    private int count=0;
+    private int count;
 
-    public void move(){
-        int number = new Random().nextInt(10);
-        if(4 < number){
-            count++;
-        }
+    public void tryMove(int count){
+        this.count += 4 <= count? 1 : 0;
     }
 
     public int getCount() {
