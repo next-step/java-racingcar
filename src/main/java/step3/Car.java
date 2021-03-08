@@ -16,9 +16,10 @@ public class Car {
         if (random >= MOVE_NUM) {
             this.move++;
         }
+        print();
     }
 
-    public void print() {
+    private void print() {
         ResultView.print(this.move);
     }
 }
