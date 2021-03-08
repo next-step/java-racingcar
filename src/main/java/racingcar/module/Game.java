@@ -1,6 +1,7 @@
 package racingcar.module;
 
 import racingcar.model.Car;
+import racingcar.util.RandomUtil;
 import racingcar.view.ResultView;
 
 import java.util.List;
@@ -24,16 +25,13 @@ public class Game {
 
     public void playCarGame(List<Car> cars){
         for(Car car : cars ) {
-            if (randomNum() > 4) {
+            if (RandomUtil.randomNum() > 4) {
                 car.move();
             }
             resultView.printCarGame(car.getCarNum(), car.getPosition());
         }
         System.out.println("");
 
-    }
-    public static int randomNum(){
-        return new Random().nextInt(10);
     }
 
 
