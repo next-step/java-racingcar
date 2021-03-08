@@ -3,11 +3,10 @@ package study.step3;
 import java.util.Random;
 
 public class NumberChecker {
+    private static final Integer RANDOM_BOUND = 10;
+    private static final Integer CONDITION_OF_START = 4;
     public static boolean checkCondition() {
         Random random = new Random();
-        if(random.nextInt(10) >= 4){
-            return true;
-        }
-        return false;
+        return random.nextInt(RANDOM_BOUND) >= CONDITION_OF_START;
     }
 }
