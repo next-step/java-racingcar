@@ -26,7 +26,7 @@ public class InputView implements AutoCloseable {
     System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분하고, 최대 5자입니다.)");
     Printer.printPrompt();
 
-    String[] namesArray = scanner.next().trim().split(",");
+    String[] namesArray = scanner.nextLine().replaceAll("\\s+", "").split(",");
     return Arrays.asList(namesArray);
   }
 
