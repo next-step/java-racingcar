@@ -19,14 +19,15 @@ public class CarRacing {
         }
     }
 
-    public void moveCars(int countOfCar) {
+    public void moveCars(int countOfCarRacing) {
         System.out.println("\n실행 결과");
         Random random = new Random();
 
-        for (int i = 0; i < countOfCar; i++) {
+        for (int i = 0; i < countOfCarRacing; i++) {
             moveCar(random.nextInt(RANDOM_RANGE));
             System.out.println();
         }
+        cars.clear();
     }
 
     private void moveCar(int randomNumber) {
