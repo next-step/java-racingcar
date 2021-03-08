@@ -1,7 +1,6 @@
 package study.step3;
 
 import study.step3.ui.InputView;
-import study.step3.utils.Printer;
 
 public class RacingService {
     public String MESSAGE_INPUT_CAR = "자동차 대수는 몇 대 인가요?";
@@ -20,9 +19,9 @@ public class RacingService {
         Racing racing = new Racing();
         racing.setUp(carCount);
 
-        Printer.println(MESSAGE_RACING_START);
+        System.out.println(MESSAGE_RACING_START);
         for(int i=0; i<round; i++) {
-            Printer.println((i+1) + MESSAGE_ROUND);
+            System.out.println((i+1) + MESSAGE_ROUND);
             racing.run();
             racing.printRacingResult(PRINT_TOKEN);
         }
