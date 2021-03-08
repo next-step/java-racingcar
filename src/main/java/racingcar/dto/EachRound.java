@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.dto;
+
+import racingcar.domain.Car;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +13,7 @@ public class EachRound {
         return result;
     }
 
-    public void recordRoundPosition(Car car, String carName) {
-        result.put(carName, car.getPosition());
+    public void recordRoundPosition(Car car) {
+        result.put(car.getCarName(), car.getPosition());
     }
 }
