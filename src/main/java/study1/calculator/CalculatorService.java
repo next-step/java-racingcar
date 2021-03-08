@@ -7,14 +7,6 @@ import java.util.List;
 import org.junit.platform.commons.util.StringUtils;
 
 public class CalculatorService {
-  /*
-    로직
-      - exception 체크 / isEmpty
-      - for 문 돌면서 계산
-        - exception 체크 / isNumber, isEmpty
-      - 
-  */
-
   private List<String> strList;
 
   public CalculatorService(String str) {

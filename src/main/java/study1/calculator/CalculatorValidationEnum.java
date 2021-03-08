@@ -8,7 +8,6 @@ public enum CalculatorValidationEnum {
   EMPTY_CHECK(1) {
     @Override
     public void check(String str) {
-      // System.out.println("EMPTY_CHECK: " + str);
       if (StringUtils.isBlank(str)) {
         throw new IllegalArgumentException("null or empty error");
       }
@@ -17,7 +16,6 @@ public enum CalculatorValidationEnum {
   INT_CHECK(0) {
     @Override
     public void check(String str) {
-      // System.out.println("INT_CHECK: " + str);
       try {
         Integer.parseInt(str);
       } catch (Exception e) {
@@ -35,10 +33,8 @@ public enum CalculatorValidationEnum {
   }
 
   public static CalculatorValidationEnum fromIndex(int index) {
-    return Arrays.stream(CalculatorValidationEnum.values()).filter((validation) -> {
-      // System.out.println("index % 2: " + index % 2);
-      return validation.index == (index % 2);
-    }).findAny().orElseThrow(() -> new IllegalArgumentException("not int error"));
+    return Arrays.stream(CalculatorValidationEnum.values()).filter((validation) -> validation.index == (index % 2))
+        .findAny().orElseThrow(() -> new IllegalArgumentException("not int error"));
   }
 
   public void checkSomeThing(String str) {
