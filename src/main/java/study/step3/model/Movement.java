@@ -10,10 +10,9 @@ import java.util.Random;
 public class Movement {
     private static final int RANDOM_RANGE = 10;
     private static final int MOVE_RESTRICT = 4;
-    private Random random;
+    private static final Random random = new Random();
 
     public Movement() {
-        random = new Random();
     }
 
     public int stopAndMove() {
