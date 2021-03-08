@@ -2,7 +2,7 @@ package racingcar.utils;
 
 public class InputValidator {
 
-    private static int ZERO = 0;
+    private static final int ZERO = 0;
 
     private InputValidator() {
     }
