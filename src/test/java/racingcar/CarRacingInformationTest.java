@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.controller.RacingGameController;
 import racingcar.model.CarRacingInformation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ public class CarRacingInformationTest {
 
 
     @Test
-    @DisplayName("입력값(자동차 수, 경주 시도 횟수)이 0 이하인 경우 확인")
+    @DisplayName("입력값(자동차 수)이 0 이하인 경우 확인")
     public void isZeroOrLess() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new CarRacingInformation(0,-1);

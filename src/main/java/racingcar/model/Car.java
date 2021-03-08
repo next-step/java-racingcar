@@ -6,13 +6,6 @@ public class Car {
 
     private int position;
 
-    public void decideMovable() {
-        RandomMovable randomMovableImple = new RandomMovable();
-        int randomValue = randomMovableImple.makeRandomValue();
-        if (randomMovableImple.moveOrNot(randomValue)) {
-            move();
-        }
-    }
 
     public void move() {
         position++;

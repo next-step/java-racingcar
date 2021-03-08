@@ -26,28 +26,5 @@ public class CarTest {
         assertEquals(1,car.getPoisition());
     }
 
-    @Test
-    @DisplayName("랜덤값이 4 이상일 경우 자동차 전진")
-    public void moveCarWithRandomValueMoreThenFour() {
-        Car car = new Car();
-        RandomMovable movable = new RandomMovable();
-        if (movable.moveOrNot(4)) {
-            car.move();
-        }
-        assertEquals(1,car.getPoisition());
-
-    }
-
-    @Test
-    @DisplayName("랜덤값이 4 미만일 경우 자동차 멈춤")
-    public void moveCarWithRandomValueLessThenFour() {
-        Car car = new Car();
-        RandomMovable movable = new RandomMovable();
-        if (movable.moveOrNot(3)) {
-            car.move();
-        }
-        assertEquals(0,car.getPoisition());
-    }
-
 
 }

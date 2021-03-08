@@ -1,15 +1,20 @@
 package racingcar.model;
 
+import racingcar.model.action.RandomMovable;
+
 import java.util.ArrayList;
 
 public class CarRacingInformation {
     private ArrayList<Car> carList;
+    private RandomMovable randomMovable;
     private int carRacingCount;
+
 
     public CarRacingInformation(int numberOfCar, int carRacingCount) {
         isZeroOrLess(numberOfCar);
         isZeroOrLess(carRacingCount);
         makeCarList(numberOfCar);
+        randomMovable = new RandomMovable();
         this.carRacingCount = carRacingCount;
     }
 
@@ -31,20 +36,26 @@ public class CarRacingInformation {
         return carList;
     }
 
-    public boolean checkCarRacingCount() {
-        return carRacingCount > 0;
+
+    public ArrayList<Car> decideMovable() {
+        for (int carIdx = 0; carIdx< carList.size(); carIdx++) {
+            int randomValue = randomMovable.makeRandomValue();
+            if (randomMovable.moveOrNot(randomValue)) {
+                carList.get(carIdx).move();
+            }
+        }
+
+        return carList;
     }
 
-
-    public void decideMovable() {
-        for (Car car : carList) {
-            car.decideMovable();
-        }
+    public boolean checkCarRacingCount() {
+        return carRacingCount > 0;
     }
 
     public void minusCarRacingCount() {
         carRacingCount--;
     }
+
 
     public int getCarRacingCount() {
         return carRacingCount;

@@ -11,6 +11,8 @@ public class RacingGameController {
 
     private InputView inputView;
     private ResultView resultView;
+    private CarRacingInformation carRacingInformation;
+
 
     public RacingGameController() {
         inputView = new InputView();
@@ -20,20 +22,21 @@ public class RacingGameController {
     public void runGame() {
         int numberOfCar = drawNumberOfCarAndReturn();
         int carRacingCount = drawCarCountAndReturn();
-        CarRacingInformation carRacingInformation
+        carRacingInformation
                 = new CarRacingInformation(numberOfCar,carRacingCount);
         drawLiterallyExecutionResult();
-        playGame(carRacingInformation);
+        playGame();
     }
 
-    private void playGame(CarRacingInformation carRacingInformation) {
+    private void playGame() {
         while (carRacingInformation.checkCarRacingCount()) {
-            carRacingInformation.decideMovable();
-            drawExecutionResult(carRacingInformation.getCarList());
+            ArrayList<Car> movedCarList = carRacingInformation.decideMovable();
+            drawExecutionResult(movedCarList);
             System.out.print("\n");
             carRacingInformation.minusCarRacingCount();
         }
     }
+
 
     private void drawExecutionResult(ArrayList<Car> carList) {
         for (Car car : carList) {
@@ -52,4 +55,5 @@ public class RacingGameController {
     private int drawNumberOfCarAndReturn() {
         return inputView.inputNumberOfCar();
     }
+
 }
