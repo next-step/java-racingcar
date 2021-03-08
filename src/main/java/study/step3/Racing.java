@@ -2,6 +2,7 @@ package study.step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import study.step3.model.Car;
 import study.step3.model.Movement;
@@ -25,9 +26,7 @@ public class Racing {
     }
 
     public void setUp(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
-        }
+        IntStream.range(0, carCount).forEach(i -> carList.add(new Car()));
     }
 
     public List<Car> getCarList() {
@@ -35,9 +34,7 @@ public class Racing {
     }
 
     public void run() {
-        for (Car car : carList) {
-            car.move(movement.stopAndMove());
-        }
+        carList.forEach(car -> car.move(movement.stopAndMove()));
     }
 
     public void printRacingResult(String printToken) {
