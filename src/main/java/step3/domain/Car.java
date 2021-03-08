@@ -8,8 +8,6 @@ import step3.move.MoveStrategy;
  */
 public class Car {
 
-    public static final int DEFAULT_POSITION = 1;
-
     // 메시지를 처리하기 위해 자율적으로 선택
     private final MoveStrategy moveStrategy;
 
@@ -23,7 +21,6 @@ public class Car {
     // 인터페이스를 파라미터로 받아 외부에서 움직임의 기준을 변경할 수 있도록 수정
     public Car(MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
-        this.position = DEFAULT_POSITION;
     }
 
     // 자동차 생성
