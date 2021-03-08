@@ -25,16 +25,14 @@ public class RacingCarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"3", "5", "10"})
 	void makeCarTest(int carSize) {
-		Game game = new Game();
-		game.makeCar(carSize);
+		Game game = new Game(carSize);
 		assertThat(game.getCar().size()).isEqualTo(carSize);
 	}
 
 	@Test
 	@DisplayName("전진 또는 멈춤 테스트")
 	void moveOrStopTest() {
-		Game game = new Game();
-		game.makeCar(1);
+		Game game = new Game(1);
 		Car car = game.getCar().get(0);
 		game.moveOrStop(car);
 		game.moveOrStop(car);
@@ -47,8 +45,7 @@ public class RacingCarTest {
 	@Test
 	@DisplayName("실행 횟수 테스트")
 	void runTest() {
-		Game game = new Game();
-		game.makeCar(1);
+		Game game = new Game(1);
 		game.run(5);
 		assertThat(game.getExecuteCount()).isEqualTo(5);
 		game.run(10);
@@ -58,8 +55,7 @@ public class RacingCarTest {
 	@Test
 	@DisplayName("실행 결과 테스트")
 	void runExecuteTest() {
-		Game game = new Game();
-		game.makeCar(3);
+		Game game = new Game(3);
 		game.run(5);
 
 		for(Car car : game.getCar()) {

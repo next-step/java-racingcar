@@ -8,7 +8,11 @@ public class Game {
 	private List<Car> carList = new ArrayList<>();
 	private int executeCount = 0;
 
-	public void makeCar(int carListSize) {
+	public Game(int carListSize) {
+		makeCar(carListSize);
+	}
+
+	private void makeCar(int carListSize) {
 		for (int i = 0; i < carListSize; i++) {
 			carList.add(new Car());
 		}
