@@ -5,8 +5,7 @@ public class Calculator {
   final String DELIMITER = " ";
 
   public int calculate(String input) {
-    InputValidator inputValidator = new InputValidator();
-    inputValidator.validateInput(input);
+    InputValidator.validateInput(input);
 
     String[] calcArr = input.split(DELIMITER);
     int result = Integer.parseInt(calcArr[0]);
