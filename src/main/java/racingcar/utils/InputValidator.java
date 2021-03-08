@@ -2,6 +2,8 @@ package racingcar.utils;
 
 public class InputValidator {
 
+    private static int ZERO = 0;
+
     private InputValidator() {
     }
 
@@ -22,6 +24,12 @@ public class InputValidator {
     public static void validateEmpty(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("비어있는 값인지 확인해주세요.");
+        }
+    }
+
+    public static void validateLessThanZero(String input) {
+        if (Integer.parseInt(input) <= ZERO) {
+            throw new IllegalArgumentException("0이하의 값인지 확인해주세요.");
         }
     }
 }
