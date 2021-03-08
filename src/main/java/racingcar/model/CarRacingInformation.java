@@ -39,13 +39,16 @@ public class CarRacingInformation {
 
     public ArrayList<Car> decideMovable() {
         for (int carIdx = 0; carIdx< carList.size(); carIdx++) {
-            int randomValue = randomMovable.makeRandomValue();
-            if (randomMovable.moveOrNot(randomValue)) {
-                carList.get(carIdx).move();
-            }
+            decideMovableByRandomValue(carIdx);
         }
-
         return carList;
+    }
+
+    public void decideMovableByRandomValue(int carIdx) {
+        int randomValue = randomMovable.makeRandomValue();
+        if (randomMovable.moveOrNot(randomValue)) {
+            carList.get(carIdx).move();
+        }
     }
 
     public boolean checkCarRacingCount() {
