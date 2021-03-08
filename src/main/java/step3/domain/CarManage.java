@@ -18,8 +18,8 @@ public class CarManage {
     private final List<Car> cars = new ArrayList<>();
 
     // 자동차 댓수만 설정
-    public CarManage(final int carCount) {
-        this(carCount, new ConditionMoveStrategy());
+    public CarManage(final int participants) {
+        this(participants, new ConditionMoveStrategy());
     }
 
     // 자동차 움직이는 전략과 함께 생성하려는 경우

@@ -1,64 +1,39 @@
 package step3.module;
 
-import step3.domain.Car;
-import step3.domain.CarGenerator;
-import step3.domain.RandomGenerator;
-import step3.domain.Record;
-import step3.ui.InputView;
-import step3.ui.ResultView;
+import step3.domain.CarManage;
+import step3.domain.RacingRound;
+import step3.ui.dto.RequestRacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import static step3.domain.RandomGenerator.RANDOM_RANGE_BOUND;
-import static step3.util.Constants.*;
+import static step3.util.Constants.START_IDX;
 
 /**
  * 레이싱 게임 역할을 하는 클래스
  */
-public class CarRacingGame implements RacingGameRunnable {
+public class CarRacingGame {
 
-    private final RandomGenerator randomGenerator;
+    // 자동차 게임이 실행되기 위한 필수 필드
+    private final CarManage carManage;
+    private final int attemptCount;
+    private final List<RacingRound> racingRounds = new ArrayList<>();
 
-    public CarRacingGame() {
-        this.randomGenerator = new RandomGenerator();
+    public CarRacingGame(RequestRacingGame userInput) {
+        attemptCount = userInput.getAttemptCount();
+        carManage = new CarManage(userInput.getParticipants());
     }
 
-    @Override
-    public void run() {
-        // 사용자의 요청 값을 입력
-        InputView inputView = new InputView();
-        int carCount = inputView.requestUserInput(QUESTION_HOW_MANY_CAR);
-        int tryCount = inputView.requestUserInput(QUESTION_HOW_MANY_TRY);
-
-        // 자동차 생성
-        List<Car> cars = CarGenerator.of(carCount);
-
-        // 레이싱 결과
-        List<Record> record = race(cars, tryCount);
-
-        // 결과 출력
-        ResultView resultView = new ResultView();
-        resultView.responseResult(record);
+    // 레이스
+    public void race() {
+        IntStream.range(START_IDX, attemptCount)
+                .forEach(value ->
+                        // 라운드 별 기록 저장
+                        racingRounds.add(carManage.run()));
     }
 
-    // 자동차 레이싱 로직
-    private List<Record> race(List<Car> participants, int tryCount) {
-        List<Record> resultRecord = new ArrayList<>();
-
-        // TODO 뭔가 다르게 할 수 있는 방법은 없는지 생각하기
-        while (tryCount-- > 0) {
-            resultRecord = attempt(participants);
-        }
-        return resultRecord;
-    }
-
-    // 1회 시도당 레이서의 이동 거리 move() -> record 기록
-    private List<Record> attempt(List<Car> participants) {
-        return participants.stream()
-                .map(car -> car.move(randomGenerator.generateOneToTen(RANDOM_RANGE_BOUND)))
-                .map(Car::toRecord)
-                .collect(Collectors.toList());
+    public List<RacingRound> getRacingResult() {
+        return racingRounds;
     }
 }

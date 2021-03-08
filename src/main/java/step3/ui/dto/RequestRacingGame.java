@@ -5,19 +5,19 @@ package step3.ui.dto;
  */
 public class RequestRacingGame {
 
-    private final int carCount;
-    private final int tryCount;
+    private final int participants;
+    private final int attemptCount;
 
-    public RequestRacingGame(int carCount, int tryCount) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
+    public RequestRacingGame(int participants, int attemptCount) {
+        this.participants = participants;
+        this.attemptCount = attemptCount;
     }
 
-    public int getTryCount() {
-        return tryCount;
+    public int getAttemptCount() {
+        return attemptCount;
     }
 
-    public int getCarCount() {
-        return carCount;
+    public int getParticipants() {
+        return participants;
     }
 }

@@ -18,8 +18,8 @@ class RequestRacingGameTest {
 
         RequestRacingGame request = new RequestRacingGame(carCount, tryCount);
 
-        int carCnt = request.getCarCount();
-        int tryCnt = request.getTryCount();
+        int carCnt = request.getParticipants();
+        int tryCnt = request.getAttemptCount();
 
         assertThat(carCount).isEqualTo(carCnt);
         assertThat(tryCount).isEqualTo(tryCnt);
