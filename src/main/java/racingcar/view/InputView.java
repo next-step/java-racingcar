@@ -4,14 +4,12 @@ import racingcar.utils.InputValidator;
 
 import java.util.Scanner;
 
-public class InputView {
+public enum InputView {
 
-    private static final String INPUT_HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
-    private final Scanner scanner;
+    INSTANCE;
 
-    public InputView(Scanner scanner) {
-        this.scanner = scanner;
-    }
+    private final String INPUT_HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
+    private final Scanner scanner = new Scanner(System.in);
 
     public int InputNumberOfCars() {
         System.out.println(INPUT_HOW_MANY_CARS);
