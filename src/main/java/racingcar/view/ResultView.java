@@ -5,11 +5,13 @@ import java.util.Map;
 
 public class ResultView {
 
+    private static final char FORWARDING = '-';
+
     public String printEachCar(int position) {
         String result = "";
 
         for (int i = 0; i < position; i++) {
-            result += "-";
+            result += FORWARDING;
         }
 
         return result;
