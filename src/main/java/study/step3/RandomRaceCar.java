@@ -7,10 +7,12 @@ public class RandomRaceCar implements Car{
         this.position = START_POSITION;
     }
     @Override
-    public int move(){
-        if(NumberChecker.checkCondition()){
-            position = position + 1;
+    public void move(boolean condition){
+        if(condition){
+            position++;
         }
+    }
+    public int getPosition(){
         return position;
     }
 }

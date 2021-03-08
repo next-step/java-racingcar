@@ -15,7 +15,10 @@ public class Cars {
      * */
     public void move(){
         for(Car car : cars){
-            car.move();
+            car.move(NumberChecker.checkCondition());
         }
+    }
+    public List<Car> getCars(){
+        return cars;
     }
 }
