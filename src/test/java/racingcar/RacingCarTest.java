@@ -41,6 +41,29 @@ public class RacingCarTest {
 		game.moveOrStop(car);
 		game.moveOrStop(car);
 		game.moveOrStop(car);
-		assertThat(car.getPosition()).isBetween(0,6);
+		assertThat(car.getPosition()).isBetween(0, 6);
+	}
+
+	@Test
+	@DisplayName("실행 횟수 테스트")
+	void runTest() {
+		Game game = new Game();
+		game.makeCar(1);
+		game.run(5);
+		assertThat(game.getExecuteCount()).isEqualTo(5);
+		game.run(10);
+		assertThat(game.getExecuteCount()).isEqualTo(10);
+	}
+
+	@Test
+	@DisplayName("실행 결과 테스트")
+	void runExecuteTest() {
+		Game game = new Game();
+		game.makeCar(3);
+		game.run(5);
+
+		for(Car car : game.getCar()) {
+			assertThat(car.getPosition()).isBetween(0,6);
+		}
 	}
 }
