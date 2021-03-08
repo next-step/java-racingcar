@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingCarTest {
 
@@ -17,5 +19,14 @@ public class RacingCarTest {
 		car.move();
 		car.move();
 		assertThat(car.getPosition()).isEqualTo(3);
+	}
+
+	@DisplayName("게임 생성 : 자동차 생성 테스트")
+	@ParameterizedTest
+	@ValueSource(strings = {"3", "5", "10"})
+	void makeCarTest(int carSize) {
+		Game game = new Game();
+		game.makeCar(carSize);
+		assertThat(game.getCar().size()).isEqualTo(carSize);
 	}
 }
