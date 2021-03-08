@@ -29,4 +29,18 @@ public class RacingCarTest {
 		game.makeCar(carSize);
 		assertThat(game.getCar().size()).isEqualTo(carSize);
 	}
+
+	@Test
+	@DisplayName("전진 또는 멈춤 테스트")
+	void moveOrStopTest() {
+		Game game = new Game();
+		game.makeCar(1);
+		Car car = game.getCar().get(0);
+		game.moveOrStop(car);
+		game.moveOrStop(car);
+		game.moveOrStop(car);
+		game.moveOrStop(car);
+		game.moveOrStop(car);
+		assertThat(car.getPosition()).isBetween(0,6);
+	}
 }
