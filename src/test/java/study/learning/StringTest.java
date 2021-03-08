@@ -1,4 +1,4 @@
-package study;
+package study.learning;
 
 
 import org.junit.jupiter.api.DisplayName;
@@ -13,32 +13,44 @@ public class StringTest {
 
     @Test
     @DisplayName("문자열 1,2 나누기")
-    public void stringTest01() throws Exception {
+    public void splitText01() throws Exception {
+        // given
         String[] result = "1,2".split(",");
-//        assertThat(result).contains("1", "2");
+
+        // then
         assertThat(result).containsExactly("1", "2");
     }
 
     @Test
     @DisplayName("문자열 1, 나누기")
-    public void stringTest02() throws Exception {
+    public void splitText02() throws Exception {
+        // given
         String[] result = "1,".split(",");
+
+        // then
         assertThat(result).containsExactly("1");
     }
 
     @Test
     @DisplayName("문자열 (1,2) substring 으로 ()제거하기")
-    public void stringTest03() throws Exception {
+    public void removeText() throws Exception {
+        // given
         String data = "(1,2)";
+
+        // when
         String result = data.substring(1, data.length()-1);
+
+        // then
         assertThat(result).isEqualTo("1,2");
     }
 
     @Test
     @DisplayName("문자열 abc 뽑아내기")
-    public void stringTest04() throws Exception {
+    public void selectAlphabet() throws Exception {
+        // given
         String data = "abc";
 
+        // then
         assertEquals(data.charAt(0), 'a');
         assertEquals(data.charAt(1), 'b');
         assertEquals(data.charAt(2), 'c');
