@@ -17,12 +17,12 @@ import static step3.util.Constants.*;
 /**
  * 레이싱 게임 역할을 하는 클래스
  */
-public class RacingGame implements RacingGameRunnable {
+public class CarRacingGame implements RacingGameRunnable {
 
     private final RandomGenerator randomGenerator;
 
-    public RacingGame() {
-        this.randomGenerator = new RandomGenerator(RANDOM_RANGE_BOUND);
+    public CarRacingGame() {
+        this.randomGenerator = new RandomGenerator();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class RacingGame implements RacingGameRunnable {
     // 1회 시도당 레이서의 이동 거리 move() -> record 기록
     private List<Record> attempt(List<Car> participants) {
         return participants.stream()
-                .map(car -> car.move(randomGenerator.generateOneToTen()))
+                .map(car -> car.move(randomGenerator.generateOneToTen(RANDOM_RANGE_BOUND)))
                 .map(Car::toRecord)
                 .collect(Collectors.toList());
     }

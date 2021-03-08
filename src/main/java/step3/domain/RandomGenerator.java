@@ -11,15 +11,13 @@ public class RandomGenerator {
     public static final int RANDOM_RANGE_BOUND = 10;
 
     private final Random random;
-    private final int bound;
 
-    public RandomGenerator(int bound) {
+    public RandomGenerator() {
         this.random = new Random();
-        this.bound = bound;
     }
 
     // 랜덤 숫자 생성기 (1 ~ bound)
-    public int generateOneToTen() {
+    public int generateOneToTen(int bound) {
         return random.nextInt(bound);
     }
 }
