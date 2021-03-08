@@ -1,6 +1,6 @@
 package study.step2;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
@@ -18,12 +18,25 @@ public class StringCalculatorTest {
     assertEquals(9, number);
   }
 
-  @ParameterizedTest
-  @CsvSource(value = {"4,5,9", "2,3,5", "4,2,6"})
+  @Test
   @DisplayName("숫자가 아닐 경우 exception")
   void parseInt_fail() {
-    assertThatExceptionOfType(IllegalArgumentException.class)
+    assertThatIllegalArgumentException()
         .isThrownBy(() -> this.stringCalculator.parseInt("string"));
+  }
+
+  @Test
+  @DisplayName("null 들어올 경우 IllegalArgumentException")
+  void null_fail() {
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> this.stringCalculator.calculate(null));
+  }
+
+  @Test
+  @DisplayName("blank 들어올 경우 IllegalArgumentException")
+  void blank_fail() {
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> this.stringCalculator.calculate(" "));
   }
 
   @ParameterizedTest
