@@ -21,7 +21,7 @@ public class CarRacingInformationTest {
 
 
     @Test
-    @DisplayName("입력값(자동차 수)이 0 이하인 경우 확인")
+    @DisplayName("입력값(자동차 수,경기 횟수)이 0 이하인 경우 확인")
     public void isZeroOrLess() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new CarRacingInformation(0,-1);
