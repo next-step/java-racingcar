@@ -1,30 +1,25 @@
-package step3.controller;
+package step3;
 
 import step3.validation.InputValidation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class CarController {
+public class RacingCarGame {
 
+    private static final String ADVANCE = "-";
     private int totalCar;
     private int attemptCount;
-    private static final String ADVANCE = "-";
     private final Random random = new Random();
-    private InputValidation inputValidation = new InputValidation();
 
-    public CarController(int totalCar, int attemptCount) {
+    public RacingCarGame(int totalCar, int attemptCount) {
         this.attemptCount = attemptCount;
         this.totalCar = totalCar;
     }
 
-
     public String getSumAdvance() {
         String s = "";
         for(int i = 0 ; i < this.attemptCount; i++ ){
-            if (inputValidation.isRandomValueMoreThenFour(random.nextInt(10))) {
+            if (isRandomValueMoreThenFour(random.nextInt(10))) {
                 s += ADVANCE;
             }
         }
@@ -45,4 +40,12 @@ public class CarController {
         }
         return resultMap;
     }
+
+    public RacingCarGame(int totalCar, int attemptCount) {
+        this.totalCar = totalCar;
+        this.attemptCount = attemptCount;
+    }
+
+
+
 }
