@@ -14,7 +14,7 @@ public class RandomMovable implements Movable{
     }
 
     @Override
-    public boolean MoveOrNot(int randomValue) {
-        return randomValue >= CRETERION_VALUE ? true : false;
+    public boolean moveOrNot(int randomValue) {
+        return randomValue >= CRETERION_VALUE;
     }
 }

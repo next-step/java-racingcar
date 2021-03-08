@@ -15,7 +15,7 @@ public class CarRacingInformation {
 
     private void makeCarList(int numberOfCar) {
         carList = new ArrayList<>(numberOfCar);
-        for (int i = 0;i<numberOfCar;i++) {
+        for (int i = 0; i<numberOfCar; i++) {
             carList.add(new Car());
         }
     }
@@ -32,7 +32,7 @@ public class CarRacingInformation {
     }
 
     public boolean checkCarRacingCount() {
-        return carRacingCount > 0 ? true : false;
+        return carRacingCount > 0;
     }
 
 

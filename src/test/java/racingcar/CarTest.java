@@ -31,7 +31,7 @@ public class CarTest {
     public void moveCarWithRandomValueMoreThenFour() {
         Car car = new Car();
         RandomMovable movable = new RandomMovable();
-        if (movable.MoveOrNot(4)) {
+        if (movable.moveOrNot(4)) {
             car.move();
         }
         assertEquals(1,car.getPoisition());
@@ -43,7 +43,7 @@ public class CarTest {
     public void moveCarWithRandomValueLessThenFour() {
         Car car = new Car();
         RandomMovable movable = new RandomMovable();
-        if (movable.MoveOrNot(3)) {
+        if (movable.moveOrNot(3)) {
             car.move();
         }
         assertEquals(0,car.getPoisition());
