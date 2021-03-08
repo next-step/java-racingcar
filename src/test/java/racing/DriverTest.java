@@ -26,7 +26,6 @@ public class DriverTest {
         verify(car, never()).move();
     }
 
-
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("4 ~ 9가 주어질 때는 car의 move()가 실행돼야 한다.")
