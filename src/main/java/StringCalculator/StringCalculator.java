@@ -2,10 +2,6 @@ package StringCalculator;
 
 import java.util.HashMap;
 
-interface Operation {
-    int operation(int operand0, int operand1);
-}
-
 class Adder implements Operation {
     @Override
     public int operation(int operand0, int operand1) {
@@ -36,22 +32,23 @@ class Divide implements Operation {
 
 public class StringCalculator {
     HashMap<String, Operation> ops;
-    String delim;
+    InputParser inputParser;
 
-    public StringCalculator(String delim) {
-        this.delim = delim;
+    public StringCalculator(InputParser inputParser) {
+        if (inputParser == null) {
+            throw new IllegalArgumentException("inputParser is null");
+        }
+        this.inputParser = inputParser;
         initOperation();
     }
 
-    public int calc(String input) {
-        String[] tokens = parseInput(input);
+    public int calculate(String input) {
+        inputParser.parse(input);
+        int operand0 = Integer.parseInt(inputParser.pop());
 
-        int popIndex = 0;
-        int operand0 = Integer.parseInt(tokens[popIndex++]);
-
-        while (popIndex != tokens.length) {
-            String operationSymbol = tokens[popIndex++];
-            int operand1 = Integer.parseInt(tokens[popIndex++]);
+        while (!inputParser.isEmpty()) {
+            String operationSymbol = inputParser.pop();
+            int operand1 = Integer.parseInt(inputParser.pop());
             operand0 = ops.get(operationSymbol).operation(operand0, operand1);
         }
         return operand0;
@@ -63,17 +60,5 @@ public class StringCalculator {
         ops.put("-", new Minus());
         ops.put("*", new Multiple());
         ops.put("/", new Divide());
-    }
-
-    String[] parseInput(String input) {
-        validateInput(input);
-        return input.split(delim);
-    }
-
-    private void validateInput(String input) {
-        if (input == null)
-            throw new IllegalArgumentException("input is null");
-        if (input.trim().length() == 0)
-            throw new IllegalArgumentException("input is blank");
     }
 }
