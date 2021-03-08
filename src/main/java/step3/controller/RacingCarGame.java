@@ -1,51 +1,42 @@
-package step3;
+package step3.controller;
 
-import step3.validation.InputValidation;
-
+import step3.domain.Car;
 import java.util.*;
 
 public class RacingCarGame {
 
-    private static final String ADVANCE = "-";
+    private static final int RANDOM_SCOPE = 10;
+    private final Random random = new Random();
     private int totalCar;
     private int attemptCount;
-    private final Random random = new Random();
 
-    public RacingCarGame(int totalCar, int attemptCount) {
+    public RacingCarGame (int totalCar, int attemptCount) {
         this.attemptCount = attemptCount;
         this.totalCar = totalCar;
     }
 
-    public String getSumAdvance() {
-        String s = "";
-        for(int i = 0 ; i < this.attemptCount; i++ ){
-            if (isRandomValueMoreThenFour(random.nextInt(10))) {
-                s += ADVANCE;
-            }
+    public int carAdvanced() {
+        Car car = new Car();
+        for (int i = 0; i < this.attemptCount; i++) {
+            car.move(random.nextInt(RANDOM_SCOPE));
         }
-        return s;
+
+        return car.getAdvance();
     }
-    public List<String> getListAdvanceOfCar() {
-        List<String> list = new ArrayList<>();
-        for(int i = 0 ; i < this.totalCar; i++) {
-            list.add(getSumAdvance());
+
+    public List<Integer> eachCarList() {
+        List<Integer> attemptList = new ArrayList<>();
+        for (int i = 0; i < totalCar; i++) {
+            attemptList.add(carAdvanced());
         }
-        return list;
+        return attemptList;
     }
 
-    public HashMap<Integer, List<String>> getEachCarAdvance() {
-        HashMap<Integer, List<String>> resultMap = new HashMap<>();
-        for (int i = 0 ; i < this.attemptCount; i++) {
-            resultMap.put(i, getListAdvanceOfCar());
+    public List<List<Integer>> eachAttemptCarList() {
+        List<List<Integer>> eachList = new ArrayList<>();
+        for(int i = 0; i < attemptCount; i++) {
+            eachList.add(eachCarList());
         }
-        return resultMap;
+        return eachList;
     }
-
-    public RacingCarGame(int totalCar, int attemptCount) {
-        this.totalCar = totalCar;
-        this.attemptCount = attemptCount;
-    }
-
-
-
 }

@@ -1,22 +1,27 @@
 package step3.view;
 
-import step3.controller.CarController;
+import step3.controller.RacingCarGame;
 
-import java.util.HashMap;
 import java.util.List;
 
-public class ResultView {
+public class ResultView{
 
-    InputView inputView = new InputView();
-    CarController carController = new CarController(inputView.inputCar(), inputView.inputAttempt());
+    private static final String ADVANCE = "-";
 
-    public void print() {
-        HashMap<Integer, List<String>> result = carController.getEachCarAdvance();
-        for(int i = 0 ; i < result.size(); i++) {
-            for(int j = 0; j < result.get(i).size(); j++) {
-                System.out.println(result.get(i).get(j));
-            }
-            System.out.println("");
-        }
+    public void print(RacingCarGame racingCarGame) {
+        List<List<Integer>> list = racingCarGame.eachAttemptCarList();
+        list.stream()
+                .flatMap(List::stream)
+                .map(ResultView::convertToStringOfAdvance)
+                .forEach(System.out::println);
     }
+
+    public static String convertToStringOfAdvance(int advance) {
+        String resultAdvance = "";
+        for (int i = 0; i < advance; i++) {
+            resultAdvance += ADVANCE;
+        }
+        return resultAdvance;
+    }
+
 }

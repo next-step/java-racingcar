@@ -1,37 +1,33 @@
 package step3;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.controller.CarController;
-import step3.domain.RacingCarGame;
-import step3.validation.InputValidation;
+import step3.domain.Car;
+import step3.view.ResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTests {
 
-    private CarController carController;
-    private InputValidation inputValidation;
+    Car car;
+    ResultView resultView;
 
     @BeforeEach
-    public void setup() {
-        inputValidation = new InputValidation();
-        carController = new CarController(3,5);
+    public void setUp() {
+        car = new Car();
+
     }
 
-
-    @DisplayName("랜덥 값 4이상인지 체크")
+    @DisplayName("랜덤 값이 4이상인 경우")
     @Test
-    public void check() {
-        assertThat(inputValidation.isRandomValueMoreThenFour(3)).isEqualTo(false);
+    public void inputRandomValueTest() {
+        assertThat(car.move(6)).isEqualTo(1);
     }
 
-    @DisplayName("랜덤 값이 같은지 비교")
+    @DisplayName("랜덤 값이 4미인 경우")
     @Test
-    public void sumString() {
-
+    public void howAdvancedCar() {
+        assertThat(car.move(3)).isEqualTo(0);
     }
-
 }
