@@ -28,4 +28,9 @@ public class Printer {
     System.out.println(game.getCarsNameAndStatus());
     System.out.println();
   }
+
+  public static void printWinner(Game game) {
+    String winner = String.join(", ", game.getWinner());
+    System.out.println(winner + "이/가 최종 우승했습니다.");
+  }
 }

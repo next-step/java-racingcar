@@ -22,6 +22,8 @@ public class GameManager {
 
       Game game = new Game(new Random());
       game.start(carNames, round);
+
+      Printer.printWinner(game);
     }
   }
 }
