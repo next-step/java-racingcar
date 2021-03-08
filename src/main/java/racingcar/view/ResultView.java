@@ -1,14 +1,31 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
     private static final char FORWARDING = '-';
 
-    public String printEachCar(int position) {
-        String result = "";
+    public String getWinnerMessage(Map<String, Integer> finalRound, int maxPosition) {
+        List<Map.Entry<String, Integer>> finalResults = new ArrayList<>(finalRound.entrySet());
+
+        return finalResults.stream()
+                .filter((Map.Entry<String, Integer> result) -> result.getValue() == maxPosition)
+                .map(results -> results.getKey())
+                .collect(Collectors.joining(", "));
+    }
+
+    public void printWinner(Map<String, Integer> finalRound) {
+        int maxPosition = Collections.max(finalRound.values());
+
+        String winnerMessage = getWinnerMessage(finalRound, maxPosition) + "이(가) 최종 우승했습니다.";
+
+        System.out.println(winnerMessage);
+    }
+
+    public String printEachCar(String carName, int position) {
+        String result = carName + " : ";
 
         for (int i = 0; i < position; i++) {
             result += FORWARDING;
@@ -21,18 +38,21 @@ public class ResultView {
         Iterator<String> carNames = eachRound.keySet().iterator();
 
         while(carNames.hasNext()){
-            String carName= carNames.next();
-            System.out.println(printEachCar(eachRound.get(carName)));
+            String carName = carNames.next();
+            System.out.println(printEachCar(carName, eachRound.get(carName)));
         }
     }
 
     public void printResult(Map<Integer, Map<String, Integer>> finalResult) {
         Iterator<Integer> rounds = finalResult.keySet().iterator();
+        int round = 0;
 
         while(rounds.hasNext()){
-            int round = rounds.next();
+            round = rounds.next();
             printEachRound(finalResult.get(round));
             System.out.println();
         }
+
+        printWinner(finalResult.get(round));
     }
 }
