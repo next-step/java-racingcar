@@ -1,12 +1,12 @@
 package racingcar;
 
-public class Condition {
+public class Conditions {
 
     private static final int PASS_CONDITION = 4;
     private static final int LOWER_LIMIT = 0;
     private static final int HIGHER_LIMIT = 9;
 
-    private Condition() { }
+    private Conditions() { }
 
     public static boolean isAcceptCondition(int number) {
         return number >= PASS_CONDITION;
