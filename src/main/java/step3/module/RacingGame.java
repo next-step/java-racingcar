@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static step3.domain.RandomGenerator.RANDOM_RANGE_BOUND;
 import static step3.util.Constants.*;
 
 /**

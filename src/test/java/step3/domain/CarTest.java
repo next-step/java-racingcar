@@ -33,7 +33,6 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(position);
     }
 
-
     @DisplayName("자동차의 연속적인 이동 위치를 확인 테스트")
     @ParameterizedTest(name = "첫 번째 값: {0}, 두 번째 값: {1} -> position 값 : {2}")
     @CsvSource(value = {"4, 5, 3", "1, 2, 1", "6, 3, 2"})

@@ -2,9 +2,6 @@ package step3.util;
 
 public class Constants {
 
-    // 랜덤 BOUND 설정
-    public static final int RANDOM_RANGE_BOUND = 10;
-
     public static final int MOVE_CONDITION_VALUE = 4;
     public static final int DEFAULT_POSITION = 1;
     public static final int START_IDX = 0;

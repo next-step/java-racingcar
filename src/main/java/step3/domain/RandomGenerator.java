@@ -7,6 +7,9 @@ import java.util.Random;
  */
 public class RandomGenerator {
 
+    // 랜덤 BOUND 설정
+    public static final int RANDOM_RANGE_BOUND = 10;
+
     private final Random random;
     private final int bound;
 
