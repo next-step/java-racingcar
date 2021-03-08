@@ -8,6 +8,7 @@ import racingcar.view.ResultView;
 import java.util.ArrayList;
 
 public class RacingGameController {
+
     private InputView inputView;
     private ResultView resultView;
 
@@ -15,6 +16,7 @@ public class RacingGameController {
         inputView = new InputView();
         resultView = new ResultView();
     }
+
     public void runGame() {
         int numberOfCar = drawNumberOfCarAndReturn();
         int carRacingCount = drawCarCountAndReturn();
@@ -40,7 +42,7 @@ public class RacingGameController {
     }
 
     private void drawLiterallyExecutionResult() {
-        resultView.drawLiterallyExecutionResult();
+        resultView.printLiterallyExecutionResult();
     }
 
     private int drawCarCountAndReturn() {

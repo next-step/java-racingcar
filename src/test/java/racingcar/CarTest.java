@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.model.Car;
-import racingcar.model.action.MovableImpl;
+import racingcar.model.action.RandomMovable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +30,7 @@ public class CarTest {
     @DisplayName("랜덤값이 4 이상일 경우 자동차 전진")
     public void moveCarWithRandomValueMoreThenFour() {
         Car car = new Car();
-        MovableImpl movable = new MovableImpl();
+        RandomMovable movable = new RandomMovable();
         if (movable.MoveOrNot(4)) {
             car.move();
         }
@@ -42,7 +42,7 @@ public class CarTest {
     @DisplayName("랜덤값이 4 미만일 경우 자동차 멈춤")
     public void moveCarWithRandomValueLessThenFour() {
         Car car = new Car();
-        MovableImpl movable = new MovableImpl();
+        RandomMovable movable = new RandomMovable();
         if (movable.MoveOrNot(3)) {
             car.move();
         }

@@ -1,15 +1,15 @@
 package racingcar.model;
 
-import racingcar.model.action.MovableImpl;
+import racingcar.model.action.RandomMovable;
 
 public class Car {
 
     private int position;
 
     public void decideMovable() {
-        MovableImpl movableImple = new MovableImpl();
-        int randomValue = movableImple.makeRandomValue();
-        if (movableImple.MoveOrNot(randomValue)) {
+        RandomMovable randomMovableImple = new RandomMovable();
+        int randomValue = randomMovableImple.makeRandomValue();
+        if (randomMovableImple.MoveOrNot(randomValue)) {
             move();
         }
     }
