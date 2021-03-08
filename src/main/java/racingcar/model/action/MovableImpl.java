@@ -1,6 +1,6 @@
-package carRacing.model.action;
+package racingcar.model.action;
 
-import carRacing.utils.RandomUtils;
+import racingcar.utils.RandomUtils;
 
 public class MovableImpl implements Movable{
 

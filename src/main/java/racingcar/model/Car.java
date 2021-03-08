@@ -1,6 +1,6 @@
-package carRacing.model;
+package racingcar.model;
 
-import carRacing.model.action.MovableImpl;
+import racingcar.model.action.MovableImpl;
 
 public class Car {
 

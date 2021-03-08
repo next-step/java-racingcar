@@ -1,9 +1,9 @@
-package carRacing.controller;
+package racingcar.controller;
 
-import carRacing.model.Car;
-import carRacing.model.CarRacingInformation;
-import carRacing.view.InputView;
-import carRacing.view.ResultView;
+import racingcar.model.Car;
+import racingcar.model.CarRacingInformation;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 

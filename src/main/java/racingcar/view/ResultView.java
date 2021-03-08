@@ -1,4 +1,4 @@
-package carRacing.view;
+package racingcar.view;
 
 public class ResultView {
     public void printNumberOfCarQuestion() {

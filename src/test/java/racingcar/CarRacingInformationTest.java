@@ -1,6 +1,6 @@
-package carRacing;
+package racingcar;
 
-import carRacing.model.CarRacingInformation;
+import racingcar.model.CarRacingInformation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

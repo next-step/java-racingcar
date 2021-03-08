@@ -1,4 +1,4 @@
-package carRacing.model.action;
+package racingcar.model.action;
 
 public interface Movable {
     int makeRandomValue();

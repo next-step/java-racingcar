@@ -1,7 +1,7 @@
-package carRacing;
+package racingcar;
 
-import carRacing.model.Car;
-import carRacing.model.action.MovableImpl;
+import racingcar.model.Car;
+import racingcar.model.action.MovableImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
