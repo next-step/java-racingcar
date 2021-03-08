@@ -6,6 +6,7 @@ public abstract class Car {
 
   protected int xPosition;
   protected int enginePower;
+  protected String owner;
 
   private void move() {
     this.xPosition += enginePower;
@@ -13,6 +14,10 @@ public abstract class Car {
 
   public int getXPosition() {
     return xPosition;
+  }
+
+  public String getOwner() {
+    return owner;
   }
 
   public boolean moveIfValidCondition(int number) {

@@ -7,11 +7,11 @@ public class GameApp {
   public static void main(String[] args) {
 
     InputView inputView = new InputView(System.in);
-    final int carQuantity = inputView.inputCarQuantity();
+    final String[] carOwnerNames = inputView.inputCarWithOwner();
     final int loopTimes = inputView.inputLoopTimes();
     inputView.close();
 
-    RacingCarGame game = new RacingCarGame(carQuantity, loopTimes);
+    RacingCarGame game = new RacingCarGame(carOwnerNames, loopTimes);
     game.start(new RandomNumbers());
   }
 }

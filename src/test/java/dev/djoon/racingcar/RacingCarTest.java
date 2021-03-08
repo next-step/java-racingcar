@@ -1,16 +1,19 @@
 package dev.djoon.racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import dev.djoon.racingcar.actor.Car;
 
 import dev.djoon.racingcar.actor.OppaCar;
+import dev.djoon.racingcar.ui.ResultView;
 import dev.djoon.racingcar.util.GameConstant;
 import dev.djoon.racingcar.util.RandomNumbers;
 import dev.djoon.racingcar.util.TestRandomNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * 자동차경주 테스트 코드
@@ -81,4 +84,28 @@ public class RacingCarTest {
     assertThat(totalMoveCount).isEqualTo(expectedMoveCount);
   }
 
+  @ParameterizedTest
+  @ValueSource(strings = {"longlo", "longlon", "longlong"})
+  @DisplayName("차 이름 길이가 5를 초과할 수 없음.")
+  public void carNameLengthTest(String owner) {
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> new OppaCar(owner))
+        .withMessageMatching("A owner name cannot be longer than 5 : " + owner);
+  }
+
+  @ParameterizedTest
+  @CsvSource(value = {"pobi,crong,honux:5"}, delimiter = ':')
+  @DisplayName("자동차 경주 완료 후 우승자를 확인한다.")
+  public void carNameLengthTest(String ownerNames, int loopTimes) {
+    // given
+    RacingCarGame racingCarGame = new RacingCarGame(ownerNames.split(","), loopTimes);
+    RandomNumbers randomNumbers = new RandomNumbers();
+    randomNumbers.setSeed(GameConstant.RANDOM_TEST_SEED);
+
+    // when
+    racingCarGame.start(randomNumbers);
+
+    // then
+    assertThat(ResultView.winnerNames(racingCarGame.findWinners())).isEqualTo("crong, honux");
+  }
 }
