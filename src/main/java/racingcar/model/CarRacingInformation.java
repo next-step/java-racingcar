@@ -15,13 +15,13 @@ public class CarRacingInformation {
 
     private void makeCarList(int numberOfCar) {
         carList = new ArrayList<>(numberOfCar);
-        for(int i = 0;i<numberOfCar;i++) {
+        for (int i = 0;i<numberOfCar;i++) {
             carList.add(new Car());
         }
     }
 
     public void isZeroOrLess(int number) {
-        if(number <= 0 ) {
+        if (number <= 0 ) {
             throw new IllegalArgumentException("입력값이 0 이하입니다.");
         }
     }
@@ -37,7 +37,7 @@ public class CarRacingInformation {
 
 
     public void decideMovable() {
-        for(Car car : carList) {
+        for (Car car : carList) {
             car.decideMovable();
         }
     }

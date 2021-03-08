@@ -25,7 +25,7 @@ public class RacingGameController {
     }
 
     private void playGame(CarRacingInformation carRacingInformation) {
-        while(carRacingInformation.checkCarRacingCount()) {
+        while (carRacingInformation.checkCarRacingCount()) {
             carRacingInformation.decideMovable();
             drawExecutionResult(carRacingInformation.getCarList());
             System.out.print("\n");
@@ -34,7 +34,7 @@ public class RacingGameController {
     }
 
     private void drawExecutionResult(ArrayList<Car> carList) {
-        for(Car car : carList) {
+        for (Car car : carList) {
             resultView.printExecutionResult(car.getPoisition());
         }
     }

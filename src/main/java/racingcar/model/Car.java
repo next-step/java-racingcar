@@ -9,7 +9,7 @@ public class Car {
     public void decideMovable() {
         MovableImpl movableImple = new MovableImpl();
         int randomValue = movableImple.makeRandomValue();
-        if(movableImple.MoveOrNot(randomValue)) {
+        if (movableImple.MoveOrNot(randomValue)) {
             move();
         }
     }
