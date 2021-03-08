@@ -1,18 +1,28 @@
 package step3.domain;
 
-import java.util.List;
-
-import static step3.util.Constants.DEFAULT_POSITION;
-import static step3.util.Constants.MOVE_CONDITION_VALUE;
+import step3.move.ConditionMoveStrategy;
+import step3.move.MoveStrategy;
 
 /**
  * 자동차의 상태와 행위를 관리하는 클래스
  */
 public class Car {
 
+    public static final int DEFAULT_POSITION = 1;
+
+    // 메시지를 처리하기 위해 자율적으로 선택
+    private final MoveStrategy moveStrategy;
+
     private int position;
 
+    // 생성하는 쪽에서 무조건 이동하는 전략을 넣지 않고도 기본 값으로 사용할 수 있는 전략을 설정
     private Car() {
+        this(new ConditionMoveStrategy());
+    }
+
+    // 인터페이스를 파라미터로 받아 외부에서 움직임의 기준을 변경할 수 있도록 수정
+    public Car(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
         this.position = DEFAULT_POSITION;
     }
 
@@ -21,26 +31,13 @@ public class Car {
         return new Car();
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    // 자동차의 전진 기능
-    public Car move(int value) {
-        if(isMove(value)) {
+    public void move(){
+        if(moveStrategy.isMovable()) {
             position++;
         }
-        return this;
     }
 
-    // 자동차가 전진하기 위한 조건 처리
-    private boolean isMove(int value) {
-        return value >= MOVE_CONDITION_VALUE;
-    }
-
-    public static Record toRecord(Car car) {
-        return new Record.Builder()
-                .position(car.getPosition())
-                .build();
+    public int getPosition() {
+        return position;
     }
 }
