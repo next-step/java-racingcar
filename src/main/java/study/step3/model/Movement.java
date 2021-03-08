@@ -16,6 +16,9 @@ public class Movement {
     }
 
     public int stopAndMove() {
-        return random.nextInt(RANDOM_RANGE) >= MOVE_RESTRICT ? 1 : 0;
+        if(random.nextInt(RANDOM_RANGE) >= MOVE_RESTRICT) {
+            return 1;
+        }
+        return 0;
     }
 }
