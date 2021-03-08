@@ -13,7 +13,7 @@ public class Calculator {
             Integer number = getNumber(strings[i + 1]);
             String operator = strings[i];
           
-            result = Operator.of(operator).getResult(result , number);
+            result = Operation.of(operator).getResult(result , number);
         }
         return result;
     }
