@@ -97,5 +97,5 @@ public class CalculationTest {
         assertThat(result).isEqualTo((8 + 7 - 1 )* 3 / 2);
         System.out.println(result);
     }
-    
+
 }

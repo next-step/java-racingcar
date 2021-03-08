@@ -29,16 +29,6 @@ public class Calculator {
             }
         };
 
-        // 연산자 검사
-        private static boolean validateOperator(String operator) {
-            for (Operation operation : values()) {
-                if (operator.equals(operation.operator)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         private final String operator;
 
         Operation(String operator) {
@@ -62,11 +52,21 @@ public class Calculator {
         // 3) 연산자 체크
         for(int i = 0; i<checkData.length; i++){
             boolean isOddNumber = (i % 2 == 1);
-            if(isOddNumber && !Operation.validateOperator(checkData[i])){ // Operational operators
+            if(isOddNumber && !validateOperator(checkData[i])){ // Operational operators
                 throw new IllegalArgumentException();
             }
         }
         return true;
+    }
+
+    // 연산자 검사
+    private boolean validateOperator(String operator) {
+        for (Operation operation : Operation.values()) {
+            if (operator.equals(operation.operator)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // 2. 계산
@@ -91,7 +91,7 @@ public class Calculator {
     }
 
     // 실행할 연산자 타입 조회
-    public Operation findOperatorType(String operator){
+    private Operation findOperatorType(String operator){
         Operation operation;
         switch (operator){
             case "+":
