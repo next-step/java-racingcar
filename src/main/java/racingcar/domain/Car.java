@@ -1,26 +1,21 @@
 package racingcar.domain;
 
 public class Car {
-    private static final int ZERO = 0;
     private static final int BOUNDARY = 4;
-    private static final String DISPLAY_UNIT = "-";
 
-    private int position;
+    private Engine engine;
+    private int position = 0;
 
-    public Car() {
-        this.position = ZERO;
+    public Car(Engine engine) {
+        this.engine = engine;
     }
 
-    public String showStatus() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append(DISPLAY_UNIT);
-        }
-        return stringBuilder.toString();
+    public int getPosition() {
+        return position;
     }
 
     public void move() {
-        int randomValue = RandomGenerator.getRandomValue();
+        int randomValue = engine.getPower();
         if (isMovable(randomValue)) {
             position++;
         }

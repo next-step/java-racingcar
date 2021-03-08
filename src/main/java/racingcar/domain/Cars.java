@@ -12,7 +12,7 @@ public class Cars {
     public Cars(int numberOfCars) {
         cars = new LinkedList<>();
         for (int i = 0 ; i < numberOfCars; i++) {
-            cars.add(new Car());
+            cars.add(new Car(new RandomEngine()));
         }
     }
 
@@ -21,9 +21,7 @@ public class Cars {
     }
 
     public void showResult() {
-        cars.stream()
-                .map(Car::showStatus)
-                .forEach(ResultView::showResult);
+        cars.forEach(ResultView::showResult);
         ResultView.printNewLine();
     }
 }
