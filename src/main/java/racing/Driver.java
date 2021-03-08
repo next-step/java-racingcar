@@ -14,4 +14,11 @@ public class Driver {
             car.move();
         }
     }
+
+    public void printCurrentDistance() {
+        for (int i = 0; i < car.getDistance(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }
