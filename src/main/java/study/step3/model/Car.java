@@ -7,9 +7,11 @@ package study.step3.model;
  *
  */
 public class Car {
-    private int position = 0;
+    private static final int INIT_POSITION = 0;
+    private int position;;
 
     public Car() {
+        position = INIT_POSITION;
     }
 
     public int getPosition() {
@@ -18,6 +20,5 @@ public class Car {
 
     public void move(int distance) {
         this.position += distance;
-
     }
 }
