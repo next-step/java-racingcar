@@ -52,4 +52,12 @@ public class Car {
   public String getName() {
     return name;
   }
+
+  public int getDistance() {
+    return distance;
+  }
+
+  public boolean isWinner(int maxDistance) {
+    return distance == maxDistance;
+  }
 }

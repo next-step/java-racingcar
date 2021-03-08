@@ -35,4 +35,17 @@ public class Cars {
         .map(car -> car.getName() + " : " + car.showStatus())
         .collect(Collectors.joining(System.lineSeparator()));
   }
+
+  public List<String> getWinner() {
+    final int maxDistance = getMaxDistance();
+
+    return cars.stream()
+        .filter(car -> car.isWinner(maxDistance))
+        .map(Car::getName)
+        .collect(Collectors.toList());
+  }
+
+  private int getMaxDistance() {
+    return cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+  }
 }

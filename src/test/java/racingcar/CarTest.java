@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static racingcar.Car.EMPTY_STRING_ERROR_MESSAGE;
 import static racingcar.Car.MAX_LENGTH_ERROR_MESSAGE;
+import static racingcar.Car.THRESHOLD;
 import static racingcar.Car.UNIT;
 
 import java.util.stream.Stream;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -91,5 +93,18 @@ class CarTest {
     assertThatIllegalArgumentException()
         .isThrownBy(() -> new Car(name))
         .withMessage(errorMessage);
+  }
+
+  @ParameterizedTest
+  @DisplayName("자동차는 최고 이동거리를 받아서 자신이 우승자인지 확인할 수 있다.")
+  @CsvSource({"3,4,false", "3,3,true", "2,2,true"})
+  void isWinner(int round, int maxDistance, boolean expected) {
+    // given
+    // when
+    for (int i = 0; i < round; i++) {
+      car.move(THRESHOLD);
+    }
+
+    assertThat(car.isWinner(maxDistance)).isEqualTo(expected);
   }
 }
