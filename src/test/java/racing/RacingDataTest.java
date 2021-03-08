@@ -26,7 +26,7 @@ public class RacingDataTest {
 
     @Test
     @DisplayName("생성자에 넣어준 값과 getter들의 리턴값은 같아야 한다.")
-    void should_ReturnEachValue_When_callToGetters() {
+    void constructorAndGetters() {
         final RacingData data = new RacingData(drivers, carsCount, attemptsCount);
 
         assertThat(data.getDrivers()).isEqualTo(drivers);
@@ -36,7 +36,7 @@ public class RacingDataTest {
 
     @Test
     @DisplayName("원래 데이터와 copyWith()로 생성한 새로운 데이터를 같지 않아야 한다.")
-    void should_NotEqualOriginData_ForCopyWithData() {
+    void copyWith1() {
         final RacingData originData = new RacingData(carsCount, attemptsCount);
         final RacingData newData = originData.copyWith(drivers);
 
@@ -44,9 +44,8 @@ public class RacingDataTest {
     }
 
     @Test
-    @DisplayName("copyWith()로 생성한 데이터는 drivers는 새로운 값을, 다른 값은 기존 값을 가진다.")
-    // TODO: 네이밍 변경
-    void copyWithTest() {
+    @DisplayName("copyWith()로 생성한 데이터의 drivers는 새로운 값을, 다른 값은 기존 값을 가진다.")
+    void copyWith2() {
         final RacingData originData = new RacingData(carsCount, attemptsCount);
         final RacingData newData = originData.copyWith(drivers);
 
