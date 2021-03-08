@@ -1,10 +1,7 @@
 package racingcar.domain;
 
-import racingcar.dto.RacingCarGameRequest;
 import racingcar.dto.FinalScoreBoard;
-import racingcar.dto.ScoreBoardPerPlay;
-
-import java.util.Arrays;
+import racingcar.dto.RacingCarGameRequest;
 
 public class RacingCarGame {
 
@@ -15,6 +12,7 @@ public class RacingCarGame {
     private int currentCount;
 
     private FinalScoreBoard finalScoreBoard;
+
     public RacingCarGame(RacingCarGameRequest userInput) {
         playCount = userInput.getPlayCount();
         participatingRacingCarList = new RacingCarList();
