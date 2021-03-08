@@ -23,7 +23,7 @@ public class InputView {
         out.println(message);
         String number = scanner.nextLine();
 
-        if(isNullAndIsBlank(number)) {
+        if (isNullAndIsBlank(number)) {
             throw new IllegalArgumentException(IS_NULL_OR_BLANK_EXCEPTION);
         }
         return parseInteger(message, number);

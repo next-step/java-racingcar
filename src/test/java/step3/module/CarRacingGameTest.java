@@ -15,7 +15,7 @@ class CarRacingGameTest {
     @DisplayName("레이싱 게임 정상 작동 테스트")
     @ParameterizedTest(name = "자동차 {0} 대, 총 {1} 차 레이스 시작")
     @CsvSource(value = {"2, 3", "4, 2"})
-    void testCase1(int participants, int attemptCount) {
+    void racingGameTest(int participants, int attemptCount) {
         // given
         RequestRacingGame request = new RequestRacingGame(participants, attemptCount);
         CarRacingGame racingGame = new CarRacingGame(request);

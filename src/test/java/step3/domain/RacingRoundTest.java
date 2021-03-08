@@ -27,7 +27,7 @@ class RacingRoundTest {
 
     @DisplayName("레이싱 라운드 기록 테스트")
     @Test
-    void testCase1() {
+    void racingOfRoundTest() {
         // given
         RacingRound racingRound = new RacingRound(cars);
         // when

@@ -33,7 +33,7 @@ public class ResultView {
         round.getCars()
                 .forEach(car ->
                         builder.append(printDistancePerRecord(car))
-                        .append(CARRIAGE_RETURN));
+                                .append(CARRIAGE_RETURN));
 
         return builder.toString();
     }

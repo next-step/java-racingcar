@@ -25,7 +25,7 @@ class CarManageTest {
     @DisplayName("자동차 관리 클래스의 자동차 생성 테스트")
     @ParameterizedTest(name = "CarManage 클래스로 Car 생성된 인스턴스 갯수: {1}")
     @MethodSource("getCarManagement")
-    void testCase1(CarManage given, int carSize) {
+    void createCarManageTest(CarManage given, int carSize) {
         // given
 
         // when

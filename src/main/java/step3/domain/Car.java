@@ -24,8 +24,8 @@ public class Car {
         this.position = position;
     }
 
-    public Car move(){
-        if(moveStrategy.isMovable()) {
+    public Car move() {
+        if (moveStrategy.isMovable()) {
             position++;
         }
         // 이동 하면 새로 생성해야 하는게 맞을까?
