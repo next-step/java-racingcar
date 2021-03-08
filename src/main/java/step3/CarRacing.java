@@ -1,43 +1,37 @@
 package step3;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarRacing {
 
     public static final int RANDOM_RANGE = 10;
-    public List<Car> cars = new ArrayList<>();
 
-    public static void main(String[] args) {
+    private List<Car> cars;
 
-        CarRacing carRacing = new CarRacing();
-        carRacing.start();
+    public CarRacing(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void start() {
-        InputView inputView = new InputView();
-        createCars(cars, inputView.getAmountOfCar());
-        Random random = new Random();
-        System.out.println("\n실행 결과");
-        moveCars(inputView.getCountOfCar(), random);
-    }
-
-    private static void createCars(List<Car> cars, int amountOfCar) {
+    public void createCars(int amountOfCar) {
         for (int i = 0; i< amountOfCar; i++) {
-            cars.add(new Car(i));
+            this.cars.add(new Car(i));
         }
     }
 
-    private void moveCars(int countOfCar, Random random) {
+    public void moveCars(int countOfCar) {
+        System.out.println("\n실행 결과");
+        Random random = new Random();
+
         for (int i = 0; i < countOfCar; i++) {
-            updateMoveOfCar(cars, random);
+            moveCar(random.nextInt(RANDOM_RANGE));
             System.out.println();
         }
     }
 
-    private static void updateMoveOfCar(List<Car> cars, Random random) {
+    private void moveCar(int randomNumber) {
         cars.forEach(car -> {
-            car.updateMove(random.nextInt(RANDOM_RANGE));
-            car.print();
+            car.updateMove(randomNumber);
         });
     }
 }
