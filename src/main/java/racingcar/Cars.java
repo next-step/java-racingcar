@@ -32,7 +32,7 @@ public class Cars {
 
   public String getNameAndStatus() {
     return cars.stream()
-        .map(Car::showStatus)
+        .map(car -> car.getName() + " : " + car.showStatus())
         .collect(Collectors.joining(System.lineSeparator()));
   }
 }
