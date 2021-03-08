@@ -21,10 +21,10 @@ class GameTest {
 
   static Stream<Arguments> carMovements() {
     return Stream.of(
-        arguments(Lists.list("a"), 1, UNIT),
-        arguments(Lists.list("a", "b"), 1, UNIT + System.lineSeparator() + UNIT),
-        arguments(Lists.list("a"), 2, UNIT + UNIT),
-        arguments(Lists.list("a"), 3, UNIT + UNIT + UNIT)
+        arguments(Lists.list("a"), 1, "a : " + UNIT),
+        arguments(Lists.list("a", "b"), 1, "a : " + UNIT + System.lineSeparator() + "b : " + UNIT),
+        arguments(Lists.list("a"), 2, "a : " + UNIT + UNIT),
+        arguments(Lists.list("a"), 3, "a : " + UNIT + UNIT + UNIT)
     );
   }
 
@@ -40,9 +40,9 @@ class GameTest {
 
   static Stream<Arguments> gameResults() {
     return Stream.of(
-        arguments(Lists.list("a"), 1, UNIT),
-        arguments(Lists.list("a"), 2, UNIT + UNIT),
-        arguments(Lists.list("a", "b"), 2, UNIT + UNIT + System.lineSeparator() + UNIT + UNIT)
+        arguments(Lists.list("a"), 1, "a : " + UNIT),
+        arguments(Lists.list("a"), 2, "a : " + UNIT + UNIT),
+        arguments(Lists.list("a", "b"), 2, "a : " + UNIT + UNIT + System.lineSeparator() + "b : " + UNIT + UNIT)
     );
   }
 
@@ -80,7 +80,7 @@ class GameTest {
     game.moveCars(rounds);
 
     // then
-    assertThat(game.getCarsStatus()).isEqualTo(result);
+    assertThat(game.getCarsNameAndStatus()).isEqualTo(result);
   }
 
   @ParameterizedTest
@@ -92,6 +92,6 @@ class GameTest {
     game.start(names, rounds);
 
     // then
-    assertThat(game.getCarsStatus()).isEqualTo(result);
+    assertThat(game.getCarsNameAndStatus()).isEqualTo(result);
   }
 }

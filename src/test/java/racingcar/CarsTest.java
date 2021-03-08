@@ -21,9 +21,10 @@ class CarsTest {
 
   static Stream<Arguments> carMovements() {
     return Stream.of(
-        arguments(Lists.list("a"), UNIT),
-        arguments(Lists.list("a", "b"), UNIT + System.lineSeparator() + UNIT),
-        arguments(Lists.list("a", "b", "c"), UNIT + System.lineSeparator() + UNIT + System.lineSeparator() + UNIT)
+        arguments(Lists.list("a"), "a : " + UNIT),
+        arguments(Lists.list("a", "b"), "a : " + UNIT + System.lineSeparator() + "b : " + UNIT),
+        arguments(Lists.list("a", "b", "c"),
+            "a : " + UNIT + System.lineSeparator() + "b : " + UNIT + System.lineSeparator() + "c : " + UNIT)
     );
   }
 
@@ -72,6 +73,6 @@ class CarsTest {
     cars.moveAll();
 
     // then
-    assertThat(cars.getStatus()).isEqualTo(result);
+    assertThat(cars.getNameAndStatus()).isEqualTo(result);
   }
 }

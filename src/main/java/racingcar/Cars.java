@@ -30,7 +30,7 @@ public class Cars {
     cars.forEach(car -> car.move(random.nextInt(BOUND)));
   }
 
-  public String getStatus() {
+  public String getNameAndStatus() {
     return cars.stream()
         .map(Car::showStatus)
         .collect(Collectors.joining(System.lineSeparator()));

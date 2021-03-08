@@ -25,7 +25,7 @@ public class Printer {
   }
 
   public static void printGameResult(Game game) {
-    System.out.println(game.getCarsStatus());
+    System.out.println(game.getCarsNameAndStatus());
     System.out.println();
   }
 }

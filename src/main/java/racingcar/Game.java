@@ -27,8 +27,8 @@ public class Game {
     }
   }
 
-  public String getCarsStatus() {
-    return cars.getStatus();
+  public String getCarsNameAndStatus() {
+    return cars.getNameAndStatus();
   }
 
   public void start(List<String> names, int round) {
