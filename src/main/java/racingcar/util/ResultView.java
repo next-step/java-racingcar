@@ -2,6 +2,9 @@ package racingcar.util;
 
 public class ResultView {
 
+    private ResultView() {
+    }
+
     public static void startGame() {
         System.out.println("\n실행 결과");
     }
