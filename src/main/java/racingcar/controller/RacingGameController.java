@@ -7,11 +7,11 @@ import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 
-public class RacingController {
+public class RacingGameController {
     private InputView inputView;
     private ResultView resultView;
 
-    public RacingController() {
+    public RacingGameController() {
         inputView = new InputView();
         resultView = new ResultView();
     }
