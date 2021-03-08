@@ -15,7 +15,11 @@ public class RacingController {
     public RacingController() {
         InputView inputView = new InputView();
         inputView.init();
+        
         if (inputView.getTurnCount() == 0) {
+            inputView.reStart();
+        }
+        if (inputView.getParticipationList().isBlank()) {
             inputView.reStart();
         }
         this.racingGame = new RacingGame(inputView.getParticipationList());

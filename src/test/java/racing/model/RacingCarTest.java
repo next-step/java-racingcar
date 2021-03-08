@@ -28,7 +28,7 @@ class RacingCarTest {
         racingCar.move(moveCount);
 
         //then
-        assertEquals(5, racingCar.getPosition());
+        assertEquals(1, racingCar.getPosition());
     }
 
     @DisplayName("자동차 이동거리가 4이상이면 전진하라는 신호를 보내는 메서드 테스트")

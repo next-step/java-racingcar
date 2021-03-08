@@ -39,7 +39,7 @@ public class RacingCar {
      */
     public int move(int moveCount) {
         if (isForward(moveCount)) {
-            this.position += moveCount;
+            this.position++;
         }
         return position;
     }

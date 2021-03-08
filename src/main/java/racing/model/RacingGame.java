@@ -12,8 +12,7 @@ public class RacingGame {
 
     public RacingGame(String participationList) {
         carList = new ArrayList<>();
-        String[] racingCarNames = participationList.split(",");
-        carList = createRacingCar(racingCarNames);
+        carList = createRacingCar(carNameParsor(participationList));
     }
 
     public List<RacingCar> getCarList() {
@@ -52,11 +51,24 @@ public class RacingGame {
         return carList;
     }
 
+    /**
+     * 우승자를 설정하는 메서드
+     */
     public List<RacingCar> setWinner() {
+        int winnerPosition = carList.stream()
+                .max(Comparator.comparing(RacingCar::getPosition))
+                .get()
+                .getPosition();
+
         return carList.stream()
-                .filter(car -> car.getPosition() == carList.stream()
-                        .mapToInt(RacingCar::getPosition)
-                        .max().orElse(0))
+                .filter(car -> car.getPosition() == winnerPosition)
                 .collect(toList());
+    }
+
+    /**
+     * 자동차 이름을 분할하는 메서드
+     */
+    public String[] carNameParsor(String participationList) {
+        return participationList.split(",");
     }
 }

@@ -30,7 +30,6 @@ class RacingGameTest {
         assertEquals(3, racingCar.size());
         assertEquals("SingSing", racingCar.get(0).getRacingCarName());
         assertEquals(2L, racingCar.get(1).getRacingCarId());
-        assertThat(racingCar).allSatisfy(car -> assertEquals(0, car.getPosition()));
     }
 
     @DisplayName("랜덤값이 자동차 갯수 만큼 생성되는지 테스트")
@@ -58,17 +57,7 @@ class RacingGameTest {
         racingGame.moveAndStop(randomValue);
 
         //then
-        assertEquals(5,
-                racingCar.stream()
-                        .filter(car -> "SingSing".equals(car.getRacingCarName()))
-                        .map(RacingCar::getPosition)
-                        .collect(toList()).get(0));
-        assertEquals(7,
-                racingCar.stream()
-                        .filter(car -> 2L == car.getRacingCarId())
-                        .map(RacingCar::getPosition)
-                        .collect(toList()).get(0));
-        assertEquals(8, racingCar.get(2).getPosition());
+        assertThat(racingCar).allSatisfy(car -> assertEquals(car.getPosition(), 1));
     }
 
     @DisplayName("이동거리가 4미만일때 자동차 정지 테스트")
