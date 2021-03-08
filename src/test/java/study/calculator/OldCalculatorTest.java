@@ -1,6 +1,6 @@
 package study.calculator;
 
-import calculator.Calculator;
+import calculator.OldCalculator;
 import calculator.CalculatorErrorMessage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -12,16 +12,22 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DisplayName("계산기 종합 테스트")
-public class CalculatorTest {
 
-    private static Calculator calculator;
+@DisplayName("계산기 종합 테스트")
+public class OldCalculatorTest {
+
+    private static OldCalculator calculator;
 
     @BeforeAll
     public static void setUp() {
-        calculator = new Calculator();
+        calculator = new OldCalculator();
     }
 
+    // 테스트 순서를 보면. 구현부터하고 테스트한걸 알 수 있다.
+    // 구현 -> 테스트로 TDD 가 아닌 구현을 중심으로 진행했음
+    // TDD 방식은 테스트 -> 구현으로
+    // 계산기가 되기 위해 가장 작은 단위로 시작하고 구현으로 옮기는 것.
+    //
     @ParameterizedTest
     @CsvSource(value = {"2 + 1 + 2 * 5 / 5 - 111:-106", "10 + 1 + 2 / 5:2"}, delimiter = ':')
     @DisplayName("계산기 확인")

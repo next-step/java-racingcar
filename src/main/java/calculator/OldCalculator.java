@@ -1,10 +1,7 @@
 package calculator;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 
-import javax.xml.crypto.Data;
-
-public class Calculator {
+public class OldCalculator {
 
     /**
      * 사칙연산 구현
@@ -82,19 +79,19 @@ public class Calculator {
         }
     }
 
-    private int plus(int a, int b) {
+    public static int plus(int a, int b) {
         return a + b;
     }
 
-    private int minus(int a, int b) {
+    public static int minus(int a, int b) {
         return a - b;
     }
 
-    private int multiply(int a, int b) {
+    public static int multiply(int a, int b) {
         return a * b;
     }
 
-    private int divide(int a, int b) {
+    public static int divide(int a, int b) {
         return a / b;
     }
 }
