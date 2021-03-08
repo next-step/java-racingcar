@@ -1,6 +1,5 @@
 package dev.djoon.racingcar.ui;
 
-import dev.djoon.racingcar.RacingCarGame;
 import java.io.InputStream;
 import java.util.Scanner;
 

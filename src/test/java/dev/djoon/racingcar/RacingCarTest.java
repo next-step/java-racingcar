@@ -4,12 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import dev.djoon.racingcar.actor.Car;
-
 import dev.djoon.racingcar.actor.OppaCar;
 import dev.djoon.racingcar.ui.ResultView;
 import dev.djoon.racingcar.util.GameConstant;
 import dev.djoon.racingcar.util.RandomNumbers;
 import dev.djoon.racingcar.util.TestRandomNumbers;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -106,6 +106,6 @@ public class RacingCarTest {
     racingCarGame.start(randomNumbers);
 
     // then
-    assertThat(ResultView.winnerNames(racingCarGame.findWinners())).isEqualTo("crong, honux");
+    assertThat(ResultView.getWinnerNames(racingCarGame.findWinners())).isEqualTo("crong, honux");
   }
 }
