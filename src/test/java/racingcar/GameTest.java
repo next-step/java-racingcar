@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -93,5 +94,17 @@ class GameTest {
 
     // then
     assertThat(game.getCarsNameAndStatus()).isEqualTo(result);
+  }
+
+  @Test
+  @DisplayName("게임에서 우승한 우승자를 알 수 있다.")
+  void winner() {
+    // given
+    // when
+    String[] names = {"a", "b"};
+    game.start(Lists.list(names), 2);
+
+    // then
+    assertThat(game.getWinner()).contains(names);
   }
 }

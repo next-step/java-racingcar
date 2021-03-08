@@ -35,4 +35,8 @@ public class Game {
     initialize(names);
     moveCars(round);
   }
+
+  public List<String> getWinner() {
+    return null;
+  }
 }
