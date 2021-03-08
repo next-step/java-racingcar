@@ -1,10 +1,9 @@
-package step3.core;
+package step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.domain.Car;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -34,5 +33,4 @@ class CarManageTest {
         // then
         assertThat(cars.size()).isEqualTo(carSize);
     }
-
 }
