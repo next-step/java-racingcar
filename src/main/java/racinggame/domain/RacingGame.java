@@ -1,8 +1,6 @@
 package racinggame.domain;
 
 public class RacingGame {
-    private static final int MAX_BOUND = 10;
-
     private final Cars cars;
     private final TryNo tryNo;
 
