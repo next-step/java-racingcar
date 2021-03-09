@@ -9,14 +9,14 @@ public class CarTest {
     public void 이동() {
         Car car = new Car("pobi");
         car.move(4);
-        assertThat(car.getPosition()).isEqualTo(new Position(1));
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     public void 정지() {
         Car car = new Car("pobi");
         car.move(3);
-        assertThat(car.getPosition()).isEqualTo(new Position(0));
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test

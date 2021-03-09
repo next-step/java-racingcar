@@ -16,7 +16,11 @@ public class Name {
             throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
         }
 
-        this.name = name;
+        this.name = name.trim();
+    }
+
+    public String name() {
+        return name;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.utils.StringUtils;
+
 import java.util.Objects;
 
 public class Car {
@@ -30,12 +32,12 @@ public class Car {
         return this.position.equals(maxPosition);
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.position();
     }
 
-    public Name getName() {
-        return name;
+    public String getName() {
+        return name.name();
     }
 
     @Override
@@ -50,5 +52,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s: %s", getName(), StringUtils.repeat(position.position(), "-"));
     }
 }

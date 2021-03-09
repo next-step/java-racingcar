@@ -7,4 +7,12 @@ public class StringUtils {
         }
         return value.trim().isEmpty();
     }
+
+    public static String repeat(int repeat, String delimeter) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < repeat; i++) {
+            sb.append(delimeter);
+        }
+        return sb.toString();
+    }
 }

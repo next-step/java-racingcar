@@ -6,14 +6,18 @@ import racinggame.view.ResultView;
 
 public class RacingMain {
     public static void main(String[] args) {
-        String carNames = InputView.getCarNames();
-        int tryNo = InputView.getTryNo();
+        try {
+            String carNames = InputView.getCarNames();
+            int tryNo = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(carNames, tryNo);
-        while(racingGame.racing()) {
-            racingGame.race();
-            ResultView.printCars(racingGame.getCars());
+            RacingGame racingGame = new RacingGame(carNames, tryNo);
+            while(racingGame.racing()) {
+                racingGame.race();
+                ResultView.printCars(racingGame.getCars());
+            }
+            ResultView.printWinners(racingGame.getWinners());
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
         }
-        ResultView.printWinners(racingGame.getWinners());
     }
 }

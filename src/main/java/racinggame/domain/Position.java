@@ -27,6 +27,10 @@ public class Position {
         return new Position(this.position + 1);
     }
 
+    public int position() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

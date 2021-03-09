@@ -3,6 +3,7 @@ package racinggame.domain;
 import racinggame.utils.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -66,5 +67,9 @@ public class Cars {
             maxPosition = car.max(maxPosition);
         }
         return maxPosition;
+    }
+
+    public Iterable<Car> cars() {
+        return Collections.unmodifiableList(this.cars);
     }
 }

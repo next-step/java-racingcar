@@ -19,6 +19,14 @@ public class Winners {
         this.winners.add(winner);
     }
 
+    public String winnerNames() {
+        List<String> winnerNames = new ArrayList<>();
+        for (Car winner : winners) {
+            winnerNames.add(winner.getName());
+        }
+        return String.join(",", winnerNames);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
