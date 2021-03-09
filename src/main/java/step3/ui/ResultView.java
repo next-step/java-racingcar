@@ -28,9 +28,9 @@ public class ResultView {
 
     // 응답 결과를 출력하는 기능
     public void responseResult(final RacingResult racingRound) {
-        List<RacingRound> racingRounds = racingRound.getRacingRounds();
+        final List<RacingRound> racingRounds = racingRound.getRacingRounds();
 
-        String result = racingRounds.stream()
+        final String result = racingRounds.stream()
                 .map(this::printRecordPerCar)
                 .collect(joining(CARRIAGE_RETURN + CARRIAGE_RETURN));
 
@@ -39,7 +39,7 @@ public class ResultView {
 
     // 라운드당 자동차 기록 출력
     private String printRecordPerCar(final RacingRound round) {
-        List<Car> cars = round.getCars();
+        final List<Car> cars = round.getCars();
         return cars.stream()
                 .map(this::printDistancePerRecord)
                 .collect(joining(CARRIAGE_RETURN));

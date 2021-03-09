@@ -10,7 +10,7 @@ public class RacingRound {
 
     private final List<Car> cars;
 
-    public RacingRound(List<Car> movedCars) {
+    public RacingRound(final List<Car> movedCars) {
         cars = movedCars;
     }
 

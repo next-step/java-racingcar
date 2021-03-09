@@ -35,7 +35,7 @@ public class CarManager {
 
     // 자동차 이동 메서드
     public RacingRound run() {
-        List<Car> movedCars = cars.stream()
+        final List<Car> movedCars = cars.stream()
                 .map(Car::move)
                 .collect(toList());
 

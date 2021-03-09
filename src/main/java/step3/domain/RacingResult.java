@@ -15,7 +15,7 @@ public class RacingResult {
         this.racingRounds = new ArrayList<>();
     }
 
-    public void addRacingRound(RacingRound racingRound) {
+    public void addRacingRound(final RacingRound racingRound) {
         this.racingRounds.add(racingRound);
     }
 

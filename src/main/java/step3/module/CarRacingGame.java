@@ -18,12 +18,12 @@ public class CarRacingGame {
     private int attemptCount;
     private final RacingResult racingResult;
 
-    public CarRacingGame(RequestRacingGame userInput) {
+    public CarRacingGame(final RequestRacingGame userInput) {
         initGame(userInput);
         racingResult = new RacingResult();
     }
 
-    private void initGame(RequestRacingGame userInput) {
+    private void initGame(final RequestRacingGame userInput) {
         attemptCount = userInput.getAttemptCount();
         carManager = new CarManager(userInput.getParticipants());
     }
