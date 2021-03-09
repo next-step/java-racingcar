@@ -3,16 +3,24 @@ package study1.calculator;
 import java.util.Arrays;
 
 public enum CalculatorEnum {
-  ADD("+", (a, b) -> a + b),
-  SUBSTRACT("-", (a, b) -> a - b),
-  MULTIPLY("*", (a, b) -> a * b),
-  DIVIDE("/", (a, b) -> a / b);
+  ADD("+", (number1, number2) -> number1 + number2),
+  SUBSTRACT("-", (number1, number2) -> number1 - number2),
+  MULTIPLY("*", (number1, number2) -> number1 * number2),
+  DIVIDE(
+    "/",
+    (number1, number2) -> {
+      if (number2 == 0) {
+        throw new IllegalArgumentException("devide zero error");
+      }
+      return number1 / number2;
+    }
+  );
 
   private final String mark;
   private final Expression expression;
 
   interface Expression {
-    int calculate(int a, int b);
+    int calculate(int number1, int number2);
   }
 
   CalculatorEnum(String mark, Expression expression) {
@@ -28,7 +36,7 @@ public enum CalculatorEnum {
       .orElseThrow(() -> new IllegalArgumentException("not mark error"));
   }
 
-  public int calculate(int a, int b) {
-    return this.expression.calculate(a, b);
+  public int calculate(int number1, int number2) {
+    return this.expression.calculate(number1, number2);
   }
 }
