@@ -23,6 +23,9 @@ public class RacingController {
         List<String> names = inputView.getNames();
         int round = inputView.getRound();
 
+        validateNames(names);
+        validateRound(round);
+
         List<Car> carList = names.stream()
                                  .map(s -> new Car(new RandomMovement(), s))
                                  .collect(Collectors.toList());
@@ -31,6 +34,18 @@ public class RacingController {
         RacingReport racingReport = racing.start();
 
         resultView.printRacingReport(racingReport);
+    }
+
+    private void validateNames(List<String> names) {
+        if (names == null || names.isEmpty()) {
+            throw new IllegalArgumentException("이름을 입력해주세요.");
+        }
+    }
+
+    private void validateRound(int round) {
+        if (round <= 0) {
+            throw new IllegalArgumentException("최소 한 번 이상은 움직여야 합니다.");
+        }
     }
 
 }
