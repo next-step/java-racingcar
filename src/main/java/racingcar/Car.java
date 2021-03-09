@@ -3,6 +3,7 @@ package racingcar;
 public class Car {
 
   public static final String UNIT = "-";
+  public static final int DEFAULT_DISTANCE = 0;
   public static final int THRESHOLD = 4;
   public static final int MAX_NAME_LENGTH = 5;
   public static final String EMPTY_STRING_ERROR_MESSAGE = "비어있는 이름은 유효하지 않은 이름입니다.";

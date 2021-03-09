@@ -1,5 +1,8 @@
 package racingcar;
 
+import static racingcar.Car.DEFAULT_DISTANCE;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -35,15 +38,29 @@ public class Cars {
   }
 
   public Winner getWinner() {
-    final int maxDistance = getMaxDistance();
+    List<String> winners = new ArrayList<>();
 
-    return Winner.of(cars.stream()
-        .filter(car -> car.isWinner(maxDistance))
-        .map(Car::getName)
-        .collect(Collectors.toList()));
+    for (Car car : cars) {
+      addWinnerName(winners, car);
+    }
+
+    return Winner.of(winners);
+  }
+
+  private void addWinnerName(List<String> winners, Car car) {
+    if (car.isWinner(getMaxDistance())) {
+      winners.add(car.getName());
+    }
   }
 
   private int getMaxDistance() {
-    return cars.stream().mapToInt(Car::getDistance).max().orElse(0);
+    int maxDistance = DEFAULT_DISTANCE;
+
+    for (Car car : cars) {
+      int distance = car.getDistance();
+      maxDistance = Math.max(maxDistance, distance);
+    }
+
+    return maxDistance;
   }
 }
