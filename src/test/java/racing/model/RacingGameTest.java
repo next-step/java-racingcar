@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,7 +15,7 @@ class RacingGameTest {
 
 
     List<RacingCar> init() {
-        String participationList = "SingSing,Boom,SM3";
+        String[] participationList = "SingS,Boom,SM3".split(",");
         racingGame = new RacingGame(participationList);
         return racingGame.getCarList();
     }
@@ -28,15 +27,14 @@ class RacingGameTest {
 
         //then
         assertEquals(3, racingCar.size());
-        assertEquals("SingSing", racingCar.get(0).getRacingCarName());
-        assertEquals(2L, racingCar.get(1).getRacingCarId());
+        assertEquals("SingS", racingCar.get(0).getRacingCarName());
     }
 
     @DisplayName("랜덤값이 자동차 갯수 만큼 생성되는지 테스트")
     @Test
     void createRandomValue() {
         //given
-        List<RacingCar> racingCar = init();
+        init();
 
         //when
         List<Integer> randomValue = racingGame.createRandomValue();
@@ -57,7 +55,7 @@ class RacingGameTest {
         racingGame.moveAndStop(randomValue);
 
         //then
-        assertThat(racingCar).allSatisfy(car -> assertEquals(car.getPosition(), 1));
+        assertThat(racingCar).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(1));
     }
 
     @DisplayName("이동거리가 4미만일때 자동차 정지 테스트")
@@ -71,7 +69,7 @@ class RacingGameTest {
         racingGame.moveAndStop(randomValue);
 
         //then
-        assertThat(racingCar).allSatisfy(car -> assertEquals(car.getPosition(), 0));
+        assertThat(racingCar).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(0));
     }
 
     @DisplayName("우승자 가리는 메서드 테스트")
@@ -80,13 +78,13 @@ class RacingGameTest {
         //given
         init();
         List<Integer> moveValue = createMoveValue(3, 5, 2);
-        List<RacingCar> racingCars = racingGame.moveAndStop(moveValue);
+        racingGame.moveAndStop(moveValue);
 
         //when
-        List<RacingCar> winner = racingGame.setWinner();
+        List<String> winner = racingGame.setWinner();
 
         //then
-        assertEquals(2L, winner.get(0).getRacingCarId());
+        assertEquals("Boom", winner.get(0));
     }
 
     @DisplayName("공동 우승일 경우 테스트")
@@ -95,15 +93,15 @@ class RacingGameTest {
         //given
         init();
         List<Integer> moveValue = createMoveValue(5, 5, 2);
-        List<RacingCar> racingCars = racingGame.moveAndStop(moveValue);
+        racingGame.moveAndStop(moveValue);
 
         //when
-        List<RacingCar> winner = racingGame.setWinner();
+        List<String> winner = racingGame.setWinner();
 
         //then
         assertEquals(2, winner.size());
-        assertEquals(1L, winner.get(0).getRacingCarId());
-        assertEquals(2L, winner.get(1).getRacingCarId());
+        assertEquals("SingS", winner.get(0));
+        assertEquals("Boom", winner.get(1));
     }
 
 
