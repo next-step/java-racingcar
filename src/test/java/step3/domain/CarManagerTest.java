@@ -13,19 +13,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * 자동차 관리 클래스 테스트
  */
-class CarManageTest {
+class CarManagerTest {
 
     private static Stream<Arguments> getCarManagement() {
         return Stream.of(
-                Arguments.of(new CarManage(3), 3),
-                Arguments.of(new CarManage(4), 4)
+                Arguments.of(new CarManager(3), 3),
+                Arguments.of(new CarManager(4), 4)
         );
     }
 
     @DisplayName("자동차 관리 클래스의 자동차 생성 테스트")
     @ParameterizedTest(name = "CarManage 클래스로 Car 생성된 인스턴스 갯수: {1}")
     @MethodSource("getCarManagement")
-    void createCarManageTest(CarManage given, int carSize) {
+    void createCarManageTest(CarManager given, int carSize) {
         // given
 
         // when

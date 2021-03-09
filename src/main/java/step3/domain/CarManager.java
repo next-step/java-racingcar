@@ -13,17 +13,17 @@ import static step3.util.Constants.START_IDX;
 /**
  * 자동차의 생성을 관리할 클래스
  */
-public class CarManage {
+public class CarManager {
 
     private final List<Car> cars = new ArrayList<>();
 
     // 자동차 댓수만 설정
-    public CarManage(final int participants) {
+    public CarManager(final int participants) {
         this(participants, new ConditionMoveStrategy());
     }
 
     // 자동차 움직이는 전략과 함께 생성하려는 경우
-    public CarManage(final int carCount, final MoveStrategy moveStrategy) {
+    public CarManager(final int carCount, final MoveStrategy moveStrategy) {
         createdCars(carCount, moveStrategy);
     }
 
