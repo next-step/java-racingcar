@@ -4,7 +4,7 @@ import RacingCar.MovementCondition;
 
 public class AlwaysMoveCondition implements MovementCondition {
     @Override
-    public boolean isMovoable() {
+    public boolean isMovable() {
         return true;
     }
 }

@@ -12,7 +12,7 @@ public class RandomMovementCondition implements MovementCondition {
     }
 
     @Override
-    public boolean isMovoable() {
+    public boolean isMovable() {
         if (random.nextInt(MAX_NUMBER) < moveThreshold) {
             return false;
         }

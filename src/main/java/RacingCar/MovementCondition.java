@@ -1,5 +1,5 @@
 package RacingCar;
 
 public interface MovementCondition {
-    boolean isMovoable();
+    boolean isMovable();
 }

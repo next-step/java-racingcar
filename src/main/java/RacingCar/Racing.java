@@ -33,7 +33,7 @@ public class Racing {
     }
 
     private void raceSingleCar(int carIndex) {
-        if (movementCondition.isMovoable()) {
+        if (movementCondition.isMovable()) {
             racingResult.increaseDistance(carIndex);
         }
     }
