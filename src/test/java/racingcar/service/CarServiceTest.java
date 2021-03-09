@@ -70,4 +70,24 @@ class CarServiceTest {
         assertEquals(0, movementRangeOfCars.get(1), "move()에 4미만의 값이 들어갔다면 이동범위가 증가하지 않아야 한다.");
         assertEquals(2, movementRangeOfCars.size(), "찾은 이동범위의 수가 추가한 자동차의 수와 같아야 한다.");
     }
+
+    @Test
+    @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
+    public void findByName() throws Exception {
+        //given
+        CarRepository carRepository = new CarRepository();
+        Car car = new Car();
+        String name = "seongbeen";
+        car.setName(name);
+        carRepository.save(car);
+        CarService carService = new CarService(carRepository);
+
+        //when
+        Car foundCar = carService.findCar(name);
+        String foundName = foundCar.getName();
+
+        //then
+        assertEquals(name, foundName, "추가한 자동차와 찾은 자동차의 이름이 같아야 한다.");
+        assertEquals(car.hashCode(), foundCar.hashCode(), "추가한 자동차와 찾은 자동차가 같아야 한다.");
+    }
 }
