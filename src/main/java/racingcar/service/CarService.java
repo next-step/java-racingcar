@@ -22,4 +22,8 @@ public enum CarService {
     public List<Integer> findMovementRangeOfCars() {
         return carRepository.findAllMovementRange();
     }
+
+    public Car findCar(String name) {
+        return carRepository.findByName(name);
+    }
 }

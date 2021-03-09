@@ -26,4 +26,11 @@ public enum CarRepository {
                 .map(Car::getMovementRange)
                 .collect(Collectors.toList());
     }
+
+    public Car findByName(String name) {
+        return cars.stream()
+                .filter(car -> name.equals(car.getName()))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("해당 이름을 가진 자동차가 없습니다."));
+    }
 }
