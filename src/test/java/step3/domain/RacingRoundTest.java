@@ -1,11 +1,14 @@
 package step3.domain;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import step3.move.MoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,25 +17,28 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class RacingRoundTest {
 
-    private List<Car> cars;
+    public static final MoveStrategy MOVE_STRATEGY = () -> true;
 
-    @BeforeEach
-    void setUp() {
-        Car car1 = new Car(1);
-        Car car2 = new Car(4);
-        Car car3 = new Car(3);
-
-        cars = Arrays.asList(car1, car2, car3);
+    private static Stream<Arguments> racingEntry() {
+        Car car1 = new Car(0, MOVE_STRATEGY);
+        Car car2 = new Car(1, MOVE_STRATEGY);
+        Car car3 = new Car(3, MOVE_STRATEGY);
+        Car car4 = new Car(4, MOVE_STRATEGY);
+        return Stream.of(
+                Arguments.of(Arrays.asList(car1, car2, car3), 3),
+                Arguments.of(Arrays.asList(car1, car2, car3, car4), 4)
+        );
     }
 
     @DisplayName("레이싱 라운드 기록 테스트")
-    @Test
-    void racingOfRoundTest() {
+    @ParameterizedTest(name = "레이싱 참여 한 인원 {1} 체크")
+    @MethodSource(value = "racingEntry")
+    void racingOfRoundTest(List<Car> entry, int participants) {
         // given
-        RacingRound racingRound = new RacingRound(cars);
+        RacingRound racingRound = new RacingRound(entry);
         // when
-        int size = racingRound.getCars().size();
+        int participantCount = racingRound.getCars().size();
         // then
-        assertThat(size).isEqualTo(3);
+        assertThat(participantCount).isEqualTo(participants);
     }
 }
