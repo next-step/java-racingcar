@@ -3,10 +3,6 @@ package RacingCar;
 import java.util.Random;
 
 public class RandomMovementCondition implements MovementCondition {
-    private Random random = new Random();
-    private int moveThreshold;
-    private final int MAX_NUMBER = 10;
-
     RandomMovementCondition(int moveThreshold) {
         this.moveThreshold = moveThreshold;
     }
@@ -18,4 +14,8 @@ public class RandomMovementCondition implements MovementCondition {
         }
         return true;
     }
+
+    private Random random = new Random();
+    private int moveThreshold;
+    private final int MAX_NUMBER = 10;
 }

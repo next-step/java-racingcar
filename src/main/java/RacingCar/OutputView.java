@@ -1,13 +1,13 @@
 package RacingCar;
 
 public class OutputView {
-    void printTitle() {
+    public void printTitle() {
         final String TITLE = "실행 결과";
         System.out.println();
         System.out.println(TITLE);
     }
 
-    void printSingleRacingResult(RacingResult racingResult) {
+    public void printSingleRacingResult(RacingResult racingResult) {
         for (int carIndex = 0; carIndex < racingResult.getNumberOfCars(); carIndex++) {
             int distance = racingResult.getDistance(carIndex);
             while (distance-- != 0) {

@@ -1,12 +1,6 @@
 package RacingCar;
 
 public class Racing {
-    MovementCondition movementCondition;
-    SimpleRacingResult racingResult;
-    int numberOfRacing;
-    int numberOfCars;
-    Subject endOfSingleRacingSubject = new RacingSubject();
-
     public Racing(MovementCondition movementCondition, int numberOfCars, int numberOfRacing) {
         this.movementCondition = movementCondition;
         this.numberOfCars = numberOfCars;
@@ -17,6 +11,14 @@ public class Racing {
     public RacingResult racing() {
         race();
         return racingResult;
+    }
+
+    public void addEndOfSingleRacingListener(Observer<RacingResult> observer) {
+        endOfSingleRacingSubject.addObserver(observer);
+    }
+
+    public void removeEndOfSingleRacingListener(Observer<RacingResult> observer) {
+        endOfSingleRacingSubject.removeObserver(observer);
     }
 
     private void race() {
@@ -38,11 +40,9 @@ public class Racing {
         }
     }
 
-    public void addEndOfSingleRacingListener(Observer<RacingResult> observer) {
-        endOfSingleRacingSubject.addObserver(observer);
-    }
-
-    public void removeEndOfSingleRacingListener(Observer<RacingResult> observer) {
-        endOfSingleRacingSubject.removeObserver(observer);
-    }
+    private MovementCondition movementCondition;
+    private SimpleRacingResult racingResult;
+    private int numberOfRacing;
+    private int numberOfCars;
+    private Subject endOfSingleRacingSubject = new RacingSubject();
 }

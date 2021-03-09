@@ -15,6 +15,42 @@ import static org.assertj.core.api.Assertions.*;
 
 
 public class RacingTest {
+    @ParameterizedTest
+    @MethodSource("provideRacingTestSources")
+    public void When_Racing_Than_DistanceChanged(MovementCondition movementCondition, int numberOfCars, int numberOfRacing, int[] expected) {
+        //given
+        Racing racing = new Racing(movementCondition, numberOfCars, numberOfRacing);
+
+        //when
+        RacingResult result = racing.racing();
+
+        //then
+        for (int i = 0; i < numberOfCars; i++) {
+            assertThat(result.getDistance(i)).isEqualTo(expected[i]);
+        }
+    }
+
+    @Test
+    public void Given_SetListener_When_Racing_Then_ListenerCalled() {
+        Observer endOfSingleRacing = new Observer<RacingResult>() {
+            @Override
+            public void observe(RacingResult event) {
+                endOfSingleRacingCalled = true;
+            }
+        };
+
+        //given
+        Racing racing = new Racing(new AlwaysMoveCondition(), 1, 1);
+
+
+        //when
+        racing.addEndOfSingleRacingListener(endOfSingleRacing);
+        racing.racing();
+
+        //then
+        assertThat(endOfSingleRacingCalled).isEqualTo(true);
+    }
+
     private boolean endOfSingleRacingCalled = false;
 
     private static Stream<Arguments> provideRacingTestSources() {
@@ -34,39 +70,4 @@ public class RacingTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("provideRacingTestSources")
-    void When_Racing_Than_DistanceChanged(MovementCondition movementCondition, int numberOfCars, int numberOfRacing, int[] expected) {
-        //given
-        Racing racing = new Racing(movementCondition, numberOfCars, numberOfRacing);
-
-        //when
-        RacingResult result = racing.racing();
-
-        //then
-        for (int i = 0; i < numberOfCars; i++) {
-            assertThat(result.getDistance(i)).isEqualTo(expected[i]);
-        }
-    }
-
-    @Test
-    void Given_SetListener_When_Racing_Then_ListenerCalled() {
-        Observer endOfSingleRacing = new Observer<RacingResult>() {
-            @Override
-            public void observe(RacingResult event) {
-                endOfSingleRacingCalled = true;
-            }
-        };
-
-        //given
-        Racing racing = new Racing(new AlwaysMoveCondition(), 1, 1);
-
-
-        //when
-        racing.addEndOfSingleRacingListener(endOfSingleRacing);
-        racing.racing();
-
-        //then
-        assertThat(endOfSingleRacingCalled).isEqualTo(true);
-    }
 }

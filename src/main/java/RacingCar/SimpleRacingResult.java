@@ -3,9 +3,6 @@ package RacingCar;
 import java.util.HashMap;
 
 public class SimpleRacingResult implements RacingResult {
-    int numberOfCars;
-    HashMap<Integer, Integer> distances;
-
     public SimpleRacingResult(int numberOfCars) {
         this.numberOfCars = numberOfCars;
         distances = new HashMap<>();
@@ -14,7 +11,7 @@ public class SimpleRacingResult implements RacingResult {
         }
     }
 
-    void increaseDistance(int carIndex) {
+    public void increaseDistance(int carIndex) {
         int distance = distances.get(carIndex);
         distances.put(carIndex, distance + 1);
     }
@@ -28,4 +25,8 @@ public class SimpleRacingResult implements RacingResult {
     public int getNumberOfCars() {
         return numberOfCars;
     }
+
+
+    private int numberOfCars;
+    private HashMap<Integer, Integer> distances;
 }
