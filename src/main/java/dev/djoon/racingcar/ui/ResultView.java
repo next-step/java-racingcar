@@ -1,8 +1,21 @@
 package dev.djoon.racingcar.ui;
 
+import dev.djoon.racingcar.actor.Car;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ResultView {
   public static void printNewGame() {
     System.out.println("실행 결과");
+  }
+
+  public static void printCarOwner(Car car) {
+    if ("".equals(car.getOwner())) {
+      return;
+    }
+
+    System.out.print(car.getOwner() + " : ");
   }
 
   public static void printXPos(int xPos) {
@@ -15,5 +28,15 @@ public class ResultView {
 
   public static void printCR() {
     System.out.println();
+  }
+
+  public static String getWinnerNames(List<Car> cars) {
+    return cars.stream()
+               .map(Car::getOwner)
+               .collect(Collectors.joining(", "));
+  }
+
+  public static void printWinner(List<Car> cars) {
+    System.out.println(getWinnerNames(cars) + "가 최종 우승했습니다.");
   }
 }
