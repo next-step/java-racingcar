@@ -6,24 +6,23 @@ import dev.djoon.racingcar.util.GameConstant;
 import dev.djoon.racingcar.util.RandomNumbers;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCarGame {
 
   private final List<Car> carList;
   private final int loopTimes;
-  private int winnerScore = 0;
 
   public RacingCarGame(int carQuantity, int loopTimes) {
-    carList = new ArrayList<>();
-    fillCarList(carQuantity);
+    this.carList = fillCarList(carQuantity);
 
     this.loopTimes = loopTimes;
   }
 
-  public RacingCarGame(String[] ownerNames, int loopTimes) {
-    carList = new ArrayList<>();
-    fillCarList(ownerNames);
+  public RacingCarGame(List<String> ownerNames, int loopTimes) {
+    this.carList = fillCarList(ownerNames);
 
     this.loopTimes = loopTimes;
   }
@@ -43,26 +42,17 @@ public class RacingCarGame {
   }
 
   public List<Car> findWinners() {
-    findWinnerScore();
+    final int winnerScore = findWinnerScore();
 
-    List<Car> winners = new ArrayList<>();
-    for (Car car : carList) {
-      checkIfWinner(winners, car);
-    }
-
-    return winners;
+    return carList.stream()
+                  .filter(car -> car.getXPosition() == winnerScore)
+                  .collect(Collectors.toList());
   }
 
-  private void checkIfWinner(List<Car> winners, Car car) {
-    if (winnerScore == car.getXPosition()) {
-      winners.add(car);
-    }
-  }
-
-  private void findWinnerScore() {
-    for (Car car : carList) {
-      winnerScore = Math.max(winnerScore, car.getXPosition());
-    }
+  private int findWinnerScore() {
+    return carList.stream()
+                  .max(Comparator.comparingInt(Car::getXPosition))
+                  .map(Car::getXPosition).orElse(0);
   }
 
   private void carsMoveIfValid(RandomNumbers random) {
@@ -75,16 +65,24 @@ public class RacingCarGame {
     }
   }
 
-  private void fillCarList(int carQuantity) {
+  private List<Car> fillCarList(int carQuantity) {
+    List<Car> filledCarList = new ArrayList<>();
+
     for (int i = 0; i < carQuantity; i++) {
-      carList.add(RacingCarFactory.create());
+      filledCarList.add(RacingCarFactory.create());
     }
+
+    return filledCarList;
   }
 
-  private void fillCarList(String[] ownerNames) {
+  private List<Car> fillCarList(List<String> ownerNames) {
+    List<Car> filledCarList = new ArrayList<>();
+
     for (String ownerName : ownerNames) {
-      carList.add(RacingCarFactory.createWithOwner(ownerName));
+      filledCarList.add(RacingCarFactory.createWithOwner(ownerName));
     }
+
+    return filledCarList;
   }
 
 }

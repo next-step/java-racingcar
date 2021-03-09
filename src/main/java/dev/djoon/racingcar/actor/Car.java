@@ -8,6 +8,19 @@ public abstract class Car {
   protected int enginePower;
   protected String owner;
 
+  protected Car() {
+    this.owner = "";
+    this.xPosition = 0;
+  }
+
+  protected Car(String owner) {
+    if (owner.length() > 5) {
+      throw new IllegalArgumentException("A owner name cannot be longer than 5 : " + owner);
+    }
+    this.owner = owner;
+    this.xPosition = 0;
+  }
+
   private void move() {
     this.xPosition += enginePower;
   }

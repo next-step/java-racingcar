@@ -1,8 +1,9 @@
 package dev.djoon.racingcar.ui;
 
 import dev.djoon.racingcar.actor.Car;
+
 import java.util.List;
-import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class ResultView {
   public static void printNewGame() {
@@ -30,12 +31,9 @@ public class ResultView {
   }
 
   public static String getWinnerNames(List<Car> cars) {
-    StringJoiner stringJoiner = new StringJoiner(", ");
-    for (Car car : cars) {
-      stringJoiner.add(car.getOwner());
-    }
-
-    return stringJoiner.toString();
+    return cars.stream()
+               .map(Car::getOwner)
+               .collect(Collectors.joining(", "));
   }
 
   public static void printWinner(List<Car> cars) {

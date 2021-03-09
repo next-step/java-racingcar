@@ -4,11 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import dev.djoon.racingcar.actor.Car;
-import dev.djoon.racingcar.actor.OppaCar;
+import dev.djoon.racingcar.actor.Sedan;
 import dev.djoon.racingcar.ui.ResultView;
 import dev.djoon.racingcar.util.GameConstant;
 import dev.djoon.racingcar.util.RandomNumbers;
 import dev.djoon.racingcar.util.TestRandomNumbers;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -54,7 +57,7 @@ public class RacingCarTest {
   @DisplayName("0~9 사이 값에서 4 이상일 경우 자동차가 전진함")
   public void carMovesByConditionTest(int condition, boolean expectedMove) {
     // given
-    Car car = new OppaCar();
+    Car car = new Sedan();
 
     // when
     final boolean isCarMoved = car.moveIfValidCondition(condition);
@@ -89,7 +92,7 @@ public class RacingCarTest {
   @DisplayName("차 이름 길이가 5를 초과할 수 없음.")
   public void carNameLengthTest(String owner) {
     assertThatIllegalArgumentException()
-        .isThrownBy(() -> new OppaCar(owner))
+        .isThrownBy(() -> new Sedan(owner))
         .withMessageMatching("A owner name cannot be longer than 5 : " + owner);
   }
 
@@ -98,7 +101,8 @@ public class RacingCarTest {
   @DisplayName("자동차 경주 완료 후 우승자를 확인한다.")
   public void carNameLengthTest(String ownerNames, int loopTimes) {
     // given
-    RacingCarGame racingCarGame = new RacingCarGame(ownerNames.split(","), loopTimes);
+    List<String> ownerNamesList = Arrays.asList(ownerNames.split(","));
+    RacingCarGame racingCarGame = new RacingCarGame(ownerNamesList, loopTimes);
     RandomNumbers randomNumbers = new RandomNumbers();
     randomNumbers.setSeed(GameConstant.RANDOM_TEST_SEED);
 
