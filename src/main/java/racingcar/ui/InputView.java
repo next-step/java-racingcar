@@ -13,11 +13,18 @@ public class InputView {
 
   public String getNumberOfCars() throws IOException {
     System.out.println("자동차 대수는 몇 대 인가요?");
-    return reader.readLine();
+    return validation(reader.readLine());
   }
 
   public String getRound() throws IOException {
     System.out.println("시도할 회수는 몇 회 인가요?");
-    return reader.readLine();
+    return validation(reader.readLine());
+  }
+
+  public String validation(String userInput) {
+    if(!UserInputValidator.isNumeric(userInput)){
+      throw new IllegalArgumentException("숫자만 입력하실 수 있습니다.");
+    }
+    return userInput;
   }
 }

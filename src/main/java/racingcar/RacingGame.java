@@ -19,40 +19,46 @@ public class RacingGame {
   private static final InputView inputView = new InputView(reader);
   private static final OutputView outputView = new OutputView(writer);
 
-  private Cars cars;
   private Rule rule;
 
   public static void main(String[] args) throws IOException {
     RacingGame racingGame = new RacingGame();
-    racingGame.initPhase();
+    racingGame.userInput();
     racingGame.playGame();
   }
 
-  public void initPhase() throws IOException {
-    int numberOfCars = Integer.parseInt(inputView.getNumberOfCars());
-    int numberOfRounds = Integer.parseInt(inputView.getRound());
-    createCars(numberOfCars);
-    createRule(numberOfRounds, cars);
+  public void userInput() throws IOException {
+    int numberOfCar = Integer.parseInt(inputView.getNumberOfCars());
+    int numberOfRound = Integer.parseInt(inputView.getRound());
+    initPhase(numberOfCar, numberOfRound);
   }
 
   public void playGame() {
-    outputView.printInitialCarPosition(cars);
-    for(int i = 0; i < rule.getRound(); i++){
-      rule.doRacing();
-      outputView.printCarPosition(cars, i+1);
-    }
+    outputView.printInitialCarPosition(rule.getCars());
+    doRacingGame();
     outputView.endGame();
   }
 
-  private void createCars(int numberOfCars) {
+  private void doRacingGame() {
+    for(int i = 0; i < rule.getRound(); i++){
+      rule.doRacing();
+      outputView.printCarPosition(rule.getCars(), i+1);
+    }
+  }
+
+  private void initPhase(int numberOfCar, int numberOfRound) {
+    this.rule = createRule(numberOfRound, createCars(numberOfCar));
+  }
+
+  private Cars createCars(int numberOfCars) {
     List<Car> carList = new ArrayList<>();
     for(int i = 0; i < numberOfCars; i++) {
       carList.add(Car.createCar());
     }
-    cars = new Cars(carList);
+    return new Cars(carList);
   }
 
-  private void createRule(int numberOfRounds, Cars cars) {
-    rule = Rule.createRule(numberOfRounds, cars);
+  private Rule createRule(int numberOfRounds, Cars cars) {
+    return Rule.createRule(numberOfRounds, cars);
   }
 }

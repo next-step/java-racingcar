@@ -11,12 +11,7 @@ public class Car {
     return position;
   }
 
-  public void moveCar(int randomNumber) {
-    boolean moveable = moveable(randomNumber);
-    if(moveable) this.position++;
-  }
-
-  private boolean moveable(int randomNumber) {
-    return randomNumber >= 4;
+  public void moveCar() {
+    this.position++;
   }
 }
