@@ -47,11 +47,10 @@ public class Cars {
     }
 
     public Winners findWinners() {
-        Position maxPosition = new Position();
-        for (Car car : cars) {
-            maxPosition = car.max(maxPosition);
-        }
+        return winners(maxPosition());
+    }
 
+    private Winners winners(Position maxPosition) {
         Winners winners = new Winners();
         for (Car car : cars) {
             if (car.isWinner(maxPosition)) {
@@ -59,5 +58,13 @@ public class Cars {
             }
         }
         return winners;
+    }
+
+    private Position maxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.max(maxPosition);
+        }
+        return maxPosition;
     }
 }

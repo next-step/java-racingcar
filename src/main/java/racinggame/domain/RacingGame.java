@@ -1,7 +1,5 @@
 package racinggame.domain;
 
-import java.util.List;
-
 public class RacingGame {
     private static final int MAX_BOUND = 10;
 
@@ -22,11 +20,11 @@ public class RacingGame {
         return tryNo.racing();
     }
 
-    public List<Car> getCars() {
-        return null;
+    public Cars getCars() {
+        return this.cars;
     }
 
-    public List<Car> getWinners() {
-        return null;
+    public Winners getWinners() {
+        return cars.findWinners();
     }
 }
