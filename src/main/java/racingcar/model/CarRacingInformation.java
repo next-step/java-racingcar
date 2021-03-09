@@ -11,7 +11,6 @@ public class CarRacingInformation {
     private RandomMovable randomMovable;
     private int carRacingCount;
 
-
     public CarRacingInformation(List<String> carNameList, int carRacingCount) {
         checkDuplication(carNameList);
         isZeroOrLess(carRacingCount);
@@ -76,11 +75,15 @@ public class CarRacingInformation {
         return carRacingCount;
     }
 
-    public List<String> setWinner() {
-        int winnerPoisiton = carList.stream()
+    private int getWinnerPosition() {
+        return carList.stream()
                 .max(Comparator.comparing(Car::getPoisition))
                 .get()
                 .getPoisition();
+    }
+
+    public List<String> setWinner() {
+        int winnerPoisiton = getWinnerPosition();
 
         return carList.stream()
                 .filter(car -> car.getPoisition() == winnerPoisiton)
