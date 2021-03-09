@@ -1,8 +1,9 @@
 package step3.study;
 
+import step3.study.controller.RacingGameController;
+
 public class Main {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.input();
+        new RacingGameController().run();
     }
 }

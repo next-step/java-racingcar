@@ -1,11 +1,11 @@
-package step3.study;
+package step3.study.util;
 
 public class Validator {
-    public static int numberCheck(String str){
+    public static int numberCheck(String str) {
         int result;
-        try{
+        try {
             result = Integer.parseInt(str);
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new NumberFormatException("숫자형식이 아닙니다.");
         }
         return result;
