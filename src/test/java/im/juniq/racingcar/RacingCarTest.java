@@ -18,4 +18,18 @@ class RacingCarTest {
 		assertThat(racingCar.getId()).isEqualTo(1);
 		assertThat(racingCar.getMoveCount()).isEqualTo(0);
 	}
+
+	@DisplayName("자동차를 이동한다")
+	@Test
+	void moveRacingCar() {
+		RacingCar racingCar = new RacingCar(1, new Random() {
+			@Override
+			public int nextInt(int bound) {
+				return 5;
+			}
+		});
+		racingCar.move();
+
+		assertThat(racingCar.getMoveCount()).isEqualTo(1);
+	}
 }
