@@ -2,10 +2,8 @@ package step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step2.Calculator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
@@ -24,14 +22,55 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("빈값이거나 null 일때 IllegalArgumentException 발생 테스트")
+    @DisplayName("실제 연산처리 테스트")
+    void getResult() {
+        // given
+        String[] arr = {"2", "+", "5", "*", "4", "/", "2"};
+
+        // when
+        int actual = Calculator.getResult(arr);
+
+        // then
+        int expected = (2 + 5) * 4 / 2;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("연산자에 따라 연산 테스트")
+    void chooseOperator() {
+        // given
+        String operator = "*";
+        int result = 20;
+        String num2 = "10";
+
+        // when
+        int actual = Calculator.chooseOperator(operator, result, num2);
+
+        // then
+        int expected = result * Integer.parseInt(num2);
+        assertEquals(actual, expected);
+
+    }
+
+    @Test
+    @DisplayName("데이터 파싱한 배열에서 null 또는 빈 값 검사")
     void hasNotNullOrNotEmpty() {
         // given
-        String[] arr = {"2","*","3", " "};
+        String[] arr = {"2", "*", "3"};
 
         // when & then
+        assertTrue(Calculator.hasNotNullOrNotEmpty(arr));
+    }
+
+    @Test
+    @DisplayName("빈 값이거나 null 일때 IllegalArgumentException 발생 테스트")
+    void throwIllegalArgumentException() {
+        // given
+        String s = " ";
+
+        // when && then
         assertThrows(IllegalArgumentException.class, () -> {
-            Calculator.hasNotNullOrNotEmpty(arr);
+            Calculator.throwIllegalArgumentException(s);
         });
     }
 
@@ -46,7 +85,7 @@ class CalculatorTest {
         int actual = Calculator.add(num1, num2);
 
         // then
-        int expected = num1+Integer.parseInt(num2);
+        int expected = num1 + Integer.parseInt(num2);
         assertEquals(expected, actual);
     }
 
@@ -61,7 +100,7 @@ class CalculatorTest {
         int actual = Calculator.minus(num1, num2);
 
         // then
-        int expected = num1-Integer.parseInt(num2);
+        int expected = num1 - Integer.parseInt(num2);
         assertEquals(expected, actual);
     }
 
@@ -76,7 +115,7 @@ class CalculatorTest {
         int actual = Calculator.multiple(num1, num2);
 
         // then
-        int expected = num1*Integer.parseInt(num2);
+        int expected = num1 * Integer.parseInt(num2);
         assertEquals(expected, actual);
     }
 
@@ -91,7 +130,7 @@ class CalculatorTest {
         int actual = Calculator.divide(num1, num2);
 
         // then
-        int expected = num1/Integer.parseInt(num2);
+        int expected = num1 / Integer.parseInt(num2);
         assertEquals(expected, actual);
     }
 }
