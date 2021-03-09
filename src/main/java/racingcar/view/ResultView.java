@@ -24,8 +24,8 @@ public class ResultView {
         System.out.println(winnerMessage);
     }
 
-    public String printEachCar(String carName, int position) {
-        String result = carName + " : ";
+    public String printEachCar(int position) {
+        String result = "";
 
         for (int i = 0; i < position; i++) {
             result += FORWARDING;
@@ -39,7 +39,7 @@ public class ResultView {
 
         while(carNames.hasNext()){
             String carName = carNames.next();
-            System.out.println(printEachCar(carName, eachRound.get(carName)));
+            System.out.println(carName + " : " + printEachCar(eachRound.get(carName)));
         }
     }
 
