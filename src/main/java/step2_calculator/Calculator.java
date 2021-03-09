@@ -1,3 +1,5 @@
+package step2_calculator;
+
 public class Calculator {
 
     public String[] splitInput(String input){

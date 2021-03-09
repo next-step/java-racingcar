@@ -1,3 +1,5 @@
+package step2_calculator;
+
 import java.util.Arrays;
 
 public enum Operator {
