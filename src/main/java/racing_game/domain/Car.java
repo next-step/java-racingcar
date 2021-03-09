@@ -1,5 +1,7 @@
 package racing_game.domain;
 
+import racing_game.exception.CarNameException;
+
 public class Car {
 
     private String name;
@@ -36,12 +38,12 @@ public class Car {
 
     private void maxLength(String name) {
         if(name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new CarNameException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
     private void emptyName(String name) {
         if(name.isEmpty()) {
-            throw new IllegalArgumentException("빈 값은 입력할 수 없습니다.");
+            throw new CarNameException("빈 값은 입력할 수 없습니다.");
         }
     }
 }

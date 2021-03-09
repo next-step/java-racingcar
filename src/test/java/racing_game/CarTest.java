@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing_game.domain.Car;
+import racing_game.exception.CarNameException;
 
 class CarTest {
 
@@ -40,7 +41,7 @@ class CarTest {
     @ValueSource(strings = {""})
     public void nullNameExceptionTest(String value){
         assertThatThrownBy(() -> new Car(value))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(CarNameException.class);
     }
 
     @DisplayName("car name 글자 초과 테스트")
@@ -48,6 +49,6 @@ class CarTest {
     @ValueSource(strings = {"123456"})
     public void maxLengthExceptionTest(String value){
         assertThatThrownBy(() -> new Car(value))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(CarNameException.class);
     }
 }
