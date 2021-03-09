@@ -2,10 +2,16 @@ package study1;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import study1.calculator.CalculatorEnum;
 import study1.calculator.CalculatorService;
 
 public class CalculatorTest {
@@ -24,5 +30,22 @@ public class CalculatorTest {
   void checkAnswer(String str, int num) {
     int result = new CalculatorService(str).calculateAll();
     assertThat(result).isEqualTo(num);
+  }
+
+  @ParameterizedTest
+  @MethodSource("generateMarkAndNum")
+  @DisplayName("calculate 테스트")
+  void checkCalculate(String mark, int num1, int num2, int total) {
+    int result = CalculatorEnum.fromMark(mark).calculate(num1, num2);
+    assertThat(result).isEqualTo(total);
+  }
+
+  private static Stream<Arguments> generateMarkAndNum() {
+    return Stream.of(
+      Arguments.of("+", 1, 1, 2), 
+      Arguments.of("-", 1, 1, 0),
+      Arguments.of("*", 2, 2, 4),
+      Arguments.of("/", 6, 2, 3)
+    );
   }
 }
