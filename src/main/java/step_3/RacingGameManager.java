@@ -21,20 +21,7 @@ public class RacingGameManager {
                 .build()
                 .startRacing());
 
-        RacingGame racingGame = new RacingGame.Builder()
-                .enterCars(inputResult.enterCars())
-                .execution(inputResult.executionCount())
-                .build();
 
-        RacingResult currentLaps = racingGame.standby();
-        System.out.println("Game Start");
-        GameResultView.printRacingResult(currentLaps.gameStatus());
-        System.out.println("Start!!");
-        while (!currentLaps.complete()) {
-            currentLaps = racingGame.run(currentLaps.gameStatus());
-            GameResultView.printRacingResult(currentLaps.gameStatus());
-            System.out.print("\n");
-        }
     }
 
 }

@@ -10,11 +10,13 @@ public class RacingGame {
     private final int enterCars;
     private final int executionCount;
     private final List<RacingResult> lapHistory;
+    private final Random random;
 
     private RacingGame(Integer enterCars, Integer executionCount) {
         this.enterCars = enterCars;
         this.executionCount = executionCount;
         this.lapHistory = new ArrayList<>();
+        this.random = new Random();
     }
 
     public List<RacingResult> startRacing() {
@@ -27,8 +29,8 @@ public class RacingGame {
 
     public RacingResult standby () {
         this.lapHistory.add(new RacingResult.Builder()
-                .carsOnLap(IntStream.range(0, enterCars).mapToObj(operand -> 0).collect(Collectors.toList()))
-                .complete(this.executionCount <= this.lapHistory.size())
+                .carsOnLap(integerListGeneratorByInputNumber(enterCars))
+                .complete(this.executionCount == this.lapHistory.size() + 1)
                 .build());
         return this.lapHistory.get(this.lapHistory.size() - 1);
     }
@@ -36,7 +38,7 @@ public class RacingGame {
     public RacingResult run(List<Integer> carsOnCourse) {
         this.lapHistory.add(new RacingResult.Builder()
                 .carsOnLap(goAheadCars(carsOnCourse))
-                .complete(this.executionCount <= this.lapHistory.size())
+                .complete(this.executionCount == this.lapHistory.size() + 1)
                 .build());
         return this.lapHistory.get(this.lapHistory.size() - 1);
     }
@@ -45,15 +47,22 @@ public class RacingGame {
         return this.lapHistory;
     }
 
+    private List<Integer> integerListGeneratorByInputNumber(Integer inputNumber) {
+        return IntStream
+                .range(0, inputNumber)
+                .mapToObj(operand -> 0)
+                .collect(Collectors.toList());
+    }
+
     private List<Integer> goAheadCars(List<Integer> cars) {
         return cars.stream()
-                .mapToInt(value -> goAhead() ? value + 1 : value)
+                .mapToInt(value -> goAhead(this.random.nextInt(9)) ? value + 1 : value)
                 .boxed()
                 .collect(Collectors.toList());
     }
 
-    private boolean goAhead() {
-        return new Random().nextInt(9) >= 4;
+    private boolean goAhead(Integer conditionLimit) {
+        return conditionLimit >= 4;
     }
 
 
