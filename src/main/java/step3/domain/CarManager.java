@@ -24,11 +24,11 @@ public class CarManager {
 
     // 자동차 움직이는 전략과 함께 생성하려는 경우
     public CarManager(final int carCount, final MoveStrategy moveStrategy) {
-        createdCars(carCount, moveStrategy);
+        createCars(carCount, moveStrategy);
     }
 
     // 자동차 생성 메서드
-    private void createdCars(int carCount, MoveStrategy moveStrategy) {
+    private void createCars(int carCount, MoveStrategy moveStrategy) {
         IntStream.range(START_IDX, carCount)
                 .forEach(value -> cars.add(new Car(START_IDX, moveStrategy)));
     }
