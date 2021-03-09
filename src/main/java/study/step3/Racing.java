@@ -1,5 +1,8 @@
 package study.step3;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Racing {
 
     private final Cars cars;
@@ -12,12 +15,20 @@ public class Racing {
         this.attemptCount = 0;
     }
 
-    public static Racing of(final Cars cars, final int attemptNumber) {
-        return new Racing(cars, attemptNumber);
+    public boolean isFinished() {
+        return attemptCount >= attemptNumber ? true : false;
     }
 
-    public boolean isFinshed() {
-        return attemptCount >= attemptNumber ? true : false;
+    public List<Car> race() {
+        attemptCount++;
+
+        return cars.stream()
+                .map(Car::move)
+                .collect(Collectors.toList());
+    }
+
+    public static Racing of(final Cars cars, final int attemptNumber) {
+        return new Racing(cars, attemptNumber);
     }
 }
 

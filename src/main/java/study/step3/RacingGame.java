@@ -6,8 +6,8 @@ public class RacingGame {
         Racing racing = Racing.of(Cars.of(InputView.inputCarNumber()), InputView.inputAttemptNumber());
         ResultView.printResultMessage();
 
-        while (!racing.isFinshed()) {
-            // TODO 출력
+        while (!racing.isFinished()) {
+            ResultView.printRace(racing.race());
         }
     }
 }

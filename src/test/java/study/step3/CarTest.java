@@ -14,4 +14,13 @@ public class CarTest {
         assertThat(car.getLocation()).isEqualTo(0);
     }
 
+    @DisplayName("차량 이동")
+    @Test
+    void move() {
+        Car car = Car.of();
+        car.move().move().move().getLocation();
+
+        assertThat(car.getLocationString().length()).isEqualTo(car.getLocation());
+    }
+
 }
