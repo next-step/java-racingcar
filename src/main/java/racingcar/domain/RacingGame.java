@@ -6,7 +6,11 @@ import racingcar.dto.EachRound;
 import racingcar.dto.FinalResult;
 import racingcar.dto.InputManagement;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -14,8 +18,16 @@ public class RacingGame {
     private FinalResult finalResult = new FinalResult();
     private int thisRound = 0;
 
-    public Map<Integer, Map<String, Integer>> getFinalResult() {
-        return finalResult.getFinalResult();
+    public List<String> getWinners() {
+        Map<String, Integer> finalRound = finalResult.getFinalResult().get(InputManagement.getCountRound());
+        int maxPosition = Collections.max(finalRound.values());
+
+        List<Map.Entry<String, Integer>> results = new ArrayList<>(finalRound.entrySet());
+
+        return results.stream()
+                .filter((Map.Entry<String, Integer> result) -> result.getValue() == maxPosition)
+                .map(result -> result.getKey())
+                .collect(Collectors.toList());
     }
 
     public void recordEachRoundPosition() {

@@ -7,23 +7,6 @@ public class ResultView {
 
     private static final char FORWARDING = '-';
 
-    public String getWinnerMessage(Map<String, Integer> finalRound, int maxPosition) {
-        List<Map.Entry<String, Integer>> finalResults = new ArrayList<>(finalRound.entrySet());
-
-        return finalResults.stream()
-                .filter((Map.Entry<String, Integer> result) -> result.getValue() == maxPosition)
-                .map(results -> results.getKey())
-                .collect(Collectors.joining(", "));
-    }
-
-    public void printWinner(Map<String, Integer> finalRound) {
-        int maxPosition = Collections.max(finalRound.values());
-
-        String winnerMessage = getWinnerMessage(finalRound, maxPosition) + "이(가) 최종 우승했습니다.";
-
-        System.out.println(winnerMessage);
-    }
-
     public String printEachCar(int position) {
         String result = "";
 
@@ -43,7 +26,7 @@ public class ResultView {
         }
     }
 
-    public void printResult(Map<Integer, Map<String, Integer>> finalResult) {
+    public void printResult(Map<Integer, Map<String, Integer>> finalResult, List<String> winners) {
         Iterator<Integer> rounds = finalResult.keySet().iterator();
         int round = 0;
 
@@ -53,6 +36,9 @@ public class ResultView {
             System.out.println();
         }
 
-        printWinner(finalResult.get(round));
+        String winnerMessage = winners.stream()
+                .collect(Collectors.joining(", "));
+
+        System.out.println(winnerMessage + "이(가) 최종 우승했습니다.");
     }
 }

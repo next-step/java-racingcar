@@ -39,7 +39,7 @@ class RacingGameTest {
     @ParameterizedTest
     @CsvSource("3, 1")
     @DisplayName("자동차 경주 게임을 완료한 후 우승자는 한명 이상이다.")
-    void playRacingGameAndGetWinner(int countRound, long minWinnerNumber) {
+    void playRacingGameAndGetWinner(int countRound, int minWinnerNumber) {
         String[] carNames = {"pobi","crong","jhLim"};
         new InputManagement(carNames, countRound);
 
@@ -52,16 +52,7 @@ class RacingGameTest {
         Cars carGroup = new Cars(cars);
         racingGame.startRacing(carGroup);
 
-        Map<String, Integer> finalRound = racingGame.getFinalResult().get(InputManagement.getCountRound());
-        int maxPosition = Collections.max(finalRound.values());
-
-        List<Map.Entry<String, Integer>> finalResults = new ArrayList<>(finalRound.entrySet());
-
-        long countWinner = finalResults.stream()
-                .filter((Map.Entry<String, Integer> result) -> result.getValue() == maxPosition)
-                .count();
-
-        assertThat(countWinner).isGreaterThanOrEqualTo(minWinnerNumber);
+        assertThat(racingGame.getWinners().size()).isGreaterThanOrEqualTo(minWinnerNumber);
     }
 
 }
