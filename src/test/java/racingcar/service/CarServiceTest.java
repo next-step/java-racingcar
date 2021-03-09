@@ -48,4 +48,26 @@ class CarServiceTest {
         //then
         assertEquals(3, cars.size(), "찾은 자동차의 수가 추가한 자동차의 수와 같아야 한다.");
     }
+
+    @Test
+    @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
+    public void findMovementRangeOfCars() throws Exception {
+        //given
+        CarRepository carRepository = new CarRepository();
+        Car firstCar = new Car();
+        firstCar.move(5);
+        Car secondCar = new Car();
+        secondCar.move(1);
+        carRepository.save(firstCar);
+        carRepository.save(secondCar);
+        CarService carService = new CarService(carRepository);
+
+        //when
+        List<Integer> movementRangeOfCars = carService.findMovementRangeOfCars();
+
+        //then
+        assertEquals(1, movementRangeOfCars.get(0), "move()에 4이상의 값이 들어갔다면 이동범위가 1 증가해야 한다.");
+        assertEquals(0, movementRangeOfCars.get(1), "move()에 4미만의 값이 들어갔다면 이동범위가 증가하지 않아야 한다.");
+        assertEquals(2, movementRangeOfCars.size(), "찾은 이동범위의 수가 추가한 자동차의 수와 같아야 한다.");
+    }
 }
