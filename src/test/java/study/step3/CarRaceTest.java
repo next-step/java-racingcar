@@ -29,7 +29,4 @@ public class CarRaceTest {
         car.move(randomValue >= NumberChecker.CONDITION_OF_START);
         assertThat(car.getPosition()).isEqualTo(1);
     }
-
-
-
 }
