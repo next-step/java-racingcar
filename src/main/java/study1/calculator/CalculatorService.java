@@ -1,6 +1,5 @@
 package study1.calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,23 +17,11 @@ public class CalculatorService {
     }
   }
 
-  public int calculateAll(List<String> strList) {
-    if (strList == null) {
-      strList = this.strList;
+  public int calculateAll() {
+    int total = Integer.parseInt(strList.get(0));
+    for(int i = 1; i < strList.size(); i += 2) {
+      total = CalculatorEnum.fromMark(strList.get(i)).calculate(total, Integer.parseInt(strList.get(i+1)));
     }
-
-    if (strList.size() < 3) {
-      return Integer.parseInt(strList.get(0));
-    }
-
-    List<String> copyedList = new ArrayList<>(strList);
-    int a = Integer.parseInt(copyedList.remove(0));
-    String mark = copyedList.remove(0);
-    int b = Integer.parseInt(copyedList.remove(0));
-
-    int num = CalculatorEnum.fromMark(mark).calculate(a, b);
-    copyedList.add(0, Integer.toString(num));
-
-    return calculateAll(copyedList);
+    return total;
   }
 }

@@ -14,7 +14,7 @@ public class CalculatorTest {
   @DisplayName("예외 테스트")
   void checkException(String str) {
     assertThatThrownBy(() -> {
-      new CalculatorService(str).calculateAll(null);
+      new CalculatorService(str).calculateAll();
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
@@ -22,7 +22,7 @@ public class CalculatorTest {
   @CsvSource(value = { "1 + 1:2", "3 - 1:2", "3 * 2:6", "4 / 2:2", "3 + 1 - 2 * 2 / 4:1" }, delimiter = ':')
   @DisplayName("정답 테스트")
   void checkAnswer(String str, int num) {
-    int result = new CalculatorService(str).calculateAll(null);
+    int result = new CalculatorService(str).calculateAll();
     assertThat(result).isEqualTo(num);
   }
 }
