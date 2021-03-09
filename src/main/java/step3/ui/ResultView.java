@@ -1,11 +1,14 @@
 package step3.ui;
 
+import step3.domain.RacingResult;
 import step3.domain.RacingRound;
 import step3.domain.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.joining;
 import static step3.util.Constants.START_IDX;
 
 /**
@@ -15,36 +18,39 @@ public class ResultView {
 
     public static final String CAR_DISTANCE_MARKING = "-";
     public static final String CARRIAGE_RETURN = "\n";
+    public static final String EMPTY = "";
+
+    private final String hyphen;
+
+    public ResultView() {
+        this.hyphen = CAR_DISTANCE_MARKING;
+    }
 
     // 응답 결과를 출력하는 기능
-    public void responseResult(List<RacingRound> racingRound) {
-        StringBuilder builder = new StringBuilder();
+    public void responseResult(final RacingResult racingRound) {
+        List<RacingRound> racingRounds = racingRound.getRacingRounds();
 
-        racingRound.forEach(
-                round -> builder.append(printRecordPerCar(round)).append(CARRIAGE_RETURN));
+        String result = racingRounds.stream()
+                .map(this::printRecordPerCar)
+                .collect(joining(CARRIAGE_RETURN + CARRIAGE_RETURN));
 
-        System.out.println(builder.toString());
+        System.out.println(result);
     }
 
     // 라운드당 자동차 기록 출력
-    private String printRecordPerCar(RacingRound round) {
-        StringBuilder builder = new StringBuilder();
+    private String printRecordPerCar(final RacingRound round) {
+        List<Car> cars = round.getCars();
+        return cars.stream()
+                .map(this::printDistancePerRecord)
+                .collect(joining(CARRIAGE_RETURN));
 
-        round.getCars()
-                .forEach(car ->
-                        builder.append(printDistancePerRecord(car))
-                                .append(CARRIAGE_RETURN));
-
-        return builder.toString();
     }
 
     // 자동차 별 거리 출력
-    private String printDistancePerRecord(Car car) {
-        StringBuilder builder = new StringBuilder();
-        IntStream.range(START_IDX, car.getPosition())
-                .forEach(i -> builder.append(CAR_DISTANCE_MARKING));
-
-        return builder.toString();
+    private String printDistancePerRecord(final Car car) {
+        return IntStream.range(START_IDX, car.getPosition())
+                .mapToObj(i -> hyphen)
+                .reduce(EMPTY, (acc, cur) -> acc + cur);
     }
 
 }
