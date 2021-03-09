@@ -1,6 +1,5 @@
 package calculator;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -10,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
@@ -34,7 +34,21 @@ public class CalculatorTest {
     @ValueSource(strings = {"1+ 2", "1 +2", " ", "",
             "1,+,2:true", "1,+,2,-,3", "/,2:false", "1+-3"})
     public void calculatorThrowsExceptionsOnInvalidExpression(String input){
-        Assertions.assertThatIllegalArgumentException().isThrownBy(()->calculator.calculate(input));
+        assertThatIllegalArgumentException().isThrownBy(()->calculator.calculate(input));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1:+:2:3",
+            "3:+:4:7",
+            "1:-:2:-1",
+            "4:-:3:1",
+            "1:*:2:2",
+            "3:*:4:12",
+            "1:/:2:0",
+            "4:/:2:2"}, delimiter = ':')
+    public void calculatorUnitReturnsCalculatedValue(int baseNumber, String operator, int operand, int expected){
+        assertEquals(calculator.calculateUnit(baseNumber, operator, operand), expected);
     }
 
 

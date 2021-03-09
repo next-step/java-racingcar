@@ -25,14 +25,14 @@ public class ValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1+ 2", "1 +2", " ", ""})
     public void isInputValidThrowsException(String input){
-        assertThat(validator.isInputValid(input))
+        assertThat(validator.isInputBlankSafe(input))
                 .isFalse();
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1+2", "1+2-3", "1+2-3*4", "1+2-3*4/5"})
     public void isInputValidReturnsTrue(String input){
-        assertThat(validator.isInputValid(input))
+        assertThat(validator.isInputBlankSafe(input))
                 .isTrue();
     }
 
@@ -62,8 +62,11 @@ public class ValidatorTest {
             "1,+,2,-,3,*,4:true",
             "1,+,2,-,3,*,4,/,5:true",
             "/,2:false",
-            "1+-3:false"}, delimiter = ':')
-    public void canValidateValidExpression(String input, boolean expected){
+            "2/:false",
+            "1+-3:false",
+            "1&3:false",
+            "@:false"}, delimiter = ':')
+    public void canValidateCalculatableExpression(String input, boolean expected){
         List<String> inputList = Arrays.stream(
                 input.split(","))
                 .collect(Collectors.toList());
@@ -72,14 +75,27 @@ public class ValidatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "1:true",
-            "+:false",
-            "23:true",
-            ".:false"}, delimiter = ':')
-    public void canValidateFirstCharacter(String input, boolean expected){
-        assertEquals(validator.isCharacterNumber(input.charAt(0)), expected);
+            "true:1:true",
+            "true:-:false",
+            "false:-:true",
+            "false:2:false"}, delimiter = ':')
+    public void canValidateValidExpression(boolean numberFlag, String input, boolean expected){
+        assertEquals(validator.isValidExpression(numberFlag, input), expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "+:true",
+            "-:true",
+            "*:true",
+            "/:true",
+            "1+:false",
+            "/1:false",
+            ".:false",
+            "=:false"}, delimiter = ':')
+    public void canValidateOperator(String input, boolean expected){
+        assertEquals(validator.isOperator(input),expected);
+    }
 
     @ParameterizedTest
     @CsvSource(value = {

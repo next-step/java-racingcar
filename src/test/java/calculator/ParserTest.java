@@ -21,11 +21,21 @@ class ParserTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1+2:1,+,2", "1+3-2:1,+,3,-,2", "3*4:3,*,4", "3*5/6:3,*,5,/,6"}, delimiter = ':')
-    public void parseExpressionReturnsParsedExpression(String input, String expected){
+    public void canParseExpression(String input, String expected){
         List<String> expectedList = Arrays.stream(
                 expected.split(","))
                 .collect(Collectors.toList());
         assertEquals(parser.parseExpression(input), expectedList);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1:1:true",
+            "1:-:false",
+            "-:1:false",
+            "-:-:false"}, delimiter = ':')
+    public void canTellShouldMerge(String input, char character, boolean expected){
+        assertEquals(parser.shouldMerge(input, character), expected);
     }
 
 }
