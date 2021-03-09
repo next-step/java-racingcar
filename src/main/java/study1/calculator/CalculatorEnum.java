@@ -1,6 +1,7 @@
 package study1.calculator;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public enum CalculatorEnum {
   ADD("+", (number1, number2) -> number1 + number2),
@@ -17,13 +18,12 @@ public enum CalculatorEnum {
   );
 
   private final String mark;
-  private final Expression expression;
+  private final BiFunction<Integer, Integer, Integer> expression;
 
-  interface Expression {
-    int calculate(int number1, int number2);
-  }
-
-  CalculatorEnum(String mark, Expression expression) {
+  CalculatorEnum(
+    String mark,
+    BiFunction<Integer, Integer, Integer> expression
+  ) {
     this.mark = mark;
     this.expression = expression;
   }
@@ -37,6 +37,6 @@ public enum CalculatorEnum {
   }
 
   public int calculate(int number1, int number2) {
-    return this.expression.calculate(number1, number2);
+    return this.expression.apply(number1, number2);
   }
 }
