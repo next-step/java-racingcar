@@ -18,4 +18,8 @@ public enum CarService {
     public List<Car> findCars() {
         return carRepository.findAll();
     }
+
+    public List<Integer> findMovementRangeOfCars() {
+        return carRepository.findAllMovementRange();
+    }
 }
