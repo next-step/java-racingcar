@@ -3,7 +3,8 @@ package RacingCarTest;
 import RacingCar.MovementCondition;
 import RacingCar.Racing;
 import RacingCar.RacingResult;
-import RacingCar.SimpleRacingResult;
+import RacingCar.Observer;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,7 +13,10 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
+
 public class RacingTest {
+    private boolean endOfSingleRacingCalled = false;
+
     private static Stream<Arguments> provideRacingTestSources() {
         MovementCondition alwaysMoveCondition = new AlwaysMoveCondition();
         MovementCondition noMoveCondition = new NoMoveCondition();
@@ -43,5 +47,26 @@ public class RacingTest {
         for (int i = 0; i < numberOfCars; i++) {
             assertThat(result.getDistance(i)).isEqualTo(expected[i]);
         }
+    }
+
+    @Test
+    void Given_SetListener_When_Racing_Then_ListenerCalled() {
+        Observer endOfSingleRacing = new Observer<RacingResult>() {
+            @Override
+            public void observe(RacingResult event) {
+                endOfSingleRacingCalled = true;
+            }
+        };
+
+        //given
+        Racing racing = new Racing(new AlwaysMoveCondition(), 1, 1);
+
+
+        //when
+        racing.addEndOfSingleRacingListener(endOfSingleRacing);
+        racing.racing();
+
+        //then
+        assertThat(endOfSingleRacingCalled).isEqualTo(true);
     }
 }
