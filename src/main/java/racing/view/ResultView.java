@@ -4,8 +4,6 @@ import racing.model.RacingCarDto;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.joining;
-
 public class ResultView {
 
     public ResultView() {

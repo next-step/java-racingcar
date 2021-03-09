@@ -40,4 +40,10 @@ public class RacingCar {
         return ramdomValue > 3;
     }
 
+    /**
+     * 포지션이 같은지 판단하는 메서드
+     */
+    public Boolean isSame(int position) {
+        return this.position.equals(position);
+    }
 }

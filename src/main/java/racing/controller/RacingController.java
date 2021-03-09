@@ -1,15 +1,12 @@
 package racing.controller;
 
 import racing.model.CarNameParser;
-import racing.model.RacingCar;
 import racing.model.RacingCarDto;
 import racing.model.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
 import java.util.List;
-
-import static java.util.stream.Collectors.toList;
 
 public class RacingController {
 
@@ -39,19 +36,23 @@ public class RacingController {
      */
     public void turn(ResultView resultView) {
         List<Integer> randomValue = racingGame.createRandomValue();
-        List<RacingCar> movedCarList = racingGame.moveAndStop(randomValue);
-        List<RacingCarDto> carDtoList = createDtoList(movedCarList);
+        racingGame.moveAndStop(randomValue);
+        List<RacingCarDto> carDtoList = createDtoList();
         resultView.turnResultView(carDtoList);
     }
 
-    public List<RacingCarDto> createDtoList(List<RacingCar> racingCarList) {
-        return racingCarList.stream()
-                .map((car) -> new RacingCarDto(car.getRacingCarName(), car.getPosition()))
-                .collect(toList());
+    /**
+     * ResultView에 넘길 데이터전송객체 리스트를 만드는 메서드
+     */
+    public List<RacingCarDto> createDtoList() {
+        return racingGame.createDtoList();
     }
 
+    /**
+     * 게임을 끝내고 우승자를 보여주는 메서드
+     */
     private void finish(ResultView resultView) {
-        resultView.drawWinner(racingGame.setWinner());
+        resultView.drawWinner(racingGame.findWinners());
     }
 
     public static void main(String[] args) {

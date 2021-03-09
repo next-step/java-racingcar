@@ -8,6 +8,9 @@ public class CarNameParser {
         this.participationList = participationList;
     }
 
+    /**
+     * 입력받은 자동차 이름들을 분할해주는 메서드
+     */
     public String[] parse() {
         return this.participationList.split(",");
     }
