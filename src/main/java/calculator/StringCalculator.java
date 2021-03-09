@@ -15,11 +15,15 @@ public class StringCalculator {
     }
 
     public int calculate(String value) {
-        if (StringUtil.isBlank(value)) throw new IllegalArgumentException();
+        if (StringUtil.isBlank(value)) {
+            throw new IllegalArgumentException();
+        }
 
         final String[] symbolCandidates = value.split(" ");
 
-        if (containsNotSymbol(symbolCandidates)) throw new IllegalArgumentException();
+        if (containsNotSymbol(symbolCandidates)) {
+            throw new IllegalArgumentException();
+        }
         setOperandsWith(symbolCandidates);
         setOperatorsWith(symbolCandidates);
 
