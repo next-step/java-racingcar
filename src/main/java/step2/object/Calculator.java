@@ -1,29 +1,38 @@
 package step2.object;
 
 
-import step2.exception.BizException;
-
+import step2.exception.CheckInputException;
+/**
+ *<pre>
+ *step2.object
+ *ㄴ Calculator.java
+ *</pre>
+ *@date : 2021-03-10 오전 12:16
+ *@authr : mugeon
+ *@version : 1.0.0
+ *@see
+ **/
 public class Calculator {
 
     final String BLANK = " ";
 
     enum Operation {
-        plus("+") {
+        PLUS("+") {
             public int execute(int former, int latter) {
                 return former + latter;
             }
         },
-        minus("-") {
+        MINUS("-") {
             public int execute(int former, int latter) {
                 return former - latter;
             }
         },
-        multiply("*") {
+        MULTIPLY("*") {
             public int execute(int former, int latter) {
                 return former * latter;
             }
         },
-        divide("/") {
+        DIVIDE("/") {
             public int execute(int former, int latter) {
                 return former / latter;
             }
@@ -41,13 +50,15 @@ public class Calculator {
     // 1. 유효성 검사
     public boolean validate(String data){
         // 1) 입력값 빈값 체크
-        if(null == data || "".equals(data))
+        if(null == data || "".equals(data)){
             throw new IllegalArgumentException();
+        }
 
         // 2) 입력 패턴 체크
         String [] checkData = data.split(BLANK);
-        if(checkData.length < 2 || checkData.length % 2 == 0)
-            throw new BizException("Please enter it correctly");
+        if(checkData.length < 2 || checkData.length % 2 == 0){
+            throw new CheckInputException();
+        }
 
         // 3) 연산자 체크
         for(int i = 0; i<checkData.length; i++){
@@ -95,16 +106,16 @@ public class Calculator {
         Operation operation;
         switch (operator){
             case "+":
-                operation = Operation.plus;
+                operation = Operation.PLUS;
                 break;
             case "-":
-                operation = Operation.minus;
+                operation = Operation.MINUS;
                 break;
             case "*":
-                operation = Operation.multiply;
+                operation = Operation.MULTIPLY;
                 break;
             case "/":
-                operation = Operation.divide;
+                operation = Operation.DIVIDE;
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + operator);
