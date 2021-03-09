@@ -3,6 +3,7 @@ package step3.module;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.domain.RacingResult;
 import step3.domain.RacingRound;
 import step3.ui.dto.RequestRacingGame;
 
@@ -23,8 +24,10 @@ class CarRacingGameTest {
         // when
         racingGame.race();
 
+        RacingResult result = racingGame.getRacingResult();
+        int roundCount = result.getRacingRounds().size();
+
         // then
-        List<RacingRound> result = racingGame.getRacingResult();
-        assertThat(result.size()).isEqualTo(attemptCount);
+        assertThat(roundCount).isEqualTo(attemptCount);
     }
 }
