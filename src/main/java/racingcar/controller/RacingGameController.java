@@ -22,6 +22,7 @@ public enum RacingGameController {
     public void run() {
         createCars();
         createGameRound();
+        printGameResult();
     }
 
     private void createCars() {
@@ -41,5 +42,14 @@ public enum RacingGameController {
 
     private void raceEachRound() {
         cars.forEach(car -> car.move(random.nextInt(MAX_INCLUSIVE)));
+    }
+
+    private void printGameResult() {
+        ResultView.INSTANCE.printResultStatement();
+
+        for (int i = 0; i < gameRound.getRound(); i++) {
+            raceEachRound();
+            ResultView.INSTANCE.printEachRoundResult(carService.findMovementRangeOfCars());
+        }
     }
 }
