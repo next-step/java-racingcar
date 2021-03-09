@@ -2,12 +2,7 @@ package carracing.service;
 
 import carracing.domain.Car;
 import carracing.domain.CarService;
-import carracing.service.dto.RacingScore;
-import carracing.service.dto.RacingRegisterInfo;
-import carracing.service.dto.RoundResult;
-
-import java.util.ArrayList;
-import java.util.List;
+import carracing.service.dto.*;
 
 /**
  * CarRacingService
@@ -30,21 +25,9 @@ public class CarRacingService {
         this.carService = new CarService();
     }
 
-    public List<RoundResult> executeCarRacing(RacingRegisterInfo racingRegisterInfo) {
-
+    public RacingResult executeCarRacing(RacingRegisterInfo racingRegisterInfo) {
         _validate(racingRegisterInfo);
-
-        List<RoundResult> roundResultList = new ArrayList<>();
-        List<Car> carList = new ArrayList<>();
-
-        for (int i = FIRST_CAR_NUMBER; i <= racingRegisterInfo.getRacingCarCount(); i++) {
-            carList.add(carService.registerCar(i));
-        }
-        for (int i = ROUND_START_NUMBER; i <= racingRegisterInfo.getRoundCount(); i++) {
-            roundResultList.add(_executeRound(i, carList));
-        }
-
-        return roundResultList;
+        return _getRacingResult(racingRegisterInfo.getRoundCount(), _registerPlayers(racingRegisterInfo.getRacingCarCount()));
     }
 
     private void _validate(RacingRegisterInfo racingRegisterInfo) {
@@ -56,22 +39,35 @@ public class CarRacingService {
         }
     }
 
-    private RoundResult _executeRound(int roundNumber, List<Car> carList) {
+    private Players _registerPlayers(int racingCarCount) {
+        Players players = new Players();
+        for (int i = FIRST_CAR_NUMBER; i <= racingCarCount; i++) {
+            players.registerPlayer(carService.registerCar(i));
+        }
+        return players;
+    }
+
+    private RacingResult _getRacingResult(int roundCount, Players players) {
+        RacingResult racingResult = new RacingResult();
+        for (int i = ROUND_START_NUMBER; i <= roundCount; i++) {
+            racingResult.registerRoundResult(_executeRound(i, players));
+        }
+        return racingResult;
+    }
+
+    private RoundResult _executeRound(int roundNumber, Players players) {
         RoundResult roundResult = new RoundResult();
         roundResult.setRoundNumber(roundNumber);
-        roundResult.setRacingScoreList(_executeScoring(carList));
+        roundResult.setRacingScores(_executeScoring(players));
         return roundResult;
     }
 
-    private List<RacingScore> _executeScoring(List<Car> carList) {
-        List<RacingScore> racingScoreList = new ArrayList<>();
-        for (Car car : carList) {
+    private RacingScores _executeScoring(Players players) {
+        RacingScores racingScores = new RacingScores();
+        for (Car car : players.getCarList()) {
             car.drive();
-            RacingScore racingScore = new RacingScore();
-            racingScore.setCarNbr(car.getCarNumber());
-            racingScore.setScore(car.getMileage());
-            racingScoreList.add(racingScore);
+            racingScores.registerRacingScore(car);
         }
-        return racingScoreList;
+        return racingScores;
     }
 }
