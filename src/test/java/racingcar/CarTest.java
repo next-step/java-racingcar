@@ -11,6 +11,13 @@ import static org.assertj.core.api.Assertions.*;
 class CarTest {
 
     @ParameterizedTest
+    @CsvSource({"jhLim97, true"})
+    @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
+    void carNameCanUnder5(String carName, boolean isInValidName) {
+        assertThat(new Car(carName, 0).nameValueInValidation()).isEqualTo(isInValidName);
+    }
+
+    @ParameterizedTest
     @CsvSource({"3, 0", "4, 1"})
     @DisplayName("경계값 분석을 통해 4이상인 경우 전진하고, 미만인 경우 멈추는지 확인한다.")
     void updateByOver4(int number, int position) {

@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
 import racingcar.dto.InputManagement;
 
 import java.util.Arrays;
@@ -8,7 +9,6 @@ import java.util.Scanner;
 public class InputView {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static final int MAX_LENGTH = 5;
 
     public String[] inputNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.");
@@ -24,7 +24,7 @@ public class InputView {
 
     public boolean isInValidNames(String[] carNames) {
         return Arrays.stream(carNames)
-                .filter(carName -> carName.length() > MAX_LENGTH)
+                .filter(carName -> new Car(carName, 0).nameValueInValidation())
                 .count() > 0;
     }
 

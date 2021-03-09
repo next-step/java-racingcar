@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import racingcar.Conditions;
 
+import java.util.Arrays;
+
 public class Car {
 
     private String name;
@@ -28,8 +30,12 @@ public class Car {
     }
 
     public void positionValueValidation (int number) {
-        if (Conditions.isInvalidate(number)) {
+        if (Conditions.isInvalidNumber(number)) {
             throw new IllegalArgumentException("0 ~ 9까지의 값만 사용할 수 있습니다.");
         }
+    }
+
+    public boolean nameValueInValidation() {
+        return Conditions.isInValidName(name);
     }
 }
