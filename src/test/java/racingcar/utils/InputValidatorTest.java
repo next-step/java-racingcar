@@ -39,4 +39,11 @@ class InputValidatorTest {
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> InputValidator.validateEmpty(input));
     }
+
+    @ParameterizedTest(name = "{0} <= 0")
+    @ValueSource(strings = {"-1023", "0", "-463", "-6854"})
+    @DisplayName("입력값이 0보다 같거나 작을 경우 에러")
+    void validateLessThanZero(String number) {
+        assertThatIllegalArgumentException().isThrownBy(() -> InputValidator.validateLessThanZero(number));
+    }
 }
