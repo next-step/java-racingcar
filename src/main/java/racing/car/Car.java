@@ -1,6 +1,6 @@
 package racing.car;
 
-public class Car {
+public class Car implements ReadonlyCar {
 
     private final Movement movement;
     private final String name;
@@ -15,16 +15,17 @@ public class Car {
         this.name = name;
     }
 
-    public int getLocation() {
-        return location;
-    }
-
     public void move() {
         location += movement.move();
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
+    public int getLocation() {
+        return location;
+    }
 }
