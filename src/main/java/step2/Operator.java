@@ -1,7 +1,6 @@
 package step2;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
 
 import static step2.Constants.ILLEGAL_ARGUMENT_EXCEPTION_SUPPLIER;
 import static step2.Validator.isDivideByZero;
@@ -20,21 +19,21 @@ public enum Operator {
     });
 
     private final String operator;
-    private final BiFunction<Integer, Integer, Integer> formula;
+    private final OperatorInterface operatorInterface;
 
-    Operator(String operator, BiFunction<Integer, Integer, Integer> formula) {
+    Operator(String operator, OperatorInterface formula) {
         this.operator = operator;
-        this.formula = formula;
+        this.operatorInterface = formula;
     }
 
     public Integer calculate(Integer a, Integer b) {
-        return formula.apply(a, b);
+        return operatorInterface.apply(a, b);
     }
 
     // 넘어온 문자가 사칙 연산에 존재하는 경우 해당 연산자를 반환
     public static Operator getOperator(String operation) {
         return Arrays.stream(Operator.values())
-                .filter(o -> isEquals(operation, o))
+                .filter(o -> o.getOperator().equals(operation))
                 .findAny()
                 .orElseThrow(ILLEGAL_ARGUMENT_EXCEPTION_SUPPLIER);
     }
@@ -46,11 +45,6 @@ public enum Operator {
     // 사칙연산에 대한 리스트를 반환할 필요없이 유효성 검사 코드를 여기서 관리
     public static boolean isOperation(String operation) {
         return Arrays.stream(Operator.values())
-                .anyMatch(o -> isEquals(operation, o));
+                .anyMatch(o -> o.getOperator().equals(operation));
     }
-
-    private static boolean isEquals(String operation, Operator o) {
-        return o.getOperator().equals(operation);
-    }
-
 }
