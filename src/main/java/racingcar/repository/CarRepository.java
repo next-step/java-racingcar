@@ -3,6 +3,7 @@ package racingcar.repository;
 import racingcar.domain.Car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public enum CarRepository {
@@ -13,5 +14,9 @@ public enum CarRepository {
 
     public void save(Car car) {
         cars.add(car);
+    }
+
+    public List<Car> findAll() {
+        return Collections.unmodifiableList(cars);
     }
 }
