@@ -15,13 +15,13 @@ public class GameManager {
   private static void startGame() {
     try (InputView inputView = new InputView(new Scanner(System.in))) {
       Printer.welcomeMessage();
-      List<String> carNames = inputView.inputCarNames();
+      List<Car> cars = inputView.inputCarNames();
       int round = inputView.inputRound();
       Printer.printBlankLine();
       Printer.printResultMessage();
 
       Game game = new Game(new Random());
-      game.start(carNames, round);
+      game.start(cars, round);
 
       Printer.printWinner(game);
     }

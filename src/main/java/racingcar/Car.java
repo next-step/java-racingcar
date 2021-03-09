@@ -11,9 +11,13 @@ public class Car {
   private int distance;
   private final String name;
 
-  public Car(String name) {
+  private Car(String name) {
     validateName(name);
     this.name = name;
+  }
+
+  public static Car create(String name) {
+    return new Car(name);
   }
 
   private void validateName(String name) {

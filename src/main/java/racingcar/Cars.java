@@ -16,10 +16,8 @@ public class Cars {
     this.random = random;
   }
 
-  public void initialize(List<String> names) {
-    List<Car> newCars = names.stream().map(Car::new).collect(Collectors.toList());
-
-    this.cars = Collections.unmodifiableList(newCars);
+  public void initialize(List<Car> cars) {
+    this.cars = Collections.unmodifiableList(cars);
   }
 
   public int getCarCount() {

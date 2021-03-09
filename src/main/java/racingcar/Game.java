@@ -13,8 +13,8 @@ public class Game {
     this.cars = new Cars(random);
   }
 
-  public void initialize(List<String> names) {
-    cars.initialize(names);
+  public void initialize(List<Car> cars) {
+    this.cars.initialize(cars);
   }
 
   public int getCarCount() {
@@ -32,8 +32,8 @@ public class Game {
     return cars.getNameAndStatus();
   }
 
-  public void start(List<String> names, int round) {
-    initialize(names);
+  public void start(List<Car> cars, int round) {
+    initialize(cars);
     moveCars(round);
     selectWinner();
   }

@@ -5,8 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static racingcar.Car.UNIT;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,28 +25,30 @@ class GameTest {
 
   static Stream<Arguments> carMovements() {
     return Stream.of(
-        arguments(Lists.list("a"), 1, "a : " + UNIT),
-        arguments(Lists.list("a", "b"), 1, "a : " + UNIT + System.lineSeparator() + "b : " + UNIT),
-        arguments(Lists.list("a"), 2, "a : " + UNIT + UNIT),
-        arguments(Lists.list("a"), 3, "a : " + UNIT + UNIT + UNIT)
+        arguments(Lists.list(Car.create("a")), 1, "a : " + UNIT),
+        arguments(Lists.list(Car.create("a"), Car.create("b")),
+            1, "a : " + UNIT + System.lineSeparator() + "b : " + UNIT),
+        arguments(Lists.list(Car.create("a")), 2, "a : " + UNIT + UNIT),
+        arguments(Lists.list(Car.create("a")), 3, "a : " + UNIT + UNIT + UNIT)
     );
   }
 
-  static Stream<List<String>> names() {
+  static Stream<List<Car>> cars() {
     return Stream.of(
-        Lists.list("a"),
-        Lists.list("a", "b"),
-        Lists.list("a", "b", "c"),
-        Lists.list("a", "b", "c", "d"),
-        Lists.list("a", "b", "c", "d", "e")
+        Lists.list(Car.create("a")),
+        Lists.list(Car.create("a"), Car.create("b")),
+        Lists.list(Car.create("a"), Car.create("b"), Car.create("c")),
+        Lists.list(Car.create("a"), Car.create("b"), Car.create("c"), Car.create("d")),
+        Lists.list(Car.create("a"), Car.create("b"), Car.create("c"), Car.create("d"), Car.create("e"))
     );
   }
 
   static Stream<Arguments> gameResults() {
     return Stream.of(
-        arguments(Lists.list("a"), 1, "a : " + UNIT),
-        arguments(Lists.list("a"), 2, "a : " + UNIT + UNIT),
-        arguments(Lists.list("a", "b"), 2, "a : " + UNIT + UNIT + System.lineSeparator() + "b : " + UNIT + UNIT)
+        arguments(Lists.list(Car.create("a")), 1, "a : " + UNIT),
+        arguments(Lists.list(Car.create("a")), 2, "a : " + UNIT + UNIT),
+        arguments(Lists.list(Car.create("a"), Car.create("b")),
+            2, "a : " + UNIT + UNIT + System.lineSeparator() + "b : " + UNIT + UNIT)
     );
   }
 
@@ -61,22 +65,22 @@ class GameTest {
 
   @ParameterizedTest
   @DisplayName("Game은 자동차를 입력받은 만큼 관리할 수 있다.")
-  @MethodSource("names")
-  void gameContainsCars(List<String> names) {
+  @MethodSource("cars")
+  void gameContainsCars(List<Car> cars) {
     // given
     // when
-    game.initialize(names);
+    game.initialize(cars);
 
     // then
-    assertThat(game.getCarCount()).isEqualTo(names.size());
+    assertThat(game.getCarCount()).isEqualTo(cars.size());
   }
 
   @ParameterizedTest
   @DisplayName("Game은 입력받은 횟수만큼 자동차의 이동을 시도할 수 있다.")
   @MethodSource("carMovements")
-  void moveCars(List<String> names, int rounds, String result) {
+  void moveCars(List<Car> cars, int rounds, String result) {
     // given
-    game.initialize(names);
+    game.initialize(cars);
 
     // when
     game.moveCars(rounds);
@@ -88,10 +92,10 @@ class GameTest {
   @ParameterizedTest
   @DisplayName("게임은 자동차의 수와 횟수를 입력받아 게임을 진행할 수 있다.")
   @MethodSource("gameResults")
-  void startGame(List<String> names, int rounds, String result) {
+  void startGame(List<Car> cars, int rounds, String result) {
     // given
     // when
-    game.start(names, rounds);
+    game.start(cars, rounds);
 
     // then
     assertThat(game.getCarsNameAndStatus()).isEqualTo(result);
@@ -103,7 +107,7 @@ class GameTest {
     // given
     // when
     String[] names = {"a", "b"};
-    game.start(Lists.list(names), 2);
+    game.start(Arrays.stream(names).map(Car::create).collect(Collectors.toList()), 2);
 
     // then
     assertAll(

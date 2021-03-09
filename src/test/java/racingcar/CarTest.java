@@ -52,7 +52,7 @@ class CarTest {
 
   @BeforeEach
   void setUp() {
-    car = new Car("a");
+    car = Car.create("a");
   }
 
   @ParameterizedTest
@@ -81,7 +81,7 @@ class CarTest {
   @DisplayName("자동차는 이름을 가지고 생성할 수 있다.")
   @ValueSource(strings = {"pobi", "crong", "honux", "jk", "dion"})
   void createWithName(String name) {
-    car = new Car(name);
+    car = Car.create(name);
 
     assertThat(car.getName()).isEqualTo(name);
   }
@@ -91,7 +91,7 @@ class CarTest {
   @MethodSource("nameAndErrorMessage")
   void createWithInvalidName(String name, String errorMessage) {
     assertThatIllegalArgumentException()
-        .isThrownBy(() -> new Car(name))
+        .isThrownBy(() -> Car.create(name))
         .withMessage(errorMessage);
   }
 
