@@ -19,7 +19,7 @@ public class Cars {
 
     public void updateEveryCarByCondition() {
         for (Car car : cars) {
-            car.updateByCondition(NumberGenerator.generator());
+            car.updatePositionByCondition(NumberGenerator.generator());
         }
     }
 }

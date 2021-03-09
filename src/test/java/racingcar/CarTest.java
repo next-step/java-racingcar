@@ -16,7 +16,7 @@ class CarTest {
     void updateByOver4(int number, int position) {
         Car car = new Car("jhLim97",0);
 
-        car.updateByCondition(number);
+        car.updatePositionByCondition(number);
         assertThat(car.getPosition()).isEqualTo(position);
     }
 

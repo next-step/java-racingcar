@@ -19,7 +19,7 @@ public class Car {
         return position;
     }
 
-    public void updateByCondition(int number) {
+    public void updatePositionByCondition(int number) {
         isValidate(number);
 
         if (Conditions.isAcceptCondition(number)) {
