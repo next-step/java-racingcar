@@ -1,3 +1,5 @@
+package stringcalculator;
+
 import java.util.function.IntBinaryOperator;
 
 public enum IntOperator {
@@ -31,7 +33,7 @@ public enum IntOperator {
             case "/":
                 return IntOperator.DIVIDE;
         }
-        
+
         throw new IllegalArgumentException();
     }
 }
