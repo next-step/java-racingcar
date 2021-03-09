@@ -22,7 +22,6 @@ class CarTest {
             car.move();
         }
 
-
         assertThat(car.getLocation()).isEqualTo(firstLocation + round);
     }
 
