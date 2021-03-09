@@ -20,14 +20,14 @@ public class Car {
     }
 
     public void updatePositionByCondition(int number) {
-        isValidate(number);
+        positionValueValidation(number);
 
         if (Conditions.isAcceptCondition(number)) {
             position++;
         }
     }
 
-    public void isValidate(int number) {
+    public void positionValueValidation (int number) {
         if (Conditions.isInvalidate(number)) {
             throw new IllegalArgumentException("0 ~ 9까지의 값만 사용할 수 있습니다.");
         }

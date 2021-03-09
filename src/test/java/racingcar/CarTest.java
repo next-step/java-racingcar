@@ -34,7 +34,7 @@ class CarTest {
     @DisplayName("0에서 9사이의 숫자 이외에는 자동차가 판단할 수 없다.")
     void checkRange(int number) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Car("jhLim97",0).isValidate(number);
+            new Car("jhLim97",0).positionValueValidation (number);
         });
     }
 }
