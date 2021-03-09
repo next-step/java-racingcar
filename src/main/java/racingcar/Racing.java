@@ -26,7 +26,7 @@ public class Racing {
         if (hasRaceEnd()) {
             throw new IllegalStateException("레이싱이 종료되었습니다.");
         }
-        cars.forEach(Car::moveOrStop);
+        cars.forEach(car -> car.moveOrStay(RandomUtil.getRandomIntBetweenZeroToNine()));
         reduceTurns();
     }
 

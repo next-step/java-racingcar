@@ -1,15 +1,19 @@
 package racingcar;
 
 public class Car {
-    int position = 0;
+    private int position = 0;
 
-    // TODO: implement
-    public void moveOrStop() {
-        boolean shouldStop = true;
-        if (shouldStop) {
-            return;
+    public void moveOrStay(int value) {
+        if (MovingForwardCondition.isSatisfied(value)) {
+            move();
         }
+    }
+
+    private void move() {
         position++;
     }
 
+    public int getPosition() {
+        return position;
+    }
 }
