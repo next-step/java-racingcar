@@ -1,5 +1,7 @@
 package racing.car;
 
+import java.util.Objects;
+
 public class ReadOnlyCarProxy implements ReadonlyCar {
 
     private final String name;
@@ -18,5 +20,18 @@ public class ReadOnlyCarProxy implements ReadonlyCar {
     @Override
     public int getLocation() {
         return location;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ReadOnlyCarProxy)) return false;
+        ReadOnlyCarProxy that = (ReadOnlyCarProxy) o;
+        return getLocation() == that.getLocation() && Objects.equals(getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getLocation());
     }
 }
