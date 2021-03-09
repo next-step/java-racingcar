@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class InteractiveInputView {
+public class InteractiveInputUtils {
 
-    private InteractiveInputView() {
+    private InteractiveInputUtils() {
     }
 
     public static int getInt(String message) {
