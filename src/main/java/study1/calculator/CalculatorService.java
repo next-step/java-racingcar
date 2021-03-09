@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.platform.commons.util.StringUtils;
-
 public class CalculatorService {
+
   private List<String> strList;
 
   public CalculatorService(String str) {
