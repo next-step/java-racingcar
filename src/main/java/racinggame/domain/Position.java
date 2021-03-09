@@ -16,6 +16,13 @@ public class Position {
         this.position = position;
     }
 
+    public Position max(Position other) {
+        if (other.position > position) {
+            return other;
+        }
+        return this;
+    }
+
     public Position increase() {
         return new Position(this.position + 1);
     }

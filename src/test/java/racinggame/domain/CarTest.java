@@ -18,4 +18,9 @@ public class CarTest {
         car.move(3);
         assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
+
+    @Test
+    void create() {
+        assertThat(new Car("pobi", 2)).isEqualTo(new Car("pobi", 2));
+    }
 }
