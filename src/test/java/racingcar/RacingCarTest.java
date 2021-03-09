@@ -33,28 +33,7 @@ public class RacingCarTest {
         car.setLocation(status);
         assertThat(car.getLocation()).isEqualTo("--");
     }
-
-    @DisplayName("ResultView 테스트")
-    @Test
-    void resultView_test() {
-
-        ArrayList<Car> list = new ArrayList<>();
-
-        Car car = new Car();
-        car.setLocation("---");
-
-        Car car2 = new Car();
-        car2.setLocation("----");
-
-        Car car3 = new Car();
-        car3.setLocation("-----");
-
-        list.add(car);
-        list.add(car2);
-        list.add(car3);
-
-        ResultView resultView = new ResultView();
-    }
+    
 
     @DisplayName("RacingCarTest")
     @Test
