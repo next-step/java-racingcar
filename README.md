@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현기능목록
+* InputView
+* index 별 0~9랜덤한 수 할당
+* 할당한 수로 전진 유무 파악
+* resultView
+* try 횟수 만큼 반복하도록 메인메소드 구현
