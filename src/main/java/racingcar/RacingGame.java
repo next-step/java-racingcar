@@ -7,11 +7,7 @@ import racingcar.view.ResultView;
 
 public class RacingGame {
 
-  public static List<Car> cars;
-
-  public RacingGame() {
-    cars = new ArrayList<>();
-  }
+  public List<Car> cars = new ArrayList<>();
 
   public void readyGame(int carCount) {
     for (int i = 0; i < carCount; i++) {
@@ -26,7 +22,6 @@ public class RacingGame {
     for (int i = 0; i < attempt; i++) {
       move.moveCars(cars);
       ResultView.showRacingResult(cars);
-      System.out.println();
     }
   }
 }

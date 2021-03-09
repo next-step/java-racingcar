@@ -7,8 +7,8 @@ import racingcar.model.Car;
 public class ResultView {
 
   public static void showRacingResult(List<Car> cars) {
-    cars.forEach(car -> {
-      System.out.println(Movement.trackingMovement(car, "-"));
-    });
+    cars.stream().map(car -> Movement.trackingMovement(car, "-"))
+        .forEach(System.out::println);
+    System.out.println();
   }
 }
