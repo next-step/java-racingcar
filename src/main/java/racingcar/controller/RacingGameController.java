@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
+import racingcar.domain.GameRound;
 import racingcar.service.CarService;
 import racingcar.view.InputView;
 
@@ -12,9 +13,11 @@ public enum RacingGameController {
 
     private final CarService carService = CarService.INSTANCE;
     private List<Car> cars;
+    private GameRound gameRound;
 
     public void run() {
         createCars();
+        createGameRound();
     }
 
     private void createCars() {
@@ -25,5 +28,10 @@ public enum RacingGameController {
         }
 
         cars = carService.findCars();
+    }
+
+    private void createGameRound() {
+        int numberOfAttempts = InputView.INSTANCE.InputNumberOfAttempts();
+        gameRound = new GameRound(numberOfAttempts);
     }
 }
