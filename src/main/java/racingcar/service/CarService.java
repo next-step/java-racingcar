@@ -5,11 +5,13 @@ import racingcar.repository.CarRepository;
 
 import java.util.List;
 
-public enum CarService {
+public class CarService {
 
-    INSTANCE;
+    private final CarRepository carRepository;
 
-    private final CarRepository carRepository = CarRepository.INSTANCE;
+    public CarService(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     public void addCar(Car car) {
         carRepository.save(car);

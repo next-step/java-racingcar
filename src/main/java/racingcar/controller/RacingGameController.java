@@ -9,15 +9,17 @@ import racingcar.view.ResultView;
 import java.util.List;
 import java.util.Random;
 
-public enum RacingGameController {
+public class RacingGameController {
 
-    INSTANCE;
-
-    private final CarService carService = CarService.INSTANCE;
+    private final CarService carService;
     private final Random random = new Random();
     private final int MAX_INCLUSIVE = 10;
     private List<Car> cars;
     private GameRound gameRound;
+
+    public RacingGameController(CarService carService) {
+        this.carService = carService;
+    }
 
     public void run() {
         createCars();

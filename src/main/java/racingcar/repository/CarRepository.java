@@ -7,9 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public enum CarRepository {
-
-    INSTANCE;
+public class CarRepository {
 
     private final List<Car> cars = new ArrayList<>();
 
