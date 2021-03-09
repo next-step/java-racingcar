@@ -1,6 +1,7 @@
 package step3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -37,5 +38,14 @@ public class ViewTest {
 
         assertEquals(exp, roundCount);
         verify(mockScanner).nextInt();
+    }
+
+    @DisplayName("자동차 이름이 5글자 이상이면 IllegalArgumentException")
+    @ParameterizedTest
+    @CsvSource(value = {"pobiasd,crong,honux", "pobi,crongadsf,honux"}, delimiter = ':')
+    void validateCarName(String input) {
+        String[] names = inputView.splitInput(input);
+
+        assertThrows(IllegalArgumentException.class, () -> inputView.validateCarName(names));
     }
 }
