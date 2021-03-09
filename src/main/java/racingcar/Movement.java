@@ -10,12 +10,10 @@ public class Movement {
   private static final int RANDOM_RANGE = 10;
 
   public void moveCars(List<Car> cars) {
-    cars.forEach(car -> {
-      moveOrNot(car);
-    });
+    cars.forEach(car -> moveOrNot(car));
   }
 
-  private boolean isMoveable(int number) {
+  public boolean isMoveable(int number) {
     return number >= MOVE_CONDITION;
   }
 
