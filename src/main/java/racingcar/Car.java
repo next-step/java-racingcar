@@ -2,7 +2,7 @@ package racingcar;
 
 public class Car {
 
-    String location = "";
+    private String location = "";
 
     public String getLocation() {
         return location;
