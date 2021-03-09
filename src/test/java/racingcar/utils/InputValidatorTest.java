@@ -27,4 +27,16 @@ class InputValidatorTest {
         //then
         assertThatIllegalArgumentException().isThrownBy(() -> InputValidator.validateNull(input));
     }
+
+    @Test
+    @DisplayName("입력값이 비어있을 경우 에러")
+    void validateEmpty() {
+        //given
+        String input = "";
+
+        //when
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> InputValidator.validateEmpty(input));
+    }
 }
