@@ -1,6 +1,7 @@
 package racingcar.utils;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -13,5 +14,17 @@ class InputValidatorTest {
     @DisplayName("입력값이 정수가 아닐 경우 에러")
     public void validateInteger(String input) throws Exception {
         assertThatIllegalArgumentException().isThrownBy(() -> InputValidator.validateInteger(input));
+    }
+
+    @Test
+    @DisplayName("입력값이 Null일 경우 에러")
+    public void validateNull() throws Exception {
+        //given
+        String input = null;
+
+        //when
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> InputValidator.validateNull(input));
     }
 }
