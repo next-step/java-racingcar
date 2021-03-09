@@ -1,6 +1,7 @@
 package racingCar;
 
 public class Car {
+
   private int distance;
 
   public void move(int movedDistance) {

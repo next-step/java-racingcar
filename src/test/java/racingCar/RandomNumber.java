@@ -8,6 +8,7 @@ import java.util.Random;
  * @description
  */
 public class RandomNumber {
+
   public static int create() {
     Random random = new Random();
     return random.nextInt(10);

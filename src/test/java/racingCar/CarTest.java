@@ -18,7 +18,7 @@ public class CarTest {
 
   @DisplayName("주어진 숫자가 4 이상이면 이동")
   @ParameterizedTest
-  @ValueSource(ints = {4,5,6,7,8,9})
+  @ValueSource(ints = {4, 5, 6, 7, 8, 9})
   void given_number_greater_3_car_move(int number) {
     car.move(number);
     assertThat(car.getDistance()).isEqualTo(1);
@@ -26,7 +26,7 @@ public class CarTest {
 
   @DisplayName("주어진 숫자가 4 미만이면 정지")
   @ParameterizedTest
-  @ValueSource(ints = {0,1,2,3})
+  @ValueSource(ints = {0, 1, 2, 3})
   void given_number_less_4_car_move(int number) {
     car.move(number);
     assertThat(car.getDistance()).isEqualTo(0);

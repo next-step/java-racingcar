@@ -1,6 +1,7 @@
 package racingCar;
 
 public class OutputView {
+
   public static void printCarNumber() {
     System.out.println("자동차 대수는 몇 대 인가요?");
   }
@@ -14,7 +15,7 @@ public class OutputView {
   }
 
   public static void printCarDistance(int distance) {
-    for (int i=0 ; i < distance ; i++) {
+    for (int i = 0; i < distance; i++) {
       System.out.print("-");
     }
     System.out.println();
