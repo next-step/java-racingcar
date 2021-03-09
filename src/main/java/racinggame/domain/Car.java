@@ -2,14 +2,11 @@ package racinggame.domain;
 
 import racinggame.utils.StringUtils;
 
-import java.util.Random;
-
 public class Car {
     private static final int FORWARD_NUM = 4;
-    private static final int MAX_BOUND = 10;
 
     private final String name;
-    private int position = 0;
+    private Position position = new Position();
 
     public Car(final String name) {
         if (StringUtils.isBlank(name)) {
@@ -18,21 +15,16 @@ public class Car {
         this.name = name.trim();
     }
 
-    public int getPosition() {
+    public void move(int randomNumber) {
+        if (randomNumber >= FORWARD_NUM)
+            this.position = position.increase();
+    }
+
+    public Position getPosition() {
         return position;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void move() {
-        if (getRandomNo() >= FORWARD_NUM)
-            this.position++;
-    }
-
-    private int getRandomNo() {
-        Random random = new Random();
-        return random.nextInt(MAX_BOUND);
     }
 }
