@@ -25,7 +25,12 @@ public class Printer {
   }
 
   public static void printGameResult(Game game) {
-    System.out.println(game.getCarsStatus());
+    System.out.println(game.getCarsNameAndStatus());
     System.out.println();
+  }
+
+  public static void printWinner(Game game) {
+
+    System.out.println(game.getWinnerListString() + "이/가 최종 우승했습니다.");
   }
 }

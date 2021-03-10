@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import racingcar.io.InputView;
@@ -14,13 +15,15 @@ public class GameManager {
   private static void startGame() {
     try (InputView inputView = new InputView(new Scanner(System.in))) {
       Printer.welcomeMessage();
-      int carCount = inputView.inputCarCount();
+      List<Car> cars = inputView.inputCarNames();
       int round = inputView.inputRound();
       Printer.printBlankLine();
       Printer.printResultMessage();
 
       Game game = new Game(new Random());
-      game.start(carCount, round);
+      game.start(cars, round);
+
+      Printer.printWinner(game);
     }
   }
 }

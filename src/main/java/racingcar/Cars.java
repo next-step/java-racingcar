@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.Car.DEFAULT_DISTANCE;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,14 +19,8 @@ public class Cars {
     this.random = random;
   }
 
-  public void initialize(int size) {
-    List<Car> newCars = new ArrayList<>();
-
-    for (int i = 0; i < size; i++) {
-      newCars.add(new Car());
-    }
-
-    this.cars = Collections.unmodifiableList(newCars);
+  public void initialize(List<Car> cars) {
+    this.cars = Collections.unmodifiableList(cars);
   }
 
   public int getCarCount() {
@@ -35,9 +31,36 @@ public class Cars {
     cars.forEach(car -> car.move(random.nextInt(BOUND)));
   }
 
-  public String getStatus() {
+  public String getNameAndStatus() {
     return cars.stream()
-        .map(Car::showStatus)
+        .map(car -> car.getName() + " : " + car.showStatus())
         .collect(Collectors.joining(System.lineSeparator()));
+  }
+
+  public Winner getWinner() {
+    List<String> winners = new ArrayList<>();
+
+    for (Car car : cars) {
+      addWinnerName(winners, car);
+    }
+
+    return Winner.of(winners);
+  }
+
+  private void addWinnerName(List<String> winners, Car car) {
+    if (car.isWinner(getMaxDistance())) {
+      winners.add(car.getName());
+    }
+  }
+
+  private int getMaxDistance() {
+    int maxDistance = DEFAULT_DISTANCE;
+
+    for (Car car : cars) {
+      int distance = car.getDistance();
+      maxDistance = Math.max(maxDistance, distance);
+    }
+
+    return maxDistance;
   }
 }

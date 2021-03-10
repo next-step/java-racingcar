@@ -1,18 +1,20 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Random;
 import racingcar.io.Printer;
 
 public class Game {
 
   private final Cars cars;
+  private Winner winner;
 
   public Game(Random random) {
     this.cars = new Cars(random);
   }
 
-  public void initialize(int size) {
-    cars.initialize(size);
+  public void initialize(List<Car> cars) {
+    this.cars.initialize(cars);
   }
 
   public int getCarCount() {
@@ -26,12 +28,25 @@ public class Game {
     }
   }
 
-  public String getCarsStatus() {
-    return cars.getStatus();
+  public String getCarsNameAndStatus() {
+    return cars.getNameAndStatus();
   }
 
-  public void start(int size, int round) {
-    initialize(size);
+  public void start(List<Car> cars, int round) {
+    initialize(cars);
     moveCars(round);
+    selectWinner();
+  }
+
+  private void selectWinner() {
+    this.winner = cars.getWinner();
+  }
+
+  public List<String> getWinners() {
+    return winner.getWinners();
+  }
+
+  public String getWinnerListString() {
+    return winner.winnerListString();
   }
 }
