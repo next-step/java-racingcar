@@ -1,6 +1,7 @@
 package study.step3;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars {
     //불변
@@ -20,5 +21,13 @@ public class Cars {
     }
     public List<Car> getCars(){
         return cars;
+    }
+    public List<Car> getWinners(){
+        return selectMaxCar();
+    }
+    private List<Car> selectMaxCar(){
+        Optional<Car> maxCar = cars.stream().max((x,y)->Integer.compare(x.getPosition(),y.getPosition()));
+        return cars.stream().filter(x-> x.getPosition() == maxCar.get().getPosition())
+                .collect(Collectors.toList());
     }
 }

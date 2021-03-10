@@ -5,10 +5,10 @@ import java.util.List;
 
 public class RaceGame {
     public static void main(String[] args){
-        int carCnt = InputView.getCarCnt();
+        String[] carNames = InputView.getCarsName();
         List<Car> carList = new ArrayList<>();
-        for(int i=0; i<carCnt;i++){
-            carList.add(new RandomRaceCar());
+        for(String carName : carNames){
+            carList.add(new RandomRaceCar(carName));
         }
         Cars cars = new Cars(carList);
         int tryCnt = InputView.getTryCnt();
@@ -17,5 +17,10 @@ public class RaceGame {
             ResultView.output(cars);
             System.out.println();
         }
+        for(Car winner : cars.getWinners()){
+            System.out.print(winner.getCarName()+", ");
+        }
+        System.out.println("가 최종우승했습니다.");
     }
 }
+

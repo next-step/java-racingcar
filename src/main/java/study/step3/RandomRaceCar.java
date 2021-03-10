@@ -2,8 +2,10 @@ package study.step3;
 
 public class RandomRaceCar implements Car{
     private static final int START_POSITION = 1;
+    private String carName;
     private int position;
-    public RandomRaceCar(){
+    public RandomRaceCar(String carName){
+        this.carName = carName;
         this.position = START_POSITION;
     }
     @Override
@@ -12,7 +14,12 @@ public class RandomRaceCar implements Car{
             position++;
         }
     }
+    @Override
     public int getPosition(){
         return position;
+    }
+    @Override
+    public String getCarName(){
+        return carName;
     }
 }
