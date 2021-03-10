@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 
 class CarRacingTest {
@@ -20,16 +21,12 @@ class CarRacingTest {
 
     @BeforeEach
     void init() {
-        List<Car> cars = IntStream.range(0, 1)
-                .mapToObj(amount -> new Car())
-                .collect(Collectors.toList());
-
-        carRacing = new CarRacing(cars);
+        carRacing = new CarRacing(1);
     }
 
     @DisplayName("CarRacing 횟수가 0회 일 경우 테스트")
     @Test
-    void CarResponsesIsEmptyTrue() {
+    void carResponsesIsEmptyTrue() {
         List<CarResponse> start = carRacing.start(new RandomGenerator(new Random()), 0);
         Assertions.assertEquals(start.isEmpty(), true);
     }
@@ -37,7 +34,7 @@ class CarRacingTest {
     @DisplayName("CarRacing 횟수가 1회 이상 일 경우 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3,4,5,6,7,8,9,10})
-    void CarResponsesIsEmptyFalse(int index) {
+    void carResponsesIsEmptyFalse(int index) {
         List<CarResponse> start = carRacing.start(new RandomGenerator(new Random()), index);
         Assertions.assertEquals(start.isEmpty(), false);
     }

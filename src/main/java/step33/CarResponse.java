@@ -4,17 +4,17 @@ import java.util.List;
 
 public class CarResponse {
 
-    private List<String> carMoves;
+    private List<Integer> carMoves;
 
-    public CarResponse(List<String> carMoves) {
+    public CarResponse(List<Integer> carMoves) {
         this.carMoves = carMoves;
     }
 
-    public static CarResponse of(List<String> carMoves) {
+    public static CarResponse of(List<Integer> carMoves) {
         return new CarResponse(carMoves);
     }
 
-    public List<String> getCarMoves() {
+    public List<Integer> getCarMoves() {
         return carMoves;
     }
 }

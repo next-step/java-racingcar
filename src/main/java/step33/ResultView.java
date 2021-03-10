@@ -1,6 +1,8 @@
 package step33;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
@@ -13,16 +15,22 @@ public class ResultView {
     public void print() {
         System.out.println("\n실행 결과");
         for (int i = 0; i < carResponses.size(); i++) {
-            List<String> carMoves = carResponses.get(i).getCarMoves();
+            List<Integer> carMoves = carResponses.get(i).getCarMoves();
             printCarsMove(carMoves);
             System.out.println();
         }
     }
 
-    public void printCarsMove(List<String> movesOfCars) {
-        for (String result : movesOfCars) {
-            System.out.println(result);
-        }
+    private void printCarsMove(List<Integer> movesOfCars) {
+        movesOfCars.stream()
+                .map(moveOfCar -> getStringCarsMove(moveOfCar))
+                .forEach(System.out::println);
+    }
+
+    private String getStringCarsMove(int index) {
+        return IntStream.range(0, index)
+                .mapToObj(moveCount -> "-")
+                .collect(Collectors.joining());
     }
 
 }

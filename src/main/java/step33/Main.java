@@ -12,11 +12,7 @@ public class Main {
         int amountOfCar = inputView.getAmountOfCar();
         int countOfCarRacing = inputView.getCountOfCarRacing();
 
-        List<Car> cars = IntStream.range(0, amountOfCar)
-                .mapToObj(amount -> new Car())
-                .collect(Collectors.toList());
-
-        CarRacing carRacing = new CarRacing(cars);
+        CarRacing carRacing = new CarRacing(amountOfCar);
         List<CarResponse> result = carRacing.start(new RandomGenerator(new Random()), countOfCarRacing);
 
         ResultView resultView = new ResultView(result);
