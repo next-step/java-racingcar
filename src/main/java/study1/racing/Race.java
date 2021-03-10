@@ -19,12 +19,7 @@ public class Race {
   }
   
   public void checkDistance() {
-    cars.stream().map((car) -> car.move()).forEach(Race::print);
-    System.out.print("\n");
-  }
-
-  public static void print(int num) {
-    IntStream.range(0, num).forEach((i) -> System.out.print("-"));
+    cars.stream().map((car) -> car.move()).forEach(ResultView::print);
     System.out.print("\n");
   }
 }
