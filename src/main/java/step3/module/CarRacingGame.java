@@ -33,7 +33,6 @@ public class CarRacingGame {
         IntStream.range(START_IDX, attemptCount)
                 .forEach(value ->
                         // 라운드 별 기록 저장
-//                        racingRounds.add(carManager.run())
                         racingResult.addRacingRound(carManager.run())
                 );
     }
