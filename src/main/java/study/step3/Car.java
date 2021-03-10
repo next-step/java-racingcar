@@ -11,6 +11,10 @@ public class Car {
         this.location = 0;
     }
 
+    public static Car of() {
+        return new Car();
+    }
+
     public int getLocation() {
         return location;
     }
@@ -28,9 +32,5 @@ public class Car {
             location++;
         }
         return this;
-    }
-
-    public static Car of() {
-        return new Car();
     }
 }

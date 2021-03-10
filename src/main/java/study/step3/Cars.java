@@ -13,18 +13,18 @@ public class Cars {
         this.cars = car;
     }
 
+    public static Cars of(int carNumber) {
+        return new Cars(Arrays.stream(new int[carNumber])
+                .mapToObj(car -> Car.of())
+                .collect(Collectors.toList())
+        );
+    }
+
     public int getCarSize() {
         return cars.size();
     }
 
     public Stream<Car> stream() {
         return cars.stream();
-    }
-
-    public static Cars of(int carNumber) {
-        return new Cars(Arrays.stream(new int[carNumber])
-                .mapToObj(car -> Car.of())
-                .collect(Collectors.toList())
-        );
     }
 }

@@ -15,6 +15,10 @@ public class Racing {
         this.attemptCount = 0;
     }
 
+    public static Racing of(final Cars cars, final int attemptNumber) {
+        return new Racing(cars, attemptNumber);
+    }
+
     public boolean isFinished() {
         return attemptCount >= attemptNumber;
     }
@@ -25,10 +29,6 @@ public class Racing {
         return cars.stream()
                 .map(Car::move)
                 .collect(Collectors.toList());
-    }
-
-    public static Racing of(final Cars cars, final int attemptNumber) {
-        return new Racing(cars, attemptNumber);
     }
 }
 
