@@ -6,12 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.repository.CarRepository;
 import racingcar.service.CarService;
-import racingcar.view.InputView;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingGameControllerTest {
 
@@ -30,5 +27,19 @@ class RacingGameControllerTest {
 
         //then
         assertEquals(numberOfCars, sizeOfCars, "입력한 대수와 생성된 자동차의 수는 같아야한다.");
+    }
+
+    @Test
+    @DisplayName("입력받은 시도 회수를 저장하는 테스트")
+    public void createGameRound() throws Exception {
+        //given
+        CarRepository carRepository = new CarRepository();
+        CarService carService = new CarService(carRepository);
+        RacingGameController racingGameController = new RacingGameController(carService);
+
+        //when
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> racingGameController.createGameRound(-1)).withMessageContaining("0이하의 값인지 확인");
     }
 }
