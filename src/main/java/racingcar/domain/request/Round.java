@@ -23,7 +23,7 @@ public class Round {
     }
 
     public int getRound() {
-        return 0;
+        return round;
     }
 
 }
