@@ -1,35 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private List<Integer> advanceRound(List<Car> cars) {
-        return cars.stream()
-                .map(car -> {
-                    car.advance();
-                    return car.getNumberOfAdvance();
-                })
-                .collect(Collectors.toList());
-    }
-
-    private List<List<Integer>> race(List<Car> cars, int numberOfAttempts) {
-        List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < numberOfAttempts; i++) {
-            result.add(advanceRound(cars));
+    public int toInteger(String value){
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("정수만 입력이 가능합니다.");
         }
-        return result;
     }
 
     public void start() {
         InputView inputView = new InputView();
-        int numberOfCars = inputView.inputIntArgument("자동차 대수는 몇 대 인가요?");
-        int numberOfAttempts = inputView.inputIntArgument("시도할 회수는 몇 회 인가요?");
+        String value = inputView.inputIntArgument("자동차 대수는 몇 대 인가요?");
+        int numberOfCars =  toInteger(value);
 
-        List<Car> cars = new CarFactory(numberOfCars).generateCars();
+        value = inputView.inputIntArgument("시도할 회수는 몇 회 인가요?");
+        int numberOfAttempts = toInteger(value);
 
-        List<List<Integer>> result = race(cars, numberOfAttempts);
-        ResultView resultView = new ResultView(result);
-        resultView.showRace();
+        Cars cars = CarFactory.generateCars(numberOfCars);
+        cars.setMoveStrategy(new ConditionStrategy());
+
+        System.out.println("실행 결과");
+        for (int i = 0; i < numberOfAttempts; i++) {
+            cars.advanceCars();
+            ResultView.showRaceRound(cars.getCarRecords());
+        }
     }
 }

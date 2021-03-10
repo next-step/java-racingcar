@@ -11,8 +11,8 @@ class CarFactoryTest {
     @Test
     @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
     void generateCars(int numberOfCars, int result) {
-        assertThat(new CarFactory(numberOfCars)
-                .generateCars()
+        assertThat(CarFactory.generateCars(numberOfCars)
+                .getCars()
                 .size())
                 .isEqualTo(result);
     }

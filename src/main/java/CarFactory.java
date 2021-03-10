@@ -1,18 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CarFactory {
-    private int numberOfCars;
-
-    CarFactory (int numberOfCars) {
-        this.numberOfCars = numberOfCars;
-    }
-
-    public List<Car> generateCars() {
-        List<Car> cars = new ArrayList<>();
-        for (int limit = 0; limit < numberOfCars; limit++) {
-            cars.add(new Car());
-        }
-        return cars;
+    public static Cars generateCars(int numberOfCars) {
+        return new Cars(Stream.generate(Car::new)
+                .limit(numberOfCars)
+                .collect(Collectors.toList()));
     }
 }
