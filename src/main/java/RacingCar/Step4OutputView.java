@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Step4OutputView implements OutputView {
     final String FORWARD = "-";
+    final String CAR_NAME_POSTFIX = " : ";
 
     @Override
     public void printTitle() {
@@ -18,6 +19,7 @@ public class Step4OutputView implements OutputView {
     public void printSingleRacingResult(List<Car> cars) {
         cars.forEach(car -> {
             int distance = car.getDistance();
+            System.out.print(car.getName() + CAR_NAME_POSTFIX);
             while (distance-- != 0) {
                 System.out.print(FORWARD);
             }
