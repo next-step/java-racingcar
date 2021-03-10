@@ -3,15 +3,15 @@ package calculator;
 import calculator.enums.Operator;
 import calculator.utils.ExpressionValidator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Expression {
 
     private static final String DELIMITER = " ";
     private final String[] expression;
-    private final List<Integer> operands = new ArrayList<>();
-    private final List<Operator> operators = new ArrayList<>();
+    private final Queue<Integer> operands = new LinkedList<>();
+    private final Queue<Operator> operators = new LinkedList<>();
 
     public Expression(String expression) {
         this.expression = expression.split(DELIMITER);
@@ -23,11 +23,11 @@ public class Expression {
         extractOperators();
     }
 
-    public List<Integer> getOperands() {
+    public Queue<Integer> getOperands() {
         return operands;
     }
 
-    public List<Operator> getOperators() {
+    public Queue<Operator> getOperators() {
         return operators;
     }
 
