@@ -20,10 +20,10 @@ class RacingRoundTest {
     public static final MoveStrategy MOVE_STRATEGY = () -> true;
 
     private static Stream<Arguments> racingEntry() {
-        Car car1 = new Car(0, MOVE_STRATEGY);
-        Car car2 = new Car(1, MOVE_STRATEGY);
-        Car car3 = new Car(3, MOVE_STRATEGY);
-        Car car4 = new Car(4, MOVE_STRATEGY);
+        Car car1 = new Car("a", MOVE_STRATEGY);
+        Car car2 = new Car("b", MOVE_STRATEGY);
+        Car car3 = new Car("c", MOVE_STRATEGY);
+        Car car4 = new Car("d", MOVE_STRATEGY);
         return Stream.of(
                 Arguments.of(Arrays.asList(car1, car2, car3), 3),
                 Arguments.of(Arrays.asList(car1, car2, car3, car4), 4)

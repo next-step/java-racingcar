@@ -6,10 +6,8 @@ import step3.move.MoveStrategy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
-import static step3.util.Constants.START_IDX;
 
 /**
  * 자동차의 생성을 관리할 클래스
