@@ -79,7 +79,7 @@ public class CarRacingInformationTest {
 
         carRacingInformation.makeCarList(carNameList);
         List<Car> carList = carRacingInformation.getCarList();
-        
+
         carList.get(0).move(() -> true);
         carList.get(1).move(()-> true);
         carList.get(2).move(() -> false);
