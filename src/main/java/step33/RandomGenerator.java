@@ -18,9 +18,6 @@ public class RandomGenerator{
     }
 
     public boolean isOver(int randomNumber) {
-        if (randomNumber > POSSIBLE_MOVE_NUMBER) {
-            return true;
-        }
-        return false;
+        return randomNumber > POSSIBLE_MOVE_NUMBER;
     }
 }

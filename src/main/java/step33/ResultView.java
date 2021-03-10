@@ -12,14 +12,15 @@ public class ResultView {
 
     public void print() {
         System.out.println("\n실행 결과");
-        for (CarResponse carResponse : carResponses) {
-            printCarsMove(carResponse);
+        for (int i = 0; i < carResponses.size(); i++) {
+            List<String> carMoves = carResponses.get(i).getCarMoves();
+            printCarsMove(carMoves);
             System.out.println();
         }
     }
 
-    private void printCarsMove(CarResponse carResponse) {
-        for (String result : carResponse.getResult()) {
+    public void printCarsMove(List<String> movesOfCars) {
+        for (String result : movesOfCars) {
             System.out.println(result);
         }
     }

@@ -1,43 +1,36 @@
 package step33;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CarRacing {
 
-    private Car car;
-    private RandomGenerator randomGenerator;
+    private List<Car> cars;
 
-    public CarRacing(Car car, RandomGenerator randomGenerator) {
-        this.car = car;
-        this.randomGenerator = randomGenerator;
+    public CarRacing(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void createCars(int amountOfCars) {
-        car.createCar(amountOfCars);
-    }
-
-    public List<CarResponse> start(int countOfCarRacing) {
-        return IntStream.range(0, countOfCarRacing)
-                .mapToObj(i -> getResponse())
+    public List<CarResponse> start(RandomGenerator randomGenerator, int index) {
+        return IntStream.range(0, index)
+                .mapToObj(count -> getMovesOfCar(randomGenerator))
                 .collect(Collectors.toList());
     }
 
-    private CarResponse getResponse() {
-        List<Integer> carsSizes = car.carsSizes();
-        moveCars(carsSizes.size());
+    private CarResponse getMovesOfCar(RandomGenerator randomGenerator) {
+        List<String> carMoves = cars.stream()
+                .map(car -> getMovesOfCar(randomGenerator, car))
+                .collect(Collectors.toList());
 
-        return CarResponse.of(carsSizes);
+        return CarResponse.of(carMoves);
     }
 
-    private void moveCars(int index) {
-        for (int i = 0; i < index; i++) {
-            int randomNumber = randomGenerator.getRandomNumber();
-            boolean isOver = randomGenerator.isOver(randomNumber);
-            car.moveCars(isOver, i);
-        }
+    private String getMovesOfCar(RandomGenerator randomGenerator, Car car) {
+        int randomNumber = randomGenerator.getRandomNumber();
+        boolean isOver = randomGenerator.isOver(randomNumber);
+
+        return car.moveCars(isOver);
     }
+
 }

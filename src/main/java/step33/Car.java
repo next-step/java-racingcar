@@ -1,47 +1,22 @@
 package step33;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Car {
-    private List<Car> cars;
 
-    public Car(List<Car> cars) {
-        this.cars = cars;
-    }
+    private int moveCount;
 
-    public void createCar(int number) {
-        if (cars.size() >= number) {
-            throw new IllegalArgumentException("잘못된 번호입니다.");
-        }
-        addCarToCars(number);
-    }
-
-    private void addCarToCars(int number) {
-        for (int i = 0; i < number; i++) {
-            addCar();
-        }
-    }
-
-    public void moveCars(boolean isOver, int index) {
+    public String moveCars(boolean isOver) {
         if (isOver) {
-            cars.get(index).addCar();
+            moveCount++;
         }
+        return getMove();
     }
 
-    private void addCar() {
-        cars.add(new Car(new ArrayList<>()));
+    private String getMove() {
+        return IntStream.range(0, moveCount)
+                .mapToObj(moveCount -> "-")
+                .collect(Collectors.joining());
     }
-
-    public List<Integer> carsSizes() {
-        return cars.stream()
-                .map(
-                        s -> s.cars
-                                .size())
-                .collect(
-                        Collectors.toList());
-    }
-
-
 }

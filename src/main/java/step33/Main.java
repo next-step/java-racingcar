@@ -1,8 +1,9 @@
 package step33;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -11,12 +12,14 @@ public class Main {
         int amountOfCar = inputView.getAmountOfCar();
         int countOfCarRacing = inputView.getCountOfCarRacing();
 
-        Car car = new Car(new ArrayList<>());
-        CarRacing carRacing = new CarRacing(car, new RandomGenerator(new Random()));
-        carRacing.createCars(amountOfCar);
+        List<Car> cars = IntStream.range(0, amountOfCar)
+                .mapToObj(amount -> new Car())
+                .collect(Collectors.toList());
 
-        List<CarResponse> carResponses = carRacing.start(countOfCarRacing);
-        ResultView resultView = new ResultView(carResponses);
+        CarRacing carRacing = new CarRacing(cars);
+        List<CarResponse> result = carRacing.start(new RandomGenerator(new Random()), countOfCarRacing);
+
+        ResultView resultView = new ResultView(result);
         resultView.print();
     }
 }

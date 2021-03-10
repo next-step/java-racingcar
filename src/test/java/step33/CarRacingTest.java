@@ -10,38 +10,37 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarRacingTest {
 
-    private Car car;
-    private RandomGenerator randomGenerator;
-    private  CarRacing carRacing;
+    private CarRacing carRacing;
 
     @BeforeEach
     void init() {
-        car = new Car(new ArrayList<>());
-        randomGenerator = new RandomGenerator(new Random());
-        carRacing = new CarRacing(car, randomGenerator);
+        List<Car> cars = IntStream.range(0, 1)
+                .mapToObj(amount -> new Car())
+                .collect(Collectors.toList());
+
+        carRacing = new CarRacing(cars);
     }
 
-    @DisplayName("createCar를 정상적으로 호출했을 경우")
+    @DisplayName("CarRacing 횟수가 0회 일 경우 테스트")
+    @Test
+    void CarResponsesIsEmptyTrue() {
+        List<CarResponse> start = carRacing.start(new RandomGenerator(new Random()), 0);
+        Assertions.assertEquals(start.isEmpty(), true);
+    }
+
+    @DisplayName("CarRacing 횟수가 1회 이상 일 경우 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-    void createCarTest(int number) {
-        assertDoesNotThrow(() -> carRacing.createCars(number));
-        assertEquals(car.carsSizes().size(), number);
+    @ValueSource(ints = {1,2,3,4,5,6,7,8,9,10})
+    void CarResponsesIsEmptyFalse(int index) {
+        List<CarResponse> start = carRacing.start(new RandomGenerator(new Random()), index);
+        Assertions.assertEquals(start.isEmpty(), false);
     }
 
-    @DisplayName("start를 정상적으로 호출했을 경우")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-    void startTest(int number) {
-        carRacing.createCars(1);
-        List<CarResponse> start = carRacing.start(number);
-
-        Assertions.assertEquals(start.size(), number);
-    }
 
 }
