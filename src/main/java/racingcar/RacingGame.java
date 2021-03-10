@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RacingCar {
+public class RacingGame {
     private int cars, count;
 
     // 몇대의 차, 몇번의 이동 초기화
-    public RacingCar(int cars, int count) {
+    public RacingGame(int cars, int count) {
         this.cars = cars;
         this.count = count;
     }

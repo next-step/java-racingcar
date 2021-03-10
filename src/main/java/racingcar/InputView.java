@@ -13,10 +13,10 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요? ");
         int count = scanner.nextInt();
 
-        RacingCar racingCar = new RacingCar(cars, count);
-        List<Car> list = racingCar.settingCars(cars);
-        racingCar.moveToN(list, count);
-        racingCar.carStatus(list);
+        RacingGame racingGame = new RacingGame(cars, count);
+        List<Car> list = racingGame.settingCars(cars);
+        racingGame.moveToN(list, count);
+        racingGame.carStatus(list);
 
     }
 }
