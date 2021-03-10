@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;

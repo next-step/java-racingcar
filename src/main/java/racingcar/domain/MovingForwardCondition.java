@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class MovingForwardCondition {
     public static final int THRESHOLD = 4;
