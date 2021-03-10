@@ -19,7 +19,7 @@ public class RacingCarController {
     }
 
     public void run() {
-            Cars cars= new GameManager().countOfRound(inputView.carNum());
+            Cars cars= new GameManager().countOfRound(inputView.playCarNum());
             RacingGame game = new RacingGame(cars);
             int tryNumber = inputView.tryGameNum();
             game.startGame(tryNumber);
