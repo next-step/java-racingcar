@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -11,13 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarServiceTest {
 
+    private CarRepository carRepository;
+    private CarService carService;
+
+    @BeforeEach
+    public void setUp() {
+        this.carRepository = new CarRepository();
+        this.carService = new CarService(this.carRepository);
+    }
+
 
     @Test
     @DisplayName("자동차 추가 로직 검증 테스트")
     public void addCar() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
-        CarService carService = new CarService(carRepository);
         Car car = new Car();
         String name = "seongbeen";
         car.setName(name);
@@ -36,11 +44,9 @@ class CarServiceTest {
     @DisplayName("모든 자동차 찾는 로직 검증 테스트")
     public void findCars() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
         carRepository.save(new Car());
         carRepository.save(new Car());
         carRepository.save(new Car());
-        CarService carService = new CarService(carRepository);
 
         //when
         List<Car> cars = carService.findCars();
@@ -53,14 +59,12 @@ class CarServiceTest {
     @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
     public void findMovementRangeOfCars() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
         Car firstCar = new Car();
         firstCar.move(5);
         Car secondCar = new Car();
         secondCar.move(1);
         carRepository.save(firstCar);
         carRepository.save(secondCar);
-        CarService carService = new CarService(carRepository);
 
         //when
         List<Integer> movementRangeOfCars = carService.findMovementRangeOfCars();
@@ -75,12 +79,10 @@ class CarServiceTest {
     @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
     public void findByName() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
         Car car = new Car();
         String name = "seongbeen";
         car.setName(name);
         carRepository.save(car);
-        CarService carService = new CarService(carRepository);
 
         //when
         Car foundCar = carService.findCar(name);
