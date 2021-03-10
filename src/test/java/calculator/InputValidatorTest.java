@@ -4,31 +4,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class InputValidatorTest {
 
-  private InputValidator inputValidator;
-
-  @BeforeEach
-  void setUp() {
-    inputValidator = new InputValidator();
-  }
-
   @ParameterizedTest(name = "[Validator] validateInput 테스트 - {index}")
   @ValueSource(strings = {"", " "})
   void validateInputTest(String input) {
     assertThatIllegalArgumentException().isThrownBy(() -> {
-      inputValidator.validateInput(input);
+      InputValidator.validateInput(input);
     });
   }
 
-  @ParameterizedTest(name = "[Validator] isBlank 테스트 - {index}")
-  @ValueSource(strings = {" ", "2 + 3"})
+  @Test
+  @DisplayName(("[Validator] isEmpty 테스트"))
+  void isEmptyTest() {
+    assertThat(InputValidator.isEmpty("")).isEqualTo(true);
+    assertThat(InputValidator.isEmpty("2 + 3")).isEqualTo(false);
+  }
+
+  @Test
+  @DisplayName(("[Validator] isBlank 테스트"))
   void isBlankTest() {
-    assertThat(inputValidator.isBlank(" ")).isEqualTo(true);
-    assertThat(inputValidator.isBlank("2 + 3")).isEqualTo(false);
+    assertThat(InputValidator.isBlank(" ")).isEqualTo(true);
+    assertThat(InputValidator.isBlank("2 + 3")).isEqualTo(false);
   }
 
 }
