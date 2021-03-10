@@ -4,7 +4,7 @@ import racingcar.exception.CarNameException;
 
 public class Car {
 
-  private static final int MAX_CAR_NAME_LENGTH = 4;
+  private static final int MAX_CAR_NAME_LENGTH = 5;
   private int location;
   private String name;
 
