@@ -21,11 +21,15 @@ public class RoundResult {
         return racingScores;
     }
 
-    public void setRoundNumber(int roundNumber) {
+    public void registerRoundResult(int roundNumber, RacingScores racingScores) {
+        _validate(roundNumber);
         this.roundNumber = roundNumber;
+        this.racingScores = racingScores;
     }
 
-    public void setRacingScores(RacingScores racingScores) {
-        this.racingScores = racingScores;
+    private void _validate(int roundNumber) {
+        if(this.roundNumber== roundNumber) {
+            throw new IllegalArgumentException("해당 경기 정보는 이미 등록되었습니다.");
+        }
     }
 }

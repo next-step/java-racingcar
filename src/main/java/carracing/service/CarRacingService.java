@@ -57,8 +57,7 @@ public class CarRacingService {
 
     private RoundResult _executeRound(int roundNumber, Players players) {
         RoundResult roundResult = new RoundResult();
-        roundResult.setRoundNumber(roundNumber);
-        roundResult.setRacingScores(_executeScoring(players));
+        roundResult.registerRoundResult(roundNumber, _executeScoring(players));
         return roundResult;
     }
 
