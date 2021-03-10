@@ -17,16 +17,16 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarRaceTest {
 
-    private RandomRaceCar car;
+    private Car car;
     @BeforeEach
     void setUp(){
-        car = new RandomRaceCar("rccar");
+        car = new Car("rccar",new RandomMoveStrategy());
     }
     @ParameterizedTest
     @CsvSource(value = {"4","5"})
     @DisplayName("전진 테스트 - 전진 성공하는 경우, 랜덤값이 4,5라고 가정")
     void 전진테스트(int randomValue){
-        car.move(randomValue >= NumberChecker.CONDITION_OF_START);
+        car.move();
         assertThat(car.getPosition()).isEqualTo(2);
     }
     @ParameterizedTest
@@ -57,9 +57,9 @@ public class CarRaceTest {
     void 자동차_경주_우승자(){
         List<Car> carList = new ArrayList<>();
 
-        RandomRaceCar car1 = new RandomRaceCar("rc1");
-        RandomRaceCar car2 = new RandomRaceCar("rc2");
-        RandomRaceCar car3 = new RandomRaceCar("rc3");
+        Car car1 = new Car("rc1",new RandomMoveStrategy());
+        Car car2 = new Car("rc2",new RandomMoveStrategy());
+        Car car3 = new Car("rc3",new RandomMoveStrategy());
         for(int i=0;i<5;i++){
             car1.move(true);
             car3.move(true);
