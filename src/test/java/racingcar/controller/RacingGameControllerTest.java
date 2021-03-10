@@ -38,7 +38,7 @@ class RacingGameControllerTest {
     }
 
     @Test
-    @DisplayName("입력받은 시도 회수를 저장하는 테스트")
+    @DisplayName("입력받은 시도 회수가 정수가 아닐 경우 에러")
     public void createGameRound() throws Exception {
         assertThatIllegalArgumentException().isThrownBy(() -> racingGameController.createGameRound(-1)).withMessageContaining("0이하의 값인지 확인");
     }
