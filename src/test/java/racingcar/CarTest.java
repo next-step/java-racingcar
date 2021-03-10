@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -43,5 +44,12 @@ class CarTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Car("jhLim97",0).positionValueValidation (number);
         });
+    }
+
+    @ParameterizedTest
+    @CsvSource({"3, ---"})
+    @DisplayName("자동차의 위치를 표시할 수 있다.")
+    void canDisplayCarPosition(int position, String displayPosition) {
+        Assertions.assertThat(new Car("jhLim97", position).toString()).isEqualTo(displayPosition);
     }
 }

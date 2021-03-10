@@ -2,6 +2,10 @@ package racingcar.domain;
 
 import racingcar.util.Conditions;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Car {
 
     private String name;
@@ -15,6 +19,7 @@ public class Car {
     public String getName() {
         return name;
     }
+
     public int getPosition() {
         return position;
     }
@@ -35,5 +40,12 @@ public class Car {
 
     public boolean nameValueInValidation() {
         return Conditions.isInValidName(name);
+    }
+
+    @Override
+    public String toString() {
+        return IntStream.range(0, position)
+                .mapToObj(i -> "-")
+                .collect(Collectors.joining(""));
     }
 }
