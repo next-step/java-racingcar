@@ -1,7 +1,7 @@
 package racing.dto;
 
-import racing.car.ReadOnlyCarProxy;
-import racing.car.ReadonlyCar;
+import racing.domain.ReadOnlyCarProxy;
+import racing.domain.ReadonlyCar;
 
 import java.util.List;
 import java.util.stream.Collectors;

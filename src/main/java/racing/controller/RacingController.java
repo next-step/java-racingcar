@@ -1,7 +1,8 @@
-package racing;
+package racing.controller;
 
-import racing.car.Car;
-import racing.car.RandomMovement;
+import racing.domain.Car;
+import racing.domain.Racing;
+import racing.domain.RandomMovement;
 import racing.dto.RacingReport;
 import racing.view.InputView;
 import racing.view.ResultView;

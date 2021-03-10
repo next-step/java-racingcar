@@ -3,7 +3,7 @@ package racing.view;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.Car;
+import racing.domain.Car;
 import racing.dto.RacingReport;
 import racing.io.OutputDriver;
 

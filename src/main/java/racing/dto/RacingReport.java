@@ -1,6 +1,6 @@
 package racing.dto;
 
-import racing.car.ReadonlyCar;
+import racing.domain.ReadonlyCar;
 
 import java.util.ArrayList;
 import java.util.List;

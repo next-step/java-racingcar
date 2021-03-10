@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.car.ReadonlyCar;
+import racing.domain.ReadonlyCar;
 import racing.dto.RacingReport;
 import racing.dto.RoundResult;
 import racing.io.OutputDriver;

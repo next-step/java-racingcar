@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain;
 
 public interface ReadonlyCar {
 

@@ -1,5 +1,6 @@
 package racing;
 
+import racing.controller.RacingController;
 import racing.io.ConsoleOutputDriver;
 import racing.io.OutputDriver;
 import racing.view.InputView;
