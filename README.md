@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+##STEP3. 자동차 경주 구현
+# 2021-03-11 commit
+1. 입출력 메소드
+2. 차량의 전진 여부 반환 메소드
+3. 한 라운드 진행 메소드
+4. 전체 라운드 진행 처리 메소드
