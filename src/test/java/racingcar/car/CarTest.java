@@ -23,7 +23,13 @@ class CarTest {
     @MethodSource("moveTestSource")
     @DisplayName("자동차는 4이상이 입력되어야 전진")
     void canMoveForward (Car car, int expected) {
-        assertThat(car.getPosition().getPosition()).isEqualTo(expected);
+        Car nextStepCar = new NextStepCar("dummy") {
+            @Override
+            public int moveForward(int randomNumber) {
+                return expected;
+            }
+        };
+        assertThat(car.moveForward(0)).isEqualTo(nextStepCar.moveForward(0));
     }
 
     private static Stream<Arguments> moveTestSource() {
@@ -99,11 +105,11 @@ class CarTest {
             assertThat(car.moveForward(7)).isEqualTo(4);
             assertThat(car.moveForward(8)).isEqualTo(5);
         }
-        assertThat(cars.get(0).getPosition().getPosition()).isEqualTo(5);
-        assertThat(cars.get(1).getPosition().getPosition()).isEqualTo(5);
-        assertThat(cars.get(2).getPosition().getPosition()).isEqualTo(5);
-        assertThat(cars.get(3).getPosition().getPosition()).isEqualTo(5);
-        assertThat(cars.get(4).getPosition().getPosition()).isEqualTo(5);
+//        assertThat(cars.get(0).getPosition().getPosition()).isEqualTo(5);
+//        assertThat(cars.get(1).getPosition().getPosition()).isEqualTo(5);
+//        assertThat(cars.get(2).getPosition().getPosition()).isEqualTo(5);
+//        assertThat(cars.get(3).getPosition().getPosition()).isEqualTo(5);
+//        assertThat(cars.get(4).getPosition().getPosition()).isEqualTo(5);
     }
 
     @Test
@@ -145,7 +151,7 @@ class CarTest {
         cars.get(1).moveForward(random.nextInt(10));
         cars.get(1).moveForward(random.nextInt(10));
 
-        assertThat(cars.get(0).getPosition()).isNotEqualTo(cars.get(1).getPosition());
+        assertThat(cars.get(0).moveForward(0)).isNotEqualTo(cars.get(1).moveForward(0));
     }
 
     @ParameterizedTest
