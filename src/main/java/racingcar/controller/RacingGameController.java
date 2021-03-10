@@ -3,7 +3,6 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.GameRound;
 import racingcar.service.CarService;
-import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.List;
@@ -21,15 +20,7 @@ public class RacingGameController {
         this.carService = carService;
     }
 
-    public void run() {
-        createCars();
-        createGameRound();
-        printGameResult();
-    }
-
-    private void createCars() {
-        int numberOfCars = InputView.INSTANCE.InputNumberOfCars();
-
+    public void createCars(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
             carService.addCar(new Car());
         }
@@ -37,16 +28,15 @@ public class RacingGameController {
         cars = carService.findCars();
     }
 
-    private void createGameRound() {
-        int numberOfAttempts = InputView.INSTANCE.InputNumberOfAttempts();
+    public void createGameRound(int numberOfAttempts) {
         gameRound = new GameRound(numberOfAttempts);
     }
 
-    private void raceEachRound() {
+    public void raceEachRound() {
         cars.forEach(car -> car.move(random.nextInt(MAX_INCLUSIVE)));
     }
 
-    private void printGameResult() {
+    public void printGameResult() {
         ResultView.INSTANCE.printResultStatement();
 
         for (int i = 0; i < gameRound.getRound(); i++) {
