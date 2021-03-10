@@ -19,6 +19,11 @@ public class StringCalculator {
         List<Integer> numbers = getNumbers(inputArray);
         List<Operator> operators = getOperators(inputArray);
         int result = numbers.get(0);
+        for (int i = 0; i < operators.size(); i++) {
+            Operator operator = operators.get(i);
+            Integer next = numbers.get(i + 1);
+            result = operator.operate(result, next);
+        }
         return result;
     }
 
