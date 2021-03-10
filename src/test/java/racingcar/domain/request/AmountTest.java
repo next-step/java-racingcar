@@ -18,7 +18,7 @@ class AmountTest {
         Amount amount = Amount.getInstance(expected);
 
         // when
-        int actual = amount.getAmount();
+        int actual = amount.getValue();
 
         // them
         assertThat(actual).isEqualTo(expected);

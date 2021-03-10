@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RoundTest {
 
@@ -18,7 +17,7 @@ class RoundTest {
         Round round = Round.getInstance(expected);
 
         // when
-        int actual = round.getRound();
+        int actual = round.getValue();
 
         // them
         assertThat(actual).isEqualTo(expected);
