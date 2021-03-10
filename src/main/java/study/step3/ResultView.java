@@ -9,8 +9,7 @@ public class ResultView {
     }
     public static void printPosition(List<Car> cars){
         for(Car car : cars){
-            RandomRaceCar randomRaceCar = (RandomRaceCar)car;
-            printRandomRaceCarPosition(randomRaceCar.getPosition());
+            printRandomRaceCarPosition(car.getPosition());
         }
     }
     public static void printRandomRaceCarPosition(int position){
