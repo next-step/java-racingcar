@@ -23,7 +23,7 @@ class CarTest {
     @Test
     void createdCar_ShouldNotNull() {
         // given
-        Car car = new Car(START_IDX);
+        Car car = new Car("0");
         // when
 
         // then
@@ -35,7 +35,7 @@ class CarTest {
     @CsvSource(value = {"true, 1", "false, 0"})
     void move_CarPosition(boolean flag, int position) {
         // given
-        Car car = new Car(0, getMoveStrategy(flag));
+        Car car = new Car("1", getMoveStrategy(flag));
         // when
         car.move();
         // then
@@ -47,7 +47,7 @@ class CarTest {
     @CsvSource(value = {"true, 2", "false, 0"})
     void moves_CarPosition(boolean firstFlag, int position) {
         // given
-        Car car = new Car(0, getMoveStrategy(firstFlag));
+        Car car = new Car("1", getMoveStrategy(firstFlag));
         // when
         car.move();
         car.move();
