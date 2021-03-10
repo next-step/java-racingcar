@@ -8,20 +8,26 @@ public class JavaMain {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Validator validator = new Validator();
-
         String formula = br.readLine();
 
         // 입력 문자 검사
-        validator.isEmptyOrIsBlank(formula);
+        try {
+            Validator.isEmptyOrIsBlankOrIsNull(formula);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
 
         String[] formulaList = formula.split(" ");
-
-        // 연산자 검사
-        validator.isCheckOperation(formulaList);
+        try {
+            Validator.isCheckOperation(formulaList);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
 
         Calculate calculate = new Calculate();
         int result = calculate.calculateFormula(formulaList);
         System.out.println(result);
+
+        br.close();
     }
 }
