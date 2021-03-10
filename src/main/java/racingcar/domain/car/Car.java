@@ -1,7 +1,7 @@
 package racingcar.domain.car;
 
 public class Car {
-    private int INITIAL_VALUE = 0;
+    private final int INITIAL_VALUE = 0;
     private int status;
 
     public Car() {
