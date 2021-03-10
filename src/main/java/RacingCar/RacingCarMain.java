@@ -7,7 +7,7 @@ public class RacingCarMain {
     public static void main(String[] args) {
         final int MOVE_THRESHOLD = 4;
         InputView inputView = new InputView();
-        OutputView outputView = new Step3OutputView();
+        OutputView outputView = new Step4OutputView();
         int numberOfCars = inputView.getNumberOfCars();
         int numberOfRacing = inputView.getNumberOfRacing();
 
@@ -26,5 +26,6 @@ public class RacingCarMain {
 
         outputView.printTitle();
         racing.racing();
+        outputView.printWinners(cars);
     }
 }

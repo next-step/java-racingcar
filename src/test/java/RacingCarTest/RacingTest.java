@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -30,11 +31,11 @@ public class RacingTest {
         racing.racing();
 
         //then
-        cars.forEach(car -> assertThat(car.getDistance()).isEqualTo(expected));
+        cars.forEach(car -> assertThat(car.getDistance())
+                .isEqualTo(expected));
     }
 
     @Test
-    @Disabled
     public void Given_SetListener_When_Racing_Then_ListenerCalled() {
         Observer endOfSingleRacing = new Observer<Integer>() {
             @Override
