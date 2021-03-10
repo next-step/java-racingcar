@@ -1,6 +1,5 @@
 package study.step3;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -15,7 +14,7 @@ public class ResultView {
         System.out.println(NEW_LINE + RESULT_MESSAGE);
     }
 
-    public static void printRace(List<Car> cars) {
+    public static void printRace(Cars cars) {
         System.out.println(
                 cars.stream()
                         .map(car -> car.getLocationString())

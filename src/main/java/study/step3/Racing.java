@@ -1,34 +1,30 @@
 package study.step3;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Racing {
 
     private final Cars cars;
     private final int attemptNumber;
     private int attemptCount;
+    private final MoveBehavior moveBehavior;
 
-    private Racing(final Cars cars, final int attemptNumber) {
+    private Racing(final Cars cars, final int attemptNumber, final MoveBehavior moveBehavior) {
         this.cars = cars;
         this.attemptNumber = attemptNumber;
         this.attemptCount = 0;
+        this.moveBehavior = moveBehavior;
     }
 
-    public static Racing of(final Cars cars, final int attemptNumber) {
-        return new Racing(cars, attemptNumber);
+    public static Racing of(final Cars cars, final int attemptNumber, final MoveBehavior moveBehavior) {
+        return new Racing(cars, attemptNumber, moveBehavior);
     }
 
     public boolean isFinished() {
         return attemptCount >= attemptNumber;
     }
 
-    public List<Car> race() {
+    public Cars race() {
         attemptCount++;
-
-        return cars.stream()
-                .map(Car::move)
-                .collect(Collectors.toList());
+        return cars.move(moveBehavior);
     }
 }
 

@@ -21,16 +21,12 @@ public class Car {
 
     public String getLocationString() {
         return Arrays.stream(new int[location])
-                .mapToObj(location -> RacingConstant.DASHBOARD)
+                .mapToObj(location -> RacingConstant.DASH)
                 .collect(Collectors.joining(RacingConstant.DELIMITER));
     }
 
     public Car move() {
-        if (RacingConstant.RANDOM.nextInt(RacingConstant.RANDOM_RAMGE)
-                >= RacingConstant.RANDOM_BOUNDARY_VALUE
-        ) {
-            location++;
-        }
+        location++;
         return this;
     }
 }

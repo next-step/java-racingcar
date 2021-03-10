@@ -20,7 +20,14 @@ public class Cars {
         );
     }
 
-    public int getCarSize() {
+    public Cars move(MoveBehavior moveBehavior) {
+        cars.stream()
+                .filter(bahavior -> moveBehavior.isMoved())
+                .forEach(car -> car.move());
+        return this;
+    }
+
+    public int getSize() {
         return cars.size();
     }
 

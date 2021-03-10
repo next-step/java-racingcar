@@ -13,6 +13,6 @@ public class CarsTest {
     @CsvSource(value = {"3:3"}, delimiter = ':')
     void of(int carNumber, int expected) {
         Cars cars = Cars.of(carNumber);
-        assertThat(cars.getCarSize()).isEqualTo(expected);
+        assertThat(cars.getSize()).isEqualTo(expected);
     }
 }
