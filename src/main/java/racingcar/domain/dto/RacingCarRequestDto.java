@@ -8,7 +8,7 @@ public class RacingCarRequestDto {
     private Amount amount;
     private Round round;
 
-    public static RacingCarRequestDto of(Amount amount, Round round){
+    public static RacingCarRequestDto of(Amount amount, Round round) {
         return new RacingCarRequestDto(amount, round);
     }
 
@@ -20,6 +20,7 @@ public class RacingCarRequestDto {
     public int getAmountValue() {
         return amount.getValue();
     }
+
     public int getRoundValue() {
         return round.getValue();
     }
