@@ -49,9 +49,7 @@ public class CarRacingInformation {
 
 
     public ArrayList<Car> decideMovable() {
-        carList.stream()
-                .forEach(car -> decideMovableByRandomValue(car));
-
+        carList.forEach(this::decideMovableByRandomValue);
         return carList;
     }
 
@@ -77,17 +75,18 @@ public class CarRacingInformation {
 
     private int getWinnerPosition() {
         return carList.stream()
-                .max(Comparator.comparing(Car::getPoisition))
-                .get()
-                .getPoisition();
+                .mapToInt(Car::getPoisition)
+                .max()
+                .orElse(0);
     }
 
     public List<String> setWinner() {
         int winnerPoisiton = getWinnerPosition();
 
         return carList.stream()
-                .filter(car -> car.getPoisition() == winnerPoisiton)
+                .filter(car -> car.matchPosition(winnerPoisiton))
                 .map(Car::getName)
                 .collect(Collectors.toList());
+
     }
 }

@@ -22,4 +22,8 @@ public class Car {
     public int getPoisition() {
         return position;
     }
+
+    public boolean matchPosition(int position) {
+        return this.position == position;
+    }
 }

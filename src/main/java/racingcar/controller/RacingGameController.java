@@ -46,8 +46,7 @@ public class RacingGameController {
 
 
     private void drawExecutionResult(ArrayList<Car> carList) {
-        carList.stream()
-                .forEach(car -> resultView.printExecutionResult(car.getName(),car.getPoisition()));
+        carList.forEach(car -> resultView.printExecutionResult(car.getName(),car.getPoisition()));
     }
 
     private void drawLiterallyExecutionResult() {
