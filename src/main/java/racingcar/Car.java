@@ -1,7 +1,8 @@
 package racingcar;
 
 public class Car {
-    private int position = 0;
+    public final static int INITIAL_POSITION = 1;
+    private int position = INITIAL_POSITION;
 
     public void moveOrStay(int value) {
         if (MovingForwardCondition.isSatisfied(value)) {

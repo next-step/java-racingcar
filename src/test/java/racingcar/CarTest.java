@@ -22,8 +22,8 @@ class CarTest {
 
         // then
         Condition<Car> moved = new Condition<>(
-                car -> (MovingForwardCondition.isSatisfied(random) && car.getPosition() == 1)
-                        || car.getPosition() == 0,
+                car -> (MovingForwardCondition.isSatisfied(random) && car.getPosition() == 2)
+                        || car.getPosition() == 1,
                 "canMove");
         assertThat(testCar).is(moved);
     }
@@ -34,13 +34,13 @@ class CarTest {
     void getPosition(int moveTimes) {
         // given
         Car testCar = new Car();
-        assertThat(testCar.getPosition()).isEqualTo(0);
+        assertThat(testCar.getPosition()).isEqualTo(Car.INITIAL_POSITION);
         int moveValue = 5;
         //when
         for (int i = 0; i < moveTimes; i++) {
             testCar.moveOrStay(moveValue);
         }
         //then
-        assertThat(testCar.getPosition()).isEqualTo(moveTimes);
+        assertThat(testCar.getPosition()).isEqualTo(moveTimes + Car.INITIAL_POSITION);
     }
 }
