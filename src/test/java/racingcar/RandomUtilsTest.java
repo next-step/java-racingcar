@@ -23,6 +23,7 @@ public class RandomUtilsTest {
     @Test
     @DisplayName("0~9 사이의 숫자를 랜덤함수로 생성하는지 확인")
     public void isCorrectRandomValue() {
-        assertThat(randomMovable.makeRandomValue()).isBetween(0, 9);
+        randomMovable.makeRandomValue();
+        assertThat(randomMovable.getRandomValue()).isBetween(0, 9);
     }
 }

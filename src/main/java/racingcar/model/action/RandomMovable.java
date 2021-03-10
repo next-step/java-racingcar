@@ -19,7 +19,7 @@ public class RandomMovable implements Movable{
         return getRandomValue() >= CRETERION_VALUE;
     }
 
-    private int getRandomValue() {
+    public int getRandomValue() {
         return randomValue;
     }
 
