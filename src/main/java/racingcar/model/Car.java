@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.exception.CarNameException;
-
 public class Car {
 
   private int location;
