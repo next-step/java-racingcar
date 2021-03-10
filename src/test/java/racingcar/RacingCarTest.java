@@ -2,6 +2,8 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -55,5 +57,31 @@ public class RacingCarTest {
 		Game game = new Game(3);
 		game.run(5);
 		assertThat(game.getCar()).allSatisfy(car -> assertThat(car.getPosition()).isBetween(0, 6));
+	}
+
+	@Test
+	@DisplayName("우승자 테스트")
+	void getWinnersTest() {
+		String carName[] = {"Car A", "Car B", "Car C"};
+		Game game = new Game(carName);
+		List<Car> car = game.getCar();
+		car.get(0).move();
+		car.get(0).move();
+		car.get(0).move();
+		car.get(1).move();
+		car.get(1).move();
+		car.get(2).move();
+		List<String> winners = game.getWinners(car);
+		assertThat(winners).contains("Car A");
+
+		Game game2 = new Game(carName);
+		List<Car> car2 = game2.getCar();
+		car2.get(0).move();
+		car2.get(0).move();
+		car2.get(1).move();
+		car2.get(1).move();
+		car2.get(2).move();
+		List<String> winners2 = game2.getWinners(car2);
+		assertThat(winners2).containsExactlyInAnyOrder("Car A", "Car B");
 	}
 }

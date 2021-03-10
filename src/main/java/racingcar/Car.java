@@ -1,7 +1,20 @@
 package racingcar;
 
 public class Car {
+	private String carName;
 	private int position;
+
+	public Car() {
+		this("undefined");
+	}
+
+	public Car(String carName) {
+		this.carName = carName;
+	}
+
+	public String getCarName() {
+		return this.carName;
+	}
 
 	public int getPosition() {
 		return this.position;

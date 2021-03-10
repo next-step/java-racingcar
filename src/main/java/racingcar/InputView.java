@@ -10,9 +10,23 @@ public class InputView {
 	}
 
 	public int getInputNumber() {
-		System.out.println(text);
-		Scanner sc = new Scanner(System.in);
-		String input = sc.nextLine();
+		printText();
+		String input = getInput();
 		return Integer.valueOf(input);
+	}
+
+	public String[] getInputCarName() {
+		printText();
+		String input = getInput();
+		return input.split(",");
+	}
+
+	private String getInput() {
+		Scanner sc = new Scanner(System.in);
+		return sc.nextLine();
+	}
+
+	private void printText() {
+		System.out.println(this.text);
 	}
 }
