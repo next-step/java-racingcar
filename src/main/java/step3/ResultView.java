@@ -16,8 +16,8 @@ public class ResultView {
             for (int i = 0; i < car; i++) {
                 int number = random.nextInt(10);
                 results[i] += number;
-                System.out.println(String.format("%" + results[i] + "s", "-")
-                        .replace(" ", "-"));
+                String format = results[i] > 0 ? "%" + results[i] + "s" : "%s";
+                System.out.println(String.format(format, "-").replace(" ", "-"));
             }
             System.out.println();
         }
