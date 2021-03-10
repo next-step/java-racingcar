@@ -11,11 +11,12 @@ public class CarRacingInformation {
     private RandomMovable randomMovable;
     private int carRacingCount;
 
-    public CarRacingInformation(List<String> carNameList, int carRacingCount) {
-        checkDuplication(carNameList);
-        isZeroOrLess(carRacingCount);
-        this.carList = makeCarList(carNameList);
+    public CarRacingInformation() {
         randomMovable = new RandomMovable();
+    }
+
+    public void setCarRacingCount(int carRacingCount) {
+        isZeroOrLess(carRacingCount);
         this.carRacingCount = carRacingCount;
     }
 
@@ -28,7 +29,8 @@ public class CarRacingInformation {
     }
 
 
-    private ArrayList<Car> makeCarList(List<String> carNameList) {
+    public ArrayList<Car> makeCarList(List<String> carNameList) {
+        checkDuplication(carNameList);
         carList = new ArrayList<>(carNameList.size());
         for (String carName : carNameList) {
             carList.add(new Car(carName));
