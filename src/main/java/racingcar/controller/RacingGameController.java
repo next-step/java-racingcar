@@ -18,13 +18,17 @@ public class RacingGameController {
     public RacingGameController() {
         inputView = new InputView();
         resultView = new ResultView();
+        carRacingInformation = new CarRacingInformation();
     }
 
     public void runGame() {
+
         List<String> carNameList = drawCarNameListAndReturn();
         int carRacingCount = drawCarCountAndReturn();
-        carRacingInformation
-                = new CarRacingInformation(carNameList,carRacingCount);
+
+        carRacingInformation.makeCarList(carNameList);
+        carRacingInformation.setCarRacingCount(carRacingCount);
+
         drawLiterallyExecutionResult();
         playGame();
     }
@@ -46,8 +50,7 @@ public class RacingGameController {
 
 
     private void drawExecutionResult(ArrayList<Car> carList) {
-        carList.stream()
-                .forEach(car -> resultView.printExecutionResult(car.getName(),car.getPoisition()));
+        carList.forEach(car -> resultView.printExecutionResult(car.getName(),car.getPoisition()));
     }
 
     private void drawLiterallyExecutionResult() {

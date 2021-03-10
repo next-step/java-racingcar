@@ -4,6 +4,8 @@ import racingcar.model.Car;
 
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ResultView {
 
@@ -23,10 +25,11 @@ public class ResultView {
     }
 
     public void drawWinner(List<String> winnerCarNameList) {
-        StringJoiner winners = new StringJoiner(",");
-        for (String winnerCarName : winnerCarNameList) {
-            winners.add(winnerCarName);
-        }
-        System.out.println(winners.toString() + "가 우승했습니다.");
+        String winners = winnerCarNameList.stream()
+                .collect(Collectors.joining(","));
+
+        System.out.println(winners + "가 우승했습니다.");
     }
+
+
 }

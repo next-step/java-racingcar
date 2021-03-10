@@ -25,8 +25,16 @@ public class CarTest {
     @DisplayName("자동차 전진")
     public void moveCar() {
         Car car = new Car("one");
-        car.move();
+        car.move(() -> true);
         assertEquals(1,car.getPoisition());
+    }
+
+    @Test
+    @DisplayName("자동차 멈춤")
+    public void stopCar() {
+        Car car = new Car("one");
+        car.move(() -> false);
+        assertEquals(0,car.getPoisition());
     }
 
 

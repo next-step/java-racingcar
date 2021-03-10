@@ -11,11 +11,12 @@ public class CarRacingInformation {
     private RandomMovable randomMovable;
     private int carRacingCount;
 
-    public CarRacingInformation(List<String> carNameList, int carRacingCount) {
-        checkDuplication(carNameList);
-        isZeroOrLess(carRacingCount);
-        this.carList = makeCarList(carNameList);
+    public CarRacingInformation() {
         randomMovable = new RandomMovable();
+    }
+
+    public void setCarRacingCount(int carRacingCount) {
+        isZeroOrLess(carRacingCount);
         this.carRacingCount = carRacingCount;
     }
 
@@ -28,7 +29,8 @@ public class CarRacingInformation {
     }
 
 
-    private ArrayList<Car> makeCarList(List<String> carNameList) {
+    public ArrayList<Car> makeCarList(List<String> carNameList) {
+        checkDuplication(carNameList);
         carList = new ArrayList<>(carNameList.size());
         for (String carName : carNameList) {
             carList.add(new Car(carName));
@@ -49,17 +51,13 @@ public class CarRacingInformation {
 
 
     public ArrayList<Car> decideMovable() {
-        carList.stream()
-                .forEach(car -> decideMovableByRandomValue(car));
-
+        carList.forEach(this::decideMovableByRandomValue);
         return carList;
     }
 
     public void decideMovableByRandomValue(Car car) {
-        int randomValue = randomMovable.makeRandomValue();
-        if (randomMovable.moveOrNot(randomValue)) {
-            car.move();
-        }
+        randomMovable.makeRandomValue();
+        car.move(randomMovable);
     }
 
     public boolean checkCarRacingCount() {
@@ -77,17 +75,18 @@ public class CarRacingInformation {
 
     private int getWinnerPosition() {
         return carList.stream()
-                .max(Comparator.comparing(Car::getPoisition))
-                .get()
-                .getPoisition();
+                .mapToInt(Car::getPoisition)
+                .max()
+                .orElse(0);
     }
 
     public List<String> setWinner() {
         int winnerPoisiton = getWinnerPosition();
 
         return carList.stream()
-                .filter(car -> car.getPoisition() == winnerPoisiton)
+                .filter(car -> car.matchPosition(winnerPoisiton))
                 .map(Car::getName)
                 .collect(Collectors.toList());
+
     }
 }
