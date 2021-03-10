@@ -1,10 +1,9 @@
 package racing.model;
 
-import java.util.Objects;
-
 public class Position {
 
     private int position;
+    private static final int ZERO = 0;
 
     public Position(int position) {
         valid(position);
@@ -23,17 +22,13 @@ public class Position {
     }
 
     public void valid(int position) {
-        if (position < 0) {
+        if (position < ZERO) {
             throw new IllegalArgumentException("포지션은 음수일 수 없습니다.");
         }
     }
 
-    public boolean equals(int position) {
+    public Boolean equals(int position) {
         return this.position == position;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(position);
-    }
 }

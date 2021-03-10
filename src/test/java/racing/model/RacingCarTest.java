@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingCarTest {
@@ -12,7 +13,7 @@ class RacingCarTest {
 
     @BeforeEach
     void init() {
-        racingCar = new RacingCar("BOOM", 0);
+        racingCar = new RacingCar("BOOM");
 
     }
 
@@ -40,5 +41,26 @@ class RacingCarTest {
 
         //then
         assertEquals(0, racingCar.getPosition());
+    }
+
+    @DisplayName("앞으로 가는 조건 테스트")
+    @Test
+    void isForward() {
+        //given
+        int randomValue = 4;
+
+        //then
+        assertThat(racingCar.isForward(randomValue)).isTrue();
+    }
+
+    @DisplayName("포지션이 같은지 비교 테스트")
+    @Test
+    void isSame() {
+        //given
+        RacingCar racingCar = new RacingCar("LG", 5);
+        int randomValue = 5;
+
+        //then
+        assertThat(racingCar.isSame(randomValue)).isTrue();
     }
 }

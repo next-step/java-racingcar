@@ -16,18 +16,39 @@ class RacingGameTest {
         return new RacingGame(racingCarNames);
     }
 
-    @DisplayName("랜덤값이 자동차 갯수 만큼 생성되는지 테스트")
+    @DisplayName("자동차 이동 테스트")
     @Test
-    void createRandomValue() {
+    void moveAndStop() {
         //given
         RacingGame racingGame = init();
-
+        List<Integer> randomValue = createRandomValue(5, 2, 5);
         //when
-        List<Integer> randomValue = racingGame.createRandomValue();
+        RacingCars racingCars = racingGame.moveAndStop(randomValue);
+        List<RacingCarDto> resultCars = racingCars.createDtoList();
 
         //then
-        assertEquals(3, randomValue.size());
+        assertThat(resultCars).containsExactly(new RacingCarDto("LG", 1), new RacingCarDto("SKT", 0), new RacingCarDto("KT", 1));
     }
 
+    @DisplayName("우승자 선택 테스트")
+    @Test
+    void setCoWinner() {
+        //given
+        RacingGame racingGame = init();
+        List<Integer> randomValue = createRandomValue(5, 5, 2);
+        racingGame.moveAndStop(randomValue);
 
+        //when
+        List<String> winner = racingGame.findWinners();
+
+        //then
+        assertEquals(2, winner.size());
+        assertEquals("LG", winner.get(0));
+        assertEquals("SKT", winner.get(1));
+    }
+
+    private List<Integer> createRandomValue(int firstCarMovePosition, int secondCarMovePosition,
+                                            int thirdCarMovePosition) {
+        return List.of(firstCarMovePosition, secondCarMovePosition, thirdCarMovePosition);
+    }
 }

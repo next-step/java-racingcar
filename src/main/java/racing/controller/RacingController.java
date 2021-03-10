@@ -1,12 +1,11 @@
 package racing.controller;
 
 import racing.model.CarNameParser;
-import racing.model.RacingCarDto;
+import racing.model.GameTurn;
 import racing.model.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-import java.util.List;
 
 public class RacingController {
 
@@ -25,33 +24,15 @@ public class RacingController {
      */
     public void play() {
         ResultView resultView = new ResultView();
-        for (int i = 0; i < gameTurn.getGameTurn(); i++) {
-            turn(resultView);
-        }
-        finish(resultView);
+        RacingGame racingGame = gameTurn.play(this.racingGame, resultView);
+        finish(racingGame, resultView);
     }
 
-    /**
-     * 매 게임 턴 마다 자동차를 움직이고 결과를 보여주는 메서드
-     */
-    public void turn(ResultView resultView) {
-        List<Integer> randomValue = racingGame.createRandomValue();
-        racingGame.moveAndStop(randomValue);
-        List<RacingCarDto> carDtoList = createDtoList();
-        resultView.turnResultView(carDtoList);
-    }
-
-    /**
-     * ResultView에 넘길 데이터전송객체 리스트를 만드는 메서드
-     */
-    public List<RacingCarDto> createDtoList() {
-        return racingGame.createDtoList();
-    }
 
     /**
      * 게임을 끝내고 우승자를 보여주는 메서드
      */
-    private void finish(ResultView resultView) {
+    private void finish(RacingGame racingGame, ResultView resultView) {
         resultView.drawWinner(racingGame.findWinners());
     }
 

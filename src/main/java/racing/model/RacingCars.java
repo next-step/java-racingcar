@@ -1,9 +1,10 @@
 package racing.model;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
 public class RacingCars {
@@ -11,11 +12,13 @@ public class RacingCars {
     private final List<RacingCar> carList;
 
     public RacingCars(String[] racingCarNames) {
+        boolean duplicated = Arrays.stream(racingCarNames)
+                .distinct()
+                .count() == racingCarNames.length;
+        if (!duplicated) {
+            throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
+        }
         this.carList = createRacingCar(racingCarNames);
-    }
-
-    public List<RacingCar> getCarList() {
-        return carList;
     }
 
     /**
@@ -23,9 +26,8 @@ public class RacingCars {
      */
     public List<RacingCar> createRacingCar(String[] racingCarNames) {
         List<RacingCar> racingCarList = new ArrayList<>();
-        long carId = 1L;
         for (String racingCarName : racingCarNames) {
-            racingCarList.add(new RacingCar(racingCarName, 0));
+            racingCarList.add(new RacingCar(racingCarName));
         }
         return racingCarList;
     }
@@ -40,10 +42,13 @@ public class RacingCars {
     /**
      * 자동차를 이동하는 메서드
      */
-    public void move(List<Integer> randomValue) {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(randomValue.get(i));
+    public RacingCars move(List<Integer> randomValue) {
+        int index = 0;
+        for (RacingCar racingCar : carList) {
+            carList.get(index).move(randomValue.get(index));
+            index++;
         }
+        return this;
     }
 
     /**
@@ -51,8 +56,8 @@ public class RacingCars {
      */
     public List<String> findWinners() {
         int winnerPosition = carList.stream()
-                .max(Comparator.comparing(RacingCar::getPosition))
-                .orElseThrow(() -> new IllegalArgumentException("포지션의 값이 숫자가 아니거나 값이 없습니다."))
+                .max(comparing(RacingCar::getPosition))
+                .orElseThrow(() -> new IllegalArgumentException("자동차가 없습니다."))
                 .getPosition();
 
         return carList.stream()

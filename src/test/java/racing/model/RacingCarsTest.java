@@ -23,10 +23,11 @@ public class RacingCarsTest {
         List<Integer> randomValue = createRandomValue(5, 7, 8);
 
         //when
-        cars.move(randomValue);
+        RacingCars moveCars = cars.move(randomValue);
+        List<RacingCarDto> moveCarList = moveCars.createDtoList();
 
         //then
-        assertThat(cars.getCarList()).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(1));
+        assertThat(moveCarList).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(1));
     }
 
     @DisplayName("이동거리가 4미만일때 자동차 정지 테스트")
@@ -37,10 +38,11 @@ public class RacingCarsTest {
         List<Integer> randomValue = createRandomValue(2, 3, 1);
 
         //when
-        cars.move(randomValue);
+        RacingCars moveCars = cars.move(randomValue);
+        List<RacingCarDto> moveCarList = moveCars.createDtoList();
 
         //then
-        assertThat(cars.getCarList()).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(0));
+        assertThat(moveCarList).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(0));
     }
 
     @DisplayName("우승자 가리는 메서드 테스트")
@@ -84,8 +86,7 @@ public class RacingCarsTest {
 
         List<RacingCarDto> racingCarDtoList = cars.createDtoList();
 
-        assertEquals(1, racingCarDtoList.get(0).getPosition());
-        assertEquals("KT", racingCarDtoList.get(2).getRacingCarName());
+        assertThat(racingCarDtoList).containsExactly(new RacingCarDto("LG", 1), new RacingCarDto("SKT", 1), new RacingCarDto("KT", 0));
     }
 
     private List<Integer> createRandomValue(int firstCarMovePosition, int secondCarMovePosition,

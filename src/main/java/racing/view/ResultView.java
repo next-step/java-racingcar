@@ -5,6 +5,8 @@ import racing.model.RacingCarDto;
 import java.util.List;
 
 public class ResultView {
+    
+    private static final String POSITION = "-";
 
     public ResultView() {
         System.out.println("\n실행 결과");
@@ -17,8 +19,7 @@ public class ResultView {
 
     public void drawPosition(RacingCarDto racingCarDto) {
         System.out.print(racingCarDto.getRacingCarName() + " : ");
-        String position = "-";
-        System.out.print(position.repeat(racingCarDto.getPosition()));
+        System.out.print(POSITION.repeat(racingCarDto.getPosition()));
         System.out.println();
     }
 

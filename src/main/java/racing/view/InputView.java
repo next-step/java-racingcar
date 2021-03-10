@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    Scanner scan = new Scanner(System.in);
-
+    private final Scanner scan = new Scanner(System.in);
     private final String participationList;
     private int turnCount;
 
@@ -26,7 +25,6 @@ public class InputView {
             turnCount = scan.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("숫자만 입력 가능합니다.");
-            new InputView();
         }
         return turnCount;
     }

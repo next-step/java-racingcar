@@ -1,5 +1,7 @@
 package racing.model;
 
+import java.util.Objects;
+
 public class RacingCarDto {
 
     /**
@@ -19,5 +21,18 @@ public class RacingCarDto {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCarDto that = (RacingCarDto) o;
+        return position == that.position && Objects.equals(racingCarName, that.racingCarName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingCarName, position);
     }
 }

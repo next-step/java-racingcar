@@ -4,6 +4,12 @@ public class RacingCar {
 
     private final RacingCarName racingCarName;
     private final Position position;
+    private static final int MOVABLE_MINVALUE = 4;
+
+    public RacingCar(String racingCarName) {
+        this.racingCarName = new RacingCarName(racingCarName);
+        this.position = new Position(0);
+    }
 
     public RacingCar(String racingCarName, int position) {
         this.racingCarName = new RacingCarName(racingCarName);
@@ -27,8 +33,8 @@ public class RacingCar {
     /**
      * 자동차 위치를 이동시켜주는 메서드
      */
-    public void move(int ramdomValue) {
-        if (isForward(ramdomValue)) {
+    public void move(int randomValue) {
+        if (isForward(randomValue)) {
             position.move();
         }
     }
@@ -36,8 +42,8 @@ public class RacingCar {
     /**
      * 이동 거리가 4이상인지 판단하는 메서드
      */
-    public boolean isForward(int ramdomValue) {
-        return ramdomValue > 3;
+    public boolean isForward(int randomValue) {
+        return randomValue >= MOVABLE_MINVALUE;
     }
 
     /**
