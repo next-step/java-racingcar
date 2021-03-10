@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.model.Car;
-import racingcar.module.Game;
+import racingcar.module.RacingGame;
 import racingcar.module.GameManager;
 import racingcar.util.RandomUtil;
 import racingcar.util.ValidationUtil;
@@ -41,25 +41,24 @@ public class RacingCarTest {
         //WHEN
 
         //THEN
-        assertThat(gameManager.initCarGame(input)).size().isEqualTo(result);
+        assertThat(gameManager.initCarGame(input)).hasSize(result);
     }
 
-    @DisplayName("게임 횟수 만큼 Car 객체 생성 크기 비교")
+    @DisplayName("random 값 0에서 부터 9까지 나오는지 확인")
     @Test
     void random(int input, int result) {
         //GIVE
 
         //WHEN
         //THEN
-        assertThat(RandomUtil.randomNum())
-                .isBetween(0, 9);
+        assertThat(RandomUtil.randomNum()).isBetween(0, 9);
     }
     @DisplayName("게임 횟수 만큼 게임이 진행되는지 비교")
     @Test
     void startGame() {
         //GIVE
         List<Car> carList = Arrays.asList(new Car[]{new Car(1), new Car(2)});
-        Game game = new Game(carList);
+        RacingGame game = new RacingGame(carList);
         int total;
         //WHEN
         total = game.startGame(2);

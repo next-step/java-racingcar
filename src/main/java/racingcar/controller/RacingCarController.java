@@ -1,24 +1,28 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
-import racingcar.module.Game;
+import racingcar.model.Cars;
+import racingcar.module.RacingGame;
 import racingcar.module.GameManager;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
-import java.util.InputMismatchException;
 import java.util.List;
 
 public class RacingCarController {
 
     private final InputView inputView;
-
+    private final ResultView resultView;
     public RacingCarController() {
         this.inputView = new InputView();
+        this.resultView = new ResultView();
     }
 
-    public void run(){
-            List<Car> carList= new GameManager().initCarGame(inputView.carNum());
-            Game game = new Game(carList);
-            game.startGame(inputView.tryGameNum());
+    public void run() {
+            Cars cars= new GameManager().countOfRound(inputView.carNum());
+            RacingGame game = new RacingGame(cars);
+            int tryNumber = inputView.tryGameNum();
+            game.startGame(tryNumber);
+            resultView.printResultView(tryNumber,cars);
     }
 }

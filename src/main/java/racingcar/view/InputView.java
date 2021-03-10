@@ -6,11 +6,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final Scanner scanner;
-
-    public InputView() {
-        this.scanner = new Scanner(System.in);;
-    }
+    private static final Scanner scanner = new Scanner(System.in);
 
     public int carNum(){
         String count = null;
@@ -18,7 +14,7 @@ public class InputView {
         do {
             System.out.println(Constant.INPUT_REQUEST_CAR_COUNT);
             count = scanner.next();
-        }while (!validationUtil.isNumber(count));
+        } while(!validationUtil.isNumber(count));
         return Integer.parseInt(count);
     }
 
@@ -28,7 +24,7 @@ public class InputView {
         do {
             System.out.println(Constant.INPUT_REQUEST_PLAY_COUNT);
             count = scanner.next();
-        }while (!validationUtil.isNumber(count));
+        } while(!validationUtil.isNumber(count));
 
         return Integer.parseInt(count);
     }
