@@ -10,8 +10,9 @@ public class Main {
           - participant / 자동차대수
           - round / 몇회
         - method
-          - setRace / 레이스 세팅
           - run / 레이스 시작
+          - checkDistance / 차 거리 측정
+          - print / 거리 print
       - Car.java
         - field 
           - distance / 주행거리

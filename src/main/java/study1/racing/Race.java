@@ -1,23 +1,33 @@
 package study1.racing;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Race {
   private final List<Car> cars;
   private final int round;
 
-  public Race(List<Car> cars, int round) {
-    this.cars = cars;
+  public Race(int participant, int round) {
+    this.cars = Stream.generate(Car::new).limit(participant).collect(Collectors.toList());
     this.round = round;
-  }
-  
-  public static Race setRace (int participant, int round) {
-    // participant 에 따라서 race 를 개최하고 return
-    return null;
   }
 
   public void run () {
-    // for round, for car.size
-    // map, foreach 로 nested 루프 구현해보기
+    IntStream.range(0, round).forEach((i) -> checkDistance());
+  }
+  
+  public void checkDistance() {
+    cars.stream().map((car) -> car.move()).forEach(Race::print);
+    System.out.print("\n");
+  }
+
+  public static void print(int num) {
+    // System.out.println("num: " + num);
+    IntStream.range(0, num).forEach((i) -> System.out.print("-"));
+    System.out.print("\n");
   }
 }
