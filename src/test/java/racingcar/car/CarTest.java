@@ -105,11 +105,6 @@ class CarTest {
             assertThat(car.moveForward(7)).isEqualTo(4);
             assertThat(car.moveForward(8)).isEqualTo(5);
         }
-//        assertThat(cars.get(0).getPosition().getPosition()).isEqualTo(5);
-//        assertThat(cars.get(1).getPosition().getPosition()).isEqualTo(5);
-//        assertThat(cars.get(2).getPosition().getPosition()).isEqualTo(5);
-//        assertThat(cars.get(3).getPosition().getPosition()).isEqualTo(5);
-//        assertThat(cars.get(4).getPosition().getPosition()).isEqualTo(5);
     }
 
     @Test
@@ -210,6 +205,25 @@ class CarTest {
         NextStepCars nextStepCars = new NextStepCars(carList);
         List<String> winners = nextStepCars.getWinner();
         assertThat(winners.size()).isEqualTo(2);
+    }
+
+    @Test
+    void assertNextStepCars() {
+        List<Car> carList = new ArrayList<>();
+        Car car1 = new NextStepCar("dummy");
+        Car car2 = new NextStepCar("dummy");
+        Car car3 = new NextStepCar("dummy");
+        Car car4 = new NextStepCar("dummy");
+        car1.moveForward(10);
+        car2.moveForward(4);
+        car3.moveForward(4);
+        car4.moveForward(1);
+
+        carList.add(car1);
+        carList.add(car2);
+        carList.add(car3);
+        carList.add(car4);
+        NextStepCars nextStepCars = new NextStepCars(carList);
     }
 
     @BeforeEach
