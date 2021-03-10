@@ -35,8 +35,9 @@ public class StringCalculatorTest {
   void checkNotBlankString(final String input) {
     assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> {
-              if (StringUtils.isBlank(input))
+              if (StringUtils.isBlank(input)) {
                 throw new IllegalArgumentException();
+              }
             });
   }
 

@@ -2,9 +2,13 @@ package step2;
 
 public final class StringUtils {
 
+  private StringUtils() {
+  }
+
   public static String[] split(String str, String separator) {
-    if (isBlank(str))
+    if (isBlank(str)) {
       return new String[]{};
+    }
 
     return str.split(separator);
   }
