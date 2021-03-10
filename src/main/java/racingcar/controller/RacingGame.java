@@ -9,9 +9,11 @@ public class RacingGame {
 
   public List<Car> cars = new ArrayList<>();
 
-  public void readyGame(int carCount) {
-    for (int i = 0; i < carCount; i++) {
-      cars.add(new Car());
+  public void readyGame(String inputName) {
+    String[] names = inputName.split(",");
+
+    for (int i = 0; i < names.length; i++) {
+      cars.add(new Car(names[i]));
     }
   }
 
