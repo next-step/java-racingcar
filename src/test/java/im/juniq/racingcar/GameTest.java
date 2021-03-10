@@ -25,4 +25,24 @@ class GameTest {
 			assertThat(racingCar.getMoveCount()).isEqualTo(0);
 		}
 	}
+
+	@DisplayName("자동차 n대를 이동한다")
+	@ParameterizedTest
+	@ValueSource(ints = {5})
+	void moveRacingCars(int numberOfCars) throws NoSuchFieldException, IllegalAccessException {
+		Game game = new Game();
+		game.createCars(numberOfCars);
+		List<RacingCar> cars = game.getCars();
+		for (RacingCar racingCar: cars) {
+			RacingCarTest.setMoveMustBeSuccess(racingCar);
+		}
+
+		game.moveCars();
+
+		for (int i = 0; i < cars.size(); i++) {
+			RacingCar racingCar = cars.get(i);
+			assertThat(racingCar.getId()).isEqualTo(i);
+			assertThat(racingCar.getMoveCount()).isEqualTo(1);
+		}
+	}
 }
