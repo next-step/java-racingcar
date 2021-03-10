@@ -16,7 +16,7 @@ public class Racing {
     }
 
     public boolean isFinished() {
-        return attemptCount >= attemptNumber ? true : false;
+        return attemptCount >= attemptNumber;
     }
 
     public List<Car> race() {
