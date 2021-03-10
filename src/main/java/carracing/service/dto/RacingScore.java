@@ -10,15 +10,15 @@ package carracing.service.dto;
  */
 public class RacingScore {
 
-    private int carNbr;
+    private int carNumber;
     private int score;
 
-    public int getCarNbr() {
-        return carNbr;
+    public int getCarNumber() {
+        return carNumber;
     }
 
-    public void setCarNbr(int carNbr) {
-        this.carNbr = carNbr;
+    public void setCarNumber(int carNumber) {
+        this.carNumber = carNumber;
     }
 
     public int getScore() {
