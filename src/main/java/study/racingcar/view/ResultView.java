@@ -12,19 +12,7 @@ public class ResultView {
 
     public void print(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            printCarName(racingCar);
-            printCarPosition(racingCar);
-        }
-        System.out.println();
-    }
-
-    public void printCarName(RacingCar racingCar){
-        System.out.print(racingCar.getName() + " : ");
-    }
-
-    private void printCarPosition(RacingCar racingCar) {
-        for(int i = 0; i < racingCar.getPosition(); i ++){
-            System.out.print("-");
+            System.out.println(racingCar.getPrintInfo());
         }
         System.out.println();
     }

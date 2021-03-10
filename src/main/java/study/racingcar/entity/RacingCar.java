@@ -25,6 +25,15 @@ public class RacingCar {
         }
     }
 
+    public String getPrintInfo(){
+
+        StringBuilder result = new StringBuilder(name + " : ");
+        for(int i = 0; i < position; i ++){
+            result.append("-");
+        }
+        return result.toString();
+    }
+
     private boolean movePossible(int number) {
         return number >= MOVE_POSSIBLE_NUMBER;
     }
