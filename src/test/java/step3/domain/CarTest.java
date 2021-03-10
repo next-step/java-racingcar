@@ -3,8 +3,13 @@ package step3.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import step3.move.MoveStrategy;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static step3.util.Constants.START_IDX;
@@ -19,23 +24,38 @@ class CarTest {
         return () -> flag;
     }
 
+    private static Stream<Arguments> carList() {
+        return Stream.of(
+            Arguments.of("a", "a"),
+            Arguments.of("b", "b")
+        );
+    }
+
+    private static Stream<Arguments> carPosition() {
+        return Stream.of(
+            Arguments.of("a", true, 1),
+            Arguments.of("b", false, 0)
+        );
+    }
     @DisplayName("자동차 생성 테스트")
-    @Test
-    void createdCar_ShouldNotNull() {
+    @ParameterizedTest(name = "자동차 이름부여 생성 테스트 {0} == {1}")
+    @MethodSource(value = "carList")
+    void createdCar_ShouldNotNull(String name, String expected) {
         // given
-        Car car = new Car("0");
+        Car car = new Car(name);
         // when
 
         // then
         assertThat(car).isNotNull();
+        assertThat(car.getName()).isEqualTo(expected);
     }
 
     @DisplayName("자동차의 이동하는지 확인하는 테스트")
-    @ParameterizedTest(name = "{0} 설정 시 -> position 값 : {1}")
-    @CsvSource(value = {"true, 1", "false, 0"})
-    void move_CarPosition(boolean flag, int position) {
+    @ParameterizedTest(name = "이동 여부 : {0} 설정 시 -> position 값 : {1}")
+    @MethodSource(value = "carPosition")
+    void move_CarPosition(String name, boolean flag, int position) {
         // given
-        Car car = new Car("1", getMoveStrategy(flag));
+        Car car = new Car(name, getMoveStrategy(flag));
         // when
         car.move();
         // then
@@ -47,7 +67,7 @@ class CarTest {
     @CsvSource(value = {"true, 2", "false, 0"})
     void moves_CarPosition(boolean firstFlag, int position) {
         // given
-        Car car = new Car("1", getMoveStrategy(firstFlag));
+        Car car = new Car("name", getMoveStrategy(firstFlag));
         // when
         car.move();
         car.move();
