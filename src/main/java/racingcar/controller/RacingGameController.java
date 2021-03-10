@@ -6,6 +6,7 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGameController {
 
@@ -20,10 +21,10 @@ public class RacingGameController {
     }
 
     public void runGame() {
-        int numberOfCar = drawNumberOfCarAndReturn();
+        List<String> carNameList = drawCarNameListAndReturn();
         int carRacingCount = drawCarCountAndReturn();
         carRacingInformation
-                = new CarRacingInformation(numberOfCar,carRacingCount);
+                = new CarRacingInformation(carNameList,carRacingCount);
         drawLiterallyExecutionResult();
         playGame();
     }
@@ -35,13 +36,18 @@ public class RacingGameController {
             System.out.print("\n");
             carRacingInformation.minusCarRacingCount();
         }
+        drawWinner();
+    }
+
+    private void drawWinner() {
+        List<String> winnerCarNameList = carRacingInformation.setWinner();
+        resultView.drawWinner(winnerCarNameList);
     }
 
 
     private void drawExecutionResult(ArrayList<Car> carList) {
-        for (Car car : carList) {
-            resultView.printExecutionResult(car.getPoisition());
-        }
+        carList.stream()
+                .forEach(car -> resultView.printExecutionResult(car.getName(),car.getPoisition()));
     }
 
     private void drawLiterallyExecutionResult() {
@@ -52,8 +58,8 @@ public class RacingGameController {
         return inputView.inputCarCount();
     }
 
-    private int drawNumberOfCarAndReturn() {
-        return inputView.inputNumberOfCar();
+    private List<String> drawCarNameListAndReturn() {
+        return inputView.inputCarNameList();
     }
 
 }

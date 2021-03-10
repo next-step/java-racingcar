@@ -2,27 +2,38 @@ package racingcar.model;
 
 import racingcar.model.action.RandomMovable;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class CarRacingInformation {
     private ArrayList<Car> carList;
     private RandomMovable randomMovable;
     private int carRacingCount;
 
-
-    public CarRacingInformation(int numberOfCar, int carRacingCount) {
-        isZeroOrLess(numberOfCar);
+    public CarRacingInformation(List<String> carNameList, int carRacingCount) {
+        checkDuplication(carNameList);
         isZeroOrLess(carRacingCount);
-        makeCarList(numberOfCar);
+        this.carList = makeCarList(carNameList);
         randomMovable = new RandomMovable();
         this.carRacingCount = carRacingCount;
     }
 
-    private void makeCarList(int numberOfCar) {
-        carList = new ArrayList<>(numberOfCar);
-        for (int i = 0; i<numberOfCar; i++) {
-            carList.add(new Car());
+    private void checkDuplication(List<String> carNameList) {
+        Set<String> nonDuplicatedCarNameList = new HashSet<>(carNameList);
+
+        if(nonDuplicatedCarNameList.size() != carNameList.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복되서 입력할 수 없습니다.");
         }
+    }
+
+
+    private ArrayList<Car> makeCarList(List<String> carNameList) {
+        carList = new ArrayList<>(carNameList.size());
+        for (String carName : carNameList) {
+            carList.add(new Car(carName));
+        }
+        return carList;
     }
 
     public void isZeroOrLess(int number) {
@@ -38,16 +49,16 @@ public class CarRacingInformation {
 
 
     public ArrayList<Car> decideMovable() {
-        for (int carIdx = 0; carIdx< carList.size(); carIdx++) {
-            decideMovableByRandomValue(carIdx);
-        }
+        carList.stream()
+                .forEach(car -> decideMovableByRandomValue(car));
+
         return carList;
     }
 
-    public void decideMovableByRandomValue(int carIdx) {
+    public void decideMovableByRandomValue(Car car) {
         int randomValue = randomMovable.makeRandomValue();
         if (randomMovable.moveOrNot(randomValue)) {
-            carList.get(carIdx).move();
+            car.move();
         }
     }
 
@@ -62,5 +73,21 @@ public class CarRacingInformation {
 
     public int getCarRacingCount() {
         return carRacingCount;
+    }
+
+    private int getWinnerPosition() {
+        return carList.stream()
+                .max(Comparator.comparing(Car::getPoisition))
+                .get()
+                .getPoisition();
+    }
+
+    public List<String> setWinner() {
+        int winnerPoisiton = getWinnerPosition();
+
+        return carList.stream()
+                .filter(car -> car.getPoisition() == winnerPoisiton)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }
