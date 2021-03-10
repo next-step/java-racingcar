@@ -10,7 +10,7 @@ public class Winner {
     return cars.stream().mapToInt(Car::getLocation).max().orElse(0);
   }
 
-  private boolean isWinner(Car car, int maxLocation) {
+  public boolean isWinner(Car car, int maxLocation) {
     return car.getLocation() == maxLocation;
   }
 
