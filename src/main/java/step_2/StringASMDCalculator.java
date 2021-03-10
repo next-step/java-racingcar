@@ -3,6 +3,7 @@ package step_2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -22,10 +23,9 @@ public class StringASMDCalculator {
         Long destVariable = variablePopList.remove(0)
                 .longValue();
         while (matcher.find() && !variablePopList.isEmpty()) {
-            destVariable = OperatingMethods.valueOfCalculate(
-                    matcher.group(),
-                    destVariable,
-                    variablePopList.remove(0));
+            destVariable = OperatingMethods.valueOfString(matcher.group())
+                    .orElseThrow(NoSuchElementException::new)
+                    .calculate(destVariable, variablePopList.remove(0));
         }
         return destVariable;
     }
