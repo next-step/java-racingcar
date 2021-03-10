@@ -11,11 +11,10 @@ public class GameApplication {
 	}
 
 	private static void getInput() {
-		InputView inputView = new InputView();
-		inputView.setText("자동차 대수는 몇 대인가요?");
-		carSize = inputView.getScanner();
+		InputView inputView = new InputView("자동차 대수는 몇 대인가요?");
+		carSize = inputView.getInputNumber();
 
-		inputView.setText("시도할 회수는 몇 회 인가요?");
-		executeSize = inputView.getScanner();
+		inputView = new InputView("자동차 대수는 몇 대인가요?");
+		executeSize = inputView.getInputNumber();
 	}
 }

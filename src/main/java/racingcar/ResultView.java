@@ -2,6 +2,7 @@ package racingcar;
 
 public class ResultView {
 	private static final String RESULT_HEAD_MESSAGE = "실행결과";
+	private static final String RESULT_BODY_MESSAGE = "-";
 
 	public void printHead() {
 		System.out.println(RESULT_HEAD_MESSAGE);
@@ -9,12 +10,12 @@ public class ResultView {
 
 	public void printPosition(int position) {
 		for (int i = 0; i < position; i++) {
-			System.out.print("-");
+			System.out.print(RESULT_BODY_MESSAGE);
 		}
 		printEmptyLine();
 	}
 
 	public void printEmptyLine() {
-		System.out.println("");
+		System.out.println();
 	}
 }

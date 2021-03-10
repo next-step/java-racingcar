@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingCarTest {
@@ -29,17 +30,13 @@ public class RacingCarTest {
 		assertThat(game.getCar().size()).isEqualTo(carSize);
 	}
 
-	@Test
 	@DisplayName("전진 또는 멈춤 테스트")
-	void moveOrStopTest() {
-		Game game = new Game(1);
-		Car car = game.getCar().get(0);
-		game.moveOrStop(car);
-		game.moveOrStop(car);
-		game.moveOrStop(car);
-		game.moveOrStop(car);
-		game.moveOrStop(car);
-		assertThat(car.getPosition()).isBetween(0, 6);
+	@ParameterizedTest
+	@CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
+	void moveOrStopTest(int randomNumber, int expectedPosition) {
+		Car car = new Car();
+		car.moveOrStop(randomNumber);
+		assertThat(car.getPosition()).isEqualTo(expectedPosition);
 	}
 
 	@Test
@@ -57,9 +54,6 @@ public class RacingCarTest {
 	void runExecuteTest() {
 		Game game = new Game(3);
 		game.run(5);
-
-		for(Car car : game.getCar()) {
-			assertThat(car.getPosition()).isBetween(0,6);
-		}
+		assertThat(game.getCar()).allSatisfy(car -> assertThat(car.getPosition()).isBetween(0, 6));
 	}
 }

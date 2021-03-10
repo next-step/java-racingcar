@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class InputView {
 	private String text;
 
-	public void setText(String text) {
+	public InputView(String text) {
 		this.text = text;
 	}
 
-	public int getScanner() {
+	public int getInputNumber() {
 		System.out.println(text);
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();

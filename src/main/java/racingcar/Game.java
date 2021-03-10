@@ -13,12 +13,6 @@ public class Game {
 		makeCar(carListSize);
 	}
 
-	private void makeCar(int carListSize) {
-		for (int i = 0; i < carListSize; i++) {
-			carList.add(new Car());
-		}
-	}
-
 	public List<Car> getCar() {
 		return carList;
 	}
@@ -38,20 +32,19 @@ public class Game {
 		}
 	}
 
+	private void makeCar(int carListSize) {
+		for (int i = 0; i < carListSize; i++) {
+			carList.add(new Car());
+		}
+	}
+
 	private void execute(ResultView resultView) {
 		for (Car car : carList) {
-			moveOrStop(car);
+			car.moveOrStop(random.nextInt(10));
 			resultView.printPosition(car.getPosition());
 		}
 		resultView.printEmptyLine();
 
-	}
-
-	public void moveOrStop(Car car) {
-		int randomNumber = random.nextInt(10);
-		if (randomNumber >= 4) {
-			car.move();
-		}
 	}
 
 }
