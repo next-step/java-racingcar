@@ -22,18 +22,17 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public boolean isInValidNames(String[] carNames) {
-        return Arrays.stream(carNames)
-                .filter(carName -> new Car(carName, 0).nameValueInValidation())
-                .count() > 0;
+    public void isInValidNames(String[] carNames) {
+        for (String carName : carNames) {
+            new Car(carName, 0).nameValueInValidation();
+        }
     }
 
     public InputManagement input() {
         String[] carNames;
 
-        do {
-            carNames = inputNames();
-        } while (isInValidNames(carNames));
+        carNames = inputNames();
+        isInValidNames(carNames);
 
         return new InputManagement(carNames, inputCountRound());
     }

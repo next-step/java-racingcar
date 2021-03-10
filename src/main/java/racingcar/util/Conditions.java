@@ -19,7 +19,9 @@ public class Conditions {
         return number > HIGHER_LIMIT || number < LOWER_LIMIT;
     }
 
-    public static boolean isInValidName(String carName) {
-        return carName.length() > MAX_LENGTH;
+    public static void isInValidName(String carName) {
+        if (carName.length() > MAX_LENGTH) {
+            throw new IllegalArgumentException("차이름은 5글자 이하만 사용할 수 있습니다.");
+        }
     }
 }

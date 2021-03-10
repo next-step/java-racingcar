@@ -38,8 +38,8 @@ public class Car {
         }
     }
 
-    public boolean nameValueInValidation() {
-        return Conditions.isInValidName(name);
+    public void nameValueInValidation() {
+        Conditions.isInValidName(name);
     }
 
     @Override
