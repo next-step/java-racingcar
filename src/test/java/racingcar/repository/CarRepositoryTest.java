@@ -1,22 +1,27 @@
 package racingcar.repository;
 
-import com.sun.jmx.mbeanserver.Repository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.service.CarService;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarRepositoryTest {
+
+    private CarRepository carRepository;
+
+    @BeforeEach
+    public void setUp() {
+        this.carRepository = new CarRepository();
+    }
 
     @Test
     @DisplayName("자동차 추가 검증 로직 테스트")
     public void save() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
         Car car = new Car();
         String name = "seongbeen";
         car.setName(name);
@@ -35,7 +40,6 @@ class CarRepositoryTest {
     @DisplayName("모든 자동차 찾는 로직 검증 테스트")
     public void findAll() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
         carRepository.save(new Car());
         carRepository.save(new Car());
         carRepository.save(new Car());
@@ -51,7 +55,6 @@ class CarRepositoryTest {
     @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
     public void findAllMovementRange() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
         Car firstCar = new Car();
         firstCar.move(5);
         Car secondCar = new Car();
@@ -72,7 +75,6 @@ class CarRepositoryTest {
     @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
     public void findByName() throws Exception {
         //given
-        CarRepository carRepository = new CarRepository();
         Car car = new Car();
         String name = "seongbeen";
         car.setName(name);
