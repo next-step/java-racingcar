@@ -16,9 +16,8 @@ public class InputView {
                 if (isPlayerLimit(inputPlayerCount)) {
                     break;
                 }
-
             } catch (Exception e) {
-                System.out.println("잘못 입력했습니다.");
+                printInputError();
             }
         }
 
@@ -34,11 +33,11 @@ public class InputView {
                 System.out.println("목표 Lab을 입력해주세요. (최소 5Lab, 최대 55Lab)");
                 inputLabCount = scanner.nextInt();
 
-                if (isLabLimite(inputLabCount)) {
+                if (isLabLimit(inputLabCount)) {
                     break;
                 }
             } catch (Exception e) {
-                System.out.println("잘못 입력했습니다.");
+                printInputError();
             }
         }
         return inputLabCount;
@@ -48,7 +47,11 @@ public class InputView {
         return 2 <= playerCount && playerCount <= 24;
     }
 
-    public boolean isLabLimite(int labCount) {
+    public boolean isLabLimit(int labCount) {
         return 5 <= labCount && labCount <= 55;
+    }
+
+    public void printInputError(){
+        System.out.println("잘못 입력했습니다.");
     }
 }

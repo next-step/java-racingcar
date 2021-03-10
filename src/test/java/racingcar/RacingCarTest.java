@@ -78,7 +78,7 @@ public class RacingCarTest {
         boolean result = false;
 
         // then
-        result = inputView.isLabLimite(labCount);
+        result = inputView.isLabLimit(labCount);
 
         // when
         assertThat(result).isTrue();

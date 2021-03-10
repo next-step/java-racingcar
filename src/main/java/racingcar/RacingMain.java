@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class RacingMain {
 
     public static void main(String[] args) {
