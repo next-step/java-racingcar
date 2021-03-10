@@ -1,7 +1,6 @@
 package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
-import racingcar.controller.RacingGameController;
 import racingcar.model.CarRacingInformation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

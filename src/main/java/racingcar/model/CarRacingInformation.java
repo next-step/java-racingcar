@@ -54,10 +54,8 @@ public class CarRacingInformation {
     }
 
     public void decideMovableByRandomValue(Car car) {
-        int randomValue = randomMovable.makeRandomValue();
-        if (randomMovable.moveOrNot(randomValue)) {
-            car.move();
-        }
+        randomMovable.makeRandomValue();
+        car.move(randomMovable);
     }
 
     public boolean checkCarRacingCount() {
