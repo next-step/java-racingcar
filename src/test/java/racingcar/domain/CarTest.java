@@ -32,4 +32,29 @@ class CarTest {
         assertThatIllegalArgumentException().isThrownBy(() -> thirdCar.move(-10)).withMessageContaining("이동 범위의 조건은 0 ~ 9");
         assertThatIllegalArgumentException().isThrownBy(() -> fourthCar.move(10)).withMessageContaining("이동 범위의 조건은 0 ~ 9");
     }
+
+    @Test
+    @DisplayName("자동차 이동범위 확인 테스트")
+    public void getMovementRange() throws Exception {
+        //given
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        Car thirdCar = new Car();
+
+        //when
+        firstCar.move(5);
+        firstCar.move(9);
+        secondCar.move(3);
+        secondCar.move(2);
+        thirdCar.move(4);
+        thirdCar.move(0);
+        int movementRangeOfFirstCar = firstCar.getMovementRange();
+        int movementRangeOfSecondCar = secondCar.getMovementRange();
+        int movementRangeOfThirdCar = thirdCar.getMovementRange();
+
+        //then
+        assertEquals(2, movementRangeOfFirstCar, "4이상의 값이 2번 들어갔기 때문에 2번 이동해야 한다.");
+        assertEquals(0, movementRangeOfSecondCar, "4미만의 값이 2번 들어갔기 때문에 이동하지 않아야 한다.");
+        assertEquals(1, movementRangeOfThirdCar, "4미만의 값이 1번, 4이상의 값이 1번 들어갔기 때문에 1번 이동해야 한다.");
+    }
 }
