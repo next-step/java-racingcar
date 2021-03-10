@@ -1,15 +1,19 @@
 package calculator;
 
-import exception.InvalidOperatorException;
-import exception.InvalidValueException;
+import calculator.exception.InvalidOperatorException;
+import calculator.exception.InvalidValueException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Util {
 
-    public String[] splitStringWithBlank(String str) {
+    public String[] splitString(String str) {
         return str.split(" ");
+    }
+
+    public boolean checkIsOddNumber(int num) {
+        return num % 2 != 0;
     }
 
     public void checkInvalidValue(String value) {
@@ -28,13 +32,5 @@ public class Util {
         if (!operationTypes.contains(value)) {
             throw new InvalidOperatorException();
         }
-    }
-
-    public boolean checkIsNumber(String str) {
-        return str.chars().allMatch(Character::isDigit);
-    }
-
-    public boolean checkIsOddNumber(int num) {
-        return num % 2 != 0;
     }
 }

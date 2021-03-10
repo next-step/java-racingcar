@@ -1,4 +1,4 @@
-package exception;
+package calculator.exception;
 
 public class InvalidValueException extends IllegalArgumentException {
 
