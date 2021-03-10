@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.util.CarNameValidator;
 import racingcar.view.ResultView;
 
 public class RacingGame {
@@ -13,6 +14,7 @@ public class RacingGame {
     String[] names = inputName.split(",");
 
     for (int i = 0; i < names.length; i++) {
+      CarNameValidator.validateName(names[i]);
       cars.add(new Car(names[i]));
     }
   }
