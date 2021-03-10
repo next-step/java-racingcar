@@ -22,7 +22,7 @@ public class Amount {
     }
 
     public int getAmount() {
-        return 0;
+        return amount;
     }
 
 
