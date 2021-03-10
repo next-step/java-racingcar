@@ -19,15 +19,17 @@ public class RacingGame {
     private FinalResult finalResult = new FinalResult();
     private int thisRound = 0;
 
-    public List<String> getWinners() {
-        Map<String, Integer> finalRound = finalResult.getFinalResult().get(inputManagement.getCountRound());
+    public List<Car> getWinners() {
+        Map<String, Integer> finalRound = finalResult.getFinalResult()
+                                                        .get(inputManagement.getCountRound());
+
         int maxPosition = Collections.max(finalRound.values());
 
         List<Map.Entry<String, Integer>> results = new ArrayList<>(finalRound.entrySet());
 
         return results.stream()
                 .filter((Map.Entry<String, Integer> result) -> result.getValue() == maxPosition)
-                .map(result -> result.getKey())
+                .map(result -> new Car(result.getKey(), result.getValue()))
                 .collect(Collectors.toList());
     }
 

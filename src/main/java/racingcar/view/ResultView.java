@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,7 +28,7 @@ public class ResultView {
         }
     }
 
-    public void printResult(Map<Integer, Map<String, Integer>> finalResult, List<String> winners) {
+    public void printResult(Map<Integer, Map<String, Integer>> finalResult, List<Car> winners) {
         Iterator<Integer> rounds = finalResult.keySet().iterator();
         int round = 0;
 
@@ -37,6 +39,7 @@ public class ResultView {
         }
 
         String winnerMessage = winners.stream()
+                .map(car -> car.getName())
                 .collect(Collectors.joining(", "));
 
         System.out.println(winnerMessage + "이(가) 최종 우승했습니다.");
