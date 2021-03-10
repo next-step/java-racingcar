@@ -18,6 +18,10 @@ public class RacingScores {
 
     private List<RacingScore> racingScoreList = new ArrayList<>();
 
+    public int getScoreCount() {
+        return racingScoreList.size();
+    }
+
     public List<RacingScore> getRacingScoreList() {
         return racingScoreList;
     }
