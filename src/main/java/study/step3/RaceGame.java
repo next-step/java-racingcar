@@ -8,7 +8,8 @@ public class RaceGame {
         String[] carNames = InputView.getCarsName();
         List<Car> carList = new ArrayList<>();
         for(String carName : carNames){
-            carList.add(new RandomRaceCar(carName));
+            Car car = new Car(carName,new RandomMoveStrategy());
+            carList.add(car);
         }
         Cars cars = new Cars(carList);
         int tryCnt = InputView.getTryCnt();
