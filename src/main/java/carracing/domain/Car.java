@@ -15,7 +15,7 @@ public class Car {
     private static final int MOVABLE_MAX_NUMBER = 9;
 
     private static final int MOVE = 1;
-    private static final int STOP = 1;
+    private static final int STOP = 0;
 
     private final int carNumber;
     private int mileage;
