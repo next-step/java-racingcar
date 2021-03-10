@@ -23,6 +23,7 @@ public class CarRacingGame {
         racingResult = new RacingResult();
     }
 
+    // final 필드를 2개 이하로 사용하기 위해 초기화 메서드를 따로 생성
     private void initGame(final RequestRacingGame userInput) {
         attemptCount = userInput.getAttemptCount();
         carManager = new CarManager(userInput.getParticipants());
