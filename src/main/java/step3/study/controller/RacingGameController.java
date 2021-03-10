@@ -1,12 +1,14 @@
 package step3.study.controller;
 
+import step3.study.domain.Cars;
 import step3.study.domain.RequestRacingDTO;
 import step3.study.domain.ResponseRacingDTO;
-import step3.study.domain.Car;
-import step3.study.domain.Cars;
+import step3.study.util.RandomGenerator;
+import step3.study.util.Validator;
 import step3.study.view.InputView;
 import step3.study.view.ResultView;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGameController {
@@ -27,26 +29,21 @@ public class RacingGameController {
     }
 
     private void showResultView(ResponseRacingDTO responseRacingDTO) {
-        resultView.showResultView(responseRacingDTO.getCars());
+        resultView.showResultView(responseRacingDTO);
     }
 
     public ResponseRacingDTO startGame(RequestRacingDTO requestRacingDTO) {
-        Cars cars = new Cars(Car.ofList(requestRacingDTO));
+        Cars cars = new Cars(Cars.of(requestRacingDTO));
         return tryRacingGameForTryCount(cars, requestRacingDTO);
     }
 
     private ResponseRacingDTO tryRacingGameForTryCount(Cars cars, RequestRacingDTO requestRacingDTO) {
-        int tryCount = requestRacingDTO.getTryCount();
-        for (int i = 0; i < tryCount; i++) {
-            cars.move();
-        }
-
-        return new ResponseRacingDTO(cars);
+        return cars.moveCarsForTryCount(requestRacingDTO, new RandomGenerator(new Random()));
     }
 
     public RequestRacingDTO showInputView() {
-        String carCount = inputView.inputCarCount(scanner);
-        String tryCount = inputView.inputTryCount(scanner);
+        int carCount = Validator.numberCheck(inputView.inputCarCount(scanner));
+        int tryCount = Validator.numberCheck(inputView.inputTryCount(scanner));
 
         return new RequestRacingDTO(carCount, tryCount);
     }

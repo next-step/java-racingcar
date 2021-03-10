@@ -6,9 +6,9 @@ public class RequestRacingDTO {
     private final int carCount;
     private final int tryCount;
 
-    public RequestRacingDTO(String carCount, String tryCount) {
-        this.carCount = Validator.numberCheck(carCount);
-        this.tryCount = Validator.numberCheck(tryCount);
+    public RequestRacingDTO(int carCount, int tryCount) {
+        this.carCount = carCount;
+        this.tryCount = tryCount;
     }
 
     public int getCarCount() {
