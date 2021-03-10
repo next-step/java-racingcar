@@ -77,4 +77,18 @@ class CarTest {
         assertEquals(firstCarName, nameFromFirstCar, "자동차 객체에서 가져온 이름이 입력한 이름과 같아야 한다.");
         assertEquals(secondCarName, nameFromsecondCar, "자동차 객체에서 가져온 이름이 입력한 이름과 같아야 한다.");
     }
+
+    @Test
+    @DisplayName("자동차 전진 조건 0 ~ 9 검증 테스트")
+    public void validateRandomNumber() throws Exception {
+        //given
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+
+        //when
+
+        //then
+        assertThatIllegalArgumentException().isThrownBy(() -> firstCar.move(-10)).withMessageContaining("이동 범위의 조건은 0 ~ 9");
+        assertThatIllegalArgumentException().isThrownBy(() -> secondCar.move(10)).withMessageContaining("이동 범위의 조건은 0 ~ 9");
+    }
 }
