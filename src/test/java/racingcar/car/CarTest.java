@@ -1,29 +1,86 @@
 package racingcar.car;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
-    static Car car;
+    Car car;
 
     @ParameterizedTest
-    @CsvSource(value = {"4 , 1", "4 , 2", "4 , 3", "4 , 4", "4 , 5", "1 , 5", "1 , 5", "1 , 5", "1 , 5"})
+    @MethodSource("moveTestSource")
     @DisplayName("자동차는 4이상이 입력되어야 전진")
-    void canMoveForward (int random, int expected) {
-        assertThat(car.moveForward(random)).isEqualTo(expected);
+    void canMoveForward (Car car, int expected) {
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
+
+    private static Stream<Arguments> moveTestSource() {
+        final int move = 4;
+        final int stop = 3;
+        Car car1 = new NextStepCar("dummy");
+        Car car2 = new NextStepCar("dummy");
+        Car car3 = new NextStepCar("dummy");
+        Car car4 = new NextStepCar("dummy");
+        Car car5 = new NextStepCar("dummy");
+        Car car6 = new NextStepCar("dummy");
+        Car car7 = new NextStepCar("dummy");
+
+        car1.moveForward(move);
+
+        car2.moveForward(move);
+        car2.moveForward(move);
+
+        car3.moveForward(move);
+        car3.moveForward(move);
+        car3.moveForward(move);
+
+        car4.moveForward(move);
+        car4.moveForward(move);
+        car4.moveForward(move);
+        car4.moveForward(move);
+
+        car5.moveForward(stop);
+
+        car6.moveForward(move);
+        car6.moveForward(move);
+        car6.moveForward(stop);
+        car6.moveForward(stop);
+        car6.moveForward(stop);
+        car6.moveForward(stop);
+
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+        car7.moveForward(stop);
+
+        return Stream.of(
+                Arguments.of(car1, 1)
+                , Arguments.of(car2, 2)
+                , Arguments.of(car3, 3)
+                , Arguments.of(car4, 4)
+                , Arguments.of(car5, 0)
+                , Arguments.of(car6, 2)
+                , Arguments.of(car7, 0)
+        );
+    }
+
 
     @Test
     @DisplayName("여러대의 자동차 전진")
@@ -149,8 +206,8 @@ class CarTest {
         assertThat(winners.size()).isEqualTo(2);
     }
 
-    @BeforeAll
-    static void init() {
+    @BeforeEach
+    void init() {
         car = new NextStepCar("dummy");
     }
 }
