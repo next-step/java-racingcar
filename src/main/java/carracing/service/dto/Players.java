@@ -22,6 +22,16 @@ public class Players {
     }
 
     public void registerPlayer(Car car) {
+        _validate(car);
         this.playerList.add(car);
+    }
+
+    private void _validate(Car car) {
+        if(car==null) {
+            throw new IllegalArgumentException("차량정보를 입력해 주세요.");
+        }
+        if(playerList.stream().anyMatch(player -> player.getCarNumber()==car.getCarNumber())) {
+            throw new IllegalArgumentException("이미 등록된 차량입니다.");
+        }
     }
 }
