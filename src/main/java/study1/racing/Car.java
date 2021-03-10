@@ -1,5 +1,7 @@
 package study1.racing;
 
+import java.util.Random;
+
 public class Car {
   private int distance = 1;
 
@@ -7,7 +9,7 @@ public class Car {
   }
 
   public int move() {
-    distance += (int) (Math.random() * 2);
+    distance += new Random().nextInt(2);
     return distance;
   }
 }
