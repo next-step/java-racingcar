@@ -2,12 +2,11 @@ package im.juniq.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.lang.reflect.Field;
 import java.util.Random;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingCarTest {
 	@DisplayName("자동차를 생성한다")
@@ -21,15 +20,23 @@ class RacingCarTest {
 
 	@DisplayName("자동차를 이동한다")
 	@Test
-	void moveRacingCar() {
-		RacingCar racingCar = new RacingCar(1, new Random() {
+	void moveRacingCar() throws NoSuchFieldException, IllegalAccessException {
+		RacingCar racingCar = new RacingCar(1);
+		setMoveMustBeSuccess(racingCar);
+
+		racingCar.move();
+
+		assertThat(racingCar.getMoveCount()).isEqualTo(1);
+	}
+
+	public static void setMoveMustBeSuccess(RacingCar racingCar) throws NoSuchFieldException, IllegalAccessException {
+		Field random = racingCar.getClass().getDeclaredField("random");
+		random.setAccessible(true);
+		random.set(racingCar, new Random() {
 			@Override
 			public int nextInt(int bound) {
 				return 5;
 			}
 		});
-		racingCar.move();
-
-		assertThat(racingCar.getMoveCount()).isEqualTo(1);
 	}
 }

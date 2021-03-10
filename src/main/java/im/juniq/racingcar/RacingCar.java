@@ -12,11 +12,6 @@ public class RacingCar {
 		this.random = new Random();
 	}
 
-	public RacingCar(int id, Random random) {
-		this.id = id;
-		this.random = random;
-	}
-
 	public void move() {
 		int i = random.nextInt(10);
 		if (i > 4) {
