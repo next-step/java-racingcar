@@ -13,7 +13,6 @@ public class RacingGameController {
     private final CarService carService;
     private final Random random = new Random();
     private final int MAX_INCLUSIVE = 10;
-    private List<Car> cars;
     private GameRound gameRound;
 
     public RacingGameController(CarService carService) {
@@ -24,8 +23,6 @@ public class RacingGameController {
         for (int i = 0; i < numberOfCars; i++) {
             carService.addCar(new Car());
         }
-
-        cars = carService.findCars();
     }
 
     public void createGameRound(int numberOfAttempts) {
@@ -33,7 +30,7 @@ public class RacingGameController {
     }
 
     public void raceEachRound() {
-        cars.forEach(car -> car.move(random.nextInt(MAX_INCLUSIVE)));
+        carService.findCars().forEach(car -> car.move(random.nextInt(MAX_INCLUSIVE)));
     }
 
     public void printGameResult() {
