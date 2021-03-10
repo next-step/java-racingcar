@@ -4,6 +4,7 @@ import step3.move.ConditionMoveStrategy;
 import step3.move.MoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -18,19 +19,19 @@ public class CarManager {
     private final List<Car> cars = new ArrayList<>();
 
     // 자동차 댓수만 설정
-    public CarManager(final int participants) {
+    public CarManager(final String[] participants) {
         this(participants, new ConditionMoveStrategy());
     }
 
     // 자동차 움직이는 전략과 함께 생성하려는 경우
-    public CarManager(final int carCount, final MoveStrategy moveStrategy) {
+    public CarManager(final String[] carCount, final MoveStrategy moveStrategy) {
         createCars(carCount, moveStrategy);
     }
 
     // 자동차 생성 메서드
-    private void createCars(int carCount, MoveStrategy moveStrategy) {
-        IntStream.range(START_IDX, carCount)
-                .forEach(value -> cars.add(new Car(START_IDX, moveStrategy)));
+    private void createCars(String[] carCount, MoveStrategy moveStrategy) {
+        Arrays.stream(carCount)
+                .forEach(name -> cars.add(new Car(name, moveStrategy)));
     }
 
     // 자동차 이동 메서드
