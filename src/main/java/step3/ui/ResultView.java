@@ -35,7 +35,7 @@ public class ResultView {
                 .map(this::printRecordPerCar)
                 .collect(joining(lineSeparator() + lineSeparator()));
 
-        System.out.println(result);
+        System.out.println(result + System.lineSeparator());
     }
 
     // 라운드당 자동차 기록 출력
