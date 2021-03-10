@@ -13,13 +13,13 @@ public class ResultView {
     public static void printResultMessage() {
         System.out.println(NEW_LINE + RESULT_MESSAGE);
     }
-
     public static void printRace(Cars cars) {
         System.out.println(
                 cars.stream()
-                        .map(car -> car.getLocationString())
+                        .map(car -> StringUtils.convertIntegerToStringDash(car.getLocation()))
                         .collect(Collectors.joining(NEW_LINE))
                         + NEW_LINE
         );
     }
+
 }
