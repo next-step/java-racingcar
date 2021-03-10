@@ -1,5 +1,6 @@
 package carracing.service;
 
+import carracing.constants.CarRacingConstant;
 import carracing.domain.Car;
 import carracing.domain.CarService;
 import carracing.service.dto.*;
@@ -14,15 +15,12 @@ import carracing.service.dto.*;
  */
 public class CarRacingService {
 
-    private static final int MIN_CAR_REGISTER_NUMBER = 1;
-    private static final int MIN_ROUND_NUMBER = 1;
-    private static final int FIRST_CAR_NUMBER = 1;
-    private static final int ROUND_START_NUMBER = 1;
-
-    CarService carService;
+    CarService         carService;
+    CarRacingValidator carRacingValidator;
 
     public CarRacingService() {
         this.carService = new CarService();
+        this.carRacingValidator = new CarRacingValidator();
     }
 
     public RacingResult executeCarRacing(RacingRegisterInfo racingRegisterInfo) {
@@ -31,17 +29,13 @@ public class CarRacingService {
     }
 
     private void _validate(RacingRegisterInfo racingRegisterInfo) {
-        if(racingRegisterInfo.getRacingCarCount() < MIN_CAR_REGISTER_NUMBER) {
-            throw new IllegalArgumentException("자동차 등록수는 최소 한 대 이상이어야 합니다.");
-        }
-        if(racingRegisterInfo.getRoundCount() < MIN_ROUND_NUMBER) {
-            throw new IllegalArgumentException("경기 횟수는 최소 1회 이상이어야 합니다.");
-        }
+        carRacingValidator.validateCarRegisterCount(racingRegisterInfo.getRacingCarCount());
+        carRacingValidator.validateRoundCount(racingRegisterInfo.getRoundCount());
     }
 
     private Players _registerPlayers(int racingCarCount) {
         Players players = new Players();
-        for (int i = FIRST_CAR_NUMBER; i <= racingCarCount; i++) {
+        for (int i = CarRacingConstant.FIRST_CAR_NUMBER; i <= racingCarCount; i++) {
             players.registerPlayer(carService.registerCar(i));
         }
         return players;
@@ -49,7 +43,7 @@ public class CarRacingService {
 
     private RacingResult _getRacingResult(int roundCount, Players players) {
         RacingResult racingResult = new RacingResult();
-        for (int i = ROUND_START_NUMBER; i <= roundCount; i++) {
+        for (int i = CarRacingConstant.ROUND_START_NUMBER; i <= roundCount; i++) {
             racingResult.registerRoundResult(_executeRound(i, players));
         }
         return racingResult;
