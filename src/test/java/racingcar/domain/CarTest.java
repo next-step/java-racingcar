@@ -57,4 +57,24 @@ class CarTest {
         assertEquals(0, movementRangeOfSecondCar, "4미만의 값이 2번 들어갔기 때문에 이동하지 않아야 한다.");
         assertEquals(1, movementRangeOfThirdCar, "4미만의 값이 1번, 4이상의 값이 1번 들어갔기 때문에 1번 이동해야 한다.");
     }
+
+    @Test
+    @DisplayName("자동차 이름 입력 테스트")
+    public void setName() throws Exception {
+        //given
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        String firstCarName = "seongbeen";
+        String secondCarName = "pobi";
+
+        //when
+        firstCar.setName(firstCarName);
+        secondCar.setName(secondCarName);
+        String nameFromFirstCar = firstCar.getName();
+        String nameFromsecondCar = secondCar.getName();
+
+        //then
+        assertEquals(firstCarName, nameFromFirstCar, "자동차 객체에서 가져온 이름이 입력한 이름과 같아야 한다.");
+        assertEquals(secondCarName, nameFromsecondCar, "자동차 객체에서 가져온 이름이 입력한 이름과 같아야 한다.");
+    }
 }
