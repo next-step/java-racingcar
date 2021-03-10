@@ -1,6 +1,7 @@
 package racingcar.domain.request;
 
 public class Amount {
+
     private final int MINIMUM = 0;
     private int amount;
 
@@ -13,7 +14,7 @@ public class Amount {
     }
 
     private Amount(int amount) {
-        if (amount <= MINIMUM) throw new IllegalArgumentException("0이하의 숫자로는 자동차를 생성할 수 없습니다.");
+        if (amount <= MINIMUM) throw new IllegalArgumentException("0 이하의 숫자로는 자동차를 생성할 수 없습니다.");
         this.amount = amount;
     }
 
