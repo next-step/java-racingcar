@@ -26,7 +26,6 @@ public class Race {
   }
 
   public static void print(int num) {
-    // System.out.println("num: " + num);
     IntStream.range(0, num).forEach((i) -> System.out.print("-"));
     System.out.print("\n");
   }

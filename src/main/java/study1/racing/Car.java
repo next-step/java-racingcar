@@ -7,7 +7,7 @@ public class Car {
   }
 
   public int move() {
-    // random distance 증가 / 0 or 1 / distance return
-    return 3;
+    distance += (int) (Math.random() * 2);
+    return distance;
   }
 }
