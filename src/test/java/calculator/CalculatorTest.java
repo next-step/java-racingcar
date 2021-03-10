@@ -14,6 +14,10 @@ public class CalculatorTest {
     Calculator calculator;
     Operator operator;
 
+    @BeforeEach
+    void createInstance() {
+        calculator = new Calculator();
+    }
     @DisplayName("사칙연산을 사용하여 계산 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2 * 3:9" , "2 + 4 / 2:3" , "5 + 5 - 1:9"}, delimiter = ':')
@@ -49,10 +53,5 @@ public class CalculatorTest {
         //THEN
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Operator.converterOperator(input));
-    }
-
-    @BeforeEach
-    void createInstance() {
-        calculator = new Calculator();
     }
 }
