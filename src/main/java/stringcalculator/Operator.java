@@ -1,8 +1,10 @@
 package stringcalculator;
 
+import java.util.Arrays;
 import java.util.function.BinaryOperator;
 
 import static stringcalculator.Message.DIVIDE_ZERO;
+import static stringcalculator.Message.UNSUPPORTED_OPERATOR;
 
 public enum Operator {
     PLUS("+", (x, y) -> x + y),
@@ -24,6 +26,13 @@ public enum Operator {
         if (input == 0) {
             throw new ArithmeticException(DIVIDE_ZERO);
         }
+    }
+
+    public static Operator operateOf(String symbol) {
+        return Arrays.stream(Operator.values())
+                .filter(e -> e.symbol.equals(symbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(UNSUPPORTED_OPERATOR));
     }
 
     public int operate(int x, int y) {
