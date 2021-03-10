@@ -53,12 +53,12 @@ public class RacingGame {
         return inputManagement.getCountRound() > thisRound++;
     }
 
-    public Map<Integer, Map<String, Integer>> startRacing() {
+    public FinalResult startRacing() {
         while (hasNextRound()) {
             playRacing();
         }
 
-        return finalResult.getFinalResult();
+        return finalResult;
     }
 
     public void init(Cars carGroup, InputManagement inputManagement) {

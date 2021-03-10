@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.dto.FinalResult;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -28,13 +29,16 @@ public class ResultView {
         }
     }
 
-    public void printResult(Map<Integer, Map<String, Integer>> finalResult, List<Car> winners) {
-        Iterator<Integer> rounds = finalResult.keySet().iterator();
+    public void printResult(FinalResult finalResult, List<Car> winners) {
+        Iterator<Integer> rounds = finalResult.getFinalResult()
+                                                .keySet()
+                                                .iterator();
         int round = 0;
 
         while(rounds.hasNext()){
             round = rounds.next();
-            printEachRound(finalResult.get(round));
+            printEachRound(finalResult.getFinalResult()
+                                        .get(round));
             System.out.println();
         }
 
