@@ -19,7 +19,7 @@ public class InputView {
         return instance;
     }
 
-    public RacingCarRequestDto createRacingCarRequestDto() {
+    public RacingCarRequestDto getRacingCarRequestDto() {
         return RacingCarRequestDto.of(getAmount(), getRound());
     }
 

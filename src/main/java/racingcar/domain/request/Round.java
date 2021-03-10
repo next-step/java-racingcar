@@ -18,8 +18,8 @@ public class Round {
         this.value = value;
     }
 
-    private static int toInt(String round) {
-        return Integer.parseInt(round);
+    private static int toInt(String value) {
+        return Integer.parseInt(value);
     }
 
     public int getValue() {
