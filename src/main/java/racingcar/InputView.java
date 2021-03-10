@@ -17,9 +17,10 @@ public class InputView {
     }
 
     private int getIntUserInput() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            String value = scanner.nextLine();
-            return Integer.parseInt(value);
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNext()) {
+            return scanner.nextInt();
         }
+        throw new IllegalStateException("입력을 받을 수 없습니다");
     }
 }
