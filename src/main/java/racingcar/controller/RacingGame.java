@@ -27,5 +27,7 @@ public class RacingGame {
       move.moveCars(cars);
       ResultView.showRacingResult(cars);
     }
+
+    ResultView.showWinnerName(cars);
   }
 }
