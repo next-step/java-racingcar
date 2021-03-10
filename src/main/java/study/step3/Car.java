@@ -22,5 +22,4 @@ public class Car{
     public String getCarName(){
         return carName;
     }
-
 }
