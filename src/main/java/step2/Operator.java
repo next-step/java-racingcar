@@ -19,6 +19,9 @@ public enum Operator {
     }
 
     public long calculate(long a, long b) {
+        if (b == 0) {
+            throw new IllegalArgumentException(CalculatorMessage.CANNOT_DIVIDED_BY_ZERO);
+        }
         return expression.apply(a, b);
     }
 
@@ -26,6 +29,6 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .filter(e -> e.symbol.equals(symbol))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(CalculatorException.UNSUPPORTED_OPERATOR));
+                .orElseThrow(() -> new IllegalArgumentException(CalculatorMessage.UNSUPPORTED_OPERATOR));
     }
 }
