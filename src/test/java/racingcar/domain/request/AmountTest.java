@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class AmountTest {
 
     @DisplayName("클래스가 포함하는 값에 대한 테스트")
-    @ParameterizedTest(name = "현재 반복 : {index} / 전체 반복 : {arguments}")
+    @ParameterizedTest(name = "현재 반복 : {index} / 들어가는 값 : {arguments}")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void getAmountTest(int expected) {
 
@@ -26,7 +26,7 @@ class AmountTest {
     }
 
     @DisplayName("적절하지 않은 값으로 클래스를 생성시 IllegalArgumentException 을 반환하는지에 대한 테스트")
-    @ParameterizedTest(name = "현재 반복 : {index} / 전체 반복 : {arguments}")
+    @ParameterizedTest(name = "현재 반복 : {index} / 들어가는 값 : {arguments}")
     @ValueSource(ints = {-1, -2, -3, -4, -5, -6, -7, -8, -9, -10})
     void getAmount_MINUSVALUE_IllegalArgumentException(int expected) {
 
