@@ -4,6 +4,7 @@ import racingcar.exception.CarNameException;
 
 public class Car {
 
+  private static final int MAX_CAR_NAME_LENGTH = 4;
   private int location;
   private String name;
 
@@ -31,7 +32,7 @@ public class Car {
   }
 
   private void isProper(String name) {
-    if (name.length() > 5) {
+    if (name.length() > MAX_CAR_NAME_LENGTH) {
       throw new CarNameException("자동차 이름은 5자를 초과할 수 없습니다.");
     }
   }
