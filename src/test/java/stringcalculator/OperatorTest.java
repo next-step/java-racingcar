@@ -3,7 +3,9 @@ package stringcalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OperatorTest {
@@ -40,4 +42,11 @@ class OperatorTest {
         assertEquals(operator.operate(x, y), expected);
     }
 
+    @DisplayName("지원하지 않는 연산자 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"!", "@", "#", "$", "^", "&"})
+    void operatorTest(String symbol) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Operator.operateOf(symbol));
+    }
 }
