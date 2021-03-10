@@ -1,15 +1,17 @@
 package stringcalculator;
 
-import java.util.Arrays;
 import java.util.function.BinaryOperator;
 
-import static stringcalculator.Message.UNSUPPORTED_OPERATOR;
+import static stringcalculator.Message.DIVIDE_ZERO;
 
 public enum Operator {
     PLUS("+", (x, y) -> x + y),
     MINUS("-", (x, y) -> x - y),
     MULTIPLY("*", (x, y) -> x * y),
-    DIVIDE("/", (x, y) -> x / y);
+    DIVIDE("/", (x, y) -> {
+        checkZero(y);
+        return x / y;
+    });
     private final String symbol;
     private final BinaryOperator<Integer> operator;
 
@@ -18,11 +20,10 @@ public enum Operator {
         this.operator = operator;
     }
 
-    public static Operator of(String symbol) {
-        return Arrays.stream(Operator.values())
-                .filter(e -> e.symbol.equals(symbol))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(UNSUPPORTED_OPERATOR));
+    public static void checkZero(int input) {
+        if (input == 0) {
+            throw new ArithmeticException(DIVIDE_ZERO);
+        }
     }
 
     public int operate(int x, int y) {
