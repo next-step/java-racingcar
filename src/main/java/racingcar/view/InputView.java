@@ -8,7 +8,7 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public int carNum(){
+    public int playCarNum(){
         String count = null;
         ValidationUtil validationUtil = new ValidationUtil();
         do {
