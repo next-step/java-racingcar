@@ -1,7 +1,6 @@
 package racingcar.domain;
 
-import racingcar.NumberGenerator;
-import racingcar.domain.Car;
+import racingcar.util.NumberGenerator;
 
 import java.util.List;
 

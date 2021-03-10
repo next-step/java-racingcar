@@ -1,8 +1,6 @@
 package racingcar.domain;
 
-import racingcar.Conditions;
-
-import java.util.Arrays;
+import racingcar.util.Conditions;
 
 public class Car {
 
