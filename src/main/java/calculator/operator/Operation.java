@@ -1,5 +1,7 @@
 package calculator.operator;
 
+import java.util.Arrays;
+
 public enum Operation {
 
     ADDITION(("+"), (x, y) -> x + y),
@@ -16,19 +18,8 @@ public enum Operation {
     }
 
     public static Operation getOperation(String symbol) {
-        if (ADDITION.symbol.equals(symbol)) {
-            return ADDITION;
-        }
-        if (SUBTRACTION.symbol.equals(symbol)) {
-            return SUBTRACTION;
-        }
-        if (MULTIPLICATION.symbol.equals(symbol)) {
-            return MULTIPLICATION;
-        }
-        if (DIVIDE.symbol.equals(symbol)) {
-            return DIVIDE;
-        }
-        throw new IllegalArgumentException();
+        return Arrays.stream(Operation.values()).filter(operation -> operation.symbol.equals(symbol))
+                .findFirst().orElseThrow(() -> new IllegalArgumentException("해당하는 연산자가 존재하지 않습니다."));
     }
 
     public int apply(int x, int y) {
