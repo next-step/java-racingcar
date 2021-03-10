@@ -5,6 +5,8 @@ import step3.move.MoveStrategy;
 
 import java.util.Objects;
 
+import static step3.util.Constants.START_IDX;
+
 /**
  * 자동차의 상태와 행위를 관리하는 클래스
  */
@@ -23,11 +25,10 @@ public class Car {
 
     // 인터페이스를 파라미터로 받아 외부에서 움직임의 기준을 변경할 수 있도록 수정
     public Car(final String name, final MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-        this.name = name;
+        this(name, START_IDX, moveStrategy);
     }
 
-    public Car(String name, int position, MoveStrategy moveStrategy) {
+    public Car(final String name, final int position, final MoveStrategy moveStrategy) {
         this.name = name;
         this.position = position;
         this.moveStrategy = moveStrategy;
