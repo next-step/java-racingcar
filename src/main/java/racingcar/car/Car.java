@@ -1,9 +1,11 @@
 package racingcar.car;
 
+import racingcar.Position;
+
 public interface Car {
     int moveForward(int randomNumber);
 
-    int getPosition();
-
     String getName();
+
+    Position getPosition();
 }

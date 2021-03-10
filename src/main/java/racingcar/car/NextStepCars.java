@@ -29,11 +29,11 @@ public class NextStepCars {
     public List<String> getWinner() {
         int winnerPosition = 0;
         for(Car car : this.nextStepCars) {
-            winnerPosition = Math.max(winnerPosition, car.getPosition());
+            winnerPosition = Math.max(winnerPosition, car.getPosition().getPosition());
         }
         int finalWinnerPosition = winnerPosition;
         List<String> collect = this.nextStepCars.stream()
-                .filter(car -> car.getPosition() == finalWinnerPosition)
+                .filter(car -> car.getPosition().getPosition() == finalWinnerPosition)
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
         return collect;

@@ -74,7 +74,7 @@ public class Racing {
         for (int i = 0; i < forwartCount; i++) {
             for(Car car : nextStepCars.getNextStepCars()) {
                 car.moveForward(random.nextInt(10));
-                resultView.print("-".repeat(car.getPosition()));
+//                resultView.print("-".repeat(car.getPosition()));
             }
             System.out.println();
         }

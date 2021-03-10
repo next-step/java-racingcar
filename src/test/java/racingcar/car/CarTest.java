@@ -23,7 +23,7 @@ class CarTest {
     @MethodSource("moveTestSource")
     @DisplayName("자동차는 4이상이 입력되어야 전진")
     void canMoveForward (Car car, int expected) {
-        assertThat(car.getPosition()).isEqualTo(expected);
+        assertThat(car.getPosition().getPosition()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> moveTestSource() {
@@ -99,11 +99,11 @@ class CarTest {
             assertThat(car.moveForward(7)).isEqualTo(4);
             assertThat(car.moveForward(8)).isEqualTo(5);
         }
-        assertThat(cars.get(0).getPosition()).isEqualTo(5);
-        assertThat(cars.get(1).getPosition()).isEqualTo(5);
-        assertThat(cars.get(2).getPosition()).isEqualTo(5);
-        assertThat(cars.get(3).getPosition()).isEqualTo(5);
-        assertThat(cars.get(4).getPosition()).isEqualTo(5);
+        assertThat(cars.get(0).getPosition().getPosition()).isEqualTo(5);
+        assertThat(cars.get(1).getPosition().getPosition()).isEqualTo(5);
+        assertThat(cars.get(2).getPosition().getPosition()).isEqualTo(5);
+        assertThat(cars.get(3).getPosition().getPosition()).isEqualTo(5);
+        assertThat(cars.get(4).getPosition().getPosition()).isEqualTo(5);
     }
 
     @Test
