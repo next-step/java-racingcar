@@ -3,7 +3,6 @@ package stringcalculator;
 import java.util.Arrays;
 import java.util.function.BinaryOperator;
 
-import static stringcalculator.Message.DIVIDE_ZERO;
 import static stringcalculator.Message.UNSUPPORTED_OPERATOR;
 
 public enum Operator {
@@ -11,7 +10,7 @@ public enum Operator {
     MINUS("-", (x, y) -> x - y),
     MULTIPLY("*", (x, y) -> x * y),
     DIVIDE("/", (x, y) -> {
-        checkZero(y);
+        Validator.checkZero(y);
         return x / y;
     });
     private final String symbol;
@@ -20,12 +19,6 @@ public enum Operator {
     Operator(String symbol, BinaryOperator<Integer> operator) {
         this.symbol = symbol;
         this.operator = operator;
-    }
-
-    public static void checkZero(int input) {
-        if (input == 0) {
-            throw new ArithmeticException(DIVIDE_ZERO);
-        }
     }
 
     public static Operator operateOf(String symbol) {
