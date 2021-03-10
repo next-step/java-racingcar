@@ -12,10 +12,16 @@ import java.util.List;
 
 public class RacingCarController {
 
-    private InputView inputView = new InputView();
+    private InputView inputView;
     private Cars carGroup;
-    private RacingGame racingGame = new RacingGame();
-    private ResultView resultView = new ResultView();
+    private RacingGame racingGame;
+    private ResultView resultView;
+
+    public RacingCarController(InputView inputView, RacingGame racingGame, ResultView resultView) {
+        this.inputView = inputView;
+        this.racingGame = racingGame;
+        this.resultView = resultView;
+    }
 
     public List<Car> initRacingCars() {
         List<Car> cars = new ArrayList();
