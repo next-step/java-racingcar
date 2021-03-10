@@ -1,4 +1,4 @@
-package study;
+package step1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringTest {
 
     @Test
-    @DisplayName("요구사항1 - split 이용하기")
+    @DisplayName("요구사항1 - spwlit 이용하기")
     void splitTest() {
         String[] result = "1,2".split(",");
         assertThat(result).contains("1");
@@ -28,9 +28,9 @@ public class StringTest {
     @DisplayName("요구사항3 - abc의 문자열을 charAt 메소드를 이용해서 특정 문자 가져오기")
     void chatAtTest() {
         String text = "abc";
-        assertThat(text).isEqualTo('a');
-        assertThat(text).isEqualTo('b');
-        assertThat(text).isEqualTo('c');
+        assertThat(text.charAt(0)).isEqualTo('a');
+        assertThat(text.charAt(1)).isEqualTo('b');
+        assertThat(text.charAt(2)).isEqualTo('c');
 
         assertThatThrownBy(() -> {
             text.charAt(4);
