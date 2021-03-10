@@ -15,7 +15,7 @@ class AmountTest {
     void getAmountTest(int expected) {
 
         // given
-        Amount amount = Amount.getInstance(expected);
+        Amount amount = Amount.from(expected);
 
         // when
         int actual = amount.getValue();
@@ -32,7 +32,7 @@ class AmountTest {
 
         // when and then
         assertThatThrownBy(() -> {
-            assertThat(Amount.getInstance(expected));
+            assertThat(Amount.from(expected));
         }).isInstanceOf(IllegalArgumentException.class);
 
     }

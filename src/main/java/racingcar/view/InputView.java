@@ -7,12 +7,10 @@ import racingcar.domain.request.Round;
 import java.util.Scanner;
 
 public class InputView {
-    private final Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);
     private static InputView instance;
 
-    private InputView() {
-        scanner = new Scanner(System.in);
-    }
+    private InputView() { }
 
     public static InputView getInstance() {
         if (instance == null) {
@@ -26,11 +24,11 @@ public class InputView {
     }
 
     private Amount getAmount() {
-        return Amount.getInstance(getAmountValue());
+        return Amount.from(getAmountValue());
     }
 
     private Round getRound() {
-        return Round.getInstance(getRoundValue());
+        return Round.from(getRoundValue());
     }
 
     private int getAmountValue() {

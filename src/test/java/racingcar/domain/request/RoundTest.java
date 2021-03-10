@@ -14,7 +14,7 @@ class RoundTest {
     void getRoundTest(int expected) {
 
         // given
-        Round round = Round.getInstance(expected);
+        Round round = Round.from(expected);
 
         // when
         int actual = round.getValue();

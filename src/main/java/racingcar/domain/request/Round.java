@@ -5,16 +5,16 @@ public class Round {
     private final int MINIMUM = 0;
     private int value;
 
-    public static Round getInstance(String value) {
-        return getInstance(toInt(value));
+    public static Round from(String value) {
+        return from(toInt(value));
     }
 
-    public static Round getInstance(int value) {
+    public static Round from(int value) {
         return new Round(value);
     }
 
     private Round(int value) {
-        if (value <= MINIMUM) throw new IllegalArgumentException("0이하의 숫자로는 레이싱을 진행할 수 없습니다.");
+        if (value <= MINIMUM) throw new IllegalArgumentException("0 이하의 숫자로는 레이싱을 진행할 수 없습니다.");
         this.value = value;
     }
 

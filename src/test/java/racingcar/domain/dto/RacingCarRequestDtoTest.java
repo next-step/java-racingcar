@@ -17,8 +17,8 @@ class RacingCarRequestDtoTest {
     void test(int amountExpected, int roundExpected){
 
         // given
-        Amount amount = Amount.getInstance(amountExpected);
-        Round round = Round.getInstance(roundExpected);
+        Amount amount = Amount.from(amountExpected);
+        Round round = Round.from(roundExpected);
         RacingCarRequestDto requestDto = RacingCarRequestDto.of(amount, round);
 
         // when
