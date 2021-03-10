@@ -27,7 +27,9 @@ class RacingGameTest {
     @DisplayName("주어진 횟수 동안 경주 게임을 진행할 수 있다.")
     void carsCanGoInGivenCount(int countRound, int finish) {
         String[] carNames = {"pobi","jhLim97"};
-        new InputManagement(carNames, countRound);
+        InputManagement inputManagement = new InputManagement(carNames, countRound);
+
+        racingGame.init(null, inputManagement);
 
         while (racingGame.hasNextRound()) {
             countRound--;
@@ -41,16 +43,18 @@ class RacingGameTest {
     @DisplayName("자동차 경주 게임을 완료한 후 우승자는 한명 이상이다.")
     void playRacingGameAndGetWinner(int countRound, int minWinnerNumber) {
         String[] carNames = {"pobi","crong","jhLim"};
-        new InputManagement(carNames, countRound);
+        InputManagement inputManagement = new InputManagement(carNames, countRound);
 
         List<Car> cars = new ArrayList();
 
-        for (String carName : InputManagement.getCarNames()) {
+        for (String carName : inputManagement.getCarNames()) {
             cars.add(new Car(carName, 0));
         }
 
         Cars carGroup = new Cars(cars);
-        racingGame.startRacing(carGroup);
+
+        racingGame.init(carGroup, inputManagement);
+        racingGame.startRacing();
 
         assertThat(racingGame.getWinners().size()).isGreaterThanOrEqualTo(minWinnerNumber);
     }

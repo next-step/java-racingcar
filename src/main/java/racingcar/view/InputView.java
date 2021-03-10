@@ -28,13 +28,13 @@ public class InputView {
                 .count() > 0;
     }
 
-    public void input() {
+    public InputManagement input() {
         String[] carNames;
 
         do {
             carNames = inputNames();
         } while (isInValidNames(carNames));
 
-        new InputManagement(carNames, inputCountRound());
+        return new InputManagement(carNames, inputCountRound());
     }
 }

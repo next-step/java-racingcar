@@ -13,9 +13,10 @@ import java.util.List;
 public class RacingCarController {
 
     private InputView inputView;
-    private Cars carGroup;
     private RacingGame racingGame;
     private ResultView resultView;
+    private InputManagement inputManagement;
+    private Cars carGroup;
 
     public RacingCarController(InputView inputView, RacingGame racingGame, ResultView resultView) {
         this.inputView = inputView;
@@ -26,7 +27,7 @@ public class RacingCarController {
     public List<Car> initRacingCars() {
         List<Car> cars = new ArrayList();
 
-        for (String carName : InputManagement.getCarNames()) {
+        for (String carName : inputManagement.getCarNames()) {
             cars.add(new Car(carName, 0));
         }
 
@@ -34,10 +35,11 @@ public class RacingCarController {
     }
 
     public void startGame() {
-        inputView.input();
+        inputManagement = inputView.input();
 
         carGroup = new Cars(initRacingCars());
+        racingGame.init(carGroup, inputManagement);
 
-        resultView.printResult(racingGame.startRacing(carGroup), racingGame.getWinners());
+        resultView.printResult(racingGame.startRacing(), racingGame.getWinners());
     }
 }

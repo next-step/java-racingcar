@@ -15,11 +15,12 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private Cars carGroup;
+    private InputManagement inputManagement;
     private FinalResult finalResult = new FinalResult();
     private int thisRound = 0;
 
     public List<String> getWinners() {
-        Map<String, Integer> finalRound = finalResult.getFinalResult().get(InputManagement.getCountRound());
+        Map<String, Integer> finalRound = finalResult.getFinalResult().get(inputManagement.getCountRound());
         int maxPosition = Collections.max(finalRound.values());
 
         List<Map.Entry<String, Integer>> results = new ArrayList<>(finalRound.entrySet());
@@ -47,16 +48,19 @@ public class RacingGame {
     }
 
     public boolean hasNextRound() {
-        return InputManagement.getCountRound() > thisRound++;
+        return inputManagement.getCountRound() > thisRound++;
     }
 
-    public Map<Integer, Map<String, Integer>> startRacing(Cars carGroup) {
-        this.carGroup = carGroup;
-
+    public Map<Integer, Map<String, Integer>> startRacing() {
         while (hasNextRound()) {
             playRacing();
         }
 
         return finalResult.getFinalResult();
+    }
+
+    public void init(Cars carGroup, InputManagement inputManagement) {
+        this.carGroup = carGroup;
+        this.inputManagement = inputManagement;
     }
 }
