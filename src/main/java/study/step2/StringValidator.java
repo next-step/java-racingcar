@@ -20,4 +20,5 @@ public class StringValidator {
                 .filter(name -> name.length() > CAR_NAME_LENGTH_LIMIT)
                 .count() > 0) throw new StringIndexOutOfBoundsException("차 이름의 길이는 5자를 초과할 수 없습니다.");
     }
+
 }
