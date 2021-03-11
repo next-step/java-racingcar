@@ -1,5 +1,12 @@
+import java.util.stream.Stream;
+
 public class Car {
     private int numberOfAdvance = 0;
+    private String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public int getNumberOfAdvance(){
         return this.numberOfAdvance;
@@ -10,8 +17,19 @@ public class Car {
      * @param condition
      */
     public void advance(GameCondition condition) {
-        if (condition.moveCondition() >= 4) {
+        if (condition.moveCondition()) {
             numberOfAdvance++;
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAdvanceProgress() {
+        return name + " : " + Stream.generate(()-> "-")
+                .limit(numberOfAdvance)
+                .reduce("-", (a, b) -> a + b);
+    }
+
 }
