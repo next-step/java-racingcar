@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,6 +25,7 @@ public class Step3InputView implements InputView {
 
     @Override
     public List<String> getCarNames() {
-        return null;
+        return new ArrayList<String>() {
+        };
     }
 }
