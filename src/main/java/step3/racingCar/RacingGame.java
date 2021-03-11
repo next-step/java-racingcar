@@ -1,4 +1,4 @@
-package step3_racingCar;
+package step3.racingCar;
 
 public class RacingGame {
     public static void main(String[] args) {

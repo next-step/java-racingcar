@@ -1,4 +1,4 @@
-package step2_calculator;
+package step2.calculator;
 
 @FunctionalInterface
 public interface OperatorInterface {

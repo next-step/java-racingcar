@@ -1,4 +1,4 @@
-package step2_calculator;
+package step2.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
