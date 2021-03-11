@@ -3,28 +3,29 @@ package calculator.common;
 
 public class StringCalculator {
 
-    public static void main(String[] args) {
-        String inputData = "2 + 3 * 4 / 2";
+    public int calculator(String data) {
+        checkValidData(data);
 
-        if ("".equals(inputData) || inputData == null)
-            throw new IllegalArgumentException();
-
-        String[] inputDataArr = inputData.split(" ");
+        String[] inputDataArr = data.split(" ");
         int prevNumber = Integer.parseInt(inputDataArr[0]);
         int postNumber;
         int result = 0;
 
-        for (int idx = 1; idx <= inputDataArr.length/2; idx+=2) {
-            postNumber = Integer.parseInt(inputDataArr[idx+1]);
+        for (int idx = 1; idx <= inputDataArr.length / 2; idx += 2) {
+            postNumber = Integer.parseInt(inputDataArr[idx + 1]);
 
             result = calculation(inputDataArr[idx], prevNumber, postNumber);
             prevNumber = result;
-
         }
-        System.out.println("result --> " + result);
+        return result;
     }
 
-    private static int calculation(String mark, int prevNumber, int postNumber) {
+    private void checkValidData(String inputData) {
+        if ("".equals(inputData) || inputData == null)
+            throw new IllegalArgumentException();
+    }
+
+    private int calculation(String mark, int prevNumber, int postNumber) {
         if ("+".equals(mark))
             return CalculatorType.ADD.calculate(prevNumber, postNumber);
 
@@ -37,6 +38,6 @@ public class StringCalculator {
         if ("/".equals(mark))
             return CalculatorType.DIVISION.calculate(prevNumber, postNumber);
 
-        return 0;
+        throw new IllegalArgumentException();
     }
 }
