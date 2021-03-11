@@ -27,6 +27,6 @@ public class Step3OutputView implements OutputView {
     }
 
     @Override
-    public void printWinners(List<Car> cars) {
+    public void printWinners(List<String> winnersName) {
     }
 }

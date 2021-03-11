@@ -1,13 +1,14 @@
 package RacingCarTest;
 
 import RacingCar.Car;
+import RacingCar.MovementCondition;
 import RacingCar.SimpleCar;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    final String givenCarName = "CarName";
+    final String givenCarName = "Car";
     Car car = new SimpleCar(givenCarName);
 
     @Test
@@ -20,13 +21,40 @@ public class CarTest {
     }
 
     @Test
-    void When_forward_Then_DistanceIncreased() {
+    void Given_AlwaysMove_When_forward_Then_DistanceIncreased() {
         int initialDistance = car.getDistance();
 
+        //given
+        MovementCondition movementCondition = new AlwaysMoveCondition();
+
         //when
-        car.forward();
+        car.forward(movementCondition);
 
         //then
-        assertThat(car.getDistance()).isEqualTo(initialDistance+1);
+        assertThat(car.getDistance()).isEqualTo(initialDistance + 1);
+    }
+
+    @Test
+    void Given_NoMove_When_forward_Then_DistanceNotChanged() {
+        int initialDistance = car.getDistance();
+
+        //given
+        MovementCondition movementCondition = new NoMoveCondition();
+
+        //when
+        car.forward(movementCondition);
+
+        //then
+        assertThat(car.getDistance()).isEqualTo(initialDistance);
+    }
+
+    @Test
+    void Given_LongCarName_When_NewSimpleCar_Then_IllegalArgumentException() {
+        String longCarName = "LongCarName";
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new SimpleCar(longCarName);
+                });
     }
 }

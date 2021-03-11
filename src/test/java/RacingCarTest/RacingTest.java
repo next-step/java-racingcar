@@ -23,9 +23,10 @@ public class RacingTest {
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new SimpleCar(""));
         }
+        CarCollection carCollection = new CarCollection(cars);
 
         //given
-        Racing racing = new Racing(movementCondition, cars, numberOfRacing);
+        Racing racing = new Racing(movementCondition, carCollection, numberOfRacing);
 
         //when
         racing.racing();
@@ -37,6 +38,7 @@ public class RacingTest {
 
     @Test
     public void Given_SetListener_When_Racing_Then_ListenerCalled() {
+        //given
         Observer endOfSingleRacing = new Observer<Integer>() {
             @Override
             public void observe(Integer event) {
@@ -46,9 +48,8 @@ public class RacingTest {
 
         ArrayList<Car> cars = new ArrayList<Car>();
         cars.add(new SimpleCar(""));
-        //given
-        Racing racing = new Racing(new AlwaysMoveCondition(), cars, 5);
-
+        CarCollection carCollection = new CarCollection(cars);
+        Racing racing = new Racing(new AlwaysMoveCondition(), carCollection, 5);
 
         //when
         racing.addEndOfSingleRacingListener(endOfSingleRacing);

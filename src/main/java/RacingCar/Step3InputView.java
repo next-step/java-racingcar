@@ -2,13 +2,14 @@ package RacingCar;
 
 import com.sun.corba.se.spi.orbutil.fsm.Input;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class Step3InputView implements InputView<Integer> {
+public class Step3InputView implements InputView {
     private Scanner scanner = new Scanner(System.in);
 
     @Override
-    public Integer getCarInfo() {
+    public int getNumberOfCar() {
         final String QUESTION_FOR_GET_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
         System.out.println(QUESTION_FOR_GET_NUMBER_OF_CARS);
         int numberOfCars = scanner.nextInt();
@@ -21,5 +22,10 @@ public class Step3InputView implements InputView<Integer> {
         System.out.println(QUESTION_FOR_GET_NUMBER_OF_RACING);
         int numberOfRacing = scanner.nextInt();
         return numberOfRacing;
+    }
+
+    @Override
+    public List<String> getCarNames() {
+        return null;
     }
 }
