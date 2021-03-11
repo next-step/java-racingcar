@@ -34,9 +34,30 @@ class RacingGameTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0,1:1", "1,1:2"}, delimiter = ':')
-    @DisplayName("자동차 경주 게임을 완료한 후 우승자는 한명 이상이다.")
+    @CsvSource(value = {"0,1:1"}, delimiter = ':')
+    @DisplayName("자동차 경주 게임을 완료한 후 우승자는 한 명일 수 있다.")
     void playRacingGameAndGetWinner(String positions, int winnerNumber) {
+        List<Car> cars = new ArrayList();
+
+        String[] carNames = {"pobi","jhLim"};
+        String[] position = positions.split(",");
+
+        cars.add(new Car(carNames[0], Integer.parseInt(position[0])));
+        cars.add(new Car(carNames[1], Integer.parseInt(position[1])));
+
+        Cars carGroup = new Cars(cars);
+        InputManagement inputManagement = new InputManagement(carNames, 0);
+
+        racingGame.init(carGroup, inputManagement);
+        racingGame.recordEachRoundPosition();
+
+        assertThat(racingGame.getWinners().size()).isEqualTo(winnerNumber);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,1:2"}, delimiter = ':')
+    @DisplayName("자동차 경주 게임을 완료한 후 우승자는 여러 명 일 수 있다.")
+    void playRacingGameAndGetWinners(String positions, int winnerNumber) {
         List<Car> cars = new ArrayList();
 
         String[] carNames = {"pobi","jhLim"};
