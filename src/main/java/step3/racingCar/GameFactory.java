@@ -1,5 +1,8 @@
 package step3.racingCar;
 
+import step3.racingCar.domain.Car;
+import step3.racingCar.domain.Cars;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;

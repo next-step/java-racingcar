@@ -1,4 +1,4 @@
-package step3.racingCar;
+package step3.racingCar.domain;
 /*
  * 자동차 경주의 자동차 집합을 담당하는 클래스
  *

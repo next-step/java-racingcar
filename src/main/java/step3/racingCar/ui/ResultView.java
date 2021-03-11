@@ -1,4 +1,4 @@
-package step3.racingCar;
+package step3.racingCar.ui;
 
 import java.util.LinkedList;
 

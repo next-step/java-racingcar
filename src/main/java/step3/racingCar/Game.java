@@ -5,6 +5,10 @@ package step3.racingCar;
  * @author hj-woo
  * @version 1.0
  * */
+import step3.racingCar.domain.Cars;
+import step3.racingCar.ui.InputView;
+import step3.racingCar.ui.ResultView;
+
 import java.util.ArrayList;
 
 public class Game {

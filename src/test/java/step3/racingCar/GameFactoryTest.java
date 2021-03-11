@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+import step3.racingCar.domain.Car;
+import step3.racingCar.domain.Cars;
+import step3.racingCar.ui.InputView;
 
 import java.util.ArrayList;
 import java.util.Random;

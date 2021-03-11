@@ -1,4 +1,4 @@
-package step3.racingCar;
+package step3.racingCar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
+import step3.racingCar.domain.Car;
+import step3.racingCar.domain.Cars;
 
 import java.util.LinkedList;
 import java.util.List;
