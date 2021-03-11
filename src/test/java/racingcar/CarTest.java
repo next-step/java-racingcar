@@ -14,7 +14,7 @@ class CarTest {
     @ParameterizedTest
     @CsvSource({"jhLim97, true"})
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
-    void carNameCanUnder5(String carName, boolean isInValidName) {
+    void carNameCanUnder5(String carName) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Car(carName, 0).nameValueInValidation();
         });

@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.util.Conditions;
 
-import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
