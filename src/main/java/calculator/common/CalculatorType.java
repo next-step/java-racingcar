@@ -19,4 +19,8 @@ public enum CalculatorType {
     public int calculate(int prevNum, int postNum) {
         return expression.apply(prevNum, postNum);
     }
+
+    public String getMark() {
+        return this.mark;
+    }
 }

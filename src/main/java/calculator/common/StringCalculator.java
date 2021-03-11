@@ -1,12 +1,14 @@
 package calculator.common;
 
-
 public class StringCalculator {
+
+    private final String EMPTY_STRING = "";
+    private final String DELIMITER = " ";
 
     public int calculator(String data) {
         checkValidData(data);
 
-        String[] inputDataArr = data.split(" ");
+        String[] inputDataArr = data.split(DELIMITER);
         int prevNumber = Integer.parseInt(inputDataArr[0]);
         int postNumber;
         int result = 0;
@@ -21,22 +23,16 @@ public class StringCalculator {
     }
 
     private void checkValidData(String inputData) {
-        if ("".equals(inputData) || inputData == null)
+        if (EMPTY_STRING.equals(inputData) || inputData == null)
             throw new IllegalArgumentException();
     }
 
     private int calculation(String mark, int prevNumber, int postNumber) {
-        if ("+".equals(mark))
-            return CalculatorType.ADD.calculate(prevNumber, postNumber);
 
-        if ("-".equals(mark))
-            return CalculatorType.SUBTRACTION.calculate(prevNumber, postNumber);
-
-        if ("*".equals(mark))
-            return CalculatorType.MULTIPLICATION.calculate(prevNumber, postNumber);
-
-        if ("/".equals(mark))
-            return CalculatorType.DIVISION.calculate(prevNumber, postNumber);
+        for (CalculatorType type : CalculatorType.values()) {
+            if (type.getMark().equals(mark))
+                return type.calculate(prevNumber, postNumber);
+        }
 
         throw new IllegalArgumentException();
     }
