@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public enum ResultView {
 
@@ -16,9 +17,9 @@ public enum ResultView {
     public void printEachRoundResult(List<Integer> movementRangeOfCars) {
 
         for (int movementRange : movementRangeOfCars) {
-            for (int i = 0; i < movementRange; i++) {
-                System.out.print("-");
-            }
+            IntStream.range(0, movementRange)
+                    .mapToObj(i -> "-")
+                    .forEach(System.out::print);
             System.out.println();
         }
         System.out.println();
