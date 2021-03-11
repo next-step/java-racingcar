@@ -1,47 +1,38 @@
 package racingcar.domain;
 
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.util.RandomUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("random 값이 4 이상인 경우 전진한다. 아니면 정지한다.")
-    @Test
-    void moveOrStay() {
+    @DisplayName("random 값이 4 이상인 경우 전진한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void moveOrStay_moveTest(int value) {
         // given
         Car testCar = new Car();
 
         // when
-        final int random = RandomUtil.getRandomIntBetweenZeroToNine();
-        testCar.moveOrStay(random);
+        testCar.moveOrStay(value);
 
         // then
-        Condition<Car> moved = new Condition<>(
-                car -> (MovingForwardCondition.isSatisfied(random) && car.getPosition() == 2)
-                        || car.getPosition() == 1,
-                "canMove");
-        assertThat(testCar).is(moved);
+        assertThat(testCar.getPosition()).isEqualTo(Car.INITIAL_POSITION + 1);
     }
 
-
+    @DisplayName("random 값이 4 미만인 경우 정지한다.")
     @ParameterizedTest
-    @ValueSource(ints = {2, 4, 5})
-    void getPosition(int moveTimes) {
+    @ValueSource(ints = {0, 1, 2, 3})
+    void moveOrStay_stayTest(int value) {
         // given
         Car testCar = new Car();
+
+        // when
+        testCar.moveOrStay(value);
+
+        // then
         assertThat(testCar.getPosition()).isEqualTo(Car.INITIAL_POSITION);
-        int moveValue = 5;
-        //when
-        for (int i = 0; i < moveTimes; i++) {
-            testCar.moveOrStay(moveValue);
-        }
-        //then
-        assertThat(testCar.getPosition()).isEqualTo(moveTimes + Car.INITIAL_POSITION);
     }
 }
