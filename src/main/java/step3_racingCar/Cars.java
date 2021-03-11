@@ -32,4 +32,10 @@ public class Cars {
         });
         return forwardNums;
     }
+
+    public void tryForward(){
+        for(int i=0; i<tryNum; i++) {
+            cars.stream().forEach(car -> car.goForward());
+        }
+    }
 }
