@@ -40,19 +40,9 @@ public class Racing {
 
         for (int i = 0; i < forwartCount; i++) {
             nextStepCars.move(random);
-            nextStepCars.printResult();
+            nextStepCars.solveResult();
         }
 
-        printWinner(nextStepCars);
-    }
-
-
-    private void printWinner(NextStepCars nextStepCars) {
-        List<String> winners = nextStepCars.getWinner();
-        int i = 0;
-        for(String winner : winners) {
-            System.out.print(winner + ((i == winners.size() - 1) ? "가 최종 우승했습니다." : ","));
-            i++;
-        }
+        nextStepCars.solveWinner();
     }
 }

@@ -25,15 +25,6 @@ public class NextStepCars {
         return nextStepCars.size();
     }
 
-    public List<String> getWinner() {
-        int finalWinnerPosition = getFinalWinnerPosition();
-        List<String> collect = this.nextStepCars.stream()
-                .filter(car -> car.moveForward(0) == finalWinnerPosition)
-                .map(car -> car.getName())
-                .collect(Collectors.toList());
-        return collect;
-    }
-
     private int getFinalWinnerPosition() {
         int winnerPosition = 0;
         for(Car car : this.nextStepCars) {
@@ -49,7 +40,7 @@ public class NextStepCars {
         }
     }
 
-    public void printResult() {
+    public void solveResult() {
         ResultView resultView = new ResultView();
         String carName = "";
         for(Car car : this.nextStepCars) {
@@ -58,5 +49,26 @@ public class NextStepCars {
             carName  = car.getName();
         }
         System.out.println();
+    }
+
+    /**
+     * 우승자해결
+     */
+    public void solveWinner() {
+        ResultView resultView = new ResultView();
+        resultView.printWinner(this.getWinner());
+    }
+
+    /**
+     * 우승자 찾기
+     * @return
+     */
+    public List<String> getWinner() {
+        int finalWinnerPosition = getFinalWinnerPosition();
+        List<String> collect = this.nextStepCars.stream()
+                .filter(car -> car.moveForward(0) == finalWinnerPosition)
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
+        return collect;
     }
 }
