@@ -1,4 +1,4 @@
-package racingcar.domain.round;
+package racingcar.domain.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
