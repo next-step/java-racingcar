@@ -1,7 +1,9 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
     private final List<Integer> operands;
@@ -13,25 +15,42 @@ public class StringCalculator {
     }
 
     public int calculate(String value) {
-        if (StringUtil.isBlank(value)) throw new IllegalArgumentException();
+        if (StringUtil.isBlank(value)) {
+            throw new IllegalArgumentException();
+        }
 
-        setSymbolsWith(value);
+        final String[] symbolCandidates = value.split(" ");
+
+        if (containsNotSymbol(symbolCandidates)) {
+            throw new IllegalArgumentException();
+        }
+        setOperandsWith(symbolCandidates);
+        setOperatorsWith(symbolCandidates);
 
         return calculateSymbols();
     }
 
-    private void setSymbolsWith(String value) {
-        final String[] symbolCandidates = value.split(" ");
+    private boolean containsNotSymbol(String[] symbolCandidates) {
+        return Arrays.stream(symbolCandidates)
+                .anyMatch(e -> !IntegerUtil.isInteger(e) && !Operator.isOperator(e));
+    }
 
-        for (final String candidate : symbolCandidates) {
-            if (IntegerUtil.isInteger(candidate)) {
-                operands.add(Integer.parseInt(candidate));
-            } else if (Operator.isOperator(candidate)) {
-                operators.add(Operator.parseOperator(candidate));
-            } else {
-                throw new IllegalArgumentException();
-            }
-        }
+    private void setOperandsWith(String[] operandCandidates) {
+        operands.addAll(
+                Arrays.stream(operandCandidates)
+                        .filter(IntegerUtil::isInteger)
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    private void setOperatorsWith(String[] operatorsCandidates) {
+        operators.addAll(
+                Arrays.stream(operatorsCandidates)
+                        .filter(Operator::isOperator)
+                        .map(Operator::parseOperator)
+                        .collect(Collectors.toList())
+        );
     }
 
     private int calculateSymbols() {
