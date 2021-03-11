@@ -11,7 +11,7 @@ public class Driver {
 
     public void drive(Supplier<Integer> randomSupplier) {
         if (randomSupplier.get() >= 4) {
-            car.move();
+            car.tryMove(randomSupplier);
         }
     }
 
