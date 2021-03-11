@@ -17,9 +17,8 @@ public class Racing {
 
     public static Racing withCondition(int numberOfCar, int numberOfTurns) {
         List<Car> cars = new ArrayList<>();
-        while (numberOfCar > 0) {
+        for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
-            numberOfCar--;
         }
         return new Racing(cars, numberOfTurns);
     }
