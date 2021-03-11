@@ -1,11 +1,14 @@
 package racingcar.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.TestRandomNumberGenerator;
 
 class CarTest {
+
+  private final TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(System.currentTimeMillis());
 
   @Test
   @DisplayName("static 메소드를 통해서 Car를 생성할 수 있는가")
@@ -28,11 +31,10 @@ class CarTest {
     int initPosition = car.getPosition();
 
     //when
-    car.moveCar();
+    car.moveCar(testRandomNumberGenerator.generateRandomNumber());
     int movedPosition = car.getPosition();
 
     //then
     assertEquals(initPosition+1, movedPosition);
   }
-
 }
