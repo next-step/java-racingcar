@@ -1,22 +1,69 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
-    @ParameterizedTest
-    @CsvSource(value = {"4:1", "3:0"}, delimiter = ':')
-    void advanceCars(int input, int result) {
-        GameCondition condition = () -> input;
-        Cars cars = CarFactory.generateCars(1);
-        cars.setMoveStrategy(condition);
-        cars.advanceCars();
+    private Cars cars;
 
+    @BeforeEach
+    void setUp(){
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("test1"));
+        carList.add(new Car("test2"));
+        carList.add(new Car("test3"));
+        cars = new Cars(carList);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
+    void advanceCars(boolean expected, int result) {
+        cars.advanceCars(() -> expected);
         assertThat(cars.getCars()
                 .get(0)
                 .getNumberOfAdvance())
                 .isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2:true", "1:false"}, delimiter = ':')
+    void getWinnerDistance(int input, boolean expected) {
+        cars.advanceCars(() -> true);
+        cars.getCars().get(0).advance(() -> true);
+        assertThat(cars.getWinnerDistance() == input)
+                .isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"test1:true", "test2:false"}, delimiter = ':')
+    void getWinnerNames(String input, boolean expected){
+        cars.advanceCars(() -> true);
+        cars.getCars()
+                .get(0)
+                .advance(() -> true);
+
+        assertThat(cars.getWinnerNames()
+                .stream()
+                .filter(name -> name.equals(input))
+                .findFirst()
+                .orElse("")
+                .equals(input))
+                .isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"'test1 : -',true", "'test1 : --',false"}, delimiter = ',')
+    void getCarRecords(String input, boolean expected){
+        assertThat(cars.getCarRecords()
+                .get(0)
+                .equals(input))
+                .isEqualTo(expected);
     }
 }

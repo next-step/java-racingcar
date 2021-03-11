@@ -12,11 +12,4 @@ class RacingGameTest {
     void setUp() {
         racingGame = new RacingGame();
     }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"a", " "})
-    void toInteger (String input) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> racingGame.toInteger(input));
-    }
 }
