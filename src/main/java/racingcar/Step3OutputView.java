@@ -1,12 +1,9 @@
-package RacingCar;
+package racingcar;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Step4OutputView implements OutputView {
+public class Step3OutputView implements OutputView {
     final String FORWARD = "-";
-    final String CAR_NAME_POSTFIX = " : ";
 
     @Override
     public void printTitle() {
@@ -19,7 +16,6 @@ public class Step4OutputView implements OutputView {
     public void printSingleRacingResult(List<Car> cars) {
         cars.forEach(car -> {
             int distance = car.getDistance();
-            System.out.print(car.getName() + CAR_NAME_POSTFIX);
             while (distance-- != 0) {
                 System.out.print(FORWARD);
             }
@@ -30,13 +26,5 @@ public class Step4OutputView implements OutputView {
 
     @Override
     public void printWinners(List<String> winnersName) {
-        if (winnersName.isEmpty()) return;
-
-        System.out.print(winnersName.get(0));
-        for (int i = 1; i < winnersName.size(); i++) {
-            System.out.print(", ");
-            System.out.print(winnersName.get(i));
-        }
-        System.out.print("가 최종 우승했습니다.\n");
     }
 }

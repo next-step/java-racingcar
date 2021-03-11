@@ -1,4 +1,4 @@
-package RacingCar;
+package racingcar;
 
 public interface Car {
     String getName();

@@ -1,4 +1,4 @@
-package RacingCar;
+package racingcar;
 
 public class SimpleCar implements Car {
     private final int MAX_CAR_NAME = 5;

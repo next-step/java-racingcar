@@ -1,19 +1,19 @@
-package RacingCar;
+package racingcar;
 
-import com.sun.corba.se.spi.orbutil.fsm.Input;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Step3InputView implements InputView {
+public class Step4InputView implements InputView {
     private Scanner scanner = new Scanner(System.in);
 
     @Override
-    public int getNumberOfCar() {
-        final String QUESTION_FOR_GET_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
+    public List<String> getCarNames() {
+        final String QUESTION_FOR_GET_NUMBER_OF_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n";
         System.out.println(QUESTION_FOR_GET_NUMBER_OF_CARS);
-        int numberOfCars = scanner.nextInt();
-        return numberOfCars;
+
+        String[] carNames = scanner.nextLine().split(",");
+        return Arrays.asList(carNames);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Step3InputView implements InputView {
     }
 
     @Override
-    public List<String> getCarNames() {
-        return null;
+    public int getNumberOfCar() {
+        return 0;
     }
 }

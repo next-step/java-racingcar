@@ -1,9 +1,9 @@
 package RacingCarTest;
 
-import RacingCar.Car;
-import RacingCar.CarCollection;
-import RacingCar.MovementCondition;
-import RacingCar.SimpleCar;
+import racingcar.Car;
+import racingcar.CarCollection;
+import racingcar.MovementCondition;
+import racingcar.SimpleCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

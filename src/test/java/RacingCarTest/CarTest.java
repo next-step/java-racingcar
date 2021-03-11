@@ -1,8 +1,8 @@
 package RacingCarTest;
 
-import RacingCar.Car;
-import RacingCar.MovementCondition;
-import RacingCar.SimpleCar;
+import racingcar.Car;
+import racingcar.MovementCondition;
+import racingcar.SimpleCar;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

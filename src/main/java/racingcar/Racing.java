@@ -1,4 +1,4 @@
-package RacingCar;
+package racingcar;
 
 public class Racing {
     private MovementCondition movementCondition;
