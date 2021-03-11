@@ -29,30 +29,14 @@ public class Step4OutputView implements OutputView {
     }
 
     @Override
-    public void printWinners(List<Car> cars) {
-        if (cars.isEmpty()) return;
+    public void printWinners(List<String> winnersName) {
+        if (winnersName.isEmpty()) return;
 
-        List<String> winners = getWinnersName(cars);
-        System.out.print(winners.get(0));
-        for (int i = 1; i < winners.size(); i++) {
+        System.out.print(winnersName.get(0));
+        for (int i = 1; i < winnersName.size(); i++) {
             System.out.print(", ");
-            System.out.print(winners.get(i));
+            System.out.print(winnersName.get(i));
         }
         System.out.print("가 최종 우승했습니다.\n");
-    }
-
-    private List<String> getWinnersName(List<Car> cars) {
-        int maxDistance = getMaxDistance(cars);
-        return cars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .map(car -> car.getName())
-                .collect(Collectors.toList());
-    }
-
-    private int getMaxDistance(List<Car> cars) {
-        return cars.stream()
-                .max(Comparator.comparingInt(Car::getDistance))
-                .get()
-                .getDistance();
     }
 }

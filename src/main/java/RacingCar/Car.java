@@ -5,5 +5,5 @@ public interface Car {
 
     int getDistance();
 
-    int forward();
+    int forward(MovementCondition movementCondition);
 }

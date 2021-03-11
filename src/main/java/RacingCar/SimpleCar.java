@@ -22,8 +22,11 @@ public class SimpleCar implements Car {
     }
 
     @Override
-    public int forward() {
-        return ++distance;
+    public int forward(MovementCondition movementCondition) {
+        if (movementCondition.isMovable()) {
+            ++distance;
+        }
+        return distance;
     }
 
     private void verifyCarName(String carName) {

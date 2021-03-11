@@ -1,24 +1,22 @@
 package RacingCar;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Racing {
     private MovementCondition movementCondition;
     private int numberOfRacing;
     private Subject endOfSingleRacingSubject = new RacingSubject();
-    private List<Car> cars;
+    private CarCollection carCollection;
 
-    public Racing(MovementCondition movementCondition, List<Car> cars, int numberOfRacing) {
+    public Racing(MovementCondition movementCondition, CarCollection carCollection, int numberOfRacing) {
         this.movementCondition = movementCondition;
         this.numberOfRacing = numberOfRacing;
-        this.cars = cars;
+        this.carCollection = carCollection;
     }
 
     public void racing() {
-        race();
+        for (int racingIndex = 0; racingIndex < numberOfRacing; racingIndex++) {
+            carCollection.forward(movementCondition);
+            endOfSingleRacingSubject.notifyObservers(racingIndex);
+        }
     }
 
     public void addEndOfSingleRacingListener(Observer<Integer> observer) {
@@ -27,22 +25,5 @@ public class Racing {
 
     public void removeEndOfSingleRacingListener(Observer<Integer> observer) {
         endOfSingleRacingSubject.removeObserver(observer);
-    }
-
-    private void race() {
-        for (int racingIndex = 0; racingIndex < numberOfRacing; racingIndex++) {
-            raceSingleRacing();
-            endOfSingleRacingSubject.notifyObservers(racingIndex);
-        }
-    }
-
-    private void raceSingleRacing() {
-        cars.forEach(car -> raceSingleCar(car));
-    }
-
-    private void raceSingleCar(Car car) {
-        if (movementCondition.isMovable()) {
-            car.forward();
-        }
     }
 }
