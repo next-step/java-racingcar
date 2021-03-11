@@ -8,16 +8,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Racing {
-    private final String inputQuestion;
-    private final String moveQuestion;
     InputView inputView;
     Random random;
 
-    public Racing(String inputQuestion, String moveQuestion) {
-        this.inputView = new InputView();
+    public Racing(InputView inputView) {
+        this.inputView = inputView;
         this.random = new Random();
-        this.inputQuestion = inputQuestion;
-        this.moveQuestion = moveQuestion;
     }
 
     /**
@@ -26,10 +22,8 @@ public class Racing {
      */
     private List<String> startQuestion() {
         List<String> scannerValues = new ArrayList<>();
-        inputView.print(inputQuestion);
-        scannerValues.add(inputView.scanner.nextLine());
-        inputView.print(moveQuestion);
-        scannerValues.add(String.valueOf(inputView.scanner.nextInt()));
+        scannerValues.add(inputView.questionStepByStep());
+        scannerValues.add(inputView.questionStepByStep());
         return scannerValues;
     }
 
