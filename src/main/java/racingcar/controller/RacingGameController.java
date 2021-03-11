@@ -21,6 +21,11 @@ public class RacingGameController {
         this.gameRoundService = gameRoundService;
     }
 
+    public void run() {
+        setGameEnvironment();
+        printGameResult();
+    }
+
     public void setGameEnvironment() {
         int numberOfCars = InputView.INSTANCE.InputNumberOfCars();
         createCars(numberOfCars);

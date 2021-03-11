@@ -11,11 +11,6 @@ public class Application {
         CarService carService = new CarService(new CarRepository());
         GameRoundService gameRoundService = new GameRoundService(new GameRoundRepository());
         RacingGameController racingGameController = new RacingGameController(carService, gameRoundService);
-        run(racingGameController);
-    }
-
-    public static void run(RacingGameController racingGameController) {
-        racingGameController.setGameEnvironment();
-        racingGameController.printGameResult();
+        racingGameController.run();
     }
 }
