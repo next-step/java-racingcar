@@ -28,7 +28,7 @@ public class NextStepCars {
     private int getFinalWinnerPosition() {
         int winnerPosition = 0;
         for(Car car : this.nextStepCars) {
-            winnerPosition = Math.max(winnerPosition, car.moveForward(0));
+            winnerPosition = Math.max(winnerPosition, car.getPosition());
         }
         int finalWinnerPosition = winnerPosition;
         return finalWinnerPosition;
@@ -42,13 +42,20 @@ public class NextStepCars {
 
     public void solveResult() {
         ResultView resultView = new ResultView();
-        String carName = "";
         for(Car car : this.nextStepCars) {
-            String prefix = (!carName.equals(car.getName())) ? car.getName() + " : " : "";
-            resultView.print(prefix + "-".repeat(car.moveForward(0)));
-            carName  = car.getName();
+            resultView.print(this.generateResultString(car));
         }
         System.out.println();
+    }
+
+    /**
+     * 출력 해 줄 문자열생성
+     * @param car
+     * @return
+     */
+    private String generateResultString(Car car) {
+        String result = car.getName() + "-".repeat(car.getPosition());;
+        return result;
     }
 
     /**
@@ -66,7 +73,7 @@ public class NextStepCars {
     public List<String> getWinner() {
         int finalWinnerPosition = getFinalWinnerPosition();
         List<String> collect = this.nextStepCars.stream()
-                .filter(car -> car.moveForward(0) == finalWinnerPosition)
+                .filter(car -> car.getPosition() == finalWinnerPosition)
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
         return collect;

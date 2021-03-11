@@ -29,7 +29,7 @@ class CarTest {
                 return expected;
             }
         };
-        assertThat(car.moveForward(0)).isEqualTo(nextStepCar.moveForward(0));
+        assertThat(car.getPosition()).isEqualTo(nextStepCar.getPosition());
     }
 
     private static Stream<Arguments> moveTestSource() {
@@ -146,7 +146,7 @@ class CarTest {
         cars.get(1).moveForward(random.nextInt(10));
         cars.get(1).moveForward(random.nextInt(10));
 
-        assertThat(cars.get(0).moveForward(0)).isNotEqualTo(cars.get(1).moveForward(0));
+        assertThat(cars.get(0).getPosition()).isNotEqualTo(cars.get(1).getPosition());
     }
 
     @ParameterizedTest
