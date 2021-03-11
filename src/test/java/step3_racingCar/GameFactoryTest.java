@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.when;
 
 class GameFactoryTest {
 
@@ -31,7 +32,8 @@ class GameFactoryTest {
     void buildCar(){
         Car car = gameFactory.car();
         assertThat(car).isInstanceOf(Car.class);
-        assertThat(car).hasNoNullFieldsOrProperties();
+        assertThat(car).extracting("random")
+                .hasOnlyElementsOfType(Random.class);
     }
 
 
@@ -41,7 +43,6 @@ class GameFactoryTest {
         Cars cars = gameFactory.cars(CARNUM);
         assertThat(cars).isInstanceOf(Cars.class);
         assertThat(cars).hasNoNullFieldsOrProperties();
-        assertThat(cars.getCars()).isInstanceOf(List.class).hasSize(CARNUM);
     }
 
     @Test

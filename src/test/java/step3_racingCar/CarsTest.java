@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,8 +39,9 @@ class CarsTest {
 
     @Test
     void createAndSetCars(){
-        assertThat(cars.getCars()).isInstanceOf(Collections.unmodifiableList(new LinkedList<Car>()).getClass());
-        assertThat(cars.getCars().size()).isEqualTo(CARNUM);
+        assertThat(cars).extracting("cars")
+                .hasOnlyElementsOfType((new LinkedList<Car>()).getClass())
+                .hasSameSizeAs(new List[]{carList});    //크기가 CARNUM이라고 바로 확인하고 싶었으나, extracting은 List에 담아서 반환하기 때문에 2차원 리스트의 크기로 확인해야함
     }
 
 

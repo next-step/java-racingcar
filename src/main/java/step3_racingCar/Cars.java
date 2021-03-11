@@ -1,6 +1,5 @@
 package step3_racingCar;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,10 +12,6 @@ public class Cars {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
     }
 
     public LinkedList<Integer> checkForward(){
