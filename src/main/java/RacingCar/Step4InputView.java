@@ -3,10 +3,8 @@ package RacingCar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Step4InputView implements InputView {
-    private final int MAX_CAR_NAME = 5;
     private Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -15,7 +13,6 @@ public class Step4InputView implements InputView {
         System.out.println(QUESTION_FOR_GET_NUMBER_OF_CARS);
 
         String[] carNames = scanner.nextLine().split(",");
-        verifyCarName(carNames);
         return Arrays.asList(carNames);
     }
 
@@ -30,15 +27,5 @@ public class Step4InputView implements InputView {
     @Override
     public int getNumberOfCar() {
         return 0;
-    }
-
-    private void verifyCarName(String[] carNames) {
-        boolean overLength = !Arrays.stream(carNames)
-                .filter(carName -> carName.length() > MAX_CAR_NAME)
-                .collect(Collectors.toList())
-                .isEmpty();
-        if (overLength) {
-            throw new IllegalArgumentException("carName must be less then or equal to 5");
-        }
     }
 }

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
-    final String givenCarName = "CarName";
+    final String givenCarName = "Car";
     Car car = new SimpleCar(givenCarName);
 
     @Test
@@ -27,6 +27,16 @@ public class CarTest {
         car.forward();
 
         //then
-        assertThat(car.getDistance()).isEqualTo(initialDistance+1);
+        assertThat(car.getDistance()).isEqualTo(initialDistance + 1);
+    }
+
+    @Test
+    void Given_LongCarName_When_NewSimpleCar_Then_IllegalArgumentException() {
+        String longCarName = "LongCarName";
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new SimpleCar(longCarName);
+                });
     }
 }
