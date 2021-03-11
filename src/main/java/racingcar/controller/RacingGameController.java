@@ -4,6 +4,7 @@ import racingcar.domain.Car;
 import racingcar.domain.GameRound;
 import racingcar.service.CarService;
 import racingcar.service.GameRoundService;
+import racingcar.utils.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -13,8 +14,6 @@ public class RacingGameController {
 
     private final CarService carService;
     private final GameRoundService gameRoundService;
-    private final Random random = new Random();
-    private final int MAX_INCLUSIVE = 10;
 
     public RacingGameController(CarService carService, GameRoundService gameRoundService) {
         this.carService = carService;
@@ -44,7 +43,7 @@ public class RacingGameController {
     }
 
     public void raceEachRound() {
-        carService.findCars().forEach(car -> car.move(random.nextInt(MAX_INCLUSIVE)));
+        carService.findCars().forEach(car -> car.move(RandomNumberGenerator.generate()));
     }
 
     public void printGameResult() {
