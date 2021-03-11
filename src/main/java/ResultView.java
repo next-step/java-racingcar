@@ -1,17 +1,12 @@
 import java.util.List;
-import java.util.stream.Stream;
 
 public class ResultView {
-
-    private static void showRaceProgress(int progressCount) {
-        String progress = Stream.generate(()-> "-")
-                .limit(progressCount)
-                .reduce("-", (a, b) -> a + b);
-        System.out.println(progress);
+    public static void showRaceRound(List<String> progress) {
+        progress.forEach(System.out::println);
+        System.out.println();
     }
 
-    public static void showRaceRound(List<Integer> records) {
-        records.forEach(ResultView::showRaceProgress);
-        System.out.println("");
+    public static void showWinners(List<String> winnerNames) {
+        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 }
