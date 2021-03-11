@@ -34,6 +34,7 @@ public class Car {
         this.moveStrategy = moveStrategy;
     }
 
+    // 불변 객체로 안전해지지만 인스턴스 객체가 계속 만들어진다는 단점
     public Car move() {
         if (moveStrategy.isMovable()) {
             position++;

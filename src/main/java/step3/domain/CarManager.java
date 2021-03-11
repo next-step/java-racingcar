@@ -22,13 +22,13 @@ public class CarManager {
     }
 
     // 자동차 움직이는 전략과 함께 생성하려는 경우
-    public CarManager(final String[] carCount, final MoveStrategy moveStrategy) {
-        createCars(carCount, moveStrategy);
+    public CarManager(final String[] participants, final MoveStrategy moveStrategy) {
+        createCars(participants, moveStrategy);
     }
 
     // 자동차 생성 메서드
-    private void createCars(String[] carCount, MoveStrategy moveStrategy) {
-        Arrays.stream(carCount)
+    private void createCars(String[] participants, MoveStrategy moveStrategy) {
+        Arrays.stream(participants)
                 .forEach(name -> cars.add(new Car(name, moveStrategy)));
     }
 
