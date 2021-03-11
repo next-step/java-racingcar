@@ -10,6 +10,7 @@ import static calculator.operator.Operation.getOperation;
 public class Calculator {
     private final String DELIMITER = " ";
 
+
     public Calculator() {
     }
 
@@ -29,8 +30,10 @@ public class Calculator {
         while (token.hasMoreTokens()) {
             Operation operator = getOperation(token.nextToken());
             sum = operator.apply(sum, parseInt(token.nextToken()));
+
         }
         return sum;
     }
+
 
 }
