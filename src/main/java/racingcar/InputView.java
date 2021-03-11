@@ -6,41 +6,45 @@ public class InputView {
 
     public int setInputPlayerCount() {
         int inputPlayerCount = 0;
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-
-            try {
-                System.out.println("참가 선수를 입력해주세요. (최소 2명, 최대 24명)");
-                inputPlayerCount = scanner.nextInt();
-
-                if (isPlayerLimit(inputPlayerCount)) {
-                    break;
-                }
-            } catch (Exception e) {
-                printInputError();
-            }
+        while (!isPlayerLimit(inputPlayerCount)) {
+            inputPlayerCount = inputPlayerCount();
         }
-
         return inputPlayerCount;
     }
 
-    public int setInputLastLabCount() {
-        int inputLabCount = 0;
-        while (true) {
+    public int inputPlayerCount() {
+        int result = 0;
+
+        try {
             Scanner scanner = new Scanner(System.in);
-
-            try {
-                System.out.println("목표 Lab을 입력해주세요. (최소 5Lab, 최대 55Lab)");
-                inputLabCount = scanner.nextInt();
-
-                if (isLabLimit(inputLabCount)) {
-                    break;
-                }
-            } catch (Exception e) {
-                printInputError();
-            }
+            System.out.println("참가 선수를 입력해주세요. (최소 2명, 최대 24명)");
+            result = scanner.nextInt();
+        } catch (Exception e) {
+            printInputError();
         }
-        return inputLabCount;
+
+        return result;
+    }
+
+    public int setInputLastLabCount() {
+        int labCount = 0;
+        while (!isLabLimit(labCount)) {
+            labCount = inputLabCount();
+        }
+        return labCount;
+    }
+
+    public int inputLabCount() {
+        int result = 0;
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("목표 Lab을 입력해주세요. (최소 5Lab, 최대 55Lab)");
+            result = scanner.nextInt();
+
+        } catch (Exception e) {
+            printInputError();
+        }
+        return result;
     }
 
     public boolean isPlayerLimit(int playerCount) {

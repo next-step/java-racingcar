@@ -3,14 +3,17 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-// 서비스 로직,
+// 서비스 로직
 public class GrandPrix {
-    private ResultView resultView = new ResultView();
+    ResultView resultView = new ResultView();
 
-    public void grandPrixStart(int inputPlayerCount, int inputLastLab) {
+    public void start(int inputPlayerCount, int inputLastLab) {
         List<FormulaOne> formulaOnes = createFomualOne(inputPlayerCount, inputLastLab);
 
-        liveRacing(formulaOnes);
+        while(!isFinish(formulaOnes)) {
+            nextTurn(formulaOnes);
+            resultView.printGrandPrixRecords(formulaOnes);
+        }
     }
 
     public List<FormulaOne> createFomualOne(int inputPlayerCount, int inputLastLab) {
@@ -23,27 +26,13 @@ public class GrandPrix {
         return formulaOnes;
     }
 
-    public void liveRacing(List<FormulaOne> formulaOnes) {
-        while(true) {
-            if (nextTurn(formulaOnes)) {
-                break;
-            }
-            resultView.printOneLine();
-        }
+    public boolean isFinish(List<FormulaOne> formulaOnes) {
+        return formulaOnes.stream()
+                .anyMatch(f -> f.getCircuit().finish());
     }
 
-    public boolean nextTurn(List<FormulaOne> formulaOnes) {
-        boolean raceEnd = false;
-
-        for (FormulaOne formulaOne : formulaOnes) {
-            formulaOne.formulaOneMove();
-
-            resultView.printLab(formulaOne.getLab());
-            if (formulaOne.getLab() >= formulaOne.getLastLab()) {
-                raceEnd = true;
-            }
-        }
-
-        return raceEnd;
+    public void nextTurn(List<FormulaOne> formulaOnes) {
+        formulaOnes.stream()
+                .forEach(fo -> fo.move(RandomDice.getRandomValue()));
     }
 }

@@ -8,6 +8,6 @@ public class RacingMain {
         int labCount = inputView.setInputLastLabCount();
 
         GrandPrix grandPrix = new GrandPrix();
-        grandPrix.grandPrixStart(playerCount, labCount);
+        grandPrix.start(playerCount, labCount);
     }
 }
