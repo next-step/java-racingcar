@@ -4,13 +4,11 @@ public class Car{
     private static final Integer START_POSITION = 1;
     private String carName;
     private int position;
-    private MoveStrategy moveStrategy;
-    public Car(String carName,MoveStrategy moveStrategy){
+    public Car(String carName){
         this.carName = carName;
-        this.moveStrategy = moveStrategy;
         this.position = START_POSITION;
     }
-    public void move(){
+    public void move(MoveStrategy moveStrategy){
         if(moveStrategy.move()){
             position++;
         }
