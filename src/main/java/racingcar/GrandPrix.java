@@ -10,6 +10,8 @@ public class GrandPrix {
     public void start(int inputPlayerCount, int inputLastLab) {
         List<FormulaOne> formulaOnes = createFomualOne(inputPlayerCount, inputLastLab);
 
+        System.out.println("실행결과");
+
         while(!isFinish(formulaOnes)) {
             nextTurn(formulaOnes);
             resultView.printGrandPrixRecords(formulaOnes);
