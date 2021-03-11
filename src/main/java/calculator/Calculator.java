@@ -10,7 +10,8 @@ public class Calculator {
      *  입력받은 값을 사칙연산을 통해 계산한다.
      * */
     public int calculate(String str) {
-        String[] strArr = str.split(" ");
+        String[] strArr = StringUtil.splitInput(str);
+
         ValidationUtil.validateInput(strArr);
         return execute(strArr);
     }
