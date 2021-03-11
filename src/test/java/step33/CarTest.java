@@ -18,16 +18,16 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4,5,6,7,8,9})
     void isOverTrueTest(int number) {
-        int s = car.moveCars(number);
-        Assertions.assertEquals(1, s);
+        car.moveCars(number);
+        Assertions.assertEquals(1, car.getMoveCount());
     }
 
     @DisplayName("isOver이 false일 경우 String 결과 테스트")
     @ParameterizedTest
     @ValueSource(ints = {0,1,2,3})
     void isOverFalseTest(int number) {
-        int s = car.moveCars(number);
-        Assertions.assertEquals(0, s);
+        car.moveCars(number);
+        Assertions.assertEquals(0, car.getMoveCount());
     }
 
 }
