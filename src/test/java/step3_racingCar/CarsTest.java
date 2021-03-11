@@ -26,12 +26,11 @@ class CarsTest {
     @Mock
     private Car car;
 
-    private static final int TRYNUM = 3;
     private static final int CARNUM = 4;
 
     @BeforeEach
     void setUp(){
-        cars = new Cars(TRYNUM);
+        cars = new Cars();
         carList = new LinkedList<>();
         MockitoAnnotations.initMocks(this);
         for(int i=0; i<CARNUM; i++){
@@ -40,15 +39,8 @@ class CarsTest {
     }
 
     @Test
-    void createCars(){
-        assertThat(cars.getTryNum()).isEqualTo(TRYNUM);
+    void createAndSetCars(){
         assertThat(cars.getCars()).isInstanceOf(Collections.unmodifiableList(new LinkedList<Car>()).getClass());
-        assertThat(cars.getCars().size()).isEqualTo(0);
-    }
-
-    @Test
-    void setCarList(){
-        cars.setCars(carList);
         assertThat(cars.getCars().size()).isEqualTo(CARNUM);
     }
 
@@ -69,6 +61,6 @@ class CarsTest {
     @DisplayName("자동차 집합이 전진할지 여부를 확인했는지 리스트들의 메소드 호출 횟수를 확인한다.")
     void tryForwardTest(){
         cars.tryForward();
-        verify(car, times(TRYNUM * CARNUM)).goForward();
+        verify(car, times(CARNUM)).goForward();
     }
 }

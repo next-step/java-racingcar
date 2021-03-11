@@ -38,10 +38,9 @@ class GameFactoryTest {
     @Test
     @DisplayName("Cars 생성을 GameFactory에서 주관하여 Car의 생성과 Cars의 생성을 통합테스트")
     void buildCars(){
-        Cars cars = gameFactory.cars(CARNUM, TRYNUM);
+        Cars cars = gameFactory.cars(CARNUM);
         assertThat(cars).isInstanceOf(Cars.class);
         assertThat(cars).hasNoNullFieldsOrProperties();
-        assertThat(cars).hasFieldOrPropertyWithValue("tryNum",TRYNUM);
         assertThat(cars.getCars()).isInstanceOf(List.class).hasSize(CARNUM);
     }
 

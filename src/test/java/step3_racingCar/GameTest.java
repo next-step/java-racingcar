@@ -33,11 +33,11 @@ class GameTest {
 
     @Test
     void createGame(){
+        assertThat(game).extracting("tryNum")
+                .containsOnly(TRYNUM);
+
         assertThat(game).extracting("racingCars")
-                .hasOnlyElementsOfType(Cars.class)
-                .extracting("cars")
-                .isInstanceOf(List.class);
-//                .hasSize(CARNUM);     TODO 왜 [[]] 2차원 안의 값으로 나오는지 파악하기 (size가 1로 나옴)
+                .hasOnlyElementsOfType(Cars.class);
     }
 
 }

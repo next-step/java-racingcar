@@ -10,8 +10,8 @@ public class GameFactory {
         return new Game();
     }
 
-    public static Cars cars(int carNum, int tryNum){
-        Cars cars = new Cars(tryNum);
+    public static Cars cars(int carNum){
+        Cars cars = new Cars();
 
         List<Car> carList = new LinkedList<>();
         for(int i=0; i<carNum; i++){

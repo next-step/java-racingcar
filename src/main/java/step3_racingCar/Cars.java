@@ -6,11 +6,9 @@ import java.util.List;
 
 public class Cars {
     private List<Car> cars;
-    private int tryNum;
 
-    public Cars(int tryNum) {
+    public Cars() {
         this.cars = new LinkedList<Car>();
-        this.tryNum = tryNum;
     }
 
     public void setCars(List<Car> cars) {
@@ -19,10 +17,6 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    public int getTryNum() {
-        return tryNum;
     }
 
     public LinkedList<Integer> checkForward(){
@@ -34,8 +28,6 @@ public class Cars {
     }
 
     public void tryForward(){
-        for(int i=0; i<tryNum; i++) {
-            cars.stream().forEach(car -> car.goForward());
-        }
+        cars.stream().forEach(car -> car.goForward());
     }
 }
