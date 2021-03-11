@@ -14,6 +14,8 @@ public class ResultView {
 
     private void printTrack(Car car) {
         StringBuffer track = new StringBuffer();
+        track.append(car.getName());
+        track.append(" : ");
         for (int position = 0; position < car.getPosition(); ++position) {
             track.append(ViewConstant.TRACK);
         }
