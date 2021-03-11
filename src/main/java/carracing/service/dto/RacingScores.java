@@ -28,8 +28,4 @@ public class RacingScores {
     public void registerRacingScore(Car car) {
         racingScoreList.add(new RacingScore(car.getCarNumber(), car.getMileage()));
     }
-
-    private boolean _isExists(Car car) {
-        return racingScoreList.stream().anyMatch(score -> score.getCarNumber()==car.getCarNumber());
-    }
 }
