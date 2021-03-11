@@ -2,6 +2,8 @@ package step3.domain;
 
 import java.util.Objects;
 
+import static step3.util.Constants.START_IDX;
+
 /**
  * primitive 타입 데이터의 관리
  * <pre>
@@ -21,21 +23,24 @@ import java.util.Objects;
  */
 public class Position {
 
+    public static final String CANNOT_NEGATIVE_VALUES = "Position 은 음수 값을 가질 수 없다.";
+    public static final int ONE = 1;
+
     private final int position;
 
     public Position() {
-        this(0);
+        this(START_IDX);
     }
 
     public Position(int position) {
-        if(position < 0) {
-            throw new IllegalArgumentException("position은 음수 값을 가질 수 없다.");
+        if(position < START_IDX) {
+            throw new IllegalArgumentException(CANNOT_NEGATIVE_VALUES);
         }
         this.position = position;
     }
 
     public Position move() {
-        return new Position(position + 1);
+        return new Position(position + ONE);
     }
 
     public int getPosition() {
