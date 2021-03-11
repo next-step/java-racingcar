@@ -1,32 +1,15 @@
 package racingcar;
 
-import java.util.Scanner;
+public abstract class InputView<T> {
+    String text;
 
-public class InputView {
-	private String text;
+    public InputView(String text) {
+        this.text = text;
+    }
 
-	public InputView(String text) {
-		this.text = text;
-	}
+    abstract T getInput();
 
-	public int getInputNumber() {
-		printText();
-		String input = getInput();
-		return Integer.valueOf(input);
-	}
-
-	public String[] getInputCarName() {
-		printText();
-		String input = getInput();
-		return input.split(",");
-	}
-
-	private String getInput() {
-		Scanner sc = new Scanner(System.in);
-		return sc.nextLine();
-	}
-
-	private void printText() {
-		System.out.println(this.text);
-	}
+    protected void printText() {
+        System.out.println(this.text);
+    }
 }
