@@ -1,5 +1,7 @@
 package study.step4;
 
+import static java.util.stream.Collectors.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -39,5 +41,20 @@ public class Racing {
 
     public void printRacingResult(String printToken) {
         resultView.printRacingResult(carList, printToken);
+    }
+
+    public void printRacingWinner(String message) {
+        resultView.printRacingWinner(this.getWinners(), message);
+    }
+
+    public List<Car> getWinners() {
+        int winnerPosition = carList.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .orElse(-1);
+
+        return carList.stream()
+            .filter(car -> car.getPosition() == winnerPosition)
+            .collect(toList());
     }
 }

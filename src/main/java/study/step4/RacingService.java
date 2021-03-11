@@ -27,5 +27,7 @@ public class RacingService {
             racing.run();
             racing.printRacingResult(PRINT_TOKEN);
         }
+        System.out.println("\n");
+        racing.printRacingWinner(MESSAGE_PRINT_WINNER);
     }
 }

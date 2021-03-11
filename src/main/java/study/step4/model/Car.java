@@ -13,7 +13,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-		this.position = INIT_POSITION;
+        this.position = INIT_POSITION;
     }
 
     public int getPosition() {
