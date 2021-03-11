@@ -11,7 +11,7 @@ public class CarTest {
     @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
     public void moveForward_ShouldReturnZero(int inputValue, int expectedValue) {
         Car car = new Car();
-        car.moveForward(inputValue);
+        car.moveForward(inputValue, num -> num >= 4);
 
         assertThat(car.getCurrentPosition()).isEqualTo(expectedValue);
     }
