@@ -17,10 +17,13 @@ public class CarTest {
 
     private final Random random = mock(Random.class);
     private Car car;
+    private Limit limit;
 
     @BeforeEach
     void setUp() {
         this.car = new Car();
+        this.limit = new CarLimit();
+        limit.setLimitStrategy(new Limit4Strategy());
     }
 
     @DisplayName("자동차 이동 테스트")
@@ -37,7 +40,7 @@ public class CarTest {
     void go(int input) {
         mockRandom(input);
 
-        given(input);
+        given(input, limit);
 
         assertEquals(1, car.getPosition());
         verify(random).nextInt(input);
@@ -49,7 +52,7 @@ public class CarTest {
     void stop(int input) {
         mockRandom(input);
 
-        given(input);
+        given(input, limit);
 
         assertEquals(0, car.getPosition());
         verify(random).nextInt(input);
@@ -60,9 +63,9 @@ public class CarTest {
         Whitebox.setInternalState(RandomUtil.class, random);
     }
 
-    private void given(int input) {
+    private void given(int input, Limit limit) {
         int randomValue = RandomUtil.nextInt(input);
-        boolean move = car.isMove(randomValue);
+        boolean move = car.isMove(randomValue, limit.getLimit());
         car.move(move);
     }
 }

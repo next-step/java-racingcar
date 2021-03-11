@@ -8,7 +8,7 @@ public class Racing {
     private final Rule rule;
 
     public Racing() {
-        this.rule = new Rule();
+        this.rule = new Rule(0, 0, initLimit());
         this.cars = new Cars();
         this.inputView = new InputView();
         this.resultView = new ResultView();
@@ -17,6 +17,12 @@ public class Racing {
     public void run() {
         joinRacing();
         startRacing();
+    }
+
+    private Limit initLimit() {
+        Limit carLimit = new CarLimit();
+        carLimit.setLimitStrategy(new Limit4Strategy());
+        return carLimit;
     }
 
     private void joinRacing() {
@@ -33,7 +39,7 @@ public class Racing {
     private void startRacing() {
         resultView.printResult();
         for (int round = 0; round < rule.getRoundCount(); ++round) {
-            cars.move();
+            cars.move(rule.getLimit());
             resultView.printCars(cars);
         }
     }

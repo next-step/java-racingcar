@@ -18,8 +18,8 @@ public class Car {
         }
     }
 
-    public boolean isMove(int randomValue) {
-        return randomValue >= CarConstant.LIMIT;
+    public boolean isMove(int randomValue, int limit) {
+        return randomValue >= limit;
     }
 
     public int getPosition() {

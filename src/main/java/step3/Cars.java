@@ -15,9 +15,9 @@ public class Cars {
         cars.add(car);
     }
 
-    public void move() {
+    public void move(Limit limit) {
         cars.forEach(car -> {
-            boolean move = car.isMove(RandomUtil.nextInt(RandomUtil.BOUND10));
+            boolean move = car.isMove(RandomUtil.nextInt(RandomUtil.BOUND10), limit.getLimit());
             car.move(move);
         });
     }
