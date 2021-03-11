@@ -16,5 +16,4 @@ class StringValidationTest {
             StringValidation.validateCarNameSize(carNames);
         }).withMessage(RacingGameError.CAR_NAME_LENGTH_OVER);
     }
-
 }

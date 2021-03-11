@@ -11,4 +11,3 @@ public class RandomMoveBehavior implements MoveBehavior {
         return RANDOM.nextInt(RacingConstant.RANDOM_RAMGE) >RacingConstant.RANDOM_BOUNDARY_VALUE;
     }
 }
-

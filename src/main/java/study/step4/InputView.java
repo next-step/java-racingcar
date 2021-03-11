@@ -13,7 +13,7 @@ public class InputView {
 
     public static String[] inputCarNames() {
         System.out.println(CAR_INPUT);
-        return scanner.nextLine().split(RacingConstant.SPLIT);
+        return scanner.nextLine().split(RacingConstant.COMMA);
     }
 
     public static int inputAttemptNumber() {
