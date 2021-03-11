@@ -1,5 +1,6 @@
 package step3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -7,6 +8,7 @@ public class Cars {
     private List<Car> cars;
 
     Cars(int numberOfCars, MoveStrategy moveStrategy){
+        cars = new ArrayList<>();
         for(int i = 0; i < numberOfCars; i++){
             Car car = new Car(moveStrategy);
             cars.add(car);
