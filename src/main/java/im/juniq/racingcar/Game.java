@@ -21,4 +21,8 @@ public class Game {
 	public List<RacingCar> getCars() {
 		return cars;
 	}
+
+	public void printCarsMoveCount() {
+		ResultView.printCarMoveCount(cars);
+	}
 }
