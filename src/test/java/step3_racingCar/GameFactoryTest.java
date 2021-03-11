@@ -46,6 +46,7 @@ class GameFactoryTest {
     }
 
     @Test
+    @DisplayName("Game의 생성을 GameFactory에서 주관하여 Game, Cars, Car의 생성을 통합테스트")
     void buildGame(){
         MockedStatic<InputView> inputView = mockStatic(InputView.class);
         when(InputView.input(Game.strs))

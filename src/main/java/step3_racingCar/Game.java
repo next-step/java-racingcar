@@ -13,7 +13,17 @@ public class Game {
         tryNum = inputArr.get(1);
     }
 
-    public void start(){
-
+    public void play(){
+        System.out.println("실행 결과");
+        if(tryNum == 0){
+            System.out.println("아무런 시도를 하지 않았습니다.");
+        }
+        for(int i=0; i<tryNum; i++){
+            racingCars.tryForward();
+            ResultView.printResult(racingCars.checkForward());
+            if(i != tryNum){
+                System.out.println("**********"+i+"번째 시도");
+            }
+        }
     }
 }
