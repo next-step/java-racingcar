@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.utils.InputValidator;
+
 public class Car {
     private static final int INIT_VALUE = 0;
     private static final int CONDITION_FOR_MOVEMENT = 4;
@@ -8,7 +10,10 @@ public class Car {
     private int movementRange;
     private String name;
 
-    public Car() {
+    public Car(String name) {
+        InputValidator.validateNull(name);
+        InputValidator.validateEmpty(name);
+        this.name = name;
         movementRange = INIT_VALUE;
     }
 
@@ -25,10 +30,6 @@ public class Car {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     private void validateRandomNumber(int randomNumber) {

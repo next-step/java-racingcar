@@ -6,7 +6,6 @@ import racingcar.service.CarService;
 import racingcar.service.GameRoundService;
 import racingcar.view.ResultView;
 
-import java.util.List;
 import java.util.Random;
 
 public class RacingGameController {
@@ -23,7 +22,7 @@ public class RacingGameController {
 
     public void createCars(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
-            carService.addCar(new Car());
+            carService.addCar(new Car((Integer.toString(i))));
         }
     }
 

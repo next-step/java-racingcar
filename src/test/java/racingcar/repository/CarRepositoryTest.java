@@ -22,9 +22,9 @@ class CarRepositoryTest {
     @DisplayName("자동차 추가 검증 로직 테스트")
     public void save() throws Exception {
         //given
-        Car car = new Car();
         String name = "seongbeen";
-        car.setName(name);
+        Car car = new Car(name);
+
 
         //when
         carRepository.save(car);
@@ -40,9 +40,9 @@ class CarRepositoryTest {
     @DisplayName("모든 자동차 찾는 로직 검증 테스트")
     public void findAll() throws Exception {
         //given
-        carRepository.save(new Car());
-        carRepository.save(new Car());
-        carRepository.save(new Car());
+        carRepository.save(new Car("firstCar"));
+        carRepository.save(new Car("secondCar"));
+        carRepository.save(new Car("thirdCar"));
 
         //when
         List<Car> cars = carRepository.findAll();
@@ -55,9 +55,9 @@ class CarRepositoryTest {
     @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
     public void findAllMovementRange() throws Exception {
         //given
-        Car firstCar = new Car();
+        Car firstCar = new Car("firstCar");
         firstCar.move(5);
-        Car secondCar = new Car();
+        Car secondCar = new Car("secondCar");
         secondCar.move(1);
         carRepository.save(firstCar);
         carRepository.save(secondCar);
@@ -75,9 +75,8 @@ class CarRepositoryTest {
     @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
     public void findByName() throws Exception {
         //given
-        Car car = new Car();
         String name = "seongbeen";
-        car.setName(name);
+        Car car = new Car(name);
         carRepository.save(car);
 
         //when

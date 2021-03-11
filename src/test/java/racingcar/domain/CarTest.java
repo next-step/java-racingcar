@@ -13,10 +13,10 @@ class CarTest {
     @DisplayName("자동차 전진 테스트")
     void move() {
         //given
-        Car firstCar = new Car();
-        Car secondCar = new Car();
-        Car thirdCar = new Car();
-        Car fourthCar = new Car();
+        Car firstCar = new Car("firstCar");
+        Car secondCar = new Car("secondCar");
+        Car thirdCar = new Car("thirdCar");
+        Car fourthCar = new Car("fourthCar");
 
         //when
         firstCar.move(5);
@@ -37,9 +37,9 @@ class CarTest {
     @DisplayName("자동차 이동범위 확인 테스트")
     public void getMovementRange() throws Exception {
         //given
-        Car firstCar = new Car();
-        Car secondCar = new Car();
-        Car thirdCar = new Car();
+        Car firstCar = new Car("firstCar");
+        Car secondCar = new Car("secondCar");
+        Car thirdCar = new Car("thirdCar");
 
         //when
         firstCar.move(5);
@@ -62,14 +62,12 @@ class CarTest {
     @DisplayName("자동차 이름 입력 테스트")
     public void setName() throws Exception {
         //given
-        Car firstCar = new Car();
-        Car secondCar = new Car();
         String firstCarName = "seongbeen";
         String secondCarName = "pobi";
+        Car firstCar = new Car(firstCarName);
+        Car secondCar = new Car(secondCarName);
 
         //when
-        firstCar.setName(firstCarName);
-        secondCar.setName(secondCarName);
         String nameFromFirstCar = firstCar.getName();
         String nameFromsecondCar = secondCar.getName();
 
@@ -82,8 +80,8 @@ class CarTest {
     @DisplayName("자동차 전진 조건 0 ~ 9 검증 테스트")
     public void validateRandomNumber() throws Exception {
         //given
-        Car firstCar = new Car();
-        Car secondCar = new Car();
+        Car firstCar = new Car("firstCar");
+        Car secondCar = new Car("secondCar");
 
         //when
 

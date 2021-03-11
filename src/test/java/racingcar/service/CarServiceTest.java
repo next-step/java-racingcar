@@ -26,9 +26,8 @@ class CarServiceTest {
     @DisplayName("자동차 추가 로직 검증 테스트")
     public void addCar() throws Exception {
         //given
-        Car car = new Car();
         String name = "seongbeen";
-        car.setName(name);
+        Car car = new Car(name);
 
         //when
         carService.addCar(car);
@@ -44,9 +43,9 @@ class CarServiceTest {
     @DisplayName("모든 자동차 찾는 로직 검증 테스트")
     public void findCars() throws Exception {
         //given
-        carRepository.save(new Car());
-        carRepository.save(new Car());
-        carRepository.save(new Car());
+        carRepository.save(new Car("firstCar"));
+        carRepository.save(new Car("secondCar"));
+        carRepository.save(new Car("thirdCar"));
 
         //when
         List<Car> cars = carService.findCars();
@@ -59,9 +58,9 @@ class CarServiceTest {
     @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
     public void findMovementRangeOfCars() throws Exception {
         //given
-        Car firstCar = new Car();
+        Car firstCar = new Car("firstCar");
         firstCar.move(5);
-        Car secondCar = new Car();
+        Car secondCar = new Car("secondCar");
         secondCar.move(1);
         carRepository.save(firstCar);
         carRepository.save(secondCar);
@@ -79,9 +78,8 @@ class CarServiceTest {
     @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
     public void findByName() throws Exception {
         //given
-        Car car = new Car();
         String name = "seongbeen";
-        car.setName(name);
+        Car car = new Car(name);
         carRepository.save(car);
 
         //when
