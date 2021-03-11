@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +18,7 @@ public class CarTest {
 
     @Test
     @DisplayName("distance의 초기값은 0이어야 한다.")
-    void should_ReturnZeroToGetDistance_When_Init() {
+    void distance() {
         final int expected = 0;
 
         final int distance = car.getDistance();
@@ -24,17 +26,30 @@ public class CarTest {
         assertThat(distance).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"0:0", "3:0", "4:1", "9:1"}, delimiter = ':')
+    @DisplayName("주어진 값이 0 ~ 3일 때는 정지, 4 ~ 9일 때는 전진해야 한다.")
+    void tryMove(String random, String expected) {
+        final int randomValue = Integer.parseInt(random);
+        final int expectedValue = Integer.parseInt(expected);
+
+        car.tryMove(() -> randomValue);
+
+        assertThat(car.getDistance()).isEqualTo(expectedValue);
+    }
+
+
     @Test
-    @DisplayName("distance는 move한 횟수와 같은 값이어야 한다.")
-    void should_EqualGetDistanceToMoveCount() {
-        final int expected = 4;
+    @DisplayName("car는 Cloneable의 instance다.")
+    void cloneable() {
+        assertThat(car).isInstanceOf(Cloneable.class);
+    }
 
-        for (int i = 0; i < expected; i++) {
-            car.move();
-        }
+    @Test
+    @DisplayName("클론된 객체와 distance의 값은 같아야 한다.")
+    void cloned() {
+        final Car clonedCar = car.clone();
 
-        final int distance = car.getDistance();
-
-        assertThat(distance).isEqualTo(expected);
+        assertThat(clonedCar.getDistance()).isEqualTo(car.getDistance());
     }
 }
