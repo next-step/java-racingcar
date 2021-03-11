@@ -3,7 +3,7 @@ package racingcar;
 public class MoveOneStrategy implements MoveStrategy {
     public static final MoveOneStrategy INSTANCE = new MoveOneStrategy();
 
-    public static final int MOVE_TWO = 1;
+    public static final int MOVE_ONE = 1;
 
     private void MoveOneStrategy() {
 
@@ -12,7 +12,7 @@ public class MoveOneStrategy implements MoveStrategy {
     @Override
     public boolean move(FormulaOne formulaOne) {
         Circuit circuit = formulaOne.getCircuit();
-        circuit.addLabCount(MOVE_TWO);
+        circuit.addLabCount(MOVE_ONE);
         return true;
     }
 }
