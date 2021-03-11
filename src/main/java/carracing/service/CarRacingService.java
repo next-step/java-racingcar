@@ -3,6 +3,7 @@ package carracing.service;
 import carracing.constants.CarRacingConstant;
 import carracing.domain.Car;
 import carracing.domain.CarService;
+import carracing.domain.Cars;
 import carracing.service.dto.*;
 
 /**
@@ -25,7 +26,7 @@ public class CarRacingService {
 
     public RacingResult executeCarRacing(RacingRegisterInfo racingRegisterInfo) {
         validate(racingRegisterInfo);
-        return getRacingResult(racingRegisterInfo.getRoundCount(), registerPlayers(racingRegisterInfo.getRacingCarCount()));
+        return getRacingResult(racingRegisterInfo.getRoundCount(), carService.registerCars(racingRegisterInfo.getRacingCarCount()));
     }
 
     private void validate(RacingRegisterInfo racingRegisterInfo) {
@@ -33,31 +34,23 @@ public class CarRacingService {
         carRacingValidator.validateRoundCount(racingRegisterInfo.getRoundCount());
     }
 
-    private Players registerPlayers(int racingCarCount) {
-        Players players = new Players();
-        for (int i = CarRacingConstant.FIRST_CAR_NUMBER; i <= racingCarCount; i++) {
-            players.registerPlayer(carService.registerCar(i));
-        }
-        return players;
-    }
-
-    private RacingResult getRacingResult(int roundCount, Players players) {
+    private RacingResult getRacingResult(int roundCount, Cars cars) {
         RacingResult racingResult = new RacingResult();
         for (int i = CarRacingConstant.ROUND_START_NUMBER; i <= roundCount; i++) {
-            racingResult.registerRoundResult(executeRound(i, players));
+            racingResult.registerRoundResult(executeRound(i, cars));
         }
         return racingResult;
     }
 
-    private RoundResult executeRound(int roundNumber, Players players) {
+    private RoundResult executeRound(int roundNumber, Cars cars) {
         RoundResult roundResult = new RoundResult();
-        roundResult.registerRoundResult(roundNumber, executeScoring(players));
+        roundResult.registerRoundResult(roundNumber, executeScoring(cars));
         return roundResult;
     }
 
-    private RacingScores executeScoring(Players players) {
+    private RacingScores executeScoring(Cars cars) {
         RacingScores racingScores = new RacingScores();
-        for (Car car : players.getCarList()) {
+        for (Car car : cars.getCarList()) {
             car.drive();
             racingScores.registerRacingScore(car);
         }
