@@ -1,50 +1,48 @@
 package racingcar.domain;
 
-import racingcar.util.Conditions;
-
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Car {
 
+    private static final int LOWER_LIMIT = 0;
+    private static final int HIGHER_LIMIT = 9;
     private Name name;
-    private int position = 0;
+    private Position position;
 
     public Car(String name, int position) {
         this.name = new Name(name);
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public Car(String name) {
         this.name = new Name(name);
-        this.position = 0;
+        this.position = new Position(0);
     }
 
    public Name getName() {
         return name;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
     public void updatePositionByCondition(int number) {
-        positionValueValidation(number);
+        conditionValueValidation(number);
 
-        if (Conditions.isAcceptCondition(number)) {
-            position++;
-        }
+        position.update(number);
     }
 
-    public void positionValueValidation (int number) {
-        if (Conditions.isInvalidNumber(number)) {
+    public void conditionValueValidation(int number) {
+        if (number > HIGHER_LIMIT || number < LOWER_LIMIT) {
             throw new IllegalArgumentException("0 ~ 9까지의 값만 사용할 수 있습니다.");
         }
     }
 
     @Override
     public String toString() {
-        return IntStream.range(0, position)
+        return IntStream.range(0, position.getPosition())
                 .mapToObj(i -> "-")
                 .collect(Collectors.joining(""));
     }

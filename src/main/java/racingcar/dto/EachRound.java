@@ -15,6 +15,7 @@ public class EachRound {
 
     public void recordRoundPosition(Car car) {
         result.put(car.getName()
-                        .toString(), car.getPosition());
+                        .toString(), car.getPosition()
+                                            .getPosition());
     }
 }
