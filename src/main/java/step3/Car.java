@@ -13,4 +13,8 @@ public class Car {
         this.distance += this.moveStrategy.getDistance();
     }
 
+    int getDistance(){
+        return this.distance;
+    }
+
 }

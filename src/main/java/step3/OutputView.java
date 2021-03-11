@@ -15,7 +15,21 @@ public class OutputView {
     }
 
     static void printDash(){
-        System.out.println(CarRacingConstant.DASH);
+        System.out.print(CarRacingConstant.DASH);
+    }
+
+    static void printCarRacing(Cars cars){
+        for(int i = 0; i < cars.getNumberOfCars(); i++){
+            printCarDistance(cars.getCar(i).getDistance());
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    static void printCarDistance(int distance){
+        for(int i = 0; i < distance; i++){
+            printDash();
+        }
     }
 
 }

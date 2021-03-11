@@ -19,4 +19,12 @@ public class Cars {
         }
     }
 
+    Car getCar(int i){
+        return cars.get(i);
+    }
+
+    int getNumberOfCars(){
+        return cars.size();
+    }
+
 }
