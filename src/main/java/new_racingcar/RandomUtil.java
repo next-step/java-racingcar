@@ -1,13 +1,13 @@
-package racingcar;
+package new_racingcar;
 
 import java.util.Random;
 
-public final class RandomDice {
+public class RandomUtil {
     private static final int RANDOM_SIZE = 10;
 
     private static Random random = new Random();
 
-    public static int getRandomValue() {
+    public static int getValue() {
         return random.nextInt(RANDOM_SIZE);
     }
 }
