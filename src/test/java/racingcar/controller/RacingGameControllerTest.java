@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.repository.CarRepository;
+import racingcar.repository.GameRoundRepository;
 import racingcar.service.CarService;
+import racingcar.service.GameRoundService;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -16,13 +18,17 @@ class RacingGameControllerTest {
 
     private CarRepository carRepository;
     private CarService carService;
+    private GameRoundRepository gameRoundRepository;
+    private GameRoundService gameRoundService;
     private RacingGameController racingGameController;
 
     @BeforeEach
     public void setUp() {
         this.carRepository = new CarRepository();
         this.carService = new CarService(this.carRepository);
-        this.racingGameController = new RacingGameController(this.carService);
+        this.gameRoundRepository = new GameRoundRepository();
+        this.gameRoundService = new GameRoundService(this.gameRoundRepository);
+        this.racingGameController = new RacingGameController(this.carService, this.gameRoundService);
     }
 
     @ParameterizedTest(name = "입력한 대수가 {0}일 경우")

@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.GameRound;
 import racingcar.service.CarService;
+import racingcar.service.GameRoundService;
 import racingcar.view.ResultView;
 
 import java.util.List;
@@ -11,12 +12,13 @@ import java.util.Random;
 public class RacingGameController {
 
     private final CarService carService;
+    private final GameRoundService gameRoundService;
     private final Random random = new Random();
     private final int MAX_INCLUSIVE = 10;
-    private GameRound gameRound;
 
-    public RacingGameController(CarService carService) {
+    public RacingGameController(CarService carService, GameRoundService gameRoundService) {
         this.carService = carService;
+        this.gameRoundService = gameRoundService;
     }
 
     public void createCars(int numberOfCars) {
@@ -26,7 +28,7 @@ public class RacingGameController {
     }
 
     public void createGameRound(int numberOfAttempts) {
-        gameRound = new GameRound(numberOfAttempts);
+        gameRoundService.create(new GameRound(numberOfAttempts));
     }
 
     public void raceEachRound() {
@@ -36,7 +38,7 @@ public class RacingGameController {
     public void printGameResult() {
         ResultView.INSTANCE.printResultStatement();
 
-        for (int i = 0; i < gameRound.getRound(); i++) {
+        for (int i = 0; i < gameRoundService.loadGameRound().getRound(); i++) {
             raceEachRound();
             ResultView.INSTANCE.printEachRoundResult(carService.findMovementRangeOfCars());
         }
