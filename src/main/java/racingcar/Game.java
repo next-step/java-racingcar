@@ -5,53 +5,62 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
-	private List<Car> carList = new ArrayList<>();
-	private int executeCount = 0;
-	private Random random = new Random();
+    private List<Car> carList = new ArrayList<>();
+    private int executeCount = 0;
+    private Random random = new Random();
 
-	public Game(int carListSize) {
-		makeCar(carListSize);
-	}
+    public Game(int carListSize) {
+        makeCar(carListSize);
+    }
 
-	private void makeCar(int carListSize) {
-		for (int i = 0; i < carListSize; i++) {
-			carList.add(new Car());
-		}
-	}
+    public Game(String[] carNames) {
+        makeCar(carNames);
+    }
 
-	public List<Car> getCar() {
-		return carList;
-	}
+    public List<Car> getCar() {
+        return carList;
+    }
 
-	public int getExecuteCount() {
-		return this.executeCount;
-	}
+    public int getExecuteCount() {
+        return this.executeCount;
+    }
 
-	public void run(int executeCount) {
-		ResultView resultView = new ResultView();
-		resultView.printHead();
-		this.executeCount = 0;
+    public GameResult run(int executeCount) {
+        GameResult gameResult = new GameResult();
+        this.executeCount = 0;
 
-		for (int i = 0; i < executeCount; i++) {
-			execute(resultView);
-			this.executeCount++;
-		}
-	}
+        for (int i = 0; i < executeCount; i++) {
+            execute(gameResult);
+            this.executeCount++;
+        }
+        return gameResult;
+    }
 
-	private void execute(ResultView resultView) {
-		for (Car car : carList) {
-			moveOrStop(car);
-			resultView.printPosition(car.getPosition());
-		}
-		resultView.printEmptyLine();
 
-	}
+    private void makeCar(int carListSize) {
+        for (int i = 0; i < carListSize; i++) {
+            carList.add(new Car());
+        }
+    }
 
-	public void moveOrStop(Car car) {
-		int randomNumber = random.nextInt(10);
-		if (randomNumber >= 4) {
-			car.move();
-		}
-	}
+    private void makeCar(String[] carNames) {
+        for (String carName : carNames) {
+            carList.add(new Car(carName));
+        }
+    }
+
+    private void execute(GameResult gameResult) {
+        List<Car> resultCarList = new ArrayList<>();
+        for (Car car : carList) {
+            car.moveOrStop(random.nextInt(10));
+
+            Car resultCar = new Car(car.getCarName());
+            resultCar.setPosition(car.getPosition());
+            resultCarList.add(resultCar);
+
+        }
+        gameResult.addResult(resultCarList);
+
+    }
 
 }
