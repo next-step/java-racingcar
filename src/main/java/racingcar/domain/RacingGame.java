@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
 import racingcar.dto.EachRound;
 import racingcar.dto.FinalResult;
 import racingcar.dto.InputManagement;
