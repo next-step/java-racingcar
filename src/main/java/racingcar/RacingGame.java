@@ -7,19 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.Rule;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
+import racingcar.util.RandomNumberGenerator;
 
 public class RacingGame {
 
   private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-  private static final StringBuilder writer = new StringBuilder();
 
   private static final InputView inputView = new InputView(reader);
-  private static final OutputView outputView = new OutputView(writer);
+  private static final OutputView outputView = new OutputView();
 
-  private Rule rule;
+  private int round;
+  private Cars cars;
+  private RandomNumberGenerator randomNumberGenerator;
 
   public static void main(String[] args) throws IOException {
     RacingGame racingGame = new RacingGame();
@@ -34,20 +35,22 @@ public class RacingGame {
   }
 
   public void playGame() {
-    outputView.printInitialCarPosition(rule.getCars());
+    outputView.printInitialCarPosition(cars);
     doRacingGame();
     outputView.endGame();
   }
 
   private void doRacingGame() {
-    for(int i = 0; i < rule.getRound(); i++){
-      rule.doRacing();
-      outputView.printCarPosition(rule.getCars(), i+1);
+    for(int i = 0; i < round; i++){
+      cars.updateAll(randomNumberGenerator);
+      outputView.printCarPosition(cars, i+1);
     }
   }
 
   private void initPhase(int numberOfCar, int numberOfRound) {
-    this.rule = createRule(numberOfRound, createCars(numberOfCar));
+    this.cars = createCars(numberOfCar);
+    this.round = numberOfRound;
+    this.randomNumberGenerator = new RandomNumberGenerator(System.currentTimeMillis());
   }
 
   private Cars createCars(int numberOfCars) {
@@ -56,9 +59,5 @@ public class RacingGame {
       carList.add(Car.createCar());
     }
     return new Cars(carList);
-  }
-
-  private Rule createRule(int numberOfRounds, Cars cars) {
-    return Rule.createRule(numberOfRounds, cars);
   }
 }
