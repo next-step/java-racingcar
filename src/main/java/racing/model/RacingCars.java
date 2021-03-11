@@ -2,6 +2,7 @@ package racing.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import static java.util.Comparator.comparing;
@@ -12,12 +13,6 @@ public class RacingCars {
     private final List<RacingCar> carList;
 
     public RacingCars(String[] racingCarNames) {
-        boolean duplicated = Arrays.stream(racingCarNames)
-                .distinct()
-                .count() == racingCarNames.length;
-        if (!duplicated) {
-            throw new IllegalArgumentException("중복된 자동차 이름이 있습니다.");
-        }
         this.carList = createRacingCar(racingCarNames);
     }
 
@@ -42,11 +37,9 @@ public class RacingCars {
     /**
      * 자동차를 이동하는 메서드
      */
-    public RacingCars move(List<Integer> randomValue) {
-        int index = 0;
+    public RacingCars move(Iterator<Integer> randomValue) {
         for (RacingCar racingCar : carList) {
-            carList.get(index).move(randomValue.get(index));
-            index++;
+            racingCar.move(randomValue.next());
         }
         return this;
     }
@@ -55,10 +48,11 @@ public class RacingCars {
      * 우승자를 설정하는 메서드
      */
     public List<String> findWinners() {
-        int winnerPosition = carList.stream()
-                .max(comparing(RacingCar::getPosition))
-                .orElseThrow(() -> new IllegalArgumentException("자동차가 없습니다."))
-                .getPosition();
+        RacingCar MaxPositionCar = new RacingCar("Max", 0);
+        for (RacingCar racingCar : carList) {
+            MaxPositionCar = getWinnerCar(racingCar, MaxPositionCar);
+        }
+        Position winnerPosition = MaxPositionCar.getPosition();
 
         return carList.stream()
                 .filter(car -> car.isSame(winnerPosition))
@@ -66,12 +60,20 @@ public class RacingCars {
                 .collect(toList());
     }
 
+    public RacingCar getWinnerCar(RacingCar racingCar, RacingCar MaxRacingCar) {
+        if (racingCar.isGreaterThan(MaxRacingCar)) {
+            return racingCar;
+        }
+        return MaxRacingCar;
+    }
+
     /**
      * 데이터 전송 객체 리스트를 만드는 메서드
      */
-    public List<RacingCarDto> createDtoList() {
-        return carList.stream()
-                .map((car) -> new RacingCarDto(car.getRacingCarName(), car.getPosition()))
+    public RacingCarsDto createDtoList() {
+        List<RacingCarDto> carDtoList = carList.stream()
+                .map(car -> new RacingCarDto(car.getRacingCarName(), car.getPosition()))
                 .collect(toList());
+        return new RacingCarsDto(carDtoList);
     }
 }

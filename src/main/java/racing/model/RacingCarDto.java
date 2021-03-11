@@ -8,9 +8,9 @@ public class RacingCarDto {
      * Contoller에서 ResultView로 이동하는 데이터 전송 객체
      */
     private final String racingCarName;
-    private final int position;
+    private final Position position;
 
-    public RacingCarDto(String racingCarName, int position) {
+    public RacingCarDto(String racingCarName, Position position) {
         this.racingCarName = racingCarName;
         this.position = position;
     }
@@ -19,7 +19,7 @@ public class RacingCarDto {
         return racingCarName;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -28,7 +28,7 @@ public class RacingCarDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RacingCarDto that = (RacingCarDto) o;
-        return position == that.position && Objects.equals(racingCarName, that.racingCarName);
+        return Objects.equals(racingCarName, that.racingCarName) && Objects.equals(position, that.position);
     }
 
     @Override

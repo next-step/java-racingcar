@@ -2,6 +2,7 @@ package racing.model;
 
 import racing.view.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -21,12 +22,13 @@ public class GameTurn {
     /**
      * 게임 턴마다 자동차를 움직이고 결과 값을 보여주는 메서드
      */
-    public RacingGame play(RacingGame racingGame, ResultView resultView) {
+    public List<RacingCarsDto> play(RacingGame racingGame) {
+        List<RacingCarsDto> recode = new ArrayList<>();
         for (int i = 0; i < gameTurn; i++) {
             List<Integer> randomValues = createRandomValue(racingGame);
-            resultView.turnResultView(turn(racingGame, randomValues).createDtoList());
+            recode.add(turn(racingGame, randomValues).createDtoList());
         }
-        return racingGame;
+        return recode;
     }
 
     /**

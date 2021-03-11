@@ -27,7 +27,7 @@ class RacingCarTest {
         racingCar.move(moveCount);
 
         //then
-        assertEquals(1, racingCar.getPosition());
+        assertEquals(new Position(1), racingCar.getPosition());
     }
 
     @DisplayName("자동차 정지 테스트")
@@ -40,7 +40,7 @@ class RacingCarTest {
         racingCar.move(moveCount);
 
         //then
-        assertEquals(0, racingCar.getPosition());
+        assertEquals(new Position(0), racingCar.getPosition());
     }
 
     @DisplayName("앞으로 가는 조건 테스트")
@@ -58,9 +58,9 @@ class RacingCarTest {
     void isSame() {
         //given
         RacingCar racingCar = new RacingCar("LG", 5);
-        int randomValue = 5;
+        Position position = new Position(5);
 
         //then
-        assertThat(racingCar.isSame(randomValue)).isTrue();
+        assertThat(racingCar.isSame(position)).isTrue();
     }
 }

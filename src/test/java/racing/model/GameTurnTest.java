@@ -29,10 +29,10 @@ class GameTurnTest {
 
         //when
         RacingCars racingCars = gameTurn.turn(racingGame, createRandomValue(1, 5, 6));
-        List<RacingCarDto> racingCarDto = racingCars.createDtoList();
+        RacingCarsDto dtoList = racingCars.createDtoList();
 
         //then
-        assertThat(racingCarDto).containsExactly(new RacingCarDto("LG", 0), new RacingCarDto("SKT", 1), new RacingCarDto("KT", 1));
+        assertThat(dtoList.getCarList()).containsExactly(new RacingCarDto("LG", new Position(0)), new RacingCarDto("SKT", new Position(1)), new RacingCarDto("KT", new Position(1)));
     }
 
     private List<Integer> createRandomValue(int firstCarMovePosition, int secondCarMovePosition,

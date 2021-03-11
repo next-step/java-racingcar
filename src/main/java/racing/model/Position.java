@@ -1,17 +1,20 @@
 package racing.model;
 
+import java.util.Objects;
+
 public class Position {
 
     private int position;
     private static final int ZERO = 0;
+    private static final String POSITION = "-";
 
     public Position(int position) {
         valid(position);
         this.position = position;
     }
 
-    public int getPosition() {
-        return this.position;
+    public Position getPosition() {
+        return this;
     }
 
     /**
@@ -27,8 +30,28 @@ public class Position {
         }
     }
 
-    public Boolean equals(int position) {
-        return this.position == position;
+    public boolean isSame(Position position) {
+        return this.position == position.position;
     }
 
+    public String moveDistance() {
+        return POSITION.repeat(position);
+    }
+
+    public boolean isGreaterThan(Position otherCarPosition) {
+        return this.position > otherCarPosition.position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return position == position1.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
+    }
 }

@@ -26,8 +26,8 @@ public class RacingCar {
     /**
      * 자동차 위치를 알려주는 메서드
      */
-    public int getPosition() {
-        return position.getPosition();
+    public Position getPosition() {
+        return position;
     }
 
     /**
@@ -49,7 +49,11 @@ public class RacingCar {
     /**
      * 포지션이 같은지 판단하는 메서드
      */
-    public Boolean isSame(int position) {
-        return this.position.equals(position);
+    public Boolean isSame(Position otherCarPosition) {
+        return this.position.isSame(otherCarPosition);
+    }
+
+    public Boolean isGreaterThan(RacingCar otherCar) {
+        return this.position.isGreaterThan(otherCar.position);
     }
 }

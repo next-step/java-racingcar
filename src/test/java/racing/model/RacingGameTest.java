@@ -24,10 +24,10 @@ class RacingGameTest {
         List<Integer> randomValue = createRandomValue(5, 2, 5);
         //when
         RacingCars racingCars = racingGame.moveAndStop(randomValue);
-        List<RacingCarDto> resultCars = racingCars.createDtoList();
+        RacingCarsDto resultDto = racingCars.createDtoList();
 
         //then
-        assertThat(resultCars).containsExactly(new RacingCarDto("LG", 1), new RacingCarDto("SKT", 0), new RacingCarDto("KT", 1));
+        assertThat(resultDto.getCarList()).containsExactly(new RacingCarDto("LG", new Position(1)), new RacingCarDto("SKT", new Position(0)), new RacingCarDto("KT", new Position(1)));
     }
 
     @DisplayName("우승자 선택 테스트")

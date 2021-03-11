@@ -22,4 +22,18 @@ class CarNameParserTest {
         assertThat(racingCarNames[1]).isEqualTo("KT");
         assertThat(racingCarNames[2]).isEqualTo("SKT");
     }
+
+    @DisplayName("자동차 이름 중복예외 테스트")
+    @Test
+    void valid() {
+        //given
+        String participationList = "LG,LG,SKT";
+        CarNameParser carNameParser = new CarNameParser(participationList);
+
+        //when
+        assertThatThrownBy(carNameParser::parse).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageMatching("중복된 자동차 이름이 있습니다.");
+
+
+    }
 }

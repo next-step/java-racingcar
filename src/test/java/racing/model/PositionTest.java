@@ -15,7 +15,7 @@ class PositionTest {
 
         position.move();
 
-        assertThat(position.getPosition()).isEqualTo(1);
+        assertThat(position.getPosition()).isEqualTo(new Position(1));
     }
 
     @DisplayName("포지션이 음수 테스트")
@@ -23,7 +23,7 @@ class PositionTest {
     void positionValid() {
 
         assertThatThrownBy(() -> {
-            Position position = new Position(-1);
+            new Position(-1);
         }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("포지션은 음수일 수 없습니다.");
     }
 }

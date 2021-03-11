@@ -14,7 +14,7 @@ public class RacingGame {
      * 조건에 따라 자동차를 이동시켜주는 메서드
      */
     public RacingCars moveAndStop(List<Integer> randomValue) {
-        return cars.move(randomValue);
+        return cars.move(randomValue.iterator());
     }
 
     public List<String> findWinners() {

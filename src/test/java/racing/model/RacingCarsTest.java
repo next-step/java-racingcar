@@ -23,11 +23,11 @@ public class RacingCarsTest {
         List<Integer> randomValue = createRandomValue(5, 7, 8);
 
         //when
-        RacingCars moveCars = cars.move(randomValue);
-        List<RacingCarDto> moveCarList = moveCars.createDtoList();
+        RacingCars moveCars = cars.move(randomValue.iterator());
+        RacingCarsDto resultDto = moveCars.createDtoList();
 
         //then
-        assertThat(moveCarList).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(1));
+        assertThat(resultDto.getCarList()).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(new Position(1)));
     }
 
     @DisplayName("이동거리가 4미만일때 자동차 정지 테스트")
@@ -38,11 +38,11 @@ public class RacingCarsTest {
         List<Integer> randomValue = createRandomValue(2, 3, 1);
 
         //when
-        RacingCars moveCars = cars.move(randomValue);
-        List<RacingCarDto> moveCarList = moveCars.createDtoList();
+        RacingCars moveCars = cars.move(randomValue.iterator());
+        RacingCarsDto resultDto = moveCars.createDtoList();
 
         //then
-        assertThat(moveCarList).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(0));
+        assertThat(resultDto.getCarList()).allSatisfy(car -> assertThat(car.getPosition()).isEqualTo(new Position(0)));
     }
 
     @DisplayName("우승자 가리는 메서드 테스트")
@@ -51,7 +51,7 @@ public class RacingCarsTest {
         //given
         RacingCars cars = init();
         List<Integer> randomValue = createRandomValue(3, 5, 2);
-        cars.move(randomValue);
+        cars.move(randomValue.iterator());
 
         //when
         List<String> winner = cars.findWinners();
@@ -66,7 +66,7 @@ public class RacingCarsTest {
         //given
         RacingCars cars = init();
         List<Integer> randomValue = createRandomValue(5, 5, 2);
-        cars.move(randomValue);
+        cars.move(randomValue.iterator());
 
         //when
         List<String> winner = cars.findWinners();
@@ -82,11 +82,11 @@ public class RacingCarsTest {
     void createDtoList() {
         RacingCars cars = init();
         List<Integer> randomValue = createRandomValue(5, 5, 2);
-        cars.move(randomValue);
+        cars.move(randomValue.iterator());
 
-        List<RacingCarDto> racingCarDtoList = cars.createDtoList();
+        RacingCarsDto resultDto = cars.createDtoList();
 
-        assertThat(racingCarDtoList).containsExactly(new RacingCarDto("LG", 1), new RacingCarDto("SKT", 1), new RacingCarDto("KT", 0));
+        assertThat(resultDto.getCarList()).containsExactly(new RacingCarDto("LG", new Position(1)), new RacingCarDto("SKT", new Position(1)), new RacingCarDto("KT", new Position(0)));
     }
 
     private List<Integer> createRandomValue(int firstCarMovePosition, int secondCarMovePosition,
