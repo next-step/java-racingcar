@@ -10,22 +10,19 @@ package carracing.controller.dto;
  */
 public class CarRacingRequest {
 
-    private int racingCarCount = 0;
-    private int roundCount = 0;
+    private int racingCarCount;
+    private int roundCount;
+
+    public CarRacingRequest(int racingCarCount, int roundCount) {
+        this.racingCarCount = racingCarCount;
+        this.roundCount = roundCount;
+    }
 
     public int getRacingCarCount() {
         return racingCarCount;
     }
 
-    public void setRacingCarCount(int racingCarCount) {
-        this.racingCarCount = racingCarCount;
-    }
-
     public int getRoundCount() {
         return roundCount;
-    }
-
-    public void setRoundCount(int roundCount) {
-        this.roundCount = roundCount;
     }
 }

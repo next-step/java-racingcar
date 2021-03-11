@@ -13,11 +13,7 @@ public class InputView {
     }
 
     public CarRacingRequest inputRequest() {
-        CarRacingRequest carRacingRequest = new CarRacingRequest();
-        carRacingRequest.setRacingCarCount(this.inputRacingCarCount());
-        carRacingRequest.setRoundCount(this.inputRacingCount());
-
-        return carRacingRequest;
+        return new CarRacingRequest(this.inputRacingCarCount(), this.inputRacingCount());
     }
 
     private int inputRacingCarCount() {
