@@ -7,14 +7,13 @@ public class RacingCarMain {
     public static void main(String[] args) {
         final int MOVE_THRESHOLD = 4;
 
-        InputView<String[]> inputView = new Step4InputView();
-        String[] carNames = inputView.getCarInfo();
+        InputView inputView = new Step4InputView();
+        List<String> carNames = inputView.getCarNames();
         int numberOfRacing = inputView.getNumberOfRacing();
 
         List<Car> cars = new ArrayList<Car>();
-        for (int carNameIndex = 0; carNameIndex < carNames.length; carNameIndex++) {
-            cars.add(new SimpleCar(carNames[carNameIndex]));
-        }
+        carNames.forEach(name -> cars.add(new SimpleCar(name)));
+
 
         OutputView outputView = new Step4OutputView();
 

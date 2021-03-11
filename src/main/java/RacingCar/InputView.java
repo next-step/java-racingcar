@@ -1,7 +1,11 @@
 package RacingCar;
 
-public interface InputView<T> {
-    T getCarInfo();
+import java.util.List;
+
+public interface InputView {
+    int getNumberOfCar();
 
     int getNumberOfRacing();
+
+    List<String> getCarNames();
 }
