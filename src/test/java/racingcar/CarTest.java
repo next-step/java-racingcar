@@ -16,7 +16,7 @@ class CarTest {
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
     void carNameCanUnder5(String carName) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Car(carName, 0).nameValueInValidation();
+            new Car(carName).nameValueInValidation();
         });
     }
 
@@ -24,7 +24,7 @@ class CarTest {
     @CsvSource({"3, 0", "4, 1"})
     @DisplayName("경계값 분석을 통해 4이상인 경우 전진하고, 미만인 경우 멈추는지 확인한다.")
     void updateByOver4(int number, int position) {
-        Car car = new Car("jhLim97",0);
+        Car car = new Car("jhLim97");
 
         car.updatePositionByCondition(number);
         assertThat(car.getPosition()).isEqualTo(position);
@@ -44,7 +44,7 @@ class CarTest {
     @DisplayName("0에서 9사이의 숫자 이외에는 자동차가 판단할 수 없다.")
     void checkRange(int number) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Car("jhLim97",0).positionValueValidation (number);
+            new Car("jhLim97").positionValueValidation(number);
         });
     }
 

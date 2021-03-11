@@ -3,7 +3,6 @@ package racingcar.view;
 import racingcar.domain.Car;
 import racingcar.dto.InputManagement;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
