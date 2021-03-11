@@ -13,7 +13,7 @@ public class CarNameValidator {
 
   private static void isProper(String name) {
     if (name.length() > MAX_CAR_NAME_LENGTH) {
-      throw new CarNameException("자동차 이름은 5자를 초과할 수 없습니다.");
+      throw new CarNameException("자동차 이름은 " + MAX_CAR_NAME_LENGTH + "자를 초과할 수 없습니다.");
     }
   }
 
