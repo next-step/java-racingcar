@@ -15,8 +15,8 @@ import carracing.service.dto.*;
  */
 public class CarRacingService {
 
-    CarService         carService;
-    CarRacingValidator carRacingValidator;
+    private CarService         carService;
+    private CarRacingValidator carRacingValidator;
 
     public CarRacingService() {
         this.carService = new CarService();

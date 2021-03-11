@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class RacingResult {
 
-    List<RoundResult> roundResultList = new ArrayList<>();
+    private List<RoundResult> roundResultList = new ArrayList<>();
 
     public List<RoundResult> getRoundResultList() {
         return roundResultList;

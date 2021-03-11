@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class CarRacingController {
 
-    CarRacingService carRacingService;
+    private CarRacingService carRacingService;
 
     public CarRacingController() {
         this.carRacingService = new CarRacingService();
