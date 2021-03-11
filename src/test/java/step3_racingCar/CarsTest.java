@@ -1,6 +1,7 @@
 package step3_racingCar;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -42,5 +43,13 @@ class CarsTest {
         assertThat(cars.getCars().size()).isEqualTo(CARNUM);
     }
 
+    //TODO 테스트의 재설계 필요
+    @Test
+    @DisplayName("자동차 집합이 보유중인 자동차들의 전진 횟수를 테스트한다")
+    void checkForwardTest(){
+        assertThat(cars.checkForward().size()).isEqualTo(0);
 
+        cars.setCars(carList);
+        assertThat(cars.checkForward().size()).isEqualTo(CARNUM);
+    }
 }

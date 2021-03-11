@@ -24,4 +24,12 @@ public class Cars {
     public int getTryNum() {
         return tryNum;
     }
+
+    public LinkedList<Integer> checkForward(){
+        LinkedList<Integer> forwardNums = new LinkedList<>();
+        cars.stream().forEach(car -> {
+            forwardNums.add(car.getForwardNum());
+        });
+        return forwardNums;
+    }
 }
