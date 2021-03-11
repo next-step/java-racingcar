@@ -5,10 +5,10 @@ package step3.ui.dto;
  */
 public class RequestRacingGame {
 
-    private final int participants;
+    private final String[] participants;
     private final int attemptCount;
 
-    public RequestRacingGame(int participants, int attemptCount) {
+    public RequestRacingGame(String[] participants, int attemptCount) {
         this.participants = participants;
         this.attemptCount = attemptCount;
     }
@@ -17,7 +17,7 @@ public class RequestRacingGame {
         return attemptCount;
     }
 
-    public int getParticipants() {
+    public String[] getParticipants() {
         return participants;
     }
 }

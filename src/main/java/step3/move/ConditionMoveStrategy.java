@@ -18,7 +18,7 @@ public class ConditionMoveStrategy implements MoveStrategy {
     }
 
     // 인터페이스를 파라미터로 설정, 구현체를 파라미터로 받아 생성
-    public ConditionMoveStrategy(NumberGenerator numberStrategy) {
+    public ConditionMoveStrategy(final NumberGenerator numberStrategy) {
         this.numberStrategy = numberStrategy;
     }
 
