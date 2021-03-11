@@ -9,10 +9,10 @@ public class Cars {
 
     private List<Car> cars;
 
-    public Cars(int numberOfCars) {
+    public Cars(String[] carNames) {
         cars = new LinkedList<>();
-        for (int i = 0 ; i < numberOfCars; i++) {
-            cars.add(new Car(new RandomEngine()));
+        for (String carName : carNames) {
+            cars.add(new Car(new RandomEngine(), carName));
         }
     }
 

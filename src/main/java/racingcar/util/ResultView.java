@@ -5,6 +5,7 @@ import racingcar.domain.Car;
 public class ResultView {
 
     private static final String DISPLAY_UNIT = "-";
+    private static final String CONNECTION_FORMAT = " : ";
 
     private ResultView() {
     }
@@ -15,6 +16,7 @@ public class ResultView {
 
     public static void showResult(Car car) {
         StringBuilder positionBuilder = new StringBuilder();
+        positionBuilder.append(car.getName()).append(CONNECTION_FORMAT);
         for (int i = 0 ; i < car.getPosition(); i++) {
             positionBuilder.append(DISPLAY_UNIT);
         }
