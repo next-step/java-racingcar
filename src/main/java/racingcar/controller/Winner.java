@@ -1,10 +1,12 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import racingcar.model.Car;
 
 public class Winner {
+
+  public List<Car> nameOfWinner = new ArrayList<>();
 
   private int getMaxLocation(List<Car> cars) {
     return cars.stream().mapToInt(Car::getLocation).max().orElse(0);
@@ -14,8 +16,14 @@ public class Winner {
     return car.getLocation() == maxLocation;
   }
 
-  public List<Car> getWinner(List<Car> cars) {
+  private void addWinner(Car car, int maxLocation) {
+    if (isWinner(car, maxLocation)) {
+      nameOfWinner.add(car);
+    }
+  }
+
+  public void decideWinner(List<Car> cars) {
     int maxLocation = getMaxLocation(cars);
-    return cars.stream().filter(car -> isWinner(car, maxLocation)).collect(Collectors.toList());
+    cars.forEach(car -> addWinner(car, maxLocation));
   }
 }

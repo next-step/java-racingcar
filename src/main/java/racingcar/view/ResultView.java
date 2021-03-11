@@ -16,9 +16,10 @@ public class ResultView {
 
   public static void showWinnerName(List<Car> cars) {
     Winner win = new Winner();
+    win.decideWinner(cars);
 
     System.out.println(
-        win.getWinner(cars).stream().map(Car::getName).collect(Collectors.joining(", "))
+        win.nameOfWinner.stream().map(Car::getName).collect(Collectors.joining(", "))
             + "가 최종 우승했습니다.");
 
   }
