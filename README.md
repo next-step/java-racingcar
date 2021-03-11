@@ -23,5 +23,4 @@
 * RandomMoveStrategy : 랜덤움직임 전략
 * Car : 자동차 객체로서 이동거리(distance)와 이동전략(moveStrategy)을 가짐
 * Cars : Car를 요소로 하는 컬렉션을 멤버 변수로 가지는 일급 컬렉션
-* CarRacing : Cars와 Round를 멤버 변수로 가지며 자동차 경주 기능 메소드(Race)를 가짐
 * CarRacingApplication : View와 Model을 조율하며 실행하는 Controller
