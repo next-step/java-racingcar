@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
+import racingcar.domain.Name;
 import racingcar.dto.InputManagement;
 
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class InputView {
 
     public void isInValidNames(String[] carNames) {
         for (String carName : carNames) {
-            new Car(carName, 0).nameValueInValidation();
+            new Name(carName);
         }
     }
 
