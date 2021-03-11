@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -35,4 +36,11 @@ class CarTest {
         // then
         assertThat(testCar.getPosition()).isEqualTo(Car.INITIAL_POSITION);
     }
+
+    @DisplayName("자동차의 처음 포지션은 1이다")
+    @Test
+    public void initialValueOfCarPositionIsOne() {
+        assertThat(Car.INITIAL_POSITION).isEqualTo(1);
+    }
+
 }
