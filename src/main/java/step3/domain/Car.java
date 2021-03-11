@@ -2,18 +2,22 @@ package step3.domain;
 
 public class Car {
 
-    private static Integer currentLocation;
+    private final static int START_LOCATION = 1;
+    private Integer currentLocation;
 
     public Car() {
-        final Integer startLocation = 1;
-        currentLocation = startLocation;
+        currentLocation = START_LOCATION;
     }
 
     public void moveCar(Boolean isMove) {
-        
+        currentLocation = isMove ? ++currentLocation : currentLocation;
     }
 
     public Integer getCurrentLocation() {
         return currentLocation;
+    }
+
+    public Car(Integer location) {
+        currentLocation = location;
     }
 }

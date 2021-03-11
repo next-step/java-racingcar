@@ -8,15 +8,16 @@ import step3.service.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarGameTest {
     MoveStrategy moveStrategy = new MoveStrategy();
-
+    Random random = new Random();
 
     @Test
-    @DisplayName("전체 자동차를 움직이는 테스트")
+    @DisplayName("자동차를 움직이는 테스트")
     void moveCar() {
         // given
         Car testCar = new Car();
@@ -34,23 +35,30 @@ public class CarGameTest {
     @DisplayName("난수 발생 테스트")
     void generateRandomNumber() {
         //given
-        final Integer rowNum = 0;
-        final Integer highNum = 9;
+        Integer rowNum = 0;
+        Integer highNum = 9;
+        List<Integer> results = new ArrayList<>();
+        Integer testLoopTime = 100;
+        Integer testLoopStart = 0;
 
         //when
-        Integer result = moveStrategy.generateRandomNumber();
+        for (Integer i = testLoopStart; i < testLoopTime; i++) {
+            results.add(moveStrategy.generateRandomNumber());
+        }
 
         //then
-        assertThat(result).isGreaterThanOrEqualTo(rowNum);
-        assertThat(result).isLessThanOrEqualTo(highNum);
+        for (Integer result : results) {
+            assertThat(result).isBetween(rowNum, highNum);
+        }
     }
+
 
     @Test
     @DisplayName("랜덤 난수를 입력했을 때 움직일지 안움직일지 정하는 메소드 테스트")
     void isMove() {
         //given
-        final Integer moveNum = 5;
-        final Integer nonMoveNum = 1;
+        Integer moveNum = 5;
+        Integer nonMoveNum = 1;
 
         //when
         Boolean moveResult = moveStrategy.getIsMove(moveNum);
@@ -62,49 +70,60 @@ public class CarGameTest {
     }
 
     @Test
-    @DisplayName("게임을 한단계 시도했을 때 나올 수 있는 결과에 대한 테스트")
-    void runStep() {
-        //given
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-        final Integer rowNum = 1;
-        final Integer highNum = 2;
-
-        //when
-        GameService.runStep(cars);
-
-        //then
-        for (Car resultCar : cars) {
-            assertThat(resultCar.getCurrentLocation()).isLessThanOrEqualTo(highNum);
-            assertThat(resultCar.getCurrentLocation()).isGreaterThanOrEqualTo(rowNum);
-        }
-    }
-
-    @Test
-    @DisplayName("게임을 n단계 시도했을 때 나올 수 있는 결과에 대한 테스트")
+    @DisplayName("통합 테스트")
     void runManyStep() {
         //given
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-        final Integer notMove = 0;
-        final Integer Move = 1;
-        final Integer startLocation = 1;
-        final Integer step = 5;
-        Integer finalRowNum = startLocation + (notMove * step);
-        Integer finalHighNum = startLocation + (Move * step);
+        List<Integer> expectLocation = new ArrayList<>();
+        Integer testCarNum = 5;
 
-        //when
-        GameService.runStep(cars);
+        Integer startLocation = 1;
+        Integer step = 5;
 
-        //then
-        for (Car resultCar : cars) {
-            assertThat(resultCar.getCurrentLocation()).isLessThanOrEqualTo(finalHighNum);
-            assertThat(resultCar.getCurrentLocation()).isGreaterThanOrEqualTo(finalRowNum);
+        for (Integer i = 0; i < testCarNum; i++) {
+            cars.add(new Car());
+            expectLocation.add(startLocation + random.nextInt(step + 1));
         }
+        Integer rowNum = startLocation;
+        Integer highNum = startLocation + step;
+
+        List<Car> tempCars = new ArrayList<>();
+
+        for (Car car : cars) {
+            tempCars.add(new Car(car.getCurrentLocation()));
+        }
+
+
+        while (true) {
+            //given
+            cars = tempCars;
+
+            //when
+            for (Integer i = 0; i < step; i++) {
+                GameService.runStep(cars);
+            }
+            //then
+            isCorrectLocation(cars, testCarNum, rowNum, highNum);
+            if (isExpectLocation(cars, expectLocation, testCarNum)) {
+                break;
+            }
+        }
+    }
+
+
+    void isCorrectLocation(List<Car> cars, Integer testCarNum, Integer rowNum, Integer highNum) {
+        for (Integer i = 0; i < testCarNum; i++) {
+            assertThat(cars.get(i).getCurrentLocation()).isBetween(rowNum, highNum);
+        }
+    }
+
+    Boolean isExpectLocation(List<Car> cars, List<Integer> expectLocation, Integer testCarNum) {
+        for (Integer i = 0; i < testCarNum; i++) {
+            if (cars.get(i).getCurrentLocation() != expectLocation.get(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
