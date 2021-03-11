@@ -14,11 +14,11 @@ public class CarRacingResponse {
 
     private List<RoundResultInfo> roundResultInfoList;
 
-    public List<RoundResultInfo> getRoundResultList() {
-        return roundResultInfoList;
+    public CarRacingResponse(List<RoundResultInfo> roundResultInfoList) {
+        this.roundResultInfoList = roundResultInfoList;
     }
 
-    public void setRoundResultList(List<RoundResultInfo> roundResultInfoList) {
-        this.roundResultInfoList = roundResultInfoList;
+    public List<RoundResultInfo> getRoundResultList() {
+        return roundResultInfoList;
     }
 }

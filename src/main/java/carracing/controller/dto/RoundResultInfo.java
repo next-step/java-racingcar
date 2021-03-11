@@ -15,19 +15,16 @@ public class RoundResultInfo {
     private int roundNumber;
     private List<RacingScoreInfo> racingScoreInfoList;
 
+    public RoundResultInfo(int roundNumber, List<RacingScoreInfo> racingScoreInfoList) {
+        this.roundNumber = roundNumber;
+        this.racingScoreInfoList = racingScoreInfoList;
+    }
+
     public int getRoundNumber() {
         return roundNumber;
     }
 
-    public void setRoundNumber(int roundNumber) {
-        this.roundNumber = roundNumber;
-    }
-
     public List<RacingScoreInfo> getRacingScoreInfoList() {
         return racingScoreInfoList;
-    }
-
-    public void setRacingScoreInfoList(List<RacingScoreInfo> racingScoreInfoList) {
-        this.racingScoreInfoList = racingScoreInfoList;
     }
 }

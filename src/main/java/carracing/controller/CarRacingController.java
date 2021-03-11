@@ -32,30 +32,18 @@ public class CarRacingController {
     }
 
     private CarRacingResponse _assembleResponse(RacingResult racingResult) {
-        CarRacingResponse carRacingResponse = new CarRacingResponse();
         List<RoundResultInfo> roundResultInfoList = new ArrayList<>();
-
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
-            RoundResultInfo roundResultInfo = new RoundResultInfo();
-            roundResultInfo.setRoundNumber(roundResult.getRoundNumber());
-            roundResultInfo.setRacingScoreInfoList(_assembleRacingScoreInfo(roundResult.getRacingScores()));
-            roundResultInfoList.add(roundResultInfo);
+            roundResultInfoList.add(new RoundResultInfo(roundResult.getRoundNumber(), _assembleRacingScoreInfo(roundResult.getRacingScores())));
         }
-
-        carRacingResponse.setRoundResultList(roundResultInfoList);
-        return carRacingResponse;
+        return new CarRacingResponse(roundResultInfoList);
     }
 
     private List<RacingScoreInfo> _assembleRacingScoreInfo(RacingScores racingScores) {
         List<RacingScoreInfo> racingScoreInfoList = new ArrayList<>();
-
         for (RacingScore racingScore : racingScores.getRacingScoreList()) {
-            RacingScoreInfo racingScoreInfo = new RacingScoreInfo();
-            racingScoreInfo.setCarNumber(racingScore.getCarNumber());
-            racingScoreInfo.setScore(racingScore.getScore());
-            racingScoreInfoList.add(racingScoreInfo);
+            racingScoreInfoList.add(new RacingScoreInfo(racingScore.getCarNumber(), racingScore.getScore()));
         }
-
         return racingScoreInfoList;
     }
 }
