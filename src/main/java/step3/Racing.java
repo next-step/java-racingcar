@@ -3,23 +3,17 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Racing {
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        InputView inputView = new InputView();
+        inputView.inputValues();
 
-        System.out.println("자동차 대수는 몇 대인가요?");
-        int cars = scan.nextInt();
-
-        List<Car> carList = setCars(cars);
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int challenges = scan.nextInt();
+        List<Car> carList = setCars(inputView.getCars());
 
         System.out.println("실행 결과");
-        raceByRound(carList, challenges);
+        raceByRound(carList, inputView.getChallenges());
     }
 
     public static List<Car> setCars(int cars) {
