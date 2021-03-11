@@ -17,4 +17,8 @@ public class Racing {
     public static Racing of(final Cars cars, final int attemptNumber, final MoveBehavior moveBehavior) {
         return new Racing(cars, attemptNumber, moveBehavior);
     }
+
+    public boolean isFinished() {
+        return attemptCount > attemptNumber;
+    }
 }
