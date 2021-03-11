@@ -28,15 +28,7 @@ public class CarRacing {
 
     private List<Integer> getMovesOfCar(RandomGenerator randomGenerator) {
         return cars.stream()
-                .map(car -> getMoveOfCar(randomGenerator, car))
+                .map(car -> car.moveCars(randomGenerator.getRandomNumber()))
                 .collect(Collectors.toList());
     }
-
-    private int getMoveOfCar(RandomGenerator randomGenerator, Car car) {
-        int randomNumber = randomGenerator.getRandomNumber();
-        boolean isOver = randomGenerator.isOver(randomNumber);
-
-        return car.moveCars(isOver);
-    }
-
 }

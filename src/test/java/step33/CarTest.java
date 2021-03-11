@@ -1,6 +1,8 @@
 package step33;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 class CarTest {
@@ -13,16 +15,18 @@ class CarTest {
     }
 
     @DisplayName("isOver이 true일 경우 String 결과 테스트")
-    @Test
-    void isOverTrueTest() {
-        int s = car.moveCars(true);
+    @ParameterizedTest
+    @ValueSource(ints = {4,5,6,7,8,9})
+    void isOverTrueTest(int number) {
+        int s = car.moveCars(number);
         Assertions.assertEquals(1, s);
     }
 
     @DisplayName("isOver이 false일 경우 String 결과 테스트")
-    @Test
-    void isOverFalseTest() {
-        int s = car.moveCars(false);
+    @ParameterizedTest
+    @ValueSource(ints = {0,1,2,3})
+    void isOverFalseTest(int number) {
+        int s = car.moveCars(number);
         Assertions.assertEquals(0, s);
     }
 
