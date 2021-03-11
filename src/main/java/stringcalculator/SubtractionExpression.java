@@ -1,6 +1,6 @@
 package stringcalculator;
 
-public class SubtractionExpression implements Expression{
+public class SubtractionExpression implements Expression {
     private Expression minuend;
     private Expression subtrahend;
 

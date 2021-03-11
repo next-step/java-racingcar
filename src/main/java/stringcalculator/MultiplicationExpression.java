@@ -1,6 +1,6 @@
 package stringcalculator;
 
-public class MultiplicationExpression implements Expression{
+public class MultiplicationExpression implements Expression {
 
     private Expression multiplicand;
 

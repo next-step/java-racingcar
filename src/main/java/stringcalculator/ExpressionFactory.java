@@ -2,48 +2,56 @@ package stringcalculator;
 
 public class ExpressionFactory {
 
-    private final String DELIMITER = " ";
+    private static final String DELIMITER = " ";
+
+    private static final int PARSING_LENGTH=2;
 
     public Expression create(String input) {
-        validateInput(input);
-        
+
+        return parseStringIntoExpression(input);
+    }
+
+    private Expression parseStringIntoExpression(String input){
+
+        validateWhetherNullOrEmpty(input);
+
         String[] split = input.split(DELIMITER);
 
-        isParsable(split,3);
-        Expression lastExpression = createSpecificExpression(new NoneExpression(split[0]), split[1], new NoneExpression(split[2]));
+        if(split.length<1) throw new IllegalArgumentException("input is too short to parse ");
 
-        for (int i = 3; i < split.length; i += 2) {
-            isParsable(split,i+2);
+        Expression lastExpression = new NoneExpression(split[0]);
+
+        for (int i = 1; i < split.length; i += PARSING_LENGTH) {
+
+            if(split.length < i+PARSING_LENGTH) throw new IllegalArgumentException("input is too short to parse");
+
             lastExpression = createSpecificExpression(lastExpression, split[i], new NoneExpression(split[i + 1]));
         }
+
         return lastExpression;
     }
 
-    private void isParsable(String[] split,int minimumLength){
-        if(split.length<minimumLength) throw new IllegalArgumentException();
-    }
-
     private Expression createSpecificExpression(Expression firstExpression, String symbol, Expression secondExpression) {
-        if (symbol.equals(Operator.ADDITION.getSymbol())) {
+        if (Operator.getBySymbol(symbol) == Operator.ADDITION) {
             return new AdditionExpression(firstExpression, secondExpression);
         }
 
-        if (symbol.equals(Operator.SUBTRACTION.getSymbol())) {
+        if (Operator.getBySymbol(symbol) == Operator.SUBTRACTION) {
             return new SubtractionExpression(firstExpression, secondExpression);
         }
 
-        if (symbol.equals(Operator.MULTIPLICATION.getSymbol())) {
+        if (Operator.getBySymbol(symbol) == Operator.MULTIPLICATION) {
             return new MultiplicationExpression(firstExpression, secondExpression);
         }
 
-        if (symbol.equals(Operator.DIVISION.getSymbol())) {
+        if (Operator.getBySymbol(symbol) == Operator.DIVISION) {
             return new DivisionExpression(firstExpression, secondExpression);
         }
 
-        throw new IllegalArgumentException(symbol+" is not valid symbol");
+        throw new IllegalArgumentException(symbol+" has no valid expression");
     }
 
-    private void validateInput(String input) {
+    private void validateWhetherNullOrEmpty(String input) {
         if (input == null || input.trim().isEmpty()) throw new IllegalArgumentException("invalid input");
     }
 }
