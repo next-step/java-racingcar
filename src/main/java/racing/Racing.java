@@ -33,5 +33,13 @@ public class Racing {
     public boolean hasNext() {
         return rounds.size() < attemptsCount;
     }
+
+    public void showResult() {
+        final ResultView resultView = new ResultView();
+        for (Round round : rounds) {
+            resultView.show(round.getCars());
+            System.out.println();
+        }
+    }
 }
 
