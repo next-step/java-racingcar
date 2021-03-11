@@ -1,20 +1,19 @@
 package step3;
 
+import java.util.function.Predicate;
+
 public class Car {
 
     private int currentPosition;
 
-    public void moveForward(int number) {
-        if (isAbleToMoveForward(number)) {
+    public void moveForward(int number, Predicate<Integer> p) {
+        if (p.test(number)) {
             currentPosition++;
         }
-    }
-
-    private boolean isAbleToMoveForward(int number) {
-        return number >= 4 ? true : false;
     }
 
     public int getCurrentPosition() {
         return this.currentPosition;
     }
+
 }

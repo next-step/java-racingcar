@@ -19,7 +19,7 @@ public class CarRacing {
 
     public void moveForward() {
         for (Car car : carList) {
-            car.moveForward(RandomUtil.makeRandomNumber());
+            car.moveForward(RandomUtil.makeRandomNumber(), num -> num >= 4);
         }
     }
 
