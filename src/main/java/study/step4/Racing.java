@@ -47,7 +47,7 @@ public class Racing {
         resultView.printRacingWinner(this.getWinners(), message);
     }
 
-    public List<Car> getWinners() {
+    private List<Car> getWinners() {
         int winnerPosition = carList.stream()
             .mapToInt(Car::getPosition)
             .max()
