@@ -20,7 +20,7 @@ public class CarRacingTest {
 
     @DisplayName("생성된 자동차는 전진하거나 그자리에 머무른다.")
     @Test
-    public void moveForward_ShouldReturnGoOrStep() {
+    public void moveForward_ShouldReturnGoOrStop() {
         int inputCarsCount = 5;
         int go = 1;
         int stop = 0;
@@ -29,7 +29,7 @@ public class CarRacingTest {
         carRacing.moveForward();
 
         for (Car car : carRacing.getCarList()) {
-            assertThat(car.getCurrentPosition()).isBetween(stop, go);
+            assertThat(car.getCurrentPosition()).isIn(go, stop);
         }
     }
 }
