@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 import study.step4.model.Car;
 import study.step4.model.Movement;
+import study.step4.ui.ResultView;
 
 /**
  * Racing Game Class
@@ -16,10 +17,12 @@ import study.step4.model.Movement;
 public class Racing {
     private List<Car> carList;
     private Movement movement;
+    private ResultView resultView;
 
     public Racing() {
         carList = new ArrayList<>();
         movement = new Movement();
+        resultView = new ResultView();
     }
 
     public void setUp(String[] names) {
@@ -35,5 +38,6 @@ public class Racing {
     }
 
     public void printRacingResult(String printToken) {
+        resultView.printRacingResult(carList, printToken);
     }
 }
