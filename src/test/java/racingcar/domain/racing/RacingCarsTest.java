@@ -15,7 +15,7 @@ class RacingCarsTest {
     @DisplayName("RacingCar 가 인자값으로 들어온 수 만큼의 요소를 갖는 리스트를 만드는지에 대한 테스트")
     @ParameterizedTest(name = "현재 반복 : {index} / 들어가는 값 : {arguments}")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void test(int expected) {
+    void moveTest(int expected) {
         // given
         RacingCars racingCars = RacingCars.from(expected);
         List<Car> cars = racingCars.move();
