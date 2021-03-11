@@ -9,7 +9,7 @@ public class Car{
         this.position = START_POSITION;
     }
     public void move(MoveStrategy moveStrategy){
-        if(moveStrategy.move()){
+        if(moveStrategy.move() >= NumberChecker.CONDITION_OF_START){
             position++;
         }
     }

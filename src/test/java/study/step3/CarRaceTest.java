@@ -20,20 +20,22 @@ public class CarRaceTest {
     private Car car;
     @BeforeEach
     void setUp(){
-        car = new Car("rccar",new RandomMoveStrategy());
+        car = new Car("rccar");
     }
     @ParameterizedTest
     @CsvSource(value = {"4","5"})
     @DisplayName("전진 테스트 - 전진 성공하는 경우, 랜덤값이 4,5라고 가정")
     void 전진테스트(int randomValue){
-        car.move();
+        MoveStrategy moveStrategy = ()->randomValue;
+        car.move(moveStrategy);
         assertThat(car.getPosition()).isEqualTo(2);
     }
     @ParameterizedTest
     @CsvSource(value = {"0","1"})
     @DisplayName("전진 테스트 - 전진 실패하는 경우")
     void 전진조건테스트(int randomValue){
-        car.move(randomValue >= NumberChecker.CONDITION_OF_START);
+        MoveStrategy moveStrategy = ()->randomValue;
+        car.move(moveStrategy);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
@@ -57,15 +59,16 @@ public class CarRaceTest {
     void 자동차_경주_우승자(){
         List<Car> carList = new ArrayList<>();
 
-        Car car1 = new Car("rc1",new RandomMoveStrategy());
-        Car car2 = new Car("rc2",new RandomMoveStrategy());
-        Car car3 = new Car("rc3",new RandomMoveStrategy());
+        Car car1 = new Car("rc1");
+        Car car2 = new Car("rc2");
+        Car car3 = new Car("rc3");
+        MoveStrategy moveStrategy = () -> 5;
         for(int i=0;i<5;i++){
-            car1.move(true);
-            car3.move(true);
+            car1.move(moveStrategy);
+            car3.move(moveStrategy);
         }
         for(int i=0;i<3;i++){
-            car2.move(true);
+            car2.move(moveStrategy);
         }
         carList.add(car1);
         carList.add(car2);

@@ -16,7 +16,7 @@ public class Cars {
      * */
     public void move(){
         for(Car car : cars){
-            car.move();
+            car.move(new RandomMoveStrategy());
         }
     }
     public List<Car> getCars(){
