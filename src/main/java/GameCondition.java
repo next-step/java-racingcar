@@ -1,5 +1,5 @@
 import java.util.Random;
 
 public interface GameCondition {
-    int moveCondition();
+    boolean moveCondition();
 }

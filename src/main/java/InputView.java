@@ -8,7 +8,7 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public String inputIntArgument(String description) {
+    public String inputArgument(String description) {
         System.out.println(description);
         return scanner.nextLine();
     }
