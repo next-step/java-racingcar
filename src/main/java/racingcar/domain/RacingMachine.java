@@ -17,6 +17,6 @@ public class RacingMachine {
             cars.move();
             cars.showResult();
         }
-        ResultView.endGame();
+        ResultView.showWinners(cars.getWinnerNames());
     }
 }
