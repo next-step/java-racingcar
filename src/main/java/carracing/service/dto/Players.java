@@ -22,11 +22,11 @@ public class Players {
     }
 
     public void registerPlayer(Car car) {
-        _validate(car);
+        validate(car);
         this.playerList.add(car);
     }
 
-    private void _validate(Car car) {
+    private void validate(Car car) {
         if(car==null) {
             throw new IllegalArgumentException("차량정보를 입력해 주세요.");
         }

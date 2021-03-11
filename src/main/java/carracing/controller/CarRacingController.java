@@ -28,18 +28,18 @@ public class CarRacingController {
 
     public CarRacingResponse executeCarRacing(CarRacingRequest carRacingRequest) {
         RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(carRacingRequest.getRacingCarCount(), carRacingRequest.getRoundCount());
-        return this._assembleResponse(carRacingService.executeCarRacing(racingRegisterInfo));
+        return assembleResponse(carRacingService.executeCarRacing(racingRegisterInfo));
     }
 
-    private CarRacingResponse _assembleResponse(RacingResult racingResult) {
+    private CarRacingResponse assembleResponse(RacingResult racingResult) {
         List<RoundResultInfo> roundResultInfoList = new ArrayList<>();
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
-            roundResultInfoList.add(new RoundResultInfo(roundResult.getRoundNumber(), _assembleRacingScoreInfo(roundResult.getRacingScores())));
+            roundResultInfoList.add(new RoundResultInfo(roundResult.getRoundNumber(), assembleRacingScoreInfo(roundResult.getRacingScores())));
         }
         return new CarRacingResponse(roundResultInfoList);
     }
 
-    private List<RacingScoreInfo> _assembleRacingScoreInfo(RacingScores racingScores) {
+    private List<RacingScoreInfo> assembleRacingScoreInfo(RacingScores racingScores) {
         List<RacingScoreInfo> racingScoreInfoList = new ArrayList<>();
         for (RacingScore racingScore : racingScores.getRacingScoreList()) {
             racingScoreInfoList.add(new RacingScoreInfo(racingScore.getCarNumber(), racingScore.getScore()));

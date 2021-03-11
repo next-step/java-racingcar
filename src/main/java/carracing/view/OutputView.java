@@ -14,14 +14,14 @@ public class OutputView {
         System.out.println("실행 결과");
         for (RoundResultInfo roundResultInfo : carRacingResponse.getRoundResultList()) {
             System.out.println("Round " + roundResultInfo.getRoundNumber());
-            this.printRacingScore(roundResultInfo.getRacingScoreInfoList());
+            printRacingScore(roundResultInfo.getRacingScoreInfoList());
             System.out.println();
         }
     }
 
     private void printRacingScore(List<RacingScoreInfo> roundResultInfoList) {
         for (RacingScoreInfo racingScoreInfo : roundResultInfoList) {
-            System.out.println("Car " + racingScoreInfo.getCarNumber() + " : " + this.showScore(racingScoreInfo.getScore()));
+            System.out.println("Car " + racingScoreInfo.getCarNumber() + " : " + showScore(racingScoreInfo.getScore()));
         }
     }
 

@@ -24,16 +24,16 @@ public class CarRacingService {
     }
 
     public RacingResult executeCarRacing(RacingRegisterInfo racingRegisterInfo) {
-        _validate(racingRegisterInfo);
-        return _getRacingResult(racingRegisterInfo.getRoundCount(), _registerPlayers(racingRegisterInfo.getRacingCarCount()));
+        validate(racingRegisterInfo);
+        return getRacingResult(racingRegisterInfo.getRoundCount(), registerPlayers(racingRegisterInfo.getRacingCarCount()));
     }
 
-    private void _validate(RacingRegisterInfo racingRegisterInfo) {
+    private void validate(RacingRegisterInfo racingRegisterInfo) {
         carRacingValidator.validateCarRegisterCount(racingRegisterInfo.getRacingCarCount());
         carRacingValidator.validateRoundCount(racingRegisterInfo.getRoundCount());
     }
 
-    private Players _registerPlayers(int racingCarCount) {
+    private Players registerPlayers(int racingCarCount) {
         Players players = new Players();
         for (int i = CarRacingConstant.FIRST_CAR_NUMBER; i <= racingCarCount; i++) {
             players.registerPlayer(carService.registerCar(i));
@@ -41,21 +41,21 @@ public class CarRacingService {
         return players;
     }
 
-    private RacingResult _getRacingResult(int roundCount, Players players) {
+    private RacingResult getRacingResult(int roundCount, Players players) {
         RacingResult racingResult = new RacingResult();
         for (int i = CarRacingConstant.ROUND_START_NUMBER; i <= roundCount; i++) {
-            racingResult.registerRoundResult(_executeRound(i, players));
+            racingResult.registerRoundResult(executeRound(i, players));
         }
         return racingResult;
     }
 
-    private RoundResult _executeRound(int roundNumber, Players players) {
+    private RoundResult executeRound(int roundNumber, Players players) {
         RoundResult roundResult = new RoundResult();
-        roundResult.registerRoundResult(roundNumber, _executeScoring(players));
+        roundResult.registerRoundResult(roundNumber, executeScoring(players));
         return roundResult;
     }
 
-    private RacingScores _executeScoring(Players players) {
+    private RacingScores executeScoring(Players players) {
         RacingScores racingScores = new RacingScores();
         for (Car car : players.getCarList()) {
             car.drive();

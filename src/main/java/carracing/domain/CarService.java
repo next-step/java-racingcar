@@ -10,11 +10,11 @@ package carracing.domain;
 public class CarService {
 
     public Car registerCar(int carNumber) {
-        _validate(carNumber);
+        validate(carNumber);
         return new Car(carNumber);
     }
 
-    private void _validate(int carNumber) {
+    private void validate(int carNumber) {
         if(carNumber <= 0) {
             throw new IllegalArgumentException("차량번호는 1 이상의 숫자여야 합니다.");
         }

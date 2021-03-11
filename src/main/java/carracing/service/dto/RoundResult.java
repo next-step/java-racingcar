@@ -30,20 +30,20 @@ public class RoundResult {
     }
 
     public void registerRoundResult(int roundNumber, RacingScores racingScores) {
-        _validateRoundNumber(roundNumber);
-        _validateRacingScores(racingScores);
+        validateRoundNumber(roundNumber);
+        validateRacingScores(racingScores);
         this.roundNumber = roundNumber;
         this.racingScores = racingScores;
     }
 
-    private void _validateRoundNumber(int roundNumber) {
+    private void validateRoundNumber(int roundNumber) {
         carRacingValidator.validateRoundCount(roundNumber);
         if (this.roundNumber == roundNumber) {
             throw new IllegalArgumentException("해당 경기 정보는 이미 등록되었습니다.");
         }
     }
 
-    private void _validateRacingScores(RacingScores racingScores) {
+    private void validateRacingScores(RacingScores racingScores) {
         if(racingScores==null || racingScores.getScoreCount()==0) {
             throw new IllegalArgumentException("경기 정보가 존재하지 않습니다.");
         }
