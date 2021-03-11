@@ -27,7 +27,7 @@ public class Parser {
         stringList.add(String.valueOf(character));
         return stringList;
     }
-
+  
     public List<String> mergeCharIntoStringList(List<String> stringList, char character){
         String tobeMerged = stringList.remove(stringList.size()-1);
         stringList.add(tobeMerged+character);
