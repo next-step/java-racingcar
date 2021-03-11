@@ -4,7 +4,6 @@ import carracing.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * RacingScores
@@ -27,28 +26,10 @@ public class RacingScores {
     }
 
     public void registerRacingScore(Car car) {
-        if(_isExists(car)) {
-            this.modifyRacingScore(car);
-            return;
-        }
-        RacingScore racingScore = new RacingScore();
-        racingScore.setCarNumber(car.getCarNumber());
-        racingScore.setScore(car.getMileage());
-        racingScoreList.add(racingScore);
+        racingScoreList.add(new RacingScore(car.getCarNumber(), car.getMileage()));
     }
 
     private boolean _isExists(Car car) {
         return racingScoreList.stream().anyMatch(score -> score.getCarNumber()==car.getCarNumber());
-    }
-
-    private void modifyRacingScore(Car car) {
-        if(_isExists(car)) {
-            Optional<RacingScore> racingScore = racingScoreList.stream()
-                    .filter(score -> score.getCarNumber() == car.getCarNumber())
-                    .findFirst();
-            racingScore.ifPresent(score -> score.setScore(car.getMileage()));
-            return;
-        }
-        throw new IllegalArgumentException("점수 정보가 존재하지 않습니다.");
     }
 }
