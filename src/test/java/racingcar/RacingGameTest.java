@@ -51,7 +51,9 @@ class RacingGameTest {
         racingGame.init(carGroup, inputManagement);
         racingGame.recordEachRoundPosition();
 
-        assertThat(racingGame.getWinners().size()).isEqualTo(winnerNumber);
+        assertThat(racingGame.getWinners()
+                                    .getCars()
+                                        .size()).isEqualTo(winnerNumber);
     }
 
     @ParameterizedTest
@@ -72,6 +74,8 @@ class RacingGameTest {
         racingGame.init(carGroup, inputManagement);
         racingGame.recordEachRoundPosition();
 
-        assertThat(racingGame.getWinners().size()).isEqualTo(winnerNumber);
+        assertThat(racingGame.getWinners()
+                                    .getCars()
+                                        .size()).isEqualTo(winnerNumber);
     }
 }
