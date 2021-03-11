@@ -17,5 +17,5 @@ public class OutputView {
     static void printDash(){
         System.out.println(CarRacingConstant.DASH);
     }
-    
+
 }
