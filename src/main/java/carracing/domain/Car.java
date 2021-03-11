@@ -4,18 +4,15 @@ import java.util.Random;
 
 /**
  * Car
- * version 0.0.1
+ * version 0.0.2
  * 
  * history
  *  0.0.1) 클래스 신규생성
+ *  0.0.2) Engine 클래스 멤버필드 추가, drive 로직 수정
  */
 public class Car {
 
-    private static final int MOVABLE_MIN_NUMBER = 4;
-    private static final int MOVABLE_MAX_NUMBER = 9;
-
-    private static final int MOVE = 1;
-    private static final int STOP = 0;
+    private final Engine engine = new Engine(new Random());
 
     private final int carNumber;
     private int mileage;
@@ -33,11 +30,7 @@ public class Car {
     }
 
     public void drive() {
-        mileage+=this.move();
+        mileage+=engine.drive();
     }
 
-    private int move() {
-        Random random = new Random();
-        return random.nextInt(MOVABLE_MAX_NUMBER)>=MOVABLE_MIN_NUMBER ? MOVE : STOP;
-    }
 }
