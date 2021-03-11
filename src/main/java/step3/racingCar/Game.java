@@ -1,5 +1,10 @@
 package step3.racingCar;
-
+/*
+ * 자동차 경주의 실행(입력)과 출력 및 종료를 담당하는 클래스
+ *
+ * @author hj-woo
+ * @version 1.0
+ * */
 import java.util.ArrayList;
 
 public class Game {
@@ -7,12 +12,19 @@ public class Game {
     private final Cars racingCars;
     private final int tryNum;
 
+    /*
+     * 게임 생성과 동시에 자동차 대수와 시도할 횟수를 확인하고,
+     * GameFactory로부터 자동차 대수만큼의 자동차를 넘겨받는다.
+     * */
     public Game(){
         ArrayList<Integer> inputArr = InputView.input(strs);
         racingCars = GameFactory.cars(inputArr.get(0));
         tryNum = inputArr.get(1);
     }
 
+    /*
+     * 생성한 자동차들과 시도 횟수를 바탕으로 게임을 진행하고 결과를 출력한다.
+     * */
     public void play(){
         System.out.println("실행 결과");
         if(tryNum == 0){
