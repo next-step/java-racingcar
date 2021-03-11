@@ -28,11 +28,11 @@ public class CarRacing {
 
     private List<Integer> getMovesOfCar(RandomGenerator randomGenerator) {
         return cars.stream()
-                .map(car -> getMovesOfCar(randomGenerator, car))
+                .map(car -> getMoveOfCar(randomGenerator, car))
                 .collect(Collectors.toList());
     }
 
-    private int getMovesOfCar(RandomGenerator randomGenerator, Car car) {
+    private int getMoveOfCar(RandomGenerator randomGenerator, Car car) {
         int randomNumber = randomGenerator.getRandomNumber();
         boolean isOver = randomGenerator.isOver(randomNumber);
 
