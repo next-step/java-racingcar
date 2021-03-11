@@ -18,7 +18,16 @@ public class Racing {
         return new Racing(cars, attemptNumber, moveBehavior);
     }
 
+    public Cars getCars() {
+        return cars;
+    }
+
     public boolean isFinished() {
-        return attemptCount > attemptNumber;
+        return attemptCount >= attemptNumber;
+    }
+
+    public Cars race() {
+        attemptCount++;
+        return cars.move(moveBehavior);
     }
 }

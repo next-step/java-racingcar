@@ -6,6 +6,10 @@ public class RacingGame {
         Racing racing = Racing.of(Cars.of(InputView.inputCarNames()), InputView.inputAttemptNumber(), new RandomMoveBehavior());
         ResultView.printResultMessage();
 
-        System.out.println(!racing.isFinished());
+        while (!racing.isFinished()) {
+            ResultView.printRace(racing.race());
+        }
+
+        ResultView.printRaceWinner(racing.getCars());
     }
 }
