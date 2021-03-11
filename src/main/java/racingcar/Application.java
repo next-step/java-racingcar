@@ -5,7 +5,6 @@ import racingcar.repository.CarRepository;
 import racingcar.repository.GameRoundRepository;
 import racingcar.service.CarService;
 import racingcar.service.GameRoundService;
-import racingcar.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,14 +15,7 @@ public class Application {
     }
 
     public static void run(RacingGameController racingGameController) {
-        setGameEnvironment(racingGameController);
+        racingGameController.setGameEnvironment();
         racingGameController.printGameResult();
-    }
-
-    public static void setGameEnvironment(RacingGameController racingGameController) {
-        int numberOfCars = InputView.INSTANCE.InputNumberOfCars();
-        racingGameController.createCars(numberOfCars);
-        int numberOfAttempts = InputView.INSTANCE.InputNumberOfAttempts();
-        racingGameController.createGameRound(numberOfAttempts);
     }
 }

@@ -4,6 +4,7 @@ import racingcar.domain.Car;
 import racingcar.domain.GameRound;
 import racingcar.service.CarService;
 import racingcar.service.GameRoundService;
+import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.Random;
@@ -18,6 +19,13 @@ public class RacingGameController {
     public RacingGameController(CarService carService, GameRoundService gameRoundService) {
         this.carService = carService;
         this.gameRoundService = gameRoundService;
+    }
+
+    public void setGameEnvironment() {
+        int numberOfCars = InputView.INSTANCE.InputNumberOfCars();
+        createCars(numberOfCars);
+        int numberOfAttempts = InputView.INSTANCE.InputNumberOfAttempts();
+        createGameRound(numberOfAttempts);
     }
 
     public void createCars(int numberOfCars) {
