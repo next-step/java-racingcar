@@ -12,12 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CalculateTest {
 
     private Calculate calculate;
-    private Validator validator;
 
     @BeforeEach
     void setUp() {
         calculate = new Calculate();
-        validator = new Validator();
     }
 
     @Test
@@ -35,7 +33,7 @@ public class CalculateTest {
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    validator.isCheckOperation(formula);
+                    Validator.isCheckOperation(formula);
                 });
     }
 
@@ -45,7 +43,7 @@ public class CalculateTest {
     void emptyOrNullInputIsThrowException(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    validator.isEmptyOrIsBlank(input);
+                    Validator.isEmptyOrIsBlankOrIsNull(input);
                 });
     }
 }
