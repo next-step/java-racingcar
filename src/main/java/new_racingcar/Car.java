@@ -1,6 +1,7 @@
 package new_racingcar;
 
 public class Car {
+    private static final int MOVE_CONDITION = 4;
 
     private Record record;
     private MoveStrategy moveStrategy;
@@ -18,7 +19,7 @@ public class Car {
     }
 
     private MoveStrategy getMoveType(int randomValue) {
-        if (randomValue >= 4) {
+        if (randomValue >= MOVE_CONDITION) {
             return MoveOneStrategy.INSTANCE;
         }
 
