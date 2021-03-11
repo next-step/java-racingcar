@@ -1,6 +1,8 @@
 package racing;
 
 import racing.controller.RacingController;
+import racing.domain.RacingHost;
+import racing.domain.RandomRacingHost;
 import racing.io.ConsoleOutputDriver;
 import racing.io.OutputDriver;
 import racing.view.InputView;
@@ -16,8 +18,9 @@ public class RacingApplication {
         String carSymbol = "-";
         OutputDriver outputDriver = new ConsoleOutputDriver();
         ResultView resultView = new ResultView(outputDriver, carSymbol);
+        RacingHost racingHost = new RandomRacingHost();
 
-        RacingController racingController = new RacingController(inputView, resultView);
+        RacingController racingController = new RacingController(inputView, resultView, racingHost);
         racingController.run();
     }
 

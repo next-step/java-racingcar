@@ -1,23 +1,23 @@
 package racing.controller;
 
-import racing.domain.Car;
 import racing.domain.Racing;
-import racing.domain.RandomMovement;
+import racing.domain.RacingHost;
 import racing.dto.RacingReport;
 import racing.view.InputView;
 import racing.view.ResultView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingController {
 
     private final InputView inputView;
     private final ResultView resultView;
+    private final RacingHost racingHost;
 
-    public RacingController(InputView inputView, ResultView resultView) {
+    public RacingController(InputView inputView, ResultView resultView, RacingHost racingHost) {
         this.inputView = inputView;
         this.resultView = resultView;
+        this.racingHost = racingHost;
     }
 
     public void run() {
@@ -27,11 +27,7 @@ public class RacingController {
         validateNames(names);
         validateRound(round);
 
-        List<Car> carList = names.stream()
-                                 .map(s -> new Car(new RandomMovement(), s))
-                                 .collect(Collectors.toList());
-
-        Racing racing = new Racing(carList, round);
+        Racing racing = racingHost.holdRacing(names, round);
         RacingReport racingReport = racing.start();
 
         resultView.printRacingReport(racingReport);
