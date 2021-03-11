@@ -2,6 +2,7 @@ package step3.service;
 
 import step3.domain.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
@@ -13,5 +14,13 @@ public class GameService {
             Boolean isMove = moveStrategy.getIsMove(getRandomNum);
             car.moveCar(isMove);
         }
+    }
+
+    public List<Car> generateCar(Integer carNumber) {
+        List<Car> cars = new ArrayList<>();
+        for (Integer i = 0; i < carNumber; i++) {
+            cars.add(new Car());
+        }
+        return cars;
     }
 }

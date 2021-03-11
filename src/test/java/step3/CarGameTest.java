@@ -15,14 +15,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarGameTest {
     MoveStrategy moveStrategy = new MoveStrategy();
     Random random = new Random();
+    GameService gameService = new GameService();
 
     @Test
-    @DisplayName("자동차를 움직이는 테스트")
+    @DisplayName("자동차를 한칸 움직이는 테스트")
     void moveCar() {
         // given
         Car testCar = new Car();
         Boolean isMove = true;
-        Integer expectLocation = 2;
+        Integer expectLocation = 1;
 
         // when
         testCar.moveCar(isMove);
@@ -30,6 +31,26 @@ public class CarGameTest {
         // then
         assertThat(testCar.getCurrentLocation()).isEqualTo(expectLocation);
     }
+
+    @Test
+    @DisplayName("n대의 자동차가 생성되었는지 테스트")
+    void generateCar() {
+        //given
+        List<Car> expectCars = new ArrayList<>();
+        Integer carNumber = 3;
+        expectCars.add(new Car());
+        expectCars.add(new Car());
+        expectCars.add(new Car());
+
+        //when
+        List<Car> resultCars = gameService.generateCar(carNumber);
+
+        //then
+        for (Integer i = 0; i < carNumber; i++) {
+            assertThat(resultCars.get(i)).isEqualToComparingFieldByField(expectCars.get(i));
+        }
+    }
+
 
     @Test
     @DisplayName("난수 발생 테스트")
@@ -70,41 +91,54 @@ public class CarGameTest {
     }
 
     @Test
-    @DisplayName("통합 테스트")
+    @DisplayName("현재 위치 표현 테스트")
+    void getLocationView() {
+        //given
+        Integer expectLocation = 3;
+        Car testCar = new Car(expectLocation);
+        String expectLocationView = "---";
+
+        //when
+        String result = testCar.getLocationView();
+
+
+        //then
+        assertThat(result).isEqualTo(expectLocationView);
+    }
+
+
+    @Test
+    @DisplayName("게임 진행 테스트")
     void runManyStep() {
         //given
-        List<Car> cars = new ArrayList<>();
         List<Integer> expectLocation = new ArrayList<>();
         Integer testCarNum = 5;
 
-        Integer startLocation = 1;
+        Integer startLocation = 0;
         Integer step = 5;
 
         for (Integer i = 0; i < testCarNum; i++) {
-            cars.add(new Car());
             expectLocation.add(startLocation + random.nextInt(step + 1));
         }
         Integer rowNum = startLocation;
         Integer highNum = startLocation + step;
 
-        List<Car> tempCars = new ArrayList<>();
-
-        for (Car car : cars) {
-            tempCars.add(new Car(car.getCurrentLocation()));
-        }
-
-
         while (true) {
             //given
-            cars = tempCars;
+            List<Car> expectCars = new ArrayList<>();
+            for (Integer i = 0; i < testCarNum; i++) {
+                expectCars.add(new Car());
+            }
+
 
             //when
             for (Integer i = 0; i < step; i++) {
-                GameService.runStep(cars);
+                GameService.runStep(expectCars);
             }
+
             //then
-            isCorrectLocation(cars, testCarNum, rowNum, highNum);
-            if (isExpectLocation(cars, expectLocation, testCarNum)) {
+            isCorrectLocation(expectCars, testCarNum, rowNum, highNum);
+            if (isExpectLocation(expectCars, expectLocation, testCarNum)) {
                 break;
             }
         }
