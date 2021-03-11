@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.Position;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -18,7 +19,7 @@ class CarTest {
         Car car = new Car("jhLim");
 
         car.updatePositionByCondition(number);
-        assertThat(car.getPosition()).isEqualTo(position);
+        assertThat(car.getPosition()).isEqualTo(new Position(position));
     }
 
     @ParameterizedTest
@@ -27,7 +28,7 @@ class CarTest {
     void checkPosition(int position) {
         Car car = new Car("jhLim",position);
 
-        assertThat(car.getPosition()).isEqualTo(3);
+        assertThat(car.getPosition()).isEqualTo(new Position(position));
     }
 
     @ParameterizedTest
@@ -35,7 +36,7 @@ class CarTest {
     @DisplayName("0에서 9사이의 숫자 이외에는 자동차가 판단할 수 없다.")
     void checkRange(int number) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Car("jhLim97").positionValueValidation(number);
+            new Car("jhLim97").conditionValueValidation(number);
         });
     }
 
