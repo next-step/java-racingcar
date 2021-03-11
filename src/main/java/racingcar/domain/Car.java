@@ -7,20 +7,20 @@ import java.util.stream.IntStream;
 
 public class Car {
 
-    private String name;
+    private Name name;
     private int position = 0;
 
     public Car(String name, int position) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = position;
     }
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
         this.position = 0;
     }
 
-    public String getName() {
+   public Name getName() {
         return name;
     }
 
@@ -40,10 +40,6 @@ public class Car {
         if (Conditions.isInvalidNumber(number)) {
             throw new IllegalArgumentException("0 ~ 9까지의 값만 사용할 수 있습니다.");
         }
-    }
-
-    public void nameValueInValidation() {
-        Conditions.isInValidName(name);
     }
 
     @Override

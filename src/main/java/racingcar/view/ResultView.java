@@ -43,7 +43,8 @@ public class ResultView {
         }
 
         String winnerMessage = winners.stream()
-                .map(car -> car.getName())
+                .map(car -> car.getName()
+                                    .toString())
                 .collect(Collectors.joining(", "));
 
         System.out.println(winnerMessage + "이(가) 최종 우승했습니다.");
