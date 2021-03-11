@@ -21,9 +21,7 @@ class CarRacingServiceTest {
     void validate_racingCarCount(int racingCarCount, int roundCount) {
         // given
         CarRacingService carRacingService = new CarRacingService();
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo();
-        racingRegisterInfo.setRacingCarCount(racingCarCount);
-        racingRegisterInfo.setRoundCount(roundCount);
+        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(racingCarCount, roundCount);
 
         // when then
         assertThatIllegalArgumentException()
@@ -38,9 +36,7 @@ class CarRacingServiceTest {
     void validate_roundCount(int racingCarCount, int roundCount) {
         // given
         CarRacingService carRacingService = new CarRacingService();
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo();
-        racingRegisterInfo.setRacingCarCount(racingCarCount);
-        racingRegisterInfo.setRoundCount(roundCount);
+        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(racingCarCount, roundCount);
 
         // when then
         assertThatIllegalArgumentException()

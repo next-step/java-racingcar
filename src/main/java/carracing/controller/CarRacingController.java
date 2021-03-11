@@ -27,9 +27,7 @@ public class CarRacingController {
     }
 
     public CarRacingResponse executeCarRacing(CarRacingRequest carRacingRequest) {
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo();
-        racingRegisterInfo.setRacingCarCount(carRacingRequest.getRacingCarCount());
-        racingRegisterInfo.setRoundCount(carRacingRequest.getRoundCount());
+        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(carRacingRequest.getRacingCarCount(), carRacingRequest.getRoundCount());
         return this._assembleResponse(carRacingService.executeCarRacing(racingRegisterInfo));
     }
 
