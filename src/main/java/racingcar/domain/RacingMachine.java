@@ -10,13 +10,13 @@ public class RacingMachine {
     private RacingMachine() {
     }
 
-    public static void runMachine(int numberOfCars, int numberOfRounds) {
-        cars = new Cars(numberOfCars);
+    public static void runMachine(String[] carNames, int numberOfRounds) {
+        cars = new Cars(carNames);
         ResultView.startGame();
         while (numberOfRounds-- > ROUND_END) {
             cars.move();
             cars.showResult();
         }
-        ResultView.endGame();
+        ResultView.showWinners(cars.getWinnerNames());
     }
 }

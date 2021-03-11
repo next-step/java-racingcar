@@ -6,8 +6,8 @@ import racingcar.util.InputView;
 public class RacingController {
 
     public static void main(String[] args) {
-        int numberOfCars = InputView.getNumberOfCar();
+        String[] carNames = InputView.getCarNames();
         int numberOfRound = InputView.getNumberOfRound();
-        RacingMachine.runMachine(numberOfCars, numberOfRound);
+        RacingMachine.runMachine(carNames, numberOfRound);
     }
 }

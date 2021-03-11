@@ -5,13 +5,19 @@ public class Car {
 
     private Engine engine;
     private int position = 0;
+    private Name name;
 
-    public Car(Engine engine) {
+    public Car(Engine engine, String name) {
         this.engine = engine;
+        this.name = new Name(name);
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name.value();
     }
 
     public void move() {
