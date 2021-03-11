@@ -26,6 +26,9 @@ public class Step4InputView implements InputView {
 
     @Override
     public int getNumberOfCar() {
-        return 0;
+        final String QUESTION_FOR_GET_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
+        System.out.println(QUESTION_FOR_GET_NUMBER_OF_CARS);
+        int numberOfCars = scanner.nextInt();
+        return numberOfCars;
     }
 }
