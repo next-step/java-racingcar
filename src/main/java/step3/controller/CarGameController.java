@@ -18,12 +18,10 @@ public class CarGameController {
         Integer stepNumber = inputView.getStepNumber();
         List<Car> cars = gameService.generateCar(carNumber);
         resultView.printStart();
-
         for (Integer i = 0; i < stepNumber; i++) {
             gameService.runStep(cars);
             resultView.printLocationView(cars);
             System.out.println();
         }
     }
-
 }
