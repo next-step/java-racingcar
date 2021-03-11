@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -174,5 +175,42 @@ public class RacingCarTest {
 
         //then
         assertThat(labCount).isEqualTo(lastLab);
+    }
+    @Test
+    @DisplayName("전략패턴 move stop 확인 테스트")
+    public void moveStopStrategyTest() throws Exception {
+        //given
+        MoveStopStrategy moveStopStrategy = new MoveStopStrategy();
+        //when
+        boolean isMove = moveStopStrategy.move(new FormulaOne(lastLab));
+
+        //then
+        assertThat(isMove).isFalse();
+    }
+
+    @Test
+    @DisplayName("전략패턴 move 1 Lab 테스트")
+    public void mveOneStrategyTest() throws Exception {
+        //given
+        MoveOneStrategy moveOneStrategy = new MoveOneStrategy();
+
+        //when
+        boolean isMove = moveOneStrategy.move(new FormulaOne(lastLab));
+
+        //then
+        assertThat(isMove).isTrue();
+    }
+
+    @Test
+    @DisplayName("전략패턴 move 2 Lab 테스트")
+    public void moveTwoStrategyTest() throws Exception {
+        //given
+        MoveTwoStrategy moveTwoStrategy = new MoveTwoStrategy();
+
+        //when
+        boolean isMove = moveTwoStrategy.move(new FormulaOne(lastLab));
+
+        //then
+        assertThat(isMove).isTrue();
     }
 }
