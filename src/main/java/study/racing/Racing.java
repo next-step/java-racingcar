@@ -1,43 +1,28 @@
 package study.racing;
 
-import java.util.ArrayList;
-
 public class Racing {
-
-  private ArrayList<Car> cars;
 
   public static void main(String[] args) {
     int carCount = InputView.getCarCount();
+    Cars cars = createCars(carCount);
     int tryCount = InputView.getTryCount();
-    Racing racing = new Racing();
-    racing.cars = createCars(carCount, tryCount);
-    printResult(tryCount, racing.cars);
+    printResult(cars, tryCount);
   }
 
-  private static ArrayList<Car> createCars(int carCount, int tryCount) {
-    ArrayList<Car> cars = new ArrayList<>();
+  private static void printResult(Cars cars, int tryCount) {
+    for (int i = 0; i < tryCount; i++) {
+      cars.moveByCondition();
+      cars.printPosition();
+      System.out.println("");
+    }
+  }
+
+  public static Cars createCars(int carCount) {
+    Cars cars = new Cars();
     for (int i = 0; i < carCount; i++) {
-      Car car = new Car(tryCount);
-      cars.add(car);
+      cars.add(new Car());
     }
     return cars;
   }
-
-  private static void printResult(int tryCount, ArrayList<Car> cars) {
-    for (int i = 0; i < tryCount; i++) {
-      int tryNumber = i + 1;
-      System.out.println("try : " + tryNumber);
-      printResultByIndex(cars, i);
-    }
-  }
-
-  private static void printResultByIndex(ArrayList<Car> cars, int index) {
-    for (int i = 0; i < cars.size(); i++) {
-      Car car = cars.get(i);
-      car.checkMove(index);
-      ResultView.printResult(car.getMoveCount());
-    }
-  }
-
 
 }

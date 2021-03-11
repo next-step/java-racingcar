@@ -1,15 +1,17 @@
 package study.racing;
 
-public class ResultView {
+public final class ResultView {
 
-  public static void printResult(int moveCount) {
-    System.out.println(getMoveCountPrint(moveCount));
+  private static final String MOVE_MARK = "_";
+
+  public static void printPosition(int position) {
+    System.out.println(positionToString(position));
   }
 
-  private  static String getMoveCountPrint(int moveCount) {
+  public static String positionToString(int position) {
     StringBuilder builder = new StringBuilder();
-    for (int i = 0; i < moveCount; i++) {
-      builder.append("_");
+    for (int i = 0; i < position; i++) {
+      builder.append(MOVE_MARK);
     }
     return builder.toString();
   }
