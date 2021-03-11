@@ -1,11 +1,15 @@
 package racingcar.domain.car;
 
 public class Car {
-    private final int INITIAL_VALUE = 0;
+    private int INITIAL_VALUE = 0;
     private int status;
 
     public Car() {
         status = INITIAL_VALUE;
+    }
+
+    public Car(Car other) {
+        this.status = other.status;
     }
 
     // 이 부분 질문 있습니다! : 생성자에 넣는 것이 좋을가요? 메서드에 넣는 것이 좋을까요?

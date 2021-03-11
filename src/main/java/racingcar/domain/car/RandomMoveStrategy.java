@@ -9,7 +9,16 @@ public class RandomMoveStrategy implements MoveStrategy {
     private static final int MINIMUM = 4;
     private static final int MAXIMUM = 9;
 
+    private static RandomMoveStrategy instance;
+
     private RandomMoveStrategy() {
+    }
+
+    public static RandomMoveStrategy getInstance() {
+        if(instance == null) {
+            instance = new RandomMoveStrategy();
+        }
+        return instance;
     }
 
     @Override
