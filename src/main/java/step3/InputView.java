@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputView {
 
     private int cars;
-    private int challenges;
+    private int attemps;
 
     public void inputValues() {
         Scanner scan = new Scanner(System.in);
@@ -14,14 +14,14 @@ public class InputView {
         this.cars = scan.nextInt();
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        this.challenges = scan.nextInt();
+        this.attemps = scan.nextInt();
     }
 
-    public int getCars() {
+    public int howManyCars() {
         return cars;
     }
 
-    public int getChallenges() {
-        return challenges;
+    public int getAttemps() {
+        return attemps;
     }
 }
