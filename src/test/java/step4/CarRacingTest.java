@@ -20,11 +20,17 @@ class CarRacingTest {
         carRacing = new CarRacing(new String[]{"aaa","bbb"});
     }
 
+    @DisplayName("getCurrentStatus 테스트")
+    @Test
+    void getReadyTest() {
+        List<Car> ready = carRacing.getCurrentStatus();
+        assertEquals(ready.size(), 2);
+    }
 
     @DisplayName("winner 테스트")
     @Test
     void winnerTest() {
-        carRacing.getRoundResults(new Go());
+        carRacing.start(new Go());
         List<Car> winner = carRacing.getWinner();
         Car firstWinner = winner.get(0);
         Car secondWinner = winner.get(1);
@@ -39,8 +45,9 @@ class CarRacingTest {
     @DisplayName("Random이 무조건 움직이는 번호일때 start 테스트")
     @Test
     void carMoveTest() {
-        List<Car> results = carRacing.getRoundResults(new Go());
-        int position = results.get(0).getPosition();
+        carRacing.start(new Go());
+        List<Car> currentStatus = carRacing.getCurrentStatus();
+        int position = currentStatus.get(0).getPosition();
 
         assertEquals(position, 2);
     }
@@ -48,12 +55,10 @@ class CarRacingTest {
     @DisplayName("Random이 무조건 안움직이는 번호일때 start 테스트")
     @Test
     void carStopTest() {
-        List<Car> results = carRacing.getRoundResults(new Stop());
-        int position = results.get(0).getPosition();
+        carRacing.start(new Stop());
+        List<Car> currentStatus = carRacing.getCurrentStatus();
+        int position = currentStatus.get(0).getPosition();
 
         assertEquals(position, 1);
     }
-
-
-
 }

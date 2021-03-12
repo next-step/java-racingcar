@@ -28,13 +28,12 @@ public class CarRacing {
                 .getValue();
     }
 
-    public List<Car> getReady() {
+    public List<Car> getCurrentStatus() {
         return cars;
     }
 
-    public List<Car> getRoundResults(Random random) {
+    public void start(Random random) {
         cars.forEach(c -> c.move(getRandomNumber(random)));
-        return cars;
     }
 
     private int getRandomNumber(Random random) {
