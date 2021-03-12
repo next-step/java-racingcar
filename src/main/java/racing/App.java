@@ -5,8 +5,9 @@ import racing.view.InputView;
 
 public class App {
   public static void main(String[] args){
-    int carCount = InputView.inputCarCount();
-    int attempt = InputView.inputPeriod();
+    InputView inputView = new InputView();
+    int carCount = inputView.inputCarCount();
+    int attempt = inputView.inputPeriod();
 
     Game game = new Game(carCount, attempt);
     game.run();
