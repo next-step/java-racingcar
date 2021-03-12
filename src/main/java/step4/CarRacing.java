@@ -25,7 +25,7 @@ public class CarRacing {
         return cars;
     }
 
-    public void progress(Random random) {
+    public void moveProgress(Random random) {
         cars.forEach(c -> c.move(getRandomNumber(random)));
     }
 

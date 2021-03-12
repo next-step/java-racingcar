@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -15,7 +14,7 @@ public class Main {
         ResultView.printCarsMove(carRacing.getCurrentStatus());
 
         for (int i=0; i<countOfCarRacing; i++) {
-            carRacing.progress(new Random());
+            carRacing.moveProgress(new Random());
             ResultView.printCarsMove(carRacing.getCurrentStatus());
         }
         ResultView.printWinner(carRacing.getWinner());
