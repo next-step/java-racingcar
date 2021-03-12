@@ -22,16 +22,15 @@ public class Cars {
 
     public Cars move(MoveBehavior moveBehavior) {
         for (Car car : cars) {
-            car = delegateMove(moveBehavior, car);
+            delegateMove(moveBehavior, car);
         }
         return this;
     }
 
-    private Car delegateMove(MoveBehavior moveBehavior, Car car) {
+    private void delegateMove(MoveBehavior moveBehavior, Car car) {
         if (moveBehavior.isMoved()) {
             car.move();
         }
-        return car;
     }
 
     public int getSize() {

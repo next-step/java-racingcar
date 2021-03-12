@@ -10,6 +10,6 @@ public class RandomMoveBehavior implements MoveBehavior {
 
     @Override
     public boolean isMoved() {
-        return RANDOM.nextInt(RANDOM_RAMGE) >RANDOM_BOUNDARY_VALUE;
+        return RANDOM.nextInt(RANDOM_RAMGE) > RANDOM_BOUNDARY_VALUE;
     }
 }
