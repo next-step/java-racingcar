@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class RandomMovementCondition implements MovementCondition {
     private Random random = new Random();
     private int moveThreshold;
 
-    RandomMovementCondition(int moveThreshold) {
+    public RandomMovementCondition(int moveThreshold) {
         this.moveThreshold = moveThreshold;
     }
 

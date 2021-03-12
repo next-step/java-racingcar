@@ -1,8 +1,8 @@
 package RacingCarTest;
 
-import racingcar.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;

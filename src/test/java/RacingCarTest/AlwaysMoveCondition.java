@@ -1,6 +1,6 @@
 package RacingCarTest;
 
-import racingcar.MovementCondition;
+import racingcar.domain.MovementCondition;
 
 public class AlwaysMoveCondition implements MovementCondition {
     @Override

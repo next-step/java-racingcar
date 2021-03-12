@@ -1,8 +1,7 @@
 package RacingCarTest;
 
 import org.junit.jupiter.api.Test;
-import racingcar.Name;
-import racingcar.SimpleCar;
+import racingcar.domain.Name;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -21,8 +20,6 @@ public class NameTest {
         String longName = "LongCarName";
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    new Name(longName);
-                });
+                .isThrownBy(() -> new Name(longName));
     }
 }

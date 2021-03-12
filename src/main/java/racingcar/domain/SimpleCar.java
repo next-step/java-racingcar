@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class SimpleCar implements Car {
     private Name name;

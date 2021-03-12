@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import java.util.Objects;
 
 public class Name {
     private final String name;
@@ -15,15 +17,15 @@ public class Name {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (o == this) return true;
         Name name1 = (Name) o;
-        return name == name1.name;
+        return Objects.equals(name, name1.name);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(name);
     }
 
     private void verifyName(String name) {

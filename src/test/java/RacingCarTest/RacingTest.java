@@ -1,10 +1,10 @@
 package RacingCarTest;
 
-import racingcar.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.*;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -17,7 +17,7 @@ public class RacingTest {
     @ParameterizedTest
     @MethodSource("provideRacingTestSources")
     public void When_Racing_Than_DistanceChanged(MovementCondition movementCondition, int numberOfCars, int numberOfRacing, Distance expected) {
-        ArrayList<Car> cars = new ArrayList<Car>();
+        ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new SimpleCar(""));
         }
@@ -37,12 +37,7 @@ public class RacingTest {
     @Test
     public void Given_SetListener_When_Racing_Then_ListenerCalled() {
         //given
-        Observer endOfSingleRacing = new Observer<Integer>() {
-            @Override
-            public void observe(Integer event) {
-                endOfSingleRacingCalled = true;
-            }
-        };
+        Observer endOfSingleRacing = (Observer<Integer>) event -> endOfSingleRacingCalled = true;
 
         ArrayList<Car> cars = new ArrayList<Car>();
         cars.add(new SimpleCar(""));

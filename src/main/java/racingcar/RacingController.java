@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.*;
+import racingcar.view.Step4View;
+import racingcar.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 

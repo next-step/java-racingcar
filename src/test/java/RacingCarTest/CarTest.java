@@ -1,8 +1,8 @@
 package RacingCarTest;
 
 import org.junit.jupiter.api.BeforeEach;
-import racingcar.*;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.*;
 
 import static org.assertj.core.api.Assertions.*;
 

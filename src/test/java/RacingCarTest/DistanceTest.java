@@ -1,7 +1,7 @@
 package RacingCarTest;
 
 import org.junit.jupiter.api.Test;
-import racingcar.Distance;
+import racingcar.domain.Distance;
 
 import static org.assertj.core.api.Assertions.*;
 
