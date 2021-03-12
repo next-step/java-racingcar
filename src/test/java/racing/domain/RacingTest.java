@@ -1,10 +1,7 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.Car;
-import racing.car.ReadOnlyCarProxy;
-import racing.car.ReadonlyCar;
 import racing.dto.RacingReport;
 
 import java.util.Arrays;

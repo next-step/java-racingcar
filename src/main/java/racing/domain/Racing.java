@@ -1,6 +1,5 @@
-package racing;
+package racing.domain;
 
-import racing.car.Car;
 import racing.dto.RacingReport;
 
 import java.util.Comparator;
