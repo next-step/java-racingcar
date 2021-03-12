@@ -24,6 +24,6 @@ public class RacingTest {
         for (int i = 0; i < attemptNumber; i++) {
             racing.race();
         }
-        assertThat(racing.isFinished()).isEqualTo(true);
+        assertThat(racing.isFinished()).isTrue();
     }
 }
