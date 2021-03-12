@@ -26,8 +26,11 @@ public class Cars {
         return selectMaxCar();
     }
     private List<Car> selectMaxCar(){
-        Optional<Car> maxCar = cars.stream().max((x,y)->Integer.compare(x.getPosition(),y.getPosition()));
-        return cars.stream().filter(x-> x.getPosition() == maxCar.get().getPosition())
+        int max = cars.stream()
+                .map(Car::getPosition)
+                .reduce(0,Math::max);
+        return cars.stream().
+                filter(x-> x.getPosition() == max)
                 .collect(Collectors.toList());
     }
 }

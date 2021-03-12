@@ -1,7 +1,7 @@
 package study.step3;
 
 public class Car{
-    private static final Integer START_POSITION = 1;
+    private static final int START_POSITION = 1;
     private String carName;
     private int position;
     public Car(String carName){
