@@ -3,6 +3,8 @@ package im.juniq.racingcar;
 import java.util.Random;
 
 public class Car {
+	private static final int BOUND_OF_RANDOM = 10;
+	private static final int BOUND_OF_CAR_MOVEMENT = 4;
 	private int id;
 	private int moveCount = 0;
 	private Random random;
@@ -13,8 +15,8 @@ public class Car {
 	}
 
 	public void move() {
-		int i = random.nextInt(10);
-		if (i > 4) {
+		int randomNumber = random.nextInt(BOUND_OF_RANDOM);
+		if (randomNumber > BOUND_OF_CAR_MOVEMENT) {
 			moveCount++;
 		}
 	}
