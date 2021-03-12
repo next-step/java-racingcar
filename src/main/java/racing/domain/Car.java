@@ -1,20 +1,24 @@
+package racing.domain;
+
 import java.util.stream.Stream;
 
 public class Car {
+    public static final int NAME_LENGTH = 5;
+
+    private final String name;
     private int numberOfAdvance = 0;
-    private String name;
 
     public Car(String name) {
+        validationName(name);
         this.name = name;
-        validationName();
     }
 
     public int getNumberOfAdvance(){
-        return this.numberOfAdvance;
+        return numberOfAdvance;
     }
 
-    public void validationName() {
-        if(name.length() > 5) {
+    public void validationName(String name) {
+        if(name.length() > NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }
     }
@@ -30,7 +34,7 @@ public class Car {
     }
 
     public String getAdvanceProgress() {
-        return name + " : " + Stream.generate(()-> "-")
+        return Stream.generate(()-> "-")
                 .limit(numberOfAdvance)
                 .reduce("-", (a, b) -> a + b);
     }

@@ -1,14 +1,13 @@
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.domain.Car;
+import racing.domain.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
     private Cars cars;
@@ -54,15 +53,6 @@ class CarsTest {
                 .filter(name -> name.equals(input))
                 .findFirst()
                 .orElse("")
-                .equals(input))
-                .isEqualTo(expected);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"'test1 : -',true", "'test1 : --',false"}, delimiter = ',')
-    void getCarRecords(String input, boolean expected){
-        assertThat(cars.getCarRecords()
-                .get(0)
                 .equals(input))
                 .isEqualTo(expected);
     }

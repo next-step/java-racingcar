@@ -1,3 +1,5 @@
+package racing.domain;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,12 +13,6 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    public List<String> getCarRecords() {
-        return cars.stream()
-                .map(Car::getAdvanceProgress)
-                .collect(Collectors.toList());
     }
 
     public void advanceCars(GameCondition gameCondition) {
