@@ -14,12 +14,8 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public Cars() {
-        this.cars = new LinkedList<Car>();
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<Car> carList) {
+        this.cars = carList;
     }
 
     /*

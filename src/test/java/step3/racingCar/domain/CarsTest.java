@@ -9,10 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-import step3.racingCar.domain.Car;
-import step3.racingCar.domain.Cars;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,18 +29,18 @@ class CarsTest {
 
     @BeforeEach
     void setUp(){
-        cars = new Cars();
-        carList = new LinkedList<>();
+        carList = new ArrayList<>();
         MockitoAnnotations.initMocks(this);
         for(int i=0; i<CARNUM; i++){
             carList.add(car);
         }
+        cars = new Cars(carList);
     }
 
     @Test
     void createAndSetCars(){
         assertThat(cars).extracting("cars")
-                .hasOnlyElementsOfType((new LinkedList<Car>()).getClass())
+                .hasOnlyElementsOfType((new ArrayList<Car>()).getClass())
                 .hasSameSizeAs(new List[]{carList});    //크기가 CARNUM이라고 바로 확인하고 싶었으나, extracting은 List에 담아서 반환하기 때문에 2차원 리스트의 크기로 확인해야함
     }
 

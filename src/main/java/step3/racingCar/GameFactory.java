@@ -10,7 +10,7 @@ package step3.racingCar;
 import step3.racingCar.domain.Car;
 import step3.racingCar.domain.Cars;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -21,14 +21,11 @@ public class GameFactory {
     }
 
     public static Cars cars(int carNum){
-        Cars cars = new Cars();
-
-        List<Car> carList = new LinkedList<>();
+        List<Car> carList = new ArrayList<>();
         for(int i=0; i<carNum; i++){
             carList.add(car());
         }
-        cars.setCars(carList);
-        return cars;
+        return new Cars(carList);
     }
 
     public static Car car(){
