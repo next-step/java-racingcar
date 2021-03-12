@@ -1,14 +1,15 @@
 package racingcar;
 
 public class SimpleCar implements Car {
-    private final int MAX_CAR_NAME = 5;
+    private final static int MAX_CAR_NAME = 5;
 
     private String name;
-    private int distance = 0;
+    private Distance distance;
 
     public SimpleCar(String name) {
         verifyCarName(name);
         this.name = name;
+        distance = new Distance();
     }
 
     @Override
@@ -17,15 +18,15 @@ public class SimpleCar implements Car {
     }
 
     @Override
-    public int getDistance() {
+    public Distance forward(MovementCondition movementCondition) {
+        if (movementCondition.isMovable()) {
+            distance = distance.increase();
+        }
         return distance;
     }
 
     @Override
-    public int forward(MovementCondition movementCondition) {
-        if (movementCondition.isMovable()) {
-            ++distance;
-        }
+    public Distance getDistance() {
         return distance;
     }
 

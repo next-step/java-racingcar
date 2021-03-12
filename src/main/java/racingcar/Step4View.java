@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Step4View implements View {
-    final String FORWARD = "-";
-    final String CAR_NAME_POSTFIX = " : ";
+    private static final String FORWARD_SYMBOL = "-";
+    private static final String CAR_NAME_POSTFIX = " : ";
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -45,11 +45,8 @@ public class Step4View implements View {
     @Override
     public void printSingleRacingResult(List<Car> cars) {
         cars.forEach(car -> {
-            int distance = car.getDistance();
             System.out.print(car.getName() + CAR_NAME_POSTFIX);
-            while (distance-- != 0) {
-                System.out.print(FORWARD);
-            }
+            printDistance(car.getDistance());
             System.out.print('\n');
         });
         System.out.print('\n');
@@ -65,5 +62,13 @@ public class Step4View implements View {
             System.out.print(winnersName.get(i));
         }
         System.out.print("가 최종 우승했습니다.\n");
+    }
+
+    private void printDistance(Distance distance) {
+        Distance emptyDistance = new Distance(0);
+        while (!distance.equals(emptyDistance)) {
+            distance = distance.decrease();
+            System.out.print(FORWARD_SYMBOL);
+        }
     }
 }

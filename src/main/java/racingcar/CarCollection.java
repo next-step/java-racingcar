@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,22 +10,24 @@ public class CarCollection {
         this.cars = cars;
     }
 
-    public void forward(MovementCondition movementCondition) {
-        cars.forEach(car -> car.forward(movementCondition));
+    public List<Distance> forward(MovementCondition movementCondition) {
+        return cars.stream().
+                map(car -> car.forward(movementCondition))
+                .collect(Collectors.toList());
     }
 
     public List<String> getWinnersName() {
-        int maxDistance = getMaxDistance(cars);
+        Distance maxDistance = getMaxDistance(cars);
         return cars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
+                .filter(car -> car.getDistance().equals(maxDistance))
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
     }
 
-    private int getMaxDistance(List<Car> cars) {
+    private Distance getMaxDistance(List<Car> cars) {
         return cars.stream()
-                .max(Comparator.comparingInt(Car::getDistance))
-                .get()
-                .getDistance();
+                .map(Car::getDistance)
+                .max(Distance::compare)
+                .get();
     }
 }

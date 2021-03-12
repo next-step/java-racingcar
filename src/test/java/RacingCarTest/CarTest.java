@@ -1,6 +1,8 @@
 package RacingCarTest;
 
+import org.junit.jupiter.api.BeforeEach;
 import racingcar.Car;
+import racingcar.Distance;
 import racingcar.MovementCondition;
 import racingcar.SimpleCar;
 import org.junit.jupiter.api.Test;
@@ -9,7 +11,12 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
     final String givenCarName = "Car";
-    Car car = new SimpleCar(givenCarName);
+    Car car;
+
+    @BeforeEach
+    void SetUp() {
+        car = new SimpleCar(givenCarName);
+    }
 
     @Test
     void When_getName_Then_CorrectName() {
@@ -22,30 +29,28 @@ public class CarTest {
 
     @Test
     void Given_AlwaysMove_When_forward_Then_DistanceIncreased() {
-        int initialDistance = car.getDistance();
-
         //given
+        Distance initialDistance = new Distance();
         MovementCondition movementCondition = new AlwaysMoveCondition();
 
         //when
-        car.forward(movementCondition);
+        Distance newDistance = car.forward(movementCondition);
 
         //then
-        assertThat(car.getDistance()).isEqualTo(initialDistance + 1);
+        assertThat(newDistance).isEqualTo(initialDistance.increase());
     }
 
     @Test
     void Given_NoMove_When_forward_Then_DistanceNotChanged() {
-        int initialDistance = car.getDistance();
-
         //given
+        Distance initialDistance = new Distance();
         MovementCondition movementCondition = new NoMoveCondition();
 
         //when
-        car.forward(movementCondition);
+        Distance newDistance = car.forward(movementCondition);
 
         //then
-        assertThat(car.getDistance()).isEqualTo(initialDistance);
+        assertThat(newDistance).isEqualTo(initialDistance);
     }
 
     @Test

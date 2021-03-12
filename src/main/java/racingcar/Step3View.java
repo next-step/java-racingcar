@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Step3View implements View {
-    final String FORWARD = "-";
+    final String FORWARD_SYMBOL = "-";
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -41,13 +41,18 @@ public class Step3View implements View {
     @Override
     public void printSingleRacingResult(List<Car> cars) {
         cars.forEach(car -> {
-            int distance = car.getDistance();
-            while (distance-- != 0) {
-                System.out.print(FORWARD);
-            }
+            printDistance(car.getDistance());
             System.out.print('\n');
         });
         System.out.print('\n');
+    }
+
+    private void printDistance(Distance distance) {
+        Distance emptyDistance = new Distance(0);
+        while (!distance.equals(emptyDistance)) {
+            distance = distance.decrease();
+            System.out.print(FORWARD_SYMBOL);
+        }
     }
 
     @Override

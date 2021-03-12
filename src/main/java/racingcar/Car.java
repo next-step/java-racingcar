@@ -3,7 +3,7 @@ package racingcar;
 public interface Car {
     String getName();
 
-    int getDistance();
+    Distance getDistance();
 
-    int forward(MovementCondition movementCondition);
+    Distance forward(MovementCondition movementCondition);
 }
