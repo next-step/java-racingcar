@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class ValidationUtilTest {
@@ -27,23 +28,23 @@ public class ValidationUtilTest {
     @ValueSource(strings = {"1 ! 3"})
     void validateInputOperator(String input) {
         //GIVE
-
+        Calculator calculator = new Calculator();
         //WHEN
         String[] inputArray = input.split(" ");
         //THEN
+
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> ValidationUtil.validateInput(inputArray));
+                .isThrownBy(() -> calculator.execute(inputArray));
     }
 
     @DisplayName("입력 값이 Null일때  NullPointerException 발생")
     @Test
     void validateInputNull() {
         //GIVE
-        String input = "";
+        String input = null;
         //WHEN
-        String[] inputArray = input.split(" ");
         //THEN
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> ValidationUtil.validateInput(inputArray));
+                .isThrownBy(() -> StringUtil.splitInput(input));
     }
 }

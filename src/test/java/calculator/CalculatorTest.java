@@ -11,17 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
-    Calculator calculator;
-    Operator operator;
+    private Calculator calculator;
 
     @BeforeEach
     void createInstance() {
         calculator = new Calculator();
     }
+
     @DisplayName("사칙연산을 사용하여 계산 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"1 + 2 * 3:9" , "2 + 4 / 2:3" , "5 + 5 - 1:9"}, delimiter = ':')
-    public void calculator(String input , int result) {
+    @CsvSource(value = {"1 + 2 * 3:9", "2 + 4 / 2:3", "5 + 5 - 1:9"}, delimiter = ':')
+    public void calculator(String input, int result) {
         //GIVE
 
         //WHEN
@@ -39,7 +39,7 @@ public class CalculatorTest {
 
         //THEN
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Operator.calculation("/",20,0));
+                .isThrownBy(() -> Operator.calculation("/", 20, 0));
     }
 
     @DisplayName("사칙연산 값 테스트, 사칙연산과 다른 값이 들어가면 IllegalArgumentException Exception 발생")
