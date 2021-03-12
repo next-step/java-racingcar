@@ -1,18 +1,26 @@
 package racing.model;
 
-import racing.model.Car;
-import racing.model.RandomCar;
+import racing.util.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
 
-  public List<Car> makeAndReturnCar(int carCount){
-    List<Car> carList = new ArrayList<>();
+  List<Car> carList;
+
+  public List<Car> init(int carCount){
+    carList = new ArrayList<>();
     while(carCount-->0){
-      carList.add(new RandomCar());
+      carList.add(new Car());
     }
+
+    return carList;
+  }
+
+  public List<Car> runCycle(){
+    carList.forEach(m->m.move(RandomGenerator.createRandomValue()));
+
     return carList;
   }
 }

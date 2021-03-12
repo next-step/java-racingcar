@@ -4,7 +4,6 @@ import racing.model.CarFactory;
 import racing.view.ResultView;
 
 public class Game {
-
   private final int carCount;
   private final int attempt;
 
@@ -19,12 +18,13 @@ public class Game {
     resultView = new ResultView();
   }
 
-  private void init(){
-    carFactory.makeAndReturnCar(carCount);
-  }
+  public boolean run(){
+    carFactory.init(carCount);
 
-  public void run(){
+    for(int i=0; i<attempt; i++){
+      carFactory.runCycle();
+    }
 
-
+    return true;
   }
 }
