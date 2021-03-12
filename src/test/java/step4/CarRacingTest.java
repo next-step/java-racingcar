@@ -30,7 +30,7 @@ class CarRacingTest {
     @DisplayName("winner 테스트")
     @Test
     void winnerTest() {
-        carRacing.start(new Go());
+        carRacing.progress(new Go());
         List<Car> winner = carRacing.getWinner();
         Car firstWinner = winner.get(0);
         Car secondWinner = winner.get(1);
@@ -45,7 +45,7 @@ class CarRacingTest {
     @DisplayName("Random이 무조건 움직이는 번호일때 start 테스트")
     @Test
     void carMoveTest() {
-        carRacing.start(new Go());
+        carRacing.progress(new Go());
         List<Car> currentStatus = carRacing.getCurrentStatus();
         int position = currentStatus.get(0).getPosition();
 
@@ -55,7 +55,7 @@ class CarRacingTest {
     @DisplayName("Random이 무조건 안움직이는 번호일때 start 테스트")
     @Test
     void carStopTest() {
-        carRacing.start(new Stop());
+        carRacing.progress(new Stop());
         List<Car> currentStatus = carRacing.getCurrentStatus();
         int position = currentStatus.get(0).getPosition();
 

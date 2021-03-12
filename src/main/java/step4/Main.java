@@ -15,7 +15,7 @@ public class Main {
         ResultView.printCarsMove(carRacing.getCurrentStatus());
 
         for (int i=0; i<countOfCarRacing; i++) {
-            carRacing.start(new Random());
+            carRacing.progress(new Random());
             ResultView.printCarsMove(carRacing.getCurrentStatus());
         }
         ResultView.printWinner(carRacing.getWinner());
