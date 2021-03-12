@@ -14,8 +14,8 @@ class RacingEventTest {
     @CsvSource(value = {"pobi,crong,honux:5","pobi,crong,honux:7"}, delimiter = ':')
     void racingEventTest(String carNames, int tryCount){
         RacingEvent racingEvent = new RacingEvent(new Cars(carNames.split(",")),tryCount);
-        assertThat(racingEvent.cars.getCars().size()).isEqualTo(carNames.split(",").length);
-        assertThat(racingEvent.count).isEqualTo(tryCount);
+        assertThat(racingEvent.getCars().size()).isEqualTo(carNames.split(",").length);
+        assertThat(racingEvent.getCount()).isEqualTo(tryCount);
     }
 
     @DisplayName("레이싱 실행 테스트")

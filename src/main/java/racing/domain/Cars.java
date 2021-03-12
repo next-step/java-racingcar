@@ -20,11 +20,13 @@ public class Cars {
     }
 
     public Winners winner(){
-        return new Winners(cars.stream().
-            filter(car -> car.isWinner(maxMoveCount()))
+        int max = maxMoveCount();
+        return cars.stream().
+            filter(car -> car.isWinner(max))
             .map(Car::getName)
-            .collect(Collectors.toList()));
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Winners::new));
     }
+
 
     public int maxMoveCount(){
         return cars

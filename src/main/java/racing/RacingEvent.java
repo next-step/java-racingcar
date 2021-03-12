@@ -1,14 +1,15 @@
 package racing;
 
+import java.util.List;
+import racing.domain.Car;
 import racing.domain.Cars;
 import racing.util.RandomUtil;
 import racing.view.ResultView;
 
 public class RacingEvent {
 
-    Cars cars;
-    int count;
-    int round;
+    private Cars cars;
+    private int count;
     private final ResultView resultView = new ResultView();
 
     public RacingEvent(Cars cars, int tryCont) {
@@ -16,10 +17,18 @@ public class RacingEvent {
         this.count = tryCont;
     }
 
+    public List<Car> getCars() {
+        return cars.getCars();
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+
     public void startEvent(){
         resultView.resultStart();
         for (int round = 0; count > round; round++){
-            this.round++;
             start();
         }
         finish();
