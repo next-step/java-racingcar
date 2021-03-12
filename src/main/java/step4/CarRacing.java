@@ -33,16 +33,8 @@ public class CarRacing {
     }
 
     public List<Car> getRoundResults(Random random) {
-        return cars.stream()
-                .map(car -> {
-                    move(random, car);
-                    return car;
-                }).collect(Collectors.toList());
-    }
-
-    private void move(Random random, Car car) {
-        int randomNumber = getRandomNumber(random);
-        car.move(randomNumber);
+        cars.forEach(c -> c.move(getRandomNumber(random)));
+        return cars;
     }
 
     private int getRandomNumber(Random random) {
