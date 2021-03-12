@@ -40,7 +40,7 @@ public class RacingGame {
 		return cars;
 	}
 
-	public void printCarsMoveCount() {
+	private void printCarsMoveCount() {
 		ResultView.printCarMoveCount(cars);
 	}
 }

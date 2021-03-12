@@ -45,17 +45,4 @@ class RacingGameTest {
 			assertThat(car.getMoveCount()).isEqualTo(1);
 		}
 	}
-
-	@DisplayName("자동차 이동횟수를 출력한다.")
-	@ParameterizedTest
-	@ValueSource(ints = {3})
-	public void printMoveCount(int numberOfCars) {
-		RacingGame racingGame = new RacingGame();
-		racingGame.createCars(3);
-		racingGame.moveCars();
-		racingGame.printCarsMoveCount();
-
-		racingGame.moveCars();
-		racingGame.printCarsMoveCount();
-	}
 }
