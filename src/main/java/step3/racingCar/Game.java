@@ -1,10 +1,11 @@
-package step3.racingCar;
 /*
  * 자동차 경주의 실행(입력)과 출력 및 종료를 담당하는 클래스
  *
  * @author hj-woo
  * @version 1.0
  * */
+package step3.racingCar;
+
 import step3.racingCar.domain.Cars;
 import step3.racingCar.ui.InputView;
 import step3.racingCar.ui.ResultView;

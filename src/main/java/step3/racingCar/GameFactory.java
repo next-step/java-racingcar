@@ -1,3 +1,10 @@
+/*
+ * 자동차 경주에 필요한 인스턴스를 생성하는 팩토리 클래스
+ * (팩토리 메소드 패턴 활용)
+ *
+ * @author hj-woo
+ * @version 1.0
+ * */
 package step3.racingCar;
 
 import step3.racingCar.domain.Car;
