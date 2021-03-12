@@ -16,7 +16,7 @@ public class Main {
         ResultView.printCarsMove(ready);
 
         for (int i=0; i<countOfCarRacing; i++) {
-            List<Car> results = carRacing.getResults(new Random());
+            List<Car> results = carRacing.getRoundResults(new Random());
             ResultView.printCarsMove(results);
         }
         ResultView.printWinner(carRacing.getWinner());

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Random;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class CarRacingTest {
 
@@ -18,45 +20,38 @@ class CarRacingTest {
         carRacing = new CarRacing(new String[]{"aaa","bbb"});
     }
 
-    @DisplayName("carRacing 생성자에서 정상적으로 생성됬는지 테스트")
-    @Test
-    void test002() {
-        List<Car> results = carRacing.getResults(new Random());
-
-        Assertions.assertEquals(results.size(), 2);
-    }
 
     @DisplayName("winner 테스트")
     @Test
-    void test003() {
-        carRacing.getResults(new Go());
+    void winnerTest() {
+        carRacing.getRoundResults(new Go());
         List<Car> winner = carRacing.getWinner();
         Car firstWinner = winner.get(0);
         Car secondWinner = winner.get(1);
 
-        Assertions.assertEquals(winner.size(), 2);
-        Assertions.assertEquals(firstWinner.getName(), "aaa");
-        Assertions.assertEquals(secondWinner.getName(), "bbb");
-        Assertions.assertEquals(firstWinner.getPosition(), 2);
-        Assertions.assertEquals(secondWinner.getPosition(), 2);
+        assertEquals(winner.size(), 2);
+        assertEquals(firstWinner.getName(), "aaa");
+        assertEquals(secondWinner.getName(), "bbb");
+        assertEquals(firstWinner.getPosition(), 2);
+        assertEquals(secondWinner.getPosition(), 2);
     }
 
     @DisplayName("Random이 무조건 움직이는 번호일때 start 테스트")
     @Test
-    void test004() {
-        List<Car> results = carRacing.getResults(new Go());
+    void carMoveTest() {
+        List<Car> results = carRacing.getRoundResults(new Go());
         int position = results.get(0).getPosition();
 
-        Assertions.assertEquals(position, 2);
+        assertEquals(position, 2);
     }
 
     @DisplayName("Random이 무조건 안움직이는 번호일때 start 테스트")
     @Test
-    void test005() {
-        List<Car> results = carRacing.getResults(new Stop());
+    void carStopTest() {
+        List<Car> results = carRacing.getRoundResults(new Stop());
         int position = results.get(0).getPosition();
 
-        Assertions.assertEquals(position, 1);
+        assertEquals(position, 1);
     }
 
 

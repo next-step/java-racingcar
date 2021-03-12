@@ -32,7 +32,7 @@ public class CarRacing {
         return cars;
     }
 
-    public List<Car> getResults(Random random) {
+    public List<Car> getRoundResults(Random random) {
         return cars.stream()
                 .map(car -> {
                     move(random, car);
