@@ -20,7 +20,7 @@ class GameTest {
     MockedStatic<InputView> inputView;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         inputs = new ArrayList<>();
         inputs.add(CAR_NUM);
         inputs.add(TRY_NUM);
@@ -33,7 +33,7 @@ class GameTest {
     }
 
     @Test
-    void createGame(){
+    void createGame() {
         assertThat(game).extracting("tryNum")
                 .containsOnly(TRY_NUM);
 
@@ -42,7 +42,7 @@ class GameTest {
     }
 
     @Test
-    void playGame(){
+    void playGame() {
 
         game.play();
     }

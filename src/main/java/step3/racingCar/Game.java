@@ -21,7 +21,7 @@ public class Game {
      * 게임 생성과 동시에 자동차 대수와 시도할 횟수를 확인하고,
      * GameFactory로부터 자동차 대수만큼의 자동차를 넘겨받는다.
      * */
-    public Game(){
+    public Game() {
         ArrayList<Integer> inputArr = InputView.input(strs);
         racingCars = GameFactory.cars(inputArr.get(0));
         tryNum = inputArr.get(1);
@@ -30,16 +30,16 @@ public class Game {
     /*
      * 생성한 자동차들과 시도 횟수를 바탕으로 게임을 진행하고 결과를 출력한다.
      * */
-    public void play(){
+    public void play() {
         System.out.println("실행 결과");
-        if(tryNum == 0){
+        if (tryNum == 0) {
             System.out.println("아무런 시도를 하지 않았습니다.");
         }
-        for(int i=0; i<tryNum; i++){
+        for (int i = 0; i < tryNum; i++) {
             racingCars.tryForward();
             ResultView.printResult(racingCars.checkForward());
-            if(i != tryNum){
-                System.out.println("**********"+i+"번째 시도");
+            if (i != tryNum) {
+                System.out.println("**********" + i + "번째 시도");
             }
         }
     }

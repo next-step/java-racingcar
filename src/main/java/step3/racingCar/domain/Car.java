@@ -26,13 +26,13 @@ public class Car {
     }
 
     /*
-    * 자동차가 전진하거나 멈추는 함수이며 0~9 사이의 random값에서 4이상일 경우 전진한다.
-    * 전진시에는 전진한 횟수를 +1한다.
-    * @param null
-    * @return 자동차의 전진 여부, boolean
-    * */
-    public boolean goForward(){
-        if(random.nextInt(RANDOM_BOUND) >= FORWARD_CONDITION){
+     * 자동차가 전진하거나 멈추는 함수이며 0~9 사이의 random값에서 4이상일 경우 전진한다.
+     * 전진시에는 전진한 횟수를 +1한다.
+     * @param null
+     * @return 자동차의 전진 여부, boolean
+     * */
+    public boolean goForward() {
+        if (random.nextInt(RANDOM_BOUND) >= FORWARD_CONDITION) {
             forwardNum++;
             return true;
         }

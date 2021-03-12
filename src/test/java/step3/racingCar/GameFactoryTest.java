@@ -23,7 +23,7 @@ class GameFactoryTest {
     private ArrayList<Integer> inputs;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         gameFactory = new GameFactory();
         inputs = new ArrayList<>();
         inputs.add(CAR_NUM);
@@ -32,7 +32,7 @@ class GameFactoryTest {
 
     @Test
     @DisplayName("Car의 생성 주관을 GameFactory에서 하는 테스트")
-    void buildCar(){
+    void buildCar() {
         Car car = gameFactory.car();
         assertThat(car).isInstanceOf(Car.class);
         assertThat(car).extracting("random")
@@ -42,7 +42,7 @@ class GameFactoryTest {
 
     @Test
     @DisplayName("Cars 생성을 GameFactory에서 주관하여 Car의 생성과 Cars의 생성을 통합테스트")
-    void buildCars(){
+    void buildCars() {
         Cars cars = gameFactory.cars(CAR_NUM);
         assertThat(cars).isInstanceOf(Cars.class);
         assertThat(cars).hasNoNullFieldsOrProperties();
@@ -50,7 +50,7 @@ class GameFactoryTest {
 
     @Test
     @DisplayName("Game의 생성을 GameFactory에서 주관하여 Game, Cars, Car의 생성을 통합테스트")
-    void buildGame(){
+    void buildGame() {
         MockedStatic<InputView> inputView = mockStatic(InputView.class);
         when(InputView.input(Game.strs))
                 .thenReturn(inputs);

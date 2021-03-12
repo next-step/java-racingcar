@@ -15,19 +15,19 @@ import java.util.List;
 
 public class GameFactory {
 
-    public static Game game(){
+    public static Game game() {
         return new Game();
     }
 
-    public static Cars cars(int carNum){
+    public static Cars cars(int carNum) {
         List<Car> carList = new ArrayList<>();
-        for(int i=0; i<carNum; i++){
+        for (int i = 0; i < carNum; i++) {
             carList.add(car());
         }
         return new Cars(carList);
     }
 
-    public static Car car(){
+    public static Car car() {
         return new Car();
     }
 }

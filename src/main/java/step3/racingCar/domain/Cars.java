@@ -18,17 +18,17 @@ public class Cars {
     }
 
     /*
-    * 자동차들의 전진한 횟수를 확인하여 리스트로 반환한다.
-    * @param null
-    * @return 자동차들의 전진한 횟수를 담은 리스트, LinkedList<Integer>
-    * */
-    public ArrayList<Integer> checkForward(){
+     * 자동차들의 전진한 횟수를 확인하여 리스트로 반환한다.
+     * @param null
+     * @return 자동차들의 전진한 횟수를 담은 리스트, LinkedList<Integer>
+     * */
+    public ArrayList<Integer> checkForward() {
         return cars.stream()
                 .map(Car::getForwardNum)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void tryForward(){
+    public void tryForward() {
         cars.forEach(Car::goForward);
     }
 }
