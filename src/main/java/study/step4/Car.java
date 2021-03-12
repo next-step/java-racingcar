@@ -11,6 +11,10 @@ public class Car {
     }
 
     public static Car of(String carName) {
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException(RacingGameError.CAR_NAME_LENGTH_OVER);
+        }
+
         return new Car(carName);
     }
 

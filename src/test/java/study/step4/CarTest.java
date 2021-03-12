@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
@@ -16,6 +17,15 @@ class CarTest {
         Car car = Car.of(carName);
         assertThat(car.getCarName()).isEqualTo(carName);
         assertThat(car.getLocation()).isEqualTo(0);
+    }
+
+    @DisplayName("Exception 테스트, 자동차이름 5자 초과")
+    @ParameterizedTest
+    @ValueSource(strings = {"자동차ABC", "자동차이름6자"})
+    void carNameLengthOver(String carName) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Car.of(carName);
+        }).withMessage(RacingGameError.CAR_NAME_LENGTH_OVER);
     }
 
     @DisplayName("차량 이동")
