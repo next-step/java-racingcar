@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private int cars;
-    private int count;
 
-    public RacingGame(int cars, int count) {
+    private int currentRound = 0;
+
+    private int cars;
+    private int givenRound;
+
+
+    public RacingGame(int cars, int givenRound) {
         this.cars = cars;
-        this.count = count;
+        this.givenRound = givenRound;
     }
 
     public List<RacingCar> settingRacingCars(int cars) {
@@ -31,7 +35,8 @@ public class RacingGame {
     private void numberingGameTimes(List<RacingCar> carList, int count) {
         for (int i = 0; i < count; i++) {
             numberingCars(carList);
-            System.out.print("\n");
+            currentRound++;
+            System.out.println("");
         }
     }
 
@@ -41,4 +46,9 @@ public class RacingGame {
             System.out.println(carList.get(j).status());
         }
     }
+
+    public int getRound() {
+        return currentRound;
+    }
+
 }
