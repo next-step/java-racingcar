@@ -26,8 +26,8 @@ public class RacingResult {
     // 레이싱 결과를 담는 클래스에 우승자를 배열 타입으로 반환
     public String[] findWinners() {
         List<Car> cars = getLastRound();
-
         Position maxPosition = getMaxPosition(cars);
+
         List<Name> names = findWinnerNames(cars, maxPosition);
         return names.stream()
                 .map(Name::getName)
@@ -35,7 +35,7 @@ public class RacingResult {
     }
 
     // 메서드 내에 기능을 분리 -> cars 리스트에서 maxPosition 에 해당하는 Name 리스트를 반환
-    private List<Name> findWinnerNames(List<Car> cars, Position maxPosition) {
+    protected List<Name> findWinnerNames(List<Car> cars, Position maxPosition) {
         return cars.stream()
                 .filter(car -> car.isWinner(maxPosition))
                 .map(Car::getName)
