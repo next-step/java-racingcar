@@ -1,3 +1,5 @@
+package step2.calculator;
+
 public class Util {
 
     public static void checkEmpty(String input){
