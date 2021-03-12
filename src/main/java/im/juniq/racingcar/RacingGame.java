@@ -3,12 +3,12 @@ package im.juniq.racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class RacingGame {
 	private List<Car> cars = new ArrayList<>();
 
 	public static void main(String[] args) {
-		Game game = new Game();
-		game.play();
+		RacingGame racingGame = new RacingGame();
+		racingGame.play();
 	}
 
 	public void play() {
