@@ -10,13 +10,12 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class CarTest {
 
-    @DisplayName("차량 등록, 이름, 출발점 확인")
+    @DisplayName("차량 등록 확인, 이름")
     @ParameterizedTest
     @ValueSource(strings = {"차량1호", "차량2호", "차량3호"})
-    void getLocation(String carName) {
+    void checkCarName(String carName) {
         Car car = Car.of(carName);
         assertThat(car.getCarName()).isEqualTo(carName);
-        assertThat(car.getLocation()).isEqualTo(0);
     }
 
     @DisplayName("Exception 테스트, 자동차이름 5자 초과")
