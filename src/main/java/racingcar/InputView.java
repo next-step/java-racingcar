@@ -14,9 +14,9 @@ public class InputView {
         int count = scanner.nextInt();
 
         RacingGame racingGame = new RacingGame(cars, count);
-        List<Car> list = racingGame.settingCars(cars);
-        racingGame.moveToN(list, count);
-        racingGame.carStatus(list);
+        List<RacingCar> list = racingGame.settingRacingCars(cars);
+        racingGame.gameStart(list, count);
+
 
     }
 }
