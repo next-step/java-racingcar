@@ -12,16 +12,7 @@ public class RacingGameTest {
     @DisplayName("0~9까지 랜덤 출력")
     @Test
     void random_test() {
-        System.out.println(new RacingGame(3, 5).random());
-    }
-
-    @DisplayName("앞으로 전진할 수 있는가?")
-    @Test
-    void isGo_test() {
-        RacingGame racingGame = new RacingGame(3, 5);
-        String result = racingGame.isGo(racingGame.random());
-        assertThat(result).isEqualTo("앞으로 이동했습니다.");
-
+        System.out.println(new RacingCar(new Car()).random());
     }
 
     @DisplayName("Car의 객체의 Set, Get 테스트")
@@ -33,17 +24,58 @@ public class RacingGameTest {
         assertThat(car.getLocation()).isEqualTo("--");
     }
 
-
-    @DisplayName("RacingGameTest")
+    @DisplayName("전진 테스트")
     @Test
-    void racing_car_demo_test() {
+    void isGo_test() {
+        RacingCar car = new RacingCar(new Car());
+        String result = car.isGo(5);
+        assertThat(result).isEqualTo("-");
+
+    }
+
+    @DisplayName("멈춤 테스트")
+    @Test
+    void stop_test() {
+        RacingCar car = new RacingCar(new Car());
+        String result = car.isGo(3);
+        assertThat(result).isEqualTo("");
+
+    }
+
+
+    @DisplayName("1대의 차가 2회 움직일 경우")
+    @Test
+    void one_car_moves_twice_test() {
+        int cars = 1;
+        int count = 2;
+
+        RacingGame racingGame = new RacingGame(cars, count);
+        List<RacingCar> list = racingGame.settingRacingCars(cars);
+        racingGame.gameStart(list, count);
+
+    }
+
+    @DisplayName("2대의 차가 1회 움직일 경우")
+    @Test
+    void two_car_moves_once_test() {
+        int cars = 2;
+        int count = 1;
+
+        RacingGame racingGame = new RacingGame(cars, count);
+        List<RacingCar> list = racingGame.settingRacingCars(cars);
+        racingGame.gameStart(list, count);
+
+    }
+
+    @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.")
+    @Test
+        void cars_can_moves_given_number_test() {
         int cars = 3;
         int count = 5;
-        RacingGame racingGame = new RacingGame(cars, count);
-        List<Car> list = racingGame.settingCars(cars);
-        racingGame.moveToN(list, count);
-        racingGame.carStatus(list);
 
+        RacingGame racingGame = new RacingGame(cars, count);
+        List<RacingCar> list = racingGame.settingRacingCars(cars);
+        racingGame.gameStart(list, count);
     }
 
 }
