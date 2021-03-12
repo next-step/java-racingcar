@@ -5,8 +5,6 @@ import step3.move.MoveStrategy;
 
 import java.util.Objects;
 
-import static step3.util.Constants.START_IDX;
-
 /**
  * 자동차의 상태와 행위를 관리하는 클래스
  */

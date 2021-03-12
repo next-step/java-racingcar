@@ -1,18 +1,15 @@
 package step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import step3.move.MoveStrategy;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static step3.util.Constants.START_IDX;
 
 /**
  * 자동차 생성, 이동 테스트
@@ -61,7 +58,7 @@ class CarTest {
         assertThat(carName.hashCode()).isEqualTo(expectedName.hashCode());
     }
 
-    @DisplayName("자동차의 이동하는지 확인하는 테스트")
+    @DisplayName("move(): 자동차의 이동하는지 확인하는 테스트")
     @ParameterizedTest(name = "자동차({0})는 움직임 {1} 설정 시 Position{2}")
     @MethodSource(value = "carPosition")
     void moveCarPosition(final String name, final boolean moveFlag, final int position) {
@@ -74,7 +71,7 @@ class CarTest {
         assertThat(carPosition).isEqualTo(new Position(position));
     }
 
-    @DisplayName("자동차의 연속적인 이동 위치를 확인 테스트")
+    @DisplayName("move(): 자동차의 연속적인 이동 위치를 확인 테스트")
     @ParameterizedTest(name = "자동차 이동 전략: {0}, position 값 : {1}")
     @CsvSource(value = {"user1, true, 2", "user2, false, 0"})
     void movesCarPosition(final String name, final boolean moveFlag, final int expected) {
@@ -88,7 +85,7 @@ class CarTest {
         assertThat(carPosition).isEqualTo(new Position(expected));
     }
 
-    @DisplayName("자동차 우승자 테스트")
+    @DisplayName("isWinner(): 자동차 우승자 테스트")
     @ParameterizedTest(name = "해당 자동차가 우승 == {2}")
     @MethodSource(value = "winnerEntry")
     void carWinnerTest(final Car given, final Position maxPosition, final boolean expected) {

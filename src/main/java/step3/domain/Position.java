@@ -2,7 +2,8 @@ package step3.domain;
 
 import java.util.Objects;
 
-import static step3.util.Constants.START_IDX;
+import static step3.util.Constants.NUMBER_ONE;
+import static step3.util.Constants.NUMBER_ZERO;
 
 /**
  * primitive 타입 데이터의 관리
@@ -24,23 +25,22 @@ import static step3.util.Constants.START_IDX;
 public class Position implements Comparable<Position> {
 
     public static final String CANNOT_NEGATIVE_VALUES = "Position 은 음수 값을 가질 수 없다.";
-    public static final int ONE = 1;
 
     private final int position;
 
     public Position() {
-        this(START_IDX);
+        this(NUMBER_ZERO);
     }
 
     public Position(int position) {
-        if(position < START_IDX) {
+        if(position < NUMBER_ZERO) {
             throw new IllegalArgumentException(CANNOT_NEGATIVE_VALUES);
         }
         this.position = position;
     }
 
     public Position move() {
-        return new Position(position + ONE);
+        return new Position(position + NUMBER_ONE);
     }
 
     public int getPosition() {

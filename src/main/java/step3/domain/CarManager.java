@@ -5,6 +5,7 @@ import step3.move.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -27,7 +28,7 @@ public class CarManager {
     }
 
     // 자동차 생성 메서드
-    private void createCars(String[] participants, MoveStrategy moveStrategy) {
+    private void createCars(final String[] participants, final MoveStrategy moveStrategy) {
         Arrays.stream(participants)
                 .forEach(name -> cars.add(new Car(name, moveStrategy)));
     }
@@ -43,6 +44,6 @@ public class CarManager {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }
