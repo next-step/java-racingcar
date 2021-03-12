@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.System.out;
+import static step3.util.Constants.NUMBER_FIVE;
 import static step3.util.Validator.*;
 
 /**
@@ -49,7 +50,7 @@ public class InputView {
     private boolean greaterThenNameMaxLength(String participantNames) {
         String[] names = participantNames.split(SPLIT_DELIMITER);
         return Arrays.stream(names)
-                .anyMatch(s -> s.length() > 5);
+                .anyMatch(s -> s.length() > NUMBER_FIVE);
     }
 
     // 라운드 수를 입력 받으려는 경우 숫자로 파싱이 되는지 확인
@@ -57,9 +58,10 @@ public class InputView {
         out.println(GUIDE_HOW_MANY_TRY);
         String attemptCount = scanner.nextLine();
 
-        if(isNumeric(attemptCount)) {
+        if(isNumeric(attemptCount) && isNaturalCount(attemptCount)) {
             return Integer.parseInt(attemptCount);
         }
         return requestAttemptCount();
     }
+
 }

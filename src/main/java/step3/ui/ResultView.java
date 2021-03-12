@@ -7,19 +7,20 @@ import step3.domain.RacingRound;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static java.lang.String.join;
 import static java.lang.System.lineSeparator;
 import static java.util.stream.Collectors.joining;
-import static step3.util.Constants.START_IDX;
+import static step3.util.Constants.NUMBER_ZERO;
 
 /**
  * 자동차 경주의 상태를 출력하기 위한 클래스
  */
 public class ResultView {
 
-    public static final String CAR_DISTANCE_MARKING = "-";
-    public static final String EMPTY = "";
     public static final String GUIDE_WINNER = "가 최종 우승했습니다.";
+    public static final String CAR_DISTANCE_MARKING = "-";
     public static final String SPLIT_DELIMITER = ", ";
+    public static final String EMPTY = "";
 
     private final String hyphen;
 
@@ -48,7 +49,8 @@ public class ResultView {
 
     // 자동차 별 거리 출력
     private String printDistancePerRecord(final Car car) {
-        String carDistance = IntStream.range(START_IDX, car.getPosition())
+        int position = car.getPosition().getPosition();
+        String carDistance = IntStream.range(NUMBER_ZERO, position)
                 .mapToObj(i -> hyphen)
                 .reduce(EMPTY, (acc, cur) -> acc + cur);
         return String.format("%s : %s ", car.getName(), carDistance);
@@ -56,7 +58,7 @@ public class ResultView {
 
     // 승자 출력 메서드
     public void printWinner(RacingResult racingResult) {
-        final String[] winner = racingResult.getWinner();
-        System.out.println(String.join(SPLIT_DELIMITER, winner) + GUIDE_WINNER);
+        final String[] winner = racingResult.findWinners();
+        System.out.println(join(SPLIT_DELIMITER, winner) + GUIDE_WINNER);
     }
 }
