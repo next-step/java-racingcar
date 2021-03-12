@@ -1,10 +1,13 @@
+package stringcalculator;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class IntCalculatorTest {
 
@@ -22,6 +25,6 @@ class IntCalculatorTest {
     @CsvSource({"1 + 2,3", "1 * 3 + 5,8", "5 / 1,5", "-1 + -11 * 30,-360"})
     void calculateInOrderFromTheLeft(String request, int expected) {
         IntCalculator calculator = new IntCalculator(request);
-        assertThat(calculator.calculateInOrderFromTheLeft()).isEqualTo(expected);
+        Assertions.assertThat(calculator.calculateInOrderFromTheLeft()).isEqualTo(expected);
     }
 }

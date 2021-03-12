@@ -1,3 +1,5 @@
+package stringcalculator;
+
 public class IntCalculator {
     private final String DELIMITER = " ";
     private final String[] tokens;
