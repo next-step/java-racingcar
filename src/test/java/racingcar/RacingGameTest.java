@@ -31,19 +31,16 @@ public class RacingGameTest {
         RacingCar racingCar = new RacingCar(new Car());
         String result = racingCar.isGo(3);
         assertThat(result).isEqualTo("");
-
     }
 
 
-    @DisplayName("1대의 차가 2회 움직일 경우")
+    @DisplayName("1대의 차가 1회 움직일 경우")
     @Test
     void one_car_moves_twice_test() {
         int cars = 1;
-        int count = 2;
+        int count = 1;
 
-        RacingGame racingGame = new RacingGame(cars, count);
-        List<RacingCar> list = racingGame.settingRacingCars(cars);
-        racingGame.gameStart(list, count);
+        RacingGameTest(cars, count);
 
     }
 
@@ -53,11 +50,10 @@ public class RacingGameTest {
         int cars = 2;
         int count = 1;
 
-        RacingGame racingGame = new RacingGame(cars, count);
-        List<RacingCar> list = racingGame.settingRacingCars(cars);
-        racingGame.gameStart(list, count);
-
+        RacingGameTest(cars, count);
     }
+
+
 
     @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.")
     @Test
@@ -65,9 +61,16 @@ public class RacingGameTest {
         int cars = 3;
         int count = 5;
 
+        RacingGameTest(cars, count);
+    }
+
+    @DisplayName("각 테스트 구간별로 중복되는 부분은 따로 뺌")
+    private void RacingGameTest(int cars, int count) {
         RacingGame racingGame = new RacingGame(cars, count);
         List<RacingCar> list = racingGame.settingRacingCars(cars);
         racingGame.gameStart(list, count);
+        assertThat(list.size()).isEqualTo(cars);
+        assertThat(count).isEqualTo(racingGame.getRound());
     }
 
 }
