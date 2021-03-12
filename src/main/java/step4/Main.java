@@ -12,13 +12,11 @@ public class Main {
         CarRacing carRacing = new CarRacing(drivers.split(","));
 
         ResultView.printStart();
-        List<Car> ready = carRacing.getCurrentStatus();
-        ResultView.printCarsMove(ready);
+        ResultView.printCarsMove(carRacing.getCurrentStatus());
 
         for (int i=0; i<countOfCarRacing; i++) {
             carRacing.start(new Random());
-            List<Car> currentStatus = carRacing.getCurrentStatus();
-            ResultView.printCarsMove(currentStatus);
+            ResultView.printCarsMove(carRacing.getCurrentStatus());
         }
         ResultView.printWinner(carRacing.getWinner());
     }

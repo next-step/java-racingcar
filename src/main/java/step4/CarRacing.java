@@ -21,13 +21,6 @@ public class CarRacing {
                 .collect(Collectors.toList());
     }
 
-    public List<Car> getWinner() {
-        return cars.stream()
-                .collect(groupingBy(car -> car.getPosition(), TreeMap::new, toList()))
-                .lastEntry()
-                .getValue();
-    }
-
     public List<Car> getCurrentStatus() {
         return cars;
     }
@@ -40,5 +33,10 @@ public class CarRacing {
         return random.nextInt(RANDOM_RANGE);
     }
 
-
+    public List<Car> getWinner() {
+        return cars.stream()
+                .collect(groupingBy(car -> car.getPosition(), TreeMap::new, toList()))
+                .lastEntry()
+                .getValue();
+    }
 }
