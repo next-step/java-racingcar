@@ -13,8 +13,10 @@ public class CarRacingApplication {
         ResultView resultView = new ResultView();
         while (round.isRoundContinue()) {
             carRacing.moveForward();
-            resultView.printOutResult(carRacing.getCarList());
+            resultView.addCarRacingResult(new CarResultDto(carRacing.getCarList()));
             round.reduceRound();
         }
+
+        resultView.printOutRacingResult();
     }
 }
