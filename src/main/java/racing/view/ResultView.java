@@ -1,9 +1,9 @@
-package racing_game.view;
+package racing.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racing_game.domain.Car;
-import racing_game.domain.Winner;
+import racing.domain.Car;
+import racing.domain.Winner;
 
 public class ResultView {
 

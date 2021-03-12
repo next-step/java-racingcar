@@ -1,4 +1,4 @@
-package racing_game.domain;
+package racing.domain;
 
 public class Winner {
 

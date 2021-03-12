@@ -1,16 +1,15 @@
-package racing_game;
+package racing;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing_game.domain.Car;
-import racing_game.exception.CarNameException;
+import racing.domain.Car;
+import racing.exception.CarNameException;
 
 class CarTest {
 

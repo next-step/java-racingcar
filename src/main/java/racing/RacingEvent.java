@@ -1,8 +1,8 @@
-package racing_game;
+package racing;
 
-import racing_game.domain.Cars;
-import racing_game.util.RandomUtil;
-import racing_game.view.ResultView;
+import racing.domain.Cars;
+import racing.util.RandomUtil;
+import racing.view.ResultView;
 
 public class RacingEvent {
 

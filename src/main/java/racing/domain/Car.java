@@ -1,6 +1,6 @@
-package racing_game.domain;
+package racing.domain;
 
-import racing_game.exception.CarNameException;
+import racing.exception.CarNameException;
 
 public class Car {
 
