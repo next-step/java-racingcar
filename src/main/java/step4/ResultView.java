@@ -12,15 +12,17 @@ public class ResultView {
 
     public static void printCarsMove(List<Car> cars) {
         cars.stream()
-                .map(car -> {
-                    // @todo refactoring
-                    String name = car.getName();
-                    String stringCarsMove = getStringCarsMove(car.getPosition());
-                    return name + " : " + stringCarsMove;
-                })
+                .map(car -> getNameAndMoves(car))
                 .forEach(System.out::println);
 
         System.out.println();
+    }
+
+    private static String getNameAndMoves(Car car) {
+        String name = car.getName();
+        String stringCarsMove = getStringCarsMove(car.getPosition());
+
+        return name + " : " + stringCarsMove;
     }
 
     private static String getStringCarsMove(int index) {
