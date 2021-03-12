@@ -15,14 +15,14 @@ class GameTest {
 	void createRacingCars(int numberOfCarsToBuild) {
 		Game game = new Game();
 		game.createCars(numberOfCarsToBuild);
-		List<RacingCar> cars = game.getCars();
+		List<Car> cars = game.getCars();
 
 		assertThat(game.getCars().size()).isEqualTo(numberOfCarsToBuild);
 
 		for (int i = 0; i < cars.size(); i++) {
-			RacingCar racingCar = cars.get(i);
-			assertThat(racingCar.getId()).isEqualTo(i);
-			assertThat(racingCar.getMoveCount()).isEqualTo(0);
+			Car car = cars.get(i);
+			assertThat(car.getId()).isEqualTo(i);
+			assertThat(car.getMoveCount()).isEqualTo(0);
 		}
 	}
 
@@ -32,17 +32,17 @@ class GameTest {
 	void moveRacingCars(int numberOfCars) throws NoSuchFieldException, IllegalAccessException {
 		Game game = new Game();
 		game.createCars(numberOfCars);
-		List<RacingCar> cars = game.getCars();
-		for (RacingCar racingCar: cars) {
-			RacingCarTest.setMoveMustBeSuccess(racingCar);
+		List<Car> cars = game.getCars();
+		for (Car car : cars) {
+			CarTest.setMoveMustBeSuccess(car);
 		}
 
 		game.moveCars();
 
 		for (int i = 0; i < cars.size(); i++) {
-			RacingCar racingCar = cars.get(i);
-			assertThat(racingCar.getId()).isEqualTo(i);
-			assertThat(racingCar.getMoveCount()).isEqualTo(1);
+			Car car = cars.get(i);
+			assertThat(car.getId()).isEqualTo(i);
+			assertThat(car.getMoveCount()).isEqualTo(1);
 		}
 	}
 

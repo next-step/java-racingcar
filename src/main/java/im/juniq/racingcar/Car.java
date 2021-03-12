@@ -2,12 +2,12 @@ package im.juniq.racingcar;
 
 import java.util.Random;
 
-public class RacingCar {
+public class Car {
 	private int id;
 	private int moveCount = 0;
 	private Random random;
 
-	public RacingCar(int id) {
+	public Car(int id) {
 		this.id = id;
 		this.random = new Random();
 	}

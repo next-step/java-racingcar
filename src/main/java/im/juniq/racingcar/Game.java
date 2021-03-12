@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-	private List<RacingCar> cars = new ArrayList<>();
+	private List<Car> cars = new ArrayList<>();
 
 	public static void main(String[] args) {
 		Game game = new Game();
@@ -26,17 +26,17 @@ public class Game {
 
 	public void createCars(int carCount) {
 		for (int i = 0; i < carCount; i++) {
-			cars.add(new RacingCar(i));
+			cars.add(new Car(i));
 		}
 	}
 
 	public void moveCars() {
-		for (RacingCar racingCar: cars) {
-			racingCar.move();
+		for (Car car : cars) {
+			car.move();
 		}
 	}
 
-	public List<RacingCar> getCars() {
+	public List<Car> getCars() {
 		return cars;
 	}
 
