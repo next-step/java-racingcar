@@ -5,15 +5,10 @@ import java.util.Map;
 import java.util.Random;
 
 public class Cars {
-    private final int participants;
-    private final int attemps;
     private final int randomNumberRange = 10;
     private final Map<Integer, String> cars = new HashMap<>();
 
-    public Cars(int participants, int attemps) {
-        this.participants = participants;
-        this.attemps = attemps;
-
+    public Cars(int participants) {
         for (int i = 0; i < participants; i++) {
             cars.put(i, "-");
         }

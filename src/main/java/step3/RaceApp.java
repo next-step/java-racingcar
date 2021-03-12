@@ -5,7 +5,7 @@ public class RaceApp {
         InputView inputView = new InputView();
         inputView.inputValues();
 
-        Cars cars = new Cars(inputView.howManyCars(), inputView.getAttemps());
+        Cars cars = new Cars(inputView.howManyCars());
 
         ResultView resultView = new ResultView();
         resultView.getResult(inputView.getAttemps(), cars);
