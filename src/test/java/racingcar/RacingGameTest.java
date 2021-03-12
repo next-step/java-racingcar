@@ -15,20 +15,12 @@ public class RacingGameTest {
         System.out.println(new RacingCar(new Car()).random());
     }
 
-    @DisplayName("Car의 객체의 Set, Get 테스트")
-    @Test
-    void status_car_test() {
-        Car car = new Car();
-        String status = "-" + "-";
-        car.setLocation(status);
-        assertThat(car.getLocation()).isEqualTo("--");
-    }
 
     @DisplayName("전진 테스트")
     @Test
     void isGo_test() {
-        RacingCar car = new RacingCar(new Car());
-        String result = car.isGo(5);
+        RacingCar racingCar = new RacingCar(new Car());
+        String result = racingCar.isGo(5);
         assertThat(result).isEqualTo("-");
 
     }
@@ -36,8 +28,8 @@ public class RacingGameTest {
     @DisplayName("멈춤 테스트")
     @Test
     void stop_test() {
-        RacingCar car = new RacingCar(new Car());
-        String result = car.isGo(3);
+        RacingCar racingCar = new RacingCar(new Car());
+        String result = racingCar.isGo(3);
         assertThat(result).isEqualTo("");
 
     }
