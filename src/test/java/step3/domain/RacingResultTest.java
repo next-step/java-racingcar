@@ -53,17 +53,18 @@ class RacingResultTest {
         Car car2 = new Car(new Name("win1"), new Position(3), getMoveStrategy(true));
         Car car3 = new Car(new Name("win2"), new Position(3), getMoveStrategy(true));
         return Stream.of(
-                Arguments.of(Arrays.asList(car1, car2, car3), new String[] {"win1", "win2"})
+                Arguments.of(Arrays.asList(car1, car2, car3), new String[]{"win1", "win2"})
         );
     }
+
     private static Stream<Arguments> findMaxPositionEntry() {
         Car car1 = new Car(new Name("a"), new Position(2), getMoveStrategy(true));
         Car car2 = new Car(new Name("win1"), new Position(3), getMoveStrategy(true));
         Car car3 = new Car(new Name("win2"), new Position(3), getMoveStrategy(true));
         Car car4 = new Car(new Name("win3"), new Position(5), getMoveStrategy(true));
         return Stream.of(
-                Arguments.of(Arrays.asList(car1, car2, car3), new Position(3)),
-                Arguments.of(Arrays.asList(car2, car3, car4), new Position(5))
+                Arguments.of(Arrays.asList(car1, car2, car3), new Position(3), new String[]{"win1", "win2"}),
+                Arguments.of(Arrays.asList(car2, car3, car4), new Position(5), new String[]{"win3"})
         );
     }
 
@@ -125,10 +126,25 @@ class RacingResultTest {
         assertThat(winner).isEqualTo(expected);
     }
 
+    @DisplayName(value = "findWinnerNames(): 자동차를 필터링 이후 이름 값 리스트를 반환하는 테스트")
+    @ParameterizedTest(name = "레이싱 엔트리 중 우승자 확인 테스트 {2}")
+    @MethodSource(value = "findMaxPositionEntry")
+    void findWinnerNamesTest(final List<Car> cars, final Position maxPosition, final String[] expectedWinnerNames) {
+        // given
+        RacingResult racingResult = new RacingResult();
+        // when
+        List<Name> winnerNameList = racingResult.findWinnerNames(cars, maxPosition);
+        String[] winnerNames = winnerNameList.stream()
+                .map(Name::getName)
+                .toArray(String[]::new);
+        // then
+        assertThat(winnerNames).containsExactly(expectedWinnerNames);
+    }
+
     @DisplayName("findWinners(): 자동차 우승자 여러명인 경우 테스트")
     @ParameterizedTest(name = "레이싱 엔트리 중 우승자 {1}")
     @MethodSource(value = "findWinner")
-    void multiWinnerTest(List<Car> participantsEntry, String[] winners) {
+    void multiWinnerTest(final List<Car> participantsEntry, final String[] winners) {
         // given
         RacingRound racingRound = new RacingRound(participantsEntry);
         racingResult.addRacingRound(racingRound);
@@ -141,7 +157,7 @@ class RacingResultTest {
     @DisplayName(value = "getMaxPosition(): 최대 Position 테스트")
     @ParameterizedTest(name = "가장 멀리 간 자동차의 위치 {1}")
     @MethodSource(value = "findMaxPositionEntry")
-    void testCase1(List<Car> participantsEntry, Position expected) {
+    void getMaxPositionTest(final List<Car> participantsEntry, final Position expected) {
         // given
         // when
         Position maxPosition = racingResult.getMaxPosition(participantsEntry);
