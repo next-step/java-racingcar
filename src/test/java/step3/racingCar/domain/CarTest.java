@@ -17,8 +17,8 @@ class CarTest {
 
     private Car car;
     private Random random;
-    private static final int INITNUM = 0;
-    private static final int RANDOMBOUND = 10;
+    private static final int INIT_NUM = 0;
+    private static final int RANDOM_BOUND = 10;
 
     @BeforeEach
     void setUp() throws Exception{
@@ -38,27 +38,27 @@ class CarTest {
 
     @Test
     void createCar(){
-        assertThat(car.getForwardNum()).isEqualTo(INITNUM);
+        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
     }
 
 
     @ParameterizedTest
     @CsvSource({"4", "5", "6", "7", "8", "9"})
     void goForward(int randInt){
-        when(random.nextInt(RANDOMBOUND))
+        when(random.nextInt(RANDOM_BOUND))
                 .thenReturn(randInt);
 
         assertThat(car.goForward()).isTrue();
-        assertThat(car.getForwardNum()).isEqualTo(INITNUM + 1);
+        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM + 1);
     }
 
     @ParameterizedTest
     @CsvSource({"0", "1", "2", "3"})
     void validateStopForward(int randInt){
-        when(random.nextInt(RANDOMBOUND))
+        when(random.nextInt(RANDOM_BOUND))
                 .thenReturn(randInt);
 
         assertThat(car.goForward()).isFalse();
-        assertThat(car.getForwardNum()).isEqualTo(INITNUM);
+        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
     }
 }

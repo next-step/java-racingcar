@@ -18,16 +18,16 @@ import static org.mockito.Mockito.when;
 class GameFactoryTest {
 
     private GameFactory gameFactory;
-    private static final int TRYNUM = 3;
-    private static final int CARNUM = 4;
+    private static final int TRY_NUM = 3;
+    private static final int CAR_NUM = 4;
     private ArrayList<Integer> inputs;
 
     @BeforeEach
     void setUp(){
         gameFactory = new GameFactory();
         inputs = new ArrayList<>();
-        inputs.add(CARNUM);
-        inputs.add(TRYNUM);
+        inputs.add(CAR_NUM);
+        inputs.add(TRY_NUM);
     }
 
     @Test
@@ -43,7 +43,7 @@ class GameFactoryTest {
     @Test
     @DisplayName("Cars 생성을 GameFactory에서 주관하여 Car의 생성과 Cars의 생성을 통합테스트")
     void buildCars(){
-        Cars cars = gameFactory.cars(CARNUM);
+        Cars cars = gameFactory.cars(CAR_NUM);
         assertThat(cars).isInstanceOf(Cars.class);
         assertThat(cars).hasNoNullFieldsOrProperties();
     }

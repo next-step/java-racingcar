@@ -25,13 +25,13 @@ class CarsTest {
     @Mock
     private Car car;
 
-    private static final int CARNUM = 4;
+    private static final int CAR_NUM = 4;
 
     @BeforeEach
     void setUp(){
         carList = new ArrayList<>();
         MockitoAnnotations.initMocks(this);
-        for(int i=0; i<CARNUM; i++){
+        for(int i=0; i<CAR_NUM; i++){
             carList.add(car);
         }
         cars = new Cars(carList);
@@ -59,8 +59,8 @@ class CarsTest {
         when(car.getForwardNum()).thenReturn(input);
         List<Integer> forwardNums = cars.checkForward();
 
-        verify(car, times(CARNUM)).getForwardNum();
-        assertThat(forwardNums.size()).isEqualTo(CARNUM);
+        verify(car, times(CAR_NUM)).getForwardNum();
+        assertThat(forwardNums.size()).isEqualTo(CAR_NUM);
         assertThat(forwardNums).containsOnly(input);
     }
 
@@ -68,6 +68,6 @@ class CarsTest {
     @DisplayName("자동차 집합이 전진할지 여부를 확인했는지 리스트들의 메소드 호출 횟수를 확인한다.")
     void tryForwardTest(){
         cars.tryForward();
-        verify(car, times(CARNUM)).goForward();
+        verify(car, times(CAR_NUM)).goForward();
     }
 }

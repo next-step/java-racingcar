@@ -14,16 +14,16 @@ import static org.mockito.Mockito.when;
 
 class GameTest {
     private Game game;
-    private static final int TRYNUM = 3;
-    private static final int CARNUM = 4;
+    private static final int TRY_NUM = 3;
+    private static final int CAR_NUM = 4;
     private ArrayList<Integer> inputs;
     MockedStatic<InputView> inputView;
 
     @BeforeEach
     void setUp(){
         inputs = new ArrayList<>();
-        inputs.add(CARNUM);
-        inputs.add(TRYNUM);
+        inputs.add(CAR_NUM);
+        inputs.add(TRY_NUM);
 
         inputView = mockStatic(InputView.class);
         when(InputView.input(Game.strs))
@@ -35,7 +35,7 @@ class GameTest {
     @Test
     void createGame(){
         assertThat(game).extracting("tryNum")
-                .containsOnly(TRYNUM);
+                .containsOnly(TRY_NUM);
 
         assertThat(game).extracting("racingCars")
                 .hasOnlyElementsOfType(Cars.class);
