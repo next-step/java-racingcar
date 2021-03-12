@@ -33,7 +33,7 @@ public class Car {
         return forwardNum;
     }
 
-    public Map<String, Integer> getStatus(){
+    public Map<String, Integer> getStatus() {
         return Collections.singletonMap(name, forwardNum);
     }
 

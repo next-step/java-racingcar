@@ -12,6 +12,7 @@ import org.mockito.Spy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -26,6 +27,7 @@ class CarsTest {
     private Car car;
 
     private static final int CAR_NUM = 4;
+    private static final int INIT_NUM = 0;
 
     @BeforeEach
     void setUp() {
@@ -69,5 +71,22 @@ class CarsTest {
     void tryForwardTest() {
         cars.tryForward();
         verify(car, times(CAR_NUM)).goForward();
+    }
+
+    @Test
+    @DisplayName("(Mock X) 자동차 집합이 보유중인 자동차들의 이름과 전진횟수를 확인한다.")
+    void checkCarStatus() {
+        List<Car> testCarList = new ArrayList<>();
+        String name = "name";
+        for (int i = 0; i < CAR_NUM; i++) {
+            testCarList.add(new Car(name + i));
+        }
+        Cars testCars = new Cars(testCarList);
+        Map<String, Integer> carStatus = testCars.checkCarStatus();
+
+        assertThat(carStatus.size()).isEqualTo(CAR_NUM);
+        for (int i = 0; i < CAR_NUM; i++) {
+            assertThat(carStatus.get(name + i)).isEqualTo(INIT_NUM);
+        }
     }
 }

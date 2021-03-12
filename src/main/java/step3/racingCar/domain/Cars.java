@@ -8,6 +8,7 @@ package step3.racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -26,6 +27,11 @@ public class Cars {
         return cars.stream()
                 .map(Car::getForwardNum)
                 .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public Map<String, Integer> checkCarStatus() {
+        return cars.stream()
+                .collect(Collectors.toMap(Car::getName, Car::getForwardNum));
     }
 
     public void tryForward() {
