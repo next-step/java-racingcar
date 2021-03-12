@@ -17,16 +17,16 @@ public class RacingGame {
 		racing(InputView.getTryCount());
 	}
 
+	public void createCars(int carCount) {
+		for (int i = 0; i < carCount; i++) {
+			cars.add(new Car(i));
+		}
+	}
+
 	private void racing(int moveCount) {
 		for (int i = 0; i < moveCount; i++) {
 			moveCars();
 			printCarsMoveCount();
-		}
-	}
-
-	public void createCars(int carCount) {
-		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car(i));
 		}
 	}
 
@@ -36,11 +36,11 @@ public class RacingGame {
 		}
 	}
 
-	public List<Car> getCars() {
-		return cars;
-	}
-
 	private void printCarsMoveCount() {
 		ResultView.printCarMoveCount(cars);
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 }
