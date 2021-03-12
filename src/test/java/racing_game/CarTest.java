@@ -20,9 +20,10 @@ class CarTest {
     void setup(){
         car = new Car("pobi");
     }
-    @DisplayName("4 이상 이동하는 테스트")
+    
+    @DisplayName("4 초과 이동하는 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6})
+    @ValueSource(ints = {5,6})
     public void successMoveTest(int number){
         car.tryMove(number);
         assertThat(car.getMoveCount()).isEqualTo(1);

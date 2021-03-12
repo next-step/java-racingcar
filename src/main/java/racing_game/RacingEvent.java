@@ -9,7 +9,7 @@ public class RacingEvent {
     Cars cars;
     int count;
     int round;
-    private ResultView resultView = new ResultView();
+    private final ResultView resultView = new ResultView();
 
     public RacingEvent(Cars cars, int tryCont) {
         this.cars = cars;
@@ -17,15 +17,15 @@ public class RacingEvent {
     }
 
     public void startEvent(){
-        for (int i=0; i < count; i++){
-            round++;
+        resultView.resultStart();
+        for (int round = 0; count > round; round++){
+            this.round++;
             start();
         }
         finish();
     }
 
     public void start(){
-        resultView.resultStart();
         cars.getCars().forEach(car -> {
             car.tryMove(RandomUtil.random());
             resultView.resultView(car);
@@ -33,8 +33,6 @@ public class RacingEvent {
     }
 
     public void finish(){
-        if(count == round){
-            resultView.showWinner(cars.winner());
-        }
+        resultView.showWinner(cars.winner().getWinners());
     }
 }

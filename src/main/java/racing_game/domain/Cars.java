@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
+    public static final int EMPTY_VALUE = 0;
     private List<Car> cars = new ArrayList<>();
 
     public Cars(String[] carNames){
@@ -18,11 +19,11 @@ public class Cars {
         return cars;
     }
 
-    public List<String> winner(){
-        return cars.stream().
+    public Winners winner(){
+        return new Winners(cars.stream().
             filter(car -> car.isWinner(maxMoveCount()))
             .map(Car::getName)
-            .collect(Collectors.toList());
+            .collect(Collectors.toList()));
     }
 
     public int maxMoveCount(){
@@ -30,6 +31,6 @@ public class Cars {
             .stream()
             .mapToInt(Car::getMoveCount)
             .max()
-            .orElse(0);
+            .orElse(EMPTY_VALUE);
     }
 }
