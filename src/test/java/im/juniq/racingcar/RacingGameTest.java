@@ -12,12 +12,12 @@ class RacingGameTest {
 	@DisplayName("자동차 n대를 생성한다")
 	@ParameterizedTest
 	@ValueSource(ints = {5})
-	void createRacingCars(int numberOfCarsToBuild) {
+	void createCars(int numberOfCars) {
 		RacingGame racingGame = new RacingGame();
-		racingGame.createCars(numberOfCarsToBuild);
+		racingGame.createCars(numberOfCars);
 		List<Car> cars = racingGame.getCars();
 
-		assertThat(racingGame.getCars().size()).isEqualTo(numberOfCarsToBuild);
+		assertThat(racingGame.getCars().size()).isEqualTo(numberOfCars);
 
 		for (int i = 0; i < cars.size(); i++) {
 			Car car = cars.get(i);
@@ -29,7 +29,7 @@ class RacingGameTest {
 	@DisplayName("자동차 n대를 이동한다")
 	@ParameterizedTest
 	@ValueSource(ints = {5})
-	void moveRacingCars(int numberOfCars) throws NoSuchFieldException, IllegalAccessException {
+	void moveCars(int numberOfCars) throws NoSuchFieldException, IllegalAccessException {
 		RacingGame racingGame = new RacingGame();
 		racingGame.createCars(numberOfCars);
 		List<Car> cars = racingGame.getCars();

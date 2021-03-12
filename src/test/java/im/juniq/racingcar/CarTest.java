@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class CarTest {
 	@DisplayName("자동차를 생성한다")
 	@Test
-	void createRacingCar() {
+	void createCar() {
 		Car car = new Car(1);
 
 		assertThat(car.getId()).isEqualTo(1);
@@ -20,7 +20,7 @@ class CarTest {
 
 	@DisplayName("자동차를 이동한다")
 	@Test
-	void moveRacingCar() throws NoSuchFieldException, IllegalAccessException {
+	void moveCar() throws NoSuchFieldException, IllegalAccessException {
 		Car car = new Car(1);
 		setMoveMustBeSuccess(car);
 
