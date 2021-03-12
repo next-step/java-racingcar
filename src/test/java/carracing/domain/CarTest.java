@@ -11,18 +11,15 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class CarServiceTest {
+class CarTest {
 
     @Test
     @DisplayName("등록한 차량번호와 인스턴스의 차량번호는 같아야 함")
     public void registerCar() {
         // given
-        CarService carService = new CarService();
-
-        // when
         Car car = new Car(1);
 
-        // then
+        // when then
         assertThat(car.getCarNumber()).isEqualTo(1);
     }
 
@@ -30,10 +27,7 @@ class CarServiceTest {
     @ValueSource(ints = {0, -1, -1000})
     @DisplayName("차량번호는 0이나 음수가 올 수 없음")
     public void registerCar_carNumberIsZeroOrNegative(int param) {
-        // given
-        CarService carService = new CarService();
-
-        // when then
+        // given when then
         assertThatIllegalArgumentException()
                 .isThrownBy( () -> new Car(param) )
                 .withMessageMatching("차량번호는 1 이상의 숫자여야 합니다.");

@@ -18,7 +18,7 @@ public class Cars {
 
     private static final int FIRST_CAR_NUMBER = 1;
 
-    List<Car> carList = new ArrayList<>();
+    private final List<Car> carList = new ArrayList<>();
 
     public List<Car> getCarList() {
         return carList;
