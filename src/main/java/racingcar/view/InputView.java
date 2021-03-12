@@ -8,7 +8,7 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public int playCarNum(){
+    public static int playCarNum(){
         String count = null;
         ValidationUtil validationUtil = new ValidationUtil();
         do {
@@ -18,7 +18,7 @@ public class InputView {
         return Integer.parseInt(count);
     }
 
-    public int tryGameNum(){
+    public static int tryGameNum(){
         String count = null;
         ValidationUtil validationUtil = new ValidationUtil();
         do {
