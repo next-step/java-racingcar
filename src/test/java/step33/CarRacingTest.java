@@ -35,6 +35,7 @@ class CarRacingTest {
         Assertions.assertEquals(start.isEmpty(), false);
     }
 
+
     @DisplayName("Random이 무조건 움직이는 번호일때 start 테스트")
     @Test
     void carStartMoveTest() {
@@ -50,6 +51,5 @@ class CarRacingTest {
         Integer integer = start.get(0).getCarMoves().get(0);
         Assertions.assertEquals(integer, 0);
     }
-
 
 }
