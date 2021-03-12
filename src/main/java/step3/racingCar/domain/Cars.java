@@ -7,7 +7,6 @@
 package step3.racingCar.domain;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,10 +22,10 @@ public class Cars {
     * @param null
     * @return 자동차들의 전진한 횟수를 담은 리스트, LinkedList<Integer>
     * */
-    public LinkedList<Integer> checkForward(){
+    public ArrayList<Integer> checkForward(){
         return cars.stream()
                 .map(Car::getForwardNum)
-                .collect(Collectors.toCollection(LinkedList::new));
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public void tryForward(){

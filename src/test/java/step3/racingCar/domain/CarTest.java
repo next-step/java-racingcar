@@ -23,6 +23,12 @@ class CarTest {
     @BeforeEach
     void setUp() throws Exception{
         car = new Car();
+
+        /*
+        * Random mock test 참고 링크: https://multifrontgarden.tistory.com/187
+        * private field에 set: https://www.baeldung.com/java-set-private-field-value
+        * */
+
         random = mock(Random.class);
         Field randomField = car.getClass()
                 .getDeclaredField("random");
@@ -35,7 +41,7 @@ class CarTest {
         assertThat(car.getForwardNum()).isEqualTo(INITNUM);
     }
 
-    /*Random mock test 참고 링크: https://multifrontgarden.tistory.com/187*/
+
     @ParameterizedTest
     @CsvSource({"4", "5", "6", "7", "8", "9"})
     void goForward(int randInt){

@@ -39,9 +39,16 @@ class CarsTest {
 
     @Test
     void createAndSetCars(){
+
+        /*
+        * Cars 내부의 List<Car>을 확인하는 로직
+        * extracting은 List에 담아서 반환하기 때문에 2차원 리스트의 크기로 확인해야한다.
+        * */
+
         assertThat(cars).extracting("cars")
                 .hasOnlyElementsOfType((new ArrayList<Car>()).getClass())
-                .hasSameSizeAs(new List[]{carList});    //크기가 CARNUM이라고 바로 확인하고 싶었으나, extracting은 List에 담아서 반환하기 때문에 2차원 리스트의 크기로 확인해야함
+                .hasSameSizeAs(new List[]{carList});
+
     }
 
 
