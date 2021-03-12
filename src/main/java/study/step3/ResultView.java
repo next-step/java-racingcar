@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
     public static void output(Cars carList){
-        carList.move();
+        carList.move(new RandomMoveStrategy());
         printPosition(carList.getCars());
     }
     public static void printPosition(List<Car> cars){

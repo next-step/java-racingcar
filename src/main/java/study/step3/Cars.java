@@ -14,9 +14,9 @@ public class Cars {
     /**
      * 상태와 로직을 한곳에!
      * */
-    public void move(){
+    public void move(MoveStrategy moveStrategy){
         for(Car car : cars){
-            car.move(new RandomMoveStrategy());
+            car.move(moveStrategy);
         }
     }
     public List<Car> getCars(){

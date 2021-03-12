@@ -17,26 +17,26 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarRaceTest {
 
-    private Car car;
+    private Car goSuccessTestCar;
+    private Car goFailTestCar;
     @BeforeEach
     void setUp(){
-        car = new Car("rccar");
+        goSuccessTestCar = new Car("rcCa");
+        goFailTestCar = new Car("rcCar");
     }
-    @ParameterizedTest
-    @CsvSource(value = {"4","5"})
-    @DisplayName("전진 테스트 - 전진 성공하는 경우, 랜덤값이 4,5라고 가정")
-    void 전진테스트(int randomValue){
-        MoveStrategy moveStrategy = ()->randomValue;
-        car.move(moveStrategy);
-        assertThat(car.getPosition()).isEqualTo(2);
+    @Test
+    @DisplayName("전진 테스트 - 전진 성공하는 경우")
+    void 전진테스트(){
+        MoveStrategy moveStrategy = new CarMoveByNameLengthStrategy(goSuccessTestCar);
+        goSuccessTestCar.move(moveStrategy);
+        assertThat(goSuccessTestCar.getPosition()).isEqualTo(2);
     }
-    @ParameterizedTest
-    @CsvSource(value = {"0","1"})
+    @Test
     @DisplayName("전진 테스트 - 전진 실패하는 경우")
-    void 전진조건테스트(int randomValue){
-        MoveStrategy moveStrategy = ()->randomValue;
-        car.move(moveStrategy);
-        assertThat(car.getPosition()).isEqualTo(1);
+    void 전진조건테스트(){
+        MoveStrategy moveStrategy = new CarMoveByNameLengthStrategy(goFailTestCar);
+        goFailTestCar.move(moveStrategy);
+        assertThat(goFailTestCar.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -55,25 +55,21 @@ public class CarRaceTest {
     }
 
     @Test
-    @DisplayName("자동차 경주게임 우승 알려주는 기능 테스트")
+    @DisplayName("자동차 경주게임 우승자 알려주는 기능 테스트")
     void 자동차_경주_우승자(){
         List<Car> carList = new ArrayList<>();
-
-        Car car1 = new Car("rc1");
+        Car car1 = new Car("rc11");
         Car car2 = new Car("rc2");
-        Car car3 = new Car("rc3");
-        MoveStrategy moveStrategy = () -> 5;
-        for(int i=0;i<5;i++){
-            car1.move(moveStrategy);
-            car3.move(moveStrategy);
-        }
-        for(int i=0;i<3;i++){
-            car2.move(moveStrategy);
-        }
+        Car car3 = new Car("rc33");
+        MoveStrategy moveStrategyCar1 = new CarMoveByNameLengthStrategy(car1);
+        MoveStrategy moveStrategyCar2 = new CarMoveByNameLengthStrategy(car2);
+        MoveStrategy moveStrategyCar3 = new CarMoveByNameLengthStrategy(car3);
+        car1.move(moveStrategyCar1);
+        car2.move(moveStrategyCar2);
+        car3.move(moveStrategyCar3);
         carList.add(car1);
         carList.add(car2);
         carList.add(car3);
-
         Cars cars = new Cars(carList);
         assertThat(cars.getWinners()).containsOnly(car1,car3);
     }

@@ -2,6 +2,7 @@ package study.step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceGame {
     public static void main(String[] args){
@@ -18,10 +19,11 @@ public class RaceGame {
             ResultView.output(cars);
             System.out.println();
         }
-        for(Car winner : cars.getWinners()){
-            System.out.print(winner.getCarName()+", ");
-        }
-        System.out.println("가 최종우승했습니다.");
+        String result = String.join(",",cars.getWinners()
+                .stream()
+                .map(car->car.getCarName())
+                .collect(Collectors.toList()));
+        System.out.println(result+"가 최종우승했습니다.");
     }
 }
 
