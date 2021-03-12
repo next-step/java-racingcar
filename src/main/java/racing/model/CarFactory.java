@@ -9,18 +9,17 @@ public class CarFactory {
 
   List<Car> carList;
 
-  public List<Car> init(int carCount){
+  public List<Car> init(int carCount) {
     carList = new ArrayList<>();
-    while(carCount-->0){
-      carList.add(new Car());
-    }
+    while (carCount-- > 0) carList.add(new Car());
 
     return carList;
   }
 
-  public List<Car> runCycle(){
-    carList.forEach(m->m.move(RandomGenerator.createRandomValue()));
+  public List<Car> runCycle() {
+    carList.forEach(m -> m.move(RandomGenerator.createRandomValue()));
 
     return carList;
   }
+
 }
