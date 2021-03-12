@@ -24,6 +24,13 @@ class PositionTest {
         );
     }
 
+    private static Stream<Arguments> greaterThanEntry() {
+        return Stream.of(
+                Arguments.of(new Position(3), new Position(1), new Position(3)),
+                Arguments.of(new Position(5), new Position(4), new Position(5))
+        );
+    }
+
     @DisplayName("Position 객체 비교 테스트")
     @Test
     void equalsPositionTest() {
@@ -48,5 +55,15 @@ class PositionTest {
     void exceptionPositionTest(final int given) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Position(given));
+    }
+
+    @DisplayName(value = "greaterThan() 테스트")
+    @ParameterizedTest(name = "Position 비교 메서드 테스트")
+    @MethodSource(value = "greaterThanEntry")
+    void greaterThanPositionTest(Position left, Position right, Position expected) {
+        // when
+        Position result = left.greaterThan(right);
+        // then
+        assertThat(result).isEqualTo(expected);
     }
 }

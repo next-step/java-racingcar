@@ -21,7 +21,7 @@ import static step3.util.Constants.START_IDX;
  * </pre>
  *
  */
-public class Position {
+public class Position implements Comparable<Position> {
 
     public static final String CANNOT_NEGATIVE_VALUES = "Position 은 음수 값을 가질 수 없다.";
     public static final int ONE = 1;
@@ -47,6 +47,13 @@ public class Position {
         return position;
     }
 
+    public Position greaterThan(Position maxPosition) {
+        if(compareTo(maxPosition) >= 0) {
+            return maxPosition;
+        }
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,5 +65,15 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(getPosition());
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return o.position - position;
+    }
+
+    @Override
+    public String toString() {
+        return position + "";
     }
 }
