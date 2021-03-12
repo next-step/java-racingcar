@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Players
+ * Cars
  * description 경기에 참가한 차량 리스트
- * version 0.0.1
+ * version 0.0.2
  *
  * history
  *  0.0.1) 클래스 신규생성
+ *  0.0.2) 클래스명 변경 Players -> Cars
  */
 public class Cars {
 
@@ -25,7 +26,7 @@ public class Cars {
 
     public Cars(int racingCarCount) {
         validate(racingCarCount);
-        registerCar(racingCarCount);
+        registerCarList(racingCarCount);
     }
 
     private void validate(int racingCarCount) {
@@ -34,7 +35,7 @@ public class Cars {
         }
     }
 
-    private void registerCar(int racingCarCount) {
+    private void registerCarList(int racingCarCount) {
         for (int i = FIRST_CAR_NUMBER; i <= racingCarCount; i++) {
             this.carList.add(new Car(i));
         }

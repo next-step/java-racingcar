@@ -43,9 +43,7 @@ public class CarRacingService {
     }
 
     private RoundResult executeRound(int roundNumber, Cars cars) {
-        RoundResult roundResult = new RoundResult();
-        roundResult.registerRoundResult(roundNumber, executeScoring(cars));
-        return roundResult;
+        return new RoundResult(roundNumber, executeScoring(cars));
     }
 
     private RacingScores executeScoring(Cars cars) {

@@ -17,10 +17,6 @@ public class RoundResult {
     private int roundNumber;
     private RacingScores racingScores;
 
-    public RoundResult() {
-        this.carRacingValidator = new CarRacingValidator();
-    }
-
     public int getRoundNumber() {
         return roundNumber;
     }
@@ -29,7 +25,12 @@ public class RoundResult {
         return racingScores;
     }
 
-    public void registerRoundResult(int roundNumber, RacingScores racingScores) {
+    public RoundResult(int roundNumber, RacingScores racingScores) {
+        this.carRacingValidator = new CarRacingValidator();
+        registerRoundResult(roundNumber, racingScores);
+    }
+
+    private void registerRoundResult(int roundNumber, RacingScores racingScores) {
         validateRoundNumber(roundNumber);
         validateRacingScores(racingScores);
         this.roundNumber = roundNumber;

@@ -20,7 +20,7 @@ class CarServiceTest {
         CarService carService = new CarService();
 
         // when
-        Car car = carService.registerCar(1);
+        Car car = new Car(1);
 
         // then
         assertThat(car.getCarNumber()).isEqualTo(1);
@@ -35,7 +35,7 @@ class CarServiceTest {
 
         // when then
         assertThatIllegalArgumentException()
-                .isThrownBy( () -> carService.registerCar(param) )
+                .isThrownBy( () -> new Car(param) )
                 .withMessageMatching("차량번호는 1 이상의 숫자여야 합니다.");
     }
 
@@ -43,10 +43,9 @@ class CarServiceTest {
     @DisplayName("차량이 움직이면 움직인 거리는 기존보다 줄어들지 않음")
     public void car_move() {
         // given
-        CarService carService = new CarService();
+        Car car = new Car(1);
 
         // when
-        Car car = carService.registerCar(1);
         int beforeMileage = car.getMileage();
         car.drive();
 
