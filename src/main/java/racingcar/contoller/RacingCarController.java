@@ -12,16 +12,11 @@ import java.util.List;
 
 public class RacingCarController {
 
-    private InputView inputView;
     private RacingGame racingGame;
-    private ResultView resultView;
     private InputManagement inputManagement;
-    private Cars carGroup;
 
-    public RacingCarController(InputView inputView, RacingGame racingGame, ResultView resultView) {
-        this.inputView = inputView;
+    public RacingCarController(RacingGame racingGame) {
         this.racingGame = racingGame;
-        this.resultView = resultView;
     }
 
     public List<Car> initRacingCars() {
@@ -35,12 +30,12 @@ public class RacingCarController {
     }
 
     public void startGame() {
-        inputManagement = inputView.input();
+        inputManagement = new InputView().input();
 
-        carGroup = new Cars(initRacingCars());
-        racingGame.init(carGroup, inputManagement);
+        Cars carGroup = new Cars(initRacingCars());
+        racingGame.init(carGroup);
 
-        resultView.printResult(racingGame.startRacing(), racingGame.getWinners()
-                                                                        .getCars());
+        new ResultView().printResult(racingGame.startRacing(inputManagement), racingGame.getWinners(inputManagement)
+                                                                                            .getCars());
     }
 }

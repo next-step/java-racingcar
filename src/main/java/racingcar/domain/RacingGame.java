@@ -13,11 +13,10 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private Cars carGroup;
-    private InputManagement inputManagement;
     private FinalResult finalResult = new FinalResult();
     private int thisRound = 0;
 
-    public Cars getWinners() {
+    public Cars getWinners(InputManagement inputManagement) {
         Map<String, Integer> finalRound = finalResult.getFinalResult()
                                                         .get(inputManagement.getCountRound());
 
@@ -47,20 +46,19 @@ public class RacingGame {
         recordEachRoundPosition();
     }
 
-    public boolean hasNextRound() {
+    public boolean hasNextRound(InputManagement inputManagement) {
         return inputManagement.getCountRound() > thisRound++;
     }
 
-    public FinalResult startRacing() {
-        while (hasNextRound()) {
+    public FinalResult startRacing(InputManagement inputManagement) {
+        while (hasNextRound(inputManagement)) {
             playRacing();
         }
 
         return finalResult;
     }
 
-    public void init(Cars carGroup, InputManagement inputManagement) {
+    public void init(Cars carGroup) {
         this.carGroup = carGroup;
-        this.inputManagement = inputManagement;
     }
 }

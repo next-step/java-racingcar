@@ -24,9 +24,7 @@ class RacingGameTest {
         String[] carNames = {"pobi","jhLim97"};
         InputManagement inputManagement = new InputManagement(carNames, countRound);
 
-        racingGame.init(null, inputManagement);
-
-        while (racingGame.hasNextRound()) {
+        while (racingGame.hasNextRound(inputManagement)) {
             countRound--;
         }
 
@@ -48,10 +46,10 @@ class RacingGameTest {
         Cars carGroup = new Cars(cars);
         InputManagement inputManagement = new InputManagement(carNames, 0);
 
-        racingGame.init(carGroup, inputManagement);
+        racingGame.init(carGroup);
         racingGame.recordEachRoundPosition();
 
-        assertThat(racingGame.getWinners()
+        assertThat(racingGame.getWinners(inputManagement)
                                     .getCars()
                                         .size()).isEqualTo(winnerNumber);
     }
@@ -71,10 +69,10 @@ class RacingGameTest {
         Cars carGroup = new Cars(cars);
         InputManagement inputManagement = new InputManagement(carNames, 0);
 
-        racingGame.init(carGroup, inputManagement);
+        racingGame.init(carGroup);
         racingGame.recordEachRoundPosition();
 
-        assertThat(racingGame.getWinners()
+        assertThat(racingGame.getWinners(inputManagement)
                                     .getCars()
                                         .size()).isEqualTo(winnerNumber);
     }

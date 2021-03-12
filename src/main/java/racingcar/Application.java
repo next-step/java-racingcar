@@ -7,8 +7,7 @@ import racingcar.view.ResultView;
 
 public class Application {
 
-    private static RacingCarController racingCarController = new RacingCarController(new InputView(), new RacingGame(), new ResultView());
-
+    private static RacingCarController racingCarController = new RacingCarController(new RacingGame());
 
     public static void main(String[] args) {
         racingCarController.startGame();
