@@ -3,7 +3,7 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class CarRacingTest {
 
@@ -28,8 +28,9 @@ public class CarRacingTest {
         CarRacing carRacing = new CarRacing(inputCarsCount);
         carRacing.moveForward();
 
-        for (Car car : carRacing.getCarList()) {
-            assertThat(car.getCurrentPosition()).isIn(go, stop);
-        }
+        assertThat(carRacing.getCarList()).allSatisfy(car -> {
+            assertThat(car.getCurrentPosition()).isGreaterThanOrEqualTo(stop);
+            assertThat(car.getCurrentPosition()).isLessThanOrEqualTo(go);
+        });
     }
 }
