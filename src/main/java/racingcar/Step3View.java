@@ -56,6 +56,6 @@ public class Step3View implements View {
     }
 
     @Override
-    public void printWinners(List<String> winnersName) {
+    public void printWinners(List<Name> winnersName) {
     }
 }

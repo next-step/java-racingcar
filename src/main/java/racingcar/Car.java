@@ -1,7 +1,8 @@
 package racingcar;
 
 public interface Car {
-    String getName();
+
+    Name getName();
 
     Distance getDistance();
 

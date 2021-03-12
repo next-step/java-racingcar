@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Step4View implements View {
     private static final String FORWARD_SYMBOL = "-";
@@ -45,7 +46,7 @@ public class Step4View implements View {
     @Override
     public void printSingleRacingResult(List<Car> cars) {
         cars.forEach(car -> {
-            System.out.print(car.getName() + CAR_NAME_POSTFIX);
+            System.out.print(car.getName().getName() + CAR_NAME_POSTFIX);
             printDistance(car.getDistance());
             System.out.print('\n');
         });
@@ -53,15 +54,13 @@ public class Step4View implements View {
     }
 
     @Override
-    public void printWinners(List<String> winnersName) {
+    public void printWinners(List<Name> winnersName) {
         if (winnersName.isEmpty()) return;
+        String joinedWinnersName = winnersName.stream()
+                .map(name -> name.getName())
+                .collect(Collectors.joining(", "));
 
-        System.out.print(winnersName.get(0));
-        for (int i = 1; i < winnersName.size(); i++) {
-            System.out.print(", ");
-            System.out.print(winnersName.get(i));
-        }
-        System.out.print("가 최종 우승했습니다.\n");
+        System.out.print(joinedWinnersName + "가 최종 우승했습니다.\n");
     }
 
     private void printDistance(Distance distance) {

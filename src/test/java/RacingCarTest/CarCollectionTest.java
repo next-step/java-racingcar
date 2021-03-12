@@ -38,11 +38,11 @@ public class CarCollectionTest {
         winner.forward(alwaysMoveCondition);
 
         //when
-        List<String> winnersName = carCollection.getWinnersName();
+        List<Name> winnersName = carCollection.getWinnersName();
 
         //then
         assertThat(winnersName.size()).isEqualTo(1);
-        assertThat(winnersName.get(0)).isEqualTo(winner.getName());
+        assertThat(winnersName.get(0)).isEqualTo(new Name("A"));
     }
 
 }

@@ -1,10 +1,7 @@
 package RacingCarTest;
 
 import org.junit.jupiter.api.BeforeEach;
-import racingcar.Car;
-import racingcar.Distance;
-import racingcar.MovementCondition;
-import racingcar.SimpleCar;
+import racingcar.*;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -21,10 +18,10 @@ public class CarTest {
     @Test
     void When_getName_Then_CorrectName() {
         //when
-        String actual = car.getName();
+        Name actual = car.getName();
 
         //then
-        assertThat(actual).isEqualTo(givenCarName);
+        assertThat(actual).isEqualTo(new Name(givenCarName));
     }
 
     @Test
@@ -58,8 +55,6 @@ public class CarTest {
         String longCarName = "LongCarName";
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    new SimpleCar(longCarName);
-                });
+                .isThrownBy(() -> new SimpleCar(longCarName));
     }
 }

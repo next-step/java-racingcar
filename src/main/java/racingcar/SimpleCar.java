@@ -1,20 +1,12 @@
 package racingcar;
 
 public class SimpleCar implements Car {
-    private final static int MAX_CAR_NAME = 5;
-
-    private String name;
+    private Name name;
     private Distance distance;
 
     public SimpleCar(String name) {
-        verifyCarName(name);
-        this.name = name;
+        this.name = new Name(name);
         distance = new Distance();
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 
     @Override
@@ -30,9 +22,8 @@ public class SimpleCar implements Car {
         return distance;
     }
 
-    private void verifyCarName(String carName) {
-        if (carName.length() > MAX_CAR_NAME) {
-            throw new IllegalArgumentException("carName must be less then or equal to 5");
-        }
+    @Override
+    public Name getName() {
+        return name;
     }
 }

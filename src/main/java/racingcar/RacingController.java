@@ -18,17 +18,12 @@ public class RacingController {
         CarCollection carCollection = new CarCollection(cars);
 
         racing = new Racing(new RandomMovementCondition(MOVE_THRESHOLD), carCollection, numberOfRacing);
-        racing.addEndOfSingleRacingListener(new Observer<Integer>() {
-            @Override
-            public void observe(Integer currentRacing) {
-                view.printSingleRacingResult(cars);
-            }
-        });
+        racing.addEndOfSingleRacingListener(currentRacing -> view.printSingleRacingResult(cars));
 
         view.printTitle();
         racing.racing();
 
-        List<String> winnersName = carCollection.getWinnersName();
+        List<Name> winnersName = carCollection.getWinnersName();
         view.printWinners(winnersName);
     }
 }

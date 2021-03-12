@@ -13,5 +13,5 @@ public interface View {
 
     void printSingleRacingResult(List<Car> cars);
 
-    void printWinners(List<String> winnersName);
+    void printWinners(List<Name> winnersName);
 }

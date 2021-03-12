@@ -1,8 +1,6 @@
 package racingcar;
 
-import java.util.Comparator;
 import java.util.Objects;
-import java.util.function.Function;
 
 public class Distance {
     private final int distance;
