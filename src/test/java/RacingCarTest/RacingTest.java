@@ -1,14 +1,12 @@
 package RacingCarTest;
 
-import RacingCar.*;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,8 +16,8 @@ public class RacingTest {
 
     @ParameterizedTest
     @MethodSource("provideRacingTestSources")
-    public void When_Racing_Than_DistanceChanged(MovementCondition movementCondition, int numberOfCars, int numberOfRacing, int expected) {
-        ArrayList<Car> cars = new ArrayList<Car>();
+    public void When_Racing_Than_DistanceChanged(MovementCondition movementCondition, int numberOfCars, int numberOfRacing, Distance expected) {
+        ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new SimpleCar(""));
         }
@@ -39,12 +37,7 @@ public class RacingTest {
     @Test
     public void Given_SetListener_When_Racing_Then_ListenerCalled() {
         //given
-        Observer endOfSingleRacing = new Observer<Integer>() {
-            @Override
-            public void observe(Integer event) {
-                endOfSingleRacingCalled = true;
-            }
-        };
+        Observer endOfSingleRacing = (Observer<Integer>) event -> endOfSingleRacingCalled = true;
 
         ArrayList<Car> cars = new ArrayList<Car>();
         cars.add(new SimpleCar(""));
@@ -65,16 +58,16 @@ public class RacingTest {
         MovementCondition alwaysMoveCondition = new AlwaysMoveCondition();
         MovementCondition noMoveCondition = new NoMoveCondition();
         return Stream.of(
-                Arguments.of(alwaysMoveCondition, 1, 1, 1),
-                Arguments.of(noMoveCondition, 1, 1, 0),
-                Arguments.of(alwaysMoveCondition, 1, 2, 2),
-                Arguments.of(noMoveCondition, 1, 2, 0),
-                Arguments.of(alwaysMoveCondition, 2, 1, 1),
-                Arguments.of(alwaysMoveCondition, 2, 2, 2),
-                Arguments.of(alwaysMoveCondition, 5, 4, 4),
-                Arguments.of(alwaysMoveCondition, 0, 1, 0),
-                Arguments.of(alwaysMoveCondition, 0, 0, 0),
-                Arguments.of(alwaysMoveCondition, 1, 0, 0)
+                Arguments.of(alwaysMoveCondition, 1, 1, new Distance(1)),
+                Arguments.of(noMoveCondition, 1, 1, new Distance(0)),
+                Arguments.of(alwaysMoveCondition, 1, 2, new Distance(2)),
+                Arguments.of(noMoveCondition, 1, 2, new Distance(0)),
+                Arguments.of(alwaysMoveCondition, 2, 1, new Distance(1)),
+                Arguments.of(alwaysMoveCondition, 2, 2, new Distance(2)),
+                Arguments.of(alwaysMoveCondition, 5, 4, new Distance(4)),
+                Arguments.of(alwaysMoveCondition, 0, 1, new Distance(0)),
+                Arguments.of(alwaysMoveCondition, 0, 0, new Distance(0)),
+                Arguments.of(alwaysMoveCondition, 1, 0, new Distance(0))
         );
     }
 }

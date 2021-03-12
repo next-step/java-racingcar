@@ -1,51 +1,53 @@
 package RacingCarTest;
 
-import RacingCar.Car;
-import RacingCar.MovementCondition;
-import RacingCar.SimpleCar;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.*;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
     final String givenCarName = "Car";
-    Car car = new SimpleCar(givenCarName);
+    Car car;
+
+    @BeforeEach
+    void SetUp() {
+        car = new SimpleCar(givenCarName);
+    }
 
     @Test
     void When_getName_Then_CorrectName() {
         //when
-        String actual = car.getName();
+        Name actual = car.getName();
 
         //then
-        assertThat(actual).isEqualTo(givenCarName);
+        assertThat(actual).isEqualTo(new Name(givenCarName));
     }
 
     @Test
     void Given_AlwaysMove_When_forward_Then_DistanceIncreased() {
-        int initialDistance = car.getDistance();
-
         //given
+        Distance initialDistance = new Distance();
         MovementCondition movementCondition = new AlwaysMoveCondition();
 
         //when
-        car.forward(movementCondition);
+        Distance newDistance = car.forward(movementCondition);
 
         //then
-        assertThat(car.getDistance()).isEqualTo(initialDistance + 1);
+        assertThat(newDistance).isEqualTo(initialDistance.increase());
     }
 
     @Test
     void Given_NoMove_When_forward_Then_DistanceNotChanged() {
-        int initialDistance = car.getDistance();
-
         //given
+        Distance initialDistance = new Distance();
         MovementCondition movementCondition = new NoMoveCondition();
 
         //when
-        car.forward(movementCondition);
+        Distance newDistance = car.forward(movementCondition);
 
         //then
-        assertThat(car.getDistance()).isEqualTo(initialDistance);
+        assertThat(newDistance).isEqualTo(initialDistance);
     }
 
     @Test
@@ -53,8 +55,6 @@ public class CarTest {
         String longCarName = "LongCarName";
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    new SimpleCar(longCarName);
-                });
+                .isThrownBy(() -> new SimpleCar(longCarName));
     }
 }

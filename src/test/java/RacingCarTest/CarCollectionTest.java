@@ -1,11 +1,8 @@
 package RacingCarTest;
 
-import RacingCar.Car;
-import RacingCar.CarCollection;
-import RacingCar.MovementCondition;
-import RacingCar.SimpleCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +16,7 @@ public class CarCollectionTest {
 
     @BeforeEach
     void initCarCollection() {
-        cars = new ArrayList<Car>();
+        cars = new ArrayList<>();
         cars.add(new SimpleCar("A"));
         cars.add(new SimpleCar("B"));
         carCollection = new CarCollection(cars);
@@ -28,10 +25,10 @@ public class CarCollectionTest {
     @Test
     void Given_AlwaysMoveCondition_When_Forward_Then_CarMoved() {
         //when
-        carCollection.forward(alwaysMoveCondition);
+        List<Distance> distanceList = carCollection.forward(alwaysMoveCondition);
 
         //then
-        cars.forEach(c -> assertThat(c.getDistance()).isEqualTo(1));
+        distanceList.forEach(distance -> assertThat(distance).isEqualTo(new Distance(1)));
     }
 
     @Test
@@ -41,11 +38,11 @@ public class CarCollectionTest {
         winner.forward(alwaysMoveCondition);
 
         //when
-        List<String> winnersName = carCollection.getWinnersName();
+        List<Name> winnersName = carCollection.getWinnersName();
 
         //then
         assertThat(winnersName.size()).isEqualTo(1);
-        assertThat(winnersName.get(0)).isEqualTo(winner.getName());
+        assertThat(winnersName.get(0)).isEqualTo(new Name("A"));
     }
 
 }

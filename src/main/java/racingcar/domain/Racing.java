@@ -1,4 +1,4 @@
-package RacingCar;
+package racingcar.domain;
 
 public class Racing {
     private MovementCondition movementCondition;
