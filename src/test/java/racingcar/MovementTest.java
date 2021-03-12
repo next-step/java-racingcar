@@ -19,7 +19,7 @@ public class MovementTest {
 
   @BeforeEach
   void setUp() {
-    car = new Car();
+    car = new Car("nana");
     movement = new Movement();
   }
 

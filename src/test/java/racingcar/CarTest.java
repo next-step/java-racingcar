@@ -13,7 +13,7 @@ public class CarTest {
 
   @BeforeEach
   void setUp() {
-    car = new Car();
+    car = new Car("nana");
   }
 
   @Test
@@ -23,4 +23,5 @@ public class CarTest {
     car.move();
     assertThat(car.getLocation()).isEqualTo(1);
   }
+
 }
