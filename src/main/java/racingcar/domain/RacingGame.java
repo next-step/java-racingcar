@@ -1,14 +1,7 @@
 package racingcar.domain;
 
 import racingcar.dto.EachRound;
-import racingcar.dto.FinalResult;
 import racingcar.dto.InputManagement;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -17,17 +10,7 @@ public class RacingGame {
     private int thisRound = 0;
 
     public Cars getWinners(InputManagement inputManagement) {
-        Map<String, Integer> finalRound = finalResult.getFinalResult()
-                                                        .get(inputManagement.getCountRound());
-
-        int maxPosition = Collections.max(finalRound.values());
-
-        List<Map.Entry<String, Integer>> results = new ArrayList<>(finalRound.entrySet());
-
-        return new Cars(results.stream()
-                                    .filter((Map.Entry<String, Integer> result) -> result.getValue() == maxPosition)
-                                    .map(result -> new Car(result.getKey(), result.getValue()))
-                                    .collect(Collectors.toList()));
+        return finalResult.getWinnersInCars(inputManagement);
     }
 
     public void recordEachRoundPosition() {

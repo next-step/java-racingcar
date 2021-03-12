@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.dto.FinalResult;
+import racingcar.domain.FinalResult;
 
 import java.util.*;
 import java.util.stream.Collectors;
