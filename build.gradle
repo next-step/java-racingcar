@@ -9,11 +9,9 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
-
-    compileOnly "org.projectlombok:lombok:1.16.16"
-
 }
 
 test {

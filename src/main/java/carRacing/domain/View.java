@@ -1,11 +1,11 @@
-package carRacing.service;
+package carRacing.domain;
 
 import carRacing.dto.UserInput;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class UIService {
+public class View {
 
     public UserInput getUserInput(){
         Scanner staff = new Scanner(System.in);
@@ -16,9 +16,9 @@ public class UIService {
         return new UserInput(numberOfCars, numberOfRace);
     }
 
-    public void printScoreboard(List<String> scoreboard){
+    public void printScoreboard(List<Car> cars){
         System.out.println("=========SCOREBOARD=========");
-        scoreboard.forEach(System.out::println);
+        cars.forEach(System.out::println);
         System.out.println();
     }
 }

@@ -1,8 +1,8 @@
 package carRacing.dto;
 
 public class UserInput {
-    private int numberOfCars;
-    private int numberOfRace;
+    private final int numberOfCars;
+    private final int numberOfRace;
 
     public UserInput(int numberOfCars, int numberOfRace) {
         this.numberOfCars = numberOfCars;
