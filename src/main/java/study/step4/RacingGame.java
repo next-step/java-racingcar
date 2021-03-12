@@ -10,6 +10,6 @@ public class RacingGame {
             ResultView.printRace(racing.race());
         }
 
-        ResultView.printRaceWinner(racing.getCars());
+        ResultView.printRaceWinner(racing.getWinners());
     }
 }

@@ -23,16 +23,7 @@ public class ResultView {
         );
     }
 
-    public static void printRaceWinner(Cars cars) {
-        int maxLocation = cars.stream()
-                .map(car -> car.getLocation())
-                .max(Integer::compare)
-                .get();
-
-        String winners = cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
-                .map(car -> car.getCarName())
-                .collect(Collectors.joining(RacingConstant.COMMA_BLANK));
+    public static void printRaceWinner(String winners) {
         System.out.println(winners + FINAL_WINNERS);
     }
 }
