@@ -21,10 +21,17 @@ public class Cars {
     }
 
     public Cars move(MoveBehavior moveBehavior) {
-        cars.stream()
-                .filter(bahavior -> moveBehavior.isMoved())
-                .forEach(car -> car.move());
+        for (Car car : cars) {
+            car = delegateMove(moveBehavior, car);
+        }
         return this;
+    }
+
+    private Car delegateMove(MoveBehavior moveBehavior, Car car) {
+        if (moveBehavior.isMoved()) {
+            car.move();
+        }
+        return car;
     }
 
     public int getSize() {
