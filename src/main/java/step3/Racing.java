@@ -10,7 +10,9 @@ public class Racing {
     private final Rule rule;
 
     public Racing() {
-        this.rule = new Rule(CarConstant.INIT_POSITION);
+        this.rule = new Rule(CarConstant.INIT_POSITION,
+            new RandomMoveStrategy(RandomUtil.BOUND10, CarConstant.MOVE_CRITERIA),
+            CarConstant.LIMIT_MAX_NAME_LENGTH);
         this.cars = new Cars();
         this.inputView = new InputView();
         this.resultView = new ResultView();
@@ -20,12 +22,6 @@ public class Racing {
         joinRacing();
         startRacing();
         finish();
-    }
-
-    private Limit initLimit() {
-        Limit carLimit = new CarLimit();
-        carLimit.setLimitStrategy(new Limit4Strategy());
-        return carLimit;
     }
 
     private void joinRacing() {
@@ -40,7 +36,7 @@ public class Racing {
     private void startRacing() {
         resultView.printResult();
         for (int round = 0; round < rule.getRoundCount(); ++round) {
-            cars.move(rule.getLimit());
+            cars.move(rule.getMoveStrategy());
             resultView.printCars(cars);
         }
     }
@@ -48,7 +44,7 @@ public class Racing {
     private String[] inputCarNames() {
         String inputName = inputView.enterCarName();
         String[] names = inputView.splitInput(inputName);
-        inputView.validateCarName(names);
+        inputView.validateCarName(names, rule.getNameLengthLimit());
         return names;
     }
 

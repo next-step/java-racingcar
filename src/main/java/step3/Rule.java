@@ -5,21 +5,20 @@ public class Rule {
     private int carCount;
     private int roundCount;
     private int initPosition;
-    private Limit limit;
+    private int nameLengthLimit;
+    private MoveStrategy moveStrategy;
 
-    public Rule() {
-        this(0, 0, 0);
+    public Rule(int initPosition, MoveStrategy moveStrategy, int nameLengthLimit) {
+        this(0, 0, initPosition, moveStrategy, nameLengthLimit);
     }
 
-    public Rule(int initPosition) {
-        this(0, 0, initPosition);
-    }
-
-    public Rule(int carCount, int roundCount, int initPosition) {
+    public Rule(int carCount, int roundCount, int initPosition, MoveStrategy moveStrategy,
+        int nameLengthLimit) {
         this.carCount = carCount;
         this.roundCount = roundCount;
-        this.limit = limit;
+        this.moveStrategy = moveStrategy;
         this.initPosition = initPosition;
+        this.nameLengthLimit = nameLengthLimit;
     }
 
     public void setCarCount(int carCount) {
@@ -34,8 +33,8 @@ public class Rule {
         this.initPosition = initPosition;
     }
 
-    public void setLimit(Limit limit) {
-        this.limit = limit;
+    public void setMovingRule(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
     public int getCarCount() {
@@ -50,7 +49,15 @@ public class Rule {
         return this.initPosition;
     }
 
-    public Limit getLimit() {
-        return this.limit;
+    public MoveStrategy getMoveStrategy() {
+        return this.moveStrategy;
+    }
+
+    public void setNameLengthLimit(int nameLengthLimit) {
+        this.nameLengthLimit = nameLengthLimit;
+    }
+
+    public int getNameLengthLimit() {
+        return nameLengthLimit;
     }
 }

@@ -30,9 +30,9 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public void validateCarName(String[] names) {
+    public void validateCarName(String[] names, int limit) {
         Arrays.stream(names)
-            .filter(name -> name.length() > CarConstant.LIMIT_MAX_LIMIT)
+            .filter(name -> name.length() > limit)
             .findAny()
             .ifPresent(present -> {
                 throw new IllegalArgumentException();

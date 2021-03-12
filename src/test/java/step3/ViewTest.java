@@ -46,6 +46,6 @@ public class ViewTest {
     void validateCarName(String input) {
         String[] names = inputView.splitInput(input);
 
-        assertThrows(IllegalArgumentException.class, () -> inputView.validateCarName(names));
+        assertThrows(IllegalArgumentException.class, () -> inputView.validateCarName(names, CarConstant.MOVE_CRITERIA));
     }
 }

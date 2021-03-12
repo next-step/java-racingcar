@@ -26,11 +26,9 @@ public class Cars {
             .forEach(name -> cars.add(new Car(name, initPosition)));
     }
 
-    public void move(Limit limit) {
-        cars.forEach(car -> {
-            boolean move = car.isMove(RandomUtil.nextInt(RandomUtil.BOUND10), limit.getLimit());
-            car.move(move);
-        });
+
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
     public List<Car> getCars() {

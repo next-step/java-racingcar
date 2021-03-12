@@ -1,6 +1,6 @@
 package step3;
 
-public class Car implements Comparable {
+public class Car implements Comparable<Car> {
 
     private String name;
     private int position;
@@ -10,14 +10,10 @@ public class Car implements Comparable {
         this.position = position;
     }
 
-    public void move(boolean isMove) {
-        if (isMove) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMove()) {
             position++;
         }
-    }
-
-    public boolean isMove(int randomValue, int limit) {
-        return randomValue >= limit;
     }
 
     public int getPosition() {
@@ -29,8 +25,7 @@ public class Car implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Car car = (Car) o;
+    public int compareTo(Car car) {
         if (this.position > car.getPosition()) {
             return 1;
         } else if (this.position < car.getPosition()) {
