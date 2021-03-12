@@ -5,14 +5,13 @@ import java.util.Scanner;
 
 public class InputView {
 
-    Scanner scan = new Scanner(System.in);
-
-    private String participationList;
+    private final Scanner scan = new Scanner(System.in);
+    private final String participationList;
     private int turnCount;
 
-    public void init() {
+    public InputView() {
         this.participationList = inputRacingCarName();
-        this.turnCount = intputTurnCount();
+        this.turnCount = inputTurnCount();
     }
 
     public String inputRacingCarName() {
@@ -20,20 +19,14 @@ public class InputView {
         return scan.nextLine();
     }
 
-    public int intputTurnCount() {
+    public int inputTurnCount() {
         System.out.println("시도할 회수는 몇회인가요?");
         try {
             turnCount = scan.nextInt();
         } catch (InputMismatchException e) {
-            reStart();
+            System.out.println("숫자만 입력 가능합니다.");
         }
         return turnCount;
-    }
-
-    public void reStart() {
-        System.out.println("입력하신 값은 올바른 값이 아닙니다. 다시 입력해주세요");
-        scan.nextLine();
-        init();
     }
 
     public String getParticipationList() {

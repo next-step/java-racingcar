@@ -1,29 +1,22 @@
 package racing.controller;
 
-import java.util.List;
-
-import racing.model.RacingCar;
-import racing.model.RacingGame;
+import racing.model.*;
 import racing.view.InputView;
 import racing.view.ResultView;
+
+import java.util.List;
+
 
 public class RacingController {
 
     private final RacingGame racingGame;
-    private final int gameTurn;
+    private final GameTurn gameTurn;
 
     public RacingController() {
         InputView inputView = new InputView();
-        inputView.init();
-        
-        if (inputView.getTurnCount() == 0) {
-            inputView.reStart();
-        }
-        if (inputView.getParticipationList().isBlank()) {
-            inputView.reStart();
-        }
-        this.racingGame = new RacingGame(inputView.getParticipationList());
-        this.gameTurn = inputView.getTurnCount();
+        this.gameTurn = new GameTurn(inputView.getTurnCount());
+        CarNameParser carNameParser = new CarNameParser(inputView.getParticipationList());
+        this.racingGame = new RacingGame(carNameParser.parse());
     }
 
     /**
@@ -31,16 +24,16 @@ public class RacingController {
      */
     public void play() {
         ResultView resultView = new ResultView();
-        for (int i = 0; i < gameTurn; i++) {
-            List<Integer> randomValue = racingGame.createRandomValue();
-            List<RacingCar> movedCarList = racingGame.moveAndStop(randomValue);
-            resultView.turnResultView(movedCarList);
-        }
-        finish(resultView);
+        List<RacingCarsDto> recode = gameTurn.play(this.racingGame);
+        finish(recode, resultView);
     }
 
-    private void finish(ResultView resultView) {
-        resultView.drawWinner(racingGame.setWinner());
+
+    /**
+     * 게임을 끝내고 우승자를 보여주는 메서드
+     */
+    private void finish(List<RacingCarsDto> recode, ResultView resultView) {
+        resultView.finish(racingGame.findWinners(), recode);
     }
 
     public static void main(String[] args) {

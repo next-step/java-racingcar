@@ -2,52 +2,58 @@ package racing.model;
 
 public class RacingCar {
 
-    // 이름이 중복될 수 있는 관게로 ID를 부여한다.
-    private final long racingCarId;
-    private final String racingCarName;
-    private int position;
+    private final RacingCarName racingCarName;
+    private final Position position;
+    private static final int MOVABLE_MINVALUE = 4;
 
-    public RacingCar(long racingCarId, String racingCarName, int position) {
-        this.racingCarId = racingCarId;
-        this.racingCarName = racingCarName;
-        this.position = position;
+    public RacingCar(String racingCarName) {
+        this.racingCarName = new RacingCarName(racingCarName);
+        this.position = new Position(0);
     }
 
-    /**
-     * 자동차 Id을 알려주는 메서드
-     */
-    public long getRacingCarId() {
-        return racingCarId;
+    public RacingCar(String racingCarName, int position) {
+        this.racingCarName = new RacingCarName(racingCarName);
+        this.position = new Position(position);
     }
 
     /**
      * 자동차 이름을 알려주는 메서드
      */
     public String getRacingCarName() {
-        return racingCarName;
+        return racingCarName.getRacingCarName();
     }
 
     /**
      * 자동차 위치를 알려주는 메서드
      */
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
     /**
      * 자동차 위치를 이동시켜주는 메서드
      */
-    public int move(int moveCount) {
-        if (isForward(moveCount)) {
-            this.position++;
+    public void move(int randomValue) {
+        if (isForward(randomValue)) {
+            position.move();
         }
-        return position;
     }
 
     /**
      * 이동 거리가 4이상인지 판단하는 메서드
      */
-    public boolean isForward(int moveCount) {
-        return moveCount > 3;
+    public boolean isForward(int randomValue) {
+        return randomValue >= MOVABLE_MINVALUE;
+    }
+
+    /**
+     * 포지션이 같은지 판단하는 메서드
+     */
+    public Boolean isSame(Position otherCarPosition) {
+        return this.position.isSame(otherCarPosition);
+    }
+
+    public Boolean isGreaterThan(RacingCar otherCar) {
+        return this.position.isGreaterThan(otherCar.position);
     }
 }
