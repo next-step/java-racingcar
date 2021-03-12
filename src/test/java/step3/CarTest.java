@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +22,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = new Car();
+        this.car = new Car("pobi", CarConstant.INIT_POSITION);
         this.limit = new CarLimit();
         limit.setLimitStrategy(new Limit4Strategy());
     }
@@ -63,9 +64,28 @@ public class CarTest {
         Whitebox.setInternalState(RandomUtil.class, random);
     }
 
+    @DisplayName("제일 많이 가면 우승자")
+    @ParameterizedTest
+    @CsvSource(value = {"2", "3", "4", "5"})
+    void winners(int maxPosition) {
+        Cars cars = new Cars();
+        givenCar(cars, maxPosition);
+
+        List<Car> winners = cars.getWinners();
+
+        assertEquals(maxPosition, winners.get(0).getPosition());
+    }
+
     private void given(int input, Limit limit) {
         int randomValue = RandomUtil.nextInt(input);
         boolean move = car.isMove(randomValue, limit.getLimit());
         car.move(move);
+    }
+
+    private void givenCar(Cars cars, int max) {
+        cars.addCar(new Car("max-2", max - 2));
+        cars.addCar(new Car("max-1", max - 1));
+        cars.addCar(new Car("max1", max));
+        cars.addCar(new Car("max2", max));
     }
 }
