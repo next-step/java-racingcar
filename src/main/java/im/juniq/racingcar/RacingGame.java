@@ -13,8 +13,8 @@ public class RacingGame {
 
 	public void play() {
 		InputView.scan();
-		createCars(InputView.getCarCount());
-		racing(InputView.getTryCount());
+		createCars(InputView.getNumberOfCars());
+		racing(InputView.getNumberOfTries());
 	}
 
 	public void createCars(int carCount) {
