@@ -7,22 +7,34 @@
 
 package step3.racingCar.domain;
 
+import java.util.Collections;
+import java.util.Map;
 import java.util.Random;
 
 public class Car {
+    private final String name;
     private int forwardNum;
     private final Random random;
     private static final int INIT_NUM = 0;
     private static final int RANDOM_BOUND = 10;
     private static final int FORWARD_CONDITION = 4;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.forwardNum = INIT_NUM;
         this.random = new Random();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getForwardNum() {
         return forwardNum;
+    }
+
+    public Map<String, Integer> getStatus(){
+        return Collections.singletonMap(name, forwardNum);
     }
 
     /*

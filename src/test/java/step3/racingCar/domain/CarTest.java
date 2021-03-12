@@ -17,12 +17,14 @@ class CarTest {
 
     private Car car;
     private Random random;
+    private String name;
     private static final int INIT_NUM = 0;
     private static final int RANDOM_BOUND = 10;
 
     @BeforeEach
     void setUp() throws Exception {
-        car = new Car();
+        name = "carName";
+        car = new Car(name);
 
         /*
          * Random mock test 참고 링크: https://multifrontgarden.tistory.com/187
@@ -39,6 +41,8 @@ class CarTest {
     @Test
     void createCar() {
         assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
+        assertThat(car.getName()).isEqualTo(name);
+        assertThat(car.getStatus().get(name)).isEqualTo(INIT_NUM);
     }
 
 

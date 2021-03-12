@@ -28,6 +28,6 @@ public class GameFactory {
     }
 
     public static Car car() {
-        return new Car();
+        return new Car("test");
     }
 }
