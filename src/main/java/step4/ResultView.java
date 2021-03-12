@@ -1,0 +1,39 @@
+package step4;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class ResultView {
+
+    public static void printStart() {
+        System.out.println("\n실행 결과");
+    }
+
+    public static void printCarsMove(List<Car> cars) {
+        cars.stream()
+                .map(car -> {
+                    // @todo refactoring
+                    String name = car.getName();
+                    String stringCarsMove = getStringCarsMove(car.getPosition());
+                    return name + " : " + stringCarsMove;
+                })
+                .forEach(System.out::println);
+
+        System.out.println();
+    }
+
+    private static String getStringCarsMove(int index) {
+        return IntStream.range(0, index)
+                .mapToObj(moveCount -> "-")
+                .collect(Collectors.joining());
+    }
+
+    public static void printWinner(List<Car> cars) {
+        String winners = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(winners + "가 최종 우승했습니다.");
+    }
+}
