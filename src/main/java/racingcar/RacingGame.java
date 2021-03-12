@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private int cars, count;
+    private int cars;
+    private int count;
 
     public RacingGame(int cars, int count) {
         this.cars = cars;
