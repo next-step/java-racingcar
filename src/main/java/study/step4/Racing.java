@@ -4,7 +4,6 @@ import java.util.stream.Collectors;
 
 public class Racing {
 
-    private static final String COMMA = ",";
     private final Cars cars;
     private final int attemptNumber;
     private int attemptCount;
@@ -43,6 +42,6 @@ public class Racing {
         return cars.stream()
                 .filter(car -> car.getLocation() == maxLocation)
                 .map(car -> car.getCarName())
-                .collect(Collectors.joining(COMMA));
+                .collect(Collectors.joining(RacingConstant.COMMA));
     }
 }

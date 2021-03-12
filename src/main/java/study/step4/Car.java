@@ -1,7 +1,13 @@
 package study.step4;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Car {
 
+    private static final String CAR_NAME_LENGTH_OVER = "자동차의 이름은 5자를 초과할 수 없습니다.";
+    private static final String DASH = "-";
+    public static final String DELIMITER = "";
     private String carName;
     private int location;
 
@@ -12,7 +18,7 @@ public class Car {
 
     public static Car of(String carName) {
         if (carName.length() > 5) {
-            throw new IllegalArgumentException(RacingGameError.CAR_NAME_LENGTH_OVER);
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_OVER);
         }
 
         return new Car(carName);
@@ -29,5 +35,11 @@ public class Car {
 
     public int getLocation() {
         return location;
+    }
+
+    public String getLocationToString() {
+        return Arrays.stream(new int[location])
+                .mapToObj(i -> DASH)
+                .collect(Collectors.joining(DELIMITER));
     }
 }

@@ -24,7 +24,7 @@ class CarTest {
     void carNameLengthOver(String carName) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Car.of(carName);
-        }).withMessage(RacingGameError.CAR_NAME_LENGTH_OVER);
+        }).withMessage("자동차의 이름은 5자를 초과할 수 없습니다.");
     }
 
     @DisplayName("차량 이동")

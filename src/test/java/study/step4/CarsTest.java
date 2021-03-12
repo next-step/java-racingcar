@@ -30,7 +30,7 @@ class CarsTest {
         }
 
         assertThat(cars.stream()
-                .map(car -> StringUtils.convertIntegerToStringDash(car.getLocation()))
+                .map(car -> car.getLocationToString())
                 .collect(Collectors.joining(RacingConstant.COMMA))).isEqualTo(expected);
     }
 }
