@@ -35,7 +35,7 @@ public class RacingCarController {
         Cars carGroup = new Cars(initRacingCars());
         racingGame.init(carGroup);
 
-        new ResultView().printResult(racingGame.startRacing(inputManagement), racingGame.getWinners(inputManagement)
+        new ResultView().printResult(racingGame.startRacing(inputManagement), racingGame.getWinners()
                                                                                             .getCars());
     }
 }

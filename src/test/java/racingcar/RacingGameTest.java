@@ -44,12 +44,12 @@ class RacingGameTest {
         cars.add(new Car(carNames[1], Integer.parseInt(position[1])));
 
         Cars carGroup = new Cars(cars);
-        InputManagement inputManagement = new InputManagement(carNames, 0);
+        InputManagement inputManagement = new InputManagement(carNames, 1);
 
         racingGame.init(carGroup);
         racingGame.recordEachRoundPosition();
 
-        assertThat(racingGame.getWinners(inputManagement)
+        assertThat(racingGame.getWinners()
                                     .getCars()
                                         .size()).isEqualTo(winnerNumber);
     }
@@ -67,12 +67,12 @@ class RacingGameTest {
         cars.add(new Car(carNames[1], Integer.parseInt(position[1])));
 
         Cars carGroup = new Cars(cars);
-        InputManagement inputManagement = new InputManagement(carNames, 0);
+        InputManagement inputManagement = new InputManagement(carNames, 1);
 
         racingGame.init(carGroup);
         racingGame.recordEachRoundPosition();
 
-        assertThat(racingGame.getWinners(inputManagement)
+        assertThat(racingGame.getWinners()
                                     .getCars()
                                         .size()).isEqualTo(winnerNumber);
     }

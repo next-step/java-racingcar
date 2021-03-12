@@ -19,8 +19,8 @@ public class FinalResult {
         finalResult.put(roundNumber, eachRoundRecord);
     }
 
-    public Cars getWinnersInCars(InputManagement inputManagement) {
-        Map<String, Integer> finalRound = finalResult.get(inputManagement.getCountRound());
+    public Cars getWinnersInCars() {
+        Map<String, Integer> finalRound = finalResult.get(finalResult.size());
 
         int maxPosition = Collections.max(finalRound.values());
 

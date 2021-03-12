@@ -7,10 +7,10 @@ public class RacingGame {
 
     private Cars carGroup;
     private FinalResult finalResult = new FinalResult();
-    private int thisRound = 0;
+    private int thisRound = 1;
 
-    public Cars getWinners(InputManagement inputManagement) {
-        return finalResult.getWinnersInCars(inputManagement);
+    public Cars getWinners() {
+        return finalResult.getWinnersInCars();
     }
 
     public void recordEachRoundPosition() {
@@ -30,7 +30,7 @@ public class RacingGame {
     }
 
     public boolean hasNextRound(InputManagement inputManagement) {
-        return inputManagement.getCountRound() > thisRound++;
+        return inputManagement.getCountRound() >= thisRound++;
     }
 
     public FinalResult startRacing(InputManagement inputManagement) {
