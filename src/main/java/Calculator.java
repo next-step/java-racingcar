@@ -1,6 +1,7 @@
 public class Calculator {
 
-    public static final Integer FULL_SIZE = 2;
+    public static final int MINIMUN_SIZE = 2;
+
 
     public Integer progress(String numbersAndOperators) {
         String[] strings = getSplitString(numbersAndOperators);
@@ -11,30 +12,29 @@ public class Calculator {
             arrayIndexValidation(arrayLength, i);
             Integer number = getNumber(strings[i + 1]);
             String operator = strings[i];
-
-            result = Operator.of(operator).getResult(result , number);
+          
+            result = Operation.of(operator).getResult(result , number);
         }
-
         return result;
     }
 
     private void arrayIndexValidation(int arraySize, int index) {
         if (arraySize <= index + 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.EMPTY_NUMBER);
         }
     }
 
     private String[] getSplitString(String numberAndOperator) {
-        if (numberAndOperator == null || numberAndOperator.length() < 5){
-            throw new IllegalArgumentException();
+        if (numberAndOperator == null || numberAndOperator.length() < MINIMUN_SIZE) {
+            throw new IllegalArgumentException(Message.INVALID_ARGUMENT);
         }
         return numberAndOperator.split(" ");
     }
 
-    private Integer getNumber(String s) {
-        if (s.isEmpty()){
-            throw new IllegalArgumentException();
+    private Integer getNumber(String number) {
+        if (number.isEmpty()) {
+            throw new IllegalArgumentException(Message.EMPTY_NUMBER);
         }
-        return Integer.parseInt(s);
+        return Integer.parseInt(number);
     }
 }

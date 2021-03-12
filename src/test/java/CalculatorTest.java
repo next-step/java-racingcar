@@ -56,6 +56,6 @@ public class CalculatorTest {
     @DisplayName("나눴을때 정수로 떨어지는지 확인하는 테스트")
     @Test
     void divideResultEqualsEssenceTest() {
-        Assertions.assertEquals(0, Operator.of("/").getResult(1, 2));
+        Assertions.assertEquals(0, Operation.of("/").getResult(1, 2));
     }
 }
