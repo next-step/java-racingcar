@@ -32,7 +32,7 @@ public class InputView {
 
     public void validateCarName(String[] names) {
         Arrays.stream(names)
-            .filter(name -> name.length() >= 5)
+            .filter(name -> name.length() > CarConstant.LIMIT_MAX_LIMIT)
             .findAny()
             .ifPresent(present -> {
                 throw new IllegalArgumentException();

@@ -1,14 +1,12 @@
 package step3;
 
-public class Car {
+public class Car implements Comparable {
 
+    private String name;
     private int position;
 
-    public Car() {
-        this.position = 0;
-    }
-
-    public Car(int position) {
+    public Car(String name, int position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -24,5 +22,20 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Car car = (Car) o;
+        if (this.position > car.getPosition()) {
+            return 1;
+        } else if (this.position < car.getPosition()) {
+            return -1;
+        }
+        return 0;
     }
 }
