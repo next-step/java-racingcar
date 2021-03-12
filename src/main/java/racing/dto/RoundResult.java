@@ -1,10 +1,10 @@
 package racing.dto;
 
-import racing.domain.ReadOnlyCarProxy;
-import racing.domain.ReadonlyCar;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racing.domain.ReadOnlyCarProxy;
+import racing.domain.ReadonlyCar;
 
 public class RoundResult {
 
@@ -17,6 +17,6 @@ public class RoundResult {
     }
 
     public List<ReadonlyCar> getCarList() {
-        return carList;
+        return new ArrayList<>(carList);
     }
 }

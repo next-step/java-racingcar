@@ -1,9 +1,8 @@
 package racing.dto;
 
-import racing.domain.ReadonlyCar;
-
 import java.util.ArrayList;
 import java.util.List;
+import racing.domain.ReadonlyCar;
 
 public class RacingReport {
 
@@ -15,7 +14,7 @@ public class RacingReport {
     }
 
     public List<RoundResult> getRoundResults() {
-        return roundResults;
+        return new ArrayList<>(roundResults);
     }
 
     public void addWinner(String name) {
@@ -23,6 +22,6 @@ public class RacingReport {
     }
 
     public List<String> getWinners() {
-        return winners;
+        return new ArrayList<>(winners);
     }
 }
