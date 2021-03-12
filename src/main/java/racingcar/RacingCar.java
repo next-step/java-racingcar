@@ -6,7 +6,11 @@ import java.util.Random;
 
 public class RacingCar {
 
+    private static final int MINIMUM_NUMBER = 4;
+
+    private static Random random = new Random();
     private Car car;
+
 
     public RacingCar(Car car) {
         this.car = car;
@@ -21,14 +25,11 @@ public class RacingCar {
     }
 
     public String isGo(int number) {
-        if (number >= 4) return "-";
+        if (number >= MINIMUM_NUMBER) return "-";
         return "";
     }
 
     public int random() {
-        Random random = new Random();
-        int value = random.nextInt(10);
-
-        return value;
+        return random.nextInt(10);
     }
 }
