@@ -1,11 +1,15 @@
 package racing;
 
+import racing.controller.Game;
 import racing.view.InputView;
 
 public class App {
   public static void main(String[] args){
-    InputView input = new InputView();
-    int carCount = input.inputCarCount();
-    int attempt = input.inputPeriod();
+    int carCount = InputView.inputCarCount();
+    int attempt = InputView.inputPeriod();
+
+    Game game = new Game(carCount, attempt);
+    game.run();
+
   }
 }
