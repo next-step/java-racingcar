@@ -18,14 +18,14 @@ public class RacingGame {
 		racing(inputView.getNumberOfTries());
 	}
 
-	public void createCars(int carCount) {
-		for (int i = 0; i < carCount; i++) {
+	public void createCars(int numberOfCars) {
+		for (int i = 0; i < numberOfCars; i++) {
 			cars.add(new Car(i));
 		}
 	}
 
-	private void racing(int moveCount) {
-		for (int i = 0; i < moveCount; i++) {
+	private void racing(int numberOfTries) {
+		for (int i = 0; i < numberOfTries; i++) {
 			moveCars(new RandomNumberMovingStrategy());
 			printCarsMoveCount();
 		}
