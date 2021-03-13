@@ -7,8 +7,8 @@ public class Car {
     public static final int MAX_NAME = 4;
     public static final int POSSIBLE_MOVE = 3;
 
-    private Position position;
-    private Name name;
+    private final Position position;
+    private final Name name;
 
     public Car(String name, int position) {
         this.name = new Name(name);
