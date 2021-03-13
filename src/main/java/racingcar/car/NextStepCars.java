@@ -1,7 +1,5 @@
 package racingcar.car;
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +13,10 @@ public class NextStepCars {
         for(String car : inputs.getCarNames()) {
             nextStepCars.add(new NextStepCar(car));
         }
+    }
+
+    public NextStepCars(List<Car> nextStepCars) {
+        this.nextStepCars = nextStepCars;
     }
 
     public int carCount() {
@@ -36,30 +38,20 @@ public class NextStepCars {
         }
     }
 
-    public void solveResult() {
-        ResultView resultView = new ResultView();
-        for(Car car : this.nextStepCars) {
-            resultView.print(this.generateResultString(car));
-        }
-        System.out.println();
+    public String solveResult() {
+        return this.generateResultString();
     }
 
     /**
      * 출력 해 줄 문자열생성
-     * @param car
      * @return
      */
-    private String generateResultString(Car car) {
-        String result = car.getName() + "-".repeat(car.getPosition());;
-        return result;
-    }
-
-    /**
-     * 우승자해결
-     */
-    public void solveWinner() {
-        ResultView resultView = new ResultView();
-        resultView.printWinner(this.getWinner());
+    private String generateResultString() {
+        StringBuilder sb = new StringBuilder();
+        for(Car car : this.nextStepCars) {
+            sb.append(car.getName() + "-".repeat(car.getPosition())+"\n");
+        }
+        return sb.toString();
     }
 
     /**
