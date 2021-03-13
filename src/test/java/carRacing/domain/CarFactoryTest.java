@@ -9,19 +9,19 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CarFactoryTest {
+class CarFactoryTest {
 
     private CarFactory carFactory;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         this.carFactory = new CarFactory();
     }
 
     @Test
     @DisplayName("자동차를 원하는 숫자만큼 초기화해서 생성할 수 있다")
-    public void prepareCarsReturn(){
-        for(int count = 0;count<=100;count++){
+    void prepareCarsReturn() {
+        for (int count = 0; count <= 100; count++) {
             UserInput userInput = new UserInput(count, count);
             List<Car> cars = carFactory.initCars(userInput);
             assertEquals(cars.size(), count);

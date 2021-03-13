@@ -12,10 +12,10 @@ public class CarRacingService {
     private final Judge judge = new Judge();
     private final Game game = new Game();
 
-    public void run(){
+    public void run() {
         UserInput userInput = view.getUserInput();
         List<Car> cars = carFactory.initCars(userInput);
-        while(!judge.isGameOver(userInput)){
+        while (!judge.isGameOver(userInput)) {
             cars = game.race(cars);
             view.printScoreboard(cars);
             judge.recordTime();
