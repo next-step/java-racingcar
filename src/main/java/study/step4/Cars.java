@@ -20,11 +20,10 @@ public class Cars {
                         .collect(Collectors.toList()));
     }
 
-    public Cars move(MoveBehavior moveBehavior) {
+    public void move(MoveBehavior moveBehavior) {
         for (Car car : cars) {
             delegateMove(moveBehavior, car);
         }
-        return this;
     }
 
     private void delegateMove(MoveBehavior moveBehavior, Car car) {

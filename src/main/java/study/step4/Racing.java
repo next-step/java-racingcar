@@ -28,9 +28,9 @@ public class Racing {
         return attemptCount >= attemptNumber;
     }
 
-    public Cars race() {
+    public void race() {
         attemptCount++;
-        return cars.move(moveBehavior);
+        cars.move(moveBehavior);
     }
 
     public String getWinners() {

@@ -7,7 +7,8 @@ public class RacingGame {
         ResultView.printResultMessage();
 
         while (!racing.isFinished()) {
-            ResultView.printRace(racing.race());
+            racing.race();
+            ResultView.printRace(racing.getCars());
         }
 
         ResultView.printRaceWinner(racing.getWinners());
