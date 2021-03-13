@@ -25,14 +25,14 @@ public class RacingGame {
 
 	private void racing(int moveCount) {
 		for (int i = 0; i < moveCount; i++) {
-			moveCars();
+			moveCars(new RandomNumberZeroToNine());
 			printCarsMoveCount();
 		}
 	}
 
-	public void moveCars() {
+	public void moveCars(RandomNumber randomNumber) {
 		for (Car car : cars) {
-			car.move();
+			car.move(randomNumber);
 		}
 	}
 
