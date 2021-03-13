@@ -10,13 +10,9 @@ import java.util.stream.Collectors;
 public class NextStepCars {
     private List<Car> nextStepCars;
 
-    public NextStepCars(List<Car> nextStepCars) {
-        this.nextStepCars = nextStepCars;
-    }
-
-    public NextStepCars(String carList) {
+    public NextStepCars(Inputs inputs) {
         nextStepCars = new ArrayList<>();
-        for(String car : carList.split(",")) {
+        for(String car : inputs.getCarNames()) {
             nextStepCars.add(new NextStepCar(car));
         }
     }

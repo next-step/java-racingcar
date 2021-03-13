@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.car.Inputs;
 import racingcar.car.NextStepCars;
 import racingcar.view.InputView;
 
@@ -10,6 +11,7 @@ import java.util.Random;
 
 public class Racing {
     Random random;
+    Inputs inputs;
 
     public Racing() {
         this.random = new Random();
@@ -21,11 +23,12 @@ public class Racing {
      * @param q1
      * @param q2
      */
-    private List<String> startQuestion(String q1, String q2) {
+    private void startQuestion(String q1, String q2) {
         InputView inputView = new InputView();
         String carNames = inputView.questionStart(q1);
         String attempt = inputView.questionStart(q2);
-        return Arrays.asList(carNames, attempt);
+        this.inputs = new Inputs(carNames, Integer.parseInt(attempt));
+//        return Arrays.asList(carNames, attempt);
     }
 
     /**
@@ -34,12 +37,13 @@ public class Racing {
      * @param q2 자동차명질문
      */
     public void start(String q1, String q2) {
-        List<String> inputs = startQuestion(q1, q2);
+        startQuestion(q1, q2);
 
-        String carList = inputs.get(0);
-        int forwartCount = Integer.parseInt(inputs.get(1));
+//        String carList = inputs.get(0);
+//        int forwartCount = Integer.parseInt(inputs.get(1));
 
-        NextStepCars nextStepCars = new NextStepCars(carList);
+        NextStepCars nextStepCars = new NextStepCars(this.inputs);
+        int forwartCount = this.inputs.getForwartCount();
 
         for (int i = 0; i < forwartCount; i++) {
             nextStepCars.move(random);
