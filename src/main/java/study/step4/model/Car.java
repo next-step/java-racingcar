@@ -7,11 +7,15 @@ package study.step4.model;
  *
  */
 public class Car {
+    private static final int MAX_NAME_LENGTH = 5;
     private static final int INIT_POSITION = 0;
     private String name;
     private int position;;
 
     public Car(String name) {
+        if(name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
         this.name = name;
         this.position = INIT_POSITION;
     }
