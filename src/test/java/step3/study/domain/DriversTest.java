@@ -27,9 +27,4 @@ class DriversTest {
         assertThat(drivers.getWinnerNames().contains("pobi")).isTrue();
 
     }
-
-    @Test
-    @DisplayName("최대 이동한 거리 가져오는 테스트")
-    void getMaxDistanceTest() {
-    }
 }
