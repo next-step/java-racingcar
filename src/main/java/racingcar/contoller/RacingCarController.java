@@ -3,7 +3,9 @@ package racingcar.contoller;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
+
 import racingcar.dto.InputManagement;
+
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -23,7 +25,7 @@ public class RacingCarController {
         List<Car> cars = new ArrayList();
 
         for (String carName : inputManagement.getCarNames()) {
-            cars.add(new Car(carName, 0));
+            cars.add(new Car(carName));
         }
 
         return cars;
@@ -35,7 +37,12 @@ public class RacingCarController {
         Cars carGroup = new Cars(initRacingCars());
         racingGame.init(carGroup);
 
-        new ResultView().printResult(racingGame.startRacing(inputManagement), racingGame.getWinners()
-                                                                                            .getCars());
+        for (int thisRound = 1; thisRound <= inputManagement.getCountRound(); thisRound++) {
+            racingGame.playRacing();
+            racingGame.recordEachRoundPosition(thisRound);
+        }
+
+        new ResultView().printResult(racingGame.getFinalResult(), racingGame.getWinners()
+                                                                                .getCars());
     }
 }

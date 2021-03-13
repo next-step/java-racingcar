@@ -1,19 +1,21 @@
 package racingcar.domain;
 
 import racingcar.dto.EachRound;
-import racingcar.dto.InputManagement;
 
 public class RacingGame {
 
     private Cars carGroup;
     private FinalResult finalResult = new FinalResult();
-    private int thisRound = 1;
+
+    public FinalResult getFinalResult() {
+        return finalResult;
+    }
 
     public Cars getWinners() {
         return finalResult.getWinnersInCars();
     }
 
-    public void recordEachRoundPosition() {
+    public void recordEachRoundPosition(int thisRound) {
         EachRound eachRound = new EachRound();
 
         for (Car car : carGroup.getCars()) {
@@ -25,20 +27,6 @@ public class RacingGame {
 
     public void playRacing() {
         carGroup.updateEveryCarByCondition();
-
-        recordEachRoundPosition();
-    }
-
-    public boolean hasNextRound(InputManagement inputManagement) {
-        return inputManagement.getCountRound() >= thisRound++;
-    }
-
-    public FinalResult startRacing(InputManagement inputManagement) {
-        while (hasNextRound(inputManagement)) {
-            playRacing();
-        }
-
-        return finalResult;
     }
 
     public void init(Cars carGroup) {

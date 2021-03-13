@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
-import racingcar.dto.InputManagement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +15,6 @@ import static org.assertj.core.api.Assertions.*;
 class RacingGameTest {
 
     RacingGame racingGame = new RacingGame();
-
-    @ParameterizedTest
-    @CsvSource({"5, 0"})
-    @DisplayName("주어진 횟수 동안 경주 게임을 진행할 수 있다.")
-    void carsCanGoInGivenCount(int countRound, int finish) {
-        String[] carNames = {"pobi","jhLim97"};
-        InputManagement inputManagement = new InputManagement(carNames, countRound);
-
-        while (racingGame.hasNextRound(inputManagement)) {
-            countRound--;
-        }
-
-        assertThat(countRound).isEqualTo(finish);
-    }
 
     @ParameterizedTest
     @CsvSource(value = {"0,1:1"}, delimiter = ':')
@@ -44,10 +29,9 @@ class RacingGameTest {
         cars.add(new Car(carNames[1], Integer.parseInt(position[1])));
 
         Cars carGroup = new Cars(cars);
-        InputManagement inputManagement = new InputManagement(carNames, 1);
 
         racingGame.init(carGroup);
-        racingGame.recordEachRoundPosition();
+        racingGame.recordEachRoundPosition(1);
 
         assertThat(racingGame.getWinners()
                                     .getCars()
@@ -67,10 +51,9 @@ class RacingGameTest {
         cars.add(new Car(carNames[1], Integer.parseInt(position[1])));
 
         Cars carGroup = new Cars(cars);
-        InputManagement inputManagement = new InputManagement(carNames, 1);
 
         racingGame.init(carGroup);
-        racingGame.recordEachRoundPosition();
+        racingGame.recordEachRoundPosition(1);
 
         assertThat(racingGame.getWinners()
                                     .getCars()
