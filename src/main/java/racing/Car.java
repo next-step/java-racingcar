@@ -14,7 +14,13 @@ public class Car implements Cloneable {
     }
 
     public void tryMove(Supplier<Integer> randomSupplier) {
-        if (randomSupplier.get() >= 4) {
+        final int value = randomSupplier.get();
+
+        if (value < 0 || value > 9) {
+            throw new IllegalArgumentException();
+        }
+
+        if (value >= 4) {
             distance++;
         }
     }

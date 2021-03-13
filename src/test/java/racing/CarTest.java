@@ -39,9 +39,9 @@ public class CarTest {
 
         assertThat(car.getDistance()).isEqualTo(expectedValue);
     }
-    
+
     @ParameterizedTest
-    @ValueSource(ints = {1, 10})
+    @ValueSource(ints = {-1, 10})
     @DisplayName("주어진 값이 0보다 작거나, 9보다 큰 경우, IllegalArgumentException 발생")
     void tryMoveThrowIllegalArgumentExceptionWhenLessThanZeroOrGreaterThanNine(int input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
