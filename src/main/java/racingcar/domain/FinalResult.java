@@ -1,9 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.dto.InputManagement;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
