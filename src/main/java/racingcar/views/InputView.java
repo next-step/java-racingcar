@@ -17,27 +17,28 @@ public class InputView {
 
         Scanner scanner = new Scanner(System.in);
 
-        askCarInfos(racingCarInfos, scanner, QUESTION_TOTAL_CAR_NUM, KEY_TOTAL_CAR_NUM);
-        askCarInfos(racingCarInfos, scanner, QUESTION_TOTAL_MOVE_CNT, KEY_TOTAL_MOVE_CNT);
+        askCarInfo(QUESTION_TOTAL_CAR_NUM);
+        getAnswerForCarInfo(racingCarInfos, scanner, KEY_TOTAL_CAR_NUM);
+
+        askCarInfo(QUESTION_TOTAL_MOVE_CNT);
+        getAnswerForCarInfo(racingCarInfos, scanner, KEY_TOTAL_MOVE_CNT);
 
         scanner.close();
 
         return racingCarInfos;
     }
 
-    private static void askCarInfos(Map<String, Integer> racingCarInfos,
-                                     Scanner scanner,
-                                     String question,
-                                     String infoType) {
-
-        System.out.println(question);
-
+    private static void getAnswerForCarInfo(Map<String, Integer> racingCarInfos, Scanner scanner,String infoType) {
         while (scanner.hasNextLine()) {
             int value = scanner.nextInt();
             System.out.println(value);
 
             racingCarInfos.put(infoType, value);
         }
+    }
+
+    private static void askCarInfo(String question) {
+        System.out.println(question);
     }
 
 }
