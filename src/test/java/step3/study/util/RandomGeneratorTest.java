@@ -14,6 +14,6 @@ class RandomGeneratorTest {
     @DisplayName("랜덤번호는 0~9까지 사이의 숫자로 생성된다.")
     void getRandomNumber() {
         RandomGenerator randomGenerator = new RandomGenerator(new Random());
-        assertThat(randomGenerator.getRandomNumber()).isBetween(0,9);
+        assertThat(randomGenerator.getRandomNumber()).isBetween(0, 9);
     }
 }
