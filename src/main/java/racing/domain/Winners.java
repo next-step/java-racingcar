@@ -1,21 +1,29 @@
 package racing.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winners {
 
-    private List<Winner> winners = new ArrayList<>();
+    public static final int EMPTY_VALUE = 0;
 
-    public Winners(List<String> names){
-
-        for (String name : names){
-            this.winners.add(new Winner(name));
-        }
+    public Winners(){
     }
 
-    public List<Winner> getWinners() {
-        return winners;
+    public List<Winner> winners(List<Car> cars){
+        int max = maxMoveCount(cars);
+        return cars.stream().
+            filter(car -> car.isWinner(max))
+            .map(car -> new Winner(car.getName()))
+            .collect(Collectors.toList());
     }
+
+    public int maxMoveCount(List<Car> cars){
+        return cars
+            .stream()
+            .mapToInt(Car::getMoveCount)
+            .max()
+            .orElse(EMPTY_VALUE);
+    }
+
 }

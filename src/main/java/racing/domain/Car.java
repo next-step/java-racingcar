@@ -4,6 +4,7 @@ import racing.exception.CarNameException;
 
 public class Car {
 
+    public static final int MOVE_LIMIT = 4;
     private final String name;
     private int moveCount;
 
@@ -14,7 +15,7 @@ public class Car {
     }
 
     public void tryMove(int number){
-        if(4 < number){
+        if(MOVE_LIMIT <= number){
             moveCount++;
         }
     }
