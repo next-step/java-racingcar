@@ -1,11 +1,8 @@
 package study.step4;
 
-public class RacingService {
-    public String MESSAGE_RACING_START = "자동차 경주를 시작합니다.";
-    public String MESSAGE_ROUND = "라운드";
-    public String PRINT_TOKEN = "-";
-    private String MESSAGE_PRINT_WINNER = "가 최종 우승하였습니다.";
+import study.step4.ui.ResultView;
 
+public class RacingService {
     private Racing racing;
 
     public RacingService() {
@@ -18,15 +15,13 @@ public class RacingService {
     }
 
     public void play(int totalRound) {
-        System.out.println(MESSAGE_RACING_START);
+        ResultView.printRacingStart();
 
         for(int i=0; i<totalRound; i++) {
-            System.out.println("\n" + (i+1) + MESSAGE_ROUND);
+            ResultView.printRacingRound(i+1);
             racing.run();
-            racing.printRacingResult(PRINT_TOKEN);
+            ResultView.printRacingResult(racing.getCarList());
         }
-
-        System.out.println("\n");
-        racing.printRacingWinner(MESSAGE_PRINT_WINNER);
+        ResultView.printRacingWinner(racing.getWinners());
     }
 }
