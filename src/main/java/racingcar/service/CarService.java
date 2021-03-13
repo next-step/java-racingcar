@@ -28,4 +28,12 @@ public class CarService {
     public Car findCar(String name) {
         return carRepository.findByName(name);
     }
+
+    public void resetCarMovementRange(String Name) {
+        carRepository.resetMovementRangeByName(Name);
+    }
+
+    public void resetCarsMovementRange() {
+        carRepository.resetAllMovemetRange();
+    }
 }

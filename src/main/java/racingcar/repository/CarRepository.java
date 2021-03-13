@@ -31,4 +31,17 @@ public class CarRepository {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("해당 이름을 가진 자동차가 없습니다."));
     }
+
+    public void resetMovementRangeByName(String name) {
+        Car foundCar = cars.stream()
+                .filter(car -> name.equals(car.getName()))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("해당 이름을 가진 자동차가 없습니다."));
+        foundCar.initializeMovementRange();
+    }
+
+    public void resetAllMovemetRange() {
+        cars.stream()
+                .forEach(Car::initializeMovementRange);
+    }
 }

@@ -58,6 +58,14 @@ public class RacingGameController {
         }
     }
 
+    public void resetMovementRangeOfCar(String carName) {
+        carService.resetCarMovementRange(carName);
+    }
+
+    public void resetMovementRangeOfCars() {
+        carService.resetCarsMovementRange();
+    }
+
     private void validateNumber(String input) {
         validateNull(input);
         validateEmpty(input);
