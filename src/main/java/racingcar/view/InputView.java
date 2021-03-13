@@ -3,13 +3,19 @@ package racingcar.view;
 import java.util.Scanner;
 
 public class InputView implements ConsoleView {
-    public Scanner scanner;
+    private Scanner scanner;
 
     public InputView() {
-        scanner = new Scanner(System.in);
+        this.scanner = new Scanner(System.in);
     }
+
     @Override
     public void print(String str) {
         System.out.println(str);
+    }
+
+    public String questionStart(String q) {
+        this.print(q);
+        return this.scanner.nextLine();
     }
 }

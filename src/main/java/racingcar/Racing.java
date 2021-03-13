@@ -1,7 +1,6 @@
 package racingcar;
 
-import racingcar.car.Car;
-import racingcar.car.NextStepCar;
+import racingcar.car.Inputs;
 import racingcar.car.NextStepCars;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -12,80 +11,46 @@ import java.util.List;
 import java.util.Random;
 
 public class Racing {
-    private final String inputQuestion;
-    private final String moveQuestion;
-    InputView inputView;
-    ResultView resultView;
     Random random;
+    Inputs inputs;
+    ResultView resultView;
 
-    public Racing(String inputQuestion, String moveQuestion) {
-        this.inputView = new InputView();
-        this.resultView = new ResultView();
+    public Racing() {
         this.random = new Random();
-        this.inputQuestion = inputQuestion;
-        this.moveQuestion = moveQuestion;
+        this.resultView = new ResultView();
     }
 
     /**
      * 입력값들 받는다.
      * @return Scanner를 통한 입력값들
+     * @param q1
+     * @param q2
      */
-    private List<String> startQuestion() {
-        List<String> scannerValues = new ArrayList<>();
-        inputView.print(inputQuestion);
-        scannerValues.add(inputView.scanner.nextLine());
-        inputView.print(moveQuestion);
-        scannerValues.add(String.valueOf(inputView.scanner.nextInt()));
-        return scannerValues;
+    private void startQuestion(String q1, String q2) {
+        InputView inputView = new InputView();
+        String carNames = inputView.questionStart(q1);
+        String attempt = inputView.questionStart(q2);
+        this.inputs = new Inputs(carNames, Integer.parseInt(attempt));
+//        return Arrays.asList(carNames, attempt);
     }
 
     /**
      * 레이싱 시작
+     * @param q1 시도횟수질문
+     * @param q2 자동차명질문
      */
-    public void start() {
-        List<String> inputs = startQuestion();
+    public void start(String q1, String q2) {
+        startQuestion(q1, q2);
 
-        String carList = inputs.get(0);
-        int forwartCount = Integer.parseInt(inputs.get(1));
+        NextStepCars nextStepCars = new NextStepCars(this.inputs);
+        int forwartCount = this.inputs.getForwartCount();
 
-        NextStepCars nextStepCars = new NextStepCars(carList);
-
-        startMoveForward(nextStepCars);
-        printResultAll(forwartCount, nextStepCars);
-        printWinner(nextStepCars);
-    }
-
-    /**
-     * 각각의 자동차들 전진
-     * @param nextStepCars
-     */
-    private void startMoveForward(NextStepCars nextStepCars) {
-        for(Car car : nextStepCars.getNextStepCars()) {
-            car.moveForward(random.nextInt(10));
-        }
-    }
-
-    /**
-     * 모든 결과 출력
-     * @param forwartCount
-     * @param nextStepCars
-     */
-    private void printResultAll(int forwartCount, NextStepCars nextStepCars) {
         for (int i = 0; i < forwartCount; i++) {
-            for(Car car : nextStepCars.getNextStepCars()) {
-                car.moveForward(random.nextInt(10));
-                resultView.print("-".repeat(car.getPosition()));
-            }
-            System.out.println();
+            nextStepCars.move(random);
+            String result = nextStepCars.solveResult();
+            resultView.print(result);
         }
-    }
-
-    private void printWinner(NextStepCars nextStepCars) {
-        List<String> winners = nextStepCars.getWinner();
-        int i = 0;
-        for(String winner : winners) {
-            System.out.print(winner + ((i == winners.size() - 1) ? "가 최종 우승했습니다." : ","));
-            i++;
-        }
+        List<String> winner = nextStepCars.getWinner();
+        resultView.printWinner(winner);
     }
 }
