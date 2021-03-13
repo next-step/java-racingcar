@@ -4,9 +4,9 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 
+import racingcar.domain.Round;
 import racingcar.dto.InputManagement;
 
-import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
@@ -17,8 +17,9 @@ public class RacingCarController {
     private RacingGame racingGame;
     private InputManagement inputManagement;
 
-    public RacingCarController(RacingGame racingGame) {
+    public RacingCarController(RacingGame racingGame, InputManagement inputManagement) {
         this.racingGame = racingGame;
+        this.inputManagement = inputManagement;
     }
 
     public List<Car> initRacingCars() {
@@ -31,15 +32,19 @@ public class RacingCarController {
         return cars;
     }
 
-    public void startGame() {
-        inputManagement = new InputView().input();
+    public boolean hasNextRound(Round round) {
+        return inputManagement.getCountRound() >= round.getRound();
+    }
 
+    public void startGame() {
         Cars carGroup = new Cars(initRacingCars());
         racingGame.init(carGroup);
 
-        for (int thisRound = 1; thisRound <= inputManagement.getCountRound(); thisRound++) {
+        Round round = new Round();
+        while (hasNextRound(round)) {
             racingGame.playRacing();
-            racingGame.recordEachRoundPosition(thisRound);
+            racingGame.recordEachRoundPosition(round);
+            round.update();
         }
 
         new ResultView().printResult(racingGame.getFinalResult(), racingGame.getWinners()

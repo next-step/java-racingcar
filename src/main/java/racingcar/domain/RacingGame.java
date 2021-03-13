@@ -15,14 +15,14 @@ public class RacingGame {
         return finalResult.getWinnersInCars();
     }
 
-    public void recordEachRoundPosition(int thisRound) {
+    public void recordEachRoundPosition(Round round) {
         EachRound eachRound = new EachRound();
 
         for (Car car : carGroup.getCars()) {
             eachRound.recordRoundPosition(car);
         }
 
-        finalResult.recordRoundPosition(thisRound, eachRound.getResult());
+        finalResult.recordRoundPosition(round, eachRound.getResult());
     }
 
     public void playRacing() {

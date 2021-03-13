@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
+import racingcar.domain.Round;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ class RacingGameTest {
         Cars carGroup = new Cars(cars);
 
         racingGame.init(carGroup);
-        racingGame.recordEachRoundPosition(1);
+        racingGame.recordEachRoundPosition(new Round());
 
         assertThat(racingGame.getWinners()
                                     .getCars()
@@ -53,7 +54,7 @@ class RacingGameTest {
         Cars carGroup = new Cars(cars);
 
         racingGame.init(carGroup);
-        racingGame.recordEachRoundPosition(1);
+        racingGame.recordEachRoundPosition(new Round());
 
         assertThat(racingGame.getWinners()
                                     .getCars()
