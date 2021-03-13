@@ -1,5 +1,6 @@
 package carracing.service.dto;
 
+import carracing.constants.CarRacingConstant;
 import carracing.service.CarRacingValidator;
 
 /**
@@ -27,10 +28,6 @@ public class RoundResult {
 
     public RoundResult(int roundNumber, RacingScores racingScores) {
         this.carRacingValidator = new CarRacingValidator();
-        registerRoundResult(roundNumber, racingScores);
-    }
-
-    private void registerRoundResult(int roundNumber, RacingScores racingScores) {
         validateRoundNumber(roundNumber);
         validateRacingScores(racingScores);
         this.roundNumber = roundNumber;
@@ -38,9 +35,8 @@ public class RoundResult {
     }
 
     private void validateRoundNumber(int roundNumber) {
-        carRacingValidator.validateRoundCount(roundNumber);
-        if (this.roundNumber == roundNumber) {
-            throw new IllegalArgumentException("해당 경기 정보는 이미 등록되었습니다.");
+        if(roundNumber < CarRacingConstant.MIN_ROUND_COUNT) {
+            throw new IllegalArgumentException("라운드 회차는 최소 1 이상이어야 합니다.");
         }
     }
 

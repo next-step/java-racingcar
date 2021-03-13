@@ -70,7 +70,7 @@ class CarRacingServiceTest {
     void registerRoundResult() {
         assertThatIllegalArgumentException()
                 .isThrownBy( () -> new RoundResult(0, new RacingScores(new Cars(1)))
-                ).withMessageMatching("경기 횟수는 최소 1회 이상이어야 합니다.")
+                ).withMessageMatching("라운드 회차는 최소 1 이상이어야 합니다.")
         ;
         assertThatIllegalArgumentException()
                 .isThrownBy( () -> new RoundResult(1, null)
