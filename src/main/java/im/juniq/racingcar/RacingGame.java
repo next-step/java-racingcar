@@ -12,9 +12,10 @@ public class RacingGame {
 	}
 
 	public void play() {
-		InputView.scan();
-		createCars(InputView.getNumberOfCars());
-		racing(InputView.getNumberOfTries());
+		InputView inputView = new InputView();
+		inputView.scan();
+		createCars(inputView.getNumberOfCars());
+		racing(inputView.getNumberOfTries());
 	}
 
 	public void createCars(int carCount) {
@@ -37,7 +38,8 @@ public class RacingGame {
 	}
 
 	private void printCarsMoveCount() {
-		ResultView.printCarMoveCount(cars);
+		ResultView resultView = new ResultView(cars);
+		resultView.printCarMoveCount();
 	}
 
 	public List<Car> getCars() {

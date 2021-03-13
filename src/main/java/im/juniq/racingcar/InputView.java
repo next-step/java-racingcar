@@ -3,10 +3,10 @@ package im.juniq.racingcar;
 import java.util.Scanner;
 
 public class InputView {
-	private static int numberOfCars;
-	private static int numberOfTries;
+	private int numberOfCars;
+	private int numberOfTries;
 
-	public static void scan() {
+	public void scan() {
 		System.out.println("자동차 대수는 몇 대 인가요?");
 		Scanner scanner = new Scanner(System.in);
 		numberOfCars = scanner.nextInt();
@@ -14,11 +14,11 @@ public class InputView {
 		numberOfTries = scanner.nextInt();
 	}
 
-	public static int getNumberOfCars() {
+	public int getNumberOfCars() {
 		return numberOfCars;
 	}
 
-	public static int getNumberOfTries() {
+	public int getNumberOfTries() {
 		return numberOfTries;
 	}
 }
