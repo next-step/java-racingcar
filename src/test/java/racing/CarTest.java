@@ -5,8 +5,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
     private Car car;
@@ -37,7 +39,15 @@ public class CarTest {
 
         assertThat(car.getDistance()).isEqualTo(expectedValue);
     }
-
+    
+    @ParameterizedTest
+    @ValueSource(ints = {1, 10})
+    @DisplayName("주어진 값이 0보다 작거나, 9보다 큰 경우, IllegalArgumentException 발생")
+    void tryMoveThrowIllegalArgumentExceptionWhenLessThanZeroOrGreaterThanNine(int input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            car.tryMove(() -> input);
+        });
+    }
 
     @Test
     @DisplayName("car는 Cloneable의 instance다.")
