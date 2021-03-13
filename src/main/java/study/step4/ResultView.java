@@ -1,10 +1,11 @@
-package study.step3;
+package study.step4;
 
 import java.util.stream.Collectors;
 
 public class ResultView {
 
     private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String FINAL_WINNERS = "가 최종 우승했습니다.";
     private static final String NEW_LINE = "\n";
 
     private ResultView() {
@@ -17,10 +18,13 @@ public class ResultView {
     public static void printRace(Cars cars) {
         System.out.println(
                 cars.stream()
-                        .map(car -> StringUtils.convertIntegerToStringDash(car.getLocation()))
+                        .map(car -> car.getCarName() + RacingConstant.NAME_SPACE + car.getLocationToString())
                         .collect(Collectors.joining(NEW_LINE))
                         + NEW_LINE
         );
     }
 
+    public static void printRaceWinner(String winners) {
+        System.out.println(winners + FINAL_WINNERS);
+    }
 }
