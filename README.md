@@ -16,3 +16,10 @@
 4. (feat) InputView UI 클래스 추가
 5. (feat) ResultView UI 클래스 추가
 6. (feat) RaceClass 클래스 추가
+
+* 자동차경주(우승자) 기능 목록 정리
+1. (test) 자동차 이름 구분 테스트
+2. (test) 자동차 이름 길이 테스트
+3. (test) 자동차 경주게임 우승 알려주는 기능 테스트.
+4. (feat) 자동차 클래스 수정 및 기능 구현
+5. (refactor) 리팩토링
