@@ -20,6 +20,10 @@ public class Cars {
                         .collect(Collectors.toList()));
     }
 
+    public static Cars of(List<Car> cars) {
+        return new Cars(cars);
+    }
+
     public void move(MoveBehavior moveBehavior) {
         for (Car car : cars) {
             delegateMove(moveBehavior, car);

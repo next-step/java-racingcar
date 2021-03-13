@@ -29,6 +29,10 @@ public class Car {
         return this;
     }
 
+    public void move(int location) {
+        this.location += location;
+    }
+
     public String getCarName() {
         return carName;
     }
