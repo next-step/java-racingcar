@@ -15,8 +15,12 @@ public class Movement {
     public Movement() {
     }
 
+    public boolean isMove() {
+        return random.nextInt(RANDOM_RANGE) >= MOVE_RESTRICT;
+    }
+
     public int stopAndMove() {
-        if(random.nextInt(RANDOM_RANGE) >= MOVE_RESTRICT) {
+        if (isMove()) {
             return 1;
         }
         return 0;
