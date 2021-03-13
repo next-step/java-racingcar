@@ -2,7 +2,6 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Racing {
     final private List<Round> rounds;
@@ -26,7 +25,7 @@ public class Racing {
 
     private void tryMoveCars() {
         for (Car car : cars) {
-            car.tryMove(() -> new Random().nextInt(10));
+            car.tryMove(() -> RandomUtil.nextInt(Car.MAX_BOUNDARY_VALUE + 1));
         }
     }
 
