@@ -10,8 +10,8 @@ package carracing.service.dto;
  */
 public class RacingRegisterInfo {
 
-    private int racingCarCount;
-    private int roundCount;
+    private final int racingCarCount;
+    private final int roundCount;
 
     public RacingRegisterInfo(int racingCarCount, int roundCount) {
         this.racingCarCount = racingCarCount;
