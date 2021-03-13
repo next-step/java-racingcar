@@ -3,12 +3,14 @@ package dev.djoon.racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import dev.djoon.racingcar.actor.Car;
-import dev.djoon.racingcar.actor.Sedan;
-import dev.djoon.racingcar.ui.ResultView;
-import dev.djoon.racingcar.util.GameConstant;
-import dev.djoon.racingcar.util.RandomNumbers;
-import dev.djoon.racingcar.util.TestRandomNumbers;
+import dev.djoon.racingcar.controller.GameController;
+import dev.djoon.racingcar.domain.RacingCarGame;
+import dev.djoon.racingcar.domain.Car;
+import dev.djoon.racingcar.domain.Sedan;
+import dev.djoon.racingcar.view.ResultView;
+import dev.djoon.racingcar.domain.util.GameConstant;
+import dev.djoon.racingcar.domain.util.RandomNumbers;
+import dev.djoon.racingcar.domain.util.TestRandomNumbers;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,10 +41,12 @@ public class RacingCarTest {
   public void carsMoveLoopTest(
       int carQuantity, int loopTimes, int expectedMoveCount) {
     // given
-    RacingCarGame racingCarGame = new RacingCarGame(carQuantity, loopTimes);
+    RacingCarGame racingCarGame = new RacingCarGame(carQuantity, new TestRandomNumbers());
 
     // when
-    racingCarGame.start(new TestRandomNumbers());
+    for (int i = 0; i < loopTimes; i++) {
+      racingCarGame.start();
+    }
 
     // then
     int totalMoveCount = 0;
@@ -72,12 +76,14 @@ public class RacingCarTest {
   public void carsMoveLoopByConditionTest(
       int carQuantity, int loopTimes, int expectedMoveCount) {
     // given
-    RacingCarGame racingCarGame = new RacingCarGame(carQuantity, loopTimes);
     RandomNumbers randomNumbers = new RandomNumbers();
     randomNumbers.setSeed(GameConstant.RANDOM_TEST_SEED);
+    RacingCarGame racingCarGame = new RacingCarGame(carQuantity, randomNumbers);
 
     // when
-    racingCarGame.start(randomNumbers);
+    for (int i = 0; i < loopTimes; i++) {
+      racingCarGame.start();
+    }
 
     // then
     int totalMoveCount = 0;
@@ -102,12 +108,14 @@ public class RacingCarTest {
   public void carNameLengthTest(String ownerNames, int loopTimes) {
     // given
     List<String> ownerNamesList = Arrays.asList(ownerNames.split(","));
-    RacingCarGame racingCarGame = new RacingCarGame(ownerNamesList, loopTimes);
     RandomNumbers randomNumbers = new RandomNumbers();
     randomNumbers.setSeed(GameConstant.RANDOM_TEST_SEED);
+    RacingCarGame racingCarGame = new RacingCarGame(ownerNamesList, randomNumbers);
 
     // when
-    racingCarGame.start(randomNumbers);
+    for (int i = 0; i < loopTimes; i++) {
+      racingCarGame.start();
+    }
 
     // then
     assertThat(ResultView.getWinnerNames(racingCarGame.findWinners())).isEqualTo("crong, honux");

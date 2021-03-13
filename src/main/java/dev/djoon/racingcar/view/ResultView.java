@@ -1,6 +1,6 @@
-package dev.djoon.racingcar.ui;
+package dev.djoon.racingcar.view;
 
-import dev.djoon.racingcar.actor.Car;
+import dev.djoon.racingcar.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +19,6 @@ public class ResultView {
   }
 
   public static void printXPos(int xPos) {
-    System.out.print("-"); /** 기본 출발선(=0) **/
     for (int i = 0; i < xPos; i++) {
       System.out.print("-");
     }
@@ -28,6 +27,14 @@ public class ResultView {
 
   public static void printCR() {
     System.out.println();
+  }
+
+  public static void printRoundResult(List<Car> cars) {
+    for (Car car : cars) {
+      printCarOwner(car);
+      printXPos(car.getXPosition());
+    }
+    printCR();
   }
 
   public static String getWinnerNames(List<Car> cars) {

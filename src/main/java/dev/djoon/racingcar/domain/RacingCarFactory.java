@@ -1,7 +1,4 @@
-package dev.djoon.racingcar;
-
-import dev.djoon.racingcar.actor.Car;
-import dev.djoon.racingcar.actor.Sedan;
+package dev.djoon.racingcar.domain;
 
 public class RacingCarFactory {
 

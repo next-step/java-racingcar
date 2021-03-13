@@ -1,6 +1,6 @@
-package dev.djoon.racingcar.actor;
+package dev.djoon.racingcar.domain;
 
-import dev.djoon.racingcar.util.GameConstant;
+import dev.djoon.racingcar.domain.util.GameConstant;
 
 public abstract class Car {
 
