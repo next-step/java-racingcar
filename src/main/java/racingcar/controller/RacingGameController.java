@@ -8,8 +8,6 @@ import racingcar.utils.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.Random;
-
 public class RacingGameController {
 
     private final CarService carService;
@@ -26,10 +24,12 @@ public class RacingGameController {
     }
 
     public void setGameEnvironment() {
-        int numberOfCars = InputView.INSTANCE.InputNumberOfCars();
-        createCars(numberOfCars);
-        int numberOfAttempts = InputView.INSTANCE.InputNumberOfAttempts();
-        createGameRound(numberOfAttempts);
+        String numberOfCars = InputView.INSTANCE.InputNumberOfCars();
+        validateNumber(numberOfCars);
+        createCars(Integer.parseInt(numberOfCars));
+        String numberOfAttempts = InputView.INSTANCE.InputNumberOfAttempts();
+        validateNumber(numberOfAttempts);
+        createGameRound(Integer.parseInt(numberOfAttempts));
     }
 
     public void createCars(int numberOfCars) {
@@ -52,6 +52,32 @@ public class RacingGameController {
         for (int i = 0; i < gameRoundService.loadGameRound().getRound(); i++) {
             raceEachRound();
             ResultView.INSTANCE.printEachRoundResult(carService.findMovementRangeOfCars());
+        }
+    }
+
+    private void validateNumber(String input) {
+        validateNull(input);
+        validateEmpty(input);
+        validateInteger(input);
+    }
+
+    private void validateInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+    }
+
+    private void validateNull(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("null 값인지 확인해주세요.");
+        }
+    }
+
+    private void validateEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("비어있는 값인지 확인해주세요.");
         }
     }
 }
