@@ -10,6 +10,9 @@ import racingcar.view.ResultView;
 
 public class RacingGameController {
 
+    private static final String CHECK_INPUT_INTEGER = "숫자를 입력해주세요.";
+    private static final String CHECK_INPUT_NULL = "null 값인지 확인해주세요.";
+    private static final String CHECK_INPUT_EMPTY = "비어있는 값인지 확인해주세요.";
     private final CarService carService;
     private final GameRoundService gameRoundService;
 
@@ -65,19 +68,19 @@ public class RacingGameController {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
+            throw new IllegalArgumentException(CHECK_INPUT_INTEGER);
         }
     }
 
     private void validateNull(String input) {
         if (input == null) {
-            throw new IllegalArgumentException("null 값인지 확인해주세요.");
+            throw new IllegalArgumentException(CHECK_INPUT_NULL);
         }
     }
 
     private void validateEmpty(String input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException("비어있는 값인지 확인해주세요.");
+            throw new IllegalArgumentException(CHECK_INPUT_EMPTY);
         }
     }
 }
