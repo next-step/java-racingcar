@@ -4,6 +4,13 @@ public class Car {
     private String distance = "";
     private static final int MOVE_CONDITION = 4;
 
+    public Car() {
+    }
+
+    public Car(String distance) {
+        this.distance = distance;
+    }
+
     public String move(int randomNumber) {
         if (MOVE_CONDITION <= randomNumber) {
             this.distance += "-";
