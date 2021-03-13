@@ -16,7 +16,6 @@ public class RacingService {
 
     public void play(int totalRound) {
         ResultView.printRacingStart();
-
         for(int i=0; i<totalRound; i++) {
             ResultView.printRacingRound(i+1);
             racing.run();

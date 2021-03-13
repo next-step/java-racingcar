@@ -1,7 +1,5 @@
 package study.step4;
 
-import static java.util.stream.Collectors.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -18,10 +16,12 @@ import study.step4.model.Movement;
 public class Racing {
     private List<Car> carList;
     private Movement movement;
+    private RacingWinner racingWinner;
 
     public Racing() {
         carList = new ArrayList<>();
         movement = new Movement();
+        racingWinner = new RacingWinner();
     }
 
     public void setUp(String[] names) {
@@ -36,14 +36,8 @@ public class Racing {
         carList.forEach(car -> car.move(movement.stopAndMove()));
     }
 
-    public List<Car> getWinners() {
-        int winnerPosition = carList.stream()
-            .mapToInt(Car::getPosition)
-            .max()
-            .orElse(-1);
-
-        return carList.stream()
-            .filter(car -> car.getPosition() == winnerPosition)
-            .collect(toList());
+    public List<String> getWinners() {
+        racingWinner.determineWinners(carList);
+        return racingWinner.getWinnerNames();
     }
 }

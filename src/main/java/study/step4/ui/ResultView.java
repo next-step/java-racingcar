@@ -16,7 +16,7 @@ public class ResultView {
     }
 
     public static void printRacingRound(int round) {
-        System.out.println(round + MESSAGE_RACING_ROUND);
+        System.out.println("\n" + round + MESSAGE_RACING_ROUND);
     }
 
     public static void printRacingResult(List<Car> carList) {
@@ -30,9 +30,9 @@ public class ResultView {
         return new String(new char[position]).replace("\0", printToken);
     }
 
-    public static void printRacingWinner(List<Car> winners) {
+    public static void printRacingWinner(List<String> winnerNames) {
         StringJoiner winner = new StringJoiner(",");
-        winners.forEach(car -> winner.add(car.getName()));
+        winnerNames.forEach(name -> winner.add(name));
         System.out.println("\n" + winner.toString() + MESSAGE_RACING_WINNER);
     }
 }
