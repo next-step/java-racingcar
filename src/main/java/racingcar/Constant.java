@@ -6,5 +6,6 @@ public class Constant {
     public static final String ERROR_COUNT_NUMBER = "[ERROR] 입력값은 숫자여야 합니다.";
     public static final int MAX_RANDOM_NUM = 10;
     public static final int INPUT_RANDOM_NUM = 4;
+    public static final int INPUT_ZERO_NUM = 4;
 
 }

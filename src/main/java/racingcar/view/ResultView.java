@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.Constant;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.module.RacingRound;
@@ -18,7 +19,7 @@ public class ResultView {
     private static String convertIntToString(int racingTrack) {
         StringBuffer str = new StringBuffer();
 
-        for (int num = 0; num < racingTrack; num++) {
+        for (int num = Constant.INPUT_ZERO_NUM; num < racingTrack; num++) {
             str.append("-");
         }
         return str.toString();
