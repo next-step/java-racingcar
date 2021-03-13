@@ -77,6 +77,27 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("자동차 이동 범위 초기화 테스트")
+    public void initializeMovementRange() throws Exception {
+        //given
+        Car firstCar = new Car("firstCar");
+        Car secondCar = new Car("secondCar");
+        firstCar.move(5);
+        secondCar.move(7);
+        secondCar.move(6);
+
+        //when
+        firstCar.initializeMovementRange();
+        secondCar.initializeMovementRange();
+        int movementRangeOfFirstCar = firstCar.getMovementRange();
+        int movementRangeOfSecondCar = secondCar.getMovementRange();
+
+        //then
+        assertEquals(0, movementRangeOfFirstCar, "firstCar의 이동범위는 1 -> 0으로 초기화되야 한다.");
+        assertEquals(0, movementRangeOfSecondCar, "secondCar의 이동범위는 2 -> 0으로 초기화되야 한다.");
+    }
+
+    @Test
     @DisplayName("자동차 전진 조건 0 ~ 9 검증 테스트")
     public void validateRandomNumber() throws Exception {
         //given
