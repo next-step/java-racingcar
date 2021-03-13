@@ -1,4 +1,4 @@
-package step2;
+package utils;
 
 public final class StringUtils {
 
@@ -16,4 +16,12 @@ public final class StringUtils {
   public static boolean isBlank(String str) {
     return str == null || str.trim().isEmpty();
   }
+
+  public static String defaultString(String str) {
+    if (StringUtils.isBlank(str)) {
+      return "";
+    }
+    return str;
+  }
+
 }

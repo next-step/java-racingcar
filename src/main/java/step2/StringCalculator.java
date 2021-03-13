@@ -1,5 +1,7 @@
 package step2;
 
+import utils.StringUtils;
+
 public class StringCalculator {
 
   public int operation(String input) {
