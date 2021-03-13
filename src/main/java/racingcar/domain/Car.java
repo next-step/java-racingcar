@@ -25,6 +25,10 @@ public class Car {
         }
     }
 
+    public void initializeMovementRange() {
+        movementRange = INIT_VALUE;
+    }
+
     public int getMovementRange() {
         return movementRange;
     }
