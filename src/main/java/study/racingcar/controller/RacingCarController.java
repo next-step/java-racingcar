@@ -13,7 +13,7 @@ public class RacingCarController {
         String nameOfCars = inputView.enterNameOfCars().trim();
         int numberOfAttempts = inputView.enterNumberOfAttempts();
 
-        RacingCarGame racingCarGame = new RacingCarGame(nameOfCars.split(","), numberOfAttempts);
+        RacingCarGame racingCarGame = new RacingCarGame.Builder(numberOfAttempts).racingCars(nameOfCars).build();
 
         resultView.printStart();
 

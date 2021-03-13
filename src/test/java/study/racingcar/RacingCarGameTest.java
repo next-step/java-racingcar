@@ -32,10 +32,10 @@ public class RacingCarGameTest {
         racingCarList.add(firstWinnerRacingCar);
         racingCarList.add(secondWinnerRacingCar);
 
-        RacingCarGame racingCarGame = new RacingCarGame(racingCarList, 5);
+        RacingCarGame racingCarGame = new RacingCarGame.Builder(5).racingCars(racingCarList).build();
 
-        assertThat(racingCarGame.getWinnerNames(racingCarList)).contains("win1", "win2");
-        assertThat(String.join(", ", racingCarGame.getWinnerNames(racingCarList))).isEqualTo("win1, win2");
+        assertThat(racingCarGame.getRacingPrintInfo()).contains("win1", "win2");
+        assertThat(String.join(", ", racingCarGame.getRacingPrintInfo())).isEqualTo("win1, win2");
     }
 
 }
