@@ -1,7 +1,7 @@
 package racing;
 
 import racing.domain.Cars;
-import racing.domain.Winners;
+import racing.domain.RacingEvent;
 import racing.view.InputView;
 import racing.view.ResultView;
 

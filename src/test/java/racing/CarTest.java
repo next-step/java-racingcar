@@ -28,9 +28,9 @@ class CarTest {
         assertThat(car.getMoveCount()).isEqualTo(1);
     }
 
-    @DisplayName("4 이하는 이동하지 않는 테스트")
+    @DisplayName("3 이하는 이동하지 않는 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4})
+    @ValueSource(ints = {1,2,3})
     public void failMoveTest(int number){
         car.tryMove(number);
         assertThat(car.getMoveCount()).isEqualTo(0);

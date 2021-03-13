@@ -2,7 +2,7 @@ package racing.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.RacingEvent;
+import racing.domain.RacingEvent;
 import racing.domain.Car;
 import racing.domain.Winner;
 

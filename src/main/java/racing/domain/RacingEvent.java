@@ -1,9 +1,6 @@
-package racing;
+package racing.domain;
 
 import java.util.List;
-import racing.domain.Car;
-import racing.domain.Cars;
-import racing.domain.Winners;
 import racing.util.RandomUtil;
 import racing.view.ResultView;
 
@@ -46,6 +43,4 @@ public class RacingEvent {
             resultView.resultView(car);
         });
     }
-
-
 }
