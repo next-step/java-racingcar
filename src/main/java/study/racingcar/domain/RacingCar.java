@@ -1,4 +1,4 @@
-package study.racingcar.entity;
+package study.racingcar.domain;
 
 public class RacingCar {
 
@@ -7,7 +7,11 @@ public class RacingCar {
     private final String name;
 
     public RacingCar(int position, String name) {
+
         this.position = position;
+
+        carNameValidCheck(name);
+
         this.name = name;
     }
 
@@ -40,6 +44,12 @@ public class RacingCar {
 
     private void carMove(){
         this.position += 1;
+    }
+
+    private void carNameValidCheck(String carName) {
+        if(carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5자 까지 사용 가능 합니다. 입력하신 차의 이름은 : " + carName + " 입니다.");
+        }
     }
 
 }
