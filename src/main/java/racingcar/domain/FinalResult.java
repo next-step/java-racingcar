@@ -18,13 +18,13 @@ public class FinalResult {
     public Cars getWinnersInCars() {
         Map<Name, Position> finalRound = finalResult.get(finalResult.keySet()
                                                                         .stream()
-                                                                            .filter(c -> c.getRound() == finalResult.size())
+                                                                            .filter(round -> round.getRound() == finalResult.size())
                                                                             .findFirst()
                                                                             .orElse(null));
 
         int maxPosition = Collections.max(finalRound.values()
                                                         .stream()
-                                                            .map(c -> c.getPosition())
+                                                            .map(position -> position.getPosition())
                                                             .collect(Collectors.toList()));
 
         List<Map.Entry<Name, Position>> results = new ArrayList<>(finalRound.entrySet());
@@ -33,9 +33,8 @@ public class FinalResult {
                 .filter((Map.Entry<Name, Position> result) -> result.getValue()
                                                                         .getPosition() == maxPosition)
                 .map(result -> new Car(result.getKey()
-                                                .toString()
-                                        , result.getValue()
-                                                    .getPosition()))
+                                                .toString(), result.getValue()
+                                                                        .getPosition()))
                 .collect(Collectors.toList()));
     }
 }
