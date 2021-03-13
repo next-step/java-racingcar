@@ -25,10 +25,8 @@ public class RacingGameTest {
         //WHEN
         RacingRound result = game.startGame(cars, 3);
         //THEN
-        assertThat(result.getRoundResult().get(0)).isNotNull();
+        assertThat(result.getRoundResult()).hasSize(3);
     }
-
-
 
 
 }
