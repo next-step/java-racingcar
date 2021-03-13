@@ -10,14 +10,15 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(int playCarNum) {
-        cars = generateCars(playCarNum);
+    public Cars(String[] playCarName) {
+        cars = generateCars(playCarName);
     }
 
-    private List<Car> generateCars(int tryNum) {
+    private List<Car> generateCars(String[] playCarName) {
         List<Car> carList = new ArrayList<>();
-        for (int num = 0; num < tryNum; num++) {
-            carList.add(new Car());
+        int playCarNum = playCarName.length;
+        for (int num = 0; num < playCarNum; num++) {
+            carList.add(new Car(playCarName[num]));
         }
         return carList;
     }
@@ -31,4 +32,6 @@ public class Cars {
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
+
+
 }
