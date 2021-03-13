@@ -20,7 +20,7 @@ class CarTest {
 	void moveCar() {
 		Car car = new Car(1);
 
-		car.move(new RandomNumberOnlyNine());
+		car.move(new OnlyTrueMovingStrategy());
 
 		assertThat(car.getMoveCount()).isEqualTo(1);
 	}

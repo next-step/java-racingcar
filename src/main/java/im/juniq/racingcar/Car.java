@@ -1,7 +1,6 @@
 package im.juniq.racingcar;
 
 public class Car {
-	private static final int BOUND_OF_CAR_MOVEMENT = 4;
 	private int id;
 	private int moveCount = 0;
 
@@ -9,8 +8,8 @@ public class Car {
 		this.id = id;
 	}
 
-	public void move(RandomNumber randomNumber) {
-		if (randomNumber.get() > BOUND_OF_CAR_MOVEMENT) {
+	public void move(MovingStrategy movingStrategy) {
+		if (movingStrategy.isMoving()) {
 			moveCount++;
 		}
 	}

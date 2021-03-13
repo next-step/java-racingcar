@@ -6,15 +6,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class RandomNumberTest {
-	@DisplayName("0~9 사이 난수 발생")
+	@DisplayName("0~9 사이 난수 생성")
 	@Test
-	void genarateZeroToNine() {
+	void getZeroToNine() {
 		assertThat(new RandomNumberZeroToNine().get()).isBetween(0, 9);
 	}
 
-	@DisplayName("테스트를 위해 9만 발생")
+	@DisplayName("테스트를 위해 9만 생성")
 	@Test
-	void genarateOnlyNine() {
+	void getOnlyNine() {
 		assertThat(new RandomNumberOnlyNine().get()).isEqualTo(9);
 	}
 }

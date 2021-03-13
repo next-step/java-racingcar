@@ -33,7 +33,7 @@ class RacingGameTest {
 		RacingGame racingGame = new RacingGame();
 		racingGame.createCars(numberOfCars);
 
-		racingGame.moveCars(new RandomNumberOnlyNine());
+		racingGame.moveCars(new OnlyTrueMovingStrategy());
 
 		List<Car> cars = racingGame.getCars();
 		for (int i = 0; i < cars.size(); i++) {
