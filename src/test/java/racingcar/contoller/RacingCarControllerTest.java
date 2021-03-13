@@ -23,6 +23,6 @@ class RacingCarControllerTest {
             round.update();
         }
 
-        assertThat(countRound).isEqualTo(finish);
+        assertThat(round.getRound() - 1).isEqualTo(finish);
     }
 }
