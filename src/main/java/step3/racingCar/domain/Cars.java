@@ -31,7 +31,9 @@ public class Cars {
 
     public Map<String, Integer> checkCarStatus() {
         return cars.stream()
-                .collect(Collectors.toMap(Car::getName, Car::getForwardNum));
+                .collect(Collectors.toMap(
+                        Car::getName, Car::getForwardNum)
+                );
     }
 
     public void tryForward() {
