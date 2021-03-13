@@ -14,7 +14,7 @@ import carracing.service.dto.RacingResult;
  */
 public class CarRacingService {
 
-    private CarRacingValidator carRacingValidator;
+    private final CarRacingValidator carRacingValidator;
 
     public CarRacingService() {
         this.carRacingValidator = new CarRacingValidator();

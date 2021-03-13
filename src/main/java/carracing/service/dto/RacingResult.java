@@ -1,6 +1,5 @@
 package carracing.service.dto;
 
-import carracing.domain.Car;
 import carracing.domain.Cars;
 
 import java.util.ArrayList;
@@ -36,11 +35,7 @@ public class RacingResult {
     }
 
     private RacingScores executeScoring(Cars cars) {
-        RacingScores racingScores = new RacingScores();
-        for (Car car : cars.getCarList()) {
-            car.drive();
-            racingScores.registerRacingScore(car);
-        }
-        return racingScores;
+        cars.driveAll();
+        return cars.inquiryRacingScores();
     }
 }

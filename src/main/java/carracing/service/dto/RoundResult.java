@@ -12,7 +12,7 @@ import carracing.service.CarRacingValidator;
  */
 public class RoundResult {
 
-    private CarRacingValidator carRacingValidator;
+    private final CarRacingValidator carRacingValidator;
 
     private int roundNumber;
     private RacingScores racingScores;
@@ -45,7 +45,7 @@ public class RoundResult {
     }
 
     private void validateRacingScores(RacingScores racingScores) {
-        if(racingScores==null || racingScores.getScoreCount()==0) {
+        if(racingScores==null) {
             throw new IllegalArgumentException("경기 정보가 존재하지 않습니다.");
         }
     }

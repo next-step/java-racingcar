@@ -2,7 +2,6 @@ package carracing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -12,16 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
-
-    @Test
-    @DisplayName("등록한 차량번호와 인스턴스의 차량번호는 같아야 함")
-    public void registerCar() {
-        // given
-        Car car = new Car(1);
-
-        // when then
-        assertThat(car.getCarNumber()).isEqualTo(1);
-    }
 
     @ParameterizedTest
     @ValueSource(ints = {0, -1, -1000})
@@ -40,11 +29,12 @@ class CarTest {
         Car car = new Car(1);
 
         // when
-        int beforeMileage = car.getMileage();
+        int beforeScore = car.inquiryRacingScore().getScore();
         car.drive();
+        int afterScore = car.inquiryRacingScore().getScore();
 
         // then
-        assertThat(beforeMileage).isLessThanOrEqualTo(car.getMileage());
+        assertThat(beforeScore).isLessThanOrEqualTo(afterScore);
     }
 
     @ParameterizedTest
