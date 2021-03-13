@@ -27,14 +27,14 @@ public class CarRaceTest {
     @Test
     @DisplayName("전진 테스트 - 전진 성공하는 경우")
     void 전진테스트(){
-        MoveStrategy moveStrategy = new CarMoveByNameLengthStrategy(goSuccessTestCar);
+        MoveStrategy moveStrategy = new CarMoveByNameLengthStrategy();
         goSuccessTestCar.move(moveStrategy);
         assertThat(goSuccessTestCar.getPosition()).isEqualTo(2);
     }
     @Test
     @DisplayName("전진 테스트 - 전진 실패하는 경우")
     void 전진조건테스트(){
-        MoveStrategy moveStrategy = new CarMoveByNameLengthStrategy(goFailTestCar);
+        MoveStrategy moveStrategy = new CarMoveByNameLengthStrategy();
         goFailTestCar.move(moveStrategy);
         assertThat(goFailTestCar.getPosition()).isEqualTo(1);
     }
@@ -57,21 +57,14 @@ public class CarRaceTest {
     @Test
     @DisplayName("자동차 경주게임 우승자 알려주는 기능 테스트")
     void 자동차_경주_우승자(){
-        List<Car> carList = new ArrayList<>();
-        Car car1 = new Car("rc11");
-        Car car2 = new Car("rc2");
-        Car car3 = new Car("rc33");
-        MoveStrategy moveStrategyCar1 = new CarMoveByNameLengthStrategy(car1);
-        MoveStrategy moveStrategyCar2 = new CarMoveByNameLengthStrategy(car2);
-        MoveStrategy moveStrategyCar3 = new CarMoveByNameLengthStrategy(car3);
-        car1.move(moveStrategyCar1);
-        car2.move(moveStrategyCar2);
-        car3.move(moveStrategyCar3);
-        carList.add(car1);
-        carList.add(car2);
-        carList.add(car3);
-        Cars cars = new Cars(carList);
-        assertThat(cars.getWinners()).containsOnly(car1,car3);
+        String carNames = "rc11,rc2,rc33";
+        Cars cars = new Cars(carNames);
+        MoveStrategy moveStrategy = new CarMoveByNameLengthStrategy();
+        cars.move(moveStrategy);
+        assertThat(cars.getWinners().
+                stream().
+                map(car -> car.getCarName())
+                ).containsOnly("rc11","rc33");
     }
 
 }

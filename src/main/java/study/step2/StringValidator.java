@@ -17,9 +17,9 @@ public class StringValidator {
         if(!input.matches(NUMBER_CHECK_REGEX)) throw new NumberFormatException("숫자를 정확히 입력해주세요");
     }
     public static void checkCarNameSyntax(String input){
-        if(Arrays.stream(input.split(CAR_NAME_SPLIT_DELIMITER))
-                .filter(name -> name.length() > CAR_NAME_LENGTH_LIMIT)
-                .count() > 0) throw new StringIndexOutOfBoundsException("차 이름의 길이는 5자를 초과할 수 없습니다.");
+        if(input.length() > CAR_NAME_LENGTH_LIMIT){
+            throw new StringIndexOutOfBoundsException("차 이름의 길이는 5자를 초과할 수 없습니다.");
+        }
     }
 
 }
