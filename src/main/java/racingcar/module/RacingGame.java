@@ -1,6 +1,10 @@
 package racingcar.module;
 
+import racingcar.model.Car;
 import racingcar.model.Cars;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private RacingRound racingRound;
@@ -9,7 +13,11 @@ public class RacingGame {
         racingRound = new RacingRound();
         for (int num = 0; num < tryNum; num++) {
             cars.playCarGame();
-            racingRound.insertResult(cars, num);
+            List<Car> copyCars = cars.getCars().stream()
+                    .map(Car::clone).collect(Collectors.toList());
+
+            racingRound.insertResult(copyCars, num);
+
         }
 
         return racingRound;

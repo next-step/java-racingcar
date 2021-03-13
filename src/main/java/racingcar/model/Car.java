@@ -26,4 +26,15 @@ public class Car implements Cloneable {
     public int getPosition() {
         return position;
     }
+
+    @Override
+    public Car clone() {
+        Car clone = null;
+        try {
+            clone = (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+        return clone;
+    }
 }
