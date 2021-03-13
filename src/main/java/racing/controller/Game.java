@@ -1,47 +1,44 @@
 package racing.controller;
 
-import racing.model.Car;
 import racing.model.CarFactory;
+import racing.model.Cars;
 import racing.view.ResultView;
 
-import java.util.List;
-
 public class Game {
-  private final int carCount;
-  private final int attempt;
-
-  CarFactory carFactory;
+  Cars cars;
   ResultView resultView;
 
-  public Game(int carCount, int attempt) {
-    this.carCount = carCount;
-    this.attempt = attempt;
-
-    carFactory = new CarFactory();
+  public Game() {
     resultView = new ResultView();
   }
 
-  public boolean run() {
-    boolean runnable = checkParameters();
+  public boolean run(int carCount, int attempt) {
+    boolean runnable = checkParameters(carCount, attempt);
+
+    cars = makeCars(carCount);
 
     if (!runnable) {
       return false;
     }
-    carFactory.init(carCount);
 
     for (int i = 0; i < attempt; i++) {
-      List<Car> resultCars = carFactory.runCycle();
-      resultView.printResult(resultCars);
+      cars.runCycle();
+      resultView.printResult(cars);
     }
     return true;
   }
 
-  private boolean checkParameters() {
+  private boolean checkParameters(int carCount, int attempt) {
     if (carCount >= 1 && attempt >= 1) {
       return true;
     }
 
     resultView.error("입력 값에 오류가 있어 프로그램을 종료합니다.");
     return false;
+  }
+
+  private Cars makeCars(int carCount) {
+    CarFactory carFactory = new CarFactory();
+    return carFactory.makeCars(carCount);
   }
 }

@@ -1,16 +1,23 @@
 package racing.model;
 
+import racing.strategy.CarMovingStrategy;
+import racing.strategy.Strategy;
+
 public class Car {
-  int location;
-  private static final int MOVABLE_LENGTH = 4;
+  private int location;
+  private final Strategy carMovingStrategy;
 
   public Car() {
-    location = 0;
+    this(0, new CarMovingStrategy());
   }
 
-  public int move(int randomValue) {
-    if (randomValue >= MOVABLE_LENGTH) location += 1;
+  public Car(int location, Strategy strategy){
+    this.location = location;
+    this.carMovingStrategy = strategy;
+  }
 
+  public int move() {
+    if (carMovingStrategy.isMovable()) location += 1;
     return location;
   }
 

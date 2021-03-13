@@ -9,8 +9,8 @@ public class App {
     int carCount = inputView.inputCarCount();
     int attempt = inputView.inputPeriod();
 
-    Game game = new Game(carCount, attempt);
-    game.run();
+    Game game = new Game();
+    game.run(carCount, attempt);
 
   }
 }
