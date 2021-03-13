@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Position {
 
@@ -32,5 +34,12 @@ public class Position {
         if (number >= PASS_CONDITION) {
             position++;
         }
+    }
+
+    @Override
+    public String toString() {
+        return IntStream.range(0, position)
+                .mapToObj(i -> "-")
+                .collect(Collectors.joining(""));
     }
 }

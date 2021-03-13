@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class Car {
 
     private static final int LOWER_LIMIT = 0;
@@ -38,12 +35,5 @@ public class Car {
         if (number > HIGHER_LIMIT || number < LOWER_LIMIT) {
             throw new IllegalArgumentException("0 ~ 9까지의 값만 사용할 수 있습니다.");
         }
-    }
-
-    @Override
-    public String toString() {
-        return IntStream.range(0, position.getPosition())
-                .mapToObj(i -> "-")
-                .collect(Collectors.joining(""));
     }
 }
