@@ -2,11 +2,13 @@ package study.racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import study.racingcar.entity.RacingCar;
+import study.racingcar.domain.RacingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingCarTest {
 
@@ -32,4 +34,12 @@ public class RacingCarTest {
         racingCar.oneStep(number);
         assertThat(racingCar.getPosition()).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("자동차 이름 5자 초과 Exception 발생")
+    void racingCarNameValidFalseThrowException(){
+        assertThatIllegalArgumentException().isThrownBy( () -> new RacingCar(0, "test12"));
+        assertThatIllegalArgumentException().isThrownBy( () -> new RacingCar(0, "test123"));
+    }
+
 }

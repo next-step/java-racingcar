@@ -1,6 +1,6 @@
 package study.racingcar.view;
 
-import study.racingcar.entity.RacingCar;
+import study.racingcar.domain.RacingCar;
 
 import java.util.List;
 
