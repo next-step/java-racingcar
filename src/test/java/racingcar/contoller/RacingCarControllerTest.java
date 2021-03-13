@@ -14,8 +14,7 @@ class RacingCarControllerTest {
     @CsvSource({"5, 5"})
     @DisplayName("주어진 횟수 동안 경주 게임을 진행할 수 있다.")
     void carsCanGoInGivenCount(int countRound, int finish) {
-        String[] carNames = {"pobi", "jhLim97"};
-        InputManagement inputManagement = new InputManagement(carNames, countRound);
+        InputManagement inputManagement = new InputManagement(null, countRound);
 
         RacingCarController racingCarController = new RacingCarController(null, inputManagement);
 
