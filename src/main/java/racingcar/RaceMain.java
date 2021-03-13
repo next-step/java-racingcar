@@ -23,34 +23,34 @@ public class RaceMain {
         List<RacingCar> racingCars = new ArrayList<>();
         initiateCarInstances(racingCars, totalCarNum);
 
-        ResultView.printResultStr();
+        ResultView.printResultStrTitle();
         startRace(racingCars, totalMoveCnt);
-    }
-
-    private void startRace(List<RacingCar> racingCars, int totalMoveCnt) {
-        for (int i = 0; i<totalMoveCnt; i++) {
-            makeMoveEachCar(racingCars);
-            ResultView.printEmptyLine();
-        }
-    }
-
-    private void makeMoveEachCar(List<RacingCar> racingCars) {
-        for (RacingCar car : racingCars) {
-            moveForward(car);
-            ResultView.printEachCarMovePath(car);
-        }
-    }
-
-    private void moveForward(RacingCar car) {
-        int ramdomNum = NumberUtil.randomNumberGenerator();
-        if (NumberUtil.isAboveFour(ramdomNum)) {
-            car.moveForward();
-        }
     }
 
     private void initiateCarInstances(List<RacingCar> racingCars, int totalCarNum) {
         for (int i=0; i<totalCarNum; i++) {
             racingCars.add(new RacingCar());
+        }
+    }
+
+    private void startRace(List<RacingCar> racingCars, int totalMoveCnt) {
+        for (int i = 0; i<totalMoveCnt; i++) {
+            moveCars(racingCars);
+            ResultView.printEmptyLine();
+        }
+    }
+
+    private void moveCars(List<RacingCar> racingCars) {
+        for (RacingCar car : racingCars) {
+            moveEachCarWithCondition(car);
+            ResultView.printEachCarMovePath(car);
+        }
+    }
+
+    private void moveEachCarWithCondition(RacingCar car) {
+        int ramdomNum = NumberUtil.generateRandomNumber();
+        if (NumberUtil.isPossibleToMove(ramdomNum)) {
+            car.moveForward();
         }
     }
 }

@@ -1,28 +1,17 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.views.InputView;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class RaceMainTest {
 
-    @Test
-    public void strTest() {
-        assertThat("-"+"-").isEqualTo("--");
-    }
-
     @ParameterizedTest
-    @CsvSource(value = {"3:5"}, delimiter = ':')
+    @CsvSource(value = {"3:5", "2:2"}, delimiter = ':')
     @DisplayName("Test for racing main")
     public void mainTest(int totalCarNum, int totalMoveCnt) {
         Map<String, Integer> racingCarInfos = new HashMap<>();

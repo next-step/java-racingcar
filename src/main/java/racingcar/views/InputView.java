@@ -28,17 +28,17 @@ public class InputView {
         return racingCarInfos;
     }
 
-    private static void getAnswerForCarInfo(Map<String, Integer> racingCarInfos, Scanner scanner,String infoType) {
+    private static void askCarInfo(String question) {
+        System.out.println(question);
+    }
+
+    private static void getAnswerForCarInfo(Map<String, Integer> racingCarInfos, Scanner scanner, String infoType) {
         while (scanner.hasNextLine()) {
             int value = scanner.nextInt();
             System.out.println(value);
 
             racingCarInfos.put(infoType, value);
         }
-    }
-
-    private static void askCarInfo(String question) {
-        System.out.println(question);
     }
 
 }

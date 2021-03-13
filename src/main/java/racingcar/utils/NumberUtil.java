@@ -6,12 +6,12 @@ public class NumberUtil {
 
     private NumberUtil() { }
 
-    public static int randomNumberGenerator() {
+    public static int generateRandomNumber() {
         Random random = new Random();
         return random.nextInt(10);
     }
 
-    public static boolean isAboveFour(int number) {
+    public static boolean isPossibleToMove(int number) {
         return number >= 4;
     }
 }
