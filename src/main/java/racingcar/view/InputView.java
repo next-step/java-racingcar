@@ -1,17 +1,12 @@
 package racingcar.view;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView implements ConsoleView {
     private Scanner scanner;
-    private List<String> questionList;
-    private int questionPosition;
 
-    public InputView(List<String> questionList) {
-        scanner = new Scanner(System.in);
-        this.questionPosition = 0;
-        this.questionList = questionList;
+    public InputView() {
+        this.scanner = new Scanner(System.in);
     }
 
     @Override
@@ -19,8 +14,8 @@ public class InputView implements ConsoleView {
         System.out.println(str);
     }
 
-    public String questionStepByStep() {
-        this.print(questionList.get(this.questionPosition++));
+    public String questionStart(String q) {
+        this.print(q);
         return this.scanner.nextLine();
     }
 }
