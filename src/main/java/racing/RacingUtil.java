@@ -6,4 +6,13 @@ public class RacingUtil {
             racing.runRace();
         }
     }
+
+    public static void showResult(Racing racing) {
+        final ResultView resultView = new ResultView();
+
+        for (Round round : racing.getRounds()) {
+            resultView.show(round.getCars());
+            System.out.println();
+        }
+    }
 }

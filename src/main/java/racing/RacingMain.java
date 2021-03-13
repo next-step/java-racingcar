@@ -8,6 +8,6 @@ public class RacingMain {
         final Racing racing = new Racing(carsCount, attemptsCount);
         RacingUtil.start(racing);
         System.out.println("\n실행 결과");
-        racing.showResult();
+        RacingUtil.showResult(racing);
     }
 }
