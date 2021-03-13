@@ -7,7 +7,7 @@ public class RacingMain {
         int playerCount = inputView.setPlayer();
         int turnCount = inputView.setTurn();
 
-        GrandPrix grandPrix = new GrandPrix();
-        grandPrix.start(playerCount, turnCount);
+        GrandPrix grandPrix = new GrandPrix(playerCount, turnCount);
+        grandPrix.start();
     }
 }

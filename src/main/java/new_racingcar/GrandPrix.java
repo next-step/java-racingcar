@@ -4,35 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GrandPrix {
-    private ResultView resultView;
 
-    public GrandPrix() {
+    private ResultView resultView;
+    private Cars cars;
+    private List<Round> rounds = new ArrayList<>();
+
+    private int roundCount;
+
+    public GrandPrix(int playerCount, int roundCount) {
         this.resultView = new ResultView();
+        this.cars = new Cars(playerCount);
+        this.roundCount = roundCount;
     }
 
-    public void start(int playerCount, int turnCount) {
-        List<Car> cars = createCar(playerCount);
-
+    public void start() {
         resultView.printGameStart();
 
-        for(int i = 0; i < turnCount; i++) {
-            turn(cars);
-            resultView.printGrandPrixRecords(cars);
-        }
-    }
-
-    public List<Car> createCar(int playerCount) {
-        List<Car> cars = new ArrayList<>();
-
-        for(int i = 0; i < playerCount; i++) {
-            cars.add(new Car());
+        for(int i = 0; i < roundCount; i++) {
+            rounds.add(cars.run());
         }
 
-        return cars;
-    }
-
-    public void turn(List<Car> cars) {
-        cars.stream()
-                .forEach(c -> c.move(RandomUtil.getValue()));
+        resultView.printGrandPrixRecords(rounds);
     }
 }

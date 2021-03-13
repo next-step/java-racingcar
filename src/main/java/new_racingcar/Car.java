@@ -1,33 +1,28 @@
 package new_racingcar;
 
 public class Car {
-    private static final int MOVE_CONDITION = 4;
 
-    private Record record;
     private MoveStrategy moveStrategy;
+    private int distance;
 
-    public Car() {
-        record = new Record();
+    public Car(MoveStrategy moveStrategy) {
+        this(moveStrategy, 0);
     }
 
-    public Record getRecord() {
-        return record;
-    }
-
-    private void setMoveStrategy(MoveStrategy moveStrategy) {
+    public Car(MoveStrategy moveStrategy, int distance) {
+        this.distance = distance;
         this.moveStrategy = moveStrategy;
     }
 
-    private MoveStrategy getMoveType(int randomValue) {
-        if (randomValue >= MOVE_CONDITION) {
-            return MoveOneStrategy.INSTANCE;
+    public Car move(int RandomValue) {
+        if (moveStrategy.isMove(RandomValue)) {
+            ++distance;
         }
 
-        return MoveStopStrategy.INSTANCE;
+        return new Car(this.moveStrategy, distance);
     }
 
-    public boolean move(int randomValue) {
-        setMoveStrategy(getMoveType(randomValue));
-        return moveStrategy.move(this.record);
+    public int getDistance() {
+        return distance;
     }
 }
