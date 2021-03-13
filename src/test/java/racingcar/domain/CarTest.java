@@ -3,9 +3,8 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarTest {
 
@@ -60,7 +59,7 @@ class CarTest {
 
     @Test
     @DisplayName("자동차 이름 입력 테스트")
-    public void setName() throws Exception {
+    public void carName() throws Exception {
         //given
         String firstCarName = "seongbeen";
         String secondCarName = "pobi";
@@ -74,6 +73,8 @@ class CarTest {
         //then
         assertEquals(firstCarName, nameFromFirstCar, "자동차 객체에서 가져온 이름이 입력한 이름과 같아야 한다.");
         assertEquals(secondCarName, nameFromsecondCar, "자동차 객체에서 가져온 이름이 입력한 이름과 같아야 한다.");
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car(null)).withMessage("이름 값이 null인지 확인해주세요.");
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car("")).withMessage("이름 값이 공백인지 확인해주세요.");
     }
 
     @Test
