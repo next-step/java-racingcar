@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,6 +20,7 @@ class CarsTest {
   @BeforeEach
   public void createCars() {
     List<Car> carList = new ArrayList<>();
+
 
     Car car1 = Car.createCar("aaa");
     Car car2 = Car.createCar("bbb");
@@ -66,7 +68,6 @@ class CarsTest {
 
     //then
     String actualString = "aaa : " + "-" + "\n" + "bbb : " + "-" + "\n" + "ccc : " +  "-" + "\n";
-
     assertEquals(expectString, actualString);
   }
 
@@ -108,5 +109,4 @@ class CarsTest {
         () -> assertEquals(expectedCars.get(2).getPosition(), cars.getCars().get(2).getPosition())
     );
   }
-
 }
