@@ -17,6 +17,13 @@ class CarTest {
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
 
+	@DisplayName("자동차 이름은 5글자 이하만 허용한다")
+	@ParameterizedTest
+	@ValueSource(strings = {"pobi66"})
+	void createCarWithCheckCarName(String carName) {
+		assertThatIllegalArgumentException().isThrownBy(() -> new Car(carName));
+	}
+
 	@DisplayName("자동차를 이동한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi"})
