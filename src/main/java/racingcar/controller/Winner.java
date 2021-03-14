@@ -3,27 +3,36 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.model.Car;
+import racingcar.model.Position;
 
 public class Winner {
 
   public List<Car> nameOfWinner = new ArrayList<>();
 
-  private int getMaxLocation(List<Car> cars) {
-    return cars.stream().mapToInt(Car::getLocation).max().orElse(0);
+  public int getMaxPosition(List<Car> cars) {
+    int maxPosition = 0;
+    for (Car car : cars) {
+      maxPosition = comparePosition(car.getPosition(), maxPosition);
+    }
+    return maxPosition;
   }
 
-  public boolean isWinner(Car car, int maxLocation) {
-    return car.getLocation() == maxLocation;
+  private int comparePosition(Position position, int maxPosition) {
+    return Math.max(position.getPosition(), maxPosition);
+  }
+
+  public boolean isWinner(Position position, int maxPosition) {
+    return position.getPosition() == maxPosition;
   }
 
   private void addWinner(Car car, int maxLocation) {
-    if (isWinner(car, maxLocation)) {
+    if (isWinner(car.getPosition(), maxLocation)) {
       nameOfWinner.add(car);
     }
   }
 
   public void decideWinner(List<Car> cars) {
-    int maxLocation = getMaxLocation(cars);
-    cars.forEach(car -> addWinner(car, maxLocation));
+    int maxPosition = getMaxPosition(cars);
+    cars.forEach(car -> addWinner(car, maxPosition));
   }
 }
