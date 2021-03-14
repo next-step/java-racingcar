@@ -7,7 +7,7 @@ public class Name {
     // 전략 패턴을 만들자.
 
     private Name(String name) {
-        if(name.length() > 10) throw new IllegalArgumentException("이름에 사용되기에는 알맞은 값이 아닙니다.");
+        if(name.length() > 5) throw new IllegalArgumentException("이름에 사용되기에는 알맞은 값이 아닙니다.");
         this.name = name;
     }
 
