@@ -1,4 +1,4 @@
-package study.step5.model;
+package study.step5.domain;
 
 /**
  * Car Class

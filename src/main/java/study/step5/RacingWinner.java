@@ -3,7 +3,7 @@ package study.step5;
 import java.util.ArrayList;
 import java.util.List;
 
-import study.step5.model.Car;
+import study.step5.domain.Car;
 
 public class RacingWinner {
     private List<String> winnerNames = new ArrayList<>();

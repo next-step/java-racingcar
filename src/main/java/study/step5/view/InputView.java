@@ -1,4 +1,4 @@
-package study.step5.ui;
+package study.step5.view;
 
 import java.util.Scanner;
 

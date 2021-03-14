@@ -1,6 +1,6 @@
 package study.step5;
 
-import study.step5.ui.ResultView;
+import study.step5.view.ResultView;
 
 public class RacingService {
     private Racing racing;

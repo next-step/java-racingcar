@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import study.step5.model.Car;
-import study.step5.model.Movement;
+import study.step5.domain.Car;
+import study.step5.domain.Movement;
 
 /**
  * Racing Game Class

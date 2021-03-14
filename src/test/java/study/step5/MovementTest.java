@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
-import study.step5.model.Movement;
+import study.step5.domain.Movement;
 
 /**
  * Movemnet Class Test

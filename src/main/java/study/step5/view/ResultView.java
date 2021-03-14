@@ -1,9 +1,9 @@
-package study.step5.ui;
+package study.step5.view;
 
 import java.util.List;
 import java.util.StringJoiner;
 
-import study.step5.model.Car;
+import study.step5.domain.Car;
 
 public class ResultView {
     private final static String MESSAGE_RACING_START = "자동차 경주를 시작합니다.";
