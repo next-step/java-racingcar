@@ -2,9 +2,10 @@ package racingcar.domain;
 
 import racingcar.util.RandomUtil;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racing {
     private List<Car> cars;
@@ -15,11 +16,11 @@ public class Racing {
         this.numberOfTurns = numberOfTurns;
     }
 
-    public static Racing withCondition(int numberOfCar, int numberOfTurns) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
-        }
+    public static Racing withCondition(String[] namesOfCars, int numberOfTurns) {
+        List<Car> cars = Arrays.stream(namesOfCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
+
         return new Racing(cars, numberOfTurns);
     }
 
