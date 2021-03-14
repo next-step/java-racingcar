@@ -48,5 +48,9 @@ public class Racing {
     public List<Round> getRounds() {
         return rounds;
     }
+
+    public List<Car> getWinners() {
+        return rounds.isEmpty() ? new ArrayList<>() : rounds.get(rounds.size() - 1).getLeaders();
+    }
 }
 

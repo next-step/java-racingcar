@@ -1,14 +1,14 @@
 package racing.views;
 
 import racing.models.Car;
-import racing.models.Round;
+import racing.models.Racing;
 
 import java.util.stream.Collectors;
 
-public class WinnersView extends View<Void, Round> {
+public class WinnersView extends View<Void, Racing> {
     @Override
-    public Void show(Round round) {
-        final String winnerNames = round.getLeaders().stream()
+    public Void show(Racing racing) {
+        final String winnerNames = racing.getWinners().stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
         System.out.println(winnerNames + "가 최종 우승했습니다.");

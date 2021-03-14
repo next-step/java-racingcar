@@ -24,6 +24,6 @@ public class RacingUtil {
             System.out.println();
         }
 
-        new WinnersView().show(rounds.get(rounds.size() - 1));
+        new WinnersView().show(racing);
     }
 }
