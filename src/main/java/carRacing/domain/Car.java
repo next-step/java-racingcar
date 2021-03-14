@@ -1,37 +1,39 @@
 package carRacing.domain;
 
-import java.util.Random;
-
 public class Car {
+
+    public static int THRESHOLD = 4;
+
+    private String name;
     private int score;
 
-    public Car(){
-        this.score = 0;
+    public Car(String name, int score) {
+        this.name = name;
+        this.score = score;
     }
 
-    public Car(Car car){
-        this.score = car.score;
+    public Car(String name) {
+        this(name, 0);
     }
 
-    public Car raceOrStay(Car car){
+    public Car(Car car) {
+        this(car.name, car.score);
+    }
+
+    public Car raceOrStay(Car car, int notRandomValue) {
         Car carAfterAction = new Car(car);
-        Random random = new Random();
-        if(random.nextInt(10)>=4) {
-            carAfterAction.score+=1;
+        if (notRandomValue >= Car.THRESHOLD) {
+            carAfterAction.score += 1;
         }
         return carAfterAction;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getScore() {
         return score;
     }
 
-    @Override
-    public String toString() {
-        String trace = "\uD83D\uDE98";
-        for (int count = 0; count < this.score; count++) {
-            trace += "-";
-        }
-        return trace;
-    }
 }

@@ -1,10 +1,11 @@
 package carRacing;
 
-import carRacing.service.CarRacingService;
+import carRacing.controller.CarRacingController;
 
 public class CarRacingMain {
-    public static void main(String[] args){
-        CarRacingService carRacingProgram = new CarRacingService();
-        carRacingProgram.run();
+
+    public static void main(String[] args) {
+        CarRacingController carRacingController = new CarRacingController();
+        carRacingController.run();
     }
 }
