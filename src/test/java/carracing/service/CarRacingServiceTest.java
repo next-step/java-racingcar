@@ -1,7 +1,11 @@
 package carracing.service;
 
+import carracing.controller.dto.CarRacingRequest;
 import carracing.domain.Cars;
-import carracing.service.dto.*;
+import carracing.service.dto.RacingResult;
+import carracing.service.dto.RacingScore;
+import carracing.service.dto.RacingScores;
+import carracing.service.dto.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,11 +20,11 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 입력한 라운드 수 만큼의 라운드 결과가 존재해야 한다")
     void carRacingService_roundCount() {
         // given
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
-        RacingResult racingResult = carRacingService.executeCarRacing(racingRegisterInfo);
+        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
 
         // then
         assertThat(5).isEqualTo(racingResult.getRoundResultList().size());
@@ -30,11 +34,11 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 각 라운드 결과에는 입력한 자동차 수 만큼의 성적이 존재해야 한다")
     void carRacingService_racingScoreCount() {
         // given
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
-        RacingResult racingResult = carRacingService.executeCarRacing(racingRegisterInfo);
+        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
 
         // then
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
@@ -46,11 +50,11 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 라운드별 성적 리스트의 차량번호는 모두 1 이상이어야 한다.")
     void carRacingService_racingScore_carNumber() {
         // given
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
-        RacingResult racingResult = carRacingService.executeCarRacing(racingRegisterInfo);
+        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
 
         // then
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
@@ -65,11 +69,11 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 라운드별 성적 리스트에는 차량당 한 개의 성적만 존재해야 한다")
     void carRacingService_racingScore_scoreCount() {
         // given
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
-        RacingResult racingResult = carRacingService.executeCarRacing(racingRegisterInfo);
+        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
 
         // then
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
@@ -85,11 +89,11 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 라운드별 성적 리스트의 성적은 0 이상이다")
     void carRacingService_racingScore_score() {
         // given
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
-        RacingResult racingResult = carRacingService.executeCarRacing(racingRegisterInfo);
+        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
 
         // then
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
@@ -106,11 +110,11 @@ class CarRacingServiceTest {
     void validate_racingCarCount(int racingCarCount, int roundCount) {
         // given
         CarRacingService carRacingService = new CarRacingService();
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(racingCarCount, roundCount);
+        CarRacingRequest carRacingRequest = new CarRacingRequest(racingCarCount, roundCount);
 
         // when then
         assertThatIllegalArgumentException()
-                .isThrownBy( () -> carRacingService.executeCarRacing(racingRegisterInfo) )
+                .isThrownBy( () -> carRacingService.executeCarRacing(carRacingRequest) )
                 .withMessageMatching("자동차 등록수는 최소 한 대 이상이어야 합니다.")
                 ;
     }
@@ -121,11 +125,11 @@ class CarRacingServiceTest {
     void validate_roundCount(int racingCarCount, int roundCount) {
         // given
         CarRacingService carRacingService = new CarRacingService();
-        RacingRegisterInfo racingRegisterInfo = new RacingRegisterInfo(racingCarCount, roundCount);
+        CarRacingRequest carRacingRequest = new CarRacingRequest(racingCarCount, roundCount);
 
         // when then
         assertThatIllegalArgumentException()
-                .isThrownBy( () -> carRacingService.executeCarRacing(racingRegisterInfo) )
+                .isThrownBy( () -> carRacingService.executeCarRacing(carRacingRequest) )
                 .withMessageMatching("경기 횟수는 최소 1회 이상이어야 합니다.")
         ;
     }

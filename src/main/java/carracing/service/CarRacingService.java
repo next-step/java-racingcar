@@ -1,7 +1,7 @@
 package carracing.service;
 
+import carracing.controller.dto.CarRacingRequest;
 import carracing.domain.Cars;
-import carracing.service.dto.RacingRegisterInfo;
 import carracing.service.dto.RacingResult;
 
 /**
@@ -20,14 +20,14 @@ public class CarRacingService {
         this.carRacingValidator = new CarRacingValidator();
     }
 
-    public RacingResult executeCarRacing(RacingRegisterInfo racingRegisterInfo) {
-        validate(racingRegisterInfo);
-        return new RacingResult(racingRegisterInfo.getRoundCount(), new Cars(racingRegisterInfo.getRacingCarCount()));
+    public RacingResult executeCarRacing(CarRacingRequest carRacingRequest) {
+        validate(carRacingRequest);
+        return new RacingResult(carRacingRequest.getRoundCount(), new Cars(carRacingRequest.getRacingCarCount()));
     }
 
-    private void validate(RacingRegisterInfo racingRegisterInfo) {
-        carRacingValidator.validateCarRegisterCount(racingRegisterInfo.getRacingCarCount());
-        carRacingValidator.validateRoundCount(racingRegisterInfo.getRoundCount());
+    private void validate(CarRacingRequest carRacingRequest) {
+        carRacingValidator.validateCarRegisterCount(carRacingRequest.getRacingCarCount());
+        carRacingValidator.validateRoundCount(carRacingRequest.getRoundCount());
     }
 
 }
