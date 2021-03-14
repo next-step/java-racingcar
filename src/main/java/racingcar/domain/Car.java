@@ -14,6 +14,7 @@ public class Car {
     private String name;
 
     public Car(String name) {
+        validateNull(name);
         validateEmpty(name);
         validateLength(name);
         this.name = name;
@@ -37,6 +38,12 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    private void validateNull(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException(CHECK_NAME_NULL);
+        }
     }
 
     private void validateEmpty(String input) {
