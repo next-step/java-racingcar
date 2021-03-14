@@ -40,4 +40,15 @@ public abstract class Car {
     }
     return false;
   }
+
+  public String getPositionRepresentation() {
+    StringBuilder stringBuilder = new StringBuilder(owner);
+    stringBuilder.append(" : ");
+
+    for (int i = 0; i < xPosition; i++) {
+      stringBuilder.append("-");
+    }
+
+    return stringBuilder.toString();
+  }
 }

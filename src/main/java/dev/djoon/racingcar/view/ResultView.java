@@ -10,31 +10,15 @@ public class ResultView {
     System.out.println("실행 결과");
   }
 
-  public static void printCarOwner(Car car) {
-    if ("".equals(car.getOwner())) {
-      return;
-    }
-
-    System.out.print(car.getOwner() + " : ");
-  }
-
-  public static void printXPos(int xPos) {
-    for (int i = 0; i < xPos; i++) {
-      System.out.print("-");
-    }
-    System.out.println();
-  }
-
-  public static void printCR() {
+  public static void printCarriageReturn() {
     System.out.println();
   }
 
   public static void printRoundResult(List<Car> cars) {
-    for (Car car : cars) {
-      printCarOwner(car);
-      printXPos(car.getXPosition());
-    }
-    printCR();
+    cars.stream().map(Car::getPositionRepresentation)
+                 .forEachOrdered(System.out::println);
+
+    printCarriageReturn();
   }
 
   public static String getWinnerNames(List<Car> cars) {
