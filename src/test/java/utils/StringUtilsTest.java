@@ -8,8 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StringUtilsTest {
 
-    private StringUtils stringUtils;
-
     @DisplayName("StringUtils 의 splitByComma()가 ,를 기준으로 알맞는 배열의 수를 만드는지 확인하는 테스트")
     @ParameterizedTest(name = "splitByComma 대상이 되는 값: {0}, 예상되는 결과값: {1}")
     @CsvSource(value = {"1,2,3:3", "123:1", ",:0"}, delimiter = ':')

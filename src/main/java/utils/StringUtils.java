@@ -4,15 +4,9 @@ public class StringUtils {
     private static final int ZERO = 0;
     private static final String COMMA = ",";
 
-    private static class SettingsHolder {
-        public static final StringUtils utils = new StringUtils();
-    }
 
     private StringUtils() {
-    }
 
-    public static StringUtils getInstance() {
-        return SettingsHolder.utils;
     }
 
     public static boolean isNullAndBlank(String sentence) {
@@ -29,6 +23,8 @@ public class StringUtils {
         return sentence.trim().length() == ZERO;
     }
 
-
+    public static String[] splitByComma(String sentence) {
+        return sentence.split(COMMA);
+    }
 
 }
