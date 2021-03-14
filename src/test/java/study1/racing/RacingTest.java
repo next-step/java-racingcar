@@ -1,19 +1,21 @@
 package study1.racing;
 
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
 
 public class RacingTest {
-  @Test
-  @DisplayName("racing 개발용 테스트")
-  void racingTest() {
-    Race race = new Race(5, 4);
-    race.run();
-    // Car car = new Car();
-    // car.move();
-    // car.move();
-    // car.move();
-    // car.move();
-    // car.move();
+
+  @ParameterizedTest
+  @CsvSource(value = { "5:3"}, delimiter = ':')
+  @DisplayName("racing run 시 지정된 round, participant 에 따라 호출되는 함수 횟수 test")
+  void checkCallMethodCheckDistance(int round, int participant) {
+    Race spy = spy(new Race(participant, round));
+    spy.run();
+    verify(spy, times(round)).checkDistance();
+    verify(spy, times(round * participant)).recordDistance(anyInt());
   }
 }
