@@ -13,7 +13,6 @@ public class RacingCarApplication {
         int numberOfTurns = inputView.getNumberOfTurns();
 
         Racing racing = Racing.withCondition(namesOfCars, numberOfTurns);
-
         printView.printResultTitle();
         printView.printCarStatus(racing.getCars());
 
@@ -21,5 +20,6 @@ public class RacingCarApplication {
             racing.race();
             printView.printCarStatus(racing.getCars());
         }
+        printView.printWinners(racing.getWinners());
     }
 }
