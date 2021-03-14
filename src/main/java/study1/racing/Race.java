@@ -19,7 +19,12 @@ public class Race {
   }
   
   public void checkDistance() {
-    cars.stream().map((car) -> car.move()).forEach(ResultView::print);
+    // cars.stream().map((car) -> car.move()).forEach(ResultView::print);
+    cars.stream().map((car) -> car.move()).forEach((distance) -> this.recordDistance(distance));
     System.out.print("\n");
+  }
+
+  public void recordDistance(int distance) {
+    ResultView.print(distance);
   }
 }
