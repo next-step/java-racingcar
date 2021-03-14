@@ -1,8 +1,5 @@
 package carracing.service.dto;
 
-import carracing.domain.Cars;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,26 +13,13 @@ import java.util.List;
  */
 public class RacingResult {
 
-    private static final int ROUND_START_NUMBER = 1;
-
-    private final List<RoundResult> roundResultList = new ArrayList<>();
+    private final List<RoundResult> roundResultList;
 
     public List<RoundResult> getRoundResultList() {
         return roundResultList;
     }
 
-    public RacingResult(int roundCount, Cars cars) {
-        for (int i = ROUND_START_NUMBER; i <= roundCount; i++) {
-            roundResultList.add(executeRound(i, cars));
-        }
-    }
-
-    private RoundResult executeRound(int roundNumber, Cars cars) {
-        return new RoundResult(roundNumber, executeScoring(cars));
-    }
-
-    private RacingScores executeScoring(Cars cars) {
-        cars.driveAll();
-        return cars.inquiryRacingScores();
+    public RacingResult(List<RoundResult> roundResultList) {
+        this.roundResultList = roundResultList;
     }
 }

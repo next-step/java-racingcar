@@ -1,6 +1,7 @@
 package carracing.domain;
 
 import carracing.constants.CarRacingConstant;
+import carracing.service.dto.RacingScore;
 import carracing.service.dto.RacingScores;
 
 import java.util.ArrayList;
@@ -50,6 +51,10 @@ public class Cars {
     }
 
     public RacingScores inquiryRacingScores() {
-        return new RacingScores(this);
+        List<RacingScore> racingScores = new ArrayList<>();
+        for (Car car : carList) {
+            racingScores.add(car.inquiryRacingScore());
+        }
+        return new RacingScores(racingScores);
     }
 }

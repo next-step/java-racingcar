@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -105,6 +106,25 @@ class CarRacingServiceTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {0, -1})
+    @DisplayName("CarRacing - 경기 횟수는 최소 1회 이상이어야 함")
+    void carRacing_validateRoundCount(int roundCount) {
+        // given when then
+        assertThatIllegalArgumentException()
+                .isThrownBy( () -> new CarRacing(roundCount, new Cars(5)) )
+                .withMessageMatching("경기 횟수는 최소 1회 이상이어야 합니다.");
+    }
+
+    @Test
+    @DisplayName("CarRacing - 차량정보 필수입력")
+    void carRacing_validateRoundCount() {
+        // given when then
+        assertThatIllegalArgumentException()
+                .isThrownBy( () -> new CarRacing(5, null) )
+                .withMessageMatching("차량정보를 입력해 주세요.");
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"0:0", "0:6", "0:-1", "-1:0", "-1:100", "-1:9"}, delimiter = ':')
     @DisplayName("입력값 검증 - 참가 자동차 수는 한 대 이상이어야 한다")
     void validate_racingCarCount(int racingCarCount, int roundCount) {
@@ -141,30 +161,6 @@ class CarRacingServiceTest {
         assertThatIllegalArgumentException()
                 .isThrownBy( () -> new Cars(0) )
                 .withMessageMatching("자동차 등록수는 최소 한 대 이상이어야 합니다.")
-        ;
-    }
-
-    @Test
-    @DisplayName("경기점수 등록 - 참가 자동차 수와 경기스코어 수는 같아야 함")
-    void registerRacingScore() {
-        // given
-        Cars cars = new Cars(5);
-        RacingScores racingScores = new RacingScores(cars);
-
-        // when then
-        assertThat(cars.getCarList().size()).isEqualTo(racingScores.getRacingScoreList().size());
-    }
-
-    @Test
-    @DisplayName("경기결과 등록 테스트 - 경기횟수 0, 경기결과 미존재")
-    void registerRoundResult() {
-        assertThatIllegalArgumentException()
-                .isThrownBy( () -> new RoundResult(0, new RacingScores(new Cars(1)))
-                ).withMessageMatching("라운드 회차는 최소 1 이상이어야 합니다.")
-        ;
-        assertThatIllegalArgumentException()
-                .isThrownBy( () -> new RoundResult(1, null)
-                ).withMessageMatching("경기 정보가 존재하지 않습니다.")
         ;
     }
 }

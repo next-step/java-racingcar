@@ -1,9 +1,5 @@
 package carracing.service.dto;
 
-import carracing.domain.Car;
-import carracing.domain.Cars;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,16 +12,14 @@ import java.util.List;
  */
 public class RacingScores {
 
-    private final List<RacingScore> racingScoreList = new ArrayList<>();
+    private final List<RacingScore> racingScoreList;
 
     public List<RacingScore> getRacingScoreList() {
         return racingScoreList;
     }
 
-    public RacingScores(Cars cars) {
-        for (Car car : cars.getCarList()) {
-            racingScoreList.add(car.inquiryRacingScore());
-        }
+    public RacingScores(List<RacingScore> racingScoreList) {
+        this.racingScoreList = racingScoreList;
     }
 
 }
