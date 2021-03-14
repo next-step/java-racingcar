@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.service;
 
 import org.junit.jupiter.api.Test;
-import racingcar.service.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

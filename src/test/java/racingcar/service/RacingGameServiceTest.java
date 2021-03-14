@@ -1,10 +1,8 @@
-package racingcar;
+package racingcar.service;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Cars;
 import racingcar.domain.GameStep;
-import racingcar.service.GameService;
-import racingcar.service.RacingGameService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,9 +18,10 @@ public class RacingGameServiceTest {
         public final GameStep gameStep = new GameStep(nowStep, stepNumber);
         public final Cars cars = new Cars(carNumber);
 
+
         @Override
         public void initGame() {
-
+            
         }
 
         @Override
@@ -48,7 +47,7 @@ public class RacingGameServiceTest {
 
     @Test
     void runStep() {
-        
+
     }
 
     @Test

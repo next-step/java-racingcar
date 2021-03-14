@@ -5,7 +5,7 @@ import racingcar.domain.Cars;
 
 public class ResultView {
     private final static String LOCATION_EXPRESSION = "-";
-    private final static String SET_OUTPUT_RESULT = "실행 결과\n";
+    private final static String SET_OUTPUT_RESULT = "실행 결과";
 
     public static void printStart() {
         System.out.println(SET_OUTPUT_RESULT);
