@@ -1,10 +1,14 @@
 package study.step5.domain;
 
 public class Position {
-	public Position(int i) {
-	}
 
-	public int getPosition() {
-		return 0;
-	}
+    private int position;
+
+    public Position(int position) {
+        this.position = position;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
 }
