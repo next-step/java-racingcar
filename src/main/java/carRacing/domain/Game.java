@@ -10,7 +10,7 @@ public class Game {
 
     public List<Car> race(List<Car> cars) {
         return cars.stream()
-                .map(car -> car.raceOrStay(car))
+                .map(car -> car.raceOrStay(car, random.nextInt()))
                 .collect(Collectors.toList());
     }
 

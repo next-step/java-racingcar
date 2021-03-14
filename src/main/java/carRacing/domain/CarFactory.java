@@ -9,9 +9,8 @@ public class CarFactory {
 
     public List<Car> initCars(UserInput userInput) {
         List<Car> cars = new ArrayList<>();
-        for (int carCount = 0; carCount < userInput.getNumberOfCars(); carCount++) {
-            cars.add(new Car());
-        }
+        List<String> nameOfCars = userInput.getParsedNameOfCars();
+        nameOfCars.forEach(name -> cars.add(new Car(name)));
         return cars;
     }
 

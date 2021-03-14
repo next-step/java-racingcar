@@ -15,10 +15,21 @@ public class CarRacingService {
     public void run() {
         UserInput userInput = view.getUserInput();
         List<Car> cars = carFactory.initCars(userInput);
+        view.declareRace();
+        runRace(userInput, cars);
+        List<String> winners = judge.findWinners(cars);
+        view.printWinners(winners);
+    }
+
+    public int runRace(UserInput userInput, List<Car> cars){
+        int raceCount = 0;
         while (!judge.isGameOver(userInput)) {
             cars = game.race(cars);
             view.printScoreboard(cars);
             judge.recordTime();
+            raceCount++;
         }
+        return raceCount;
     }
+
 }
