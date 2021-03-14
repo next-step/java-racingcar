@@ -2,29 +2,25 @@ package racingcar.ui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import racingcar.util.UserInputValidator;
 
 public class InputView {
 
   private final BufferedReader reader;
+  private final UserInputValidator validator;
 
   public InputView(BufferedReader reader) {
     this.reader = reader;
+    this.validator = new UserInputValidator();
   }
 
-  public String getNumberOfCars() throws IOException {
-    System.out.println("자동차 대수는 몇 대 인가요?");
-    return validation(reader.readLine());
+  public String[] getNumberOfCars() throws IOException {
+    System.out.println("경주할 자동차의 이름을 입력해주세요(이름은 (,) 쉼표로 구분)");
+    return validator.carNameValidation(reader.readLine());
   }
 
   public String getRound() throws IOException {
     System.out.println("시도할 회수는 몇 회 인가요?");
-    return validation(reader.readLine());
-  }
-
-  public String validation(String userInput) {
-    if(!UserInputValidator.isNumeric(userInput)){
-      throw new IllegalArgumentException("숫자만 입력하실 수 있습니다.");
-    }
-    return userInput;
+    return validator.inputRoundValidation(reader.readLine());
   }
 }

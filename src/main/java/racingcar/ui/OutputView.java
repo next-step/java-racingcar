@@ -25,7 +25,10 @@ public class OutputView {
     writer.setLength(0);
   }
 
-  public void endGame() {
-    System.out.println("게임이 종료 되었습니다.");
+  public void endGame(Cars cars) {
+    writer.append("우승자는 ").append(cars.getWinner()).append(" 입니다.\n");
+    writer.append("게임이 종료 되었습니다.");
+    System.out.println(writer.toString());
+    clearBuffer();
   }
 }
