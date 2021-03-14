@@ -3,12 +3,20 @@ package study;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculatorTest {
+
+  StringCalculator calculator;
+
+  @BeforeEach
+  void initCalculator() {
+    calculator = new StringCalculator();
+  }
 
   @DisplayName("단순 입력 문자열 계산")
   @Test
@@ -17,7 +25,7 @@ class StringCalculatorTest {
     String calculateExpression = "2 + 3";
 
     // when
-    double result = StringCalculator.calculate(calculateExpression);
+    double result = calculator.calculate(calculateExpression);
 
     // then
     assertThat(result).isEqualTo(5);
@@ -30,7 +38,7 @@ class StringCalculatorTest {
     String calculateExpression = "2 + 3 * 4 / 2";
 
     // when
-    double result = StringCalculator.calculate(calculateExpression);
+    double result = calculator.calculate(calculateExpression);
 
     // then
     assertThat(result).isEqualTo(10);
@@ -44,7 +52,7 @@ class StringCalculatorTest {
 
     // when
     Throwable thrown = catchThrowable(() -> {
-      StringCalculator.calculate(calculateExpression);
+      calculator.calculate(calculateExpression);
     });
 
     // then
@@ -56,7 +64,7 @@ class StringCalculatorTest {
   @ValueSource(strings = {"2 + 3 * 4 / 2", "3 + 5 * 2 / 4"})
   void expressionParameterizedGreaterThanZero(String calculateExpression) {
     //when
-    double result = StringCalculator.calculate(calculateExpression);
+    double result = calculator.calculate(calculateExpression);
 
     // then
     assertThat(result).isGreaterThan(0);
