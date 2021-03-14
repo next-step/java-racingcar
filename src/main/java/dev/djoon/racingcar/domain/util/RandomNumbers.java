@@ -1,4 +1,4 @@
-package dev.djoon.racingcar.util;
+package dev.djoon.racingcar.domain.util;
 
 import java.util.Random;
 

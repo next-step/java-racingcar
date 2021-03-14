@@ -1,4 +1,4 @@
-package dev.djoon.racingcar.ui;
+package dev.djoon.racingcar.view;
 
 import java.io.InputStream;
 import java.util.Arrays;

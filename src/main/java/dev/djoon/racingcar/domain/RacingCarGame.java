@@ -1,9 +1,7 @@
-package dev.djoon.racingcar;
+package dev.djoon.racingcar.domain;
 
-import dev.djoon.racingcar.actor.Car;
-import dev.djoon.racingcar.ui.ResultView;
-import dev.djoon.racingcar.util.GameConstant;
-import dev.djoon.racingcar.util.RandomNumbers;
+import dev.djoon.racingcar.domain.util.GameConstant;
+import dev.djoon.racingcar.domain.util.RandomNumbers;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -13,28 +11,20 @@ import java.util.stream.Collectors;
 public class RacingCarGame {
 
   private final List<Car> carList;
-  private final int loopTimes;
+  private final RandomNumbers randomNumbers;
 
-  public RacingCarGame(int carQuantity, int loopTimes) {
+  public RacingCarGame(int carQuantity, RandomNumbers randomNumbers) {
     this.carList = fillCarList(carQuantity);
-
-    this.loopTimes = loopTimes;
+    this.randomNumbers = randomNumbers;
   }
 
-  public RacingCarGame(List<String> ownerNames, int loopTimes) {
+  public RacingCarGame(List<String> ownerNames, RandomNumbers randomNumbers) {
     this.carList = fillCarList(ownerNames);
-
-    this.loopTimes = loopTimes;
+    this.randomNumbers = randomNumbers;
   }
 
-  public void start(RandomNumbers random) {
-    ResultView.printNewGame();
-    for (int i = 0; i < loopTimes; i++) {
-      carsMoveIfValid(random);
-
-      ResultView.printCR();
-    }
-    ResultView.printWinner(findWinners());
+  public void start() {
+    carsMoveIfValid(randomNumbers);
   }
 
   public List<Car> getCarList() {
@@ -59,9 +49,6 @@ public class RacingCarGame {
     for (Car car : carList) {
       int randomValue = random.nextInt(GameConstant.RANDOM_BOUNDARY);
       car.moveIfValidCondition(randomValue);
-
-      ResultView.printCarOwner(car);
-      ResultView.printXPos(car.getXPosition());
     }
   }
 

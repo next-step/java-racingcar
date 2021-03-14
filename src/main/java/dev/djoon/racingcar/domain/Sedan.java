@@ -1,4 +1,4 @@
-package dev.djoon.racingcar.actor;
+package dev.djoon.racingcar.domain;
 
 public class Sedan extends Car {
 
