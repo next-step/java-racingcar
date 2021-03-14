@@ -112,4 +112,6 @@ String[] names = inputName.split(",");
         * ResponseDto 생성
 * ResultView :
     * `RacingCarGame` 에서 얻어온 ResponseDto 를 출력한다.
-    
+* RacingCars : 
+    * RacingRequestDto로부터 Names를 넘겨받으면서 map을 통해서 Car를 만드는 로직을 넣도록 구성한다.
+    * Controller에서 부터 넘겨받은 전략패턴(이동 가능한지에 대한 비교)을 받아서 Car를 생성한다.     
