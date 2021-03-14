@@ -4,6 +4,7 @@ import racingcar.util.RandomUtil;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,19 @@ public class Racing {
         }
         cars.forEach(car -> car.moveOrStay(RandomUtil.getRandomIntBetweenZeroToNine()));
         reduceTurns();
+    }
+
+    public List<Car> getWinners() {
+        if (!hasRaceEnd()) {
+            throw new IllegalStateException("레이싱이 종료되지 않았습니다.");
+        }
+        cars.sort(Comparator.comparingInt(Car::getPosition)
+                .reversed());
+        final int maxPosition = cars.get(0).getPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 
     public boolean hasRaceEnd() {
