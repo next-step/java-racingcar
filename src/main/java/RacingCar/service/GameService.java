@@ -1,6 +1,6 @@
-package step3.service;
+package RacingCar.service;
 
-import step3.domain.Car;
+import RacingCar.domain.Car;
 
 import java.util.List;
 

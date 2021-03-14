@@ -1,4 +1,4 @@
-package step3.domain;
+package RacingCar.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -10,21 +10,21 @@ public class Car {
     private int currentLocation;
 
     public Car() {
-        this.currentLocation = START_LOCATION;
+        currentLocation = START_LOCATION;
     }
 
     public void move(Boolean isMove) {
         if (isMove) {
-            this.currentLocation = this.currentLocation + MOVE_STRATEGY;
+            currentLocation = currentLocation + MOVE_STRATEGY;
         }
     }
 
     public int getCurrentLocation() {
-        return this.currentLocation;
+        return currentLocation;
     }
 
     public Car(int location) {
-        this.currentLocation = location;
+        currentLocation = location;
     }
 
     @Override

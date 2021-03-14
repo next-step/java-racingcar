@@ -1,4 +1,4 @@
-package step3.service;
+package RacingCar.service;
 
 public interface MoveStrategy {
     public Boolean getIsMove();

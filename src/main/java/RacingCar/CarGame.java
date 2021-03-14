@@ -1,6 +1,6 @@
-package step3;
+package RacingCar;
 
-import step3.controller.CarGameController;
+import RacingCar.controller.CarGameController;
 
 public class CarGame {
     private static final CarGameController carGameController = new CarGameController();

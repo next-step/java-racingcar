@@ -1,13 +1,13 @@
-package step3;
+package RacingCar;
 
+import RacingCar.domain.Car;
+import RacingCar.service.GameService;
+import RacingCar.service.MoveStrategy;
+import RacingCar.service.RandomGameService;
+import RacingCar.service.RandomMoveStrategy;
+import RacingCar.view.ResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
-import step3.service.GameService;
-import step3.service.MoveStrategy;
-import step3.service.RandomGameService;
-import step3.service.RandomMoveStrategy;
-import step3.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

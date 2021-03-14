@@ -1,10 +1,10 @@
-package step3.controller;
+package RacingCar.controller;
 
-import step3.domain.Car;
-import step3.service.GameService;
-import step3.service.RandomGameService;
-import step3.view.InputView;
-import step3.view.ResultView;
+import RacingCar.domain.Car;
+import RacingCar.service.GameService;
+import RacingCar.service.RandomGameService;
+import RacingCar.view.InputView;
+import RacingCar.view.ResultView;
 
 import java.util.List;
 
