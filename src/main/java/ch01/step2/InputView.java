@@ -18,6 +18,13 @@ public class InputView {
         this.attemptCount = sc.nextInt();
     }
 
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public void setCarCount(int carCount) {
+        this.carCount = carCount;
+    }
 
     public int getAttemptCount() {
         return attemptCount;
@@ -34,16 +41,4 @@ public class InputView {
     public void setProgressArr(String[] progressArr) {
         this.progressArr = progressArr;
     }
-
-    public int getCarCount() {
-        return carCount;
-    }
-
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
-    }
-
-
-
-
 }
