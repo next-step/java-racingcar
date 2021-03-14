@@ -1,26 +1,29 @@
 package step3.study.view;
 
-import step3.study.domain.Car;
-import step3.study.domain.Recodes;
-import step3.study.domain.ResponseRacingDTO;
+import step3.study.domain.Driver;
+import step3.study.dto.ResponseRacingDTO;
 
 import java.util.List;
 
 public class ResultView {
-    public void showResultView(ResponseRacingDTO responseRacingDTO) {
-        List<Recodes> recodesList = responseRacingDTO.getRecodesList();
+    public ResultView() {
         System.out.println("실행결과");
-        for(Recodes recodes : recodesList){
-            printRecodeDistance(recodes);
-            System.out.println();
-        }
     }
 
-    private void printRecodeDistance(Recodes recodes) {
-        List<String> recode = recodes.getRecodes();
-        for(String distance : recode){
-            System.out.println(distance);
-        }
+    public void showResultView(ResponseRacingDTO responseRacingDTO) {
+        printDistance(responseRacingDTO);
     }
 
+    private void printDistance(ResponseRacingDTO responseRacingDTO) {
+        List<Driver> driverList = responseRacingDTO.getDrivers().getDriverList();
+        for (Driver driver : driverList) {
+            System.out.println(driver.getNameAndNowPosition());
+        }
+        System.out.println();
+    }
+
+    public void printWinnerNames(List<String> winnerNameList) {
+        String winnerNames = String.join(", ", winnerNameList);
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
+    }
 }
