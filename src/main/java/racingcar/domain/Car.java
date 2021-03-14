@@ -5,13 +5,22 @@ public class Car {
   private static final int MOVEABLE_CRITERIA = 4;
 
   private int position = 0;
+  private final String name;
 
-  public static Car createCar() {
-    return new Car();
+  public Car(String name) {
+    this.name = name;
+  }
+
+  public static Car createCar(String name) {
+    return new Car(name);
   }
 
   public int getPosition() {
     return position;
+  }
+
+  public String getName() {
+    return name;
   }
 
   public void moveCar(int generatedRandomNumber) {
