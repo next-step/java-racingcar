@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Round {
-    final List<Car> cars;
+    private final List<Car> cars;
 
     public static Round createFrom(List<Car> cars) {
         return new Round(cars.stream()
