@@ -12,6 +12,7 @@ class CarTest {
 
   private final TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(System.currentTimeMillis());
 
+
   @ParameterizedTest
   @ValueSource(strings = {"aaa","bbb"})
   @DisplayName("static 메소드를 통해서 Car를 생성할 수 있는가")
@@ -24,6 +25,7 @@ class CarTest {
 
     //then
     assertEquals(expectedCar.getName(), actualCar.getName());
+
   }
 
   @Test
