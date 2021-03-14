@@ -1,7 +1,7 @@
 package racing.views;
 
-import racing.domain.InputDto;
-
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -17,12 +17,33 @@ public class InputView {
 
     public String inputString(String description) {
         System.out.println(description);
-        return scanner.nextLine();
+        String value = scanner.nextLine();
+        validation(value);
+        return value;
     }
 
-    public InputDto generateInputDto() {
-        String names = inputString(CAR_NAMES_Q);
-        String number = inputString(NUMBER_Q);
-        return new InputDto(names, number);
+    public List<String> getNames() {
+        return Arrays.asList(inputString(CAR_NAMES_Q).split(","));
+    }
+
+    public int getNumberOfAttempts() {
+        return toInteger(inputString(NUMBER_Q));
+    }
+
+    public void validation(String x) {
+        if (isBlank(x))
+            throw new IllegalArgumentException("공백은 입력할 수 없습니다.");
+    }
+
+    public static int toInteger(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("정수만 입력이 가능합니다.");
+        }
+    }
+
+    public static boolean isBlank(String value) {
+        return "".equals(value.trim());
     }
 }

@@ -18,12 +18,4 @@ class CarFactoryTest {
                 .size())
                 .isEqualTo(result);
     }
-
-    @ParameterizedTest
-    @CsvSource(value = {"'car1,car1,car3':true", "'car1,car2':false"}, delimiter = ':')
-    void isDuplicated(String input, boolean expected) {
-        List<String> names = Arrays.asList(input.split(","));
-        assertThat(CarFactory.isDuplicated(names))
-                .isEqualTo(expected);
-    }
 }

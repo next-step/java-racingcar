@@ -2,20 +2,36 @@ package racing.views;
 
 import racing.domain.Car;
 
+import java.io.PrintStream;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ResultView {
-    public static void showResult(){
-        System.out.println("실행 결과");
+
+    private final PrintStream out;
+
+    public ResultView() {
+        out = System.out;
     }
 
-    public static void showRaceRound(List<Car> cars) {
+    public void showStartRace(List<Car> cars){
+        out.println("실행 결과");
+        showRaceRound(cars);
+    }
+
+    public void showRaceRound(List<Car> cars) {
         cars.forEach(car ->
-                System.out.println(car.getName() + " : " + car.getAdvanceProgress()));
-        System.out.println();
+                out.println(car.getName() + " : " + toAdvanceProgress(car.getNumberOfAdvance())));
+        out.println();
     }
 
-    public static void showWinners(List<String> winnerNames) {
-        System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
+    public String toAdvanceProgress(int numberOfAdvance) {
+        return Stream.generate(()-> "-")
+                .limit(numberOfAdvance)
+                .reduce("-", (a, b) -> a + b);
+    }
+
+    public void showWinners(List<String> winnerNames) {
+        out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 }
