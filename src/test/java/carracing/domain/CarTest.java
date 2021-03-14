@@ -14,16 +14,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class CarTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {0, -1, -1000})
-    @DisplayName("차량번호는 0이나 음수가 올 수 없음")
-    public void registerCar_carNumberIsZeroOrNegative(int param) {
-        // given when then
-        assertThatIllegalArgumentException()
-                .isThrownBy( () -> new Car(param) )
-                .withMessageMatching("차량번호는 1 이상의 숫자여야 합니다.");
-    }
-
-    @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9, 10})
     @DisplayName("Engine 클래스 - 랜덤값이 4 이상이면 반드시 움직인다")
     public void engine_move(int testParam) {

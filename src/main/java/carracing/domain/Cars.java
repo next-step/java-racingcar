@@ -19,8 +19,6 @@ import java.util.List;
  */
 public class Cars {
 
-    private static final int FIRST_CAR_NUMBER = 1;
-
     private final List<Car> carList = new ArrayList<>();
 
     public List<Car> getCarList() {
@@ -39,8 +37,8 @@ public class Cars {
     }
 
     private void registerCarList(int racingCarCount) {
-        for (int i = FIRST_CAR_NUMBER; i <= racingCarCount; i++) {
-            this.carList.add(new Car(i));
+        for (int i = 0; i < racingCarCount; i++) {
+            this.carList.add(new Car());
         }
     }
 

@@ -10,16 +10,10 @@ package carracing.controller.dto;
  */
 public class RacingScoreInfo {
 
-    private final int carNumber;
     private final int score;
 
-    public RacingScoreInfo(int carNumber, int score) {
-        this.carNumber = carNumber;
+    public RacingScoreInfo(int score) {
         this.score = score;
-    }
-
-    public int getCarNumber() {
-        return carNumber;
     }
 
     public int getScore() {

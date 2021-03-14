@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class CarRacingController {
 
-    private CarRacingService carRacingService;
+    private final CarRacingService carRacingService;
 
     public CarRacingController() {
         this.carRacingService = new CarRacingService();
@@ -41,7 +41,7 @@ public class CarRacingController {
     private List<RacingScoreInfo> assembleRacingScoreInfo(RacingScores racingScores) {
         List<RacingScoreInfo> racingScoreInfoList = new ArrayList<>();
         for (RacingScore racingScore : racingScores.getRacingScoreList()) {
-            racingScoreInfoList.add(new RacingScoreInfo(racingScore.getCarNumber(), racingScore.getScore()));
+            racingScoreInfoList.add(new RacingScoreInfo(racingScore.getScore()));
         }
         return racingScoreInfoList;
     }

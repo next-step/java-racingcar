@@ -48,45 +48,6 @@ class CarRacingServiceTest {
     }
 
     @Test
-    @DisplayName("서비스 실행결과 - 라운드별 성적 리스트의 차량번호는 모두 1 이상이어야 한다.")
-    void carRacingService_racingScore_carNumber() {
-        // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
-        CarRacingService carRacingService = new CarRacingService();
-
-        // when
-        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
-
-        // then
-        for (RoundResult roundResult : racingResult.getRoundResultList()) {
-            RacingScores racingScores = roundResult.getRacingScores();
-            for (RacingScore racingScore : racingScores.getRacingScoreList()) {
-                assertThat(1).isLessThanOrEqualTo(racingScore.getCarNumber());
-            }
-        }
-    }
-
-    @Test
-    @DisplayName("서비스 실행결과 - 라운드별 성적 리스트에는 차량당 한 개의 성적만 존재해야 한다")
-    void carRacingService_racingScore_scoreCount() {
-        // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
-        CarRacingService carRacingService = new CarRacingService();
-
-        // when
-        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
-
-        // then
-        for (RoundResult roundResult : racingResult.getRoundResultList()) {
-            RacingScores racingScores = roundResult.getRacingScores();
-            for (RacingScore racingScore : racingScores.getRacingScoreList()) {
-                long count = racingScores.getRacingScoreList().stream().filter(score -> racingScore.getCarNumber() == score.getCarNumber()).count();
-                assertThat(1).isEqualTo(count);
-            }
-        }
-    }
-
-    @Test
     @DisplayName("서비스 실행결과 - 라운드별 성적 리스트의 성적은 0 이상이다")
     void carRacingService_racingScore_score() {
         // given

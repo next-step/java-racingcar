@@ -16,25 +16,13 @@ public class Car {
 
     private final Engine engine = new Engine(new Random());
 
-    private final int carNumber;
     private int mileage;
-
-    public Car(int carNumber) {
-        validate(carNumber);
-        this.carNumber = carNumber;
-    }
-
-    private void validate(int carNumber) {
-        if(carNumber <= 0) {
-            throw new IllegalArgumentException("차량번호는 1 이상의 숫자여야 합니다.");
-        }
-    }
 
     public void drive() {
         mileage+=engine.drive();
     }
 
     public RacingScore inquiryRacingScore() {
-        return new RacingScore(carNumber, mileage);
+        return new RacingScore(mileage);
     }
 }
