@@ -14,8 +14,12 @@ public class Round {
     }
 
     private Round(int value) {
-        if (value <= MINIMUM) throw new IllegalArgumentException("0 이하의 숫자로는 레이싱을 진행할 수 없습니다.");
+        if (isLessThanMinimum(value)) throw new IllegalArgumentException("0 이하의 숫자로는 레이싱을 진행할 수 없습니다.");
         this.value = value;
+    }
+
+    private boolean isLessThanMinimum(int value){
+        return value <= MINIMUM;
     }
 
     private static int toInt(String value) {
