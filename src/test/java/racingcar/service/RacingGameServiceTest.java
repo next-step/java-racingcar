@@ -45,13 +45,17 @@ public class RacingGameServiceTest {
 
         //when
 
-
         //then
 
     }
 
     @Test
     void runStep() {
+        //given
+
+        //when
+
+        //then
 
     }
 

@@ -18,7 +18,7 @@ public class ResultView {
         System.out.println();
     }
 
-    private static String getLocationView(Car car) {
+    public static String getLocationView(Car car) {
         String result = "";
         for (int i = 0; i < car.getCurrentLocation(); i++) {
             result = result.concat(LOCATION_EXPRESSION);
