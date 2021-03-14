@@ -5,15 +5,11 @@ import java.util.List;
 
 public class RacingGame {
 
+    private GameSet gameSet;
     private int currentRound = 0;
 
-    private int cars;
-    private int givenRound;
-
-
-    public RacingGame(int cars, int givenRound) {
-        this.cars = cars;
-        this.givenRound = givenRound;
+    public RacingGame(GameSet gameSet) {
+        this.gameSet = gameSet;
     }
 
     public List<RacingCar> settingRacingCars(int cars) {
@@ -21,7 +17,7 @@ public class RacingGame {
         ArrayList<RacingCar> list = new ArrayList<>();
 
         for (int i = 0; i < cars; i++) {
-            RacingCar racingCar = new RacingCar(new Car());
+            RacingCar racingCar = new RacingCar(new Position());
             list.add(racingCar);
         }
 
@@ -41,14 +37,13 @@ public class RacingGame {
     }
 
     private void numberingCars(List<RacingCar> carList) {
-        for (int j = 0; j < carList.size(); j++) {
-            carList.get(j).move();
-            System.out.println(carList.get(j).status());
+        for (int i = 0; i < carList.size(); i++) {
+            carList.get(i).move();
+            System.out.println(carList.get(i).status());
         }
     }
 
-    public int getRound() {
-        return currentRound;
+    public boolean gameOver() {
+        return currentRound == gameSet.getGivenRound();
     }
-
 }
