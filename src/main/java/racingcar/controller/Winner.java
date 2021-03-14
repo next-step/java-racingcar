@@ -7,7 +7,7 @@ import racingcar.model.Position;
 
 public class Winner {
 
-  public List<Car> nameOfWinner = new ArrayList<>();
+  public List<Car> cars = new ArrayList<>();
 
   public int getMaxPosition(List<Car> cars) {
     int maxPosition = 0;
@@ -27,7 +27,7 @@ public class Winner {
 
   private void addWinner(Car car, int maxLocation) {
     if (isWinner(car.getPosition(), maxLocation)) {
-      nameOfWinner.add(car);
+      cars.add(car);
     }
   }
 

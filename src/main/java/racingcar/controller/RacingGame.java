@@ -19,12 +19,15 @@ public class RacingGame {
 
   public void run(int attempt) {
     Movement move = new Movement();
+    Winner win = new Winner();
     System.out.println("\n실행 결과");
 
     for (int i = 0; i < attempt; i++) {
       move.moveCars(cars);
       ResultView.showRacingResult(cars);
     }
-    ResultView.showWinnerName(cars);
+
+    win.decideWinner(cars);
+    ResultView.showWinnerName(win.cars);
   }
 }
