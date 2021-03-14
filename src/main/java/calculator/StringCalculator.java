@@ -1,21 +1,22 @@
 package calculator;
 
 import calculator.enums.Operator;
-import calculator.utils.Validator;
+
+import java.util.Queue;
 
 public class StringCalculator {
 
-    public int calculate(String[] expression) {
-        Validator.validateNull(expression);
-        Validator.validateEmpty(expression);
-        Validator.validateLength(expression);
-        int sum = Integer.parseInt(expression[0]);
+    private Queue<Integer> operands;
+    private Queue<Operator> operators;
 
-        for (int i = 1; i < expression.length; i += 2) {
-            Operator operator = Operator.findBySymbol(expression[i]);
-            int number1 = sum;
-            int number2 = Integer.parseInt(expression[i + 1]);
-            sum = operator.calculate(number1, number2);
+    public int calculate(Expression expression) {
+        operands = expression.getOperands();
+        operators = expression.getOperators();
+        int sum = operands.poll();
+
+        for (Operator operator : operators) {
+            int result = operator.calculate(sum, operands.poll());
+            sum = result;
         }
 
         return sum;
