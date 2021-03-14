@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class CarRacingTest {
@@ -35,32 +34,35 @@ class CarRacingTest {
     @DisplayName("getMove 테스트 - 이동일 경우")
     @Test
     void getMoveTest() {
-        List<Car> cars =
-                Arrays.asList(new Car("aaa", 2), new Car("bbb", 2));
         carRacing.moveProgress(new Go());
+
         Cars currentStatus = carRacing.getCurrentStatus();
+        Car currentCar = currentStatus.getCars().get(0);
+        int position = currentCar.getPosition().getPosition();
 
-        System.out.println("currentStatus.getCars().get(0) = " + currentStatus.getCars().get(0));
-        System.out.println("cars.get(0) = " + cars.get(0));
+        int expected = 2;
 
-        assertTrue(currentStatus.getCars().get(0).equals(cars.get(0)));
+        assertEquals(position, expected);
     }
 
     @DisplayName("getMove 테스트 - 정지일 경우")
     @Test
     void getStopTest() {
-        List<Car> cars =
-                Arrays.asList(new Car("aaa", 2), new Car("bbb", 2));
         carRacing.moveProgress(new Stop());
-        Cars currentStatus = carRacing.getCurrentStatus();
 
-        assertFalse(currentStatus.getCars().get(0).equals(cars.get(0)));
+        Cars currentStatus = carRacing.getCurrentStatus();
+        Car currentCar = currentStatus.getCars().get(0);
+        int position = currentCar.getPosition().getPosition();
+
+        int expected = 1;
+
+        assertEquals(position, expected);
     }
 
     @DisplayName("winner 테스트 - 두명이상일 경우")
     @Test
     void winnersTest() {
-        Winners winners = carRacing.getWinner();
+        WinnersResponse winners = carRacing.getWinner();
         List<Car> cars =
                 Arrays.asList(new Car("aaa", 1), new Car("bbb", 1));
 
@@ -72,8 +74,10 @@ class CarRacingTest {
     void winnerTest() {
         Car car = new Car("aaa", 2);
         carRacing.moveProgress(new RandomMove());
-        Winners winner = carRacing.getWinner();
+        WinnersResponse winner = carRacing.getWinner();
 
-        assertTrue(winner.getWinners().get(0).equals(car));
+        Car winnersCar = winner.getWinners().get(0);
+
+        assertEquals(winnersCar, car);
     }
 }

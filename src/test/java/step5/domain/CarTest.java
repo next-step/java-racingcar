@@ -28,14 +28,14 @@ class CarTest {
     @Test
     void carMoveTest() {
         car.move(4);
-        assertEquals(car.getPosition(), new Car("bbbb", 2).getPosition());
+        assertEquals(car.getPosition(), new Position(2));
     }
 
     @DisplayName("car 이동 테스트 - 멈췄을경우")
     @Test
     void catStopTest() {
         car.move(3);
-        assertEquals(car.getPosition(), new Car("bbbb", 1).getPosition());
+        assertEquals(car.getPosition(), new Position(1));
     }
 
 }
