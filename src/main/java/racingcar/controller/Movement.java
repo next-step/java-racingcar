@@ -11,15 +11,16 @@ public class Movement {
   private static final int RANDOM_RANGE = 10;
 
   public void moveCars(List<Car> cars) {
-    cars.forEach(car -> moveOrNot(car.getPosition()));
+    cars.forEach(
+        car -> moveOrNot(car.getPosition(), RandomGenerator.generateRandomNumber(RANDOM_RANGE)));
   }
 
   public boolean isMoveable(int number) {
     return number >= MOVE_CONDITION;
   }
 
-  private void moveOrNot(Position position) {
-    if (isMoveable(RandomGenerator.generateRandomNumber(RANDOM_RANGE))) {
+  private void moveOrNot(Position position, int number) {
+    if (isMoveable(number)) {
       position.move();
     }
   }
