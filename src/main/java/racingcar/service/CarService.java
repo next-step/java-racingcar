@@ -4,6 +4,7 @@ import racingcar.domain.Car;
 import racingcar.repository.CarRepository;
 
 import java.util.List;
+import java.util.Queue;
 
 public class CarService {
     private final CarRepository carRepository;
@@ -20,8 +21,12 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public List<Integer> findMovementRangeOfCars() {
+    public Queue<Integer> findMovementRangeOfCars() {
         return carRepository.findAllMovementRange();
+    }
+
+    public Queue<String> findNameOfCars() {
+        return carRepository.findAllNames();
     }
 
     public Car findCar(String name) {

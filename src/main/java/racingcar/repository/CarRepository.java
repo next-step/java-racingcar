@@ -3,9 +3,7 @@ package racingcar.repository;
 import racingcar.domain.Car;
 import racingcar.utils.RandomNumberGenerator;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CarRepository {
@@ -20,10 +18,16 @@ public class CarRepository {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Integer> findAllMovementRange() {
+    public Queue<Integer> findAllMovementRange() {
         return cars.stream()
                 .map(Car::getMovementRange)
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    public Queue<String> findAllNames() {
+        return cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     public Car findByName(String name) {
