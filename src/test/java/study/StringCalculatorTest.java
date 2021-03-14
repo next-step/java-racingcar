@@ -10,6 +10,19 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculatorTest {
 
+  @DisplayName("단순 입력 문자열 계산")
+  @Test
+  void stringCalculate() {
+    // given
+    String calculateExpression = "2 + 3";
+
+    // when
+    double result = StringCalculator.calculate(calculateExpression);
+
+    // then
+    assertThat(result).isEqualTo(5);
+  }
+
   @DisplayName("입력 문자열 잘라서 계산")
   @Test
   void splitStringCalculate() {
