@@ -20,7 +20,7 @@ public class InputView {
     }
 
     static String[] splitInput(String input){
-        String[] carNames = Arrays.stream(input.split(",")).map(String::trim).toArray(String[]::new);
+        String[] carNames = Arrays.stream(input.split(CarRacingConstant.COMMA)).map(String::trim).toArray(String[]::new);
         checkCarNamesLength(carNames);
         return carNames;
     }
