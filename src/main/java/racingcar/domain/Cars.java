@@ -1,9 +1,9 @@
 package racingcar.domain;
 
-import racingcar.util.ResultView;
+
+import racingcar.util.ResultDto;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,21 +12,20 @@ public class Cars {
 
     private List<Car> cars;
 
-    public Cars(String[] carNames) {
-        cars = new LinkedList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(new RandomEngine(), carName));
-        }
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void move() {
         cars.forEach(Car::move);
     }
 
-    public void showResult() {
-        cars.forEach(ResultView::showResult);
-        ResultView.printNewLine();
+    public List<ResultDto> getCurrentStatus() {
+        return cars.stream()
+                .map(ResultDto::new)
+                .collect(Collectors.toList());
     }
+
 
     public List<String> getWinnerNames() {
         int winnerPosition = findWinnerPosition();
