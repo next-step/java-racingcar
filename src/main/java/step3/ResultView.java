@@ -20,8 +20,10 @@ public class ResultView {
 
     public void printOutRacingResult() {
         carRacingResult.forEach(carResultDto -> {
-            carResultDto.getCarResultList()
-                    .forEach(car -> System.out.println(StringUtil.repeat(PRINT_EXPRESSION_STR, car.getCurrentPosition())));
+            carResultDto.getCarDtoList()
+                    .forEach(carDto -> System.out.println(carDto.getCarName()
+                            + " : "
+                            + StringUtil.repeat(PRINT_EXPRESSION_STR, carDto.getPosition())));
             System.out.println();
         });
     }
