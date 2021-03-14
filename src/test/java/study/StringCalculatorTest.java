@@ -23,11 +23,11 @@ class StringCalculatorTest {
     assertThat(result).isEqualTo(10);
   }
 
-  @DisplayName("입력 값이 null이거나, 공백일때 예외테스트")
+  @DisplayName("입력 값이 null이거나, 공백일때 예외 테스트")
   @Test
   void expressionIsEmptyOrIsNull() {
     // given
-    String calculateExpression = "2  3 * 4 / 2";
+    String calculateExpression = " ";
 
     // when
     Throwable thrown = catchThrowable(() -> {
