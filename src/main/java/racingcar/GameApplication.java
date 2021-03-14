@@ -1,5 +1,12 @@
 package racingcar;
 
+import racingcar.domain.Game;
+import racingcar.domain.GameResult;
+import racingcar.view.InputView;
+import racingcar.view.InputViewCarName;
+import racingcar.view.InputViewNumber;
+import racingcar.view.ResultView;
+
 public class GameApplication {
 	private static String[] carName;
 	private static Integer executeSize = 0;
