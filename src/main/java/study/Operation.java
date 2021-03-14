@@ -21,15 +21,17 @@ public enum Operation {
     return Arrays.stream(values())
         .filter(operations -> operations.operator.equals(operator))
         .findFirst()
-        .get();
+        .orElseThrow(IllegalArgumentException::new);
   }
 
   public double calculate(double num1, double num2) {
     return this.expression.apply(num1, num2);
   }
 
-  public static double calculate(String operator, double num1, double num2) {
+  public static double calculate(String operator, Operands operands) {
     Operation operation = getOperation(operator);
+    double num1 = operands.getResult();
+    double num2 = operands.getNumber();
 
     return operation.calculate(num1, num2);
   }
