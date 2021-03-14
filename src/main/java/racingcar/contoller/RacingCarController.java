@@ -3,8 +3,10 @@ package racingcar.contoller;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
+
+import racingcar.domain.Round;
 import racingcar.dto.InputManagement;
-import racingcar.view.InputView;
+
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
@@ -12,34 +14,40 @@ import java.util.List;
 
 public class RacingCarController {
 
-    private InputView inputView;
     private RacingGame racingGame;
-    private ResultView resultView;
     private InputManagement inputManagement;
-    private Cars carGroup;
 
-    public RacingCarController(InputView inputView, RacingGame racingGame, ResultView resultView) {
-        this.inputView = inputView;
+    public RacingCarController(RacingGame racingGame, InputManagement inputManagement) {
         this.racingGame = racingGame;
-        this.resultView = resultView;
+        this.inputManagement = inputManagement;
     }
 
     public List<Car> initRacingCars() {
         List<Car> cars = new ArrayList();
 
         for (String carName : inputManagement.getCarNames()) {
-            cars.add(new Car(carName, 0));
+            cars.add(new Car(carName));
         }
 
         return cars;
     }
 
+    public boolean hasNextRound(Round round) {
+        return inputManagement.getCountRound() >= round.getRound();
+    }
+
     public void startGame() {
-        inputManagement = inputView.input();
+        Cars carGroup = new Cars(initRacingCars());
+        racingGame.init(carGroup);
 
-        carGroup = new Cars(initRacingCars());
-        racingGame.init(carGroup, inputManagement);
+        Round round = new Round();
+        while (hasNextRound(round)) {
+            racingGame.playRacing();
+            racingGame.recordEachRoundPosition(round);
+            round.update();
+        }
 
-        resultView.printResult(racingGame.startRacing(), racingGame.getWinners());
+        new ResultView().printResult(racingGame.getFinalResult(), racingGame.getWinners()
+                                                                                .getCars());
     }
 }
