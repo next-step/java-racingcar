@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class Cars {
 	private List<Car> cars = new ArrayList<>();
 
-	public void add(Car... car) {
+	public Cars(Car... car) {
 		cars.addAll(Arrays.asList(car));
 	}
 

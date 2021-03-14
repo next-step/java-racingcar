@@ -37,9 +37,7 @@ class CarsTest {
 	void findByTopPosition() {
 		Car pobi = new Car("pobi", new OnlyTrueMovingStrategy());
 		Car poci = new Car("poci", new RandomNumberMovingStrategy());
-
-		Cars cars = new Cars();
-		cars.add(pobi, poci);
+		Cars cars = new Cars(pobi, poci);
 
 		for (int i = 0; i < 10; i++) {
 			cars.move();
