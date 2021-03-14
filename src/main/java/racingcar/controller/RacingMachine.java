@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.util.ResultView;
+import racingcar.view.ResultView;
 
 public class RacingMachine {
     private static final int ROUND_END = 0;
