@@ -28,13 +28,9 @@ public class Car {
         return name;
     }
 
-    public void move(int distance) {
-        this.position = position.move();
+    public void move(MovingStrategy movingStrategy) {
+        if(movingStrategy.movable()) {
+            this.position = position.move();
+        }
     }
-
-    // public void move(MovingStrategy movingStrategy) {
-    //     if(movingStrategy.movable()) {
-    //         this.position = position.move();
-    //     }
-    // }
 }

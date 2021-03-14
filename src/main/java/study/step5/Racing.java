@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import study.step5.domain.Car;
-import study.step5.domain.Movement;
+import study.step5.domain.RandomMovingStrategy;
 
 /**
  * Racing Game Class
@@ -15,12 +15,10 @@ import study.step5.domain.Movement;
  */
 public class Racing {
     private List<Car> carList;
-    private Movement movement;
     private RacingWinner racingWinner;
 
     public Racing() {
         carList = new ArrayList<>();
-        movement = new Movement();
         racingWinner = new RacingWinner();
     }
 
@@ -33,7 +31,7 @@ public class Racing {
     }
 
     public void run() {
-        carList.forEach(car -> car.move(movement.stopAndMove()));
+        carList.forEach(car -> car.move(new RandomMovingStrategy()));
     }
 
     public List<String> getWinners() {
