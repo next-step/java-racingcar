@@ -6,6 +6,8 @@ import racingcar.model.Cars;
 import racingcar.model.Winner;
 import racingcar.module.RacingRound;
 
+import java.util.stream.Collectors;
+
 public class ResultView {
 
     public static void printResultView(RacingRound resultRound, Cars cars) {
@@ -18,7 +20,7 @@ public class ResultView {
             System.out.println();
         }
 
-        System.out.println(winner.getWinner() + "가 최종우승했습니다.");
+        System.out.println(winner.getWinner().stream().collect(Collectors.joining()) + "가 최종우승했습니다.");
     }
 
     private static String convertIntToString(Car car) {

@@ -28,4 +28,15 @@ public class ValidationUtilTest {
         assertThat(ValidationUtil.isNumber(input)).isEqualTo(result);
     }
 
+    @DisplayName("입력 값이 5글자가 넘는 값 일때 false 반환")
+    @ParameterizedTest
+    @CsvSource(value = {"test1234:false" , "test1:true" , "good:true"}, delimiter = ':')
+    void isNameLength(String input, boolean result) {
+        //GIVE
+
+        //WHEN
+
+        //THEN
+        assertThat(ValidationUtil.isNameLength(input)).isEqualTo(result);
+    }
 }

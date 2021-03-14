@@ -9,7 +9,7 @@ public class CarTest {
     Car car;
     @BeforeEach
     void createInstance(){
-        car = new Car();
+        car = new Car("carname1");
     }
 
     @DisplayName("조건에 맞으면 전진")
