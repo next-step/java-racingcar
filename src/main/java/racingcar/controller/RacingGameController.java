@@ -54,7 +54,10 @@ public class RacingGameController {
 
         for (int i = 0; i < gameRoundService.loadGameRound().getRound(); i++) {
             raceEachRound();
-            ResultView.INSTANCE.printEachRoundResult(carService.findMovementRangeOfCars());
+            ResultView.INSTANCE.printEachRoundResult(
+                    carService.findNameOfCars(),
+                    carService.findMovementRangeOfCars()
+            );
         }
     }
 
