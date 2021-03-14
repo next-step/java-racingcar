@@ -9,19 +9,19 @@ public class RacingCar {
     private static final int MINIMUM_NUMBER = 4;
 
     private static Random random = new Random();
-    private Car car;
+    private Position position;
 
 
-    public RacingCar(Car car) {
-        this.car = car;
+    public RacingCar(Position position) {
+        this.position = position;
     }
 
     public void move() {
-        car.setLocation(isGo(random()));
+        position.setLocation(isGo(random()));
     }
 
     public String status() {
-        return car.getLocation();
+        return position.getLocation();
     }
 
     public String isGo(int number) {
