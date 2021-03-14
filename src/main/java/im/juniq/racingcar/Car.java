@@ -1,24 +1,24 @@
 package im.juniq.racingcar;
 
 public class Car {
-	private int id;
-	private int moveCount = 0;
+	private String name;
+	private int position = 0;
 
-	public Car(int id) {
-		this.id = id;
+	public Car(String name) {
+		this.name = name;
 	}
 
 	public void move(MovingStrategy movingStrategy) {
 		if (movingStrategy.isMoving()) {
-			moveCount++;
+			position++;
 		}
 	}
 
-	public int getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
 
-	public int getMoveCount() {
-		return moveCount;
+	public int getPosition() {
+		return position;
 	}
 }

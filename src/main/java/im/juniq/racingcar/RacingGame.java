@@ -14,13 +14,13 @@ public class RacingGame {
 	public void play() {
 		InputView inputView = new InputView();
 		inputView.scan();
-		createCars(inputView.getNumberOfCars());
+		createCars(inputView.getCarNames());
 		racing(inputView.getNumberOfTries());
 	}
 
-	public void createCars(int numberOfCars) {
-		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(new Car(i));
+	public void createCars(String[] carNames) {
+		for (String carName : carNames) {
+			cars.add(new Car(carName));
 		}
 	}
 

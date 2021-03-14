@@ -17,7 +17,7 @@ public class ResultView {
 	}
 
 	private void printCarMoveCount(Car car) {
-		for (int i = 0; i < car.getMoveCount(); i++) {
+		for (int i = 0; i < car.getPosition(); i++) {
 			System.out.print("-");
 		}
 		System.out.println();
