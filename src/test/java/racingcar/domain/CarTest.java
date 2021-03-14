@@ -112,4 +112,29 @@ class CarTest {
         assertThatIllegalArgumentException().isThrownBy(() -> one.move(-10)).withMessageContaining("이동 범위의 조건은 0 ~ 9");
         assertThatIllegalArgumentException().isThrownBy(() -> two.move(10)).withMessageContaining("이동 범위의 조건은 0 ~ 9");
     }
+
+    @Test
+    @DisplayName("최대 이동범위를 가진 자동차인지 검증하는 테스트")
+    public void isMaxMovementRange() throws Exception {
+        //given
+        int max = 2;
+        Car one = new Car("one");
+        Car two = new Car("two");
+        Car three = new Car("three");
+        one.move(5);
+        one.move(6);
+        two.move(7);
+        three.move(8);
+        three.move(9);
+
+        //when
+        boolean isMaxByOne = one.isMaxMovementRange(max);
+        boolean isMaxByTwo = two.isMaxMovementRange(max);
+        boolean isMaxByThree = three.isMaxMovementRange(max);
+
+        //then
+        assertEquals(true, isMaxByOne, "one은 최대 이동범위를 가지고 있는 자동차이다.");
+        assertEquals(true, isMaxByThree, "three는 최대 이동범위를 가지고 있는 자동차이다.");
+        assertEquals(false, isMaxByTwo, "two의 이동범위는 1이기 때문에 최대 이동범위를 가지고 있지 않는 자동차이다.");
+    }
 }
