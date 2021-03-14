@@ -1,4 +1,4 @@
-package racing;
+package racing.models;
 
 import java.util.function.Supplier;
 

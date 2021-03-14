@@ -1,4 +1,4 @@
-package racing;
+package racing.views;
 
 public class IntegerInputView extends InputView<Integer> {
     @Override

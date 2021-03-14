@@ -1,4 +1,4 @@
-package racing;
+package racing.views;
 
 public class StringInputView extends InputView<String> {
     @Override

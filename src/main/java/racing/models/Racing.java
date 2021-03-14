@@ -1,4 +1,6 @@
-package racing;
+package racing.models;
+
+import racing.utils.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,7 @@
-package racing;
+package racing.views;
+
+import racing.models.Car;
+import racing.models.Round;
 
 import java.util.stream.Collectors;
 
