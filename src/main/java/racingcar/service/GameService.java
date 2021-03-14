@@ -1,8 +1,6 @@
-package RacingCar.service;
+package racingcar.service;
 
 public interface GameService<T> {
-
-
     public void initGame();
 
     public void runStep();

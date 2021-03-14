@@ -1,12 +1,10 @@
-package RacingCar.service;
+package racingcar.service;
 
-import RacingCar.domain.Cars;
-import RacingCar.domain.GameStep;
-import RacingCar.view.InputView;
+import racingcar.domain.Cars;
+import racingcar.domain.GameStep;
+import racingcar.view.InputView;
 
 public class RacingGameService implements GameService<Cars> {
-
-
     private Cars cars;
     private GameStep gameStep;
 
@@ -23,7 +21,6 @@ public class RacingGameService implements GameService<Cars> {
             cars.moveOneCar(i, moveStrategy.getIsMove());
         }
         gameStep.increaseStep();
-
     }
 
     @Override

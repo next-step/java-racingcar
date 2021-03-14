@@ -1,7 +1,7 @@
-package RacingCar.view;
+package racingcar.view;
 
-import RacingCar.domain.Car;
-import RacingCar.domain.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class ResultView {
     private final static String LOCATION_EXPRESSION = "-";

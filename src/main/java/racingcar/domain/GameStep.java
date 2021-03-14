@@ -1,6 +1,6 @@
-package RacingCar.domain;
+package racingcar.domain;
 
-import RacingCar.view.InputView;
+import racingcar.view.InputView;
 
 public class GameStep {
     private final static int START_STEP = 0;
@@ -12,6 +12,11 @@ public class GameStep {
     public GameStep() {
         stepNumber = InputView.getStepNumber();
         nowStep = START_STEP;
+    }
+
+    public GameStep(int nowStep, int stepNumber) {
+        this.nowStep = nowStep;
+        this.stepNumber = stepNumber;
     }
 
     public Boolean isRunning() {

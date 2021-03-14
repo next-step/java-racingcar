@@ -1,4 +1,4 @@
-package RacingCar.service;
+package racingcar.service;
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     private final int maxRandomNum = 10;
     private final int moveCondition = 4;
 
-    public int generateRandomNumber() {
+    private int generateRandomNumber() {
         return random.nextInt(maxRandomNum);
     }
 

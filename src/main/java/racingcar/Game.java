@@ -1,9 +1,9 @@
-package RacingCar;
+package racingcar;
 
-import RacingCar.domain.Cars;
-import RacingCar.service.GameService;
-import RacingCar.service.RacingGameService;
-import RacingCar.view.ResultView;
+import racingcar.domain.Cars;
+import racingcar.service.GameService;
+import racingcar.service.RacingGameService;
+import racingcar.view.ResultView;
 
 public class Game {
     public static void main(String[] args) {
