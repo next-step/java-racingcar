@@ -36,7 +36,7 @@ class RacingGameControllerTest {
     @DisplayName("입력받은 대수만큼 자동차 생성하는 테스트")
     public void createCars(int numberOfCars) throws Exception {
         //when
-        racingGameController.createCars(numberOfCars);
+        //racingGameController.createCars(numberOfCars);
         int sizeOfCars = carRepository.findAll().size();
 
         //then

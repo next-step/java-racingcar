@@ -26,26 +26,23 @@ class CarServiceTest {
     @DisplayName("자동차 추가 로직 검증 테스트")
     public void addCar() throws Exception {
         //given
-        String name = "seongbeen";
-        Car car = new Car(name);
+        String name = "pobi";
 
         //when
-        carService.addCar(car);
+        carService.addCar(name);
         int currentSize = carService.findCars().size();
-        Car foundCar = carService.findCar(name);
 
         //then
         assertEquals(1, currentSize, "추가한 만큼 크기가 증가해야 한다.");
-        assertEquals(car.hashCode(), foundCar.hashCode(), "추가한 자동차와 꺼낸 자동차가 같아야 한다.");
     }
 
     @Test
     @DisplayName("모든 자동차 찾는 로직 검증 테스트")
     public void findCars() throws Exception {
         //given
-        carRepository.save(new Car("firstCar"));
-        carRepository.save(new Car("secondCar"));
-        carRepository.save(new Car("thirdCar"));
+        carRepository.save(new Car("onr"));
+        carRepository.save(new Car("two"));
+        carRepository.save(new Car("three"));
 
         //when
         List<Car> cars = carService.findCars();
@@ -58,12 +55,12 @@ class CarServiceTest {
     @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
     public void findMovementRangeOfCars() throws Exception {
         //given
-        Car firstCar = new Car("firstCar");
-        firstCar.move(5);
-        Car secondCar = new Car("secondCar");
-        secondCar.move(1);
-        carRepository.save(firstCar);
-        carRepository.save(secondCar);
+        Car onr = new Car("onr");
+        onr.move(5);
+        Car two = new Car("two");
+        two.move(1);
+        carRepository.save(onr);
+        carRepository.save(two);
 
         //when
         List<Integer> movementRangeOfCars = carService.findMovementRangeOfCars();
@@ -78,7 +75,7 @@ class CarServiceTest {
     @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
     public void findByName() throws Exception {
         //given
-        String name = "seongbeen";
+        String name = "pobi";
         Car car = new Car(name);
         carRepository.save(car);
 
@@ -88,6 +85,5 @@ class CarServiceTest {
 
         //then
         assertEquals(name, foundName, "추가한 자동차와 찾은 자동차의 이름이 같아야 한다.");
-        assertEquals(car.hashCode(), foundCar.hashCode(), "추가한 자동차와 찾은 자동차가 같아야 한다.");
     }
 }
