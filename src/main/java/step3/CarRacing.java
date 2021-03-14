@@ -1,7 +1,10 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class CarRacing {
     private List<Car> carList;
@@ -25,5 +28,20 @@ public class CarRacing {
 
     public List<Car> getCarList() {
         return this.carList;
+    }
+
+    public List<String> getWinnerCarNames() {
+        return carList.stream()
+                .filter(car -> car.getCurrentPosition() == getMaxCurrentPosition())
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
+
+    }
+
+    private int getMaxCurrentPosition() {
+        return carList.stream()
+                .max(Comparator.comparingInt(Car::getCurrentPosition))
+                .orElseThrow(NoSuchElementException::new)
+                .getCurrentPosition();
     }
 }

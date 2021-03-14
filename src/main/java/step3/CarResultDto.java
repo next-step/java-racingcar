@@ -6,8 +6,9 @@ import java.util.List;
 public class CarResultDto {
 
     private List<CarDto> carDtoList;
+    private List<String> winnerCarNames;
 
-    public CarResultDto(List<Car> carList) {
+    public CarResultDto(List<Car> carList, List<String> winnerCarNames) {
         this.carDtoList = new ArrayList<>();
 
         for (Car car : carList) {
@@ -17,9 +18,16 @@ public class CarResultDto {
                     .build()
             );
         }
+
+        this.winnerCarNames = winnerCarNames;
     }
 
     public List<CarDto> getCarDtoList() {
         return this.carDtoList;
     }
+
+    public List<String> getWinnerCarNames() {
+        return this.winnerCarNames;
+    }
+
 }
