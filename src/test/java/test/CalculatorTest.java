@@ -54,21 +54,6 @@ public class CalculatorTest {
     }
 
     @Test
-    @DisplayName("빈칸있을때까지 숫자 변환 Test")
-    void changeNum() {
-        String str = "123 ";
-        String testStr = "";
-        for (int i = 0; i < str.length(); i++) {
-            if (' ' == (str.charAt(i))) {
-                break;
-            }
-            testStr += str.charAt(i);
-        }
-        assertThat(Integer.parseInt(testStr)).isEqualTo(123);
-    }
-
-
-    @Test
     @DisplayName("계산 Test")
     void executeTest() throws InputWrongSignDataException, InputEmptyDataException {
         int result = new Calculator().execute(expression);
