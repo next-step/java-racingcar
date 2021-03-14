@@ -1,7 +1,6 @@
 package carracing.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,21 +19,6 @@ class CarTest {
         assertThatIllegalArgumentException()
                 .isThrownBy( () -> new Car(param) )
                 .withMessageMatching("차량번호는 1 이상의 숫자여야 합니다.");
-    }
-
-    @RepeatedTest(100)
-    @DisplayName("차량이 움직이면 움직인 거리는 기존보다 줄어들지 않음")
-    public void car_move() {
-        // given
-        Car car = new Car(1);
-
-        // when
-        int beforeScore = car.inquiryRacingScore().getScore();
-        car.drive();
-        int afterScore = car.inquiryRacingScore().getScore();
-
-        // then
-        assertThat(beforeScore).isLessThanOrEqualTo(afterScore);
     }
 
     @ParameterizedTest
