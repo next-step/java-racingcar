@@ -4,32 +4,27 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Car {
-    private final static String LOCATION_EXPRESSION = "-";
+
     private final static int START_LOCATION = 0;
-    private Integer currentLocation;
+    private final static int MOVE_STRATEGY = 1;
+    private int currentLocation;
 
     public Car() {
         this.currentLocation = START_LOCATION;
     }
 
-    public void moveCar(Boolean isMove) {
-        this.currentLocation = isMove ? ++this.currentLocation : this.currentLocation;
+    public void move(Boolean isMove) {
+        if (isMove) {
+            this.currentLocation = this.currentLocation + MOVE_STRATEGY;
+        }
     }
 
-    public Integer getCurrentLocation() {
+    public int getCurrentLocation() {
         return this.currentLocation;
     }
 
-    public Car(Integer location) {
+    public Car(int location) {
         this.currentLocation = location;
-    }
-
-    public String getLocationView() {
-        String result = "";
-        for (Integer i = 0; i < this.currentLocation; i++) {
-            result = result.concat(LOCATION_EXPRESSION);
-        }
-        return result;
     }
 
     @Override

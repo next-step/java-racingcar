@@ -7,12 +7,12 @@ public class InputView {
     private final static String GET_STEP_NUMBER = "시도할 회수는 몇 회 인가요?";
     Scanner scanner = new Scanner(System.in);
 
-    public Integer getCarNumber() {
+    public int getCarNumber() {
         System.out.println(GET_CAR_NUMBER);
         return scanner.nextInt();
     }
 
-    public Integer getStepNumber() {
+    public int getStepNumber() {
         System.out.println(GET_STEP_NUMBER);
         return scanner.nextInt();
     }
