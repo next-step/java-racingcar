@@ -1,12 +1,13 @@
 package RacingCar.service;
 
-import RacingCar.domain.Car;
+public interface GameService<T> {
 
-import java.util.List;
 
-public interface GameService {
+    public void initGame();
 
-    public void runStep(List<Car> car);
+    public void runStep();
 
-    public List<Car> generateCar(int carNumber);
+    public Boolean isRunning();
+
+    public T getGameInstance();
 }

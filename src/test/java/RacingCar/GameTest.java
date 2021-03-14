@@ -3,7 +3,7 @@ package RacingCar;
 import RacingCar.domain.Car;
 import RacingCar.service.GameService;
 import RacingCar.service.MoveStrategy;
-import RacingCar.service.RandomGameService;
+import RacingCar.service.RacingGameService;
 import RacingCar.service.RandomMoveStrategy;
 import RacingCar.view.ResultView;
 import org.junit.jupiter.api.DisplayName;
@@ -15,10 +15,10 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarGameTest {
+public class GameTest {
     MoveStrategy moveStrategy = new RandomMoveStrategy();
     Random random = new Random();
-    GameService gameService = new RandomGameService();
+    GameService gameService = new RacingGameService();
     ResultView resultView = new ResultView();
 
 
@@ -96,21 +96,21 @@ public class CarGameTest {
 //        assertThat(nonMoveResult).isFalse();
 //    }
 
-    @Test
-    @DisplayName("현재 위치 표현 테스트")
-    void getLocationView() {
-        //given
-        int expectLocation = 3;
-        Car testCar = new Car(expectLocation);
-        String expectLocationView = "---";
-
-        //when
-        String result = resultView.getLocationView(testCar);
-
-
-        //then
-        assertThat(result).isEqualTo(expectLocationView);
-    }
+//    @Test
+//    @DisplayName("현재 위치 표현 테스트")
+//    void getLocationView() {
+//        //given
+//        int expectLocation = 3;
+//        Car testCar = new Car(expectLocation);
+//        String expectLocationView = "---";
+//
+//        //when
+//        String result = resultView.getLocationView(testCar);
+//
+//
+//        //then
+//        assertThat(result).isEqualTo(expectLocationView);
+//    }
 
 
     @Test
@@ -139,7 +139,7 @@ public class CarGameTest {
 
             //when
             for (int i = 0; i < step; i++) {
-                gameService.runStep(expectCars);
+                gameService.runStep();
             }
 
             //then
