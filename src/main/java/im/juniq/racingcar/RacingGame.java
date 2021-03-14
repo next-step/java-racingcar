@@ -2,6 +2,7 @@ package im.juniq.racingcar;
 
 public class RacingGame {
 	private Cars cars = new Cars();
+	private ResultView resultView = new ResultView();
 
 	public static void main(String[] args) {
 		RacingGame racingGame = new RacingGame();
@@ -13,6 +14,7 @@ public class RacingGame {
 		inputView.scan();
 		createCars(inputView.getCarNames());
 		racing(inputView.getNumberOfTries());
+		printWinner();
 	}
 
 	private void createCars(String[] carNames) {
@@ -22,7 +24,7 @@ public class RacingGame {
 	private void racing(int numberOfTries) {
 		for (int i = 0; i < numberOfTries; i++) {
 			moveCars();
-			printCarsMoveCount();
+			printScore();
 		}
 	}
 
@@ -30,7 +32,11 @@ public class RacingGame {
 		cars.move();
 	}
 
-	private void printCarsMoveCount() {
-		cars.printCarMoveCount();
+	private void printScore() {
+		resultView.printCarsStatus(cars.get());
+	}
+
+	private void printWinner() {
+		resultView.printWinner(cars.findByTopPosition());
 	}
 }

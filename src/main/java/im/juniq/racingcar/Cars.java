@@ -35,11 +35,6 @@ public class Cars {
 			.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public void printCarMoveCount() {
-		ResultView resultView = new ResultView(cars);
-		resultView.printCarMoveCount();
-	}
-
 	public List<Car> get() {
 		return cars;
 	}
