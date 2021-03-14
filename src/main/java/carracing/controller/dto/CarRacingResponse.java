@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class CarRacingResponse {
 
-    private List<RoundResultInfo> roundResultInfoList;
+    private final List<RoundResultInfo> roundResultInfoList;
 
     public CarRacingResponse(List<RoundResultInfo> roundResultInfoList) {
         this.roundResultInfoList = roundResultInfoList;

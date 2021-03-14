@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class RoundResultInfo {
 
-    private int roundNumber;
-    private List<RacingScoreInfo> racingScoreInfoList;
+    private final int roundNumber;
+    private final List<RacingScoreInfo> racingScoreInfoList;
 
     public RoundResultInfo(int roundNumber, List<RacingScoreInfo> racingScoreInfoList) {
         this.roundNumber = roundNumber;

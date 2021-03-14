@@ -10,8 +10,8 @@ package carracing.controller.dto;
  */
 public class CarRacingRequest {
 
-    private int racingCarCount;
-    private int roundCount;
+    private final int racingCarCount;
+    private final int roundCount;
 
     public CarRacingRequest(int racingCarCount, int roundCount) {
         this.racingCarCount = racingCarCount;
