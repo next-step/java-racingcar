@@ -6,14 +6,14 @@ import java.util.List;
 public class CarRacing {
     private List<Car> carList;
 
-    public CarRacing(int carsCount) {
-        makeRacingCars(carsCount);
+    public CarRacing(String[] carsName) {
+        makeRacingCars(carsName);
     }
 
-    private void makeRacingCars(int carsCount) {
+    private void makeRacingCars(String[] carsName) {
         carList = new ArrayList<>();
-        for (int i = 0; i < carsCount; i++) {
-            carList.add(new Car());
+        for (String carName : carsName) {
+            carList.add(new Car(carName));
         }
     }
 

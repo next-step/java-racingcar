@@ -5,17 +5,21 @@ import java.util.List;
 
 public class CarResultDto {
 
-    private List<Car> carResultList;
+    private List<CarDto> carDtoList;
 
     public CarResultDto(List<Car> carList) {
-        this.carResultList = new ArrayList<>();
+        this.carDtoList = new ArrayList<>();
 
         for (Car car : carList) {
-            this.carResultList.add(new Car(car.getCurrentPosition()));
+            this.carDtoList.add(new CarDto.Builder()
+                    .carName(car.getCarName())
+                    .position(car.getCurrentPosition())
+                    .build()
+            );
         }
     }
 
-    public List<Car> getCarResultList() {
-        return this.carResultList;
+    public List<CarDto> getCarDtoList() {
+        return this.carDtoList;
     }
 }
