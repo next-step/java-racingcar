@@ -4,7 +4,7 @@ package step5.view;
 
 import step5.domain.Car;
 import step5.domain.Cars;
-import step5.domain.Winners;
+import step5.domain.WinnersResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,7 +38,7 @@ public class ResultView {
                 .collect(Collectors.joining());
     }
 
-    public static void printWinner(Winners winners) {
+    public static void printWinner(WinnersResponse winners) {
         List<Car> cars = winners.getWinners();
         String winnersNames = cars.stream()
                 .map(car -> car.getName().getName())
