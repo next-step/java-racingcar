@@ -33,5 +33,9 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-
+    public List<Car> copyCars() {
+        List<Car> copyCars = cars.stream()
+                .map(Car::clone).collect(Collectors.toList());
+        return copyCars;
+    }
 }

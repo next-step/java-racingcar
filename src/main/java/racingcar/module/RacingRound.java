@@ -1,7 +1,6 @@
 package racingcar.module;
 
 import racingcar.model.Car;
-import racingcar.model.Cars;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,4 +19,5 @@ public class RacingRound {
     public Map<Integer, List<Car>> getRoundResult() {
         return Collections.unmodifiableMap(roundResult);
     }
+
 }

@@ -3,16 +3,14 @@ package racingcar.view;
 import racingcar.Constant;
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Winner;
 import racingcar.module.RacingRound;
-
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void printResultView(RacingRound resultRound) {
+    public static void printResultView(RacingRound resultRound, Cars cars) {
         int tryNum = resultRound.getRoundResult().size();
+        Winner winner = new Winner(cars.getCars());
 
         for (int num = 0; num < tryNum; num++) {
             resultRound.getRoundResult().get(num).stream()
@@ -20,7 +18,7 @@ public class ResultView {
             System.out.println();
         }
 
-        printWinner(resultRound.getRoundResult().get(tryNum - 1));
+        System.out.println(winner.getWinner() + "가 최종우승했습니다.");
     }
 
     private static String convertIntToString(Car car) {
@@ -31,16 +29,5 @@ public class ResultView {
             str.append("-");
         }
         return str.toString();
-    }
-
-    private static void printWinner(List<Car> cars) {
-
-        int max = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
-
-        String winner = cars.stream().filter(car -> car.getPosition() == max)
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-
-        System.out.println(winner + "가 최종우승했습니다.");
     }
 }
