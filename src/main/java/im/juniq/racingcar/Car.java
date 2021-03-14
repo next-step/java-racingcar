@@ -9,6 +9,7 @@ public class Car {
 	public Car(String name) {
 		checkCarName(name);
 		this.name = name;
+		this.movingStrategy = new RandomNumberMovingStrategy();
 	}
 
 	public Car(String name, MovingStrategy movingStrategy) {

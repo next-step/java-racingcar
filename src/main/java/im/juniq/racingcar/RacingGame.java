@@ -1,10 +1,7 @@
 package im.juniq.racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
-	private List<Car> cars = new ArrayList<>();
+	private Cars cars = new Cars();
 
 	public static void main(String[] args) {
 		RacingGame racingGame = new RacingGame();
@@ -18,31 +15,22 @@ public class RacingGame {
 		racing(inputView.getNumberOfTries());
 	}
 
-	public void createCars(String[] carNames) {
-		for (String carName : carNames) {
-			cars.add(new Car(carName));
-		}
+	private void createCars(String[] carNames) {
+		cars.createCars(carNames);
 	}
 
 	private void racing(int numberOfTries) {
 		for (int i = 0; i < numberOfTries; i++) {
-			moveCars(new RandomNumberMovingStrategy());
+			moveCars();
 			printCarsMoveCount();
 		}
 	}
 
-	public void moveCars(MovingStrategy movingStrategy) {
-		for (Car car : cars) {
-			car.move(movingStrategy);
-		}
+	private void moveCars() {
+		cars.move();
 	}
 
 	private void printCarsMoveCount() {
-		ResultView resultView = new ResultView(cars);
-		resultView.printCarMoveCount();
-	}
-
-	public List<Car> getCars() {
-		return cars;
+		cars.printCarMoveCount();
 	}
 }

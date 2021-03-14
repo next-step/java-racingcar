@@ -13,6 +13,12 @@ public class Cars {
 		cars.addAll(Arrays.asList(car));
 	}
 
+	public void createCars(String[] carNames) {
+		for (String carName : carNames) {
+			cars.add(new Car(carName));
+		}
+	}
+
 	public void move() {
 		for (Car car : cars) {
 			car.move();
@@ -27,5 +33,18 @@ public class Cars {
 
 		return cars.stream().filter(car -> topPosition == car.getPosition())
 			.collect(Collectors.toCollection(ArrayList::new));
+	}
+
+	public void printCarMoveCount() {
+		ResultView resultView = new ResultView(cars);
+		resultView.printCarMoveCount();
+	}
+
+	public List<Car> get() {
+		return cars;
+	}
+
+	public Car get(int index) {
+		return cars.get(index);
 	}
 }
