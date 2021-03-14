@@ -6,6 +6,21 @@ import java.util.Scanner;
 
 public class InputView {
 
+    static int getNumberInput(){
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
+        checkInputNull(input);
+        checkInputNumeric(input);
+        return Integer.parseInt(input);
+    }
+
+    static void checkInputNumeric(String input){
+        String numberRegExp = "^[0-9]+$";
+        if(!input.matches(numberRegExp)){
+            throw new IllegalArgumentException("Input must be numeric");
+        }
+    }
+
     static String getInput(){
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
