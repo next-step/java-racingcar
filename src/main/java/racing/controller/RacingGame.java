@@ -1,33 +1,37 @@
 package racing.controller;
 
-import racing.views.InputView;
-import racing.views.ResultView;
 import racing.domain.CarFactory;
 import racing.domain.Cars;
 import racing.domain.ConditionStrategy;
-import racing.domain.InputDto;
+import racing.views.InputView;
+import racing.views.ResultView;
+
+import java.util.List;
 
 public class RacingGame {
     private final InputView inputView;
+    private final ResultView resultView;
     private final ConditionStrategy conditionStrategy;
 
     public RacingGame() {
         inputView = new InputView();
+        resultView = new ResultView();
         conditionStrategy = new ConditionStrategy();
     }
 
     public void Race(Cars cars, int numberOfAttempts){
-        ResultView.showResult();
+        resultView.showStartRace(cars.getCars());
         for (int i = 0; i < numberOfAttempts; i++) {
             cars.advanceCars(conditionStrategy);
-            ResultView.showRaceRound(cars.getCars());
+            resultView.showRaceRound(cars.getCars());
         }
     }
 
     public void start() {
-        InputDto inputDto = inputView.generateInputDto();
-        Cars cars = CarFactory.generateCars(inputDto.getNames());
-        Race(cars, inputDto.getNumberOfAttempts());
-        ResultView.showWinners(cars.getWinnerNames());
+        List<String> names = inputView.getNames();
+        int numberOfAttempts = inputView.getNumberOfAttempts();
+        Cars cars = CarFactory.generateCars(names);
+        Race(cars, numberOfAttempts);
+        resultView.showWinners(cars.getWinnerNames());
     }
 }

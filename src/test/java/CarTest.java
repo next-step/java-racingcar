@@ -20,15 +20,6 @@ public class CarTest {
                 .isEqualTo(result);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"'test1 : -',true", "'test1 : --',false"}, delimiter = ',')
-    void getAdvanceProgress(String input, boolean expected){
-        assertThat(new Car("test1")
-                .getAdvanceProgress()
-                .equals(input))
-                .isEqualTo(expected);
-    }
-
     @Test
     void validationName(){
         assertThatExceptionOfType(IllegalArgumentException.class)

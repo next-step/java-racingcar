@@ -1,7 +1,5 @@
 package racing.domain;
 
-import java.util.stream.Stream;
-
 public class Car {
     public static final int NAME_LENGTH = 5;
 
@@ -31,12 +29,6 @@ public class Car {
 
     public String getName() {
         return name;
-    }
-
-    public String getAdvanceProgress() {
-        return Stream.generate(()-> "-")
-                .limit(numberOfAdvance)
-                .reduce("-", (a, b) -> a + b);
     }
 
 }

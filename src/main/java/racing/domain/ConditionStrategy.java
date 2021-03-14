@@ -6,10 +6,11 @@ public class ConditionStrategy implements GameCondition{
 
     private static final int MOVE_NUMBER = 4;
     private static final int RANDOM_RANGE = 10;
-    private int randomNumber;
 
-    public int getRandomNumber() {
-        return this.randomNumber;
+    private final Random random;
+
+    public ConditionStrategy() {
+        random = new Random();
     }
 
     /**
@@ -18,7 +19,6 @@ public class ConditionStrategy implements GameCondition{
      */
     @Override
     public boolean moveCondition() {
-        this.randomNumber = new Random().nextInt(RANDOM_RANGE);
-        return (randomNumber >= MOVE_NUMBER);
+        return random.nextInt(RANDOM_RANGE) >= MOVE_NUMBER;
     }
 }
