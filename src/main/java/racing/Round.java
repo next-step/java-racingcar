@@ -20,4 +20,12 @@ public class Round {
     public List<Car> getCars() {
         return cars;
     }
+
+    public List<Car> getWinners() {
+        return cars.stream().filter(e -> e.getDistance() == getMaxDistance()).collect(Collectors.toList());
+    }
+
+    private int getMaxDistance() {
+        return cars.stream().map(Car::getDistance).max(Integer::compare).orElse(-1);
+    }
 }
