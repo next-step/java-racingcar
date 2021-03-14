@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Car {
 
-    public static final int MAX_NAME = 4;
     public static final int POSSIBLE_MOVE = 3;
 
     private final Position position;
