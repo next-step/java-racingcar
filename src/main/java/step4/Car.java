@@ -1,6 +1,6 @@
 package step4;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
     private int distance;
     private String name;
@@ -21,4 +21,8 @@ public class Car {
         return this.name;
     }
 
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(o.distance, this.distance);
+    }
 }

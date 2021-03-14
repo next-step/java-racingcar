@@ -7,6 +7,7 @@ public class CarRacingConstant {
     static final String DASH = "-";
     static final String WIN = "가 최종 우승했습니다.";
     static final String COMMA = ",";
+    static final String COMMA_BLANK = ", ";
     static final String COLON = " : ";
     static final int LIMIT_OF_NAME_LENGTH = 5;
 }

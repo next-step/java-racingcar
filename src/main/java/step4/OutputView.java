@@ -12,6 +12,7 @@ public class OutputView {
     }
 
     static void printExecutionResults(){
+        System.out.println();
         System.out.println(CarRacingConstant.EXECUTION_RESULTS);
     }
 
@@ -33,6 +34,12 @@ public class OutputView {
         for(int i = 0; i < distance; i++){
             printDash();
         }
+    }
+
+    static void printWinners(String[] winners){
+        String winnerList = String.join(CarRacingConstant.COMMA_BLANK, winners);
+        System.out.print(winnerList);
+        System.out.print(CarRacingConstant.WIN);
     }
 
 }

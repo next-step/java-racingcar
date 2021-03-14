@@ -29,4 +29,20 @@ public class Cars {
         return cars.size();
     }
 
+    String[] getWinners(){
+        int farthestDistance = getFarthestDistance();
+        return cars.stream()
+                .filter(car -> car.getDistance() == farthestDistance)
+                .map(car -> car.getName())
+                .toArray(String[]::new);
+    }
+
+    int getFarthestDistance(){
+        return cars.stream()
+                .sorted()
+                .findFirst()
+                .get()
+                .getDistance();
+    }
+
 }
