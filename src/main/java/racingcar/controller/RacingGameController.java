@@ -1,11 +1,13 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.service.CarService;
 import racingcar.service.GameRoundService;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.Arrays;
+import java.util.Queue;
 
 public class RacingGameController {
 
@@ -25,6 +27,7 @@ public class RacingGameController {
     public void run() {
         setGameEnvironment();
         printGameResult();
+        printWinners();
     }
 
     public void setGameEnvironment() {
@@ -59,6 +62,12 @@ public class RacingGameController {
                     carService.findMovementRangeOfCars()
             );
         }
+    }
+
+    private void printWinners() {
+        int maxMovementRange = carService.findMaxMovementRange();
+        Queue<String> winners = carService.findWinners(maxMovementRange);
+        ResultView.INSTANCE.printWinners(winners);
     }
 
     public void resetMovementRangeOfCar(String carName) {
