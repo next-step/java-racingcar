@@ -10,7 +10,7 @@ public class ResultView {
     System.out.println("실행 결과");
   }
 
-  public static void printCarriageReturn() {
+  public static void printNewLine() {
     System.out.println();
   }
 
@@ -18,7 +18,7 @@ public class ResultView {
     cars.stream().map(Car::getPositionRepresentation)
                  .forEachOrdered(System.out::println);
 
-    printCarriageReturn();
+    printNewLine();
   }
 
   public static String getWinnerNames(List<Car> cars) {
