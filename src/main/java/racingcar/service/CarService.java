@@ -29,6 +29,14 @@ public class CarService {
         return carRepository.findAllNames();
     }
 
+    public Queue<String> findWinners(int maxMovementRange) {
+        return carRepository.findWinnersByMaxMovementRange(maxMovementRange);
+    }
+
+    public int findMaxMovementRange() {
+        return carRepository.findMaxMovementRange();
+    }
+
     public Car findCar(String name) {
         return carRepository.findByName(name);
     }
