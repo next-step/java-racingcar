@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 public class Car implements Comparable<Car> {
 
@@ -14,6 +14,10 @@ public class Car implements Comparable<Car> {
         if (moveStrategy.isMove()) {
             position++;
         }
+    }
+
+    public boolean isMaxPosition(Car maxPositionCar) {
+        return this.position == maxPositionCar.getPosition();
     }
 
     public int getPosition() {

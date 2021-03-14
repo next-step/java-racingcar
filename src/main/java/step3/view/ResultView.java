@@ -1,7 +1,10 @@
-package step3;
+package step3.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import step3.util.ViewConstant;
+import step3.domain.Car;
+import step3.domain.Cars;
 
 public class ResultView {
 
