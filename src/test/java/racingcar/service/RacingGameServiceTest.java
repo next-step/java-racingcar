@@ -7,7 +7,6 @@ import racingcar.domain.GameStep;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameServiceTest {
-    GameService<Cars> racingGameService = new RacingGameService();
 
     public final static int nowStep = 1;
     public final static int stepNumber = 3;
@@ -21,7 +20,7 @@ public class RacingGameServiceTest {
 
         @Override
         public void initGame() {
-            
+
         }
 
         @Override
@@ -42,6 +41,12 @@ public class RacingGameServiceTest {
 
     @Test
     void initGame() {
+        //given
+
+        //when
+
+
+        //then
 
     }
 
