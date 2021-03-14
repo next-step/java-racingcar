@@ -2,11 +2,10 @@ package racing;
 
 public class RacingMain {
     public static void main(String[] args) {
-        final InputView inputView = new InputView();
-        final int carsCount = inputView.show("자동차 대수는 몇 대인가요?");
-        final int attemptsCount = inputView.show("시도할 횟수는 몇 회인가요?");
+        final String namesInput = new StringInputView().show("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        final int attemptsCount = new IntegerInputView().show("시도할 횟수는 몇 회인가요?");
 
-        final Racing racing = new Racing(carsCount, attemptsCount);
+        final Racing racing = new Racing(StringUtil.splitCommas(namesInput), attemptsCount);
         RacingUtil.start(racing);
         System.out.println("\n실행 결과");
         RacingUtil.showResult(racing);

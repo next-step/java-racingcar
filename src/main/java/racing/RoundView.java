@@ -1,11 +1,9 @@
 package racing;
 
-import java.util.List;
-
-public class ResultView extends View<Void, List<Car>> {
+public class RoundView extends View<Void, Round> {
     @Override
-    public Void show(List<Car> cars) {
-        for (Car car : cars) {
+    public Void show(Round round) {
+        for (Car car : round.getCars()) {
             showCar(car);
         }
 
@@ -13,6 +11,7 @@ public class ResultView extends View<Void, List<Car>> {
     }
 
     private void showCar(Car car) {
+        System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getDistance(); i++) {
             System.out.print("-");
         }

@@ -8,14 +8,24 @@ public class Racing {
     final private List<Car> cars;
     final private int attemptsCount;
 
-    public Racing(int carsCount, int attemptsCount) {
+    private Racing(int attemptsCount) {
         this.rounds = new ArrayList<>();
         this.cars = new ArrayList<>();
-        for (int i = 0; i < carsCount; i++) {
-            this.cars.add(new Car());
-
-        }
         this.attemptsCount = attemptsCount;
+    }
+
+    public Racing(int carsCount, int attemptsCount) {
+        this(attemptsCount);
+        for (int i = 0; i < carsCount; i++) {
+            cars.add(new Car());
+        }
+    }
+
+    public Racing(String[] carNames, int attemptsCount) {
+        this(attemptsCount);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
     }
 
     public void runRace() {

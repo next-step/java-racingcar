@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.List;
+
 public class RacingUtil {
     public static void start(Racing racing) {
         while (racing.hasNext()) {
@@ -8,11 +10,15 @@ public class RacingUtil {
     }
 
     public static void showResult(Racing racing) {
-        final ResultView resultView = new ResultView();
+        final List<Round> rounds = racing.getRounds();
 
-        for (Round round : racing.getRounds()) {
-            resultView.show(round.getCars());
+        final RoundView roundView = new RoundView();
+
+        for (Round round : rounds) {
+            roundView.show(round);
             System.out.println();
         }
+
+        new WinnersView().show(rounds.get(rounds.size() - 1));
     }
 }
