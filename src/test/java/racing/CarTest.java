@@ -28,6 +28,26 @@ public class CarTest {
         assertThat(distance).isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("자동차에 이름을 부여할 수 있다.")
+    void name() {
+        final String name = "pobi";
+
+        final Car car = new Car(name);
+
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 5글자를 초과할 수 없다.")
+    void ShouldThrowIllegalArgumentExceptionWhenNameIsLongerThanFive() {
+        final String name = "longerThanFive";
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Car(name);
+        });
+    }
+
     @ParameterizedTest
     @CsvSource(value = {"0:0", "3:0", "4:1", "9:1"}, delimiter = ':')
     @DisplayName("주어진 값이 0 ~ 3일 때는 정지, 4 ~ 9일 때는 전진해야 한다.")
