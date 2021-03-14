@@ -4,12 +4,10 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printGameStart() {
+    public void printGrandPrixRecords(List<Round> rounds) {
         System.out.println("");
         System.out.println("경기 결과");
-    }
 
-    public void printGrandPrixRecords(List<Round> rounds) {
         rounds.stream()
                 .forEach(r -> printRound(r.getRoundInfo()));
 
