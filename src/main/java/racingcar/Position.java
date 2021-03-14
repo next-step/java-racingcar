@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Car {
+public class Position {
 
     private String location = "";
 

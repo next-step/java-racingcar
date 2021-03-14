@@ -22,4 +22,21 @@ public class CarTest {
         assertThat("-").isEqualTo(car.getLocation());
     }
 
+    @DisplayName("전진 테스트")
+    @Test
+    void isGo_test() {
+        RacingCar racingCar = new RacingCar(new Car());
+        String result = racingCar.isGo(5);
+        assertThat(result).isEqualTo("-");
+
+    }
+
+    @DisplayName("멈춤 테스트")
+    @Test
+    void stop_test() {
+        RacingCar racingCar = new RacingCar(new Car());
+        String result = racingCar.isGo(3);
+        assertThat(result).isEqualTo("");
+    }
+
 }
