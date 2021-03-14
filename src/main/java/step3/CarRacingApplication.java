@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.List;
+
 public class CarRacingApplication {
 
     public static void main(String[] args) {
@@ -8,19 +10,16 @@ public class CarRacingApplication {
             inputView.inputCarsName();
             inputView.inputRoundsCount();
 
-            CarRacing carRacing = new CarRacing(inputView.getCarsName());
-            Round round = new Round(inputView.getRoundsCount());
+            CarRacingController carRacingController = new CarRacingController(new Round(inputView.getRoundsCount()),
+                    new CarRacing(inputView.getCarsName()));
 
-            ResultView resultView = new ResultView();
-            while (round.isRoundContinue()) {
-                carRacing.moveForward();
-                resultView.addCarRacingResult(new CarResultDto(carRacing.getCarList()));
-                round.reduceRound();
-            }
-
+            List<CarResultDto> carResultDtoList = carRacingController.startCarRacing();
+            ResultView resultView = new ResultView(carResultDtoList);
             resultView.printOutRacingResult();
+            resultView.printOutWinnerCarName();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
+
 }
