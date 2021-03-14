@@ -2,23 +2,23 @@ package racingcar.model;
 
 public class Car {
 
-  private int location;
-  private String name;
+  private Name name;
+  private Position position;
 
   public Car(String name) {
-    this.name = name;
-    this.location = 0;
+    this(name.trim(), 0);
   }
 
-  public void move() {
-    location++;
+  public Car(String name, int position) {
+    this.name = new Name(name.trim());
+    this.position = new Position(position);
   }
 
-  public int getLocation() {
-    return location;
+  public Position getPosition() {
+    return position;
   }
 
-  public String getName() {
+  public Name getName() {
     return name;
   }
 }
