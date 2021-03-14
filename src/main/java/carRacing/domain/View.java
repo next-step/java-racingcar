@@ -19,7 +19,7 @@ public class View {
 
     public void printScoreboard(List<Car> cars) {
         String scoreboard = cars.stream()
-                .map(car -> car.toString() + "\n")
+                .map(car -> generateTrace(car) + "\n")
                 .collect(Collectors.joining());
         System.out.println(scoreboard);
     }
@@ -35,5 +35,13 @@ public class View {
             mergedList.append(",").append(winners.get(idx));
         }
         System.out.println(mergedList + "가 최종 우승했습니다.");
+    }
+
+    public String generateTrace(Car car){
+        StringBuilder trace = new StringBuilder(car.getName() + " : ");
+        for (int count = 0; count < car.getScore(); count++) {
+            trace.append("-");
+        }
+        return trace.toString();
     }
 }

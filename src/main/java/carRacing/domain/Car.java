@@ -1,17 +1,19 @@
 package carRacing.domain;
 
 public class Car {
+
+    public static int THRESHOLD = 4;
+
     private String name;
     private int score;
-
-    public Car(String name) {
-        this.name = name;
-        this.score = 0;
-    }
 
     public Car(String name, int score) {
         this.name = name;
         this.score = score;
+    }
+
+    public Car(String name) {
+        this(name, 0);
     }
 
     public Car(Car car) {
@@ -20,7 +22,7 @@ public class Car {
 
     public Car raceOrStay(Car car, int notRandomValue) {
         Car carAfterAction = new Car(car);
-        if (notRandomValue >= 4) {
+        if (notRandomValue >= Car.THRESHOLD) {
             carAfterAction.score += 1;
         }
         return carAfterAction;
@@ -34,12 +36,4 @@ public class Car {
         return score;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder trace = new StringBuilder(this.name + " : ");
-        for (int count = 0; count < this.score; count++) {
-            trace.append("-");
-        }
-        return trace.toString();
-    }
 }

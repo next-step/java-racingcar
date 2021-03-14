@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -47,20 +46,12 @@ class JudgeTest {
             "player1:1:player2:2:player2",
             "player1:1:player2:1:player1,player2"}, delimiter = ':')
     @DisplayName("심판은 승자를 가릴 수 있다")
-    void findWinnersFindsWinner(String player1Name, int player1Score, String player2Name, int player2Score, String expectedWinners){
+    void findWinnersFindsWinner(String player1Name, int player1Score, String player2Name, int player2Score, String expectedWinners) {
         Car car1 = new Car(player1Name, player1Score);
         Car car2 = new Car(player2Name, player2Score);
 
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-
-        List<String> winners = judge.findWinners(cars);
-        StringBuilder winnerNames = new StringBuilder(winners.get(0));
-        for(int winnerIndex = 1;winnerIndex<winners.size();winnerIndex++){
-            winnerNames.append(",").append(winners.get(winnerIndex));
-        }
-        assertThat(winnerNames.toString()).hasToString(expectedWinners);
+        assertThat(judge.findWinners(Arrays.asList(car1, car2)))
+                .containsExactly(expectedWinners.split(","));
     }
-    
+
 }
