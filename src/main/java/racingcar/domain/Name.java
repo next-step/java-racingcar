@@ -3,7 +3,7 @@ package racingcar.domain;
 public class Name {
     private static final int NAME_LENGTH_BOUND = 5;
 
-    private String name;
+    private final String name;
 
     public Name(String name) {
         this.name = name;

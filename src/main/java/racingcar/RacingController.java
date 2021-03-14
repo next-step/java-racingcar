@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.domain.RacingMachine;
-import racingcar.util.InputView;
+import racingcar.controller.RacingMachine;
+import racingcar.view.InputView;
 
 public class RacingController {
 
