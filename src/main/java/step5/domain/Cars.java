@@ -1,4 +1,4 @@
-package step5;
+package step5.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public Cars() {
+
+    }
+
     public List<Car> findWinner() {
 
         List<Car> winnerCarList = new ArrayList<>();
@@ -18,7 +22,6 @@ public class Cars {
                 winnerCarList.add(car);
             }
         }
-
         return winnerCarList;
     }
 
@@ -30,6 +33,10 @@ public class Cars {
             }
         }
         return maxPositionValue;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
 
