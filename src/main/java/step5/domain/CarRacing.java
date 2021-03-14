@@ -3,21 +3,15 @@ package step5.domain;
 
 import step5.utils.RandomGenerator;
 
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Arrays;
 
-import static java.util.stream.Collectors.toList;
 
 public class CarRacing {
 
     private Cars cars;
 
     public CarRacing(String[] drivers) {
-        List<Car> cars = IntStream.range(0, drivers.length)
-                .mapToObj(i -> new Car(drivers[i], 1))
-                .collect(toList());
-
-        this.cars = new Cars(cars);
+        this.cars = new Cars(Arrays.asList(drivers));
     }
 
     public Cars getCurrentStatus() {
@@ -28,7 +22,7 @@ public class CarRacing {
         cars.move(randomGenerator);
     }
 
-    public Winners getWinner() {
-        return new Winners(cars.getWinners());
+    public WinnersResponse getWinner() {
+        return new WinnersResponse(cars.getWinners());
     }
 }

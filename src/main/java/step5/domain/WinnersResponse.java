@@ -2,10 +2,10 @@ package step5.domain;
 
 import java.util.List;
 
-public class Winners {
+public class WinnersResponse {
     private final List<Car> winners;
 
-    public Winners(List<Car> winners) {
+    public WinnersResponse(List<Car> winners) {
         this.winners = winners;
     }
 

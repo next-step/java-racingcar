@@ -10,10 +10,15 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
+
+    public static final int START_POSITION = 1;
+
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<String> carNames) {
+        this.cars = carNames.stream()
+                .map(carName -> new Car(carName, START_POSITION))
+                .collect(toList());
     }
 
     public List<Car> getCars() {
@@ -31,6 +36,6 @@ public class Cars {
     }
 
     public void move(RandomGenerator random) {
-        cars.forEach(c -> c.move(random.getRandomNum()));
+        cars.forEach(car -> car.move(random.getRandomNum()));
     }
 }
