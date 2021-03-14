@@ -40,6 +40,10 @@ public class Car {
         return name;
     }
 
+    public boolean isMaxMovementRange(int maxMovementRange) {
+        return maxMovementRange == movementRange;
+    }
+
     private void validateNull(String input) {
         if (input == null) {
             throw new IllegalArgumentException(CHECK_NAME_NULL);
