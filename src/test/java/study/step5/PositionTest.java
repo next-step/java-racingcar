@@ -13,6 +13,6 @@ public class PositionTest {
     @DisplayName("Position 클래스 생성 테스트")
     void create() {
         Position position = new Position(3);
-        assertThat(position.getPosition()).isEqualTo(3);
+        assertThat(position).isEqualTo(new Position(3));
     }
 }
