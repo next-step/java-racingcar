@@ -9,31 +9,31 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.controller.Movement;
-import racingcar.model.Car;
+import racingcar.model.Position;
 
 
 public class MovementTest {
 
-  private Car car;
+  private Position position;
   private Movement movement;
 
   @BeforeEach
   void setUp() {
-    car = new Car("nana");
+    position = new Position(0);
     movement = new Movement();
   }
 
   @Test
   @DisplayName("[Movement] 자동차를 움직이지 않았을 때의 트랙 테스트")
   void trackingMovementTest() {
-    assertEquals("", Movement.trackingMovement(car, "-"));
+    assertEquals("", Movement.trackingMovement(position, "-"));
   }
 
   @Test
   @DisplayName("[Movement] 자동차를 움직이고 난 후의 트랙 테스트")
   void trackingAfterMovementTest() {
-    car.move();
-    assertEquals("-", Movement.trackingMovement(car, "-"));
+    position.move();
+    assertEquals("-", Movement.trackingMovement(position, "-"));
   }
 
   @ParameterizedTest(name = "[Movement] 자동차 전진 기준 테스트-{index}")
