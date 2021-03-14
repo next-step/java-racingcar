@@ -40,7 +40,7 @@ public class RoundTest {
 
     @Test
     @DisplayName("우승자(distance가 가장 큰 Car 객체)를 구한다.")
-    void getWinners() {
+    void getLeaders() {
         final Car pobi = new Car("pobi");
         final Car crong = new Car("crong");
         final Car honux = new Car("honux");
@@ -52,7 +52,7 @@ public class RoundTest {
         final Round round = Round.createFrom(Arrays.asList(pobi, crong, honux));
 
         final List<String> expectedNames = Stream.of(pobi).map(Car::getName).collect(Collectors.toList());
-        final List<String> winnerNames = round.getWinners().stream().map(e -> e.getName()).collect(Collectors.toList());
+        final List<String> winnerNames = round.getLeaders().stream().map(Car::getName).collect(Collectors.toList());
 
         // assert
         assertThat(winnerNames).containsAll(expectedNames);
@@ -60,7 +60,7 @@ public class RoundTest {
 
     @Test
     @DisplayName("우승자(distance가 가장 큰 Car 객체)를 구한다. 한 명 이상일 수 있다.")
-    void getWinners2() {
+    void getLeaders2() {
         final Car pobi = new Car("pobi");
         final Car crong = new Car("crong");
         final Car honux = new Car("honux");
@@ -72,7 +72,7 @@ public class RoundTest {
         final Round round = Round.createFrom(Arrays.asList(pobi, crong, honux));
 
         final List<String> expectedNames = Stream.of(pobi, crong).map(Car::getName).collect(Collectors.toList());
-        final List<String> winnerNames = round.getWinners().stream().map(e -> e.getName()).collect(Collectors.toList());
+        final List<String> winnerNames = round.getLeaders().stream().map(Car::getName).collect(Collectors.toList());
 
         // assert
         assertThat(winnerNames).containsAll(expectedNames);

@@ -21,7 +21,7 @@ public class Round {
         return cars;
     }
 
-    public List<Car> getWinners() {
+    public List<Car> getLeaders() {
         return cars.stream().filter(e -> e.getDistance() == getMaxDistance()).collect(Collectors.toList());
     }
 
