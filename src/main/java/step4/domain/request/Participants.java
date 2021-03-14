@@ -27,7 +27,7 @@ public class Participants {
     }
 
     public String[] getParticipants() {
-        return null;
+        return participants;
     }
 
 }
