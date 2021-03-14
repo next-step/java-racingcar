@@ -7,25 +7,21 @@ import java.util.List;
 public class Cars {
 
   List<Car> cars = new ArrayList<>();
+  MoveStrategy strategy;
 
-  public Cars() { }
+  public Cars() { this.strategy = new NumberConditionMoveStrategy(); }
 
-  public Cars(List<Car> cars) {
-    this.cars = cars;
-  }
-
-  public void add(Car car) {
-    this.cars.add(car);
+  public Cars(MoveStrategy strategy) {
+    this.strategy = strategy;
   }
 
   public void addAll(Car... cars) {
     this.cars.addAll(Arrays.asList(cars));
   }
 
-  public void moveByCondition() {
+  public void moveByStrategy() {
     for (Car car : cars) {
-      int condition = RandomNumberAssigner.getRandomNumber();
-      car.moveByCondition(condition);
+      car.move(strategy);
     }
   }
 

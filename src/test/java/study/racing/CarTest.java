@@ -13,7 +13,7 @@ class CarTest {
   @DisplayName("4 이상일 때, 전진")
   void move(int condition) {
     Car car = new Car();
-    car.moveByCondition(condition);
+    car.move(new NumberConditionMoveStrategy(), condition);
     assertEquals(car.getPosition(), 1);
   }
 
@@ -22,9 +22,8 @@ class CarTest {
   @DisplayName("4 미만일 때, 정지")
   void stop(int condition) {
     Car car = new Car();
-    car.moveByCondition(condition);
+    car.move(new NumberConditionMoveStrategy(), condition);
     assertEquals(car.getPosition(), 0);
   }
-
 
 }

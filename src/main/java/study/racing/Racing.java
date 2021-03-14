@@ -11,7 +11,7 @@ public class Racing {
 
   private static void printResult(Cars cars, int tryCount) {
     for (int i = 0; i < tryCount; i++) {
-      cars.moveByCondition();
+      cars.moveByStrategy();
       cars.printPosition();
       System.out.println("");
     }
@@ -20,7 +20,7 @@ public class Racing {
   public static Cars createCars(int carCount) {
     Cars cars = new Cars();
     for (int i = 0; i < carCount; i++) {
-      cars.add(new Car());
+      cars.addAll(new Car());
     }
     return cars;
   }

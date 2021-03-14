@@ -16,15 +16,16 @@ public class Car {
     return position;
   }
 
-  public void moveByCondition(int condition) {
-    if (condition >= MOVE_CONDITION) {
-      move();
+  public void move(MoveStrategy strategy) {
+    if (strategy.isMove()) {
+      this.position ++;
     }
   }
 
-  private void move() {
-    this.position++;
+  public void move(MoveStrategy strategy, int number) {
+    if (strategy.isMove(number)) {
+      this.position ++;
+    }
   }
-
 
 }
