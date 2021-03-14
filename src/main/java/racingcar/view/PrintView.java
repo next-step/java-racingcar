@@ -11,15 +11,18 @@ public class PrintView {
     }
 
     public void printCarStatus(List<Car> carList) {
-        StringBuilder currentStatus = new StringBuilder();
-        carList.stream()
-                .map(Car::getPosition)
-                .forEach(position -> {
-                    for (int i = 0; i < position; i++) {
-                        currentStatus.append("-");
-                    }
-                    currentStatus.append("\n");
-                });
-        System.out.println(currentStatus.toString());
+        carList.forEach(car -> System.out.println(carToStatus(car)));
+    }
+
+    public String carToStatus(Car car) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(car.getName())
+                .append(" : ");
+
+        for (int i = 0; i < car.getPosition(); i++) {
+            builder.append("-");
+        }
+
+        return builder.toString();
     }
 }

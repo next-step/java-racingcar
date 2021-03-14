@@ -9,10 +9,10 @@ public class RacingCarApplication {
         InputView inputView = new InputView();
         PrintView printView = new PrintView();
 
-        int numberOfCars = inputView.getNumberOfCars();
+        String[] namesOfCars = inputView.getNamesOfCars();
         int numberOfTurns = inputView.getNumberOfTurns();
 
-        Racing racing = Racing.withCondition(numberOfCars, numberOfTurns);
+        Racing racing = Racing.withCondition(namesOfCars, numberOfTurns);
 
         printView.printResultTitle();
         printView.printCarStatus(racing.getCars());
