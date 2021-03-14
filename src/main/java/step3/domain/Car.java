@@ -1,0 +1,23 @@
+package step3.domain;
+
+public class Car {
+
+    private static final int CAR_INITIAL_LOCATION = 1;
+    private static final int MOBILITY_JUDGMENT_NUMBER = 4;
+
+    private int location;
+
+    public Car() {
+        this.location = CAR_INITIAL_LOCATION;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void move(int randomNum) {
+        if (randomNum >= MOBILITY_JUDGMENT_NUMBER) {
+            this.location++;
+        }
+    }
+}

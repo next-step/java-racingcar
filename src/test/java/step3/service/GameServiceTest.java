@@ -3,25 +3,25 @@ package step3.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.model.Car;
+import step3.domain.Car;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RacingServiceTest {
+class GameServiceTest {
 
     @DisplayName("n대의 자동차가 생성된다")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
-    public void makeCars(int numberOfCars) {
+    public void makeCars(int countOfCars) {
         // given
-        RacingService racingService = new RacingService();
+        GameService gameService = GameService.newInstance();
 
         // when
-        List<Car> cars = racingService.makeCars(numberOfCars);
+        List<Car> cars = gameService.makeCars(countOfCars);
 
         // then
-        assertThat(cars.size()).isEqualTo(numberOfCars);
+        assertThat(cars.size()).isEqualTo(countOfCars);
     }
 }

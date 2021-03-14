@@ -1,11 +1,17 @@
 package step3.service;
 
-import step3.model.Car;
+import step3.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingService {
+public class GameService {
+
+    private GameService() { }
+
+    public static GameService newInstance() {
+        return new GameService();
+    }
 
     public List<Car> makeCars(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
