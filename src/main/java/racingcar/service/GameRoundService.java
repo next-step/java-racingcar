@@ -11,8 +11,8 @@ public class GameRoundService {
         this.gameRoundRepository = gameRoundRepository;
     }
 
-    public void create(GameRound gameRound) {
-        gameRoundRepository.save(gameRound);
+    public void create(int gameRound) {
+        gameRoundRepository.save(new GameRound(gameRound));
     }
 
     public GameRound loadGameRound() {

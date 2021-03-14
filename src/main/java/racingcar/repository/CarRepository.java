@@ -1,6 +1,7 @@
 package racingcar.repository;
 
 import racingcar.domain.Car;
+import racingcar.utils.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,8 +41,11 @@ public class CarRepository {
         foundCar.initializeMovementRange();
     }
 
-    public void resetAllMovemetRange() {
-        cars.stream()
-                .forEach(Car::initializeMovementRange);
+    public void resetAllMovementRange() {
+        cars.forEach(Car::initializeMovementRange);
+    }
+
+    public void updateCarsMovementRange() {
+        cars.forEach(car -> car.move(RandomNumberGenerator.generate()));
     }
 }

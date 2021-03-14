@@ -6,15 +6,14 @@ import racingcar.repository.CarRepository;
 import java.util.List;
 
 public class CarService {
-
     private final CarRepository carRepository;
 
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 
-    public void addCar(Car car) {
-        carRepository.save(car);
+    public void addCar(String name) {
+        carRepository.save(new Car(name));
     }
 
     public List<Car> findCars() {
@@ -34,6 +33,10 @@ public class CarService {
     }
 
     public void resetCarsMovementRange() {
-        carRepository.resetAllMovemetRange();
+        carRepository.resetAllMovementRange();
+    }
+
+    public void moveCars() {
+        carRepository.updateCarsMovementRange();
     }
 }

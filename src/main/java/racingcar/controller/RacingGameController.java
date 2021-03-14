@@ -1,10 +1,7 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
-import racingcar.domain.GameRound;
 import racingcar.service.CarService;
 import racingcar.service.GameRoundService;
-import racingcar.utils.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -41,15 +38,15 @@ public class RacingGameController {
 
     public void createCars(String[] namesOfCar) {
         Arrays.stream(namesOfCar)
-                .forEach(name -> carService.addCar(new Car(name.trim())));
+                .forEach(name -> carService.addCar(name.trim()));
     }
 
     public void createGameRound(int numberOfAttempts) {
-        gameRoundService.create(new GameRound(numberOfAttempts));
+        gameRoundService.create(numberOfAttempts);
     }
 
     public void raceEachRound() {
-        carService.findCars().forEach(car -> car.move(RandomNumberGenerator.generate()));
+        carService.moveCars();
     }
 
     public void printGameResult() {
