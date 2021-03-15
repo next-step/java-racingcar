@@ -20,6 +20,6 @@ public class RacingGameTest {
   @ValueSource(strings = {"pobi,crong,honux"})
   void readyGameTest(String input) {
     racingGame.readyGame(input);
-    assertThat(racingGame.cars.size()).isEqualTo(3);
+    assertThat(racingGame.inputCars.size()).isEqualTo(3);
   }
 }

@@ -3,31 +3,32 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.view.ResultView;
 
 public class RacingGame {
 
-  public List<Car> cars = new ArrayList<>();
+  public List<Car> inputCars = new ArrayList<>();
 
   public void readyGame(String inputName) {
     String[] names = inputName.split(",");
 
     for (int i = 0; i < names.length; i++) {
-      cars.add(new Car(names[i]));
+      inputCars.add(new Car(names[i]));
     }
   }
 
   public void run(int attempt) {
+    Cars cars = new Cars(inputCars);
     Movement move = new Movement();
-    Winner win = new Winner();
     System.out.println("\n실행 결과");
 
     for (int i = 0; i < attempt; i++) {
-      move.moveCars(cars);
-      ResultView.showRacingResult(cars);
+      move.moveCars(inputCars);
+      ResultView.showRacingResult(inputCars);
     }
 
-    win.decideWinner(cars);
-    ResultView.showWinnerName(win.cars);
+    List<Car> winner = cars.getWinnerList();
+    ResultView.showWinnerName(winner);
   }
 }
