@@ -1,5 +1,7 @@
 package racingCar;
 
+import java.util.List;
+
 public class OutputView {
 
   private static final String RESULT = "실행결과";
@@ -20,6 +22,10 @@ public class OutputView {
 
   public void printEmptyLine() {
     System.out.println();
+  }
+
+  public void printError(String errorMsg) {
+    System.out.println(errorMsg);
   }
 
 }

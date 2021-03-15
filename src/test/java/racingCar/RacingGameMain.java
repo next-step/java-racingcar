@@ -1,15 +1,23 @@
 package racingCar;
 
+import java.util.List;
+
 public class RacingGameMain {
 
   public static void main(String[] args) {
-    RacingGame racingGame = new RacingGame(new InputView(), new OutputView());
-    try {
-      racingGame.start();
-    } catch (OverCarNameLengthException e) {
-      System.out.println(e.getMessage());
-    }
+    InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
 
+    String[] carNames = inputView.inputCarNames();
+    int tryCount = inputView.inputTryCount();
+
+    RacingGame racingGame = new RacingGame(carNames, tryCount);
+
+    try {
+      List<Car> winners = racingGame.start(outputView);
+    } catch (OverCarNameLengthException e) {
+      outputView.printError(e.getMessage());
+    }
   }
 
 }
