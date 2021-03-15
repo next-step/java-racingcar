@@ -13,7 +13,14 @@ public class ResultView {
 
     public void print() {
         for (int i = 0; i < progressArr.length; i++) {
-            System.out.println(progressArr[i]);
+            nullAndEmpty(progressArr[i],i);
+        }
+        System.out.println();
+    }
+
+    public void nullAndEmpty(String progress,int index){
+        if(progress != null){
+            System.out.println(progress);
         }
     }
 

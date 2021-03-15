@@ -13,11 +13,14 @@ public class RacingGame {
         this.attemptCount = iv.getAttemptCount();
         this.carCount = iv.getCarCount();
         this.progressArr = iv.getProgressArr();
+        ResultView rv = new ResultView(progressArr);
+        System.out.println("실행결과");
         while (attemptCount-- > 0) {
             racing();
+            rv.print();
         }
-        ResultView rv = new ResultView(progressArr);
-        rv.print();
+
+
     }
 
     public void racing() {
