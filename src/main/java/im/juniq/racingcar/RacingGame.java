@@ -33,7 +33,7 @@ public class RacingGame {
 	}
 
 	private void printScore() {
-		resultView.printCarsStatus(cars.get());
+		resultView.printCarsStatus(cars);
 	}
 
 	private void printWinner() {

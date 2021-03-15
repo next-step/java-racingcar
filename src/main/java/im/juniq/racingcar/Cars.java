@@ -3,10 +3,11 @@ package im.juniq.racingcar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
 	private List<Car> cars = new ArrayList<>();
 
 	public Cars(Car... car) {
@@ -35,11 +36,30 @@ public class Cars {
 			.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public List<Car> get() {
-		return cars;
-	}
-
 	public Car get(int index) {
 		return cars.get(index);
+	}
+
+	public int size() {
+		return cars.size();
+	}
+
+	@Override
+	public Iterator<Car> iterator() {
+		return new CarIterator();
+	}
+
+	private class CarIterator implements Iterator<Car> {
+		private int index = 0;
+
+		@Override
+		public boolean hasNext() {
+			return index < cars.size();
+		}
+
+		@Override
+		public Car next() {
+			return cars.get(index++);
+		}
 	}
 }

@@ -3,7 +3,7 @@ package im.juniq.racingcar;
 import java.util.List;
 
 public class ResultView {
-	public void printCarsStatus(List<Car> cars) {
+	public void printCarsStatus(Cars cars) {
 		for (Car car : cars) {
 			printCarStatus(car);
 		}

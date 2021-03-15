@@ -13,7 +13,7 @@ class CarsTest {
 		Cars cars = new Cars();
 		cars.createCars(carNames);
 
-		assertThat(cars.get().size()).isEqualTo(carNames.length);
+		assertThat(cars.size()).isEqualTo(carNames.length);
 	}
 
 	@DisplayName("자동차 n대를 이동한다")
@@ -25,7 +25,7 @@ class CarsTest {
 
 		cars.move();
 
-		for (int i = 0; i < cars.get().size(); i++) {
+		for (int i = 0; i < cars.size(); i++) {
 			Car car = cars.get(i);
 			assertThat(car.getName()).isEqualTo(carNames[i]);
 			assertThat(car.getPosition()).isEqualTo(1);
