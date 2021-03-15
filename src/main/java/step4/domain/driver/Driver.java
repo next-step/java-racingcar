@@ -29,14 +29,4 @@ public class Driver {
         return car.getStatus();
     }
 
-    /*
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name.getName())
-                .append(BLANK).append(UNIT).append(BLANK).append(car.getStatus());
-        return name.getName() +":"+car.getStatus();
-    }
-
- */
 }
