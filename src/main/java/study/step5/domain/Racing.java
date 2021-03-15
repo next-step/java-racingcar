@@ -28,6 +28,10 @@ public class Racing {
         return attemptCount;
     }
 
+    public boolean isFinished() {
+        return attemptCount >= attemptNumber;
+    }
+
     public void race() {
         attemptCount++;
         cars.move(moveBehavior);
