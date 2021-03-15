@@ -1,11 +1,13 @@
 package study1.racing;
 
+import java.util.Scanner;
+
 public class Main {
 
   public static void main(String[] args) {
-    InputView inputView = new InputView();
-    int participant = inputView.getParticipants();
-    int round = inputView.getRound();
+    Scanner scanner = new Scanner(System.in);
+    int participant = InputView.getParticipants(scanner);
+    int round = InputView.getRound(scanner);
 
     Race race = new Race(participant, round);
     for(RaceRound raceRound: race.start()) {
@@ -14,6 +16,7 @@ public class Main {
         .stream()
         .forEach((distance) -> ResultView.print(distance));
     }
-    inputView.closeScanner();
+    
+    scanner.close();
   }
 }
