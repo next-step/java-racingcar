@@ -2,7 +2,9 @@ package study.step5.domain;
 
 public class Car {
 
-    private static final String CAR_NAME_LENGTH_OVER = "자동차의 이름은 5자를 초과할 수 없습니다.";
+    private static final int CAR_NAME_LENGTH_OVER = 5;
+    private static final String CAR_NAME_LENGTH_ERROR = "자동차의 이름은 5자를 초과할 수 없습니다.";
+
     private final String carName;
     private int location;
 
@@ -12,8 +14,8 @@ public class Car {
     }
 
     public static Car of(final String carName) {
-        if (carName.length() > 5) {
-            throw new IllegalArgumentException(CAR_NAME_LENGTH_OVER);
+        if (carName.length() > CAR_NAME_LENGTH_OVER) {
+            throw new IllegalArgumentException(CAR_NAME_LENGTH_ERROR);
         }
 
         return new Car(carName);
