@@ -33,8 +33,10 @@ public class GameController {
 
     private void moveCars() {
         int countOfTry = InputView.getCountOfTry();
+        ResultView.printResultMessage();
         for (int i = 0; i < countOfTry; i++) {
             this.cars = gameService.moveCars(cars);
+            ResultView.printCarLocation(cars);
         }
     }
 }
