@@ -21,7 +21,7 @@ public class Car {
   }
 
   private void validate(String name) {
-    if (name.length() >= NAME_CONSTRAINT) {
+    if (name.length() > NAME_CONSTRAINT) {
       throw new OverCarNameLengthException(NAME_EXCEPTION);
     }
   }

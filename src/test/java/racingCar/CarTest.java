@@ -30,7 +30,7 @@ public class CarTest {
   @DisplayName("자동차 이름이 5보다 크면 예외 발생")
   @Test
   void name_length_over_five_throw_exception() {
-    assertThatThrownBy( () -> new Car("TEST5"))
+    assertThatThrownBy( () -> new Car("TEST66"))
     .isInstanceOf(OverCarNameLengthException.class)
     .hasMessage("자동차 이름 길이가 5를 초과했습니다.");
 
