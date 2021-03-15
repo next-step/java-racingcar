@@ -1,10 +1,9 @@
 package study.step5;
 
-import java.util.List;
-
 import study.step5.domain.Car;
 import study.step5.domain.Cars;
 import study.step5.domain.RandomMovingStrategy;
+import study.step5.view.ResultView;
 
 /**
  * Racing Game Class
@@ -14,29 +13,25 @@ import study.step5.domain.RandomMovingStrategy;
  */
 public class Racing {
     private Cars cars;
-    private RacingWinner racingWinner;
 
     public Racing() {
         cars = new Cars();
-        racingWinner = new RacingWinner();
     }
 
-    public void setUp(String[] names) {
-        for(int i=0; i<names.length; i++) {
-            cars.addCars(new Car(names[i]));
+    public void ready(String inputCarNameStr) {
+        String[] inputCarNames = inputCarNameStr.split(",");
+        for(int i=0; i<inputCarNames.length; i++) {
+            cars.addCar(new Car(inputCarNames[i]));
         }
     }
 
-    public List<Car> getCarList() {
-        //return this.cars.toString();
-        return null;
-    }
-
-    public void run() {
-        cars.run(new RandomMovingStrategy());
-    }
-
-    public List<Car> getWinners() {
-        return cars.findWinners();
+    public void play(int totalRound) {
+        ResultView.printRacingStart();
+        for(int i=0; i<totalRound; i++) {
+            ResultView.printRacingRound(i + 1);
+            cars.run(new RandomMovingStrategy());
+            ResultView.printRacingResult(cars.getCars());
+        }
+        ResultView.printRacingWinner(cars.findWinners());
     }
 }
