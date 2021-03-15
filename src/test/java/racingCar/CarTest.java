@@ -8,11 +8,12 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
+  private static final String TEST_CAR = "TEST";
   private Car car;
 
   @BeforeEach
   void setUp() {
-    car = new Car();
+    car = new Car(TEST_CAR);
   }
 
   @DisplayName("자동차가 움직이는 경우")

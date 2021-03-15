@@ -14,10 +14,10 @@ public class RacingGame {
   }
 
   public void start() {
-    int carNumbers = inputView.inputCarNumbers();
+    String[] carNames = inputView.inputCarNames();
     int tryCount = inputView.inputTryCount();
 
-    List<Car> cars = makeCars(carNumbers);
+    List<Car> cars = makeCars(carNames);
 
     outputView.printResult();
     for (int i = 0; i < tryCount; i++) {
@@ -29,10 +29,10 @@ public class RacingGame {
     }
   }
 
-  private List<Car> makeCars(int carNumbers) {
+  private List<Car> makeCars(String[] carNames) {
     List<Car> cars = new ArrayList<>();
-    for (int i = 0; i < carNumbers; i++) {
-      cars.add(new Car());
+    for (int i = 0; i < carNames.length; i++) {
+      cars.add(new Car(carNames[i]));
     }
     return cars;
   }
