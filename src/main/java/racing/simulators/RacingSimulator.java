@@ -1,4 +1,4 @@
-package racing.simulator;
+package racing.simulators;
 
 import racing.models.Racing;
 import racing.models.Round;

@@ -1,7 +1,7 @@
 package racing.factories;
 
 import racing.models.Racing;
-import racing.simulator.RacingSimulator;
+import racing.simulators.RacingSimulator;
 
 public class RacingSimulatorFactory {
     public static RacingSimulator createFrom(int carsCount, int attemptsCount) {

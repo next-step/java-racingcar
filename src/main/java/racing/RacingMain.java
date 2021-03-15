@@ -1,7 +1,7 @@
 package racing;
 
 import racing.factories.RacingSimulatorFactory;
-import racing.simulator.RacingSimulator;
+import racing.simulators.RacingSimulator;
 import racing.utils.StringUtil;
 import racing.views.IntegerInputView;
 import racing.views.StringInputView;
