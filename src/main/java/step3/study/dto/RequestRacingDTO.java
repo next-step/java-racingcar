@@ -1,19 +1,23 @@
 package step3.study.dto;
 
-public class RequestRacingDTO {
-    private final String[] driverNames;
-    private final int tryCount;
+import step3.study.domain.Round;
 
-    public RequestRacingDTO(String[] driverNames, int tryCount) {
+import java.util.List;
+
+public class RequestRacingDTO {
+    private final List<String> driverNames;
+    private final Round round;
+
+    public RequestRacingDTO(List<String> driverNames, Round round) {
         this.driverNames = driverNames;
-        this.tryCount = tryCount;
+        this.round = round;
     }
 
-    public String[] getDriverNames() {
+    public List<String> getDriverNames() {
         return driverNames;
     }
 
-    public int getTryCount() {
-        return tryCount;
+    public Round getRound() {
+        return round;
     }
 }

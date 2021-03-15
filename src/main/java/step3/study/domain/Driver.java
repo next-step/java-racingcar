@@ -1,7 +1,5 @@
 package step3.study.domain;
 
-import step3.study.util.RandomGenerator;
-
 public class Driver {
     private final String name;
     private final Car car;
@@ -11,8 +9,8 @@ public class Driver {
         this.car = car;
     }
 
-    public void moveCar(int randomNumber) {
-        car.move(randomNumber);
+    public void moveCar(int number) {
+        car.move(number);
     }
 
     public String getName() {
