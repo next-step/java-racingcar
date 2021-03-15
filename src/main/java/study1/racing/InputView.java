@@ -10,6 +10,10 @@ public class InputView {
     this.scanner = new Scanner(System.in);
   }
 
+  public void closeScanner() {
+    scanner.close();
+  }
+
   public int getParticipants() {
     System.out.println("자동차 대수는 몇 대 인가요?");
     int participant = Integer.parseInt(scanner.nextLine());

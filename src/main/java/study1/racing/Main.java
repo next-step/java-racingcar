@@ -9,5 +9,7 @@ public class Main {
 
     Race race = new Race(participant, round);
     race.run();
+
+    inputView.closeScanner();
   }
 }
