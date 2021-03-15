@@ -51,10 +51,10 @@ class CarsTest {
 
         //when
         Cars car = new Cars(names, new MoveOneStrategy());
-        Round round = new Round(car.run(new MoveZeroStrategy()));
+        RoundRecord roundRecord = new RoundRecord(car.run(new MoveZeroStrategy()));
 
         //then
-        assertThat(round.getMaxDistance()).isEqualTo(0);
+        assertThat(roundRecord.getMaxDistance()).isEqualTo(0);
     }
 
     @ParameterizedTest
@@ -66,9 +66,9 @@ class CarsTest {
 
         //when
         Cars car = new Cars(names, new MoveOneStrategy());
-        Round round = new Round(car.run());
+        RoundRecord roundRecord = new RoundRecord(car.run());
 
         //then
-        assertThat(round.getMaxDistance()).isEqualTo(1);
+        assertThat(roundRecord.getMaxDistance()).isEqualTo(1);
     }
 }

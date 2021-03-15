@@ -4,16 +4,15 @@ import new_racingcar.strategy.MoveStrategy;
 import new_racingcar.constant.MsgConstants;
 
 public class Car {
-    private String name;
+    private Name name;
     private MoveStrategy moveStrategy;
-    private int distance;
+    private Distance distance;
 
     public Car(String name, MoveStrategy moveStrategy) {
-        this(name, moveStrategy, 0);
+        this(new Name(name), moveStrategy, new Distance());
     }
 
-    public Car(String name, MoveStrategy moveStrategy, int distance) {
-        isNameValid(name);
+    public Car(Name name, MoveStrategy moveStrategy, Distance distance) {
         this.name = name;
         this.distance = distance;
         this.moveStrategy = moveStrategy;
@@ -21,7 +20,7 @@ public class Car {
 
     public Car move() {
         if (moveStrategy.isMoveable()) {
-            ++distance;
+            distance = distance.addDistance();
         }
 
         return new Car(name, moveStrategy, distance);
@@ -31,7 +30,7 @@ public class Car {
         setMoveStrategy(strategy);
 
         if (moveStrategy.isMoveable()) {
-            ++distance;
+            distance = distance.addDistance();
         }
 
         return new Car(name, moveStrategy, distance);
@@ -42,17 +41,10 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getDistance() {
-        return distance;
-    }
-
-    private void isNameValid(String name) {
-        if (name.length() > 5
-                || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(MsgConstants.CAR_NAME_ERROR_MESSAGE);
-        }
+        return distance.getDistance();
     }
 }

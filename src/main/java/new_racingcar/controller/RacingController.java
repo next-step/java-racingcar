@@ -1,6 +1,6 @@
 package new_racingcar.controller;
 
-import new_racingcar.domain.Round;
+import new_racingcar.domain.RoundRecord;
 import new_racingcar.service.GrandPrix;
 import new_racingcar.view.InputView;
 import new_racingcar.view.ResultView;
@@ -15,9 +15,9 @@ public class RacingController {
         int turnCount = inputView.inputTurn();
 
         GrandPrix grandPrix = new GrandPrix(carNames, turnCount);
-        List<Round> rounds = grandPrix.start();
+        List<RoundRecord> roundRecords = grandPrix.start();
 
         ResultView resultView = new ResultView();
-        resultView.printGrandPrixRecords(rounds);
+        resultView.printGrandPrixRecords(roundRecords);
     }
 }

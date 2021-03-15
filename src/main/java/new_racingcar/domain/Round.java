@@ -1,32 +1,46 @@
 package new_racingcar.domain;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import new_racingcar.constant.MsgConstants;
+
+import java.util.Objects;
 
 public class Round {
-    private final Cars cars;
+    private int round;
 
-    public Round(Cars cars) {
-        this.cars = cars;
+    public Round(int round) {
+        isRoundCountVaild(round);
+        this.round = round;
     }
 
-    public List<Car> getRoundInfo() {
-        return cars.getUnmodifiableCars();
+    private void isRoundCountVaild(int roundCount) {
+        if (roundCount < 1) {
+            throw new IllegalArgumentException(MsgConstants.ROUND_ERROR_MESSAGE);
+        }
     }
 
-    public int getMaxDistance() {
-        return getRoundInfo().stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .getAsInt();
+    public Boolean isGameEnd() {
+        if (round > 0) {
+            nextRound();
+            return true;
+        }
+
+        return false;
     }
 
-    public String getWinnerNames(int maxDistance) {
-        List<String> winners = getRoundInfo().stream()
-                                    .filter(c -> c.getDistance() == getMaxDistance())
-                                    .map(Car::getName)
-                                    .collect(Collectors.toList());
+    private void nextRound() {
+        --round;
+    }
 
-        return String.join(",", winners);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Round round1 = (Round) o;
+        return round == round1.round;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(round);
     }
 }
