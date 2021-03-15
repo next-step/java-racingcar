@@ -19,15 +19,13 @@ class CarsTest {
 	@DisplayName("자동차 n대를 이동한다")
 	@Test
 	void moveCars() {
-		String[] carNames = {"pobi", "poci"};
-		Cars cars = new Cars();
-		cars.createCars(carNames);
+		Car pobi = new Car("pobi", new OnlyTrueMovingStrategy());
+		Car poci = new Car("poci", new OnlyTrueMovingStrategy());
+		Cars cars = new Cars(pobi, poci);
 
 		cars.move();
 
-		for (int i = 0; i < cars.size(); i++) {
-			Car car = cars.get(i);
-			assertThat(car.getName()).isEqualTo(carNames[i]);
+		for (Car car: cars) {
 			assertThat(car.getPosition()).isEqualTo(1);
 		}
 	}
