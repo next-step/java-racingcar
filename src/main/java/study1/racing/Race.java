@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Race {
+  private final int START_NUM = 0;
+
   private final List<Car> cars;
   private final int round;
 
@@ -16,7 +18,7 @@ public class Race {
 
   public List<RaceRound> start() {
     return IntStream
-      .range(0, round)
+      .range(START_NUM, round)
       .boxed()
       .map((i) -> roundCheck())
       .collect(Collectors.toList());
