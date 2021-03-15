@@ -1,3 +1,10 @@
+/*
+ * 자동차 경주의 출력을 담당하는 클래스
+ *
+ * @author hj-woo
+ * @version 2.0
+ * */
+
 package step3.racingCar.ui;
 
 import java.util.ArrayList;
@@ -6,7 +13,7 @@ import java.util.Set;
 
 public class ResultView {
 
-    public static void printForward(int num){
+    public static void printForward(int num) {
         for (int i = 0; i < num; i++) {
             System.out.print("-");
         }
@@ -19,7 +26,7 @@ public class ResultView {
         });
     }
 
-    public static void printResultWithName(Map<String, Integer> result){
+    public static void printResultWithName(Map<String, Integer> result) {
         result.forEach((name, forwardNum) -> {
             System.out.print(name + " : ");
             printForward(forwardNum);
@@ -27,8 +34,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printWinner(Set<String> winners){
+    public static void printWinner(Set<String> winners) {
         String winner = winners.toString();
-        System.out.println(winner.substring(1, winner.length()-1) + "가 최종 우승 했습니다.");
+        System.out.println(winner.substring(1, winner.length() - 1) + "가 최종 우승 했습니다.");
     }
 }

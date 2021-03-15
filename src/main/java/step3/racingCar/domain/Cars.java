@@ -2,7 +2,7 @@
  * 자동차 경주의 자동차 집합을 담당하는 클래스
  *
  * @author hj-woo
- * @version 1.0
+ * @version 2.0
  * */
 package step3.racingCar.domain;
 

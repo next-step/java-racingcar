@@ -21,7 +21,7 @@ public class GameFactory {
         return new Game(str);
     }
 
-    public static Cars namesCars(String[] names){
+    public static Cars namesCars(String[] names) {
         List<Car> carList = new ArrayList<>();
         for (String name : names) {
             carList.add(car(name));
@@ -32,11 +32,12 @@ public class GameFactory {
     public static Cars cars(int carNum) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
-            carList.add(car(EMPTY_NAME+i+"번째 자동차"));
+            carList.add(car(EMPTY_NAME + i + "번째 자동차"));
         }
         return new Cars(carList);
     }
-    public static Car car(){
+
+    public static Car car() {
         return new Car(EMPTY_NAME);
     }
 

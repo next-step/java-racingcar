@@ -1,3 +1,9 @@
+/*
+ * 자동차 경주의 입력을 담당하는 클래스
+ *
+ * @author hj-woo
+ * @version 2.0
+ * */
 package step3.racingCar.ui;
 
 import step3.racingCar.Game;
@@ -20,11 +26,11 @@ public class InputView {
         return input;
     }
 
-    public static void checkInput(String str){
-        if(str.equals(Game.HOW_MANY_CARS) || str.equals(Game.HOW_MANY_TRYS)){
+    public static void checkInput(String str) {
+        if (str.equals(Game.HOW_MANY_CARS) || str.equals(Game.HOW_MANY_TRYS)) {
             input.add(sc.nextInt());
         }
-        if(str.equals(Game.INPUT_CAR_NAMES)){
+        if (str.equals(Game.INPUT_CAR_NAMES)) {
             input.add(sc.nextLine());
         }
     }

@@ -21,7 +21,7 @@ class GameTest {
     private static final String NAME1 = "name1";
     private static final String NAME2 = "name2";
     private static final String NAME3 = "name3";
-    private static final String NAMES = NAME1+","+NAME2+","+NAME3;
+    private static final String NAMES = NAME1 + "," + NAME2 + "," + NAME3;
     private List<Object> inputs;
     private List<Object> step4Inputs;
     MockedStatic<InputView> inputView;
@@ -34,7 +34,7 @@ class GameTest {
         inputView.close();
     }
 
-    void createStep3Input(){
+    void createStep3Input() {
         inputs = new ArrayList<>();
         inputs.add(CAR_NUM);
         inputs.add(TRY_NUM);
@@ -44,7 +44,7 @@ class GameTest {
 
     }
 
-    void createStep4Input(){
+    void createStep4Input() {
         step4Inputs = new ArrayList<>();
         step4Inputs.add(NAMES);
         step4Inputs.add(TRY_NUM);
