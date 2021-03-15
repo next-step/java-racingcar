@@ -1,7 +1,7 @@
 package study.step5.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
@@ -11,18 +11,20 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
+        return getWinners(getMaxPosition());
+    }
+
+    private List<Car> getWinners(Position maxPosition) {
+        return cars.stream()
+            .filter(car -> maxPosition.equals(car.getPosition()))
+            .collect(Collectors.toList());
+    }
+
+    private Position getMaxPosition() {
         Position maxPosition = new Position(0);
         for(Car car : cars) {
             maxPosition = car.getMaxPosition(maxPosition);
         }
-
-        List<Car> winners = new ArrayList<>();
-        for(Car car : cars) {
-            if(car.getPosition().equals(maxPosition)) {
-                winners.add(car);
-            }
-        }
-
-        return winners;
+        return maxPosition;
     }
 }
