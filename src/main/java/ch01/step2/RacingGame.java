@@ -25,11 +25,11 @@ public class RacingGame {
         int progressArrSize = progressArr.length;
         for (int i = 0; i < progressArrSize; i++) {
             randomNumber = getRandomNumber();
-            moveCar(progressArr,i, isKeepGoing(randomNumber));
+            moveCar(progressArr, i, isKeepGoing(randomNumber));
         }
     }
 
-    public void moveCar(String[] progressArr,int index, boolean isKeepGoing) {
+    public void moveCar(String[] progressArr, int index, boolean isKeepGoing) {
         if (isKeepGoing && progressArr[index] != null) {
             progressArr[index] += "-";
         }

@@ -7,7 +7,7 @@ public class InputView {
     int attemptCount = 0;
     String[] progressArr;
 
-    public InputView(){
+    public InputView() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         Scanner sc = new Scanner(System.in);
         this.carCount = sc.nextInt();

@@ -15,6 +15,7 @@ class RacingGameTest {
 
     RacingGame racingGame;
     String[] progressArr;
+
     @BeforeEach
     void setUp() {
         racingGame = new RacingGame();
@@ -32,8 +33,8 @@ class RacingGameTest {
     @DisplayName("차를 이동하는 Test")
     void moveCarTest() {
         int index = 2;
-        racingGame.moveCar(progressArr,index,true);
-        String[] expectArr = {"-","-","--"};
+        racingGame.moveCar(progressArr, index, true);
+        String[] expectArr = {"-", "-", "--"};
         assertThat(progressArr).isEqualTo(expectArr);
     }
 
