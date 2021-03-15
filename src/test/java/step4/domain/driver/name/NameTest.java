@@ -30,4 +30,32 @@ class NameTest {
                 }).withMessageMatching("이름에 사용되기에는 알맞은 값이 아닙니다.");
     }
 
+    @DisplayName("Name 클래스의 인스턴스 생성시 유효한 문자열 주입시 알맞게 반환하는지 테스트")
+    @ValueSource(strings = {"pobi", "brown", "jason"})
+    @ParameterizedTest(name = "현재 반복 : {index} - 입력되는 값 : {arguments}")
+    void getName_ValidationValue_Equal(String expected) {
+        // given
+        Name name = Name.from(expected, strategy);
+
+        // when
+        String actual = name.getName();
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @DisplayName("Name 클래스의 인스턴스 생성시 유효한 문자열 주입시 알맞게 반환하는지 테스트")
+    @ValueSource(strings = {"pobi", "brown", "jason"})
+    @ParameterizedTest(name = "현재 반복 : {index} - 입력되는 값 : {arguments}")
+    void equals_(String expected) {
+        // given
+        Name firstName = Name.from(expected, strategy);
+        Name secondName = Name.from(expected, strategy);
+
+        // when
+        boolean actual = firstName.equals(secondName);
+
+        // then
+        assertThat(actual).isTrue();
+    }
+
 }
