@@ -20,8 +20,8 @@ public class CarPrintTest {
         List<Car> list = new ArrayList<>();
         list.add(car);
         list.add(car1);
-        Cars cars = new Cars(list);
-        outputView.printCarMove(cars);
+        //Cars cars = new Cars(list);
+        //outputView.printCarMove(cars);
     }
 
 }

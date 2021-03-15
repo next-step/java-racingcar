@@ -1,19 +1,17 @@
 package step5.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
-    List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(final String names) {
+        for (String carName : names.split(",")) {
+            cars.add(new Car(carName));
+        }
     }
-
-    public Cars() {
-
-    }
-
     public List<Car> findWinner() {
 
         List<Car> winnerCarList = new ArrayList<>();
@@ -38,6 +36,4 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
-
-
 }

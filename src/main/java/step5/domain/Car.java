@@ -1,40 +1,42 @@
 package step5.domain;
-
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
 
-    private static final int RANDOM_VALUE = 10;
     private static final int WORD_MAX_LENGTH = 5;
-    private static final int CONST_FOUR = 4;
     private final String name;
     private int position = 0;
 
+    public Car(final String name) {
+        maxLengthException(name);
+        this.name = name;
+        this.position = 0;
+    }
+
+    /* 테스트 위한 코드 */
     public Car(final String name, int position) {
-        if (name.length() > WORD_MAX_LENGTH) {
-            throw new IllegalArgumentException("5글자 초과 입력하실 수 없습니다.");
-        }
+        maxLengthException(name);
         this.name = name;
         this.position = position;
     }
 
-    public boolean isExceedWord() {
-        if (name.length() > 5) {
-            return true;
-        }
-        return false;
-    }
-
-    public void move() {
-        if (generateRandomValue() >= CONST_FOUR) {
+    public void move(GenerateNumber generateNumber) {
+        if (generateNumber.generateRandom() >= 4) {
             this.position++;
         }
     }
 
-    protected int generateRandomValue() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_VALUE);
+    private void maxLengthException(String name) {
+        if (isExceedWord(name)) {
+            throw new IllegalArgumentException("5글자 초과 입력하실 수 없습니다.");
+        }
+    }
+
+    public boolean isExceedWord(String name) {
+        if (name.length() > WORD_MAX_LENGTH) {
+            return true;
+        }
+        return false;
     }
 
     public String getName() {
@@ -56,5 +58,13 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", position=" + position +
+                '}';
     }
 }
