@@ -1,12 +1,21 @@
 package study.calculator;
 
 import org.assertj.core.api.ThrowableAssert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
+    }
+
     @Test
     void 이항_덧셈을_테스트합니다() {
         //given
@@ -14,7 +23,7 @@ public class CalculatorTest {
         int num2 = 5;
 
         //when
-        int result = num1 + num2;
+        int result = calculator.add(num1, num2);
 
         //then
         assertThat(result).isEqualTo(10 + 5);
@@ -27,7 +36,7 @@ public class CalculatorTest {
         int num2 = 5;
 
         //when
-        int result = num1 - num2;
+        int result = calculator.subtract(num1, num2);
 
         //then
         assertThat(result).isEqualTo(10 - 5);
@@ -40,7 +49,7 @@ public class CalculatorTest {
         int num2 = 5;
 
         //when
-        int result = num1 * num2;
+        int result = calculator.multiply(num1, num2);
 
         //then
         assertThat(result).isEqualTo(10 * 5);
@@ -53,7 +62,7 @@ public class CalculatorTest {
         int num2 = 5;
 
         //when
-        int result = num1 / num2;
+        int result = calculator.divide(num1, num2);
 
         //then
         assertThat(result).isEqualTo(10 / 5);
@@ -65,7 +74,9 @@ public class CalculatorTest {
         String input = null;
 
         //when
-        ThrowableAssert.ThrowingCallable throwingCallable = () -> { throw new IllegalArgumentException(); };
+        ThrowableAssert.ThrowingCallable throwingCallable = () -> {
+            int result = calculator.calculate(input);
+        };
 
         //then
         Class expectedExceptionClass = IllegalArgumentException.class;
@@ -78,7 +89,9 @@ public class CalculatorTest {
         String input = " ";
 
         //when
-        ThrowableAssert.ThrowingCallable throwingCallable = () -> { throw new IllegalArgumentException(); };
+        ThrowableAssert.ThrowingCallable throwingCallable = () -> {
+            int result = calculator.calculate(input);
+        };
 
         //then
         Class expectedExceptionClass = IllegalArgumentException.class;
@@ -91,7 +104,9 @@ public class CalculatorTest {
         String input = "&";
 
         //when
-        ThrowableAssert.ThrowingCallable throwingCallable = () -> { throw new IllegalArgumentException(); };
+        ThrowableAssert.ThrowingCallable throwingCallable = () -> {
+            int result = calculator.calculate(input);
+        };
 
         //then
         Class expectedExceptionClass = IllegalArgumentException.class;
@@ -104,7 +119,7 @@ public class CalculatorTest {
         String input = "2 + 3 * 4 / 2";
 
         //when
-        int result = 10;
+        int result = calculator.calculate(input);
 
         //then
         assertThat(result).isEqualTo(10);
