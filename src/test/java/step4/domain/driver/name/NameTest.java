@@ -1,11 +1,11 @@
-package step4.domain.car;
+package step4.domain.driver.name;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step4.domain.startegy.NameLengthLessThanFive;
-import step4.domain.startegy.NamingStrategy;
+import step4.domain.startegy.name.NameLengthLessThanFive;
+import step4.domain.startegy.name.NamingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;

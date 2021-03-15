@@ -1,4 +1,4 @@
-package step4.domain.startegy;
+package step4.domain.startegy.name;
 
 public class NameLengthLessThanFive implements NamingStrategy {
 

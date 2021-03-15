@@ -1,6 +1,8 @@
-package step4.domain.car;
+package step4.domain.driver.name;
 
-import step4.domain.startegy.NamingStrategy;
+import step4.domain.startegy.name.NamingStrategy;
+
+import java.util.Objects;
 
 public class Name {
 
@@ -24,5 +26,28 @@ public class Name {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name1 = (Name) o;
+        return name.equals(name1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Name{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
 
