@@ -10,13 +10,10 @@ public class Main {
     int round = InputView.getRound(scanner);
 
     Race race = new Race(participant, round);
-    for(RaceRound raceRound: race.start()) {
-      System.out.println("");
-      raceRound.getResult()
-        .stream()
-        .forEach((distance) -> ResultView.print(distance));
-    }
-    
+    race.start().stream()
+      .map(RaceRound::getResult)
+      .forEach(ResultView::print);
+
     scanner.close();
   }
 }
