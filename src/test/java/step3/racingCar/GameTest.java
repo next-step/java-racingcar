@@ -68,7 +68,6 @@ class GameTest {
 
     @Test
     void playGame() {
-        step3Game.play();
         step4Game.play();
     }
 

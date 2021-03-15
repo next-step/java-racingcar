@@ -2,6 +2,7 @@ package step3.racingCar.ui;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
 
 public class ResultView {
 
@@ -24,5 +25,10 @@ public class ResultView {
             printForward(forwardNum);
         });
         System.out.println();
+    }
+
+    public static void printWinner(Set<String> winners){
+        String winner = winners.toString();
+        System.out.println(winner.substring(1, winner.length()-1) + "가 최종 우승 했습니다.");
     }
 }

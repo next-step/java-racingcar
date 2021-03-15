@@ -9,6 +9,7 @@ package step3.racingCar;
 import step3.racingCar.domain.Cars;
 import step3.racingCar.ui.InputView;
 import step3.racingCar.ui.ResultView;
+import step4.racingCar.Rule;
 
 import java.util.List;
 
@@ -25,19 +26,19 @@ public class Game {
      * */
     public Game(String[] strs) {
         List<Object> inputArr = InputView.input(strs);
-        for(int i=0; i<strs.length; i++){
-            checkInputs(inputArr.get(i),strs[i]);
+        for (int i = 0; i < strs.length; i++) {
+            checkInputs(inputArr.get(i), strs[i]);
         }
     }
 
-    public void checkInputs(Object input, String str){
-        if(str.equals(HOW_MANY_TRYS)){
+    public void checkInputs(Object input, String str) {
+        if (str.equals(HOW_MANY_TRYS)) {
             tryNum = (int) input;
         }
-        if(str.equals(HOW_MANY_CARS)){
+        if (str.equals(HOW_MANY_CARS)) {
             racingCars = GameFactory.cars((Integer) input);
         }
-        if(str.equals(INPUT_CAR_NAMES)){
+        if (str.equals(INPUT_CAR_NAMES)) {
             String[] names = ((String) input).split(",");
             racingCars = GameFactory.namesCars(names);
         }
@@ -55,5 +56,6 @@ public class Game {
             racingCars.tryForward();
             ResultView.printResultWithName(racingCars.checkCarStatus());
         }
+        ResultView.printWinner(Rule.whoIsWinner(racingCars.checkCarStatus()));
     }
 }
