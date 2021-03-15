@@ -13,7 +13,7 @@ class CarsTest {
 		Cars cars = new Cars();
 		cars.createCars(carNames);
 
-		assertThat(cars.size()).isEqualTo(carNames.length);
+		assertThat(cars).extracting(Car::getName).contains(carNames);
 	}
 
 	@DisplayName("자동차 n대를 이동한다")
