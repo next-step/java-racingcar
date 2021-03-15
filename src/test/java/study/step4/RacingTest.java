@@ -21,9 +21,24 @@ public class RacingTest {
     @CsvSource(value = {"자동차1호,자동차2호:2", "자동차1호,자동차2호,자동차3호:3"}, delimiter = ':')
     void race(String carNames, int attemptNumber) {
         Racing racing = Racing.of(Cars.of(carNames.split(",")), attemptNumber, new RandomMoveBehavior());
+
         for (int i = 0; i < attemptNumber; i++) {
             racing.race();
         }
+
         assertThat(racing.isFinished()).isTrue();
+    }
+
+    @DisplayName("레이싱게임 진행, 레이싱 진행횟수 상태값 확인")
+    @ParameterizedTest
+    @CsvSource(value = {"자동차1호,자동차2호:2", "자동차1호,자동차2호,자동차3호:3"}, delimiter = ':')
+    void getAttemptCount(String carNames, int attemptNumber) {
+        Racing racing = Racing.of(Cars.of(carNames.split(",")), attemptNumber, new RandomMoveBehavior());
+
+        for (int i = 0; i < attemptNumber; i++) {
+            racing.race();
+        }
+
+        assertThat(racing.getAttemptCount()).isEqualTo(attemptNumber);
     }
 }
