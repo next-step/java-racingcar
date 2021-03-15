@@ -1,5 +1,6 @@
 package study.step4;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
@@ -24,7 +25,10 @@ public class ResultView {
         );
     }
 
-    public static void printRaceWinner(String winners) {
+    public static void printRaceWinner(List<Car> cars) {
+        String winners = cars.stream().map(car -> car.getCarName())
+                .collect(Collectors.joining(RacingConstant.COMMA));
+
         System.out.println(winners + FINAL_WINNERS);
     }
 }

@@ -47,6 +47,6 @@ public class RacingTest {
 
         Racing racing = Racing.of(Cars.of(carList), 5, new RandomMoveBehavior());
 
-        assertThat(racing.getWinners()).isEqualTo("kim");
+        assertThat(racing.getWinners().get(0).getCarName()).isEqualTo("kim");
     }
 }

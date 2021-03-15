@@ -1,5 +1,6 @@
 package study.step4;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Racing {
@@ -33,7 +34,7 @@ public class Racing {
         cars.move(moveBehavior);
     }
 
-    public String getWinners() {
+    public List<Car> getWinners() {
         int maxLocation = cars.stream()
                 .map(car -> car.getLocation())
                 .max(Integer::compare)
@@ -41,7 +42,6 @@ public class Racing {
 
         return cars.stream()
                 .filter(car -> car.getLocation() == maxLocation)
-                .map(car -> car.getCarName())
-                .collect(Collectors.joining(RacingConstant.COMMA));
+                .collect(Collectors.toList());
     }
 }
