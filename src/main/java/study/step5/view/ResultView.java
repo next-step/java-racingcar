@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.StringJoiner;
 
 import study.step5.domain.Car;
-import study.step5.domain.Cars;
 import study.step5.domain.Position;
 
 public class ResultView {
@@ -24,7 +23,7 @@ public class ResultView {
     public static void printRacingResult(List<Car> carList) {
         carList.stream()
             .forEach(car -> {
-                System.out.println(car.getName() + " : " + convertPositionToPrintToken(car.getPosition(), PRINT_TOKEN));
+                System.out.println(car.getName().toString() + " : " + convertPositionToPrintToken(car.getPosition(), PRINT_TOKEN));
             });
     }
 
