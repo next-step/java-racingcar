@@ -16,7 +16,7 @@ import carracing.service.dto.RacingResult;
 public class CarRacingService {
 
     public RacingResult executeCarRacing(CarRacingRequest carRacingRequest) {
-        CarRacing carRacing = new CarRacing(carRacingRequest.getRoundCount(), new Cars(carRacingRequest.getRacingCarCount()));
+        CarRacing carRacing = new CarRacing(carRacingRequest.getRoundCount(), new Cars(carRacingRequest.getRacingCarNames()));
         return carRacing.executeRacing();
     }
 }

@@ -1,27 +1,29 @@
 package carracing.view;
 
-import carracing.controller.dto.CarRacingResponse;
-import carracing.controller.dto.RacingScoreInfo;
-import carracing.controller.dto.RoundResultInfo;
+import carracing.service.dto.RacingResult;
+import carracing.service.dto.RacingScore;
+import carracing.service.dto.RoundResult;
 
 import java.util.List;
 
 public class OutputView {
 
     private static final String SCORE_LINE = "-";
+    private static final String WINNER_DELIMITER = ", ";
 
-    public void printCarRacingResult(CarRacingResponse carRacingResponse) {
-        System.out.println("실행 결과");
-        for (RoundResultInfo roundResultInfo : carRacingResponse.getRoundResultList()) {
-            System.out.println("Round " + roundResultInfo.getRoundNumber());
-            printRacingScore(roundResultInfo.getRacingScoreInfoList());
+    public void printCarRacingResult(RacingResult racingResult) {
+        System.out.println("\n실행 결과");
+        for (RoundResult roundResult : racingResult.getRoundResultList()) {
+            System.out.println("Round " + roundResult.getRoundNumber());
+            printRacingScore(roundResult.getRacingScoreList());
             System.out.println();
         }
+        printWinners(racingResult.getWinnerList());
     }
 
-    private void printRacingScore(List<RacingScoreInfo> roundResultInfoList) {
-        for (RacingScoreInfo racingScoreInfo : roundResultInfoList) {
-            System.out.println(showScore(racingScoreInfo.getScore()));
+    private void printRacingScore(List<RacingScore> racingScoreList) {
+        for (RacingScore racingScore : racingScoreList) {
+            System.out.println(racingScore.getCarName() + " : " + showScore(racingScore.getScore()));
         }
     }
 
@@ -31,5 +33,15 @@ public class OutputView {
             line.append(SCORE_LINE);
         }
         return line.toString();
+    }
+
+    private void printWinners(List<String> winnerList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(winnerList.get(0));
+        for (int i = 1; i < winnerList.size(); i++) {
+            stringBuilder.append(WINNER_DELIMITER);
+            stringBuilder.append(winnerList.get(i));
+        }
+        System.out.println(stringBuilder.toString() + "가 최종 우승했습니다.");
     }
 }

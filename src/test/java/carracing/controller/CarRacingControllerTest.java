@@ -1,8 +1,8 @@
 package carracing.controller;
 
 import carracing.controller.dto.CarRacingRequest;
-import carracing.controller.dto.CarRacingResponse;
-import carracing.controller.dto.RoundResultInfo;
+import carracing.service.dto.RacingResult;
+import carracing.service.dto.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,14 +15,14 @@ class CarRacingControllerTest {
     void executeCarRacing_roundCount() {
         
         // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest("pobi,crong,honux,", 5);
 
         // when
         CarRacingController carRacingController = new CarRacingController();
-        CarRacingResponse carRacingResponse = carRacingController.executeCarRacing(carRacingRequest);
+        carracing.service.dto.RacingResult racingResult = carRacingController.executeCarRacing(carRacingRequest);
 
         // then
-        assertThat(carRacingResponse.getRoundResultList().size()).isEqualTo(5);
+        assertThat(racingResult.getRoundResultList().size()).isEqualTo(5);
     }
 
     @Test
@@ -30,15 +30,15 @@ class CarRacingControllerTest {
     void executeCarRacing_racingCarCount() {
 
         // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest("pobi,crong,honux,", 5);
 
         // when
         CarRacingController carRacingController = new CarRacingController();
-        CarRacingResponse carRacingResponse = carRacingController.executeCarRacing(carRacingRequest);
+        RacingResult racingResult = carRacingController.executeCarRacing(carRacingRequest);
 
         // then
-        for (RoundResultInfo roundResultInfo : carRacingResponse.getRoundResultList()) {
-            assertThat(roundResultInfo.getRacingScoreInfoList().size()).isEqualTo(3);
+        for (RoundResult roundResult : racingResult.getRoundResultList()) {
+            assertThat(roundResult.getRacingScoreList().size()).isEqualTo(3);
         }
     }
 }
