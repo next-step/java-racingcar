@@ -32,7 +32,7 @@ public class GameFactory {
     public static Cars cars(int carNum) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
-            carList.add(car());
+            carList.add(car(EMPTY_NAME+i+"번째 자동차"));
         }
         return new Cars(carList);
     }

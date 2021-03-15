@@ -53,10 +53,7 @@ public class Game {
         }
         for (int i = 0; i < tryNum; i++) {
             racingCars.tryForward();
-            ResultView.printResult(racingCars.checkForward());
-            if (i != tryNum) {
-                System.out.println("**********" + i + "번째 시도");
-            }
+            ResultView.printResultWithName(racingCars.checkCarStatus());
         }
     }
 }
