@@ -1,10 +1,8 @@
 package im.juniq.racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
-	private List<Car> cars = new ArrayList<>();
+	private Cars cars = new Cars();
+	private ResultView resultView = new ResultView();
 
 	public static void main(String[] args) {
 		RacingGame racingGame = new RacingGame();
@@ -14,35 +12,31 @@ public class RacingGame {
 	public void play() {
 		InputView inputView = new InputView();
 		inputView.scan();
-		createCars(inputView.getNumberOfCars());
+		createCars(inputView.getCarNames());
 		racing(inputView.getNumberOfTries());
+		printWinner();
 	}
 
-	public void createCars(int numberOfCars) {
-		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(new Car(i));
-		}
+	private void createCars(String[] carNames) {
+		cars.createCars(carNames);
 	}
 
 	private void racing(int numberOfTries) {
 		for (int i = 0; i < numberOfTries; i++) {
-			moveCars(new RandomNumberMovingStrategy());
-			printCarsMoveCount();
+			moveCars();
+			printScore();
 		}
 	}
 
-	public void moveCars(MovingStrategy movingStrategy) {
-		for (Car car : cars) {
-			car.move(movingStrategy);
-		}
+	private void moveCars() {
+		cars.move();
 	}
 
-	private void printCarsMoveCount() {
-		ResultView resultView = new ResultView(cars);
-		resultView.printCarMoveCount();
+	private void printScore() {
+		resultView.printCarsStatus(cars);
 	}
 
-	public List<Car> getCars() {
-		return cars;
+	private void printWinner() {
+		resultView.printWinner(cars.findByTopPosition());
 	}
 }
