@@ -19,11 +19,10 @@ public class CalculatorTest {
     @Test
     void 이항_덧셈을_테스트합니다() {
         //given
-        int num1 = 10;
-        int num2 = 5;
+        String expressionString = "10 + 5";
 
         //when
-        int result = calculator.add(num1, num2);
+        int result = calculator.calculate(expressionString);
 
         //then
         assertThat(result).isEqualTo(10 + 5);
@@ -32,11 +31,10 @@ public class CalculatorTest {
     @Test
     void 이항_뺄셈을_테스트합니다() {
         //given
-        int num1 = 10;
-        int num2 = 5;
+        String expressionString = "10 - 5";
 
         //when
-        int result = calculator.subtract(num1, num2);
+        int result = calculator.calculate(expressionString);
 
         //then
         assertThat(result).isEqualTo(10 - 5);
@@ -45,11 +43,10 @@ public class CalculatorTest {
     @Test
     void 이항_곱셈을_테스트합니다() {
         //given
-        int num1 = 10;
-        int num2 = 5;
+        String expressionString = "10 * 5";
 
         //when
-        int result = calculator.multiply(num1, num2);
+        int result = calculator.calculate(expressionString);
 
         //then
         assertThat(result).isEqualTo(10 * 5);
@@ -58,11 +55,10 @@ public class CalculatorTest {
     @Test
     void 이항_나눗셈을_테스트합니다() {
         //given
-        int num1 = 10;
-        int num2 = 5;
+        String expressionString = "10 / 5";
 
         //when
-        int result = calculator.divide(num1, num2);
+        int result = calculator.calculate(expressionString);
 
         //then
         assertThat(result).isEqualTo(10 / 5);
@@ -101,7 +97,7 @@ public class CalculatorTest {
     @Test
     void 사칙연산_기호가_아닐때_예외를_테스트합니다() {
         //given
-        String input = "&";
+        String input = "5 & 2";
 
         //when
         ThrowableAssert.ThrowingCallable throwingCallable = () -> {
