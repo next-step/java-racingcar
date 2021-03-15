@@ -1,28 +1,26 @@
 package study1.racing;
 
-import java.util.Random;
+import study1.racing.moveStrategy.MoveStrategy;
+import study1.racing.moveStrategy.RaceMove;
 
 public class Car {
+
+  private final int MAX_DISTANCE = 1;
+
+  private MoveStrategy moveStrategy;
+
   private int distance = 0;
 
-  public int getDistance() {
-    return distance;
-  }
-
-  public void setDistance(int movedDistance) {
-    this.distance += movedDistance;
+  public void setMoveStrategy(MoveStrategy moveStrategy) {
+    this.moveStrategy = moveStrategy;
   }
 
   public Car() {
+    this.moveStrategy = new RaceMove();
   }
 
   public int move() {
-    setDistance(movedDistance(1));
-    return getDistance();
-  }
-
-  // 이동한 거리 / min: 0, max: maxDistance
-  public int movedDistance(int maxDistance) {
-    return new Random().nextInt(maxDistance + 1);
+    distance += moveStrategy.move(MAX_DISTANCE);
+    return distance;
   }
 }

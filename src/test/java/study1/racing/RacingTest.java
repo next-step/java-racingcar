@@ -6,8 +6,11 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import study1.racing.moveStrategy.TestMove;
 
 
 public class RacingTest {
@@ -26,19 +29,16 @@ public class RacingTest {
   @DisplayName("ramdom 으로 값 생성 반복 확인 0 or 1")
   public void checkMoveDistance(RepetitionInfo repetitionInfo) {
     Car car = new Car();
-    int moved = car.movedDistance(1);
-    
+    int moved = car.move();
     assertThat(moved).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(1);
   }
 
-  @ParameterizedTest
-  @CsvSource(value = {"1:1:2", "2:2:4"}, delimiter = ':')
-  @DisplayName("거리를 세팅할때 기존거리와 더해서 세팅되는지 테스트")
-  public void checkSetDistance(int distance, int movedDistance, int total) {
+  @RepeatedTest(value = 100, name = "{displayName}, {currentRepetition}/{totalRepetitions}")
+  @DisplayName("test move 시 1 만 return 되는지 테스트")
+  public void checkMoveDistanceOnlyFixedNumber() {
     Car car = new Car();
-    car.setDistance(distance);
-    car.setDistance(movedDistance);
-    
-    assertThat(car.getDistance()).isEqualTo(total);
+    car.setMoveStrategy(new TestMove());
+    int moved = car.move();
+    assertThat(moved).isEqualTo(1);
   }
 }
