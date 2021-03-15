@@ -1,7 +1,7 @@
 package step3.domain;
 
 public class Car {
-    private static final int INITIAL_LOCATION = 1;
+    private static final int INITIAL_LOCATION = 0;
     private static final int MOBILITY_JUDGMENT_NUMBER = 4;
     private int location;
 
