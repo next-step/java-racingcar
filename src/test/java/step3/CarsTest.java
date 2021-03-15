@@ -3,6 +3,7 @@ package step3;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step3.domain.CarBefore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ class CarsTest {
     @ValueSource(ints = {2, 3, 4, 5})
     void Cars(int participants) {
         // given
-        Cars cars = new Cars(participants);
+        CarBefore cars = new CarBefore(participants);
         int expected = participants;
 
         // when
@@ -33,7 +34,7 @@ class CarsTest {
         }
 
         // when
-        Cars cars = new Cars(howManyCars);
+        CarBefore cars = new CarBefore(howManyCars);
         Map<Integer, String> actual = cars.getCars();
 
         // when
@@ -47,7 +48,7 @@ class CarsTest {
     void moveDecision(int random) {
         // given
         int count = new Random().nextInt(9) + 1;
-        Cars cars = new Cars(count);
+        CarBefore cars = new CarBefore(count);
         int randomIndex = new Random().nextInt(count);
 
         // when
@@ -62,5 +63,5 @@ class CarsTest {
 
         Assertions.assertThat(actual).isEqualTo(expected);
     }
-    
+
 }
