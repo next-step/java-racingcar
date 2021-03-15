@@ -14,7 +14,7 @@ class CarTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void moveOrStay_moveTest(int value) {
         // given
-        Car testCar = new Car();
+        Car testCar = new Car("test");
 
         // when
         testCar.moveOrStay(value);
@@ -28,7 +28,7 @@ class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void moveOrStay_stayTest(int value) {
         // given
-        Car testCar = new Car();
+        Car testCar = new Car("test");
 
         // when
         testCar.moveOrStay(value);
