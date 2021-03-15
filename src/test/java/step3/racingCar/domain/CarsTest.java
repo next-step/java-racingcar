@@ -91,22 +91,22 @@ class CarsTest {
     void checkCarStatusTest() {
         Map<String, Integer> carStatus = statCars.checkCarStatus();
         assertThat(carStatus.size()).isEqualTo(CAR_NUM);
-        for(int i=0; i<CAR_NUM; i++){
-            assertThat(carStatus.get(name+i)).isEqualTo(i);
+        for (int i = 0; i < CAR_NUM; i++) {
+            assertThat(carStatus.get(name + i)).isEqualTo(i);
         }
     }
 
 
     /*
-    * index를 넘겨받아 name+i의 이름과 i만큼의 forwardNum을 지니는 Mock Car를 생성하고 반환한다.
-    * */
+     * index를 넘겨받아 name+i의 이름과 i만큼의 forwardNum을 지니는 Mock Car를 생성하고 반환한다.
+     * */
     private Car createMockCar(int index) throws NoSuchFieldException, IllegalAccessException {
 
         Car testCar = mock(Car.class);
         Field nameField = testCar.getClass().getDeclaredField("name");
         nameField.setAccessible(true);
-        nameField.set(testCar, name+index);
-        when(testCar.getName()).thenReturn(name+index);
+        nameField.set(testCar, name + index);
+        when(testCar.getName()).thenReturn(name + index);
 
         Field forwardField = testCar.getClass().getDeclaredField("forwardNum");
         forwardField.setAccessible(true);
