@@ -16,17 +16,31 @@ public class Game {
     public static final String HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
     public static final String HOW_MANY_TRYS = "시도할 회수는 몇 회 인가요?";
     public static final String INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private final Cars racingCars;
-    private final int tryNum;
+    private Cars racingCars;
+    private int tryNum;
 
     /*
      * 게임 생성과 동시에 자동차 대수와 시도할 횟수를 확인하고,
      * GameFactory로부터 자동차 대수만큼의 자동차를 넘겨받는다.
      * */
-    public Game() {
-        List<Object> inputArr = InputView.input(new String[]{INPUT_CAR_NAMES, HOW_MANY_TRYS});
-        racingCars = GameFactory.cars((Integer) inputArr.get(0));
-        tryNum = (int) inputArr.get(1);
+    public Game(String[] strs) {
+        List<Object> inputArr = InputView.input(strs);
+        for(int i=0; i<strs.length; i++){
+            checkInputs(inputArr.get(i),strs[i]);
+        }
+    }
+
+    public void checkInputs(Object input, String str){
+        if(str.equals(HOW_MANY_TRYS)){
+            tryNum = (int) input;
+        }
+        if(str.equals(HOW_MANY_CARS)){
+            racingCars = GameFactory.cars((Integer) input);
+        }
+        if(str.equals(INPUT_CAR_NAMES)){
+            String[] names = ((String) input).split(",");
+            racingCars = GameFactory.namesCars(names);
+        }
     }
 
     /*

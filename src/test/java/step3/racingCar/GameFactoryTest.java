@@ -55,7 +55,7 @@ class GameFactoryTest {
         MockedStatic<InputView> inputView = mockStatic(InputView.class);
         when(InputView.input(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS}))
                 .thenReturn(inputs);
-        assertThat(gameFactory.game()).isInstanceOf(Game.class);
+        assertThat(gameFactory.game(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS})).isInstanceOf(Game.class);
         inputView.close();
     }
 }

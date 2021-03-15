@@ -15,8 +15,18 @@ import java.util.List;
 
 public class GameFactory {
 
-    public static Game game() {
-        return new Game();
+    public static final String EMPTY_NAME = "emptyName";
+
+    public static Game game(String[] str) {
+        return new Game(str);
+    }
+
+    public static Cars namesCars(String[] names){
+        List<Car> carList = new ArrayList<>();
+        for (String name : names) {
+            carList.add(car(name));
+        }
+        return new Cars(carList);
     }
 
     public static Cars cars(int carNum) {
@@ -26,8 +36,11 @@ public class GameFactory {
         }
         return new Cars(carList);
     }
+    public static Car car(){
+        return new Car(EMPTY_NAME);
+    }
 
-    public static Car car() {
-        return new Car("test");
+    public static Car car(String name) {
+        return new Car(name);
     }
 }
