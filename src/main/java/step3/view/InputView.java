@@ -1,7 +1,8 @@
-package step3;
+package step3.view;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import step3.util.ViewConstant;
 
 public class InputView {
 

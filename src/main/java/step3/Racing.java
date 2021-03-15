@@ -1,6 +1,14 @@
 package step3;
 
 import java.util.List;
+import step3.domain.Car;
+import step3.domain.Cars;
+import step3.domain.RandomMoveStrategy;
+import step3.domain.Rule;
+import step3.view.InputView;
+import step3.view.ResultView;
+import step3.util.CarConstant;
+import step3.util.RandomUtil;
 
 public class Racing {
 

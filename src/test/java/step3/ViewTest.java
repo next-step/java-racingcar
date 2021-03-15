@@ -10,6 +10,8 @@ import java.util.Scanner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.view.InputView;
+import step3.util.CarConstant;
 
 public class ViewTest {
 

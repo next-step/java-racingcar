@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,24 +26,23 @@ public class Cars {
             .forEach(name -> cars.add(new Car(name, initPosition)));
     }
 
-
     public void move(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
+    }
+
+    public List<Car> getWinners() {
+        Car maxPositionCar = getMaxPositionCar();
+
+        return cars.stream()
+            .filter(car -> car.isMaxPosition(maxPositionCar))
+            .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
         return this.cars;
     }
 
-    public List<Car> getWinners() {
-        Car max = getMaxPosition();
-
-        return cars.stream()
-            .filter(car -> car.getPosition() == max.getPosition())
-            .collect(Collectors.toList());
-    }
-
-    private Car getMaxPosition() {
+    private Car getMaxPositionCar() {
         return cars.stream()
             .max(Car::compareTo)
             .get();
