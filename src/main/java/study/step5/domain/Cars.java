@@ -1,5 +1,6 @@
 package study.step5.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -9,7 +10,19 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Cars> findWinners() {
-        return null;
+    public List<Car> findWinners() {
+        Position maxPosition = new Position(0);
+        for(Car car : cars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+
+        List<Car> winners = new ArrayList<>();
+        for(Car car : cars) {
+            if(car.getPosition().equals(maxPosition)) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
     }
 }

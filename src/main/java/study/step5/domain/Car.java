@@ -12,8 +12,12 @@ public class Car {
     private Position position;;
 
     public Car(String name) {
+        this(name, INIT_POSITION);
+    }
+
+    public Car(String name, int position) {
         this.name = new Name(name);
-        this.position = new Position(INIT_POSITION);
+        this.position = new Position(position);
     }
 
     public Position getPosition() {
@@ -28,5 +32,12 @@ public class Car {
         if(movingStrategy.movable()) {
             this.position = position.move();
         }
+    }
+
+    public Position getMaxPosition(Position maxPosition) {
+        if(this.position.lessThan(maxPosition)) {
+            return maxPosition;
+        }
+        return this.position;
     }
 }

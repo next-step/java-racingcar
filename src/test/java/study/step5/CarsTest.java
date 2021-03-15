@@ -21,6 +21,6 @@ public class CarsTest {
 
         List<Car> original = Arrays.asList(test1, test2, test3);
         Cars cars = new Cars(original);
-        assertThat(cars.findWinners()).containsExactly((Cars)Arrays.asList(test1, test2));
+        assertThat(cars.findWinners()).containsExactly(test1, test2);
     }
 }
