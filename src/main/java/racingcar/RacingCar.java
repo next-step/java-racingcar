@@ -1,23 +1,18 @@
 package racingcar;
 
-// 자동차의 움직임을 관여한다.
-
-import java.util.Random;
-
 public class RacingCar {
 
-    private static final int MINIMUM_NUMBER = 4;
-
-    private static Random random = new Random();
+    private String owner;
     private Position position;
 
 
-    public RacingCar(Position position) {
+    public RacingCar(String owner, Position position) {
+        this.owner = owner;
         this.position = position;
     }
 
     public void move() {
-        position.setLocation(isGo(random()));
+        position.setLocation(isGo(RandomNumber.random()));
     }
 
     public String status() {
@@ -25,13 +20,13 @@ public class RacingCar {
     }
 
     public String isGo(int number) {
-        if (number >= MINIMUM_NUMBER) {
+        if (number >= RandomNumber.MINIMUM_NUMBER) {
             return "-";
         }
         return "";
     }
 
-    public int random() {
-        return random.nextInt(10);
+    public String getOwner() {
+        return owner;
     }
 }
