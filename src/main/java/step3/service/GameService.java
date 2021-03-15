@@ -1,9 +1,12 @@
 package step3.service;
 
 import step3.domain.Car;
+import step3.util.Constant;
+import step3.util.RandomUtil;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GameService {
 
@@ -14,10 +17,14 @@ public class GameService {
     }
 
     public List<Car> makeCars(int numberOfCars) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
-        return cars;
+        return IntStream.range(Constant.ZERO, numberOfCars)
+                .mapToObj((int value) -> new Car())
+                .collect(Collectors.toList());
+    }
+
+    public List<Car> moveCars(List<Car> cars) {
+        return cars.stream()
+                .peek(car -> car.move(RandomUtil.getRandomIntBetweenZeroToNine()))
+                .collect(Collectors.toList());
     }
 }
