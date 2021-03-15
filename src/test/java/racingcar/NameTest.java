@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.CarNameException;
-import racingcar.model.Name;
+import racingcar.domain.Name;
 
 public class NameTest {
 

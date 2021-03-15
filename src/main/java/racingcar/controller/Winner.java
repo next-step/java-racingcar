@@ -2,8 +2,8 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.model.Car;
-import racingcar.model.Position;
+import racingcar.domain.Car;
+import racingcar.domain.Position;
 
 public class Winner {
 

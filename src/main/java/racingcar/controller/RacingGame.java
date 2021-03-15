@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.model.Car;
+import racingcar.domain.Car;
 import racingcar.view.ResultView;
 
 public class RacingGame {

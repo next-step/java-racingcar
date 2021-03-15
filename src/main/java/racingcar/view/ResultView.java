@@ -3,8 +3,8 @@ package racingcar.view;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.controller.Movement;
-import racingcar.model.Car;
-import racingcar.model.Name;
+import racingcar.domain.Car;
+import racingcar.domain.Name;
 
 public class ResultView {
 
