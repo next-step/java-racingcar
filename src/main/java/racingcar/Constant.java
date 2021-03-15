@@ -5,8 +5,10 @@ public class Constant {
     public static final String INPUT_REQUEST_PLAY_COUNT = "시도할 회수는 몇 회 인가요?";
     public static final String ERROR_INPUT_NAME_LENGTH = "[ERROR] 입력하신 값이 5자를 초과했습니다.";
     public static final String ERROR_COUNT_NUMBER = "[ERROR] 입력값은 숫자여야 합니다.";
+    public static final String ERROR_NEGATIVE_NUMBER = "[ERROR] 입력값은 음수가 아니여야합니다";
     public static final int MAX_RANDOM_NUM = 10;
     public static final int INPUT_RANDOM_NUM = 4;
+    public static final int INPUT_CAR_NAME_LENGTH = 5;
     public static final int INPUT_ZERO_NUM = 0;
 
 }
