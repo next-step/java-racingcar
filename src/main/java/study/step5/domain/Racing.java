@@ -8,19 +8,28 @@ public class Racing {
     private final Cars cars;
     private final int attemptNumber;
     private int attemptCount;
+    private final MoveBehavior moveBehavior;
 
-    private Racing(final Cars cars, final int attemptNumber) {
+    private Racing(final Cars cars, final int attemptNumber, final MoveBehavior moveBehavior) {
         if (attemptNumber < ATTEMPT_NUMBER_MIN) {
             throw new IllegalArgumentException(ATTEMPT_NUMBER_MIN_ERROR);
         }
         this.cars = cars;
         this.attemptNumber = attemptNumber;
         this.attemptCount = 0;
+        this.moveBehavior = moveBehavior;
     }
 
-    public static Racing of(final Cars cars, final int attemptNumber) {
-        return new Racing(cars, attemptNumber);
+    public static Racing of(final Cars cars, final int attemptNumber, final MoveBehavior moveBehavior) {
+        return new Racing(cars, attemptNumber, moveBehavior);
     }
 
+    public int getAttemptCount() {
+        return attemptCount;
+    }
 
+    public void race() {
+        attemptCount++;
+        cars.move(moveBehavior);
+    }
 }
