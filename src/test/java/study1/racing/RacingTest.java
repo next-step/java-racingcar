@@ -30,4 +30,15 @@ public class RacingTest {
     
     assertThat(moved).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(1);
   }
+
+  @ParameterizedTest
+  @CsvSource(value = {"1:1:2", "2:2:4"}, delimiter = ':')
+  @DisplayName("거리를 세팅할때 기존거리와 더해서 세팅되는지 테스트")
+  public void checkSetDistance(int distance, int movedDistance, int total) {
+    Car car = new Car();
+    car.setDistance(distance);
+    car.setDistance(movedDistance);
+    
+    assertThat(car.getDistance()).isEqualTo(total);
+  }
 }
