@@ -12,6 +12,14 @@ public class Car {
     this.name = name;
   }
 
+  public String getName() {
+    return this.name;
+  }
+
+  public int getDistance() {
+    return this.distance;
+  }
+
   private void validate(String name) {
     if (name.length() >= NAME_CONSTRAINT) {
       throw new OverCarNameLengthException(NAME_EXCEPTION);
@@ -21,9 +29,4 @@ public class Car {
   public void move(MovableStrategy movable) {
     this.distance += movable.movable() ? 1 : 0;
   }
-
-  public int getDistance() {
-    return this.distance;
-  }
-
 }

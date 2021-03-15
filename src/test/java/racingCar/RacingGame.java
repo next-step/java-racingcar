@@ -23,7 +23,7 @@ public class RacingGame {
     for (int i = 0; i < tryCount; i++) {
       cars.forEach(car -> {
         car.move(new RandomMovable());
-        outputView.printCarDistance(car.getDistance());
+        outputView.printCarDistance(car);
       });
       outputView.printEmptyLine();
     }
