@@ -7,11 +7,11 @@ public class Car {
     private final String UNIT = "-";
     private StringBuilder status;
 
-    public static Car newInstance() {
+    public static Car getInstance() {
         return new Car();
     }
 
-    public static Car of(Car other) {
+    public static Car newInstance(Car other) {
         return new Car(other);
     }
 

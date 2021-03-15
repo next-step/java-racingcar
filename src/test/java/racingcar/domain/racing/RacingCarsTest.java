@@ -25,4 +25,5 @@ class RacingCarsTest {
 
         // then
         assertThat(actual).isEqualTo(expected);
-    }}
+    }
+}

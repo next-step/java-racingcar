@@ -3,8 +3,9 @@ package step4.domain.driver;
 import step4.domain.driver.car.Car;
 import step4.domain.driver.name.Name;
 import step4.domain.startegy.move.MoveStrategy;
+import step4.domain.startegy.name.NamingStrategy;
 
-public class Driver {
+public class Driver implements Cloneable {
 
     private final String BLANK = " ";
     private final String COLON = ":";
@@ -12,13 +13,23 @@ public class Driver {
     private Name name;
     private Car car;
 
+    private Driver(Name name, Car car) {
+        this.name = name;
+        this.car = car;
+    }
+
+    // 깊은 복사를 위해 아래와 같이 처리했습니다.
+    private Driver(Driver other, NamingStrategy strategy) {
+        this.name = Name.from(other.name.toString(), strategy);
+        this.car = Car.newInstance(other.car);
+    }
+
     public static Driver from(Name name, Car car) {
         return new Driver(name, car);
     }
 
-    private Driver(Name name, Car car) {
-        this.name = name;
-        this.car = car;
+    public static Driver newInstance(Driver other, NamingStrategy strategy) {
+        return new Driver(other, strategy);
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -36,6 +47,5 @@ public class Driver {
                 .append(car);   // toString 활용(), 질문있습니다! : 명시하는 것이 좋을까요? 이대로 사용할까요?
         return stringBuilder.toString();
     }
-
 
 }

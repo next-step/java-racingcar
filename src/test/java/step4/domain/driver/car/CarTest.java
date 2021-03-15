@@ -13,7 +13,7 @@ class CarTest {
     @RepeatedTest(value = 10, name = "현재 Loop : {0}")
     void move_ValidationValue_EqualUNIT() {
         // given
-        Car car = Car.newInstance();
+        Car car = Car.getInstance();
 
         // when
         car.move(() -> true);

@@ -18,7 +18,7 @@ class DriverTest {
         // given
         String expected = "김우재 : -";
         Name driverName = Name.from("김우재", name -> MINIMUM <= name.length() && name.length() <= MAXIMUM);
-        Car drivingCar = Car.newInstance();
+        Car drivingCar = Car.getInstance();
         Driver driver = Driver.from(driverName, drivingCar);
 
         // when
