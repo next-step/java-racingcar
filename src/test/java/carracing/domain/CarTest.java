@@ -1,11 +1,12 @@
 package carracing.domain;
 
-import carracing.service.dto.RacingScores;
+import carracing.service.dto.RacingScore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -97,12 +98,12 @@ class CarTest {
     void registerRacingScore() {
         // given
         Cars cars = new Cars("pobi,crong,honux");
-        RacingScores racingScores = cars.inquiryRacingScores();
+        List<RacingScore> racingScores = cars.inquiryRacingScores();
 
         // when
         cars.driveAll();
 
         // then
-        assertThat(cars.getCarList().size()).isEqualTo(racingScores.getRacingScoreList().size());
+        assertThat(cars.getCarList().size()).isEqualTo(racingScores.size());
     }
 }

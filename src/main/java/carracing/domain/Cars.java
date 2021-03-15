@@ -2,7 +2,6 @@ package carracing.domain;
 
 import carracing.constants.CarRacingConstant;
 import carracing.service.dto.RacingScore;
-import carracing.service.dto.RacingScores;
 import common.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -59,11 +58,11 @@ public class Cars {
         }
     }
 
-    public RacingScores inquiryRacingScores() {
-        List<RacingScore> racingScores = new ArrayList<>();
+    public List<RacingScore> inquiryRacingScores() {
+        List<RacingScore> racingScoreList = new ArrayList<>();
         for (Car car : carList) {
-            racingScores.add(car.inquiryRacingScore());
+            racingScoreList.add(car.inquiryRacingScore());
         }
-        return new RacingScores(racingScores);
+        return racingScoreList;
     }
 }

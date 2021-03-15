@@ -4,7 +4,6 @@ import carracing.constants.CarRacingConstant;
 import carracing.domain.Cars;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
-import carracing.service.dto.RacingScores;
 import carracing.service.dto.RoundResult;
 
 import java.util.ArrayList;
@@ -60,15 +59,15 @@ public class CarRacing {
         return new RoundResult(roundNumber, executeScoring(cars));
     }
 
-    private RacingScores executeScoring(Cars cars) {
+    private List<RacingScore> executeScoring(Cars cars) {
         cars.driveAll();
         return cars.inquiryRacingScores();
     }
 
-    private List<String> chooseWinner(RacingScores inquiryRacingScores) {
+    private List<String> chooseWinner(List<RacingScore> racingScoreList) {
         int winnerScore = 0;
         List<String> winnerList = new ArrayList<>();
-        for (RacingScore racingScore : inquiryRacingScores.getRacingScoreList()) {
+        for (RacingScore racingScore : racingScoreList) {
             winnerList  = decideWinnerList(winnerScore, winnerList, racingScore);
             winnerScore = decideWinnerScore(winnerScore, racingScore);
         }

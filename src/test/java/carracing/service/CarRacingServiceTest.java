@@ -4,7 +4,6 @@ import carracing.controller.dto.CarRacingRequest;
 import carracing.domain.Cars;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
-import carracing.service.dto.RacingScores;
 import carracing.service.dto.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ class CarRacingServiceTest {
 
         // then
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
-            assertThat(3).isEqualTo(roundResult.getRacingScores().getRacingScoreList().size());
+            assertThat(3).isEqualTo(roundResult.getRacingScoreList().size());
         }
     }
 
@@ -58,8 +57,7 @@ class CarRacingServiceTest {
 
         // then
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
-            RacingScores racingScores = roundResult.getRacingScores();
-            for (RacingScore racingScore : racingScores.getRacingScoreList()) {
+            for (RacingScore racingScore : roundResult.getRacingScoreList()) {
                 assertThat(0).isLessThanOrEqualTo(racingScore.getScore());
             }
         }

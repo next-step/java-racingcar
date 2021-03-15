@@ -1,8 +1,8 @@
 package carracing.view;
 
-import carracing.controller.dto.CarRacingResponse;
-import carracing.controller.dto.RacingScoreInfo;
-import carracing.controller.dto.RoundResultInfo;
+import carracing.service.dto.RacingResult;
+import carracing.service.dto.RacingScore;
+import carracing.service.dto.RoundResult;
 
 import java.util.List;
 
@@ -11,19 +11,19 @@ public class OutputView {
     private static final String SCORE_LINE = "-";
     private static final String WINNER_DELIMITER = ", ";
 
-    public void printCarRacingResult(CarRacingResponse carRacingResponse) {
+    public void printCarRacingResult(RacingResult racingResult) {
         System.out.println("\n실행 결과");
-        for (RoundResultInfo roundResultInfo : carRacingResponse.getRoundResultList()) {
-            System.out.println("Round " + roundResultInfo.getRoundNumber());
-            printRacingScore(roundResultInfo.getRacingScoreInfoList());
+        for (RoundResult roundResult : racingResult.getRoundResultList()) {
+            System.out.println("Round " + roundResult.getRoundNumber());
+            printRacingScore(roundResult.getRacingScoreList());
             System.out.println();
         }
-        printWinners(carRacingResponse.getWinnerList());
+        printWinners(racingResult.getWinnerList());
     }
 
-    private void printRacingScore(List<RacingScoreInfo> roundResultInfoList) {
-        for (RacingScoreInfo racingScoreInfo : roundResultInfoList) {
-            System.out.println(racingScoreInfo.getCarName() + " : " + showScore(racingScoreInfo.getScore()));
+    private void printRacingScore(List<RacingScore> racingScoreList) {
+        for (RacingScore racingScore : racingScoreList) {
+            System.out.println(racingScore.getCarName() + " : " + showScore(racingScore.getScore()));
         }
     }
 

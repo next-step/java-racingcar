@@ -1,14 +1,8 @@
 package carracing.controller;
 
 import carracing.controller.dto.CarRacingRequest;
-import carracing.controller.dto.CarRacingResponse;
-import carracing.controller.dto.RacingScoreInfo;
-import carracing.controller.dto.RoundResultInfo;
 import carracing.service.CarRacingService;
-import carracing.service.dto.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import carracing.service.dto.RacingResult;
 
 /**
  * CarRacingController
@@ -26,23 +20,7 @@ public class CarRacingController {
         this.carRacingService = new CarRacingService();
     }
 
-    public CarRacingResponse executeCarRacing(CarRacingRequest carRacingRequest) {
-        return assembleResponse(carRacingService.executeCarRacing(carRacingRequest));
-    }
-
-    private CarRacingResponse assembleResponse(RacingResult racingResult) {
-        List<RoundResultInfo> roundResultInfoList = new ArrayList<>();
-        for (RoundResult roundResult : racingResult.getRoundResultList()) {
-            roundResultInfoList.add(new RoundResultInfo(roundResult.getRoundNumber(), assembleRacingScoreInfo(roundResult.getRacingScores())));
-        }
-        return new CarRacingResponse(roundResultInfoList, racingResult.getWinnerList());
-    }
-
-    private List<RacingScoreInfo> assembleRacingScoreInfo(RacingScores racingScores) {
-        List<RacingScoreInfo> racingScoreInfoList = new ArrayList<>();
-        for (RacingScore racingScore : racingScores.getRacingScoreList()) {
-            racingScoreInfoList.add(new RacingScoreInfo(racingScore.getCarName(), racingScore.getScore()));
-        }
-        return racingScoreInfoList;
+    public RacingResult executeCarRacing(CarRacingRequest carRacingRequest) {
+        return carRacingService.executeCarRacing(carRacingRequest);
     }
 }

@@ -1,5 +1,7 @@
 package carracing.service.dto;
 
+import java.util.List;
+
 /**
  * RoundResult
  * description 경기 한 라운드 결과
@@ -13,18 +15,18 @@ package carracing.service.dto;
 public class RoundResult {
 
     private final int roundNumber;
-    private final RacingScores racingScores;
+    private final List<RacingScore> racingScoreList;
 
     public int getRoundNumber() {
         return roundNumber;
     }
 
-    public RacingScores getRacingScores() {
-        return racingScores;
+    public List<RacingScore> getRacingScoreList() {
+        return racingScoreList;
     }
 
-    public RoundResult(int roundNumber, RacingScores racingScores) {
+    public RoundResult(int roundNumber, List<RacingScore> racingScoreList) {
         this.roundNumber = roundNumber;
-        this.racingScores = racingScores;
+        this.racingScoreList = racingScoreList;
     }
 }
