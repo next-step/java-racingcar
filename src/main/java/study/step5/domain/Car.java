@@ -7,16 +7,12 @@ package study.step5.domain;
  *
  */
 public class Car {
-    private static final int MAX_NAME_LENGTH = 5;
     private static final int INIT_POSITION = 0;
-    private String name;
+    private Name name;
     private Position position;;
 
     public Car(String name) {
-        if(name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-        this.name = name;
+        this.name = new Name(name);
         this.position = new Position(INIT_POSITION);
     }
 
@@ -24,7 +20,7 @@ public class Car {
         return position;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
