@@ -1,10 +1,13 @@
 package racingcar.domain;
 
+import racingcar.service.MoveStrategy;
+import racingcar.service.RandomMoveStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(int carNumber) {
         cars = generateCar(carNumber);
@@ -18,12 +21,15 @@ public class Cars {
         return cars;
     }
 
-    public int getCarsSize() {
-        return cars.size();
+    public void moveCars() {
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        for (int i = 0; i < getSize(); i++) {
+            cars.get(i).move(moveStrategy.getIsMove());
+        }
     }
 
-    public void moveOneCar(int index, Boolean isMove) {
-        cars.get(index).move(isMove);
+    public int getSize() {
+        return cars.size();
     }
 
     public List<Car> getCars() {

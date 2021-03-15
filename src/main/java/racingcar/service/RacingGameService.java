@@ -2,34 +2,33 @@ package racingcar.service;
 
 import racingcar.domain.Cars;
 import racingcar.domain.GameStep;
-import racingcar.view.InputView;
+import racingcar.domain.Record;
+import racingcar.domain.Records;
 
-public class RacingGameService implements GameService<Cars> {
+public class RacingGameService implements GameService {
     private Cars cars;
     private GameStep gameStep;
 
     @Override
-    public void initGame() {
-        gameStep = new GameStep();
-        cars = new Cars(InputView.getCarNumber());
+    public void init(int carNumber, int stepNumber) {
+        gameStep = new GameStep(stepNumber);
+        cars = new Cars(carNumber);
     }
 
     @Override
-    public void runStep() {
-        MoveStrategy moveStrategy = new RandomMoveStrategy();
-        for (int i = 0; i < cars.getCarsSize(); i++) {
-            cars.moveOneCar(i, moveStrategy.getIsMove());
+    public Records run() {
+        Records records = new Records();
+        while (gameStep.isRunning()) {
+            runStep();
+            records.addRecord(new Record(cars));
         }
+        return records;
+    }
+
+    private void runStep() {
+        cars.moveCars();
         gameStep.increaseStep();
     }
 
-    @Override
-    public Boolean isRunning() {
-        return gameStep.isRunning();
-    }
 
-    @Override
-    public Cars getGameInstance() {
-        return cars;
-    }
 }

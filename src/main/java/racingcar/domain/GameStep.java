@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.InputView;
-
 public class GameStep {
     private final static int START_STEP = 0;
     private final static int STEP_INCREASE = 1;
@@ -9,8 +7,8 @@ public class GameStep {
     private int nowStep;
     private final int stepNumber;
 
-    public GameStep() {
-        stepNumber = InputView.getStepNumber();
+    public GameStep(int stepNumber) {
+        this.stepNumber = stepNumber;
         nowStep = START_STEP;
     }
 

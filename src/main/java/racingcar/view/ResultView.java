@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.Record;
+import racingcar.domain.Records;
 
 public class ResultView {
     private final static String LOCATION_EXPRESSION = "-";
@@ -11,18 +11,16 @@ public class ResultView {
         System.out.println(SET_OUTPUT_RESULT);
     }
 
-    public static void printLocationView(Cars cars) {
-        for (Car car : cars.getCars()) {
-            System.out.println(getLocationView(car));
+    public static void printRecords(Records records) {
+        for (Record record : records.getRecords()) {
+            printRecord(record);
+            System.out.println();
         }
-        System.out.println();
     }
 
-    public static String getLocationView(Car car) {
-        String result = "";
-        for (int i = 0; i < car.getCurrentLocation(); i++) {
-            result = result.concat(LOCATION_EXPRESSION);
+    private static void printRecord(Record record) {
+        for (String output : record.getRecord()) {
+            System.out.println(output);
         }
-        return result;
     }
 }

@@ -14,7 +14,7 @@ public class CarsTest {
         Cars cars = new Cars(carNumber);
 
         //when
-        int resultCarSize = cars.getCarsSize();
+        int resultCarSize = cars.getSize();
 
         //then
         assertThat(resultCarSize).isEqualTo(carNumber);

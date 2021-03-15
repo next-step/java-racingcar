@@ -1,11 +1,10 @@
 package racingcar.service;
 
-public interface GameService<T> {
-    public void initGame();
+import racingcar.domain.Records;
 
-    public void runStep();
+public interface GameService {
+    public void init(int gameInstanceNumber, int stepNumber);
 
-    public Boolean isRunning();
+    public Records run();
 
-    public T getGameInstance();
 }
