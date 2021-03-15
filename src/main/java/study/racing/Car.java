@@ -30,10 +30,4 @@ public class Car {
     }
   }
 
-  public void move(MoveStrategy strategy, int number) {
-    if (strategy.isMove(number)) {
-      this.position ++;
-    }
-  }
-
 }

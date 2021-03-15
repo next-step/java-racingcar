@@ -9,8 +9,6 @@ public class NumberConditionMoveStrategy implements MoveStrategy {
     int randomNumber = RandomNumberAssigner.getRandomNumber();
     return isMove(randomNumber);
   }
-
-  @Override
   public boolean isMove(int number) {
     if (number >= MOVE_CONDITION) {
       return true;

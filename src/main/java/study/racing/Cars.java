@@ -22,12 +22,6 @@ public class Cars {
     }
   }
 
-  public void printPosition() {
-    for (Car car : cars) {
-      ResultView.printPosition(car.getName(), car.getPosition());
-    }
-  }
-
   public List<String> getWinnerNames() {
     int winnerPosition = getWinnerPosition();
     List<String> winners = new ArrayList<>();
@@ -40,14 +34,7 @@ public class Cars {
   public int getWinnerPosition() {
     int max = 0;
     for (Car car : cars) {
-      max = comparePosition(max, car.getPosition());
-    }
-    return max;
-  }
-
-  private int comparePosition(int max, int position) {
-    if (max < position) {
-      return position;
+      max = Math.max(max, car.getPosition());
     }
     return max;
   }

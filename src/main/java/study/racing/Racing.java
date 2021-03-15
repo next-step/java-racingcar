@@ -9,7 +9,7 @@ public class Racing {
     String[] carNames = InputView.getCarNames();
     Cars cars = createCars(carNames);
     int tryCount = InputView.getTryCount();
-    printResult(cars, tryCount);
+    printPosition(cars, tryCount);
     List<String> winnerNames = cars.getWinnerNames();
     printWinner(winnerNames);
   }
@@ -22,17 +22,15 @@ public class Racing {
     return cars;
   }
 
-  private static void printResult(Cars cars, int tryCount) {
+  private static void printPosition(Cars cars, int tryCount) {
     NumberConditionMoveStrategy strategy = new NumberConditionMoveStrategy();
     for (int i = 0; i < tryCount; i++) {
       cars.moveByStrategy(strategy);
-      cars.printPosition();
-      System.out.println("");
+      ResultView.printPosition(cars);
     }
   }
 
-  private static void printWinner(List<String> winners) {
-    String winnerNames = StringUtils.join(winners, ", ");
+  private static void printWinner(List<String> winnerNames) {
     ResultView.printWinner(winnerNames);
   }
 
