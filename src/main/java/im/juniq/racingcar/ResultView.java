@@ -1,7 +1,5 @@
 package im.juniq.racingcar;
 
-import java.util.List;
-
 public class ResultView {
 	public void printCarsStatus(Cars cars) {
 		for (Car car : cars) {
@@ -18,7 +16,7 @@ public class ResultView {
 		System.out.println();
 	}
 
-	public void printWinner(List<Car> winners) {
+	public void printWinner(Cars winners) {
 		for (int i = 0; i < winners.size(); i++) {
 			printSeparator(i);
 			System.out.print(winners.get(i).getName());
