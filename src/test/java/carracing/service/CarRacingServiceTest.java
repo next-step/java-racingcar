@@ -9,7 +9,6 @@ import carracing.service.dto.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +20,7 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 입력한 라운드 수 만큼의 라운드 결과가 존재해야 한다")
     void carRacingService_roundCount() {
         // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest("pobi,crong,honux,", 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
@@ -35,7 +34,7 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 각 라운드 결과에는 입력한 자동차 수 만큼의 성적이 존재해야 한다")
     void carRacingService_racingScoreCount() {
         // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest("pobi,crong,honux,", 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
@@ -51,7 +50,7 @@ class CarRacingServiceTest {
     @DisplayName("서비스 실행결과 - 라운드별 성적 리스트의 성적은 0 이상이다")
     void carRacingService_racingScore_score() {
         // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest("pobi,crong,honux,", 5);
         CarRacingService carRacingService = new CarRacingService();
 
         // when
@@ -72,7 +71,7 @@ class CarRacingServiceTest {
     void carRacing_validateRoundCount(int roundCount) {
         // given when then
         assertThatIllegalArgumentException()
-                .isThrownBy( () -> new CarRacing(roundCount, new Cars(5)) )
+                .isThrownBy( () -> new CarRacing(roundCount, new Cars("pobi,crong,honux")) )
                 .withMessageMatching("경기 횟수는 최소 1회 이상이어야 합니다.");
     }
 
@@ -85,43 +84,4 @@ class CarRacingServiceTest {
                 .withMessageMatching("차량정보를 입력해 주세요.");
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"0:0", "0:6", "0:-1", "-1:0", "-1:100", "-1:9"}, delimiter = ':')
-    @DisplayName("입력값 검증 - 참가 자동차 수는 한 대 이상이어야 한다")
-    void validate_racingCarCount(int racingCarCount, int roundCount) {
-        // given
-        CarRacingService carRacingService = new CarRacingService();
-        CarRacingRequest carRacingRequest = new CarRacingRequest(racingCarCount, roundCount);
-
-        // when then
-        assertThatIllegalArgumentException()
-                .isThrownBy( () -> carRacingService.executeCarRacing(carRacingRequest) )
-                .withMessageMatching("자동차 등록수는 최소 한 대 이상이어야 합니다.")
-                ;
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"5:0", "5:-7", "5:-1"}, delimiter = ':')
-    @DisplayName("입력값 검증 - 경기 횟수는 최소 1회 이상이어야 한다")
-    void validate_roundCount(int racingCarCount, int roundCount) {
-        // given
-        CarRacingService carRacingService = new CarRacingService();
-        CarRacingRequest carRacingRequest = new CarRacingRequest(racingCarCount, roundCount);
-
-        // when then
-        assertThatIllegalArgumentException()
-                .isThrownBy( () -> carRacingService.executeCarRacing(carRacingRequest) )
-                .withMessageMatching("경기 횟수는 최소 1회 이상이어야 합니다.")
-        ;
-    }
-
-    @Test
-    @DisplayName("플레이어 등록 테스트 - 차량정보 필수입력")
-    void registerPlayer() {
-        // given when then
-        assertThatIllegalArgumentException()
-                .isThrownBy( () -> new Cars(0) )
-                .withMessageMatching("자동차 등록수는 최소 한 대 이상이어야 합니다.")
-        ;
-    }
 }

@@ -15,7 +15,7 @@ class CarRacingControllerTest {
     void executeCarRacing_roundCount() {
         
         // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest("pobi,crong,honux,", 5);
 
         // when
         CarRacingController carRacingController = new CarRacingController();
@@ -30,7 +30,7 @@ class CarRacingControllerTest {
     void executeCarRacing_racingCarCount() {
 
         // given
-        CarRacingRequest carRacingRequest = new CarRacingRequest(3, 5);
+        CarRacingRequest carRacingRequest = new CarRacingRequest("pobi,crong,honux,", 5);
 
         // when
         CarRacingController carRacingController = new CarRacingController();
