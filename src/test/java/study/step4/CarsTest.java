@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,8 +22,8 @@ class CarsTest {
 
     @DisplayName("차량 이동 정합성 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"자동차1호:1:-", "자동차1호,자동차2호:4:----,----", "자동차1호,자동차2호,자동차3호:5:-----,-----,-----"}, delimiter = ':')
-    void move(String carNames, int moveIndex, String expected) {
+    @CsvSource(value = {"자동차1호:1:1", "자동차1호,자동차2호:4:8", "자동차1호,자동차2호,자동차3호:5:15"}, delimiter = ':')
+    void move(String carNames, int moveIndex, int expected) {
         MoveBehavior moveBehavior = new OneLocationMoveBehavior();
         Cars cars = Cars.of(carNames.split(RacingConstant.COMMA));
 
@@ -33,8 +32,8 @@ class CarsTest {
         }
 
         assertThat(cars.stream()
-                .map(car -> car.getLocationToString())
-                .collect(Collectors.joining(RacingConstant.COMMA))).isEqualTo(expected);
+                .mapToInt(car -> car.getLocation())
+                .sum()).isEqualTo(expected);
     }
 
 
