@@ -21,15 +21,19 @@ public class Car {
         return new Car(carName);
     }
 
-    public void move() {
-        this.location++;
-    }
-
     public String getCarName() {
         return carName;
     }
 
     public int getLocation() {
         return location;
+    }
+
+    public void move() {
+        this.location++;
+    }
+
+    public void move(int location) {
+        this.location += location;
     }
 }

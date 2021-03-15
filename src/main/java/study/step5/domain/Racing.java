@@ -1,5 +1,7 @@
 package study.step5.domain;
 
+import java.util.List;
+
 public class Racing {
 
     private static final int ATTEMPT_NUMBER_MIN = 1;
@@ -39,5 +41,9 @@ public class Racing {
     public void race() {
         attemptCount++;
         cars.move(moveBehavior);
+    }
+
+    public List<Car> getWinners() {
+        return cars.getWinners();
     }
 }

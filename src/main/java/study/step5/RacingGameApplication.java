@@ -16,5 +16,7 @@ public class RacingGameApplication {
             racing.race();
             ResultView.printRace(racing.getCars());
         }
+
+        ResultView.printRaceWinner(racing.getWinners());
     }
 }
