@@ -1,52 +1,48 @@
 package racing;
 
-import utils.StringUtils;
+import racing.core.RacingCar;
+import racing.core.RacingRound;
+import racing.view.InputView;
+import racing.view.ResultView;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 public class RacingCarGame {
 
-  private String[] players;
+  private List<RacingCar> players;
 
   private int totalRound;
 
-  private RacingCarGame() {
+  public static void main(String[] args) {
+    InputView inputView = InputView.executeConsole();
+    List<RacingRound> result = RacingCarGame.ready(inputView)
+            .play();
+
+    ResultView.print(result);
   }
 
-  public static RacingCarGame ready(int totalPlayer, int totalRound) {
+  public static RacingCarGame ready(InputView inputView) {
     RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.players = new String[totalPlayer];
-    racingCarGame.totalRound = totalRound;
+    racingCarGame.players = IntStream.range(0, inputView.getTotalPlayer())
+            .mapToObj(RacingCar::createNew)
+            .collect(Collectors.toList());
+
+    racingCarGame.totalRound = inputView.getTotalRound();
     return racingCarGame;
   }
 
-  public void play() {
-    for (int round = 0; round < totalRound; round++) {
-      System.out.println(String.format("\n==========round%d start==========", round + 1));
-      for (int player = 0; player < players.length; player++) {
-        String position = getPosition(player);
-        System.out.println(String.format("player%d : %s", player + 1, position));
-      }
+  public List<RacingRound> play() {
+    List<RacingRound> result = new ArrayList<>(totalRound);
+    for (int i = 0; i < totalRound; i++) {
+      RacingRound round = new RacingRound();
+      round.record(players);
+      result.add(round);
     }
+    return result;
   }
 
-
-  private String getPosition(int player) {
-    String position = StringUtils.defaultString(players[player]);
-    if (isMove()) {
-      position += "=";
-      players[player] = position;
-    }
-    return position;
-  }
-
-
-  private boolean isMove() {
-    return getRandomNumber() >= 4;
-  }
-
-  private int getRandomNumber() {
-    return new Random().nextInt(10);
-  }
 }

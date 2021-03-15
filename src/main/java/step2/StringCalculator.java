@@ -1,6 +1,6 @@
 package step2;
 
-import utils.StringUtils;
+import racing.utils.StringUtils;
 
 public class StringCalculator {
 
