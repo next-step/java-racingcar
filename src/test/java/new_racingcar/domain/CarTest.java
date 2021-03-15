@@ -54,6 +54,19 @@ class CarTest {
         });
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    @DisplayName("자동차 이름 공백 시 에러 발생")
+    public void carNameLength0ErrorTest(String name) throws Exception {
+        //given
+        List<String> names = Arrays.asList(",,,,,".split(","));
+
+        //when,then
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            setCar(name);
+        });
+    }
+
     @Test
     @DisplayName("읽기전용 cars 사용 시 에러 확인")
     public void readOnlyCarTest() throws Exception {

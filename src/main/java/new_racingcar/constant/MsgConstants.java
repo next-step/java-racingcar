@@ -10,7 +10,7 @@ public class MsgConstants {
     // ResultView Message
     public static final String RESULT_RACING_END_MESSAGE = "경기 결과";
 
-    // Car Message
+    // Cars, Car Message
     public static final String CAR_NAME_ERROR_MESSAGE = "자동차 이름이 잘못되었습니다.";
 
     // GrandPrix Message

@@ -1,5 +1,6 @@
 package new_racingcar.domain;
 
+import new_racingcar.constant.MsgConstants;
 import new_racingcar.strategy.MoveStrategy;
 
 import java.util.ArrayList;
@@ -11,7 +12,14 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> names, MoveStrategy moveStrategy) {
+        isNamesSizeValie(names);
         this.cars = createCar(names, moveStrategy);
+    }
+
+    private void isNamesSizeValie(List<String> names) {
+        if (names.size() == 0) {
+            throw new IllegalArgumentException(MsgConstants.CAR_NAME_ERROR_MESSAGE);
+        }
     }
 
     public Cars(List<Car> cars) {

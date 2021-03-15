@@ -30,6 +30,19 @@ class CarsTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {",,,,,"})
+    @DisplayName("자동차 개수 에러 테스트")
+    public void carSizeExceptionTest(String inputName) throws Exception {
+        //given
+        List<String> names = Arrays.asList(inputName.split(","));
+
+        //when, then
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Cars(names, new MoveOneStrategy());
+        });
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"pobi,crong,honux"})
     @DisplayName("전략에 따른 자동차 움직임 확인 - MOVE ZERO")
     public void moveZeroStrategyRunTest(String inputName) throws Exception {
