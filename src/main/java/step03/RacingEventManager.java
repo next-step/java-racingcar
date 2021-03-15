@@ -10,7 +10,7 @@ public class RacingEventManager {
 
     private List<RacingCar> racingCars = new ArrayList<>();
 
-    RacingEventManager(int carCount, int tryCount) {
+    public RacingEventManager(int carCount, int tryCount) {
         ValidateUtils.inputIsZero(carCount, tryCount);
         this.carCount = carCount;
         this.tryCount = tryCount;
@@ -21,22 +21,8 @@ public class RacingEventManager {
     }
 
     public void startRacing() {
-        makeCars();
-        for (int i = 0; i < tryCount; i++) {
-            racing();
-        }
+        RacingCarFactory racingCarFactory = new RacingCarFactory();
+        racingCarFactory.makeCars(carCount);
+        racingCarFactory.racing(tryCount);
     }
-
-    private void racing() {
-        for (RacingCar car : racingCars) {
-            car.tryToMove(RandomUtils.randomRange());
-        }
-    }
-
-    private void makeCars() {
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar());
-        }
-    }
-
 }
