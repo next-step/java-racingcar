@@ -84,4 +84,17 @@ class CarRacingServiceTest {
                 .withMessageMatching("차량정보를 입력해 주세요.");
     }
 
+    @Test
+    @DisplayName("경기 실행결과 한 명 이상의 우승자는 반드시 존재한다.")
+    void carRacing_winnerCount() {
+        // given
+        CarRacing carRacing = new CarRacing(5, new Cars("pobi,crong,honux"));
+
+        // when
+        RacingResult racingResult = carRacing.executeRacing();
+
+        // then
+        assertThat(1).isLessThanOrEqualTo(racingResult.getWinnerList().size());
+    }
+
 }

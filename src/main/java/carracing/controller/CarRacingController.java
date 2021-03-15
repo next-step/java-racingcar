@@ -35,7 +35,7 @@ public class CarRacingController {
         for (RoundResult roundResult : racingResult.getRoundResultList()) {
             roundResultInfoList.add(new RoundResultInfo(roundResult.getRoundNumber(), assembleRacingScoreInfo(roundResult.getRacingScores())));
         }
-        return new CarRacingResponse(roundResultInfoList);
+        return new CarRacingResponse(roundResultInfoList, racingResult.getWinnerList());
     }
 
     private List<RacingScoreInfo> assembleRacingScoreInfo(RacingScores racingScores) {

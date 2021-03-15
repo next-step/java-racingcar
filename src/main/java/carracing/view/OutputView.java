@@ -9,14 +9,16 @@ import java.util.List;
 public class OutputView {
 
     private static final String SCORE_LINE = "-";
+    private static final String WINNER_DELIMITER = ", ";
 
     public void printCarRacingResult(CarRacingResponse carRacingResponse) {
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         for (RoundResultInfo roundResultInfo : carRacingResponse.getRoundResultList()) {
             System.out.println("Round " + roundResultInfo.getRoundNumber());
             printRacingScore(roundResultInfo.getRacingScoreInfoList());
             System.out.println();
         }
+        printWinners(carRacingResponse.getWinnerList());
     }
 
     private void printRacingScore(List<RacingScoreInfo> roundResultInfoList) {
@@ -31,5 +33,15 @@ public class OutputView {
             line.append(SCORE_LINE);
         }
         return line.toString();
+    }
+
+    private void printWinners(List<String> winnerList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(winnerList.get(0));
+        for (int i = 1; i < winnerList.size(); i++) {
+            stringBuilder.append(WINNER_DELIMITER);
+            stringBuilder.append(winnerList.get(i));
+        }
+        System.out.println(stringBuilder.toString() + "가 최종 우승했습니다.");
     }
 }
