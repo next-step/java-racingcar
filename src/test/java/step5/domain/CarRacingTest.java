@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -65,12 +66,13 @@ class CarRacingTest {
 
         List<Car> winners =
                 Arrays.asList(
-                        new Car("aaa", 2),
-                        new Car("ccc", 2),
-                        new Car("ggg", 2));
+                        new Car("aaa", 5),
+                        new Car("ccc", 5),
+                        new Car("ggg", 5));
 
         carRacing = new CarRacing(carNames);
-        carRacing.moveProgress(new RandomMove());
+
+        IntStream.range(0, 4).forEach(i -> carRacing.moveProgress(new RandomMove()));
         WinnersResponse winnersResponse = carRacing.getWinner();
 
         assertTrue(winnersResponse.getWinners().containsAll(winners));

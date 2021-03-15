@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -36,12 +37,13 @@ class CarsTest {
     @DisplayName("Winners 테스트 - 승자가 여러명일 경우")
     @Test
     void carsWinnersTest() {
-        Car firstWinner = new Car("aa", 2);
-        Car secondWinner = new Car("cc", 2);
-        Car ThirdWinner = new Car("gg", 2);
+        Car firstWinner = new Car("aa", 5);
+        Car secondWinner = new Car("cc", 5);
+        Car ThirdWinner = new Car("gg", 5);
 
         Cars cars = new Cars(Arrays.asList("aa", "bb", "cc", "dd", "ee", "ff", "gg"));
-        cars.move(new RandomMove());
+
+        IntStream.range(0, 4).mapToObj(i -> new RandomMove()).forEach(cars::move);
 
         List<Car> winners = cars.getWinners();
 
