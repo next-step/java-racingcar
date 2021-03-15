@@ -1,6 +1,5 @@
 package study.step5.domain;
 
-
 public class Racing {
 
     private static final int ATTEMPT_NUMBER_MIN = 1;

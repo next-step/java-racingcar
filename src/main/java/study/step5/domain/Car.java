@@ -20,4 +20,16 @@ public class Car {
 
         return new Car(carName);
     }
+
+    public void move() {
+        this.location++;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getLocation() {
+        return location;
+    }
 }

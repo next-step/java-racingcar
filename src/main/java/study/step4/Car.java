@@ -19,9 +19,8 @@ public class Car {
         return new Car(carName);
     }
 
-    public Car move() {
+    public void move() {
         location++;
-        return this;
     }
 
     public void move(int location) {
