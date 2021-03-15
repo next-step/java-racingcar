@@ -1,13 +1,22 @@
 package study.step5.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
 
+    public Cars() {
+        cars = new ArrayList<>();
+    }
+
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public void addCars(Car car) {
+        this.cars.add(car);
     }
 
     public List<Car> findWinners() {
@@ -26,5 +35,9 @@ public class Cars {
             maxPosition = car.getMaxPosition(maxPosition);
         }
         return maxPosition;
+    }
+
+    public void run(MovingStrategy movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 }

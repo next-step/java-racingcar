@@ -17,6 +17,10 @@ public class Position {
         return new Position(position + 1);
     }
 
+    public int getPosition() {
+        return this.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
