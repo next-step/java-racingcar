@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.ui.InputView;
@@ -28,7 +30,7 @@ public class RacingGame {
   }
 
   public void userInput() throws IOException {
-    String[] carNames = inputView.getNameOfCars();
+    List<String> carNames = inputView.getNameOfCars();
     int numberOfRound = Integer.parseInt(inputView.getRound());
     initPhase(carNames, numberOfRound);
   }
@@ -46,17 +48,15 @@ public class RacingGame {
     }
   }
 
-  private void initPhase(String[] carNames, int numberOfRound) {
+  private void initPhase(List<String> carNames, int numberOfRound) {
     this.cars = createCars(carNames);
     this.round = numberOfRound;
     this.randomNumberGenerator = new RandomNumberGenerator(System.currentTimeMillis());
   }
 
-  private Cars createCars(String[] carNames) {
-    List<Car> carList = new ArrayList<>();
-    for (String carName : carNames) {
-      carList.add(Car.createCar(carName));
-    }
-    return new Cars(carList);
+  private Cars createCars(List<String> carNames) {
+    return new Cars(carNames.stream()
+        .map(Car::createCar)
+        .collect(Collectors.toList()));
   }
 }

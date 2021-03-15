@@ -25,16 +25,15 @@ public class Cars {
   public String currentCarsPosition() {
     StringBuilder sb = new StringBuilder();
     for(Car car : cars) {
-      sb.append(car.getName()).append(" : ").append(car.positionToLine()).append("\n");
+     sb.append(car.printNameWithCurrentPosition()).append("\n");
     }
     return sb.toString();
   }
 
   public List<String> getWinner() {
-    int max = 0;
     List<String> winnerNames = new ArrayList<>();
 
-    getWinnerNames(winnerNames, getMaxPositionInCars(max));
+    getWinnerNames(winnerNames, getMaxPositionInCars());
 
     return winnerNames;
   }
@@ -47,11 +46,9 @@ public class Cars {
     }
   }
 
-  private int getMaxPositionInCars(int max) {
-    for(Car car : cars) {
-      if(max < car.getPosition())
-        max = car.getPosition();
-    }
-    return max;
+  private int getMaxPositionInCars() {
+    return cars.stream()
+        .mapToInt(Car::getPosition)
+        .max().orElseThrow(IllegalArgumentException::new);
   }
 }

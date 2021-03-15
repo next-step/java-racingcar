@@ -32,7 +32,12 @@ public class Car {
     return generatedRandomNumber >= MOVEABLE_CRITERIA;
   }
 
-  public String positionToLine() {
+  public String printNameWithCurrentPosition() {
+    String position = positionToLine();
+    return this.name + " : " + position;
+  }
+
+  private String positionToLine() {
     StringBuilder sb = new StringBuilder();
     for(int i = 0; i <= position; i++){
       sb.append('-');
