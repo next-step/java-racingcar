@@ -25,7 +25,9 @@ public class RacingCar {
     }
 
     public String isGo(int number) {
-        if (number >= MINIMUM_NUMBER) return "-";
+        if (number >= MINIMUM_NUMBER) {
+            return "-";
+        }
         return "";
     }
 
