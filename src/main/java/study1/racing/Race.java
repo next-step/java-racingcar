@@ -14,20 +14,21 @@ public class Race {
     this.round = round;
   }
 
-  public void run () {
-    IntStream
+  public List<RaceRound> start() {
+    return IntStream
       .range(0, round)
-      .forEach((i) -> checkDistance());
-  }
-  
-  public void checkDistance() {
-    cars.stream()
-      .map((car) -> car.move())
-      .forEach((distance) -> this.recordDistance(distance));
-    System.out.print("\n");
+      .boxed()
+      .map((i) -> roundCheck())
+      .collect(Collectors.toList());
   }
 
-  public void recordDistance(int distance) {
-    ResultView.print(distance);
+  public RaceRound roundCheck() {
+    cars.stream()
+      .forEach((car) -> car.move());
+    return new RaceRound(
+      cars.stream()
+        .map((car) -> new Car(car))
+        .collect(Collectors.toList())
+    );
   }
 }

@@ -8,8 +8,12 @@ public class Main {
     int round = inputView.getRound();
 
     Race race = new Race(participant, round);
-    race.run();
-
+    for(RaceRound raceRound: race.start()) {
+      System.out.println("");
+      raceRound.getResult()
+        .stream()
+        .forEach((distance) -> ResultView.print(distance));
+    }
     inputView.closeScanner();
   }
 }

@@ -15,8 +15,17 @@ public class Car {
     this.moveStrategy = moveStrategy;
   }
 
+  public int getDistance() {
+    return distance;
+  }
+
   public Car() {
     this.moveStrategy = new RaceMove();
+  }
+
+  public Car(Car c) {
+    this.distance = c.distance;
+    this.moveStrategy = c.moveStrategy;
   }
 
   public int move() {
