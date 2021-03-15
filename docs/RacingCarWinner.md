@@ -73,17 +73,12 @@ String[] names = inputName.split(",");
 * Car :  
     * 자동차      
     * 지나온 길의 상태를 가지고 있다.    
-    * 특정 조건에 대해서 움직일 수 있는지, 없는지를 판별한다.(활성 함수와 비슷)           
-    * 이전에 사용하지 않았던 toString()을 정의해서 Name이랑 같이 출력을 하도록 한다.          
-    * 이전 미션에서 이름이 추가되었으며 **Name 클래스로 받아서 관리할 것이다.**        
-      * 이전 미션에서 나는 비즈니스로직과 UI 로직을 분리하지 못한 경험이 있다.  
-      * 만약 이 습관을 그대로 가져왔다면 이름까지 만들어서 반환하는 작업을 했을테고  
-      * 이전 미션에서 코드를 수정한다고 가정했다면 코드를 완전히 뜯어 고쳐야했구나를 느낀다.  
+    * 특정 조건에 대해서 움직일 수 있는지, 없는지를 판별한다.(활성 함수와 비슷)
 * Name :   
     * 자동차 주인의 이름을 가지고 있다.     
     * 5글자 이상의 값을 가질 수 없다. -> 가진다면 에러 발생    
     * NameValidation 전략패턴을 이용하면 좋을 것 같다. 그런데 주입은 Car 에서 넣어줘야하나?    
-    * Car에 소속되며 ResultView에서 Car를 통해 호출되어 사용되도록 한다.      
+    * Dirver에 소속되며 ResultView에서 Car를 통해 호출되어 사용되도록 한다.      
 * Racing Round :  
     * 레이싱 라운드를 가지고 있는 클래스  
     * hasNext()로 다음 라운드가 존재하는지 확인한다.    
@@ -107,7 +102,7 @@ String[] names = inputName.split(",");
         * RequestDto 생성
 * RacingCarGame :
     * 레이싱을 진행
-    * RacingCar, RacingRound 를 가지고 있다.
+    * RacingCars, RacingRound 를 가지고 있다.
     * 얻어진 결과 값을 `ResponseDto`로 묶어서 ResultView 로 반환한다.
         * ResponseDto 생성
 * ResultView :
@@ -115,3 +110,6 @@ String[] names = inputName.split(",");
 * RacingCars : 
     * RacingRequestDto로부터 Names를 넘겨받으면서 map을 통해서 Car를 만드는 로직을 넣도록 구성한다.
     * Controller에서 부터 넘겨받은 전략패턴(이동 가능한지에 대한 비교)을 받아서 Car를 생성한다.     
+* Driver :
+  * Car 객체와 Name 객체를 의존하고 있는 객체이다.
+  * toString()을 정의해서 Car와 Name을 같이 출력을 하도록 한다.

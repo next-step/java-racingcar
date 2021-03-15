@@ -11,7 +11,7 @@ class CarTest {
     @RepeatedTest(value = 10, name = "현재 Loop : {0}")
     void test() {
         // given
-        Car car = new Car();
+        Car car = Car.newInstance();
 
         // when
         car.move(() -> true);

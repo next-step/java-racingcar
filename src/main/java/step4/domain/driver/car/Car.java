@@ -7,11 +7,19 @@ public class Car {
     private int INITIAL_VALUE = 0;
     private int status;
 
-    public Car() {
+    public static Car newInstance() {
+        return new Car();
+    }
+
+    public static Car of(Car other) {
+        return new Car(other);
+    }
+
+    private Car() {
         status = INITIAL_VALUE;
     }
 
-    public Car(Car other) {
+    private Car(Car other) {
         this.status = other.status;
     }
 
