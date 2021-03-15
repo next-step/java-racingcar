@@ -12,7 +12,7 @@ public class RacingGame {
     public List<Car> setCars(int howManyCars) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < howManyCars; i++) {
-            carList.add(new Car(i));
+            carList.add(new Car());
         }
         return carList;
     }
