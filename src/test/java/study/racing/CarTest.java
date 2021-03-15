@@ -3,28 +3,26 @@ package study.racing;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class CarTest {
 
-  @ParameterizedTest
-  @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-  @DisplayName("4 이상일 때, 전진")
-  void move(int condition) {
+  @Test
+  @DisplayName("전진테스트")
+  void move() {
     Car car = new Car();
-    car.moveByCondition(condition);
+    car.move(() -> true);
     assertEquals(car.getPosition(), 1);
   }
 
-  @ParameterizedTest
-  @ValueSource(ints = {0, 1, 2, 3})
+  @Test
   @DisplayName("4 미만일 때, 정지")
-  void stop(int condition) {
+  void stop() {
     Car car = new Car();
-    car.moveByCondition(condition);
+    car.move(() -> false);
     assertEquals(car.getPosition(), 0);
   }
-
 
 }
