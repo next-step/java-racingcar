@@ -10,10 +10,12 @@ import step3.racingCar.domain.Cars;
 import step3.racingCar.ui.InputView;
 import step3.racingCar.ui.ResultView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
-    public static String[] strs = {"자동차 대수는 몇 대 인가요?", "시도할 회수는 몇 회 인가요?"};
+    public static final String HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
+    public static final String HOW_MANY_TRYS = "시도할 회수는 몇 회 인가요?";
+    public static final String INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private final Cars racingCars;
     private final int tryNum;
 
@@ -22,9 +24,9 @@ public class Game {
      * GameFactory로부터 자동차 대수만큼의 자동차를 넘겨받는다.
      * */
     public Game() {
-        ArrayList<Integer> inputArr = InputView.input(strs);
-        racingCars = GameFactory.cars(inputArr.get(0));
-        tryNum = inputArr.get(1);
+        List<Object> inputArr = InputView.input(new String[]{INPUT_CAR_NAMES, HOW_MANY_TRYS});
+        racingCars = GameFactory.cars((Integer) inputArr.get(0));
+        tryNum = (int) inputArr.get(1);
     }
 
     /*

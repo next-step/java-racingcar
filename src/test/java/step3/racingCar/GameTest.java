@@ -7,6 +7,7 @@ import step3.racingCar.domain.Cars;
 import step3.racingCar.ui.InputView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mockStatic;
@@ -16,7 +17,7 @@ class GameTest {
     private Game game;
     private static final int TRY_NUM = 3;
     private static final int CAR_NUM = 4;
-    private ArrayList<Integer> inputs;
+    private List<Object> inputs;
     MockedStatic<InputView> inputView;
 
     @BeforeEach
@@ -26,7 +27,7 @@ class GameTest {
         inputs.add(TRY_NUM);
 
         inputView = mockStatic(InputView.class);
-        when(InputView.input(Game.strs))
+        when(InputView.input(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS}))
                 .thenReturn(inputs);
         game = new Game();
         inputView.close();
