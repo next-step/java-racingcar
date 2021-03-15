@@ -32,9 +32,21 @@ public class Cars {
     }
 
     private List<Car> getWinners(Position maxPosition) {
+        List<Car> winners = new ArrayList<>();
+
+        cars.forEach(car -> addWinner(winners, car, maxPosition));
+        /*
         return cars.stream()
             .filter(car -> maxPosition.equals(car.getPosition()))
             .collect(Collectors.toList());
+        */
+        return winners;
+    }
+
+    private void addWinner(List<Car> winner, Car car, Position maxPosition) {
+        if(!car.getPosition().lessThan(maxPosition)) {
+            winner.add(car);
+        }
     }
 
     private Position getMaxPosition() {
