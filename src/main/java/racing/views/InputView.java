@@ -1,8 +1,8 @@
-package racing;
+package racing.views;
 
 import java.util.Scanner;
 
-public class InputView extends View<Integer, String> {
+public abstract class InputView<T> extends View<T, String> {
     final Scanner scanner;
 
     public InputView() {
@@ -10,8 +10,10 @@ public class InputView extends View<Integer, String> {
     }
 
     @Override
-    public Integer show(String message) {
+    public final T show(String message) {
         System.out.println(message);
-        return scanner.nextInt();
+        return input();
     }
+
+    abstract protected T input();
 }

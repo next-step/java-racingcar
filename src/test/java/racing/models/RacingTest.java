@@ -1,7 +1,8 @@
-package racing;
+package racing.models;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.factories.RacingFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,10 +13,10 @@ public class RacingTest {
         final int carsCount = 3;
         final int attemptsCount = 5;
 
-        final Racing racing = new Racing(carsCount, attemptsCount);
+        final Racing racing = RacingFactory.createFrom(carsCount);
 
         int raceCount = 0;
-        while (racing.hasNext()) {
+        while (racing.hasRun(attemptsCount)) {
             racing.runRace();
             raceCount++;
         }

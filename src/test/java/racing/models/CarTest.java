@@ -1,12 +1,14 @@
-package racing;
+package racing.models;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
     private Car car;
@@ -26,6 +28,26 @@ public class CarTest {
         assertThat(distance).isEqualTo(expected);
     }
 
+    @Test
+    @DisplayName("자동차에 이름을 부여할 수 있다.")
+    void name() {
+        final String name = "pobi";
+
+        final Car car = new Car(name);
+
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("자동차 이름은 5글자를 초과할 수 없다.")
+    void ShouldThrowIllegalArgumentExceptionWhenNameIsLongerThanFive() {
+        final String name = "longerThanFive";
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new Car(name);
+        });
+    }
+
     @ParameterizedTest
     @CsvSource(value = {"0:0", "3:0", "4:1", "9:1"}, delimiter = ':')
     @DisplayName("주어진 값이 0 ~ 3일 때는 정지, 4 ~ 9일 때는 전진해야 한다.")
@@ -38,6 +60,14 @@ public class CarTest {
         assertThat(car.getDistance()).isEqualTo(expectedValue);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 10})
+    @DisplayName("주어진 값이 0보다 작거나, 9보다 큰 경우, IllegalArgumentException 발생")
+    void tryMoveThrowIllegalArgumentExceptionWhenLessThanZeroOrGreaterThanNine(int input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            car.tryMove(() -> input);
+        });
+    }
 
     @Test
     @DisplayName("car는 Cloneable의 instance다.")
