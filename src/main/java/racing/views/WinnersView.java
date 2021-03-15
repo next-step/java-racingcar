@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class WinnersView extends View<Void, Racing> {
     @Override
     public Void show(Racing racing) {
-        final String winnerNames = racing.getWinners().stream()
+        final String winnerNames = racing.getWinnerList().stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
         System.out.println(winnerNames + "가 최종 우승했습니다.");

@@ -4,28 +4,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Round {
-    private final List<Car> cars;
+    private final List<Car> carList;
 
-    public static Round createFrom(List<Car> cars) {
-        return new Round(cars.stream()
-                .map(Car::clone)
-                .collect(Collectors.toList())
-        );
+    public Round(List<Car> carList) {
+        this.carList = carList;
     }
 
-    private Round(List<Car> cars) {
-        this.cars = cars;
+    public List<Car> getCarList() {
+        return carList;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
+    public List<Car> getLeaderList() {
+        final int maxDistance = getMaxDistance();
 
-    public List<Car> getLeaders() {
-        return cars.stream().filter(e -> e.getDistance() == getMaxDistance()).collect(Collectors.toList());
+        return carList.stream()
+                .filter(e -> e.getDistance() == maxDistance)
+                .collect(Collectors.toList());
     }
 
     private int getMaxDistance() {
-        return cars.stream().map(Car::getDistance).max(Integer::compare).orElse(-1);
+        return carList.stream().map(Car::getDistance).max(Integer::compare).orElse(-1);
     }
 }

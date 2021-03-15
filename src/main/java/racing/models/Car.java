@@ -3,7 +3,7 @@ package racing.models;
 import java.util.function.Supplier;
 
 public class Car implements Cloneable {
-    private static final int MAX_NAME_LENGTH = 5;
+    public static final int MAX_NAME_LENGTH = 5;
     private static final String DEFAULT_NAME = "empty";
 
     public static final int MIN_BOUNDARY_VALUE = 0;

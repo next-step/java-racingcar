@@ -2,8 +2,8 @@ package racing.models;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.factories.RoundFactory;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,24 +12,6 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RoundTest {
-    @Test
-    @DisplayName("인자로 받은 List<Car> 객체를 deep copy 한다.")
-    void createFrom() {
-        final List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-
-        final Round round = Round.createFrom(cars);
-        final List<Car> roundCars = round.getCars();
-
-        assertThat(roundCars).isNotEqualTo(cars);
-        for (int i = 0; i < cars.size(); i++) {
-            assertThat(roundCars.get(i)).isNotEqualTo(cars.get(i));
-            assertThat(roundCars.get(i).getDistance()).isEqualTo(cars.get(i).getDistance());
-        }
-    }
-
     void mustMove(Car car, int count) {
         final int mustMoveValue = 9;
 
@@ -49,10 +31,10 @@ public class RoundTest {
         mustMove(crong, 3);
         mustMove(honux, 1);
 
-        final Round round = Round.createFrom(Arrays.asList(pobi, crong, honux));
+        final Round round = RoundFactory.createFrom(Arrays.asList(pobi, crong, honux));
 
         final List<String> expectedNames = Stream.of(pobi).map(Car::getName).collect(Collectors.toList());
-        final List<String> winnerNames = round.getLeaders().stream().map(Car::getName).collect(Collectors.toList());
+        final List<String> winnerNames = round.getLeaderList().stream().map(Car::getName).collect(Collectors.toList());
 
         // assert
         assertThat(winnerNames).containsAll(expectedNames);
@@ -69,10 +51,10 @@ public class RoundTest {
         mustMove(crong, 5);
         mustMove(honux, 1);
 
-        final Round round = Round.createFrom(Arrays.asList(pobi, crong, honux));
+        final Round round = RoundFactory.createFrom(Arrays.asList(pobi, crong, honux));
 
         final List<String> expectedNames = Stream.of(pobi, crong).map(Car::getName).collect(Collectors.toList());
-        final List<String> winnerNames = round.getLeaders().stream().map(Car::getName).collect(Collectors.toList());
+        final List<String> winnerNames = round.getLeaderList().stream().map(Car::getName).collect(Collectors.toList());
 
         // assert
         assertThat(winnerNames).containsAll(expectedNames);
