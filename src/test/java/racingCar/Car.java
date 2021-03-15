@@ -1,23 +1,25 @@
 package racingCar;
 
 public class Car {
+
   private static final Integer NAME_CONSTRAINT = 5;
   private static final String NAME_EXCEPTION = "자동차 이름 길이가 5를 초과했습니다.";
 
-  private int distance;
   private final String name;
+  private Integer position;
 
-  public Car(String name) {
+  public Car(String name, Integer position) {
     validate(name);
     this.name = name;
+    this.position = position;
   }
 
   public String getName() {
     return this.name;
   }
 
-  public int getDistance() {
-    return this.distance;
+  public Integer getPosition() {
+    return this.position;
   }
 
   private void validate(String name) {
@@ -27,6 +29,7 @@ public class Car {
   }
 
   public void move(MovableStrategy movable) {
-    this.distance += movable.movable() ? 1 : 0;
+    this.position += movable.movable() ? 1 : 0;
   }
+
 }

@@ -2,7 +2,6 @@ package racingCar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -25,26 +24,16 @@ public class RacingGame {
       });
       outputView.printEmptyLine();
     }
-    return determineWinners(cars);
+    return cars;
   }
 
   private List<Car> makeCars(String[] carNames) {
     List<Car> cars = new ArrayList<>();
     for (int i = 0; i < carNames.length; i++) {
-      cars.add(new Car(carNames[i]));
+      cars.add(new Car(carNames[i], 0));
     }
     return cars;
   }
 
-  private List<Car> determineWinners(List<Car> cars) {
-    int max = cars.stream()
-        .mapToInt(Car::getDistance)
-        .max()
-        .orElse(-1);
-
-    return cars.stream()
-        .filter(car -> car.getDistance() == max)
-        .collect(Collectors.toList());
-  }
 
 }

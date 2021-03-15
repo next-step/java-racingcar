@@ -16,7 +16,7 @@ public class OutputView {
 
   public void printCarDistance(Car car) {
     System.out.print(car.getName() + COLON);
-    for (int i = 0; i < car.getDistance(); i++) {
+    for (int i = 0; i < car.getPosition(); i++) {
       System.out.print(HYPHEN);
     }
     printEmptyLine();
