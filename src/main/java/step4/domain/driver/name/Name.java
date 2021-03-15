@@ -25,11 +25,6 @@ public class Name {
         return (!(lengthCheck.isValidate(name)));
     }
 
-
-    public String getName() {
-        return name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,11 +38,11 @@ public class Name {
         return Objects.hash(name);
     }
 
+    // getName이 있었지만, Getter를 최소화 하고자 toString()을 오버라이딩 했습니다.
     @Override
     public String toString() {
-        return "Name{" +
-                "name='" + name + '\'' +
-                '}';
+        return name;
     }
+
 }
 

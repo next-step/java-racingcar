@@ -12,20 +12,21 @@ class DriverTest {
     private final int MINIMUM = 0;
     private final int MAXIMUM = 5;
 
-    @DisplayName("Driver 클래스의 move()에 true 값이 주어졌을 때 값이 증가되는지 테스트")
+    @DisplayName("Driver 클래스의 move()에 true 값이 주어졌을 때의 값이 증가되는지 테스트")
     @RepeatedTest(value = 10, name = "현재 Loop : {0}")
-    void move_ValidationValue_TURE() {
+    void move_ValidationValue_EqualUNIT() {
         // given
+        String expected = "김우재 : -";
         Name driverName = Name.from("김우재", name -> MINIMUM <= name.length() && name.length() <= MAXIMUM);
         Car drivingCar = Car.newInstance();
         Driver driver = Driver.from(driverName, drivingCar);
 
         // when
         driver.move(() -> true);
-        int actual = driver.getStatus();
+        String actual = driver.toString();
 
         // then
-        assertThat(actual).isEqualTo(1);
+        assertThat(actual).isEqualTo(expected);
     }
 
 }

@@ -4,8 +4,8 @@ import step4.domain.startegy.move.MoveStrategy;
 
 public class Car {
 
-    private int INITIAL_VALUE = 0;
-    private int status;
+    private final String UNIT = "-";
+    private StringBuilder status;
 
     public static Car newInstance() {
         return new Car();
@@ -16,7 +16,7 @@ public class Car {
     }
 
     private Car() {
-        status = INITIAL_VALUE;
+        status = new StringBuilder();
     }
 
     private Car(Car other) {
@@ -25,12 +25,13 @@ public class Car {
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            status++;
+            status.append(UNIT);
         }
     }
 
-    public int getStatus() {
-        return status;
+    @Override
+    public String toString() {
+        return status.toString();
     }
 
 }
