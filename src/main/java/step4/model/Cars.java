@@ -1,4 +1,4 @@
-package racing.model;
+package step4.model;
 
 import java.util.List;
 
