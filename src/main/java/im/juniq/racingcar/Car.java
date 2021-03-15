@@ -20,7 +20,7 @@ public class Car {
 
 	private void checkCarName(String name) {
 		if (name.length() > CAR_NAME_LENGTH_LIMIT) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("자동차 이름은 5자 이하이어야 합니다.");
 		}
 	}
 
