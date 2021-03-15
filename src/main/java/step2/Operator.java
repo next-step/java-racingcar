@@ -12,23 +12,23 @@ public enum Operator {
     }
     return num1 / num2;
   });
-  
+
   private String operator;
   private BiFunction<Integer, Integer, Integer> calculation;
-  
+
   Operator(String operator, BiFunction<Integer, Integer, Integer> calculation) {
     this.operator = operator;
     this.calculation = calculation;
   }
-  
+
   public String getOperator() {
     return operator;
   }
-  
+
   public BiFunction<Integer, Integer, Integer> getCalculation() {
     return calculation;
   }
-  
+
   public static Operator convertOperator(String strOperator) {
     for (Operator operator : values()){
       if (operator.getOperator().equalsIgnoreCase(strOperator)) {
@@ -37,8 +37,8 @@ public enum Operator {
     }
     throw new IllegalArgumentException("잘못된 연산자 입니다.");
   }
-  
-  public static int calculation(String operator, int total, int num) {
-    return convertOperator(operator).getCalculation().apply(total, num);
+
+  public static int calculation(String operator, int num1, int num2) {
+    return convertOperator(operator).getCalculation().apply(num1, num2);
   }
 }
