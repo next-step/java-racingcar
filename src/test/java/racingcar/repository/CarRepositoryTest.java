@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 
 import java.util.List;
+import java.util.Queue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,7 +23,7 @@ class CarRepositoryTest {
     @DisplayName("자동차 추가 검증 로직 테스트")
     public void save() throws Exception {
         //given
-        String name = "seongbeen";
+        String name = "one";
         Car car = new Car(name);
 
 
@@ -40,9 +41,9 @@ class CarRepositoryTest {
     @DisplayName("모든 자동차 찾는 로직 검증 테스트")
     public void findAll() throws Exception {
         //given
-        carRepository.save(new Car("firstCar"));
-        carRepository.save(new Car("secondCar"));
-        carRepository.save(new Car("thirdCar"));
+        carRepository.save(new Car("one"));
+        carRepository.save(new Car("two"));
+        carRepository.save(new Car("three"));
 
         //when
         List<Car> cars = carRepository.findAll();
@@ -55,27 +56,27 @@ class CarRepositoryTest {
     @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
     public void findAllMovementRange() throws Exception {
         //given
-        Car firstCar = new Car("firstCar");
-        firstCar.move(5);
-        Car secondCar = new Car("secondCar");
-        secondCar.move(1);
-        carRepository.save(firstCar);
-        carRepository.save(secondCar);
+        Car one = new Car("one");
+        one.move(5);
+        Car two = new Car("two");
+        two.move(1);
+        carRepository.save(one);
+        carRepository.save(two);
 
         //when
-        List<Integer> movementRangeOfCars = carRepository.findAllMovementRange();
+        Queue<Integer> movementRangeOfCars = carRepository.findAllMovementRange();
 
         //then
-        assertEquals(1, movementRangeOfCars.get(0), "move()에 4이상의 값이 들어갔다면 이동범위가 1 증가해야 한다.");
-        assertEquals(0, movementRangeOfCars.get(1), "move()에 4미만의 값이 들어갔다면 이동범위가 증가하지 않아야 한다.");
         assertEquals(2, movementRangeOfCars.size(), "찾은 이동범위의 수가 추가한 자동차의 수와 같아야 한다.");
+        assertEquals(1, movementRangeOfCars.poll(), "move()에 4이상의 값이 들어갔다면 이동범위가 1 증가해야 한다.");
+        assertEquals(0, movementRangeOfCars.poll(), "move()에 4미만의 값이 들어갔다면 이동범위가 증가하지 않아야 한다.");
     }
 
     @Test
     @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
     public void findByName() throws Exception {
         //given
-        String name = "seongbeen";
+        String name = "one";
         Car car = new Car(name);
         carRepository.save(car);
 
