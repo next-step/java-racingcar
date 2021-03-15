@@ -15,12 +15,15 @@ public class Race {
   }
 
   public void run () {
-    IntStream.range(0, round).forEach((i) -> checkDistance());
+    IntStream
+      .range(0, round)
+      .forEach((i) -> checkDistance());
   }
   
   public void checkDistance() {
-    // cars.stream().map((car) -> car.move()).forEach(ResultView::print);
-    cars.stream().map((car) -> car.move()).forEach((distance) -> this.recordDistance(distance));
+    cars.stream()
+      .map((car) -> car.move())
+      .forEach((distance) -> this.recordDistance(distance));
     System.out.print("\n");
   }
 
