@@ -13,6 +13,8 @@ public class RacingGameApplication {
         ResultView.printResultMessage();
 
         while (!racing.isFinished()) {
+            racing.race();
+            ResultView.printRace(racing.getCars());
         }
     }
 }

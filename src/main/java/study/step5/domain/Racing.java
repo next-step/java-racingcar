@@ -28,6 +28,10 @@ public class Racing {
         return attemptCount;
     }
 
+    public Cars getCars() {
+        return cars;
+    }
+
     public boolean isFinished() {
         return attemptCount >= attemptNumber;
     }
