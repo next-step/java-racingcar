@@ -15,6 +15,7 @@ public class RacingGameMain {
 
     try {
       List<Car> winners = racingGame.start(outputView);
+      outputView.printWinners(winners);
     } catch (OverCarNameLengthException e) {
       outputView.printError(e.getMessage());
     }
