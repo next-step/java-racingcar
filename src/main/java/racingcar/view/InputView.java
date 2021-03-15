@@ -25,11 +25,12 @@ public class InputView {
     }
 
     public static int tryGameNum() {
+
         String count = null;
         do {
             System.out.println(Constant.INPUT_REQUEST_PLAY_COUNT);
             count = scanner.next();
-        } while (!ValidationUtil.isNumber(count));
+        } while (!ValidationUtil.isNumCheck(count));
 
         return Integer.parseInt(count);
     }
