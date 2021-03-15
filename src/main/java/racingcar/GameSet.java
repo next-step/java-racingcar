@@ -2,16 +2,16 @@ package racingcar;
 
 public class GameSet {
 
-    private int cars;
+    private String owners;
     private int givenRound;
 
-    public GameSet(int cars, int givenRound) {
-        this.cars = cars;
+    public GameSet(String owners, int givenRound) {
+        this.owners = owners;
         this.givenRound = givenRound;
     }
 
-    public int getCars() {
-        return cars;
+    public String getOwners() {
+        return owners;
     }
 
     public int getGivenRound() {
