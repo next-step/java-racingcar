@@ -15,8 +15,16 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void addCars(Car car) {
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
+    public void addCar(Car car) {
         this.cars.add(car);
+    }
+
+    public void run(MovingStrategy movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 
     public List<Car> findWinners() {
@@ -35,9 +43,5 @@ public class Cars {
             maxPosition = car.getMaxPosition(maxPosition);
         }
         return maxPosition;
-    }
-
-    public void run(MovingStrategy movingStrategy) {
-        cars.forEach(car -> car.move(movingStrategy));
     }
 }
