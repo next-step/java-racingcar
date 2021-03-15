@@ -11,7 +11,7 @@ public class RandomMove extends RandomGenerator {
     public int getRandomNum() {
         stack++;
 
-        if (stack == 1 || stack == 3)
+        if (stack == 1 || stack == 3 || stack == 7)
             return 4;
         return 3;
     }

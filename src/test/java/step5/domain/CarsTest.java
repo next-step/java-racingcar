@@ -36,15 +36,16 @@ class CarsTest {
     @DisplayName("Winners 테스트 - 승자가 여러명일 경우")
     @Test
     void carsWinnersTest() {
-        Car aa = new Car("aa", 2);
-        Car cc = new Car("cc", 2);
+        Car firstWinner = new Car("aa", 2);
+        Car secondWinner = new Car("cc", 2);
+        Car ThirdWinner = new Car("gg", 2);
 
-        Cars cars = new Cars(Arrays.asList("aa", "bb", "cc"));
+        Cars cars = new Cars(Arrays.asList("aa", "bb", "cc", "dd", "ee", "ff", "gg"));
         cars.move(new RandomMove());
 
         List<Car> winners = cars.getWinners();
 
-        assertTrue(winners.containsAll(Arrays.asList(aa, cc)));
+        assertTrue(winners.containsAll(Arrays.asList(firstWinner, secondWinner, ThirdWinner)));
     }
 
     @DisplayName("Move Test - Move 일 경우")

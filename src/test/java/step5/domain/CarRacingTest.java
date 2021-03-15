@@ -17,7 +17,7 @@ class CarRacingTest {
 
     @BeforeEach
     void init() {
-        carNames = new String[]{"aaa", "bbb"};
+        carNames = new String[]{"aaa", "bbb", "ccc", "ddd", "eee", "fff","ggg"};
         carRacing = new CarRacing(carNames);
     }
 
@@ -62,9 +62,16 @@ class CarRacingTest {
     @DisplayName("winner 테스트 - 두명이상일 경우")
     @Test
     void winnersTest() {
-        WinnersResponse winners = carRacing.getWinner();
+
         List<Car> cars =
-                Arrays.asList(new Car("aaa", 1), new Car("bbb", 1));
+                Arrays.asList(
+                        new Car("aaa", 2),
+                        new Car("ccc", 2),
+                        new Car("ggg", 2));
+
+        carRacing = new CarRacing(carNames);
+        carRacing.moveProgress(new RandomMove());
+        WinnersResponse winners = carRacing.getWinner();
 
         assertTrue(winners.getWinners().containsAll(cars));
     }
