@@ -63,7 +63,7 @@ class CarRacingTest {
     @Test
     void winnersTest() {
 
-        List<Car> cars =
+        List<Car> winners =
                 Arrays.asList(
                         new Car("aaa", 2),
                         new Car("ccc", 2),
@@ -71,9 +71,9 @@ class CarRacingTest {
 
         carRacing = new CarRacing(carNames);
         carRacing.moveProgress(new RandomMove());
-        WinnersResponse winners = carRacing.getWinner();
+        WinnersResponse winnersResponse = carRacing.getWinner();
 
-        assertTrue(winners.getWinners().containsAll(cars));
+        assertTrue(winnersResponse.getWinners().containsAll(winners));
     }
 
     @DisplayName("winner 테스트 - 한명일 경우")
@@ -81,9 +81,9 @@ class CarRacingTest {
     void winnerTest() {
         Car car = new Car("aaa", 2);
         carRacing.moveProgress(new RandomMove());
-        WinnersResponse winner = carRacing.getWinner();
+        WinnersResponse winnersResponse = carRacing.getWinner();
 
-        Car winnersCar = winner.getWinners().get(0);
+        Car winnersCar = winnersResponse.getWinners().get(0);
 
         assertEquals(winnersCar, car);
     }
