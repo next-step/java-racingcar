@@ -4,14 +4,14 @@ import java.util.Random;
 
 public class RandomNumberGenerator {
 
-  private static final int RANDOM_NUMBER_BOUND = 10;
-  private final Random seed;
+    private static final int RANDOM_NUMBER_BOUND = 10;
+    private final Random seed;
 
-  public RandomNumberGenerator(long currentTimeSeed) {
-    this.seed = new Random(currentTimeSeed);
-  }
+    public RandomNumberGenerator(long currentTimeSeed) {
+      this.seed = new Random(currentTimeSeed);
+    }
 
-  public int generateRandomNumber() {
-    return seed.nextInt(RANDOM_NUMBER_BOUND);
-  }
+    public int generateRandomNumber() {
+      return seed.nextInt(RANDOM_NUMBER_BOUND);
+    }
 }

@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.ui.InputView;
@@ -14,7 +16,6 @@ import racingcar.util.RandomNumberGenerator;
 public class RacingGame {
 
   private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
   private static final InputView inputView = new InputView(reader);
   private static final OutputView outputView = new OutputView();
 
@@ -29,15 +30,15 @@ public class RacingGame {
   }
 
   public void userInput() throws IOException {
-    int numberOfCar = Integer.parseInt(inputView.getNumberOfCars());
+    List<String> carNames = inputView.getNameOfCars();
     int numberOfRound = Integer.parseInt(inputView.getRound());
-    initPhase(numberOfCar, numberOfRound);
+    initPhase(carNames, numberOfRound);
   }
 
   public void playGame() {
     outputView.printInitialCarPosition(cars);
     doRacingGame();
-    outputView.endGame();
+    outputView.endGame(cars);
   }
 
   private void doRacingGame() {
@@ -47,17 +48,15 @@ public class RacingGame {
     }
   }
 
-  private void initPhase(int numberOfCar, int numberOfRound) {
-    this.cars = createCars(numberOfCar);
+  private void initPhase(List<String> carNames, int numberOfRound) {
+    this.cars = createCars(carNames);
     this.round = numberOfRound;
     this.randomNumberGenerator = new RandomNumberGenerator(System.currentTimeMillis());
   }
 
-  private Cars createCars(int numberOfCars) {
-    List<Car> carList = new ArrayList<>();
-    for(int i = 0; i < numberOfCars; i++) {
-      carList.add(Car.createCar());
-    }
-    return new Cars(carList);
+  private Cars createCars(List<String> carNames) {
+    return new Cars(carNames.stream()
+        .map(Car::createCar)
+        .collect(Collectors.toList()));
   }
 }

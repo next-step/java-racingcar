@@ -5,13 +5,22 @@ public class Car {
   private static final int MOVEABLE_CRITERIA = 4;
 
   private int position = 0;
+  private final String name;
 
-  public static Car createCar() {
-    return new Car();
+  public Car(String name) {
+    this.name = name;
+  }
+
+  public static Car createCar(String name) {
+    return new Car(name);
   }
 
   public int getPosition() {
     return position;
+  }
+
+  public String getName() {
+    return name;
   }
 
   public void moveCar(int generatedRandomNumber) {
@@ -23,7 +32,12 @@ public class Car {
     return generatedRandomNumber >= MOVEABLE_CRITERIA;
   }
 
-  public String positionToLine() {
+  public String printNameWithCurrentPosition() {
+    String position = positionToLine();
+    return this.name + " : " + position;
+  }
+
+  private String positionToLine() {
     StringBuilder sb = new StringBuilder();
     for(int i = 0; i <= position; i++){
       sb.append('-');

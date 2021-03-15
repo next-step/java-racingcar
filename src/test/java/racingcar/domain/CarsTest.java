@@ -19,9 +19,9 @@ class CarsTest {
   public void createCars() {
     List<Car> carList = new ArrayList<>();
 
-    Car car1 = Car.createCar();
-    Car car2 = Car.createCar();
-    Car car3 = Car.createCar();
+    Car car1 = Car.createCar("aaa");
+    Car car2 = Car.createCar("bbb");
+    Car car3 = Car.createCar("ccc");
 
     carList.add(car1);
     carList.add(car2);
@@ -36,9 +36,9 @@ class CarsTest {
     //given
     List<Car> carList = new ArrayList<>();
 
-    Car actualCar1 = Car.createCar();
-    Car actualCar2 = Car.createCar();
-    Car actualCar3 = Car.createCar();
+    Car actualCar1 = Car.createCar("aaa");
+    Car actualCar2 = Car.createCar("bbb");
+    Car actualCar3 = Car.createCar("ccc");
 
     carList.add(actualCar1);
     carList.add(actualCar2);
@@ -64,7 +64,7 @@ class CarsTest {
     String expectString = cars.currentCarsPosition();
 
     //then
-    String actualString =  "-" + "\n" + "-" + "\n" + "-" + "\n";
+    String actualString = "aaa : " + "-" + "\n" + "bbb : " + "-" + "\n" + "ccc : " +  "-" + "\n";
 
     assertEquals(expectString, actualString);
   }
@@ -84,4 +84,28 @@ class CarsTest {
         () -> assertEquals(expectedCars.get(2).getPosition(), 1)
     );
   }
+
+  @Test
+  @DisplayName("제일 높은 position을 통해서 우승자의 이름을 뽑아낼 수 있는가")
+  public void getWinnerNameByPosition() throws Exception {
+    //given
+    cars.updateAll(testRandomNumberGenerator);
+
+    //when
+    List<String> expectedWinners = cars.getWinner();
+    List<String> actualWinners = new ArrayList<>();
+    actualWinners.add("aaa");
+    actualWinners.add("bbb");
+    actualWinners.add("ccc");
+
+    //then
+    List<Car> expectedCars = cars.getCars();
+    assertAll(
+        () -> assertEquals(expectedWinners, actualWinners),
+        () -> assertEquals(expectedCars.get(0).getPosition(), cars.getCars().get(0).getPosition()),
+        () -> assertEquals(expectedCars.get(1).getPosition(), cars.getCars().get(1).getPosition()),
+        () -> assertEquals(expectedCars.get(2).getPosition(), cars.getCars().get(2).getPosition())
+    );
+  }
+
 }
