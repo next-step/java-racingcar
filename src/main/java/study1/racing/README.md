@@ -17,3 +17,6 @@
       - distance / 주행거리
     - method
       - move / 이동 / 1 or 0 만큼 주행거리 +
+      - getDistance / 현재 거리 반환
+      - setDistance / 현재 거리 + 새로운 거리
+      - moveDistance / random 으로 0 ~ (maxDistance + 1)
