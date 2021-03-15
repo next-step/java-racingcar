@@ -28,9 +28,8 @@ public class Cars implements Iterable<Car> {
 
 	public List<Car> findByTopPosition() {
 		int topPosition = cars.stream()
-			.max(Comparator.comparing(Car::getPosition))
-			.orElseThrow(IllegalStateException::new)
-			.getPosition();
+				.mapToInt(Car::getPosition)
+				.max().orElseThrow(()  -> new RuntimeException("position 수치가 가장 높은 차를 구할 수 없음."));
 
 		return cars.stream().filter(car -> topPosition == car.getPosition())
 			.collect(Collectors.toCollection(ArrayList::new));
