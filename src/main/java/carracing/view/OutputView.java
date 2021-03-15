@@ -21,7 +21,7 @@ public class OutputView {
 
     private void printRacingScore(List<RacingScoreInfo> roundResultInfoList) {
         for (RacingScoreInfo racingScoreInfo : roundResultInfoList) {
-            System.out.println(showScore(racingScoreInfo.getScore()));
+            System.out.println(racingScoreInfo.getCarName() + " : " + showScore(racingScoreInfo.getScore()));
         }
     }
 

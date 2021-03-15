@@ -41,7 +41,7 @@ public class CarRacingController {
     private List<RacingScoreInfo> assembleRacingScoreInfo(RacingScores racingScores) {
         List<RacingScoreInfo> racingScoreInfoList = new ArrayList<>();
         for (RacingScore racingScore : racingScores.getRacingScoreList()) {
-            racingScoreInfoList.add(new RacingScoreInfo(racingScore.getScore()));
+            racingScoreInfoList.add(new RacingScoreInfo(racingScore.getCarName(), racingScore.getScore()));
         }
         return racingScoreInfoList;
     }
