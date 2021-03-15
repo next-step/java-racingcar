@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -10,7 +11,7 @@ public class Game {
 	private Random random = new Random();
 
 	public Game(int carListSize) {
-		makeCar(carListSize);
+		this(new String[carListSize]);
 	}
 
 	public Game(String[] carNames) {
@@ -18,7 +19,7 @@ public class Game {
 	}
 
 	public List<Car> getCar() {
-		return carList;
+		return Collections.unmodifiableList(carList);
 	}
 
 	public int getExecuteCount() {
@@ -30,16 +31,10 @@ public class Game {
 		this.executeCount = 0;
 
 		for (int i = 0; i < executeCount; i++) {
-			execute(gameResult);
+			gameResult.addResult(execute());
 			this.executeCount++;
 		}
 		return gameResult;
-	}
-
-	private void makeCar(int carListSize) {
-		for (int i = 0; i < carListSize; i++) {
-			carList.add(new Car());
-		}
 	}
 
 	private void makeCar(String[] carNames) {
@@ -48,13 +43,13 @@ public class Game {
 		}
 	}
 
-	private void execute(GameResult gameResult) {
+	private GameStatus execute() {
 		GameStatus gameStatus = new GameStatus();
 		for (Car car : carList) {
 			car.moveOrStop(random.nextInt(10));
-			gameStatus.add((Car)car.clone());
+			gameStatus.add(car.copy(car));
 		}
-		gameResult.addResult(gameStatus);
+		return gameStatus;
 	}
 
 }

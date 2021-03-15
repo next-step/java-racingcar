@@ -2,8 +2,6 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -50,10 +48,10 @@ public class RacingCarTest {
 	@DisplayName("실행 횟수 테스트")
 	void runTest() {
 		Game game = new Game(1);
-		game.run(5);
-		assertThat(game.getExecuteCount()).isEqualTo(5);
-		game.run(10);
-		assertThat(game.getExecuteCount()).isEqualTo(10);
+		GameResult gameResult = game.run(5);
+		assertThat(gameResult.getGameResultList().size()).isEqualTo(5);
+		gameResult = game.run(10);
+		assertThat(gameResult.getGameResultList().size()).isEqualTo(10);
 	}
 
 	@Test
@@ -68,28 +66,15 @@ public class RacingCarTest {
 	@DisplayName("단일 우승자 테스트")
 	void getWinnersTest() {
 		// 우승자 1명
-		String carName[] = {"Car A", "Car B", "Car C"};
-		Game game = new Game(carName);
 		GameResult gameResult = new GameResult();
-		GameStatus gameStatus = new GameStatus();
-
-		List<Car> car = game.getCar();
-		//1회
-		car.get(0).move();
-		car.get(1).move();
-		gameStatus.add((Car)car.get(0).clone());
-		gameStatus.add((Car)car.get(1).clone());
-		gameStatus.add((Car)car.get(2).clone());
-		gameResult.addResult(gameStatus);
-
-		//2회
-		car.get(0).move();
-		gameStatus = new GameStatus();
-		gameStatus.add((Car)car.get(0).clone());
-		gameStatus.add((Car)car.get(1).clone());
-		gameStatus.add((Car)car.get(2).clone());
-		gameResult.addResult(gameStatus);
-
+		// 1회
+		gameResult.addResult(new GameStatus(new Car("Car A", 1),
+			new Car("Car B", 1),
+			new Car("Car C", 0)));
+		// 2회
+		gameResult.addResult(new GameStatus(new Car("Car A", 2),
+			new Car("Car B", 1),
+			new Car("Car C", 0)));
 		assertThat(gameResult.getGameWinners()).contains("Car A");
 	}
 
@@ -97,29 +82,15 @@ public class RacingCarTest {
 	@DisplayName("다중 우승자 테스트")
 	void getMultipleWinnersTest() {
 		// 우승자 2명
-		String carName[] = {"Car A", "Car B", "Car C"};
-		Game game = new Game(carName);
 		GameResult gameResult = new GameResult();
-		GameStatus gameStatus = new GameStatus();
-
-		List<Car> car = game.getCar();
-		//1회
-		car.get(0).move();
-		car.get(1).move();
-		car.get(2).move();
-		gameStatus.add((Car)car.get(0).clone());
-		gameStatus.add((Car)car.get(1).clone());
-		gameStatus.add((Car)car.get(2).clone());
-		gameResult.addResult(gameStatus);
-
-		//2회
-		car.get(0).move();
-		car.get(1).move();
-		gameStatus = new GameStatus();
-		gameStatus.add((Car)car.get(0).clone());
-		gameStatus.add((Car)car.get(1).clone());
-		gameStatus.add((Car)car.get(2).clone());
-		gameResult.addResult(gameStatus);
+		// 1회
+		gameResult.addResult(new GameStatus(new Car("Car A", 1),
+			new Car("Car B", 1),
+			new Car("Car C", 0)));
+		// 2회
+		gameResult.addResult(new GameStatus(new Car("Car A", 2),
+			new Car("Car B", 2),
+			new Car("Car C", 1)));
 
 		assertThat(gameResult.getGameWinners()).containsExactlyInAnyOrder("Car A", "Car B");
 	}
