@@ -1,6 +1,8 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.service.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,7 +10,8 @@ public class CarsTest {
 
 
     @Test
-    void getCarSize() {
+    @DisplayName("Cars getSize 테스트")
+    void getSize() {
         //given
         final int carNumber = 5;
         Cars cars = new Cars(carNumber);
@@ -21,21 +24,33 @@ public class CarsTest {
     }
 
     @Test
-    void moveOneCar() {
+    @DisplayName("자동차들을 움직이게 시켰을 때 움직임 전략에 따른 테스트")
+    void moveCars() {
         //given
-        final int index = 2;
-        final Boolean isMove = true;
-        final int MOVE_STRATEGY = 1;
-        final int START_LOCATION = 0;
-        final int carNumber = 5;
-        Cars cars = new Cars(carNumber);
+        final int carNumber = 3;
+        Cars expectCars = new Cars(carNumber);
+        MoveStrategy stubMoveStrategy = new StubMoveStrategy();
+        for (int i = 0; i < carNumber; i++) {
+            expectCars.getCars().get(i).move(true);
+        }
 
         //when
-        cars.moveOneCar(index, isMove);
-        Car resultCar = cars.getCars().get(index);
+        Cars resultCars = new Cars(carNumber);
+        resultCars.moveCars(stubMoveStrategy);
 
         //then
-        assertThat(resultCar.getCurrentLocation()).isEqualTo(START_LOCATION + MOVE_STRATEGY);
+        for (int i = 0; i < carNumber; i++) {
+            Car resultCar = resultCars.getCars().get(i);
+            Car expectCar = expectCars.getCars().get(i);
+            assertThat(resultCar.getCurrentLocation()).isEqualTo(expectCar.getCurrentLocation());
+        }
+    }
+
+    public class StubMoveStrategy implements MoveStrategy {
+        @Override
+        public Boolean getIsMove() {
+            return true;
+        }
     }
 
 

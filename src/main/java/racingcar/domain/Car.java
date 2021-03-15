@@ -10,6 +10,10 @@ public class Car {
         currentLocation = START_LOCATION;
     }
 
+    public Car(int location) {
+        currentLocation = location;
+    }
+
     public void move(Boolean isMove) {
         if (isMove) {
             currentLocation = currentLocation + MOVE_STRATEGY;
@@ -20,9 +24,6 @@ public class Car {
         return currentLocation;
     }
 
-    public Car(int location) {
-        currentLocation = location;
-    }
 
     public String getLocationToExpression() {
         String result = "";

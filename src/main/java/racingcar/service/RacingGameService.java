@@ -26,7 +26,8 @@ public class RacingGameService implements GameService {
     }
 
     private void runStep() {
-        cars.moveCars();
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        cars.moveCars(moveStrategy);
         gameStep.increaseStep();
     }
 
