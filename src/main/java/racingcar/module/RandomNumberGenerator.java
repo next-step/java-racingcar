@@ -4,10 +4,10 @@ import racingcar.Constant;
 
 import java.util.Random;
 
-public class GenerateRandomNumber {
+public class RandomNumberGenerator {
     private Random randomNum;
 
-    public GenerateRandomNumber() {
+    public RandomNumberGenerator() {
         this.randomNum = new Random();
     }
 

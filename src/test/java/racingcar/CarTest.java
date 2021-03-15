@@ -9,26 +9,26 @@ public class CarTest {
     Car car;
     @BeforeEach
     void createInstance(){
-        car = new Car();
+        car = new Car("carname1");
     }
 
     @DisplayName("조건에 맞으면 전진")
     @Test
     void move(){
-        //GIVE
-        //WHEN
+        // GIVE
+        // WHEN
         car.move(()->true);
-        //THAT
+        // THAT
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName("조건에 맞지않으면 전진하지 않음")
     @Test
     void stop(){
-        //GIVE
-        //WHEN
+        // GIVE
+        // WHEN
         car.move(()->false);
-        //THAT
+        // THAT
         assertThat(car.getPosition()).isEqualTo(0);
     }
 }
