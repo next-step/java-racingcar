@@ -8,9 +8,9 @@ public class CarRacingApplication {
         InputView inputView = new InputView();
         int carCount = inputView.getCarCount();
         int racingCount = inputView.getRacingCount();
-        CarRacing carRacing = new CarRacing();
+        CarRacing carRacing = new CarRacing(carCount);
 
-        carRacing.startRacing(carCount, racingCount);
+        carRacing.startRacing(racingCount);
 
 
     }
