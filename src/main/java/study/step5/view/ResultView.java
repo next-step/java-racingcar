@@ -13,8 +13,8 @@ public class ResultView {
     private static final String FINAL_WINNERS = "가 최종 우승했습니다.";
     private static final String NAME_SPACE = " : ";
     private static final String NEW_LINE = System.lineSeparator();
-    private static final String DASH = "-";
-    private static final String DELIMITER = "";
+    private static final String CAR_LOCATION_EXPRESSION = "-";
+    private static final String CAR_LOCATION_JOINNER = "";
     private static final String RACE_WINNER_JOINNER = ",";
 
     private ResultView() {
@@ -37,8 +37,8 @@ public class ResultView {
 
     private static String carLocationToString(int location) {
         return Arrays.stream(new int[location])
-                .mapToObj(i -> DASH)
-                .collect(Collectors.joining(DELIMITER));
+                .mapToObj(i -> CAR_LOCATION_EXPRESSION)
+                .collect(Collectors.joining(CAR_LOCATION_JOINNER));
     }
 
     public static void printRaceWinner(List<Car> cars) {
