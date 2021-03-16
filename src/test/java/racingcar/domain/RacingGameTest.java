@@ -17,7 +17,7 @@ class RacingGameTest {
         int numberOfTurns = 5;
         RacingGame racingGame = RacingGame.withCondition(namesOfCars, numberOfTurns);
 
-        assertThat(racingGame.getCars().size()).isEqualTo(namesOfCars.length);
+        assertThat(racingGame.getCars()).hasSize(namesOfCars.length);
         assertThat(racingGame.getNumberOfTurns()).isEqualTo(numberOfTurns);
     }
 
