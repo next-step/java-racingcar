@@ -1,35 +1,33 @@
 package ch01.step2;
 
 public class ResultView {
-    String[] progressArr;
+    Car[] cars;
 
     public ResultView() {
-
+        System.out.println("실행결과");
     }
 
-    public ResultView(String[] progressArr) {
-        this.progressArr = progressArr;
+    public ResultView(Car[] cars) {
+        System.out.println("실행결과");
+        this.cars = cars;
     }
 
     public void showResult(RacingGame racingGame) {
-        System.out.println("실행결과");
         int attemptCount = racingGame.getAttemptCount();
-        while (attemptCount-- > 0) {
-            racingGame.racing();
-            this.print();
-        }
+        this.cars = racingGame.getCars();
+        this.print();
     }
 
-    public void print() {
-        for (int i = 0; i < progressArr.length; i++) {
-            nullAndEmpty(progressArr[i], i);
+    private void print() {
+        for (int i = 0; i < cars.length; i++) {
+            nullAndEmpty(cars[i], i);
         }
         System.out.println();
     }
 
-    public void nullAndEmpty(String progress, int index) {
-        if (progress != null) {
-            System.out.println(progress);
+    private void nullAndEmpty(Car car, int index) {
+        if (car != null) {
+            System.out.println(car.progressBar);
         }
     }
 

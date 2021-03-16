@@ -1,8 +1,7 @@
 package test.ch01.step2;
 
-import ch01.step2.InputView;
+import ch01.step2.Car;
 import ch01.step2.RacingGame;
-import ch01.step2.ResultView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,15 +13,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     RacingGame racingGame;
-    String[] progressArr;
+    Car[] cars;
 
     @BeforeEach
     void setUp() {
+
         racingGame = new RacingGame();
-        progressArr = new String[3];
-        progressArr[0] = "-";
-        progressArr[1] = "-";
-        progressArr[2] = "-";
+
+        cars = new Car[3];
+        Car car1 = new Car("1");
+        Car car2 = new Car("2");
+        Car car3 = new Car("3");
+
+        car1.setProgressBar("-");
+        car2.setProgressBar("-");
+        car3.setProgressBar("-");
+
+        cars[0] = car1;
+        cars[1] = car2;
+        cars[2] = car3;
 
         int attemptCount = 5;
         int carCount = 3;
@@ -32,10 +41,20 @@ class RacingGameTest {
     @Test
     @DisplayName("차를 이동하는 Test")
     void moveCarTest() {
+
+        //given
         int index = 2;
-        racingGame.moveCar(progressArr, index, true);
+        String[] beforeArr = new String[3];
+
+        //when
+        racingGame.moveCar(cars, index, true);
+
+        for (int i = 0; i < cars.length; i++) {
+            beforeArr[i] = cars[i].getProgressBar();
+        }
         String[] expectArr = {"-", "-", "--"};
-        assertThat(progressArr).isEqualTo(expectArr);
+        //then
+        assertThat(beforeArr).isEqualTo(expectArr);
     }
 
     @ParameterizedTest
@@ -44,13 +63,5 @@ class RacingGameTest {
     void isKeepGoingTest(int inputNum, boolean expect) {
         racingGame.isKeepGoing(inputNum);
         assertThat(racingGame.isKeepGoing(inputNum)).isEqualTo(expect);
-    }
-
-
-    @Test
-    void execute() {
-        InputView iv = new InputView();
-        ResultView rv = new ResultView(progressArr);
-        rv.print();
     }
 }

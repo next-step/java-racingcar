@@ -6,36 +6,48 @@ public class RacingGame {
 
     int attemptCount = 0;
     int carCount = 0;
-    String[] progressArr;
+    Car[] cars;
 
     public RacingGame() {
-        execute();
+
     }
 
-    public void racing() {
+    public RacingGame(InputView iv) {
+        InputData inputData = iv.getInputData();
+
+        //입력값 setting
+        this.attemptCount = inputData.getAttemptCount();
+        this.carCount = inputData.getCarCount();
+        this.cars = new Car[this.carCount];
+
+        //make cars
+        for (int i = 0; i < carCount; i++) {
+            Car car = new Car(Integer.toString(i));
+            cars[i] = car;
+        }
+    }
+
+    private void start() {
         int randomNumber = 0;
-        int progressArrSize = progressArr.length;
-        for (int i = 0; i < progressArrSize; i++) {
+        int carsSize = cars.length;
+        for (int i = 0; i < carsSize; i++) {
             randomNumber = getRandomNumber();
-            moveCar(progressArr, i, isKeepGoing(randomNumber));
+            moveCar(this.cars, i, isKeepGoing(randomNumber));
         }
     }
 
-    public void moveCar(String[] progressArr, int index, boolean isKeepGoing) {
-        if (isKeepGoing && progressArr[index] != null) {
-            progressArr[index] += "-";
-        }
-
-        if (isKeepGoing && progressArr[index] == null) {
-            progressArr[index] = "-";
+    public void moveCar(Car[] cars, int index, boolean isKeepGoing) {
+        if (isKeepGoing) {
+            cars[index].move();
         }
     }
+
 
     private int getRandomNumber() {
         return new Random().nextInt(10);
     }
 
-    public int getAttemptCount(){
+    public int getAttemptCount() {
         return this.attemptCount;
     }
 
@@ -43,21 +55,31 @@ public class RacingGame {
         return randomNumber > 3;
     }
 
-    private void execute() {
-        InputView iv = new InputView();
-        InputData inputData = iv.getInputData();
-
-        this.attemptCount = inputData.getAttemptCount();
-        this.carCount = inputData.getCarCount();
-        this.progressArr = inputData.getProgressArr();
-
-        ResultView rv = new ResultView(progressArr);
-        rv.showResult(this);
+    public Car[] getCars() {
+        return cars;
     }
 
+    public void setCars(Car[] cars) {
+        this.cars = cars;
+    }
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
+        //Input data
+        InputView iv = new InputView();
+        RacingGame racingGame = new RacingGame(iv);
+
+
+        ResultView rv = new ResultView();
+        //start racing game
+        for (int i = 0; i < racingGame.getAttemptCount(); i++) {
+
+            racingGame.start();
+
+            //show a result of racing game
+            rv.showResult(racingGame);
+        }
+
+
     }
 
 
