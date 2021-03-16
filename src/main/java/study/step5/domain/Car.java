@@ -30,10 +30,6 @@ public class Car {
         return location;
     }
 
-    public void move() {
-        this.location++;
-    }
-
     public void move(int location) {
         this.location += location;
     }

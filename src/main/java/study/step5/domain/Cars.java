@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 public class Cars {
 
+    private static final int MOVE_FORWARD_ONE_LOCATION = 1;
     private final List<Car> cars;
 
     private Cars(final List<Car> cars) {
@@ -40,7 +41,7 @@ public class Cars {
 
     private void delegateMove(MoveBehavior moveBehavior, Car car) {
         if (moveBehavior.isMoved()) {
-            car.move();
+            car.move(MOVE_FORWARD_ONE_LOCATION);
         }
     }
 

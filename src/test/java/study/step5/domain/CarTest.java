@@ -33,7 +33,7 @@ class CarTest {
     void move(String carName, int movingCount, int expected) {
         Car car = Car.of(carName);
         while (movingCount-- > 0) {
-            car.move();
+            car.move(1);
         }
         assertThat(car.getLocation()).isEqualTo(expected);
     }
