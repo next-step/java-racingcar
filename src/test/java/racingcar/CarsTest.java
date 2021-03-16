@@ -3,8 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
-import racingcar.model.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.List;
 
@@ -28,14 +28,19 @@ public class CarsTest {
         assertThat(cars.getCars()).hasSize(3);
     }
 
-    @DisplayName("Cars playCarGame 실행 시 car move 이동 테스트")
+    @DisplayName("Car 생성 테스트")
     @Test
-    void playCarGame() {
-        // GIVE
-        // WHEN
-        cars.playCarGame();
-        // THAT
-        assertThat(cars.getCars().stream().map(Car::getPosition)).isNotNull();
+    void car_create_test() {
+
+        // given
+        String[] names = {"pobi", "crong", "honux"};
+
+        // when
+        Cars cars = new Cars(names);
+
+        // then
+        assertThat(cars.getCars().size()).isEqualTo(3);
+        //assertThat(cars.getCars()).containsExactly(new Car("pobi"), new Car("crong"), new Car("honux"));
     }
 
     @DisplayName("Cars 값 깊은 복사 테스트")
