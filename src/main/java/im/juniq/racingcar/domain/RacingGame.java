@@ -50,7 +50,7 @@ public class RacingGame {
 		}
 	}
 
-	public String getCarsStatus() {
+	public String getScore() {
 		String carsStatus = "";
 		for (int i = 0; i < cars.size(); i++) {
 			carsStatus += addNewLineIfFirstLine(i);

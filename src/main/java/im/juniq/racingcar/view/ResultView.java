@@ -1,7 +1,7 @@
 package im.juniq.racingcar.view;
 
 public class ResultView {
-	public void printCarsStatus(String carsStatus) {
+	public void printScore(String carsStatus) {
 		System.out.println(carsStatus);
 	}
 

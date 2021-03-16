@@ -38,7 +38,7 @@ public class GameController {
 	}
 
 	private void printScore() {
-		resultView.printCarsStatus(racingGame.getCarsStatus());
+		resultView.printScore(racingGame.getScore());
 	}
 
 	private void printWinner() {

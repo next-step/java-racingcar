@@ -17,7 +17,7 @@ class CarsTest {
 		RacingGame racingGame = new RacingGame();
 		racingGame.createCars(carNames, new RandomNumberMovingStrategy());
 
-		assertThat(racingGame.getCarsStatus()).contains(carNames);
+		assertThat(racingGame.getScore()).contains(carNames);
 	}
 
 	@DisplayName("자동차 n대를 이동한다")
@@ -29,7 +29,7 @@ class CarsTest {
 
 		racingGame.move();
 
-		assertThat(racingGame.getCarsStatus()).contains("-");
+		assertThat(racingGame.getScore()).contains("-");
 	}
 
 	@DisplayName("가장 먼 위치에 도달한 차 찾기")
