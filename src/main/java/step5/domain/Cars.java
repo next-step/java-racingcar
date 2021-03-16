@@ -1,39 +1,57 @@
 package step5.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
+    private Map<String, Integer> carsMap = new HashMap<>();
 
     public Cars(final String names) {
         for (String carName : names.split(",")) {
             cars.add(new Car(carName));
         }
     }
-    public List<Car> findWinner() {
 
-        List<Car> winnerCarList = new ArrayList<>();
-        for (Car car : cars) {
-            if (getMaxPositionValue() <= car.getPosition()) {
-                winnerCarList.add(car);
-            }
-        }
-        return winnerCarList;
-    }
-
-    private int getMaxPositionValue() {
-        int maxPositionValue = 0;
-        for (Car car : cars) {
-            if (maxPositionValue < car.getPosition()) {
-                maxPositionValue = car.getPosition();
-            }
-        }
-        return maxPositionValue;
+    public Cars(List<Car> carList) {
+        this.cars = carList;
     }
 
     public List<Car> getCars() {
         return cars;
     }
+
+    public Map<String, Integer> eachRoundMove() {
+        for (Car car : cars) {
+            carsMap.put(car.getName(),  car.getPosition());
+        }
+        return carsMap;
+    }
+
+    public String finalWinner() {
+        List<String> winner = new ArrayList<>();
+        int max = getMaxPosition();
+
+        carsMap.forEach(
+                (name, position) -> {
+                    if(position >= max) {
+                        winner.add(name);
+                    }
+                }
+        );
+        String winners = winner.stream().collect(Collectors.joining(","));
+        return winners;
+    }
+
+    private int getMaxPosition() {
+        int max = carsMap.values()
+                .stream()
+                .mapToInt(Integer::intValue)
+                .max().getAsInt();
+        return max;
+    }
+
 }

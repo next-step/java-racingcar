@@ -20,7 +20,7 @@ public class Car {
         this.position = position;
     }
 
-    public void move(GenerateNumber generateNumber) {
+    public void move(MovingPolicy generateNumber) {
         if (generateNumber.generateRandom() >= 4) {
             this.position++;
         }

@@ -1,14 +1,17 @@
 package step5;
 
 import step5.View.InputView;
+import step5.domain.Car;
 import step5.domain.Cars;
-import step5.domain.RandomGenerate;
+import step5.domain.MovingPolicy;
+import step5.domain.RandomGeneratePolicy;
 import static step5.View.OutputView.*;
 
 public class RacingGame {
 
     private final Cars cars;
     private int attempt;
+    private MovingPolicy generateNumber = new RandomGeneratePolicy();
 
     public RacingGame(InputView inputView) {
         String carNames = inputView.inputCarNames();
@@ -24,8 +27,7 @@ public class RacingGame {
             printCarMove(cars);
 
         }
-        printWinner();
-
+        printWinner(cars.finalWinner());
     }
 
     public void move() {
@@ -33,10 +35,10 @@ public class RacingGame {
     }
 
     private void attemptRacing() {
-        cars.getCars().forEach(
-                i -> i.move(new RandomGenerate())
-        );
-
+        for (Car car : cars.getCars()) {
+            car.move(generateNumber);
+        }
+        cars.eachRoundMove();
         System.out.println();
     }
 }

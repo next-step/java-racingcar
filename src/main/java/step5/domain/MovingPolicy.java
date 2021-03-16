@@ -1,6 +1,6 @@
 package step5.domain;
 
-public interface GenerateNumber {
+public interface MovingPolicy {
 
     int generateRandom();
 }
