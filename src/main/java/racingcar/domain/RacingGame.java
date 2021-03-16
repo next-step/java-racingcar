@@ -8,21 +8,21 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Racing {
+public class RacingGame {
     private List<Car> cars;
     private int numberOfTurns;
 
-    private Racing(List<Car> cars, int numberOfTurns) {
+    private RacingGame(List<Car> cars, int numberOfTurns) {
         this.cars = cars;
         this.numberOfTurns = numberOfTurns;
     }
 
-    public static Racing withCondition(String[] namesOfCars, int numberOfTurns) {
+    public static RacingGame withCondition(String[] namesOfCars, int numberOfTurns) {
         List<Car> cars = Arrays.stream(namesOfCars)
                 .map(Car::new)
                 .collect(Collectors.toList());
 
-        return new Racing(cars, numberOfTurns);
+        return new RacingGame(cars, numberOfTurns);
     }
 
     public void race() {
