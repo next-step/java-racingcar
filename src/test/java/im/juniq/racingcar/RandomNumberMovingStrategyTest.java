@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.Random;
 
+import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
+import im.juniq.racingcar.domain.RandomNumberZeroToNine;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

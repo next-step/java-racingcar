@@ -1,4 +1,4 @@
-package im.juniq.racingcar;
+package im.juniq.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;

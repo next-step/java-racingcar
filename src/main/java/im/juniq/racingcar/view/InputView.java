@@ -1,4 +1,4 @@
-package im.juniq.racingcar;
+package im.juniq.racingcar.view;
 
 import java.util.Scanner;
 

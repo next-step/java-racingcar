@@ -1,4 +1,7 @@
-package im.juniq.racingcar;
+package im.juniq.racingcar.view;
+
+import im.juniq.racingcar.domain.Car;
+import im.juniq.racingcar.domain.Cars;
 
 public class ResultView {
 	public void printCarsStatus(Cars cars) {

@@ -1,4 +1,4 @@
-package im.juniq.racingcar;
+package im.juniq.racingcar.domain;
 
 public class Car {
 	private static final int CAR_NAME_LENGTH_LIMIT = 5;

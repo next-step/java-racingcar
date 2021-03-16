@@ -1,4 +1,4 @@
-package im.juniq.racingcar;
+package im.juniq.racingcar.domain;
 
 public class OnlyTrueMovingStrategy implements MovingStrategy {
 	@Override

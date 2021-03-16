@@ -2,6 +2,10 @@ package im.juniq.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import im.juniq.racingcar.domain.Car;
+import im.juniq.racingcar.domain.Cars;
+import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
+import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

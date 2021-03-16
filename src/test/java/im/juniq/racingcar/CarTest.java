@@ -2,6 +2,8 @@ package im.juniq.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
+import im.juniq.racingcar.domain.Car;
+import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

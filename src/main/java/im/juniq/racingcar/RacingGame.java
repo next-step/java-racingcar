@@ -1,5 +1,9 @@
 package im.juniq.racingcar;
 
+import im.juniq.racingcar.domain.Cars;
+import im.juniq.racingcar.view.InputView;
+import im.juniq.racingcar.view.ResultView;
+
 public class RacingGame {
 	private Cars cars = new Cars();
 	private ResultView resultView = new ResultView();
