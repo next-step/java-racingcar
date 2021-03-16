@@ -3,13 +3,13 @@ package step3;
 import java.util.List;
 
 public class Car {
-    public List<Integer> movement;
+    public List<Boolean> movement;
     
     public void setPosition(boolean isMove) {
-        this.movement.add(isMove ? 1 : 0);
+        this.movement.add(isMove);
     }
     
-    public int getPosition(int round) {
+    public boolean getPosition(int round) {
         return this.movement.get(round);
     }
 }
