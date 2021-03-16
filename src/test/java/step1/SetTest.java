@@ -1,6 +1,5 @@
-package study;
+package step1;
 
-import org.assertj.core.internal.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 public class SetTest {
