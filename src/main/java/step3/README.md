@@ -16,15 +16,17 @@
 
 - [x] 기능 구현
   - [x] 자동차 대수, 시도 횟수 입력받는 클래스 생성(`InputView`)
-  - [x] 자동차 담을 클래스 생성(`Cars`)
+  - [x] 자동차 담을 일급 컬렉션 생성(`Cars`)
   - [x] 실행 결과 출력할 클래스 생성 (`ResultView`)
-  - [x] 시도횟수 마다 레이스 진행하는 함수 생성 (`getResult()`)
-  - [x] 각각의 레이스에서 자동차 전진여부에 따라 전진하는 함수 생성(`move()`)
-  - [x] 전진여부 결정하는 랜덤 함수 생성(`moveDecision`)
-- [ ] 단위 테스트 통과
-  - [x] Car 생성자 통해서 Map 데이터 생성되었는지 테스트
-  - [x] Car 클래스의 상수로 선언한 Map 데이터 조회(get) 테스트
-  - [x] 랜덤 수에 따라 전진여부 정상적으로 작동하는지 테스트
+  - [x] 레이스 동작하는 클래스 생성 (`RacingGame`)
+  - [x] 동작여부에 사용되는 랜덤 관련 인터페이스 생성 (`RandomGenerator`)
+  - [x] 전진여부 결정하는 게임룰 관련 클래스 생성(`GameRule`)
+- [x] 단위 테스트 통과
+  - [x] Car 클래스 테스트
+  - [x] Cars 클래스 테스트
+  - [x] GameRule 클래스 테스트
+  - [x] RacingGame 클래스 테스트
+  - [x] RandomUtilTest 클래스 테스트
 
 ## 중간 피드백
 
@@ -33,7 +35,7 @@
 - [x] View와 도메인은 서로 의존하는 경우가 발생하면 안됨. (View에서 도메인에 직접 접근🚫)
   - 클래스가 얼마 안되더라도 목적에 따라 패키지를 세분화하면 클래스간 의존도를 패키지 단위로 확인가능
 - [x] Car 클래스에서 Map 생성대신 List\<Car> 라는 일급 컬렉션을 사용하는게 단위 테스트에 도움.
-- [ ] 테스트 메서드에서 여러번의 `assertThat()` 사용이 발생할 경우, `assetAll`, `SoftAssertions`사용이 더 좋음.
+- [x] 테스트 메서드에서 여러번의 `assertThat()` 사용이 발생할 경우, `assetAll`, `SoftAssertions`사용이 더 좋음.
   - 학습후, 왜 `assertAll`이나 `SoftAssertion`이 더 권장되는지 이유를 [github](https://github.com/next-step/java-racingcar/pull/2038#issuecomment-797856106)에 코멘트
 
 ## Learned from Step 3
