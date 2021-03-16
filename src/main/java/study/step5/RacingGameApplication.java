@@ -9,9 +9,15 @@ import study.step5.view.ResultView;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        Racing racing = Racing.of(Cars.of(InputView.inputCarNames()), InputView.inputAttemptNumber(), new RandomMoveBehavior());
-        ResultView.printResultMessage();
+        String[] carNames = InputView.inputCarNames();
+        int attemptNumber = InputView.inputAttemptNumber();
+        Racing racing = Racing.of(
+                Cars.of(carNames),
+                attemptNumber,
+                new RandomMoveBehavior()
+        );
 
+        ResultView.printResultMessage();
         while (!racing.isFinished()) {
             racing.race();
             ResultView.printRace(racing.getCars());
