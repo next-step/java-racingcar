@@ -1,5 +1,6 @@
 package study1.racing.code;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,6 @@ public class RaceRound {
   public List<Integer> getResult() {
     return cars.stream()
             .map(car -> car.getDistance())
-            .collect(Collectors.toList());
+            .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
   }
 }
