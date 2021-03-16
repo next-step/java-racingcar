@@ -19,7 +19,7 @@ public class Cars {
 
   public void updateAll(RandomNumberGenerator randomNumberGenerator){
     for(Car car : cars) {
-      car.moveCar(randomNumberGenerator.generateRandomNumber());
+      car.moveCar(new RandomMovingStrategy(randomNumberGenerator));
     }
   }
 
@@ -31,25 +31,31 @@ public class Cars {
     return sb.toString();
   }
 
-  public List<String> getWinner() {
-    List<String> winnerNames = new ArrayList<>();
+  public List<CarName> getWinner() {
+    List<CarName> winnerNames = new ArrayList<>();
 
     getWinnerNames(winnerNames, getMaxPositionInCars());
 
     return winnerNames;
   }
 
-  private void getWinnerNames(List<String> winnerNames, int max) {
+  private void getWinnerNames(List<CarName> winnerNames, Position max) {
     for(Car car : cars) {
-      if(car.getPosition() == max) {
-        winnerNames.add(car.getName());
-      }
+      getMaxPosition(winnerNames, max, car);
     }
   }
 
-  private int getMaxPositionInCars() {
-    return cars.stream()
-        .mapToInt(Car::getPosition)
-        .max().orElseThrow(IllegalArgumentException::new);
+  private void getMaxPosition(List<CarName> winnerNames, Position max, Car car) {
+    if(car.isWinner(max)) {
+      winnerNames.add(car.getName());
+    }
+  }
+
+  private Position getMaxPositionInCars() {
+    Position max = new Position(0);
+    for(Car car : cars) {
+      max = car.getMaxPosition(max);
+    }
+    return max;
   }
 }
