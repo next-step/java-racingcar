@@ -1,35 +1,38 @@
 package racingCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
-  private Car car;
+  private static final String TEST_CAR = "TEST";
 
-  @BeforeEach
-  void setUp() {
-    car = new Car();
+  @DisplayName("자동차가 움직이는 경우")
+  @Test
+  void move_test() {
+    Car car = new Car(TEST_CAR, 0);
+    car.move(() -> true);
+    assertThat(car.getPosition()).isEqualTo(1);
   }
 
-  @DisplayName("주어진 숫자가 4 이상이면 이동")
-  @ParameterizedTest
-  @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-  void given_number_greater_3_car_move(int number) {
-    car.move(number);
-    assertThat(car.getDistance()).isEqualTo(1);
+  @DisplayName("자동차가 안움직이는 경우")
+  @Test
+  void not_move_test() {
+    Car car = new Car(TEST_CAR, 0);
+    car.move(() -> false);
+    assertThat(car.getPosition()).isEqualTo(0);
   }
 
-  @DisplayName("주어진 숫자가 4 미만이면 정지")
-  @ParameterizedTest
-  @ValueSource(ints = {0, 1, 2, 3})
-  void given_number_less_4_car_move(int number) {
-    car.move(number);
-    assertThat(car.getDistance()).isEqualTo(0);
+  @DisplayName("자동차 이름이 5보다 크면 예외 발생")
+  @Test
+  void name_length_over_five_throw_exception() {
+    assertThatThrownBy(() -> new Car("TEST66", 0))
+        .isInstanceOf(OverCarNameLengthException.class)
+        .hasMessage("자동차 이름 길이가 5를 초과했습니다.");
+
   }
 
 }

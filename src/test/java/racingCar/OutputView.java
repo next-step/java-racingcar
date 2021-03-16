@@ -1,33 +1,39 @@
 package racingCar;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class OutputView {
 
-  private static final String CAR_QUESTION = "자동차 대수는 몇 대 인가요?";
-  private static final String TRY_QUESTION = "시도할 회수는 몇 회 인가요?";
   private static final String RESULT = "실행결과";
   private static final String HYPHEN = "-";
+  private static final String COLON = " : ";
+  private static final String WINNER_SENTENCE = "가 최종 우승했습니다.";
 
-  public static void printCarNumber() {
-    System.out.println(CAR_QUESTION);
-  }
-
-  public static void printTryCount() {
-    System.out.println(TRY_QUESTION);
-  }
-
-  public static void printResult() {
+  public void printResult() {
     System.out.println(RESULT);
   }
 
-  public static void printCarDistance(int distance) {
-    for (int i = 0; i < distance; i++) {
+  public void printCarDistance(Car car) {
+    System.out.print(car.getName() + COLON);
+    for (int i = 0; i < car.getPosition(); i++) {
       System.out.print(HYPHEN);
     }
+    printEmptyLine();
+  }
+
+  public void printEmptyLine() {
     System.out.println();
   }
 
-  public static void printEmptyLine() {
-    System.out.println();
+  public void printError(String errorMsg) {
+    System.out.println(errorMsg);
   }
 
+  public void printWinners(List<Car> winners) {
+    String winnerNames = winners.stream()
+        .map(Car::getName)
+        .collect(Collectors.joining(","));
+    System.out.println(winnerNames + WINNER_SENTENCE);
+  }
 }

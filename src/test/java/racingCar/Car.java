@@ -2,17 +2,34 @@ package racingCar;
 
 public class Car {
 
-  private int distance;
+  private static final Integer NAME_CONSTRAINT = 5;
+  private static final String NAME_EXCEPTION = "자동차 이름 길이가 5를 초과했습니다.";
 
-  public void move(int movedDistance) {
-    this.distance += movedDistance >= 4 ? 1 : 0;
+  private final String name;
+  private Integer position;
+
+  public Car(String name, Integer position) {
+    validate(name);
+    this.name = name;
+    this.position = position;
   }
 
-  public int getDistance() {
-    return this.distance;
+  public String getName() {
+    return this.name;
   }
 
-  public void print() {
-    OutputView.printCarDistance(this.distance);
+  public Integer getPosition() {
+    return this.position;
   }
+
+  private void validate(String name) {
+    if (name.length() > NAME_CONSTRAINT) {
+      throw new OverCarNameLengthException(NAME_EXCEPTION);
+    }
+  }
+
+  public void move(MovableStrategy movable) {
+    this.position += movable.movable() ? 1 : 0;
+  }
+
 }

@@ -5,25 +5,35 @@ import java.util.List;
 
 public class RacingGame {
 
-  private int tryCount;
-  private final List<Car> cars;
+  private final String[] carNames;
+  private final int tryCount;
 
-  public RacingGame(int carNumber, int tryCount) {
-    cars = new ArrayList<>();
-    for (int i = 0; i < carNumber; i++) {
-      cars.add(new Car());
-    }
+  public RacingGame(String[] carNames, int tryCount) {
+    this.carNames = carNames;
     this.tryCount = tryCount;
   }
 
-  public void start() {
+  public List<Car> start(OutputView outputView) {
+    List<Car> cars = makeCars(carNames);
+
+    outputView.printResult();
     for (int i = 0; i < tryCount; i++) {
       cars.forEach(car -> {
-        car.move(RandomNumber.create());
-        car.print();
+        car.move(new RandomMovable());
+        outputView.printCarDistance(car);
       });
-      OutputView.printEmptyLine();
+      outputView.printEmptyLine();
     }
+    return cars;
   }
+
+  private List<Car> makeCars(String[] carNames) {
+    List<Car> cars = new ArrayList<>();
+    for (int i = 0; i < carNames.length; i++) {
+      cars.add(new Car(carNames[i], 0));
+    }
+    return cars;
+  }
+
 
 }
