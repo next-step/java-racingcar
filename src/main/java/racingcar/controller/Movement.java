@@ -1,7 +1,8 @@
 package racingcar.controller;
 
 import java.util.List;
-import racingcar.model.Car;
+import racingcar.domain.Car;
+import racingcar.domain.Position;
 import racingcar.util.RandomGenerator;
 
 public class Movement {
@@ -10,22 +11,23 @@ public class Movement {
   private static final int RANDOM_RANGE = 10;
 
   public void moveCars(List<Car> cars) {
-    cars.forEach(car -> moveOrNot(car));
+    cars.forEach(
+        car -> moveOrNot(car.getPosition(), RandomGenerator.generateRandomNumber(RANDOM_RANGE)));
   }
 
   public boolean isMoveable(int number) {
     return number >= MOVE_CONDITION;
   }
 
-  private void moveOrNot(Car car) {
-    if (isMoveable(RandomGenerator.generateRandomNumber(RANDOM_RANGE))) {
-      car.move();
+  private void moveOrNot(Position position, int number) {
+    if (isMoveable(number)) {
+      position.move();
     }
   }
 
-  public static String trackingMovement(Car car, String track) {
+  public static String trackingMovement(Position position, String track) {
     StringBuilder movement = new StringBuilder();
-    for (int i = 0; i < car.getLocation(); i++) {
+    for (int i = 0; i < position.getPosition(); i++) {
       movement.append(track);
     }
     return movement.toString();
