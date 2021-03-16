@@ -3,6 +3,7 @@ package carracing.service;
 import carracing.constants.CarRacingConstant;
 import carracing.domain.Car;
 import carracing.domain.Cars;
+import carracing.domain.Winners;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
 import carracing.service.dto.RoundResult;
@@ -65,7 +66,7 @@ public class CarRacing {
         return cars.inquiryRacingScores();
     }
 
-    private List<Car> chooseWinner() {
+    private Winners chooseWinner() {
         int winnerScore = 0;
         List<Car> winnerList = new ArrayList<>();
         for (Car car : cars.getCarList()) {
@@ -73,7 +74,7 @@ public class CarRacing {
             winnerList  = decideWinnerList(winnerScore, winnerList, car);
             winnerScore = decideWinnerScore(winnerScore, racingScore);
         }
-        return winnerList;
+        return new Winners(winnerList);
     }
 
     private List<Car> decideWinnerList(int currentWinnerScore, List<Car> winnerList, Car car) {
