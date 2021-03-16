@@ -32,10 +32,10 @@ class CarsTest {
         }
 
         assertThat(cars.stream()
-                .map(car -> car.getLocation())
-                .findFirst()
-                .orElse(0)
-        ).isEqualTo(expected);
+                    .map(car -> car.getLocation())
+                    .findFirst()
+                    .orElse(0))
+                .isEqualTo(expected);
     }
 
     @DisplayName("레이싱게임의 우승자 확인")
