@@ -19,11 +19,18 @@ public class InputView {
         System.out.println(tryCount);
         int tryCount = input.nextInt();
 
-        // 더 좋은 방법이 있을꺼 같긴 한데,,,
-        if (carCount < 0 || tryCount < 0) {
+        if (!isValidInput(carCount, tryCount)) {
             throw new IllegalArgumentException(wrongInput);
         }
 
         return new InputDto(carCount, tryCount);
+    }
+
+    public static boolean isValidInput(int carCount, int tryCount) {
+        if (carCount < 0 || tryCount < 0) {
+            return false;
+        }
+
+        return true;
     }
 }

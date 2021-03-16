@@ -18,7 +18,9 @@ public class Racing {
         for (int i = 0; i < tryCount; ++i) {
             for (int j = 0; j < carList.size(); ++j) {
                 Car car = carList.get(j);
-                car.carCanGoJudge();
+
+                int randomNumber = RandomNumber.randomNumberGenerator();
+                car.carCanGoJudge(randomNumber);
                 ResultView.result(car);
             }
             System.out.println();
