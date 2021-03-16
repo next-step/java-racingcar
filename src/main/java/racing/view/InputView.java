@@ -19,7 +19,7 @@ public class InputView {
     public Cars getCarNames() {
         return new Cars(carNames.split(","));
     }
-
+  
     public int getTryCount() {
         return tryCount;
     }

@@ -4,7 +4,6 @@ import racing.exception.CarNameException;
 
 public class Car {
 
-    public static final int MOVE_LIMIT = 4;
     private String name;
     private int moveCount;
 
@@ -12,6 +11,7 @@ public class Car {
         validation(name);
         this.name = name;
         this.moveCount = moveCount;
+
     }
 
     public void tryMove(int number){
