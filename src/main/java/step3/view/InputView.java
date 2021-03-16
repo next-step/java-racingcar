@@ -2,12 +2,27 @@ package step3.view;
 
 import step3.exception.CarRaceCheckInputException;
 
+import java.util.Scanner;
+
 
 public class InputView {
 
-    int carCount;
+    private int carCount;
 
-    int racingCount;
+    private int racingCount;
+
+    public void inputData() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        int carCount = scan.nextInt();
+
+
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        int racingCount = scan.nextInt();
+
+        this.saveInputData(carCount, racingCount);
+
+    }
 
     public void saveInputData(int carCount, int racingCount) {
         if(carCount < 1){

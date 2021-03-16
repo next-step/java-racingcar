@@ -2,7 +2,7 @@ package step3.util;
 
 import java.util.Random;
 
-public class RanDomUtil {
+public class RandomUtil {
     private static final int RANGE = 10;
 
     private static Random random = new Random();

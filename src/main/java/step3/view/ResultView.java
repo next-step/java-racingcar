@@ -1,6 +1,6 @@
 package step3.view;
 
-import step3.object.Car;
+import step3.domain.Car;
 import java.util.List;
 
 public class ResultView {

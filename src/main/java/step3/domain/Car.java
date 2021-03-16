@@ -1,10 +1,10 @@
-package step3.object;
+package step3.domain;
 
 public class Car {
 
-    final int goCondition = 4;
+    private final int goCondition = 4;
 
-    int goCount;
+    private int goCount;
 
     public void go(int randomValue){
         if(randomValue >= goCondition){
