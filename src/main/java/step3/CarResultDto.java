@@ -5,14 +5,14 @@ import java.util.List;
 
 public class CarResultDto {
 
-    private List<CarDto> carDtoList;
+    private List<CarPosition> carPositionList;
     private List<String> winnerCarNames;
 
     public CarResultDto(List<Car> carList, List<String> winnerCarNames) {
-        this.carDtoList = new ArrayList<>();
+        this.carPositionList = new ArrayList<>();
 
         for (Car car : carList) {
-            this.carDtoList.add(new CarDto.Builder()
+            this.carPositionList.add(new CarPosition.Builder()
                     .carName(car.getCarName())
                     .position(car.getCurrentPosition())
                     .build()
@@ -22,8 +22,8 @@ public class CarResultDto {
         this.winnerCarNames = winnerCarNames;
     }
 
-    public List<CarDto> getCarDtoList() {
-        return this.carDtoList;
+    public List<CarPosition> getCarDtoList() {
+        return this.carPositionList;
     }
 
     public List<String> getWinnerCarNames() {

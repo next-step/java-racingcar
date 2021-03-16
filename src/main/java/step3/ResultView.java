@@ -18,11 +18,13 @@ public class ResultView {
     public void printOutRacingResult() {
         carRacingResult.forEach(carResultDto -> {
             carResultDto.getCarDtoList()
-                    .forEach(carDto -> System.out.println(carDto.getCarName()
-                            + " : "
-                            + StringUtil.repeat(DISTANCE_EXPRESSION, carDto.getPosition())));
+                    .forEach(carPosition -> printCar(carPosition.getCarName(), carPosition.getPosition()));
             System.out.println();
         });
+    }
+
+    private void printCar(String carName, int position) {
+        System.out.println(carName + ":" + StringUtil.repeat(DISTANCE_EXPRESSION, position));
     }
 
     public void printOutWinnerCarName() {

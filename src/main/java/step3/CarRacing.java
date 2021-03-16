@@ -7,17 +7,20 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class CarRacing {
-    private List<Car> carList;
+    private final List<Car> carList;
 
     public CarRacing(String[] carsName) {
-        makeRacingCars(carsName);
+        this.carList = makeRacingCars(carsName);
     }
 
-    private void makeRacingCars(String[] carsName) {
-        carList = new ArrayList<>();
+    private List<Car> makeRacingCars(String[] carsName) {
+        List<Car> racingCars = new ArrayList<>();
+
         for (String carName : carsName) {
-            carList.add(new Car(carName));
+            racingCars.add(new Car(carName));
         }
+
+        return racingCars;
     }
 
     public void moveForward() {
@@ -30,9 +33,9 @@ public class CarRacing {
         return this.carList;
     }
 
-    public List<String> getWinnerCarNames() {
+    public List<String> findWinnerCarNames() {
         return carList.stream()
-                .filter(car -> car.getCurrentPosition() == getMaxCurrentPosition())
+                .filter(car -> car.isWinner(getMaxCurrentPosition()))
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
 

@@ -19,10 +19,11 @@ public class CarRacingControllerTest {
                 new CarRacing(carsName));
         List<CarResultDto> carResultDtoList = carRacingController.startCarRacing();
 
-        assertThat(carResultDtoList.size()).isEqualTo(roundCount);
-        assertThat(carResultDtoList).allSatisfy(carResultDto -> {
-            assertThat(carResultDto.getCarDtoList().size()).isEqualTo(carsName.length);
-            assertThat(carResultDto.getWinnerCarNames()).isNotEmpty();
-        });
+        assertThat(carResultDtoList)
+                .hasSize(roundCount)
+                .allSatisfy(carResultDto -> {
+                    assertThat(carResultDto.getCarDtoList().size()).isEqualTo(carsName.length);
+                    assertThat(carResultDto.getWinnerCarNames()).isNotEmpty();
+                });
     }
 }
