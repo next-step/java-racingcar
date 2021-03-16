@@ -26,7 +26,7 @@ public class PositionTest {
     @DisplayName("전진 테스트")
     @Test
     void isGo_test() {
-        RacingCar racingCar = new RacingCar(new Position());
+        RacingCar racingCar = new RacingCar("pobi", new Position());
         String result = racingCar.isGo(5);
         assertThat(result).isEqualTo("-");
 
@@ -35,7 +35,7 @@ public class PositionTest {
     @DisplayName("멈춤 테스트")
     @Test
     void stop_test() {
-        RacingCar racingCar = new RacingCar(new Position());
+        RacingCar racingCar = new RacingCar("crong", new Position());
         String result = racingCar.isGo(3);
         assertThat(result).isEqualTo("");
     }
