@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import study.step5.constant.RacingConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ class CarsTest {
     @ParameterizedTest
     @CsvSource(value = {"자동차1호,자동차2호,자동차3호,자동차4호,자동차5:5"}, delimiter = ':')
     void of(String carNames, int expected) {
-        Cars cars = Cars.of(carNames.split(RacingConstant.COMMA));
+        Cars cars = Cars.of(carNames.split(","));
         assertThat(cars.getSize()).isEqualTo(expected);
     }
 
@@ -26,7 +25,7 @@ class CarsTest {
     @CsvSource(value = {"자동차1호:1:1", "자동차1호,자동차2호:4:8", "자동차1호,자동차2호,자동차3호:5:15"}, delimiter = ':')
     void move(String carNames, int moveIndex, int expected) {
         MoveBehavior moveBehavior = new OneLocationMoveBehavior();
-        Cars cars = Cars.of(carNames.split(RacingConstant.COMMA));
+        Cars cars = Cars.of(carNames.split(","));
 
         while (moveIndex-- > 0) {
             cars.move(moveBehavior);

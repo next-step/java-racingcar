@@ -1,6 +1,5 @@
 package study.step5.view;
 
-import study.step5.constant.RacingConstant;
 import study.step5.domain.Car;
 import study.step5.domain.Cars;
 
@@ -16,6 +15,7 @@ public class ResultView {
     private static final String NEW_LINE = "\n";
     private static final String DASH = "-";
     private static final String DELIMITER = "";
+    private static final String RACE_WINNER_JOINNER = ",";
 
     private ResultView() {
     }
@@ -43,7 +43,7 @@ public class ResultView {
 
     public static void printRaceWinner(List<Car> cars) {
         String winners = cars.stream().map(car -> car.getCarName())
-                .collect(Collectors.joining(RacingConstant.COMMA));
+                .collect(Collectors.joining(RACE_WINNER_JOINNER));
 
         System.out.println(winners + FINAL_WINNERS);
     }
