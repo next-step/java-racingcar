@@ -29,6 +29,11 @@ public class Car {
         }
     }
 
+    public int getStatusLength() {
+        return status.length();
+    }
+
+
     @Override
     public String toString() {
         return status.toString();

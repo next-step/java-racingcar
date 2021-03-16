@@ -14,6 +14,10 @@ public class Name {
         this.name = name;
     }
 
+    public static Name newInstance(Name name, NamingStrategy lengthCheck) {
+        return new Name(name.toString(), lengthCheck);
+    }
+
     public static Name from(String name, NamingStrategy lengthCheck) {
         return new Name(name, lengthCheck);
     }

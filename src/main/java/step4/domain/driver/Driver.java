@@ -20,7 +20,7 @@ public class Driver implements Cloneable {
 
     // 깊은 복사를 위해 아래와 같이 처리했습니다.
     private Driver(Driver other, NamingStrategy strategy) {
-        this.name = Name.from(other.name.toString(), strategy);
+        this.name = Name.newInstance(other.name, strategy);
         this.car = Car.newInstance(other.car);
     }
 
@@ -34,6 +34,14 @@ public class Driver implements Cloneable {
 
     public void move(MoveStrategy moveStrategy) {
         car.move(moveStrategy);
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public int getCarStatusLength(){
+        return car.getStatusLength();
     }
 
     @Override
