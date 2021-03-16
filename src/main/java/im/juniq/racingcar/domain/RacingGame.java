@@ -52,18 +52,10 @@ public class RacingGame {
 
 	public String getScore() {
 		String carsStatus = "";
-		for (int i = 0; i < cars.size(); i++) {
-			carsStatus += addNewLineIfFirstLine(i);
-			carsStatus += cars.get(i).getStatus();
+		for (Car car: cars) {
+			carsStatus += car.getStatus() + addNewLine();
 		}
-		return carsStatus + addNewLine();
-	}
-
-	private String addNewLineIfFirstLine(int i) {
-		if (i != 0) {
-			return addNewLine();
-		}
-		return "";
+		return carsStatus;
 	}
 
 	private String addNewLine() {
