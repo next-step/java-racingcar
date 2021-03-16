@@ -2,34 +2,31 @@ package racing.core;
 
 import racing.domain.RacingCar;
 import racing.domain.RacingRound;
-import racing.view.InputView;
+import racing.vo.RacingCarGamePlayInfo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 
 public class RacingCarGame {
 
-  private List<RacingCar> players;
-  private int totalRound;
+  private final RacingCarGamePlayInfo info;
 
-  public static RacingCarGame ready(InputView inputView) {
-    RacingCarGame racingCarGame = new RacingCarGame();
-    racingCarGame.players = IntStream.range(0, inputView.getTotalPlayer())
-            .mapToObj(RacingCar::createNew)
-            .collect(Collectors.toList());
+  private RacingCarGame(RacingCarGamePlayInfo info) {
+    this.info = info;
+  }
 
-    racingCarGame.totalRound = inputView.getTotalRound();
-    return racingCarGame;
+  public static RacingCarGame newGame(RacingCarGamePlayInfo info) {
+    return new RacingCarGame(info);
   }
 
   public List<RacingRound> play() {
+    int totalRound = info.getTotalRound();
+    List<RacingCar> racingCars = info.getPlayers();
     List<RacingRound> result = new ArrayList<>(totalRound);
     for (int i = 0; i < totalRound; i++) {
       RacingRound round = new RacingRound();
-      round.record(players);
+      round.record(racingCars);
       result.add(round);
     }
     return result;
