@@ -9,7 +9,15 @@ import java.util.List;
 
 public class RacingGame {
 
-    public List<Car> setCars(int howManyCars) {
+    private final int howManyCars;
+    private final int round;
+
+    public RacingGame(int howManyCars, int round) {
+        this.howManyCars = howManyCars;
+        this.round = round;
+    }
+
+    public List<Car> setCars() {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < howManyCars; i++) {
             carList.add(new Car());
@@ -17,7 +25,7 @@ public class RacingGame {
         return carList;
     }
 
-    public void play(Cars cars, int round) {
+    public void play(Cars cars) {
         for (int i = 0; i < round; i++) {
             raceByRound(cars);
         }

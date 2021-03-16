@@ -10,18 +10,15 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.inputValues();
+        InputView.inputValues();
 
-        RacingGame race = new RacingGame();
-        List<Car> carList = race.setCars(inputView.howManyCars());
+        RacingGame race = new RacingGame(InputView.howManyCars(), InputView.getAttemps());
+        List<Car> carList = race.setCars();
         Cars cars = new Cars(carList);
 
-        ResultView resultView = new ResultView();
-
-        for (int i = 0; i < inputView.getAttemps(); i++) {
-            race.play(cars, i);
-            resultView.printResult(cars, i);
+        for (int i = 0; i < InputView.getAttemps(); i++) {
+            race.play(cars);
+            ResultView.printResult(cars, i);
         }
     }
 }
