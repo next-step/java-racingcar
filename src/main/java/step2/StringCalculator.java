@@ -23,23 +23,24 @@ public class StringCalculator {
       String currentNum = str[i+2];
       String operator = str[i+1];
 
-      if(operator.charAt(0) == '+'){
-        result += Integer.parseInt(currentNum);
-      }
-      else if(operator.charAt(0) == '-'){
-        result -= Integer.parseInt(currentNum);
-      }
-      else if(operator.charAt(0) == '*'){
-        result *= Integer.parseInt(currentNum);
-      }
-      else if(operator.charAt(0) == '/'){
-        result /= Integer.parseInt(currentNum);
-      }
-      else {
-        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
-      }
-
+      result = execute(operator.charAt(0), result, Integer.parseInt(currentNum));
     }
     return result;
   }
+
+  private int execute(char op, int a, int b) throws IllegalArgumentException {
+    switch (op) {
+      case '+':
+        return a+b;
+      case '-':
+        return a-b;
+      case '*':
+        return a*b;
+      case '/':
+        return a/b;
+      default:
+        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+    }
+  }
 }
+
