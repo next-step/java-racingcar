@@ -5,19 +5,19 @@
  * @version 2.0
  * */
 
-package step3.racingCar.domain;
+package step3.racingcar.domain;
 
 import java.util.Collections;
 import java.util.Map;
 import java.util.Random;
 
 public class Car {
-    private final String name;
-    private int forwardNum;
-    private final Random random;
     private static final int INIT_NUM = 0;
     private static final int RANDOM_BOUND = 10;
     private static final int FORWARD_CONDITION = 4;
+    private final String name;
+    private int forwardNum;
+    private final Random random;
 
     public Car(String name) {
         this.name = name;

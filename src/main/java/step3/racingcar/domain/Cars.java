@@ -4,7 +4,7 @@
  * @author hj-woo
  * @version 2.0
  * */
-package step3.racingCar.domain;
+package step3.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;

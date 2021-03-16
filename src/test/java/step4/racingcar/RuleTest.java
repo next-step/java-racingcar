@@ -1,4 +1,4 @@
-package step4.racingCar;
+package step4.racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

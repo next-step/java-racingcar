@@ -1,4 +1,4 @@
-package step3.racingCar.domain;
+package step3.racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

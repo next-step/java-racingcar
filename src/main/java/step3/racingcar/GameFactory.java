@@ -5,13 +5,15 @@
  * @author hj-woo
  * @version 1.0
  * */
-package step3.racingCar;
+package step3.racingcar;
 
-import step3.racingCar.domain.Car;
-import step3.racingCar.domain.Cars;
+import step3.racingcar.domain.Car;
+import step3.racingcar.domain.Cars;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameFactory {
 
@@ -21,15 +23,14 @@ public class GameFactory {
         return new Game(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS});
     }
 
-    public static Game step4Game(){
+    public static Game step4Game() {
         return new Game(new String[]{Game.INPUT_CAR_NAMES, Game.HOW_MANY_TRYS});
     }
 
     public static Cars namesCars(String[] names) {
-        List<Car> carList = new ArrayList<>();
-        for (String name : names) {
-            carList.add(car(name));
-        }
+        List<Car> carList = Arrays.stream(names)
+                .map(GameFactory::car)
+                .collect(Collectors.toList());
         return new Cars(carList);
     }
 

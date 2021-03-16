@@ -5,7 +5,7 @@
  * @version 2.0
  * */
 
-package step3.racingCar.ui;
+package step3.racingcar.ui;
 
 import java.util.ArrayList;
 import java.util.Map;

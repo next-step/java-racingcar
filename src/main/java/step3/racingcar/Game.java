@@ -4,12 +4,12 @@
  * @author hj-woo
  * @version 2.0
  * */
-package step3.racingCar;
+package step3.racingcar;
 
-import step3.racingCar.domain.Cars;
-import step3.racingCar.ui.InputView;
-import step3.racingCar.ui.ResultView;
-import step4.racingCar.Rule;
+import step3.racingcar.domain.Cars;
+import step3.racingcar.ui.InputView;
+import step3.racingcar.ui.ResultView;
+import step4.racingcar.Rule;
 
 import java.util.List;
 

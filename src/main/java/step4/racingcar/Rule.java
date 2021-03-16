@@ -5,7 +5,7 @@
  * @version 2.0
  * */
 
-package step4.racingCar;
+package step4.racingcar;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
