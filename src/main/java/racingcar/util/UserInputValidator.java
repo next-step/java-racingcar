@@ -10,6 +10,7 @@ public class UserInputValidator {
 
   private static final int MAX_NAME_LENGTH = 5;
 
+
   public static List<String> carNameValidation(String readLine) {
     String[] splitCarName = readLine.split(",");
     carNameIsProperlySplit(splitCarName.length);
@@ -32,6 +33,7 @@ public class UserInputValidator {
       isContainNotAlphabet(carName);
     }
   }
+
 
   private static void removeWhiteSpace(String[] splitCarName) {
     for(int i = 0; i < splitCarName.length; i++) {

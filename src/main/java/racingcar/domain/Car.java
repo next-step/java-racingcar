@@ -25,15 +25,18 @@ public class Car {
   public void moveCar(MovingStrategy movingStrategy) {
     if(movingStrategy.moveable())
       position.updatePosition();
+
   }
 
   public String printNameWithCurrentPosition() {
     String position = positionToLine();
+
     return name.toString() + " : " + position;
   }
 
   private String positionToLine() {
     StringBuilder sb = new StringBuilder();
+
     for(int i = 0; i <= position.toInt(); i++){
       sb.append('-');
     }

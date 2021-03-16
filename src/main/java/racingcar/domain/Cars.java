@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.util.RandomNumberGenerator;
@@ -30,6 +29,7 @@ public class Cars {
     }
     return sb.toString();
   }
+
 
   public List<CarName> getWinner() {
     List<CarName> winnerNames = new ArrayList<>();

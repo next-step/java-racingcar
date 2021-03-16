@@ -84,6 +84,7 @@ class CarsTest {
     //then
     List<Car> expectedCars = cars.getCars();
     assertAll(
+
         () -> assertEquals(expectedCars.get(0).getPosition(), new Position(1)),
         () -> assertEquals(expectedCars.get(1).getPosition(), new Position(1)),
         () -> assertEquals(expectedCars.get(2).getPosition(), new Position(1))
