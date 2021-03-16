@@ -18,7 +18,7 @@ public class OutputView {
             printRacingScore(roundResult.getRacingScoreList());
             System.out.println();
         }
-        printWinners(racingResult.getWinnerList());
+//        /printWinners(racingResult.getWinnerList());
     }
 
     private void printRacingScore(List<RacingScore> racingScoreList) {

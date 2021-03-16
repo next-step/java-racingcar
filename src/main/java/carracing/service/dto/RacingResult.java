@@ -1,5 +1,7 @@
 package carracing.service.dto;
 
+import carracing.domain.Car;
+
 import java.util.List;
 
 /**
@@ -15,9 +17,9 @@ import java.util.List;
 public class RacingResult {
 
     private final List<RoundResult> roundResultList;
-    private final List<String> winnerList;
+    private final List<Car> winnerList;
 
-    public RacingResult(List<RoundResult> roundResultList, List<String> winnerList) {
+    public RacingResult(List<RoundResult> roundResultList, List<Car> winnerList) {
         this.roundResultList = roundResultList;
         this.winnerList = winnerList;
     }
@@ -26,7 +28,7 @@ public class RacingResult {
         return roundResultList;
     }
 
-    public List<String> getWinnerList() {
+    public List<Car> getWinnerList() {
         return winnerList;
     }
 }

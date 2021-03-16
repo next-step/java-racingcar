@@ -1,6 +1,7 @@
 package carracing.service;
 
 import carracing.constants.CarRacingConstant;
+import carracing.domain.Car;
 import carracing.domain.Cars;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
@@ -44,7 +45,7 @@ public class CarRacing {
     }
 
     public RacingResult executeRacing() {
-        return new RacingResult(executeAllRound(), chooseWinner(cars.inquiryRacingScores()));
+        return new RacingResult(executeAllRound(), chooseWinner());
     }
 
     private List<RoundResult> executeAllRound() {
@@ -64,34 +65,36 @@ public class CarRacing {
         return cars.inquiryRacingScores();
     }
 
-    private List<String> chooseWinner(List<RacingScore> racingScoreList) {
+    private List<Car> chooseWinner() {
         int winnerScore = 0;
-        List<String> winnerList = new ArrayList<>();
-        for (RacingScore racingScore : racingScoreList) {
-            winnerList  = decideWinnerList(winnerScore, winnerList, racingScore);
+        List<Car> winnerList = new ArrayList<>();
+        for (Car car : cars.getCarList()) {
+            RacingScore racingScore = car.inquiryRacingScore();
+            winnerList  = decideWinnerList(winnerScore, winnerList, car);
             winnerScore = decideWinnerScore(winnerScore, racingScore);
         }
         return winnerList;
     }
 
-    private List<String> decideWinnerList(int currentWinnerScore, List<String> winnerList, RacingScore racingScore) {
-        if(currentWinnerScore < racingScore.getScore()) {
-            return replaceWinner(winnerList, racingScore.getCarName());
+    private List<Car> decideWinnerList(int currentWinnerScore, List<Car> winnerList, Car car) {
+        int score = car.inquiryRacingScore().getScore();
+        if(currentWinnerScore < score) {
+            return replaceWinner(winnerList, car);
         }
-        if(currentWinnerScore == racingScore.getScore()) {
-            return addWinner(winnerList, racingScore.getCarName());
+        if(currentWinnerScore == score) {
+            return addWinner(winnerList, car);
         }
         return winnerList;
     }
 
-    private List<String> replaceWinner(List<String> winnerList, String carName) {
+    private List<Car> replaceWinner(List<Car> winnerList, Car car) {
         winnerList.clear();
-        winnerList.add(carName);
+        winnerList.add(car);
         return winnerList;
     }
 
-    private List<String> addWinner(List<String> winnerList, String carName) {
-        winnerList.add(carName);
+    private List<Car> addWinner(List<Car> winnerList, Car car) {
+        winnerList.add(car);
         return winnerList;
     }
 
