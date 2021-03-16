@@ -18,7 +18,7 @@ public class Round {
         this.value = value;
     }
 
-    private boolean isLessThanMinimum(int value){
+    private boolean isLessThanMinimum(int value) {
         return value <= MINIMUM;
     }
 

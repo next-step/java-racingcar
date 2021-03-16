@@ -8,11 +8,11 @@ public class NameLengthLessThanFive implements NamingStrategy {
     private static NameLengthLessThanFive nameLengthLessThanFive;
 
     public static NameLengthLessThanFive getInstance() {
-        if(isInstanceNull()) nameLengthLessThanFive = new NameLengthLessThanFive();
+        if (isInstanceNull()) nameLengthLessThanFive = new NameLengthLessThanFive();
         return nameLengthLessThanFive;
     }
 
-    private static boolean isInstanceNull(){
+    private static boolean isInstanceNull() {
         return nameLengthLessThanFive == null;
     }
 

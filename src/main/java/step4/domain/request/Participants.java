@@ -31,7 +31,7 @@ public class Participants {
         return participants;
     }
 
-    public int getParticipantsLength(){
+    public int getParticipantsLength() {
         return participants.length;
     }
 

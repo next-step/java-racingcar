@@ -29,7 +29,7 @@ public class RacingDrivers {
         List<Driver> drivers = new ArrayList<>();
         String[] names = participants.getParticipants();
 
-        for(int i=ZERO; i < names.length; i++){
+        for (int i = ZERO; i < names.length; i++) {
             Name name = Name.from(names[i], nameStrategy);
             Car car = Car.getInstance();
             drivers.add(Driver.from(name, car));

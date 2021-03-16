@@ -24,7 +24,7 @@ public class ResultView {
         return instance;
     }
 
-    private static boolean isInstanceNull(){
+    private static boolean isInstanceNull() {
         return instance == null;
     }
 
@@ -32,9 +32,9 @@ public class ResultView {
         List<Driver> racingRecords = responseDto.getRacingRecords();
 
         System.out.println("실행 결과");
-        for(int index=ONE; index <= racingRecords.size(); index++){
+        for (int index = ONE; index <= racingRecords.size(); index++) {
             System.out.println(getDriverByIndex(racingRecords, index));
-            if(isRemainderZeroByNewStandard(index, newlineStandard)) System.out.print(NEWLINE);
+            if (isRemainderZeroByNewStandard(index, newlineStandard)) System.out.print(NEWLINE);
         }
 
     }

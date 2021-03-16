@@ -15,7 +15,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     }
 
     public static RandomMoveStrategy getInstance() {
-        if(isInstanceNull()) {
+        if (isInstanceNull()) {
             instance = new RandomMoveStrategy();
         }
         return instance;

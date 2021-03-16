@@ -23,7 +23,7 @@ public class InputView {
         return instance;
     }
 
-    private static boolean isInstanceNull(){
+    private static boolean isInstanceNull() {
         return instance == null;
     }
 

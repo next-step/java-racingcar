@@ -10,7 +10,8 @@ public class RandomNumberGenerator {
 
     private static RandomNumberGenerator instance;
 
-    private RandomNumberGenerator() { }
+    private RandomNumberGenerator() {
+    }
 
     public static RandomNumberGenerator getInstance() {
         if (isInstanceNull()) {
@@ -19,7 +20,7 @@ public class RandomNumberGenerator {
         return instance;
     }
 
-    private static boolean isInstanceNull(){
+    private static boolean isInstanceNull() {
         return instance == null;
     }
 
