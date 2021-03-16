@@ -1,14 +1,42 @@
 package racingcar;
 
+import java.util.List;
+
 public class Winner {
 
-    private String winner;
+    private final String NO_WINNER = "";
+    private final int NO_WINNER_LENGTH = 0;
 
-    public String getWinner() {
-        return winner;
+    public String whoisWin(List<RacingCar> carList, GameSet gameSet) {
+        String names = "";
+
+        for (int i = 0; i < carList.size(); i++) {
+            names += winner(carList.get(i), gameSet);
+        }
+
+        return names;
     }
 
-    public void setWinner(String winner) {
-        this.winner = winner;
+    private String winner(RacingCar racingCar, GameSet gameSet) {
+        if (racingCar.status().length() == gameSet.getGivenRound()) {
+            return racingCar.getOwner() + ",";
+        }
+        return NO_WINNER;
+    }
+
+    public String showResult(String name) {
+
+        String result = "";
+
+        if (name.length() == NO_WINNER_LENGTH) {
+            return result;
+        }
+
+        char lastChar = name.charAt(name.length()-1);
+
+        if (lastChar == ',') {
+            result = name.replaceFirst(".$", "") + "가 최종 우승했습니다.";
+        }
+        return result;
     }
 }
