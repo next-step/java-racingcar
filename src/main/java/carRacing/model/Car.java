@@ -1,6 +1,5 @@
 package carRacing.model;
 
-import carRacing.util.RandomIntUtil;
 
 public class Car {
     private int position;
@@ -9,8 +8,8 @@ public class Car {
         this.position = 0;
     }
 
-    public void moveByRandomInt(){
-        if (RandomIntUtil.getRandomInt() >= 4)
+    public void moveByRandomInt(int randomInt){
+        if (randomInt >= 4)
             this.position += 1;
     }
 
@@ -21,5 +20,9 @@ public class Car {
             result.append("-");
         }
         return result.toString();
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

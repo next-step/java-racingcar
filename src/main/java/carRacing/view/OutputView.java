@@ -5,8 +5,8 @@ import carRacing.model.Car;
 import java.util.List;
 
 public class OutputView {
-    public void printResult(List<Car> result) {
-        for (Car car : result) {
+    public void printRacingResultExcutedCycle(List<Car> cars) {
+        for (Car car : cars) {
             System.out.println(car);
         }
         System.out.println();
