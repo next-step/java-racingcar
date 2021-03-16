@@ -1,5 +1,10 @@
 package study1.winner.code.service;
 
+<<<<<<< HEAD
+=======
+import java.util.Objects;
+
+>>>>>>> 8f84cbcfde70d3e7bff64a086649510a86aaaf3a
 public class Car {
   private static final int INIT_DISTANCE = 0;
   private static final int INCREASE_DISTANCE = 1;
@@ -39,4 +44,29 @@ public class Car {
   public int distance() {
     return distance;
   }
+
+  public boolean isWinner(int maxDistance) {
+    if(distance == maxDistance) {
+      return true;
+    }
+    return false;
+  }
+
+  @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+          return true;
+        }
+        if (!(o instanceof Car)) {
+          return false;
+        }
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && distance == car.distance;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, distance);
+  }
+
 }

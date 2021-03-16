@@ -9,7 +9,7 @@ public class Main {
   public static void main(String[] args) {
     String participants = InputView.getParticipants();
     int round = InputView.getRound();
-    System.out.println("\n");
+    System.out.println(System.lineSeparator());
     Race race = new Race(round, participants);
 
     race.start().stream()

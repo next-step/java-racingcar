@@ -57,3 +57,4 @@
         - Cars move();
         - List<String> winners();
         - int maxDistance();
+        - boolean isWinner(int maxDistance);
