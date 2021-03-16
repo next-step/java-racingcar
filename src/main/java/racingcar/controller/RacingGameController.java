@@ -1,21 +1,21 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
+import racingcar.domain.Position;
 import racingcar.service.CarService;
 import racingcar.service.GameRoundService;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.Arrays;
-import java.util.Queue;
+import java.util.List;
 
 public class RacingGameController {
 
-    private static final String CHECK_INPUT_INTEGER = "숫자를 입력해주세요.";
-    private static final String CHECK_INPUT_NULL = "null 값인지 확인해주세요.";
-    private static final String CHECK_INPUT_EMPTY = "비어있는 값인지 확인해주세요.";
-    private static final String CHECK_INPUT_INCLUDE_DASH = "\",\"가 포함되어 있는지 확인해주세요.";
-    private static final String DELEMETER = ",";
+    private static final String CHECK_INTEGER = "숫자를 입력해주세요.";
+    private static final String CHECK_NULL = "null 값인지 확인해주세요.";
+    private static final String CHECK_EMPTY = "비어있는 값인지 확인해주세요.";
+    private static final String CHECK_INCLUDE_COMMA = "\",\"가 포함되어 있는지 확인해주세요.";
+    private static final String COMMA = ",";
     private final CarService carService;
     private final GameRoundService gameRoundService;
 
@@ -25,22 +25,36 @@ public class RacingGameController {
     }
 
     public void run() {
-        setGameEnvironment();
+        setCars();
+        setGameRound();
         printGameResult();
         printWinners();
     }
 
-    public void setGameEnvironment() {
-        String nameOfCars = InputView.INSTANCE.InputNameOfCars();
-        validateInput(nameOfCars);
-        createCars(nameOfCars.split(DELEMETER));
-        String numberOfAttempts = InputView.INSTANCE.InputNumberOfAttempts();
-        validateNumber(numberOfAttempts);
-        createGameRound(Integer.parseInt(numberOfAttempts));
+    public void setCars() {
+        try {
+            String CarsName = InputView.INSTANCE.InputNameOfCars();
+            validateName(CarsName);
+            createCars(CarsName.split(COMMA));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            setCars();
+        }
     }
 
-    public void createCars(String[] namesOfCar) {
-        Arrays.stream(namesOfCar)
+    public void setGameRound() {
+        try {
+            String tryNumber = InputView.INSTANCE.InputNumberOfAttempts();
+            validateNumber(tryNumber);
+            createGameRound(Integer.parseInt(tryNumber));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            setGameRound();
+        }
+    }
+
+    public void createCars(String[] CarsName) {
+        Arrays.stream(CarsName)
                 .forEach(name -> carService.addCar(name.trim()));
     }
 
@@ -52,67 +66,59 @@ public class RacingGameController {
         carService.moveCars();
     }
 
-    public void printGameResult() {
+    private void printGameResult() {
         ResultView.INSTANCE.printResultStatement();
 
         for (int i = 0; i < gameRoundService.loadGameRound().getRound(); i++) {
             raceEachRound();
             ResultView.INSTANCE.printEachRoundResult(
-                    carService.findNameOfCars(),
-                    carService.findMovementRangeOfCars()
+                    carService.findCarsName(),
+                    carService.findCarsPosition()
             );
         }
     }
 
     private void printWinners() {
-        int maxMovementRange = carService.findMaxMovementRange();
-        Queue<String> winners = carService.findWinners(maxMovementRange);
-        ResultView.INSTANCE.printWinners(winners);
+        Position maxPosition = carService.findMaxPosition();
+        List<String> winnersName = carService.findWinnersName(maxPosition);
+        ResultView.INSTANCE.printWinners(winnersName);
     }
 
-    public void resetMovementRangeOfCar(String carName) {
-        carService.resetCarMovementRange(carName);
-    }
-
-    public void resetMovementRangeOfCars() {
-        carService.resetCarsMovementRange();
+    private void validateName(String input) {
+        checkNull(input);
+        checkEmpty(input);
+        checkComma(input);
     }
 
     private void validateNumber(String input) {
-        validateNull(input);
-        validateEmpty(input);
-        validateInteger(input);
+        checkNull(input);
+        checkEmpty(input);
+        checkInteger(input);
     }
 
-    private void validateInput(String input) {
-        validateNull(input);
-        validateEmpty(input);
-        validateDash(input);
+    private void checkNull(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException(CHECK_NULL);
+        }
     }
 
-    private void validateInteger(String input) {
+    private void checkEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(CHECK_EMPTY);
+        }
+    }
+
+    private void checkComma(String input) {
+        if (!input.contains(COMMA)) {
+            throw new IllegalArgumentException(CHECK_INCLUDE_COMMA);
+        }
+    }
+
+    private void checkInteger(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(CHECK_INPUT_INTEGER);
-        }
-    }
-
-    private void validateNull(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(CHECK_INPUT_NULL);
-        }
-    }
-
-    private void validateEmpty(String input) {
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException(CHECK_INPUT_EMPTY);
-        }
-    }
-
-    private void validateDash(String input) {
-        if (!input.contains(",")) {
-            throw new IllegalArgumentException(CHECK_INPUT_INCLUDE_DASH);
+            throw new IllegalArgumentException(CHECK_INTEGER);
         }
     }
 }
