@@ -7,10 +7,13 @@
 
 package step3.racingCar;
 
+import step3.racingCar.ui.InputView;
+
 public class RacingGame {
     public static void main(String[] args) {
-        Game step3Game = GameFactory.game(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS});
-        Game step4Game = GameFactory.game(new String[]{Game.INPUT_CAR_NAMES, Game.HOW_MANY_TRYS});
+//        Game step3Game = GameFactory.step3Game();
+        Game step4Game = GameFactory.step4Game();
         step4Game.play();
+        InputView.closeScanner();
     }
 }

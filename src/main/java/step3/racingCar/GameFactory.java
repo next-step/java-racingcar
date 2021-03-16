@@ -17,8 +17,12 @@ public class GameFactory {
 
     public static final String EMPTY_NAME = "emptyName";
 
-    public static Game game(String[] str) {
-        return new Game(str);
+    public static Game step3Game() {
+        return new Game(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS});
+    }
+
+    public static Game step4Game(){
+        return new Game(new String[]{Game.INPUT_CAR_NAMES, Game.HOW_MANY_TRYS});
     }
 
     public static Cars namesCars(String[] names) {

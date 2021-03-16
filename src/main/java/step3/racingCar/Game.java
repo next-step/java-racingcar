@@ -39,7 +39,7 @@ public class Game {
             racingCars = GameFactory.cars((Integer) input);
         }
         if (str.equals(INPUT_CAR_NAMES)) {
-            String[] names = ((String) input).split(",");
+            String[] names = String.valueOf(input).split(",");
             racingCars = GameFactory.namesCars(names);
         }
     }
