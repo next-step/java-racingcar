@@ -1,14 +1,12 @@
 package step03;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingEventManager {
 
     private int tryCount = 0;
     private int carCount = 0;
-
-    private List<RacingCar> racingCars = new ArrayList<>();
+    RacingCarFactory racingCarFactory;
 
     public RacingEventManager(int carCount, int tryCount) {
         ValidateUtils.inputIsZero(carCount, tryCount);
@@ -16,13 +14,14 @@ public class RacingEventManager {
         this.tryCount = tryCount;
     }
 
-    public List<RacingCar> getRacingResult() {
-        return racingCars;
-    }
-
     public void startRacing() {
-        RacingCarFactory racingCarFactory = new RacingCarFactory();
+        racingCarFactory = new RacingCarFactory();
         racingCarFactory.makeCars(carCount);
         racingCarFactory.racing(tryCount);
     }
+
+    public List<RacingCar> getRacingResult() {
+        return racingCarFactory.getRacingCars();
+    }
+
 }

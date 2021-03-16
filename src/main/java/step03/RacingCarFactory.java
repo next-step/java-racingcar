@@ -10,7 +10,7 @@ public class RacingCarFactory {
 
     public void makeCars(int carCount) {
         for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar());
+            racingCars.add(new RacingCar(new RandomMoveStrategy()));
         }
     }
 
@@ -24,5 +24,9 @@ public class RacingCarFactory {
         for (RacingCar car : racingCars) {
             car.tryToMove();
         }
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }

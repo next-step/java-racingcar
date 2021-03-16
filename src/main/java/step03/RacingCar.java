@@ -1,19 +1,20 @@
 package step03;
 
-public class RacingCar implements Car {
-    private static final int MOVABLE_RANGE = 4;
-    private int movingRange;
+public class RacingCar {
 
-    public RacingCar() {
-        movingRange = 0;
+    private int INIT_MOVE_RANGE = 0;
+    private int movingRange;
+    private MoveStrategy moveStrategy;
+
+    public RacingCar(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+        movingRange = INIT_MOVE_RANGE;
     }
 
-    @Override
-    public int tryToMove(int randomRange) {
-        if (randomRange >= MOVABLE_RANGE) {
-            movingRange++;
-        }
-        return movingRange;
+    public void tryToMove() {
+       if(moveStrategy.move()) {
+           movingRange++;
+       }
     }
 
     public int getMovingRange() {
