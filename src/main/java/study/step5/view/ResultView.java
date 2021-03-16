@@ -12,7 +12,7 @@ public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String FINAL_WINNERS = "가 최종 우승했습니다.";
     private static final String NAME_SPACE = " : ";
-    private static final String NEW_LINE = "\n";
+    private static final String NEW_LINE = System.lineSeparator();
     private static final String DASH = "-";
     private static final String DELIMITER = "";
     private static final String RACE_WINNER_JOINNER = ",";
