@@ -2,31 +2,37 @@ package racing.core;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import racing.domain.RacingRound;
-import racing.view.InputView;
-import racing.view.ResultView;
+import racing.vo.RacingCarGamePlayInfo;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarGameTest {
 
   @ParameterizedTest
-  @ValueSource(ints = { 2, 3 })
+  @MethodSource("getRacingCarGamePlayInfoArguments")
   @DisplayName("자동차 게임 실행 테스트")
-  void play(int roundCount) {
+  void play(int totalPlayer, int totalRound) {
     // given
-    InputView inputView = InputView.newInstance(2, roundCount);
+    RacingCarGamePlayInfo info = RacingCarGamePlayInfo.newPlayInfo(totalPlayer, totalRound);
 
     // when
-    List<RacingRound> result =  RacingCarGame.ready(inputView)
+    List<RacingRound> result = RacingCarGame.newGame(info)
             .play();
 
-    ResultView.print(result);
-
     // then
-    assertThat(result).hasSize(roundCount);
+    assertThat(result).hasSize(totalRound);
+  }
+
+  private static Stream<Arguments> getRacingCarGamePlayInfoArguments() {
+    return Stream.of(
+            Arguments.of(2, 3),
+            Arguments.of(3, 2)
+    );
   }
 }
