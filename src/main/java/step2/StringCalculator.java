@@ -11,35 +11,49 @@ package step2;
  * */
 public class StringCalculator {
 
-  public int caculate(String formula){
-    if(formula.length()<1){
-      throw new IllegalArgumentException("계산식이 잘못 되었습니다.");
-    }
-    String str[] = formula.split(" ");
+  public int getResult(String formula) {
+    isInputNull(formula);
+
+    String[] str = formula.split(" ");
 
     int result = Integer.parseInt(str[0]);
 
     for (int i = 0; i < str.length - 2; i += 2) {
-      String currentNum = str[i+2];
-      String operator = str[i+1];
+      String currentNum = str[i + 2];
+      String operator = str[i + 1];
 
-      result = execute(operator.charAt(0), result, Integer.parseInt(currentNum));
+      isWrongOperator(operator);
+      result = caculate(operator.charAt(0), result, Integer.parseInt(currentNum));
     }
     return result;
   }
 
-  private int execute(char op, int a, int b) throws IllegalArgumentException {
-    switch (op) {
-      case '+':
-        return a+b;
-      case '-':
-        return a-b;
-      case '*':
-        return a*b;
-      case '/':
-        return a/b;
-      default:
-        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+  private int caculate(char op, int a, int b) {
+
+    if(op == '+') {
+      a += b;
+    }
+    if(op == '-') {
+      a -= b;
+    }
+    if(op == '*') {
+      a *= b;
+    }
+    if(op == '/') {
+      a /= b;
+    }
+    return a;
+  }
+
+  private void isInputNull(String input) throws IllegalArgumentException {
+    if(input.length()<1){
+      throw new IllegalArgumentException("계산식이 잘못 되었습니다.");
+    }
+  }
+
+  private void isWrongOperator(String op) throws IllegalArgumentException {
+    if( !op.equals("+") && !op.equals("-") && !op.equals("*") && !op.equals("/")) {
+      throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
     }
   }
 }
