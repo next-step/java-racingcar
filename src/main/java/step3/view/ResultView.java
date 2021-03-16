@@ -1,4 +1,7 @@
-package step3;
+package step3.view;
+
+import step3.domain.CarRacingResult;
+import step3.util.StringUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,16 +11,16 @@ public class ResultView {
     private final String DISTANCE_EXPRESSION = "-";
     private final String WINNER_DELIMITER = ", ";
 
-    private List<CarResultDto> carRacingResult;
+    private List<CarRacingResult> carRacingResult;
 
-    public ResultView(List<CarResultDto> carResultDtoList) {
+    public ResultView(List<CarRacingResult> carRacingResultList) {
         System.out.println("실행 결과");
-        this.carRacingResult = carResultDtoList;
+        this.carRacingResult = carRacingResultList;
     }
 
     public void printOutRacingResult() {
         carRacingResult.forEach(carResultDto -> {
-            carResultDto.getCarDtoList()
+            carResultDto.getCarPositionList()
                     .forEach(carPosition -> printCar(carPosition.getCarName(), carPosition.getPosition()));
             System.out.println();
         });

@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,11 +10,7 @@ import java.util.stream.Collectors;
 
 public class CarRacing {
     private final List<Car> carList;
-    private Round round;
-
-    public CarRacing(String[] carsName) {
-        this(carsName, null);
-    }
+    private final Round round;
 
     public CarRacing(String[] carsName, Round round) {
         this.carList = makeRacingCars(carsName);
@@ -29,16 +27,16 @@ public class CarRacing {
         return racingCars;
     }
 
-    public List<CarResultDto> start() {
-        List<CarResultDto> carResultDtoList = new ArrayList<>();
+    public List<CarRacingResult> start() {
+        List<CarRacingResult> carRacingResultList = new ArrayList<>();
 
         while (round.isRoundContinue()) {
             moveForward();
-            carResultDtoList.add(new CarResultDto(this.carList, findWinnerCarNames()));
+            carRacingResultList.add(new CarRacingResult(this.carList, findWinnerCarNames()));
             round.reduceRound();
         }
 
-        return carResultDtoList;
+        return carRacingResultList;
     }
 
     private void moveForward() {
@@ -47,12 +45,11 @@ public class CarRacing {
         }
     }
 
-    public List<String> findWinnerCarNames() {
+    private List<String> findWinnerCarNames() {
         return carList.stream()
                 .filter(car -> car.isWinner(getMaxCurrentPosition()))
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
-
     }
 
     private int getMaxCurrentPosition() {

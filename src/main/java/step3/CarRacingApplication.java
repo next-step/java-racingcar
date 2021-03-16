@@ -1,5 +1,12 @@
 package step3;
 
+import step3.controller.CarRacingController;
+import step3.domain.CarRacingResult;
+import step3.util.StringUtil;
+import step3.util.ViewUtil;
+import step3.view.InputView;
+import step3.view.ResultView;
+
 import java.util.List;
 
 public class CarRacingApplication {
@@ -12,8 +19,8 @@ public class CarRacingApplication {
 
         CarRacingController carRacingController = new CarRacingController(inputView);
 
-        List<CarResultDto> carResultDtoList = carRacingController.startCarRacing();
-        ResultView resultView = new ResultView(carResultDtoList);
+        List<CarRacingResult> carRacingResultList = carRacingController.startCarRacing();
+        ResultView resultView = new ResultView(carRacingResultList);
         resultView.printOutRacingResult();
         resultView.printOutWinnerCarName();
     }

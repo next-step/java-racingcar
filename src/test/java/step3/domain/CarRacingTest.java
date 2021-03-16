@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.DisplayName;
@@ -17,12 +17,12 @@ public class CarRacingTest {
         int roundCount = 5;
 
         CarRacing carRacing = new CarRacing(carsName, new Round(roundCount));
-        List<CarResultDto> carResultDtoList = carRacing.start();
+        List<CarRacingResult> carRacingResultList = carRacing.start();
 
-        assertThat(carResultDtoList)
+        assertThat(carRacingResultList)
                 .hasSize(roundCount)
                 .allSatisfy(carResultDto -> {
-                    AssertionsForClassTypes.assertThat(carResultDto.getCarDtoList().size()).isEqualTo(carsName.length);
+                    AssertionsForClassTypes.assertThat(carResultDto.getCarPositionList().size()).isEqualTo(carsName.length);
                     assertThat(carResultDto.getWinnerCarNames()).isNotEmpty();
                 });
     }

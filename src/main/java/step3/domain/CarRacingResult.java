@@ -1,14 +1,14 @@
-package step3;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarResultDto {
+public class CarRacingResult {
 
     private List<CarPosition> carPositionList;
     private List<String> winnerCarNames;
 
-    public CarResultDto(List<Car> carList, List<String> winnerCarNames) {
+    public CarRacingResult(List<Car> carList, List<String> winnerCarNames) {
         this.carPositionList = new ArrayList<>();
 
         for (Car car : carList) {
@@ -22,7 +22,11 @@ public class CarResultDto {
         this.winnerCarNames = winnerCarNames;
     }
 
-    public List<CarPosition> getCarDtoList() {
+    public CarRacingResult(List<CarPosition> carPositionList) {
+        this.carPositionList = carPositionList;
+    }
+
+    public List<CarPosition> getCarPositionList() {
         return this.carPositionList;
     }
 

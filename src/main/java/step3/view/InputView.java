@@ -1,12 +1,8 @@
-package step3;
-
-import java.util.Scanner;
+package step3.view;
 
 public class InputView {
-    private int carsCount;
     private int roundsCount;
     private String[] carsName;
-    private Scanner scanner;
 
     public InputView(String[] carsName, int roundsCount) {
         this.carsName = carsName;
