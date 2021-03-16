@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.List;
 import java.util.Random;
-import racingcar.io.Printer;
+import racingcar.view.Printer;
 
 public class Game {
 

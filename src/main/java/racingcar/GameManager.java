@@ -3,8 +3,8 @@ package racingcar;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import racingcar.io.InputView;
-import racingcar.io.Printer;
+import racingcar.view.InputView;
+import racingcar.view.Printer;
 
 public class GameManager {
 
