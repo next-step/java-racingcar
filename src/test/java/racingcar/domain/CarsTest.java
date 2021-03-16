@@ -19,15 +19,9 @@ class CarsTest {
   public void createCars() {
     List<Car> carList = new ArrayList<>();
 
-<<<<<<< HEAD
     Car car1 = Car.createCar("aaa");
     Car car2 = Car.createCar("bbb");
     Car car3 = Car.createCar("ccc");
-=======
-    Car car1 = Car.createCar();
-    Car car2 = Car.createCar();
-    Car car3 = Car.createCar();
->>>>>>> 6e976b58 ([자동차 경주 3단계] 구현 완료하여 리뷰 요청 드립니다!! (#1997))
 
     carList.add(car1);
     carList.add(car2);
@@ -42,15 +36,11 @@ class CarsTest {
     //given
     List<Car> carList = new ArrayList<>();
 
-<<<<<<< HEAD
+
     Car actualCar1 = Car.createCar("aaa");
     Car actualCar2 = Car.createCar("bbb");
     Car actualCar3 = Car.createCar("ccc");
-=======
-    Car actualCar1 = Car.createCar();
-    Car actualCar2 = Car.createCar();
-    Car actualCar3 = Car.createCar();
->>>>>>> 6e976b58 ([자동차 경주 3단계] 구현 완료하여 리뷰 요청 드립니다!! (#1997))
+
 
     carList.add(actualCar1);
     carList.add(actualCar2);
@@ -76,11 +66,7 @@ class CarsTest {
     String expectString = cars.currentCarsPosition();
 
     //then
-<<<<<<< HEAD
     String actualString = "aaa : " + "-" + "\n" + "bbb : " + "-" + "\n" + "ccc : " +  "-" + "\n";
-=======
-    String actualString =  "-" + "\n" + "-" + "\n" + "-" + "\n";
->>>>>>> 6e976b58 ([자동차 경주 3단계] 구현 완료하여 리뷰 요청 드립니다!! (#1997))
 
     assertEquals(expectString, actualString);
   }
@@ -100,7 +86,6 @@ class CarsTest {
         () -> assertEquals(expectedCars.get(2).getPosition(), 1)
     );
   }
-<<<<<<< HEAD
 
   @Test
   @DisplayName("제일 높은 position을 통해서 우승자의 이름을 뽑아낼 수 있는가")
@@ -125,6 +110,4 @@ class CarsTest {
     );
   }
 
-=======
->>>>>>> 6e976b58 ([자동차 경주 3단계] 구현 완료하여 리뷰 요청 드립니다!! (#1997))
 }

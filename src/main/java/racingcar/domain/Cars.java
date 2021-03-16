@@ -1,9 +1,7 @@
 package racingcar.domain;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-=======
->>>>>>> 6e976b58 ([자동차 경주 3단계] 구현 완료하여 리뷰 요청 드립니다!! (#1997))
 import java.util.List;
 import racingcar.util.RandomNumberGenerator;
 
@@ -28,7 +26,6 @@ public class Cars {
   public String currentCarsPosition() {
     StringBuilder sb = new StringBuilder();
     for(Car car : cars) {
-<<<<<<< HEAD
      sb.append(car.printNameWithCurrentPosition()).append("\n");
     }
     return sb.toString();
@@ -55,10 +52,4 @@ public class Cars {
         .mapToInt(Car::getPosition)
         .max().orElseThrow(IllegalArgumentException::new);
   }
-=======
-      sb.append(car.positionToLine()).append("\n");
-    }
-    return sb.toString();
-  }
->>>>>>> 6e976b58 ([자동차 경주 3단계] 구현 완료하여 리뷰 요청 드립니다!! (#1997))
 }
