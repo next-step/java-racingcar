@@ -2,35 +2,35 @@ package racing.domain;
 
 public class RacingCar {
 
-  private String name;
-
-  private String position;
+  private int carNumber;
+  private int position;
 
   private RacingCar() {
 
   }
 
-  private RacingCar(String name, String position) {
-    this.name = name;
+  private RacingCar(int carNumber, int position) {
+    this.carNumber = carNumber;
     this.position = position;
   }
 
-  public static RacingCar createNew(int line) {
-    return new RacingCar("player " + line, "");
+  public static RacingCar createNew(int carNumber) {
+    return new RacingCar(carNumber, 0);
   }
+
   public static RacingCar copy(RacingCar racingCar) {
-    return new RacingCar(racingCar.getName(), racingCar.getPosition());
+    return new RacingCar(racingCar.getCarNumber(), racingCar.getPosition());
   }
 
-  public String getName() {
-    return name;
+  public int getCarNumber() {
+    return this.carNumber;
   }
 
-  public String getPosition() {
+  public int getPosition() {
     return position;
   }
 
   public void move() {
-    this.position += "=";
+    this.position++;
   }
 }

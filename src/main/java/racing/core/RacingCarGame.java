@@ -1,9 +1,8 @@
-package racing;
+package racing.core;
 
 import racing.domain.RacingCar;
 import racing.domain.RacingRound;
 import racing.view.InputView;
-import racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +13,7 @@ import java.util.stream.IntStream;
 public class RacingCarGame {
 
   private List<RacingCar> players;
-
   private int totalRound;
-
-  public static void main(String[] args) {
-    InputView inputView = InputView.executeConsole();
-    List<RacingRound> result = RacingCarGame.ready(inputView)
-            .play();
-
-    ResultView.print(result);
-  }
 
   public static RacingCarGame ready(InputView inputView) {
     RacingCarGame racingCarGame = new RacingCarGame();

@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class InputView {
 
   private int totalPlayer;
-
   private int totalRound;
 
   private InputView() { }
