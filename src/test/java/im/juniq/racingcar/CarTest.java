@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import im.juniq.racingcar.domain.Car;
 import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
+import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,7 +14,7 @@ class CarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi"})
 	void createCar(String carName) {
-		Car car = new Car(carName);
+		Car car = new Car(carName, new RandomNumberMovingStrategy());
 
 		assertThat(car.getName()).isEqualTo(carName);
 		assertThat(car.getPosition()).isEqualTo(0);
@@ -23,14 +24,14 @@ class CarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi66"})
 	void createCarWithCheckCarName(String carName) {
-		assertThatIllegalArgumentException().isThrownBy(() -> new Car(carName));
+		assertThatIllegalArgumentException().isThrownBy(() -> new Car(carName, new RandomNumberMovingStrategy()));
 	}
 
 	@DisplayName("자동차를 이동한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi"})
 	void moveCar(String carName) {
-		Car car = new Car(carName);
+		Car car = new Car(carName, new RandomNumberMovingStrategy());
 
 		car.move(new OnlyTrueMovingStrategy());
 

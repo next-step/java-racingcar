@@ -6,12 +6,6 @@ public class Car {
 	private int position = 0;
 	private MovingStrategy movingStrategy;
 
-	public Car(String name) {
-		checkCarName(name);
-		this.name = name;
-		this.movingStrategy = new RandomNumberMovingStrategy();
-	}
-
 	public Car(String name, MovingStrategy movingStrategy) {
 		checkCarName(name);
 		this.name = name;

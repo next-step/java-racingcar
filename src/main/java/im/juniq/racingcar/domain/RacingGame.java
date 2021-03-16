@@ -17,9 +17,9 @@ public class RacingGame implements Iterable<Car> {
 		this.cars = cars;
 	}
 
-	public void createCars(String[] carNames) {
+	public void createCars(String[] carNames, MovingStrategy movingStrategy) {
 		for (String carName : carNames) {
-			cars.add(new Car(carName));
+			cars.add(new Car(carName, movingStrategy));
 		}
 	}
 

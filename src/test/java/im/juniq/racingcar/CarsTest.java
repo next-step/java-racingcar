@@ -15,7 +15,7 @@ class CarsTest {
 	void createCars() {
 		String[] carNames = {"pobi", "poci"};
 		RacingGame racingGame = new RacingGame();
-		racingGame.createCars(carNames);
+		racingGame.createCars(carNames, new RandomNumberMovingStrategy());
 
 		assertThat(racingGame).extracting(Car::getName).contains(carNames);
 	}
