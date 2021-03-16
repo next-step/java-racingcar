@@ -42,6 +42,6 @@ public class GameController {
 	}
 
 	private void printWinner() {
-		resultView.printWinner(racingGame.getWinner());
+		resultView.printWinner(racingGame.getWinners());
 	}
 }

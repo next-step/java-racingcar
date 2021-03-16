@@ -33,30 +33,15 @@ public class RacingGame {
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public String getWinner() {
-		String winner = "";
-		for (Car car: findByTopPosition()) {
-			winner += addSeparatorIfNotEmpty(winner) + car.getName();
-		}
-		return winner;
+	public List<String> getWinners() {
+		return findByTopPosition().stream()
+				.map(Car::getName)
+				.collect(Collectors.toList());
 	}
 
-	private String addSeparatorIfNotEmpty(String winner) {
-		if (!winner.isEmpty()) {
-			return ", ";
-		}
-		return "";
-	}
-
-	public String getScore() {
-		String carsStatus = "";
-		for (Car car: cars) {
-			carsStatus += car.getStatus() + addNewLine();
-		}
-		return carsStatus;
-	}
-
-	private String addNewLine() {
-		return "\n";
+	public List<String> getScore() {
+		return cars.stream()
+				.map(Car::getStatus)
+				.collect(Collectors.toList());
 	}
 }
