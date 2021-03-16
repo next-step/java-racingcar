@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.core.RacingRound;
+import racing.domain.RacingRound;
 
 import java.util.Collection;
 import java.util.List;
