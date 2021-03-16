@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,14 +6,14 @@ import java.util.List;
 
 public class Cars {
 
-  List<Car> cars = new ArrayList<>();
+  private List<Car> cars = new ArrayList<>();
+
+  public List<Car> getCarListForPrint() {
+    return cars;
+  }
 
   public void addAll(Car... cars) {
     this.cars.addAll(Arrays.asList(cars));
-  }
-
-  public int getSize() {
-    return cars.size();
   }
 
   public void moveByStrategy(MoveStrategy strategy) {

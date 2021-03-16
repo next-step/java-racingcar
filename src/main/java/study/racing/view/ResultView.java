@@ -1,18 +1,23 @@
-package study.racing;
+package study.racing.view;
 
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
+import study.racing.domain.Car;
 
 public final class ResultView {
 
   private static final String MOVE_MARK = "_";
   private static final String WINNER_MESSAGE_FORMAT = "%s 가 최종 우승했습니다.";
 
-  public static void printPosition(Cars cars) {
-    for (Car car : cars.cars) {
-      printPosition(car.getName(), car.getPosition());
+  public static void printPositions(List<Car> cars) {
+    for (Car car : cars) {
+      printPosition(car);
     }
     System.out.println("");
+  }
+
+  public static void printPosition(Car car) {
+    printPosition(car.getName(), car.getPosition());
   }
 
   private static void printPosition(String name, int position) {

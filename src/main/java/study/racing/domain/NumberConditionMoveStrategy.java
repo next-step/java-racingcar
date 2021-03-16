@@ -1,4 +1,6 @@
-package study.racing;
+package study.racing.domain;
+
+import study.racing.utils.RandomNumberAssigner;
 
 public class NumberConditionMoveStrategy implements MoveStrategy {
 
