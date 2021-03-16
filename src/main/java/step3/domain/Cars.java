@@ -42,7 +42,10 @@ public class Cars {
     }
 
     private void displayMove(ResultView resultView) {
-        resultView.displayMove(carList);
+        for(Car car : carList){
+            resultView.renderDrive(car.getGoCount());
+        }
+        System.out.println();
     }
 
     public List<Car> getCarList() {
