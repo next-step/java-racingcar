@@ -2,6 +2,7 @@ package racingcar.ui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 import racingcar.util.UserInputValidator;
 
 public class InputView {
@@ -14,7 +15,7 @@ public class InputView {
     this.validator = new UserInputValidator();
   }
 
-  public String[] getNameOfCars() throws IOException {
+  public List<String> getNameOfCars() throws IOException {
     System.out.println("경주할 자동차의 이름을 입력해주세요(이름은 (,) 쉼표로 구분)");
     return validator.carNameValidation(reader.readLine());
   }

@@ -1,20 +1,22 @@
 package racingcar.util;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserInputValidator {
 
   private static final int MAX_NAME_LENGTH = 5;
 
-  public String[] carNameValidation(String readLine) {
+  public List<String> carNameValidation(String readLine) {
     String[] splitCarName = readLine.split(",");
     carNameIsProperlySplit(splitCarName.length);
     removeWhiteSpace(splitCarName);
     hasStrangeName(splitCarName);
     hasDuplicatedName(splitCarName);
-    return splitCarName;
+    return Arrays.asList(splitCarName);
   }
 
   public String inputRoundValidation(String round) {

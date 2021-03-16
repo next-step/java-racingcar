@@ -26,13 +26,18 @@ public class Car {
   public void moveCar(int generatedRandomNumber) {
     if(isMoveable(generatedRandomNumber))
       this.position++;
-  }
+    }
 
   private boolean isMoveable(int generatedRandomNumber) {
     return generatedRandomNumber >= MOVEABLE_CRITERIA;
   }
 
-  public String positionToLine() {
+  public String printNameWithCurrentPosition() {
+    String position = positionToLine();
+    return this.name + " : " + position;
+  }
+
+  private String positionToLine() {
     StringBuilder sb = new StringBuilder();
     for(int i = 0; i <= position; i++){
       sb.append('-');

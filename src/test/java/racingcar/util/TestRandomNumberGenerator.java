@@ -1,13 +1,12 @@
 package racingcar.util;
 
 public class TestRandomNumberGenerator extends RandomNumberGenerator {
+    public TestRandomNumberGenerator(long currentTimeSeed) {
+      super(currentTimeSeed);
+    }
 
-  public TestRandomNumberGenerator(long currentTimeSeed) {
-    super(currentTimeSeed);
-  }
-
-  @Override
-  public int generateRandomNumber() {
-    return 5;
-  }
+    @Override
+    public int generateRandomNumber() {
+      return 5;
+    }
 }
