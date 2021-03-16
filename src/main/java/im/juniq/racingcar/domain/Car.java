@@ -30,11 +30,11 @@ public class Car {
 		}
 	}
 
-	public String getName() {
+	protected String getName() {
 		return name;
 	}
 
-	public int getPosition() {
+	protected int getPosition() {
 		return position;
 	}
 

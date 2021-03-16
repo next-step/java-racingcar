@@ -16,8 +16,7 @@ class CarTest {
 	void createCar(String carName) {
 		Car car = new Car(carName, new RandomNumberMovingStrategy());
 
-		assertThat(car.getName()).isEqualTo(carName);
-		assertThat(car.getPosition()).isEqualTo(0);
+		assertThat(car.getStatus()).contains(carName);
 	}
 
 	@DisplayName("자동차 이름은 5글자 이하만 허용한다")
@@ -35,6 +34,6 @@ class CarTest {
 
 		car.move(new OnlyTrueMovingStrategy());
 
-		assertThat(car.getPosition()).isEqualTo(1);
+		assertThat(car.getStatus()).contains("-");
 	}
 }
