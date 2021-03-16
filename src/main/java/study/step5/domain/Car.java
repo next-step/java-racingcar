@@ -3,7 +3,8 @@ package study.step5.domain;
 public class Car {
 
     private static final int CAR_NAME_LENGTH_OVER = 5;
-    private static final String CAR_NAME_LENGTH_ERROR = "자동차의 이름은 5자를 초과할 수 없습니다.";
+    private static final String CAR_NAME_LENGTH_ERROR = "자동차의 이름은 " +
+            CAR_NAME_LENGTH_OVER  + "자를 초과할 수 없습니다.";
 
     private final String carName;
     private int location;
