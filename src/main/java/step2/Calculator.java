@@ -13,7 +13,6 @@ public class Calculator {
         String[] arrInput = splitStr(strInput);
         Integer[] arrNumbers = getNumbers(arrInput);
         String[] arrOperations = getOperations(arrInput);
-        validAllOperation(arrOperations);
 
         return loopAllOperator(arrNumbers, arrOperations);
     }
@@ -59,6 +58,7 @@ public class Calculator {
         for (int i = 1; i < arrInput.length; i += 2) {
             arrOperations.add(arrInput[i]);
         }
+        validAllOperation(arrOperations.toArray(new String[0]));
         return arrOperations.toArray(new String[0]);
     }
 

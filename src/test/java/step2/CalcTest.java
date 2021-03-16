@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class calcTest {
+public class CalcTest {
     Calculator calculator = new Calculator();
 
     @Test
