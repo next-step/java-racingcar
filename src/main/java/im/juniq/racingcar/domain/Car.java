@@ -37,4 +37,12 @@ public class Car {
 	public int getPosition() {
 		return position;
 	}
+
+	public String getStatus() {
+		String status = name + " : ";
+		for (int i = 0; i < position; i++) {
+			status += "-";
+		}
+		return status;
+	}
 }

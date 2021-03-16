@@ -2,19 +2,14 @@ package im.juniq.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingGame implements Iterable<Car> {
+public class RacingGame {
 	private List<Car> cars = new ArrayList<>();
 
 	public RacingGame(Car... car) {
 		cars.addAll(Arrays.asList(car));
-	}
-
-	public RacingGame(List<Car> cars) {
-		this.cars = cars;
 	}
 
 	public void createCars(String[] carNames, MovingStrategy movingStrategy) {
@@ -29,26 +24,49 @@ public class RacingGame implements Iterable<Car> {
 		}
 	}
 
-	public RacingGame findByTopPosition() {
+	private List<Car> findByTopPosition() {
 		int topPosition = cars.stream()
 				.mapToInt(Car::getPosition)
 				.max().orElseThrow(()  -> new RuntimeException("position 수치가 가장 높은 차를 구할 수 없음."));
 
-		ArrayList<Car> carList = cars.stream().filter(car -> topPosition == car.getPosition())
-			.collect(Collectors.toCollection(ArrayList::new));
-		return new RacingGame(carList);
+		return cars.stream().filter(car -> topPosition == car.getPosition())
+				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public Car get(int index) {
-		return cars.get(index);
+	public String getWinner() {
+		String winner = "";
+		List<Car> topPositionCars = findByTopPosition();
+		for (int i = 0; i < topPositionCars.size(); i++) {
+			addSeparator(i);
+			Car car = topPositionCars.get(i);
+			winner += car.getName();
+		}
+		return winner;
 	}
 
-	public int size() {
-		return cars.size();
+	private void addSeparator(int i) {
+		if (i != 0) {
+			System.out.print(", ");
+		}
 	}
 
-	@Override
-	public Iterator<Car> iterator() {
-		return cars.iterator();
+	public String getCarsStatus() {
+		String carsStatus = "";
+		for (int i = 0; i < cars.size(); i++) {
+			carsStatus += addNewLineIfFirstLine(i);
+			carsStatus += cars.get(i).getStatus();
+		}
+		return carsStatus + addNewLine();
+	}
+
+	private String addNewLineIfFirstLine(int i) {
+		if (i != 0) {
+			return addNewLine();
+		}
+		return "";
+	}
+
+	private String addNewLine() {
+		return "\n";
 	}
 }

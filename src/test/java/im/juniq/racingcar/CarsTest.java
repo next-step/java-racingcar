@@ -1,13 +1,13 @@
 package im.juniq.racingcar;
 
-import static org.assertj.core.api.Assertions.*;
-
 import im.juniq.racingcar.domain.Car;
-import im.juniq.racingcar.domain.RacingGame;
 import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
+import im.juniq.racingcar.domain.RacingGame;
 import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 	@DisplayName("자동차 n대를 생성한다")
@@ -17,7 +17,7 @@ class CarsTest {
 		RacingGame racingGame = new RacingGame();
 		racingGame.createCars(carNames, new RandomNumberMovingStrategy());
 
-		assertThat(racingGame).extracting(Car::getName).contains(carNames);
+		assertThat(racingGame.getCarsStatus()).contains(carNames);
 	}
 
 	@DisplayName("자동차 n대를 이동한다")
@@ -29,9 +29,7 @@ class CarsTest {
 
 		racingGame.move();
 
-		for (Car car: racingGame) {
-			assertThat(car.getPosition()).isEqualTo(1);
-		}
+		assertThat(racingGame.getCarsStatus()).contains("-");
 	}
 
 	@DisplayName("가장 먼 위치에 도달한 차 찾기")
@@ -45,6 +43,6 @@ class CarsTest {
 			racingGame.move();
 		}
 
-		assertThat(racingGame.findByTopPosition().get(0)).isEqualTo(pobi);
+		assertThat(racingGame.getWinner()).isEqualTo("pobi");
 	}
 }

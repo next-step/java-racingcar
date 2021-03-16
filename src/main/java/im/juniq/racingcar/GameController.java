@@ -38,10 +38,10 @@ public class GameController {
 	}
 
 	private void printScore() {
-		resultView.printCarsStatus(racingGame);
+		resultView.printCarsStatus(racingGame.getCarsStatus());
 	}
 
 	private void printWinner() {
-		resultView.printWinner(racingGame.findByTopPosition());
+		resultView.printWinner(racingGame.getWinner());
 	}
 }
