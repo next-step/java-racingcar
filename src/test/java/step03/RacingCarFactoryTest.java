@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingEventManagerTest {
+public class RacingCarFactoryTest {
 
     @ParameterizedTest
     @DisplayName("입력한 수만큼 차가 만들어 졌는지")
