@@ -2,20 +2,20 @@ package new_racingcar.view;
 
 import new_racingcar.constant.MsgConstants;
 import new_racingcar.domain.Car;
-import new_racingcar.domain.Round;
+import new_racingcar.domain.RoundRecord;
 
 import java.util.List;
 
 public class ResultView {
 
-    public void printGrandPrixRecords(List<Round> rounds) {
+    public void printGrandPrixRecords(List<RoundRecord> roundRecords) {
         System.out.println("");
         System.out.println(MsgConstants.RESULT_RACING_END_MESSAGE);
 
-        rounds.stream()
+        roundRecords.stream()
                 .forEach(r -> printRound(r.getRoundInfo()));
 
-        printRacingWinner(rounds.get(rounds.size()-1));
+        printRacingWinner(roundRecords.get(roundRecords.size()-1));
     }
 
     private void printRound(List<Car> cars) {
@@ -34,8 +34,8 @@ public class ResultView {
         System.out.println(stringBuilder.toString());
     }
 
-    private void printRacingWinner(Round round) {
-        String winners = round.getWinnerNames(round.getMaxDistance());
+    private void printRacingWinner(RoundRecord roundRecord) {
+        String winners = roundRecord.getWinnerNames(roundRecord.getMaxDistance());
         System.out.println(winners + "가 최종 우승했습니다.");
     }
 }
