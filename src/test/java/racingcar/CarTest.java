@@ -17,6 +17,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.Position;
 
 class CarTest {
 
@@ -106,6 +107,6 @@ class CarTest {
       car.move(THRESHOLD);
     }
 
-    assertThat(car.isWinner(maxDistance)).isEqualTo(expected);
+    assertThat(car.isWinner(new Position(maxDistance))).isEqualTo(expected);
   }
 }

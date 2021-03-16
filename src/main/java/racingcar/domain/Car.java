@@ -3,17 +3,17 @@ package racingcar.domain;
 public class Car {
 
   public static final String UNIT = "-";
-  public static final int DEFAULT_DISTANCE = 0;
   public static final int THRESHOLD = 4;
   public static final int MAX_NAME_LENGTH = 5;
   public static final String EMPTY_STRING_ERROR_MESSAGE = "비어있는 이름은 유효하지 않은 이름입니다.";
   public static final String MAX_LENGTH_ERROR_MESSAGE = "자동차의 이름은 최대 5자입니다. 입력한 이름: ";
 
-  private int distance;
+  private Position position;
   private final String name;
 
   private Car(String name) {
     validateName(name);
+    this.position = new Position();
     this.name = name;
   }
 
@@ -40,14 +40,14 @@ public class Car {
 
   public void move(int randomNumber) {
     if (randomNumber >= THRESHOLD) {
-      distance += 1;
+      position = position.move();
     }
   }
 
   public String showStatus() {
     StringBuilder distanceBuilder = new StringBuilder();
 
-    for (int i = 0; i < distance; i++) {
+    for (int i = 0; position.biggerThan(i); i++) {
       distanceBuilder.append(UNIT);
     }
 
@@ -58,11 +58,11 @@ public class Car {
     return name;
   }
 
-  public int getDistance() {
-    return distance;
+  public Position getPosition() {
+    return position;
   }
 
-  public boolean isWinner(int maxDistance) {
-    return distance == maxDistance;
+  public boolean isWinner(Position maxPosition) {
+    return position.equals(maxPosition);
   }
 }

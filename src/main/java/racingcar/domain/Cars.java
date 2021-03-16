@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import static racingcar.domain.Car.DEFAULT_DISTANCE;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,19 +46,19 @@ public class Cars {
   }
 
   private void addWinnerName(List<String> winners, Car car) {
-    if (car.isWinner(getMaxDistance())) {
+    if (car.isWinner(getMaxPosition())) {
       winners.add(car.getName());
     }
   }
 
-  private int getMaxDistance() {
-    int maxDistance = DEFAULT_DISTANCE;
+  private Position getMaxPosition() {
+    Position maxPosition = new Position();
 
     for (Car car : cars) {
-      int distance = car.getDistance();
-      maxDistance = Math.max(maxDistance, distance);
+      Position position = car.getPosition();
+      maxPosition = Position.max(maxPosition, position);
     }
 
-    return maxDistance;
+    return maxPosition;
   }
 }
