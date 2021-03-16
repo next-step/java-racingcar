@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import study1.racing.code.moveStrategy.RaceMove;
+
 public class Race {
   private final int START_NUM = 0;
 
@@ -26,7 +28,7 @@ public class Race {
 
   public RaceRound roundCheck() {
     cars.stream()
-      .forEach((car) -> car.move());
+      .forEach((car) -> car.move(new RaceMove()));
     return new RaceRound(
       cars.stream()
         .map((car) -> new Car(car))
