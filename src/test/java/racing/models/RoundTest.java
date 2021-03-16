@@ -33,8 +33,13 @@ public class RoundTest {
 
         final Round round = RoundFactory.createFrom(Arrays.asList(pobi, crong, honux));
 
-        final List<String> expectedNames = Stream.of(pobi).map(Car::getName).collect(Collectors.toList());
-        final List<String> winnerNames = round.getLeaderList().stream().map(Car::getName).collect(Collectors.toList());
+        final List<String> expectedNames = Stream.of(pobi)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        final List<String> winnerNames = round.getLeaderList()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
         // assert
         assertThat(winnerNames).containsAll(expectedNames);
@@ -53,8 +58,13 @@ public class RoundTest {
 
         final Round round = RoundFactory.createFrom(Arrays.asList(pobi, crong, honux));
 
-        final List<String> expectedNames = Stream.of(pobi, crong).map(Car::getName).collect(Collectors.toList());
-        final List<String> winnerNames = round.getLeaderList().stream().map(Car::getName).collect(Collectors.toList());
+        final List<String> expectedNames = Stream.of(pobi, crong)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        final List<String> winnerNames = round.getLeaderList()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
         // assert
         assertThat(winnerNames).containsAll(expectedNames);
