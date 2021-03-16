@@ -8,10 +8,10 @@ import racingcar.domain.Game;
 import racingcar.view.InputView;
 import racingcar.view.Printer;
 
-public class GameManager {
+public class GameController {
 
   public static void main(String[] args) {
-    GameManager.startGame();
+    GameController.startGame();
   }
 
   private static void startGame() {
