@@ -11,6 +11,10 @@ public class GameRule {
         randomGenerator = new RandomUtil();
     }
 
+    public GameRule(RandomGenerator randomGenerator) {
+        this.randomGenerator = randomGenerator;
+    }
+
     public boolean isMove() {
         return randomGenerator.getRandom() >= STANDARD_FOR_MOVING;
     }
