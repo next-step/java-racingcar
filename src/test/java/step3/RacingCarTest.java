@@ -13,7 +13,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = RacingCar.newInstanceByCarMove(3, 5);
+        racingCar = new RacingCar(3, 5);
     }
     
     @Test
@@ -31,7 +31,7 @@ public class RacingCarTest {
     @ValueSource(ints = {0, 1, 2})
     @DisplayName("step3. 차량 이동")
     public void testMoveForward(int carIndex) {
-        assertThat(RacingUtils.moveForward(racingCar, carIndex, 0)).isEqualTo("-");
+        RacingUtils.moveCarByRacingCondition(racingCar, carIndex, 0);
     }
     
     @Test

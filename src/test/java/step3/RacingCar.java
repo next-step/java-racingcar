@@ -1,5 +1,8 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * STEP3. 자동차 경주
  * 
@@ -11,68 +14,39 @@ package step3;
  */
 public class RacingCar {
     
-    private int carCount;                           //차량 수
+    private List<Car> cars;                         //차량
     private int roundCount;                         //이동 횟수
-    private String[][] racingCar;                   //차량의 이동정보
     
-    private static RacingCar instance;
-    
-    private RacingCar() {}
-    
-    private RacingCar(int carCount, int roundCount) {
-        this.carCount = carCount;
+    public RacingCar(int carCount, int roundCount) {
         this.roundCount = roundCount;
-        this.racingCar = new String[carCount][roundCount];
+        this.cars = new ArrayList<Car>();
+        
+        for( int index = 0 ; index < carCount ; index++ ) {
+            this.cars.add(index, new Car());
+        }
+    }
+
+    public void addCar(Car racingCar) {
+        this.cars.add(racingCar);
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
     
-    public static RacingCar newInstance() {
-        if( instance == null ) {
-            instance = new RacingCar();
-        }
-        return instance;
+    public Car getCarByIndexNumber(int index) {
+        return this.cars.get(index);
     }
-
-    public static RacingCar newInstanceByCarMove(int carCount, int roundCount) {
-        if( instance == null ) {
-            instance = new RacingCar(carCount, roundCount);
-        }
-        return instance;
-    }
-
-    public void setRacingCar(String[][] racingCar) {
-        this.racingCar = racingCar;
-    }
-
-    public static void setInstance(RacingCar instance) {
-        RacingCar.instance = instance;
-    }
-
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
+    
+    public int getCarCount() {
+        return this.cars.size();
     }
 
     public void setRoundCount(int roundCount) {
         this.roundCount = roundCount;
     }
     
-    public int getCarCount() {
-        return this.carCount;
-    }
-    
     public int getRoundCount() {
         return this.roundCount;
     }
-
-    public void setCurrentPosition(int carIndex, int roundIndex, String position) {
-        this.racingCar[carIndex][roundIndex] = position;
-    }
-    
-    public String getCurrentPosition(int carIndex, int roundIndex) {
-        return racingCar[carIndex][roundIndex];
-    }
-    
-    public String[][] getRacingCarInfo() {
-        return racingCar;
-    }
-
 }    

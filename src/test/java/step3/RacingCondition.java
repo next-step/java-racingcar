@@ -10,17 +10,6 @@ public class RacingCondition {
 
     private static Random random = new Random();
     
-    private static RacingCondition condition;
-    
-    private RacingCondition() {}
-    
-    public RacingCondition newInstance() {
-        if( condition == null ) {
-            condition = new RacingCondition();
-        }
-        return condition;
-    }
-    
     public static boolean isFirstRound(int roundIndex) {
         return roundIndex == FIRST_ROUND_NUMBER;
     }
