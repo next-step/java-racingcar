@@ -1,10 +1,13 @@
 package racingcar.service;
 
 import racingcar.domain.Car;
+import racingcar.domain.Name;
+import racingcar.domain.Position;
+import racingcar.domain.dto.CarDto;
 import racingcar.repository.CarRepository;
 
 import java.util.List;
-import java.util.Queue;
+import java.util.stream.Collectors;
 
 public class CarService {
     private final CarRepository carRepository;
@@ -17,39 +20,43 @@ public class CarService {
         carRepository.save(new Car(name));
     }
 
-    public List<Car> findCars() {
-        return carRepository.findAll();
+    public List<CarDto> findCars() {
+        List<Car> cars = carRepository.findAll();
+        return cars.stream()
+                .map(car -> new CarDto(car.getPosition(), car.getName()))
+                .collect(Collectors.toList());
     }
 
-    public Queue<Integer> findMovementRangeOfCars() {
-        return carRepository.findAllMovementRange();
+    public List<Integer> findCarsPosition() {
+        List<Car> cars = carRepository.findAll();
+        return cars.stream()
+                .map(car -> car.getPosition().toInteger())
+                .collect(Collectors.toList());
     }
 
-    public Queue<String> findNameOfCars() {
-        return carRepository.findAllNames();
+    public List<String> findCarsName() {
+        List<Car> cars = carRepository.findAll();
+        return cars.stream()
+                .map(car -> car.getName().toString())
+                .collect(Collectors.toList());
     }
 
-    public Queue<String> findWinners(int maxMovementRange) {
-        return carRepository.findWinnersByMaxMovementRange(maxMovementRange);
+    public List<String> findWinnersName(Position maxPosition) {
+        List<Car> winners = carRepository.findWinnersByMaxPosition(maxPosition);
+        return winners.stream()
+                .map(car -> car.getName().toString())
+                .collect(Collectors.toList());
     }
 
-    public int findMaxMovementRange() {
-        return carRepository.findMaxMovementRange();
+    public Position findMaxPosition() {
+        return carRepository.findMaxPosition();
     }
 
-    public Car findCar(String name) {
+    public Car findCar(Name name) {
         return carRepository.findByName(name);
     }
 
-    public void resetCarMovementRange(String Name) {
-        carRepository.resetMovementRangeByName(Name);
-    }
-
-    public void resetCarsMovementRange() {
-        carRepository.resetAllMovementRange();
-    }
-
     public void moveCars() {
-        carRepository.updateCarsMovementRange();
+        carRepository.updateCarsPosition();
     }
 }

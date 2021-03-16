@@ -1,70 +1,55 @@
 package racingcar.domain;
 
+import racingcar.domain.strategy.MoveStrategy;
+
+import java.util.Objects;
+
 public class Car {
-    private static final String CHECK_NAME_NULL = "이름 값이 null인지 확인해주세요.";
-    private static final String CHECK_NAME_EMPTY = "이름 값이 공백인지 확인해주세요.";
-    private static final String CHECK_NAME_LENGTH = "이름이 5자를 초과했는지 확인해주세요.";
-    private static final String CHECK_RANDOM_NUMBER_BOUND = "이동 범위의 조건은 0 ~ 9이여야만 합니다.";
-    private static final int INIT_VALUE = 0;
-    private static final int CONDITION_FOR_MOVEMENT = 4;
-    private static final int MAX_INCLUSIVE = 9;
-    private static final int MIN_INCLUSIVE = 0;
-    private static final int NAME_LENGTH_BOUND = 5;
-    private int movementRange;
-    private String name;
+    private Position position;
+    private final Name name;
 
     public Car(String name) {
-        validateNull(name);
-        validateEmpty(name);
-        validateLength(name);
-        this.name = name;
-        movementRange = INIT_VALUE;
+        this(name, 0);
     }
 
-    public void move(int number) {
-        validateRandomNumberBound(number);
-        if (number >= CONDITION_FOR_MOVEMENT) {
-            movementRange++;
+    public Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
+    }
+
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
+            position = position.move();
         }
     }
 
-    public void initializeMovementRange() {
-        movementRange = INIT_VALUE;
+    public boolean isWinner(Position maxPosition) {
+        return this.position.equals(maxPosition);
     }
 
-    public int getMovementRange() {
-        return movementRange;
+    public boolean hasBiggerPositionThan(Position maxPosition) {
+        return this.position.isBiggerThan(maxPosition);
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public boolean isMaxMovementRange(int maxMovementRange) {
-        return maxMovementRange == movementRange;
+    public Position getPosition() {
+        return position;
     }
 
-    private void validateNull(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException(CHECK_NAME_NULL);
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(position, car.position) &&
+                Objects.equals(name, car.name);
     }
 
-    private void validateEmpty(String input) {
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException(CHECK_NAME_EMPTY);
-        }
-    }
-
-    private void validateLength(String name) {
-        if (name.length() > NAME_LENGTH_BOUND) {
-            throw new IllegalArgumentException(CHECK_NAME_LENGTH);
-        }
-    }
-
-    private void validateRandomNumberBound(int randomNumber) {
-        if (randomNumber > MAX_INCLUSIVE || randomNumber < MIN_INCLUSIVE) {
-            throw new IllegalArgumentException(CHECK_RANDOM_NUMBER_BOUND);
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
     }
 }
