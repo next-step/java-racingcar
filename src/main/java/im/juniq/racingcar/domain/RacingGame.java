@@ -35,19 +35,17 @@ public class RacingGame {
 
 	public String getWinner() {
 		String winner = "";
-		List<Car> topPositionCars = findByTopPosition();
-		for (int i = 0; i < topPositionCars.size(); i++) {
-			addSeparator(i);
-			Car car = topPositionCars.get(i);
-			winner += car.getName();
+		for (Car car: findByTopPosition()) {
+			winner += addSeparatorIfNotEmpty(winner) + car.getName();
 		}
 		return winner;
 	}
 
-	private void addSeparator(int i) {
-		if (i != 0) {
-			System.out.print(", ");
+	private String addSeparatorIfNotEmpty(String winner) {
+		if (!winner.isEmpty()) {
+			return ", ";
 		}
+		return "";
 	}
 
 	public String getScore() {
