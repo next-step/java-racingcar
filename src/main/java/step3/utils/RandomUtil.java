@@ -5,10 +5,10 @@ import java.util.Random;
 public class RandomUtil implements RandomGenerator {
 
     private static final int BOUND_OF_RANDOM_NUM = 10;
-    private int RANDOM_NUMBER;
+    private static int RANDOM_NUMBER;
 
     public RandomUtil() {
-        this.RANDOM_NUMBER = new Random().nextInt(BOUND_OF_RANDOM_NUM);
+        RANDOM_NUMBER = new Random().nextInt(BOUND_OF_RANDOM_NUM);
     }
 
     @Override

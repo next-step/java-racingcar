@@ -10,7 +10,7 @@ public class StringTest {
     @DisplayName("1,2를 ,로 split 하여 잘 분리되는지 테스트")
     void 요구사항1_1() {
         String[] result = "1,2".split(",");
-        assertThat(result).containsExactly("1","2");
+        assertThat(result).containsExactly("1", "2");
     }
 
     @Test
@@ -24,7 +24,7 @@ public class StringTest {
     @DisplayName("(1,2) 주어졌을때, substring() 활용하여 1,2로 반환되는지 테스트")
     void 요구사항2() {
         String data = "(1,2)";
-        String result = data.substring(0,data.length());
+        String result = data.substring(0, data.length());
         assertThat(result).contains("1,2");
     }
 
