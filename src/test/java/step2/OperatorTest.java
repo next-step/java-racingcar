@@ -1,12 +1,13 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OperatorTest {
 
@@ -48,6 +49,15 @@ class OperatorTest {
     void operatorSymbolTest(String symbol) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Operator.findOperator(symbol);
-        });
+        }).withMessageMatching(CalculatorMessage.UNSUPPORTED_OPERATOR);
+    }
+
+    @DisplayName("0으로 나눌시 IllegalArgumentException가 발생한다")
+    @Test
+    void divisionTest_by_zero() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Operator operator = Operator.findOperator("/");
+            operator.calculate(5, 0);
+        }).withMessageMatching(CalculatorMessage.CANNOT_DIVIDED_BY_ZERO);
     }
 }

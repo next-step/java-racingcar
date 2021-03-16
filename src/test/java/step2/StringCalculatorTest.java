@@ -15,7 +15,7 @@ class StringCalculatorTest {
     void inputNullTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             StringCalculator.calculate(null);
-        });
+        }).withMessageMatching(CalculatorMessage.INPUT_NULL);
     }
 
     @DisplayName("입력 값이 빈 공백 문자일 경우 IllegalArgumentException throw")
@@ -23,7 +23,7 @@ class StringCalculatorTest {
     void inputBlankTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             StringCalculator.calculate("");
-        });
+        }).withMessageMatching(CalculatorMessage.INPUT_BLANK);
     }
 
     @DisplayName("기능 요구사항의 2 + 3 * 4 / 2 결과값으로 10이 나오는지 확인한다")

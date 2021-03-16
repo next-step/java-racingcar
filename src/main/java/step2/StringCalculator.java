@@ -4,24 +4,24 @@ public class StringCalculator {
 
     public static long calculate(String input) {
         validate(input);
-        String[] arr = input.split(" ");
-        return getResult(arr);
+        String[] inputs = input.split(" ");
+        return getResult(inputs);
     }
 
     private static void validate(String input) {
         if (input == null) {
-            throw new IllegalArgumentException(CalculatorException.INPUT_NULL);
+            throw new IllegalArgumentException(CalculatorMessage.INPUT_NULL);
         }
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException(CalculatorException.INPUT_BLANK);
+        if (input.trim().isEmpty()) {
+            throw new IllegalArgumentException(CalculatorMessage.INPUT_BLANK);
         }
     }
 
-    private static long getResult(String[] arr) {
-        long result = Long.parseLong(arr[0]);
-        for (int i = 1; i < arr.length; i += 2) {
-            Operator operator = Operator.findOperator(arr[i]);
-            result = operator.calculate(result, Long.parseLong(arr[i + 1]));
+    private static long getResult(String[] inputs) {
+        long result = Long.parseLong(inputs[0]);
+        for (int i = 1; i < inputs.length; i += 2) {
+            Operator operator = Operator.findOperator(inputs[i]);
+            result = operator.calculate(result, Long.parseLong(inputs[i + 1]));
         }
         return result;
     }
