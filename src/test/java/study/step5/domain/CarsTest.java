@@ -20,9 +20,9 @@ class CarsTest {
         assertThat(cars.getSize()).isEqualTo(expected);
     }
 
-    @DisplayName("차량 이동 정합성 테스트")
+    @DisplayName("차량 이동 결과 일치하는지 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"자동차1호:1:1", "자동차1호,자동차2호:4:8", "자동차1호,자동차2호,자동차3호:5:15"}, delimiter = ':')
+    @CsvSource(value = {"자동차1호:1:1", "자동차1호,자동차2호:4:4", "자동차1호,자동차2호,자동차3호:5:5"}, delimiter = ':')
     void move(String carNames, int moveIndex, int expected) {
         MoveBehavior moveBehavior = new OneLocationMoveBehavior();
         Cars cars = Cars.of(carNames.split(","));
@@ -32,8 +32,10 @@ class CarsTest {
         }
 
         assertThat(cars.stream()
-                .mapToInt(car -> car.getLocation())
-                .sum()).isEqualTo(expected);
+                .map(car -> car.getLocation())
+                .findFirst()
+                .orElse(0)
+        ).isEqualTo(expected);
     }
 
     @DisplayName("레이싱게임의 우승자 확인")
