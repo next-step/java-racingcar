@@ -8,19 +8,8 @@ public class RacingGame {
     int carCount = 0;
     String[] progressArr;
 
-    void execute() {
-        InputView iv = new InputView();
-        this.attemptCount = iv.getAttemptCount();
-        this.carCount = iv.getCarCount();
-        this.progressArr = iv.getProgressArr();
-        ResultView rv = new ResultView(progressArr);
-        System.out.println("실행결과");
-        while (attemptCount-- > 0) {
-            racing();
-            rv.print();
-        }
-
-
+    public RacingGame() {
+        execute();
     }
 
     public void racing() {
@@ -42,15 +31,34 @@ public class RacingGame {
         }
     }
 
+    private int getRandomNumber() {
+        return new Random().nextInt(10);
+    }
+
+    public int getAttemptCount(){
+        return this.attemptCount;
+    }
+
     public boolean isKeepGoing(int randomNumber) {
         return randomNumber > 3;
     }
 
-    public int getRandomNumber() {
-        return new Random().nextInt(10);
+    private void execute() {
+        InputView iv = new InputView();
+        InputData inputData = iv.getInputData();
+
+        this.attemptCount = inputData.getAttemptCount();
+        this.carCount = inputData.getCarCount();
+        this.progressArr = inputData.getProgressArr();
+
+        ResultView rv = new ResultView(progressArr);
+        rv.showResult(this);
     }
 
+
     public static void main(String[] args) {
-        new RacingGame().execute();
+        RacingGame racingGame = new RacingGame();
     }
+
+
 }

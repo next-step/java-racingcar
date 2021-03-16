@@ -46,13 +46,6 @@ class RacingGameTest {
         assertThat(racingGame.isKeepGoing(inputNum)).isEqualTo(expect);
     }
 
-    @Test
-    @DisplayName("Random 숫자 나오는지 확인")
-    void getRandomNumberTest() {
-        int randomNumber = racingGame.getRandomNumber();
-        assertThat(randomNumber).isBetween(0, 9);
-    }
-
 
     @Test
     void execute() {

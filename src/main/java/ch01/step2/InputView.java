@@ -3,42 +3,16 @@ package ch01.step2;
 import java.util.Scanner;
 
 public class InputView {
-    int carCount = 0;
-    int attemptCount = 0;
-    String[] progressArr;
 
-    public InputView() {
+    InputData inputData;
+
+    public InputData getInputData() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         Scanner sc = new Scanner(System.in);
-        this.carCount = sc.nextInt();
-
-        progressArr = new String[carCount];
+        int carCount = sc.nextInt();
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        this.attemptCount = sc.nextInt();
-    }
-
-    public int getCarCount() {
-        return carCount;
-    }
-
-    public void setCarCount(int carCount) {
-        this.carCount = carCount;
-    }
-
-    public int getAttemptCount() {
-        return attemptCount;
-    }
-
-    public void setAttemptCount(int attemptCount) {
-        this.attemptCount = attemptCount;
-    }
-
-    public String[] getProgressArr() {
-        return progressArr;
-    }
-
-    public void setProgressArr(String[] progressArr) {
-        this.progressArr = progressArr;
+        int attemptCount = sc.nextInt();
+        return new InputData(carCount,attemptCount);
     }
 }
