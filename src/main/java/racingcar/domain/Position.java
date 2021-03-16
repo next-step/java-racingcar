@@ -46,3 +46,4 @@ public class Position {
     return position <= maxPosition.position;
   }
 }
+
