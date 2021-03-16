@@ -36,7 +36,7 @@ public class Cars {
   }
 
   public Winner getWinner() {
-    List<String> winners = new ArrayList<>();
+    List<CarName> winners = new ArrayList<>();
 
     for (Car car : cars) {
       addWinnerName(winners, car);
@@ -45,9 +45,9 @@ public class Cars {
     return Winner.of(winners);
   }
 
-  private void addWinnerName(List<String> winners, Car car) {
+  private void addWinnerName(List<CarName> winners, Car car) {
     if (car.isWinner(getMaxPosition())) {
-      winners.add(car.getName());
+      winners.add(new CarName(car.getName()));
     }
   }
 

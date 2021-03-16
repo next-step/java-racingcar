@@ -3,10 +3,10 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
-import static racingcar.domain.Car.EMPTY_STRING_ERROR_MESSAGE;
-import static racingcar.domain.Car.MAX_LENGTH_ERROR_MESSAGE;
 import static racingcar.domain.Car.THRESHOLD;
 import static racingcar.domain.Car.UNIT;
+import static racingcar.domain.CarName.EMPTY_STRING_ERROR_MESSAGE;
+import static racingcar.domain.CarName.MAX_LENGTH_ERROR_MESSAGE;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;

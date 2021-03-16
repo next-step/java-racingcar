@@ -42,7 +42,7 @@ public class Game {
     this.winner = cars.getWinner();
   }
 
-  public List<String> getWinners() {
+  public List<CarName> getWinners() {
     return winner.getWinners();
   }
 
