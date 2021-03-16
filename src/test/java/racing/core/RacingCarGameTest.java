@@ -23,6 +23,7 @@ class RacingCarGameTest {
 
     // when
     List<RacingRound> result = RacingCarGame.newGame(info)
+            .setupRule(() -> true)
             .play();
 
     // then
