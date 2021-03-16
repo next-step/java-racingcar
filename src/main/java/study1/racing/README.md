@@ -2,7 +2,7 @@
 
 ---
 
-- ## 기능
+- ## racing
 
   - ### Race.java
     - field

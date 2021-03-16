@@ -1,4 +1,4 @@
-package study1.racing;
+package study1.racing.code;
 
 import java.util.List;
 import java.util.stream.IntStream;

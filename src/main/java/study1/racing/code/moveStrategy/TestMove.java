@@ -1,4 +1,4 @@
-package study1.racing.moveStrategy;
+package study1.racing.code.moveStrategy;
 
 public class TestMove implements MoveStrategy {
   @Override

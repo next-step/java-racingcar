@@ -1,4 +1,4 @@
-package study1.racing;
+package study1.racing.code;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import study1.racing.moveStrategy.TestMove;
+import study1.racing.code.moveStrategy.TestMove;
 
 
 public class RacingTest {

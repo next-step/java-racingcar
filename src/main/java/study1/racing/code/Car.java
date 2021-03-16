@@ -1,7 +1,7 @@
-package study1.racing;
+package study1.racing.code;
 
-import study1.racing.moveStrategy.MoveStrategy;
-import study1.racing.moveStrategy.RaceMove;
+import study1.racing.code.moveStrategy.MoveStrategy;
+import study1.racing.code.moveStrategy.RaceMove;
 
 public class Car {
 
