@@ -1,5 +1,7 @@
 package step4.view;
 
+import step4.util.MsgConstants;
+
 import java.util.Scanner;
 
 /** 
@@ -13,13 +15,13 @@ public class InputView {
     scanner = new Scanner(System.in);
   }
 
-  public int inputCarCount(){
-    System.out.println("자동차의 대수는 몇 대 인가요?");
-    return scanner.nextInt();
+  public String inputCarNames(){
+    System.out.println(MsgConstants.INPUT_REQUIRE_CAR.getMessage());
+    return scanner.nextLine();
   }
 
   public int inputPeriod(){
-    System.out.println("시도할 회수는 몇 회 인가요?");
+    System.out.println(MsgConstants.INPUT_REQUIRE_ATTEMPT.getMessage());
     return scanner.nextInt();
   }
 }

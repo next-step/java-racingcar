@@ -1,24 +1,30 @@
 package step4.model;
 
-import step4.strategy.CarMovingStrategy;
 import step4.strategy.Strategy;
 
 public class Car {
+
   private int location;
-  private final Strategy carMovingStrategy;
+  private final String name;
 
-  public Car() {
-    this(0, new CarMovingStrategy());
+  public Car(String name) {
+    this.name = name;
+    location = 0;
   }
 
-  public Car(int location, Strategy strategy){
+  public Car(String name, int location) {
+    this.name = name;
     this.location = location;
-    this.carMovingStrategy = strategy;
+
   }
 
-  public int move() {
-    if (carMovingStrategy.isMovable()) location += 1;
-    return location;
+  public Car move(Strategy strategy) {
+    if (strategy.isMovable()) location += 1;
+    return this;
+  }
+
+  public String showCarName() {
+    return name;
   }
 
   public int showCarLocation() {
