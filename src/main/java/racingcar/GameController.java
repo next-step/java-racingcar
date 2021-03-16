@@ -17,8 +17,10 @@ public class GameController {
   private static void startGame() {
     try (InputView inputView = new InputView(new Scanner(System.in))) {
       Printer.welcomeMessage();
+
       List<Car> cars = inputView.inputCarNames();
       int round = inputView.inputRound();
+
       Printer.printBlankLine();
       Printer.printResultMessage();
 
