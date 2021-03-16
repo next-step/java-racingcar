@@ -5,12 +5,12 @@ import java.util.List;
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.inputCarsName();
-        inputView.inputRoundsCount();
+        String carsName = ViewUtil.inputCarName();
+        int roundsCount = ViewUtil.inputRoundCount();
 
-        CarRacingController carRacingController = new CarRacingController(new Round(inputView.getRoundsCount()),
-                new CarRacing(inputView.getCarsName()));
+        InputView inputView = new InputView(StringUtil.split(",", carsName), roundsCount);
+
+        CarRacingController carRacingController = new CarRacingController(inputView);
 
         List<CarResultDto> carResultDtoList = carRacingController.startCarRacing();
         ResultView resultView = new ResultView(carResultDtoList);
