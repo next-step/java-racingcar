@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,8 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racing.Racing;
 
-class RacingTest {
+public class CarsTest {
 
   private Cars cars;
 
@@ -26,7 +27,8 @@ class RacingTest {
   void createCars() {
     String[] names = {"bong", "jung", "dong"};
     Cars cars = Racing.createCars(names);
-    assertEquals(cars.getSize(), 3);
+    assertThat(cars.getCarListForPrint())
+        .containsExactly(new Car("bong"), new Car("jung"), new Car("dong"));
   }
 
   @Test
