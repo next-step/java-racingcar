@@ -21,17 +21,46 @@ class RacingGameTest {
         assertThat(racingGame.getNumberOfTurns()).isEqualTo(numberOfTurns);
     }
 
-    @DisplayName("주어진 횟수만큼 레이싱을 진행할 수 있다.")
+    @DisplayName("주어진 횟수가 남은 상태이면 레이싱을 진행하고 진행횟수를 감소시킨다 ")
     @Test
-    void race() {
-        int numberOfTurns = 1;
+    void race_whenNumberOfTurnsRemains() {
+        // given
+        int numberOfTurns = 2;
         RacingGame racingGame = RacingGame.withCondition(namesOfCars, numberOfTurns);
 
-        while (numberOfTurns > 0) {
-            assertThat(racingGame.hasRaceEnd()).isFalse();
-            racingGame.race();
-            numberOfTurns--;
-        }
+        // when
+        racingGame.race();
+
+        // then
+        assertThat(racingGame.getNumberOfTurns()).isEqualTo(numberOfTurns - 1);
+    }
+
+    @DisplayName("주어진 횟수만큼 레이싱을 하지않은 상태이면 레이싱을 진행하고 진행횟수를 감소시킨다 ")
+    @Test
+    void race_whenNumberOfTurnsExhausted() {
+        // given
+        int numberOfTurns = 0;
+        RacingGame racingGame = RacingGame.withCondition(namesOfCars, numberOfTurns);
+
+        // when, then
+        assertThatIllegalStateException()
+                .isThrownBy(racingGame::race);
+    }
+
+    @DisplayName("주어진 횟수만큼 레이싱을 하지 않으면 false 를 리턴한다")
+    @Test
+    void hasRaceEnd_whenReturnFalse() {
+        int numberOfTurns = 1;
+        RacingGame racingGame = RacingGame.withCondition(namesOfCars, numberOfTurns);
+        assertThat(racingGame.hasRaceEnd()).isFalse();
+    }
+
+    @DisplayName("주어진 횟수만큼 레이싱을 하면 ture 를 리턴한다")
+    @Test
+    void hasRaceEnd_whenReturnTrue() {
+        int numberOfTurns = 1;
+        RacingGame racingGame = RacingGame.withCondition(namesOfCars, numberOfTurns);
+        racingGame.race();
         assertThat(racingGame.hasRaceEnd()).isTrue();
     }
 
