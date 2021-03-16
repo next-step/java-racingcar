@@ -53,6 +53,23 @@ class CarTest {
         assertThat(car)
                 .extracting("name", "position")
                 .contains(carName, 1);
+    }
 
+    @DisplayName("포지션이 같으면 true 를 반환한다.")
+    @Test
+    void equalsPosition_whenTrue() {
+        String carName = "12345";
+        Car car = new Car(carName);
+        assertThat(car.equalsPosition(Car.INITIAL_POSITION))
+                .isTrue();
+    }
+
+    @DisplayName("포지션이 다르면 true 를 반환한다.")
+    @Test
+    void equalsPosition_whenFalse() {
+        String carName = "12345";
+        Car car = new Car(carName);
+        assertThat(car.equalsPosition(Car.INITIAL_POSITION + 1))
+                .isFalse();
     }
 }
