@@ -1,16 +1,16 @@
 package im.juniq.racingcar;
 
-import im.juniq.racingcar.domain.Cars;
+import im.juniq.racingcar.domain.RacingGame;
 import im.juniq.racingcar.view.InputView;
 import im.juniq.racingcar.view.ResultView;
 
-public class RacingGame {
-	private Cars cars = new Cars();
+public class GameController {
+	private RacingGame racingGame = new RacingGame();
 	private ResultView resultView = new ResultView();
 
 	public static void main(String[] args) {
-		RacingGame racingGame = new RacingGame();
-		racingGame.play();
+		GameController gameController = new GameController();
+		gameController.play();
 	}
 
 	public void play() {
@@ -22,7 +22,7 @@ public class RacingGame {
 	}
 
 	private void createCars(String[] carNames) {
-		cars.createCars(carNames);
+		racingGame.createCars(carNames);
 	}
 
 	private void racing(int numberOfTries) {
@@ -33,14 +33,14 @@ public class RacingGame {
 	}
 
 	private void moveCars() {
-		cars.move();
+		racingGame.move();
 	}
 
 	private void printScore() {
-		resultView.printCarsStatus(cars);
+		resultView.printCarsStatus(racingGame);
 	}
 
 	private void printWinner() {
-		resultView.printWinner(cars.findByTopPosition());
+		resultView.printWinner(racingGame.findByTopPosition());
 	}
 }

@@ -1,11 +1,11 @@
 package im.juniq.racingcar.view;
 
 import im.juniq.racingcar.domain.Car;
-import im.juniq.racingcar.domain.Cars;
+import im.juniq.racingcar.domain.RacingGame;
 
 public class ResultView {
-	public void printCarsStatus(Cars cars) {
-		for (Car car : cars) {
+	public void printCarsStatus(RacingGame racingGame) {
+		for (Car car : racingGame) {
 			printCarStatus(car);
 		}
 		System.out.println();
@@ -19,7 +19,7 @@ public class ResultView {
 		System.out.println();
 	}
 
-	public void printWinner(Cars winners) {
+	public void printWinner(RacingGame winners) {
 		for (int i = 0; i < winners.size(); i++) {
 			printSeparator(i);
 			System.out.print(winners.get(i).getName());
