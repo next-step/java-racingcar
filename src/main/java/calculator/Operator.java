@@ -1,3 +1,5 @@
+package calculator;
+
 public enum Operator {
   PLUS("+") {
     public int apply(int prev, int next) { return prev + next; }

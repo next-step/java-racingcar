@@ -1,3 +1,7 @@
+package calculator;
+
+import calculator.Calculator;
+
 public class Main {
 
 
