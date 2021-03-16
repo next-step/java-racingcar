@@ -5,13 +5,13 @@ import racing.exception.CarNameException;
 public class Car {
 
     public static final int MOVE_LIMIT = 4;
-    private final String name;
+    private String name;
     private int moveCount;
 
-    public Car(String name) {
+    public Car(String name, int moveCount) {
         validation(name);
         this.name = name;
-        this.moveCount = 0;
+        this.moveCount = moveCount;
     }
 
     public void tryMove(int number){

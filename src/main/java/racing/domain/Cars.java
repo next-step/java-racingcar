@@ -2,15 +2,15 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racing.util.RandomUtil;
 
 public class Cars {
 
-    public static final int EMPTY_VALUE = 0;
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(String[] carNames){
         for (String carName : carNames) {
-            this.cars.add(new Car(carName));
+            this.cars.add(new Car(carName, 0));
         }
     }
 
@@ -18,11 +18,7 @@ public class Cars {
         return cars;
     }
 
-    public int maxMoveCount(){
-        return cars
-            .stream()
-            .mapToInt(Car::getMoveCount)
-            .max()
-            .orElse(EMPTY_VALUE);
+    public void race() {
+        cars.forEach(car -> car.tryMove(RandomUtil.random()));
     }
 }
