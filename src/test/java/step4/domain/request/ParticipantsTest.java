@@ -19,7 +19,7 @@ class ParticipantsTest {
         Participants participants = Participants.from(expected);
         String[] actual = participants.getParticipants();
 
-        // them
+        // then
         assertThat(actual).isEqualTo(expected);
     }
 

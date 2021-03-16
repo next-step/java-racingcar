@@ -5,7 +5,6 @@ import step4.domain.driver.car.Car;
 import step4.domain.driver.name.Name;
 import step4.domain.request.Participants;
 import step4.domain.startegy.move.MoveStrategy;
-import step4.domain.startegy.name.NameLengthLessThanFive;
 import step4.domain.startegy.name.NamingStrategy;
 
 import java.util.ArrayList;

@@ -10,7 +10,8 @@ public class Participants {
     }
 
     private Participants(String[] participants) {
-        if (isNullOrSizeLessThanZero(participants)) throw new IllegalArgumentException("null 또는 0 이하의 값이 들어왔습니다.");
+        if (isNullOrSizeLessThanZero(participants))
+            throw new IllegalArgumentException("null 또는 사이즈가 0인 문자열이 들어왔습니다.");
         this.participants = participants;
     }
 
@@ -28,6 +29,10 @@ public class Participants {
 
     public String[] getParticipants() {
         return participants;
+    }
+
+    public int getParticipantsLength(){
+        return participants.length;
     }
 
 }

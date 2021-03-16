@@ -1,13 +1,12 @@
-package racingcar;
+package step4;
 
-import racingcar.controller.RacingCarGameController;
-import racingcar.domain.dto.RacingCarRequestDto;
-import racingcar.domain.dto.RacingCarResponseDto;
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import step4.controller.RacingCarGameController;
+import step4.domain.dto.RacingCarRequestDto;
+import step4.domain.dto.RacingCarResponseDto;
+import step4.view.InputView;
+import step4.view.ResultView;
 
 public class RacingCarGameEmulator {
-
     InputView inputView;
     ResultView resultView;
 
@@ -20,15 +19,15 @@ public class RacingCarGameEmulator {
         RacingCarRequestDto requestDto = inputView.getRacingCarRequestDto();
         RacingCarGameController controller = getRacingCarGameController(requestDto);
         RacingCarResponseDto responseDto = controller.startRacing();
-        resultView.printResult(responseDto, getAmountSize(requestDto));
+        resultView.printResult(responseDto, getRoundSize(requestDto));
     }
 
     private RacingCarGameController getRacingCarGameController(RacingCarRequestDto requestDto) {
         return RacingCarGameController.from(requestDto);
     }
 
-    private Integer getAmountSize(RacingCarRequestDto requestDto) {
-        return requestDto.getAmountValue();
+    private Integer getRoundSize(RacingCarRequestDto requestDto) {
+        return requestDto.getParticipants().getParticipantsLength();
     }
 
 }

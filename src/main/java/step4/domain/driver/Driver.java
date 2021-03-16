@@ -40,11 +40,11 @@ public class Driver implements Cloneable {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
-                .append(name)   // toString 활용(), 질문있습니다! : 명시하는 것이 좋을까요? 이대로 사용할까요?
+                .append(name)   // toString() 활용, 다만, 명시하는 것이 좋을까요? 이대로 사용하는 것이 좋을까요?
                 .append(BLANK)
                 .append(COLON)
                 .append(BLANK)
-                .append(car);   // toString 활용(), 질문있습니다! : 명시하는 것이 좋을까요? 이대로 사용할까요?
+                .append(car);
         return stringBuilder.toString();
     }
 

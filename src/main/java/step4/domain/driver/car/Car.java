@@ -20,7 +20,7 @@ public class Car {
     }
 
     private Car(Car other) {
-        this.status = other.status;
+        this.status = new StringBuilder(other.status);
     }
 
     public void move(MoveStrategy moveStrategy) {
