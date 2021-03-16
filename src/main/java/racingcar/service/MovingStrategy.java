@@ -1,4 +1,4 @@
-package racingcar.module;
+package racingcar.service;
 
 public interface MovingStrategy {
     boolean isMove();

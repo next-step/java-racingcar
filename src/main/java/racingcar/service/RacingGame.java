@@ -1,6 +1,6 @@
-package racingcar.module;
+package racingcar.service;
 
-import racingcar.model.Cars;
+import racingcar.domain.Cars;
 
 public class RacingGame {
     private RacingRound racingRound;

@@ -1,6 +1,6 @@
-package racingcar.model;
+package racingcar.domain;
 
-import racingcar.module.MovingStrategy;
+import racingcar.service.MovingStrategy;
 
 public class Car implements Cloneable {
     private int position = 0;

@@ -1,4 +1,4 @@
-package racingcar.module;
+package racingcar.service;
 
 import static racingcar.Constant.INPUT_RANDOM_NUM;
 

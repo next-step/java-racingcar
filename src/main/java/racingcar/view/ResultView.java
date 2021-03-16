@@ -1,10 +1,9 @@
 package racingcar.view;
 
 import racingcar.Constant;
-import racingcar.model.Car;
-import racingcar.model.Cars;
-import racingcar.model.Winner;
-import racingcar.module.RacingRound;
+import racingcar.domain.Car;
+import racingcar.domain.Winner;
+import racingcar.service.RacingRound;
 
 import java.util.stream.Collectors;
 

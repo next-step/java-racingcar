@@ -1,6 +1,6 @@
-package racingcar.model;
+package racingcar.domain;
 
-import racingcar.module.RandomStrategy;
+import racingcar.service.RandomStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
