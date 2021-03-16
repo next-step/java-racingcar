@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
-import static racingcar.Car.DEFAULT_DISTANCE;
+import static racingcar.domain.Car.DEFAULT_DISTANCE;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import racingcar.Car;
+import racingcar.domain.Car;
 
 public class InputView implements AutoCloseable {
 

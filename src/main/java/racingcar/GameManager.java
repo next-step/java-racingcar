@@ -3,6 +3,8 @@ package racingcar;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import racingcar.domain.Car;
+import racingcar.domain.Game;
 import racingcar.view.InputView;
 import racingcar.view.Printer;
 
