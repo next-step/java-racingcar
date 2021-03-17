@@ -1,21 +1,21 @@
 package step3.service;
 
-import step3.utils.RandomGenerator;
+import step3.utils.NumberGenerator;
 import step3.utils.RandomUtil;
 
 public class GameRule {
     private static final int STANDARD_FOR_MOVING = 4;
-    private final RandomGenerator randomGenerator;
+    private final NumberGenerator numberGenerator;
 
     public GameRule() {
-        randomGenerator = new RandomUtil();
+        numberGenerator = new RandomUtil();
     }
 
-    public GameRule(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
+    public GameRule(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
     }
 
-    public boolean isMove() {
-        return randomGenerator.getRandom() >= STANDARD_FOR_MOVING;
+    public boolean isMovable() {
+        return numberGenerator.getRandom() >= STANDARD_FOR_MOVING;
     }
 }

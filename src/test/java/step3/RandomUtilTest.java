@@ -1,7 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.Test;
-import step3.utils.RandomGenerator;
+import step3.utils.NumberGenerator;
 import step3.utils.RandomUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,10 +11,10 @@ public class RandomUtilTest {
     @Test
     void getRandom() {
         // given
-        RandomGenerator randomGenerator = new RandomUtil();
+        NumberGenerator numberGenerator = new RandomUtil();
 
         // when
-        int actual = randomGenerator.getRandom();
+        int actual = numberGenerator.getRandom();
 
         // then
         assertAll(

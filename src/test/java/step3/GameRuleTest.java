@@ -1,8 +1,9 @@
 package step3;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.service.GameRule;
-import step3.utils.RandomGenerator;
+import step3.utils.NumberGenerator;
 import step3.utils.RandomUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,15 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GameRuleTest {
 
     @Test
-    void isMove() {
+    @DisplayName("랜덤 숫자의 조건에 따라 동작여부 결정 테스트")
+    void isMovable() {
         // given
-        RandomGenerator randomGenerator = new RandomUtil();
-        GameRule rule = new GameRule(randomGenerator);
+        NumberGenerator numberGenerator = new RandomUtil();
+        GameRule rule = new GameRule(numberGenerator);
 
-        boolean expected = randomGenerator.getRandom() >= 4;
+        boolean expected = numberGenerator.getRandom() >= 4;
 
         // when
-        boolean actual = rule.isMove();
+        boolean actual = rule.isMovable();
 
         // then
         assertEquals(actual, expected);

@@ -10,7 +10,7 @@ public class Car {
     }
 
     public void move(GameRule rule) {
-        if (rule.isMove()) {
+        if (rule.isMovable()) {
             racingLog += "-";
         }
     }

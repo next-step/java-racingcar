@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.domain.Car;
 import step3.service.GameRule;
-import step3.utils.RandomGenerator;
+import step3.utils.NumberGenerator;
 import step3.utils.RandomUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,7 +19,7 @@ class CarTest {
 
         // when
         Car car = new Car();
-        RandomGenerator random = new RandomUtil();
+        NumberGenerator random = new RandomUtil();
         car.move(new GameRule());
 
         if (random.getRandom() >= 4) {
@@ -37,7 +37,7 @@ class CarTest {
         // given
         String expected = "";
         GameRule rule = new GameRule();
-        if (rule.isMove()) {
+        if (rule.isMovable()) {
             expected = "-";
         }
 

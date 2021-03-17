@@ -1,5 +1,5 @@
 package step3.utils;
 
-public interface RandomGenerator {
+public interface NumberGenerator {
     int getRandom();
 }

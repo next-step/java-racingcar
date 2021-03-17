@@ -2,7 +2,7 @@ package step3.utils;
 
 import java.util.Random;
 
-public class RandomUtil implements RandomGenerator {
+public class RandomUtil implements NumberGenerator {
 
     private static final int BOUND_OF_RANDOM_NUM = 10;
     private static int RANDOM_NUMBER;
