@@ -1,6 +1,7 @@
 package step3.view;
 
 import step3.exception.CarRaceCheckInputException;
+import step3.util.InputValidator;
 
 import java.util.Scanner;
 
@@ -11,7 +12,15 @@ public class InputView {
 
     private int racingCount;
 
+    public InputView(){
+    }
+    public InputView(int carCount, int racingCount) {
+        this.carCount = carCount;
+        this.racingCount = racingCount;
+    }
+
     public void inputData() {
+
         Scanner scan = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carCount = scan.nextInt();
@@ -25,13 +34,7 @@ public class InputView {
     }
 
     public void saveInputData(int carCount, int racingCount) {
-        if(carCount < 1){
-            throw new CarRaceCheckInputException("자동차 수가 유효하지 않습니다. 입력값 : %d".replace("%d",Integer.toString(carCount)));
-        }
-
-        if(racingCount < 1){
-            throw new CarRaceCheckInputException("시도할 회수가 유효하지 않습니다. 입력값 : %d".replace("%d",Integer.toString(carCount)));
-        }
+        InputValidator.validate(carCount, racingCount);
 
         this.carCount = carCount;
         this.racingCount = racingCount;
@@ -44,5 +47,22 @@ public class InputView {
 
     public int getRacingCount() {
         return racingCount;
+    }
+
+    public boolean validateCar(){
+        return this.carCount < 1 ;
+    }
+
+
+    public boolean validateRacing(){
+        return this.racingCount < 1 ;
+    }
+
+    public boolean isRacing(){
+        return this.racingCount > 0;
+    }
+
+    public void reduceRacing(){
+        this.racingCount--;
     }
 }
