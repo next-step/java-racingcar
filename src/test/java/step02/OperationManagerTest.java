@@ -3,11 +3,13 @@ package step02;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class OperationManagerTest {
 
@@ -32,4 +34,15 @@ public class OperationManagerTest {
                 Arguments.of("/", 0, 1, 0)
         );
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,0", "0,0"})
+    @DisplayName("나눗셈 0으로 나누기 Exception 테스트")
+    void divArithmeticException(int first, int second) {
+        assertThatThrownBy(() -> {
+            OperationManager.calculate("/", first, second);
+        }).isInstanceOf(ArithmeticException.class);
+    }
+
+
 }
