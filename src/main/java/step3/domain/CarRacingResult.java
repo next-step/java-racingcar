@@ -5,8 +5,8 @@ import java.util.List;
 
 public class CarRacingResult {
 
-    private List<CarPosition> carPositionList;
-    private List<String> winnerCarNames;
+    private final List<CarPosition> carPositionList;
+    private final List<String> winnerCarNames;
 
     public CarRacingResult(List<Car> carList, List<String> winnerCarNames) {
         this.carPositionList = new ArrayList<>();
@@ -20,10 +20,6 @@ public class CarRacingResult {
         }
 
         this.winnerCarNames = winnerCarNames;
-    }
-
-    public CarRacingResult(List<CarPosition> carPositionList) {
-        this.carPositionList = carPositionList;
     }
 
     public List<CarPosition> getCarPositionList() {
