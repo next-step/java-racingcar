@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
@@ -37,10 +38,38 @@ class CarTest {
         assertThat(testCar.getPosition()).isEqualTo(Car.INITIAL_POSITION);
     }
 
-    @DisplayName("자동차의 처음 포지션은 1이다")
+    @DisplayName("이름이 5자를 초과하는 경우 IllegalArgumentException 을 던진다")
     @Test
-    public void initialValueOfCarPositionIsOne() {
-        assertThat(Car.INITIAL_POSITION).isEqualTo(1);
+    void newCar_fail() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car("123456"));
     }
 
+    @DisplayName("이름이 5자 이하인 경우 포지션이 1이고 이름이 입력받은 이름인 car 객체를 생성한다.")
+    @Test
+    void newCar_success() {
+        String carName = "12345";
+        Car car = new Car(carName);
+        assertThat(car)
+                .extracting("name", "position")
+                .contains(carName, 1);
+    }
+
+    @DisplayName("포지션이 같으면 true 를 반환한다.")
+    @Test
+    void equalsPosition_whenTrue() {
+        String carName = "12345";
+        Car car = new Car(carName);
+        assertThat(car.equalsPosition(Car.INITIAL_POSITION))
+                .isTrue();
+    }
+
+    @DisplayName("포지션이 다르면 true 를 반환한다.")
+    @Test
+    void equalsPosition_whenFalse() {
+        String carName = "12345";
+        Car car = new Car(carName);
+        assertThat(car.equalsPosition(Car.INITIAL_POSITION + 1))
+                .isFalse();
+    }
 }

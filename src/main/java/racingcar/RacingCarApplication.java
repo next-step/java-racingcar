@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.Racing;
+import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.PrintView;
 
@@ -12,14 +12,14 @@ public class RacingCarApplication {
         String[] namesOfCars = inputView.getNamesOfCars();
         int numberOfTurns = inputView.getNumberOfTurns();
 
-        Racing racing = Racing.withCondition(namesOfCars, numberOfTurns);
+        RacingGame racingGame = RacingGame.withCondition(namesOfCars, numberOfTurns);
         printView.printResultTitle();
-        printView.printCarStatus(racing.getCars());
+        printView.printCarStatus(racingGame.getCars());
 
-        while (!racing.hasRaceEnd()) {
-            racing.race();
-            printView.printCarStatus(racing.getCars());
+        while (!racingGame.hasRaceEnd()) {
+            racingGame.race();
+            printView.printCarStatus(racingGame.getCars());
         }
-        printView.printWinners(racing.getWinners());
+        printView.printWinners(racingGame.getWinners());
     }
 }

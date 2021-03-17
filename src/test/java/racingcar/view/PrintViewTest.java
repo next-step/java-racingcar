@@ -3,7 +3,6 @@ package racingcar.view;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.MovingForwardCondition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,9 +24,9 @@ class PrintViewTest {
     void carToStatus() {
         String name = "car";
         Car car = new Car(name);
-        car.moveOrStay(MovingForwardCondition.THRESHOLD);
-        car.moveOrStay(MovingForwardCondition.THRESHOLD);
-        car.moveOrStay(MovingForwardCondition.THRESHOLD);
+        car.moveOrStay(Car.THRESHOLD);
+        car.moveOrStay(Car.THRESHOLD);
+        car.moveOrStay(Car.THRESHOLD);
         PrintView printView = new PrintView();
 
         String carStatus = printView.carToStatus(car);
