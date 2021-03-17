@@ -36,20 +36,5 @@ public class CarTest {
         assertThat(expectLocation).isEqualTo(NOW_LOCATION);
     }
 
-    @Test
-    @DisplayName("현재 위치를 표현하는 방법")
-    void getLocationToExpression() {
-        //given
-        final int NOW_LOCATION = 2;
-        Car car = new Car(NOW_LOCATION);
-        final String expectLocation = "--";
-
-        //when
-        String resultLocation = car.getLocationToExpression();
-
-        //then
-        assertThat(resultLocation).isEqualTo(expectLocation);
-    }
-
 
 }

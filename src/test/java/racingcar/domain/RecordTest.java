@@ -25,7 +25,6 @@ public class RecordTest {
             expectRecord.add(expectString);
         }
 
-
         //when
         Record resultRecord = new Record(cars);
 

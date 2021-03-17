@@ -1,18 +1,13 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Record {
-    private final List<String> record = new ArrayList<>();
+    private final Cars record;
 
     public Record(Cars cars) {
-        for (Car car : cars.getCars()) {
-            this.record.add(car.getLocationToExpression());
-        }
+        this.record = cars;
     }
 
-    public List<String> getRecord() {
+    public Cars getRecord() {
         return this.record;
     }
 

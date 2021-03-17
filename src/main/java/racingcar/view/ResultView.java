@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Record;
 import racingcar.domain.Records;
 
@@ -20,8 +22,17 @@ public class ResultView {
     }
 
     private static void printRecord(Record record) {
-        for (String output : record.getRecord()) {
-            System.out.println(output);
+        Cars cars = record.getRecord();
+        for (Car car : cars.getCars()) {
+            printLocationToExpression(car);
         }
+    }
+
+    private static void printLocationToExpression(Car car) {
+        String result = "";
+        for (int i = 0; i < car.getCurrentLocation(); i++) {
+            result = result.concat(LOCATION_EXPRESSION);
+        }
+        System.out.println(result);
     }
 }
