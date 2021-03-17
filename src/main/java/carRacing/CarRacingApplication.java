@@ -6,12 +6,10 @@ public class CarRacingApplication {
     public static void main(String[] args){
 
         InputView inputView = new InputView();
-        int carCount = inputView.getCarCount();
+        String carNames = inputView.getCarNames();
         int racingCount = inputView.getRacingCount();
-        CarRacing carRacing = new CarRacing(carCount);
+        CarRacing carRacing = new CarRacing(carNames);
 
         carRacing.startRacing(racingCount);
-
-
     }
 }

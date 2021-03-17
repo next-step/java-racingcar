@@ -2,9 +2,15 @@ package carRacing.model;
 
 
 public class Car {
+    private String carName;
     private int position;
 
     public Car(){
+        this("noName");
+    }
+
+    public Car(String carName) {
+        this.carName = carName;
         this.position = 0;
     }
 
@@ -15,7 +21,7 @@ public class Car {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new StringBuilder(carName + " : ");
         for (int i = 0; i < position; i++) {
             result.append("-");
         }
