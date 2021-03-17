@@ -3,27 +3,49 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 
-// 이렇게 하면 안되는 걸 알지만,,, 더 좋은 방법이 생각나지 않습니다 ㅠ
 public class Racing {
-    public static void racingCar(InputDto inputDto) {
-        int carCount = inputDto.getCarCount();
-        int tryCount = inputDto.getTryCount();
+    private final List<Car> carList;
+    private final InputDto inputDto;
 
-        List<Car> carList = new ArrayList<>();
+    public Racing(InputDto inputDto) {
+        this.carList = createCar(inputDto.getCarCount());
+        this.inputDto = inputDto;
+    }
 
+    private List<Car> createCar(int carCount) {
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carCount; ++i) {
-            carList.add(new Car());
+           cars.add(new Car());
         }
+        return cars;
+    }
 
+    public void racingCar() {
+        start(inputDto.getTryCount());
+
+    }
+
+    private void start(int tryCount) {
         for (int i = 0; i < tryCount; ++i) {
-            for (int j = 0; j < carList.size(); ++j) {
-                Car car = carList.get(j);
-
-                int randomNumber = RandomNumber.randomNumberGenerator();
-                car.carCanGoJudge(randomNumber);
-                ResultView.result(car);
-            }
-            System.out.println();
+            move();
         }
+    }
+
+    private void move() {
+        for (int i = 0; i < carList.size(); ++i) {
+            Car car = carList.get(i);
+            car.carCanGoJudge(RandomNumber.randomNumberGenerator());
+            print(car);
+        }
+
+        System.out.println();
+    }
+
+    private void print(Car car) {
+        ResultView.result(car);
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }
