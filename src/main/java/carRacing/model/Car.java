@@ -21,7 +21,7 @@ public class Car {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder(carName + " : ");
+        StringBuilder result = new StringBuilder(String.format("%5s : ",carName));
         for (int i = 0; i < position; i++) {
             result.append("-");
         }

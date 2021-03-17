@@ -38,7 +38,7 @@ public class CarRacing {
         checkIntParam(racingCount);
         System.out.println("실행 결과");
         for (int i = 0; i < racingCount; i++) {
-            System.out.printf("try : %2d%n", i + 1 );
+            System.out.printf("try%2d.%n", i + 1 );
             excuteCycle();
             outputView.printRacingResultExcutedCycle(cars);
         }
