@@ -8,13 +8,17 @@ public class Cars {
     //불변
     private final List<Car> cars;
 
-    public Cars(String carNames) {
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars of(String carNames){
         List<Car> cars = new ArrayList<>();
         for(String carName : carNames.split(StringValidator.CAR_NAME_SPLIT_DELIMITER)){
             Car car = new Car(carName);
             cars.add(car);
         }
-        this.cars = cars;
+        return new Cars(cars);
     }
     /**
      * 상태와 로직을 한곳에!
@@ -27,9 +31,11 @@ public class Cars {
     public List<Car> getCars(){
         return cars;
     }
+
     public List<Car> getWinners(){
         return selectMaxCar();
     }
+
     private List<Car> selectMaxCar(){
         int max = cars.stream()
                 .map(Car::getPosition)
