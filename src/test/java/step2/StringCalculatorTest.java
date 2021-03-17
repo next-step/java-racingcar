@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.utils.StringUtils;
 
 import java.util.stream.Stream;
 
@@ -35,8 +36,9 @@ public class StringCalculatorTest {
   void checkNotBlankString(final String input) {
     assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> {
-              if (StringUtils.isBlank(input))
+              if (StringUtils.isBlank(input)) {
                 throw new IllegalArgumentException();
+              }
             });
   }
 

@@ -5,10 +5,15 @@ import java.util.function.BiFunction;
 
 public enum Operation {
 
-    ADD("+", add())
-  , SUB("-", sub())
-  , DIV("/", div())
-  , MUL("*", mul());
+    ADDITION("+", (number1, number2) -> number1 + number2)
+  , SUBTRACTION("-", (number1, number2) -> number1 - number2)
+  , DIVISION("/", (number1, number2) -> {
+                                          if (number2 == 0) {
+                                            throw new IllegalArgumentException("Cannot be divided by 0.");
+                                          }
+                                          return number1 / number2;
+                                        })
+  , MULTIPLICATION("*", (number1, number2) -> number1 * number2);
 
   private final String symbol;
 
@@ -21,32 +26,13 @@ public enum Operation {
 
   public static Operation of(String param) {
     return Arrays.stream(Operation.values())
-            .filter(o -> o.symbol.equals(param))
+            .filter(operator -> operator.symbol.equals(param))
             .findFirst()
-            .orElseThrow(IllegalArgumentException::new);
+            .orElseThrow(() -> new IllegalArgumentException("Not a valid operator."));
   }
 
   public int calculation(int number1, int number2) {
     return formula.apply(number1, number2);
   }
 
-  private static BiFunction<Integer, Integer, Integer> add() {
-    return (number1, number2) -> number1 + number2;
-  }
-
-  private static BiFunction<Integer, Integer, Integer> sub() {
-    return (number1, number2) -> number1 - number2;
-  }
-
-  private static BiFunction<Integer, Integer, Integer> div() {
-    return (number1, number2) -> {
-      if (number2 == 0)
-        return 0;
-      return number1 / number2;
-    };
-  }
-
-  private static BiFunction<Integer, Integer, Integer> mul() {
-    return (number1, number2) -> number1 * number2;
-  }
 }

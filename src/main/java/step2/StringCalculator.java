@@ -1,24 +1,27 @@
 package step2;
 
+import racing.utils.StringUtils;
+
 public class StringCalculator {
 
   public int operation(String input) {
     checkNotBlankString(input);
 
-    final String[] INPUT_VALUES = StringUtils.split(input, " ");
+    final String[] inputValues = StringUtils.split(input, " ");
     
-    int result = toInt(INPUT_VALUES[0]);
-    for (int i = 0; i < INPUT_VALUES.length - 2; i += 2) {
-      String symbol = INPUT_VALUES[i + 1];
-      int number = toInt(INPUT_VALUES[i + 2]);
+    int result = toInt(inputValues[0]);
+    for (int i = 0; i < inputValues.length - 2; i += 2) {
+      String symbol = inputValues[i + 1];
+      int number = toInt(inputValues[i + 2]);
       result = calculation(symbol, result, number);
     }
     return result;
   }
 
   private void checkNotBlankString(String input) {
-    if (StringUtils.isBlank(input))
-      throw new IllegalArgumentException();
+    if (StringUtils.isBlank(input)) {
+      throw new IllegalArgumentException("Cannot use 0 or NULL value.");
+    }
   }
 
   private int toInt(String str) {
