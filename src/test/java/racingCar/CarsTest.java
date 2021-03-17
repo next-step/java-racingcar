@@ -4,20 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingCar.domain.Car;
-import racingCar.domain.Referee;
+import racingCar.domain.Cars;
 
-class RefereeTest {
-
-  private Referee referee;
-
-  @BeforeEach
-  void setUp() {
-    referee = new Referee();
-  }
+class CarsTest {
 
   @DisplayName("우승자 한명인 경우")
   @Test
@@ -25,9 +17,9 @@ class RefereeTest {
     Car a = new Car("a", 1);
     Car b = new Car("b", 2);
     Car c = new Car("c", 3);
-    List<Car> cars = Arrays.asList(a, b, c);
+    Cars cars = new Cars(Arrays.asList(a, b, c));
 
-    List<Car> winners = referee.determineWinners(cars);
+    List<Car> winners = cars.determineWinners();
     assertThat(winners).contains(c);
   }
 
@@ -38,10 +30,9 @@ class RefereeTest {
     Car b = new Car("b", 2);
     Car c = new Car("c", 4);
     Car d = new Car("c", 4);
-    List<Car> cars = Arrays.asList(a, b, c, d);
+    Cars cars = new Cars(Arrays.asList(a, b, c, d));
 
-    Referee referee = new Referee();
-    List<Car> winners = referee.determineWinners(cars);
+    List<Car> winners = cars.determineWinners();
     assertThat(winners).contains(c, d);
   }
 

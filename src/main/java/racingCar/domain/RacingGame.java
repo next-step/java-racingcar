@@ -15,26 +15,23 @@ public class RacingGame {
   }
 
   public List<Car> start(OutputView outputView) {
-    List<Car> cars = makeCars(carNames);
+    Cars cars = makeCars(carNames);
 
     outputView.printResult();
     for (int i = 0; i < tryCount; i++) {
-      cars.forEach(car -> {
-        car.move(new RandomMovable());
-        outputView.printCarDistance(car);
-      });
+      cars.move(outputView);
       outputView.printEmptyLine();
     }
 
-    return Referee.determineWinners(cars);
+    return cars.determineWinners();
   }
 
-  private List<Car> makeCars(String[] carNames) {
+  private Cars makeCars(String[] carNames) {
     List<Car> cars = new ArrayList<>();
     for (int i = 0; i < carNames.length; i++) {
       cars.add(new Car(carNames[i], 0));
     }
-    return cars;
+    return new Cars(cars);
   }
 
 
