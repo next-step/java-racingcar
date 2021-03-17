@@ -3,6 +3,7 @@ package step4.domain.car;
 import javafx.geometry.Pos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.domain.car.name.Name;
 import step4.domain.car.position.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,10 +32,25 @@ class CarTest {
         // when
         car.move(() -> true);
         Position position = car.position();
-        int actual =  position.position();
+        int actual = position.position();
 
         // then
         assertThat(actual).isEqualTo(1);
+    }
+
+    @DisplayName("Car 인스턴스 이름 여부 테스트")
+    @Test
+    void 이름() {
+        // given
+        String expected = "test";
+        Car car = new Car(expected);
+
+        // when
+        Name name = car.name();
+        String actual = name.name();
+
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 
 }
