@@ -52,7 +52,7 @@ public class Cars {
                 .get();
 
         return cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> car.equalsLocation(maxLocation))
                 .collect(Collectors.toList());
     }
 }

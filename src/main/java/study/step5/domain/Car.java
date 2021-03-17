@@ -33,4 +33,8 @@ public class Car {
     public void move(int location) {
         this.location += location;
     }
+
+    public boolean equalsLocation(int maxLocation) {
+        return location == maxLocation;
+    }
 }
