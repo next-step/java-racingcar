@@ -4,7 +4,7 @@ public class Position {
     private int position;
 
     public Position() {
-        position = 0;
+        this.position = 0;
     }
 
     public final void increase() {
