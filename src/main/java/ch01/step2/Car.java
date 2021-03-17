@@ -7,22 +7,16 @@ package ch01.step2;
  * -진행바
  */
 public class Car {
-    String name;
-    int progressCnt;
-    String progressBar ;
-
-    Car() {
-        this.progressBar = new String();
-    }
+    private String name;
+    private int progressCnt;
 
     public Car(String name) {
         this.name = name;
-        this.progressBar = new String();
+        progressCnt++;
     }
 
     public void move() {
         progressCnt++;
-        progressBar += "-";
     }
 
     public String getName() {
@@ -37,17 +31,16 @@ public class Car {
         this.progressCnt = progressCnt;
     }
 
-    public void setProgressBar(String progressBar) {
-        this.progressBar = progressBar;
-    }
-
-    public String getProgressBar() {
-        return progressBar;
-    }
-
     public int getProgressCnt() {
         return progressCnt;
     }
 
-
+    @Override
+    public String toString() {
+        String progressBar = new String();
+        for(int i=0;i<progressCnt;i++){
+            progressBar +="-";
+        }
+        return progressBar;
+    }
 }

@@ -8,12 +8,8 @@ public class RacingGame {
     int carCount = 0;
     Car[] cars;
 
-    public RacingGame() {
+    public RacingGame(InputData inputData) {
 
-    }
-
-    public RacingGame(InputView iv) {
-        InputData inputData = iv.getInputData();
 
         //입력값 setting
         this.attemptCount = inputData.getAttemptCount();
@@ -59,15 +55,12 @@ public class RacingGame {
         return cars;
     }
 
-    public void setCars(Car[] cars) {
-        this.cars = cars;
-    }
-
     public static void main(String[] args) {
         //Input data
         InputView iv = new InputView();
-        RacingGame racingGame = new RacingGame(iv);
+        InputData inputData = iv.getInputData();
 
+        RacingGame racingGame = new RacingGame(inputData);
 
         ResultView rv = new ResultView();
         //start racing game
@@ -78,9 +71,5 @@ public class RacingGame {
             //show a result of racing game
             rv.showResult(racingGame);
         }
-
-
     }
-
-
 }

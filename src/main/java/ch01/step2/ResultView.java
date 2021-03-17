@@ -27,7 +27,7 @@ public class ResultView {
 
     private void nullAndEmpty(Car car, int index) {
         if (car != null) {
-            System.out.println(car.progressBar);
+            System.out.println(car.toString());
         }
     }
 

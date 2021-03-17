@@ -1,6 +1,8 @@
 package test.ch01.step2;
 
 import ch01.step2.Car;
+import ch01.step2.InputData;
+import ch01.step2.InputView;
 import ch01.step2.RacingGame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,24 +19,22 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
+        int attemptCount = 5;
+        int carCount = 3;
 
-        racingGame = new RacingGame();
+        InputView iv = new InputView();
+        InputData inputData = new InputData(carCount,attemptCount);
+        racingGame = new RacingGame(inputData);
 
         cars = new Car[3];
         Car car1 = new Car("1");
         Car car2 = new Car("2");
         Car car3 = new Car("3");
 
-        car1.setProgressBar("-");
-        car2.setProgressBar("-");
-        car3.setProgressBar("-");
-
         cars[0] = car1;
         cars[1] = car2;
         cars[2] = car3;
 
-        int attemptCount = 5;
-        int carCount = 3;
     }
 
 
@@ -44,17 +44,13 @@ class RacingGameTest {
 
         //given
         int index = 2;
-        String[] beforeArr = new String[3];
 
         //when
         racingGame.moveCar(cars, index, true);
 
-        for (int i = 0; i < cars.length; i++) {
-            beforeArr[i] = cars[i].getProgressBar();
-        }
-        String[] expectArr = {"-", "-", "--"};
+
         //then
-        assertThat(beforeArr).isEqualTo(expectArr);
+        assertThat(cars[index].toString()).isEqualTo("-");
     }
 
     @ParameterizedTest
