@@ -8,9 +8,13 @@ public class Car{
     private Position position;
 
     public Car(String carName){
+        this(carName,new Position());
+    }
+
+    public Car(String carName,Position position){
         StringValidator.checkCarNameSyntax(carName);
         this.carName = carName;
-        this.position = new Position();
+        this.position = position;
     }
 
     public void move(MoveStrategy moveStrategy){

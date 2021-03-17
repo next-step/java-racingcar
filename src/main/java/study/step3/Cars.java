@@ -20,6 +20,10 @@ public class Cars {
         }
         return new Cars(cars);
     }
+
+    public static Cars of(List<Car> cars){
+        return new Cars(cars);
+    }
     /**
      * 상태와 로직을 한곳에!
      * */
@@ -33,15 +37,22 @@ public class Cars {
     }
 
     public List<Car> getWinners(){
-        return selectMaxCar();
+        return selectMaxCars();
     }
 
-    private List<Car> selectMaxCar(){
-        int max = cars.stream()
-                .map(Car::getPosition)
-                .reduce(0,Math::max);
-        return cars.stream().
-                filter(x-> x.getPosition() == max)
+    private List<Car> selectMaxCars(){
+        Position max = max();
+        return cars.stream()
+                .filter(x-> x.getPosition().equals(max))
                 .collect(Collectors.toList());
+    }
+
+    private Position max(){
+        Position max = new Position();
+        for(Car car : cars){
+            Position position = car.getPosition();
+            max = position.isMax(max);
+        }
+        return max;
     }
 }

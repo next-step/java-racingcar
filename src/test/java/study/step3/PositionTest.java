@@ -34,7 +34,7 @@ public class PositionTest {
     @DisplayName("포지션이 최대값인지 테스트")
     void positionMaxValueTest(){
         Position position = new Position(4);
-        assertThat(position.isMax(5)).isEqualTo(true);
+        assertThat(position.isMax(new Position(3))).isEqualTo(position);
     }
 
 }

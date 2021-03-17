@@ -22,6 +22,13 @@ public class Position {
         position = position + 1;
     }
 
+    public Position isMax(Position max) {
+        if(position <= max.position){
+            return max;
+        }
+        return this;
+    }
+
     public int getPosition() {
         return position;
     }
@@ -39,7 +46,4 @@ public class Position {
         return Objects.hash(position);
     }
 
-    public boolean isMax(int max) {
-        return position <= max;
-    }
 }
