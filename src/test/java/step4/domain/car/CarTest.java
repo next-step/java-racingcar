@@ -14,7 +14,7 @@ class CarTest {
         String name = "test";
 
         // when
-        Car car = new Car("test");
+        Car car = new Car(name);
 
         // test
         assertThat(car).isNotNull();
