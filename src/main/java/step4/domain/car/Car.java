@@ -24,11 +24,12 @@ public final class Car {
         }
     }
 
+    public final Name name() {
+        return name;
+    }
+
     public final Position position() {
         return position;
     }
 
-    public final Name name() {
-        return name;
-    }
 }
