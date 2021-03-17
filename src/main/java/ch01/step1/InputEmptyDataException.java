@@ -1,4 +1,4 @@
-package step1;
+package ch01.step1;
 
 /**
  * 비어 있는 문자일 경우
