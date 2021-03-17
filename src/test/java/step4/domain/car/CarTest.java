@@ -20,4 +20,18 @@ class CarTest {
         assertThat(car).isNotNull();
     }
 
+    @DisplayName("Car 인스턴스 이동 여부 테스트")
+    @Test
+    void 이동() {
+        // given
+        Car car = new Car("test");
+
+        // when
+        car.move(4);
+        int actual = car.position();
+
+        // test
+        assertThat(actual).isEqualTo(1);
+    }
+
 }
