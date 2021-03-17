@@ -1,5 +1,6 @@
-package carRacing.domain;
+package carRacing.view;
 
+import carRacing.domain.Car;
 import carRacing.dto.UserInput;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class View {
         System.out.println(mergedList + "가 최종 우승했습니다.");
     }
 
-    public String generateTrace(Car car){
+    public String generateTrace(Car car) {
         StringBuilder trace = new StringBuilder(car.getName() + " : ");
         for (int count = 0; count < car.getScore(); count++) {
             trace.append("-");

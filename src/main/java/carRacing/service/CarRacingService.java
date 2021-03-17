@@ -2,6 +2,7 @@ package carRacing.service;
 
 import carRacing.domain.*;
 import carRacing.dto.UserInput;
+import carRacing.view.View;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class CarRacingService {
         UserInput userInput = view.getUserInput();
         List<Car> cars = carFactory.initCars(userInput);
         view.declareRace();
-        game.runRace(userInput, cars);
+        cars = game.runRace(userInput, cars);
         view.printWinners(judge.findWinners(cars));
     }
 
