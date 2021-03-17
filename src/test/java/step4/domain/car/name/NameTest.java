@@ -27,6 +27,7 @@ class NameTest {
         // given
         String invalidName = "kwj1270";
 
+        // when and then
         assertThatThrownBy(() -> {
             new Name(invalidName);
         }).isInstanceOf(IllegalArgumentException.class)
