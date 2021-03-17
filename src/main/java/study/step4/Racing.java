@@ -1,6 +1,6 @@
 package study.step4;
 
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class Racing {
 
@@ -24,6 +24,10 @@ public class Racing {
         return cars;
     }
 
+    public int getAttemptCount() {
+        return attemptCount;
+    }
+
     public boolean isFinished() {
         return attemptCount >= attemptNumber;
     }
@@ -33,15 +37,7 @@ public class Racing {
         cars.move(moveBehavior);
     }
 
-    public String getWinners() {
-        int maxLocation = cars.stream()
-                .map(car -> car.getLocation())
-                .max(Integer::compare)
-                .get();
-
-        return cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
-                .map(car -> car.getCarName())
-                .collect(Collectors.joining(RacingConstant.COMMA));
+    public List<Car> getWinners() {
+        return cars.getWinners();
     }
 }

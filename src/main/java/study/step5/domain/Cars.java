@@ -1,4 +1,4 @@
-package study.step4;
+package study.step5.domain;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,9 +7,10 @@ import java.util.stream.Stream;
 
 public class Cars {
 
-    private List<Car> cars;
+    private static final int MOVE_FORWARD_ONE_LOCATION = 1;
+    private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    private Cars(final List<Car> cars) {
         this.cars = cars;
     }
 
@@ -20,20 +21,8 @@ public class Cars {
                         .collect(Collectors.toList()));
     }
 
-    public static Cars of(List<Car> cars) {
+    public static Cars of(final List<Car> cars) {
         return new Cars(cars);
-    }
-
-    public void move(MoveBehavior moveBehavior) {
-        for (Car car : cars) {
-            delegateMove(moveBehavior, car);
-        }
-    }
-
-    private void delegateMove(MoveBehavior moveBehavior, Car car) {
-        if (moveBehavior.isMoved()) {
-            car.move();
-        }
     }
 
     public int getSize() {
@@ -44,6 +33,18 @@ public class Cars {
         return cars.stream();
     }
 
+    public void move(MoveBehavior moveBehavior) {
+        for (Car car : cars) {
+            delegateMove(moveBehavior, car);
+        }
+    }
+
+    private void delegateMove(MoveBehavior moveBehavior, Car car) {
+        if (moveBehavior.isMoved()) {
+            car.move(MOVE_FORWARD_ONE_LOCATION);
+        }
+    }
+
     public List<Car> getWinners() {
         int maxLocation = cars.stream()
                 .map(car -> car.getLocation())
@@ -51,7 +52,7 @@ public class Cars {
                 .get();
 
         return cars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> car.equalsLocation(maxLocation))
                 .collect(Collectors.toList());
     }
 }
