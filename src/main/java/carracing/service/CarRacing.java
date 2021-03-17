@@ -1,9 +1,7 @@
 package carracing.service;
 
 import carracing.constants.CarRacingConstant;
-import carracing.domain.Car;
 import carracing.domain.Cars;
-import carracing.domain.Winners;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
 import carracing.service.dto.RoundResult;
@@ -46,7 +44,7 @@ public class CarRacing {
     }
 
     public RacingResult executeRacing() {
-        return new RacingResult(executeAllRound(), chooseWinner());
+        return new RacingResult(executeAllRound(), cars.winners());
     }
 
     private List<RoundResult> executeAllRound() {
@@ -63,43 +61,7 @@ public class CarRacing {
 
     private List<RacingScore> executeScoring(Cars cars) {
         cars.driveAll();
-        return cars.inquiryRacingScores();
+        return cars.racingScoreList();
     }
 
-    private Winners chooseWinner() {
-        int winnerScore = 0;
-        List<Car> winnerList = new ArrayList<>();
-        for (Car car : cars.getCarList()) {
-            RacingScore racingScore = car.inquiryRacingScore();
-            winnerList  = decideWinnerList(winnerScore, winnerList, car);
-            winnerScore = decideWinnerScore(winnerScore, racingScore);
-        }
-        return new Winners(winnerList);
-    }
-
-    private List<Car> decideWinnerList(int currentWinnerScore, List<Car> winnerList, Car car) {
-        int score = car.inquiryRacingScore().getScore();
-        if(currentWinnerScore < score) {
-            return replaceWinner(winnerList, car);
-        }
-        if(currentWinnerScore == score) {
-            return addWinner(winnerList, car);
-        }
-        return winnerList;
-    }
-
-    private List<Car> replaceWinner(List<Car> winnerList, Car car) {
-        winnerList.clear();
-        winnerList.add(car);
-        return winnerList;
-    }
-
-    private List<Car> addWinner(List<Car> winnerList, Car car) {
-        winnerList.add(car);
-        return winnerList;
-    }
-
-    private int decideWinnerScore(int currentWinnerScore, RacingScore racingScore) {
-        return Math.max(currentWinnerScore, racingScore.getScore());
-    }
 }

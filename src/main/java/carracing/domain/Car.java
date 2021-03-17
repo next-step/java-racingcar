@@ -46,7 +46,7 @@ public class Car {
         mileage+=engine.drive();
     }
 
-    public RacingScore inquiryRacingScore() {
+    public RacingScore racingScore() {
         return new RacingScore(name, mileage);
     }
 }

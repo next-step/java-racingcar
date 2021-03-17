@@ -17,7 +17,7 @@ public class Engine {
     private static final int MOVE = 1;
     private static final int STOP = 0;
 
-    private Random random;
+    private final Random random;
 
     public Engine(Random random) {
         this.random = random;

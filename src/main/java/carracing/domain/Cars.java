@@ -24,10 +24,6 @@ public class Cars {
 
     private final List<Car> carList = new ArrayList<>();
 
-    public List<Car> getCarList() {
-        return carList;
-    }
-
     public Cars(String carNames) {
         validateCarNames(carNames);
         validateCarNameArray(carNames.split(CAR_NAMES_DELIMITER));
@@ -58,11 +54,41 @@ public class Cars {
         }
     }
 
-    public List<RacingScore> inquiryRacingScores() {
+    public List<Car> carList() {
+        return carList;
+    }
+
+    public List<RacingScore> racingScoreList() {
         List<RacingScore> racingScoreList = new ArrayList<>();
         for (Car car : carList) {
-            racingScoreList.add(car.inquiryRacingScore());
+            racingScoreList.add(car.racingScore());
         }
         return racingScoreList;
+    }
+
+    public int maxScore() {
+        int maxScore = 0;
+        for (Car car : carList) {
+            maxScore = Math.max(maxScore, car.racingScore().getScore());
+        }
+        return maxScore;
+    }
+
+    public Winners winners() {
+        return new Winners(chooseWinners());
+    }
+
+    private List<Car> chooseWinners() {
+        List<Car> winnerList = new ArrayList<>();
+        for (Car car : carList) {
+            addWinner(car, winnerList);
+        }
+        return winnerList;
+    }
+
+    private void addWinner(Car car, List<Car> winnerList) {
+        if (car.racingScore().getScore() == maxScore()) {
+            winnerList.add(car);
+        }
     }
 }

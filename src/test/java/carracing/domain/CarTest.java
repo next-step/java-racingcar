@@ -87,7 +87,7 @@ class CarTest {
     public void car_nameWithBlank() {
         // given
         Car car = new Car(" aaaaa   ");
-        String carName = car.inquiryRacingScore().getCarName();
+        String carName = car.racingScore().getCarName();
 
         // when then
         assertThat(5).isEqualTo(carName.length());
@@ -98,12 +98,12 @@ class CarTest {
     void registerRacingScore() {
         // given
         Cars cars = new Cars("pobi,crong,honux");
-        List<RacingScore> racingScores = cars.inquiryRacingScores();
+        List<RacingScore> racingScores = cars.racingScoreList();
 
         // when
         cars.driveAll();
 
         // then
-        assertThat(cars.getCarList().size()).isEqualTo(racingScores.size());
+        assertThat(cars.carList().size()).isEqualTo(racingScores.size());
     }
 }

@@ -23,6 +23,6 @@ public class CarRacingController {
 
     public CarRacingResponse executeCarRacing(CarRacingRequest carRacingRequest) {
         RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
-        return new CarRacingResponse(racingResult.getRoundResultList(), racingResult.getWinners().getNameList());
+        return new CarRacingResponse(racingResult.getRoundResultList(), racingResult.getWinners().nameList());
     }
 }

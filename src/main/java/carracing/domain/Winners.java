@@ -11,14 +11,14 @@ public class Winners {
         this.carList = carList;
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public int count() {
+        return carList.size();
     }
 
-    public List<String> getNameList() {
+    public List<String> nameList() {
         List<String> nameList = new ArrayList<>();
         for (Car car : carList) {
-            nameList.add(car.inquiryRacingScore().getCarName());
+            nameList.add(car.racingScore().getCarName());
         }
         return nameList;
     }
