@@ -23,6 +23,7 @@ public class InputTest {
     }
 
     @DisplayName("입력 값이 양수이면 true 반환")
+    @Test
     void inputIsPlusAndTrue() {
         assertTrue(InputView.isValidInput(3, 5));
     }
