@@ -4,6 +4,9 @@ import step4.model.Cars;
 import step4.util.MsgConstants;
 import step4.util.VariableConstants;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResultView {
 
   public void preRunScript(Cars cars) {
@@ -20,9 +23,17 @@ public class ResultView {
     System.out.println(stringBuilder.toString());
   }
 
-  public void afterRunScript(String champs){
+  public void afterRunScript(List<String> champs){
     StringBuilder stringBuilder = new StringBuilder();
-
+    if(champs.size()==0) {
+      System.out.println(MsgConstants.RESULT_PRINT_AFTER_RUN_NO_CHAMPS.getMessage());
+      return;
+    }
+    for(int i=0; i<champs.size()-1; i++){
+      stringBuilder.append(champs.get(i)).append(VariableConstants.VARIABLE_NAME_SPLIT.getValue()).append(" ");
+    }
+    stringBuilder.append(champs.get(champs.size()-1));
+    System.out.println(stringBuilder.toString() + MsgConstants.RESULT_PRINT_AFTER_RUN.getMessage());
   }
 
   public void error(String message) {

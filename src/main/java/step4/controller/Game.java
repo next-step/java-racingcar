@@ -8,6 +8,7 @@ import step4.util.VariableConstants;
 import step4.view.ResultView;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Game {
   Cars cars;
@@ -23,7 +24,8 @@ public class Game {
     boolean initResult = init(carNames);
     if(!initResult) return false;
 
-    return runCycle(attempt);
+    runCycle(attempt);
+    return afterRun();
   }
 
   public boolean init(String carNames) {
@@ -46,6 +48,12 @@ public class Game {
       cars.runCycle();
       resultView.printResult(cars);
     }
+    return true;
+  }
+
+  private boolean afterRun(){
+    List<String> champions = cars.calcChampions();
+    resultView.afterRunScript(champions);
     return true;
   }
 

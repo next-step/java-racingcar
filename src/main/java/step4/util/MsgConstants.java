@@ -7,7 +7,8 @@ public enum MsgConstants {
   INPUT_ERROR_CAR_NAMES("입력된 차량들의 이름을 확인하세요. 1~5자 허용입니다."),
   INPUT_ERROR_CAR_FULL_NAMES("입력된 차량들의 전체 이름이 잘못 되었습니다."),
   RESULT_PRINT_PRE_RUN("실행 결과"),
-  RESULT_PRINT_AFTER_RUN("가 최종 우승했습니다.")
+  RESULT_PRINT_AFTER_RUN("가 최종 우승했습니다."),
+  RESULT_PRINT_AFTER_RUN_NO_CHAMPS("우승한 사람이 없습니다.")
   ;
 
   private final String msg;
