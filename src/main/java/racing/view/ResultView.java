@@ -18,9 +18,9 @@ public class ResultView {
   public static void print(List<RacingRound> racingRounds) {
     racingRounds.stream()
             .peek(round -> System.out.println(ROUND_START_ALARM))
-            .map(RacingRound::getRacingCars)
+            .map(RacingRound::racingCars)
             .flatMap(Collection::stream)
-            .forEach(racingCar -> System.out.println(String.format(ROUND_STATUS_FORMAT, toCarNameString(racingCar.getCarNumber()), toPositionString(racingCar.getPosition()))));
+            .forEach(racingCar -> System.out.println(String.format(ROUND_STATUS_FORMAT, toCarNameString(racingCar.carNumber()), toPositionString(racingCar.position()))));
   }
 
   private static String toPositionString(int position) {

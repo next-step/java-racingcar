@@ -12,39 +12,28 @@ import java.util.List;
 public class RacingCarGame {
 
   private final RacingCarGamePlayInfo info;
-  private MoveRule moveRule;
+  private final MoveRule moveRule;
 
-  private RacingCarGame(RacingCarGamePlayInfo info) {
+  public RacingCarGame(RacingCarGamePlayInfo info, MoveRule moveRule) {
     this.info = info;
-  }
-
-  public static RacingCarGame newGame(RacingCarGamePlayInfo info) {
-    return new RacingCarGame(info);
-  }
-
-  public RacingCarGame setupRule(MoveRule moveRule) {
     this.moveRule = moveRule;
-    return this;
   }
 
-  public List<RacingRound> play() {
+  public static RacingCarGame newGame(RacingCarGamePlayInfo info, MoveRule moveRule) {
+    return new RacingCarGame(info, moveRule);
+  }
+
+  public List<RacingRound> endGame() {
     int totalRound = info.getTotalRound();
     List<RacingCar> racingCars = info.getPlayers();
 
     List<RacingRound> racingRounds = new ArrayList<>(totalRound);
     for (int i = 0; i < totalRound; i++) {
       for (RacingCar car : racingCars) {
-        moveOrStop(moveRule, car);
+        car.move(moveRule);
       }
-      racingRounds.add(RacingRound.createRecord(racingCars));
+      racingRounds.add(RacingRound.newRecord(racingCars));
     }
     return racingRounds;
   }
-
-  private void moveOrStop(MoveRule moveRule, RacingCar car) {
-    if (moveRule.isPossibleMove()) {
-      car.move();
-    }
-  }
-
 }

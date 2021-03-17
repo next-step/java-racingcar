@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.rule.MoveRule;
+
 public class RacingCar {
 
   private int carNumber;
@@ -14,23 +16,25 @@ public class RacingCar {
     this.position = position;
   }
 
-  public static RacingCar createNew(int carNumber) {
+  public static RacingCar newCar(int carNumber) {
     return new RacingCar(carNumber, 0);
   }
 
-  public static RacingCar copy(RacingCar racingCar) {
-    return new RacingCar(racingCar.getCarNumber(), racingCar.getPosition());
+  public static RacingCar copyCar(RacingCar racingCar) {
+    return new RacingCar(racingCar.carNumber(), racingCar.position());
   }
 
-  public int getCarNumber() {
+  public int carNumber() {
     return this.carNumber;
   }
 
-  public int getPosition() {
+  public int position() {
     return position;
   }
 
-  public void move() {
-    this.position++;
+  public void move(MoveRule moveRule) {
+    if (moveRule.possibleMove()) {
+      this.position++;
+    }
   }
 }

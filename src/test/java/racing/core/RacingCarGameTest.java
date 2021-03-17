@@ -22,9 +22,8 @@ class RacingCarGameTest {
     RacingCarGamePlayInfo info = RacingCarGamePlayInfo.newPlayInfo(totalPlayer, totalRound);
 
     // when
-    List<RacingRound> result = RacingCarGame.newGame(info)
-            .setupRule(() -> true)
-            .play();
+    List<RacingRound> result = RacingCarGame.newGame(info, () -> true)
+            .endGame();
 
     // then
     assertThat(result).hasSize(totalRound);

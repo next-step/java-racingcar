@@ -13,7 +13,7 @@ public class RacingCarGamePlayInfo {
 
   private RacingCarGamePlayInfo(int totalPlayer, int totalRound) {
     this.players = IntStream.range(0, totalPlayer)
-            .mapToObj(RacingCar::createNew)
+            .mapToObj(RacingCar::newCar)
             .collect(Collectors.toList());
     ;
     this.totalRound = totalRound;

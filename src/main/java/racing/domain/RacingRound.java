@@ -10,7 +10,11 @@ public class RacingRound {
   private RacingRound() {
   }
 
-  public static RacingRound createRecord(List<RacingCar> racingCars) {
+  public RacingRound(List<RacingCar> racingCars) {
+    this.racingCars = racingCars;
+  }
+
+  public static RacingRound newRecord(List<RacingCar> racingCars) {
     RacingRound round = new RacingRound();
     round.record(racingCars);
     return round;
@@ -23,10 +27,10 @@ public class RacingRound {
   }
 
   private void capture(RacingCar racingCar) {
-    getRacingCars().add(RacingCar.copy(racingCar));
+    racingCars().add(RacingCar.copyCar(racingCar));
   }
 
-  public List<RacingCar> getRacingCars() {
+  public List<RacingCar> racingCars() {
     if (this.racingCars == null) {
       this.racingCars = new ArrayList<>();
     }
