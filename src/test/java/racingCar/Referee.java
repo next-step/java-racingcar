@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Referee {
 
-  public List<Car> determineWinners(List<Car> cars) {
+  public static List<Car> determineWinners(List<Car> cars) {
     int max = getMaxPosition(cars);
 
     return cars.stream()
@@ -13,7 +13,7 @@ public class Referee {
         .collect(Collectors.toList());
   }
 
-  private int getMaxPosition(List<Car> cars) {
+  private static int getMaxPosition(List<Car> cars) {
     return cars.stream()
         .mapToInt(Car::getPosition)
         .max()

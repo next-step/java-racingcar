@@ -24,7 +24,8 @@ public class RacingGame {
       });
       outputView.printEmptyLine();
     }
-    return cars;
+
+    return Referee.determineWinners(cars);
   }
 
   private List<Car> makeCars(String[] carNames) {
