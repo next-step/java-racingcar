@@ -27,7 +27,7 @@ class CarTest {
         Car car = new Car("test");
 
         // when
-        car.move(4);
+        car.move(() -> true);
         int actual = car.position();
 
         // test

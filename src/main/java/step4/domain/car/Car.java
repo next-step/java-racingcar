@@ -1,6 +1,7 @@
 package step4.domain.car;
 
 import step4.domain.car.name.Name;
+import step4.startegy.Move;
 
 public final class Car {
 
@@ -16,8 +17,8 @@ public final class Car {
         this.position = 0;
     }
 
-    public final void move(int activation) {
-        if (activation >= 4 && activation <= 9) {
+    public final void move(Move move) {
+        if (move.isMovable()) {
             position++;
         }
     }
