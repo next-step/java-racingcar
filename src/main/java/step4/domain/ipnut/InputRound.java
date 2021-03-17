@@ -1,4 +1,11 @@
 package step4.domain.ipnut;
 
-public class InputRound {
+public final class InputRound {
+
+    private final int round;
+
+    public InputRound(int round) {
+        this.round = round;
+    }
+
 }
