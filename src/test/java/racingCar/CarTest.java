@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingCar.domain.Car;
+import racingCar.domain.OverCarNameLengthException;
 
 public class CarTest {
 
