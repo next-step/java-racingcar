@@ -17,6 +17,7 @@ public class GameManager {
         RacingGame game = new RacingGame(carCount, roundCount);
         List<Round> rounds = game.runGame(new RandomMoveStrategy());
         ResultView resultView = new ResultView(rounds);
-        resultView.printResult();
+        ResultView.printResultMessage();
+        resultView.printGameResult();
     }
 }
