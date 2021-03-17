@@ -35,14 +35,13 @@
         - Car();
       - method
         - int move(MoveStrategy moveStrategy);
-  - collection
-    - Participants.java
+    - Name.java
       - field
-        - List<String> names;
+        - String names;
       - constructor
-        - Participants(String participants);
+        - Name(String name);
       - method
-        - List<String> getList();
+        - String name();
     - Cars.java
       - field
         - List<Car> cars;
