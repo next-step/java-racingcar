@@ -12,7 +12,7 @@ public class CarMoveTest {
     void 전진테스트(){
         Car car = new Car("test");
         car.move(() -> true);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.position()).isEqualTo(2);
     }
 
     @Test
@@ -20,6 +20,6 @@ public class CarMoveTest {
     void 전진조건테스트(){
         Car car = new Car("test");
         car.move(() -> false);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.position()).isEqualTo(1);
     }
 }

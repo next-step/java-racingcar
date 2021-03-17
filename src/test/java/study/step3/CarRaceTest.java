@@ -16,7 +16,7 @@ public class CarRaceTest {
         Car car3 = new Car("rc33",new Position(2));
         Cars cars = Cars.of(Arrays.asList(car1,car2,car3));
 
-        assertThat(cars.getWinners().
+        assertThat(cars.winners().
                 stream().
                 map(car -> car.getCarName())
                 ).containsOnly("rc11","rc33");

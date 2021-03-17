@@ -36,22 +36,22 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getWinners(){
-        return selectMaxCars();
+    public List<Car> winners(){
+        return maxCars();
     }
 
-    private List<Car> selectMaxCars(){
+    private List<Car> maxCars(){
         Position max = max();
         return cars.stream()
-                .filter(x-> x.getPosition().equals(max))
+                .filter(x-> x.position().equals(max))
                 .collect(Collectors.toList());
     }
 
     private Position max(){
         Position max = new Position();
         for(Car car : cars){
-            Position position = car.getPosition();
-            max = position.isMax(max);
+            Position position = car.position();
+            max = position.max(max);
         }
         return max;
     }
