@@ -16,4 +16,18 @@ class PositionTest {
         // then
         assertThat(position).isNotNull();
     }
+
+    @DisplayName("Position 인스턴스 증가 여부 테스트")
+    @Test
+    void 증가(){
+        // given
+        Position position = new Position();
+
+        // when
+        position.increase();
+        int actual = position.position();
+
+        // then
+        assertThat(actual).isEqualTo(1);
+    }
 }
