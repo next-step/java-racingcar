@@ -4,14 +4,49 @@
 
 - ## winner
   - Main.java
-  - type
+  - type / 테스트 불가
     - MoveStrategy.java
+      - method
+        - Boolean move();
+    - RaceMove.java
+      - field
+        - MAX_NUM
+        - STANDARD_NUM
+      - method
+        - Boolean move();
   - common
     - InputView.java
     - ResultView.java
-  - service
+  - service / 테스트
     - Race.java
+      - field
+        - Cars cars;
+        - Participants participants
+      - constructor
+        - Race(Participants participants, int round);
+      - method
+        - List<Cars> start();
+        - Cars roundCheck(Cars cars);
     - Car.java
-    - RaceMove.java
+      - field
+        - String name
+        - int distance
+      - constructor
+        - Car();
+      - method
+        - int move(MoveStrategy moveStrategy);
   - collection
+    - Participants.java
+      - field
+        - List<String> names;
+      - constructor
+        - Participants(String participants);
+      - method
+        - List<String> getList();
     - Cars.java
+      - field
+        - List<Car> cars;
+      - constructor
+        - Cars();
+      - method
+        - Cars move();
