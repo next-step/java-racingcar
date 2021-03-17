@@ -1,4 +1,4 @@
-package step4;
+package step4.model;
 
 public class Car implements Comparable<Car>{
 
@@ -14,10 +14,10 @@ public class Car implements Comparable<Car>{
         this.distance += moveStrategy.getDistance();
     }
 
-    int getDistance(){
+    public int getDistance(){
         return this.distance;
     }
-    String getName(){
+    public String getName(){
         return this.name;
     }
 

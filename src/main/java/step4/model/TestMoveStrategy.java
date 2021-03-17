@@ -1,4 +1,4 @@
-package step4;
+package step4.model;
 
 public class TestMoveStrategy implements MoveStrategy {
     @Override

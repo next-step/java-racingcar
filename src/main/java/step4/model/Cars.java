@@ -1,4 +1,4 @@
-package step4;
+package step4.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ public class Cars {
 
     private List<Car> cars;
 
-    Cars(String[] carNames){
+    public Cars(String[] carNames){
         cars = new ArrayList<>();
         for(int i = 0; i < carNames.length; i++){
             Car car = new Car(carNames[i]);
@@ -15,21 +15,21 @@ public class Cars {
         }
     }
 
-    void move(MoveStrategy moveStrategy){
+    public void move(MoveStrategy moveStrategy){
         for(int i = 0; i < cars.size(); i++){
             cars.get(i).move(moveStrategy);
         }
     }
 
-    Car getCar(int i){
+    public Car getCar(int i){
         return cars.get(i);
     }
 
-    int getNumberOfCars(){
+    public int getNumberOfCars(){
         return cars.size();
     }
 
-    String[] getWinners(){
+    public String[] getWinners(){
         int farthestDistance = getFarthestDistance();
         return cars.stream()
                 .filter(car -> car.getDistance() == farthestDistance)

@@ -1,4 +1,6 @@
-package step4;
+package step4.view;
+
+import step4.model.CarRacingConstant;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
@@ -6,7 +8,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    static int getNumberInput(){
+    public static int getNumberInput(){
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
         checkInputNull(input);
@@ -21,7 +23,7 @@ public class InputView {
         }
     }
 
-    static String getInput(){
+    public static String getInput(){
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         checkInputNull(input);
@@ -34,7 +36,7 @@ public class InputView {
         }
     }
 
-    static String[] splitInput(String input){
+    public static String[] splitInput(String input){
         String[] carNames = Arrays.stream(input.split(CarRacingConstant.COMMA)).map(String::trim).toArray(String[]::new);
         checkCarNamesLength(carNames);
         return carNames;
