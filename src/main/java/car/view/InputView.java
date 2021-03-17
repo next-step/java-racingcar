@@ -1,4 +1,4 @@
-package car;
+package car.view;
 
 import car.model.UserInput;
 
@@ -13,6 +13,8 @@ public class InputView {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         int totalRound = scanner.nextInt();
 
+        System.out.println();
+        System.out.println("실행 결과");
         return new UserInput(carCount, totalRound);
     }
 }

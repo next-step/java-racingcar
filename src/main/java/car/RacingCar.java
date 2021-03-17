@@ -3,9 +3,10 @@ package car;
 import java.util.Random;
 
 public class RacingCar {
+    public static final int MOVE_THRESHOLD = 4;
+
     private final Random random = new Random();
     private int moveCount;
-
 
     public void tryMoving() {
         if (canMove()) {
@@ -14,7 +15,7 @@ public class RacingCar {
     }
 
     private boolean canMove() {
-        return random.nextInt(10) >= CarRacingGame.MOVE_THRESHOLD;
+        return random.nextInt(10) >= MOVE_THRESHOLD;
     }
 
     public int getMoveCount() {

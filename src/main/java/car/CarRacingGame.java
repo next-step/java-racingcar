@@ -1,12 +1,13 @@
 package car;
 
 import car.model.UserInput;
+import car.view.InputView;
+import car.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacingGame {
-    public static final int MOVE_THRESHOLD = 4;
 
     private List<RacingCar> racingCars = new ArrayList<>();
 
@@ -17,9 +18,8 @@ public class CarRacingGame {
 
         for (int i = 0; i < input.totalRound; ++i) {
             runRound();
+            ResultView.printStatus(racingCars);
         }
-
-        // todo: print result
     }
 
     private void addCars(int carCount) {
