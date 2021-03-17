@@ -1,9 +1,7 @@
 package step3.study.domain;
 
 import step3.study.dto.RequestRacingDTO;
-import step3.study.dto.ResponseRacingDTO;
 import step3.study.util.NumberGenerator;
-import step3.study.util.RandomGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,16 +17,14 @@ public class Drivers {
         List<String> driverNames = requestRacingDTO.getDriverNames();
 
         return driverNames.stream()
-                .map(driverName -> new Driver(driverName, new Car()))
+                .map(driverName -> new Driver(driverName, new Car(new Position(0))))
                 .collect(Collectors.toList());
     }
 
-    public ResponseRacingDTO moveCars(NumberGenerator numberGenerator) {
+    public void moveCars(NumberGenerator numberGenerator) {
         for (Driver driver : drivers) {
-            int number = numberGenerator.createNumber();
-            driver.moveCar(number);
+            driver.moveCar(numberGenerator);
         }
-        return new ResponseRacingDTO(this);
     }
 
     public List<Driver> getDriverList() {
@@ -36,19 +32,20 @@ public class Drivers {
     }
 
     public List<String> getWinnerNames() {
-        int maxDistance = getMaxDistance();
+        int maxPosition = getMaxPosition();
         return this.drivers
                 .stream()
-                .filter(driver -> driver.getDistance().length() == maxDistance)
-                .map(Driver::getName)
+                .filter(driver -> driver.position() == maxPosition)
+                .map(Driver::name)
                 .collect(Collectors.toList());
     }
 
-    public int getMaxDistance() {
+    private int getMaxPosition() {
         return this.drivers
                 .stream()
-                .mapToInt(driver -> driver.getDistance().length())
+                .mapToInt(Driver::position)
                 .max()
                 .getAsInt();
+
     }
 }

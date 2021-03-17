@@ -17,10 +17,17 @@ public class ResponseRacingDTO {
         return drivers;
     }
 
-    public List<String> getNameAndNowPosition(){
+    public List<String> getNames() {
         return drivers.getDriverList()
                 .stream()
-                .map(Driver::getNameAndNowPosition)
+                .map(Driver::name)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getPosition() {
+        return drivers.getDriverList()
+                .stream()
+                .map(Driver::position)
                 .collect(Collectors.toList());
     }
 }

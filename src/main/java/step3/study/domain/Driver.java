@@ -1,5 +1,7 @@
 package step3.study.domain;
 
+import step3.study.util.NumberGenerator;
+
 public class Driver {
     private final String name;
     private final Car car;
@@ -9,19 +11,15 @@ public class Driver {
         this.car = car;
     }
 
-    public void moveCar(int number) {
-        car.move(number);
+    public void moveCar(NumberGenerator numberGenerator) {
+        car.move(numberGenerator);
     }
 
-    public String getName() {
+    public int position() {
+        return car.position();
+    }
+
+    public String name() {
         return name;
-    }
-
-    public String getDistance() {
-        return car.getDistance();
-    }
-
-    public String getNameAndNowPosition() {
-        return this.name + " : " + car.getDistance();
     }
 }

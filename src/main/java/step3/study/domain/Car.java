@@ -1,24 +1,25 @@
 package step3.study.domain;
 
+import step3.study.util.NumberGenerator;
+
 public class Car {
-    private String distance = "";
+    private Position position;
     private static final int MOVE_CONDITION = 4;
 
     public Car() {
     }
 
-    public Car(String distance) {
-        this.distance = distance;
+    public Car(Position position) {
+        this.position = position;
     }
 
-    public String move(int randomNumber) {
-        if (MOVE_CONDITION <= randomNumber) {
-            this.distance += "-";
+    public void move(NumberGenerator numberGenerator) {
+        if (MOVE_CONDITION <= numberGenerator.createNumber()) {
+            position.increase();
         }
-        return this.distance;
     }
 
-    public String getDistance() {
-        return this.distance;
+    public int position() {
+        return position.getPosition();
     }
 }

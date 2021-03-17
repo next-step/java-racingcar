@@ -4,6 +4,7 @@ import step3.study.domain.Drivers;
 import step3.study.domain.Round;
 import step3.study.dto.RequestRacingDTO;
 import step3.study.dto.ResponseRacingDTO;
+import step3.study.dto.ResponseWinnerDTO;
 import step3.study.util.RandomGenerator;
 import step3.study.util.StringUtils;
 import step3.study.util.Validator;
@@ -32,39 +33,44 @@ public class RacingGameController {
     }
 
     private void startRacingGameForRound(RequestRacingDTO requestRacingDTO, Drivers drivers) {
-        ResponseRacingDTO responseRacingDTO = null;
 
-        int round = requestRacingDTO.getRound().getRound();
-        for (int i = 0; i < round; round--) {
-            responseRacingDTO = exportResponseRacingDto(drivers);
+        Round round = requestRacingDTO.getRound();
+        while (round.racing()) {
+            drivers.moveCars(new RandomGenerator(new Random()));
+            ResponseRacingDTO responseRacingDTO = exportResponseRacingDto(drivers);
             printRacingGameResult(responseRacingDTO);
+            round.next();
         }
-        printRacingGameWinners(responseRacingDTO);
+        printRacingGameWinners(exportResponseRacingDto(drivers));
     }
 
     private void printRacingGameWinners(ResponseRacingDTO responseRacingDTO) {
         Drivers drivers = responseRacingDTO.getDrivers();
-        List<String> winnerNames = drivers.getWinnerNames();
-        resultView.printRacingGameWinners(winnerNames);
+        ResponseWinnerDTO responseWinnerDTO = new ResponseWinnerDTO(drivers.getWinnerNames());
+        resultView.racingGameWinners(responseWinnerDTO);
     }
 
     private void printRacingGameResult(ResponseRacingDTO responseRacingDTO) {
-        resultView.printRacingGameResult(responseRacingDTO);
+        resultView.print(responseRacingDTO);
     }
 
     public ResponseRacingDTO exportResponseRacingDto(Drivers drivers) {
-        return drivers.moveCars(new RandomGenerator(new Random()));
+        return new ResponseRacingDTO(drivers);
     }
 
     public RequestRacingDTO exportRequestDtoFromInputView() {
-        String driverName = inputView.inputDriverNames(scanner);
-        List<String> driverNames = null;
-        if (Validator.isNotEmpty(driverName)) {
-            driverNames = new ArrayList<>(Arrays.asList(StringUtils.split(driverName, ",")));
-        }
-
+        List<String> driverNames = gerDriverNames();
         Round round = new Round(inputView.inputRound(scanner));
 
         return new RequestRacingDTO(driverNames, round);
+    }
+
+    private List<String> gerDriverNames() {
+        String driverName = inputView.inputDriverNames(scanner);
+
+        if (Validator.isEmpty(driverName)) {
+            throw new IllegalArgumentException("빈 문자열 입니다.");
+        }
+        return new ArrayList<>(Arrays.asList(StringUtils.split(driverName, ",")));
     }
 }
