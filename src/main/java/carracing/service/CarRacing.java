@@ -40,7 +40,7 @@ public class CarRacing {
     }
 
     private void validateCars(Cars cars) {
-        if(cars==null || cars.getCarList().size()==0) {
+        if(cars==null) {
             throw new IllegalArgumentException("차량정보를 입력해 주세요.");
         }
     }
