@@ -2,7 +2,6 @@ package step4.domain.ipnut;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.car.name.Name;
 
 import static org.assertj.core.api.Assertions.*;
 

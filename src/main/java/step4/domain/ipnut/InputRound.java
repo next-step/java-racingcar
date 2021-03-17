@@ -1,6 +1,7 @@
 package step4.domain.ipnut;
 
 public final class InputRound {
+
     private final static int MINIMUM = 0;
     private final int round;
 
@@ -13,5 +14,9 @@ public final class InputRound {
 
     private final boolean isInvalid(int round) {
         return round < MINIMUM;
+    }
+
+    public final int inputRound() {
+        return round;
     }
 }
