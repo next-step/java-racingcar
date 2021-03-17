@@ -38,4 +38,8 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
+    public boolean isMax(int max) {
+        return position <= max;
+    }
 }
