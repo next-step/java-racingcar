@@ -1,6 +1,6 @@
 package racing.core;
 
-import racing.domain.RacingCar;
+import racing.domain.RacingCars;
 import racing.domain.RacingRound;
 import racing.rule.MoveRule;
 import racing.vo.RacingCarGamePlayInfo;
@@ -25,14 +25,12 @@ public class RacingCarGame {
 
   public List<RacingRound> endGame() {
     int totalRound = info.getTotalRound();
-    List<RacingCar> racingCars = info.getPlayers();
+    RacingCars racingCars = info.getPlayers();
 
     List<RacingRound> racingRounds = new ArrayList<>(totalRound);
     for (int i = 0; i < totalRound; i++) {
-      for (RacingCar car : racingCars) {
-        car.move(moveRule);
-      }
-      racingRounds.add(RacingRound.newRecord(racingCars));
+      racingCars.race(moveRule);
+      racingRounds.add(RacingRound.create(racingCars));
     }
     return racingRounds;
   }

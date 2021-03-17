@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.RacingCars;
 import racing.domain.RacingRound;
 
 import java.util.Collection;
@@ -19,6 +20,7 @@ public class ResultView {
     racingRounds.stream()
             .peek(round -> System.out.println(ROUND_START_ALARM))
             .map(RacingRound::racingCars)
+            .map(RacingCars::getRacingCars)
             .flatMap(Collection::stream)
             .forEach(racingCar -> System.out.println(String.format(ROUND_STATUS_FORMAT, toCarNameString(racingCar.carNumber()), toPositionString(racingCar.position()))));
   }
