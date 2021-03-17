@@ -4,33 +4,40 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.Name;
+import racingcar.domain.Position;
+import racingcar.domain.dto.CarDto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarRepositoryTest {
 
+    private List<Car> cars;
     private CarRepository carRepository;
 
     @BeforeEach
     public void setUp() {
-        this.carRepository = new CarRepository();
+        this.cars = new ArrayList<>();
+        this.carRepository = new CarRepository(cars);
     }
 
     @Test
     @DisplayName("자동차 추가 검증 로직 테스트")
     public void save() throws Exception {
         //given
-        String name = "one";
+        String name = "sean";
         Car car = new Car(name);
 
 
         //when
         carRepository.save(car);
         int currentSize = carRepository.findAll().size();
-        Car foundCar = carRepository.findByName(name);
+        Car foundCar = carRepository.findByName(new Name(name));
 
         //then
         assertEquals(1, currentSize, "추가한 만큼 크기가 증가해야 한다.");
@@ -41,9 +48,9 @@ class CarRepositoryTest {
     @DisplayName("모든 자동차 찾는 로직 검증 테스트")
     public void findAll() throws Exception {
         //given
-        carRepository.save(new Car("one"));
-        carRepository.save(new Car("two"));
-        carRepository.save(new Car("three"));
+        carRepository.save(new Car("sean"));
+        carRepository.save(new Car("pobi"));
+        carRepository.save(new Car("bibi"));
 
         //when
         List<Car> cars = carRepository.findAll();
@@ -53,39 +60,51 @@ class CarRepositoryTest {
     }
 
     @Test
-    @DisplayName("모든 자동차의 이동범위 찾는 로직 검증 테스트")
-    public void findAllMovementRange() throws Exception {
+    @DisplayName("최대 이동 범위 값을 통해 우승자 찾는 테스트")
+    public void findWinnersByMaxPosition() throws Exception {
         //given
-        Car one = new Car("one");
-        one.move(5);
-        Car two = new Car("two");
-        two.move(1);
-        carRepository.save(one);
-        carRepository.save(two);
+        Position maxPosition = new Position(10);
+        Car sean = new Car("sean", 10);
+        Car pobi = new Car("pobi", 10);
+        Car bibi = new Car("bibi", 9);
+        carRepository.save(sean);
+        carRepository.save(pobi);
+        carRepository.save(bibi);
 
         //when
-        Queue<Integer> movementRangeOfCars = carRepository.findAllMovementRange();
+        List<Car> winners = carRepository.findWinnersByMaxPosition(maxPosition);
 
         //then
-        assertEquals(2, movementRangeOfCars.size(), "찾은 이동범위의 수가 추가한 자동차의 수와 같아야 한다.");
-        assertEquals(1, movementRangeOfCars.poll(), "move()에 4이상의 값이 들어갔다면 이동범위가 1 증가해야 한다.");
-        assertEquals(0, movementRangeOfCars.poll(), "move()에 4미만의 값이 들어갔다면 이동범위가 증가하지 않아야 한다.");
+        assertThat(winners).containsExactly(sean, pobi);
     }
 
     @Test
-    @DisplayName("자동차의 이름으로 자동차 찾는 로직 검증 테스트")
+    @DisplayName("이름을 통해 자동차 찾는 테스트")
     public void findByName() throws Exception {
         //given
-        String name = "one";
-        Car car = new Car(name);
-        carRepository.save(car);
-
-        //when
-        Car foundCar = carRepository.findByName(name);
-        String foundName = foundCar.getName();
+        Car sean = new Car("sean");
+        Car pobi = new Car("pobi");
+        carRepository.save(sean);
+        carRepository.save(pobi);
 
         //then
-        assertEquals(name, foundName, "추가한 자동차와 찾은 자동차의 이름이 같아야 한다.");
-        assertEquals(car.hashCode(), foundCar.hashCode(), "추가한 자동차와 찾은 자동차가 같아야 한다.");
+        assertThat(carRepository.findByName(new Name("sean"))).isEqualTo(sean);
     }
+
+    @Test
+    @DisplayName("최대 이동 범위를 가진 자동차 찾는 테스트")
+    public void findMaxPosition() throws Exception {
+        //given
+        Car sean = new Car("sean", 10);
+        Car pobi = new Car("pobi", 8);
+        Car bibi = new Car("bibi", 9);
+        carRepository.save(sean);
+        carRepository.save(pobi);
+        carRepository.save(bibi);
+
+        //then
+        assertThat(carRepository.findMaxPosition()).isEqualTo(sean.getPosition());
+    }
+
+
 }

@@ -1,7 +1,6 @@
 package racingcar.view;
 
-import java.util.Queue;
-import java.util.stream.Collectors;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public enum ResultView {
@@ -11,20 +10,20 @@ public enum ResultView {
     private final String RESULT_STATEMENT = "실행 결과";
     private final String COLON = " : ";
     private final String WINNERS_STATEMENT = "가 최종 우승했습니다.";
-    private final String DELEMETER = ", ";
+    private final String COMMA = ", ";
 
     public void printResultStatement() {
         System.out.println();
         System.out.println(RESULT_STATEMENT);
     }
 
-    public void printEachRoundResult(Queue<String> nameOfCars, Queue<Integer> movementRangeOfCars) {
-        int numberOfCars = nameOfCars.size();
+    public void printEachRoundResult(List<String> CarsName, List<Integer> CarsPosition) {
+        int CarsCount = CarsName.size();
 
-        for (int i = 0; i < numberOfCars; i++) {
-            String name = nameOfCars.poll();
+        for (int i = 0; i < CarsCount; i++) {
+            String name = CarsName.get(i);
             System.out.print(name + COLON);
-            Integer movementRange = movementRangeOfCars.poll();
+            Integer movementRange = CarsPosition.get(i);
             IntStream.range(0, movementRange)
                     .mapToObj(j -> "-")
                     .forEach(System.out::print);
@@ -33,8 +32,8 @@ public enum ResultView {
         System.out.println();
     }
 
-    public void printWinners(Queue<String> winners) {
-        String nameOfWinners = String.join(DELEMETER, winners);
+    public void printWinners(List<String> winners) {
+        String nameOfWinners = String.join(COMMA, winners);
         System.out.println(nameOfWinners + WINNERS_STATEMENT);
     }
 }
