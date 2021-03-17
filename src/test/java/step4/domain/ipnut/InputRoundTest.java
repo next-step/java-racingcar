@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.car.name.Name;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class InputRoundTest {
 
@@ -34,5 +33,19 @@ class InputRoundTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 값을 사용했습니다.");
 
+    }
+
+    @DisplayName("InputRound 인스턴스가 가지고 있는 값 반환 테스트")
+    @Test
+    void 반환(){
+        // given
+        int expected = 5;
+        InputRound inputRound = new InputRound(expected);
+
+        // when
+        int actual = inputRound.inputRound();
+
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 }
