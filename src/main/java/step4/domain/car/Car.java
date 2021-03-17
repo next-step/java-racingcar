@@ -24,8 +24,8 @@ public final class Car {
         }
     }
 
-    public final int position() {
-        return position.position();
+    public final Position position() {
+        return position;
     }
 
 }

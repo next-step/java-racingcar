@@ -1,7 +1,9 @@
 package step4.domain.car;
 
+import javafx.geometry.Pos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.domain.car.position.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,9 +30,10 @@ class CarTest {
 
         // when
         car.move(() -> true);
-        int actual = car.position();
+        Position position = car.position();
+        int actual =  position.position();
 
-        // test
+        // then
         assertThat(actual).isEqualTo(1);
     }
 
