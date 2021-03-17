@@ -9,7 +9,7 @@ class PositionTest {
 
     @DisplayName("Position 인스턴스 생성 여부 테스트")
     @Test
-    void 생성(){
+    void 생성() {
         // given and when
         Position position = new Position();
 
@@ -19,7 +19,7 @@ class PositionTest {
 
     @DisplayName("Position 인스턴스 증가 여부 테스트")
     @Test
-    void 증가(){
+    void 증가() {
         // given
         Position position = new Position();
 
@@ -30,4 +30,5 @@ class PositionTest {
         // then
         assertThat(actual).isEqualTo(1);
     }
+
 }

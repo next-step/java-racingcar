@@ -2,7 +2,7 @@ package step4.startegy;
 
 import java.util.Random;
 
-public final class RacingMove implements Move{
+public final class RacingMove implements Move {
 
     private final int MINIMUM = 4;
     private final int MAXIMUM = 9;
