@@ -1,6 +1,6 @@
-package racingcar.io;
+package racingcar.view;
 
-import racingcar.Game;
+import racingcar.domain.Game;
 
 public class Printer {
 

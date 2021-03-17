@@ -1,8 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.Random;
-import racingcar.io.Printer;
+import racingcar.view.Printer;
 
 public class Game {
 
@@ -42,7 +42,7 @@ public class Game {
     this.winner = cars.getWinner();
   }
 
-  public List<String> getWinners() {
+  public List<CarName> getWinners() {
     return winner.getWinners();
   }
 

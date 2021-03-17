@@ -1,24 +1,22 @@
-package racingcar;
+package racingcar.domain;
 
-public class Car {
+import java.util.Objects;
 
-  public static final String UNIT = "-";
-  public static final int DEFAULT_DISTANCE = 0;
-  public static final int THRESHOLD = 4;
+public class CarName {
+
   public static final int MAX_NAME_LENGTH = 5;
   public static final String EMPTY_STRING_ERROR_MESSAGE = "비어있는 이름은 유효하지 않은 이름입니다.";
   public static final String MAX_LENGTH_ERROR_MESSAGE = "자동차의 이름은 최대 5자입니다. 입력한 이름: ";
 
-  private int distance;
   private final String name;
 
-  private Car(String name) {
+  public CarName(String name) {
     validateName(name);
     this.name = name;
   }
 
-  public static Car create(String name) {
-    return new Car(name);
+  public String getName() {
+    return name;
   }
 
   private void validateName(String name) {
@@ -38,31 +36,20 @@ public class Car {
     }
   }
 
-  public void move(int randomNumber) {
-    if (randomNumber >= THRESHOLD) {
-      distance += 1;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-  }
-
-  public String showStatus() {
-    StringBuilder distanceBuilder = new StringBuilder();
-
-    for (int i = 0; i < distance; i++) {
-      distanceBuilder.append(UNIT);
+    if (!(o instanceof CarName)) {
+      return false;
     }
-
-    return distanceBuilder.toString();
+    CarName carName = (CarName) o;
+    return Objects.equals(getName(), carName.getName());
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public int getDistance() {
-    return distance;
-  }
-
-  public boolean isWinner(int maxDistance) {
-    return distance == maxDistance;
+  @Override
+  public int hashCode() {
+    return Objects.hash(getName());
   }
 }

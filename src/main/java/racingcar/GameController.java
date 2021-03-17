@@ -3,20 +3,24 @@ package racingcar;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import racingcar.io.InputView;
-import racingcar.io.Printer;
+import racingcar.domain.Car;
+import racingcar.domain.Game;
+import racingcar.view.InputView;
+import racingcar.view.Printer;
 
-public class GameManager {
+public class GameController {
 
   public static void main(String[] args) {
-    GameManager.startGame();
+    GameController.startGame();
   }
 
   private static void startGame() {
     try (InputView inputView = new InputView(new Scanner(System.in))) {
       Printer.welcomeMessage();
+
       List<Car> cars = inputView.inputCarNames();
       int round = inputView.inputRound();
+
       Printer.printBlankLine();
       Printer.printResultMessage();
 

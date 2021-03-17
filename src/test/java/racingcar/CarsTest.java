@@ -2,7 +2,7 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
-import static racingcar.Car.UNIT;
+import static racingcar.domain.Car.UNIT;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +16,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.Car;
+import racingcar.domain.CarName;
+import racingcar.domain.Cars;
 
 class CarsTest {
 
@@ -83,7 +86,7 @@ class CarsTest {
   @DisplayName("게임에서 우승한 우승자를 알 수 있다.")
   void winner() {
     // given
-    String[] names = {"a", "b"};
+    CarName[] names = {new CarName("a"), new CarName("b")};
     cars.initialize(Arrays.stream(names).map(Car::create).collect(Collectors.toList()));
 
     // when
