@@ -10,8 +10,14 @@ public class InputView {
     public static UserInput receiveInput() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carCount = scanner.nextInt();
+        if (carCount <= 0) {
+            throw new IllegalArgumentException("Car count must be positive");
+        }
         System.out.println("시도할 횟수는 몇 회 인가요?");
         int totalRound = scanner.nextInt();
+        if (totalRound <= 0) {
+            throw new IllegalArgumentException("Total round must be positive");
+        }
 
         System.out.println();
         System.out.println("실행 결과");
