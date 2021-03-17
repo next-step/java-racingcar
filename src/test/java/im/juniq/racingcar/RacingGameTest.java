@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CarsTest {
+class RacingGameTest {
 	@DisplayName("자동차 n대를 생성한다")
 	@Test
 	void createCars() {
