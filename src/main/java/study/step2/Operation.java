@@ -30,6 +30,7 @@ public enum Operation {
 
   public static double calculate(String operator, Operands operands) {
     Operation operation = getOperation(operator);
+
     double num1 = operands.getResult();
     double num2 = operands.getNumber();
 
