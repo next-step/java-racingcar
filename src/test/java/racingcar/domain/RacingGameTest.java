@@ -25,7 +25,7 @@ class RacingGameTest {
 
     static Stream<Arguments> carList() {
         return Stream.of(
-                arguments(Lists.list(new Car(1), new Car(1)))
+                arguments(Lists.list(new Car(0), new Car(0)))
         );
     }
 
@@ -37,16 +37,37 @@ class RacingGameTest {
     }
 
     @ParameterizedTest
-    @DisplayName("모든 차가 모든 라운드에 전진한 게임 테스트")
+    @DisplayName("모든 차가 모든 라운드에 멈춘 게임 테스트")
     @MethodSource("carList")
-    void runRound(List<Car> carList) {
+    void runRoundAllStop(List<Car> carList) {
         List<Round> expected = new ArrayList<>(roundCount);
         for (int i = 0; i < roundCount; i++) {
             expected.add(new Round(Cars.of(carList)));
         }
 
+        List<Round> actual = new RacingGame(carCount, expected.size()).runGame(() -> false);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("모든 차가 모든 라운드에 전진한 게임 테스트")
+    void runRoundAllMove() {
+        List<Round> expected = new ArrayList<>();
+        for (int i = 0; i < roundCount; i++) {
+            Round round = new Round(getCars(i + 1));
+            expected.add(round);
+        }
         List<Round> actual = new RacingGame(carCount, expected.size()).runGame(() -> true);
         assertEquals(expected, actual);
+    }
+
+    private Cars getCars(int position) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            Car car = new Car(position);
+            cars.add(car);
+        }
+        return Cars.of(cars);
     }
 
 }
