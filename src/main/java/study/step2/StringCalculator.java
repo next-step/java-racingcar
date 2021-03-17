@@ -4,7 +4,7 @@ package study.step2;
 public class StringCalculator {
 
   public double calculate(String inputText) {
-    String tokens[] = Utils.getTokens(inputText);
+    String[] tokens = Utils.getTokens(inputText);
 
     double result = Double.parseDouble(tokens[0]);
 
