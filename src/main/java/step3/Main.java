@@ -5,7 +5,7 @@ public class Main {
         try {
             InputDto input = InputView.input();
             Racing racing = new Racing(input);
-            racing.racingCar();
+            racing.racingCarStart();
 
         } catch (IllegalArgumentException e) {
             System.out.println("에러는 -> " + e);

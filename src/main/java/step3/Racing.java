@@ -20,13 +20,8 @@ public class Racing {
         return cars;
     }
 
-    public void racingCar() {
-        start(inputDto.getTryCount());
-
-    }
-
-    private void start(int tryCount) {
-        for (int i = 0; i < tryCount; ++i) {
+    public void racingCarStart() {
+        for (int i = 0; i < inputDto.getTryCount(); ++i) {
             move();
         }
     }
