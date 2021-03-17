@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.domain.Records;
 import racingcar.service.GameService;
 import racingcar.service.RacingGameService;
 import racingcar.view.InputView;
@@ -14,7 +15,8 @@ public class Game {
         int stepNumber = InputView.getStepNumber();
 
         gameService.init(carNumber, stepNumber);
-        ResultView.printStart();
-        ResultView.printRecords(gameService.run());
+        Records records = gameService.run();
+        
+        ResultView.printRecords(records);
     }
 }
