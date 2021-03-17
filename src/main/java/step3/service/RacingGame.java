@@ -8,26 +8,34 @@ import java.util.List;
 
 public class RacingGame {
 
+    private final GameRule gameRule;
     private final int numberOfCars;
     private final int attemps;
 
-    public RacingGame(int numberOfCars, int attemps) {
+    public RacingGame(int numberOfCars, int attemps, GameRule gameRule) {
         this.numberOfCars = numberOfCars;
         this.attemps = attemps;
+        this.gameRule = gameRule;
     }
 
-    public List<Car> setCars() {
+    public Cars initCars() {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             carList.add(new Car());
         }
-        return carList;
+        return new Cars(carList);
     }
 
-    public void start(Cars cars) {
+    public void doRace(Cars cars) {
+        for (int i = 0; i < attemps; i++) {
+            raceByRound(cars);
+        }
+    }
+
+    public void raceByRound(Cars cars) {
         for (int i = 0; i < numberOfCars; i++) {
             Car car = cars.getCars().get(i);
-            car.move(new GameRule());
+            car.move(gameRule);
         }
     }
 

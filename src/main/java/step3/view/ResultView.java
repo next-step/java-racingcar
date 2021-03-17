@@ -4,21 +4,24 @@ import step3.domain.Cars;
 import step3.service.RacingGame;
 
 public class ResultView {
+
+    public static void printRaceResult(RacingGame race, Cars cars) {
+        System.out.println("실행결과");
+        for (int i = 0; i < cars.getCars().size(); i++) {
+            System.out.println(cars.getCars().get(i).getRacingLog());
+        }
+    }
+
+    @Deprecated
     public static void printByAttemps(RacingGame race) {
-        Cars cars = new Cars(race.setCars());
+        Cars cars = race.initCars();
         for (int i = 0; i < race.getAttemps(); i++) {
-            race.start(cars);
-            startToPrint(i);
+            race.doRace(cars);
             printByAttemps(cars);
         }
     }
 
-    public static void startToPrint(int iter) {
-        if (iter == 0) {
-            System.out.println("실행 결과");
-        }
-    }
-
+    @Deprecated
     public static void printByAttemps(Cars cars) {
         for (int i = 0; i < cars.getCars().size(); i++) {
             System.out.println(cars.getCars().get(i).getRacingLog());

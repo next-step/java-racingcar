@@ -11,10 +11,6 @@ public class GameRule {
         numberGenerator = new RandomUtil();
     }
 
-    public GameRule(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-    }
-
     public boolean isMovable() {
         return numberGenerator.getRandom() >= STANDARD_FOR_MOVING;
     }
