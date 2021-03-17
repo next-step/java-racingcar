@@ -12,7 +12,6 @@ public class Car{
     }
 
     public Car(String carName,Position position){
-        StringValidator.checkCarNameSyntax(carName);
         this.carName = carName;
         this.position = position;
     }
