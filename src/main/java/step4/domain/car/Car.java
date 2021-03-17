@@ -1,4 +1,11 @@
 package step4.domain.car;
 
-public class Car {
+public final class Car {
+
+    private final String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
+
 }
