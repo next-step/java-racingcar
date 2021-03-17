@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.dto.Round;
 
 import java.util.List;
@@ -15,27 +14,29 @@ public class ResultView {
         this.rounds = rounds;
     }
 
-    public void printResult() {
+    public static void printResultMessage() {
         System.out.println(RESULT_MESSAGE);
-        rounds.stream()
-                .map(this::roundResult)
-                .forEach(System.out::println);
     }
 
-    private String roundResult(Round round) {
-        return round.getAllCars()
-                .getCarsAtRound()
-                .stream()
-                .map(this::carResult)
-                .reduce("", String::concat);
+    public void printGameResult() {
+        for (Round round : rounds) {
+            printRound(round);
+        }
     }
 
-    private String carResult(Car car) {
+    private void printRound(Round round) {
+        List<Integer> carsStatus = Round.roundResult(round);
+        for (int status : carsStatus) {
+            printTrack(status);
+        }
+        System.out.println();
+    }
+
+    private void printTrack(int distance) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < car.getPosition(); i++) {
+        for (int i = 0; i < distance; i++) {
             sb.append(RACE_TRACK);
         }
-        sb.append('\n');
-        return sb.toString();
+        System.out.println(sb.toString());
     }
 }
