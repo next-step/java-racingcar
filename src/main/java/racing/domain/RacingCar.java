@@ -4,11 +4,11 @@ import racing.rule.MoveRule;
 
 public class RacingCar {
 
-  private int carNumber;
+  private final int carNumber;
   private int position;
 
-  private RacingCar() {
-
+  private RacingCar(int carNumber) {
+    this(carNumber, 0);
   }
 
   private RacingCar(int carNumber, int position) {
@@ -16,11 +16,11 @@ public class RacingCar {
     this.position = position;
   }
 
-  public static RacingCar newCar(int carNumber) {
-    return new RacingCar(carNumber, 0);
+  public static RacingCar create(int carNumber) {
+    return new RacingCar(carNumber);
   }
 
-  public static RacingCar copyCar(RacingCar racingCar) {
+  public static RacingCar copyFrom(RacingCar racingCar) {
     return new RacingCar(racingCar.carNumber(), racingCar.position());
   }
 
