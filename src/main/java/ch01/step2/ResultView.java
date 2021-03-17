@@ -7,11 +7,6 @@ public class ResultView {
         System.out.println("실행결과");
     }
 
-    public ResultView(Car[] cars) {
-        System.out.println("실행결과");
-        this.cars = cars;
-    }
-
     public void showResult(RacingGame racingGame) {
         int attemptCount = racingGame.getAttemptCount();
         this.cars = racingGame.getCars();
