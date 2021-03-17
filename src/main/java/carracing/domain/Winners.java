@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Winners {
 
-    private final List<Car> winnerList;
+    private final List<Car> carList;
 
-    public Winners(List<Car> winnerList) {
-        this.winnerList = winnerList;
+    public Winners(List<Car> carList) {
+        this.carList = carList;
     }
 
-    public List<Car> getWinnerList() {
-        return winnerList;
+    public List<Car> getCarList() {
+        return carList;
     }
 
     public List<String> getNameList() {
         List<String> nameList = new ArrayList<>();
-        for (Car car : winnerList) {
+        for (Car car : carList) {
             nameList.add(car.inquiryRacingScore().getCarName());
         }
         return nameList;
