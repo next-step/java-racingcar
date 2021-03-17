@@ -1,6 +1,5 @@
 package carRacing;
 
-import carRacing.controller.CarRacingController;
 import carRacing.service.CarRacingService;
 
 public class CarRacingMain {
