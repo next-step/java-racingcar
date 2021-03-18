@@ -25,7 +25,7 @@ public class CarRacing {
     }
 
     private void checkStringParam(String carNames) {
-        if (StringUtils.isBlank(carNames))
+        if (StringUtils.isBlank(carNames) || Arrays.stream(carNames.split(DELIMITER)).anyMatch(s -> s.length() == 0))
             throw new IllegalArgumentException("자동차 이름을 입력하세요.");
         if (Arrays.stream(carNames.split(DELIMITER)).anyMatch(s -> s.length() > 5)) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
