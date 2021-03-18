@@ -2,9 +2,11 @@ package step4.domain.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.dto.ResponseDto;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingCarGameTest {
 
@@ -54,10 +56,20 @@ class RacingCarGameTest {
         assertThat(actual).isFalse();
     }
 
-    @DisplayName("RacingCarGame 라운드 결과 반환")
+    @DisplayName("RacingCarGame 라운드별 ResponseDto 반환 여부 테스트")
     @Test
     void 결과_반환() {
+        // given
+        Cars cars = new Cars("a,b,c");
+        Round round = new Round(1);
+        RacingCarGame racingCarGame = new RacingCarGame(cars, round);
 
+        // when
+        racingCarGame.nextRound();
+        ResponseDto responseDto = racingCarGame.responseDto();
+
+        // then
+        assertThat(responseDto).isNotNull();
     }
 
 }
