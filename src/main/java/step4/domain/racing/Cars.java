@@ -11,7 +11,9 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(InputNames inputNames) {
-        this(inputNames.inputNames().stream().map(Car::new).collect(Collectors.toList()));
+        this(inputNames.inputNames().stream()
+                .map(Car::new)
+                .collect(Collectors.toList()));
     }
 
     public Cars(List<Car> cars) {
