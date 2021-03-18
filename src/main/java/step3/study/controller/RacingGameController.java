@@ -1,14 +1,18 @@
 package step3.study.controller;
 
 import step3.study.domain.Drivers;
+import step3.study.domain.Round;
 import step3.study.dto.RequestRacingDTO;
 import step3.study.dto.ResponseRacingDTO;
+import step3.study.dto.ResponseWinnerDTO;
 import step3.study.util.RandomGenerator;
 import step3.study.util.StringUtils;
 import step3.study.util.Validator;
 import step3.study.view.InputView;
 import step3.study.view.ResultView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -17,7 +21,6 @@ public class RacingGameController {
     private final InputView inputView;
     private final ResultView resultView;
     private final Scanner scanner;
-    private final static int LAST_ROUND = 1;
 
     public RacingGameController() {
         inputView = new InputView();
@@ -26,43 +29,51 @@ public class RacingGameController {
     }
 
     public void run() {
-        RequestRacingDTO requestRacingDTO = showInputView();
+        RequestRacingDTO requestRacingDTO = exportRequestDtoFromInputView();
 
         Drivers drivers = new Drivers(Drivers.of(requestRacingDTO));
 
-        int tryCount = requestRacingDTO.getTryCount();
-        for (int i = 0; i < tryCount; tryCount--) {
-            ResponseRacingDTO responseRacingDTO = tryRacingGame(drivers);
-            showResultView(responseRacingDTO);
-            showWinner(tryCount, responseRacingDTO);
+        startRacingGameForRound(requestRacingDTO, drivers);
+    }
+
+    private void startRacingGameForRound(RequestRacingDTO requestRacingDTO, Drivers drivers) {
+
+        Round round = requestRacingDTO.getRound();
+        while (round.isRacingContinue()) {
+            drivers.moveCars(new RandomGenerator(new Random()));
+            ResponseRacingDTO responseRacingDTO = exportResponseRacingDto(drivers);
+            printRacingGameResult(responseRacingDTO);
+            round.next();
         }
+        printRacingGameWinners(drivers);
     }
 
-    private void showWinner(int tryCount, ResponseRacingDTO responseRacingDTO) {
-        if (LAST_ROUND == tryCount) {
-            Drivers drivers = responseRacingDTO.getDrivers();
-            List<String> winnerNames = drivers.getWinnerNames();
-            resultView.printWinnerNames(winnerNames);
-        }
+    private void printRacingGameWinners(Drivers drivers) {
+        ResponseWinnerDTO responseWinnerDTO = new ResponseWinnerDTO(drivers.getWinnerNames());
+        resultView.racingGameWinners(responseWinnerDTO);
     }
 
-    private void showResultView(ResponseRacingDTO responseRacingDTO) {
-        resultView.showResultView(responseRacingDTO);
+    private void printRacingGameResult(ResponseRacingDTO responseRacingDTO) {
+        resultView.print(responseRacingDTO);
     }
 
-    public ResponseRacingDTO tryRacingGame(Drivers drivers) {
-        return drivers.moveCars(new RandomGenerator(new Random()));
+    public ResponseRacingDTO exportResponseRacingDto(Drivers drivers) {
+        return new ResponseRacingDTO(drivers.getNames(), drivers.getPositionValues());
     }
 
-    public RequestRacingDTO showInputView() {
+    public RequestRacingDTO exportRequestDtoFromInputView() {
+        List<String> driverNames = gerDriverNames();
+        Round round = new Round(inputView.inputRound(scanner));
+
+        return new RequestRacingDTO(driverNames, round);
+    }
+
+    private List<String> gerDriverNames() {
         String driverName = inputView.inputDriverNames(scanner);
-        String[] driverNames = null;
-        if (Validator.isNotEmpty(driverName)) {
-            driverNames = StringUtils.split(driverName, ",");
+
+        if (Validator.isEmpty(driverName)) {
+            throw new IllegalArgumentException("빈 문자열 입니다.");
         }
-
-        int tryCount = Validator.numberCheck(inputView.inputTryCount(scanner));
-
-        return new RequestRacingDTO(driverNames, tryCount);
+        return new ArrayList<>(Arrays.asList(StringUtils.split(driverName, ",")));
     }
 }

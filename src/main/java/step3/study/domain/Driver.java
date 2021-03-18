@@ -1,6 +1,6 @@
 package step3.study.domain;
 
-import step3.study.util.RandomGenerator;
+import step3.study.util.NumberGenerator;
 
 public class Driver {
     private final String name;
@@ -11,19 +11,15 @@ public class Driver {
         this.car = car;
     }
 
-    public void moveCar(int randomNumber) {
-        car.move(randomNumber);
+    public void moveCar(NumberGenerator numberGenerator) {
+        car.move(numberGenerator);
+    }
+
+    public int getPositionValue() {
+        return car.position();
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getDistance() {
-        return car.getDistance();
-    }
-
-    public String getNameAndNowPosition() {
-        return this.name + " : " + car.getDistance();
     }
 }

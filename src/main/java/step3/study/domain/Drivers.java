@@ -1,10 +1,8 @@
 package step3.study.domain;
 
 import step3.study.dto.RequestRacingDTO;
-import step3.study.dto.ResponseRacingDTO;
-import step3.study.util.RandomGenerator;
+import step3.study.util.NumberGenerator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,19 +14,17 @@ public class Drivers {
     }
 
     public static List<Driver> of(RequestRacingDTO requestRacingDTO) {
-        String[] driverNames = requestRacingDTO.getDriverNames();
+        List<String> driverNames = requestRacingDTO.getDriverNames();
 
-        return Arrays.stream(driverNames)
-                .map(driverName -> new Driver(driverName, new Car()))
+        return driverNames.stream()
+                .map(driverName -> new Driver(driverName, new Car(new Position(0))))
                 .collect(Collectors.toList());
     }
 
-    public ResponseRacingDTO moveCars(RandomGenerator randomGenerator) {
+    public void moveCars(NumberGenerator numberGenerator) {
         for (Driver driver : drivers) {
-            int randomNumber = randomGenerator.getRandomNumber();
-            driver.moveCar(randomNumber);
+            driver.moveCar(numberGenerator);
         }
-        return new ResponseRacingDTO(this);
     }
 
     public List<Driver> getDriverList() {
@@ -36,19 +32,32 @@ public class Drivers {
     }
 
     public List<String> getWinnerNames() {
-        int maxDistance = getMaxDistance();
+        int maxPosition = getMaxPosition();
         return this.drivers
                 .stream()
-                .filter(driver -> driver.getDistance().length() == maxDistance)
+                .filter(driver -> driver.getPositionValue() == maxPosition)
                 .map(Driver::getName)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxDistance() {
+    private int getMaxPosition() {
         return this.drivers
                 .stream()
-                .mapToInt(driver -> driver.getDistance().length())
+                .mapToInt(Driver::getPositionValue)
                 .max()
                 .getAsInt();
+
+    }
+
+    public List<String> getNames() {
+        return drivers.stream()
+                .map(Driver::getName)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getPositionValues() {
+        return drivers.stream()
+                .map(Driver::getPositionValue)
+                .collect(Collectors.toList());
     }
 }

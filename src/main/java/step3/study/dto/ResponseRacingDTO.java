@@ -1,15 +1,21 @@
 package step3.study.dto;
 
-import step3.study.domain.Drivers;
+import java.util.List;
 
 public class ResponseRacingDTO {
-    private final Drivers drivers;
+    private final List<String> names;
+    private final List<Integer> positions;
 
-    public ResponseRacingDTO(Drivers drivers) {
-        this.drivers = drivers;
+    public ResponseRacingDTO(List<String> names, List<Integer> positions) {
+        this.names = names;
+        this.positions = positions;
     }
 
-    public Drivers getDrivers() {
-        return drivers;
+    public List<String> getNames() {
+        return names;
+    }
+
+    public List<Integer> getPositions() {
+        return positions;
     }
 }
