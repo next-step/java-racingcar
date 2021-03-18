@@ -11,5 +11,7 @@ public class CarRacingApplication {
         CarRacing carRacing = new CarRacing(carNames);
 
         carRacing.startRacing(racingCount);
+
+        carRacing.racingWinner();
     }
 }
