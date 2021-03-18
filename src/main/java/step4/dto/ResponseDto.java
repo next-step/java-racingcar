@@ -8,4 +8,8 @@ public class ResponseDto {
     public ResponseDto(Cars cars) {
         this.cars = cars;
     }
+
+    public final Cars cars() {
+        return cars;
+    }
 }
