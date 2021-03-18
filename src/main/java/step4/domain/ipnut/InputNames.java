@@ -1,5 +1,6 @@
 package step4.domain.ipnut;
 
+import utils.ListStringUtils;
 import utils.StringUtils;
 
 import java.util.List;
@@ -13,7 +14,9 @@ public class InputNames {
     }
 
     public InputNames(List<String> inputNames) {
-
+        if(ListStringUtils.isNull(inputNames)) {
+            throw new IllegalArgumentException("유효하지 않은 값을 사용했습니다.");
+        }
         this.inputNames = inputNames;
     }
 
