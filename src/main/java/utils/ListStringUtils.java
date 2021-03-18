@@ -9,7 +9,8 @@ public final class ListStringUtils {
         return strings == null;
     }
 
-    public static final boolean isSizeZero(List<String> string) {
-        return string.size() == ZERO;
+    public static final boolean isSizeZero(List<String> strings) {
+        return strings.size() == ZERO;
     }
+
 }

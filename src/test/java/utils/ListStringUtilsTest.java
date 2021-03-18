@@ -29,4 +29,14 @@ public class ListStringUtilsTest {
         // when
         assertThat(ListStringUtils.isSizeZero(strings)).isTrue();
     }
+
+    @DisplayName("ListStringUtils 클래스 사이즈 0인지 검증 여부 테스트")
+    @Test
+    void Null_또는_사이즈_0__검증() {
+        // given
+        List<String> strings = new ArrayList<>();
+
+        // when
+        assertThat(ListStringUtils.isNullOrSizeZero(strings)).isTrue();
+    }
 }
