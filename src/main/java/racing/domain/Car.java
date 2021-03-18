@@ -4,6 +4,7 @@ import racing.exception.CarNameException;
 
 public class Car {
 
+    public static final int MOVE_LIMIT = 4;
     private String name;
     private int moveCount;
 
