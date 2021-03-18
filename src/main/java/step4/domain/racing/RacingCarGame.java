@@ -2,6 +2,7 @@ package step4.domain.racing;
 
 import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
+import step4.dto.ResponseDto;
 
 public class RacingCarGame {
 
@@ -23,5 +24,9 @@ public class RacingCarGame {
 
     public final void nextRound() {
         round.nextRound();
+    }
+
+    public final ResponseDto responseDto() {
+        return new ResponseDto(cars);
     }
 }
