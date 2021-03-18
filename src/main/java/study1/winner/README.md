@@ -32,9 +32,13 @@
         - String name
         - int distance
       - constructor
-        - Car();
+        - Cars(Name name, int distance);
+        - Cars(String name);
+        - Cars(String name, int distance);
       - method
-        - int move(MoveStrategy moveStrategy);
+        - Car move(MoveStrategy moveStrategy);
+        - String driver();
+        - int distance();
     - Name.java
       - field
         - String names;
