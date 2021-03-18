@@ -39,4 +39,11 @@ public final class RequestDto {
         return inputRound == null;
     }
 
+    public final InputNames inputNames() {
+        return inputNames;
+    }
+
+    public final InputRound inputRound() {
+        return inputRound;
+    }
 }
