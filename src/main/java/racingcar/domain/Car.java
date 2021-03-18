@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.service.MovingStrategy;
 import racingcar.util.ValidationUtil;
 
 import java.util.Objects;

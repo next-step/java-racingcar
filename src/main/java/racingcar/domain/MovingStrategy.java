@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.domain;
 
 public interface MovingStrategy {
     boolean isMove();

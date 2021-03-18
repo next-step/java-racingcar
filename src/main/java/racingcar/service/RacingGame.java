@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.Cars;
+import racingcar.domain.RacingRound;
 
 public class RacingGame {
     private RacingRound racingRound;

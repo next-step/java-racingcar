@@ -3,7 +3,7 @@ package racingcar.view;
 import racingcar.Constant;
 import racingcar.domain.Car;
 import racingcar.domain.Winner;
-import racingcar.service.RacingRound;
+import racingcar.domain.RacingRound;
 
 import java.util.stream.Collectors;
 
