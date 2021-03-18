@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.StringUtils;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -27,7 +29,7 @@ class InputNamesTest {
     @Test
     void 검증() {
         // given
-        String name = "";
+        List<String> name = null;
 
         // when and then
         assertThatThrownBy(() -> {
