@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RequestDtoTest {
 
@@ -50,5 +51,21 @@ class RequestDtoTest {
                 .hasMessageContaining("유효하지 않은 값을 사용했습니다.");
     }
 
+    @DisplayName("RequestDto 인스턴스가 포함한 값 반환 여부 테스트")
+    @Test
+    void 반환() {
+        // given
+        RequestDto requestDto = new RequestDto(inputNames, inputRound);
+
+        // when
+        InputNames inputNamesActual = requestDto.inputNames();
+        InputRound inputRoundActual = requestDto.inputRound();
+
+        assertAll(
+                () -> assertThat(inputNamesActual).isEqualTo(inputNames),
+                () -> assertThat(inputRoundActual).isEqualTo(inputRound)
+        );
+
+    }
 
 }
