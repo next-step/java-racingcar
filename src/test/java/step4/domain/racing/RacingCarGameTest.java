@@ -25,17 +25,17 @@ class RacingCarGameTest {
 
     @DisplayName("RacingCarGame 다음 라운드 불가능 여부 테스트")
     @Test
-    void 다음_라운드_불가능() {
+    void 다음_라운드_가능() {
         // given
         Cars cars = new Cars("a,b,c");
-        Round round = new Round(0);
+        Round round = new Round(1);
         RacingCarGame racingCarGame = new RacingCarGame(cars, round);
 
         // when
         boolean actual = racingCarGame.hasNext();
 
         // then
-        assertThat(actual).isFalse();
+        assertThat(actual).isTrue();
     }
 
     @DisplayName("RacingCarGame 다음 라운드 이동 여부 테스트")
@@ -51,7 +51,7 @@ class RacingCarGameTest {
         boolean actual = racingCarGame.hasNext();
 
         // then
-        assertThat(actual).isTrue();
+        assertThat(actual).isFalse();
     }
 
 }

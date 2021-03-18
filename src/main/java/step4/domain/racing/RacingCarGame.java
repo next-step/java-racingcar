@@ -21,4 +21,7 @@ public class RacingCarGame {
         return round.hasNext();
     }
 
+    public final void nextRound() {
+        round.nextRound();
+    }
 }
