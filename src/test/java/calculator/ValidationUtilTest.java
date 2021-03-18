@@ -29,16 +29,4 @@ class ValidationUtilTest {
                 .hasMessageContaining("Value cannot be null or empty");
     }
 
-
-    @ParameterizedTest
-    @ValueSource(strings = {"^", "%", "#", "!", "@"})
-    @DisplayName("Test for invalid operator")
-    void handleInvalidOperator(String value) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    ValidationUtil.checkInvalidOperator(value);
-                }).withMessageMatching("Operator is invalid");
-    }
-
-
 }

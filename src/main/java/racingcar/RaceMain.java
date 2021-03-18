@@ -28,7 +28,7 @@ public class RaceMain {
     }
 
     private void initiateCarInstances(List<RacingCar> racingCars, int totalCarNum) {
-        for (int i=0; i<totalCarNum; i++) {
+        for (int i = 0; i < totalCarNum; i++) {
             racingCars.add(new RacingCar());
         }
     }

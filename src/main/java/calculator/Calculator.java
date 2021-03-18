@@ -12,8 +12,7 @@ public class Calculator {
         int leftNum = Integer.parseInt(values[0]);
         String strOperator;
 
-        for (int i = 1; i< values.length; i=i+2) {
-            ValidationUtil.checkInvalidOperator(values[i]);
+        for (int i = 1; i < values.length; i = i + 2) {
             strOperator = values[i];
 
             ValidationUtil.checkInvalidValue(values[i+1]);
