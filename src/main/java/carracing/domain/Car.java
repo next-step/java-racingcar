@@ -1,6 +1,5 @@
 package carracing.domain;
 
-import carracing.service.dto.RacingScore;
 import common.utils.StringUtils;
 
 import java.util.Random;
@@ -46,7 +45,12 @@ public class Car {
         mileage+=engine.drive();
     }
 
-    public RacingScore racingScore() {
-        return new RacingScore(name, mileage);
+    public String name() {
+        return name;
     }
+
+    public int mileage() {
+        return mileage;
+    }
+
 }

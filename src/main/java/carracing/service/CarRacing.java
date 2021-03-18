@@ -44,7 +44,7 @@ public class CarRacing {
     }
 
     public RacingResult executeRacing() {
-        return new RacingResult(executeAllRound(), cars.winners());
+        return new RacingResult(executeAllRound(), cars.winners().nameList());
     }
 
     private List<RoundResult> executeAllRound() {

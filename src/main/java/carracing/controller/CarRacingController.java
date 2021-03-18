@@ -1,7 +1,6 @@
 package carracing.controller;
 
 import carracing.controller.dto.CarRacingRequest;
-import carracing.controller.dto.CarRacingResponse;
 import carracing.service.CarRacingService;
 import carracing.service.dto.RacingResult;
 
@@ -21,8 +20,7 @@ public class CarRacingController {
         this.carRacingService = new CarRacingService();
     }
 
-    public CarRacingResponse executeCarRacing(CarRacingRequest carRacingRequest) {
-        RacingResult racingResult = carRacingService.executeCarRacing(carRacingRequest);
-        return new CarRacingResponse(racingResult.getRoundResultList(), racingResult.getWinners().nameList());
+    public RacingResult executeCarRacing(CarRacingRequest carRacingRequest) {
+        return carRacingService.executeCarRacing(carRacingRequest);
     }
 }

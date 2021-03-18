@@ -1,7 +1,7 @@
 package carracing.controller;
 
 import carracing.controller.dto.CarRacingRequest;
-import carracing.controller.dto.CarRacingResponse;
+import carracing.service.dto.RacingResult;
 import carracing.service.dto.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,10 +19,10 @@ class CarRacingControllerTest {
 
         // when
         CarRacingController carRacingController = new CarRacingController();
-        CarRacingResponse carRacingResponse = carRacingController.executeCarRacing(carRacingRequest);
+        RacingResult racingResult = carRacingController.executeCarRacing(carRacingRequest);
 
         // then
-        assertThat(carRacingResponse.getRoundResultList().size()).isEqualTo(5);
+        assertThat(racingResult.getRoundResultList().size()).isEqualTo(5);
     }
 
     @Test
@@ -34,10 +34,10 @@ class CarRacingControllerTest {
 
         // when
         CarRacingController carRacingController = new CarRacingController();
-        CarRacingResponse carRacingResponse = carRacingController.executeCarRacing(carRacingRequest);
+        RacingResult racingResult = carRacingController.executeCarRacing(carRacingRequest);
 
         // then
-        for (RoundResult roundResult : carRacingResponse.getRoundResultList()) {
+        for (RoundResult roundResult : racingResult.getRoundResultList()) {
             assertThat(roundResult.getRacingScoreList().size()).isEqualTo(3);
         }
     }

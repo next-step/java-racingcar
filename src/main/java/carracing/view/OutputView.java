@@ -1,6 +1,6 @@
 package carracing.view;
 
-import carracing.controller.dto.CarRacingResponse;
+import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
 import carracing.service.dto.RoundResult;
 
@@ -11,14 +11,14 @@ public class OutputView {
     private static final String SCORE_LINE = "-";
     private static final String WINNER_DELIMITER = ", ";
 
-    public void printCarRacingResult(CarRacingResponse carRacingResponse) {
+    public void printCarRacingResult(RacingResult racingResult) {
         System.out.println("\n실행 결과");
-        for (RoundResult roundResult : carRacingResponse.getRoundResultList()) {
+        for (RoundResult roundResult : racingResult.getRoundResultList()) {
             System.out.println("Round " + roundResult.getRoundNumber());
             printRacingScore(roundResult.getRacingScoreList());
             System.out.println();
         }
-        printWinners(carRacingResponse.getWinnerNameList());
+        printWinners(racingResult.getWinnerNameList());
     }
 
     private void printRacingScore(List<RacingScore> racingScoreList) {

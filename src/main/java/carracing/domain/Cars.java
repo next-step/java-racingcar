@@ -17,6 +17,7 @@ import java.util.List;
  *  0.0.2) 클래스명 변경 Players -> Cars
  *  0.0.3) driveAll, inquiryRacingScores 메소드 추가
  *  0.0.4) carNames 기반 인스턴스 초기화 구조로 리팩토링
+ *  0.0.5) Winners 클래스 생성로직 추가
  */
 public class Cars {
 
@@ -61,7 +62,7 @@ public class Cars {
     public List<RacingScore> racingScoreList() {
         List<RacingScore> racingScoreList = new ArrayList<>();
         for (Car car : carList) {
-            racingScoreList.add(car.racingScore());
+            racingScoreList.add(new RacingScore(car.name(), car.mileage()));
         }
         return racingScoreList;
     }
@@ -69,7 +70,7 @@ public class Cars {
     public int maxScore() {
         int maxScore = 0;
         for (Car car : carList) {
-            maxScore = Math.max(maxScore, car.racingScore().getScore());
+            maxScore = Math.max(maxScore, car.mileage());
         }
         return maxScore;
     }
@@ -87,7 +88,7 @@ public class Cars {
     }
 
     private void addWinner(Car car, List<Car> winnerList) {
-        if (car.racingScore().getScore() == maxScore()) {
+        if (car.mileage() == maxScore()) {
             winnerList.add(car);
         }
     }

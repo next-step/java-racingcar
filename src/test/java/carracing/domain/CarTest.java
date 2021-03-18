@@ -87,7 +87,7 @@ class CarTest {
     public void car_nameWithBlank() {
         // given
         Car car = new Car(" aaaaa   ");
-        String carName = car.racingScore().getCarName();
+        String carName = car.name();
 
         // when then
         assertThat(5).isEqualTo(carName.length());
@@ -105,5 +105,22 @@ class CarTest {
 
         // then
         assertThat(cars.carList().size()).isEqualTo(racingScores.size());
+    }
+    
+    @Test
+    @DisplayName("우승자 명은 참가차량 명에 반드시 포함되어야 함")
+    void cars_maxScore_winners_score() {
+        // given
+        String carNames = "pobi,crong,honux";
+        Cars cars = new Cars(carNames);
+        
+        // when
+        cars.driveAll();
+        Winners winners = cars.winners();
+
+        // then
+        for (String winnerName : winners.nameList()) {
+            assertThat(carNames).contains(winnerName);
+        }
     }
 }
