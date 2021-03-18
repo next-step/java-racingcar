@@ -54,4 +54,10 @@ class RacingCarGameTest {
         assertThat(actual).isFalse();
     }
 
+    @DisplayName("RacingCarGame 라운드 결과 반환")
+    @Test
+    void 결과_반환() {
+
+    }
+
 }
