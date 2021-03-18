@@ -1,4 +1,4 @@
-package racingcar.module;
+package racingcar.domain;
 
 public interface MovingStrategy {
     boolean isMove();

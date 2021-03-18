@@ -1,6 +1,4 @@
-package racingcar.model;
-
-import racingcar.module.RandomStrategy;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(String[] playCarName) {
         cars = generateCars(playCarName);

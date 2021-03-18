@@ -1,9 +1,8 @@
-package racingcar.module;
+package racingcar.domain;
 
-import racingcar.model.Car;
+import racingcar.domain.Car;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacingRound {
     private Map<Integer, List<Car>> roundResult;

@@ -15,16 +15,15 @@ public class InputView {
         String name = null;
         String[] names;
 
-        do {
-            System.out.println(Constant.INPUT_REQUEST_CAR_NAME);
-            name = scanner.next();
-            names = StringUtil.splitInput(name);
-        } while (!ValidationUtil.isNmaeCheck(names));
+        System.out.println(Constant.INPUT_REQUEST_CAR_NAME);
+        name = scanner.next();
+        names = StringUtil.splitInput(name);
 
         return names;
     }
 
     public static int tryGameNum() {
+
         String count = null;
         do {
             System.out.println(Constant.INPUT_REQUEST_PLAY_COUNT);

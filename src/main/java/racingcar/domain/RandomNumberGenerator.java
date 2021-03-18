@@ -1,4 +1,4 @@
-package racingcar.module;
+package racingcar.domain;
 
 import racingcar.Constant;
 

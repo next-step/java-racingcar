@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,10 +7,15 @@ public class Winner {
     private List<String> winner;
 
     public Winner(List<Car> cars) {
-        int max = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
-         winner = cars.stream().filter(car -> car.getPosition() == max)
+        Car winCar = getWinnerMax(cars);
+        winner = cars.stream()
+                .filter(car -> car.equals(winCar))
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    private Car getWinnerMax(List<Car> cars) {
+        return cars.stream().max(Car::compareTo).get();
     }
 
     public List<String> getWinner() {

@@ -2,36 +2,29 @@ package racingcar.util;
 
 import racingcar.Constant;
 
-import java.util.Arrays;
 
 public class ValidationUtil {
 
-    public static boolean isNmaeCheck(String[] names) {
-        if(!Arrays.stream(names).allMatch(s -> isNameLength(s))){
-            return false;
+    public static void isNameLength(String name) {
+        if (name.length() > Constant.INPUT_CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException(Constant.ERROR_INPUT_NAME_LENGTH);
         }
-
-        return true;
     }
 
-    public static boolean isNameLength(String name) {
-        try {
-            if (name.length() > 5) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(Constant.ERROR_INPUT_NAME_LENGTH);
-            return false;
+
+    private static void isNegativeNum(int cntInput) {
+        if (cntInput < 1) {
+            throw new IllegalArgumentException(Constant.ERROR_NEGATIVE_NUMBER);
         }
-        return true;
     }
 
     public static boolean isNumber(String cntInput) {
-        try {
 
+        try {
+            int num = Integer.getInteger(cntInput);
+            isNegativeNum(num);
         } catch (NumberFormatException e) {
-            System.out.println(Constant.ERROR_COUNT_NUMBER);
-            return false;
+            throw new IllegalArgumentException(Constant.ERROR_COUNT_NUMBER);
         }
         return true;
     }
