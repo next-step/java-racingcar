@@ -21,4 +21,7 @@ public class Round {
         return round <= MINIMUM;
     }
 
+    public final boolean hasNext() {
+        return round > MINIMUM;
+    }
 }
