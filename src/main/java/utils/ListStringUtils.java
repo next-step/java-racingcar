@@ -13,4 +13,8 @@ public final class ListStringUtils {
         return strings.size() == ZERO;
     }
 
+    public static final boolean isNullOrSizeZero(List<String> strings) {
+        return (isNull(strings) || isSizeZero(strings));
+    }
+
 }
