@@ -3,8 +3,8 @@ package step4.domain.racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import step4.domain.ipnut.InputRound;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -16,8 +16,11 @@ class RoundTest {
     @DisplayName("Round 인스턴스 생성 여부 테스트")
     @Test
     void 생성() {
+        // given
+        InputRound inputRound = new InputRound(ROUND_COUNT);
+
         // when
-        Round round = new Round(ROUND_COUNT);
+        Round round = new Round(inputRound);
 
         // then
         assertThat(round).isNotNull();
@@ -30,7 +33,7 @@ class RoundTest {
     void 검증(int inputValue) {
 
         // when and then
-        assertThatThrownBy(() ->{
+        assertThatThrownBy(() -> {
             new Round(inputValue);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 값을 사용했습니다.");
