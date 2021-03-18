@@ -1,29 +1,35 @@
 package step3.domain;
 
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class CarRacingTest {
 
-    @DisplayName("자동차 경주를 시작하고 경주결과를 반환한다. 경주결과는 시도 횟수별 생성된 자동차의 수와 우승자를 반환한다.")
+    @DisplayName("세대의 자동차를 1회 경주하면 출발위치가 가장 큰 자동차가 우승한다.")
     @Test
-    public void startCarRacing_ShouldReturnCarResultList() {
-        String[] carsName = {"car1", "car2", "car3"};
-        int roundCount = 5;
+    public void start() {
+        int roundCount = 1;
 
-        CarRacing carRacing = new CarRacing(carsName, new Round(roundCount));
-        List<CarRacingResult> carRacingResultList = carRacing.start();
+        Car test1 = new Car("test1", 3);
+        Car test2 = new Car("test2", 5);
+        Car test3 = new Car("test3", 7);
 
-        assertThat(carRacingResultList)
-                .hasSize(roundCount)
-                .allSatisfy(carResultDto -> {
-                    AssertionsForClassTypes.assertThat(carResultDto.getCarPositionList().size()).isEqualTo(carsName.length);
-                    assertThat(carResultDto.getWinnerCarNames()).isNotEmpty();
-                });
+        List<Car> cars = new ArrayList<>();
+        cars.add(test1);
+        cars.add(test2);
+        cars.add(test3);
+
+        CarRacing carRacing = new CarRacing(new Cars(cars), new Round(roundCount));
+        CarRacingResult carRacingResult = carRacing.start();
+
+        assertThat(carRacingResult
+                .getWinner()
+                .findWinnerCarNames())
+                .containsExactly("test3");
     }
 }
