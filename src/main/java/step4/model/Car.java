@@ -16,7 +16,7 @@ public class Car {
         this.distance = new Distance(distance);
     }
 
-    void move(MoveStrategy moveStrategy){
+    public void move(MoveStrategy moveStrategy){
         if(moveStrategy.movable()){
             this.distance = this.distance.increase();
         }

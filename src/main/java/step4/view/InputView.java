@@ -32,7 +32,7 @@ public class InputView {
 
     static void checkInputNull(String input){
         if(input == null || input.trim().isEmpty()){
-            throw new NoSuchElementException("Input cannot be blank or null");
+            throw new IllegalArgumentException("Input cannot be blank or null");
         }
     }
 
