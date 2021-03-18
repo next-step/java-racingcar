@@ -14,4 +14,6 @@ public class Round {
     public void reduceRound() {
         this.roundsCount--;
     }
+
+    public static final Round NULL = new Round(0);
 }

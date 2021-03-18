@@ -7,8 +7,6 @@ import step3.util.ViewUtil;
 import step3.view.InputView;
 import step3.view.ResultView;
 
-import java.util.List;
-
 public class CarRacingApplication {
 
     public static void main(String[] args) {
@@ -19,8 +17,8 @@ public class CarRacingApplication {
 
         CarRacingController carRacingController = new CarRacingController(inputView);
 
-        List<CarRacingResult> carRacingResultList = carRacingController.startCarRacing();
-        ResultView resultView = new ResultView(carRacingResultList);
+        CarRacingResult carRacingResult = carRacingController.startCarRacing();
+        ResultView resultView = new ResultView(carRacingResult);
         resultView.printOutRacingResult();
         resultView.printOutWinnerCarName();
     }
