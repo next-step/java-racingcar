@@ -15,10 +15,6 @@ public final class RequestDto {
         this(new InputNames(StringUtils.splitByCommaToList(inputNames)), new InputRound(round));
     }
 
-    public RequestDto(List<String> inputNames, int round) {
-        this(new InputNames(inputNames), new InputRound(round));
-    }
-
     public RequestDto(InputNames inputNames, InputRound inputRound) {
         if (isInputNamesOrInputRoundNull(inputNames, inputRound)) {
             throw new IllegalArgumentException("유효하지 않은 값을 사용했습니다.");
