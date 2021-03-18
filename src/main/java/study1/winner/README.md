@@ -27,6 +27,7 @@
       - method
         - List<Cars> start();
         - Cars roundCheck(Cars cars);
+        - List<String> winners();
     - Car.java
       - field
         - String name
@@ -53,3 +54,5 @@
         - Cars();
       - method
         - Cars move();
+        - List<String> winners();
+        - int maxDistance();
