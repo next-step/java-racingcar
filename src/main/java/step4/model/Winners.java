@@ -15,10 +15,6 @@ public class Winners {
         this.winners = cars;
     }
 
-    public void addWinner(Car winner) {
-        this.winners.add(winner);
-    }
-
     public String winnerNames() {
         List<String> winnerNames = new ArrayList<>();
         for (Car winner : winners) {
