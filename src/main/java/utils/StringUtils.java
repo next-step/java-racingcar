@@ -1,5 +1,9 @@
 package utils;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class StringUtils {
 
     private static final int ZERO = 0;
@@ -20,6 +24,10 @@ public class StringUtils {
 
     private static boolean isBlank(String sentence) {
         return sentence.trim().length() == ZERO;
+    }
+
+    public static List<String> splitByCommaToList(String sentence) {
+        return Arrays.stream(splitByComma(sentence)).collect(Collectors.toList());
     }
 
     public static String[] splitByComma(String sentence) {

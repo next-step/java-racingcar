@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StringUtilsTest {
@@ -28,8 +30,8 @@ class StringUtilsTest {
     void splitByCommaToListTest(String sentence, int expected) {
 
         // when
-        String[] dividedSentences = StringUtils.splitByCommaToList(sentence);
-        int actual = dividedSentences.length;
+        List<String> dividedSentences = StringUtils.splitByCommaToList(sentence);
+        int actual = dividedSentences.size();
 
         // then
         assertThat(actual).isEqualTo(expected);
