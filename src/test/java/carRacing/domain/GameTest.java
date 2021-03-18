@@ -40,7 +40,7 @@ class GameTest {
         CarFactory carFactory = new CarFactory();
         List<Car> cars = carFactory.initCars(userInput);
         game.runRace(userInput, cars);
-        assertThat(game.judge.isCount(expectedNumberOfRace)).isTrue();
+        assertThat(game.askCountToGameJudge(expectedNumberOfRace)).isTrue();
     }
 
 }

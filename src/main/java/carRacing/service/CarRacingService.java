@@ -1,6 +1,9 @@
 package carRacing.service;
 
-import carRacing.domain.*;
+import carRacing.domain.Car;
+import carRacing.domain.CarFactory;
+import carRacing.domain.Game;
+import carRacing.domain.Judge;
 import carRacing.dto.UserInput;
 import carRacing.view.View;
 
@@ -18,6 +21,7 @@ public class CarRacingService {
         List<Car> cars = carFactory.initCars(userInput);
         view.declareRace();
         cars = game.runRace(userInput, cars);
+        view.printHistory(cars);
         view.printWinners(judge.findWinners(cars));
     }
 

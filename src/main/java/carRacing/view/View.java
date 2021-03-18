@@ -18,13 +18,6 @@ public class View {
         return new UserInput(unparsedNameOfCars, numberOfRace);
     }
 
-    public void printScoreboard(List<Car> cars) {
-        String scoreboard = cars.stream()
-                .map(car -> generateTrace(car) + "\n")
-                .collect(Collectors.joining());
-        System.out.println(scoreboard);
-    }
-
     public void declareRace() {
         System.out.println("\n실행 결과");
     }
@@ -38,11 +31,24 @@ public class View {
         System.out.println(mergedList + "가 최종 우승했습니다.");
     }
 
-    public String generateTrace(Car car) {
+    public String generateTrace(Car car, int raceCount) {
         StringBuilder trace = new StringBuilder(car.getName() + " : ");
-        for (int count = 0; count < car.getScore(); count++) {
+        for (int count = 0; count < car.getHistory().get(raceCount); count++) {
             trace.append("-");
         }
         return trace.toString();
+    }
+
+    public void printHistory(List<Car> cars) {
+        for (int gameCount = 0; gameCount < cars.get(0).getHistorySize(); gameCount++) {
+            printScoreboard(cars, gameCount);
+        }
+    }
+
+    private void printScoreboard(List<Car> cars, int raceCount) {
+        String scoreboard = cars.stream()
+                .map(car -> generateTrace(car, raceCount) + "\n")
+                .collect(Collectors.joining());
+        System.out.println(scoreboard);
     }
 }
