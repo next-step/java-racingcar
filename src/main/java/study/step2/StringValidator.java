@@ -2,7 +2,6 @@ package study.step2;
 
 public class StringValidator {
     public static final String SPLIT_DELIMITER=" ";
-    public static final Integer CAR_NAME_LENGTH_MOVE_CONDITION=4;
     public static final String CAR_NAME_SPLIT_DELIMITER=",";
 
     private static final String NUMBER_CHECK_REGEX="^[0-9]+$";
