@@ -8,12 +8,13 @@ public class InputNames {
 
     private List<String> inputNames;
 
-    /*
+
     public InputNames(String inputNames) {
-        this(StringUtils.splitByComma(inputNames));
+        this(StringUtils.splitByCommaToList(inputNames));
     }
+
     public InputNames(List<String> inputNames) {
         this.inputNames = inputNames;
     }
-    */
+
 }
