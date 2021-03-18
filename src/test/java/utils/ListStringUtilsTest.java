@@ -16,6 +16,6 @@ public class ListStringUtilsTest {
         List<String> strings = null;
 
         // when
-        assertThat(ListStringUtils.isNull()).isTrue();
+        assertThat(ListStringUtils.isNull(strings)).isTrue();
     }
 }
