@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.util.StringUtil;
 import racingcar.util.ValidationUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,19 +30,20 @@ public class ValidationUtilTest {
 
         //THEN
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> ValidationUtil.isNumCheck(input));
+                .isThrownBy(() -> ValidationUtil.isNumber(input));
 
     }
 
-    @DisplayName("입력 값이 5글자가 넘는 값 일때 false 반환")
+    @DisplayName("입력 값이 5글자가 넘는 값 일때 Exception 반환")
     @ParameterizedTest
-    @CsvSource(value = {"test1234:false" , "test1:true" , "good:true"}, delimiter = ':')
-    void isNameLength(String input, boolean result) {
+    @ValueSource(strings = {"test1234"})
+    void isNameLength(String input) {
         //GIVE
 
         //WHEN
 
         //THEN
-        assertThat(ValidationUtil.isNameLength(input)).isEqualTo(result);
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> ValidationUtil.isNameLength(input));
     }
 }
