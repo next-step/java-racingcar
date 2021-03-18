@@ -2,6 +2,7 @@ package step4.domain.racing;
 
 import step4.domain.car.Car;
 import step4.domain.ipnut.InputNames;
+import step4.startegy.Move;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,4 +28,11 @@ public class Cars {
         return cars == null;
     }
 
+    public final void move(Move move) {
+        cars.stream().forEach(car -> car.move(move));
+    }
+
+    public final List<Car> cars() {
+        return cars;
+    }
 }
