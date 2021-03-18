@@ -17,7 +17,7 @@ public class Distance {
         this.distance = distance;
     }
 
-    public Distance maxDistance(Distance other) {
+    public Distance farthestDistance(Distance other) {
         if (other.distance > distance) {
             return other;
         }

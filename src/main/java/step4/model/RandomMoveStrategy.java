@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
     @Override
-    public int getDistance() {
-        int distance = 0;
+    public boolean movable() {
+        boolean movable = false;
         if(getRandom() >= 4){
-            distance = 1;
+           movable = true;
         }
-        return distance;
+        return movable;
     }
 
     public int getRandom() {

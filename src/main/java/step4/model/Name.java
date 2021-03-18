@@ -25,8 +25,8 @@ public class Name {
     public boolean equals(Object other) {
         if (this == other) return true;
         if (other == null || getClass() != other.getClass()) return false;
-        Name name1 = (Name) other;
-        return Objects.equals(name, name1.name);
+        Name otherName = (Name) other;
+        return Objects.equals(name, otherName.name);
     }
 
     @Override

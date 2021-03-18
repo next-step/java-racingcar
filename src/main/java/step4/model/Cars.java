@@ -1,7 +1,9 @@
 package step4.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -16,8 +18,8 @@ public class Cars {
     }
 
     public void move(MoveStrategy moveStrategy){
-        for(int i = 0; i < cars.size(); i++){
-            cars.get(i).move(moveStrategy);
+        for(Car car : cars){
+            car.move(moveStrategy);
         }
     }
 
@@ -29,20 +31,19 @@ public class Cars {
         return cars.size();
     }
 
-    public String[] getWinners(){
-        int farthestDistance = getFarthestDistance();
-        return cars.stream()
-                .filter(car -> car.getDistance() == farthestDistance)
-                .map(car -> car.getName())
-                .toArray(String[]::new);
+    public Winners Winners(){
+        Distance farthestDistance = farthestDistance();
+        return new Winners(cars.stream()
+                        .filter(car -> car.isWinner(farthestDistance))
+                        .collect(Collectors.toList()));
     }
 
-    int getFarthestDistance(){
-        return cars.stream()
-                .sorted()
-                .findFirst()
-                .get()
-                .getDistance();
+    Distance farthestDistance(){
+        Distance farthestDistance = new Distance();
+        for (Car car : cars) {
+            farthestDistance = car.max(farthestDistance);
+        }
+        return farthestDistance;
     }
 
 }
