@@ -1,7 +1,7 @@
 package racing.views;
 
-import racing.models.Car;
-import racing.models.Round;
+import racing.domain.Car;
+import racing.domain.Round;
 
 public class RoundView extends View<Void, Round> {
     @Override

@@ -1,9 +1,12 @@
 package racing;
 
-import racing.simulators.RacingSimulator;
+import racing.domain.RacingSimulator;
+import racing.domain.Round;
 import racing.utils.StringUtil;
 import racing.views.IntegerInputView;
+import racing.views.RoundView;
 import racing.views.StringInputView;
+import racing.views.WinnersView;
 
 public class RacingMain {
     public static void main(String[] args) {
@@ -12,5 +15,14 @@ public class RacingMain {
 
         final RacingSimulator simulator = new RacingSimulator(StringUtil.splitCommas(namesInput), attemptsCount);
         simulator.start();
+
+        System.out.println("\n실행 결과");
+        final RoundView roundView = new RoundView();
+        for (final Round round : simulator.getRounds()) {
+            roundView.show(round);
+            System.out.println();
+        }
+
+        new WinnersView().show(simulator.getWinnerList());
     }
 }
