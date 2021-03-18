@@ -54,4 +54,19 @@ class RoundTest {
         assertThat(actual).isTrue();
     }
 
+    @DisplayName("Round 인스턴스 라운드 감소 여부 테스트")
+    @Test
+    void 감소() {
+        // given
+        InputRound inputRound = new InputRound(ROUND_COUNT);
+        Round round = new Round(inputRound);
+
+        // when
+        round.nextRound();
+        boolean actual = round.hasNext();
+
+        // then
+        assertThat(actual).isFalse();
+    }
+
 }
