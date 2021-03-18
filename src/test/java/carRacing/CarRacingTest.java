@@ -31,6 +31,15 @@ class CarRacingTest {
     }
 
     @ParameterizedTest
+    @DisplayName("Create CarRacing Test - fail")
+    @ValueSource(strings = {"testname,,test,fail"})
+    void createCarRacingTest3(String input){
+        assertThatIllegalArgumentException()
+                .isThrownBy(()->carRacing = new CarRacing(input))
+                .withMessage("자동차 이름을 입력하세요.");
+    }
+
+    @ParameterizedTest
     @DisplayName("Start CarRacing Test - fail")
     @ValueSource(ints = {-3,0})
     void startCarRacingTest(int input){
