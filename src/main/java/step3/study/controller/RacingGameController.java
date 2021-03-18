@@ -11,7 +11,11 @@ import step3.study.util.Validator;
 import step3.study.view.InputView;
 import step3.study.view.ResultView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class RacingGameController {
     private final InputView inputView;
@@ -35,17 +39,16 @@ public class RacingGameController {
     private void startRacingGameForRound(RequestRacingDTO requestRacingDTO, Drivers drivers) {
 
         Round round = requestRacingDTO.getRound();
-        while (round.racing()) {
+        while (round.isRacingContinue()) {
             drivers.moveCars(new RandomGenerator(new Random()));
             ResponseRacingDTO responseRacingDTO = exportResponseRacingDto(drivers);
             printRacingGameResult(responseRacingDTO);
             round.next();
         }
-        printRacingGameWinners(exportResponseRacingDto(drivers));
+        printRacingGameWinners(drivers);
     }
 
-    private void printRacingGameWinners(ResponseRacingDTO responseRacingDTO) {
-        Drivers drivers = responseRacingDTO.getDrivers();
+    private void printRacingGameWinners(Drivers drivers) {
         ResponseWinnerDTO responseWinnerDTO = new ResponseWinnerDTO(drivers.getWinnerNames());
         resultView.racingGameWinners(responseWinnerDTO);
     }
@@ -55,7 +58,7 @@ public class RacingGameController {
     }
 
     public ResponseRacingDTO exportResponseRacingDto(Drivers drivers) {
-        return new ResponseRacingDTO(drivers);
+        return new ResponseRacingDTO(drivers.getNames(), drivers.getPositionValues());
     }
 
     public RequestRacingDTO exportRequestDtoFromInputView() {

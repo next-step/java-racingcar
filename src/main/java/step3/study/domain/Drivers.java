@@ -35,17 +35,29 @@ public class Drivers {
         int maxPosition = getMaxPosition();
         return this.drivers
                 .stream()
-                .filter(driver -> driver.position() == maxPosition)
-                .map(Driver::name)
+                .filter(driver -> driver.getPositionValue() == maxPosition)
+                .map(Driver::getName)
                 .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
         return this.drivers
                 .stream()
-                .mapToInt(Driver::position)
+                .mapToInt(Driver::getPositionValue)
                 .max()
                 .getAsInt();
 
+    }
+
+    public List<String> getNames() {
+        return drivers.stream()
+                .map(Driver::getName)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getPositionValues() {
+        return drivers.stream()
+                .map(Driver::getPositionValue)
+                .collect(Collectors.toList());
     }
 }

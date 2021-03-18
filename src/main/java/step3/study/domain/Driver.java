@@ -15,11 +15,11 @@ public class Driver {
         car.move(numberGenerator);
     }
 
-    public int position() {
+    public int getPositionValue() {
         return car.position();
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 }

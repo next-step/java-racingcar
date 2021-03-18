@@ -14,7 +14,7 @@ public class Round {
         this.round--;
     }
 
-    public boolean racing() {
+    public boolean isRacingContinue() {
         return round > 0;
     }
 }

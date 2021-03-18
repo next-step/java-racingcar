@@ -17,7 +17,7 @@ public class ResultView {
 
     private void racingGameResult(ResponseRacingDTO responseRacingDTO) {
         List<String> names = responseRacingDTO.getNames();
-        List<Integer> positions = responseRacingDTO.getPosition();
+        List<Integer> positions = responseRacingDTO.getPositions();
         for (int i = 0; i < names.size(); i++) {
             System.out.println(names.get(i) + " : " + StringUtils.repeat("-", positions.get(i)));
         }
