@@ -17,7 +17,6 @@ public class Game {
         gameService.init(carNumber, stepNumber);
         Records records = gameService.run();
 
-        ResultView.printStart();
         ResultView.printRecords(records);
     }
 }
