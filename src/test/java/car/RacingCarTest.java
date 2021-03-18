@@ -20,7 +20,7 @@ class RacingCarTest {
         // todo: assertion
     }
 
-    @DisplayName("getMoveCount는 0이상 이동시도횟수 이하의 값을 반환해야 한다.")
+    @DisplayName("getMoveCount는 0 이상 tryCount 이하의 값을 반환해야 한다.")
     @Test
     public void getMoveCount() {
         // Arrange
