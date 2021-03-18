@@ -22,7 +22,7 @@ public class Position {
         position = position + 1;
     }
 
-    public Position max(Position max) {
+    public Position compare(Position max) {
         if(position <= max.position){
             return max;
         }

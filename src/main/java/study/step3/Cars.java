@@ -44,7 +44,7 @@ public class Cars {
     private List<Car> maxCars(){
         Position max = max();
         return cars.stream()
-                .filter(x-> x.position().equals(max))
+                .filter(car-> car.position().equals(max))
                 .collect(Collectors.toList());
     }
 
@@ -52,7 +52,7 @@ public class Cars {
         Position max = new Position();
         for(Car car : cars){
             Position position = car.position();
-            max = position.max(max);
+            max = position.compare(max);
         }
         return max;
     }

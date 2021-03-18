@@ -13,13 +13,21 @@ public class Name {
     }
 
     public Name(String name) {
+        blankCheck(name);
+        lengthCheck(name);
+        this.name = name;
+    }
+
+    private void blankCheck(String name){
         if(name == null || name.trim().isEmpty()){
             throw new IllegalArgumentException("차 이름은 빈 값이 될 수 없습니다.");
         }
+    }
+
+    private void lengthCheck(String name){
         if(name.length() >= CAR_NAME_LENGTH_LIMIT){
             throw new IllegalArgumentException("차 이름의 길이는 5이상이 될 수 없습니다.");
         }
-        this.name = name;
     }
 
     public String name() {
