@@ -18,7 +18,7 @@ public class Car {
 
     void move(MoveStrategy moveStrategy){
         if(moveStrategy.movable()){
-            this.distance.increase();
+            this.distance = this.distance.increase();
         }
     }
     public Distance max(Distance other) {
@@ -33,7 +33,7 @@ public class Car {
         return distance.distance();
     }
 
-    public String getName() {
+    public String name() {
         return name.name();
     }
 
@@ -51,5 +51,14 @@ public class Car {
         return Objects.hash(name, distance);
     }
 
-
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(name());
+        sb.append(CarRacingConstant.COLON);
+        for(int i = 0; i < distance(); i++){
+            sb.append(CarRacingConstant.DASH);
+        }
+        return sb.toString();
+    }
 }

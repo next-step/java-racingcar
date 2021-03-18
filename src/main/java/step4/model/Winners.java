@@ -18,9 +18,9 @@ public class Winners {
     public String winnerNames() {
         List<String> winnerNames = new ArrayList<>();
         for (Car winner : winners) {
-            winnerNames.add(winner.getName());
+            winnerNames.add(winner.name());
         }
-        return String.join(",", winnerNames);
+        return String.join(CarRacingConstant.COMMA, winnerNames);
     }
 
     @Override

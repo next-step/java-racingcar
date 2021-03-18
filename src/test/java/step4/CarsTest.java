@@ -14,10 +14,10 @@ public class CarsTest {
     @ValueSource(strings = {"abc, pig, apple, green", "abc,pig,apple,green"})
     public void carsNamesTest(String input) {
         Cars cars = new Cars(InputView.splitInput(input));
-        assertEquals("abc",cars.getCar(0).getName());
-        assertEquals("pig",cars.getCar(1).getName());
-        assertEquals("apple",cars.getCar(2).getName());
-        assertEquals("green",cars.getCar(3).getName());
+        assertEquals("abc",cars.getCar(0).name());
+        assertEquals("pig",cars.getCar(1).name());
+        assertEquals("apple",cars.getCar(2).name());
+        assertEquals("green",cars.getCar(3).name());
     }
 
     @ParameterizedTest
@@ -28,9 +28,9 @@ public class CarsTest {
         for(int i = 0; i < 3; i++){
             cars.move(testMoveStrategy);
         }
-        assertEquals(3,cars.getCar(0).getDistance());
-        assertEquals(3,cars.getCar(1).getDistance());
-        assertEquals(3,cars.getCar(2).getDistance());
-        assertEquals(3,cars.getCar(3).getDistance());
+        assertEquals(3,cars.getCar(0).distance());
+        assertEquals(3,cars.getCar(1).distance());
+        assertEquals(3,cars.getCar(2).distance());
+        assertEquals(3,cars.getCar(3).distance());
     }
 }

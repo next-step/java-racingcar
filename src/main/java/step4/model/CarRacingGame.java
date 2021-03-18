@@ -17,7 +17,10 @@ public class CarRacingGame {
     public boolean racing() {
         return round.racing();
     }
-    
+
+    public Cars Cars() {
+        return this.cars;
+    }
     public Winners Winners() {
         return cars.Winners();
     }

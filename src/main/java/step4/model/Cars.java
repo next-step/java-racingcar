@@ -46,4 +46,8 @@ public class Cars {
         return farthestDistance;
     }
 
+    public Iterable<Car> cars() {
+        return Collections.unmodifiableList(this.cars);
+    }
+
 }
