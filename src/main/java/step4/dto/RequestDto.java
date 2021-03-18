@@ -20,8 +20,23 @@ public final class RequestDto {
     }
 
     public RequestDto(InputNames inputNames, InputRound inputRound) {
+        if (isInputNamesOrInputRoundNull(inputNames, inputRound)) {
+            throw new IllegalArgumentException("유효하지 않은 값을 사용했습니다.");
+        }
         this.inputNames = inputNames;
         this.inputRound = inputRound;
+    }
+
+    private final boolean isInputNamesOrInputRoundNull(InputNames inputNames, InputRound inputRound) {
+        return (isInputNamesNull(inputNames) || isInputRoundNull(inputRound));
+    }
+
+    private final boolean isInputNamesNull(InputNames inputNames) {
+        return inputNames == null;
+    }
+
+    private final boolean isInputRoundNull(InputRound inputRound) {
+        return inputRound == null;
     }
 
 }
