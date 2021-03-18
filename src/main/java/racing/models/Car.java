@@ -9,21 +9,25 @@ public class Car implements Cloneable {
     public static final int MIN_BOUNDARY_VALUE = 0;
     public static final int MAX_BOUNDARY_VALUE = 9;
     public static final int MIN_MOVABLE_VALUE = 4;
+    public static final int INIT_DISTANCE = 0;
 
     private final String name;
-
     private int distance;
 
+    public Car() {
+        this(DEFAULT_NAME, INIT_DISTANCE);
+    }
+
     public Car(String name) {
+        this(name, INIT_DISTANCE);
+    }
+
+    public Car(String name, int distance) {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
         this.name = name;
-        this.distance = 0;
-    }
-
-    public Car() {
-        this(DEFAULT_NAME);
+        this.distance = distance;
     }
 
     public String getName() {

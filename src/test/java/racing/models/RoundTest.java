@@ -2,7 +2,6 @@ package racing.models;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.factories.RoundFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +30,7 @@ public class RoundTest {
         mustMove(crong, 3);
         mustMove(honux, 1);
 
-        final Round round = RoundFactory.createFrom(Arrays.asList(pobi, crong, honux));
+        final Round round = new Round(Arrays.asList(pobi, crong, honux));
 
         final List<String> expectedNames = Stream.of(pobi)
                 .map(Car::getName)
@@ -56,7 +55,7 @@ public class RoundTest {
         mustMove(crong, 5);
         mustMove(honux, 1);
 
-        final Round round = RoundFactory.createFrom(Arrays.asList(pobi, crong, honux));
+        final Round round = new Round(Arrays.asList(pobi, crong, honux));
 
         final List<String> expectedNames = Stream.of(pobi, crong)
                 .map(Car::getName)

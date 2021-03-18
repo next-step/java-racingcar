@@ -2,6 +2,7 @@ package racing.models;
 
 import racing.utils.RandomUtil;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Spliterator;
@@ -10,6 +11,13 @@ import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car> {
     private final List<Car> carList;
+
+    public Cars(String[] carNames) {
+        this(Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList())
+        );
+    }
 
     public Cars(List<Car> carList) {
         this.carList = carList;

@@ -11,6 +11,11 @@ public class RacingSimulator {
     private final Racing racing;
     private final int attemptsCount;
 
+
+    public RacingSimulator(String[] carNames, int attemptsCount) {
+        this(new Racing(carNames), attemptsCount);
+    }
+
     public RacingSimulator(Racing racing, int attemptsCount) {
         this.racing = racing;
         this.attemptsCount = attemptsCount;

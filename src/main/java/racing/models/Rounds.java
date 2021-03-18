@@ -1,5 +1,6 @@
 package racing.models;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Spliterator;
@@ -7,6 +8,10 @@ import java.util.function.Consumer;
 
 public class Rounds implements Iterable<Round> {
     private final List<Round> roundList;
+
+    public Rounds() {
+        this(new ArrayList<>());
+    }
 
     public Rounds(List<Round> roundList) {
         this.roundList = roundList;
