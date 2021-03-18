@@ -1,6 +1,6 @@
 package ch01.step2;
 
-<<<<<<< HEAD
+
 import java.util.Random;
 
 public class RacingGame {
