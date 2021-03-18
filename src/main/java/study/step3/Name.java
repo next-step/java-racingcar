@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Name {
     private static final int CAR_NAME_LENGTH_LIMIT = 5;
-
+    private static final String DEFAULT_CAR_NAME = "test";
 
     private final String name;
 
     public Name(){
-        this("test");
+        this(DEFAULT_CAR_NAME);
     }
 
     public Name(String name) {

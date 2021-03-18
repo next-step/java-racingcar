@@ -1,18 +1,20 @@
 package study.step3;
 
-import study.step2.StringValidator;
-
 public class Car{
 
-    private String carName;
+    private Name name;
     private Position position;
 
-    public Car(String carName){
-        this(carName,new Position());
+    public Car(){
+        this(new Name());
     }
 
-    public Car(String carName,Position position){
-        this.carName = carName;
+    public Car(Name name){
+        this(name,new Position());
+    }
+
+    public Car(Name name,Position position){
+        this.name = name;
         this.position = position;
     }
 
@@ -26,7 +28,7 @@ public class Car{
         return position;
     }
 
-    public String getCarName(){
-        return carName;
+    public Name name(){
+        return name;
     }
 }
