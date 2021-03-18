@@ -39,4 +39,9 @@ public class Cars {
     public final List<Car> cars() {
         return cars;
     }
+
+    public List<Car> winners(int winnerPosition) {
+        return cars.stream().filter(car -> car.isWinner(winnerPosition)).collect(Collectors.toList());
+    }
+
 }

@@ -76,10 +76,12 @@ class CarsTest {
                 .max()
                 .orElseGet(()->0);
 
-        Winners actual = cars.winners(winnerPosition);
+        List<Car> actual = cars.winners(winnerPosition);
 
         // then
         assertThat(actual).isEqualTo(expected);
     }
+
+
 
 }
