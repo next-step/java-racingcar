@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racing.util.RandomUtil;
 
 public class Cars {
 
