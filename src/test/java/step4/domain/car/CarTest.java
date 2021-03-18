@@ -1,6 +1,5 @@
 package step4.domain.car;
 
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.car.name.Name;
@@ -51,6 +50,20 @@ class CarTest {
 
         // then
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @DisplayName("Car 인스턴스 우승자 여부 테스트")
+    @Test
+    void 승자(){
+        // given
+        String expected = "test";
+        Car car = new Car(expected);
+
+        car.move(()->true);
+        boolean actual = car.isWinner(1);
+
+        // then
+        assertThat(actual).isTrue();
     }
 
 }
