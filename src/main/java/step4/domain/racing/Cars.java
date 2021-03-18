@@ -11,6 +11,10 @@ public class Cars {
 
     private final List<Car> cars;
 
+    public Cars(String s) {
+        this(new InputNames(s));
+    }
+
     public Cars(InputNames inputNames) {
         this(inputNames.inputNames().stream()
                 .map(Car::new)
@@ -18,7 +22,7 @@ public class Cars {
     }
 
     public Cars(List<Car> cars) {
-        if(isNull(cars)) {
+        if (isNull(cars)) {
             throw new IllegalArgumentException("유효하지 않은 값을 사용했습니다.");
         }
         this.cars = cars;

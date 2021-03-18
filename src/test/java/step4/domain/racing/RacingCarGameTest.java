@@ -2,8 +2,7 @@ package step4.domain.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.ipnut.InputNames;
-import step4.domain.ipnut.InputRound;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,11 +12,11 @@ class RacingCarGameTest {
     @Test
     void 생성() {
         // given
-        InputNames inputNames = new InputNames("a,b,c");
-        InputRound inputRound = new InputRound(5);
+        Cars cars = new Cars("a,b,c");
+        Round round = new Round(5);
 
         // when
-        RacingCarGame racingCarGame = new RacingCarGame(inputNames, inputRound);
+        RacingCarGame racingCarGame = new RacingCarGame(cars, round);
 
         // then
         assertThat(racingCarGame).isNotNull();
