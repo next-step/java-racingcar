@@ -32,7 +32,7 @@ public class Cars implements Iterable<Car> {
 
     public void tryMoveAll() {
         for (Car car : carList) {
-            car.tryMove(() -> RandomUtil.nextInt(Car.MAX_BOUNDARY_VALUE + 1));
+            car.tryMove(RandomUtil::carRandomValue);
         }
     }
 
