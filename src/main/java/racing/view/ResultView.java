@@ -1,43 +1,30 @@
 package racing.view;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import racing.domain.RacingEvent;
 import racing.domain.Car;
-import racing.domain.Winner;
+import racing.domain.dto.ResultDto;
 
 public class ResultView {
 
-    public static final String MOVE_DASH = "-";
+    public static final String DASH = "-";
 
-    public ResultView() {
-    }
-
-    public ResultView(RacingEvent racingEvent) {
-        List<Winner> winners = racingEvent
-            .getWinners()
-            .winners(racingEvent.getCars());
-        showWinner(winners);
-    }
-
-    public void printCarMove() {
-        System.out.print(MOVE_DASH);
-    }
-
-    public void printResultStart(){
+    public ResultView(ResultDto resultDto) {
         System.out.println("실행 결과");
-    }
-
-    public void resultView(Car car){
-        System.out.print(car.getName() + " : ");
-        for (int i = 0; i < car.getMoveCount(); i++){
-            printCarMove();
+        for (Car car : resultDto.getCars()){
+            moveCarRecode(car);
         }
-        System.out.println();
+        showWinner(resultDto.findWinners());
     }
 
-    public void showWinner(List<Winner> winners) {
-        String names = winners.stream().map(Winner::getName).collect(Collectors.joining(","));
-        System.out.println(names + " 가 최종 우승했습니다.");
+    private void moveCarRecode(Car car) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(car.getName()).append(" : ");
+        for(int i = 0; i < car.getMoveCount(); i++){
+            builder.append(DASH);
+        }
+        System.out.println(builder.toString());
+    }
+
+    public void showWinner(String winners) {
+        System.out.println(winners + " 가 최종 우승했습니다.");
     }
 }

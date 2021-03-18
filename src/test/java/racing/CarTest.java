@@ -17,7 +17,7 @@ class CarTest {
 
     @BeforeEach
     void setup(){
-        car = new Car("pobi");
+        car = new Car("pobi", 0);
     }
     
     @DisplayName("4 초과 이동하는 테스트")
@@ -40,7 +40,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {""})
     public void nullNameExceptionTest(String value){
-        assertThatThrownBy(() -> new Car(value))
+        assertThatThrownBy(() -> new Car(value, 0))
             .isInstanceOf(CarNameException.class);
     }
 
@@ -48,7 +48,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"123456"})
     public void maxLengthExceptionTest(String value){
-        assertThatThrownBy(() -> new Car(value))
+        assertThatThrownBy(() -> new Car(value, 0))
             .isInstanceOf(CarNameException.class);
     }
 }
