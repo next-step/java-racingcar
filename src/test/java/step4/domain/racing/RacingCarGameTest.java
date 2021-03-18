@@ -6,7 +6,6 @@ import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarGameTest {
 
