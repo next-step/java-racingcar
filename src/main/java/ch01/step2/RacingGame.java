@@ -1,5 +1,6 @@
 package ch01.step2;
 
+<<<<<<< HEAD
 import java.util.Random;
 
 public class RacingGame {
@@ -71,5 +72,6 @@ public class RacingGame {
             //show a result of racing game
             rv.showResult(racingGame);
         }
+
     }
 }

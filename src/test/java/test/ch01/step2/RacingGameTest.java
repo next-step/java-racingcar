@@ -1,5 +1,6 @@
 package test.ch01.step2;
 
+<<<<<<< HEAD
 import ch01.step2.Car;
 import ch01.step2.InputData;
 import ch01.step2.InputView;
@@ -59,5 +60,18 @@ class RacingGameTest {
     void isKeepGoingTest(int inputNum, boolean expect) {
         racingGame.isKeepGoing(inputNum);
         assertThat(racingGame.isKeepGoing(inputNum)).isEqualTo(expect);
+=======
+import ch01.step2.InputView;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class RacingGameTest {
+
+    @Test
+    void execute() {
+        InputView iv = new InputView();
+
+>>>>>>> 폴더명 정리
     }
 }

@@ -1,6 +1,7 @@
 package ch01.step2;
 
 public class ResultView {
+<<<<<<< HEAD
     Car[] cars;
 
     public ResultView() {
@@ -26,4 +27,6 @@ public class ResultView {
         }
     }
 
+=======
+>>>>>>> 폴더명 정리
 }
