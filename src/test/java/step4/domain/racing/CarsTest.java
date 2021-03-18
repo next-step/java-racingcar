@@ -2,7 +2,10 @@ package step4.domain.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step4.domain.car.Car;
 import step4.domain.ipnut.InputNames;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,11 +31,11 @@ class CarsTest {
     void 검증() {
 
         // given
-        InputNames inputNames = null;
+        List<Car> cars = null;
 
-        // when
+        // when and then
         assertThatThrownBy(()-> {
-            new Cars(inputNames);
+            new Cars(cars);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 값을 사용했습니다.");
 
