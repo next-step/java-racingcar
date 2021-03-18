@@ -8,7 +8,6 @@ public class InputNames {
 
     private List<String> inputNames;
 
-
     public InputNames(String inputNames) {
         this(StringUtils.splitByCommaToList(inputNames));
     }
