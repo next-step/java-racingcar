@@ -11,6 +11,7 @@ class StringUtilsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"a,b,c"})
+    @DisplayName("문자열 분리 테스트")
     void splitTest(String str) {
         String[] strArray = {"a", "b", "c"};
         assertThat(StringUtils.split(str, ",")).isEqualTo(strArray);
@@ -18,7 +19,7 @@ class StringUtilsTest {
 
     @ParameterizedTest
     @CsvSource(value = {"-,3,---", "-,6,------"})
-    @DisplayName("")
+    @DisplayName("반복자 테스트")
     void repeatTest(String str, int num, String result) {
         assertThat(StringUtils.repeat(str, num)).isEqualTo(result);
     }
