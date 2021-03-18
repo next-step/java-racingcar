@@ -39,7 +39,8 @@ class GameTest {
         UserInput userInput = new UserInput(unparsedNames, numberOfRace);
         CarFactory carFactory = new CarFactory();
         List<Car> cars = carFactory.initCars(userInput);
-        assertThat(game.runRace(userInput, cars)).isEqualTo(expectedNumberOfRace);
+        game.runRace(userInput, cars);
+        assertThat(game.askCountToGameJudge(expectedNumberOfRace)).isTrue();
     }
 
 }
