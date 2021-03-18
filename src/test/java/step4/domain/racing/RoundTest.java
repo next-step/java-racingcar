@@ -40,4 +40,18 @@ class RoundTest {
 
     }
 
+    @DisplayName("Round 인스턴스가 라운드 시작 여부 테스트")
+    @Test
+    void 시작() {
+        // given
+        InputRound inputRound = new InputRound(ROUND_COUNT);
+        Round round = new Round(inputRound);
+
+        // when
+        boolean actual = round.hasNext();
+
+        // then
+        assertThat(actual).isTrue();
+    }
+
 }
