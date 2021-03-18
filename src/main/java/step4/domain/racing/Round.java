@@ -18,7 +18,7 @@ public class Round {
     }
 
     private final boolean isLessThanMinimum(int round) {
-        return round <= MINIMUM;
+        return round < MINIMUM;
     }
 
     public final boolean hasNext() {

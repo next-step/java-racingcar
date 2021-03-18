@@ -28,13 +28,14 @@ class RoundTest {
     }
 
     @DisplayName("Round 인스턴스에 부적절한 값 주입시 예외처리 발생 여부 테스트")
-    @ParameterizedTest(name = "돌아가고 있는 횟수 : {index} , 들어가는 값 : {arguments}")
-    @ValueSource(ints = {-1, 0})
-    void 검증(int inputValue) {
+    @Test
+    void 검증() {
+        // given
+        int invalidValue = -1;
 
         // when and then
         assertThatThrownBy(() -> {
-            new Round(inputValue);
+            new Round(invalidValue);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 값을 사용했습니다.");
 
