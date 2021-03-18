@@ -4,7 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utils.StringUtils;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -37,6 +39,20 @@ class InputNamesTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 값을 사용했습니다.");
 
+    }
+
+    @DisplayName("InputNames 인스턴스가 포함한 값 반환 여부 테스트")
+    @Test
+    void 반환() {
+        // given
+        List<String> expected = Arrays.stream("pobi,brown,json".split(",")).collect(Collectors.toList());
+
+        // when
+        InputNames inputNames = new InputNames(expected);
+        List<String> actual = inputNames.inputNames();
+
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 
 
