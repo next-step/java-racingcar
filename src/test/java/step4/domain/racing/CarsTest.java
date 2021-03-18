@@ -34,11 +34,31 @@ class CarsTest {
         List<Car> cars = null;
 
         // when and then
-        assertThatThrownBy(()-> {
+        assertThatThrownBy(() -> {
             new Cars(cars);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("유효하지 않은 값을 사용했습니다.");
 
+    }
+
+    @DisplayName("Cars 인스턴스 이동 및 상태 여부 테스트")
+    @Test
+    void 이동() {
+        // given
+        InputNames inputNames = new InputNames("a,b,c");
+        Cars cars = new Cars(inputNames);
+
+        // when
+        cars.move(() -> true);
+        List<Car> carList = cars.cars();
+
+        carList.stream()
+                .map(car -> car.position())
+                .map(position -> position.position())
+                .forEach(actual -> {
+                            assertThat(actual).isEqualTo(1);
+                        }
+                );
     }
 
 }
