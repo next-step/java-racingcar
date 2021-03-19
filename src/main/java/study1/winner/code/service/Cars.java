@@ -1,8 +1,11 @@
 package study1.winner.code.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import study1.winner.code.dto.ResultData;
 
 public class Cars {
   private List<Car> cars;
@@ -24,6 +27,12 @@ public class Cars {
       .collect(Collectors.toList())
     );
 	}
+
+  public List<ResultData> result() {
+    return cars.stream()
+      .map(car -> new ResultData(car.driver(), car.distance()))
+      .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+  }
 
   public List<String> winners() {
     int maxDistance = maxDistance();
