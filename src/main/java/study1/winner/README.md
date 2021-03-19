@@ -40,6 +40,7 @@
         - Car move(MoveStrategy moveStrategy);
         - String driver();
         - int distance();
+        - List<ResultData> result();
     - Name.java
       - field
         - String names;
