@@ -1,7 +1,6 @@
 package carracing.service;
 
 import carracing.constants.CarRacingConstant;
-import carracing.domain.Car;
 import carracing.domain.Cars;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
@@ -63,14 +62,6 @@ public class CarRacing {
     private List<RacingScore> executeScoring(Cars cars) {
         cars.driveAll();
         return cars.racingScoreList();
-    }
-
-    private List<String> getNameList(List<Car> winners) {
-        List<String> winnerNameList = new ArrayList<>();
-        for (Car winner : winners) {
-            winnerNameList.add(winner.getName());
-        }
-        return winnerNameList;
     }
 
 }
