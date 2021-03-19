@@ -1,13 +1,14 @@
 package im.juniq.racingcar;
 
+import static org.assertj.core.api.Assertions.*;
+
 import im.juniq.racingcar.domain.Car;
+import im.juniq.racingcar.domain.Name;
 import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
 import im.juniq.racingcar.domain.RacingGame;
 import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 	@DisplayName("자동차 n대를 생성한다")
@@ -47,8 +48,8 @@ class RacingGameTest {
 			racingGame.move();
 		}
 
-		for (String winner: racingGame.getWinners()) {
-			assertThat(winner).isEqualTo("pobi");
+		for (Name winner: racingGame.getWinners()) {
+			assertThat(winner).isEqualByComparingTo(new Name("pobi"));
 		}
 	}
 }

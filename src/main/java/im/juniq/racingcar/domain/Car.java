@@ -2,13 +2,14 @@ package im.juniq.racingcar.domain;
 
 public class Car {
 	private static final int CAR_NAME_LENGTH_LIMIT = 5;
-	private String name;
-	private int position = 0;
+	private Name name;
+	private Position position;
 	private MovingStrategy movingStrategy;
 
 	public Car(String name, MovingStrategy movingStrategy) {
 		checkCarName(name);
-		this.name = name;
+		this.name = new Name(name);
+		this.position = new Position();
 		this.movingStrategy = movingStrategy;
 	}
 
@@ -20,27 +21,27 @@ public class Car {
 
 	public void move() {
 		if (movingStrategy.isMoving()) {
-			position++;
+			position.increase();
 		}
 	}
 
 	public void move(MovingStrategy movingStrategy) {
 		if (movingStrategy.isMoving()) {
-			position++;
+			position.increase();
 		}
 	}
 
-	protected String getName() {
+	public Name name() {
 		return name;
 	}
 
-	protected int getPosition() {
+	public Position position() {
 		return position;
 	}
 
 	public String getStatus() {
 		String status = name + " : ";
-		for (int i = 0; i < position; i++) {
+		for (int i = 0; i < position.position(); i++) {
 			status += "-";
 		}
 		return status;

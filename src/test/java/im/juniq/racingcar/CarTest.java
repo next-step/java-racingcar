@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import im.juniq.racingcar.domain.Car;
 import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
+import im.juniq.racingcar.domain.Position;
 import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -32,6 +33,6 @@ class CarTest {
 
 		car.move(new OnlyTrueMovingStrategy());
 
-		assertThat(car.getStatus()).contains("-");
+		assertThat(car.position()).isEqualByComparingTo(new Position(1));
 	}
 }

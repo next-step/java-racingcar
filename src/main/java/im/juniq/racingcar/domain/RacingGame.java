@@ -25,17 +25,18 @@ public class RacingGame {
 	}
 
 	private List<Car> findByTopPosition() {
-		int topPosition = cars.stream()
-				.mapToInt(Car::getPosition)
-				.max().orElseThrow(()  -> new RuntimeException("position 수치가 가장 높은 차를 구할 수 없음."));
+		Position topPosition = cars.stream()
+			.map(Car::position)
+			.max(Position::compareTo)
+			.orElseThrow(() -> new RuntimeException("position 수치가 가장 높은 차를 구할 수 없음."));
 
-		return cars.stream().filter(car -> topPosition == car.getPosition())
+		return cars.stream().filter(car -> car.position().equals(topPosition))
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public List<String> getWinners() {
+	public List<Name> getWinners() {
 		return findByTopPosition().stream()
-				.map(Car::getName)
+				.map(Car::name)
 				.collect(Collectors.toList());
 	}
 

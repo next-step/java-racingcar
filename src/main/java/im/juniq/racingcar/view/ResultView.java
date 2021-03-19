@@ -2,13 +2,15 @@ package im.juniq.racingcar.view;
 
 import java.util.List;
 
+import im.juniq.racingcar.domain.Name;
+
 public class ResultView {
 	public void printScore(List<String> carsStatus) {
 		carsStatus.forEach(System.out::println);
 		System.out.println();
 	}
 
-	public void printWinner(List<String> winners) {
+	public void printWinner(List<Name> winners) {
 		for (int i = 0; i < winners.size(); i++) {
 			addSeparatorIfNotFirst(i);
 			System.out.print(winners.get(i));
