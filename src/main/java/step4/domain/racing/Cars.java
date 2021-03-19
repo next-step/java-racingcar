@@ -41,7 +41,9 @@ public final class Cars {
     }
 
     public List<Car> winners(int winnerPosition) {
-        return cars.stream().filter(car -> car.isWinner(winnerPosition)).collect(Collectors.toList());
+        return cars.stream()
+                .filter(car -> car.isWinner(winnerPosition))
+                .collect(Collectors.toList());
     }
 
     public final int maxPosition() {

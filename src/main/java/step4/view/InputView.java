@@ -11,14 +11,14 @@ public final class InputView {
 
     private InputView() { }
 
-    public static InputView getInstance() {
-        if (instance == null) {
+    public static final InputView getInstance() {
+        if (isInstanceNull()) {
             instance = new InputView();
         }
         return instance;
     }
 
-    private boolean isInstanceNull(){
+    private static final boolean isInstanceNull(){
         return instance == null;
     }
 

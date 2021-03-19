@@ -4,6 +4,7 @@ import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
 import step4.dto.RequestDto;
 import step4.dto.ResponseDto;
+import step4.startegy.Move;
 
 public final class RacingCarGame {
 
@@ -21,6 +22,10 @@ public final class RacingCarGame {
     public RacingCarGame(Cars cars, Round round) {
         this.cars = cars;
         this.round = round;
+    }
+
+    public final void move(Move move){
+        cars.move(move);
     }
 
     public final boolean hasNext() {

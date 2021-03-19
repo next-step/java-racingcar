@@ -14,29 +14,29 @@ public final class ResultView {
     private ResultView() {
     }
 
-    public static ResultView getInstance(){
-        if(instance == null) {
+    public static final ResultView getInstance() {
+        if (isInstanceNull()) {
             instance = new ResultView();
         }
         return instance;
     }
 
-    private boolean isInstanceNull(){
+    private static final boolean isInstanceNull() {
         return instance == null;
     }
 
-    public void printRacingEndMessage() {
+    public final void printRacingEndMessage() {
         System.out.println("실행 결과");
     }
 
-    public void print(ResponseDto responseDto){
+    public final void print(ResponseDto responseDto) {
         Cars cars = responseDto.cars();
         List<Car> carList = cars.cars();
 
-        for(Car car : carList) {
+        for (Car car : carList) {
             System.out.print(car.name().name());
             System.out.print(" : ");
-            for(int i=0; i < car.position().position(); i++) {
+            for (int i = 0; i < car.position().position(); i++) {
                 System.out.print("-");
             }
             System.out.println("");
@@ -44,8 +44,16 @@ public final class ResultView {
         System.out.println("");
     }
 
-    public void print(Winners winners){
+    public final void print(Winners winners) {
+        StringBuilder stringBuilder = new StringBuilder();
+        winners.winners().stream()
+                .forEach(winner -> stringBuilder.append(winner.name().name()).append(","));
 
+        stringBuilder.setLength(stringBuilder.length() - 1);
+        stringBuilder.append("가 최종 우승했습니다.");
+
+        System.out.println(stringBuilder.toString());
     }
+
 
 }
