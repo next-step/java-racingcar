@@ -12,10 +12,10 @@ public class RacingTest {
         final String[] carNames = {"pobi", "crong", "honux"};
         final int attemptsCount = 5;
 
-        final Racing racing = new Racing(carNames);
+        final Racing racing = new Racing(carNames, attemptsCount);
 
         int raceCount = 0;
-        while (racing.hasRun(attemptsCount)) {
+        while (racing.hasRun()) {
             racing.runRace();
             raceCount++;
         }

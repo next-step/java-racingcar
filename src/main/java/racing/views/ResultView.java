@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ResultView {
+    public static final String DISTANCE_MARK = "-";
+
     public static void show(Round round) {
         for (Car car : round.getCarList()) {
             showCar(car);
@@ -15,11 +17,11 @@ public class ResultView {
     }
 
     private static void showCar(Car car) {
-        final String name = String.format("%-" + Car.MAX_NAME_LENGTH + "s", car.getName());
-        final String distance = Stream.generate(() -> "-")
+        final String carName = String.format("%-" + Car.MAX_NAME_LENGTH + "s", car.getName());
+        final String carDistance = Stream.generate(() -> DISTANCE_MARK)
                 .limit(car.getDistance())
                 .reduce("", (a, b) -> a + b);
-        System.out.println(name + " : " + distance);
+        System.out.println(carName + " : " + carDistance);
     }
 
     public static void show(List<Car> winnerList) {
