@@ -1,52 +1,34 @@
-//package step3;
-//
-//import org.junit.jupiter.api.DisplayName;
-//import org.junit.jupiter.api.Test;
-//import step3.domain.Car;
-//import step3.service.GameRule;
-//import step3.utils.NumberGenerator;
-//import step3.utils.RandomUtil;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//class CarTest {
-//
-//    @Test
-//    @DisplayName("racing 로그 제대로 출력하는지 테스트")
-//    void getRacingLog() {
-//        // given
-//        String expected = "";
-//
-//        // when
-//        Car car = new Car(rule);
-//        NumberGenerator random = new RandomUtil();
-//        car.move(new GameRule());
-//
-//        if (random.getRandom() >= 4) {
-//            expected = "-";
-//        }
-//
-//        // then
-//        String actual = car.getRacingLog();
-//        assertEquals(actual, expected);
-//    }
-//
-//    @Test
-//    @DisplayName("전진여부에 따라 제대로 전진하는지 테스트")
-//    void move() {
-//        // given
-//        String expected = "";
-//        GameRule rule = new GameRule();
-//        if (rule.isMovable()) {
-//            expected = "-";
-//        }
-//
-//        // when
-//        Car car = new Car(rule);
-//        car.move(rule);
-//
-//        // then
-//        String actual = car.getRacingLog();
-//        assertEquals(actual, expected);
-//    }
-//}
+package step3;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import step3.domain.Car;
+import step3.domain.Score;
+import step3.service.GameRule;
+import step3.utils.NumberGenerator;
+import step3.utils.RandomUtil;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class CarTest {
+    @ParameterizedTest(name = "전진여부 따라 스코어 제대로 출력하는지 테스트")
+    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
+    void getScore(int number) {
+        // given
+        NumberGenerator numberGenerator = new RandomUtil();
+        GameRule rule = new GameRule(numberGenerator);
+        Car car = new Car();
+
+        Score expected = new Score("-");
+        if (rule.isMovableTest(number)) {
+            expected.setScore();
+        }
+
+        // when
+        car.moveTest(rule, number);
+        Score actual = car.getScore();
+
+        // then
+        assertEquals(actual, expected);
+    }
+}
