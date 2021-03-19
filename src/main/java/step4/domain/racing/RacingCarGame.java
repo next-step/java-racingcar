@@ -31,11 +31,11 @@ public class RacingCarGame {
     }
 
     private final int maxPosition(){
-        // cars.cars().stream().
+        return cars.maxPosition();
     }
 
     public final Winners winners() {
-        return cars.winners()
+        return new Winners(cars.winners(maxPosition()));
     }
 
 }
