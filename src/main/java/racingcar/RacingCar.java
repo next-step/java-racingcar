@@ -12,18 +12,23 @@ public class RacingCar {
     }
 
     public void move() {
-        position.setLocation(isGo(RandomNumber.random()));
+        position.setLocation("-");
+    }
+
+    public void stop() {
+        position.setLocation("");
     }
 
     public String status() {
         return position.getLocation();
     }
 
-    public String isGo(int number) {
+    public void isGo(int number) {
         if (number >= RandomNumber.MINIMUM_NUMBER) {
-            return "-";
+            move();
+            return;
         }
-        return "";
+        stop();
     }
 
     public String getOwner() {
