@@ -12,4 +12,8 @@ public final class Winners {
         this.winners = winners;
     }
 
+    public final List<Car> winners() {
+        return winners;
+    }
+
 }

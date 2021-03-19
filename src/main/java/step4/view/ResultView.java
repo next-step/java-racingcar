@@ -45,17 +45,7 @@ public final class ResultView {
     }
 
     public void print(Winners winners){
-        winners.
 
-        for(Car car : carList) {
-            System.out.print(car.name().name());
-            System.out.print(" : ");
-            for(int i=0; i < car.position().position(); i++) {
-                System.out.print("-");
-            }
-            System.out.println("");
-        }
-        System.out.println("");
     }
 
 }
