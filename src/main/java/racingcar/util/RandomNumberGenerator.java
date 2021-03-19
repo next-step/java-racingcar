@@ -2,6 +2,7 @@ package racingcar.util;
 
 import java.util.Random;
 
+
 public class RandomNumberGenerator extends Random {
 
   private static final int RANDOM_NUMBER_BOUND = 10;

@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.util.RandomNumberGenerator;

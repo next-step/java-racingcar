@@ -10,6 +10,7 @@ public class UserInputValidator {
 
   private static final int MAX_NAME_LENGTH = 5;
 
+
   public static List<String> carNameValidation(String readLine) {
     String[] splitCarName = readLine.split(",");
     carNameIsProperlySplit(splitCarName.length);
@@ -25,6 +26,7 @@ public class UserInputValidator {
     }
     throw new IllegalArgumentException("ERROR : 숫자만 입력하실 수 있습니다.");
   }
+
 
   private static void hasStrangeName(String[] splitCarName) {
     for(String carName : splitCarName){
@@ -46,6 +48,7 @@ public class UserInputValidator {
       throw new IllegalArgumentException("ERROR : 중복된 이름을 입력할 수 없습니다.");
     }
   }
+
 
   private static void isContainNotAlphabet(String carName) {
     if(!carName.matches("[a-zA-Z]+")){

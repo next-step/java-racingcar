@@ -43,5 +43,4 @@ public class Car {
   public boolean isWinner(Position maxPosition) {
     return position.equals(maxPosition);
   }
-
 }

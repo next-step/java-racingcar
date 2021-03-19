@@ -117,5 +117,4 @@ class CarsTest {
         () -> assertEquals(expectedCars.get(2).getPosition(), cars.getCars().get(2).getPosition())
     );
   }
-
 }
