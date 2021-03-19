@@ -15,5 +15,6 @@ public class ResultView {
         for (Car car : cars.getCars()) {
             System.out.println(car);
         }
+        System.out.println("");
     }
 }
