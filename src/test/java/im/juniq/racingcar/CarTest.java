@@ -14,9 +14,7 @@ class CarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi"})
 	void createCar(String carName) {
-		Car car = new Car(carName, new RandomNumberMovingStrategy());
-
-		assertThat(car.getStatus()).contains(carName);
+		assertThatCode(() -> new Car(carName, new RandomNumberMovingStrategy())).doesNotThrowAnyException();
 	}
 
 	@DisplayName("자동차 이름은 5글자 이하만 허용한다")
