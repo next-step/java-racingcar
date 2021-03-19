@@ -1,10 +1,10 @@
 package test.ch01.step2;
 
 <<<<<<< HEAD
-import ch01.step2.Car;
-import ch01.step2.InputData;
-import ch01.step2.InputView;
-import ch01.step2.RacingGame;
+import ch01.racinggame.Domain.Car;
+import ch01.racinggame.Domain.InputData;
+import ch01.racinggame.view.InputView;
+import ch01.racinggame.Domain.RacingGame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -61,7 +61,7 @@ class RacingGameTest {
         racingGame.isKeepGoing(inputNum);
         assertThat(racingGame.isKeepGoing(inputNum)).isEqualTo(expect);
 =======
-import ch01.step2.InputView;
+import InputView;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

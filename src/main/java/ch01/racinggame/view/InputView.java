@@ -1,4 +1,6 @@
-package ch01.step2;
+package ch01.racinggame.view;
+
+import ch01.racinggame.Domain.InputData;
 
 import java.util.Scanner;
 

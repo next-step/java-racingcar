@@ -1,6 +1,6 @@
 package test.ch01.step2;
 
-import ch01.step2.Car;
+import ch01.racinggame.Domain.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class CarTest {
         //given
         car.setProgressCnt(2);
         //when
-        int progressCnt = car.getProgressCnt();
+        int progressCnt = car.progressCnt();
         //then
         assertThat(progressCnt).isEqualTo(2);
     }
@@ -39,12 +39,12 @@ class CarTest {
     void move() {
 
         //give
-        int currentStepCnt = car.getProgressCnt();
+        int currentStepCnt = car.progressCnt();
 
         //when
         car.setProgressCnt(currentStepCnt + 1);
 
         //then
-        assertThat(car.getProgressCnt()).isEqualTo(currentStepCnt + 1);
+        assertThat(car.progressCnt()).isEqualTo(currentStepCnt + 1);
     }
 }

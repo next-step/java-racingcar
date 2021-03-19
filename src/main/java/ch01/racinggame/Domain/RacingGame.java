@@ -1,4 +1,4 @@
-package ch01.step2;
+package ch01.racinggame.Domain;
 
 
 import java.util.Random;
@@ -11,10 +11,9 @@ public class RacingGame {
 
     public RacingGame(InputData inputData) {
 
-
         //입력값 setting
-        this.attemptCount = inputData.getAttemptCount();
-        this.carCount = inputData.getCarCount();
+        this.attemptCount = inputData.attemptCount();
+        this.carCount = inputData.carCount();
         this.cars = new Car[this.carCount];
 
         //make cars
@@ -39,7 +38,6 @@ public class RacingGame {
         }
     }
 
-
     private int getRandomNumber() {
         return new Random().nextInt(10);
     }
@@ -56,22 +54,5 @@ public class RacingGame {
         return cars;
     }
 
-    public static void main(String[] args) {
-        //Input data
-        InputView iv = new InputView();
-        InputData inputData = iv.getInputData();
 
-        RacingGame racingGame = new RacingGame(inputData);
-
-        ResultView rv = new ResultView();
-        //start racing game
-        for (int i = 0; i < racingGame.getAttemptCount(); i++) {
-
-            racingGame.start();
-
-            //show a result of racing game
-            rv.showResult(racingGame);
-        }
-
-    }
 }

@@ -1,7 +1,10 @@
-package ch01.step2;
+package ch01.racinggame.view;
+
+import ch01.racinggame.Domain.Car;
+import ch01.racinggame.Domain.RacingGame;
 
 public class ResultView {
-<<<<<<< HEAD
+
     Car[] cars;
 
     public ResultView() {
@@ -27,6 +30,5 @@ public class ResultView {
         }
     }
 
-=======
->>>>>>> 폴더명 정리
+
 }

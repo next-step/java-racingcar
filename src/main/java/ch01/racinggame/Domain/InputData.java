@@ -1,4 +1,4 @@
-package ch01.step2;
+package ch01.racinggame.Domain;
 
 public class InputData {
     private int carCount = 0;
@@ -11,19 +11,16 @@ public class InputData {
         progressArr = new String[carCount];
     }
 
-    public int getCarCount() {
+    public int carCount() {
         return carCount;
     }
 
-    public int getAttemptCount() {
+    public int attemptCount() {
         return attemptCount;
     }
 
-    public String[] getProgressArr() {
+    public String[] progressArr() {
         return progressArr;
     }
 
-    public void setProgressArr(String[] progressArr) {
-        this.progressArr = progressArr;
-    }
 }
