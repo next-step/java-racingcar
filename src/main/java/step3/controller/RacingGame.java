@@ -1,7 +1,10 @@
-package step3.service;
+package step3.controller;
 
 import step3.domain.Car;
 import step3.domain.Cars;
+import step3.service.GameRule;
+
+import java.util.List;
 
 public class RacingGame {
     private final GameRule gameRule;
@@ -14,6 +17,14 @@ public class RacingGame {
         this.attemps = attemps;
         this.gameRule = gameRule;
         this.cars = cars;
+    }
+
+    public int getNumberOfCars() {
+        return numberOfCars;
+    }
+
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 
     public void doRace() {

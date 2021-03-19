@@ -1,9 +1,9 @@
 package step3;
 
+import step3.controller.RacingGame;
 import step3.domain.CarFactory;
 import step3.domain.Cars;
 import step3.service.GameRule;
-import step3.service.RacingGame;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -23,6 +23,6 @@ public class App {
         race.doRace();
 
         // 결과 출력
-        ResultView.printRaceResult(race, cars);
+        ResultView.printRaceResult(race);
     }
 }
