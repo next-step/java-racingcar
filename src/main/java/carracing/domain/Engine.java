@@ -19,6 +19,10 @@ public class Engine {
 
     private final Random random;
 
+    public Engine() {
+        this.random = new Random();
+    }
+
     public Engine(Random random) {
         this.random = random;
     }

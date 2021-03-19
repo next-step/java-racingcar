@@ -1,6 +1,9 @@
 package carracing.domain;
 
+import carracing.service.CarRacing;
+import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
+import carracing.service.dto.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,6 +34,25 @@ class CarTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9, 10})
+    @DisplayName("Car 클래스 - 4 이상 값을 리턴하는 엔진을 가진 Car 객체는 반드시 움직인다.")
+    public void car_move(int testParam) {
+        // given
+        Engine engine = new Engine(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return testParam;
+            }
+        });
+
+        Car car = new Car("test");
+        car.drive(engine);
+
+        // when then
+        assertThat(car.inquiryRacingScore().getScore()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
     @ValueSource(ints = {3, 2, 1, 0, -1, -2})
     @DisplayName("Engine 클래스 - 랜덤값이 4 미만이면 반드시 멈춘다")
     public void engine_stop(int testParam) {
@@ -44,6 +66,25 @@ class CarTest {
 
         // when then
         assertThat(engine.drive()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {3, 2, 1, 0, -1, -2})
+    @DisplayName("Car 클래스 - 4 미만 값을 리턴하는 엔진을 가진 Car 객체는 움직일 수 없다")
+    public void car_stop(int testParam) {
+        // given
+        Engine engine = new Engine(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return testParam;
+            }
+        });
+
+        Car car = new Car("test");
+        car.drive(engine);
+
+        // when then
+        assertThat(car.inquiryRacingScore().getScore()).isEqualTo(0);
     }
 
     @Test
@@ -108,8 +149,8 @@ class CarTest {
     }
     
     @Test
-    @DisplayName("우승자 명은 참가차량 명에 반드시 포함되어야 함")
-    void cars_maxScore_winners_score() {
+    @DisplayName("우승자 명은 참가차량 명에 반드시 포함되어야 한다.")
+    void cars_name_winners_name() {
         // given
         String carNames = "pobi,crong,honux";
         Cars cars = new Cars(carNames);
@@ -123,4 +164,79 @@ class CarTest {
             assertThat(carNames).contains(winner.getName());
         }
     }
+
+    @Test
+    @DisplayName("Cars 클래스의 최대점수는 Car 클래스의 모든 점수보다 크거나 같아야 한다.")
+    void cars_maxScore_car_score() {
+        // given
+        String carNames = "pobi,crong,honux";
+        Cars cars = new Cars(carNames);
+        CarRacing carRacing = new CarRacing(5, cars);
+
+        // when
+        carRacing.executeRacing();
+
+        // then
+        for (Car car : cars.getCarList()) {
+            assertThat(cars.maxScore()).isGreaterThanOrEqualTo(car.inquiryRacingScore().getScore());
+        }
+    }
+
+    @Test
+    @DisplayName("Cars 클래스의 최대점수는 경기결과의 모든 점수보다 크거나 같아야 한다.")
+    void cars_maxScore_racingResult_score() {
+        // given
+        String carNames = "pobi,crong,honux";
+        Cars cars = new Cars(carNames);
+        CarRacing carRacing = new CarRacing(5, cars);
+
+        // when
+        RacingResult racingResult = carRacing.executeRacing();
+
+        // then
+        for (RoundResult roundResult : racingResult.getRoundResultList()) {
+            for (RacingScore racingScore : roundResult.getRacingScoreList()) {
+                assertThat(cars.maxScore()).isGreaterThanOrEqualTo(racingScore.getScore());
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("우승자 Car 의 점수는 Cars 클래스의 최대점수값과 같아야 한다.")
+    void cars_maxScore_winners_score() {
+        // given
+        String carNames = "pobi,crong,honux";
+        Cars cars = new Cars(carNames);
+        CarRacing carRacing = new CarRacing(5, cars);
+
+        // when
+        carRacing.executeRacing();
+        List<Car> winnerList = cars.chooseWinners();
+
+        // then
+        for (Car car : winnerList) {
+            assertThat(cars.maxScore()).isEqualTo(car.inquiryRacingScore().getScore());
+        }
+    }
+
+    @Test
+    @DisplayName("우승자 Car는 Cars 에 속한 모든 Car 점수와 비교했을 때 항상 승자이다")
+    void winner_alwaysWin() {
+        // given
+        String carNames = "pobi,crong,honux";
+        Cars cars = new Cars(carNames);
+        CarRacing carRacing = new CarRacing(5, cars);
+
+        // when
+        carRacing.executeRacing();
+        List<Car> winnerList = cars.chooseWinners();
+
+        // then
+        for (Car winner : winnerList) {
+            for (Car car : cars.getCarList()) {
+                assertThat(winner.isWinner(car.inquiryRacingScore().getScore())).isTrue();
+            }
+        }
+    }
+
 }
