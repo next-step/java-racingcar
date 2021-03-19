@@ -17,7 +17,8 @@ class CarTest {
         // given
         NumberGenerator numberGenerator = new RandomUtil();
         GameRule rule = new GameRule(numberGenerator);
-        Car car = new Car();
+        String scoreSymbol = "-";
+        Car car = new Car(scoreSymbol);
 
         Score expected = new Score("-");
         if (rule.isMovableTest(number)) {

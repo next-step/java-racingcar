@@ -17,7 +17,8 @@ class RacingGameTest {
 
     RacingGame createRacingGameObj(int numberOfCars, int attemps) {
         GameRule rule = new GameRule(new RandomUtil());
-        Cars cars = new Cars(numberOfCars);
+        String scoreSymbol = "-";
+        Cars cars = new Cars(numberOfCars, scoreSymbol);
         RacingGame race = new RacingGame(numberOfCars, attemps, rule, cars);
         return race;
     }
@@ -43,10 +44,11 @@ class RacingGameTest {
         // given
         int numberOfCars = 4;
         int attemps = 5;
+        String scoreSymbol = "-";
 
         List<Car> list = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            list.add(new Car());
+            list.add(new Car(scoreSymbol));
         }
         int expected = list.size();
 
@@ -66,9 +68,10 @@ class RacingGameTest {
     void raceByRound() {
         // given
 
+
         // when
 
         // then
-        
+
     }
 }
