@@ -1,10 +1,14 @@
-package racing.models;
+package racing.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Round {
     private final List<Car> carList;
+
+    public Round(Cars cars) {
+        this(cars.deepCopyToList());
+    }
 
     public Round(List<Car> carList) {
         this.carList = carList;

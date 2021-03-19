@@ -3,9 +3,11 @@ package racing.utils;
 import java.util.Random;
 
 public class RandomUtil {
-    private static Random random = new Random();
+    private static final int CAR_MAX_VALUE = 9;
 
-    public static int nextInt(int bound) {
-        return random.nextInt(bound);
+    private static final Random random = new Random();
+
+    public static int carRandomValue() {
+        return random.nextInt(CAR_MAX_VALUE);
     }
 }

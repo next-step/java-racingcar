@@ -1,6 +1,4 @@
-package racing.models;
-
-import racing.factories.RoundFactory;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +7,10 @@ public class Racing {
     final private Cars cars;
     final private Rounds rounds;
 
+    public Racing(String[] carNames) {
+        this(new Cars(carNames), new Rounds());
+    }
+
     public Racing(Cars cars, Rounds rounds) {
         this.cars = cars;
         this.rounds = rounds;
@@ -16,7 +18,7 @@ public class Racing {
 
     public void runRace() {
         cars.tryMoveAll();
-        rounds.add(RoundFactory.createFrom(cars));
+        rounds.add(new Round(cars));
     }
 
     public boolean hasRun(int count) {
