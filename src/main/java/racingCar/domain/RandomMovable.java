@@ -9,22 +9,17 @@ import java.util.Random;
  */
 public class RandomMovable implements MovableStrategy {
   private static final int RANDOM_NUMBER_BOUNDARY = 10;
-  private static final int NUMBER_MOVING_CONDITION = 4;
 
-  private int randomNumber;
+  private RandomNumber randomNumber;
 
   public void createRandomNumber() {
     Random random = new Random();
-    this.randomNumber = random.nextInt(RANDOM_NUMBER_BOUNDARY);
-  }
-
-  public int getRandomNumber() {
-    return this.randomNumber;
+    this.randomNumber = new RandomNumber(random.nextInt(RANDOM_NUMBER_BOUNDARY));
   }
 
   @Override
   public boolean movable() {
     createRandomNumber();
-    return this.randomNumber >= NUMBER_MOVING_CONDITION;
+    return this.randomNumber.isMovable();
   }
 }

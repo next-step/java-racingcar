@@ -2,7 +2,7 @@ package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingCar.view.OutputView;
+import racingCar.view.ResultView;
 
 public class RacingGame {
 
@@ -14,13 +14,13 @@ public class RacingGame {
     this.tryCount = tryCount;
   }
 
-  public List<Car> start(OutputView outputView) {
+  public List<Car> start(ResultView resultView) {
     Cars cars = makeCars(carNames);
 
-    outputView.printResult();
+    resultView.printResultIntro();
     for (int i = 0; i < tryCount; i++) {
-      cars.move(outputView);
-      outputView.printEmptyLine();
+      List<TryResult> tryResults = cars.move();
+      resultView.printTryResult(tryResults);
     }
 
     return cars.determineWinners();

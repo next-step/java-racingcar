@@ -1,11 +1,10 @@
 package racingCar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingCar.view.OutputView;
 
 public class Cars {
-
 
   private List<Car> cars;
 
@@ -14,12 +13,12 @@ public class Cars {
     this.cars = cars;
   }
 
-  public void move(OutputView outputView) {
-    this.cars.forEach(car -> {
-      car.move(new RandomMovable());
-      outputView.printCarDistance(car);
-    });
-
+  public List<TryResult> move() {
+    List<TryResult> tryResults = new ArrayList<>();
+    for (Car car : cars) {
+      tryResults.add(car.move(new RandomMovable()));
+    }
+    return tryResults;
   }
 
   public List<Car> determineWinners() {
@@ -36,4 +35,5 @@ public class Cars {
         .max()
         .orElse(-1);
   }
+
 }

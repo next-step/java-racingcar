@@ -5,13 +5,13 @@ import racingCar.domain.Car;
 import racingCar.domain.OverCarNameLengthException;
 import racingCar.domain.RacingGame;
 import racingCar.view.InputView;
-import racingCar.view.OutputView;
+import racingCar.view.ResultView;
 
 public class RacingGameMain {
 
   public static void main(String[] args) {
     InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
+    ResultView resultView = new ResultView();
 
     String[] carNames = inputView.inputCarNames();
     int tryCount = inputView.inputTryCount();
@@ -19,10 +19,10 @@ public class RacingGameMain {
     RacingGame racingGame = new RacingGame(carNames, tryCount);
 
     try {
-      List<Car> winners = racingGame.start(outputView);
-      outputView.printWinners(winners);
+      List<Car> winners = racingGame.start(resultView);
+      resultView.printWinners(winners);
     } catch (OverCarNameLengthException e) {
-      outputView.printError(e.getMessage());
+      resultView.printError(e.getMessage());
     }
   }
 
