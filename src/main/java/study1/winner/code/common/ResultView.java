@@ -26,4 +26,8 @@ public class ResultView {
     IntStream.range(INIT_NUM, num).forEach((i) -> System.out.print(RUN_MARK));
     System.out.print("\n");
   }
+
+  public static void winner(List<String> winners) {
+    System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
+  }
 }

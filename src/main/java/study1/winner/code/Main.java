@@ -16,6 +16,8 @@ public class Main {
       .map(Cars::result)
       .forEach(ResultView::result);
 
+    ResultView.winner(race.winners());
+
     InputView.close();
   }
 
