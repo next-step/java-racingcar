@@ -12,7 +12,9 @@ public class Cars {
   }
 
   public Cars(Cars cars) {
-    this.cars = cars.cars;
+    this.cars = cars.cars.stream()
+                  .map((car) -> new Car(car))
+                  .collect(Collectors.toList());
   }
 
   public Cars move() {

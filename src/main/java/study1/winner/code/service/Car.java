@@ -21,6 +21,10 @@ public class Car {
     this(new Name(name), distance);
   }
 
+  public Car(Car car) {
+    this(car.name, car.distance);
+  }
+
   public Car move(MoveStrategy moveStrategy) {
     if(moveStrategy.move()) {
       distance += INCREASE_DISTANCE;
