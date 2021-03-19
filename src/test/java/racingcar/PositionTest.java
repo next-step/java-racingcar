@@ -27,17 +27,18 @@ public class PositionTest {
     @Test
     void isGo_test() {
         RacingCar racingCar = new RacingCar("pobi", new Position());
-        String result = racingCar.isGo(5);
-        assertThat(result).isEqualTo("-");
+        racingCar.move();
+        assertThat(1).isEqualTo(racingCar.status().length());
 
     }
 
     @DisplayName("멈춤 테스트")
     @Test
     void stop_test() {
-        RacingCar racingCar = new RacingCar("crong", new Position());
-        String result = racingCar.isGo(3);
-        assertThat(result).isEqualTo("");
+        RacingCar racingCar = new RacingCar("pobi", new Position());
+        racingCar.stop();
+        assertThat(0).isEqualTo(racingCar.status().length());
+
     }
 
 }
