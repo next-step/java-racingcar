@@ -61,6 +61,21 @@ class CarsTest {
                 );
     }
 
+    @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 최대값 반환 테스트")
+    @Test
+    void 최대값_반환(){
+        // given
+        InputNames inputNames = new InputNames("a,b,c");
+        Cars cars = new Cars(inputNames);
+
+        // when
+        cars.move(()-> true);
+        int actual = cars.maxPosition();
+
+        // then
+        assertThat(actual).isEqualTo(1);
+    }
+
     @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 우승자 리스트 반환 테스트")
     @Test
     void 우승자_반환(){

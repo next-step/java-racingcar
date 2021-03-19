@@ -29,4 +29,13 @@ public class RacingCarGame {
     public final ResponseDto responseDto() {
         return new ResponseDto(cars);
     }
+
+    private final int maxPosition(){
+        // cars.cars().stream().
+    }
+
+    public final Winners winners() {
+        return cars.winners()
+    }
+
 }
