@@ -6,7 +6,7 @@ public class ResultView {
     public static void printRaceResult(RacingGame race) {
         System.out.println("실행결과");
         for (int i = 0; i < race.getNumberOfCars(); i++) {
-            System.out.println(race.getCars().get(i).getScore());
+            System.out.println(race.getCars().get(i).getScore().getScore());
         }
     }
 }

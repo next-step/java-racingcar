@@ -14,7 +14,8 @@ public class App {
         InputView.inputValues();
 
         // 자동차 준비
-        Cars cars = new Cars(InputView.getNumberOfCars());
+        String scoreSymbol = "-";
+        Cars cars = new Cars(InputView.getNumberOfCars(), scoreSymbol);
 
         // 레이스 준비
         NumberGenerator numberGenerator = new RandomUtil();

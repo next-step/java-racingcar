@@ -6,6 +6,10 @@ public class Car {
     // private String score = "";
     private Score score;
 
+    public Car(String scoreSymbol) {
+        this.score = new Score(scoreSymbol);
+    }
+
     public Score getScore() {
         return score;
     }

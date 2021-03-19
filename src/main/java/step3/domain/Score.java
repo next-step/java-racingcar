@@ -10,7 +10,7 @@ public class Score {
     }
 
     public void setScore() {
-        this.score += symbol;
+        score += symbol;
     }
 
     public String getScore() {
