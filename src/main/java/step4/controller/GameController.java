@@ -20,5 +20,6 @@ public class GameController {
             cars.move();
             ResultView.printPosition(cars);
         }
+        ResultView.printWinners(cars);
     }
 }
