@@ -1,41 +1,30 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Racing {
-    final private Cars cars;
-    final private Rounds rounds;
+    public static final int MIN_ATTEMPT_COUNT = 0;
 
-    public Racing(String[] carNames) {
-        this(new Cars(carNames), new Rounds());
+    private final Cars cars;
+    private int attemptsCount;
+
+    public Racing(String[] carNames, int attemptsCount) {
+        this(new Cars(carNames), attemptsCount);
     }
 
-    public Racing(Cars cars, Rounds rounds) {
+    public Racing(Cars cars, int attemptsCount) {
         this.cars = cars;
-        this.rounds = rounds;
+        this.attemptsCount = attemptsCount;
     }
 
     public void runRace() {
         cars.tryMoveAll();
-        rounds.add(new Round(cars));
+        attemptsCount--;
     }
 
-    public boolean hasRun(int count) {
-        return rounds.size() < count;
+    public boolean racing() {
+        return attemptsCount > MIN_ATTEMPT_COUNT;
     }
 
-    public Rounds getRounds() {
-        return rounds;
-    }
-
-    public List<Car> getWinnerList() {
-        final Round lastRound = rounds.getLast();
-
-        if (lastRound == null) {
-            return new ArrayList<>();
-        }
-
-        return lastRound.getLeaderList();
+    public Round currentRound() {
+        return new Round(cars);
     }
 }

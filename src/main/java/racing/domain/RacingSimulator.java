@@ -1,31 +1,39 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingSimulator {
     private final Racing racing;
-    private final int attemptsCount;
+    private final Rounds rounds;
 
     public RacingSimulator(String[] carNames, int attemptsCount) {
-        this(new Racing(carNames), attemptsCount);
+        this(new Racing(carNames, attemptsCount), new Rounds());
     }
 
-    public RacingSimulator(Racing racing, int attemptsCount) {
+    public RacingSimulator(Racing racing, Rounds rounds) {
         this.racing = racing;
-        this.attemptsCount = attemptsCount;
+        this.rounds = rounds;
     }
 
     public void start() {
-        while (racing.hasRun(attemptsCount)) {
+        while (racing.racing()) {
             racing.runRace();
+            rounds.add(racing.currentRound());
         }
     }
 
     public Rounds getRounds() {
-        return racing.getRounds();
+        return rounds;
     }
 
     public List<Car> getWinnerList() {
-        return racing.getWinnerList();
+        final Round lastRound = rounds.getLast();
+
+        if (lastRound == null) {
+            return new ArrayList<>();
+        }
+
+        return lastRound.getLeaderList();
     }
 }
