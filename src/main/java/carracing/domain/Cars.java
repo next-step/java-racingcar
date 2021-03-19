@@ -62,7 +62,7 @@ public class Cars {
     public List<RacingScore> racingScoreList() {
         List<RacingScore> racingScoreList = new ArrayList<>();
         for (Car car : carList) {
-            racingScoreList.add(new RacingScore(car.getName(), car.getMileage()));
+            racingScoreList.add(car.inquiryRacingScore());
         }
         return racingScoreList;
     }
@@ -70,7 +70,7 @@ public class Cars {
     public int maxScore() {
         int maxScore = 0;
         for (Car car : carList) {
-            maxScore = Math.max(maxScore, car.getMileage());
+            maxScore = car.calculateWinnerScore(maxScore);
         }
         return maxScore;
     }
@@ -88,7 +88,7 @@ public class Cars {
     }
 
     private void addWinner(Car car, List<Car> winnerList) {
-        if (car.getMileage() == maxScore()) {
+        if (car.isWinner(maxScore())) {
             winnerList.add(car);
         }
     }

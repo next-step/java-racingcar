@@ -1,5 +1,6 @@
 package carracing.domain;
 
+import carracing.service.dto.RacingScore;
 import common.utils.StringUtils;
 
 import java.util.Random;
@@ -49,8 +50,15 @@ public class Car {
         return name;
     }
 
-    public int getMileage() {
-        return mileage;
+    public boolean isWinner(int score) {
+        return mileage >= score;
     }
 
+    public int calculateWinnerScore(int score) {
+        return Math.max(mileage, score);
+    }
+
+    public RacingScore inquiryRacingScore() {
+        return new RacingScore(name, mileage);
+    }
 }
