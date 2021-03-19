@@ -3,6 +3,7 @@ package step3.controller;
 import step3.domain.Car;
 import step3.domain.Cars;
 import step3.service.GameRule;
+import step3.view.ResultView;
 
 import java.util.List;
 
@@ -28,7 +29,9 @@ public class RacingGame {
     }
 
     public void doRace() {
+        System.out.println("실행 결과");
         for (int i = 0; i < attemps; i++) {
+            System.out.println("round : " + (i + 1));
             raceByRound();
         }
     }
@@ -37,6 +40,7 @@ public class RacingGame {
         for (int i = 0; i < numberOfCars; i++) {
             Car car = cars.getCars().get(i);
             car.move(gameRule);
+            ResultView.printRaceResult(car.getScore());
         }
     }
 

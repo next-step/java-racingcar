@@ -3,28 +3,26 @@ package step3.domain;
 import step3.service.GameRule;
 
 public class Car {
-    // private String score = "";
-    private Score score;
+    private final String symbol;
+    private String score = "";
 
     public Car(String scoreSymbol) {
-        this.score = new Score(scoreSymbol);
+        this.symbol = scoreSymbol;
     }
 
-    public Score getScore() {
+    public String getScore() {
         return score;
     }
 
     public void move(GameRule rule) {
         if (rule.isMovable()) {
-            // score += "-";
-            score.setScore();
+            score += symbol;
         }
     }
 
     public void moveTest(GameRule rule, int num) {
         if (rule.isMovableTest(num)) {
-            // score += "-";
-            score.setScore();
+            score += symbol;
         }
     }
 }

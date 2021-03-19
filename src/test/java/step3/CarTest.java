@@ -3,7 +3,6 @@ package step3;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step3.domain.Car;
-import step3.domain.Score;
 import step3.service.GameRule;
 import step3.utils.NumberGenerator;
 import step3.utils.RandomUtil;
@@ -20,14 +19,14 @@ class CarTest {
         String scoreSymbol = "-";
         Car car = new Car(scoreSymbol);
 
-        Score expected = new Score("-");
-        if (rule.isMovableTest(number)) {
-            expected.setScore();
+        String expected = "";
+        if (number >= 4) {
+            expected += scoreSymbol;
         }
 
         // when
         car.moveTest(rule, number);
-        Score actual = car.getScore();
+        String actual = car.getScore();
 
         // then
         assertEquals(actual, expected);

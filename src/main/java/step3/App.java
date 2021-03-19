@@ -6,7 +6,6 @@ import step3.service.GameRule;
 import step3.utils.NumberGenerator;
 import step3.utils.RandomUtil;
 import step3.view.InputView;
-import step3.view.ResultView;
 
 public class App {
     public static void main(String[] args) {
@@ -24,8 +23,5 @@ public class App {
 
         // 레이스 시작
         race.doRace();
-
-        // 결과 출력
-        ResultView.printRaceResult(race);
     }
 }
