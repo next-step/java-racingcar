@@ -80,16 +80,12 @@ class CarsTest {
     @Test
     void 우승자_반환(){
         // given
-        InputNames inputNames = new InputNames("a,b,c");
-        Cars cars = new Cars(inputNames);
+        Cars cars = new Cars("a,b,c");
+        List<Car> expected = cars.cars();
 
         // when
-        List<Car> expected = cars.cars();
-        expected.stream().forEach(car -> car.move(()-> true));
-        int winnerPosition = expected.stream()
-                .mapToInt(car -> car.position().position())
-                .max()
-                .orElseGet(()->0);
+        cars.move(()-> true);
+        int winnerPosition = cars.maxPosition();
 
         List<Car> actual = cars.winners(winnerPosition);
 
