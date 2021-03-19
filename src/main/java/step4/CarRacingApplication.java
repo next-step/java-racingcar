@@ -13,13 +13,12 @@ public class CarRacingApplication {
         OutputView.enterNumberOfRounds();
         int remainingRounds = InputView.getNumberInput();
 
-        CarRacingGame carRacingGame = new CarRacingGame(InputView.splitInput(names), remainingRounds);
+        CarRacingGame carRacingGame = new CarRacingGame(InputView.splitInput(names), remainingRounds, new RandomMoveStrategy());
 
         OutputView.printExecutionResults();
 
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
         while(carRacingGame.racing()){
-            carRacingGame.race(randomMoveStrategy);
+            carRacingGame.race();
             OutputView.printCarRacing(carRacingGame.Cars());
         }
 
