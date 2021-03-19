@@ -18,7 +18,7 @@ public class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(1);
@@ -41,13 +41,13 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void 요구사항2_2(int num) {
         assertTrue(numbers.contains(num));
     }
 
     @ParameterizedTest
-    @CsvSource(value={"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void 요구사항3(int num, boolean expected) {
         assertThat(numbers.contains(num)).isEqualTo(expected);
     }
