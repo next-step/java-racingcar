@@ -20,7 +20,7 @@ public class Racing {
         attemptsCount--;
     }
 
-    public boolean racing() {
+    public boolean hasRun() {
         return attemptsCount > MIN_ATTEMPT_COUNT;
     }
 

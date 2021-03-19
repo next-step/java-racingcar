@@ -15,7 +15,7 @@ public class RacingTest {
         final Racing racing = new Racing(carNames, attemptsCount);
 
         int raceCount = 0;
-        while (racing.racing()) {
+        while (racing.hasRun()) {
             racing.runRace();
             raceCount++;
         }

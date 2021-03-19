@@ -17,7 +17,7 @@ public class RacingSimulator {
     }
 
     public void start() {
-        while (racing.racing()) {
+        while (racing.hasRun()) {
             racing.runRace();
             rounds.add(racing.currentRound());
         }
