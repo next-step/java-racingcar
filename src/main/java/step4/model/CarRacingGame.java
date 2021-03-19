@@ -2,20 +2,20 @@ package step4.model;
 
 public class CarRacingGame {
     private final Cars cars;
-    private final Round round;
+    private final RemainingRound remainingRound;
 
-    public CarRacingGame(String[] carNames, int round) {
+    public CarRacingGame(String[] carNames, int remainingRound) {
         this.cars = new Cars(carNames);
-        this.round = new Round(round);
+        this.remainingRound = new RemainingRound(remainingRound);
     }
 
     public void race(MoveStrategy moveStrategy) {
-        round.race();
+        remainingRound.race();
         cars.move(moveStrategy);
     }
 
     public boolean racing() {
-        return round.racing();
+        return remainingRound.racing();
     }
 
     public Cars Cars() {

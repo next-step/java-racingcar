@@ -11,9 +11,9 @@ public class CarRacingApplication {
         OutputView.enterNamesOfCars();
         String names = InputView.getInput();
         OutputView.enterNumberOfRounds();
-        int numberOfRounds = InputView.getNumberInput();
+        int remainingRounds = InputView.getNumberInput();
 
-        CarRacingGame carRacingGame = new CarRacingGame(InputView.splitInput(names), numberOfRounds);
+        CarRacingGame carRacingGame = new CarRacingGame(InputView.splitInput(names), remainingRounds);
 
         OutputView.printExecutionResults();
 
