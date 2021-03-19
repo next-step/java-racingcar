@@ -2,12 +2,17 @@ package step4.domain.racing;
 
 import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
+import step4.dto.RequestDto;
 import step4.dto.ResponseDto;
 
 public final class RacingCarGame {
 
     private final Cars cars;
     private final Round round;
+
+    public RacingCarGame(RequestDto requestDto){
+        this(requestDto.inputNames(), requestDto.inputRound());
+    }
 
     public RacingCarGame(InputNames inputNames, InputRound inputRound) {
         this(new Cars(inputNames), new Round(inputRound));

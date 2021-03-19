@@ -11,4 +11,5 @@ public final class Winners {
     public Winners(List<Car> winners) {
         this.winners = winners;
     }
+
 }

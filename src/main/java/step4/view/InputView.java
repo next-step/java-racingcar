@@ -9,11 +9,17 @@ public final class InputView {
     private static final Scanner scanner = new Scanner(System.in);
     private static InputView instance;
 
+    private InputView() { }
+
     public static InputView getInstance() {
         if (instance == null) {
             instance = new InputView();
         }
         return instance;
+    }
+
+    private boolean isInstanceNull(){
+        return instance == null;
     }
 
     private final String inputNames() {

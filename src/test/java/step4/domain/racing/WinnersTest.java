@@ -33,4 +33,18 @@ class WinnersTest {
         // then
         assertThat(winners).isNotNull();
     }
+
+    @DisplayName("Winners 인스턴스가 소유한 데이터 반환 여부 테스트")
+    @Test
+    void 반환() {
+        // given
+        Winners winners = new Winners(cars);
+
+        // when
+        List<Car> actual = winners.winners();
+
+        // then
+        assertThat(actual).isEqualTo(cars);
+    }
+
 }
