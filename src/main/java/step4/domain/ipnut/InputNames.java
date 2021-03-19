@@ -5,7 +5,7 @@ import utils.StringUtils;
 
 import java.util.List;
 
-public class InputNames {
+public final class InputNames {
 
     private final List<String> inputNames;
 

@@ -4,7 +4,7 @@ import step4.domain.car.Car;
 
 import java.util.List;
 
-public class Winners {
+public final class Winners {
 
     private final List<Car> winners;
 

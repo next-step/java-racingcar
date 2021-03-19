@@ -6,7 +6,7 @@ import step4.dto.ResponseDto;
 
 import java.util.List;
 
-public class ResultView {
+public final class ResultView {
 
     public ResultView() {
     }

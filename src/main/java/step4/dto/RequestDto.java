@@ -4,8 +4,6 @@ import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
 import utils.StringUtils;
 
-import java.util.List;
-
 public final class RequestDto {
 
     private final InputNames inputNames;

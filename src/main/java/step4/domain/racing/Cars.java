@@ -7,7 +7,7 @@ import step4.startegy.Move;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Cars {
+public final class Cars {
 
     private final List<Car> cars;
 

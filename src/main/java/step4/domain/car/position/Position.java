@@ -1,6 +1,6 @@
 package step4.domain.car.position;
 
-public class Position {
+public final class Position {
     private int position;
 
     public Position() {

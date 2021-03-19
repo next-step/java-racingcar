@@ -4,7 +4,7 @@ import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
 import step4.dto.ResponseDto;
 
-public class RacingCarGame {
+public final class RacingCarGame {
 
     private final Cars cars;
     private final Round round;

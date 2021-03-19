@@ -4,7 +4,7 @@ import step4.dto.RequestDto;
 
 import java.util.Scanner;
 
-public class InputView {
+public final class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static InputView instance;

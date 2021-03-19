@@ -2,7 +2,7 @@ package step4.domain.racing;
 
 import step4.domain.ipnut.InputRound;
 
-public class Round {
+public final class Round {
     private final int MINIMUM = 0;
     private int round;
 
@@ -25,7 +25,7 @@ public class Round {
         return round > MINIMUM;
     }
 
-    public void nextRound() {
+    public final void nextRound() {
         round--;
     }
 
