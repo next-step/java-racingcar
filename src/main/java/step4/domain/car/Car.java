@@ -7,7 +7,7 @@ import step4.startegy.Move;
 public final class Car {
 
     private final Name name;
-    private Position position;
+    private final Position position;
 
     public Car(String name) {
         this(new Name(name));
