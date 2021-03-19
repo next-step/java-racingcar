@@ -9,7 +9,7 @@ import java.util.List;
 public class Cars {
     private static final int MAX_BOUND = 10;
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     private Cars(List<Car> cars) {
         this.cars = cars;
@@ -30,5 +30,9 @@ public class Cars {
         for (Car car : cars) {
             car.move(RandomUtils.getRandomNum(MAX_BOUND));
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
