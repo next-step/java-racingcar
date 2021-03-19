@@ -1,5 +1,6 @@
 package step3;
 
+import step3.domain.CarFactory;
 import step3.domain.Cars;
 import step3.service.GameRule;
 import step3.service.RacingGame;
@@ -11,14 +12,15 @@ public class App {
         // 입력받기
         InputView.inputValues();
 
-        // 레이스 준비
-        RacingGame race = new RacingGame(InputView.howManyCars(), InputView.getAttemps(), new GameRule());
-
         // 자동차 준비
-        Cars cars = race.initCars();
+        CarFactory factory = new CarFactory(InputView.getNumberOfCars());
+        Cars cars = factory.getCars();
+
+        // 레이스 준비
+        RacingGame race = new RacingGame(InputView.getNumberOfCars(), InputView.getAttemps(), new GameRule(), cars);
 
         // 레이스 시작
-        race.doRace(cars);
+        race.doRace();
 
         // 결과 출력
         ResultView.printRaceResult(race, cars);

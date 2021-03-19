@@ -17,7 +17,7 @@ public class InputView {
         attemps = scan.nextInt();
     }
 
-    public static int howManyCars() {
+    public static int getNumberOfCars() {
         return cars;
     }
 
