@@ -3,15 +3,21 @@ package step3.domain;
 import step3.service.GameRule;
 
 public class Car {
-    private String racingLog = "";
+    private String score = "";
 
-    public String getRacingLog() {
-        return racingLog;
+    public String getScore() {
+        return score;
     }
 
     public void move(GameRule rule) {
         if (rule.isMovable()) {
-            racingLog += "-";
+            score += "-";
+        }
+    }
+
+    public void moveTest(GameRule rule, int num) {
+        if (rule.isMovableTest(num)) {
+            score += "-";
         }
     }
 }

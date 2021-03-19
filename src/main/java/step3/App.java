@@ -4,6 +4,8 @@ import step3.controller.RacingGame;
 import step3.domain.CarFactory;
 import step3.domain.Cars;
 import step3.service.GameRule;
+import step3.utils.NumberGenerator;
+import step3.utils.RandomUtil;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -17,7 +19,10 @@ public class App {
         Cars cars = factory.getCars();
 
         // 레이스 준비
-        RacingGame race = new RacingGame(InputView.getNumberOfCars(), InputView.getAttemps(), new GameRule(), cars);
+        NumberGenerator numberGenerator = new RandomUtil();
+        GameRule rule = new GameRule(numberGenerator);
+        RacingGame race = new RacingGame(InputView.getNumberOfCars(), InputView.getAttemps(), rule,
+                cars);
 
         // 레이스 시작
         race.doRace();
