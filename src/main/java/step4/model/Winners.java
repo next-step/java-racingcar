@@ -15,12 +15,12 @@ public class Winners {
         this.winners = cars;
     }
 
-    public String winnerNames() {
+    public List<String> winnerNames() {
         List<String> winnerNames = new ArrayList<>();
         for (Car winner : winners) {
             winnerNames.add(winner.name());
         }
-        return String.join(CarRacingConstant.COMMA, winnerNames);
+        return winnerNames;
     }
 
     @Override

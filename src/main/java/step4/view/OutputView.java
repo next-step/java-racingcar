@@ -30,7 +30,7 @@ public class OutputView {
 
 
     public static void printWinners(Winners winners){
-        System.out.print(winners.winnerNames());
+        System.out.print(String.join(CarRacingConstant.COMMA, winners.winnerNames()));
         System.out.print(CarRacingConstant.WIN);
     }
 
