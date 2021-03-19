@@ -25,7 +25,7 @@ public class PositionTest {
     Position position = new Position(3);
 
     //when
-    position.updatePosition();
+    position.forwardPosition();
 
     //then
     assertEquals(position.toInt(), 4);

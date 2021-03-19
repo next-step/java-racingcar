@@ -31,10 +31,10 @@ class CarTest {
     Position initPosition = car.getPosition();
 
     //when
-    car.moveCar(() -> true);
+    car.moveCar(new RandomMovingStrategy(), 4);
 
     Position movedPosition = car.getPosition();
-    initPosition.updatePosition();
+    initPosition.forwardPosition();
 
     //then
     assertEquals(initPosition, movedPosition);
@@ -48,7 +48,7 @@ class CarTest {
     Position initPosition = car.getPosition();
 
     //when
-    car.moveCar(() -> false);
+    car.moveCar((new RandomMovingStrategy(), 4);
 
     Position movedPosition = car.getPosition();
 
