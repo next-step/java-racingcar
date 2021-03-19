@@ -22,7 +22,7 @@ public class Winners {
     public List<String> nameList() {
         List<String> nameList = new ArrayList<>();
         for (Car car : carList) {
-            nameList.add(car.name());
+            nameList.add(car.getName());
         }
         return nameList;
     }

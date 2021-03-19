@@ -45,11 +45,11 @@ public class Car {
         mileage+=engine.drive();
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
-    public int mileage() {
+    public int getMileage() {
         return mileage;
     }
 
