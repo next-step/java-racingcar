@@ -1,8 +1,8 @@
-package step3;
+package step3.domain;
 
-public class CarDto {
-    private String carName;
-    private int position;
+public class CarPosition {
+    private final String carName;
+    private final int position;
 
     public static class Builder {
         private String carName;
@@ -18,14 +18,14 @@ public class CarDto {
             return this;
         }
 
-        public CarDto build() {
-            return new CarDto(this);
+        public CarPosition build() {
+            return new CarPosition(carName, position);
         }
     }
 
-    private CarDto(Builder builder) {
-        this.carName = builder.carName;
-        this.position = builder.position;
+    private CarPosition(String carName, int position) {
+        this.carName = carName;
+        this.position = position;
     }
 
     public String getCarName() {

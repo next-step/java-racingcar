@@ -1,25 +1,26 @@
 package step3;
 
-import java.util.List;
+import step3.controller.CarRacingController;
+import step3.domain.CarRacingResult;
+import step3.util.StringUtil;
+import step3.util.ViewUtil;
+import step3.view.InputView;
+import step3.view.ResultView;
 
 public class CarRacingApplication {
 
     public static void main(String[] args) {
-        try {
-            InputView inputView = new InputView();
-            inputView.inputCarsName();
-            inputView.inputRoundsCount();
+        String carsName = ViewUtil.inputCarName();
+        int roundsCount = ViewUtil.inputRoundCount();
 
-            CarRacingController carRacingController = new CarRacingController(new Round(inputView.getRoundsCount()),
-                    new CarRacing(inputView.getCarsName()));
+        InputView inputView = new InputView(StringUtil.split(",", carsName), roundsCount);
 
-            List<CarResultDto> carResultDtoList = carRacingController.startCarRacing();
-            ResultView resultView = new ResultView(carResultDtoList);
-            resultView.printOutRacingResult();
-            resultView.printOutWinnerCarName();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        CarRacingController carRacingController = new CarRacingController(inputView);
+
+        CarRacingResult carRacingResult = carRacingController.startCarRacing();
+        ResultView resultView = new ResultView(carRacingResult);
+        resultView.printOutRacingResult();
+        resultView.printOutWinnerCarName();
     }
 
 }

@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 public class Round {
     private int roundsCount;
@@ -14,4 +14,6 @@ public class Round {
     public void reduceRound() {
         this.roundsCount--;
     }
+
+    public static final Round NULL = new Round(0);
 }
