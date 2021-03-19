@@ -92,7 +92,7 @@ class CarRacingServiceTest {
         RacingResult racingResult = carRacing.executeRacing();
 
         // then
-        assertThat(1).isLessThanOrEqualTo(racingResult.getWinnerNameList().size());
+        assertThat(1).isLessThanOrEqualTo(racingResult.getWinnerList().size());
     }
 
 }

@@ -116,11 +116,11 @@ class CarTest {
         
         // when
         cars.driveAll();
-        Winners winners = cars.winners();
+        List<Car> winnerList = cars.chooseWinners();
 
         // then
-        for (String winnerName : winners.nameList()) {
-            assertThat(carNames).contains(winnerName);
+        for (Car winner : winnerList) {
+            assertThat(carNames).contains(winner.getName());
         }
     }
 }

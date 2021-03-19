@@ -75,11 +75,7 @@ public class Cars {
         return maxScore;
     }
 
-    public Winners winners() {
-        return new Winners(chooseWinners());
-    }
-
-    private List<Car> chooseWinners() {
+    public List<Car> chooseWinners() {
         List<Car> winnerList = new ArrayList<>();
         for (Car car : carList) {
             addWinner(car, winnerList);

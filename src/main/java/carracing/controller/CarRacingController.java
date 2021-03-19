@@ -1,8 +1,13 @@
 package carracing.controller;
 
 import carracing.controller.dto.CarRacingRequest;
+import carracing.controller.dto.CarRacingResponse;
+import carracing.domain.Car;
 import carracing.service.CarRacingService;
 import carracing.service.dto.RacingResult;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CarRacingController
@@ -20,7 +25,15 @@ public class CarRacingController {
         this.carRacingService = new CarRacingService();
     }
 
-    public RacingResult executeCarRacing(CarRacingRequest carRacingRequest) {
-        return carRacingService.executeCarRacing(carRacingRequest);
+    public CarRacingResponse executeCarRacing(CarRacingRequest carRacingRequest) {
+        return assembleOutput(carRacingService.executeCarRacing(carRacingRequest));
+    }
+
+    private CarRacingResponse assembleOutput(RacingResult racingResult) {
+        List<String> winnerNameList = new ArrayList<>();
+        for (Car car : racingResult.getWinnerList()) {
+            winnerNameList.add(car.getName());
+        }
+        return new CarRacingResponse(racingResult.getRoundResultList(), winnerNameList);
     }
 }
