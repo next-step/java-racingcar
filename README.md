@@ -22,7 +22,8 @@
   * OutputView : API 실행결과를 그래피컬하게 출력해주는 출력 UI 소스
 * [Presentation Layer]
   * CarRacingController : 자동차 경주 전 과정을 처리할 Controller 클래스
-  * CarRacingRequest : 유저의 경주 시작관련 입력값을 저장하고 있는 DTO 클래스
+  * CarRacingRequest : 자동차 경주 시작관련 입력값을 저장하고 있는 DTO 클래스
+  * CarRacingResponse : 자동차 경주 결과를 UI 에 출력하기 위한 정보를 저장하고 있는 DTO 클래스
 * [Service Layer]
   * CarRacingService : 자동차 경주를 진행하고 성적을 산출하기 위한 Application Service 클래스
   * CarRacing : 자동차 경주의 비즈니스 로직을 가지고 있는 도메인 클래스
@@ -32,7 +33,6 @@
 * [domain Layer]
   * Car : 자동차 경주에 참여한 차 한대를 나타내는 Entity 클래스
   * Cars : 참가한 자동차들의 모임 클래스
-  * Winners : 자동차 경주 승자들의 모임 클래스 
   * Engine : 자동차의 움직임을 결정하기 위한 클래스
 * [common]
   * CarRacingConstant : 업무 처리에 필요한 상수모음
