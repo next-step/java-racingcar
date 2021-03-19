@@ -17,9 +17,9 @@ public class Cars {
     return cars;
   }
 
-  public void updateAll(RandomNumberGenerator randomNumberGenerator){
+  public void updateAll(RandomNumberGenerator generator){
     for(Car car : cars) {
-      car.moveCar(new RandomMovingStrategy(randomNumberGenerator));
+      car.moveCar(new RandomMovingStrategy(), generator.generateRandomNumber());
     }
   }
 
@@ -52,10 +52,11 @@ public class Cars {
   }
 
   private Position getMaxPositionInCars() {
-    Position max = new Position(0);
-    for(Car car : cars) {
-      max = car.getMaxPosition(max);
-    }
-    return max;
+    int max = cars.stream()
+        .map(Car::getPosition)
+        .mapToInt(Position::toInt)
+        .max()
+        .orElseThrow(IllegalArgumentException::new);
+    return new Position(max);
   }
 }

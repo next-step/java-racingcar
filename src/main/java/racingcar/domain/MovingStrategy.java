@@ -2,5 +2,5 @@ package racingcar.domain;
 
 @FunctionalInterface
 public interface MovingStrategy {
-  boolean moveable();
+  boolean moveable(int generatedRandomNumber);
 }

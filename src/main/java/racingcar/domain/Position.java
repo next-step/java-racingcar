@@ -17,7 +17,7 @@ public class Position {
     }
   }
 
-  public void updatePosition() {
+  public void forwardPosition() {
     position = position + 1;
   }
 
@@ -42,8 +42,5 @@ public class Position {
     return Objects.hash(position);
   }
 
-  public boolean lessThen(Position maxPosition) {
-    return position <= maxPosition.position;
-  }
 }
 

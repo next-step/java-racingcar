@@ -22,9 +22,9 @@ public class Car {
     return position;
   }
 
-  public void moveCar(MovingStrategy movingStrategy) {
-    if(movingStrategy.moveable())
-      position.updatePosition();
+  public void moveCar(MovingStrategy movingStrategy, int generatedRandomNumber) {
+    if(movingStrategy.moveable(generatedRandomNumber))
+      position.forwardPosition();
   }
 
   public String printNameWithCurrentPosition() {
@@ -44,10 +44,4 @@ public class Car {
     return position.equals(maxPosition);
   }
 
-  public Position getMaxPosition(Position maxPosition) {
-    if(position.lessThen(maxPosition)) {
-      return maxPosition;
-    }
-    return position;
-  }
 }
