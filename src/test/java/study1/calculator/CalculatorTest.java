@@ -1,4 +1,4 @@
-package study1;
+package study1.calculator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -10,9 +10,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import study1.calculator.CalculatorEnum;
-import study1.calculator.CalculatorService;
 
 public class CalculatorTest {
   @ParameterizedTest
