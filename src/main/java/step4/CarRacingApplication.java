@@ -22,7 +22,7 @@ public class CarRacingApplication {
             carRacingGame.race(randomMoveStrategy);
             OutputView.printCarRacing(carRacingGame.Cars());
         }
-        
+
         OutputView.printWinners(carRacingGame.Winners());
     }
 }

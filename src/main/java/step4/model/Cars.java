@@ -26,11 +26,7 @@ public class Cars {
     public Car getCar(int i){
         return cars.get(i);
     }
-
-    public int getNumberOfCars(){
-        return cars.size();
-    }
-
+    
     public Winners Winners(){
         Distance farthestDistance = farthestDistance();
         return new Winners(cars.stream()
@@ -38,7 +34,7 @@ public class Cars {
                         .collect(Collectors.toList()));
     }
 
-    Distance farthestDistance(){
+    private Distance farthestDistance(){
         Distance farthestDistance = new Distance();
         for (Car car : cars) {
             farthestDistance = car.max(farthestDistance);
