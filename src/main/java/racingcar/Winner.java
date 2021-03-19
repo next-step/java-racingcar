@@ -24,12 +24,12 @@ public class Winner {
         return NO_WINNER;
     }
 
-    public String showResult(String name) {
+    public void showResult(String name) {
 
         String result = "";
 
         if (name.length() == NO_WINNER_LENGTH) {
-            return result;
+            System.out.println(result);
         }
 
         char lastChar = name.charAt(name.length()-1);
@@ -37,6 +37,7 @@ public class Winner {
         if (lastChar == ',') {
             result = name.replaceFirst(".$", "") + "가 최종 우승했습니다.";
         }
-        return result;
+
+        System.out.println(result);
     }
 }
