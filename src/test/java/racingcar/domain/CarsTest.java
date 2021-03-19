@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -8,12 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.TestRandomNumberGenerator;
+import racingcar.util.RandomNumberGenerator;
 
 class CarsTest {
 
   private Cars cars;
-  private final TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(System.currentTimeMillis());
 
   @BeforeEach
   public void createCars() {
@@ -74,14 +74,19 @@ class CarsTest {
   public void updateAllCarsPosition() {
 
     //when
-    cars.updateAll(testRandomNumberGenerator);
+    cars.updateAll(new RandomNumberGenerator(System.currentTimeMillis()) {
+      @Override
+      public int generateRandomNumber() {
+        return 4;
+      }
+    });
 
     //then
     List<Car> expectedCars = cars.getCars();
     assertAll(
-        () -> assertEquals(expectedCars.get(0).getPosition(), 1),
-        () -> assertEquals(expectedCars.get(1).getPosition(), 1),
-        () -> assertEquals(expectedCars.get(2).getPosition(), 1)
+        () -> assertEquals(expectedCars.get(0).getPosition(), new Position(1)),
+        () -> assertEquals(expectedCars.get(1).getPosition(), new Position(1)),
+        () -> assertEquals(expectedCars.get(2).getPosition(), new Position(1))
     );
   }
 
@@ -89,14 +94,19 @@ class CarsTest {
   @DisplayName("제일 높은 position을 통해서 우승자의 이름을 뽑아낼 수 있는가")
   public void getWinnerNameByPosition() throws Exception {
     //given
-    cars.updateAll(testRandomNumberGenerator);
+    cars.updateAll(new RandomNumberGenerator(System.currentTimeMillis()) {
+      @Override
+      public int generateRandomNumber() {
+        return 4;
+      }
+    });
 
     //when
-    List<String> expectedWinners = cars.getWinner();
-    List<String> actualWinners = new ArrayList<>();
-    actualWinners.add("aaa");
-    actualWinners.add("bbb");
-    actualWinners.add("ccc");
+    List<CarName> expectedWinners = cars.getWinner();
+    List<CarName> actualWinners = new ArrayList<>();
+    actualWinners.add(new CarName("aaa"));
+    actualWinners.add(new CarName("bbb"));
+    actualWinners.add(new CarName("ccc"));
 
     //then
     List<Car> expectedCars = cars.getCars();
@@ -107,5 +117,4 @@ class CarsTest {
         () -> assertEquals(expectedCars.get(2).getPosition(), cars.getCars().get(2).getPosition())
     );
   }
-
 }

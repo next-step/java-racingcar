@@ -10,7 +10,8 @@ public class UserInputValidator {
 
   private static final int MAX_NAME_LENGTH = 5;
 
-  public List<String> carNameValidation(String readLine) {
+
+  public static List<String> carNameValidation(String readLine) {
     String[] splitCarName = readLine.split(",");
     carNameIsProperlySplit(splitCarName.length);
     removeWhiteSpace(splitCarName);
@@ -26,20 +27,21 @@ public class UserInputValidator {
     throw new IllegalArgumentException("ERROR : 숫자만 입력하실 수 있습니다.");
   }
 
-  private void hasStrangeName(String[] splitCarName) {
+
+  private static void hasStrangeName(String[] splitCarName) {
     for(String carName : splitCarName){
       isOverMaxLength(carName);
       isContainNotAlphabet(carName);
     }
   }
 
-  private void removeWhiteSpace(String[] splitCarName) {
+  private static void removeWhiteSpace(String[] splitCarName) {
     for(int i = 0; i < splitCarName.length; i++) {
       splitCarName[i] = splitCarName[i].replaceAll("\\s+","");
     }
   }
 
-  private void hasDuplicatedName(String[] carNames) {
+  private static void hasDuplicatedName(String[] carNames) {
     Set<String> tempSet = new HashSet<>();
     Collections.addAll(tempSet, carNames);
     if(tempSet.size() != carNames.length){
@@ -47,19 +49,20 @@ public class UserInputValidator {
     }
   }
 
-  private void isContainNotAlphabet(String carName) {
+
+  private static void isContainNotAlphabet(String carName) {
     if(!carName.matches("[a-zA-Z]+")){
       throw new IllegalArgumentException("ERROR : 이름에 숫자나 특수문자를 포함시킬 수 없습니다.");
     }
   }
 
-  private void isOverMaxLength(String carName) {
+  private static void isOverMaxLength(String carName) {
     if(carName.length() > MAX_NAME_LENGTH) {
       throw new IllegalArgumentException("ERROR : 이름을 5자를 초과할 수 없습니다.");
     }
   }
 
-  private void carNameIsProperlySplit(int splitSize) {
+  private static void carNameIsProperlySplit(int splitSize) {
     if(splitSize <= 0) {
       throw new IllegalArgumentException("ERROR : 잘못 입력하셨습니다.");
     }

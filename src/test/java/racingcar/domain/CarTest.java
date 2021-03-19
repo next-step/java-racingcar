@@ -6,11 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.util.TestRandomNumberGenerator;
+
 
 class CarTest {
-
-  private final TestRandomNumberGenerator testRandomNumberGenerator = new TestRandomNumberGenerator(System.currentTimeMillis());
 
   @ParameterizedTest
   @ValueSource(strings = {"aaa","bbb"})
@@ -27,17 +25,35 @@ class CarTest {
   }
 
   @Test
-  @DisplayName("moveCar() 메소드를 통해서 현재 위치 상태를 변경할 수 있는가")
+  @DisplayName("moveCar() 메소드를 통해서 전진할 수 있는가")
   public void changePositionUsingMethod() {
     //given
     Car car = Car.createCar("aaa");
-    int initPosition = car.getPosition();
+    Position initPosition = car.getPosition();
 
     //when
-    car.moveCar(testRandomNumberGenerator.generateRandomNumber());
-    int movedPosition = car.getPosition();
+    car.moveCar(new RandomMovingStrategy(), 4);
+
+    Position movedPosition = car.getPosition();
+    initPosition.forwardPosition();
 
     //then
-    assertEquals(initPosition+1, movedPosition);
+    assertEquals(initPosition, movedPosition);
+  }
+
+  @Test
+  @DisplayName("moveCar() 메소드를 통해서 전진을 할 수 없을 경우가 있는가")
+  public void notChangePositionUsingMethod() {
+    //given
+    Car car = Car.createCar("aaa");
+    Position initPosition = car.getPosition();
+
+    //when
+    car.moveCar((new RandomMovingStrategy(), 4);
+
+    Position movedPosition = car.getPosition();
+
+    //then
+    assertEquals(initPosition, movedPosition);
   }
 }
