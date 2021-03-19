@@ -25,7 +25,7 @@ class CarTest {
         }
 
         // when
-        car.moveTest(rule, number);
+        car.move(rule);
         String actual = car.getScore();
 
         // then

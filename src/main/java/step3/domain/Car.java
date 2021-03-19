@@ -19,10 +19,4 @@ public class Car {
             score += symbol;
         }
     }
-
-    public void moveTest(GameRule rule, int num) {
-        if (rule.isMovableTest(num)) {
-            score += symbol;
-        }
-    }
 }

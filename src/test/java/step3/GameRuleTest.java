@@ -14,13 +14,13 @@ class GameRuleTest {
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void isMovable(int number) {
         // given
-        NumberGenerator numberGenerator = new RandomUtil();
+        NumberGenerator numberGenerator = new TestNumberGenerator();
         GameRule rule = new GameRule(numberGenerator);
 
         boolean expected = number >= 4;
 
         // when
-        boolean actual = rule.isMovableTest(number);
+        boolean actual = rule.isMovable();
 
         // then
         assertEquals(actual, expected);

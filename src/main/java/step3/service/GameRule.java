@@ -13,8 +13,4 @@ public class GameRule {
     public boolean isMovable() {
         return numberGenerator.getRandom() >= STANDARD_FOR_MOVING;
     }
-
-    public boolean isMovableTest(int num) {
-        return num >= STANDARD_FOR_MOVING;
-    }
 }

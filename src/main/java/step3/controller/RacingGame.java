@@ -5,17 +5,15 @@ import step3.domain.Cars;
 import step3.service.GameRule;
 import step3.view.ResultView;
 
-import java.util.List;
-
 public class RacingGame {
     private final GameRule gameRule;
     private final Cars cars;
     private final int numberOfCars;
-    private final int attemps;
+    private final int numberOfAttemps;
 
-    public RacingGame(int numberOfCars, int attemps, GameRule gameRule, Cars cars) {
+    public RacingGame(int numberOfCars, int numberOfAttemps, GameRule gameRule, Cars cars) {
         this.numberOfCars = numberOfCars;
-        this.attemps = attemps;
+        this.numberOfAttemps = numberOfAttemps;
         this.gameRule = gameRule;
         this.cars = cars;
     }
@@ -24,13 +22,9 @@ public class RacingGame {
         return numberOfCars;
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
-    }
-
     public void doRace() {
         System.out.println("실행 결과");
-        for (int i = 0; i < attemps; i++) {
+        for (int i = 0; i < numberOfAttemps; i++) {
             System.out.println("round : " + (i + 1));
             raceByRound();
         }
