@@ -8,14 +8,12 @@ public class Car {
   private final String name;
 
   public Car(String name) {
-    this.name = name;
-    location = 0;
+    this(name, 0);
   }
 
   public Car(String name, int location) {
     this.name = name;
     this.location = location;
-
   }
 
   public Car move(Strategy strategy) {

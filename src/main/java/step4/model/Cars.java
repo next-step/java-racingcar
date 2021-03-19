@@ -27,16 +27,22 @@ public class Cars {
     return true;
   }
 
-  public List<String> calcChampions(){
+  public List<String> calcChampions() {
 
-    int maxValue =getMaxLocation();
-    if(maxValue==0) return new ArrayList<>();
-    List<String> champs;
-    champs = cars.stream().filter(car->car.showCarLocation()==maxValue).map(Car::showCarName).collect(Collectors.toList());
-    return champs;
+    int maxValue = getMaxLocation();
+    if (maxValue == 0) {
+      return new ArrayList<>();
+    }
+
+    return cars.stream()
+      .filter(car -> car.showCarLocation() == maxValue)
+      .map(Car::showCarName)
+      .collect(Collectors.toList());
   }
 
-  private int getMaxLocation(){
-    return cars.stream().map(Car::showCarLocation).max(Comparator.comparing(Integer::valueOf)).orElse(0);
+  private int getMaxLocation() {
+    return cars.stream()
+      .map(Car::showCarLocation)
+      .reduce(0, Math::max);
   }
 }

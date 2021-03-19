@@ -1,19 +1,16 @@
 package step4.model;
 
-import step4.util.VariableConstants;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
+
+  private static final String VARIABLE_NAME_SPLIT = ",";
+
   private CarFactory(){}
 
   public static Cars makeCars(String carNames) {
-    List<Car> carList = new ArrayList<>();
-    String[] carNameArr = splitCars(carNames);
-    for(String name: carNameArr) carList.add(new Car(name));
-
-    return new Cars(carList);
+    return makeCarsWithMinimumLocs(carNames, 0);
   }
 
   public static Cars makeCarsWithMinimumLocs(String carNames, int minimumLoc){
@@ -25,7 +22,7 @@ public class CarFactory {
   }
 
   private static String[] splitCars(String carNames){
-    return carNames.split(VariableConstants.VARIABLE_NAME_SPLIT.getValue());
+    return carNames.split(VARIABLE_NAME_SPLIT);
   }
 
 }
