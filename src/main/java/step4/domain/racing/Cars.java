@@ -42,7 +42,7 @@ public final class Cars {
         return cars;
     }
 
-    public List<Car> winners(Position winnerPosition) {
+    public final List<Car> winners(Position winnerPosition) {
         return cars.stream()
                 .filter(car -> car.isWinner(winnerPosition))
                 .collect(Collectors.toList());

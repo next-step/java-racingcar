@@ -43,7 +43,6 @@ public final class RacingCarGame {
         return new ResponseDto(cars);
     }
 
-
     private final Position maxPosition(){
         return cars.maxPosition();
     }
