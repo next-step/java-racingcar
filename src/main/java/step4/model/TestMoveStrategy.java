@@ -1,8 +1,8 @@
-package step4;
+package step4.model;
 
 public class TestMoveStrategy implements MoveStrategy {
     @Override
-    public int getDistance() {
-        return 1;
+    public boolean movable() {
+        return true;
     }
 }

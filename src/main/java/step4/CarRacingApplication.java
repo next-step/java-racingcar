@@ -1,18 +1,27 @@
 package step4;
 
+import step4.model.CarRacingGame;
+import step4.model.Cars;
+import step4.model.RandomMoveStrategy;
+import step4.view.InputView;
+import step4.view.OutputView;
+
 public class CarRacingApplication {
     public static void main(String[] args) {
         OutputView.enterNamesOfCars();
-        String input = InputView.getInput();
-        Cars cars = new Cars(InputView.splitInput(input));
+        String names = InputView.getInput();
         OutputView.enterNumberOfRounds();
-        int numberOfRounds = InputView.getNumberInput();
+        int remainingRounds = InputView.getNumberInput();
+
+        CarRacingGame carRacingGame = new CarRacingGame(InputView.splitInput(names), remainingRounds, new RandomMoveStrategy());
+
         OutputView.printExecutionResults();
-        RandomMoveStrategy randomMoveStrategy = new RandomMoveStrategy();
-        for(int i=0; i<numberOfRounds; i++){
-            cars.move(randomMoveStrategy);
-            OutputView.printCarRacing(cars);
+
+        while(carRacingGame.racing()){
+            carRacingGame.race();
+            OutputView.printCarRacing(carRacingGame.Cars());
         }
-        OutputView.printWinners(cars.getWinners());
+
+        OutputView.printWinners(carRacingGame.Winners());
     }
 }
