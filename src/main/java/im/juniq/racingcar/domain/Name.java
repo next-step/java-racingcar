@@ -15,8 +15,7 @@ public class Name implements Comparable<Name> {
 		}
 	}
 
-	@Override
-	public String toString() {
+	public String name() {
 		return name;
 	}
 

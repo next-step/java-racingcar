@@ -24,12 +24,4 @@ public class Car {
 	public Position position() {
 		return position;
 	}
-
-	public String getStatus() {
-		String status = name + " : ";
-		for (int i = 0; i < position.position(); i++) {
-			status += "-";
-		}
-		return status;
-	}
 }

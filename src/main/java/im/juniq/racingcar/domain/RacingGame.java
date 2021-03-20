@@ -40,9 +40,27 @@ public class RacingGame {
 				.collect(Collectors.toList());
 	}
 
-	public List<String> getScore() {
+	public List<Score> scores() {
 		return cars.stream()
-				.map(Car::getStatus)
+				.map(car -> new Score(car.name().name(), car.position().position()))
 				.collect(Collectors.toList());
+	}
+
+	public class Score {
+		private String name;
+		private int position;
+
+		public Score(String name, int position) {
+			this.name = name;
+			this.position = position;
+		}
+
+		public String name() {
+			return name;
+		}
+
+		public int position() {
+			return position;
+		}
 	}
 }

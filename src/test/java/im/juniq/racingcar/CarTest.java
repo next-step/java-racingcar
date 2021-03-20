@@ -33,6 +33,6 @@ class CarTest {
 
 		car.move();
 
-		assertThat(car.position()).isEqualByComparingTo(new Position(1));
+		assertThat(car.position()).isEqualToComparingFieldByField(new Position(1));
 	}
 }
