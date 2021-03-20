@@ -2,6 +2,7 @@ package carracing.service;
 
 import carracing.constants.CarRacingConstant;
 import carracing.domain.Cars;
+import carracing.domain.Engine;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
 import carracing.service.dto.RoundResult;
@@ -38,13 +39,13 @@ public class CarRacing {
     }
 
     private void validateCars(Cars cars) {
-        if(cars==null || cars.getCarList().size()==0) {
+        if(cars==null) {
             throw new IllegalArgumentException("차량정보를 입력해 주세요.");
         }
     }
 
     public RacingResult executeRacing() {
-        return new RacingResult(executeAllRound(), chooseWinner(cars.inquiryRacingScores()));
+        return new RacingResult(executeAllRound(), cars.chooseWinners());
     }
 
     private List<RoundResult> executeAllRound() {
@@ -60,42 +61,8 @@ public class CarRacing {
     }
 
     private List<RacingScore> executeScoring(Cars cars) {
-        cars.driveAll();
-        return cars.inquiryRacingScores();
+        cars.driveAll(new Engine());
+        return cars.racingScoreList();
     }
 
-    private List<String> chooseWinner(List<RacingScore> racingScoreList) {
-        int winnerScore = 0;
-        List<String> winnerList = new ArrayList<>();
-        for (RacingScore racingScore : racingScoreList) {
-            winnerList  = decideWinnerList(winnerScore, winnerList, racingScore);
-            winnerScore = decideWinnerScore(winnerScore, racingScore);
-        }
-        return winnerList;
-    }
-
-    private List<String> decideWinnerList(int currentWinnerScore, List<String> winnerList, RacingScore racingScore) {
-        if(currentWinnerScore < racingScore.getScore()) {
-            return replaceWinner(winnerList, racingScore.getCarName());
-        }
-        if(currentWinnerScore == racingScore.getScore()) {
-            return addWinner(winnerList, racingScore.getCarName());
-        }
-        return winnerList;
-    }
-
-    private List<String> replaceWinner(List<String> winnerList, String carName) {
-        winnerList.clear();
-        winnerList.add(carName);
-        return winnerList;
-    }
-
-    private List<String> addWinner(List<String> winnerList, String carName) {
-        winnerList.add(carName);
-        return winnerList;
-    }
-
-    private int decideWinnerScore(int currentWinnerScore, RacingScore racingScore) {
-        return Math.max(currentWinnerScore, racingScore.getScore());
-    }
 }

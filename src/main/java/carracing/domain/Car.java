@@ -3,8 +3,6 @@ package carracing.domain;
 import carracing.service.dto.RacingScore;
 import common.utils.StringUtils;
 
-import java.util.Random;
-
 /**
  * Car
  * version 0.0.2
@@ -17,8 +15,6 @@ import java.util.Random;
 public class Car {
 
     private static final int MAX_NAME_LENGTH = 5;
-
-    private final Engine engine = new Engine(new Random());
 
     private final String name;
     private int mileage;
@@ -42,8 +38,20 @@ public class Car {
         }
     }
 
-    public void drive() {
+    public void drive(Engine engine) {
         mileage+=engine.drive();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isWinner(int score) {
+        return mileage >= score;
+    }
+
+    public int calculateWinnerScore(int score) {
+        return Math.max(mileage, score);
     }
 
     public RacingScore inquiryRacingScore() {

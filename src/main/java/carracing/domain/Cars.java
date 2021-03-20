@@ -17,16 +17,13 @@ import java.util.List;
  *  0.0.2) 클래스명 변경 Players -> Cars
  *  0.0.3) driveAll, inquiryRacingScores 메소드 추가
  *  0.0.4) carNames 기반 인스턴스 초기화 구조로 리팩토링
+ *  0.0.5) Winners 클래스 생성로직 추가
  */
 public class Cars {
 
     private static final String CAR_NAMES_DELIMITER = ",";
 
     private final List<Car> carList = new ArrayList<>();
-
-    public List<Car> getCarList() {
-        return carList;
-    }
 
     public Cars(String carNames) {
         validateCarNames(carNames);
@@ -52,17 +49,43 @@ public class Cars {
         }
     }
 
-    public void driveAll() {
+    public void driveAll(Engine engine) {
         for (Car car : carList) {
-            car.drive();
+            car.drive(engine);
         }
     }
 
-    public List<RacingScore> inquiryRacingScores() {
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public List<RacingScore> racingScoreList() {
         List<RacingScore> racingScoreList = new ArrayList<>();
         for (Car car : carList) {
             racingScoreList.add(car.inquiryRacingScore());
         }
         return racingScoreList;
+    }
+
+    public int maxScore() {
+        int maxScore = 0;
+        for (Car car : carList) {
+            maxScore = car.calculateWinnerScore(maxScore);
+        }
+        return maxScore;
+    }
+
+    public List<Car> chooseWinners() {
+        List<Car> winnerList = new ArrayList<>();
+        for (Car car : carList) {
+            addWinner(car, winnerList);
+        }
+        return winnerList;
+    }
+
+    private void addWinner(Car car, List<Car> winnerList) {
+        if (car.isWinner(maxScore())) {
+            winnerList.add(car);
+        }
     }
 }
