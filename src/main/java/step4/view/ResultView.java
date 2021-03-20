@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ResultView {
     private static final String RESULT_START_MESSAGE = "실행 결과";
+    private static final String POSITION_CHARACTER = "-";
 
     public static void printResultStartMessage() {
         System.out.println("");
@@ -15,9 +16,17 @@ public class ResultView {
 
     public static void printPosition(final Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(car);
+            System.out.println(getPositionString(car));
         }
         System.out.println("");
+    }
+
+    private static String getPositionString(final Car car) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < car.getPosition(); i++) {
+            builder.append(POSITION_CHARACTER);
+        }
+        return String.format("%s : %s", car.getName(), builder.toString());
     }
 
     public static void printWinners(final Cars cars) {

@@ -1,7 +1,6 @@
 package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -19,16 +18,5 @@ class CarTest {
         car.move(randomNum);
         // then
         assertThat(car.getPosition()).isEqualTo(expected);
-    }
-
-    @DisplayName("자동차가 한칸 이동했을 경우 원하는 값이 출력되는지 확인한다.")
-    @Test
-    void toStringTest() {
-        // given
-        Car car = Car.from("test");
-        // when
-        car.move(4);
-        // then
-        assertThat(car.toString()).isEqualTo("test : -");
     }
 }
