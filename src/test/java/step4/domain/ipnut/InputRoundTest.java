@@ -37,15 +37,15 @@ class InputRoundTest {
 
     @DisplayName("InputRound 인스턴스가 가지고 있는 값 반환 테스트")
     @Test
-    void 반환(){
+    void 반환() {
         // given
         int expected = 5;
-        InputRound inputRound = new InputRound(expected);
+        InputRound expectedInputRound = new InputRound(expected);
 
         // when
-        int actual = inputRound.inputRound();
+        InputRound actualInputRound = new InputRound(expected);
 
         // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actualInputRound).isEqualTo(expectedInputRound);
     }
 }
