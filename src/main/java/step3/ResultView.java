@@ -1,26 +1,19 @@
 package step3;
 
-import java.util.Random;
-
 public class ResultView {
 
     public ResultView() {}
 
-    public void printResult(int car, int trial) {
+    public void printResult(int[][] results, InputDto inputDto) {
         System.out.println("\n실행 결과");
-        Random random = new Random();
-        int[] results = new int[car];
 
-        while (0 < trial--) {
-
-            for (int i = 0; i < car; i++) {
-                int number = random.nextInt(10);
-                results[i] += number;
-                System.out.println(String.format("%" + results[i] + "s", "-")
-                        .replace(" ", "-"));
+        for (int i = 0; i < inputDto.getNumberOfTrial(); i++) {
+            for (int j = 0; j < inputDto.getNumberOfCar(); j++) {
+                int number = results[i][j];
+                String format = number > 0 ? "%" + number + "s" : "%s";
+                System.out.println(String.format(format, "-").replace(" ", "-"));
             }
             System.out.println();
         }
-
     }
 }
