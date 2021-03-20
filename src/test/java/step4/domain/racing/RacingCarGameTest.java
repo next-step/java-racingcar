@@ -77,7 +77,7 @@ class RacingCarGameTest {
 
     @DisplayName("RacingCarGame 우승자 반환 여부 테스트")
     @Test
-    void 우승자_반환(){
+    void 우승자_반환() {
 
         // given
         Cars cars = new Cars("a,b,c");
@@ -85,10 +85,11 @@ class RacingCarGameTest {
         RacingCarGame racingCarGame = new RacingCarGame(cars, round);
 
         // when
-        Winners winners = racingCarGame.winners();
+        Winners actualWinners = racingCarGame.winners();
+        Winners expectedWinners = new Winners(cars);
 
         // then
-        assertThat(winners).isNotNull();
+        assertThat(actualWinners).isEqualTo(expectedWinners);
     }
 
 }

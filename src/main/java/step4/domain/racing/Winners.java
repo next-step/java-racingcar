@@ -9,6 +9,10 @@ public final class Winners {
 
     private final List<Car> winners;
 
+    public Winners(Cars cars) {
+        this(cars.cars());
+    }
+
     public Winners(List<Car> winners) {
         this.winners = winners;
     }
