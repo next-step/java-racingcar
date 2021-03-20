@@ -4,11 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import racing.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static base.BaseMethodSource.RANDOM_NUMBER_BELOW_10;
+import static base.BaseMethodSource.CARS_CREATE_ARGUMENTS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -16,13 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class RacingCarsTest {
 
   @ParameterizedTest
-  @MethodSource(RANDOM_NUMBER_BELOW_10)
+  @MethodSource(CARS_CREATE_ARGUMENTS)
   @DisplayName("자동차 일급 컬렉션 래퍼 객체 생성")
-  void create(int totalPlayer) {
+  void create(String names, int totalPlayer) {
     // given
+    List<RacingCar> list = getRacingCarList(names);
 
     // when
-    RacingCars cars = RacingCars.create(totalPlayer);
+    RacingCars cars = RacingCars.create(list);
 
     // then
     assertThat(cars.getRacingCars())
@@ -30,11 +33,11 @@ class RacingCarsTest {
   }
 
   @ParameterizedTest
-  @MethodSource(RANDOM_NUMBER_BELOW_10)
+  @MethodSource(CARS_CREATE_ARGUMENTS)
   @DisplayName("자동차 일급 컬렉션 래퍼 객체 복사")
-  void copyFrom(int totalPlayer) {
+  void copyFrom(String names) {
     // given
-    RacingCars newCars = RacingCars.create(totalPlayer);
+    RacingCars newCars = RacingCars.create(getRacingCarList(names));
 
     // when
     RacingCars copiedCars = RacingCars.copyFrom(newCars);
@@ -45,18 +48,18 @@ class RacingCarsTest {
   }
 
   @ParameterizedTest
-  @MethodSource(RANDOM_NUMBER_BELOW_10)
+  @MethodSource(CARS_CREATE_ARGUMENTS)
   @DisplayName("자동차 경주 테스트")
-  void race(int totalPlayer) {
+  void race(String names) {
     // given
-    RacingCars cars = RacingCars.create(totalPlayer);
+    RacingCars newCars = RacingCars.create(getRacingCarList(names));
 
     // when
-    cars.race(() -> true);
+    newCars.race(() -> true);
 
     // then
     final int movePosition = 1;
-    cars.getRacingCars()
+    newCars.getRacingCars()
             .forEach(car -> assertThat(car.position())
                                 .isEqualTo(movePosition));
   }
@@ -74,10 +77,17 @@ class RacingCarsTest {
     List<RacingCar> result = racingCars.getRacingCars();
 
     // then
-    assertAll(() -> assertThatThrownBy(() -> result.add(RacingCar.create(0))).isInstanceOf(UnsupportedOperationException.class)
+    assertAll(() -> assertThatThrownBy(() -> result.add(RacingCar.create("new"))).isInstanceOf(UnsupportedOperationException.class)
             , () -> assertThat(System.identityHashCode(result)).isNotEqualTo(System.identityHashCode(paramCarsList))
             , () -> assertThat(result).containsAll(paramCarsList)
     );
 
   }
+
+  private List<RacingCar> getRacingCarList(String names) {
+    return StringUtils.toList(names).stream()
+            .map(RacingCar::create)
+            .collect(Collectors.toList());
+  }
+
 }

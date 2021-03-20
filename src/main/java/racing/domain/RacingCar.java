@@ -7,40 +7,24 @@ import java.util.Objects;
 
 public class RacingCar implements BaseCloneable {
 
-  private String name;
-  private int carNumber;
+  private final String name;
   private int position;
 
-  private RacingCar() { }
-
-  private RacingCar(String name, int carNumber) {
-    this(name, carNumber, 0);
+  private RacingCar(String name) {
+    this(name, 0);
   }
 
-  private RacingCar(String name, int carNumber, int position) {
+  private RacingCar(String name, int position) {
     this.name = name;
-    this.carNumber = carNumber;
     this.position = position;
   }
 
   public static RacingCar create(String name) {
-    return create(name, 0);
-  }
-
-  public static RacingCar create(int carNumber) {
-    return create(null, carNumber);
-  }
-
-  public static RacingCar create(String name, int carNumber) {
-    return new RacingCar(name, carNumber);
+    return new RacingCar(name);
   }
 
   public String name() {
     return this.name;
-  }
-
-  public int carNumber() {
-    return this.carNumber;
   }
 
   public int position() {
@@ -68,7 +52,7 @@ public class RacingCar implements BaseCloneable {
 
   @Override
   public String toString() {
-    return String.format("name:%s, carNumber:%d, position:%s", name, carNumber, position);
+    return String.format("name:%s, position:%d", name, position);
   }
 
   @Override
@@ -76,7 +60,7 @@ public class RacingCar implements BaseCloneable {
     try {
       return (RacingCar) super.clone();
     } catch (CloneNotSupportedException e) {
-      return new RacingCar();
+      return new RacingCar(null);
     }
   }
 }

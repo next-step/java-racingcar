@@ -10,7 +10,8 @@ public class BaseMethodSource {
   private final static String CLASS_NAME_WITH_PACKAGE_PATH = "base.BaseMethodSource";
   public final static String RANDOM_NUMBER_BELOW_10 = CLASS_NAME_WITH_PACKAGE_PATH + "#getRandomNumberBelow10";
   public final static String PLAY_INFO_ARGUMENTS = CLASS_NAME_WITH_PACKAGE_PATH + "#getRacingCarGamePlayInfoArguments";
-  public final static String CAR_CREATE_ARGUMENTS_NAME_AND_NUMBER_ = CLASS_NAME_WITH_PACKAGE_PATH + "#getRacingCarCreateArguments";
+  public final static String CAR_CREATE_ARGUMENTS = CLASS_NAME_WITH_PACKAGE_PATH + "#getRacingCarCreateArguments";
+  public final static String CARS_CREATE_ARGUMENTS = CLASS_NAME_WITH_PACKAGE_PATH + "#getRacingCarsCreateArguments";
   public final static String BLANK_STRINGS = CLASS_NAME_WITH_PACKAGE_PATH + "#getBlankStringArguments";
 
   private BaseMethodSource() {
@@ -22,15 +23,22 @@ public class BaseMethodSource {
 
   static Stream<Arguments> getRacingCarGamePlayInfoArguments() {
     return Stream.of(
-            Arguments.of(2, 3),
-            Arguments.of(3, 2)
+            Arguments.of("gmoon,schumacher", 3),
+            Arguments.of("gmoon,guest,schumacher", 2)
     );
   }
 
-  static Stream<Arguments> getRacingCarCreateArguments() {
+  static Stream<String> getRacingCarCreateArguments() {
     return Stream.of(
-            Arguments.of("gmoon", 3),
-            Arguments.of("guest", 2)
+            "gmoon",
+            "guest"
+    );
+  }
+
+  static Stream<Arguments> getRacingCarsCreateArguments() {
+    return Stream.of(
+            Arguments.of("gmoon", 1),
+            Arguments.of("gmoon,guest", 2)
     );
   }
 

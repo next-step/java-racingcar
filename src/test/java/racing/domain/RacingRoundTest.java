@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingRoundTest {
@@ -12,7 +14,7 @@ class RacingRoundTest {
 
   @BeforeEach
   void setUp() {
-    racingCars = RacingCars.create(2);
+    racingCars = RacingCars.create(Arrays.asList(RacingCar.create("gmoon")));
   }
 
   @Test

@@ -17,9 +17,9 @@ class RacingCarGameTest {
   @ParameterizedTest
   @MethodSource(PLAY_INFO_ARGUMENTS)
   @DisplayName("자동차 게임 실행 테스트")
-  void play(int totalPlayer, int totalRound) {
+  void play(String playerNames, int totalRound) {
     // given
-    RacingCarGamePlayInfo info = RacingCarGamePlayInfo.newPlayInfo(totalPlayer, totalRound);
+    RacingCarGamePlayInfo info = RacingCarGamePlayInfo.newPlayInfo(playerNames, totalRound);
 
     // when
     List<RacingRound> result = RacingCarGame.newGame(info, () -> true)

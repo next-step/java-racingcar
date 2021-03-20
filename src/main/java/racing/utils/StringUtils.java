@@ -21,8 +21,13 @@ public final class StringUtils {
   }
 
   public static List<String> toList(String str) {
-    return ListUtils.of(split(str));
+    return toList(str, DEFAULT_SEPARATOR);
   }
+
+  public static List<String> toList(String str, String separator) {
+    return ListUtils.of(split(str, separator));
+  }
+
 
   public static boolean isBlank(String str) {
     return str == null || str.trim().isEmpty();

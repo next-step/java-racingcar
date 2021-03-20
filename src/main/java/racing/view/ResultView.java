@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.RacingCar;
 import racing.domain.RacingCars;
 import racing.domain.RacingRound;
 
@@ -11,7 +12,6 @@ public class ResultView {
   private final static String ROUND_START_ALARM ="\nRound start";
   private final static String ROUND_STATUS_FORMAT = "%s : %s";
   private final static String CAR_MOVE_POSITION_SYMBOL = "-";
-  private final static String CAR_NAME_FORMAT = "player %d";
 
   private ResultView() {
   }
@@ -22,18 +22,18 @@ public class ResultView {
             .map(RacingRound::racingCars)
             .map(RacingCars::getRacingCars)
             .flatMap(Collection::stream)
-            .forEach(racingCar -> System.out.println(String.format(ROUND_STATUS_FORMAT, toCarNameString(racingCar.carNumber()), toPositionString(racingCar.position()))));
+            .forEach(racingCar -> System.out.println(String.format(ROUND_STATUS_FORMAT, toCarNameString(racingCar), toPositionString(racingCar))));
   }
 
-  private static String toPositionString(int position) {
+  private static String toPositionString(RacingCar racingCar) {
     String positionString = "";
-    for (int i = 0; i < position; i++) {
+    for (int i = 0; i < racingCar.position(); i++) {
       positionString += CAR_MOVE_POSITION_SYMBOL;
     }
     return positionString;
   }
 
-  private static String toCarNameString(int carNumber) {
-    return String.format(CAR_NAME_FORMAT, carNumber);
+  private static String toCarNameString(RacingCar racingCar) {
+    return racingCar.name();
   }
 }
