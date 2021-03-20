@@ -3,7 +3,7 @@ package im.juniq.racingcar.view;
 import java.util.List;
 
 import im.juniq.racingcar.domain.Name;
-import im.juniq.racingcar.domain.RacingGame.Score;
+import im.juniq.racingcar.domain.Score;
 
 public class ResultView {
 	public void printScore(List<Score> scores) {
