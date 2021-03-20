@@ -45,7 +45,7 @@ public class Cars {
     return cars.stream()
       .map((car) -> car.distance())
       .max(Integer::compare)
-      .orElse(-1);
+      .orElseThrow(() -> new IllegalArgumentException("최대 이동거리는 0 보다 작을수 없습니다."));
   }
 
 }
