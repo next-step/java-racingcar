@@ -3,6 +3,7 @@ package step4.domain.racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.car.Car;
+import step4.domain.car.position.Position;
 import step4.domain.ipnut.InputNames;
 
 import java.util.List;
@@ -47,36 +48,35 @@ class CarsTest {
     void 이동() {
         // given
         InputNames inputNames = new InputNames("a,b,c");
-        Cars cars = new Cars(inputNames);
+        Cars expectedCars = new Cars(inputNames);
+        expectedCars.move(() -> true);  // 모두 한 칸 씩 이동했다는 가정이므로 given 에 넣었습니다.
 
         // when
-        cars.move(() -> true);
-        List<Car> carList = cars.cars();
+        Cars actualCars = new Cars(inputNames);
+        actualCars.move(() -> true);
 
-        carList.stream()
-                .map(car -> car.position())
-                .map(position -> position.position())
-                .forEach(actual -> {
-                            assertThat(actual).isEqualTo(1);
-                        }
-                );
+        // then
+        assertThat(actualCars).isEqualTo(expectedCars);
     }
 
-    @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 최대값 반환 테스트")
+    @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 최대값 반환 테스트, 객체")
     @Test
     void 최대값_반환(){
         // given
+        Position expectedPosition = new Position(1);
+
         InputNames inputNames = new InputNames("a,b,c");
         Cars cars = new Cars(inputNames);
 
+
         // when
         cars.move(()-> true);
-        int actual = cars.maxPosition();
+        Position actualPosition = cars.maxPosition();
 
         // then
-        assertThat(actual).isEqualTo(1);
+        assertThat(actualPosition).isEqualTo(expectedPosition);
     }
-
+/*
     @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 우승자 리스트 반환 테스트")
     @Test
     void 우승자_반환(){
@@ -94,6 +94,6 @@ class CarsTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-
+*/
 
 }
