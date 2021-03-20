@@ -21,7 +21,7 @@ class RandomNumberMovingStrategyTest {
 			}
 		}));
 
-		assertThat(randomNumberMovingStrategy.isMoving()).isEqualTo(true);
+		assertThat(randomNumberMovingStrategy.movable()).isEqualTo(true);
 	}
 
 	@DisplayName("발생된 난수가 4일때는 이동하지 않는다")
@@ -35,6 +35,6 @@ class RandomNumberMovingStrategyTest {
 			}
 		}));
 
-		assertThat(randomNumberMovingStrategy.isMoving()).isEqualTo(false);
+		assertThat(randomNumberMovingStrategy.movable()).isEqualTo(false);
 	}
 }

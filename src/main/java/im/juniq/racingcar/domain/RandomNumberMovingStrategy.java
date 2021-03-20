@@ -8,7 +8,7 @@ public class RandomNumberMovingStrategy implements MovingStrategy {
 	private RandomNumber randomNumber = new RandomNumberZeroToNine(new Random());
 
 	@Override
-	public boolean isMoving() {
+	public boolean movable() {
 		return randomNumber.value() > BOUND_OF_CAR_MOVEMENT;
 	}
 
