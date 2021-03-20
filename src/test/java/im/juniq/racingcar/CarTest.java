@@ -29,9 +29,9 @@ class CarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi"})
 	void moveCar(String carName) {
-		Car car = new Car(carName, new RandomNumberMovingStrategy());
+		Car car = new Car(carName, new OnlyTrueMovingStrategy());
 
-		car.move(new OnlyTrueMovingStrategy());
+		car.move();
 
 		assertThat(car.position()).isEqualByComparingTo(new Position(1));
 	}
