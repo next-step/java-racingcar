@@ -2,13 +2,13 @@ package im.juniq.racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
-import im.juniq.racingcar.domain.Car;
-import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
-import im.juniq.racingcar.domain.Position;
-import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import im.juniq.racingcar.domain.Car;
+import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
+import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
 
 class CarTest {
 	@DisplayName("자동차를 생성한다")
@@ -29,10 +29,12 @@ class CarTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi"})
 	void moveCar(String carName) {
-		Car car = new Car(carName, new OnlyTrueMovingStrategy());
+		OnlyTrueMovingStrategy movingStrategy = new OnlyTrueMovingStrategy();
+		Car car = new Car(carName, movingStrategy);
 
 		car.move();
 
-		assertThat(car.position()).isEqualToComparingFieldByField(new Position(1));
+		assertThat(car).isEqualToComparingFieldByFieldRecursively(
+			new Car(carName, 1, movingStrategy));
 	}
 }

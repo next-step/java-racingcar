@@ -11,17 +11,22 @@ public class Car {
 		this.movingStrategy = movingStrategy;
 	}
 
+	public Car(String name, int position, MovingStrategy movingStrategy) {
+		this(name, movingStrategy);
+		this.position = new Position(position);
+	}
+
 	public void move() {
 		if (movingStrategy.movable()) {
 			position.increase();
 		}
 	}
 
-	public Name name() {
+	protected Name name() {
 		return name;
 	}
 
-	public Position position() {
+	protected Position position() {
 		return position;
 	}
 }
