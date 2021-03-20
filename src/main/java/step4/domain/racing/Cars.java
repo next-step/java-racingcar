@@ -51,7 +51,7 @@ public final class Cars {
     public final Position maxPosition() {
         return cars.stream()
                 .map(car -> car.position())
-                .reduce(Position::getWinningPosition).get();
+                .reduce(Position::winningPosition).get();
     }
 
     @Override

@@ -24,7 +24,7 @@ public final class Position {
         position++;
     }
 
-    public final Position getWinningPosition(Position other) {
+    public final Position winningPosition(Position other) {
         return this.position > other.position ? this : other;
     }
 
