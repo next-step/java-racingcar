@@ -2,24 +2,24 @@ package im.juniq.racingcar.view;
 
 import java.util.List;
 
-import im.juniq.racingcar.domain.Name;
-import im.juniq.racingcar.domain.Score;
+import im.juniq.racingcar.domain.CarState;
 
 public class ResultView {
-	public void printScore(List<Score> scores) {
-		scores.forEach(score -> System.out.println(score.name() + " : " + positionGraph(score)));
+	public void printScore(List<CarState> carStates) {
+		carStates.forEach(carState ->
+			System.out.println(carState.name() + " : " + positionGraph(carState.position())));
 		System.out.println();
 	}
 
-	private String positionGraph(Score score) {
+	private String positionGraph(int position) {
 		String positionGraph = "";
-		for (int i = 0; i < score.position(); i++) {
+		for (int i = 0; i < position; i++) {
 			positionGraph += "-";
 		}
 		return positionGraph;
 	}
 
-	public void printWinner(List<Name> winners) {
+	public void printWinner(List<CarState> winners) {
 		for (int i = 0; i < winners.size(); i++) {
 			addSeparatorIfNotFirst(i);
 			System.out.print(winners.get(i).name());

@@ -34,15 +34,15 @@ public class RacingGame {
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public List<Name> getWinners() {
+	public List<CarState> getWinners() {
 		return findByTopPosition().stream()
-				.map(Car::name)
+				.map(car -> new CarState(car.name().name(), car.position().position()))
 				.collect(Collectors.toList());
 	}
 
-	public List<Score> scores() {
+	public List<CarState> carStates() {
 		return cars.stream()
-				.map(car -> new Score(car.name().name(), car.position().position()))
+				.map(car -> new CarState(car.name().name(), car.position().position()))
 				.collect(Collectors.toList());
 	}
 }

@@ -6,11 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import im.juniq.racingcar.domain.Car;
-import im.juniq.racingcar.domain.Name;
 import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
 import im.juniq.racingcar.domain.RacingGame;
 import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
-import im.juniq.racingcar.domain.Score;
+import im.juniq.racingcar.domain.CarState;
 
 class RacingGameTest {
 	@DisplayName("자동차 n대를 생성한다")
@@ -32,8 +31,8 @@ class RacingGameTest {
 
 		racingGame.move();
 
-		for (Score score: racingGame.scores()) {
-			assertThat(score.position()).isEqualTo(1);
+		for (CarState carState : racingGame.carStates()) {
+			assertThat(carState.position()).isEqualTo(1);
 		}
 	}
 
@@ -48,8 +47,8 @@ class RacingGameTest {
 			racingGame.move();
 		}
 
-		for (Name winner: racingGame.getWinners()) {
-			assertThat(winner).isEqualByComparingTo(new Name("pobi"));
+		for (CarState winner: racingGame.getWinners()) {
+			assertThat(winner).isEqualToComparingFieldByField(new CarState("pobi", 10));
 		}
 	}
 }
