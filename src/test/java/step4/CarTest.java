@@ -32,4 +32,6 @@ public class CarTest {
         car.carCanGoJudge(randomNumber);
         assertThat(car.getDistance()).isEqualTo(expected);
     }
+
+
 }

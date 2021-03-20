@@ -51,15 +51,13 @@ public class RacingCar {
         return cars;
     }
 
-    public void findWinner() {
+    public String findWinner() {
         int maxDistance = maxDistance();
 
-        String winnerList = carList.stream()
+        return carList.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getCarName)
                 .collect(Collectors.joining(", "));
-
-        ResultView.printWinner(winnerList);
     }
 
     private int maxDistance() {
