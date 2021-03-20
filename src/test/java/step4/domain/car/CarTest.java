@@ -55,12 +55,12 @@ class CarTest {
 
     @DisplayName("Car 인스턴스 우승자 여부 테스트")
     @Test
-    void 승자(){
+    void 승자() {
         // given
         String expected = "test";
         Car car = new Car(expected);
 
-        car.move(()->true);
+        car.move(() -> true);
         boolean actual = car.isWinner(1);
 
         // then
@@ -69,12 +69,12 @@ class CarTest {
 
     @DisplayName("Car 인스턴스 우승자 여부 테스트, 객체간의 비교")
     @Test
-    void 승자_객체_비교(){
+    void 승자_객체_비교() {
         // given
         String expected = "test";
         Car car = new Car(expected);
 
-        car.move(()->true);
+        car.move(() -> true);
         boolean actual = car.isWinner(new Position(1));
 
         // then

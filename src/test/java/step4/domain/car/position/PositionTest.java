@@ -38,7 +38,7 @@ class PositionTest {
         Position standardPosition = new Position();
         Position expectedPosition = new Position(1);
 
-        Position actualPosition  = standardPosition.getWinningPosition(expectedPosition);
+        Position actualPosition = standardPosition.getWinningPosition(expectedPosition);
         assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
