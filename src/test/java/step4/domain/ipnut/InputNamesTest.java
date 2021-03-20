@@ -46,7 +46,7 @@ class InputNamesTest {
     @Test
     void 반환() {
         // given
-        List<String> expected = Arrays.stream("pobi,brown,json".split(",")).collect(Collectors.toList());
+        List<String> expected = Arrays.asList("pobi", "brown", "json");
 
         // when
         InputNames inputNames = new InputNames(expected);
