@@ -16,10 +16,11 @@ class CarTest {
         String name = "test";
 
         // when
-        Car car = new Car(name);
+        Car actualCar = new Car(name);
+        Car expectedCar = new Car(name);
 
         // test
-        assertThat(car).isNotNull();
+        assertThat(actualCar).isEqualTo(expectedCar);
     }
 
     @DisplayName("Car 인스턴스 이동 여부 테스트")

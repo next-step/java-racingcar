@@ -4,6 +4,8 @@ import step4.domain.car.name.Name;
 import step4.domain.car.position.Position;
 import step4.startegy.Move;
 
+import java.util.Objects;
+
 public final class Car {
 
     private final Name name;
@@ -35,4 +37,5 @@ public final class Car {
     public final boolean isWinner(int winnerPosition) {
         return (position.position() == winnerPosition);
     }
+
 }
