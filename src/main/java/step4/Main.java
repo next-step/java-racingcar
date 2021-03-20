@@ -9,6 +9,7 @@ public class Main {
             InputDto inputDto = InputView.input();
             RacingCar racingCar = new RacingCar(inputDto);
             racingCar.start();
+            racingCar.findWinner();
         } catch (IllegalArgumentException e) {
             System.out.println("어떤 에러 일까요? -> " + e);
         }

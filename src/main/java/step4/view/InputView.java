@@ -1,7 +1,7 @@
 package step4.view;
 
 import step4.dto.InputDto;
-import step4.Validator;
+import step4.InputValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,20 +20,25 @@ public class InputView {
         System.out.println(CAR_NAME_MESSAGE);
         String inputCarNames = scanner.next();
 
-        // 메소드 내부에서 너무 많은 일을 하는 걸까요 ?? ...
-        String[] carNameList = inputCarNames.split(",");
-
-        for (String carName: carNameList) {
-            Validator.checkCarName(carName);
-        }
+        String[] carNameList = inputValidator(inputCarNames);
 
         System.out.println(TRY_COUNT_MESSAGE);
         int tryCount = scanner.nextInt();
-        Validator.checkTryCountIsMinus(tryCount);
+        InputValidator.checkTryCountIsMinus(tryCount);
 
         System.out.println();
         System.out.println(RESULT_MESSAGE);
 
         return new InputDto(new ArrayList<>(Arrays.asList(carNameList)), tryCount);
+    }
+
+    private static String[] inputValidator(String inputCarNames) {
+        String[] carNameList = inputCarNames.split(",");
+
+        for (String carName: carNameList) {
+            InputValidator.checkCarName(carName);
+        }
+
+        return carNameList;
     }
 }

@@ -11,7 +11,7 @@ public class InputTest {
     @Test
     void inputTest() {
         assertThatThrownBy(() -> {
-            Validator.checkCarName("NEXT-STEP");
+            InputValidator.checkCarName("NEXT-STEP");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름이 5자를 초과하였습니다.");
     }
@@ -20,7 +20,7 @@ public class InputTest {
     @Test
     void tryCountTest() {
         assertThatThrownBy(() -> {
-            Validator.checkTryCountIsMinus(-2);
+            InputValidator.checkTryCountIsMinus(-2);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("시도 횟수가 잘못되었습니다.");
     }
