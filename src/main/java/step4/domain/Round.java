@@ -21,6 +21,6 @@ public class Round {
     }
 
     public void minusCount() {
-        count--;
+        this.count--;
     }
 }

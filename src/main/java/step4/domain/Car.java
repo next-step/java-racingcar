@@ -1,8 +1,9 @@
 package step4.domain;
 
+import step4.strategy.MovableStrategy;
+
 public class Car {
     private static final int INITIAL_POSITION_NUM = 0;
-    private static final int FORWARD_NUM = 4;
 
     private final Name name;
     private int position;
@@ -20,10 +21,21 @@ public class Car {
         return new Car(name);
     }
 
-    public void move(int randomNum) {
-        if (randomNum >= FORWARD_NUM) {
-            position++;
+    public void move(MovableStrategy strategy) {
+        if (strategy.movable()) {
+            plusPosition();
         }
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        if (this.position == winnerPosition) {
+            return true;
+        }
+        return false;
+    }
+
+    private void plusPosition() {
+        this.position++;
     }
 
     public String getName() {

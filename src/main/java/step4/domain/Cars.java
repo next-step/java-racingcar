@@ -1,14 +1,12 @@
 package step4.domain;
 
-import step4.utils.RandomUtils;
-import step4.utils.StringUtils;
+import step4.strategy.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int MAX_BOUND = 10;
-
     private final List<Car> cars;
 
     private Cars(List<Car> cars) {
@@ -26,31 +24,23 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public void move() {
+    public void move(MovableStrategy strategy) {
         for (Car car : cars) {
-            car.move(RandomUtils.getRandomNum(MAX_BOUND));
+            car.move(strategy);
         }
     }
 
     public List<String> getWinnerNames() {
-        int maxPosition = getMaxPosition();
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            addWinner(winners, car, maxPosition);
-        }
-        return winners;
+        int winnerPosition = getWinnerPosition();
+        return cars.stream().filter(car -> car.isWinner(winnerPosition))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
-    private void addWinner(List<String> winners, final Car car, final int maxPosition) {
-        if (car.getPosition() >= maxPosition) {
-            winners.add(car.getName());
-        }
-    }
-
-    private int getMaxPosition() {
-        return cars.stream()
-                .map(Car::getPosition)
-                .max(Integer::compareTo).orElse(0);
+    private int getWinnerPosition() {
+        return cars.stream().map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(0);
     }
 
     public List<Car> getCars() {
