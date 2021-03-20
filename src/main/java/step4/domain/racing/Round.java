@@ -2,6 +2,8 @@ package step4.domain.racing;
 
 import step4.domain.ipnut.InputRound;
 
+import java.util.Objects;
+
 public final class Round {
     private final int MINIMUM = 0;
     private int round;
@@ -29,4 +31,16 @@ public final class Round {
         round--;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Round round1 = (Round) o;
+        return round == round1.round;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(round);
+    }
 }

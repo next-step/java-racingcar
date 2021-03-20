@@ -12,7 +12,7 @@ class NameTest {
     @Test
     void 생성() {
         // given
-        String testName = "test";
+        String testName = "brown";
 
         // when
         Name actualName = new Name(testName);
@@ -26,7 +26,7 @@ class NameTest {
     @Test
     void 검증() {
         // given
-        String invalidName = "kwj1270";
+        String invalidName = "test12";
 
         // when and then
         assertThatThrownBy(() -> {
