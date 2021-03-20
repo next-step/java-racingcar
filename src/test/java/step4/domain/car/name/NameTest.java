@@ -20,6 +20,7 @@ class NameTest {
 
         // then
         assertThat(actualName).isEqualTo(expectedName);
+
     }
 
     @DisplayName("Name 인스턴스의 부적절한 이름시 예외처리 확인 테스트")
@@ -27,6 +28,7 @@ class NameTest {
     void 검증() {
         // given
         String invalidName = "test12";
+
 
         // when and then
         assertThatThrownBy(() -> {

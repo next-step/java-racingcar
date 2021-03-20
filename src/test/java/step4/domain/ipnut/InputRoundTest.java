@@ -19,6 +19,7 @@ class InputRoundTest {
 
         // then
         assertThat(actualRound).isEqualTo(expectedRound);
+
     }
 
     @DisplayName("InputRound 인스턴스에 부적절한 값 입력시 예외 발생 여부 테스트")
@@ -47,5 +48,6 @@ class InputRoundTest {
 
         // then
         assertThat(actualInputRound).isEqualTo(expectedInputRound);
+
     }
 }

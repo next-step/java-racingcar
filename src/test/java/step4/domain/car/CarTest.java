@@ -21,6 +21,7 @@ class CarTest {
 
         // test
         assertThat(actualCar).isEqualTo(expectedCar);
+
     }
 
     @DisplayName("Car 인스턴스 이동 여부 테스트")
@@ -36,6 +37,7 @@ class CarTest {
 
         // then
         assertThat(actualPosition).isEqualTo(expectedPosition);
+
     }
 
     @DisplayName("Car 인스턴스 이름 여부 테스트")
@@ -51,6 +53,7 @@ class CarTest {
 
         // then
         assertThat(actualName).isEqualTo(expectedName);
+
     }
 
     @DisplayName("Car 인스턴스 우승자 여부 테스트")
@@ -96,4 +99,5 @@ class CarTest {
         // then
         assertThat(actual).isTrue();
     }
+
 }

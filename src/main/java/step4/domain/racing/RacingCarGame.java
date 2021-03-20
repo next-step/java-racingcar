@@ -51,7 +51,6 @@ public final class RacingCarGame {
         return new Winners(cars.winners(maxPosition()));
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

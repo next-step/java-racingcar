@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.car.Car;
 import step4.domain.car.position.Position;
+
 import step4.domain.ipnut.InputNames;
 
 import java.util.List;
@@ -57,6 +58,7 @@ class CarsTest {
 
         // then
         assertThat(actualCars).isEqualTo(expectedCars);
+
     }
 
     @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 최대값 반환 테스트")
@@ -75,11 +77,13 @@ class CarsTest {
 
         // then
         assertThat(actualPosition).isEqualTo(expectedPosition);
+
     }
 
     @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 우승자 리스트 반환 테스트")
     @Test
     void 우승자_반환() {
+
         // given
         Cars cars = new Cars("a,b,c");
         List<Car> expected = cars.cars();

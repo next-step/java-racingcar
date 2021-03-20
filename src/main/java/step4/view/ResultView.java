@@ -2,6 +2,7 @@ package step4.view;
 
 import step4.domain.car.Car;
 import step4.domain.car.position.Position;
+
 import step4.domain.racing.Cars;
 import step4.domain.racing.Winners;
 import step4.dto.ResponseDto;
@@ -44,6 +45,7 @@ public final class ResultView {
             stringBuilder.append("\n");
         }
         print(stringBuilder);
+
     }
 
     public final void print(Winners winners) {
@@ -60,5 +62,6 @@ public final class ResultView {
     private final void print(StringBuilder stringBuilder) {
         System.out.println(stringBuilder.toString());
     }
+
 
 }

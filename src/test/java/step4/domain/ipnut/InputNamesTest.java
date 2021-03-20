@@ -48,6 +48,7 @@ class InputNamesTest {
         // given
         List<String> expected = Arrays.asList("pobi", "brown", "json");
 
+
         // when
         InputNames inputNames = new InputNames(expected);
         List<String> actual = inputNames.inputNames();

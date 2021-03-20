@@ -27,9 +27,11 @@ class WinnersTest {
     @DisplayName("Winners 인스턴스 생성 여부 테스트")
     @Test
     void 생성() {
+        // given
+        Winners expectedWinners = new Winners(cars);
+
         // when
         Winners actualWinners = new Winners(cars);
-        Winners expectedWinners = new Winners(cars);
 
         // then
         assertThat(actualWinners).isEqualTo(expectedWinners);

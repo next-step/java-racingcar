@@ -36,6 +36,7 @@ class PositionTest {
     @Test
     void 증가() {
         // given
+
         Position actualPosition = new Position();
         Position expectedPosition = new Position(1);
 
@@ -54,6 +55,7 @@ class PositionTest {
 
         Position actualPosition = standardPosition.winningPosition(expectedPosition);
         assertThat(actualPosition).isEqualTo(expectedPosition);
+
     }
 
 }

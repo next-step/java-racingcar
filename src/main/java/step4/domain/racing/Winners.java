@@ -13,6 +13,7 @@ public final class Winners {
         this(cars.cars());
     }
 
+
     public Winners(List<Car> winners) {
         this.winners = winners;
     }
@@ -33,4 +34,5 @@ public final class Winners {
     public int hashCode() {
         return Objects.hash(winners);
     }
+
 }

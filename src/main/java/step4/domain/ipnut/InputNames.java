@@ -6,6 +6,7 @@ import utils.StringUtils;
 import java.util.List;
 import java.util.Objects;
 
+
 public final class InputNames {
 
     private final List<String> inputNames;
@@ -37,4 +38,5 @@ public final class InputNames {
     public int hashCode() {
         return Objects.hash(inputNames);
     }
+
 }

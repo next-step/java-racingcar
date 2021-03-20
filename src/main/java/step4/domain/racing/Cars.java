@@ -2,11 +2,13 @@ package step4.domain.racing;
 
 import step4.domain.car.Car;
 import step4.domain.car.position.Position;
+
 import step4.domain.ipnut.InputNames;
 import step4.startegy.Move;
 
 import java.util.List;
 import java.util.Objects;
+
 import java.util.stream.Collectors;
 
 public final class Cars {
@@ -65,5 +67,6 @@ public final class Cars {
     @Override
     public int hashCode() {
         return Objects.hash(cars);
+
     }
 }

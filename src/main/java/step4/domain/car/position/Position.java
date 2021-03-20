@@ -2,6 +2,7 @@ package step4.domain.car.position;
 
 import java.util.Objects;
 
+
 public final class Position {
     private int position;
 
@@ -18,6 +19,7 @@ public final class Position {
 
     private final boolean isLessThanZero(int position) {
         return position < 0;
+
     }
 
     public final void increase() {
@@ -39,6 +41,7 @@ public final class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+
     }
 
 }
