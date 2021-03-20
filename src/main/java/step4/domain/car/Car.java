@@ -38,6 +38,10 @@ public final class Car {
         return position.equals(other);
     }
 
+    public final boolean isDifferentPosition(Position other) {
+        return !(position.equals(other));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

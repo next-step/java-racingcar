@@ -10,15 +10,18 @@ public final class Position {
     }
 
     public Position(int position) {
+        if(isLessThanZero(position)) {
+            throw new IllegalArgumentException("유효하지 않은 값을 사용했습니다.");
+        }
         this.position = position;
+    }
+
+    private final boolean isLessThanZero(int position) {
+        return position < 0;
     }
 
     public final void increase() {
         position++;
-    }
-
-    public final int position() {
-        return position;
     }
 
     public final Position getWinningPosition(Position other) {

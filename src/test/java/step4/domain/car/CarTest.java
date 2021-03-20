@@ -13,7 +13,7 @@ class CarTest {
     @Test
     void 생성() {
         // given
-        String name = "test";
+        String name = "test0";
 
         // when
         Car actualCar = new Car(name);
@@ -27,7 +27,7 @@ class CarTest {
     @Test
     void 이동() {
         // given
-        Car car = new Car("test");
+        Car car = new Car("test1");
 
         // when
         car.move(() -> true);
@@ -42,7 +42,7 @@ class CarTest {
     @Test
     void 이름() {
         // given
-        String expected = "test";
+        String expected = "test2";
         Car car = new Car(expected);
 
         // when
@@ -57,7 +57,7 @@ class CarTest {
     @Test
     void 승자() {
         // given
-        String expected = "test";
+        String expected = "test3";
         Car car = new Car(expected);
 
         car.move(() -> true);
@@ -71,7 +71,7 @@ class CarTest {
     @Test
     void 승자_객체_비교() {
         // given
-        String expected = "test";
+        String expected = "test4";
         Car car = new Car(expected);
 
         car.move(() -> true);
@@ -81,4 +81,19 @@ class CarTest {
         assertThat(actual).isTrue();
     }
 
+    @DisplayName("Car 인스턴스의 포지션과 다른지 여부 테스트")
+    @Test
+    void 다른_포지션인지를_검증() {
+        // given
+        String testName = "test5";
+        Car car = new Car(testName);
+        Position position = new Position(0);
+
+        // when
+        car.move(() -> true);
+        boolean actual = car.isDifferentPosition(position);
+
+        // then
+        assertThat(actual).isTrue();
+    }
 }
