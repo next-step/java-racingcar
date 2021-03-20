@@ -20,10 +20,11 @@ class RacingCarGameTest {
         Round round = new Round(5);
 
         // when
-        RacingCarGame racingCarGame = new RacingCarGame(cars, round);
+        RacingCarGame actualGame = new RacingCarGame(cars, round);
+        RacingCarGame expectedGame = new RacingCarGame(cars, round);
 
         // then
-        assertThat(racingCarGame).isNotNull();
+        assertThat(actualGame).isEqualTo(expectedGame);
 
     }
 
