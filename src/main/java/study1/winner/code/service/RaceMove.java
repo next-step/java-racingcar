@@ -7,7 +7,7 @@ public class RaceMove implements MoveStrategy {
   private static final int STANDARD_NUM = 4;
 
   @Override
-  public Boolean move() {
+  public boolean move() {
     if(new Random().nextInt(MAX_NUM) > STANDARD_NUM) {
       return true;
     }
