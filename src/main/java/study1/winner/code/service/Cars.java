@@ -36,7 +36,7 @@ public class Cars {
   public List<String> winners() {
     int maxDistance = maxDistance();
     return cars.stream()
-      .filter((car) -> car.distance() == maxDistance)
+      .filter((car) -> car.isWinner(maxDistance))
       .map((car) -> car.driver())
       .collect(Collectors.toList());
   }
@@ -45,7 +45,7 @@ public class Cars {
     return cars.stream()
       .map((car) -> car.distance())
       .max(Integer::compare)
-      .orElse(-1);
+      .orElseThrow(() -> new IllegalArgumentException("최대 이동거리는 0 보다 작을수 없습니다."));
   }
 
 }
