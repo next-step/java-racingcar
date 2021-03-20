@@ -23,7 +23,7 @@ public final class RacingCarGameApplication {
             resultView.print(racingCarGame.responseDto());
             racingCarGame.nextRound();
         }
-        resultView.print(racingCarGame.winners());
+        //resultView.print(racingCarGame.winners());
     }
 
 }

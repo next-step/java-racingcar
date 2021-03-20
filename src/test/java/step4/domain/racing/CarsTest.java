@@ -59,7 +59,7 @@ class CarsTest {
         assertThat(actualCars).isEqualTo(expectedCars);
     }
 
-    @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 최대값 반환 테스트, 객체")
+    @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 최대값 반환 테스트")
     @Test
     void 최대값_반환(){
         // given
@@ -76,7 +76,7 @@ class CarsTest {
         // then
         assertThat(actualPosition).isEqualTo(expectedPosition);
     }
-/*
+
     @DisplayName("Cars 인스턴스 소유한 여러 Car 중에서 우승자 리스트 반환 테스트")
     @Test
     void 우승자_반환(){
@@ -86,7 +86,7 @@ class CarsTest {
 
         // when
         cars.move(()-> true);
-        int winnerPosition = cars.maxPosition();
+        Position winnerPosition = cars.maxPosition();
 
         List<Car> actual = cars.winners(winnerPosition);
 
@@ -94,6 +94,6 @@ class CarsTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-*/
+
 
 }

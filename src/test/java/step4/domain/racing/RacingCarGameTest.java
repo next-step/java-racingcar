@@ -73,7 +73,7 @@ class RacingCarGameTest {
         // then
         assertThat(responseDto).isNotNull();
     }
-
+/*
     @DisplayName("RacingCarGame 우승자 반환 여부 테스트")
     @Test
     void 우승자_반환(){
@@ -89,5 +89,5 @@ class RacingCarGameTest {
         // then
         assertThat(winners).isNotNull();
     }
-
+*/
 }

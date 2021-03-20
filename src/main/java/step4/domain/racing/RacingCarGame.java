@@ -40,6 +40,7 @@ public final class RacingCarGame {
         return new ResponseDto(cars);
     }
 
+    /*
     private final int maxPosition(){
         return cars.maxPosition();
     }
@@ -47,5 +48,5 @@ public final class RacingCarGame {
     public final Winners winners() {
         return new Winners(cars.winners(maxPosition()));
     }
-
+*/
 }
