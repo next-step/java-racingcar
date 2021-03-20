@@ -18,12 +18,13 @@ class InputNamesTest {
     void 생성() {
         // given
         String names = "pobi,brown,json";
+        InputNames expectedInputNames = new InputNames(names);
 
         // when
-        InputNames inputNames = new InputNames(names);
+        InputNames actualInputNames = new InputNames(names);
 
         // then
-        assertThat(inputNames).isNotNull();
+        assertThat(actualInputNames).isEqualTo(expectedInputNames);
 
     }
 
