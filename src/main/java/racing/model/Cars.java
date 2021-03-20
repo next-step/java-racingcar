@@ -1,7 +1,5 @@
 package racing.model;
 
-import racing.util.RandomGenerator;
-
 import java.util.List;
 
 public class Cars {
@@ -16,6 +14,7 @@ public class Cars {
   }
 
   public boolean runCycle() {
+    // TODO: Move할 때 strategy 주입해야 함
     cars.forEach(Car::move);
     return true;
   }

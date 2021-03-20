@@ -16,6 +16,7 @@ public class Car {
     this.carMovingStrategy = strategy;
   }
 
+  // TODO: Move할 때 strategy 주입해야 함
   public int move() {
     if (carMovingStrategy.isMovable()) location += 1;
     return location;
