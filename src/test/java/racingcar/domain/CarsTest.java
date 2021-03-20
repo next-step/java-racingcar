@@ -72,7 +72,7 @@ class CarsTest {
     @DisplayName("자동차 집합이 보유중인 자동차들의 전진 횟수 리스트를 반환하는지 테스트한다.")
     void checkForwardTest(int input) {
         when(car.getForwardNum()).thenReturn(input);
-        List<Integer> forwardNums = cars.checkForward();
+        List<Integer> forwardNums = cars.checkMove();
 
         verify(car, times(CAR_NUM)).getForwardNum();
         assertThat(forwardNums.size()).isEqualTo(CAR_NUM);
@@ -82,8 +82,8 @@ class CarsTest {
     @Test
     @DisplayName("자동차 집합이 전진할지 여부를 확인했는지 리스트들의 메소드 호출 횟수를 확인한다.")
     void tryForwardTest() {
-        cars.tryForward();
-        verify(car, times(CAR_NUM)).goForward();
+        cars.tryMove();
+        verify(car, times(CAR_NUM)).move();
     }
 
     @Test

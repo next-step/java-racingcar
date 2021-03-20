@@ -43,7 +43,7 @@ public class Car {
      * @param null
      * @return 자동차의 전진 여부, boolean
      * */
-    public boolean goForward() {
+    public boolean move() {
         if (random.nextInt(RANDOM_BOUND) >= FORWARD_CONDITION) {
             forwardNum++;
             return true;

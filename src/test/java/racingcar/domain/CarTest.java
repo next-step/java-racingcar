@@ -52,7 +52,7 @@ class CarTest {
         when(random.nextInt(RANDOM_BOUND))
                 .thenReturn(randInt);
 
-        assertThat(car.goForward()).isTrue();
+        assertThat(car.move()).isTrue();
         assertThat(car.getForwardNum()).isEqualTo(INIT_NUM + 1);
     }
 
@@ -62,7 +62,7 @@ class CarTest {
         when(random.nextInt(RANDOM_BOUND))
                 .thenReturn(randInt);
 
-        assertThat(car.goForward()).isFalse();
+        assertThat(car.move()).isFalse();
         assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
     }
 }

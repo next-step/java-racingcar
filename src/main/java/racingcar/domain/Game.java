@@ -53,7 +53,7 @@ public class Game {
             System.out.println("아무런 시도를 하지 않았습니다.");
         }
         for (int i = 0; i < tryNum; i++) {
-            racingCars.tryForward();
+            racingCars.tryMove();
             ResultView.printResultWithName(racingCars.checkCarStatus());
         }
         ResultView.printWinner(Rule.whoIsWinner(racingCars.checkCarStatus()));

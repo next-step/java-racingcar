@@ -24,7 +24,7 @@ public class Cars {
      * @param null
      * @return 자동차들의 전진한 횟수를 담은 리스트, LinkedList<Integer>
      * */
-    public ArrayList<Integer> checkForward() {
+    public ArrayList<Integer> checkMove() {
         return cars.stream()
                 .map(Car::getForwardNum)
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -35,7 +35,7 @@ public class Cars {
                 .collect(Collectors.toMap(Car::getName, Car::getForwardNum, (name, num) -> name, TreeMap::new));
     }
 
-    public void tryForward() {
-        cars.forEach(Car::goForward);
+    public void tryMove() {
+        cars.forEach(Car::move);
     }
 }
