@@ -34,6 +34,10 @@ public final class Car {
         return position;
     }
 
+    public final boolean isWinner(Position position) {
+        return position.equals(position);
+    }
+
     public final boolean isWinner(int winnerPosition) {
         return (position.position() == winnerPosition);
     }
@@ -50,4 +54,6 @@ public final class Car {
     public int hashCode() {
         return Objects.hash(name, position);
     }
+
+
 }
