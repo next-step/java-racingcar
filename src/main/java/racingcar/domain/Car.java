@@ -5,7 +5,7 @@
  * @version 2.0
  * */
 
-package step3.racingcar.domain;
+package racingcar.domain;
 
 import java.util.Collections;
 import java.util.Map;

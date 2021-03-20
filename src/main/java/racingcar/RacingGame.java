@@ -5,9 +5,10 @@
  * @version 2.0
  * */
 
-package step3.racingcar;
+package racingcar;
 
-import step3.racingcar.ui.InputView;
+import racingcar.domain.Game;
+import racingcar.ui.InputView;
 
 public class RacingGame {
     public static void main(String[] args) {

@@ -4,9 +4,9 @@
  * @author hj-woo
  * @version 2.0
  * */
-package step3.racingcar.ui;
+package racingcar.ui;
 
-import step3.racingcar.Game;
+import racingcar.domain.Game;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,9 @@
-package step3.racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import step3.racingcar.domain.Cars;
-import step3.racingcar.ui.InputView;
+import racingcar.ui.InputView;
 
 import java.util.ArrayList;
 import java.util.List;

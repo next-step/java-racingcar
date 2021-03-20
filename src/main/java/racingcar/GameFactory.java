@@ -5,10 +5,11 @@
  * @author hj-woo
  * @version 1.0
  * */
-package step3.racingcar;
+package racingcar;
 
-import step3.racingcar.domain.Car;
-import step3.racingcar.domain.Cars;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Game;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -5,7 +5,7 @@
  * @version 2.0
  * */
 
-package step4.racingcar;
+package racingcar.domain;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
