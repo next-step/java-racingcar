@@ -49,9 +49,9 @@ public class Cars {
         }
     }
 
-    public void driveAll() {
+    public void driveAll(Engine engine) {
         for (Car car : carList) {
-            car.drive(new Engine());
+            car.drive(engine);
         }
     }
 

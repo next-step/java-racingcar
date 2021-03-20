@@ -2,6 +2,7 @@ package carracing.service;
 
 import carracing.constants.CarRacingConstant;
 import carracing.domain.Cars;
+import carracing.domain.Engine;
 import carracing.service.dto.RacingResult;
 import carracing.service.dto.RacingScore;
 import carracing.service.dto.RoundResult;
@@ -60,7 +61,7 @@ public class CarRacing {
     }
 
     private List<RacingScore> executeScoring(Cars cars) {
-        cars.driveAll();
+        cars.driveAll(new Engine());
         return cars.racingScoreList();
     }
 

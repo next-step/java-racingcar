@@ -142,7 +142,7 @@ class CarTest {
         List<RacingScore> racingScores = cars.racingScoreList();
 
         // when
-        cars.driveAll();
+        cars.driveAll(new Engine());
 
         // then
         assertThat(cars.getCarList().size()).isEqualTo(racingScores.size());
@@ -156,7 +156,7 @@ class CarTest {
         Cars cars = new Cars(carNames);
         
         // when
-        cars.driveAll();
+        cars.driveAll(new Engine());
         List<Car> winnerList = cars.chooseWinners();
 
         // then
@@ -236,6 +236,52 @@ class CarTest {
             for (Car car : cars.getCarList()) {
                 assertThat(winner.isWinner(car.inquiryRacingScore().getScore())).isTrue();
             }
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9, 10})
+    @DisplayName("반드시 움직이는 엔진을 장착한 차들은 주행 시 반드시 움직인다.")
+    void cars_driveAll_alwaysDrive(int testParam) {
+        // given
+        Engine engine = new Engine(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return testParam;
+            }
+        });
+
+        Cars cars = new Cars("pobi,crong,honux");
+
+        // when
+        cars.driveAll(engine);
+
+        // then
+        for (Car car : cars.getCarList()) {
+            assertThat(1).isEqualTo(car.inquiryRacingScore().getScore());
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {3, 2, 1, 0, -1, -2})
+    @DisplayName("반드시 움직이지 않는 엔진을 장착한 차들은 주행 시 반드시 움직이지 않는다.")
+    void cars_driveAll_alwaysStop(int testParam) {
+        // given
+        Engine engine = new Engine(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return testParam;
+            }
+        });
+
+        Cars cars = new Cars("pobi,crong,honux");
+
+        // when
+        cars.driveAll(engine);
+
+        // then
+        for (Car car : cars.getCarList()) {
+            assertThat(0).isEqualTo(car.inquiryRacingScore().getScore());
         }
     }
 
