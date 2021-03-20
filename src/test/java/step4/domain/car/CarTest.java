@@ -31,11 +31,11 @@ class CarTest {
 
         // when
         car.move(() -> true);
-        Position position = car.position();
-        int actual = position.position();
+        Position actualPosition = car.position();
+        Position expectedPosition = new Position(1);
 
         // then
-        assertThat(actual).isEqualTo(1);
+        assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
     @DisplayName("Car 인스턴스 이름 여부 테스트")
@@ -46,11 +46,11 @@ class CarTest {
         Car car = new Car(expected);
 
         // when
-        Name name = car.name();
-        String actual = name.name();
+        Name actualName = car.name();
+        Name expectedName = new Name(expected);
 
         // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actualName).isEqualTo(expectedName);
     }
 
     @DisplayName("Car 인스턴스 우승자 여부 테스트")
