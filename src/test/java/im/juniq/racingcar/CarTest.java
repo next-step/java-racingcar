@@ -18,13 +18,6 @@ class CarTest {
 		assertThatCode(() -> new Car(carName, new RandomNumberMovingStrategy())).doesNotThrowAnyException();
 	}
 
-	@DisplayName("자동차 이름은 5글자 이하만 허용한다")
-	@ParameterizedTest
-	@ValueSource(strings = {"pobi66"})
-	void createCarWithCheckCarName(String carName) {
-		assertThatIllegalArgumentException().isThrownBy(() -> new Car(carName, new RandomNumberMovingStrategy()));
-	}
-
 	@DisplayName("자동차를 이동한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"pobi"})
