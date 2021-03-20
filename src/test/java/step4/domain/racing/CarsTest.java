@@ -19,10 +19,11 @@ class CarsTest {
         InputNames inputNames = new InputNames("a,b,c");
 
         // when
-        Cars cars = new Cars(inputNames);
+        Cars actualCars = new Cars(inputNames);
+        Cars expectedCars = new Cars(inputNames);
 
         // then
-        assertThat(cars).isNotNull();
+        assertThat(actualCars).isEqualTo(expectedCars);
 
     }
 
