@@ -33,7 +33,7 @@ class RacingGameTest {
 		racingGame.move();
 
 		for (Score score: racingGame.scores()) {
-			assertThat(score.position()).isEqualToComparingFieldByField(new Position(1));
+			assertThat(score.position()).isEqualTo(1);
 		}
 	}
 
