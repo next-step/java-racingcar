@@ -16,7 +16,7 @@ import static racingcar.GameFactory.*;
 
 public class Game {
     private Cars racingCars;
-    private int tryNum;
+    private TryNo tryNo;
 
     /*
      * 게임 생성과 동시에 자동차 대수와 시도할 횟수를 확인하고,
@@ -30,7 +30,7 @@ public class Game {
 
     public void checkInputs(Object input, String str) {
         if (str.equals(HOW_MANY_TRYS)) {
-            tryNum = (int) input;
+            tryNo = new TryNo((int) input);
         }
         if (str.equals(HOW_MANY_CARS)) {
             racingCars = GameFactory.cars((Integer) input);
@@ -47,13 +47,12 @@ public class Game {
      * */
     public ArrayList<Map<Name, Position>> play() {
         ArrayList<Map<Name, Position>> results = new ArrayList<>();
-        if (tryNum == 0) {
+        if (tryNo.isZero()) {
             System.out.println("아무런 시도를 하지 않았습니다.");
         }
-        for (int i = 0; i < tryNum; i++) {
+        while (tryNo.next()){
             racingCars.tryMove();
             results.add(racingCars.checkCarStatus());
-
         }
         return results;
     }
