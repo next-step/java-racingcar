@@ -14,7 +14,6 @@ public class CarTest {
     Car car = new Car(name, initDistance);
     car.move(() -> true);
 
-    assertThat(car.driver()).isEqualTo(name);
-    assertThat(car.distance()).isEqualTo(initDistance + 1);
+    assertThat(car.equals(new Car(name, initDistance + 1))).isTrue();
   }
 }
