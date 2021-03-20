@@ -67,4 +67,18 @@ class CarTest {
         assertThat(actual).isTrue();
     }
 
+    @DisplayName("Car 인스턴스 우승자 여부 테스트, 객체간의 비교")
+    @Test
+    void 승자_객체_비교(){
+        // given
+        String expected = "test";
+        Car car = new Car(expected);
+
+        car.move(()->true);
+        boolean actual = car.isWinner(new Position(1));
+
+        // then
+        assertThat(actual).isTrue();
+    }
+
 }
