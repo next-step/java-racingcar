@@ -1,8 +1,16 @@
 package racing.utils;
 
+import java.util.Arrays;
+import java.util.List;
+
 public final class StringUtils {
+  public static final String DEFAULT_SEPARATOR = ",";
 
   private StringUtils() {
+  }
+
+  public static String[] split(String str) {
+    return split(str, DEFAULT_SEPARATOR);
   }
 
   public static String[] split(String str, String separator) {
@@ -11,6 +19,18 @@ public final class StringUtils {
     }
 
     return str.split(separator);
+  }
+
+  public static List<String> toList(String str) {
+    return toList(split(str));
+  }
+
+  public static List<String> toList(String[] arr) {
+    return Arrays.asList(arr);
+  }
+
+  public static List<String> toList(String str, String separator) {
+    return toList(split(str, separator));
   }
 
   public static boolean isBlank(String str) {
