@@ -5,12 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import im.juniq.racingcar.domain.Car;
-import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
-import im.juniq.racingcar.domain.RacingGame;
-import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
-import im.juniq.racingcar.domain.CarState;
-
 class RacingGameTest {
 	@DisplayName("자동차 n대를 생성한다")
 	@Test

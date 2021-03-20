@@ -6,10 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import im.juniq.racingcar.domain.Car;
-import im.juniq.racingcar.domain.OnlyTrueMovingStrategy;
-import im.juniq.racingcar.domain.RandomNumberMovingStrategy;
-
 class CarTest {
 	@DisplayName("자동차를 생성한다")
 	@ParameterizedTest
@@ -27,7 +23,6 @@ class CarTest {
 
 		car.move();
 
-		assertThat(car).isEqualToComparingFieldByFieldRecursively(
-			new Car(carName, 1, movingStrategy));
+		assertThat(car.position().value()).isEqualTo(1);
 	}
 }
