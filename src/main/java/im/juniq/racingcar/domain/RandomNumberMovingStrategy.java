@@ -9,7 +9,7 @@ public class RandomNumberMovingStrategy implements MovingStrategy {
 
 	@Override
 	public boolean isMoving() {
-		return randomNumber.get() > BOUND_OF_CAR_MOVEMENT;
+		return randomNumber.value() > BOUND_OF_CAR_MOVEMENT;
 	}
 
 	public void setRandomNumber(RandomNumber randomNumber) {

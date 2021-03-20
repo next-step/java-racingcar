@@ -12,7 +12,7 @@ class RandomNumberTest {
 	@DisplayName("0~9 사이 난수 생성")
 	@Test
 	void getZeroToNine() {
-		assertThat(new RandomNumberZeroToNine(new Random()).get()).isBetween(0, 9);
+		assertThat(new RandomNumberZeroToNine(new Random()).value()).isBetween(0, 9);
 	}
 
 	@DisplayName("테스트를 위해 9만 생성")
@@ -23,6 +23,6 @@ class RandomNumberTest {
 		 	public int nextInt(int bound) {
 				return 9;
 			}
-		}).get()).isEqualTo(9);
+		}).value()).isEqualTo(9);
 	}
 }

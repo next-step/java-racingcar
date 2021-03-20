@@ -34,7 +34,7 @@ public class RacingGame {
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public List<CarState> getWinners() {
+	public List<CarState> winners() {
 		return findByTopPosition().stream()
 				.map(car -> new CarState(car.name().value(), car.position().value()))
 				.collect(Collectors.toList());

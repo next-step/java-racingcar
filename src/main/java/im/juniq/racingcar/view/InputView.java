@@ -18,11 +18,11 @@ public class InputView {
 		System.out.println("실행결과");
 	}
 
-	public int getNumberOfTries() {
+	public int numberOfTries() {
 		return numberOfTries;
 	}
 
-	public String[] getCarNames() {
+	public String[] carNames() {
 		return carNames;
 	}
 }

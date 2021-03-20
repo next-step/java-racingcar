@@ -47,7 +47,7 @@ class RacingGameTest {
 			racingGame.move();
 		}
 
-		for (CarState winner: racingGame.getWinners()) {
+		for (CarState winner: racingGame.winners()) {
 			assertThat(winner).isEqualToComparingFieldByField(new CarState("pobi", 10));
 		}
 	}

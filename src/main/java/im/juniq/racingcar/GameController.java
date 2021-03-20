@@ -17,8 +17,8 @@ public class GameController {
 	public void play() {
 		InputView inputView = new InputView();
 		inputView.scan();
-		createCars(inputView.getCarNames());
-		racing(inputView.getNumberOfTries());
+		createCars(inputView.carNames());
+		racing(inputView.numberOfTries());
 		printWinner();
 	}
 
@@ -42,6 +42,6 @@ public class GameController {
 	}
 
 	private void printWinner() {
-		resultView.printWinner(racingGame.getWinners());
+		resultView.printWinner(racingGame.winners());
 	}
 }
