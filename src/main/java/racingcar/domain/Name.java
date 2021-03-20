@@ -1,3 +1,10 @@
+/*
+ * 자동차의 이름을 원시값으로 포장한 불변 객체
+ *
+ * @author hj-woo
+ * @version 1.0
+ * */
+
 package racingcar.domain;
 
 import racingcar.utils.ErrorMessage;
@@ -19,10 +26,6 @@ public class Name implements Comparable<Name>{
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,7 +41,7 @@ public class Name implements Comparable<Name>{
 
     @Override
     public int compareTo(Name o) {
-        return name.compareTo(o.getName());
+        return name.compareTo(o.name);
     }
 
     @Override

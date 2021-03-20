@@ -15,8 +15,6 @@ import static racingcar.GameFactory.STEP3_STR;
 import static racingcar.GameFactory.STEP4_STR;
 
 class GameTest {
-    private Game step3Game;
-    private Game step4Game;
     private static final int TRY_NUM = 3;
     private static final int CAR_NUM = 4;
     private static final String NAME1 = "name1";
@@ -26,6 +24,8 @@ class GameTest {
     private List<Object> inputs;
     private List<Object> step4Inputs;
     MockedStatic<InputView> inputView;
+    private Game step3Game;
+    private Game step4Game;
 
     @BeforeEach
     void setUp() {
@@ -56,13 +56,13 @@ class GameTest {
 
     @Test
     void createGame() {
-        assertThat(step3Game).extracting("tryNum")
-                .containsOnly(TRY_NUM);
+        assertThat(step3Game).extracting("tryNo")
+                .containsOnly(new TryNo(TRY_NUM));
         assertThat(step3Game).extracting("racingCars")
                 .hasOnlyElementsOfType(Cars.class);
 
-        assertThat(step4Game).extracting("tryNum")
-                .containsOnly(TRY_NUM);
+        assertThat(step4Game).extracting("tryNo")
+                .containsOnly(new TryNo(TRY_NUM));
         assertThat(step4Game).extracting("racingCars")
                 .hasOnlyElementsOfType(Cars.class);
     }

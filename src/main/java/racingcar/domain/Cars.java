@@ -6,10 +6,7 @@
  * */
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -32,7 +29,7 @@ public class Cars {
 
     public Map<Name, Position> checkCarStatus() {
         return cars.stream()
-                .collect(Collectors.toMap(Car::getName, Car::getPosition, (name, num) -> name, TreeMap::new));
+                .collect(Collectors.toMap(Car::getName, Car::getPosition, (name, num) -> name, LinkedHashMap::new));
     }
 
     public void tryMove() {
