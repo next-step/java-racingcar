@@ -42,6 +42,13 @@ public class Car {
     return distance;
   }
 
+  public boolean isWinner(int maxDistance) {
+    if(distance == maxDistance) {
+      return true;
+    }
+    return false;
+  }
+
   @Override
     public boolean equals(Object o) {
         if (o == this) {

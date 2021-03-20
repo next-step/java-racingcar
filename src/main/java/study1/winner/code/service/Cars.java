@@ -36,7 +36,7 @@ public class Cars {
   public List<String> winners() {
     int maxDistance = maxDistance();
     return cars.stream()
-      .filter((car) -> car.distance() == maxDistance)
+      .filter((car) -> car.isWinner(maxDistance))
       .map((car) -> car.driver())
       .collect(Collectors.toList());
   }
