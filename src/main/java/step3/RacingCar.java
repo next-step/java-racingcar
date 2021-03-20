@@ -1,23 +1,31 @@
 package step3;
 
+import java.util.Random;
+
 public class RacingCar {
 
-    private int car;
-    private int trial;
+    private int numberOfCar;
+    private int numberOfTrial;
 
-    public RacingCar() {}
-
-    public void setCar(int car) {
-        this.car = car;
+    public void setInput(InputDto inputDto) {
+        this.numberOfCar = inputDto.getNumberOfCar();
+        this.numberOfTrial = inputDto.getNumberOfTrial();
     }
 
-    public void setTrial(int trial) {
-        this.trial = trial;
-    }
+    public int[][] getRandomValue() {
+        Random random = new Random();
+        int[][] results = new int[numberOfTrial][numberOfCar];
 
-    void start() {
-        ResultView resultView = new ResultView();
-        resultView.printResult(car, trial);
+        for (int i = 0; i < numberOfTrial; i++) {
+            for (int j = 0; j < numberOfCar; j++) {
+                results[i][j] = random.nextInt(10);
+
+                if (0 < i) {
+                    results[i][j] += results[i - 1][j];
+                }
+            }
+        }
+        return results;
     }
 
 }
