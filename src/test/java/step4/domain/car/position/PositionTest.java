@@ -11,24 +11,25 @@ class PositionTest {
     @Test
     void 생성() {
         // given and when
-        Position position = new Position();
+        Position actualPosition = new Position();
+        Position expectedPosition = new Position();
 
         // then
-        assertThat(position).isNotNull();
+        assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
     @DisplayName("Position 인스턴스 증가 여부 테스트")
     @Test
     void 증가() {
         // given
-        Position position = new Position();
+        Position actualPosition = new Position();
+        Position expectedPosition = new Position(1);
 
         // when
-        position.increase();
-        int actual = position.position();
+        actualPosition.increase();
 
         // then
-        assertThat(actual).isEqualTo(1);
+        assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
 }
