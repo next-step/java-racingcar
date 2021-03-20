@@ -32,4 +32,14 @@ class PositionTest {
         assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
+    @DisplayName("Position 인스턴스 비교시 더 큰 인스턴스 반환 테스트")
+    @Test
+    void 비교() {
+        Position standardPosition = new Position();
+        Position expectedPosition = new Position(1);
+
+        Position actualPosition  = standardPosition.getWinningPosition(expectedPosition);
+        assertThat(actualPosition).isEqualTo(expectedPosition);
+    }
+
 }
