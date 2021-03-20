@@ -71,12 +71,13 @@ class CarsTest {
     @CsvSource("0, 1, 2")
     @DisplayName("자동차 집합이 보유중인 자동차들의 전진 횟수 리스트를 반환하는지 테스트한다.")
     void checkForwardTest(int input) {
-        when(car.getForwardNum()).thenReturn(input);
-        List<Integer> forwardNums = cars.checkMove();
+        Position inputPosition = new Position(input);
+        when(car.getPosition()).thenReturn(inputPosition);
+        List<Position> forwardNums = cars.checkMove();
 
-        verify(car, times(CAR_NUM)).getForwardNum();
+        verify(car, times(CAR_NUM)).getPosition();
         assertThat(forwardNums.size()).isEqualTo(CAR_NUM);
-        assertThat(forwardNums).containsOnly(input);
+        assertThat(forwardNums).containsOnly(inputPosition);
     }
 
     @Test
@@ -89,10 +90,10 @@ class CarsTest {
     @Test
     @DisplayName("자동차 집합이 자동차의 이름과 전진 횟수를 담은 Map을 반환하는지 테스트한다.")
     void checkCarStatusTest() {
-        Map<String, Integer> carStatus = statCars.checkCarStatus();
+        Map<Name, Position> carStatus = statCars.checkCarStatus();
         assertThat(carStatus.size()).isEqualTo(CAR_NUM);
         for (int i = 0; i < CAR_NUM; i++) {
-            assertThat(carStatus.get(name + i)).isEqualTo(i);
+            assertThat(carStatus.get(new Name(name + i))).isEqualTo(new Position(i));
         }
     }
 
@@ -105,13 +106,13 @@ class CarsTest {
         Car testCar = mock(Car.class);
         Field nameField = testCar.getClass().getDeclaredField("name");
         nameField.setAccessible(true);
-        nameField.set(testCar, name + index);
-        when(testCar.getName()).thenReturn(name + index);
+        nameField.set(testCar, new Name(name + index));
+        when(testCar.getName()).thenReturn(new Name(name + index));
 
-        Field forwardField = testCar.getClass().getDeclaredField("forwardNum");
+        Field forwardField = testCar.getClass().getDeclaredField("position");
         forwardField.setAccessible(true);
-        forwardField.set(testCar, index);
-        when(testCar.getForwardNum()).thenReturn(index);
+        forwardField.set(testCar, new Position(index));
+        when(testCar.getPosition()).thenReturn(new Position(index));
 
         return testCar;
     }

@@ -24,15 +24,15 @@ public class Cars {
      * @param null
      * @return 자동차들의 전진한 횟수를 담은 리스트, LinkedList<Integer>
      * */
-    public ArrayList<Integer> checkMove() {
+    public ArrayList<Position> checkMove() {
         return cars.stream()
-                .map(Car::getForwardNum)
+                .map(Car::getPosition)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public Map<String, Integer> checkCarStatus() {
+    public Map<Name, Position> checkCarStatus() {
         return cars.stream()
-                .collect(Collectors.toMap(Car::getName, Car::getForwardNum, (name, num) -> name, TreeMap::new));
+                .collect(Collectors.toMap(Car::getName, Car::getPosition, (name, num) -> name, TreeMap::new));
     }
 
     public void tryMove() {

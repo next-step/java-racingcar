@@ -23,7 +23,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        name = "carName";
+        name = "name";
         car = new Car(name);
 
         /*
@@ -40,9 +40,8 @@ class CarTest {
 
     @Test
     void createCar() {
-        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
-        assertThat(car.getName()).isEqualTo(name);
-        assertThat(car.getStatus().get(name)).isEqualTo(INIT_NUM);
+        assertThat(car.getPosition()).isEqualTo(new Position(INIT_NUM));
+        assertThat(car.getName()).isEqualTo(new Name(name));
     }
 
 
@@ -53,7 +52,7 @@ class CarTest {
                 .thenReturn(randInt);
 
         assertThat(car.move()).isTrue();
-        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM + 1);
+        assertThat(car.getPosition().isSame(INIT_NUM + 1)).isTrue();
     }
 
     @ParameterizedTest
@@ -63,6 +62,6 @@ class CarTest {
                 .thenReturn(randInt);
 
         assertThat(car.move()).isFalse();
-        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
+        assertThat(car.getPosition().isSame(INIT_NUM)).isTrue();
     }
 }

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class GameFactory {
 
-    public static final String EMPTY_NAME = "emptyName";
+    public static final String EMPTY_NAME = "e";
 
     public static Game step3Game() {
         return new Game(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS});
@@ -38,7 +38,7 @@ public class GameFactory {
     public static Cars cars(int carNum) {
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
-            carList.add(car(EMPTY_NAME + i + "번째 자동차"));
+            carList.add(car(EMPTY_NAME + i));
         }
         return new Cars(carList);
     }

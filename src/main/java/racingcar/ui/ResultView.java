@@ -7,6 +7,9 @@
 
 package racingcar.ui;
 
+import racingcar.domain.Name;
+import racingcar.domain.Position;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
@@ -20,21 +23,21 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printResult(ArrayList<Integer> result) {
+    public static void printResult(ArrayList<Position> result) {
         result.forEach(num -> {
-            printForward(num);
+            printForward(num.getPosition());
         });
     }
 
-    public static void printResultWithName(Map<String, Integer> result) {
+    public static void printResultWithName(Map<Name, Position> result) {
         result.forEach((name, forwardNum) -> {
             System.out.print(name + " : ");
-            printForward(forwardNum);
+            printForward(forwardNum.getPosition());
         });
         System.out.println();
     }
 
-    public static void printWinner(Set<String> winners) {
+    public static void printWinner(Set<Name> winners) {
         String winner = winners.toString();
         System.out.println(winner.substring(1, winner.length() - 1) + "가 최종 우승 했습니다.");
     }
