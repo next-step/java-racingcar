@@ -48,11 +48,9 @@ public class Cars {
     }
 
     private int getMaxPosition() {
-        int maxPosition = 0;
-        for (int i = 0; i < cars.size() - 1; i++) {
-            maxPosition = Math.max(cars.get(i).getPosition(), cars.get(i + 1).getPosition());
-        }
-        return maxPosition;
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo).orElse(0);
     }
 
     public List<Car> getCars() {
