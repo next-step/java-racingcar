@@ -1,27 +1,56 @@
 package racing.domain;
 
+import racing.base.BaseCloneable;
 import racing.rule.MoveRule;
 
-public class RacingCar {
+import java.util.Objects;
 
-  private final int carNumber;
+public class RacingCar implements BaseCloneable {
+
+  private String name;
+  private int carNumber;
   private int position;
 
-  private RacingCar(int carNumber) {
-    this(carNumber, 0);
+  private RacingCar() {
+
+  }
+
+  private RacingCar(String name) {
+    this(name, 0);
+  }
+
+  private RacingCar(String name, int carNumber) {
+    this(name, carNumber, 0);
   }
 
   private RacingCar(int carNumber, int position) {
+    this("", carNumber, position);
+  }
+
+  private RacingCar(String name, int carNumber, int position) {
+    this.name = name;
     this.carNumber = carNumber;
     this.position = position;
   }
 
+  public static RacingCar create(String name) {
+    return create(name, 0);
+  }
+
   public static RacingCar create(int carNumber) {
-    return new RacingCar(carNumber);
+    return create("", carNumber);
+  }
+
+  public static RacingCar create(String name, int carNumber) {
+    return new RacingCar(name, carNumber);
   }
 
   public static RacingCar copyFrom(RacingCar racingCar) {
-    return new RacingCar(racingCar.carNumber(), racingCar.position());
+    return new RacingCar(racingCar.name(), racingCar.carNumber(), racingCar.position());
+  }
+
+  public String name() {
+    return this.name;
   }
 
   public int carNumber() {
@@ -35,6 +64,33 @@ public class RacingCar {
   public void move(MoveRule moveRule) {
     if (moveRule.possibleMove()) {
       this.position++;
+    }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RacingCar racingCar = (RacingCar) o;
+    return Objects.equals(name, racingCar.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name);
+  }
+
+  @Override
+  public String toString() {
+    return String.format("name:%s, carNumber:%d, position:%s", name, carNumber, position);
+  }
+
+  @Override
+  public RacingCar clone() {
+    try {
+      return (RacingCar) super.clone();
+    } catch (CloneNotSupportedException e) {
+      return new RacingCar();
     }
   }
 }

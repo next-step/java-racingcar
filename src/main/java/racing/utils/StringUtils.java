@@ -1,6 +1,5 @@
 package racing.utils;
 
-import java.util.Arrays;
 import java.util.List;
 
 public final class StringUtils {
@@ -22,15 +21,7 @@ public final class StringUtils {
   }
 
   public static List<String> toList(String str) {
-    return toList(split(str));
-  }
-
-  public static List<String> toList(String[] arr) {
-    return Arrays.asList(arr);
-  }
-
-  public static List<String> toList(String str, String separator) {
-    return toList(split(str, separator));
+    return ListUtils.of(split(str));
   }
 
   public static boolean isBlank(String str) {
