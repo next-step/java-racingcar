@@ -37,7 +37,7 @@ public class Position implements Comparable<Position> {
 		return Integer.compare(position, o.position);
 	}
 
-	public int position() {
+	public int value() {
 		return position;
 	}
 }

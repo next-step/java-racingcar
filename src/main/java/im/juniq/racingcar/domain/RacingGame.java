@@ -36,13 +36,13 @@ public class RacingGame {
 
 	public List<CarState> getWinners() {
 		return findByTopPosition().stream()
-				.map(car -> new CarState(car.name().name(), car.position().position()))
+				.map(car -> new CarState(car.name().value(), car.position().value()))
 				.collect(Collectors.toList());
 	}
 
 	public List<CarState> carStates() {
 		return cars.stream()
-				.map(car -> new CarState(car.name().name(), car.position().position()))
+				.map(car -> new CarState(car.name().value(), car.position().value()))
 				.collect(Collectors.toList());
 	}
 }

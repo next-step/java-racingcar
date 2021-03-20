@@ -15,7 +15,7 @@ public class Name implements Comparable<Name> {
 		}
 	}
 
-	public String name() {
+	public String value() {
 		return name;
 	}
 
