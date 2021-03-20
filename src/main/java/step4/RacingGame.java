@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingCar {
+public class RacingGame {
 
     private final List<Car> carList;
     private final InputDto inputDto;
 
-    public RacingCar(InputDto inputDto) {
+    public RacingGame(InputDto inputDto) {
         this.carList = createCar(inputDto.getCarNameList());
         this.inputDto = inputDto;
     }
@@ -31,6 +31,7 @@ public class RacingCar {
             Car car = carList.get(i);
             car.carCanGoJudge(RandomNumber.randomNumberGenerator());
 
+            // move 랑 print 를 분리할 수는 없을까요.. ㅠ,ㅠ (print 메소드에서 매개변수로 Car를 받으니 분리하기가 애매하네요..)
             print(car);
         }
 

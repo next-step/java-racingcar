@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             InputDto inputDto = InputView.input();
-            RacingCar racingCar = new RacingCar(inputDto);
+            RacingGame racingCar = new RacingGame(inputDto);
             racingCar.start();
 
             String winnerList = racingCar.findWinner();
