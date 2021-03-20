@@ -1,21 +1,26 @@
 package step4.domain;
 
 public class Round {
-    private int roundCount;
+    private static final int ZERO = 0;
 
-    private Round(final int roundCount) {
-        this.roundCount = roundCount;
+    private int count;
+
+    private Round(final int count) {
+        this.count = count;
     }
 
-    public static Round from(final int roundCount) {
-        if (roundCount <= 0) {
+    public static Round from(final int count) {
+        if (count <= ZERO) {
             throw new IllegalArgumentException("시도할 횟수는 0보다 큰값을 입력해야 합니다.");
         }
-        return new Round(roundCount);
+        return new Round(count);
     }
 
     public boolean isMovable() {
-        roundCount--;
-        return roundCount >= 0;
+        return count > ZERO;
+    }
+
+    public void minusCount() {
+        count--;
     }
 }

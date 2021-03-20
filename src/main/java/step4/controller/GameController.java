@@ -21,6 +21,7 @@ public class GameController {
         while (round.isMovable()) {
             cars.move();
             ResultView.printPosition(cars);
+            round.minusCount();
         }
         ResultView.printWinners(cars);
     }
