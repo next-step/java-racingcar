@@ -26,13 +26,10 @@ public class GameFactory {
     public static final String[] STEP3_STR = {HOW_MANY_CARS, HOW_MANY_TRYS};
     public static final String[] STEP4_STR = {INPUT_CAR_NAMES, HOW_MANY_TRYS};
 
-    public static Game step3Game(List<Object> inputArr) {
-        return new Game(STEP3_STR, inputArr);
+    public static Game game(String[] str, List<Object> inputArr) {
+        return new Game(str, inputArr);
     }
 
-    public static Game step4Game(List<Object> inputArr) {
-        return new Game(STEP4_STR, inputArr);
-    }
 
     public static Cars namesCars(String[] names) {
         List<Car> carList = Arrays.stream(names)

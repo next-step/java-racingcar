@@ -8,20 +8,38 @@
 package racingcar;
 
 import racingcar.domain.Game;
+import racingcar.domain.Name;
+import racingcar.domain.Position;
+import racingcar.domain.Rule;
 import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static racingcar.GameFactory.STEP4_STR;
 
 public class RacingGame {
     public static void main(String[] args) {
-//        Game step3Game = GameFactory.step3Game();
+        Game step4Game = createGame(STEP4_STR);
+        ArrayList<Map<Name, Position>> results = step4Game.play();
+        ResultView.printAllResultWithName(results);
+        ResultView.printWinner(Rule.whoIsWinner(results.get(results.size() - 1)));
 
-        List<Object> inputArr = InputView.input(STEP4_STR);
+    }
+
+    public static Game createGame(String[] step) {
+        Game game;
+        try {
+            List<Object> inputArr = InputView.input(step);
+            game = GameFactory.game(step, inputArr);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            game = createGame(step);
+        }
         InputView.closeScanner();
-        Game step4Game = GameFactory.step4Game(inputArr);
-        step4Game.play();
 
+        return game;
     }
 }

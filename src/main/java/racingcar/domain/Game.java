@@ -7,9 +7,10 @@
 package racingcar.domain;
 
 import racingcar.GameFactory;
-import racingcar.ui.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static racingcar.GameFactory.*;
 
@@ -44,15 +45,16 @@ public class Game {
      * 생성한 자동차들과 시도 횟수를 바탕으로 게임을 진행하고 결과를 출력한다.
      * 시도 횟수만큼 다 진행한 후에는 우승자를 출력한다.
      * */
-    public void play() {
-        System.out.println("실행 결과");
+    public ArrayList<Map<Name, Position>> play() {
+        ArrayList<Map<Name, Position>> results = new ArrayList<>();
         if (tryNum == 0) {
             System.out.println("아무런 시도를 하지 않았습니다.");
         }
         for (int i = 0; i < tryNum; i++) {
             racingCars.tryMove();
-            ResultView.printResultWithName(racingCars.checkCarStatus());
+            results.add(racingCars.checkCarStatus());
+
         }
-        ResultView.printWinner(Rule.whoIsWinner(racingCars.checkCarStatus()));
+        return results;
     }
 }

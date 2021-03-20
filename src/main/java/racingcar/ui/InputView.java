@@ -26,6 +26,7 @@ public class InputView {
         return input;
     }
 
+
     public static void checkInput(String str) {
         if (str.equals(HOW_MANY_CARS) || str.equals(HOW_MANY_TRYS)) {
             input.add(sc.nextInt());

@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import racingcar.utils.ErrorMessage;
 import racingcar.utils.StringUtils;
 
@@ -44,8 +43,6 @@ public class Name implements Comparable<Name>{
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("name", name)
-                .toString();
+        return name;
     }
 }

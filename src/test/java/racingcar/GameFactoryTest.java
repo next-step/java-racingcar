@@ -57,7 +57,7 @@ class GameFactoryTest {
         MockedStatic<InputView> inputView = mockStatic(InputView.class);
         when(InputView.input(STEP3_STR))
                 .thenReturn(inputs);
-        assertThat(gameFactory.step3Game(inputs)).isInstanceOf(Game.class);
+        assertThat(gameFactory.game(STEP3_STR, inputs)).isInstanceOf(Game.class);
         inputView.close();
     }
 }

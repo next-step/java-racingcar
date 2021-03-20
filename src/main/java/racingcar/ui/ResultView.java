@@ -29,6 +29,11 @@ public class ResultView {
         });
     }
 
+    public static void printAllResultWithName(ArrayList<Map<Name, Position>> results){
+        System.out.println("실행 결과");
+        results.forEach(ResultView::printResultWithName);
+    }
+
     public static void printResultWithName(Map<Name, Position> result) {
         result.forEach((name, forwardNum) -> {
             System.out.print(name + " : ");
