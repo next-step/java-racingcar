@@ -1,22 +1,36 @@
 package step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step4.strategy.TestMovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("Random값이 4이상일 경우 자동차의 위치가 증가한다")
+    @DisplayName("자동차가 전진하면 position 값이 1증가한다.")
+    @Test
+    void move() {
+        // given
+        Car car = Car.from("test");
+        int beforePosition = car.getPosition();
+        // when
+        car.move(new TestMovableStrategy());
+        // then
+        assertThat(car.getPosition()).isEqualTo(beforePosition + 1);
+    }
+
+    @DisplayName("우승자 포지션과 동일할 경우 우승자인지 확인한다.")
     @ParameterizedTest
-    @CsvSource(value = {"0,0", "1,0", "2,0", "3,0", "4,1", "5,1", "6,1", "7,1", "8,1", "9,1"})
-    void move(int randomNum, int expected) {
+    @CsvSource(value = {"0,false", "1,true", "2,false"})
+    void isWinner(int maxPosition, boolean expected) {
         // given
         Car car = Car.from("test");
         // when
-        car.move(randomNum);
+        car.move(new TestMovableStrategy());
         // then
-        assertThat(car.getPosition()).isEqualTo(expected);
+        assertThat(car.isWinner(maxPosition)).isEqualTo(expected);
     }
 }
