@@ -15,12 +15,12 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(final String carNames) {
-        if (StringUtils.isBlank(carNames)) {
-            throw new IllegalArgumentException("자동차 이름을 입력하지 않았습니다.");
+    public static Cars from(final List<String> carNames) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("경주를 진행할 자동차가 존재하지 않습니다.");
         }
         List<Car> cars = new ArrayList<>();
-        for (String name : carNames.split(",")) {
+        for (String name : carNames) {
             cars.add(Car.from(name));
         }
         return new Cars(cars);
