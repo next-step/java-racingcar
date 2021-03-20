@@ -38,10 +38,6 @@ public final class Car {
         return position.equals(other);
     }
 
-    public final boolean isWinner(int winnerPosition) {
-        return (position.position() == winnerPosition);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

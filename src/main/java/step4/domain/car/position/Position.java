@@ -22,7 +22,7 @@ public final class Position {
     }
 
     public final Position getWinningPosition(Position other) {
-        return this.position > other.position() ? this : other;
+        return this.position > other.position ? this : other;
     }
 
     @Override

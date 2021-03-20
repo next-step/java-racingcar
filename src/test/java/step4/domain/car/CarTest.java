@@ -61,7 +61,7 @@ class CarTest {
         Car car = new Car(expected);
 
         car.move(() -> true);
-        boolean actual = car.isWinner(1);
+        boolean actual = car.isWinner(new Position(1));
 
         // then
         assertThat(actual).isTrue();
