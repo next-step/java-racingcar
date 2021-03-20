@@ -15,7 +15,7 @@ public class ResultView {
         System.out.print(resultData.name() + ": ");
         print(resultData.distance());
       });
-    System.out.print("\n");
+    System.out.println(System.lineSeparator());
   }
 
   public static void print(List<Integer> distances) {
@@ -24,7 +24,7 @@ public class ResultView {
 
   public static void print(int num) {
     IntStream.range(INIT_NUM, num).forEach((i) -> System.out.print(RUN_MARK));
-    System.out.print("\n");
+    System.out.println(System.lineSeparator());
   }
 
   public static void winner(List<String> winners) {
