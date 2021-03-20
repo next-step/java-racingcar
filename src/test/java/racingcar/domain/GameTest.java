@@ -11,6 +11,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
+import static racingcar.GameFactory.STEP3_STR;
+import static racingcar.GameFactory.STEP4_STR;
 
 class GameTest {
     private Game step3Game;
@@ -37,9 +39,9 @@ class GameTest {
         inputs = new ArrayList<>();
         inputs.add(CAR_NUM);
         inputs.add(TRY_NUM);
-        when(InputView.input(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS}))
+        when(InputView.input(STEP3_STR))
                 .thenReturn(inputs);
-        step3Game = new Game(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS});
+        step3Game = new Game(STEP3_STR, inputs);
 
     }
 
@@ -47,9 +49,9 @@ class GameTest {
         step4Inputs = new ArrayList<>();
         step4Inputs.add(NAMES);
         step4Inputs.add(TRY_NUM);
-        when(InputView.input(new String[]{Game.INPUT_CAR_NAMES, Game.HOW_MANY_TRYS}))
+        when(InputView.input(STEP4_STR))
                 .thenReturn(step4Inputs);
-        step4Game = new Game(new String[]{Game.INPUT_CAR_NAMES, Game.HOW_MANY_TRYS});
+        step4Game = new Game(STEP4_STR, step4Inputs);
     }
 
     @Test

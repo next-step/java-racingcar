@@ -16,6 +16,7 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
+import static racingcar.GameFactory.STEP3_STR;
 
 class GameFactoryTest {
 
@@ -54,9 +55,9 @@ class GameFactoryTest {
     @DisplayName("Game의 생성을 GameFactory에서 주관하여 Game, Cars, Car의 생성을 통합테스트")
     void buildGame() {
         MockedStatic<InputView> inputView = mockStatic(InputView.class);
-        when(InputView.input(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS}))
+        when(InputView.input(STEP3_STR))
                 .thenReturn(inputs);
-        assertThat(gameFactory.step3Game()).isInstanceOf(Game.class);
+        assertThat(gameFactory.step3Game(inputs)).isInstanceOf(Game.class);
         inputView.close();
     }
 }

@@ -7,15 +7,13 @@
 package racingcar.domain;
 
 import racingcar.GameFactory;
-import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
 import java.util.List;
 
+import static racingcar.GameFactory.*;
+
 public class Game {
-    public static final String HOW_MANY_CARS = "자동차 대수는 몇 대 인가요?";
-    public static final String HOW_MANY_TRYS = "시도할 회수는 몇 회 인가요?";
-    public static final String INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private Cars racingCars;
     private int tryNum;
 
@@ -23,8 +21,7 @@ public class Game {
      * 게임 생성과 동시에 자동차 대수와 시도할 횟수를 확인하고,
      * GameFactory로부터 자동차 대수만큼의 자동차를 넘겨받는다.
      * */
-    public Game(String[] strs) {
-        List<Object> inputArr = InputView.input(strs);
+    public Game(String[] strs, List<Object> inputArr) {
         for (int i = 0; i < strs.length; i++) {
             checkInputs(inputArr.get(i), strs[i]);
         }

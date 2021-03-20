@@ -10,11 +10,18 @@ package racingcar;
 import racingcar.domain.Game;
 import racingcar.ui.InputView;
 
+import java.util.List;
+
+import static racingcar.GameFactory.STEP4_STR;
+
 public class RacingGame {
     public static void main(String[] args) {
 //        Game step3Game = GameFactory.step3Game();
-        Game step4Game = GameFactory.step4Game();
-        step4Game.play();
+
+        List<Object> inputArr = InputView.input(STEP4_STR);
         InputView.closeScanner();
+        Game step4Game = GameFactory.step4Game(inputArr);
+        step4Game.play();
+
     }
 }
