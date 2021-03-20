@@ -34,8 +34,8 @@ public final class Car {
         return position;
     }
 
-    public final boolean isWinner(Position position) {
-        return position.equals(position);
+    public final boolean isWinner(Position other) {
+        return position.equals(other);
     }
 
     public final boolean isWinner(int winnerPosition) {
