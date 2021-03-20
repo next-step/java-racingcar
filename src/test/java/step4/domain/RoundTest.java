@@ -13,16 +13,16 @@ class RoundTest {
     @DisplayName("시도할 회수를 0이하로 입력할 경우 예외가 발생한다.")
     @ParameterizedTest
     @ValueSource(ints = {0, -1})
-    public void roundCount_exception(int roundCount) {
+    void roundCount_exception(int roundCount) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             Round.from((roundCount));
         });
     }
 
-    @DisplayName("시도할 회수를 0이하로 입력할 경우 예외가 발생한다.")
+    @DisplayName("시도할 회수가 0보다 클 경우 이동이 가능한지 확안한다.")
     @ParameterizedTest
-    @CsvSource(value = {"2,true", "1,true"})
-    public void isMovable(int roundCount, boolean expected) {
+    @CsvSource(value = {"1,true", "2,true"})
+    void isMovable(int roundCount, boolean expected) {
         // given
         Round round = Round.from(roundCount);
         // when
