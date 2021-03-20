@@ -28,10 +28,12 @@ class WinnersTest {
     @Test
     void 생성() {
         // when
-        Winners winners = new Winners(cars);
+        Winners actualWinners = new Winners(cars);
+        Winners expectedWinners = new Winners(cars);
 
         // then
-        assertThat(winners).isNotNull();
+        assertThat(actualWinners).isEqualTo(expectedWinners);
+
     }
 
     @DisplayName("Winners 인스턴스가 소유한 데이터 반환 여부 테스트")

@@ -1,5 +1,6 @@
 package step4.domain.racing;
 
+import step4.domain.car.position.Position;
 import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
 import step4.dto.RequestDto;
@@ -42,15 +43,15 @@ public final class RacingCarGame {
         return new ResponseDto(cars);
     }
 
-    /*
-    private final int maxPosition(){
+
+    private final Position maxPosition(){
         return cars.maxPosition();
     }
 
     public final Winners winners() {
         return new Winners(cars.winners(maxPosition()));
     }
-*/
+
 
     @Override
     public boolean equals(Object o) {
