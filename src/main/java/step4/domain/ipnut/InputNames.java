@@ -4,6 +4,7 @@ import utils.ListStringUtils;
 import utils.StringUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 public final class InputNames {
 
@@ -24,4 +25,16 @@ public final class InputNames {
         return inputNames;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InputNames that = (InputNames) o;
+        return Objects.equals(inputNames, that.inputNames);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(inputNames);
+    }
 }
