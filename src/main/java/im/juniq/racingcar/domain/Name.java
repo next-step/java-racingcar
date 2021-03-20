@@ -1,6 +1,6 @@
 package im.juniq.racingcar.domain;
 
-public class Name implements Comparable<Name> {
+public class Name {
 	private static final int CAR_NAME_LENGTH_LIMIT = 5;
 	private String name;
 
@@ -17,10 +17,5 @@ public class Name implements Comparable<Name> {
 
 	public String value() {
 		return name;
-	}
-
-	@Override
-	public int compareTo(Name o) {
-		return name.compareTo(o.name);
 	}
 }
