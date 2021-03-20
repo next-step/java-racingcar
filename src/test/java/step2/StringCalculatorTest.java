@@ -23,7 +23,7 @@ public class StringCalculatorTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = { "2=2", "2 + 3=5", "2 + 3 * 4=20", "2 + 3 * 4 / 2=10", "2 + 3 * 4 / 2 - 1=9", "2 / 0=0" }, delimiter = '=')
+  @CsvSource(value = { "2=2", "2 + 3=5", "2 + 3 * 4=20", "2 + 3 * 4 / 2=10", "2 + 3 * 4 / 2 - 1=9" }, delimiter = '=')
   @DisplayName("문자열 계산기 테스트")
   void calculator(String input, int expected) {
     assertThat(calculator.operation(input))

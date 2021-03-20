@@ -11,20 +11,10 @@ public class RacingCar implements BaseCloneable {
   private int carNumber;
   private int position;
 
-  private RacingCar() {
-
-  }
-
-  private RacingCar(String name) {
-    this(name, 0);
-  }
+  private RacingCar() { }
 
   private RacingCar(String name, int carNumber) {
     this(name, carNumber, 0);
-  }
-
-  private RacingCar(int carNumber, int position) {
-    this("", carNumber, position);
   }
 
   private RacingCar(String name, int carNumber, int position) {
@@ -38,15 +28,11 @@ public class RacingCar implements BaseCloneable {
   }
 
   public static RacingCar create(int carNumber) {
-    return create("", carNumber);
+    return create(null, carNumber);
   }
 
   public static RacingCar create(String name, int carNumber) {
     return new RacingCar(name, carNumber);
-  }
-
-  public static RacingCar copyFrom(RacingCar racingCar) {
-    return new RacingCar(racingCar.name(), racingCar.carNumber(), racingCar.position());
   }
 
   public String name() {
