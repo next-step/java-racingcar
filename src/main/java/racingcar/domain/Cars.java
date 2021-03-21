@@ -8,15 +8,16 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int carNumber) {
-        this.cars = generateCars(carNumber);
-    }
-
     public Cars(Cars cars) {
-        this.cars = deepCopyCars(cars);
+        this.cars = deepCopy(cars);
     }
 
-    private List<Car> deepCopyCars(Cars cars) {
+    public Cars(Name[] names) {
+        this.cars = generateCarsName(names);
+    }
+
+
+    private List<Car> deepCopy(Cars cars) {
         List<Car> copiedCars = new ArrayList<>();
         for (Car car : cars.getCars()) {
             copiedCars.add(new Car(car));
@@ -24,15 +25,15 @@ public class Cars {
         return copiedCars;
     }
 
-    private List<Car> generateCars(int carNumber) {
+    private List<Car> generateCarsName(Name[] names) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
         return cars;
     }
 
-    public void moveCars(MoveStrategy moveStrategy) {
+    public void move(MoveStrategy moveStrategy) {
         for (int i = 0; i < getSize(); i++) {
             this.cars.get(i).move(moveStrategy.getIsMove());
         }
@@ -46,7 +47,22 @@ public class Cars {
         return cars;
     }
 
+    public List<Car> winners() {
+        int winnerLocation = 0;
+        for (Car car : this.cars) {
+            if (car.bigger(winnerLocation)) {
+                winnerLocation = car.getCurrentLocation();
+            }
+        }
 
+        List<Car> winners = new ArrayList<>();
+        for (Car car : this.cars) {
+            if (winnerLocation == car.getCurrentLocation()) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
 }
 
 

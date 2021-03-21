@@ -36,7 +36,7 @@ public class CarsTest {
 
         //when
         Cars resultCars = new Cars(carNumber);
-        resultCars.moveCars(stubMoveStrategy);
+        resultCars.move(stubMoveStrategy);
 
         //then
         for (int i = 0; i < carNumber; i++) {

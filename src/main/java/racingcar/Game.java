@@ -11,12 +11,16 @@ public class Game {
     public static void main(String[] args) {
         GameService gameService = new RacingGameService();
 
-        int carNumber = InputView.getCarNumber();
+        String carNames = InputView.getCarNames();
         int stepNumber = InputView.getStepNumber();
 
-        gameService.init(carNumber, stepNumber);
+
+        gameService.init(carNames, stepNumber);
         Records records = gameService.run();
 
         ResultView.printRecords(records);
+        
     }
+
+
 }

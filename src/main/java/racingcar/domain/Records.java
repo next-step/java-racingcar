@@ -18,4 +18,8 @@ public class Records {
         return this.records;
     }
 
+    public Record lastRecord() {
+        return this.records.get(records.size() - 1);
+    }
+
 }

@@ -17,8 +17,8 @@ public class RecordTest {
         final int carNumber = 3;
         MoveStrategy stubMoveStrategy = new StubMoveStrategy();
         Cars cars = new Cars(carNumber);
-        cars.moveCars(stubMoveStrategy);
-        
+        cars.move(stubMoveStrategy);
+
         final String expectString = "-";
         List<String> expectRecord = new ArrayList<>();
 
