@@ -4,12 +4,12 @@ import java.util.List;
 
 public class RacingEventManager {
 
-    private int tryCount = 0;
     private RacingCarFactory racingCarFactory;
+    private RacingCarRound racingCarRound;
 
     public RacingEventManager(String carNames, int tryCount) {
         racingCarFactory = new RacingCarFactory(carNames);
-        this.tryCount = tryCount;
+        racingCarRound = new RacingCarRound(tryCount);
     }
 
     public void startRandomRacing() {
@@ -17,16 +17,10 @@ public class RacingEventManager {
     }
 
     private void startRacing(MoveStrategy moveStrategy) {
-        racing(moveStrategy, tryCount);
-    }
-
-    public void racing(MoveStrategy moveStrategy, int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
+        while (!racingCarRound.isFinishRound()) {
             racingCarFactory.moveCars(moveStrategy);
+            racingCarRound.showRacingRoundResult(racingCarFactory.getRacingCars());
         }
     }
 
-    public List<RacingCar> getRacingResult() {
-        return racingCarFactory.getRacingCars();
-    }
 }

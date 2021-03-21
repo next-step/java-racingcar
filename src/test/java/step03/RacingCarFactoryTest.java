@@ -3,6 +3,9 @@ package step03;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +15,7 @@ public class RacingCarFactoryTest {
 
     @BeforeEach
     void setRacingCarFactory() {
-        racingCarFactory = new RacingCarFactory("test1,test2,test3");
+        racingCarFactory = new RacingCarFactory("car1,car2,car3");
     }
 
     @Test
@@ -25,6 +28,12 @@ public class RacingCarFactoryTest {
         for (RacingCar racingCar : racingCarFactory.getRacingCars()) {
             assertThat(racingCar.getRacingCarData().getMovingRange()).isEqualTo(1);
         }
+    }
 
+    @ParameterizedTest
+    @ValueSource(ints = {3})
+    @DisplayName("입력한 수만큼 차가 만들어 졌는지")
+    void countMakeCars(int carCount) {
+        assertThat(racingCarFactory.getRacingCars().size()).isEqualTo(carCount);
     }
 }

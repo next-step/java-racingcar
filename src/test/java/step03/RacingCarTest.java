@@ -12,7 +12,7 @@ public class RacingCarTest {
 
     @BeforeEach
     void setRacingCar() {
-        racingCar = new RacingCar("test");
+        racingCar = new RacingCar("car1");
     }
 
     @Test
@@ -24,4 +24,6 @@ public class RacingCarTest {
         // then
         assertThat(racingCar.getRacingCarData().getMovingRange()).isEqualTo(1);
     }
+
+
 }

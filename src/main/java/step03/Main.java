@@ -6,7 +6,5 @@ public class Main {
 
         RacingEventManager manager = new RacingEventManager(InputView.inputRacingCarNames(), InputView.inputRacingTryCount());
         manager.startRandomRacing();
-
-        ResultView.showRacingResult(manager.getRacingResult());
     }
 }
