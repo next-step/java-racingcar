@@ -1,4 +1,4 @@
-package im.juniq.racingcar;
+package im.juniq.racingcar.domain;
 
 import java.util.Random;
 
@@ -11,7 +11,7 @@ public class RandomNumberZeroToNine implements RandomNumber {
 	}
 
 	@Override
-	public int get() {
+	public int value() {
 		return random.nextInt(BOUND_OF_RANDOM);
 	}
 }

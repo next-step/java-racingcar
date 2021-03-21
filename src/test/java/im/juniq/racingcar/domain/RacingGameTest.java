@@ -1,19 +1,19 @@
-package im.juniq.racingcar;
+package im.juniq.racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CarsTest {
+class RacingGameTest {
 	@DisplayName("자동차 n대를 생성한다")
 	@Test
 	void createCars() {
 		String[] carNames = {"pobi", "poci"};
-		Cars cars = new Cars();
-		cars.createCars(carNames);
+		RacingGame racingGame = new RacingGame();
 
-		assertThat(cars).extracting(Car::getName).contains(carNames);
+		assertThatCode(() -> racingGame.createCars(carNames, new RandomNumberMovingStrategy()))
+			.doesNotThrowAnyException();
 	}
 
 	@DisplayName("자동차 n대를 이동한다")
@@ -21,12 +21,12 @@ class CarsTest {
 	void moveCars() {
 		Car pobi = new Car("pobi", new OnlyTrueMovingStrategy());
 		Car poci = new Car("poci", new OnlyTrueMovingStrategy());
-		Cars cars = new Cars(pobi, poci);
+		RacingGame racingGame = new RacingGame(pobi, poci);
 
-		cars.move();
+		racingGame.move();
 
-		for (Car car: cars) {
-			assertThat(car.getPosition()).isEqualTo(1);
+		for (CarState carState : racingGame.carStates()) {
+			assertThat(carState.position()).isEqualTo(1);
 		}
 	}
 
@@ -35,12 +35,14 @@ class CarsTest {
 	void findByTopPosition() {
 		Car pobi = new Car("pobi", new OnlyTrueMovingStrategy());
 		Car poci = new Car("poci", new RandomNumberMovingStrategy());
-		Cars cars = new Cars(pobi, poci);
+		RacingGame racingGame = new RacingGame(pobi, poci);
 
 		for (int i = 0; i < 10; i++) {
-			cars.move();
+			racingGame.move();
 		}
 
-		assertThat(cars.findByTopPosition().get(0)).isEqualTo(pobi);
+		for (CarState winner: racingGame.winners()) {
+			assertThat(winner).isEqualToComparingFieldByField(new CarState("pobi", 10));
+		}
 	}
 }
