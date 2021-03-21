@@ -1,6 +1,9 @@
 package step03;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class RacingEventManager {
 
@@ -21,16 +24,29 @@ public class RacingEventManager {
             racingCarFactory.moveCars(moveStrategy);
             racingCarRound.showRacingRoundResult(racingCarFactory.getRacingCars());
         }
-        setRacingWinner();
+        racingCarRound.showRacingRoundFinalWinner(getWinnerRacingCars(racingCarFactory.getRacingCars()));
     }
 
-    private void setRacingWinner() {
-       RacingCar winner =  racingCarFactory.getRacingCars()
-                .stream()
-                .max(Comparator.comparingInt((RacingCar racingCar) -> racingCar.getRacingCarData().getMovingRange()))
-                .get();
+    public List<RacingCar> getWinnerRacingCars(List<RacingCar> racingCars) {
+        List<RacingCar> winners = new ArrayList<>();
 
-       racingCarRound.showRacingRoundFinalWinner(winner);
+        racingCars.sort(Comparator.comparing((racingCar -> racingCar.getRacingCarData().getMovingRange())));
+        Collections.reverse(racingCars);
+
+        for (RacingCar racingCar : racingCars) {
+            if (winners.isEmpty()) {
+                winners.add(racingCar);
+                continue;
+            }
+            if (compareRacingCarMoveRange(winners.get(winners.size() - 1), racingCar)) {
+                winners.add(racingCar);
+            }
+        }
+        Collections.reverse(winners);
+        return winners;
     }
 
+    private boolean compareRacingCarMoveRange(RacingCar winnerRacingCar, RacingCar challengerRacingCar) {
+        return winnerRacingCar.getRacingCarData().getMovingRange() <= challengerRacingCar.getRacingCarData().getMovingRange();
+    }
 }

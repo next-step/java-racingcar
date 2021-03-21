@@ -25,8 +25,21 @@ public class RacingCarRound {
         ResultView.showRacingResult(racingCars);
     }
 
-    public void showRacingRoundFinalWinner(RacingCar winner) {
-        ResultView.showRacingWinner(winner.getRacingCarData().getCarName());
+
+    public void showRacingRoundFinalWinner(List<RacingCar> winners) {
+        StringBuilder winnersName = new StringBuilder();
+        for (RacingCar racingCar : winners) {
+            addDelimiter(winnersName);
+            winnersName.append(racingCar.getRacingCarData().getCarName());
+        }
+        ResultView.showRacingWinner(winnersName.toString());
+    }
+
+    private StringBuilder addDelimiter(StringBuilder winnerName) {
+        if (winnerName.length() > 0) {
+            winnerName.append(",");
+        }
+        return winnerName;
     }
 
 }

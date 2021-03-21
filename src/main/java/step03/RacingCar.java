@@ -9,6 +9,10 @@ public class RacingCar {
         racingCarDTO = new RacingCarDTO(carName, INIT_MOVE_RANGE);
     }
 
+    public RacingCar(String carName, int movingRange) {
+        racingCarDTO = new RacingCarDTO(carName, movingRange);
+    }
+
     public void tryToMove(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
             racingCarDTO.setMovingRange(racingCarDTO.getMovingRange() + 1);
