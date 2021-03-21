@@ -1,6 +1,6 @@
 package step03;
 
-import java.util.List;
+import java.util.Comparator;
 
 public class RacingEventManager {
 
@@ -21,6 +21,16 @@ public class RacingEventManager {
             racingCarFactory.moveCars(moveStrategy);
             racingCarRound.showRacingRoundResult(racingCarFactory.getRacingCars());
         }
+        setRacingWinner();
+    }
+
+    private void setRacingWinner() {
+       RacingCar winner =  racingCarFactory.getRacingCars()
+                .stream()
+                .max(Comparator.comparingInt((RacingCar racingCar) -> racingCar.getRacingCarData().getMovingRange()))
+                .get();
+
+       racingCarRound.showRacingRoundFinalWinner(winner);
     }
 
 }

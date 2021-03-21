@@ -25,4 +25,8 @@ public class RacingCarRound {
         ResultView.showRacingResult(racingCars);
     }
 
+    public void showRacingRoundFinalWinner(RacingCar winner) {
+        ResultView.showRacingWinner(winner.getRacingCarData().getCarName());
+    }
+
 }

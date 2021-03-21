@@ -6,6 +6,7 @@ public class ResultView {
 
     private static final String MOVE_RANGE = "-";
     private static final String DELIMITER = " : ";
+    private static final String WINNER_SUFFIX = "가 최종 우승했습니다.";
 
     private ResultView() {}
 
@@ -22,5 +23,9 @@ public class ResultView {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public static void showRacingWinner(String winner) {
+        System.out.println(winner + WINNER_SUFFIX);
     }
 }
