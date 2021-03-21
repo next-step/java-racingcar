@@ -15,8 +15,7 @@ public class Cars {
     public static Cars of(String carNames){
         List<Car> cars = new ArrayList<>();
         for(String carName : carNames.split(StringValidator.CAR_NAME_SPLIT_DELIMITER)){
-            Name name = new Name(carName);
-            Car car = new Car(name);
+            Car car = new Car(carName);
             cars.add(car);
         }
         return new Cars(cars);

@@ -17,8 +17,9 @@ public class RaceGame {
     public void game(){
         Cars cars = init();
         int tryCnt = inputView.tryCnt();
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
         for(int i=0;i<tryCnt;i++){
-            cars.move(new RandomMoveStrategy());
+            cars.move(moveStrategy);
             resultView.output(cars);
         }
         resultView.winners(cars);

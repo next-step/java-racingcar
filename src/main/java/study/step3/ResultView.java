@@ -24,10 +24,10 @@ public class ResultView {
     }
 
     public void winners(Cars cars) {
-        String result = String.join(",", cars.winners()
+        String result = cars.winners()
                 .stream()
                 .map(car -> car.name().name())
-                .collect(Collectors.toList()));
+                .collect(Collectors.joining(","));
         System.out.println(result + "가 최종우승했습니다.");
     }
 

@@ -1,9 +1,11 @@
 package study.step3;
 
+import study.exception.NameInvalidException;
+
 import java.util.Objects;
 
 public class Name {
-    private static final int CAR_NAME_LENGTH_LIMIT = 5;
+
     private static final String DEFAULT_CAR_NAME = "test";
 
     private final String name;
@@ -12,22 +14,13 @@ public class Name {
         this(DEFAULT_CAR_NAME);
     }
 
-    public Name(String name) {
-        blankCheck(name);
-        lengthCheck(name);
+    public Name(String name){
+        nameInvalidCheck(name);
         this.name = name;
     }
 
-    private void blankCheck(String name){
-        if(name == null || name.trim().isEmpty()){
-            throw new IllegalArgumentException("차 이름은 빈 값이 될 수 없습니다.");
-        }
-    }
-
-    private void lengthCheck(String name){
-        if(name.length() >= CAR_NAME_LENGTH_LIMIT){
-            throw new IllegalArgumentException("차 이름의 길이는 5이상이 될 수 없습니다.");
-        }
+    private void nameInvalidCheck(String name){
+        throw new NameInvalidException(name);
     }
 
     public String name() {

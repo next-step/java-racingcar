@@ -9,6 +9,10 @@ public class Car{
         this(new Name());
     }
 
+    public Car(String name){
+        this(new Name(name),new Position());
+    }
+
     public Car(Name name){
         this(name,new Position());
     }

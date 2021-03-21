@@ -2,6 +2,7 @@ package study.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.exception.NameInvalidException;
 import study.step2.StringValidator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +24,16 @@ public class CarNameTest {
         String carName = "honux23";
         assertThatThrownBy(()->{
             Name name = new Name(carName);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(NameInvalidException.class);
+    }
+
+    @Test
+    @DisplayName("자동차 이름 길이 체크 테스트 - 길이가 5보다 작을 경우")
+    void 자동차이름_길이체크_성공(){
+        String carName = "hon";
+        assertThatThrownBy(()->{
+            Name name = new Name(carName);
+        }).isInstanceOf(NameInvalidException.class);
     }
 
     @Test
@@ -31,7 +41,7 @@ public class CarNameTest {
     void 자동차이름_비었는지_테스트(){
         assertThatThrownBy(()->{
             Name name = new Name("");
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(NameInvalidException.class);
     }
 
 }
