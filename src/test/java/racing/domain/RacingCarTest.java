@@ -1,12 +1,14 @@
 package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static base.BaseMethodSource.CAR_CREATE_ARGUMENTS;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
 
@@ -55,14 +57,14 @@ class RacingCarTest {
   }
 
   @ParameterizedTest
-  @CsvSource(value = { "schumacher,true", "gmoon,false" })
+  @CsvSource(value = { "gmoon,true","pobi,false" })
   @DisplayName("RacingCar equals 재정의, 동등성 비교")
   void equals(String name, boolean expected) {
     // given
     RacingCar newCar = RacingCar.create(name);
 
     // when
-    boolean isSameCar = RacingCar.create("schumacher")
+    boolean isSameCar = RacingCar.create("gmoon")
             .equals(newCar);
 
     // then
@@ -70,5 +72,15 @@ class RacingCarTest {
             .isEqualTo(expected);
   }
 
+  @Test
+  @DisplayName("자동차 생성 validation")
+  void checkCarNameLengthExceed() {
+    // given
 
+    // when
+
+    // then
+    assertThatThrownBy(() -> RacingCar.create("schumacher"))
+            .isInstanceOf(IllegalArgumentException.class);
+  }
 }

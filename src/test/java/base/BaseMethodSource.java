@@ -23,8 +23,8 @@ public class BaseMethodSource {
 
   static Stream<Arguments> getRacingCarGamePlayInfoArguments() {
     return Stream.of(
-            Arguments.of("gmoon,schumacher", 3),
-            Arguments.of("gmoon,guest,schumacher", 2)
+            Arguments.of("gmoon,crong", 3),
+            Arguments.of("gmoon,crong,pobi,", 3)
     );
   }
 

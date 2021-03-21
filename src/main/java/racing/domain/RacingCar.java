@@ -2,11 +2,13 @@ package racing.domain;
 
 import racing.base.BaseCloneable;
 import racing.rule.MoveRule;
+import racing.utils.StringUtils;
 
 import java.util.Objects;
 
 public class RacingCar implements BaseCloneable {
 
+  public final static int RACING_CAR_NAME_LENGTH = 5;
   private final String name;
   private int position;
 
@@ -20,7 +22,20 @@ public class RacingCar implements BaseCloneable {
   }
 
   public static RacingCar create(String name) {
+    checkNameLength(name);
     return new RacingCar(name);
+  }
+
+  private static void checkNameLength(String name) {
+    boolean isBlankName = StringUtils.isBlank(name);
+    if (isBlankName) {
+      throw new IllegalArgumentException("Car name is not blank");
+    }
+
+    boolean validStringLength = name.length() <= RACING_CAR_NAME_LENGTH;
+    if (!validStringLength) {
+      throw new IllegalArgumentException("Car name length is exceed");
+    }
   }
 
   public String name() {

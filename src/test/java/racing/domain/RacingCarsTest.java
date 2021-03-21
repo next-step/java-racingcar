@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import racing.utils.StringUtils;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,9 +68,9 @@ class RacingCarsTest {
   @DisplayName("불변 자동차 리스트 테스트")
   void unmodifiableList() {
     // given
-    List<RacingCar> paramCarsList = new ArrayList<>();
-    paramCarsList.add(RacingCar.create("gmoon1"));
-    paramCarsList.add(RacingCar.create("gmoon2"));
+    List<RacingCar> paramCarsList = Arrays.asList(
+              RacingCar.create("gmoon")
+            , RacingCar.create("toby"));
     RacingCars racingCars = RacingCars.create(paramCarsList);
 
     // when
@@ -81,7 +81,6 @@ class RacingCarsTest {
             , () -> assertThat(System.identityHashCode(result)).isNotEqualTo(System.identityHashCode(paramCarsList))
             , () -> assertThat(result).containsAll(paramCarsList)
     );
-
   }
 
   private List<RacingCar> getRacingCarList(String names) {
