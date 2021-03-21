@@ -1,13 +1,14 @@
 package ch01.racinggame.Domain;
 
 
-import java.util.Random;
+import java.util.ArrayList;
 
 public class RacingGame {
 
     int attemptCount = 0;
     int carCount = 0;
     Car[] cars;
+    RandomNumber randomNumber = new RandomNumber();
 
     public RacingGame(InputData inputData) {
 
@@ -16,33 +17,38 @@ public class RacingGame {
         this.carCount = inputData.carCount();
         this.cars = new Car[this.carCount];
 
+        makeCar(inputData.carNames());
+    }
+
+    private void makeCar(String[] carNames) {
         //make cars
         for (int i = 0; i < carCount; i++) {
-            Car car = new Car(Integer.toString(i));
+            Car car = new Car(carNames[i]);
             cars[i] = car;
         }
     }
 
-    private void start() {
-        int randomNumber = 0;
+    public void start() {
         int carsSize = cars.length;
+
         for (int i = 0; i < carsSize; i++) {
-            randomNumber = getRandomNumber();
-            moveCar(this.cars, i, isKeepGoing(randomNumber));
+            moveCar(this.cars, i, randomNumber.randomNumber());
         }
     }
 
-    public void moveCar(Car[] cars, int index, boolean isKeepGoing) {
-        if (isKeepGoing) {
+    public void moveCar(Car[] cars, int index, int randomNum) {
+        if (randomNumber.movable(randomNum)) {
             cars[index].move();
         }
     }
 
-    private int getRandomNumber() {
-        return new Random().nextInt(10);
+    public ArrayList<Car> winner(){
+        Winner winner = new Winner(this.cars);
+
+        return winner.whoAreWinners();
     }
 
-    public int getAttemptCount() {
+    public int attemptCount() {
         return this.attemptCount;
     }
 
@@ -50,7 +56,7 @@ public class RacingGame {
         return randomNumber > 3;
     }
 
-    public Car[] getCars() {
+    public Car[] cars() {
         return cars;
     }
 

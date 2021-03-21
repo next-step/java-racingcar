@@ -1,15 +1,20 @@
 package ch01.racinggame.Domain;
 
 public class InputData {
-    private int carCount = 0;
+    private String inputNameOfCars;
     private int attemptCount = 0;
-    String[] progressArr;
+    private int carCount = 0;
+    private String[] carNames;
 
-    public InputData(int carCount, int attemptCount) {
-        this.carCount = carCount;
+
+    public InputData(String inputNameOfCars, int attemptCount) {
+        this.inputNameOfCars = inputNameOfCars;
         this.attemptCount = attemptCount;
-        progressArr = new String[carCount];
+        saveCarName();
+        this.carCount = carNames.length;
     }
+
+
 
     public int carCount() {
         return carCount;
@@ -19,8 +24,11 @@ public class InputData {
         return attemptCount;
     }
 
-    public String[] progressArr() {
-        return progressArr;
+    public String[] carNames(){
+        return this.carNames;
     }
 
+    private void saveCarName(){
+        this.carNames = this.inputNameOfCars.split(",");
+    }
 }

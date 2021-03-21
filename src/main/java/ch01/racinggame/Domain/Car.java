@@ -1,6 +1,6 @@
 package ch01.racinggame.Domain;
 
-public class Car {
+public class Car implements Comparable<Car>{
     static final int initCarCount = 1;
     static final int limitNameLength = 5;
     private String name;
@@ -40,5 +40,10 @@ public class Car {
         if (name != null && name.length() > limitNameLength) {
             throw new IllegalArgumentException(limitNameLength + "글자를 초과할 수 없습니다. ");
         }
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return o.progressCnt() - this.progressCnt;
     }
 }

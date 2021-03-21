@@ -14,7 +14,6 @@ class CarTest {
     @BeforeEach
     void setUp() {
         car = new Car("TestCar");
-        car.setProgressCnt(1);
     }
 
 
@@ -28,7 +27,7 @@ class CarTest {
     @Test
     void showProgressCnt() {
         //given
-        car.setProgressCnt(2);
+        car.move();
         //when
         int progressCnt = car.progressCnt();
         //then
@@ -37,14 +36,9 @@ class CarTest {
 
     @Test
     void move() {
-
-        //give
-        int currentStepCnt = car.progressCnt();
-
         //when
-        car.setProgressCnt(currentStepCnt + 1);
-
+        car.move();
         //then
-        assertThat(car.progressCnt()).isEqualTo(currentStepCnt + 1);
+        assertThat(car.progressCnt()).isEqualTo(2);
     }
 }

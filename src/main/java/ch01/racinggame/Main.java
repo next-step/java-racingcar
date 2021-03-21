@@ -12,19 +12,20 @@ public class Main {
         InputView iv = new InputView();
         InputData inputData = iv.getInputData();
 
-        //start a racing game
+        //create a game
         RacingGame racingGame = new RacingGame(inputData);
+        ResultView rv = new ResultView(racingGame);
 
 
-        ResultView rv = new ResultView();
-        //start racing game
-        for (int i = 0; i < racingGame.getAttemptCount(); i++) {
+        //start a racing game
+        for (int i = 0; i < racingGame.attemptCount(); i++) {
 
-            //racingGame.start();
+            racingGame.start();
 
-            //show a result of racing game
-            rv.showResult(racingGame);
+            rv.showResult();
+
         }
-
+        //show a result of racing game
+        rv.showWinnerResult();
     }
 }
