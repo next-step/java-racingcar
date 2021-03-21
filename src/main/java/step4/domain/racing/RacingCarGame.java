@@ -1,10 +1,13 @@
 package step4.domain.racing;
 
+import step4.domain.car.position.Position;
 import step4.domain.ipnut.InputNames;
 import step4.domain.ipnut.InputRound;
 import step4.dto.RequestDto;
 import step4.dto.ResponseDto;
 import step4.startegy.Move;
+
+import java.util.Objects;
 
 public final class RacingCarGame {
 
@@ -40,12 +43,25 @@ public final class RacingCarGame {
         return new ResponseDto(cars);
     }
 
-    private final int maxPosition(){
+    private final Position maxPosition(){
         return cars.maxPosition();
     }
 
     public final Winners winners() {
         return new Winners(cars.winners(maxPosition()));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCarGame that = (RacingCarGame) o;
+        return Objects.equals(cars, that.cars) && Objects.equals(round, that.round);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars, round);
     }
 
 }

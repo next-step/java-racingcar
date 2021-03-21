@@ -27,11 +27,15 @@ class WinnersTest {
     @DisplayName("Winners 인스턴스 생성 여부 테스트")
     @Test
     void 생성() {
+        // given
+        Winners expectedWinners = new Winners(cars);
+
         // when
-        Winners winners = new Winners(cars);
+        Winners actualWinners = new Winners(cars);
 
         // then
-        assertThat(winners).isNotNull();
+        assertThat(actualWinners).isEqualTo(expectedWinners);
+
     }
 
     @DisplayName("Winners 인스턴스가 소유한 데이터 반환 여부 테스트")

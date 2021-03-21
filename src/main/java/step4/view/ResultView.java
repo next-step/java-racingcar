@@ -1,6 +1,8 @@
 package step4.view;
 
 import step4.domain.car.Car;
+import step4.domain.car.position.Position;
+
 import step4.domain.racing.Cars;
 import step4.domain.racing.Winners;
 import step4.dto.ResponseDto;
@@ -32,16 +34,18 @@ public final class ResultView {
     public final void print(ResponseDto responseDto) {
         Cars cars = responseDto.cars();
         List<Car> carList = cars.cars();
-
+        StringBuilder stringBuilder = new StringBuilder();
         for (Car car : carList) {
-            System.out.print(car.name().name());
-            System.out.print(" : ");
-            for (int i = 0; i < car.position().position(); i++) {
-                System.out.print("-");
+            stringBuilder.append(car.name().name()).append(" : ");
+            int index = 0;
+            while (car.isDifferentPosition(new Position(index))){
+                stringBuilder.append("-");
+                index++;
             }
-            System.out.println("");
+            stringBuilder.append("\n");
         }
-        System.out.println("");
+        print(stringBuilder);
+
     }
 
     public final void print(Winners winners) {
@@ -52,6 +56,10 @@ public final class ResultView {
         stringBuilder.setLength(stringBuilder.length() - 1);
         stringBuilder.append("가 최종 우승했습니다.");
 
+       print(stringBuilder);
+    }
+
+    private final void print(StringBuilder stringBuilder) {
         System.out.println(stringBuilder.toString());
     }
 

@@ -4,6 +4,8 @@ import step4.domain.car.name.Name;
 import step4.domain.car.position.Position;
 import step4.startegy.Move;
 
+import java.util.Objects;
+
 public final class Car {
 
     private final Name name;
@@ -32,7 +34,26 @@ public final class Car {
         return position;
     }
 
-    public final boolean isWinner(int winnerPosition) {
-        return (position.position() == winnerPosition);
+    public final boolean isWinner(Position other) {
+        return position.equals(other);
     }
+
+    public final boolean isDifferentPosition(Position other) {
+        return !(position.equals(other));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
+    }
+
+
 }

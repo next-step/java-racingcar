@@ -20,10 +20,11 @@ class RoundTest {
         InputRound inputRound = new InputRound(ROUND_COUNT);
 
         // when
-        Round round = new Round(inputRound);
+        Round actualRound = new Round(inputRound);
+        Round expectedRound = new Round(inputRound);
 
         // then
-        assertThat(round).isNotNull();
+        assertThat(actualRound).isEqualTo(expectedRound);
 
     }
 

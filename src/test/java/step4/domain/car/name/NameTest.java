@@ -12,20 +12,23 @@ class NameTest {
     @Test
     void 생성() {
         // given
-        String testName = "test";
+        String testName = "brown";
 
         // when
-        Name name = new Name(testName);
+        Name actualName = new Name(testName);
+        Name expectedName = new Name(testName);
 
         // then
-        assertThat(name).isNotNull();
+        assertThat(actualName).isEqualTo(expectedName);
+
     }
 
     @DisplayName("Name 인스턴스의 부적절한 이름시 예외처리 확인 테스트")
     @Test
     void 검증() {
         // given
-        String invalidName = "kwj1270";
+        String invalidName = "test12";
+
 
         // when and then
         assertThatThrownBy(() -> {

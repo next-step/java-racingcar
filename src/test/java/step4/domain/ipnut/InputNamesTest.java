@@ -18,12 +18,13 @@ class InputNamesTest {
     void 생성() {
         // given
         String names = "pobi,brown,json";
+        InputNames expectedInputNames = new InputNames(names);
 
         // when
-        InputNames inputNames = new InputNames(names);
+        InputNames actualInputNames = new InputNames(names);
 
         // then
-        assertThat(inputNames).isNotNull();
+        assertThat(actualInputNames).isEqualTo(expectedInputNames);
 
     }
 
@@ -45,7 +46,8 @@ class InputNamesTest {
     @Test
     void 반환() {
         // given
-        List<String> expected = Arrays.stream("pobi,brown,json".split(",")).collect(Collectors.toList());
+        List<String> expected = Arrays.asList("pobi", "brown", "json");
+
 
         // when
         InputNames inputNames = new InputNames(expected);

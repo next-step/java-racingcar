@@ -1,5 +1,7 @@
 package step4.domain.ipnut;
 
+import java.util.Objects;
+
 public final class InputRound {
 
     private final static int MINIMUM = 0;
@@ -19,4 +21,18 @@ public final class InputRound {
     public final int inputRound() {
         return round;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InputRound that = (InputRound) o;
+        return round == that.round;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(round);
+    }
+
 }
