@@ -18,6 +18,7 @@ public class RecordTest {
         MoveStrategy stubMoveStrategy = new StubMoveStrategy();
         Cars cars = new Cars(carNumber);
         cars.moveCars(stubMoveStrategy);
+        
         final String expectString = "-";
         List<String> expectRecord = new ArrayList<>();
 
@@ -40,4 +41,6 @@ public class RecordTest {
             return true;
         }
     }
+
+
 }

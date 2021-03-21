@@ -6,16 +6,20 @@ public class Car {
     private int currentLocation;
 
     public Car() {
-        currentLocation = START_LOCATION;
+        this.currentLocation = START_LOCATION;
+    }
+
+    public Car(Car car) {
+        this.currentLocation = car.currentLocation;
     }
 
     public Car(int location) {
-        currentLocation = location;
+        this.currentLocation = location;
     }
 
     public void move(Boolean isMove) {
         if (isMove) {
-            currentLocation = currentLocation + MOVE_STRATEGY;
+            this.currentLocation = currentLocation + MOVE_STRATEGY;
         }
     }
 
