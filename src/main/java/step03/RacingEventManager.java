@@ -9,6 +9,7 @@ public class RacingEventManager {
     private RacingCarFactory racingCarFactory;
 
     public RacingEventManager(String carNames, int tryCount) {
+        racingCarFactory = new RacingCarFactory(carNames);
         this.carNames = carNames;
         this.tryCount = tryCount;
     }
@@ -18,8 +19,13 @@ public class RacingEventManager {
     }
 
     private void startRacing(MoveStrategy moveStrategy) {
-        racingCarFactory = new RacingCarFactory(carNames);
-        racingCarFactory.racing(moveStrategy, tryCount);
+        racing(moveStrategy, tryCount);
+    }
+
+    public void racing(MoveStrategy moveStrategy, int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            racingCarFactory.moveCars(moveStrategy);
+        }
     }
 
     public List<RacingCar> getRacingResult() {

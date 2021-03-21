@@ -18,13 +18,7 @@ public class RacingCarFactory {
         }
     }
 
-    public void racing(MoveStrategy moveStrategy, int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            moveCars(moveStrategy);
-        }
-    }
-
-    private void moveCars(MoveStrategy moveStrategy) {
+    public void moveCars(MoveStrategy moveStrategy) {
         for (RacingCar car : racingCars) {
             car.tryToMove(moveStrategy);
         }
