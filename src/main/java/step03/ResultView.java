@@ -4,14 +4,7 @@ import java.util.List;
 
 public class ResultView {
 
-    private ResultView() {
-    }
-
-    private static void showRacingResult(int moveRange) {
-        for (int i = 0; i < moveRange; i++) {
-            System.out.print("-");
-        }
-    }
+    private ResultView() {}
 
     private static void showRacingResult(RacingCarDTO racingCarDTO) {
         System.out.print(racingCarDTO.getCarName() + " : ");
