@@ -1,22 +1,28 @@
 package study.step3;
 
-import java.util.stream.Collectors;
-
 public class RaceGame {
-    public static void main(String[] args){
-        String carNames = InputView.getCarsName();
-        Cars cars = new Cars(carNames);
-        int tryCnt = InputView.getTryCnt();
-        System.out.println("실행 결과");
-        for(int i=0;i<tryCnt;i++){
-            ResultView.output(cars);
-            System.out.println();
-        }
-        String result = String.join(",",cars.getWinners()
-                .stream()
-                .map(car->car.getCarName())
-                .collect(Collectors.toList()));
-        System.out.println(result+"가 최종우승했습니다.");
-    }
-}
 
+    private final InputView inputView;
+    private final ResultView resultView;
+
+    public RaceGame() {
+        this.inputView = new InputView();
+        this.resultView = new ResultView();
+    }
+
+    private Cars init(){
+        return Cars.of(inputView.carNames());
+    }
+
+    public void game(){
+        Cars cars = init();
+        int tryCnt = inputView.tryCnt();
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        for(int i=0;i<tryCnt;i++){
+            cars.move(moveStrategy);
+            resultView.output(cars);
+        }
+        resultView.winners(cars);
+    }
+
+}

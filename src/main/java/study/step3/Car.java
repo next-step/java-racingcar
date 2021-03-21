@@ -1,26 +1,38 @@
 package study.step3;
 
-import study.step2.StringValidator;
-
 public class Car{
-    private static final int START_POSITION = 1;
-    private String carName;
-    private int position;
-    public Car(String carName){
-        StringValidator.checkCarNameSyntax(carName);
-        this.carName = carName;
-        this.position = START_POSITION;
+
+    private Name name;
+    private Position position;
+
+    public Car(){
+        this(new Name());
     }
+
+    public Car(String name){
+        this(new Name(name),new Position());
+    }
+
+    public Car(Name name){
+        this(name,new Position());
+    }
+
+    public Car(Name name,Position position){
+        this.name = name;
+        this.position = position;
+    }
+
     public void move(MoveStrategy moveStrategy){
-        if(moveStrategy.isMove(carName.length())){
-            position++;
+        if(moveStrategy.isMove()){
+            position.move();
         }
     }
 
-    public int getPosition(){
+    public Position position(){
         return position;
     }
-    public String getCarName(){
-        return carName;
+
+    public Name name(){
+        return name;
     }
 }
