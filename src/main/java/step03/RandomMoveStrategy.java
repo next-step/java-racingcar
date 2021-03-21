@@ -17,7 +17,7 @@ public class RandomMoveStrategy implements MoveStrategy {
     }
 
     @Override
-    public boolean move() {
+    public boolean isMove() {
         return isMovable();
     }
 }

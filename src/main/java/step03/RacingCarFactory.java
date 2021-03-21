@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarFactory {
-    private List<RacingCar> racingCars = new ArrayList<>();
+    final private List<RacingCar> racingCars = new ArrayList<>();
 
     public RacingCarFactory() {}
 
