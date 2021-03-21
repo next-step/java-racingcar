@@ -22,12 +22,25 @@ public class RacingEventManagerTest {
     @Test
     @DisplayName("중복 승자 출력 테스트")
     void getWinnerRacingCars() {
-        RacingCar racingCar1 = new RacingCar("test1", 4);
-        RacingCar racingCar2 = new RacingCar("test2", 4);
-        RacingCar racingCar3 = new RacingCar("test3", 1);
-        RacingCar racingCar4 = new RacingCar("test4", 2);
+        RacingCar racingCar1 = new RacingCar("car1", 4);
+        RacingCar racingCar2 = new RacingCar("car2", 4);
+        RacingCar racingCar3 = new RacingCar("car3", 1);
+        RacingCar racingCar4 = new RacingCar("car4", 2);
         List<RacingCar> racingCars = new ArrayList<>(Arrays.asList(racingCar1, racingCar2, racingCar3, racingCar4));
 
         assertThat(racingEventManager.getWinnerRacingCars(racingCars)).contains(racingCar1, racingCar2);
+    }
+
+
+    @Test
+    @DisplayName("racing round 최종 우승 출력 테스트 (중복, 단일)")
+    void showRacingFinalWinner() {
+        RacingCar racingCar1 = new RacingCar("car1", 4);
+        RacingCar racingCar2 = new RacingCar("car2", 4);
+        List<RacingCar> winnerRacingCarNames = new ArrayList<>(Arrays.asList(racingCar1, racingCar2));
+        List<RacingCar> winnerRacingCarName = new ArrayList<>(Arrays.asList(racingCar1));
+
+        assertThat(racingEventManager.getRacingWinnerName(winnerRacingCarNames)).isEqualTo("car1, car2");
+        assertThat(racingEventManager.getRacingWinnerName(winnerRacingCarName)).isEqualTo("car1");
     }
 }
