@@ -4,12 +4,15 @@ import java.util.List;
 
 public class ResultView {
 
+    private static final String MOVE_RANGE = "-";
+    private static final String DELIMITER = " : ";
+
     private ResultView() {}
 
     private static void showRacingResult(RacingCarDTO racingCarDTO) {
-        System.out.print(racingCarDTO.getCarName() + " : ");
+        System.out.print(racingCarDTO.getCarName() + DELIMITER);
         for (int i = 0; i < racingCarDTO.getMovingRange(); i++) {
-            System.out.print("-");
+            System.out.print(MOVE_RANGE);
         }
     }
 
