@@ -7,6 +7,7 @@ public class ResultView {
     private static final String MOVE_RANGE = "-";
     private static final String DELIMITER = " : ";
     private static final String WINNER_SUFFIX = "가 최종 우승했습니다.";
+    static final String WINNER_DELIMITER = ", ";
 
     private ResultView() {}
 
