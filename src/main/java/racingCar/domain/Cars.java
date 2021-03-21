@@ -8,8 +8,11 @@ public class Cars {
 
   private List<Car> cars;
 
-  public Cars(List<Car> cars) {
+  public Cars(String[] cars) {
+    this.cars = makeCars(cars);
+  }
 
+  public Cars(List<Car> cars) {
     this.cars = cars;
   }
 
@@ -19,6 +22,14 @@ public class Cars {
       tryResults.add(car.move(new RandomMovable()));
     }
     return tryResults;
+  }
+
+  private List<Car> makeCars(String[] carNames) {
+    List<Car> carList = new ArrayList<>();
+    for (int i = 0; i < carNames.length; i++) {
+      carList.add(new Car(carNames[i], 0));
+    }
+    return carList;
   }
 
   public List<Car> determineWinners() {
@@ -36,4 +47,17 @@ public class Cars {
         .orElse(-1);
   }
 
+  public int size() {
+    return cars.size();
+  }
+
+  public Car getCar(int index) {
+    return cars.get(index);
+  }
+
+  public String getWinnerNames() {
+    return cars.stream()
+        .map(Car::getName)
+        .collect(Collectors.joining(","));
+  }
 }

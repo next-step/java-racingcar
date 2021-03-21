@@ -1,38 +1,32 @@
 package racingCar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import racingCar.view.ResultView;
+import racingCar.domain.Cars;
+import racingCar.domain.TryCount;
+import racingCar.domain.TryResult;
+import racingCar.view.TryResultsView;
 
 public class RacingGame {
 
-  private final String[] carNames;
-  private final int tryCount;
+  private final TryCount tryCount;
+  private final Cars cars;
 
   public RacingGame(String[] carNames, int tryCount) {
-    this.carNames = carNames;
-    this.tryCount = tryCount;
+    this.cars = new Cars(carNames);
+    this.tryCount = new TryCount(tryCount);
   }
 
-  public List<Car> start(ResultView resultView) {
-    Cars cars = makeCars(carNames);
-
-    resultView.printResultIntro();
-    for (int i = 0; i < tryCount; i++) {
-      List<TryResult> tryResults = cars.move();
-      resultView.printTryResult(tryResults);
-    }
-
-    return cars.determineWinners();
+  public TryResultsView race() {
+    List<TryResult> tryResults = cars.move();
+    tryCount.race();
+    return new TryResultsView(tryResults);
   }
 
-  private Cars makeCars(String[] carNames) {
-    List<Car> cars = new ArrayList<>();
-    for (int i = 0; i < carNames.length; i++) {
-      cars.add(new Car(carNames[i], 0));
-    }
-    return new Cars(cars);
+  public boolean isRacing() {
+    return tryCount.isMoreZero();
   }
 
-
+  public Cars getCars() {
+    return cars;
+  }
 }
