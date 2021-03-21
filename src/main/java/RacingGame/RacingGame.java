@@ -6,22 +6,29 @@ import java.util.List;
 public class RacingGame {
 
     private List<Car> racingCars;
+    private int numOfCar;
+    private int numOfTry;
+
 
     public RacingGame(){
         racingCars = new ArrayList<Car>();
     }
 
-    public void doRacingGame(){
+    public void getInputValue(){
         InputView inputView = new InputView();
-        int numOfCar = inputView.inputNumOfCar();
-        int numOfTry = inputView.inputNumOfTry();
+        this.numOfCar = inputView.inputNumOfCar();
+        this.numOfTry = inputView.inputNumOfTry();
+    }
 
+    public void doRacingGame(){
+
+        getInputValue();
         prepareGame(numOfCar);
         playGameNumOfTry(numOfTry);
 
     }
 
-    private void playGameNumOfTry(int numOfTry) {
+    public void playGameNumOfTry(int numOfTry) {
         int numOfPlayed = 0;
         while(numOfPlayed++ < numOfTry){
             
@@ -35,7 +42,7 @@ public class RacingGame {
         }
     }
 
-    private void prepareGame(int numOfCar) {
+    public void prepareGame(int numOfCar) {
 
         for(int i = 0; i < numOfCar; i ++){
             racingCars.add(new Car());

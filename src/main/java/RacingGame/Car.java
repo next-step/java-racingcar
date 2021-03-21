@@ -21,8 +21,8 @@ public class Car {
     }
 
     private boolean isForward() {
-        Random random = new Random(10);
-        int randomValue = random.nextInt();
+        Random random = new Random();
+        int randomValue = random.nextInt(10);
         if (randomValue >= 4){
             return true;
         }
