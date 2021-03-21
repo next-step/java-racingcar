@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
     private final static int START_LOCATION = 0;
     private final static int MOVE_STRATEGY = 1;
@@ -39,8 +41,24 @@ public class Car {
         return currentLocation;
     }
 
-    public Boolean bigger(int num) {
+    public Boolean win(int num) {
         return this.currentLocation > num;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return currentLocation == car.currentLocation && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(currentLocation, name);
+    }
 }

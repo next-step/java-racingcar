@@ -2,20 +2,22 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.service.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+
     @Test
     @DisplayName("자동차 움직임 테스트")
     void move() {
         //given
+        int START_LOCATION = 0;
+        int MOVE_STRATEGY = 1;
 
-        final int START_LOCATION = 0;
-        final int MOVE_STRATEGY = 1;
+        Name carName = new Name("abc");
+        Car car = new Car(START_LOCATION, carName);
+
         final int expectLocation = START_LOCATION + MOVE_STRATEGY;
-        Car car = new Car(START_LOCATION);
 
         //when
         car.move(true);
@@ -28,51 +30,34 @@ public class CarTest {
     @DisplayName("get 현재 위치 테스트")
     void getCurrentLocation() {
         //given
-        final int NOW_LOCATION = 2;
-        Car car = new Car(NOW_LOCATION);
+        int NOW_LOCATION = 2;
+        Name carName = new Name("abc");
+        Car car = new Car(NOW_LOCATION, carName);
 
         //when
-        int expectLocation = car.getCurrentLocation();
-        //then
-        assertThat(expectLocation).isEqualTo(NOW_LOCATION);
-    }
-
-
-    @Test
-    @DisplayName("Cars getSize 테스트")
-    void getSize() {
-        //given
-        final int carNumber = 5;
-        Cars cars = new Cars(carNumber);
-
-        //when
-        int resultCarSize = cars.getSize();
+        int resultLocation = car.getCurrentLocation();
 
         //then
-        assertThat(resultCarSize).isEqualTo(carNumber);
+        assertThat(resultLocation).isEqualTo(NOW_LOCATION);
     }
 
     @Test
-    @DisplayName("자동차들을 움직이게 시켰을 때 움직임 전략에 따른 테스트")
-    void moveCars() {
-        //given
-        final int carNumber = 3;
-        Cars expectCars = new Cars(carNumber);
-        MoveStrategy stubMoveStrategy = new CarsTest.StubMoveStrategy();
-        for (int i = 0; i < carNumber; i++) {
-            expectCars.getCars().get(i).move(true);
-        }
+    @DisplayName("이겼는지 비교하는 테스트")
+    void bigger() {
+        // given
+        int NOW_LOCATION = 2;
+        Name carName = new Name("abc");
+        Car car = new Car(NOW_LOCATION, carName);
 
-        //when
-        Cars resultCars = new Cars(carNumber);
-        resultCars.move(stubMoveStrategy);
+        // when
+        Boolean resultTrue = car.win(1);
+        Boolean resultFalse = car.win(3);
 
-        //then
-        for (int i = 0; i < carNumber; i++) {
-            Car resultCar = resultCars.getCars().get(i);
-            Car expectCar = expectCars.getCars().get(i);
-            assertThat(resultCar.getCurrentLocation()).isEqualTo(expectCar.getCurrentLocation());
-        }
+        // then
+        assertThat(resultTrue).isTrue();
+        assertThat(resultFalse).isFalse();
+
     }
+
 
 }
