@@ -1,6 +1,7 @@
 package test.ch01.step2;
 
 
+
 import ch01.racinggame.Domain.Car;
 import ch01.racinggame.Domain.InputData;
 import ch01.racinggame.Domain.RacingGame;
@@ -46,13 +47,13 @@ class RacingGameTest {
     }
 
 
-
     @Test
     @DisplayName("차를 이동하는 Test")
     void moveCarTest() {
 
         //given
         int index = 2;
+
 
         int testRandomNum = 5;
         //when
@@ -68,6 +69,5 @@ class RacingGameTest {
     void isKeepGoingTest(int inputNum, boolean expect) {
         racingGame.isKeepGoing(inputNum);
         assertThat(racingGame.isKeepGoing(inputNum)).isEqualTo(expect);
-
     }
 }

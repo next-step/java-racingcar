@@ -1,6 +1,8 @@
 package test.ch01.step2;
 
+
 import ch01.racinggame.Domain.Car;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,7 @@ class CarTest {
     @BeforeEach
     void setUp() {
         car = new Car("TestCar");
+
     }
 
 
