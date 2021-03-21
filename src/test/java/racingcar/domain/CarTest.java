@@ -1,4 +1,4 @@
-package step3.racingcar.domain;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        name = "carName";
+        name = "name";
         car = new Car(name);
 
         /*
@@ -40,9 +40,8 @@ class CarTest {
 
     @Test
     void createCar() {
-        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
-        assertThat(car.getName()).isEqualTo(name);
-        assertThat(car.getStatus().get(name)).isEqualTo(INIT_NUM);
+        assertThat(car.getPosition()).isEqualTo(new Position(INIT_NUM));
+        assertThat(car.getName()).isEqualTo(new Name(name));
     }
 
 
@@ -52,8 +51,8 @@ class CarTest {
         when(random.nextInt(RANDOM_BOUND))
                 .thenReturn(randInt);
 
-        assertThat(car.goForward()).isTrue();
-        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM + 1);
+        assertThat(car.move()).isTrue();
+        assertThat(car.getPosition().isSame(INIT_NUM + 1)).isTrue();
     }
 
     @ParameterizedTest
@@ -62,7 +61,7 @@ class CarTest {
         when(random.nextInt(RANDOM_BOUND))
                 .thenReturn(randInt);
 
-        assertThat(car.goForward()).isFalse();
-        assertThat(car.getForwardNum()).isEqualTo(INIT_NUM);
+        assertThat(car.move()).isFalse();
+        assertThat(car.getPosition().isSame(INIT_NUM)).isTrue();
     }
 }

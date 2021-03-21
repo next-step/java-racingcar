@@ -4,12 +4,9 @@
  * @author hj-woo
  * @version 2.0
  * */
-package step3.racingcar.domain;
+package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -24,18 +21,18 @@ public class Cars {
      * @param null
      * @return 자동차들의 전진한 횟수를 담은 리스트, LinkedList<Integer>
      * */
-    public ArrayList<Integer> checkForward() {
+    public ArrayList<Position> checkMove() {
         return cars.stream()
-                .map(Car::getForwardNum)
+                .map(Car::getPosition)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public Map<String, Integer> checkCarStatus() {
+    public Map<Name, Position> checkCarStatus() {
         return cars.stream()
-                .collect(Collectors.toMap(Car::getName, Car::getForwardNum, (name, num) -> name, TreeMap::new));
+                .collect(Collectors.toMap(Car::getName, Car::getPosition, (name, num) -> name, LinkedHashMap::new));
     }
 
-    public void tryForward() {
-        cars.forEach(Car::goForward);
+    public void tryMove() {
+        cars.forEach(Car::move);
     }
 }

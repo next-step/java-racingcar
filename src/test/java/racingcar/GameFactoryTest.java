@@ -1,12 +1,13 @@
-package step3.racingcar;
+package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import step3.racingcar.domain.Car;
-import step3.racingcar.domain.Cars;
-import step3.racingcar.ui.InputView;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Game;
+import racingcar.ui.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
+import static racingcar.GameFactory.STEP3_STR;
 
 class GameFactoryTest {
 
@@ -53,9 +55,9 @@ class GameFactoryTest {
     @DisplayName("Game의 생성을 GameFactory에서 주관하여 Game, Cars, Car의 생성을 통합테스트")
     void buildGame() {
         MockedStatic<InputView> inputView = mockStatic(InputView.class);
-        when(InputView.input(new String[]{Game.HOW_MANY_CARS, Game.HOW_MANY_TRYS}))
+        when(InputView.input(STEP3_STR))
                 .thenReturn(inputs);
-        assertThat(gameFactory.step3Game()).isInstanceOf(Game.class);
+        assertThat(gameFactory.game(STEP3_STR, inputs)).isInstanceOf(Game.class);
         inputView.close();
     }
 }
