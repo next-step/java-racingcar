@@ -21,6 +21,6 @@ public class ResultView {
             showRacingResult(car.getRacingCarData());
             System.out.println();
         }
+        System.out.println();
     }
-
 }
