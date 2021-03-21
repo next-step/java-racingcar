@@ -5,23 +5,24 @@ import java.util.List;
 public class RacingEventManager {
 
     private int tryCount = 0;
-    private int carCount = 0;
-    RacingCarFactory racingCarFactory;
+    private String carNames;
+    private RacingCarFactory racingCarFactory;
 
-    public RacingEventManager(int carCount, int tryCount) {
-        ValidateUtils.inputIsZero(carCount, tryCount);
-        this.carCount = carCount;
+    public RacingEventManager(String carNames, int tryCount) {
+        this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public void startRacing() {
-        racingCarFactory = new RacingCarFactory();
-        racingCarFactory.makeCars(carCount);
-        racingCarFactory.racing(tryCount);
+    public void startRandomRacing() {
+        startRacing(new RandomMoveStrategy());
+    }
+
+    private void startRacing(MoveStrategy moveStrategy) {
+        racingCarFactory = new RacingCarFactory(carNames);
+        racingCarFactory.racing(moveStrategy, tryCount);
     }
 
     public List<RacingCar> getRacingResult() {
         return racingCarFactory.getRacingCars();
     }
-
 }

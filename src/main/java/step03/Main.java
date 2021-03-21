@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args){
 
-        RacingEventManager manager = new RacingEventManager(InputView.inputRacingCarCount(), InputView.inputRacingTryCount());
-        manager.startRacing();
+        RacingEventManager manager = new RacingEventManager(InputView.inputRacingCarNames(), InputView.inputRacingTryCount());
+        manager.startRandomRacing();
 
         ResultView.showRacingResult(manager.getRacingResult());
     }
