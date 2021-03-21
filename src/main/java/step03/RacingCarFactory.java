@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarFactory {
-    final private List<RacingCar> racingCars = new ArrayList<>();
+    private List<RacingCar> racingCars;
 
-    public RacingCarFactory(String carNames) {
+    RacingCarFactory(String carNames) {
+        racingCars = new ArrayList<>();
         makeCars(carNames);
     }
 
     private void makeCars(String carNames) {
         String[] carNameList = carNames.split(",");
-        for (String carName: carNameList) {
+        for (String carName : carNameList) {
             racingCars.add(new RacingCar(carName));
         }
     }
