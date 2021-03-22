@@ -4,7 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step3.service.GameRule;
 import step3.utils.NumberGenerator;
-import step3.utils.RandomUtil;
+import step3.utils.TestNumberGenerator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,7 +14,7 @@ class GameRuleTest {
     @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
     void isMovable(int number) {
         // given
-        NumberGenerator numberGenerator = new TestNumberGenerator();
+        NumberGenerator numberGenerator = new TestNumberGenerator(number);
         GameRule rule = new GameRule(numberGenerator);
 
         boolean expected = number >= 4;
