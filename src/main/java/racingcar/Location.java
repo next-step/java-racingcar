@@ -11,4 +11,12 @@ public class Position {
     public void setLocation(String location) {
         this.location += location;
     }
+
+    public void move() {
+        location = "-";
+    }
+
+    public void stop() {
+        location = "";
+    }
 }
