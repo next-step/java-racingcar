@@ -8,7 +8,7 @@ import step3.domain.Cars;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
@@ -18,16 +18,18 @@ class CarsTest {
         // given
         int numberOfCars = 3;
         String scoreSymbol = "-";
-        List<Car> expected = new ArrayList<>();
+        List<Car> expectedList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            expected.add(new Car(scoreSymbol));
+            expectedList.add(new Car(scoreSymbol));
         }
+        Car expected = expectedList.get(0);
 
         // when
         Cars cars = new Cars(numberOfCars, scoreSymbol);
-        List<Car> actual = cars.getCars();
+        List<Car> actualList = cars.getCars();
+        Car actual = actualList.get(0);
 
         // then
-        assertEquals(actual.size(), expected.size());
+        assertThat(actual).isEqualToComparingFieldByField(expected);
     }
 }
