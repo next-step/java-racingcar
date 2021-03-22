@@ -16,7 +16,7 @@ public class GameController {
     public GameController() {
         GameRequestVO requestVO = InputView.inputGameInfo();
         this.cars = Cars.from(requestVO.getCarNames());
-        this.count = Count.from(requestVO.getRoundCount());
+        this.count = Count.from(requestVO.getCount());
         this.strategy = new RandomNumberMovableStrategy();
     }
 
