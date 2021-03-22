@@ -1,6 +1,6 @@
 package step4.controller;
 
-import step4.domain.Round;
+import step4.domain.Count;
 import step4.strategy.MovableStrategy;
 import step4.strategy.RandomNumberMovableStrategy;
 import step4.view.InputView;
@@ -10,22 +10,22 @@ import step4.vo.GameRequestVO;
 
 public class GameController {
     private final Cars cars;
-    private final Round round;
+    private final Count count;
     private MovableStrategy strategy;
 
     public GameController() {
         GameRequestVO requestVO = InputView.inputGameInfo();
         this.cars = Cars.from(requestVO.getCarNames());
-        this.round = Round.from(requestVO.getRoundCount());
+        this.count = Count.from(requestVO.getRoundCount());
         this.strategy = new RandomNumberMovableStrategy();
     }
 
     public void run() {
         ResultView.printResultStartMessage();
-        while (round.isMovable()) {
+        while (count.isMovable()) {
             cars.move(strategy);
             ResultView.printPosition(cars);
-            round.minusCount();
+            count.minus();
         }
         ResultView.printWinners(cars);
     }
