@@ -17,4 +17,8 @@ public class Cars {
         return cars;
     }
 
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
+
 }

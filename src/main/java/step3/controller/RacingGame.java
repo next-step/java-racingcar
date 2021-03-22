@@ -32,7 +32,7 @@ public class RacingGame {
 
     public void raceByRound() {
         for (int i = 0; i < numberOfCars; i++) {
-            Car car = cars.getCars().get(i);
+            Car car = cars.getCar(i);
             car.move(gameRule);
             ResultView.printRaceResult(car.getScore());
         }
