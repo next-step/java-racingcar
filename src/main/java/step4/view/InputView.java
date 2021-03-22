@@ -18,6 +18,9 @@ public class InputView {
         int count = scan.nextInt();
 
         data = InputValidator.validate(new Data(names, count));
+    }
 
+    public Data getData() {
+        return data;
     }
 }
