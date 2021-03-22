@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Position {
+public class Location {
 
     private String location = "";
 
@@ -8,15 +8,11 @@ public class Position {
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location += location;
-    }
-
     public void move() {
-        location = "-";
+        location += "-";
     }
 
     public void stop() {
-        location = "";
+        location += "";
     }
 }
