@@ -21,13 +21,11 @@ public class RacingGameTest {
 
         List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
         racingGame.gameStart(list, count);
-        assertThat(owners).isEqualTo(gameSet.getOwners());
-        assertThat(count).isEqualTo(gameSet.getGivenRound());
 
     }
 
 
-    @DisplayName("우승자가 한명일 경우와 주어진 라운드가 1인 경우 ")
+    @DisplayName("우승자가 1명일 경우와 주어진 라운드가 1인 경우 ")
     @Test
     void winner_one() {
 
@@ -37,12 +35,13 @@ public class RacingGameTest {
         List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
 
         RacingCar pobiCar = list.get(0);
-        pobiCar.move();
+        pobiCar.canGo(5);
 
-        assertThat(1).isEqualTo(pobiCar.status().length());
+        System.out.println(racingGame.getWinners(list));
+
     }
 
-    @DisplayName("우승자가 두명일 경우와 주어진 라운드가 1인 경")
+    @DisplayName("우승자가 2명일 경우와 주어진 라운드가 1인 경우")
     @Test
     void winner_two() {
 
@@ -54,27 +53,13 @@ public class RacingGameTest {
         RacingCar pobiCar = list.get(0);
         RacingCar crongCar = list.get(1);
 
-        pobiCar.move();
-        crongCar.move();
+        pobiCar.canGo(5);
+        crongCar.canGo(5);
 
-        assertThat(1).isEqualTo(pobiCar.status().length());
-        assertThat(1).isEqualTo(crongCar.status().length());
+        assertThat(1).isEqualTo(pobiCar.getCarLocation().length());
+        assertThat(1).isEqualTo(crongCar.getCarLocation().length());
+
+        assertThat(racingGame.getWinners(list)).contains("pobi,crong");
     }
 
-
-    @DisplayName("우승자가 없을 경우")
-    @ParameterizedTest
-    @CsvSource(value = {"pobi:1", "crong:2 ", "honux:5"}, delimiter = ':')
-    void no_winner(String owners, int count) {
-        GameSet gameSet = new GameSet(owners, count);
-        RacingGame racingGame = new RacingGame(gameSet);
-
-        List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
-
-        for (int i = 0; i < list.size(); i++) {
-            list.get(i).stop();
-            assertThat(0).isEqualTo(list.get(i).status().length());
-        }
-
-    }
 }
