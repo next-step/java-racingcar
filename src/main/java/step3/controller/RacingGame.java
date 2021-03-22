@@ -22,7 +22,7 @@ public class RacingGame {
         return numberOfCars;
     }
 
-    public void doRace() {
+    public void startRace() {
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttemps; i++) {
             System.out.println("round : " + (i + 1));

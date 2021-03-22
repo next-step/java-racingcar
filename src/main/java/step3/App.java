@@ -21,6 +21,6 @@ public class App {
         RacingGame race = new RacingGame(InputView.getNumberOfCars(), InputView.getNumberOfAttemps(), rule, cars);
 
         // 레이스 시작
-        race.doRace();
+        race.startRace();
     }
 }
