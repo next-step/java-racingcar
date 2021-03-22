@@ -1,6 +1,5 @@
 package step4;
 
-
 import step4.dto.InputDto;
 import step4.view.ResultView;
 
@@ -31,7 +30,6 @@ public class RacingGame {
             Car car = carList.get(i);
             car.carCanGoJudge(RandomNumber.randomNumberGenerator());
 
-            // move 랑 print 를 분리할 수는 없을까요.. ㅠ,ㅠ (print 메소드에서 매개변수로 Car를 받으니 분리하기가 애매하네요..)
             print(car);
         }
 
