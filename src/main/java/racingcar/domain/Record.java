@@ -1,19 +1,32 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class Record {
-    private final List<String> record = new ArrayList<>();
+    private final Cars record;
 
-    public Record(Cars cars) {
-        for (Car car : cars.getCars()) {
-            this.record.add(car.getLocationToExpression());
-        }
+    public Record(final Cars cars) {
+        this.record = new Cars(cars);
     }
 
-    public List<String> getRecord() {
+    public Cars getRecord() {
         return this.record;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Record record1 = (Record) o;
+        return Objects.equals(record, record1.record);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(record);
+    }
 }

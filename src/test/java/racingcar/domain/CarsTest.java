@@ -1,49 +1,58 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.service.MoveStrategy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
+    private Cars cars;
+    MoveStrategy stubMoveStrategy = new StubMoveStrategy();
 
-
-    @Test
-    @DisplayName("Cars getSize 테스트")
-    void getSize() {
-        //given
-        final int carNumber = 5;
-        Cars cars = new Cars(carNumber);
-
-        //when
-        int resultCarSize = cars.getSize();
-
-        //then
-        assertThat(resultCarSize).isEqualTo(carNumber);
+    @BeforeEach
+    void beforeTest() {
+        Name[] names = {new Name("abc"), new Name("def"), new Name("ghi")};
+        int[] currentLocation = {1, 2, 3};
+        cars = new Cars(currentLocation, names);
     }
 
     @Test
     @DisplayName("자동차들을 움직이게 시켰을 때 움직임 전략에 따른 테스트")
-    void moveCars() {
-        //given
-        final int carNumber = 3;
-        Cars expectCars = new Cars(carNumber);
-        MoveStrategy stubMoveStrategy = new StubMoveStrategy();
-        for (int i = 0; i < carNumber; i++) {
-            expectCars.getCars().get(i).move(true);
+    void move() {
+        // given
+        Cars testCars = new Cars(cars);
+        int[] expectLocation = {2, 3, 4};
+
+        // when
+        testCars.move(stubMoveStrategy);
+
+        // then
+        for (int i = 0; i < 3; i++) {
+            assertThat(testCars.getCars().get(i).getCurrentLocation()).isEqualTo(expectLocation[i]);
+        }
+    }
+
+    @Test
+    @DisplayName("승자 체크 테스트")
+    void winners() {
+        // given
+        Cars testCars = new Cars(cars);
+        String[] expectWinners = {"ghi"};
+
+        // when
+        List<Car> resultWinners = testCars.winners();
+        List<String> winners = new ArrayList<>();
+        for (Car car : resultWinners) {
+            winners.add(car.getName());
         }
 
-        //when
-        Cars resultCars = new Cars(carNumber);
-        resultCars.moveCars(stubMoveStrategy);
-
-        //then
-        for (int i = 0; i < carNumber; i++) {
-            Car resultCar = resultCars.getCars().get(i);
-            Car expectCar = expectCars.getCars().get(i);
-            assertThat(resultCar.getCurrentLocation()).isEqualTo(expectCar.getCurrentLocation());
-        }
+        // then
+        assertThat(winners).containsExactly(expectWinners);
     }
 
     public class StubMoveStrategy implements MoveStrategy {
@@ -52,6 +61,4 @@ public class CarsTest {
             return true;
         }
     }
-
-
 }

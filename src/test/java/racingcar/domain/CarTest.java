@@ -6,15 +6,18 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+
     @Test
     @DisplayName("자동차 움직임 테스트")
     void move() {
         //given
+        int START_LOCATION = 0;
+        int MOVE_STRATEGY = 1;
 
-        final int START_LOCATION = 0;
-        final int MOVE_STRATEGY = 1;
+        Name carName = new Name("abc");
+        Car car = new Car(START_LOCATION, carName);
+
         final int expectLocation = START_LOCATION + MOVE_STRATEGY;
-        Car car = new Car(START_LOCATION);
 
         //when
         car.move(true);
@@ -27,28 +30,33 @@ public class CarTest {
     @DisplayName("get 현재 위치 테스트")
     void getCurrentLocation() {
         //given
-        final int NOW_LOCATION = 2;
-        Car car = new Car(NOW_LOCATION);
+        int NOW_LOCATION = 2;
+        Name carName = new Name("abc");
+        Car car = new Car(NOW_LOCATION, carName);
 
         //when
-        int expectLocation = car.getCurrentLocation();
+        int resultLocation = car.getCurrentLocation();
+
         //then
-        assertThat(expectLocation).isEqualTo(NOW_LOCATION);
+        assertThat(resultLocation).isEqualTo(NOW_LOCATION);
     }
 
     @Test
-    @DisplayName("현재 위치를 표현하는 방법")
-    void getLocationToExpression() {
-        //given
-        final int NOW_LOCATION = 2;
-        Car car = new Car(NOW_LOCATION);
-        final String expectLocation = "--";
+    @DisplayName("이겼는지 비교하는 테스트")
+    void bigger() {
+        // given
+        int NOW_LOCATION = 2;
+        Name carName = new Name("abc");
+        Car car = new Car(NOW_LOCATION, carName);
 
-        //when
-        String resultLocation = car.getLocationToExpression();
+        // when
+        Boolean resultTrue = car.win(1);
+        Boolean resultFalse = car.win(3);
 
-        //then
-        assertThat(resultLocation).isEqualTo(expectLocation);
+        // then
+        assertThat(resultTrue).isTrue();
+        assertThat(resultFalse).isFalse();
+
     }
 
 
