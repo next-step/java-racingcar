@@ -37,6 +37,20 @@
 - [x] Car 클래스에서 Map 생성대신 List\<Car> 라는 일급 컬렉션을 사용하는게 단위 테스트에 도움.
 - [x] 테스트 메서드에서 여러번의 `assertThat()` 사용이 발생할 경우, `assetAll`, `SoftAssertions`사용이 더 좋음.
   - 학습후, 왜 `assertAll`이나 `SoftAssertion`이 더 권장되는지 이유를 [github](https://github.com/next-step/java-racingcar/pull/2038#issuecomment-797856106)에 코멘트
+- [x] 도메인과 View 분리
+- [x] View에서 고객이 원하는 심볼로 스코어 출력
+- [x] 디미터 원칙 적용
+  - [x] ResultView에서 자동차 객체의 스코어 호출하는 코드 리팩토링 필요
+  - [x] `System.out.println(race.getCars().get(i).getScore().getScore());`
+- [x] 메서드와 관련있는 필드명은 서로 연관되도록 네이밍 변경
+  - [x] `getAttempts()` -> `getNumberOfAttemps()` 
+- [x] 불필요한 주석 및 코드 삭제
+- [x] 테스트 코드에서 객체 비교시 사이즈만 비교할게 아니라 Car 객체가 동일한지 비교 필요
+  - [x] `asasertThat().isEqualToComparingFieldByField()`
+- [x] 테스트 추가 작성 필요
+  - [ ] `doRace()`
+  - [ ] `raceByRound()`
+  - [x] 리팩토링 이후 View에 해당하는 부분만 남아서 테스트 생략
 
 ## Learned from Step 3
 
