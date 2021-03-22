@@ -12,5 +12,8 @@ public class ResultView {
         System.out.println(result);
     }
 
+    public void showWinner(String winner) {
+        System.out.println(winner);
+    }
 
 }
