@@ -22,9 +22,9 @@ public class RacingView {
         return scanner.nextInt();
     }
     
-    public void printCarPosition(Car car, int round) {
-        for( int rIndex = 0 ; rIndex < round ; rIndex++ ) {
-            System.out.print(car.getPosition(rIndex) ? CAR_MOVEMENT : "");
+    public void printPosition(Car car) {
+        for( int rIndex = 0 ; rIndex < car.position() ; rIndex++ ) {
+            System.out.print(CAR_MOVEMENT);
         }
         System.out.println();
     }
@@ -36,10 +36,13 @@ public class RacingView {
         if( racingInfo == null ) {
             return ;
         }
-
-        for( int rIndex = 0 ; rIndex < racingInfo.getRoundCount() ; rIndex++ ) {
-            for( int cIndex = 0 ; cIndex < racingInfo.getCarCount() ; cIndex++ ) {
-                printCarPosition(racingInfo.getCarByIndexNumber(cIndex), rIndex);
+        
+        Car currentCar;
+        for( int rIndex = 0 ; rIndex < racingInfo.totalRound() ; rIndex++ ) {
+            for( int cIndex = 0 ; cIndex < racingInfo.totalCars() ; cIndex++ ) {
+                currentCar = racingInfo.carByIndex(cIndex);
+                currentCar.move();
+                printPosition(currentCar);
             }
         }
         System.out.println();

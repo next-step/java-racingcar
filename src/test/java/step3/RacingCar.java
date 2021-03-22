@@ -25,28 +25,16 @@ public class RacingCar {
             this.cars.add(index, new Car());
         }
     }
-
-    public void addCar(Car racingCar) {
-        this.cars.add(racingCar);
-    }
-
-    public List<Car> getCars() {
-        return this.cars;
+    
+    public int totalRound() {
+        return this.roundCount;
     }
     
-    public Car getCarByIndexNumber(int index) {
-        return this.cars.get(index);
-    }
-    
-    public int getCarCount() {
+    public int totalCars() {
         return this.cars.size();
     }
 
-    public void setRoundCount(int roundCount) {
-        this.roundCount = roundCount;
-    }
-    
-    public int getRoundCount() {
-        return this.roundCount;
+    public Car carByIndex(int index) {
+        return cars.get(index);
     }
 }    

@@ -1,15 +1,17 @@
 package step3;
 
-import java.util.List;
-
 public class Car {
-    public List<Boolean> movement;
     
-    public void setPosition(boolean isMove) {
-        this.movement.add(isMove);
+    private int move;
+    
+    public int position() {
+        return this.move;
     }
     
-    public boolean getPosition(int round) {
-        return this.movement.get(round);
+    public void move() {
+        if( RacingCondition.isMoveForward() ) {
+            this.move++;
+        }
     }
+    
 }
