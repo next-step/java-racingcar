@@ -2,33 +2,26 @@ package racingcar;
 
 public class RacingCar {
 
+    public static final int MINIMUM_NUMBER = 4;
+
     private String owner;
-    private Position position;
+    private Location location;
 
-
-    public RacingCar(String owner, Position position) {
+    public RacingCar(String owner, Location location) {
         this.owner = owner;
-        this.position = position;
+        this.location = location;
     }
 
-    public void move() {
-        position.setLocation("-");
+    public String getCarLocation() {
+        return location.getLocation();
     }
 
-    public void stop() {
-        position.setLocation("");
-    }
-
-    public String status() {
-        return position.getLocation();
-    }
-
-    public void isGo(int number) {
-        if (number >= RandomNumber.MINIMUM_NUMBER) {
-            move();
+    public void canGo(int number) {
+        if (number >= MINIMUM_NUMBER) {
+            location.move();
             return;
         }
-        stop();
+        location.stop();
     }
 
     public String getOwner() {
