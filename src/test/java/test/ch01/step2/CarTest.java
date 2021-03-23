@@ -3,6 +3,7 @@ package test.ch01.step2;
 
 import ch01.racinggame.Domain.Car;
 
+import ch01.racinggame.Domain.RandomNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,21 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("TestCar");
+        car = new Car("Test"){
+
+            private int progressCnt = 1;
+
+            @Override
+            public int progressCnt() {
+                return this.progressCnt;
+
+            }
+
+            @Override
+            public void move() {
+                progressCnt++;
+            }
+        };
 
     }
 

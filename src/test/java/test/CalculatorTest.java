@@ -4,9 +4,9 @@ package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step1.Calculator;
-import step1.InputEmptyDataException;
-import step1.InputWrongSignDataException;
+import ch01.step1.Calculator;
+import ch01.step1.InputEmptyDataException;
+import ch01.step1.InputWrongSignDataException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

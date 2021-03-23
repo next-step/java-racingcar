@@ -1,18 +1,24 @@
 package ch01.racinggame.Domain;
 
 public class Car implements Comparable<Car>{
-    static final int initCarCount = 1;
-    static final int limitNameLength = 5;
-    private String name;
+    private static final int initCarCount = 1;
+    private static final int limitNameLength = 5;
+    private final String name;
     private int progressCnt;
 
+    private static RandomNumber randomNumber = new RandomNumber();
+
     public Car(String name) {
+        checkNameLength(name);
         this.name = name;
         progressCnt = initCarCount;
     }
 
     public void move() {
-        progressCnt++;
+        int randomNum = randomNumber.randomNumber();
+        if(randomNumber.movable(randomNum)){
+            progressCnt++;
+        }
     }
 
     public String name() {
@@ -32,6 +38,11 @@ public class Car implements Comparable<Car>{
         return progressBar;
     }
 
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(o.progressCnt() , this.progressCnt);
+    }
+
     private void checkNameLength(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("빈칸을 입력할수 없습니다.");
@@ -40,10 +51,5 @@ public class Car implements Comparable<Car>{
         if (name != null && name.length() > limitNameLength) {
             throw new IllegalArgumentException(limitNameLength + "글자를 초과할 수 없습니다. ");
         }
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return o.progressCnt() - this.progressCnt;
     }
 }

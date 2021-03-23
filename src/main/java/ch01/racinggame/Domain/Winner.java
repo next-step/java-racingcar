@@ -1,20 +1,18 @@
 package ch01.racinggame.Domain;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class Winner {
 
-    ArrayList<Car> winnerCars;
-    Car[] cars;
+    private List<Car> winnerCars;
 
     public Winner(Car[] cars) {
-        this.cars = cars;
-        winnerCars = new ArrayList<Car>();
-    }
-
-    public ArrayList<Car> whoAreWinners() {
-        return this.findWinners();
+        winnerCars = new ArrayList<>();
+        findWinners(cars);
     }
 
     @Override
@@ -23,24 +21,37 @@ public class Winner {
         for (Car winnerCar : this.winnerCars) {
             sb.append(winnerCar.name() + ", ");
         }
-        return sb.toString().length()>0? sb.substring(0,sb.length()-2):"";
+        return sb.toString().length() > 0 ? sb.substring(0, sb.length() - 2) : "";
+    }
+
+    public List<Car> winnerCars() {
+        return this.winnerCars;
     }
 
 
     private void saveWinners(Car car, int winnerProgressCnt) {
         if (car.progressCnt() == winnerProgressCnt) {
-            winnerCars.add(car);
+            this.winnerCars.add(car);
         }
     }
 
-    private ArrayList<Car> findWinners() {
-
-        Collections.sort(winnerCars);
-        winnerCars.add(cars[0]);
-        for (int i = 1; i < cars.length; i++) {
-            saveWinners(cars[i], cars[0].progressCnt());
+    private int findBigProgreeCnt(Car[] cars) {
+        int[] indexArr = new int[cars.length];
+        for (int i = 0; i < cars.length; i++) {
+            indexArr[i] = cars[i].progressCnt();
         }
-        return winnerCars;
+        Arrays.sort(indexArr);
+        return indexArr[indexArr.length - 1];
 
+    }
+
+    private void findWinners(Car[] cars) {
+
+        //Collections.sort(winnerCars);
+        int bigProgreeCnt = findBigProgreeCnt(cars);
+
+        for (int i = 0; i < cars.length; i++) {
+            saveWinners(cars[i], bigProgreeCnt);
+        }
     }
 }

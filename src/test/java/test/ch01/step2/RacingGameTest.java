@@ -1,7 +1,6 @@
 package test.ch01.step2;
 
 
-
 import ch01.racinggame.Domain.Car;
 import ch01.racinggame.Domain.InputData;
 import ch01.racinggame.Domain.RacingGame;
@@ -17,11 +16,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-    RacingGame racingGame;
-    Car[] cars;
-    RandomNumber randomNumber;
-    final int attemptCount = 3;
-    final String inputNameOfCars = "happy,game,dog,cat,home";
+    private RacingGame racingGame;
+    private RandomNumber randomNumber;
+    private final String inputNameOfCars = "happy,game,dog,cat,home";
+    ResultView rv;
 
     @BeforeEach
     void setUp() {
@@ -39,35 +37,13 @@ class RacingGameTest {
 
     @Test
     @DisplayName("game start Test")
-    void startTest(){
+    void startTest() {
         racingGame.start();
-        ResultView rv = new ResultView();
-        rv.showResult();
+        rv = new ResultView(racingGame.cars());
+        Car[] testCars = new Car[racingGame.cars().length];
 
+
+        assertThat(racingGame.cars().length).isEqualTo(5);
     }
 
-
-    @Test
-    @DisplayName("차를 이동하는 Test")
-    void moveCarTest() {
-
-        //given
-        int index = 2;
-
-
-        int testRandomNum = 5;
-        //when
-        racingGame.moveCar(cars, index, testRandomNum);
-
-        //then
-        assertThat(cars[index].toString()).isEqualTo("--");
-    }
-
-    @ParameterizedTest
-    @DisplayName("숫자 입력받아서 전진할것인지 결정하는 method")
-    @CsvSource(value = {"1:false", "2:false", "3:false", "4:true", "5:true"}, delimiter = ':')
-    void isKeepGoingTest(int inputNum, boolean expect) {
-        racingGame.isKeepGoing(inputNum);
-        assertThat(racingGame.isKeepGoing(inputNum)).isEqualTo(expect);
-    }
 }

@@ -2,13 +2,13 @@ package ch01.racinggame.Domain;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 
-    int attemptCount = 0;
-    int carCount = 0;
-    Car[] cars;
-    RandomNumber randomNumber = new RandomNumber();
+    private int attemptCount = 0;
+    private int carCount = 0;
+    private Car[] cars;
 
     public RacingGame(InputData inputData) {
 
@@ -28,32 +28,25 @@ public class RacingGame {
         }
     }
 
-    public void start() {
+    public Car[] start() {
         int carsSize = cars.length;
 
         for (int i = 0; i < carsSize; i++) {
-            moveCar(this.cars, i, randomNumber.randomNumber());
+            cars[i].move();
         }
+        return cars;
     }
 
-    public void moveCar(Car[] cars, int index, int randomNum) {
-        if (randomNumber.movable(randomNum)) {
-            cars[index].move();
-        }
-    }
 
-    public ArrayList<Car> winner(){
+    public Winner winner() {
+
         Winner winner = new Winner(this.cars);
 
-        return winner.whoAreWinners();
+        return winner;
     }
 
     public int attemptCount() {
         return this.attemptCount;
-    }
-
-    public boolean isKeepGoing(int randomNumber) {
-        return randomNumber > 3;
     }
 
     public Car[] cars() {

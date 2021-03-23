@@ -1,5 +1,6 @@
 package ch01.racinggame;
 
+import ch01.racinggame.Domain.Car;
 import ch01.racinggame.Domain.InputData;
 import ch01.racinggame.Domain.RacingGame;
 import ch01.racinggame.view.InputView;
@@ -14,18 +15,16 @@ public class Main {
 
         //create a game
         RacingGame racingGame = new RacingGame(inputData);
-        ResultView rv = new ResultView(racingGame);
-
+        ResultView rv = new ResultView();
 
         //start a racing game
         for (int i = 0; i < racingGame.attemptCount(); i++) {
 
-            racingGame.start();
-
-            rv.showResult();
-
+            Car[] cars = racingGame.start();
+            rv.showResult(cars);
         }
+
         //show a result of racing game
-        rv.showWinnerResult();
+        rv.showWinnerResult(racingGame.winner().winnerCars());
     }
 }
