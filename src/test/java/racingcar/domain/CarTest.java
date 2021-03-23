@@ -19,6 +19,7 @@ import static racingcar.exception.Message.MAX_LENGTH_ERROR;
 import static racingcar.exception.Message.NULL_OR_EMPTY_ERROR;
 
 class CarTest {
+
     private final static String carName = "test";
     Car car;
 
