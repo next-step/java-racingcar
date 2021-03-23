@@ -2,6 +2,8 @@ package step4.view;
 
 import step4.domain.Car;
 
+import java.util.List;
+
 public class ResultView {
 
     public void render(Car car) {
@@ -13,7 +15,7 @@ public class ResultView {
         System.out.println(line.toString());
     }
 
-    public void result(String winners){
-
+    public void renderWinner(List<String> winners) {
+       System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
 }

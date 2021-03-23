@@ -31,4 +31,15 @@ public class Car {
     public String myName() {
         return name.getName();
     }
+
+    public int bestScore(int grade) {
+        if(myPosition() > grade){
+            grade = myPosition();
+        }
+        return grade;
+    }
+
+    public boolean isWinner(int grade){
+        return this.myPosition() == grade;
+    }
 }

@@ -19,9 +19,10 @@ public class CarsTest {
     public void createCar(String names){
         Data data = new Data(names);
 
-        List<Car> carList = new Cars().createdList(data);
+        Cars cars = new Cars();
+        cars.createdList(data);
 
-        assertThat(carList.size()).isEqualTo(data.spliteName(",").length);
+        assertThat(cars.getCarList().size()).isEqualTo(data.spliteName(",").length);
 
     }
 
