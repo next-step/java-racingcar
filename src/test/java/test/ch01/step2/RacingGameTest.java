@@ -1,9 +1,11 @@
 package test.ch01.step2;
 
-import ch01.step2.Car;
-import ch01.step2.InputData;
-import ch01.step2.InputView;
-import ch01.step2.RacingGame;
+
+import ch01.racinggame.Domain.Car;
+import ch01.racinggame.Domain.InputData;
+import ch01.racinggame.Domain.RacingGame;
+import ch01.racinggame.Domain.RandomNumber;
+import ch01.racinggame.view.ResultView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,50 +16,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-    RacingGame racingGame;
-    Car[] cars;
+    private RacingGame racingGame;
+    private RandomNumber randomNumber;
+    private final String inputNameOfCars = "happy,game,dog,cat,home";
+    ResultView rv;
 
     @BeforeEach
     void setUp() {
-        int attemptCount = 5;
-        int carCount = 3;
+        int attemptCount = 3;
 
-        InputView iv = new InputView();
-        InputData inputData = new InputData(carCount,attemptCount);
+        randomNumber = new RandomNumber();
+
+        InputData inputData = new InputData(inputNameOfCars, attemptCount);
+
+
         racingGame = new RacingGame(inputData);
-
-        cars = new Car[3];
-        Car car1 = new Car("1");
-        Car car2 = new Car("2");
-        Car car3 = new Car("3");
-
-        cars[0] = car1;
-        cars[1] = car2;
-        cars[2] = car3;
+        //racingGame.start();
 
     }
-
 
     @Test
-    @DisplayName("차를 이동하는 Test")
-    void moveCarTest() {
-
-        //given
-        int index = 2;
-
-        //when
-        racingGame.moveCar(cars, index, true);
+    @DisplayName("game start Test")
+    void startTest() {
+        racingGame.start();
+        rv = new ResultView(racingGame.cars());
+        Car[] testCars = new Car[racingGame.cars().length];
 
 
-        //then
-        assertThat(cars[index].toString()).isEqualTo("-");
+        assertThat(racingGame.cars().length).isEqualTo(5);
     }
 
-    @ParameterizedTest
-    @DisplayName("숫자 입력받아서 전진할것인지 결정하는 method")
-    @CsvSource(value = {"1:false", "2:false", "3:false", "4:true", "5:true"}, delimiter = ':')
-    void isKeepGoingTest(int inputNum, boolean expect) {
-        racingGame.isKeepGoing(inputNum);
-        assertThat(racingGame.isKeepGoing(inputNum)).isEqualTo(expect);
-    }
 }
