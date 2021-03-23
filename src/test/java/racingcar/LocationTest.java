@@ -20,7 +20,7 @@ public class LocationTest {
         Location location = new Location();
         location.move();
 
-        assertThat(1).isEqualTo(location.getLocation().length());
+        assertThat(1).isEqualTo(location.getLocation());
     }
 
     @DisplayName("전진 테스트")
@@ -28,7 +28,7 @@ public class LocationTest {
     void isGo_test() {
         RacingCar racingCar = new RacingCar("pobi", new Location());
         racingCar.canGo(5);
-        assertThat(1).isEqualTo(racingCar.getCarLocation().length());
+        assertThat(1).isEqualTo(racingCar.getCarLocation());
 
     }
 
@@ -37,7 +37,7 @@ public class LocationTest {
     void stop_test() {
         RacingCar racingCar = new RacingCar("pobi", new Location());
         racingCar.canGo(3);
-        assertThat(0).isEqualTo(racingCar.getCarLocation().length());
+        assertThat(0).isEqualTo(racingCar.getCarLocation());
 
     }
 
