@@ -30,11 +30,19 @@ public class RacingCar {
         return this.roundCount;
     }
     
-    public int totalCars() {
+    public int totalCarCount() {
         return this.cars.size();
     }
 
     public Car carByIndex(int index) {
         return cars.get(index);
+    }
+    
+    public void racing() {
+        for( int rIndex = 0 ; rIndex < roundCount ; rIndex++ ) {
+            for( int cIndex = 0 ; cIndex < totalCarCount() ; cIndex++ ) {
+                carByIndex(cIndex).move();
+            }
+        }
     }
 }    

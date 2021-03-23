@@ -39,7 +39,7 @@ public class RacingView {
         
         Car currentCar;
         for( int rIndex = 0 ; rIndex < racingInfo.totalRound() ; rIndex++ ) {
-            for( int cIndex = 0 ; cIndex < racingInfo.totalCars() ; cIndex++ ) {
+            for( int cIndex = 0 ; cIndex < racingInfo.totalCarCount() ; cIndex++ ) {
                 currentCar = racingInfo.carByIndex(cIndex);
                 currentCar.move();
                 printPosition(currentCar);
