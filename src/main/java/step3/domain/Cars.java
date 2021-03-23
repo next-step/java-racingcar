@@ -24,28 +24,10 @@ public class Cars {
         }
     }
 
-    public void playGame(int racingCount, ResultView resultView) {
-        if(racingCount < 1){
-            throw new CarRaceCheckInputException("시도할 회수가 유효하지 않습니다. 입력값 : %d".replace("%d",Integer.toString(racingCount)));
-        }
-        while(racingCount > 0){
-            move();
-            displayMove(resultView);
-            racingCount--;
-        }
-    }
-
-    private void move() {
+    public void move() {
         for(Car car : carList){
             car.go(RandomUtil.getRandomValue());
         }
-    }
-
-    private void displayMove(ResultView resultView) {
-        for(Car car : carList){
-            resultView.renderDrive(car.getGoCount());
-        }
-        System.out.println();
     }
 
     public List<Car> getCarList() {
