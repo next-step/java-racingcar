@@ -23,7 +23,7 @@ class RacingCarGameTest {
 
     // when
     List<RacingRound> result = RacingCarGame.newGame(info, () -> true)
-            .endGame();
+            .play();
 
     ResultView.print(result);
 

@@ -22,12 +22,12 @@ class RacingRoundTest {
   void create() {
     // given
 
-
     // when
     RacingRound newRound = RacingRound.create(racingCars);
 
     // then
     assertThat(newRound).isNotNull();
   }
+
 
 }

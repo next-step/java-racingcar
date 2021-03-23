@@ -14,7 +14,7 @@ public class RacingCarGameApplication {
   public static void main(String[] args) {
     RacingCarGamePlayInfo playInfo = InputView.executeConsole();
     List<RacingRound> result = RacingCarGame.newGame(playInfo, new OperationMoveRule())
-            .endGame();
+            .play();
 
     ResultView.print(result);
   }

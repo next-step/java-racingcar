@@ -23,14 +23,16 @@ public class RacingCarGame {
     return new RacingCarGame(info, moveRule);
   }
 
-  public List<RacingRound> endGame() {
+  public List<RacingRound> play() {
     int totalRound = info.getTotalRound();
     RacingCars racingCars = info.getPlayers();
 
     List<RacingRound> racingRounds = new ArrayList<>(totalRound);
+
     for (int i = 0; i < totalRound; i++) {
+      boolean finalRound = totalRound == i + 1;
       racingCars.race(moveRule);
-      racingRounds.add(RacingRound.create(racingCars));
+      racingRounds.add(RacingRound.create(racingCars, finalRound));
     }
     return racingRounds;
   }
