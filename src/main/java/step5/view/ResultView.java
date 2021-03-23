@@ -4,6 +4,8 @@ package step5.view;
 import step5.domain.Car;
 
 public class ResultView {
+    private static final String RESULT_MESSAGE = "실행 결과";
+
     public static void print(Car car) {
         StringBuilder sb = new StringBuilder();
 
@@ -13,6 +15,10 @@ public class ResultView {
         }
 
         System.out.println(sb.toString());
+    }
+
+    public static void ResultName() {
+        System.out.println(RESULT_MESSAGE);
     }
 
     public static void printWinner(String winnerList) {

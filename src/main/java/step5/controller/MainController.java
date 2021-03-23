@@ -1,6 +1,7 @@
 package step5.controller;
 
 import step5.domain.CarList;
+import step5.domain.InputValidator;
 import step5.domain.Position;
 import step5.domain.RacingGame;
 import step5.dto.InputDto;
@@ -8,7 +9,6 @@ import step5.view.InputView;
 import step5.view.ResultView;
 
 public class MainController {
-    private static final String RESULT_MESSAGE = "실행 결과";
 
     // 다른건 어느정도 리팩터링 했다 생각하는데.. 클라이언트 코드가 깔끔해보이지 않는 느낌이네요 ㅠ,ㅠ
     public static void main(String[] args) {
@@ -17,7 +17,8 @@ public class MainController {
             int tryCount = input.getTryCount();
 
             System.out.println();
-            System.out.println(RESULT_MESSAGE);
+
+            ResultView.ResultName();
 
             // 자동차 객체들 생성
             CarList carList = new CarList();
