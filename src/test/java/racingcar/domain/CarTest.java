@@ -15,15 +15,16 @@ public class CarTest {
         int MOVE_STRATEGY = 1;
 
         Name carName = new Name("abc");
-        Car car = new Car(START_LOCATION, carName);
+        Car testCar = new Car(START_LOCATION, carName);
 
-        final int expectLocation = START_LOCATION + MOVE_STRATEGY;
+        final int EXPECT_LOCATION = START_LOCATION + MOVE_STRATEGY;
+        Car expectCar = new Car(EXPECT_LOCATION, carName);
 
         //when
-        car.move(true);
+        testCar.move(true);
 
         //then
-        assertThat(car.getCurrentLocation()).isEqualTo(expectLocation);
+        assertThat(testCar).isEqualTo(expectCar);
     }
 
     @Test

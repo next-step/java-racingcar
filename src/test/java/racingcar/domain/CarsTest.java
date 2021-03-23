@@ -23,16 +23,17 @@ public class CarsTest {
     void move() {
         // given
         Cars testCars = new Cars(cars);
+        Name[] names = {new Name("abc"), new Name("def"), new Name("ghi")};
         int[] expectLocation = {2, 3, 4};
+        Cars expectCars = new Cars(expectLocation, names);
 
         // when
         testCars.move(stubMoveStrategy);
 
         // then
-        for (int i = 0; i < 3; i++) {
-            assertThat(testCars.getCars().get(i).getCurrentLocation()).isEqualTo(expectLocation[i]);
-        }
+        assertThat(testCars).isEqualTo(expectCars);
     }
+
 
     @Test
     @DisplayName("승자 체크 테스트2")
