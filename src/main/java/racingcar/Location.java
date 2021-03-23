@@ -2,17 +2,14 @@ package racingcar;
 
 public class Location {
 
-    private String location = "";
+    private int location = 0;
 
-    public String getLocation() {
+    public int getLocation() {
         return location;
     }
 
     public void move() {
-        location += "-";
+        location++;
     }
 
-    public void stop() {
-        location += "";
-    }
 }
