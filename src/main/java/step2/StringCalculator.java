@@ -2,6 +2,8 @@ package step2;
 
 public class StringCalculator {
   
+  public static final int MINIMUM_REQUIRED_SIZE = 3;
+  
   public int calculate(String input) {
     String[] splitInputs = getSplitInputs(input);
     validateInputs(splitInputs);
@@ -27,7 +29,7 @@ public class StringCalculator {
    */
   public static void validateInputs(String[] inputs) {
     int size = inputs.length;
-    if (size < 3 || size % 2 != 1) {
+    if (size < MINIMUM_REQUIRED_SIZE || size % 2 != 1) {
       throw new IllegalArgumentException("입력값 갯수가 너무 적거나 잘못되었습니다.");
     }
   }
