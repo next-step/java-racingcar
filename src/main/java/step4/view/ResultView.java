@@ -16,6 +16,10 @@ public class ResultView {
     }
 
     public void renderWinner(List<String> winners) {
-       System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
+        if(winners.size() > 0){
+            System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
+        }else{
+            System.out.println("우승자는 없습니다.");
+        }
     }
 }

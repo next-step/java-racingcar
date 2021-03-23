@@ -40,6 +40,6 @@ public class Car {
     }
 
     public boolean isWinner(int grade){
-        return this.myPosition() == grade;
+        return (grade == 0 ) ? false : this.myPosition() == grade;
     }
 }

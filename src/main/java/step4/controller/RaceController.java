@@ -26,7 +26,6 @@ public class RaceController {
         racing();
 
         winner();
-
     }
 
     private void inputData() {
