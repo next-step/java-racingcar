@@ -1,5 +1,6 @@
 package step4.domain;
 
+import step4.util.RandomUtil;
 import step4.view.InputView;
 import step4.view.ResultView;
 
@@ -18,24 +19,22 @@ public class Cars {
         this.resultView = new ResultView();
     }
 
-    public List<Car> getCarList() {
-        return carList;
-    }
-
     public void start() {
         inputView.inputData();
 
-        this.createdList(inputView.getData());
+        carList = this.createdList(inputView.getData());
 
         this.racing(inputView.getData());
 
     }
 
-    public void createdList(Data data) {
+    public List<Car> createdList(Data data) {
+        List<Car> list = new ArrayList<>();
         String [] names = data.spliteName(",");
         for(String name : names){
-            carList.add(new Car(name));
+            list.add(new Car(name));
         }
+        return list;
     }
 
     private void racing(Data data) {
@@ -46,7 +45,7 @@ public class Cars {
 
     private void drive() {
         for(Car car : carList){
-            car.move();
+            car.move(RandomUtil.getRandomValue());
             this.renderMove(car);
         }
         System.out.println();

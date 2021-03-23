@@ -12,6 +12,10 @@ public class InputValidator {
             throw new IllegalArgumentException("입력한 자동차 이름이 없습니다.");
         }
 
+        if(data.getCount()  < 1 ){
+            throw new IllegalArgumentException("입력한 숫자가 올바르지 않습니다.");
+        }
+
         String [] names = data.spliteName(",");
         for(String name : names){
             nameCheck(name);

@@ -1,7 +1,5 @@
 package step4.domain;
 
-import step4.util.RandomUtil;
-
 public class Car {
     private final int condition = 4 ;
     Name name;
@@ -16,8 +14,8 @@ public class Car {
         this.position = position;
     }
 
-    public void move() {
-        if(condition < RandomUtil.getRandomValue()){
+    public void move(int randomValue) {
+        if(condition < randomValue){
             position.plus();
         }
     }
