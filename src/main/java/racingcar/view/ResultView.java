@@ -26,14 +26,13 @@ public class ResultView {
     private static void printWinners(Records records) {
         Record record = records.lastRecord();
         String result = "";
-        for (Car car : record.getRecord().winners()) {
+        for (Car car : record.getRecord().winners().getCars()) {
             result = result.concat(car.getName());
             result = result.concat(", ");
         }
         result = result.substring(0, result.length() - 2);
         result = result.concat("가 최종 우승했습니다.");
         System.out.println(result);
-
     }
 
     private static void printRecord(Record record) {

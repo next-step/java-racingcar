@@ -13,16 +13,16 @@ public class Cars {
         this.cars = deepCopy(cars);
     }
 
-    public Cars(Name[] names) {
-        this.cars = generateCars(names);
+    public Cars() {
+        this.cars = new ArrayList<>();
+    }
+
+    public Cars(String names) {
+        this.cars = generateCars(parseCarNames(names));
     }
 
     public Cars(int[] locations, Name[] names) {
         this.cars = generateCars(locations, names);
-    }
-
-    public Cars() {
-        this.cars = new ArrayList<>();
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -31,26 +31,45 @@ public class Cars {
         }
     }
 
+    private Name[] parseCarNames(String tmpCarNames) {
+        String[] carNames = tmpCarNames.split(",");
+        List<Name> names = new ArrayList<>();
+        for (String name : carNames) {
+            names.add(new Name(name));
+        }
+        return names.toArray(new Name[names.size()]);
+    }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public List<Car> winners() {
+    public Cars winners() {
+        int winnerLocation = winnerLocation();
+        Cars winners = findWinners(winnerLocation);
+        return winners;
+    }
+
+    private int winnerLocation() {
         int winnerLocation = 0;
         for (Car car : this.cars) {
-            if (car.win(winnerLocation)) {
-                winnerLocation = car.getCurrentLocation();
-            }
+            winnerLocation = car.bigLocation(winnerLocation);
         }
+        return winnerLocation;
+    }
 
-        List<Car> winners = new ArrayList<>();
-        for (Car car : this.cars) {
-            if (winnerLocation == car.getCurrentLocation()) {
-                winners.add(car);
-            }
+    private Cars findWinners(int winnerLocation) {
+        Cars winnerCars = new Cars();
+        cars.stream().forEach(car -> {
+            winnerCars.addWinners(car, winnerLocation);
+        });
+        return winnerCars;
+    }
+
+    private void addWinners(Car car, int winnerLocation) {
+        if (car.isSame(winnerLocation)) {
+            cars.add(car);
         }
-        return winners;
     }
 
     private int getSize() {

@@ -1,9 +1,9 @@
 package racingcar.service;
 
-import racingcar.domain.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import racingcar.domain.Cars;
+import racingcar.domain.GameStep;
+import racingcar.domain.Record;
+import racingcar.domain.Records;
 
 public class RacingGameService implements GameService {
     private Cars cars;
@@ -12,7 +12,7 @@ public class RacingGameService implements GameService {
     @Override
     public void init(String carNames, int stepNumber) {
         gameStep = new GameStep(stepNumber);
-        cars = new Cars(getCarNames(carNames));
+        cars = new Cars(carNames);
     }
 
     @Override
@@ -30,14 +30,4 @@ public class RacingGameService implements GameService {
         cars.move(moveStrategy);
         gameStep.increaseStep();
     }
-
-    private Name[] getCarNames(String tmpCarNames) {
-        String[] carNames = tmpCarNames.split(",");
-        List<Name> names = new ArrayList<>();
-        for (String name : carNames) {
-            names.add(new Name(name));
-        }
-        return names.toArray(new Name[names.size()]);
-    }
-
 }

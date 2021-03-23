@@ -41,8 +41,15 @@ public class Car {
         return currentLocation;
     }
 
-    public Boolean win(int num) {
-        return this.currentLocation > num;
+    public Boolean isSame(int num) {
+        return this.currentLocation == num;
+    }
+
+    public int bigLocation(int num) {
+        if (this.currentLocation > num) {
+            return this.currentLocation;
+        }
+        return num;
     }
 
     @Override

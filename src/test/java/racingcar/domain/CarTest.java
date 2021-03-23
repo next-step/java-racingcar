@@ -43,20 +43,35 @@ public class CarTest {
 
     @Test
     @DisplayName("이겼는지 비교하는 테스트")
-    void bigger() {
+    void isSame() {
         // given
         int NOW_LOCATION = 2;
         Name carName = new Name("abc");
         Car car = new Car(NOW_LOCATION, carName);
 
         // when
-        Boolean resultTrue = car.win(1);
-        Boolean resultFalse = car.win(3);
+        Boolean resultTrue = car.isSame(2);
+        Boolean resultFalse = car.isSame(3);
 
         // then
         assertThat(resultTrue).isTrue();
         assertThat(resultFalse).isFalse();
 
+    }
+
+    @Test
+    public void bigLocation() {
+        // given
+        int NOW_LOCATION = 2;
+        int COMPARE_LOCATION = 3;
+        int EXPECT_BIG_LOCATION = 3;
+        Name carName = new Name("abc");
+        Car car = new Car(NOW_LOCATION, carName);
+
+        // when
+
+        // then
+        assertThat(EXPECT_BIG_LOCATION).isEqualTo(car.bigLocation(COMPARE_LOCATION));
     }
 
 
