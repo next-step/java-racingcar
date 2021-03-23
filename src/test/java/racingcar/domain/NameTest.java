@@ -9,15 +9,25 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class NameTest {
     @Test
     @DisplayName("생성 validation 체크")
-    void valid() {
+    void validTrue() {
         // given
         String trueName = "abcde";
-        String falseName = "ttokey";
 
         // when
 
         // then
         assertThatCode(() -> new Name(trueName)).doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("생성 validation 체크")
+    void validFalse() {
+        // given
+        String falseName = "ttokey";
+
+        // when
+
+        // then
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Name(falseName);
         });
