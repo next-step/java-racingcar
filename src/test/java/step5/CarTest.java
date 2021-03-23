@@ -3,9 +3,8 @@ package step5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.domain.Car;
+import step5.domain.CarList;
 import step5.domain.Position;
-import step5.domain.RacingGame;
-import step5.dto.InputDto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,9 +34,9 @@ public class CarTest {
     @DisplayName("자동차가 잘 만들어지는지 테스트")
     @Test
     void createCarTest() {
-        InputDto inputDto = new InputDto(Arrays.asList("A", "B", "C"), 5);
-        RacingGame racingGame = new RacingGame(inputDto);
-        assertThat(inputDto.getCarNameList().size()).isEqualTo(3);
+        CarList carList = new CarList();
+        carList.create(Arrays.asList("A", "B", "C"));
+        assertThat(carList.getCarList().size()).isEqualTo(3);
     }
 
     @DisplayName("우승자를 찾는 테스트")
@@ -48,7 +47,8 @@ public class CarTest {
         Car woody = new Car("Junho", 0);
         List<Car> listCar = Arrays.asList(gyunny, manki, woody);
 
-        RacingGame racingGame = new RacingGame(listCar);
-        racingGame.findWinner();
+        CarList carList = new CarList();
+        String winner = carList.findWinner(listCar, 2);
+        assertThat(winner).isEqualTo("Manki");
     }
 }

@@ -2,7 +2,7 @@ package step5.domain;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private int position;
 
     public Position(int position) {
@@ -12,7 +12,6 @@ public class Position {
         this.position = position;
     }
 
-    // 여기도 getter를 쓰게 되는... 안쓰는 방법이란... 조언 부탁드립니다 ㅠㅠ
     public int getPosition() {
         return position;
     }
@@ -20,6 +19,11 @@ public class Position {
     public Position move() {
         position++;
         return this;
+    }
+
+    @Override
+    public int compareTo(Position position) {
+        return Integer.compare(this.position, position.getPosition());
     }
 
     @Override
