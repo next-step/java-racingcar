@@ -8,10 +8,10 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class NameTest {
 
-    @DisplayName("자동차 이름이 공백이거나 5자초과일 경우 예외가 발생한다.")
+    @DisplayName("자동차 이름이 공백이거나 5자 초과일 경우 IllegalArgumentException 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"", "aaaaaa"})
-    void name_exception(String name) {
+    void name_out_of_length(String name) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             new Name(name);
         });

@@ -6,13 +6,13 @@ public class Car {
     private static final int INITIAL_POSITION_NUM = 0;
 
     private final Name name;
-    private int position;
+    private Position position;
 
     private Car(final String name) {
-        this(new Name(name), INITIAL_POSITION_NUM);
+        this(new Name(name), new Position(INITIAL_POSITION_NUM));
     }
 
-    private Car(Name name, int position) {
+    private Car(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
@@ -23,19 +23,16 @@ public class Car {
 
     public void move(MovableStrategy strategy) {
         if (strategy.movable()) {
-            plusPosition();
+            increasePosition();
         }
     }
 
-    public boolean isWinner(int winnerPosition) {
-        if (this.position == winnerPosition) {
-            return true;
-        }
-        return false;
+    public boolean isWinner(Position winnerPosition) {
+        return position.equals(winnerPosition);
     }
 
-    private void plusPosition() {
-        this.position++;
+    private void increasePosition() {
+        this.position.increase();
     }
 
     public String getName() {
@@ -43,6 +40,6 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 }

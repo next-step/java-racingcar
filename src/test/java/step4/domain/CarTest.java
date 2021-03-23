@@ -16,8 +16,10 @@ class CarTest {
         // given
         Car car = Car.from("test");
         int beforePosition = car.getPosition();
+
         // when
         car.move(new TestMovableStrategy());
+
         // then
         assertThat(car.getPosition()).isEqualTo(beforePosition + 1);
     }
@@ -28,9 +30,12 @@ class CarTest {
     void isWinner(int maxPosition, boolean expected) {
         // given
         Car car = Car.from("test");
+        Position winnerPosition = new Position(maxPosition);
+
         // when
         car.move(new TestMovableStrategy());
+
         // then
-        assertThat(car.isWinner(maxPosition)).isEqualTo(expected);
+        assertThat(car.isWinner(winnerPosition)).isEqualTo(expected);
     }
 }
