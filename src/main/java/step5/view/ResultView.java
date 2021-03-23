@@ -17,7 +17,7 @@ public class ResultView {
         System.out.println(sb.toString());
     }
 
-    public static void ResultName() {
+    public static void ResultMessage() {
         System.out.println(RESULT_MESSAGE);
     }
 

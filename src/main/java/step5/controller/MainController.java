@@ -18,7 +18,7 @@ public class MainController {
 
             System.out.println();
 
-            ResultView.ResultName();
+            ResultView.ResultMessage();
 
             // 자동차 객체들 생성
             CarList carList = new CarList();
