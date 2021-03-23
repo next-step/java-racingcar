@@ -2,8 +2,7 @@ package racingcar;
 
 public class RacingCar {
 
-    public static final int MINIMUM_NUMBER = 4;
-
+    private static final int MINIMUM_NUMBER = 4;
     private String owner;
     private Location location;
 
@@ -13,7 +12,13 @@ public class RacingCar {
     }
 
     public String getCarLocation() {
-        return location.getLocation();
+
+        String carLocation = "";
+
+        for (int i = 0; i < location.getLocation(); i++) {
+            carLocation += "-";
+        }
+        return carLocation;
     }
 
     public void canGo(int number) {
@@ -21,7 +26,6 @@ public class RacingCar {
             location.move();
             return;
         }
-        location.stop();
     }
 
     public String getOwner() {
