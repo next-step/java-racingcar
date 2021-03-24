@@ -31,8 +31,6 @@ public class GameStepTest {
         resultGameStep.increaseStep();
 
         //then
-        assertThat(resultGameStep).isEqualToComparingFieldByField(expectGameStep);
+        assertThat(resultGameStep).isEqualTo(expectGameStep);
     }
-
-
 }

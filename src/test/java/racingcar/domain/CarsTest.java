@@ -5,9 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.service.MoveStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
@@ -26,34 +23,32 @@ public class CarsTest {
     void move() {
         // given
         Cars testCars = new Cars(cars);
+        Name[] names = {new Name("abc"), new Name("def"), new Name("ghi")};
         int[] expectLocation = {2, 3, 4};
+        Cars expectCars = new Cars(expectLocation, names);
 
         // when
         testCars.move(stubMoveStrategy);
 
         // then
-        for (int i = 0; i < 3; i++) {
-            assertThat(testCars.getCars().get(i).getCurrentLocation()).isEqualTo(expectLocation[i]);
-        }
+        assertThat(testCars).isEqualTo(expectCars);
     }
 
+
     @Test
-    @DisplayName("승자 체크 테스트")
+    @DisplayName("승자 체크 테스트2")
     void winners() {
         // given
         Cars testCars = new Cars(cars);
-        String[] expectWinners = {"ghi"};
+        Cars expectCars = new Cars(new int[]{3}, new Name[]{new Name("ghi")});
 
         // when
-        List<Car> resultWinners = testCars.winners();
-        List<String> winners = new ArrayList<>();
-        for (Car car : resultWinners) {
-            winners.add(car.getName());
-        }
+        Cars resultWinners = testCars.winners();
 
         // then
-        assertThat(winners).containsExactly(expectWinners);
+        assertThat(resultWinners).isEqualTo(expectCars);
     }
+
 
     public class StubMoveStrategy implements MoveStrategy {
         @Override
