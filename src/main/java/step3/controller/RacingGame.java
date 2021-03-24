@@ -3,6 +3,7 @@ package step3.controller;
 import step3.domain.Car;
 import step3.domain.Cars;
 import step3.utils.GameRule;
+import step3.view.InputView;
 import step3.view.ResultView;
 
 public class RacingGame {
@@ -34,7 +35,7 @@ public class RacingGame {
         for (int i = 0; i < numberOfCars; i++) {
             Car car = cars.getCar(i);
             car.move(gameRule);
-            ResultView.printRaceResult(car.getName(), car.getScore());
+            ResultView.printRaceResult(car.getName(), car.getScore(), InputView.getSymbol());
         }
         System.out.println();
     }

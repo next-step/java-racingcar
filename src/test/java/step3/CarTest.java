@@ -18,17 +18,16 @@ class CarTest {
         GameRule rule = new GameRule(numberGenerator);
 
         String inputName = "apple,google,kakao,naver,coupang";
-        String scoreSymbol = "-";
-        Car car = new Car(inputName, scoreSymbol);
+        Car car = new Car(inputName);
 
-        String expected = "";
+        int expected = 0;
         if (number >= 4) {
-            expected += scoreSymbol;
+            expected += 1;
         }
 
         // when
         car.move(rule);
-        String actual = car.getScore();
+        int actual = car.getScore();
 
         // then
         assertEquals(actual, expected);

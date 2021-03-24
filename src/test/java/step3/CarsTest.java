@@ -24,7 +24,7 @@ class CarsTest {
 
         List<Car> expectedList = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            expectedList.add(new Car(carNames[i], scoreSymbol));
+            expectedList.add(new Car(carNames[i]));
         }
         Car expected = expectedList.get(0);
 
@@ -48,7 +48,7 @@ class CarsTest {
 
         List<Car> list = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            list.add(new Car(carNames[i], symbol));
+            list.add(new Car(carNames[i]));
         }
 
         // when && then
