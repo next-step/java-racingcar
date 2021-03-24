@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Winner {
 
-     List<String> winners;
+    List<String> winners;
 
     public Winner() {
         winners = new ArrayList<>();
@@ -17,14 +17,14 @@ public class Winner {
 
     public void findWinner(Cars cars) {
         int grade = cars.topGrade();
-        for(Car car : cars.getCarList()){
-            isWinner(car , grade);
+        for (Car car : cars.getCarList()) {
+            isWinner(car, grade);
         }
     }
 
     private void isWinner(Car car, int grade) {
-        if(car.isWinner(grade)){
-            winners.add(car.myName());
+        if (car.isWinner(grade)) {
+            winners.add(car.name());
         }
     }
 }

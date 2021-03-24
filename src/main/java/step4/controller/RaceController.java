@@ -1,6 +1,9 @@
 package step4.controller;
 
-import step4.domain.*;
+import step4.domain.Car;
+import step4.domain.Cars;
+import step4.domain.Winner;
+import step4.dto.Data;
 import step4.util.RandomUtil;
 import step4.view.InputView;
 import step4.view.ResultView;
@@ -12,10 +15,10 @@ public class RaceController {
     Winner winner;
 
     public RaceController() {
-        this.inputView = new InputView();
-        this.resultView = new ResultView();
-        this.cars = new Cars();
-        this.winner = new Winner();
+        inputView = new InputView();
+        resultView = new ResultView();
+        cars = new Cars();
+        winner = new Winner();
     }
 
     public void start() {
@@ -33,7 +36,7 @@ public class RaceController {
     }
 
     private void createList() {
-        cars.createdList(inputView.getData());
+        cars.createList(inputView.getData());
     }
 
     private void racing() {

@@ -1,4 +1,4 @@
-package step4.domain;
+package step4.dto;
 
 public class Data {
     final static int defaultCount = 5;

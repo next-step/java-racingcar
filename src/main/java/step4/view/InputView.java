@@ -1,6 +1,6 @@
 package step4.view;
 
-import step4.domain.Data;
+import step4.dto.Data;
 import step4.util.InputValidator;
 
 import java.util.InputMismatchException;
