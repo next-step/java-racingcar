@@ -18,7 +18,6 @@ class CarRacingTest {
     void createCarRacingTest(String input){
         carRacing = new CarRacing(input);
         assertThat(carRacing.getCars().size()).isEqualTo(input.split(DELIMITER).length);
-        carRacing.getCars().forEach(car -> assertThat(car.getPosition()).isEqualTo(0));
     }
 
     @ParameterizedTest

@@ -3,55 +3,34 @@ package carRacing;
 import carRacing.model.Car;
 import carRacing.util.RandomIntUtil;
 import carRacing.view.OutputView;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRacing {
     final static String DELIMITER = ",";
     private List<Car> cars;
     private OutputView outputView;
-    private int maxScore;
 
     public CarRacing(String carNames) {
-        checkStringParam(carNames);
         this.cars = new ArrayList<>();
         outputView = new OutputView();
-        maxScore = 0;
         enrollCars(carNames);
     }
 
-    private void checkStringParam(String carNames) {
-        if (StringUtils.isBlank(carNames) || Arrays.stream(carNames.split(DELIMITER)).anyMatch(s -> s.length() == 0))
-            throw new IllegalArgumentException("자동차 이름을 입력하세요.");
-        if (Arrays.stream(carNames.split(DELIMITER)).anyMatch(s -> s.length() > 5)) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
-        }
-    }
-
-    private void checkIntParam(int param) {
-        if (param <= 0)
-            throw new IllegalArgumentException("유효한 양의 정수를 입력하세요");
-    }
 
     public void startRacing(int racingCount) {
-        checkIntParam(racingCount);
-        System.out.println("실행 결과");
-        for (int i = 0; i < racingCount; i++) {
-            System.out.printf("try%2d.%n", i + 1);
+        outputView.printRacingResultTitle();
+        for (int cycle = 0; cycle < racingCount; cycle++) {
             excuteCycle();
-            outputView.printRacingResultExcutedCycle(cars);
+            outputView.printRacingResultExcutedCycle(cars, cycle);
         }
     }
 
     private void excuteCycle() {
         for (Car car : cars) {
             car.moveByRandomInt(RandomIntUtil.getRandomInt());
-            if (maxScore < car.getPosition())
-                maxScore = car.getPosition();
         }
     }
 
@@ -65,10 +44,8 @@ public class CarRacing {
     }
 
     public void racingWinner() {
-        List<String> winnerCars = cars.stream().filter(car -> car.getPosition() >= maxScore)
-                .map(Car::getCarName)
-                .collect(Collectors.toList());
-
-        outputView.printRacingWinner(String.join(",", winnerCars));
+//        List<String> winnerCars = cars.stream().toArray();
+//
+//        outputView.printRacingWinner(String.join(DELIMITER, winnerCars));
     }
 }

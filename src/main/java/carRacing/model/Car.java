@@ -2,37 +2,31 @@ package carRacing.model;
 
 
 public class Car {
-    private String carName;
-    private int position;
+    private final Name carName;
+    private Position position;
 
-    public Car(){
-        this("noName");
+    public Car() {
+        this("car");
     }
 
     public Car(String carName) {
-        this.carName = carName;
-        this.position = 0;
+        this.carName = new Name(carName);
+        this.position = new Position(0);
     }
 
-    public void moveByRandomInt(int randomInt){
-        if (randomInt >= 4)
-            this.position += 1;
+    public void moveByRandomInt(int randomInt) {
+        if (randomInt >= 4) {
+            position.move();
+        }
+    }
+
+    public Position getPosition() {
+        return this.position;
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder(String.format("%5s : ",carName));
-        for (int i = 0; i < position; i++) {
-            result.append("-");
-        }
-        return result.toString();
+        return String.format("%5s : %s", carName, position);
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public String getCarName() {
-        return carName;
-    }
 }
