@@ -2,9 +2,9 @@ package step4.controller;
 
 import step4.domain.Car;
 import step4.domain.Cars;
+import step4.domain.RandomMovingStrategy;
 import step4.domain.Winner;
 import step4.dto.Data;
-import step4.util.RandomUtil;
 import step4.view.InputView;
 import step4.view.ResultView;
 
@@ -48,7 +48,7 @@ public class RaceController {
 
     private void drive() {
         for (Car car : cars.getCarList()) {
-            car.move(RandomUtil.getRandomValue());
+            car.move(new RandomMovingStrategy());
             renderMove(car);
         }
         System.out.println();

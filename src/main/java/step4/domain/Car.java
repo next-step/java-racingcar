@@ -1,7 +1,10 @@
 package step4.domain;
 
+import java.util.Random;
+
 public class Car {
-    private final int condition = 4;
+    private static final int FORWARD_NUM = 4;
+    private static final int RANGE = 10;
     Name name;
     Position position;
 
@@ -14,10 +17,30 @@ public class Car {
         this.position = position;
     }
 
-    public void move(int randomValue) {
-        if (condition < randomValue) {
+    // 프로그래밍 상 자연스러운 DI 구조
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
             position.plus();
         }
+    }
+
+    // 테스트 코드를 위한 메소드
+    public void move(int randomValue) {
+        // <= 형태보다 개인적으로 보기 편하다.
+        if (randomValue >= FORWARD_NUM) {
+            position.plus();
+        }
+    }
+
+    // 테스트 코드를 위한 메소드
+    public void move() {
+        if (getRandomNo() >= FORWARD_NUM) {
+            position.plus();
+        }
+    }
+
+    protected int getRandomNo() {
+        return new Random().nextInt(RANGE);
     }
 
     public boolean isMoving() {
