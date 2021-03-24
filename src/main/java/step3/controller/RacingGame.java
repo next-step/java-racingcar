@@ -25,7 +25,7 @@ public class RacingGame {
     public void startRace() {
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttemps; i++) {
-            System.out.println("round : " + (i + 1));
+            System.out.println("[" + (i + 1) + "]" + " round");
             raceByRound();
         }
     }
@@ -34,8 +34,9 @@ public class RacingGame {
         for (int i = 0; i < numberOfCars; i++) {
             Car car = cars.getCar(i);
             car.move(gameRule);
-            ResultView.printRaceResult(car.getScore());
+            ResultView.printRaceResult(car.getName(), car.getScore());
         }
+        System.out.println();
     }
 
 }
