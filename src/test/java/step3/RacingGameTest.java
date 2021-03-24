@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.controller.RacingGame;
 import step3.domain.Cars;
-import step3.service.GameRule;
+import step3.utils.GameRule;
 import step3.utils.RandomUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

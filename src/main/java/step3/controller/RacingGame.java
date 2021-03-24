@@ -2,7 +2,7 @@ package step3.controller;
 
 import step3.domain.Car;
 import step3.domain.Cars;
-import step3.service.GameRule;
+import step3.utils.GameRule;
 import step3.view.ResultView;
 
 public class RacingGame {

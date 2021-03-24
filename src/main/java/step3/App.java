@@ -2,7 +2,7 @@ package step3;
 
 import step3.controller.RacingGame;
 import step3.domain.Cars;
-import step3.service.GameRule;
+import step3.utils.GameRule;
 import step3.utils.NumberGenerator;
 import step3.utils.RandomUtil;
 import step3.view.InputView;

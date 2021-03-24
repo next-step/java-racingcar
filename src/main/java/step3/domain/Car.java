@@ -1,6 +1,6 @@
 package step3.domain;
 
-import step3.service.GameRule;
+import step3.utils.GameRule;
 
 public class Car {
     private final String symbol;

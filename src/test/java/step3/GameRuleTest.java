@@ -2,7 +2,7 @@ package step3;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.service.GameRule;
+import step3.utils.GameRule;
 import step3.utils.NumberGenerator;
 import step3.utils.TestNumberGenerator;
 
