@@ -1,35 +1,38 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingRound {
 
-  private List<RacingCar> racingCars;
+  private final RacingCars racingCars;
+  private Winners winners;
+  private boolean finalRound;
 
-  private RacingRound() {
+  public RacingRound(RacingCars racingCars, boolean finalRound) {
+    this(racingCars, Winners.create(racingCars), finalRound);
   }
 
-  public static RacingRound createRecord(List<RacingCar> racingCars) {
-    RacingRound round = new RacingRound();
-    round.record(racingCars);
-    return round;
+  private RacingRound(RacingCars racingCars, Winners winners, boolean finalRound) {
+    this.racingCars = RacingCars.copyFrom(racingCars);
+    this.winners = winners;
+    this.finalRound = finalRound;
   }
 
-  private void record(List<RacingCar> racingCars) {
-    for (RacingCar car : racingCars) {
-      capture(car);
-    }
+  public static RacingRound create(RacingCars racingCars) {
+    return create(racingCars, false);
   }
 
-  private void capture(RacingCar racingCar) {
-    getRacingCars().add(RacingCar.copy(racingCar));
+  public static RacingRound create(RacingCars racingCars, boolean isFinalRound) {
+    return new RacingRound(racingCars, isFinalRound);
   }
 
-  public List<RacingCar> getRacingCars() {
-    if (this.racingCars == null) {
-      this.racingCars = new ArrayList<>();
-    }
+  public RacingCars racingCars() {
     return this.racingCars;
+  }
+
+  public Winners winners() {
+    return winners;
+  }
+
+  public boolean isFinalRound() {
+    return finalRound;
   }
 }

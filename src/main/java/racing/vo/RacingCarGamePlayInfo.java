@@ -1,29 +1,31 @@
 package racing.vo;
 
 import racing.domain.RacingCar;
+import racing.domain.RacingCars;
+import racing.utils.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingCarGamePlayInfo {
 
-  private final List<RacingCar> players;
+  private final RacingCars players;
   private final int totalRound;
 
-  private RacingCarGamePlayInfo(int totalPlayer, int totalRound) {
-    this.players = IntStream.range(0, totalPlayer)
-            .mapToObj(RacingCar::createNew)
-            .collect(Collectors.toList());
-    ;
+  private RacingCarGamePlayInfo(RacingCars players, int totalRound) {
+    this.players = players;
     this.totalRound = totalRound;
   }
 
-  public static RacingCarGamePlayInfo newPlayInfo(int totalPlayer, int totalRound) {
-    return new RacingCarGamePlayInfo(totalPlayer, totalRound);
+  public static RacingCarGamePlayInfo newPlayInfo(String playerNames, int totalRound) {
+    List<RacingCar> players = StringUtils.toList(playerNames).stream()
+            .map(RacingCar::create)
+            .collect(Collectors.toList());
+
+    return new RacingCarGamePlayInfo(RacingCars.create(players), totalRound);
   }
 
-  public List<RacingCar> getPlayers() {
+  public RacingCars getPlayers() {
     return players;
   }
 
