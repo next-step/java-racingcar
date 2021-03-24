@@ -14,7 +14,4 @@ public class GameSet {
         return owners;
     }
 
-    public int getGivenRound() {
-        return givenRound;
-    }
 }
