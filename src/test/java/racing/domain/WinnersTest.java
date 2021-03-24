@@ -36,4 +36,16 @@ class WinnersTest {
             .containsAll(winners.getList());
   }
 
+  @Test
+  @DisplayName("우승자 이름 리스트 반환")
+  void winnerNames() {
+    // given
+
+    // when
+    Winners winners = Winners.create(round.racingCars());
+
+    // then
+    assertThat(winners.winnerNames())
+            .contains("gmoon", "speed");
+  }
 }
