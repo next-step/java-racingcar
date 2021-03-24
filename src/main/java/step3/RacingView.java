@@ -44,6 +44,7 @@ public class RacingView {
                 currentCar.move();
                 printPosition(currentCar);
             }
+            System.out.println();
         }
         System.out.println();
     }

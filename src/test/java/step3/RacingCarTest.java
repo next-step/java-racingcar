@@ -34,4 +34,14 @@ public class RacingCarTest {
         }
     }
     
+    public static void main(String[] args) {
+        int carInput = 0;
+        int roundInput = 0;
+        
+        RacingView view = new RacingView();
+        carInput = view.inputCarCountView();
+        roundInput = view.inputRacingRoundView();
+        
+        view.resultView(new RacingCar(carInput, roundInput));
+    }
 }
