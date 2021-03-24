@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import step3.Racing;
 import step4.dto.InputDto;
 
 import java.util.ArrayList;
@@ -19,9 +17,8 @@ public class CarTest {
     @DisplayName("자동차가 제대로 생성되는지 확인하는 테스트")
     @Test
     void createCarTest() {
-        // 테스트를 이런식으로 내부에서 다 작성해서 짜도 되는건지.. 모르겠습니다 흑흑
         String[] carNames = {"pobi", "crong", "honux"};
-        RacingCar racingCar = new RacingCar(new InputDto(new ArrayList<>(Arrays.asList(carNames)), 5));
+        RacingGame racingCar = new RacingGame(new InputDto(new ArrayList<>(Arrays.asList(carNames)), 5));
         assertEquals(3, racingCar.getCarList().size());
     }
 
@@ -32,6 +29,4 @@ public class CarTest {
         car.carCanGoJudge(randomNumber);
         assertThat(car.getDistance()).isEqualTo(expected);
     }
-
-
 }

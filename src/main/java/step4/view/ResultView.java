@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
-    private static final String RESULT_MESSAGE = "실행 결과";
-
     public static void print(Car car) {
         StringBuilder sb = new StringBuilder();
 
