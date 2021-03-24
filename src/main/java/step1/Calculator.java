@@ -1,8 +1,10 @@
-import java.util.ArrayList;
+package step1;
 
-public class Calcurator {
+public class Calculator {
 
+    public Calculator(){
 
+    }
     //더하기
     private int _sum(int a, int b) {
         return a + b;
@@ -32,19 +34,19 @@ public class Calcurator {
     private int _executeExp(int num,int resultNum,String sign){
 
         if("+".equals(sign)){
-            return _sum(num,resultNum);
+            return _sum(resultNum,num);
         }
 
         if("-".equals(sign)){
-            return _minus(num,resultNum);
+            return _minus(resultNum,num);
         }
 
         if("*".equals(sign)){
-            return _multiply(num,resultNum);
+            return _multiply(resultNum,num);
         }
 
         if("/".equals(sign)){
-            return _divide(num,resultNum);
+            return _divide(resultNum,num);
         }
 
         return -1;
@@ -55,33 +57,27 @@ public class Calcurator {
         return expression.split(" ");
     }
 
-    void execute(String expression) {
+    public int execute(String expression) {
 
         //빈공백을 중심으로 수식 쪼개기
         String [] dividedExpArr = _divideBlank(expression);
         int dividedExpArrSize = dividedExpArr.length;
         int resultNum = Integer.parseInt(dividedExpArr[0]);
-        for(int i=0; i<dividedExpArrSize; i+=3){
+        for(int i=1; i<dividedExpArrSize; i+=2){
 
-            //int num =
+            int num = Integer.parseInt(dividedExpArr[i+1]);
 
-            int num = Integer.parseInt(dividedExpArr[i+2]);
+            String sign = dividedExpArr[i];
 
-            String sign = dividedExpArr[i+1];
-
-            resultNum +=_executeExp(num,resultNum,sign);
-
+            resultNum = _executeExp(num,resultNum,sign);
         }
-
-
-        System.out.println("resultNum == " + resultNum);
-
+       return resultNum;
     }
 
 
     public static void main(String[] args) {
         String expression = "2 + 4 * 5";
-        new Calcurator().execute(expression);
+        new Calculator().execute(expression);
 
     }
 }
