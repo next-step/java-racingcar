@@ -29,10 +29,9 @@ public class RacingCarGame {
 
     List<RacingRound> racingRounds = new ArrayList<>(totalRound);
 
-    for (int i = 0; i < totalRound; i++) {
-      boolean finalRound = totalRound == i + 1;
+    while (totalRound > 0) {
       racingCars.race(moveRule);
-      racingRounds.add(RacingRound.create(racingCars, finalRound));
+      racingRounds.add(RacingRound.create(racingCars, --totalRound));
     }
     return racingRounds;
   }

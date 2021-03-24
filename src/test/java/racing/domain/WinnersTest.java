@@ -20,7 +20,7 @@ class WinnersTest {
     RacingCar poo = RacingCar.create("poo");
     gmoon.move(() -> true);
     speed.move(() -> true);
-    round = RacingRound.create(RacingCars.create(Arrays.asList(gmoon, speed, guest, poo)));
+    round = RacingRound.createFinalRound(RacingCars.create(Arrays.asList(gmoon, speed, guest, poo)));
   }
 
   @Test
