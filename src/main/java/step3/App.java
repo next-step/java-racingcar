@@ -13,7 +13,7 @@ public class App {
         InputView.inputValues();
 
         // 자동차 준비
-        Cars cars = new Cars(InputView.getNumberOfCars(), InputView.getSymbol());
+        Cars cars = new Cars(InputView.getCarNames(), InputView.getSymbol());
 
         // 레이스 준비
         NumberGenerator numberGenerator = new RandomUtil();

@@ -16,8 +16,10 @@ class CarTest {
         // given
         NumberGenerator numberGenerator = new TestNumberGenerator(number);
         GameRule rule = new GameRule(numberGenerator);
+
+        String inputName = "apple,google,kakao,naver,coupang";
         String scoreSymbol = "-";
-        Car car = new Car(scoreSymbol);
+        Car car = new Car(inputName, scoreSymbol);
 
         String expected = "";
         if (number >= 4) {
