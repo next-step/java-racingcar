@@ -3,11 +3,10 @@ package step5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step5.domain.Car;
-import step5.domain.CarList;
+import step5.domain.Cars;
 import step5.domain.Position;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,8 +33,7 @@ public class CarTest {
     @DisplayName("자동차가 잘 만들어지는지 테스트")
     @Test
     void createCarTest() {
-        CarList carList = new CarList();
-        carList.create(Arrays.asList("A", "B", "C"));
+        Cars carList = new Cars(Arrays.asList("A", "B", "C"));
         assertThat(carList.getCarList().size()).isEqualTo(3);
     }
 
@@ -45,10 +43,10 @@ public class CarTest {
         Car gyunny = new Car("Gyunny", 1);
         Car manki = new Car("Manki", 2);
         Car woody = new Car("Junho", 0);
-        List<Car> listCar = Arrays.asList(gyunny, manki, woody);
 
-        CarList carList = new CarList();
-        String winner = carList.findWinner(listCar, 2);
+        Cars cars = new Cars(Arrays.asList(gyunny, manki, woody), 0);
+        String winner = cars.findWinner();
+
         assertThat(winner).isEqualTo("Manki");
     }
 }

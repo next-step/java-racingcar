@@ -3,10 +3,18 @@ package step5.view;
 
 import step5.domain.Car;
 
+import java.util.List;
+
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
 
-    public static void print(Car car) {
+    public static void print(List<Car> cars) {
+        for (int i = 0; i < cars.size(); ++i) {
+            print(cars.get(i));
+        }
+    }
+
+    private static void print(Car car) {
         StringBuilder sb = new StringBuilder();
 
         System.out.print(car.getCarName() + ": ");
@@ -18,6 +26,7 @@ public class ResultView {
     }
 
     public static void ResultMessage() {
+        System.out.println();
         System.out.println(RESULT_MESSAGE);
     }
 
