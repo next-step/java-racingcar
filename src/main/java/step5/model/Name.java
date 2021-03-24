@@ -1,5 +1,7 @@
 package step5.model;
 
+import step5.exception.IllegalNameLengthException;
+
 import java.util.Objects;
 
 public class Name {
@@ -8,7 +10,7 @@ public class Name {
 
   public Name(String name) {
     if (name == null || name.trim().isEmpty() || name.length() > MAXIMUM_LENGTH) {
-      throw new IllegalArgumentException("입력된 차량의 이름을 확인하세요. 1~5자 허용입니다. 이름: " + name);
+      throw new IllegalNameLengthException("입력된 차량의 이름을 확인하세요. 1~5자 허용입니다. 이름: " + name);
     }
     this.name = name;
   }

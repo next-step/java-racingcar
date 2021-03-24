@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step5.exception.IllegalPositionException;
 import step5.model.Position;
 
 public class PositionTest {
@@ -13,7 +14,7 @@ public class PositionTest {
   void invalidPositionTest(int number){
     Assertions.assertThatThrownBy(() -> {
       new Position(number);
-    }).isInstanceOf(IllegalArgumentException.class)
+    }).isInstanceOf(IllegalPositionException.class)
       .hasMessage("적절하지 못한 위치입니다.");
   }
 }

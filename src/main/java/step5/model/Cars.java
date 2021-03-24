@@ -2,7 +2,6 @@ package step5.model;
 
 import step5.strategy.Strategy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,23 +22,11 @@ public class Cars {
   }
 
   public List<Car> findWinners() {
-//    return findWinners(this.cars, getMaxPosition());
     return findWinners(getMaxPosition());
   }
 
-
-  public static List<Car> findWinners(List<Car> cars, Position maxPosition) {
-    List<Car> winners = new ArrayList<>();
-    for (Car car : cars) {
-      if (car.isWinner(maxPosition)) {
-        winners.add(car);
-      }
-    }
-    return winners;
-  }
-
   private List<Car> findWinners(Position maxPosition) {
-    List<Car> winners = cars.stream().filter(car->car.isWinner(maxPosition)).collect(Collectors.toList());
+    List<Car> winners = cars.stream().filter(car -> car.isWinner(maxPosition)).collect(Collectors.toList());
     return winners;
   }
 

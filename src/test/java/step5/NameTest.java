@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step5.exception.IllegalNameLengthException;
 import step5.model.Name;
 
 public class NameTest {
@@ -14,7 +15,7 @@ public class NameTest {
   void emptyNameTest(String testName) {
     assertThatThrownBy(() -> {
       new Name(testName);
-    }).isInstanceOf(IllegalArgumentException.class)
+    }).isInstanceOf(IllegalNameLengthException.class)
       .hasMessage("입력된 차량의 이름을 확인하세요. 1~5자 허용입니다. 이름: " + testName);
   }
 
@@ -24,7 +25,7 @@ public class NameTest {
   void invalidMaximumNameListTest(String testName) {
     assertThatThrownBy(() -> {
       new Name(testName);
-    }).isInstanceOf(IllegalArgumentException.class)
+    }).isInstanceOf(IllegalNameLengthException.class)
       .hasMessage("입력된 차량의 이름을 확인하세요. 1~5자 허용입니다. 이름: " + testName);
   }
 }

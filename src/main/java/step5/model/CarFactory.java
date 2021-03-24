@@ -17,7 +17,9 @@ public class CarFactory {
   public static Cars makeCarsWithMinimumLocs(String carNames, int minimumLoc) {
     List<Car> carList = new ArrayList<>();
     String[] carNameArr = splitCars(carNames);
-    for (String name : carNameArr) carList.add(new Car(name, minimumLoc));
+    for (String name : carNameArr) {
+      carList.add(new Car(name, minimumLoc));
+    }
 
     return new Cars(carList);
   }

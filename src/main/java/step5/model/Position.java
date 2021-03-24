@@ -1,5 +1,7 @@
 package step5.model;
 
+import step5.exception.IllegalPositionException;
+
 import java.util.Objects;
 
 public class Position {
@@ -11,7 +13,7 @@ public class Position {
 
   public Position(int position) {
     if (position < 0) {
-      throw new IllegalArgumentException("적절하지 못한 위치입니다.");
+      throw new IllegalPositionException("적절하지 못한 위치입니다.");
     }
     this.position = position;
   }
@@ -26,10 +28,6 @@ public class Position {
 
   public int getPosition() {
     return position;
-  }
-
-  public boolean isSame(Position maxPosition) {
-    return this.equals(maxPosition);
   }
 
   @Override
