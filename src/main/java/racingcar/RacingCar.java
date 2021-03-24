@@ -1,35 +1,34 @@
 package racingcar;
 
-// 자동차의 움직임을 관여한다.
-
-import java.util.Random;
-
 public class RacingCar {
 
     private static final int MINIMUM_NUMBER = 4;
+    private String owner;
+    private Location location;
 
-    private static Random random = new Random();
-    private Position position;
-
-
-    public RacingCar(Position position) {
-        this.position = position;
+    public RacingCar(String owner, Location location) {
+        this.owner = owner;
+        this.location = location;
     }
 
-    public void move() {
-        position.setLocation(isGo(random()));
+    public String getCarLocation() {
+
+        String carLocation = "";
+
+        for (int i = 0; i < location.getLocation(); i++) {
+            carLocation += "-";
+        }
+        return carLocation;
     }
 
-    public String status() {
-        return position.getLocation();
+    public void canGo(int number) {
+        if (number >= MINIMUM_NUMBER) {
+            location.move();
+            return;
+        }
     }
 
-    public String isGo(int number) {
-        if (number >= MINIMUM_NUMBER) return "-";
-        return "";
-    }
-
-    public int random() {
-        return random.nextInt(10);
+    public String getOwner() {
+        return owner;
     }
 }
