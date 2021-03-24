@@ -6,12 +6,16 @@ public class Car {
     private Position position;
 
     public Car() {
-        this("car");
+        this("car", 0);
     }
 
     public Car(String carName) {
+        this(carName, 0);
+    }
+
+    public Car(String carName, int position) {
         this.carName = new Name(carName);
-        this.position = new Position(0);
+        this.position = new Position(position);
     }
 
     public void moveByRandomInt(int randomInt) {
@@ -20,8 +24,8 @@ public class Car {
         }
     }
 
-    public Position getPosition() {
-        return this.position;
+    public int getPosition() {
+        return this.position.value();
     }
 
     @Override
@@ -29,4 +33,11 @@ public class Car {
         return String.format("%5s : %s", carName, position);
     }
 
+    public boolean isWinner(int maxScore) {
+        return this.position.value() == maxScore;
+    }
+
+    public String getCarName() {
+        return carName.toString();
+    }
 }

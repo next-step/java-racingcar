@@ -25,13 +25,13 @@ class CarRacingTest {
     @ValueSource(strings = {"testname,test,fail"})
     void createCarRacingTest2(String input){
         assertThatIllegalArgumentException()
-                .isThrownBy(()->carRacing = new CarRacing(input))
-                .withMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+                .isThrownBy(() -> carRacing = new CarRacing(input))
+                .withMessage("자동차 이름은 5자 이하로 입력해주세요.");
     }
 
     @ParameterizedTest
     @DisplayName("Create CarRacing Test - fail")
-    @ValueSource(strings = {"testname,,test,fail"})
+    @ValueSource(strings = {"te,,test,fail"})
     void createCarRacingTest3(String input){
         assertThatIllegalArgumentException()
                 .isThrownBy(()->carRacing = new CarRacing(input))

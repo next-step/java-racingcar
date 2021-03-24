@@ -12,7 +12,7 @@ class NameTest {
     private Name name;
 
     @BeforeEach
-    void initialNameTest() {
+    void initializeNameTest() {
         name = new Name("test");
     }
 

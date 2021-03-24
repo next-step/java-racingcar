@@ -12,7 +12,7 @@ class PositionTest {
     private Position position;
 
     @BeforeEach
-    void initialPositionTest() {
+    void initializePositionTest() {
         position = new Position(3);
     }
 

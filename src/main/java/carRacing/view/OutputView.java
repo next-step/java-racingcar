@@ -1,20 +1,16 @@
 package carRacing.view;
 
-import carRacing.model.Car;
-
-import java.util.List;
+import carRacing.model.Cars;
 
 public class OutputView {
-    public void printRacingResultExcutedCycle(List<Car> cars, int cycle) {
+    public void printRacingResultExcutedCycle(Cars cars, int cycle) {
         System.out.printf("try%2d.%n", cycle + 1);
-        for (Car car : cars) {
-            System.out.println(car);
-        }
+        System.out.println(cars);
         System.out.println();
     }
 
-    public void printRacingWinner(String winners) {
-        System.out.printf("%s 가 최종 우승했습니다.%n", winners);
+    public void printRacingWinner(Cars cars) {
+        System.out.printf("%s 가 최종 우승했습니다.%n", cars.getNameList());
     }
 
     public void printRacingResultTitle() {

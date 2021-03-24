@@ -1,51 +1,39 @@
 package carRacing;
 
 import carRacing.model.Car;
-import carRacing.util.RandomIntUtil;
+import carRacing.model.Cars;
 import carRacing.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CarRacing {
-    final static String DELIMITER = ",";
-    private List<Car> cars;
+    private Cars cars;
     private OutputView outputView;
 
     public CarRacing(String carNames) {
-        this.cars = new ArrayList<>();
+        this.cars = new Cars(new ArrayList<>());
         outputView = new OutputView();
-        enrollCars(carNames);
+        cars.enrollCars(carNames);
     }
 
 
     public void startRacing(int racingCount) {
+        checkIntParam(racingCount);
         outputView.printRacingResultTitle();
         for (int cycle = 0; cycle < racingCount; cycle++) {
-            excuteCycle();
+            cars.excuteCycle();
             outputView.printRacingResultExcutedCycle(cars, cycle);
         }
+        outputView.printRacingWinner(cars.getWinners());
     }
 
-    private void excuteCycle() {
-        for (Car car : cars) {
-            car.moveByRandomInt(RandomIntUtil.getRandomInt());
-        }
-    }
-
-    private void enrollCars(String carNames) {
-        String[] carNameList = carNames.split(DELIMITER);
-        Arrays.stream(carNameList).forEach(carName -> this.cars.add(new Car(carName)));
+    private void checkIntParam(int param) {
+        if (param <= 0)
+            throw new IllegalArgumentException("유효한 양의 정수를 입력하세요");
     }
 
     public List<Car> getCars() {
-        return cars;
-    }
-
-    public void racingWinner() {
-//        List<String> winnerCars = cars.stream().toArray();
-//
-//        outputView.printRacingWinner(String.join(DELIMITER, winnerCars));
+        return cars.getCars();
     }
 }
