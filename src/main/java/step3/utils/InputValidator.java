@@ -9,7 +9,7 @@ public class InputValidator {
 
     public static String validateSymbol(String symbol) {
         Scanner scan = new Scanner(System.in);
-        while (symbol.getBytes().length > scoreSymbolSize) {
+        while (symbol.length() > scoreSymbolSize || symbol.length() == 0) {
             System.out.println("한 바이트로 입력해주세요.");
             symbol = scan.next();
         }
