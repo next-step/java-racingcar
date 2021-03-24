@@ -1,6 +1,6 @@
 package carracing;
 
-import carracing.service.CarRacingService;
+import carracing.service.CarRacing;
 import carracing.view.InputView;
 import carracing.vo.Car;
 
@@ -8,7 +8,7 @@ import carracing.vo.Car;
 public class CarRacingMain {
 
     public static void main(String[] args) {
-        Car car = new InputView().input();
-        new CarRacingService().startRacing(car);
+        Car car = InputView.input();
+        CarRacing.start(car);
     }
 }
