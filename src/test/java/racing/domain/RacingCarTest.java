@@ -83,4 +83,20 @@ class RacingCarTest {
     assertThatThrownBy(() -> RacingCar.create("schumacher"))
             .isInstanceOf(IllegalArgumentException.class);
   }
+
+  @Test
+  @DisplayName("우승자 자동차인지")
+  void isWinner() {
+    // given
+    RacingCar gmoon = RacingCar.create("gmoon");
+    gmoon.move(() -> true);
+
+    // when
+    final int winnerPosition = 1;
+    boolean isWinner = gmoon.isWinner(winnerPosition);
+
+    // then
+    assertThat(isWinner)
+            .isTrue();
+  }
 }

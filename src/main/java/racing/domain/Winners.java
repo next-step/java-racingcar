@@ -20,7 +20,7 @@ public class Winners {
 
   private static List<RacingCar> findWinners(RacingCars racingCars) {
     return racingCars.getRacingCars().stream()
-            .filter(car -> winnerPosition(racingCars) == car.position())
+            .filter(car -> car.isWinner(winnerPosition(racingCars)))
             .collect(Collectors.toList());
   }
 

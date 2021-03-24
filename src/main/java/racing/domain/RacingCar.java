@@ -39,6 +39,10 @@ public class RacingCar implements BaseCloneable {
     }
   }
 
+  public boolean isWinner(int winnerPosition) {
+    return winnerPosition == position;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
