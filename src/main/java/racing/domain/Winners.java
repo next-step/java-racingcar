@@ -32,6 +32,12 @@ public class Winners {
             .intValue();
   }
 
+  public List<String> winnerNames() {
+    return winners.stream()
+            .map(RacingCar::name)
+            .collect(Collectors.toList());
+  }
+
   public List<RacingCar> getList() {
     return winners;
   }
