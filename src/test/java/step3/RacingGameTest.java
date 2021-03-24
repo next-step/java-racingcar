@@ -13,11 +13,9 @@ class RacingGameTest {
 
     RacingGame createRacingGameObj(String inputName, int attemps) {
         String[] carNames = inputName.split(",");
-        int numberOfCars = carNames.length;
-        String scoreSymbol = "-";
         GameRule rule = new GameRule(new RandomUtil());
-        Cars cars = new Cars(carNames, scoreSymbol);
-        RacingGame race = new RacingGame(numberOfCars, attemps, rule, cars);
+        Cars cars = new Cars(carNames);
+        RacingGame race = new RacingGame(attemps, rule, cars);
         return race;
     }
 

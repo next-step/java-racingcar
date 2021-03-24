@@ -30,10 +30,6 @@ public class InputView {
         return carNames;
     }
 
-    public static int getNumberOfCars() {
-        return carNames.length;
-    }
-
     public static int getNumberOfAttemps() {
         return numberOfAttemps;
     }

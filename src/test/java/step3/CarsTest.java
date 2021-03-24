@@ -29,7 +29,7 @@ class CarsTest {
         Car expected = expectedList.get(0);
 
         // when
-        Cars cars = new Cars(carNames, scoreSymbol);
+        Cars cars = new Cars(carNames);
         List<Car> actualList = cars.getCars();
         Car actual = actualList.get(0);
 
@@ -52,7 +52,7 @@ class CarsTest {
         }
 
         // when && then
-        Cars cars = new Cars(carNames, symbol);
+        Cars cars = new Cars(carNames);
         assertAll(
                 () -> assertThat(cars.getCar(0)).isEqualToComparingFieldByField(list.get(0)),
                 () -> assertThat(cars.getCar(1)).isEqualToComparingFieldByField(list.get(1)),
