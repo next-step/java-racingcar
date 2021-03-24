@@ -17,7 +17,7 @@ public class RacingGameTest {
     void cars_can_moves_given_number_test(String owners, int count) {
 
         GameSet gameSet = new GameSet(owners, count);
-        RacingGame racingGame = new RacingGame(gameSet);
+        RacingGame racingGame = new RacingGame();
 
         List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
         racingGame.gameStart(list, count);
@@ -30,14 +30,15 @@ public class RacingGameTest {
     void winner_one() {
 
         GameSet gameSet = new GameSet("pobi", 1);
-        RacingGame racingGame = new RacingGame(gameSet);
+        RacingGame racingGame = new RacingGame();
 
         List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
 
         RacingCar pobiCar = list.get(0);
         pobiCar.canGo(5);
 
-        System.out.println(racingGame.getWinners(list));
+        assertThat(racingGame.getWinners(list)).contains("pobi");
+        
 
     }
 
@@ -46,7 +47,7 @@ public class RacingGameTest {
     void winner_two() {
 
         GameSet gameSet = new GameSet("pobi,crong", 1);
-        RacingGame racingGame = new RacingGame(gameSet);
+        RacingGame racingGame = new RacingGame();
 
         List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
 
