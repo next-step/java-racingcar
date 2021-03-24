@@ -1,8 +1,8 @@
 package ch01.racinggame;
 
-import ch01.racinggame.Domain.Car;
-import ch01.racinggame.Domain.InputData;
-import ch01.racinggame.Domain.RacingGame;
+import ch01.racinggame.domain.Car;
+import ch01.racinggame.domain.InputData;
+import ch01.racinggame.domain.RacingGame;
 import ch01.racinggame.view.InputView;
 import ch01.racinggame.view.ResultView;
 

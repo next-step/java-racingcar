@@ -1,8 +1,5 @@
-package ch01.racinggame.Domain;
+package ch01.racinggame.domain;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RacingGame {
 

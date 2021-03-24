@@ -1,13 +1,9 @@
 package test.ch01.step2;
 
-import ch01.racinggame.Domain.Car;
-import ch01.racinggame.Domain.Winner;
+import ch01.racinggame.domain.Car;
+import ch01.racinggame.domain.Winner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

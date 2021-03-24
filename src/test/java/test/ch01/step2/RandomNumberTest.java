@@ -1,6 +1,6 @@
 package test.ch01.step2;
 
-import ch01.racinggame.Domain.RandomNumber;
+import ch01.racinggame.domain.RandomNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
