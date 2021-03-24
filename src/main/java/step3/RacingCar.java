@@ -26,23 +26,21 @@ public class RacingCar {
         }
     }
     
-    public int totalRound() {
+    public int getTotalRound() {
         return this.roundCount;
     }
     
-    public int totalCarCount() {
+    public int getTotalCarCount() {
         return this.cars.size();
     }
 
-    public Car carByIndex(int index) {
+    public Car getCarByIndex(int index) {
         return cars.get(index);
     }
     
-    public void racing() {
-        for( int rIndex = 0 ; rIndex < roundCount ; rIndex++ ) {
-            for( int cIndex = 0 ; cIndex < totalCarCount() ; cIndex++ ) {
-                carByIndex(cIndex).move();
-            }
+    public void raceSingleRound() {
+        for( int cIndex = 0 ; cIndex < getTotalCarCount() ; cIndex++ ) {
+            getCarByIndex(cIndex).move(RacingCondition.isMoveForward());
         }
     }
 }    

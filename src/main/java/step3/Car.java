@@ -4,12 +4,12 @@ public class Car {
     
     private int move;
     
-    public int position() {
+    public int getPosition() {
         return this.move;
     }
     
-    public void move() {
-        if( RacingCondition.isMoveForward() ) {
+    public void move(boolean isMoveForward) {
+        if( isMoveForward ) {
             this.move++;
         }
     }

@@ -22,13 +22,6 @@ public class RacingView {
         return scanner.nextInt();
     }
     
-    public void printPosition(Car car) {
-        for( int rIndex = 0 ; rIndex < car.position() ; rIndex++ ) {
-            System.out.print(CAR_MOVEMENT);
-        }
-        System.out.println();
-    }
-
     public void resultView(RacingCar racingInfo) {
 
         System.out.println("\n실행 결과");
@@ -38,11 +31,12 @@ public class RacingView {
         }
         
         Car currentCar;
-        for( int rIndex = 0 ; rIndex < racingInfo.totalRound() ; rIndex++ ) {
-            for( int cIndex = 0 ; cIndex < racingInfo.totalCarCount() ; cIndex++ ) {
-                currentCar = racingInfo.carByIndex(cIndex);
-                currentCar.move();
-                printPosition(currentCar);
+        for( int rIndex = 0 ; rIndex < racingInfo.getTotalRound() ; rIndex++ ) {
+            racingInfo.raceSingleRound();
+            
+            for( int cIndex = 0 ; cIndex < racingInfo.getTotalCarCount() ; cIndex++ ) {
+                currentCar = racingInfo.getCarByIndex(cIndex);
+                System.out.println(CAR_MOVEMENT.repeat(currentCar.getPosition()));
             }
             System.out.println();
         }
