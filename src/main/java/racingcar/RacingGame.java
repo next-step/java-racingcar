@@ -5,11 +5,9 @@ import java.util.List;
 
 public class RacingGame {
 
-    private GameSet gameSet;
     private ResultView resultView;
 
-    public RacingGame(GameSet gameSet) {
-        this.gameSet = gameSet;
+    public RacingGame() {
         resultView = new ResultView();
     }
 
@@ -32,7 +30,7 @@ public class RacingGame {
 
     public void gameOver(List<RacingCar> carList) {
         Winner winner = new Winner();
-        getWinners(winner.whoisWin(carList, gameSet));
+        getWinners(winner.whoisWin(carList));
     }
 
     public String getWinners(List<RacingCar> winnerList) {
