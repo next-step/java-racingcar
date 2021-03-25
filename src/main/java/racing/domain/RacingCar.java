@@ -9,7 +9,7 @@ import java.util.Objects;
 public class RacingCar implements BaseCloneable {
 
   private final String name;
-  private int position;
+  private Position position;
 
   private RacingCar(String name) {
     this(name, 0);
@@ -17,7 +17,7 @@ public class RacingCar implements BaseCloneable {
 
   private RacingCar(String name, int position) {
     this.name = name;
-    this.position = position;
+    this.position = Position.create(position);
     RacingCarValid.check(this);
   }
 
@@ -29,18 +29,18 @@ public class RacingCar implements BaseCloneable {
     return this.name;
   }
 
-  public int position() {
+  public Position position() {
     return position;
   }
 
   public void move(MoveRule moveRule) {
     if (moveRule.possibleMove()) {
-      this.position++;
+      position = position.move();
     }
   }
 
-  public boolean isWinner(int winnerPosition) {
-    return winnerPosition == position;
+  public boolean isWinner(Position winnerPosition) {
+    return position.isWinner(winnerPosition);
   }
 
   @Override
@@ -51,6 +51,8 @@ public class RacingCar implements BaseCloneable {
     return Objects.equals(name, racingCar.name);
   }
 
+
+
   @Override
   public int hashCode() {
     return Objects.hash(name);
@@ -58,7 +60,7 @@ public class RacingCar implements BaseCloneable {
 
   @Override
   public String toString() {
-    return String.format("name:%s, position:%d", name, position);
+    return String.format("name:%s, position:%s", name, position);
   }
 
   @Override

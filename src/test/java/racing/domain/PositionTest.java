@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class PositionTest {
 
@@ -48,5 +49,35 @@ class PositionTest {
 
     // then
     assertThat(position).isEqualTo(Position.create(4));
+  }
+
+  @Test
+  @DisplayName("우승자 위치인지 테스트")
+  void isWinner() {
+    // given
+    Position winnerPosition = Position.create(3);
+
+    // when
+    Position position = Position.create(3);
+
+    // then
+    assertThat(position.isWinner(winnerPosition))
+            .isTrue();
+  }
+
+  @Test
+  @DisplayName("자동차 위치 메서드 테스트")
+  void compareTo() {
+    // given
+    Position zero = Position.Zero();
+    Position move = zero.move();
+
+    // when
+    final int moveGreaterThanZero = move.compareTo(zero);
+    final int zeroGreaterThanMove = zero.compareTo(move);
+
+    // then
+    assertAll(() -> assertThat(moveGreaterThanZero).isEqualTo(1)
+            , () -> assertThat(zeroGreaterThanMove).isEqualTo(-1));
   }
 }

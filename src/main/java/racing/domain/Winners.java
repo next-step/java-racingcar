@@ -24,12 +24,11 @@ public class Winners {
             .collect(Collectors.toList());
   }
 
-  private static int winnerPosition(RacingCars racingCars) {
+  private static Position winnerPosition(RacingCars racingCars) {
     return racingCars.getRacingCars().stream()
             .map(RacingCar::position)
-            .max(Integer::compareTo)
-            .orElse(0)
-            .intValue();
+            .max(Position::compareTo)
+            .orElse(Position.Zero());
   }
 
   public List<String> winnerNames() {

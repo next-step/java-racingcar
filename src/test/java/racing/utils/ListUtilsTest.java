@@ -2,6 +2,7 @@ package racing.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Position;
 import racing.domain.RacingCar;
 
 import java.util.Arrays;
@@ -49,6 +50,6 @@ class ListUtilsTest {
 
     // then
     assertThat(deepCopyList.get(0).position())
-            .isZero();
+            .isEqualTo(Position.Zero());
   }
 }

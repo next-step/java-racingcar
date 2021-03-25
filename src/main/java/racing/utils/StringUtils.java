@@ -40,4 +40,11 @@ public final class StringUtils {
     return str;
   }
 
+  public static String repeatString(String symbol, int repeat) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < repeat; i++) {
+      sb.append(symbol);
+    }
+    return sb.toString();
+  }
 }

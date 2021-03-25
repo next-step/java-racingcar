@@ -24,7 +24,7 @@ class RacingCarTest {
     // then
     assertThat(newCar)
             .hasFieldOrPropertyWithValue("name", name)
-            .hasFieldOrPropertyWithValue("position", 0);
+            .hasFieldOrPropertyWithValue("position", Position.Zero());
   }
 
   @ParameterizedTest
@@ -53,7 +53,7 @@ class RacingCarTest {
     newCar.move(() -> true);
 
     // then
-    assertThat(newCar.position()).isEqualTo(1);
+    assertThat(newCar.position()).isEqualTo(Position.create(1));
   }
 
   @ParameterizedTest
@@ -92,11 +92,11 @@ class RacingCarTest {
     gmoon.move(() -> true);
 
     // when
-    final int winnerPosition = 1;
-    boolean isWinner = gmoon.isWinner(winnerPosition);
+    boolean isWinner = gmoon.isWinner(Position.create(1));
 
     // then
-    assertThat(isWinner)
-            .isTrue();
+    assertThat(isWinner).isTrue();
   }
+
+
 }

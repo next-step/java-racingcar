@@ -58,10 +58,9 @@ class RacingCarsTest {
     newCars.race(() -> true);
 
     // then
-    final int movePosition = 1;
     newCars.getRacingCars()
             .forEach(car -> assertThat(car.position())
-                                .isEqualTo(movePosition));
+                                .isEqualTo(Position.create(1)));
   }
 
   @Test

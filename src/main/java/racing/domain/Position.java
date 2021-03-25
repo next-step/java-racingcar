@@ -12,12 +12,28 @@ public class Position {
     this.position = position;
   }
 
+  public static Position Zero() {
+    return new Position(0);
+  }
+
   public static Position create(int position) {
     return new Position(position);
   }
 
   public Position move() {
     return create(position + 1);
+  }
+
+  public boolean isWinner(Position winnerPosition) {
+    return this.equals(winnerPosition);
+  }
+
+  public int compareTo(Position other) {
+    return Integer.compare(position, other.position);
+  }
+
+  public int getPosition() {
+    return position;
   }
 
   @Override
@@ -31,5 +47,10 @@ public class Position {
   @Override
   public int hashCode() {
     return Objects.hash(position);
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(position);
   }
 }
