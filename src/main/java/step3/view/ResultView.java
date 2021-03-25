@@ -14,8 +14,7 @@ public class ResultView {
     }
 
     public static void printChampions(List<String> championsList) {
-        ConvertToStringFromList convert = new ConvertToStringFromList();
-        String champion = convert.convertToStringFromList(championsList);
+        String champion = ConvertToStringFromList.convertToStringFromList(championsList);
         System.out.println(champion + "가 최종 우승했습니다.");
     }
 }

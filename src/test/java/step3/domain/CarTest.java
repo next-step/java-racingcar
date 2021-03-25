@@ -1,8 +1,7 @@
-package step3;
+package step3.domain;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step3.domain.Car;
 import step3.utils.GameRule;
 import step3.utils.NumberGenerator;
 import step3.utils.TestNumberGenerator;
