@@ -4,23 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class App {
-    public static void main(String[] args) {
+public class Play {
 
-        // 입력 받기
+    public void play() {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         if (input.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        String[] inputs = input.split(" ");
+        setting(input);
+    }
 
-        // 숫자
+    public int setting(String input) {
+        String[] inputs = input.split(" ");
         List<Integer> nums = new ArrayList<>();
-        // 연산자
         List<String> operators = new ArrayList<>();
 
-        // 숫자, 연산자 분리
         for (int i = 0; i < inputs.length; i++) {
             if (i % 2 == 0) {
                 nums.add(Integer.parseInt(inputs[i]));
@@ -29,15 +28,7 @@ public class App {
             }
         }
 
-        // 계산기 작동
         Calculator calculator = new Calculator();
-        int result = calculator.calculate(nums, operators);
-        System.out.println(result);
-
+        return calculator.calculate(nums, operators);
     }
-
-
-
-
-
 }

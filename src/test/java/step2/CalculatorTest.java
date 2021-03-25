@@ -13,8 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CalculatorTest {
 
     @Test
-    public void 계산기테스트() {
-
+    public void 연산_테스트() {
         List<Integer> nums = new ArrayList<>(Arrays.asList(2, 3, 4, 2));
         List<String> operators = new ArrayList<>(Arrays.asList("+", "*", "/"));
 
@@ -25,12 +24,18 @@ public class CalculatorTest {
     }
 
     @Test
-    public void 계산예외케이스() {
+    public void 연산_예외_케이스(){
         List<Integer> nums = new ArrayList<>(Arrays.asList(2, 3, 4, 2));
         List<String> operators = new ArrayList<>(Arrays.asList("+", "*", ")"));
 
         Calculator calculator = new Calculator();
         assertThatThrownBy(() -> { calculator.calculate(nums, operators); }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void 값_세팅_케이스() {
+        Play play = new Play();
+        Assertions.assertThat(10).isEqualTo(play.setting("2 + 3 * 4 / 2"));
     }
 }
 
