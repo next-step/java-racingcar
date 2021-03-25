@@ -5,8 +5,8 @@ import java.util.Random;
 public class Car {
     private static final int FORWARD_NUM = 4;
     private static final int RANGE = 10;
-    Name name;
-    Position position;
+    private final Name name;
+    private final Position position;
 
     public Car(String name) {
         this(new Name(name), new Position());

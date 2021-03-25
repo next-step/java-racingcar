@@ -1,7 +1,6 @@
 package step4.view;
 
 import step4.dto.Data;
-import step4.util.InputValidator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -18,8 +17,9 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int count = scan.nextInt();
 
-        data = InputValidator.validate(new Data(names, count));
+        data = new Data(names, count);
     }
+
 
     public Data getData() {
         return data;
