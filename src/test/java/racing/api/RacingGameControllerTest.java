@@ -1,6 +1,7 @@
 package racing.api;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.Name;
 import racing.domain.RacingCar;
 import racing.domain.RacingCars;
 import racing.domain.Winners;
@@ -28,14 +29,14 @@ class RacingGameControllerTest {
             , RacingCar.create("gmoon")
             , RacingCar.create("speed"));
 
-    List<String> winnerNames = Winners.create(RacingCars.create(racingCarList))
+    List<Name> winnerNames = Winners.create(RacingCars.create(racingCarList))
             .winnerNames();
 
     // then
     assertThat(winnerNames)
             .isNotEmpty()
             .hasSize(2)
-            .containsAll(Arrays.asList("move1", "move2"));
+            .containsAll(Arrays.asList(Name.create("move1"), Name.create("move2")));
   }
 
   private void move(RacingCar car) {

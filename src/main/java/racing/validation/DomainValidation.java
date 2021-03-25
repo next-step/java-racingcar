@@ -12,7 +12,11 @@ public final class DomainValidation {
   }
 
   public static void checkExceedStringLength(String str, int limitLength, String message) {
-    if (str.length() > limitLength) {
+    checkExceedStringLength(str.length(), limitLength, message);
+  }
+
+  public static void checkExceedStringLength(int length, int limitLength, String message) {
+    if (length > limitLength) {
       throw new IllegalArgumentException(message);
     }
   }
@@ -25,8 +29,8 @@ public final class DomainValidation {
 
     public static void check(RacingCar racingCar) {
       String message = "Car name length is exceed";
-      String name = racingCar.name();
-      checkExceedStringLength(name, RACING_CAR_NAME_LENGTH, message);
+      int nameLength = racingCar.name().length();
+      checkExceedStringLength(nameLength, RACING_CAR_NAME_LENGTH, message);
     }
   }
 }

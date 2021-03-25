@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.Name;
 import racing.domain.RacingCar;
 import racing.domain.RacingCars;
 import racing.domain.RacingRound;
@@ -42,6 +43,7 @@ public class ResultView {
   private static String winnerNames(Winners winners) {
     return winners.winnerNames()
             .stream()
+            .map(Name::getName)
             .collect(Collectors.joining(WINNER_NAME_DELIMITER));
   }
 
@@ -50,6 +52,6 @@ public class ResultView {
   }
 
   private static String toCarNameString(RacingCar racingCar) {
-    return racingCar.name();
+    return racingCar.name().getName();
   }
 }

@@ -46,6 +46,6 @@ class WinnersTest {
 
     // then
     assertThat(winners.winnerNames())
-            .contains("gmoon", "speed");
+            .contains(Name.create("gmoon"), Name.create("speed"));
   }
 }

@@ -31,7 +31,7 @@ public class Winners {
             .orElse(Position.Zero());
   }
 
-  public List<String> winnerNames() {
+  public List<Name> winnerNames() {
     return winners.stream()
             .map(RacingCar::name)
             .collect(Collectors.toList());

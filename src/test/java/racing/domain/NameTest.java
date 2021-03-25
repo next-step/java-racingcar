@@ -19,4 +19,18 @@ class NameTest {
     // then
     assertThat(name).isEqualTo(Name.create(expected));
   }
+
+  @Test
+  @DisplayName("이름 길이")
+  void length() {
+    // given
+    String gmoon = "gmoon";
+    Name name = Name.create(gmoon);
+
+    // when
+    int expected = gmoon.length();
+
+    // then
+    assertThat(name.length()).isEqualTo(expected);
+  }
 }

@@ -23,7 +23,7 @@ class RacingCarTest {
 
     // then
     assertThat(newCar)
-            .hasFieldOrPropertyWithValue("name", name)
+            .hasFieldOrPropertyWithValue("name", Name.create(name))
             .hasFieldOrPropertyWithValue("position", Position.Zero());
   }
 

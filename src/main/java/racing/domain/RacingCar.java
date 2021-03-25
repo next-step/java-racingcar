@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class RacingCar implements BaseCloneable {
 
-  private final String name;
+  private final Name name;
   private Position position;
 
   private RacingCar(String name) {
@@ -16,7 +16,7 @@ public class RacingCar implements BaseCloneable {
   }
 
   private RacingCar(String name, int position) {
-    this.name = name;
+    this.name = Name.create(name);
     this.position = Position.create(position);
     RacingCarValid.check(this);
   }
@@ -25,7 +25,7 @@ public class RacingCar implements BaseCloneable {
     return new RacingCar(name);
   }
 
-  public String name() {
+  public Name name() {
     return this.name;
   }
 
