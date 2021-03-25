@@ -9,26 +9,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    Car car;
+    private Car car;
 
     @BeforeEach
-    void initCarTest(){
+    void initCarTest() {
         car = new Car();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9,10})
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9, 10})
     @DisplayName("move car test - move forward")
-    void moveCarTest(int input){
+    void moveCarTest(int input) {
         car.moveByRandomInt(input);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(new Position(1));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4})
+    @ValueSource(ints = {1, 2, 3})
     @DisplayName("move car test - hole position")
-    void moveCarTest2(int input){
+    void moveCarTest2(int input) {
         car.moveByRandomInt(input);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(new Position(0));
     }
 }

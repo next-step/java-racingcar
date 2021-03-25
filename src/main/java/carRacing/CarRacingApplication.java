@@ -12,6 +12,5 @@ public class CarRacingApplication {
 
         carRacing.startRacing(racingCount);
 
-        carRacing.racingWinner();
     }
 }
