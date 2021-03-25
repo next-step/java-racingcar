@@ -1,6 +1,4 @@
-package step3.service;
-
-import step3.utils.NumberGenerator;
+package step3.utils;
 
 public class GameRule {
     private static final int STANDARD_FOR_MOVING = 4;
@@ -12,9 +10,5 @@ public class GameRule {
 
     public boolean isMovable() {
         return numberGenerator.getRandom() >= STANDARD_FOR_MOVING;
-    }
-
-    public boolean isMovableTest(int num) {
-        return num >= STANDARD_FOR_MOVING;
     }
 }
