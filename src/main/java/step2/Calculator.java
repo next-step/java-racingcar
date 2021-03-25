@@ -1,9 +1,9 @@
+package step2;
 
 import java.util.List;
 
 public class Calculator {
 
-    // 계산
     public int calculate(List<Integer> nums, List<String> operators) {
         int result = nums.get(0);
         for(int i = 0; i < operators.size(); i++) {
@@ -27,19 +27,19 @@ public class Calculator {
         return result;
     }
 
-    public static int addition(int num, int result) {
+    public int addition(int num, int result) {
         return result + num;
     }
 
-    public static int subtraction(int num, int result) {
+    public int subtraction(int num, int result) {
         return result - num;
     }
 
-    public static int multiplication(int num, int result) {
+    public int multiplication(int num, int result) {
         return result * num;
     }
 
-    public static int division(int result, int num) {
+    public int division(int result, int num) {
         return result / num;
     }
 

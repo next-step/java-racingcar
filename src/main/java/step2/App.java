@@ -1,8 +1,10 @@
+package step2;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
 
         // 입력 받기
@@ -32,6 +34,10 @@ public class Main {
         int result = calculator.calculate(nums, operators);
         System.out.println(result);
 
-
     }
+
+
+
+
+
 }
