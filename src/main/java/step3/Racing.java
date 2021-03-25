@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Racing {
+    final static int CAN_GO = 4;
+
     public Racing(int carCount, int lapCount) {
         List<Car> cars = getCarReady(carCount);
         onRacing(cars, lapCount);
@@ -32,10 +34,12 @@ public class Racing {
     }
 
     private void lap(Car car) {
-        car.position = car.getPosition() + getMove();
+        if (castDice() >= CAN_GO) {
+            car.position++;
+        }
     }
 
-    private int getMove() {
+    private int castDice() {
         Random random = new Random();
         return random.nextInt(10);
     }
@@ -43,11 +47,15 @@ public class Racing {
     private void printRacing(List<Car> cars) {
         System.out.println();
         for (Car c : cars) {
-            int position = c.getPosition();
-            for (int i = 0; i < position; i++) {
-                System.out.print("-");
-            }
+            printCarPosition(c);
             System.out.print("🚘\n");
+        }
+    }
+
+    private void printCarPosition(Car c) {
+        int position = c.getPosition();
+        for (int i = 0; i < position; i++) {
+            System.out.print("-");
         }
     }
 }

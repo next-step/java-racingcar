@@ -34,8 +34,11 @@ public class RacingMain {
         try {
             int carCount = getCarCount();
             int lapCount = getLapCount();
-            System.out.println("Car Racing start... Car Count : " + carCount + "  Lap Count : " + lapCount);
-            new Racing(carCount, lapCount);
+            if(carCount >0 || lapCount >0){
+                System.out.println("Car Racing start... Car Count : " + carCount + "  Lap Count : " + lapCount);
+                new Racing(carCount, lapCount);
+            }
+            new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
