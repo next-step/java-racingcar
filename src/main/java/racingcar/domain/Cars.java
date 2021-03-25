@@ -18,6 +18,17 @@ public class Cars {
         this.cars = cars;
     }
 
+    public static Cars of(List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    public static Cars of(String[] carNames) {
+        List<Car> cars = Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+
     public Cars runRound(MoveStrategy strategy) {
         List<Car> racingCars = cars.stream()
                 .map(car -> car.move(strategy))
@@ -29,17 +40,6 @@ public class Cars {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException(EMPTY_CARS_ERROR);
         }
-    }
-
-    public static Cars of(List<Car> cars) {
-        return new Cars(cars);
-    }
-
-    public static Cars of(String[] carNames) {
-        List<Car> cars = Arrays.stream(carNames)
-                .map(Car::new)
-                .collect(Collectors.toList());
-        return new Cars(cars);
     }
 
     public List<Car> getCarsAtRound() {
