@@ -2,6 +2,7 @@ package test.ch01.step2;
 
 
 import ch01.racinggame.Domain.Car;
+
 import ch01.racinggame.Domain.RandomNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,6 @@ class CarTest {
     void setUp() {
         car = new Car("Test");
         randomNumber = new RandomNumber();
-
     }
 
 
@@ -59,6 +59,7 @@ class CarTest {
         }
         //then
         assertThat(car.progressCnt()).isEqualTo(1);
+
 
     }
 }

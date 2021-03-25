@@ -6,7 +6,9 @@ public class RacingGame {
     private int attemptCount = 0;
     private int carCount = 0;
     private Car[] cars;
+
     private static RandomNumber randomNumber = new RandomNumber();
+
 
     public RacingGame(InputData inputData) {
 
@@ -34,6 +36,7 @@ public class RacingGame {
         }
         return cars;
     }
+
 
     private void isMovableCar(Car car){
         int randomNum = randomNumber.randomNumber();
