@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CarRacing {
-
-    public CarRacing(int carCount, int tryCount) {
+public class Racing {
+    public Racing(int carCount, int lapCount) {
         List<Car> cars = getCarReady(carCount);
-        onRacing(cars, tryCount);
+        onRacing(cars, lapCount);
     }
 
     private List<Car> getCarReady(int carCount) {
@@ -19,23 +18,21 @@ public class CarRacing {
         return cars;
     }
 
-    public void onRacing(List<Car> cars, int tryCount) {
-        System.out.println("\n ++++++++ LAP : " + tryCount + "th to last +++++++++ ");
+    public void onRacing(List<Car> cars, int lapCount) {
+        System.out.println("\n ======== LAP : " + lapCount + "th to last ========");
         for (int i = 0; i < cars.size(); i++) {
             lap(cars.get(i));
         }
         printRacing(cars);
-        tryCount--;
+        lapCount--;
 
-        if (tryCount > 0) {
-            onRacing(cars, tryCount);
+        if (lapCount > 0) {
+            onRacing(cars, lapCount);
         }
     }
 
     private void lap(Car car) {
-        System.out.print("befor : " + car.getPosition());
         car.position = car.getPosition() + getMove();
-        System.out.println("   ->   after : " + car.getPosition());
     }
 
     private int getMove() {
@@ -50,7 +47,7 @@ public class CarRacing {
             for (int i = 0; i < position; i++) {
                 System.out.print("-");
             }
-            System.out.println();
+            System.out.print("🚘\n");
         }
     }
 }
