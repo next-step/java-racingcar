@@ -1,14 +1,12 @@
 package ch01.racinggame.Domain;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
 
     private int attemptCount = 0;
     private int carCount = 0;
     private Car[] cars;
+    private static RandomNumber randomNumber = new RandomNumber();
 
     public RacingGame(InputData inputData) {
 
@@ -32,9 +30,16 @@ public class RacingGame {
         int carsSize = cars.length;
 
         for (int i = 0; i < carsSize; i++) {
-            cars[i].move();
+            isMovableCar(cars[i]);
         }
         return cars;
+    }
+
+    private void isMovableCar(Car car){
+        int randomNum = randomNumber.randomNumber();
+        if(randomNumber.movable(randomNum)){
+            car.move();
+        }
     }
 
 
