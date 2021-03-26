@@ -52,4 +52,8 @@ public class Data {
             throw new IllegalArgumentException(message);
         }
     }
+
+    public String[] spliteName() {
+        return names.split(SEPARATOR);
+    }
 }

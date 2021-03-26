@@ -58,4 +58,8 @@ public class Position {
     public boolean lessThan(Position maxPositon) {
         return maxPositon.position > position;
     }
+
+    public boolean isZero() {
+        return position == 0;
+    }
 }

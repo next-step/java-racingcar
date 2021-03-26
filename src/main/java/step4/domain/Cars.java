@@ -22,7 +22,7 @@ public class Cars {
     }
 
     public void createList(Data data) {
-        String[] names = data.spliteName(",");
+        String[] names = data.spliteName();
         for (String name : names) {
             carList.add(new Car(name));
         }

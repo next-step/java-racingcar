@@ -61,8 +61,7 @@ public class RaceController {
     }
 
     private void winner() {
-        winner.findWinner(cars);
-        resultView.renderWinner(winner.getWinners());
+        resultView.renderWinner(winner.findWinner(cars.getCarList()));
     }
 
 }

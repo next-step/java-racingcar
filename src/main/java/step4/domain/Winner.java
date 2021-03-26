@@ -5,27 +5,37 @@ import java.util.List;
 
 public class Winner {
 
-    List<String> winners;
+    private final List<Car> winners;
 
     public Winner() {
         winners = new ArrayList<>();
     }
 
-    public List<String> getWinners() {
+    public List<Car> findWinner(List<Car> carList) {
+        return findWinner(carList, getMaxPostion(carList));
+    }
+
+    private Position getMaxPostion(List<Car> carList) {
+        Position maxPosition = new Position();
+        for (Car car : carList) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private List<Car> findWinner(List<Car> carList, Position maxPosition) {
+        for (Car car : carList) {
+            setWinner(car, maxPosition);
+        }
         return winners;
     }
 
-    public void findWinner(Cars cars) {
-        int grade = cars.topGrade();
-        for (Car car : cars.getCarList()) {
-            isWinner(car, grade);
+    private void setWinner(Car car, Position maxPosition) {
+        if (maxPosition.isZero()) {
+            return;
+        }
+        if (car.isWinner(maxPosition)) {
+            winners.add(car);
         }
     }
-
-    private void isWinner(Car car, int grade) {
-        if (car.isWinner(grade)) {
-            winners.add(car.name());
-        }
-    }
-
 }

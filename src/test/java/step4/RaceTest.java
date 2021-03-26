@@ -7,7 +7,6 @@ import step4.domain.Car;
 import step4.domain.Cars;
 import step4.domain.Winner;
 import step4.dto.Data;
-import step4.view.ResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,10 +23,8 @@ public class RaceTest {
         for (Car car : cars.getCarList()) {
             car.move(5);
         }
-        winner.findWinner(cars);
-        new ResultView().renderWinner(winner.getWinners());
 
-        assertThat(cars.getCarList().size()).isEqualTo(winner.getWinners().size());
+        assertThat(cars.getCarList().size()).isEqualTo(winner.findWinner(cars.getCarList()).size());
     }
 
     @ParameterizedTest
@@ -41,9 +38,7 @@ public class RaceTest {
         for (Car car : cars.getCarList()) {
             car.move(0);
         }
-        winner.findWinner(cars);
 
-        new ResultView().renderWinner(winner.getWinners());
-        assertThat(winner.getWinners().size()).isZero();
+        assertThat(winner.findWinner(cars.getCarList()).size()).isZero();
     }
 }

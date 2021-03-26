@@ -3,7 +3,7 @@ package step4;
 
 import org.junit.jupiter.api.Test;
 import step4.domain.Car;
-import step4.domain.Winner2;
+import step4.domain.Winner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class WinnerTest {
         Car jun = new Car("jun", 3);
 
         List<Car> original = Arrays.asList(bob, jack, rtos, jun);
-        assertThat(new Winner2().findWinner(original)).containsExactly(rtos, jun);
+        assertThat(new Winner().findWinner(original)).containsExactly(rtos, jun);
     }
 
 }
