@@ -39,7 +39,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차가 움직였는지 테스트")
+    @DisplayName("자동차가 움직였는지 테스트 ")
     void movable() {
         //when
         if(randomNumber.movable()){
