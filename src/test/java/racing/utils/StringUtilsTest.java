@@ -67,4 +67,17 @@ class StringUtilsTest {
     // then
     assertThat(result).isEqualTo("---");
   }
+
+  @Test
+  @DisplayName("공백을 자른다")
+  void trim() {
+    // given
+    String str = " test";
+
+    // when
+    String expected = StringUtils.trim(str);
+
+    // then
+    assertThat(expected).isEqualTo("test");
+  }
 }

@@ -47,4 +47,8 @@ public final class StringUtils {
     }
     return sb.toString();
   }
+
+  public static String trim(String str) {
+    return defaultString(str).trim();
+  }
 }
