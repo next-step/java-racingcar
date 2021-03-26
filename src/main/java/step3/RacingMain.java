@@ -11,14 +11,22 @@ public class RacingMain {
     private static Scanner scanner = new Scanner(System.in);
 
     public static int getCarCount() {
-        return getCount(SYSTEM_MESSAGE_ASK_CAR_COUNT, SYSTEM_MESSAGE_CAR_RETRY);
+        try {
+            return getCount(SYSTEM_MESSAGE_ASK_CAR_COUNT, SYSTEM_MESSAGE_CAR_RETRY);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다.");
+        }
     }
 
     public static int getLapCount() {
-        return getCount(SYSTEM_MESSAGE_ASK_LAP_COUNT, SYSTEM_MESSAGE_LAP_RETRY);
+        try {
+            return getCount(SYSTEM_MESSAGE_ASK_LAP_COUNT, SYSTEM_MESSAGE_LAP_RETRY);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다.");
+        }
     }
 
-    public static int getCount(String askMessage, String retryMessage){
+    public static int getCount(String askMessage, String retryMessage) {
         int count;
         do {
             System.out.println(askMessage);
@@ -34,11 +42,8 @@ public class RacingMain {
         try {
             int carCount = getCarCount();
             int lapCount = getLapCount();
-            if(carCount >0 || lapCount >0){
-                System.out.println("Car Racing start... Car Count : " + carCount + "  Lap Count : " + lapCount);
-                new Racing(carCount, lapCount);
-            }
-            new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+            System.out.println("Car Racing start... Car Count : " + carCount + "  Lap Count : " + lapCount);
+            new Racing(carCount, lapCount);
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
