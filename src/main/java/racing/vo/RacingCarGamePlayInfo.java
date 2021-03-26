@@ -2,6 +2,7 @@ package racing.vo;
 
 import racing.domain.RacingCar;
 import racing.domain.RacingCars;
+import racing.model.RacingGameRequestVO;
 import racing.utils.StringUtils;
 
 import java.util.List;
@@ -17,8 +18,15 @@ public class RacingCarGamePlayInfo {
     this.totalRound = totalRound;
   }
 
+  public static RacingCarGamePlayInfo from(RacingGameRequestVO requestVO) {
+    String playerNames = requestVO.getNames();
+    int totalRound = requestVO.getTotalRound();
+    return newPlayInfo(playerNames, totalRound);
+  }
+
   public static RacingCarGamePlayInfo newPlayInfo(String playerNames, int totalRound) {
     List<RacingCar> players = StringUtils.toList(playerNames).stream()
+            .map(StringUtils::trim)
             .map(RacingCar::create)
             .collect(Collectors.toList());
 

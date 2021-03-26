@@ -1,45 +1,33 @@
 package racing.api;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.domain.Name;
-import racing.domain.RacingCar;
-import racing.domain.RacingCars;
-import racing.domain.Winners;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import racing.core.RacingCarGame;
+import racing.model.RacingGameRequestVO;
+import racing.model.RacingGameResponseVO;
+import racing.rule.OperationMoveRule;
+import racing.view.ResultView;
 
 class RacingGameControllerTest {
 
+  private RacingGameController c;
+
+  @BeforeEach
+  void setUp() {
+    c = new RacingGameController(RacingCarGame.newGame(new OperationMoveRule()));
+  }
+
   @Test
-  void winnerNameList() {
+  void play() {
     // given
-    // input
-    String input = "gmoon, speed, move1, move2";
+    RacingGameRequestVO requestVO = new RacingGameRequestVO();
+    requestVO.setNames("gmoon, speed, move1, move2");
+    requestVO.setTotalRound(3);
 
     // when
-    RacingCar move1 = RacingCar.create("move1");
-    RacingCar move2 = RacingCar.create("move2");
-    move(move1);
-    move(move2);
-    List<RacingCar> racingCarList = Arrays.asList(move1
-            , move2
-            , RacingCar.create("gmoon")
-            , RacingCar.create("speed"));
+    RacingGameResponseVO responseVO = c.play(requestVO);
 
-    List<Name> winnerNames = Winners.create(RacingCars.create(racingCarList))
-            .winnerNames();
-
-    // then
-    assertThat(winnerNames)
-            .isNotEmpty()
-            .hasSize(2)
-            .containsAll(Arrays.asList(Name.create("move1"), Name.create("move2")));
+    ResultView.print(responseVO.getResponse());
   }
 
-  private void move(RacingCar car) {
-    car.move(() -> true);
-  }
 }

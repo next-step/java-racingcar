@@ -11,19 +11,17 @@ import java.util.List;
 
 public class RacingCarGame {
 
-  private final RacingCarGamePlayInfo info;
   private final MoveRule moveRule;
 
-  public RacingCarGame(RacingCarGamePlayInfo info, MoveRule moveRule) {
-    this.info = info;
+  public RacingCarGame(MoveRule moveRule) {
     this.moveRule = moveRule;
   }
 
-  public static RacingCarGame newGame(RacingCarGamePlayInfo info, MoveRule moveRule) {
-    return new RacingCarGame(info, moveRule);
+  public static RacingCarGame newGame(MoveRule moveRule) {
+    return new RacingCarGame(moveRule);
   }
 
-  public List<RacingRound> play() {
+  public List<RacingRound> play(RacingCarGamePlayInfo info) {
     int totalRound = info.getTotalRound();
     RacingCars racingCars = info.getPlayers();
 

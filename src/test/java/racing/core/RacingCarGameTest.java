@@ -22,8 +22,8 @@ class RacingCarGameTest {
     RacingCarGamePlayInfo info = RacingCarGamePlayInfo.newPlayInfo(playerNames, totalRound);
 
     // when
-    List<RacingRound> result = RacingCarGame.newGame(info, () -> true)
-            .play();
+    List<RacingRound> result = RacingCarGame.newGame(() -> true)
+            .play(info);
 
     ResultView.print(result);
 
