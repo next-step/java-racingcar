@@ -1,4 +1,4 @@
-package step3to5.utils;
+package step3to5.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,10 +22,9 @@ class ConvertToStringFromListTest {
         String expected = "hello, world, dev";
 
         // when
-        String actual = ConvertToStringFromList.convertToStringFromList(list);
+        String actual = ResultView.convertToStringFromList(list);
 
         // then
         assertEquals(actual, expected);
-
     }
 }

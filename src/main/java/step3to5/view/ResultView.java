@@ -1,8 +1,7 @@
 package step3to5.view;
 
-import step3to5.utils.ConvertToStringFromList;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     public static void printRaceResult(String name, int score, String symbol) {
@@ -14,7 +13,14 @@ public class ResultView {
     }
 
     public static void printChampions(List<String> championsList) {
-        String champion = ConvertToStringFromList.convertToStringFromList(championsList);
+        String champion = convertToStringFromList(championsList);
         System.out.println(champion + "가 최종 우승했습니다.");
+    }
+
+    public static String convertToStringFromList(List<String> list) {
+        String result = list.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+        return result;
     }
 }
