@@ -2,7 +2,7 @@ package ch01.racinggame.Domain;
 
 import java.util.Random;
 
-public class RandomNumber {
+public class RandomNumber { 
     private static final int limitMovableNumber = 4;
 
     public boolean movable(int number) {
