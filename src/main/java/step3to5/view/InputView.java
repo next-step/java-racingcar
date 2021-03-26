@@ -1,6 +1,6 @@
-package step3.view;
+package step3to5.view;
 
-import step3.utils.InputValidator;
+import step3to5.utils.InputValidator;
 
 import java.util.Scanner;
 

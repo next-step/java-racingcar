@@ -1,10 +1,10 @@
-package step3.controller;
+package step3to5.controller;
 
-import step3.domain.Car;
-import step3.domain.Cars;
-import step3.utils.GameRule;
-import step3.view.InputView;
-import step3.view.ResultView;
+import step3to5.domain.Car;
+import step3to5.domain.Cars;
+import step3to5.utils.GameRule;
+import step3to5.view.InputView;
+import step3to5.view.ResultView;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package step3.controller;
+package step3to5.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Cars;
-import step3.utils.GameRule;
-import step3.utils.RandomUtil;
+import step3to5.domain.Cars;
+import step3to5.utils.GameRule;
+import step3to5.utils.RandomUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

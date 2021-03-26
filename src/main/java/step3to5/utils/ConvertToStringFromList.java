@@ -1,4 +1,4 @@
-package step3.utils;
+package step3to5.utils;
 
 import java.util.List;
 import java.util.stream.Collectors;

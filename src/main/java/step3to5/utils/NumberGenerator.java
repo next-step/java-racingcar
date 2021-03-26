@@ -1,4 +1,4 @@
-package step3.utils;
+package step3to5.utils;
 
 public interface NumberGenerator {
     int getRandom();

@@ -1,6 +1,6 @@
-package step3.domain;
+package step3to5.domain;
 
-import step3.utils.GameRule;
+import step3to5.utils.GameRule;
 
 public class Car {
     private int score = 0;

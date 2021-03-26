@@ -1,6 +1,6 @@
-package step3.view;
+package step3to5.view;
 
-import step3.utils.ConvertToStringFromList;
+import step3to5.utils.ConvertToStringFromList;
 
 import java.util.List;
 
