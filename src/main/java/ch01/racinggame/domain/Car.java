@@ -15,8 +15,10 @@ public class Car implements Comparable<Car> {
         progressCnt = initCarCount;
     }
 
-    public void move() {
-        progressCnt++;
+    public void move(RandomNumber randomNumber) {
+        if(randomNumber.movable()){
+            progressCnt++;
+        }
     }
 
     public String name() {

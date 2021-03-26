@@ -15,21 +15,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     private RacingGame racingGame;
-    private RandomNumber randomNumber;
+
     private final String inputNameOfCars = "happy,game,dog,cat,home";
-    ResultView rv;
+    private ResultView rv;
 
     @BeforeEach
     void setUp() {
         int attemptCount = 3;
-
-        randomNumber = new RandomNumber();
-
         InputData inputData = new InputData(inputNameOfCars, attemptCount);
 
-
         racingGame = new RacingGame(inputData);
-        //racingGame.start();
+
 
     }
 
@@ -38,8 +34,6 @@ class RacingGameTest {
     void startTest() {
         racingGame.start();
         rv = new ResultView(racingGame.cars());
-        Car[] testCars = new Car[racingGame.cars().length];
-
 
         assertThat(racingGame.cars().length).isEqualTo(5);
     }

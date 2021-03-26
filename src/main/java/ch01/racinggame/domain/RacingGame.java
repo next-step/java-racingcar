@@ -6,9 +6,7 @@ public class RacingGame {
     private int attemptCount = 0;
     private int carCount = 0;
     private Car[] cars;
-
     private static RandomNumber randomNumber = new RandomNumber();
-
 
     public RacingGame(InputData inputData) {
 
@@ -20,13 +18,6 @@ public class RacingGame {
         makeCar(inputData.carNames());
     }
 
-    private void makeCar(String[] carNames) {
-        //make cars
-        for (int i = 0; i < carCount; i++) {
-            Car car = new Car(carNames[i]);
-            cars[i] = car;
-        }
-    }
 
     public Car[] start() {
         int carsSize = cars.length;
@@ -37,19 +28,8 @@ public class RacingGame {
         return cars;
     }
 
-
-    private void isMovableCar(Car car){
-        if(randomNumber.movable()){
-            car.move();
-        }
-    }
-
-
     public Winner winner() {
-
-        Winner winner = new Winner(this.cars);
-
-        return winner;
+        return new Winner(this.cars);
     }
 
     public int attemptCount() {
@@ -60,5 +40,16 @@ public class RacingGame {
         return cars;
     }
 
+    private void makeCar(String[] carNames) {
+        //make cars
+        for (int i = 0; i < carCount; i++) {
+            Car car = new Car(carNames[i]);
+            cars[i] = car;
+        }
+    }
+
+    private void isMovableCar(Car car) {
+        car.move(randomNumber);
+    }
 
 }

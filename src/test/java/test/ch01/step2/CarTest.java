@@ -3,6 +3,7 @@ package test.ch01.step2;
 
 import ch01.racinggame.domain.Car;
 
+import ch01.racinggame.domain.RandomNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,10 +14,16 @@ class CarTest {
 
     private Car car;
     private RandomNumber randomNumber;
+
     @BeforeEach
     void setUp() {
         car = new Car("Test");
-        randomNumber = new RandomNumber();
+        randomNumber = new RandomNumber() {
+            @Override
+            public boolean movable() {
+                return true;
+            }
+        };
     }
 
 
@@ -30,7 +37,7 @@ class CarTest {
     @Test
     void showProgressCnt() {
         //given
-        car.move();
+        car.move(randomNumber);
         //when
         int progressCnt = car.progressCnt();
         //then
@@ -41,9 +48,7 @@ class CarTest {
     @DisplayName("자동차가 움직였는지 테스트 ")
     void movable() {
         //when
-        if(randomNumber.movable()){
-            car.move();
-        }
+        car.move(randomNumber);
         //then
         assertThat(car.progressCnt()).isEqualTo(2);
 
@@ -52,13 +57,18 @@ class CarTest {
     @Test
     @DisplayName("자동차가 안움직였는지 테스트")
     void notMovable() {
+        //given
+        RandomNumber randomNumberTest = new RandomNumber() {
+            @Override
+            public boolean movable() {
+                return false;
+            }
+        };
+
         //when
-        if(randomNumber.movable()){
-            car.move();
-        }
+        car.move(randomNumberTest);
         //then
         assertThat(car.progressCnt()).isEqualTo(1);
-
 
     }
 }
