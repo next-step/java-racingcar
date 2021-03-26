@@ -1,16 +1,16 @@
-package ch01.racinggame.Domain;
+package ch01.racinggame.domain;
 
 import java.util.Random;
 
 public class RandomNumber {
     private static final int limitMovableNumber = 4;
 
-    public boolean movable(int number) {
-        return number > limitMovableNumber;
+    public boolean movable() {
+        return this.randomNumber() > limitMovableNumber;
     }
 
 
-    public int randomNumber() {
+    private int randomNumber() {
         return new Random().nextInt(10);
     }
 }

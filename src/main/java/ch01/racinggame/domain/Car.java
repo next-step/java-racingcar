@@ -1,12 +1,13 @@
-package ch01.racinggame.Domain;
+package ch01.racinggame.domain;
 
-public class Car implements Comparable<Car>{
+
+
+public class Car implements Comparable<Car> {
+
     private static final int initCarCount = 1;
     private static final int limitNameLength = 5;
     private final String name;
     private int progressCnt;
-
-    private static RandomNumber randomNumber = new RandomNumber();
 
     public Car(String name) {
         checkNameLength(name);
@@ -14,9 +15,8 @@ public class Car implements Comparable<Car>{
         progressCnt = initCarCount;
     }
 
-    public void move() {
-        int randomNum = randomNumber.randomNumber();
-        if(randomNumber.movable(randomNum)){
+    public void move(RandomNumber randomNumber) {
+        if(randomNumber.movable()){
             progressCnt++;
         }
     }
@@ -40,7 +40,8 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car o) {
-        return Integer.compare(o.progressCnt() , this.progressCnt);
+        return Integer.compare(o.progressCnt(), this.progressCnt);
+
     }
 
     private void checkNameLength(String name) {

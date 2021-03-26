@@ -1,9 +1,7 @@
 package ch01.racinggame.view;
 
-import ch01.racinggame.Domain.Car;
-import ch01.racinggame.Domain.RacingGame;
+import ch01.racinggame.domain.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
