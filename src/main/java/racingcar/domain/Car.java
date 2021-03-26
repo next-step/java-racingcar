@@ -4,22 +4,44 @@ import racingcar.strategy.MoveStrategy;
 
 import java.util.Objects;
 
+import static racingcar.exception.Message.MAX_LENGTH_ERROR;
+import static racingcar.exception.Message.NULL_OR_EMPTY_ERROR;
+
 public class Car {
     private int position;
+    private String name;
+    private final int LIMIT = 5;
 
-    public Car() {
+    public Car(String name) {
+        validate(name);
+        this.name = name;
         this.position = 0;
     }
 
-    public Car(int position) {
+    public Car(String name, int position) {
+        validate(name);
+        this.name = name;
         this.position = position;
+    }
+
+    private void validate(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException(NULL_OR_EMPTY_ERROR);
+        }
+        if (name.length() > LIMIT) {
+            throw new IllegalArgumentException(MAX_LENGTH_ERROR);
+        }
     }
 
     public Car move(MoveStrategy strategy) {
         if (strategy.moveCar()) {
-            return new Car(position + 1);
+            return new Car(name, position + 1);
         }
-        return new Car(position);
+        return new Car(name, position);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {

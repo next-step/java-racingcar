@@ -11,10 +11,10 @@ import java.util.List;
 public class GameManager {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int carCount = inputView.inputCarCount();
+        String[] carNames = inputView.inputCarName();
         int roundCount = inputView.inputRoundCount();
 
-        RacingGame game = new RacingGame(carCount, roundCount);
+        RacingGame game = new RacingGame(carNames, roundCount);
         List<Round> rounds = game.runGame(new RandomMoveStrategy());
         ResultView resultView = new ResultView(rounds);
         ResultView.printResultMessage();

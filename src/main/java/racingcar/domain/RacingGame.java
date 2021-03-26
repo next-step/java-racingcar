@@ -10,15 +10,15 @@ public class RacingGame {
     public Cars cars;
     public int roundCount;
 
-    public RacingGame(int carCount, int roundCount) {
-        this.cars = Cars.of(initializeCars(carCount));
+    public RacingGame(String[] carNames, int roundCount) {
+        this.cars = Cars.of(initializeCars(carNames));
         this.roundCount = roundCount;
     }
 
-    private List<Car> initializeCars(int carCount) {
+    private List<Car> initializeCars(String[] carNames) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        for (String carName : carNames) {
+            carList.add(new Car(carName));
         }
         return carList;
     }

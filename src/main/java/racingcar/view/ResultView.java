@@ -3,10 +3,13 @@ package racingcar.view;
 import racingcar.dto.Round;
 
 import java.util.List;
+import java.util.Map;
 
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String RACE_TRACK = "-";
+    private static final String CAR_NAME_DELIMITER = ": ";
+    private static final String WINNER_DELIMITER = ", ";
 
     private List<Round> rounds;
 
@@ -22,19 +25,31 @@ public class ResultView {
         for (Round round : rounds) {
             printRound(round);
         }
+        printGameWinners(rounds);
+    }
+
+    public void printGameWinners(List<Round> rounds) {
+        String winners = winnersToString(rounds);
+        System.out.println(winners + "가 최종 우승했습니다.");
+    }
+
+    private String winnersToString(List<Round> rounds) {
+        Map<String, Integer> finalRound = Round.roundResult(rounds.get(rounds.size() - 1));
+        List<String> winnerList = Round.winners(finalRound);
+        return String.join(WINNER_DELIMITER, winnerList);
     }
 
     private void printRound(Round round) {
-        List<Integer> carsStatus = Round.roundResult(round);
-        for (int status : carsStatus) {
-            printTrack(status);
+        for (Map.Entry<String, Integer> stringIntegerEntry : Round.roundResult(round).entrySet()) {
+            printTrack(stringIntegerEntry);
         }
         System.out.println();
     }
 
-    private void printTrack(int distance) {
+    private void printTrack(Map.Entry<String, Integer> roundResult) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
+        sb.append(roundResult.getKey()).append(CAR_NAME_DELIMITER);
+        for (int i = 0; i < roundResult.getValue(); i++) {
             sb.append(RACE_TRACK);
         }
         System.out.println(sb.toString());

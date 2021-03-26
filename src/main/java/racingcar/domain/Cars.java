@@ -2,11 +2,12 @@ package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-import static racingcar.exception.Message.BAD_CARS_INPUT;
+import static racingcar.exception.Message.EMPTY_CARS_ERROR;
 
 public class Cars {
 
@@ -17,22 +18,28 @@ public class Cars {
         this.cars = cars;
     }
 
+    public static Cars of(List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    public static Cars of(String[] carNames) {
+        List<Car> cars = Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+
     public Cars runRound(MoveStrategy strategy) {
-        List<Car> racingCars = new ArrayList<>();
-        for (Car car : cars) {
-            racingCars.add(car.move(strategy));
-        }
+        List<Car> racingCars = cars.stream()
+                .map(car -> car.move(strategy))
+                .collect(Collectors.toList());
         return new Cars(racingCars);
     }
 
     private void validateInput(List<Car> cars) {
         if (cars.isEmpty()) {
-            throw new IllegalArgumentException(BAD_CARS_INPUT);
+            throw new IllegalArgumentException(EMPTY_CARS_ERROR);
         }
-    }
-
-    public static Cars of(List<Car> cars) {
-        return new Cars(cars);
     }
 
     public List<Car> getCarsAtRound() {
