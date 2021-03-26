@@ -3,18 +3,31 @@ import step3.InputView;
 import step3.RacingCar;
 import step3.ResultView;
 
+import java.util.ArrayList;
+
 public class RacingCarApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
         InputDto input = inputView.getInput();
-
-        RacingCar racingCar = new RacingCar();
-        racingCar.setInput(input);
-        int[][] result = racingCar.getRandomValue();
-
         ResultView resultView = new ResultView();
-        resultView.printResult(result, input);
+
+        ArrayList<RacingCar> carList = new ArrayList<>();
+
+        for (int i = 0; i < input.getNumberOfCar(); i++) {
+            carList.add(new RacingCar());
+        }
+
+        resultView.printStart();
+
+        for (int i = 0; i < input.getNumberOfTrial(); i++) {
+            for (RacingCar racingCar: carList) {
+                int moveCount = racingCar.move();
+                resultView.printRacingCar(moveCount);
+            }
+            System.out.println();
+        }
+
 
     }
 }
