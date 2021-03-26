@@ -1,6 +1,9 @@
 package ch01.racinggame.domain;
 
+
+
 public class Car implements Comparable<Car> {
+
     private static final int initCarCount = 1;
     private static final int limitNameLength = 5;
     private final String name;
@@ -36,6 +39,7 @@ public class Car implements Comparable<Car> {
     @Override
     public int compareTo(Car o) {
         return Integer.compare(o.progressCnt(), this.progressCnt);
+
     }
 
     private void checkNameLength(String name) {

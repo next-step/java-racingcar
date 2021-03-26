@@ -7,6 +7,9 @@ public class RacingGame {
     private int carCount = 0;
     private Car[] cars;
 
+    private static RandomNumber randomNumber = new RandomNumber();
+
+
     public RacingGame(InputData inputData) {
 
         //입력값 setting
@@ -29,9 +32,16 @@ public class RacingGame {
         int carsSize = cars.length;
 
         for (int i = 0; i < carsSize; i++) {
-            cars[i].move();
+            isMovableCar(cars[i]);
         }
         return cars;
+    }
+
+
+    private void isMovableCar(Car car){
+        if(randomNumber.movable()){
+            car.move();
+        }
     }
 
 

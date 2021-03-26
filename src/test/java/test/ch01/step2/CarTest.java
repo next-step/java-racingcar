@@ -11,26 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    Car car;
-
+    private Car car;
+    private RandomNumber randomNumber;
     @BeforeEach
     void setUp() {
-        car = new Car("Test"){
-
-            private int progressCnt = 1;
-
-            @Override
-            public int progressCnt() {
-                return this.progressCnt;
-
-            }
-
-            @Override
-            public void move() {
-                progressCnt++;
-            }
-        };
-
+        car = new Car("Test");
+        randomNumber = new RandomNumber();
     }
 
 
@@ -52,10 +38,27 @@ class CarTest {
     }
 
     @Test
-    void move() {
+    @DisplayName("자동차가 움직였는지 테스트 ")
+    void movable() {
         //when
-        car.move();
+        if(randomNumber.movable()){
+            car.move();
+        }
         //then
         assertThat(car.progressCnt()).isEqualTo(2);
+
+    }
+
+    @Test
+    @DisplayName("자동차가 안움직였는지 테스트")
+    void notMovable() {
+        //when
+        if(randomNumber.movable()){
+            car.move();
+        }
+        //then
+        assertThat(car.progressCnt()).isEqualTo(1);
+
+
     }
 }
