@@ -12,28 +12,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static racingcar.exception.Message.EMPTY_CARS_ERROR;
 
 class RacingGameTest {
 
     RacingGame racingGame;
 
-    private int carCount = 2;
+    private String[] carNames = {"pobi", "crong"};
     private int roundCount = 2;
 
     static Stream<Arguments> carList() {
         return Stream.of(
-                arguments(Lists.list(new Car(0), new Car(0)))
+                arguments(Lists.list(new Car("pobi", 0), new Car("crong", 0)))
         );
     }
 
     @Test
     @DisplayName("생성자 테스트")
     void createRacingGame() {
-        racingGame = new RacingGame(carCount, roundCount);
+        racingGame = new RacingGame(carNames, roundCount);
         assertNotNull(racingGame);
+    }
+
+    @Test
+    @DisplayName("생성자 예외 테스트")
+    void createEmptyRacingGame() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new RacingGame(new String[]{}, roundCount)).withMessage(EMPTY_CARS_ERROR);
     }
 
     @ParameterizedTest
@@ -45,7 +54,7 @@ class RacingGameTest {
             expected.add(new Round(Cars.of(carList)));
         }
 
-        List<Round> actual = new RacingGame(carCount, expected.size()).runGame(() -> false);
+        List<Round> actual = new RacingGame(carNames, expected.size()).runGame(() -> false);
         assertEquals(expected, actual);
     }
 
@@ -57,14 +66,14 @@ class RacingGameTest {
             Round round = new Round(getCars(i + 1));
             expected.add(round);
         }
-        List<Round> actual = new RacingGame(carCount, expected.size()).runGame(() -> true);
+        List<Round> actual = new RacingGame(carNames, expected.size()).runGame(() -> true);
         assertEquals(expected, actual);
     }
 
     private Cars getCars(int position) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            Car car = new Car(position);
+        for (String carName : carNames) {
+            Car car = new Car(carName, position);
             cars.add(car);
         }
         return Cars.of(cars);
