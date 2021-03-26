@@ -12,6 +12,10 @@ public class Car {
         this(new Name(name), new Position());
     }
 
+    public Car(String name, int position) {
+        this(new Name(name), new Position(position));
+    }
+
     public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
@@ -51,6 +55,13 @@ public class Car {
         return position.getPosition();
     }
 
+    public Position getMaxPosition(Position maxPositon) {
+        if (position.lessThan(maxPositon)) {
+            return maxPositon;
+        }
+        return position;
+    }
+
     public String name() {
         return name.getName();
     }
@@ -64,5 +75,9 @@ public class Car {
 
     public boolean isWinner(int grade) {
         return (grade == 0) ? false : position() == grade;
+    }
+
+    public boolean isWinner(Position maxPosition) {
+        return position.equals(maxPosition);
     }
 }

@@ -54,4 +54,8 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
+    public boolean lessThan(Position maxPositon) {
+        return maxPositon.position > position;
+    }
 }

@@ -7,10 +7,14 @@ import java.util.List;
 
 public class Cars {
 
-    List<Car> carList;
+    private final List<Car> carList;
 
     public Cars() {
         carList = new ArrayList<>();
+    }
+
+    public Cars(List<Car> list) {
+        carList = list;
     }
 
     public List<Car> getCarList() {
