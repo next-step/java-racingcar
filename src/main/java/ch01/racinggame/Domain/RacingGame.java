@@ -36,8 +36,7 @@ public class RacingGame {
     }
 
     private void isMovableCar(Car car){
-        int randomNum = randomNumber.randomNumber();
-        if(randomNumber.movable(randomNum)){
+        if(randomNumber.movable()){
             car.move();
         }
     }

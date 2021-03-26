@@ -18,7 +18,7 @@ class RandomNumberTest {
     }
     @Test
     void movable() {
-        boolean isMoveable = randomNumber.movable(5);
+        boolean isMoveable = randomNumber.movable();
         assertThat(isMoveable).isTrue();
     }
 }

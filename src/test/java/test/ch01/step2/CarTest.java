@@ -42,7 +42,7 @@ class CarTest {
     @DisplayName("자동차가 움직였는지 테스트")
     void movable() {
         //when
-        if(randomNumber.movable(5)){
+        if(randomNumber.movable()){
             car.move();
         }
         //then
@@ -54,7 +54,7 @@ class CarTest {
     @DisplayName("자동차가 안움직였는지 테스트")
     void notMovable() {
         //when
-        if(randomNumber.movable(4)){
+        if(randomNumber.movable()){
             car.move();
         }
         //then
