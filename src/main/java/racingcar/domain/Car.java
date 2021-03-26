@@ -10,7 +10,7 @@ import static racingcar.exception.Message.NULL_OR_EMPTY_ERROR;
 public class Car {
     private int position;
     private String name;
-    private final int LIMIT = 5;
+    private static final int LIMIT = 5;
 
     public Car(String name) {
         validate(name);

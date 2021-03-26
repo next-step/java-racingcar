@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -14,9 +16,9 @@ public class InputView {
         scanner = new Scanner(System.in);
     }
 
-    public String[] inputCarName() {
+    public List<String> inputCarNames() {
         System.out.println(CAR_NAME_MESSAGE);
-        return scanner.nextLine().split(DELIMITER);
+        return Arrays.asList(scanner.nextLine().split(DELIMITER));
     }
 
     public int inputCarCount() {

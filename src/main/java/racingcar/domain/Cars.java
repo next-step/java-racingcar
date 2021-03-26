@@ -22,8 +22,8 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars of(String[] carNames) {
-        List<Car> cars = Arrays.stream(carNames)
+    public static Cars createByNames(List<String> carNames) {
+        List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
         return new Cars(cars);

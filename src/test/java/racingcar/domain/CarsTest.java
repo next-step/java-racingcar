@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -37,7 +38,7 @@ class CarsTest {
     @DisplayName("생성자 예외 테스트")
     void createEmptyCars() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Cars.of(new String[]{}))
+                .isThrownBy(() -> Cars.createByNames(Collections.emptyList()))
                 .withMessage(EMPTY_CARS_ERROR);
     }
 

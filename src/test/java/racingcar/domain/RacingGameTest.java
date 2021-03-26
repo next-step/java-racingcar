@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import racingcar.dto.Round;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -34,7 +36,7 @@ class RacingGameTest {
     @Test
     @DisplayName("생성자 테스트")
     void createRacingGame() {
-        racingGame = new RacingGame(carNames, roundCount);
+        racingGame = new RacingGame(Arrays.asList(carNames), roundCount);
         assertNotNull(racingGame);
     }
 
@@ -42,7 +44,7 @@ class RacingGameTest {
     @DisplayName("생성자 예외 테스트")
     void createEmptyRacingGame() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingGame(new String[]{}, roundCount)).withMessage(EMPTY_CARS_ERROR);
+                .isThrownBy(() -> new RacingGame(Collections.emptyList(), roundCount)).withMessage(EMPTY_CARS_ERROR);
     }
 
     @ParameterizedTest
@@ -54,7 +56,7 @@ class RacingGameTest {
             expected.add(new Round(Cars.of(carList)));
         }
 
-        List<Round> actual = new RacingGame(carNames, expected.size()).runGame(() -> false);
+        List<Round> actual = new RacingGame(Arrays.asList(carNames), expected.size()).runGame(() -> false);
         assertEquals(expected, actual);
     }
 
@@ -66,7 +68,7 @@ class RacingGameTest {
             Round round = new Round(getCars(i + 1));
             expected.add(round);
         }
-        List<Round> actual = new RacingGame(carNames, expected.size()).runGame(() -> true);
+        List<Round> actual = new RacingGame(Arrays.asList(carNames), expected.size()).runGame(() -> true);
         assertEquals(expected, actual);
     }
 

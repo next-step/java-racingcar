@@ -10,12 +10,12 @@ public class RacingGame {
     public Cars cars;
     public int roundCount;
 
-    public RacingGame(String[] carNames, int roundCount) {
+    public RacingGame(List<String> carNames, int roundCount) {
         this.cars = Cars.of(initializeCars(carNames));
         this.roundCount = roundCount;
     }
 
-    private List<Car> initializeCars(String[] carNames) {
+    private List<Car> initializeCars(List<String> carNames) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
             carList.add(new Car(carName));

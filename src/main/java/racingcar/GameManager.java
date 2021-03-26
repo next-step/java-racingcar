@@ -11,7 +11,7 @@ import java.util.List;
 public class GameManager {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        String[] carNames = inputView.inputCarName();
+        List<String> carNames = inputView.inputCarNames();
         int roundCount = inputView.inputRoundCount();
 
         RacingGame game = new RacingGame(carNames, roundCount);
