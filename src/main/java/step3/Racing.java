@@ -2,10 +2,10 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Racing {
-    final static int CAN_GO = 4;
+    public Print print = new Print();
+    public RacingRule racingRule = new RacingRule();
 
     public Racing(int carCount, int lapCount) {
         List<Car> cars = getCarReady(carCount);
@@ -20,42 +20,16 @@ public class Racing {
         return cars;
     }
 
-    public void onRacing(List<Car> cars, int lapCount) {
-        System.out.println("\n ======== LAP : " + lapCount + "th to last ========");
+    private void onRacing(List<Car> cars, int lapCount) {
+        print.startLap();
         for (int i = 0; i < cars.size(); i++) {
-            lap(cars.get(i));
+            racingRule.go(cars.get(i));
         }
-        printRacing(cars);
+        print.racing(cars);
         lapCount--;
-
         if (lapCount > 0) {
             onRacing(cars, lapCount);
         }
     }
 
-    private void lap(Car car) {
-        if (castDice() >= CAN_GO) {
-            car.position++;
-        }
-    }
-
-    private int castDice() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
-    private void printRacing(List<Car> cars) {
-        System.out.println();
-        for (Car c : cars) {
-            printCarPosition(c);
-            System.out.print("🚘\n");
-        }
-    }
-
-    private void printCarPosition(Car c) {
-        int position = c.getPosition();
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
-        }
-    }
 }
