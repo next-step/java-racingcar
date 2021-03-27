@@ -12,7 +12,7 @@ class RacingTest {
 
     @ParameterizedTest
     @CsvSource(value = {"3,5,5", "5,10,10"}, delimiter = ',')
-    public void 횟수_테스트(int carCount, int lapCount, int expected) {
+    void 횟수_테스트(int carCount, int lapCount, int expected) {
         // give & when
         Racing racing = new Racing(carCount, lapCount);
         int result = racing.print.getCount();
@@ -31,8 +31,7 @@ class RacingTest {
     @DisplayName("0에서 9 사이에서 random 값을 구한다")
     void 랜덤조건확인() {
         int num = new RacingRule().castDice();
-        assertThat(num).isGreaterThanOrEqualTo(0);
-        assertThat(num).isLessThanOrEqualTo(9);
+        assertThat(num).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
     }
 
     @Test
@@ -40,8 +39,7 @@ class RacingTest {
     void 자동차_전진() {
         Car car = new Car();
         new RacingRule().go(car);
-        assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
-        assertThat(car.getPosition()).isLessThanOrEqualTo(1);
+        assertThat(car.getPosition()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(1);
     }
 
 }
