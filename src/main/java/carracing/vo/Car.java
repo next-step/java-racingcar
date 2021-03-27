@@ -34,7 +34,7 @@ public class Car {
     }
 
     public String go(String result) {
-        if (RandomUtil.isWin())
+        if (RandomUtil.forward())
             result += RACING_RESULT_MARK;
 
         return result;
