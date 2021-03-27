@@ -8,7 +8,8 @@ public class RacingCar {
     private int moveCount;
 
     public int move() {
-        moveCount += random.nextInt(10);
-        return moveCount;
+        int temp = random.nextInt(10);
+        if (temp >= 4) this.moveCount += temp;
+        return this.moveCount;
     }
 }
