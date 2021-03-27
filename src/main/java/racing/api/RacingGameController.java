@@ -1,19 +1,23 @@
 package racing.api;
 
 import racing.core.RacingCarGame;
-import racing.model.RacingGameRequestVO;
-import racing.model.RacingGameResponseVO;
+import racing.domain.RacingRound;
+import racing.view.InputView;
+import racing.view.ResultView;
 import racing.vo.RacingCarGamePlayInfo;
 
-public class RacingGameController {
+import java.util.List;
 
+public class RacingGameController {
   private final RacingCarGame racingCarGame;
 
   public RacingGameController(RacingCarGame racingCarGame) {
     this.racingCarGame = racingCarGame;
   }
 
-  public RacingGameResponseVO play(RacingGameRequestVO requestVO) {
-    return new RacingGameResponseVO(racingCarGame.play(RacingCarGamePlayInfo.from(requestVO)));
+  public void play() {
+    RacingCarGamePlayInfo playInfo = InputView.executeConsole();
+    List<RacingRound> result = racingCarGame.play(playInfo);
+    ResultView.print(result);
   }
 }

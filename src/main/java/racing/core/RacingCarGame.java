@@ -10,7 +10,6 @@ import java.util.List;
 
 
 public class RacingCarGame {
-
   private final MoveRule moveRule;
 
   public RacingCarGame(MoveRule moveRule) {
@@ -22,14 +21,14 @@ public class RacingCarGame {
   }
 
   public List<RacingRound> play(RacingCarGamePlayInfo info) {
-    int totalRound = info.getTotalRound();
+    int roundTotalCount = info.getRoundTotalCount();
     RacingCars racingCars = info.getPlayers();
 
-    List<RacingRound> racingRounds = new ArrayList<>(totalRound);
+    List<RacingRound> racingRounds = new ArrayList<>(roundTotalCount);
 
-    while (totalRound > 0) {
+    while (roundTotalCount > 0) {
       racingCars.race(moveRule);
-      racingRounds.add(RacingRound.create(racingCars, --totalRound));
+      racingRounds.add(RacingRound.create(racingCars, --roundTotalCount));
     }
     return racingRounds;
   }

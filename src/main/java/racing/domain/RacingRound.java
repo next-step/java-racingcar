@@ -7,7 +7,7 @@ public class RacingRound {
   private int remainingRounds;
 
   private RacingRound(RacingCars racingCars, int remainingRounds) {
-    this(racingCars, Winners.create(racingCars), remainingRounds);
+    this(RacingCars.copyFrom(racingCars), Winners.create(racingCars), remainingRounds);
   }
 
   private RacingRound(RacingCars racingCars, Winners winners, int remainingRounds) {
