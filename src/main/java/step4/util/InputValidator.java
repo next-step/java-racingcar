@@ -3,6 +3,9 @@ package step4.util;
 import step4.dto.Data;
 
 public class InputValidator {
+
+    private static final String SEPARATOR = ",";
+
     private InputValidator() {
     }
 
@@ -18,7 +21,7 @@ public class InputValidator {
             throw new IllegalArgumentException("입력한 숫자가 올바르지 않습니다.");
         }
 
-        String[] names = data.spliteName(",");
+        String[] names = StringUtil.splite(data.getNames(), SEPARATOR);
         for (String name : names) {
             nameCheck(name);
         }

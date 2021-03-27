@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import step4.dto.Data;
+import step4.util.InputValidator;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -16,7 +17,7 @@ public class inputTest {
     public void inputNameOver(String names) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    new Data(names);
+                    InputValidator.validate(new Data(names));
                 });
     }
 
@@ -26,7 +27,7 @@ public class inputTest {
     public void inputCountMinus(String names, int count) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    new Data(names, count);
+                    InputValidator.validate(new Data(names, count));
                 });
     }
 

@@ -7,6 +7,7 @@ public class Car {
     private static final int RANGE = 10;
     private final Name name;
     private final Position position;
+    private final Random random = new Random();
 
     public Car(String name) {
         this(new Name(name), new Position());
@@ -44,7 +45,7 @@ public class Car {
     }
 
     protected int getRandomNo() {
-        return new Random().nextInt(RANGE);
+        return random.nextInt(RANGE);
     }
 
     public boolean isMoving() {
@@ -66,15 +67,8 @@ public class Car {
         return name.getName();
     }
 
-    public int bestScore(int grade) {
-        if (position() > grade) {
-            grade = position();
-        }
-        return grade;
-    }
-
     public boolean isWinner(int grade) {
-        return (grade == 0) ? false : position() == grade;
+        return (grade != 0) && position() == grade;
     }
 
     public boolean isWinner(Position maxPosition) {
