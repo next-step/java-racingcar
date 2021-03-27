@@ -1,7 +1,7 @@
 package step3;
 
 public class Car {
-    int position;
+    private int position;
 
     public Car() {
         this.position = 0;
@@ -10,4 +10,9 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public void go() {
+        this.position++;
+    }
+
 }
