@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NameTest {
 
@@ -21,16 +22,14 @@ class NameTest {
   }
 
   @Test
-  @DisplayName("이름 길이")
-  void length() {
+  @DisplayName("자동차 이름의 자릿수는 5를 초과할 수 없다.")
+  void createError() {
     // given
-    String gmoon = "gmoon";
-    Name name = Name.create(gmoon);
 
     // when
-    int expected = gmoon.length();
 
     // then
-    assertThat(name.length()).isEqualTo(expected);
+    assertThatThrownBy(() -> Name.create("123456"))
+            .isInstanceOf(IllegalArgumentException.class);
   }
 }

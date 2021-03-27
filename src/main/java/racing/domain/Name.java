@@ -1,11 +1,17 @@
 package racing.domain;
 
+import racing.validation.DomainValidation;
+
 import java.util.Objects;
 
 public class Name {
+  private final static int RACING_CAR_NAME_LENGTH = 5;
+  private final static String RACING_CAR_EXCEPTION_MESSAGE = "Car name length is exceed";
+
   private final String name;
 
   private Name(String name) {
+    checkExceedStringLength(name);
     this.name = name;
   }
 
@@ -13,12 +19,13 @@ public class Name {
     return new Name(name);
   }
 
-  public int length() {
-    return name.length();
-  }
-
   public String getName() {
     return name;
+  }
+
+  private void checkExceedStringLength(String name) {
+    int nameLength = name.length();
+    DomainValidation.checkExceedStringLength(nameLength, RACING_CAR_NAME_LENGTH, RACING_CAR_EXCEPTION_MESSAGE);
   }
 
   @Override
@@ -38,4 +45,5 @@ public class Name {
   public String toString() {
     return name;
   }
+
 }
