@@ -10,29 +10,25 @@ import java.util.List;
 
 
 public class RacingCarGame {
-
-  private final RacingCarGamePlayInfo info;
   private final MoveRule moveRule;
 
-  public RacingCarGame(RacingCarGamePlayInfo info, MoveRule moveRule) {
-    this.info = info;
+  public RacingCarGame(MoveRule moveRule) {
     this.moveRule = moveRule;
   }
 
-  public static RacingCarGame newGame(RacingCarGamePlayInfo info, MoveRule moveRule) {
-    return new RacingCarGame(info, moveRule);
+  public static RacingCarGame newGame(MoveRule moveRule) {
+    return new RacingCarGame(moveRule);
   }
 
-  public List<RacingRound> play() {
-    int totalRound = info.getTotalRound();
+  public List<RacingRound> play(RacingCarGamePlayInfo info) {
+    int roundTotalCount = info.getRoundTotalCount();
     RacingCars racingCars = info.getPlayers();
 
-    List<RacingRound> racingRounds = new ArrayList<>(totalRound);
+    List<RacingRound> racingRounds = new ArrayList<>(roundTotalCount);
 
-    for (int i = 0; i < totalRound; i++) {
-      boolean finalRound = totalRound == i + 1;
+    while (roundTotalCount > 0) {
       racingCars.race(moveRule);
-      racingRounds.add(RacingRound.create(racingCars, finalRound));
+      racingRounds.add(RacingRound.create(racingCars, --roundTotalCount));
     }
     return racingRounds;
   }

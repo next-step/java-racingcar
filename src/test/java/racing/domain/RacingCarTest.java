@@ -23,8 +23,8 @@ class RacingCarTest {
 
     // then
     assertThat(newCar)
-            .hasFieldOrPropertyWithValue("name", name)
-            .hasFieldOrPropertyWithValue("position", 0);
+            .hasFieldOrPropertyWithValue("name", Name.create(name))
+            .hasFieldOrPropertyWithValue("position", Position.Zero());
   }
 
   @ParameterizedTest
@@ -53,7 +53,7 @@ class RacingCarTest {
     newCar.move(() -> true);
 
     // then
-    assertThat(newCar.position()).isEqualTo(1);
+    assertThat(newCar.position()).isEqualTo(Position.create(1));
   }
 
   @ParameterizedTest
@@ -83,4 +83,20 @@ class RacingCarTest {
     assertThatThrownBy(() -> RacingCar.create("schumacher"))
             .isInstanceOf(IllegalArgumentException.class);
   }
+
+  @Test
+  @DisplayName("우승자 자동차인지")
+  void isWinner() {
+    // given
+    RacingCar gmoon = RacingCar.create("gmoon");
+    gmoon.move(() -> true);
+
+    // when
+    boolean isWinner = gmoon.isWinner(Position.create(1));
+
+    // then
+    assertThat(isWinner).isTrue();
+  }
+
+
 }

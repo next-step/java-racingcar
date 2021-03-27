@@ -1,6 +1,7 @@
 package racing.utils;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -51,5 +52,32 @@ class StringUtilsTest {
 
     // then
     assertThat(result).isEqualTo("");
+  }
+
+  @Test
+  @DisplayName("반복된 문자열 만들기")
+  void repeatString() {
+    // given
+    String symbol = "-";
+    int repeat = 3;
+
+    // when
+    String result = StringUtils.repeatString(symbol, repeat);
+
+    // then
+    assertThat(result).isEqualTo("---");
+  }
+
+  @Test
+  @DisplayName("공백을 자른다")
+  void trim() {
+    // given
+    String str = " test";
+
+    // when
+    String expected = StringUtils.trim(str);
+
+    // then
+    assertThat(expected).isEqualTo("test");
   }
 }

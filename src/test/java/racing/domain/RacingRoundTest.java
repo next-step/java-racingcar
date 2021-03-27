@@ -23,7 +23,7 @@ class RacingRoundTest {
     // given
 
     // when
-    RacingRound newRound = RacingRound.create(racingCars);
+    RacingRound newRound = RacingRound.createFinalRound(racingCars);
 
     // then
     assertThat(newRound).isNotNull();

@@ -4,24 +4,24 @@ public class RacingRound {
 
   private final RacingCars racingCars;
   private Winners winners;
-  private boolean finalRound;
+  private int remainingRounds;
 
-  public RacingRound(RacingCars racingCars, boolean finalRound) {
-    this(racingCars, Winners.create(racingCars), finalRound);
+  private RacingRound(RacingCars racingCars, int remainingRounds) {
+    this(RacingCars.copyFrom(racingCars), Winners.create(racingCars), remainingRounds);
   }
 
-  private RacingRound(RacingCars racingCars, Winners winners, boolean finalRound) {
-    this.racingCars = RacingCars.copyFrom(racingCars);
+  private RacingRound(RacingCars racingCars, Winners winners, int remainingRounds) {
+    this.racingCars = racingCars;
     this.winners = winners;
-    this.finalRound = finalRound;
+    this.remainingRounds = remainingRounds;
   }
 
-  public static RacingRound create(RacingCars racingCars) {
-    return create(racingCars, false);
+  public static RacingRound createFinalRound(RacingCars racingCars) {
+    return create(racingCars, 0);
   }
 
-  public static RacingRound create(RacingCars racingCars, boolean isFinalRound) {
-    return new RacingRound(racingCars, isFinalRound);
+  public static RacingRound create(RacingCars racingCars, int remainingRounds) {
+    return new RacingRound(racingCars, remainingRounds);
   }
 
   public RacingCars racingCars() {
@@ -33,6 +33,8 @@ public class RacingRound {
   }
 
   public boolean isFinalRound() {
-    return finalRound;
+    return remainingRounds == 0;
   }
+
+
 }

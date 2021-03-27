@@ -20,16 +20,21 @@ public class Winners {
 
   private static List<RacingCar> findWinners(RacingCars racingCars) {
     return racingCars.getRacingCars().stream()
-            .filter(car -> winnerPosition(racingCars) == car.position())
+            .filter(car -> car.isWinner(winnerPosition(racingCars)))
             .collect(Collectors.toList());
   }
 
-  private static int winnerPosition(RacingCars racingCars) {
+  private static Position winnerPosition(RacingCars racingCars) {
     return racingCars.getRacingCars().stream()
             .map(RacingCar::position)
-            .max(Integer::compareTo)
-            .orElse(0)
-            .intValue();
+            .max(Position::compareTo)
+            .orElse(Position.Zero());
+  }
+
+  public List<Name> winnerNames() {
+    return winners.stream()
+            .map(RacingCar::name)
+            .collect(Collectors.toList());
   }
 
   public List<RacingCar> getList() {

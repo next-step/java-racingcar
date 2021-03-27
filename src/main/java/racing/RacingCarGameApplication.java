@@ -1,21 +1,18 @@
 package racing;
 
+import racing.api.RacingGameController;
 import racing.core.RacingCarGame;
-import racing.domain.RacingRound;
 import racing.rule.OperationMoveRule;
-import racing.view.InputView;
-import racing.view.ResultView;
-import racing.vo.RacingCarGamePlayInfo;
-
-import java.util.List;
 
 public class RacingCarGameApplication {
 
   public static void main(String[] args) {
-    RacingCarGamePlayInfo playInfo = InputView.executeConsole();
-    List<RacingRound> result = RacingCarGame.newGame(playInfo, new OperationMoveRule())
-            .play();
-
-    ResultView.print(result);
+    RacingGameController racingGameController = getRacingGameController();
+    racingGameController.play();
   }
+
+  private static RacingGameController getRacingGameController() {
+    return new RacingGameController(RacingCarGame.newGame(new OperationMoveRule()));
+  }
+
 }

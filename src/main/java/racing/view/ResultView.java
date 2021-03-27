@@ -1,9 +1,11 @@
 package racing.view;
 
+import racing.domain.Name;
 import racing.domain.RacingCar;
 import racing.domain.RacingCars;
 import racing.domain.RacingRound;
 import racing.domain.Winners;
+import racing.utils.StringUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -39,20 +41,17 @@ public class ResultView {
   }
 
   private static String winnerNames(Winners winners) {
-    return winners.getList().stream()
-            .map(RacingCar::name)
+    return winners.winnerNames()
+            .stream()
+            .map(Name::getName)
             .collect(Collectors.joining(WINNER_NAME_DELIMITER));
   }
 
   private static String toPositionString(RacingCar racingCar) {
-    String positionString = "";
-    for (int i = 0; i < racingCar.position(); i++) {
-      positionString += CAR_MOVE_POSITION_SYMBOL;
-    }
-    return positionString;
+    return StringUtils.repeatString(CAR_MOVE_POSITION_SYMBOL, racingCar.position().getPosition());
   }
 
   private static String toCarNameString(RacingCar racingCar) {
-    return racingCar.name();
+    return racingCar.name().getName();
   }
 }
