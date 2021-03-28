@@ -1,7 +1,9 @@
 package step4.controller;
 
-import step4.domain.*;
-import step4.util.RandomUtil;
+import step4.domain.Car;
+import step4.domain.Cars;
+import step4.domain.RandomMovingStrategy;
+import step4.dto.Data;
 import step4.view.InputView;
 import step4.view.ResultView;
 
@@ -9,13 +11,11 @@ public class RaceController {
     InputView inputView;
     ResultView resultView;
     Cars cars;
-    Winner winner;
 
     public RaceController() {
-        this.inputView = new InputView();
-        this.resultView = new ResultView();
-        this.cars = new Cars();
-        this.winner = new Winner();
+        inputView = new InputView();
+        resultView = new ResultView();
+        cars = new Cars();
     }
 
     public void start() {
@@ -33,7 +33,7 @@ public class RaceController {
     }
 
     private void createList() {
-        cars.createdList(inputView.getData());
+        cars.createList(inputView.getData());
     }
 
     private void racing() {
@@ -45,7 +45,7 @@ public class RaceController {
 
     private void drive() {
         for (Car car : cars.getCarList()) {
-            car.move(RandomUtil.getRandomValue());
+            car.move(new RandomMovingStrategy());
             renderMove(car);
         }
         System.out.println();
@@ -58,8 +58,7 @@ public class RaceController {
     }
 
     private void winner() {
-        winner.findWinner(cars);
-        resultView.renderWinner(winner.getWinners());
+        resultView.renderWinner(cars.findWinner());
     }
 
 }

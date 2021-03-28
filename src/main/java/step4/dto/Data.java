@@ -1,12 +1,12 @@
-package step4.domain;
+package step4.dto;
 
 public class Data {
-    final static int defaultCount = 5;
-    final String names;
-    final int count;
+    private static final int DEFAULT_COUNT = 5;
+    private final String names;
+    private final int count;
 
     public Data(String names) {
-        this(names, defaultCount);
+        this(names, DEFAULT_COUNT);
     }
 
     public Data(String names, int count) {
@@ -21,9 +21,5 @@ public class Data {
 
     public int getCount() {
         return count;
-    }
-
-    public String[] spliteName(String separator) {
-        return names.split(separator);
     }
 }

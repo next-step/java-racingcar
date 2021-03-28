@@ -1,6 +1,6 @@
 package step4.view;
 
-import step4.domain.Data;
+import step4.dto.Data;
 import step4.util.InputValidator;
 
 import java.util.InputMismatchException;
@@ -20,6 +20,7 @@ public class InputView {
 
         data = InputValidator.validate(new Data(names, count));
     }
+
 
     public Data getData() {
         return data;
