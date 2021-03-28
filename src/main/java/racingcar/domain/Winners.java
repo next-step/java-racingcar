@@ -19,7 +19,7 @@ public class Winners {
     }
 
     public String winnersToString() {
-        return winners.stream().map(Name::getName).collect(Collectors.joining(WINNER_DELIMITER));
+        return winners.stream().map(Name::name).collect(Collectors.joining(WINNER_DELIMITER));
     }
 
     @Override
