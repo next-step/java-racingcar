@@ -1,5 +1,7 @@
 package step3to5.domain;
 
+import step3to5.utils.GameRule;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,16 +19,20 @@ public class Cars {
         return cars;
     }
 
-    public Car getCar(int index) {
-        return cars.get(index);
-    }
-
     public int getNumberOfCars() {
         return cars.size();
     }
 
+    public void move(GameRule rule) {
+        for (Car car : cars) {
+            if (rule.isMovable()) {
+                car.setScore();
+            }
+        }
+    }
+
     public List<String> decisionOfChampion() {
-        int highScore = getCar(0).getScore();
+        int highScore = 0;
         List<String> champions = new ArrayList<>();
 
         for (Car car : cars) {

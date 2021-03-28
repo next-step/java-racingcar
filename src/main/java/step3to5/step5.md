@@ -15,7 +15,7 @@ class Car {
 }
 ~~~
 
-- 일급 컬렉션에 대해 get을 사용하면서 loop를 돌리기보다 이 로직을 일급 콜렉션 안으로 넣도록 라팩토링
+- 일급 컬렉션에 대해 get을 사용하면서 loop를 돌리기보다 이 로직을 일급 콜렉션 안으로 넣도록 리팩토링
   - `Cars`가 ArrayList면 좋겠지만, 만약 다른 List일 경우 오버헤드 발생할 수 있음.
   - 제안
     - `ResultView`에서 `List<Car> Cars`를 가지고 있고, `Car`는 name, score, symbol을 가져오는 불변 멤버와 `getter()`만 정의
@@ -28,8 +28,7 @@ class Car {
 
 - [x] `ConvertToStringFromList()` 를 `ResultView` 메소드로 변경
 - [x]  라운드 출력시 `String.format()`으로 코드 가독성 높힘.
-
-
+- [x]  결과 출력을 위한 DTO 분리 및 컨트롤러(`RacingGame`)에서 `ResultView` 관련 기능 분리
 
 
 

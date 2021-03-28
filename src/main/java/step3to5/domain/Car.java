@@ -1,7 +1,5 @@
 package step3to5.domain;
 
-import step3to5.utils.GameRule;
-
 public class Car {
     private int score = 0;
     private final String name;
@@ -18,9 +16,7 @@ public class Car {
         return score;
     }
 
-    public void move(GameRule rule) {
-        if (rule.isMovable()) {
-            score += 1;
-        }
+    public void setScore() {
+        score += 1;
     }
 }

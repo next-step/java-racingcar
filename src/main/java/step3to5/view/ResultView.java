@@ -1,15 +1,15 @@
 package step3to5.view;
 
+import step3to5.domain.ResultDto;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
-    public static void printRaceResult(String name, int score, String symbol) {
-        System.out.printf("%5s : ", name);
-        for (int i = 0; i < score; i++) {
-            System.out.printf("%s", symbol);
+    public static void printRaceResult(ResultDto result) {
+        for (int i = 0; i < result.getNumberOfCars(); i++) {
+            System.out.println(result.printResultByCar(i));
         }
-        System.out.println();
     }
 
     public static void printChampions(List<String> championsList) {

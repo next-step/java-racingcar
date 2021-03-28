@@ -1,9 +1,8 @@
 package step3to5.controller;
 
-import step3to5.domain.Car;
 import step3to5.domain.Cars;
+import step3to5.domain.ResultDto;
 import step3to5.utils.GameRule;
-import step3to5.view.InputView;
 import step3to5.view.ResultView;
 
 import java.util.List;
@@ -32,11 +31,8 @@ public class RacingGame {
     }
 
     public void raceByRound() {
-        for (int i = 0; i < cars.getNumberOfCars(); i++) {
-            Car car = cars.getCar(i);
-            car.move(gameRule);
-            ResultView.printRaceResult(car.getName(), car.getScore(), InputView.getSymbol());
-        }
+        cars.move(gameRule);
+        ResultView.printRaceResult(new ResultDto(cars));
         System.out.println();
     }
 
