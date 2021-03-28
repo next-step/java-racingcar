@@ -3,8 +3,10 @@ package racingcar.dto;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Round {
 
@@ -22,20 +24,11 @@ public class Round {
         Map<String, Integer> result = new HashMap<>();
         List<Car> cars = round.getAllCars().getCarsAtRound();
         for (Car car : cars) {
-            result.put(car.getName(), car.getPosition());
+            result.put(car.getName(), car.getPosition().position());
         }
         return result;
     }
 
-    public static List<String> winners(Map<String, Integer> finalRound) {
-        int maxPosition = finalRound.values().stream().max(Integer::compare).orElseThrow(NoSuchElementException::new);
-        return finalRound.entrySet()
-                .stream()
-                .filter(entry -> entry.getValue() == maxPosition)
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-    }
-    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
