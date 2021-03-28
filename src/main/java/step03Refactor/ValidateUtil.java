@@ -1,10 +1,8 @@
 package step03Refactor;
 
-import static step03Refactor.CarFactory.CAR_DELIMITER;
+import static step03Refactor.Config.*;
 
 public class ValidateUtil {
-    private static final String ERROR_INPUT_ZERO = "입력값은 0 이상이어야 합니다.";
-    private static final String ERROR_INPUT_CAR_NAME_LENGTH = "차 이름은 0글자 이상 5글자 이하로 입력해주세요.";
 
     public static void inputIsZero(int input1, int input2) {
         if (input1 <= 0 || input2 <= 0) {

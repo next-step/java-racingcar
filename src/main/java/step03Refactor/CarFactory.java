@@ -3,11 +3,10 @@ package step03Refactor;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static step03Refactor.Config.*;
+
 public class CarFactory {
     private final List<Car> cars = new ArrayList<>();
-    private static final String MOVE_RANGE = "-";
-    private static final String DELIMITER = " : ";
-    static final String CAR_DELIMITER = ",";
 
     public CarFactory(String carNames) {
         makeCars(carNames);
@@ -41,11 +40,15 @@ public class CarFactory {
     }
 
     public List<Car> getWinners() {
-        int finalMaxPosition = cars.stream().max(Comparator.comparingInt(Car::getCarPosition)).get().getCarPosition();
+        Car maxPositionCar = findMaxPositionCar();
 
         return cars.stream().filter(car -> {
-            return car.isWinner(finalMaxPosition);
+            return car.isWinner(maxPositionCar.getCarPosition());
         }).collect(Collectors.toList());
+    }
+
+    private Car findMaxPositionCar() {
+       return cars.stream().max(Comparator.comparingInt(Car::getCarPosition)).orElseThrow(() -> new IllegalArgumentException("참가한 자동차 리스트가 비었습니다."));
     }
 
     public String getWinnerName() {

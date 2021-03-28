@@ -1,5 +1,7 @@
 package step03Refactor;
 
+import static step03Refactor.Config.*;
+
 public class Name {
     private final String name;
 
@@ -10,10 +12,10 @@ public class Name {
 
     private void checkValidate(String name) {
         if (name.length() <= 0) {
-            throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
+            throw new IllegalArgumentException(ERROR_EMPTY_NAME);
         }
         if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5글자 이상 초과할 수 없습니다");
+            throw new IllegalArgumentException(ERROR_NAME_LENGTH);
         }
     }
 

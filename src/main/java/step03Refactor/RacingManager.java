@@ -11,6 +11,11 @@ public class RacingManager {
         roundCount = new RoundCount(tryCount);
     }
 
+    public RacingManager() {
+        carFactory = new CarFactory(InputView.inputRacingCarNames());
+        roundCount = new RoundCount(InputView.inputRacingTryCount());
+    }
+
     public void startRandomRacing() {
         startRacing(new RandomMoveStrategy());
     }
@@ -22,7 +27,7 @@ public class RacingManager {
         }
         showRacingRoundFinalWinner();
     }
-    
+
     private void showRacingRoundResult() {
         ResultView.showRacingResult(carFactory.getCarResultDataToString());
     }
