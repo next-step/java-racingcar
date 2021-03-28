@@ -2,47 +2,50 @@ package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-
-import static racingcar.exception.Message.EMPTY_CARS_ERROR;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
-        validateInput(cars);
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public static Cars of(List<Car> cars) {
-        return new Cars(cars);
+    public static Cars of(List<Car> carList) {
+        return new Cars(carList);
     }
 
-    public static Cars createByNames(List<String> carNames) {
-        List<Car> cars = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-        return new Cars(cars);
-    }
-
-    public Cars runRound(MoveStrategy strategy) {
-        List<Car> racingCars = cars.stream()
-                .map(car -> car.move(strategy))
-                .collect(Collectors.toList());
-        return new Cars(racingCars);
-    }
-
-    private void validateInput(List<Car> cars) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException(EMPTY_CARS_ERROR);
-        }
+    public void runRound(MoveStrategy strategy) {
+        cars.forEach(car -> car.move(strategy));
     }
 
     public List<Car> getCarsAtRound() {
         return cars;
+    }
+
+    private Position maxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.max(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    public Winners getWinners() {
+        List<Name> winners = new ArrayList<>();
+        for (Car car : cars) {
+            addWinners(winners, car);
+        }
+        return Winners.of(winners);
+    }
+
+    private void addWinners(List<Name> winners, Car car) {
+        if (car.isWinner(maxPosition())) {
+            winners.add(new Name(car.getName()));
+        }
     }
 
     @Override
