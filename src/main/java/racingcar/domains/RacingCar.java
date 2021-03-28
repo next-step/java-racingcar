@@ -2,18 +2,18 @@ package racingcar.domains;
 
 public class RacingCar {
 
-    private String movePath;
+    public static final int MIN_MOVE_CONDITION = 4;
 
-    public RacingCar() {
-        movePath = "";
+    private int moveCnt;
+
+    public int move(int randomNum) {
+        if (randomNum >= MIN_MOVE_CONDITION) {
+            return moveCnt++;
+        }
+        return moveCnt;
     }
 
-    public void moveForward() {
-        movePath = movePath + "-";
+    public int getMoveCnt() {
+        return moveCnt;
     }
-
-    public String getMovePath() {
-        return movePath;
-    }
-
 }
