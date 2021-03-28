@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    public Cars cars;
-    public int roundCount;
+
+    public final Cars cars;
+    public final int roundCount;
 
     public RacingGame(List<String> carNames, int roundCount) {
         this.cars = Cars.of(initializeCars(carNames));

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ResultView {
+
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String RACE_TRACK = "-";
     private static final String CAR_NAME_DELIMITER = ": ";

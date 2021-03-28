@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.strategy.MoveStrategy;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

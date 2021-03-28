@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Round {
+
     private final Cars cars;
 
     public Round(Cars cars) {

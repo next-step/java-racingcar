@@ -21,11 +21,6 @@ public class InputView {
         return Arrays.asList(scanner.nextLine().split(DELIMITER));
     }
 
-    public int inputCarCount() {
-        System.out.println(CAR_COUNT_MESSAGE);
-        return scanner.nextInt();
-    }
-
     public int inputRoundCount() {
         System.out.println(ROUND_COUNT_MESSAGE);
         return scanner.nextInt();

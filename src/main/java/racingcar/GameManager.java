@@ -9,6 +9,7 @@ import racingcar.view.ResultView;
 import java.util.List;
 
 public class GameManager {
+
     public static void main(String[] args) {
         InputView inputView = new InputView();
         List<String> carNames = inputView.inputCarNames();

@@ -8,9 +8,11 @@ import static racingcar.exception.Message.MAX_LENGTH_ERROR;
 import static racingcar.exception.Message.NULL_OR_EMPTY_ERROR;
 
 public class Car {
+
+    private static final int LIMIT = 5;
+
     private int position;
     private String name;
-    private static final int LIMIT = 5;
 
     public Car(String name) {
         validate(name);
