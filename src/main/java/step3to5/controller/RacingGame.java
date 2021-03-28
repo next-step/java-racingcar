@@ -26,7 +26,7 @@ public class RacingGame {
     public void startRace() {
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttemps; i++) {
-            System.out.println("[" + (i + 1) + "]" + " round");
+            System.out.println(String.format("[%d] round", (i + 1)));
             raceByRound();
         }
     }

@@ -27,7 +27,7 @@ class Car {
 ## 진행상황
 
 - [x] `ConvertToStringFromList()` 를 `ResultView` 메소드로 변경
-- [ ]  
+- [x]  라운드 출력시 `String.format()`으로 코드 가독성 높힘.
 
 
 
