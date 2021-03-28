@@ -14,9 +14,11 @@ public class Config {
     static final String ERROR_NAME_LENGTH = "이름은 5글자 이상 초과할 수 없습니다";
     static final String ERROR_INPUT_ZERO = "입력값은 0 이상이어야 합니다.";
     static final String ERROR_INPUT_CAR_NAME_LENGTH = "차 이름은 0글자 이상 5글자 이하로 입력해주세요.";
-    static final String ERROR_CAR_LISt_EMPTY = "참가한 자동차 리스트가 비었습니다.";
+    static final String ERROR_CAR_LIST_EMPTY = "참가한 자동차 리스트가 비었습니다.";
 
     static final String WINNER_SUFFIX = "가 최종 우승했습니다.";
+
+    static final int ADD_DELIMITER_COUNT = 1;
 
 
 

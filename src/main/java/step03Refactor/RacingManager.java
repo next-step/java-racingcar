@@ -29,7 +29,7 @@ public class RacingManager {
     }
 
     private void showRacingRoundResult() {
-        ResultView.showRacingResult(carFactory.getCarResultDataToString());
+        ResultView.showRacingResult(carFactory.getCarData());
     }
 
     private void showRacingRoundFinalWinner() {

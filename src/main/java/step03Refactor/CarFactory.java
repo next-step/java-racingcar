@@ -3,7 +3,8 @@ package step03Refactor;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static step03Refactor.Config.*;
+import static step03Refactor.Config.CAR_DELIMITER;
+import static step03Refactor.Config.ERROR_INPUT_CAR_NAME_LENGTH;
 
 public class CarFactory {
     private final List<Car> cars = new ArrayList<>();
@@ -48,38 +49,25 @@ public class CarFactory {
     }
 
     private Car findMaxPositionCar() {
-       return cars.stream().max(Comparator.comparingInt(Car::getCarPosition)).orElseThrow(() -> new IllegalArgumentException("참가한 자동차 리스트가 비었습니다."));
+        return cars.stream().max(Comparator.comparingInt(Car::getCarPosition)).orElseThrow(() -> new IllegalArgumentException(ERROR_INPUT_CAR_NAME_LENGTH));
     }
 
     public String getWinnerName() {
+        int winnerCount = 0;
         StringBuilder winnersName = new StringBuilder();
         for (Car car : getWinners()) {
-            addDelimiter(winnersName);
-            winnersName.append(car.getCarName());
+            winnerCount++;
+            winnersName.append(new CarDTO(car).getWinnerName(winnerCount));
         }
         return winnersName.toString();
     }
 
-    private void addDelimiter(StringBuilder winnerName) {
-        if (winnerName.length() > 0) {
-            winnerName.append(CAR_DELIMITER);
-        }
-    }
-
-    public String getCarResultDataToString() {
-        StringBuilder carData = new StringBuilder();
+    public List<CarDTO> getCarData() {
+        List<CarDTO> carData = new ArrayList<>();
         for (Car car : cars) {
-            carData.append(car.getCarName()).append(DELIMITER).append(getCarMoveRangeToString(car)).append("\n");
+            carData.add(new CarDTO(car));
         }
-        return carData.toString();
-    }
-
-    private String getCarMoveRangeToString(Car car) {
-        StringBuilder position = new StringBuilder();
-        for (int i = 0; i < car.getCarPosition(); i++) {
-            position.append(MOVE_RANGE);
-        }
-        return String.valueOf(position);
+        return carData;
     }
 
     public int getCarsSize() {
