@@ -1,4 +1,4 @@
-package calculator.exception;
+package calculator.exceptions;
 
 public class InvalidOperatorException extends IllegalArgumentException {
 
