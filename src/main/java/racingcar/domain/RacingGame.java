@@ -8,8 +8,9 @@ import java.util.List;
 
 public class RacingGame {
 
-    public final Cars cars;
-    public final int roundCount;
+    private final Cars cars;
+    private final int roundCount;
+    private Winners winners;
 
     public RacingGame(List<String> carNames, int roundCount) {
         this.cars = Cars.of(initializeCars(carNames));
@@ -19,7 +20,7 @@ public class RacingGame {
     private List<Car> initializeCars(List<String> carNames) {
         List<Car> carList = new ArrayList<>();
         for (String carName : carNames) {
-            carList.add(new Car(carName));
+            carList.add(Car.create(carName));
         }
         return carList;
     }
@@ -27,10 +28,17 @@ public class RacingGame {
     public List<Round> runGame(MoveStrategy strategy) {
         List<Round> rounds = new ArrayList<>();
         for (int i = 0; i < roundCount; i++) {
-            cars = cars.runRound(strategy);
+            cars.runRound(strategy);
             rounds.add(new Round(cars));
         }
+        findWinners();
         return rounds;
     }
+    private void findWinners() {
+        this.winners = cars.getWinners();
+    }
 
+    public String winnersList() {
+        return winners.winnersToString();
+    }
 }
