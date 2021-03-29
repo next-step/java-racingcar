@@ -5,6 +5,7 @@ import java.util.Random;
 public class RacingCar {
 
     private static Random random = new Random();
+    private String carName;
     private int moveCount;
 
     public int move() {
