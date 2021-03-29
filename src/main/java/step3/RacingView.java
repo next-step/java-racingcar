@@ -22,23 +22,11 @@ public class RacingView {
         return scanner.nextInt();
     }
     
-    public void resultView(RacingCar racingInfo) {
-
-        System.out.println("\n실행 결과");
-        
-        if( racingInfo == null ) {
-            return ;
-        }
-        
+    public void printCurrentRound(RacingCar racingInfo) {
         Car currentCar;
-        for( int rIndex = 0 ; rIndex < racingInfo.getTotalRound() ; rIndex++ ) {
-            racingInfo.raceSingleRound();
-            
-            for( int cIndex = 0 ; cIndex < racingInfo.getTotalCarCount() ; cIndex++ ) {
-                currentCar = racingInfo.getCarByIndex(cIndex);
-                System.out.println(CAR_MOVEMENT.repeat(currentCar.getPosition()));
-            }
-            System.out.println();
+        for( int cIndex = 0 ; cIndex < racingInfo.getTotalCarCount() ; cIndex++ ) {
+            currentCar = racingInfo.getCarByIndex(cIndex);
+            System.out.println(CAR_MOVEMENT.repeat(currentCar.getPosition()));
         }
         System.out.println();
     }
