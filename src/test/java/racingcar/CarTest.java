@@ -22,7 +22,9 @@ public class CarTest {
   @ValueSource(ints = {5, 1, 9})
   public void carMoveForward(int distance) {
     Car car = new Car();
-    car.move(distance);
+    for (int i = 0; i < distance; ++i) {
+      car.moveOne();
+    }
     int position = car.getPosition();
     assertThat(position).isEqualTo(distance);
   }
