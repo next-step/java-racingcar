@@ -1,34 +1,67 @@
 package step3to5.domain;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import step3to5.controller.RacingGame;
 import step3to5.utils.GameRule;
 import step3to5.utils.NumberGenerator;
 import step3to5.utils.TestNumberGenerator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class CarTest {
-    @ParameterizedTest(name = "전진여부 따라 스코어 제대로 출력하는지 테스트")
-    @ValueSource(ints = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
-    void move(int number) {
+
+    @Test
+    @DisplayName("자동차 이름 가져오는지 테스트")
+    void getName() {
         // given
-        NumberGenerator numberGenerator = new TestNumberGenerator(number);
-        GameRule rule = new GameRule(numberGenerator);
-
-        String inputName = "apple,google,kakao,naver,coupang";
-        Car car = new Car(inputName);
-
-        int expected = 0;
-        if (number >= 4) {
-            expected += 1;
-        }
+        String given = "socar,uber,kakao,goog,gm,benz";
+        String[] expected = given.split(",");
 
         // when
-        car.move(rule);
-        int actual = car.getScore();
+        Cars cars = new Cars(expected);
+        String[] actual = new String[expected.length];
+        List<Car> list = cars.getCars();
+        for (int i = 0; i < list.size(); i++) {
+            Car car = list.get(i);
+            actual[i] = car.getName();
+        }
 
         // then
-        assertEquals(actual, expected);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("자동차별 스코어 연산 테스트")
+    void getScore() {
+        // given
+        String given = "socar,uber,kakao,goog,gm,benz";
+        String[] names = given.split(",");
+        Cars cars = new Cars(names);
+
+        int testNum = 4;
+        NumberGenerator numberGenerator = new TestNumberGenerator(testNum);
+
+        GameRule rule = new GameRule(numberGenerator);
+        int attemps = 5;
+
+        int[] expected = {5, 5, 5, 5, 5, 5};
+
+        // when
+        RacingGame race = new RacingGame(attemps, rule, cars);
+        race.startRace();
+
+        int[] actual = new int[names.length];
+        List<Car> list = cars.getCars();
+
+        for (int i = 0; i < list.size(); i++) {
+            Car car = list.get(i);
+            actual[i] = car.getScore();
+        }
+
+        // then
+        assertArrayEquals(expected, actual);
     }
 }

@@ -19,10 +19,6 @@ public class Cars {
         return cars;
     }
 
-    public int getNumberOfCars() {
-        return cars.size();
-    }
-
     public void move(GameRule rule) {
         for (Car car : cars) {
             if (rule.isMovable()) {
@@ -31,28 +27,28 @@ public class Cars {
         }
     }
 
-    public List<String> decisionOfChampion() {
+    public List<String> winners() {
         int highScore = 0;
         List<String> champions = new ArrayList<>();
 
         for (Car car : cars) {
-            highScore = validateHighScore(car, highScore);
+            highScore = highScore(car, highScore);
         }
 
         for (Car car : cars) {
-            champions = validateChampion(car, highScore, champions);
+            champions = getCarsWithHighScore(car, highScore, champions);
         }
         return champions;
     }
 
-    public int validateHighScore(Car car, int highScore) {
+    public int highScore(Car car, int highScore) {
         if (car.getScore() > highScore) {
             highScore = car.getScore();
         }
         return highScore;
     }
 
-    public List<String> validateChampion(Car car, int highScore, List<String> champions) {
+    public List<String> getCarsWithHighScore(Car car, int highScore, List<String> champions) {
         if (car.getScore() == highScore) {
             champions.add(car.getName());
         }

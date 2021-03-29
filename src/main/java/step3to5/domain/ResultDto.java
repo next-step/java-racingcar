@@ -6,9 +6,13 @@ import java.util.List;
 
 public class ResultDto {
     private List<Car> cars;
+    private String resultSymbol = "-";
 
     public ResultDto(Cars cars) {
         this.cars = cars.getCars();
+        if (InputView.getSymbol() != null) {
+            resultSymbol = InputView.getSymbol();
+        }
     }
 
     public int getNumberOfCars() {
@@ -25,7 +29,7 @@ public class ResultDto {
     public String convertStringFromScoreNumber(int score) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < score; i++) {
-            result.append(InputView.getSymbol());
+            result.append(resultSymbol);
         }
         return result.toString();
     }

@@ -18,10 +18,6 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public int getNumberOfCars() {
-        return cars.getNumberOfCars();
-    }
-
     public void startRace() {
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttemps; i++) {
@@ -37,6 +33,6 @@ public class RacingGame {
     }
 
     public List<String> getChampion() {
-        return cars.decisionOfChampion();
+        return cars.winners();
     }
 }
