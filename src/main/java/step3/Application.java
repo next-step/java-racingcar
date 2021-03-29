@@ -9,7 +9,7 @@ public class Application {
         carInput   = view.inputCarCountView();
         roundInput = view.inputRacingRoundView();
         
-        System.out.println("\n실행결과");
+        System.out.println("\n실행 결과");
 
         RacingCar racing = new RacingCar(carInput, roundInput);
         
