@@ -9,7 +9,7 @@ public class Application {
         carInput   = view.inputCarCountView();
         roundInput = view.inputRacingRoundView();
         
-        System.out.println("\n½ÇÇà °á°ú");
+        System.out.println("\nì‹¤í–‰ ê²°ê³¼ : ");
 
         RacingCar racing = new RacingCar(carInput, roundInput);
         
