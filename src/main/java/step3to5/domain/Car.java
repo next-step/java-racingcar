@@ -1,6 +1,4 @@
-package step3.domain;
-
-import step3.utils.GameRule;
+package step3to5.domain;
 
 public class Car {
     private int score = 0;
@@ -18,9 +16,7 @@ public class Car {
         return score;
     }
 
-    public void move(GameRule rule) {
-        if (rule.isMovable()) {
-            score += 1;
-        }
+    public void setScore() {
+        score += 1;
     }
 }

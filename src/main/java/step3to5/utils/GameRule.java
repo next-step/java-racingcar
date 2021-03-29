@@ -1,4 +1,4 @@
-package step3.utils;
+package step3to5.utils;
 
 public class GameRule {
     private static final int STANDARD_FOR_MOVING = 4;

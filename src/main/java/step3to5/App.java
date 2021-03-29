@@ -1,12 +1,12 @@
-package step3;
+package step3to5;
 
-import step3.controller.RacingGame;
-import step3.domain.Cars;
-import step3.utils.GameRule;
-import step3.utils.NumberGenerator;
-import step3.utils.RandomUtil;
-import step3.view.InputView;
-import step3.view.ResultView;
+import step3to5.controller.RacingGame;
+import step3to5.domain.Cars;
+import step3to5.utils.GameRule;
+import step3to5.utils.NumberGenerator;
+import step3to5.utils.RandomUtil;
+import step3to5.view.InputView;
+import step3to5.view.ResultView;
 
 public class App {
     public static void main(String[] args) {

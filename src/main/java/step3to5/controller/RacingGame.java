@@ -1,10 +1,9 @@
-package step3.controller;
+package step3to5.controller;
 
-import step3.domain.Car;
-import step3.domain.Cars;
-import step3.utils.GameRule;
-import step3.view.InputView;
-import step3.view.ResultView;
+import step3to5.domain.Cars;
+import step3to5.domain.ResultDto;
+import step3to5.utils.GameRule;
+import step3to5.view.ResultView;
 
 import java.util.List;
 
@@ -19,28 +18,21 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public int getNumberOfCars() {
-        return cars.getNumberOfCars();
-    }
-
     public void startRace() {
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttemps; i++) {
-            System.out.println("[" + (i + 1) + "]" + " round");
+            System.out.println(String.format("[%d] round", (i + 1)));
             raceByRound();
         }
     }
 
     public void raceByRound() {
-        for (int i = 0; i < cars.getNumberOfCars(); i++) {
-            Car car = cars.getCar(i);
-            car.move(gameRule);
-            ResultView.printRaceResult(car.getName(), car.getScore(), InputView.getSymbol());
-        }
+        cars.move(gameRule);
+        ResultView.printRaceResult(new ResultDto(cars));
         System.out.println();
     }
 
     public List<String> getChampion() {
-        return cars.decisionOfChampion();
+        return cars.winners();
     }
 }
