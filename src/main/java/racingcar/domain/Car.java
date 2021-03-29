@@ -4,48 +4,45 @@ import racingcar.strategy.MoveStrategy;
 
 import java.util.Objects;
 
-import static racingcar.exception.Message.MAX_LENGTH_ERROR;
-import static racingcar.exception.Message.NULL_OR_EMPTY_ERROR;
-
 public class Car {
-    private int position;
-    private String name;
-    private final int LIMIT = 5;
 
-    public Car(String name) {
-        validate(name);
+    private final Name name;
+    private Position position;
+
+    public Car(Name name) {
         this.name = name;
-        this.position = 0;
+        this.position = new Position();
     }
 
-    public Car(String name, int position) {
-        validate(name);
-        this.name = name;
-        this.position = position;
+    public Car(final String name, final int position) {
+        this.name = new Name(name);
+        this.position = new Position(position);
     }
 
-    private void validate(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(NULL_OR_EMPTY_ERROR);
-        }
-        if (name.length() > LIMIT) {
-            throw new IllegalArgumentException(MAX_LENGTH_ERROR);
-        }
+    public static Car create(String name) {
+        return new Car(new Name(name));
     }
 
-    public Car move(MoveStrategy strategy) {
+    public void move(MoveStrategy strategy) {
         if (strategy.moveCar()) {
-            return new Car(name, position + 1);
+            position = position.increase();
         }
-        return new Car(name, position);
     }
 
     public String getName() {
-        return name;
+        return name.name();
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
+    }
+
+    public Position max(Position other) {
+        return this.position.max(other);
+    }
+
+    public boolean isWinner(Position other) {
+        return this.position.equals(other);
     }
 
     @Override
@@ -53,11 +50,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return getPosition() == car.getPosition();
+        return Objects.equals(getName(), car.getName()) &&
+                Objects.equals(getPosition(), car.getPosition());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPosition());
+        return Objects.hash(getName(), getPosition());
     }
 }
