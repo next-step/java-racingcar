@@ -1,14 +1,23 @@
 package racingcar;
 
+import racingcar.domain.Location;
+import racingcar.domain.Owner;
+import racingcar.domain.RacingCar;
+import racingcar.domain.Winner;
+import racingcar.utils.RandomNumber;
+import racingcar.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
     private ResultView resultView;
+    private List<RacingCar> winnerList;
 
     public RacingGame() {
         resultView = new ResultView();
+        winnerList = new ArrayList<>();
     }
 
     public List<RacingCar> settingRacingCars(String owners) {
@@ -17,7 +26,7 @@ public class RacingGame {
         String[] owner = owners.split(",");
 
         for (int i = 0; i < owner.length; i++) {
-            RacingCar racingCar = new RacingCar(owner[i], new Location());
+            RacingCar racingCar = new RacingCar(new Owner(owner[i]), new Location(0));
             carList.add(racingCar);
         }
 
@@ -30,33 +39,13 @@ public class RacingGame {
 
     public void gameOver(List<RacingCar> carList) {
         Winner winner = new Winner();
-        getWinners(winner.whoisWin(carList));
+        resultView.showResult();
     }
-
-    public String getWinners(List<RacingCar> winnerList) {
-
-        String winner = "";
-
-        if (winnerList.isEmpty()) {
-            return winner;
-        }
-
-        for (int i = 0; i < winnerList.size(); i++) {
-            winner += winnerList.get(i).getOwner() + ",";
-        }
-
-        winner = winner.replaceFirst(".$", "") + "가 최종 우승했습니다.";
-        resultView.showWinner(winner);
-
-        return winner;
-    }
-
-
 
     private void numberingGameTimes(List<RacingCar> carList, int count) {
         for (int i = 0; i < count; i++) {
             numberingCars(carList);
-            resultView.setResult("\n");
+            resultView.showRoundResult("\n");
         }
         resultView.showResult();
         gameOver(carList);
@@ -65,8 +54,8 @@ public class RacingGame {
 
     private void numberingCars(List<RacingCar> carList) {
         for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).canGo(RandomNumber.random());
-            resultView.setResult(carList.get(i).getOwner() + " : " + carList.get(i).getCarLocation() + "\n");
+            carList.get(i).move(RandomNumber.random());
+            resultView.showCarStatus(carList.get(i).getOwner(), carList.get(i).getLocation());
         }
     }
 

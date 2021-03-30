@@ -1,18 +1,18 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Winner {
 
-    public List<RacingCar> whoisWin(List<RacingCar> carList) {
+    public List<RacingCar> findWinners(List<RacingCar> carList) {
 
         List<RacingCar> winnerList = new ArrayList<>();
 
         int maxLocation = getMaxLocation(carList);
 
         for (int i = 0; i < carList.size(); i++) {
-            if (carList.get(i).getCarLocation().length() == maxLocation) winnerList.add(carList.get(i));
+            if (carList.get(i).getLocation() == maxLocation) winnerList.add(carList.get(i));
         }
 
         return winnerList;
@@ -23,7 +23,7 @@ public class Winner {
         int maxLocation = 0;
 
         for (int i = 0; i < carList.size(); i++) {
-            if (maxLocation < carList.get(i).getCarLocation().length()) maxLocation = carList.get(i).getCarLocation().length();
+            if (maxLocation < carList.get(i).getLocation()) maxLocation = carList.get(i).getLocation();
         }
 
         return maxLocation;

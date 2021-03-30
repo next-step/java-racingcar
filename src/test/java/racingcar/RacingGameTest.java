@@ -4,7 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
+import racingcar.utils.GameSet;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,9 +39,13 @@ public class RacingGameTest {
         List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
 
         RacingCar pobiCar = list.get(0);
-        pobiCar.canGo(5);
+        pobiCar.move(5);
 
-        assertThat(racingGame.getWinners(list)).contains("pobi");
+        List<RacingCar> winnerList = Arrays.asList(pobiCar);
+
+        RacingCars racingCars = new RacingCars(winnerList);
+
+        assertThat(racingCars.findWinners(winnerList)).contains(pobiCar);
         
 
     }
@@ -54,13 +62,17 @@ public class RacingGameTest {
         RacingCar pobiCar = list.get(0);
         RacingCar crongCar = list.get(1);
 
-        pobiCar.canGo(5);
-        crongCar.canGo(5);
+        pobiCar.move(5);
+        crongCar.move(5);
 
-        assertThat(1).isEqualTo(pobiCar.getCarLocation().length());
-        assertThat(1).isEqualTo(crongCar.getCarLocation().length());
+        List<RacingCar> winnerList = Arrays.asList(pobiCar, crongCar);
 
-        assertThat(racingGame.getWinners(list)).contains("pobi,crong");
+        assertThat(1).isEqualTo(pobiCar.getLocation());
+        assertThat(1).isEqualTo(crongCar.getLocation());
+
+        RacingCars racingCars = new RacingCars(winnerList);
+
+        assertThat(racingCars.findWinners(winnerList)).contains(pobiCar, crongCar);
     }
 
 }
