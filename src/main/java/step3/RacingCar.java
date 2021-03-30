@@ -8,6 +8,18 @@ public class RacingCar {
     private String carName;
     private int moveCount;
 
+    public RacingCar(String carName) {
+        this.carName = carName;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
     public int move() {
         int randomNumber = random.nextInt(10);
         if (randomNumber >= 4) {
