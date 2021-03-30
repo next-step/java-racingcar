@@ -34,17 +34,18 @@ public class RacingGame {
     }
 
     public void gameStart(List<RacingCar> carList, int count) {
-        numberingGameTimes(carList, count);
+        showGameTimes(carList, count);
     }
 
     public void gameOver(List<RacingCar> carList) {
         Winner winner = new Winner();
-        resultView.showResult();
+        resultView.showWinner(winner.findWinners(carList));
     }
 
-    private void numberingGameTimes(List<RacingCar> carList, int count) {
+
+    private void showGameTimes(List<RacingCar> carList, int count) {
         for (int i = 0; i < count; i++) {
-            numberingCars(carList);
+            showCarsStatus(carList);
             resultView.showRoundResult("\n");
         }
         resultView.showResult();
@@ -52,7 +53,7 @@ public class RacingGame {
     }
 
 
-    private void numberingCars(List<RacingCar> carList) {
+    private void showCarsStatus(List<RacingCar> carList) {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).move(RandomNumber.random());
             resultView.showCarStatus(carList.get(i).getOwner(), carList.get(i).getLocation());
