@@ -12,20 +12,31 @@ public class Winner {
         int maxLocation = getMaxLocation(carList);
 
         for (int i = 0; i < carList.size(); i++) {
-            if (carList.get(i).getLocation() == maxLocation) winnerList.add(carList.get(i));
+            findWinner(carList, winnerList, maxLocation, i);
         }
 
         return winnerList;
     }
 
+    private void findWinner(List<RacingCar> carList, List<RacingCar> winnerList, int maxLocation, int i) {
+        if (carList.get(i).getLocation() == maxLocation) {
+            winnerList.add(carList.get(i));
+        }
+    }
 
     private int getMaxLocation(List<RacingCar> carList) {
         int maxLocation = 0;
 
         for (int i = 0; i < carList.size(); i++) {
-            if (maxLocation < carList.get(i).getLocation()) maxLocation = carList.get(i).getLocation();
+            maxLocation = getCarLocation(carList, maxLocation, i);
         }
+        return maxLocation;
+    }
 
+    private int getCarLocation(List<RacingCar> carList, int maxLocation, int i) {
+        if (maxLocation < carList.get(i).getLocation()) {
+            maxLocation = carList.get(i).getLocation();
+        }
         return maxLocation;
     }
 }
