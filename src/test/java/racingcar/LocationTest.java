@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LocationTest {
 
-    @DisplayName("Location 객체가 생성이 잘 되었는가?")
+    @DisplayName("Location 객체가 생성이 잘 되는지")
     @Test
     void create_location() {
         Location location = new Location(0);
