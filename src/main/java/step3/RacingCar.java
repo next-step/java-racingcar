@@ -3,27 +3,22 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * STEP3. 자동차 경주
- * 
- * 1. 입력값   : 차량 수, 이동 횟수
- * 2. 전진조건 : 0 ~ 9 사이의 난수를 발생하여 4이상인 경우
- * 
- * @author ddak-ddakong
- *
- */
 public class RacingCar {
     
-    private List<Car> cars;                         //차량
-    private int roundCount;                         //이동 횟수
+    private List<Car> cars;
+    private int roundCount;
     
-    public RacingCar(int carCount, int roundCount) {
+    public RacingCar(List<Car> cars) throws Exception {
+        this.cars = cars;
+    }
+    
+    public RacingCar(List<Car> cars, int roundCount) throws Exception {
         this.roundCount = roundCount;
-        this.cars = new ArrayList<Car>();
-        
-        for( int index = 0 ; index < carCount ; index++ ) {
-            this.cars.add(index, new Car());
-        }
+        this.cars = cars;
+    }
+
+    public void setRound(int roundCount) {
+        this.roundCount = roundCount;
     }
     
     public int getTotalRound() {
@@ -42,5 +37,29 @@ public class RacingCar {
         for( int cIndex = 0 ; cIndex < getTotalCarCount() ; cIndex++ ) {
             getCarByIndex(cIndex).move(RacingCondition.isMoveForward());
         }
+    }
+    
+    public List<Car> getWinner() {
+        List<Car> winners = new ArrayList<Car>();
+        
+        int maxPosition = getMaxPosition();
+        
+        for( Car car : cars ) {
+            if( maxPosition == car.getPosition() ) {
+                winners.add(car);
+            }
+        }
+        
+        return winners;
+    }
+    
+    public int getMaxPosition() {
+        int maxPosition = 0;
+        
+        for( Car car : cars ) {
+            maxPosition = maxPosition < car.getPosition() ? car.getPosition() : maxPosition;
+        }
+        
+        return maxPosition;
     }
 }    

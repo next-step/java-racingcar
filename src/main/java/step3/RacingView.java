@@ -1,10 +1,12 @@
 package step3;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingView {
 
-    private static final String CAR_MOVEMENT = "-";        //Â÷·®ÀÇ ÀÌµ¿Ç¥±â
+    private static final String CAR_MOVEMENT = "-";
+    private static final String DELIMITER = ",";
     
     Scanner scanner;
     
@@ -12,13 +14,15 @@ public class RacingView {
         scanner = new Scanner(System.in);
     }
     
-    public int inputCarCountView() {
-        System.out.println("ÀÚµ¿Â÷ ´ë¼ö´Â ¸î ´ë ÀÎ°¡¿ä?");
-        return scanner.nextInt();
+    public String[] inputCarCountView() {
+        System.out.println("ê²½ì£¼í•  ìë™ì°¨ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”(ì´ë¦„ì€ ì‰¼í‘œ(,)ë¥¼ ê¸°ì¤€ìœ¼ë¡œ êµ¬ë¶„).");
+        String carNames = scanner.next();
+        
+        return carNames.split(DELIMITER);
     }
     
     public int inputRacingRoundView() {
-        System.out.println("½ÃµµÇÒ È¸¼ö´Â ¸î È¸ ÀÎ°¡¿ä?");
+        System.out.println("ì‹œë„í•  íšŒìˆ˜ëŠ” ëª‡íšŒì¸ê°€ìš”?");
         return scanner.nextInt();
     }
     
@@ -26,8 +30,19 @@ public class RacingView {
         Car currentCar;
         for( int cIndex = 0 ; cIndex < racingInfo.getTotalCarCount() ; cIndex++ ) {
             currentCar = racingInfo.getCarByIndex(cIndex);
-            System.out.println(CAR_MOVEMENT.repeat(currentCar.getPosition()));
+            System.out.println(currentCar.getName() + " : " + CAR_MOVEMENT.repeat(currentCar.getPosition()));
         }
         System.out.println();
+    }
+    
+    public void printWinner(RacingCar racingInfo) {
+        StringBuilder builder = new StringBuilder();
+        
+        List<Car> winners = racingInfo.getWinner();
+        for( int cIndex = 0 ; cIndex < winners.size() ; cIndex++ ) {
+            builder.append(winners.get(cIndex).getName());
+            builder.append(cIndex + 1 < winners.size() ? ", " : ""); 
+        }
+        System.out.println(builder.toString() + "ê°€ ìµœì¢… ìš°ìŠ¹í–ˆìŠµë‹ˆë‹¤.");
     }
 }
