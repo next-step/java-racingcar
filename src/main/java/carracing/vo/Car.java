@@ -16,7 +16,9 @@ public class Car {
     private List<String> racingResult;
 
     public void initializeRacingResult() {
-        this.racingResult = Stream.generate(String::new).limit(this.carCount).collect(Collectors.toList());
+        this.racingResult = Stream.generate(String::new)
+                .limit(this.carCount)
+                .collect(Collectors.toList());
     }
 
     public List<String> getRacingResult() {
@@ -40,7 +42,7 @@ public class Car {
         return result;
     }
 
-    public void createCar(int carCount, int tryCount) {
+    public Car(int carCount, int tryCount) {
         this.carCount = carCount;
         this.tryCount = tryCount;
     }

@@ -6,8 +6,7 @@ import carracing.vo.Car;
 public class ResultView {
 
     public static void print(Car car) {
-        for (String result : car.getRacingResult())
-            System.out.println(result);
+        car.getRacingResult().forEach(System.out::println);
 
         System.out.println();
     }

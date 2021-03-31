@@ -14,16 +14,12 @@ public class InputView {
     private InputView() { }
 
     public static Car input() {
-        Car car = new Car();
-
         System.out.println(CAR_COUNT_QUESTION);
         int carCount = scanner.nextInt();
         System.out.println(TRY_COUNT_QUESTION);
         int tryCount = scanner.nextInt();
 
-        car.createCar(carCount, tryCount);
-
-        return car;
+        return new Car(carCount, tryCount);
     }
 
 
