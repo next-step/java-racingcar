@@ -9,73 +9,64 @@ import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"2 + 4,6", "120 + 34,154", "2300 + 11 + 345,2656"})
     @DisplayName("덧셈 구현 확인")
-    void add() throws Exception {
+    void add(String input, int expected) {
         // given
         StringCalculator calculator = new StringCalculator();
 
         // when
-        int result = calculator.add(1, 2);
-        int result2 = calculator.add(10, 40);
-        int result3 = calculator.add(130, 560);
+        calculator.setText(input);
+        int result = calculator.calculate();
 
         // then
-        assertThat(result).isEqualTo(3);
-        assertThat(result2).isEqualTo(50);
-        assertThat(result3).isEqualTo(690);
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"2 - 4,-2", "120 - 10 - 5,105", "111 - 34 - 42 - 2,33"})
     @DisplayName("뺄셈 구현 확인")
-    void subtract() throws Exception {
+    void subtract(String input, int expected) {
         // given
         StringCalculator calculator = new StringCalculator();
 
         // when
-        int result = calculator.subtract(3, 1);
-        int result2 = calculator.subtract(13, 21);
-        int result3 = calculator.subtract(400, 201);
+        calculator.setText(input);
+        int result = calculator.calculate();
 
         // then
-        assertThat(result).isEqualTo(2);
-        assertThat(result2).isEqualTo(-8);
-        assertThat(result3).isEqualTo(199);
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"2 * 4,8", "10 * 5 * 3,150", "11 * 22 * 4 * 5,4840"})
     @DisplayName("곱셈 구현 확인")
-    void multiply() throws Exception {
+    void multiply(String input, int expected) {
         // given
         StringCalculator calculator = new StringCalculator();
 
         // when
-        int result = calculator.multiply(3, 4);
-        int result2 = calculator.multiply(10, 14);
-        int result3 = calculator.multiply(201, 123);
+        calculator.setText(input);
+        int result = calculator.calculate();
 
         // then
-        assertThat(result).isEqualTo(12);
-        assertThat(result2).isEqualTo(140);
-        assertThat(result3).isEqualTo(24723);
-
+        assertThat(result).isEqualTo(expected);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"16 / 8,2", "12000 / 6 / 20 / 5,20", "45000 / 9 / 100,50"})
     @DisplayName("나눗셈 구현 확인")
-    void divide() throws Exception {
+    void divide(String input, int expected) {
         // given
         StringCalculator calculator = new StringCalculator();
 
         // when
-        int result = calculator.divide(12, 2);
-        int result2 = calculator.divide(180, 20);
-        int result3 = calculator.divide(150, 23);
+        calculator.setText(input);
+        int result = calculator.calculate();
 
         // then
-        assertThat(result).isEqualTo(6);
-        assertThat(result2).isEqualTo(9);
-        assertThat(result3).isEqualTo(6);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
