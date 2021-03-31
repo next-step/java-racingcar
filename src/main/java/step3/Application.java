@@ -10,6 +10,7 @@ public class Application {
         RacingCar racing;
         
         RacingView view = new RacingView();
+
         String[] carNames = view.inputCarCountView();
         int roundInput = view.inputRacingRoundView();
         
