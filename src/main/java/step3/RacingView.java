@@ -43,7 +43,6 @@ public class RacingView {
             builder.append(winners.get(cIndex).getName());
             builder.append(cIndex + 1 < winners.size() ? ", " : ""); 
         }
-        
         System.out.println(builder.toString() + "가 최종 우승했습니다.");
     }
 }
