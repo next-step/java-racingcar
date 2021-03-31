@@ -18,14 +18,14 @@ public class CarTest {
   }
 
   @ParameterizedTest
-  @DisplayName("자동차는 전진하면 위치가 전진한 숫자만큼 변한다.")
+  @DisplayName("자동차는 전진 시도보다 많이 갈수 없다.")
   @ValueSource(ints = {5, 1, 9})
   public void carMoveForward(int distance) {
     Car car = new Car();
     for (int i = 0; i < distance; ++i) {
-      car.moveOne();
+      car.tryMove();
     }
     int position = car.getPosition();
-    assertThat(position).isEqualTo(distance);
+    assertThat(position).isLessThanOrEqualTo(distance);
   }
 }
