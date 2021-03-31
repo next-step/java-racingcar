@@ -10,6 +10,13 @@ public class Application {
         RacingCar racing;
         
         RacingView view = new RacingView();
+<<<<<<< step4
+=======
+        carInput   = view.inputCarCountView();
+        roundInput = view.inputRacingRoundView();
+        
+        System.out.println("\n½ÇÇà°á°ú");
+>>>>>>> 6a7a9c8 í•œê¸€ ê¹¨ì§ í…ŒìŠ¤íŠ¸
 
         String[] carNames = view.inputCarCountView();
         int roundInput = view.inputRacingRoundView();
