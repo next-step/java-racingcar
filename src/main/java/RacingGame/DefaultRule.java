@@ -13,7 +13,6 @@ public class DefaultRule implements Rule{
             int newLocation = racingCar.isAt();
             racingCar.applyRule(++newLocation);
         }
-        return ;
     }
 
     private boolean isForward() {

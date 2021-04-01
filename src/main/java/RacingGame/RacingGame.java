@@ -1,7 +1,7 @@
 package RacingGame;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -29,20 +29,21 @@ public class RacingGame {
         getInputValue();
         prepareGame(numOfCar);
         playGameNumOfTry(numOfTry);
+        ResultView.viewWinner(getWinner(this.racingCars));
 
     }
 
     public void playGameNumOfTry(int numOfTry) {
         int numOfPlayed = 0;
         while(numOfPlayed++ < numOfTry){
-            
+            System.out.println();
+
             racingCars
                     .forEach(car -> rule.playRule(car));
             
             racingCars
-                    .forEach(car-> ResultView.viewResult(car));
+                    .forEach(car-> ResultView.viewGame(car));
 
-            System.out.println();
         }
     }
 
@@ -51,6 +52,20 @@ public class RacingGame {
         for(int i = 0; i < numOfCar; i ++){
             racingCars.add(new Car(this.nameOfCars[i]));
         }
+    }
+
+    public List<String> getWinner(List<Car> racingCars){
+
+        Integer maxLocation = racingCars.stream()
+                .map(car -> car.isAt())
+                .max(Comparator.comparing(x -> x))
+                .orElseThrow(NoSuchElementException::new);
+
+        return racingCars.stream()
+                .filter(car -> car.isAt() == maxLocation )
+                .map(car -> car.carName())
+                .collect(Collectors.toList());
+
     }
 
 }

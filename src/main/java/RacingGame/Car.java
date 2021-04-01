@@ -24,6 +24,10 @@ public class Car {
         return this.location;
     }
 
+    public String carName(){
+        return this.name;
+    }
+
     public void applyRule(int location) {
         this.location = location;
     }

@@ -11,7 +11,7 @@ public class InputView {
     }
 
     public String[] inputNameOfCars(){
-        System.out.println("경주할 자동차 이름을 입력하세요 (이름은 쉽표(,)를 기준으로 구)");
+        System.out.println("경주할 자동차 이름을 입력하세요 (이름은 쉽표(,)를 기준으로 구분)");
         Scanner scanner = new Scanner(System.in);
         String inputNames = scanner.nextLine();
         return inputNames.split(",");
