@@ -32,10 +32,10 @@ public class RacingGame {
         int numOfPlayed = 0;
         while(numOfPlayed++ < numOfTry){
             
-            racingCars.stream()
+            racingCars
                     .forEach(car -> car.stopOrMove());
             
-            racingCars.stream()
+            racingCars
                     .forEach(car-> ResultView.viewResult(car));
 
             System.out.println();
