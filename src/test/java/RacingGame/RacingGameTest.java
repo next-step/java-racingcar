@@ -7,10 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Scanner;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 class RacingGameTest {
 
@@ -50,6 +49,16 @@ class RacingGameTest {
         game.prepareGame(numOfCar);
         game.playGameNumOfTry(numOfPlay);
     }
+
+    @Test
+    @DisplayName("Car의 name이 5글자 초과했을때 IllegalStateException 발생하는지 확인")
+    public void carNameLengthOver5ThrowException(){
+        assertThatIllegalStateException().isThrownBy(() ->{
+            Car car = new Car("over5words");
+        });
+
+    }
+
 
         /*
     변경 전 테스트코드

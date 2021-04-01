@@ -8,7 +8,9 @@ public class RacingGame {
     private List<Car> racingCars;
     private int numOfCar;
     private int numOfTry;
+    private String[] nameOfCars;
     private Rule rule = new DefaultRule();
+    private InputView inputView= new InputView();
 
 
     public RacingGame(){
@@ -16,10 +18,11 @@ public class RacingGame {
     }
 
     public void getInputValue(){
-        InputView inputView = new InputView();
-        this.numOfCar = inputView.inputNumOfCar();
+        this.nameOfCars = inputView.inputNameOfCars();
+        this.numOfCar = this.nameOfCars.length;
         this.numOfTry = inputView.inputNumOfTry();
     }
+
 
     public void doRacingGame(){
 
@@ -46,7 +49,7 @@ public class RacingGame {
     public void prepareGame(int numOfCar) {
 
         for(int i = 0; i < numOfCar; i ++){
-            racingCars.add(new Car());
+            racingCars.add(new Car(this.nameOfCars[i]));
         }
     }
 
