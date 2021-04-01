@@ -23,27 +23,20 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("Car가 자신이 존재한 위치를 잘 나타내는지 확인")
-    public void checkCarIsAt(){
-        Car racingCar = new Car();
-        for (int i = 0 ; i <5 ; i++){
-            racingCar.stopOrMove();
-        }
+    @DisplayName("Rule 적용시 Car의 위치가 알맞게 변경되는지 확인")
+    public void RuleTest(){
 
-        assertThat(racingCar.isAt()).isGreaterThan(-1);
-        assertThat(racingCar.isAt()).isLessThan(5);
-    }
+        //given
+        Car car = new Car();
+        Rule rule = new DefaultRule();
 
-    @Test
-    @DisplayName("출력이 잘 되는지 확")
-    public void printTest(){
-        Car racingCar = new Car();
-        int numOfPlay = 5;
-        for (int i = 0; i< numOfPlay;i++)
-        {
-            racingCar.stopOrMove();
-            ResultView.viewResult(racingCar);
-        }
+        //when
+        rule.playRule(car);
+
+        //than
+        Assertions.assertThat(car.isAt()).isGreaterThan(-1);
+        Assertions.assertThat(car.isAt()).isLessThan(2);
+
     }
 
     @Test
@@ -57,5 +50,24 @@ class RacingGameTest {
         game.prepareGame(numOfCar);
         game.playGameNumOfTry(numOfPlay);
     }
+
+        /*
+    변경 전 테스트코드
+     */
+
+//    @Test
+//    @DisplayName("Car가 자신이 존재한 위치를 잘 나타내는지 확인")
+//    public void checkCarIsAt(){
+//        Car racingCar = new Car();
+//        for (int i = 0 ; i <5 ; i++){
+//            racingCar.stopOrMove();
+//        }
+//
+//        assertThat(racingCar.isAt()).isGreaterThan(-1);
+//        assertThat(racingCar.isAt()).isLessThan(5);
+//    }
+//
+
+
 
 }

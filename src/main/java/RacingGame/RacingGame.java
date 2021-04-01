@@ -8,6 +8,7 @@ public class RacingGame {
     private List<Car> racingCars;
     private int numOfCar;
     private int numOfTry;
+    private Rule rule = new DefaultRule();
 
 
     public RacingGame(){
@@ -33,7 +34,7 @@ public class RacingGame {
         while(numOfPlayed++ < numOfTry){
             
             racingCars
-                    .forEach(car -> car.stopOrMove());
+                    .forEach(car -> rule.playRule(car));
             
             racingCars
                     .forEach(car-> ResultView.viewResult(car));
