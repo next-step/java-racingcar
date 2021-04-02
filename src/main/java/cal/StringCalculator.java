@@ -19,7 +19,7 @@ public class StringCalculator {
 
     public static int calculate(String input) {
         if (isNull(input) || isBlank(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input is null or blank");
         }
 
         String[] tokenArray = input.split(" ");

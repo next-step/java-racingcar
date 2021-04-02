@@ -69,7 +69,10 @@ class StringCalculatorTest {
         String source = null;
 
         // Act & Assert
-        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(source));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() ->
+                        StringCalculator.calculate(source)
+                ).withMessageMatching("Input is null or blank");
     }
 
     @ParameterizedTest(name = "입력값이 \"{0}\"일 경우 IllegalArgumentException을 던져야 한다.")
@@ -77,7 +80,10 @@ class StringCalculatorTest {
     void calculateEmptyCharacter(String source) {
 
         // Act & Assert
-        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(source));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() ->
+                        StringCalculator.calculate(source)
+                ).withMessageMatching("Input is null or blank");
     }
 
     @DisplayName("\"5 ^ 2\"는 IllegalArgumentException을 던져야 한다.")
@@ -87,7 +93,10 @@ class StringCalculatorTest {
         String source = "5 ^ 2";
 
         // Act & Assert
-        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(source));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() ->
+                        StringCalculator.calculate(source)
+                ).withMessageMatching("Input is null or blank");
     }
 
     @DisplayName("\"4 + 3 - 2 * 4 / 5\"는 4를 반환해야 한다.")
