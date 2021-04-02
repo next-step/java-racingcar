@@ -29,7 +29,6 @@ public class StringCalculator {
         }
     }
 
-
     public StringCalculator() {
         OPERATORS.add("+");
         OPERATORS.add("-");
