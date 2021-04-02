@@ -1,4 +1,4 @@
-package car.model;
+package car.dto;
 
 public class UserInput {
     public final int carCount;

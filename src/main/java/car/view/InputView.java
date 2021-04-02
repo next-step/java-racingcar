@@ -1,6 +1,6 @@
 package car.view;
 
-import car.model.UserInput;
+import car.dto.UserInput;
 
 import java.util.Scanner;
 

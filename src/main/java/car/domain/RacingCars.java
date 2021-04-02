@@ -1,9 +1,5 @@
 package car.domain;
 
-import car.model.UserInput;
-import car.view.InputView;
-import car.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

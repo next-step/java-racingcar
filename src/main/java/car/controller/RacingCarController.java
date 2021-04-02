@@ -1,7 +1,7 @@
 package car.controller;
 
 import car.domain.RacingCars;
-import car.model.UserInput;
+import car.dto.UserInput;
 import car.view.InputView;
 import car.view.ResultView;
 
