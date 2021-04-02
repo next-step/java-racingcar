@@ -1,13 +1,14 @@
 package car.view;
 
-import car.RacingCar;
+import car.domain.RacingCar;
+import car.domain.RacingCars;
 
 import java.util.List;
 
 public class ResultView {
 
-    public static void printStatus(List<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars) {
+    public static void printStatus(RacingCars racingCars) {
+        for (RacingCar racingCar : racingCars.getRacingCars()) {
             System.out.println(
                     repeatCharacter(
                             "-",
