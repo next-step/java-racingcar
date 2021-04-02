@@ -1,19 +1,17 @@
 package step3;
 
-import java.util.ArrayList;
-
 public class InputDto {
 
-    public ArrayList<String> nameList;
+    public int numberOfCar;
     public int numberOfTrial;
 
-    public InputDto(ArrayList<String> nameList, int numberOfTrial) {
-        this.nameList = nameList;
+    public InputDto(int numberOfCar, int numberOfTrial) {
+        this.numberOfCar = numberOfCar;
         this.numberOfTrial = numberOfTrial;
     }
 
-    public ArrayList<String> getNameList() {
-        return nameList;
+    public int getNumberOfCar() {
+        return numberOfCar;
     }
 
     public int getNumberOfTrial() {
