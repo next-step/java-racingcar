@@ -7,7 +7,7 @@ import car.view.ResultView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarRacingGame {
+public class RacingCars {
 
     private List<RacingCar> racingCars = new ArrayList<>();
 

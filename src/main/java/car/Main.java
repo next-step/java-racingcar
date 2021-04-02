@@ -2,7 +2,7 @@ package car;
 
 public class Main {
     public static void main(String[] args) {
-        CarRacingGame carRacingGame = new CarRacingGame();
-        carRacingGame.play();
+        RacingCars racingCars = new RacingCars();
+        racingCars.play();
     }
 }

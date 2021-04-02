@@ -3,16 +3,16 @@ package car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CarRacingGameTest {
+class RacingCarsTest {
 
     @DisplayName("play하면 racingCars는 움직여야 한다(?)")
     @Test
     public void playRacingGame() {
         // Arrange
-        CarRacingGame carRacingGame = new CarRacingGame();
+        RacingCars racingCars = new RacingCars();
 
         // Act
-        carRacingGame.play();
+        racingCars.play();
 
         // Assert
         // todo: assert racingCars
