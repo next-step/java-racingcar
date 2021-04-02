@@ -9,10 +9,17 @@ public class ResultView {
     public static void printStatus(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             System.out.println(
-                    new String(new char[racingCar.getMoveCount()])
-                            .replace("\0", "-")
+                    repeatCharacter(
+                            "-",
+                            racingCar.getMoveCount()
+                    )
             );
         }
         System.out.println();
+    }
+
+    private static String repeatCharacter(String character, int moveCount) {
+        return new String(new char[moveCount])
+                .replace("\0", character);
     }
 }
