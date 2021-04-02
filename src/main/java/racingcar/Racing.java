@@ -38,7 +38,7 @@ public class Racing {
   }
 
   public String currentSituation() {
-    String remainString = "REMAIN TRY COUNT : " + this.remainTryCount;
+    String remainString = "REMAIN TRY COUNT : " + this.remainTryCount + "\n";
     StringBuilder builder = new StringBuilder();
     builder.append(remainString);
     for (Car car : this.cars) {
