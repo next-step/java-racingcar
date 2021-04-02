@@ -18,7 +18,7 @@ public class Racing {
     this.remainTryCount = racingRule.getTryCount();
   }
 
-  public void tryMoveCar() throws TryMovingCarException {
+  public void tryMoveCars() throws TryMovingCarException {
     if (this.remainTryCount <= 0) {
       throw new TryMovingCarException();
     }
