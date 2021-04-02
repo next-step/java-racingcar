@@ -3,7 +3,7 @@ package car;
 import java.util.Random;
 
 public class RacingCar {
-    public static final int MOVE_THRESHOLD = 4;
+    private static final int MOVE_THRESHOLD = 4;
 
     private final Random random = new Random();
     private int moveCount;
