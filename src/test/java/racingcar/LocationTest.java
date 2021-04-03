@@ -13,7 +13,7 @@ public class LocationTest {
     @Test
     void create_location() {
         Location location = new Location(0);
-        assertThat(location).isEqualTo(new Location(1));
+        assertThat(location).isEqualTo(new Location(0));
     }
 
     @DisplayName("0보다 작은 수가 들어올 경우")
