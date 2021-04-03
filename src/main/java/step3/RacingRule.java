@@ -12,6 +12,13 @@ public class RacingRule implements Rule {
         }
     }
 
+    @Override
+    public void go(Car car, int dice) {
+        if (dice >= CAN_GO) {
+            car.go();
+        }
+    }
+
     public int castDice() {
         Random random = new Random();
         return random.nextInt(10);

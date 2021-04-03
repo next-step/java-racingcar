@@ -42,4 +42,13 @@ class RacingTest {
         assertThat(car.getPosition()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(1);
     }
 
+    @ParameterizedTest
+    @DisplayName("자동차는 4 이상일때만 전진한다.")
+    @CsvSource(value = {"4,1", "3,0", "5,1"}, delimiter = ',')
+    void 자동차_전진2(int dice, int expected) {
+        Car car = new Car();
+        new RacingRule().go(car, dice);
+        assertThat(car.getPosition()).isEqualTo(expected);
+    }
+
 }

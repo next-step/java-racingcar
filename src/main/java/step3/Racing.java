@@ -23,7 +23,7 @@ public class Racing {
     private void onRacing(List<Car> cars, int lapCount) {
         print.startLap();
         for (int i = 0; i < cars.size(); i++) {
-            racingRule.go(cars.get(i));
+            racingRule.go(cars.get(i));     //or  racingRule.go(cars.get(i), racingRule.castDice());
         }
         print.racing(cars);
         lapCount--;
