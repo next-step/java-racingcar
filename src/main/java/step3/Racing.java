@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    public Print print = new Print();
-    public RacingRule racingRule = new RacingRule();
+    final Print print = new Print();
+    private static final RacingRule racingRule = new RacingRule();
 
     public Racing(int carCount, int lapCount) {
         List<Car> cars = getCarReady(carCount);
@@ -22,9 +22,7 @@ public class Racing {
 
     private void onRacing(List<Car> cars, int lapCount) {
         print.startLap();
-        for (int i = 0; i < cars.size(); i++) {
-            racingRule.go(cars.get(i));     //or  racingRule.go(cars.get(i), racingRule.castDice());
-        }
+        racingRule.goCars(cars);
         print.racing(cars);
         lapCount--;
         if (lapCount > 0) {
