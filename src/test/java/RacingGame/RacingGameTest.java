@@ -1,26 +1,15 @@
 package RacingGame;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
-
-    private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-
-    @BeforeEach
-    public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
 
     @Test
     @DisplayName("Rule 적용시 Car의 위치가 알맞게 변경되는지 확인")
@@ -43,12 +32,15 @@ class RacingGameTest {
     @DisplayName("game이 잘 진행되는지 확인")
     public void doRacingGame(){
 
-        int numOfCar = 3;
-        int numOfPlay = 5;
+        RacingGame racingGame = new RacingGame();
+        String[] nameOfCars = new String[]{"yurim","some","hey"};
 
-        RacingGame game = new RacingGame();
-        game.prepareGame(numOfCar);
-        game.playGameNumOfTry(numOfPlay);
+        racingGame.getInputValue(nameOfCars);
+        racingGame.prepareGame();
+        List<Car> cars = racingGame.playGame();
+
+        Assertions.assertThat(cars.size()).isEqualTo(3);
+
     }
 
     @Test
@@ -57,6 +49,33 @@ class RacingGameTest {
         assertThatIllegalStateException().isThrownBy(() ->{
             Car car = new Car("over5words");
         });
+
+    }
+
+    @Test
+    @DisplayName("공백인 문자열에 대해 오류 처리")
+    public void emptyNameThrowsException(){
+        assertThatIllegalStateException().isThrownBy(() ->{
+            Car car = new Car("  ");
+        });
+    }
+
+    @Test
+    @DisplayName("가장 멀리간 maxLocation을 잘 구하는지 확인")
+    public void maxLocation(){
+        //given
+        Car win = new Car("win");
+        win.applyRule(11);
+
+        Car lose = new Car("lose");
+        lose.applyRule(3);
+
+        //when
+        RacingGame racingGame = new RacingGame();
+        Integer maxLocation = racingGame.getMaxLocation(Arrays.asList(win, lose));
+
+        //than
+        assertThat(maxLocation).isEqualTo(11);
 
     }
 
@@ -72,12 +91,16 @@ class RacingGameTest {
 
         //when
         RacingGame racingGame = new RacingGame();
-        List<String> result = racingGame.getWinner(Arrays.asList(win, lose));
+        List<Car> racingCars = Arrays.asList(win,lose);
+        Integer maxLocation = racingGame.getMaxLocation(racingCars);
+        List<String> result = racingGame.namesOfWinner(maxLocation,racingCars);
+
 
         //than
         assertThat(result.get(0)).isEqualTo("win");
         assertThat(result.size()).isEqualTo(1);
     }
+
 
     @Test
     @DisplayName("승자가 두명일때 두명 가리는지 확인")
@@ -94,28 +117,12 @@ class RacingGameTest {
 
         //when
         RacingGame racingGame = new RacingGame();
-        List<String> result = racingGame.getWinner(Arrays.asList(win, win2,lose));
+        List<Car> racingCars = Arrays.asList(win,win2,lose);
+        Integer maxLocation = racingGame.getMaxLocation(racingCars);
+        List<String> result = racingGame.namesOfWinner(maxLocation,racingCars);
 
         assertThat(result.size()).isEqualTo(2);
     }
-
-
-        /*
-    변경 전 테스트코드
-     */
-
-//    @Test
-//    @DisplayName("Car가 자신이 존재한 위치를 잘 나타내는지 확인")
-//    public void checkCarIsAt(){
-//        Car racingCar = new Car();
-//        for (int i = 0 ; i <5 ; i++){
-//            racingCar.stopOrMove();
-//        }
-//
-//        assertThat(racingCar.isAt()).isGreaterThan(-1);
-//        assertThat(racingCar.isAt()).isLessThan(5);
-//    }
-//
 
 
 

@@ -6,65 +6,53 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private List<Car> racingCars;
-    private int numOfCar;
-    private int numOfTry;
     private String[] nameOfCars;
+    private int numOfCar;
     private Rule rule = new DefaultRule();
-    private InputView inputView= new InputView();
 
 
     public RacingGame(){
         racingCars = new ArrayList<Car>();
     }
 
-    public void getInputValue(){
-        this.nameOfCars = inputView.inputNameOfCars();
-        this.numOfCar = this.nameOfCars.length;
-        this.numOfTry = inputView.inputNumOfTry();
+    public void getInputValue(String[] nameOfCars){
+        this.nameOfCars = nameOfCars;
+        this.numOfCar = nameOfCars.length;
     }
 
-
-    public void doRacingGame(){
-
-        getInputValue();
-        prepareGame(numOfCar);
-        playGameNumOfTry(numOfTry);
-        ResultView.viewWinner(getWinner(this.racingCars));
-
-    }
-
-    public void playGameNumOfTry(int numOfTry) {
-        int numOfPlayed = 0;
-        while(numOfPlayed++ < numOfTry){
-            System.out.println();
-
+    public List<Car> playGame() {
             racingCars
                     .forEach(car -> rule.playRule(car));
             
-            racingCars
-                    .forEach(car-> ResultView.viewGame(car));
-
-        }
+            return this.racingCars;
     }
 
-    public void prepareGame(int numOfCar) {
+    public void prepareGame() {
 
-        for(int i = 0; i < numOfCar; i ++){
+        for(int i = 0; i < this.numOfCar; i ++){
             racingCars.add(new Car(this.nameOfCars[i]));
         }
     }
 
-    public List<String> getWinner(List<Car> racingCars){
+    public List<String> getWinners(){
+        Integer maxLocation = getMaxLocation(this.racingCars);
+        return namesOfWinner(maxLocation,this.racingCars);
 
-        Integer maxLocation = racingCars.stream()
-                .map(car -> car.isAt())
-                .max(Comparator.comparing(x -> x))
-                .orElseThrow(NoSuchElementException::new);
+    }
+
+    public List<String> namesOfWinner(Integer maxLocation, List<Car> racingCars){
 
         return racingCars.stream()
                 .filter(car -> car.isAt() == maxLocation )
                 .map(car -> car.carName())
                 .collect(Collectors.toList());
+    }
+
+    public Integer getMaxLocation(List<Car> racingCars) {
+        return racingCars.stream()
+                .map(car -> car.isAt())
+                .max(Comparator.comparing(x -> x))
+                .orElseThrow(NoSuchElementException::new);
 
     }
 
