@@ -13,7 +13,7 @@ public class RacingTest {
   public void tryMoveWhenRemainingTryCountOverZero() throws Exception {
     int tryCount = 1;
     RacingRule racingRule = new RacingRule(3, tryCount);
-    Racing racing = new Racing(racingRule);
+    Racing racing = new Racing(racingRule, new RandomNumMovingStrategy());
 
     int remainTryCount = racing.getRemainTryCount();
     assertRemainTryCount(racing, remainTryCount);
