@@ -6,6 +6,8 @@ import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.input.InputView;
+import racingcar.racing.RacingRule;
 
 public class RacingRuleTest {
 

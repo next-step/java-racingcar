@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.result;
 
 import java.util.List;
+import racingcar.racing.Racing;
 
 public class ResultView {
 

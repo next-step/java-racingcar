@@ -1,8 +1,10 @@
-package racingcar;
+package racingcar.racing;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.car.Car;
+import racingcar.car.strategy.MovingStrategy;
 import racingcar.exception.TryMovingCarException;
 
 public class Racing {

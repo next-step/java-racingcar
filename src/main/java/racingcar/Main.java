@@ -1,5 +1,11 @@
 package racingcar;
 
+import racingcar.car.strategy.RandomNumMovingStrategy;
+import racingcar.input.InputView;
+import racingcar.racing.Racing;
+import racingcar.racing.RacingRule;
+import racingcar.result.ResultView;
+
 public class Main {
 
   public static void main(String[] args) throws Exception {
