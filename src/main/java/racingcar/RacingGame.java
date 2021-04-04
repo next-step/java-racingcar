@@ -1,7 +1,6 @@
 package racingcar;
 
-import racingcar.domain.Location;
-import racingcar.domain.Owner;
+import racingcar.command.NumberType;
 import racingcar.domain.RacingCar;
 import racingcar.domain.Winner;
 import racingcar.utils.RandomNumber;
@@ -26,7 +25,7 @@ public class RacingGame {
         String[] owner = owners.split(",");
 
         for (int i = 0; i < owner.length; i++) {
-            RacingCar racingCar = new RacingCar(new Owner(owner[i]), new Location(0));
+            RacingCar racingCar = new RacingCar(owner[i], NumberType.ZERO.value());
             carList.add(racingCar);
         }
 
