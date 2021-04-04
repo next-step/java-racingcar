@@ -12,19 +12,21 @@ public class ResultView {
     this.racing = racing;
   }
 
-  public void print() {
+  public void printPreRacing() {
+    System.out.println();
     System.out.println("실행 결과");
-    List<Integer> currentSituations = racing.currentSituation();
-    for (Integer currentSituation : currentSituations) {
-      System.out.println(generateCarSituation(currentSituation));
+  }
+
+  public void printNow() {
+    List<CarResultView> carResultViews = racing.currentSituation();
+    for (CarResultView currentSituation : carResultViews) {
+      System.out.println(currentSituation.generateCurrentSituation(POSITION_UNIT));
     }
   }
 
-  private String generateCarSituation(int position) {
-    StringBuilder builder = new StringBuilder();
-    for(int i = 0 ; i < position; ++i) {
-      builder.append(ResultView.POSITION_UNIT);
-    }
-    return builder.toString();
+  public void printWinner() {
+    List<String> winnerCarName = racing.getWinnerCarName();
+    String winnerJoinList = String.join(", ", winnerCarName);
+    System.out.println(winnerJoinList+"가 최종 우승했습니다.");
   }
 }

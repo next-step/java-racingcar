@@ -14,10 +14,12 @@ public class Main {
     Racing racing = new Racing(racingRule, new RandomNumMovingStrategy());
     ResultView resultView = new ResultView(racing);
 
+    resultView.printPreRacing();
     while (racing.canTry()) {
       racing.tryMoveCars();
-      resultView.print();
+      resultView.printNow();
       System.out.println();
     }
+    resultView.printWinner();
   }
 }
