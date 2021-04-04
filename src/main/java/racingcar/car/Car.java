@@ -6,9 +6,11 @@ public class Car {
 
   private int position;
   private final MovingStrategy movingStrategy;
+  private final String carName;
 
-  public Car(MovingStrategy movingStrategy) {
+  public Car(MovingStrategy movingStrategy, String carName) {
     this.movingStrategy = movingStrategy;
+    this.carName = carName;
   }
 
   public void tryMove() {
@@ -23,5 +25,9 @@ public class Car {
 
   public int getPosition() {
     return this.position;
+  }
+
+  public String getCarName() {
+    return carName;
   }
 }
