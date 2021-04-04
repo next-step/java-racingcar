@@ -10,7 +10,7 @@ public class RacingCarController {
     public void play(RacingCars racingCars) {
         UserInput input = InputView.receiveInput();
 
-        racingCars.addCars(input.carCount);
+        racingCars.addCars(input.carNameList);
 
         for (int i = 0; i < input.totalRound; ++i) {
             racingCars.runRound();

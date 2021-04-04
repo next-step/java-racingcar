@@ -14,10 +14,10 @@ class RacingCarsTest {
     public void addCarsThenCarsWithMoveCountZeroMustBeAdded() {
         // Arrange
         RacingCars racingCars = new RacingCars();
-        int carCount = 3;
+        String[] carNames = new String[] {"Cactus", "Alpha", "April"};
 
         // Act
-        racingCars.addCars(carCount);
+        racingCars.addCars(carNames);
 
         // Assert
         assertThat(racingCars.getRacingCars().size()).isEqualTo(3);

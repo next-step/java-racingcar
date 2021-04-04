@@ -15,9 +15,9 @@ public class RacingCars {
         return racingCars;
     }
 
-    public void addCars(int carCount) {
-        for (int i = 0; i < carCount; ++i) {
-            racingCars.add(new RacingCar());
+    public void addCars(String[] carNameList) {
+        for (String carName: carNameList) {
+            racingCars.add(new RacingCar(carName));
         }
     }
 

@@ -12,7 +12,7 @@ class RacingCarTest {
     @Test
     public void tryMoving() {
         // Arrange
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("Glory");
 
         // Act
         racingCar.move();
@@ -26,7 +26,7 @@ class RacingCarTest {
     public void getMoveCount() {
         // Arrange
         int moveCount = 5;
-        RacingCar racingCar = new RacingCar();
+        RacingCar racingCar = new RacingCar("Grace");
 
         // Act
         for (int i = 0; i < moveCount; ++i) {
