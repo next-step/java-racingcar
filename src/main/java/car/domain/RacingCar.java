@@ -12,6 +12,9 @@ public class RacingCar {
         moveCount++;
     }
 
+    public String getCarName() {
+        return carName;
+    }
 
     public int getMoveCount() {
         return moveCount;

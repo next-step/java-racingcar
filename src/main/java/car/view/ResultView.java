@@ -3,13 +3,13 @@ package car.view;
 import car.domain.RacingCar;
 import car.domain.RacingCars;
 
-import java.util.List;
-
 public class ResultView {
 
     public static void printStatus(RacingCars racingCars) {
         for (RacingCar racingCar : racingCars.getRacingCars()) {
             System.out.println(
+                    racingCar.getCarName()
+                    + " : " +
                     repeatCharacter(
                             "-",
                             racingCar.getMoveCount()
