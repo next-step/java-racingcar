@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingRule implements Rule {
-    static final int CAN_GO = 4;
-    Random random = new Random();
+    private static final int CAN_GO = 4;
+    private static final Random random = new Random();
 
     @Override
     public void go(Car car) {
