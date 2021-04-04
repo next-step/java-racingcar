@@ -1,8 +1,11 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
   private final Racing racing;
+  private final static String POSITION_UNIT = "-";
 
   public ResultView(Racing racing) {
     this.racing = racing;
@@ -10,6 +13,17 @@ public class ResultView {
 
   public void print() {
     System.out.println("실행 결과");
-    System.out.println(racing.currentSituation());
+    List<Integer> currentSituations = racing.currentSituation();
+    for (Integer currentSituation : currentSituations) {
+      System.out.println(generateCarSituation(currentSituation));
+    }
+  }
+
+  private String generateCarSituation(int position) {
+    StringBuilder builder = new StringBuilder();
+    for(int i = 0 ; i < position; ++i) {
+      builder.append(ResultView.POSITION_UNIT);
+    }
+    return builder.toString();
   }
 }

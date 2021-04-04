@@ -11,6 +11,7 @@ public class Main {
     while (racing.canTry()) {
       racing.tryMoveCars();
       resultView.print();
+      System.out.println();
     }
   }
 }
