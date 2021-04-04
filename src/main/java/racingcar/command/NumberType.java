@@ -2,7 +2,7 @@ package racingcar.command;
 
 public enum NumberType {
 
-    ZERO(0), ONE(1), THREE(3), FOUR(4), FIVE(5), TEN(10);
+    MINUS_ONE(-1), ZERO(0), ONE(1), THREE(3), FOUR(4), FIVE(5), TEN(10);
 
     NumberType(int value) {
         this.value = value;
