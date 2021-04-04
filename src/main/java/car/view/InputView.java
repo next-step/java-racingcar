@@ -14,27 +14,35 @@ public class InputView {
         String carNameStr = scanner.nextLine();
         String[] carNameList = carNameStr.trim()
                 .split("\\s*,\\s*");
+        validateCarNames(carNameList);
+
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        int totalRound = scanner.nextInt();
+        validateTotalRound(totalRound);
+
+        System.out.println("\n실행 결과");
+        return new UserInput(carNameList, totalRound);
+    }
+
+    private static void validateTotalRound(int totalRound) {
+        if (isTotalRoundInvalid(totalRound)) {
+            throw new IllegalArgumentException("Total round must be positive");
+        }
+    }
+
+    private static void validateCarNames(String[] carNameList) {
         if (isCarNamesEmpty(carNameList)) {
             throw new IllegalArgumentException("Enter at least one name");
         }
         if (isCarNameExceedMaximumLength(carNameList)) {
             throw new IllegalArgumentException("Car name must not exceed 5 letters");
         }
-        if (isCarNameEmtpy(carNameList)) {
+        if (isCarNameEmpty(carNameList)) {
             throw new IllegalArgumentException("Car name must not be empty");
         }
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        int totalRound = scanner.nextInt();
-        if (isTotalRoundInvalid(totalRound)) {
-            throw new IllegalArgumentException("Total round must be positive");
-        }
-
-        System.out.println();
-        System.out.println("실행 결과");
-        return new UserInput(carNameList, totalRound);
     }
 
-    private static boolean isCarNameEmtpy(String[] carNameList) {
+    private static boolean isCarNameEmpty(String[] carNameList) {
         return Arrays.stream(carNameList)
                 .anyMatch( it ->
                         it.length() <= 0
