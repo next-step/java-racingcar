@@ -1,15 +1,19 @@
 package racingcar.racing;
 
+import java.util.List;
+
 public class RacingRule {
 
   private final int carCount;
   private final int tryCount;
+  private final List<String> carNameList;
 
-  public RacingRule(int carCount, int tryCount) {
-    validCarCount(carCount);
+  public RacingRule(List<String> carNameList, int tryCount) {
+    validCarCount(carNameList.size());
     validTryCount(tryCount);
-    this.carCount = carCount;
+    this.carCount = carNameList.size();
     this.tryCount = tryCount;
+    this.carNameList = carNameList;
   }
 
   public void validCarCount(int carCount) {
@@ -25,11 +29,15 @@ public class RacingRule {
   }
 
   public int getCarCount() {
-    return carCount;
+    return this.carCount;
   }
 
   public int getTryCount() {
-    return tryCount;
+    return this.tryCount;
+  }
+
+  public List<String> getCarNameList() {
+    return this.carNameList;
   }
 
 }
