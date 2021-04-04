@@ -8,9 +8,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingCarTest {
 
-    @DisplayName("move는 차를 움직인다")
+    @DisplayName("move는 moveCount를 1 증가시킨다.")
     @Test
-    public void tryMoving() {
+    public void moveThenMoveCountMustIncrease() {
         // Arrange
         RacingCar racingCar = new RacingCar("Glory");
 
@@ -23,7 +23,7 @@ class RacingCarTest {
 
     @DisplayName("getMoveCount는 moveCount를 반환해야 한다.")
     @Test
-    public void getMoveCount() {
+    public void getMoveCountMustReturnMoveCount() {
         // Arrange
         int moveCount = 5;
         RacingCar racingCar = new RacingCar("Grace");
@@ -36,5 +36,18 @@ class RacingCarTest {
 
         // Assert
         assertThat(moveCount).isEqualTo(result);
+    }
+
+    @DisplayName("RacingCar를 생성하면 getCarName은 생성자에 지정한 carName을 반환해야 한다.")
+    @Test
+    public void getCarNameThenReturnCarNameEnteredOnConstruction() {
+        // Arrange
+        String carName = "Worshipper";
+
+        // Act
+        RacingCar racingCar = new RacingCar(carName);
+
+        // Assert
+        assertThat(racingCar.getCarName()).isEqualTo(carName);
     }
 }

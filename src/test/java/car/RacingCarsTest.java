@@ -26,6 +26,20 @@ class RacingCarsTest {
         );
     }
 
+    @DisplayName("addCars는 carNames의 이름을 가진 RacingCar을 그 순서대로 추가해야 한다.")
+    @Test
+    public void addCarsThenCarsWithCarNamesMustBeAddedWithSameOrder() {
+        // Arrange
+        RacingCars racingCars = new RacingCars();
+        String[] carNames = new String[] {"Proverbs", "Calling", "Oswald"};
+
+        // Act
+        racingCars.addCars(carNames);
+        for(int i = 0; i < carNames.length; ++i) {
+            assertThat(racingCars.getRacingCars().get(i).getCarName()).isEqualTo(carNames[i]);
+        }
+    }
+
     @DisplayName("runRound는 자동차들을 랜덤하게 이동시킨다.")
     @Test
     public void runRoundThenCarsMustMoveMoreThanZero() {
