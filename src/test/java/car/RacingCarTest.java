@@ -18,7 +18,7 @@ class RacingCarTest {
         racingCar.move();
 
         // Assert
-        assertThat(racingCar.getMoveCount()).isEqualTo(0);
+        assertThat(racingCar.getMoveCount()).isEqualTo(1);
     }
 
     @DisplayName("getMoveCount는 moveCount를 반환해야 한다.")
