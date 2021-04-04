@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.input;
 
 import java.util.Scanner;
+import racingcar.racing.RacingRule;
 
 public class InputView {
 

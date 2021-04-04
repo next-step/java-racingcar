@@ -2,7 +2,10 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.car.strategy.RandomNumMovingStrategy;
 import racingcar.exception.TryMovingCarException;
+import racingcar.racing.Racing;
+import racingcar.racing.RacingRule;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -13,7 +16,7 @@ public class RacingTest {
   public void tryMoveWhenRemainingTryCountOverZero() throws Exception {
     int tryCount = 1;
     RacingRule racingRule = new RacingRule(3, tryCount);
-    Racing racing = new Racing(racingRule);
+    Racing racing = new Racing(racingRule, new RandomNumMovingStrategy());
 
     int remainTryCount = racing.getRemainTryCount();
     assertRemainTryCount(racing, remainTryCount);
