@@ -22,7 +22,7 @@ public class CarTest {
   @Test
   @DisplayName("자동차의 시작 위치는 항상 0이다.")
   public void carFirstPositionTest() {
-    Car car = new Car(new RandomNumMovingStrategy());
+    Car car = new Car(new RandomNumMovingStrategy(), "CarName");
     int position = car.getPosition();
     assertThat(position).isEqualTo(0);
   }
@@ -34,7 +34,7 @@ public class CarTest {
     this.movingStrategy = mock(MovingStrategy.class);
     when(this.movingStrategy.isCanMove()).thenReturn(true);
 
-    Car car = new Car(this.movingStrategy);
+    Car car = new Car(this.movingStrategy, "CarName2");
     for(int i = 0 ; i < moveCount ; ++i) {
       car.tryMove();
     }
@@ -45,7 +45,7 @@ public class CarTest {
   @DisplayName("자동차는 전진 시도보다 많이 갈수 없다.")
   @ValueSource(ints = {5, 1, 9})
   public void carMoveForward(int distance) {
-    Car car = new Car(new RandomNumMovingStrategy());
+    Car car = new Car(new RandomNumMovingStrategy(), "CarName");
     for (int i = 0; i < distance; ++i) {
       car.tryMove();
     }
