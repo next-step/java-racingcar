@@ -4,10 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.domain.Location;
-import racingcar.domain.Owner;
-import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCars;
+import racingcar.command.NumberType;
+import racingcar.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,14 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    @DisplayName("주어진 횟수 동안 pobi, crong, honux의 자동차는 전진 또는 멈출 수 있다.")
+    @DisplayName("주어진 횟수 동안 pobi, crong, honux의 자동차는 전진할 수 있다.")
     @ParameterizedTest
     @CsvSource(value = {"pobi:1", "crong:3 ", "honux:5"}, delimiter = ':')
     void cars_can_moves_given_number_test(String owners, int count) {
 
-        RacingCar racingCar = new RacingCar(new Owner(owners), new Location(0));
+        RacingCar racingCar = new RacingCar(owners, NumberType.ZERO.value());
         for (int i = 0; i < count; i++) {
-            racingCar.move(4);
+            racingCar.move(NumberType.FOUR.value());
         }
 
         assertThat(racingCar.getLocation()).isEqualTo(count);
@@ -35,13 +33,12 @@ public class RacingGameTest {
     @Test
     void winner_one() {
 
-        RacingCar pobiCar = new RacingCar(new Owner("pobi"), new Location(0));
+        RacingCar pobiCar = new RacingCar("pobi", NumberType.ZERO.value());
 
-        pobiCar.move(5);
+        pobiCar.move(NumberType.FIVE.value());
         List<RacingCar> winnerList = Arrays.asList(pobiCar);
 
-        RacingCars racingCars = new RacingCars(winnerList);
-        assertThat(racingCars.findWinners(winnerList)).contains(pobiCar);
+        assertThat(new Winner().findWinners(winnerList)).contains(pobiCar);
 
 
     }
@@ -50,17 +47,16 @@ public class RacingGameTest {
     @Test
     void winner_two() {
 
-        RacingCar pobiCar = new RacingCar(new Owner("pobi"), new Location(0));
-        RacingCar crongCar = new RacingCar(new Owner("crong"), new Location(0));
+        RacingCar pobiCar = new RacingCar("pobi", NumberType.ZERO.value());
+        RacingCar crongCar = new RacingCar("crong", NumberType.ZERO.value());
 
         for (int i = 0; i < 3; i++) {
-            pobiCar.move(5);
-            crongCar.move(5);
+            pobiCar.move(NumberType.FIVE.value());
+            crongCar.move(NumberType.FIVE.value());
         }
 
         List<RacingCar> winnerList = Arrays.asList(pobiCar, crongCar);
-        RacingCars racingCars = new RacingCars(winnerList);
-        assertThat(racingCars.findWinners(winnerList)).contains(pobiCar, crongCar);
+        assertThat(new Winner().findWinners(winnerList)).contains(pobiCar, crongCar);
     }
 
 }
