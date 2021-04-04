@@ -16,5 +16,7 @@ public class RacingCarController {
             racingCars.runRound();
             ResultView.printStatus(racingCars);
         }
+
+        ResultView.printWinner(racingCars);
     }
 }
