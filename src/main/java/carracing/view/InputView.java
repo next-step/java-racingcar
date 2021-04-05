@@ -1,25 +1,24 @@
 package carracing.view;
 
-import carracing.vo.Car;
-
 import java.util.Scanner;
 
 public class InputView {
 
-    private static final String TRY_COUNT_QUESTION = "시도할 횟수는 몇회인가요?";
-    private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇대인가요?";
+    private final String INPUT_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private final String INPUT_TRY_COUNT = "시도할 회수는 몇회인가요?";
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
-    private InputView() { }
+    public InputView() { }
 
-    public static Car input() {
-        System.out.println(CAR_COUNT_QUESTION);
-        int carCount = scanner.nextInt();
-        System.out.println(TRY_COUNT_QUESTION);
-        int tryCount = scanner.nextInt();
+    public String inputCarName() {
+        System.out.println(INPUT_CAR_NAMES);
+        return scanner.next();
+    }
 
-        return new Car(carCount, tryCount);
+    public int inputTryCount() {
+        System.out.println(INPUT_TRY_COUNT);
+        return scanner.nextInt();
     }
 
 

@@ -2,13 +2,18 @@ package carracing;
 
 import carracing.service.CarRacing;
 import carracing.view.InputView;
-import carracing.vo.Car;
 
 
 public class CarRacingMain {
 
     public static void main(String[] args) {
-        Car car = InputView.input();
-        CarRacing.start(car);
+        InputView inputView = new InputView();
+        CarRacing carRacing = new CarRacing();
+
+        String carNames = inputView.inputCarName();
+        int tryCount = inputView.inputTryCount();
+
+        carRacing.ready(carNames, tryCount);
+        carRacing.start();
     }
 }
