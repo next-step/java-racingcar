@@ -14,16 +14,30 @@ class RacingCarsTest {
     public void addCarsThenCarsWithMoveCountZeroMustBeAdded() {
         // Arrange
         RacingCars racingCars = new RacingCars();
-        int carCount = 3;
+        String[] carNames = new String[] {"Cactus", "Alpha", "April"};
 
         // Act
-        racingCars.addCars(carCount);
+        racingCars.addCars(carNames);
 
         // Assert
         assertThat(racingCars.getRacingCars().size()).isEqualTo(3);
         racingCars.getRacingCars().forEach(it ->
                 assertThat(it.getMoveCount()).isEqualTo(0)
         );
+    }
+
+    @DisplayName("addCars는 carNames의 이름을 가진 RacingCar을 그 순서대로 추가해야 한다.")
+    @Test
+    public void addCarsThenCarsWithCarNamesMustBeAddedWithSameOrder() {
+        // Arrange
+        RacingCars racingCars = new RacingCars();
+        String[] carNames = new String[] {"Proverbs", "Calling", "Oswald"};
+
+        // Act
+        racingCars.addCars(carNames);
+        for(int i = 0; i < carNames.length; ++i) {
+            assertThat(racingCars.getRacingCars().get(i).getCarName()).isEqualTo(carNames[i]);
+        }
     }
 
     @DisplayName("runRound는 자동차들을 랜덤하게 이동시킨다.")

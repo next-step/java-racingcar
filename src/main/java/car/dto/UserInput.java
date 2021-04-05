@@ -1,11 +1,11 @@
 package car.dto;
 
 public class UserInput {
-    public final int carCount;
+    public final String[] carNameList;
     public final int totalRound;
 
-    public UserInput(int carCount, int totalRound) {
-        this.carCount = carCount;
+    public UserInput(String[] carNameList, int totalRound) {
+        this.carNameList = carNameList;
         this.totalRound = totalRound;
     }
 }

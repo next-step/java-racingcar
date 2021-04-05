@@ -1,6 +1,7 @@
 package car.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -9,16 +10,17 @@ public class RacingCars {
 
     private final Random random = new Random();
 
-    private List<RacingCar> racingCars = new ArrayList<>();
+    private final List<RacingCar> racingCars = new ArrayList<>();
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
 
-    public void addCars(int carCount) {
-        for (int i = 0; i < carCount; ++i) {
-            racingCars.add(new RacingCar());
-        }
+    public void addCars(String[] carNameList) {
+        Arrays.stream(carNameList)
+                .forEach( it ->
+                        racingCars.add(new RacingCar(it))
+                );
     }
 
     private void tryMoving(RacingCar racingCar) {
