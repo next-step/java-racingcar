@@ -34,4 +34,18 @@ public class CarTest {
     assertThat(car.curPosition()).isEqualTo(2);
   }
 
+  @DisplayName("랜덤값을 구하고 4 이상일 경우 이동")
+  @Test
+  void catRandomMove() {
+    // given
+    int randomNumber = RandomNumber.generator();
+
+    // when
+    Car car = new Car();
+    car.move(randomNumber);
+
+    // then
+    assertThat(car.curPosition()).isEqualTo(randomNumber);
+  }
+
 }
