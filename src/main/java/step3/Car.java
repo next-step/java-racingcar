@@ -35,11 +35,11 @@ public class Car {
     
     private void checkNameValidation(String name) throws Exception {
         if( name == null || name.isEmpty() ) {
-            throw new IllegalStateException("Â÷·®¸í ¹ÌÀÔ·Â ¿À·ù");
+            throw new IllegalStateException("ì°¨ëŸ‰ëª…ì´ ì—†ìŠµë‹ˆë‹¤.");
         } 
         
         if( name.length() > MAXLENGTH_OF_NAME ) {
-            throw new IllegalStateException(name + " Â÷·®¸í ±æÀÌ ¿À·ù(ÃÖ´ë±æÀÌ : " + MAXLENGTH_OF_NAME + ")");
+            throw new IllegalStateException(name + " ì°¨ëŸ‰ ëª…ëª…ê·œì¹™ ë¶€ì í•©(ìµœëŒ€ê¸¸ì´ : " + MAXLENGTH_OF_NAME + ")");
         }
     }
     

@@ -15,19 +15,20 @@ public class RacingView {
     }
     
     public String[] inputCarNamesView() {
-        System.out.println("°æÁÖÇÒ ÀÚµ¿Â÷ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä(ÀÌ¸§Àº ½°Ç¥(,)¸¦ ±âÁØÀ¸·Î ±¸ºĞ).");
+        System.out.println("ê²½ì£¼í•  ìë™ì°¨ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”(ì´ë¦„ì€ ì‰¼í‘œ(,)ë¥¼ ê¸°ì¤€ìœ¼ë¡œ êµ¬ë¶„).");
         String carNames = scanner.next();
         
         return carNames.split(DELIMITER);
     }
     
     public int inputRacingRoundView() {
-        System.out.println("½ÃµµÇÒ È¸¼ö´Â ¸îÈ¸ÀÎ°¡¿ä?");
+        System.out.println("ì‹œë„í•  íšŒìˆ˜ëŠ” ëª‡íšŒì¸ê°€ìš”?");
         return scanner.nextInt();
     }
     
+    
     public void printBeforRace() {
-        System.out.println("\n½ÇÇà °á°ú : ");
+        System.out.println("\nì‹¤í–‰ ê²°ê³¼ : ");
     }
     
     public void printCurrentRound(RacingCar racingInfo) {
@@ -47,6 +48,6 @@ public class RacingView {
             builder.append(winners.get(cIndex).getName());
             builder.append(cIndex + 1 < winners.size() ? ", " : ""); 
         }
-        System.out.println(builder.toString() + "°¡ ÃÖÁ¾ ¿ì½ÂÇß½À´Ï´Ù.");
+        System.out.println(builder.toString() + "ê°€ ìµœì¢… ìš°ìŠ¹í–ˆìŠµë‹ˆë‹¤.");
     }
 }
