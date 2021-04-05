@@ -22,7 +22,7 @@ public class CarTest {
 
   @DisplayName("자동차의 위치 이동")
   @Test
-  void catMove() {
+  void carMove() {
     // given
     int position = 2;
 
@@ -36,7 +36,7 @@ public class CarTest {
 
   @DisplayName("랜덤값을 구하고 4 이상일 경우 이동")
   @Test
-  void catRandomMove() {
+  void carRandomMove() {
     // given
     int randomNumber = RandomNumber.generator();
 
@@ -46,6 +46,32 @@ public class CarTest {
 
     // then
     assertThat(car.curPosition()).isEqualTo(randomNumber);
+  }
+
+  @DisplayName("위치가 4 이상일 경우 이동가능한지")
+  @Test
+  void carPositionNumberIsMove() {
+    // given
+    int position = 5;
+
+    // when
+    Car car = new Car();
+
+    // then
+    assertThat(car.isMove(position)).isTrue();
+  }
+
+  @DisplayName("위치가 4 미만일 경우 이동 실패하는지 테스트")
+  @Test
+  void carMoveFail() {
+    // given
+    int position = 4;
+
+    // when
+    Car car = new Car();
+
+    // then
+    assertThat(car.isMove(position)).isFalse();
   }
 
 }
