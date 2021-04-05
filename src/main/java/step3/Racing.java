@@ -21,27 +21,27 @@ public class Racing {
         }
     }
 
-    private Car[] makeCar(int carNumber){
+    public Car[] makeCar(int carNumber) {
         Car[] cars = new Car[carNumber];
-        for (int i = 0; i < carNumber; i ++) {
+        for (int i = 0; i < carNumber; i++) {
             cars[i] = new Car(1);
         }
         return cars;
     }
 
-    private void play(Car[] cars) {
+    public void play(Car[] cars) {
         for (Car car : cars) {
             movement(car);
         }
     }
 
-    private void movement(Car car) {
+    public void movement(Car car) {
         while (random() >= 4) {
-            car.movement++;
+            car.point++;
         }
     }
 
-    private int random() {
+    public int random() {
         Random random = new Random();
         return random.nextInt(10);
     }

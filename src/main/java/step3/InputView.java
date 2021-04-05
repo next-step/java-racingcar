@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.Scanner;
-
 // 경주의 요구사항을 입력 받는다
 public class InputView {
 

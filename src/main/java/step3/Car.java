@@ -2,9 +2,9 @@ package step3;
 
 public class Car {
 
-    public int movement;
+    public int point;
 
     public Car(int movement) {
-        this.movement = movement;
+        this.point = movement;
     }
 }

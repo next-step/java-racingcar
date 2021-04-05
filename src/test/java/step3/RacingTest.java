@@ -1,23 +1,29 @@
-/*
 package step3;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
 
-    Racing racing = new Racing();
+    Racing racing = new Racing(2, 3);
 
     @Test
-    void random() {
-        assertThat(racing.random()).isBetween(1, 10);
+    void makeCar() {
+        Car[] cars = racing.makeCar(2);
+        assertThat(cars.length).isEqualTo(2);
     }
 
     @Test
     void movement() {
-        assertThat(racing.movement()).isGreaterThan(0);
+        Car car = new Car(2);
+        racing.movement(car);
+        assertThat(car.point).isGreaterThan(2);
     }
 
-    // 리턴 타입이 있는 경우만 테스트가 가능 하겠죠?
-}*/
+    @Test
+    void random() {
+        assertThat(racing.random()).isBetween(0, 10);
+    }
+
+}

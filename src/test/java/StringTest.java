@@ -18,7 +18,7 @@ public class StringTest {
     @DisplayName("(1,2)를 ()를 제거하고 1,2로 잘 반환하는지 확인")
     public void 요구사항_2() {
         String text = "(1,2)";
-        String result = text.substring(1,4);
+        String result = text.substring(1, 4);
         assertThat(result).contains("1,2");
     }
 
@@ -30,9 +30,13 @@ public class StringTest {
         assertThat(text.charAt(1)).isEqualTo('b');
         assertThat(text.charAt(2)).isEqualTo('c');
         // 예외가 발생했을때를 어떻게 처리하지 ? try catch? 컴퓨터 적으로 저 문구를 어떻게 해석하지 ?
-        assertThatThrownBy(() -> { text.charAt(3); }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                                                     .hasMessageContaining("String index out of range: 3");
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> { text.charAt(3); })
-                                                                        .withMessageContaining("String index out of range: 3");
+        assertThatThrownBy(() -> {
+            text.charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 3");
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> {
+            text.charAt(3);
+        })
+                .withMessageContaining("String index out of range: 3");
     }
 }
