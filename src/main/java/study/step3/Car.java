@@ -15,7 +15,17 @@ public class Car {
   }
 
   public void move(int position) {
-    this.position = position;
+    if (isMove(position)) {
+      this.position = position;
+    }
+  }
+
+  public boolean isMove(int randomPosition) {
+    if (randomPosition > 4) {
+      return true;
+    }
+
+    return false;
   }
 
 }
