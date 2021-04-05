@@ -1,38 +1,25 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Application {
     
     public static void main(String[] args) {
-        List<Car> cars = new ArrayList<Car>();
+        Cars cars;
         RacingCar racing;
         
         RacingView view = new RacingView();
-<<<<<<< step4
-=======
-        carInput   = view.inputCarCountView();
-        roundInput = view.inputRacingRoundView();
-        
-        System.out.println("\n½ÇÇà°á°ú");
->>>>>>> 6a7a9c8 í•œê¸€ ê¹¨ì§ í…ŒìŠ¤íŠ¸
 
-        String[] carNames = view.inputCarCountView();
+        String[] carNames = view.inputCarNamesView();
         int roundInput = view.inputRacingRoundView();
         
         try {
             
-            for(String carName : carNames) {
-                cars.add(new Car(carName));
-            }
+            cars = new Cars(carNames);
+            racing = new RacingCar(cars);
             
-            racing = new RacingCar(cars, roundInput);
+            view.printBeforRace();
             
-            System.out.println("\nì‹¤í–‰ ê²°ê³¼ : ");
-            
-            for( int rIndex = 0 ; rIndex < racing.getTotalRound() ; rIndex++ ) {
-                racing.raceSingleRound();
+            for( int rIndex = 0 ; rIndex < roundInput ; rIndex++ ) {
+                racing.raceSingleRound(racing.getRacingCarMoveConditions());
                 view.printCurrentRound(racing);
             }
             

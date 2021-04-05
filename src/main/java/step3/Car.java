@@ -2,7 +2,7 @@ package step3;
 
 public class Car {
     
-    private static final int MAXLENGTH_OF_NAME = 5; 
+    private final int MAXLENGTH_OF_NAME = 5; 
     
     private String name;
     private int move;
@@ -41,6 +41,10 @@ public class Car {
         if( name.length() > MAXLENGTH_OF_NAME ) {
             throw new IllegalStateException(name + " 차량 명명규칙 부적합(최대길이 : " + MAXLENGTH_OF_NAME + ")");
         }
+    }
+    
+    public boolean isEqualPosition(int position) {
+        return position == getPosition();
     }
     
 }

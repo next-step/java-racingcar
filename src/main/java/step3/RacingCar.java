@@ -5,24 +5,10 @@ import java.util.List;
 
 public class RacingCar {
     
-    private List<Car> cars;
-    private int roundCount;
+    private Cars cars;
     
-    public RacingCar(List<Car> cars) throws Exception {
+    public RacingCar(Cars cars) throws Exception {
         this.cars = cars;
-    }
-    
-    public RacingCar(List<Car> cars, int roundCount) throws Exception {
-        this.roundCount = roundCount;
-        this.cars = cars;
-    }
-
-    public void setRound(int roundCount) {
-        this.roundCount = roundCount;
-    }
-    
-    public int getTotalRound() {
-        return this.roundCount;
     }
     
     public int getTotalCarCount() {
@@ -33,9 +19,17 @@ public class RacingCar {
         return cars.get(index);
     }
     
-    public void raceSingleRound() {
+    public List<Boolean> getRacingCarMoveConditions() {
+        List<Boolean> moveConditions = new ArrayList<Boolean>();
         for( int cIndex = 0 ; cIndex < getTotalCarCount() ; cIndex++ ) {
-            getCarByIndex(cIndex).move(RacingCondition.isMoveForward());
+            moveConditions.add(RacingCondition.isMoveForward());
+        }
+        return moveConditions;
+    }
+    
+    public void raceSingleRound(List<Boolean> moveCondition) {
+        for( int cIndex = 0 ; cIndex < moveCondition.size() ; cIndex++ ) {
+            getCarByIndex(cIndex).move(moveCondition.get(cIndex));
         }
     }
     
@@ -43,9 +37,9 @@ public class RacingCar {
         List<Car> winners = new ArrayList<Car>();
 
         int maxPosition = getMaxPosition();
-        for( Car car : cars ) {
-            if( maxPosition == car.getPosition() ) {
-                winners.add(car);
+        for( int index = 0 ; index < cars.size() ; index++ ) {
+            if( cars.get(index).isEqualPosition(maxPosition) ) {
+                winners.add(cars.get(index));
             }
         }
         
@@ -54,9 +48,9 @@ public class RacingCar {
     
     public int getMaxPosition() {
         int maxPosition = 0;
-        
-        for( Car car : cars ) {
-            maxPosition = maxPosition < car.getPosition() ? car.getPosition() : maxPosition;
+
+        for( int index = 0 ; index < cars.size() ; index++ ) {
+            maxPosition = Math.max(cars.get(index).getPosition(), maxPosition);
         }
         
         return maxPosition;
