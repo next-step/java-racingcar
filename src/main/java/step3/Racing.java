@@ -21,7 +21,7 @@ public class Racing {
         }
     }
 
-    public Car[] makeCar(int carNumber){
+    private Car[] makeCar(int carNumber){
         Car[] cars = new Car[carNumber];
         for (int i = 0; i < carNumber; i ++) {
             cars[i] = new Car(1);

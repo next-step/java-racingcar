@@ -6,7 +6,7 @@ public class ResultView {
         System.out.println(" ");
     }
 
-    public final String GO = "-";
+    private final String GO = "-";
 
     public void result(Car[] cars) {
 
@@ -15,7 +15,7 @@ public class ResultView {
         }
     }
 
-    public void view(int count) {
+    private void view(int count) {
         for(int i = 0; i < count; i ++) {
             System.out.print(GO);
         }
