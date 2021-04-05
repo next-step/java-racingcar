@@ -1,3 +1,4 @@
+/*
 package step3;
 
 import org.junit.jupiter.api.Test;
@@ -19,4 +20,4 @@ class RacingTest {
     }
 
     // 리턴 타입이 있는 경우만 테스트가 가능 하겠죠?
-}
+}*/
