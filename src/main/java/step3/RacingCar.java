@@ -3,31 +3,12 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * STEP3. 자동차 경주
- * 
- * 1. 입력값   : 차량 수, 이동 횟수
- * 2. 전진조건 : 0 ~ 9 사이의 난수를 발생하여 4이상인 경우
- * 
- * @author ddak-ddakong
- *
- */
 public class RacingCar {
     
-    private List<Car> cars;                         //차량
-    private int roundCount;                         //이동 횟수
+    private Cars cars;
     
-    public RacingCar(int carCount, int roundCount) {
-        this.roundCount = roundCount;
-        this.cars = new ArrayList<Car>();
-        
-        for( int index = 0 ; index < carCount ; index++ ) {
-            this.cars.add(index, new Car());
-        }
-    }
-    
-    public int getTotalRound() {
-        return this.roundCount;
+    public RacingCar(Cars cars) throws Exception {
+        this.cars = cars;
     }
     
     public int getTotalCarCount() {
@@ -38,9 +19,40 @@ public class RacingCar {
         return cars.get(index);
     }
     
-    public void raceSingleRound() {
+    public List<Boolean> getRacingCarMoveConditions() {
+        List<Boolean> moveConditions = new ArrayList<Boolean>();
         for( int cIndex = 0 ; cIndex < getTotalCarCount() ; cIndex++ ) {
-            getCarByIndex(cIndex).move(RacingCondition.isMoveForward());
+            moveConditions.add(RacingCondition.isMoveForward());
         }
+        return moveConditions;
+    }
+    
+    public void raceSingleRound(List<Boolean> moveCondition) {
+        for( int cIndex = 0 ; cIndex < moveCondition.size() ; cIndex++ ) {
+            getCarByIndex(cIndex).move(moveCondition.get(cIndex));
+        }
+    }
+    
+    public List<Car> getWinner() {
+        List<Car> winners = new ArrayList<Car>();
+
+        int maxPosition = getMaxPosition();
+        for( int index = 0 ; index < cars.size() ; index++ ) {
+            if( cars.get(index).isEqualPosition(maxPosition) ) {
+                winners.add(cars.get(index));
+            }
+        }
+        
+        return winners;
+    }
+    
+    public int getMaxPosition() {
+        int maxPosition = 0;
+
+        for( int index = 0 ; index < cars.size() ; index++ ) {
+            maxPosition = Math.max(cars.get(index).getPosition(), maxPosition);
+        }
+        
+        return maxPosition;
     }
 }    

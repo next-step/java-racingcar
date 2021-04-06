@@ -1,21 +1,32 @@
 package step3;
 
 public class Application {
+    
     public static void main(String[] args) {
-        int carInput = 0;
-        int roundInput = 0;
+        Cars cars;
+        RacingCar racing;
         
         RacingView view = new RacingView();
-        carInput   = view.inputCarCountView();
-        roundInput = view.inputRacingRoundView();
-        
-        System.out.println("\n실행 결과 : ");
 
-        RacingCar racing = new RacingCar(carInput, roundInput);
+        String[] carNames = view.inputCarNamesView();
+        int roundInput = view.inputRacingRoundView();
         
-        for( int rIndex = 0 ; rIndex < racing.getTotalRound() ; rIndex++ ) {
-            racing.raceSingleRound();
-            view.printCurrentRound(racing);
+        try {
+            
+            cars = new Cars(carNames);
+            racing = new RacingCar(cars);
+            
+            view.printBeforRace();
+            
+            for( int rIndex = 0 ; rIndex < roundInput ; rIndex++ ) {
+                racing.raceSingleRound(racing.getRacingCarMoveConditions());
+                view.printCurrentRound(racing);
+            }
+            
+            view.printWinner(racing);
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
