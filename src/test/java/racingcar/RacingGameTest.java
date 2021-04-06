@@ -1,41 +1,46 @@
 package racingcar;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.command.NumberType;
 import racingcar.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class RacingGameTest {
 
-    @DisplayName("주어진 횟수 동안 pobi, crong, honux의 자동차는 전진할 수 있다.")
+    @DisplayName("주어진 횟수 동안 pobi, crong, honux의 자동차는 전진할 수 있다, 경기를 요청한 횟수와 진행한 횟수를 확인해볼 수 있는 내용")
     @ParameterizedTest
-    @CsvSource(value = {"pobi:1", "crong:3 ", "honux:5"}, delimiter = ':')
-    void cars_can_moves_given_number_test(String owners, int count) {
+    @CsvSource(value = {"4", "3", "2"}, delimiter = ':')
+    void cars_can_moves_given_number_test(int givenRound) {
 
-        RacingCar racingCar = new RacingCar(owners, NumberType.ZERO.value());
-        for (int i = 0; i < count; i++) {
-            racingCar.move(NumberType.FOUR.value());
-        }
+        //given
+        RacingCar pobiCar = new RacingCar("pobi", 0);
+        int currentRound = 0;
 
-        assertThat(racingCar.getLocation()).isEqualTo(count);
+        //when
+        RacingGame racingGame = new RacingGame();
+
+        //then
+        assertThat(racingGame.hasNextRound(givenRound)).isEqualTo(true);
+
+
+        pobiCar.move(4);
 
     }
+
 
 
     @DisplayName("우승자가 1명일 경우와 주어진 라운드가 1인 경우 ")
     @Test
     void winner_one() {
 
-        RacingCar pobiCar = new RacingCar("pobi", NumberType.ZERO.value());
+        RacingCar pobiCar = new RacingCar("pobi", 0);
 
-        pobiCar.move(NumberType.FIVE.value());
+        pobiCar.move(5);
         List<RacingCar> winnerList = Arrays.asList(pobiCar);
 
         assertThat(new Winner().findWinners(winnerList)).contains(pobiCar);
@@ -47,12 +52,12 @@ public class RacingGameTest {
     @Test
     void winner_two() {
 
-        RacingCar pobiCar = new RacingCar("pobi", NumberType.ZERO.value());
-        RacingCar crongCar = new RacingCar("crong", NumberType.ZERO.value());
+        RacingCar pobiCar = new RacingCar("pobi", 0);
+        RacingCar crongCar = new RacingCar("crong", 0);
 
         for (int i = 0; i < 3; i++) {
-            pobiCar.move(NumberType.FIVE.value());
-            crongCar.move(NumberType.FIVE.value());
+            pobiCar.move(5);
+            crongCar.move(5);
         }
 
         List<RacingCar> winnerList = Arrays.asList(pobiCar, crongCar);
