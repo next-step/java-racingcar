@@ -89,6 +89,18 @@ public class CarTest {
     assertThat(car.curPath()).isEqualTo(path);
   }
 
+  @DisplayName("자동차가 이동 실패했을 때 문자열 이동경로가 null인지")
+  @Test
+  void carPathNullWhenMove() {
+    // given
+    int position = 3;
 
+    // when
+    Car car = new Car();
+    car.move(position);
+
+    // then
+    assertThat(car.curPath()).isEqualTo(null);
+  }
 
 }
