@@ -12,23 +12,21 @@ import java.util.List;
 
 public class RacingGameTest {
 
-    @DisplayName("주어진 횟수 동안 pobi, crong, honux의 자동차는 전진할 수 있다, 경기를 요청한 횟수와 진행한 횟수를 확인해볼 수 있는 내용")
+    @DisplayName("경기를 요청한 횟수와 진행한 횟수를 확인해볼 수 있는 내용")
     @ParameterizedTest
     @CsvSource(value = {"4", "3", "2"}, delimiter = ':')
     void cars_can_moves_given_number_test(int givenRound) {
 
         //given
         RacingCar pobiCar = new RacingCar("pobi", 0);
-        int currentRound = 0;
 
         //when
         RacingGame racingGame = new RacingGame();
+        List<RacingCar> list = Arrays.asList(pobiCar);
+        racingGame.startRace(list, givenRound);
 
         //then
-        assertThat(racingGame.hasNextRound(givenRound)).isEqualTo(true);
-
-
-        pobiCar.move(4);
+        assertThat(racingGame.currentRound).isEqualTo(givenRound);
 
     }
 
