@@ -19,6 +19,6 @@ public class InputView {
         RacingGame racingGame = new RacingGame();
 
         List<RacingCar> list = racingGame.settingRacingCars(owners);
-        racingGame.gameStart(list, count);
+        racingGame.startRace(list, count);
     }
 }
