@@ -1,66 +1,65 @@
 package racingcar;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.*;
 
+import java.util.Arrays;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    @DisplayName("주어진 횟수 동안 pobi, crong, honux의 자동차는 전진 또는 멈출 수 있다.")
+    @DisplayName("경기를 요청한 횟수와 진행한 횟수를 확인해볼 수 있는 내용")
     @ParameterizedTest
-    @CsvSource(value = {"pobi:1", "crong:2 ", "honux:5"}, delimiter = ':')
-    void cars_can_moves_given_number_test(String owners, int count) {
+    @CsvSource(value = {"4", "3", "2"}, delimiter = ':')
+    void cars_can_moves_given_number_test(int givenRound) {
 
-        GameSet gameSet = new GameSet(owners, count);
+        //given
+        RacingCar pobiCar = new RacingCar("pobi", 0);
+
+        //when
         RacingGame racingGame = new RacingGame();
+        List<RacingCar> list = Arrays.asList(pobiCar);
+        racingGame.startRace(list, givenRound);
 
-        List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
-        racingGame.gameStart(list, count);
+        //then
+        assertThat(racingGame.currentRound).isEqualTo(givenRound);
 
     }
+
 
 
     @DisplayName("우승자가 1명일 경우와 주어진 라운드가 1인 경우 ")
     @Test
     void winner_one() {
 
-        GameSet gameSet = new GameSet("pobi", 1);
-        RacingGame racingGame = new RacingGame();
+        RacingCar pobiCar = new RacingCar("pobi", 0);
 
-        List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
+        pobiCar.move(5);
+        List<RacingCar> winnerList = Arrays.asList(pobiCar);
 
-        RacingCar pobiCar = list.get(0);
-        pobiCar.canGo(5);
+        assertThat(new Winner().findWinners(winnerList)).contains(pobiCar);
 
-        assertThat(racingGame.getWinners(list)).contains("pobi");
-        
 
     }
 
-    @DisplayName("우승자가 2명일 경우와 주어진 라운드가 1인 경우")
+    @DisplayName("우승자가 2명일 경우와 주어진 라운드가 3인 경우")
     @Test
     void winner_two() {
 
-        GameSet gameSet = new GameSet("pobi,crong", 1);
-        RacingGame racingGame = new RacingGame();
+        RacingCar pobiCar = new RacingCar("pobi", 0);
+        RacingCar crongCar = new RacingCar("crong", 0);
 
-        List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
+        for (int i = 0; i < 3; i++) {
+            pobiCar.move(5);
+            crongCar.move(5);
+        }
 
-        RacingCar pobiCar = list.get(0);
-        RacingCar crongCar = list.get(1);
-
-        pobiCar.canGo(5);
-        crongCar.canGo(5);
-
-        assertThat(1).isEqualTo(pobiCar.getCarLocation().length());
-        assertThat(1).isEqualTo(crongCar.getCarLocation().length());
-
-        assertThat(racingGame.getWinners(list)).contains("pobi,crong");
+        List<RacingCar> winnerList = Arrays.asList(pobiCar, crongCar);
+        assertThat(new Winner().findWinners(winnerList)).contains(pobiCar, crongCar);
     }
 
 }

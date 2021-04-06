@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.RacingCar;
+import racingcar.RacingGame;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,10 +16,9 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요? ");
         int count = scanner.nextInt();
 
-        GameSet gameSet = new GameSet(owners, count);
         RacingGame racingGame = new RacingGame();
 
-        List<RacingCar> list = racingGame.settingRacingCars(gameSet.getOwners());
-        racingGame.gameStart(list, count);
+        List<RacingCar> list = racingGame.settingRacingCars(owners);
+        racingGame.startRace(list, count);
     }
 }
