@@ -2,7 +2,6 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.command.NumberType;
 import racingcar.utils.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,6 +12,6 @@ public class RandomNumberTest {
     @Test
     void random_test() {
         int number = RandomNumber.random();
-        assertThat(number).isGreaterThan(NumberType.ZERO.value()).isLessThan(NumberType.TEN.value());
+        assertThat(number).isGreaterThan(0).isLessThan(10);
     }
 }
