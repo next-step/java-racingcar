@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.command.NumberType;
 import racingcar.domain.RacingCar;
 import racingcar.domain.Winner;
 import racingcar.utils.RandomNumber;
@@ -13,6 +12,7 @@ public class RacingGame {
 
     private ResultView resultView;
     private List<RacingCar> winnerList;
+    private int currentRound = 0;
 
     public RacingGame() {
         resultView = new ResultView();
@@ -25,30 +25,33 @@ public class RacingGame {
         String[] owner = owners.split(",");
 
         for (int i = 0; i < owner.length; i++) {
-            RacingCar racingCar = new RacingCar(owner[i], NumberType.ZERO.value());
+            RacingCar racingCar = new RacingCar(owner[i], 0);
             carList.add(racingCar);
         }
 
         return carList;
     }
 
-    public void gameStart(List<RacingCar> carList, int count) {
-        showGameTimes(carList, count);
+    public boolean hasNextRound(int givenRound) {
+        if (currentRound < givenRound) {
+            return true;
+        }
+        return false;
     }
 
-    public void gameOver(List<RacingCar> carList) {
+    public void getWinner(List<RacingCar> carList) {
         Winner winner = new Winner();
         resultView.showWinner(winner.findWinners(carList));
     }
 
-
-    private void showGameTimes(List<RacingCar> carList, int count) {
-        for (int i = 0; i < count; i++) {
+    public void startRace(List<RacingCar> carList, int count) {
+        while (hasNextRound(count)) {
             showCarsStatus(carList);
             resultView.showRoundResult("\n");
+            currentRound++;
         }
         resultView.showResult();
-        gameOver(carList);
+        getWinner(carList);
     }
 
 
