@@ -12,7 +12,7 @@ public class RacingGame {
 
     private ResultView resultView;
     private List<RacingCar> winnerList;
-    private int currentRound = 0;
+    protected int currentRound = 0;
 
     public RacingGame() {
         resultView = new ResultView();
@@ -32,7 +32,7 @@ public class RacingGame {
         return carList;
     }
 
-    public boolean hasNextRound(int givenRound) {
+    public boolean hasNextRound(int currentRound, int givenRound) {
         if (currentRound < givenRound) {
             return true;
         }
@@ -45,7 +45,7 @@ public class RacingGame {
     }
 
     public void startRace(List<RacingCar> carList, int count) {
-        while (hasNextRound(count)) {
+        while (hasNextRound(currentRound, count)) {
             showCarsStatus(carList);
             resultView.showRoundResult("\n");
             currentRound++;
