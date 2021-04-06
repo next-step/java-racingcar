@@ -52,7 +52,7 @@ public class CarTest {
   @Test
   void carPositionNumberIsMove() {
     // given
-    int position = 5;
+    int position = 4;
 
     // when
     Car car = new Car();
@@ -65,7 +65,7 @@ public class CarTest {
   @Test
   void carMoveFail() {
     // given
-    int position = 4;
+    int position = 3;
 
     // when
     Car car = new Car();
@@ -73,5 +73,22 @@ public class CarTest {
     // then
     assertThat(car.isMove(position)).isFalse();
   }
+
+  @DisplayName("자동차가 이동할 때 문자열 이동경로 생성")
+  @Test
+  void carPathWhenMove() {
+    // given
+    int position = 4;
+    String path = "----";
+
+    // when
+    Car car = new Car();
+    car.move(position);
+
+    // then
+    assertThat(car.curPath()).isEqualTo(path);
+  }
+
+
 
 }
