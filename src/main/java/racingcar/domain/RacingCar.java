@@ -1,9 +1,9 @@
 package racingcar.domain;
 
-import racingcar.command.NumberType;
 
 public class RacingCar {
 
+    private static final int STANDARD_FOR_MOVING = 4;
     private Owner owner;
     private Location location;
 
@@ -13,7 +13,7 @@ public class RacingCar {
     }
 
     public void move(int number) {
-        if (number >= NumberType.FOUR.value()) {
+        if (number >= STANDARD_FOR_MOVING) {
             location = location.move();
         }
     }
