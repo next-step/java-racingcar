@@ -1,18 +1,25 @@
 package RacingGame;
 
+import RacingGame.domain.Car;
+import RacingGame.domain.Cars;
+import RacingGame.domain.DefaultRule;
+import RacingGame.domain.Rule;
+import RacingGame.dto.CarDto;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private List<Car> racingCars;
+    private Cars racingCars;
     private String[] nameOfCars;
     private int numOfCar;
-    private Rule rule = new DefaultRule();
 
 
-    public RacingGame(){
-        racingCars = new ArrayList<Car>();
+    public RacingGame(){}
+
+    public RacingGame(Cars cars){
+        racingCars = cars;
     }
 
     public void getInputValue(String[] nameOfCars){
@@ -20,40 +27,26 @@ public class RacingGame {
         this.numOfCar = nameOfCars.length;
     }
 
-    public List<Car> playGame() {
-            racingCars
-                    .forEach(car -> rule.playRule(car));
-            
-            return this.racingCars;
+    public Cars playGame() {
+            racingCars.playGame();
+            return racingCars;
     }
 
     public void prepareGame() {
 
+        List<Car> cars = new ArrayList<>();
         for(int i = 0; i < this.numOfCar; i ++){
-            racingCars.add(new Car(this.nameOfCars[i]));
+            cars.add(new Car(this.nameOfCars[i]));
         }
+        racingCars = new Cars(cars);
     }
 
-    public List<String> getWinners(){
-        Integer maxLocation = getMaxLocation(this.racingCars);
-        return namesOfWinner(maxLocation,this.racingCars);
-
+    public List<String> getWinners() {
+        return racingCars.getWinners();
     }
 
-    public List<String> namesOfWinner(Integer maxLocation, List<Car> racingCars){
-
-        return racingCars.stream()
-                .filter(car -> car.isAt() == maxLocation )
-                .map(car -> car.carName())
-                .collect(Collectors.toList());
-    }
-
-    public Integer getMaxLocation(List<Car> racingCars) {
-        return racingCars.stream()
-                .map(car -> car.isAt())
-                .max(Comparator.comparing(x -> x))
-                .orElseThrow(NoSuchElementException::new);
-
+    public List<CarDto> getCarDtos(){
+        return racingCars.getCarDtos();
     }
 
 }

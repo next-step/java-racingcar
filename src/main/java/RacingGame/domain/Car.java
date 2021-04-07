@@ -1,8 +1,6 @@
-package RacingGame;
-import com.sun.xml.internal.ws.util.StringUtils;
+package RacingGame.domain;
 
-import java.util.Random;
-import java.util.function.Function;
+import RacingGame.dto.CarDto;
 
 public class Car {
 
@@ -32,11 +30,16 @@ public class Car {
         return this.name;
     }
 
-    public void applyRule(int location) {
-        this.location = location;
+    public void move(Rule rule) {
+        if (rule.move())
+            this.location = ++location;
     }
 
     public Boolean notValidName(String name){
-        return name.length() > MAX_NAME_LENGTH || name == null || name.trim().isEmpty();
+        return name == null || name.length() > MAX_NAME_LENGTH || name.trim().isEmpty(); // NPE방지위해 null
+    }
+
+    public CarDto getCarDto(){
+        return new CarDto(name,location);
     }
 }

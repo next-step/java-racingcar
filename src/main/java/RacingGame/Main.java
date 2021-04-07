@@ -1,5 +1,10 @@
 package RacingGame;
 
+import RacingGame.domain.Car;
+import RacingGame.domain.Cars;
+import RacingGame.view.InputView;
+import RacingGame.view.ResultView;
+
 import java.util.List;
 
 public class Main {
@@ -15,8 +20,8 @@ public class Main {
 
         int numOfTry = inputView.inputNumOfTry();
         for (int i = 0; i < numOfTry; i++){
-            List<Car> cars = racingGame.playGame();
-            ResultView.viewGame(cars);
+            racingGame.playGame();
+            ResultView.viewGame(racingGame.getCarDtos());
         }
 
         List<String> winners = racingGame.getWinners();

@@ -1,45 +1,78 @@
 package RacingGame;
 
+import RacingGame.domain.Car;
+import RacingGame.domain.Cars;
+import RacingGame.domain.DefaultRule;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 class RacingGameTest {
 
     @Test
-    @DisplayName("Rule 적용시 Car의 위치가 알맞게 변경되는지 확인")
-    public void RuleTest(){
+    @DisplayName("randomvale 가 4일때 잘 이동하는지 확인")
+    public void move(){
 
         //given
         Car car = new Car();
-        Rule rule = new DefaultRule();
 
         //when
-        rule.playRule(car);
+        car.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 4;
+            }
+        });
 
         //than
-        assertThat(car.isAt()).isGreaterThan(-1);
-        assertThat(car.isAt()).isLessThan(2);
+        assertThat(car.isAt()).isEqualTo(1);
 
     }
 
     @Test
-    @DisplayName("game이 잘 진행되는지 확인")
-    public void doRacingGame(){
+    @DisplayName("randomvale 가 2일때 멈추는지")
+    public void stop(){
 
+        //given
+        Car car = new Car();
+
+        //when
+        car.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 2;
+            }
+        });
+
+        //than
+        assertThat(car.isAt()).isEqualTo(0);
+
+    }
+
+    @Test
+    @DisplayName("Car의 이름이 잘 초기화 되었는지 확")
+    public void carNameInitial(){
+
+        //given
         RacingGame racingGame = new RacingGame();
         String[] nameOfCars = new String[]{"yurim","some","hey"};
 
+        //when
         racingGame.getInputValue(nameOfCars);
         racingGame.prepareGame();
-        List<Car> cars = racingGame.playGame();
+        List<String> names = racingGame.getCarDtos().stream()
+                .map(carDto -> carDto.getName())
+                .collect(Collectors.toList());
 
-        Assertions.assertThat(cars.size()).isEqualTo(3);
+        //than
+        Assertions.assertThat(names).containsExactly("yurim","some","hey");
 
     }
 
@@ -65,17 +98,28 @@ class RacingGameTest {
     public void maxLocation(){
         //given
         Car win = new Car("win");
-        win.applyRule(11);
+        win.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 4;
+            }
+        });
 
         Car lose = new Car("lose");
-        lose.applyRule(3);
+        lose.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 0;
+            }
+        });
 
         //when
-        RacingGame racingGame = new RacingGame();
-        Integer maxLocation = racingGame.getMaxLocation(Arrays.asList(win, lose));
+        Cars cars = new Cars();
+        Integer maxLocation = cars.getMaxLocation(Arrays.asList(win, lose));
+
 
         //than
-        assertThat(maxLocation).isEqualTo(11);
+        assertThat(maxLocation).isEqualTo(1);
 
     }
 
@@ -84,16 +128,26 @@ class RacingGameTest {
     public void winnerTest(){
         //given
         Car win = new Car("win");
-       win.applyRule(11);
-
         Car lose = new Car("lose");
-        lose.applyRule(3);
+        win.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 4;
+            }
+        });
+
+        lose.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 1;
+            }
+        });
+
 
         //when
-        RacingGame racingGame = new RacingGame();
-        List<Car> racingCars = Arrays.asList(win,lose);
-        Integer maxLocation = racingGame.getMaxLocation(racingCars);
-        List<String> result = racingGame.namesOfWinner(maxLocation,racingCars);
+        Cars cars = new Cars(Arrays.asList(win,lose));
+        RacingGame racingGame = new RacingGame(cars);
+        List<String> result = racingGame.getWinners();
 
 
         //than
@@ -107,23 +161,39 @@ class RacingGameTest {
     public void twoWinnerTest(){
         //given
         Car win = new Car("win");
-        win.applyRule(11);
-
         Car win2 = new Car("win2");
-        win2.applyRule(11);
-
         Car lose = new Car("lose");
-        lose.applyRule(5);
+        win.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 4;
+            }
+        });
+
+        win2.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 4;
+            }
+        });
+
+        lose.move(new DefaultRule(){
+            @Override
+            protected int getRandomValue(){
+                return 1;
+            }
+        });
+
+
 
         //when
         RacingGame racingGame = new RacingGame();
-        List<Car> racingCars = Arrays.asList(win,win2,lose);
-        Integer maxLocation = racingGame.getMaxLocation(racingCars);
-        List<String> result = racingGame.namesOfWinner(maxLocation,racingCars);
+        List<Car> cars = Arrays.asList(win,win2,lose);
+        Cars racingCars = new Cars(cars);
+        List<String> winners = racingCars.getWinners();
 
-        assertThat(result.size()).isEqualTo(2);
+        //than
+        assertThat(winners.size()).isEqualTo(2);
     }
-
-
 
 }
