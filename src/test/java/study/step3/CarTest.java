@@ -1,6 +1,7 @@
 package study.step3;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -115,6 +116,21 @@ public class CarTest {
 
     // then
     assertThat(cars.size()).isEqualTo(carNumber);
+  }
+
+  @DisplayName("자동차 대수를 0으로 입력했을 때, 자동차 객체 생성에 실패하는지 테스트")
+  @Test
+  void carFactoryFail() {
+    // given
+    int carNumber = 0;
+
+    // when
+    Throwable thrown = catchThrowable(() -> {
+      CarFactory.makeCar(carNumber);
+    });
+
+    // then
+    assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
   }
 
 }

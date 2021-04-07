@@ -7,7 +7,7 @@ public class CarFactory {
 
   public static List<Car> makeCar(int carNumber) {
 
-    if (carNumber < 0) {
+    if (carNumber < 1) {
       throw new IllegalArgumentException("0보다 큰 값을 입력해야합니다.");
     }
 
