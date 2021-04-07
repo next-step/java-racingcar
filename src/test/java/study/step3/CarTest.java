@@ -2,6 +2,7 @@ package study.step3;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -101,6 +102,19 @@ public class CarTest {
 
     // then
     assertThat(car.curPath()).isEqualTo(null);
+  }
+
+  @DisplayName("자동차 대수를 입력한 수 만큼 자동차를 생산하는지 테스트")
+  @Test
+  void carFactory() {
+    // given
+    int carNumber = 3;
+
+    // when
+    List<Car> cars = CarFactory.makeCar(carNumber);
+
+    // then
+    assertThat(cars.size()).isEqualTo(carNumber);
   }
 
 }
