@@ -1,14 +1,11 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.mockito.Mock;
 import racingcar.car.Car;
 import racingcar.car.strategy.MovingStrategy;
 import racingcar.car.strategy.RandomNumMovingStrategy;
@@ -16,7 +13,6 @@ import racingcar.car.strategy.RandomNumMovingStrategy;
 
 public class CarTest {
 
-  @Mock
   MovingStrategy movingStrategy;
 
   @Test
@@ -31,8 +27,7 @@ public class CarTest {
   @DisplayName("자동차는 한칸씩 이동한다")
   @ValueSource(ints = {1 ,3 ,5 ,10})
   public void carMoveOne(int moveCount) {
-    this.movingStrategy = mock(MovingStrategy.class);
-    when(this.movingStrategy.isCanMove()).thenReturn(true);
+    this.movingStrategy = () -> true;
 
     Car car = new Car(this.movingStrategy, "CarName2");
     for(int i = 0 ; i < moveCount ; ++i) {
