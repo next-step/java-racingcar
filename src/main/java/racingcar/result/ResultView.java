@@ -1,6 +1,7 @@
 package racingcar.result;
 
 import java.util.List;
+import racingcar.car.CarStatusDTO;
 import racingcar.racing.Racing;
 
 public class ResultView {
@@ -18,15 +19,28 @@ public class ResultView {
   }
 
   public void printNow() {
-    List<CarResultView> carResultViews = racing.currentSituation();
-    for (CarResultView currentSituation : carResultViews) {
-      System.out.println(currentSituation.generateCurrentSituation(POSITION_UNIT));
-    }
+    this.racing.currentSituation()
+        .stream()
+        .map(this::generateCurrentSituation)
+        .forEach(System.out::println);
+    System.out.println();
   }
 
   public void printWinner() {
     List<String> winnerCarName = racing.getWinnerCarName();
     String winnerJoinList = String.join(", ", winnerCarName);
-    System.out.println(winnerJoinList+"가 최종 우승했습니다.");
+    System.out.println(winnerJoinList + "가 최종 우승했습니다.");
+  }
+
+  private String generateCurrentSituation(CarStatusDTO carStatusDTO) {
+    String carName = carStatusDTO.getCarName();
+    int currentPosition = carStatusDTO.getCurrentPosition();
+    StringBuilder builder = new StringBuilder()
+        .append(carName)
+        .append(" : ");
+    for (int i = 0; i < currentPosition; ++i) {
+      builder.append(POSITION_UNIT);
+    }
+    return builder.toString();
   }
 }

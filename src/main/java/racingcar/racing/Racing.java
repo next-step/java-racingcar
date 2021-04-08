@@ -1,12 +1,11 @@
 package racingcar.racing;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.car.Car;
+import racingcar.car.CarStatusDTO;
 import racingcar.car.strategy.MovingStrategy;
 import racingcar.exception.TryMovingCarException;
-import racingcar.result.CarResultView;
 
 public class Racing {
 
@@ -14,12 +13,10 @@ public class Racing {
   private int remainTryCount;
 
   public Racing(RacingRule racingRule, MovingStrategy movingStrategy) {
-    this.cars = new ArrayList<>();
-    int carCount = racingRule.getCarCount();
-    List<String> carList = racingRule.getCarNameList();
-    for (int i = 0; i < carCount; ++i) {
-      cars.add(new Car(movingStrategy, carList.get(i)));
-    }
+    this.cars = racingRule.getCarNameList()
+        .stream()
+        .map(carName -> new Car(movingStrategy, carName))
+        .collect(Collectors.toList());
     this.remainTryCount = racingRule.getTryCount();
   }
 
@@ -42,9 +39,9 @@ public class Racing {
     return this.remainTryCount;
   }
 
-  public List<CarResultView> currentSituation() {
+  public List<CarStatusDTO> currentSituation() {
     return this.cars.stream()
-        .map(CarResultView::new)
+        .map(CarStatusDTO::new)
         .collect(Collectors.toList());
   }
 
