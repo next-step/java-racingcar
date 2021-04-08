@@ -133,4 +133,20 @@ public class CarTest {
     assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
   }
 
+  @DisplayName("자동차 1대를 4회 만큼 이동했을 때 문자열 경로가 생성되는지 테스트")
+  @Test
+  void carRacingGameWhenOneCarRacing() {
+    // given
+    int carNumber = 1;
+    int times = 4;
+
+    // when
+    CarRace carRace = new CarRace(carNumber, times);
+    List<Car> cars = carRace.start();
+
+    // then
+    assertThat(cars.get(0).curPosition()).isGreaterThan(0);
+  }
+
+
 }
