@@ -80,12 +80,12 @@ public class CarTest {
   @Test
   void carPathWhenMove() {
     // given
-    int position = 4;
-    String path = "----";
+    int conditionNumber = 4;
+    String path = "-";
 
     // when
     Car car = new Car();
-    car.move(position);
+    car.move(conditionNumber);
 
     // then
     assertThat(car.curPath()).isEqualTo(path);
