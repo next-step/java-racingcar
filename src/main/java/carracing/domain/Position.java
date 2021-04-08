@@ -18,14 +18,4 @@ public class Position {
         if (RandomUtil.win(randomNumber))
             this.position++;
     }
-
-    @Override
-    public String toString() {
-        String result = "";
-
-        for (int count = 0; count < position ; count++)
-            result += "-";
-
-        return result;
-    }
 }

@@ -17,7 +17,7 @@ public class Cars {
         saveCarNames(carNames);
     }
 
-    public List<Car> carList() {
+    public List<Car> getCars() {
         return this.cars;
     }
 
@@ -33,16 +33,6 @@ public class Cars {
         cars.stream().forEach(car -> car.move(RandomUtil.randomNumber()));
     }
 
-    @Override
-    public String toString() {
-        String result = "";
-
-        for (Car car : cars)
-            result += car.toString() + "\n";
-
-        return result;
-    }
-
     public String getWinners() {
         return getWinnerNames(getMaxScore());
     }
@@ -54,7 +44,7 @@ public class Cars {
                 winners.add(car);
         }
 
-        return winners.stream().map(x -> x.getName()).collect(Collectors.joining(", "));
+        return winners.stream().map(x -> x.getName().getName()).collect(Collectors.joining(", "));
     }
 
     private int getMaxScore() {

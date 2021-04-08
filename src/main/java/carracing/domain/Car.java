@@ -15,18 +15,14 @@ public class Car {
         this.position.getPosition(randomNumber);
     }
 
-    @Override
-    public String toString() {
-        return name.toString() + " : " + position.toString();
-    }
-
     public int getPosition() {
         return this.position.getPosition();
     }
 
-    public String getName() {
-        return this.name.toString();
+    public Name getName() {
+        return this.name;
     }
+
     public boolean isWinner(int max) {
         return this.position.getPosition() >= max;
     }

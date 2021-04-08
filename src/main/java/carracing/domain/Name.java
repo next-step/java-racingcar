@@ -15,9 +15,7 @@ public class Name {
         return name;
     }
 
-    @Override
-    public String toString() {
+    public String getName() {
         return this.name;
     }
-
 }
