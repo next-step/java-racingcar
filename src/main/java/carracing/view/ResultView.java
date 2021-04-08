@@ -27,7 +27,6 @@ public class ResultView {
     public static void printWinner(Cars cars) {
         System.out.println("=============");
         System.out.println("Winner: " + cars.getWinners());
-
         System.out.println("=============");
     }
 }

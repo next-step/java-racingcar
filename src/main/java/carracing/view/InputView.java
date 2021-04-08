@@ -20,6 +20,4 @@ public class InputView {
         System.out.println(INPUT_TRY_COUNT);
         return scanner.nextInt();
     }
-
-
 }
