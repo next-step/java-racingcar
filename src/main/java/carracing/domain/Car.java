@@ -1,6 +1,8 @@
 package carracing.domain;
 
 
+import carracing.util.RandomUtil;
+
 public class Car {
 
     private Name name;
@@ -12,7 +14,9 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        this.position.getPosition(randomNumber);
+        if (RandomUtil.win(randomNumber)) {
+            position = new Position(getPosition() + 1);
+        }
     }
 
     public int getPosition() {
