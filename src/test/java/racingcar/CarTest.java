@@ -6,9 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.car.Car;
-import racingcar.car.strategy.MovingStrategy;
-import racingcar.car.strategy.RandomNumMovingStrategy;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.strategy.MovingStrategy;
+import racingcar.domain.car.strategy.RandomNumMovingStrategy;
 
 
 public class CarTest {

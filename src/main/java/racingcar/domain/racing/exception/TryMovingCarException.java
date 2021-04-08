@@ -1,4 +1,4 @@
-package racingcar.exception;
+package racingcar.domain.racing.exception;
 
 public class TryMovingCarException extends Exception {
 

@@ -1,8 +1,8 @@
-package racingcar.result;
+package racingcar.view.result;
 
 import java.util.List;
-import racingcar.car.CarStatusDTO;
-import racingcar.racing.Racing;
+import racingcar.domain.car.CarStatusDTO;
+import racingcar.domain.racing.Racing;
 
 public class ResultView {
 

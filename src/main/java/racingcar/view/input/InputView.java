@@ -1,9 +1,9 @@
-package racingcar.input;
+package racingcar.view.input;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import racingcar.racing.RacingRule;
+import racingcar.domain.racing.RacingRule;
 
 public class InputView {
 

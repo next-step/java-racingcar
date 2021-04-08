@@ -1,11 +1,11 @@
-package racingcar.racing;
+package racingcar.domain.racing;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.car.Car;
-import racingcar.car.CarStatusDTO;
-import racingcar.car.strategy.MovingStrategy;
-import racingcar.exception.TryMovingCarException;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarStatusDTO;
+import racingcar.domain.car.strategy.MovingStrategy;
+import racingcar.domain.racing.exception.TryMovingCarException;
 
 public class Racing {
 

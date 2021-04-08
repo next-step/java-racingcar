@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.input.InputView;
-import racingcar.racing.RacingRule;
+import racingcar.view.input.InputView;
+import racingcar.domain.racing.RacingRule;
 
 public class RacingRuleTest {
 

@@ -3,10 +3,10 @@ package racingcar;
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.strategy.RandomNumMovingStrategy;
-import racingcar.exception.TryMovingCarException;
-import racingcar.racing.Racing;
-import racingcar.racing.RacingRule;
+import racingcar.domain.car.strategy.RandomNumMovingStrategy;
+import racingcar.domain.racing.exception.TryMovingCarException;
+import racingcar.domain.racing.Racing;
+import racingcar.domain.racing.RacingRule;
 
 import static org.assertj.core.api.Assertions.*;
 
