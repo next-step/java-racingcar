@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domains.RacingCar;
+import racingcar.domains.RacingCars;
 import racingcar.domains.RacingResult;
 import racingcar.views.InputView;
 import racingcar.views.ResultView;
@@ -16,9 +17,8 @@ public class RacingMain {
         int roundNumTotal = carInfos.get(InputView.ROUND_NUM_TOTAL);
 
         RacingGame racingGame = new RacingGame();
-        List<RacingCar> racingCars = new ArrayList<>();
 
-        racingGame.initiateCars(racingCars, carNumTotal);
+        RacingCars racingCars = racingGame.initiateCars(carNumTotal);
 
         List<RacingResult> results = racingGame.startRace(racingCars, roundNumTotal);
 

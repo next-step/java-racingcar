@@ -1,14 +1,15 @@
 package racingcar.domains;
 
-public class RacingCar {
+import racingcar.strategies.MoveStrategy;
+import racingcar.utils.RandomNumberUtil;
 
-    public static final int MIN_MOVE_CONDITION = 4;
+public class RacingCar {
 
     private int moveCnt;
 
-    public int move(int randomNum) {
-        if (randomNum >= MIN_MOVE_CONDITION) {
-            return moveCnt++;
+    public int move(MoveStrategy moveStrategy) {
+        if (RandomNumberUtil.isMovable(moveStrategy)) {
+            return ++moveCnt;
         }
         return moveCnt;
     }

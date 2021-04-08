@@ -1,20 +1,13 @@
 package racingcar.utils;
 
-import java.util.Random;
+import racingcar.strategies.MoveStrategy;
 
 public class RandomNumberUtil {
 
-    private static final int ROUND_10 = 10;
-    private static Random random;
-
     private RandomNumberUtil() {}
 
-    public static int generateRandomNum() {
-        if (random == null) {
-            random = new Random();
-        }
-
-        return random.nextInt(ROUND_10);
+    public static boolean isMovable(MoveStrategy moveStrategy) {
+        return moveStrategy.checkMovement();
     }
 
 }

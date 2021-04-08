@@ -32,7 +32,6 @@ public class ResultView {
 
     private static void drawCarCurrentPosition(int carPosition) {
         StringBuilder sb = new StringBuilder();
-        sb.append(STR_DASH);
 
         for (int p = 0; p < carPosition; p++) {
             sb.append(STR_DASH);

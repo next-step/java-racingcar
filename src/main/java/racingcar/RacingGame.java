@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domains.RacingCar;
+import racingcar.domains.RacingCars;
 import racingcar.domains.RacingResult;
 import racingcar.utils.RandomNumberUtil;
 
@@ -8,14 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+    private List<RacingCar> racingCars;
 
-    public void initiateCars(List<RacingCar> racingCars, int carNumTotal) {
+    public RacingGame() {
+        this.racingCars = new ArrayList<>();
+    }
+
+    public RacingCars initiateCars(int carNumTotal) {
         for (int i = 0; i < carNumTotal; i++) {
             racingCars.add(new RacingCar());
         }
+        return new RacingCars(racingCars);
     }
 
-    public List<RacingResult> startRace(List<RacingCar> racingCars, int roundNumTotal) {
+    public List<RacingResult> startRace(RacingCars racingCars, int roundNumTotal) {
         List<RacingResult> racingResult = new ArrayList<>();
 
         for (int i = 0; i < roundNumTotal; i++) {
@@ -26,12 +33,11 @@ public class RacingGame {
         return racingResult;
     }
 
-    private List<Integer> makeRandomMove(List<RacingCar> racingCars) {
+    private List<Integer> makeRandomMove(RacingCars racingCars) {
         List<Integer> recordsForEachCar = new ArrayList<>();
 
         for (int j = 0; j < racingCars.size(); j++) {
-            int randomNum = RandomNumberUtil.generateRandomNum();
-            int currentPosition = racingCars.get(j).move(randomNum);
+            int currentPosition = racingCars.move(j);
             recordsForEachCar.add(currentPosition);
         }
 
