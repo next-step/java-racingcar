@@ -1,17 +1,26 @@
 package carracing.service;
 
+import carracing.domain.Cars;
 import carracing.view.ResultView;
-import carracing.vo.Car;
 
 public class CarRacing {
 
-    public static void start(Car car) {
-        car.initializeRacingResult();
+    private Cars cars;
+    private int tryCount;
 
-        for (int tryCnt = 0; tryCnt < car.getTryCount() ; tryCnt++) {
-            car.racing();
-            ResultView.print(car);
-        }
+    public CarRacing() {}
+
+    public void ready(String carNames, int tryCount) {
+        cars = new Cars(carNames);
+        this.tryCount = tryCount;
     }
 
+    public void start() {
+        for (int turn = 0; turn < tryCount; turn++) {
+            cars.play();
+            ResultView.print(cars, turn);
+        }
+
+        ResultView.printWinner(cars);
+    }
 }
