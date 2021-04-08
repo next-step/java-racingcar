@@ -8,7 +8,7 @@ public class Car {
 
   private String path;
 
-  public Car() {};
+  public Car() { }
 
   public Car(int position) {
     this.position = position;
@@ -22,27 +22,19 @@ public class Car {
     return this.path;
   }
 
-  public void move(int position) {
-    if (isMove(position)) {
-      this.position = position;
-      makePath(position);
+  public void move(int conditionNumber) {
+    if (isMove(conditionNumber)) {
+      this.position +=  + 1;
+      this.path = StringUtils.isEmpty(this.path) ? "-" : this.path + "-";
     }
   }
 
-  public boolean isMove(int randomPosition) {
-    if (randomPosition > 3) {
+  public boolean isMove(int conditionNumber) {
+    if (conditionNumber > 3) {
       return true;
     }
 
     return false;
-  }
-
-  public void makePath(int position) {
-    this.path = StringUtils.isEmpty(this.path) ? "" : this.path;
-
-    for (int i = 0; i < position; i++) {
-      this.path = path + "-";
-    }
   }
 
 }
