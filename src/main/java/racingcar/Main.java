@@ -1,10 +1,10 @@
 package racingcar;
 
-import racingcar.car.strategy.RandomNumMovingStrategy;
-import racingcar.input.InputView;
-import racingcar.racing.Racing;
-import racingcar.racing.RacingRule;
-import racingcar.result.ResultView;
+import racingcar.domain.car.strategy.RandomNumMovingStrategy;
+import racingcar.domain.racing.Racing;
+import racingcar.domain.racing.RacingRule;
+import racingcar.view.input.InputView;
+import racingcar.view.result.ResultView;
 
 public class Main {
 
@@ -18,7 +18,6 @@ public class Main {
     while (racing.canTry()) {
       racing.tryMoveCars();
       resultView.printNow();
-      System.out.println();
     }
     resultView.printWinner();
   }
