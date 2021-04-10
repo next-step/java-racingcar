@@ -17,11 +17,21 @@ public class CarRace {
   public List<Car> start() {
     List<Car> cars = CarFactory.makeCar(carNumber);
 
+    ResultView resultView = new ResultView();
+
+    resultView.printRacingEndMessage();
+
     for (int i = 0; i < this.times; i++) {
       for (Car car : cars) {
         int randomNumber = RandomNumber.generator();
         car.move(randomNumber);
+
+        if (car.curPosition() > 0) {
+          resultView.printPosition(car);
+        }
       }
+
+      System.out.println();
     }
 
     return cars;
