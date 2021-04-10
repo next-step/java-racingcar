@@ -22,17 +22,11 @@ public class CarRace {
     resultView.printRacingEndMessage();
 
     for (int i = 0; i < this.times; i++) {
-      for (Car car : cars) {
-        int randomNumber = RandomNumber.generator();
-        car.move(randomNumber);
+      cars.forEach(car -> car.move(RandomNumber.generator()));
 
-        if (car.curPosition() > 0) {
-          resultView.printPosition(car);
-        }
-      }
-
-      System.out.println();
+      resultView.printPosition(cars);
     }
+
 
     return cars;
   }
