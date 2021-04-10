@@ -2,9 +2,11 @@ package study.step3;
 
 public class Validator {
 
+  private static final int validator_number = 0;
+
   public static void validatorNumber(int value) {
-    if (value <= 0) {
-      throw new IllegalArgumentException("0보다 큰 값을 입력하세요.");
+    if (value == validator_number) {
+      throw new IllegalArgumentException(MessageUtil.validatorNumberMessage);
     }
   }
 
