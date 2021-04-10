@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Car {
 
+  private static final int MOVE_CONDITION_NUM = 4;
+
   private int position;
 
   private String path;
@@ -30,7 +32,7 @@ public class Car {
   }
 
   public boolean isMove(int conditionNumber) {
-    if (conditionNumber > 3) {
+    if (conditionNumber >= MOVE_CONDITION_NUM) {
       return true;
     }
 
