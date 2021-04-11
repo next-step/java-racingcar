@@ -39,14 +39,11 @@ public class Racing {
                 );
 
         Set<String> names = carMap.keySet();
-        return names.stream().collect(Collectors.joining(", "));
+        return String.join(", ", names);
     }
 
     private int winnerPosition(List<Car> cars) {
-        Car macCar = cars.stream()
-                .max(Comparator.comparingInt(Car::getPosition))
-                .get();
-        return macCar.getPosition();
+        return cars.stream().max(Comparator.comparingInt(Car::getPosition)).orElseThrow( NullPointerException::new).getPosition();
     }
 
 }
