@@ -31,7 +31,7 @@ public class Racing {
         }
     }
 
-    private String getWinnersName(List<Car> cars) {
+    public static String getWinnersName(List<Car> cars) {
         int maxPosition = winnerPosition(cars);
         HashMap<String, Integer> carMap = (HashMap<String, Integer>) cars.stream()
                 .filter(s -> s.getPosition() == maxPosition)
@@ -42,7 +42,7 @@ public class Racing {
         return String.join(", ", names);
     }
 
-    private int winnerPosition(List<Car> cars) {
+    private static int winnerPosition(List<Car> cars) {
         return cars.stream().max(Comparator.comparingInt(Car::getPosition)).orElseThrow( NullPointerException::new).getPosition();
     }
 

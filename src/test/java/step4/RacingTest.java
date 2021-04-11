@@ -7,6 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static step4.InputPrint.getSplitInputs;
@@ -61,6 +64,35 @@ class RacingTest {
         new RacingRule().go(car, dice);
         // then
         assertThat(car.getPosition()).isEqualTo(expected);
+    }
+
+    @Test
+    void 우승자구하기() {
+        // given
+        RacingRule rule = new RacingRule();
+        List<Car> cars = new ArrayList<>();
+
+        Car car1 = new Car("IU");
+        rule.go(car1, 4);
+        rule.go(car1, 4);
+        Car car2 = new Car("moon");
+        rule.go(car2, 1);
+        Car car3 = new Car("shine");
+        rule.go(car3, 1);
+        Car car4 = new Car("miha");
+        rule.go(car4, 4);
+        rule.go(car4, 4);
+
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        cars.add(car4);
+
+        // when
+        String winner = Racing.getWinnersName(cars);
+
+        // then
+        assertThat(winner).contains("IU", "miha").doesNotContain("monn","shine");
     }
 
 }
