@@ -14,7 +14,7 @@ import static step4.InputPrint.getSplitInputs;
 class RacingTest {
 
     @Test
-    public void 이름입력_테스트() {
+    void 이름입력_테스트() {
         // given & when
         String[] names = getSplitInputs("moon ,child, IU, ");
         String[] expect = {"moon", "child", "IU"};
@@ -24,7 +24,7 @@ class RacingTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"   ", " , ,", "", "moonchild, IU"})
-    public void 이름_예외테스트(String input) {
+    void 이름_예외테스트(String input) {
         // given & when
         Throwable thrown = catchThrowable(() -> {
             getSplitInputs(input);
@@ -34,23 +34,21 @@ class RacingTest {
     }
 
     @Test
-    public void game() {
-        Racing racing = new Racing(new String[]{"iu", "moon", "shine", "v"}, 5);
-
-    }
-
-    @Test
     @DisplayName("0에서 9 사이에서 random 값을 구한다")
     void 랜덤조건확인() {
+        // given & when
         int num = new RacingRule().castDice();
+        // then
         assertThat(num).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(9);
     }
 
     @Test
     @DisplayName("자동차는 전진 또는 멈출 수 있다")
     void 자동차_전진() {
+        // given & when
         Car car = new Car("moon");
         new RacingRule().go(car);
+        // then
         assertThat(car.getPosition()).isGreaterThanOrEqualTo(0).isLessThanOrEqualTo(1);
     }
 
@@ -58,8 +56,10 @@ class RacingTest {
     @DisplayName("자동차는 4 이상일때만 전진한다.")
     @CsvSource(value = {"4,1", "3,0", "5,1"}, delimiter = ',')
     void 자동차_전진(int dice, int expected) {
+        // given & when
         Car car = new Car("IU");
         new RacingRule().go(car, dice);
+        // then
         assertThat(car.getPosition()).isEqualTo(expected);
     }
 

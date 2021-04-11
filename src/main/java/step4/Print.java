@@ -37,17 +37,8 @@ public class Print {
         }
     }
 
-    public void winner(List<Car> cars) {
-        String winnersName = "";
-        int maxPosition = 0;
-        for (Car c : cars) {
-            if (c.getPosition() > maxPosition) {
-                maxPosition = c.getPosition();
-                winnersName = c.getName() + " ";
-            } else if (c.getPosition() == maxPosition) {
-                winnersName += c.getName() + " ";
-            }
-        }
-        System.out.println("\n 🏁 최종 우승자는 " + winnersName + "입니다 ! 🏁");
+    public void winner(String winnersName) {
+        System.out.println("\n 🏁 최종 우승자는 " + winnersName + " 입니다 ! 🏁");
     }
+
 }

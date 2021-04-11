@@ -36,11 +36,15 @@ public class InputPrint {
         do {
             System.out.println(askMessage);
             count = scanner.nextInt();
-            if (count < 1) {
-                System.out.println(retryMessage);
-            }
+            validateCount(retryMessage, count);
         } while (count < 1);
         return count;
+    }
+
+    private static void validateCount(String retryMessage, int count) {
+        if (count < 1) {
+            System.out.println(retryMessage);
+        }
     }
 
     /**
@@ -56,10 +60,14 @@ public class InputPrint {
         }
         String[] names = input.split(",");
         for (String s : names) {
-            if (s.length() > MAX_NAME_SIZE)
-                throw new IllegalArgumentException("이름은 " + MAX_NAME_SIZE + "글자를 넘어갈 수 없습니다.");
+            validateNameSize(s);
         }
         return names;
+    }
+
+    private static void validateNameSize(String names) {
+        if (names.length() > MAX_NAME_SIZE)
+            throw new IllegalArgumentException("이름은 " + MAX_NAME_SIZE + "글자를 넘어갈 수 없습니다.");
     }
 
     public void checkInputs(String[] carNames, int lapCount) {

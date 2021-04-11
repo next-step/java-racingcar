@@ -10,7 +10,7 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public int getPosition() {
