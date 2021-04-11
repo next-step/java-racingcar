@@ -11,7 +11,7 @@ public class InputPrint {
 
     public static final int MAX_NAME_SIZE = 5;
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static String[] getCarNames() {
         try {
@@ -50,8 +50,6 @@ public class InputPrint {
     /**
      * 입력값 나누기 & validation
      *
-     * @param input
-     * @return
      */
     public static String[] getSplitInputs(String input) {
         input = input.replace(" ", "");
