@@ -11,7 +11,7 @@ public class CarRacing {
     public CarRacing() {}
 
     public void ready(String carNames, int tryCount) {
-        cars = new Cars(carNames);
+        cars = new Cars(carNames.split(","));
         this.tryCount = tryCount;
     }
 
