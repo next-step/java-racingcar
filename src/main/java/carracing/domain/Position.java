@@ -1,4 +1,5 @@
 package carracing.domain;
+
 public class Position {
 
     private int position;
@@ -20,16 +21,6 @@ public class Position {
 
     public int getPosition() {
         return this.position;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
     }
 
     public boolean isMaxPosition(int max) {

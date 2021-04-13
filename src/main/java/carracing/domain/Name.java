@@ -1,6 +1,5 @@
 package carracing.domain;
 
-
 public class Name {
 
     private String name;
@@ -16,16 +15,6 @@ public class Name {
     }
 
     public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+        return name;
     }
 }
