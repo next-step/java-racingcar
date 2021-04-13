@@ -6,9 +6,9 @@ public class Validator {
 
   private static final int validator_number = 0;
 
-  public static void validatorNumber(int value) {
+  public static void validatorNumber(int value, String valueName) {
     if (value == validator_number) {
-      throw new IllegalArgumentException(MessageUtil.validatorNumberMessage);
+      throw new IllegalArgumentException(valueName + " " + MessageUtil.validatorNumberMessage);
     }
   }
 
