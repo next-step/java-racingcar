@@ -1,7 +1,5 @@
 package carracing.domain;
 
-import carracing.util.RandomUtil;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,20 +9,22 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(String[] carNames) {
-        Arrays.stream(carNames).forEach(name -> this.cars.add(new Car(name)));
+    public Cars(String carNames) {
+        Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .forEach(cars::add);
     }
 
-    public Cars(List<Car> carList) {
-        this.cars = carList;
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return cars;
     }
 
     public void play() {
-        cars.stream().forEach(car -> car.move(RandomUtil.randomNumber()));
+        cars.stream().forEach(car -> car.move(new RandomMoveStrategy()));
     }
 
     public List<String> getWinners() {
@@ -39,6 +39,5 @@ public class Cars {
         return cars.stream()
                 .map(Car::getPosition)
                 .reduce(0, Math::max);
-
     }
 }

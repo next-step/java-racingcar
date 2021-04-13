@@ -5,17 +5,7 @@ import carracing.view.ResultView;
 
 public class CarRacing {
 
-    private Cars cars;
-    private int tryCount;
-
-    public CarRacing() {}
-
-    public void ready(String carNames, int tryCount) {
-        cars = new Cars(carNames.split(","));
-        this.tryCount = tryCount;
-    }
-
-    public void start() {
+    public void start(Cars cars, int tryCount) {
         for (int turn = 0; turn < tryCount; turn++) {
             cars.play();
             ResultView.print(cars, turn);

@@ -20,4 +20,12 @@ public class CarsTest {
 
         assertThat(cars.getWinners()).containsExactly("car A", "car C");
     }
+
+    @Test
+    public void moveTest() {
+        Car car = new Car("test");
+        car.move(new RandomMoveStrategy());
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 }
