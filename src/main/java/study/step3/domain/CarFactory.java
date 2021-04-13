@@ -1,7 +1,8 @@
-package study.step3;
+package study.step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import study.step3.domain.Car;
 
 public class CarFactory {
 

@@ -1,7 +1,11 @@
-package study.step3;
+package study.step3.controller;
 
 
 import java.util.List;
+import study.step3.domain.CarFactory;
+import study.step3.validator.RandomNumber;
+import study.step3.domain.Car;
+import study.step3.view.ResultView;
 
 public class CarRace {
 

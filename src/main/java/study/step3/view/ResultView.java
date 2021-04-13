@@ -1,7 +1,9 @@
-package study.step3;
+package study.step3.view;
 
 
 import java.util.List;
+import study.step3.domain.Car;
+import study.step3.utils.MessageUtil;
 
 public class ResultView {
 

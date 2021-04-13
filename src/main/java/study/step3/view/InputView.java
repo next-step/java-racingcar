@@ -1,6 +1,8 @@
-package study.step3;
+package study.step3.view;
 
 import java.util.Scanner;
+import study.step3.validator.Validator;
+import study.step3.utils.MessageUtil;
 
 public class InputView {
 

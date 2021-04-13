@@ -6,6 +6,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.step3.controller.CarRace;
+import study.step3.domain.Car;
+import study.step3.domain.CarFactory;
+import study.step3.validator.RandomNumber;
 
 public class CarTest {
 
