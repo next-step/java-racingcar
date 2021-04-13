@@ -4,12 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-  private final Scanner SCANNER = new Scanner(System.in);
+  private static final Scanner SCANNER = new Scanner(System.in);
 
-  public InputView() {
-  }
-
-  public int inputCarNumber() {
+  public static int inputCarNumber() {
     System.out.println(MessageUtil.carNumberMessage);
     int carNumber = SCANNER.nextInt();
     Validator.validatorNumber(carNumber);
@@ -17,7 +14,7 @@ public class InputView {
     return carNumber;
   }
 
-  public int inputTimes() {
+  public static int inputTimes() {
     System.out.println(MessageUtil.carTimesMessage);
     int times = SCANNER.nextInt();
     Validator.validatorNumber(times);
