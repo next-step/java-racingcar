@@ -1,11 +1,7 @@
 package carracing.domain;
 
-import carracing.util.RandomUtil;
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,41 +10,34 @@ public class Cars {
     private List<Car> cars = new ArrayList<>();
 
     public Cars(String carNames) {
-        saveCarNames(carNames);
+        Arrays.stream(carNames.split(","))
+                .map(Car::new)
+                .forEach(cars::add);
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
-        return this.cars;
-    }
-
-    private void saveCarNames(String carNames) {
-        if ("".equals(carNames.trim()))
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
-
-        String[] names = carNames.split(",");
-        Arrays.stream(names).forEach(name -> this.cars.add(new Car(name)));
+        return cars;
     }
 
     public void play() {
-        cars.stream().forEach(car -> car.move(RandomUtil.randomNumber()));
+        cars.stream().forEach(car -> car.move(new RandomMoveStrategy()));
     }
 
-    public String getWinners() {
-        return getWinnerNames(getMaxScore());
-    }
-
-    private String getWinnerNames(int maxScore) {
-        List<Car> winners = new ArrayList<>();
-        for (Car car : this.cars) {
-            if (car.isWinner(maxScore))
-                winners.add(car);
-        }
-
-        return winners.stream().map(x -> x.getName().getName()).collect(Collectors.joining(", "));
+    public List<String> getWinners() {
+        return cars.stream()
+                .filter(car -> car.isWinner(getMaxScore()))
+                .map(Car::getName)
+                .map(Name::getName)
+                .collect(Collectors.toList());
     }
 
     private int getMaxScore() {
-        Car maxScoreCar = this.cars.stream().max(Comparator.comparingInt(Car::getPosition)).get();
-        return maxScoreCar.getPosition();
+        return cars.stream()
+                .map(Car::getPosition)
+                .reduce(0, Math::max);
     }
 }
