@@ -10,6 +10,7 @@ import study.step3.controller.CarRaceController;
 import study.step3.domain.Car;
 import study.step3.domain.CarFactory;
 import study.step3.validator.RandomNumber;
+import study.step3.view.InputView;
 
 public class CarTest {
 
@@ -141,11 +142,11 @@ public class CarTest {
   @Test
   void carRacingGameWhenOneCarRacing() {
     // given
-    int carNumber = 1;
-    int times = 4;
+    InputView inputView = new InputView(1, 4);
+    inputView.validateInputValue();
 
     // when
-    CarRaceController carRaceController = new CarRaceController(carNumber, times);
+    CarRaceController carRaceController = new CarRaceController(inputView);
     List<Car> cars = carRaceController.start();
 
     // then

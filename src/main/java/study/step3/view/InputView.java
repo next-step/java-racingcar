@@ -1,27 +1,32 @@
 package study.step3.view;
 
-import java.util.Scanner;
-import study.step3.validator.Validator;
 import study.step3.utils.MessageUtil;
+import study.step3.validator.Validator;
 
 public class InputView {
 
-  private static final Scanner SCANNER = new Scanner(System.in);
+  // 자동차 입력 횟수
+  int carNumber;
 
-  public static int inputCarNumber() {
-    System.out.println(MessageUtil.carNumberMessage);
-    int carNumber = SCANNER.nextInt();
-    Validator.validatorNumber(carNumber);
+  // 반복 횟수
+  int times;
 
+  public InputView(int carNumber, int times) {
+    this.carNumber = carNumber;
+    this.times = times;
+  }
+
+  public int getCarNumber() {
     return carNumber;
   }
 
-  public static int inputTimes() {
-    System.out.println(MessageUtil.carTimesMessage);
-    int times = SCANNER.nextInt();
-    Validator.validatorNumber(times);
-
+  public int getTimes() {
     return times;
+  }
+
+  public void validateInputValue() {
+    Validator.validatorNumber(this.carNumber, MessageUtil.carNumber);
+    Validator.validatorNumber(this.times, MessageUtil.carTimes);
   }
 
 }
