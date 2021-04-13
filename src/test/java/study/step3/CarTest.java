@@ -6,7 +6,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.step3.controller.CarRace;
+import study.step3.controller.CarRaceController;
 import study.step3.domain.Car;
 import study.step3.domain.CarFactory;
 import study.step3.validator.RandomNumber;
@@ -145,8 +145,8 @@ public class CarTest {
     int times = 4;
 
     // when
-    CarRace carRace = new CarRace(carNumber, times);
-    List<Car> cars = carRace.start();
+    CarRaceController carRaceController = new CarRaceController(carNumber, times);
+    List<Car> cars = carRaceController.start();
 
     // then
     assertThat(cars.get(0).curPosition()).isGreaterThan(0);

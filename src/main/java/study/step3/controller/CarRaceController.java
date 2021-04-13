@@ -7,13 +7,13 @@ import study.step3.validator.RandomNumber;
 import study.step3.domain.Car;
 import study.step3.view.ResultView;
 
-public class CarRace {
+public class CarRaceController {
 
   private final int carNumber;
 
   private final int times;
 
-  public CarRace(int carNumber, int times) {
+  public CarRaceController(int carNumber, int times) {
     this.carNumber = carNumber;
     this.times = times;
   }
