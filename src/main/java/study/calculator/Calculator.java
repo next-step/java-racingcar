@@ -1,126 +1,70 @@
 package study.calculator;
 
-public class Calculator {
-    public int add(int leftOperand, int rightOperand) {
-        return leftOperand + rightOperand;
+import java.util.*;
+
+public final class Calculator {
+    private static Map<String, BiOperator> biOperatorMap = new HashMap<>();
+
+    private String expression;
+
+    static {
+        Arrays.stream(BiOperator.values()).forEach(operator -> {
+                biOperatorMap.put(operator.toString(), operator);
+            }
+        );
     }
 
-    public int subtract(int leftOperand, int rightOperand) {
-        return leftOperand - rightOperand;
+    Calculator() { }
+
+    Calculator(String expression) {
+        this.expression = expression;
     }
 
-    public int multiply(int leftOperand, int rightOperand) {
-        return leftOperand * rightOperand;
-    }
-
-    public int divide(int leftOperand, int rightOperand) {
-        return leftOperand / rightOperand;
-    }
-
-    public int calculate(String expressionString) {
-        if (expressionString == null) {
+    int calculate() {
+        if (this.isValidExpression() == false) {
             throw new IllegalArgumentException();
         }
 
-        String trimExpressionString = expressionString.trim();
+        StringTokenizer tokenizer = new StringTokenizer(expression, " ");
 
-        if (trimExpressionString.equals("")) {
+        if (tokenizer.countTokens() % 2 == 0) {
             throw new IllegalArgumentException();
         }
 
-        if (trimExpressionString.equals("&")) {
-            throw new IllegalArgumentException();
+        Operand leftOperand = Operand.of(tokenizer.nextToken());
+        String operator;
+        Operand rightOperand;
+        while (tokenizer.hasMoreTokens()) {
+            operator = tokenizer.nextToken();
+            rightOperand = Operand.of(tokenizer.nextToken());
+
+            leftOperand = calculateBiOperand(leftOperand, operator, rightOperand);
         }
 
-        boolean isNextLeftOperand = true;
-        boolean isNextOperator = false;
-        boolean isNextRightOperand = false;
+        return leftOperand.value;
+    }
 
-        int leftOperand = 0;
-        int rightOperand = 0;
-        String operator = "";
+    int calculate(String expression) {
+        // TODO: 상태를 멋대로 변경하는게 옳은걸까?
+        this.expression = expression;
+        return this.calculate();
+    }
 
-        int result = 0;
-
-        String[] splitExpressions = expressionString.split(" ");
-
-        for (int i = 0; i < splitExpressions.length; ++i) {
-            String token = splitExpressions[i];
-
-            if (isNextOperator == false) {
-                if (Character.isDigit(token.charAt(0)) == false) {
-                    throw new IllegalArgumentException();
-                }
-
-            } else {
-                if (Character.isDigit(token.charAt(0)) == true) {
-                    throw new IllegalArgumentException();
-                }
-
-                if (token.equals("+")) {
-
-                }
-                else if (token.equals("-")) {
-
-                }
-                else if (token.equals("*")) {
-
-                }
-                else if (token.equals("/")) {
-
-                } else {
-                    throw new IllegalArgumentException();
-                }
-
-                operator = token;
-
-                isNextLeftOperand = false;
-                isNextOperator = false;
-                isNextRightOperand = true;
-                continue;
-            }
-
-            if (isNextLeftOperand == true) {
-                leftOperand = Integer.parseInt(token);
-
-                isNextLeftOperand = false;
-                isNextOperator = true;
-                isNextRightOperand = false;
-                continue;
-            }
-
-            if (isNextRightOperand == true) {
-                rightOperand = Integer.parseInt(token);
-
-                if (operator.equals("+")) {
-                    result = this.add(leftOperand, rightOperand);
-                }
-
-                if (operator.equals("-")) {
-                    result = this.subtract(leftOperand, rightOperand);
-                }
-
-                if (operator.equals("*")) {
-                    result = this.multiply(leftOperand, rightOperand);
-                }
-
-                if (operator.equals("/")) {
-                    result = this.divide(leftOperand, rightOperand);
-                }
-
-                isNextLeftOperand = false;
-                isNextOperator = true;
-                isNextRightOperand = false;
-
-                leftOperand = result;
-                operator = "";
-                rightOperand = 0;
-
-                continue;
-            }
-
+    boolean isValidExpression() {
+        if (this.expression == null) {
+            return false;
         }
 
-        return result;
+        if (this.expression.trim() == "") {
+            return false;
+        }
+
+        return true;
+    }
+
+    Operand calculateBiOperand(Operand leftOperand, String operator, Operand rightOperand) {
+        return Optional.ofNullable(biOperatorMap.get(operator))
+                .orElseThrow(() -> new IllegalArgumentException())
+                .calculate(leftOperand, rightOperand);
     }
 }
