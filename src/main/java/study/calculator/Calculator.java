@@ -44,12 +44,6 @@ public final class Calculator {
         return leftOperand.value;
     }
 
-    int calculate(String expression) {
-        // TODO: 상태를 멋대로 변경하는게 옳은걸까?
-        this.expression = expression;
-        return this.calculate();
-    }
-
     boolean isValidExpression() {
         if (this.expression == null) {
             return false;

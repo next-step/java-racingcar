@@ -4,25 +4,19 @@ import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
     private Calculator calculator;
-
-    @BeforeEach
-    void setUp() {
-        calculator = new Calculator();
-    }
 
     @Test
     void 이항_덧셈을_테스트합니다() {
         //given
         String expressionString = "10 + 5";
+        calculator = new Calculator(expressionString);
 
         //when
-        int result = calculator.calculate(expressionString);
+        int result = calculator.calculate();
 
         //then
         assertThat(result).isEqualTo(10 + 5);
@@ -32,9 +26,10 @@ public class CalculatorTest {
     void 이항_뺄셈을_테스트합니다() {
         //given
         String expressionString = "10 - 5";
+        calculator = new Calculator(expressionString);
 
         //when
-        int result = calculator.calculate(expressionString);
+        int result = calculator.calculate();
 
         //then
         assertThat(result).isEqualTo(10 - 5);
@@ -44,9 +39,10 @@ public class CalculatorTest {
     void 이항_곱셈을_테스트합니다() {
         //given
         String expressionString = "10 * 5";
+        calculator = new Calculator(expressionString);
 
         //when
-        int result = calculator.calculate(expressionString);
+        int result = calculator.calculate();
 
         //then
         assertThat(result).isEqualTo(10 * 5);
@@ -56,9 +52,10 @@ public class CalculatorTest {
     void 이항_나눗셈을_테스트합니다() {
         //given
         String expressionString = "10 / 5";
+        calculator = new Calculator(expressionString);
 
         //when
-        int result = calculator.calculate(expressionString);
+        int result = calculator.calculate();
 
         //then
         assertThat(result).isEqualTo(10 / 5);
@@ -67,11 +64,12 @@ public class CalculatorTest {
     @Test
     void 입력값이_null일때_예외를_테스트합니다() {
         //given
-        String input = null;
+        String expressionString = null;
+        calculator = new Calculator(expressionString);
 
         //when
         ThrowableAssert.ThrowingCallable throwingCallable = () -> {
-            int result = calculator.calculate(input);
+            int result = calculator.calculate();
         };
 
         //then
@@ -82,11 +80,12 @@ public class CalculatorTest {
     @Test
     void 입력값이_빈_공백문자일때_예외를_테스트합니다() {
         //given
-        String input = " ";
+        String expressionString = " ";
+        calculator = new Calculator(expressionString);
 
         //when
         ThrowableAssert.ThrowingCallable throwingCallable = () -> {
-            int result = calculator.calculate(input);
+            int result = calculator.calculate();
         };
 
         //then
@@ -97,11 +96,12 @@ public class CalculatorTest {
     @Test
     void 사칙연산_기호가_아닐때_예외를_테스트합니다() {
         //given
-        String input = "5 & 2";
+        String expressionString = "5 & 2";
+        calculator = new Calculator(expressionString);
 
         //when
         ThrowableAssert.ThrowingCallable throwingCallable = () -> {
-            int result = calculator.calculate(input);
+            int result = calculator.calculate();
         };
 
         //then
@@ -112,10 +112,11 @@ public class CalculatorTest {
     @Test
     void 사칙연산을_모두_포함하는_테스트합니다() {
         //given
-        String input = "2 + 3 * 4 / 2";
+        String expressionString = "2 + 3 * 4 / 2";
+        calculator = new Calculator(expressionString);
 
         //when
-        int result = calculator.calculate(input);
+        int result = calculator.calculate();
 
         //then
         assertThat(result).isEqualTo(10);
