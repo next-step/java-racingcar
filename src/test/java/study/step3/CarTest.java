@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import study.step3.controller.CarRaceController;
 import study.step3.domain.Car;
 import study.step3.domain.CarFactory;
+import study.step3.domain.Cars;
 import study.step3.validator.RandomNumber;
 import study.step3.view.InputView;
 
@@ -65,7 +66,7 @@ public class CarTest {
     Car car = new Car();
 
     // then
-    assertThat(car.isMove(position)).isTrue();
+    assertThat(car.isMovable(position)).isTrue();
   }
 
   @DisplayName("위치가 4 미만일 경우 이동 실패하는지 테스트")
@@ -78,7 +79,7 @@ public class CarTest {
     Car car = new Car();
 
     // then
-    assertThat(car.isMove(position)).isFalse();
+    assertThat(car.isMovable(position)).isFalse();
   }
 
   @DisplayName("자동차가 이동할 때 문자열 이동경로 생성")
@@ -117,10 +118,10 @@ public class CarTest {
     int carNumber = 3;
 
     // when
-    List<Car> cars = CarFactory.makeCar(carNumber);
+    Cars cars = CarFactory.makeCar(carNumber);
 
     // then
-    assertThat(cars.size()).isEqualTo(carNumber);
+    assertThat(cars.getCars().size()).isEqualTo(carNumber);
   }
 
   @DisplayName("자동차 대수를 0으로 입력했을 때, 자동차 객체 생성에 실패하는지 테스트")
@@ -142,12 +143,12 @@ public class CarTest {
   @Test
   void carRacingGameWhenOneCarRacing() {
     // given
-    InputView inputView = new InputView(1, 4);
-    inputView.validateInputValue();
+    int carNumber = 1;
+    int times = 4;
 
     // when
-    CarRaceController carRaceController = new CarRaceController(inputView);
-    List<Car> cars = carRaceController.start();
+    CarRaceController carRaceController = new CarRaceController();
+    List<Car> cars = carRaceController.start(carNumber, times);
 
     // then
     assertThat(cars.get(0).curPosition()).isGreaterThan(0);
