@@ -5,10 +5,10 @@ import java.util.List;
 import study.step3.domain.CarFactory;
 import study.step3.domain.Cars;
 import study.step3.domain.Car;
+import study.step3.domain.GameRound;
 import study.step3.view.ResultView;
 
 public class CarRaceController {
-
 
   public CarRaceController() {
   }
@@ -22,12 +22,14 @@ public class CarRaceController {
 
     List<Car> carList = cars.getCars();
 
-    cars.move(times);
+    GameRound gameRound = new GameRound(times);
 
-    resultView.printPosition(cars, times);
+    while(!gameRound.isEnd()) {
+      cars.move();
+      resultView.printPosition(cars);
+    }
 
     return carList;
   }
-
 
 }

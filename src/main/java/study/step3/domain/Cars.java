@@ -15,10 +15,8 @@ public class Cars {
     return this.cars;
   }
 
-  public void move(int times) {
-    for (int i = 0; i < times; i++) {
-      this.cars.forEach(car -> car.move(RandomNumber.generator()));
-    }
+  public void move() {
+    this.cars.forEach(car -> car.move(RandomNumber.generator()));
   }
 
 }
