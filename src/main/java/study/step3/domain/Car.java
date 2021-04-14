@@ -25,13 +25,13 @@ public class Car {
   }
 
   public void move(int conditionNumber) {
-    if (isMove(conditionNumber)) {
+    if (isMovable(conditionNumber)) {
       this.position +=  + 1;
       this.path = StringUtils.isEmpty(this.path) ? "-" : this.path + "-";
     }
   }
 
-  public boolean isMove(int conditionNumber) {
+  public boolean isMovable(int conditionNumber) {
     if (conditionNumber >= MOVE_CONDITION_NUM) {
       return true;
     }
