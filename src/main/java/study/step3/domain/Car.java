@@ -1,14 +1,10 @@
 package study.step3.domain;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class Car {
 
   private static final int MOVE_CONDITION_NUM = 4;
 
   private int position;
-
-  private String path;
 
   public Car() { }
 
@@ -20,23 +16,14 @@ public class Car {
     return position;
   }
 
-  public String curPath() {
-    return this.path;
-  }
-
   public void move(int conditionNumber) {
     if (isMovable(conditionNumber)) {
       this.position +=  + 1;
-      this.path = StringUtils.isEmpty(this.path) ? "-" : this.path + "-";
     }
   }
 
   public boolean isMovable(int conditionNumber) {
-    if (conditionNumber >= MOVE_CONDITION_NUM) {
-      return true;
-    }
-
-    return false;
+    return conditionNumber >= MOVE_CONDITION_NUM;
   }
 
 }

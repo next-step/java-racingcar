@@ -11,7 +11,6 @@ import study.step3.domain.Car;
 import study.step3.domain.CarFactory;
 import study.step3.domain.Cars;
 import study.step3.validator.RandomNumber;
-import study.step3.view.InputView;
 
 public class CarTest {
 
@@ -87,14 +86,13 @@ public class CarTest {
   void carPathWhenMove() {
     // given
     int conditionNumber = 4;
-    String path = "-";
 
     // when
     Car car = new Car();
     car.move(conditionNumber);
 
     // then
-    assertThat(car.curPath()).isEqualTo(path);
+    assertThat(car.curPosition()).isEqualTo(1);
   }
 
   @DisplayName("자동차가 이동 실패했을 때 문자열 이동경로가 null인지")
@@ -108,7 +106,7 @@ public class CarTest {
     car.move(position);
 
     // then
-    assertThat(car.curPath()).isEqualTo(null);
+    assertThat(car.curPosition()).isEqualTo(0);
   }
 
   @DisplayName("자동차 대수를 입력한 수 만큼 자동차를 생산하는지 테스트")

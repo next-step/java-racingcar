@@ -5,14 +5,12 @@ import study.step3.utils.MessageUtil;
 
 public class ResultView {
 
-  public void printPosition(Cars cars, int times) {
-    for (int i = 0; i < times; i++) {
-      cars.getCars().stream()
-          .filter(car -> car.curPosition() > 0)
-          .forEach(car -> System.out.println(car.curPath()));
+  public void printPosition(Cars cars) {
+    cars.getCars().stream()
+        .filter(car -> car.curPosition() > 0)
+        .forEach(car -> printPath(car.curPosition()));
 
-      printNextLine();
-    }
+    printNextLine();
   }
 
   public void printRacingEndMessage() {
@@ -21,6 +19,16 @@ public class ResultView {
 
   public void printNextLine() {
     System.out.println();
+  }
+
+  public void printPath(int cuPosition) {
+    StringBuilder path = new StringBuilder();
+
+    for (int i = 0; i < cuPosition; i++) {
+      path.append("-");
+    }
+
+    System.out.println(path);
   }
 
 }
