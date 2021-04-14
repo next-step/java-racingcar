@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class RacingRule implements Rule {
     private static final int CAN_GO = 4;
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     @Override
     public void go(Car car) {
@@ -29,6 +29,6 @@ public class RacingRule implements Rule {
     }
 
     public int castDice() {
-        return random.nextInt(10);
+        return RANDOM.nextInt(10);
     }
 }

@@ -53,6 +53,7 @@ public class InputPrint {
      */
     public static String[] getSplitInputs(String input) {
         input = input.replace(" ", "");
+//        input = input.trim();     // 테스트 실패
         if (input.replace(",", "").length() == 0) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
         }

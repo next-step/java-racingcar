@@ -19,7 +19,7 @@ class RacingTest {
     @Test
     void 이름입력_테스트() {
         // given & when
-        String[] names = getSplitInputs("moon ,child, IU, ");
+        String[] names = getSplitInputs("moon ,ch ild , IU, ");
         String[] expect = {"moon", "child", "IU"};
         // then
         assertThat(names).isEqualTo(expect);
