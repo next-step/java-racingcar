@@ -86,27 +86,32 @@ public class CarTest {
   void carPathWhenMove() {
     // given
     int conditionNumber = 4;
+    int position = 1;
+
+    Car movedCar = new Car(position);
 
     // when
-    Car car = new Car();
-    car.move(conditionNumber);
+    Car newCar = new Car();
+    newCar.move(conditionNumber);
 
     // then
-    assertThat(car.curPosition()).isEqualTo(1);
+    assertThat(newCar.equals(movedCar)).isTrue();
   }
 
   @DisplayName("자동차가 이동 실패했을 때 문자열 이동경로가 null인지")
   @Test
   void carPathNullWhenMove() {
     // given
-    int position = 3;
+    int conditionNumber = 3;
+    int position = 1;
+    Car movedCar = new Car(position);
 
     // when
-    Car car = new Car();
-    car.move(position);
+    Car newCar = new Car();
+    newCar.move(conditionNumber);
 
     // then
-    assertThat(car.curPosition()).isEqualTo(0);
+    assertThat(newCar.equals(movedCar)).isFalse();
   }
 
   @DisplayName("자동차 대수를 입력한 수 만큼 자동차를 생산하는지 테스트")
