@@ -1,28 +1,24 @@
 package racingcar;
 
-import racingcar.domains.RacingCar;
 import racingcar.domains.RacingCars;
-import racingcar.domains.RacingResult;
+import racingcar.domains.RacingResultsAll;
 import racingcar.views.InputView;
 import racingcar.views.ResultView;
-
-import java.util.*;
 
 public class RacingMain {
 
     public static void main(String[] args) {
-        Map<String, Integer> carInfos = InputView.input();
+        InputView.startInput();
 
-        int carNumTotal = carInfos.get(InputView.CAR_NUM_TOTAL);
-        int roundNumTotal = carInfos.get(InputView.ROUND_NUM_TOTAL);
+        String carNames = InputView.getRacingCarNames();
+        int roundNumTotal = InputView.getRoundNumTotal();
 
         RacingGame racingGame = new RacingGame();
+        RacingCars racingCars = racingGame.initiateCars(carNames);
 
-        RacingCars racingCars = racingGame.initiateCars(carNumTotal);
+        RacingResultsAll racingResultsAll = racingGame.startRace(racingCars, roundNumTotal);
 
-        List<RacingResult> results = racingGame.startRace(racingCars, roundNumTotal);
-
-        ResultView.showRaceResult(results);
+        ResultView.showRaceResult(racingResultsAll, racingCars);
     }
-
 }
+

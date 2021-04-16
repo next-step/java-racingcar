@@ -9,8 +9,16 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## Step03 자동자 경주 구현 기능 목록
+
 -[x] 사용자로부터 자동차의 수, 이동 횟수 입력받기
 -[x] 사용자의 입력값에 따라 자동차 생성하기
 -[x] 자동차 이동하기
   -[x] 랜덤숫자가 4이상일때 전진하기
 -[x] 자동차 이동결과 출력하기
+
+## Step04 추가 요구사항
+-[x] 자동차 이름 입력받기 - InputView
+  -[x] 쉼표 구분해서 자동차 생성 - initicateCar
+  -[x] 자동차 이름 검증 후, 저장하기 - RacingCar
+-[x] 자동차 전진상태 출력시 이름도 같이 출력 - ResultView
+-[ ] 경주 완료 후, 우승자 출력하기 - RacingResult

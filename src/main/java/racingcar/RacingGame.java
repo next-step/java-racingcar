@@ -1,47 +1,45 @@
 package racingcar;
 
-import racingcar.domains.RacingCar;
-import racingcar.domains.RacingCars;
-import racingcar.domains.RacingResult;
-import racingcar.utils.RandomNumberUtil;
+import racingcar.domains.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private List<RacingCar> racingCars;
 
-    public RacingGame() {
-        this.racingCars = new ArrayList<>();
-    }
+    public RacingCars initiateCars(String carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingCars initiateCars(int carNumTotal) {
-        for (int i = 0; i < carNumTotal; i++) {
-            racingCars.add(new RacingCar());
+        String[] cars = carNames.split(",");
+
+        for (int i = 0; i < cars.length; i++) {
+            racingCars.add(new RacingCar(cars[i]));
         }
+
         return new RacingCars(racingCars);
     }
 
-    public List<RacingResult> startRace(RacingCars racingCars, int roundNumTotal) {
-        List<RacingResult> racingResult = new ArrayList<>();
+    public RacingResultsAll startRace(RacingCars racingCars, int roundNumTotal) {
+        List<RacingResultsPerRound> racingResultAllRounds = new ArrayList<>();
 
         for (int i = 0; i < roundNumTotal; i++) {
-            List<Integer> result = makeRandomMove(racingCars);
-            racingResult.add(new RacingResult(result));
+            RacingResultsPerRound resultPerRound = racePerRound(racingCars);
+            racingResultAllRounds.add(resultPerRound);
         }
 
-        return racingResult;
+        return new RacingResultsAll(racingResultAllRounds);
     }
 
-    private List<Integer> makeRandomMove(RacingCars racingCars) {
-        List<Integer> recordsForEachCar = new ArrayList<>();
+    private RacingResultsPerRound racePerRound(RacingCars racingCars) {
+        List<RacingResultForEachCar> racingResultForEachCars = new ArrayList<>();
 
         for (int j = 0; j < racingCars.size(); j++) {
             int currentPosition = racingCars.move(j);
-            recordsForEachCar.add(currentPosition);
+            RacingResultForEachCar racingResultForEachCar = new RacingResultForEachCar(racingCars.getCarName(j), currentPosition);
+            racingResultForEachCars.add(racingResultForEachCar);
         }
 
-        return recordsForEachCar;
+        return new RacingResultsPerRound(racingResultForEachCars);
     }
 
 }
