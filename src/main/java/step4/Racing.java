@@ -43,7 +43,8 @@ public class Racing {
     }
 
     private static int winnerPosition(List<Car> cars) {
-        return cars.stream().max(Comparator.comparingInt(Car::getPosition)).orElseThrow( NullPointerException::new).getPosition();
+//        return cars.stream().max(Comparator.comparingInt(Car::getPosition)).orElseThrow( NullPointerException::new).getPosition();
+        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);    // 더 간단하게 가능
     }
 
 }
