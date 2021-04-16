@@ -1,16 +1,11 @@
 package study.step3;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.step3.controller.CarRaceController;
 import study.step3.domain.Car;
-import study.step3.domain.CarFactory;
 import study.step3.domain.CarMovableStrategy;
-import study.step3.domain.Cars;
 import study.step3.domain.MovableStrategy;
 
 public class CarTest {
@@ -26,35 +21,6 @@ public class CarTest {
 
     // then
     assertThat(car.curPosition()).isEqualTo(2);
-  }
-
-  @DisplayName("위치가 4 이상일 경우 이동가능한지")
-  @Test
-  void carPositionNumberIsMove() {
-    // given
-    int position = 4;
-    MovableStrategy movableStrategy = new CarMovableStrategy();
-
-    // when
-    boolean isMovable = movableStrategy.isMovable(position);
-
-    // then
-    assertThat(isMovable).isTrue();
-  }
-
-  @DisplayName("위치가 4 미만일 경우 이동 실패하는지 테스트")
-  @Test
-  void carMoveFail() {
-    // given
-    int position = 3;
-    MovableStrategy movableStrategy = new CarMovableStrategy();
-
-    // when
-    Car car = new Car();
-    boolean isMovable = movableStrategy.isMovable(position);
-
-    // then
-    assertThat(isMovable).isFalse();
   }
 
   @DisplayName("자동차가 이동할 때 문자열 이동경로 생성")
@@ -90,49 +56,5 @@ public class CarTest {
     // then
     assertThat(newCar.equals(movedCar)).isTrue();
   }
-
-  @DisplayName("자동차 대수를 입력한 수 만큼 자동차를 생산하는지 테스트")
-  @Test
-  void carFactory() {
-    // given
-    int carNumber = 3;
-
-    // when
-    Cars cars = CarFactory.makeCar(carNumber);
-
-    // then
-    assertThat(cars.getCars().size()).isEqualTo(carNumber);
-  }
-
-  @DisplayName("자동차 대수를 0으로 입력했을 때, 자동차 객체 생성에 실패하는지 테스트")
-  @Test
-  void carFactoryFail() {
-    // given
-    int carNumber = 0;
-
-    // when
-    Throwable thrown = catchThrowable(() -> {
-      CarFactory.makeCar(carNumber);
-    });
-
-    // then
-    assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
-  }
-
-  @DisplayName("자동차 1대를 4회 만큼 이동했을 때 문자열 경로가 생성되는지 테스트")
-  @Test
-  void carRacingGameWhenOneCarRacing() {
-    // given
-    int carNumber = 1;
-    int times = 4;
-
-    // when
-    CarRaceController carRaceController = new CarRaceController();
-    List<Car> cars = carRaceController.start(carNumber, times);
-
-    // then
-    assertThat(cars.get(0).curPosition()).isGreaterThan(0);
-  }
-
 
 }
