@@ -8,8 +8,12 @@ public class CarFactory {
   public static Cars makeCar(int carNumber) {
     List<Car> carList = new ArrayList<>();
 
+    MovableStrategy movableStrategy = new CarMovableStrategy();
+
     for (int i = 0; i < carNumber; i++) {
-      carList.add(new Car());
+      Car newCar = new Car(movableStrategy);
+
+      carList.add(newCar);
     }
 
     return new Cars(carList);

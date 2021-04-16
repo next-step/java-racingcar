@@ -4,14 +4,19 @@ import java.util.Objects;
 
 public class Car {
 
-  private static final int MOVE_CONDITION_NUM = 4;
+  private MovableStrategy movableStrategy;
 
   private int position;
 
-  public Car() { }
+  public Car() {
+  }
 
   public Car(int position) {
     this.position = position;
+  }
+
+  public Car(MovableStrategy movableStrategy) {
+    this.movableStrategy = movableStrategy;
   }
 
   public int curPosition() {
@@ -19,13 +24,9 @@ public class Car {
   }
 
   public void move(int conditionNumber) {
-    if (isMovable(conditionNumber)) {
-      this.position +=  + 1;
+    if (movableStrategy.isMovable(conditionNumber)) {
+      this.position += 1;
     }
-  }
-
-  public boolean isMovable(int conditionNumber) {
-    return conditionNumber >= MOVE_CONDITION_NUM;
   }
 
   @Override
