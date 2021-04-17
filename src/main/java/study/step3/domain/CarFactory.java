@@ -5,6 +5,8 @@ import java.util.List;
 
 public class CarFactory {
 
+  private CarFactory() {}
+
   public static Cars makeCar(int carNumber) {
     List<Car> carList = new ArrayList<>();
 
