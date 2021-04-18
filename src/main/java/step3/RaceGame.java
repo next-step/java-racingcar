@@ -1,5 +1,8 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import step3.data.Car;
 import step3.data.Race;
 import step3.view.InputView;
@@ -7,7 +10,7 @@ import step3.view.ResultView;
 
 public class RaceGame {
 
-  public void start(){
+  public void start() {
     InputView inputView = new InputView();
     ResultView resultView = new ResultView();
 
@@ -21,7 +24,14 @@ public class RaceGame {
 
     // 경주 횟수 입력
     int raceCount = inputView.getRaceCount();
-    race.lap = raceCount;
+    race.laps = raceCount;
+
+
+    for(Car car : race.carList) {
+      car.move(new Random().nextInt(10));
+      resultView.printPosition(car.position);
+    }
+
   }
 
 }

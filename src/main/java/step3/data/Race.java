@@ -5,18 +5,18 @@ import java.util.List;
 
 public class Race {
 
-  public Integer lap;
+  public Integer laps;
 
   public List<Car> carList;
 
-  public List<RaceResult> raceLog;
+  public List<LapResult> raceLog;
 
-  public class RaceResult {
+  public class LapResult {
     List<Boolean> moves;
   }
 
   public Race() {
-    this.lap = 0;
+    this.laps = 0;
     this.carList = new ArrayList<>();
     this.raceLog = new ArrayList<>();
   }
