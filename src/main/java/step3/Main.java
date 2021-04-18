@@ -1,14 +1,15 @@
 package step3;
 
-import step3.data.Car;
-import step3.data.Race;
 import step3.view.InputView;
-import step3.view.ResultView;
 
 public class Main {
 
   public static void main(String[] args) {
-    new RaceGame().start();
+    RaceGame raceGame = new RaceGame();
+    InputView inputView = new InputView();
+
+    raceGame.init(inputView.getCarNum(), inputView.getRaceCount());
+    raceGame.start();
   }
 
 }
