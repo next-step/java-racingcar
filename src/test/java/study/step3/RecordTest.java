@@ -3,11 +3,10 @@ package study.step3;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.step3.domain.CarFactory;
-import study.step3.domain.Cars;
-import study.step3.domain.GameRound;
+import study.step3.domain.Car;
 import study.step3.domain.Record;
 
 public class RecordTest {
@@ -31,20 +30,14 @@ public class RecordTest {
     // given
     int times = 4;
     String[] names = new String[]{"pobi", "crong", "honux"};
-    Cars cars = CarFactory.makeCars(names);
+    List<Car> carList = Arrays.asList(new Car(4, names[0]), new Car(3, names[1]));
     Record record = new Record(times);
-    GameRound gameRound = new GameRound(times);
 
     // when
-    while (!gameRound.isEnd()) {
-      gameRound.reduceRound();
-      cars.move();
-    }
-
-    String winners = record.findWinners(cars.getCars());
+    String winners = record.findWinners(carList);
 
     // then
-    assertThat(Arrays.stream(names).anyMatch(winners::equals)).isTrue();
+    assertThat(winners).isEqualTo(names[0]);
   }
 
 }
