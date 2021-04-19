@@ -10,11 +10,14 @@ public class GameRound {
 
   public boolean isEnd() {
     if (this.round > 0) {
-      this.round--;
       return false;
     }
 
     return true;
+  }
+
+  public void reduceRound() {
+      this.round--;
   }
 
 }

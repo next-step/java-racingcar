@@ -25,7 +25,10 @@ public class CarRaceController {
     GameRound gameRound = new GameRound(times);
 
     while(!gameRound.isEnd()) {
+      gameRound.reduceRound();
+
       cars.move();
+
       resultView.printPosition(cars);
     }
 
