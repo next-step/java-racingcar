@@ -9,15 +9,15 @@ import study.step3.domain.MovableStrategy;
 
 public class CarMovableStrategyTest {
 
-  @DisplayName("위치가 4 이상일 경우 이동가능한지")
+  @DisplayName("랜덤 숫자가 4 이상일 경우 이동가능한지")
   @Test
   void carPositionNumberIsMove() {
     // given
-    int position = 4;
+    int conditionNumber = 4;
     MovableStrategy movableStrategy = new CarMovableStrategy();
 
     // when
-    boolean isMovable = movableStrategy.isMovable(position);
+    boolean isMovable = movableStrategy.isMovable(conditionNumber);
 
     // then
     assertThat(isMovable).isTrue();

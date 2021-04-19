@@ -23,7 +23,9 @@ public class Car {
     return position;
   }
 
-  public void move(int conditionNumber) {
+  public void move() {
+    int conditionNumber = movableStrategy.generateMoveNUmber();
+
     if (movableStrategy.isMovable(conditionNumber)) {
       this.position += 1;
     }

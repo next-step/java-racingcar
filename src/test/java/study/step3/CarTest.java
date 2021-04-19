@@ -27,15 +27,14 @@ public class CarTest {
   @Test
   void carPathWhenMove() {
     // given
-    int conditionNumber = 4;
-    int position = 1;
     MovableStrategy movableStrategy = new CarMovableStrategy();
+    int position = 1;
 
     Car movedCar = new Car(position);
 
     // when
     Car newCar = new Car(movableStrategy);
-    newCar.move(conditionNumber);
+    newCar.move();
 
     // then
     assertThat(newCar.equals(movedCar)).isTrue();
@@ -45,13 +44,12 @@ public class CarTest {
   @Test
   void carPathNullWhenMove() {
     // given
-    int conditionNumber = 3;
     MovableStrategy movableStrategy = new CarMovableStrategy();
     Car movedCar = new Car();
 
     // when
     Car newCar = new Car(movableStrategy);
-    newCar.move(conditionNumber);
+    newCar.move();
 
     // then
     assertThat(newCar.equals(movedCar)).isTrue();
