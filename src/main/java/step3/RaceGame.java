@@ -18,18 +18,17 @@ public class RaceGame {
   public void init(int carNum, int raceCount) {
     // 자동차 댓수 입력
     for (int i = 0; i < carNum; i++) {
-      race.carList.add(new Car());
+      race.getCarList().add(new Car());
     }
-
     // 경주 횟수 입력
-    race.laps = raceCount;
+    race.setLaps(raceCount);
 }
 
   public void start() {
     resultView.printHeader();
-    for(int i = 0; i < race.laps; i ++) {
-      racing(race.carList);
-      resultView.printLapResult(race.carList);
+    for(int i = 0; i < race.getLaps(); i ++) {
+      racing(race.getCarList());
+      resultView.printLapResult(race.getCarList());
     }
   }
 

@@ -12,7 +12,7 @@ public class ResultView {
 
   public void printLapResult(List<Car> carList) {
     for(Car car : carList) {
-      printPosition(car.position);
+      printPosition(car.getPosition());
     }
     System.out.println();
   }

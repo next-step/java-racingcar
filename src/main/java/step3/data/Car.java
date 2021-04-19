@@ -2,10 +2,14 @@ package step3.data;
 
 public class Car {
 
-  public Integer position;
+  private Integer position;
 
   public Car() {
     this.position = 0;
+  }
+
+  public Integer getPosition() {
+    return this.position;
   }
 
   public boolean move(int randomNum) {

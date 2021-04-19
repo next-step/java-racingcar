@@ -19,8 +19,8 @@ public class RaceGameTest {
   @DisplayName("init Test")
   public void initTest() {
     raceGame.init(1,3);
-    assertThat(raceGame.race.carList.size()).isEqualTo(1);
-    assertThat(raceGame.race.laps).isEqualTo(3);
+    assertThat(raceGame.race.getCarList().size()).isEqualTo(1);
+    assertThat(raceGame.race.getLaps()).isEqualTo(3);
   }
 
 }
