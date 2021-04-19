@@ -2,9 +2,11 @@ package step3.data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import step3.strategy.MoveStrategy;
 
 public class Cars {
+  private MoveStrategy moveStrategy;
+
   private List<Car> carList;
 
   public List<Car> getCarList() {
@@ -12,10 +14,13 @@ public class Cars {
   }
 
   public Cars() {
+    this.moveStrategy = new MoveStrategy();
     this.carList = new ArrayList<>();
   }
 
   public Cars(int input) {
+    this.moveStrategy = new MoveStrategy();
+
     this.carList = new ArrayList<>();
     for(int i = 0; i < input; i++) {
       this.carList.add(new Car());
@@ -24,7 +29,7 @@ public class Cars {
 
   public void race() {
     for(Car car : this.carList) {
-      car.move(new Random().nextInt(10));
+      car.move(moveStrategy);
     }
   }
 }

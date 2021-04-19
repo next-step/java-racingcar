@@ -1,5 +1,7 @@
 package step3.data;
 
+import step3.strategy.MoveStrategy;
+
 public class Car {
 
   private Integer position;
@@ -12,11 +14,10 @@ public class Car {
     return this.position;
   }
 
-  public boolean move(int randomNum) {
-    if (randomNum >=4) {
-      this.position ++;
-      return true;
+  public void move(MoveStrategy moveStrategy) {
+    if (moveStrategy.isMove()) {
+      this.position++;
     }
-    return false;
   }
+
 }

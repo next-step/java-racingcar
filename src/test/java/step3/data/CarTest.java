@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.strategy.MoveStrategy;
 
 public class CarTest {
 
@@ -20,8 +21,8 @@ public class CarTest {
   @Test
   @DisplayName("값이 4이상일 경우 전진")
   public void moveTest() {
-    assertThat(car.move(1)).isFalse();
-    assertThat(car.move(4)).isTrue();
-    assertThat(car.move(8)).isTrue();
+    car.move(new MoveStrategy());
+
+    assertThat(car.getPosition()).isIn(0,1);
   }
 }
