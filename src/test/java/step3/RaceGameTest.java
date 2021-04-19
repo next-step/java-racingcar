@@ -1,10 +1,6 @@
 package step3;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
 public class RaceGameTest {
 
@@ -13,14 +9,6 @@ public class RaceGameTest {
   @BeforeEach
   void setUp() {
     raceGame = new RaceGame();
-  }
-
-  @Test
-  @DisplayName("init Test")
-  public void initTest() {
-    raceGame.init(1,3);
-    assertThat(raceGame.race.getCarList().size()).isEqualTo(1);
-    assertThat(raceGame.race.getLaps()).isEqualTo(3);
   }
 
 }
