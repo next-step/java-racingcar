@@ -13,10 +13,11 @@ public class CarFactoryTest {
   @Test
   void carFactory() {
     // given
+    String[] names = new String[]{"Kim", "Park", "Yi"};
     int carNumber = 3;
 
     // when
-    Cars cars = CarFactory.makeCars(carNumber);
+    Cars cars = CarFactory.makeCars(names);
 
     // then
     assertThat(cars.getCars().size()).isEqualTo(carNumber);
@@ -26,10 +27,11 @@ public class CarFactoryTest {
   @Test
   void carFactoryFail() {
     // given
+    String[] names = new String[]{"Kim", "Park", "Yi"};
     int carNumber = 0;
 
     // when
-    Cars cars = CarFactory.makeCars(carNumber);
+    Cars cars = CarFactory.makeCars(names);
 
     // then
     assertThat(cars.getCars().size()).isEqualTo(carNumber);
