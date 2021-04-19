@@ -17,6 +17,11 @@ public class Car {
     this.position = position;
   }
 
+  public Car(int position, String name) {
+    this.position = position;
+    this.name = name;
+  }
+
   public Car(MovableStrategy movableStrategy, String name) {
     this.movableStrategy = movableStrategy;
     this.name = name;
