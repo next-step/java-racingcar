@@ -14,12 +14,12 @@ public class CarRaceControllerTest {
   @Test
   void carRacingGameWhenOneCarRacing() {
     // given
-    int carNumber = 1;
+    String[] names = new String[]{"Kim"};
     int times = 4;
 
     // when
     CarRaceController carRaceController = new CarRaceController();
-    List<Car> cars = carRaceController.start(carNumber, times);
+    List<Car> cars = carRaceController.start(names, times);
 
     // then
     assertThat(cars.get(0).curPosition()).isGreaterThan(0);
@@ -29,15 +29,17 @@ public class CarRaceControllerTest {
   @Test
   void carRacingGameWhenNoCar() {
     // given
-    int carNumber = 0;
+    String[] names = new String[]{""};
     int times = 0;
+    Car car = new Car(0);
 
     // when
     CarRaceController carRaceController = new CarRaceController();
-    List<Car> cars = carRaceController.start(carNumber, times);
+    List<Car> cars = carRaceController.start(names, times);
+    Car movedCar = cars.get(0);
 
     // then
-    assertThat(cars.size()).isEqualTo(0);
+    assertThat(movedCar).isEqualTo(car);
   }
 
 }
