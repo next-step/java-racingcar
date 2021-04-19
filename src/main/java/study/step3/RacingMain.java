@@ -5,11 +5,12 @@ import study.step3.view.InputView;
 
 public class RacingMain {
   public static void main(String[] args) {
-    int carNumber = InputView.inputCarNumber();
+
+    String[] names = InputView.inputNames();
     int times = InputView.inputTimes();
 
     CarRaceController carRaceController = new CarRaceController();
-    carRaceController.start(carNumber, times);
+    carRaceController.start(names, times);
   }
 
 }
