@@ -14,7 +14,7 @@ public class CarRaceController {
   }
 
   public List<Car> start(int carNumber, int times) {
-    Cars cars = CarFactory.makeCar(carNumber);
+    Cars cars = CarFactory.makeCars(carNumber);
 
     ResultView resultView = new ResultView();
 

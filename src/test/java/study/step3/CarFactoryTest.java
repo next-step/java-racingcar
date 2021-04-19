@@ -16,7 +16,7 @@ public class CarFactoryTest {
     int carNumber = 3;
 
     // when
-    Cars cars = CarFactory.makeCar(carNumber);
+    Cars cars = CarFactory.makeCars(carNumber);
 
     // then
     assertThat(cars.getCars().size()).isEqualTo(carNumber);
@@ -29,7 +29,7 @@ public class CarFactoryTest {
     int carNumber = 0;
 
     // when
-    Cars cars = CarFactory.makeCar(carNumber);
+    Cars cars = CarFactory.makeCars(carNumber);
 
     // then
     assertThat(cars.getCars().size()).isEqualTo(carNumber);

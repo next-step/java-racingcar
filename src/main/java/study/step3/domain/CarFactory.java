@@ -7,7 +7,7 @@ public class CarFactory {
 
   private CarFactory() {}
 
-  public static Cars makeCar(int carNumber) {
+  public static Cars makeCars(int carNumber) {
     List<Car> carList = new ArrayList<>();
 
     MovableStrategy movableStrategy = new CarMovableStrategy();
