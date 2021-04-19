@@ -27,13 +27,18 @@ public class CarTest {
   @Test
   void carPathWhenMove() {
     // given
-    MovableStrategy movableStrategy = new CarMovableStrategy();
+    String name = "Kim";
+
     int position = 1;
+    int MOVE_CONDITION_NUM = 4;
+    int randomNumber = (int) (Math.random() * 10 + 4);
+
+    MovableStrategy movableStrategy = () -> randomNumber >= MOVE_CONDITION_NUM;
 
     Car movedCar = new Car(position);
 
     // when
-    Car newCar = new Car(movableStrategy);
+    Car newCar = new Car(movableStrategy, name);
     newCar.move();
 
     // then
@@ -44,11 +49,16 @@ public class CarTest {
   @Test
   void carPathNullWhenMove() {
     // given
-    MovableStrategy movableStrategy = new CarMovableStrategy();
+    String name = "Kim";
+    int MOVE_CONDITION_NUM = 4;
+    int randomNumber = (int) (Math.random() + 3);
+
+    MovableStrategy movableStrategy = () -> randomNumber >= MOVE_CONDITION_NUM;
+
     Car movedCar = new Car();
 
     // when
-    Car newCar = new Car(movableStrategy);
+    Car newCar = new Car(movableStrategy, name);
     newCar.move();
 
     // then
