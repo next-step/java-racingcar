@@ -24,7 +24,7 @@ public class ValidatorTest {
     assertThat(thrown).isEqualTo(null);
   }
 
-  @DisplayName("0을 입력했을때, 에러가 하는지 테스트")
+  @DisplayName("0을 입력했을때, 에러 테스트")
   @Test
   void validatorException() {
     // given
@@ -33,6 +33,36 @@ public class ValidatorTest {
     // when
     Throwable thrown = catchThrowable(() -> {
       Validator.validatorNumber(value);
+    });
+
+    // then
+    assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @DisplayName("자동차 이름을 입력하지 않았을 때, 에러 테스트")
+  @Test
+  void validatorNamesException() {
+    // given
+    String[] names = new String[]{""};
+
+    // when
+    Throwable thrown = catchThrowable(() -> {
+      Validator.validatorNames(names);
+    });
+
+    // then
+    assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+  }
+
+  @DisplayName("자동차 이름을 5자를 초가했을 때, 에러 테스트")
+  @Test
+  void validatorExceededNamesException() {
+    // given
+    String[] names = new String[]{"가나다라마바사아자타카"};
+
+    // when
+    Throwable thrown = catchThrowable(() -> {
+      Validator.validatorNames(names);
     });
 
     // then

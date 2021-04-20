@@ -1,7 +1,7 @@
 package study.step3.domain;
 
 import java.util.List;
-import study.step3.validator.RandomNumber;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -16,7 +16,14 @@ public class Cars {
   }
 
   public void move() {
-    this.cars.forEach(car -> car.move(RandomNumber.generator()));
+    this.cars.forEach(Car::move);
+  }
+
+  public String findWinners(int times) {
+    return cars.stream()
+        .filter(car -> car.curPosition() == times)
+        .map(Car::name)
+        .collect(Collectors.joining(","));
   }
 
 }

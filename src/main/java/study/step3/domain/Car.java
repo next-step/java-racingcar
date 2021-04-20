@@ -8,6 +8,8 @@ public class Car {
 
   private int position;
 
+  private String name;
+
   public Car() {
   }
 
@@ -15,16 +17,26 @@ public class Car {
     this.position = position;
   }
 
-  public Car(MovableStrategy movableStrategy) {
+  public Car(int position, String name) {
+    this.position = position;
+    this.name = name;
+  }
+
+  public Car(MovableStrategy movableStrategy, String name) {
     this.movableStrategy = movableStrategy;
+    this.name = name;
   }
 
   public int curPosition() {
     return position;
   }
 
-  public void move(int conditionNumber) {
-    if (movableStrategy.isMovable(conditionNumber)) {
+  public String name() {
+    return name;
+  }
+
+  public void move() {
+    if (movableStrategy.isMovable()) {
       this.position += 1;
     }
   }

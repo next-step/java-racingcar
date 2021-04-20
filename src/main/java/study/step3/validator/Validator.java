@@ -14,4 +14,16 @@ public class Validator {
     }
   }
 
+  public static void validatorNames(String[] inputNames) {
+    if ("".equals(inputNames[0])) {
+      throw new IllegalArgumentException(MessageUtil.validatorNamesMessage);
+    }
+
+    for (String inputName : inputNames) {
+     if (inputName.length() > 5) {
+       throw new IllegalArgumentException(MessageUtil.validatorExceededNamesMessage);
+     }
+    }
+  }
+
 }

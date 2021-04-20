@@ -7,14 +7,13 @@ public class CarFactory {
 
   private CarFactory() {}
 
-  public static Cars makeCar(int carNumber) {
+  public static Cars makeCars(String[] names) {
     List<Car> carList = new ArrayList<>();
 
     MovableStrategy movableStrategy = new CarMovableStrategy();
 
-    for (int i = 0; i < carNumber; i++) {
-      Car newCar = new Car(movableStrategy);
-
+    for (String name : names) {
+      Car newCar = new Car(movableStrategy, name);
       carList.add(newCar);
     }
 

@@ -13,23 +13,28 @@ public class CarRaceController {
   public CarRaceController() {
   }
 
-  public List<Car> start(int carNumber, int times) {
-    Cars cars = CarFactory.makeCar(carNumber);
+  public List<Car> start(String[] names, int times) {
+    Cars cars = CarFactory.makeCars(names);
 
     ResultView resultView = new ResultView();
 
     resultView.printRacingEndMessage();
 
-    List<Car> carList = cars.getCars();
-
     GameRound gameRound = new GameRound(times);
 
     while(!gameRound.isEnd()) {
+      gameRound.reduceRound();
+
       cars.move();
+
       resultView.printPosition(cars);
     }
 
-    return carList;
+    String winners = cars.findWinners(times);
+
+    resultView.printWinners(winners);
+
+    return cars.getCars();
   }
 
 }
