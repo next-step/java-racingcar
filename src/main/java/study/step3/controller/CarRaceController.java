@@ -6,7 +6,6 @@ import study.step3.domain.CarFactory;
 import study.step3.domain.Cars;
 import study.step3.domain.Car;
 import study.step3.domain.GameRound;
-import study.step3.domain.Record;
 import study.step3.view.ResultView;
 
 public class CarRaceController {
@@ -21,10 +20,6 @@ public class CarRaceController {
 
     resultView.printRacingEndMessage();
 
-    List<Car> carList = cars.getCars();
-
-    Record record = new Record(times);
-
     GameRound gameRound = new GameRound(times);
 
     while(!gameRound.isEnd()) {
@@ -35,11 +30,11 @@ public class CarRaceController {
       resultView.printPosition(cars);
     }
 
-    String winners = record.findWinners(carList);
+    String winners = cars.findWinners(times);
 
     resultView.printWinners(winners);
 
-    return carList;
+    return cars.getCars();
   }
 
 }

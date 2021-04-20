@@ -3,26 +3,12 @@ package study.step3;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.step3.domain.Car;
-import study.step3.domain.Record;
+import study.step3.domain.Cars;
 
 public class RecordTest {
-
-  @DisplayName("반복 횟수를 입력하고 record 객체 생성 테스트")
-  @Test
-  void createRecord() {
-    // given
-    int times = 4;
-
-    // when
-    Record record = new Record(times);
-
-    // then
-    assertThat(record).isNotNull();
-  }
 
   @DisplayName("자동차 이름과 반복 횟수를 입력하고 우승자 찾는지 테스트")
   @Test
@@ -30,11 +16,10 @@ public class RecordTest {
     // given
     int times = 4;
     String[] names = new String[]{"pobi", "crong", "honux"};
-    List<Car> carList = Arrays.asList(new Car(4, names[0]), new Car(3, names[1]));
-    Record record = new Record(times);
+    Cars cars = new Cars(Arrays.asList(new Car(4, names[0]), new Car(3, names[1])));
 
     // when
-    String winners = record.findWinners(carList);
+    String winners = cars.findWinners(times);
 
     // then
     assertThat(winners).isEqualTo(names[0]);
@@ -46,11 +31,10 @@ public class RecordTest {
     // given
     int times = 4;
     String[] names = new String[]{"pobi", "crong", "honux"};
-    List<Car> carList = Arrays.asList(new Car(0, names[0]), new Car(3, names[1]));
-    Record record = new Record(times);
+    Cars cars = new Cars(Arrays.asList(new Car(0, names[0]), new Car(3, names[1])));
 
     // when
-    String winners = record.findWinners(carList);
+    String winners = cars.findWinners(times);
 
     // then
     assertThat("".equals(winners)).isTrue();
