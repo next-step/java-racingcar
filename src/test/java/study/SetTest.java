@@ -38,7 +38,7 @@ public class SetTest {
         assertEquals(numbersSize, expectedSize);
     }
 
-    @DisplayName("contains 테스트 - 1, 2, 3의 값이 존재하는지를 확인")
+    @DisplayName("[contains] contains 메서드로 지닌 원소를 입력값으로 True를 반환하는지 테스트합니다.")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void containsTrue(int trueInput) {
@@ -51,7 +51,7 @@ public class SetTest {
         assertTrue(isTrueContains);
     }
 
-    @DisplayName("contains 테스트 - 1, 2, 3 값은 contains 메소드 실행결과 true, 4, 5 값을 넣으면 false 가 반환")
+    @DisplayName("[contains] contains 메서드가 동작하는지 여러 케이스로 테스트합니다.")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void containsAllKeyCase(int inputKey, boolean expectedValue) {
