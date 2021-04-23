@@ -1,7 +1,6 @@
 package study.calculator;
 
 import org.assertj.core.api.ThrowableAssert;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -65,10 +64,10 @@ public class CalculatorTest {
     void 입력값이_null일때_예외를_테스트합니다() {
         //given
         String expressionString = null;
-        calculator = new Calculator(expressionString);
 
         //when
         ThrowableAssert.ThrowingCallable throwingCallable = () -> {
+            calculator = new Calculator(expressionString);
             int result = calculator.calculate();
         };
 
@@ -81,10 +80,10 @@ public class CalculatorTest {
     void 입력값이_빈_공백문자일때_예외를_테스트합니다() {
         //given
         String expressionString = " ";
-        calculator = new Calculator(expressionString);
 
         //when
         ThrowableAssert.ThrowingCallable throwingCallable = () -> {
+            calculator = new Calculator(expressionString);
             int result = calculator.calculate();
         };
 

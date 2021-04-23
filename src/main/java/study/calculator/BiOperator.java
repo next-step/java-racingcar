@@ -1,5 +1,6 @@
 package study.calculator;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum BiOperator {
@@ -14,6 +15,13 @@ public enum BiOperator {
     BiOperator(String operator, BiFunction<Integer, Integer, Integer> expression) {
         this.operator = operator;
         this.expression = expression;
+    }
+
+    public static BiOperator fromOperatorString(String operator) {
+        return Arrays.stream(BiOperator.values())
+                .filter(biOperator -> biOperator.operator.equals(operator))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException());
     }
 
     @Override
