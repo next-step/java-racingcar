@@ -1,9 +1,6 @@
-import step3.InputDto;
-import step3.InputView;
-import step3.RacingCar;
-import step3.ResultView;
+package step4;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCarApplication {
@@ -13,11 +10,11 @@ public class RacingCarApplication {
         InputDto input = inputView.getInput();
         ResultView resultView = new ResultView();
 
-        ArrayList<String> nameList = input.getNameList();
-        ArrayList<RacingCar> carList = nameList
+        List<String> nameList = input.getNameList();
+        List<RacingCar> carList = nameList
                 .stream()
                 .map(RacingCar::new)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
 
 
         resultView.printStart();
@@ -31,6 +28,7 @@ public class RacingCarApplication {
             System.out.println();
         }
 
-        resultView.lastPrint(carList);
+        Winner winner = new Winner(carList);
+        resultView.lastPrint(winner.getWinnerList());
     }
 }
