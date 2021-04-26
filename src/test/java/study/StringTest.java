@@ -36,23 +36,17 @@ public class StringTest {
     @Test
     @DisplayName("assertThatThrownBy")
     void indexOf () {
-        String testIndex = "124566334s";
+        String abc = "abc";
         assertThatThrownBy(() -> {
-        }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("Index:2, Size:2");
-        int resultIndex = index(testIndex);
-        assertEquals(1, resultIndex);
+            abc.charAt(3);
+        }).isInstanceOf(IndexOutOfBoundsException.class);
+
     }
 
     @Test
     void exceptionIndex() {
         assertThatThrownBy(() -> {
         }).isInstanceOf(IndexOutOfBoundsException.class).hasMessageContaining("Index:2, Size:2");
-    }
-
-    private int index(String string) {
-        String abc = "abc";
-        int resultIndex = abc.indexOf(string);
-        return resultIndex;
     }
 
     /*--------------Set study---------------------------------------------------------------------------------------------------------------*/
