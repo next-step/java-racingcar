@@ -1,0 +1,60 @@
+package study;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class StringTest {
+
+    @Test
+    void test(){
+        Assertions.assertEquals( 5 ,2+3);
+        //학습 테스트란 api , 라이브러리 에 대한 테스트
+    }
+
+    @Test
+    void split로_쉼표나누기(){
+        final String[] aaa = "1,2".split(",");
+//        for(int i = 0; i < aaa.length; i++){
+            assertThat(3+2).isEqualTo(5);
+//        }
+        //학습 테스트란 api , 라이브러리 에 대한 테스트
+    }
+
+    @Test
+    void split로_가로제거후_반환(){
+        String aaa = "(1,2)";
+        aaa=aaa.replaceAll("\\(", "");
+        aaa=aaa.replaceAll("\\)", "");
+        assertThat( aaa).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("특정갑 가져오")
+    void string특정_값_가져오기(){
+        String abc = "abc";
+
+        assertThatThrownBy(() -> {
+            for(int i=0; i < abc.length(); i++){
+                System.out.println(abc.charAt(i));
+            }
+            System.out.println(abc.charAt(1));
+
+//            throw new Exception("boom!!!!");
+        }).isInstanceOf(IndexOutOfBoundsException.class);
+//            .hasMessageContaining("Index: 2, Size: 2")
+//            .hasMessageMatching("Index: \\d+, Size: \\d+");
+
+    }
+
+    @Test
+    void abc(){
+
+    }
+}
