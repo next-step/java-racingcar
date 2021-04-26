@@ -40,7 +40,6 @@ public class StringTest {
         assertThatThrownBy(() -> {
             abc.charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class);
-
     }
 
     @Test
