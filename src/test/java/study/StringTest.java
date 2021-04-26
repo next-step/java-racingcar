@@ -16,4 +16,10 @@ public class StringTest {
         final String[] actual = "1".split(",");
         assertThat(actual).containsExactly("1");
     }
+
+    @Test
+    void split3() {
+        final String actual = "(1,2)".replace("(", "").replace(")", "");
+        System.out.println(actual);
+    }
 }
