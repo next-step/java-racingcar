@@ -1,19 +1,17 @@
 package jung;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class CarName {
     Scanner scann = new Scanner(System.in);
-    String error;
-    ArrayList<String> arr;
     String[] names;
 
-
-
-    boolean isCarLength(String[] namess) {
-        for (String name : namess) {
+    /**
+     * 자동차 이름 글자수 판별
+     */
+    boolean isCarLength(String[] names) {
+        for (String name : names) {
             if (name.length() >= 5) {
                 return false;
             }
@@ -21,12 +19,16 @@ public class CarName {
         return true;
     }
 
+    /**
+     * 자동차 이름 메서드
+     */
 
     String[] car_name() {
         boolean isWhile = true;
 
         while (isWhile) {
-            names = scann.next().replaceAll(" ", "").split(",");
+            System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+            names = scann.nextLine().replaceAll(" ", "").split(",");
             if (isCarLength(names)) {
                 isWhile=false;
             }

@@ -7,6 +7,7 @@ public class RacingMain {
         CarName carname = new CarName();
         String[] names = carname.car_name();
 
-        System.out.println(Arrays.toString(names));
+        RacingGame game = new RacingGame();
+        game.racingStart(names);
     }
 }
