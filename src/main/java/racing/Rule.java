@@ -33,7 +33,6 @@ public class Rule {
         this.round = round;
         winnerRacer = new String[round];
     }
-
     void roundWinner(int roundIdx) {
         System.out.println(winnerRacer[roundIdx]);
     }

@@ -1,5 +1,4 @@
 package racing;
-
 import java.util.Random;
 
 public class Car {
@@ -7,7 +6,6 @@ public class Car {
     private int speed = 0;
     final int min = 1;
     final int max = 10;
-    int winCount = 0;
     Car(String name) {
         this.name = name;
     }
@@ -25,13 +23,9 @@ public class Car {
         }
         return this.speed;
     }
-
     void racingPrint() {
         for (int speedIdx = 0; speedIdx < this.speed; speedIdx++) {
             System.out.print("-");
         }
-    }
-    void setWinner() {
-        winCount = winCount + 1;
     }
 }
