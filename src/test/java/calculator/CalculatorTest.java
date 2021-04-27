@@ -12,25 +12,25 @@ public class CalculatorTest {
     private Calculator calculator = new Calculator();
 
     @Test
-    void addTest(){
+    void addTest() {
 
         assertThat(5).isEqualTo(calculator.add(2, 3));
     }
 
     @Test
-    void subTest(){
+    void subTest() {
 
         assertEquals(5, calculator.sub(8, 3));
     }
 
     @Test
-    void multiTest(){
+    void multiTest() {
 
         assertEquals(6, calculator.multi(2, 3));
     }
 
     @Test
-    void divisionTest(){
+    void divisionTest() {
 
         assertEquals(2, calculator.division(6, 3));
     }
