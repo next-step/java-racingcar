@@ -9,10 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class StringTest {
 
@@ -50,12 +48,13 @@ public class StringTest {
 
 
     @ParameterizedTest
-    @CsvSource(value = {"1:5","2:4","3:1"},delimiter = ':')
+    @CsvSource(value = {"1:5", "2:4", "3:1"}, delimiter = ':')
     void setsTest2(int num, int expected) {
-        if(setTest(expected)){
+        if (setTest(expected)) {
             assertTrue(setTest(expected));
-        };
-        if(!setTest(expected)){
+        }
+        ;
+        if (!setTest(expected)) {
             assertFalse(setTest(expected));
         }
     }
@@ -65,10 +64,10 @@ public class StringTest {
 
         String str = "abc";
         assertThatThrownBy(() -> {
-            if(str.length()-1 < 1) {
+            if (str.length() - 1 < 1) {
                 throw new StringIndexOutOfBoundsException("boom!");
             }
-            System.out.println(str.substring(0,1));
+            System.out.println(str.substring(0, 1));
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 
@@ -90,22 +89,40 @@ public class StringTest {
     }
 
     @Test
-    void cal(){
+    void cal() {
+        AtomicInteger i = new AtomicInteger(1);
         String str = "2 + 3 * 4 / 2";
 
         String reg = "[+*/-]";
         String reg_num = "[0-9]+";
 
-        String[] ch = str.replaceAll(" ","").split(reg_num);
-        String[] arr = str.replaceAll(" ","").split(reg);
+        ArrayList<String> ch = new ArrayList<>(Arrays.asList(str.replaceAll(" ", "").split(reg_num)));
+        ArrayList<String> arr = new ArrayList<>(Arrays.asList(str.replaceAll(" ", "").split(reg)));
 
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(ch));
+        Optional<String> c = arr.stream().reduce((a, b) -> {
+            int cal = 0;
 
-        for(int i = 1; i <= reg_num.length(); i++){
+            switch (ch.get(i.get())) {
+                case "+":
+                    cal = Integer.parseInt(a) + Integer.parseInt(b);
+                    break;
+                case "-":
+                    cal = Integer.parseInt(a) - Integer.parseInt(b);
+                    break;
+                case "*":
+                    cal = Integer.parseInt(a) * Integer.parseInt(b);
+                    break;
+                case "/":
+                    cal = Integer.parseInt(a) / Integer.parseInt(b);
+                    break;
+                default:
+                    break;
+            }
+            i.set(i.get() + 1);
+            return String.valueOf(cal);
+        });
 
-        }
-
+        System.out.println(c.get());
 
     }
 }
