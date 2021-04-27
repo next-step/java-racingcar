@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -68,7 +71,7 @@ public class StrCalculatorTest {
         String test = "1 + 2 + 3 + 4";
         StrCalculator cal = new StrCalculator();
 
-        String[] testList = cal.splitOper(test);
+        ArrayList<String> testList = cal.splitOper(test);
         assertThat(testList).containsExactly("1", "+", "2", "+", "3", "+", "4");
     }
 
@@ -77,14 +80,16 @@ public class StrCalculatorTest {
         String[] test = {"1", "+", "2", "+", "3"};
         StrCalculator cal = new StrCalculator();
 
-        String[] subList = cal.separation(test);
+        ArrayList<String> list = new ArrayList<String>(Arrays.asList(test));
+        ArrayList<String> subList = cal.separation(list);
 
         assertThat(subList).containsExactly("1", "+", "2");
+        assertThat(list).containsExactly("+", "3");
     }
 
     @Test
     void calOneByOneAddTest() {
-        String[] addTest = {"1", "+", "2"};
+        ArrayList<String> addTest = new ArrayList<String>(Arrays.asList("1", "+", "2"));
         StrCalculator cal = new StrCalculator();
 
         String result = cal.calOneByOne(addTest);
@@ -93,7 +98,7 @@ public class StrCalculatorTest {
 
     @Test
     void calOneByOneSubTest() {
-        String[] subTest = {"3", "-", "1"};
+        ArrayList<String> subTest = new ArrayList<String>(Arrays.asList("3", "-", "1"));
         StrCalculator cal = new StrCalculator();
 
         String result = cal.calOneByOne(subTest);
@@ -102,7 +107,7 @@ public class StrCalculatorTest {
 
     @Test
     void calOneByOneMultiTest() {
-        String[] multiTest = {"2", "*", "3"};
+        ArrayList<String> multiTest = new ArrayList<String>(Arrays.asList("2", "*", "3"));
         StrCalculator cal = new StrCalculator();
 
         String result = cal.calOneByOne(multiTest);
@@ -111,7 +116,7 @@ public class StrCalculatorTest {
 
     @Test
     void calOneByOneDivTest() {
-        String[] divTest = {"6", "/", "2"};
+        ArrayList<String> divTest = new ArrayList<String>(Arrays.asList("6", "/", "2"));
         StrCalculator cal = new StrCalculator();
 
         String result = cal.calOneByOne(divTest);
@@ -121,11 +126,17 @@ public class StrCalculatorTest {
     @Test
     void calOneByOneDivByZeroTest() {
         assertThatThrownBy(() -> {
-            String[] divTest = {"6", "/", "0"};
+            ArrayList<String> divTest = new ArrayList<String>(Arrays.asList("6", "/", "0"));
             StrCalculator cal = new StrCalculator();
 
             String result = cal.calOneByOne(divTest);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("Divided by 0.");
+    }
+
+    @Test
+    void temp() {
+        int[] a = {1, 2, 3, 4, 5};
+
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class StrCalculator {
@@ -39,28 +40,35 @@ public class StrCalculator {
         }
     }
 
-    String[] splitOper(String oper) {
-        return oper.split(" ");
+    ArrayList<String> splitOper(String oper) {
+        String[] temp = oper.split(" ");
+        ArrayList<String> list = new ArrayList<String>(Arrays.asList(temp));
+        return list;
     }
 
-    String[] separation(String[] list) {
-        return Arrays.copyOfRange(list, 0, 3);
+    ArrayList<String> separation(ArrayList<String> list) {
+        ArrayList<String> subList = new ArrayList<String>(list.subList(0, 3));
+
+        for(int i = 0; i < 3; i++) {
+            list.remove(0);
+        }
+        return subList;
     }
 
-    String calOneByOne(String[] subList) {
+    String calOneByOne(ArrayList<String> subList) {
         String result;
 
-        if(subList[1] == "+") {
-            result = sum(subList[0], subList[2]);
+        if(subList.get(1) == "+") {
+            result = sum(subList.get(0), subList.get(2));
         }
-        else if(subList[1] == "-") {
-            result = sub(subList[0], subList[2]);
+        else if(subList.get(1) == "-") {
+            result = sub(subList.get(0), subList.get(2));
         }
-        else if(subList[1] == "*") {
-            result = multi(subList[0], subList[2]);
+        else if(subList.get(1) == "*") {
+            result = multi(subList.get(0), subList.get(2));
         }
-        else if(subList[1] == "/") {
-            result = div(subList[0], subList[2]);
+        else if(subList.get(1) == "/") {
+            result = div(subList.get(0), subList.get(2));
         }
         else {
             throw new IllegalArgumentException("Not the four fundamental arithmetic.");
@@ -69,8 +77,16 @@ public class StrCalculator {
         return  result;
     }
 
+    void combineList(String[] operList, String result) {
+
+    }
+
     /*String calculate(String oper) {
-        checkExpression(oper);
+        checkOperation(oper);
+
+        String[] operList = splitOper(oper);
+
+        for(int i = 0; i < operList.length;  i++){
     }*/
 
 }
