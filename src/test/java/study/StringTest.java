@@ -75,5 +75,13 @@ public class StringTest {
         boolean value = numbers.contains(input);
         assertEquals(false,value);
     }
+    @ParameterizedTest
+    @CsvSource(value = {"1","2","3","4","5"})
+    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input) {
+        boolean actualValue = numbers.contains(Integer.valueOf(input));
 
+        org.assertj.core.api.Assertions.assertThatCode(() -> {
+            assertThat(numbers.contains(Integer.valueOf(input))).isTrue();
+        });
+    }
 }
