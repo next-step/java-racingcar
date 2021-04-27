@@ -11,11 +11,33 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
+    public void calculatorGenerate() {
+        Calculator calculator = new Calculator();
+        Output output = new Output();
+
+        String input = calculator.setMathExpression();
+        List<String> strings = calculator.sliceMathExpression(input);
+        output.resultOutput(calculator.makeResult(strings));
+    }
+
     private String setMathExpression() {
         Output output = new Output();
         Input input = new Input();
+        Exception exception = new Exception();
+
         output.startMessageOutput();
-        return input.mathExpressionInput();
+        String mathExpression = input.mathExpressionInput();
+
+        if(mathExpression.trim().isEmpty()){
+            exception.inputNullException();
+        }
+        if (Pattern.matches("[^0-9+\\-*/]",mathExpression)){
+            exception.wrongInputException();
+        }
+        if (Pattern.matches("[0-9]*$",mathExpression)){
+            exception.wrongInputException();
+        }
+        return mathExpression;
     }
 
     private List<String> sliceMathExpression(String mathExpression) {
@@ -23,67 +45,49 @@ public class Calculator {
 //        String[] splitMathExpressionByChar = mathExpression.split("");
         List<String> mathExpressionList = new ArrayList<String>();
         String temp = "";
-        for (int i = 0; i < splitMathExpression.length; i++) {
-            if (Pattern.matches("[^0-9]", splitMathExpression[i])) {
+        for (String s : splitMathExpression) {
+            if (Pattern.matches("[^0-9]", s)) {
                 mathExpressionList.add(temp);
-                mathExpressionList.add(splitMathExpression[i]);
+                mathExpressionList.add(s);
                 temp = "";
             } else {
-                temp += splitMathExpression[i];
+                temp = temp.concat(s);
             }
         }
         if (temp.length() >= 1) {
             mathExpressionList.add(temp);
         }
-
         return mathExpressionList;
     }
 
     private double makeResult(List<String> mathExpressionList) {
-        String splitWord = "";
-        String number = "";
-        double result = Double.parseDouble( mathExpressionList.get(0));
+        double number;
+        String fourRule;
+        double result = Double.parseDouble(mathExpressionList.get(0));
         int listSize = mathExpressionList.size();
-        for (int i = 1; i < listSize; i++) {
-//            숫자면 result {수식} 숫자 연산
-            if (Pattern.matches("[0-9]", mathExpressionList.get(i))) {
-                number = mathExpressionList.get(i);
-                result = calculate(number, splitWord, result);
-            } else {
-                splitWord = mathExpressionList.get(i);
-
-
-            }
+        for (int i = 1; i < listSize; i += 2) {
+            fourRule = mathExpressionList.get(i);
+            number = Double.parseDouble(mathExpressionList.get(i + 1));
+            result = calculate(number, fourRule, result);
         }
         return result;
     }
 
-    private double calculate(String number, String splitWord, double result) {
+    private double calculate(double number, String splitWord, double result) {
         Calculate calculate = new Calculate();
+        Exception exception = new Exception();
 
         if (splitWord.equals("+")) {
-            result = calculate.addition(result, Double.parseDouble(number));
+            result = calculate.addition(result, number);
         } else if (splitWord.equals("-")) {
-            result = calculate.subtraction(result, Double.parseDouble(number));
+            result = calculate.subtraction(result, number);
         } else if (splitWord.equals("*")) {
-            result = calculate.multiplication(result, Double.parseDouble(number));
+            result = calculate.multiplication(result, number);
         } else if (splitWord.equals("/")) {
-            result = calculate.division(result, Double.parseDouble(number));
+            result = calculate.division(result, number);
         } else if (Pattern.matches("[^0-9]", splitWord)) {
-//            exception 호출
-            System.out.println("Exception");
+            exception.notFourRuleException();
         }
         return result;
     }
-
-    public static void main(String[] args) {
-
-        Calculator calculator = new Calculator();
-
-//        calculator.sliceMathExpression("13+2-3");
-        System.out.println( calculator.makeResult(calculator.sliceMathExpression("10-2*3")));
-
-    }
-
-
 }
