@@ -64,7 +64,13 @@ public class StrCalculatorTest {
     }
 
     @Test
-    void splitOperTest(){}
+    void splitOperTest() {
+        String test = "1 + 2 + 3 + 4";
+        StrCalculator cal = new StrCalculator();
+
+        String[] testList = cal.splitOper(test);
+        assertThat(testList).containsExactly("1", "+", "2", "+", "3", "+", "4");
+    }
 
     @Test
     void separationTest() {
