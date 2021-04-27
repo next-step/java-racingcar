@@ -54,14 +54,17 @@ public class StrCalculatorTest {
     }
 
     @Test
-    void emptyExpressionTest() {
+    void emptyOperationTest() {
         assertThatThrownBy(() -> {
             StrCalculator cal = new StrCalculator();
-            String expr = "";
-            cal.checkExpression(expr);
+            String oper = "";
+            cal.checkOperation(oper);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("expression is empty");
+                .hasMessageContaining("Operation is empty");
     }
+
+    @Test
+    void splitOperTest(){}
 
     @Test
     void separationTest() {
@@ -71,5 +74,52 @@ public class StrCalculatorTest {
         String[] subList = cal.separation(test);
 
         assertThat(subList).containsExactly("1", "+", "2");
+    }
+
+    @Test
+    void calOneByOneAddTest() {
+        String[] addTest = {"1", "+", "2"};
+        StrCalculator cal = new StrCalculator();
+
+        String result = cal.calOneByOne(addTest);
+        assertThat(result).isEqualTo("3");
+    }
+
+    @Test
+    void calOneByOneSubTest() {
+        String[] subTest = {"3", "-", "1"};
+        StrCalculator cal = new StrCalculator();
+
+        String result = cal.calOneByOne(subTest);
+        assertThat(result).isEqualTo("2");
+    }
+
+    @Test
+    void calOneByOneMultiTest() {
+        String[] multiTest = {"2", "*", "3"};
+        StrCalculator cal = new StrCalculator();
+
+        String result = cal.calOneByOne(multiTest);
+        assertThat(result).isEqualTo("6");
+    }
+
+    @Test
+    void calOneByOneDivTest() {
+        String[] divTest = {"6", "/", "2"};
+        StrCalculator cal = new StrCalculator();
+
+        String result = cal.calOneByOne(divTest);
+        assertThat(result).isEqualTo("3");
+    }
+
+    @Test
+    void calOneByOneDivByZeroTest() {
+        assertThatThrownBy(() -> {
+            String[] divTest = {"6", "/", "0"};
+            StrCalculator cal = new StrCalculator();
+
+            String result = cal.calOneByOne(divTest);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Divided by 0.");
     }
 }
