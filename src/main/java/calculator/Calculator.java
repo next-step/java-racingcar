@@ -1,45 +1,53 @@
 package calculator;
 
 public class Calculator {
-
-    void calculatorInput(String sentence){
-        final String[] arr = sentence.split(" ");
-        for (int i = 0; i < arr.length; i++) {
-            if(!isStringDouble(arr[i].toString())) {
-              //  String kind = cal(arr[i].toString());
-               // System.out.println(kind);
-            }
-        }
-      /*  assertThatThrownBy(() -> {
-          //  abc.charAt(3);
-        }).isInstanceOf(IllegalArgumentException.class);*/
-    }
-
-    private boolean isStringDouble(String toString) {
+    boolean isStringDouble(String toString) {
         try {
             Double.parseDouble(toString);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
-
+    }
+    private static String[] array = {"+","-","*","/"};
+    int calculatorInput(String sentence){
+        int idx = 0;
+        for (int i = 0; i <array.length ; i++) {
+          if(array[i].equals(sentence)){
+              idx = i;
+          };
+        }/*
+        boolean actualValue = numbers.contains(input);
+        org.assertj.core.api.Assertions.assertThatCode(() -> {
+            assertEquals(false,actualValue);
+        });
+        */
+        return idx;
     }
 
-    int plus (int a, int b){
-        String plus = "+";
-        return a+b;
+    String plus (int gubun, int a, int b){
+        if(gubun==0){
+            return String.valueOf(a+b);
+        }
+        return null;
     }
-    int minus (int a, int b){
-        String minus = "-";
-        return a-b;
+    String minus (int gubun, int a, int b){
+        if(gubun==1){
+            return String.valueOf(a-b);
+        }
+        return null;
     }
-    int multiply (int a, int b){
-        String multiply = "*";
-        return a*b;
+    String multiply (int gubun,int a, int b){
+        if(gubun==2){
+            return String.valueOf(a*b);
+        }
+        return null;
     }
-    int  divide(int a, int b){
-        String divide = "/";
-        return a/b;
+    String divide (int gubun,int a, int b){
+        if(gubun==3){
+            return String.valueOf(a/b);
+        }
+        return null;
     }
 
 }
