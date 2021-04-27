@@ -18,6 +18,13 @@ public class Racing {
         return winner;
     }
 
+    public static void checkSame(List<Car> cars, List<String> winnerArr, int index, Car winner) {
+        if (winner.getMovingRange() == cars.get(index).getMovingRange()) {
+            winnerArr.add(cars.get(index).getName());
+            System.out.print(", " + cars.get(index).getName());
+        }
+    }
+
     public static List<String> printWinner(List<Car> cars) {
 
         Collections.sort(cars);
@@ -26,11 +33,8 @@ public class Racing {
         winner.add(cars.get(0).getName());
         System.out.print("최종 우승자: " + winner.get(0));
 
-        for(int i = 1; i<cars.size(); i++){
-            if(cars.get(0).getMovingRange() == cars.get(i).getMovingRange()) {
-                winner.add(cars.get(i).getName());
-                System.out.print(", " + cars.get(i).getName());
-            }
+        for (int i = 1; i < cars.size(); i++) {
+            checkSame(cars, winner, i, cars.get(0));
         }
         return winner;
     }
