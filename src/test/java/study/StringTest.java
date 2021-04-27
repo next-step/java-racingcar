@@ -88,6 +88,8 @@ public class StringTest {
 
     }
 
+
+
     @Test
     void cal() {
         AtomicInteger i = new AtomicInteger(1);
@@ -101,7 +103,6 @@ public class StringTest {
 
         Optional<String> c = arr.stream().reduce((a, b) -> {
             int cal = 0;
-
             switch (ch.get(i.get())) {
                 case "+":
                     cal = Integer.parseInt(a) + Integer.parseInt(b);
