@@ -3,6 +3,8 @@ package calculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.Stream;
+
 public class Strings {
     // + - / *
 
@@ -23,9 +25,36 @@ public class Strings {
     }
 
     @Test
-    public void cutByOperation(String input) {
-        input = "2+3*4/2";
-        System.out.println(input.indexOf("/"));
+    public static String[] cutByOperation(String input) {
+        String [] strings = input.split("");
+        String [] returnString = new String[3];
+        for (String s: strings) {
+            if (s.equals("+")) {
+                returnString[0] = input.substring(0, input.indexOf(s));
+                returnString[1] = "+";
+                returnString[2] = input.substring(input.indexOf(s)+1, input.length());
+                break;
+            }
+            if (s.equals("-")) {
+                returnString[0] = input.substring(0, input.indexOf(s));
+                returnString[1] = "-";
+                returnString[2] = input.substring(input.indexOf(s)+1, input.length());
+                break;
+            }
+            if (s.equals("*")) {
+                returnString[0] = input.substring(0, input.indexOf(s));
+                returnString[1] = "*";
+                returnString[2] = input.substring(input.indexOf(s)+1, input.length());
+                break;
+            }
+            if (s.equals("/")) {
+                returnString[0] = input.substring(0, input.indexOf(s));
+                returnString[1] = "/";
+                returnString[2] = input.substring(input.indexOf(s)+1, input.length());
+                break;
+            }
+        }
+        return returnString;
     }
 
 }
