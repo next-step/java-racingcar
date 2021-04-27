@@ -13,6 +13,7 @@ public class StrCalculatorTest {
 
         assertThat(result).isEqualTo("3");
     }
+
     @Test
     void subTest() {
         StrCalculator cal = new StrCalculator();
@@ -21,6 +22,7 @@ public class StrCalculatorTest {
 
         assertThat(result).isEqualTo("-1");
     }
+
     @Test
     void multiTest() {
         StrCalculator cal = new StrCalculator();
@@ -29,6 +31,7 @@ public class StrCalculatorTest {
 
         assertThat(result).isEqualTo("6");
     }
+
     @Test
     void divTest() {
         StrCalculator cal = new StrCalculator();
@@ -36,6 +39,18 @@ public class StrCalculatorTest {
         String result = cal.div(a, b);
 
         assertThat(result).isEqualTo("6");
+    }
+
+    @Test
+    void divByZeroTest() {
+        assertThatThrownBy(() -> {
+            StrCalculator cal = new StrCalculator();
+            String a = "6", b = "0";
+            String result = cal.div(a, b);
+
+            assertThat(result).isEqualTo("0");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("divided by 0");
     }
 
     @Test
@@ -53,8 +68,8 @@ public class StrCalculatorTest {
         String[] test = {"1", "+", "2", "+", "3"};
         StrCalculator cal = new StrCalculator();
 
-        String [] subList = cal.separation(test);
+        String[] subList = cal.separation(test);
 
-        assertThat(subList).containsExactly("1","+","2");
+        assertThat(subList).containsExactly("1", "+", "2");
     }
 }
