@@ -77,8 +77,8 @@ public class StrCalculator {
         return  result;
     }
 
-    void combineList(String[] operList, String result) {
-
+    void combineList(ArrayList<String> operList, String result) {
+        operList.add(0, result);
     }
 
     /*String calculate(String oper) {

@@ -139,4 +139,14 @@ public class StrCalculatorTest {
         int[] a = {1, 2, 3, 4, 5};
 
     }
+
+    @Test
+    void combineListTest() {
+        ArrayList<String> test = new ArrayList<String>(Arrays.asList("+", "2", "+", "3"));
+        String first = "1";
+        StrCalculator cal = new StrCalculator();
+
+        cal.combineList(test, first);
+        assertThat(test).containsExactly("1", "+", "2", "+", "3");
+    }
 }
