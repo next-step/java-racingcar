@@ -1,12 +1,25 @@
 package calculator;
 
-public class Opperation{
-    Arithmetic add = (x,y) -> x+y;
-    Arithmetic minus = (x,y) -> x-y;
-    Arithmetic multipy = (x,y) -> x*y;
-    Arithmetic divide = (x,y) -> x/y;
+import java.util.Arrays;
+import java.util.function.BiFunction;
+import java.util.stream.Stream;
 
-    public void test(){
-        add.Calc(1,2);
+public enum Opperation{
+    PLUS("+", (num1, num2) -> num1 + num2),
+    MINUS("-", (num1, num2) -> num1 - num2),
+    MULTIPLY("*", (num1, num2) -> num1 * num2),
+    DIVIDE("/", (num1, num2) -> num1 / num2);
+
+    private String operator;
+    private BiFunction<Integer, Integer, Integer> expression;
+
+    Opperation(String operator, BiFunction<Integer, Integer, Integer> expression) {
+        this.operator = operator;
+        this.expression = expression;
     }
+
+    public static void findBySymbol(String symbol){
+        System.out.println(Arrays.stream(Opperation.values()));
+    }
+
 }

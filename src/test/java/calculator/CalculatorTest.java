@@ -11,10 +11,9 @@ class CalculatorTest {
         String str = "2 + 3 * 4 / 2";
         String[] splitBlank = str.split(" ");
 
-
         Strings.isBlank(str);
         Strings.checkSymbol(splitBlank);
-
+        Opperation.findBySymbol("+");
 
     }
 }
