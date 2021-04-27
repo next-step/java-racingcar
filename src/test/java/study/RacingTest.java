@@ -27,7 +27,7 @@ public class RacingTest {
 
 
     @Test
-    void Racing() {
+    void winner() {
         List<Car> cars = new ArrayList<Car>();
 
         cars.add(new Car("chloe",4));
@@ -36,5 +36,14 @@ public class RacingTest {
 
         assertThat(Racing.printWinner(cars)).containsExactly("tt","ss");
     }
+
+    @Test
+    void movedTest() {
+        Car aCar = new Car("name");
+        Racing.moved(6, aCar);
+        assertThat(aCar.getMovingRange()).isEqualTo(1);
+    }
+
+
 
 }

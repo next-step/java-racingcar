@@ -10,7 +10,7 @@ public class Racing {
         List<Car> cars = getCar(playerCar(str));
 
         for (int i = 0; i < num; i++) {
-            moved(cars);
+            random(cars);
         }
 
         List<String> winner = printWinner(cars);
@@ -35,18 +35,20 @@ public class Racing {
         return winner;
     }
 
-    private static void moved(List<Car> cars) {
+    private static void random(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-
             Random random = new Random();
-            if (random.nextInt(10) > 4) {
-                cars.get(i).moved();
-            }
+            moved(random.nextInt(10), cars.get(i));
             System.out.print(cars.get(i).getName() + " : ");
             printTrace(cars.get(i));
             System.out.println();
         }
     }
+
+    public static void moved(int random, Car car) {
+        if (random > 4) car.moved();
+    }
+
 
     private static void printTrace(Car aCar) {
         for (int i = 0; i < aCar.getMovingRange(); i++) {
