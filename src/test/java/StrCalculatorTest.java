@@ -135,12 +135,6 @@ public class StrCalculatorTest {
     }
 
     @Test
-    void temp() {
-        int[] a = {1, 2, 3, 4, 5};
-
-    }
-
-    @Test
     void combineListTest() {
         ArrayList<String> test = new ArrayList<String>(Arrays.asList("+", "2", "+", "3"));
         String first = "1";
@@ -148,5 +142,25 @@ public class StrCalculatorTest {
 
         cal.combineList(test, first);
         assertThat(test).containsExactly("1", "+", "2", "+", "3");
+    }
+
+    @Test
+    void calculateTest() {
+        String problem = "1 + 2 + 3 + 4";
+        StrCalculator cal = new StrCalculator();
+
+        String result = cal.calculate(problem);
+
+        assertThat(result).isEqualTo("10");
+    }
+
+    @Test
+    void calculateTest2() {
+        String problem =  "2 + 3 * 4 / 2";
+        StrCalculator cal = new StrCalculator();
+
+        String result = cal.calculate(problem);
+
+        assertThat(result).isEqualTo("10");
     }
 }

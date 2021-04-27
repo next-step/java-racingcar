@@ -58,16 +58,16 @@ public class StrCalculator {
     String calOneByOne(ArrayList<String> subList) {
         String result;
 
-        if(subList.get(1) == "+") {
+        if(subList.get(1).equals("+")) {
             result = sum(subList.get(0), subList.get(2));
         }
-        else if(subList.get(1) == "-") {
+        else if(subList.get(1).equals("-")) {
             result = sub(subList.get(0), subList.get(2));
         }
-        else if(subList.get(1) == "*") {
+        else if(subList.get(1).equals("*")) {
             result = multi(subList.get(0), subList.get(2));
         }
-        else if(subList.get(1) == "/") {
+        else if(subList.get(1).equals("/")) {
             result = div(subList.get(0), subList.get(2));
         }
         else {
@@ -81,12 +81,18 @@ public class StrCalculator {
         operList.add(0, result);
     }
 
-    /*String calculate(String oper) {
+    String calculate(String oper) {
         checkOperation(oper);
 
-        String[] operList = splitOper(oper);
+        ArrayList<String> operList = splitOper(oper);
 
-        for(int i = 0; i < operList.length;  i++){
-    }*/
+        while(operList.size() >= 3) {
+            ArrayList<String> subList = separation(operList);
+            String result = calOneByOne(subList);
+            combineList(operList, result);
+        }
+
+        return operList.get(0);
+    }
 
 }
