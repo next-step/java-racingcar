@@ -13,8 +13,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-@DisplayName("자동차 클래스 테스트")
-public class RacingCarTest {
+@DisplayName("레이싱 게임 테스트")
+public class RacingGameTest {
     @Test
     @DisplayName("테스트 환경 확인")
     public void nothing(){
@@ -89,8 +89,7 @@ public class RacingCarTest {
         @ValueSource(strings = {"aaa,bbb,", ",,aa,bb,","abcdef,ababa,ee,ababababa"})
         @DisplayName("쉼표로 자동차를 분리하는 과정에서 이름 조건에 맞는 자동차들만 생성한다.")
         void it_cars_valid_names(String str){
-            List<String> strings = new ArrayList<>(Arrays.asList(str.split(",")));
-            strings.removeIf(i-> i.length() == 0 || i.length() > 5);
+            List<String> strings = getCarNames(str);
             assertThat(strings.contains("")).isFalse();
         }
 
@@ -98,8 +97,7 @@ public class RacingCarTest {
         @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeeeee", "doke,strawberry,ice,throw,switch,favor"})
         @DisplayName("생성이 완료된 자동차들을 일급 콜렉션에 저장한다.")
         void it_created_cars_save_first_class_collection(String str){
-            List<String> strings = new ArrayList<>(Arrays.asList(str.split(",")));
-            strings.removeIf(i-> i.length() == 0 || i.length() > 5);
+            List<String> strings = getCarNames(str);
             List<Car> cars = new ArrayList<>();
             strings.forEach(name-> cars.add(new Car(name)));
             Cars players = new Cars(cars);
@@ -107,6 +105,12 @@ public class RacingCarTest {
             assertThat(players.getCars().get(0)).isInstanceOf(Car.class);
             assertThat(players.getCars().get(0).getName()).isInstanceOf(String.class);
             assertThat(players.getCars().get(0).getName().length()).isGreaterThan(0);
+        }
+
+        private List<String> getCarNames(String str) {
+            List<String> strings = new ArrayList<>(Arrays.asList(str.split(",")));
+            strings.removeIf(i-> i.length() == 0 || i.length() > 5);
+            return strings;
         }
     }
 }
