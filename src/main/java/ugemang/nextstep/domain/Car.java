@@ -8,6 +8,7 @@ public class Car {
     private List<Integer> distanceList;
 
     public Car(String name) {
+        validateCarNameLength(name);
         this.name = name;
         this.distanceList = new ArrayList<>();
     }
@@ -16,29 +17,30 @@ public class Car {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Integer> getDistanceList(){
-        return this.distanceList;
-    }
-
-    public int changeGears(int value){
-        if(value >= 4) {
-            return drive(value);
+    private void validateCarNameLength(String name){
+        if(name.length() == 0 || name.length() > 5){
+            throw new IllegalArgumentException(String.format("자동차 이름의 길이 조건이 맞지 않습니다.", name.length()));
         }
-        return stop(0);
     }
 
-    public int drive(int meter){
-        this.distanceList.add(meter);
-        return meter;
+    public void changeGears(){
+        int distance = getDistance();
+        if(distance >= 4) {
+            drive(distance);
+        }
+        stop(0);
     }
 
-    public int stop(int meter){
+    private Integer getDistance(){
+        return (int)(Math.random() * (10));
+    }
+
+    public void drive(int meter){
         this.distanceList.add(meter);
-        return meter;
+    }
+
+    public void stop(int meter){
+        this.distanceList.add(meter);
     }
 
     public Integer getTotalDistance(){

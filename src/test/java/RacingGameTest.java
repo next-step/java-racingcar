@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import ugemang.nextstep.domain.Car;
-import ugemang.nextstep.domain.Cars;
+import ugemang.nextstep.domain.Curcuit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,13 +94,13 @@ public class RacingGameTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeeeee", "doke,strawberry,ice,throw,switch,favor"})
+        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeee", "doke,straw,ice,throw,swith,favor"})
         @DisplayName("생성이 완료된 자동차들을 일급 콜렉션에 저장한다.")
         void it_created_cars_save_first_class_collection(String str){
             List<String> strings = getCarNames(str);
             List<Car> cars = new ArrayList<>();
             strings.forEach(name-> cars.add(new Car(name)));
-            Cars players = new Cars(cars);
+            Curcuit players = new Curcuit(10,cars);
             assertThat(players.getCars()).isInstanceOf(java.util.ArrayList.class);
             assertThat(players.getCars().get(0)).isInstanceOf(Car.class);
             assertThat(players.getCars().get(0).getName()).isInstanceOf(String.class);
@@ -120,23 +120,40 @@ public class RacingGameTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeeeee", "doke,strawberry,ice,throw,switch,favor"})
-        @DisplayName("한바퀴를 돌때마다 자동차별로 얼마나 이동했는지를 계산합니다.")
+        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeee", "doke,straw,ice,throw,switc"})
+        @DisplayName("한바퀴를 돌때마다 자동차별로 총 이동거리를 계산합니다.")
         void it_lap_to_distance(String str){
-            Cars players = new Cars(getCars(getCarNames(str)));
-
+            Curcuit curcuit = new Curcuit(10,getCars(getCarNames(str)));
+            for(int i=0;i<curcuit.getRound();i++){
+                curcuit.lap(i);
+            }
+            assertThat(curcuit.getCars().get(0).getTotalDistance()).isGreaterThanOrEqualTo(0);
+            assertThat(curcuit.getCars().get(1).getTotalDistance()).isGreaterThanOrEqualTo(0);
+            assertThat(curcuit.getCars().get(2).getTotalDistance()).isGreaterThanOrEqualTo(0);
+            assertThat(curcuit.getCars().get(3).getTotalDistance()).isGreaterThanOrEqualTo(0);
+            assertThat(curcuit.getCars().get(4).getTotalDistance()).isGreaterThanOrEqualTo(0);
         }
 
-        @Test
-        @DisplayName("순위를 출력합니다.")
-        void it_print_rank(){
-
-        }
-
-        @Test
+        @ParameterizedTest
+        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeee", "doke,straw,ice,throw,switc"})
         @DisplayName("우승자를 출력합니다.")
-        void it_print_winner(){
+        void it_print_winner(String str){
+            List<String> strings = getCarNames(str);
+            List<Car> cars = new ArrayList<>();
+            strings.forEach(name-> cars.add(new Car(name)));
+            Curcuit curcuit = new Curcuit(10,cars);
+            for(int i=0;i<curcuit.getRound();i++){
+                curcuit.lap(0);
+            }
 
+            System.out.println(curcuit.getWinner().size());
+            System.out.println(curcuit.getCars().size());
+            assertThat(curcuit.getWinner().get(0).getTotalDistance())
+                    .isGreaterThanOrEqualTo(curcuit.getCars().get(0).getTotalDistance())
+                    .isGreaterThanOrEqualTo(curcuit.getCars().get(1).getTotalDistance())
+                    .isGreaterThanOrEqualTo(curcuit.getCars().get(2).getTotalDistance())
+                    .isGreaterThanOrEqualTo(curcuit.getCars().get(3).getTotalDistance())
+                    .isGreaterThanOrEqualTo(curcuit.getCars().get(4).getTotalDistance());
         }
     }
 
@@ -148,7 +165,6 @@ public class RacingGameTest {
 
     private List<String> getCarNames(String str) {
         List<String> carNames = new ArrayList<>(Arrays.asList(str.split(",")));
-        carNames.removeIf(i-> i.length() == 0 || i.length() > 5);
         return carNames;
     }
 }
