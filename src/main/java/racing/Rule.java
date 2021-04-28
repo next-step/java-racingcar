@@ -30,7 +30,6 @@ public class Rule {
     }
 
 
-
     void finalWinner() {
         int max = 0;
         String winnerName = "";
@@ -39,7 +38,6 @@ public class Rule {
                 max = entry.getValue();
                 winnerName = entry.getKey();
             }
-
         }
         System.out.println("winner : " + winnerName);
     }
