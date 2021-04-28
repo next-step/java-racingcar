@@ -24,7 +24,7 @@ public class RacingCar {
         }
     }
 
-    public String condition(){
+    public String condition() {
 
         Random random = new Random();
 
