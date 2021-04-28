@@ -4,6 +4,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import ugemang.nextstep.domain.Car;
+import ugemang.nextstep.domain.Cars;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -17,7 +23,7 @@ public class RacingCarTest {
 
     @Nested
     @DisplayName("자동차 클래스는")
-    class Car {
+    class CarTest {
         @Nested
         @DisplayName("이름을 갖는다")
         class Context_with_name {
@@ -65,6 +71,42 @@ public class RacingCarTest {
             int stop(){
                 return 0;
             }
+        }
+    }
+
+    @Nested
+    @DisplayName("자동차 클래스를 담는 일급 콜렉션은")
+    class Context_with_cars {
+        @ParameterizedTest
+        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeeeee", "doke,strawberry,ice,throw,switch,favor"})
+        @DisplayName("쉼표로 구분되는 여러대의 자동차 이름을 입력받는다.")
+        void it_cars_input_names(String str){
+            assertThat(str).isInstanceOf(String.class);
+            assertThat(str.contains(",")).isTrue();
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"aaa,bbb,", ",,aa,bb,","abcdef,ababa,ee,ababababa"})
+        @DisplayName("쉼표로 자동차를 분리하는 과정에서 이름 조건에 맞는 자동차들만 생성한다.")
+        void it_cars_valid_names(String str){
+            List<String> strings = new ArrayList<>(Arrays.asList(str.split(",")));
+            strings.removeIf(i-> i.length() == 0 || i.length() > 5);
+            assertThat(strings.contains("")).isFalse();
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeeeee", "doke,strawberry,ice,throw,switch,favor"})
+        @DisplayName("생성이 완료된 자동차들을 일급 콜렉션에 저장한다.")
+        void it_created_cars_save_first_class_collection(String str){
+            List<String> strings = new ArrayList<>(Arrays.asList(str.split(",")));
+            strings.removeIf(i-> i.length() == 0 || i.length() > 5);
+            List<Car> cars = new ArrayList<>();
+            strings.forEach(name-> cars.add(new Car(name)));
+            Cars players = new Cars(cars);
+            assertThat(players.getCars()).isInstanceOf(java.util.ArrayList.class);
+            assertThat(players.getCars().get(0)).isInstanceOf(Car.class);
+            assertThat(players.getCars().get(0).getName()).isInstanceOf(String.class);
+            assertThat(players.getCars().get(0).getName().length()).isGreaterThan(0);
         }
     }
 }
