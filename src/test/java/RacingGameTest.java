@@ -23,7 +23,7 @@ public class RacingGameTest {
 
     @Nested
     @DisplayName("자동차 클래스는")
-    class CarTest {
+    class Context_with_car {
         @Nested
         @DisplayName("이름을 갖는다")
         class Context_with_name {
@@ -76,7 +76,7 @@ public class RacingGameTest {
 
     @Nested
     @DisplayName("자동차 클래스를 담는 일급 콜렉션은")
-    class Context_with_cars {
+    class Context_with_first_class_collection {
         @ParameterizedTest
         @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeeeee", "doke,strawberry,ice,throw,switch,favor"})
         @DisplayName("쉼표로 구분되는 여러대의 자동차 이름을 입력받는다.")
