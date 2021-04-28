@@ -33,8 +33,11 @@ public class RacingCarView{
     }
     public void cycleCarInformation(){
         for(int i = 0; i< systemService.carInfo.size(); i++){
-            System.out.print(systemService.carInfo.get(i).getName());
-            System.out.print(systemService.carInfo.get(i).getLocationInfo());
+            String movedLocation = systemService.MoveCar(systemService.carInfo.get(i).getLocationInfo());
+            systemService.carInfo.get(i).setLocationInfo(movedLocation);
+
+            System.out.print(systemService.carInfo.get(i).getName()+ " : ");
+            System.out.println(systemService.carInfo.get(i).getLocationInfo());
         }
     }
     public void showWinner(){
