@@ -1,15 +1,15 @@
 package ugemang.nextstep.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
     private String name;
-    private Map<Integer, Integer> distanceList;
+    private List<Integer> distanceList;
 
     public Car(String name) {
         this.name = name;
-        this.distanceList = new HashMap<>();
+        this.distanceList = new ArrayList<>();
     }
 
     public String getName() {
@@ -20,21 +20,30 @@ public class Car {
         this.name = name;
     }
 
-    public Map<Integer, Integer> getDistanceList(){
+    public List<Integer> getDistanceList(){
         return this.distanceList;
     }
 
-    public void drive(int turn, int meter){
-        this.distanceList.put(turn, meter);
+    public int changeGears(int value){
+        if(value >= 4) {
+            return drive(value);
+        }
+        return stop(0);
     }
 
-    public void stop(int turn){
-        this.distanceList.put(turn, 0);
+    public int drive(int meter){
+        this.distanceList.add(meter);
+        return meter;
+    }
+
+    public int stop(int meter){
+        this.distanceList.add(meter);
+        return meter;
     }
 
     public Integer getTotalDistance(){
-        int totalDistance = 0;
-        for(Integer i : this.distanceList.values()){
+        Integer totalDistance = new Integer(0);
+        for(Integer i : this.distanceList){
             totalDistance += i;
         }
         return totalDistance;

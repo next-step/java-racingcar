@@ -107,10 +107,48 @@ public class RacingGameTest {
             assertThat(players.getCars().get(0).getName().length()).isGreaterThan(0);
         }
 
-        private List<String> getCarNames(String str) {
-            List<String> strings = new ArrayList<>(Arrays.asList(str.split(",")));
-            strings.removeIf(i-> i.length() == 0 || i.length() > 5);
-            return strings;
+    }
+
+    @Nested
+    @DisplayName("레이싱 게임을 시작합니다.")
+    class Context_with_start_racing{
+        @ParameterizedTest
+        @CsvSource({"5,true","2,true","3,true","4,true","0,false","10,true","100,true","7,true"})
+        @DisplayName("사용자로부터 서킷 숫자를 입력받습니다.")
+        void it_input_circuit_count(int circuitCount, boolean bool){
+            assertThat(circuitCount > 0).isEqualTo(bool);
         }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"aaa,bbb,ccc,ddd,eeeeeee", "doke,strawberry,ice,throw,switch,favor"})
+        @DisplayName("한바퀴를 돌때마다 자동차별로 얼마나 이동했는지를 계산합니다.")
+        void it_lap_to_distance(String str){
+            Cars players = new Cars(getCars(getCarNames(str)));
+
+        }
+
+        @Test
+        @DisplayName("순위를 출력합니다.")
+        void it_print_rank(){
+
+        }
+
+        @Test
+        @DisplayName("우승자를 출력합니다.")
+        void it_print_winner(){
+
+        }
+    }
+
+    private List<Car> getCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        carNames.forEach(name-> cars.add(new Car(name)));
+        return cars;
+    }
+
+    private List<String> getCarNames(String str) {
+        List<String> carNames = new ArrayList<>(Arrays.asList(str.split(",")));
+        carNames.removeIf(i-> i.length() == 0 || i.length() > 5);
+        return carNames;
     }
 }

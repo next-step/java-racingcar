@@ -12,4 +12,10 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public void round(int turn, int distance){
+        for(Car i : this.cars){
+            int dist = i.changeGears(distance);
+        }
+    }
 }
