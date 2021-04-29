@@ -57,7 +57,6 @@ public class RacingGameTest {
                 .isThrownBy(() -> {
                     method.invoke(racingGame, (Object) carNameArray);
                 });
-
     }
 
     @Test
@@ -73,6 +72,7 @@ public class RacingGameTest {
         List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
         method = racingGame.getClass().getDeclaredMethod("moveCountChange", List.class);
         method.setAccessible(true);
+
         //when
         method.invoke(racingGame, carList);
 
@@ -98,6 +98,7 @@ public class RacingGameTest {
         List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
         method = racingGame.getClass().getDeclaredMethod("moveCountChange", List.class);
         method.setAccessible(true);
+
         //when
         method.invoke(racingGame, carList);
 
@@ -107,6 +108,7 @@ public class RacingGameTest {
         method = racingGame.getClass().getDeclaredMethod("findWinner", List.class);
         method.setAccessible(true);
         List<Car> winnerList = (List<Car>) method.invoke(racingGame, carList);
+
         //then
         org.assertj.core.api.Assertions.assertThat(winnerList.size()).isNotEqualTo(0);
     }
@@ -120,12 +122,12 @@ public class RacingGameTest {
         String carString = "aaa,bbb,ccc,ddd,eee,fff";
         String[] carNameArray = convertString.splitString(carString);
         int repeatCount = 10;
-
         method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
         method.setAccessible(true);
         List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
         method = racingGame.getClass().getDeclaredMethod("repeatMoveCount", int.class, List.class);
         method.setAccessible(true);
+
         //when
         method.invoke(racingGame, repeatCount, carList);
 

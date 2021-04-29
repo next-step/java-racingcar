@@ -19,27 +19,28 @@ public class Output {
     }
 
     public void result() {
-        System.out.println("\n"+RESULT_MESSAGE);
+        System.out.println("\n" + RESULT_MESSAGE);
     }
 
     public void win(List<String> winnerList) {
-        System.out.print("\n"+WIN_MESSAGE);
-        for (int i = 0; i < winnerList.size()-1; i++) {
-            System.out.print(winnerList.get(i)+", ");
+        System.out.print("\n" + WIN_MESSAGE);
+        for (int i = 0; i < winnerList.size() - 1; i++) {
+            System.out.print(winnerList.get(i) + ", ");
         }
-        System.out.println(winnerList.get(winnerList.size()-1));
+        System.out.println(winnerList.get(winnerList.size() - 1));
     }
 
     public void nowDistance(List<Car> carList) {
         System.out.println();
         for (int i = 0; i < carList.size(); i++) {
-            System.out.print(carList.get(i).getName()+" : ");
+            System.out.print(carList.get(i).getName() + " : ");
             printDistance(carList.get(i).getMoveCount());
             System.out.println();
         }
     }
+
     private void printDistance(int count) {
-        for(int j = 0; j < count; j++){
+        for (int j = 0; j < count; j++) {
             System.out.print("-");
         }
     }

@@ -29,7 +29,7 @@ public class Car {
     }
 
     public void move(int randomNum) {
-        if(randomNum >= 4) {
+        if (randomNum >= 4) {
             this.moveCount++;
         }
     }

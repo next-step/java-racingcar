@@ -13,6 +13,5 @@ public class ConvertStringTest {
         //then
         Assertions.assertThat(result[0]).isEqualTo("aaa");
         Assertions.assertThat(result[1]).isEqualTo("bbbbbb");
-
     }
 }

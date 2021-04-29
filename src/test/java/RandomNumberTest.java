@@ -12,7 +12,7 @@ public class RandomNumberTest {
 
 
         //then
-        for(int i = 0; i<10; i++) {
+        for (int i = 0; i < 10; i++) {
             int num = randomNumber.makeRandomNumber();
             Assertions.assertThat(num >= 0 & num < 10).isTrue();
         }
