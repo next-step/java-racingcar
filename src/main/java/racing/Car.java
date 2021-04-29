@@ -27,4 +27,10 @@ public class Car {
     public void setMoveCount(int moveCount) {
         this.moveCount = moveCount;
     }
+
+    public void move(int randomNum) {
+        if(randomNum >= 4) {
+            this.moveCount++;
+        }
+    }
 }
