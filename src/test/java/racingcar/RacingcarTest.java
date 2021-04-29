@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+
 public class RacingcarTest {
     RacingCar racingCar = new RacingCar();
     NonTestRacingCar nonTestRacingCar = new NonTestRacingCar();
@@ -19,18 +20,19 @@ public class RacingcarTest {
             racingCar.nameCheck(input);
         });
     }
+
     @Test
-    void moveTest(){
+    void moveTest() {
         assertThat(racingCar.moveOrNot(4)).isEqualTo("-");
     }
 
     @Test
-    void stopTest(){
+    void stopTest() {
         assertThat(racingCar.moveOrNot(3)).isEqualTo("");
     }
 
     @Test
-    void winnerTest(){
+    void winnerTest() {
         String[] carNameArr = {"gb : ---", "sk : --", "kh : -"};
         assertThat(nonTestRacingCar.selectWinner(carNameArr)).contains("gb : ---");
     }
