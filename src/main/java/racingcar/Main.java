@@ -25,5 +25,8 @@ public class Main {
 
         nonTestRacingCar.startRacing(count, carNameArr);
 
+        List<String> winnerList = new ArrayList<String>();
+        winnerList = racingCar.selectWinner(carNameArr);
+
     }
 }

@@ -41,4 +41,10 @@ public class RacingcarTest {
         assertThat(racingCar.moveOrNot(3)).isEqualTo("");
     }
 
+    @Test
+    void winnerTest(){
+        String[] carNameArr = {"gb : ---", "sk : --", "kh : -"};
+        assertThat(racingCar.selectWinner(carNameArr)).contains("gb : ---");
+    }
+
 }
