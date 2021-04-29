@@ -2,7 +2,11 @@ package racingcar.view;
 
 import racingcar.service.SystemService;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingCarView{
     SystemService systemService = new SystemService();
@@ -33,14 +37,22 @@ public class RacingCarView{
     }
     public void cycleCarInformation(){
         for(int i = 0; i< systemService.carInfo.size(); i++){
-            String movedLocation = systemService.MoveCar(systemService.carInfo.get(i).getLocationInfo());
+            int movedLocation = systemService.MoveCar(systemService.carInfo.get(i).getLocationInfo());
             systemService.carInfo.get(i).setLocationInfo(movedLocation);
 
             System.out.print(systemService.carInfo.get(i).getName()+ " : ");
-            System.out.println(systemService.carInfo.get(i).getLocationInfo());
+            showCarLocationInfo(systemService.carInfo.get(i).getLocationInfo());
+            System.out.println("");
+        }
+    }
+    public void showCarLocationInfo(int moveCount){
+        for(int i=0;i<moveCount;i++){
+            System.out.print("-");
         }
     }
     public void showWinner(){
+        List<String> winnerName = systemService.checkWinner(cycle);
         System.out.print("최종 우승자 : ");
+        winnerName.stream().filter(Objects::nonNull).forEach(name-> System.out.print(name));
     }
 }

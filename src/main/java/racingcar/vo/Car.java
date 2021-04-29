@@ -2,18 +2,18 @@ package racingcar.vo;
 
 public class Car {
     private String name;
-    private String locationInfo;
+    private int locationInfo;
 
     public void setName(String name){
         this.name = name;
     }
-    public void setLocationInfo(String locationInfo){
+    public void setLocationInfo(int locationInfo){
         this.locationInfo = locationInfo;
     }
     public String getName(){
         return name;
     }
-    public String getLocationInfo(){
+    public int getLocationInfo(){
         return locationInfo;
     }
 }

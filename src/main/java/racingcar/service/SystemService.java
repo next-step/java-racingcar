@@ -17,14 +17,28 @@ public class SystemService {
            Car carVO = new Car();
 
            carVO.setName(result[i]);
-           carVO.setLocationInfo(" ");
+           carVO.setLocationInfo(0);
 
            carInfo.add(carVO);
         }
     }
-    public String MoveCar(String locationInfo){
+    public int MoveCar(int locationInfo){
         String check = moveService.isMove();
-        String movedLocation = Operation.result(check,locationInfo);
+        int movedLocation = Operation.result(check,locationInfo);
         return movedLocation;
+    }
+    public List<String> checkWinner(int cycle){
+        List<String> winnerName = new ArrayList<>();
+        for(int i=0;i<carInfo.size();i++){
+            winnerName.add(selectWinnerName(i,cycle));
+        }
+        return winnerName;
+    }
+    public String selectWinnerName(int i,int cycle){
+        String winnerName = null;
+        if(carInfo.get(i).getLocationInfo() == cycle){
+            winnerName = carInfo.get(i).getName();
+        }
+        return winnerName;
     }
 }
