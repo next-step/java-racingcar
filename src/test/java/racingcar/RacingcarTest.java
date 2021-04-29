@@ -19,4 +19,13 @@ public class RacingcarTest {
             racingCar.nameCheck(input);
         });
     }
+    @Test
+    void moveTest(){
+        assertThat(racingCar.moveOrNot(4)).isEqualTo("-");
+    }
+
+    @Test
+    void stopTest(){
+        assertThat(racingCar.moveOrNot(3)).isEqualTo("");
+    }
 }
