@@ -4,18 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-//enum Order {
-//    GO("-"),
-//    STOP("");
-//
-//    private String car_state;
-//
-//    Order(String car_state) {
-//
-//        this.car_state = car_state;
-//    }
-//}
-
 public class RacingCar {
 
     public void nameCheck(String carName) {
@@ -38,5 +26,11 @@ public class RacingCar {
         return carNameArr;
     }
 
+    public String moveOrNot(int number) {
+        if (number>= 4) {
+            return "-";
+        }
+        return "";
+    }
 
 }
