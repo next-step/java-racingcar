@@ -11,4 +11,21 @@ public class RacingCar {
             }
         }
     }
+    public String[] carStringtoArray(String carName){
+        String[] carNameArr = carName.split(",");
+
+        for (int i = 0; i < carNameArr.length; i++) {
+            carNameArr[i] += " : ";
+        }
+
+        return carNameArr;
+    }
+
+    public String moveOrNot(int number) {
+        if (number>= 4) {
+            return "-";
+        }
+        return "";
+    }
+
 }

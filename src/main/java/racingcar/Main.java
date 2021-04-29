@@ -14,5 +14,14 @@ public class Main {
 
         racingCar.nameCheck(carName);
 
+        String[] carNameArr = racingCar.carStringtoArray(carName);
+
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int count = scanner.nextInt();
+
+        nonTestRacingCar.startRacing(count, carNameArr);
+
+
     }
 }
