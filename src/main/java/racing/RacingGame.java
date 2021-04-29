@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+    private static final String NAME_LENGTH_OVER = "이름은 5자 이내로 입력하세요.";
 
-    private List<Car> makeCar(String name, List<Car> carList) {
+    private void makeCar(String name, List<Car> carList) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
+            throw new IllegalArgumentException(NAME_LENGTH_OVER);
         }
         Car car = new Car(name);
         car.init();
         carList.add(car);
-        return carList;
     }
 
     public void gameStart() {
