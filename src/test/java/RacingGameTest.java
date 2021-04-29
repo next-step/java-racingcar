@@ -59,5 +59,29 @@ public class RacingGameTest {
                 });
 
     }
+    @Test
+    public void moveCountChangeTest() throws Exception{
+        //given
+        ConvertString convertString = new ConvertString();
+        RacingGame racingGame = new RacingGame();
+        Method method;
+        String carString = "aaa,bbb,ccc";
+        String[] carNameArray = convertString.splitString(carString);
+        method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
+        method.setAccessible(true);
+        List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
+        method = racingGame.getClass().getDeclaredMethod("moveCountChange", List.class);
+        method.setAccessible(true);
+        //when
+        method.invoke(racingGame, carList);
+
+        //then
+        // 자동차별 moveCount를 증가시켜주는 moveCountChange 함수 안에서 난수가 생성되는데 만약 모든 자동차 난수가 4미만이면
+        // randomCount가 증가되지 않아 모든 자동차 이동거리가 0이 되는 경우가 발생해
+        // 이럴 경우는 테스트 코드를 어떻게 작성해야 하는지 모르겠습니다.
+        for(int i=0; i<carList.size(); i++) {
+            System.out.println(carList.get(i).getName()+": " + carList.get(i).getMoveCount());
+        }
+    }
 
 }

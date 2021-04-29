@@ -1,6 +1,7 @@
 package racing;
 
 import racing.utils.ConvertString;
+import racing.utils.RandomNumber;
 import racing.view.Input;
 import racing.view.Output;
 
@@ -24,15 +25,12 @@ public class RacingGame {
         Output output = new Output();
         Input input = new Input();
         ConvertString convertString = new ConvertString();
-
         List<Car> carList;
 
         output.start();
         String carString = input.makeCars();
         String[] carNameArray = convertString.splitString(carString);
-
         carList = makeCarList(carNameArray);
-        System.out.println(carList.get(0).getName());
     }
 
     private List<Car> makeCarList(String[] carNameArray) {
@@ -42,6 +40,17 @@ public class RacingGame {
             makeCar(carName, carList);
         }
         return carList;
+    }
+
+    private int makeRandomNumber(){
+        RandomNumber randomNumber = new RandomNumber();
+        return randomNumber.makeRandomNumber();
+    }
+
+    private void moveCountChange(List<Car> carList) {
+        for(int i =0; i < carList.size(); i++) {
+            carList.get(i).move(makeRandomNumber());
+        }
     }
 
     public static void main(String[] args) {
