@@ -84,4 +84,31 @@ public class RacingGameTest {
         }
     }
 
+    @Test
+    public void findWinnerTest() throws Exception{
+        //given
+        ConvertString convertString = new ConvertString();
+        RacingGame racingGame = new RacingGame();
+        Method method;
+        String carString = "aaa,bbb,ccc,ddd,eee,fff";
+        String[] carNameArray = convertString.splitString(carString);
+        method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
+        method.setAccessible(true);
+        List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
+        method = racingGame.getClass().getDeclaredMethod("moveCountChange", List.class);
+        method.setAccessible(true);
+        //when
+        method.invoke(racingGame, carList);
+
+        for(int i=0; i<carList.size(); i++) {
+            System.out.println(carList.get(i).getName()+": " + carList.get(i).getMoveCount());
+        }
+
+        method = racingGame.getClass().getDeclaredMethod("findWinner", List.class);
+        method.setAccessible(true);
+
+        List<Car> winnerList = (List<Car>)method.invoke(racingGame, carList);
+        org.assertj.core.api.Assertions.assertThat(winnerList.size()).isNotEqualTo(0);
+    }
+
 }

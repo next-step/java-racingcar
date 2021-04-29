@@ -31,6 +31,7 @@ public class RacingGame {
         String carString = input.makeCars();
         String[] carNameArray = convertString.splitString(carString);
         carList = makeCarList(carNameArray);
+        moveCountChange(carList);
     }
 
     private List<Car> makeCarList(String[] carNameArray) {
@@ -51,6 +52,28 @@ public class RacingGame {
         for(int i =0; i < carList.size(); i++) {
             carList.get(i).move(makeRandomNumber());
         }
+    }
+
+    private List<String> findWinner(List<Car> carList){
+        List<String> winnerList = new ArrayList<>();
+        int winnerCount = 0;
+
+        for(int i =0; i < carList.size(); i++) {
+            winnerCount = findWinnerCount(carList.get(i),winnerCount,winnerList);
+        }
+        return winnerList;
+    }
+
+    private int findWinnerCount(Car car,int winnerCount,List<String> winnerList) {
+        if(car.getMoveCount() == winnerCount) {
+            winnerList.add(car.getName());
+        }
+        if(car.getMoveCount() > winnerCount) {
+            winnerList.clear();
+            winnerCount = car.getMoveCount();
+            winnerList.add(car.getName());
+        }
+        return winnerCount;
     }
 
     public static void main(String[] args) {
