@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -22,6 +24,13 @@ public class Main {
 
         nonTestRacingCar.startRacing(count, carNameArr);
 
+        List<String> winnerList = new ArrayList<String>();
 
+        winnerList = nonTestRacingCar.selectWinner(carNameArr);
+
+        String winner = nonTestRacingCar.removeRegex(winnerList);
+
+        System.out.println("최종 우승자: " + winner);
     }
 }
+
