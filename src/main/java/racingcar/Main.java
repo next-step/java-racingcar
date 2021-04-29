@@ -17,5 +17,9 @@ public class Main {
 
         racingCar.nameCheck(carName);
 
+        String[] carNameArr = racingCar.carStringtoArray(carName);
+
+
+
     }
 }

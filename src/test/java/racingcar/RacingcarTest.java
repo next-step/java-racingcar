@@ -22,4 +22,13 @@ public class RacingcarTest {
         });
     }
 
+    @Test
+    void carStringtoArrayTest() {
+        String carName = "gyubin,sangkoo,kyeonghwan";
+        String[] carNameArr = racingCar.carStringtoArray(carName);
+        assertThat(carNameArr[0]).isEqualTo("gyubin : ");
+        assertThat(carNameArr[1]).isEqualTo("sangkoo : ");
+        assertThat(carNameArr[2]).isEqualTo("kyeonghwan : ");
+    }
+
 }
