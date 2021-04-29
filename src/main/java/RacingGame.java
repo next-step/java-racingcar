@@ -30,7 +30,7 @@ public class RacingGame {
     ArrayList<Map<String, Object>> racingGoing(ArrayList<Map<String, Object>> carList) {
         for (int i = 0; i < carList.size(); i++) {
             int random = randomNumber();
-            if (random > 4) {
+            if (random >= 4) {
                 carList.get(i).put("goStep", Integer.parseInt(carList.get(i).get("goStep").toString()) + 1);
             }
             checkPrint(carList.get(i));
