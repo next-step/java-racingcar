@@ -29,9 +29,18 @@ public class RacingGame {
 
         output.start();
         String carString = input.makeCars();
+        output.count();
+        int count = input.count();
         String[] carNameArray = convertString.splitString(carString);
         carList = makeCarList(carNameArray);
-        moveCountChange(carList);
+        repeatMoveCount(count, carList);
+
+    }
+
+    private void repeatMoveCount(int count, List<Car> carList) {
+        for(int i=0; i<count; i++) {
+            moveCountChange(carList);
+        }
     }
 
     private List<Car> makeCarList(String[] carNameArray) {

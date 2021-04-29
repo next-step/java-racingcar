@@ -8,8 +8,8 @@ public class Input {
         return scanner.nextLine();
     }
 
-    public String count() {
+    public int count() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        return scanner.nextInt();
     }
 }
