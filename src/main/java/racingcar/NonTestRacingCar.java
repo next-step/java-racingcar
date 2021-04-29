@@ -15,4 +15,16 @@ public class NonTestRacingCar {
         return number;
     }
 
+    public void startRacing(int count, String[] carNameArr) {
+        for(int i = 0; i < count; i++){
+            for (int j = 0; j < carNameArr.length; j++) {
+
+                int number = createRandomNumber();
+                carNameArr[j] += racingCar.moveOrNot(number);
+                System.out.println(carNameArr[j]);
+            }
+            System.out.println();
+        }
+    }
+
 }
