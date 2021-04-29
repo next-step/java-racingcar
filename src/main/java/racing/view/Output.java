@@ -1,5 +1,9 @@
 package racing.view;
 
+import racing.Car;
+
+import java.util.List;
+
 public class Output {
     private static final String START_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분.";
     private static final String COUNT_MESSAGE = "시도할 횟수는 몇회인가요?";
@@ -15,10 +19,28 @@ public class Output {
     }
 
     public void result() {
-        System.out.println(RESULT_MESSAGE);
+        System.out.println("\n"+RESULT_MESSAGE);
     }
 
-    public void win() {
-        System.out.println(WIN_MESSAGE);
+    public void win(List<String> winnerList) {
+        System.out.print("\n"+WIN_MESSAGE);
+        for (int i = 0; i < winnerList.size()-1; i++) {
+            System.out.print(winnerList.get(i)+", ");
+        }
+        System.out.println(winnerList.get(winnerList.size()-1));
+    }
+
+    public void nowDistance(List<Car> carList) {
+        System.out.println();
+        for (int i = 0; i < carList.size(); i++) {
+            System.out.print(carList.get(i).getName()+" : ");
+            printDistance(carList.get(i).getMoveCount());
+            System.out.println();
+        }
+    }
+    private void printDistance(int count) {
+        for(int j = 0; j < count; j++){
+            System.out.print("-");
+        }
     }
 }

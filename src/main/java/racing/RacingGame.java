@@ -31,15 +31,19 @@ public class RacingGame {
         String carString = input.makeCars();
         output.count();
         int count = input.count();
+        output.result();
         String[] carNameArray = convertString.splitString(carString);
         carList = makeCarList(carNameArray);
         repeatMoveCount(count, carList);
 
+        output.win(findWinner(carList));
     }
 
     private void repeatMoveCount(int count, List<Car> carList) {
+        Output output = new Output();
         for(int i=0; i<count; i++) {
             moveCountChange(carList);
+            output.nowDistance(carList);
         }
     }
 
