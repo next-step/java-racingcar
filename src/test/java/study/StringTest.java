@@ -45,11 +45,7 @@ public class StringTest {
                 System.out.println(abc.charAt(i));
             }
             System.out.println(abc.charAt(1));
-
-//            throw new Exception("boom!!!!");
         }).isInstanceOf(IndexOutOfBoundsException.class);
-//            .hasMessageContaining("Index: 2, Size: 2")
-//            .hasMessageMatching("Index: \\d+, Size: \\d+");
 
     }
 
