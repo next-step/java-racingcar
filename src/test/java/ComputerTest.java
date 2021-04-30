@@ -1,15 +1,15 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ComputerTest {
 
     Computer computer;
+    Car car = Setup.car;
 
     @Test
     void remoteControl() {
         computer = new Computer();
-        Car car = new Car("AAA");
         computer.remoteControl(car);
         assertTrue(0 == car.distance || car.distance == 1);
     }

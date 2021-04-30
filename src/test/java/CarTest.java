@@ -6,12 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName(value = "자동차 테스트")
 public class CarTest {
+
     private Car car;
 
     @BeforeEach
     @DisplayName(value = "이름 조건 여부에 따라 자동차 생성이 가능하다")
     void setup() {
-        car = new Car("바나나차차");
+        car = Setup.car;
     }
 
     @Test
@@ -23,6 +24,6 @@ public class CarTest {
     @Test
     void stop() {
         car.stop();
-        assertTrue(car.distance == 0);
+        assertTrue(car.distance == 1);
     }
 }
