@@ -1,34 +1,30 @@
 package racingcar;
 
-import java.util.Random;
-
-//enum Order {
-//    GO("-"),
-//    STOP("");
-//
-//    private String car_state;
-//
-//    Order(String car_state) {
-//
-//        this.car_state = car_state;
-//    }
-//}
-
 public class RacingCar {
 
-    public void nameCheck(String input) {
+    public void nameCheck(String carName) {
+        String carNameArr[] = carName.split(",");
 
-        if (input.length() > 5) {
-
-            throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
+        for (int i = 0; i < carNameArr.length; i++) {
+            if (carNameArr[i].length() > 5) {
+                throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
+            }
         }
     }
 
-    public String condition() {
+    public String[] unionNameColon(String carName) {
+        String[] carNameArr = carName.split(",");
 
-        Random random = new Random();
+        for (int i = 0; i < carNameArr.length; i++) {
+            carNameArr[i] += " : ";
+        }
 
-        if (random.nextInt(9) >= 4) {
+        return carNameArr;
+    }
+
+    public String condition(int number) {
+
+        if (number >= 4) {
 
             return "-";
         }
