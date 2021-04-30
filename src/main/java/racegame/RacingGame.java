@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RacingGame {
-
     ArrayList<Map<String, Object>> racingSetting(String[] nameList) {
         ArrayList<Map<String, Object>> racingCarList = new ArrayList<>();
         for (int i = 0; i < nameList.length; i++) {
@@ -20,26 +19,21 @@ public class RacingGame {
         return racingCarList;
     }
 
-
     int randomNumber() {
         int randomNummer = (int) (Math.random() * 10);
         return randomNummer;
     }
 
-
     ArrayList<Map<String, Object>> racingGoing(ArrayList<Map<String, Object>> carList) {
-        for (int i = 0; i < carList.size(); i++) {
+        for (Map<String , Object> car: carList) {
             int random = randomNumber();
             if (random >= 4) {
-                carList.get(i).put("goStep", Integer.parseInt(carList.get(i).get("goStep").toString()) + 1);
+                car.put("goStep", Integer.parseInt(car.get("goStep").toString()) + 1);
             }
-            checkPrint(carList.get(i));
+            checkPrint(car);
         }
-
         return carList;
-
     }
-
 
     void checkPrint(Map<String, Object> car) {
         int goStep = Integer.parseInt(car.get("goStep").toString());

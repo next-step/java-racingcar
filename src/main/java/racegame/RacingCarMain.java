@@ -26,14 +26,34 @@ public class RacingCarMain {
         String success = "승자는 :";
 
         int score = (int) Collections.max(list);
-        for(int i=0; i<carNameListInfo.size(); i++ ){
+        for (int i = 0; i < carNameListInfo.size(); i++) {
             Map oneMap = carNameListInfo.get(i);
             if (Integer.parseInt(oneMap.get("goStep").toString()) == score) {
                 success += oneMap.get("carName") + ",";
             }
         }
-        success= success.substring( 0, success.lastIndexOf(","));
+        success = success.substring(0, success.lastIndexOf(","));
         System.out.println(success);
 
+    }
+
+    public void reviewReflectMain() {
+        String[] carNameList = new RacingName().nameInput();
+        ArrayList carList = new ArrayList();
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        Scanner scan = new Scanner(System.in);
+        int count = scan.nextInt();
+
+//        for (int i = 0; i < carNameList.length; i++) {
+        for (String carname : carNameList) {
+            RacingCar car = new RacingCar(carname, 0);
+            carList.add(car);
+        }
+        for (int i = 0; i < count; i++) {
+            for(Object car : carList){
+                new RacingGameRenewal(car);
+            }
+        }
     }
 }
