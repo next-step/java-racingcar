@@ -9,18 +9,19 @@ public class CarTest {
     private Car car;
 
     @BeforeEach
-    void setup(){
-        car = new Car();
+    @DisplayName(value = "이름 조건 여부에 따라 자동차 생성이 가능하다")
+    void setup() {
+        car = new Car("바나나차차");
     }
 
     @Test
-    void run(){
+    void run() {
         car.run();
         assertTrue(car.distance == 1);
     }
 
     @Test
-    void stop(){
+    void stop() {
         car.stop();
         assertTrue(car.distance == 0);
     }
