@@ -45,7 +45,7 @@ public class CarRacingUtil {
 
         if (carNames == null || carNames.trim().isEmpty() == true || splitDelimiter == null
                 || splitDelimiter.trim().isEmpty() == true || nameLengthLimit == null || nameLengthLimit == 0 ||
-                carNames.equals(splitDelimiter) == false) {
+                carNames.contains(splitDelimiter) == false) {
             return null;
         }
 
@@ -54,7 +54,7 @@ public class CarRacingUtil {
         for (int i = 0; i < carNameList.length; i++) {
             String carName = carNameList[i];
 
-            if (carName.length() >= nameLengthLimit) {
+            if (carName.length() > nameLengthLimit) {
                 return 1;
             } else {
                 for (int j = 0; j < carNameList.length; j++) {
