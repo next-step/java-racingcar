@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 class CarRacingUtilTest {
+    /*
     @DisplayName("getRandomNumber 함수가 지정한 randomBound 내에 값이 잘 추출이 되는지 확인")
     @Test
     void getRandomNumberTest(){
@@ -41,7 +42,7 @@ class CarRacingUtilTest {
         assertThat(carRacingUtil.checkCarNameValidity(carNames, splitDelimiter, nameLengthLimit)).isNotNull().
                 isEqualTo(2);
     }
-    
+    */
     @DisplayName("")
     @Test
     void getCarNameList() {

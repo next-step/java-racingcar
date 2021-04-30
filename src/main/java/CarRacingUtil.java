@@ -10,7 +10,7 @@ public class CarRacingUtil {
       - 기능 설명
         - randomBound 받아 해당 자리수
     */
-    public Integer getRandomNumber(Integer randomBound) {
+    private Integer getRandomNumber(Integer randomBound) {
         Integer randNumber = null;
         Random randomNum = new Random();
 
@@ -39,7 +39,7 @@ public class CarRacingUtil {
           자동차 이름의 길이가 nameLengthLimit 이상이 되는 지, 동일한 자동차
           이름이 있는 지에 대한 유효성 체크
      */
-    public Integer checkCarNameValidity(String carNames, String splitDelimiter, Integer nameLengthLimit) {
+    private Integer checkCarNameValidity(String carNames, String splitDelimiter, Integer nameLengthLimit) {
         Integer carValidityToInt = null;
         String[] carNameList = null;
 
