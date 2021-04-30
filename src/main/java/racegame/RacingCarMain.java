@@ -39,21 +39,35 @@ public class RacingCarMain {
 
     public void reviewReflectMain() {
         String[] carNameList = new RacingName().nameInput();
-        ArrayList carList = new ArrayList();
+        List<RacingCar> carList = new ArrayList();
+        List<Integer> scoreList = new ArrayList<>();
+        int max=0;
+        String result = "승자는";
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         Scanner scan = new Scanner(System.in);
         int count = scan.nextInt();
 
-//        for (int i = 0; i < carNameList.length; i++) {
         for (String carname : carNameList) {
             RacingCar car = new RacingCar(carname, 0);
             carList.add(car);
         }
+
         for (int i = 0; i < count; i++) {
-            for(Object car : carList){
-                new RacingGameRenewal(car);
+            for(RacingCar car : carList){
+                RacingGameRenewal gameOne = new RacingGameRenewal();
+                scoreList.add(gameOne.RacingGame(car));
+            }
+            System.out.println("");
+        }
+        max= Collections.max(scoreList);
+
+        for(RacingCar car : carList){
+            if(car.getGoStep() == max){
+                result += car.getCarName() +",";
             }
         }
+        result = result.substring(0, result.lastIndexOf(","));
+        System.out.println(result);
     }
 }
