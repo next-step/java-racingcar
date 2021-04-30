@@ -1,4 +1,4 @@
-public class Car implements Comparable<Car> {
+public class Car {
     private final String name;
     public int distance;
 
