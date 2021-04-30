@@ -1,76 +1,56 @@
-package study;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+package calculate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class Calculate {
 
-    @ParameterizedTest
-    @CsvSource(value = {"2+3:5 ", "2+8:10"}, delimiter = ':')
-    void add(String cal, int result) {
-        int split_num1, split_num2, sum;
+    public int add(String cal, int resultCheckNumber) {
+        int split_num1, split_num2, result;
         String[] split = cal.split("[+]");
         split_num1 = Integer.parseInt(split[0]);
         split_num2 = Integer.parseInt(split[1]);
-        sum = split_num1 + split_num2;
-        System.out.println(split_num1 + "+" + split_num2 + "=" + sum);
-        assertThat(sum).isEqualTo(result);
+        result = split_num1 + split_num2;
+        System.out.println(split_num1 + "+" + split_num2 + "=" + result);
+
+        return result;
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"8-2:6 ", "150-3:147"}, delimiter = ':')
-    void sub(String cal, int result) {
-        int split_num1, split_num2, sum;
+    public int sub(String cal, int resultCheckNumber) {
+        int split_num1, split_num2, result;
         String[] split = cal.split("[-]");
         split_num1 = Integer.parseInt(split[0]);
         split_num2 = Integer.parseInt(split[1]);
-        sum = split_num1 - split_num2;
-        System.out.println(split_num1 + "-" + split_num2 + "=" + sum);
-        assertThat(sum).isEqualTo(result);
+        result = split_num1 - split_num2;
+        System.out.println(split_num1 + "-" + split_num2 + "=" + result);
 
+        return result;
     }
-
-    @ParameterizedTest
-    @CsvSource(value = {"8/2:4 ", "150/3:50"}, delimiter = ':')
-    void dvide(String cal, int result) {
-        int split_num1, split_num2, sum;
+    public int dvide(String cal, int resultCheckNumber) {
+        int split_num1, split_num2, result;
         String[] split = cal.split("[/]");
         split_num1 = Integer.parseInt(split[0]);
         split_num2 = Integer.parseInt(split[1]);
-        sum = split_num1 / split_num2;
-        System.out.println(split_num1 + "/" + split_num2 + "=" + sum);
-        assertThat(sum).isEqualTo(result);
-    }
+        result = split_num1 / split_num2;
+        System.out.println(split_num1 + "/" + split_num2 + "=" + result);
 
-    @ParameterizedTest
-    @CsvSource(value = {"8*2:16 ", "150*3:450"}, delimiter = ':')
-    void multyple(String cal, int result) {
-        int split_num1, split_num2, sum;
+        return result;
+    }
+    public int dvidmultyplee(String cal, int resultCheckNumber) {
+        int split_num1, split_num2, result;
         String[] split = cal.split("[*]");
         split_num1 = Integer.parseInt(split[0]);
         split_num2 = Integer.parseInt(split[1]);
-        sum = split_num1 / split_num2;
-        System.out.println(split_num1 + "*" + split_num2 + "=" + sum);
-        assertThat(sum).isEqualTo(result);
+        result = split_num1 / split_num2;
+        System.out.println(split_num1 + "*" + split_num2 + "=" + result);
+
+        return result;
     }
 
-    @CsvSource(value = {"2 + 3 * 4 / 2 :10 "}, delimiter = ':')
-    void testCheck(String cal , int result){
-        String[] tag = { "+" , "-" , "/" , "*" };
-//        String[] num = cal.split();
-    }
-    @Test
-    void cal() {
+    void requestCal(String calString, int resultCheckNumber ) {
         AtomicInteger i = new AtomicInteger(1);
-        String str = "2 + 3 * 4 / 2";
+        String str = calString;
 
         String reg = "[+*/-]";
         String reg_num = "[0-9]+";

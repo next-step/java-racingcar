@@ -1,11 +1,11 @@
-
+package racegame;
 
 import java.util.*;
 
 public class RacingCarMain {
 
 
-    public static void main(String[] args) {
+    public void racemain() {
         String[] carNameList = new RacingName().nameInput();
 
         Scanner scan = new Scanner(System.in);

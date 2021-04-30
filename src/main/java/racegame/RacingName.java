@@ -1,4 +1,4 @@
-
+package racegame;
 
 import java.util.Scanner;
 
