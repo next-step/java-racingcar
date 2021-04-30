@@ -28,5 +28,7 @@ public class Main {
         List<String> winnerList = new ArrayList<String>();
         winnerList = racingCar.selectWinner(carNameArr);
 
+        String winner = nonTestRacingCar.removeRegex(winnerList);
+        System.out.println("최종 우승자: " + winner);
     }
 }

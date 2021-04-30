@@ -27,4 +27,15 @@ public class NonTestRacingCar {
         }
     }
 
+    public String removeRegex(List<String> winnerList) {
+        String winner = winnerList.toString()
+                .replaceAll("\\]", "")
+                .replaceAll("\\[", "")
+                .replaceAll(":", "")
+                .replaceAll("-", "")
+                .replaceAll("  ,", ",");
+
+        return winner;
+    }
+
 }
