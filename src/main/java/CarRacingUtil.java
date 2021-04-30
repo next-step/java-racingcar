@@ -87,7 +87,7 @@ public class CarRacingUtil {
 
         nameValidityInt = checkCarNameValidity(carNames, splitDelimiter, nameLengthLimit);
 
-        if (nameValidityInt != null && nameValidityInt != 3) {
+        if (nameValidityInt != null && nameValidityInt == 3) {
             String[] tempCarNames = null;
 
             carNameList = new ArrayList<>();

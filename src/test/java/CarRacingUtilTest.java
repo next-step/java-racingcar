@@ -43,9 +43,17 @@ class CarRacingUtilTest {
                 isEqualTo(2);
     }
     */
-    @DisplayName("")
+    @DisplayName("getCarNameList 함수의 정상작동 확인")
     @Test
-    void getCarNameList() {
+    void getCarNameListTest() {
+        CarRacingUtil carRacingUtil = new CarRacingUtil();
+        String carNames = "phone,david,tom";
+        String splitDelimiter = ",";
+        Integer nameLengthLimit = 5;
+
+        assertThat(carRacingUtil.getCarNameList(carNames, splitDelimiter, nameLengthLimit)).isNotNull().
+                containsExactly("phone","david","tom");
+        
     }
 
     @Test
