@@ -158,6 +158,7 @@ public class CarRacingUtil {
             return null;
         }
 
+        winnerNameList = new ArrayList<>();
         carNameKeys = carRacedScope.keySet().iterator();
         diffScope = 0;
 
