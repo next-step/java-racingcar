@@ -23,7 +23,7 @@ public class CarTest {
 
     @Test
     void matchName(){
-        assertTrue(car.matchName(Setup.carName));
+        assertTrue(car.matchName(CAR_NAME));
     }
 
     @Test

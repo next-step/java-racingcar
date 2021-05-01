@@ -70,7 +70,4 @@ class CarsTest {
         assertTrue(winningCar.contains(car1));
     }
 
-
-
-
 }

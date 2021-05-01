@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -8,6 +6,10 @@ public class Cars {
 
     public Cars() {
         cars = new ArrayList<>();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void addCar(Car car) {
@@ -19,8 +21,14 @@ public class Cars {
     }
 
     //todo 요구조건에 따라 stream 사용 할 수 없어 수정필요
+    //todo List를 그대로 반환해도 되는걸까?
     public List<Car> getWinningCar(int distance) {
         return cars.stream().filter(car -> car.matchDistance(distance)).collect(Collectors.toList());
+    }
+
+    //todo 요구조건에 따라 stream 사용 할 수 없어 수정필요
+    public List<String> getCarsNames(List<Car> cars) {
+        return cars.stream().map(car -> car.getName()).collect(Collectors.toList());
     }
 
     //todo 요구조건에 따라 stream 사용 할 수 없어 수정필요
@@ -28,8 +36,6 @@ public class Cars {
         return cars.stream().filter(car -> car.matchName(name)).findFirst().orElseThrow(NoSuchElementException::new);
     }
 
-    //todo ","쉼표로 나눈 이름으로 Car를 생성하고 Cars에 add한다
-    //todo 이름이 조건에(5자 이하의 이름) 맞지 않을 때, 해당 이름을 제외하고 자동차를 생성한다.
     public void setCarsByNames(List<String> names) {
         for (String name : names) {
             Car car = Car.createCar(name);

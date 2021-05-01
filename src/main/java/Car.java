@@ -7,6 +7,14 @@ public class Car {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
     public static Car createCar(String name){
         //todo 이름이 조건에 안맞을때 해당 이름을 제외한다.
         if (!ValidationUtils.isName5CharsOrLess(name)) {
