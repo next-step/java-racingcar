@@ -16,4 +16,9 @@ public class RacingCar {
 	public int getTotalScore() {
 		return totalScore.getScore();
 	}
+
+	public int move(int number) {
+		totalScore.add(number);
+		return getTotalScore();
+	}
 }

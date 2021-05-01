@@ -36,7 +36,19 @@ public class RacingCarTest {
 			.isThrownBy(() -> new RacingCar(noName));
 	}
 
+	@DisplayName("자동차 이동")
+	@Test
 	public void testCarMove() {
-		//음 이건 뭘 테스트해야하지..?
+		//given
+		int go = 1;
+		int stop = 0;
+
+		//when
+		RacingCar car = new RacingCar("부릉이");
+
+		//then
+		Assertions.assertThat(car.move(go)).isEqualTo(go);
+		Assertions.assertThat(car.move(stop)).isEqualTo(go + stop);
+		Assertions.assertThat(car.move(go)).isEqualTo(go + stop + go);
 	}
 }
