@@ -171,6 +171,7 @@ public class CarRacingUtil {
             if (diffScope < tempRacedScope) {
                 winnerNameList = new ArrayList<>();
                 winnerNameList.add(carNameKey);
+                diffScope = tempRacedScope;
             } else if (diffScope == tempRacedScope) {
                 winnerNameList.add(carNameKey);
             }

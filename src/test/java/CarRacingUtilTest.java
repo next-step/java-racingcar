@@ -102,11 +102,13 @@ class CarRacingUtilTest {
             carRacedScope.put(carName, 0);
         }
 
-        carRacedScope = carRacingUtil.runCarRacing(carRacedScope, forwardLimit, randomBound);
+        carRacedScope.put("phone", 5);
+        carRacedScope.put("david", 5);
+        carRacedScope.put("tom", 3);
         winnerList = carRacingUtil.getRacingWinner(carRacedScope);
 
 //      getRacingWinner 결과 값의 유효성 체크
-        assertThat(carRacedScope).isNotNull();
-        assertThat(carRacedScope.size()).isBetween(1,3);
+        assertThat(winnerList.size()).isBetween(1,3);
+        assertThat(winnerList).isNotNull().containsExactly("phone","david");
     }
 }
