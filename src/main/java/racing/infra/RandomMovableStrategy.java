@@ -17,9 +17,6 @@ public class RandomMovableStrategy implements MovableStrategy {
 
     @Override
     public boolean movable() {
-        if(randomNumberGenerator.generate() >= MOVE_NUMBER) {
-            return true;
-        }
-        return false;
+        return randomNumberGenerator.generate() >= MOVE_NUMBER;
     }
 }
