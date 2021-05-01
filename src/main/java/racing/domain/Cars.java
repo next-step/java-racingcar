@@ -13,24 +13,24 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(String[] carNames) {
-        if(carNames.length < MINIMUM_NUMBER) {
+    public static Cars of(String[] carNames, MovableStrategy movableStrategy) {
+        if (carNames.length < MINIMUM_NUMBER) {
             throw new IllegalArgumentException("최소 1대 이상 필요합니다.");
         }
-        return new Cars(mapCars(carNames));
+        return new Cars(mapCars(carNames, movableStrategy));
     }
 
-    private static List<Car> mapCars(String[] carNames) {
+    private static List<Car> mapCars(String[] carNames, MovableStrategy movableStrategy) {
         List<Car> cars = new ArrayList<>();
-        for(String carName : carNames) {
-            cars.add(Car.of(carName));
+        for (String carName : carNames) {
+            cars.add(Car.of(carName, movableStrategy));
         }
         return cars;
     }
 
-    public void moveCars(MovableStrategy movableStrategy) {
-        for(Car car : cars){
-            car.move(movableStrategy);
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
         }
     }
 
@@ -38,7 +38,7 @@ public class Cars {
         return cars.size();
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 }
