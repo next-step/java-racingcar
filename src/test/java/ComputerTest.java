@@ -11,13 +11,13 @@ class ComputerTest {
 
     @BeforeEach
     void setup(){
-        computer = new Computer();
+        computer = new Computer(new Cars());
         car = Car.createCar(CAR_NAME);
     }
 
     @Test
-    void remoteControl() {
-        computer.remoteControl(car);
+    void play() {
+        computer.play();
         assertTrue(car.matchDistance(0) || car.matchDistance(1));
     }
 }

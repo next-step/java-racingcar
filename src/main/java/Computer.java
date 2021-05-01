@@ -5,8 +5,17 @@ import java.util.Collections;
 public class Computer {
 
     private final int DRIVING_CONDITION = 4;
+    private final Cars cars;
 
-    public void remoteControl(Car car) {
+    public Computer(Cars cars) {
+        this.cars = cars;
+    }
+
+    public void play() {
+        this.cars.getCars().forEach(car -> remoteControl(car));
+    }
+
+    private void remoteControl(Car car) {
         if (isRun())
             car.run();
         car.stop();
