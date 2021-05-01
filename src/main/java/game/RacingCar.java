@@ -2,16 +2,16 @@ package game;
 
 public class RacingCar {
 
-	private final String carName;
+	private final CarName carName;
 
 	private final int displacement;
 
 	public RacingCar(String carName, int displacement) {
-		this.carName = carName;
+		this.carName = new CarName(carName);
 		this.displacement = displacement;
 	}
 
-	public String getCarName() {
+	public CarName getCarName() {
 		return carName;
 	}
 
