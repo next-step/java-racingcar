@@ -8,22 +8,33 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CarTest {
 
     private Car car;
+    private final String CAR_NAME = "바나나차";
 
     @BeforeEach
     @DisplayName(value = "이름 조건 여부에 따라 자동차 생성이 가능하다")
     void setup() {
-        car = Setup.car;
+        car = Car.createCar(CAR_NAME);
+    }
+
+    @Test
+    void matchDistance(){
+        assertTrue(car.matchDistance(0));
+    }
+
+    @Test
+    void matchName(){
+        assertTrue(car.matchName(Setup.carName));
     }
 
     @Test
     void run() {
         car.run();
-        assertTrue(car.distance == 1);
+        assertTrue(car.matchDistance(1));
     }
 
     @Test
     void stop() {
         car.stop();
-        assertTrue(car.distance == 1);
+        assertTrue(car.matchDistance(0));
     }
 }
