@@ -1,4 +1,4 @@
-step1. 단위테스트
+step1. String 클래스에 대한 학습 테스트 
 ========================
 String 클래스에 대한 학습 테스트 
 ----------------------
@@ -66,10 +66,11 @@ public class StringTest {
     void test3() {
         final String testvalue4 = "abc";
         assertThatThrownBy(() -> {
-                testvalue4.charAt(5);
+                testvalue4.charAt(4);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
 ```
 - 실행결과
+
 ![exception](../../img/exception.PNG)
