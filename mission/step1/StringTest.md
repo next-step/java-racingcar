@@ -26,6 +26,7 @@ String 클래스에 대한 학습 테스트
 assertThatThrownBy(() -> {
     기능 구현;}).
     isInstanceO({에러명}.class);
+}
 ```
 - JUnit의 @DisplayName을 활용해 테스트 메소드의 의도를 드러낸다.
 
