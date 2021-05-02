@@ -6,7 +6,6 @@ import calculator.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 public class Calculator {
@@ -74,17 +73,17 @@ public class Calculator {
     }
 
     private double calculate(double number, String splitWord, double result) {
-        Calculate calculate = new Calculate();
+        CalculatorFunction calculatorFunction = new CalculatorFunction();
         Exception exception = new Exception();
 
         if (splitWord.equals("+")) {
-            result = calculate.addition(result, number);
+            result = calculatorFunction.addNumber(result, number);
         } else if (splitWord.equals("-")) {
-            result = calculate.subtraction(result, number);
+            result = calculatorFunction.subtractNumber(result, number);
         } else if (splitWord.equals("*")) {
-            result = calculate.multiplication(result, number);
+            result = calculatorFunction.multipleNumber(result, number);
         } else if (splitWord.equals("/")) {
-            result = calculate.division(result, number);
+            result = calculatorFunction.divideNumber(result, number);
         } else if (Pattern.matches("[^0-9]", splitWord)) {
             exception.notFourRuleException();
         }
