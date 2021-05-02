@@ -13,5 +13,5 @@
 
 [A]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/StringTest.md
 [B]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/StringTest.java
-[A]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/SetTest.md
-[B]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/SetTest.java
+[C]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/SetTest.md
+[D]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/SetTest.java
