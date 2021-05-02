@@ -12,12 +12,20 @@ public class CalTest {
     void caltests(String input){
         System.out.println(input);
         Cal ca = new Cal();
+
+
         String [] splitresult = null;
+        splitresult = ca.splitWord(input); //쪼갠 데이터 string 에 저장
 
-        splitresult = ca.splitWord(input);
         String [] sachicresult = null;
+        sachicresult = ca.calsachicInput(splitresult); //쪼갠것중에 사칙연산자 저장
 
-        sachicresult = ca.calsachicInput(splitresult);
+        String [] numberresult = null;
+        numberresult =  ca.extraction(splitresult); //쪼갠것 중에 숫자
+
+        String result = null;
+        result = ca.docal(sachicresult,numberresult);
+        System.out.println(result);
 
     }
 }
