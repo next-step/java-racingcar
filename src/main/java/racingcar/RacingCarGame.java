@@ -3,7 +3,7 @@ package racingcar;
 import java.util.List;
 import java.util.Map;
 
-import racingcar.wrapper.AllRoundScore;
+import racingcar.wrapper.ScoreBoard;
 import racingcar.wrapper.ParticipatingCars;
 import racingcar.wrapper.RoundCount;
 import racingcar.wrapper.Winners;
@@ -13,13 +13,13 @@ public class RacingCarGame {
 	private static final int DEFAULT_RANDOM_MAX = 10;
 	private ParticipatingCars participatingCars;
 	private RoundCount roundCount;
-	private AllRoundScore allRoundScore;
+	private ScoreBoard scoreBoard;
 	private Winners winners;
 
 	public RacingCarGame(String carNames, int roundCount) {
 		this.participatingCars = new ParticipatingCars(carNames);
 		this.roundCount = new RoundCount(roundCount);
-		this.allRoundScore = new AllRoundScore();
+		this.scoreBoard = new ScoreBoard();
 		this.winners = new Winners();
 		race();
 	}
@@ -37,7 +37,7 @@ public class RacingCarGame {
 	}
 
 	public List<Map<String, Integer>> getAllRoundScore() {
-		return allRoundScore.get();
+		return scoreBoard.get();
 	}
 
 	public List<String> getWinners() {
@@ -68,7 +68,7 @@ public class RacingCarGame {
 	}
 
 	private void recordCurrentRoundScore() {
-		allRoundScore.recordRoundScore(participatingCars);
+		scoreBoard.recordRoundScore(participatingCars);
 	}
 
 	private void raceOneRound() {

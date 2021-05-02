@@ -7,14 +7,14 @@ import java.util.Map;
 
 import racingcar.RacingCar;
 
-public class AllRoundScore {
-	private List<Map<String, Integer>> roundScore = new ArrayList<>();
+public class ScoreBoard {
+	private List<Map<String, Integer>> allCarsScoreByEachRound = new ArrayList<>();
 
-	public AllRoundScore() {
+	public ScoreBoard() {
 	}
 
 	public List<Map<String, Integer>> get() {
-		return roundScore;
+		return allCarsScoreByEachRound;
 	}
 
 	public void recordRoundScore(ParticipatingCars cars) {
@@ -22,6 +22,6 @@ public class AllRoundScore {
 		for (RacingCar car : cars.get()) {
 			scoreOfCars.put(car.getName(), car.getTotalScore());
 		}
-		roundScore.add(scoreOfCars);
+		allCarsScoreByEachRound.add(scoreOfCars);
 	}
 }
