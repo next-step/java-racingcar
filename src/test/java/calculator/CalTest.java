@@ -18,7 +18,6 @@ public class CalTest {
         String [] sachicresult = null;
 
         sachicresult = ca.calsachicInput(splitresult);
-        
 
     }
 }
