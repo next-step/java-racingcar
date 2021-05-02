@@ -40,6 +40,7 @@ public class RacingCarTest {
 	@Test
 	public void testCarMove() {
 		//given
+		int baseValue = 3;
 		int go = 1;
 		int stop = 0;
 
@@ -47,8 +48,8 @@ public class RacingCarTest {
 		RacingCar car = new RacingCar("부릉이");
 
 		//then
-		Assertions.assertThat(car.move(go)).isEqualTo(go);
-		Assertions.assertThat(car.move(stop)).isEqualTo(go + stop);
-		Assertions.assertThat(car.move(go)).isEqualTo(go + stop + go);
+		Assertions.assertThat(car.move(baseValue + 1)).isEqualTo(go);
+		Assertions.assertThat(car.move(baseValue)).isEqualTo(go + stop);
+		Assertions.assertThat(car.move(baseValue + 1)).isEqualTo(go + stop + go);
 	}
 }
