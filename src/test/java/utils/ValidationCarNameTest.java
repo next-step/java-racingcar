@@ -1,9 +1,9 @@
 package utils;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -27,7 +27,6 @@ public class ValidationCarNameTest {
     @DisplayName("쉼표(,)를 기준으로 차 이름이 나오나?")
     void split_car_name_based_on_commas() {
         String[] result = ValidationCarName.splitBasedOnCommas("santa,sona,corna");
-        Assertions.assertThat(result)
-                .containsExactly("santa", "sona", "corna");
+        assertThat(result).containsExactly("santa", "sona", "corna");
     }
 }
