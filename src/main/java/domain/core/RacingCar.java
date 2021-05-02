@@ -2,14 +2,23 @@ package domain.core;
 
 import java.util.List;
 
-public class Cars {
+/**
+ * 일급 컬렉션
+ */
+public class RacingCar {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public RacingCar(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void playAll() {
+    public void playAll(int move) {
+        for (int i = 0; i < move; i++) {
+            printCar();
+        }
+    }
+
+    private void printCar() {
         for (Car car : cars) {
             car.play();
             System.out.printf("%s: %s%n", car.getName(), car.getGoString());

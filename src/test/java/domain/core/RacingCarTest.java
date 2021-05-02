@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarsTest {
+public class RacingCarTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -27,24 +27,26 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("차 2개 경주 잘 되는지")
+    @DisplayName("입력한 횟수만큼 실제로 경주하는지")
     void two_car_play() {
-        // given
-        Cars cars = new Cars(Arrays.asList(new Car("santa"), new Car("tesla")));
+        //given
+        Car santa = new Car("santa");
+        Car tesla = new Car("tesla");
+        RacingCar racingCar = new RacingCar(Arrays.asList(santa, tesla));
 
-        // when
-        cars.playAll();
+        //when
+        racingCar.playAll(1);
 
-        // then
+        //then
         assertThat(outContent.toString()).isIn(
                 "santa: \n" +
-                        "tesla: \n",
+                        "tesla: \n\n",
                 "santa: -\n" +
-                        "tesla: \n",
+                        "tesla: \n\n",
                 "santa: \n" +
-                        "tesla: -\n",
+                        "tesla: -\n\n",
                 "santa: -\n" +
-                        "tesla: -\n"
+                        "tesla: -\n\n"
         );
     }
 
@@ -58,20 +60,20 @@ public class CarsTest {
         try {
             Field santaGoCount = santa.getClass().getDeclaredField("goCount");
             santaGoCount.setAccessible(true);
-            santaGoCount.setInt(santa, 9);
+            santaGoCount.setInt(santa, 91);
             Field teslaGoCount = tesla.getClass().getDeclaredField("goCount");
             teslaGoCount.setAccessible(true);
-            teslaGoCount.setInt(tesla, 13);
+            teslaGoCount.setInt(tesla, 91);
             Field voltGoCount = volt.getClass().getDeclaredField("goCount");
             voltGoCount.setAccessible(true);
-            voltGoCount.setInt(volt, 14);
+            voltGoCount.setInt(volt, 92);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        Cars cars = new Cars(Arrays.asList(santa, tesla, volt));
+        RacingCar racingCar = new RacingCar(Arrays.asList(santa, tesla, volt));
 
         //when
-        cars.printWinner();
+        racingCar.printWinner();
 
         //then
         assertThat(outContent.toString()).isEqualTo("volt 승리하였습니다.\n");
@@ -87,20 +89,20 @@ public class CarsTest {
         try {
             Field santaGoCount = santa.getClass().getDeclaredField("goCount");
             santaGoCount.setAccessible(true);
-            santaGoCount.setInt(santa, 14);
+            santaGoCount.setInt(santa, 94);
             Field teslaGoCount = tesla.getClass().getDeclaredField("goCount");
             teslaGoCount.setAccessible(true);
-            teslaGoCount.setInt(tesla, 13);
+            teslaGoCount.setInt(tesla, 93);
             Field voltGoCount = volt.getClass().getDeclaredField("goCount");
             voltGoCount.setAccessible(true);
-            voltGoCount.setInt(volt, 14);
+            voltGoCount.setInt(volt, 94);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        Cars cars = new Cars(Arrays.asList(santa, tesla, volt));
+        RacingCar racingCar = new RacingCar(Arrays.asList(santa, tesla, volt));
 
         //when
-        cars.printWinner();
+        racingCar.printWinner();
 
         //then
         assertThat(outContent.toString()).isEqualTo("santa volt 승리하였습니다.\n");
