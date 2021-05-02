@@ -23,9 +23,16 @@ public class RacingCar {
 	}
 
 	public int move(int number) {
-		if (number > DEFAULT_BASE_NUMBER) {
+		if (canGo(number)) {
 			totalScore.add(GO);
 		}
 		return getTotalScore();
+	}
+
+	private boolean canGo(int number) {
+		if (number > DEFAULT_BASE_NUMBER) {
+			return true;
+		}
+		return false;
 	}
 }
