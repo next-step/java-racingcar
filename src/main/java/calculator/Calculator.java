@@ -8,27 +8,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static calculator.Exception.*;
+import static calculator.view.Output.startMessageOutput;
+
 public class Calculator {
 
-    public void calculatorGenerate() {
+    public void inputExpressionAndPrintResult() {
         Calculator calculator = new Calculator();
         Output output = new Output();
 
-        String input = calculator.setMathExpression();
+        String input = calculator.returnEnteredMathExpression();
         List<String> strings = calculator.sliceMathExpression(input);
         output.resultOutput(calculator.makeResult(strings));
     }
 
-    private String setMathExpression() {
-        Output output = new Output();
+    private String returnEnteredMathExpression() {
         Input input = new Input();
         Exception exception = new Exception();
 
-        output.startMessageOutput();
+        startMessageOutput();
         String mathExpression = input.mathExpressionInput();
 
         if(mathExpression.trim().isEmpty()){
             exception.inputNullException();
+            throw new IllegalArgumentException(INPUT_NULL);
         }
         if (Pattern.matches("[^0-9+\\-*/]",mathExpression)){
             exception.wrongInputException();
