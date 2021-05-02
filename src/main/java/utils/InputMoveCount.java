@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputMoveCount {
     public static int inMoveCount() {
         Scanner sc = new Scanner(System.in);
-        int moveCount = 0;
+        int moveCount;
         try {
             String moveCountStr = sc.next();
             moveCount = Integer.parseInt(moveCountStr);
