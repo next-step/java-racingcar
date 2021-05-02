@@ -16,9 +16,11 @@ step2.  문자열 사칙 연산 계산기 구현
     2. 사칙연산 기능 구현(덧셈, 뺄셈, 곱셈, 나눗셈)
     3. input 값의 사칙연산 기호 판단하기
     4. 사칙연산 수행하기
+
 - test 클래스
-    4. 입력값이 null이거나 빈 공백 문자일 경우 `IllegalArgumentException throw`
-    5. 사칙연산 기호가 아닌 경우  `IllegalArgumentException throw`
+
+    5. 입력값이 null이거나 빈 공백 문자일 경우 `IllegalArgumentException throw`
+    6. 사칙연산 기호가 아닌 경우  `IllegalArgumentException throw`
 
 <br/>
 
