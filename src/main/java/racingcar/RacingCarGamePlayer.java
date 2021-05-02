@@ -12,6 +12,7 @@ public class RacingCarGamePlayer {
 
 		RacingCarGame game = new RacingCarGame(carNames, roundCount);
 		printAllRoundScore(game);
+		printWinners(game);
 	}
 
 	private static String askCarNames(Scanner scan) {
@@ -48,5 +49,10 @@ public class RacingCarGamePlayer {
 			sb.append("-");
 		}
 		return sb.toString();
+	}
+
+	private static void printWinners(RacingCarGame game) {
+		String winners = String.join(", ", game.getWinners());
+		System.out.print(winners + "가 최종 우승했습니다.");
 	}
 }
