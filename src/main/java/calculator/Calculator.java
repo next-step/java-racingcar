@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static calculator.Exception.*;
-import static calculator.view.Output.startMessageOutput;
+import static calculator.view.Output.outputStartMessage;
 
 public class Calculator {
 
@@ -26,8 +26,8 @@ public class Calculator {
         Input input = new Input();
         Exception exception = new Exception();
 
-        startMessageOutput();
-        String mathExpression = input.mathExpressionInput();
+        outputStartMessage();
+        String mathExpression = input.inputMathExpression();
 
         if(mathExpression.trim().isEmpty()){
             exception.inputNullException();
@@ -44,52 +44,52 @@ public class Calculator {
 
     private List<String> sliceMathExpression(String mathExpression) {
         String[] splitMathExpression = mathExpression.split("");
-//        String[] splitMathExpressionByChar = mathExpression.split("");
-        List<String> mathExpressionList = new ArrayList<String>();
-        String temp = "";
+        List<String> mathExpressionList = new ArrayList<>();
+        String integerOfMathExpression = "";
         for (String s : splitMathExpression) {
             if (Pattern.matches("[^0-9]", s)) {
-                mathExpressionList.add(temp);
+                mathExpressionList.add(integerOfMathExpression);
                 mathExpressionList.add(s);
-                temp = "";
-            } else {
-                temp = temp.concat(s);
+                integerOfMathExpression = "";
+                continue;
             }
+                integerOfMathExpression = integerOfMathExpression.concat(s);
         }
-        if (temp.length() >= 1) {
-            mathExpressionList.add(temp);
+        if (integerOfMathExpression.length() >= 1) {
+            mathExpressionList.add(integerOfMathExpression);
         }
         return mathExpressionList;
     }
 
     private double makeResult(List<String> mathExpressionList) {
         double number;
-        String fourRule;
+        String operator;
         double result = Double.parseDouble(mathExpressionList.get(0));
         int listSize = mathExpressionList.size();
         for (int i = 1; i < listSize; i += 2) {
-            fourRule = mathExpressionList.get(i);
+            operator = mathExpressionList.get(i);
             number = Double.parseDouble(mathExpressionList.get(i + 1));
-            result = calculate(number, fourRule, result);
+            result = calculate(number, operator, result);
         }
         return result;
     }
 
-    private double calculate(double number, String splitWord, double result) {
+    private double calculate(double number, String operator, double result) {
         CalculatorFunction calculatorFunction = new CalculatorFunction();
-        Exception exception = new Exception();
 
-        if (splitWord.equals("+")) {
-            result = calculatorFunction.addNumber(result, number);
-        } else if (splitWord.equals("-")) {
-            result = calculatorFunction.subtractNumber(result, number);
-        } else if (splitWord.equals("*")) {
-            result = calculatorFunction.multipleNumber(result, number);
-        } else if (splitWord.equals("/")) {
-            result = calculatorFunction.divideNumber(result, number);
-        } else if (Pattern.matches("[^0-9]", splitWord)) {
-            exception.notFourRuleException();
+
+        if (operator.equals("+")) {
+            return calculatorFunction.addNumber(result, number);
         }
-        return result;
+        if (operator.equals("-")) {
+           return calculatorFunction.subtractNumber(result, number);
+        }
+        if (operator.equals("*")) {
+            return calculatorFunction.multipleNumber(result, number);
+        }
+        if (operator.equals("/")) {
+            return calculatorFunction.divideNumber(result, number);
+        }
+        throw new IllegalArgumentException(NOT_FOUR_RULE);
     }
 }
