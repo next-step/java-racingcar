@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.wrapper.Name;
+import racingcar.wrapper.Score;
+
 public class RacingCar {
 	private static final int DEFAULT_BASE_NUMBER = 3;
 	private static final int GO = 1;

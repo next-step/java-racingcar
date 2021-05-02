@@ -3,6 +3,10 @@ package racingcar;
 import java.util.List;
 import java.util.Map;
 
+import racingcar.wrapper.AllRoundScore;
+import racingcar.wrapper.ParticipatingCars;
+import racingcar.wrapper.RoundCount;
+import racingcar.wrapper.Winners;
 import utils.RandomUtil;
 
 public class RacingCarGame {

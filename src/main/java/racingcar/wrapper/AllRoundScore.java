@@ -1,9 +1,11 @@
-package racingcar;
+package racingcar.wrapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import racingcar.RacingCar;
 
 public class AllRoundScore {
 	private List<Map<String, Integer>> roundScore = new ArrayList<>();

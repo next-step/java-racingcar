@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.wrapper;
 
 public class RoundCount {
 	private static final int MINIMUM_VALUE = 1;

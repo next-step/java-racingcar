@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.wrapper;
 
 public class Name {
 	private static final int DEFAULT_MAX_LENGTH = 5;

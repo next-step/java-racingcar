@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.wrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import racingcar.RacingCar;
 
 public class Winners {
 	private List<String> winners = new ArrayList<>();

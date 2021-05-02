@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.wrapper;
 
 public class Score {
 	private static final int DEFAULT_SCORE = 0;
