@@ -32,7 +32,7 @@ public class SetTest {
 - Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 `코드 중복 없이` 학습테스트 구현한다.
 - JUnit의 `@ParameterizedTest`를 활용해 중복 코드를 제거해 본다.
     - `@ValueSource(type = {value1, value2, value3, ...})` : 테스트 값을 미리 셋을 만듦
-    - 아래의 함수에 위의 ValueSource를 차례대로 넣어 테스트 실행함
+    - 아래의 함수에 위의 `ValueSource`를 차례대로 넣어 테스트 실행함
     - 아래의 함수에는 어떤 Type의 값을 넣을지를 input변수 지정해줘여함!!
 ```java
 // 힌트
