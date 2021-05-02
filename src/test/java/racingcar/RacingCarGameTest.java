@@ -18,4 +18,19 @@ public class RacingCarGameTest {
 		//then
 		Assertions.assertThat(game.getParticipatingCarNames()).isEqualTo(carNames.split(","));
 	}
+
+	@DisplayName("경주 라운드 횟수와 라운드 점수 현황 일치 확인")
+	@Test
+	public void testRaceRoundScore() {
+		//given
+		String carNames = "부릉이,부릉부릉이,자동차";
+		int roundCount = 5;
+
+		//when
+		RacingCarGame game = new RacingCarGame(carNames, roundCount);
+
+		//then
+		Assertions.assertThat(game.getAllRoundScore().size()).isEqualTo(roundCount);
+		Assertions.assertThat(game.getAllRoundScore().get(0).size()).isEqualTo(carNames.split(",").length);
+	}
 }
