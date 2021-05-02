@@ -41,7 +41,7 @@ public class SetTest {
     // 요구사항3
     // False 값도 테스트 가능
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:true", "5:false",}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:true", "5:false"}, delimiter = ':')
     void containsTest2(int inputValue, boolean expected) {
         assertThat(numbers.contains(inputValue)).isEqualTo(expected);
     }
