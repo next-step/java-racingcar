@@ -1,6 +1,8 @@
 package racingcar;
 
 public class RacingCar {
+	private static final int DEFAULT_BASE_NUMBER = 3;
+	private static final int GO = 1;
 	private Name name;
 	private Score totalScore;
 
@@ -18,7 +20,9 @@ public class RacingCar {
 	}
 
 	public int move(int number) {
-		totalScore.add(number);
+		if (number > DEFAULT_BASE_NUMBER) {
+			totalScore.add(GO);
+		}
 		return getTotalScore();
 	}
 }

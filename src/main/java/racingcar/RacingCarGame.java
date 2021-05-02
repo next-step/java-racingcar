@@ -7,8 +7,6 @@ import utils.RandomUtil;
 
 public class RacingCarGame {
 	private static final int DEFAULT_RANDOM_MAX = 10;
-	private static final int DEFAULT_BASE_NUMBER = 3;
-	private static final int GO = 1;
 	private ParticipatingCars participatingCars;
 	private RoundCount roundCount;
 	private AllRoundScore allRoundScore;
@@ -73,9 +71,7 @@ public class RacingCarGame {
 		List<RacingCar> cars = participatingCars.get();
 		for (int i = 0; i < cars.size(); i++) {
 			int pickNumberLessThenTen = RandomUtil.getRandomInt(DEFAULT_RANDOM_MAX);
-			if (pickNumberLessThenTen > DEFAULT_BASE_NUMBER) {
-				cars.get(i).move(GO);
-			}
+			cars.get(i).move(pickNumberLessThenTen);
 		}
 	}
 }
