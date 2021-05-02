@@ -1,5 +1,6 @@
 package domain.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,7 +9,16 @@ import java.util.List;
 public class RacingCar {
     private final List<Car> cars;
 
-    public RacingCar(List<Car> cars) {
+    public RacingCar(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            Car car = new Car(carName);
+            cars.add(car);
+        }
+        this.cars = cars;
+    }
+
+    public RacingCar(List<Car> cars){
         this.cars = cars;
     }
 

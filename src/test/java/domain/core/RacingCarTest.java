@@ -30,9 +30,7 @@ public class RacingCarTest {
     @DisplayName("입력한 횟수만큼 실제로 경주하는지")
     void two_car_play() {
         //given
-        Car santa = new Car("santa");
-        Car tesla = new Car("tesla");
-        RacingCar racingCar = new RacingCar(Arrays.asList(santa, tesla));
+        RacingCar racingCar = new RacingCar(new String[]{"santa", "tesla"});
 
         //when
         racingCar.playAll(1);

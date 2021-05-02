@@ -1,21 +1,16 @@
 package domain.service;
 
-import domain.core.Car;
 import domain.core.RacingCar;
 import utils.InputCarName;
 import utils.InputMove;
 import utils.exception.CarNameAtLeastOneCommaWhenSplitException;
 import utils.exception.CarNameExceedFiveCharacterException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingCarGame implements Game {
 
     @Override
     public void run() {
-        String[] carNames = inputCarName();
-        RacingCar racingCar = initRacingCar(carNames);
+        RacingCar racingCar = new RacingCar(inputCarName());
         int move = inputMove();
         play(racingCar, move);
     }
@@ -25,15 +20,6 @@ public class RacingCarGame implements Game {
         System.out.println("실행 결과");
         racingCar.playAll(move);
         racingCar.printWinner();
-    }
-
-    private RacingCar initRacingCar(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            Car car = new Car(carName);
-            cars.add(car);
-        }
-        return new RacingCar(cars);
     }
 
     private int inputMove() {
