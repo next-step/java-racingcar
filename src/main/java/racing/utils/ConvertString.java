@@ -2,7 +2,7 @@ package racing.utils;
 
 public class ConvertString {
 
-    public String[] splitString(String input) {
+    public String[] splitStrings(String input) {
         return input.split(",");
     }
 }

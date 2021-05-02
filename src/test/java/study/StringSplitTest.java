@@ -8,18 +8,7 @@ import java.util.PrimitiveIterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StringTest {
-    @Test
-    public void test() throws Exception {
-        //given
-
-        //when
-
-        //then
-        Calculator calculator = new Calculator();
-        assertEquals(5, calculator.add(2, 3));
-    }
-
+public class StringSplitTest {
 
     @Test
     public void 쉼표로_나누기1() throws Exception {
@@ -44,7 +33,7 @@ public class StringTest {
     }
 
     @Test
-    public void 예외발생시키기(){
+    public void 비정상인덱스접근예외발생시키기(){
         final int index = 3;
         final String input = "abc";
 
@@ -55,12 +44,4 @@ public class StringTest {
 
     }
 
-}
-
-
-
-class Calculator {
-    public int add(int a, int b) {
-        return a + b;
-    }
 }

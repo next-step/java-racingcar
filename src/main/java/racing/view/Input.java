@@ -3,13 +3,13 @@ package racing.view;
 import java.util.Scanner;
 
 public class Input {
-    public String makeCars() {
-        Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static String makeCarString() {
         return scanner.nextLine();
     }
 
-    public int count() {
-        Scanner scanner = new Scanner(System.in);
+    public static int makeGameRepeatCount() {
         return scanner.nextInt();
     }
 }

@@ -2,47 +2,42 @@ package racing;
 
 import racing.utils.ConvertString;
 import racing.utils.RandomNumber;
-import racing.view.Input;
-import racing.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static racing.utils.RandomNumber.makeOneRandomNumber;
+import static racing.view.Input.makeGameRepeatCount;
+import static racing.view.Input.makeCarString;
+import static racing.view.Output.*;
+
 public class RacingGame {
 
+    public void gameStart() {
+        ConvertString convertString = new ConvertString();
+
+        printStartMessage();
+        String carString = makeCarString();
+        printCount();
+        int count = makeGameRepeatCount();
+        printResult();
+
+        String[] carNameArray = convertString.splitStrings(carString);
+        List<Car> carList = makeCarList(carNameArray);
+        repeatMoveCountChange(count, carList);
+        printWinMessage(findWinner(carList));
+    }
+
     private List<Car> makeCar(String name, List<Car> carList) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
-        }
         Car car = new Car(name);
-        car.init();
         carList.add(car);
         return carList;
     }
 
-    public void gameStart() {
-        RacingGame racingGame = new RacingGame();
-        Output output = new Output();
-        Input input = new Input();
-        ConvertString convertString = new ConvertString();
-        List<Car> carList;
-
-        output.start();
-        String carString = input.makeCars();
-        output.count();
-        int count = input.count();
-        output.result();
-        String[] carNameArray = convertString.splitString(carString);
-        carList = makeCarList(carNameArray);
-        repeatMoveCount(count, carList);
-        output.win(findWinner(carList));
-    }
-
-    private void repeatMoveCount(int count, List<Car> carList) {
-        Output output = new Output();
+    private void repeatMoveCountChange(int count, List<Car> carList) {
         for (int i = 0; i < count; i++) {
             moveCountChange(carList);
-            output.nowDistance(carList);
+            printNowDistance(carList);
         }
     }
 
@@ -56,8 +51,7 @@ public class RacingGame {
     }
 
     private int makeRandomNumber() {
-        RandomNumber randomNumber = new RandomNumber();
-        return randomNumber.makeRandomNumber();
+        return makeOneRandomNumber();
     }
 
     private void moveCountChange(List<Car> carList) {

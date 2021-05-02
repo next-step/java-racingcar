@@ -12,9 +12,14 @@ public class RandomNumberTest {
 
 
         //then
-        for (int i = 0; i < 10; i++) {
-            int num = randomNumber.makeRandomNumber();
-            Assertions.assertThat(num >= 0 & num < 10).isTrue();
-        }
+
+        int number1 = randomNumber.makeOneRandomNumber();
+        int number2 = randomNumber.makeOneRandomNumber();
+
+        Assertions.assertThat(number1).isBetween(1,9);
+        Assertions.assertThat(number2).isBetween(1,9);
+
+
+
     }
 }

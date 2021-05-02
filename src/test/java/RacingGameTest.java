@@ -20,13 +20,12 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame();
         Method method;
         String carString = "aaa,bbb,ccc";
-        List<Car> carList;
-        String[] carNameArray = convertString.splitString(carString);
+        String[] carNameArray = convertString.splitStrings(carString);
         method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
         method.setAccessible(true);
 
         //when
-        carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
+        List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
 
         //then
         Assertions.assertEquals("aaa", carList.get(0).getName());
@@ -36,14 +35,14 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("자동차 이름중 일부가 5자 초과")
-    public void makeCarTest2() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void makeCarTest2() throws NoSuchMethodException {
         //given
         ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
         Method method;
         String carString = "aaa,bbb,cccccc";
         List<Car> carList;
-        String[] carNameArray = convertString.splitString(carString);
+        String[] carNameArray = convertString.splitStrings(carString);
         method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
         method.setAccessible(true);
 
@@ -66,7 +65,7 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame();
         Method method;
         String carString = "aaa,bbb,ccc";
-        String[] carNameArray = convertString.splitString(carString);
+        String[] carNameArray = convertString.splitStrings(carString);
         method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
         method.setAccessible(true);
         List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
@@ -92,7 +91,7 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame();
         Method method;
         String carString = "aaa,bbb,ccc,ddd,eee,fff";
-        String[] carNameArray = convertString.splitString(carString);
+        String[] carNameArray = convertString.splitStrings(carString);
         method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
         method.setAccessible(true);
         List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
@@ -101,10 +100,6 @@ public class RacingGameTest {
 
         //when
         method.invoke(racingGame, carList);
-
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getName() + ": " + carList.get(i).getMoveCount());
-        }
         method = racingGame.getClass().getDeclaredMethod("findWinner", List.class);
         method.setAccessible(true);
         List<Car> winnerList = (List<Car>) method.invoke(racingGame, carList);
@@ -120,7 +115,7 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame();
         Method method;
         String carString = "aaa,bbb,ccc,ddd,eee,fff";
-        String[] carNameArray = convertString.splitString(carString);
+        String[] carNameArray = convertString.splitStrings(carString);
         int repeatCount = 10;
         method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
         method.setAccessible(true);

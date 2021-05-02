@@ -40,5 +40,6 @@ public class SetTest {
     void 셋존재값확인2(int number,boolean result) {
 
         org.junit.jupiter.api.Assertions.assertEquals(result,numbers.contains(number));
+        Assertions.assertThat(result).isEqualTo(numbers.contains(number));
     }
 }
