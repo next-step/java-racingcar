@@ -6,9 +6,9 @@ public class RacingCar {
 
 	private final MovingDistance movingDistance;
 
-	public RacingCar(String carName, int displacement) {
+	public RacingCar(String carName) {
 		this.carName = new CarName(carName);
-		this.movingDistance = new MovingDistance(displacement);
+		this.movingDistance = new MovingDistance();
 	}
 
 	public CarName getCarName() {
@@ -18,5 +18,4 @@ public class RacingCar {
 	public MovingDistance getDisplacement() {
 		return movingDistance;
 	}
-
 }
