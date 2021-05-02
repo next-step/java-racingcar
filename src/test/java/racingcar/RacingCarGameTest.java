@@ -33,4 +33,34 @@ public class RacingCarGameTest {
 		Assertions.assertThat(game.getAllRoundScore().size()).isEqualTo(roundCount);
 		Assertions.assertThat(game.getAllRoundScore().get(0).size()).isEqualTo(carNames.split(",").length);
 	}
+
+	@DisplayName("최종 우승자 한 명 선발")
+	@Test
+	public void testOnlyOneWinner() {
+		//given
+		String carName = "부릉이";
+		int roundCount = 5;
+
+		//when
+		RacingCarGame game = new RacingCarGame(carName, roundCount);
+
+		//then
+		Assertions.assertThat(game.getWinners().size()).isEqualTo(1);
+		Assertions.assertThat(String.join(",", game.getWinners())).isEqualTo(carName);
+	}
+
+	@DisplayName("최종 우승자 선발")
+	@Test
+	public void testWinners() {
+		//given
+		String carName = "부릉이,부릉부릉이";
+		int roundCount = 5;
+
+		//when
+		RacingCarGame game = new RacingCarGame(carName, roundCount);
+
+		//then
+		Assertions.assertThat(game.getWinners().size()).isGreaterThanOrEqualTo(1);
+		Assertions.assertThat(game.getWinners()).containsAnyOf(carName.split(","));
+	}
 }
