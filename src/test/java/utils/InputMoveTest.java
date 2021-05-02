@@ -1,6 +1,5 @@
 package utils;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class InputMoveCountTest {
+public class InputMoveTest {
 
     @Test
     @DisplayName("자동차 이동 거리 5를 알맞게 값을 받는지?")
@@ -19,10 +18,10 @@ public class InputMoveCountTest {
         System.setIn(new ByteArrayInputStream("5".getBytes(StandardCharsets.UTF_8)));
 
         //when
-        int moveCount = InputMoveCount.inMoveCount();
+        int move = InputMove.inMove();
 
         //then
-        assertEquals(moveCount, 5);
+        assertEquals(move, 5);
     }
 
     @Test
@@ -33,7 +32,7 @@ public class InputMoveCountTest {
 
         //when
         //then
-        assertThatThrownBy(InputMoveCount::inMoveCount)
+        assertThatThrownBy(InputMove::inMove)
                 .isInstanceOf(NumberFormatException.class)
                 .hasMessageContaining("숫자만 입력해주세요.");
     }

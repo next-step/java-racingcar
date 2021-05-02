@@ -2,8 +2,8 @@ package utils;
 
 import java.util.Scanner;
 
-public class InputMoveCount {
-    public static int inMoveCount() {
+public class InputMove {
+    public static int inMove() {
         Scanner sc = new Scanner(System.in);
         int moveCount;
         try {
