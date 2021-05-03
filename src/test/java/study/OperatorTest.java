@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,4 +25,12 @@ public class OperatorTest {
         );
 
     }
+
+
+    @DisplayName("지원하지 않는 연산자 예외 처리")
+    @Test
+    void throwIllegalArgumentException() {
+        assertThatThrownBy(() -> Operator.getOperator("%")).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
