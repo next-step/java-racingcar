@@ -21,6 +21,4 @@ public class Calculator {
         return accumulator;
     }
 
-
-
 }

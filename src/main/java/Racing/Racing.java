@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Racing {
 
+    private static  Random random = new Random();
 
     public static List racing(String str, int num) {
 
@@ -41,8 +42,7 @@ public class Racing {
 
     private static void random(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-            Random random = new Random();
-            moved(random.nextInt(10), cars.get(i));
+           moved(random.nextInt(10), cars.get(i));
             System.out.print(cars.get(i).getName() + " : ");
             printTrace(cars.get(i));
             System.out.println();

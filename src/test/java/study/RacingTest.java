@@ -44,6 +44,10 @@ public class RacingTest {
         assertThat(aCar.getMovingRange()).isEqualTo(1);
     }
 
+    @Test
+    void random(){
+
+    }
 
 
 }
