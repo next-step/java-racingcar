@@ -8,7 +8,7 @@ public class Output {
         System.out.println(START_MESSAGE);
     }
 
-    public void resultOutput(double result) {
+    public static void resultOutput(double result) {
         System.out.print(CALCULATE_RESULT);
         System.out.print(result);
     }

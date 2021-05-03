@@ -1,95 +1,93 @@
 package calculator;
 
 
-import calculator.view.Input;
-import calculator.view.Output;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 import static calculator.Exception.*;
+import static calculator.view.Input.inputMathExpression;
 import static calculator.view.Output.outputStartMessage;
+import static calculator.view.Output.resultOutput;
 
 public class Calculator {
+    private static final String LETTER = "[^0-9]";
+    private static final String THE_END_IS_NOT_NUMBER = "[0-9]*$";
+    private static final String IS_NOT_MATH_EXPRESSION = "[^0-9+\\-*/]";
+    private static final String MAKE_EMPTY = "";
+    private static final int HAS_NUMBER = 1;
 
     public void inputExpressionAndPrintResult() {
         Calculator calculator = new Calculator();
-        Output output = new Output();
-
-        String input = calculator.returnEnteredMathExpression();
-        List<String> strings = calculator.sliceMathExpression(input);
-        output.resultOutput(calculator.makeResult(strings));
+        String enteredMathExpression = calculator.returnEnteredMathExpression();
+        List<String> slicedMathExpressions = calculator.sliceMathExpression(enteredMathExpression);
+        resultOutput(calculator.makeResult(slicedMathExpressions));
     }
 
     private String returnEnteredMathExpression() {
-        Input input = new Input();
-        Exception exception = new Exception();
-
         outputStartMessage();
-        String mathExpression = input.inputMathExpression();
+        String mathExpression = inputMathExpression();
 
-        if(mathExpression.trim().isEmpty()){
-            exception.inputNullException();
-            throw new IllegalArgumentException(INPUT_NULL);
+        if (mathExpression.trim().isEmpty()) {
+            throw new IllegalArgumentException(INPUT_NULL_MESSAGE);
         }
-        if (Pattern.matches("[^0-9+\\-*/]",mathExpression)){
-            exception.wrongInputException();
+        if (Pattern.matches(IS_NOT_MATH_EXPRESSION, mathExpression)) {
+            throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
         }
-        if (Pattern.matches("[0-9]*$",mathExpression)){
-            exception.wrongInputException();
+        if (Pattern.matches(THE_END_IS_NOT_NUMBER, mathExpression)) {
+            throw new IllegalArgumentException(THE_END_IS_NOT_NUMBER_MESSAGE);
         }
         return mathExpression;
     }
 
     private List<String> sliceMathExpression(String mathExpression) {
         String[] splitMathExpression = mathExpression.split("");
-        List<String> mathExpressionList = new ArrayList<>();
-        String integerOfMathExpression = "";
-        for (String s : splitMathExpression) {
-            if (Pattern.matches("[^0-9]", s)) {
-                mathExpressionList.add(integerOfMathExpression);
-                mathExpressionList.add(s);
-                integerOfMathExpression = "";
+        List<String> mathExpressions = new ArrayList<>();
+        String integerOfMathExpression = MAKE_EMPTY;
+        for (String mathSymbol : splitMathExpression) {
+            if (Pattern.matches(LETTER, mathSymbol)) {
+                mathExpressions.add(integerOfMathExpression);
+                mathExpressions.add(mathSymbol);
+                integerOfMathExpression = MAKE_EMPTY;
                 continue;
             }
-                integerOfMathExpression = integerOfMathExpression.concat(s);
+            integerOfMathExpression = integerOfMathExpression.concat(mathSymbol);
         }
-        if (integerOfMathExpression.length() >= 1) {
-            mathExpressionList.add(integerOfMathExpression);
+        if (integerOfMathExpression.length() >= HAS_NUMBER) {
+            mathExpressions.add(integerOfMathExpression);
         }
-        return mathExpressionList;
+        return mathExpressions;
     }
 
-    private double makeResult(List<String> mathExpressionList) {
+    private double makeResult(List<String> mathExpressions) {
         double number;
         String operator;
-        double result = Double.parseDouble(mathExpressionList.get(0));
-        int listSize = mathExpressionList.size();
-        for (int i = 1; i < listSize; i += 2) {
-            operator = mathExpressionList.get(i);
-            number = Double.parseDouble(mathExpressionList.get(i + 1));
+        double result = Double.parseDouble(mathExpressions.get(0));
+        int mathExpressionSize = mathExpressions.size();
+        for (int i = 1; i < mathExpressionSize; i += 2) {
+            operator = mathExpressions.get(i);
+            number = Double.parseDouble(mathExpressions.get(i + 1));
             result = calculate(number, operator, result);
         }
         return result;
     }
 
-    private double calculate(double number, String operator, double result) {
+    private double calculate(double firstNumber, String operator, double secondNumber) {
         CalculatorFunction calculatorFunction = new CalculatorFunction();
 
 
         if (operator.equals("+")) {
-            return calculatorFunction.addNumber(result, number);
+            return calculatorFunction.addNumber(secondNumber, firstNumber);
         }
         if (operator.equals("-")) {
-           return calculatorFunction.subtractNumber(result, number);
+            return calculatorFunction.subtractNumber(secondNumber, firstNumber);
         }
         if (operator.equals("*")) {
-            return calculatorFunction.multipleNumber(result, number);
+            return calculatorFunction.multipleNumber(secondNumber, firstNumber);
         }
         if (operator.equals("/")) {
-            return calculatorFunction.divideNumber(result, number);
+            return calculatorFunction.divideNumber(secondNumber, firstNumber);
         }
-        throw new IllegalArgumentException(NOT_FOUR_RULE);
+        throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
     }
 }
