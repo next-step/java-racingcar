@@ -1,29 +1,12 @@
-import java.util.Arrays;
-import java.util.List;
-
 public class Main {
-
     public static void main(String[] args) {
-        Cars cars = new Cars();
+        //게임 설정
+        Game.setup();
 
-        String names = UI.answer(UIMessage.ASK_CAR_NAME);
-        List<String> nameArrays = Arrays.asList(names.split(","));
-        cars.setCarsByNames(nameArrays);
+        //게임 진행
+        Game.game();
 
-        final int count = Integer.valueOf(UI.answer(UIMessage.ASK_BETTING_COUNT));
-        System.out.println();
-
-        Computer computer = new Computer(cars);
-
-        UI ui = new UI(cars);
-
-        for (int i = 0; i < count; i++) {
-            computer.play();
-            ui.printGameResult();
-            System.out.println();
-        }
-
-        ui.printWinner(count);
-        System.exit(0);
+        //게임 종료
+        Game.gameOver();
     }
 }
