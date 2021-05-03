@@ -19,15 +19,7 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    //연산자 확인
-    @Test
-    void getOperator() {
-        assertThat(Operator.getOperator("+")).isEqualTo(Operator.ADDITION);
-        assertThat(Operator.getOperator("-")).isEqualTo(Operator.SUBTRACTION);
-        assertThat(Operator.getOperator("*")).isEqualTo(Operator.MULTIPLICATION);
-        assertThat(Operator.getOperator("/")).isEqualTo(Operator.DIVISION);
 
-    }
 
     //지원하지 않는 연산자 예외 처리
     @Test
