@@ -9,7 +9,8 @@ public class Car implements Comparable<Car>{
         this.movingRange = movingRange;
     }
     public Car(String name) {
-        this(name,0);
+        this.name = name;
+        this.movingRange = 0;
     }
 
     public String getName() {
