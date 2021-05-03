@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static calculator.Exception.*;
+import static calculator.ExceptionMessage.*;
+import static calculator.MathSymbol.*;
 import static calculator.view.Input.inputMathExpression;
 import static calculator.view.Output.outputStartMessage;
 import static calculator.view.Output.resultOutput;
@@ -20,7 +21,8 @@ public class Calculator {
     public void inputExpressionAndPrintResult() {
         Calculator calculator = new Calculator();
         String enteredMathExpression = calculator.returnEnteredMathExpression();
-        List<String> slicedMathExpressions = calculator.sliceMathExpression(enteredMathExpression);
+        String[] slicedMathExpression = sliceMathExpression(enteredMathExpression);
+        List<String> slicedMathExpressions = calculator.convertArrayToList(slicedMathExpression);
         resultOutput(calculator.makeResult(slicedMathExpressions));
     }
 
@@ -40,10 +42,14 @@ public class Calculator {
         return mathExpression;
     }
 
-    private List<String> sliceMathExpression(String mathExpression) {
-        String[] splitMathExpression = mathExpression.split("");
+    private String[] sliceMathExpression(String mathExpression) {
+        return mathExpression.split("");
+    }
+
+    private List<String> convertArrayToList(String[] splitMathExpression) {
         List<String> mathExpressions = new ArrayList<>();
         String integerOfMathExpression = MAKE_EMPTY;
+
         for (String mathSymbol : splitMathExpression) {
             if (Pattern.matches(LETTER, mathSymbol)) {
                 mathExpressions.add(integerOfMathExpression);
@@ -60,33 +66,30 @@ public class Calculator {
     }
 
     private double makeResult(List<String> mathExpressions) {
-        double number;
-        String operator;
         double result = Double.parseDouble(mathExpressions.get(0));
         int mathExpressionSize = mathExpressions.size();
+
         for (int i = 1; i < mathExpressionSize; i += 2) {
-            operator = mathExpressions.get(i);
-            number = Double.parseDouble(mathExpressions.get(i + 1));
+            String operator = mathExpressions.get(i);
+            double number = Double.parseDouble(mathExpressions.get(i + 1));
             result = calculate(number, operator, result);
         }
         return result;
     }
 
-    private double calculate(double firstNumber, String operator, double secondNumber) {
-        CalculatorFunction calculatorFunction = new CalculatorFunction();
+    public double calculate(double firstNumber, String operator, double secondNumber) {
 
-
-        if (operator.equals("+")) {
-            return calculatorFunction.addNumber(secondNumber, firstNumber);
+        if (operator.equals(PLUS.getMathSymbol())) {
+            return firstNumber + secondNumber;
         }
-        if (operator.equals("-")) {
-            return calculatorFunction.subtractNumber(secondNumber, firstNumber);
+        if (operator.equals(MINUS.getMathSymbol())) {
+            return firstNumber - secondNumber;
         }
-        if (operator.equals("*")) {
-            return calculatorFunction.multipleNumber(secondNumber, firstNumber);
+        if (operator.equals(MULTIPLE.getMathSymbol())) {
+            return firstNumber * secondNumber;
         }
-        if (operator.equals("/")) {
-            return calculatorFunction.divideNumber(secondNumber, firstNumber);
+        if (operator.equals(DIVIDE.getMathSymbol())) {
+            return firstNumber / secondNumber;
         }
         throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
     }
