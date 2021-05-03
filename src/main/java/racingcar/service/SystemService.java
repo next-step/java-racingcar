@@ -11,32 +11,35 @@ public class SystemService {
 
     public List<Car> carInfo = new ArrayList<Car>();
 
-    public void splitString(String input){
+    public void splitString(String input) {
         String[] result = input.split(",");
-        for (int i=0;i<result.length;i++){
-           Car carVO = new Car();
+        for (int i = 0; i < result.length; i++) {
+            Car carVO = new Car();
 
-           carVO.setName(result[i]);
-           carVO.setLocationInfo(0);
+            carVO.setName(result[i]);
+            carVO.setLocationInfo(0);
 
-           carInfo.add(carVO);
+            carInfo.add(carVO);
         }
     }
-    public int MoveCar(int locationInfo){
+
+    public int moveCar(int locationInfo) {
         String check = moveService.isMove();
-        int movedLocation = Operation.result(check,locationInfo);
+        int movedLocation = Operation.result(check, locationInfo);
         return movedLocation;
     }
-    public List<String> checkWinner(int cycle){
+
+    public List<String> checkWinner(int cycle) {
         List<String> winnerName = new ArrayList<>();
-        for(int i=0;i<carInfo.size();i++){
-            winnerName.add(selectWinnerName(i,cycle));
+        for (int i = 0; i < carInfo.size(); i++) {
+            winnerName.add(selectWinnerName(i, cycle));
         }
         return winnerName;
     }
-    public String selectWinnerName(int i,int cycle){
+
+    public String selectWinnerName(int i, int cycle) {
         String winnerName = null;
-        if(carInfo.get(i).getLocationInfo() == cycle){
+        if (carInfo.get(i).getLocationInfo() == cycle) {
             winnerName = carInfo.get(i).getName();
         }
         return winnerName;

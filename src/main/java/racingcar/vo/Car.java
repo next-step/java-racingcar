@@ -4,16 +4,19 @@ public class Car {
     private String name;
     private int locationInfo;
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
-    public void setLocationInfo(int locationInfo){
+
+    public void setLocationInfo(int locationInfo) {
         this.locationInfo = locationInfo;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public int getLocationInfo(){
+
+    public int getLocationInfo() {
         return locationInfo;
     }
 }

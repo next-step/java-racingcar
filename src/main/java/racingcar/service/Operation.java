@@ -14,10 +14,12 @@ public enum Operation {
         this.operator = operator;
         this.expression = expression;
     }
-    public static Integer result(String check, Integer locationInfo){
+
+    public static Integer result(String check, Integer locationInfo) {
         return findBySymbol(check).expression.apply(locationInfo);
     }
-    public static Operation findBySymbol(String check){
+
+    public static Operation findBySymbol(String check) {
         return Arrays.stream(Operation.values())
                 .filter(Operation -> Operation.operator.equals(check))
                 .findFirst()
