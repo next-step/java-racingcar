@@ -2,9 +2,11 @@ package game;
 
 public class MovingDistance {
 
-	private int distance;
 	private static final int MIN_RANDOM_NUMBER = 0;
 	private static final int MAX_RANDOM_NUMBER = 9;
+	private static final String DISTANCE_STR = "-";
+	private int distance;
+
 
 	public MovingDistance() {
 	}
@@ -20,5 +22,17 @@ public class MovingDistance {
 		if (movingDistance >= 4) {
 			this.distance += 1;
 		}
+	}
+
+	public int makeRandomNumber() {
+		return (int)(Math.random() * 10);
+	}
+
+	public String displayDistance() {
+		String displayDistance = "";
+		for (int i = 0; i < this.distance; i++) {
+			displayDistance += DISTANCE_STR;
+		}
+		return displayDistance;
 	}
 }

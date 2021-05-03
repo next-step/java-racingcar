@@ -45,4 +45,20 @@ public class MovingDistanceTest {
 		movingDistance.move(3);
 		assertThat(movingDistance.getDistance()).isEqualTo(0);
 	}
+
+	@Test
+	@DisplayName("이동_했을때_정상적으로_distance_올라가는가? ")
+	void 이동_했을때_정상적으로_distance_올라가는가() {
+		movingDistance.move(4);
+		movingDistance.move(5);
+		assertThat(movingDistance.getDistance()).isEqualTo(2);
+	}
+
+	@Test
+	@DisplayName("이동_했을때_displayDistance가_정상적으로_보이는가?")
+	void 이동_했을때_displayDistance가_정상적으로_보이는가() {
+		movingDistance.move(4);
+		movingDistance.move(5);
+		assertThat(movingDistance.displayDistance()).isEqualTo("--");
+	}
 }
