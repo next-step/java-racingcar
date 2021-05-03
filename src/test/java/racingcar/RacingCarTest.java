@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class RacingCarTest {
 
-	@DisplayName("자동차 생성 성공")
+	@DisplayName("경주에 참가할 자동차 등록")
 	@Test
-	public void testCreateCarSuccess() {
+	public void testCreateCar() {
 		//given
 		String name = "부릉이";
 
@@ -19,9 +19,9 @@ public class RacingCarTest {
 		Assertions.assertThat(car.getName()).isEqualTo(name);
 	}
 
-	@DisplayName("부적합한 이름의 자동차 생성 실패")
+	@DisplayName("부적합한 이름의 자동차 등록 실패")
 	@Test
-	public void testCreateLongNameCarFailure() {
+	public void testFailToCreateCarIfNameIsLong() {
 		//given
 		String longName = "부릉부릉자동차";
 		String notGiven = null;
