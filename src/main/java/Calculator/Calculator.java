@@ -13,9 +13,9 @@ public class Calculator {
         int accumulator = Integer.parseInt(tokens.remove());
         while (!tokens.isEmpty()) {
             Operator operator = Operator.getOperator(tokens.remove());
-            int rhs = Integer.parseInt(tokens.remove());
+            int token = Integer.parseInt(tokens.remove());
 
-            accumulator = operator.calculation.apply(accumulator, rhs);
+            accumulator = operator.calculation.apply(accumulator, token);
         }
 
         return accumulator;
