@@ -21,11 +21,11 @@ public class Cars {
     }
 
     //todo 요구조건에 따라 stream 사용 할 수 없어 수정필요
-    //todo List를 그대로 반환해도 되는걸까?
-    //todo 우승자의 주행거리가 count와 같지 않을 수 있다.
-    //todo 우승자는 참가한 자동차들 중 주행거리가 가장 앞선 차로 정해야한다.
-    public List<Car> getWinningCar(int distance) {
-        return cars.stream().filter(car -> car.matchDistance(distance)).collect(Collectors.toList());
+    public void getWinningCar() {
+        OptionalInt max = cars.stream()
+                .mapToInt(car -> car.getDistance())
+                .max();
+        cars.removeIf(car -> !car.matchDistance(max.getAsInt()));
     }
 
     //todo 요구조건에 따라 stream 사용 할 수 없어 수정필요

@@ -1,6 +1,6 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class UI {
 
@@ -16,10 +16,12 @@ public class UI {
         return scanner.nextLine();
     }
 
+
     public void printGameResult(){
         for (Car car : cars.getCars()) {
             printCarDriving(car);
         }
+        System.out.println();
     }
 
     private void printCarDriving(Car car){
@@ -32,11 +34,12 @@ public class UI {
         System.out.println(str);
     }
 
-    public void printWinner(int count){
+    public void printWinner(){
         StringBuffer str = new StringBuffer();
-        List<Car> winningCars = cars.getWinningCar(count);
-        List<String> carsNames = cars.getCarsNames(winningCars);
-        str.append(String.join(",", carsNames));
+        //todo 우승자의 주행거리가 count와 같지 않을 수 있다.
+        //todo 우승자는 참가한 자동차들 중 주행거리가 가장 앞선 차로 정해야한다.
+        cars.getWinningCar();
+        str.append(String.join(",", cars.getCarsNames(new ArrayList<>())));
         str.append(UIMessage.NOTICE_WINNER.getMessage());
         System.out.println(str);
     }

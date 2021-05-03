@@ -19,7 +19,7 @@ public class Game {
     }
 
     public static void gameOver(){
-        ui.printWinner(1);
+        ui.printWinner();
         System.exit(0);
     }
 }

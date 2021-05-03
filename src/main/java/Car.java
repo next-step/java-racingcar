@@ -1,3 +1,5 @@
+import java.util.function.Predicate;
+
 public class Car {
     private String name;
     private int distance;
@@ -30,11 +32,12 @@ public class Car {
     public void stop() {
     }
 
+    public boolean matchName(String name) {
+        return this.name == name;
+    }
+
     public boolean matchDistance(int distance) {
         return this.distance == distance;
     }
 
-    public boolean matchName(String name) {
-        return this.name == name;
-    }
 }

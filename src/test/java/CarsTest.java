@@ -65,9 +65,9 @@ class CarsTest {
         cars.addCar(car2);
         cars.addCar(car3);
 
-        List<Car> winningCar = cars.getWinningCar(2);
-        assertTrue(winningCar.contains(car2));
-        assertTrue(winningCar.contains(car1));
+        cars.getWinningCar();
+        assertTrue(cars.hasCar(car2));
+        assertTrue(cars.hasCar(car1));
     }
 
 }
