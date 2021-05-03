@@ -103,7 +103,7 @@ public class RacingCarTest {
         racingCar.printWinner();
 
         //then
-        assertThat(outContent.toString()).isEqualTo("santa volt 승리하였습니다.\n");
+        assertThat(outContent.toString()).isEqualTo("santa, volt 승리하였습니다.\n");
     }
 
 }

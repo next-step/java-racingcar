@@ -18,7 +18,7 @@ public class RacingCar {
         this.cars = cars;
     }
 
-    public RacingCar(List<Car> cars){
+    public RacingCar(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -38,10 +38,14 @@ public class RacingCar {
 
     public void printWinner() {
         int rank = getRank();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < rank; i++) {
-            System.out.print(cars.get(i).getName() + " ");
+            sb.append(cars.get(i).getName());
+            sb.append(", ");
         }
-        System.out.println("승리하였습니다.");
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append(" 승리하였습니다.");
+        System.out.println(sb);
     }
 
     private int getRank() {
