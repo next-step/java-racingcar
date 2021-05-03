@@ -6,13 +6,24 @@ import java.util.Scanner;
 public class RacingCarGamePlayer {
 	public static void play() {
 		Scanner scan = new Scanner(System.in);
-		String carNames = askCarNames(scan);
-		int roundCount = askRoundCount(scan);
+		RacingCarGame game = null;
+		while (game == null) {
+			String carNames = askCarNames(scan);
+			int roundCount = askRoundCount(scan);
+			game = startRaceGame(carNames, roundCount);
+		}
 		scan.close();
-
-		RacingCarGame game = new RacingCarGame(carNames, roundCount);
 		printAllRoundScore(game);
 		printWinners(game);
+	}
+
+	private static RacingCarGame startRaceGame(String carNames, int roundCount) {
+		try {
+			return new RacingCarGame(carNames, roundCount);
+		} catch (IllegalArgumentException e) {
+			System.out.println("정보를 다시 입력해주세요.");
+		}
+		return null;
 	}
 
 	private static String askCarNames(Scanner scan) {
