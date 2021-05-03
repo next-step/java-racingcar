@@ -18,7 +18,7 @@ class CarsTest {
     final int CARS_SIZE = 3;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         cars = new Cars();
         car = Car.createCar(CAR_NAME);
     }
@@ -30,14 +30,7 @@ class CarsTest {
     }
 
     @Test
-    void getCar(){
-        cars.addCar(this.car);
-        Car car = cars.getCar(CAR_NAME);
-        assertTrue(car.matchName(CAR_NAME));
-    }
-
-    @Test
-    void setCarsByNames(){
+    void setCarsByNames() {
         List<String> nameArrays = Arrays.asList(CARS_NAMES.split(","));
         cars.setCarsByNames(nameArrays);
         long count = nameArrays.stream()
@@ -48,7 +41,7 @@ class CarsTest {
     }
 
     @Test
-    void getWinningCar(){
+    void getWinningCar() {
         Car car1 = Car.createCar("바나나차차");
         Car car2 = Car.createCar("딸기차차");
         Car car3 = Car.createCar("토마토차차");
@@ -65,7 +58,7 @@ class CarsTest {
         cars.addCar(car2);
         cars.addCar(car3);
 
-        cars.getWinningCar();
+        cars.setWinningCar();
         assertTrue(cars.hasCar(car2));
         assertTrue(cars.hasCar(car1));
     }

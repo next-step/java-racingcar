@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidationUtilsTest {
 
     @Test
-    void 전진_또는_후진_여부_검증(){
+    void isRun(){
         assertTrue(ValidationUtils.isRun(4));
         assertTrue(ValidationUtils.isRun(9));
         assertFalse(ValidationUtils.isRun(3));
@@ -13,7 +13,7 @@ class ValidationUtilsTest {
     }
 
     @Test
-    void 자동차_이름_5자_이하_검증(){
+    void isName5CharsOrLess(){
         assertTrue(ValidationUtils.isName5CharsOrLess("우테캠홧팅"));
         assertTrue(ValidationUtils.isName5CharsOrLess(""));
         assertFalse(ValidationUtils.isName5CharsOrLess("가랏!우리붕붕카"));
