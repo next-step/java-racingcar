@@ -3,10 +3,8 @@ package utils;
 import java.security.SecureRandom;
 
 public class RandomNumber {
-    public static final int BOUND = 10;
-
-    public static int generateNumber() {
+    public static int generateNumber(int min, int max) {
         SecureRandom secureRandom = new SecureRandom();
-        return secureRandom.nextInt(BOUND);
+        return secureRandom.nextInt(max + 1) + min;
     }
 }

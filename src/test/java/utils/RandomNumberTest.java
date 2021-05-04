@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class RandomNumberTest {
 
@@ -13,12 +12,11 @@ public class RandomNumberTest {
     void generate_random_number_0_to_9() {
         //given
         //when
-        int number1 = RandomNumber.generateNumber();
-        int number2 = RandomNumber.generateNumber();
+        int number1 = RandomNumber.generateNumber(0, 9);
+        int number2 = RandomNumber.generateNumber(0, 9);
 
         //then
         assertThat(number1).isBetween(0, 9);
         assertThat(number2).isBetween(0, 9);
-        assertNotEquals(number1, number2);
     }
 }
