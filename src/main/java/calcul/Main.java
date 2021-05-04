@@ -2,11 +2,11 @@ package calcul;
 
 import java.util.Scanner;
 
-public class CalculMain {
+public class Main {
 
     public static void main(String[] args) throws IllegalAccessException {
 
-        Calcul calcul = new Calcul();
+        Calculator calculator = new Calculator();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -20,21 +20,21 @@ public class CalculMain {
 
             if (split[i].equals("+")) {
 
-                result = calcul.add(result, Integer.parseInt(split[i + 1]));
+                result = calculator.add(result, Integer.parseInt(split[i + 1]));
             } else if (split[i].equals("-")) {
 
-                result = calcul.sub(result, Integer.parseInt(split[i + 1]));
+                result = calculator.sub(result, Integer.parseInt(split[i + 1]));
             } else if (split[i].equals("*")) {
 
-                result = calcul.multi(result, Integer.parseInt(split[i + 1]));
+                result = calculator.multi(result, Integer.parseInt(split[i + 1]));
             } else if (split[i].equals("/")) {
 
-                result = calcul.division(result, Integer.parseInt(split[i + 1]));
+                result = calculator.division(result, Integer.parseInt(split[i + 1]));
             }
         }
 
-        calcul.nullCheck(input);
-        calcul.operCheck(input);
+        calculator.nullCheck(input);
+        calculator.operCheck(input);
 
         System.out.println("결과값 : " + result);
     }
