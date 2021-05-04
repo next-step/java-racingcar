@@ -27,6 +27,7 @@ public class Racecourse {
 	public void run() {
 		for (int i = 0; i < count; i++) {
 			moveAll();
+			print();
 		}
 	}
 
@@ -34,5 +35,12 @@ public class Racecourse {
 		for (Car car : cars) {
 			car.move(new MoveCondition());
 		}
+	}
+
+	public void print() {
+		for (Car car : cars) {
+			car.print();
+		}
+		System.out.println();
 	}
 }

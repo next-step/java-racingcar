@@ -24,4 +24,12 @@ class RacecourseTest {
 		racecourse.init(new Command(5, "pobi,crong,honux"));
 		racecourse.moveAll();
 	}
+
+	@Test
+	@DisplayName("경주장 실행 테스트")
+	void racecourseRunTest() {
+		Racecourse racecourse = new Racecourse();
+		racecourse.init(new Command(5, "pobi,crong,honux"));
+		racecourse.run();
+	}
 }
