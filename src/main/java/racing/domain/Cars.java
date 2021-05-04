@@ -1,12 +1,9 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Cars {
-    private static final int MINIMUM_NUMBER = 1;
+    private static final int MINIMUM_NUMBER_OF_CARS = 1;
     public static final String DELIMITER = ",";
 
     private List<Car> cars;
@@ -15,11 +12,23 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(String[] carNames, MovableStrategy movableStrategy) {
-        if (carNames.length < MINIMUM_NUMBER) {
+    public static Cars of(String carNames, MovableStrategy movableStrategy) {
+        validate(carNames);
+        String[] splitCarNames = carNames.split(DELIMITER);
+        validate(splitCarNames);
+        return new Cars(mapCars(splitCarNames, movableStrategy));
+    }
+
+    private static void validate(String carNames) {
+        if (Objects.isNull(carNames) || carNames.isEmpty()) {
+            throw new IllegalArgumentException("입력된 차이름이 없습니다.");
+        }
+    }
+
+    private static void validate(String[] carNames) {
+        if (carNames.length < MINIMUM_NUMBER_OF_CARS) {
             throw new IllegalArgumentException("최소 1대 이상 필요합니다.");
         }
-        return new Cars(mapCars(carNames, movableStrategy));
     }
 
     private static List<Car> mapCars(String[] carNames, MovableStrategy movableStrategy) {
