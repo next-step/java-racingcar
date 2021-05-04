@@ -1,38 +1,29 @@
 package domain.core;
 
-import utils.RandomNumber;
-
 public class Car {
-    public static final int GO_CONDITION = 4;
-    public static final String GO_STRING = "-";
-    private final String name;
-    private int goCount;
+    private final CarName carName;
+    private final Distance distance;
 
-    public Car(String name) {
-        this.name = name;
-        this.goCount = 0;
+    public Car(CarName carName) {
+        this.carName = carName;
+        this.distance = new Distance();
     }
 
-    public void play() {
-        if (RandomNumber.generateNumber() >= GO_CONDITION) {
-            this.goCount++;
+    public void move(Accelerator accelerator) {
+        if (accelerator.isDriving()) {
+            distance.increaseDistance();
         }
     }
 
     public String getName() {
-        return this.name;
+        return carName.getName();
     }
 
-    public String getGoString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < goCount; i++) {
-            sb.append(GO_STRING);
-        }
-
-        return sb.toString();
+    public String getDistancePrintMessage() {
+        return distance.getDistancePrintMessage();
     }
 
-    public int getGoCount(){
-        return this.goCount;
+    public int getDistance() {
+        return distance.getDistance();
     }
 }
