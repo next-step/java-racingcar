@@ -12,8 +12,12 @@ public class Racecourse {
 
 		this.count = command.getCount();
 		for (String name : command.getNames()) {
-			cars.add(new Car(name));
+			join(new Car(name));
 		}
+	}
+
+	public void join(Car car) {
+		cars.add(car);
 	}
 
 	public int getCarsSize() {
@@ -42,5 +46,9 @@ public class Racecourse {
 			car.print();
 		}
 		System.out.println();
+	}
+
+	public Winners getWinners() {
+		return new Winners(cars);
 	}
 }
