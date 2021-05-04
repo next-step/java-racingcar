@@ -36,7 +36,7 @@ public class CalculTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"   "})
+    @ValueSource(strings = {""})
     void nullCheckTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             calculator.nullCheck(input);
