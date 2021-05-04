@@ -22,7 +22,7 @@ public class Cars {
     public void setCarsByNames(List<String> names) {
         for (String name : names) {
             Car car = Car.createCar(name);
-            cars.add(car);
+            if(car!=null) cars.add(car);
         }
     }
 
