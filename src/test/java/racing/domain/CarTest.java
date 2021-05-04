@@ -3,6 +3,10 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
@@ -13,7 +17,7 @@ public class CarTest {
     void move() {
         car = Car.of("benz", () -> true);
         car.move();
-        assertThat(car.getDistance().getDistance()).isEqualTo(1);
+        assertThat(car.distance()).isEqualTo(1);
     }
 
     @Test
@@ -21,6 +25,31 @@ public class CarTest {
     void stop() {
         car = Car.of("benz", () -> false);
         car.move();
-        assertThat(car.getDistance().getDistance()).isEqualTo(0);
+        assertThat(car.distance()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차 distance 따라 역순 정렬 테스트")
+    void comparable_reverse_order() {
+        Car benz = Car.of("benz", () -> true);
+        benz.move();
+        benz.move();
+
+        Car audi = Car.of("audi", () -> true);
+        audi.move();
+        audi.move();
+        audi.move();
+
+        Car bmw = Car.of("bmw", () -> true);
+        bmw.move();
+
+        List<Car> carList = new ArrayList<>();
+        carList.add(benz);
+        carList.add(audi);
+        carList.add(bmw);
+
+        carList.sort(Comparator.reverseOrder());
+        assertThat(carList.get(0)).isEqualTo(audi);
+
     }
 }
