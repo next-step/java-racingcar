@@ -7,7 +7,6 @@ public class MoveCondition {
 	private final MoveStatus status;
 
 	public MoveCondition() {
-
 		int randomValue = (int)(Math.random() * SCOPE_MAX);
 		this.status = randomValue < BOUNDARY_VALUE ? MoveStatus.STOP : MoveStatus.FORWARD;
 	}

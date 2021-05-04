@@ -11,12 +11,12 @@ public class CommandTest {
 	@Test
 	@DisplayName("커맨드 생성 테스트")
 	void createCommandTest() {
-		int inputMoveCount = 5;
-		String inputNameLine = "pobi,crong,honux";
-		Command command = new Command(inputMoveCount, inputNameLine);
+		int count = 5;
+		String nameLine = "pobi,crong,honux";
+		Command command = new Command(count, nameLine);
 
 		assertThat(command).isNotNull();
-		assertThat(command.getMoveCount()).isEqualTo(inputMoveCount);
+		assertThat(command.getCount()).isEqualTo(count);
 		assertThat(command.getNames()).isEqualTo(new String[] {"pobi", "crong", "honux"});
 	}
 }
