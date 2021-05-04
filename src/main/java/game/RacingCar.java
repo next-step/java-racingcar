@@ -18,4 +18,12 @@ public class RacingCar {
 	public MovingDistance getDisplacement() {
 		return movingDistance;
 	}
+
+	public void move() {
+		this.movingDistance.move(getRandomDistance());
+	}
+
+	private int getRandomDistance() {
+		return this.movingDistance.makeRandomNumber();
+	}
 }
