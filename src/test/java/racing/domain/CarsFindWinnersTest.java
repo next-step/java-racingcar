@@ -10,7 +10,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsFindWinnersTest {
-    public static final String DELIMITER = ",";
 
     @Test
     @DisplayName("우승한 차가 한 대일 경우")
@@ -76,7 +75,7 @@ public class CarsFindWinnersTest {
 
     private Car makeCar(String carName, int numberOfMoves) {
         Car car = Car.of(carName, () -> true);
-        for(int i = 0; i < numberOfMoves; i++) {
+        for (int i = 0; i < numberOfMoves; i++) {
             car.move();
         }
         return car;
