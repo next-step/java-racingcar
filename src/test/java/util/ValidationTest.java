@@ -5,14 +5,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 class ValidationTest {
+	private static final String TEST_TYPE_EXPECTED = "EXPECTED";
+
 	@Test
 	public void isValidCarListTest() {
 		boolean validCarList = Validation.isValidCarList("pobi,crong,honux");
 		boolean invalidCarList1 = Validation.isValidCarList("pobi,,crong,hon");
 		boolean invalidCarList2 = Validation.isValidCarList("pobi,crong,honuxxxx");
-		assertThat(validCarList).as("Failure - Parameter String is invalid: ").isTrue();
-		assertThat(invalidCarList1).as("Failure - Parameter String is valid: ").isFalse();
-		assertThat(invalidCarList2).as("Failure - Parameter String is valid: ").isFalse();
+		assertThat(validCarList)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isTrue();
+		assertThat(invalidCarList1)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
+		assertThat(invalidCarList2)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
 	}
 
 	@Test
@@ -21,10 +29,18 @@ class ValidationTest {
 		boolean validCarName2 = Validation.isValidCarElement("crong");
 		boolean invalidCarName1 = Validation.isValidCarElement("honuxxxx");
 		boolean invalidCarName2 = Validation.isValidCarElement("");
-		assertThat(validCarName1).as("Failure - Parameter String is invalid: ").isTrue();
-		assertThat(validCarName2).as("Failure - Parameter String is invalid: ").isTrue();
-		assertThat(invalidCarName1).as("Failure - Parameter String is valid: ").isFalse();
-		assertThat(invalidCarName2).as("Failure - Parameter String is valid: ").isFalse();
+		assertThat(validCarName1)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isTrue();
+		assertThat(validCarName2)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isTrue();
+		assertThat(invalidCarName1)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
+		assertThat(invalidCarName2)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
 	}
 
 	@Test
@@ -35,11 +51,23 @@ class ValidationTest {
 		boolean invalidRepeatTime2 = Validation.isValidRepeatTime("-1");
 		boolean invalidRepeatTime3 = Validation.isValidRepeatTime("textinput");
 		boolean invalidRepeatTime4 = Validation.isValidRepeatTime("");
-		assertThat(validRepeatTime1).as("Failure - Parameter String is invalid: ").isTrue();
-		assertThat(validRepeatTime2).as("Failure - Parameter String is invalid: ").isTrue();
-		assertThat(invalidRepeatTime1).as("Failure - Parameter String is valid: ").isFalse();
-		assertThat(invalidRepeatTime2).as("Failure - Parameter String is valid: ").isFalse();
-		assertThat(invalidRepeatTime3).as("Failure - Parameter String is valid: ").isFalse();
-		assertThat(invalidRepeatTime4).as("Failure - Parameter String is valid: ").isFalse();
+		assertThat(validRepeatTime1)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isTrue();
+		assertThat(validRepeatTime2)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isTrue();
+		assertThat(invalidRepeatTime1)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
+		assertThat(invalidRepeatTime2)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
+		assertThat(invalidRepeatTime3)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
+		assertThat(invalidRepeatTime4)
+			.as(InputView.getTestFailureMessage(TEST_TYPE_EXPECTED))
+			.isFalse();
 	}
 }

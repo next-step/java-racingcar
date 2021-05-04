@@ -7,7 +7,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import util.InputView;
+
 class RacingcarListTest {
+	private static final String TEST_TYPE_OBJECT = "OBJECT";
+
 	@Test
 	public void getRacingcarStringToListTest() {
 		List<Racingcar> actualRacingcarList = RacingcarList.getRacingcarStringToList("pobi,crong,honux,nero");
@@ -18,7 +22,7 @@ class RacingcarListTest {
 		expectedRacingcarList.add(new Racingcar("nero"));
 
 		assertThat(actualRacingcarList)
-			.as("Failure - Objects are not equal:")
+			.as(InputView.getTestFailureMessage(TEST_TYPE_OBJECT))
 			.usingRecursiveComparison()
 			.isEqualTo(expectedRacingcarList);
 	}
@@ -37,7 +41,7 @@ class RacingcarListTest {
 		expectedWinnerList.add("nero");
 
 		assertThat(actualWinnerList)
-			.as("Failure - Objects are not equal:")
+			.as(InputView.getTestFailureMessage(TEST_TYPE_OBJECT))
 			.isEqualTo(expectedWinnerList);
 	}
 }
