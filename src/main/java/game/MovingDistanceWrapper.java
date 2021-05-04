@@ -1,14 +1,13 @@
 package game;
 
-public class MovingDistance {
+public class MovingDistanceWrapper {
 
 	private static final int MIN_RANDOM_NUMBER = 0;
 	private static final int MAX_RANDOM_NUMBER = 9;
 	private static final String DISTANCE_STR = "-";
 	private int distance;
 
-
-	public MovingDistance() {
+	public MovingDistanceWrapper() {
 	}
 
 	public int getDistance() {

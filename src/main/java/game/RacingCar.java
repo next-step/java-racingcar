@@ -2,28 +2,28 @@ package game;
 
 public class RacingCar {
 
-	private final CarName carName;
+	private final CarNameWrapper carNameWrapper;
 
-	private final MovingDistance movingDistance;
+	private final MovingDistanceWrapper movingDistanceWrapper;
 
 	public RacingCar(String carName) {
-		this.carName = new CarName(carName);
-		this.movingDistance = new MovingDistance();
+		this.carNameWrapper = new CarNameWrapper(carName);
+		this.movingDistanceWrapper = new MovingDistanceWrapper();
 	}
 
-	public CarName getCarName() {
-		return carName;
+	public CarNameWrapper getCarNameWrapper() {
+		return carNameWrapper;
 	}
 
-	public MovingDistance getDisplacement() {
-		return movingDistance;
+	public MovingDistanceWrapper getDisplacement() {
+		return movingDistanceWrapper;
 	}
 
 	public void move() {
-		this.movingDistance.move(getRandomDistance());
+		this.movingDistanceWrapper.move(getRandomDistance());
 	}
 
 	private int getRandomDistance() {
-		return this.movingDistance.makeRandomNumber();
+		return this.movingDistanceWrapper.makeRandomNumber();
 	}
 }
