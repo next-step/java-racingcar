@@ -120,7 +120,7 @@ public class RacingGameTest {
         method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
         method.setAccessible(true);
         List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
-        method = racingGame.getClass().getDeclaredMethod("repeatMoveCount", int.class, List.class);
+        method = racingGame.getClass().getDeclaredMethod("repeatMoveCountChange", int.class, List.class);
         method.setAccessible(true);
 
         //when

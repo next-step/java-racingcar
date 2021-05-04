@@ -24,13 +24,17 @@ public class RacingGame {
 
         String[] carNameArray = convertString.splitStrings(carString);
         List<Car> carList = makeCarList(carNameArray);
+
         repeatMoveCountChange(count, carList);
         printWinMessage(findWinner(carList));
     }
 
-    private List<Car> makeCar(String name, List<Car> carList) {
-        Car car = new Car(name);
-        carList.add(car);
+    private List<Car> makeCarList(String[] carNameArray) {
+        List<Car> carList = new ArrayList<>();
+
+        for (String carName : carNameArray) {
+            carList.add(new Car(carName));
+        }
         return carList;
     }
 
@@ -41,23 +45,14 @@ public class RacingGame {
         }
     }
 
-    private List<Car> makeCarList(String[] carNameArray) {
-        List<Car> carList = new ArrayList<Car>();
-
-        for (String carName : carNameArray) {
-            makeCar(carName, carList);
-        }
-        return carList;
-    }
-
-    private int makeRandomNumber() {
-        return makeOneRandomNumber();
-    }
-
     private void moveCountChange(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).move(makeRandomNumber());
         }
+    }
+
+    private int makeRandomNumber() {
+        return makeOneRandomNumber();
     }
 
     private List<String> findWinner(List<Car> carList) {
