@@ -33,7 +33,7 @@ public class Main {
         }
 
         calculator.nullCheck(input);
-        calculator.operCheck(input);
+        calculator.operationCheck (input);
 
         System.out.println("결과값 : " + result);
     }

@@ -49,7 +49,7 @@ public class CalculTest {
     void operCheckTest(String input) {
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.operCheck(input);
+            calculator.operationCheck (input);
         });
     }
 }

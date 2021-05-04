@@ -27,7 +27,7 @@ public class Calculator {
         }
     }
 
-    public void operCheck(String input) throws IllegalArgumentException {
+    public void operationCheck (String input) throws IllegalArgumentException {
         if (!input.contains("+") || !input.contains("-") || !input.contains("*") || !input.contains("/")) {
             throw new IllegalArgumentException("입력값에 사칙연산이 없습니다.");
         }
