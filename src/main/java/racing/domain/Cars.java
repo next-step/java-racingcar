@@ -44,6 +44,7 @@ public class Cars {
             car.move();
         }
     }
+
     public Winners findWinners() {
         Distance farthestDistance = findFarthestDistance();
         List<String> farthestCars = new ArrayList<>();
@@ -57,7 +58,7 @@ public class Cars {
     }
 
     private void addWinner(Car car, Distance farthestDistance, List<String> farthestCars) {
-        if(car.isSameDistance(farthestDistance)) {
+        if (car.isSameDistance(farthestDistance)) {
             farthestCars.add(car.carName());
         }
     }

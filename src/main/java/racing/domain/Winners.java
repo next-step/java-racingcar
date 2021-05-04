@@ -16,7 +16,7 @@ public class Winners {
     }
 
     private static void validate(List<String> winners) {
-        if(Objects.isNull(winners) || winners.size() < 1) {
+        if (Objects.isNull(winners) || winners.size() < 1) {
             throw new IllegalArgumentException("우승자는 1명 이상이어야합니다.");
         }
     }

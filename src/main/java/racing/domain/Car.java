@@ -2,7 +2,7 @@ package racing.domain;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     private CarName carName;
     private Distance distance;
     private MovableStrategy movableStrategy;
@@ -41,7 +41,7 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car o) {
-        if(this.distance() > o.distance()) {
+        if (this.distance() > o.distance()) {
             return 1;
         }
         return -1;

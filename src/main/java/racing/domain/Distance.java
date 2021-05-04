@@ -9,7 +9,7 @@ public class Distance {
 
     private final int distance;
 
-    private Distance(int distance){
+    private Distance(int distance) {
         this.distance = distance;
     }
 
@@ -17,7 +17,7 @@ public class Distance {
         return new Distance(this.distance + distance.distance);
     }
 
-    public int getDistance(){
+    public int getDistance() {
         return distance;
     }
 

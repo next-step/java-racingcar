@@ -12,10 +12,10 @@ public class ReceivingRacingGameInput {
 
     public String receiveCarNames() {
         String carNames;
-        do{
+        do {
             System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
             carNames = scanner.nextLine();
-        }while(isEmpty(carNames));
+        } while (isEmpty(carNames));
         return carNames;
     }
 
@@ -28,7 +28,7 @@ public class ReceivingRacingGameInput {
         do {
             System.out.println("시도할 회수는 몇회인가요?");
             roundNumber = scanner.nextLine();
-        }while(isEmptyOrNull(roundNumber) || !isNumber(roundNumber));
+        } while (isEmptyOrNull(roundNumber) || !isNumber(roundNumber));
         return Integer.parseInt(roundNumber);
     }
 
