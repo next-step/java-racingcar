@@ -6,13 +6,12 @@ import java.util.List;
 import util.InputView;
 
 public class RacingcarList {
-	private static List<Racingcar> racingcarList;
-	private static List<String> winnerList;
+	private static final List<Racingcar> racingcarList = new ArrayList<>();
+	private static final List<String> winnerList = new ArrayList<>();
 	private static int maxPosition;
 
 	public static List<Racingcar> getRacingcarStringToList(String racingcarListString) {
 		String[] racingcarArray = racingcarListString.split(",");
-		racingcarList = new ArrayList<>();
 		for (String racingcar : racingcarArray) {
 			Racingcar car = new Racingcar(racingcar);
 			racingcarList.add(car);
@@ -23,7 +22,6 @@ public class RacingcarList {
 	public static List<String> getWinner(List<Racingcar> carList) {
 		carList.sort((a, b) -> b.getCarPosition().length() - a.getCarPosition().length());
 		maxPosition = carList.get(0).getCarPosition().length();
-		winnerList = new ArrayList<>();
 		for (Racingcar racingcar : carList) {
 			comparePosition(racingcar);
 		}
