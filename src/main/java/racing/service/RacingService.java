@@ -13,8 +13,13 @@ public class RacingService {
 
     public RacingResult race(String carNames, int numberOfRounds) {
         Cars cars = Cars.of(carNames, movableStrategy);
+        Round round = Round.of(numberOfRounds);
+        return startRace(cars, round);
+    }
+
+    private RacingResult startRace(Cars cars, Round round) {
         RacingResult racingResult = new RacingResult();
-        for (int i = 0; i < numberOfRounds; i++) {
+        for (int i = 0; i < round.getRound(); i++) {
             cars.moveCars();
             racingResult.addRoundResult(RoundResult.of(Round.of(i + 1), cars.getCars()));
         }

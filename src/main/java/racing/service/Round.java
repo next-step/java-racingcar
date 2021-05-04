@@ -20,6 +20,10 @@ public class Round {
         }
     }
 
+    public int getRound() {
+        return round;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
