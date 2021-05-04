@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 public class RandomNumberGenerator {
     private SecureRandom secureRandom = new SecureRandom();
 
-    public int generate(){
-        return secureRandom.nextInt(9) + 1;
+    public RandomNumber generate() {
+        return RandomNumber.of(secureRandom.nextInt(RandomNumber.END_NUMBER) + RandomNumber.START_NUMBER);
     }
 }
