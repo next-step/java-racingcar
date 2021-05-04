@@ -24,8 +24,7 @@ public class UI {
     private void printCarDriving(Car car){
         StringBuffer str = new StringBuffer();
         str.append(car.getName() + ": ");
-        int distance = car.getDistance();
-        while(distance-- > 0){
+        for (int distance = car.getDistance(); distance > 0; distance--) {
             str.append(UIMessage.NOTICE_CAR_RUN.getMessage());
         }
         System.out.println(str);

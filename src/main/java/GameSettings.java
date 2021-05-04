@@ -7,6 +7,7 @@ public class GameSettings {
     public GameSettings() {
         setCars();
         setGameCount();
+        System.out.println();
     }
 
     private void setCars() {

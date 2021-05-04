@@ -7,7 +7,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 @DisplayName(value = "자동차 일급 컬렉션 테스트")
 class CarsTest {
     Cars cars;
@@ -24,12 +23,14 @@ class CarsTest {
     }
 
     @Test
+    @DisplayName(value = "자동차 추가 테스트")
     void addCar() {
         cars.addCar(car);
         assertTrue(cars.hasCar(car));
     }
 
     @Test
+    @DisplayName(value = "자동차 이름을 이용한 자동차 설정 테스트")
     void setCarsByNames() {
         List<String> nameArrays = Arrays.asList(CARS_NAMES.split(","));
         cars.setCarsByNames(nameArrays);
@@ -41,6 +42,7 @@ class CarsTest {
     }
 
     @Test
+    @DisplayName(value = "우승한 자동차 확인 테스트")
     void getWinningCar() {
         Car car1 = Car.createCar("바나나차차");
         Car car2 = Car.createCar("딸기차차");
