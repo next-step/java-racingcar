@@ -1,5 +1,6 @@
 package racing.view;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ReceivingRacingGameInput {
@@ -23,15 +24,23 @@ public class ReceivingRacingGameInput {
     }
 
     public int receiveRoundNumber() {
-        int roundNumber = 0;
-        try{
+        String roundNumber;
+        do {
             System.out.println("시도할 회수는 몇회인가요?");
-            String receivedInput = scanner.nextLine();
-            roundNumber = Integer.parseInt(receivedInput);
-        }catch (NumberFormatException numberFormatException) {
-            receiveRoundNumber();
-        }
-        return roundNumber;
+            roundNumber = scanner.nextLine();
+        }while(isEmptyOrNull(roundNumber) || !isNumber(roundNumber));
+        return Integer.parseInt(roundNumber);
+    }
 
+    private boolean isEmptyOrNull(String roundNumber) {
+        return Objects.isNull(roundNumber) || roundNumber.isEmpty();
+    }
+
+    private boolean isNumber(String roundNumber) {
+        try {
+            return Integer.valueOf(roundNumber) instanceof Integer;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
