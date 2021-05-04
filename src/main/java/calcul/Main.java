@@ -22,10 +22,10 @@ public class Main {
                 result = calculator.add(result, Integer.parseInt(split[i + 1]));
             } else if (split[i].equals("-")) {
 
-                result = calculator.sub(result, Integer.parseInt(split[i + 1]));
+                result = calculator.subtract(result, Integer.parseInt(split[i + 1]));
             } else if (split[i].equals("*")) {
 
-                result = calculator.multi(result, Integer.parseInt(split[i + 1]));
+                result = calculator.multiply(result, Integer.parseInt(split[i + 1]));
             } else if (split[i].equals("/")) {
 
                 result = calculator.division(result, Integer.parseInt(split[i + 1]));

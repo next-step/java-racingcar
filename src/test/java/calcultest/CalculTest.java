@@ -20,13 +20,13 @@ public class CalculTest {
     @Test
     void subTest(){
 
-        assertEquals(5, calculator.sub(8, 3));
+        assertEquals(5, calculator.subtract(8, 3));
     }
 
     @Test
     void multiTest(){
 
-        assertEquals(6, calculator.multi(2, 3));
+        assertEquals(6, calculator.multiply(2, 3));
     }
 
     @Test
