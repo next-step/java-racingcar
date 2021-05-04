@@ -12,32 +12,48 @@ import static calculator.view.Output.outputStartMessage;
 import static calculator.view.Output.resultOutput;
 
 public class Calculator {
-    private static final String LETTER = "[^0-9]";
+    private static final String NOT_NUMBER_PATTERN = "[^0-9]";
     private static final String THE_END_IS_NOT_NUMBER = "[0-9]*$";
     private static final String IS_NOT_MATH_EXPRESSION = "[^0-9+\\-*/]";
     private static final String MAKE_EMPTY = "";
-    private static final int HAS_NUMBER = 1;
+    private static final int HAVE_NOT_APPENDED_NUMBER = 1;
+
+    public void printResult() {
+        Calculator calculator = new Calculator();
+        outputStartMessage();
+        resultOutput(calculator.makeResult(makeSlicedMathExpression()));
+    }
 
     public double calculate(double firstNumber, String operator, double secondNumber) {
-        if (operator.equals(PLUS.getMathSymbol())) {
-            return firstNumber + secondNumber;
+        if (PLUS.isSame(operator)) {
+            return plus(firstNumber, secondNumber);
         }
-        if (operator.equals(MINUS.getMathSymbol())) {
-            return firstNumber - secondNumber;
+        if (MINUS.isSame(operator)) {
+            return minus(firstNumber, secondNumber);
         }
-        if (operator.equals(MULTIPLE.getMathSymbol())) {
-            return firstNumber * secondNumber;
+        if (MULTIPLE.isSame(operator)) {
+            return multiple(firstNumber, secondNumber);
         }
-        if (operator.equals(DIVIDE.getMathSymbol())) {
-            return firstNumber / secondNumber;
+        if (DIVIDE.isSame(operator)) {
+            return divide(firstNumber, secondNumber);
         }
         throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
     }
 
-    public void printResult(){
-        Calculator calculator = new Calculator();
-        outputStartMessage();
-        resultOutput(calculator.makeResult(makeSlicedMathExpression()));
+    private double plus(double firstNumber, double secondNumber) {
+        return firstNumber + secondNumber;
+    }
+
+    private double minus(double firstNumber, double secondNumber) {
+        return firstNumber - secondNumber;
+    }
+
+    private double multiple(double firstNumber, double secondNumber) {
+        return firstNumber * secondNumber;
+    }
+
+    private double divide(double firstNumber, double secondNumber) {
+        return firstNumber / secondNumber;
     }
 
     private double makeResult(List<String> mathExpressions) {
@@ -54,21 +70,33 @@ public class Calculator {
 
     private List<String> makeSlicedMathExpression() {
         String enteredMathExpression = inputMathExpression();
-        validation(enteredMathExpression);
+        validate(enteredMathExpression);
         String[] slicedMathExpression = sliceMathExpression(enteredMathExpression);
-        List<String> slicedMathExpressions = convertArrayToList(slicedMathExpression);
+        List<String> slicedMathExpressions = convertSplitExpressionArrayToList(slicedMathExpression);
         return slicedMathExpressions;
     }
 
-    private void validation(String mathExpression){
-        if (mathExpression.trim().isEmpty()) {
-            throw new IllegalArgumentException(INPUT_NULL_MESSAGE);
+    private void validate(String mathExpression) {
+        isInputNull(mathExpression);
+        isNotMathExpression(mathExpression);
+        isTheEndNotNumber(mathExpression);
+    }
+
+    private void isTheEndNotNumber(String mathExpression) {
+        if (Pattern.matches(THE_END_IS_NOT_NUMBER, mathExpression)) {
+            throw new IllegalArgumentException(THE_END_IS_NOT_NUMBER_MESSAGE);
         }
+    }
+
+    private void isNotMathExpression(String mathExpression) {
         if (Pattern.matches(IS_NOT_MATH_EXPRESSION, mathExpression)) {
             throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
         }
-        if (Pattern.matches(THE_END_IS_NOT_NUMBER, mathExpression)) {
-            throw new IllegalArgumentException(THE_END_IS_NOT_NUMBER_MESSAGE);
+    }
+
+    private void isInputNull(String mathExpression) {
+        if (mathExpression.trim().isEmpty()) {
+            throw new IllegalArgumentException(DO_NOT_INPUT_NULL_MESSAGE);
         }
     }
 
@@ -76,12 +104,12 @@ public class Calculator {
         return mathExpression.split("");
     }
 
-    private List<String> convertArrayToList(String[] splitMathExpression) {
+    private List<String> convertSplitExpressionArrayToList(String[] splitMathExpression) {
         List<String> mathExpressions = new ArrayList<>();
         String integerOfMathExpression = MAKE_EMPTY;
 
         for (String mathSymbol : splitMathExpression) {
-            if (Pattern.matches(LETTER, mathSymbol)) {
+            if (isNotNumberPattern(mathSymbol)) {
                 mathExpressions.add(integerOfMathExpression);
                 mathExpressions.add(mathSymbol);
                 integerOfMathExpression = MAKE_EMPTY;
@@ -89,9 +117,23 @@ public class Calculator {
             }
             integerOfMathExpression = integerOfMathExpression.concat(mathSymbol);
         }
-        if (integerOfMathExpression.length() >= HAS_NUMBER) {
+        if (haveIntegerExpression(integerOfMathExpression)) {
             mathExpressions.add(integerOfMathExpression);
         }
         return mathExpressions;
+    }
+
+    private boolean isNotNumberPattern(String mathSymbol) {
+        if (Pattern.matches(NOT_NUMBER_PATTERN, mathSymbol)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean haveIntegerExpression(String integerOfMathExpression) {
+        if (integerOfMathExpression.length() >= HAVE_NOT_APPENDED_NUMBER) {
+            return true;
+        }
+        return false;
     }
 }
