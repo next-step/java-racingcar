@@ -23,4 +23,16 @@ public class Racecourse {
 	public int getCount() {
 		return count;
 	}
+
+	public void run() {
+		for (int i = 0; i < count; i++) {
+			moveAll();
+		}
+	}
+
+	private void moveAll() {
+		for (Car car : cars) {
+			car.move(new MoveCondition());
+		}
+	}
 }

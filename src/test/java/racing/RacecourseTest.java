@@ -16,4 +16,12 @@ class RacecourseTest {
 		assertThat(racecourse.getCarsSize()).isEqualTo(3);
 		assertThat(racecourse.getCount()).isEqualTo(5);
 	}
+
+	@Test
+	@DisplayName("경주장 시작 테스트")
+	void startRacecourseTest() {
+		Racecourse racecourse = new Racecourse();
+		racecourse.init(new Command(5, "pobi,crong,honux"));
+		racecourse.run();
+	}
 }
