@@ -1,6 +1,8 @@
 package racing.domain;
 
-public class Car {
+import java.util.Objects;
+
+public class Car implements Comparable<Car>{
     private CarName carName;
     private Distance distance;
     private MovableStrategy movableStrategy;
@@ -21,6 +23,10 @@ public class Car {
         }
     }
 
+    public boolean isSameDistance(Distance distance) {
+        return Objects.equals(this.distance, distance);
+    }
+
     public Distance getDistance() {
         return this.distance;
     }
@@ -31,5 +37,13 @@ public class Car {
 
     public String carName() {
         return this.carName.getName();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        if(this.distance() > o.distance()) {
+            return 1;
+        }
+        return -1;
     }
 }
