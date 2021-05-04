@@ -6,8 +6,7 @@ public class Util {
      */
     public static String[] getSplitInputs(String input) {
         input = validateInput(input);
-        String[] names = input.split(",");
-        return names;
+        return input.split(",");
     }
 
     /**
