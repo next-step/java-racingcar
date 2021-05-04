@@ -64,4 +64,15 @@ public class CarTest {
 			assertThat(car.getMoveCount()).isEqualTo(1);
 		}
 	}
+
+	@Test
+	@DisplayName("자동차 출력 테스트")
+	void printCarTest() {
+		Car car = new Car("honux");
+		MoveStatus status = MoveStatus.FORWARD;
+		MoveCondition condition = new MoveCondition(status);
+		car.move(condition);
+		car.move(condition);
+		car.print();
+	}
 }
