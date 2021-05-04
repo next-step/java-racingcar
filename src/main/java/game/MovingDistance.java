@@ -29,10 +29,10 @@ public class MovingDistance {
 	}
 
 	public String displayDistance() {
-		String displayDistance = "";
+		StringBuilder displayDistance = new StringBuilder();
 		for (int i = 0; i < this.distance; i++) {
-			displayDistance += DISTANCE_STR;
+			displayDistance.append(DISTANCE_STR);
 		}
-		return displayDistance;
+		return displayDistance.toString();
 	}
 }
