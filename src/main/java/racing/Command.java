@@ -1,10 +1,10 @@
 package racing;
 
-public class Command {
-	public static final String DELIMITER = ",";
+import static racing.Constant.*;
 
-	private int count;
-	private String[] names;
+public class Command {
+	private final int count;
+	private final String[] names;
 
 	public Command(int moveCount, String nameLine) {
 		this.count = moveCount;

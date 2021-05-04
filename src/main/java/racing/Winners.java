@@ -1,17 +1,16 @@
 package racing;
 
+import static racing.Constant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
-	public static final int FIRST_WINNER = 0;
-	public static final String DELIMITER = ",";
-
 	private final List<Winner> winners = new ArrayList<>();
 
 	public Winners(List<Car> cars) {
 		if (cars.isEmpty()) {
-			throw new IllegalArgumentException("참가하는 자동차가 없습니다.");
+			throw new IllegalArgumentException(ERR_EMPTY_CARS);
 		}
 
 		List<Car> copyList = new ArrayList<>(cars);

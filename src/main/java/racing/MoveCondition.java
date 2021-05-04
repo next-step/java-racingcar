@@ -1,14 +1,13 @@
 package racing;
 
-public class MoveCondition {
-	public static final int BOUNDARY_VALUE = 4;
-	public static final int SCOPE_MAX = 10;
+import static racing.Constant.*;
 
+public class MoveCondition {
 	private final MoveStatus status;
 
 	public MoveCondition() {
-		int randomValue = (int)(Math.random() * SCOPE_MAX);
-		this.status = randomValue < BOUNDARY_VALUE ? MoveStatus.STOP : MoveStatus.FORWARD;
+		int randomValue = (int)(Math.random() * CONDITION_MAX_RANDOM_VALUE);
+		this.status = randomValue < CONDITION_BOUNDARY_VALUE ? MoveStatus.STOP : MoveStatus.FORWARD;
 	}
 
 	public MoveCondition(MoveStatus status) {
