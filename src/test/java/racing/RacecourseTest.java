@@ -18,10 +18,10 @@ class RacecourseTest {
 	}
 
 	@Test
-	@DisplayName("경주장 시작 테스트")
-	void startRacecourseTest() {
+	@DisplayName("전체 자동차 이동 테스트")
+	void racecourseMoveAllTest() {
 		Racecourse racecourse = new Racecourse();
 		racecourse.init(new Command(5, "pobi,crong,honux"));
-		racecourse.run();
+		racecourse.moveAll();
 	}
 }

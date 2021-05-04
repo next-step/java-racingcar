@@ -30,7 +30,7 @@ public class Racecourse {
 		}
 	}
 
-	private void moveAll() {
+	public void moveAll() {
 		for (Car car : cars) {
 			car.move(new MoveCondition());
 		}
