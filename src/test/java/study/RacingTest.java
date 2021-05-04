@@ -1,23 +1,20 @@
-package jung;
+package study;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.*;
 
-public class RacingGame {
+public class RacingTest {
+
     int random = 0;
     int count = 0;
     HashMap<String, String> hash = new HashMap<String, String>();
     ArrayList<String> winner = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
 
-    RacingGame() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        count = scan.nextInt();
-    }
-
-    /**
-     * 움직이는 메서드
-     */
+    @ParameterizedTest
+    @ValueSource(ints = {1,3,4,5}, strings = {"testCar"})
     void isMove(int random, String carName) {
         if ((random >= 4) && hash.get(carName) == null) {
             hash.put(carName, "-");
@@ -54,22 +51,4 @@ public class RacingGame {
             }
         }
     }
-
-    /**
-     * 레이싱 시작메서
-     */
-        void racingStart (String[]cars){
-            for (int i = 0; i < count; i++) {
-                for (int j = 0; j < cars.length; j++) {
-                    random = (int) (Math.random() * 10);
-                    isMove(random, cars[j]);
-                }
-                display(cars);
-            }
-            win(cars);
-            System.out.print("최종 우승자 : ");
-            for(String winner : winner){
-                System.out.println(winner);
-            }
-        }
-    }
+}
