@@ -19,6 +19,6 @@ public class Validation {
 	}
 
 	public static boolean isValidRepeatTime(String repeatTime) {
-		return !repeatTime.startsWith("0") && repeatTime.matches("^[0-9]+$");
+		return repeatTime.length() > 0 && !repeatTime.startsWith("0") && repeatTime.matches("^[0-9]+$");
 	}
 }

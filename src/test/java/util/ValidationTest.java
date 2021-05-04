@@ -31,13 +31,15 @@ class ValidationTest {
 	public void isValidRepeatTimeTest() {
 		boolean validRepeatTime1 = Validation.isValidRepeatTime("5");
 		boolean validRepeatTime2 = Validation.isValidRepeatTime("100");
-		boolean invalidRepeatTime1 = Validation.isValidRepeatTime("0");
+		boolean invalidRepeatTime1 = Validation.isValidRepeatTime("012");
 		boolean invalidRepeatTime2 = Validation.isValidRepeatTime("-1");
 		boolean invalidRepeatTime3 = Validation.isValidRepeatTime("textinput");
+		boolean invalidRepeatTime4 = Validation.isValidRepeatTime("");
 		assertThat(validRepeatTime1).as("Failure - Parameter String is invalid: ").isTrue();
 		assertThat(validRepeatTime2).as("Failure - Parameter String is invalid: ").isTrue();
 		assertThat(invalidRepeatTime1).as("Failure - Parameter String is valid: ").isFalse();
 		assertThat(invalidRepeatTime2).as("Failure - Parameter String is valid: ").isFalse();
 		assertThat(invalidRepeatTime3).as("Failure - Parameter String is valid: ").isFalse();
+		assertThat(invalidRepeatTime4).as("Failure - Parameter String is valid: ").isFalse();
 	}
 }
