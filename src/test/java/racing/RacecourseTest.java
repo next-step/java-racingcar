@@ -10,7 +10,7 @@ class RacecourseTest {
 
 	@Test
 	@DisplayName("경주장 생성 및 초기화 테스트")
-	void createRacecourseTest() {
+	void createTest() {
 		Racecourse racecourse = new Racecourse();
 		racecourse.init(new Command(5, "pobi,crong,honux"));
 		assertThat(racecourse.getCarsSize()).isEqualTo(3);
@@ -19,7 +19,7 @@ class RacecourseTest {
 
 	@Test
 	@DisplayName("전체 자동차 이동 테스트")
-	void racecourseMoveAllTest() {
+	void moveAllTest() {
 		Racecourse racecourse = new Racecourse();
 		racecourse.init(new Command(5, "pobi,crong,honux"));
 		racecourse.moveAll();
@@ -27,7 +27,7 @@ class RacecourseTest {
 
 	@Test
 	@DisplayName("경주장 실행 테스트")
-	void racecourseRunTest() {
+	void runTest() {
 		Racecourse racecourse = new Racecourse();
 		racecourse.init(new Command(5, "pobi,crong,honux"));
 		racecourse.run();
@@ -35,14 +35,14 @@ class RacecourseTest {
 
 	@Test
 	@DisplayName("경주장 결과 실패 테스트")
-	void racecourseGetWinnerFailTest() {
+	void getWinnerFailTest() {
 		Racecourse racecourse = new Racecourse();
 		assertThatIllegalArgumentException().isThrownBy(racecourse::getWinners)
 											.withMessage("참가하는 자동차가 없습니다.");
 	}
 	@Test
 	@DisplayName("경주장 결과 확인 : 단일 우승자")
-	void racecourseGetWinnerTest() {
+	void getWinnerTest() {
 		Car honux = makeCar("honux", 3);
 		Car donny = makeCar("donny", 2);
 		Car tony = makeCar("tony", 4);
@@ -58,7 +58,7 @@ class RacecourseTest {
 
 	@Test
 	@DisplayName("경주장 결과 확인 : 복수 우승자")
-	void racecourseGetWinnersTest() {
+	void getWinnersTest() {
 		Car honux = makeCar("honux", 2);
 		Car donny = makeCar("donny", 2);
 		Car tony = makeCar("tony", 1);

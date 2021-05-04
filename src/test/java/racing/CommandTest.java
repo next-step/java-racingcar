@@ -10,7 +10,7 @@ public class CommandTest {
 
 	@Test
 	@DisplayName("커맨드 생성 테스트")
-	void createCommandTest() {
+	void createTest() {
 		int count = 5;
 		String nameLine = "pobi,crong,honux";
 		Command command = new Command(count, nameLine);
