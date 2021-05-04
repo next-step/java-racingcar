@@ -36,20 +36,19 @@ public class CalculTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"88", " "})
+    @ValueSource(strings = {"   "})
     void nullCheckTest(String input) {
-
         assertThatIllegalArgumentException().isThrownBy(() -> {
             calculator.nullCheck(input);
         });
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " "})
-    void operCheckTest(String input) {
+    @ValueSource(strings = {"@"})
+    void operationCheckTest(String input) {
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.operationCheck (input);
+            calculator.operationCheck(input);
         });
     }
 }
