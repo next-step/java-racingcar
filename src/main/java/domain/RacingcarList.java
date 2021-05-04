@@ -6,6 +6,8 @@ import java.util.List;
 import util.InputView;
 
 public class RacingcarList {
+	private static final String WINNER_DELIMITER = ", ";
+	private static final String STAGE_DELIMITER = " : ";
 	private static final List<Racingcar> racingcarList = new ArrayList<>();
 	private static final List<String> winnerList = new ArrayList<>();
 	private static int maxPosition;
@@ -40,14 +42,14 @@ public class RacingcarList {
 			printEachStage(racingcarList);
 		}
 		List<String> winnerList = RacingcarList.getWinner(racingcarList);
-		System.out.println(String.join(", ", winnerList) + "이(가) 최종 우승했습니다.");
+		InputView.getWinnerResult(String.join(WINNER_DELIMITER, winnerList));
 	}
 
 	public static void printEachStage(List<Racingcar> racingcarList) {
 		for (Racingcar racingcar : racingcarList) {
 			racingcar.setPosition();
-			System.out.println(racingcar.getCarName() + " : " + racingcar.getCarPosition());
+			InputView.getStageResult(STAGE_DELIMITER, racingcar);
 		}
-		System.out.println();
+		InputView.getEmptyLine();
 	}
 }
