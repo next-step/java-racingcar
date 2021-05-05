@@ -30,16 +30,15 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints ={1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void 셋존재값확인(int number) {
         Assertions.assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"},delimiter = ':')
-    void 셋존재값확인2(int number,boolean result) {
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void 셋존재값확인2(int number, boolean result) {
 
-        org.junit.jupiter.api.Assertions.assertEquals(result,numbers.contains(number));
         Assertions.assertThat(result).isEqualTo(numbers.contains(number));
     }
 }

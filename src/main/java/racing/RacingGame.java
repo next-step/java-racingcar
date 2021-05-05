@@ -1,31 +1,27 @@
 package racing;
 
-import racing.utils.ConvertString;
-import racing.utils.RandomNumber;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static racing.utils.RandomNumber.makeOneRandomNumber;
 import static racing.view.Input.makeGameRepeatCount;
-import static racing.view.Input.makeCarString;
+import static racing.view.Input.makeCarNames;
 import static racing.view.Output.*;
 
 public class RacingGame {
+    public static String SEPARATOR = ",";
 
     public void gameStart() {
-        ConvertString convertString = new ConvertString();
-
         printStartMessage();
-        String carString = makeCarString();
-        printCount();
+        String carNames = makeCarNames();
+        printInputCountMessage();
         int count = makeGameRepeatCount();
-        printResult();
+        printResultMessage();
 
-        String[] carNameArray = convertString.splitStrings(carString);
+        String[] carNameArray = carNames.split(SEPARATOR);
         List<Car> carList = makeCarList(carNameArray);
 
-        repeatMoveCountChange(count, carList);
+        repeatMoveCars(count, carList);
         printWinMessage(findWinner(carList));
     }
 
@@ -38,42 +34,37 @@ public class RacingGame {
         return carList;
     }
 
-    private void repeatMoveCountChange(int count, List<Car> carList) {
+    private void repeatMoveCars(int count, List<Car> carList) {
         for (int i = 0; i < count; i++) {
-            moveCountChange(carList);
-            printNowDistance(carList);
+            moveCars(carList);
         }
     }
 
-    private void moveCountChange(List<Car> carList) {
+    private void moveCars(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(makeRandomNumber());
+            carList.get(i).move(makeOneRandomNumber());
         }
-    }
-
-    private int makeRandomNumber() {
-        return makeOneRandomNumber();
+        printNowDistance(carList);
     }
 
     private List<String> findWinner(List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
-        int winnerCount = 0;
-
-        for (int i = 0; i < carList.size(); i++) {
-            winnerCount = findWinnerCount(carList.get(i), winnerCount, winnerList);
+        int winnerCondition = findWinnerCondition(carList);
+        for(Car car :carList){
+            if(car.getMoveCount() == winnerCondition){
+                winnerList.add(car.getName());
+            }
         }
         return winnerList;
     }
 
-    private int findWinnerCount(Car car, int winnerCount, List<String> winnerList) {
-        if (car.getMoveCount() == winnerCount) {
-            winnerList.add(car.getName());
+    private int findWinnerCondition(List<Car> carList) {
+        int winnerCondition =0;
+        for(Car car :carList){
+            if(car.getMoveCount() >= winnerCondition){
+                winnerCondition = car.getMoveCount();
+            }
         }
-        if (car.getMoveCount() > winnerCount) {
-            winnerList.clear();
-            winnerCount = car.getMoveCount();
-            winnerList.add(car.getName());
-        }
-        return winnerCount;
+        return winnerCondition;
     }
 }

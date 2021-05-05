@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Input {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String makeCarString() {
+    public static String makeCarNames() {
         return scanner.nextLine();
     }
 
