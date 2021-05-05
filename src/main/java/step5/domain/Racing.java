@@ -1,11 +1,16 @@
-package step4;
+package step5.domain;
 
-import java.util.*;
+import step5.view.Print;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Racing {
     final Print print = new Print();
-    private static final RacingRule racingRule = new RacingRule();
+    private static final RacingRule RACING_RULE = new RacingRule();
 
     public Racing(String[] carNames, int lapCount) {
         List<Car> cars = getCarReady(carNames);
@@ -23,7 +28,7 @@ public class Racing {
 
     private void onRacing(List<Car> cars, int lapCount) {
         print.startLap();
-        racingRule.goCars(cars);
+        RACING_RULE.goCars(cars);
         print.racing(cars);
         lapCount--;
         if (lapCount > 0) {
@@ -43,8 +48,7 @@ public class Racing {
     }
 
     private static int winnerPosition(List<Car> cars) {
-//        return cars.stream().max(Comparator.comparingInt(Car::getPosition)).orElseThrow( NullPointerException::new).getPosition();
-        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);    // 더 간단하게 가능
+        return cars.stream().mapToInt(Car::getPosition).max().orElse(0);
     }
 
 }

@@ -1,4 +1,4 @@
-package step4;
+package step5;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -6,31 +6,33 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import step5.domain.Car;
+import step5.domain.Racing;
+import step5.domain.RacingRule;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static step4.InputPrint.getSplitInputs;
 
 class RacingTest {
 
-    @Test
-    void 이름입력_테스트() {
+    @ParameterizedTest
+    @CsvSource(value = {" m oon  = moon", "m iha  = miha"}, delimiter = '=')
+    void 자동차이름_테스트(String input, String expected) {
         // given & when
-        String[] names = getSplitInputs("moon ,ch ild , IU, ");
-        String[] expect = {"moon", "child", "IU"};
+        Car car = new Car(input);
         // then
-        assertThat(names).isEqualTo(expect);
+        assertThat(car.getName()).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"   ", " , ,", "", "moonchild, IU"})
-    void 이름_예외테스트(String input) {
+    @ValueSource(strings = {"   ", " , ,", "", "m o on child, IU", "moonchild, IU"})
+    void 자동차이름_예외테스트(String input) {
         // given & when
         Throwable thrown = catchThrowable(() -> {
-            getSplitInputs(input);
+            new Car(input);
         });
         // then
         Assertions.assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
@@ -69,30 +71,18 @@ class RacingTest {
     @Test
     void 우승자구하기() {
         // given
-        RacingRule rule = new RacingRule();
-        List<Car> cars = new ArrayList<>();
+        Car car1 = new Car("IU", 3);
+        Car car2 = new Car("moon", 1);
+        Car car3 = new Car("shine", 2);
+        Car car4 = new Car("miha", 3);
 
-        Car car1 = new Car("IU");
-        rule.go(car1, 4);
-        rule.go(car1, 4);
-        Car car2 = new Car("moon");
-        rule.go(car2, 1);
-        Car car3 = new Car("shine");
-        rule.go(car3, 1);
-        Car car4 = new Car("miha");
-        rule.go(car4, 4);
-        rule.go(car4, 4);
-
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        cars.add(car4);
+        List<Car> cars = Arrays.asList(car1, car2, car3, car4);
 
         // when
         String winner = Racing.getWinnersName(cars);
 
         // then
-        assertThat(winner).contains("IU", "miha").doesNotContain("monn","shine");
+        assertThat(winner).contains("IU", "miha").doesNotContain("moon", "shine");
     }
 
 }
