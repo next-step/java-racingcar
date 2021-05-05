@@ -24,7 +24,7 @@ public class CarTest {
 
     @Test
     @DisplayName("난수가 4미만일때 거리변화 없음")
-    public void notMoveTest(){
+    public void notMoveTest() {
         //given
         Car car = new Car("aaa");
         int randomNumber = 2;
@@ -38,9 +38,9 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"3:0","4:1","5:1","6:1"},delimiter = ':')
+    @CsvSource(value = {"3:0", "4:1", "5:1", "6:1"}, delimiter = ':')
     @DisplayName("난수가 4미만일때 거리변화 없음 5이상일경우 변화 있음")
-    public void 난수의조건을모두체크(int randomNumber,int changedMoveCount){
+    public void 난수의조건을모두체크(int randomNumber, int changedMoveCount) {
         //given
         Car car = new Car("aaa");
 

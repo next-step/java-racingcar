@@ -16,11 +16,10 @@ public class Car {
     }
 
     private void validateLength(String name) {
-        if(name.length() > 5){
+        if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
         }
     }
-
 
     public String getName() {
         return name;

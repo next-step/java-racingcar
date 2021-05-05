@@ -50,8 +50,8 @@ public class RacingGame {
     private List<String> findWinner(List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
         int winnerCondition = findWinnerCondition(carList);
-        for(Car car :carList){
-            if(car.getMoveCount() == winnerCondition){
+        for (Car car : carList) {
+            if (car.getMoveCount() == winnerCondition) {
                 winnerList.add(car.getName());
             }
         }
@@ -59,9 +59,9 @@ public class RacingGame {
     }
 
     private int findWinnerCondition(List<Car> carList) {
-        int winnerCondition =0;
-        for(Car car :carList){
-            if(car.getMoveCount() >= winnerCondition){
+        int winnerCondition = 0;
+        for (Car car : carList) {
+            if (car.getMoveCount() >= winnerCondition) {
                 winnerCondition = car.getMoveCount();
             }
         }
