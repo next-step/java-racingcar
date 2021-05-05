@@ -15,11 +15,10 @@
 
 
 #### racing car: 미션 진행 중 
-
 [A]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/StringTest.md
 [B]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/StringTest.java
 [C]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/SetTest.md
 [D]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/SetTest.java
-[E]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step2/Calculator.md
-[F]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/main/java/step2/Calculator.java
-[G]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step2/CalculatorTest.java
+[E]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/calculator/Calculator.md
+[F]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/main/java/calculaor/Calculator.java
+[G]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/calculaor/CalculatorTest.java
