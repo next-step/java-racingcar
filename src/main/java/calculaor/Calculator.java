@@ -1,11 +1,13 @@
 package calculaor;
 
 public class Calculator {
+    // 변수 지정
+    private static final String spiltValue = " ";
 
     // 기능 구현 목록
     // input 값
     public String[] inputValue(String input) {
-        return input.split(" ");
+        return input.split(spiltValue);
     }
 
     // 1. 사칙연산 기능
