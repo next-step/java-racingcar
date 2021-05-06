@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class Calculator {
 
-    public static int calculate(String str) {
+    public int calculate(String str) {
 
         Queue<String> tokens = new ArrayDeque<>(Arrays.asList(str.split(" ")));
 
@@ -14,7 +14,6 @@ public class Calculator {
         while (!tokens.isEmpty()) {
             Operator operator = Operator.getOperator(tokens.remove());
             int token = Integer.parseInt(tokens.remove());
-
             accumulator = operator.calculation.apply(accumulator, token);
         }
 
