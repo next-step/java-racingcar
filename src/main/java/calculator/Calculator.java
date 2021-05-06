@@ -24,35 +24,7 @@ public class Calculator {
     }
 
     public double calculate(double firstNumber, String operator, double secondNumber) {
-        if (PLUS.isSame(operator)) {
-            return plus(firstNumber, secondNumber);
-        }
-        if (MINUS.isSame(operator)) {
-            return minus(firstNumber, secondNumber);
-        }
-        if (MULTIPLE.isSame(operator)) {
-            return multiple(firstNumber, secondNumber);
-        }
-        if (DIVIDE.isSame(operator)) {
-            return divide(firstNumber, secondNumber);
-        }
-        throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
-    }
-
-    private double plus(double firstNumber, double secondNumber) {
-        return firstNumber + secondNumber;
-    }
-
-    private double minus(double firstNumber, double secondNumber) {
-        return firstNumber - secondNumber;
-    }
-
-    private double multiple(double firstNumber, double secondNumber) {
-        return firstNumber * secondNumber;
-    }
-
-    private double divide(double firstNumber, double secondNumber) {
-        return firstNumber / secondNumber;
+        return findValidatedSymbol(operator).operate(firstNumber, secondNumber);
     }
 
     private double makeResult(List<String> mathExpressions) {
