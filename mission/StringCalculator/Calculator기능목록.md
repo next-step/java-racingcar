@@ -15,7 +15,7 @@ StringCalculator
 - 사용자 입출력에 관한 테스트는 어려움
 - 다른 객체와 로직위주의 테스트 실행
 ##### main 클래스
-- [ ] 빈값 (null 값 or 공백) 판단하기 : `Input#checkBlank`  
+- [x] 빈값 (null 값 or 공백) 판단하기 : `Input#checkBlank`  
 - [ ] 빈값 예외 처리 : `Input#blankErrorException`
 - [ ] input 값 `" "`기준으로 split하기 : `Input#Splitter` 
 - [ ] 사칙연산 기능(덧셈, 뺄셈, 곱셈, 나눗셈) 생성 : `Calculator#add/sub(subtract)/mul(multiply)/div(divide)` 
@@ -26,7 +26,8 @@ StringCalculator
 - [ ] input 값 사칙연산 수행(if 구문 하나만 사용) : `Calculator#calculation`
 
 ##### test 클래스
-- [ ] 빈값 테스트 : `InputTest#checkBlank`  
+- [x] 빈값 테스트 : `Input#checkBlank`  
+- " "은 통과하는데, null 값은 통과 안 됨
 - [ ] 빈값 예외 처리 테스트 : `InputTest#blankErrorException`
 - [ ] input 값 `" "`기준으로 split 테스트 : `InputTest#Splitter` 
 - [ ] 사칙연산 기능 테스트 : `CalculatorTest#add/sub(subtract)/mul(multiply)/div(divide)` 
@@ -41,5 +42,5 @@ StringCalculator
 - [test 클래스][T]
 
 [M]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/main/java/calculaor
-[T]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/test/java/calculaorTest
+[T]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/test/java/calculaor
 
