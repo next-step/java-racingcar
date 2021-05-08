@@ -19,6 +19,6 @@
 [B]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/StringTest.java
 [C]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/SetTest.md
 [D]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/SetTest.java
-[E]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/calculator/Calculator.md
-[F]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/main/java/calculaor/Calculator.java
-[G]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/calculaor/CalculatorTest.java
+[E]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/Calculator/Calculator%EA%B8%B0%EB%8A%A5%EB%AA%A9%EB%A1%9D.md
+[F]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/main/java/calculaor
+[G]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/calculaor
