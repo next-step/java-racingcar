@@ -11,10 +11,10 @@ StringCalculator
 - 예를 들어 "2 + 3 * 4 / 2"와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
 
 #### 기능 구현 목록
+- input 객체 : `Input#inputValue`
+- 사용자 입출력에 관한 테스트는 어려움
+- 다른 객체와 로직위주의 테스트 실행
 ##### main 클래스
-- [x] input 받기 : `Input#inputValue`
-- 사용자 입출력에 관한 테스트는 어려움 
-    => 로직위주의 테스트 해보기
 - [ ] 빈값 (null 값 or 공백) 판단하기 : `Input#checkBlank`  
 - [ ] 빈값 예외 처리 : `Input#blankErrorException`
 - [ ] input 값 `" "`기준으로 split하기 : `Input#Splitter` 
