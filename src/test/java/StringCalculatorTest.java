@@ -1,9 +1,28 @@
+import org.assertj.core.internal.Strings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
+    @DisplayName(value = "입력값이 빈 문자열이거나 null 이라면 IllegalArgumentException을 발생시킨다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  "})
+    void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
+        assertTrue(Strings.isBlank(input));
+    }
+
+    @DisplayName(value = " + , - , * , / 외의 연산자를 입력하면 IllegalArgumentException을 발생시킨다.")
+    @Test
+    void operatorTest() {
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "5 ! 0";
+
+        stringCalculator.makeResult(input);
+    }
+
     @DisplayName(value = "두 숫자를 더할 수 있다.")
     @Test
     void additionTest() {
@@ -38,6 +57,15 @@ public class StringCalculatorTest {
         String input = "6 / 3";
 
         assertThat(stringCalculator.makeResult(input)).isEqualTo(2);
+    }
+
+    @DisplayName(value = "0으로 나누면 IllegalArgumentException을 발생시킨다.")
+    @Test(expected = IllegalArgumentException.class)
+    void divideByZero() throws Exception{
+        StringCalculator stringCalculator = new StringCalculator();
+        String input = "5 / 0";
+
+        stringCalculator.makeResult(input);
     }
 
     @DisplayName(value = "세 숫자를 더할 수 있다.")

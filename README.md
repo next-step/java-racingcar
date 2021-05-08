@@ -1,11 +1,11 @@
 # 문자열 계산기
 ##string calculator 구현 기능 목록
 [ x ] 사용자가 수식을 문자열로 입력한다.\
-[ x ] 빈 문자열이거나 null 이라면 RuntimeException을 발생시킨다.\
+[ x ] 입력값이 빈 문자열이거나 null 이라면 IllegalArgumentException을 발생시킨다.\
 [ x ] 그렇지 않다면 공백을 기준으로 문자열을 쪼개서 String 배열에 저장한다.\
 [ x ] 수식의 첫번째 숫자를 result 변수에 저장한다.\
 [ x ] 수식의 첫번째 연산자에 따라 첫번째 숫자와 두번째 숫자를 계산한다.\
-[ x ] 연산자 자리에 + , - , * , / 외의 문자가 입력되었다면 RuntimeException을 발생시킨다.\
+[ x ] 연산자 자리에 + , - , * , / 외의 문자가 입력되었다면 IllegalArgumentException을 발생시킨다.\
 [ x ] 0 으로 나눈다면 RuntimeException을 발생시킨다.
 [ x ] 앞서 계산한 값은 result 변수에 저장하여 그 다음 숫자와 다시 계산한다.
 

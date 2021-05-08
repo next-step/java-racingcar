@@ -9,62 +9,65 @@ public class StringCalculator {
 
     public int makeResult(String input) {
         if (isBlank(input))
-            throw new RuntimeException();
-        return calculateSplitedString(splitBlank(input));
+            throw new IllegalArgumentException();
+        return calculateSplitedString(splitByBlank(input));
     }
 
-    private boolean isBlank(String input) {
-        if (input.equals(" ") || input == null)
+    public boolean isBlank(String input) {
+        if (input.equals(" ") || input == null) {
             return true;
+        }
         return false;
     }
 
-    private String[] splitBlank(String str) {
-        return str.split(" ");
+    private String[] splitByBlank(String input) {
+        return input.split(" ");
     }
 
     private int calculateSplitedString(String[] str) {
-        int result = toInt(str[0]);
-        for (int i = 0; i < str.length - 2; i += 2) {
-            result = calculate(result, str[i + 1].charAt(0), toInt(str[i + 2]));
+        int result = convertToInt(str[0]);
+        int calculateCount = str.length - 2;
+        int numberStep = 2;
+        for (int i = 0; i < calculateCount; i += numberStep) {
+            result = calculate(result, str[i + 1].charAt(0), convertToInt(str[i + 2]));
         }
         return result;
     }
 
-    private int toInt(String str) {
+    private int convertToInt(String str) {
         return Integer.parseInt(str);
     }
 
-    private int calculate(int firstValue, char operator, int secondValue) {
+    private int calculate(int firstNumber, char operator, int secondNumber) {
         if (operator == '+')
-            return add(firstValue, secondValue);
+            return add(firstNumber, secondNumber);
         if (operator == '-')
-            return subtract(firstValue, secondValue);
+            return subtract(firstNumber, secondNumber);
         if (operator == '*')
-            return multiply(firstValue, secondValue);
+            return multiply(firstNumber, secondNumber);
         if (operator == '/')
-            return divide(firstValue, secondValue);
-        throw new RuntimeException();
+            return divide(firstNumber, secondNumber);
+        throw new IllegalArgumentException();
     }
 
-    private int add(int i, int j) {
-        return i + j;
+    private int add(int firstNumber, int secondNumber) {
+        return firstNumber + secondNumber;
     }
 
-    private int subtract(int i, int j) {
-        return i - j;
+    private int subtract(int firstNumber, int secondNumber) {
+        return firstNumber - secondNumber;
     }
 
-    private int multiply(int i, int j) {
-        return i * j;
+    private int multiply(int firstNumber, int secondNumber) {
+        return firstNumber * secondNumber;
     }
 
-    private int divide(int i, int j) {
+    private int divide(int dividedNumber, int dividingNumber) {
         try {
-            return i / j;
-        } catch (ArithmeticException e) {
+            return dividedNumber / dividingNumber;
+        } catch (IllegalArgumentException e) {
             System.out.println("숫자 0으로 나눌 수 없습니다.");
         }
-        return i / j;
+        return dividedNumber / dividingNumber;
     }
 }
