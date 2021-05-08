@@ -1,16 +1,10 @@
 import java.util.Scanner;
 
-public class Calculator {
+public class StringCalculator {
 
     public String input() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
-    }
-
-    public boolean isBlank(String input) {
-        if (input.equals(" ") || input == null)
-            return true;
-        return false;
     }
 
     public int makeResult(String input) {
@@ -19,15 +13,17 @@ public class Calculator {
         return calculateSplitedString(splitBlank(input));
     }
 
-    public String[] splitBlank(String str) {
+    private boolean isBlank(String input) {
+        if (input.equals(" ") || input == null)
+            return true;
+        return false;
+    }
+
+    private String[] splitBlank(String str) {
         return str.split(" ");
     }
 
-    public int toInt(String str) {
-        return Integer.parseInt(str);
-    }
-
-    public int calculateSplitedString(String[] str) {
+    private int calculateSplitedString(String[] str) {
         int result = toInt(str[0]);
         for (int i = 0; i < str.length - 2; i += 2) {
             result = calculate(result, str[i + 1].charAt(0), toInt(str[i + 2]));
@@ -35,7 +31,11 @@ public class Calculator {
         return result;
     }
 
-    public int calculate(int firstValue, char operator, int secondValue) {
+    private int toInt(String str) {
+        return Integer.parseInt(str);
+    }
+
+    private int calculate(int firstValue, char operator, int secondValue) {
         if (operator == '+')
             return add(firstValue, secondValue);
         if (operator == '-')
@@ -47,19 +47,19 @@ public class Calculator {
         throw new RuntimeException();
     }
 
-    public int add(int i, int j) {
+    private int add(int i, int j) {
         return i + j;
     }
 
-    public int subtract(int i, int j) {
+    private int subtract(int i, int j) {
         return i - j;
     }
 
-    public int multiply(int i, int j) {
+    private int multiply(int i, int j) {
         return i * j;
     }
 
-    public int divide(int i, int j) {
+    private int divide(int i, int j) {
         try {
             return i / j;
         } catch (ArithmeticException e) {
