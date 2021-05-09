@@ -1,6 +1,5 @@
 package calculaor;
 
-
 public class Input {
     private final String splitValue = " ";
 
