@@ -13,17 +13,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingTest {
 
+    Racing racing = new Racing();
 
     @DisplayName("차 이름 리스트에 담기")
     @Test
-    void playerCar() {
-        assertThat(Racing.playerCar("chloe,chloe")).containsExactly("chloe", "chloe");
+    void getCarName() {
+        assertThat(racing.getCarName("chloe,chloe")).containsExactly("chloe", "chloe");
     }
 
     @DisplayName("차 이름 5자가 넘으면 예외처리")
     @Test
     void throwIllegalArgumentException() {
-        assertThatThrownBy(() -> Racing.playerCar("chloe,chloeJ")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> racing.getCarName("chloe,chloeJ")).isInstanceOf(IllegalArgumentException.class);
     }
 
 
@@ -36,16 +37,22 @@ public class RacingTest {
         cars.add(new Car("tt",5));
         cars.add(new Car("ss",5));
 
-        assertThat(Racing.getWinners(cars)).containsExactly("tt","ss");
+        assertThat(racing.getWinners(cars)).containsExactly("tt","ss");
     }
 
+    @DisplayName("차 전진 여부")
+    @Test
+    void getRandomMove() {
+        Car car = new Car("name");
+        assertThat(racing.getRandomMove(6,car)).isEqualToComparingFieldByField(new Car("name",1));
+    }
 
 
     @DisplayName("차 전진 여부")
     @Test
     void movedTest() {
         Car aCar = new Car("name");
-        Racing.moved(6, aCar);
+        racing.getRandomMove(6, aCar);
         assertThat(aCar.getMovingRange()).isEqualTo(1);
     }
 
