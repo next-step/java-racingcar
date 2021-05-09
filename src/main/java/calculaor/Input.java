@@ -16,7 +16,7 @@ public class Input {
         return input.split(splitValue);
     }
 
-    // splitter 테스트할 때, 예외 처리 테스트
+    // splitter 테스트할 때, 예외 처리
     public String[] blankErrorException(String testInput) {
         if (checkBlank(testInput)) {
             throw new IllegalArgumentException();
