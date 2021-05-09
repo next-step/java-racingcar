@@ -2,7 +2,7 @@ StringCalculator
 ========================
 method 및 클래스 정리
 --------------------------
-#### `Scanner`
+## Scanner
 - 객체를 생성하고 읽어들이는 기능
 - 실행창에서 값을 입력하고 출력 방식
 - java.util 패키지의 Scanner 클래스
@@ -76,5 +76,18 @@ void divTest(int num1, int num2) {
             .isThrownBy(() -> operator.div(num1, num2));
 }
 ```
+
+<br>
+
+## 예외처리 구문
+- try, catch구문 에러 `throw` 처리
+```java
+
+try {
+    {예외 발생하는 실행문};
+} catch (에러종류 e) {
+    throw new 해당에러처리("~에러가 발생");
+}
+``` 
 
 
