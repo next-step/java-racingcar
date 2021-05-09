@@ -21,8 +21,9 @@ StringCalculator
 - [x] 사칙연산 기능(덧셈, 뺄셈, 곱셈, 나눗셈) 생성 : `Operator#add/sub(subtract)/mul(multiply)/div(divide)` 
 - [x] 나누기 연산 에러 예외 처리 ex) 0으로는 나눌 수 없음
 : `Operator#div` 
-- [ ] 문자열 숫자를 숫자형으로 변환 : `Evaluation#ConvertToNumber`
-- [ ] 사칙연산 부호 평가하기 : `Evaluation#operatorEvaluation`
+- [x] 문자형을 숫자형으로 변환 : `Evaluation#ConvertToNumber`
+- [x] 사칙연산 부호 평가하기 : `Evaluation#operatorEvaluation`
+- [x] 사칙연산 부호 예외 처리 : `Evaluation#operatorException`
 - [ ] input 값 사칙연산 수행: `Calculation#calculation`
 
 ##### test 클래스
@@ -32,7 +33,9 @@ StringCalculator
 - [x] isSplit 테스트할 때, 빈값 예외 처리 테스트 : `InputTest#splitExceptionTest`
 - [x] 사칙연산 기능 테스트 : `OperatorTest#addTest/subTest/mulTest/divTest`
 - [X] 나누기 예외 상황 테스트 `OperatorTest#divExceptionTest`  
-- [ ] 사칙연산 부호 평가 `EvaluationTest#operatorEvaluation`
+- [x] 숫자형 변환 테스트 :  `EvaluationTest#ConvertToNumberTest`
+- [x] 사칙연산 부호 평가 테스트 `EvaluationTest#operatorEvaluation`
+- [x] 사칙연산 부호 예외 처리 테스트: `Evaluation#operatorException`
 - [ ] input 값 사칙연산 수행: `Calculation#calculation`
 
 <br>
