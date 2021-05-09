@@ -26,51 +26,55 @@ public static void main(String[] args) {
 
 <br>
 
-## 예외처리
-- 문자를 받으면 `" "`기준으로 분리하는 메소드를 실행
-- 빈값을 받으면 테스트가 예외처리하고 테스트를 계속 진행하도록 하기
+## 단위 테스트와 예외처리 
+- 하나의 테스트에 1가지 기능만 테스트하기
+- 정상적인 케이스와 예외 상황 테스트는 다른 테스트 영역임
+- 테스트의 크기가 작을수록 코드 작성과 수정 및 실행 쉬움
+- 모든 기능을 한 번에 테스트할 때, 최상단 혹은 최상단에 가까운 클래스를 테스트하면 자연스럽게 하위 클래스도 테스트되는 원리
+#### 나누기 단위테스트 
+- 나누기 기능 테스트
+- 나눌 수 없는 예외 테스트 
 ##### main 클래스 메소드
 ```java
-// 빈값 (null 값 or " ") 판단하기
-public Boolean checkBlank(String blankValue) {
-    if (blankValue.equals(" ") || blankValue == null) {
+public int div(int number1, int number2) {
+    try {
+        return number1 / number2;
+    } catch (ArithmeticException e) {
+        throw new IllegalArgumentException("0으로는 나눌 수 없습니다.");
     }
-    return true;
-}
-
-// input값 " "기준으로 split하기
-public String[] splitter(String input) {
-    return input.split(splitValue);
-}
-
-// splitter 테스트할 때, 예외 처리
-public String[] blankErrorException(String testInput) {
-    if (checkBlank(testInput)) {
-        throw new IllegalArgumentException();
-    }
-    return splitter(testInput);
 }
 ```
 ##### 테스트 클래스 메소드
 ```java
-// splitter 테스트할 때, 예외 처리 테스트
+// 나누기 기능 테스트
 @ParameterizedTest
-@ValueSource(strings = {"2 + 5", "", " "})
-void blankErrorException(String testInput) {
-    assertThatThrownBy(() -> {
-        // given
-        Input input = new Input();
+@CsvSource(value = {"4,2","4,3"})
+void divTest(int num1, int num2) {
+    // given
+    Operator operator = new Operator();
 
-        // when
-        String[] expected = {"2", "+", "5"};
-        String[] actual = input.blankErrorException(testInput);
+    // when
+    int expected = 2;
+    int actual = operator.div(num1, num2);
 
-        // then
-        assertThat(actual).isEqualTo(expected);
-    }).isInstanceOf(IllegalArgumentException.class);
+    // then
+    assertThat(actual).isEqualTo(expected);
+}
+
+// 나누기 예외 상황(0으로 나누기) 테스트
+@Test
+    void divExceptionTest() {
+    // given
+    int num1 = 1;
+    int num2 = 0;
+
+    // when
+    Operator operator = new Operator();
+
+    // then
+    assertThatIllegalArgumentException()
+            .isThrownBy(() -> operator.div(num1, num2));
 }
 ```
-##### 실행결과
-![예외처리](../../img/예외처리.PNG)
 
 
