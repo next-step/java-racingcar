@@ -80,8 +80,6 @@ public class OperatorTest {
         // given
         int num1 = 1;
         int num2 = 0;
-
-        // when
         Operator operator = new Operator();
 
         // then
