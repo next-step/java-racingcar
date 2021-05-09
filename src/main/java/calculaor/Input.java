@@ -12,15 +12,15 @@ public class Input {
     }
 
     //  input값 " "기준으로 split하기
-    public String[] splitter(String input) {
+    public String[] isSplit(String input) {
         return input.split(splitValue);
     }
 
     // splitter 테스트할 때, 예외 처리
-    public String[] blankErrorException(String testInput) {
+    public String[] splitException(String testInput) {
         if (checkBlank(testInput)) {
             throw new IllegalArgumentException();
         }
-        return splitter(testInput);
+        return isSplit(testInput);
     }
 }

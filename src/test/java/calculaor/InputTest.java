@@ -7,8 +7,7 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class InputTest {
@@ -20,10 +19,9 @@ public class InputTest {
     }
 
     // 빈값 (null 값 or " ") 판단 테스트
-    // null 값은 통과 못 함
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    void checkBlank(String blankInput) {
+    void checkBlankTest(String blankInput) {
         // given
         Input input = new Input();
 
@@ -34,35 +32,30 @@ public class InputTest {
         assertTrue(actual);
     }
 
-    // input값 " "기준으로 split 테스트
+    // split 테스트
     @Test
-    void Splitter() {
+    void isSplitTest() {
         // given
         Input input = new Input();
 
         // when
         String[] expected = {"2", "+", "3"};
-        String[] actual = input.splitter(testInput);
+        String[] actual = input.isSplit(testInput);
 
         //then
         assertThat(actual).isEqualTo(expected);
     }
 
-    // splitter 테스트할 때, 예외 처리 테스트
+    // 예외상황(빈값 들어왔을 때) 테스트
     @ParameterizedTest
-    @ValueSource(strings = {"2 + 5", "", " "})
-    void blankErrorException(String testInput) {
-        assertThatThrownBy(() -> {
-            // given
-            Input input = new Input();
+    @ValueSource(strings = {"", " "})
+    void splitExceptionTest(String testValue) {
+        // given
+        Input input = new Input();
 
-            // when
-            String[] expected = {"2", "+", "5"};
-            String[] actual = input.blankErrorException(testInput);
-
-            // then
-            assertThat(actual).isEqualTo(expected);
-        }).isInstanceOf(IllegalArgumentException.class);
+        //then
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> input.splitException(testValue));
     }
 }
 
