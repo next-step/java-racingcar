@@ -9,8 +9,8 @@ public class GameTest {
     @ParameterizedTest
     @ValueSource(strings = {"pobiwonijuni"})
     public void getCar(String carInput) {
-        Game game = new Game();
-        Car car = game.getCar(carInput);
+        Cut cut = new Cut();
+        Car car = cut.getCar(carInput);
         System.out.println(car.getName());
     }
 }
