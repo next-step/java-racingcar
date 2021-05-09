@@ -86,5 +86,4 @@ public class OperatorTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> operator.div(num1, num2));
     }
-
 }
