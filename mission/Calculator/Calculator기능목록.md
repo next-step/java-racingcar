@@ -17,13 +17,13 @@ StringCalculator
 ##### main 클래스
 - [x] 빈값 (null 값 or 공백) 판단하기 : `Input#checkBlank`  
 - [x] input 값 `" "`기준으로 split하기 : `Input#isSplit` 
-- [x] 빈값을 받으면 예외처리(` IllegalArgumentException`), 빈값이 아니면 isSplit 메소드 사용: `Input#splitException`
+- [x] 빈값을 받으면 예외처리(`IllegalArgumentException`), 빈값이 아니면 isSplit 메소드 사용: `Input#splitException`
 - [x] 사칙연산 기능(덧셈, 뺄셈, 곱셈, 나눗셈) 생성 : `Operator#add/sub(subtract)/mul(multiply)/div(divide)` 
-- [x] 나누기 연산 에러 예외 처리 ex) 0으로는 나눌 수 없음
+- [x] 나누기 연산 에러 예외 처리(`IllegalArgumentException`) ex) 0으로는 나눌 수 없음
 : `Operator#div` 
 - [x] 문자형을 숫자형으로 변환 : `Evaluation#ConvertToNumber`
 - [x] 사칙연산 부호 평가하기 : `Evaluation#operatorEvaluation`
-- [x] 사칙연산 부호 예외 처리 : `Evaluation#operatorException`
+- [x] 사칙연산 부호 예외 처리(`IllegalArgumentException`) : `Evaluation#operatorException`
 - [ ] input 값 사칙연산 수행: `Calculation#calculation`
 
 ##### test 클래스
