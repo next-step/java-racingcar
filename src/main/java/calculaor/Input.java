@@ -1,6 +1,5 @@
 package calculaor;
 
-import java.util.concurrent.ExecutionException;
 
 public class Input {
     private final String splitValue = " ";
@@ -17,15 +16,11 @@ public class Input {
         return input.split(splitValue);
     }
 
-    public static void main(String[] args) {
-        Input input = new Input();
-        String test = "2 + 3";
-        String[] re = input.splitter(test);
-        for (int i = 0; i < re.length; i++){
-            System.out.println(re[i]);
+    // splitter 테스트할 때, 예외 처리 테스트
+    public String[] blankErrorException(String testInput) {
+        if (checkBlank(testInput)) {
+            throw new IllegalArgumentException();
         }
+        return splitter(testInput);
     }
-
-
-    // 빈값 예외 처리
 }
