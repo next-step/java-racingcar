@@ -2,6 +2,7 @@ package Racing;
 
 
 import java.util.*;
+
 public class RacingView {
     Scanner scan = new Scanner(System.in);
 
@@ -12,6 +13,7 @@ public class RacingView {
 
         return str;
     }
+
     public int inputNum() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int num = scan.nextInt();
@@ -24,8 +26,8 @@ public class RacingView {
 
     }
 
-    public  void resultOneExecutionResult(List<Car> cars){
-        for(Car car : cars){
+    public void resultOneExecutionResult(List<Car> cars) {
+        for (Car car : cars) {
             System.out.print(car.getName() + " : ");
             int movingRange = car.getMovingRange();
             resultMovingRange(movingRange);
@@ -42,17 +44,17 @@ public class RacingView {
         }
     }
 
-    public  void resultWinner(List<String> winner){
-        System.out.print("최종 우승자: " );
+    public void resultWinner(List<String> winner) {
+        System.out.print("최종 우승자: ");
 
-        for (int i = 0; i < winner.size();i++) {
+        for (int i = 0; i < winner.size(); i++) {
             System.out.print(winner.get(i));
             resultWinners(winner, i);
         }
     }
 
-    private void resultWinners(List<String> winner,int i) {
-        if (i != winner.size()-1) {
+    private void resultWinners(List<String> winner, int i) {
+        if (i != winner.size() - 1) {
             System.out.print(", ");
         }
     }

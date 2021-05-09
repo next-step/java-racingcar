@@ -14,7 +14,7 @@ public class Racing {
 
     public void racing() {
         String str = racingView.inputRacingCar();
-        int num= racingView.inputNum();
+        int num = racingView.inputNum();
         List<Car> cars = getCars(getCarName(str));
         racingView.resultExecutionResult();
         for (int i = 0; i < num; i++) {

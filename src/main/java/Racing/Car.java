@@ -1,15 +1,16 @@
 package Racing;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     private String name;
     private int movingRange;
 
-    public Car(String name,int movingRange) {
+    public Car(String name, int movingRange) {
         this.name = name;
         this.movingRange = movingRange;
     }
+
     public Car(String name) {
-        this(name,0);
+        this(name, 0);
     }
 
     public String getName() {
@@ -19,7 +20,11 @@ public class Car implements Comparable<Car>{
     public int getMovingRange() {
         return movingRange;
     }
-    public void moved() { movingRange += 1; }
+
+    public void moved() {
+        movingRange += 1;
+    }
+
     public int compareTo(Car o) {
         return Integer.compare(o.movingRange, movingRange);
     }
