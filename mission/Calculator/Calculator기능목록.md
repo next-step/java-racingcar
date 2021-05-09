@@ -17,7 +17,7 @@ StringCalculator
 ##### main 클래스
 - [x] 빈값 (null 값 or 공백) 판단하기 : `Input#checkBlank`  
 - [x] input 값 `" "`기준으로 split하기 : `Input#Splitter` 
-- [ ] 빈값을 받으면 예외처리, 빈값이 아니면 값을  Splitter 메소드 사용: `Input#blankErrorException`
+- [x] 빈값을 받으면 예외처리(` IllegalArgumentException`), 빈값이 아니면 Splitter 메소드 사용: `Input#blankErrorException`
 - [ ] 사칙연산 기능(덧셈, 뺄셈, 곱셈, 나눗셈) 생성 : `Calculator#add/sub(subtract)/mul(multiply)/div(divide)` 
 - [ ] 나누기 연산 에러 예외 처리 ex) 0으로는 나눌 수 없음 
 : `Calculator#divideErrorException` 
@@ -29,7 +29,7 @@ StringCalculator
 - [x] 빈값 테스트 : `Input#checkBlank`  
 - " "은 통과하는데, null 값은 통과 안 됨
 - [x] input 값 `" "`기준으로 split 테스트 : `InputTest#Splitter` 
-- [ ] 빈값 예외 처리 테스트 : `InputTest#blankErrorException`
+- [x] Splitter 테스트할 때, 빈값 예외 처리 테스트 : `InputTest#blankErrorException`
 - [ ] 사칙연산 기능 테스트 : `CalculatorTest#add/sub(subtract)/mul(multiply)/div(divide)` 
 - [ ] 나누기 연산 에러 예외 처리 테스트 : `CalculatorTest#divideErrorException`  
 - [ ] 사칙연산 부호 평가 `CalculatorTest#operatorEvaluation`
