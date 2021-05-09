@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class Calculator {
 
-    public static int calculate(String str) {
+    public int calculate(String str) {
 
         Queue<String> tokens = new ArrayDeque<>(Arrays.asList(str.split(" ")));
 

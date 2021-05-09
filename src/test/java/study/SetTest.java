@@ -2,6 +2,7 @@ package study;
 
 import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -24,11 +25,10 @@ public class SetTest {
         numbers.add(3);
     }
 
+    @DisplayName("")
     @Test
     void test1() {
-
         assertThat(numbers.size()).isEqualTo(3);
-
     }
 
     @ParameterizedTest

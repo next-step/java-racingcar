@@ -4,6 +4,11 @@ import java.util.*;
 
 public class Racing {
 
+
+    private static final int NAME_LENGTH = 5;
+    private static final int MOVE_NUMBER = 4;
+    private static final int MAX_RANDOM = 10;
+    private static final int WINNER_NUMBER = 0;
     private static  Random random = new Random();
 
     public static List racing(String str, int num) {
@@ -14,35 +19,41 @@ public class Racing {
             random(cars);
         }
 
-        List<String> winner = printWinner(cars);
+        List<String> winner = getWinners(cars);
 
         return winner;
     }
 
-    public static void checkSame(List<Car> cars, List<String> winnerArr, int index, Car winner) {
-        if (winner.getMovingRange() == cars.get(index).getMovingRange()) {
-            winnerArr.add(cars.get(index).getName());
-            System.out.print(", " + cars.get(index).getName());
-        }
-    }
+//    public static void checkSame(List<Car> cars, List<String> winnerArr, int index, Car winner) {
+//        if (winner.getMovingRange() == cars.get(index).getMovingRange()) {
+//            winnerArr.add(cars.get(index).getName());
+//            System.out.print(", " + cars.get(index).getName());
+//        }
+//    }
 
-    public static List<String> printWinner(List<Car> cars) {
+    public static List<String> getWinners(List<Car> cars) {
 
         Collections.sort(cars);
-        List<String> winner = new ArrayList<String>();
+        List<String> winner = new ArrayList<>();
 
-        winner.add(cars.get(0).getName());
-        System.out.print("최종 우승자: " + winner.get(0));
+        winner.add(cars.get(WINNER_NUMBER).getName());
+
+
+        System.out.print("최종 우승자: " + winner.get(WINNER_NUMBER));
 
         for (int i = 1; i < cars.size(); i++) {
-            checkSame(cars, winner, i, cars.get(0));
+            if(cars.get(i).getMovingRange() ==cars.get(WINNER_NUMBER).getMovingRange()){
+                winner.add(cars.get(i).getName());
+            }
         }
+
+
         return winner;
     }
 
     private static void random(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-           moved(random.nextInt(10), cars.get(i));
+           moved(random.nextInt(MAX_RANDOM), cars.get(i));
             System.out.print(cars.get(i).getName() + " : ");
             printTrace(cars.get(i));
             System.out.println();
@@ -50,7 +61,7 @@ public class Racing {
     }
 
     public static void moved(int random, Car car) {
-        if (random > 4) car.moved();
+        if (random > MOVE_NUMBER) car.moved();
     }
 
 
@@ -75,7 +86,7 @@ public class Racing {
         String[] carNames = str.split(",");
 
         for (int i = 0; i < carNames.length; i++) {
-            if (carNames[i].length() > 5) throw new IllegalArgumentException("이름은 5자 이내로 .");
+            if (carNames[i].length() > NAME_LENGTH) throw new IllegalArgumentException("이름은 5자 이내로 .");
         }
 
         return carNames;
