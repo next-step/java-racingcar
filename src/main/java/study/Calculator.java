@@ -37,14 +37,13 @@ public class Calculator {
     }
 
     public int calculate(int firstValue, char operator, int secondValue) {
-        if (operator == '+')
-            return add(firstValue, secondValue);
-        if (operator == '-')
-            return subtract(firstValue, secondValue);
-        if (operator == '*')
-            return multiply(firstValue, secondValue);
-        if (operator == '/')
-            return divide(firstValue, secondValue);
+        OperatorType[] operatorTypes = OperatorType.values();
+
+        for (OperatorType operatorType : operatorTypes) {
+            if (operatorType.getOperator() == operator) {
+                return operatorType.calculate(firstValue, secondValue);
+            }
+        }
         throw new IllegalArgumentException();
     }
 
