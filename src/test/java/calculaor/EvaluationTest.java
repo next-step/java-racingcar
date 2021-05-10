@@ -32,20 +32,6 @@ class EvaluationTest {
         assertThat(actual).isEqualTo(intInput);
     }
 
-    // 숫자형을 문자형으로 변환 테스트
-    @ParameterizedTest
-    @CsvSource(value = {"1,1","2,2","3,3"})
-    void convertToStringTest(int intInput, String stringInput) {
-        // given
-        Evaluation evaluation = new Evaluation();
-
-        // when
-        String actual = evaluation.convertToString(intInput);
-
-        // then
-        assertThat(actual).isEqualTo(stringInput);
-    }
-
     // 사칙연산 부호 평가기능 테스트
     @Test
     void checkOperatorTest() {
