@@ -15,12 +15,14 @@ public class Car implements Comparable<Car>{
     public String getName() {
         return name;
     }
-
     public int getMovingRange() {
         return movingRange;
     }
+
     public void moved() { movingRange += 1; }
+
     public int compareTo(Car o) {
         return Integer.compare(o.movingRange, movingRange);
     }
+
 }
