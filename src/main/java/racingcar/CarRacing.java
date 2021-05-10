@@ -23,19 +23,20 @@ public class CarRacing {
         int count = scanner.nextInt();
 
         racingCarGame.startRacing(count, racingCars);
-//        for (int i = 0; i < racingCars.size(); i++) {
-//            RacingCar racingCar = new RacingCar(carNames[i]);
-//            if (racingCar.getPosition() > max(racingCar) ) {
-//                maxlenth = racingCar.substring(carNameArr[i].indexOf(":") + 2, carNameArr[i].length()).length();
-//            }
-//        }
-//        for (int i = 0; i < carNameArr.length; i++) {
-//            if (maxlenth == carNameArr[i].substring(carNameArr[i].indexOf(":") + 2, carNameArr[i].length()).length()) {
-//                winnerList.add(carNameArr[i]);
-//            }
-//        }
-//
-//        System.out.println("최종 우승자: " + winner);
+        int maxLength = 0;
+        String winner = "";
+        for (RacingCar racingCar : racingCars) {
+            if (racingCar.getPosition() > maxLength ) {
+                maxLength = racingCar.getPosition();
+            }
+        }
+        for (RacingCar racingCar : racingCars){
+            if (racingCar.getPosition() == maxLength) {
+                winner = winner.concat(" " + racingCar.getCarName());
+            }
+        }
+
+        System.out.println("최종 우승자: " + winner);
     }
 }
 
