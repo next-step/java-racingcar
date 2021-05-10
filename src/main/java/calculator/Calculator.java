@@ -1,24 +1,20 @@
 package calculator;
 
-public class Calcul {
+public class Calculator {
 
     public int add(int a, int b) {
-
         return a + b;
     }
 
     public int sub(int a, int b) {
-
         return a - b;
     }
 
     public int multi(int a, int b) {
-
         return a * b;
     }
 
     public int division(int a, int b) {
-
         return a / b;
     }
 
@@ -26,16 +22,18 @@ public class Calcul {
 
         if (input == null) {
 
-            throw new IllegalAccessException("입력값이 null입니다.");
+            throw new IllegalArgumentException("입력값이 null입니다.");
         }
     }
 
     public void operCheck(String input) throws IllegalAccessException {
 
-        if (!input.contains("+") || !input.contains("-") || !input.contains("*") ||
-                !input.contains("/")) {
+        if (!input.contains("+")
+            || !input.contains("-")
+            || !input.contains("*")
+            || !input.contains("/")) {
 
-            throw new IllegalAccessException("입력값에 사칙연산이 없습니다.");
+            throw new IllegalArgumentException("입력값에 사칙연산이 없습니다.");
         }
     }
 }

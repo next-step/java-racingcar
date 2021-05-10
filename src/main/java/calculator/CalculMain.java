@@ -6,7 +6,7 @@ public class CalculMain {
 
     public static void main(String[] args) throws IllegalAccessException {
 
-        Calcul calcul = new Calcul();
+        Calculator calcul = new Calculator();
 
         Scanner scanner = new Scanner(System.in);
 
