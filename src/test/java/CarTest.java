@@ -1,18 +1,12 @@
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing.Car;
-import racing.RacingGame;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
+import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static racing.RacingGame.SEPARATOR;
+import static racing.domain.RacingGame.SEPARATOR;
 
 public class CarTest {
     @Test

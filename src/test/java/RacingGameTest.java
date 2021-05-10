@@ -1,16 +1,15 @@
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.Car;
-import racing.RacingGame;
+import racing.domain.Car;
+import racing.domain.RacingGame;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static racing.RacingGame.SEPARATOR;
+import static racing.domain.RacingGame.SEPARATOR;
 
 
 public class RacingGameTest {
@@ -36,23 +35,16 @@ public class RacingGameTest {
     }
 
     @Test
-    public void findWinnerTest() throws Exception {
+    public void findWinnerTest() {
         //given
         RacingGame racingGame = new RacingGame();
-        Method method;
         String carString = "aaa,bbb,ccc,ddd,eee,fff";
         String[] carNameArray = carString.split(SEPARATOR);
-        method = racingGame.getClass().getDeclaredMethod("makeCars", String[].class);
-        method.setAccessible(true);
-        List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
-        method = racingGame.getClass().getDeclaredMethod("moveCars", List.class);
-        method.setAccessible(true);
+        List<Car> carList = racingGame.makeCars(carNameArray);
+        carList.get(0).move(5);
 
         //when
-        method.invoke(racingGame, carList);
-        method = racingGame.getClass().getDeclaredMethod("findWinner", List.class);
-        method.setAccessible(true);
-        List<Car> winnerList = (List<Car>) method.invoke(racingGame, carList);
+        List<String> winnerList = racingGame.findWinner(carList);
 
         //then
         assertThat(winnerList.size()).isNotEqualTo(0);
