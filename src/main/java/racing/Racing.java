@@ -39,13 +39,23 @@ public class Racing {
         return winner;
     }
 
-    private static void random(List<Car> cars) {
+    public static void random(List<Car> cars) {
+        Random random = new Random();
         for (int i = 0; i < cars.size(); i++) {
-            Random random = new Random();
             moved(random.nextInt(10), cars.get(i));
             System.out.print(cars.get(i).getName() + " : ");
             printTrace(cars.get(i));
             System.out.println();
+        }
+    }
+    public static void random(List<Car> cars, int mustMove) {
+        int count = 0;
+        for(Car car: cars) {
+            moved(mustMove + count, car);
+            System.out.println(car.getName() + " : ");
+            printTrace(car);
+            System.out.println();
+            count++;
         }
     }
 
@@ -63,8 +73,8 @@ public class Racing {
     private static List<Car> getCar(String[] carNames) {
         List<Car> cars = new ArrayList<Car>();
 
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
+        for (String carName: carNames) {
+            cars.add(new Car(carName));
         }
 
         return cars;
@@ -74,8 +84,8 @@ public class Racing {
 
         String[] carNames = str.split(",");
 
-        for (int i = 0; i < carNames.length; i++) {
-            if (carNames[i].length() > 5) throw new IllegalArgumentException("이름은 5자 이내로 .");
+        for (String carName : carNames) {
+            if (carName.length() > 5) throw new IllegalArgumentException("이름은 5자 이내로 .");
         }
 
         return carNames;

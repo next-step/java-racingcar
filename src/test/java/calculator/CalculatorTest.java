@@ -1,12 +1,14 @@
 package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CalculatorTest {
     private Calculator calculator;
@@ -16,31 +18,27 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    //연산자 확인
+    @DisplayName("주어진 문자열에 있는 연산자 중 사칙 연산자는 계산할 수 있다.")
     @Test
-    void getOperator() {
-        assertThat(Operator.getOperator("+")).isEqualTo(Operator.ADDITION);
-        assertThat(Operator.getOperator("-")).isEqualTo(Operator.SUBTRACTION);
-        assertThat(Operator.getOperator("*")).isEqualTo(Operator.MULTIPLICATION);
-        assertThat(Operator.getOperator("/")).isEqualTo(Operator.DIVISION);
-
+    void getOperatorTest() {
+        assertAll(
+                () -> assertThat(Operator.getOperator("+")).isEqualTo(Operator.ADDITION),
+                () -> assertThat(Operator.getOperator("-")).isEqualTo(Operator.SUBTRACTION),
+                () -> assertThat(Operator.getOperator("*")).isEqualTo(Operator.MULTIPLICATION),
+                () -> assertThat(Operator.getOperator("/")).isEqualTo(Operator.DIVISION)
+        );
     }
 
-    //지원하지 않는 연산자 예외 처리
+    @DisplayName("주어진 문자열에 있는 연산자 중 사칙 연산자를 제외한 연산자는 계산할 수 없다.")
     @Test
-    void throwIllegalArgumentException() {
-        assertThatThrownBy(() -> Operator.getOperator("%")).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void throwIllegalArgumentException2() {
+    void notArithmeticOperatorsException() {
         String expression = "2 % 3";
 
         assertThatThrownBy(() -> calculator.calculate(expression)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    //문자열 계산기 검사
-    @ParameterizedTest
+    @DisplayName("문자열 계산기는 입력값에 따른 계산 순서로 계사할 수 있다.")
+   @ParameterizedTest
     @CsvSource({"1 + 2,3", "2 * 3 / 3,2", "-14 / 2,-7"
     })
     void calculateExpression(String input, int expected) {
