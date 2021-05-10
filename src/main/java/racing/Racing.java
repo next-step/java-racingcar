@@ -7,11 +7,8 @@ public class Racing {
     private int numberOfPlay;
 
     public Racing(String carNames, int numberOfPlay) {
-        cars = insertCars(namingCar(carNames));
+        cars = insertCars(splitCarNames(carNames));
         this.numberOfPlay = numberOfPlay;
-    }
-    public Racing(String carNames) {
-        this(carNames, 0);
     }
     public Racing(List<Car> cars) {
         this.cars = cars;
@@ -45,6 +42,8 @@ public class Racing {
         for (Car car: cars) {
             checkSame(winner, car, cars.get(0));
         }
+        System.out.println();
+
         return winner;
     }
 
@@ -89,16 +88,7 @@ public class Racing {
         return cars;
     }
 
-    public String[] namingCar(String carNames) {
-
-        String[] splitCarNames = carNames.split(",");
-
-        for (String carName : splitCarNames) {
-            if (carName.length() > 5) throw new IllegalArgumentException("이름은 5자 이내로 .");
-        }
-
-        return splitCarNames;
-    }
+    public String[] splitCarNames(String carNames) { return carNames.split(","); }
 
     public List<String> getCarNames() {
         List<String> carNames = new ArrayList<>();
