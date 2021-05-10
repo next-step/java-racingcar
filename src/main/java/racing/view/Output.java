@@ -12,6 +12,7 @@ public class Output {
     private static final String LOAD = "-";
     private static final String WINNER_SEPARATOR = ", ";
     private static final String DISTANCE_SEPARATOR = " : ";
+    private static final int BUILDER_INIT = 0;
 
     public static void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -28,26 +29,34 @@ public class Output {
     public static void printWinMessage(List<String> winnerList) {
         System.out.print("\n" + WIN_MESSAGE);
 
-        int memberIndexOfRequiringSeparator = winnerList.size() -2;
+        int memberIndexOfRequiringSeparator = winnerList.size() - 2;
         int memberIndexOfNotRequiringSeparator = memberIndexOfRequiringSeparator + 1;
+        StringBuilder winMessageStringBuilder = new StringBuilder();
 
         for (int i = 0; i <= memberIndexOfRequiringSeparator; i++) {
-            System.out.print(winnerList.get(i) + WINNER_SEPARATOR);
+            winMessageStringBuilder.append(winnerList.get(i));
+            winMessageStringBuilder.append(WINNER_SEPARATOR);
+            System.out.print(winMessageStringBuilder);
+            winMessageStringBuilder.setLength(BUILDER_INIT);
         }
         System.out.println(winnerList.get(memberIndexOfNotRequiringSeparator));
     }
 
     public static void printNowDistance(List<Car> carList) {
         System.out.println();
+        StringBuilder distanceStringBuilder = new StringBuilder();
         for (int i = 0; i < carList.size(); i++) {
-            System.out.print(carList.get(i).getName() + DISTANCE_SEPARATOR);
+            distanceStringBuilder.append(carList.get(i).getName());
+            distanceStringBuilder.append(DISTANCE_SEPARATOR);
+            System.out.print(distanceStringBuilder);
             printLoadConstant(carList.get(i).getMoveCount());
             System.out.println();
+            distanceStringBuilder.setLength(BUILDER_INIT);
         }
     }
 
-    private static void printLoadConstant(int gameRepeatCount) {
-        for (int j = 0; j < gameRepeatCount; j++) {
+    private static void printLoadConstant(int moveCount) {
+        for (int j = 0; j < moveCount; j++) {
             System.out.print(LOAD);
         }
     }

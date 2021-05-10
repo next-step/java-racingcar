@@ -1,6 +1,8 @@
 package racing;
 
 public class Car {
+    public static final int MOVE_CHANGE_CONDITION = 4;
+    public static final int VALIDATED_NAME_LENGTH = 5;
     private String name;
     private int moveCount;
 
@@ -10,15 +12,13 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if (randomNumber >= 4) {
+        if (randomNumber >= MOVE_CHANGE_CONDITION) {
             this.moveCount++;
         }
     }
 
-    private void validateLength(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
-        }
+    public boolean isWinner(int winnerCount) {
+        return moveCount == winnerCount;
     }
 
     public String getName() {
@@ -29,4 +29,9 @@ public class Car {
         return moveCount;
     }
 
+    private void validateLength(String name) {
+        if (name.length() > VALIDATED_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
+        }
+    }
 }

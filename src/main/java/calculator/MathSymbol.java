@@ -22,9 +22,9 @@ public enum MathSymbol {
 
     public static MathSymbol findValidatedSymbol(String operator) {
         return Arrays.stream(MathSymbol.values())
-                .filter(v -> v.getMathSymbol().equals(operator))
+                .filter(mathSymbol -> mathSymbol.getMathSymbol().equals(operator))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException(String.format("잘못된 연산자 입니다.")));
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자 입니다."));
     }
 
     public double operate(double firstNumber, double secondNumber) {
