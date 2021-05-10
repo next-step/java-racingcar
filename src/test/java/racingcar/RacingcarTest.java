@@ -7,31 +7,26 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingcarTest {
-    RacingCarGame racingCarGame = new RacingCarGame();
-    RacingCar racingCar= new RacingCar("aws");
 
     @ParameterizedTest
-    @ValueSource(strings = {"Faker", "Uzi", "LWX"})
+    @ValueSource(strings = {"fight, gw, hw"})
     void nameCheckTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new RacingCar(input);
+            RacingCar racingCar = new RacingCar(input);
         });
     }
 
     @Test
     void moveTest() {
+        RacingCar racingCar= new RacingCar("fg");
         racingCar.moveOrNot(4);
         assertThat(racingCar.getPosition()).isEqualTo(1);
     }
 
     @Test
     void stopTest() {
+        RacingCar racingCar= new RacingCar("fg");
         racingCar.moveOrNot(3);
         assertThat(racingCar.getPosition()).isEqualTo(0);
     }
-
-//    @Test
-//    void winnerTest() {
-//        assertThat(racingWinner.selectWinner(carNameArr)).contains("gb : ---");
-//    }
 }
