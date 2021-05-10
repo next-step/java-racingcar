@@ -9,14 +9,15 @@ public class Calculator {
     }
 
     public boolean isBlank(String input) {
-        if (input.equals(" ") || input == null)
+        if (input.equals(" ") || input.equals(""))
             return true;
         return false;
     }
 
     public int makeResult(String input) {
-        if (isBlank(input))
-            throw new RuntimeException();
+        if (isBlank(input)) {
+            throw new NullOrBlankException("입력이 공백 또는 Null 입니다.");
+        }
         return calculateSplitedString(splitBlank(input));
     }
 
