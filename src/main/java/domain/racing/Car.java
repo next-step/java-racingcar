@@ -12,6 +12,7 @@ public class Car {
         return carName.length() <= 5;
     }
 
+    // 자동차 이름 입
     public void cars(String carName) {
         Arrays.stream(carName.split(",")).forEach(v -> {
             if (!isCarName(v)) {
@@ -21,10 +22,11 @@ public class Car {
         carsConfig(carName.split(","));
     }
 
-    public void gameCount(int count) {
+    // 게임횟수 입력시 게임시작
+    public void startGame(int count) {
         for (int i = 1; i < count; i++) {
             for (int j = 0; j < x.size(); j++) {
-                startGame(j);
+                racingGame(j);
             }
         }
         win(x);
@@ -41,22 +43,22 @@ public class Car {
         });
     }
 
-    public void startGame(int j) {
+    public void racingGame(int j) {
         if (moveCar()) {
             car.get(x.get(j)).append("-");
         }
     }
 
-    public void win(ArrayList<String> x){
+    public void win(ArrayList<String> x) {
         HashMap<String, Integer> result = new HashMap<>();
-        for (String carName : x) {
-            result.put(carName, car.get(carName).length());
-        }
+        x.forEach(v -> {
+            result.put(v, car.get(v).length());
+        });
         int maxValueInMap = Collections.max(result.values());
-        for (Map.Entry<String, Integer> entry : result.entrySet()) {
-            if (entry.getValue() == maxValueInMap) {
-                winner.add(entry.getKey());
+        result.forEach((key, value) -> {
+            if (value == maxValueInMap) {
+                winner.add(key);
             }
-        }
+        });
     }
 }
