@@ -45,12 +45,11 @@ jun : --
 
 #### 기능 구현 목록
 ##### main 클래스
-- [ ] 자동차 이름 입력 받기(System in) : `Input#CarName`
-- [ ] 경기 수 입력 받기(System in) : `Input#GameNumber`
-- [ ] 자동차 이름 `,`기준으로 분리하기 : `CarName#Splitter`
+- [ ] 자동차 이름 입력 받기(System in) : `Input#carName`
+- [ ] 경기 수 입력 받기(System in) : `Input#gameNumber`
+- [ ] 자동차 이름 `,`기준으로 분리하기 : `CarName#splitter`
 - [ ] 자동차 이름 길이 제한 함수 : `CarName#checkNameLength`
 - [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `CarName#carNameList`
-- [ ] 
 - [ ] 랜덤 수 뽑기 `Game#drawNumber`
 - [ ] 자동차 전진(4이상이면) : `Game#moveAble` 
 - [ ] 자동차 전진하면 `-`값 업데이트 : `Game#getScore`
@@ -60,10 +59,9 @@ jun : --
 - [ ] 최종 우승자 결과 출력 : `Paly#isWinner`
 
 ##### test 클래스
-- [ ] `,`기준으로 분리 Test : `CarName#SplitterTest`
+- [ ] `,`기준으로 분리 Test : `CarName#splitterTest`
 - [ ] 자동차 이름 길이 제한 기능 Test : `CarName#checkNameLengthTest`
 - [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `CarName#carNameListTest`
-- [ ] 
 - [ ] 랜덤 수 뽑기 `Game#drawNumber` -> Test 어떻게 하지?
 - [ ] 자동차 전진(4이상이면) : `Game#moveAbleTest` 
 - [ ] 자동차 전진하면 `-`값 업데이트 테스트 : `Game#getScoreTest`
