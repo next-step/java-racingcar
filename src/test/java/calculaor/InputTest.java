@@ -30,9 +30,9 @@ public class InputTest {
         assertTrue(actual);
     }
 
-    // split 테스트
+    // split 정상 케이스 테스트
     @Test
-    void isSplitTest() {
+    void splitterTest() {
         // given
         Input input = new Input();
 
@@ -44,15 +44,15 @@ public class InputTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    // 예외상황(빈값 들어왔을 때) 테스트
+    // split 예외상황(빈값 들어왔을 때) 테스트
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    void splitExceptionTest(String testValue) {
+    void isSplitExceptionTest(String testValue) {
         // given
         Input input = new Input();
 
         //then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> input.splitException(testValue));
+                .isThrownBy(() -> input.isSplit(testValue));
     }
 }
