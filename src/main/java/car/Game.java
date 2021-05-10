@@ -25,10 +25,6 @@ public class Game {
 
         String count = input.countInput();
 
-        output.carRacing(toInt(count), cars);
-    }
-
-    public Integer toInt(String number) {
-        return Integer.valueOf(number);
+        output.carRacing(Integer.valueOf(count), cars);
     }
 }
