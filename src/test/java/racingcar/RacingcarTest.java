@@ -4,14 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingcarTest {
     RacingCar racingCar = new RacingCar();
-    NonTestRacingCar nonTestRacingCar = new NonTestRacingCar();
+    Winner winner = new Winner();
 
     @ParameterizedTest
     @ValueSource(strings = {"gyubin", "sangkoo", "kyeonghwan"})
@@ -34,6 +31,6 @@ public class RacingcarTest {
     @Test
     void winnerTest() {
         String[] carNameArr = {"gb : ---", "sk : --", "kh : -"};
-        assertThat(nonTestRacingCar.selectWinner(carNameArr)).contains("gb : ---");
+        assertThat(winner.selectWinner(carNameArr)).contains("gb : ---");
     }
 }
