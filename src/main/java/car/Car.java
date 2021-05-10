@@ -1,6 +1,8 @@
 package car;
 
 public class Car {
+    private static final int MINIMUM_NUMBER = 4;
+
     public String name;
     public int km;
 
@@ -17,7 +19,9 @@ public class Car {
         return this.name;
     }
 
-    public void changeKm(int km) {
-        this.km = km;
+    public void changeKm(int randomNumber) {
+        if (randomNumber >= MINIMUM_NUMBER) {
+            km = km + 1;
+        }
     }
 }
