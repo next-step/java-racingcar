@@ -4,24 +4,24 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Output {
-    private Drive drive = new Drive();
-    private List<Car> cars;
+    private final Drive drive = new Drive();
+    private final List<Car> cars;
 
     public Output(List<Car> cars) {
         this.cars = cars;
     }
 
-    public String printLines(int km) {
-        String lines = "";
-        for (int i = 0; i < km; i++) {
-            lines = lines + "-";
+    public String printLines(Car car) {
+        StringBuilder lines = new StringBuilder();
+        for (int i = 0; i < car.getKm(); i++) {
+            lines.append("-");
         }
-        return lines;
+        return lines.toString();
     }
 
     public void printCars() {
-        for (int i = 0; i < cars.size(); i++) {
-            System.out.println(cars.get(i).getName() + " : " + printLines(cars.get(i).getKm()));
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + printLines(car));
         }
         System.out.println("");
     }
@@ -34,19 +34,16 @@ public class Output {
 
     public void printWinner() {
         StringBuilder winners = new StringBuilder();
+        int maxKm = 0;
 
-        int[] kms = new int[cars.size()];
-        for (int i = 0; i < cars.size(); i++) {
-            kms[i] = cars.get(i).getKm();
+        for (Car car : cars) {
+            maxKm = Math.max(maxKm, car.getKm());
         }
 
-        Arrays.sort(kms);
-
-        int max = kms[kms.length - 1];
-
-        for (int i = 0; i < cars.size(); i++) {
-            winners.append(getWinner(cars.get(i), max));
+        for (Car car : cars) {
+            winners.append(getWinner(car, maxKm));
         }
+
         System.out.println("최종 우승자: " + winners.substring(0, winners.length() - 1));
     }
 
