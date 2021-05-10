@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Game {
     private Input input = new Input();
-    private Output output = new Output();
     private Cut cut = new Cut();
 
     public void excute() {
@@ -25,6 +24,8 @@ public class Game {
 
         String count = input.countInput();
 
-        output.carRacing(Integer.valueOf(count), cars);
+        Output output = new Output(cars);
+
+        output.carRacing(Integer.valueOf(count));
     }
 }

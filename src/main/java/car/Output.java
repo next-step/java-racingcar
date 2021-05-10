@@ -5,6 +5,11 @@ import java.util.List;
 
 public class Output {
     private Drive drive = new Drive();
+    private List<Car> cars;
+
+    public Output(List<Car> cars) {
+        this.cars = cars;
+    }
 
     public String printLines(int km) {
         String lines = "";
@@ -14,7 +19,7 @@ public class Output {
         return lines;
     }
 
-    public void printCars(List<Car> cars) {
+    public void printCars() {
         for (int i = 0; i < cars.size(); i++) {
             System.out.println(cars.get(i).getName() + " : " + printLines(cars.get(i).getKm()));
         }
@@ -27,7 +32,7 @@ public class Output {
         return "";
     }
 
-    public void printWinner(List<Car> cars) {
+    public void printWinner() {
         StringBuilder winners = new StringBuilder();
 
         int[] kms = new int[cars.size()];
@@ -45,7 +50,7 @@ public class Output {
         System.out.println("최종 우승자: " + winners.substring(0, winners.length() - 1));
     }
 
-    public void carRacing(int count, List<Car> cars) {
+    public void carRacing(int count) {
         int nowCount = 0;
 
         System.out.println("실행 결과");
@@ -53,11 +58,11 @@ public class Output {
         while (nowCount < count) {
             drive.carDrive(cars);
 
-            printCars(cars);
+            printCars();
 
             nowCount++;
         }
 
-        printWinner(cars);
+        printWinner();
     }
 }
