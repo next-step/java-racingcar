@@ -11,7 +11,7 @@ StringCalculator
 - 예를 들어 "2 + 3 * 4 / 2"와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
 
 #### 기능 구현 목록
-- input 객체 : `Input#inputValue`
+##### 주의사항
 - 입출력에 관한 테스트는 어려움
 - 다른 객체와 로직위주의 테스트 실행
 ##### main 클래스
@@ -24,7 +24,7 @@ StringCalculator
 - [x] 문자형을 숫자형으로 변환 : `Evaluation#ConvertToNumber`
 - [x] 사칙연산 부호 평가하기 : `Evaluation#operatorEvaluation`
 - [x] 사칙연산 부호 예외 처리(`IllegalArgumentException`) : `Evaluation#operatorException`
-- [ ] input 값 사칙연산 수행: `Calculation#calculation`
+- [x] input 값 사칙연산 수행: `Calculation#calculation`
 
 ##### test 클래스
 - [x] 빈값 테스트 : `Input#checkBlankTest`  
@@ -36,7 +36,7 @@ StringCalculator
 - [x] 숫자형 변환 테스트 :  `EvaluationTest#ConvertToNumberTest`
 - [x] 사칙연산 부호 평가 테스트 `EvaluationTest#operatorEvaluation`
 - [x] 사칙연산 부호 예외 처리 테스트: `Evaluation#operatorException`
-- [ ] input 값 사칙연산 수행: `Calculation#calculation`
+- [x] input 값 사칙연산 수행: `Calculation#calculation`
 
 <br>
 
