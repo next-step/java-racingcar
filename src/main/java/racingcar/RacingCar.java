@@ -1,29 +1,26 @@
 package racingcar;
 
 public class RacingCar {
+    private String carName;
+    private  int position;
+
+    public RacingCar(String carName) {
+        nameCheck(carName);
+
+        this.carName = carName;
+        this.position = 0;
+    }
 
     public void nameCheck(String carName) {
-        String[] carNames = carName.split(",");
-        for (int i = 0; i < carNames.length; i++) {
-            if (carNames[i].length() > 5) {
-                throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
-            }
+        if (carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
         }
     }
 
-    public String[] carStringtoArray(String carName) {
-        String[] carNameArr = carName.split(",");
-        for (int i = 0; i < carNameArr.length; i++) {
-            carNameArr[i] += " : ";
-        }
-        return carNameArr;
-    }
-
-    public String moveOrNot(int number) {
+    public void moveOrNot(int number) {
         if (number >= 4) {
-            return "-";
+            this.position++;
         }
-        return "";
     }
 
 }

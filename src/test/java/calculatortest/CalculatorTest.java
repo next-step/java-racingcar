@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CalculTest {
+public class CalculatorTest {
     private Calculator calculator = new Calculator();
 
     @Test
