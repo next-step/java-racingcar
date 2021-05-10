@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static calculator.ExceptionMessage.*;
@@ -16,11 +17,15 @@ public class Calculator {
     private static final String IS_NOT_MATH_EXPRESSION = "[^0-9+\\-*/]";
     private static final String MAKE_EMPTY = "";
     private static final int HAVE_NOT_APPENDED_NUMBER = 1;
+    private static final int FIRST_NUMBER_INDEX = 0;
+
+    Pattern notNumberPattern = Pattern.compile(NOT_NUMBER_PATTERN);
+    Pattern theEndIsNotNumberPattern = Pattern.compile(THE_END_IS_NOT_NUMBER);
+    Pattern isNotMathExpressionPattern = Pattern.compile(IS_NOT_MATH_EXPRESSION);
 
     public void printResult() {
-        Calculator calculator = new Calculator();
         outputStartMessage();
-        resultOutput(calculator.makeResult(makeSlicedMathExpression()));
+        resultOutput(makeResult(makeSlicedMathExpression()));
     }
 
     public double calculate(double firstNumber, String operator, double secondNumber) {
@@ -28,7 +33,7 @@ public class Calculator {
     }
 
     private double makeResult(List<String> mathExpressions) {
-        double result = Double.parseDouble(mathExpressions.get(0));
+        double result = Double.parseDouble(mathExpressions.get(FIRST_NUMBER_INDEX));
         int mathExpressionSize = mathExpressions.size();
 
         for (int i = 1; i < mathExpressionSize; i += 2) {
@@ -54,13 +59,15 @@ public class Calculator {
     }
 
     private void isTheEndNotNumber(String mathExpression) {
-        if (Pattern.matches(THE_END_IS_NOT_NUMBER, mathExpression)) {
+        Matcher matcher = theEndIsNotNumberPattern.matcher(mathExpression);
+        if (matcher.matches()) {
             throw new IllegalArgumentException(THE_END_IS_NOT_NUMBER_MESSAGE);
         }
     }
 
     private void isNotMathExpression(String mathExpression) {
-        if (Pattern.matches(IS_NOT_MATH_EXPRESSION, mathExpression)) {
+        Matcher matcher = isNotMathExpressionPattern.matcher(mathExpression);
+        if (matcher.matches()) {
             throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
         }
     }
@@ -95,10 +102,8 @@ public class Calculator {
     }
 
     private boolean isNotNumberPattern(String mathSymbol) {
-        if (Pattern.matches(NOT_NUMBER_PATTERN, mathSymbol)) {
-            return true;
-        }
-        return false;
+        Matcher matcher = notNumberPattern.matcher(mathSymbol);
+        return matcher.matches();
     }
 
     private boolean haveIntegerExpression(String integerOfMathExpression) {
