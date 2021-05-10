@@ -2,6 +2,8 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.PrimitiveIterator;
@@ -18,7 +20,7 @@ public class StringSplitTest {
         assertEquals("1", split[0]);
         assertEquals("2", split[1]);
 
-        Assertions.assertThat(split).contains("1", "2");
+        assertThat(split).contains("1", "2");
     }
 
     @Test
@@ -29,7 +31,7 @@ public class StringSplitTest {
         assertEquals(1, split.length);
         assertEquals("1", split[0]);
 
-        Assertions.assertThat(split).containsExactly("1");
+        assertThat(split).containsExactly("1");
     }
 
     @Test

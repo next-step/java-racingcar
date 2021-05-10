@@ -10,6 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.*;
+
 
 public class SetTest {
 
@@ -26,19 +28,19 @@ public class SetTest {
 
     @Test
     void 셋사이즈확인() {
-        Assertions.assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void 셋존재값확인(int number) {
-        Assertions.assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void 셋존재값확인2(int number, boolean result) {
 
-        Assertions.assertThat(result).isEqualTo(numbers.contains(number));
+        assertThat(result).isEqualTo(numbers.contains(number));
     }
 }

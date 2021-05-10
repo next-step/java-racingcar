@@ -4,9 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racing.Car;
+import racing.RacingGame;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static racing.RacingGame.SEPARATOR;
 
 public class CarTest {
-
     @Test
     @DisplayName("난수가 4이상일때 거리 증가")
     public void moveTest() {
@@ -19,7 +27,7 @@ public class CarTest {
         car.move(randomNumber);
 
         //then
-        Assertions.assertThat(car.getMoveCount()).isEqualTo(moveCount + 1);
+        assertThat(car.getMoveCount()).isEqualTo(moveCount + 1);
     }
 
     @Test
@@ -34,7 +42,7 @@ public class CarTest {
         car.move(randomNumber);
 
         //then
-        Assertions.assertThat(car.getMoveCount()).isEqualTo(moveCount);
+        assertThat(car.getMoveCount()).isEqualTo(moveCount);
     }
 
     @ParameterizedTest
@@ -48,6 +56,32 @@ public class CarTest {
         car.move(randomNumber);
 
         //then
-        Assertions.assertThat(changedMoveCount).isEqualTo(car.getMoveCount());
+        assertThat(changedMoveCount).isEqualTo(car.getMoveCount());
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 전부 5자 이내인 자동차 생성")
+    public void makeCarTest() {
+        assertAll(
+                () -> assertThat(new Car("aaa").getName()).isEqualTo("aaa"),
+                () -> assertThat(new Car("bbb").getName()).isEqualTo("bbb"),
+                () -> assertThat(new Car("ccc").getName()).isEqualTo("ccc")
+        );
+    }
+
+    @Test
+    @DisplayName("자동차 이름중 일부가 5자 초과")
+    public void invalidMakeCarTest() {
+        //given
+        String carString = "aaa,bbb,cccccc";
+        String[] carNameArray = carString.split(SEPARATOR);
+
+        //when
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Car(carNameArray[2]);
+                });
     }
 }

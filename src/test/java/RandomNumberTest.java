@@ -2,6 +2,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import racing.utils.RandomNumber;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class RandomNumberTest {
     @Test
     public void makeNumber() {
@@ -11,6 +13,6 @@ public class RandomNumberTest {
         //then
         int number1 = randomNumber.makeOneRandomNumber();
 
-        Assertions.assertThat(number1).isBetween(1, 9);
+        assertThat(number1).isBetween(0, 9);
     }
 }
