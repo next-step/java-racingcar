@@ -33,11 +33,10 @@ public class StringTest {
     }
     @Test
     void test3() {
-        String actual = Character.toString("abc".charAt(4));
-        assertThat(actual).isEqualTo("a");
+
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
-                    // ...
-                }).withMessageMatching("Index: \\d+, Size: \\d+");
+                    String actual = Character.toString("abc".charAt(4));
+                }).withMessageMatching("String index out of range: 4");
     }
 }
