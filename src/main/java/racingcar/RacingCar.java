@@ -30,12 +30,4 @@ public class RacingCar {
         }
     }
 
-    public String dash(int position) {
-        position = this.position;
-        String dash = "";
-        for(int i = 0; i < position; i++){
-            dash.concat("-");        }
-        return dash;
-    }
-
 }

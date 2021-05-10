@@ -16,19 +16,19 @@ public class RacingcarTest {
             new RacingCar(input);
         });
     }
-
-    @Test
-    void moveTest() {
-        assertThat(moveOrNot(4)).isEqualTo("-");
-    }
-
-    @Test
-    void stopTest() {
-        assertThat(moveOrNot(3)).isEqualTo("");
-    }
-
-    @Test
-    void winnerTest() {
-        assertThat(racingWinner.selectWinner(carNameArr)).contains("gb : ---");
-    }
+//
+//    @Test
+//    void moveTest() {
+//        assertThat(moveOrNot(4)).isEqualTo("-");
+//    }
+//
+//    @Test
+//    void stopTest() {
+//        assertThat(moveOrNot(3)).isEqualTo("");
+//    }
+//
+//    @Test
+//    void winnerTest() {
+//        assertThat(racingWinner.selectWinner(carNameArr)).contains("gb : ---");
+//    }
 }
