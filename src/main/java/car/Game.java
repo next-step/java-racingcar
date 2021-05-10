@@ -14,8 +14,8 @@ public class Game {
 
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < carInputs.length; i++) {
-            cars.add(cut.getCar(carInputs[i]));
+        for (String carName : carInputs) {
+            cars.add(cut.getCar(carName));
         }
 
         if (cars.size() < 2) {

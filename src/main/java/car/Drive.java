@@ -13,9 +13,9 @@ public class Drive {
     }
 
     public void carDrive(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            int nowKm = cars.get(i).getKm();
-            cars.get(i).setKm(nowKm + getMoveValue());
+        for (Car car : cars) {
+            int nowKm = car.getKm();
+            car.changeKm(nowKm + getMoveValue());
         }
     }
 }

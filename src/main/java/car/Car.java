@@ -1,15 +1,12 @@
 package car;
 
 public class Car {
-    public String name = "";
-    public int km = 0;
+    public String name;
+    public int km;
 
-    public void setKm(int km) {
-        this.km = km;
-    }
-
-    public void setName(String name) {
+    public Car(String name, int km) {
         this.name = name;
+        this.km = km;
     }
 
     public int getKm() {
@@ -18,5 +15,9 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    public void changeKm(int km) {
+        this.km = km;
     }
 }
