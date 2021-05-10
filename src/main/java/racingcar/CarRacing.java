@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class CarRacing {
     public static void main(String[] args) {
-        RacingWinner nonTestRacingCar = new RacingWinner();
         RacingCarGame racingCarGame = new RacingCarGame();
         List<RacingCar> racingCars = new ArrayList<>();
 
@@ -14,7 +13,7 @@ public class CarRacing {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
         String carName = scanner.nextLine();
-        String[] carNames = carName.split(",");
+        String[] carNames = carName.replaceAll(" ","").split(",");
         for (int i = 0; i < carNames.length; i++) {
             RacingCar racingCar = new RacingCar(carNames[i]);
             racingCars.add(racingCar);
@@ -25,9 +24,7 @@ public class CarRacing {
         int count = scanner.nextInt();
 
         racingCarGame.startRacing(count, racingCars);
-        List<String> winnerList = new ArrayList<String>();
-        winnerList = nonTestRacingCar.selectWinner(carNameArr);
-        String winner = nonTestRacingCar.removeRegex(winnerList);
+        winnerList = racingWinner.selectWinner(racingCars);
 
         System.out.println("최종 우승자: " + winner);
     }
