@@ -9,6 +9,11 @@ public class Evaluation {
         return Integer.parseInt(input);
     }
 
+    // 문자형을 숫자형으로 변환
+    public String convertToString(int input) {
+        return Integer.toString(input);
+    }
+
     // 사칙연산 부호 평가하기
     public int checkOperator(int firstNum, String operatorValue, int secondNum) {
         Operator operator = new Operator();
