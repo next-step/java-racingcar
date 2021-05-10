@@ -22,20 +22,23 @@ StringCalculator
 - [x] 나누기 연산 에러 예외 처리(`IllegalArgumentException`) ex) 0으로는 나눌 수 없음
 : `Operator#div` 
 - [x] 문자형을 숫자형으로 변환 : `Evaluation#ConvertToNumber`
+- [x] 숫자형을 문자형으로 변환 : `Evaluation#ConvertToString`
 - [x] 사칙연산 부호 평가하기 : `Evaluation#operatorEvaluation`
 - [x] 사칙연산 부호 예외 처리(`IllegalArgumentException`) : `Evaluation#operatorException`
 - [x] input 값 사칙연산 수행: `Calculation#calculation`
 
 ##### test 클래스
-- [x] 빈값 테스트 : `Input#checkBlankTest`  
+- [x] 빈값 테스트 : `InputTest#nullTest`, `InputTest#checkBlankTest`  
 - " "은 통과하는데, null 값은 통과 안 됨
 - [x] input 값 `" "`기준으로 split 테스트 : `InputTest#splitterTest` 
-- [x] isSplit 테스트할 때, 빈값 예외 처리 테스트 : `InputTest#isSplitTest`
+- [x] isSplit 테스트할 때, 빈값 예외 처리 테스트 : `InputTest#isSplitExceptionTest`
 - [x] 사칙연산 기능 테스트 : `OperatorTest#addTest/subTest/mulTest/divTest`
 - [X] 나누기 예외 상황 테스트 `OperatorTest#divExceptionTest`  
 - [x] 숫자형 변환 테스트 :  `EvaluationTest#ConvertToNumberTest`
-- [x] 사칙연산 부호 평가 테스트 `EvaluationTest#operatorEvaluation`
-- [x] 사칙연산 부호 예외 처리 테스트: `Evaluation#operatorException`
+- [x] 문자형 변환 테스트 :  `EvaluationTest#ConvertToStringTest`
+- [x] 사칙연산 부호 평가 테스트 `EvaluationTest#checkOperatorTest`
+- [x] 정상 케이스(사칙연산 부호) 테스트 `EvaluationTest#isOperatorTest`
+- [x] 예외 케이스(사칙연산 부호) 테스트: `Evaluation#isOperatorExceptionTest`
 - [x] input 값 사칙연산 수행: `Calculation#calculation`
 
 <br>
