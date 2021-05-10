@@ -19,9 +19,7 @@ public class Evaluation {
         operatorList.put("*", operator.mul(firstNum, secondNum));
         operatorList.put("/", operator.div(firstNum, secondNum));
 
-        int operatorResult = operatorList.get(operatorValue);
-
-        return operatorResult;
+        return operatorList.get(operatorValue);
     }
 
     // 사칙연산 부호 예외처리 ex) $ # ^
