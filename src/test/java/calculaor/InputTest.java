@@ -16,7 +16,21 @@ public class InputTest {
         testInput = "2 + 3";
     }
 
-    // 빈값 (null 값 or " ") 판단 테스트
+    // null값 판단 테스트
+    @Test
+    void nullTest() {
+        // given
+        String nullValue = null;
+        Input input = new Input();
+
+        // when
+        Boolean actual = input.checkBlank(nullValue);
+
+        //then
+        assertTrue(actual);
+    }
+
+    // 빈값 ("" or " ") 판단 테스트
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     void checkBlankTest(String blankInput) {
