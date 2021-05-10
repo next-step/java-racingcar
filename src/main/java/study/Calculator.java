@@ -9,14 +9,15 @@ public class Calculator {
     }
 
     public boolean isBlank(String input) {
-        if (input.equals(" ") || input == null)
+        if (input.equals(" ") || input.equals(""))
             return true;
         return false;
     }
 
     public int makeResult(String input) {
-        if (isBlank(input))
-            throw new RuntimeException();
+        if (isBlank(input)) {
+            throw new NullOrBlankException("입력이 공백 또는 Null 입니다.");
+        }
         return calculateSplitedString(splitBlank(input));
     }
 
@@ -37,14 +38,13 @@ public class Calculator {
     }
 
     public int calculate(int firstValue, char operator, int secondValue) {
-        if (operator == '+')
-            return add(firstValue, secondValue);
-        if (operator == '-')
-            return subtract(firstValue, secondValue);
-        if (operator == '*')
-            return multiply(firstValue, secondValue);
-        if (operator == '/')
-            return divide(firstValue, secondValue);
+        OperatorType[] operatorTypes = OperatorType.values();
+
+        for (OperatorType operatorType : operatorTypes) {
+            if (operatorType.getOperator() == operator) {
+                return operatorType.calculate(firstValue, secondValue);
+            }
+        }
         throw new IllegalArgumentException();
     }
 
