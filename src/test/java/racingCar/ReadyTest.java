@@ -5,10 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ReadyTest {
     private String CAR_NAME;
@@ -37,7 +35,6 @@ public class ReadyTest {
     @DisplayName("자동차 이름 길이 제한 함수 테스트")
     void checkNameLengthTest(String name, boolean expected) {
         // given
-        String testName = "sung";
         Ready ready = new Ready();
 
         // when
@@ -46,5 +43,4 @@ public class ReadyTest {
         // then
         assertThat(actual).isEqualTo(expected);
     }
-
 }
