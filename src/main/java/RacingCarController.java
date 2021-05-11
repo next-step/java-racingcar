@@ -19,7 +19,7 @@ public class RacingCarController {
 
         List<RacingCar> racingCars = getRacingCars(carNames);
 
-        startGame(racingCars, roundNumber);
+        runGame(racingCars, roundNumber);
 
         int maxScore = getMaxScore(racingCars);
         String winners = getWinners(racingCars, maxScore);
@@ -34,7 +34,7 @@ public class RacingCarController {
 
     public void checkCarNameLength(String[] carNames) {
         for (String carName : carNames) {
-            if(carName.length() > 5 ) {
+            if (carName.length() > 5) {
                 throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
             }
         }
@@ -48,7 +48,7 @@ public class RacingCarController {
         return racingCars;
     }
 
-    public void startGame(List<RacingCar> cars, int roundNumber) {
+    public void runGame(List<RacingCar> cars, int roundNumber) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
             startRound(cars, roundNumber);
