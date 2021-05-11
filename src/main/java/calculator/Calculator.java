@@ -1,41 +1,51 @@
 package calculator;
 
+enum Operator {
+    PLUS("+"),
+    MINUS("-"),
+    TIMES("*"),
+    DIVISION("/");
+
+    private String symbol;
+
+    Operator(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+}
+
 public class Calculator {
-
-    int add(int a, int b) {
-
-        return a + b;
+    int add(int operandA, int operandB) {
+        return operandA + operandB;
     }
 
-    int sub(int a, int b) {
-
-        return a - b;
+    int subtract(int operandA, int operandB) {
+        return operandA - operandB;
     }
 
-    int multi(int a, int b) {
-
-        return a * b;
+    int multiply(int operandA, int operandB) {
+        return operandA * operandB;
     }
 
-    int division(int a, int b) {
-
-        return a / b;
+    int divide(int operandA, int operandB) {
+        return operandA / operandB;
     }
 
-    void nullCheck(String input) throws IllegalAccessException {
-
+    void nullCheck(String input) throws IllegalArgumentException {
         if (input == null) {
-
-            throw new IllegalAccessException("입력값이 null입니다.");
+            throw new IllegalArgumentException("입력값이 null입니다.");
         }
     }
 
-    void operCheck(String input) throws IllegalAccessException {
-
-        if (!input.contains("+") || !input.contains("-") || !input.contains("*") ||
-                !input.contains("/")) {
-
-            throw new IllegalAccessException("입력값에 사칙연산이 없습니다.");
+    void operCheck(String input) throws IllegalArgumentException {
+        if (!input.contains(Operator.PLUS.getSymbol()) &&
+        !input.contains(Operator.MINUS.getSymbol()) &&
+        !input.contains(Operator.TIMES.getSymbol()) &&
+        !input.contains(Operator.DIVISION.getSymbol())) {
+            throw new IllegalArgumentException("입력값에 사칙연산이 없습니다.");
         }
     }
 }
