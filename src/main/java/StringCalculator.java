@@ -7,16 +7,15 @@ public class StringCalculator {
         return scanner.nextLine();
     }
 
-    public int calculate(String input) {
-        if (isBlank(input)) {
-            throw new IllegalArgumentException();
+    public void isBlank(String input) {
+        if (input == " " || input == null) {
+            throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자이면 안된다.");
         }
-        System.out.println(calculateSplitedString(splitBySeparator(input)));
-        return calculateSplitedString(splitBySeparator(input));
     }
 
-    public boolean isBlank(String input) {
-        return input == " " || input == null;
+    public int calculate(String input) {
+        System.out.println(calculateSplitedString(splitBySeparator(input)));
+        return calculateSplitedString(splitBySeparator(input));
     }
 
     private String[] splitBySeparator(String input) {

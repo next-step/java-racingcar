@@ -9,12 +9,13 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class StringCalculatorTest {
     @DisplayName(value = "입력값이 빈 문자열이거나 null 이라면 isBlank 함수를 호출했을 때 true 를 반환한다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"", "  "})
-    void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
+    @Test
+    void isBlank_ShouldReturnTrueForNullOrBlankStrings() {
         StringCalculator stringCalculator = new StringCalculator();
 
-        assertThat(stringCalculator.isBlank(input)).isEqualTo(true);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.isBlank(" ");
+        });
     }
 
     @DisplayName(value = " + , - , * , / 외의 연산자를 입력하면 IllegalArgumentException을 발생시킨다.")
