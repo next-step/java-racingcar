@@ -47,27 +47,27 @@ jun : --
 ##### main 클래스
 - [x] 자동차 이름 입력 받기(System in) : `Input#carName`
 - [x] 경기 수 입력 받기(System in) : `Input#gameNumber`
-- [ ] 자동차 이름 `,`기준으로 분리하기 : `CarName#splitter`
-- [ ] 자동차 이름 길이 제한 함수 : `CarName#checkNameLength`
-- [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `CarName#carNameList`
-- [ ] 랜덤 수 뽑기 `Game#drawNumber`
-- [ ] 자동차 전진(4이상이면) : `Game#moveAble` 
-- [ ] 자동차 전진하면 `-`값 업데이트 : `Game#getScore`
-- [ ] 자동차 게임하기, 매 경기 출력하기 : `Paly#gamePlay`
-- [ ] value 값 길이 중 가장 큰 값 비교 : `Paly#compareScore`
-- [ ] 경기 결과 담기(길이) : `Paly#scoreTable`
-- [ ] 최종 우승자 결과 출력 : `Paly#isWinner`
+- [ ] 자동차 이름 `,`기준으로 분리하기 : `Ready#splitter`
+- [ ] 자동차 이름 길이 제한 함수 : `Ready#checkNameLength`
+- [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `Ready#carNameList`
+- [ ] 랜덤 수 뽑기 `function#drawNumber`
+- [ ] 자동차 전진(4이상이면) : `function#moveAble` 
+- [ ] 자동차 전진하면 `-`값 업데이트 : `function#getScore`
+- [ ] 자동차 게임하기, 매 경기 출력하기 : `Paly#palyGame`
+- [ ] value 값 길이 중 가장 큰 값 비교 : `Awards#compareScore`
+- [ ] 경기 결과 담기(길이) : `Awards#scoreTable`
+- [ ] 최종 우승자 결과 출력 : `Awards#isWinner`
 
 ##### test 클래스
-- [ ] `,`기준으로 분리 Test : `CarName#splitterTest`
-- [ ] 자동차 이름 길이 제한 기능 Test : `CarName#checkNameLengthTest`
-- [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `CarName#carNameListTest`
-- [ ] 자동차 전진(4이상이면) : `Game#moveAbleTest` 
-- [ ] 자동차 전진하면 `-`값 업데이트 테스트 : `Game#getScoreTest`
-- [ ] 자동차 게임하기: `Paly#gamePlayTest`
-- [ ] value 값 길이 중 가장 큰 값 비교 : `Paly#compareScoreTest`
-- [ ] 경기 결과 담기(길이) : `Paly#scoreTableTest`
-- [ ] 최종 우승자 결과 출력 : `Paly#isWinnerTest`
+- [ ] `,`기준으로 분리 Test : `ReadyTest#splitterTest`
+- [ ] 자동차 이름 길이 제한 기능 Test : `ReadyTest#checkNameLengthTest`
+- [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `ReadyTest#carNameListTest`
+- [ ] 자동차 전진(4이상이면) : `functionTest##moveAbleTest` 
+- [ ] 자동차 전진하면 `-`값 업데이트 테스트 : `function#getScoreTest`
+- [ ] 자동차 게임하기: `PalyTest##gamePlayTest`
+- [ ] value 값 길이 중 가장 큰 값 비교 : `AwardsTest##compareScoreTest`
+- [ ] 경기 결과 담기(길이) : `AwardsTest##scoreTableTest`
+- [ ] 최종 우승자 결과 출력 : `AwardsTest##isWinnerTest`
 
 <br>
 
