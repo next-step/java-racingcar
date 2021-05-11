@@ -1,11 +1,10 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
+
     @DisplayName(value = "무작위값이 4 이상일 경우 자동차는 전진한다.")
     @Test
     void should_move_When_randomNumber_is_equal_or_greater_than_4() {
