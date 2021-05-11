@@ -3,8 +3,6 @@ package racingCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,11 +21,11 @@ public class ReadyTest {
         Ready ready = new Ready();
 
         // when
-        String[] expecte = {"sung","ho","jun"};
-        String[] acual = ready.splitNameByComma(CAR_NAME);
+        String[] expected = {"sung","ho","jun"};
+        String[] actual = ready.splitNameByComma(CAR_NAME);
 
         // then
-        assertThat(acual).isEqualTo(expecte);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -57,4 +55,22 @@ public class ReadyTest {
         // then
         assertThat(actual).isEqualTo(false);
     }
+
+    /*
+    @Test
+    @DisplayName("게임 참가자(자동차) 리스트 생성하는 테스트")
+    void testMakeParticipantListByName() {
+        // given
+        String name = "sung,ho,jun";
+        Ready ready = new Ready();
+
+        // when
+        String[] expected = {"sung","ho","jun"};
+        String[] actual = ready.MakeParticipantListByName(CAR_NAME);
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+     */
 }

@@ -10,4 +10,16 @@ public class Ready {
     public boolean isGreaterThanFive(String carName) {
         return carName.length() > 5;
     }
+/*
+    public String[] MakeParticipantListByName(String carName) {
+        Input input = new Input();
+
+        try (isGreaterThanFive(carName)) {
+            String tryCarName = input.carName();
+            System.out.println(tryCarName);
+            return splitNameByComma(carName);
+        }
+    }
+
+ */
 }
