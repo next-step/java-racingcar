@@ -1,4 +1,4 @@
-import car.Game;
+package car;
 
 public class CarApp {
     public static void main(String[] args) {
