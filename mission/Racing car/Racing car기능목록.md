@@ -48,7 +48,7 @@ jun : --
 - [x] 자동차 이름 입력 받기(System in) : `Input#carName`
 - [x] 경기 수 입력 받기(System in) : `Input#gameNumber`
 - [x] 자동차 이름 `,`기준으로 분리하기 : `Ready#splitter`
-- [ ] 자동차 이름 길이 제한 함수 : `Ready#checkNameLength`
+- [x] 자동차 이름 길이 제한 함수 : `Ready#checkNameLength`
 - [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `Ready#carNameList`
 - [ ] 랜덤 수 뽑기 `function#drawNumber`
 - [ ] 자동차 전진(4이상이면) : `function#moveAble` 
@@ -60,7 +60,7 @@ jun : --
 
 ##### test 클래스
 - [x] `,`기준으로 분리 Test : `ReadyTest#splitterTest`
-- [ ] 자동차 이름 길이 제한 기능 Test : `ReadyTest#checkNameLengthTest`
+- [x] 자동차 이름 길이 제한 기능 Test : `ReadyTest#checkNameLengthTest`
 - [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `ReadyTest#carNameListTest`
 - [ ] 자동차 전진(4이상이면) : `functionTest##moveAbleTest` 
 - [ ] 자동차 전진하면 `-`값 업데이트 테스트 : `function#getScoreTest`
