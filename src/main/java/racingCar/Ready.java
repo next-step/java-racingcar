@@ -6,4 +6,10 @@ public class Ready {
     public String[] splitter(String carName) {
         return carName.split(SPLIT_VALUE);
     }
+
+    public boolean checkNameLength(String carName) {
+        return carName.length() <= 4;
+    }
+
+
 }
