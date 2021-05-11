@@ -46,4 +46,5 @@ public class ReadyTest {
         // then
         assertThat(actual).isEqualTo(expected);
     }
+
 }

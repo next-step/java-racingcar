@@ -11,5 +11,4 @@ public class Ready {
         return carName.length() <= 4;
     }
 
-
 }
