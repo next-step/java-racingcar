@@ -30,17 +30,31 @@ public class ReadyTest {
         assertThat(acual).isEqualTo(expecte);
     }
 
-    @ParameterizedTest
-    @CsvSource( value = {"sung,True", "tomas,false","ho,true"})
-    @DisplayName("자동차 이름 길이 제한 함수 테스트")
-    void checkNameLengthTest(String name, boolean expected) {
+    @Test
+    @DisplayName("자동차 이름 길이가 4 이하인지 테스트")
+    void checkNameLength_Ture_Test() {
         // given
+        String name = "sung";
         Ready ready = new Ready();
 
         // when
         boolean actual = ready.checkNameLength(name);
 
         // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("자동차 이름 길이가 4 초과하는지 테스트")
+    void checkNameLength_false_Test() {
+        // given
+        String name = "tomas";
+        Ready ready = new Ready();
+
+        // when
+        boolean actual = ready.checkNameLength(name);
+
+        // then
+        assertThat(actual).isEqualTo(false);
     }
 }
