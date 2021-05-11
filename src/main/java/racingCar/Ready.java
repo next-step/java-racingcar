@@ -6,6 +6,8 @@ public class Ready {
     public String[] splitNameByComma(String carName) {
         return carName.split(SPLIT_VALUE);
     }
-}
 
-// checkNameLength(name)
+    public boolean isGreaterThanFive(String carName) {
+        return carName.length() > 5;
+    }
+}
