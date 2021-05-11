@@ -45,29 +45,42 @@ jun : --
 
 #### 기능 구현 목록
 ##### main 클래스
+- Input
 - [x] 자동차 이름 입력 받기(System in) : `Input#carName`
 - [x] 경기 수 입력 받기(System in) : `Input#gameNumber`
-- [x] 자동차 이름 `,`기준으로 분리하기 : `Ready#splitter`
-- [x] 자동차 이름 길이 제한 함수 : `Ready#checkNameLength`
-- [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `Ready#carNameList`
-- [ ] 랜덤 수 뽑기 `function#drawNumber`
-- [ ] 자동차 전진(4이상이면) : `function#moveAble` 
-- [ ] 자동차 전진하면 `-`값 업데이트 : `function#getScore`
-- [ ] 자동차 게임하기, 매 경기 출력하기 : `Paly#palyGame`
-- [ ] value 값 길이 중 가장 큰 값 비교 : `Awards#compareScore`
+- Ready
+- [x] 자동차 이름 `,`기준으로 분리하기 : 
+`Ready#splitNameByComma`
+- [x] 자동차 이름 길이가 5가 넘는지 확인하기 : `Ready#isGreaterThan`
+- [ ] 게임 참가자(자동차) 리스트 만들기 (예외처리 : 자동차 이름의 길이가 5이상이면 다시 입력받기) : `Ready#makeParticipantListByName`
+- Function
+- [ ] 랜덤 수 뽑기 `Function#drawNumber`
+- [ ] 자동차 전진(4이상이면) : `Function#moveAble` 
+- [ ] 자동차 전진하면 `-`값 업데이트 : `Function#getScore`
+- Play
+- [ ] 자동차 게임하기, 매 경기 출력하기 : 
+`Paly#palyGame`
+- Award
+- [ ] value 값 길이 중 가장 큰 값 비교 : 
+`Awards#compareScore`
 - [ ] 경기 결과 담기(길이) : `Awards#scoreTable`
 - [ ] 최종 우승자 결과 출력 : `Awards#isWinner`
 
 ##### test 클래스
-- [x] `,`기준으로 분리 Test : `ReadyTest#splitterTest`
-- [x] 자동차 이름 길이 제한 기능 Test : `ReadyTest#checkNameLengthTest`
-- [ ] 자동차 이름 배열 만들기 자동차 이름 예외 처리(5자이상이면 다시 입력하기) : `ReadyTest#carNameListTest`
-- [ ] 자동차 전진(4이상이면) : `functionTest##moveAbleTest` 
+- ReadyTest
+- [x] `,`기준으로 분리 테스트: `ReadyTest#testSplitNameByComma`
+- [x] 자동차 이름 길이가 5 초과하는 경우 테스트 : `ReadyTest#testIsGreaterThanFive`
+- [x] 자동차 이름 길이가 5 이하인 경우 테스트 (정상 케이스) : `ReadyTest#testIsNotMoreThanFive`
+- [ ] 자동차 리스트 만들기 테스트 (정상 케이스) : `Ready#testMakeParticipantListByName`
+- FunctionTest
+- [ ] 자동차 전진(4이상이면) : `functionTest#moveAbleTest` 
 - [ ] 자동차 전진하면 `-`값 업데이트 테스트 : `function#getScoreTest`
-- [ ] 자동차 게임하기: `PalyTest##gamePlayTest`
-- [ ] value 값 길이 중 가장 큰 값 비교 : `AwardsTest##compareScoreTest`
-- [ ] 경기 결과 담기(길이) : `AwardsTest##scoreTableTest`
-- [ ] 최종 우승자 결과 출력 : `AwardsTest##isWinnerTest`
+- Play
+- [ ] 자동차 게임하기: `PalyTest#gamePlayTest`
+- Award
+- [ ] value 값 길이 중 가장 큰 값 비교 : `AwardsTest#compareScoreTest`
+- [ ] 경기 결과 담기(길이) : `AwardsTest#scoreTableTest`
+- [ ] 최종 우승자 결과 출력 : `AwardsTest#isWinnerTest`
 
 <br>
 
