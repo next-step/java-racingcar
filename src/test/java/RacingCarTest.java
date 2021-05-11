@@ -5,6 +5,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
+    @DisplayName(value = "자동차 이름은 쉼표(,)를 기준으로 구분한다.")
+    @Test
+    void should_split_With_comma() {
+        RacingCarController controller = new RacingCarController();
+        String carNamesString = "pobi,woni,jun";
+        String[] carNames = {"pobi", "woni", "jun"};
+        assertThat(controller.splitBySeparator(carNamesString)).isEqualTo(carNames);
+    }
+
     @DisplayName(value = "무작위값이 4 이상일 경우 자동차는 전진한다.")
     @Test
     void should_move_When_randomNumber_is_equal_or_greater_than_4() {
