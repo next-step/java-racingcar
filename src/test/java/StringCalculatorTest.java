@@ -5,13 +5,16 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringCalculatorTest {
-    @DisplayName(value = "입력값이 빈 문자열이거나 null 이라면 IllegalArgumentException을 발생시킨다.")
+    @DisplayName(value = "입력값이 빈 문자열이거나 null 이라면 isBlank 함수를 호출했을 때 true 를 반환한다.")
     @ParameterizedTest
     @ValueSource(strings = {"", "  "})
     void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
-        assertTrue(Strings.isBlank(input));
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThat(stringCalculator.isBlank(input)).isEqualTo(true);
     }
 
     @DisplayName(value = " + , - , * , / 외의 연산자를 입력하면 IllegalArgumentException을 발생시킨다.")
@@ -20,7 +23,9 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         String input = "5 ! 0";
 
-        stringCalculator.makeResult(input);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.calculate(input);
+        });
     }
 
     @DisplayName(value = "두 숫자를 더할 수 있다.")
@@ -29,7 +34,7 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         String input = "1 + 3";
 
-        assertThat(stringCalculator.makeResult(input)).isEqualTo(4);
+        assertThat(stringCalculator.calculate(input)).isEqualTo(4);
     }
 
     @DisplayName(value = "두 숫자를 뺄 수 있다.")
@@ -38,7 +43,7 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         String input = "4 - 1";
 
-        assertThat(stringCalculator.makeResult(input)).isEqualTo(3);
+        assertThat(stringCalculator.calculate(input)).isEqualTo(3);
     }
 
     @DisplayName(value = "두 숫자를 곱할 수 있다.")
@@ -47,7 +52,7 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         String input = "2 * 4";
 
-        assertThat(stringCalculator.makeResult(input)).isEqualTo(8);
+        assertThat(stringCalculator.calculate(input)).isEqualTo(8);
     }
 
     @DisplayName(value = "두 숫자를 나눌 수 있다.")
@@ -56,33 +61,17 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
         String input = "6 / 3";
 
-        assertThat(stringCalculator.makeResult(input)).isEqualTo(2);
+        assertThat(stringCalculator.calculate(input)).isEqualTo(2);
     }
 
     @DisplayName(value = "0으로 나누면 IllegalArgumentException을 발생시킨다.")
-    @Test(expected = IllegalArgumentException.class)
-    void divideByZero() throws Exception{
+    @Test()
+    void should_ThrowException_When_dividedByZero() {
         StringCalculator stringCalculator = new StringCalculator();
         String input = "5 / 0";
 
-        stringCalculator.makeResult(input);
-    }
-
-    @DisplayName(value = "세 숫자를 더할 수 있다.")
-    @Test
-    void additionTest3() {
-        StringCalculator stringCalculator = new StringCalculator();
-        String input = "1 + 3 + 5";
-
-        assertThat(stringCalculator.makeResult(input)).isEqualTo(9);
-    }
-
-    @DisplayName(value = "세 숫자를 뺄 수 있다.")
-    @Test
-    void subtractionTest3() {
-        StringCalculator stringCalculator = new StringCalculator();
-        String input = "5 - 1 - 1";
-
-        assertThat(stringCalculator.makeResult(input)).isEqualTo(3);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.calculate(input);
+        });
     }
 }
