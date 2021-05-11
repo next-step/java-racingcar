@@ -8,6 +8,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingCarTest {
+    @DisplayName(value = "게임을 시도할 횟수는 0 이상이어야 한다.")
+    @Test
+    void roundNumber_is_greater_than_0() {
+        RacingCarController racingCarController = new RacingCarController();
+        int roundNumber = -1;
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            racingCarController.checkRoundNumber(roundNumber);
+        });
+    }
 
     @DisplayName(value = "자동차 이름은 쉼표(,)를 기준으로 구분한다.")
     @Test

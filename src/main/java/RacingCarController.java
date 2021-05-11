@@ -13,6 +13,8 @@ public class RacingCarController {
 
         int roundNumber = view.inputRoundNumber();
 
+        checkRoundNumber(roundNumber);
+
         String[] carNames = splitBySeparator(carNamesString);
 
         checkCarNameLength(carNames);
@@ -25,6 +27,12 @@ public class RacingCarController {
         String winners = getWinners(racingCars, maxScore);
 
         view.outputWinners(winners);
+    }
+
+    public void checkRoundNumber(int roundNumber) {
+        if (roundNumber < 0) {
+            throw new IllegalArgumentException("게임을 시도할 횟수는 0 이상이어야 한다.");
+        }
     }
 
     public String[] splitBySeparator(String carNames) {
