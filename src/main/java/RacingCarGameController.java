@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class RacingCarGameController {
 
-    RacingCarGameView view = new RacingCarGameView();
+    static RacingCarGameView view = new RacingCarGameView();
 
-    Random random = new Random();
+    static Random random = new Random();
 
     public void startGame() {
         String carNamesString = view.inputCarNames();
