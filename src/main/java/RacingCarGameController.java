@@ -3,29 +3,23 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingCarGameController {
-
     static RacingCarGameView view = new RacingCarGameView();
-
     static Random random = new Random();
 
     public void startGame() {
         String carNames = view.inputCarNames();
 
         int roundNumber = view.inputRoundNumber();
-
         checkRoundNumber(roundNumber);
 
         String[] splitCarNames = splitBySeparator(carNames);
-
         checkCarNameLength(splitCarNames);
 
         List<RacingCar> racingCars = getRacingCars(splitCarNames);
-
         runGame(racingCars, roundNumber);
 
         int maxScore = getMaxScore(racingCars);
         String winners = getWinners(racingCars, maxScore);
-
         view.outputWinners(winners);
     }
 
