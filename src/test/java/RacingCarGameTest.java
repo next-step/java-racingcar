@@ -31,11 +31,10 @@ public class RacingCarGameTest {
     @DisplayName(value = "자동차 이름이 5자를 초과하면 IllegalArgumentException을 발생시킨다.")
     @Test
     void should_have_Less_than_5_letters() {
-        RacingCarGameController racingCarController = new RacingCarGameController();
-        String[] carNames = {"pobi", "woniwoni", "jun"};
+        RacingCar racingCar = new RacingCar("pobipobi");
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            racingCarController.checkCarNameLength(carNames);
+            racingCar.checkCarNameLength();
         });
     }
 

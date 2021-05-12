@@ -13,7 +13,6 @@ public class RacingCarGameController {
         checkRoundNumber(roundNumber);
 
         String[] splitCarNames = splitBySeparator(carNames);
-        checkCarNameLength(splitCarNames);
 
         List<RacingCar> racingCars = getRacingCars(splitCarNames);
         runGame(racingCars, roundNumber);
@@ -32,14 +31,6 @@ public class RacingCarGameController {
     public String[] splitBySeparator(String carNames) {
         String separator = ",";
         return carNames.split(separator);
-    }
-
-    public void checkCarNameLength(String[] carNames) {
-        for (String carName : carNames) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
-            }
-        }
     }
 
     public List<RacingCar> getRacingCars(String[] carNames) {
