@@ -42,7 +42,7 @@ public class RacingCarView {
     public void cycleCarInformation() {
         for (int i = 0; i < systemService.carInfo.size(); i++) {
             int movedLocation = systemService.moveCar(systemService.carInfo.get(i).getLocationInfo());
-            systemService.carInfo.get(i).setLocationInfo(movedLocation);
+            systemService.carInfo.get(i).setLocation(movedLocation);
 
             System.out.print(systemService.carInfo.get(i).getName() + " : ");
             showCarLocationInfo(systemService.carInfo.get(i).getLocationInfo());

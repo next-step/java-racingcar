@@ -9,11 +9,7 @@ public class Car {
         this.location = location;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLocationInfo(int location) {
+    public void setLocation(int location) {
         this.location = location;
     }
 
