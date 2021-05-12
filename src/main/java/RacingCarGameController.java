@@ -45,12 +45,12 @@ public class RacingCarGameController {
     public void runGame(List<RacingCar> cars, int roundNumber) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
-            startRound(cars, roundNumber);
+            startRound(cars);
             outputRound(cars);
         }
     }
 
-    public void startRound(List<RacingCar> cars, int roundNumber) {
+    public void startRound(List<RacingCar> cars) {
         for (RacingCar car : cars) {
             int randomNumber = random.nextInt(10);
             car.move(randomNumber);
