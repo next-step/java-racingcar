@@ -9,7 +9,6 @@ import static racing.domain.RacingGame.SEPARATOR;
 import static racing.view.Input.makeCarNames;
 import static racing.view.Input.makeGameRepeatCount;
 import static racing.view.Output.*;
-import static racing.view.Output.printWinMessage;
 
 public class RacingController {
     public static void main(String[] args) {
@@ -17,13 +16,13 @@ public class RacingController {
 
         printStartMessage();
         String carNames = makeCarNames();
+        String[] carNameArray = carNames.split(SEPARATOR);
+        printResultMessage();
+        racingGame.makeCars(carNameArray);
         printInputCountMessage();
         int count = makeGameRepeatCount();
-        printResultMessage();
-        String[] carNameArray = carNames.split(SEPARATOR);
-        List<Car> carList = racingGame.makeCars(carNameArray);
-        carList = racingGame.repeatMoveCars(count, carList);
-        printNowDistance(carList);
-        printWinMessage(racingGame.findWinner(carList));
+        racingGame.repeatMoveCars(count);
+        printNowDistance(racingGame.getCars());
+        printWinMessage(racingGame.findWinner());
     }
 }

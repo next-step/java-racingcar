@@ -12,7 +12,7 @@ public class Output {
     private static final String LOAD = "-";
     private static final String WINNER_SEPARATOR = ", ";
     private static final String DISTANCE_SEPARATOR = " : ";
-    private static final int BUILDER_INIT = 0;
+    private static final int BUILDER_INIT_NUMBER = 0;
 
     public static void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -29,17 +29,18 @@ public class Output {
     public static void printWinMessage(List<String> winnerList) {
         System.out.print("\n" + WIN_MESSAGE);
 
-        int memberIndexOfRequiringSeparator = winnerList.size() - 2;
-        int memberIndexOfNotRequiringSeparator = memberIndexOfRequiringSeparator + 1;
+        int lastMemberIndexOfRequiringSeparator = winnerList.size() - 2;
+        int lastMemberIndexOfNotRequiringSeparator = lastMemberIndexOfRequiringSeparator + 1;
         StringBuilder winMessageStringBuilder = new StringBuilder();
 
-        for (int i = 0; i <= memberIndexOfRequiringSeparator; i++) {
+        for (int i = 0; i <= lastMemberIndexOfRequiringSeparator; i++) {
+
             winMessageStringBuilder.append(winnerList.get(i));
             winMessageStringBuilder.append(WINNER_SEPARATOR);
             System.out.print(winMessageStringBuilder);
-            winMessageStringBuilder.setLength(BUILDER_INIT);
+            winMessageStringBuilder.setLength(BUILDER_INIT_NUMBER);
         }
-        System.out.println(winnerList.get(memberIndexOfNotRequiringSeparator));
+        System.out.println(winnerList.get(lastMemberIndexOfNotRequiringSeparator));
     }
 
     public static void printNowDistance(List<Car> carList) {
@@ -51,13 +52,15 @@ public class Output {
             System.out.print(distanceStringBuilder);
             printLoadConstant(carList.get(i).getMoveCount());
             System.out.println();
-            distanceStringBuilder.setLength(BUILDER_INIT);
+            distanceStringBuilder.setLength(BUILDER_INIT_NUMBER);
         }
     }
 
     private static void printLoadConstant(int moveCount) {
+        StringBuilder loadStringBuilder = new StringBuilder();
         for (int j = 0; j < moveCount; j++) {
-            System.out.print(LOAD);
+            loadStringBuilder.append(LOAD);
         }
+        System.out.print(loadStringBuilder);
     }
 }

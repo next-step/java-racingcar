@@ -28,16 +28,16 @@ public enum MathSymbol {
     }
 
     public double operate(double firstNumber, double secondNumber) {
-        if (PLUS.getMathSymbol() == this.getMathSymbol()) {
+        if (PLUS.mathSymbol == this.getMathSymbol()) {
             return firstNumber + secondNumber;
         }
-        if (MINUS.getMathSymbol() == this.getMathSymbol()) {
+        if (MINUS.mathSymbol == this.getMathSymbol()) {
             return firstNumber - secondNumber;
         }
-        if (MULTIPLE.getMathSymbol() == this.getMathSymbol()) {
+        if (MULTIPLE.mathSymbol == this.getMathSymbol()) {
             return firstNumber * secondNumber;
         }
-        if (DIVIDE.getMathSymbol() == this.getMathSymbol()) {
+        if (DIVIDE.mathSymbol == this.getMathSymbol()) {
             return firstNumber / secondNumber;
         }
         throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);

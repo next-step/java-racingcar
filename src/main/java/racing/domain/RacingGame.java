@@ -8,26 +8,30 @@ import static racing.utils.RandomNumber.makeOneRandomNumber;
 public class RacingGame {
     public static String SEPARATOR = ",";
 
-    public List<Car> makeCars(String[] carNameArray) {
-        List<Car> cars = new ArrayList<>();
+    List<Car> cars = new ArrayList<>();
 
+    public void makeCars(String[] carNameArray) {
         for (String carName : carNameArray) {
             cars.add(new Car(carName));
         }
-        return cars;
     }
 
-    public List<Car> repeatMoveCars(int count, List<Car> carList) {
+    public void repeatMoveCars(int count) {
         for (int i = 0; i < count; i++) {
-            carList = moveCars(carList);
+            moveCars();
         }
-        return carList;
     }
 
-    public List<String> findWinner(List<Car> carList) {
+    private void moveCars() {
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).move(makeOneRandomNumber());
+        }
+    }
+
+    public List<String> findWinner() {
         List<String> winnerList = new ArrayList<>();
-        int winnerCondition = findWinnerCondition(carList);
-        for (Car car : carList) {
+        int winnerCondition = findWinnerCondition();
+        for (Car car : cars) {
             if (car.isWinner(winnerCondition)) {
                 winnerList.add(car.getName());
             }
@@ -35,20 +39,17 @@ public class RacingGame {
         return winnerList;
     }
 
-    private List<Car> moveCars(List<Car> carList) {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(makeOneRandomNumber());
-        }
-        return carList;
-    }
-
-    private int findWinnerCondition(List<Car> carList) {
+    private int findWinnerCondition() {
         int winnerCondition = 0;
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.getMoveCount() >= winnerCondition) {
                 winnerCondition = car.getMoveCount();
             }
         }
         return winnerCondition;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

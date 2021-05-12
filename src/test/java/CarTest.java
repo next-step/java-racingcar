@@ -5,8 +5,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static racing.domain.RacingGame.SEPARATOR;
 
 public class CarTest {
     @Test
@@ -53,29 +51,37 @@ public class CarTest {
         assertThat(changedMoveCount).isEqualTo(car.getMoveCount());
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource(value= {"aaa","bbb","ccc"})
     @DisplayName("자동차 이름이 전부 5자 이내인 자동차 생성")
-    public void makeCarTest() {
-        assertAll(
-                () -> assertThat(new Car("aaa").getName()).isEqualTo("aaa"),
-                () -> assertThat(new Car("bbb").getName()).isEqualTo("bbb"),
-                () -> assertThat(new Car("ccc").getName()).isEqualTo("ccc")
-        );
+    public void makeCarTest(String name) {
+        assertThat(new Car(name).getName()).isEqualTo(name);
+    }
+
+    @DisplayName("자동차 이름이 5자 초과면 에러")
+    @ParameterizedTest
+    @CsvSource(value = {"123456","1234567","12345678"})
+    public void invalidMakeCarTest(String name) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Car(name);
+                });
     }
 
     @Test
-    @DisplayName("자동차 이름중 일부가 5자 초과")
-    public void invalidMakeCarTest() {
+    void isWinner() {
         //given
-        String carString = "aaa,bbb,cccccc";
-        String[] carNameArray = carString.split(SEPARATOR);
+        Car car = new Car("aaa");
+        Car car2 = new Car("aab");
 
         //when
+        car.move(4);
+        car.move(5);
+        car.move(6);
+        car2.move(4);
+        car2.move(4);
 
         //then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    new Car(carNameArray[2]);
-                });
+        assertThat(car.isWinner(3)).isTrue();
     }
 }

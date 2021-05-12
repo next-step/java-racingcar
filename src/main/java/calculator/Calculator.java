@@ -17,6 +17,8 @@ public class Calculator {
     private static final String IS_NOT_MATH_EXPRESSION = "[^0-9+\\-*/]";
     private static final String MAKE_EMPTY = "";
     private static final int HAVE_NOT_APPENDED_NUMBER = 1;
+    private static final int SYMBOL_INDEX_INTERVAL = 2;
+    private static final int NUMBER_INDEX_INTERVAL = 1;
     private static final int FIRST_NUMBER_INDEX = 0;
 
     Pattern notNumberPattern = Pattern.compile(NOT_NUMBER_PATTERN);
@@ -36,9 +38,9 @@ public class Calculator {
         double result = Double.parseDouble(mathExpressions.get(FIRST_NUMBER_INDEX));
         int mathExpressionSize = mathExpressions.size();
 
-        for (int i = 1; i < mathExpressionSize; i += 2) {
+        for (int i = 1; i < mathExpressionSize; i += SYMBOL_INDEX_INTERVAL) {
             String operator = mathExpressions.get(i);
-            double number = Double.parseDouble(mathExpressions.get(i + 1));
+            double number = Double.parseDouble(mathExpressions.get(i + NUMBER_INDEX_INTERVAL));
             result = calculate(number, operator, result);
         }
         return result;
@@ -55,10 +57,10 @@ public class Calculator {
     private void validate(String mathExpression) {
         isInputNull(mathExpression);
         isNotMathExpression(mathExpression);
-        isTheEndNotNumber(mathExpression);
+        validateTheEndNotNumber(mathExpression);
     }
 
-    private void isTheEndNotNumber(String mathExpression) {
+    private void validateTheEndNotNumber(String mathExpression) {
         Matcher matcher = theEndIsNotNumberPattern.matcher(mathExpression);
         if (matcher.matches()) {
             throw new IllegalArgumentException(THE_END_IS_NOT_NUMBER_MESSAGE);
