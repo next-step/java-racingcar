@@ -4,20 +4,16 @@ import racingcar.vo.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class SystemService {
-    MoveService moveService = new MoveService();
+    private MoveService moveService = new MoveService();
 
-    public List<Car> carInfo = new ArrayList<Car>();
+    public List<Car> carInfo = new ArrayList<>();
 
     public void splitString(String input) {
         String[] result = input.split(",");
         for (int i = 0; i < result.length; i++) {
-            Car carVO = new Car();
-
-            carVO.setName(result[i]);
-            carVO.setLocationInfo(0);
+            Car carVO = new Car(result[i],0);
 
             carInfo.add(carVO);
         }
