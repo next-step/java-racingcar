@@ -18,3 +18,4 @@
 - [] 레이싱 경주 테스트 코드 작성
 - [] for문을 stream으로 변경
 - [] enum과 MoveService class 없이 Car객체에게 스스로 움직여라와 같은 기능 추가
+- [] cycleCarInformation 메서드 수정
