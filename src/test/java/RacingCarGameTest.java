@@ -7,11 +7,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-public class RacingCarTest {
+public class RacingCarGameTest {
     @DisplayName(value = "게임을 시도할 횟수는 0 이상이어야 한다.")
     @Test
     void roundNumber_is_greater_than_0() {
-        RacingCarController racingCarController = new RacingCarController();
+        RacingCarGameController racingCarController = new RacingCarGameController();
         int roundNumber = -1;
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -22,7 +22,7 @@ public class RacingCarTest {
     @DisplayName(value = "자동차 이름은 쉼표(,)를 기준으로 구분한다.")
     @Test
     void should_split_With_comma() {
-        RacingCarController controller = new RacingCarController();
+        RacingCarGameController controller = new RacingCarGameController();
         String carNamesString = "pobi,woni,jun";
         String[] carNames = {"pobi", "woni", "jun"};
         assertThat(controller.splitBySeparator(carNamesString)).isEqualTo(carNames);
@@ -31,7 +31,7 @@ public class RacingCarTest {
     @DisplayName(value = "자동차 이름이 5자를 초과하면 IllegalArgumentException을 발생시킨다.")
     @Test
     void should_have_Less_than_5_letters() {
-        RacingCarController racingCarController = new RacingCarController();
+        RacingCarGameController racingCarController = new RacingCarGameController();
         String[] carNames = {"pobi", "woniwoni", "jun"};
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -42,7 +42,7 @@ public class RacingCarTest {
     @DisplayName(value = "자동차들의 이름을 입력하면 각각의 자동차 객체를 만든다.")
     @Test
     void make_RacingCars() {
-        RacingCarController racingCarController = new RacingCarController();
+        RacingCarGameController racingCarController = new RacingCarGameController();
         String[] carNames = {"pobi", "woni", "jun"};
         List<RacingCar> racingCars = racingCarController.getRacingCars(carNames);
 
@@ -82,14 +82,14 @@ public class RacingCarTest {
     @DisplayName(value = "step에 맞춰 '-'를 출력한다.")
     @Test
     void should_be_same_As_the_number_of_step() {
-        RacingCarController racingCarController = new RacingCarController();
+        RacingCarGameController racingCarController = new RacingCarGameController();
         assertThat(racingCarController.bar(5)).isEqualTo("-----");
     }
 
     @DisplayName(value = "최고점수를 구한다.")
     @Test
     void get_maxScore() {
-        RacingCarController racingCarController = new RacingCarController();
+        RacingCarGameController racingCarController = new RacingCarGameController();
 
         RacingCar racingCar = new RacingCar("pobi");
         racingCar.move(5);
@@ -103,7 +103,7 @@ public class RacingCarTest {
     @DisplayName(value = "우승자를 구한다.")
     @Test
     void get_winners() {
-        RacingCarController racingCarController = new RacingCarController();
+        RacingCarGameController racingCarController = new RacingCarGameController();
 
         RacingCar racingCar = new RacingCar("pobi");
         racingCar.move(5);

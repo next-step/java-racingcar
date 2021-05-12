@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class RacingCarView {
+public class RacingCarGameView {
     Scanner scanner = new Scanner(System.in);
 
     public String inputCarNames() {

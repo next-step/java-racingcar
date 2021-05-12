@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RacingCarController {
+public class RacingCarGameController {
 
-    RacingCarView view = new RacingCarView();
+    RacingCarGameView view = new RacingCarGameView();
 
     Random random = new Random();
 
