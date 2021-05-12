@@ -26,6 +26,4 @@ public class RacingGameRenewal {
         }
         System.out.println(car.getCarName() + ":" + goString);
     }
-
-
 }

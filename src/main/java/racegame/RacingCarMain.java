@@ -1,6 +1,7 @@
 package racegame;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCarMain {
 
@@ -54,20 +55,31 @@ public class RacingCarMain {
         }
 
         for (int i = 0; i < count; i++) {
-            for(RacingCar car : carList){
-                RacingGameRenewal gameOne = new RacingGameRenewal();
-                scoreList.add(gameOne.RacingGame(car));
-            }
-            System.out.println("");
+            carGoCheck(carList, scoreList);
         }
         max= Collections.max(scoreList);
 
         for(RacingCar car : carList){
-            if(car.getGoStep() == max){
-                result += car.getCarName() +",";
-            }
+            result = comMa(max, result, car);
         }
         result = result.substring(0, result.lastIndexOf(","));
         System.out.println(result);
     }
+
+    private String comMa(int max, String result, RacingCar car) {
+        if(car.getGoStep() == max){
+            result += car.getCarName() +",";
+        }
+        return result;
+    }
+
+    private void carGoCheck(List<RacingCar> carList, List<Integer> scoreList) {
+        for(RacingCar car : carList){
+            RacingGameRenewal gameOne = new RacingGameRenewal();
+            scoreList.add(gameOne.RacingGame(car));
+        }
+        System.out.println("");
+    }
+
+
 }

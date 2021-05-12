@@ -26,13 +26,17 @@ public class RacingGame {
 
     ArrayList<Map<String, Object>> racingGoing(ArrayList<Map<String, Object>> carList) {
         for (Map<String , Object> car: carList) {
-            int random = randomNumber();
-            if (random >= 4) {
-                car.put("goStep", Integer.parseInt(car.get("goStep").toString()) + 1);
-            }
-            checkPrint(car);
+            goStepAdd(car);
         }
         return carList;
+    }
+
+    private void goStepAdd(Map<String, Object> car) {
+        int random = randomNumber();
+        if (random >= 4) {
+            car.put("goStep", Integer.parseInt(car.get("goStep").toString()) + 1);
+        }
+        checkPrint(car);
     }
 
     void checkPrint(Map<String, Object> car) {

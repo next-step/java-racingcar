@@ -1,4 +1,4 @@
-package study;
+package racegame;
 
 
 import java.util.*;
@@ -7,7 +7,8 @@ public class RacingCarMain {
 
 
     public static void main(String[] args) {
-        String[] carNameList = new RacingName().nameInput();
+        String[] carNameList={"car1","car2","car3"};
+            //= new RacingName().nameInput();
 
         Scanner scan = new Scanner(System.in);
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -31,7 +32,6 @@ public class RacingCarMain {
             if (Integer.parseInt(cmap.get("goStep").toString()) == score) {
                 success += cmap.get("carName") + ".....";
             }
-
         }
         System.out.println(success);
 

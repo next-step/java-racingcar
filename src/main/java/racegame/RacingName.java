@@ -7,26 +7,24 @@ public class RacingName {
 
     String[] nameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        boolean Check = true;
+        boolean nameCheckBoolean = true;
         String str = "";
-        while (Check) {
+        String[] nameList={""};
+        while (nameCheckBoolean) {
             Scanner scan = new Scanner(System.in);
             str = scan.nextLine();
-            if (nameCheck(str)) {
-                Check = false;
+            nameList = str.replaceAll(" ", "").split(",");
+            if (nameCheck(nameList)) {
+                nameCheckBoolean = false;
             }
         }
-        String[] nameList = str.replaceAll(" ", "").split(",");
-
-        System.out.println(nameList.length);
         return nameList;
     }
 
-    boolean nameCheck(String nameList) {
+    boolean nameCheck(String[] nameList) {
         boolean check = true;
-        String[] names = nameList.replaceAll(" ", "").split(",");
-        for (int i = 0; i < names.length; i++) {
-            if (names[i].length() > 5) {
+        for (String carName :nameList) {
+            if (carName.length() > 5) {
                 check = false;
                 System.out.println("글자가 5글자 넘었습니다.");
                 break;

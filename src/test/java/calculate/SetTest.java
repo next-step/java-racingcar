@@ -1,24 +1,22 @@
-package study;
+package calculate;
 
-import org.assertj.core.api.AbstractBooleanAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SetTest {
     private Set<Integer> numbers;
+    //상수화 만들기
+    private static final int NAME_LENGTH=1;
 
     @BeforeEach
     void setUp() {
@@ -53,6 +51,10 @@ public class SetTest {
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int input, boolean expected) {
         boolean actualValue = numbers.contains(input );
         assertEquals(expected, actualValue);
+
+//        assertDoesNotThrow() > new;
+//            throw new il
+
     }
 
 
