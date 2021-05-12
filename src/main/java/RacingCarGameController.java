@@ -9,17 +9,17 @@ public class RacingCarGameController {
     static Random random = new Random();
 
     public void startGame() {
-        String carNamesString = view.inputCarNames();
+        String carNames = view.inputCarNames();
 
         int roundNumber = view.inputRoundNumber();
 
         checkRoundNumber(roundNumber);
 
-        String[] carNames = splitBySeparator(carNamesString);
+        String[] splitCarNames = splitBySeparator(carNames);
 
-        checkCarNameLength(carNames);
+        checkCarNameLength(splitCarNames);
 
-        List<RacingCar> racingCars = getRacingCars(carNames);
+        List<RacingCar> racingCars = getRacingCars(splitCarNames);
 
         runGame(racingCars, roundNumber);
 
