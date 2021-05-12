@@ -1,34 +1,36 @@
-import java.util.Scanner;
-
 public class StringCalculator {
 
-    public String inputString() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+    public void calculate() {
+        StringCalculatorView view = new StringCalculatorView();
+        String input = view.inputString();
+
+        isBlank(input);
+
+        String[] splitString = splitBySeparator(input);
+
+        int result = calculateSplitString(splitString);
+
+        view.outputResult(result);
     }
+
 
     public void isBlank(String input) {
         if (input == " " || input == null) {
-            throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자이면 안된다.");
+            throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자입니다.");
         }
     }
 
-    public int calculate(String input) {
-        System.out.println(calculateSplitedString(splitBySeparator(input)));
-        return calculateSplitedString(splitBySeparator(input));
-    }
-
-    private String[] splitBySeparator(String input) {
+    public String[] splitBySeparator(String input) {
         String separator = " ";
         return input.split(separator);
     }
 
-    private int calculateSplitedString(String[] splitedString) {
-        int result = convertToInt(splitedString[0]);
-        int calculateCount = splitedString.length - 2;
-        int numberStep = 2;
-        for (int i = 0; i < calculateCount; i += numberStep) {
-            result = calculateTwoNumbers(result, splitedString[i + 1].charAt(0), convertToInt(splitedString[i + 2]));
+    public int calculateSplitString(String[] splitString) {
+        int result = convertToInt(splitString[0]);
+        int numberOfOperations = splitString.length - 2;
+        int intervalBetweenNumbers = 2;
+        for (int i = 0; i < numberOfOperations; i += intervalBetweenNumbers) {
+            result = calculateTwoNumbers(result, splitString[i + 1].charAt(0), convertToInt(splitString[i + 2]));
         }
         return result;
     }
@@ -50,7 +52,7 @@ public class StringCalculator {
         if (operator == '/') {
             return divide(firstNumber, secondNumber);
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
     }
 
     private int add(int firstNumber, int secondNumber) {
@@ -66,7 +68,7 @@ public class StringCalculator {
     }
 
     private int divide(int dividedNumber, int dividingNumber) {
-        if ( dividingNumber == 0 ) {
+        if (dividingNumber == 0) {
             throw new IllegalArgumentException("숫자 0으로 나눌 수 없습니다.");
         }
         return dividedNumber / dividingNumber;
