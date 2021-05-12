@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class RacingCarGameTest {
     @DisplayName(value = "게임을 시도할 횟수는 0 이상이어야 한다.")
     @Test
-    void roundNumber_is_greater_than_0() {
+    void when_RoundNumber_is_smaller_than_0_throw_IllegalArgumentException() {
         RacingCarGameController racingCarController = new RacingCarGameController();
         int roundNumber = -1;
 
