@@ -16,7 +16,7 @@ public class RacingCarGameController {
 
         String[] splitCarNames = splitBySeparator(carNames);
 
-        List<RacingCar> racingCars = getRacingCars(splitCarNames);
+        List<RacingCar> racingCars = makeRacingCarsWithCarNames(splitCarNames);
         runGame(racingCars, roundNumber);
 
         int maxScore = getMaxScore(racingCars);
@@ -34,7 +34,7 @@ public class RacingCarGameController {
         return carNames.split(SEPARATOR);
     }
 
-    public List<RacingCar> getRacingCars(String[] carNames) {
+    public List<RacingCar> makeRacingCarsWithCarNames(String[] carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String carName : carNames) {
             racingCars.add(new RacingCar(carName));
