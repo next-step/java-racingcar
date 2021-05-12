@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class StringCalculatorView {
+    Scanner scanner = new Scanner(System.in);
+
     public String inputString() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
