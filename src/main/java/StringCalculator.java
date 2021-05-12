@@ -1,6 +1,6 @@
 public class StringCalculator {
 
-    public void isBlank(String input) {
+    public void checkBlank(String input) {
         if (input == " " || input == null) {
             throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자입니다.");
         }

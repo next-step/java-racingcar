@@ -11,7 +11,7 @@ public class StringCalculatorTest {
         StringCalculator stringCalculator = new StringCalculator();
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            stringCalculator.isBlank(" ");
+            stringCalculator.checkBlank(" ");
         });
     }
 

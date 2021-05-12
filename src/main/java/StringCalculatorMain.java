@@ -4,7 +4,7 @@ public class StringCalculatorMain {
         StringCalculator stringCalculator = new StringCalculator();
 
         String input = view.inputString();
-        stringCalculator.isBlank(input);
+        stringCalculator.checkBlank(input);
 
         String[] splitString = stringCalculator.splitBySeparator(input);
         int result = stringCalculator.calculateSplitString(splitString);
