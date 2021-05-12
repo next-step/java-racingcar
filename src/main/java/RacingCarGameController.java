@@ -85,7 +85,7 @@ public class RacingCarGameController {
     public String getWinners(List<RacingCar> cars, int maxScore) {
         String winners = "";
         for (RacingCar car : cars) {
-            if (car.getStep() == maxScore) {
+            if (car.isWinner(maxScore)) {
                 winners += " " + car.getName() + ",";
             }
         }

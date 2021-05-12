@@ -27,4 +27,8 @@ public class RacingCar {
             this.step += 1;
         }
     }
+
+    public boolean isWinner(int maxScore) {
+        return step == maxScore;
+    }
 }
