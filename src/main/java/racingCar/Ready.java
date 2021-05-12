@@ -7,19 +7,23 @@ public class Ready {
         return carName.split(SPLIT_VALUE);
     }
 
-    public boolean isGreaterThanFive(String carName) {
-        return carName.length() > 5;
+    public boolean isGreaterThanFive(int number) {
+        return number > 5;
     }
-/*
-    public String[] MakeParticipantListByName(String carName) {
-        Input input = new Input();
 
-        try (isGreaterThanFive(carName)) {
-            String tryCarName = input.carName();
-            System.out.println(tryCarName);
-            return splitNameByComma(carName);
+    public String checkNameLength(String carName) {
+        if (isGreaterThanFive(carName.length())) {
+            throw new IllegalArgumentException("자동차 이름의 길이가 5를 초과합니다.");
         }
+        return carName;
     }
 
- */
+     public String[] MakeParticipantListByName(String carName) {
+        String[] nameList = splitNameByComma(carName);
+
+        for (int i = 0; i < nameList.length; i++) {
+            nameList[i] = checkNameLength(nameList[i]);
+        }
+        return nameList;
+    }
 }
