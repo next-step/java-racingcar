@@ -61,7 +61,7 @@ public class RacingCarGameController {
         for (RacingCar car : cars) {
             System.out.println(car.getName() + " : " + bar(car.getStep()));
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public String bar(int step) {
