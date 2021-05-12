@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class ReadyTest {
     private String CAR_NAME;
@@ -29,48 +29,83 @@ public class ReadyTest {
     }
 
     @Test
-    @DisplayName("자동차 이름 길이가 5 초과하는 경우 테스트")
+    @DisplayName("입력값이 5 초과하는 경우 테스트")
     void testIsGreaterThanFive() {
         // given
-        String name = "tomato";
+        int number = 6;
         Ready ready = new Ready();
 
         // when
-        boolean actual = ready.isGreaterThanFive(name);
+        boolean actual = ready.isGreaterThanFive(number);
 
         // then
         assertThat(actual).isEqualTo(true);
     }
 
     @Test
-    @DisplayName("자동차 이름 길이가 5 이하인 경우 테스트")
+    @DisplayName("입력값이 5 이하인 경우 테스트")
     void testIsNotMoreThanFive() {
         // given
-        String name = "tomas";
+        int number = 5;
         Ready ready = new Ready();
 
         // when
-        boolean actual = ready.isGreaterThanFive(name);
+        boolean actual = ready.isGreaterThanFive(number);
 
         // then
         assertThat(actual).isEqualTo(false);
     }
 
-    /*
     @Test
-    @DisplayName("게임 참가자(자동차) 리스트 생성하는 테스트")
-    void testMakeParticipantListByName() {
+    @DisplayName("정상 케이스 : 자동차 이름 길이가 5 이하 테스트")
+    void testNameLengthIsNotMoreThanFive() {
         // given
-        String name = "sung,ho,jun";
+        String name = "tomas";
         Ready ready = new Ready();
 
         // when
-        String[] expected = {"sung","ho","jun"};
+        String expected = "tomas";
+        String actual = ready.checkNameLength(name);
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("예외 케이스 : 자동차 이름 길이가 5 초과 테스트")
+    void testNameLengthIsMoreThanFive() {
+        // given
+        String name = "sungmi";
+        Ready ready = new Ready();
+
+        // then
+        assertThatIllegalArgumentException().isThrownBy(()
+                -> ready.checkNameLength(name));
+    }
+
+    @Test
+    @DisplayName("정상 케이스(이름 5자 이하) : 자동차 리스트 생성 테스트")
+    void testMakeParticipantListByName() {
+        // given
+        Ready ready = new Ready();
+
+        // when
+        String[] expected = {"sung", "ho", "jun"};
         String[] actual = ready.MakeParticipantListByName(CAR_NAME);
 
         // then
         assertThat(actual).isEqualTo(expected);
     }
 
-     */
+    @Test
+    @DisplayName("예외 케이스(이름 5자 초과) : 자동차 리스트 생성 실패 테스트")
+    void testExceptionMakeParticipantListByName() {
+        // given
+        String name = "sssung,ho,jun";
+        Ready ready = new Ready();
+
+        // then
+        assertThatIllegalArgumentException().isThrownBy(()
+                -> ready.MakeParticipantListByName(name));
+    }
 }
