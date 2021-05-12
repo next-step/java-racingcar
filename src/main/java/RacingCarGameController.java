@@ -59,12 +59,12 @@ public class RacingCarGameController {
 
     public void outputRound(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            System.out.println(car.getName() + " : " + bar(car.getStep()));
+            System.out.println(car.getName() + " : " + showStep(car.getStep()));
         }
         System.out.println();
     }
 
-    public String bar(int step) {
+    public String showStep(int step) {
         StringBuilder bar = new StringBuilder();
         for (int i = 0; i < step; i++) {
             bar.append("-");
