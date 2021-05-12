@@ -73,7 +73,7 @@ public class ReadyTest {
 
     @Test
     @DisplayName("예외 케이스 : 이름 길이가 5 초과시 예외 처리 테스트")
-    void testNameLengthIsMoreThanFive() {
+    void testNameLengthIsGreaterThanFive() {
         // given
         String name = "sungmi";
         Ready ready = new Ready();
