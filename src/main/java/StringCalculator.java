@@ -1,19 +1,5 @@
 public class StringCalculator {
 
-    public void calculate() {
-        StringCalculatorView view = new StringCalculatorView();
-        String input = view.inputString();
-
-        isBlank(input);
-
-        String[] splitString = splitBySeparator(input);
-
-        int result = calculateSplitString(splitString);
-
-        view.outputResult(result);
-    }
-
-
     public void isBlank(String input) {
         if (input == " " || input == null) {
             throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자입니다.");
