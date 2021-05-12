@@ -15,7 +15,8 @@ public class RacingCar {
     }
 
     public void move(int randomNumber) {
-        if (randomNumber >= 4) {
+        int movingCondition = 4;
+        if (randomNumber >= movingCondition) {
             this.step += 1;
         }
     }
