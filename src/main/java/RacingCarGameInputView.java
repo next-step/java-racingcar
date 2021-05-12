@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class RacingCarGameView {
+public class RacingCarGameInputView {
     Scanner scanner = new Scanner(System.in);
 
     public String inputCarNames() {
@@ -11,9 +11,5 @@ public class RacingCarGameView {
     public int inputRoundNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return scanner.nextInt();
-    }
-
-    public void outputWinners(String winners) {
-        System.out.println("최종 우승자:" + winners);
     }
 }

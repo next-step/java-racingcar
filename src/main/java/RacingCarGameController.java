@@ -3,15 +3,15 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingCarGameController {
-    static RacingCarGameView view = new RacingCarGameView();
+    static RacingCarGameInputView inputView = new RacingCarGameInputView();
+    static RacingCarGameOutputView outputView = new RacingCarGameOutputView();
     static Random random = new Random();
-
     static final String SEPARATOR = ",";
 
     public void startGame() {
-        String carNames = view.inputCarNames();
+        String carNames = inputView.inputCarNames();
 
-        int roundNumber = view.inputRoundNumber();
+        int roundNumber = inputView.inputRoundNumber();
         checkRoundNumber(roundNumber);
 
         String[] splitCarNames = splitBySeparator(carNames);
@@ -21,7 +21,7 @@ public class RacingCarGameController {
 
         int maxScore = getMaxScore(racingCars);
         String winners = getWinners(racingCars, maxScore);
-        view.outputWinners(winners);
+        outputView.outputWinners(winners);
     }
 
     public void checkRoundNumber(int roundNumber) {
@@ -46,7 +46,7 @@ public class RacingCarGameController {
         System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
             startRound(cars);
-            outputRound(cars);
+            outputView.outputRound(cars);
         }
     }
 
@@ -55,21 +55,6 @@ public class RacingCarGameController {
             int randomNumber = random.nextInt(10);
             car.move(randomNumber);
         }
-    }
-
-    public void outputRound(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            System.out.println(car.getName() + " : " + showStep(car.getStep()));
-        }
-        System.out.println();
-    }
-
-    public String showStep(int step) {
-        StringBuilder bar = new StringBuilder();
-        for (int i = 0; i < step; i++) {
-            bar.append("-");
-        }
-        return bar.toString();
     }
 
     public int getMaxScore(List<RacingCar> cars) {
