@@ -81,8 +81,8 @@ public class RacingCarGameTest {
     @DisplayName(value = "step에 맞춰 '-'를 출력한다.")
     @Test
     void should_be_same_As_the_number_of_step() {
-        RacingCarGameController racingCarController = new RacingCarGameController();
-        assertThat(racingCarController.bar(5)).isEqualTo("-----");
+        RacingCarGameOutputView racingCarGameOutputView = new RacingCarGameOutputView();
+        assertThat(racingCarGameOutputView.showStep(5)).isEqualTo("-----");
     }
 
     @DisplayName(value = "최고점수를 구한다.")
