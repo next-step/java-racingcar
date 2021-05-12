@@ -6,6 +6,8 @@ public class RacingCarGameController {
     static RacingCarGameView view = new RacingCarGameView();
     static Random random = new Random();
 
+    static final String SEPARATOR = ",";
+
     public void startGame() {
         String carNames = view.inputCarNames();
 
@@ -29,8 +31,7 @@ public class RacingCarGameController {
     }
 
     public String[] splitBySeparator(String carNames) {
-        String separator = ",";
-        return carNames.split(separator);
+        return carNames.split(SEPARATOR);
     }
 
     public List<RacingCar> getRacingCars(String[] carNames) {
