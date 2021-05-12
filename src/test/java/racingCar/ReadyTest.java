@@ -29,7 +29,7 @@ public class ReadyTest {
     }
 
     @Test
-    @DisplayName("입력값이 5 초과하는 경우 테스트")
+    @DisplayName("숫자가 5 초과하는 경우 테스트")
     void testIsGreaterThanFive() {
         // given
         int number = 6;
@@ -43,7 +43,7 @@ public class ReadyTest {
     }
 
     @Test
-    @DisplayName("입력값이 5 이하인 경우 테스트")
+    @DisplayName("숫자가 5 이하인 경우 테스트")
     void testIsNotMoreThanFive() {
         // given
         int number = 5;
@@ -57,7 +57,7 @@ public class ReadyTest {
     }
 
     @Test
-    @DisplayName("정상 케이스 : 자동차 이름 길이가 5 이하 테스트")
+    @DisplayName("정상 케이스 : 이름 길이가 5 이하 테스트")
     void testNameLengthIsNotMoreThanFive() {
         // given
         String name = "tomas";
@@ -72,7 +72,7 @@ public class ReadyTest {
     }
 
     @Test
-    @DisplayName("예외 케이스 : 자동차 이름 길이가 5 초과 테스트")
+    @DisplayName("예외 케이스 : 이름 길이가 5 초과시 예외 처리 테스트")
     void testNameLengthIsMoreThanFive() {
         // given
         String name = "sungmi";
