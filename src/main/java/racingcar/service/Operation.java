@@ -3,6 +3,7 @@ package racingcar.service;
 import java.util.Arrays;
 import java.util.function.Function;
 
+
 public enum Operation {
     GO("1", (locationInfo) -> locationInfo + 1),
     STOP("0", (locationInfo) -> locationInfo);
