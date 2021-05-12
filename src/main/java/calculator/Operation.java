@@ -16,14 +16,16 @@ public enum Operation {
         this.operator = operator;
         this.expression = expression;
     }
-    public static int result(String symbol,int num1,int num2){
-        return findBySymbol(symbol).expression.apply(num1,num2);
+
+    public static int result(String symbol, int num1, int num2) {
+        return findBySymbol(symbol).expression.apply(num1, num2);
     }
-    public static Operation findBySymbol(String symbol){
+
+    public static Operation findBySymbol(String symbol) {
         return Arrays.stream(Operation.values())
-                .filter(Operation -> Operation.operator.equals(symbol))
+                .filter(operator -> operator.operator.equals(symbol))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(IllegalArgumentException::new);
     }
 
 }
