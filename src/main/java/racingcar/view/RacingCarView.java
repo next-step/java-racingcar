@@ -9,10 +9,10 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RacingCarView {
-    SystemService systemService = new SystemService();
+    private SystemService systemService = new SystemService();
 
-    Scanner scan = new Scanner(System.in);
-    int cycle = 0;
+    private Scanner scan = new Scanner(System.in);
+    private int cycle = 0;
 
     public RacingCarView() {
         inputCarInfo();
