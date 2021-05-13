@@ -1,39 +1,43 @@
 package calculator;
 
+import java.util.regex.Pattern;
+
 public class Calculator {
 
-    public int add(int a, int b) {
-        return a + b;
-    }
+    private String userInput;
+    private int result = 0;
+    private Operator currentOperator = Operator.PLUS;
 
-    public int sub(int a, int b) {
-        return a - b;
-    }
-
-    public int multi(int a, int b) {
-        return a * b;
-    }
-
-    public int division(int a, int b) {
-        return a / b;
-    }
-
-    public void nullCheck(String input) throws IllegalAccessException {
-
-        if (input == null) {
-
-            throw new IllegalArgumentException("입력값이 null입니다.");
+    public int caculateUserInput() {
+        for (String partialInput : userInput.split(" ")) {
+            calculatePartial(partialInput);
         }
+
+        return result;
     }
 
-    public void operCheck(String input) throws IllegalAccessException {
+    public void setUserInput(String userInput){
+        this.userInput = userInput;
+    }
 
-        if (!input.contains("+")
-            || !input.contains("-")
-            || !input.contains("*")
-            || !input.contains("/")) {
+    private void calculatePartial(String input){
 
-            throw new IllegalArgumentException("입력값에 사칙연산이 없습니다.");
+        String regExp = "^[0-9]*$";
+
+        if(Pattern.matches(regExp, input)){
+            result = currentOperator.operate(result, Integer.parseInt(input));
+            return;
         }
+
+        for(Operator operator : Operator.values()){
+            if(operator.getSymbol().equals(input)){
+                currentOperator = operator;
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException();
+
     }
+
 }

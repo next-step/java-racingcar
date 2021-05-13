@@ -1,6 +1,9 @@
 package racingcar;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class RacingGameMain {
 
@@ -8,6 +11,8 @@ public class RacingGameMain {
 
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
+        RacingGame racingGame = new RacingGame();
+        WinnerExtraction winnerExtraction = new WinnerExtraction();
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String carName = scanner.nextLine();
@@ -16,7 +21,7 @@ public class RacingGameMain {
         List<Car> carList = new ArrayList<>();
 
         for (int i = 0; i < carNameArr.length; i++) {
-            Car car = new Car(carNameArr[i]);
+            Car car = new Car(carNameArr[i], 0);
             carList.add(car);
         }
 
@@ -24,13 +29,13 @@ public class RacingGameMain {
         int count = scanner.nextInt();
 
         for (int i = 0; i < count; i++) {
-            playRacing(random, carList);
+            racingGame.playRacing(random, carList);
             System.out.println();
         }
 
-        int maxPosition = getMaxPosition(carList);
+        int maxPosition = winnerExtraction.getMaxPosition(carList);
 
-        List<Car> winners = getWinners(carList, maxPosition);
+        List<Car> winners = winnerExtraction.getWinners(carList, maxPosition);
 
         StringBuilder winnerString = new StringBuilder();
         for (Car winner : winners) {
@@ -40,33 +45,4 @@ public class RacingGameMain {
         System.out.println("최종 우승자 : " + winnerString.substring(0, winnerString.length() - 2));
     }
 
-    public static void playRacing(Random random, List<Car> carList) {
-        for (Car car : carList) {
-            int movableNum = random.nextInt(10);
-
-            car.move(movableNum);
-            System.out.println(car.getCarName() + " : " + car.getMoveRegex());
-        }
-    }
-
-    public static int getMaxPosition(List<Car> carList) {
-        int maxPosition = 0;
-
-        for (int i = 0; i < carList.size(); i++) {
-            if (maxPosition < carList.get(i).getPosition()) {
-                maxPosition = carList.get(i).getPosition();
-            }
-        }
-        return maxPosition;
-    }
-
-    public static List<Car> getWinners(List<Car> carList, int maxPosition) {
-        List<Car> winners = new ArrayList<>();
-        for (int i = 0; i < carList.size(); i++) {
-            if (carList.get(i).getPosition() == maxPosition) {
-                winners.add(carList.get(i));
-            }
-        }
-        return winners;
-    }
 }

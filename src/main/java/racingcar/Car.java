@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class Car {
     private final String carName;
     private int position;
@@ -9,8 +7,9 @@ public class Car {
     private static final int FORWARD_NUM = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
-    public Car(String carName) {
+    public Car(String carName, int position) {
         this.carName = carName;
+        this.position = position;
 
         if (carName.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
@@ -40,7 +39,6 @@ public class Car {
 
         return moveRegex;
     }
-
 
 
 }

@@ -4,38 +4,13 @@ import java.util.Scanner;
 
 public class CalculMain {
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args){
 
-        Calculator calcul = new Calculator();
+        Calculator calculator = new Calculator();
+        String userInput = "2 + 3 * 4 / 2";
+        calculator.setUserInput(userInput);
 
-        Scanner scanner = new Scanner(System.in);
+        System.out.println(calculator.caculateUserInput());
 
-        System.out.print("input : ");
-        String input = scanner.nextLine();
-        String[] split = input.split(" ");
-
-        int result = Integer.parseInt(split[0]);
-
-        for (int i = 0; i < split.length; i++) {
-
-            if (split[i].equals("+")) {
-
-                result = calcul.add(result, Integer.parseInt(split[i + 1]));
-            } else if (split[i].equals("-")) {
-
-                result = calcul.sub(result, Integer.parseInt(split[i + 1]));
-            } else if (split[i].equals("*")) {
-
-                result = calcul.multi(result, Integer.parseInt(split[i + 1]));
-            } else if (split[i].equals("/")) {
-
-                result = calcul.division(result, Integer.parseInt(split[i + 1]));
-            }
-        }
-
-        calcul.nullCheck(input);
-        calcul.operCheck(input);
-
-        System.out.println("결과값 : " + result);
     }
 }
