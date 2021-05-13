@@ -16,6 +16,6 @@ public class Function {
         if (movable) {
             return "-";
         }
-        return null;
+        return "";
     }
 }
