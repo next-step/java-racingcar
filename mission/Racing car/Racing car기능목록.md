@@ -56,7 +56,7 @@ jun : --
 - [x] 게임 참가자(자동차) 리스트 만들기 (예외처리 : 자동차 이름의 길이가 5이상이면 다시 입력받기) : `Ready#makeParticipantListByName`
 - Function
 - [x] 랜덤 수 뽑기 `Function#drawNumber`
-- [ ] 자동차 전진(4이상이면) : `Function#moveAble` 
+- [x] 자동차 전진(4이상이면) : `Function#moveAble` 
 - [ ] 자동차 전진하면 `-`값 업데이트 : `Function#getScore`
 - Play
 - [ ] 자동차 게임하기, 매 경기 출력하기 : 
@@ -77,7 +77,8 @@ jun : --
 - [x] 자동차 리스트 생성 테스트 (정상 케이스, 이름 5자 이하) : `Ready#testMakeParticipantListByName`
 - [x] 자동차 리스트 생성 실패 테스트 (예외 케이스, 이름 5자 초과) : `Ready#testExceptionMakeParticipantListByName`
 - FunctionTest
-- [ ] 자동차 전진(4이상이면) : `functionTest#moveAbleTest` 
+- [x] 자동차 전진(4이상이면) : `functionTest#moveAbleTest` 
+- [x] 자동차 전진 실패(4미만이면) : `functionTest#notMoveAbleTest`
 - [ ] 자동차 전진하면 `-`값 업데이트 테스트 : `function#getScoreTest`
 - Play
 - [ ] 자동차 게임하기: `PalyTest#gamePlayTest`
