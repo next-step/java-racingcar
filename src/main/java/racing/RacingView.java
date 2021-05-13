@@ -1,4 +1,4 @@
-package Racing;
+package racing;
 
 
 import java.util.*;

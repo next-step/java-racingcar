@@ -1,7 +1,7 @@
 package study;
 
-import Racing.Racing;
-import Racing.Car;
+import racing.Racing;
+import racing.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

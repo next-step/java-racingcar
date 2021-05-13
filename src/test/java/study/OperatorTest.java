@@ -1,6 +1,6 @@
 package study;
 
-import Calculator.Operator;
+import calculator.Operator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
