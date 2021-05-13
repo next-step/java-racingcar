@@ -4,9 +4,11 @@ import java.util.List;
 
 public class Output {
     private final List<Car> cars;
+    private final List<RaceResult> raceResults;
 
-    public Output(List<Car> cars) {
+    public Output(List<Car> cars, List<RaceResult> raceResults) {
         this.cars = cars;
+        this.raceResults = raceResults;
     }
 
     public String printLines(Car car) {
@@ -17,7 +19,9 @@ public class Output {
         return lines.toString();
     }
 
-    public void printCars() {
+    public void printCars(RaceResult raceResult) {
+        List<Car> cars = raceResult.getCars();
+
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + printLines(car));
         }
@@ -43,5 +47,15 @@ public class Output {
         }
 
         System.out.println("최종 우승자: " + winners.substring(0, winners.length() - 2));
+    }
+
+    public void printRaceResult() {
+        System.out.println("실행 결과");
+
+        for (RaceResult raceResult : raceResults) {
+            printCars(raceResult);
+        }
+
+        printWinner();
     }
 }

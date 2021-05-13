@@ -1,38 +1,46 @@
 package car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Drive {
     private static final int MAXIMUM_RANDOM_NUMBER = 10;
     private List<Car> cars;
-    private Output output;
 
     public Drive(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void carDrive() {
-        for (Car car : cars) {
+    public List<Car> carDrive() {
+        Copy copy = new Copy(cars);
+
+        List<Car> copiedCars = copy.createCopiedCars();
+
+        for (int i = 0; i < cars.size(); i++) {
             int randomNumber = (int) (Math.random() * MAXIMUM_RANDOM_NUMBER);
 
-            car.changeKm(randomNumber);
+            copiedCars.get(i).changeKm(copiedCars.get(i).getKm() + randomNumber);
+            cars.get(i).changeKm(cars.get(i).getKm() + randomNumber);
         }
+
+        return copiedCars;
     }
 
-    public void carRacing(int count) {
+    public List<RaceResult> carRacing(int count) {
         int nowCount = 0;
-        output = new Output(cars);
 
-        System.out.println("실행 결과");
+        List<RaceResult> raceResults = new ArrayList<>();
 
         while (nowCount < count) {
-            carDrive();
+            List<Car> drivedCars = carDrive();
 
-            output.printCars();
+            RaceResult raceResult = new RaceResult(drivedCars);
+
+            raceResults.add(raceResult);
 
             nowCount++;
         }
 
-        output.printWinner();
+        return raceResults;
     }
 }
