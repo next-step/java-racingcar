@@ -43,8 +43,8 @@ public class Game {
     }
 
     private void outputRacingCars(String count, List<Car> cars) {
-        Output output = new Output(cars);
+        Drive drive = new Drive(cars);
 
-        output.carRacing(Integer.valueOf(count));
+        drive.carRacing(Integer.valueOf(count));
     }
 }

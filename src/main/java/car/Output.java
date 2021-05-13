@@ -3,7 +3,6 @@ package car;
 import java.util.List;
 
 public class Output {
-    private final Drive drive = new Drive();
     private final List<Car> cars;
 
     public Output(List<Car> cars) {
@@ -27,7 +26,7 @@ public class Output {
 
     public String getWinner(Car car, int max) {
         if (car.getKm() == max)
-            return car.getName() + ',';
+            return car.getName() + ", ";
         return "";
     }
 
@@ -43,22 +42,6 @@ public class Output {
             winners.append(getWinner(car, maxKm));
         }
 
-        System.out.println("최종 우승자: " + winners.substring(0, winners.length() - 1));
-    }
-
-    public void carRacing(int count) {
-        int nowCount = 0;
-
-        System.out.println("실행 결과");
-
-        while (nowCount < count) {
-            drive.carDrive(cars);
-
-            printCars();
-
-            nowCount++;
-        }
-
-        printWinner();
+        System.out.println("최종 우승자: " + winners.substring(0, winners.length() - 2));
     }
 }
