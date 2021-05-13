@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SetTest {
     private Set<Integer> numbers;
     //상수화 만들기
-    private static final int NAME_LENGTH=1;
+    private static final int NAME_LENGTH = 1;
 
     @BeforeEach
     void setUp() {
@@ -28,36 +28,35 @@ public class SetTest {
     }
 
     @Test
-    void set사이즈_체크(){
+    void set사이즈_체크() {
         System.out.println(numbers.size());
         assertThat(4).isEqualTo(numbers.size());
     }
 
-    boolean setTest(int num){
-        if(!numbers.contains(num)){
+    boolean setTest(int num) {
+        if (!numbers.contains(num)) {
             return false;
         }
         return true;
     }
+
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void forList(int num){
+    @ValueSource(ints = {1, 2, 3})
+    void forList(int num) {
         assertThat(true).isEqualTo(numbers.contains(num));
     }
 
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true","4:false","5:false"}, delimiter = ':')
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int input, boolean expected) {
-        boolean actualValue = numbers.contains(input );
+        boolean actualValue = numbers.contains(input);
         assertEquals(expected, actualValue);
 
 //        assertDoesNotThrow() > new;
 //            throw new il
 
     }
-
-
 
 
 }

@@ -7,8 +7,8 @@ public class RacingCarMain {
 
 
     public static void main(String[] args) {
-        String[] carNameList={"car1","car2","car3"};
-            //= new RacingName().nameInput();
+        String[] carNameList = {"car1", "car2", "car3"};
+        //= new RacingName().nameInput();
 
         Scanner scan = new Scanner(System.in);
         System.out.println("시도할 횟수는 몇 회인가요?");

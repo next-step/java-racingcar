@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculateTest {
     Calculate calcul = new Calculate();
+
     @Test
     int resultMethod(String cal, char method) {
         int split_num1, split_num2, result;
@@ -60,7 +61,7 @@ public class CalculateTest {
     @Test
     void cal() {
         String str = "2 + 3 * 4 / 2";
-        double result= Double.parseDouble(calcul.requestCal(str));
-        assertThat(result).isEqualTo((double)10);
+        double result = Double.parseDouble(calcul.requestCal(str));
+        assertThat(result).isEqualTo((double) 10);
     }
 }

@@ -42,7 +42,7 @@ public class RacingCarMain {
         String[] carNameList = new RacingName().nameInput();
         List<RacingCar> carList = new ArrayList();
         List<Integer> scoreList = new ArrayList<>();
-        int max=0;
+        int max = 0;
         String result = "승자는";
 
         System.out.println("시도할 횟수는 몇 회인가요?");
@@ -57,9 +57,9 @@ public class RacingCarMain {
         for (int i = 0; i < count; i++) {
             carGoCheck(carList, scoreList);
         }
-        max= Collections.max(scoreList);
+        max = Collections.max(scoreList);
 
-        for(RacingCar car : carList){
+        for (RacingCar car : carList) {
             result = comMa(max, result, car);
         }
         result = result.substring(0, result.lastIndexOf(","));
@@ -67,14 +67,14 @@ public class RacingCarMain {
     }
 
     private String comMa(int max, String result, RacingCar car) {
-        if(car.getGoStep() == max){
-            result += car.getCarName() +",";
+        if (car.getGoStep() == max) {
+            result += car.getCarName() + ",";
         }
         return result;
     }
 
     private void carGoCheck(List<RacingCar> carList, List<Integer> scoreList) {
-        for(RacingCar car : carList){
+        for (RacingCar car : carList) {
             RacingGameRenewal gameOne = new RacingGameRenewal();
             scoreList.add(gameOne.RacingGame(car));
         }

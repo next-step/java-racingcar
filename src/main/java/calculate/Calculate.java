@@ -4,20 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+
 public class Calculate {
 
-    int resultMethod(String cal , char method){
+    int resultMethod(String cal, char method) {
         int split_num1, split_num2, result;
         String[] split = cal.split("[+]");
         split_num1 = Integer.parseInt(split[0]);
         split_num2 = Integer.parseInt(split[1]);
-        result = split_num1 +method+ split_num2;
+        result = split_num1 + method + split_num2;
         System.out.println(split_num1 + method + split_num2 + "=" + result);
         return result;
     }
 
     public int add(String cal, int resultCheckNumber) {
-        int result=0;
+        int result = 0;
         result = resultMethod(cal, '+');
         return result;
     }
@@ -32,6 +33,7 @@ public class Calculate {
 
         return result;
     }
+
     public int dvide(String cal, int resultCheckNumber) {
         int split_num1, split_num2, result;
         String[] split = cal.split("[/]");
@@ -42,6 +44,7 @@ public class Calculate {
 
         return result;
     }
+
     public int dvidmultyplee(String cal, int resultCheckNumber) {
         int split_num1, split_num2, result;
         String[] split = cal.split("[*]");

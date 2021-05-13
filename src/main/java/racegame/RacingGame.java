@@ -25,7 +25,7 @@ public class RacingGame {
     }
 
     ArrayList<Map<String, Object>> racingGoing(ArrayList<Map<String, Object>> carList) {
-        for (Map<String , Object> car: carList) {
+        for (Map<String, Object> car : carList) {
             goStepAdd(car);
         }
         return carList;
