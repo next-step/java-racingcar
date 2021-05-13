@@ -12,4 +12,10 @@ public class Function {
         return number >= 4;
     }
 
+    public String getScore(boolean movable) {
+        if (movable) {
+            return "-";
+        }
+        return null;
+    }
 }
