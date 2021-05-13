@@ -57,7 +57,7 @@ jun : --
 - Function
 - [x] 랜덤 수 뽑기 `Function#drawNumber`
 - [x] 자동차 전진(4이상이면) : `Function#moveAble` 
-- [ ] 자동차 전진하면 `-`값 업데이트 : `Function#getScore`
+- [x] 자동차 전진하면 점수(`-`) 얻기: `Function#getScore`
 - Play
 - [ ] 자동차 게임하기, 매 경기 출력하기 : 
 `Paly#palyGame`
@@ -77,9 +77,10 @@ jun : --
 - [x] 자동차 리스트 생성 테스트 (정상 케이스, 이름 5자 이하) : `Ready#testMakeParticipantListByName`
 - [x] 자동차 리스트 생성 실패 테스트 (예외 케이스, 이름 5자 초과) : `Ready#testExceptionMakeParticipantListByName`
 - FunctionTest
-- [x] 자동차 전진(4이상이면) : `functionTest#moveAbleTest` 
-- [x] 자동차 전진 실패(4미만이면) : `functionTest#notMoveAbleTest`
-- [ ] 자동차 전진하면 `-`값 업데이트 테스트 : `function#getScoreTest`
+- [x] 자동차 전진(4이상이면) : `functionTest#testMoveAble` 
+- [x] 자동차 전진 실패(4미만이면) : `functionTest#testNotMoveAble`
+- [x] 자동차 전진하면 점수(`-`) 얻기 테스트 : `function#testGetScore`
+- [x] 자동차 점수 얻기`""` 실패 테스트 : `function#testNotGetScore`
 - Play
 - [ ] 자동차 게임하기: `PalyTest#gamePlayTest`
 - Award
