@@ -7,4 +7,9 @@ public class Function {
         Random random = new Random();
         return random.nextInt(10);
     }
+
+    public Boolean moveAble(int number) {
+        return number >= 4;
+    }
+
 }
