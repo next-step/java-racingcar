@@ -55,7 +55,7 @@ jun : --
 - [x] 자동차 이름 길이가 5넘는지 확인하기 (예외처리 : 자동차 이름의 길이가 5이상이면 에러 `IllegalArgumentException`에러 발생) : `Ready#checkNameLength`
 - [x] 게임 참가자(자동차) 리스트 만들기 (예외처리 : 자동차 이름의 길이가 5이상이면 다시 입력받기) : `Ready#makeParticipantListByName`
 - Function
-- [ ] 랜덤 수 뽑기 `Function#drawNumber`
+- [x] 랜덤 수 뽑기 `Function#drawNumber`
 - [ ] 자동차 전진(4이상이면) : `Function#moveAble` 
 - [ ] 자동차 전진하면 `-`값 업데이트 : `Function#getScore`
 - Play
