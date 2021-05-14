@@ -4,11 +4,14 @@ import racingcar.vo.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SystemService {
-    private MoveService moveService = new MoveService();
 
     public List<Car> carInfo = new ArrayList<>();
+
+    private static final int RANDOM_NUMBER = 10;
+    private static final int MOVABLE_NUMBER = 4;
 
     public void splitString(String input) {
         String[] result = input.split(",");
@@ -19,10 +22,11 @@ public class SystemService {
         }
     }
 
-    public int moveCar(int locationInfo) {
-        String check = moveService.isMove();
-        int movedLocation = Operation.result(check, locationInfo);
-        return movedLocation;
+    public int moveCar() {
+        if(new Random().nextInt(RANDOM_NUMBER) >= MOVABLE_NUMBER){
+            return 1;
+        }
+        return 0;
     }
 
     public List<String> checkWinner(int cycle) {
