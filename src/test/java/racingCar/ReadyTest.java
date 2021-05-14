@@ -85,13 +85,13 @@ public class ReadyTest {
 
     @Test
     @DisplayName("정상 케이스(이름 5자 이하) : 자동차 리스트 생성 테스트")
-    void testMakeParticipantListByName() {
+    void testCreateParticipantListByName() {
         // given
         Ready ready = new Ready();
 
         // when
         String[] expected = {"sung", "ho", "jun"};
-        String[] actual = ready.MakeParticipantListByName(CAR_NAME);
+        String[] actual = ready.createParticipantListByName(CAR_NAME);
 
         // then
         assertThat(actual).isEqualTo(expected);
@@ -99,13 +99,13 @@ public class ReadyTest {
 
     @Test
     @DisplayName("예외 케이스(이름 5자 초과) : 자동차 리스트 생성 실패 테스트")
-    void testExceptionMakeParticipantListByName() {
+    void testExceptionCreateParticipantListByName() {
         // given
         String name = "sssung,ho,jun";
         Ready ready = new Ready();
 
         // then
         assertThatIllegalArgumentException().isThrownBy(()
-                -> ready.MakeParticipantListByName(name));
+                -> ready.createParticipantListByName(name));
     }
 }

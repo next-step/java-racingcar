@@ -18,7 +18,7 @@ public class Ready {
         return carName;
     }
 
-     public String[] MakeParticipantListByName(String carName) {
+     public String[] createParticipantListByName(String carName) {
         String[] nameList = splitNameByComma(carName);
 
         for (int i = 0; i < nameList.length; i++) {
