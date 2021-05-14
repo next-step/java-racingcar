@@ -2,16 +2,13 @@ package racingcar;
 
 public class Car {
     private final String carName;
-    private int position;
-    private String moveRegex;
-    private static final int FORWARD_NUM = 4;
-    private static final int MAX_NAME_LENGTH = 5;
+    private String moveString;
+    private int position = CarConstant.INIT_POSITION;
 
-    public Car(String carName, int position) {
+    public Car(String carName) {
         this.carName = carName;
-        this.position = position;
 
-        if (carName.length() > MAX_NAME_LENGTH) {
+        if (carName.length() > CarConstant.MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
         }
     }
@@ -25,19 +22,19 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= FORWARD_NUM) {
+        if (number >= CarConstant.FORWARD_NUM) {
             this.position++;
         }
     }
 
-    public String getMoveRegex() {
-        moveRegex = "";
+    public String getMoveString() {
+        moveString = "";
 
         for (int i = 0; i < this.getPosition(); i++) {
-            this.moveRegex += "-";
+            this.moveString += CarConstant.MOVE_REGEX_HYPHEN;
         }
 
-        return moveRegex;
+        return moveString;
     }
 
 

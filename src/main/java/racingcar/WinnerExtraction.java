@@ -7,19 +7,19 @@ public class WinnerExtraction {
     public int getMaxPosition(List<Car> carList) {
         int maxPosition = 0;
 
-        for (int i = 0; i < carList.size(); i++) {
-            if (maxPosition < carList.get(i).getPosition()) {
-                maxPosition = carList.get(i).getPosition();
+        for (Car car : carList) {
+            if (maxPosition < car.getPosition()) {
+                maxPosition = car.getPosition();
             }
         }
         return maxPosition;
     }
 
-    public List<Car> getWinners(List<Car> carList, int maxPosition) {
-        List<Car> winners = new ArrayList<>();
+    public List<String> getWinners(List<Car> carList, int maxPosition) {
+        List<String> winners = new ArrayList<>();
         for (Car car : carList) {
             if (car.getPosition() == maxPosition) {
-                winners.add(car);
+                winners.add(car.getCarName());
             }
         }
         return winners;

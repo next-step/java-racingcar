@@ -15,13 +15,13 @@ public class RacingGameMain {
         WinnerExtraction winnerExtraction = new WinnerExtraction();
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carName = scanner.nextLine();
-        String[] carNameArr = carName.split(", ");
+        String userInput = scanner.nextLine();
+        String[] carNameArr = userInput.split(",".trim());
 
         List<Car> carList = new ArrayList<>();
 
-        for (int i = 0; i < carNameArr.length; i++) {
-            Car car = new Car(carNameArr[i], 0);
+        for (String carName : carNameArr) {
+            Car car = new Car(carName);
             carList.add(car);
         }
 
@@ -35,14 +35,10 @@ public class RacingGameMain {
 
         int maxPosition = winnerExtraction.getMaxPosition(carList);
 
-        List<Car> winners = winnerExtraction.getWinners(carList, maxPosition);
+        List<String> winners = winnerExtraction.getWinners(carList, maxPosition);
 
-        StringBuilder winnerString = new StringBuilder();
-        for (Car winner : winners) {
-            winnerString.append(winner.getCarName()).append(", ");
-        }
-
-        System.out.println("최종 우승자 : " + winnerString.substring(0, winnerString.length() - 2));
+        String winnerString = String.join(CarConstant.WIN_CAR_OUTPUT_DELIMITER, winners);
+        System.out.println("최종 우승자 : " + winnerString);
     }
 
 }

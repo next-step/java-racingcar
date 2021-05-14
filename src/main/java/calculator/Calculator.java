@@ -8,31 +8,29 @@ public class Calculator {
     private int result = 0;
     private Operator currentOperator = Operator.PLUS;
 
-    public int caculateUserInput() {
-        for (String partialInput : userInput.split(" ")) {
+    public Calculator(String userInput) {
+        this.userInput = userInput;
+    }
+
+    public int calculateUserInput() {
+        for (String partialInput : userInput.split(CalculConstant.WHITE_SPACE)) {
             calculatePartial(partialInput);
         }
 
         return result;
     }
 
-    public void setUserInput(String userInput){
-        this.userInput = userInput;
-    }
-
-    private void calculatePartial(String input){
+    private void calculatePartial(String input) {
 
         String regExp = "^[0-9]*$";
 
-        if(Pattern.matches(regExp, input)){
+        if (Pattern.matches(regExp, input)) {
             result = currentOperator.operate(result, Integer.parseInt(input));
-            return;
         }
 
-        for(Operator operator : Operator.values()){
-            if(operator.getSymbol().equals(input)){
+        for (Operator operator : Operator.values()) {
+            if (operator.getSymbol().equals(input)) {
                 currentOperator = operator;
-                return;
             }
         }
 
