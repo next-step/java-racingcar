@@ -1,7 +1,14 @@
-RacingCar 
+🚗 RacingCar 
 ========================
 초간단 자동차 경주 게임 구현
 --------------------------
+
+### 📌 목차
+- [구현 기능 정리](#구현-기능-정리)
+- [기능 구현 목록](#기능-구현-목록)
+- [기능 구현 코드](#기능-구현-코드)
+
+---
 
 ### 구현 기능 정리 
 #### 기능 요구사항
@@ -41,10 +48,10 @@ jun : --
 최종 우승자: pobi, jun
 ```
 
-<br>
+---
 
-#### 기능 구현 목록
-##### main 클래스
+### 기능 구현 목록
+#### main 클래스
 - Input
 - [x] 자동차 이름 입력 받기(System in) : `Input#carName`
 - [x] 경기 수 입력 받기(System in) : `Input#gameNumber`
@@ -53,46 +60,49 @@ jun : --
 `Ready#splitNameByComma`
 - [x] 숫자가 5가 넘는지 확인하기 : `Ready#isGreaterThan`
 - [x] 자동차 이름 길이가 5넘는지 확인하기 (예외처리 : 자동차 이름의 길이가 5이상이면 에러 `IllegalArgumentException`에러 발생) : `Ready#checkNameLength`
-- [x] 게임 참가자(자동차) 리스트 만들기 (예외처리 : 자동차 이름의 길이가 5이상이면 다시 입력받기) : `Ready#makeParticipantListByName`
+- [x] 게임 참가자(자동차) 리스트 만들기 (예외처리 : 자동차 이름의 길이가 5이상이면 다시 입력받기) : `Ready#createParticipantListByName`
 - Function
 - [x] 랜덤 수 뽑기 `Function#drawNumber`
 - [x] 자동차 전진(4이상이면) : `Function#moveAble` 
 - [x] 자동차 전진하면 점수(`-`) 얻기: `Function#getScore`
 - Play
-- [ ] 자동차 게임하기, 매 경기 출력하기 : 
-`Paly#palyGame`
+- [ ] 점수판 만들기 : `Paly#scoreTable`
+- [ ] 1회 게임하기 : `Paly#OneRoundGame`
+- [ ] gameNumber만큼 게임하기 : `Paly#Game`
 - Award
 - [ ] value 값 길이 중 가장 큰 값 비교 : 
 `Awards#compareScore`
 - [ ] 경기 결과 담기(길이) : `Awards#scoreTable`
 - [ ] 최종 우승자 결과 출력 : `Awards#isWinner`
 
-##### test 클래스
+#### test 클래스
 - ReadyTest
 - [x] `,`기준으로 분리 테스트: `ReadyTest#testSplitNameByComma`
 - [x] 숫자가 5 초과하는 경우 테스트 : `ReadyTest#testIsGreaterThanFive`
 - [x] 숫자가 5 이하인 경우 테스트 : `ReadyTest#testIsNotMoreThanFive`
 - [x] 자동차 이름 길이가 5 이하인 경우 테스트(정상케이스) : `ReadyTest#testNameLengthIsNotMoreThanFive`
 - [x] 자동차 이름 길이가 5 초과인 경우 테스트(예외 케이스) : `ReadyTest#testNameLengthIsGreaterThanFive`
-- [x] 자동차 리스트 생성 테스트 (정상 케이스, 이름 5자 이하) : `Ready#testMakeParticipantListByName`
-- [x] 자동차 리스트 생성 실패 테스트 (예외 케이스, 이름 5자 초과) : `Ready#testExceptionMakeParticipantListByName`
+- [x] 자동차 리스트 생성 테스트 (정상 케이스, 이름 5자 이하) : `Ready#testCreateParticipantListByName`
+- [x] 자동차 리스트 생성 실패 테스트 (예외 케이스, 이름 5자 초과) : `Ready#testExceptionCreateParticipantListByName`
 - FunctionTest
 - [x] 자동차 전진(4이상이면) : `functionTest#testMoveAble` 
 - [x] 자동차 전진 실패(4미만이면) : `functionTest#testNotMoveAble`
 - [x] 자동차 전진하면 점수(`-`) 얻기 테스트 : `function#testGetScore`
 - [x] 자동차 점수 얻기`""` 실패 테스트 : `function#testNotGetScore`
 - Play
-- [ ] 자동차 게임하기: `PalyTest#gamePlayTest`
+- [ ] 자동차 게임하기: `PalyTest#testPalygame`
 - Award
 - [ ] value 값 길이 중 가장 큰 값 비교 : `AwardsTest#compareScoreTest`
 - [ ] 경기 결과 담기(길이) : `AwardsTest#scoreTableTest`
 - [ ] 최종 우승자 결과 출력 : `AwardsTest#isWinnerTest`
 
-<br>
+---
 
-### 기능 구현
+### 기능 구현 코드
 - [mian 클래스][M]
 - [test 클래스][T]
+
+---
 
 [M]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/main/java/racingCar
 [T]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/test/java/racingCar
