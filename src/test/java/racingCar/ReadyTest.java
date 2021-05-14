@@ -88,7 +88,7 @@ public class ReadyTest {
 
     @Test
     @DisplayName("정상 케이스(이름 5자 이하) : 게임 선수 리스트 생성 테스트")
-    void testCreateParticipantListByName() {
+    void testCreatePlayerListByName() {
         // given
         Ready ready = new Ready();
 
@@ -102,7 +102,7 @@ public class ReadyTest {
 
     @Test
     @DisplayName("예외 케이스(이름 5자 초과) : 게임 선수 리스트 생성 실패 테스트")
-    void testExceptionCreateParticipantListByName() {
+    void testExceptionCreatePlayerListByName() {
         // given
         String name = "sssung,ho,jun";
         Ready ready = new Ready();
