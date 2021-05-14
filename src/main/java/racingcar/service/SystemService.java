@@ -16,14 +16,14 @@ public class SystemService {
     public void splitString(String input) {
         String[] result = input.split(",");
         for (int i = 0; i < result.length; i++) {
-            Car carVO = new Car(result[i],0);
+            Car carVO = new Car(result[i], 0);
 
             carInfo.add(carVO);
         }
     }
 
     public int moveCar() {
-        if(new Random().nextInt(RANDOM_NUMBER) >= MOVABLE_NUMBER){
+        if (new Random().nextInt(RANDOM_NUMBER) >= MOVABLE_NUMBER) {
             return 1;
         }
         return 0;
