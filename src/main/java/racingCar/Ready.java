@@ -1,5 +1,8 @@
 package racingCar;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Ready {
     private static final String SPLIT_VALUE = ",";
 
@@ -18,12 +21,21 @@ public class Ready {
         return carName;
     }
 
-     public String[] createParticipantListByName(String carName) {
-        String[] nameList = splitNameByComma(carName);
+     public String[] createPlayerListByName(String carName) {
+        String[] PlayerList = splitNameByComma(carName);
 
-        for (int i = 0; i < nameList.length; i++) {
-            nameList[i] = checkNameLength(nameList[i]);
+        for (int i = 0; i < PlayerList.length; i++) {
+            PlayerList[i] = checkNameLength(PlayerList[i]);
         }
-        return nameList;
+        return PlayerList;
     }
+
+    public static Map<String, String> createScoreTableByPlayerList(String[] playerList) {
+        Map<String, String> scoreTable = new HashMap<>();
+        for (String s : playerList) {
+            scoreTable.put(s, "");
+        }
+        return scoreTable;
+    }
+
 }

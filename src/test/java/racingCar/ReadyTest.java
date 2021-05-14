@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class ReadyTest {
@@ -84,21 +87,21 @@ public class ReadyTest {
     }
 
     @Test
-    @DisplayName("정상 케이스(이름 5자 이하) : 자동차 리스트 생성 테스트")
+    @DisplayName("정상 케이스(이름 5자 이하) : 게임 선수 리스트 생성 테스트")
     void testCreateParticipantListByName() {
         // given
         Ready ready = new Ready();
 
         // when
         String[] expected = {"sung", "ho", "jun"};
-        String[] actual = ready.createParticipantListByName(CAR_NAME);
+        String[] actual = ready.createPlayerListByName(CAR_NAME);
 
         // then
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("예외 케이스(이름 5자 초과) : 자동차 리스트 생성 실패 테스트")
+    @DisplayName("예외 케이스(이름 5자 초과) : 게임 선수 리스트 생성 실패 테스트")
     void testExceptionCreateParticipantListByName() {
         // given
         String name = "sssung,ho,jun";
@@ -106,6 +109,24 @@ public class ReadyTest {
 
         // then
         assertThatIllegalArgumentException().isThrownBy(()
-                -> ready.createParticipantListByName(name));
+                -> ready.createPlayerListByName(name));
+    }
+
+    @Test
+    @DisplayName("선수 목록을 이용해 게임 점수판 생성 테스트")
+    void testCreateScoreTableByPlayerList() {
+        // given
+        String[] playerList = {"ssung", "ho", "jun"};
+        Ready ready = new Ready();
+
+        // when
+        Map<String, String> expected = new HashMap<>();
+        for (String s : playerList) {
+            expected.put(s,"");
+        }
+        Map<String,String> actual = Ready.createScoreTableByPlayerList(playerList);
+
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 }
