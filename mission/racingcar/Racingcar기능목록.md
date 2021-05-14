@@ -60,13 +60,13 @@ jun : --
 `Ready#splitNameByComma`
 - [x] 숫자가 5가 넘는지 확인하기 : `Ready#isGreaterThan`
 - [x] 자동차 이름 길이가 5넘는지 확인하기 (예외처리 : 자동차 이름의 길이가 5이상이면 에러 `IllegalArgumentException`에러 발생) : `Ready#checkNameLength`
-- [x] 게임 참가자(자동차) 리스트 만들기 (예외처리 : 자동차 이름의 길이가 5이상이면 다시 입력받기) : `Ready#createParticipantListByName`
+- [x] 게임 참가자(자동차) 리스트 만들기 (예외처리 : 자동차 이름의 길이가 5이상이면 다시 입력받기) : `Ready#createPlayerListBycarName`
+- [x] 자동차 경주 점수판 만들기 : `Ready#createScoreTableByPlayerList`
 - Function
 - [x] 랜덤 수 뽑기 `Function#drawNumber`
 - [x] 자동차 전진(4이상이면) : `Function#moveAble` 
 - [x] 자동차 전진하면 점수(`-`) 얻기: `Function#getScore`
 - Play
-- [ ] 점수판 만들기 : `Paly#scoreTable`
 - [ ] 1회 게임하기 : `Paly#OneRoundGame`
 - [ ] gameNumber만큼 게임하기 : `Paly#Game`
 - Award
@@ -82,8 +82,9 @@ jun : --
 - [x] 숫자가 5 이하인 경우 테스트 : `ReadyTest#testIsNotMoreThanFive`
 - [x] 자동차 이름 길이가 5 이하인 경우 테스트(정상케이스) : `ReadyTest#testNameLengthIsNotMoreThanFive`
 - [x] 자동차 이름 길이가 5 초과인 경우 테스트(예외 케이스) : `ReadyTest#testNameLengthIsGreaterThanFive`
-- [x] 자동차 리스트 생성 테스트 (정상 케이스, 이름 5자 이하) : `Ready#testCreateParticipantListByName`
-- [x] 자동차 리스트 생성 실패 테스트 (예외 케이스, 이름 5자 초과) : `Ready#testExceptionCreateParticipantListByName`
+- [x] 자동차 리스트 생성 테스트 (정상 케이스, 이름 5자 이하) : `Ready#testCreatePlayerListBycarName`
+- [x] 자동차 리스트 생성 실패 테스트 (예외 케이스, 이름 5자 초과) : `Ready#testExceptionCreatePlayerListBycarName`
+- [x] 자동차 경주 점수판 만들기 : `ReadyTest#testCreateScoreTableByPlayerList`
 - FunctionTest
 - [x] 자동차 전진(4이상이면) : `functionTest#testMoveAble` 
 - [x] 자동차 전진 실패(4미만이면) : `functionTest#testNotMoveAble`
