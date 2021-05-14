@@ -67,7 +67,7 @@ jun : --
 - [x] 자동차 전진(4이상이면) : `Function#moveAble` 
 - [x] 자동차 전진하면 점수(`-`) 얻기: `Function#getScore`
 - Play
-- [ ] 1회 게임하기 : `Paly#OneRoundGame`
+- [x] 1회 게임하기 : `Paly#OneRoundGame`
 - [ ] gameNumber만큼 게임하기 : `Paly#Game`
 - Award
 - [ ] value 값 길이 중 가장 큰 값 비교 : 
