@@ -7,7 +7,7 @@ public class Game {
     private Input input = new Input();
     private Cut cut = new Cut();
 
-    public void excute() {
+    void excute() {
         String[] carInputs = inputCarNames();
 
         List<Car> cars = createCars(carInputs);

@@ -26,7 +26,7 @@ public class Drive {
         return copiedCars;
     }
 
-    public List<RaceResult> carRacing(int count) {
+    List<RaceResult> carRacing(int count) {
         int nowCount = 0;
 
         List<RaceResult> raceResults = new ArrayList<>();

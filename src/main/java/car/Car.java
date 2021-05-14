@@ -19,7 +19,7 @@ public class Car {
         return this.name;
     }
 
-    public void changeKm(int randomNumber) {
+    void changeKm(int randomNumber) {
         if (randomNumber >= MINIMUM_NUMBER) {
             km = km + 1;
         }
