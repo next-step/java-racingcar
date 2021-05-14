@@ -10,7 +10,7 @@ public class Car {
     }
 
     public void setLocation(int location) {
-        this.location = location;
+        this.location += location;
     }
 
     public String getName() {
