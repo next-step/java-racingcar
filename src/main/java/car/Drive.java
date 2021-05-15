@@ -11,7 +11,7 @@ public class Drive {
         this.cars = cars;
     }
 
-    public List<Car> carDrive() {
+    List<Car> carDrive() {
         Copy copy = new Copy(cars);
 
         List<Car> copiedCars = copy.createCopiedCars();
@@ -19,8 +19,8 @@ public class Drive {
         for (int i = 0; i < cars.size(); i++) {
             int randomNumber = (int) (Math.random() * MAXIMUM_RANDOM_NUMBER);
 
-            copiedCars.get(i).changeKm(copiedCars.get(i).getKm() + randomNumber);
-            cars.get(i).changeKm(cars.get(i).getKm() + randomNumber);
+            copiedCars.get(i).changeKm(randomNumber);
+            cars.get(i).changeKm(randomNumber);
         }
 
         return copiedCars;
