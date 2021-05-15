@@ -55,26 +55,28 @@ public class Calculator {
     }
 
     private void validate(String mathExpression) {
-        isInputNull(mathExpression);
-        isNotMathExpression(mathExpression);
+        validateInputNull(mathExpression);
+        validateNotMathExpression(mathExpression);
         validateTheEndNotNumber(mathExpression);
     }
 
     private void validateTheEndNotNumber(String mathExpression) {
         Matcher matcher = theEndIsNotNumberPattern.matcher(mathExpression);
-        if (matcher.matches()) {
+        boolean isEndNotNumber = matcher.matches();
+        if (isEndNotNumber) {
             throw new IllegalArgumentException(THE_END_IS_NOT_NUMBER_MESSAGE);
         }
     }
 
-    private void isNotMathExpression(String mathExpression) {
+    private void validateNotMathExpression(String mathExpression) {
         Matcher matcher = isNotMathExpressionPattern.matcher(mathExpression);
-        if (matcher.matches()) {
+        boolean isNotMathExpression = matcher.matches();
+        if (isNotMathExpression) {
             throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
         }
     }
 
-    private void isInputNull(String mathExpression) {
+    private void validateInputNull(String mathExpression) {
         if (mathExpression.trim().isEmpty()) {
             throw new IllegalArgumentException(DO_NOT_INPUT_NULL_MESSAGE);
         }

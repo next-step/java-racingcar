@@ -34,7 +34,6 @@ public class Output {
         StringBuilder winMessageStringBuilder = new StringBuilder();
 
         for (int i = 0; i <= lastMemberIndexOfRequiringSeparator; i++) {
-
             winMessageStringBuilder.append(winnerList.get(i));
             winMessageStringBuilder.append(WINNER_SEPARATOR);
             System.out.print(winMessageStringBuilder);
@@ -46,11 +45,11 @@ public class Output {
     public static void printNowDistance(List<Car> carList) {
         System.out.println();
         StringBuilder distanceStringBuilder = new StringBuilder();
-        for (int i = 0; i < carList.size(); i++) {
-            distanceStringBuilder.append(carList.get(i).getName());
+        for (Car car : carList) {
+            distanceStringBuilder.append(car.getName());
             distanceStringBuilder.append(DISTANCE_SEPARATOR);
             System.out.print(distanceStringBuilder);
-            printLoadConstant(carList.get(i).getMoveCount());
+            printLoadConstant(car.getMoveCount());
             System.out.println();
             distanceStringBuilder.setLength(BUILDER_INIT_NUMBER);
         }

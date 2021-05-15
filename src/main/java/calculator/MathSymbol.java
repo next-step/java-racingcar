@@ -22,22 +22,22 @@ public enum MathSymbol {
 
     public static MathSymbol findValidatedSymbol(String operator) {
         return Arrays.stream(MathSymbol.values())
-                .filter(mathSymbol -> mathSymbol.getMathSymbol().equals(operator))
+                .filter(mathSymbol -> mathSymbol.mathSymbol.equals(operator))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자 입니다."));
     }
 
     public double operate(double firstNumber, double secondNumber) {
-        if (PLUS.mathSymbol == this.getMathSymbol()) {
+        if (PLUS.mathSymbol.equals(this.mathSymbol)) {
             return firstNumber + secondNumber;
         }
-        if (MINUS.mathSymbol == this.getMathSymbol()) {
+        if (MINUS.mathSymbol.equals(this.mathSymbol)) {
             return firstNumber - secondNumber;
         }
-        if (MULTIPLE.mathSymbol == this.getMathSymbol()) {
+        if (MULTIPLE.mathSymbol.equals(this.mathSymbol)) {
             return firstNumber * secondNumber;
         }
-        if (DIVIDE.mathSymbol == this.getMathSymbol()) {
+        if (DIVIDE.mathSymbol.equals(this.mathSymbol)) {
             return firstNumber / secondNumber;
         }
         throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);

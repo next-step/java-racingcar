@@ -1,19 +1,27 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static racing.utils.RandomNumber.makeOneRandomNumber;
 
 public class RacingGame {
-    public static String SEPARATOR = ",";
+    public static final String SEPARATOR = ",";
 
-    List<Car> cars = new ArrayList<>();
+    List<Car> cars;
 
-    public void makeCars(String[] carNameArray) {
+    public RacingGame(String[] carNameArray) {
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNameArray) {
             cars.add(new Car(carName));
         }
+        this.cars = cars;
+    }
+
+    //현재는 안쓰지만 미리 만들어놈
+    public RacingGame(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void repeatMoveCars(int count) {
@@ -23,8 +31,8 @@ public class RacingGame {
     }
 
     private void moveCars() {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(makeOneRandomNumber());
+        for (Car car : cars) {
+            car.move(makeOneRandomNumber());
         }
     }
 
@@ -42,14 +50,12 @@ public class RacingGame {
     private int findWinnerCondition() {
         int winnerCondition = 0;
         for (Car car : cars) {
-            if (car.getMoveCount() >= winnerCondition) {
-                winnerCondition = car.getMoveCount();
-            }
+            winnerCondition = Math.max(winnerCondition,car.getMoveCount());
         }
         return winnerCondition;
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }
