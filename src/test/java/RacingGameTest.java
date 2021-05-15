@@ -5,6 +5,7 @@ import racing.domain.RacingGame;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static racing.domain.RacingGame.SEPARATOR;
 
 
@@ -21,6 +22,9 @@ public class RacingGameTest {
         List<String> winnerList = racingGame.findWinner();
 
         //then
-        assertThat(winnerList.size()).isEqualTo(1);
+        assertAll(
+                () -> assertThat(winnerList.size()).isEqualTo(1),
+                () -> assertThat(winnerList.get(0)).isEqualTo("aaa")
+        );
     }
 }

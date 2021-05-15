@@ -5,6 +5,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CarTest {
     @Test
@@ -52,7 +53,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value= {"aaa","bbb","ccc"})
+    @CsvSource(value = {"aaa", "bbb", "ccc"})
     @DisplayName("자동차 이름이 전부 5자 이내인 자동차 생성")
     public void makeCarTest(String name) {
         assertThat(new Car(name).getName()).isEqualTo(name);
@@ -60,7 +61,7 @@ public class CarTest {
 
     @DisplayName("자동차 이름이 5자 초과면 에러")
     @ParameterizedTest
-    @CsvSource(value = {"123456","1234567","12345678"})
+    @CsvSource(value = {"123456", "1234567", "12345678"})
     public void invalidMakeCarTest(String name) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
@@ -82,6 +83,9 @@ public class CarTest {
         car2.move(4);
 
         //then
-        assertThat(car.isWinner(3)).isTrue();
+        assertAll(
+                () -> assertThat(car.isWinner(3)).isTrue(),
+                () -> assertThat(car2.isWinner(2)).isTrue()
+        );
     }
 }

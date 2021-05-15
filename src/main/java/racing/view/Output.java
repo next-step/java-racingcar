@@ -23,7 +23,7 @@ public class Output {
     }
 
     public static void printResultMessage() {
-        System.out.println("\n" + RESULT_MESSAGE);
+        System.out.print("\n" + RESULT_MESSAGE);
     }
 
     public static void printWinMessage(List<String> winnerList) {
