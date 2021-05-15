@@ -15,4 +15,15 @@ public class Input {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
+    public String[] inputCarNames() {
+        String carInput = carNameinput();
+        String[] carInputs = carInput.split(",");
+
+        return carInputs;
+    }
+
+    public String inputTryCount() {
+        return countInput();
+    }
 }

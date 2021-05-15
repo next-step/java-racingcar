@@ -8,7 +8,7 @@ public class Game {
     private Cut cut = new Cut();
 
     void excute() {
-        String[] carInputs = inputCarNames();
+        String[] carInputs = input.inputCarNames();
 
         List<Car> cars = createCars(carInputs);
 
@@ -16,19 +16,16 @@ public class Game {
             return;
         }
 
-        String count = inputTryCount();
+        String count = input.inputTryCount();
 
-        outputRacingCars(count, cars);
+        Drive drive = new Drive(cars);
+        List<RaceResult> raceResults = drive.carRacing(Integer.valueOf(count));
+        Output output = new Output(cars, raceResults);
+
+        output.printRaceResult();
     }
 
-    private String[] inputCarNames() {
-        String carInput = input.carNameinput();
-        String[] carInputs = carInput.split(",");
-
-        return carInputs;
-    }
-
-    private List<Car> createCars(String[] carInputs) {
+    List<Car> createCars(String[] carInputs) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carInputs) {
@@ -36,19 +33,5 @@ public class Game {
         }
 
         return cars;
-    }
-
-    private String inputTryCount() {
-        return input.countInput();
-    }
-
-    private void outputRacingCars(String count, List<Car> cars) {
-        Drive drive = new Drive(cars);
-
-        List<RaceResult> raceResults = drive.carRacing(Integer.valueOf(count));
-
-        Output output = new Output(cars, raceResults);
-
-        output.printRaceResult();
     }
 }
