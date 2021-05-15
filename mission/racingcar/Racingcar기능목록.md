@@ -67,7 +67,7 @@ jun : --
 - [x] 자동차 전진(4이상이면) : `Function#moveAble` 
 - [x] 자동차 전진하면 점수(`-`) 얻기: `Function#getScore`
 - Play
-- [x] 1회 게임하기 : `Paly#OneRoundGame`
+- [x] 1회 게임하기 : `Paly#oneRoundGame`
 - [ ] gameNumber만큼 게임하기 : `Paly#Game`
 - Award
 - [ ] value 값 길이 중 가장 큰 값 비교 : 
@@ -90,8 +90,6 @@ jun : --
 - [x] 자동차 전진 실패(4미만이면) : `functionTest#testNotMoveAble`
 - [x] 자동차 전진하면 점수(`-`) 얻기 테스트 : `function#testGetScore`
 - [x] 자동차 점수 얻기`""` 실패 테스트 : `function#testNotGetScore`
-- Play
-- [ ] 자동차 게임하기: `PalyTest#testPalygame`
 - Award
 - [ ] value 값 길이 중 가장 큰 값 비교 : `AwardsTest#compareScoreTest`
 - [ ] 경기 결과 담기(길이) : `AwardsTest#scoreTableTest`
