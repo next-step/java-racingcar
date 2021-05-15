@@ -27,7 +27,7 @@ public class Output {
     }
 
     public static void printWinMessage(List<String> winnerList) {
-        System.out.print("\n" + WIN_MESSAGE);
+        System.out.print( WIN_MESSAGE);
 
         int lastMemberIndexOfRequiringSeparator = winnerList.size() - 2;
         int lastMemberIndexOfNotRequiringSeparator = lastMemberIndexOfRequiringSeparator + 1;
@@ -48,18 +48,17 @@ public class Output {
         for (Car car : carList) {
             distanceStringBuilder.append(car.getName());
             distanceStringBuilder.append(DISTANCE_SEPARATOR);
-            System.out.print(distanceStringBuilder);
-            printLoadConstant(car.getMoveCount());
-            System.out.println();
-            distanceStringBuilder.setLength(BUILDER_INIT_NUMBER);
+            distanceStringBuilder.append(printLoadConstant(car.getMoveCount()));
+            distanceStringBuilder.append(System.lineSeparator());
         }
+        System.out.println(distanceStringBuilder);
     }
 
-    private static void printLoadConstant(int moveCount) {
+    private static StringBuilder printLoadConstant(int moveCount) {
         StringBuilder loadStringBuilder = new StringBuilder();
         for (int j = 0; j < moveCount; j++) {
             loadStringBuilder.append(LOAD);
         }
-        System.out.print(loadStringBuilder);
+        return loadStringBuilder;
     }
 }
