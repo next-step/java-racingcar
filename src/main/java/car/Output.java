@@ -13,7 +13,9 @@ public class Output {
 
     public String printLines(Car car) {
         StringBuilder lines = new StringBuilder();
-        for (int i = 0; i < car.getKm(); i++) {
+        int km = car.getKm();
+
+        for (int i = 0; i < km; i++) {
             lines.append("-");
         }
         return lines.toString();
