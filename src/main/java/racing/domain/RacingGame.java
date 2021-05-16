@@ -40,4 +40,25 @@ public class RacingGame {
     }
 
 
+    public void race() {
+
+//        for(int i = 0 ; i<tryNo;i++){
+            getMovingRange(cars);
+//        }
+
+    }
+
+    private void getMovingRange(List<Car> cars) {
+        for (Car car : cars) {
+            getRandomMove(random.nextInt(MAX_RANDOM), car);
+        }
+    }
+    public Car getRandomMove(int random, Car car) {
+        if (random > MOVE_NUMBER) car.moved();
+        return car;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
