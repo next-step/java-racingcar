@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +15,7 @@ public class RacingGame {
 
     private List<Car> cars;
     private int tryNo;
+    private List<String> winner;
 
     public RacingGame(String carNames, int tryNo) {
 
@@ -41,11 +43,7 @@ public class RacingGame {
 
 
     public void race() {
-
-//        for(int i = 0 ; i<tryNo;i++){
             getMovingRange(cars);
-//        }
-
     }
 
     private void getMovingRange(List<Car> cars) {
@@ -69,4 +67,18 @@ public class RacingGame {
         }
         return false;
     }
+
+
+    public List<String> getWinners() {
+        Collections.sort(cars);
+        List<String> winner = new ArrayList<>();
+        winner.add(cars.get(WINNER_NUMBER).getName());
+        for (int i = 1; i < cars.size(); i++) {
+            if (cars.get(i).getMovingRange() == cars.get(WINNER_NUMBER).getMovingRange()) {
+                winner.add(cars.get(i).getName());
+            }
+        }
+        return winner;
+    }
+
 }
