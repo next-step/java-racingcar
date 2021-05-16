@@ -21,23 +21,6 @@ public class RacingTest {
         cars.add(new Car("tt"));
         racing = new Racing(cars);
     }
-    @DisplayName("각 자동차에 이름을 부여할 수 있다. ")
-    @Test
-    void playerCar() {
-        assertThat(racing.getCarNames()).containsExactly("chloe", "tt");
-    }
-
-    @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
-    @Test
-    void throwIllegalArgumentException() {
-        assertThatThrownBy(() -> {
-            List<Car> cars = new ArrayList<>();
-            cars.add(new Car("chloeJ"));
-            cars.add(new Car("tt"));
-            Racing racing = new Racing(cars);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
 
     @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.")
     @Test
