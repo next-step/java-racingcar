@@ -15,6 +15,7 @@ public class ResultView {
             resultMovingRange(movingRange);
             System.out.println();
         }
+        System.out.println();
     }
 
     private void resultMovingRange(int movingRange) {
