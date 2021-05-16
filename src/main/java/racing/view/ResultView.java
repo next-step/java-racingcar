@@ -28,7 +28,6 @@ public class ResultView {
     public void printWinners(List<String> winners) {
         System.out.print("최종 우승자: ");
 
-
         String winner = winners.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
