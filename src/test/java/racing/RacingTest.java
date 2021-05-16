@@ -63,7 +63,7 @@ public class RacingTest {
     @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.")
     @Test
     void randomTest() {
-        racing.random(4);
+        racing.random();
 
         List<Car> newCars = racing.getCars();
         List<Integer> movedCars = new ArrayList<>();

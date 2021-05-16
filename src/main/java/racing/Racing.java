@@ -56,6 +56,7 @@ public class Racing {
             System.out.println();
         }
     }
+    /*
     public void random(int mustMove) {
         int count = 0;
         for(Car car: cars) {
@@ -66,6 +67,7 @@ public class Racing {
             count++;
         }
     }
+     */
 
     public void moved(int random, Car car) {
         if (random > 4) car.moved();

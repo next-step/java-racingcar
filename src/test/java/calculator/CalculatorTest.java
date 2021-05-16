@@ -37,8 +37,8 @@ public class CalculatorTest {
         assertThatThrownBy(() -> calculator.calculate(expression)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("문자열 계산기는 입력값에 따른 계산 순서로 계사할 수 있다.")
-   @ParameterizedTest
+    @DisplayName("문자열 계산기는 입력값에 따른 계산 순서로 계산할 수 있다.")
+    @ParameterizedTest
     @CsvSource({"1 + 2,3", "2 * 3 / 3,2", "-14 / 2,-7"
     })
     void calculateExpression(String input, int expected) {

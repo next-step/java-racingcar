@@ -4,7 +4,7 @@ public class Car implements Comparable<Car>{
     private String name;
     private int movingRange;
 
-    public Car(String name,int movingRange) {
+    public Car(String name, int movingRange) {
         if (name.length() > 5) throw new IllegalArgumentException("이름은 5자 이내로 .");
         this.name = name;
         this.movingRange = movingRange;
