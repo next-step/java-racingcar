@@ -68,7 +68,6 @@ public class RacingGame {
         return false;
     }
 
-
     public List<String> getWinners() {
         Collections.sort(cars);
         List<String> winner = new ArrayList<>();
