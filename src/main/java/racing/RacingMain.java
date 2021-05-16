@@ -18,6 +18,6 @@ public class RacingMain {
             racingGame.race();
             resultView.printCars(racingGame.getCars());
         }
-//        resultView.printWinners(racingGame.getWinners());
+        resultView.printWinners(racingGame.getWinners());
     }
 }
