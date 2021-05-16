@@ -15,14 +15,11 @@ public class RacingGame {
 
     private List<Car> cars;
     private int tryNo;
-    private List<String> winner;
 
     public RacingGame(String carNames, int tryNo) {
-
         List<Car> cars = getCars(getCarName(carNames));
         this.cars = cars;
         this.tryNo = tryNo;
-
     }
 
     private List<Car> getCars(String[] carNames) {
@@ -32,7 +29,6 @@ public class RacingGame {
         }
         return cars;
     }
-
     public String[] getCarName(String carNamesStr) {
         String[] carNames = carNamesStr.split(CAR_NAME_SPLIT);
         for (String carName : carNames) {
@@ -41,9 +37,8 @@ public class RacingGame {
         return carNames;
     }
 
-
     public void race() {
-            getMovingRange(cars);
+        getMovingRange(cars);
     }
 
     private void getMovingRange(List<Car> cars) {
@@ -51,6 +46,7 @@ public class RacingGame {
             getRandomMove(random.nextInt(MAX_RANDOM), car);
         }
     }
+
     public Car getRandomMove(int random, Car car) {
         if (random > MOVE_NUMBER) car.moved();
         return car;
@@ -62,7 +58,7 @@ public class RacingGame {
 
     public boolean isEnd() {
         tryNo--;
-        if (tryNo<0){
+        if (tryNo < 0) {
             return true;
         }
         return false;
