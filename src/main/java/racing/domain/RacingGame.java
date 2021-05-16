@@ -61,4 +61,12 @@ public class RacingGame {
     public List<Car> getCars() {
         return cars;
     }
+
+    public boolean isEnd() {
+        tryNo--;
+        if (tryNo<0){
+            return true;
+        }
+        return false;
+    }
 }

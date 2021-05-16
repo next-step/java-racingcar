@@ -14,10 +14,10 @@ public class RacingMain {
         int tryNo = inputView.getTryNo();
 
         RacingGame racingGame = new RacingGame(carNames, tryNo);
-//        while (!racingGame.isEnd()) {
+        while (!racingGame.isEnd()) {
             racingGame.race();
             resultView.printCars(racingGame.getCars());
-//        }
+        }
 //        resultView.printWinners(racingGame.getWinners());
     }
 }
