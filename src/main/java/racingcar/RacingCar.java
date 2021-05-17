@@ -3,6 +3,7 @@ package racingcar;
 public class RacingCar {
     private String carName;
     private int position;
+    private int MOVE_NUMBER = 4;
 
     public RacingCar(String carName) {
         nameCheck(carName);
@@ -18,7 +19,7 @@ public class RacingCar {
     }
 
     public void moveOrNot(int number) {
-        if (number >= 4) {
+        if (number >= MOVE_NUMBER) {
             this.position++;
         }
     }
