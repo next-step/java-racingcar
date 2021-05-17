@@ -8,7 +8,10 @@ public class Racing {
     private int numberOfPlay;
     private RandomGenerator randomGenerator;
 
+    private final int MOVE_BASE = 4;
+
     public Racing(String carNames, int numberOfPlay) {
+        this.randomGenerator = new RandomGenerator();
         this.printResult = new PrintResult();
         this.players = new Players(carNames);
         this.numberOfPlay = numberOfPlay;
@@ -37,8 +40,8 @@ public class Racing {
         }
     }
 
-    public void moved(int random, Car car) {
-        if (random > 4) {
+    public void moved(int randomNumber, Car car) {
+        if (randomNumber > MOVE_BASE) {
             car.moved();
         }
     }

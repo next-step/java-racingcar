@@ -19,13 +19,13 @@ public class Players {
     }
 
     private List<Car> insertCars(String[] carNames) {
-        List<Car> cars = new ArrayList<Car>();
+        List<Car> temporaryCars = new ArrayList<>();
 
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            temporaryCars.add(new Car(carName));
         }
 
-        return cars;
+        return temporaryCars;
     }
 
     public List<String> getCarNames() {
