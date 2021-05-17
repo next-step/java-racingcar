@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarNameDecision {
-    List<RacingCar> racingCars = new ArrayList<>();
+    private List<RacingCar> racingCars = new ArrayList<>();
 
     public List<RacingCar> Decision(String[] carNames){
         for (int i = 0; i < carNames.length; i++) {
