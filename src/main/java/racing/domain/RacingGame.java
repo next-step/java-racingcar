@@ -33,7 +33,9 @@ public class RacingGame {
     public String[] getCarName(String carNamesStr) {
         String[] carNames = carNamesStr.split(CAR_NAME_SPLIT);
         for (String carName : carNames) {
-            if (carName.length() > NAME_LENGTH) throw new IllegalArgumentException("이름은 5자 이내로 .");
+            if (carName.length() > NAME_LENGTH) {
+                throw new IllegalArgumentException("이름은 5자 이내로 .");
+            }
         }
         return carNames;
     }
