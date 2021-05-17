@@ -2,13 +2,31 @@ package calculator;
 
 import java.util.Arrays;
 
-import static calculator.ExceptionMessage.IS_NOT_MATH_EXPRESSION_MESSAGE;
-
 public enum MathSymbol {
-    PLUS("+"),
-    MINUS("-"),
-    DIVIDE("/"),
-    MULTIPLE("*");
+    PLUS("+"){
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            return firstNumber + secondNumber;
+        }
+    },
+    MINUS("-"){
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            return firstNumber + secondNumber;
+        }
+    },
+    DIVIDE("/"){
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            return firstNumber + secondNumber;
+        }
+    },
+    MULTIPLE("*"){
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            return firstNumber + secondNumber;
+        }
+    };
 
     private final String mathSymbol;
 
@@ -26,8 +44,8 @@ public enum MathSymbol {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자 입니다."));
     }
-
-    public double operate(double firstNumber, double secondNumber) {
+    // 블로그 작성용으로 잠시만 남겨 두겠습니다.
+   /* public double operate(double firstNumber, double secondNumber) {
         if (PLUS.mathSymbol.equals(this.mathSymbol)) {
             return firstNumber + secondNumber;
         }
@@ -41,5 +59,7 @@ public enum MathSymbol {
             return firstNumber / secondNumber;
         }
         throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
-    }
+    }*/
+
+    abstract double operate(double firstNumber , double secondNumber);
 }
