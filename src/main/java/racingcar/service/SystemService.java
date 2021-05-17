@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SystemService {
+public class SystemService extends Util {
 
     public List<Car> carInfo = new ArrayList<>();
 
@@ -17,8 +17,10 @@ public class SystemService {
         String[] result = input.split(",");
         for (int i = 0; i < result.length; i++) {
             Car carVO = new Car(result[i], 0);
+            if (invalidedName(result[i])) {
+                carInfo.add(carVO);
+            }
 
-            carInfo.add(carVO);
         }
     }
 
