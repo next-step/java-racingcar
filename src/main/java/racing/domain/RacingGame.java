@@ -29,6 +29,7 @@ public class RacingGame {
         }
         return cars;
     }
+
     public String[] getCarName(String carNamesStr) {
         String[] carNames = carNamesStr.split(CAR_NAME_SPLIT);
         for (String carName : carNames) {
@@ -48,7 +49,9 @@ public class RacingGame {
     }
 
     public Car getRandomMove(int random, Car car) {
-        if (random > MOVE_NUMBER) car.moved();
+        if (random > MOVE_NUMBER) {
+            car.moved();
+        }
         return car;
     }
 
