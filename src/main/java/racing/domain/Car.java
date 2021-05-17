@@ -3,6 +3,7 @@ package racing.domain;
 public class Car implements Comparable<Car>{
     private String name;
     private int movingRange;
+    static final int MOVE_COUNT =1;
 
     public Car(String name, int movingRange) {
         this.name = name;
@@ -22,9 +23,10 @@ public class Car implements Comparable<Car>{
     }
 
     public void moved() {
-        movingRange += 1;
+        movingRange += MOVE_COUNT;
     }
 
+    @Override
     public int compareTo(Car o) {
         return Integer.compare(o.movingRange, movingRange);
     }
