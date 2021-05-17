@@ -20,7 +20,6 @@ public class RacingCarGame {
     public void startRacing(int count, List<RacingCar> racingCars) {
         for (int i = 0; i < count; i++) {
             for (RacingCar car : racingCars) {
-                RacingCar racingCar = new RacingCar(car.getCarName());
                 int number = createRandomNumber();
                 car.moveOrNot(number);
                 System.out.println(car.getCarName() + " : " + this.dashBar(car.getPosition()));
