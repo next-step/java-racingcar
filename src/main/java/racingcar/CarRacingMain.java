@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class CarRacingMain {
     public static void main(String[] args) {
         RacingCarGame racingCarGame = new RacingCarGame();
-        CarNameDecision carNameDecision = new CarNameDecision();
         Winner winner = new Winner();
 
         Scanner scanner = new Scanner(System.in);
@@ -13,15 +12,13 @@ public class CarRacingMain {
 
         String carName = scanner.nextLine();
         String[] carNames = carName.replaceAll(" ","").split(",");
-        carNameDecision.Decision(carNames);
+        racingCarGame.Decision(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = scanner.nextInt();
 
-        racingCarGame.startRacing(count, carNameDecision.racingCars);
-        winner.winnerDecision(carNameDecision.racingCars);
-
-        System.out.println("최종 우승자: " + winner.winner);
+        racingCarGame.startRacing(count, racingCarGame.racingCars);
+        System.out.println("최종 우승자: " + String.join(",", winner.winnerDecision(racingCarGame.racingCars)));
     }
 }
 

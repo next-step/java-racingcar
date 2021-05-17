@@ -2,6 +2,7 @@ package study;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
@@ -20,9 +21,9 @@ public class StringTest {
     @Test
     void split3() {
         final String actual = "abc";
-                assertThatThrownBy(() -> {
-                    actual.charAt(3);
+        assertThatThrownBy(() -> {
+            actual.charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("Index: 2, Size: 2");
+                .hasMessageContaining("String index out of range: 3");
     }
 }

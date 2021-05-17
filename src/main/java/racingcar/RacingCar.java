@@ -28,9 +28,5 @@ public class RacingCar {
         return position;
     }
 
-    public String getCarName() {
-        return carName;
-    }
-
-
+    public String getCarName() { return carName; }
 }
