@@ -13,10 +13,9 @@ public class RacingCarTest {
         String inputSentence = "car1,car2,car3,car4,car5";
         String racingCnt = "5";
         RacingCar racingCar = new RacingCar();
-        racingCar.racingCar(inputSentence,racingCnt);
+        racingCar.racingCar(inputSentence, racingCnt);
 
     }
-
 
 
 }

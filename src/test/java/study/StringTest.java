@@ -35,7 +35,7 @@ public class StringTest {
 
     @Test
     @DisplayName("assertThatThrownBy")
-    void indexOf () {
+    void indexOf() {
         String abc = "abc";
         assertThatThrownBy(() -> {
             abc.charAt(3);
@@ -71,12 +71,13 @@ public class StringTest {
 
     @ParameterizedTest
     @CsvSource(value = {"true:false", "4:false", "5:false"}, delimiter = ':')
-    void parameterizedTest(String input,String expected) {
+    void parameterizedTest(String input, String expected) {
         boolean value = numbers.contains(input);
-        assertEquals(false,value);
+        assertEquals(false, value);
     }
+
     @ParameterizedTest
-    @CsvSource(value = {"1","2","3","4","5"})
+    @CsvSource(value = {"1", "2", "3", "4", "5"})
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input) {
         boolean actualValue = numbers.contains(Integer.valueOf(input));
 

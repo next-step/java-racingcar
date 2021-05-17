@@ -9,45 +9,43 @@ public class Calculator {
             return false;
         }
     }
-    private static String[] array = {"+","-","*","/"};
-    int calculatorInput(String sentence){
+
+    private static String[] array = {"+", "-", "*", "/"};
+
+    int calculatorInput(String sentence) {
         int idx = 0;
-        for (int i = 0; i <array.length ; i++) {
-          if(array[i].equals(sentence)){
-              idx = i;
-          };
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(sentence)) {
+                idx = i;
+            }
+            ;
         }/*
         boolean actualValue = numbers.contains(input);
         org.assertj.core.api.Assertions.assertThatCode(() -> {
             assertEquals(false,actualValue);
-        });
+        });b
         */
         return idx;
     }
 
-    String plus (int gubun, int a, int b){
-        if(gubun==0){
-            return String.valueOf(a+b);
-        }
-        return null;
+    int plus(int number1, int number2) {
+        return number1 + number2;
     }
-    String minus (int gubun, int a, int b){
-        if(gubun==1){
-            return String.valueOf(a-b);
-        }
-        return null;
+
+    int minus(int number1, int number2) {
+        return number1 - number2;
     }
-    String multiply (int gubun,int a, int b){
-        if(gubun==2){
-            return String.valueOf(a*b);
-        }
-        return null;
+
+    int multiply(int number1, int number2) {
+        return number1 * number2;
+
     }
-    String divide (int gubun,int a, int b){
-        if(gubun==3){
-            return String.valueOf(a/b);
+
+    int divide(int number1, int number2) {
+        if (number2 == 0) {
+            throw new IllegalArgumentException();
         }
-        return null;
+        return number1 / number2;
     }
 
 }
