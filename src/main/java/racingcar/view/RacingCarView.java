@@ -2,11 +2,9 @@ package racingcar.view;
 
 import racingcar.service.SystemService;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class RacingCarView {
     private SystemService systemService = new SystemService();
