@@ -9,12 +9,12 @@ public class RacingCarGame {
         return random.nextInt(9);
     }
 
-    public String dashbar(int position) {
-        String dash = "";
-            for (int i = 0; i < position; i++) {
-                dash = dash.concat("-");
-            }
-        return dash;
+    public String dashBar(int position) {
+        String bar = "";
+        for (int i = 0; i < position; i++) {
+            bar = bar.concat("-");
+        }
+        return bar;
     }
 
     public void startRacing(int count, List<RacingCar> racingCars) {
@@ -23,7 +23,7 @@ public class RacingCarGame {
                 RacingCar racingCar = new RacingCar(car.getCarName());
                 int number = createRandomNumber();
                 car.moveOrNot(number);
-                System.out.println(car.getCarName() + " : " + this.dashbar(car.getPosition()));
+                System.out.println(car.getCarName() + " : " + this.dashBar(car.getPosition()));
             }
             System.out.println();
         }
