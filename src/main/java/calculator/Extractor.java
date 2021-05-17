@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Extractor {
 
-    public List<String> extractEven(String[] strings) {
+    public List<String> extractOperators(String[] strings) {
         List<String> results = new ArrayList<>();
         for (int i = 1; i < strings.length; i = i + 2) {
             results.add(strings[i]);
@@ -13,7 +13,7 @@ public class Extractor {
         return results;
     }
 
-    public List<Integer> extractOdd(String[] strings) {
+    public List<Integer> extractNumbers(String[] strings) {
         List<Integer> results = new ArrayList<>();
         for (int i = 0; i < strings.length; i = i + 2) {
             results.add(Integer.valueOf(strings[i]));
