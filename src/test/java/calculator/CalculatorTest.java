@@ -1,6 +1,5 @@
 package calculator;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,11 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CalculatorTest {
     private Calculator calculator;
-
-    @BeforeEach
-    void set() {
-        calculator = new Calculator();
-    }
 
     @DisplayName("주어진 문자열에 있는 연산자 중 사칙 연산자는 계산할 수 있다.")
     @Test
@@ -33,24 +27,31 @@ public class CalculatorTest {
     @Test
     void notArithmeticOperatorsException() {
         String expression = "2 % 3";
+        calculator = new Calculator(expression);
 
-        assertThatThrownBy(() -> calculator.calculate(expression)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> calculator.calculate()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력값이 null 이거나 빈 공백 문자일 수 없다.")
     @Test
     void EmptyStringException() {
-        String expression = "";
+        assertThatThrownBy(() -> {
+            String expression = "";
+            calculator = new Calculator(expression);
 
-        assertThatThrownBy(() -> calculator.calculate(expression)).isInstanceOf(IllegalArgumentException.class);
+            calculator.calculate();
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력값이 null 이거나 빈 공백 문자일 수 없다.")
     @Test
     void NullException() {
-        String expression = null;
+        assertThatThrownBy(() -> {
+            String expression = null;
+            calculator = new Calculator(expression);
 
-        assertThatThrownBy(() -> calculator.calculate(expression)).isInstanceOf(IllegalArgumentException.class);
+            calculator.calculate();
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("문자열 계산기는 입력값에 따른 계산 순서로 계산할 수 있다.")
@@ -58,6 +59,8 @@ public class CalculatorTest {
     @CsvSource({"1 + 2,3", "2 * 3 / 3,2", "-14 / 2,-7"
     })
     void calculateExpression(String input, int expected) {
-        assertThat(calculator.calculate(input)).isEqualTo(expected);
+        calculator = new Calculator(input);
+
+        assertThat(calculator.calculate()).isEqualTo(expected);
     }
 }

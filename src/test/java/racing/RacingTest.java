@@ -59,6 +59,6 @@ public class RacingTest {
     void printTest()  {
         Racing racing2 = new Racing("tt,ss", 3);
 
-        assertThat(racing2.race()).containsAnyOf("tt", "ss");
+        assertThat(racing2.race()).containsAnyOf("tt","ss");
     }
 }

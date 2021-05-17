@@ -1,15 +1,16 @@
 package calculator;
 
-import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Queue;
 
 public class Calculator {
+    private Splitter splitter;
 
-    public int calculate(String operation) {
-        checkOperation(operation);
+    public Calculator(String operation) {
+        splitter = new Splitter(operation);
+    }
 
-        Queue<String> tokens = new ArrayDeque<>(Arrays.asList(operation.split(" ")));
+    public int calculate() {
+        Queue<String> tokens = splitter.getTokens();
 
         int accumulator = Integer.parseInt(tokens.remove());
 
@@ -21,11 +22,5 @@ public class Calculator {
         }
 
         return accumulator;
-    }
-
-    void checkOperation(String operation) {
-        if (operation == null || operation.isEmpty()) {
-            throw new IllegalArgumentException("Operation is empty");
-        }
     }
 }
