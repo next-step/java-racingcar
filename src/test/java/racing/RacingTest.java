@@ -6,12 +6,20 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
     private List<Car> cars;
     private Racing racing;
+    private Random createRandom(int returnValue) {
+        return new Random() {
+            public int nextInt(int bound) {
+                return returnValue;
+            };
+        };
+    }
 
     @BeforeEach
     void set() {
@@ -39,7 +47,6 @@ public class RacingTest {
     @DisplayName("전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.")
     @Test
     void movedTest() {
-
         racing.moved(6, cars.get(0));
         assertThat(cars.get(0).getMovingRange()).isEqualTo(1);
     }
