@@ -5,10 +5,8 @@ import java.util.Random;
 
 public class RacingCarGame {
     public int createRandomNumber() {
-        int number = 0;
         Random random = new Random();
-        number = random.nextInt(9);
-        return number;
+        return random.nextInt(9);
     }
 
     public String dashbar(int position) {
