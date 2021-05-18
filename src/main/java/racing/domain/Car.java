@@ -1,9 +1,9 @@
 package racing.domain;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
     private String name;
     private int movingRange;
-    static final int MOVE_COUNT =1;
+    static final int MOVE_COUNT = 1;
 
     public Car(String name, int movingRange) {
         this.name = name;
@@ -22,8 +22,8 @@ public class Car implements Comparable<Car>{
         return movingRange;
     }
 
-    public void moved() {
-        movingRange += MOVE_COUNT;
+    public Car moved() {
+        return new Car(name, movingRange + MOVE_COUNT);
     }
 
     @Override

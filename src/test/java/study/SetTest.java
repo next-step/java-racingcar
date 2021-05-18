@@ -39,7 +39,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1, true", "2, true", "3, true", "4, false", "5, false"})
-    void test3(int number, boolean isContain){
+    void test3(int number, boolean isContain) {
         assertThat(numbers.contains(number)).isEqualTo(isContain);
     }
 }

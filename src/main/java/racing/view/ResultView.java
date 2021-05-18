@@ -8,15 +8,16 @@ import java.util.stream.Collectors;
 public class ResultView {
 
 
-    public void printCars(List<Car> cars) {
-
-        for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            int movingRange = car.getMovingRange();
-            resultMovingRange(movingRange);
+    public void printCars(List<List<Car>> roundCars) {
+        for (List<Car> cars : roundCars) {
+            for (Car car : cars) {
+                System.out.print(car.getName() + " : ");
+                int movingRange = car.getMovingRange();
+                resultMovingRange(movingRange);
+                System.out.println();
+            }
             System.out.println();
         }
-        System.out.println();
     }
 
     private void resultMovingRange(int movingRange) {
@@ -27,7 +28,6 @@ public class ResultView {
 
     public void printWinners(List<String> winners) {
         System.out.print("최종 우승자: ");
-
         String winner = winners.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));

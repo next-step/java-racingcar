@@ -18,10 +18,10 @@ public class OperatorTest {
     @Test
     void getOperator() {
         assertAll("operator",
-                ()-> assertEquals(Operator.getOperator("+"),Operator.ADDITION),
-                ()-> assertEquals(Operator.getOperator("-"),Operator.SUBTRACTION),
-                ()-> assertEquals(Operator.getOperator("*"),Operator.MULTIPLICATION),
-                ()-> assertEquals(Operator.getOperator("/"),Operator.DIVISION)
+                () -> assertEquals(Operator.getOperator("+"), Operator.ADDITION),
+                () -> assertEquals(Operator.getOperator("-"), Operator.SUBTRACTION),
+                () -> assertEquals(Operator.getOperator("*"), Operator.MULTIPLICATION),
+                () -> assertEquals(Operator.getOperator("/"), Operator.DIVISION)
         );
 
     }

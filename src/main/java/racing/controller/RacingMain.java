@@ -16,8 +16,10 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame(carNames, tryNo);
         while (!racingGame.isEnd()) {
             racingGame.race();
-            resultView.printCars(racingGame.getCars());
         }
+
+        resultView.printCars(racingGame.getRoundCars());
         resultView.printWinners(racingGame.getWinners());
+
     }
 }
