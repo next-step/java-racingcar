@@ -1,3 +1,5 @@
+package stringcalculator;
+
 public class StringCalculator {
 
     public void checkBlank(String input) {

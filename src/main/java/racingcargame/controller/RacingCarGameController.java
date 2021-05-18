@@ -1,3 +1,9 @@
+package racingcargame.controller;
+
+import racingcargame.view.RacingCarGameInputView;
+import racingcargame.view.RacingCarGameOutputView;
+import racingcargame.model.RacingCar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

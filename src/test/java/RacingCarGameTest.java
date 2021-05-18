@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcargame.model.RacingCar;
+import racingcargame.controller.RacingCarGameController;
+import racingcargame.view.RacingCarGameOutputView;
 
 import java.util.ArrayList;
 import java.util.List;

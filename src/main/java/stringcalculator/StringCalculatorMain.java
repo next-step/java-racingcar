@@ -1,3 +1,5 @@
+package stringcalculator;
+
 public class StringCalculatorMain {
     public static void main(String[] args) {
         StringCalculatorView view = new StringCalculatorView();

@@ -1,8 +1,10 @@
+package racingcargame.model;
+
 public class RacingCar {
     private final String name;
     private int step = 0;
 
-    RacingCar(String name) {
+    public RacingCar(String name) {
         checkCarNameLength();
         this.name = name;
     }

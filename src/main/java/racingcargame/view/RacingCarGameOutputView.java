@@ -1,3 +1,7 @@
+package racingcargame.view;
+
+import racingcargame.model.RacingCar;
+
 import java.util.List;
 
 public class RacingCarGameOutputView {

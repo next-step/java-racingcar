@@ -1,3 +1,5 @@
+package racingcargame.view;
+
 import java.util.Scanner;
 
 public class RacingCarGameInputView {
