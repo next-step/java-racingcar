@@ -8,7 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
-    RacingGame racing = new RacingGame("1,2,3", 7);
+    RacingGame racing;
+
+    @BeforeEach
+    void set(){
+        racing = new RacingGame("1,2,3", 7);
+    }
 
     @DisplayName("차 이름 리스트에 담기")
     @Test
@@ -20,5 +25,14 @@ class RacingGameTest {
     @Test
     void throwIllegalArgumentException() {
         assertThatThrownBy(() -> racing.getCarName("chloe,chloeJ")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("랜덤값에 따른 차 이동 여부 확인")
+    @Test
+    void getRandomMoveTest() {
+        Car  car = new Car("1");
+    racing.getRandomMove(8,car);
+
+    assertThat(racing.getRandomMove(8,car).getMovingRange()).isEqualTo(1);
     }
 }
