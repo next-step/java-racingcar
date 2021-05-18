@@ -13,11 +13,13 @@ public class Winner {
                 maxPosition = racingCar.getPosition();
             }
         }
+
         for (RacingCar racingCar : racingCars) {
-            if (racingCar.getPosition() == maxPosition) {
+            if (racingCar.isSamePosition(maxPosition)) {
                 winner.add(racingCar.getCarName());
             }
         }
+
         return winner;
     }
 }

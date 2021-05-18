@@ -29,4 +29,8 @@ public class RacingCar {
     }
 
     public String getCarName() { return carName; }
+
+    public boolean isSamePosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
 }
