@@ -6,10 +6,17 @@ public class Calculator {
 
     private String userInput;
     private int result = 0;
-    private Operator currentOperator = Operator.PLUS;
+    private Operator currentOperator;
 
     public Calculator(String userInput) {
+        validateUserInput(userInput);
         this.userInput = userInput;
+    }
+
+    private void validateUserInput(String userInput) {
+        if (userInput == null || userInput.equals(" ")) {
+            throw new IllegalArgumentException("입력값이 없거나 빈 공백 문자입니다.");
+        }
     }
 
     public int calculateUserInput() {
@@ -21,21 +28,13 @@ public class Calculator {
     }
 
     private void calculatePartial(String input) {
-
         String regExp = "^[0-9]*$";
 
         if (Pattern.matches(regExp, input)) {
             result = currentOperator.operate(result, Integer.parseInt(input));
         }
 
-        for (Operator operator : Operator.values()) {
-            if (operator.getSymbol().equals(input)) {
-                currentOperator = operator;
-            }
-        }
-
-        throw new IllegalArgumentException();
-
+        currentOperator = currentOperator.createOperator(input);
     }
 
 }

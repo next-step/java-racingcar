@@ -30,4 +30,17 @@ public enum Operator {
         return operation.applyAsInt(num1, num2);
     }
 
+    public Operator createOperator(String input){
+        for (Operator operator : Operator.values()) {
+            if (operator.isSymbol(input)) {
+                return operator;
+            }
+        }
+        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+    }
+
+    private boolean isSymbol(String input) {
+        return input.equals(this.symbol);
+    }
+
 }

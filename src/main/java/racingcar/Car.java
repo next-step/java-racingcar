@@ -1,14 +1,19 @@
 package racingcar;
 
+import static racingcar.CarConstant.*;
+
 public class Car {
     private final String carName;
     private String moveString;
-    private int position = CarConstant.INIT_POSITION;
+    private int position = INIT_POSITION;
 
     public Car(String carName) {
+        validateCarName(carName);
         this.carName = carName;
+    }
 
-        if (carName.length() > CarConstant.MAX_NAME_LENGTH) {
+    private void validateCarName(String carName) {
+        if (carName.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
         }
     }
@@ -22,20 +27,26 @@ public class Car {
     }
 
     public void move(int number) {
-        if (number >= CarConstant.FORWARD_NUM) {
+        validateMoveNumber(number);
+        if (number >= FORWARD_NUM) {
             this.position++;
         }
     }
+
+    private void validateMoveNumber(int number){
+        if(number < 0 || number > 9){
+            throw new IllegalArgumentException("0 ~ 9사이의 숫자가 아닙니다.");
+        }
+    }
+
 
     public String getMoveString() {
         moveString = "";
 
         for (int i = 0; i < this.getPosition(); i++) {
-            this.moveString += CarConstant.MOVE_REGEX_HYPHEN;
+            this.moveString += MOVE_REGEX_HYPHEN;
         }
 
         return moveString;
     }
-
-
 }
