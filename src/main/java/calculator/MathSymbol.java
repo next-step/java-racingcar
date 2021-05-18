@@ -3,28 +3,28 @@ package calculator;
 import java.util.Arrays;
 
 public enum MathSymbol {
-    PLUS("+"){
+    PLUS("+") {
         @Override
         double operate(double firstNumber, double secondNumber) {
             return firstNumber + secondNumber;
         }
     },
-    MINUS("-"){
+    MINUS("-") {
         @Override
         double operate(double firstNumber, double secondNumber) {
-            return firstNumber + secondNumber;
+            return firstNumber - secondNumber;
         }
     },
-    DIVIDE("/"){
+    DIVIDE("/") {
         @Override
         double operate(double firstNumber, double secondNumber) {
-            return firstNumber + secondNumber;
+            return firstNumber / secondNumber;
         }
     },
-    MULTIPLE("*"){
+    MULTIPLE("*") {
         @Override
         double operate(double firstNumber, double secondNumber) {
-            return firstNumber + secondNumber;
+            return firstNumber * secondNumber;
         }
     };
 
@@ -44,22 +44,6 @@ public enum MathSymbol {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자 입니다."));
     }
-    // 블로그 작성용으로 잠시만 남겨 두겠습니다.
-   /* public double operate(double firstNumber, double secondNumber) {
-        if (PLUS.mathSymbol.equals(this.mathSymbol)) {
-            return firstNumber + secondNumber;
-        }
-        if (MINUS.mathSymbol.equals(this.mathSymbol)) {
-            return firstNumber - secondNumber;
-        }
-        if (MULTIPLE.mathSymbol.equals(this.mathSymbol)) {
-            return firstNumber * secondNumber;
-        }
-        if (DIVIDE.mathSymbol.equals(this.mathSymbol)) {
-            return firstNumber / secondNumber;
-        }
-        throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
-    }*/
 
-    abstract double operate(double firstNumber , double secondNumber);
+    abstract double operate(double firstNumber, double secondNumber);
 }

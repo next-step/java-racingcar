@@ -15,7 +15,6 @@ public class Input {
     public static int makeGameRepeatCount() {
         printInputCountMessage();
         int repeatCount = scanner.nextInt();
-        printResultMessage();
         return repeatCount;
     }
 }

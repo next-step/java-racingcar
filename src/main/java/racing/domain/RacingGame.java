@@ -11,51 +11,36 @@ public class RacingGame {
 
     List<Car> cars;
 
-    public RacingGame(String[] carNameArray) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNameArray) {
-            cars.add(new Car(carName));
-        }
-        this.cars = cars;
-    }
-
-    //현재는 안쓰지만 미리 만들어놈
     public RacingGame(List<Car> cars) {
         this.cars = cars;
     }
 
-    public void repeatMoveCars(int count) {
-        for (int i = 0; i < count; i++) {
-            moveCars();
-        }
-    }
-
-    private void moveCars() {
+    public static void moveCars(List<Car> cars) {
         for (Car car : cars) {
             car.move(makeOneRandomNumber());
         }
     }
 
-    public List<String> findWinner() {
-        List<String> winnerList = new ArrayList<>();
+    public List<Car> findWinner() {
+        List<Car> winnerCars = new ArrayList<>();
         int winnerCondition = findWinnerCondition();
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             if (car.isWinner(winnerCondition)) {
-                winnerList.add(car.getName());
+                winnerCars.add(car);
             }
         }
-        return winnerList;
+        return winnerCars;
     }
 
     private int findWinnerCondition() {
         int winnerCondition = 0;
-        for (Car car : cars) {
-            winnerCondition = Math.max(winnerCondition,car.getMoveCount());
+        for (Car car : this.cars) {
+            winnerCondition = Math.max(winnerCondition, car.getMoveCount());
         }
         return winnerCondition;
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return Collections.unmodifiableList(this.cars);
     }
 }

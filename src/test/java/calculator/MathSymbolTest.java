@@ -32,6 +32,7 @@ public class MathSymbolTest {
     }
 
     @Test
+    @DisplayName("MathSymbol 각각의 계산기능 검증")
     void operateTest() {
         assertAll(
                 () -> assertThat(MathSymbol.PLUS.operate(1, 31)).isEqualTo(32),
@@ -57,5 +58,4 @@ public class MathSymbolTest {
                 Arguments.of("/", MathSymbol.DIVIDE)
         );
     }
-
 }

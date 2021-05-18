@@ -1,14 +1,15 @@
 package racing.domain;
 
 public class Car {
-    private static final int MOVE_CHANGE_CONDITION = 4;
     private static final int VALIDATED_NAME_LENGTH = 5;
     private String name;
     private int moveCount;
+    private MoveConditionStrategy moveConditionStrategy;
 
-    public Car(String name) {
+    public Car(String name, MoveConditionStrategy moveConditionStrategy) {
         validateLength(name);
         this.name = name;
+        this.moveConditionStrategy = moveConditionStrategy;
     }
 
     private void validateLength(String name) {
@@ -18,7 +19,7 @@ public class Car {
     }
 
     public void move(int randomNumber) {
-        if (randomNumber >= MOVE_CHANGE_CONDITION) {
+        if (randomNumber >= moveConditionStrategy.getMoveChangeCondition()) {
             this.moveCount++;
         }
     }
@@ -34,5 +35,4 @@ public class Car {
     public int getMoveCount() {
         return moveCount;
     }
-
 }

@@ -1,7 +1,8 @@
+package racing.domain;
 
 import org.junit.jupiter.api.Test;
-import racing.domain.RacingGame;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,16 +16,21 @@ public class RacingGameTest {
         //given
         String carString = "aaa,bbb,ccc,ddd,eee,fff";
         String[] carNameArray = carString.split(SEPARATOR);
-        RacingGame racingGame = new RacingGame(carNameArray);
+        List<Car> cars = new ArrayList<>();
+        MoveConditionStrategy moveConditionStrategy = new OverFourStrategy();
+        for (String carName : carNameArray) {
+            cars.add(new Car(carName,moveConditionStrategy));
+        }
+        RacingGame racingGame = new RacingGame(cars);
         racingGame.getCars().get(0).move(5);
 
         //when
-        List<String> winnerList = racingGame.findWinner();
+        List<Car> winnerList = racingGame.findWinner();
 
         //then
         assertAll(
                 () -> assertThat(winnerList.size()).isEqualTo(1),
-                () -> assertThat(winnerList.get(0)).isEqualTo("aaa")
+                () -> assertThat(winnerList.get(0).getName()).isEqualTo("aaa")
         );
     }
 }
