@@ -8,6 +8,13 @@ public class RacingGame {
     private List<Car> carArrayList;
     private int racingCount;
 
+    public RacingGame() {
+    }
+
+    public RacingGame(List<Car> carArrayList) {
+        this.carArrayList = carArrayList;
+    }
+
     public RacingGame(List<Car> carArrayList, int racingCount) {
         this.carArrayList = carArrayList;
         this.racingCount = racingCount;
