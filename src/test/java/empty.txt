@@ -1,0 +1,8 @@
+자동차는 5자 이하의 이름을 가진다. - 'Car'
+자동차의 이름이 5자를 초과하는 경우 예외가 발생한다. - 'Car'
+자동차는 4이상일 때 움직일 수 있다. - 'Car#move(int number)'
+자동차는 4미만일 때 움직일 수 없다. - 'Car#move(int number)'
+자동차의 거리를 알 수 있다. - 'Car#getposition()'
+자동차들을 정해진 횟수만큼 움직일 수 있다. - 'RacingGame#race(int count) '
+자동차들로 부터 누가 우승했는지 알 수 있다. - 'RacingGame#indWinners()'
+우승자는 한 명 이상일 수 있다. - 'RacingGame#findWinners()'
