@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream:src/main/java/racing/Cal.java
-package racing;
-=======
 package step1;
->>>>>>> Stashed changes:src/main/java/step1/Cal.java
+
 
 import java.util.Arrays;
 
