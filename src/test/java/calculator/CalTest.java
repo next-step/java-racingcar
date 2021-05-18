@@ -3,7 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step2.Cal;
+import racing.Cal;
 
 public class CalTest {
     @DisplayName("전부쪼개기")

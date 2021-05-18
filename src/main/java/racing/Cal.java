@@ -1,4 +1,4 @@
-package step2;
+package racing;
 
 import java.util.Arrays;
 
