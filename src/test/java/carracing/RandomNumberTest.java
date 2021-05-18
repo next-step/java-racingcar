@@ -1,8 +1,9 @@
 package carracing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RandomNumberTest {
     RandomNumber randomNumber;
@@ -14,6 +15,6 @@ public class RandomNumberTest {
 
     @Test
     void createRandomNumberTest() {
-        Assertions.assertThat(randomNumber.createRandomNumber()).isLessThanOrEqualTo(9);
+        assertThat(randomNumber.createRandomNumber()).isLessThanOrEqualTo(9);
     }
 }

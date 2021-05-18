@@ -3,7 +3,7 @@ package study;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringTest {
     @Test
@@ -18,15 +18,15 @@ public class StringTest {
     void replaceWordTest() {
         String word = "(1,2)";
         String substitutedWord = word.replaceAll("[(]", "").replaceAll("[)]", "");
-        assertThat(substitutedWord).contains("1,2");
+        assertThat(substitutedWord).isEqualTo("1,2");
     }
 
     @Test
     void educeWordExceptionTest() {
         String word = "abc";
         char extractedWord = word.charAt(1);
-        assertThatThrownBy(() -> {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
             throw new IllegalArgumentException(String.valueOf(assertThat(extractedWord).isEqualTo('b')));
-        }).isInstanceOf(IllegalArgumentException.class);
+        });
     }
 }

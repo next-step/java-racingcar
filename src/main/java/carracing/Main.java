@@ -11,16 +11,18 @@ public class Main {
         Output output = new Output();
         List<Car> cars = new ArrayList<>();
 
-        input.insertCarName();
-        List<String> separateCarNames = Arrays.asList(input.getCarName().split(","));
-        for (int i = 0; i < separateCarNames.size(); i++) {
-            cars.add(new Car(separateCarNames.get(i)));
-            new Car(separateCarNames.get(i)).nameCheck();
+        output.showInputCarName();
+        String carName = input.insertCarName();
+        List<String> separateCarNames = Arrays.asList(carName.split(","));
+        for (String separateCarName : separateCarNames) {
+            cars.add(new Car(separateCarName));
         }
 
-        input.insertGameCount();
+        CarRacing carRacing = new CarRacing(cars);
 
-        output.showCarStatus(cars, input.getRaceCount());
-        output.showWinner(cars);
+        output.showInputRacingCount();
+        int gameCount = input.insertGameCount();
+        output.showCarStatus(cars, gameCount);
+        output.showWinner(carRacing);
     }
 }

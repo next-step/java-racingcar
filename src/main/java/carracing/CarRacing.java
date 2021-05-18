@@ -4,21 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacing {
-    public int calculateWinnerPosition(List<Car> cars) {
+    List<Car> cars;
+
+    public CarRacing(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    private int calculateWinnerPosition() {
         int maxPosition = 0;
-        for (int i = 0; i < cars.size(); i++) {
-            if (cars.get(i).getPosition() > maxPosition) {
-                maxPosition = cars.get(i).getPosition();
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
             }
         }
         return maxPosition;
     }
 
-    public List<String> makeWinners(List<Car> cars) {
+    public List<String> makeWinners() {
         List<String> winners = new ArrayList<String>();
-        for (int i = 0; i < cars.size(); i++) {
-            if (calculateWinnerPosition(cars) == cars.get(i).getPosition()) {
-                winners.add(cars.get(i).getCarName());
+        int winnerPosition = calculateWinnerPosition();
+        for (Car car : cars) {
+            if (winnerPosition == car.getPosition()) {
+                winners.add(car.getCarName());
             }
         }
         return winners;

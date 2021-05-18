@@ -1,7 +1,5 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -12,29 +10,10 @@ public class Main {
         System.out.print("input : ");
         String input = scanner.nextLine();
 
-        calculator.nullCheck(input);
-        calculator.operCheck(input);
+        calculator.handleNullException(input);
+        calculator.handleOperatorException(input);
+        calculator.handleNumberOperatorException(input);
 
-        List<String> inputSplit = Arrays.asList(input.split(" "));
-        int result = Integer.parseInt(inputSplit.get(0));
-        for (int i = 0; i < inputSplit.size(); i++) {
-            if (inputSplit.get(i).equals("+")) {
-                result = calculator.add(result, Integer.parseInt(inputSplit.get(i + 1)));
-                continue;
-            }
-            if (inputSplit.get(i).equals("-")) {
-                result = calculator.subtract(result, Integer.parseInt(inputSplit.get(i + 1)));
-                continue;
-            }
-            if (inputSplit.get(i).equals("*")) {
-                result = calculator.multiply(result, Integer.parseInt(inputSplit.get(i + 1)));
-                continue;
-            }
-            if (inputSplit.get(i).equals("/")) {
-                result = calculator.divide(result, Integer.parseInt(inputSplit.get(i + 1)));
-                continue;
-            }
-        }
-        System.out.println("결과값 : " + result);
+        System.out.println("결과값 : " + calculator.calculate(input));
     }
 }

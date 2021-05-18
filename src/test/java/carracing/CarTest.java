@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
-    Car car;
+    private Car car;
 
     @BeforeEach
     void setUp() {
@@ -25,9 +25,8 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"SangkoooCar", "brotherCar", "sisterCar"})
     void nameCheckTest(String carName) {
-        car = new Car(carName);
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            car.nameCheck();
+            car = new Car(carName);
         });
     }
 
