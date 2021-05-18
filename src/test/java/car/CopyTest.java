@@ -26,7 +26,7 @@ class CopyTest {
 
         List<Car> copiedCars = copy.createCopiedCars();
 
-        assertThat(cars).isEqualTo(copiedCars);
+        assertThat(cars).usingFieldByFieldElementComparator().isEqualTo(copiedCars);
     }
 
 }

@@ -75,7 +75,7 @@ public class CalculatorTest {
         assertThatThrownBy(() -> {
             Calculator calculator = new Calculator();
 
-            int result = calculator.calculate(1, '+', 2);
+            int result = calculator.calculate(1, '%', 2);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

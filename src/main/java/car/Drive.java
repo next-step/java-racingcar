@@ -19,11 +19,15 @@ public class Drive {
         for (int i = 0; i < cars.size(); i++) {
             int randomNumber = (int) (Math.random() * MAXIMUM_RANDOM_NUMBER);
 
-            copiedCars.get(i).changeKm(randomNumber);
-            cars.get(i).changeKm(randomNumber);
+            moveOrStopCar(randomNumber, copiedCars.get(i), cars.get(i));
         }
 
         return copiedCars;
+    }
+
+    void moveOrStopCar(int randomNumber, Car copiedCar, Car car) {
+        copiedCar.changeKm(randomNumber);
+        car.changeKm(randomNumber);
     }
 
     List<RaceResult> carRacing(int count) {
