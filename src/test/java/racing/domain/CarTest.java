@@ -80,6 +80,7 @@ public class CarTest {
                 });
     }
 
+    @DisplayName("가장 많이 움직인 자동차의 이동 횟수가 승자 조건이다")
     @ParameterizedTest
     @CsvSource(value = {"456"})
     void isWinner(String input) {
