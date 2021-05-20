@@ -1,7 +1,10 @@
 package calculator;
 
 
+import java.util.regex.Pattern;
+
 public class StringsService {
+    private static final Pattern pattern = Pattern.compile("[\\d\\+\\-\\*\\/]");
 
     public static boolean isBlank(String input) {
         if (input == null || input.trim().isEmpty()) {
@@ -15,9 +18,9 @@ public class StringsService {
     }
 
     public static boolean checkSymbol(String[] splitBlank) {
-        String pattern = "[\\d\\+\\-\\*\\/]";
+
         for (int i = 0; i < splitBlank.length; i++) {
-            if (splitBlank[i].matches(pattern)) {
+            if (pattern.matcher(splitBlank[i]).matches()) {
                 return true;
             }
         }
