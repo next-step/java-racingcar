@@ -1,28 +1,21 @@
 package racingcar.view;
 
-import racingcar.service.SystemService;
+import racingcar.domain.Car;
+import racingcar.domain.Winner;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class RacingCarView {
-    private SystemService systemService = new SystemService();
 
     private Scanner scan = new Scanner(System.in);
     private int cycle = 0;
 
-    public RacingCarView() {
-        inputCarInfo();
-        inputCycle();
-        showResult();
-        showWinner();
-    }
-
-    public void inputCarInfo() {
+    public String inputCarInfo() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scan.next();
-        systemService.splitString(input);
+        return input;
     }
 
     public void inputCycle() {
@@ -30,19 +23,19 @@ public class RacingCarView {
         cycle = scan.nextInt();
     }
 
-    public void showResult() {
+    public void showResult(List<Car> carInfo) {
         System.out.println("실행결과");
         for (int i = 0; i < cycle; i++) {
-            cycleCarInformation();
+            cycleCarInformation(carInfo);
         }
     }
 
-    public void cycleCarInformation() {
-        for (int i = 0; i < systemService.carInfo.size(); i++) {
-            systemService.carInfo.get(i).setLocation(systemService.moveCar());
+    public void cycleCarInformation(List<Car> carInfo) {
+        for (int i = 0; i < carInfo.size(); i++) {
+            carInfo.get(i).move();
 
-            System.out.print(systemService.carInfo.get(i).getName() + " : ");
-            showCarLocationInfo(systemService.carInfo.get(i).getLocationInfo());
+            System.out.print(carInfo.get(i).getName() + " : ");
+            showCarLocationInfo(carInfo.get(i).getLocationInfo());
             System.out.println("");
         }
     }
@@ -53,9 +46,8 @@ public class RacingCarView {
         }
     }
 
-    public void showWinner() {
-        List<String> winnerName = systemService.checkWinner(cycle);
+    public void showWinner(List<Winner> winnerNames) {
         System.out.print("최종 우승자 : ");
-        winnerName.stream().filter(Objects::nonNull).forEach(name -> System.out.print(name));
+        winnerNames.stream().filter(Objects::nonNull).forEach(winner -> System.out.print(winner.getName()));
     }
 }
