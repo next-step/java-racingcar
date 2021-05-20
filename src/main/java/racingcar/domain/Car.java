@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.Random;
-
 public class Car {
     private String name;
     private int location;
@@ -19,10 +17,10 @@ public class Car {
         return location;
     }
 
-    public void move(){
+    public void move() {
         RacingRandom racingRandom = new RacingRandom();
         if (racingRandom.isMove()) {
-            this.location ++;
+            this.location++;
         }
     }
 }
