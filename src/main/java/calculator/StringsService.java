@@ -6,9 +6,8 @@ public class StringsService {
     public static boolean isBlank(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("input is null or blank");
-        } else {
-            return true;
         }
+        return true;
     }
 
     public static String[] splitString(String str) {
