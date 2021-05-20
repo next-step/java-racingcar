@@ -17,8 +17,8 @@ public enum Operation {
         this.expression = expression;
     }
 
-    public static int result(String symbol, int num1, int num2) {
-        return findBySymbol(symbol).expression.apply(num1, num2);
+    public int result(int num1, int num2) {
+        return expression.apply(num1, num2);
     }
 
     public static Operation findBySymbol(String symbol) {

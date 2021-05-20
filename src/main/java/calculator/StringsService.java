@@ -31,7 +31,7 @@ public class StringsService {
     public static int calculateSplitedString(String[] input) {
         int result = Integer.parseInt(input[0]);
         for (int i = 0; i < input.length - 2; i += 2) {
-            result = Operation.result(String.valueOf(input[i + 1].charAt(0)), result, Integer.parseInt(input[i + 2]));
+            result = Operation.findBySymbol(String.valueOf(input[i + 1].charAt(0))).result( result, Integer.parseInt(input[i + 2]));
         }
         return result;
     }
