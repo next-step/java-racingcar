@@ -1,4 +1,6 @@
-package racingcar.vo;
+package racingcar.domain;
+
+import java.util.Random;
 
 public class Car {
     private String name;
@@ -9,15 +11,18 @@ public class Car {
         this.location = location;
     }
 
-    public void setLocation(int location) {
-        this.location += location;
-    }
-
     public String getName() {
         return name;
     }
 
     public int getLocationInfo() {
         return location;
+    }
+
+    public void move(){
+        RacingRandom racingRandom = new RacingRandom();
+        if (racingRandom.isMove()) {
+            this.location ++;
+        }
     }
 }
