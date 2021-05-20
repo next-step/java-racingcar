@@ -1,14 +1,16 @@
-package racingcar.service;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.vo.Car;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SystemServiceTest extends Util {
+public class RacingGameTest {
+
+    private Util util = new Util();
 
     private List<Car> carInfo = new ArrayList<>();
 
@@ -16,13 +18,7 @@ public class SystemServiceTest extends Util {
     @ParameterizedTest
     @ValueSource(strings = {"jeonggggg,hyeon,jin"})
     public void splitString(String input) {
-        String[] result = input.split(",");
-        for (int i = 0; i < result.length; i++) {
-            Car carVO = new Car(result[i], 0);
-            if (invalidedName(result[i])) {
-                carInfo.add(carVO);
-            }
-        }
+        assertThrows(IllegalArgumentException.class,()->util.invalidedName(input));
     }
 
 }
