@@ -15,7 +15,7 @@ public class Winner {
         }
 
         for (RacingCar racingCar : racingCars) {
-            if (racingCar.isSamePosition(maxPosition)) {
+            if (racingCar.maxPosition(maxPosition)) {
                 winner.add(racingCar.getCarName());
             }
         }
