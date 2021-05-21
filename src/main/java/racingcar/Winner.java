@@ -19,7 +19,6 @@ public class Winner {
                 winner.add(racingCar.getCarName());
             }
         }
-
         return winner;
     }
 }

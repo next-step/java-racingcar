@@ -12,7 +12,7 @@ public class RacingcarTest {
     @ValueSource(strings = {"fight, gw, hw"})
     void nameCheckTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            RacingCar racingCar = new RacingCar(input);
+            new RacingCar(input);
         });
     }
 

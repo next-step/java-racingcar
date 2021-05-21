@@ -14,7 +14,7 @@ public class CalculatorTest {
     @Test
     void addTest() {
 
-        assertThat(5).isEqualTo(calculator.add(2, 3));
+        assertThat(calculator.add(2, 3)).isEqualTo(5);
     }
 
     @Test
