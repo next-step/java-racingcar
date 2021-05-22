@@ -9,7 +9,6 @@ import java.util.Random;
 
 public class RacingGame {
     static final int NAME_LENGTH = 5;
-    static final int MOVE_NUMBER = 4;
     static final int MAX_RANDOM = 10;
     static final String CAR_NAME_SPLIT = ",";
     static Random random = new Random();
@@ -45,19 +44,14 @@ public class RacingGame {
     public void race() {
         List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            newCars.add(getRandomMove(random.nextInt(MAX_RANDOM), car));
+            newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM), car));
         }
         this.roundCars.add(newCars);
         this.cars = newCars;
     }
 
 
-    public Car getRandomMove(int random, Car car) {
-        if (random > MOVE_NUMBER) {
-            return car.moved();
-        }
-        return car;
-    }
+
 
     public List<List<Car>> getRoundCars() {
         return roundCars;
