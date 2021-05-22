@@ -48,6 +48,7 @@ public class RacingGame {
             newCars.add(getRandomMove(random.nextInt(MAX_RANDOM), car));
         }
         this.roundCars.add(newCars);
+        this.cars = newCars;
     }
 
 
