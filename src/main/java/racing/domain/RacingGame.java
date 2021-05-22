@@ -10,17 +10,17 @@ public class RacingGame {
     static final String CAR_NAME_SPLIT = ",";
     static Random random = new Random();
 private RoundCars roundCars = new RoundCars();
-    private List<Car> cars;
+    private Cars cars;
     private int tryNo;
 
     public RacingGame(String carNames, int tryNo) {
-        List<Car> cars = getCars(getCarName(carNames));
+        Cars cars = getCars(getCarName(carNames));
         this.cars = cars;
         this.tryNo = tryNo;
     }
 
-    private List<Car> getCars(String[] carNames) {
-        List<Car> cars = new ArrayList<Car>();
+    private Cars getCars(String[] carNames) {
+        Cars cars = new Cars();
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
@@ -38,7 +38,7 @@ private RoundCars roundCars = new RoundCars();
     }
 
     public void race() {
-        List<Car> newCars = new ArrayList<>();
+        Cars newCars = new Cars();
         for (Car car : cars) {
             newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM), car));
         }
