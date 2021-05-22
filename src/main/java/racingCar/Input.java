@@ -15,3 +15,4 @@ public class Input {
         return scanner.nextInt();
     }
 }
+
