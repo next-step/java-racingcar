@@ -7,22 +7,20 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Input input = new Input();
-        Output output = new Output();
+        Output.showInputCarName();
+        String carName = Input.insertCarName();
+        List<String> CarNames = Arrays.asList(carName.split(","));
         List<Car> cars = new ArrayList<>();
-
-        output.showInputCarName();
-        String carName = input.insertCarName();
-        List<String> separateCarNames = Arrays.asList(carName.split(","));
-        for (String separateCarName : separateCarNames) {
+        for (String separateCarName : CarNames) {
             cars.add(new Car(separateCarName));
         }
 
         CarRacing carRacing = new CarRacing(cars);
 
-        output.showInputRacingCount();
-        int gameCount = input.insertGameCount();
-        output.showCarStatus(cars, gameCount);
-        output.showWinner(carRacing);
+        Output.showInputRacingCount();
+        int gameCount = Input.insertGameCount();
+        carRacing.moveCars(cars, gameCount);
+        Output.showCarStatus(cars, gameCount);
+        Output.showWinner(carRacing);
     }
 }

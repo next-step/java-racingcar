@@ -28,6 +28,6 @@ public class CarRacingTest {
         cars.get(0).move(5);
         cars.get(1).move(3);
         cars.get(2).move(1);
-        Assertions.assertThat(carRacing.makeWinners().get(0)).isEqualTo("Acar");
+        Assertions.assertThat(carRacing.makeWinners().get(0).toString()).isEqualTo("Acar");
     }
 }

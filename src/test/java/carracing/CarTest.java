@@ -19,7 +19,7 @@ public class CarTest {
 
     @Test
     void CarNameTest() {
-        assertThat(car.getCarName()).isEqualTo("Scar");
+        assertThat(car.toString()).isEqualTo("Scar");
     }
 
     @ParameterizedTest

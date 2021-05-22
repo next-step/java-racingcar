@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Input {
     private static Scanner scanner = new Scanner(System.in);
 
-    public String insertCarName() {
+    public static String insertCarName() {
         return scanner.nextLine();
     }
 
-    public int insertGameCount() {
+    public static int insertGameCount() {
         return scanner.nextInt();
     }
 }

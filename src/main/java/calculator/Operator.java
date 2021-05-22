@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Arrays;
+
 public enum Operator {
     PLUS("+") {
         @Override
@@ -34,7 +36,10 @@ public enum Operator {
         this.symbol = symbol;
     }
 
-    public String getSymbol() {
-        return symbol;
+    public static Operator findSymbol(String operator) {
+        return Arrays.stream(Operator.values())
+                .filter(symbol -> symbol.symbol.equals(operator))
+                .findAny()
+                .orElse(null);
     }
 }
