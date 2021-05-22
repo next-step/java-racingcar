@@ -15,10 +15,9 @@ public class Winners {
     public List<String> winners() {
         Collections.sort(cars);
         List<String> winner = new ArrayList<>();
-        winner.add(cars.get(WINNER_NUMBER).getName());
-        for (int i = 1; i < cars.size(); i++) {
-            if (cars.get(i).getMovingRange() == cars.get(WINNER_NUMBER).getMovingRange()) {
-                winner.add(cars.get(i).getName());
+        for (Car car : cars) {
+            if (car.getMovingRange() == cars.get(WINNER_NUMBER).getMovingRange()) {
+                winner.add(car.getName());
             }
         }
         return winner;
