@@ -51,18 +51,13 @@ public class RacingGame {
     }
 
 
-
-
     public List<List<Car>> getRoundCars() {
         return roundCars;
     }
 
     public boolean isEnd() {
         tryNo--;
-        if (tryNo < 0) {
-            return true;
-        }
-        return false;
+        return tryNo < 0;
     }
 
     public List<String> getWinners() {
