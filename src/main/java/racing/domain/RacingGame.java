@@ -1,9 +1,6 @@
 package racing.domain;
 
-import racing.view.ResultView;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -12,9 +9,8 @@ public class RacingGame {
     static final int MAX_RANDOM = 10;
     static final String CAR_NAME_SPLIT = ",";
     static Random random = new Random();
-
+private RoundCars roundCars = new RoundCars();
     private List<Car> cars;
-    private List<List<Car>> roundCars = new ArrayList<>();
     private int tryNo;
 
     public RacingGame(String carNames, int tryNo) {
@@ -46,12 +42,12 @@ public class RacingGame {
         for (Car car : cars) {
             newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM), car));
         }
-        this.roundCars.add(newCars);
+       roundCars.addRound(newCars);
         this.cars = newCars;
     }
 
 
-    public List<List<Car>> getRoundCars() {
+    public RoundCars getRoundCars() {
         return roundCars;
     }
 

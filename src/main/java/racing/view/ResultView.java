@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.domain.Car;
+import racing.domain.RoundCars;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,8 +9,8 @@ import java.util.stream.Collectors;
 public class ResultView {
 
 
-    public void printCars(List<List<Car>> roundCars) {
-        for (List<Car> cars : roundCars) {
+    public void printCars(RoundCars roundCars) {
+        for (List<Car> cars : roundCars.getRoundCars()) {
             for (Car car : cars) {
                 System.out.print(car.getName() + " : ");
                 int movingRange = car.getMovingRange();
