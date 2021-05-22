@@ -8,13 +8,14 @@ public class Winners {
     private List<Car> cars;
     static final int WINNER_NUMBER = 0;
 
+    List<String> winner = new ArrayList<>();
+
     public Winners(List<Car> cars) {
         this.cars = cars;
     }
 
     public List<String> winners() {
         Collections.sort(cars);
-        List<String> winner = new ArrayList<>();
         for (Car car : cars) {
             if (car.getMovingRange() == cars.get(WINNER_NUMBER).getMovingRange()) {
                 winner.add(car.getName());
