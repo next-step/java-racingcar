@@ -77,4 +77,6 @@ public class ReadyTest {
         assertThatIllegalArgumentException().isThrownBy(()
                 -> ready.checkNameLength(name));
     }
+
+
 }
