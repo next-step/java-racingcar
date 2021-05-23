@@ -13,7 +13,7 @@ public class Splitter {
         tokens = new ArrayDeque<>(Arrays.asList(operation.split(" ")));
     }
 
-    public void checkOperation(String operation) {
+    private void checkOperation(String operation) {
         if (operation == null || operation.isEmpty()) {
             throw new IllegalArgumentException("Operation is empty");
         }
