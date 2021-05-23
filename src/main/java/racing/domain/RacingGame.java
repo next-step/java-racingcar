@@ -12,7 +12,7 @@ public class RacingGame {
     public RacingGame(List<Car> cars) {
         this.cars = cars;
     }
-    //츨력 수정하기
+
     public void repeatMoveCars(int count) {
         for (int i = 0; i < count; i++) {
             moveCars();
@@ -28,19 +28,23 @@ public class RacingGame {
     public List<Car> findWinner() {
         List<Car> winnerCars = new ArrayList<>();
         int winnerCondition = findWinnerCondition();
+
         for (Car car : this.cars) {
             if (car.isWinner(winnerCondition)) {
                 winnerCars.add(car);
             }
         }
+
         return winnerCars;
     }
 
     private int findWinnerCondition() {
         int winnerCondition = 0;
+
         for (Car car : this.cars) {
             winnerCondition = Math.max(winnerCondition, car.getMoveCount());
         }
+
         return winnerCondition;
     }
 

@@ -24,7 +24,7 @@ public class RacingController {
         printResultMessage();
 
         cars = racingGame.getCars();
-        printResultByMovedLog(cars,racingRound);
+        printResultByMovedLog(cars, racingRound);
 
         printWinMessage(racingGame.findWinner());
     }
