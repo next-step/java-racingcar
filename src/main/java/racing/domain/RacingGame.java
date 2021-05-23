@@ -13,14 +13,14 @@ public class RacingGame {
         this.cars = cars;
     }
     //츨력 수정하기
-    public static void repeatMoveCars(List<Car> cars, int count) {
+    public void repeatMoveCars(int count) {
         for (int i = 0; i < count; i++) {
-            RacingGame.moveCars(cars);
+            moveCars();
         }
     }
 
-    private static void moveCars(List<Car> cars) {
-        for (Car car : cars) {
+    private void moveCars() {
+        for (Car car : this.cars) {
             car.isMove();
         }
     }
@@ -46,13 +46,5 @@ public class RacingGame {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(this.cars);
-    }
-
-    public List<MovedLog> getMovedLogs() {
-        List<MovedLog> movedLogs = new ArrayList<>();
-        for (Car car : this.cars) {
-            getMovedLogs().add(car.getMovedLog());
-        }
-        return movedLogs;
     }
 }
