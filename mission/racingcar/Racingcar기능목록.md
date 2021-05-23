@@ -63,7 +63,8 @@ jun : --
 - Stadium(경기 하는 곳)
 - [x] 랜덤값 뽑기 : `drawRandomNumber`
 - [x] 4이상인지 판단하기 : `isGreaterThanFour`
-- [ ] 4이상이면 앞으로 전진하기
+- [x] 4이상이면 앞으로 전진하기 : `isMove`
+- [x] 랜덤 수 뽑았는데 4이상이면 앞으로 전진하기 : `isRunning`
 - Application
 - [ ] 선수 car 객체 만들기
 - [ ] 자동차 경주하기
@@ -77,7 +78,8 @@ jun : --
 - Stadium(경기 하는 곳)
 - [x] 4이상인지 판단하기 : `TestisGreaterThanFour`
 - [x] 4미만인지 판단하기 : `TestisLessThanFour`
-
+- [x] 4이상이면 전진하기 테스트 : `TestisMove`
+- [x] 4미만이면 전진 실패 테스트 : `TestisNotMove`
 
 ---
 
