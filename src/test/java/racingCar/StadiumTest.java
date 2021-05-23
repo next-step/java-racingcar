@@ -3,6 +3,9 @@ package racingCar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.annotation.Documented;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -34,4 +37,35 @@ public class StadiumTest {
         assertFalse(actual);
     }
 
+    @Test
+    @DisplayName("4이상이면 자동차 전진 테스트")
+    void TestisMove() {
+        // when
+        Car car = new Car("s",1);
+        int number = 4;
+
+        // given
+         int expected = 2;
+         Stadium.isMove(car, number);
+         int actual = car.getPosition();
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("4미만이면 자동차 전진 실패 테스트")
+    void TestisNotMove() {
+        // when
+        Car car = new Car("s",0);
+        int number = 3;
+
+        // given
+        int expected = 0;
+        Stadium.isMove(car, number);
+        int actual = car.getPosition();
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
 }
