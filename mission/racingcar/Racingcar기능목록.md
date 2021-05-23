@@ -61,9 +61,9 @@ jun : --
 - [x] 앞으로 이동하기 : `go`
 - [x] 위치값 호출하기 : `getPosition`
 - Stadium(경기 하는 곳)
-- [ ] 랜덤값 뽑기
-- [ ] 움직이는 판별
-- [ ] 4이상이면 움직이기
+- [x] 랜덤값 뽑기 : `drawRandomNumber`
+- [x] 4이상인지 판단하기 : `isGreaterThanFour`
+- [ ] 4이상이면 앞으로 전진하기
 - Application
 - [ ] 선수 car 객체 만들기
 - [ ] 자동차 경주하기
@@ -73,7 +73,11 @@ jun : --
 #### test 클래스
 - Car(경기에 참가할 자동차)
 - [x] car 객체 생성 테스트 : `carTest`
-- [x] go 객체 테스트 : `goTest`
+- [x] go 객체 : `goTest`
+- Stadium(경기 하는 곳)
+- [x] 4이상인지 판단하기 : `TestisGreaterThanFour`
+- [x] 4미만인지 판단하기 : `TestisLessThanFour`
+
 
 ---
 
