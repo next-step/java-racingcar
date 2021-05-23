@@ -41,7 +41,7 @@ public class Racing {
     }
 
     public void moved(int randomNumber, Car car) {
-        if (randomNumber > MOVE_BASE) {
+        if (randomNumber >= MOVE_BASE) {
             car.moved();
         }
     }

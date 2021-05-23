@@ -14,7 +14,7 @@ public class Players {
         this.cars = insertCars(splitCarNames(carNames));
     }
 
-    public String[] splitCarNames(String carNames) {
+    private String[] splitCarNames(String carNames) {
         return carNames.split(",");
     }
 
