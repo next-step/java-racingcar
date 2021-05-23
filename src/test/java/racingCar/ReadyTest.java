@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,10 +29,10 @@ public class ReadyTest {
     }
     
     @Test
-    @DisplayName("숫자가 5이상 인지 확인")
+    @DisplayName("숫자가 5초과 인지 확인")
     void TestisGreaterThanFive() {
         // when
-        int number = 5;
+        int number = 6;
 
         // given
         boolean actual = ready.isGreaterThanFive(number);
@@ -53,4 +54,27 @@ public class ReadyTest {
         assertFalse(actual);
     }
 
+    @Test
+    @DisplayName("정상 테스트 : 이름의 길이가 5이하 인지 확인")
+    void TestCheckNameLength() {
+        // when
+        String name = "tomas";
+
+        // given
+        String actual = ready.checkNameLength(name);
+
+        // then
+        assertThat(actual).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("예외 테스트 : 이름의 길이가 5초과 인지 확인")
+    void ExceptionTestCheckNameLength() {
+        // when
+        String name = "tomato";
+
+        // then
+        assertThatIllegalArgumentException().isThrownBy(()
+                -> ready.checkNameLength(name));
+    }
 }
