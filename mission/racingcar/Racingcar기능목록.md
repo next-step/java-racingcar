@@ -55,6 +55,9 @@ jun : --
 - Input(입력 객체)
 - [x] 이름 입력 받기 : `carName`
 - [x] 경기 수 입력 받기 : `gameNumber`
+- Ready
+- [ ] 입력값으로 선수 목록 만들기 : `createPlayerListByName`
+- [ ] 
 - Car(경기에 참가할 자동차)
 - [x] 이름과 위치값을 가지는 자동차 만들기 : `Car`
 - [x] 이름 호출하기 : `getName`
