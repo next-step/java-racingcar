@@ -8,7 +8,18 @@ public class Stadium {
         return random.nextInt(10);
     }
 
-    public Boolean isGreaterThanFour(int number) {
+    public static Boolean isGreaterThanFour(int number) {
         return number >= 4;
+    }
+
+    public static void isMove(Car car, int number) {
+        if (isGreaterThanFour(number)) {
+            car.go();
+        }
+    }
+
+    public void isRunning(Car car) {
+        int number = drawRandomNumber();
+        isMove(car, number);
     }
 }
