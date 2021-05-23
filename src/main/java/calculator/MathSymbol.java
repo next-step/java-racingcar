@@ -18,6 +18,9 @@ public enum MathSymbol {
     DIVIDE("/") {
         @Override
         double operate(double firstNumber, double secondNumber) {
+            if (firstNumber == 0 || secondNumber == 0) {
+                throw new IllegalArgumentException("0이 포함된 값으로 나눗셈을 할 수 없습니다.");
+            }
             return firstNumber / secondNumber;
         }
     },

@@ -12,18 +12,17 @@ import static calculator.view.Output.outputStartMessage;
 import static calculator.view.Output.resultOutput;
 
 public class Calculator {
-    private static final String NOT_NUMBER_PATTERN = "[^0-9]";
-    private static final String THE_END_IS_NOT_NUMBER = "[0-9]*$";
-    private static final String IS_NOT_MATH_EXPRESSION = "[^0-9+\\-*/]";
+    private static final String NOT_NUMBER_REGEX = "[^0-9]";
+    private static final String THE_END_IS_NOT_NUMBER_REGEX = "[0-9]*$";
+    private static final String IS_NOT_MATH_EXPRESSION_REGEX = "[^0-9+\\-*/]";
     private static final String MAKE_EMPTY = "";
     private static final int HAVE_NOT_APPENDED_NUMBER = 1;
     private static final int SYMBOL_INDEX_INTERVAL = 2;
     private static final int NUMBER_INDEX_INTERVAL = 1;
     private static final int FIRST_NUMBER_INDEX = 0;
-
-    Pattern notNumberPattern = Pattern.compile(NOT_NUMBER_PATTERN);
-    Pattern theEndIsNotNumberPattern = Pattern.compile(THE_END_IS_NOT_NUMBER);
-    Pattern isNotMathExpressionPattern = Pattern.compile(IS_NOT_MATH_EXPRESSION);
+    private static final Pattern NOT_NUMBER_PATTERN = Pattern.compile(NOT_NUMBER_REGEX);
+    private static final Pattern THE_END_IS_NOT_NUMBER_PATTERN = Pattern.compile(THE_END_IS_NOT_NUMBER_REGEX);
+    private static final Pattern IS_NOT_MATH_EXPRESSION_PATTERN = Pattern.compile(IS_NOT_MATH_EXPRESSION_REGEX);
 
     public void printResult() {
         outputStartMessage();
@@ -61,7 +60,7 @@ public class Calculator {
     }
 
     private void validateTheEndNotNumber(String mathExpression) {
-        Matcher matcher = theEndIsNotNumberPattern.matcher(mathExpression);
+        Matcher matcher = THE_END_IS_NOT_NUMBER_PATTERN.matcher(mathExpression);
         boolean isEndNotNumber = matcher.matches();
         if (isEndNotNumber) {
             throw new IllegalArgumentException(THE_END_IS_NOT_NUMBER_MESSAGE);
@@ -69,7 +68,7 @@ public class Calculator {
     }
 
     private void validateNotMathExpression(String mathExpression) {
-        Matcher matcher = isNotMathExpressionPattern.matcher(mathExpression);
+        Matcher matcher = IS_NOT_MATH_EXPRESSION_PATTERN.matcher(mathExpression);
         boolean isNotMathExpression = matcher.matches();
         if (isNotMathExpression) {
             throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
@@ -106,7 +105,7 @@ public class Calculator {
     }
 
     private boolean isNotNumberPattern(String mathSymbol) {
-        Matcher matcher = notNumberPattern.matcher(mathSymbol);
+        Matcher matcher = NOT_NUMBER_PATTERN.matcher(mathSymbol);
         return matcher.matches();
     }
 

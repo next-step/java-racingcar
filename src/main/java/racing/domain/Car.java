@@ -18,10 +18,12 @@ public class Car {
         }
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber >= moveConditionStrategy.getMoveChangeCondition()) {
+    public boolean isMove() {
+        if (moveConditionStrategy.isMovable()) {
             this.moveCount++;
+            return true;
         }
+        return false;
     }
 
     public boolean isWinner(int winnerCount) {

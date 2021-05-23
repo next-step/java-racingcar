@@ -10,38 +10,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static racing.domain.RacingGame.SEPARATOR;
-import static racing.view.Output.*;
+import static racing.view.Output.printResultMessage;
+import static racing.view.Output.printWinMessage;
 
 public class RacingController {
     public static void main(String[] args) {
-        String carNames = Input.makeCarNames();
-        String[] carNameArray = carNames.split(SEPARATOR);
+        String carName = Input.makeCarNames();
+        String[] carNames = carName.split(SEPARATOR);
 
-        List<Car> cars = makeCars(carNameArray);
+        MoveConditionStrategy moveConditionStrategy = new OverFourStrategy();
+        List<Car> cars = makeCars(carNames, moveConditionStrategy);
 
         RacingGame racingGame = new RacingGame(cars);
         cars = racingGame.getCars();
         int count = Input.makeGameRepeatCount();
-        repeatMoveCars(cars, count);
+        racingGame.repeatMoveCars(cars, count);
 
         printResultMessage();
         printWinMessage(racingGame.findWinner());
     }
 
-    private static List<Car> makeCars(String[] carNameArray) {
+    private static List<Car> makeCars(String[] carNames, MoveConditionStrategy moveConditionStrategy) {
         List<Car> cars = new ArrayList<>();
-        MoveConditionStrategy moveConditionStrategy = new OverFourStrategy();
-        for (String carName : carNameArray) {
+        for (String carName : carNames) {
             cars.add(new Car(carName, moveConditionStrategy));
         }
         return cars;
-    }
-
-    public static void repeatMoveCars(List<Car> cars, int count) {
-
-        for (int i = 0; i < count; i++) {
-            RacingGame.moveCars(cars);
-            printNowDistance(cars);
-        }
     }
 }

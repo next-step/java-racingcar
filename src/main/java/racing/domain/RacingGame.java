@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static racing.utils.RandomNumber.makeOneRandomNumber;
+import static racing.view.Output.printNowDistance;
 
 public class RacingGame {
     public static final String SEPARATOR = ",";
@@ -17,7 +17,7 @@ public class RacingGame {
 
     public static void moveCars(List<Car> cars) {
         for (Car car : cars) {
-            car.move(makeOneRandomNumber());
+            car.isMove();
         }
     }
 
@@ -38,6 +38,13 @@ public class RacingGame {
             winnerCondition = Math.max(winnerCondition, car.getMoveCount());
         }
         return winnerCondition;
+    }
+    //츨력 수정하기
+    public static void repeatMoveCars(List<Car> cars, int count) {
+        for (int i = 0; i < count; i++) {
+            RacingGame.moveCars(cars);
+            printNowDistance(cars);
+        }
     }
 
     public List<Car> getCars() {
