@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import racing.utils.ConvertString;
 import racing.utils.RandomNumber;
@@ -25,24 +25,24 @@ public class RacingGame {
         Output output = new Output();
         Input input = new Input();
         ConvertString convertString = new ConvertString();
-        List<Car> carList;
+        List<Car> carNames;
 
-        output.start();
+        output.printStart();
         String carString = input.makeCars();
         output.count();
         int count = input.count();
         output.result();
         String[] carNameArray = convertString.splitString(carString);
-        carList = makeCarList(carNameArray);
-        repeatMoveCount(count, carList);
-        output.win(findWinner(carList));
+        carNames = makeCarList(carNameArray);
+        repeatMoveCount(carNames, count);
+        output.win(findWinner(carNames));
     }
 
-    private void repeatMoveCount(int count, List<Car> carList) {
+    private void repeatMoveCount(List<Car> carList, int count) {
         Output output = new Output();
         for (int i = 0; i < count; i++) {
             moveCountChange(carList);
-            output.nowDistance(carList);
+            output.printCarDistance(carList);
         }
     }
 
@@ -66,25 +66,34 @@ public class RacingGame {
         }
     }
 
+    /*
+    저번 우승자 리스트 찾는 함수에 비해서 더 세분화 되긴 했는데
+    자동차 리스트 iterator 때문에 depth가 2가 되었네요....
+    혹시 더 좋은 방법이 있을까요...?
+     */
     private List<String> findWinner(List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
-        int winnerCount = 0;
-
-        for (int i = 0; i < carList.size(); i++) {
-            winnerCount = findWinnerCount(carList.get(i), winnerCount, winnerList);
-        }
-        return winnerList;
+        int winnerCount = findMaxMoveCount(carList);
+        return findCorrespondMoveCountCarNames(carList, winnerCount);
     }
 
-    private int findWinnerCount(Car car, int winnerCount, List<String> winnerList) {
-        if (car.getMoveCount() == winnerCount) {
-            winnerList.add(car.getName());
+    private int findMaxMoveCount(List<Car> carList) {
+        int maxMoveCount = 0;
+
+        for (Car car : carList) {
+            if (car.getMoveCount() > maxMoveCount) {
+                maxMoveCount = car.getMoveCount();
+            }
         }
-        if (car.getMoveCount() > winnerCount) {
-            winnerList.clear();
-            winnerCount = car.getMoveCount();
-            winnerList.add(car.getName());
+        return maxMoveCount;
+    }
+
+    private List<String> findCorrespondMoveCountCarNames(List<Car> carList, int moveCount) {
+        List<String> correspondCarNames = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.getMoveCount() == moveCount)
+                correspondCarNames.add(car.getName());
         }
-        return winnerCount;
+        return correspondCarNames;
     }
 }

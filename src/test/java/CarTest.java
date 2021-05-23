@@ -1,13 +1,14 @@
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.Car;
-import racing.utils.ConvertString;
+import racing.domain.Car;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     @Test
     @DisplayName("난수가 4이상일때 거리 증가")
-    public void moveTest() throws Exception {
+    void moveTest() throws Exception {
         //given
         Car car = new Car("aaa");
         car.init();
@@ -18,12 +19,12 @@ public class CarTest {
         car.move(randomNumber);
 
         //then
-        Assertions.assertThat(car.getMoveCount()).isEqualTo(moveCount + 1);
+        assertThat(car.getMoveCount()).isEqualTo(moveCount + 1);
     }
 
     @Test
     @DisplayName("난수가 4미만일때 거리변화 없음")
-    public void moveTest2() throws Exception {
+    void moveTest2() throws Exception {
         //given
         Car car = new Car("aaa");
         car.init();
@@ -34,6 +35,6 @@ public class CarTest {
         car.move(randomNumber);
 
         //then
-        Assertions.assertThat(car.getMoveCount()).isEqualTo(moveCount);
+        assertThat(car.getMoveCount()).isEqualTo(moveCount);
     }
 }

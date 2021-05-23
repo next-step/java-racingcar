@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.Car;
+import racing.domain.Car;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class Output {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String WIN_MESSAGE = "최종 우승자: ";
 
-    public void start() {
+    public void printStart() {
         System.out.println(START_MESSAGE);
     }
 
@@ -30,16 +30,16 @@ public class Output {
         System.out.println(winnerList.get(winnerList.size() - 1));
     }
 
-    public void nowDistance(List<Car> carList) {
+    public void printCarDistance(List<Car> carList) {
         System.out.println();
         for (int i = 0; i < carList.size(); i++) {
             System.out.print(carList.get(i).getName() + " : ");
-            printDistance(carList.get(i).getMoveCount());
+            printCarDistance(carList.get(i).getMoveCount());
             System.out.println();
         }
     }
 
-    private void printDistance(int count) {
+    private void printCarDistance(int count) {
         for (int j = 0; j < count; j++) {
             System.out.print("-");
         }

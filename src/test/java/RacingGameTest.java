@@ -1,20 +1,22 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.Car;
-import racing.RacingGame;
+import racing.domain.Car;
+import racing.domain.RacingGame;
 import racing.utils.ConvertString;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class RacingGameTest {
 
     @Test
     @DisplayName("자동차 이름이 전부 5자 이내인 자동차 생성")
-    public void makeCarTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void makeCarTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
         ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
@@ -29,14 +31,14 @@ public class RacingGameTest {
         carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
 
         //then
-        Assertions.assertEquals("aaa", carList.get(0).getName());
-        Assertions.assertEquals("bbb", carList.get(1).getName());
-        Assertions.assertEquals("ccc", carList.get(2).getName());
+        assertEquals("aaa", carList.get(0).getName());
+        assertEquals("bbb", carList.get(1).getName());
+        assertEquals("ccc", carList.get(2).getName());
     }
 
     @Test
     @DisplayName("자동차 이름중 일부가 5자 초과")
-    public void makeCarTest2() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void makeCarTest2() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
         ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
@@ -60,7 +62,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void moveCountChangeTest() throws Exception {
+    void moveCountChangeTest() throws Exception {
         //given
         ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
@@ -86,7 +88,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void findWinnerTest() throws Exception {
+    void findWinnerTest() throws Exception {
         //given
         ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
@@ -114,7 +116,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void repeatCountTest() throws Exception {
+    void repeatCountTest() throws Exception {
         //given
         ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
