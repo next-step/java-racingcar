@@ -8,6 +8,6 @@ method 및 클래스 정리
 ```java
 import java.util.Random;
 public static void main(String[] args)  {
-int number = radom.nextint(10)
+    int number = radom.nextint(10)
 }
 ```
