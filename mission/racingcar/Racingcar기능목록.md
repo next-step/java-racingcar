@@ -56,8 +56,9 @@ jun : --
 - [x] 이름 입력 받기 : `carName`
 - [x] 경기 수 입력 받기 : `gameNumber`
 - Ready
-- [ ] 입력값으로 선수 목록 만들기 : `createPlayerListByName`
-- [ ] 
+- [x] 입력값으로 선수 목록 만들기 : `createPlayerList`
+- [ ] 이름 길이가 5넘는지 확인 : 
+- [ ] 선수목록으로 경주용 자동차 목록 만들기
 - Car(경기에 참가할 자동차)
 - [x] 이름과 위치값을 가지는 자동차 만들기 : `Car`
 - [x] 이름 호출하기 : `getName`

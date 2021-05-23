@@ -2,16 +2,23 @@ package racingCar;
 
 public class Application {
     public static void main(String[] args) {
-    // 입력
     Input input = new Input();
+    Ready ready = new Ready();
+
+    // input
     String name = input.carName();
+    int number = input.gameNumber();
 
-    // 입력값을 이용해서 경기참가자 리스트 만들기
-
-
-//
-//
-//    // 경주하기
+    // ready
+    String[] carName = ready.createPlayerList(name);
+    String[] PlayerList = new String[carName.length];
+    int index = 0;
+    for (String n : carName) {
+        PlayerList[index] = ready.checkNameLength(n);
+        index++;
     }
 
+
+    //
+    }
 }

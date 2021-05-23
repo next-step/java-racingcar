@@ -3,16 +3,13 @@ package racingCar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ReadyTest {
-    private Ready ready = new Ready();
+    private final Ready ready = new Ready();
 
     @Test
     @DisplayName("선수 목록 만들기")
@@ -77,6 +74,4 @@ public class ReadyTest {
         assertThatIllegalArgumentException().isThrownBy(()
                 -> ready.checkNameLength(name));
     }
-
-
 }
