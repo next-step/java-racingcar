@@ -50,11 +50,9 @@ public class Output {
         StringBuilder distanceStringBuilder = new StringBuilder();
 
         for (Car car : carList) {
-            distanceStringBuilder.append(car.getName());
-            distanceStringBuilder.append(DISTANCE_SEPARATOR);
+            distanceStringBuilder.append(car.getName()).append(DISTANCE_SEPARATOR);
             StringBuilder loadBuilder = repeatAppendLoad(getMoveCountByRound(car, round));
-            distanceStringBuilder.append(loadBuilder);
-            distanceStringBuilder.append(System.lineSeparator());
+            distanceStringBuilder.append(loadBuilder).append(System.lineSeparator());
         }
 
         return distanceStringBuilder;
