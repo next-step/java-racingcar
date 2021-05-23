@@ -51,19 +51,48 @@ public class Output {
             distanceStringBuilder.append(loadBuilder);
             distanceStringBuilder.append(System.lineSeparator());
         }
-        System.out.println(distanceStringBuilder);
+        System.out.print(distanceStringBuilder);
+    }
+
+    public static void printResultByMovedLog(List<Car> carList, int wholeRound) {
+        StringBuilder resultStringBuilder = new StringBuilder();
+
+        for (int round = 0; round < wholeRound; round++) {
+            resultStringBuilder.append(makeDistanceBuilderByRound(carList, round));
+            resultStringBuilder.append(System.lineSeparator());
+        }
+        System.out.print(resultStringBuilder);
+    }
+
+    private static StringBuilder makeDistanceBuilderByRound(List<Car> carList, int round) {
+        StringBuilder distanceStringBuilder = new StringBuilder();
+        for (Car car : carList) {
+            //이름 :
+            distanceStringBuilder.append(car.getName());
+            distanceStringBuilder.append(DISTANCE_SEPARATOR);
+            // 0라운드 거리별 - 생성
+            StringBuilder loadBuilder = repeatAppendLoad(getMoveCountByRound(car, round));
+            distanceStringBuilder.append(loadBuilder);
+            distanceStringBuilder.append(System.lineSeparator());
+        }
+        return distanceStringBuilder;
     }
 
     private static StringBuilder repeatAppendLoad(int moveCount) {
-        StringBuilder loadStringBuilder = appendLoad(moveCount);
+        StringBuilder loadStringBuilder = makeLoadBuilder(moveCount);
         return loadStringBuilder;
     }
 
-    private static StringBuilder appendLoad(int moveCount) {
+    private static StringBuilder makeLoadBuilder(int moveCount) {
         StringBuilder loadStringBuilder = new StringBuilder();
         for (int j = 0; j < moveCount; j++) {
             loadStringBuilder.append(LOAD);
         }
         return loadStringBuilder;
+    }
+
+    private static int getMoveCountByRound(Car car, int round) {
+
+        return car.getMovedLog().getMovedLogs().get(round);
     }
 }

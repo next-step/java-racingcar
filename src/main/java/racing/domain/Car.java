@@ -3,13 +3,14 @@ package racing.domain;
 public class Car {
     private static final int VALIDATED_NAME_LENGTH = 5;
     private String name;
-    private int moveCount;
+    private MovedLog movedLog;
     private MoveConditionStrategy moveConditionStrategy;
 
     public Car(String name, MoveConditionStrategy moveConditionStrategy) {
         validateLength(name);
         this.name = name;
         this.moveConditionStrategy = moveConditionStrategy;
+        this.movedLog = new MovedLog();
     }
 
     private void validateLength(String name) {
@@ -20,21 +21,27 @@ public class Car {
 
     public boolean isMove() {
         if (moveConditionStrategy.isMovable()) {
-            this.moveCount++;
+            movedLog.addMoveCount();
+            movedLog.addMovedLog();
             return true;
         }
+        movedLog.addMovedLog();
         return false;
     }
 
     public boolean isWinner(int winnerCount) {
-        return moveCount == winnerCount;
+        return movedLog.getMoveCount() == winnerCount;
     }
 
     public String getName() {
         return name;
     }
 
+    public MovedLog getMovedLog() {
+        return movedLog;
+    }
+
     public int getMoveCount() {
-        return moveCount;
+        return movedLog.getMoveCount();
     }
 }

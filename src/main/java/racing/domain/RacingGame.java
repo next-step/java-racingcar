@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static racing.view.Output.printNowDistance;
-
 public class RacingGame {
     public static final String SEPARATOR = ",";
 
@@ -14,8 +12,14 @@ public class RacingGame {
     public RacingGame(List<Car> cars) {
         this.cars = cars;
     }
+    //츨력 수정하기
+    public static void repeatMoveCars(List<Car> cars, int count) {
+        for (int i = 0; i < count; i++) {
+            RacingGame.moveCars(cars);
+        }
+    }
 
-    public static void moveCars(List<Car> cars) {
+    private static void moveCars(List<Car> cars) {
         for (Car car : cars) {
             car.isMove();
         }
@@ -39,15 +43,16 @@ public class RacingGame {
         }
         return winnerCondition;
     }
-    //츨력 수정하기
-    public static void repeatMoveCars(List<Car> cars, int count) {
-        for (int i = 0; i < count; i++) {
-            RacingGame.moveCars(cars);
-            printNowDistance(cars);
-        }
-    }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(this.cars);
+    }
+
+    public List<MovedLog> getMovedLogs() {
+        List<MovedLog> movedLogs = new ArrayList<>();
+        for (Car car : this.cars) {
+            getMovedLogs().add(car.getMovedLog());
+        }
+        return movedLogs;
     }
 }

@@ -1,17 +1,13 @@
 package racing;
 
-import racing.domain.Car;
-import racing.domain.MoveConditionStrategy;
-import racing.domain.OverFourStrategy;
-import racing.domain.RacingGame;
+import racing.domain.*;
 import racing.view.Input;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static racing.domain.RacingGame.SEPARATOR;
-import static racing.view.Output.printResultMessage;
-import static racing.view.Output.printWinMessage;
+import static racing.view.Output.*;
 
 public class RacingController {
     public static void main(String[] args) {
@@ -23,10 +19,12 @@ public class RacingController {
 
         RacingGame racingGame = new RacingGame(cars);
         cars = racingGame.getCars();
-        int count = Input.makeGameRepeatCount();
-        racingGame.repeatMoveCars(cars, count);
+        int racingRound = Input.makeGameRepeatCount();
+        racingGame.repeatMoveCars(cars, racingRound);
 
         printResultMessage();
+        printResultByMovedLog(cars,racingRound);
+
         printWinMessage(racingGame.findWinner());
     }
 
