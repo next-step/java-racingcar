@@ -15,9 +15,9 @@ public class Winners {
     }
 
     public List<String> winners() {
-        Collections.sort(cars);
-        for (Car car : cars) {
-            if (car.getMovingRange() == cars.get(WINNER_NUMBER).getMovingRange()) {
+        Collections.sort(cars.getCars());
+        for (Car car : cars.getCars()) {
+            if (car.getMovingRange() == cars.getCars().get(WINNER_NUMBER).getMovingRange()) {
                 winner.add(car.getName());
             }
         }

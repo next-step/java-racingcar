@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Cars extends ArrayList<Car> {
+public class Cars{
     private List<Car> cars;
 
 
     static final int NAME_LENGTH = 5;
     static final String CAR_NAME_SPLIT = ",";
 
-    public Cars initCars(String carNamesStr) {
+    public Cars() {
+        this.cars = new ArrayList<>();
+    }
+    public Cars(String carNamesStr) {
+        this.cars = initCars(carNamesStr);
+    }
+    private List<Car> initCars(String carNamesStr) {
+        this.cars = new ArrayList<>();
         String[] carNames = initCarName(carNamesStr);
-        Cars cars = new Cars();
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
@@ -28,5 +34,13 @@ public class Cars extends ArrayList<Car> {
             }
         }
         return carNames;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void add(Car car){
+        this.cars.add(car);
     }
 }

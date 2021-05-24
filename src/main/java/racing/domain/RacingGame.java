@@ -11,15 +11,14 @@ public class RacingGame {
     private int tryNo;
 
     public RacingGame(String carNames, int tryNo) {
-        Cars cars = new Cars();
-        cars = cars.initCars(carNames);
+        Cars cars = new Cars(carNames);
         this.cars = cars;
         this.tryNo = tryNo;
     }
 
     public void race() {
         Cars newCars = new Cars();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM), car));
         }
         roundCars.setRound(newCars);
