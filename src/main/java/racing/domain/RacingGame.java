@@ -9,60 +9,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private static final String NAME_LENGTH_OVER = "이름은 5자 이내로 입력하세요.";
 
-    private void makeCar(String name, List<Car> carList) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(NAME_LENGTH_OVER);
-        }
+    private void makeCar(String name, List<Car> cars) {
         Car car = new Car(name);
-        car.init();
-        carList.add(car);
+        cars.add(car);
     }
 
     public void gameStart() {
-        RacingGame racingGame = new RacingGame();
-        Output output = new Output();
-        Input input = new Input();
-        ConvertString convertString = new ConvertString();
-        List<Car> carNames;
 
-        output.printStart();
-        String carString = input.makeCars();
-        output.count();
-        int count = input.count();
-        output.result();
-        String[] carNameArray = convertString.splitString(carString);
-        carNames = makeCarList(carNameArray);
-        repeatMoveCount(carNames, count);
-        output.win(findWinner(carNames));
+        Output.printStart();
+        String carNames = Input.carNames();
+        Output.count();
+        int count = Input.gameCount();
+        Output.result();
+        String[] carNameArray = ConvertString.splitString(carNames);
+        List<Car> cars = makeCars(carNameArray);
+        repeatMoveCount(cars, count);
+        Output.win(findWinner(cars));
     }
 
-    private void repeatMoveCount(List<Car> carList, int count) {
-        Output output = new Output();
+    private void repeatMoveCount(List<Car> cars, int count) {
+
         for (int i = 0; i < count; i++) {
-            moveCountChange(carList);
-            output.printCarDistance(carList);
+            moveCountChange(cars);
+            Output.printCarDistance(cars);
         }
     }
 
-    private List<Car> makeCarList(String[] carNameArray) {
-        List<Car> carList = new ArrayList<Car>();
-
+    private List<Car> makeCars(String[] carNameArray) {
+        List<Car> cars = new ArrayList<Car>();
         for (String carName : carNameArray) {
-            makeCar(carName, carList);
+            makeCar(carName, cars);
         }
-        return carList;
+        return cars;
     }
 
     private int makeRandomNumber() {
-        RandomNumber randomNumber = new RandomNumber();
-        return randomNumber.makeRandomNumber();
+        return RandomNumber.makeRandomNumber();
     }
 
-    private void moveCountChange(List<Car> carList) {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).move(makeRandomNumber());
+    private void moveCountChange(List<Car> cars) {
+        int carsSize = cars.size();
+        for (int i = 0; i < carsSize; i++) {
+            cars.get(i).move(makeRandomNumber());
         }
     }
 
@@ -71,16 +60,16 @@ public class RacingGame {
     자동차 리스트 iterator 때문에 depth가 2가 되었네요....
     혹시 더 좋은 방법이 있을까요...?
      */
-    private List<String> findWinner(List<Car> carList) {
+    private List<String> findWinner(List<Car> cars) {
         List<String> winnerList = new ArrayList<>();
-        int winnerCount = findMaxMoveCount(carList);
-        return findCorrespondMoveCountCarNames(carList, winnerCount);
+        int winnerCount = findMaxMoveCount(cars);
+        return findCorrespondMoveCountCarNames(cars, winnerCount);
     }
 
-    private int findMaxMoveCount(List<Car> carList) {
+    private int findMaxMoveCount(List<Car> cars) {
         int maxMoveCount = 0;
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.getMoveCount() > maxMoveCount) {
                 maxMoveCount = car.getMoveCount();
             }
@@ -88,9 +77,9 @@ public class RacingGame {
         return maxMoveCount;
     }
 
-    private List<String> findCorrespondMoveCountCarNames(List<Car> carList, int moveCount) {
+    private List<String> findCorrespondMoveCountCarNames(List<Car> cars, int moveCount) {
         List<String> correspondCarNames = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.getMoveCount() == moveCount)
                 correspondCarNames.add(car.getName());
         }

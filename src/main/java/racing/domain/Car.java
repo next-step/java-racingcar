@@ -1,10 +1,15 @@
 package racing.domain;
 
 public class Car {
+    private static final int MAX_NAME_LENGTH = 5;
     private String name;
     private int moveCount;
 
     public Car(String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
+        }
+        this.moveCount = 0;
         this.name = name;
     }
 

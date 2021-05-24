@@ -6,27 +6,22 @@ import calculator.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
-public class Calculator {
+public class StringCalculator {
 
-    public void calculatorGenerate() {
-        Calculator calculator = new Calculator();
-        Output output = new Output();
-
-        String input = calculator.setMathExpression();
-        List<String> strings = calculator.sliceMathExpression(input);
-        output.resultOutput(calculator.makeResult(strings));
+    public void execute() {
+        String input = setMathExpression();
+        List<String> strings = sliceMathExpression(input);
+        System.out.println("strings = " + strings);
+        Output.resultOutput(makeResult(strings));
     }
 
     private String setMathExpression() {
-        Output output = new Output();
-        Input input = new Input();
         Exception exception = new Exception();
 
-        output.startMessageOutput();
-        String mathExpression = input.mathExpressionInput();
+        Output.startMessageOutput();
+        String mathExpression = Input.mathExpressionInput();
 
         if(mathExpression.trim().isEmpty()){
             exception.inputNullException();
@@ -42,8 +37,7 @@ public class Calculator {
 
     private List<String> sliceMathExpression(String mathExpression) {
         String[] splitMathExpression = mathExpression.split("");
-//        String[] splitMathExpressionByChar = mathExpression.split("");
-        List<String> mathExpressionList = new ArrayList<String>();
+        List<String> mathExpressionList = new ArrayList<>();
         String temp = "";
         for (String s : splitMathExpression) {
             if (Pattern.matches("[^0-9]", s)) {
@@ -74,17 +68,17 @@ public class Calculator {
     }
 
     private double calculate(double number, String splitWord, double result) {
-        Calculate calculate = new Calculate();
+        NumberCalculator numberCalculator = new NumberCalculator();
         Exception exception = new Exception();
 
         if (splitWord.equals("+")) {
-            result = calculate.addition(result, number);
+            result = numberCalculator.addition(result, number);
         } else if (splitWord.equals("-")) {
-            result = calculate.subtraction(result, number);
+            result = numberCalculator.subtraction(result, number);
         } else if (splitWord.equals("*")) {
-            result = calculate.multiplication(result, number);
+            result = numberCalculator.multiplication(result, number);
         } else if (splitWord.equals("/")) {
-            result = calculate.division(result, number);
+            result = numberCalculator.division(result, number);
         } else if (Pattern.matches("[^0-9]", splitWord)) {
             exception.notFourRuleException();
         }

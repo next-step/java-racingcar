@@ -1,8 +1,9 @@
 package racing.utils;
 
-public class ConvertString {
+public final class ConvertString {
+    private ConvertString() {}
 
-    public String[] splitString(String input) {
+    public static String[] splitString(String input) {
         return input.split(",");
     }
 }

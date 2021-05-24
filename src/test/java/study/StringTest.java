@@ -2,24 +2,11 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-
-import java.util.PrimitiveIterator;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTest {
-    @Test
-    public void test() throws Exception {
-        //given
-
-        //when
-
-        //then
-        Calculator calculator = new Calculator();
-        assertEquals(5, calculator.add(2, 3));
-    }
-
 
     @Test
     public void 쉼표로_나누기1() throws Exception {
@@ -44,23 +31,11 @@ public class StringTest {
     }
 
     @Test
-    public void 예외발생시키기(){
+    public void 예외발생시키기() {
         final int index = 3;
         final String input = "abc";
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> {
-                    input.charAt(index);
-                });
-
-    }
-
-}
-
-
-
-class Calculator {
-    public int add(int a, int b) {
-        return a + b;
+                .isThrownBy(() -> input.charAt(index));
     }
 }

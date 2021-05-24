@@ -2,13 +2,14 @@ package racing.view;
 
 import java.util.Scanner;
 
-public class Input {
-    public String makeCars() {
+public final class Input {
+    private Input() {}
+    public static String carNames() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
-    public int count() {
+    public static int gameCount() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }

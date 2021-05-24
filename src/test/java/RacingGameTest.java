@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
@@ -7,6 +6,7 @@ import racing.utils.ConvertString;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,43 +18,36 @@ public class RacingGameTest {
     @DisplayName("자동차 이름이 전부 5자 이내인 자동차 생성")
     void makeCarTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
-        ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
-        Method method;
         String carString = "aaa,bbb,ccc";
-        List<Car> carList;
-        String[] carNameArray = convertString.splitString(carString);
-        method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
+        String[] carNameArray = ConvertString.splitString(carString);
+        Method method = racingGame.getClass().getDeclaredMethod("makeCars", String[].class);
         method.setAccessible(true);
 
         //when
-        carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
+        List<Car> cars = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
 
         //then
-        assertEquals("aaa", carList.get(0).getName());
-        assertEquals("bbb", carList.get(1).getName());
-        assertEquals("ccc", carList.get(2).getName());
+        assertEquals("aaa", cars.get(0).getName());
+        assertEquals("bbb", cars.get(1).getName());
+        assertEquals("ccc", cars.get(2).getName());
     }
 
     @Test
     @DisplayName("자동차 이름중 일부가 5자 초과")
     void makeCarTest2() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
-        ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
         Method method;
         String carString = "aaa,bbb,cccccc";
-        List<Car> carList;
-        String[] carNameArray = convertString.splitString(carString);
-        method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
+        String[] carNameArray = ConvertString.splitString(carString);
+        method = racingGame.getClass().getDeclaredMethod("makeCars", String[].class);
         method.setAccessible(true);
 
         //when
 
         //then
-        //객체 생성시 글자수 오버로 IllegalArgumentException이 출력되지만 invoke 또한 되지 않아 InvocationTargetException가
-        //최종적으로 출력되는 것 같아서 이렇게 테스트 코드를 작성 했는데 맞는 방법인지 모르겠습니다!!
-        //원래 시도했던 문법은 InvocationTargetException.class 대신 IllegalArgumentException.class 입니다.
+
         org.assertj.core.api.Assertions.assertThatExceptionOfType(InvocationTargetException.class)
                 .isThrownBy(() -> {
                     method.invoke(racingGame, (Object) carNameArray);
@@ -64,52 +57,39 @@ public class RacingGameTest {
     @Test
     void moveCountChangeTest() throws Exception {
         //given
-        ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
-        Method method;
-        String carString = "aaa,bbb,ccc";
-        String[] carNameArray = convertString.splitString(carString);
-        method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
-        method.setAccessible(true);
-        List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
-        method = racingGame.getClass().getDeclaredMethod("moveCountChange", List.class);
-        method.setAccessible(true);
+        List<Car> cars = Arrays.asList(new Car("aaa"), new Car("bbb"), new Car("ccc"));
 
         //when
-        method.invoke(racingGame, carList);
+        Method method = racingGame.getClass().getDeclaredMethod("moveCountChange", List.class);
+        method.setAccessible(true);
+        method.invoke(racingGame, cars);
 
-        //then
-        // 자동차별 moveCount를 증가시켜주는 moveCountChange 함수 안에서 난수가 생성되는데 만약 모든 자동차 난수가 4미만이면
-        // randomCount가 증가되지 않아 모든 자동차 이동거리가 0이 되는 경우가 발생해
-        // 이럴 경우는 테스트 코드를 어떻게 작성해야 하는지 모르겠습니다.
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getName() + ": " + carList.get(i).getMoveCount());
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(cars.get(i).getName() + ": " + cars.get(i).getMoveCount());
         }
+
+        // moveCount가 변하는지 확인하는 테스트인데 모든 자동차가 움직이지 않는 경우도 있어서
+        // 테스트를 만드는게 힘들거 같네요.... 이 테스트 말고 다른 테스트 케이스를 작성하는게 맞지 않을까 싶네요...ㅎㅎ
     }
 
     @Test
     void findWinnerTest() throws Exception {
         //given
-        ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
-        Method method;
         String carString = "aaa,bbb,ccc,ddd,eee,fff";
-        String[] carNameArray = convertString.splitString(carString);
-        method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
+        String[] carNameArray = ConvertString.splitString(carString);
+        Method method = racingGame.getClass().getDeclaredMethod("makeCars", String[].class);
         method.setAccessible(true);
-        List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
+        List<Car> cars = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
         method = racingGame.getClass().getDeclaredMethod("moveCountChange", List.class);
         method.setAccessible(true);
 
         //when
-        method.invoke(racingGame, carList);
-
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getName() + ": " + carList.get(i).getMoveCount());
-        }
+        method.invoke(racingGame, cars);
         method = racingGame.getClass().getDeclaredMethod("findWinner", List.class);
         method.setAccessible(true);
-        List<Car> winnerList = (List<Car>) method.invoke(racingGame, carList);
+        List<Car> winnerList = (List<Car>) method.invoke(racingGame, cars);
 
         //then
         org.assertj.core.api.Assertions.assertThat(winnerList.size()).isNotEqualTo(0);
@@ -118,29 +98,21 @@ public class RacingGameTest {
     @Test
     void repeatCountTest() throws Exception {
         //given
-        ConvertString convertString = new ConvertString();
         RacingGame racingGame = new RacingGame();
-        Method method;
         String carString = "aaa,bbb,ccc,ddd,eee,fff";
-        String[] carNameArray = convertString.splitString(carString);
+        String[] carNameArray = ConvertString.splitString(carString);
         int repeatCount = 10;
-        method = racingGame.getClass().getDeclaredMethod("makeCarList", String[].class);
+        Method method = racingGame.getClass().getDeclaredMethod("makeCars", String[].class);
         method.setAccessible(true);
-        List<Car> carList = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
-        method = racingGame.getClass().getDeclaredMethod("repeatMoveCount", int.class, List.class);
+        List<Car> cars = (List<Car>) method.invoke(racingGame, (Object) carNameArray);
+        System.out.println(cars);
+        method = racingGame.getClass().getDeclaredMethod("repeatMoveCount", List.class, int.class);
         method.setAccessible(true);
 
         //when
-        method.invoke(racingGame, repeatCount, carList);
+        method.invoke(racingGame, cars, repeatCount);
 
-        //then
-        // repeatCount를 10으로 하드 코딩 한 후 테스트를 실행했는데 10회를 돌았다는것을 검증 하려면
-        // repeatMoveCount 내부에 반복횟수를 저장하는 변수를 생성 하는 것 이외의 방법이 생각나지 않습니다.
-        // 따라서 대부분의 경우에 10회 반복 시 moveCount가 2이상일 확률이 높아 아래의 코드를 작성했는데
-        // 확률성 코드를 없애기 위해 새로운 변수를 생성 해야 하나요?
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i).getName() + ": " + carList.get(i).getMoveCount());
-        }
-        org.assertj.core.api.Assertions.assertThat(carList.get(0).getMoveCount() >= 2).isTrue();
+        System.out.println(cars);
+        org.assertj.core.api.Assertions.assertThat(cars.get(0).getMoveCount() >= 2).isTrue();
     }
 }

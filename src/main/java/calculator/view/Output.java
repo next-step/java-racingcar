@@ -1,14 +1,18 @@
 package calculator.view;
 
-public class Output {
+public final class Output {
     private static final String START_MESSAGE = "계산식을 입력하세요.";
     private static final String CALCULATE_RESULT = "계산 결과: ";
 
-    public void startMessageOutput() {
+    private Output() {
+
+    }
+
+    public static void startMessageOutput() {
         System.out.println(START_MESSAGE);
     }
 
-    public void resultOutput(double result) {
+    public static void resultOutput(double result) {
         System.out.print(CALCULATE_RESULT);
         System.out.print(result);
     }
