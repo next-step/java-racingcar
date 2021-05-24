@@ -2,28 +2,23 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
-    private List<Car> carArrayList;
+    private List<Car> carList;
     private int racingCount;
 
     public RacingGame() {
     }
 
-    public RacingGame(List<Car> carArrayList) {
-        this.carArrayList = carArrayList;
-    }
-
-    public RacingGame(List<Car> carArrayList, int racingCount) {
-        this.carArrayList = carArrayList;
+    public RacingGame(List<Car> carList, int racingCount) {
+        this.carList = carList;
         this.racingCount = racingCount;
     }
 
     public List<String> getWinner() {
         int max = getMaxDistance();
         List<String> winner = new ArrayList<>();
-        for (Car car : carArrayList) {
+        for (Car car : carList) {
             if (max == car.getLocation()) {
                 winner.add(car.getCarName());
             }
@@ -33,7 +28,7 @@ public class RacingGame {
 
     public int getMaxDistance() {
         int max = 0;
-        for (Car car : carArrayList) {
+        for (Car car : carList) {
             if (max < car.getLocation()) {
                 max = car.getLocation();
             }
@@ -49,10 +44,8 @@ public class RacingGame {
     }
 
     private void runOneRound() {
-        for (Car car : carArrayList) {
-            Random random = new Random();
-            int randomNumber = random.nextInt(10);
-            car.run(randomNumber);
+        for (Car car : carList) {
+            car.run(new MovingCondition().isMovable());
             System.out.println(car.getCarName() + " : " + underbars(car));
         }
     }

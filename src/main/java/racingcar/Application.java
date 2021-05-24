@@ -15,11 +15,12 @@ public class Application {
 
         System.out.println("실행 결과");
 
-        String[] carList = nameOfCar.split(",");
+        String[] carNames = nameOfCar.split(",");
         CarFactory carFactory = new CarFactory();
-        List<Car> carArrayList = carFactory.createCar(carList);
-        RacingGame racingGame = new RacingGame(carArrayList, round);
+        List<Car> carList = carFactory.createCar(carNames);
+        RacingGame racingGame = new RacingGame(carList, round);
         racingGame.runWholeRound();
+
         List<String> winner = racingGame.getWinner();
         System.out.println("최종 우승자: " + winner);
     }
