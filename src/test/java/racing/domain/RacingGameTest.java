@@ -15,22 +15,23 @@ public class RacingGameTest {
     MoveConditionStrategy moveConditionStrategy;
 
     @BeforeEach
-    public void beforeEach() {
+    void beforeEach() {
         moveConditionStrategy = new NumberIsBiggerStrategy();
     }
 
     @DisplayName("첫번째 자동차인 aaa가 움직이면 우승차는 aaa 1대")
     @Test
-    public void findSingleWinnerTest() {
+    void findSingleWinnerTest() {
         //given
         List<Car> cars = Arrays.asList(
-                new Car("aaa", moveConditionStrategy, 1),
+                new Car("aaa", ()->true, 0),
                 new Car("bbb", moveConditionStrategy, 0),
                 new Car("ccc", moveConditionStrategy, 0),
                 new Car("ddd", moveConditionStrategy, 0),
                 new Car("eee", moveConditionStrategy, 0)
         );
         RacingGame racingGame = new RacingGame(cars);
+        cars.get(0).move();
 
         //when
         List<Car> winnerList = racingGame.findWinner();
@@ -42,9 +43,9 @@ public class RacingGameTest {
         );
     }
 
-    @DisplayName("모든 자동차가 움직이면 전체 공동 우승")
+    @DisplayName("모든 자동차의 거리가 동일하면 전체 공동 우승")
     @Test
-    public void findWholeWinnerTest() {
+    void findWholeWinnerTest() {
         //given
         List<Car> cars = Arrays.asList(
                 new Car("aaa", moveConditionStrategy, 2),

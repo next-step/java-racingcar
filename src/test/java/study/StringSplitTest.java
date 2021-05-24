@@ -35,7 +35,7 @@ public class StringSplitTest {
     }
 
     @Test
-    public void 비정상인덱스접근예외발생시키기(){
+    public void 비정상인덱스접근예외발생시키기() {
         final int index = 3;
         final String input = "abc";
 

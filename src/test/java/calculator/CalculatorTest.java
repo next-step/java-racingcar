@@ -1,6 +1,7 @@
 package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,11 +43,18 @@ public class CalculatorTest {
     void divisionTest() {
         double first = 12;
         double second = 4;
-        double zero = 0;
 
         assertThat(calculator.calculate(first, "/", second)).isEqualTo(3);
-        assertThrows(IllegalArgumentException.class,()->{
-            calculator.calculate(first, "/", zero);
+    }
+
+    @DisplayName("0으로 나눗셈을 할 수없다.")
+    @Test
+    void divisionFailTest() {
+        double first = 12;
+        double second = 0;
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.calculate(first, "/", second);
         });
     }
 }

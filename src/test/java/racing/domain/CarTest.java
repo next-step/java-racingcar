@@ -34,7 +34,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"aaa", "bbb", "ccc"})
+    @CsvSource(value = {"aaaaa", "bbbb", "ccc"})
     @DisplayName("자동차 이름이 전부 5자 이내인 자동차 생성")
     public void makeCarTest(String name) {
         assertThat(new Car(name, moveConditionStrategy).getName()).isEqualTo(name);
