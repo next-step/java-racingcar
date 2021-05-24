@@ -7,7 +7,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringCalculatorTest {
-    private StringCalculator stringCalculator ;
+    private StringCalculator stringCalculator;
+
     @BeforeEach
     void setUp() {
         stringCalculator = new StringCalculator();

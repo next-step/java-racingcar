@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcargame.model.RacingCar;
 import racingcargame.controller.RacingCarGameController;
+import racingcargame.model.RacingCar;
 import racingcargame.view.RacingCarGameOutputView;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingCarGameTest {
     private RacingCarGameController controller;
     private RacingCarGameOutputView outputView;
-    private RacingCar racingCar ;
+    private RacingCar racingCar;
 
     @BeforeEach
     void setUp() {
