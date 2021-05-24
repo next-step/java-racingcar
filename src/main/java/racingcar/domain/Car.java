@@ -9,6 +9,13 @@ public class Car {
         this.location = location;
     }
 
+    public void move() {
+        RacingRandom racingRandom = new RacingRandom();
+        if (racingRandom.isMove()) {
+            this.location++;
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -17,10 +24,4 @@ public class Car {
         return location;
     }
 
-    public void move() {
-        RacingRandom racingRandom = new RacingRandom();
-        if (racingRandom.isMove()) {
-            this.location++;
-        }
-    }
 }
