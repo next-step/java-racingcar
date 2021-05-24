@@ -10,10 +10,10 @@ public class RacingGame {
     private List<Car> carInfo = new ArrayList<>();
 
     public List<Car> splitString(String input) {
-        String[] result = input.split(",");
-        for (int i = 0; i < result.length; i++) {
-            if (util.invalidedName(result[i])) {
-                Car car = new Car(result[i]);
+        String[] carNames = input.split(",");
+        for (String carName : carNames) {
+            if (util.invalidedName(carName)) {
+                Car car = new Car(carName);
                 carInfo.add(car);
             }
         }
