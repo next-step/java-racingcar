@@ -15,25 +15,21 @@ public class RacingCarGameController {
     static final String SEPARATOR = ",";
 
     public void startGame() {
+        List<RacingCar> racingCars = getRacingCars();
+
+        int roundNumber = getRoundNumber();
+
+        runGame(racingCars, roundNumber);
+
+        getResult(racingCars);
+    }
+
+    private List<RacingCar> getRacingCars() {
         String carNames = inputView.inputCarNames();
         String[] splitCarNames = splitBySeparator(carNames);
         List<RacingCar> racingCars = new ArrayList<>();
         makeRacingCarsWithCarNames(racingCars, splitCarNames);
-
-        int roundNumber = inputView.inputRoundNumber();
-        checkRoundNumber(roundNumber);
-
-        runGame(racingCars, roundNumber);
-
-        int maxScore = getMaxScore(racingCars);
-        String winners = getWinners(racingCars, maxScore);
-        outputView.outputWinners(winners);
-    }
-
-    public void checkRoundNumber(int roundNumber) {
-        if (roundNumber < 0) {
-            throw new IllegalArgumentException("게임을 시도할 횟수는 0 이상이어야 한다.");
-        }
+        return racingCars;
     }
 
     public String[] splitBySeparator(String carNames) {
@@ -44,6 +40,18 @@ public class RacingCarGameController {
         for (String carName : carNames) {
             RacingCar car = new RacingCar(carName);
             racingCars.add(car);
+        }
+    }
+
+    private int getRoundNumber() {
+        int roundNumber = inputView.inputRoundNumber();
+        checkRoundNumber(roundNumber);
+        return roundNumber;
+    }
+    
+    public void checkRoundNumber(int roundNumber) {
+        if (roundNumber < 0) {
+            throw new IllegalArgumentException("게임을 시도할 횟수는 0 이상이어야 한다.");
         }
     }
 
@@ -60,6 +68,12 @@ public class RacingCarGameController {
             int randomNumber = random.nextInt(10);
             car.move(randomNumber);
         }
+    }
+
+    private void getResult(List<RacingCar> racingCars) {
+        int maxScore = getMaxScore(racingCars);
+        String winners = getWinners(racingCars, maxScore);
+        outputView.outputWinners(winners);
     }
 
     public int getMaxScore(List<RacingCar> cars) {
