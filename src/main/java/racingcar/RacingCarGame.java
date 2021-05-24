@@ -5,16 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingCarGame {
-    List<RacingCar> racingCars = new ArrayList<>();
     public final int moveNumber = 9;
     public Random random = new Random();
-
-    public void player(String[] carNames) {
-        for (String carName : carNames) {
-            RacingCar racingCar = new RacingCar(carName);
-            racingCars.add(racingCar);
-        }
-    }
 
     public int createRandomNumber() {
         return random.nextInt(moveNumber);
@@ -28,9 +20,9 @@ public class RacingCarGame {
         return bar;
     }
 
-    public void startRacing(int count, List<RacingCar> racingCars) {
+    public void startRacing(int count, RacingCars racingCars) {
         for (int i = 0; i < count; i++) {
-            for (RacingCar car : racingCars) {
+            for (RacingCar car : racingCars.getRacingCars()) {
                 int number = createRandomNumber();
                 car.moveOrNot(number);
                 System.out.println(car.getCarName() + " : " + this.advance(car.getPosition()));
