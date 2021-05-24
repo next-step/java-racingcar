@@ -52,38 +52,8 @@ jun : --
 
 ### 기능 구현 목록
 #### main 클래스
-- Input(입력 객체)
-- [x] 이름 입력 받기 : `carName`
-- [x] 경기 수 입력 받기 : `gameNumber`
-- Ready
-- [x] 입력값으로 선수 목록 만들기 : `createPlayerList`
-- [ ] 이름 길이가 5넘는지 확인 : 
-- [ ] 선수목록으로 경주용 자동차 목록 만들기
-- Car(경기에 참가할 자동차)
-- [x] 이름과 위치값을 가지는 자동차 만들기 : `Car`
-- [x] 이름 호출하기 : `getName`
-- [x] 앞으로 이동하기 : `go`
-- [x] 위치값 호출하기 : `getPosition`
-- Stadium(경기 하는 곳)
-- [x] 랜덤값 뽑기 : `drawRandomNumber`
-- [x] 4이상인지 판단하기 : `isGreaterThanFour`
-- [x] 4이상이면 앞으로 전진하기 : `isMove`
-- [x] 랜덤 수 뽑았는데 4이상이면 앞으로 전진하기 : `isRunning`
-- Application
-- [ ] 참가자 선수 car 객체 만들기
-- [ ] 자동차 경주하기
-- Awards
-- [ ] 가장 큰 값 판별하기 
-- [ ] 우승자 출력하기 
+
 #### test 클래스
-- Car(경기에 참가할 자동차)
-- [x] car 객체 생성 테스트 : `carTest`
-- [x] go 객체 : `goTest`
-- Stadium(경기 하는 곳)
-- [x] 4이상인지 판단하기 : `TestisGreaterThanFour`
-- [x] 4미만인지 판단하기 : `TestisLessThanFour`
-- [x] 4이상이면 전진하기 테스트 : `TestisMove`
-- [x] 4미만이면 전진 실패 테스트 : `TestisNotMove`
 
 ---
 
