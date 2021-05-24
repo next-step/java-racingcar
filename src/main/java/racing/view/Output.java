@@ -2,8 +2,8 @@ package racing.view;
 
 import racing.domain.Car;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Output {
     private static final String START_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분.";
@@ -27,13 +27,7 @@ public class Output {
 
     public static void printWinMessage(List<Car> winnerList) {
         System.out.print(WIN_MESSAGE);
-        ArrayList winners = new ArrayList<>();
-
-        for (int i = 0; i < winnerList.size(); i++) {
-            winners.add(winnerList.get(i).getName());
-
-        }
-        System.out.println(String.join(", ", winners));
+        System.out.println(winnerList.stream().map(Car::getName).collect(Collectors.joining(", ")));
     }
 
     public static void printResultByMovedLog(List<Car> carList, int wholeRound) {
@@ -74,6 +68,6 @@ public class Output {
     }
 
     private static int getMoveCountByRound(Car car, int round) {
-        return car.getMovedLog().getMovedLogs().get(round);
+        return car.getMovedLogByRound(round);
     }
 }
