@@ -11,15 +11,14 @@ import java.util.List;
 public class RacingCarController {
     public static void main(String[] args) {
         RacingCarView racingCarView = new RacingCarView();
-        RacingGame racingGame = new RacingGame();
-        RacingResult racingResult = new RacingResult();
-
         String carNames = racingCarView.inputCarInfo();
-        List<Car> carInfos = racingGame.splitString(carNames);
 
+        RacingGame racingGame = new RacingGame();
+        List<Car> carInfos = racingGame.splitString(carNames);
         racingCarView.inputCycle();
         racingCarView.showResult(carInfos);
 
+        RacingResult racingResult = new RacingResult();
         List<Winner> winnerNames = racingResult.selectWinners(carInfos);
         racingCarView.showWinner(winnerNames);
     }

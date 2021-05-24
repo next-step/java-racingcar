@@ -12,7 +12,7 @@ public class RacingResult {
         return carInfo.stream().filter(car -> car.getLocationInfo() == winnerScore).map(car -> new Winner(car.getName())).collect(Collectors.toList());
     }
 
-    public int selectWinnerScore(List<Car> carInfo) {
+    private int selectWinnerScore(List<Car> carInfo) {
         return carInfo.stream().max(Comparator.comparingInt(Car::getLocationInfo)).get().getLocationInfo();
     }
 }

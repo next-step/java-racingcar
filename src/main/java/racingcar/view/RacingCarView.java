@@ -30,7 +30,7 @@ public class RacingCarView {
         }
     }
 
-    public void cycleCarInformation(List<Car> carInfo) {
+    private void cycleCarInformation(List<Car> carInfo) {
         for (int i = 0; i < carInfo.size(); i++) {
             carInfo.get(i).move();
 
@@ -40,7 +40,7 @@ public class RacingCarView {
         }
     }
 
-    public void showCarLocationInfo(int moveCount) {
+    private void showCarLocationInfo(int moveCount) {
         for (int i = 0; i < moveCount; i++) {
             System.out.print("-");
         }
