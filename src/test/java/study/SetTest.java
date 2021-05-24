@@ -23,7 +23,7 @@ public class SetTest {
     }
 
     @Test
-    void sizeTest(){
+    void sizeTest() {
         numbers.size();
     }
 

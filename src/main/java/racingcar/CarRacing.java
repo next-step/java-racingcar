@@ -30,7 +30,8 @@ public class CarRacing {
             System.out.println();
         }
     }
-    public int maxPosition(List<Car> cars){
+
+    public int maxPosition(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = car.maxPosition(maxPosition);

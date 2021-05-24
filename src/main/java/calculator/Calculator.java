@@ -23,12 +23,12 @@ public class Calculator {
 
     public void nullCheck(String input) {
         if (input.equals("") || input.equals(" ")) {
-          throw new IllegalArgumentException("입력값이 null입니다.");
+            throw new IllegalArgumentException("입력값이 null입니다.");
         }
 
     }
 
-    public void operationCheck (String input)  {
+    public void operationCheck(String input) {
         if (!input.contains("+") || !input.contains("-") || !input.contains("*") || !input.contains("/")) {
             throw new IllegalArgumentException("입력값에 사칙연산이 없습니다.");
         }

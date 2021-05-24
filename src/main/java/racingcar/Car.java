@@ -28,10 +28,12 @@ public class Car {
         return position;
     }
 
-    public String getCarName() { return carName; }
+    public String getCarName() {
+        return carName;
+    }
 
-    public int maxPosition(int maxPosition){
-        if(this.position>maxPosition){
+    public int maxPosition(int maxPosition) {
+        if (this.position > maxPosition) {
             return this.position;
         }
         return maxPosition;
