@@ -19,7 +19,7 @@ public class RacingGame {
     public void race() {
         Cars newCars = new Cars();
         for (Car car : cars.getCars()) {
-            newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM), car));
+            newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM)));
         }
         roundCars.add(newCars);
         this.cars = newCars;

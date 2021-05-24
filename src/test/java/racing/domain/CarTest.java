@@ -27,8 +27,8 @@ class CarTest {
     @Test
     void getRandomMoveTest() {
         Car  car = new Car("1");
-        car.getRandomMove(8,car);
+        car.getRandomMove(8);
 
-        assertThat(car.getRandomMove(8,car).getMovingRange()).isEqualTo(1);
+        assertThat(car.getRandomMove(8).getMovingRange()).isEqualTo(1);
     }
 }

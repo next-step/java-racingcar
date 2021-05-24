@@ -23,11 +23,11 @@ public class Car implements Comparable<Car> {
         return movingRange;
     }
 
-    public Car getRandomMove(int random, Car car) {
+    public Car getRandomMove(int random) {
         if (random > MOVE_NUMBER) {
             return new Car(name, movingRange + MOVE_COUNT);
         }
-        return car;
+        return this;
     }
 
     @Override
