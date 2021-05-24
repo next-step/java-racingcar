@@ -110,9 +110,6 @@ public class Calculator {
     }
 
     private boolean haveIntegerExpression(String integerOfMathExpression) {
-        if (integerOfMathExpression.length() >= HAVE_NOT_APPENDED_NUMBER) {
-            return true;
-        }
-        return false;
+        return integerOfMathExpression.length() >= HAVE_NOT_APPENDED_NUMBER;
     }
 }
