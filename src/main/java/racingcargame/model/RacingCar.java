@@ -5,13 +5,13 @@ public class RacingCar {
     private int step = 0;
 
     public RacingCar(String name) {
-        checkCarNameLength();
         this.name = name;
+        checkCarNameLength();
     }
 
     public void checkCarNameLength() {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
+        if (this.name.length() > 5) {
+            throw new NullPointerException("자동차 이름은 5자를 초과할 수 없다.");
         }
     }
 

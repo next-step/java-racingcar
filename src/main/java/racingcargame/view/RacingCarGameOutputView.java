@@ -3,6 +3,7 @@ package racingcargame.view;
 import racingcargame.model.RacingCar;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingCarGameOutputView {
     public void outputRound(List<RacingCar> cars) {
@@ -22,5 +23,11 @@ public class RacingCarGameOutputView {
 
     public void outputWinners(String winners) {
         System.out.println("최종 우승자:" + winners);
+    }
+
+    public static void main(String[] args) {
+        Scanner c = new Scanner(System.in);
+        String name = c.nextLine();
+        System.out.println(name);
     }
 }

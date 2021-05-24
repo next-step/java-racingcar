@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcargame.model.RacingCar;
 import racingcargame.controller.RacingCarGameController;
 import racingcargame.view.RacingCarGameOutputView;
@@ -7,8 +9,7 @@ import racingcargame.view.RacingCarGameOutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarGameTest {
     @DisplayName(value = "게임을 시도할 횟수는 0 이상이어야 한다.")
@@ -31,13 +32,11 @@ public class RacingCarGameTest {
         assertThat(controller.splitBySeparator(carNamesString)).isEqualTo(carNames);
     }
 
-    @DisplayName(value = "자동차 이름이 5자를 초과하면 IllegalArgumentException을 발생시킨다.")
+    @DisplayName(value = "자동차 이름이 5자를 초과하면 NullPointerException을 발생시킨다.")
     @Test
     void should_have_Less_than_5_letters() {
-        RacingCar racingCar = new RacingCar("pobipobi");
-
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            racingCar.checkCarNameLength();
+        assertThatNullPointerException().isThrownBy(() -> {
+            RacingCar racingCar = new RacingCar("pobipobi");
         });
     }
 
@@ -46,7 +45,8 @@ public class RacingCarGameTest {
     void make_RacingCars() {
         RacingCarGameController racingCarController = new RacingCarGameController();
         String[] carNames = {"pobi", "woni", "jun"};
-        List<RacingCar> racingCars = racingCarController.makeRacingCarsWithCarNames(carNames);
+        List<RacingCar> racingCars =new ArrayList<>();
+        racingCarController.makeRacingCarsWithCarNames(racingCars, carNames);
 
         assertThat(racingCars.get(0).getName()).isEqualTo("pobi");
     }
@@ -74,10 +74,11 @@ public class RacingCarGameTest {
     }
 
     @DisplayName(value = "무작위값이 4 미만일 경우 자동차는 전진하지 않는다.")
-    @Test
-    void should_not_move_When_randomNumber_is_less_than_4() {
-        RacingCar racingCar = new RacingCar("pobi,woni,jun");
-        racingCar.move(3);
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void should_not_move_When_randomNumber_is_less_than_4(int input) {
+        RacingCar racingCar = new RacingCar("pobi");
+        racingCar.move(input);
         assertThat(racingCar.getStep()).isEqualTo(0);
     }
 
