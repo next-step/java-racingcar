@@ -19,7 +19,7 @@ public class Game {
         String count = input.inputTryCount();
 
         Drive drive = new Drive(cars);
-        List<RaceResult> raceResults = drive.carRacing(Integer.valueOf(count));
+        RaceResults raceResults = drive.carRacing(Integer.valueOf(count));
         Output output = new Output(cars, raceResults);
 
         output.printRaceResult();

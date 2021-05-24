@@ -46,8 +46,8 @@ class DriveTest {
 
         Drive drive = new Drive(cars);
 
-        List<RaceResult> raceResults = drive.carRacing(count);
+        RaceResults raceResults = drive.carRacing(count);
 
-        assertThat(raceResults.size()).isEqualTo(expected);
+        assertThat(raceResults.getRaceResults().size()).isEqualTo(expected);
     }
 }

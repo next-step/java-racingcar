@@ -1,6 +1,5 @@
 package car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Drive {
@@ -28,17 +27,17 @@ public class Drive {
         car.changeKm(randomNumber);
     }
 
-    List<RaceResult> carRacing(int count) {
+    RaceResults carRacing(int count) {
         int nowCount = 0;
 
-        List<RaceResult> raceResults = new ArrayList<>();
+        RaceResults raceResults = new RaceResults();
 
         while (nowCount < count) {
             List<Car> drivedCars = carDrive();
 
             RaceResult raceResult = new RaceResult(drivedCars);
 
-            raceResults.add(raceResult);
+            raceResults.addRaceResult(raceResult);
 
             nowCount++;
         }
