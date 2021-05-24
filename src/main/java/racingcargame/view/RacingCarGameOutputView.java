@@ -3,7 +3,6 @@ package racingcargame.view;
 import racingcargame.model.RacingCar;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCarGameOutputView {
     public void outputRound(List<RacingCar> cars) {
