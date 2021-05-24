@@ -21,6 +21,10 @@ public class Car {
         }
     }
 
+    public boolean compareWinnerScore(int winnerScore){
+        return location == winnerScore;
+    }
+
     public String getName() {
         return name;
     }

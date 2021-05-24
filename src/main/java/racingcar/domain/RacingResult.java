@@ -10,7 +10,7 @@ public class RacingResult {
         int winnerScore = selectWinnerScore(carInfo);
 
         return carInfo.stream()
-                .filter(car -> car.getLocationInfo() == winnerScore)
+                .filter(car -> car.compareWinnerScore(winnerScore))
                 .map(car -> new Winner(car.getName()))
                 .collect(Collectors.toList());
     }
