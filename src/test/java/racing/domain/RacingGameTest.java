@@ -24,7 +24,7 @@ public class RacingGameTest {
     void findSingleWinnerTest() {
         //given
         List<Car> cars = Arrays.asList(
-                new Car("aaa", ()->true, 0),
+                new Car("aaa", () -> true, 0),
                 new Car("bbb", moveConditionStrategy, 0),
                 new Car("ccc", moveConditionStrategy, 0),
                 new Car("ddd", moveConditionStrategy, 0),
