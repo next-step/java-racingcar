@@ -16,14 +16,13 @@ public class RacingCarGameController {
 
     public void startGame() {
         String carNames = inputView.inputCarNames();
+        String[] splitCarNames = splitBySeparator(carNames);
+        List<RacingCar> racingCars = new ArrayList<>();
+        makeRacingCarsWithCarNames(racingCars, splitCarNames);
 
         int roundNumber = inputView.inputRoundNumber();
         checkRoundNumber(roundNumber);
 
-        String[] splitCarNames = splitBySeparator(carNames);
-
-        List<RacingCar> racingCars = new ArrayList<>();
-        makeRacingCarsWithCarNames(racingCars, splitCarNames);
         runGame(racingCars, roundNumber);
 
         int maxScore = getMaxScore(racingCars);
