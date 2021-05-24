@@ -42,7 +42,7 @@ public class RacingTest {
         Players players = new Players(cars);
         PrintResult printResult = new PrintResult();
 
-        assertThat(printResult.printWinner(players)).containsExactly("tt","ss");
+        assertThat(printResult.setWinner(players)).containsExactly("tt","ss");
     }
 
     @DisplayName("자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.")

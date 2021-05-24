@@ -7,7 +7,7 @@ public class Racing {
     private PrintResult printResult;
     private int numberOfPlay;
     private RandomGenerator randomGenerator;
-    
+
     public Racing(String carNames, int numberOfPlay) {
         this.randomGenerator = new RandomGenerator();
         this.printResult = new PrintResult();
@@ -24,15 +24,13 @@ public class Racing {
             game();
         }
 
-        return printResult.printWinner(players);
+        return printResult.setWinner(players);
     }
 
     public void game() {
         for (Car car : players.getCars()) {
             car.moved(randomGenerator.create());
-            System.out.print(car.getName() + " : ");
-            printResult.printTrace(car);
-            System.out.println();
+            printResult.printPlayers(car);
         }
     }
 }

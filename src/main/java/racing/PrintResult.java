@@ -5,11 +5,30 @@ import java.util.Collections;
 import java.util.List;
 
 public class PrintResult {
-    public void checkSame(List<String> winners, Car toCompare, Car winner) {
-        if (winner.getMovingRange() == toCompare.getMovingRange() && toCompare != winner) {
-            winners.add(toCompare.getName());
-            System.out.print(", " + toCompare.getName());
+    private boolean checkSame(Car toCompare, int winnerPosition) {
+        if(toCompare.getMovingRange() == winnerPosition) {
+            return true;
         }
+        return false;
+    }
+
+    public List<String> setWinner(Players players) {
+        Collections.sort(players.getCars());
+        List<String> winner = new ArrayList<>();
+
+        for(Car car: players.getCars()) {
+            if(checkSame(car, players.getCars().get(0).getMovingRange())) {
+                winner.add(car.getName());
+            }
+        }
+
+        return  winner;
+    }
+
+    public void printPlayers(Car aCar) {
+        System.out.print(aCar.getName() + " : ");
+        printTrace(aCar);
+        System.out.println();
     }
 
     public void printTrace(Car aCar) {
@@ -18,19 +37,14 @@ public class PrintResult {
         }
     }
 
-    public List<String> printWinner(Players players) {
+    public void printWinner(List<String> winners) {
 
-        Collections.sort(players.getCars());
-        List<String> winner = new ArrayList<>();
+        System.out.print("최종 우승자: ");
 
-        winner.add(players.getCars().get(0).getName());
-        System.out.print("최종 우승자: " + winner.get(0));
-
-        for (Car car : players.getCars()) {
-            checkSame(winner, car, players.getCars().get(0));
+        for (String winner: winners) {
+            System.out.print(winner + " ");
         }
         System.out.println();
 
-        return winner;
     }
 }
