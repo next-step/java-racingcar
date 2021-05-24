@@ -21,7 +21,7 @@ public class RacingGame {
 
     private void moveCars() {
         for (Car car : this.cars) {
-            car.isMove();
+            car.move();
         }
     }
 
@@ -42,7 +42,7 @@ public class RacingGame {
         int winnerCondition = 0;
 
         for (Car car : this.cars) {
-            winnerCondition = Math.max(winnerCondition, car.getMoveCount());
+            winnerCondition = Math.max(winnerCondition, car.getLastPosition());
         }
 
         return winnerCondition;

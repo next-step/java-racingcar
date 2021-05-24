@@ -18,13 +18,13 @@ public class RacingController {
         List<Car> cars = makeCars(carNames, moveConditionStrategy);
 
         RacingGame racingGame = new RacingGame(cars);
-        int racingRound = Input.makeGameRepeatCount();
-        racingGame.repeatMoveCars(racingRound);
+        int repeatCount = Input.makeGameRepeatCount();
+        racingGame.repeatMoveCars(repeatCount);
 
         printResultMessage();
 
         cars = racingGame.getCars();
-        printResultByMovedLog(cars, racingRound);
+        printResultByMovedLog(cars, repeatCount);
 
         printWinMessage(racingGame.findWinner());
     }
