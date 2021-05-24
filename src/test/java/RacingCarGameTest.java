@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcargame.model.RacingCar;
 import racingcargame.controller.RacingCarGameController;
@@ -9,6 +10,7 @@ import racingcargame.view.RacingCarGameOutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -42,10 +44,23 @@ public class RacingCarGameTest {
         assertThat(controller.splitBySeparator(carNamesString)).isEqualTo(carNames);
     }
 
-    @DisplayName(value = "자동차 이름이 5자를 초과하면 NullPointerException을 발생시킨다.")
+    static Stream<String> blankStrings() {
+        return Stream.of("", null);
+    }
+
+    @DisplayName(value = "자동차 이름이 빈 문자열이거나 null 이라면 IllegalArgumentException 을 발생시킨다.")
+    @ParameterizedTest
+    @MethodSource("blankStrings")
+    void should_have_name(final String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            RacingCar racingCar = new RacingCar(input);
+        });
+    }
+
+    @DisplayName(value = "자동차 이름이 5자를 초과하면 IllegalArgumentException 을 발생시킨다.")
     @Test
     void should_have_Less_than_5_letters() {
-        assertThatNullPointerException().isThrownBy(() -> {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
             RacingCar racingCar = new RacingCar("pobipobi");
         });
     }
