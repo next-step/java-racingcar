@@ -20,8 +20,8 @@ public class Application {
         List<Car> carList = carFactory.createCar(carNames);
         RacingGame racingGame = new RacingGame(carList);
         racingGame.runWholeRound(round);
-
-        List<String> winner = racingGame.getWinner();
+        DicideWinner dicideWinner = new DicideWinner(carList);
+        List<String> winner = dicideWinner.getWinner();
         System.out.println("최종 우승자: " + winner);
     }
 
