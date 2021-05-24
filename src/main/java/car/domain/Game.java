@@ -1,13 +1,11 @@
 package car.domain;
 
-import car.view.Input;
 import car.view.Output;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
-    private static final int MINIMUM_CAR_AMOUNT = 2;
-    private Input input = new Input();
     private Cut cut = new Cut();
 
     public void excute(List<Car> cars, String count) {
