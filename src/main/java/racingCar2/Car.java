@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar2;
 
 public class Car {
     private static final int LIMIT_VALUE = 5;
