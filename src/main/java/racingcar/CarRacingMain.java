@@ -12,7 +12,7 @@ public class CarRacingMain {
 
         String carName = scanner.nextLine();
         String[] carNames = carName.replaceAll(" ","").split(",");
-        racingCarGame.Decision(carNames);
+        racingCarGame.player(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = scanner.nextInt();

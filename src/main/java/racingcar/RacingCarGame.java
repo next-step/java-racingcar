@@ -6,21 +6,21 @@ import java.util.Random;
 
 public class RacingCarGame {
     List<RacingCar> racingCars = new ArrayList<>();
+    public final int moveNumber = 9;
+    public Random random = new Random();
 
-    public List<RacingCar> Decision(String[] carNames) {
-        for (int i = 0; i < carNames.length; i++) {
-            RacingCar racingCar = new RacingCar(carNames[i]);
+    public void player(String[] carNames) {
+        for (String carName : carNames) {
+            RacingCar racingCar = new RacingCar(carName);
             racingCars.add(racingCar);
         }
-        return racingCars;
     }
 
     public int createRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(9);
+        return random.nextInt(moveNumber);
     }
 
-    public String dashBar(int position) {
+    public String advance(int position) {
         String bar = "";
         for (int i = 0; i < position; i++) {
             bar = bar.concat("-");
@@ -33,7 +33,7 @@ public class RacingCarGame {
             for (RacingCar car : racingCars) {
                 int number = createRandomNumber();
                 car.moveOrNot(number);
-                System.out.println(car.getCarName() + " : " + this.dashBar(car.getPosition()));
+                System.out.println(car.getCarName() + " : " + this.advance(car.getPosition()));
             }
             System.out.println();
         }
