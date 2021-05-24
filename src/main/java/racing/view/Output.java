@@ -25,25 +25,20 @@ public class Output {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printResultByMovedLog(List<Car> carList, int wholeRound) {
+    public static void printResultByMovedLog(List<Car> cars, int wholeRound) {
         StringBuilder resultStringBuilder = new StringBuilder();
 
         for (int round = 0; round < wholeRound; round++) {
-            resultStringBuilder.append(makeDistanceBuilderByRound(carList, round));
+            resultStringBuilder.append(makeDistanceBuilderByRound(cars, round));
             resultStringBuilder.append(System.lineSeparator());
         }
         System.out.print(resultStringBuilder);
     }
 
-    public static void printWinMessage(List<Car> winnerList) {
-        System.out.print(WIN_MESSAGE);
-        System.out.println(winnerList.stream().map(Car::getName).collect(Collectors.joining(", ")));
-    }
-
-    private static StringBuilder makeDistanceBuilderByRound(List<Car> carList, int round) {
+    private static StringBuilder makeDistanceBuilderByRound(List<Car> cars, int round) {
         StringBuilder distanceStringBuilder = new StringBuilder();
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             distanceStringBuilder.append(car.getName()).append(DISTANCE_SEPARATOR);
             StringBuilder loadBuilder = repeatAppendLoad(getMoveCountByRound(car, round));
             distanceStringBuilder.append(loadBuilder).append(System.lineSeparator());
@@ -69,5 +64,10 @@ public class Output {
 
     private static int getMoveCountByRound(Car car, int round) {
         return car.getMovedLogByRound(round);
+    }
+
+    public static void printWinMessage(List<Car> winners) {
+        System.out.print(WIN_MESSAGE);
+        System.out.println(winners.stream().map(Car::getName).collect(Collectors.joining(", ")));
     }
 }
