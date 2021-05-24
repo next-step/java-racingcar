@@ -1,5 +1,9 @@
 package racing.racing;
 
+import racing.racingrebuild.Car;
+import racing.racingrebuild.NewRacing;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -12,14 +16,10 @@ public class main {
         System.out.println("===========================");
         System.out.println("시도할 횟수는 몇 회인가요?");
         count = Integer.valueOf(in.nextLine());
-//        System.out.println("name : " + name);
-        RacingCar racingcar = new RacingCar();
 
-
-        String[] result = racingcar.raceStart(name ,count);
-
-        racingcar.winner(result);
-
+        NewRacing newRacing = new NewRacing();
+        ArrayList<Car> car = newRacing.raceStart(name,count);
+        newRacing.winner(car);
     }
 
 
