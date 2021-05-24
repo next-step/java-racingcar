@@ -22,7 +22,7 @@ public class CarTest {
     public void move() {
         Car car = new Car("aaa", () -> true);
         car.move();
-        assertThat(car.getLastPosition()).isEqualTo(1);
+        assertThat(car.getFinalDistance()).isEqualTo(1);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class CarTest {
     public void notMove() {
         Car car = new Car("aaa", () -> false);
         car.move();
-        assertThat(car.getLastPosition()).isEqualTo(0);
+        assertThat(car.getFinalDistance()).isEqualTo(0);
     }
 
     @ParameterizedTest

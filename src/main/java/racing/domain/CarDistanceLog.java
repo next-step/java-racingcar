@@ -3,21 +3,21 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovedLog {
+public class CarDistanceLog {
     private static final int INITIAL_DISTANCE = 0;
 
     private int finalDistance = INITIAL_DISTANCE;
-    private List<Integer> movedLogs = new ArrayList<>();
+    private List<Integer> distanceLogs = new ArrayList<>();
 
-    public MovedLog() {
+    public CarDistanceLog() {
     }
 
-    public MovedLog(int finalDistance) {
+    public CarDistanceLog(int finalDistance) {
         this.finalDistance = finalDistance;
     }
 
     public void addMovedLog(int distance) {
-        this.movedLogs.add(finalDistance + distance);
+        this.distanceLogs.add(finalDistance + distance);
         this.finalDistance += distance;
     }
 
@@ -29,7 +29,7 @@ public class MovedLog {
         return this.finalDistance;
     }
 
-    public int getPositionByRound(int round) {
-        return this.movedLogs.get(round);
+    public int getDistanceByRound(int round) {
+        return this.distanceLogs.get(round);
     }
 }

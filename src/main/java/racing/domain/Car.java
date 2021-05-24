@@ -6,19 +6,19 @@ public class Car {
     private static final int NOT_MOVED_DISTANCE = 0;
 
     private String name;
-    private MovedLog movedLog;
+    private CarDistanceLog distanceLog;
     private MoveConditionStrategy moveConditionStrategy;
 
     public Car(String name, MoveConditionStrategy moveConditionStrategy) {
         validateLength(name);
         this.name = name;
         this.moveConditionStrategy = moveConditionStrategy;
-        this.movedLog = new MovedLog();
+        this.distanceLog = new CarDistanceLog();
     }
 
     public Car(String name, MoveConditionStrategy moveConditionStrategy, int initDistance) {
         this(name, moveConditionStrategy);
-        this.movedLog = new MovedLog(initDistance);
+        this.distanceLog = new CarDistanceLog(initDistance);
     }
 
     private void validateLength(String name) {
@@ -30,15 +30,15 @@ public class Car {
     public void move() {
         boolean canMove = moveConditionStrategy.isMovable();
         if (canMove) {
-            movedLog.addMovedLog(MOVED_DISTANCE);
+            distanceLog.addMovedLog(MOVED_DISTANCE);
         }
         if (!canMove) {
-            movedLog.addMovedLog(NOT_MOVED_DISTANCE);
+            distanceLog.addMovedLog(NOT_MOVED_DISTANCE);
         }
     }
 
     public boolean isWinner(int winnerPosition) {
-        return movedLog.isWinner(winnerPosition);
+        return distanceLog.isWinner(winnerPosition);
     }
 
     public String getName() {
@@ -46,10 +46,10 @@ public class Car {
     }
 
     public int getMovedLogByRound(int round) {
-        return movedLog.getPositionByRound(round);
+        return distanceLog.getDistanceByRound(round);
     }
 
-    public int getLastPosition() {
-        return movedLog.getFinalDistance();
+    public int getFinalDistance() {
+        return distanceLog.getFinalDistance();
     }
 }
