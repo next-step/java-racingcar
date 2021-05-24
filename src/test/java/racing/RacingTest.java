@@ -49,7 +49,9 @@ public class RacingTest {
     @Test
     void printTest()  {
         Racing racing = new Racing("tt,ss", 3);
+        PrintResult printResult = new PrintResult();
 
-        assertThat(racing.race()).containsAnyOf("tt","ss");
+        racing.race();
+        assertThat(racing.getWinners()).containsAnyOf("tt","ss");
     }
 }

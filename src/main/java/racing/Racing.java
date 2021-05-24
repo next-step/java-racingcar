@@ -7,6 +7,7 @@ public class Racing {
     private PrintResult printResult;
     private int numberOfPlay;
     private RandomGenerator randomGenerator;
+    private List<String> winners;
 
     public Racing(String carNames, int numberOfPlay) {
         this.randomGenerator = new RandomGenerator();
@@ -19,12 +20,13 @@ public class Racing {
         this.players = new Players(cars);
     }
 
-    public List<String> race() {
+    public void race() {
         for (int play = 0; play < numberOfPlay; play++) {
             game();
         }
 
-        return printResult.setWinner(players);
+        winners = printResult.setWinner(players);
+        printResult.printWinner(winners);
     }
 
     public void game() {
@@ -32,5 +34,9 @@ public class Racing {
             car.moved(randomGenerator.create());
             printResult.printPlayers(car);
         }
+    }
+
+    public List<String> getWinners() {
+        return winners;
     }
 }
