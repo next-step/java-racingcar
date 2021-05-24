@@ -14,17 +14,19 @@ public class RacingCarGameController {
     static Random random = new Random();
     static final String SEPARATOR = ",";
 
-    public void startGame() {
-        List<RacingCar> racingCars = getRacingCars();
+    public static void main(String[] args) {
+        RacingCarGameController controller = new RacingCarGameController();
 
-        int roundNumber = getRoundNumber();
+        List<RacingCar> racingCars = controller.getRacingCars();
 
-        runGame(racingCars, roundNumber);
+        int roundNumber = controller.getRoundNumber();
 
-        getResult(racingCars);
+        controller.runGame(racingCars, roundNumber);
+
+        controller.getResult(racingCars);
     }
 
-    private List<RacingCar> getRacingCars() {
+    public List<RacingCar> getRacingCars() {
         String carNames = inputView.inputCarNames();
         String[] splitCarNames = splitBySeparator(carNames);
         List<RacingCar> racingCars = new ArrayList<>();
@@ -43,7 +45,7 @@ public class RacingCarGameController {
         }
     }
 
-    private int getRoundNumber() {
+    public int getRoundNumber() {
         int roundNumber = inputView.inputRoundNumber();
         checkRoundNumber(roundNumber);
         return roundNumber;
@@ -70,7 +72,7 @@ public class RacingCarGameController {
         }
     }
 
-    private void getResult(List<RacingCar> racingCars) {
+    public void getResult(List<RacingCar> racingCars) {
         int maxScore = getMaxScore(racingCars);
         String winners = getWinners(racingCars, maxScore);
         outputView.outputWinners(winners);
