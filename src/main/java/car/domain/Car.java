@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 public class Car {
     private static final int MINIMUM_NUMBER = 4;
@@ -19,7 +19,7 @@ public class Car {
         return this.name;
     }
 
-    void changeKm(int randomNumber) {
+    public void changeKm(int randomNumber) {
         if (randomNumber >= MINIMUM_NUMBER) {
             km = km + 1;
         }

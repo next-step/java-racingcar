@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 public class Cut {
     private static final int NAME_MAX_SIZE = 5;

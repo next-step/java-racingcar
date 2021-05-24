@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class RaceResults {
         return raceResults.get(lastIndex);
     }
 
-    StringBuilder getWinners() {
+    public StringBuilder getWinners() {
         StringBuilder winners = new StringBuilder();
         int maxKm = 0;
 

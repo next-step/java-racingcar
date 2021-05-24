@@ -1,4 +1,7 @@
-package car;
+package car.domain;
+
+import car.view.Input;
+import car.view.Output;
 
 import java.util.*;
 
@@ -7,17 +10,7 @@ public class Game {
     private Input input = new Input();
     private Cut cut = new Cut();
 
-    void excute() {
-        String[] carInputs = input.inputCarNames();
-
-        List<Car> cars = createCars(carInputs);
-
-        if (cars.size() < MINIMUM_CAR_AMOUNT) {
-            return;
-        }
-
-        String count = input.inputTryCount();
-
+    public void excute(List<Car> cars, String count) {
         Drive drive = new Drive(cars);
         RaceResults raceResults = drive.carRacing(Integer.valueOf(count));
         Output output = new Output(cars, raceResults);
@@ -25,7 +18,7 @@ public class Game {
         output.printRaceResult();
     }
 
-    List<Car> createCars(String[] carInputs) {
+    public List<Car> createCars(String[] carInputs) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : carInputs) {

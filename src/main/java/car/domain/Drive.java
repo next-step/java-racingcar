@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 import java.util.List;
 
@@ -23,11 +23,11 @@ public class Drive {
         return copiedCars;
     }
 
-    void moveOrStopCar(int randomNumber, Car car) {
+    public void moveOrStopCar(int randomNumber, Car car) {
         car.changeKm(randomNumber);
     }
 
-    RaceResults carRacing(int count) {
+    public RaceResults carRacing(int count) {
         int nowCount = 0;
 
         RaceResults raceResults = new RaceResults();

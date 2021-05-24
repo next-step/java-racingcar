@@ -1,4 +1,4 @@
-package car;
+package car.domain;
 
 import java.util.List;
 
