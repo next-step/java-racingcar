@@ -27,10 +27,10 @@ public class RacingGame {
 
     public List<Car> findWinner() {
         List<Car> winnerCars = new ArrayList<>();
-        int winnerCondition = findWinnerCondition();
+        int winnerPosition = findWinnePosition();
 
         for (Car car : this.cars) {
-            if (car.isWinner(winnerCondition)) {
+            if (car.isWinner(winnerPosition)) {
                 winnerCars.add(car);
             }
         }
@@ -38,14 +38,14 @@ public class RacingGame {
         return winnerCars;
     }
 
-    private int findWinnerCondition() {
-        int winnerCondition = 0;
+    private int findWinnePosition() {
+        int winnerPosition = 0;
 
         for (Car car : this.cars) {
-            winnerCondition = Math.max(winnerCondition, car.getLastPosition());
+            winnerPosition = Math.max(winnerPosition, car.getLastPosition());
         }
 
-        return winnerCondition;
+        return winnerPosition;
     }
 
     public List<Car> getCars() {

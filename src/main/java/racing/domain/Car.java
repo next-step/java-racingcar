@@ -17,7 +17,7 @@ public class Car {
     }
 
     public Car(String name, MoveConditionStrategy moveConditionStrategy, int initDistance) {
-        this(name,moveConditionStrategy);
+        this(name, moveConditionStrategy);
         this.movedLog = new MovedLog(initDistance);
     }
 
@@ -37,8 +37,8 @@ public class Car {
         }
     }
 
-    public boolean isWinner(int winnerCount) {
-        return movedLog.isWinner(winnerCount);
+    public boolean isWinner(int winnerPosition) {
+        return movedLog.isWinner(winnerPosition);
     }
 
     public String getName() {

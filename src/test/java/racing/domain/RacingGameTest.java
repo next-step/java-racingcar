@@ -16,7 +16,7 @@ public class RacingGameTest {
 
     @BeforeEach
     public void beforeEach() {
-        moveConditionStrategy = new OverFourStrategy();
+        moveConditionStrategy = new NumberIsBiggerStrategy();
     }
 
     @DisplayName("첫번째 자동차인 aaa가 움직이면 우승차는 aaa 1대")

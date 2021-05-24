@@ -8,12 +8,12 @@ public class Input {
     private static Scanner scanner = new Scanner(System.in);
 
     public static String makeCarNames() {
-        printStartMessage();
+        Output.printStartMessage();
         return scanner.nextLine();
     }
 
     public static int makeGameRepeatCount() {
-        printInputCountMessage();
+        Output.printInputCountMessage();
         return scanner.nextInt();
     }
 }

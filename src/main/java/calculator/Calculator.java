@@ -89,7 +89,7 @@ public class Calculator {
         List<String> mathExpressions = new ArrayList<>();
         String integerOfMathExpression = MAKE_EMPTY;
 
-        for (String mathExpression: splitMathExpression) {
+        for (String mathExpression : splitMathExpression) {
             if (isMathSymbol(mathExpression)) {
                 mathExpressions.add(integerOfMathExpression);
                 mathExpressions.add(mathExpression);

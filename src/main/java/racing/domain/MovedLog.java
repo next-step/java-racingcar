@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovedLog {
-    private static final int INITIAL_NUMBER = 0;
+    private static final int INITIAL_DISTANCE = 0;
 
-    private int finalDistance = INITIAL_NUMBER;
+    private int finalDistance = INITIAL_DISTANCE;
     private List<Integer> movedLogs = new ArrayList<>();
 
     public MovedLog() {
@@ -21,8 +21,8 @@ public class MovedLog {
         this.finalDistance += distance;
     }
 
-    public boolean isWinner(int winnerCount) {
-        return this.finalDistance == winnerCount;
+    public boolean isWinner(int winnerPosition) {
+        return this.finalDistance == winnerPosition;
     }
 
     public int getFinalDistance() {

@@ -2,7 +2,7 @@ package racing;
 
 import racing.domain.Car;
 import racing.domain.MoveConditionStrategy;
-import racing.domain.OverFourStrategy;
+import racing.domain.NumberIsBiggerStrategy;
 import racing.domain.RacingGame;
 import racing.view.Input;
 import racing.view.Output;
@@ -17,7 +17,7 @@ public class RacingController {
         String carName = Input.makeCarNames();
         String[] carNames = carName.split(SEPARATOR);
 
-        MoveConditionStrategy moveConditionStrategy = new OverFourStrategy();
+        MoveConditionStrategy moveConditionStrategy = new NumberIsBiggerStrategy();
         List<Car> cars = makeCars(carNames, moveConditionStrategy);
 
         RacingGame racingGame = new RacingGame(cars);

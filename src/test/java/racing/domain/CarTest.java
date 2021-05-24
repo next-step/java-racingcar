@@ -14,7 +14,7 @@ public class CarTest {
 
     @BeforeEach
     public void beforeEach() {
-        moveConditionStrategy = new OverFourStrategy();
+        moveConditionStrategy = new NumberIsBiggerStrategy();
     }
 
     @Test
