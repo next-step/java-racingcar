@@ -10,6 +10,7 @@ class RacingGameTest {
         car.run(false);
         Assertions.assertThat(car.getLocation()).isEqualTo(0);
     }
+
     @Test
     void mustMove() {
         Car car = new Car("pobi");

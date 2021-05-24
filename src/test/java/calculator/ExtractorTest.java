@@ -1,5 +1,6 @@
 package calculator;
 
+import org.assertj.core.api.iterable.Extractor;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
