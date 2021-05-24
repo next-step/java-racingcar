@@ -4,22 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovedLog {
-    private int moveCount;
+    private static final int INITIAL_NUMBER = 0;
+
     private List<Integer> movedLogs = new ArrayList<>();
 
-    public void addMoveCount() {
-        this.moveCount++;
+    public void addMovedLog(int distance) {
+        this.movedLogs.add(getLastPosition() + distance);
     }
 
-    public void addMovedLog() {
-        this.movedLogs.add(this.moveCount);
+    public int getLastPosition() {
+        int lastPosition = INITIAL_NUMBER;
+
+        for (int i = 0; i < movedLogs.size(); i++) {
+            lastPosition = Math.max(lastPosition, movedLogs.get(i));
+        }
+
+        return lastPosition;
     }
 
-    public int getMoveCount() {
-        return moveCount;
-    }
-
-    public List<Integer> getMovedLogs() {
-        return movedLogs;
+    public int getPositionByRound(int round) {
+        return movedLogs.get(round);
     }
 }

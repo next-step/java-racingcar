@@ -2,6 +2,9 @@ package racing.domain;
 
 public class Car {
     private static final int VALIDATED_NAME_LENGTH = 5;
+    private static final int MOVED_DISTANCE = 1;
+    private static final int NOT_MOVED_DISTANCE = 0;
+
     private String name;
     private MovedLog movedLog;
     private MoveConditionStrategy moveConditionStrategy;
@@ -19,29 +22,29 @@ public class Car {
         }
     }
 
-    public boolean isMove() {
-        if (moveConditionStrategy.isMovable()) {
-            movedLog.addMoveCount();
-            movedLog.addMovedLog();
-            return true;
+    public void move() {
+        boolean canMove = moveConditionStrategy.isMovable();
+        if (canMove) {
+            movedLog.addMovedLog(MOVED_DISTANCE);
         }
-        movedLog.addMovedLog();
-        return false;
+        if (!canMove) {
+            movedLog.addMovedLog(NOT_MOVED_DISTANCE);
+        }
     }
 
     public boolean isWinner(int winnerCount) {
-        return movedLog.getMoveCount() == winnerCount;
+        return movedLog.getLastPosition() == winnerCount;
     }
 
     public String getName() {
         return name;
     }
 
-    public MovedLog getMovedLog() {
-        return movedLog;
+    public int getMovedLogByRound(int round) {
+        return movedLog.getPositionByRound(round);
     }
 
-    public int getMoveCount() {
-        return movedLog.getMoveCount();
+    public int getLastPosition() {
+        return movedLog.getLastPosition();
     }
 }

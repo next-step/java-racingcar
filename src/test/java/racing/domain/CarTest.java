@@ -19,35 +19,19 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차가 움직였으면 거리가 증가")
-    public void moveTest() {
-        //given
-        Car car = new Car("aaa", moveConditionStrategy);
-        int moveCount = car.getMoveCount();
-
-        //when
-        boolean isMove = car.isMove();
-
-        //then
-        if (isMove) {
-            assertThat(car.getMoveCount()).isEqualTo(moveCount + 1);
-        }
+    @DisplayName("자동차가 이동")
+    public void move() {
+        Car car = new Car("aaa", () -> true);
+        car.move();
+        assertThat(car.getLastPosition()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("자동차가 움직였으면 거리가 증가")
-    public void notMoveTest() {
-        //given
-        Car car = new Car("aaa", moveConditionStrategy);
-        int moveCount = car.getMoveCount();
-
-        //when
-        boolean isMove = car.isMove();
-
-        //then
-        if (!isMove) {
-            assertThat(car.getMoveCount()).isEqualTo(moveCount);
-        }
+    @DisplayName("자동차가 이동하지 않음")
+    public void notMove() {
+        Car car = new Car("aaa", () -> false);
+        car.move();
+        assertThat(car.getLastPosition()).isEqualTo(0);
     }
 
     @ParameterizedTest

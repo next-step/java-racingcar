@@ -1,7 +1,6 @@
 package racing.domain;
 
+@FunctionalInterface
 public interface MoveConditionStrategy {
-    int getMoveChangeCondition();
-
     boolean isMovable();
 }
