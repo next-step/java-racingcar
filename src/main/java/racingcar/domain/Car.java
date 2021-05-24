@@ -2,7 +2,6 @@ package racingcar.domain;
 
 public class Car {
     private RacingRandom racingRandom = new RacingRandom();
-
     private String name;
     private int location;
 

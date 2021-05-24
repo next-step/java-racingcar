@@ -6,7 +6,6 @@ import java.util.List;
 public class RacingGame {
 
     private Util util = new Util();
-
     private List<Car> carInfo = new ArrayList<>();
 
     public List<Car> splitString(String input) {
