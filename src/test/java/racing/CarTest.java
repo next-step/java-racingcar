@@ -33,7 +33,7 @@ public class CarTest {
         Car car = new Car("ss");
         Car newCar = new Car("tt");
 
-        car.moved();
+        car.moved(4);
 
         List<Integer> movedRanges = Arrays.asList(car.getMovingRange(), newCar.getMovingRange());
 

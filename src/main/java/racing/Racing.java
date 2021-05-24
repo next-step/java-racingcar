@@ -7,9 +7,7 @@ public class Racing {
     private PrintResult printResult;
     private int numberOfPlay;
     private RandomGenerator randomGenerator;
-
-    private final int MOVE_BASE = 4;
-
+    
     public Racing(String carNames, int numberOfPlay) {
         this.randomGenerator = new RandomGenerator();
         this.printResult = new PrintResult();
@@ -21,28 +19,20 @@ public class Racing {
         this.players = new Players(cars);
     }
 
-    public List race() {
+    public List<String> race() {
         for (int play = 0; play < numberOfPlay; play++) {
-            random();
+            game();
         }
 
-        List<String> winner = printResult.printWinner(players);
-
-        return winner;
+        return printResult.printWinner(players);
     }
 
-    public void random() {
+    public void game() {
         for (Car car : players.getCars()) {
-            moved(randomGenerator.create(), car);
+            car.moved(randomGenerator.create());
             System.out.print(car.getName() + " : ");
             printResult.printTrace(car);
             System.out.println();
-        }
-    }
-
-    public void moved(int randomNumber, Car car) {
-        if (randomNumber >= MOVE_BASE) {
-            car.moved();
         }
     }
 }

@@ -10,15 +10,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
-    private List<Car> cars;
-    private Racing racing;
 
     @BeforeEach
     void set() {
-        cars = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
         cars.add(new Car("chloe"));
         cars.add(new Car("tt"));
-        racing = new Racing(cars);
+        Racing racing = new Racing(cars);
     }
 
     @DisplayName("자동차 이름은 쉼표(,)를 기준으로 구분한다.")
@@ -47,18 +45,11 @@ public class RacingTest {
         assertThat(printResult.printWinner(players)).containsExactly("tt","ss");
     }
 
-    @DisplayName("전진하는 조건은 무작위 값이 4 이상일 경우이다.")
-    @Test
-    void movedTest() {
-        racing.moved(4, cars.get(0));
-        assertThat(cars.get(0).getMovingRange()).isEqualTo(1);
-    }
-
     @DisplayName("자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.")
     @Test
     void printTest()  {
-        Racing racing2 = new Racing("tt,ss", 3);
+        Racing racing = new Racing("tt,ss", 3);
 
-        assertThat(racing2.race()).containsAnyOf("tt","ss");
+        assertThat(racing.race()).containsAnyOf("tt","ss");
     }
 }

@@ -1,7 +1,10 @@
 package racing;
 
 public class Car implements Comparable<Car> {
-    private final int MAXIMUM_NAME_LENGTH = 5;
+    private static final int START_POSITION = 0;
+    private static final int MAXIMUM_NAME_LENGTH = 5;
+    private static final int MOVE_BASE = 4;
+
     private String name;
     private int movingRange;
 
@@ -14,7 +17,7 @@ public class Car implements Comparable<Car> {
     }
 
     public Car(String name) {
-        this(name, 0);
+        this(name, START_POSITION);
     }
 
     public String getName() {
@@ -25,8 +28,10 @@ public class Car implements Comparable<Car> {
         return movingRange;
     }
 
-    public void moved() {
-        movingRange += 1;
+    public void moved(int randomNumber) {
+        if(randomNumber >= MOVE_BASE) {
+            movingRange += 1;
+        }
     }
 
     @Override
