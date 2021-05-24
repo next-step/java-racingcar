@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class CarRacing {
-    public final int moveNumber = 9;
-    public Random random = new Random();
+    Random random = new Random();
+    private final int moveNumber = 9;
 
     public int createRandomNumber() {
         return random.nextInt(moveNumber);
@@ -22,7 +22,7 @@ public class CarRacing {
 
     public void startRacing(int count, Cars cars) {
         for (int i = 0; i < count; i++) {
-            for (Car car : cars.getRacingCars()) {
+            for (Car car : cars.getCars()) {
                 int number = createRandomNumber();
                 car.moveOrNot(number);
                 System.out.println(car.getCarName() + " : " + this.advance(car.getPosition()));
@@ -30,23 +30,22 @@ public class CarRacing {
             System.out.println();
         }
     }
+    public int maxPosition(List<Car> cars){
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = car.maxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
 
     public List<String> victor(List<Car> cars) {
-        int maxPosition = 0;
-
-        for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
-        }
-
+        int max = maxPosition(cars);
         List<String> winner = new ArrayList<>();
         for (Car car : cars) {
-            if (car.maxPosition(maxPosition)) {
+            if (car.maxCheck(max)) {
                 winner.add(car.getCarName());
             }
         }
         return winner;
     }
-
 }

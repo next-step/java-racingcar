@@ -16,11 +16,11 @@ public class CarRacingMain {
         Cars cars = carCreator.player(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = scanner.nextInt();
+        Count count = new Count(scanner.nextInt());
 
         CarRacing carRacing = new CarRacing();
-        carRacing.startRacing(count, cars);
-        System.out.println("최종 우승자: " + String.join(",", carRacing.victor(cars.getRacingCars())));
+        carRacing.startRacing(count.getTryNumber(), cars);
+        System.out.println("최종 우승자: " + String.join(",", carRacing.victor(cars.getCars())));
     }
 }
 
