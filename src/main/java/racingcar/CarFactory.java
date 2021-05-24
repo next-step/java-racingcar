@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import racingcar.Car;
 public class CarFactory {
     public List<Car> createCar(String[] carList) {
         List<Car> carArrayList = new ArrayList<>();
