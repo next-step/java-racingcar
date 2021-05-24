@@ -21,11 +21,15 @@ public class MovedLog {
         this.finalDistance += distance;
     }
 
+    public boolean isWinner(int winnerCount) {
+        return this.finalDistance == winnerCount;
+    }
+
     public int getFinalDistance() {
         return this.finalDistance;
     }
 
     public int getPositionByRound(int round) {
-        return movedLogs.get(round);
+        return this.movedLogs.get(round);
     }
 }
