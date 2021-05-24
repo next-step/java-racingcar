@@ -12,21 +12,21 @@ public class RacingcarTest {
     @ValueSource(strings = {"fight, gw, hw"})
     void nameCheckTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new RacingCar(input);
+            new Car(input);
         });
     }
 
     @Test
     void moveTest() {
-        RacingCar racingCar= new RacingCar("fg");
-        racingCar.moveOrNot(4);
-        assertThat(racingCar.getPosition()).isEqualTo(1);
+        Car car = new Car("fg");
+        car.moveOrNot(4);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     void stopTest() {
-        RacingCar racingCar= new RacingCar("fg");
-        racingCar.moveOrNot(3);
-        assertThat(racingCar.getPosition()).isEqualTo(0);
+        Car car = new Car("fg");
+        car.moveOrNot(3);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

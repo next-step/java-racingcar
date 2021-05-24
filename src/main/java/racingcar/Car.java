@@ -1,11 +1,11 @@
 package racingcar;
 
-public class RacingCar {
+public class Car {
     private final String carName;
     private int position;
     private final int MOVE_NUMBER = 4;
 
-    public RacingCar(String carName) {
+    public Car(String carName) {
         CheckName(carName);
 
         this.carName = carName;

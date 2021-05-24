@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarCreator {
-    private List<RacingCar> racingCars;
+    private List<Car> cars;
 
-    public RacingCars player(String[] carNames) {
-        racingCars = new ArrayList<>();
+    public Cars player(String[] carNames) {
+        cars = new ArrayList<>();
         for (String carName : carNames) {
-            RacingCar racingCar = new RacingCar(carName);
-            racingCars.add(racingCar);
+            Car car = new Car(carName);
+            cars.add(car);
         }
-        return new RacingCars(racingCars);
+        return new Cars(cars);
     }
 }
