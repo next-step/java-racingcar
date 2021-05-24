@@ -14,13 +14,13 @@ public class RacingCarController {
         RacingGame racingGame = new RacingGame();
         RacingResult racingResult = new RacingResult();
 
-        String carName = racingCarView.inputCarInfo();
-        List<Car> carInfo = racingGame.splitString(carName);
+        String carNames = racingCarView.inputCarInfo();
+        List<Car> carInfos = racingGame.splitString(carNames);
 
         racingCarView.inputCycle();
-        racingCarView.showResult(carInfo);
+        racingCarView.showResult(carInfos);
 
-        List<Winner> winnerNames = racingResult.selectWinners(carInfo);
+        List<Winner> winnerNames = racingResult.selectWinners(carInfos);
         racingCarView.showWinner(winnerNames);
     }
 }
