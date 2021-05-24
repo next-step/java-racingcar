@@ -5,10 +5,6 @@ import java.util.Random;
 public class MovingCondition {
     private static final int RANDOMNUMBER = 4;
 
-    public MovingCondition() {
-
-    }
-
     public boolean isMovable() {
         return new Random().nextInt(10) >= RANDOMNUMBER;
     }
