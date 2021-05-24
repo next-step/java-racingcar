@@ -4,6 +4,7 @@ public class Car implements Comparable<Car> {
     private String name;
     private int movingRange;
     static final int MOVE_COUNT = 1;
+    static final int MOVE_NUMBER = 4;
 
     public Car(String name, int movingRange) {
         this.name = name;
@@ -22,8 +23,11 @@ public class Car implements Comparable<Car> {
         return movingRange;
     }
 
-    public Car moved() {
-        return new Car(name, movingRange + MOVE_COUNT);
+    public Car getRandomMove(int random, Car car) {
+        if (random > MOVE_NUMBER) {
+            return new Car(name, movingRange + MOVE_COUNT);
+        }
+        return car;
     }
 
     @Override

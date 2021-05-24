@@ -9,30 +9,31 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
     RacingGame racing;
-
+Cars cars = new Cars();
     @BeforeEach
     void set(){
         racing = new RacingGame("1,2,3", 7);
+
     }
 
     @DisplayName("차 이름 리스트에 담기")
     @Test
     void getCarName() {
-        assertThat(racing.getCarName("chloe,chloe")).containsExactly("chloe", "chloe");
+        assertThat(cars.initCarName("chloe,chloe")).containsExactly("chloe", "chloe");
     }
 
     @DisplayName("차 이름 5자가 넘으면 예외처리")
     @Test
     void throwIllegalArgumentException() {
-        assertThatThrownBy(() -> racing.getCarName("chloe,chloeJ")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> cars.initCarName("chloe,chloeJ")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("랜덤값에 따른 차 이동 여부 확인")
     @Test
     void getRandomMoveTest() {
         Car  car = new Car("1");
-    racing.getRandomMove(8,car);
+    car.getRandomMove(8,car);
 
-    assertThat(racing.getRandomMove(8,car).getMovingRange()).isEqualTo(1);
+    assertThat(car.getRandomMove(8,car).getMovingRange()).isEqualTo(1);
     }
 }
