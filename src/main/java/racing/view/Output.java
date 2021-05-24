@@ -25,11 +25,6 @@ public class Output {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printWinMessage(List<Car> winnerList) {
-        System.out.print(WIN_MESSAGE);
-        System.out.println(winnerList.stream().map(Car::getName).collect(Collectors.joining(", ")));
-    }
-
     public static void printResultByMovedLog(List<Car> carList, int wholeRound) {
         StringBuilder resultStringBuilder = new StringBuilder();
 
@@ -38,6 +33,11 @@ public class Output {
             resultStringBuilder.append(System.lineSeparator());
         }
         System.out.print(resultStringBuilder);
+    }
+
+    public static void printWinMessage(List<Car> winnerList) {
+        System.out.print(WIN_MESSAGE);
+        System.out.println(winnerList.stream().map(Car::getName).collect(Collectors.joining(", ")));
     }
 
     private static StringBuilder makeDistanceBuilderByRound(List<Car> carList, int round) {
