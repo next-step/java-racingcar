@@ -1,10 +1,11 @@
 package racing.domain;
 
 public class Car implements Comparable<Car> {
+    private static final int MOVE_COUNT = 1;
+    private static final int MOVE_NUMBER = 4;
+
     private String name;
     private int movingRange;
-    static final int MOVE_COUNT = 1;
-    static final int MOVE_NUMBER = 4;
 
     public Car(String name, int movingRange) {
         this.name = name;

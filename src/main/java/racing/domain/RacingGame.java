@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    static final int MAX_RANDOM = 10;
-    static Random random = new Random();
+    private static final int MAX_RANDOM = 10;
+
+    private Random random = new Random();
     private RoundCars roundCars = new RoundCars();
     private Cars cars;
+
     private int tryNo;
 
     public RacingGame(String carNames, int tryNo) {
@@ -25,7 +27,6 @@ public class RacingGame {
         this.cars = newCars;
     }
 
-
     public RoundCars getRoundCars() {
         return roundCars;
     }
@@ -35,8 +36,8 @@ public class RacingGame {
         return tryNo < 0;
     }
 
-    public List<String> getWinners() {
+    public Winners getWinners() {
         Winners winners = new Winners(cars);
-        return winners.winners();
+        return winners;
     }
 }

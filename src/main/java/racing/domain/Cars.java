@@ -5,11 +5,10 @@ import java.util.List;
 
 
 public class Cars {
+    private static final int NAME_LENGTH = 5;
+    private static final String CAR_NAME_SPLIT = ",";
+
     private List<Car> cars;
-
-
-    static final int NAME_LENGTH = 5;
-    static final String CAR_NAME_SPLIT = ",";
 
     public Cars() {
         this.cars = new ArrayList<>();

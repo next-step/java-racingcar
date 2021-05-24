@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -26,7 +25,7 @@ class CarTest {
     @DisplayName("랜덤값에 따른 차 이동 여부 확인")
     @Test
     void getRandomMoveTest() {
-        Car  car = new Car("1");
+        Car car = new Car("1");
         car.getRandomMove(8);
 
         assertThat(car.getRandomMove(8).getMovingRange()).isEqualTo(1);

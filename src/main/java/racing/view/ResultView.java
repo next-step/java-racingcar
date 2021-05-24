@@ -3,6 +3,7 @@ package racing.view;
 import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.RoundCars;
+import racing.domain.Winners;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,9 +29,9 @@ public class ResultView {
         }
     }
 
-    public void printWinners(List<String> winners) {
+    public void printWinners(Winners winners) {
         System.out.print("최종 우승자: ");
-        String winner = winners.stream()
+        String winner = winners.winners().stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
         System.out.println(winner);
