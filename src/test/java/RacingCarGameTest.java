@@ -57,11 +57,23 @@ public class RacingCarGameTest {
         });
     }
 
+    @DisplayName(value = "자동차 이름은 5자 이내이다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"jun", "pobi", "alice"})
+    void should_have_less_than_5_letters(String input) {
+        try {
+            RacingCar racingCar = new RacingCar(input);
+        } catch (Exception e) {
+            fail("예외가 발생하지 않았다.");
+        }
+    }
+
     @DisplayName(value = "자동차 이름이 5자를 초과하면 IllegalArgumentException 을 발생시킨다.")
-    @Test
-    void should_have_Less_than_5_letters() {
+    @ParameterizedTest
+    @ValueSource(strings = {"junjun", "rainbow", "pobipobi"})
+    void should_not_have_much_than_5_letters(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            RacingCar racingCar = new RacingCar("pobipobi");
+            RacingCar racingCar = new RacingCar(input);
         });
     }
 
