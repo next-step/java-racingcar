@@ -10,7 +10,4 @@ public class RoundCars extends ArrayList<Cars> {
         return roundCars;
     }
 
-    public void setRound(Cars cars) {
-        this.roundCars.add(cars);
-    }
 }

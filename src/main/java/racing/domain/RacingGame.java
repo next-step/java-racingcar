@@ -21,7 +21,7 @@ public class RacingGame {
         for (Car car : cars.getCars()) {
             newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM), car));
         }
-        roundCars.setRound(newCars);
+        roundCars.add(newCars);
         this.cars = newCars;
     }
 

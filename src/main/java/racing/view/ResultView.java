@@ -11,7 +11,7 @@ public class ResultView {
 
 
     public void printCars(RoundCars roundCars) {
-        for (Cars cars : roundCars.getRoundCars()) {
+        for (Cars cars : roundCars) {
             for (Car car : cars.getCars()) {
                 System.out.print(car.getName() + " : ");
                 int movingRange = car.getMovingRange();
