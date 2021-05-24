@@ -9,10 +9,16 @@ public class RacingResult {
     public List<Winner> selectWinners(List<Car> carInfo) {
         int winnerScore = selectWinnerScore(carInfo);
 
-        return carInfo.stream().filter(car -> car.getLocationInfo() == winnerScore).map(car -> new Winner(car.getName())).collect(Collectors.toList());
+        return carInfo.stream()
+                .filter(car -> car.getLocationInfo() == winnerScore)
+                .map(car -> new Winner(car.getName()))
+                .collect(Collectors.toList());
     }
 
     private int selectWinnerScore(List<Car> carInfo) {
-        return carInfo.stream().max(Comparator.comparingInt(Car::getLocationInfo)).get().getLocationInfo();
+        return carInfo.stream()
+                .max(Comparator.comparingInt(Car::getLocationInfo))
+                .get()
+                .getLocationInfo();
     }
 }
