@@ -10,11 +10,10 @@ public class Drive {
         this.cars = cars;
     }
 
-    List<Car> carDrive() {
+    public List<Car> carDrive(MovableStrategy movableStrategy) {
         for (int i = 0; i < cars.size(); i++) {
-            int randomNumber = (int) (Math.random() * MAXIMUM_RANDOM_NUMBER);
 
-            moveOrStopCar(randomNumber, cars.get(i));
+            moveOrStopCar(movableStrategy, cars.get(i));
         }
 
         Copy copy = new Copy(cars);
@@ -23,8 +22,8 @@ public class Drive {
         return copiedCars;
     }
 
-    public void moveOrStopCar(int randomNumber, Car car) {
-        car.changeKm(randomNumber);
+    public void moveOrStopCar(MovableStrategy movableStrategy, Car car) {
+        car.changeKm(movableStrategy.getRandomNo());
     }
 
     public RaceResults carRacing(int count) {
@@ -33,7 +32,7 @@ public class Drive {
         RaceResults raceResults = new RaceResults();
 
         while (nowCount < count) {
-            List<Car> drivedCars = carDrive();
+            List<Car> drivedCars = carDrive(() -> (int) (Math.random() * MAXIMUM_RANDOM_NUMBER));
 
             RaceResult raceResult = new RaceResult(drivedCars);
 
