@@ -29,7 +29,7 @@ public class Car implements Comparable<Car> {
     }
 
     public void moved(int randomNumber) {
-        if(randomNumber >= MOVE_BASE) {
+        if (randomNumber >= MOVE_BASE) {
             movingRange += 1;
         }
     }

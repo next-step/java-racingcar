@@ -27,7 +27,7 @@ public class RacingTest {
 
         List<String> splitNames = players.getCarNames();
 
-        assertThat(splitNames).containsExactly("tt","ss");
+        assertThat(splitNames).containsExactly("tt", "ss");
     }
 
     @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.")
@@ -35,23 +35,23 @@ public class RacingTest {
     void winner() {
         List<Car> cars = new ArrayList<>();
 
-        cars.add(new Car("chloe",4));
-        cars.add(new Car("tt",5));
-        cars.add(new Car("ss",5));
+        cars.add(new Car("chloe", 4));
+        cars.add(new Car("tt", 5));
+        cars.add(new Car("ss", 5));
 
         Players players = new Players(cars);
         PrintResult printResult = new PrintResult();
 
-        assertThat(printResult.setWinner(players)).containsExactly("tt","ss");
+        assertThat(printResult.setWinner(players)).containsExactly("tt", "ss");
     }
 
     @DisplayName("자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.")
     @Test
-    void printTest()  {
+    void printTest() {
         Racing racing = new Racing("tt,ss", 3);
         PrintResult printResult = new PrintResult();
 
         racing.race();
-        assertThat(racing.getWinners()).containsAnyOf("tt","ss");
+        assertThat(racing.getWinners()).containsAnyOf("tt", "ss");
     }
 }

@@ -31,6 +31,7 @@ public class StringTest {
         actual2 = actual2.replaceAll("\\)", "");
         assertThat(actual2).isEqualTo("1,2");
     }
+
     @Test
     void test3() {
 

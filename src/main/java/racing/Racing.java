@@ -1,6 +1,6 @@
 package racing;
 
-import java.util.*;
+import java.util.List;
 
 public class Racing {
     private Players players;

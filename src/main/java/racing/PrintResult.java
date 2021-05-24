@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PrintResult {
     private boolean checkSame(Car toCompare, int winnerPosition) {
-        if(toCompare.getMovingRange() == winnerPosition) {
+        if (toCompare.getMovingRange() == winnerPosition) {
             return true;
         }
         return false;
@@ -16,13 +16,13 @@ public class PrintResult {
         Collections.sort(players.getCars());
         List<String> winner = new ArrayList<>();
 
-        for(Car car: players.getCars()) {
-            if(checkSame(car, players.getCars().get(0).getMovingRange())) {
+        for (Car car : players.getCars()) {
+            if (checkSame(car, players.getCars().get(0).getMovingRange())) {
                 winner.add(car.getName());
             }
         }
 
-        return  winner;
+        return winner;
     }
 
     public void printPlayers(Car aCar) {
@@ -41,7 +41,7 @@ public class PrintResult {
 
         System.out.print("최종 우승자: ");
 
-        for (String winner: winners) {
+        for (String winner : winners) {
             System.out.print(winner + " ");
         }
         System.out.println();
