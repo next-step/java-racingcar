@@ -12,21 +12,19 @@ public class Drive {
     }
 
     List<Car> carDrive() {
-        Copy copy = new Copy(cars);
-
-        List<Car> copiedCars = copy.createCopiedCars();
-
         for (int i = 0; i < cars.size(); i++) {
             int randomNumber = (int) (Math.random() * MAXIMUM_RANDOM_NUMBER);
 
-            moveOrStopCar(randomNumber, copiedCars.get(i), cars.get(i));
+            moveOrStopCar(randomNumber, cars.get(i));
         }
+
+        Copy copy = new Copy(cars);
+        List<Car> copiedCars = copy.createCopiedCars();
 
         return copiedCars;
     }
 
-    void moveOrStopCar(int randomNumber, Car copiedCar, Car car) {
-        copiedCar.changeKm(randomNumber);
+    void moveOrStopCar(int randomNumber, Car car) {
         car.changeKm(randomNumber);
     }
 

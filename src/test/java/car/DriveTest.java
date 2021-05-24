@@ -12,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DriveTest {
     private List<Car> cars;
-    private List<Car> copiedCars;
 
     @BeforeEach
     void setUp() {
@@ -21,9 +20,6 @@ class DriveTest {
         cars.add(new Car("java", 1));
         cars.add(new Car("php", 2));
         cars.add(new Car("python", 3));
-
-        Copy copy = new Copy(cars);
-        copiedCars = copy.createCopiedCars();
     }
 
     @ParameterizedTest
@@ -34,7 +30,10 @@ class DriveTest {
         int km = Integer.valueOf(value3);
 
         Drive drive = new Drive(cars);
-        drive.moveOrStopCar(randomNumber, copiedCars.get(index), cars.get(index));
+        drive.moveOrStopCar(randomNumber, cars.get(index));
+
+        Copy copy = new Copy(cars);
+        List<Car> copiedCars = copy.createCopiedCars();
 
         assertThat(copiedCars.get(index).getKm()).isEqualTo(km);
     }
