@@ -24,10 +24,4 @@ public class RacingCarGameOutputView {
     public void outputWinners(String winners) {
         System.out.println("최종 우승자:" + winners);
     }
-
-    public static void main(String[] args) {
-        Scanner c = new Scanner(System.in);
-        String name = c.nextLine();
-        System.out.println(name);
-    }
 }
