@@ -9,6 +9,11 @@ public class Car {
         this.location = location;
     }
 
+    public Car(String name) {
+        this.name = name;
+        this.location = 0;
+    }
+
     public void move() {
         RacingRandom racingRandom = new RacingRandom();
         if (racingRandom.isMove()) {

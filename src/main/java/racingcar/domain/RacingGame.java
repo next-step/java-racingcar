@@ -13,7 +13,7 @@ public class RacingGame {
         String[] result = input.split(",");
         for (int i = 0; i < result.length; i++) {
             if (util.invalidedName(result[i])) {
-                Car car = new Car(result[i], 0);
+                Car car = new Car(result[i]);
                 carInfo.add(car);
             }
         }
