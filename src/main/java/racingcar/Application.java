@@ -18,8 +18,8 @@ public class Application {
         String[] carNames = nameOfCar.split(",");
         CarFactory carFactory = new CarFactory();
         List<Car> carList = carFactory.createCar(carNames);
-        RacingGame racingGame = new RacingGame(carList, round);
-        racingGame.runWholeRound();
+        RacingGame racingGame = new RacingGame(carList);
+        racingGame.runWholeRound(round);
 
         List<String> winner = racingGame.getWinner();
         System.out.println("최종 우승자: " + winner);

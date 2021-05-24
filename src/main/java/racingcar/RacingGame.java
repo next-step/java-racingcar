@@ -5,14 +5,12 @@ import java.util.List;
 
 public class RacingGame {
     private List<Car> carList;
-    private int racingCount;
 
     public RacingGame() {
     }
 
-    public RacingGame(List<Car> carList, int racingCount) {
+    public RacingGame(List<Car> carList) {
         this.carList = carList;
-        this.racingCount = racingCount;
     }
 
     public List<String> getWinner() {
@@ -36,7 +34,7 @@ public class RacingGame {
         return max;
     }
 
-    public void runWholeRound() {
+    public void runWholeRound(int racingCount) {
         for (int i = 0; i < racingCount; i++) {
             runOneRound();
             System.out.println();
