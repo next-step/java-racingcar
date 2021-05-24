@@ -12,9 +12,13 @@ public class Car {
         this.carName = carName;
     }
 
-    private void validateCarName(String carName) {
-        if (carName.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
+    private void validateCarName(String carNameStr) {
+        String[] carNames = carNameStr.split(",");
+
+        for(String carName : carNames){
+            if (carName.trim().length() > MAX_NAME_LENGTH) {
+                throw new IllegalArgumentException("자동차 이름이 5자 초과입니다");
+            }
         }
     }
 

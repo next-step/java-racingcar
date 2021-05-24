@@ -21,7 +21,7 @@ public class RacingGameMain {
         List<Car> carList = new ArrayList<>();
 
         for (String carName : carNameArr) {
-            Car car = new Car(carName);
+            Car car = new Car(carName.trim());
             carList.add(car);
         }
 
@@ -33,9 +33,7 @@ public class RacingGameMain {
             System.out.println();
         }
 
-        int maxPosition = winnerExtraction.getMaxPosition(carList);
-
-        List<String> winners = winnerExtraction.getWinners(carList, maxPosition);
+        List<String> winners = winnerExtraction.getWinners(carList);
 
         String winnerString = String.join(WIN_CAR_OUTPUT_DELIMITER, winners);
         System.out.println("최종 우승자 : " + winnerString);

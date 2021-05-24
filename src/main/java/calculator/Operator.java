@@ -30,7 +30,7 @@ public enum Operator {
         return operation.applyAsInt(num1, num2);
     }
 
-    public Operator createOperator(String input){
+    public static Operator createOperator(String input){
         for (Operator operator : Operator.values()) {
             if (operator.isSymbol(input)) {
                 return operator;

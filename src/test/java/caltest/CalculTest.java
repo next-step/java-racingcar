@@ -52,7 +52,7 @@ public class CalculTest {
     @Test
     void inputNullOrEmptyTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.calculateUserInput();
+            Calculator calculator = new Calculator("");
         });
     }
 
@@ -60,7 +60,7 @@ public class CalculTest {
     @Test
     void checkPermittedOperator() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.calculateUserInput();
+            Operator.createOperator("2 ( 3");
         });
     }
 
