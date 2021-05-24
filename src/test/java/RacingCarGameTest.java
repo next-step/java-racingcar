@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,21 +13,30 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarGameTest {
+    private RacingCarGameController controller;
+    private RacingCarGameOutputView outputView;
+    private RacingCar racingCar ;
+
+    @BeforeEach
+    void setUp() {
+        controller = new RacingCarGameController();
+        outputView = new RacingCarGameOutputView();
+        racingCar = new RacingCar("pobi");
+    }
+
     @DisplayName(value = "게임을 시도할 횟수는 0 이상이어야 한다.")
     @Test
     void when_RoundNumber_is_smaller_than_0_throw_IllegalArgumentException() {
-        RacingCarGameController racingCarController = new RacingCarGameController();
         int roundNumber = -1;
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            racingCarController.checkRoundNumber(roundNumber);
+            controller.checkRoundNumber(roundNumber);
         });
     }
 
     @DisplayName(value = "자동차 이름은 쉼표(,)를 기준으로 구분한다.")
     @Test
     void should_split_With_comma() {
-        RacingCarGameController controller = new RacingCarGameController();
         String carNamesString = "pobi,woni,jun";
         String[] carNames = {"pobi", "woni", "jun"};
         assertThat(controller.splitBySeparator(carNamesString)).isEqualTo(carNames);
@@ -43,10 +53,9 @@ public class RacingCarGameTest {
     @DisplayName(value = "자동차들의 이름을 입력하면 각각의 자동차 객체를 만든다.")
     @Test
     void make_RacingCars() {
-        RacingCarGameController racingCarController = new RacingCarGameController();
         String[] carNames = {"pobi", "woni", "jun"};
-        List<RacingCar> racingCars =new ArrayList<>();
-        racingCarController.makeRacingCarsWithCarNames(racingCars, carNames);
+        List<RacingCar> racingCars = new ArrayList<>();
+        controller.makeRacingCarsWithCarNames(racingCars, carNames);
 
         assertThat(racingCars.get(0).getName()).isEqualTo("pobi");
     }
@@ -54,22 +63,20 @@ public class RacingCarGameTest {
     @DisplayName(value = "자동차의 이름을 가져온다.")
     @Test
     void take_carName() {
-        RacingCar racingCar = new RacingCar("pobi");
         assertThat(racingCar.getName()).isEqualTo("pobi");
     }
 
     @DisplayName(value = "자동차의 step을 가져온다.")
     @Test
     void take_carStep() {
-        RacingCar racingCar = new RacingCar("pobi");
         assertThat(racingCar.getStep()).isEqualTo(0);
     }
 
     @DisplayName(value = "무작위값이 4 이상일 경우 자동차는 전진한다.")
-    @Test
-    void should_move_When_randomNumber_is_equal_or_greater_than_4() {
-        RacingCar racingCar = new RacingCar("pobi");
-        racingCar.move(4);
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void should_move_When_randomNumber_is_equal_or_greater_than_4(int input) {
+        racingCar.move(input);
         assertThat(racingCar.getStep()).isEqualTo(1);
     }
 
@@ -77,7 +84,6 @@ public class RacingCarGameTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void should_not_move_When_randomNumber_is_less_than_4(int input) {
-        RacingCar racingCar = new RacingCar("pobi");
         racingCar.move(input);
         assertThat(racingCar.getStep()).isEqualTo(0);
     }
@@ -85,36 +91,29 @@ public class RacingCarGameTest {
     @DisplayName(value = "step에 맞춰 '-'를 출력한다.")
     @Test
     void should_be_same_As_the_number_of_step() {
-        RacingCarGameOutputView racingCarGameOutputView = new RacingCarGameOutputView();
-        assertThat(racingCarGameOutputView.showStep(5)).isEqualTo("-----");
+        assertThat(outputView.showStep(5)).isEqualTo("-----");
     }
 
     @DisplayName(value = "최고점수를 구한다.")
     @Test
     void get_maxScore() {
-        RacingCarGameController racingCarController = new RacingCarGameController();
-
-        RacingCar racingCar = new RacingCar("pobi");
         racingCar.move(5);
 
         List<RacingCar> racingCars = new ArrayList<>();
         racingCars.add(racingCar);
 
-        assertThat(racingCarController.getMaxScore(racingCars)).isEqualTo(1);
+        assertThat(controller.getMaxScore(racingCars)).isEqualTo(1);
     }
 
     @DisplayName(value = "우승자를 구한다.")
     @Test
     void get_winners() {
-        RacingCarGameController racingCarController = new RacingCarGameController();
-
-        RacingCar racingCar = new RacingCar("pobi");
         racingCar.move(5);
 
         List<RacingCar> racingCars = new ArrayList<>();
         racingCars.add(racingCar);
 
-        assertThat(racingCarController.getWinners(racingCars, 1)).isEqualTo(" pobi");
+        assertThat(controller.getWinners(racingCars, 1)).isEqualTo(" pobi");
 
     }
 }
