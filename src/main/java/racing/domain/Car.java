@@ -16,6 +16,13 @@ public class Car {
         this.movedLog = new MovedLog();
     }
 
+    public Car(String name, MoveConditionStrategy moveConditionStrategy, int initDistance) {
+        validateLength(name);
+        this.name = name;
+        this.moveConditionStrategy = moveConditionStrategy;
+        this.movedLog = new MovedLog(initDistance);
+    }
+
     private void validateLength(String name) {
         if (name.length() > VALIDATED_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 5자 이내로 입력하세요.");
@@ -33,7 +40,7 @@ public class Car {
     }
 
     public boolean isWinner(int winnerCount) {
-        return movedLog.getLastPosition() == winnerCount;
+        return movedLog.getFinalDistance() == winnerCount;
     }
 
     public String getName() {
@@ -45,6 +52,6 @@ public class Car {
     }
 
     public int getLastPosition() {
-        return movedLog.getLastPosition();
+        return movedLog.getFinalDistance();
     }
 }

@@ -1,5 +1,6 @@
 package racing.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,24 +12,25 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 
 public class RacingGameTest {
+    MoveConditionStrategy moveConditionStrategy;
+
+    @BeforeEach
+    public void beforeEach() {
+        moveConditionStrategy = new OverFourStrategy();
+    }
+
     @DisplayName("첫번째 자동차인 aaa가 움직이면 우승차는 aaa 1대")
     @Test
     public void findSingleWinnerTest() {
         //given
         List<Car> cars = Arrays.asList(
-                new Car("aaa", () -> true),
-                new Car("bbb", () -> false),
-                new Car("ccc", () -> false),
-                new Car("ddd", () -> false),
-                new Car("eee", () -> false));
-
+                new Car("aaa", moveConditionStrategy, 1),
+                new Car("bbb", moveConditionStrategy, 0),
+                new Car("ccc", moveConditionStrategy, 0),
+                new Car("ddd", moveConditionStrategy, 0),
+                new Car("eee", moveConditionStrategy, 0)
+        );
         RacingGame racingGame = new RacingGame(cars);
-
-        racingGame.getCars().get(0).move();
-        racingGame.getCars().get(1).move();
-        racingGame.getCars().get(2).move();
-        racingGame.getCars().get(3).move();
-        racingGame.getCars().get(4).move();
 
         //when
         List<Car> winnerList = racingGame.findWinner();
@@ -45,25 +47,18 @@ public class RacingGameTest {
     public void findWholeWinnerTest() {
         //given
         List<Car> cars = Arrays.asList(
-                new Car("aaa", () -> true),
-                new Car("bbb", () -> true),
-                new Car("ccc", () -> true),
-                new Car("ddd", () -> true),
-                new Car("eee", () -> true));
-
+                new Car("aaa", moveConditionStrategy, 2),
+                new Car("bbb", moveConditionStrategy, 2),
+                new Car("ccc", moveConditionStrategy, 2),
+                new Car("ddd", moveConditionStrategy, 2),
+                new Car("eee", moveConditionStrategy, 2)
+        );
         RacingGame racingGame = new RacingGame(cars);
-
-        racingGame.getCars().get(0).move();
-        racingGame.getCars().get(1).move();
-        racingGame.getCars().get(2).move();
-        racingGame.getCars().get(3).move();
-        racingGame.getCars().get(4).move();
 
         //when
         List<Car> winnerList = racingGame.findWinner();
 
         //then
         assertThat(winnerList.size()).isEqualTo(5);
-
     }
 }

@@ -31,9 +31,11 @@ public class RacingController {
 
     private static List<Car> makeCars(String[] carNames, MoveConditionStrategy moveConditionStrategy) {
         List<Car> cars = new ArrayList<>();
+
         for (String carName : carNames) {
             cars.add(new Car(carName, moveConditionStrategy));
         }
+
         return cars;
     }
 }

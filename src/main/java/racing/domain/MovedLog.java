@@ -6,20 +6,23 @@ import java.util.List;
 public class MovedLog {
     private static final int INITIAL_NUMBER = 0;
 
+    private int finalDistance = INITIAL_NUMBER;
     private List<Integer> movedLogs = new ArrayList<>();
 
-    public void addMovedLog(int distance) {
-        this.movedLogs.add(getLastPosition() + distance);
+    public MovedLog() {
     }
 
-    public int getLastPosition() {
-        int lastPosition = INITIAL_NUMBER;
+    public MovedLog(int finalDistance) {
+        this.finalDistance = finalDistance;
+    }
 
-        for (int i = 0; i < movedLogs.size(); i++) {
-            lastPosition = Math.max(lastPosition, movedLogs.get(i));
-        }
+    public void addMovedLog(int distance) {
+        this.movedLogs.add(finalDistance + distance);
+        this.finalDistance += distance;
+    }
 
-        return lastPosition;
+    public int getFinalDistance() {
+        return this.finalDistance;
     }
 
     public int getPositionByRound(int round) {
