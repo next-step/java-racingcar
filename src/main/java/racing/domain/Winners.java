@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Winners {
-    private List<Car> cars;
     static final int WINNER_NUMBER = 0;
 
-    List<String> winner = new ArrayList<>();
+    private Cars cars;
+    private List<String> winner = new ArrayList<>();
 
-    public Winners(List<Car> cars) {
+    public Winners(Cars cars) {
         this.cars = cars;
     }
 

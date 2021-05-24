@@ -3,9 +3,6 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class WinnersTest {
@@ -13,7 +10,7 @@ class WinnersTest {
     @DisplayName("우승자 뽑기")
     @Test
     void getWinner() {
-        List<Car> cars = new ArrayList<>();
+        Cars cars = new Cars();
 
         cars.add(new Car("1", 4));
         cars.add(new Car("2", 3));
