@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car {
-    private static int NAMEVALIDNUMBER = 6;
+    private static final int NAME_VALID_NUMBER = 5;
     private String carName;
     private int location;
 
@@ -10,7 +10,7 @@ public class Car {
     }
 
     public Car(String carName, int location) {
-        if (carName.length() >= NAMEVALIDNUMBER) {
+        if (carName.length() > NAME_VALID_NUMBER) {
             throw new IllegalArgumentException("5자이하로만 입력해주세요");
         }
         this.carName = carName;

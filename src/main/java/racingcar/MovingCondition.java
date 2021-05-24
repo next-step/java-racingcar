@@ -3,10 +3,10 @@ package racingcar;
 import java.util.Random;
 
 public class MovingCondition {
-    private static final int RANDOMNUMBER = 4;
+    private static final int BOUNDARY_NUMBER = 4;
 
     public boolean isMovable() {
-        return new Random().nextInt(10) >= RANDOMNUMBER;
+        return new Random().nextInt(10) >= BOUNDARY_NUMBER;
     }
 
 }
