@@ -3,7 +3,7 @@ package stringcalculator;
 import java.util.Scanner;
 
 public class StringCalculatorView {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public String inputString() {
         return scanner.nextLine();

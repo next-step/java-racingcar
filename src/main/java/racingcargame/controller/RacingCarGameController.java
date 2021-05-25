@@ -11,9 +11,9 @@ import java.util.List;
 public class RacingCarGameController {
     private static final String SEPARATOR = ",";
 
-    RacingCarGameInputView inputView = new RacingCarGameInputView();
-    RacingCarGameOutputView outputView = new RacingCarGameOutputView();
-    RandomNumber randomNumber = new RandomNumber();
+    private RacingCarGameInputView inputView = new RacingCarGameInputView();
+    private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
+    private RandomNumber randomNumber = new RandomNumber();
 
     public void start() {
         List<RacingCar> racingCars = createRacingCars();
