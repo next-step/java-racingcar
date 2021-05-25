@@ -2,7 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcargame.controller.RacingCarGameController;
 import racingcargame.model.RacingCar;
@@ -10,9 +10,10 @@ import racingcargame.view.RacingCarGameOutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class RacingCarGameTest {
     private RacingCarGameController controller;
@@ -26,14 +27,10 @@ public class RacingCarGameTest {
         racingCar = new RacingCar("pobi");
     }
 
-    static Stream<String> blankStrings() {
-        return Stream.of("", null);
-    }
-
     @DisplayName(value = "자동차 이름이 빈 문자열이거나 null 이라면 IllegalArgumentException 을 발생시킨다.")
     @ParameterizedTest
-    @MethodSource("blankStrings")
-    void should_have_name(final String input) {
+    @NullAndEmptySource
+    void test(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             RacingCar racingCar = new RacingCar(input);
         });
@@ -43,11 +40,7 @@ public class RacingCarGameTest {
     @ParameterizedTest
     @ValueSource(strings = {"jun", "pobi", "alice"})
     void should_have_less_than_5_letters(String input) {
-        try {
-            RacingCar racingCar = new RacingCar(input);
-        } catch (Exception e) {
-            fail("예외가 발생하지 않았다.");
-        }
+        assertDoesNotThrow(() -> new RacingCar(input));
     }
 
     @DisplayName(value = "자동차 이름이 5자를 초과하면 IllegalArgumentException 을 발생시킨다.")
