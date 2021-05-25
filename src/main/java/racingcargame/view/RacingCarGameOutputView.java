@@ -12,7 +12,7 @@ public class RacingCarGameOutputView {
         System.out.println();
     }
 
-    public String showStep(int step) {
+    private String showStep(int step) {
         StringBuilder bar = new StringBuilder();
         for (int i = 0; i < step; i++) {
             bar.append("-");

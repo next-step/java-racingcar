@@ -87,12 +87,6 @@ public class RacingCarGameTest {
         assertThat(racingCar.getStep()).isEqualTo(0);
     }
 
-    @DisplayName(value = "step에 맞춰 '-'를 출력한다.")
-    @Test
-    void should_be_same_As_the_number_of_step() {
-        assertThat(outputView.showStep(5)).isEqualTo("-----");
-    }
-
     @DisplayName(value = "최고점수를 구한다.")
     @Test
     void get_maxScore() {
