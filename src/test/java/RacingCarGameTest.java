@@ -129,7 +129,7 @@ public class RacingCarGameTest {
         List<RacingCar> racingCars = new ArrayList<>();
         racingCars.add(racingCar);
 
-        assertThat(controller.getMaxScore(racingCars)).isEqualTo(1);
+        assertThat(controller.findMaxScore(racingCars)).isEqualTo(1);
     }
 
     @DisplayName(value = "우승자를 구한다.")
@@ -140,7 +140,7 @@ public class RacingCarGameTest {
         List<RacingCar> racingCars = new ArrayList<>();
         racingCars.add(racingCar);
 
-        assertThat(controller.getWinners(racingCars, 1)).isEqualTo(" pobi");
+        assertThat(controller.findWinners(racingCars, 1)).isEqualTo(" pobi");
 
     }
 }
