@@ -4,7 +4,7 @@ public class StringCalculator {
     private static final String BLANK = " ";
 
     public void checkBlank(String input) {
-        if (input == BLANK || input == null) {
+        if (input == null || input.equals(BLANK)) {
             throw new IllegalArgumentException("입력값이 null이거나 빈 공백 문자입니다.");
         }
     }
