@@ -36,14 +36,6 @@ public class RacingCarGameTest {
         });
     }
 
-    @DisplayName(value = "자동차 이름은 쉼표(,)를 기준으로 구분한다.")
-    @Test
-    void should_split_With_comma() {
-        String carNamesString = "pobi,woni,jun";
-        String[] carNames = {"pobi", "woni", "jun"};
-        assertThat(controller.splitBySeparator(carNamesString)).isEqualTo(carNames);
-    }
-
     static Stream<String> blankStrings() {
         return Stream.of("", null);
     }
@@ -75,16 +67,6 @@ public class RacingCarGameTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             RacingCar racingCar = new RacingCar(input);
         });
-    }
-
-    @DisplayName(value = "자동차들의 이름을 입력하면 각각의 자동차 객체를 만든다.")
-    @Test
-    void make_RacingCars() {
-        String[] carNames = {"pobi", "woni", "jun"};
-        List<RacingCar> racingCars = new ArrayList<>();
-        controller.createRacingCarsWithCarNames(racingCars, carNames);
-
-        assertThat(racingCars.get(0).getName()).isEqualTo("pobi");
     }
 
     @DisplayName(value = "자동차의 이름을 가져온다.")

@@ -29,11 +29,11 @@ public class RacingCarGameController {
         return racingCars;
     }
 
-    public String[] splitBySeparator(String carNames) {
+    private String[] splitBySeparator(String carNames) {
         return carNames.split(SEPARATOR);
     }
 
-    public void createRacingCarsWithCarNames(List<RacingCar> racingCars, String[] carNames) {
+    private void createRacingCarsWithCarNames(List<RacingCar> racingCars, String[] carNames) {
         for (String carName : carNames) {
             RacingCar car = new RacingCar(carName);
             racingCars.add(car);
@@ -60,7 +60,7 @@ public class RacingCarGameController {
         }
     }
 
-    public void playRound(List<RacingCar> cars) {
+    private void playRound(List<RacingCar> cars) {
         for (RacingCar car : cars) {
             int randomNumber = random.nextInt(10);
             car.move(randomNumber);
