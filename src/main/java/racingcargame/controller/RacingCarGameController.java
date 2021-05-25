@@ -15,17 +15,17 @@ public class RacingCarGameController {
     private static final String SEPARATOR = ",";
 
     public void start() {
-        List<RacingCar> racingCars = getRacingCars();
-        int roundNumber = getRoundNumber();
-        runGame(racingCars, roundNumber);
-        getResult(racingCars);
+        List<RacingCar> racingCars = createRacingCars();
+        int roundNumber = convertRoundNumber();
+        playGame(racingCars, roundNumber);
+        makeResult(racingCars);
     }
 
-    public List<RacingCar> getRacingCars() {
+    public List<RacingCar> createRacingCars() {
         String carNames = inputView.inputCarNames();
         String[] splitCarNames = splitBySeparator(carNames);
         List<RacingCar> racingCars = new ArrayList<>();
-        makeRacingCarsWithCarNames(racingCars, splitCarNames);
+        createRacingCarsWithCarNames(racingCars, splitCarNames);
         return racingCars;
     }
 
@@ -33,14 +33,14 @@ public class RacingCarGameController {
         return carNames.split(SEPARATOR);
     }
 
-    public void makeRacingCarsWithCarNames(List<RacingCar> racingCars, String[] carNames) {
+    public void createRacingCarsWithCarNames(List<RacingCar> racingCars, String[] carNames) {
         for (String carName : carNames) {
             RacingCar car = new RacingCar(carName);
             racingCars.add(car);
         }
     }
 
-    public int getRoundNumber() {
+    public int convertRoundNumber() {
         int roundNumber = inputView.inputRoundNumber();
         checkRoundNumber(roundNumber);
         return roundNumber;
@@ -52,28 +52,28 @@ public class RacingCarGameController {
         }
     }
 
-    public void runGame(List<RacingCar> cars, int roundNumber) {
+    public void playGame(List<RacingCar> cars, int roundNumber) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
-            startRound(cars);
+            playRound(cars);
             outputView.outputRound(cars);
         }
     }
 
-    public void startRound(List<RacingCar> cars) {
+    public void playRound(List<RacingCar> cars) {
         for (RacingCar car : cars) {
             int randomNumber = random.nextInt(10);
             car.move(randomNumber);
         }
     }
 
-    public void getResult(List<RacingCar> racingCars) {
-        int maxScore = getMaxScore(racingCars);
-        String winners = getWinners(racingCars, maxScore);
+    public void makeResult(List<RacingCar> racingCars) {
+        int maxScore = findMaxScore(racingCars);
+        String winners = findWinners(racingCars, maxScore);
         outputView.outputWinners(winners);
     }
 
-    public int getMaxScore(List<RacingCar> cars) {
+    public int findMaxScore(List<RacingCar> cars) {
         int maxScore = 0;
         for (RacingCar car : cars) {
             if (maxScore < car.getStep()) {
@@ -83,7 +83,7 @@ public class RacingCarGameController {
         return maxScore;
     }
 
-    public String getWinners(List<RacingCar> cars, int maxScore) {
+    public String findWinners(List<RacingCar> cars, int maxScore) {
         String winners = "";
         for (RacingCar car : cars) {
             if (car.isWinner(maxScore)) {

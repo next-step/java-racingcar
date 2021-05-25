@@ -82,7 +82,7 @@ public class RacingCarGameTest {
     void make_RacingCars() {
         String[] carNames = {"pobi", "woni", "jun"};
         List<RacingCar> racingCars = new ArrayList<>();
-        controller.makeRacingCarsWithCarNames(racingCars, carNames);
+        controller.createRacingCarsWithCarNames(racingCars, carNames);
 
         assertThat(racingCars.get(0).getName()).isEqualTo("pobi");
     }
