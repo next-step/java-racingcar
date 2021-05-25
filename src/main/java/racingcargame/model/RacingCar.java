@@ -18,14 +18,6 @@ public class RacingCar {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getStep() {
-        return step;
-    }
-
     public void move(int randomNumber) {
         int movingCondition = 4;
         if (randomNumber >= movingCondition) {
@@ -35,5 +27,13 @@ public class RacingCar {
 
     public boolean isWinner(int maxScore) {
         return step == maxScore;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getStep() {
+        return step;
     }
 }
