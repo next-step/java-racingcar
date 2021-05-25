@@ -5,11 +5,11 @@ public class RacingCar {
     private int step = 0;
 
     public RacingCar(String name) {
+        checkCarNameLength(name);
         this.name = name;
-        checkCarNameLength();
     }
 
-    public void checkCarNameLength() {
+    public void checkCarNameLength(String name) {
         if (name == null || name.equals("")) {
             throw new IllegalArgumentException("자동차 이름을 입력하세요.");
         }
