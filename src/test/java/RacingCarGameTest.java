@@ -26,16 +26,6 @@ public class RacingCarGameTest {
         racingCar = new RacingCar("pobi");
     }
 
-    @DisplayName(value = "게임을 시도할 횟수는 0 이상이어야 한다.")
-    @Test
-    void when_RoundNumber_is_smaller_than_0_throw_IllegalArgumentException() {
-        int roundNumber = -1;
-
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            controller.checkRoundNumber(roundNumber);
-        });
-    }
-
     static Stream<String> blankStrings() {
         return Stream.of("", null);
     }

@@ -17,7 +17,7 @@ public class RacingCarGameInputView {
         return roundNumber;
     }
 
-    public void checkRoundNumber(int roundNumber) {
+    private void checkRoundNumber(int roundNumber) {
         if (roundNumber < 0) {
             throw new IllegalArgumentException("게임을 시도할 횟수는 0 이상이어야 한다.");
         }
