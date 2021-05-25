@@ -12,6 +12,14 @@ public class RacingCarGameInputView {
 
     public int inputRoundNumber() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return scanner.nextInt();
+        int roundNumber = scanner.nextInt();
+        checkRoundNumber(roundNumber);
+        return roundNumber;
+    }
+
+    public void checkRoundNumber(int roundNumber) {
+        if (roundNumber < 0) {
+            throw new IllegalArgumentException("게임을 시도할 횟수는 0 이상이어야 한다.");
+        }
     }
 }

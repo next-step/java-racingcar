@@ -16,7 +16,7 @@ public class RacingCarGameController {
 
     public void start() {
         List<RacingCar> racingCars = createRacingCars();
-        int roundNumber = convertRoundNumber();
+        int roundNumber = inputView.inputRoundNumber();
         playGame(racingCars, roundNumber);
         makeResult(racingCars);
     }
@@ -37,18 +37,6 @@ public class RacingCarGameController {
         for (String carName : carNames) {
             RacingCar car = new RacingCar(carName);
             racingCars.add(car);
-        }
-    }
-
-    public int convertRoundNumber() {
-        int roundNumber = inputView.inputRoundNumber();
-        checkRoundNumber(roundNumber);
-        return roundNumber;
-    }
-
-    public void checkRoundNumber(int roundNumber) {
-        if (roundNumber < 0) {
-            throw new IllegalArgumentException("게임을 시도할 횟수는 0 이상이어야 한다.");
         }
     }
 
