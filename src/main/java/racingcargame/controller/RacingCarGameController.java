@@ -1,18 +1,19 @@
 package racingcargame.controller;
 
+import racingcargame.model.MovingCondition;
 import racingcargame.model.RacingCar;
 import racingcargame.view.RacingCarGameInputView;
 import racingcargame.view.RacingCarGameOutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCarGameController {
-    private static RacingCarGameInputView inputView = new RacingCarGameInputView();
-    private static RacingCarGameOutputView outputView = new RacingCarGameOutputView();
-    private static Random random = new Random();
     private static final String SEPARATOR = ",";
+
+    RacingCarGameInputView inputView = new RacingCarGameInputView();
+    RacingCarGameOutputView outputView = new RacingCarGameOutputView();
+    MovingCondition movingCondition = new MovingCondition();
 
     public void start() {
         List<RacingCar> racingCars = createRacingCars();
@@ -50,8 +51,7 @@ public class RacingCarGameController {
 
     private void playRound(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            int randomNumber = random.nextInt(10);
-            car.move(randomNumber);
+            car.move(movingCondition.getNumber());
         }
     }
 
