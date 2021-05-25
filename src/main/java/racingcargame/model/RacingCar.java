@@ -1,6 +1,8 @@
 package racingcargame.model;
 
 public class RacingCar {
+    private static final int MOVING_CONDITION = 4;
+
     private final String name;
     private int step = 0;
 
@@ -19,8 +21,7 @@ public class RacingCar {
     }
 
     public void move(int randomNumber) {
-        int movingCondition = 4;
-        if (randomNumber >= movingCondition) {
+        if (randomNumber >= MOVING_CONDITION) {
             step += 1;
         }
     }
