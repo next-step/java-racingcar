@@ -1,6 +1,6 @@
 package racingcargame.controller;
 
-import racingcargame.model.MovingCondition;
+import racingcargame.model.RandomNumber;
 import racingcargame.model.RacingCar;
 import racingcargame.view.RacingCarGameInputView;
 import racingcargame.view.RacingCarGameOutputView;
@@ -13,7 +13,7 @@ public class RacingCarGameController {
 
     RacingCarGameInputView inputView = new RacingCarGameInputView();
     RacingCarGameOutputView outputView = new RacingCarGameOutputView();
-    MovingCondition movingCondition = new MovingCondition();
+    RandomNumber randomNumber = new RandomNumber();
 
     public void start() {
         List<RacingCar> racingCars = createRacingCars();
@@ -51,7 +51,7 @@ public class RacingCarGameController {
 
     private void playRound(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            car.move(movingCondition.getNumber());
+            car.move(randomNumber.getNumber());
         }
     }
 
