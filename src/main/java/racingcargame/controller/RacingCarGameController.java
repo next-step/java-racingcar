@@ -14,6 +14,13 @@ public class RacingCarGameController {
     static Random random = new Random();
     static final String SEPARATOR = ",";
 
+    public void start() {
+        List<RacingCar> racingCars = getRacingCars();
+        int roundNumber = getRoundNumber();
+        runGame(racingCars, roundNumber);
+        getResult(racingCars);
+    }
+
     public List<RacingCar> getRacingCars() {
         String carNames = inputView.inputCarNames();
         String[] splitCarNames = splitBySeparator(carNames);
