@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingCarGameController {
-    static RacingCarGameInputView inputView = new RacingCarGameInputView();
-    static RacingCarGameOutputView outputView = new RacingCarGameOutputView();
-    static Random random = new Random();
-    static final String SEPARATOR = ",";
+    private static RacingCarGameInputView inputView = new RacingCarGameInputView();
+    private static RacingCarGameOutputView outputView = new RacingCarGameOutputView();
+    private static Random random = new Random();
+    private static final String SEPARATOR = ",";
 
     public void start() {
         List<RacingCar> racingCars = getRacingCars();
