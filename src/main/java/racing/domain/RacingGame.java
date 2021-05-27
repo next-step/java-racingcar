@@ -7,7 +7,7 @@ import java.util.List;
 public class RacingGame {
     public static final String SEPARATOR = ",";
 
-    List<Car> cars;
+    private List<Car> cars;
 
     public RacingGame(List<Car> cars) {
         this.cars = cars;
@@ -27,7 +27,7 @@ public class RacingGame {
 
     public List<Car> findWinner() {
         List<Car> winnerCars = new ArrayList<>();
-        int winnerPosition = findWinnePosition();
+        int winnerPosition = findWinnerPosition();
 
         for (Car car : this.cars) {
             if (car.isWinner(winnerPosition)) {
@@ -38,7 +38,7 @@ public class RacingGame {
         return winnerCars;
     }
 
-    private int findWinnePosition() {
+    private int findWinnerPosition() {
         int winnerPosition = 0;
 
         for (Car car : this.cars) {
