@@ -25,8 +25,7 @@ public class RacingController {
         racingGame.repeatMoveCars(repeatCount);
 
         Output.printResultMessage();
-        cars = racingGame.getCars();
-        Output.printResultByMovedLog(cars, repeatCount);
+        Output.printResultByMovedLog(racingGame, repeatCount);
 
         Output.printWinMessage(racingGame.findWinner());
     }
