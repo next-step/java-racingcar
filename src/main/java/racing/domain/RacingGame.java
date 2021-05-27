@@ -42,7 +42,7 @@ public class RacingGame {
         int winnerPosition = 0;
 
         for (Car car : this.cars) {
-            winnerPosition = Math.max(winnerPosition, car.getFinalDistance());
+            winnerPosition = Math.max(winnerPosition, car.getDistance());
         }
 
         return winnerPosition;

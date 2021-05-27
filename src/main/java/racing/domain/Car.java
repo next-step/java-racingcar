@@ -6,7 +6,7 @@ public class Car {
     private static final int NOT_MOVED_DISTANCE = 0;
 
     private String name;
-    private CarDistanceLog distanceLog;
+    private DistanceLog distanceLog;
     private MoveConditionStrategy moveConditionStrategy;
 
     public Car(String name, MoveConditionStrategy moveConditionStrategy) {
@@ -17,7 +17,7 @@ public class Car {
         validateLength(name);
         this.name = name;
         this.moveConditionStrategy = moveConditionStrategy;
-        this.distanceLog = new CarDistanceLog(initDistance);
+        this.distanceLog = new DistanceLog(initDistance);
     }
 
     private void validateLength(String name) {
@@ -27,7 +27,7 @@ public class Car {
     }
 
     public void move() {
-        distanceLog.addMovedLog(createMovedDistance());
+        distanceLog.addDistanceLog(createMovedDistance());
     }
 
     private int createMovedDistance() {
@@ -51,7 +51,7 @@ public class Car {
         return distanceLog.getDistanceByRound(round);
     }
 
-    public int getFinalDistance() {
-        return distanceLog.getFinalDistance();
+    public int getDistance() {
+        return distanceLog.getDistance();
     }
 }
