@@ -1,6 +1,7 @@
 package racing.view;
 
 import racing.domain.Car;
+import racing.domain.RacingGame;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,8 +26,9 @@ public class Output {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printResultByMovedLog(List<Car> cars, int wholeRound) {
+    public static void printResultByMovedLog(RacingGame racingGame, int wholeRound) {
         StringBuilder resultStringBuilder = new StringBuilder();
+        List<Car> cars = racingGame.getCars();
 
         for (int round = 0; round < wholeRound; round++) {
             resultStringBuilder.append(makeDistanceBuilderByRound(cars, round));
@@ -68,6 +70,9 @@ public class Output {
 
     public static void printWinMessage(List<Car> winners) {
         System.out.print(WIN_MESSAGE);
-        System.out.println(winners.stream().map(Car::getName).collect(Collectors.joining(", ")));
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(winnerNames);
     }
 }

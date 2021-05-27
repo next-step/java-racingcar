@@ -1,5 +1,6 @@
 package racing.domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ public class CarTest {
     @CsvSource(value = {"aaaaa", "bbbb", "ccc"})
     @DisplayName("자동차 이름이 전부 5자 이내인 자동차 생성")
     public void makeCarTest(String name) {
-        assertThat(new Car(name, moveConditionStrategy).getName()).isEqualTo(name);
+        Assertions.assertDoesNotThrow(() -> new Car(name, moveConditionStrategy));
     }
 
     @DisplayName("자동차 이름이 5자 초과면 에러")

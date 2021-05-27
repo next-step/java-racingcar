@@ -10,14 +10,13 @@ public class Car {
     private MoveConditionStrategy moveConditionStrategy;
 
     public Car(String name, MoveConditionStrategy moveConditionStrategy) {
-        validateLength(name);
-        this.name = name;
-        this.moveConditionStrategy = moveConditionStrategy;
-        this.distanceLog = new CarDistanceLog();
+        this(name, moveConditionStrategy, 0);
     }
 
     public Car(String name, MoveConditionStrategy moveConditionStrategy, int initDistance) {
-        this(name, moveConditionStrategy);
+        validateLength(name);
+        this.name = name;
+        this.moveConditionStrategy = moveConditionStrategy;
         this.distanceLog = new CarDistanceLog(initDistance);
     }
 
@@ -28,17 +27,20 @@ public class Car {
     }
 
     public void move() {
+        distanceLog.addMovedLog(createMovedDistance());
+    }
+
+    private int createMovedDistance() {
         boolean canMove = moveConditionStrategy.isMovable();
         if (canMove) {
-            distanceLog.addMovedLog(MOVED_DISTANCE);
+            return MOVED_DISTANCE;
         }
-        if (!canMove) {
-            distanceLog.addMovedLog(NOT_MOVED_DISTANCE);
-        }
+
+        return NOT_MOVED_DISTANCE;
     }
 
     public boolean isWinner(int winnerPosition) {
-        return distanceLog.isWinner(winnerPosition);
+        return distanceLog.isSamePosition(winnerPosition);
     }
 
     public String getName() {

@@ -2,8 +2,6 @@ package racing.view;
 
 import java.util.Scanner;
 
-import static racing.view.Output.*;
-
 public class Input {
     private static Scanner scanner = new Scanner(System.in);
 

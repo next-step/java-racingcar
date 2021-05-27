@@ -21,7 +21,7 @@ public class CarDistanceLog {
         this.finalDistance += distance;
     }
 
-    public boolean isWinner(int winnerPosition) {
+    public boolean isSamePosition(int winnerPosition) {
         return this.finalDistance == winnerPosition;
     }
 
