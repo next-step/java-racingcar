@@ -68,7 +68,7 @@ jun : --
 **Ready**
 - [ ] 이름 배열 이용해서 경주용 자동차 목록 만들기 : `Ready#createCars`
 - [ ] 이름 값 이용해서 경주용 자동차 목록 만들기 : `Ready#createCars`
-- [ ] Name input값 `,`로 나누기 :  `Car#splitName`
+- [ ] Name input값 `,`로 나누기 :  `Ready#splitName`
 
 **Stadium**
 - [ ] 경기장 생성(자동차 목록, 게임 횟수 값을 가짐): `Stadium#Stadium`
