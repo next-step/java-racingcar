@@ -11,7 +11,7 @@ public class CarTest {
     @DisplayName("Car 생성자 테스트")
     public void createCarTest() {
         // given
-        Car car = new Car("tomas",0);
+        Car car = new Car("tomas");
 
         // then
         assertThat(car.getName()).isEqualTo("tomas");
