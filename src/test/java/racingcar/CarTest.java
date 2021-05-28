@@ -42,4 +42,14 @@ public class CarTest {
         //then
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("자동차 경주 중간 과정 출력 테스트")
+    public void goingProcessTest() {
+        // given
+       String process = car.goingProcess(5);
+
+        //then
+        assertThat(process).isEqualTo("-");
+    }
 }
