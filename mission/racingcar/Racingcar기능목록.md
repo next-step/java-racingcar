@@ -57,7 +57,7 @@ jun : --
 - [x] 게임 횟수값 입력 클래스 :  `Input#gameCount`
 
 **Car**
-- [ ] 자동차 생성자(name, position 값을 가짐): `Car#Car`
+- [x] 자동차 생성자(name, position 값을 가짐): `Car#Car`
 - [ ] 이름 길이 검증(길이가 5이상은 에러) :  `Car#ValidateName`
 - [ ] Nameinput값 `,`로 나누기 :  `Car#splitName`
 - [ ] 전진하기 : `Car#go`
@@ -87,6 +87,8 @@ jun : --
 ```
 
 #### test 클래스
+**Car**
+- [x] 자동차 생성자 테스트: `CarTest#createCarTest`
 
 ---
 
