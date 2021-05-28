@@ -17,10 +17,16 @@ public class Car {
     }
 
     public void go(int number) {
-        if (number >= MOVING_STANDARD_VALUE) {
+        if (movable(number)) {
             position += 1;
         }
     }
+
+    private boolean movable(int number) {
+        return number >= MOVING_STANDARD_VALUE;
+    }
+
+
 
     private void validateName(String name){
         if (name.length() > NAME_LENGTH_LIMIT_VALUE) {
