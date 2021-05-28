@@ -60,7 +60,7 @@ jun : --
 - [x] 자동차 생성자(name, position 값을 가짐): `Car#Car`
 - [x] 자동차 자기 생성자(position 초기값을 0 설정): `Car#Car`
 - [x] 이름 길이 검증(길이가 5이상은 에러) :  `Car#validateName`
-- [ ] 전진하기 : `Car#go`
+- [x] 전진하기 : `Car#go`
 - [ ] 전진하기 여부 출력하기 : `Car#goingProcess`
 - [ ] 위치값 가지고 있는지 물어보기 : `Car#isInposition`
 - [ ] 위치값 크기 물어보기 : `Car#isposition`
@@ -91,7 +91,8 @@ jun : --
 **Car**
 - [x] 자동차 생성자 테스트: `CarTest#createCarTest`
 - [x] 이름길이 검증하면서 car 생성 테스트 : `CarTest#createCarWithValidationTest`
-
+- [x] 전진 테스트 : `Car#goTest`
+- [x] 정지 테스트 : `Car#stopTest`
 ---
 
 ### 기능 구현 코드
