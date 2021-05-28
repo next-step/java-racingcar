@@ -32,4 +32,14 @@ public class CarTest {
         //then
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("자동차 정지 테스트")
+    public void stopTest() {
+        // given
+        car.go(3);
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }
