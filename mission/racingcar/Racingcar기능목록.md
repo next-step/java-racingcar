@@ -52,6 +52,39 @@ jun : --
 
 ### 기능 구현 목록
 #### main 클래스
+**input**
+- [ ] 이름 입력 메소드 : `Input#name`
+- [ ] 게임 횟수값 입력 클래스 :  `Input#gameCount`
+
+**Car**
+- [ ] 자동차 생성자(name, position 값을 가짐): `Car#Car`
+- [ ] 이름 길이 검증(길이가 5이상은 에러) :  `Car#ValidateName`
+- [ ] Nameinput값 `,`로 나누기 :  `Car#splitName`
+- [ ] 전진하기 : `Car#go`
+- [ ] 전진하기 여부 출력하기 : `Car#goingProcess`
+- [ ] 위치값 가지고 있는지 물어보기 : `Car#isInposition`
+- [ ] 위치값 크기 물어보기 : `Car#isposition`
+
+
+**Ready**
+- [ ] 경주용 자동차 목록 만들기 : `Ready#createCars`
+
+**Stadium**
+- [ ] 경기장 생성(자동차 목록, 게임 횟수 값을 가짐): `Stadium#Stadium`
+- [ ] 자동차 경주하기 : `Stadium#playRace`
+
+**Awards**
+- [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Awards#winnerIs`
+
+**Application**
+```text
+1. input : 이름, 게임 횟수 입력받기
+2. Car : 자동차 생성하기
+3. Ready : 자동차 목록 생성하기
+4. Stadium : 경기장 생성하기
+5. Stadium.playRace : 게임하기
+6. Awards.winnerIs : 시상식(우승자 발표)
+```
 
 #### test 클래스
 
