@@ -12,7 +12,7 @@ public class Car {
     }
 
     private void validateName(String name){
-        if (name.length() >= NAME_LENGTH_LIMIT_VALUE) {
+        if (name.length() > NAME_LENGTH_LIMIT_VALUE) {
             throw new IllegalArgumentException("이름 길이가 5를 초과합니다.");
         }
     }
