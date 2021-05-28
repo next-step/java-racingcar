@@ -21,7 +21,6 @@ public class CarTest {
     @Test
     @DisplayName("이름 검증하면서 Car 생성 테스트")
     public void createCarWithValidationTest() {
-        // given
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Car("sophie",0));
     }
