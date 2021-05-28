@@ -24,4 +24,17 @@ public class CarTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Car("sophie",0));
     }
+
+    @Test
+    @DisplayName("자동차 전진 테스트")
+    public void goTest() {
+        // when
+        Car car = new Car("tomas");
+
+        // given
+        car.go(5);
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
 }
