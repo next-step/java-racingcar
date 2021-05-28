@@ -7,13 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
+    private final Car car = new Car("tomas");
+
     @Test
     @DisplayName("Car 생성자 테스트")
     public void createCarTest() {
-        // given
-        Car car = new Car("tomas");
-
-        // then
         assertThat(car.getName()).isEqualTo("tomas");
         assertThat(car.getPosition()).isEqualTo(0);
     }
@@ -28,9 +26,6 @@ public class CarTest {
     @Test
     @DisplayName("자동차 전진 테스트")
     public void goTest() {
-        // when
-        Car car = new Car("tomas");
-
         // given
         car.go(5);
 
