@@ -1,4 +1,4 @@
-package calculaor;
+package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +21,7 @@ public class InputTest {
     void nullTest() {
         // given
         String nullValue = null;
+        Input input = new Input();
 
         // when
         Boolean actual = input.checkBlank(nullValue);
