@@ -1,7 +1,7 @@
-package calculaor;
+package calculator;
 
 public class Calculation {
-    public static int calculation(String inputValue) {
+    public int calculation(String inputValue) {
         Input input = new Input();
         Evaluation evaluation = new Evaluation();
         String[] splitValue = input.isSplit(inputValue);

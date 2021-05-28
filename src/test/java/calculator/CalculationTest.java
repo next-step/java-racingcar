@@ -1,4 +1,4 @@
-package calculaor;
+package calculator;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -13,10 +13,10 @@ public class CalculationTest {
     @CsvSource(value = {"2 + 3 * 4 / 2,10","2 + 3 * 4,20","3 * 4 / 2,6"})
     void calculationTest(String inputValue, int expected) {
         // given
-        Calculation calculator = new Calculation();
+        Calculation calculation = new Calculation();
 
         // when
-        int actual = Calculation.calculation(inputValue);
+        int actual = calculation.calculation(inputValue);
 
         //then
         assertThat(actual).isEqualTo(expected);

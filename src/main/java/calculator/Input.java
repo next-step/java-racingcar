@@ -1,4 +1,4 @@
-package calculaor;
+package calculator;
 
 public class Input {
     private static final String SPLIT_VALUE= " ";
