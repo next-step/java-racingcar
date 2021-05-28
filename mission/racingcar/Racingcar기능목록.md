@@ -58,8 +58,9 @@ jun : --
 
 **Car**
 - [x] 자동차 생성자(name, position 값을 가짐): `Car#Car`
+- [x] 자동차 자기 생성자(position 초기값을 0 설정): `Car#Car`
 - [x] 이름 길이 검증(길이가 5이상은 에러) :  `Car#validateName`
-- [ ] Nameinput값 `,`로 나누기 :  `Car#splitName`
+- [ ] Name input값 `,`로 나누기 :  `Car#splitName`
 - [ ] 전진하기 : `Car#go`
 - [ ] 전진하기 여부 출력하기 : `Car#goingProcess`
 - [ ] 위치값 가지고 있는지 물어보기 : `Car#isInposition`
