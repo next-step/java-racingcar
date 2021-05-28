@@ -58,7 +58,7 @@ jun : --
 
 **Car**
 - [x] 자동차 생성자(name, position 값을 가짐): `Car#Car`
-- [ ] 이름 길이 검증(길이가 5이상은 에러) :  `Car#ValidateName`
+- [x] 이름 길이 검증(길이가 5이상은 에러) :  `Car#validateName`
 - [ ] Nameinput값 `,`로 나누기 :  `Car#splitName`
 - [ ] 전진하기 : `Car#go`
 - [ ] 전진하기 여부 출력하기 : `Car#goingProcess`
@@ -89,6 +89,7 @@ jun : --
 #### test 클래스
 **Car**
 - [x] 자동차 생성자 테스트: `CarTest#createCarTest`
+- [x] 이름길이 검증하면서 car 생성 테스트 : `CarTest#createCarWithValidationTest`
 
 ---
 
