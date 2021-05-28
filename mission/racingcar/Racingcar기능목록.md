@@ -53,8 +53,8 @@ jun : --
 ### 기능 구현 목록
 #### main 클래스
 **input**
-- [ ] 이름 입력 메소드 : `Input#name`
-- [ ] 게임 횟수값 입력 클래스 :  `Input#gameCount`
+- [x] 이름 입력 메소드 : `Input#name`
+- [x] 게임 횟수값 입력 클래스 :  `Input#gameCount`
 
 **Car**
 - [ ] 자동차 생성자(name, position 값을 가짐): `Car#Car`
