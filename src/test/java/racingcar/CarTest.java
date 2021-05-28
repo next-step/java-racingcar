@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
     @Test
@@ -15,5 +16,13 @@ public class CarTest {
         // then
         assertThat(car.getName()).isEqualTo("tomas");
         assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("이름 검증하면서 Car 생성 테스트")
+    public void createCarWithValidationTest() {
+        // given
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car("sophie",0));
     }
 }
