@@ -16,6 +16,14 @@ public class Car {
         this.position = position;
     }
 
+    public String goingProcess(int number){
+        String process = "";
+        if (movable(number)) {
+            process += "-";
+        }
+        return process;
+    }
+
     public void go(int number) {
         if (movable(number)) {
             position += 1;
@@ -25,8 +33,6 @@ public class Car {
     private boolean movable(int number) {
         return number >= MOVING_STANDARD_VALUE;
     }
-
-
 
     private void validateName(String name){
         if (name.length() > NAME_LENGTH_LIMIT_VALUE) {
