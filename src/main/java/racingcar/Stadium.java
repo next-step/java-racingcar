@@ -12,10 +12,18 @@ public class Stadium {
             for (Car car : cars){
                 int number = drawNumber();
                 car.go(number);
-                System.out.println(car.getName() + " : " + car.goingProcess(number));
+                System.out.println(car.getName() + " : " + goingProcess(car));
             }
         }
         return cars;
+    }
+
+    public String goingProcess(Car car){
+        StringBuilder process = new StringBuilder();
+        for(int i = 0; i < car.getPosition(); i++) {
+            process.append("-");
+        }
+        return process.toString();
     }
 
     public Stadium(List<Car> cars, int gameCount) {

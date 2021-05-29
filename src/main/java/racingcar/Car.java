@@ -5,7 +5,6 @@ public class Car {
     private static final int MOVING_STANDARD_VALUE = 4;
     private final String name;
     int position;
-    String process = "";
 
     public Car(String name) {
         this(name,0);
@@ -15,13 +14,6 @@ public class Car {
         validateName(name);
         this.name = name;
         this.position = position;
-    }
-
-    public String goingProcess(int number){
-        if (movable(number)) {
-            process += "-";
-        }
-        return process;
     }
 
     public void go(int number) {
