@@ -21,4 +21,18 @@ public class ReadyTest {
         // then
         assertThat(cars).hasSize(3);
     }
+
+    @Test
+    @DisplayName("input 이용해서 자동차 목록 만들기 테스트")
+    public void createCarsWithInputTest(){
+        // when
+        String[] playerList = {"s,m,t,j"};
+        Ready ready = new Ready();
+
+        // given
+        List<Car> cars = ready.createCars(playerList);
+
+        // then
+        assertThat(cars).hasSize(4);
+    }
 }
