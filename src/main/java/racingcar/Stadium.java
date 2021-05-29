@@ -7,7 +7,7 @@ public class Stadium {
     private List<Car> cars;
     private int gameCount;
 
-    public List<Car> playRace(List<Car> cars, int gameCount) {
+    public List<Car> playRace() {
         for (int i = 0; i < gameCount; i++){
             for (Car car : cars){
                 int number = drawNumber();
