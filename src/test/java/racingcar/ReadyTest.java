@@ -8,12 +8,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReadyTest {
+    private final Ready ready = new Ready();
+
     @Test
     @DisplayName("이름 배열을 이용해서 자동차 목록 만들기 테스트")
     public void createCarsWithNameArrayTest(){
         // when
         String[] playerList = {"s","m","t"};
-        Ready ready = new Ready();
 
         // given
         List<Car> cars = ready.createCars(playerList);
@@ -26,11 +27,10 @@ public class ReadyTest {
     @DisplayName("input 이용해서 자동차 목록 만들기 테스트")
     public void createCarsWithInputTest(){
         // when
-        String[] playerList = {"s,m,t,j"};
-        Ready ready = new Ready();
+        String input = "s,m,t,j";
 
         // given
-        List<Car> cars = ready.createCars(playerList);
+        List<Car> cars = ready.createCars(input);
 
         // then
         assertThat(cars).hasSize(4);
