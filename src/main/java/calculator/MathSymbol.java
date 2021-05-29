@@ -2,13 +2,34 @@ package calculator;
 
 import java.util.Arrays;
 
-import static calculator.ExceptionMessage.IS_NOT_MATH_EXPRESSION_MESSAGE;
-
 public enum MathSymbol {
-    PLUS("+"),
-    MINUS("-"),
-    DIVIDE("/"),
-    MULTIPLE("*");
+    PLUS("+") {
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            return firstNumber + secondNumber;
+        }
+    },
+    MINUS("-") {
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            return firstNumber - secondNumber;
+        }
+    },
+    DIVIDE("/") {
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            if (secondNumber == 0) {
+                throw new IllegalArgumentException("0으로 나눗셈을 할 수 없습니다.");
+            }
+            return firstNumber / secondNumber;
+        }
+    },
+    MULTIPLE("*") {
+        @Override
+        double operate(double firstNumber, double secondNumber) {
+            return firstNumber * secondNumber;
+        }
+    };
 
     private final String mathSymbol;
 
@@ -22,24 +43,10 @@ public enum MathSymbol {
 
     public static MathSymbol findValidatedSymbol(String operator) {
         return Arrays.stream(MathSymbol.values())
-                .filter(v -> v.getMathSymbol().equals(operator))
+                .filter(mathSymbol -> mathSymbol.mathSymbol.equals(operator))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException(String.format("잘못된 연산자 입니다.")));
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 연산자 입니다."));
     }
 
-    public double operate(double firstNumber, double secondNumber) {
-        if (PLUS.getMathSymbol() == this.getMathSymbol()) {
-            return firstNumber + secondNumber;
-        }
-        if (MINUS.getMathSymbol() == this.getMathSymbol()) {
-            return firstNumber - secondNumber;
-        }
-        if (MULTIPLE.getMathSymbol() == this.getMathSymbol()) {
-            return firstNumber * secondNumber;
-        }
-        if (DIVIDE.getMathSymbol() == this.getMathSymbol()) {
-            return firstNumber / secondNumber;
-        }
-        throw new IllegalArgumentException(IS_NOT_MATH_EXPRESSION_MESSAGE);
-    }
+    abstract double operate(double firstNumber, double secondNumber);
 }
