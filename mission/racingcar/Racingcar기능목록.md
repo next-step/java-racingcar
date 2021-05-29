@@ -71,8 +71,9 @@ jun : --
 - [x] Name input값 `,`로 나누기 :  `Ready#splitName`
 
 **Stadium**
-- [ ] 경기장 생성(자동차 목록, 게임 횟수 값을 가짐): `Stadium#Stadium`
-- [ ] 자동차 경주하기 : `Stadium#playRace`
+- [x] 경기장 생성(자동차 목록, 게임 횟수 값을 가짐): `Stadium#Stadium`
+- [x] 난수 생성하기 : `Stadium#drawNumber`
+- [x] 자동차 경주하기 : `Stadium#playRace`
 
 **Awards**
 - [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Awards#winnerIs`
