@@ -66,7 +66,7 @@ jun : --
 - [ ] 위치값 크기 물어보기 : `Car#isposition`
 
 **Ready**
-- [ ] 이름 배열 이용해서 경주용 자동차 목록 만들기 : `Ready#createCars`
+- [x] 이름 배열 이용해서 경주용 자동차 목록 만들기 : `Ready#createCars`
 - [ ] 이름 값 이용해서 경주용 자동차 목록 만들기 : `Ready#createCars`
 - [ ] Name input값 `,`로 나누기 :  `Ready#splitName`
 
@@ -91,9 +91,13 @@ jun : --
 **Car**
 - [x] 자동차 생성자 테스트: `CarTest#createCarTest`
 - [x] 이름길이 검증하면서 car 생성 테스트 : `CarTest#createCarWithValidationTest`
-- [x] 전진 테스트 : `Car#goTest`
-- [x] 정지 테스트 : `Car#stopTest`
-- [x] 자동차 경주 중간 과정 출력 테스트 : `Car#goingProcessTest`
+- [x] 전진 테스트 : `CarTest#goTest`
+- [x] 정지 테스트 : `CarTest#stopTest`
+- [x] 자동차 경주 중간 과정 출력 테스트 : `CarTest#goingProcessTest`
+
+**Car**
+- [x] 이름 배열을 이용해서 자동차 목록 만들기 테스트 : ` ReadyTest#createCarsWithNameArrayTest`
+
 ---
 
 ### 기능 구현 코드
