@@ -61,7 +61,6 @@ jun : --
 - [x] 자동차 자기 생성자(position 초기값을 0 설정): `Car#Car`
 - [x] 이름 길이 검증(길이가 5이상은 에러) :  `Car#validateName`
 - [x] 전진하기 : `Car#go`
-- [x] 자동차 경주 중간 과정 출력하기 : `Car#goingProcess`
 - [ ] 위치값 가지고 있는지 물어보기 : `Car#isInposition`
 - [ ] 위치값 크기 물어보기 : `Car#isposition`
 
@@ -74,6 +73,7 @@ jun : --
 - [x] 경기장 생성(자동차 목록, 게임 횟수 값을 가짐): `Stadium#Stadium`
 - [x] 난수 생성하기 : `Stadium#drawNumber`
 - [x] 자동차 경주하기 : `Stadium#playRace`
+- [x] 자동차 경주 중간 과정 출력하기 : `Stadium#goingProcess`
 
 **Awards**
 - [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Awards#winnerIs`
@@ -94,7 +94,6 @@ jun : --
 - [x] 이름길이 검증하면서 car 생성 테스트 : `CarTest#createCarWithValidationTest`
 - [x] 전진 테스트 : `CarTest#goTest`
 - [x] 정지 테스트 : `CarTest#stopTest`
-- [x] 자동차 경주 중간 과정 출력 테스트 : `CarTest#goingProcessTest`
 
 **Ready**
 - [x] 이름 배열을 이용해서 자동차 목록 만들기 테스트 : ` ReadyTest#createCarsWithNameArrayTest`
