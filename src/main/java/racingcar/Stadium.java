@@ -14,14 +14,23 @@ public class Stadium {
     }
 
     public List<Car> award() {
-        List<Car> winner = new ArrayList<>();
+        List<Car> result = new ArrayList<>();
         int maxPosition = findMaxPosition();
         for (Car car : cars) {
             if (car.isInPosition(maxPosition)) {
-                winner.add(car);
+                result.add(car);
+                System.out.println();
             }
         }
-        return winner;
+        return result;
+    }
+
+    public String winnerIS(List<Car> winner) {
+        StringBuilder winnerIS = new StringBuilder();
+        for(Car car : winner) {
+            winnerIS.append(car.getName());
+        }
+        return winnerIS.toString();
     }
 
     private int findMaxPosition() {
