@@ -107,5 +107,5 @@ jun : --
 
 ---
 
-[M]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/main/java/racingCar
-[T]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/test/java/racingCar
+[M]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/main/java/racingcar
+[T]:https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/test/java/racingcar
