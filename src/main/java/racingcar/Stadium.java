@@ -15,19 +15,21 @@ public class Stadium {
 
     public List<Car> award() {
         List<Car> winner = new ArrayList<>();
-        // 가장 큰 position 값 찾기
-        int maxPosition = 0;
-        for(Car car : cars) {
-            maxPosition = car.whichOneIsBiggerThan(maxPosition);
-        }
-
-        // 가장 큰 pisiotion 값의 cars만 가져오기
+        int maxPosition = findMaxPosition();
         for (Car car : cars) {
             if (car.isInPosition(maxPosition)) {
                 winner.add(car);
             }
         }
         return winner;
+    }
+
+    private int findMaxPosition() {
+        int maxPosition = 0;
+        for(Car car : cars) {
+            maxPosition = car.whichOneIsBiggerThan(maxPosition);
+        }
+        return maxPosition;
     }
 
     public List<Car> playRace() {
