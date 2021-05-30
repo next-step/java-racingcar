@@ -16,6 +16,12 @@ public class Car {
         this.position = position;
     }
 
+    private void validateName(String name){
+        if (name.length() > NAME_LENGTH_LIMIT_VALUE) {
+            throw new IllegalArgumentException("이름 길이가 5를 초과합니다.");
+        }
+    }
+
     public void go(int number) {
         if (movable(number)) {
             position += 1;
@@ -26,10 +32,8 @@ public class Car {
         return number >= MOVING_STANDARD_VALUE;
     }
 
-    private void validateName(String name){
-        if (name.length() > NAME_LENGTH_LIMIT_VALUE) {
-            throw new IllegalArgumentException("이름 길이가 5를 초과합니다.");
-        }
+    public int isInPosition(int position) {
+        return Math.max(this.position, position);
     }
 
     public String getName() {
