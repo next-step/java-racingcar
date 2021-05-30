@@ -74,9 +74,7 @@ jun : --
 - [x] 난수 생성하기 : `Stadium#drawNumber`
 - [x] 자동차 경주하기 : `Stadium#playRace`
 - [x] 자동차 경주 중간 과정 출력하기 : `Stadium#goingProcess`
-
-**Award**
-- [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Awards#winnerIs`
+- [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Stadium#winnerIS`
 
 **Application**
 ```text
