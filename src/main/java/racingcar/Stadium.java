@@ -16,10 +16,13 @@ public class Stadium {
     public String winnerIS(List<Car> result) {
         StringBuilder winnerIS = new StringBuilder();
         for(Car car : result) {
-            winnerIS.append(car.getName());
+            winnerIS.append(car.getName() + ",");
         }
+        winnerIS.deleteCharAt(winnerIS.lastIndexOf(","));
         return winnerIS.toString();
     }
+
+
 
     public List<Car> award() {
         List<Car> result = new ArrayList<>();
