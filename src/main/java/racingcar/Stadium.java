@@ -23,7 +23,7 @@ public class Stadium {
 
         // 가장 큰 pisiotion 값의 cars만 가져오기
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+            if (car.isInPosition(maxPosition)) {
                 winner.add(car);
             }
         }

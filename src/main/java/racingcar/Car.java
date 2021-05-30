@@ -36,6 +36,10 @@ public class Car {
         return Math.max(this.position, position);
     }
 
+    public boolean isInPosition(int position) {
+        return this.position == position;
+    }
+
     public String getName() {
         return name;
     }
