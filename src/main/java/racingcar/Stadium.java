@@ -18,7 +18,7 @@ public class Stadium {
         // 가장 큰 position 값 찾기
         int maxPosition = 0;
         for(Car car : cars) {
-            maxPosition = car.isInPosition(maxPosition);
+            maxPosition = car.whichOneIsBiggerThan(maxPosition);
         }
 
         // 가장 큰 pisiotion 값의 cars만 가져오기

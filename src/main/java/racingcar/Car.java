@@ -32,7 +32,7 @@ public class Car {
         return number >= MOVING_STANDARD_VALUE;
     }
 
-    public int isInPosition(int position) {
+    public int whichOneIsBiggerThan(int position) {
         return Math.max(this.position, position);
     }
 
