@@ -13,6 +13,14 @@ public class Stadium {
         this.gameCount = gameCount;
     }
 
+    public String winnerIS(List<Car> result) {
+        StringBuilder winnerIS = new StringBuilder();
+        for(Car car : result) {
+            winnerIS.append(car.getName());
+        }
+        return winnerIS.toString();
+    }
+
     public List<Car> award() {
         List<Car> result = new ArrayList<>();
         int maxPosition = findMaxPosition();
@@ -23,14 +31,6 @@ public class Stadium {
             }
         }
         return result;
-    }
-
-    public String winnerIS(List<Car> winner) {
-        StringBuilder winnerIS = new StringBuilder();
-        for(Car car : winner) {
-            winnerIS.append(car.getName());
-        }
-        return winnerIS.toString();
     }
 
     private int findMaxPosition() {
