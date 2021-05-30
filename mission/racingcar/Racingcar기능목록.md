@@ -61,8 +61,8 @@ jun : --
 - [x] 자동차 자기 생성자(position 초기값을 0 설정): `Car#Car`
 - [x] 이름 길이 검증(길이가 5이상은 에러) :  `Car#validateName`
 - [x] 전진하기 : `Car#go`
-- [ ] 위치값 가지고 있는지 물어보기 : `Car#isInposition`
-- [ ] 위치값 크기 물어보기 : `Car#isposition`
+- [x] 위치값과 입력값 중 큰 값 물어보기 : `Car#whichOneIsBiggerThan`
+- [ ] 위치값 가지고 있는지 물어보기 : `Car#isInPosition`
 
 **Ready**
 - [x] 이름 배열 이용해서 경주용 자동차 목록 만들기 : `Ready#createCars`
@@ -74,7 +74,7 @@ jun : --
 - [x] 난수 생성하기 : `Stadium#drawNumber`
 - [x] 자동차 경주하기 : `Stadium#playRace`
 - [x] 자동차 경주 중간 과정 출력하기 : `Stadium#goingProcess`
-- [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Stadium#winnerIS`
+- [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Stadium#award`
 
 **Application**
 ```text
