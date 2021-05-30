@@ -16,8 +16,11 @@ public class Application {
 
         // Stadium : 경기장 생성, 게임하기
         Stadium stadium = new Stadium(cars, gameCount);
-        List<Car> result = stadium.playRace();
+        stadium.playRace();
 
-        // Awards : 시상식(우승자 발표)
+        // Award : 시상식(우승자 발표)
+        List<Car> result = stadium.award();
+        System.out.println("최종 우승자 : " + stadium.winnerIS(result));
+
     }
 }
