@@ -74,7 +74,8 @@ jun : --
 - [x] 난수 생성하기 : `Stadium#drawNumber`
 - [x] 자동차 경주하기 : `Stadium#playRace`
 - [x] 자동차 경주 중간 과정 출력하기 : `Stadium#goingProcess`
-- [x] 우승자를 발표하기(자동차 경주 결과 받기) : `Stadium#award`
+- [x] 가장 큰 위치값 찾기 : `Stadium#findMaxPosition`
+- [ ] 우승자를 발표하기(자동차 경주 결과 받기) : `Stadium#award`
 
 **Application**
 ```text
