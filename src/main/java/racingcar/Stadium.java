@@ -4,8 +4,13 @@ import java.util.List;
 import java.util.Random;
 
 public class Stadium {
-    private List<Car> cars;
-    private int gameCount;
+    private final List<Car> cars;
+    private final int gameCount;
+
+    public Stadium(List<Car> cars, int gameCount) {
+        this.cars = cars;
+        this.gameCount = gameCount;
+    }
 
     public List<Car> playRace() {
         for (int i = 0; i < gameCount; i++){
@@ -18,17 +23,12 @@ public class Stadium {
         return cars;
     }
 
-    public String goingProcess(Car car){
+    private String goingProcess(Car car){
         StringBuilder process = new StringBuilder();
         for(int i = 0; i < car.getPosition(); i++) {
             process.append("-");
         }
         return process.toString();
-    }
-
-    public Stadium(List<Car> cars, int gameCount) {
-        this.cars = cars;
-        this.gameCount = gameCount;
     }
 
     private int drawNumber(){
