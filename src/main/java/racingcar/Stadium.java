@@ -41,14 +41,13 @@ public class Stadium {
         return maxPosition;
     }
 
-    public List<Car> playRace() {
+    public void playRace() {
         for (int i = 0; i < gameCount; i++){
             for (Car car : cars){
                 car.go(drawNumber());
                 System.out.println(car.getName() + " : " + goingProcess(car));
             }
         }
-        return cars;
     }
 
     private String goingProcess(Car car){
