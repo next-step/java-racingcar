@@ -15,8 +15,7 @@ public class Stadium {
     public List<Car> playRace() {
         for (int i = 0; i < gameCount; i++){
             for (Car car : cars){
-                int number = drawNumber();
-                car.go(number);
+                car.go(drawNumber());
                 System.out.println(car.getName() + " : " + goingProcess(car));
             }
         }
