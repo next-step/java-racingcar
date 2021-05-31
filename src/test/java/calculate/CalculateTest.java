@@ -16,7 +16,7 @@ public class CalculateTest {
 
     @Test
     void resultMethod() {
-        assertThat(calcul.resultMethod("2+3" , "+")).isEqualTo(5);
+        assertThat(calcul.resultMethod("2+3", "+")).isEqualTo(5);
     }
 
     @ParameterizedTest
@@ -48,6 +48,6 @@ public class CalculateTest {
     void cal() {
         String str = "2 + 3 * 4 / 2";
         double result = Double.parseDouble(calcul.requestCal(str));
-        assertThat(result).isEqualTo( 10);
+        assertThat(result).isEqualTo(10);
     }
 }

@@ -9,7 +9,7 @@ public class Calculate {
 
     int resultMethod(String cal, String method) {
         int split_num1, split_num2;
-        int result=0;
+        int result = 0;
         String reg = "[+*/-]";
         String[] split = cal.split(reg);
         System.out.println(split[0]);
