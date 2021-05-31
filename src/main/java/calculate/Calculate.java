@@ -7,52 +7,48 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Calculate {
 
-    int resultMethod(String cal, char method) {
-        int split_num1, split_num2, result;
-        String[] split = cal.split("[+]");
+    int resultMethod(String cal, String method) {
+        int split_num1, split_num2;
+        int result=0;
+        String reg = "[+*/-]";
+        String[] split = cal.split(reg);
+        System.out.println(split[0]);
+        System.out.println(split[1]);
         split_num1 = Integer.parseInt(split[0]);
         split_num2 = Integer.parseInt(split[1]);
-        result = split_num1 + method + split_num2;
-        System.out.println(split_num1 + method + split_num2 + "=" + result);
+        if (method == "+") {
+            result = split_num1 + split_num2;
+        } else if (method == "-") {
+            result = split_num1 - split_num2;
+        } else if (method == "*") {
+            result = split_num1 * split_num2;
+        } else if (method == "/") {
+            result = split_num1 / split_num2;
+        }
         return result;
     }
 
-    public int add(String cal, int resultCheckNumber) {
+    public int add(String cal) {
         int result = 0;
-        result = resultMethod(cal, '+');
+        result = resultMethod(cal, "+");
         return result;
     }
 
     public int sub(String cal, int resultCheckNumber) {
-        int split_num1, split_num2, result;
-        String[] split = cal.split("[-]");
-        split_num1 = Integer.parseInt(split[0]);
-        split_num2 = Integer.parseInt(split[1]);
-        result = split_num1 - split_num2;
-        System.out.println(split_num1 + "-" + split_num2 + "=" + result);
-
+        int result = 0;
+        result = resultMethod(cal, "-");
         return result;
     }
 
     public int dvide(String cal, int resultCheckNumber) {
-        int split_num1, split_num2, result;
-        String[] split = cal.split("[/]");
-        split_num1 = Integer.parseInt(split[0]);
-        split_num2 = Integer.parseInt(split[1]);
-        result = split_num1 / split_num2;
-        System.out.println(split_num1 + "/" + split_num2 + "=" + result);
-
+        int result = 0;
+        result = resultMethod(cal, "/");
         return result;
     }
 
     public int dvidmultyplee(String cal, int resultCheckNumber) {
-        int split_num1, split_num2, result;
-        String[] split = cal.split("[*]");
-        split_num1 = Integer.parseInt(split[0]);
-        split_num2 = Integer.parseInt(split[1]);
-        result = split_num1 / split_num2;
-        System.out.println(split_num1 + "*" + split_num2 + "=" + result);
-
+        int result = 0;
+        result = resultMethod(cal, "/");
         return result;
     }
 
