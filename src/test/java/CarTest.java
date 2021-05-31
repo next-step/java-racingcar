@@ -10,7 +10,6 @@ public class CarTest {
     void moveTest() throws Exception {
         //given
         Car car = new Car("aaa");
-        car.init();
         int randomNumber = 4;
         int moveCount = car.getMoveCount();
 
@@ -26,7 +25,6 @@ public class CarTest {
     void moveTest2() throws Exception {
         //given
         Car car = new Car("aaa");
-        car.init();
         int randomNumber = 2;
         int moveCount = car.getMoveCount();
 

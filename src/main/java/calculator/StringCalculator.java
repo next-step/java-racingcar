@@ -3,85 +3,62 @@ package calculator;
 
 import calculator.view.Input;
 import calculator.view.Output;
+import racing.utils.ExpressionPattern;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class StringCalculator {
-
     public void execute() {
         String input = setMathExpression();
         List<String> strings = sliceMathExpression(input);
-        System.out.println("strings = " + strings);
-        Output.resultOutput(makeResult(strings));
+        Output.printResult(makeResult(strings));
     }
 
     private String setMathExpression() {
-        Exception exception = new Exception();
-
         Output.startMessageOutput();
         String mathExpression = Input.mathExpressionInput();
 
-        if(mathExpression.trim().isEmpty()){
-            exception.inputNullException();
+        if (mathExpression.trim().isEmpty()) {
+            throw new IllegalArgumentException("값을 입력해 주세요.");
         }
-        if (Pattern.matches("[^0-9+\\-*/]",mathExpression)){
-            exception.wrongInputException();
-        }
-        if (Pattern.matches("[0-9]*$",mathExpression)){
-            exception.wrongInputException();
+        if (ExpressionPattern.isExpression(mathExpression)) {
+            throw new IllegalArgumentException("올바른 값을 입력해주세요.");
         }
         return mathExpression;
     }
 
     private List<String> sliceMathExpression(String mathExpression) {
-        String[] splitMathExpression = mathExpression.split("");
-        List<String> mathExpressionList = new ArrayList<>();
-        String temp = "";
-        for (String s : splitMathExpression) {
-            if (Pattern.matches("[^0-9]", s)) {
-                mathExpressionList.add(temp);
-                mathExpressionList.add(s);
-                temp = "";
-            } else {
-                temp = temp.concat(s);
-            }
-        }
-        if (temp.length() >= 1) {
-            mathExpressionList.add(temp);
-        }
-        return mathExpressionList;
+        return Arrays.asList(mathExpression.split(" "));
     }
 
     private double makeResult(List<String> mathExpressionList) {
-        double number;
-        String fourRule;
         double result = Double.parseDouble(mathExpressionList.get(0));
         int listSize = mathExpressionList.size();
         for (int i = 1; i < listSize; i += 2) {
-            fourRule = mathExpressionList.get(i);
-            number = Double.parseDouble(mathExpressionList.get(i + 1));
-            result = calculate(number, fourRule, result);
+            String operator = mathExpressionList.get(i);
+            double number = Double.parseDouble(mathExpressionList.get(i + 1));
+            result = calculate(number, operator, result);
         }
         return result;
     }
 
-    private double calculate(double number, String splitWord, double result) {
+    private double calculate(double number, String operator, double result) {
         NumberCalculator numberCalculator = new NumberCalculator();
-        Exception exception = new Exception();
 
-        if (splitWord.equals("+")) {
-            result = numberCalculator.addition(result, number);
-        } else if (splitWord.equals("-")) {
-            result = numberCalculator.subtraction(result, number);
-        } else if (splitWord.equals("*")) {
-            result = numberCalculator.multiplication(result, number);
-        } else if (splitWord.equals("/")) {
-            result = numberCalculator.division(result, number);
-        } else if (Pattern.matches("[^0-9]", splitWord)) {
-            exception.notFourRuleException();
+        if (operator.equals("+")) {
+            return numberCalculator.add(result, number);
         }
-        return result;
+        if (operator.equals("-")) {
+            return numberCalculator.subtract(result, number);
+        }
+        if (operator.equals("*")) {
+            return numberCalculator.multiply(result, number);
+        }
+        if (operator.equals("/")) {
+            return numberCalculator.divide(result, number);
+        }
+        throw new IllegalArgumentException("올바른 연산자가 아닙니다.");
     }
 }

@@ -1,7 +1,8 @@
 package racing.domain;
 
-public class Car {
+public class Car{
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_CAR_MOVE = 4;
     private String name;
     private int moveCount;
 
@@ -13,29 +14,18 @@ public class Car {
         this.name = name;
     }
 
-    public void init() {
-        this.moveCount = 0;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getMoveCount() {
         return moveCount;
     }
 
-    public void setMoveCount(int moveCount) {
-        this.moveCount = moveCount;
-    }
-
     public void move(int randomNum) {
-        if (randomNum >= 4) {
+        if (randomNum >= MIN_CAR_MOVE) {
             this.moveCount++;
         }
     }
 }
+

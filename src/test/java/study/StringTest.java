@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTest {
-
     @Test
     public void 쉼표로_나누기1() throws Exception {
         final String text = "1,2";

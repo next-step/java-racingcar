@@ -9,7 +9,7 @@ public class NumberStringCalculatorTest {
         NumberCalculator numberCalculator = new NumberCalculator();
         int first = 3;
         int second = 4;
-        Assertions.assertThat(numberCalculator.addition(first,second)).isEqualTo(7);
+        Assertions.assertThat(numberCalculator.add(first, second)).isEqualTo(7);
     }
 
     @Test
@@ -17,7 +17,7 @@ public class NumberStringCalculatorTest {
         NumberCalculator numberCalculator = new NumberCalculator();
         int first = 3;
         int second = 4;
-        Assertions.assertThat(numberCalculator.subtraction(first,second)).isEqualTo(-1);
+        Assertions.assertThat(numberCalculator.subtract(first, second)).isEqualTo(-1);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class NumberStringCalculatorTest {
         NumberCalculator numberCalculator = new NumberCalculator();
         int first = 3;
         int second = 4;
-        Assertions.assertThat(numberCalculator.multiplication(first,second)).isEqualTo(12);
+        Assertions.assertThat(numberCalculator.multiply(first, second)).isEqualTo(12);
     }
 
     @Test
@@ -33,6 +33,6 @@ public class NumberStringCalculatorTest {
         NumberCalculator numberCalculator = new NumberCalculator();
         int first = 12;
         int second = 4;
-        Assertions.assertThat(numberCalculator.division(first,second)).isEqualTo(3);
+        Assertions.assertThat(numberCalculator.divide(first, second)).isEqualTo(3);
     }
 }
