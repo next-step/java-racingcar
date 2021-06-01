@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.RacingRandom;
 
 import java.util.List;
 import java.util.Objects;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 
 public class RacingCarView {
     private static final Scanner SCANNER = new Scanner(System.in);
+    private static RacingRandom racingRandom = new RacingRandom();
     private static int cycle = 0;
 
     public static String inputCarInfo() {
@@ -31,7 +33,7 @@ public class RacingCarView {
 
     private static void cycleCarInformation(List<Cars> carsInfo) {
         for (int i = 0; i < carsInfo.size(); i++) {
-            carsInfo.get(i).move();
+            carsInfo.get(i).move(racingRandom);
 
             System.out.print(carsInfo.get(i).getName() + " : ");
             showCarLocationInfo(carsInfo.get(i).getLocationInfo());

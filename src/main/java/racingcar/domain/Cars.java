@@ -2,16 +2,8 @@ package racingcar.domain;
 
 public class Cars {
     private static final int CAR_LENGTH = 5;
-    private RacingRandom racingRandom = new RacingRandom();
     private String name;
     private int location;
-
-    public Cars(String name, int location) {
-        invalidedName(name);
-
-        this.name = name;
-        this.location = location;
-    }
 
     public Cars(String name) {
         invalidedName(name);
@@ -26,7 +18,7 @@ public class Cars {
         }
     }
 
-    public void move() {
+    public void move(RacingRandom racingRandom) {
         if (racingRandom.isMove()) {
             this.location++;
         }
