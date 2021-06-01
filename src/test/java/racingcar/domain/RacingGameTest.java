@@ -11,13 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RacingGameTest {
 
-    private List<Car> carInfo = new ArrayList<>();
+    private List<CarsTest> carTestInfo = new ArrayList<>();
 
     @DisplayName("자동차 이름이 5자를 초과하는 경우 예외가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"jeonggggg,hyeon,jin"})
     public void splitString(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new Car(input));
+        assertThrows(IllegalArgumentException.class, () -> new Cars(input));
     }
 
 }

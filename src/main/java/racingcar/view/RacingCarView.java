@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,19 +22,19 @@ public class RacingCarView {
         cycle = scan.nextInt();
     }
 
-    public void showResult(List<Car> carInfo) {
+    public void showResult(List<Cars> carsInfo) {
         System.out.println("실행결과");
         for (int i = 0; i < cycle; i++) {
-            cycleCarInformation(carInfo);
+            cycleCarInformation(carsInfo);
         }
     }
 
-    private void cycleCarInformation(List<Car> carInfo) {
-        for (int i = 0; i < carInfo.size(); i++) {
-            carInfo.get(i).move();
+    private void cycleCarInformation(List<Cars> carsInfo) {
+        for (int i = 0; i < carsInfo.size(); i++) {
+            carsInfo.get(i).move();
 
-            System.out.print(carInfo.get(i).getName() + " : ");
-            showCarLocationInfo(carInfo.get(i).getLocationInfo());
+            System.out.print(carsInfo.get(i).getName() + " : ");
+            showCarLocationInfo(carsInfo.get(i).getLocationInfo());
             System.out.println("");
         }
     }
@@ -45,7 +45,7 @@ public class RacingCarView {
         }
     }
 
-    public void showWinner(List<Car> winnerNames) {
+    public void showWinner(List<Cars> winnerNames) {
         System.out.print("최종 우승자 : ");
         winnerNames.stream().filter(Objects::nonNull).forEach(winner -> System.out.print(winner.getName()));
     }
