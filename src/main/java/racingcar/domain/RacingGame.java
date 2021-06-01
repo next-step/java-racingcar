@@ -7,21 +7,20 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private List<Cars> carsInfo = new ArrayList<>();
+    private Car car = new Car();
 
-    public List<Cars> createCarInformation(String input) {
+    public Car createCarInformation(String input) {
         String[] carNames = input.split(",");
         for (String carName : carNames) {
-            Cars cars = new Cars(carName);
-            carsInfo.add(cars);
+            car.add(carName);
         }
-        return carsInfo;
+        return car;
     }
 
     public List<Cars> selectWinners() {
-        int winnerScore = selectWinnerScore(this.carsInfo);
+        int winnerScore = selectWinnerScore(this.car.getCars());
 
-        return this.carsInfo.stream()
+        return this.car.getCars().stream()
                 .filter(cars -> cars.compareWinnerScore(winnerScore))
                 .map(cars -> new Cars(cars.getName()))
                 .collect(Collectors.toList());
