@@ -2,8 +2,6 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingResult;
-import racingcar.domain.Winner;
 import racingcar.view.RacingCarView;
 
 import java.util.List;
@@ -14,12 +12,12 @@ public class RacingCarController {
         String carNames = racingCarView.inputCarInfo();
 
         RacingGame racingGame = new RacingGame();
-        List<Car> carInfos = racingGame.splitString(carNames);
+        List<Car> carInfos = racingGame.createCarInformation(carNames);
+
         racingCarView.inputCycle();
         racingCarView.showResult(carInfos);
 
-        RacingResult racingResult = new RacingResult();
-        List<Winner> winnerNames = racingResult.selectWinners(carInfos);
+        List<Car> winnerNames = racingGame.selectWinners();
         racingCarView.showWinner(winnerNames);
     }
 }
