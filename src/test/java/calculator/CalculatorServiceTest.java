@@ -5,13 +5,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorServiceTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     public void blankTest(String input) {
-        assertThrows(IllegalArgumentException.class,()->StringsService.isBlank(input));
+        assertThrows(IllegalArgumentException.class, () -> StringsService.isBlank(input));
     }
 
     @Test
