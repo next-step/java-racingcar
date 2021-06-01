@@ -12,7 +12,7 @@ public class RacingGameTest {
     @ParameterizedTest
     @ValueSource(strings = {"jeonggggg,hyeon,jin"})
     public void splitString(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new Cars(input));
+        assertThrows(IllegalArgumentException.class, () -> new Car(input));
     }
 
 }

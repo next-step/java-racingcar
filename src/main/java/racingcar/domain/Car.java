@@ -1,20 +1,39 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
-    private List<Cars> cars;
+    private static final int CAR_LENGTH = 5;
+    private String name;
+    private int location;
 
-    public Car() {
-        this.cars = new ArrayList<>();
+    public Car(String name) {
+        invalidedName(name);
+
+        this.name = name;
+        this.location = 0;
     }
 
-    public void add(String carName) {
-        cars.add(new Cars(carName));
+    public void invalidedName(String name) {
+        if (name.length() > CAR_LENGTH) {
+            throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없다.");
+        }
     }
 
-    public List<Cars> getCars() {
-        return cars;
+    public void move(boolean isMovable) {
+        if (isMovable) {
+            this.location++;
+        }
     }
+
+    public boolean compareWinnerScore(int winnerScore) {
+        return this.location == winnerScore;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getLocationInfo() {
+        return this.location;
+    }
+
 }

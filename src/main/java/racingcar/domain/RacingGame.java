@@ -5,28 +5,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private Car car = new Car();
+    private Cars cars = new Cars();
 
-    public Car createCarInformation(String input) {
+    public Cars createCarInformation(String input) {
         String[] carNames = input.split(",");
         for (String carName : carNames) {
-            car.add(carName);
+            cars.add(carName);
         }
-        return car;
+        return cars;
     }
 
-    public List<Cars> selectWinners() {
-        int winnerScore = selectWinnerScore(this.car.getCars());
+    public List<Car> selectWinners() {
+        int winnerScore = selectWinnerScore(this.cars.getCars());
 
-        return this.car.getCars().stream()
+        return this.cars.getCars().stream()
                 .filter(cars -> cars.compareWinnerScore(winnerScore))
-                .map(cars -> new Cars(cars.getName()))
+                .map(cars -> new Car(cars.getName()))
                 .collect(Collectors.toList());
     }
 
-    private int selectWinnerScore(List<Cars> carsInfo) {
-        return carsInfo.stream()
-                .max(Comparator.comparingInt(Cars::getLocationInfo))
+    private int selectWinnerScore(List<Car> carInfo) {
+        return carInfo.stream()
+                .max(Comparator.comparingInt(Car::getLocationInfo))
                 .get()
                 .getLocationInfo();
     }

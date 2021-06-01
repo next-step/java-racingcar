@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.Car;
 import racingcar.domain.RacingRandom;
 
 import java.util.List;
@@ -24,19 +24,19 @@ public class RacingCarView {
         cycle = SCANNER.nextInt();
     }
 
-    public static void showResult(Car car) {
+    public static void showResult(Cars cars) {
         System.out.println("실행결과");
         for (int i = 0; i < cycle; i++) {
-            cycleCarInformation(car.getCars());
+            cycleCarInformation(cars.getCars());
         }
     }
 
-    private static void cycleCarInformation(List<Cars> carsInfo) {
-        for (int i = 0; i < carsInfo.size(); i++) {
-            carsInfo.get(i).move(racingRandom.isMove());
+    private static void cycleCarInformation(List<Car> carInfo) {
+        for (int i = 0; i < carInfo.size(); i++) {
+            carInfo.get(i).move(racingRandom.isMove());
 
-            System.out.print(carsInfo.get(i).getName() + " : ");
-            showCarLocationInfo(carsInfo.get(i).getLocationInfo());
+            System.out.print(carInfo.get(i).getName() + " : ");
+            showCarLocationInfo(carInfo.get(i).getLocationInfo());
             System.out.println("");
         }
     }
@@ -47,7 +47,7 @@ public class RacingCarView {
         }
     }
 
-    public static void showWinner(List<Cars> winnerNames) {
+    public static void showWinner(List<Car> winnerNames) {
         System.out.print("최종 우승자 : ");
         winnerNames.stream().filter(Objects::nonNull).forEach(winner -> System.out.print(winner.getName()));
     }
