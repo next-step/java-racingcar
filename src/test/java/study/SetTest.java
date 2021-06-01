@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
