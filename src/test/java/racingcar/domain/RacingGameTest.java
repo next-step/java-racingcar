@@ -4,14 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingGameTest {
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-    private Util util = new Util();
+public class RacingGameTest {
 
     private List<Car> carInfo = new ArrayList<>();
 
@@ -19,7 +17,7 @@ public class RacingGameTest {
     @ParameterizedTest
     @ValueSource(strings = {"jeonggggg,hyeon,jin"})
     public void splitString(String input) {
-        assertThrows(IllegalArgumentException.class, () -> util.invalidedName(input));
+        assertThrows(IllegalArgumentException.class, () -> new Car(input));
     }
 
 }
