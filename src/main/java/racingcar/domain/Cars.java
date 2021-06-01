@@ -18,8 +18,8 @@ public class Cars {
         }
     }
 
-    public void move(RacingRandom racingRandom) {
-        if (racingRandom.isMove()) {
+    public void move(boolean isMovable) {
+        if (isMovable) {
             this.location++;
         }
     }

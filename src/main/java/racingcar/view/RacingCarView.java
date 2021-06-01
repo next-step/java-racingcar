@@ -33,7 +33,7 @@ public class RacingCarView {
 
     private static void cycleCarInformation(List<Cars> carsInfo) {
         for (int i = 0; i < carsInfo.size(); i++) {
-            carsInfo.get(i).move(racingRandom);
+            carsInfo.get(i).move(racingRandom.isMove());
 
             System.out.print(carsInfo.get(i).getName() + " : ");
             showCarLocationInfo(carsInfo.get(i).getLocationInfo());
