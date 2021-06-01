@@ -1,9 +1,8 @@
 package racingcar.domain;
 
 public class Cars {
-    private RacingRandom racingRandom = new RacingRandom();
-
     private static final int CAR_LENGTH = 5;
+    private RacingRandom racingRandom = new RacingRandom();
     private String name;
     private int location;
 

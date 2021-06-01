@@ -6,11 +6,11 @@ import java.util.List;
 public class Car {
     private List<Cars> cars;
 
-    public Car(){
+    public Car() {
         this.cars = new ArrayList<>();
     }
 
-    public void add(String carName){
+    public void add(String carName) {
         cars.add(new Cars(carName));
     }
 

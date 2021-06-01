@@ -17,15 +17,15 @@ public enum Operation {
         this.expression = expression;
     }
 
-    public int result(int num1, int num2) {
-        return expression.apply(num1, num2);
-    }
-
     public static Operation findBySymbol(String symbol) {
         return Arrays.stream(Operation.values())
                 .filter(operator -> operator.operator.equals(symbol))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public int result(int num1, int num2) {
+        return expression.apply(num1, num2);
     }
 
 }
