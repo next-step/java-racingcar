@@ -21,4 +21,4 @@
 - [x] cycleCarInformation 메서드 수정
 - [ ] Car 객체에 대한 테스트 작성
 - [ ] 수직 거리부분 참고 (controller)
-- [ ] car.getLocationInfo() == winnerScore 처럼 car 객체의 location 상태를 외부로 꺼내와서 직접 비교하는 것이 아니라, car 객체에게 메세지를 보내보는 구조로 변경해보시겠어요 ?
+- [x] car 객체의 location 상태를 외부로 꺼내오는 방식에서 메세지를 보내는 구조로 변경
