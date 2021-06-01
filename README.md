@@ -16,7 +16,6 @@
 ## 추후에 추가할 기능
 - [x] 문자열 계산기 테스트 코드
 - [x] 레이싱 경주 테스트 코드 작성
-- [] for문을 stream으로 변경
 - [x] enum과 MoveService class 없이 Car객체에게 스스로 움직여라와 같은 기능 추가
 - [x] cycleCarInformation 메서드 수정
 - [ ] Car 객체에 대한 테스트 작성
