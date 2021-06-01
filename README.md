@@ -19,5 +19,5 @@
 - [x] enum과 MoveService class 없이 Car객체에게 스스로 움직여라와 같은 기능 추가
 - [x] cycleCarInformation 메서드 수정
 - [x] Car 객체에 대한 테스트 작성
-- [ ] 수직 거리부분 참고 (controller)
+- [x] 수직 거리부분 참고 (controller)
 - [x] cars 객체의 location 상태를 외부로 꺼내오는 방식에서 메세지를 보내는 구조로 변경
