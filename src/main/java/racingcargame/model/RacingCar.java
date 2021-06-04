@@ -11,7 +11,7 @@ public class RacingCar {
         this.name = name;
     }
 
-    public void checkCarNameLength(String name) {
+    private void checkCarNameLength(String name) {
         if (name == null || name.equals("")) {
             throw new IllegalArgumentException("자동차 이름을 입력하세요.");
         }

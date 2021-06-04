@@ -22,7 +22,7 @@ public class RacingCarGameController {
         makeResult(racingCars);
     }
 
-    public List<RacingCar> createRacingCars() {
+    private List<RacingCar> createRacingCars() {
         String carNames = inputView.inputCarNames();
         String[] splitCarNames = splitBySeparator(carNames);
         List<RacingCar> racingCars = new ArrayList<>();
@@ -41,7 +41,7 @@ public class RacingCarGameController {
         }
     }
 
-    public void playGame(List<RacingCar> cars, int roundNumber) {
+    private void playGame(List<RacingCar> cars, int roundNumber) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
             playRound(cars);
@@ -55,7 +55,7 @@ public class RacingCarGameController {
         }
     }
 
-    public void makeResult(List<RacingCar> racingCars) {
+    private void makeResult(List<RacingCar> racingCars) {
         int maxScore = findMaxScore(racingCars);
         String winners = findWinners(racingCars, maxScore);
         outputView.outputWinners(winners);
