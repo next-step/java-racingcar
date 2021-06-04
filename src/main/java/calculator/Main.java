@@ -11,9 +11,10 @@ public class Main {
 
         System.out.print("input : ");
         String input = scanner.nextLine();
-        String[] split = input.split(" ");
         calculator.nullCheck(input);
         calculator.operationCheck(input);
+
+        String[] split = input.split(" ");
 
         int result = Integer.parseInt(split[0]);
 
@@ -28,9 +29,6 @@ public class Main {
                 result = calculator.division(result, Integer.parseInt(split[i + 1]));
             }
         }
-
-        calculator.nullCheck(input);
-        calculator.operationCheck(input);
 
         System.out.println("결과값 : " + result);
     }
