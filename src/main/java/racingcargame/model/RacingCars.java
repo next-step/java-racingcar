@@ -13,7 +13,7 @@ public class RacingCars {
 
     public void playRound() {
         for (RacingCar car : cars) {
-            car.move(randomNumber.getNumber());
+            car.move(randomNumber.createRandomNumber());
         }
     }
 
