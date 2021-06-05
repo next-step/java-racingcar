@@ -15,17 +15,13 @@ public class StringCalculator {
     }
 
     public int calculateSplitString(String[] splitString) {
-        int result = convertToInt(splitString[0]);
+        int result = Integer.parseInt(splitString[0]);
         int numberOfOperations = splitString.length - 2;
         int intervalBetweenNumbers = 2;
         for (int i = 0; i < numberOfOperations; i += intervalBetweenNumbers) {
-            result = calculateTwoNumbers(result, splitString[i + 1].charAt(0), convertToInt(splitString[i + 2]));
+            result = calculateTwoNumbers(result, splitString[i + 1].charAt(0), Integer.parseInt(splitString[i + 2]));
         }
         return result;
-    }
-
-    private int convertToInt(String stringNumber) {
-        return Integer.parseInt(stringNumber);
     }
 
     private int calculateTwoNumbers(int firstNumber, char operator, int secondNumber) {
