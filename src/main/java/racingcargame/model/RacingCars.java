@@ -19,9 +19,7 @@ public class RacingCars {
     public int findMaxScore() {
         int maxScore = 0;
         for (RacingCar car : cars) {
-            if (maxScore < car.getStep()) {
-                maxScore = car.getStep();
-            }
+            Math.max(maxScore, car.getStep());
         }
         return maxScore;
     }
