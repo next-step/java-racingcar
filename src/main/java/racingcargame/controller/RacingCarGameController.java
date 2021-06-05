@@ -44,7 +44,7 @@ public class RacingCarGameController {
         }
     }
 
-    public void playGame(int roundNumber) {
+    private void playGame(int roundNumber) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
             racingCars.playRound();
@@ -52,7 +52,7 @@ public class RacingCarGameController {
         }
     }
 
-    public void makeResult() {
+    private void makeResult() {
         String winners = racingCars.findWinners(racingCars.findMaxScore());
         outputView.outputWinners(winners);
     }
