@@ -1,5 +1,6 @@
 package racingcargame.controller;
 
+import racingcargame.model.RacingCars;
 import racingcargame.model.RandomNumber;
 import racingcargame.model.RacingCar;
 import racingcargame.view.RacingCarGameInputView;
@@ -15,11 +16,13 @@ public class RacingCarGameController {
     private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
     private RandomNumber randomNumber = new RandomNumber();
 
+    RacingCars racingCars ;
+
     public void start() {
-        List<RacingCar> racingCars = createRacingCars();
+        racingCars = new RacingCars(createRacingCars());
         int roundNumber = inputView.inputRoundNumber();
-        playGame(racingCars, roundNumber);
-        makeResult(racingCars);
+        playGame(roundNumber);
+        makeResult();
     }
 
     private List<RacingCar> createRacingCars() {
@@ -41,44 +44,16 @@ public class RacingCarGameController {
         }
     }
 
-    private void playGame(List<RacingCar> cars, int roundNumber) {
+    public void playGame(int roundNumber) {
         System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
-            playRound(cars);
-            outputView.outputRound(cars);
+            racingCars.playRound();
+            outputView.outputRound(racingCars);
         }
     }
 
-    private void playRound(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            car.move(randomNumber.getNumber());
-        }
-    }
-
-    private void makeResult(List<RacingCar> racingCars) {
-        int maxScore = findMaxScore(racingCars);
-        String winners = findWinners(racingCars, maxScore);
+    public void makeResult() {
+        String winners = racingCars.findWinners(racingCars.findMaxScore());
         outputView.outputWinners(winners);
-    }
-
-    public int findMaxScore(List<RacingCar> cars) {
-        int maxScore = 0;
-        for (RacingCar car : cars) {
-            if (maxScore < car.getStep()) {
-                maxScore = car.getStep();
-            }
-        }
-        return maxScore;
-    }
-
-    public String findWinners(List<RacingCar> cars, int maxScore) {
-        String winners = "";
-        for (RacingCar car : cars) {
-            if (car.isWinner(maxScore)) {
-                winners += " " + car.getName() + ",";
-            }
-        }
-        winners = winners.substring(0, winners.length() - 1);
-        return winners;
     }
 }

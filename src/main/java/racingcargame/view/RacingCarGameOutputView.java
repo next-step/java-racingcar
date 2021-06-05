@@ -1,14 +1,13 @@
 package racingcargame.view;
 
 import racingcargame.model.RacingCar;
-
-import java.util.List;
+import racingcargame.model.RacingCars;
 
 public class RacingCarGameOutputView {
     private static final String STEP = "-";
 
-    public void outputRound(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
+    public void outputRound(RacingCars cars) {
+        for (RacingCar car : cars.getCars()) {
             System.out.println(car.getName() + " : " + stackUpSteps(car.getStep()));
         }
         System.out.println();
