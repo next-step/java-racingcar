@@ -4,19 +4,19 @@ import racingcargame.model.RacingCar;
 import racingcargame.model.RacingCars;
 
 public class RacingCarGameOutputView {
-    private static final String STEP = "-";
+    private static final String BAR = "-";
 
     public void outputRound(RacingCars cars) {
         for (RacingCar car : cars.getCars()) {
-            System.out.println(car.getName() + " : " + stackUpSteps(car.getStep()));
+            System.out.println(car.getName() + " : " + stackUpBars(car.getStep()));
         }
         System.out.println();
     }
 
-    private String stackUpSteps(int step) {
+    private String stackUpBars(int step) {
         StringBuilder bar = new StringBuilder();
         for (int i = 0; i < step; i++) {
-            bar.append(STEP);
+            bar.append(BAR);
         }
         return bar.toString();
     }
