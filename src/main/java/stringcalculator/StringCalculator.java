@@ -2,6 +2,7 @@ package stringcalculator;
 
 public class StringCalculator {
     private static final String BLANK = " ";
+    private static final String SEPARATOR = " ";
 
     public void checkBlank(String input) {
         if (input == null || input.equals(BLANK)) {
@@ -10,8 +11,7 @@ public class StringCalculator {
     }
 
     public String[] splitBySeparator(String input) {
-        String separator = " ";
-        return input.split(separator);
+        return input.split(SEPARATOR);
     }
 
     public int calculateSplitString(String[] splitString) {
