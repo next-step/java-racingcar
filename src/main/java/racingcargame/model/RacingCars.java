@@ -1,5 +1,6 @@
 package racingcargame.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
@@ -25,14 +26,13 @@ public class RacingCars {
     }
 
     public String findWinners(int maxScore) {
-        String winners = "";
+        List<String> winners = new ArrayList<>();
         for (RacingCar car : cars) {
             if (car.isWinner(maxScore)) {
-                winners += " " + car.getName() + ",";
+                winners.add(car.getName());
             }
         }
-        winners = winners.substring(0, winners.length() - 1);
-        return winners;
+        return String.join(", ", winners);
     }
 
     public List<RacingCar> getCars() {

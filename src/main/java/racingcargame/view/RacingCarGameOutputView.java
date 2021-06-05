@@ -22,6 +22,6 @@ public class RacingCarGameOutputView {
     }
 
     public void outputWinners(String winners) {
-        System.out.println("최종 우승자:" + winners);
+        System.out.println("최종 우승자: " + winners);
     }
 }
