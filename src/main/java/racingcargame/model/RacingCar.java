@@ -2,7 +2,7 @@ package racingcargame.model;
 
 public class RacingCar {
     private static final int MOVING_CONDITION = 4;
-
+    private static final int MAX_LENGTH_OF_NAME = 5;
     private final String name;
     private int step;
 
@@ -16,7 +16,7 @@ public class RacingCar {
         if (name == null || name.equals("")) {
             throw new IllegalArgumentException("자동차 이름을 입력하세요.");
         }
-        if (name.length() > 5) {
+        if (name.length() > MAX_LENGTH_OF_NAME) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없다.");
         }
     }
