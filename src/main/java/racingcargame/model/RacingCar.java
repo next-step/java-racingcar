@@ -4,11 +4,12 @@ public class RacingCar {
     private static final int MOVING_CONDITION = 4;
 
     private final String name;
-    private int step = 0;
+    private int step;
 
     public RacingCar(String name) {
         checkCarNameLength(name);
         this.name = name;
+        this.step = 0;
     }
 
     private void checkCarNameLength(String name) {
