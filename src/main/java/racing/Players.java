@@ -28,6 +28,7 @@ public class Players {
         return temporaryCars;
     }
 
+    /*
     public List<String> getCarNames() {
         List<String> carNames = new ArrayList<>();
 
@@ -37,6 +38,7 @@ public class Players {
 
         return carNames;
     }
+     */
 
     public List<Car> getCars() {
         return cars;

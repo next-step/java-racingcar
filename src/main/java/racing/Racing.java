@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Racing {
     private Players players;
+    private DetermineResult determineResult;
     private PrintResult printResult;
     private int numberOfPlay;
     private RandomGenerator randomGenerator;
@@ -25,13 +26,14 @@ public class Racing {
             game();
         }
 
-        winners = printResult.setWinner(players);
+        winners = determineResult.setWinner(players);
         printResult.printWinner(winners);
     }
 
     public void game() {
         for (Car car : players.getCars()) {
-            car.moved(randomGenerator.create());
+            int randomNumber = randomGenerator.create();
+            car.moved(randomGenerator.setMovable(randomNumber));
             printResult.printPlayers(car);
         }
     }
