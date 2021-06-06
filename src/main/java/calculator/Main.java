@@ -10,9 +10,6 @@ public class Main {
         System.out.print("input : ");
         String input = scanner.nextLine();
 
-        calculator.validateNullException(input);
-        calculator.validateNumberOperatorException(input);
-
         System.out.println("결과값 : " + calculator.makeCalculationResult(input));
     }
 }

@@ -2,6 +2,7 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -21,12 +22,14 @@ public class SetTest {
         numbers.add(3);
     }
 
+    @DisplayName("입력값에 1, 2, 3이 포함된다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void containTest(int input) {
         Assertions.assertThat(numbers).contains(input);
     }
 
+    @DisplayName("각각의 숫자는 참과 거짓을 가진다.")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void trueFalseTest(int input, boolean result) {

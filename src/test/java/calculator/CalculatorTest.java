@@ -1,54 +1,31 @@
 package calculator;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CalculatorTest {
 
     private Calculator calculator = new Calculator();
 
-    @Test
-    void addTest() {
-        assertThat(5).isEqualTo(calculator.
-                calculate(2, 3, "+"));
-    }
-
-    @Test
-    void subtractTest() {
-        assertThat(5).isEqualTo(calculator.
-                calculate(8, 3, "-"));
-    }
-
-    @Test
-    void multiplyTest() {
-        assertThat(6).isEqualTo(calculator.
-                calculate(2, 3, "*"));
-    }
-
-    @Test
-    void divideTest() {
-        assertThat(2).isEqualTo(calculator.
-                calculate(6, 3, "/"));
-    }
-
+    @DisplayName("입력값은 null이 될 수 없다.")
     @ParameterizedTest
     @NullSource()
     void validateNullExceptionTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.validateNullException(input);
+            calculator.makeCalculationResult(input);
         });
     }
 
+    @DisplayName("입력값은 숫자와 연산자만 입력된다.")
     @ParameterizedTest
-    @ValueSource(strings = {"a b", "&@", "~!"})
+    @ValueSource(strings = {"a b", "&@", "~!", "1 @", "1 + 2 @"})
     void validateOperatorExceptionTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.validateNumberOperatorException(input);
+            calculator.makeCalculationResult(input);
         });
     }
 }

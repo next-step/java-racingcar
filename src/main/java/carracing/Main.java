@@ -19,8 +19,8 @@ public class Main {
 
         Output.showInputRacingCount();
         int gameCount = Input.insertGameCount();
-        carRacing.moveCars(cars, gameCount);
-        Output.showCarStatus(cars, gameCount);
+        carRacing.moveCars(gameCount);
+        Output.showCarsStatus(cars, gameCount);
         Output.showWinner(carRacing);
     }
 }
