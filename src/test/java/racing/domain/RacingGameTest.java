@@ -22,12 +22,8 @@ class RacingGameTest {
                 return 0;
             }
         });
-
-
         // return 값이 5 이상 이기 때문에 이동
         racing.race(() -> 5);
-
-
         // 메소드 결과 값을 인터페이스를 통해 정할 수 있다.
     }
 }
