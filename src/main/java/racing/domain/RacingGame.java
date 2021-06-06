@@ -18,10 +18,10 @@ public class RacingGame {
         this.tryNo = tryNo;
     }
 
-    public void race() {
+    public void race(Movable movable) {
         Cars newCars = new Cars();
         for (Car car : cars.getCars()) {
-            newCars.add(car.getRandomMove(random.nextInt(MAX_RANDOM)));
+            newCars.add(car.getRandomMove(movable.move()));
         }
         roundCars.add(newCars);
         this.cars = newCars;
