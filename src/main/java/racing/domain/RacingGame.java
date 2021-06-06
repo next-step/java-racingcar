@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private static final int MAX_RANDOM = 10;
 
     private Random random = new Random();
     private RoundCars roundCars = new RoundCars();
