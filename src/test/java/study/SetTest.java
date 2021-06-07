@@ -1,6 +1,5 @@
 package study;
 
-import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,7 +38,7 @@ public class SetTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1, true", "2, true", "3, true", "4, false", "5, false"})
-    void test3(int number, boolean isContain){
+    void test3(int number, boolean isContain) {
         assertThat(numbers.contains(number)).isEqualTo(isContain);
     }
 }

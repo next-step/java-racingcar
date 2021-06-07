@@ -1,6 +1,9 @@
-package Racing;
+package racing.domain;
 
 public class Car implements Comparable<Car> {
+    private static final int MOVE_COUNT = 1;
+    private static final int MOVE_NUMBER = 4;
+
     private String name;
     private int movingRange;
 
@@ -21,11 +24,16 @@ public class Car implements Comparable<Car> {
         return movingRange;
     }
 
-    public void moved() {
-        movingRange += 1;
+    public Car getRandomMove(int random) {
+        if (random > MOVE_NUMBER) {
+            return new Car(name, movingRange + MOVE_COUNT);
+        }
+        return this;
     }
 
+    @Override
     public int compareTo(Car o) {
         return Integer.compare(o.movingRange, movingRange);
     }
+
 }
