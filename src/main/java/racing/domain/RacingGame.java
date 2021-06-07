@@ -39,4 +39,8 @@ public class RacingGame {
         Winners winners = new Winners(cars);
         return winners;
     }
+
+    public Cars getCars() {
+        return cars;
+    }
 }
