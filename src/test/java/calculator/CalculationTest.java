@@ -24,7 +24,6 @@ public class CalculationTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    // 예외 테스트
     @ParameterizedTest
     @ValueSource(strings = {" ","","^","%"})
     @DisplayName("예외 케이스 테스트")
