@@ -1,15 +1,14 @@
 package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class OperatorTest {
+    private final Operator operator = new Operator();
     private int number1;
     private int number2;
 
@@ -21,11 +20,9 @@ public class OperatorTest {
 
     // 사칙연산 테스트
     @Test
+    @DisplayName("더하기 테스트")
     void addTest() {
         // given
-        Operator operator = new Operator();
-
-        // when
         int expected = 6;
         int actual = operator.add(number1, number2);
 
@@ -34,11 +31,9 @@ public class OperatorTest {
     }
 
     @Test
+    @DisplayName("빼기 테스트")
     void subTest() {
         // given
-        Operator operator = new Operator();
-
-        // when
         int expected = 2;
         int actual = operator.sub(number1, number2);
 
@@ -47,11 +42,9 @@ public class OperatorTest {
     }
 
     @Test
+    @DisplayName("곱하기 테스트")
     void mulTest() {
         // given
-        Operator operator = new Operator();
-
-        // when
         int expected = 8;
         int actual = operator.mul(number1, number2);
 
@@ -59,28 +52,23 @@ public class OperatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    // 나누기 기능 테스트
-    @ParameterizedTest
-    @CsvSource(value = {"4,2","4,3"})
-    void divTest(int num1, int num2) {
+    @Test
+    @DisplayName("나누기 정상 테스트")
+    void divTest() {
         // given
-        Operator operator = new Operator();
-
-        // when
         int expected = 2;
-        int actual = operator.div(num1, num2);
+        int actual = operator.div(number1,number2);
 
         // then
         assertThat(actual).isEqualTo(expected);
     }
 
-    // 나누기 예외 상황(0으로 나누기) 테스트
     @Test
+    @DisplayName("나누기 예외 테스트(0으로 나누기)")
      void divExceptionTest() {
         // given
-        int num1 = 1;
+        int num1 = 2;
         int num2 = 0;
-        Operator operator = new Operator();
 
         // then
         assertThatIllegalArgumentException()
