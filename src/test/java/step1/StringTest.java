@@ -1,37 +1,37 @@
 package step1;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
-    // 요구사항 1
     @Test
-    void test() {
-        final String[] testvalue = "1,2".split(",");
-        final String[] testvalue2 = "1".split(",");
-        assertThat(testvalue).contains("1", "2");
-        assertThat(testvalue[0]).isEqualTo("1");
-        assertThat(testvalue2).containsExactly("1");
+    @DisplayName("split 테스트")
+    void splitTest() {
+        final String[] testValue = "1,2".split(",");
+        final String[] testValue2 = "1".split(",");
+        assertThat(testValue).contains("1", "2");
+        assertThat(testValue[0]).isEqualTo("1");
+        assertThat(testValue2).containsExactly("1");
     }
 
-    // 요구사항 2
     @Test
-    void test2() {
-        final String testvalue3 = "(1,(2)".replace("(", "").
+    @DisplayName("replace 테스트")
+    void replaceTest() {
+        final String test = "(1,(2)".replace("(", "").
                 replace(")", "");
-        assertThat(testvalue3).isEqualTo("1,2");
-        assertThat(testvalue3).contains("1,2");
+        assertThat(test).isEqualTo("1,2");
+        assertThat(test).contains("1,2");
     }
 
-    // 요구사항 3
-    // 문자열 길이 초과해서 예외처리 확인하기
     @Test
-    void test3() {
-        final String testvalue4 = "abc";
+    @DisplayName("StringIndexOutOfBoundsException 테스트")
+    void stringIndexOutOfBoundsExceptionTest() {
+        final String test = "abc";
         assertThatThrownBy(() -> {
-                testvalue4.charAt(4);
+                test.charAt(4);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
