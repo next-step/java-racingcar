@@ -16,33 +16,33 @@ public class InputTest {
         testInput = "2 + 3";
     }
 
-//    // null값 판단 테스트
-//    @Test
-//    void nullTest() {
-//        // given
-//        String nullValue = null;
-//        Input input = new Input();
-//
-//        // when
-//        Boolean actual = input.checkBlank(nullValue);
-//
-//        //then
-//        assertTrue(actual);
-//    }
+    // null값 판단 테스트
+    @Test
+    void nullTest() {
+        // given
+        String nullValue = null;
+        Input input = new Input();
 
-//    // 빈값 ("" or " ") 판단 테스트
-//    @ParameterizedTest
-//    @ValueSource(strings = {"", " "})
-//    void checkBlankTest(String blankInput) {
-//        // given
-//        Input input = new Input();
-//
-//        // when
-//        Boolean actual = input.checkBlank(blankInput);
-//
-//        //then
-//        assertTrue(actual);
-//    }
+        // when
+        Boolean actual = input.checkBlank(nullValue);
+
+        //then
+        assertTrue(actual);
+    }
+
+    // 빈값 ("" or " ") 판단 테스트
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void checkBlankTest(String blankInput) {
+        // given
+        Input input = new Input();
+
+        // when
+        Boolean actual = input.checkBlank(blankInput);
+
+        //then
+        assertTrue(actual);
+    }
 
     // split 정상 케이스 테스트
     @Test
