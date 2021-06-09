@@ -5,15 +5,11 @@ public class CalculatorService {
     private String[] splitBlank;
 
     public CalculatorService(String str) {
+        StringsService.isBlank(str);
         this.str = str;
     }
 
-    public void isBlank() {
-        StringsService.isBlank(str);
-
-    }
-
-    public void checkSymbok() {
+    public void checkSymbol() {
         splitBlank = StringsService.splitString(str);
         StringsService.checkSymbol(splitBlank);
     }
