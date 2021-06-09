@@ -32,7 +32,7 @@ public class Car {
         return this.name;
     }
 
-    public int getLocationInfo() {
+    public int getLocation() {
         return this.location;
     }
 

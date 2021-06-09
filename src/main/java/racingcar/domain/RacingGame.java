@@ -26,8 +26,8 @@ public class RacingGame {
 
     private int selectWinnerScore(List<Car> carInfo) {
         return carInfo.stream()
-                .max(Comparator.comparingInt(Car::getLocationInfo))
+                .max(Comparator.comparingInt(Car::getLocation))
                 .get()
-                .getLocationInfo();
+                .getLocation();
     }
 }

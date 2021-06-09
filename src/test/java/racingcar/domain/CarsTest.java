@@ -33,7 +33,7 @@ public class CarsTest {
         cars.getCars().get(0).move(true);
         cars.getCars().get(0).move(false);
 
-        assertThat(cars.getCars().get(0).getLocationInfo()).isEqualTo(2);
+        assertThat(cars.getCars().get(0).getLocation()).isEqualTo(2);
     }
 
     @DisplayName("우승자를 알 수 있다.")

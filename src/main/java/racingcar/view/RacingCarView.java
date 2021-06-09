@@ -36,7 +36,7 @@ public class RacingCarView {
             carInfo.get(i).move(racingRandom.isMove());
 
             System.out.print(carInfo.get(i).getName() + " : ");
-            showCarLocationInfo(carInfo.get(i).getLocationInfo());
+            showCarLocationInfo(carInfo.get(i).getLocation());
             System.out.println("");
         }
     }
