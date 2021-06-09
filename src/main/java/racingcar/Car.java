@@ -1,18 +1,18 @@
 package racingcar;
 
 public class Car {
-    private final String carName;
+    private final String name;
     private int position;
     private final int MOVE_NUMBER = 4;
 
     public Car(String carName) {
-        CheckName(carName);
+        nameCheck(carName);
 
-        this.carName = carName;
+        this.name = carName;
         this.position = 0;
     }
 
-    private void CheckName(String carName) {
+    private void nameCheck(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("자동차 이름이 5자 이상입니다");
         }
@@ -29,17 +29,17 @@ public class Car {
     }
 
     public String getCarName() {
-        return carName;
+        return name;
     }
 
-    public int maxPosition(int maxPosition) {
-        if (this.position > maxPosition) {
+    public int biggestPosition(int position) {
+        if (this.position > position) {
             return this.position;
         }
-        return maxPosition;
+        return position;
     }
 
-    public boolean maxCheck(int maxPosition) {
-        return this.position == maxPosition;
+    public boolean maxCheck(int position) {
+        return this.position == position;
     }
 }

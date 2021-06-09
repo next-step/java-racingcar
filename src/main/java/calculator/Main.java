@@ -14,19 +14,19 @@ public class Main {
         calculator.nullCheck(input);
         calculator.operationCheck(input);
 
-        String[] split = input.split(" ");
+        String[] arithmeticOperation = input.split(" ");
 
-        int result = Integer.parseInt(split[0]);
+        int result = Integer.parseInt(arithmeticOperation[0]);
 
-        for (int i = 0; i < split.length; i++) {
-            if (split[i].equals("+")) {
-                result = calculator.add(result, Integer.parseInt(split[i + 1]));
-            } else if (split[i].equals("-")) {
-                result = calculator.subtract(result, Integer.parseInt(split[i + 1]));
-            } else if (split[i].equals("*")) {
-                result = calculator.multiply(result, Integer.parseInt(split[i + 1]));
-            } else if (split[i].equals("/")) {
-                result = calculator.division(result, Integer.parseInt(split[i + 1]));
+        for (int i = 0; i < arithmeticOperation.length; i++) {
+            if (arithmeticOperation[i].equals("+")) {
+                result = calculator.add(result, Integer.parseInt(arithmeticOperation[i + 1]));
+            } else if (arithmeticOperation[i].equals("-")) {
+                result = calculator.subtract(result, Integer.parseInt(arithmeticOperation[i + 1]));
+            } else if (arithmeticOperation[i].equals("*")) {
+                result = calculator.multiply(result, Integer.parseInt(arithmeticOperation[i + 1]));
+            } else if (arithmeticOperation[i].equals("/")) {
+                result = calculator.division(result, Integer.parseInt(arithmeticOperation[i + 1]));
             }
         }
 

@@ -13,14 +13,15 @@ public class CarRacingMain {
         String[] carNames = carName.replaceAll(" ", "").split(",");
 
         CarCreator carCreator = new CarCreator();
-        Cars cars = carCreator.player(carNames);
+        Cars cars = carCreator.carFactory(carNames);
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         Count count = new Count(scanner.nextInt());
 
         CarRacing carRacing = new CarRacing();
         carRacing.startRacing(count.getTryNumber(), cars);
-        System.out.println("최종 우승자: " + String.join(",", carRacing.victor(cars.getCars())));
+        carRacing.positionCheck(cars);
+        System.out.println("최종 우승자: " + String.join(",", carRacing.winner(cars)));
     }
 }
 
