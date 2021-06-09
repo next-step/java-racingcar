@@ -29,15 +29,15 @@ public class Cars {
         return bar;
     }
 
-    public void moveCars(int count){
-        for(Car car : cars) {
+    public void moveCars(int count) {
+        for (Car car : cars) {
             int number = createRandomNumber();
             car.moveOrNot(number);
             System.out.println(car.getCarName() + " : " + this.move(car.getPosition()));
         }
     }
 
-    public int maxPosition(){
+    public int maxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = car.biggestPosition(maxPosition);
@@ -45,7 +45,7 @@ public class Cars {
         return maxPosition;
     }
 
-    public List<String> win(int max){
+    public List<String> win(int max) {
         List<String> winner = new ArrayList<>();
         for (Car car : cars) {
             if (car.maxCheck(max)) {
