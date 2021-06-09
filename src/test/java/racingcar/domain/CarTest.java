@@ -8,8 +8,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CarsTest {
+public class CarTest {
 
     private Cars cars;
 
@@ -24,6 +25,13 @@ public class CarsTest {
     @Test
     public void addTest() {
         assertThat(cars.getCars().get(0).getName()).isEqualTo("현진");
+    }
+
+    @DisplayName("자동차 이름이 5자를 초과하는 경우 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"jeonggggg,hyeon,jin"})
+    public void splitString(String input) {
+        assertThrows(IllegalArgumentException.class, () -> new Car(input));
     }
 
     @DisplayName("자동차는 무작위 값이 4이상일 때 움직일 수 있다.")
