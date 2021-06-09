@@ -24,7 +24,7 @@ public class Car {
         }
     }
 
-    public boolean compareWinnerScore(int winnerScore) {
+    public boolean isWinner(int winnerScore) {
         return this.location == winnerScore;
     }
 

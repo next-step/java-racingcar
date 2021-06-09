@@ -45,8 +45,8 @@ public class CarsTest {
         cars.getCars().get(0).move(false);
 
         assertAll(
-                () -> assertThat(cars.getCars().get(0).compareWinnerScore(winnerScore)).isTrue(),
-                () -> assertThat(cars.getCars().get(1).compareWinnerScore(winnerScore)).isFalse()
+                () -> assertThat(cars.getCars().get(0).isWinner(winnerScore)).isTrue(),
+                () -> assertThat(cars.getCars().get(1).isWinner(winnerScore)).isFalse()
         );
     }
 }

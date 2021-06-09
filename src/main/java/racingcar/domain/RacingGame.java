@@ -19,7 +19,7 @@ public class RacingGame {
         int winnerScore = selectWinnerScore(this.cars.getCars());
 
         return this.cars.getCars().stream()
-                .filter(cars -> cars.compareWinnerScore(winnerScore))
+                .filter(cars -> cars.isWinner(winnerScore))
                 .map(cars -> new Car(cars.getName()))
                 .collect(Collectors.toList());
     }
