@@ -4,15 +4,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingGameTest {
+    private Cars cars = new Cars();
 
-    @DisplayName("자동차 이름이 5자를 초과하는 경우 예외가 발생한다.")
+    @DisplayName("이름을 입력하면 자동차가 생성된다.")
     @ParameterizedTest
-    @ValueSource(strings = {"jeonggggg,hyeon,jin"})
-    public void splitString(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new Car(input));
+    @ValueSource(strings = {"현진,진현"})
+    public void createCarInformationTest(String input) {
+        String[] carNames = input.split(",");
+        for (String carName : carNames) {
+            cars.addCars(carName);
+        }
+        assertThat(cars.getCars().get(0).getName()).isEqualTo("현진");
+        assertThat(cars.getCars().get(1).getName()).isEqualTo("진현");
     }
-
 }
