@@ -7,7 +7,6 @@ public class Car {
 
     public Car(String name) {
         invalidedName(name);
-
         this.name = name;
         this.location = 0;
     }
@@ -24,8 +23,8 @@ public class Car {
         }
     }
 
-    public boolean isWinner(int winnerScore) {
-        return this.location == winnerScore;
+    public boolean isWinner(int location) {
+        return this.location == location;
     }
 
     public String getName() {
