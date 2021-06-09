@@ -16,8 +16,8 @@ public class CarsTest {
     @BeforeEach
     public void setUp() {
         this.cars = new Cars();
-        cars.add("현진");
-        cars.add("진현");
+        cars.addCars("현진");
+        cars.addCars("진현");
     }
 
     @DisplayName("자동차는 이름을 가진다.")

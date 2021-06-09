@@ -3,21 +3,22 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
-import racingcar.view.RacingCarView;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
 public class RacingCarController {
     public static void main(String[] args) {
-        String carNames = RacingCarView.inputCarInfo();
+        String carNames = InputView.inputCarInfo();
 
         RacingGame racingGame = new RacingGame();
         Cars cars = racingGame.createCarInformation(carNames);
 
-        RacingCarView.inputCycle();
-        RacingCarView.showResult(cars);
+        cars.setCycle(InputView.inputCycle());
+        ResultView.showResult(cars);
 
         List<Car> winnerNames = racingGame.selectWinners();
-        RacingCarView.showWinner(winnerNames);
+        ResultView.showWinner(winnerNames);
     }
 }

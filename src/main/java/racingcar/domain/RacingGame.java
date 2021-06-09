@@ -10,7 +10,7 @@ public class RacingGame {
     public Cars createCarInformation(String input) {
         String[] carNames = input.split(",");
         for (String carName : carNames) {
-            cars.add(carName);
+            cars.addCars(carName);
         }
         return cars;
     }

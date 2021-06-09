@@ -8,25 +8,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class RacingCarView {
-    private static final Scanner SCANNER = new Scanner(System.in);
+public class ResultView {
     private static RacingRandom racingRandom = new RacingRandom();
-    private static int cycle = 0;
-
-    public static String inputCarInfo() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String input = SCANNER.next();
-        return input;
-    }
-
-    public static void inputCycle() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        cycle = SCANNER.nextInt();
-    }
 
     public static void showResult(Cars cars) {
         System.out.println("실행결과");
-        for (int i = 0; i < cycle; i++) {
+        for (int i = 0; i < cars.getCycle(); i++) {
             cycleCarInformation(cars.getCars());
         }
     }
