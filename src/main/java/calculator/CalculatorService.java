@@ -1,21 +1,21 @@
 package calculator;
 
 public class CalculatorService {
-    private String str;
-    private String[] splitBlank;
+    private String inputFormula;
+    private String[] splitFormula;
 
-    public CalculatorService(String str) {
-        StringsService.isBlank(str);
-        this.str = str;
+    public CalculatorService(String inputFormula) {
+        StringsService.isBlank(inputFormula);
+        this.inputFormula = inputFormula;
     }
 
     public void checkSymbol() {
-        splitBlank = StringsService.splitString(str);
-        StringsService.checkSymbol(splitBlank);
+        splitFormula = inputFormula.split(" ");
+        StringsService.checkSymbol(splitFormula);
     }
 
     public int calculateSplitedString() {
-        int result = StringsService.calculateSplitedString(splitBlank);
+        int result = StringsService.calculateSplitedString(splitFormula);
         return result;
     }
 

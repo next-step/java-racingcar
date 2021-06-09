@@ -1,26 +1,21 @@
 package calculator;
 
-
 import java.util.regex.Pattern;
 
 public class StringsService {
     private static final Pattern pattern = Pattern.compile("[\\d\\+\\-\\*\\/]");
 
-    public static boolean isBlank(String input) {
-        if (input == null || input.trim().isEmpty()) {
+    public static boolean isBlank(String inputFormula) {
+        if (inputFormula == null || inputFormula.trim().isEmpty()) {
             throw new IllegalArgumentException("input is null or blank");
         }
         return true;
     }
 
-    public static String[] splitString(String str) {
-        return str.split(" ");
-    }
+    public static boolean checkSymbol(String[] splitFormula) {
 
-    public static boolean checkSymbol(String[] splitBlank) {
-
-        for (int i = 0; i < splitBlank.length; i++) {
-            if (pattern.matcher(splitBlank[i]).matches()) {
+        for (int i = 0; i < splitFormula.length; i++) {
+            if (pattern.matcher(splitFormula[i]).matches()) {
                 return true;
             }
         }
@@ -28,10 +23,10 @@ public class StringsService {
 
     }
 
-    public static int calculateSplitedString(String[] input) {
-        int result = Integer.parseInt(input[0]);
-        for (int i = 0; i < input.length - 2; i += 2) {
-            result = Operation.findBySymbol(String.valueOf(input[i + 1].charAt(0))).result(result, Integer.parseInt(input[i + 2]));
+    public static int calculateSplitedString(String[] splitFormula) {
+        int result = Integer.parseInt(splitFormula[0]);
+        for (int i = 0; i < splitFormula.length - 2; i += 2) {
+            result = Operation.findBySymbol(String.valueOf(splitFormula[i + 1].charAt(0))).result(result, Integer.parseInt(splitFormula[i + 2]));
         }
         return result;
     }
