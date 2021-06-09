@@ -22,7 +22,7 @@ public class Calculator {
     }
 
     public void nullCheck(String input) {
-        if (input.equals("") || input.equals(" ")) {
+        if (input == null || input.trim().equals(" ")) {
             throw new IllegalArgumentException("입력값이 null입니다.");
         }
 
