@@ -29,7 +29,7 @@ public class Calculator {
     }
 
     public void operationCheck(String input) {
-        if (!input.contains("+") || !input.contains("-") || !input.contains("*") || !input.contains("/")) {
+        if (!input.contains("+") && !input.contains("-") && !input.contains("*") && !input.contains("/")) {
             throw new IllegalArgumentException("입력값에 사칙연산이 없습니다.");
         }
     }
