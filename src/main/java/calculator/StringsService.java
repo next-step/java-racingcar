@@ -3,7 +3,7 @@ package calculator;
 import java.util.regex.Pattern;
 
 public class StringsService {
-    private static final Pattern pattern = Pattern.compile("[\\d\\+\\-\\*\\/]");
+    private static final Pattern SYMBOL_PATTERN = Pattern.compile("[\\d\\+\\-\\*\\/]");
 
     public static boolean isBlank(String inputFormula) {
         if (inputFormula == null || inputFormula.trim().isEmpty()) {
@@ -15,7 +15,7 @@ public class StringsService {
     public static boolean checkSymbol(String[] splitFormula) {
 
         for (int i = 0; i < splitFormula.length; i++) {
-            if (pattern.matcher(splitFormula[i]).matches()) {
+            if (SYMBOL_PATTERN.matcher(splitFormula[i]).matches()) {
                 return true;
             }
         }
