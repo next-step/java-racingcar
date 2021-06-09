@@ -1,9 +1,5 @@
 package racingcar.domain;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class RacingGame {
     private Cars cars = new Cars();
 
@@ -13,21 +9,5 @@ public class RacingGame {
             cars.addCars(carName);
         }
         return cars;
-    }
-
-    public List<Car> selectWinners() {
-        int winnerScore = selectWinnerScore(this.cars.getCars());
-
-        return this.cars.getCars().stream()
-                .filter(cars -> cars.isWinner(winnerScore))
-                .map(cars -> new Car(cars.getName()))
-                .collect(Collectors.toList());
-    }
-
-    private int selectWinnerScore(List<Car> carInfo) {
-        return carInfo.stream()
-                .max(Comparator.comparingInt(Car::getLocation))
-                .get()
-                .getLocation();
     }
 }

@@ -18,7 +18,7 @@ public class RacingCarController {
         cars.setCycle(InputView.inputCycle());
         ResultView.showResult(cars);
 
-        List<Car> winnerNames = racingGame.selectWinners();
+        List<Car> winnerNames = cars.selectWinners();
         ResultView.showWinner(winnerNames);
     }
 }
