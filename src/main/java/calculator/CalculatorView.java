@@ -3,13 +3,12 @@ package calculator;
 import java.util.Scanner;
 
 public class CalculatorView {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public String inputString() {
         System.out.println("문자열을 입력하세요.");
-        Scanner scanner = new Scanner(System.in);
-        String str;
 
-        str = scanner.nextLine();
-        return str;
+        return scanner.nextLine();
     }
 
     public void showResult(int result) {
