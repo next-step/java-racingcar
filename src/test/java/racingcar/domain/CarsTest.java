@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +24,13 @@ public class CarsTest {
     }
 
     @Test
-    public void selectWinnersTest(){
-         List<Car> winners = cars.stream()
-                 .filter(cars -> cars.isWinner(2))
-                 .map(cars -> new Car(cars.getName()))
-                 .collect(Collectors.toList());
+    public void selectWinnersTest() {
+        List<Car> winners = cars.stream()
+                .filter(cars -> cars.isWinner(2))
+                .map(cars -> new Car(cars.getName()))
+                .collect(Collectors.toList());
 
-         assertThat(winners.get(0).getName()).isEqualTo("현진");
+        assertThat(winners.get(0).getName()).isEqualTo("현진");
     }
 
 }
