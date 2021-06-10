@@ -7,3 +7,17 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능목록
+ - [x] 자동차는 5자 이하의 이름을 가진다. - 'Car'
+
+## 기능 요구 사항
+
+## 추후에 추가할 기능
+- [x] 문자열 계산기 테스트 코드
+- [x] 레이싱 경주 테스트 코드 작성
+- [x] enum과 MoveService class 없이 Car객체에게 스스로 움직여라와 같은 기능 추가
+- [x] cycleCarInformation 메서드 수정
+- [x] Car 객체에 대한 테스트 작성
+- [x] 수직 거리부분 참고 (controller)
+- [x] cars 객체의 location 상태를 외부로 꺼내오는 방식에서 메세지를 보내는 구조로 변경
