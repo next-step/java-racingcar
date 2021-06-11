@@ -7,8 +7,8 @@ public class Application {
         Input input = new Input();
         Ready ready = new Ready();
 
-        int gameCount = input.gameCount();
         List<Car> cars = ready.createCars(input.carName());
+        int gameCount = input.gameCount();
 
         Stadium stadium = new Stadium(cars, gameCount);
         stadium.playRace();
