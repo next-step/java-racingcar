@@ -10,7 +10,7 @@ public class Input {
         return splitter(testInput);
     }
 
-    public String[] splitter(String input) {
+    private String[] splitter(String input) {
         return input.split(WHITE_SPACE);
     }
 
