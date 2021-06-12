@@ -11,7 +11,7 @@ public class Game {
     public void excute(Cars cars, String count) {
         Drive drive = new Drive(cars);
         RaceResults raceResults = drive.carRacing(Integer.valueOf(count));
-        Output output = new Output(cars, raceResults);
+        Output output = new Output(raceResults);
 
         output.printRaceResult();
     }
