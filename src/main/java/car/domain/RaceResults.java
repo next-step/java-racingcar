@@ -37,8 +37,9 @@ public class RaceResults {
     }
 
     public String getWinner(Car car, int max) {
-        if (car.getKm() == max)
+        if (car.getKm() == max) {
             return car.getName() + ", ";
+        }
         return "";
     }
 }
