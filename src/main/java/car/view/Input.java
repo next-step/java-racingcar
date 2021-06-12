@@ -11,9 +11,6 @@ public class Input {
     private static final int MINIMUM_CAR_AMOUNT = 2;
     private Game game;
 
-    public Input() {
-    }
-
     public Input(Game game) {
         this.game = game;
     }
