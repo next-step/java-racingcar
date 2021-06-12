@@ -32,7 +32,7 @@ public class Output {
         System.out.println("");
     }
 
-    public void printWinner() {
+    private void printWinner() {
         StringBuilder winners = raceResults.getWinners();
 
         System.out.println("최종 우승자: " + winners.substring(0, winners.length() - 2));
