@@ -40,9 +40,7 @@ public class Input {
             return null;
         }
 
-        Cars cars = new Cars(createdCars);
-
-        return cars;
+        return new Cars(createdCars);
     }
 
     public String inputTryCount() {

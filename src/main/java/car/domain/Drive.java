@@ -17,9 +17,8 @@ public class Drive {
         }
 
         Copy copy = new Copy(cars);
-        List<Car> copiedCars = copy.createCopiedCars();
 
-        return copiedCars;
+        return copy.createCopiedCars();
     }
 
     public void moveOrStopCar(MovableStrategy movableStrategy, Car car) {

@@ -8,7 +8,6 @@ public class Cut {
         if (length > NAME_MAX_SIZE) {
             length = NAME_MAX_SIZE;
         }
-        Car car = new Car(carName.substring(0, length), 0);
-        return car;
+        return new Car(carName.substring(0, length), 0);
     }
 }
