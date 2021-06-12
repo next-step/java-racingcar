@@ -11,18 +11,13 @@ public class Drive {
     }
 
     public List<Car> carDrive(MovableStrategy movableStrategy) {
-        for (int i = 0; i < cars.getCars().size(); i++) {
-
-            moveOrStopCar(movableStrategy, cars.getCars().get(i));
+        for (Car car : cars.getCars()) {
+            car.moveOrStopCar(movableStrategy);
         }
 
         Copy copy = new Copy(cars);
 
         return copy.createCopiedCars();
-    }
-
-    public void moveOrStopCar(MovableStrategy movableStrategy, Car car) {
-        car.changeKm(movableStrategy.getRandomNo());
     }
 
     public RaceResults carRacing(int count) {

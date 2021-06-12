@@ -24,4 +24,8 @@ public class Car {
             km = km + 1;
         }
     }
+
+    public void moveOrStopCar(MovableStrategy movableStrategy) {
+        changeKm(movableStrategy.getRandomNo());
+    }
 }
