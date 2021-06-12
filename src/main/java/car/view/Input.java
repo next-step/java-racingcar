@@ -15,7 +15,7 @@ public class Input {
         this.game = game;
     }
 
-    public String carNameinput() {
+    public String carNameInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(\\,)를 기준으로 구분)");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
@@ -28,7 +28,7 @@ public class Input {
     }
 
     public Cars inputCarNames() {
-        String carInput = carNameinput();
+        String carInput = carNameInput();
         String[] carInputs = carInput.split(",");
 
         List<Car> createdCars = game.createCars(carInputs);
