@@ -1,9 +1,6 @@
 package car;
 
-import car.domain.Car;
-import car.domain.Copy;
-import car.domain.Drive;
-import car.domain.RaceResults;
+import car.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -14,15 +11,17 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DriveTest {
-    private List<Car> cars;
+    private Cars cars;
 
     @BeforeEach
     void setUp() {
-        cars = new ArrayList<>();
+        List<Car> tempCars = new ArrayList<>();
 
-        cars.add(new Car("java", 1));
-        cars.add(new Car("php", 2));
-        cars.add(new Car("python", 3));
+        tempCars.add(new Car("java", 1));
+        tempCars.add(new Car("php", 2));
+        tempCars.add(new Car("python", 3));
+
+        cars = new Cars(tempCars);
     }
 
     @ParameterizedTest
@@ -33,7 +32,7 @@ class DriveTest {
         int km = Integer.valueOf(value3);
 
         Drive drive = new Drive(cars);
-        drive.moveOrStopCar(() -> randomNumber, cars.get(index));
+        drive.moveOrStopCar(() -> randomNumber, cars.getCars().get(index));
 
         Copy copy = new Copy(cars);
         List<Car> copiedCars = copy.createCopiedCars();

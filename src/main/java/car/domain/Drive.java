@@ -4,16 +4,16 @@ import java.util.List;
 
 public class Drive {
     private static final int MAXIMUM_RANDOM_NUMBER = 10;
-    private List<Car> cars;
+    private Cars cars;
 
-    public Drive(List<Car> cars) {
+    public Drive(Cars cars) {
         this.cars = cars;
     }
 
     public List<Car> carDrive(MovableStrategy movableStrategy) {
-        for (int i = 0; i < cars.size(); i++) {
+        for (int i = 0; i < cars.getCars().size(); i++) {
 
-            moveOrStopCar(movableStrategy, cars.get(i));
+            moveOrStopCar(movableStrategy, cars.getCars().get(i));
         }
 
         Copy copy = new Copy(cars);

@@ -1,16 +1,17 @@
 package car.view;
 
 import car.domain.Car;
+import car.domain.Cars;
 import car.domain.RaceResult;
 import car.domain.RaceResults;
 
 import java.util.List;
 
 public class Output {
-    private final List<Car> cars;
+    private final Cars cars;
     private final RaceResults raceResults;
 
-    public Output(List<Car> cars, RaceResults raceResults) {
+    public Output(Cars cars, RaceResults raceResults) {
         this.cars = cars;
         this.raceResults = raceResults;
     }

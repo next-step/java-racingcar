@@ -1,6 +1,7 @@
 package car.view;
 
 import car.domain.Car;
+import car.domain.Cars;
 import car.domain.Game;
 
 import java.util.List;
@@ -29,15 +30,17 @@ public class Input {
         return scanner.nextLine();
     }
 
-    public List<Car> inputCarNames() {
+    public Cars inputCarNames() {
         String carInput = carNameinput();
         String[] carInputs = carInput.split(",");
 
-        List<Car> cars = game.createCars(carInputs);
+        List<Car> createdCars = game.createCars(carInputs);
 
-        if (cars.size() < MINIMUM_CAR_AMOUNT) {
+        if (createdCars.size() < MINIMUM_CAR_AMOUNT) {
             return null;
         }
+
+        Cars cars = new Cars(createdCars);
 
         return cars;
     }

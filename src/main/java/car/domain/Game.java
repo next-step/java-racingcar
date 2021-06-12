@@ -8,7 +8,7 @@ import java.util.List;
 public class Game {
     private Cut cut = new Cut();
 
-    public void excute(List<Car> cars, String count) {
+    public void excute(Cars cars, String count) {
         Drive drive = new Drive(cars);
         RaceResults raceResults = drive.carRacing(Integer.valueOf(count));
         Output output = new Output(cars, raceResults);
