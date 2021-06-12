@@ -18,12 +18,6 @@ public class RaceResults {
         raceResults.add(raceResult);
     }
 
-    RaceResult getLastResult() {
-        int lastIndex = raceResults.size() - 1;
-
-        return raceResults.get(lastIndex);
-    }
-
     public StringBuilder getWinners() {
         StringBuilder winners = new StringBuilder();
         int maxKm = 0;
