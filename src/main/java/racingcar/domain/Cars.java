@@ -20,8 +20,7 @@ public class Cars {
         int winnerScore = selectWinnerScore(this.cars);
 
         return this.cars.stream()
-                .filter(cars -> cars.isWinner(winnerScore))
-                .map(cars -> new Car(cars.getName()))
+                .filter(car -> car.isWinner(winnerScore))
                 .collect(Collectors.toList());
     }
 
