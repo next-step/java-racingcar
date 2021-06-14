@@ -3,7 +3,6 @@ package car.domain;
 import java.util.List;
 
 public class Drive {
-    private static final int MAXIMUM_RANDOM_NUMBER = 10;
     private Cars cars;
 
     public Drive(Cars cars) {
@@ -26,7 +25,7 @@ public class Drive {
         RaceResults raceResults = new RaceResults();
 
         while (nowCount < count) {
-            List<Car> drivedCars = carDrive(() -> (int) (Math.random() * MAXIMUM_RANDOM_NUMBER));
+            List<Car> drivedCars = carDrive(new CarMovableStrategy());
 
             RaceResult raceResult = new RaceResult(drivedCars);
 
