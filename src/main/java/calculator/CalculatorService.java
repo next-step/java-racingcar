@@ -13,8 +13,7 @@ public class CalculatorService {
     }
 
     public int calculateSplitedString() {
-        int result = StringsService.calculateSplitedString(splitFormula);
-        return result;
+        return StringsService.calculateSplitedString(splitFormula);
     }
 
 }
