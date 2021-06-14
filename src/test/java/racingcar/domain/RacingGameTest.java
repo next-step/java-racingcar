@@ -11,8 +11,8 @@ public class RacingGameTest {
     private Cars cars = new Cars();
 
     @Test
-    public void 레이싱게임_객체생성(){
-        RacingGame racingGame = new RacingGame("a,b",5);
+    public void 레이싱게임_객체생성() {
+        RacingGame racingGame = new RacingGame("a,b", 5);
         assertThat(racingGame).isInstanceOf(RacingGame.class);
     }
 
@@ -29,8 +29,8 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 레이싱게임_시작(){
-        RacingGame racingGame = new RacingGame("a,b",5);
+    public void 레이싱게임_시작() {
+        RacingGame racingGame = new RacingGame("a,b", 5);
         racingGame.race();
 
         assertThat(true).isEqualTo(racingGame.isEnd());

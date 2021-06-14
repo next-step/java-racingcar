@@ -6,7 +6,6 @@ public class CalculatorMain {
 
         CalculatorService calculatorService = new CalculatorService(inputFormula);
         calculatorService.checkSymbol();
-        int result = calculatorService.calculateSplitedString();
-        CalculatorView.showResult(result);
+        CalculatorView.showResult(calculatorService.calculateSplitedString());
     }
 }

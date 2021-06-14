@@ -9,10 +9,10 @@ public class RacingCarController {
         String carNames = InputView.inputCarInfo();
         int cycle = InputView.inputCycle();
 
-        RacingGame racingGame = new RacingGame(carNames,cycle);
+        RacingGame racingGame = new RacingGame(carNames, cycle);
 
         ResultView.showResult();
-        while (!racingGame.isEnd()){
+        while (!racingGame.isEnd()) {
             racingGame.race();
             ResultView.cycleCarInformation(racingGame.getCars());
         }

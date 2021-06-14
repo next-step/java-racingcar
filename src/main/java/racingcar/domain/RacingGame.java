@@ -32,12 +32,12 @@ public class RacingGame {
     }
 
     private void move() {
-        for(int i=0;i<cars.getCars().size();i++){
+        for (int i = 0; i < cars.getCars().size(); i++) {
             cars.getCars().get(i).move(racingRandom.isMove());
         }
     }
 
-    public boolean isEnd(){
+    public boolean isEnd() {
         return isEnd;
     }
 
