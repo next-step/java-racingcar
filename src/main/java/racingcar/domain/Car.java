@@ -2,6 +2,7 @@ package racingcar.domain;
 
 public class Car {
     private static final int CAR_LENGTH = 5;
+
     private String name;
     private int location;
 
