@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
-    private int cycle;
 
     public Cars() {
         this.cars = new ArrayList<>();
@@ -33,15 +32,7 @@ public class Cars {
                 .getLocation();
     }
 
-    public void setCycle(int cycle) {
-        this.cycle = cycle;
-    }
-
     public List<Car> getCars() {
         return cars;
-    }
-
-    public int getCycle() {
-        return cycle;
     }
 }
