@@ -26,9 +26,10 @@ public class Cars {
 
     private int selectWinnerScore(List<Car> carInfo) {
         return carInfo.stream()
-                .max(Comparator.comparingInt(Car::getLocation))
-                .get()
-                .getLocation();
+                .mapToInt(Car::getLocation)
+                .max()
+                .getAsInt()
+                ;
     }
 
     public List<Car> getCars() {
