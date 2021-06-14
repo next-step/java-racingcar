@@ -29,6 +29,8 @@ public class ResultView {
 
     public static void showWinner(List<Car> winnerNames) {
         System.out.print("최종 우승자 : ");
-        winnerNames.stream().filter(Objects::nonNull).forEach(winner -> System.out.print(winner.getName()));
+        winnerNames.stream()
+                .filter(Objects::nonNull)
+                .forEach(winner -> System.out.print(winner.getName()));
     }
 }
