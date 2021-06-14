@@ -26,4 +26,14 @@ public class CalculatorServiceTest {
         int result = StringsService.calculateSplitedString(splitBlank);
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    public void 연산식을_수행한다() {
+
+        assertThat(5).isEqualTo(연산_기호를_찾는다("+").result(2, 3));
+    }
+
+    private Operation 연산_기호를_찾는다(String symbol) {
+        return Operation.findBySymbol(String.valueOf(symbol));
+    }
 }
