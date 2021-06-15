@@ -1,10 +1,10 @@
-package carracing;
+package carracing.view;
 
-import java.util.List;
+import carracing.controller.RacingGame;
+import carracing.model.Car;
 
 public class Output {
     private static final int CAR_POSITION_FIRST_INDEX = 0;
-    private static final int RACING_COUNT_FIRST_INDEX = 0;
     private static final String DASH = "-";
     private static final String CAR_NAME_POSITION_SEPARATOR = " : ";
     private static final String WINNER_SEPARATOR = ", ";
@@ -25,21 +25,16 @@ public class Output {
         return line;
     }
 
-    public static void showCarsStatus(List<Car> cars, int racingCount) {
-        for (int i = RACING_COUNT_FIRST_INDEX; i < racingCount; i++) {
-            for (Car car : cars) {
-                showCarStatus(car);
-            }
-            System.out.println();
-        }
-    }
-
     public static void showCarStatus(Car car) {
-        System.out.println(car.getCarName() + CAR_NAME_POSITION_SEPARATOR
+        System.out.println(car.getName() + CAR_NAME_POSITION_SEPARATOR
                 + progressCarPosition(car.getPosition()));
     }
 
-    public static void showWinner(CarRacing carRacing) {
-        System.out.println("최종 우승자: " + String.join(WINNER_SEPARATOR, carRacing.makeWinners()));
+    public static void showWinners(RacingGame racingGame) {
+        System.out.println("최종 우승자: " + String.join(WINNER_SEPARATOR, racingGame.getWinners()));
+    }
+
+    public static void breakNewLine() {
+        System.out.println();
     }
 }

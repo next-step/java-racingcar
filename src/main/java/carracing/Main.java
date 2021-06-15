@@ -1,26 +1,28 @@
 package carracing;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import carracing.controller.RacingGame;
+import carracing.model.Car;
+import carracing.view.Input;
+import carracing.view.Output;
 
 public class Main {
+    private static final int RACING_COUNT_FIRST_INDEX = 0;
 
     public static void main(String[] args) {
         Output.showInputCarName();
-        String carName = Input.insertCarName();
-        List<String> CarNames = Arrays.asList(carName.split(","));
-        List<Car> cars = new ArrayList<>();
-        for (String separateCarName : CarNames) {
-            cars.add(new Car(separateCarName));
-        }
-
-        CarRacing carRacing = new CarRacing(cars);
+        String carNameInput = Input.insertCarName();
 
         Output.showInputRacingCount();
         int gameCount = Input.insertGameCount();
-        carRacing.moveCars(gameCount);
-        Output.showCarsStatus(cars, gameCount);
-        Output.showWinner(carRacing);
+
+        RacingGame racingGame = new RacingGame(carNameInput);
+        for (int i = RACING_COUNT_FIRST_INDEX; i < gameCount; i++) {
+            for (Car car : racingGame.getCars()) {
+                racingGame.race(car);
+                Output.showCarStatus(car);
+            }
+            Output.breakNewLine();
+        }
+        Output.showWinners(racingGame);
     }
 }

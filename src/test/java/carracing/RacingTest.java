@@ -1,5 +1,7 @@
 package carracing;
 
+import carracing.model.Car;
+import carracing.model.CarRacing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,14 +11,14 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarRacingTest {
+public class RacingTest {
     private CarRacing carRacing;
     private List<Car> cars;
 
     @BeforeEach
     void setUp() {
-        cars = Arrays.asList(new Car("Acar"), new Car("Bcar"),
-                new Car("Ccar"));
+        cars = Arrays.asList(new Car("Acar", 0), new Car("Bcar", 0),
+                new Car("Ccar", 0));
         carRacing = new CarRacing(cars);
     }
 

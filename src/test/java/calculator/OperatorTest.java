@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class OperatorTest {
     private List<String> formula = new ArrayList<>();
@@ -49,5 +50,17 @@ public class OperatorTest {
         formula.add("3");
         assertThat(2).isEqualTo(Operator.findSymbol(formula.get(1))
                 .calculate(Integer.parseInt(formula.get(0)), Integer.parseInt(formula.get(2))));
+    }
+
+    @DisplayName("모든 숫자는 0으로 나눌 수 없다.")
+    @Test
+    void divideZeroTest() {
+        formula.add("6");
+        formula.add("/");
+        formula.add("0");
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            assertThat(0).isEqualTo(Operator.findSymbol(formula.get(1))
+                    .calculate(Integer.parseInt(formula.get(0)), Integer.parseInt(formula.get(2))));
+        });
     }
 }
