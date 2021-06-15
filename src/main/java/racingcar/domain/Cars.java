@@ -17,9 +17,7 @@ public class Cars {
     }
 
     public void move(RacingRandom racingRandom) {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(racingRandom.isMove());
-        }
+        cars.stream().forEach(car -> car.move(racingRandom.isMove()));
     }
 
     public List<Car> selectWinners() {
