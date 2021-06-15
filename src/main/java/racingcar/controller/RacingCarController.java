@@ -1,15 +1,22 @@
 package racingcar.controller;
 
+import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingCarController {
     public static void main(String[] args) {
-        String carNames = InputView.inputCarInfo();
+        String names = InputView.inputCarInfo();
         int cycle = InputView.inputCycle();
 
-        RacingGame racingGame = new RacingGame(carNames, cycle);
+        Cars cars = new Cars();
+        String[] carNames = names.split(",");
+        for (String carName : carNames) {
+            cars.addCars(carName);
+        }
+
+        RacingGame racingGame = new RacingGame(cars, cycle);
 
         ResultView.showResult();
         while (!racingGame.isEnd()) {

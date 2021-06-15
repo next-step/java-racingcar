@@ -15,6 +15,12 @@ public class Cars {
         cars.add(new Car(carName));
     }
 
+    public void move(RacingRandom racingRandom) {
+        for (int i = 0; i < cars.size(); i++) {
+            cars.get(i).move(racingRandom.isMove());
+        }
+    }
+
     public List<Car> selectWinners() {
         int winnerScore = selectWinnerScore(this.cars);
 
