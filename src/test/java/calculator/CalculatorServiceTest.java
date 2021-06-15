@@ -32,7 +32,7 @@ public class CalculatorServiceTest {
     @Test
     public void 연산식을_수행한다() {
 
-        assertThat(5).isEqualTo(연산_기호를_찾는다("+").result(2, 3));
+        assertThat(연산_기호를_찾는다("+").result(2, 3)).isEqualTo(5);
     }
 
     private Operation 연산_기호를_찾는다(String symbol) {
