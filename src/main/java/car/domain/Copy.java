@@ -1,23 +1,23 @@
-package car;
+package car.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Copy {
-    private List<Car> cars;
+    private Cars cars;
 
-    public Copy(List<Car> cars) {
+    public Copy(Cars cars) {
         this.cars = cars;
     }
 
-    public List<Car> createCopiedCars() {
+    public Cars createCopiedCars() {
         List<Car> copiedCars = new ArrayList<>();
 
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             Car copiedCar = new Car(car.getName(), car.getKm());
             copiedCars.add(copiedCar);
         }
 
-        return copiedCars;
+        return new Cars(copiedCars);
     }
 }

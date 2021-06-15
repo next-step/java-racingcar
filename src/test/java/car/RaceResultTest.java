@@ -1,5 +1,7 @@
 package car;
 
+import car.domain.Car;
+import car.domain.RaceResult;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

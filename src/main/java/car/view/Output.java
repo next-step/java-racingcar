@@ -1,13 +1,15 @@
-package car;
+package car.view;
+
+import car.domain.Car;
+import car.domain.RaceResult;
+import car.domain.RaceResults;
 
 import java.util.List;
 
 public class Output {
-    private final List<Car> cars;
-    private final List<RaceResult> raceResults;
+    private final RaceResults raceResults;
 
-    public Output(List<Car> cars, List<RaceResult> raceResults) {
-        this.cars = cars;
+    public Output(RaceResults raceResults) {
         this.raceResults = raceResults;
     }
 
@@ -30,23 +32,8 @@ public class Output {
         System.out.println("");
     }
 
-    public String getWinner(Car car, int max) {
-        if (car.getKm() == max)
-            return car.getName() + ", ";
-        return "";
-    }
-
-    public void printWinner() {
-        StringBuilder winners = new StringBuilder();
-        int maxKm = 0;
-
-        for (Car car : cars) {
-            maxKm = Math.max(maxKm, car.getKm());
-        }
-
-        for (Car car : cars) {
-            winners.append(getWinner(car, maxKm));
-        }
+    private void printWinner() {
+        StringBuilder winners = raceResults.getWinners();
 
         System.out.println("최종 우승자: " + winners.substring(0, winners.length() - 2));
     }
@@ -54,7 +41,7 @@ public class Output {
     public void printRaceResult() {
         System.out.println("실행 결과");
 
-        for (RaceResult raceResult : raceResults) {
+        for (RaceResult raceResult : raceResults.getRaceResults()) {
             printCars(raceResult);
         }
 

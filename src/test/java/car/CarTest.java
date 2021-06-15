@@ -1,9 +1,14 @@
 package car;
 
+import car.domain.Car;
+import car.domain.Copy;
+import car.domain.Drive;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,6 +44,17 @@ class CarTest {
         int km = car.getKm();
 
         assertThat(Integer.valueOf(expected)).isEqualTo(km);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3,5", "4,6"})
+    void moveOrStopCar(String value1, String value2) {
+        int randomNumber = Integer.valueOf(value1);
+        int km = Integer.valueOf(value2);
+
+        car.moveOrStopCar(() -> randomNumber);
+
+        assertThat(car.getKm()).isEqualTo(km);
     }
 
 }
