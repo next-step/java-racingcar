@@ -26,17 +26,11 @@ public class StringsService {
     public static int calculateSplitedString(String[] splitFormula) {
         int result = Integer.parseInt(splitFormula[0]);
         for (int i = 0; i < splitFormula.length - 2; i += 2) {
-            result = result(splitFormula[i + 1], result, splitFormula[i + 2]);
+            Operation operation = Operation.findBySymbol(splitFormula[i + 1]);
+            int operatedNumber = Integer.parseInt(splitFormula[i + 2]);
+            result = operation.result(result, operatedNumber);
         }
         return result;
-    }
-
-    private static int result(String symbol, int firstNumber, String lastNumber) {
-        return findBySymbol(symbol).result(firstNumber, Integer.parseInt(lastNumber));
-    }
-
-    private static Operation findBySymbol(String symbol) {
-        return Operation.findBySymbol(String.valueOf(symbol));
     }
 
 }
