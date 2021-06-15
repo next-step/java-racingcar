@@ -25,16 +25,16 @@ public class CarsTest {
 
     @Test
     public void selectWinnersTest() {
-        int winnerScore = selectWinnerScore();
+        int winnerLocation = selectWinnerLocation();
 
         List<Car> winners = cars.stream()
-                .filter(car -> car.isWinner(winnerScore))
+                .filter(car -> car.isWinnerLocation(winnerLocation))
                 .collect(Collectors.toList());
 
         assertThat(winners.size()).isEqualTo(1);
     }
 
-    private int selectWinnerScore() {
+    private int selectWinnerLocation() {
         return this.cars.stream()
                 .mapToInt(Car::getLocation)
                 .max()

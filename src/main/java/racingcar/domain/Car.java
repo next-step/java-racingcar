@@ -24,8 +24,8 @@ public class Car {
         }
     }
 
-    public boolean isWinner(int fastCarLocation) {
-        return this.location == fastCarLocation;
+    public boolean isWinnerLocation(int winnerLocation) {
+        return this.location == winnerLocation;
     }
 
     public String getName() {

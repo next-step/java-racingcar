@@ -36,16 +36,16 @@ public class CarTest {
         assertThat(car.getLocation()).isEqualTo(2);
     }
 
-    @DisplayName("우승자를 알 수 있다.")
+    @DisplayName("우승자의 위치가 car 객체의 위치인가를 알 수 있다.")
     @ParameterizedTest
-    @ValueSource(strings = {"hyeon"})
-    public void compareWinnerTest(String name) {
-        Car car = new Car(name);
+    @ValueSource(ints = {2})
+    public void isWinnerLocation(int winnerLocation) {
+        Car car = new Car("hyeon");
 
         car.move(true);
         car.move(true);
         car.move(false);
 
-        assertThat(car.isWinner(car.getLocation())).isTrue();
+        assertThat(car.isWinnerLocation(winnerLocation)).isTrue();
     }
 }
