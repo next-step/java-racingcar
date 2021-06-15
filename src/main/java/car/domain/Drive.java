@@ -16,7 +16,7 @@ public class Drive {
 
         Copy copy = new Copy(cars);
 
-        return copy.createCopiedCars();
+        return copy.createCopiedCars().getCars();
     }
 
     public RaceResults carRacing(int count) {

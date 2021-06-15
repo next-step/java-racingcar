@@ -10,7 +10,7 @@ public class Copy {
         this.cars = cars;
     }
 
-    public List<Car> createCopiedCars() {
+    public Cars createCopiedCars() {
         List<Car> copiedCars = new ArrayList<>();
 
         for (Car car : cars.getCars()) {
@@ -18,6 +18,6 @@ public class Copy {
             copiedCars.add(copiedCar);
         }
 
-        return copiedCars;
+        return new Cars(copiedCars);
     }
 }
