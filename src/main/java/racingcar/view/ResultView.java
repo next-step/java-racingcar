@@ -4,7 +4,7 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -27,9 +27,9 @@ public class ResultView {
     }
 
     public static void showWinner(List<Car> winnerNames) {
-        System.out.print("최종 우승자 : ");
-        winnerNames.stream()
-                .filter(Objects::nonNull)
-                .forEach(winner -> System.out.print(winner.getName()));
+        String names = winnerNames.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.print("최종 우승자 : " + names);
     }
 }
