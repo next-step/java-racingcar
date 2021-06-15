@@ -38,14 +38,8 @@ public class StringTest {
     void string특정_값_가져오기() {
         String abc = "abc";
 
-        assertThatThrownBy(() -> {
-            for (int i = 0; i < abc.length(); i++) {
-                System.out.println(abc.charAt(i));
-            }
-            System.out.println(abc.charAt(1));
-        }).isInstanceOf(IndexOutOfBoundsException.class);
+        assertThatThrownBy(() -> abc.charAt(4))
+            .isInstanceOf(IndexOutOfBoundsException.class);
 
     }
-
-
 }

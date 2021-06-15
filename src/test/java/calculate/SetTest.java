@@ -29,8 +29,7 @@ public class SetTest {
 
     @Test
     void set사이즈_체크() {
-        System.out.println(numbers.size());
-        assertThat(4).isEqualTo(numbers.size());
+        assertThat(numbers.size()).isEqualTo(3);
     }
 
     boolean setTest(int num) {

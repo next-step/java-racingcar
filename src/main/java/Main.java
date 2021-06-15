@@ -1,11 +1,28 @@
-import calculate.CalculateMain;
-import racegame.RacingCarMain;
-import racegame.RacingGame;
+import racegame.Car;
+import racegame.CarGame;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static racegame.CarView.inputGameCount;
+import static racegame.CarView.inputNameList;
+
 
 public class Main {
     public static void main(String[] args) {
-//        new CalculateMain().main(); // 계산기 메인
-//        new RacingCarMain().racemain(); // 레이싱 메인 < 리뷰받기전
-        new RacingCarMain().reviewReflectMain(); // 레이싱 리뷰 받은 후 생성자로 구현
+        String[] nameList = inputNameList();
+        List<Car> carList = new ArrayList<>();
+        for (String carName : nameList) {
+            Car car = new Car(carName, 0);
+            carList.add(car);
+        }
+        CarGame carGame = new CarGame(carList);
+
+        int count = inputGameCount();
+        for (int i = 0; i < count; i++) {
+            carGame.goStepGame();
+        }
+        carGame.winnerCar();
+
     }
 }
