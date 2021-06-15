@@ -1,4 +1,4 @@
-package calculate;
+package calculator;
 
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +47,7 @@ class MyTest {
     void EnumTest() {
         double a = 1, b = 2;
         String method = "*";
-        double result = CalculatorEnum.calculate("+", a, b);
+        double result = Operator.calculate("+", a, b);
 //        System.out.println(CalculateEnum.Operator.values().toString());
 //        for (CalculateEnum.Operator aa : CalculateEnum.Operator.values()) {
 //            System.out.println(aa.toString());

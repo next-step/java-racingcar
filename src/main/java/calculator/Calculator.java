@@ -1,4 +1,4 @@
-package calculate;
+package calculator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,7 +40,7 @@ public class Calculator {
             double num1 = Double.parseDouble(a);
             double num2 = Double.parseDouble(b);
 
-            cal = CalculatorEnum.calculate(ch.get(i.get()), num1, num2);
+            cal = Operator.calculate(ch.get(i.get()), num1, num2);
             System.out.printf("%f %s %f = %f %n", num1, ch.get(i.get()), num2, cal);
             i.set(i.get() + 1);
 //            cal = Integer.parseInt(String.valueOf(cal));
