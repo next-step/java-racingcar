@@ -17,7 +17,6 @@ public class RacingCarController {
         }
 
         RacingGame racingGame = new RacingGame(cars, cycle);
-
         ResultView.showResult();
         while (!racingGame.isEnd()) {
             racingGame.race();
