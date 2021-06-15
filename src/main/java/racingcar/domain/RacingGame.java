@@ -18,15 +18,15 @@ public class RacingGame {
         cars.move(racingRandom);
     }
 
+    public boolean isEnd() {
+        return cycle.isEnd();
+    }
+
     public List<Car> selectWinners() {
         return cars.selectWinners();
     }
 
     public Cars getCars() {
         return cars;
-    }
-
-    public boolean isEnd() {
-        return cycle.isEnd();
     }
 }
