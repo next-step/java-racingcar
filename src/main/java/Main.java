@@ -13,7 +13,7 @@ public class Main {
         String[] nameList = inputNameList();
         List<Car> carList = new ArrayList<>();
         for (String carName : nameList) {
-            Car car = new Car(carName, 0);
+            Car car = new Car(carName);
             carList.add(car);
         }
         CarGame carGame = new CarGame(carList);

@@ -30,16 +30,15 @@ public class CarView {
         for (int i = 0; i < car.getGoStep(); i++) {
             print += "-";
         }
-        System.out.println(car.getName() + "" + print + "입니다");
+        System.out.println(car.getName() + "" + print);
     }
 
     public void winnerPrint(List<Car> carList) {
-        String winner = "";
+        StringBuilder winnerBuilder = new StringBuilder();
         for (Car car : carList) {
-            winner += car.getName() + ",";
+            winnerBuilder.append(car.getName()).append(",");
         }
-        System.out.println(winner.length());
-        System.out.println(winner);
+        String winner = winnerBuilder.toString();
         winner = winner.substring(0, winner.length() - 1);
         System.out.println("승자는 " + winner + "입니다.");
     }
