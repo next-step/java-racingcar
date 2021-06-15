@@ -23,15 +23,15 @@ public class Cars {
     }
 
     public List<Car> selectWinners() {
-        int winnerScore = selectWinnerScore(this.cars);
+        int winnerScore = selectWinnerScore();
 
         return this.cars.stream()
                 .filter(car -> car.isWinner(winnerScore))
                 .collect(Collectors.toList());
     }
 
-    private int selectWinnerScore(List<Car> carInfo) {
-        return carInfo.stream()
+    private int selectWinnerScore() {
+        return cars.stream()
                 .mapToInt(Car::getLocation)
                 .max()
                 .getAsInt()
