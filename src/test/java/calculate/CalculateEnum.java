@@ -47,7 +47,7 @@ class MyTest {
     void EnumTest() {
         double a = 1, b = 2;
         String method = "*";
-        double result = CalculateEnum.calculate("+", a, b);
+        double result = CalculatorEnum.calculate("+", a, b);
 //        System.out.println(CalculateEnum.Operator.values().toString());
 //        for (CalculateEnum.Operator aa : CalculateEnum.Operator.values()) {
 //            System.out.println(aa.toString());

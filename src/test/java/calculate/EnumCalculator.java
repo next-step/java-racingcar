@@ -3,9 +3,8 @@ package calculate;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Optional;
 
-public class EnumCalculate {
+public class EnumCalculator {
     enum Operation {
         EMPTY("없음") {
             @Override
@@ -62,12 +61,5 @@ public class EnumCalculate {
         double result = Arrays.stream(Operation.values()).filter(operation -> operation.symbol == method).findFirst().get().apply(a, b);
 
         System.out.println(result);
-//        System.out.println("abcabcabcabc" + abc);
-//        System.out.println("abcabcabcabc" + abc.toString());
-//        for (Operation op : Operation.values()) {
-//            if (op.symbol == "/") {
-//                System.out.printf("%f %s %f = %f %n", a, op, b, op.apply(a, b));
-//            }
-//        }
     }
 }

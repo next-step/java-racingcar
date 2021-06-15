@@ -10,8 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -51,10 +50,6 @@ public class SetTest {
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(int input, boolean expected) {
         boolean actualValue = numbers.contains(input);
         assertEquals(expected, actualValue);
-
-//        assertDoesNotThrow() > new;
-//            throw new il
-
     }
 
 

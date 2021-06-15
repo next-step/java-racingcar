@@ -1,5 +1,4 @@
-import racegame.Car;
-import racegame.CarGame;
+package racegame;
 
 import java.util.ArrayList;
 import java.util.List;

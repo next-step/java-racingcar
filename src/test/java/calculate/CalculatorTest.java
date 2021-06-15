@@ -4,15 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CalculateTest {
-    Calculate calcul = new Calculate();
+public class CalculatorTest {
+    Calculator calcul = new Calculator();
 
     @Test
     void resultMethod() {
