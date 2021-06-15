@@ -17,7 +17,7 @@ public class Cars {
     }
 
     public void move(RacingRandom racingRandom) {
-        cars.stream().forEach(car -> car.move(racingRandom.isMove()));
+        this.cars.stream().forEach(car -> car.move(racingRandom.isMove()));
     }
 
     public List<Car> selectWinners() {
@@ -29,7 +29,7 @@ public class Cars {
     }
 
     private int selectWinnerScore() {
-        return cars.stream()
+        return this.cars.stream()
                 .mapToInt(Car::getLocation)
                 .max()
                 .getAsInt()
@@ -37,6 +37,6 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return Collections.unmodifiableList(this.cars);
     }
 }

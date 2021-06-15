@@ -12,6 +12,6 @@ public class Cycle {
     }
 
     public boolean isEnd() {
-        return cycle == 0;
+        return this.cycle == 0;
     }
 }

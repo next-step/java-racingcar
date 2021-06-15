@@ -14,19 +14,19 @@ public class RacingGame {
     }
 
     public void race() {
-        cycle.minusCycle();
-        cars.move(racingRandom);
+        this.cycle.minusCycle();
+        this.cars.move(racingRandom);
     }
 
     public boolean isEnd() {
-        return cycle.isEnd();
+        return this.cycle.isEnd();
     }
 
     public List<Car> selectWinners() {
-        return cars.selectWinners();
+        return this.cars.selectWinners();
     }
 
     public Cars getCars() {
-        return cars;
+        return this.cars;
     }
 }
