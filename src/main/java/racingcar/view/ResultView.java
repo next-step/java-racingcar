@@ -16,7 +16,7 @@ public class ResultView {
         for (int i = 0; i < cars.getCars().size(); i++) {
             System.out.print(cars.getCars().get(i).getName() + " : ");
             showCarLocationInfo(cars.getCars().get(i).getLocation());
-            System.out.println("");
+            System.out.println();
         }
     }
 
