@@ -46,6 +46,6 @@ public class CarTest {
         car.move(true);
         car.move(false);
 
-        assertThat(car.isWinnerLocation(winnerLocation)).isTrue();
+        assertThat(car.isMatchedWinnerLocation(winnerLocation)).isTrue();
     }
 }
