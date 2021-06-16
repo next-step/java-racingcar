@@ -6,14 +6,14 @@ import java.util.List;
 public class Award {
 
     public List<Car> findWinner(List<Car> cars) {
-        List<Car> winner = new ArrayList<>();
+        List<Car> result = new ArrayList<>();
         int maxPosition = findMaxPosition(cars);
         for (Car car : cars) {
             if (car.isInPosition(maxPosition)) {
-                winner.add(car);
+                result.add(car);
             }
         }
-        return winner;
+        return result;
     }
 
     private int findMaxPosition(List<Car> cars) {
@@ -24,12 +24,12 @@ public class Award {
         return maxPosition;
     }
 
-    public String winnerIS(List<Car> winner) {
-        StringBuilder winnerIS = new StringBuilder();
-        for(Car car : winner) {
-            winnerIS.append(car.getName()).append(",");
+    public String winnerIS(List<Car> result) {
+        StringBuilder winner = new StringBuilder();
+        for(Car car : result) {
+            winner.append(car.getName()).append(",");
         }
-        winnerIS.deleteCharAt(winnerIS.lastIndexOf(","));
-        return winnerIS.toString();
+        winner.deleteCharAt(winner.lastIndexOf(","));
+        return winner.toString();
     }
 }
