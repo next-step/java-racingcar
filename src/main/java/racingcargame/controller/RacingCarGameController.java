@@ -11,12 +11,10 @@ import java.util.List;
 
 public class RacingCarGameController {
     private static final String SEPARATOR = ",";
-
     private RacingCarGameInputView inputView = new RacingCarGameInputView();
     private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
     private RandomNumber randomNumber = new RandomNumber();
-
-    RacingCars racingCars ;
+    private RacingCars racingCars ;
 
     public void start() {
         racingCars = new RacingCars(createRacingCars());
