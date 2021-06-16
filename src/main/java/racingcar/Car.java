@@ -2,7 +2,6 @@ package racingcar;
 
 public class Car {
     private static final int NAME_LENGTH_LIMIT_VALUE = 5;
-    private static final int MOVING_STANDARD_VALUE = 4;
     private final String name;
     int position;
 
@@ -22,14 +21,10 @@ public class Car {
         }
     }
 
-    public void go(int number) {
-        if (movable(number)) {
+    public void go(boolean isMovable) {
+        if (isMovable) {
             position += 1;
         }
-    }
-
-    private boolean movable(int number) {
-        return number >= MOVING_STANDARD_VALUE;
     }
 
     public int whichOneIsBiggerThan(int position) {
