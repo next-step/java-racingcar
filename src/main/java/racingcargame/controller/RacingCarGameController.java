@@ -26,20 +26,19 @@ public class RacingCarGameController {
     private List<RacingCar> createRacingCars() {
         String carNames = inputView.inputCarNames();
         String[] splitCarNames = splitBySeparator(carNames);
-        List<RacingCar> racingCars = new ArrayList<>();
-        createRacingCarsWithCarNames(racingCars, splitCarNames);
-        return racingCars;
+        return createRacingCarsWithCarNames(splitCarNames);
     }
 
     private String[] splitBySeparator(String carNames) {
         return carNames.split(SEPARATOR);
     }
 
-    private void createRacingCarsWithCarNames(List<RacingCar> racingCars, String[] carNames) {
+    private List<RacingCar> createRacingCarsWithCarNames(String[] carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
         for (String carName : carNames) {
-            RacingCar car = new RacingCar(carName);
-            racingCars.add(car);
+            racingCars.add(new RacingCar(carName));
         }
+        return racingCars;
     }
 
     private void playGame(int roundNumber) {
