@@ -71,7 +71,7 @@ jun : --
 
 **Stadium**
 - [x] 경기장 생성(자동차 목록, 게임 횟수 값을 가짐): `Stadium#Stadium`
-- [x] 난수 생성하기 : `Stadium#drawNumber`
+- [x] 숫자가 4이상인지 확인하기 : `Stadium#isMovable`
 - [x] 자동차 경주하기 : `Stadium#playRace`
 - [x] 자동차 경주 중간 과정 출력하기 : `Stadium#goingProcess`
 - [x] 가장 큰 위치값 찾기 : `Stadium#findMaxPosition`
