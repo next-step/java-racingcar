@@ -10,8 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StadiumTest {
     private final Ready ready = new Ready();
     private final List<Car> cars = ready.createCars("a,b,c");
-    private final int gameCount = 3;
-    private Stadium stadium = new Stadium(cars, gameCount);
+    private final Stadium stadium = new Stadium(cars, 3);
 
     @Test
     @DisplayName("stadium 생성 테스트")
