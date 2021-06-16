@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Input input = new Input();
         Ready ready = new Ready();
+        Input input = new Input();
 
         List<Car> cars = ready.createCars(input.carName());
         int gameCount = input.gameCount();
