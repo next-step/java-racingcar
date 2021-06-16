@@ -1,24 +1,12 @@
 package racingcargame.view;
 
-import racingcargame.model.RacingCar;
-import racingcargame.model.RacingCars;
+import java.util.List;
 
 public class RacingCarGameOutputView {
-    private static final String BAR = "-";
-
-    public void outputRound(RacingCars cars) {
-        for (RacingCar car : cars.getCars()) {
-            System.out.println(car.getName() + " : " + stackUpBars(car.getStep()));
+    public void outputGame(List<String> history) {
+        for (int i = 0; i < history.size(); i++) {
+            System.out.println(history.get(i));
         }
-        System.out.println();
-    }
-
-    private String stackUpBars(int step) {
-        StringBuilder bar = new StringBuilder();
-        for (int i = 0; i < step; i++) {
-            bar.append(BAR);
-        }
-        return bar.toString();
     }
 
     public void outputWinners(String winners) {

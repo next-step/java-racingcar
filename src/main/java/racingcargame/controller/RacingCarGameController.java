@@ -1,8 +1,9 @@
 package racingcargame.controller;
 
+import racingcargame.model.RacingCar;
+import racingcargame.model.RacingCarHistory;
 import racingcargame.model.RacingCars;
 import racingcargame.model.RandomNumber;
-import racingcargame.model.RacingCar;
 import racingcargame.view.RacingCarGameInputView;
 import racingcargame.view.RacingCarGameOutputView;
 
@@ -14,7 +15,8 @@ public class RacingCarGameController {
     private RacingCarGameInputView inputView = new RacingCarGameInputView();
     private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
     private RandomNumber randomNumber = new RandomNumber();
-    private RacingCars racingCars ;
+    private RacingCars racingCars;
+    private RacingCarHistory racingCarHistory = new RacingCarHistory();
 
     public void start() {
         racingCars = new RacingCars(createRacingCars());
@@ -42,11 +44,10 @@ public class RacingCarGameController {
     }
 
     private void playGame(int roundNumber) {
-        System.out.println("\n실행 결과");
         for (int i = 0; i < roundNumber; i++) {
-            racingCars.playRound();
-            outputView.outputRound(racingCars);
+            racingCarHistory.addHistory(racingCars.playRound());
         }
+        outputView.outputGame(racingCarHistory.getHistory());
     }
 
     private void makeResult() {
