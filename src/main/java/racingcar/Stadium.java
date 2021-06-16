@@ -15,14 +15,15 @@ public class Stadium {
 
 
     public void playRace() {
+        System.out.println();
         System.out.println("실행결과");
         for (int i = 0; i < gameCount; i++){
             for (Car car : cars){
                 car.go(isMovable());
                 System.out.println(car.getName() + " : " + goingProcess(car));
             }
+            System.out.println();
         }
-        System.out.println();
     }
 
     private String goingProcess(Car car){
