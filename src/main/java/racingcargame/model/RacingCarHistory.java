@@ -11,9 +11,10 @@ public class RacingCarHistory {
         this.history.add("\n실행 결과");
     }
 
-    public void addHistory(String history) {
-        this.history.add(history);
-        this.history.add("\n");
+    public void addHistory(List<String> historys) {
+        for (String history : historys) {
+            this.history.add(history);
+        }
     }
 
     public List<String> getHistory() {

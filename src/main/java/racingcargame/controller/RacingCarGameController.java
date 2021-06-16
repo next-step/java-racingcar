@@ -45,8 +45,9 @@ public class RacingCarGameController {
 
     private void playGame(int roundNumber) {
         for (int i = 0; i < roundNumber; i++) {
-            racingCarHistory.addHistory(racingCars.playRound());
+            racingCars.playRound();
         }
+        racingCarHistory.addHistory(racingCars.getHistory());
         outputView.outputGame(racingCarHistory.getHistory());
     }
 

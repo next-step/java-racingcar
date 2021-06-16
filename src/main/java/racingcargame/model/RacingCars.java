@@ -7,18 +7,18 @@ public class RacingCars {
     private static final String BAR = "-";
     List<RacingCar> cars;
     RandomNumber randomNumber = new RandomNumber();
+    List<String> history = new ArrayList<>();
 
     public RacingCars(List<RacingCar> cars) {
         this.cars = cars;
     }
 
-    public String playRound() {
-        String history = "";
+    public void playRound() {
         for (RacingCar car : cars) {
             car.move(randomNumber.createRandomNumber());
-            history = car.getName() + " : " + stackUpBars(car.getStep()) + "\n";
+            history.add(car.getName() + " : " + stackUpBars(car.getStep()));
         }
-        return history;
+        history.add("");
     }
 
     private String stackUpBars(int step) {
@@ -49,5 +49,9 @@ public class RacingCars {
 
     public List<RacingCar> getCars() {
         return cars;
+    }
+
+    public List<String> getHistory() {
+        return history;
     }
 }
