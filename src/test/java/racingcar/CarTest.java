@@ -28,7 +28,7 @@ public class CarTest {
     @DisplayName("자동차 전진 테스트")
     public void goTest() {
         // given
-        car.go(5);
+        car.go(true);
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -38,7 +38,7 @@ public class CarTest {
     @DisplayName("자동차 정지 테스트")
     public void stopTest() {
         // given
-        car.go(3);
+        car.go(false);
 
         //then
         assertThat(car.getPosition()).isEqualTo(0);
