@@ -74,9 +74,11 @@ jun : --
 - [x] 숫자가 4이상인지 확인하기 : `Stadium#isMovable`
 - [x] 자동차 경주하기 : `Stadium#playRace`
 - [x] 자동차 경주 중간 과정 출력하기 : `Stadium#goingProcess`
+
+**Award**
 - [x] 가장 큰 위치값 찾기 : `Stadium#findMaxPosition`
-- [x] 자동차 경주 결과 받기 : `Stadium#award`
-- [x] 우승자 이름 받기 : `Stadium#winnerIS`
+- [x] 우승자 목록 생성 : `Stadium#winner`
+- [x] 우승자 이름 출력하기 : `Stadium#winnerIS`
 
 **Application**
 ```text
