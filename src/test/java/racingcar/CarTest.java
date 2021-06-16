@@ -12,7 +12,6 @@ public class CarTest {
     @Test
     @DisplayName("Car 생성자 테스트")
     public void createCarTest() {
-        Car car = new Car("tomas");
         assertThat(car.getName()).isEqualTo("tomas");
         assertThat(car.getPosition()).isEqualTo(0);
     }
