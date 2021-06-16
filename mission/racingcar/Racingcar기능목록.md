@@ -83,11 +83,10 @@ jun : --
 **Application**
 ```text
 1. input : 이름, 게임 횟수 입력받기
-2. Car : 자동차 생성하기
-3. Ready : 자동차 목록 생성하기
-4. Stadium : 경기장 생성하기
-5. Stadium.playRace : 게임하기
-6. Award.winnerIs : 시상식(우승자 발표)
+2. Ready : 자동차 목록 생성하기
+3. Stadium : 경기장 생성하기
+4. Stadium.playRace : 게임하기
+5. Award.winnerIs : 시상식(우승자 발표)
 ```
 
 #### test 클래스
