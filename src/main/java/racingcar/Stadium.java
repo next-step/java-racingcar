@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Stadium {
+    private static final int MOVING_STANDARD_VALUE = 4;
     private final List<Car> cars;
     private final int gameCount;
 
@@ -45,7 +46,7 @@ public class Stadium {
     public void playRace() {
         for (int i = 0; i < gameCount; i++){
             for (Car car : cars){
-                car.go(drawNumber());
+                car.go(isMovable());
                 System.out.println(car.getName() + " : " + goingProcess(car));
             }
         }
@@ -59,7 +60,8 @@ public class Stadium {
         return process.toString();
     }
 
-    private int drawNumber(){
-        return new Random().nextInt(10);
+    private boolean isMovable(){
+        int number = new Random().nextInt(10);
+        return number >= MOVING_STANDARD_VALUE;
     }
 }
