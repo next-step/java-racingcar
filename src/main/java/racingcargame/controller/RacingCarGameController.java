@@ -53,7 +53,7 @@ public class RacingCarGameController {
     }
 
     private void makeResult() {
-        String winners = racingCars.findWinners(racingCars.findMaxScore());
+        String winners = racingCars.findWinners();
         outputView.outputWinners(winners);
     }
 }

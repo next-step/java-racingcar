@@ -17,7 +17,7 @@ public class RacingCars {
         }
     }
 
-    public int findMaxScore() {
+    private int findMaxScore() {
         int maxScore = 0;
         for (RacingCar car : cars) {
             Math.max(maxScore, car.getStep());
@@ -25,10 +25,10 @@ public class RacingCars {
         return maxScore;
     }
 
-    public String findWinners(int maxScore) {
+    public String findWinners() {
         List<String> winners = new ArrayList<>();
         for (RacingCar car : cars) {
-            if (car.isWinner(maxScore)) {
+            if (car.isWinner(findMaxScore())) {
                 winners.add(car.getName());
             }
         }
