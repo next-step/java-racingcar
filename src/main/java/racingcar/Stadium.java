@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -12,35 +11,6 @@ public class Stadium {
     public Stadium(List<Car> cars, int gameCount) {
         this.cars = cars;
         this.gameCount = gameCount;
-    }
-
-    public String winnerIS(List<Car> result) {
-        StringBuilder winnerIS = new StringBuilder();
-        for(Car car : result) {
-            winnerIS.append(car.getName()).append(",");
-        }
-        winnerIS.deleteCharAt(winnerIS.lastIndexOf(","));
-        return winnerIS.toString();
-    }
-
-    public List<Car> award() {
-        List<Car> result = new ArrayList<>();
-        int maxPosition = findMaxPosition();
-        for (Car car : cars) {
-            if (car.isInPosition(maxPosition)) {
-                result.add(car);
-                System.out.println();
-            }
-        }
-        return result;
-    }
-
-    private int findMaxPosition() {
-        int maxPosition = 0;
-        for(Car car : cars) {
-            maxPosition = car.whichOneIsBiggerThan(maxPosition);
-        }
-        return maxPosition;
     }
 
     public void playRace() {
@@ -63,5 +33,9 @@ public class Stadium {
     private boolean isMovable(){
         int number = new Random().nextInt(10);
         return number >= MOVING_STANDARD_VALUE;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
