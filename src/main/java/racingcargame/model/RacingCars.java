@@ -47,10 +47,6 @@ public class RacingCars {
         return String.join(", ", winners);
     }
 
-    public List<RacingCar> getCars() {
-        return cars;
-    }
-
     public List<String> getHistory() {
         return history;
     }
