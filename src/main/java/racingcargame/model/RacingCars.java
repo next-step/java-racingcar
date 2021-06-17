@@ -6,7 +6,6 @@ import java.util.List;
 public class RacingCars {
     private static final String BAR = "-";
     List<RacingCar> cars;
-    RandomNumber randomNumber = new RandomNumber();
     List<String> history = new ArrayList<>();
 
     public RacingCars(List<RacingCar> cars) {
@@ -15,7 +14,7 @@ public class RacingCars {
 
     public void playRound() {
         for (RacingCar car : cars) {
-            car.move(randomNumber.createRandomNumber());
+            car.move(RandomNumber.createRandomNumber());
             history.add(car.getName() + " : " + stackUpBars(car.getStep()));
         }
         history.add("");
