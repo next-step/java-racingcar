@@ -3,7 +3,6 @@ package racingcargame.controller;
 import racingcargame.model.RacingCar;
 import racingcargame.model.RacingCarHistory;
 import racingcargame.model.RacingCars;
-import racingcargame.model.RandomNumber;
 import racingcargame.view.RacingCarGameInputView;
 import racingcargame.view.RacingCarGameOutputView;
 
@@ -14,15 +13,15 @@ public class RacingCarGameController {
     private static final String SEPARATOR = ",";
     private RacingCarGameInputView inputView = new RacingCarGameInputView();
     private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
-    private RandomNumber randomNumber = new RandomNumber();
-    private RacingCars racingCars;
     private RacingCarHistory racingCarHistory = new RacingCarHistory();
 
     public void start() {
-        racingCars = new RacingCars(createRacingCars());
+        RacingCars racingCars = new RacingCars(createRacingCars());
         int roundNumber = inputView.inputRoundNumber();
-        playGame(roundNumber);
-        makeResult();
+        racingCars.playGame(roundNumber);
+        outputView.outputGame(racingCarHistory.getHistory());
+        String winners = racingCars.findWinners();
+        outputView.outputWinners(winners);
     }
 
     private List<RacingCar> createRacingCars() {
@@ -41,18 +40,5 @@ public class RacingCarGameController {
             racingCars.add(new RacingCar(carName));
         }
         return racingCars;
-    }
-
-    private void playGame(int roundNumber) {
-        for (int i = 0; i < roundNumber; i++) {
-            racingCars.playRound();
-        }
-        racingCarHistory.addHistory(racingCars.getHistory());
-        outputView.outputGame(racingCarHistory.getHistory());
-    }
-
-    private void makeResult() {
-        String winners = racingCars.findWinners();
-        outputView.outputWinners(winners);
     }
 }

@@ -6,18 +6,24 @@ import java.util.List;
 public class RacingCars {
     private static final String BAR = "-";
     List<RacingCar> cars;
-    List<String> history = new ArrayList<>();
+    private RacingCarHistory history = new RacingCarHistory();
 
     public RacingCars(List<RacingCar> cars) {
         this.cars = cars;
     }
 
-    public void playRound() {
+    public void playGame(int roundNumber) {
+        for (int i = 0; i < roundNumber; i++) {
+            playRound();
+        }
+    }
+
+    private void playRound() {
         for (RacingCar car : cars) {
             car.move(RandomNumber.createRandomNumber());
-            history.add(car.getName() + " : " + stackUpBars(car.getStep()));
+            history.addHistory(car.getName() + " : " + stackUpBars(car.getStep()));
         }
-        history.add("");
+        history.addHistory("");
     }
 
     private String stackUpBars(int step) {
@@ -44,9 +50,5 @@ public class RacingCars {
             }
         }
         return String.join(", ", winners);
-    }
-
-    public List<String> getHistory() {
-        return history;
     }
 }
