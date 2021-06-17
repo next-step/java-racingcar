@@ -1,19 +1,24 @@
 package carracing.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class CarRacing {
+public class Cars {
     private static final int MAX_POSITION_INITIAL_VALUE = 0;
-    private List<Car> cars;
-    private List<String> winners;
 
-    public CarRacing(List<Car> cars) {
-        this.cars = cars;
+    private List<Car> cars;
+
+    public Cars(List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
+    }
+
+    public void moveCars(Car car) {
+        car.move(RandomNumber.createRandomNumber());
     }
 
     public List<String> makeWinners() {
-        winners = new ArrayList<>();
+        List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.isMaxPosition(calculateWinnerPosition())) {
                 winners.add(car.getName());
@@ -28,5 +33,9 @@ public class CarRacing {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

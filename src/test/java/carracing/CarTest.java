@@ -16,7 +16,7 @@ public class CarTest {
     @BeforeEach
     void setUp() {
         String carName = "Scar";
-        car = new Car(carName, 0);
+        car = new Car(carName);
     }
 
     @DisplayName("차는 이름을 가진다.")

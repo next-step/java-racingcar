@@ -1,39 +1,38 @@
 package carracing.controller;
 
 import carracing.model.Car;
-import carracing.model.CarRacing;
-import carracing.model.RandomNumber;
+import carracing.model.Cars;
+import carracing.view.Input;
+import carracing.view.Output;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
     private static final String CAR_NAME_SEPARATOR = ",";
-    private static final int CAR_POSITION_INITIAL_VALUE = 0;
-    private List<Car> cars = new ArrayList<>();
-    private List<String> winners = new ArrayList<>();
-    private CarRacing carRacing;
+    private static final int RACING_COUNT_FIRST_INDEX = 0;
 
-    public RacingGame(String carNameInput) {
+    public static void run() {
+        Output.showInputCarName();
+        String carNameInput = Input.insertCarName();
+
         List<String> CarNames = Arrays.asList(carNameInput.split(CAR_NAME_SEPARATOR));
+        List<Car> carList = new ArrayList<>();
         for (String carName : CarNames) {
-            cars.add(new Car(carName, CAR_POSITION_INITIAL_VALUE));
+            carList.add(new Car(carName));
         }
-        carRacing = new CarRacing(cars);
-    }
 
-    public void race(Car car) {
-        car.move(RandomNumber.createRandomNumber());
-        winners = carRacing.makeWinners();
-    }
-
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
-    }
-
-    public List<String> getWinners() {
-        return Collections.unmodifiableList(winners);
+        Output.showInputRacingCount();
+        int gameCount = Input.insertGameCount();
+        Cars cars = new Cars(carList);
+        for (int i = RACING_COUNT_FIRST_INDEX; i < gameCount; i++) {
+            for (Car car : cars.getCars()) {
+                cars.moveCars(car);
+                Output.showCarStatus(car);
+            }
+            Output.breakNewLine();
+        }
+        Output.showWinners(cars);
     }
 }

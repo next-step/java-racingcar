@@ -1,7 +1,7 @@
 package carracing.view;
 
-import carracing.controller.RacingGame;
 import carracing.model.Car;
+import carracing.model.Cars;
 
 public class Output {
     private static final int CAR_POSITION_FIRST_INDEX = 0;
@@ -26,12 +26,15 @@ public class Output {
     }
 
     public static void showCarStatus(Car car) {
-        System.out.println(car.getName() + CAR_NAME_POSITION_SEPARATOR
-                + progressCarPosition(car.getPosition()));
+        StringBuilder carStatusBuilder = new StringBuilder();
+        System.out.println(carStatusBuilder.append(car.getName()).append(CAR_NAME_POSITION_SEPARATOR)
+                .append(progressCarPosition(car.getPosition())));
     }
 
-    public static void showWinners(RacingGame racingGame) {
-        System.out.println("최종 우승자: " + String.join(WINNER_SEPARATOR, racingGame.getWinners()));
+    public static void showWinners(Cars cars) {
+        StringBuilder winnersBuilder = new StringBuilder();
+        System.out.println(winnersBuilder.append("최종 우승자: ")
+                .append(String.join(WINNER_SEPARATOR, cars.makeWinners())));
     }
 
     public static void breakNewLine() {

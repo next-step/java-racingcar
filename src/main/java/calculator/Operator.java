@@ -31,6 +31,7 @@ public enum Operator {
 
     private static final String NOT_OPERATOR_EXCEPTION_MESSAGE = "찾아진 입력값이 연산자가 아닙니다.";
     private static final String ZERO_EXCEPTION_MESSAGE = "0으로 나눌 수 없습니다.";
+
     private String symbol;
 
     Operator(String symbol) {
