@@ -20,17 +20,13 @@
 - [test 클래스 코드][J]
 
 
-
-
-
-
 [A]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/StringTest.md
 [B]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/StringTest.java
 [C]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/step1/SetTest.md
 [D]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/step1/SetTest.java
 [E]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/Calculator/Calculator%EA%B8%B0%EB%8A%A5%EB%AA%A9%EB%A1%9D.md
-[F]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/main/java/calculaor
-[G]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/calculaor
+[F]: https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/main/java/calculator
+[G]: https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/test/java/calculator
 [H]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/mission/racingcar/Racingcar%EA%B8%B0%EB%8A%A5%EB%AA%A9%EB%A1%9D.md
-[I]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/main/java/racingCar
-[J]: https://github.com/Data-ssung/java-racingcar/blob/ssungwork/src/test/java/racingCar
+[I]: https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/main/java/racingcar
+[J]: https://github.com/Data-ssung/java-racingcar/tree/ssungwork/src/test/java/racingcar
