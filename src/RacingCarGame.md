@@ -69,13 +69,13 @@ step2
 - [x] 전진한 정도(step)가 가장 높은 값을 구한다.
 - [x] 그 값에 해당하는 자동차의 이름(name)들을 출력한다.
 
-### racingcargame.model.RandomNumber 의 기능
+### RandomNumber 의 기능
 - (Random) random
 - `RandomNumber#createRandomNumber` : 1부터 10 사이의 랜덤한 숫자 생성
 
-### racingcargame.model.RacingCar 의 기능
-- MOVING_CONDITION
-- MAX_LENGTH_OF_NAME
+### RacingCar 의 기능
+- MOVING_CONDITION : 레이싱카 이동조건
+- MAX_LENGTH_OF_NAME : 레이싱카 이름 최대길이
 - (String) name
 - (int) step
 - `RacingCar#RacingCar` : 생성자
@@ -85,33 +85,39 @@ step2
 - `RacingCar#getName` : getter
 - `RacingCar#getStep` : getter
 
-### racingcargame.model.RacingCars 의 기능
+### RacingCars 의 기능
+- BAR 
 - (List<RacingCar>) cars
-- (RandomNumber) randomNumber
+- (RacingCarHistory) history
 - `RacingCars#RacingCars` : 생성자
+- `RacingCars#playGame` : 게임 시작  
 - `RacingCars#playRound` : 라운드 시작
+- `RacingCars#stackUpBars` : 자동차 이동한 정도 나타내기  
 - `RacingCars#findMaxScore` : 최고 점수 반환
 - `RacingCars#findWinners` : 우승자 반환
-- `RacingCars#getCars` : getter
 
-### racingcargame.view.RacingCarGameInputView 의 기능
+### RacingCarHistory 의 기능
+- (List<String>) history 
+- `RacingCarHistory#RacingCarHistory` : 생성자
+- `RacingCarHistory#addHistory` : 실행 결과 한 줄씩 쌓기
+- `RacingCarHistory#getHistory` : getter
+
+### RacingCarGameInputView 의 기능
 - (Scanner) scanner
 - `RacingCarGameInputView#inputCarNames` : 자동차 이름 입력
 - `RacingCarGameInputView#inputRoundNumber` : 횟수 입력
 - `RacingCarGameInputView#checkRoundNumber` : 횟수 확인
 
-### racingcargame.view.RacingCarGameOutputView 의 기능
-- BAR
-- `RacingCarGameOutputView#outputRound` : 한 라운드 출력
-- `RacingCarGameOutputView#stackUpBars` : 스텝마다 작대기 쌓기
+### RacingCarGameOutputView 의 기능
+- `RacingCarGameOutputView#outputGame` : 실행결과 출력
 - `RacingCarGameOutputView#outputWinners` : 우승자 출력
 
-### racingcargame.controller.RacingCarGameController 의 기능
+### RacingCarGameController 의 기능
 - SEPARATOR
-- (RacingCars) racingCars
+- (RacingCarGameInputView) inputView
+- (RacingCarGameOutputView) outputView
+- (RacingCarHistory) racingCarHistory  
 - `RacingCarGameController#start` : 시작. 흐름 제어
 - `RacingCarGameController#createRacingCars` : 입력받은 자동차이름으로 자동차들을 생성
 - `RacingCarGameController#splitBySeparator` : 문자열을 구분자로 분리
 - `RacingCarGameController#createRacingCarsWithCarNames` : 자동차이름들로 자동차들 생성
-- `RacingCarGameController#playGame` : 게임 시작
-- `RacingCarGameController#makeResult` : 우승자 출력
