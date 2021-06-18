@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CalculationTest {
-
+/*
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2,10","2 + 3 * 4,20","3 * 4 / 2,6"})
     @DisplayName("정상 케이스 테스트")
@@ -24,6 +24,9 @@ public class CalculationTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+ */
+
+    /*
     @ParameterizedTest
     @ValueSource(strings = {" ","","^","%"})
     @DisplayName("예외 케이스 테스트")
@@ -35,5 +38,7 @@ public class CalculationTest {
         assertThatIllegalArgumentException().isThrownBy(()
                 -> calculation.calculation(exceptionValue));
     }
+
+ */
 
 }

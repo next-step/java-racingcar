@@ -4,17 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Evaluation {
-    // 문자형을 숫자형으로 변환
     public int convertToNumber(String input) {
         return Integer.parseInt(input);
     }
 
-    // 숫자형을 문자형으로 변환
     public String convertToString(int input) {
         return Integer.toString(input);
     }
 
-    // 사칙연산 부호 평가하기
     public int checkOperator(int firstNum, String operatorValue, int secondNum) {
         Operator operator = new Operator();
         Map<String, Integer> operatorList = new HashMap<>();
@@ -27,7 +24,6 @@ public class Evaluation {
         return operatorList.get(operatorValue);
     }
 
-    // 사칙연산 부호 예외처리 ex) $ # ^
     public int isOperator(int firstNum, String operatorValue, int secondNum) {
         try {
             return checkOperator(firstNum, operatorValue, secondNum);

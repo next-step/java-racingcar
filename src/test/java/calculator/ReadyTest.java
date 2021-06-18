@@ -8,8 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class InputTest {
-    private final Input input = new Input();
+public class ReadyTest {
+    private final Ready ready = new Ready();
     private String testInput;
 
     @BeforeEach
@@ -18,11 +18,11 @@ public class InputTest {
     }
 
     @Test
-    @DisplayName("splitterTest 정상 케이스")
+    @DisplayName("정상 케이스 : 수학 연산식 만들기 테스트")
     void splitterTest() {
         // given
-        String[] expected = {"2", "+", "3"};
-        String[] actual = input.isSplit(testInput);
+        String[] expected = {"2", "+" ,"3"};
+        String[] actual = ready.splitMathQuiz(testInput);
 
         //then
         assertThat(actual).isEqualTo(expected);
@@ -30,10 +30,10 @@ public class InputTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    @DisplayName("splitterTest 예외 케이스")
+    @DisplayName("예외 케이스 : null 값 입력된 경우")
     void isSplitExceptionTest(String testValue) {
         //then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> input.isSplit(testValue));
+                .isThrownBy(() -> ready.splitMathQuiz(testValue));
     }
 }
