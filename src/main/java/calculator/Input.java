@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Input {
     private static final String WHITE_SPACE= " ";
+    private String stringValue;
 
-    public String inputValue() {
+    public Input() {
         System.out.println("문자열 계산식을 입력해주세요 :");
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine().replaceAll(" ","");
+        this.stringValue =  scanner.nextLine().replaceAll(" ","");
     }
 
     public String[] isSplit(String testInput) {
