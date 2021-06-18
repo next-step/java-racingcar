@@ -8,8 +8,7 @@ public class Input {
     public String inputValue() {
         System.out.println("문자열 계산식을 입력해주세요 :");
         Scanner scanner = new Scanner(System.in);
-        String value = scanner.next();
-        return value.replaceAll(" ","");
+        return scanner.nextLine().replaceAll(" ","");
     }
 
     public String[] isSplit(String testInput) {
