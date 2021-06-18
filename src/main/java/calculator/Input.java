@@ -1,29 +1,27 @@
 package calculator;
 
+
 import java.util.Scanner;
 
 public class Input {
-    private static final String WHITE_SPACE= " ";
-    private String stringValue;
-
-    public Input() {
+    public static String mathQuiz() {
         System.out.println("문자열 계산식을 입력해주세요 :");
         Scanner scanner = new Scanner(System.in);
-        this.stringValue =  scanner.nextLine().replaceAll(" ","");
+        String value = exchangeWhiteSpace(scanner.nextLine());
+        validateBlank(value);
+        return value;
     }
 
-    public String[] isSplit(String testInput) {
-        if (checkBlank(testInput)) {
-            throw new IllegalArgumentException();
+    private static String exchangeWhiteSpace(String input) {
+        if (input.equals(" ")) {
+            return input.replace(" ", "");
         }
-        return splitter(testInput);
+        return input;
     }
 
-    private String[] splitter(String input) {
-        return input.split(WHITE_SPACE);
-    }
-
-    private Boolean checkBlank(String blankValue) {
-        return (blankValue == null || blankValue.equals(""));
+    private static void validateBlank(String input) {
+        if (input == null || input.equals("")) {
+            throw new IllegalArgumentException("입력 값이 없습니다.");
+        }
     }
 }
