@@ -25,4 +25,25 @@ public class CycleTest {
     public void inputMinusCycleTest(){
         assertThrows(IllegalArgumentException.class, () -> new Cycle(-1));
     }
+
+    @DisplayName("시도 횟수가 줄어들면서 게임이 끝나지 않았다는 것을 알 수 있다.")
+    @Test
+    public void isPlayingTest(){
+        Cycle cycle = new Cycle(3);
+        cycle.minus();
+        cycle.minus();
+
+        assertThat(cycle.isPlaying()).isFalse();
+    }
+
+    @DisplayName("시도 횟수가 줄어들면서 게임이 끝났다는 것을 알 수 있다.")
+    @Test
+    public void isNotPlayingTest(){
+        Cycle cycle = new Cycle(3);
+        cycle.minus();
+        cycle.minus();
+        cycle.minus();
+
+        assertThat(cycle.isPlaying()).isTrue();
+    }
 }
