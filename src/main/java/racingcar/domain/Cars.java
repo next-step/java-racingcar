@@ -20,7 +20,7 @@ public class Cars {
     }
 
     public void move(RacingRandom racingRandom) {
-        this.cars.stream().forEach(car -> car.move(racingRandom.isMove()));
+        this.cars.forEach(car -> car.move(racingRandom.isMove()));
     }
 
     public List<Car> selectWinners() {
