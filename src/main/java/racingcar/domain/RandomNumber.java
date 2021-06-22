@@ -4,13 +4,11 @@ import java.util.Random;
 
 public class RandomNumber {
     private static final int RACING_NUMBER = 10;
-    private static final int MOVABLE_CONDITION = 4;
 
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
-    public boolean isMove() {
-        int randomNumber = random.nextInt(RACING_NUMBER);
-        return randomNumber >= MOVABLE_CONDITION;
+    public static int createRandomNumber() {
+        return RANDOM.nextInt(RACING_NUMBER);
     }
 
 }
