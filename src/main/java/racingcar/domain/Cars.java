@@ -19,8 +19,8 @@ public class Cars {
         cars.add(new Car(carName));
     }
 
-    public void move(RacingRandom racingRandom) {
-        this.cars.forEach(car -> car.move(racingRandom.isMove()));
+    public void move(RandomNumber randomNumber) {
+        this.cars.forEach(car -> car.move(randomNumber.isMove()));
     }
 
     public List<Car> selectWinners() {

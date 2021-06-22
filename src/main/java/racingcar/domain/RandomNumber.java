@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Random;
 
-public class RacingRandom {
+public class RandomNumber {
     private static final int RACING_NUMBER = 10;
     private static final int MOVABLE_CONDITION = 4;
 

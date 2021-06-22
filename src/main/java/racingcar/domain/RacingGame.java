@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.List;
 
 public class RacingGame {
-    private static RacingRandom racingRandom = new RacingRandom();
+    private static RandomNumber randomNumber = new RandomNumber();
 
     private Cars cars;
     private Cycle cycle;
@@ -15,7 +15,7 @@ public class RacingGame {
 
     public void race() {
         this.cycle.minus();
-        this.cars.move(racingRandom);
+        this.cars.move(randomNumber);
     }
 
     public boolean isPlaying() {
