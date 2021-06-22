@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-    private static final int CAR_LENGTH = 5;
+    private static final int CAR_NAME_LENGTH = 5;
     private static final String INVALID_NAME_MESSAGE = "자동차의 이름은 5자를 초과할 수 없다.";
 
     private String name;
@@ -14,7 +14,7 @@ public class Car {
     }
 
     public void invalidedName(String name) {
-        if (name.length() > CAR_LENGTH) {
+        if (name.length() > CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(INVALID_NAME_MESSAGE);
         }
     }
