@@ -8,9 +8,9 @@ public class RacingGame {
     private Cars cars;
     private Cycle cycle;
 
-    public RacingGame(Cars cars, int cycle) {
+    public RacingGame(Cars cars, Cycle cycle) {
         this.cars = cars;
-        this.cycle = new Cycle(cycle);
+        this.cycle = cycle;
     }
 
     public void race() {

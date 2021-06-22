@@ -8,11 +8,14 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars() {
+    public Cars(String[] names) {
         this.cars = new ArrayList<>();
+        for(String name : names){
+            addCars(name);
+        }
     }
 
-    public void addCars(String carName) {
+    private void addCars(String carName) {
         cars.add(new Car(carName));
     }
 
