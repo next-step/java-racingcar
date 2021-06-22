@@ -23,29 +23,35 @@ public class CarTest {
         assertThrows(IllegalArgumentException.class, () -> new Car(name));
     }
 
-    @DisplayName("자동차는 움직일 수 있다.")
+    @DisplayName("자동차는 이동한다.")
     @ParameterizedTest
     @ValueSource(strings = {"hyeon"})
     public void moveTest(String name) {
         Car car = new Car(name);
-
         car.move(true);
         car.move(true);
-        car.move(false);
 
         assertThat(car.getLocation()).isEqualTo(2);
     }
 
-    @DisplayName("우승자의 위치가 car 객체의 위치인가를 알 수 있다.")
+    @DisplayName("자동차는 이동하지않는다.")
     @ParameterizedTest
-    @ValueSource(ints = {2})
-    public void isWinnerLocation(int winnerLocation) {
-        Car car = new Car("hyeon");
-
-        car.move(true);
-        car.move(true);
+    @ValueSource(strings = {"hyeon"})
+    public void notMoveTest(String name) {
+        Car car = new Car(name);
         car.move(false);
 
-        assertThat(car.isSameLocation(winnerLocation)).isTrue();
+        assertThat(car.getLocation()).isEqualTo(0);
+    }
+
+    @DisplayName("우승위치가 car 객체의 위치인가를 알 수 있다.")
+    @ParameterizedTest
+    @ValueSource(ints = {2})
+    public void isSameLocationTest(int location) {
+        Car car = new Car("hyeon");
+        car.move(true);
+        car.move(true);
+
+        assertThat(car.isSameLocation(location)).isTrue();
     }
 }
