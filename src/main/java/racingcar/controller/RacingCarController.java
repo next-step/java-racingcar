@@ -8,7 +8,7 @@ import racingcar.view.ResultView;
 
 public class RacingCarController {
     public static void main(String[] args) {
-        String names = InputView.inputCarInfo();
+        String names = InputView.inputCarNames();
         Cycle cycle = new Cycle(InputView.inputCycle());
 
         Cars cars = new Cars(names.split(","));
