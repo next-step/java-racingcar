@@ -17,7 +17,7 @@ public class RacingCarController {
         ResultView.showResult();
         while (!racingGame.isEnd()) {
             racingGame.race();
-            ResultView.showCarInformationForCycle(racingGame.getCars());
+            ResultView.showCarInformationDuringCycle(racingGame.getCars());
         }
         ResultView.showWinner(racingGame.selectWinners());
     }
