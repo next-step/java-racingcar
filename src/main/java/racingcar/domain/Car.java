@@ -13,7 +13,7 @@ public class Car {
         this.location = 0;
     }
 
-    public void invalidedName(String name) {
+    private void invalidedName(String name) {
         if (name.length() > CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(INVALID_NAME_MESSAGE);
         }
