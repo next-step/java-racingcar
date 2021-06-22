@@ -1,15 +1,17 @@
 package carracing;
 
-import carracing.model.RandomNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomNumberTest {
+public class CarStrategyTest {
     @DisplayName("난수는 0~9사이의 정수이다.")
     @Test
     void createRandomNumberTest() {
-        assertThat(RandomNumber.createRandomNumber()).isBetween(0, 9);
+        Random random = new Random();
+        assertThat(random.nextInt(10)).isBetween(0, 9);
     }
 }

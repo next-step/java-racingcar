@@ -1,9 +1,9 @@
 package carracing;
 
-import carracing.controller.RacingGame;
+import carracing.controller.RacingGameController;
 
 public class Main {
     public static void main(String[] args) {
-        RacingGame.run();
+        RacingGameController.run();
     }
 }

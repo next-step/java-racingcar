@@ -37,14 +37,14 @@ public class CarTest {
     @DisplayName("차는 난수가 4이상일 때 움직인다.")
     @Test
     void moveTest() {
-        car.move(4);
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName("차는 난수가 3이하일 때 멈춘다.")
     @Test
     void stopTest() {
-        car.move(3);
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 }

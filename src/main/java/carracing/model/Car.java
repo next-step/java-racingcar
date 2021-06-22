@@ -25,14 +25,14 @@ public class Car {
         }
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber >= MOVE_CONDITION) {
+    public void move(final MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             this.position++;
         }
     }
 
-    public boolean isMaxPosition(int maxPosition) {
-        return this.position == maxPosition;
+    public boolean isIn(int position) {
+        return this.position == position;
     }
 
     public String getName() {

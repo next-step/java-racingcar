@@ -1,7 +1,8 @@
 package carracing.view;
 
 import carracing.model.Car;
-import carracing.model.Cars;
+
+import java.util.List;
 
 public class Output {
     private static final int CAR_POSITION_FIRST_INDEX = 0;
@@ -17,6 +18,12 @@ public class Output {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public static void showCarStatus(Car car) {
+        StringBuilder carStatusBuilder = new StringBuilder();
+        System.out.println(carStatusBuilder.append(car.getName()).append(CAR_NAME_POSITION_SEPARATOR)
+                .append(progressCarPosition(car.getPosition())));
+    }
+
     private static StringBuilder progressCarPosition(int position) {
         StringBuilder line = new StringBuilder();
         for (int i = CAR_POSITION_FIRST_INDEX; i < position; i++) {
@@ -25,16 +32,10 @@ public class Output {
         return line;
     }
 
-    public static void showCarStatus(Car car) {
-        StringBuilder carStatusBuilder = new StringBuilder();
-        System.out.println(carStatusBuilder.append(car.getName()).append(CAR_NAME_POSITION_SEPARATOR)
-                .append(progressCarPosition(car.getPosition())));
-    }
-
-    public static void showWinners(Cars cars) {
+    public static void showWinners(List<String> winners) {
         StringBuilder winnersBuilder = new StringBuilder();
         System.out.println(winnersBuilder.append("최종 우승자: ")
-                .append(String.join(WINNER_SEPARATOR, cars.makeWinners())));
+                .append(String.join(WINNER_SEPARATOR, winners)));
     }
 
     public static void breakNewLine() {
