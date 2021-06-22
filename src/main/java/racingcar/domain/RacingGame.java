@@ -14,7 +14,7 @@ public class RacingGame {
     }
 
     public void race() {
-        this.cycle.minusCycle();
+        this.cycle.minus();
         this.cars.move(racingRandom);
     }
 

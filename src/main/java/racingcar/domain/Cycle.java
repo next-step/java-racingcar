@@ -21,7 +21,7 @@ public class Cycle {
         }
     }
 
-    public void minusCycle() {
+    public void minus() {
         this.cycle--;
     }
 
