@@ -7,20 +7,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
-    private static final String RESULT_MESSGAE = "실행결과";
+    private static final String RESULT_MESSAGE = "실행결과";
     private static final String CAR_NAME_SEPARATOR = " : ";
     private static final String HYPHEN = "-";
     private static final String WINNER_NAMES_SEPARATOR = ", ";
     private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
     public static void showResult() {
-        System.out.println(RESULT_MESSGAE);
+        System.out.println(RESULT_MESSAGE);
     }
 
     public static void showCarInformationDuringCycle(Cars cars) {
-        for (int i = 0; i < cars.getCars().size(); i++) {
-            System.out.print(cars.getCars().get(i).getName() + CAR_NAME_SEPARATOR);
-            showCarLocationInfo(cars.getCars().get(i).getLocation());
+        for (Car car : cars.getCars()) {
+            System.out.print(car.getName() + CAR_NAME_SEPARATOR);
+            showCarLocationInfo(car.getLocation());
             System.out.println();
         }
     }
@@ -31,8 +31,8 @@ public class ResultView {
         }
     }
 
-    public static void showWinner(List<Car> winnerNames) {
-        String names = winnerNames.stream()
+    public static void showWinner(List<Car> winners) {
+        String names = winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(WINNER_NAMES_SEPARATOR));
         System.out.print(WINNER_MESSAGE + names);
