@@ -17,7 +17,7 @@ public class ResultView {
         System.out.println(RESULT_MESSGAE);
     }
 
-    public static void cycleCarInformation(Cars cars) {
+    public static void showCarInformationForCycle(Cars cars) {
         for (int i = 0; i < cars.getCars().size(); i++) {
             System.out.print(cars.getCars().get(i).getName() + CAR_NAME_SEPARATOR);
             showCarLocationInfo(cars.getCars().get(i).getLocation());
