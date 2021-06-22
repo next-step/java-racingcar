@@ -27,7 +27,7 @@ public class Cars {
         int winnerLocation = selectWinnerLocation();
 
         return this.cars.stream()
-                .filter(car -> car.isMatchedWinnerLocation(winnerLocation))
+                .filter(car -> car.isSameLocation(winnerLocation))
                 .collect(Collectors.toList());
     }
 

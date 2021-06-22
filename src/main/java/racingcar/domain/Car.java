@@ -25,8 +25,8 @@ public class Car {
         }
     }
 
-    public boolean isMatchedWinnerLocation(int winnerLocation) {
-        return this.location == winnerLocation;
+    public boolean isSameLocation(int location) {
+        return this.location == location;
     }
 
     public String getName() {

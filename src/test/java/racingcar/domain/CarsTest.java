@@ -28,7 +28,7 @@ public class CarsTest {
         int winnerLocation = selectWinnerLocation();
 
         List<Car> winners = cars.stream()
-                .filter(car -> car.isMatchedWinnerLocation(winnerLocation))
+                .filter(car -> car.isSameLocation(winnerLocation))
                 .collect(Collectors.toList());
 
         assertThat(winners.size()).isEqualTo(1);
