@@ -1,10 +1,11 @@
-package carracing;
+package carracing.view;
+
+import carracing.model.Car;
 
 import java.util.List;
 
 public class Output {
     private static final int CAR_POSITION_FIRST_INDEX = 0;
-    private static final int RACING_COUNT_FIRST_INDEX = 0;
     private static final String DASH = "-";
     private static final String CAR_NAME_POSITION_SEPARATOR = " : ";
     private static final String WINNER_SEPARATOR = ", ";
@@ -17,6 +18,12 @@ public class Output {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
+    public static void showCarStatus(Car car) {
+        StringBuilder carStatusBuilder = new StringBuilder();
+        System.out.println(carStatusBuilder.append(car.getName()).append(CAR_NAME_POSITION_SEPARATOR)
+                .append(progressCarPosition(car.getPosition())));
+    }
+
     private static StringBuilder progressCarPosition(int position) {
         StringBuilder line = new StringBuilder();
         for (int i = CAR_POSITION_FIRST_INDEX; i < position; i++) {
@@ -25,21 +32,13 @@ public class Output {
         return line;
     }
 
-    public static void showCarsStatus(List<Car> cars, int racingCount) {
-        for (int i = RACING_COUNT_FIRST_INDEX; i < racingCount; i++) {
-            for (Car car : cars) {
-                showCarStatus(car);
-            }
-            System.out.println();
-        }
+    public static void showWinners(List<String> winners) {
+        StringBuilder winnersBuilder = new StringBuilder();
+        System.out.println(winnersBuilder.append("최종 우승자: ")
+                .append(String.join(WINNER_SEPARATOR, winners)));
     }
 
-    public static void showCarStatus(Car car) {
-        System.out.println(car.getCarName() + CAR_NAME_POSITION_SEPARATOR
-                + progressCarPosition(car.getPosition()));
-    }
-
-    public static void showWinner(CarRacing carRacing) {
-        System.out.println("최종 우승자: " + String.join(WINNER_SEPARATOR, carRacing.makeWinners()));
+    public static void breakNewLine() {
+        System.out.println();
     }
 }

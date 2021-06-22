@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.model.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,29 +22,29 @@ public class CarTest {
     @DisplayName("차는 이름을 가진다.")
     @Test
     void CarNameTest() {
-        assertThat(car.getCarName()).isEqualTo("Scar");
+        assertThat(car.getName()).isEqualTo("Scar");
     }
 
-    @DisplayName("차의 이름의 길이는 5자 이하이다.")
+    @DisplayName("차의 이름의 길이는 5자 미만이다.")
     @ParameterizedTest
     @ValueSource(strings = {"koCar", "jpCar", "cnCar"})
     void nameCheckTest(String carName) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            car = new Car(carName);
+            car = new Car(carName, 0);
         });
     }
 
     @DisplayName("차는 난수가 4이상일 때 움직인다.")
     @Test
     void moveTest() {
-        car.move(4);
+        car.move(() -> true);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName("차는 난수가 3이하일 때 멈춘다.")
     @Test
     void stopTest() {
-        car.move(3);
+        car.move(() -> false);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 }
