@@ -15,7 +15,7 @@ public class RacingCarController {
 
         RacingGame racingGame = new RacingGame(cars, cycle);
         ResultView.showResult();
-        while (!racingGame.isEnd()) {
+        while (!racingGame.isPlaying()) {
             racingGame.race();
             ResultView.showCarInformationDuringCycle(racingGame.getCars());
         }

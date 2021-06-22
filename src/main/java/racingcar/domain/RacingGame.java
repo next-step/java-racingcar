@@ -18,8 +18,8 @@ public class RacingGame {
         this.cars.move(racingRandom);
     }
 
-    public boolean isEnd() {
-        return this.cycle.isEnd();
+    public boolean isPlaying() {
+        return this.cycle.isPlaying();
     }
 
     public List<Car> selectWinners() {

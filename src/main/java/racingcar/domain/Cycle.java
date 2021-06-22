@@ -25,7 +25,7 @@ public class Cycle {
         this.cycle--;
     }
 
-    public boolean isEnd() {
+    public boolean isPlaying() {
         return this.cycle == 0;
     }
 }
