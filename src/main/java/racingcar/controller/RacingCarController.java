@@ -10,7 +10,6 @@ public class RacingCarController {
     public static void main(String[] args) {
         String names = InputView.inputCarNames();
         Cycle cycle = new Cycle(InputView.inputCycle());
-
         Cars cars = new Cars(names.split(","));
 
         RacingGame racingGame = new RacingGame(cars, cycle);
