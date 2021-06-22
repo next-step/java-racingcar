@@ -12,11 +12,11 @@ public class Cycle {
         this.cycle = cycle;
     }
 
-    private void invalidateCycle(int cycle){
-        if(cycle == ZERO){
+    private void invalidateCycle(int cycle) {
+        if (cycle == ZERO) {
             throw new IllegalArgumentException(INVALIDATE_ZERO_CYCLE_MESSAGE);
         }
-        if(cycle < ZERO){
+        if (cycle < ZERO) {
             throw new IllegalArgumentException(INVALIDATE_MINUS_CYCLE_MESSAGE);
         }
     }

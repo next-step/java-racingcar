@@ -10,7 +10,7 @@ public class Cars {
 
     public Cars(String[] names) {
         this.cars = new ArrayList<>();
-        for(String name : names){
+        for (String name : names) {
             addCars(name);
         }
     }

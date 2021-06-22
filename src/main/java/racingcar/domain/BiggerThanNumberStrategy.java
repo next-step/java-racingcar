@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class BiggerThanNumberStrategy implements MovableStrategy{
+public class BiggerThanNumberStrategy implements MovableStrategy {
     private static final int MOVABLE_CONDITION = 4;
 
     @Override
