@@ -15,8 +15,8 @@ public class Cars {
         }
     }
 
-    private void addCars(String carName) {
-        cars.add(new Car(carName));
+    private void addCars(String name) {
+        cars.add(new Car(name));
     }
 
     public void move(RandomNumber randomNumber) {

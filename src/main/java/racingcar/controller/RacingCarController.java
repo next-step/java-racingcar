@@ -8,9 +8,9 @@ import racingcar.view.ResultView;
 
 public class RacingCarController {
     public static void main(String[] args) {
-        String names = InputView.inputCarNames();
+        String name = InputView.inputCarNames();
         Cycle cycle = new Cycle(InputView.inputCycle());
-        Cars cars = new Cars(names.split(","));
+        Cars cars = new Cars(name.split(","));
 
         RacingGame racingGame = new RacingGame(cars, cycle);
         ResultView.showResult();
