@@ -2,7 +2,7 @@ package racing.racingrebuild;
 
 import java.util.Random;
 
-public class DoSomthing {
+public class DoSomething {
     //5글자인지 판단하는 함수 (5글자 초과면 4글자로 자르기)
     public String excess(String name) {
         if (name.length() > 4) {

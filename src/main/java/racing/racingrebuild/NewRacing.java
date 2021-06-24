@@ -3,7 +3,7 @@ package racing.racingrebuild;
 import java.util.*;
 
 public class NewRacing {
-    DoSomthing doSomething = new DoSomthing();
+    DoSomething doSomething = new DoSomething();
     //쪼개는 함수
     public ArrayList<Car> splitName(String allName) {
         ArrayList<Car> car = new ArrayList<>();
@@ -27,7 +27,7 @@ public class NewRacing {
     private ArrayList<Car> doRace(ArrayList<Car> splitName) {
         int[] plushyphen = doSomething.randomNumber(splitName.size());
         String[] str = new String[splitName.size()];
-        DoSomthing doSomthing = new DoSomthing();
+        DoSomething doSomthing = new DoSomething();
         if (plushyphen != null) {
             for (int i = 0; i < splitName.size(); i++) {
                 splitName.get(i).move(plushyphen[i]);
