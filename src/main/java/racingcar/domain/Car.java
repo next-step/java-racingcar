@@ -1,19 +1,22 @@
 package racingcar.domain;
 
 public class Car {
-    private static final int CAR_LENGTH = 5;
+    private static final int INITIALIZE_LOCATION = 0;
+    private static final int CAR_NAME_LENGTH = 5;
+    private static final String INVALID_NAME_MESSAGE = "자동차의 이름은 5자를 초과할 수 없다.";
+
     private String name;
     private int location;
 
     public Car(String name) {
         invalidedName(name);
         this.name = name;
-        this.location = 0;
+        this.location = INITIALIZE_LOCATION;
     }
 
-    public void invalidedName(String name) {
-        if (name.length() > CAR_LENGTH) {
-            throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없다.");
+    private void invalidedName(String name) {
+        if (name.length() > CAR_NAME_LENGTH) {
+            throw new IllegalArgumentException(INVALID_NAME_MESSAGE);
         }
     }
 
@@ -23,7 +26,7 @@ public class Car {
         }
     }
 
-    public boolean isWinner(int location) {
+    public boolean isSameLocation(int location) {
         return this.location == location;
     }
 

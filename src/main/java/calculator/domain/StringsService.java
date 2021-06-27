@@ -1,4 +1,4 @@
-package calculator;
+package calculator.domain;
 
 import java.util.regex.Pattern;
 
@@ -26,7 +26,9 @@ public class StringsService {
     public static int calculateSplitedString(String[] splitFormula) {
         int result = Integer.parseInt(splitFormula[0]);
         for (int i = 0; i < splitFormula.length - 2; i += 2) {
-            result = Operation.findBySymbol(String.valueOf(splitFormula[i + 1].charAt(0))).result(result, Integer.parseInt(splitFormula[i + 2]));
+            Operation operation = Operation.findBySymbol(splitFormula[i + 1]);
+            int operatedNumber = Integer.parseInt(splitFormula[i + 2]);
+            result = operation.result(result, operatedNumber);
         }
         return result;
     }

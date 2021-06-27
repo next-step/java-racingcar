@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.domain.Operation;
+import calculator.domain.StringsService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -25,5 +27,15 @@ public class CalculatorServiceTest {
         String[] splitBlank = {"2", "+", "3", "*", "4", "/", "2"};
         int result = StringsService.calculateSplitedString(splitBlank);
         assertThat(result).isEqualTo(10);
+    }
+
+    @Test
+    public void 연산식을_수행한다() {
+
+        assertThat(연산_기호를_찾는다("+").result(2, 3)).isEqualTo(5);
+    }
+
+    private Operation 연산_기호를_찾는다(String symbol) {
+        return Operation.findBySymbol(String.valueOf(symbol));
     }
 }

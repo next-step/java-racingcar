@@ -2,39 +2,39 @@ package racingcar.view;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.RacingRandom;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ResultView {
-    private static RacingRandom racingRandom = new RacingRandom();
+    private static final String RESULT_MESSAGE = "실행결과";
+    private static final String CAR_NAME_SEPARATOR = " : ";
+    private static final String HYPHEN = "-";
+    private static final String WINNER_NAMES_SEPARATOR = ", ";
+    private static final String WINNER_MESSAGE = "최종 우승자 : ";
 
-    public static void showResult(Cars cars) {
-        System.out.println("실행결과");
-        for (int i = 0; i < cars.getCycle(); i++) {
-            cycleCarInformation(cars.getCars());
-        }
+    public static void showResult() {
+        System.out.println(RESULT_MESSAGE);
     }
 
-    private static void cycleCarInformation(List<Car> carInfo) {
-        for (int i = 0; i < carInfo.size(); i++) {
-            carInfo.get(i).move(racingRandom.isMove());
-
-            System.out.print(carInfo.get(i).getName() + " : ");
-            showCarLocationInfo(carInfo.get(i).getLocation());
-            System.out.println("");
+    public static void showCarInformationDuringCycle(Cars cars) {
+        for (Car car : cars.getCars()) {
+            System.out.print(car.getName() + CAR_NAME_SEPARATOR);
+            showCarLocationInfo(car.getLocation());
+            System.out.println();
         }
     }
 
     private static void showCarLocationInfo(int moveCount) {
         for (int i = 0; i < moveCount; i++) {
-            System.out.print("-");
+            System.out.print(HYPHEN);
         }
     }
 
-    public static void showWinner(List<Car> winnerNames) {
-        System.out.print("최종 우승자 : ");
-        winnerNames.stream().filter(Objects::nonNull).forEach(winner -> System.out.print(winner.getName()));
+    public static void showWinner(List<Car> winners) {
+        String names = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(WINNER_NAMES_SEPARATOR));
+        System.out.print(WINNER_MESSAGE + names);
     }
 }

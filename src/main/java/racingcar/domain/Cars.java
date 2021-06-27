@@ -1,47 +1,45 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
-    private int cycle;
 
-    public Cars() {
+    public Cars(String[] names) {
         this.cars = new ArrayList<>();
+        for (String name : names) {
+            addCars(name);
+        }
     }
 
-    public void addCars(String carName) {
-        cars.add(new Car(carName));
+    private void addCars(String name) {
+        cars.add(new Car(name));
+    }
+
+    public void move(MovableStrategy movableStrategy) {
+        this.cars.forEach(car -> car.move(movableStrategy.isMove()));
     }
 
     public List<Car> selectWinners() {
-        int winnerScore = selectWinnerScore(this.cars);
+        int winnerLocation = selectWinnerLocation();
 
         return this.cars.stream()
-                .filter(cars -> cars.isWinner(winnerScore))
-                .map(cars -> new Car(cars.getName()))
+                .filter(car -> car.isSameLocation(winnerLocation))
                 .collect(Collectors.toList());
     }
 
-    private int selectWinnerScore(List<Car> carInfo) {
-        return carInfo.stream()
-                .max(Comparator.comparingInt(Car::getLocation))
-                .get()
-                .getLocation();
-    }
-
-    public void setCycle(int cycle) {
-        this.cycle = cycle;
+    private int selectWinnerLocation() {
+        return this.cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .getAsInt()
+                ;
     }
 
     public List<Car> getCars() {
-        return cars;
-    }
-
-    public int getCycle() {
-        return cycle;
+        return Collections.unmodifiableList(this.cars);
     }
 }
