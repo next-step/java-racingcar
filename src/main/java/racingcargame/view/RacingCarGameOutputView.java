@@ -30,7 +30,7 @@ public class RacingCarGameOutputView {
         return bar.toString();
     }
 
-    public void outputWinners(String winners) {
-        System.out.println("최종 우승자: " + winners);
+    public void outputWinners(List<String> winners) {
+        System.out.println("최종 우승자: " + String.join(", ", winners));
     }
 }
