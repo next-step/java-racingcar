@@ -20,7 +20,7 @@ public class RacingCarGameController {
         int roundNumber = inputView.inputRoundNumber();
         racingCars.playGame(roundNumber);
         outputView.outputGame(racingCarHistory.getHistory());
-        String winners = racingCars.findWinners();
+        String winners = racingCars.findWinners(racingCars.findMaxScore());
         outputView.outputWinners(winners);
     }
 
