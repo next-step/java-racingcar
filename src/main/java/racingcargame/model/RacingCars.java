@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingCars {
     private static final String BAR = "-";
-    List<RacingCar> cars;
+    private List<RacingCar> cars;
     private RacingCarHistory history = new RacingCarHistory();
 
     public RacingCars(List<RacingCar> cars) {
