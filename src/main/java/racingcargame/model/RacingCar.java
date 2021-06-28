@@ -21,8 +21,8 @@ public class RacingCar {
         }
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber >= MOVING_CONDITION) {
+    public void move(int number) {
+        if (number >= MOVING_CONDITION) {
             step += 1;
         }
     }
