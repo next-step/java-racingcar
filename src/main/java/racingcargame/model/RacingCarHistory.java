@@ -8,7 +8,6 @@ public class RacingCarHistory {
 
     public RacingCarHistory() {
         this.history = new ArrayList<>();
-        this.history.add("\n실행 결과");
     }
 
     public void addHistory(String history) {
