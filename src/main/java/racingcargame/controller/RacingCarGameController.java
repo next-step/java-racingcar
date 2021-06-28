@@ -1,7 +1,7 @@
 package racingcargame.controller;
 
+import racingcargame.model.Histories;
 import racingcargame.model.RacingCar;
-import racingcargame.model.RacingCarHistory;
 import racingcargame.model.RacingCars;
 import racingcargame.view.RacingCarGameInputView;
 import racingcargame.view.RacingCarGameOutputView;
@@ -17,8 +17,8 @@ public class RacingCarGameController {
     public void start() {
         RacingCars racingCars = new RacingCars(createRacingCars());
         int roundNumber = inputView.inputRoundNumber();
-        RacingCarHistory history = racingCars.playGame(roundNumber);
-        outputView.outputGame(history.getHistory());
+        Histories histories = racingCars.playGame(roundNumber);
+        outputView.outputGame(histories.getHistories());
         String winners = racingCars.findWinners(racingCars.findMaxScore());
         outputView.outputWinners(winners);
     }
