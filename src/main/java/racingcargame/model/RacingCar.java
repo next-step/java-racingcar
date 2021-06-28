@@ -1,6 +1,7 @@
 package racingcargame.model;
 
 public class RacingCar {
+    private static final int INITIAL_LOCATION = 0;
     private static final int MOVING_CONDITION = 4;
     private static final int MAX_LENGTH_OF_NAME = 5;
     private final String name;
@@ -9,7 +10,7 @@ public class RacingCar {
     public RacingCar(String name) {
         checkCarNameLength(name);
         this.name = name;
-        this.step = 0;
+        this.step = INITIAL_LOCATION;
     }
 
     private void checkCarNameLength(String name) {
