@@ -6,15 +6,15 @@ import java.util.List;
 public class RacingCarHistory {
     private List<String> history;
 
-    public RacingCarHistory() {
-        this.history = new ArrayList<>();
+    public RacingCarHistory(List<String> history) {
+        this.history = history;
     }
 
-    public void addHistory(String history) {
-        this.history.add(history);
+    private List<String> getThisHistory() {
+        return history;
     }
 
     public List<String> getHistory() {
-        return history;
+        return new RacingCarHistory(history).getThisHistory();
     }
 }

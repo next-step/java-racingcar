@@ -13,13 +13,12 @@ public class RacingCarGameController {
     private static final String SEPARATOR = ",";
     private RacingCarGameInputView inputView = new RacingCarGameInputView();
     private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
-    private RacingCarHistory racingCarHistory = new RacingCarHistory();
 
     public void start() {
         RacingCars racingCars = new RacingCars(createRacingCars());
         int roundNumber = inputView.inputRoundNumber();
-        racingCars.playGame(roundNumber);
-        outputView.outputGame(racingCarHistory.getHistory());
+        RacingCarHistory history = racingCars.playGame(roundNumber);
+        outputView.outputGame(history.getHistory());
         String winners = racingCars.findWinners(racingCars.findMaxScore());
         outputView.outputWinners(winners);
     }

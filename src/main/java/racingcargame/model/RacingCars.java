@@ -1,29 +1,33 @@
 package racingcargame.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingCars {
     private static final String BAR = "-";
     private List<RacingCar> cars;
-    private RacingCarHistory history = new RacingCarHistory();
 
     public RacingCars(List<RacingCar> cars) {
         this.cars = cars;
     }
 
-    public void playGame(int roundNumber) {
+    public RacingCarHistory playGame(int roundNumber) {
+        List<String> history = new ArrayList<>();
         for (int i = 0; i < roundNumber; i++) {
-            playRound();
+            history.add(playRound());
         }
+        return new RacingCarHistory(history);
     }
 
-    private void playRound() {
+    private String playRound() {
+        List<String> history = new ArrayList<>();
         for (RacingCar car : cars) {
             car.move(RandomNumber.createRandomNumber());
-            history.addHistory(car.getName() + " : " + stackUpBars(car.getStep()));
+            history.add(car.getName() + " : " + stackUpBars(car.getStep()));
         }
-        history.addHistory("");
+        history.add("");
+        return String.join("\n", history);
     }
 
     private String stackUpBars(int step) {
