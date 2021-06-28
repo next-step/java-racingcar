@@ -1,42 +1,35 @@
 package racingcargame.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingCars {
-    private static final String BAR = "-";
+
     private List<RacingCar> cars;
 
     public RacingCars(List<RacingCar> cars) {
         this.cars = cars;
     }
 
-    public RacingCarHistory playGame(int roundNumber) {
-        List<String> history = new ArrayList<>();
+    public Histories playGame(int roundNumber) {
+        List<History> histories = new ArrayList<>();
         for (int i = 0; i < roundNumber; i++) {
-            history.add(playRound());
+            histories.add(playRound());
         }
-        return new RacingCarHistory(history);
+        return new Histories(histories);
     }
 
-    private String playRound() {
-        List<String> history = new ArrayList<>();
+    private History playRound() {
+        Map<String, Integer> history = new HashMap<>();
         for (RacingCar car : cars) {
             car.move(RandomNumber.createRandomNumber());
-            history.add(car.getName() + " : " + stackUpBars(car.getStep()));
+            history.put(car.getName(), car.getStep());
         }
-        history.add("");
-        return String.join("\n", history);
+        return new History(history);
     }
 
-    private String stackUpBars(int step) {
-        StringBuilder bar = new StringBuilder();
-        for (int i = 0; i < step; i++) {
-            bar.append(BAR);
-        }
-        return bar.toString();
-    }
 
     public String findWinners(int maxScore) {
         List<String> winners = new ArrayList<>();
