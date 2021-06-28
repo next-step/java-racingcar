@@ -31,14 +31,14 @@ public class RacingCars {
     }
 
 
-    public String findWinners(int maxScore) {
+    public List<String> findWinners(int maxScore) {
         List<String> winners = new ArrayList<>();
         for (RacingCar car : cars) {
             if (car.isWinner(maxScore)) {
                 winners.add(car.getName());
             }
         }
-        return String.join(", ", winners);
+        return winners;
     }
 
     public int findMaxScore() {
