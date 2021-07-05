@@ -1,5 +1,7 @@
 package racingcargame.model;
 
+import java.util.Map;
+
 public class RacingCar {
     private static final int INITIAL_LOCATION = 0;
     private static final int MOVING_CONDITION = 4;
@@ -32,6 +34,10 @@ public class RacingCar {
         if (number >= MOVING_CONDITION) {
             step += 1;
         }
+    }
+
+    public void recordHistory(Map<RacingCar, Integer> history) {
+        history.put(new RacingCar(this.name, this.step), step);
     }
 
     public boolean isWinner(int maxScore) {
