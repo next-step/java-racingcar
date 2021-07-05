@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class RacingCars {
-    private List<RacingCar> cars;
-    MoveStrategy moveStrategy = new MoveStrategy();
+    private final List<RacingCar> cars;
+    private final MoveStrategy moveStrategy = new MoveStrategy();
 
     public RacingCars(List<RacingCar> cars) {
         this.cars = cars;

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    RacingCars racingCars;
-    int roundNumber;
-    List<History> histories = new ArrayList<>();
+    private final RacingCars racingCars;
+    private final int roundNumber;
+    private final List<History> histories = new ArrayList<>();
 
     public RacingGame(RacingCars racingCars, int roundNumber) {
         this.racingCars = racingCars;

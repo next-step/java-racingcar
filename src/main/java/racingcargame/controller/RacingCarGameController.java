@@ -11,8 +11,8 @@ import java.util.List;
 
 public class RacingCarGameController {
     private static final String SEPARATOR = ",";
-    private RacingCarGameInputView inputView = new RacingCarGameInputView();
-    private RacingCarGameOutputView outputView = new RacingCarGameOutputView();
+    private final RacingCarGameInputView inputView = new RacingCarGameInputView();
+    private final RacingCarGameOutputView outputView = new RacingCarGameOutputView();
 
 
     public void start() {
