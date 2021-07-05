@@ -19,7 +19,7 @@ public class RacingCarGameController {
         int roundNumber = inputView.inputRoundNumber();
         Histories histories = racingCars.playGame(roundNumber);
         outputView.outputGame(histories.getHistories());
-        List<String> winners = racingCars.findWinners(racingCars.findMaxScore());
+        List<String> winners = racingCars.findWinners();
         outputView.outputWinners(winners);
     }
 
