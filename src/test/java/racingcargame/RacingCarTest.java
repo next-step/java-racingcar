@@ -17,14 +17,14 @@ public class RacingCarTest {
 
     @DisplayName(value = "자동차는 움직인다.")
     @Test
-    void move(final int number) {
+    void move() {
         racingCar.move(true);
         assertThat(racingCar.getStep()).isEqualTo(1);
     }
 
     @DisplayName(value = "자동차는 움직이지 않는다.")
     @Test
-    void stop(final int number) {
+    void stop() {
         racingCar.move(false);
         assertThat(racingCar.getStep()).isEqualTo(0);
     }
