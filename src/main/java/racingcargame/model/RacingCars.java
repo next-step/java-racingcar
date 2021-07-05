@@ -22,10 +22,10 @@ public class RacingCars {
     }
 
     private History playRound() {
-        Map<String, Integer> history = new HashMap<>();
+        Map<RacingCar, Integer> history = new HashMap<>();
         for (RacingCar car : cars) {
             car.move(RandomNumber.createRandomNumber());
-            history.put(car.getName(), car.getStep());
+            history.put(car, car.getStep());
         }
         return new History(history);
     }

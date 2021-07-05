@@ -1,6 +1,7 @@
 package racingcargame.view;
 
 import racingcargame.model.History;
+import racingcargame.model.RacingCar;
 
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,8 @@ public class RacingCarGameOutputView {
         }
     }
 
-    private void outputRound(Map<String, Integer> history) {
-        for (Map.Entry<String, Integer> entry : history.entrySet()) {
+    private void outputRound(Map<RacingCar, Integer> history) {
+        for (Map.Entry<RacingCar, Integer> entry : history.entrySet()) {
             System.out.println(entry.getKey() + " : " + stackUpBars(entry.getValue()));
         }
     }

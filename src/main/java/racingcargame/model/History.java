@@ -3,17 +3,17 @@ package racingcargame.model;
 import java.util.Map;
 
 public class History {
-    private Map<String, Integer> history;
+    private Map<RacingCar, Integer> history;
 
-    public History(Map<String, Integer> history) {
+    public History(Map<RacingCar, Integer> history) {
         this.history = history;
     }
 
-    private Map<String, Integer> getThisHistory() {
+    private Map<RacingCar, Integer> getThisHistory() {
         return history;
     }
 
-    public Map<String, Integer> getHistory() {
+    public Map<RacingCar, Integer> getHistory() {
         return new History(history).getThisHistory();
     }
 }
