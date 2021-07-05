@@ -33,5 +33,15 @@ public class RacingCarTest {
     @Test
     void is_winner() {
         assertThat(racingCar.isWinner(0)).isTrue();
+
+        for (int i = 0; i < 3; i++) {
+            racingCar.move(true);
+        }
+        assertThat(racingCar.isWinner(3)).isTrue();
+
+        for (int i = 0; i < 3; i++) {
+            racingCar.move(true);
+        }
+        assertThat(racingCar.isWinner(6)).isTrue();
     }
 }
