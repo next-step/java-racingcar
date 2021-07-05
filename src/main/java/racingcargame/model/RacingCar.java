@@ -13,6 +13,12 @@ public class RacingCar {
         this.step = INITIAL_LOCATION;
     }
 
+    public RacingCar(String name, int step) {
+        checkCarNameLength(name);
+        this.name = name;
+        this.step = step;
+    }
+
     private void checkCarNameLength(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름을 입력하세요.");
