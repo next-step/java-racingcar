@@ -4,7 +4,6 @@ import java.util.Map;
 
 public class RacingCar {
     private static final int INITIAL_LOCATION = 0;
-    private static final int MOVING_CONDITION = 4;
     private static final int MAX_LENGTH_OF_NAME = 5;
     private final String name;
     private int step;
@@ -30,8 +29,8 @@ public class RacingCar {
         }
     }
 
-    public void move(int number) {
-        if (number >= MOVING_CONDITION) {
+    public void move(boolean isMovable) {
+        if (isMovable) {
             step += 1;
         }
     }

@@ -23,8 +23,9 @@ public class RacingCars {
 
     private History playRound() {
         Map<RacingCar, Integer> history = new HashMap<>();
+        MoveStrategy moveStrategy = new MoveStrategy();
         for (RacingCar car : cars) {
-            car.move(RandomNumber.createRandomNumber());
+            car.move(moveStrategy.isMovable(RandomNumber.createRandomNumber()));
             car.recordHistory(history);
         }
         return new History(history);
