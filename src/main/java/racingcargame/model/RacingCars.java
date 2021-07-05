@@ -25,7 +25,7 @@ public class RacingCars {
         Map<RacingCar, Integer> history = new HashMap<>();
         for (RacingCar car : cars) {
             car.move(RandomNumber.createRandomNumber());
-            history.put(car, car.getStep());
+            car.recordHistory(history);
         }
         return new History(history);
     }
