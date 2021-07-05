@@ -9,11 +9,7 @@ public class History {
         this.history = history;
     }
 
-    private Map<RacingCar, Integer> getThisHistory() {
-        return history;
-    }
-
     public Map<RacingCar, Integer> getHistory() {
-        return new History(history).getThisHistory();
+        return history;
     }
 }
