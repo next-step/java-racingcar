@@ -20,7 +20,7 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"2 + 3 * 4 / 2"})
     @DisplayName("공백 단위로 문자열을 분리한다.")
     void splitWithSpace(String input) {
-        String[] result = stringCalculator.splitWithSpace(input);
-        assertThat(result).containsExactly("2", "+", "3", "*", "4", "/", "2");
+        Elements result = stringCalculator.splitWithSpace(input);
+        assertThat(result).isEqualTo(new Elements(new String[]{"2", "+", "3", "*", "4", "/", "2"}));
     }
 }
