@@ -3,7 +3,7 @@ package calculator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
-public class CalculationElement<T> {
+class CalculationElement<T> {
     private final LinkedList<T> operators;
 
     private CalculationElement(LinkedList<T> operands) {

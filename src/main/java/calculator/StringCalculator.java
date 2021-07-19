@@ -3,7 +3,7 @@ package calculator;
 import java.util.LinkedList;
 import type.MessageFactory;
 
-public class StringCalculator {
+class StringCalculator {
     private final CalculationElement<Double> operands;
     private final CalculationElement<String> operators;
 

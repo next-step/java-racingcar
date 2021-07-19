@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import type.MessageFactory;
 
-public class StringCalculatorTest {
+class StringCalculatorTest {
     private StringCalculator calculator;
 
     @BeforeEach
