@@ -41,8 +41,11 @@ class RacingGameCore {
     private void moveForwardWhenConditions() {
         for(int index = 0; index < racingCars.size(); index++) {
             racingCars.goForward(index, RandomNumberGenerator.generate());
-            Car car = racingCars.get(index);
-            gameResult.append(car.getName()).append(" : ").append(car.getPosition()).append("\n");
+
+            String name = racingCars.getNameByIndex(index);
+            String position = racingCars.getPositonByIndex(index);
+
+            gameResult.append(name).append(" : ").append(position).append("\n");
         }
     }
 }

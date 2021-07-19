@@ -31,14 +31,15 @@ class RacingCarsTest {
         // given
         String name = "siro";
         String position = "-";
-        Car expected = Car.of(name, position);
-        carList.add(expected);
+        carList.add(Car.of(name, position));
 
         // when
-        Car actual = RacingCars.from(carList).get(0);
+        String actualName = RacingCars.from(carList).getNameByIndex((0));
+        String actualPosition = RacingCars.from(carList).getPositonByIndex((0));
 
         // then
-        Assertions.assertThat(actual).isEqualTo(expected);
+        Assertions.assertThat(actualName).isEqualTo(name);
+        Assertions.assertThat(actualPosition).isEqualTo(position);
     }
 
     @Test
@@ -46,15 +47,17 @@ class RacingCarsTest {
         // given
         String name = "siro";
         String position = "-";
-        Car expected = Car.of(name, position);
-        carList.add(expected);
+        String expectedPosition = "--";
+        carList.add(Car.of(name, position));
 
         // when
         RacingCars.from(carList).goForward(0, 4);
-        Car actual = RacingCars.from(carList).get(0);
+        String actualName = RacingCars.from(carList).getNameByIndex((0));
+        String actualPosition = RacingCars.from(carList).getPositonByIndex((0));
 
         // then
-        Assertions.assertThat(actual).isEqualTo(expected);
+        Assertions.assertThat(actualName).isEqualTo(name);
+        Assertions.assertThat(actualPosition).isEqualTo(expectedPosition);
     }
 
     @Test
@@ -67,10 +70,12 @@ class RacingCarsTest {
 
         // when
         RacingCars.from(carList).goForward(0, 3);
-        Car actual = RacingCars.from(carList).get(0);
+        String actualName = RacingCars.from(carList).getNameByIndex((0));
+        String actualPosition = RacingCars.from(carList).getPositonByIndex((0));
 
         // then
-        Assertions.assertThat(actual).isEqualTo(expected);
+        Assertions.assertThat(actualName).isEqualTo(name);
+        Assertions.assertThat(actualPosition).isEqualTo(position);
     }
 
     @Test

@@ -26,8 +26,12 @@ class RacingCars {
         }
     }
 
-    Car get(final int index) {
-        return this.cars.get(index);
+    String getNameByIndex(final int index){
+        return this.cars.get(index).getName();
+    }
+
+    String getPositonByIndex(final int index){
+        return this.cars.get(index).getPosition();
     }
 
     private boolean isNumberMoreThanFour(final int number) {
