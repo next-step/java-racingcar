@@ -24,6 +24,7 @@ public class CollectionTest {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
+        numbers.add(4);
     }
     @DisplayName("[요구사항1] numbers의 사이즈 구하기.")
     @Test
