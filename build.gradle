@@ -3,6 +3,12 @@ plugins {
     id 'jacoco'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -12,6 +18,10 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.7.2",
             "org.assertj:assertj-core:3.19.0"
     )
+}
+
+tasks.withType(JavaCompile){
+    options.compilerArgs << "-Xlint:unchecked"
 }
 
 test {
@@ -24,6 +34,7 @@ build {
 
 ext {
     set('reportDir', file('src/report'))
+
     excludeFilter = [
             '**/test/**',
             '**/*Runner.*',
@@ -36,12 +47,10 @@ task jacoco(type: Test) {
     group 'verification'
     description 'Runs the unit tests and verify coverage using jacoco'
 
-
     dependsOn(
             ':jacocoTestReport',
             ':jacocoTestCoverageVerification'
     )
-
 
     tasks['jacocoTestCoverageVerification'].mustRunAfter(tasks['jacocoTestReport'])
 }
@@ -62,8 +71,8 @@ jacocoTestReport {
 jacocoTestCoverageVerification {
     violationRules {
         rule {
-            enabled = true
             element = 'CLASS'
+            excludes = excludeFilter
 
             limit {
                 counter = 'LINE'
@@ -76,7 +85,6 @@ jacocoTestCoverageVerification {
                 value = 'TOTALCOUNT'
                 maximum = 250
             }
-            excludes = excludeFilter
         }
     }
 }
