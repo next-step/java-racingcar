@@ -9,10 +9,10 @@ public class Interpreter {
     private Interpreter() {}
 
     public static Expression interpret(String expressionString) {
-        MatchedExpression matchedExpression = new MatchedExpression(expressionString);
+        SplitExpression splitExpression = new SplitExpression(expressionString);
 
-        if (matchedExpression.isValidExpression()) {
-            return ArithmeticExpression.of(matchedExpression);
+        if (splitExpression.isArithmeticExpression()) {
+            return ArithmeticExpression.of(splitExpression);
         }
 
         return Number.of(expressionString);

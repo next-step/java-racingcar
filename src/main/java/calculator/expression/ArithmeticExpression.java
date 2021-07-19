@@ -1,7 +1,7 @@
 package calculator.expression;
 
 import calculator.interpreter.Interpreter;
-import calculator.interpreter.MatchedExpression;
+import calculator.interpreter.SplitExpression;
 import calculator.operator.Operator;
 
 import java.util.Objects;
@@ -11,14 +11,14 @@ public class ArithmeticExpression extends Expression {
     private final Expression subExpression;
     private final Operator operator;
 
-    private ArithmeticExpression(MatchedExpression matchedExpression) {
-        this.subExpression = Interpreter.interpret(matchedExpression.getSubExpressionString());
-        this.operator = Operator.of(matchedExpression.getOperatorString());
-        this.operand = Integer.parseInt(matchedExpression.getOperandString());
+    private ArithmeticExpression(SplitExpression splitExpression) {
+        this.subExpression = Interpreter.interpret(splitExpression.getSubExpressionString());
+        this.operator = Operator.of(splitExpression.getOperatorString());
+        this.operand = Integer.parseInt(splitExpression.getOperandString());
     }
 
-    public static ArithmeticExpression of(MatchedExpression matchedExpression) {
-        return new ArithmeticExpression(matchedExpression);
+    public static ArithmeticExpression of(SplitExpression splitExpression) {
+        return new ArithmeticExpression(splitExpression);
     }
 
     @Override

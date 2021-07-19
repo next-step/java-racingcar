@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @DisplayName("매칭되는 표현식 테스트")
-class MatchedExpressionTest {
+class SplitExpressionTest {
 
     @ParameterizedTest
     @CsvSource({
@@ -17,11 +17,11 @@ class MatchedExpressionTest {
     })
     @DisplayName("매칭되는 표현식은 식을 표현식, 연산자, 숫자로 나누는 역할을 한다.")
     void matchExpression(String expression, String subExpression, String operator, String operand) {
-        MatchedExpression matchedExpression = new MatchedExpression(expression);
+        SplitExpression splitExpression = new SplitExpression(expression);
 
-        assertThat(matchedExpression.getSubExpressionString()).isEqualTo(subExpression);
-        assertThat(matchedExpression.getOperatorString()).isEqualTo(operator);
-        assertThat(matchedExpression.getOperandString()).isEqualTo(operand);
+        assertThat(splitExpression.getSubExpressionString()).isEqualTo(subExpression);
+        assertThat(splitExpression.getOperatorString()).isEqualTo(operator);
+        assertThat(splitExpression.getOperandString()).isEqualTo(operand);
     }
 
 

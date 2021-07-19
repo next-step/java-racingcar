@@ -3,7 +3,7 @@ package calculator.interpreter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MatchedExpression {
+public class SplitExpression {
 
     private static final Pattern EXPRESSION_PATTERN = Pattern.compile("(.+)\\s([+\\-*/])\\s(-?\\d+)");
     private static final int SUB_EXPRESSION_GROUP_INDEX = 1;
@@ -12,7 +12,7 @@ public class MatchedExpression {
 
     private final Matcher matcher;
 
-    public MatchedExpression(String expression) {
+    public SplitExpression(String expression) {
         this.matcher = EXPRESSION_PATTERN.matcher(expression);
         this.matcher.matches();
     }
@@ -29,7 +29,7 @@ public class MatchedExpression {
         return matcher.group(OPERAND_GROUP_INDEX);
     }
 
-    public boolean isValidExpression() {
+    public boolean isArithmeticExpression() {
         return matcher.matches();
     }
 }
