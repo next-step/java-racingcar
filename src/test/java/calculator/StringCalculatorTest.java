@@ -21,10 +21,33 @@ class StringCalculatorTest {
 
     private static Stream<Arguments> calculate() {
         return Stream.of(
-                Arguments.of("1 + 2 + 3 + 4 + 5", 15),
-                Arguments.of("1 - 2 + 3 - 4 + 5", 3),
-                Arguments.of("2 * 5 / 2", 5),
-                Arguments.of("1 / 2", 0)
+                //addition
+                Arguments.of("1 + 2" , 3),
+                Arguments.of("1 + -2" , -1),
+                Arguments.of("-1 + 2" , 1),
+                Arguments.of("-1 + -2" , -3),
+
+                //subtraction
+                Arguments.of("1 - 2" , -1),
+                Arguments.of("1 - -2" , 3),
+                Arguments.of("-1 - 2" , -3),
+                Arguments.of("-1 - -2" , 1),
+
+                //multiplication
+                Arguments.of("1 * 2" , 2),
+                Arguments.of("1 * -2" , -2),
+                Arguments.of("-1 * 2" , -2),
+                Arguments.of("-1 * -2" , 2),
+
+                //division
+                Arguments.of("2 / 1" , 2),
+                Arguments.of("2 / -1" , -2),
+                Arguments.of("-2 / 1" , -2),
+                Arguments.of("-2 / -1" , 2),
+
+                //complicated
+                Arguments.of("25 + 25 / 5 * 10" , 100),
+                Arguments.of("-25 + -25 / -5 * -10" , -100)
         );
     }
 
