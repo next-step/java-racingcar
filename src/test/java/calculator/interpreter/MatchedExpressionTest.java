@@ -11,7 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MatchedExpressionTest {
 
     @ParameterizedTest
-    @CsvSource({"1 + 2 + 3, 1 + 2, +, 3"})
+    @CsvSource({
+            "1 + 2 - 3, 1 + 2, -, 3",
+            "-1 * 2 / -3, -1 * 2, /, -3"
+    })
     @DisplayName("매칭되는 표현식은 식을 표현식, 연산자, 숫자로 나누는 역할을 한다.")
     void matchExpression(String expression, String subExpression, String operator, String operand) {
         MatchedExpression matchedExpression = new MatchedExpression(expression);
