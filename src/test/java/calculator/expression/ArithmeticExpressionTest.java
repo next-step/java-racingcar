@@ -5,6 +5,7 @@ import calculator.interpreter.SplitExpression;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -56,5 +57,26 @@ class ArithmeticExpressionTest {
         return Stream.of(
                 Arguments.of(new SplitExpression("5"))
         );
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1,+,2", "1 + 2,+,3"})
+    @DisplayName("equals 테스트")
+    void equals(String subExpression, String operator, String operand) {
+        ArithmeticExpression arithmeticExpression = Generator.arithmeticExpressionOf(subExpression, operator, operand);
+        ArithmeticExpression anotherArithmeticExpression = Generator.arithmeticExpressionOf(subExpression, operator, operand);
+
+        assertThat(arithmeticExpression).isEqualTo(anotherArithmeticExpression);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1,+,2,2,+,1", "1 + 2,+,3,2 + 1,+,3"})
+    @DisplayName("not equals 테스트")
+    void equals(String subExpression, String operator, String operand,
+                String anotherSubExpression, String anotherOperator, String anotherOperand) {
+        ArithmeticExpression arithmeticExpression = Generator.arithmeticExpressionOf(subExpression, operator, operand);
+        ArithmeticExpression anotherArithmeticExpression = Generator.arithmeticExpressionOf(anotherSubExpression, anotherOperator, anotherOperand);
+
+        assertThat(arithmeticExpression).isNotEqualTo(anotherArithmeticExpression);
     }
 }
