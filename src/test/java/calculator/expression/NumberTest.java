@@ -2,14 +2,12 @@ package calculator.expression;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("숫자 (식)")
 class NumberTest {
@@ -64,5 +62,13 @@ class NumberTest {
         Number anotherNumber = Number.of(anotherExpression);
 
         assertThat(number).isNotEqualTo(anotherNumber);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "*", "-a", "900d"})
+    @NullAndEmptySource
+    @DisplayName("input 값이 올바르지 않다면 예외를 던진다")
+    void validate(String expression) {
+        assertThatThrownBy(() -> Number.of(expression)).isInstanceOf(IllegalArgumentException.class);
     }
 }

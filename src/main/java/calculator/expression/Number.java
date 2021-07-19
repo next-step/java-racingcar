@@ -12,9 +12,12 @@ public class Number extends Expression {
 
     private void validate(String numberString) {
         if (StringUtils.isEmpty(numberString)) {
-            throw new IllegalArgumentException("Number string is null or empty");
+            throw new IllegalArgumentException("Input number string is null or empty");
         }
 
+        if (!StringUtils.isNumeric(numberString)) {
+            throw new IllegalArgumentException("Input number string is not number");
+        }
     }
 
     public static Number of(String numberString) {
