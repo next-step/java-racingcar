@@ -24,7 +24,7 @@ class StringCalculator {
     StringCalculator enter(final String s) {
         String[] values = s.split(" ");
         if (values.length < 3) {
-            throw new IllegalArgumentException(MessageFactory.getInputErrorMessage());
+            throw new IllegalArgumentException(MessageFactory.getBadInputMessage());
         }
         for (int i = 0; i < values.length; i++) {
             validate(i, values[i]);
@@ -35,10 +35,10 @@ class StringCalculator {
 
     private void validate(final int index, final String value) {
         if (isEvenNumber(index) && !isNumeric(value)) {
-            throw new IllegalArgumentException(MessageFactory.getInputErrorMessage());
+            throw new IllegalArgumentException(MessageFactory.getBadInputMessage());
         }
         if (!isEvenNumber(index) && isNumeric(value)) {
-            throw new IllegalArgumentException(MessageFactory.getInputErrorMessage());
+            throw new IllegalArgumentException(MessageFactory.getBadInputMessage());
         }
     }
 

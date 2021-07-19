@@ -22,7 +22,7 @@ enum ArithmeticCalculator {
         return Arrays.stream(ArithmeticCalculator.values())
                 .filter(value -> value.operator.equals(operator))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(MessageFactory.getInputErrorMessage()));
+                .orElseThrow(() -> new IllegalArgumentException(MessageFactory.getBadInputMessage()));
     }
 
     Double operation(final Double e1, final Double e2) {
