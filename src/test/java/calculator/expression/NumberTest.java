@@ -1,9 +1,12 @@
 package calculator.expression;
 
+import calculator.helper.Generator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -44,4 +47,23 @@ class NumberTest {
         );
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0, 1})
+    @DisplayName("equals 테스트")
+    void equals(String expression) {
+        Number number = Number.of(expression);
+        Number anotherNumber = Number.of(expression);
+
+        assertThat(number).isNotEqualTo(anotherNumber);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"-1,1", "1,-1"})
+    @DisplayName("not equals 테스트")
+    void notEquals(String expression, String anotherExpression) {
+        Number number = Number.of(expression);
+        Number anotherNumber = Number.of(anotherExpression);
+
+        assertThat(number).isNotEqualTo(anotherNumber);
+    }
 }

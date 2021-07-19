@@ -72,7 +72,7 @@ class ArithmeticExpressionTest {
     @ParameterizedTest
     @CsvSource({"1,+,2,2,+,1", "1 + 2,+,3,2 + 1,+,3"})
     @DisplayName("not equals 테스트")
-    void equals(String subExpression, String operator, String operand,
+    void notEquals(String subExpression, String operator, String operand,
                 String anotherSubExpression, String anotherOperator, String anotherOperand) {
         ArithmeticExpression arithmeticExpression = Generator.arithmeticExpressionOf(subExpression, operator, operand);
         ArithmeticExpression anotherArithmeticExpression = Generator.arithmeticExpressionOf(anotherSubExpression, anotherOperator, anotherOperand);
