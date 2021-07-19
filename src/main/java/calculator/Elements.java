@@ -1,27 +1,30 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 public class Elements {
 
-    private final List<String> elements;
+    private final String[] elements;
 
-    public Elements(String input) {
-        if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("입력 값은 null 이거나 빈 공백 문자가 올 수 없습니다.");
+    public Elements(String[] elements) {
+        this.elements = new String[elements.length];
+
+        for (int i = 0; i < elements.length; i++) {
+            String element = elements[i];
+            if (i % 2 == 0 && !isNumber(element))
+                throw new IllegalArgumentException("홀수 인덱스에는 숫자만 올 수 있습니다.");
+            if (i % 2 == 1 && !isOperator(element))
+                throw new IllegalArgumentException("짝수 인덱스에는 사칙 연산자만 올 수 있습니다.");
+            this.elements[i] = element;
         }
-        this.elements = Arrays.asList(input.split(" "));
     }
 
-    public int calculate() {
-        int result = Integer.parseInt(elements.get(0));
+    boolean isNumber(String str) {
+        return str.matches("^[0-9]+$");
+    }
 
-        for (int i = 1; i < elements.size(); i = i + 2) {
-            result = Operator.calculate(elements.get(i), result, Integer.parseInt(elements.get(i + 1)));
-        }
-        return result;
+    boolean isOperator(String str) {
+        return str.matches("^[\\-+*/]$");
     }
 
     @Override
@@ -29,11 +32,11 @@ public class Elements {
         if (this == o) return true;
         if (!(o instanceof Elements)) return false;
         Elements elements1 = (Elements) o;
-        return Objects.equals(elements, elements1.elements);
+        return Arrays.equals(elements, elements1.elements);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(elements);
+        return Arrays.hashCode(elements);
     }
 }
