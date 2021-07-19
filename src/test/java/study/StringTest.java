@@ -19,7 +19,7 @@ public class StringTest {
         String two = "2";
         String delimiter = ",";
         String input = String.join(delimiter, one, two);
-        String[] output = {one, two};
+        String[] expected = {one, two};
 
         // when
         String[] split = input.split(delimiter);
@@ -29,7 +29,7 @@ public class StringTest {
                 .contains(one)
                 .contains(two)
                 .containsExactly(one, two)
-                .isEqualTo(output);
+                .isEqualTo(expected);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class StringTest {
         String one = "1";
         String delimiter = ",";
         String input = String.join(delimiter, one);
-        String[] output = {one};
+        String[] expected = {one};
 
         // when
         String[] split = input.split(delimiter);
@@ -48,7 +48,7 @@ public class StringTest {
         assertThat(split)
                 .contains(one)
                 .containsExactly(one)
-                .isEqualTo(output);
+                .isEqualTo(expected);
     }
 
     
@@ -57,13 +57,13 @@ public class StringTest {
     public void peelBracket1() {
         // given
         String input = "(1,2)";
-        String output = "1,2";
+        String expected = "1,2";
         
         // when
         String peeled = peelBracket(input);
         
         // then
-        assertThat(peeled).isEqualTo(output);
+        assertThat(peeled).isEqualTo(expected);
     }
 
     @Test
@@ -71,13 +71,13 @@ public class StringTest {
     public void peelBracket2() {
         // given
         String input = "1,2";
-        String output = "1,2";
+        String expected = "1,2";
 
         // when
         String peeled = peelBracket(input);
 
         // then
-        assertThat(peeled).isEqualTo(output);
+        assertThat(peeled).isEqualTo(expected);
     }
 
     public String peelBracket(String text) {
@@ -94,15 +94,16 @@ public class StringTest {
     @ValueSource(ints = {-1, 3})
     public void charAtException(int index) {
         // given
-        String abc = "abc";
+        String input = "input";
+        String message = "String index out of range: " + index;
 
         // when
-        ThrowingCallable throwingCallable = () -> abc.charAt(index);
+        ThrowingCallable throwingCallable = () -> input.charAt(index);
 
         // then
         assertThatThrownBy(throwingCallable)
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessage("String index out of range: " + index);
+                .hasMessage(message);
     }
 
 }
