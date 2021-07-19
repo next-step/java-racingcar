@@ -1,6 +1,7 @@
 package calculator.expression;
 
 import calculator.helper.Generator;
+import calculator.interpreter.SplitExpression;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("수식 테스트")
 class ArithmeticExpressionTest {
@@ -28,4 +30,31 @@ class ArithmeticExpressionTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("splitExpression 이 유효하지 않을때 예외 발생")
+    void validate(SplitExpression splitExpression) {
+        assertThatThrownBy(() -> ArithmeticExpression.of(splitExpression)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private static Stream<Arguments> validate() {
+        return Stream.of(
+                Arguments.of(Generator.splitExpressionOf(null, null, null)),
+                Arguments.of(Generator.splitExpressionOf(null, "+", "2")),
+                Arguments.of(Generator.splitExpressionOf("1", null, "2"))
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("splitExpression 이 산술식이 아닌경우 예외 발생")
+    void validateNotArithmeticExpression(SplitExpression splitExpression) {
+        assertThatThrownBy(() -> ArithmeticExpression.of(splitExpression)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private static Stream<Arguments> validateNotArithmeticExpression() {
+        return Stream.of(
+                Arguments.of(new SplitExpression("5"))
+        );
+    }
 }

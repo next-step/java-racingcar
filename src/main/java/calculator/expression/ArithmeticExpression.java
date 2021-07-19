@@ -12,9 +12,21 @@ public class ArithmeticExpression extends Expression {
     private final Operator operator;
 
     private ArithmeticExpression(SplitExpression splitExpression) {
+        validate(splitExpression);
+
         this.subExpression = Interpreter.interpret(splitExpression.getSubExpressionString());
         this.operator = Operator.of(splitExpression.getOperatorString());
         this.operand = Integer.parseInt(splitExpression.getOperandString());
+    }
+
+    private void validate(SplitExpression splitExpression) {
+        if (splitExpression == null) {
+            throw new IllegalArgumentException("SplitExpression is null");
+        }
+
+        if (!splitExpression.isArithmeticExpression()) {
+            throw new IllegalArgumentException("SplitExpression is not arithmetic expression");
+        }
     }
 
     public static ArithmeticExpression of(SplitExpression splitExpression) {

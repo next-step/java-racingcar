@@ -1,7 +1,5 @@
 package calculator.interpreter;
 
-import com.sun.tools.javac.util.StringUtils;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
