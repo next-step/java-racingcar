@@ -1,6 +1,8 @@
 package calculator.expression;
 
 
+import calculator.utils.StringUtils;
+
 public class Number extends Expression {
 
     private Number(String numberString) {
@@ -9,6 +11,10 @@ public class Number extends Expression {
     }
 
     private void validate(String numberString) {
+        if (StringUtils.isEmpty(numberString)) {
+            throw new IllegalArgumentException("Number string is null or empty");
+        }
+
     }
 
     public static Number of(String numberString) {

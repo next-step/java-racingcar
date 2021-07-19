@@ -27,4 +27,20 @@ class StringUtilsTest {
                 Arguments.of("n", false)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("문자열이 숫자로만 이루어져 있는지 테스트")
+    void isNumeric(String input, boolean expectedValue) {
+        assertThat(StringUtils.isNumeric(input)).isEqualTo(expectedValue);
+    }
+
+    private static Stream<Arguments> isNumeric() {
+        return Stream.of(
+                Arguments.of("", false),
+                Arguments.of("1", true),
+                Arguments.of("-1", true),
+                Arguments.of("50", true)
+        );
+    }
 }
