@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.calculator.Operation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,7 +26,7 @@ class OperationTest {
     @DisplayName("뺄셈을 계산한다.")
     @Test
     void minus() {
-        assertThat(Operation.apply("-",20, 10)).isEqualTo(10);
+        assertThat(Operation.apply("-", 20, 10)).isEqualTo(10);
     }
 
     @DisplayName("곱셈을 계산한다.")
