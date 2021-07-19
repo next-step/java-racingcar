@@ -14,7 +14,7 @@ public enum Operator {
 
     private static final Map<String, Operator> OPERATORS =
             Arrays.stream(Operator.values())
-            .collect(Collectors.toMap(Operator::getSymbol, Function.identity()));
+                    .collect(Collectors.toMap(Operator::getSymbol, Function.identity()));
 
     private final String symbol;
     private final BiFunction<Integer, Integer, Integer> function;
