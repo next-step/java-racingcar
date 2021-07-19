@@ -1,8 +1,9 @@
 package study;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
@@ -27,7 +28,21 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("StringIndexOutOfBoundsExceptionTest")
     void stringTest3() {
+        String originalString = "abc";
 
+        assertThat(originalString.charAt(1)).isEqualTo('b');
+
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                .isThrownBy(() ->{
+                    originalString.charAt(3);
+                })
+                .withMessageMatching("String index out of range: \\d+");
+
+        assertThatThrownBy(() -> {
+            originalString.charAt(3);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+        .hasMessageContaining("String index out of range:");
     }
 }
