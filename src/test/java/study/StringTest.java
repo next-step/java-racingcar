@@ -11,7 +11,7 @@ public class StringTest {
     @Test
     @DisplayName("요구사항1 - 1,2을 ','로 split 값 확인 ")
     void split(){
-        String[] result = "1,2".split(",");
+        String[] result = stringBySplit("1,2", ",");
         assertThat(result).contains("1");
         assertThat(result).containsExactly("1","2");
     }
@@ -19,15 +19,16 @@ public class StringTest {
     @Test
     @DisplayName("요구사항1 - 1을 ','로 split 값 확인 ")
     void split_requireStep1_1(){
-        String[] result = "1".split(",");
+        String[] result = stringBySplit("1", ",");
         assertThat(result).contains("1");
         assertThat(result[0]).isEqualTo("1");
     }
 
+
     @Test
     @DisplayName("요구사항2 -'(1,2)' -> ()을 제고하고 '1,2'를 반환 ")
     void string_requireStep2(){
-        String result = "(1,2)".substring(1, 4);
+        String result = stringBySubstring("(1,2)",1,4);
 
         assertThat(result).isEqualTo("1,2");
         assertThat(result).contains("1,2");
@@ -42,4 +43,13 @@ public class StringTest {
                 .hasMessageContaining("Index: 4, Size: 4");
     }
 
+    public String[] stringBySplit(String strValue, String regex){
+        String[] result = strValue.split(regex);
+        return result;
+    };
+
+    public String stringBySubstring(String strValue, int beginIndex, int endIndex){
+        String result = strValue.substring(beginIndex, endIndex);
+        return result;
+    }
 }
