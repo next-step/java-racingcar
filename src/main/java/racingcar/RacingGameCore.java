@@ -1,11 +1,14 @@
 package racingcar;
 
+import type.MessageFactory;
+
 import java.util.ArrayList;
 
 class RacingGameCore {
     private static final String INITIAL_POSITION_VALUE = "";
 
     private final RacingCars racingCars;
+
     private int stageCount;
 
     private RacingGameCore(final String[] carNames, final int stageCount) {
@@ -21,21 +24,20 @@ class RacingGameCore {
         return new RacingGameCore(carNames, stageCount);
     }
 
-    private StringBuilder gameResult;
+    private StringBuilder gameResultBuilder;
 
-    String run() {
-        gameResult = new StringBuilder();
+    public String run() {
+        gameResultBuilder = new StringBuilder()
+                .append("실행 결과\n");
 
         while(0 != stageCount--) {
             moveForwardWhenConditions();
-            gameResult.append("\n");
+            gameResultBuilder.append(MessageFactory.newLine());
         }
 
-        return gameResult.append("\n")
-                         .append(racingCars.getWinner())
-                         .append("가 최종 우승 했습니다.")
-                         .append("\n")
-                         .toString().trim();
+        return gameResultBuilder.append(racingCars.getWinner())
+                                .append("가 최종 우승 했습니다.")
+                                .toString().trim();
     }
 
     private void moveForwardWhenConditions() {
@@ -45,7 +47,7 @@ class RacingGameCore {
             String name = racingCars.getNameByIndex(index);
             String position = racingCars.getPositonByIndex(index);
 
-            gameResult.append(name).append(" : ").append(position).append("\n");
+            gameResultBuilder.append(name).append(" : ").append(position).append(MessageFactory.newLine());
         }
     }
 }

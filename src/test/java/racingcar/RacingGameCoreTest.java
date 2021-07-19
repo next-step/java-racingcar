@@ -23,12 +23,7 @@ class RacingGameCoreTest {
         // given
         String[] carNames = {"siro1", "siro2", "siro3"};
         int stageCount = 3;
-        int expected = new StringBuilder()
-                .append("").append("\n")
-                .append("").append("\n")
-                .append("").append("\n")
-                .toString()
-                .length();
+        int expected = new StringBuilder().toString().length();
 
         // when
         int actual = RacingGameCore.of(carNames, stageCount)

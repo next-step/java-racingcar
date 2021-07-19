@@ -22,7 +22,7 @@ class MessageFactoryTest {
         String expected = "입력값이 올바르지 않습니다.";
 
         // when
-        String actual = MessageFactory.getBadInputMessage();
+        String actual = MessageFactory.badInputMessage();
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);
@@ -34,7 +34,19 @@ class MessageFactoryTest {
         String expected = "중복 입력입니다.";
 
         // when
-        String actual = MessageFactory.getDuplicatedInputMessage();
+        String actual = MessageFactory.duplicatedInputMessage();
+
+        // then
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void 뉴라인() throws Exception{
+        // given
+        String expected = "\n";
+
+        // when
+        String actual = MessageFactory.newLine();
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);

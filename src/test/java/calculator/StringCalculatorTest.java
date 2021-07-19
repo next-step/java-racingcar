@@ -28,7 +28,7 @@ class StringCalculatorTest {
     })
     void 비정상_입력_테스트(String param) {
         // given
-        String expectedMessage = MessageFactory.getBadInputMessage();
+        String expectedMessage = MessageFactory.badInputMessage();
 
         // when, then
         Assertions.assertThatThrownBy(() -> calculator.enter(param))

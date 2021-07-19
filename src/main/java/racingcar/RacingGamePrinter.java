@@ -1,9 +1,8 @@
 package racingcar;
 
 class RacingGamePrinter {
-    private static final String END_MESSAGE_FORMAT = "\n실행 결과\n";
-
-    public static void print(String str) {
-        System.out.print(END_MESSAGE_FORMAT + str);
+    public static void print(String string) {
+        System.out.println();
+        System.out.print(string);
     }
 }

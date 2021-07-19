@@ -26,7 +26,7 @@ class ArithmeticCalculatorTest {
     void 비정상_입력_테스트() {
         // given
         String abnormalInput = "abnormal";
-        String expectedMessage = MessageFactory.getBadInputMessage();
+        String expectedMessage = MessageFactory.badInputMessage();
 
         // when, then
         Assertions.assertThatThrownBy(() -> ArithmeticCalculator.from(abnormalInput))
