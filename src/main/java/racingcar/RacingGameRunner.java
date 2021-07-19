@@ -1,6 +1,6 @@
 package racingcar;
 
-public class RacingGameRunner {
+class RacingGameRunner {
     public static void main(String[] args) {
         RacingGamePrinter.print(
                 RacingGameCore.of(
