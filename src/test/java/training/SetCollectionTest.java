@@ -44,11 +44,13 @@ class SetCollectionTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:true",
+    @CsvSource(value = {
+            "1:true",
             "2:true",
             "3:true",
             "4:false",
-            "5:false"}, delimiter = ':') // given
+            "5:false"
+    }, delimiter = ':') // given
     void 요구사항_3(int element, boolean expected) {
         // when
         boolean actual = numbers.contains(element);
