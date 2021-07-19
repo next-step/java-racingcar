@@ -10,19 +10,19 @@ class CalculationElement<T> {
         this.operators = operands;
     }
 
-    static <T> CalculationElement<T> from(LinkedList<T> operands) {
+    public static <T> CalculationElement<T> from(LinkedList<T> operands) {
         return new CalculationElement<T>(operands);
     }
 
-    int size() {
+    public int size() {
         return operators.size();
     }
 
-    boolean add(T element) {
+    public boolean add(T element) {
         return operators.add(element);
     }
 
-    T poll() {
+    public T poll() {
         if (operators.size() <= 0) {
             throw new NoSuchElementException("queue is empty.");
         }

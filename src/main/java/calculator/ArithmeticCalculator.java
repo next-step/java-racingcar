@@ -18,14 +18,14 @@ enum ArithmeticCalculator {
         this.binaryOperator = binaryOperator;
     }
 
-    static ArithmeticCalculator from(final String operator) {
+    public static ArithmeticCalculator from(final String operator) {
         return Arrays.stream(ArithmeticCalculator.values())
                 .filter(value -> value.operator.equals(operator))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(MessageFactory.getInputErrorMessage()));
     }
 
-    Double operation(final Double e1, final Double e2) {
+    public Double operation(final Double e1, final Double e2) {
         return binaryOperator.apply(e1, e2);
     }
 }

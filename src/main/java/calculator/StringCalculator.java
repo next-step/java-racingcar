@@ -7,7 +7,7 @@ class StringCalculator {
     private final CalculationElement<Double> operands;
     private final CalculationElement<String> operators;
 
-    static StringCalculator create() {
+    public static StringCalculator create() {
         return new StringCalculator();
     }
 
@@ -21,7 +21,7 @@ class StringCalculator {
         this.operators = operators;
     }
 
-    StringCalculator enter(final String s) {
+    public StringCalculator enter(final String s) {
         String[] values = s.split(" ");
         if (values.length < 3) {
             throw new IllegalArgumentException(MessageFactory.getInputErrorMessage());
@@ -60,7 +60,7 @@ class StringCalculator {
         }
     }
 
-    void calculate() {
+    public void calculate() {
         double e1 = this.operands.poll();
         while (this.operands.size() != 0) {
             ArithmeticCalculator operator = ArithmeticCalculator.from(this.operators.poll());
