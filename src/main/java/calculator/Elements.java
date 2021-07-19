@@ -12,15 +12,37 @@ public class Elements {
         for (int i = 0; i < elements.length; i++) {
             String element = elements[i];
             if (i % 2 == 0 && !isNumber(element))
-                throw new IllegalArgumentException("홀수 인덱스에는 숫자만 올 수 있습니다.");
+                throw new IllegalArgumentException("홀수번째 문자는 숫자만 올 수 있습니다.");
             if (i % 2 == 1 && !isOperator(element))
-                throw new IllegalArgumentException("짝수 인덱스에는 사칙 연산자만 올 수 있습니다.");
+                throw new IllegalArgumentException("짝수번째 문자는 사칙 연산자만 올 수 있습니다.");
             this.elements[i] = element;
         }
     }
 
+    public int calculate() {
+
+        int result = Integer.parseInt(elements[0]);
+
+        for (int i = 1; i < elements.length; i = i + 2)
+            result = calculateOneCycle(result, elements[i], elements[i + 1]);
+
+        return result;
+    }
+
+    private int calculateOneCycle(int number1, String operator, String number2) {
+        if (operator.equals("+"))
+            return number1 + Integer.parseInt(number2);
+        if (operator.equals("-"))
+            return number1 - Integer.parseInt(number2);
+        if (operator.equals("*"))
+            return number1 * Integer.parseInt(number2);
+        if (operator.equals("/"))
+            return number1 / Integer.parseInt(number2);
+        throw new IllegalArgumentException("짝수번째 문자는 사칙 연산자만 올 수 있습니다.");
+    }
+
     boolean isNumber(String str) {
-        return str.matches("^[0-9]+$");
+        return str.matches("^-?[0-9]+$");
     }
 
     boolean isOperator(String str) {
