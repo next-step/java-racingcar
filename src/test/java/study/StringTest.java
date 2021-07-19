@@ -20,15 +20,19 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("특정위치 문자 가져오는 테스트")
-    void charAtGetTest(){
+    @DisplayName("특정위치 문자 가져오기")
+    void getChar(){
         String text = "abc";
         assertThat(text.charAt(0)).isEqualTo('a');
         assertThat(text.charAt(1)).isEqualTo('b');
         assertThat(text.charAt(2)).isEqualTo('c');
+    }
 
+    @Test
+    @DisplayName("특정위치 문자 가져오는 테스트 예외처리")
+    void charAtGetTest(){
         assertThatThrownBy(() -> {
-            text.charAt(3);
+            "abc".charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
           .hasMessageContaining("String index out of range");
     }
