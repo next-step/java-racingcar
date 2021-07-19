@@ -2,12 +2,12 @@ package calculator.operator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("연산자 테스트")
 class OperatorTest {
@@ -86,5 +86,13 @@ class OperatorTest {
                 Arguments.of("*", Operator.MUL),
                 Arguments.of("/", Operator.DIV)
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "1", "`", "~", "\\", "&"})
+    @NullAndEmptySource
+    @DisplayName("사칙연산 기호가 아닌경우 예외를 발생시킨다.")
+    void ofNotSupportedSymbol(String symbol) {
+        assertThatThrownBy(() -> Operator.of(symbol)).isInstanceOf(IllegalArgumentException.class);
     }
 }
