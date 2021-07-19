@@ -2,6 +2,7 @@ package stringcalculator;
 
 public class StringCalculator {
     private static final String BLANK = " ";
+    private static final String SEPARATOR = " ";
 
     public void checkBlank(String input) {
         if (input == null || input.equals(BLANK)) {
@@ -10,22 +11,17 @@ public class StringCalculator {
     }
 
     public String[] splitBySeparator(String input) {
-        String separator = " ";
-        return input.split(separator);
+        return input.split(SEPARATOR);
     }
 
     public int calculateSplitString(String[] splitString) {
-        int result = convertToInt(splitString[0]);
+        int result = Integer.parseInt(splitString[0]);
         int numberOfOperations = splitString.length - 2;
         int intervalBetweenNumbers = 2;
         for (int i = 0; i < numberOfOperations; i += intervalBetweenNumbers) {
-            result = calculateTwoNumbers(result, splitString[i + 1].charAt(0), convertToInt(splitString[i + 2]));
+            result = calculateTwoNumbers(result, splitString[i + 1].charAt(0), Integer.parseInt(splitString[i + 2]));
         }
         return result;
-    }
-
-    private int convertToInt(String stringNumber) {
-        return Integer.parseInt(stringNumber);
     }
 
     private int calculateTwoNumbers(int firstNumber, char operator, int secondNumber) {
