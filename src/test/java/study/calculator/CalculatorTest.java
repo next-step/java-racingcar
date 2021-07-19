@@ -49,4 +49,10 @@ public class CalculatorTest {
         //빈 공간값이 들어간 경우,
         assertThrows(IllegalArgumentException.class, ()-> checkValue(" "));
     }
+
+    @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw Test")
+    @Test
+    void operationTest() {
+        assertThrows(IllegalArgumentException.class, ()-> checkOperation("a"));
+    }
 }

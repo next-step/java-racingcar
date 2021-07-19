@@ -8,7 +8,8 @@
 * 메소드가 너무 많은 일을 하지 않도록 분리하기 위해 노력해 본다.
 ##기능 구현 순서
 * 변수 두개를 제공 받고 사칙연산 테스트코드와 구현체 코드 작성.(불필요한 변수선언 제거)
-* 문자열 값이 null 이거나 빈공간값인 경우 IllegalArgumentException을 리턴하는 기능 개발.
+* 문자열 값이 null 이거나 빈공간값인 경우, IllegalArgumentException을 리턴하는 기능 개발.
+* 사칙연산 기호를 입력 받았을때 해당 기호가 아닌 경우, IllegalArgumentException을 리턴하는 기능 개발.
 
 
 
