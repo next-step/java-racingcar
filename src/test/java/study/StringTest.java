@@ -4,8 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
@@ -42,6 +44,18 @@ public class StringTest {
     void charAt1(int index, char ch) {
         String str = "abc";
         assertThat(str.charAt(index)).isEqualTo(ch);
+    }
+
+    @DisplayName("charAt() 메소드를 사용해 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 StringIndexOutOfBoundsException 익셉션 발생하는지 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 3, 4})
+    void charAt2(int index) {
+        String str = "abc";
+
+        assertThatThrownBy(() -> {
+            str.charAt(index);
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: " + index);
     }
 
 }
