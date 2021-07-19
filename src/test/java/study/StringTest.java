@@ -34,14 +34,14 @@ class StringTest {
 
     @DisplayName("요구사항 3-1: 특정 문자열에서 charAt() 메서드로 특정 위치의 문자를 가져올 수 있다.")
     @Test
-    void charAt() {
+    void charAt1() {
         char firstCharacter = "abc".charAt(0);
         assertThat(firstCharacter).isEqualTo('a');
     }
 
     @DisplayName("요구사항 3-2: charAt() 메서드의 인자가 주어진 문자열의 위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생한다.")
     @Test
-    void charAtThrowsStringIndexOutOfBoundsException() {
+    void charAt2() {
         int index = 3;
         assertThatThrownBy(() -> "abc".charAt(index))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
