@@ -16,9 +16,10 @@ class InterpreterTest {
     @MethodSource
     @DisplayName("인터프리터는 표현식 문자열을 받아서 식을 반환한다.")
     void interpret(String inputString, String[] expectedStrings) {
+
     }
 
-    private static Stream<Arguments> splitStringWithComma() {
+    private static Stream<Arguments> interpreter() {
         return Stream.of(
                 Arguments.of("1,2", new String[]{"1", "2"}),
                 Arguments.of("1", new String[] {"1"})

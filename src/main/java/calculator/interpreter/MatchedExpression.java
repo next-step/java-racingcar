@@ -25,7 +25,11 @@ public class MatchedExpression {
         return matcher.group(OPERATOR_GROUP_INDEX);
     }
 
-    public String getOperand() {
+    public String getOperandString() {
         return matcher.group(OPERAND_GROUP_INDEX);
+    }
+
+    public boolean isValidExpression() {
+        return matcher.matches();
     }
 }

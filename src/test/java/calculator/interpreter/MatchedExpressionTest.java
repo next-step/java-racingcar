@@ -21,7 +21,8 @@ class MatchedExpressionTest {
 
         assertThat(matchedExpression.getSubExpressionString()).isEqualTo(subExpression);
         assertThat(matchedExpression.getOperatorString()).isEqualTo(operator);
-        assertThat(matchedExpression.getOperand()).isEqualTo(operand);
+        assertThat(matchedExpression.getOperandString()).isEqualTo(operand);
     }
+
 
 }
