@@ -1,10 +1,13 @@
 package calculator.interpreter;
 
+import calculator.expression.Expression;
+import calculator.expression.Number;
+import calculator.helper.Generator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,4 +43,22 @@ class SplitExpressionTest {
         assertThatThrownBy(() -> new SplitExpression(expression)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("산술식인지 숫자인지 판별하기")
+    void isArithmeticExpression(SplitExpression splitExpression, boolean isArithmetic) {
+        assertThat(splitExpression.isArithmeticExpression()).isEqualTo(isArithmetic);
+    }
+
+    private static Stream<Arguments> isArithmeticExpression() {
+        return Stream.of(
+                Arguments.of(new SplitExpression("5"), false),
+                Arguments.of(new SplitExpression("+5"), false),
+                Arguments.of(new SplitExpression("-5"), false),
+                Arguments.of(new SplitExpression("5 + 10"), true),
+                Arguments.of(new SplitExpression("5 + 10 + 20"), true),
+                Arguments.of(new SplitExpression("5 + 10 - 20 * 25 / 50"), true)
+
+        );
+    }
 }
