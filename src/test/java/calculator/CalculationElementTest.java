@@ -14,7 +14,7 @@ class CalculationElementTest {
         Class<CalculationElement> expected = CalculationElement.class;
 
         // when
-        CalculationElement<String> actual = CalculationElement.from(new LinkedList());
+        CalculationElement<String> actual = CalculationElement.from(new LinkedList<>());
 
         //then
         Assertions.assertThat(actual).isInstanceOf(expected);
