@@ -16,7 +16,7 @@ class OperatorTest {
     @MethodSource
     @DisplayName("덧셈(+) 테스트")
     void addition(int x, int y, int expectedValue) {
-        assertThat(Operator.ADD.operate(x, y)).isEqualTo(expectedValue);
+        assertThat(Operator.ADDITION.operate(x, y)).isEqualTo(expectedValue);
     }
 
     private static Stream<Arguments> addition() {
@@ -31,7 +31,7 @@ class OperatorTest {
     @MethodSource
     @DisplayName("뺼셈(-) 테스트")
     void subtract(int x, int y, int expectedValue) {
-        assertThat(Operator.SUB.operate(x, y)).isEqualTo(expectedValue);
+        assertThat(Operator.SUBTRACTION.operate(x, y)).isEqualTo(expectedValue);
     }
 
     private static Stream<Arguments> subtract() {
@@ -46,7 +46,7 @@ class OperatorTest {
     @MethodSource
     @DisplayName("곱셈(*) 테스트")
     void multiply(int x, int y, int expectedValue) {
-        assertThat(Operator.MUL.operate(x, y)).isEqualTo(expectedValue);
+        assertThat(Operator.MULTIPLICATION.operate(x, y)).isEqualTo(expectedValue);
     }
 
     private static Stream<Arguments> multiply() {
@@ -61,7 +61,7 @@ class OperatorTest {
     @MethodSource
     @DisplayName("나눗셈(/) 테스트")
     void divide(int x, int y, int expectedValue) {
-        assertThat(Operator.DIV.operate(x, y)).isEqualTo(expectedValue);
+        assertThat(Operator.DIVISION.operate(x, y)).isEqualTo(expectedValue);
     }
 
     private static Stream<Arguments> divide() {
@@ -81,10 +81,10 @@ class OperatorTest {
 
     private static Stream<Arguments> of() {
         return Stream.of(
-                Arguments.of("+", Operator.ADD),
-                Arguments.of("-", Operator.SUB),
-                Arguments.of("*", Operator.MUL),
-                Arguments.of("/", Operator.DIV)
+                Arguments.of("+", Operator.ADDITION),
+                Arguments.of("-", Operator.SUBTRACTION),
+                Arguments.of("*", Operator.MULTIPLICATION),
+                Arguments.of("/", Operator.DIVISION)
         );
     }
 
@@ -94,5 +94,21 @@ class OperatorTest {
     @DisplayName("사칙연산 기호가 아닌경우 예외를 발생시킨다.")
     void ofNotSupportedSymbol(String symbol) {
         assertThatThrownBy(() -> Operator.of(symbol)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest(name = "{1} {0} {2} = {3}")
+    @MethodSource
+    @DisplayName("연산자 통합 테스트")
+    void operate(Operator operator, int x, int y, int expectedValue) {
+        assertThat(operator.operate(x, y)).isEqualTo(expectedValue);
+    }
+
+    private static Stream<Arguments> operate() {
+        return Stream.of(
+                Arguments.of(Operator.ADDITION, 5, 10, 15),
+                Arguments.of(Operator.SUBTRACTION, 5, 10, -5),
+                Arguments.of(Operator.MULTIPLICATION, 5, 10, 50),
+                Arguments.of(Operator.DIVISION, 10, 5, 2)
+        );
     }
 }

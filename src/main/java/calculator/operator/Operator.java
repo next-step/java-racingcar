@@ -7,10 +7,10 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum Operator {
-    ADD("+", Math::addExact),
-    SUB("-", Math::subtractExact),
-    MUL("*", Math::multiplyExact),
-    DIV("/", Math::floorDiv);
+    ADDITION("+", Math::addExact),
+    SUBTRACTION("-", Math::subtractExact),
+    MULTIPLICATION("*", Math::multiplyExact),
+    DIVISION("/", Math::floorDiv);
 
     private static final Map<String, Operator> OPERATORS =
             Arrays.stream(Operator.values())
