@@ -38,4 +38,10 @@ public class StringTest {
         splitedStrings = "1".split(",");
         assertThat(splitedStrings).containsExactly("1");
     }
+
+    @Test
+    public void 요구사항2(){
+        String subString = "(1,2)".substring(1,4);
+        assertThat(subString).isEqualTo("1,2");
+    }
 }
