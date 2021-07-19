@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
-    @DisplayName("요구사항 1_1")
+    @DisplayName("split 분리 확인 테스트 1")
     @Test
     void split1() {
 
@@ -16,7 +16,7 @@ public class StringTest {
         assertThat(result).containsExactly("1", "2");
     }
 
-    @DisplayName("요구사항 1_2")
+    @DisplayName("split 분리 확인 테스트 2")
     @Test
     void split2() {
 
@@ -24,16 +24,16 @@ public class StringTest {
         assertThat(result).containsExactly("1");
     }
 
+    @DisplayName("substring 반환 테스트")
     @Test
-    @DisplayName("요구사항 2")
     void substring() {
 
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
 
+    @DisplayName("특정 위치의 문자를 가져오는 테스트")
     @Test
-    @DisplayName("요구사항 3_1")
     void charAt1() {
 
         char result = "abc".charAt(2);
@@ -41,8 +41,8 @@ public class StringTest {
 
     }
 
+    @DisplayName("StringIndexOutOfBoundsException이 발생 테스트")
     @Test
-    @DisplayName("요구사항 3_2")
     void charAt2() {
 
         String str = "abc";
