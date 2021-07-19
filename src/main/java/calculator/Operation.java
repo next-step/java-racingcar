@@ -17,7 +17,7 @@ public enum Operation {
         this.expression = expression;
     }
 
-    public Integer apply(String operator, Integer num1, Integer num2) {
+    public static Integer apply(String operator, Integer num1, Integer num2) {
         return getOperator(operator).expression.apply(num1, num2);
     }
 

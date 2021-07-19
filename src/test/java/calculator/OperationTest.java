@@ -19,24 +19,24 @@ class OperationTest {
     @DisplayName("덧셈을 계산한다.")
     @Test
     void plus() {
-        assertThat(Operation.PLUS.apply("+", 1, 3)).isEqualTo(4);
+        assertThat(Operation.apply("+", 1, 3)).isEqualTo(4);
     }
 
     @DisplayName("뺄셈을 계산한다.")
     @Test
     void minus() {
-        assertThat(Operation.MINUS.apply("-",20, 10)).isEqualTo(10);
+        assertThat(Operation.apply("-",20, 10)).isEqualTo(10);
     }
 
     @DisplayName("곱셈을 계산한다.")
     @Test
     void multiple() {
-        assertThat(Operation.MULTIPLE.apply("*", 20, 10)).isEqualTo(200);
+        assertThat(Operation.apply("*", 20, 10)).isEqualTo(200);
     }
 
     @DisplayName("나눗셈을 계산한다.")
     @Test
     void divide() {
-        assertThat(Operation.DIVIDE.apply("/", 20, 10)).isEqualTo(2);
+        assertThat(Operation.apply("/", 20, 10)).isEqualTo(2);
     }
 }
