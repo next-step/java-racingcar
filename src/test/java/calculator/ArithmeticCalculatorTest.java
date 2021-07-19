@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import type.MessageFactory;
 
+@SuppressWarnings("NonAsciiCharacters")
 class ArithmeticCalculatorTest {
-
     @ParameterizedTest
     @ValueSource(strings = {"+", "-", "*", "/"})
     void 정상_입력_테스트(final String operator) {
@@ -30,8 +30,20 @@ class ArithmeticCalculatorTest {
 
         // when, then
         Assertions.assertThatThrownBy(() -> ArithmeticCalculator.from(abnormalInput))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(expectedMessage);
+                  .isInstanceOf(IllegalArgumentException.class)
+                  .hasMessageContaining(expectedMessage);
+    }
+
+    @Test
+    void 나누기_0으로_했을_때() {
+        // given
+        String expectedMessage = "0으로 나눌 수 없습니다.";
+        ArithmeticCalculator arithmeticCalculator = ArithmeticCalculator.from("/");
+
+        // when, then
+        Assertions.assertThatThrownBy(() -> arithmeticCalculator.operation(5.0, 0.0))
+                  .isInstanceOf(IllegalArgumentException.class)
+                  .hasMessageContaining(expectedMessage);
     }
 
     @ParameterizedTest

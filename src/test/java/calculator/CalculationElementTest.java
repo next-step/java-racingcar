@@ -6,8 +6,8 @@ import java.util.NoSuchElementException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("NonAsciiCharacters")
 class CalculationElementTest {
-
     @Test
     void 정적_팩토리_테스트() {
         // given

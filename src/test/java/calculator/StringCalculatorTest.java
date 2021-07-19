@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import type.MessageFactory;
 
+@SuppressWarnings("NonAsciiCharacters")
 class StringCalculatorTest {
     private StringCalculator calculator;
 
@@ -38,24 +39,21 @@ class StringCalculatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "1 + 2,계산결과 : 3.0",
-            "4 - 2,계산결과 : 2.0",
-            "6 * 2,계산결과 : 12.0",
-            "8 / 4,계산결과 : 2.0",
-            "2 * 3 / 3 / 2,계산결과 : 1.0",
-            "2 + 3 * 4 / 2,계산결과 : 10.0"
+            "1 + 2,3.0",
+            "4 - 2,2.0",
+            "6 * 2,12.0",
+            "8 / 4,2.0",
+            "2 * 3 / 3 / 2,1.0",
+            "2 + 3 * 4 / 2,10.0"
     }, delimiter = ',')
     void 정상_동작_테스트(String param, String expected) {
         // given
         calculator.enter(param);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
 
         // when
-        calculator.calculate();
+        String actual = calculator.calculate();
 
         // then
-        String actual = String.valueOf(outputStream);
         Assertions.assertThat(actual).isEqualTo(expected);
     }
 }

@@ -3,6 +3,7 @@ package training;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("NonAsciiCharacters")
 class StringTest {
     @Test
     void 요구사항_1_1() {
