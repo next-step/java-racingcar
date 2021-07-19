@@ -8,14 +8,14 @@ public enum Operation {
     MINUS(  "-", (a,b) -> a-b),
     MULIPLY("*", (a,b) -> a*b),
     DIVIDE( "/", (a,b) -> a/b),
-    NULL(    "", (a,b) -> null);
+    NOTHING(    "", (a, b) -> null);
 
     private String operator;
     private BiFunction<Integer,Integer,Integer> calculator;
 
     static public Operation of(String operator){
         return Arrays.stream(values()).filter(operation -> operation.operator.equals(operator))
-                .findFirst().orElse(Operation.NULL);
+                .findFirst().orElse(Operation.NOTHING);
     }
 
     Operation(String operator, BiFunction<Integer, Integer, Integer> calculator) {
