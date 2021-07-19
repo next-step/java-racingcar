@@ -15,7 +15,7 @@ public class ExpressionWith {
         return expression.calculate(a, b);
     }
 
-    static public ExpressionWith create(int a, Expression expression, int b) {
+    static public ExpressionWith of(int a, Expression expression, int b) {
         return new ExpressionWith(a, expression, b);
     }
 }

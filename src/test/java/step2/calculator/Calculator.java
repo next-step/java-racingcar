@@ -26,11 +26,11 @@ public class Calculator {
     }
 
     private int calculate(StringTokenizer tokens) {
-        return ExpressionWith.create(getNumber(tokens.nextToken()), getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
+        return ExpressionWith.of(getNumber(tokens.nextToken()), getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
     }
 
     private int calculate(int resultTemp, StringTokenizer tokens) {
-        return ExpressionWith.create(resultTemp, getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
+        return ExpressionWith.of(resultTemp, getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
     }
 
     private int getNumber(String number) {
