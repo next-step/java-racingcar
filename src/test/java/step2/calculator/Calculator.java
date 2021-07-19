@@ -16,12 +16,7 @@ public class Calculator {
         int result = calculate(tokens);
 
         if (!tokens.hasMoreTokens()) return result;
-
-        if (!isAbleToCalculateNext(tokens)) throw new IllegalArgumentException("잘못된 수식입니다. : 수식 요건 불충족");
-
-        while (tokens.hasMoreTokens()) result = calculate(result, tokens);
-
-        return result;
+        return calculateNextLoop(result, tokens);
     }
 
     private int calculate(StringTokenizer tokens) {
@@ -30,6 +25,13 @@ public class Calculator {
 
     private int calculate(int resultTemp, StringTokenizer tokens) {
         return ExpressionWith.of(resultTemp, getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
+    }
+
+    private int calculateNextLoop(int resultTemp, StringTokenizer tokens) {
+        if (!isAbleToCalculateNext(tokens)) throw new IllegalArgumentException("잘못된 수식입니다. : 수식 요건 불충족");
+
+        while (tokens.hasMoreTokens()) resultTemp = calculate(resultTemp, tokens);
+        return resultTemp;
     }
 
     private int getNumber(String number) {
