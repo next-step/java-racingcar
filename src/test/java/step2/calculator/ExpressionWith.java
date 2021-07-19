@@ -1,11 +1,11 @@
 package step2.calculator;
 
-public class Target {
+public class ExpressionWith {
     int a;
     int b;
     Expression expression;
 
-    protected Target(int a, Expression expression, int b) {
+    protected ExpressionWith(int a, Expression expression, int b) {
         this.a = a;
         this.expression = expression;
         this.b = b;
@@ -15,7 +15,7 @@ public class Target {
         return expression.calculate(a, b);
     }
 
-    static public Target create(int a, Expression expression, int b) {
-        return new Target(a, expression, b);
+    static public ExpressionWith create(int a, Expression expression, int b) {
+        return new ExpressionWith(a, expression, b);
     }
 }

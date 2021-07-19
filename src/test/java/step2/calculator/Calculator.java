@@ -26,11 +26,11 @@ public class Calculator {
     }
 
     private int calculate(StringTokenizer tokens) {
-        return Target.create(getNumber(tokens.nextToken()), getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
+        return ExpressionWith.create(getNumber(tokens.nextToken()), getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
     }
 
     private int calculate(int resultTemp, StringTokenizer tokens) {
-        return Target.create(resultTemp, getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
+        return ExpressionWith.create(resultTemp, getExpression(tokens.nextToken()), getNumber(tokens.nextToken())).calculate();
     }
 
     private int getNumber(String number) {
@@ -42,9 +42,7 @@ public class Calculator {
     }
 
     private Expression getExpression(String expression) {
-        Expression of = Expression.of(expression);
-        if (of.equals(Expression.NOTHING)) throw new IllegalArgumentException("잘못된 수식입니다. : 존재하지 않는 기호");
-        return of;
+        return Expression.of(expression);
     }
 
     private boolean isAbleToCalculateFirst(StringTokenizer tokens) {
