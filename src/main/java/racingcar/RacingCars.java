@@ -4,33 +4,33 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 class RacingCars {
-    private ArrayList<Car> cars;
-
     private static final String MOVEMENT_SITUATION = "-";
+
+    private ArrayList<Car> cars;
 
     private RacingCars(ArrayList<Car> cars) {
         this.cars = cars;
     }
 
-    static RacingCars from(ArrayList<Car> cars) {
+    public static RacingCars from(ArrayList<Car> cars) {
         return new RacingCars(cars);
     }
 
-    int size() {
+    public int size() {
         return this.cars.size();
     }
 
-    void goForward(final int index, final int randomNumber) {
+    public void goForward(final int index, final int randomNumber) {
         if(isNumberMoreThanFour(randomNumber)) {
             this.cars.set(index, this.cars.get(index).changePosition(MOVEMENT_SITUATION));
         }
     }
 
-    String getNameByIndex(final int index){
+    public String getNameByIndex(final int index){
         return this.cars.get(index).getName();
     }
 
-    String getPositonByIndex(final int index){
+    public String getPositonByIndex(final int index){
         return this.cars.get(index).getPosition();
     }
 
@@ -38,7 +38,7 @@ class RacingCars {
         return number >= 4;
     }
 
-    String getWinner() {
+    public String getWinner() {
         int max = cars.stream()
                       .max(Car::compareTo)
                       .get().getPositionLength();

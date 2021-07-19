@@ -11,13 +11,25 @@ class Car implements Comparable<Car> {
         this.position = position;
     }
 
-    static Car of(String name, String position) {
+    public static Car of(String name, String position) {
         return new Car(name, position);
     }
 
-    Car changePosition(String position) {
+    public Car changePosition(String position) {
         this.position += position;
         return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public int getPositionLength() {
+        return position.length();
     }
 
     @Override
@@ -35,18 +47,6 @@ class Car implements Comparable<Car> {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
-    }
-
-    String getName() {
-        return name;
-    }
-
-    String getPosition() {
-        return position;
-    }
-
-    int getPositionLength() {
-        return position.length();
     }
 
     @Override
