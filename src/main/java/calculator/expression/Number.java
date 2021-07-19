@@ -4,7 +4,11 @@ package calculator.expression;
 public class Number extends Expression {
 
     private Number(String numberString) {
+        validate(numberString);
         this.operand = Integer.parseInt(numberString);
+    }
+
+    private void validate(String numberString) {
     }
 
     public static Number of(String numberString) {
