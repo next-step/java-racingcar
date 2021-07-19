@@ -14,6 +14,10 @@ public enum Operator {
 
     private final BiFunction<Integer, Integer, Integer> function;
 
+    public static Operator of(String symbol) {
+        return null;
+    }
+
     public int operate(int x, int y) {
         return function.apply(x, y);
     }

@@ -71,4 +71,20 @@ class OperatorTest {
                 Arguments.of(-1, -2, 0)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("문자 기호를 가지고 연산자를 반환한다.")
+    void of(String symbol, Operator expectedOperator) {
+        assertThat(Operator.of(symbol)).isEqualTo(expectedOperator);
+    }
+
+    private static Stream<Arguments> of() {
+        return Stream.of(
+                Arguments.of("+", Operator.ADD),
+                Arguments.of("-", Operator.SUB),
+                Arguments.of("*", Operator.MUL),
+                Arguments.of("/", Operator.DIV)
+        );
+    }
 }
