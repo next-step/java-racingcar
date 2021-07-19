@@ -3,10 +3,11 @@ package racingcar;
 import java.util.ArrayList;
 
 class RacingGameCore {
-    private final RacingCars racingCars;
-    private int stageCount;
-
     private static final String INITIAL_POSITION_VALUE = "";
+
+    private final RacingCars racingCars;
+
+    private int stageCount;
 
     private RacingGameCore(final int carCount, final int stageCount) {
         ArrayList<String> stringArrayList = new ArrayList<>();
@@ -17,13 +18,13 @@ class RacingGameCore {
         this.stageCount = stageCount;
     }
 
-    static RacingGameCore of(final int carCount, final int stageCount) {
+    public static RacingGameCore of(final int carCount, final int stageCount) {
         return new RacingGameCore(carCount, stageCount);
     }
 
     private StringBuilder gameResult;
 
-    String run() {
+    public String run() {
         gameResult = new StringBuilder();
 
         while (0 != stageCount--) {

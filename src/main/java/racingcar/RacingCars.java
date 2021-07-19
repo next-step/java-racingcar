@@ -3,23 +3,23 @@ package racingcar;
 import java.util.ArrayList;
 
 class RacingCars {
-    private ArrayList<String> cars;
-
     private static final String MOVEMENT_SITUATION = "-";
+
+    private ArrayList<String> cars;
 
     private RacingCars(ArrayList<String> cars) {
         this.cars = cars;
     }
 
-    static RacingCars from(ArrayList<String> cars) {
+    public static RacingCars from(ArrayList<String> cars) {
         return new RacingCars(cars);
     }
 
-    int size() {
+    public int size() {
         return this.cars.size();
     }
 
-    void goForward(final int index, final int randomNumber) {
+    public void goForward(final int index, final int randomNumber) {
         if (isNumberMoreThanFour(randomNumber)) {
             String car = this.cars.get(index);
             String newCar = car + MOVEMENT_SITUATION;
@@ -27,7 +27,7 @@ class RacingCars {
         }
     }
 
-    String get(final int index) {
+    public String get(final int index) {
         return this.cars.get(index);
     }
 
