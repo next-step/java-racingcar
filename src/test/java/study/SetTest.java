@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package study;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -61,4 +62,7 @@ public class SetTest {
         // then
         assertThat(hasNumber).isEqualTo(expected);
     }
+=======
+package study;public class SetTest {
+>>>>>>> [step1] 학습 테스트 실습 - StringTest 변수명 수정
 }
