@@ -4,13 +4,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 
 @DisplayName("매칭되는 표현식 테스트")
 class SplitExpressionTest {
+
+    @ParameterizedTest
+    @ValueSource(strings = {"+1", "-1", "1 + 2", "1 + 2 - 3 * 4 / 5"})
+    @DisplayName("입력된 표현식이 올바른 경우 예외가 발생하지 않는다.")
+    void validInput(String expression) {
+        assertThatCode(() -> new SplitExpression(expression)).doesNotThrowAnyException();
+    }
 
     @ParameterizedTest
     @CsvSource({
