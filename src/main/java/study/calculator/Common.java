@@ -17,9 +17,9 @@ public class Common {
     }
 
     private static boolean isaBoolean(String operation) {
-        return operation.indexOf("+") == -1 ||
-                operation.indexOf("-") == -1 ||
-                operation.indexOf("*") == -1 ||
-                operation.indexOf("/") == -1;
+        return !operation.contains("+") ||
+               !operation.contains("-") ||
+               !operation.contains("*") ||
+               !operation.contains("/");
     }
 }
