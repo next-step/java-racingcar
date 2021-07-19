@@ -16,4 +16,10 @@ public class StringTest {
         String result[] = one.split(",");
         assertThat(result).containsExactly(one);
     }
+
+    @Test
+    void substring_기능_테스트() {
+        String result = "(1,2)".substring(1, 4);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
