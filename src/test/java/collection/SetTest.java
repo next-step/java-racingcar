@@ -1,9 +1,11 @@
 package collection;
 
+import org.assertj.core.api.Assert;
 import org.assertj.core.internal.Numbers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -11,6 +13,8 @@ import java.util.Set;
 
 import static  org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class SetTest {
@@ -44,6 +48,14 @@ public class SetTest {
         assertThat(numbers).contains(number);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:4", "3:5"}, delimiter = ':')
+    void parameterizedTest_요구사항3(int input, String expected) {
+
+
+        assertTrue(!numbers.contains(expected));
+
+    }
 }
 
 
