@@ -36,7 +36,7 @@ public class StringTest {
         assertThat(result).isEqualTo("1,2");
     }
 
-    @DisplayName("[요구사항3] 문자열 최대 인덱스 넘어가는 값 호출 (에러발생)")
+    @DisplayName("[요구사항3] 문자열 최대 인덱스 넘어가는 값 호출 (에러발생).")
     @Test
     void charAt_IndexOutOfBounds(){
         String word = "abc";

@@ -40,7 +40,7 @@ public class CollectionTest {
 //        assertThat(numbers.contains(4)).isTrue(); // 실패
     }
 
-    @DisplayName("[요구사항3] 1,2,3 는 numbers 포함 4,5 는 numbers 미포함")
+    @DisplayName("[요구사항3] 1,2,3 는 numbers 포함 4,5 는 numbers 미포함.")
     @ParameterizedTest
     @CsvSource(value = {"1,2,3:true", "4,5:false"}, delimiter = ':')
     void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected){
