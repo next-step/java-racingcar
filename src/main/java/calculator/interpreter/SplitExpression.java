@@ -1,5 +1,7 @@
 package calculator.interpreter;
 
+import com.sun.tools.javac.util.StringUtils;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,8 +15,16 @@ public class SplitExpression {
     private final Matcher matcher;
 
     public SplitExpression(String expression) {
+        validate(expression);
+
         this.matcher = EXPRESSION_PATTERN.matcher(expression);
         this.matcher.matches();
+    }
+
+    private void validate(String expression) {
+        if (expression == null || expression.isEmpty()) {
+            throw new IllegalArgumentException("Input expression is null or empty");
+        }
     }
 
     public String getSubExpressionString() {
