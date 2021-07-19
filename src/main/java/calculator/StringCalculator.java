@@ -23,10 +23,10 @@ class StringCalculator {
 
     StringCalculator enter(final String s) {
         String[] values = s.split(" ");
-        if(values.length < 3) {
+        if (values.length < 3) {
             throw new IllegalArgumentException(MessageFactory.getInputErrorMessage());
         }
-        for(int i = 0; i < values.length; i++) {
+        for (int i = 0; i < values.length; i++) {
             validate(i, values[i]);
             putIntoStack(values[i]);
         }
@@ -34,10 +34,10 @@ class StringCalculator {
     }
 
     private void validate(final int index, final String value) {
-        if(isEvenNumber(index) && !isNumeric(value)) {
+        if (isEvenNumber(index) && !isNumeric(value)) {
             throw new IllegalArgumentException(MessageFactory.getInputErrorMessage());
         }
-        if(!isEvenNumber(index) && isNumeric(value)) {
+        if (!isEvenNumber(index) && isNumeric(value)) {
             throw new IllegalArgumentException(MessageFactory.getInputErrorMessage());
         }
     }
@@ -51,21 +51,23 @@ class StringCalculator {
     }
 
     private void putIntoStack(final String value) {
-        if(isNumeric(value)) {
+        if (isNumeric(value)) {
             Double number = Double.valueOf(value);
             this.operands.add(number);
         }
-        if(!isNumeric(value)) {
+        if (!isNumeric(value)) {
             this.operators.add(value);
         }
     }
 
-    double calculate() {
-        double result = this.operands.poll();
-        while(this.operands.size() != 0) {
+    void calculate() {
+        double e1 = this.operands.poll();
+        while (this.operands.size() != 0) {
             ArithmeticCalculator operator = ArithmeticCalculator.from(this.operators.poll());
-            result = operator.operation(result, this.operands.poll());
+            double e2 = this.operands.poll();
+            e1 = operator.operation(e1, e2);
         }
-        return result;
+        double result = e1;
+        System.out.print("계산결과 : " + result);
     }
 }
