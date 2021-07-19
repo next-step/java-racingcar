@@ -11,8 +11,20 @@ public class Elements {
 
         for (int i = 0; i < elements.length; i++) {
             String element = elements[i];
+            if (i % 2 == 0 && !isNumber(element))
+                throw new IllegalArgumentException("홀수 인덱스에는 숫자만 올 수 있습니다.");
+            if (i % 2 == 1 && !isOperator(element))
+                throw new IllegalArgumentException("짝수 인덱스에는 사칙 연산자만 올 수 있습니다.");
             this.elements[i] = element;
         }
+    }
+
+    boolean isNumber(String str) {
+        return str.matches("^[0-9]+$");
+    }
+
+    boolean isOperator(String str) {
+        return str.matches("^[\\-+*/]$");
     }
 
     @Override
