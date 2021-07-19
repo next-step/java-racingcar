@@ -2,6 +2,7 @@ package study;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StringTest {
@@ -34,6 +35,7 @@ public class StringTest {
 	 * 요구사항 3-1
 	 */
 	@Test
+	@DisplayName("abc 문자열이 있을때 index 1 번째 위치의 문자는 b")
 	void charAt() {
 		char result = "abc".charAt(1);
 
@@ -44,6 +46,7 @@ public class StringTest {
 	 * 요구사항 3-2
 	 */
 	@Test
+	@DisplayName("abc 문자열이 있을때 index 6 번째 위치의 문자를 가져오면 IndexOutOfBoundsException 발생")
 	void stringIndexOutOfBoundsException() {
 		assertThatExceptionOfType(IndexOutOfBoundsException.class)
 			.isThrownBy(() -> {
