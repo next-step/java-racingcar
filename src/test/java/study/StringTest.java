@@ -35,9 +35,9 @@ public class StringTest {
     @Test
     @DisplayName("요구사항3 - charAt 활용해 특정 위치 값을 벗어날 때 Exception 발생  (ThrownBy)")
     void charAtExceptionTestV1() {
-        assertThatThrownBy(() -> "abc".charAt(3) )
+        assertThatThrownBy(() -> "abc".charAt(3))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining(String.format("index out of range"));
+                .hasMessageContaining("index out of range");
     }
 
     @Test
