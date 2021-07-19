@@ -1,9 +1,11 @@
+package step1;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class Step01 {
+public class StringTest {
 
     @Test
     public void 문자열_분리_테스트() {
