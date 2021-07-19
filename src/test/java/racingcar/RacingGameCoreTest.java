@@ -8,11 +8,11 @@ class RacingGameCoreTest {
     void 정적_팩토리_테스트() throws Exception {
         // given
         Class<RacingGameCore> expected = RacingGameCore.class;
-        int carCount = 3;
+        String[] carNames = {"siro1", "siro2", "siro3"};
         int stageCount = 3;
 
         // when
-        RacingGameCore game = RacingGameCore.of(carCount, stageCount);
+        RacingGameCore game = RacingGameCore.of(carNames, stageCount);
 
         // then
         Assertions.assertThat(game).isNotNull().isInstanceOf(expected);
@@ -21,7 +21,7 @@ class RacingGameCoreTest {
     @Test
     void 게임_테스트() throws Exception {
         // given
-        int carCount = 3;
+        String[] carNames = {"siro1", "siro2", "siro3"};
         int stageCount = 3;
         int expected = new StringBuilder()
                 .append("").append("\n")
@@ -31,9 +31,9 @@ class RacingGameCoreTest {
                 .length();
 
         // when
-        int actual = RacingGameCore.of(carCount, stageCount)
-                .run()
-                .length();
+        int actual = RacingGameCore.of(carNames, stageCount)
+                                   .run()
+                                   .length();
 
         // then
         Assertions.assertThat(actual).isGreaterThan(expected);

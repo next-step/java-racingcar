@@ -1,16 +1,17 @@
 package racingcar;
 
-import java.util.ArrayList;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 class RacingCarsTest {
-    private ArrayList<String> stringArrayList;
+    private ArrayList<Car> carList;
 
     @BeforeEach
     void setUp() {
-        stringArrayList = new ArrayList<>();
+        carList = new ArrayList<>();
     }
 
     @Test
@@ -19,7 +20,7 @@ class RacingCarsTest {
         Class<RacingCars> expected = RacingCars.class;
 
         // when
-        RacingCars actual = RacingCars.from(stringArrayList);
+        RacingCars actual = RacingCars.from(carList);
 
         // then
         Assertions.assertThat(actual).isNotNull().isInstanceOf(expected);
@@ -28,11 +29,13 @@ class RacingCarsTest {
     @Test
     void 조회_테스트() throws Exception {
         // given
-        String expected = "-";
-        stringArrayList.add(expected);
+        String name = "siro";
+        String position = "-";
+        Car expected = Car.of(name, position);
+        carList.add(expected);
 
         // when
-        String actual = RacingCars.from(stringArrayList).get(0);
+        Car actual = RacingCars.from(carList).get(0);
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);
@@ -41,12 +44,14 @@ class RacingCarsTest {
     @Test
     void 전진_테스트_조건은_참() throws Exception {
         // given
-        String expected = "--";
-        stringArrayList.add("-");
+        String name = "siro";
+        String position = "-";
+        Car expected = Car.of(name, position);
+        carList.add(expected);
 
         // when
-        RacingCars.from(stringArrayList).goForward(0, 4);
-        String actual = RacingCars.from(stringArrayList).get(0);
+        RacingCars.from(carList).goForward(0, 4);
+        Car actual = RacingCars.from(carList).get(0);
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);
@@ -55,12 +60,14 @@ class RacingCarsTest {
     @Test
     void 전진_테스트_조건은_거짓() throws Exception {
         // given
-        String expected = "-";
-        stringArrayList.add("-");
+        String name = "siro";
+        String position = "-";
+        Car expected = Car.of(name, position);
+        carList.add(expected);
 
         // when
-        RacingCars.from(stringArrayList).goForward(0, 3);
-        String actual = RacingCars.from(stringArrayList).get(0);
+        RacingCars.from(carList).goForward(0, 3);
+        Car actual = RacingCars.from(carList).get(0);
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);
@@ -70,12 +77,12 @@ class RacingCarsTest {
     void 크기_조회_테스트() throws Exception {
         // given
         int expected = 3;
-        stringArrayList.add("");
-        stringArrayList.add("");
-        stringArrayList.add("");
+        carList.add(Car.of("siro1", "-"));
+        carList.add(Car.of("siro2", "-"));
+        carList.add(Car.of("siro3", "-"));
 
         // when
-        int actual = RacingCars.from(stringArrayList).size();
+        int actual = RacingCars.from(carList).size();
 
         // then
         Assertions.assertThat(actual).isEqualTo(expected);

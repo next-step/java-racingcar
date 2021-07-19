@@ -1,17 +1,18 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 class RacingCars {
-    private ArrayList<String> cars;
+    private ArrayList<Car> cars;
 
     private static final String MOVEMENT_SITUATION = "-";
 
-    private RacingCars(ArrayList<String> cars) {
+    private RacingCars(ArrayList<Car> cars) {
         this.cars = cars;
     }
 
-    static RacingCars from(ArrayList<String> cars) {
+    static RacingCars from(ArrayList<Car> cars) {
         return new RacingCars(cars);
     }
 
@@ -20,18 +21,27 @@ class RacingCars {
     }
 
     void goForward(final int index, final int randomNumber) {
-        if (isNumberMoreThanFour(randomNumber)) {
-            String car = this.cars.get(index);
-            String newCar = car + MOVEMENT_SITUATION;
-            this.cars.set(index, newCar);
+        if(isNumberMoreThanFour(randomNumber)) {
+            this.cars.set(index, this.cars.get(index).changePosition(MOVEMENT_SITUATION));
         }
     }
 
-    String get(final int index) {
+    Car get(final int index) {
         return this.cars.get(index);
     }
 
     private boolean isNumberMoreThanFour(final int number) {
         return number >= 4;
+    }
+
+    String getWinner() {
+        int max = cars.stream()
+                      .max(Car::compareTo)
+                      .get().getPositionLength();
+
+        return cars.stream()
+                   .filter(car -> car.getPositionLength() == max)
+                   .map(car -> car.getName())
+                   .collect(Collectors.joining(", "));
     }
 }
