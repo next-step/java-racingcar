@@ -17,10 +17,10 @@ public class Number extends Expression {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Number that = (Number) obj;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Number that = (Number) o;
         return this.operand == that.operand;
     }
 
