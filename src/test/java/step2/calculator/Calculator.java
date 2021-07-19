@@ -17,10 +17,9 @@ public class Calculator {
 
         if (!tokens.hasMoreTokens()) return result;
 
-        do {
-            if (!isAbleToCalculateNext(tokens)) throw new IllegalArgumentException("잘못된 수식입니다. : 수식 요건 불충족");
-            result = calculate(result, tokens);
-        } while (tokens.hasMoreTokens());
+        if (!isAbleToCalculateNext(tokens)) throw new IllegalArgumentException("잘못된 수식입니다. : 수식 요건 불충족");
+
+        while (tokens.hasMoreTokens()) result = calculate(result, tokens);
 
         return result;
     }
