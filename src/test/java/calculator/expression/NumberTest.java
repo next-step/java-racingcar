@@ -45,13 +45,13 @@ class NumberTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-1, 0, 1})
+    @ValueSource(strings = {"-1", "0", "1"})
     @DisplayName("equals 테스트")
     void equals(String expression) {
         Number number = Number.of(expression);
         Number anotherNumber = Number.of(expression);
 
-        assertThat(number).isNotEqualTo(anotherNumber);
+        assertThat(number).isEqualTo(anotherNumber);
     }
 
     @ParameterizedTest

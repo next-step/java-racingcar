@@ -1,5 +1,7 @@
 package calculator.interpreter;
 
+import calculator.utils.StringUtils;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +22,7 @@ public class SplitExpression {
     }
 
     private void validate(String expression) {
-        if (expression == null || expression.isEmpty()) {
+        if (StringUtils.isEmpty(expression)) {
             throw new IllegalArgumentException("Input expression is null or empty");
         }
     }
