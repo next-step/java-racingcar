@@ -1,18 +1,82 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-
-version = '1.0.0'
-sourceCompatibility = 1.8
+plugins {
+    id 'java'
+    id 'jacoco'
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
-    testCompile('org.assertj:assertj-core:3.11.1')
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter:5.7.2",
+            "org.assertj:assertj-core:3.19.0"
+    )
 }
 
 test {
     useJUnitPlatform()
+}
+
+build {
+    dependsOn(':jacoco')
+}
+
+ext {
+    set('reportDir', file('src/report'))
+    excludeFilter = [
+            '**/test/**',
+            '**/*Runner.*',
+            '**/*Scanner.*',
+            '**/*Printer.*'
+    ]
+}
+
+task jacoco(type: Test) {
+    group 'verification'
+    description 'Runs the unit tests and verify coverage using jacoco'
+
+
+    dependsOn(
+            ':jacocoTestReport',
+            ':jacocoTestCoverageVerification'
+    )
+
+
+    tasks['jacocoTestCoverageVerification'].mustRunAfter(tasks['jacocoTestReport'])
+}
+
+jacocoTestReport {
+    reports {
+        html.enabled true
+        html.destination file("$reportDir/")
+    }
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: excludeFilter)
+        }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = true
+            element = 'CLASS'
+
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.50
+            }
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 250
+            }
+            excludes = excludeFilter
+        }
+    }
 }
