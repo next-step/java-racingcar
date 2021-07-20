@@ -72,4 +72,11 @@ class StringCalculatorTest {
         assertThat(stringCalculator.execute(input)).isEqualTo(answer);
     }
 
+    @DisplayName("0을 나눌 경우 IllegalArgumentException throw 테스트")
+    @Test
+    void divideZeroTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.execute("10 / 0");
+        }).withMessageMatching("0으로 나눌 수 없습니다.");
+    }
 }
