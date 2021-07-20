@@ -48,7 +48,7 @@ public class StringCalculator {
     private int input(List<Integer> numbers, List<String> operations) {
         int result = numbers.get(0);
         for(int i = 0; i < operations.size(); i++) {
-            result = input(result, numbers.get(i+1), operations.get(i));
+            result = calculate(result, numbers.get(i+1), operations.get(i));
         }
         return result;
     }
