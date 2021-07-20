@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -64,16 +65,30 @@ public class CalculatorTest {
     @DisplayName("Scanner 클래스를 활용해 입력된 값에 빈공백 기준으로 split 해서 수식 입력 바인딩 테스트.")
     @Test
     void inputValueSplitTest() {
-        String input = "2 + 3";
-        Scanner scanner = new Scanner(input);
-        List<String> wordList = new ArrayList<>();
+        List<String> wordList = inputSplitValue("2 + 3");
 
-        while (scanner.hasNext()){
-            String word = scanner.next();
-            wordList.add(word);
-        }
-        
         assertThat(wordList.size()).isEqualTo(3);
         assertThat(wordList).containsExactly("2","+","3");
+    }
+
+    @DisplayName("수식값 리스트에서 사용되는 숫자와 사칙연산 기호를 분리후 각각 리스트에 담기 테스트")
+    @Test
+    void bindingOperationTest() {
+        List<String> wordList = inputSplitValue("2 + 3 - 1 * 2 / 8");
+
+        List<String> valueList = new ArrayList<>();
+        List<String> operationList = new ArrayList<>();
+
+        for(int i=0; i<wordList.size(); i++){
+
+            if(i % 2 == 1){
+                operationList.add(wordList.get(i));
+
+            }else{
+                valueList.add(wordList.get(i));
+            }
+        }
+        assertThat(valueList).containsExactly("2","3","1","2","8");
+        assertThat(operationList).containsExactly("+", "-", "*", "/");
     }
 }
