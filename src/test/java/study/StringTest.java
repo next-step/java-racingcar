@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringTest {
 
     @Test
-    @DisplayName("[1. 문자열 분리] : 1,2")
+    @DisplayName("[1. 문자열 분리] 1,2 -> {1, 2}")
     public void split() {
         // given
         String one = "1";
@@ -34,7 +34,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("[1. 문자열 분리] : 1,")
+    @DisplayName("[1. 문자열 분리] , 가 마지막에 오는 경우 | 1, -> {1}")
     public void split2() {
         // given
         String one = "1";
