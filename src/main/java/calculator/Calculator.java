@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Calculator {
@@ -12,31 +13,31 @@ public class Calculator {
     }
 
     public int calculate() {
-        return calculateState(State.makeDefaultState()).getResult();
+        return calculateState(CalculatorState.makeDefaultState()).getResult();
     }
 
-    private State calculateState(State calcualtorState) {
+    private CalculatorState calculateState(CalculatorState calculatorState) {
         for (String input : formula.getFormula()) {
             Formula.ConfigurationType currentType = getFormulaConfigurationType(input);
 
-            if (isNotValidCalculateSequence(calcualtorState, currentType)) {
+            if (isNotValidCalculateSequence(calculatorState, currentType)) {
                 throw new IllegalArgumentException();
             }
 
-            calcualtorState = makeCalculatorState(calcualtorState, input, currentType);
+            calculatorState = makeCalculatorState(calculatorState, input, currentType);
         }
-        return calcualtorState;
+        return calculatorState;
     }
 
-    private State makeCalculatorState(State state, String input, Formula.ConfigurationType currentType) {
+    private CalculatorState makeCalculatorState(CalculatorState state, String input, Formula.ConfigurationType currentType) {
         if (isNumber(input)) {
-            return State.changeTypeAndResult(state, currentType, operate(state, input));
+            return CalculatorState.changeTypeAndResult(state, currentType, operate(state, input));
         }
 
-        return State.changeTypeAndOperator(state, currentType, Operator.findOperator(input));
+        return CalculatorState.changeTypeAndOperator(state, currentType, Operator.findOperator(input));
     }
 
-    private int operate(State state, String input) {
+    private int operate(CalculatorState state, String input) {
         Operator operator = state.getOperator();
 
         if (operator != null) {
@@ -58,7 +59,7 @@ public class Calculator {
         return regExp.matcher(input).find();
     }
 
-    private boolean isNotValidCalculateSequence(State state, Formula.ConfigurationType currentType) {
+    private boolean isNotValidCalculateSequence(CalculatorState state, Formula.ConfigurationType currentType) {
         return !Formula.ConfigurationType.isValidCalculatorSequence(state.getType(), currentType);
     }
 

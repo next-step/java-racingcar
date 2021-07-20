@@ -2,28 +2,28 @@ package calculator;
 
 import java.util.Objects;
 
-public class State {
+public class CalculatorState {
 
     private final Formula.ConfigurationType type;
     private final int result;
     private final Operator operator;
 
-    public State(Formula.ConfigurationType type, int result, Operator operator) {
+    public CalculatorState(Formula.ConfigurationType type, int result, Operator operator) {
         this.type = type;
         this.result = result;
         this.operator = operator;
     }
 
-    public static State changeTypeAndResult(State prevState, Formula.ConfigurationType type, int result) {
-        return new State(type, result, prevState.operator);
+    public static CalculatorState changeTypeAndResult(CalculatorState prevState, Formula.ConfigurationType type, int result) {
+        return new CalculatorState(type, result, prevState.operator);
     }
 
-    public static State changeTypeAndOperator(State prevState, Formula.ConfigurationType type, Operator operator) {
-        return new State(type, prevState.result, operator);
+    public static CalculatorState changeTypeAndOperator(CalculatorState prevState, Formula.ConfigurationType type, Operator operator) {
+        return new CalculatorState(type, prevState.result, operator);
     }
 
-    public static State makeDefaultState() {
-        return new State(Formula.ConfigurationType.NONE, 0, null);
+    public static CalculatorState makeDefaultState() {
+        return new CalculatorState(Formula.ConfigurationType.NONE, 0, null);
     }
 
     public Formula.ConfigurationType getType() {
@@ -42,7 +42,7 @@ public class State {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        State state = (State) o;
+        CalculatorState state = (CalculatorState) o;
         return result == state.result && type == state.type && operator == state.operator;
     }
 
