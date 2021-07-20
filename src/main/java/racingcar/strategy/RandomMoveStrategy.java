@@ -9,10 +9,14 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     private final Random random;
 
-    public RandomMoveStrategy(Random random) {
+    private RandomMoveStrategy(Random random) {
         validate(random);
 
         this.random = random;
+    }
+
+    public static RandomMoveStrategy from(Random random) {
+        return new RandomMoveStrategy(random);
     }
 
     private void validate(Random random) {
