@@ -1,14 +1,27 @@
 package stringcalculator;
 
+import java.util.Scanner;
+import stringcalculator.util.OperationUtil;
+import stringcalculator.util.UserInputValidator;
+
 public class StringCalculator {
 
     public static void main(String[] args) {
-        // 1.유저로부터 입력 받기 (Scanner 사용)
-        // 2.받은 입력을 검증
-        // 3.어떤 연산인지 판별
-        // 4.두 숫자의 연산을 실행
-        // 5. '단계 4'를 남은 숫자와 연산자가 없을때까지 반복
-        // 6. 종료.
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("처리할 연산을 공백을 포함해 입력하시오.(예: 1 + 1) :");
+        String userInput = sc.nextLine();
+        sc.close();
+
+        // 1.유저 입력이 Null이나 공백문자일 경우 예외를 던짐
+        UserInputValidator.validate(userInput);
+
+        // 3. 연산
+        int result = OperationUtil.calculate(userInput);
+
+        System.out.println("결과는 : " + result);
+
+
     }
 
 }
