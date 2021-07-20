@@ -15,7 +15,7 @@ public enum Operation {
 
     static public Operation of(String operator){
         return Arrays.stream(values()).filter(operation -> operation.operator.equals(operator))
-                .findFirst().orElse(Operation.NOTHING);
+                .findFirst().orElseThrow(() -> new IllegalArgumentException ("올바른 연산자가 아닙니다."));
     }
 
     Operation(String operator, BiFunction<Integer, Integer, Integer> calculator) {
