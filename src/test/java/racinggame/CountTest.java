@@ -15,3 +15,4 @@ class CountTest {
                 .withMessage("시도할 회수는 0보다 큰 숫자여야 합니다.");
     }
 }
+
