@@ -1,6 +1,4 @@
-package stingcalculator;
-
-import static org.junit.jupiter.api.Assertions.*;
+package stringcalculator;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,4 +8,5 @@ class StringCalculatorTest {
     void skeleton() {
         System.out.println("여기서부터 시작");
     }
+
 }
