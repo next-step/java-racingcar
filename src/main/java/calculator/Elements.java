@@ -23,9 +23,9 @@ public class Elements {
 
         int result = Integer.parseInt(elements[0]);
 
-        for (int i = 1; i < elements.length; i = i + 2)
+        for (int i = 1; i < elements.length; i = i + 2) {
             result = Operator.calculate(elements[i], result, Integer.parseInt(elements[i + 1]));
-
+        }
         return result;
     }
 
