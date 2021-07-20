@@ -1,29 +1,23 @@
 package step3;
 
-import java.util.Random;
+import step3.model.CarGroup;
+import step3.view.InputView;
+
 import java.util.Scanner;
 
 public class App {
+    public static final int CRITERION_NUMBER = 4;
+    public static final int RANGE = 9;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
+
+        InputView.viewCarCount();
         int carCount = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
+        InputView.viewCount();
         int count = scanner.nextInt();
 
-        int[] car = new int[carCount];
-
-        Random random = new Random();
-        for (int i = 0; i < count; i++) {
-            for (int j = 0; j < carCount; j++) {
-                int randomNumber = random.nextInt(10);
-                if (randomNumber >= 4) car[j]++;
-                for (int k = 0; k < car[j]; k++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
-            System.out.println("======================================");
-        }
+        Game game = new Game(count);
+        game.run(new CarGroup(carCount));
     }
 }
