@@ -28,19 +28,19 @@ public class Calculator {
         return calcualtorState;
     }
 
-    private State makeCalculatorState(State prevState, String input, Formula.ConfigurationType currentType) {
+    private State makeCalculatorState(State state, String input, Formula.ConfigurationType currentType) {
         if (isNumber(input)) {
-            return State.ofResult(prevState, currentType, operate(prevState, input));
+            return State.changeTypeAndResult(state, currentType, operate(state, input));
         }
 
-        return State.ofOperator(prevState, currentType, Operator.findOperator(input));
+        return State.changeTypeAndOperator(state, currentType, Operator.findOperator(input));
     }
 
-    private int operate(State prevState, String input) {
-        Operator operator = prevState.getOperator();
+    private int operate(State state, String input) {
+        Operator operator = state.getOperator();
 
         if (operator != null) {
-            return operator.operate(prevState.getResult(), Integer.parseInt(input));
+            return operator.operate(state.getResult(), Integer.parseInt(input));
         }
 
         return Integer.parseInt(input);
