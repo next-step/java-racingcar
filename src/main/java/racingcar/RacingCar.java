@@ -35,8 +35,8 @@ public class RacingCar {
             throw new IllegalStateException("Round can't exceed total round");
         }
 
-        currentRound++;
         cars.moveCars();
+        currentRound++;
     }
 
     public boolean isRaceOver() {
