@@ -24,21 +24,9 @@ public class Elements {
         int result = Integer.parseInt(elements[0]);
 
         for (int i = 1; i < elements.length; i = i + 2)
-            result = calculateOneCycle(result, elements[i], elements[i + 1]);
+            result = Operator.calculate(elements[i], result, Integer.parseInt(elements[i + 1]));
 
         return result;
-    }
-
-    private int calculateOneCycle(int number1, String operator, String number2) {
-        if (operator.equals("+"))
-            return number1 + Integer.parseInt(number2);
-        if (operator.equals("-"))
-            return number1 - Integer.parseInt(number2);
-        if (operator.equals("*"))
-            return number1 * Integer.parseInt(number2);
-        if (operator.equals("/"))
-            return number1 / Integer.parseInt(number2);
-        throw new IllegalArgumentException("짝수번째 문자는 사칙 연산자만 올 수 있습니다.");
     }
 
     boolean isNumber(String str) {
