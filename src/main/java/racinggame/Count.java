@@ -1,11 +1,13 @@
-package calculator.racinggame;
+package racinggame;
+
+import racinggame.util.Validator;
 
 public class Count {
 
     private final int count;
 
     public Count(int count) {
-        if (!isValid(count)) {
+        if (!Validator.isPositiveNumber(count)) {
             throw new IllegalArgumentException("시도할 회수는 0보다 큰 숫자여야 합니다.");
         }
         this.count = count;
@@ -13,9 +15,5 @@ public class Count {
 
     public int getCount() {
         return count;
-    }
-
-    private boolean isValid(int count) {
-        return count > 0;
     }
 }
