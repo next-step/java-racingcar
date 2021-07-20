@@ -27,7 +27,7 @@ public class RacingCar {
         }
     }
 
-    public static RacingCar init(RacingCarInitParam racingCarInitParam,, MoveStrategy moveStrategy) {
+    public static RacingCar init(RacingCarInitParam racingCarInitParam, MoveStrategy moveStrategy) {
         return new RacingCar(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound(), moveStrategy);
     }
 
