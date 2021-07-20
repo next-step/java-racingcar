@@ -27,7 +27,7 @@ public class StringCalculatorTest {
     @DisplayName("공백 단위로 문자열을 분리한다.")
     void splitWithSpace(String input) {
         Elements result = stringCalculator.splitWithSpace(input);
-        assertThat(result).isEqualTo(new Elements(new String[]{"2", "+", "3", "*", "4", "/", "2"}));
+        assertThat(result).isEqualTo(new Elements(input));
     }
 
     @ParameterizedTest(name = "{displayName} [{index}] {0} ")
