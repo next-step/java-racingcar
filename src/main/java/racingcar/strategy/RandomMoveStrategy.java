@@ -23,6 +23,6 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMovable() {
-        return false;
+        return random.nextInt(RANDOM_LIMIT) >= MOVE_STANDARD;
     }
 }
