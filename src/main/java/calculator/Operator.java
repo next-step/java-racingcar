@@ -28,4 +28,5 @@ public enum Operator {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("사칙 연산자만 올 수 있습니다."));
     }
+
 }
