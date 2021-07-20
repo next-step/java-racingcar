@@ -1,4 +1,4 @@
-package calculrator;
+package calculator;
 
 
 /**
@@ -22,10 +22,10 @@ package calculrator;
  */
 public class StringCalculator {
 
-    private CalculatorException calculratorException;
+    private CalculatorValidation calculratorException;
 
     StringCalculator() {
-        calculratorException = new CalculatorException();
+        calculratorException = new CalculatorValidation();
     }
 
     public int calculate(String value) {
