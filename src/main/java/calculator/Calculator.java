@@ -2,36 +2,34 @@ package calculator;
 
 public class Calculator {
 
-    private final Validation validation;
     private int result;
 
     public Calculator() {
-        validation = new Validation();
         result = 0;
     }
 
-    public String[] getInputArray(String inputStr) {
-        String[] inputArr = validation.checkInputValidation(inputStr).split(" ");
-        validation.checkValidation(inputArr);
-
-        return inputArr;
+    private String[] getInputArray(String inputStr) {
+        Validator.checkInputValidation(inputStr);
+        return inputStr.split(" ");
     }
 
     public int calculate(String inputStr) {
-
         String[] inputArr = getInputArray(inputStr);
-
+        String operator, number1, number2;
         for (int i = 0; i < inputArr.length - 2; i += 2) {
-            validation.checkValidation(inputArr[i + 1], inputArr[i], inputArr[i + 2]);
+            operator = inputArr[i + 1];
+            number1 = inputArr[i];
+            number2 = inputArr[i + 2];
+            Validator.checkCalculateValidation(operator, number1, number2);
 
-            result = i == 0 ? Integer.parseInt(inputArr[i]) : result;
-            setResult(inputArr[i + 1], result, Integer.parseInt(inputArr[i + 2]));
+            result = i == 0 ? Integer.parseInt(number1) : result;
+            calculateResult(operator, result, Integer.parseInt(number2));
         }
 
         return result;
     }
 
-    private void setResult(String operator, int num1, int num2) {
+    private void calculateResult(String operator, int num1, int num2) {
         if ("+".equals(operator)) {
             result = plus(num1, num2);
         }
@@ -59,6 +57,9 @@ public class Calculator {
     }
 
     public int devision(int num1, int num2) {
+        if (num1 == 0 || num2 == 0) {
+            throw new ArithmeticException("0으로는 연산이 불가합니다.");
+        }
         return num1 / num2;
     }
 }
