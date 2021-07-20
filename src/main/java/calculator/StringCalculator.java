@@ -17,13 +17,13 @@ public class StringCalculator {
 
 
     public void checkValidity(String[] expressions) {
-        int len = expressions.length;
+        int expressionLen = expressions.length;
 
-        if(len % 2 == 0){
+        if(expressionLen % 2 == 0){
             throw new IllegalArgumentException("유효한 연산식이 아닙니다.");
         }
 
-        for (int i = 0; i < expressions.length; i++) {
+        for (int i = 0; i < expressionLen; i++) {
 
             if (i % 2 == 0) {
                 if(!isOperand(expressions[i])){
