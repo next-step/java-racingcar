@@ -19,6 +19,21 @@ public class Game {
         this.repeatCount = repeatCount;
     }
 
+    public boolean run() {
+        for (Car car : cars) {
+            car.move(Tool.makeRandomNumber());
+        }
+        return true;
+    }
+
+    public boolean run(int[] numbers) {
+        int index = 0;
+        for (Car car : cars) {
+            car.move(numbers[index++]);
+        }
+        return true;
+    }
+
     public int getCarSize() {
         return cars.size();
     }

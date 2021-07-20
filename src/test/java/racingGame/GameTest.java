@@ -25,4 +25,11 @@ public class GameTest {
         assertThatThrownBy(() -> new Game(carSize, repeatSize))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("게임 실행")
+    void run() {
+        Game game = new Game(3, 5);
+        assertThat(game.run(new int[]{4, 4, 4})).isTrue();
+    }
 }
