@@ -12,7 +12,7 @@ public class StringCalculator {
         String[] inputs = input.split(" ");
         List<Integer> numbers = parsingNumber(inputs);
         List<String> operations = parsingOperation(inputs);
-        return calculate(numbers, operations);
+        return input(numbers, operations);
     }
 
     private List<Integer> parsingNumber(String[] inputs) {
@@ -45,7 +45,7 @@ public class StringCalculator {
         return operations;
     }
 
-    private int calculate(List<Integer> numbers, List<String> operations) {
+    private int input(List<Integer> numbers, List<String> operations) {
         int result = numbers.get(0);
         for(int i = 0; i < operations.size(); i++) {
             result = input(result, numbers.get(i+1), operations.get(i));
@@ -53,7 +53,7 @@ public class StringCalculator {
         return result;
     }
 
-    private int input(int oriNumber, int inputNumber, String operation) {
+    private int calculate(int oriNumber, int inputNumber, String operation) {
         int result = 0;
 
         if("+".equals(operation)) {
