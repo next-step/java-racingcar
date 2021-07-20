@@ -12,7 +12,7 @@ class CarTest {
     @DisplayName("자동차는 MoveStrategy 를 가지고 초기화 한다.")
     @Test
     void initWithMoveStrategy() {
-        assertThatThrownBy(() -> Car.from(() -> true)).doesNotThrowAnyException();
+        assertThat(Car.from(() -> true)).isNotNull();
     }
 
     @DisplayName("자동차는 MoveStrategy 없이 초기화 할 수 없다.")
