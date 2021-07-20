@@ -18,7 +18,10 @@ public enum Expression {
     }
 
     static public Expression of(String label) {
-        return Arrays.stream(values()).filter(expression -> expression.label.equals(label)).findFirst().orElseThrow(IllegalArgumentException::new);
+        return Arrays.stream(values())
+                .filter(expression -> expression.label.equals(label))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public int calculate(int a, int b) {
