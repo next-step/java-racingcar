@@ -4,16 +4,17 @@ import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
 
     @Test
     @DisplayName("[1. 문자열 분리] : 1,2")
-    public void split1() {
+    public void split() {
         // given
         String one = "1";
         String two = "2";
@@ -52,30 +53,14 @@ public class StringTest {
     }
 
     
-    @Test
-    @DisplayName("[2. 괄호 제거] : (1,2)")
-    public void peelBracket1() {
+    @ParameterizedTest(name = "[2. 괄호 제거] : {arguments}")
+    @CsvSource(value = {"(1,2):1,2", "1,2:1,2"}, delimiter = ':')
+    public void peelBracket(String input, String expected) {
         // given
-        String input = "(1,2)";
-        String expected = "1,2";
-        
+
         // when
         String peeled = peelBracket(input);
         
-        // then
-        assertThat(peeled).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("[2. 괄호 제거] : 1,2")
-    public void peelBracket2() {
-        // given
-        String input = "1,2";
-        String expected = "1,2";
-
-        // when
-        String peeled = peelBracket(input);
-
         // then
         assertThat(peeled).isEqualTo(expected);
     }
@@ -94,7 +79,7 @@ public class StringTest {
     @ValueSource(ints = {-1, 3})
     public void charAtException(int index) {
         // given
-        String input = "input";
+        String input = "abc";
         String message = "String index out of range: " + index;
 
         // when
