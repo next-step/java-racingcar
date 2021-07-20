@@ -35,7 +35,8 @@ public class Elements {
     }
 
     boolean isNumber(String str) {
-        return str.matches("^-?[0-9]+$");
+        Integer.parseInt(str);
+        return true;
     }
 
     boolean isOperator(String str) {
