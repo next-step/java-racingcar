@@ -65,4 +65,11 @@ class StringCalculatorTest {
         }).withMessageMatching("사칙연산 기호가 아닌 문자가 포함되어 있습니다.");
     }
 
+    @DisplayName("사칙연산 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"20 + 10 - 20 / 2 * 2:10", "5 + 3 * 2 / 4 - 4:0"}, delimiter = ':')
+    void calculateTest(String input, int answer) {
+        assertThat(stringCalculator.excute(input)).isEqualTo(answer);
+    }
+
 }
