@@ -1,21 +1,21 @@
 package calculator;
 
-import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 
 public class Operator {
 
-    public static Function<int[], Integer> plus = numbers -> numbers[0] + numbers[1];
-    public static Function<int[], Integer> minus = numbers -> numbers[0] - numbers[1];
-    public static Function<int[], Integer> multiply = numbers -> numbers[0] * numbers[1];
-    public static Function<int[], Integer> divide = numbers -> {
-        if ((numbers[0] / numbers[1]) == (numbers[0] / (double) numbers[1])) {
-            return numbers[0] / numbers[1];
+    public static IntBinaryOperator plus = Integer::sum;
+    public static IntBinaryOperator minus = (number1, number2) -> number1 - number2;
+    public static IntBinaryOperator multiply = (number1, number2) -> number1 * number2;
+    public static IntBinaryOperator divide = (number1, number2) -> {
+        if ((number1 / number2) == (number1 / (double) number2)) {
+            return number1 / number2;
         }
 
         throw new ArithmeticException("나눗셈의 결과는 정수이어야 합니다.");
     };
 
-    public static Function<int[], Integer> find(String operator) {
+    public static IntBinaryOperator find(String operator) {
         if (operator.equals("+")) {
             return plus;
         }

@@ -4,12 +4,12 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
-import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 
 public class Calculator {
 
     private final Queue<Integer> numberQueue = new ArrayDeque<>();
-    private final Queue<Function<int[], Integer>> operatorQueue = new ArrayDeque<>();
+    private final Queue<IntBinaryOperator> operatorQueue = new ArrayDeque<>();
 
     public void updateExpression(String expressionString) {
         List<String> elements = Arrays.asList(expressionString.split(" "));
@@ -33,10 +33,8 @@ public class Calculator {
         int result = numberQueue.poll();
 
         while (!operatorQueue.isEmpty()) {
-            Function<int[], Integer> operator = operatorQueue.poll();
-            int[] numbers = new int[]{result, numberQueue.poll()};
-
-            result = operator.apply(numbers);
+            IntBinaryOperator operator = operatorQueue.poll();
+            result = operator.applyAsInt(result, numberQueue.poll());
         }
 
         return result;
