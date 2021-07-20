@@ -6,6 +6,7 @@ import java.util.Random;
 public class RandomMoveStrategy implements MoveStrategy {
     private static final int RANDOM_LIMIT = 10;
     private static final int MOVE_STANDARD = 4;
+    public static final MoveStrategy DEFAULT_MOVE_STRATEGY = from(new Random(RANDOM_LIMIT));
 
     private final Random random;
 
