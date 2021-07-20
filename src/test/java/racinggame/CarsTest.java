@@ -3,6 +3,7 @@ package racinggame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 class CarsTest {
@@ -13,5 +14,11 @@ class CarsTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Cars(-1))
                 .withMessage("시도할 회수는 0보다 큰 숫자여야 합니다.");
+    }
+
+    @DisplayName("입력 숫자 만큼 Car 객체를 만들 수 있다.")
+    @Test
+    void init_cars() {
+        assertThat(new Cars(3).getCars().size()).isEqualTo(3);
     }
 }
