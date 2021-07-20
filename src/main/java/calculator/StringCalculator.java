@@ -22,45 +22,22 @@ package calculator;
  */
 public class StringCalculator {
 
-    private CalculatorValidation calculratorException;
-
     StringCalculator() {
-        calculratorException = new CalculatorValidation();
+
     }
 
     public int calculate(String value) {
-        String[] valueArr = value.split(" ");
-        int result =  Integer.parseInt(valueArr[0]);
-        for (int i = 0; i < valueArr.length - 2; i += 2) {
-            calculratorException.checkException( valueArr[i + 1], Integer.parseInt(valueArr[i + 2]));
-            result = calculate(result, valueArr[i + 1], Integer.parseInt(valueArr[i + 2]));
-        }
+        String[] valueArr = stringBySplit(value);
+        int result = toInt(valueArr[0]);
         return result;
     }
 
-    private int calculate(int firstValue, String expression, int lastValue) {
-        if (expression.equals("+")) return plus(firstValue, lastValue);
-        if (expression.equals("-")) return minus(firstValue, lastValue);
-        if (expression.equals("*")) return multi(firstValue, lastValue);
-        if (expression.equals("/")) return divide(firstValue, lastValue);
-        throw new IllegalArgumentException("올바른 연산자가 아닙니다.");
+    public String[] stringBySplit(String value) {
+        return value.split(" ");
     }
 
-    public int plus(int firstValue, int lastValue) {
-        return firstValue + lastValue;
+    public int toInt(String value) {
+        return Integer.parseInt(value);
     }
-
-    public int minus(int firstValue, int lastValue) {
-        return firstValue - lastValue;
-    }
-
-    public int multi(int firstValue, int lastValue) {
-        return firstValue * lastValue;
-    }
-
-    public int divide(int firstValue, int lastValue) {
-        return firstValue / lastValue;
-    }
-
 
 }
