@@ -24,18 +24,31 @@ public class Car {
     public void car_racing() {
         System.out.println(firstRequest);
         if (scanner.hasNext()) {
-            totalCarNumber = scanner.nextInt();
+            totalCarNumber = toInt(scanner.next());
             System.out.println(totalCarNumber);
             createCarByNumber(totalCarNumber);
         }
         System.out.println(secondRequest);
         if (scanner.hasNext()) {
-            tryraceNumber = scanner.nextInt();
+            tryraceNumber = toInt(scanner.next());
             System.out.println(tryraceNumber);
             tryRacingByCar(tryraceNumber);
         }
         scanner.close();
     }
+
+    private int toInt(String inputValue) {
+        validByNumberCheck(inputValue);
+        return Integer.parseInt(inputValue);
+    }
+
+    private void validByNumberCheck(String inputValue) {
+        String regExp = "^[0-9]+$";
+        if (!inputValue.matches(regExp)) {
+            throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
+        }
+    }
+
 
     private void createCarByNumber(int totalCarNumber) {
         for (int i = 0; i < totalCarNumber; i++) {
