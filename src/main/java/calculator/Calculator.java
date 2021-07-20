@@ -17,13 +17,15 @@ public class Calculator {
 
     private CalculatorState calculateState(CalculatorState calculatorState) {
         for (String input : formula.getFormula()) {
-            calculatorState = makeCalculatorState(calculatorState, input, getFormulaConfigurationType(input));
+            calculatorState = makeCalculatorState(calculatorState, input);
         }
 
         return calculatorState;
     }
 
-    private CalculatorState makeCalculatorState(CalculatorState state, String input, Formula.ConfigurationType currentType) {
+    private CalculatorState makeCalculatorState(CalculatorState state, String input) {
+        Formula.ConfigurationType currentType = getFormulaConfigurationType(input);
+
         if (isNotValidCalculateSequence(state, currentType)) {
             throw new IllegalArgumentException();
         }
