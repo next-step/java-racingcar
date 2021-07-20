@@ -11,6 +11,18 @@ class CalculatorTest {
 
     Calculator calculator = new Calculator();
 
+    @DisplayName("연산 메소드 테스트")
+    @Test
+    void calculatorResultTest() {
+        int num1 = 4;
+        int num2 = 2;
+
+        assertThat(calculator.add(num1, num2)).isEqualTo(6);
+        assertThat(calculator.minus(num1, num2)).isEqualTo(2);
+        assertThat(calculator.multiply(num1, num2)).isEqualTo(8);
+        assertThat(calculator.divide(num1, num2)).isEqualTo(2);
+    }
+
     @DisplayName("빈문자열 체크 테스트")
     @Test
     public void calculatorExceptionTest() {

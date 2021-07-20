@@ -21,6 +21,14 @@ public class Calculator {
         return num1 / num2;
     }
 
+    public String execute(String mathExpression) {
+
+        String[] splitMath = checkMathExpression(mathExpression);
+
+        return null;
+
+    }
+
     public String[] checkMathExpression(String mathExpression) {
 
         if(mathExpression == null || mathExpression.equals("")) {
