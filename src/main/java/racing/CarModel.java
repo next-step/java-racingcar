@@ -9,10 +9,6 @@ public class CarModel {
         this.carNumber = carNumber;
     }
 
-    public int getCarNumber() {
-        return carNumber;
-    }
-
     public String getRaceDistance() {
         return raceDistance;
     }
