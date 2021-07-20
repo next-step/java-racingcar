@@ -13,12 +13,16 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int numberOfCars, MoveStrategy moveStrategy) {
+    private Cars(int numberOfCars, MoveStrategy moveStrategy) {
         validate(numberOfCars, moveStrategy);
 
         cars = Stream.generate(() -> Car.from(moveStrategy))
                 .limit(numberOfCars)
                 .collect(Collectors.toList());
+    }
+
+    public static Cars of(int numberOfCars, MoveStrategy moveStrategy) {
+        return new Cars(numberOfCars, moveStrategy);
     }
 
     private void validate(int numberOfCars, MoveStrategy moveStrategy) {
