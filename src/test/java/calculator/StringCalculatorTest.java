@@ -44,7 +44,7 @@ class StringCalculatorTest {
 
 	@DisplayName("사칙연산을 모두 포함하는 연산을 수행한다.")
 	@Test
-	void calculate() {
+	void calculateWithAllOperators() {
 		assertThat(calculator.calculate("2 + 3 - 1 * 5 / 2")).isEqualTo(10);
 	}
 
