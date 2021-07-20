@@ -21,7 +21,7 @@ class CalculatorTest {
         "2 + 3 * 4 / 2 = 10"}, delimiter = '=')
     public void calulate(String expression, int expected) {
         // given
-        calculator.setExpression(expression);
+        calculator.updateExpression(expression);
 
         // when
         int result = calculator.calculate();
@@ -42,7 +42,7 @@ class CalculatorTest {
         // given
 
         // when
-        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.setExpression(expression));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.updateExpression(expression));
 
         // then
     }
@@ -52,7 +52,20 @@ class CalculatorTest {
     @CsvSource(value = {"5 / 2"})
     public void divide_resultIsNotInteger(String expression) {
         // given
-        calculator.setExpression(expression);
+        calculator.updateExpression(expression);
+
+        // when
+        Assertions.assertThrows(ArithmeticException.class, calculator::calculate);
+
+        // then
+    }
+
+    @DisplayName("[실패] 나누기 - 0 으로 나누기")
+    @ParameterizedTest
+    @CsvSource(value = {"5 / 0"})
+    public void divide_by0(String expression) {
+        // given
+        calculator.updateExpression(expression);
 
         // when
         Assertions.assertThrows(ArithmeticException.class, calculator::calculate);
