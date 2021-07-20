@@ -1,39 +1,34 @@
 package calculator;
 
+import java.util.function.BiFunction;
+
 public enum Operator {
 
-    PLUS("+"){
-        int exec(int num1, int num2) {
-            return num1 + num2;
+    PLUS("+", (num1, num2) -> num1 + num2),
+    MINUS("-", (num1, num2) -> num1 - num2),
+    MULTIPLY("*", (num1, num2) -> num1 * num2),
+    DIVIDE("/", (num1, num2) -> {
+        if (num1 == 0 || num2 == 0) {
+            return 0;
         }
-    },
-    MINUS("-"){
-        int exec(int num1, int num2) {
-            return num1 - num2;
-        }
-    },
-    MULTIPLY("*"){
-        int exec(int num1, int num2) {
-            return num1 * num2;
-        }
-    },
-    DIVIDE("/"){
-        int exec(int num1, int num2) {
-            return num1 / num2;
-        }
-    };
+        return num1 / num2;
+    });
 
     private final String symbol;
+    private final BiFunction<Integer, Integer, Integer> bf;
 
-    Operator(String symbol) {
+    Operator(String symbol, BiFunction<Integer, Integer, Integer> bf) {
         this.symbol = symbol;
+        this.bf = bf;
     }
 
     public String getSymbol() {
         return symbol;
     }
 
-    abstract int exec(int num1, int num2);
+    public int exec(int num1, int num2) {
+        return bf.apply(num1, num2);
+    }
 
     public static Operator of(String symbol) {
         Operator[] operators = Operator.values();

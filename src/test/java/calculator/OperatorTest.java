@@ -49,7 +49,7 @@ class OperatorTest {
 
     @DisplayName("DIVIDE")
     @ParameterizedTest(name = "{displayName} -> \"({0}) * ({1}) = {2}\"")
-    @CsvSource(value = {"10:5:2", "10:3:3", "10:-5:-2" ,"-49:7:-7"}, delimiter = ':')
+    @CsvSource(value = {"10:5:2", "10:3:3", "10:-5:-2" ,"-49:7:-7", "5:0:0"}, delimiter = ':')
     void divideTest(int num1, int num2, int expected) {
         int actual = Operator.DIVIDE.exec(num1, num2);
         assertThat(actual).isEqualTo(expected);
