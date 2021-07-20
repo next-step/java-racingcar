@@ -27,7 +27,8 @@ public enum Calculation {
     private static Calculation getExpression(String expressionLabel) {
         return Arrays.stream(values())
                 .filter(o -> o.expressionLabel.equals(expressionLabel))
-                .findFirst().orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
     }
 
     private static void validToDivideByZero(int lastValue) {
