@@ -29,7 +29,7 @@ public class SetTest {
     void requirement1() {
         final int actual = numbers.size();
 
-        assertThat(actual).isEqualTo(4);
+        assertThat(actual).isEqualTo(3);
     }
 
     @DisplayName("특정 Set 에 1,2,3의 값이 존재하는지 확인한다.")
