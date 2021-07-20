@@ -65,13 +65,13 @@ public class StringTest {
         assertThat(peeled).isEqualTo(expected);
     }
 
-    public String peelBracket(String text) {
+    private String peelBracket(String text) {
         return isWrappedInBracket(text)
                 ? text.substring(1, text.length() - 1)
                 : text;
     }
 
-    public boolean isWrappedInBracket(String text) {
+    private boolean isWrappedInBracket(String text) {
         return text.startsWith("(") && text.endsWith(")");
     }
 
