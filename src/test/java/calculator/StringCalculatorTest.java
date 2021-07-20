@@ -29,4 +29,12 @@ class StringCalculatorTest {
     void multiplicationTest(String input, int answer) {
         assertThat(stringCalculator.excute(input)).isEqualTo(answer);
     }
+
+    @DisplayName("나누기 계산 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"20 / 4:5", "100 / 1:100", "10 / 5:2", "9 / 3:3"}, delimiter = ':')
+    void divisionTest(String input, int answer) {
+        assertThat(stringCalculator.excute(input)).isEqualTo(answer);
+    }
+    
 }
