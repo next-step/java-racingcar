@@ -16,14 +16,6 @@ public class Elements {
                 .collect(Collectors.toList());
     }
 
-    private boolean valid(String[] elements, int index) {
-        if (index % 2 == 0 && !isNumber(elements[index]))
-            throw new IllegalArgumentException("홀수번째 문자는 숫자만 올 수 있습니다.");
-        if (index % 2 == 1 && !isOperator(elements[index]))
-            throw new IllegalArgumentException("짝수번째 문자는 사칙 연산자만 올 수 있습니다.");
-        return true;
-    }
-
     public int calculate() {
 
         int result = Integer.parseInt(elements.get(0));
@@ -34,12 +26,20 @@ public class Elements {
         return result;
     }
 
-    boolean isNumber(String str) {
+    private boolean valid(String[] elements, int index) {
+        if (index % 2 == 0 && !isNumber(elements[index]))
+            throw new IllegalArgumentException("홀수번째 문자는 숫자만 올 수 있습니다.");
+        if (index % 2 == 1 && !isOperator(elements[index]))
+            throw new IllegalArgumentException("짝수번째 문자는 사칙 연산자만 올 수 있습니다.");
+        return true;
+    }
+
+    private boolean isNumber(String str) {
         Integer.parseInt(str);
         return true;
     }
 
-    boolean isOperator(String str) {
+    private boolean isOperator(String str) {
         return str.matches("^[\\-+*/]$");
     }
 
