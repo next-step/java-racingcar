@@ -9,10 +9,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StringCalculatorTest {
     private final StringCalculator stringCalculator = new StringCalculator();
 
-    @DisplayName("덧셈 계산 테스트")
+    @DisplayName("더하기 계산 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2:3", "4 + 5:9"}, delimiter = ':')
     void plusTest(String input, int answer) {
+        assertThat(stringCalculator.excute(input)).isEqualTo(answer);
+    }
+
+    @DisplayName("빼기 계산 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1 - 2:-1", "9 - 3:6", "100 - 25:75"}, delimiter = ':')
+    void minusTest(String input, int answer) {
         assertThat(stringCalculator.excute(input)).isEqualTo(answer);
     }
 
