@@ -9,6 +9,7 @@ import racingcar.helper.Fixture;
 import racingcar.param.RacingCarInitParam;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -56,11 +57,13 @@ class CarRacingTest {
     @DisplayName("경주 종료 여부를 리턴한다.")
     @Test
     void isRaceOver() {
-        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(2, 1), Fixture.alwaysMoveStrategy());
+        int totalRound = 10;
+        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(2, totalRound), Fixture.alwaysMoveStrategy());
 
         assertThat(carRacing.isRaceOver()).isFalse();
 
-        carRacing.race();
+        IntStream.range(0, totalRound)
+                .forEach(i -> carRacing.race());
 
         assertThat(carRacing.isRaceOver()).isTrue();
     }
