@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
-    @DisplayName("자동차를 생성시 기본 이동거리는 0이다.")
+    @DisplayName("자동차 생성시 기본 이동거리는 0이다.")
     void create() {
         Car car = new Car();
         assertThat(car).isEqualTo(new Car(0));

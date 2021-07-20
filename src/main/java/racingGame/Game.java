@@ -9,6 +9,7 @@ public class Game {
 
     public static final int MIN_CAR_SIZE = 0;
     public static final int MIN_REPEAT_COUNT = 0;
+
     private final int repeatCount;
     private List<Car> cars = new ArrayList<>();
 
@@ -21,11 +22,10 @@ public class Game {
         this.repeatCount = repeatCount;
     }
 
-    public boolean runOnce() {
+    public void runOnce() {
         cars = cars.stream()
                 .map(car -> car.move(Tool.makeRandomNumber()))
                 .collect(Collectors.toList());
-        return true;
     }
 
     public boolean runOnce(int[] numbers) {
@@ -40,10 +40,6 @@ public class Game {
         return cars.stream()
                 .map(Car::getDistance)
                 .collect(Collectors.toList());
-    }
-
-    public int getCarSize() {
-        return cars.size();
     }
 
     public int getRepeatCount() {

@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Car {
 
     public static final int MOVABLE_LIMIT_NUMBER = 4;
+
     private final int distance;
 
     public Car() {

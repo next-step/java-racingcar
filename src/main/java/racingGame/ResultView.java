@@ -15,7 +15,7 @@ public class ResultView {
         System.out.println();
     }
 
-    private static String parseIntegerToBar(int value) {
+    public static String parseIntegerToBar(int value) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < value; i++) {
             sb.append("-");
