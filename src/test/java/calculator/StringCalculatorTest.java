@@ -1,6 +1,5 @@
 package calculator;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,20 +17,17 @@ public class StringCalculatorTest {
         String[] emptyArr = new String[]{"","+","3"};
         String[] nullArr = new String[]{null,"+","3"};
 
-        assertThatIllegalArgumentException().isThrownBy(()->{
-            stringCalculator.checkBeforeCalculate(emptyArr);
-        });
-        assertThatIllegalArgumentException().isThrownBy(()->{
-            stringCalculator.checkBeforeCalculate(nullArr);
-        });
+        assertThatIllegalArgumentException().isThrownBy(()->
+            stringCalculator.checkBeforeCalculate(emptyArr));
+        assertThatIllegalArgumentException().isThrownBy(()->
+            stringCalculator.checkBeforeCalculate(nullArr));
     }
-
 
     @ParameterizedTest
     @CsvSource(value = {"2,3,+,5","3,-4,-,7","5,4,*,20","20,2,/,10"})
     @DisplayName("덧셈, 뺄셈, 곱셈, 나눗셈")
     void calculateTest(int number1, int number2, String sign, int result){
-        assertThat(stringCalculator.calculate(number1,number2,sign)).isEqualTo(result);
+        assertThat(Calculator.calculate(number1,number2,sign)).isEqualTo(result);
     }
 
     @Test
@@ -51,7 +47,7 @@ public class StringCalculatorTest {
     @DisplayName("사칙연산 기호 아닌경우")
     void isCalculateException(){
         assertThatIllegalArgumentException().isThrownBy(()->{
-            stringCalculator.calculate(2,3,"??");
+            Calculator.calculate(2,3,"??");
         });
     }
 }
