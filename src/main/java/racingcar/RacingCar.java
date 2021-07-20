@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.car.Cars;
 import racingcar.dto.CarDto;
+import racingcar.param.RacingCarInitParam;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class RacingCar {
         }
     }
 
-    public static RacingCar init(int numberOfCars, int totalRound, MoveStrategy moveStrategy) {
-        return new RacingCar(numberOfCars, totalRound, moveStrategy);
+    public static RacingCar init(RacingCarInitParam racingCarInitParam,, MoveStrategy moveStrategy) {
+        return new RacingCar(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound(), moveStrategy);
     }
 
     public void race() {

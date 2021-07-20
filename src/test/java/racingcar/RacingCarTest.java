@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.CarDto;
 import racingcar.helper.Fixture;
+import racingcar.param.RacingCarInitParam;
 
 import java.util.List;
 
@@ -18,21 +19,21 @@ class RacingCarTest {
     @DisplayName("레이싱 카 게임은 차의 숫자와 라운드 수, MoveStrategy 를 가지고 초기화 한다.")
     @Test
     void init() {
-        assertThat(RacingCar.init(10, 5, Fixture.alwaysMoveStrategy())).isNotNull();
+        assertThat(RacingCar.init(RacingCarInitParam.of(10, 5), Fixture.alwaysMoveStrategy())).isNotNull();
     }
 
     @DisplayName("총 라운드 수는 1 이상이다.")
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void roundShouldBeOverZero(int totalRound) {
-        assertThatThrownBy(() -> RacingCar.init(10, totalRound, Fixture.alwaysMoveStrategy()))
+        assertThatThrownBy(() -> RacingCar.init(RacingCarInitParam.of(10, totalRound), Fixture.alwaysMoveStrategy()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("레이스를 진행하면 차들이 한 번 움직임을 시도한다.")
     @Test
     void raceMakeCarsTryMove() {
-        RacingCar racingCar = RacingCar.init(2, 1, Fixture.alwaysMoveStrategy());
+        RacingCar racingCar = RacingCar.init(RacingCarInitParam.of(2, 1), Fixture.alwaysMoveStrategy());
         List<CarDto> carDtos = racingCar.currentState();
         carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(0));
 
@@ -45,7 +46,7 @@ class RacingCarTest {
     @DisplayName("현재 라운드 수는 총 라운드 수를 넘길 수 없다.")
     @Test
     void currentRoundCantExceedTotalRound() {
-        RacingCar racingCar = RacingCar.init(10, 1, Fixture.alwaysMoveStrategy());
+        RacingCar racingCar = RacingCar.init(RacingCarInitParam.of(10, 1), Fixture.alwaysMoveStrategy());
 
         racingCar.race();
 
@@ -55,7 +56,7 @@ class RacingCarTest {
     @DisplayName("경주 종료 여부를 리턴한다.")
     @Test
     void isRaceOver() {
-        RacingCar racingCar = RacingCar.init(2, 1, Fixture.alwaysMoveStrategy());
+        RacingCar racingCar = RacingCar.init(RacingCarInitParam.of(2, 1), Fixture.alwaysMoveStrategy());
 
         assertThat(racingCar.isRaceOver()).isFalse();
 
