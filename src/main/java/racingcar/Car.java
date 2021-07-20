@@ -17,4 +17,12 @@ public class Car {
             countOfMove++;
         }
     }
+
+    protected void print() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < countOfMove; i++) {
+            sb.append("-");
+        }
+        System.out.println(sb);
+    }
 }

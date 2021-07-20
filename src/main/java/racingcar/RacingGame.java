@@ -17,6 +17,7 @@ public class RacingGame {
         this.cars = initialize(numberOfCars);
         for (int i = 0; i < numberOfAttempts; i++) {
             move();
+            print();
         }
     }
 
@@ -28,5 +29,10 @@ public class RacingGame {
 
     private void move() {
         this.cars.forEach(Car::move);
+    }
+
+    public void print() {
+        this.cars.forEach(Car::print);
+        System.out.println();
     }
 }
