@@ -15,7 +15,6 @@ public class ConsoleController {
         CarRacing carRacing = CarRacing.init(racingCarInitParam, RandomMoveStrategy.DEFAULT_MOVE_STRATEGY);
 
         ResultView.printResultStatement();
-        ResultView.printState(carRacing.currentState());
 
         while (!carRacing.isRaceOver()) {
             carRacing.race();
