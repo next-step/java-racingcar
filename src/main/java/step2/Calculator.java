@@ -12,7 +12,7 @@ public class Calculator {
     private Deque<String> express;
 
     public Calculator(String s) {
-        this.splitData(s);
+        splitData(s);
     }
 
     private void splitData(String s) {
@@ -20,7 +20,7 @@ public class Calculator {
             throw new IllegalArgumentException("입력 문자 공백 or null 에러");
         }
         String[] lines = s.split(" ");
-        this.saveData(lines);
+        saveData(lines);
     }
 
     private boolean isNullOrBlank(String s) {
@@ -34,6 +34,9 @@ public class Calculator {
 
     public int calculate(){
 
+        if(isOnlyOne()){
+            return getInteger();
+        }
         isCorrectSyntax(express);
 
         while(express.size() > minimumSize){
@@ -50,6 +53,18 @@ public class Calculator {
         }
 
         return 0;
+    }
+
+    private int getInteger() {
+        try {
+            return Integer.valueOf(express.getFirst());
+        }catch(NumberFormatException numEx){
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
+    }
+
+    private boolean isOnlyOne() {
+        return express.size() == 1;
     }
 
     public void isCorrectSyntax(Deque express){

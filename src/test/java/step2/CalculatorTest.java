@@ -83,4 +83,20 @@ class CalculatorTest {
         Calculator cal = new Calculator(input);
         assertThat(cal.calculate()).isEqualTo(Integer.valueOf(expect));
     }
+
+    @DisplayName("숫자 하나만 입력")
+    @Test
+    void inputOnlyOne(){
+        Calculator cal = new Calculator("1");
+        assertThat(cal.calculate()).isEqualTo(1);
+    }
+
+    @DisplayName("연산자 하나만 입력")
+    @Test
+    void inputOnlyOneExpress(){
+        Calculator cal = new Calculator("+");
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> cal.calculate()
+        ).withMessageContaining("숫자가 아닙니다.");
+    }
 }
