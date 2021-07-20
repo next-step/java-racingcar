@@ -34,7 +34,7 @@ public class Calculator {
 
     public int calculate(){
 
-        isCollectSyntax(express);
+        isCorrectSyntax(express);
 
         while(express.size() > minimumSize){
 
@@ -52,7 +52,7 @@ public class Calculator {
         return 0;
     }
 
-    public void isCollectSyntax(Deque express){
+    public void isCorrectSyntax(Deque express){
         if(express.size() < minimumSize || evenSize(express)){
             throw new IllegalArgumentException("잘못된 수식");
         }
