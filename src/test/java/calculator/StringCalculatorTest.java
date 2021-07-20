@@ -56,4 +56,13 @@ class StringCalculatorTest {
         }).withMessageMatching("입력 값이 null이거나 빈 공백 문자입니다.");
     }
 
+    @DisplayName("사칙연산 기호가 아닌 문자가 포함되어 있을 경우 IllegalArgumentException throw 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"20 q 10", "5 . 3"})
+    void inputNotOperationTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.excute(input);
+        }).withMessageMatching("사칙연산 기호가 아닌 문자가 포함되어 있습니다.");
+    }
+
 }
