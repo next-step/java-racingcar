@@ -4,17 +4,18 @@ import step2.calculator.exceptions.InvalidExpressionException;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public enum Expression {
-    PLUS("+", (a, b) -> a + b),
-    MINUS("-", (a, b) -> a - b),
-    MULTIPLY("*", (a, b) -> a * b),
-    DIVIDE("/", (a, b) -> a / b);
+    PLUS("+", (ex) -> ex.frontNumber + ex.backNumber),
+    MINUS("-", (ex) -> ex.frontNumber - ex.backNumber),
+    MULTIPLY("*", (ex) -> ex.frontNumber * ex.backNumber),
+    DIVIDE("/", (ex) -> ex.frontNumber / ex.backNumber);
 
     private String label;
-    private BiFunction<Integer, Integer, Integer> calculate;
+    private Function<ExpressionWith, Integer> calculate;
 
-    Expression(String label, BiFunction<Integer, Integer, Integer> calculate) {
+    Expression(String label, Function<ExpressionWith, Integer> calculate) {
         this.label = label;
         this.calculate = calculate;
     }
@@ -26,8 +27,8 @@ public enum Expression {
                 .orElseThrow(InvalidExpressionException::new);
     }
 
-    public int calculate(int a, int b) {
-        return calculate.apply(a, b);
+    public int calculate(ExpressionWith expression) {
+        return calculate.apply(expression);
     }
 
 }

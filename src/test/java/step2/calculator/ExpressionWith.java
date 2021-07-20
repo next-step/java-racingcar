@@ -12,7 +12,7 @@ public class ExpressionWith {
     }
 
     public int calculate() {
-        return expression.calculate(frontNumber, backNumber);
+        return expression.calculate(this);
     }
 
     static public ExpressionWith of(int a, Expression expression, int b) {
