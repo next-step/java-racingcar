@@ -18,4 +18,10 @@ public class StringTest {
     private String[] getSplitByComma(String s) {
         return s.split(",");
     }
+
+    @Test
+    void subString() {
+        String result = "(1,2)".substring(1,4);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
