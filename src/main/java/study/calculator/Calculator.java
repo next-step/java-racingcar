@@ -1,6 +1,8 @@
 package study.calculator;
 
-import java.util.List;
+import java.util.*;
+
+import static study.calculator.Common.*;
 
 public class Calculator {
 
@@ -49,29 +51,61 @@ public class Calculator {
         return result;
     }
 
-    public static void valueClassification(List<String> wordList, List<String> valueList, List<String> operationList) {
+    public static Map<String,List<String>> valueClassification(List<String> wordList) {
+        List<String> valueList = new ArrayList<>();
+        List<String> operationList = new ArrayList<>();
 
         for(int i = 0; i< wordList.size(); i++){
             
             if (isEven(i)) {
-                isOper(wordList, operationList, i);
+                addOperation(wordList.get(i), operationList);
             }
 
             if(!isEven(i)) {
-                isValue(wordList, valueList, i);
+                addValue(wordList.get(i), valueList);
             }
         }
+
+        Map<String,List<String>> resultMap = new HashMap<>();
+        resultMap.put("values",valueList);
+        resultMap.put("operations",operationList);
+
+        return resultMap;
     }
 
     private static boolean isEven(int i) {
         return i % 2 == 1;
     }
 
-    private static boolean isValue(List<String> wordList, List<String> valueList, int i) {
-        return valueList.add(wordList.get(i));
+    private static void addValue(String value, List<String> valueList) {
+        checkValue(value);
+        valueList.add(value);
     }
 
-    private static boolean isOper(List<String> wordList, List<String> operationList, int i) {
-        return isValue(wordList, operationList, i);
+    private static void addOperation(String value, List<String> operationList) {
+        checkOperation(value);
+        operationList.add(value);
+    }
+
+    public static int getResult(List<String> valueList, List<String> operationList) {
+
+        int result = 0;
+
+        for(int j = 0; j< valueList.size(); j++){
+
+            if(j>0){
+
+                int cumulativeValue = j > 1 ? result : Integer.parseInt(valueList.get(0));
+
+                result = Calculator.getOperation(cumulativeValue, operationList.get(j-1),Integer.parseInt(valueList.get(j)));
+            }
+        }
+        return result;
+    }
+
+    public static void start() {
+        System.out.println(" 수식을 입력하세요 ex) 2 + 3");
+        Map<String,List<String>> map = valueClassification(Arrays.asList(inputValue().split(" ")));
+        System.out.println("result = " + getResult(map.get("values"), map.get("operations")));
     }
 }

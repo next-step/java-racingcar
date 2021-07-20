@@ -3,14 +3,11 @@ package study.calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static study.calculator.Common.*;
 
 public class CalculatorTest {
@@ -76,13 +73,21 @@ public class CalculatorTest {
     void bindingOperationTest() {
         List<String> wordList = inputSplitValue("2 + 3 - 1 * 2 / 8");
 
-        List<String> valueList = new ArrayList<>();
-        List<String> operationList = new ArrayList<>();
+        Map<String,List<String>> map = Calculator.valueClassification(wordList);
 
-        Calculator.valueClassification(wordList, valueList, operationList);
+        assertThat(map.get("values")).containsExactly("2","3","1","2","8");
+        assertThat(map.get("operations")).containsExactly("+", "-", "*", "/");
+    }
 
-        assertThat(valueList).containsExactly("2","3","1","2","8");
-        assertThat(operationList).containsExactly("+", "-", "*", "/");
+    @DisplayName("수식을 제공받아 결과를 도출.")
+    @Test
+    void calculateValueTest() {
+
+        List<String> wordList = inputSplitValue("2 + 3 - 2 * 1 / 3");
+
+        Map<String,List<String>> map = Calculator.valueClassification(wordList);
+
+        assertThat(Calculator.getResult(map.get("values"), map.get("operations"))).isEqualTo(1);
     }
 
 }

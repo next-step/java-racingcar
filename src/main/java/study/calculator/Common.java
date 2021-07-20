@@ -28,13 +28,28 @@ public class Common {
     }
 
     public static List<String> inputSplitValue(String input) {
-        Scanner scanner = new Scanner(input);
         List<String> wordList = new ArrayList<>();
+
+        Scanner scanner = new Scanner(input);
 
         while (scanner.hasNext()){
             String word = scanner.next();
             wordList.add(word);
         }
+        scanner.close();
         return wordList;
     }
+
+    public static String inputValue() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        String word =  scanner.nextLine();
+
+        scanner.close();
+
+        return word;
+    }
+
+
 }
