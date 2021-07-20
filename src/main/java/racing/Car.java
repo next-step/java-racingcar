@@ -23,12 +23,15 @@ public class Car {
 
     public void car_racing() {
         System.out.println(firstRequest);
-        if (scanner.hasNextLine()) {
+        if (scanner.hasNext()) {
             totalCarNumber = scanner.nextInt();
+            System.out.println(totalCarNumber);
             createCarByNumber(totalCarNumber);
         }
-        if (scanner.hasNextLine()) {
+        System.out.println(secondRequest);
+        if (scanner.hasNext()) {
             tryraceNumber = scanner.nextInt();
+            System.out.println(tryraceNumber);
             tryRacingByCar(tryraceNumber);
         }
         scanner.close();
@@ -59,8 +62,12 @@ public class Car {
 
     private String calculatorDistance(String raceDistance) {
         int randomNUmber = randomIntValue();
-        String result = raceDistance + getRaceDistance(randomNUmber);
+        String result = nullToBlank(raceDistance) + getRaceDistance(randomNUmber);
         return result.trim();
+    }
+
+    private String nullToBlank(String raceDistance) {
+        return raceDistance == null ? "" : raceDistance;
     }
 
     public String getRaceDistance(int randomNUmber) {
