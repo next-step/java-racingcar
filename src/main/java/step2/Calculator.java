@@ -4,7 +4,7 @@ package step2;
 import java.util.*;
 
 public class Calculator {
-    private Deque<Object> express = new LinkedList<>();
+    private Deque<String> express;
 
     public Calculator(String s) {
         this.splitData(s);
@@ -19,23 +19,9 @@ public class Calculator {
     }
 
     private void saveData(String[] lines) {
-        for(String line : lines){
-            if(isNum(line)){
-                express.add(Integer.valueOf(line));
-            }else{
-                express.add(line);
-            }
-        }
+        express = new LinkedList<String>(Arrays.asList(lines));
     }
 
-    private boolean isNum(String line) {
-        try{
-            Integer.valueOf(line);
-            return true;
-        }catch(NumberFormatException ex){
-            return false;
-        }
-    }
 
     public int calculate(){
         int result = 0;
@@ -44,16 +30,16 @@ public class Calculator {
 
         while(express.size() > 2){
 
-            Integer num1 = (Integer)express.poll();
+            Integer num1 = Integer.valueOf(express.poll());
             Operation operator = Operation.of(express.poll().toString());
-            Integer num2 = (Integer)express.poll();
+            Integer num2 = Integer.valueOf(express.poll());
 
 
-            express.addFirst(operator.calcuate(num1,num2));
+            express.addFirst(String.valueOf(operator.calcuate(num1,num2)));
         }
 
-        if(express.size()==1 && express.getFirst() instanceof Integer){
-            result = (Integer)express.getFirst();
+        if(express.size()==1 ){
+            result = Integer.valueOf(express.getFirst());
         }
 
         return result;
@@ -63,7 +49,7 @@ public class Calculator {
             throw new IllegalArgumentException("잘못된 수식");
         }
     }
-    public Deque<Object> getExpress() {
+    public Deque<String> getExpress() {
         return express;
     }
 }

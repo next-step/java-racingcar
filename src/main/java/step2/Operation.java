@@ -6,7 +6,7 @@ import java.util.function.BiFunction;
 public enum Operation {
     PLUS(   "+", (a,b) -> a+b),
     MINUS(  "-", (a,b) -> a-b),
-    MULIPLY("*", (a,b) -> a*b),
+    MULTIPLY("*", (a,b) -> a*b),
     DIVIDE( "/", (a,b) -> a/b),
     NOTHING(    "", (a, b) -> null);
 

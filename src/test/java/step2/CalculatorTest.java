@@ -31,7 +31,7 @@ class CalculatorTest {
     @Test
     void create(){
         Calculator cal = new Calculator("1 + 2 / 3");
-        assertThat(cal.getExpress()).containsExactly(1,"+",2,"/",3);
+        assertThat(cal.getExpress()).containsExactly("1","+","2","/","3");
     }
 
     @DisplayName("맞는 수식 계산 확인")

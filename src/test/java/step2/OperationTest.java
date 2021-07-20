@@ -24,7 +24,7 @@ class OperationTest {
     @DisplayName("곱셈을 수행한다.")
     @Test
     void testMuliply(){
-        int multiply = Operation.MULIPLY.calcuate(2,5);
+        int multiply = Operation.MULTIPLY.calcuate(2,5);
         assertThat(multiply).isEqualTo(10);
     }
     @DisplayName("나눗셈을 수행한다.")
