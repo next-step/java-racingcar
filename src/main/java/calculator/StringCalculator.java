@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class StringCalculator {
 
+    public static final String SPACEBAR = " ";
     public static final String IS_NUMBER_REGEX = "[0-9]+";
     public static final String IS_OPERATION_REGEX = "[-+*/]";
     public static final String IS_NULL_ERROR_MESSAGE = "입력 값이 null이거나 빈 공백 문자입니다.";
@@ -13,7 +14,7 @@ public class StringCalculator {
 
     public int excute(String input) {
         validateInput(input);
-        String[] inputs = input.split(" ");
+        String[] inputs = input.split(SPACEBAR);
         List<Integer> numbers = parsingNumber(inputs);
         List<String> operations = parsingOperation(inputs);
         return input(numbers, operations);
@@ -36,7 +37,7 @@ public class StringCalculator {
     }
 
     private boolean isNotOperation(String input) {
-        String[] inputs = input.split(" ");
+        String[] inputs = input.split(SPACEBAR);
         for(int i = 0; i < inputs.length; i++) {
             if(!inputs[i].matches(IS_NUMBER_REGEX) && !inputs[i].matches(IS_OPERATION_REGEX)) {
                 return true;
