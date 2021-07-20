@@ -1,37 +1,52 @@
 package calculator;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.IntBinaryOperator;
 
-public class Operator {
+public enum Operator {
 
-    public static IntBinaryOperator plus = Integer::sum;
-    public static IntBinaryOperator minus = (number1, number2) -> number1 - number2;
-    public static IntBinaryOperator multiply = (number1, number2) -> number1 * number2;
-    public static IntBinaryOperator divide = (number1, number2) -> {
-        if ((number1 / number2) == (number1 / (double) number2)) {
-            return number1 / number2;
+    PLUS('+', Integer::sum),
+    MINUS('-', (number1, number2) -> number1 - number2),
+    MULTIPLY('*', (number1, number2) -> number1 * number2),
+    DIVIDE('/', divideIntBinaryOperator()),
+    ;
+
+    private static IntBinaryOperator divideIntBinaryOperator() {
+        return (number1, number2) -> {
+            if ((number1 / number2) == (number1 / (double) number2)) {
+                return number1 / number2;
+            }
+
+            throw new ArithmeticException("나눗셈의 결과는 정수이어야 합니다.");
+        };
+    }
+
+    private static final Map<Character, Operator> operatorCharMap = new HashMap<>();
+
+    static {
+        for (Operator operator : Operator.values()) {
+            operatorCharMap.put(operator.operatorChar, operator);
+        }
+    }
+
+    private final Character operatorChar;
+    private final IntBinaryOperator operatingExpression;
+
+    Operator(Character operatorChar, IntBinaryOperator operatingExpression) {
+        this.operatorChar = operatorChar;
+        this.operatingExpression = operatingExpression;
+    }
+
+    public static Operator find(String operator) {
+        if (operator.length() > 1) {
+            throw new IllegalArgumentException("잘못된 연산자");
         }
 
-        throw new ArithmeticException("나눗셈의 결과는 정수이어야 합니다.");
-    };
+        return operatorCharMap.get(operator.charAt(0));
+    }
 
-    public static IntBinaryOperator find(String operator) {
-        if (operator.equals("+")) {
-            return plus;
-        }
-
-        if (operator.equals("-")) {
-            return minus;
-        }
-
-        if (operator.equals("*")) {
-            return multiply;
-        }
-
-        if (operator.equals("/")) {
-            return divide;
-        }
-
-        throw new IllegalArgumentException("잘못된 연산자");
+    public int calculate(int num1, int num2) {
+        return this.operatingExpression.applyAsInt(num1, num2);
     }
 }

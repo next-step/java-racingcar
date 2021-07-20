@@ -3,12 +3,11 @@ package calculator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.IntBinaryOperator;
 
 public class Calculator {
 
     private final List<Integer> numberQueue = new ArrayList<>();
-    private final List<IntBinaryOperator> operatorQueue = new ArrayList<>();
+    private final List<Operator> operatorQueue = new ArrayList<>();
 
     public void updateExpression(String expressionString) {
         List<String> elements = Arrays.asList(expressionString.split(" "));
@@ -30,10 +29,12 @@ public class Calculator {
 
     public int calculate() {
         int result = numberQueue.get(0);
-        for (int operatorIndex = 0, numberIndex = 1; operatorIndex < operatorQueue.size(); operatorIndex++, numberIndex++) {
-            IntBinaryOperator operator = operatorQueue.get(operatorIndex);
+        for (int operatorIndex = 0, numberIndex = 1;
+            operatorIndex < operatorQueue.size();
+            operatorIndex++, numberIndex++) {
+            Operator operator = operatorQueue.get(operatorIndex);
             int number = numberQueue.get(numberIndex);
-            result = operator.applyAsInt(result, number);
+            result = operator.calculate(result, number);
         }
 
         return result;
