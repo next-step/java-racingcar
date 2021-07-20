@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-@DisplayName("Set Collection에 대한 학습 테스트")
+@DisplayName("[Step1] Set Collection에 대한 학습 테스트")
 public class SetTest {
 
     private Set<Integer> numbers;
@@ -40,7 +40,7 @@ public class SetTest {
     @DisplayName("[요구사항2] numbers 에 포함된 값들 확인")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    public void contains(Integer value) {
+    public void contains(int value) {
         // given
 
         // when
@@ -52,7 +52,7 @@ public class SetTest {
     @DisplayName("[요구사항3] numbers 에 포함된 값들 확인 - false 도 같이")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    public void contains2(Integer value, Boolean expected) {
+    public void contains2(int value, boolean expected) {
         // given
 
         // when

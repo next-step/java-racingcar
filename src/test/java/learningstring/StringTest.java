@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("String 클래스에 대한 학습 테스트")
+@DisplayName("[Step1] String 클래스에 대한 학습 테스트")
 public class StringTest {
 
     @DisplayName("[요구사항1] \"1,2\" 를 \",\" 로 split")
