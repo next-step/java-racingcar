@@ -1,9 +1,9 @@
 package racinggame;
 
+import racinggame.util.RandomNumber;
 import racinggame.util.Validator;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,5 +29,11 @@ public class Cars {
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public void race(RandomNumber randomNumber) {
+        for (Car car : cars) {
+            car.race(randomNumber.createBetweenZeroToNine());
+        }
     }
 }

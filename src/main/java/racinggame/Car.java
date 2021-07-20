@@ -1,12 +1,20 @@
 package racinggame;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
+    private static final String RACE_STATUS_STRING = "-";
     private static final int MOVABLE_NUMBER = 4;
     private int position;
+    private final List<String> status;
+    private final StringBuilder stringBuilder;
 
     public Car() {
-        this.position = 0;
+        position = 0;
+        status = new ArrayList<>();
+        stringBuilder = new StringBuilder();
     }
 
     public boolean race(int num) {
@@ -14,11 +22,25 @@ public class Car {
         if (movable) {
             position++;
         }
+        recordGameHistory();
+
         return movable;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public List<String> getStatus() {
+        return status;
+    }
+
+    private void recordGameHistory() {
+        stringBuilder.setLength(0);
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append(RACE_STATUS_STRING);
+        }
+        status.add(stringBuilder.toString());
     }
 
     private boolean isMovable(int num) {
