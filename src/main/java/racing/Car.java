@@ -12,27 +12,30 @@ public class Car {
     private final String firstRequest = "자동차 대수는 몇 대 인가요?";
     private final String secondRequest = "시도할 회수는 몇 회 인가요?";
     private List<CarModel> carModelList;
-    private int totalCarNumber = 0;
-    private int tryraceNumber = 0;
 
     public Car() {
         this.scanner = new Scanner(System.in);
         this.carModelList = new ArrayList<>();
     }
 
+    private void printByRequest(String request) {
+        System.out.println(request);
+    }
+
+    private int intValueByScanner(String scannerValue) {
+        int intValue = toInt(scannerValue);
+        printByRequest(scannerValue);
+        return intValue;
+    }
 
     public void car_racing() {
-        System.out.println(firstRequest);
+        printByRequest(firstRequest);
         if (scanner.hasNext()) {
-            totalCarNumber = toInt(scanner.next());
-            System.out.println(totalCarNumber);
-            createCarByNumber(totalCarNumber);
+            createCarByNumber(intValueByScanner(scanner.next()));
         }
-        System.out.println(secondRequest);
+        printByRequest(secondRequest);
         if (scanner.hasNext()) {
-            tryraceNumber = toInt(scanner.next());
-            System.out.println(tryraceNumber);
-            tryRacingByCar(tryraceNumber);
+            tryRacingByCar(intValueByScanner(scanner.next()));
         }
         scanner.close();
     }
@@ -65,10 +68,10 @@ public class Car {
 
     private void racing() {
         int carModelNumber = carModelList.size();
-        for (int i = 0; i < carModelNumber; i++) {
-            String carRaceResult = calculatorDistance(carModelList.get(i).getRaceDistance());
-            carModelList.get(i).setRaceDistance(carRaceResult);
-            System.out.println(carModelList.get(i).getRaceDistance());
+        for(CarModel carModel : carModelList){
+            String carRaceResult = calculatorDistance(carModel.getRaceDistance());
+            carModel.setRaceDistance(carRaceResult);
+            printByRequest(carModel.getRaceDistance());
         }
         System.out.println();
     }
@@ -94,8 +97,7 @@ public class Car {
 
     public int randomIntValue() {
         Random random = new Random();
-        int result = random.nextInt(10);
-        return result;
+        return random.nextInt(10);
     }
 
     public List<CarModel> getCarList() {
