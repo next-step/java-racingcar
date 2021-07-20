@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class OperationTest {
     @DisplayName("덧셈을 수행한다.")
@@ -54,5 +53,13 @@ class OperationTest {
         int num1 = Integer.valueOf(express[0]);
         int num2 = Integer.valueOf(express[1]);
         assertThat(Operation.of(operator).calculate(num1, num2)).isEqualTo(Integer.valueOf(expected));
+    }
+
+    @DisplayName("0으로 나눈 경우 에러처리")
+    @Test
+    void divideByZero(){
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> Operation.DIVIDE.calculate(10,0)
+        ).withMessageContaining("Can't divide");
     }
 }

@@ -9,7 +9,7 @@ public enum Operation {
     MULTIPLY("*", (a, b) -> a * b),
     DIVIDE("/", (a, b) -> {
         if(b == 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Can't divide by zero");
         }
         return a/b;
     }),
