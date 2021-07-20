@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.helper.Fixture;
 
 import java.util.stream.Stream;
 
@@ -22,8 +23,8 @@ class MoveStrategyTest {
 
     private static Stream<Arguments> isMovable() {
         return Stream.of(
-                Arguments.of((MoveStrategy) () -> false, false),
-                Arguments.of((MoveStrategy) () -> true, true)
+                Arguments.of(Fixture.neverMoveStrategy(), false),
+                Arguments.of(Fixture.alwaysMoveStrategy(), true)
         );
     }
 }
