@@ -22,7 +22,7 @@ public class Calculator {
 		return sum();
 	}
 
-	public boolean isBlank(String formula) {
+	private boolean isBlank(String formula) {
 		return formula == null || formula.isEmpty() || formula.trim().isEmpty();
 	}
 
