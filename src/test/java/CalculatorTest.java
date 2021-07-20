@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -25,6 +27,18 @@ class CalculatorTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calculator.checkOperator(str))
                 .withMessageMatching("사칙연산 기호가 아닙니다.");
+    }
+
+    @DisplayName("계산기 결과 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"1 + 2:3", "3 - 2:1", "1 * 2:2" , "4 / 2:2"}, delimiter = ':')
+    void executeCalculatorTest(String mathExp, String expected) {
+        String[] splitMath = calculator.checkMathExpression(mathExp);
+        int num1 = Integer.parseInt(splitMath[0]);
+        int num2 = Integer.parseInt(splitMath[2]);
+        String operator = splitMath[1];
+
+        assertThat(calculator.executeCalculator(operator, num1, num2)).isEqualTo(expected);
     }
 
 }

@@ -39,4 +39,21 @@ public class Calculator {
 
     }
 
+    public String executeCalculator(String operator, int num1, int num2) {
+
+        if(operator.equals(plus)) {
+            return String.valueOf(add(num1, num2));
+        }
+        else if(operator.equals(minus)) {
+            return String.valueOf(minus(num1, num2));
+        }
+        else if(operator.equals(multiple)) {
+            return String.valueOf(multiply(num1, num2));
+        }
+        else {
+            return String.valueOf(divide(num1, num2));
+        }
+
+    }
+
 }
