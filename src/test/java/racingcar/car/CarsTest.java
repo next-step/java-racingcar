@@ -5,11 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.helper.Fixture;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("자동차 리스트 테스트")
 class CarsTest {
@@ -18,6 +20,19 @@ class CarsTest {
     @Test
     void initCars() {
         assertThat(new Cars(10, Fixture.alwaysMoveStrategy())).isNotNull();
+    }
+
+    @DisplayName("자동차 수는 음수가 될 수 없다.")
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0})
+    void numOfCarsShouldBeOverZero(int numberOfCars) {
+        assertThatThrownBy(() -> new Cars(numberOfCars, Fixture.alwaysMoveStrategy())).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("MoveStrategy 는 null 일 수 없다.")
+    @Test
+    void moveStrategyShouldNotBeNull() {
+        assertThatThrownBy(() -> new Cars(1, null)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 전체 움직이기 테스트")
