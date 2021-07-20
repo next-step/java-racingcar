@@ -20,7 +20,7 @@ public class Car {
 
     private void validate(MoveStrategy moveStrategy) {
         if (Objects.isNull(moveStrategy)) {
-            throw new IllegalArgumentException("MoveStrategy can't be a null");
+            throw new IllegalArgumentException("MoveStrategy can't be null");
         }
     }
 

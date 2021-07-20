@@ -21,7 +21,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     private void validate(Random random) {
         if (Objects.isNull(random)) {
-            throw new IllegalArgumentException("Random can't be a null");
+            throw new IllegalArgumentException("Random can't be null");
         }
     }
 
