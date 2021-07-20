@@ -21,11 +21,19 @@ public class Calculator {
         return num1 / num2;
     }
 
-    public String execute(String mathExpression) {
+    public String execute(String mathExpression) throws IllegalArgumentException{
 
         String[] splitMath = checkMathExpression(mathExpression);
 
-        return null;
+        for(int i = 0; i < splitMath.length - 1; i = i+2) {
+            int num1 = Integer.parseInt(splitMath[i]);
+            int num2 = Integer.parseInt(splitMath[i+2]);
+            String operator = splitMath[i+1];
+            checkOperator(operator);
+            splitMath[i+2] = executeCalculator(operator, num1, num2);
+        }
+
+        return splitMath[splitMath.length - 1];
 
     }
 

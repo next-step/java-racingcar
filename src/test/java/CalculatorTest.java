@@ -53,4 +53,15 @@ class CalculatorTest {
         assertThat(calculator.executeCalculator(operator, num1, num2)).isEqualTo(expected);
     }
 
+    @DisplayName("Calculator 동작 테스트")
+    @Test
+    void executeTest() {
+        String mathExpression = "2 + 3 * 4 / 2";
+        assertThat(calculator.execute(mathExpression)).isEqualTo("10");
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.execute("2 ^ 3"))
+                .withMessageMatching("사칙연산 기호가 아닙니다.");
+    }
+
 }

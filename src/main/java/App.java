@@ -7,6 +7,15 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         String mathExpression = scanner.nextLine();
 
+        Calculator calculator = new Calculator();
+        try {
+            String result = calculator.execute(mathExpression);
+            System.out.println("result : " + result);
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 수식");
+        }
+
+
     }
 
 }
