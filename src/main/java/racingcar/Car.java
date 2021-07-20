@@ -1,28 +1,24 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 
-    private int countOfMove = 0;
-    private Random random = new Random();
+    private int numberOfMove = 0;
 
     public Car() {
 
     }
 
-    public void move() {
-        int numberOfRandom = random.nextInt(10);
-        if (numberOfRandom >= 4) {
-            countOfMove++;
+    public void move(final int random) {
+        if (random >= 4) {
+            numberOfMove++;
         }
     }
 
-    protected void print() {
+    public String getProgressBar() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < countOfMove; i++) {
+        for (int i = 0; i < numberOfMove; i++) {
             sb.append("-");
         }
-        System.out.println(sb);
+        return sb.toString();
     }
 }

@@ -2,12 +2,14 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGame {
 
     private List<Car> cars = new ArrayList<>();
+    private Random random = new Random();
 
     public RacingGame() {
 
@@ -28,11 +30,13 @@ public class RacingGame {
     }
 
     private void move() {
-        this.cars.forEach(Car::move);
+        for (Car car : this.cars) {
+            car.move(this.random.nextInt(10));
+        }
     }
 
-    public void print() {
-        this.cars.forEach(Car::print);
+    private void print() {
+        this.cars.forEach(c -> System.out.println(c.getProgressBar()));
         System.out.println();
     }
 }
