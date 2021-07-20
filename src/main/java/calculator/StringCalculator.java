@@ -8,9 +8,9 @@ public class StringCalculator {
 
     public static final String SPACEBAR = " ";
     public static final String IS_NUMBER_REGEX = "[0-9]+";
-    public static final String IS_OPERATION_REGEX = "[-+*/]";
+    public static final String IS_OPERATOR_REGEX = "[-+*/]";
     public static final String IS_NULL_ERROR_MESSAGE = "입력 값이 null이거나 빈 공백 문자입니다.";
-    public static final String IS_NOT_OPERATION_ERROR_MESSAGE = "사칙연산 기호가 아닌 문자가 포함되어 있습니다.";
+    public static final String IS_NOT_OPERATOR_ERROR_MESSAGE = "사칙연산 기호가 아닌 문자가 포함되어 있습니다.";
 
     public int excute(String input) {
         validateInput(input);
@@ -24,8 +24,8 @@ public class StringCalculator {
         if(isEmpty(input)) {
             throw new IllegalArgumentException(IS_NULL_ERROR_MESSAGE);
         }
-        if(isNotOperation(input)) {
-            throw new IllegalArgumentException(IS_NOT_OPERATION_ERROR_MESSAGE);
+        if(isNotOperator(input)) {
+            throw new IllegalArgumentException(IS_NOT_OPERATOR_ERROR_MESSAGE);
         }
     }
 
@@ -36,10 +36,10 @@ public class StringCalculator {
         return false;
     }
 
-    private boolean isNotOperation(String input) {
+    private boolean isNotOperator(String input) {
         String[] inputs = input.split(SPACEBAR);
         for(int i = 0; i < inputs.length; i++) {
-            if(!inputs[i].matches(IS_NUMBER_REGEX) && !inputs[i].matches(IS_OPERATION_REGEX)) {
+            if(!inputs[i].matches(IS_NUMBER_REGEX) && !inputs[i].matches(IS_OPERATOR_REGEX)) {
                 return true;
             }
         }
@@ -70,7 +70,7 @@ public class StringCalculator {
     }
 
     private List<String> isOperation(String input, List<String> operations) {
-        if(input.matches(IS_OPERATION_REGEX)) {
+        if(input.matches(IS_OPERATOR_REGEX)) {
             operations.add(input);
         }
         return operations;
