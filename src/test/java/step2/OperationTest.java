@@ -11,28 +11,28 @@ class OperationTest {
     @DisplayName("덧셈을 수행한다.")
     @Test
     void testPlus(){
-        int plus = Operation.PLUS.calcuate(1,2);
+        int plus = Operation.PLUS.calculate(1,2);
         assertThat(plus).isEqualTo(3);
 //        assertThat(plus).isEqualTo(4);
     }
     @DisplayName("뺄셈을 수행한다.")
     @Test
     void testMinus(){
-        int minus = Operation.MINUS.calcuate(3,2);
+        int minus = Operation.MINUS.calculate(3,2);
         assertThat(minus).isEqualTo(1);
     }
     @DisplayName("곱셈을 수행한다.")
     @Test
     void testMuliply(){
-        int multiply = Operation.MULTIPLY.calcuate(2,5);
+        int multiply = Operation.MULTIPLY.calculate(2,5);
         assertThat(multiply).isEqualTo(10);
     }
     @DisplayName("나눗셈을 수행한다.")
     @Test
     void testDivide(){
-        int divide = Operation.DIVIDE.calcuate(4,2);
+        int divide = Operation.DIVIDE.calculate(4,2);
         assertThat(divide).isEqualTo(2);
-        divide = Operation.DIVIDE.calcuate(7,3);
+        divide = Operation.DIVIDE.calculate(7,3);
         assertThat(divide).isEqualTo(2);
     }
     @DisplayName("공백 \"\" 을 입력하면 NOTHING 값 출력")
@@ -40,7 +40,7 @@ class OperationTest {
     void tesetNull(){
 //        assertThat(Operation.of("#")).isNull();
         assertThatThrownBy(() -> {
-            Operation.of("X").calcuate(1,2);
+            Operation.of("X").calculate(1,2);
         }).hasMessageContaining("연산자가 아닙니다.");
 //        assertThat(Operation.NOTHING.calcuate(0,0)).isNull();
     }
@@ -52,6 +52,6 @@ class OperationTest {
         String operator = express[2];
         int num1 = Integer.valueOf(express[0]);
         int num2 = Integer.valueOf(express[1]);
-        assertThat(Operation.of(operator).calcuate(num1,num2)).isEqualTo(Integer.valueOf(expected));
+        assertThat(Operation.of(operator).calculate(num1,num2)).isEqualTo(Integer.valueOf(expected));
     }
 }

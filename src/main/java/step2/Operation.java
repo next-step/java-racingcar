@@ -23,7 +23,7 @@ public enum Operation {
         this.calculator = calculator;
     }
 
-    public int calcuate(int num1, int num2){
+    public int calculate(int num1, int num2){
         return calculator.apply(num1,num2);
     }
 }
