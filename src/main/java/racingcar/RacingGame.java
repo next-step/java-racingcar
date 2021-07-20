@@ -15,7 +15,11 @@ public class RacingGame {
 
     }
 
-    public void start(int numberOfCars, int numberOfAttempts) {
+    public void start(final String carInput, final String attemptInput) {
+
+        final int numberOfCars = parseInt(carInput);
+        final int numberOfAttempts = parseInt(attemptInput);
+
         this.cars = initialize(numberOfCars);
         for (int i = 0; i < numberOfAttempts; i++) {
             move();
@@ -27,6 +31,14 @@ public class RacingGame {
         return IntStream.range(0, numberOfCars)
                 .mapToObj(i -> new Car())
                 .collect(Collectors.toList());
+    }
+
+    private int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력 값은 정수 여야 합니다.");
+        }
     }
 
     private void move() {

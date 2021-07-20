@@ -9,9 +9,13 @@ public class Car {
     }
 
     public void move(final int random) {
-        if (random >= 4) {
+        if (isRange(random)) {
             numberOfMove++;
         }
+    }
+
+    private boolean isRange(int random) {
+        return random >= 4 && random < 10;
     }
 
     public String getProgressBar() {
