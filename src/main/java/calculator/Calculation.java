@@ -15,7 +15,7 @@ public enum Calculation {
     private String expressionLabel;
     private BiFunction<Integer, Integer, Integer> calculateValue;
 
-     Calculation(String expressionLabel, BiFunction<Integer, Integer, Integer> calculateValue) {
+    Calculation(String expressionLabel, BiFunction<Integer, Integer, Integer> calculateValue) {
         this.expressionLabel = expressionLabel;
         this.calculateValue = calculateValue;
     }
