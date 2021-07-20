@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.car;
 
 import racinggame.util.RandomNumber;
 import racinggame.util.Validator;

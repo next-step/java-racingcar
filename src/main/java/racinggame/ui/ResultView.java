@@ -1,7 +1,7 @@
 package racinggame.ui;
 
-import racinggame.Car;
-import racinggame.Cars;
+import racinggame.car.Car;
+import racinggame.car.Cars;
 
 public class ResultView {
 

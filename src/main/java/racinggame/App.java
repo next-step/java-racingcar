@@ -1,5 +1,8 @@
 package racinggame;
 
+import racinggame.car.Cars;
+import racinggame.car.Count;
+import racinggame.car.RacingGame;
 import racinggame.ui.InputView;
 import racinggame.ui.ResultView;
 

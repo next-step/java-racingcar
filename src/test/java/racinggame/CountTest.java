@@ -2,6 +2,7 @@ package racinggame;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.car.Count;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 

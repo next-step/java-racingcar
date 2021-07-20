@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.car;
 
 import racinggame.ui.ResultView;
 import racinggame.util.RandomNumber;
