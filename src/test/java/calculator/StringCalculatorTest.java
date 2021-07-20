@@ -23,4 +23,10 @@ class StringCalculatorTest {
         assertThat(stringCalculator.excute(input)).isEqualTo(answer);
     }
 
+    @DisplayName("곱하기 계산 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"4 * 5:20", "1 * 10:10", "100 * 100:10000", "5 * 0:0"}, delimiter = ':')
+    void multiplicationTest(String input, int answer) {
+        assertThat(stringCalculator.excute(input)).isEqualTo(answer);
+    }
 }
