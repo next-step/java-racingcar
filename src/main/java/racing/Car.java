@@ -10,11 +10,12 @@ public class Car {
 
     private final String firstRequest = "자동차 대수는 몇 대 인가요?";
     private final String secondRequest = "시도할 회수는 몇 회 인가요?";
-    private final List<CarModel> carModelList = new ArrayList<>();
+    private  List<CarModel> carModelList;
     private int totalCarNumber = 0;
 
     public Car() {
         this.scanner = new Scanner(System.in);
+        this.carModelList = new ArrayList<>();
     }
 
 
