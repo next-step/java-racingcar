@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.helper.Fixture;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("자동차 클래스 테스트")
 class CarTest {
@@ -37,5 +38,13 @@ class CarTest {
         car.move(Fixture.neverMoveStrategy());
 
         assertThat(car.currentPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("MoveStrategy 가 null 일 경우 예외를 던진다.")
+    @Test
+    void moveThrowExceptionWhenMoveStrategyIsNull() {
+        Car car = Car.newInstance();
+
+        assertThatThrownBy(() -> car.move(null)).isInstanceOf(IllegalStateException.class);
     }
 }
