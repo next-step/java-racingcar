@@ -11,7 +11,7 @@ public class StringCalculator {
     public static final String IS_NULL_ERROR_MESSAGE = "입력 값이 null이거나 빈 공백 문자입니다.";
 
     public int excute(String input) {
-        validateInput(input.trim());
+        validateInput(input);
         String[] inputs = input.split(" ");
         List<Integer> numbers = parsingNumber(inputs);
         List<String> operations = parsingOperation(inputs);
@@ -19,7 +19,7 @@ public class StringCalculator {
     }
 
     private void validateInput(String input) throws IllegalArgumentException {
-        if(Objects.isNull(input) || input.isEmpty()) {
+        if(Objects.isNull(input) || input.trim().isEmpty()) {
             throw new IllegalArgumentException(IS_NULL_ERROR_MESSAGE);
         }
     }
