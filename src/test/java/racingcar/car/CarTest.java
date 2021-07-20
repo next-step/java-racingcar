@@ -45,6 +45,6 @@ class CarTest {
     void moveThrowExceptionWhenMoveStrategyIsNull() {
         Car car = Car.newInstance();
 
-        assertThatThrownBy(() -> car.move(null)).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> car.move(null)).isInstanceOf(IllegalArgumentException.class);
     }
 }
