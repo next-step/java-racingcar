@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("String 클래스에 대한 학습 테스트")
 class StringTest {
 
 	public static final String COMMA = ",";
@@ -51,10 +52,9 @@ class StringTest {
 		//when
 
 		//then
-		assertThatThrownBy(() -> {
-			getCharAt(alphabet, location);
-		}).isInstanceOf(StringIndexOutOfBoundsException.class)
-		  .hasMessageContaining("StringIndexOutOfBoundsException");
+		assertThatThrownBy(() -> getCharAt(alphabet, location))
+				.isInstanceOf(StringIndexOutOfBoundsException.class)
+				.hasMessageContaining("StringIndexOutOfBoundsException");
 
 	}
 
@@ -63,7 +63,7 @@ class StringTest {
 	void charAt() {
 		//given
 		String alphabet = "abc";
-		int location = 3;
+		int location = 2;
 
 		//when
 		char charAt = getCharAt(alphabet, location);
