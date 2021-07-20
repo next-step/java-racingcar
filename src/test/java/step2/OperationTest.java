@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class OperationTest {
     @DisplayName("덧셈을 수행한다.")
@@ -39,7 +39,9 @@ class OperationTest {
     @Test
     void tesetNull(){
 //        assertThat(Operation.of("#")).isNull();
-        assertThat(Operation.of("")).isEqualTo(Operation.NOTHING);
+        assertThatThrownBy(() -> {
+            Operation.of("X").calcuate(1,2);
+        }).hasMessageContaining("연산자가 아닙니다.");
 //        assertThat(Operation.NOTHING.calcuate(0,0)).isNull();
     }
     @DisplayName("기호에 맞는 사칙연산 수행")
