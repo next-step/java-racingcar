@@ -4,7 +4,6 @@ import racingcar.dto.CarDto;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,7 +13,7 @@ public class Cars {
     private final List<Car> cars;
 
     private Cars(int numberOfCars, MoveStrategy moveStrategy) {
-        validate(numberOfCars, moveStrategy);
+        validate(numberOfCars);
 
         cars = Stream.generate(() -> Car.from(moveStrategy))
                 .limit(numberOfCars)
@@ -25,13 +24,9 @@ public class Cars {
         return new Cars(numberOfCars, moveStrategy);
     }
 
-    private void validate(int numberOfCars, MoveStrategy moveStrategy) {
+    private void validate(int numberOfCars) {
         if (numberOfCars < MINIMUM_NUMBER_OF_CARS) {
             throw new IllegalArgumentException("Number of cars can't be under 1");
-        }
-
-        if (Objects.isNull(moveStrategy)) {
-            throw new IllegalArgumentException("MoveStrategy can't be null");
         }
     }
 
