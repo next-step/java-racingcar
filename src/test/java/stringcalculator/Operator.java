@@ -26,7 +26,7 @@ public enum Operator {
 	 *
 	 * 요구사항 - 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
 	 *
-	 * @param sign
+	 * @param sign 연산자 기호
 	 * @return 연산자 기호에 따른 Operator
 	 */
 	public static Operator from(String sign) {

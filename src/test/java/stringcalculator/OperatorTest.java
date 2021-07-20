@@ -6,11 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class OperatorTest {
-
 
 	@ParameterizedTest(name = "사칙연산 테스트 {index} [{arguments}]")
 	@CsvSource(value = {
@@ -62,9 +60,9 @@ class OperatorTest {
 	}
 
 	private void assertException(String exceptionMessage, ThrowingCallable throwingCallable) {
-		assertThatThrownBy(throwingCallable)
-				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessage(exceptionMessage);
+		assertThatIllegalArgumentException()
+				.isThrownBy(throwingCallable)
+				.withMessage(exceptionMessage);
 	}
 
 
