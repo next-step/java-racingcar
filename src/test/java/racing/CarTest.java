@@ -57,7 +57,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("경주 시도 횟수만큼 참가한 차는 경주를 진행한다.")
+    @DisplayName("자동차별 경주 method 실행시 경주 결과가 화면이 보여준다.")
     public void racingByCar() {
         initTestSetup("3\n6\n");
         car.car_racing();
