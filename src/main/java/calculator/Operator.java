@@ -1,4 +1,4 @@
-package stringCalculator;
+package calculator;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
@@ -9,8 +9,8 @@ public enum Operator {
     MULTIPLY("*", (a, b) -> a * b),
     DIVISION("/", (a, b) -> a / b);
 
-    private String operator;
-    private BiFunction<Double, Double, Double> calculate;
+    private final String operator;
+    private final BiFunction<Double, Double, Double> calculate;
 
     Operator(String operator, BiFunction<Double, Double, Double> calculate) {
         this.operator = operator;

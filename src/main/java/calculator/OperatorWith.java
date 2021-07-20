@@ -1,11 +1,11 @@
-package stringCalculator;
+package calculator;
 
 public class OperatorWith {
-    double a;
-    double b;
-    Operator operator;
+    private final double a;
+    private final double b;
+    private final Operator operator;
 
-    protected OperatorWith(double a, Operator operator, double b) {
+    private OperatorWith(double a, Operator operator, double b) {
         this.a = a;
         this.operator = operator;
         this.b = b;
