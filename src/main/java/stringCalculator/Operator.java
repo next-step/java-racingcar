@@ -4,28 +4,27 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", (e1, e2) -> e1 + e2),
-    MINUS("-", (e1, e2) -> e1 - e2),
-    MULTIPLY("*", (e1, e2) -> e1 * e2),
-    DIVISION("/", (e1, e2) -> e1 / e2);
+    PLUS("+", (a, b) -> a + b),
+    MINUS("-", (a, b) -> a - b),
+    MULTIPLY("*", (a, b) -> a * b),
+    DIVISION("/", (a, b) -> a / b);
 
     private String operator;
-    private BiFunction<Double, Double, Double> expression;
+    private BiFunction<Double, Double, Double> calculate;
 
-    Operator(String operator, BiFunction<Double, Double, Double> expression) {
+    Operator(String operator, BiFunction<Double, Double, Double> calculate) {
         this.operator = operator;
-        this.expression = expression;
+        this.calculate = calculate;
     }
 
-    public static double calculate(String operator, double e1, double e2) {
-        return validOperator(operator).expression.apply(e1, e2);
+    public double calculate(double a, double b) {
+        return calculate.apply(a, b);
     }
 
-    private static Operator validOperator(String operator) {
+    public static Operator validOperator(String operator) {
         return Arrays.stream(values())
                      .filter(o -> o.operator.equals(operator))
                      .findFirst()
                      .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다!"));
     }
-
 }
