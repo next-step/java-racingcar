@@ -2,6 +2,11 @@ package racingcar.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,4 +19,23 @@ class CarsTest {
         assertThat(new Cars(10, () -> true)).isNotNull();
     }
 
+    @DisplayName("자동차 전체 움직이기 테스트")
+    @ParameterizedTest(name = "움직이기 전 위치 [{1}], 움직인 후 위치 [{2}]")
+    @MethodSource
+    void moveCars(Cars cars, int positionBeforeMove, int positionAfterMove) {
+        cars.getCarDtos()
+                .forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(positionBeforeMove));
+
+        cars.moveCars();
+
+        cars.getCarDtos()
+                .forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(positionAfterMove));
+    }
+
+    private static Stream<Arguments> moveCars() {
+        return Stream.of(
+                Arguments.of(new Cars(10, () -> true), 0, 1),
+                Arguments.of(new Cars(10, () -> false), 0, 0)
+        );
+    }
 }
