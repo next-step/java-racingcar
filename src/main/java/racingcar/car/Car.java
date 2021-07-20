@@ -8,10 +8,14 @@ public class Car {
     private int position;
     private final MoveStrategy moveStrategy;
 
-    public Car(MoveStrategy moveStrategy) {
+    private Car(MoveStrategy moveStrategy) {
         validate(moveStrategy);
 
         this.moveStrategy = moveStrategy;
+    }
+
+    public static Car from(MoveStrategy moveStrategy) {
+        return new Car(moveStrategy);
     }
 
     private void validate(MoveStrategy moveStrategy) {
