@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Calculator {
@@ -18,18 +17,17 @@ public class Calculator {
 
     private CalculatorState calculateState(CalculatorState calculatorState) {
         for (String input : formula.getFormula()) {
-            Formula.ConfigurationType currentType = getFormulaConfigurationType(input);
-
-            if (isNotValidCalculateSequence(calculatorState, currentType)) {
-                throw new IllegalArgumentException();
-            }
-
-            calculatorState = makeCalculatorState(calculatorState, input, currentType);
+            calculatorState = makeCalculatorState(calculatorState, input, getFormulaConfigurationType(input));
         }
+
         return calculatorState;
     }
 
     private CalculatorState makeCalculatorState(CalculatorState state, String input, Formula.ConfigurationType currentType) {
+        if (isNotValidCalculateSequence(state, currentType)) {
+            throw new IllegalArgumentException();
+        }
+
         if (isNumber(input)) {
             return CalculatorState.changeTypeAndResult(state, currentType, operate(state, input));
         }
