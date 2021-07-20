@@ -15,4 +15,9 @@ public class CarGroup {
         Arrays.stream(cars)
                 .forEach(car -> car.moveIf(random.nextInt()));
     }
+
+    public void show() {
+        Arrays.stream(cars)
+                .forEach(Car::show);
+    }
 }
