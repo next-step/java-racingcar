@@ -3,6 +3,11 @@ package study.calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static study.calculator.Common.*;
@@ -54,5 +59,21 @@ public class CalculatorTest {
     @Test
     void operationTest() {
         assertThrows(IllegalArgumentException.class, ()-> checkOperation("a"));
+    }
+
+    @DisplayName("Scanner 클래스를 활용해 입력된 값에 빈공백 기준으로 split 해서 수식 입력 바인딩 테스트.")
+    @Test
+    void inputValueSplitTest() {
+        String input = "2 + 3";
+        Scanner scanner = new Scanner(input);
+        List<String> wordList = new ArrayList<>();
+
+        while (scanner.hasNext()){
+            String word = scanner.next();
+            wordList.add(word);
+        }
+        
+        assertThat(wordList.size()).isEqualTo(3);
+        assertThat(wordList).containsExactly("2","+","3");
     }
 }
