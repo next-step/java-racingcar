@@ -3,8 +3,9 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
     private final StringCalculator stringCalculator = new StringCalculator();
@@ -36,5 +37,13 @@ class StringCalculatorTest {
     void divisionTest(String input, int answer) {
         assertThat(stringCalculator.excute(input)).isEqualTo(answer);
     }
-    
+
+    @DisplayName("입력 값이 빈 공백 문자일 경우 IllegalArgumentException throw 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  "})
+    void inputEmptyTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.excute(input);
+        }).withMessageMatching("입력 값이 null이거나 빈 공백 문자입니다.");
+    }
 }
