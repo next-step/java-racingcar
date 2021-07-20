@@ -79,16 +79,10 @@ public class CalculatorTest {
         List<String> valueList = new ArrayList<>();
         List<String> operationList = new ArrayList<>();
 
-        for(int i=0; i<wordList.size(); i++){
+        Calculator.valueClassification(wordList, valueList, operationList);
 
-            if(i % 2 == 1){
-                operationList.add(wordList.get(i));
-
-            }else{
-                valueList.add(wordList.get(i));
-            }
-        }
         assertThat(valueList).containsExactly("2","3","1","2","8");
         assertThat(operationList).containsExactly("+", "-", "*", "/");
     }
+
 }

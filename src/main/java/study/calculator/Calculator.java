@@ -1,5 +1,7 @@
 package study.calculator;
 
+import java.util.List;
+
 public class Calculator {
 
     public static int plus(int num1, int num2) {
@@ -45,5 +47,31 @@ public class Calculator {
         }
 
         return result;
+    }
+
+    public static void valueClassification(List<String> wordList, List<String> valueList, List<String> operationList) {
+
+        for(int i = 0; i< wordList.size(); i++){
+            
+            if (isEven(i)) {
+                isOper(wordList, operationList, i);
+            }
+
+            if(!isEven(i)) {
+                isValue(wordList, valueList, i);
+            }
+        }
+    }
+
+    private static boolean isEven(int i) {
+        return i % 2 == 1;
+    }
+
+    private static boolean isValue(List<String> wordList, List<String> valueList, int i) {
+        return valueList.add(wordList.get(i));
+    }
+
+    private static boolean isOper(List<String> wordList, List<String> operationList, int i) {
+        return isValue(wordList, operationList, i);
     }
 }
