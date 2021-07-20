@@ -13,12 +13,12 @@ public class CarRacing {
     private final Cars cars;
     private int currentRound;
 
-    private CarRacing(int numberOfCars, int totalRound, MoveStrategy moveStrategy) {
+    private CarRacing(int numberOfCars, int totalRound) {
         validate(totalRound);
 
         this.totalRound = totalRound;
         this.currentRound = 0;
-        this.cars = Cars.of(numberOfCars, moveStrategy);
+        this.cars = Cars.from(numberOfCars);
     }
 
     private void validate(int totalRound) {
@@ -27,16 +27,16 @@ public class CarRacing {
         }
     }
 
-    public static CarRacing init(RacingCarInitParam racingCarInitParam, MoveStrategy moveStrategy) {
-        return new CarRacing(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound(), moveStrategy);
+    public static CarRacing init(RacingCarInitParam racingCarInitParam) {
+        return new CarRacing(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound());
     }
 
-    public void race() {
+    public void race(MoveStrategy moveStrategy) {
         if (isRaceOver()) {
             throw new IllegalStateException("Round can't exceed total round");
         }
 
-        cars.moveCars();
+        cars.moveCars(moveStrategy);
         currentRound++;
     }
 
