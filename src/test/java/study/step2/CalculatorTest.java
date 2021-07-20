@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 import org.assertj.core.api.ThrowableAssert;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
