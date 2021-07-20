@@ -1,5 +1,10 @@
 public class Calculator {
 
+    public static final String plus = "+";
+    public static final String minus = "-";
+    public static final String multiple = "*";
+    public static final String divide = "/";
+
     public int add(int num1, int num2) {
         return num1 + num2;
     }
@@ -24,4 +29,14 @@ public class Calculator {
 
         return mathExpression.split(" ");
     }
+
+    public void checkOperator(String operator) {
+
+        if(!operator.equals(plus) && !operator.equals(minus)
+            && !operator.equals(divide) && !operator.equals(multiple)) {
+            throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+        }
+
+    }
+
 }
