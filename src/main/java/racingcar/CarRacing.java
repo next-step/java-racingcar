@@ -7,13 +7,13 @@ import racingcar.strategy.MoveStrategy;
 
 import java.util.List;
 
-public class RacingCar {
+public class CarRacing {
     private static final int MINIMUM_ROUND = 1;
     private final int totalRound;
     private final Cars cars;
     private int currentRound;
 
-    private RacingCar(int numberOfCars, int totalRound, MoveStrategy moveStrategy) {
+    private CarRacing(int numberOfCars, int totalRound, MoveStrategy moveStrategy) {
         validate(totalRound);
 
         this.totalRound = totalRound;
@@ -27,8 +27,8 @@ public class RacingCar {
         }
     }
 
-    public static RacingCar init(RacingCarInitParam racingCarInitParam, MoveStrategy moveStrategy) {
-        return new RacingCar(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound(), moveStrategy);
+    public static CarRacing init(RacingCarInitParam racingCarInitParam, MoveStrategy moveStrategy) {
+        return new CarRacing(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound(), moveStrategy);
     }
 
     public void race() {

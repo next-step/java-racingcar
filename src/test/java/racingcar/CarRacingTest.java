@@ -14,54 +14,54 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("레이싱 카 게임 테스트")
-class RacingCarTest {
+class CarRacingTest {
 
     @DisplayName("레이싱 카 게임은 차의 숫자와 라운드 수, MoveStrategy 를 가지고 초기화 한다.")
     @Test
     void init() {
-        assertThat(RacingCar.init(RacingCarInitParam.of(10, 5), Fixture.alwaysMoveStrategy())).isNotNull();
+        assertThat(CarRacing.init(RacingCarInitParam.of(10, 5), Fixture.alwaysMoveStrategy())).isNotNull();
     }
 
     @DisplayName("총 라운드 수는 1 이상이다.")
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void roundShouldBeOverZero(int totalRound) {
-        assertThatThrownBy(() -> RacingCar.init(RacingCarInitParam.of(10, totalRound), Fixture.alwaysMoveStrategy()))
+        assertThatThrownBy(() -> CarRacing.init(RacingCarInitParam.of(10, totalRound), Fixture.alwaysMoveStrategy()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("레이스를 진행하면 차들이 한 번 움직임을 시도한다.")
     @Test
     void raceMakeCarsTryMove() {
-        RacingCar racingCar = RacingCar.init(RacingCarInitParam.of(2, 1), Fixture.alwaysMoveStrategy());
-        List<CarDto> carDtos = racingCar.currentState();
+        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(2, 1), Fixture.alwaysMoveStrategy());
+        List<CarDto> carDtos = carRacing.currentState();
         carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(0));
 
-        racingCar.race();
+        carRacing.race();
 
-        carDtos = racingCar.currentState();
+        carDtos = carRacing.currentState();
         carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(1));
     }
 
     @DisplayName("현재 라운드 수는 총 라운드 수를 넘길 수 없다.")
     @Test
     void currentRoundCantExceedTotalRound() {
-        RacingCar racingCar = RacingCar.init(RacingCarInitParam.of(10, 1), Fixture.alwaysMoveStrategy());
+        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(10, 1), Fixture.alwaysMoveStrategy());
 
-        racingCar.race();
+        carRacing.race();
 
-        assertThatThrownBy(racingCar::race).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(carRacing::race).isInstanceOf(IllegalStateException.class);
     }
 
     @DisplayName("경주 종료 여부를 리턴한다.")
     @Test
     void isRaceOver() {
-        RacingCar racingCar = RacingCar.init(RacingCarInitParam.of(2, 1), Fixture.alwaysMoveStrategy());
+        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(2, 1), Fixture.alwaysMoveStrategy());
 
-        assertThat(racingCar.isRaceOver()).isFalse();
+        assertThat(carRacing.isRaceOver()).isFalse();
 
-        racingCar.race();
+        carRacing.race();
 
-        assertThat(racingCar.isRaceOver()).isTrue();
+        assertThat(carRacing.isRaceOver()).isTrue();
     }
 }

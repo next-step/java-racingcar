@@ -12,14 +12,14 @@ public class ConsoleController {
         int totalRound = InputView.inputRound();
         RacingCarInitParam racingCarInitParam = RacingCarInitParam.of(numberOfCars, totalRound);
 
-        RacingCar racingCar = RacingCar.init(racingCarInitParam, RandomMoveStrategy.DEFAULT_MOVE_STRATEGY);
+        CarRacing carRacing = CarRacing.init(racingCarInitParam, RandomMoveStrategy.DEFAULT_MOVE_STRATEGY);
 
         ResultView.printResultStatement();
-        ResultView.printState(racingCar.currentState());
+        ResultView.printState(carRacing.currentState());
 
-        while (!racingCar.isRaceOver()) {
-            racingCar.race();
-            ResultView.printState(racingCar.currentState());
+        while (!carRacing.isRaceOver()) {
+            carRacing.race();
+            ResultView.printState(carRacing.currentState());
         }
     }
 }
