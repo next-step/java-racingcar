@@ -1,6 +1,7 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -46,4 +47,13 @@ class StringCalculatorTest {
             stringCalculator.excute(input);
         }).withMessageMatching("입력 값이 null이거나 빈 공백 문자입니다.");
     }
+
+    @DisplayName("입력 값이 null 일 경우 IllegalArgumentException throw 테스트")
+    @Test
+    void inputNullTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.excute(null);
+        }).withMessageMatching("입력 값이 null이거나 빈 공백 문자입니다.");
+    }
+
 }
