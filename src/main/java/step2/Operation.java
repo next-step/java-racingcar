@@ -8,7 +8,7 @@ public enum Operation {
     MINUS(  "-", (a,b) -> a-b),
     MULIPLY("*", (a,b) -> a*b),
     DIVIDE( "/", (a,b) -> a/b),
-    NOTHING(    "", (a, b) -> null);
+    NOTHING(    "", (a,b) -> null);
 
     private String operator;
     private BiFunction<Integer,Integer,Integer> calculator;
