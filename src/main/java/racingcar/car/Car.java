@@ -1,9 +1,7 @@
 package racingcar.car;
 
-import racingcar.dto.CarDto;
 import racingcar.strategy.MoveStrategy;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Car {
