@@ -1,0 +1,4 @@
+expression,expected
+10 + a + 10, -30
+b + a + 10, -30
+10a +1 + 10, -30

@@ -1,17 +1,20 @@
 package step2.calculator;
 
 import org.junit.platform.commons.util.StringUtils;
+import step2.calculator.exceptions.EmptyExpressionException;
+import step2.calculator.exceptions.InvalidExpressionException;
 
 import java.util.StringTokenizer;
 
 public class Calculator {
+    private final int MINIMUM_SIZE = 2;
 
     public int calculate(String text) {
-        if (StringUtils.isBlank(text)) throw new IllegalArgumentException("잘못된 수식입니다. : 비어있거나 null");
+        if (StringUtils.isBlank(text)) throw new EmptyExpressionException();
 
         StringTokenizer tokens = new StringTokenizer(text);
 
-        if (!isAbleToCalculateFirst(tokens)) throw new IllegalArgumentException("잘못된 수식입니다. : 수식 요건 불충족");
+        if (!isAbleToCalculateFirst(tokens)) throw new InvalidExpressionException();
 
         int result = calculate(tokens);
 
@@ -28,18 +31,14 @@ public class Calculator {
     }
 
     private int calculateNextLoop(int resultTemp, StringTokenizer tokens) {
-        if (!isAbleToCalculateNext(tokens)) throw new IllegalArgumentException("잘못된 수식입니다. : 수식 요건 불충족");
+        if (!isAbleToCalculateNext(tokens)) throw new InvalidExpressionException();
 
         while (tokens.hasMoreTokens()) resultTemp = calculate(resultTemp, tokens);
         return resultTemp;
     }
 
-    private int getNumber(String number) {
-        try {
-            return Integer.parseInt(number);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("잘못된 수식입니다. : 숫자 파싱 오류");
-        }
+    private int getNumber(String number) throws InvalidExpressionException {
+        return Integer.parseInt(number);
     }
 
     private Expression getExpression(String expression) {
@@ -47,10 +46,10 @@ public class Calculator {
     }
 
     private boolean isAbleToCalculateFirst(StringTokenizer tokens) {
-        return tokens.countTokens() > 2;
+        return tokens.countTokens() > MINIMUM_SIZE;
     }
 
     private boolean isAbleToCalculateNext(StringTokenizer tokens) {
-        return tokens.countTokens() % 2 == 0;
+        return tokens.countTokens() % MINIMUM_SIZE == 0;
     }
 }

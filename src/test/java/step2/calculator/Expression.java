@@ -1,5 +1,7 @@
 package step2.calculator;
 
+import step2.calculator.exceptions.InvalidExpressionException;
+
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
@@ -18,7 +20,10 @@ public enum Expression {
     }
 
     static public Expression of(String label) {
-        return Arrays.stream(values()).filter(expression -> expression.label.equals(label)).findFirst().orElseThrow(IllegalArgumentException::new);
+        return Arrays.stream(values())
+                .filter(expression -> expression.label.equals(label))
+                .findFirst()
+                .orElseThrow(InvalidExpressionException::new);
     }
 
     public int calculate(int a, int b) {

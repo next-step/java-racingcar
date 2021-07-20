@@ -1,18 +1,18 @@
 package step2.calculator;
 
 public class ExpressionWith {
-    int a;
-    int b;
+    int frontNumber;
+    int backNumber;
     Expression expression;
 
-    protected ExpressionWith(int a, Expression expression, int b) {
-        this.a = a;
+    protected ExpressionWith(int frontNumber, Expression expression, int backNumber) {
+        this.frontNumber = frontNumber;
         this.expression = expression;
-        this.b = b;
+        this.backNumber = backNumber;
     }
 
     public int calculate() {
-        return expression.calculate(a, b);
+        return expression.calculate(frontNumber, backNumber);
     }
 
     static public ExpressionWith of(int a, Expression expression, int b) {
