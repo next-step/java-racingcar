@@ -15,7 +15,6 @@ public class StringCalculator {
             number = Integer.parseInt(values[index]);
             sign = values[index-1];
             result = Calculator.calculate(result,number,sign);
-//            result = Calculator.calculate(result,Integer.parseInt(values[index]),values[index-1]);
         }
         return result;
     }
