@@ -47,7 +47,7 @@ public class SetTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/setTest.csv")
     @DisplayName(("1,2,3 존재 유무 확인 ParameterizedTest 사용"))
-    void 요구사항2_ParameterizedTest_csv(int number, boolean actualValue){
+    void 요구사항3_ParameterizedTest_csv(int number, boolean actualValue){
         assertThat(numbers.contains(number)).isEqualTo(actualValue);
     }
 }
