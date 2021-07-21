@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarRacingMainTest {
-    
+
 
     @Test
     @DisplayName("스캐너로 받는 입력값이 숫자일경우 그값을 반환한다.")
@@ -67,7 +67,6 @@ public class CarRacingMainTest {
         assertThat(result1).isFalse();
         assertThat(result2).isTrue();
     }
-
 
 
 }

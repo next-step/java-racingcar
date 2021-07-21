@@ -65,7 +65,7 @@ public class CarRacingMain {
         System.out.println();
     }
 
-    public static int randomValue(){
+    public static int randomValue() {
         return new Random().nextInt(randomValue);
     }
 
