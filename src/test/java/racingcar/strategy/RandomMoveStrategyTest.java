@@ -60,4 +60,27 @@ class RandomMoveStrategyTest {
         );
     }
 
+    @DisplayName("Random 이 한계값을 벗어나는 경우 예외를 발생시킨다")
+    @ParameterizedTest
+    @MethodSource
+    void isMovableThrowExceptionWhenValueOutOfRange(Random random) {
+        assertThatThrownBy(() -> RandomMoveStrategy.from(random).isMovable()).isInstanceOf(IllegalStateException.class);
+    }
+
+    private static Stream<Arguments> isMovableThrowExceptionWhenValueOutOfRange() {
+        return Stream.of(
+                Arguments.of(Arguments.of(new Random() {
+                    @Override
+                    public int nextInt(int bound) {
+                        return -1;
+                    }
+                })),
+                Arguments.of(Arguments.of(new Random() {
+                    @Override
+                    public int nextInt(int bound) {
+                        return 10;
+                    }
+                }))
+        );
+    }
 }
