@@ -40,16 +40,16 @@ class RandomMoveStrategyTest {
                 Arguments.of(new Random() {
                     @Override
                     public int nextInt(int bound) {
-                        return 4;
+                        return 5;
                     }
                 }, true),
 
                 Arguments.of(new Random() {
                     @Override
                     public int nextInt(int bound) {
-                        return 10;
+                        return 4;
                     }
-                }, false),
+                }, true),
 
                 Arguments.of(new Random() {
                     @Override
