@@ -19,13 +19,25 @@ public class Calculator {
         for (int i = 1; i < datas.length; i++) {
             String data = datas[i];
 
-            if (Character.isDigit(data.charAt(0))) {
-                resultSum = lastSign.calc(resultSum, Integer.parseInt(data));
-            } else {
-                lastSign = CalcOperator.find(data);
-            }
+            resultSum = getResultSum(lastSign, resultSum, data);
+            lastSign = getLastOperation(lastSign, data);
+
         }
 
         return resultSum;
+    }
+
+    private static int getResultSum(CalcOperator lastSign, int resultSum, String data) {
+        if (Character.isDigit(data.charAt(0))) {
+            resultSum = lastSign.calc(resultSum, Integer.parseInt(data));
+        }
+        return resultSum;
+    }
+
+    private static CalcOperator getLastOperation(CalcOperator lastSign, String data) {
+        if (!Character.isDigit(data.charAt(0))) {
+            lastSign = CalcOperator.find(data);
+        }
+        return lastSign;
     }
 }
