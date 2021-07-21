@@ -29,8 +29,4 @@ class RacingCars {
     public String get(int index) {
         return cars.get(index);
     }
-
-    private boolean isNumberMoreThanFour(int number) {
-        return number >= 4;
-    }
 }
