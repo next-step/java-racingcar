@@ -26,6 +26,10 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name.initName();
+    }
+
     public void print(int index) {
         racingRecord.print(name, index);
     }
