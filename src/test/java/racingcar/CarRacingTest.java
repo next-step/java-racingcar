@@ -3,13 +3,17 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.CarDto;
 import racingcar.helper.Fixture;
 import racingcar.param.RacingCarInitParam;
+import racingcar.strategy.MoveStrategy;
 
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -66,5 +70,46 @@ class CarRacingTest {
                 .forEach(i -> carRacing.race(Fixture.ALWAYS_MOVE_STRATEGY));
 
         assertThat(carRacing.isRaceOver()).isTrue();
+    }
+
+    @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.")
+    @MethodSource
+    @ParameterizedTest
+    void carRacingHasWinner(int numberOfCars, int totalRound, MoveStrategy moveStrategy, List<String> winners) {
+        CarRacing carRacing = Fixture.testCarRacing(totalRound, numberOfCars);
+
+        IntStream.range(0, totalRound)
+                .forEach(i -> carRacing.race(moveStrategy));
+
+        assertThat(carRacing.winners()).isEqualTo(winners);
+    }
+
+    private static Stream<Arguments> carRacingHasWinner() {
+        return Stream.of(
+                Arguments.of(
+                        10,
+                        2,
+                        new MoveStrategy() { // 짝수일 때 true 를 리턴하는 전략
+                            private int count = 0;
+                            @Override
+                            public boolean isMovable() {
+                                return ++count / 2 == 0;
+                            }
+                        },
+                        new String[] {"1"}
+                ),
+                Arguments.of(
+                        10,
+                        10,
+                        new MoveStrategy() { // 짝수일 때 true 를 리턴하는 전략
+                            private int count = 0;
+                            @Override
+                            public boolean isMovable() {
+                                return ++count / 2 == 0;
+                            }
+                        },
+                        new String[] {"1", "3", "5", "7", "9"}
+                )
+        );
     }
 }
