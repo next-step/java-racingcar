@@ -22,7 +22,7 @@ public enum Operator {
 		return Arrays.stream(Operator.values())
 			.filter(v -> v.operator.equals(operator))
 			.findFirst()
-			.orElseThrow(IllegalArgumentException::new);
+			.orElseThrow(() -> new IllegalArgumentException("Operator가 잘못되었습니다."));
 	}
 
 	public Integer calc(Integer e1, Integer e2) {

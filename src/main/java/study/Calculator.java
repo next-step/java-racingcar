@@ -14,7 +14,7 @@ public class Calculator {
 	public Integer calc(String input) {
 		// 입력값이 null or 빈 공백 문자일 경우 Exception 발생
 		if (input.equals("") ||	input == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("빈 공백이 들어왔습니다.");
 		}
 
 		// 초기화 작업
@@ -22,11 +22,11 @@ public class Calculator {
 
 		// 초기화 이후에도 Queue가 비어있으면 Exception 발생
 		if (operands.isEmpty()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("수식이 잘못되었습니다.");
 		}
 
 		if (operators.isEmpty()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("수식이 잘못되었습니다.");
 		}
 
 		result = operands.poll();
@@ -37,7 +37,7 @@ public class Calculator {
 
 			// 연산자가 존재하는데 피연산자가 있어야함
 			if (operands.isEmpty()) {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("수식이 잘못되었습니다.");
 			}
 
 			result = operator.calc(result, operands.poll());
