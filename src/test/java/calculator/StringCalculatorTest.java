@@ -79,4 +79,5 @@ class StringCalculatorTest {
             stringCalculator.execute("10 / 0");
         }).withMessageMatching("0으로 나눌 수 없습니다.");
     }
+
 }

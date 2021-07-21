@@ -11,7 +11,6 @@ public class StringCalculator {
     public static final String IS_OPERATOR_REGEX = "[-+*/]";
     public static final String IS_NULL_ERROR_MESSAGE = "입력 값이 null이거나 빈 공백 문자입니다.";
     public static final String IS_NOT_OPERATOR_ERROR_MESSAGE = "사칙연산 기호가 아닌 문자가 포함되어 있습니다.";
-    public static final String DIVIDE_ZERO_ERROR_MESSAGE = "0으로 나눌 수 없습니다.";
 
     public int execute(String input) {
         validateInput(input);
@@ -21,7 +20,7 @@ public class StringCalculator {
         return input(numbers, operations);
     }
 
-    private void validateInput(String input) throws IllegalArgumentException {
+    private void validateInput(String input) {
         if(isEmpty(input)) {
             throw new IllegalArgumentException(IS_NULL_ERROR_MESSAGE);
         }
@@ -36,8 +35,8 @@ public class StringCalculator {
 
     private boolean isNotOperator(String input) {
         String[] inputs = input.split(SPACEBAR);
-        for(int i = 0; i < inputs.length; i++) {
-            if(!inputs[i].matches(IS_NUMBER_REGEX) && !inputs[i].matches(IS_OPERATOR_REGEX)) {
+        for (String s : inputs) {
+            if (!s.matches(IS_NUMBER_REGEX) && !s.matches(IS_OPERATOR_REGEX)) {
                 return true;
             }
         }
@@ -46,32 +45,30 @@ public class StringCalculator {
 
     private List<Integer> parsingNumber(String[] inputs) {
         List<Integer> numbers = new ArrayList<>();
-        for(int i = 0; i < inputs.length; i++) {
-            isNumber(inputs[i], numbers);
+        for (String input : inputs) {
+            isNumber(input, numbers);
         }
         return numbers;
     }
 
-    private List<Integer> isNumber(String input, List<Integer> numbers) {
+    private void isNumber(String input, List<Integer> numbers) {
         if(input.matches(IS_NUMBER_REGEX)) {
             numbers.add(Integer.parseInt(input));
         }
-        return numbers;
     }
 
     private List<String> parsingOperation(String[] inputs) {
         List<String> operations = new ArrayList<>();
-        for(int i = 0; i < inputs.length; i++) {
-            addByisOperation(inputs[i], operations);
+        for (String input : inputs) {
+            addByIsOperation(input, operations);
         }
         return operations;
     }
 
-    private List<String> addByisOperation(String input, List<String> operations) {
+    private void addByIsOperation(String input, List<String> operations) {
         if(input.matches(IS_OPERATOR_REGEX)) {
             operations.add(input);
         }
-        return operations;
     }
 
     private int input(List<Integer> numbers, List<String> operations) {
@@ -83,29 +80,7 @@ public class StringCalculator {
     }
 
     private int calculate(int oriNumber, int inputNumber, String operation) {
-        int result = 0;
-
-        if("+".equals(operation)) {
-            result = oriNumber + inputNumber;
-        }else if("-".equals(operation)) {
-            result = oriNumber - inputNumber;
-        }else if("*".equals(operation)) {
-            result = oriNumber * inputNumber;
-        }else if(validateDivision(operation, inputNumber)) {
-            result = oriNumber / inputNumber;
-        }
-
-        return result;
-    }
-
-    private boolean validateDivision(String operation, int inputNumber) {
-        if(!"/".equals(operation)) {
-            return false;
-        }
-        if(inputNumber == 0) {
-            throw new IllegalArgumentException(DIVIDE_ZERO_ERROR_MESSAGE);
-        }
-        return true;
+        return Operator.of(operation).calculate(oriNumber, inputNumber);
     }
 
 }
