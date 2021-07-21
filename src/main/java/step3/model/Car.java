@@ -1,6 +1,7 @@
 package step3.model;
 
 import step3.App;
+import step3.move.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,22 +9,19 @@ import java.util.List;
 
 public class Car {
     private final List<Integer> moveRecord = new ArrayList<>(Collections.singletonList(0));
+    private final MovableStrategy movableStrategy;
+
+    public Car(MovableStrategy movableStrategy) {
+        this.movableStrategy = movableStrategy;
+    }
 
     public void moveIf(int num) {
         validateNumber(num);
-        move(num);
-    }
-
-    public void move(int num) {
-        moveRecord.add(now() + moveDistance(num));
+        moveRecord.add(now() + movableStrategy.move(num));
     }
 
     public int now() {
         return moveRecord.get(moveRecord.size() - 1);
-    }
-
-    private int moveDistance(int num) {
-        return num >= App.CRITERION_NUMBER ? 1 : 0;
     }
 
     private void validateNumber(int num) {

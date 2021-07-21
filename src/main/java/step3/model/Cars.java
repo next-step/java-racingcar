@@ -1,23 +1,26 @@
 package step3.model;
 
 import step3.App;
+import step3.move.BasicMoveStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
-    private final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
-    protected Cars(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public static Cars of(int carCount) {
-        return new Cars(carCount);
+        return new Cars(
+            Stream.generate(() -> new Car(new BasicMoveStrategy()))
+                .limit(carCount)
+                .collect(Collectors.toList())
+        );
     }
 
     public void move(Random random) {
