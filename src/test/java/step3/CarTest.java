@@ -2,10 +2,10 @@ package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step3.model.Car;
+import step3.move.BasicMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -15,20 +15,7 @@ public class CarTest {
 
     @BeforeEach
     public void initCalculator() {
-        car = new Car();
-    }
-
-    @Test
-    @DisplayName("Car Move")
-    public void carMove() {
-        //given
-        int expected = 1;
-
-        //when
-        car.move(5);
-
-        //then
-        assertThat(car.now()).isEqualTo(expected);
+        car = new Car(new BasicMoveStrategy());
     }
 
     @ParameterizedTest(name = "{displayName} / value = {0}")
