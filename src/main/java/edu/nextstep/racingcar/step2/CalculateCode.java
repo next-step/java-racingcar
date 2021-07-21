@@ -1,5 +1,7 @@
 package edu.nextstep.racingcar.step2;
 
+import java.util.Arrays;
+
 public enum CalculateCode {
 
     ADD("+"), SUB("-"), MULTI("*"), DIV("/");
@@ -11,11 +13,9 @@ public enum CalculateCode {
     }
 
     public static CalculateCode findByValue(String value) {
-        for (CalculateCode calculateCode : values()) {
-            if (calculateCode.value.equals(value)) {
-                return calculateCode;
-            }
-        }
-        return null;
+        return Arrays.stream(values())
+                .filter(codeValue -> codeValue.value.equals(value))
+                .findFirst()
+                .orElseThrow(() -> new BusinessException(BusinessError.INVALID_VALUE));
     }
 }

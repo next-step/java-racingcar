@@ -50,18 +50,23 @@ public class CalculatorUtils {
     }
 
     private Long calculateForPartial(Long first, Long second, CalculateCode calculateCode) {
-        switch (calculateCode) {
-            case ADD:
-                return addition(first, second);
-            case SUB:
-                return subtraction(first, second);
-            case MULTI:
-                return multiplication(first, second);
-            case DIV:
-                return division(first, second);
-            default:
-                throw new BusinessException(BusinessError.INVALID_CALCULATE_STRING);
+        if (CalculateCode.ADD.equals(calculateCode)) {
+            return addition(first, second);
         }
+
+        if (CalculateCode.SUB.equals(calculateCode)) {
+            return subtraction(first, second);
+        }
+
+        if (CalculateCode.MULTI.equals(calculateCode)) {
+            return multiplication(first, second);
+        }
+
+        if (CalculateCode.DIV.equals(calculateCode)) {
+            return division(first, second);
+        }
+
+        throw new BusinessException(BusinessError.INVALID_CALCULATE_STRING);
     }
 
     private void parseSource(String source) {
@@ -69,21 +74,28 @@ public class CalculatorUtils {
         String[] values = source.split(SPACE_STRING);
 
         IntStream.range(0, values.length).forEach(idx -> {
-
             checkValueOfNullOrEmpty(values[idx]);
 
-            if (idx % 2 == 0) {
-                checkNumber(values[idx]);
-                calculateValues.add(Long.valueOf(values[idx]));
-                return;
-            }
-
-            checkCalculateString(values[idx]);
-            calculateStrings.add(CalculateCode.findByValue(values[idx]));
+            addCalculateValues(values[idx], idx);
+            addCalculateStrings(values[idx], idx);
         });
 
         if (calculateStrings.size() + 1 != calculateValues.size()) {
             throw new BusinessException(BusinessError.INVALID_VALUE);
+        }
+    }
+
+    private void addCalculateStrings(String value, int idx) {
+        if (idx % 2 != 0) {
+            checkCalculateString(value);
+            calculateStrings.add(CalculateCode.findByValue(value));
+        }
+    }
+
+    private void addCalculateValues(String value, int idx) {
+        if (idx % 2 == 0) {
+            checkNumber(value);
+            calculateValues.add(Long.valueOf(value));
         }
     }
 
