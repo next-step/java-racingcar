@@ -55,4 +55,10 @@ class SimpleCalculatorTest {
     void minusTest() {
         assertThat(sc.minus("1 - 2")).isEqualTo("-1");
     }
+
+    @Test
+    @DisplayName("곱하기 테스트")
+    void multiplyTest() {
+        assertThat(sc.multiply("10 * 2")).isEqualTo("20");
+    }
 }
