@@ -1,5 +1,6 @@
 package calc.type;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operation {
@@ -20,13 +21,10 @@ public enum Operation {
         return this.findByOperation(this.operation).resultFunction.apply(a, b);
     }
 
-    public static Operation findByOperation(String operation) {
-        for(Operation o : Operation.values()) {
-            if(operation.equals(o.operation)) {
-                return o;
-            }
-        }
-        throw new IllegalArgumentException("not support operation");
+    public static Operation findByOperation(String operationStr) {
+        return Arrays.stream(Operation.values())
+                .filter(o -> o.operation.equals(operationStr))
+                .findAny().orElseThrow(() -> new IllegalArgumentException("not support operation"));
     }
 
 }
