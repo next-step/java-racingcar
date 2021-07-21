@@ -17,10 +17,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("자동차 리스트 테스트")
 class CarsTest {
 
-    @DisplayName("자동차 리스트를 초기화 하는데는 차의 수, MoveStrategy 가 필요하다.")
+    @DisplayName("자동차 집단을 초기화 하는데는 참가하는 사람들의 차 이름이 필요하다.")
     @Test
     void initCars() {
-        assertThat(Cars.from(10)).isNotNull();
+        assertThat(Cars.init("nok", "cha", "x")).isNotNull();
     }
 
     @DisplayName("자동차 수는 음수가 될 수 없다.")
