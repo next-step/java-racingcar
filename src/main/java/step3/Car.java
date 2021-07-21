@@ -1,2 +1,4 @@
-package step3;public class Car {
+package step3;
+
+public class Car {
 }
