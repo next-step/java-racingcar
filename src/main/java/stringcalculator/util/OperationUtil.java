@@ -8,18 +8,21 @@ public class OperationUtil {
         // 빈 공백 문자열 단위로 분할하기.
         String[] userInputArr = userInput.split(" ");
 
-        int leftNum = getInt(userInputArr[0]);
-        String operatorStr = userInputArr[1];
-        int rightNum = getInt(userInputArr[2]);
+        int leftNum;
+        int rightNum;
+        String operatorStr;
+        int result;
 
-        int result = Operation.of(operatorStr).operate(leftNum, rightNum);
+        leftNum = getInt(userInputArr[0]);
+        result = leftNum;
 
-        for (int i = 3; i < userInputArr.length; i = i + 2) {
-
+        for (int i = 1; i < userInputArr.length; i = i + 2) {
             operatorStr = userInputArr[i];
-            rightNum = Integer.parseInt(userInputArr[i + 1]);
+            leftNum = result;
+            rightNum = getInt(userInputArr[i + 1]);
 
-            result = Operation.of(operatorStr).operate(result, rightNum);
+            result = Operation.of(operatorStr).operate(leftNum, rightNum);
+
         }
 
         return result;
