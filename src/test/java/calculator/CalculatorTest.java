@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,8 +14,8 @@ class CalculatorTest {
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "2 + 3 * 4 / 2 - 5:5"}, delimiter = ':')
     @DisplayName("올바르게 값이 출력되는지 확인")
     void input_valid(final String input, final int expected) {
-        Calculator calculator = new Calculator(input);
-        int result = calculator.getResult();
+        Calculator calculator = new Calculator();
+        int result = calculator.calculate(input);
         assertThat(result).isEqualTo(expected);
     }
 
@@ -24,8 +24,8 @@ class CalculatorTest {
     @DisplayName("입력 값 공백이나 널인 경우")
     void input_blank(final String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator calculator = new Calculator(input);
-            int result = calculator.getResult();
+            Calculator calculator = new Calculator();
+            int result = calculator.calculate(input);
         });
     }
 
@@ -34,8 +34,8 @@ class CalculatorTest {
     @DisplayName("중간에 사칙연산이 올바르지 않은 경우")
     void input_operator_invalid(final String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator calculator = new Calculator(input);
-            int result = calculator.getResult();
+            Calculator calculator = new Calculator();
+            int result = calculator.calculate(input);
         });
     }
 }

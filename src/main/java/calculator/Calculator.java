@@ -1,21 +1,21 @@
-package step2;
+package calculator;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static step2.Operator.PLUS;
+import static calculator.Operator.PLUS;
 
 public class Calculator {
 
-    private int result = 0;
-
-    private Calculator() {
+    public Calculator() {
 
     }
 
-    public Calculator(String input) {
+    public int calculate(String input) {
+        int result = 0;
+
         final List<String> values = getInputsBySplitWhiteSpace(input);
         final List<Integer> numbers = getNumbersByInputs(values);
         final List<Operator> operators = getOperationsByInputs(values);
@@ -26,13 +26,7 @@ public class Calculator {
             int next = numbers.get(index++);
             result = operator.operate(prev, next);
         }
-    }
 
-    public static boolean isBlank(String value) {
-        return Objects.isNull(value) || "".equalsIgnoreCase(value);
-    }
-
-    public int getResult() {
         return result;
     }
 
@@ -58,6 +52,10 @@ public class Calculator {
         }
         return Arrays.stream(value.split(" "))
                 .collect(Collectors.toList());
+    }
+
+    private boolean isBlank(String value) {
+        return Objects.isNull(value) || "".equalsIgnoreCase(value);
     }
 
     private boolean isNotNumber(String input) {

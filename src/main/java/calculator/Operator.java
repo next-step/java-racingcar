@@ -1,7 +1,7 @@
-package step2;
+package calculator;
 
 import java.util.Arrays;
-import java.util.function.BinaryOperator;
+import java.util.function.IntBinaryOperator;
 
 public enum Operator {
 
@@ -11,9 +11,9 @@ public enum Operator {
     DIVIDE("/", (a, b) -> a / b);
 
     private final String sign;
-    private final BinaryOperator<Integer> op;
+    private final IntBinaryOperator op;
 
-    Operator(String sign, BinaryOperator<Integer> op) {
+    Operator(String sign, IntBinaryOperator op) {
         this.sign = sign;
         this.op = op;
     }
@@ -26,6 +26,6 @@ public enum Operator {
     }
 
     public int operate(int a, int b) {
-        return op.apply(a, b);
+        return op.applyAsInt(a, b);
     }
 }
