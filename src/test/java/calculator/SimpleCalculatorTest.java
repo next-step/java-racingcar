@@ -43,4 +43,10 @@ class SimpleCalculatorTest {
             }
         }
     }
+
+    @Test
+    @DisplayName("더하기 테스트")
+    void plusTest() {
+        assertThat(sc.plus("1 + 2")).isEqualTo("3");
+    }
 }
