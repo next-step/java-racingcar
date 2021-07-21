@@ -10,15 +10,15 @@ public class RacingRecord {
     private final StringBuilder stringBuilder;
 
     public RacingRecord() {
-        status = new ArrayList<>();
-        stringBuilder = new StringBuilder();
+        this.status = new ArrayList<>();
+        this.stringBuilder = new StringBuilder();
     }
 
-    public void printGameStatus(int index) {
+    public void print(int index) {
         System.out.println(status.get(index));
     }
 
-    public void gameRecord(int position) {
+    public void save(int position) {
         stringBuilder.setLength(0);
         for (int i = 0; i < position; i++) {
             stringBuilder.append(RACE_STATUS_STRING);

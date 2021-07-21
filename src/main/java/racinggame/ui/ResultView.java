@@ -2,7 +2,6 @@ package racinggame.ui;
 
 import racinggame.car.Car;
 import racinggame.car.Cars;
-import racinggame.car.RacingRecord;
 
 public class ResultView {
 
@@ -19,16 +18,14 @@ public class ResultView {
     public void printResult() {
         System.out.println(RESULT_MESSAGE);
         for (int i = 0; i < count; i++) {
-            printCarStatus(i);
+            gameStatus(i);
             System.out.println();
         }
-
     }
 
-    private void printCarStatus(int i) {
+    private void gameStatus(int i) {
         for (Car car : cars.getCars()) {
-            RacingRecord status = car.getRacingStatus();
-            status.printGameStatus(i);
+            car.print(i);
         }
     }
 }

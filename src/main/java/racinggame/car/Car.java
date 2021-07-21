@@ -9,22 +9,22 @@ public class Car {
     private int position;
 
     public Car() {
-        position = STARTING_POSITION;
-        racingRecord = new RacingRecord();
+        this.position = STARTING_POSITION;
+        this.racingRecord = new RacingRecord();
     }
 
     public void race(MovingStrategy strategy) {
         if (strategy.isMove()) {
             position++;
         }
-        racingRecord.gameRecord(position);
+        racingRecord.save(position);
     }
 
     public int getPosition() {
         return position;
     }
 
-    public RacingRecord getRacingStatus() {
-        return racingRecord;
+    public void print(int index) {
+        racingRecord.print(index);
     }
 }
