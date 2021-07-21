@@ -10,6 +10,8 @@ public enum Operator {
     DIVISION("/", (first, second) -> first / second),
     ;
 
+    private static final String INVALID_VALUE_EXCEPTION_MESSAGE_FORMAT = "존재하지 않는 연산자입니다. %s";
+
     private final String value;
     private final BinaryOperator<Integer> operator;
 
@@ -22,7 +24,7 @@ public enum Operator {
         return Arrays.stream(values())
                 .filter(operator -> operator.has(value))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(String.format("존재하지 않는 연산자입니다. %s", value)));
+                .orElseThrow(() -> new IllegalArgumentException(String.format(INVALID_VALUE_EXCEPTION_MESSAGE_FORMAT, value)));
     }
 
     private boolean has(String value) {

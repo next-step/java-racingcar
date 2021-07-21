@@ -1,11 +1,14 @@
 package calculator;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 class CalculatorTest {
 
@@ -53,6 +56,14 @@ class CalculatorTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calculator.calculate(input))
                 .withMessageContaining("존재하지 않는 연산자입니다.");
+    }
+
+    @DisplayName("사칙연산을 모두 포함하는 연산식 계산이 가능하다.")
+    @Test
+    public void arithmeticOperationTest() {
+        String input = "2 + 3 * 4 / 2";
+        int result = calculator.calculate(input);
+        assertThat(result).isEqualTo(10);
     }
 
 }
