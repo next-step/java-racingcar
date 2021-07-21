@@ -1,5 +1,8 @@
 package calculator;
 
+import calculator.exception.DivideByZeroException;
+import calculator.exception.InvalidOperatorException;
+
 import java.util.Arrays;
 import java.util.function.BinaryOperator;
 
@@ -10,7 +13,7 @@ public enum StringOperator {
 	MULTIPLY("*", (number1, number2) -> number1 * number2),
 	DIVIDE("/", (number1, number2) -> {
 		if (number2 == 0) {
-			throw new IllegalArgumentException(ExceptionMessage.DIVIDE_BY_ZERO.text());
+			throw new DivideByZeroException();
 		}
 		return number1 / number2;
 	});
@@ -31,7 +34,7 @@ public enum StringOperator {
 		return Arrays.stream(values())
 			.filter(value -> value.operator.equals(inputOperator))
 			.findFirst()
-			.orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_OPERATOR.text()));
+			.orElseThrow(InvalidOperatorException::new);
 	}
 
 }

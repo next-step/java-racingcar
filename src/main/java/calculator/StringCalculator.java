@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.exception.InvalidFormulaException;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -7,6 +9,11 @@ public class StringCalculator {
 
 	private Queue<Integer> numbers;
 	private Queue<String> operators;
+
+	public StringCalculator() {
+		numbers = new LinkedList<>();
+		operators = new LinkedList<>();
+	}
 
 	public int calculate(String inputText) {
 		validateInputText(inputText);
@@ -24,9 +31,6 @@ public class StringCalculator {
 	}
 
 	private void initializeNumbersAndOperators(String inputText) {
-		numbers = new LinkedList<>();
-		operators = new LinkedList<>();
-
 		String[] tokens = inputText.split(" ");
 		for (String token : tokens) {
 			addNumberOrOperatorBy(token);
@@ -36,16 +40,14 @@ public class StringCalculator {
 	private void addNumberOrOperatorBy(String token) {
 		if (isNumeric(token)) {
 			numbers.add(Integer.parseInt(token));
+			return;
 		}
-
-		if (!isNumeric(token)) {
-			operators.add(token);
-		}
+		operators.add(token);
 	}
 
 	private void validateInputText(String inputText) {
 		if (isBlank(inputText) || isNotStartsWithNumber(inputText)) {
-			throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_TEXT.text());
+			throw new InvalidFormulaException();
 		}
 	}
 

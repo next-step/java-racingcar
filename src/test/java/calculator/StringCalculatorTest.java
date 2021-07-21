@@ -1,12 +1,16 @@
 package calculator;
 
-import static org.assertj.core.api.Assertions.*;
-
+import calculator.exception.DivideByZeroException;
+import calculator.exception.InvalidFormulaException;
+import calculator.exception.InvalidOperatorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("문자열 계산기")
 class StringCalculatorTest {
@@ -52,25 +56,22 @@ class StringCalculatorTest {
 	@ParameterizedTest(name = "입력 값이 {0}인 경우")
 	@NullAndEmptySource
 	void invalidInputText(String inputText) {
-		assertThatIllegalArgumentException()
-			.isThrownBy(() -> calculator.calculate(inputText))
-			.withMessage(ExceptionMessage.INVALID_INPUT_TEXT.text());
+		assertThatThrownBy(() -> calculator.calculate(inputText))
+			.isInstanceOf(InvalidFormulaException.class);
 	}
 
 	@DisplayName("0으로 나누려고 할 경우 예외가 발생한다.")
 	@Test
 	void divideByZero() {
-		assertThatIllegalArgumentException()
-			.isThrownBy(() -> calculator.calculate("2 / 0"))
-			.withMessage(ExceptionMessage.DIVIDE_BY_ZERO.text());
+		assertThatThrownBy(() -> calculator.calculate("2 / 0"))
+			.isInstanceOf(DivideByZeroException.class);
 	}
 
 	@DisplayName("유효한 연산자가 아닐 경우 예외가 발생한다.")
 	@Test
 	void invalidOperator() {
-		assertThatIllegalArgumentException()
-			.isThrownBy(() -> calculator.calculate("2 ^ 5"))
-			.withMessage(ExceptionMessage.INVALID_OPERATOR.text());
+		assertThatThrownBy(() -> calculator.calculate("2 ^ 5"))
+			.isInstanceOf(InvalidOperatorException.class);
 	}
 
 }
