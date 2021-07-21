@@ -69,18 +69,18 @@ class RandomMoveStrategyTest {
 
     private static Stream<Arguments> isMovableThrowExceptionWhenValueOutOfRange() {
         return Stream.of(
-                Arguments.of(Arguments.of(new Random() {
+                Arguments.of(new Random() {
                     @Override
                     public int nextInt(int bound) {
                         return -1;
                     }
-                })),
-                Arguments.of(Arguments.of(new Random() {
+                }),
+                Arguments.of(new Random() {
                     @Override
                     public int nextInt(int bound) {
                         return 10;
                     }
-                }))
+                })
         );
     }
 }
