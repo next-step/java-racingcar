@@ -1,6 +1,5 @@
 package calculator;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,19 +11,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SimpleCalculatorTest {
     List<Character> opList = new ArrayList<>();
     List<Character> numList  = new ArrayList<>();
+    SimpleCalculator sc = new SimpleCalculator();
 
     @BeforeEach
     void setUp() {
         opList = new ArrayList<>();
-        numList  = new ArrayList<>();
-        opList.add('+');
-        opList.add('-');
-        opList.add('*');
-        opList.add('/');
+        opList.addAll(Arrays.asList('+', '-', '*', '/'));
 
-        for (int i = 0 ; i <= 9 ; i++) {
-            numList.add((char)('0' + i));
-        }
+        numList = new ArrayList<>();
+        numList.addAll(Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'));
     }
 
     @Test
@@ -47,24 +42,5 @@ class SimpleCalculatorTest {
                 assertThat(nextChar).isEqualTo(' ');
             }
         }
-    }
-
-    @Test
-    @DisplayName("더하기 테스트")
-    void plusTest() {
-        String input = "1 + 2";
-
-    }
-
-    @Test
-    @DisplayName("'Num Op Num' 으로 구성된 수식을 Num으로 만들기")
-    void proceedCalculationTest() {
-
-    }
-
-
-    @Test
-    @DisplayName("나눗셈의 경우 결과 값이 정수로 떨어지는 값인지 테스트")
-    void shouldBeZeroOfRemainderAfterDividing() {
     }
 }
