@@ -1,4 +1,4 @@
-package edu.step1.racingcar;
+package edu.nextstep.racingcar.step1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

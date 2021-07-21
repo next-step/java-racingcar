@@ -1,4 +1,4 @@
-package edu.step1.racingcar;
+package edu.nextstep.racingcar.step1;
 
 import java.util.Set;
 
