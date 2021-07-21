@@ -19,8 +19,8 @@ public class StringCalculator {
                 continue;
             }
 
-            final Operator of = Operator.of(operatorsAndOperands[i - 1]);
-            result = of.getOperate()
+            final Operator operator = Operator.of(operatorsAndOperands[i - 1]);
+            result = operator.getOperate()
                     .applyAsInt(result, value);
         }
 
