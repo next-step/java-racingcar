@@ -21,7 +21,7 @@ public class CalculatorTest {
 
 
     @ParameterizedTest(name = "{displayName} / value = {0}")
-    @CsvFileSource(resources = "/expression_success_with_two_value.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/step2/expression_success_with_two_value.csv", numLinesToSkip = 1)
     public void 숫자_두개_계산_성공(String expression, int expected) {
         //given, when
         int result = calculator.calculate(expression);
@@ -31,7 +31,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest(name = "{displayName} / value = {0}")
-    @CsvFileSource(resources = "/expression_success_with_many_value.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/step2/expression_success_with_many_value.csv", numLinesToSkip = 1)
     public void 숫자_여러개_계산_성공(String expression, int expected) {
         //given, when
         int result = calculator.calculate(expression);
@@ -41,7 +41,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest(name = "{displayName} / value = {0}")
-    @CsvFileSource(resources = "/expression_fail_with_expression_value.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/step2/expression_fail_with_expression_value.csv", numLinesToSkip = 1)
     public void 잘못된_기호_계산_실패(String expression, int expected) {
         //given, when
         assertThatExceptionOfType(InvalidExpressionException.class).isThrownBy(() -> {
@@ -50,7 +50,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest(name = "{displayName} / value = {0}")
-    @CsvFileSource(resources = "/expression_fail_with_number_value.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/step2/expression_fail_with_number_value.csv", numLinesToSkip = 1)
     public void 잘못된_숫자_계산_실패(String expression, int expected) {
         //given, when
         assertThatExceptionOfType(NumberFormatException.class).isThrownBy(() -> {
@@ -59,7 +59,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest(name = "{displayName} / value = {0}")
-    @CsvFileSource(resources = "/expression_fail_with_blank_and_null.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/step2/expression_fail_with_blank_and_null.csv", numLinesToSkip = 1)
     public void 비어있는_수식으로_계산_실패(String expression, int expected) {
         //given, when
         assertThatExceptionOfType(EmptyExpressionException.class).isThrownBy(() -> {

@@ -2,6 +2,8 @@ package step1;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -17,7 +19,9 @@ public class StringTest {
         String[] split = text.split(",");
 
         //then
-        assertThat(split).contains(text);
+        Arrays.stream(split).forEach(s ->
+                assertThat(text).contains(s)
+        );
         assertThat(split).isEqualTo(expected);
     }
 
@@ -31,7 +35,9 @@ public class StringTest {
         String[] split = text.split(",");
 
         //then
-        assertThat(split).contains(text);
+        Arrays.stream(split).forEach(s ->
+                assertThat(text).contains(s)
+        );
         assertThat(split).isEqualTo(expected);
     }
 
