@@ -12,6 +12,7 @@ public class StringTest {
 
         result = "1,".split(",");
         assertThat(result).containsExactly("1");
+        
     }
 }
 
