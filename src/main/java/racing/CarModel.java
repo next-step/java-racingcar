@@ -10,11 +10,12 @@ public class CarModel {
         this.raceDistance = "";
     }
 
-    public void carRacingAct(boolean flag){
-        if(flag){
+    public String carRacingAct(boolean flag) {
+        if (flag) {
             raceDistance += "-";
         }
         System.out.println(raceDistance);
+        return raceDistance;
     }
 
 }
