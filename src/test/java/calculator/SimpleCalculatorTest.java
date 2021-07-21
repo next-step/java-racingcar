@@ -49,4 +49,10 @@ class SimpleCalculatorTest {
     void plusTest() {
         assertThat(sc.plus("1 + 2")).isEqualTo("3");
     }
+
+    @Test
+    @DisplayName("마이너스 테스트")
+    void minusTest() {
+        assertThat(sc.minus("1 - 2")).isEqualTo("-1");
+    }
 }
