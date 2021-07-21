@@ -6,13 +6,19 @@ import java.util.Objects;
 
 public class Car {
     private int position;
+    private String name;
 
-    private Car() {
+    private Car(String name) {
         this.position = 0;
+        this.name = name;
     }
 
     public static Car newInstance() {
-        return new Car();
+        return new Car("");
+    }
+
+    public static Car from(String name) {
+        return new Car(name);
     }
 
     public int currentPosition() {
