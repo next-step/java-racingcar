@@ -27,6 +27,6 @@ public class Car {
     }
 
     public void print(int index) {
-        racingRecord.print(index);
+        racingRecord.print(name, index);
     }
 }
