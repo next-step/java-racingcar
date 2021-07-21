@@ -33,14 +33,14 @@ class CarRacingTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void roundShouldBeOverZero(int totalRound) {
-        assertThatThrownBy(() -> CarRacing.init(RacingCarInitParam.of(10, totalRound)))
+        assertThatThrownBy(() -> Fixture.testCarRacing(totalRound, 10))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("레이스를 진행하면 차들이 한 번 움직임을 시도한다.")
     @Test
     void raceMakeCarsTryMove() {
-        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(2, 1));
+        CarRacing carRacing = Fixture.testCarRacing(1, 2);
         List<CarDto> carDtos = carRacing.currentState();
         carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(0));
 
@@ -53,7 +53,7 @@ class CarRacingTest {
     @DisplayName("현재 라운드 수는 총 라운드 수를 넘길 수 없다.")
     @Test
     void currentRoundCantExceedTotalRound() {
-        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(10, 1));
+        CarRacing carRacing = Fixture.testCarRacing(1, 10);
 
         carRacing.race(Fixture.ALWAYS_MOVE_STRATEGY);
 
@@ -64,7 +64,7 @@ class CarRacingTest {
     @Test
     void isRaceOver() {
         int totalRound = 10;
-        CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(2, totalRound));
+        CarRacing carRacing = Fixture.testCarRacing(totalRound, 2);
 
         assertThat(carRacing.isRaceOver()).isFalse();
 
