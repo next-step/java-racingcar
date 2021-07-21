@@ -8,14 +8,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class CalcSignEnumTest {
+class CalcOperatorTest {
 
 
     @CsvSource(value = {"1:1:2", "10:1:11", "5:5:10"}, delimiter = ':')
     @ParameterizedTest(name = "{0} + {1}은 {2}이 반환되어야한다")
     void addTest(int given1, int given2, int result) {
         // given
-        CalcSignEnum add = CalcSignEnum.ADD;
+        CalcOperator add = CalcOperator.ADD;
         // when
         int calc = add.calc(given1, given2);
         // then
@@ -26,7 +26,7 @@ class CalcSignEnumTest {
     @ParameterizedTest(name = "{0} - {1}은 {2}이 반환되어야한다")
     void minusTest(int given1, int given2, int result) {
         // given
-        CalcSignEnum minus = CalcSignEnum.MINUS;
+        CalcOperator minus = CalcOperator.MINUS;
         // when
         int calc = minus.calc(given1, given2);
         // then
@@ -37,7 +37,7 @@ class CalcSignEnumTest {
     @ParameterizedTest(name = "{0} * {1}은 {2}ㅁㅇ 반환되어야한다")
     void multiTest(int given1, int given2, int result) {
         // given
-        CalcSignEnum multi = CalcSignEnum.MULTI;
+        CalcOperator multi = CalcOperator.MULTI;
         // when
         int calc = multi.calc(given1, given2);
         // then
@@ -48,7 +48,7 @@ class CalcSignEnumTest {
     @ParameterizedTest(name = "{0} / {1}은 {2}이 반환되어야한다")
     void divideTest(int given1, int given2, int result) {
         // given
-        CalcSignEnum divide = CalcSignEnum.DIVIDE;
+        CalcOperator divide = CalcOperator.DIVIDE;
         // when
         int calc = divide.calc(given1, given2);
         // then

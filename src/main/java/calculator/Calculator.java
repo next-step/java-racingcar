@@ -12,7 +12,7 @@ public class Calculator {
 
         String[] datas = givenData.split(" ");
 
-        CalcSignEnum lastSign = null;
+        CalcOperator lastSign = null;
 
         int resultSum = Integer.parseInt(datas[0]);
 
@@ -22,7 +22,7 @@ public class Calculator {
             if (Character.isDigit(data.charAt(0))) {
                 resultSum = lastSign.calc(resultSum, Integer.parseInt(data));
             } else {
-                lastSign = CalcSignEnum.find(data);
+                lastSign = CalcOperator.find(data);
             }
         }
 

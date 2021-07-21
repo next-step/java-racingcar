@@ -3,7 +3,7 @@ package calculator;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
-public enum CalcSignEnum {
+public enum CalcOperator {
 
     ADD("+", (a, b) -> a + b),
     MINUS("-", (a, b) -> a - b),
@@ -13,12 +13,12 @@ public enum CalcSignEnum {
     private final String sign;
     private final BiFunction<Integer, Integer, Integer> calcFunction;
 
-    CalcSignEnum(String sign, BiFunction<Integer, Integer, Integer> biFunction) {
+    CalcOperator(String sign, BiFunction<Integer, Integer, Integer> biFunction) {
         this.sign = sign;
         this.calcFunction = biFunction;
     }
 
-    public static CalcSignEnum find(String sign) {
+    public static CalcOperator find(String sign) {
         return Arrays.stream(values())
             .filter(signEnum -> signEnum.sign.equals(sign))
             .findAny()
