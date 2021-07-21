@@ -63,10 +63,6 @@ public class FIFOCalculatorTest {
             Field privateField = calculator.getClass().getDeclaredField("rawInput");
 
             privateField.setAccessible(true);
-            privateField.set(calculator, "1");
-
-            assertThat(calculator.validateInput()).isTrue();
-
             privateField.set(calculator, null);
 
             assertThatExceptionOfType(IllegalArgumentException.class)
@@ -88,9 +84,6 @@ public class FIFOCalculatorTest {
             Field privateField = calculator.getClass().getDeclaredField("rawInput");
 
             privateField.setAccessible(true);
-            privateField.set(calculator, "1 + 1 - 1 * 1 / 1");
-
-            assertThat(calculator.validateInput()).isTrue();
 
             privateField.set(calculator, "1 & 1 + 1 = 1");
 

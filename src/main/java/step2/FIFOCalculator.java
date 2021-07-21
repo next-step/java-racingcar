@@ -19,7 +19,7 @@ public class FIFOCalculator {
         return num1 / num2;
     }
 
-    public boolean validateInput() {
+    public void validateInput() {
         if (rawInput == null || rawInput.trim().equals("")) {
             throw new IllegalArgumentException();
         }
@@ -27,7 +27,5 @@ public class FIFOCalculator {
         if (!rawInput.replaceAll(" ", "").matches("^[0-9+\\-*/]+$")) {
             throw new IllegalArgumentException();
         }
-
-        return true;
     }
 }
