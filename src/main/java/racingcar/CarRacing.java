@@ -47,4 +47,9 @@ public class CarRacing {
     public List<CarDto> currentState() {
         return cars.getCarDtos();
     }
+
+    public boolean leader() {
+
+        return false;
+    }
 }

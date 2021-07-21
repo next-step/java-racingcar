@@ -81,7 +81,7 @@ class CarRacingTest {
         IntStream.range(0, totalRound)
                 .forEach(i -> carRacing.race(moveStrategy));
 
-        assertThat(carRacing.winners()).isEqualTo(winners);
+        assertThat(carRacing.leader()).isEqualTo(winners);
     }
 
     private static Stream<Arguments> carRacingHasWinner() {
@@ -89,27 +89,30 @@ class CarRacingTest {
                 Arguments.of(
                         10,
                         2,
-                        new MoveStrategy() { // 짝수일 때 true 를 리턴하는 전략
-                            private int count = 0;
-                            @Override
-                            public boolean isMovable() {
-                                return ++count / 2 == 0;
-                            }
-                        },
-                        new String[] {"1"}
+                        new TrueFalseStrategy(),
+                        new String[] {"0"}
+                ),
+                Arguments.of(
+                        10,
+                        3,
+                        new TrueFalseStrategy(),
+                        new String[] {"0", "1"}
                 ),
                 Arguments.of(
                         10,
                         10,
-                        new MoveStrategy() { // 짝수일 때 true 를 리턴하는 전략
-                            private int count = 0;
-                            @Override
-                            public boolean isMovable() {
-                                return ++count / 2 == 0;
-                            }
-                        },
-                        new String[] {"1", "3", "5", "7", "9"}
+                        new TrueFalseStrategy(),
+                        new String[] {"0", "2", "4", "6", "8"}
                 )
         );
+    }
+
+    private static class TrueFalseStrategy implements MoveStrategy {
+        private int count;
+
+        @Override
+        public boolean isMovable() {
+            return ++count / 2 == 0;
+        }
     }
 }
