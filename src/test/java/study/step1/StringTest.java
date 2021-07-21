@@ -1,4 +1,4 @@
-package study;
+package study.step1;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringTest {
 
     @Test
-    @DisplayName("[1. 문자열 분리] : 1,2")
+    @DisplayName("[1. 문자열 분리] 1,2 -> {1, 2}")
     public void split() {
         // given
         String one = "1";
@@ -34,7 +34,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("[1. 문자열 분리] : 1,")
+    @DisplayName("[1. 문자열 분리] , 가 마지막에 오는 경우 | 1, -> {1}")
     public void split2() {
         // given
         String one = "1";
@@ -65,13 +65,13 @@ public class StringTest {
         assertThat(peeled).isEqualTo(expected);
     }
 
-    public String peelBracket(String text) {
+    private String peelBracket(String text) {
         return isWrappedInBracket(text)
                 ? text.substring(1, text.length() - 1)
                 : text;
     }
 
-    public boolean isWrappedInBracket(String text) {
+    private boolean isWrappedInBracket(String text) {
         return text.startsWith("(") && text.endsWith(")");
     }
 
