@@ -31,7 +31,7 @@ public class StringCalculator {
     }
 
     private void validByNumberCheck(String value) {
-        String regExp = "^[0-9]+$";
+        String regExp = "^\\d+$";
         if(!value.matches(regExp)){
             throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
         }
