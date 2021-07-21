@@ -3,7 +3,6 @@ package calculator;
 import calculator.exception.DivideByZeroException;
 import calculator.exception.InvalidFormulaException;
 import calculator.exception.InvalidOperatorException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,12 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("문자열 계산기")
 class StringCalculatorTest {
 
-	private StringCalculator calculator;
-
-	@BeforeEach
-	void setUp() {
-		calculator = new StringCalculator();
-	}
+	private final StringCalculator calculator = new StringCalculator();
 
 	@DisplayName("더하기 연산을 수행한다.")
 	@Test
