@@ -22,7 +22,9 @@ class CarTest {
     @ValueSource(strings = {"nok", "cha", "x"})
     @ParameterizedTest
     void initWithMoveStrategy(String name) {
-        assertThat(Car.from(name)).isNotNull();
+        Car car = Car.from(name);
+        assertThat(car).isNotNull();
+        assertThat(car.name()).isEqualTo(name);
     }
 
     @DisplayName("MoveStrategy 가 true 일 경우 자동차는 +1 만큼 이동한다.")
