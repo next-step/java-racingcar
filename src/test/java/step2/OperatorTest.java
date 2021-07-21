@@ -6,9 +6,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.function.IntBinaryOperator;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("연산자 Enum 테스트")
 class OperatorTest {
@@ -40,10 +42,13 @@ class OperatorTest {
                 .isThrownBy(() -> Operator.of(given));
     }
 
-    @ParameterizedTest
-    @MethodSource(value = "operatorProvider")
-    void of3(String sign) {
-        final Operator operator = Operator.of(sign);
+    @DisplayName("0 으로 나누면 예외가 발생한다")
+    @Test
+    void divide() {
+        final IntBinaryOperator divide = Operator.DIVISION.getOperate();
+
+        assertThatExceptionOfType(ArithmeticException.class)
+                .isThrownBy(() -> divide.applyAsInt(9, 0));
     }
 
 }
