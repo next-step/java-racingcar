@@ -16,8 +16,8 @@ public class RacingCarTest {
     @DisplayName("n대의 차 생성")
     void createcars(){
         int carCount = 3;
-        List<Car> cars = racingCar.createCars(carCount);
-        assertThat(cars.size()).isEqualTo(carCount);
+        Cars cars = new Cars(carCount);
+        assertThat(cars.getCars().size()).isEqualTo(carCount);
     }
 
     @Test
@@ -25,9 +25,9 @@ public class RacingCarTest {
     void moveCarTest(){
         Car car = new Car();
         car.move(4);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(1);
         car.move(3);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
