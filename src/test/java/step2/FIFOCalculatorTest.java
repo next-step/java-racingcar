@@ -6,73 +6,56 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 public class FIFOCalculatorTest {
 
     private FIFOCalculator calculator;
+
+    private Object invokePrivateMethod(Object targetObject, String methodName)
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method privateMethod = targetObject.getClass().getDeclaredMethod(methodName);
+
+        privateMethod.setAccessible(true);
+
+        return privateMethod.invoke(calculator);
+    }
 
     @BeforeEach
     void init() {
         calculator = new FIFOCalculator();
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"1:1:2", "-1:1:0"}, delimiter = ':')
-    @DisplayName("덧셈 연산 테스트")
-    void addOperationTest(int num1, int num2, int expect) {
-        int result = calculator.add(num1, num2);
-
-        assertThat(result).isEqualTo(expect);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"1:1:0", "-1:1:-2", "1:-1:2"}, delimiter = ':')
-    @DisplayName("뺄셈 연산 테스트")
-    void subtractOperationTest(int num1, int num2, int expect) {
-        int result = calculator.subtract(num1, num2);
-
-        assertThat(result).isEqualTo(expect);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"1:1:1", "1:0:0", "1:-1:-1"}, delimiter = ':')
-    @DisplayName("곱셈 연산 테스트")
-    void multiplyOperationTest(int num1, int num2, int expect) {
-        int result = calculator.multiply(num1, num2);
-
-        assertThat(result).isEqualTo(expect);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"1:1:1", "0:1:0", "1:-1:-1"}, delimiter = ':')
-    @DisplayName("나눗셈 연산 테스트")
-    void divideOperationTest(int num1, int num2, int expect) {
-        int result = calculator.divide(num1, num2);
-
-        assertThat(result).isEqualTo(expect);
-    }
-
     @Test
     @DisplayName("입력 값이 null 이거나 공백 문자인 경우 예외 발생 테스트")
     void nullOrBlankInputTest() {
+        calculator.setRawInput(null);
+
+        // private 메소드를 reflection으로 호출하는 경우 예외가 InvocationTargetException으로 감싸져 있으므로 원래의 예외로 재발생시도한다.
         try {
-            Field privateField = calculator.getClass().getDeclaredField("rawInput");
+            invokePrivateMethod(calculator, "validateInput");
+        } catch (InvocationTargetException e) {
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> {
+                        throw e.getTargetException();
+                    });
+        } catch (NoSuchMethodException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
-            privateField.setAccessible(true);
-            privateField.set(calculator, null);
+        calculator.setRawInput("");
 
-            assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> calculator.validateInput());
-
-            privateField.set(calculator, "");
-
-            assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> calculator.validateInput());
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        try {
+            invokePrivateMethod(calculator, "validateInput");
+        } catch (InvocationTargetException e) {
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> {
+                        throw e.getTargetException();
+                    });
+        } catch (NoSuchMethodException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
@@ -80,17 +63,38 @@ public class FIFOCalculatorTest {
     @Test
     @DisplayName("입력 값이 허용되지 않은 기호를 포함하는 경우 예외 발생 테스트")
     void illegalInputStringTest() {
+        calculator.setRawInput("1 & 1 + 1 = 1");
+
         try {
-            Field privateField = calculator.getClass().getDeclaredField("rawInput");
-
-            privateField.setAccessible(true);
-
-            privateField.set(calculator, "1 & 1 + 1 = 1");
-
-            assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> calculator.validateInput());
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+            invokePrivateMethod(calculator, "validateInput");
+        } catch (InvocationTargetException e) {
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> {
+                        throw e.getTargetException();
+                    });
+        } catch (NoSuchMethodException | IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    @DisplayName("입력된 문자열을 토큰으로 나누는 메소드의 테스트")
+    void tokenizeInputTest() {
+        calculator.setRawInput("1 + 1 - 1 * 1 / 1");
+
+        try {
+            assertThat((String[])invokePrivateMethod(calculator, "tokenizeInput"))
+                    .containsExactly("1", "+", "1", "-", "1", "*", "1", "/", "1");
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    @DisplayName("입력된 문자열을 계산하는 테스트")
+    void calculateTest() {
+        calculator.setRawInput("1 + 1 - 1 * 1 / 1");
+
+        assertThat(calculator.calculate()).isEqualTo(1);
     }
 }
