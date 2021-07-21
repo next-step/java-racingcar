@@ -61,4 +61,10 @@ class SimpleCalculatorTest {
     void multiplyTest() {
         assertThat(sc.multiply("10 * 2")).isEqualTo("20");
     }
+
+    @Test
+    @DisplayName("나누기 테스트")
+    void divideTest() {
+        assertThat(sc.divide("10 / 2")).isEqualTo("5");
+    }
 }
