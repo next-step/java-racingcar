@@ -1,23 +1,21 @@
 package step3;
 
-import step3.model.CarGroup;
+import step3.game.Game;
+import step3.game.GameEnv;
 import step3.view.InputView;
-
-import java.util.Scanner;
+import step3.view.ResultView;
 
 public class App {
     public static final int CRITERION_NUMBER = 4;
-    public static final int RANGE = 9;
+    public static final int RANGE_MIN = 0;
+    public static final int RANGE_MAX = 9;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        GameEnv gameEnv = InputView.initGameEnv();
 
-        InputView.viewCarCount();
-        int carCount = scanner.nextInt();
-        InputView.viewCount();
-        int count = scanner.nextInt();
+        Game game = gameEnv.createGame();
+        game.run();
 
-        Game game = new Game(count);
-        game.run(new CarGroup(carCount));
+        ResultView.showResult(game);
     }
 }
