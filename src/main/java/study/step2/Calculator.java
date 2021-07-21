@@ -1,4 +1,6 @@
 package study.step2;
 
-public class Calculator {
+public interface Calculator {
+
+    int execute(String input);
 }
