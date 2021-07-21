@@ -6,8 +6,15 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution solution = new Solution(
+                new StringCalculator()
+        );
         solution.run();
+    }
+
+    private Calculator calculator;
+    public Solution(Calculator calculator) {
+        this.calculator = calculator;
     }
 
     private Scanner scanner = new Scanner(System.in);
@@ -15,8 +22,7 @@ public class Solution {
         String input;
         while(!(input = requestInput()).equals("Q")) {
             try {
-                Calculator calculator = new StringCalculator(input);
-                System.out.println("계산 결과 : " + calculator.calculation());
+                System.out.println("계산 결과 : " + calculator.calculation(input));
             } catch (InvalidFormulaException | IllegalArgumentException | ArithmeticException e) {
                 System.out.println("[오류 발생] " + e.getMessage());
             }
