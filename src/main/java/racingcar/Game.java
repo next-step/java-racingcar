@@ -15,8 +15,8 @@ public class Game {
 
     private final Random random = new Random();
 
-    int carCount;
-    int driveCount;
+    private final int carCount;
+    private final int driveCount;
 
     private final List<Car> cars = new ArrayList<>();
 
