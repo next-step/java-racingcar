@@ -61,10 +61,10 @@ class CarTest {
     void moveTestWithMoveStrategy(Random random, boolean moved) {
         boolean notMoved = !moved;
         Car car = Car.newInstance();
-        RandomMoveStrategy randomMoveStrategy = RandomMoveStrategy.from(random);
+        RandomMoveStrategy staticRandomNumberMoveStrategy = RandomMoveStrategy.from(random);
 
         int positionBeforeMove = car.currentPosition();
-        car.move(randomMoveStrategy);
+        car.move(staticRandomNumberMoveStrategy);
         int positionAfterMove = car.currentPosition();
 
         assertThat(positionBeforeMove + 1 == positionAfterMove).isEqualTo(moved);
