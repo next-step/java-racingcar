@@ -11,6 +11,7 @@ import racingcar.helper.Fixture;
 import racingcar.strategy.RandomMoveStrategy;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -66,6 +67,18 @@ class CarTest {
         Car car = Fixture.testCar();
 
         assertThatThrownBy(() -> car.move(null)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("주어진 포지션과 동일한 포지션인지 확인")
+    @Test
+    void isSamePosition() {
+        Car car = Fixture.testCar();
+
+        IntStream.rangeClosed(0, 10)
+                .forEach(idx -> {
+                    car.isSamePosition(idx);
+                    car.move(Fixture.ALWAYS_MOVE_STRATEGY);
+                });
     }
 
     @DisplayName("전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.")

@@ -39,6 +39,22 @@ public class Cars {
         cars.forEach(car -> car.move(moveStrategy));
     }
 
+    public List<String> getLeaders() {
+        int leaderPosition = getLeaderPosition();
+
+        return cars.stream()
+                .filter(car -> car.isSamePosition(leaderPosition))
+                .map(Car::name)
+                .collect(Collectors.toList());
+    }
+
+    private int getLeaderPosition() {
+        return cars.stream()
+                .mapToInt(Car::currentPosition)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("Leader position not exists"));
+    }
+
     public List<CarDto> getCarDtos() {
         return cars.stream()
                 .map(CarDto::from)

@@ -49,7 +49,6 @@ public class CarRacing {
     }
 
     public boolean leader() {
-
         return false;
     }
 }
