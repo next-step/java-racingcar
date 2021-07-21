@@ -123,16 +123,16 @@ class CarTest {
                 Arguments.of(new Random() {
                     @Override
                     public int nextInt(int bound) {
-                        return 9;
+                        return 5;
                     }
                 }, true),
 
                 Arguments.of(new Random() {
                     @Override
                     public int nextInt(int bound) {
-                        return 10;
+                        return 9;
                     }
-                }, false)
+                }, true)
         );
     }
 }
