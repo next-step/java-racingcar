@@ -8,17 +8,15 @@ class Calculator {
     private static final Pattern NORMAL_PATTERN = Pattern.compile("^[\\d]+(\\s[\\d+*\\-/])*.\\d$");
     private static final Pattern OPERATOR_PATTERN = Pattern.compile("[+*\\-/]");
 
-    private String operator;
-    private String string;
+    private final String equation;
 
+    private String operator;
+    private String data;
     private int reduce;
 
     private Calculator(String string) {
         verify(string);
-
-        this.operator = "+";
-        this.string = string;
-        this.reduce = 0;
+        equation = string;
     }
 
     public static Calculator from(String string) {
@@ -36,11 +34,20 @@ class Calculator {
     }
 
     public int calculate() {
-        String[] split = this.string.split(" ");
+        init();
+
+        String[] split = this.data.split(" ");
         for(String s : split) {
             calculate(s);
         }
+
         return reduce;
+    }
+
+    private void init() {
+        data = equation;
+        operator = "+";
+        reduce = 0;
     }
 
     private void calculate(String s) {
