@@ -15,17 +15,12 @@ public class Car {
         this.movableStrategy = movableStrategy;
     }
 
-    public void moveIf(int num) {
-        validateNumber(num);
-        moveRecord.add(now() + movableStrategy.move(num));
+    public void move() {
+        moveRecord.add(now() + movableStrategy.move());
     }
 
     public int now() {
         return moveRecord.get(moveRecord.size() - 1);
-    }
-
-    private void validateNumber(int num) {
-        if (num > App.RANGE_MAX || num < App.RANGE_MIN) throw new IndexOutOfBoundsException();
     }
 
     public int getPointOfTime(int time) {

@@ -18,9 +18,8 @@ public class Game {
     }
 
     public void run() {
-        Random random = new Random();
         for (int i = 0; i < gameCount; i++) {
-            cars.move(random);
+            cars.move();
         }
     }
 
