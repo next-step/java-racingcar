@@ -21,11 +21,16 @@ public class ResultView {
             gameStatus(i);
             System.out.println();
         }
+        printWinner();
     }
 
     private void gameStatus(int i) {
         for (Car car : cars.getCars()) {
             car.print(i);
         }
+    }
+
+    private void printWinner() {
+        System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
     }
 }

@@ -15,7 +15,7 @@ public class Count {
         return new Count(count);
     }
 
-    public int getCount() {
+    public int initValue() {
         return count;
     }
 

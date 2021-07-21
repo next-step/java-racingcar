@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.car;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(CarName.of("자동차"));
     }
 
     @DisplayName("자동차 객체가 전진 조건을 만족하면 position 값을 증가 시킨다.")
@@ -27,7 +27,7 @@ class CarTest {
     @Test
     void car_stop() {
         car.race(() -> false);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isZero();
     }
 
     @DisplayName("하나의 자동차 객체가 여러번 시도했을 때의 position 값 테스트 ")

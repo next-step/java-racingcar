@@ -14,8 +14,8 @@ public class RacingRecord {
         this.stringBuilder = new StringBuilder();
     }
 
-    public void print(int index) {
-        System.out.println(status.get(index));
+    public void print(CarName name, int index) {
+        System.out.println(name.initName() + " : " + status.get(index));
     }
 
     public void save(int position) {

@@ -2,20 +2,21 @@ package racinggame.car;
 
 import racinggame.strategy.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(Count count) {
-        this.cars = initCars(count);
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public static Cars manyOf(Count count) {
-        return new Cars(count);
+    public static Cars manyOf(List<Car> cars) {
+        return new Cars(cars);
     }
 
     public List<Car> getCars() {
@@ -28,13 +29,17 @@ public class Cars {
         }
     }
 
-    private List<Car> initCars(Count count) {
-        int length = count.getCount();
-        List<Car> list = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            list.add(new Car());
-        }
+    public String getWinner() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == getMax())
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+    }
 
-        return list;
+    private int getMax() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
