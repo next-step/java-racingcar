@@ -19,8 +19,8 @@ class RacingCars {
         return this.cars.size();
     }
 
-    public void goForward(int index, ForwardStrategy strategy) {
-        if(strategy.condition()) {
+    public void goForward(int index, ForwardConditionStrategy strategy) {
+        if(strategy.judgeCondition()) {
             return;
         }
         cars.set(index, cars.get(index) + DISPLAY_MARK);

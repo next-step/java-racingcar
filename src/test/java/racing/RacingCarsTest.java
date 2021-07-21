@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarsTest {
-    private final ForwardStrategy mockStrategy = BDDMockito.mock(NumberMoreThanFourStrategy.class);
+    private final ForwardConditionStrategy mockStrategy = BDDMockito.mock(NumberMoreThanFourConditionStrategy.class);
 
     private ArrayList<String> list;
 
@@ -37,7 +37,7 @@ public class RacingCarsTest {
     @Test
     @DisplayName("전진_테스트_조건은_참")
     void goForward() throws Exception {
-        BDDMockito.given(mockStrategy.condition()).willReturn(false);
+        BDDMockito.given(mockStrategy.judgeCondition()).willReturn(false);
         RacingCars racingCars = RacingCars.from(list);
         racingCars.goForward(0, mockStrategy);
         assertThat(racingCars.get(0)).isEqualTo("--");
@@ -46,7 +46,7 @@ public class RacingCarsTest {
     @Test
     @DisplayName("전진_테스트_조건은_거짓")
     void goForwardNot() throws Exception {
-        BDDMockito.when(mockStrategy.condition()).thenReturn(true);
+        BDDMockito.when(mockStrategy.judgeCondition()).thenReturn(true);
         RacingCars racingCars = RacingCars.from(list);
         racingCars.goForward(0, mockStrategy);
         assertThat(racingCars.get(0)).isEqualTo("-");
