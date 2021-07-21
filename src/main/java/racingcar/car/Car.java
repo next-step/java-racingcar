@@ -5,8 +5,8 @@ import racingcar.strategy.MoveStrategy;
 import java.util.Objects;
 
 public class Car {
+    private final String name;
     private int position;
-    private String name;
 
     private Car(String name) {
         this.position = 0;
@@ -23,6 +23,10 @@ public class Car {
 
     public int currentPosition() {
         return position;
+    }
+
+    public String name() {
+        return name;
     }
 
     public void move(MoveStrategy moveStrategy) {
