@@ -12,12 +12,12 @@ public class StringUtilsTest {
     @NullAndEmptySource
     @ValueSource(strings = {"", "    ", "\t", "\n"})
     void null_or_empty(String input) {
-        assertThat(StringUtils.isNullOrEmpty(input)).isTrue();
+        assertThat(StringUtils.isNullOrBlank(input)).isTrue();
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "1 + 2", "2 + 3 * 4 / 2"})
     void valid(String input) {
-        assertThat(StringUtils.isNullOrEmpty(input)).isFalse();
+        assertThat(StringUtils.isNullOrBlank(input)).isFalse();
     }
 }
