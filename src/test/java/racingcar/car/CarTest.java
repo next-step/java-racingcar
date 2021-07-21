@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.helper.Fixture;
 import racingcar.strategy.RandomMoveStrategy;
 
@@ -17,10 +18,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("자동차 클래스 테스트")
 class CarTest {
 
-    @DisplayName("자동차는 MoveStrategy 를 가지고 초기화 한다.")
-    @Test
-    void initWithMoveStrategy() {
-        assertThat(Car.newInstance()).isNotNull();
+    @DisplayName("자동차는 이름을 부여할 수 있다.")
+    @ValueSource(strings = {"nok", "cha", "x"})
+    @ParameterizedTest
+    void initWithMoveStrategy(String name) {
+        assertThat(Car.from(name)).isNotNull();
     }
 
     @DisplayName("MoveStrategy 가 true 일 경우 자동차는 +1 만큼 이동한다.")
