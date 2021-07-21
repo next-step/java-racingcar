@@ -5,6 +5,7 @@ import static racing.RacingGameScanner.*;
 
 public class RacingGameRunner {
     public static void main(String[] args) {
-        print(RacingGame.from(enter()).run());
+        ForwardStrategy strategy = new NumberMoreThanFour();
+        print(RacingGame.from(strategy, enter()).run());
     }
 }

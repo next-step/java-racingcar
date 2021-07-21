@@ -6,20 +6,22 @@ class RacingGame {
     private static final String BLANK = "";
 
     private final RacingCars racingCars;
+    private final ForwardStrategy strategy;
 
     private int stageCount;
 
-    private RacingGame(int carCount, int stageCount) {
+    private RacingGame(ForwardStrategy strategy, int carCount, int stageCount) {
         ArrayList<String> stringArrayList = new ArrayList<>();
         for(int i = 0; i < carCount; i++) {
             stringArrayList.add(BLANK);
         }
         this.racingCars = RacingCars.from(stringArrayList);
         this.stageCount = stageCount;
+        this.strategy = strategy;
     }
 
-    public static RacingGame from(int[] condition) {
-        return new RacingGame(condition[0], condition[1]);
+    public static RacingGame from(ForwardStrategy strategy, int[] condition) {
+        return new RacingGame(strategy, condition[0], condition[1]);
     }
 
     private StringBuilder sb;
@@ -39,7 +41,7 @@ class RacingGame {
 
     private void turnAround() {
         for(int index = 0; index < racingCars.size(); index++) {
-            racingCars.goForward(index, RandomNumberGenerator.generate());
+            racingCars.goForward(index, strategy);
             sb.append(racingCars.get(index)).append("\n");
         }
     }

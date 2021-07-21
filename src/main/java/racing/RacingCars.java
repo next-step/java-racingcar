@@ -19,8 +19,8 @@ class RacingCars {
         return this.cars.size();
     }
 
-    public void goForward(int index, int randomNumber) {
-        if(!isNumberMoreThanFour(randomNumber)) {
+    public void goForward(int index, ForwardStrategy strategy) {
+        if(strategy.condition()) {
             return;
         }
         cars.set(index, cars.get(index) + DISPLAY_MARK);

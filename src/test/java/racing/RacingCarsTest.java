@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarsTest {
+    private final ForwardStrategy strategy = new NumberMoreThanFour();
+
     private ArrayList<String> list;
 
     @BeforeEach
@@ -35,7 +37,7 @@ public class RacingCarsTest {
     @DisplayName("전진_테스트_조건은_참")
     void goForward() throws Exception {
         RacingCars racingCars = RacingCars.from(list);
-        racingCars.goForward(0, 4);
+        racingCars.goForward(0, strategy);
         assertThat(racingCars.get(0)).isEqualTo("--");
     }
 
@@ -43,7 +45,7 @@ public class RacingCarsTest {
     @DisplayName("전진_테스트_조건은_거짓")
     void goForwardNot() throws Exception {
         RacingCars racingCars = RacingCars.from(list);
-        racingCars.goForward(0, 3);
+        racingCars.goForward(0, strategy);
         assertThat(racingCars.get(0)).isEqualTo("-");
     }
 
