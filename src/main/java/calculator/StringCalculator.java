@@ -8,6 +8,20 @@ public class StringCalculator {
 
     static int answer = 0;
 
+    public enum Operator {
+        ADD("+"), SUBTRACT("-"), MULTIPLY("*"), DIVIDE("/");
+
+        private String operator;
+
+        private Operator(String operator) {
+            this.operator = operator;
+        }
+
+        public String getOperator() {
+            return operator;
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine();
@@ -15,48 +29,67 @@ public class StringCalculator {
     }
 
     public static int calculate(String input) {
-        String[] splitInput = input.split(" ");
-        for (int i = 0; i < splitInput.length; i++) {
-            if (i == splitInput.length - 1) {
+
+        if (input == null || input.equals(""))
+            throw new IllegalArgumentException();
+
+        String[] inputArray = input.split(" ");
+
+        for (int i = 0; i < inputArray.length; i++) {
+
+            if (i == inputArray.length - 1)
                 break;
-            } else if (i == 0) {
-                answer = Integer.parseInt(splitInput[i]);
+
+            String inputElement = inputArray[i];
+            String postElement = inputArray[i + 1];
+
+            if (i == 0) {
+                answer = toInt(inputElement);
                 continue;
             }
-            String element = splitInput[i];
-            switch (element) {
-                case "+":
-                    add(splitInput[i+1]);
-                    break;
-                case "-":
-                    subtract(splitInput[i+1]);
-                    break;
-                case "*":
-                    multiply(splitInput[i+1]);
-                    break;
-                case "/":
-                    divide(splitInput[i+1]);
-                    break;
-                default:
-                    break;
+
+            if (inputElement.equals(Operator.ADD.getOperator())) {
+                add(postElement);
+                i++;
+                continue;
             }
+            if (inputElement.equals(Operator.SUBTRACT.getOperator())) {
+                subtract(postElement);
+                i++;
+                continue;
+            }
+            if (inputElement.equals(Operator.MULTIPLY.getOperator())) {
+                multiply(postElement);
+                i++;
+                continue;
+            }
+            if (inputElement.equals(Operator.DIVIDE.getOperator())) {
+                i++;
+                divide(postElement);
+                continue;
+            }
+            throw new IllegalArgumentException();
         }
         return answer;
     }
 
-    public static int add(String input) {
-        return answer += Integer.parseInt(input);
+    public static int toInt(String inputElement) {
+        return Integer.parseInt(inputElement);
     }
 
-    public static int subtract(String input) {
-        return answer -= Integer.parseInt(input);
+    public static int add(String postElement) {
+        return answer += toInt(postElement);
     }
 
-    public static int multiply(String input) {
-        return answer *= Integer.parseInt(input);
+    public static int subtract(String postElement) {
+        return answer -= toInt(postElement);
     }
 
-    public static int divide(String input) {
-        return answer /= Integer.parseInt(input);
+    public static int multiply(String postElement) {
+        return answer *= toInt(postElement);
+    }
+
+    public static int divide(String postElement) {
+        return answer /= toInt(postElement);
     }
 }
