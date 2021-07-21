@@ -1,16 +1,31 @@
 package racingcar.car;
 
+import calculator.utils.StringUtils;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.Objects;
 
 public class Car {
+    private static final int NAME_LIMIT = 5;
+
     private final String name;
     private int position;
 
     private Car(String name) {
+        validate(name);
+
         this.position = 0;
         this.name = name;
+    }
+
+    private void validate(String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new IllegalArgumentException("Car name can't be null or empty value");
+        }
+
+        if (name.length() > NAME_LIMIT) {
+            throw new IllegalArgumentException("Car name must equal or less than " + NAME_LIMIT);
+        }
     }
 
     public static Car newInstance() {
