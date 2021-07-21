@@ -64,7 +64,7 @@ class RandomMoveStrategyTest {
     @ParameterizedTest
     @MethodSource
     void isMovableThrowExceptionWhenValueOutOfRange(Random random) {
-        assertThatThrownBy(() -> RandomMoveStrategy.from(random).isMovable()).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> RandomMoveStrategy.from(random).isMovable()).isInstanceOf(IllegalArgumentException.class);
     }
 
     private static Stream<Arguments> isMovableThrowExceptionWhenValueOutOfRange() {
