@@ -7,12 +7,13 @@ public class Car {
 
     private static final String RACE_STATUS_STRING = "-";
     private static final int MOVABLE_NUMBER = 4;
+    private static final int STARTING_POSITION = 0;
     private int position;
     private final List<String> status;
     private final StringBuilder stringBuilder;
 
     public Car() {
-        position = 0;
+        position = STARTING_POSITION;
         status = new ArrayList<>();
         stringBuilder = new StringBuilder();
     }

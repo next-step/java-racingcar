@@ -1,8 +1,6 @@
 package racinggame.car;
 
 import racinggame.util.RandomNumber;
-import racinggame.util.Validator;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,20 +9,12 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int count) {
-        if (!Validator.isPositiveNumber(count)) {
-            throw new IllegalArgumentException("시도할 회수는 0보다 큰 숫자여야 합니다.");
-        }
+    public Cars(Count count) {
         this.cars = initCars(count);
     }
 
-    private List<Car> initCars(int count) {
-        List<Car> list = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            list.add(new Car());
-        }
-
-        return list;
+    public static Cars manyOf(Count count) {
+        return new Cars(count);
     }
 
     public List<Car> getCars() {
@@ -35,5 +25,15 @@ public class Cars {
         for (Car car : cars) {
             car.race(randomNumber.createBetweenZeroToNine());
         }
+    }
+
+    private List<Car> initCars(Count count) {
+        int length = count.getCount();
+        List<Car> list = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            list.add(new Car());
+        }
+
+        return list;
     }
 }

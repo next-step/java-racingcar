@@ -9,10 +9,14 @@ public class RacingGame {
     private final Count num;
     private final RandomNumber randomNumber;
 
-    public RacingGame(Cars cars, Count num) {
+    private RacingGame(Cars cars, Count num) {
         this.cars = cars;
         this.num = num;
         this.randomNumber = new RandomNumber();
+    }
+
+    public static RacingGame of(int carNumber, int countNumber) {
+        return new RacingGame(Cars.manyOf(Count.of(carNumber)), Count.of(countNumber));
     }
 
     public ResultView play() {
