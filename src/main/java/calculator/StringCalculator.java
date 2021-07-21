@@ -1,17 +1,12 @@
 package calculator;
 
-import calculator.exception.DivideByZeroException;
 import calculator.exception.InputBlankException;
-import calculator.exception.InvalidOperatorException;
 
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class StringCalculator {
     private Deque<String> calculateElements;
-
-    static private String[] operatorList = {"+", "-", "*", "/"};
 
     public StringCalculator(String input) {
         calculateElements = new LinkedList<>();
