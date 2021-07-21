@@ -7,34 +7,15 @@ import static study.calculator.Common.*;
 
 public class CalculatorRemake {
 
-    public static int getResult(List<String> values, List<String> operationList) {
+    public static int getResult(List<String> valueAndOperations) {
 
-        int accumulateNumber = 0;
+        int accumulateNumber = Integer.parseInt(valueAndOperations.get(0));
 
-        for(int j = 0; j< values.size(); j++){
-            accumulateNumber = calculateNumber(Integer.parseInt(values.get(j)), operationList, j, accumulateNumber);
+        for(int j = 1; j< valueAndOperations.size(); j+=2){
+            accumulateNumber = Operation.chooseOperation(valueAndOperations.get(j)).calculateNumbers(accumulateNumber,Integer.parseInt(valueAndOperations.get(j+1)));
         }
 
         return accumulateNumber;
-    }
-
-    private static int calculateNumber(int currentNumber, List<String> operationList,  int j, int accumulateNumber) {
-
-        if(j > 0) {
-
-            String mark = operationList.get(j-1);
-
-            //연산자 설정.
-            Operation operation = Operation.chooseOperation(mark);
-            //연산 처리 결과 리턴.
-            return operation.calculateNumbers(currentNumber, getNextNumber(currentNumber, j, accumulateNumber));
-        }
-        return currentNumber;
-    }
-
-    private static int getNextNumber(int currentNumber, int j, int stackNumber) {
-        int nextNumber = j > 1 ? stackNumber : currentNumber;
-        return nextNumber;
     }
 
     public static void start() {
@@ -42,25 +23,8 @@ public class CalculatorRemake {
 
         String[] words = inputValue().split(" ");
 
-        //연산자들을 모음.
-        List<String> operations = getFilterbyOperations(words);
+        System.out.println("result = " + getResult(Arrays.stream(words).collect(Collectors.toList())));
 
-        //연한될 변수값들을 모음.
-        List<String> values = getFilterbyValues(words);
-
-        System.out.println("result = " + getResult(values, operations));
     }
 
-    private static List<String> getFilterbyValues(String[] words) {
-        return Arrays.stream(words)
-                //뭔가 더 깔끔한 방법을 모색중.
-                .filter(s -> !s.equals("+") && !s.equals("-") && !s.equals("*") && !s.equals("/"))
-                .collect(Collectors.toList());
-    }
-
-    private static List<String> getFilterbyOperations(String[] words) {
-        return Arrays.stream(words)
-                .filter(s -> s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/"))
-                .collect(Collectors.toList());
-    }
 }
