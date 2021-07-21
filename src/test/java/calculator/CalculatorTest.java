@@ -30,4 +30,11 @@ class CalculatorTest {
                 .isEqualTo(result);
     }
 
+    @ParameterizedTest(name = "나눗셈 연산이 가능하다.")
+    @CsvSource(value = {"2 / 1, 2", "4 / -2, -2", "100 / 1, 100"})
+    public void divisionTest(String input, int result) {
+        assertThat(calculator.calculate(input))
+                .isEqualTo(result);
+    }
+
 }

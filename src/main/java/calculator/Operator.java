@@ -6,7 +6,9 @@ import java.util.function.BinaryOperator;
 public enum Operator {
     ADDITION("+", (first, second) -> first + second),
     SUBTRACTION("-", (first, second) -> first - second),
-    MULTIPLICATION("*", (first, second) -> first * second);
+    MULTIPLICATION("*", (first, second) -> first * second),
+    DIVISION("/", (first, second) -> first / second),
+    ;
 
     private final String value;
     private final BinaryOperator<Integer> operator;

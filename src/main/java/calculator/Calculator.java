@@ -2,10 +2,10 @@ package calculator;
 
 public class Calculator {
 
-    public static final String INPUT_STRING_DELIMITER = " ";
-    public static final int FIRST_NUMBER_INDEX = 0;
-    public static final int SECOND_NUMBER_INDEX = 2;
-    public static final int OPERATOR_INDEX = 1;
+    private static final String INPUT_STRING_DELIMITER = " ";
+    private static final int FIRST_NUMBER_INDEX = 0;
+    private static final int SECOND_NUMBER_INDEX = 2;
+    private static final int OPERATOR_INDEX = 1;
 
     public int calculate(String input) {
         String[] splitInput = input.split(INPUT_STRING_DELIMITER);

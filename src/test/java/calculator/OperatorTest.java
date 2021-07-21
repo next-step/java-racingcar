@@ -21,10 +21,17 @@ class OperatorTest {
                 .isEqualTo(result);
     }
 
-    @ParameterizedTest(name = "SUBTRACTION 타입 연산 테스트")
+    @ParameterizedTest(name = "MULTIPLICATION 타입 연산 테스트")
     @CsvSource(value = {"1,2,2", "5,-3,-15", "100,0,0"})
     public void multiplicationTest(int first, int second, int result) {
         assertThat(Operator.MULTIPLICATION.operate(first, second))
+                .isEqualTo(result);
+    }
+
+    @ParameterizedTest(name = "DIVISION 타입 연산 테스트")
+    @CsvSource(value = {"2,1,2", "6,-3,-2", "100,1,100"})
+    public void divisionTest(int first, int second, int result) {
+        assertThat(Operator.DIVISION.operate(first, second))
                 .isEqualTo(result);
     }
 
