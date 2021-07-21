@@ -1,8 +1,9 @@
 package step4.model;
 
-import step4.move.BasicMoveStrategy;
+import step4.move.MovableStrategy;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,23 +14,30 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(int carCount) {
+    static public Cars of(String names) {
+        String[] nameArr = splitNames(names);
+        AtomicInteger index = new AtomicInteger();
+
         return new Cars(
-            Stream.generate(() -> new Car(new BasicMoveStrategy()))
-                .limit(carCount)
+            Stream.generate(() -> new Car(nameArr[index.getAndIncrement()]))
+                .limit(nameArr.length)
                 .collect(Collectors.toList())
         );
     }
 
-    public void move() {
-        cars.forEach(Car::move);
+    static public String[] splitNames(String name) {
+        return name.split(",");
+    }
+
+    public void move(MovableStrategy movableStrategy) {
+        cars.forEach(car -> car.move(movableStrategy));
     }
 
     public int countOfCars() {
         return cars.size();
     }
 
-    public List<Integer> getPointOfCarsByTime(int time) {
+    public List<PointOfCar> getPointOfTime(int time) {
         return cars.stream()
             .map(car -> car.getPointOfTime(time))
             .collect(Collectors.toList());
