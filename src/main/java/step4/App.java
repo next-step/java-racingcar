@@ -1,6 +1,7 @@
 package step4;
 
 
+import step4.move.BasicMoveStrategy;
 import step4.game.Game;
 import step4.game.GameDto;
 import step4.view.InputView;
@@ -11,8 +12,8 @@ public class App {
         GameDto gameDto = InputView.initGameEnv();
 
         Game game = gameDto.createGame();
-        game.run();
+        game.run(new BasicMoveStrategy());
 
-        ResultView.showResult(game);
+        ResultView.of().showResult(game);
     }
 }
