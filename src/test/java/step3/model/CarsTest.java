@@ -33,7 +33,7 @@ class CarsTest {
         assertThat(cars.getCars())
                 .hasSize(3)
                 .extracting(Car::getPosition)
-                .isEqualTo(0);
+                .isNotEqualTo(0);
     }
 
 

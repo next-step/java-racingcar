@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cars {
 
-    private final int RANDOM_BOUND = 4;
+    private final int RANDOM_BOUND = 10;
     private List<Car> cars;
 
     public void makeCars(int carCount) {
@@ -20,8 +20,6 @@ public class Cars {
     }
 
     public void moveCars() {
-        for(Car car : cars){
-            car.move(RandomFactory.getRandomInt(RANDOM_BOUND));
-        }
+        cars.stream().forEach(car -> car.move(RandomFactory.getRandomInt(RANDOM_BOUND)));
     }
 }

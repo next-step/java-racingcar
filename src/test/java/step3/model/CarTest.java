@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
@@ -35,5 +36,14 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
+    @DisplayName("차 움직임 음수값")
+    @Test
+    void errorMoveCar(){
+        int errorMove = -1;
+
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> car.move(errorMove)
+        );
+    }
 
 }
