@@ -23,4 +23,11 @@ class CalculatorTest {
                 .isEqualTo(result);
     }
 
+    @ParameterizedTest(name = "곱셈 연산이 가능하다.")
+    @CsvSource(value = {"2 * 1, 2", "4 * -5, -20", "100 * 0, 0"})
+    public void multiplicationTest(String input, int result) {
+        assertThat(calculator.calculate(input))
+                .isEqualTo(result);
+    }
+
 }
