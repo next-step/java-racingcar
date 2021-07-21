@@ -1,6 +1,6 @@
 package racing;
 
-public class NumberMoreThanFour implements ForwardStrategy {
+public class NumberMoreThanFourStrategy implements ForwardStrategy {
     @Override
     public boolean condition() {
         return !(RandomNumberGenerator.generate() >= 4);

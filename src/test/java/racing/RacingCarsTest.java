@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarsTest {
-    private final ForwardStrategy mockStrategy = BDDMockito.mock(NumberMoreThanFour.class);
+    private final ForwardStrategy mockStrategy = BDDMockito.mock(NumberMoreThanFourStrategy.class);
 
     private ArrayList<String> list;
 
