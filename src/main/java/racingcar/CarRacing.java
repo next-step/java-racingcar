@@ -48,7 +48,7 @@ public class CarRacing {
         return cars.getCarDtos();
     }
 
-    public boolean leader() {
-        return false;
+    public List<String> getLeaders() {
+        return cars.getLeaders();
     }
 }

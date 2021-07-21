@@ -20,5 +20,7 @@ public class ConsoleController {
             carRacing.race(RandomMoveStrategy.DEFAULT_MOVE_STRATEGY);
             ResultView.printState(carRacing.currentState());
         }
+
+        ResultView.printWinners(carRacing.getLeaders());
     }
 }
