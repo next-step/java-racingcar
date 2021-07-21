@@ -31,7 +31,7 @@ public class ResultTest {
 
     @ParameterizedTest
     @CsvSource(value = {"a,b,c:0", "a,b,c,d:0", "a:0"}, delimiter = ':')
-    @DisplayName("움직인 사람이 없는 경우 우승자는 없음")
+    @DisplayName("게임이 실질적으로 시작되지 않은 경우 우승자는 없음")
     public void gameWithoutMove(String names, int expected) {
         //given
         Cars cars = Cars.of(names);
