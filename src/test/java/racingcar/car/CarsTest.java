@@ -6,10 +6,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import racingcar.CarRacing;
 import racingcar.helper.Fixture;
 import racingcar.strategy.MoveStrategy;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -56,13 +56,13 @@ class CarsTest {
     @DisplayName("자동차 그룹에서 가장 앞서있는 리더를 리턴한다.")
     @MethodSource
     @ParameterizedTest
-    void leaderCarOfCars(int totalRound, int numberOfCars, MoveStrategy moveStrategy, List<String> winners) {
+    void leaderCarOfCars(int totalRound, int numberOfCars, MoveStrategy moveStrategy, List<String> leaders) {
         Cars cars = Fixture.testCars(numberOfCars);
 
         IntStream.range(0, totalRound)
                 .forEach(i -> cars.moveCars(moveStrategy));
 
-        assertThat(cars.getLeaders()).isEqualTo(winners);
+        assertThat(cars.getLeaders()).containsAll(leaders);
     }
 
     private static Stream<Arguments> leaderCarOfCars() {
@@ -71,19 +71,19 @@ class CarsTest {
                         10,
                         2,
                         new TrueFalseStrategy(),
-                        new String[] {"0"}
+                        Arrays.asList("0")
                 ),
                 Arguments.of(
                         10,
                         3,
-                        new TrueFalseStrategy(),
-                        new String[] {"0", "1"}
+                        new TrueTrueFalseStrategy(),
+                        Arrays.asList("0", "1")
                 ),
                 Arguments.of(
                         10,
                         10,
                         new TrueFalseStrategy(),
-                        new String[] {"0", "2", "4", "6", "8"}
+                        Arrays.asList("0", "2", "4", "6", "8")
                 )
         );
     }
@@ -93,7 +93,16 @@ class CarsTest {
 
         @Override
         public boolean isMovable() {
-            return ++count / 2 == 0;
+            return ++count % 2 != 0;
+        }
+    }
+
+    private static class TrueTrueFalseStrategy implements MoveStrategy {
+        private int count;
+
+        @Override
+        public boolean isMovable() {
+            return ++count % 3 != 0;
         }
     }
 }
