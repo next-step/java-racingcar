@@ -7,19 +7,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
 
 class OperationUtilTest {
 
     @Test
     @DisplayName("(operate) 두 숫자의 합을 구하기")
     void add() {
-        int num1 = 1;
-        int num2 = 2;
+        int leftNum = 1;
+        int rightNum = 2;
         String operator = "+";
         int expectedResult = 3;
 
-        int actualResult = OperationUtil.operate(num1, operator, num2);
+        int actualResult = OperationUtil.operate(leftNum, operator, rightNum);
 
         assertThat(actualResult).isEqualTo(expectedResult);
 
@@ -29,12 +28,12 @@ class OperationUtilTest {
     @Test
     @DisplayName("(operate) 두 숫자의 차를 구하기")
     void subtract() {
-        int num1 = 4;
-        int num2 = 5;
+        int leftNum = 4;
+        int rightNum = 5;
         String operator = "-";
         int expectedResult = -1;
 
-        int actualResult = OperationUtil.operate(num1, operator, num2);
+        int actualResult = OperationUtil.operate(leftNum, operator, rightNum);
 
         assertThat(actualResult).isEqualTo(expectedResult);
 
@@ -44,12 +43,12 @@ class OperationUtilTest {
     @Test
     @DisplayName("(operate) 두 숫자의 곱을 구하기")
     void multiply() {
-        int num1 = 3;
-        int num2 = 2;
+        int leftNum = 3;
+        int rightNum = 2;
         String operator = "*";
         int expectedResult = 6;
 
-        int actualResult = OperationUtil.operate(num1, operator, num2);
+        int actualResult = OperationUtil.operate(leftNum, operator, rightNum);
 
         assertThat(actualResult).isEqualTo(expectedResult);
 
@@ -59,12 +58,12 @@ class OperationUtilTest {
     @Test
     @DisplayName("(opearte) 두 숫자를 나눈 몫을 구하기")
     void divide() {
-        int num1 = 5;
-        int num2 = 2;
+        int leftNum = 5;
+        int rightNum = 2;
         String operator = "/";
         int expectedResult = 2;
 
-        int actualResult = OperationUtil.operate(num1, operator, num2);
+        int actualResult = OperationUtil.operate(leftNum, operator, rightNum);
 
         assertThat(actualResult).isEqualTo(expectedResult);
 
@@ -73,12 +72,12 @@ class OperationUtilTest {
     @Test
     @DisplayName("(operate) 알수없는 연산자(@)가 입력된 경우, 예외를 던진다.")
     void unknown_operator() {
-        int num1 = 5;
-        int num2 = 2;
+        int leftNum = 5;
+        int rightNum = 2;
         String operator = "@";
 
         assertThatThrownBy(() -> {
-            OperationUtil.operate(num1, operator, num2);
+            OperationUtil.operate(leftNum, operator, rightNum);
         }).isInstanceOf(IllegalArgumentException.class).hasMessage("사칙연산 기호가 아닙니다.");
     }
 
