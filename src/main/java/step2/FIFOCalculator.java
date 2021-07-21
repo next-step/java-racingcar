@@ -3,29 +3,31 @@ package step2;
 public class FIFOCalculator {
     private String rawInput;
 
-    public String getRawInput() { return this.rawInput; }
-
     public int add(int num1, int num2) {
-        return 1337;
+        return num1 + num2;
     }
 
     public int subtract(int num1, int num2) {
-        return 1337;
+        return num1 - num2;
     }
 
     public int multiply(int num1, int num2) {
-        return 1337;
+        return num1 * num2;
     }
 
     public int divide(int num1, int num2) {
-        return 1337;
+        return num1 / num2;
     }
 
     public boolean validateInput() {
-        return true;
-    }
+        if (rawInput == null || rawInput.trim().equals("")) {
+            throw new IllegalArgumentException();
+        }
 
-    public void readInput() {
-        rawInput = "empty";
+        if (!rawInput.replaceAll(" ", "").matches("^[0-9+\\-*/]+$")) {
+            throw new IllegalArgumentException();
+        }
+
+        return true;
     }
 }

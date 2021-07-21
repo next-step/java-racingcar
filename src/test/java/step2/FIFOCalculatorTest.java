@@ -57,12 +57,16 @@ public class FIFOCalculatorTest {
     }
 
     @Test
-    @DisplayName("입력 값이 null 이거나 공백 문자인 경우 테스트")
+    @DisplayName("입력 값이 null 이거나 공백 문자인 경우 예외 발생 테스트")
     void nullOrBlankInputTest() {
         try {
             Field privateField = calculator.getClass().getDeclaredField("rawInput");
 
             privateField.setAccessible(true);
+            privateField.set(calculator, "1");
+
+            assertThat(calculator.validateInput()).isTrue();
+
             privateField.set(calculator, null);
 
             assertThatExceptionOfType(IllegalArgumentException.class)
@@ -78,12 +82,15 @@ public class FIFOCalculatorTest {
     }
 
     @Test
-    @DisplayName("입력 값이 허용되지 않은 기호를 포함하는 경우 테스트")
-    void unexpectedInputStringTest() {
+    @DisplayName("입력 값이 허용되지 않은 기호를 포함하는 경우 예외 발생 테스트")
+    void illegalInputStringTest() {
         try {
             Field privateField = calculator.getClass().getDeclaredField("rawInput");
 
             privateField.setAccessible(true);
+            privateField.set(calculator, "1 + 1 - 1 * 1 / 1");
+
+            assertThat(calculator.validateInput()).isTrue();
 
             privateField.set(calculator, "1 & 1 + 1 = 1");
 
