@@ -12,4 +12,8 @@ public class SimpleCalculator {
 	public String minus(String s) {
 		return (selectOperand(s, 0) - selectOperand(s, 2)) + "";
 	}
+
+	public String multiply(String s) {
+		return (selectOperand(s, 0) * selectOperand(s, 2)) + "";
+	}
 }
