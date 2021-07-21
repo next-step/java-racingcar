@@ -2,8 +2,9 @@ package calculator;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 class CalculatorTest {
 
@@ -35,6 +36,14 @@ class CalculatorTest {
     public void divisionTest(String input, int result) {
         assertThat(calculator.calculate(input))
                 .isEqualTo(result);
+    }
+
+    @ParameterizedTest(name = "입력 값이 null이거나 빈 공백 문자일 경우 예외가 발생한다.")
+    @NullAndEmptySource
+    public void invalidInputTest(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate(input))
+                .withMessageContaining(String.format("입력 값이 유효하지 않습니다. %s", input));
     }
 
 }
