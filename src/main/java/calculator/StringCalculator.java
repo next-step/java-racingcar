@@ -1,6 +1,5 @@
 package calculator;
 
-import calculator.utils.CalculatorUtil;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,13 +16,11 @@ public class StringCalculator {
 
 
     public void checkValidity(String[] expressions) {
-        int expressionLen = expressions.length;
-
-        if(expressionLen % 2 == 0){
+        if(expressions.length % 2 == 0){
             throw new IllegalArgumentException("유효한 연산식이 아닙니다.");
         }
 
-        for (int i = 0; i < expressionLen; i++) {
+        for (int i = 0; i < expressions.length; i++) {
 
             if (i % 2 == 0) {
                 if(!isOperand(expressions[i])){
@@ -69,7 +66,7 @@ public class StringCalculator {
         for (int i = 0; i < operatorList.size(); i++) {
             String operator = operatorList.get(i);
             int operand = operandList.get(i+1);
-            result = CalculatorUtil.calculate(operator, result, operand);
+            result = Operator.operation(operator, result, operand);
         }
 
         return result;
