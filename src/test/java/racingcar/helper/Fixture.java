@@ -1,6 +1,7 @@
 package racingcar.helper;
 
 import racingcar.car.Car;
+import racingcar.car.Cars;
 import racingcar.strategy.MoveStrategy;
 
 public class Fixture {
@@ -11,5 +12,9 @@ public class Fixture {
 
     public static Car testCar() {
         return Car.from("TEST");
+    }
+
+    public static Cars testCars() {
+        return Cars.init("nok", "cha", "x", "test", "cars");
     }
 }

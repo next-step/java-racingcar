@@ -29,7 +29,7 @@ public class Car {
     }
 
     public static Car newInstance() {
-        return new Car("");
+        return new Car("mig");
     }
 
     public static Car from(String name) {
