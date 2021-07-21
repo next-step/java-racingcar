@@ -35,7 +35,7 @@ class OperationTest {
         divide = Operation.DIVIDE.calculate(7, 3);
         assertThat(divide).isEqualTo(2);
     }
-    @DisplayName("공백 \"\" 을 입력하면 NOTHING 값 출력")
+    @DisplayName("공백 \"\" 을 입력하면 NOTHING 값 출력한다.")
     @Test
     void tesetNull() {
 //        assertThat(Operation.of("#")).isNull();
