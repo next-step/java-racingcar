@@ -2,13 +2,13 @@ package step4.view;
 
 import step4.game.Game;
 import step4.model.PointOfCar;
+import step4.model.Winners;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class ResultView {
-    private final List<String> winnerNames = new ArrayList<>();
+    private final Winners winners = new Winners();
 
     static public ResultView of() {
         return new ResultView();
@@ -41,13 +41,9 @@ public class ResultView {
         if (gameDidNotStarted(game)) return;
 
         List<PointOfCar> distancesOfTime = game.cars().getPointOfTime(game.countOfGame());
-        int max = distancesOfTime.stream()
-            .max(Comparator.comparingInt(PointOfCar::getPoint))
-            .map(PointOfCar::getPoint)
-            .orElse(Integer.MAX_VALUE);
+        int maxPoint = distancesOfTime.stream().max(Comparator.comparingInt(PointOfCar::getPoint)).map(PointOfCar::getPoint).orElse(Integer.MAX_VALUE);
 
-
-        distancesOfTime.forEach(pointOfCar -> checkWinner(pointOfCar, max));
+        distancesOfTime.forEach(pointOfCar -> checkWinner(pointOfCar, maxPoint));
     }
 
     private boolean gameDidNotStarted(Game game) {
@@ -55,14 +51,14 @@ public class ResultView {
     }
 
     private void printWinner() {
-        System.out.println(String.join(", ", winnerNames) + "가 최종 우승했습니다.");
+        System.out.println(winners.getWinnerNames() + "가 최종 우승했습니다.");
     }
 
-    public void checkWinner(PointOfCar distanceOfTime, int max) {
-        if (distanceOfTime.getPoint() >= max) winnerNames.add(distanceOfTime.getName());
+    public void checkWinner(PointOfCar distanceOfTime, int maxPoint) {
+        if (distanceOfTime.getPoint() >= maxPoint) winners.addWinner(distanceOfTime.getName());
     }
 
     public int getCountOfWinner() {
-        return winnerNames.size();
+        return winners.size();
     }
 }
