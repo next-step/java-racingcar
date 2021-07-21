@@ -52,14 +52,17 @@ public class StringCalculator implements Calculator {
             예를 들어 2 + 3 * 4 / 2와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
         */
         // 가장 앞쪽에 위치한 3개의 Element를 사용해 연산 후 결과로 바꾼다.
-        int num1 = elements.poll().toInt()
+        int leftNumber = elements.poll()
+                .toInt()
                 .orElseThrow(InvalidFormulaException::new);
-        Operator operator = elements.poll().toOperator()
+        Operator operator = elements.poll()
+                .toOperator()
                 .orElseThrow(InvalidFormulaException::new);
-        int num2 = elements.poll().toInt()
+        int rightNumber = elements.poll()
+                .toInt()
                 .orElseThrow(InvalidFormulaException::new);
 
-        int calResult = operator.calculation(num1, num2);
+        int calResult = operator.calculation(leftNumber, rightNumber);
         elements.addFirst(new CalculationElement(calResult));
     }
 
@@ -68,7 +71,8 @@ public class StringCalculator implements Calculator {
         while(elements.size() > 1) { // 마지막 하나의 숫자가 남을때 까지 연산
             exec();
         }
-        return elements.poll().toInt()
+        return elements.poll()
+                .toInt()
                 .orElseThrow(InvalidFormulaException::new);
     }
 }

@@ -28,9 +28,10 @@ public class CalculationElement {
         }
         // 요구 사항 :: 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
         this.operatorValue = Operator.of(input)
-                .orElseThrow(() -> new IllegalArgumentException(
-                        String.format("사칙연산 기호가 아닙니다. [%s]", input)
-                ));
+                .orElseThrow(() ->
+                        new IllegalArgumentException(
+                                String.format("사칙연산 기호가 아닙니다. [%s]", input)
+                        ));
     }
 
     private boolean isOperatorElement() {
