@@ -14,22 +14,26 @@ public class Calculator {
     }
 
     public int calculate(String inputStr) {
-        String[] inputArr = getInputArray(inputStr);
-        String operator, number1, number2;
-        for (int i = 0; i < inputArr.length - 2; i += 2) {
-            operator = inputArr[i + 1];
-            number1 = inputArr[i];
-            number2 = inputArr[i + 2];
-            Validator.checkCalculateValidation(operator, number1, number2);
+        String[] operandAndOperatorString = getInputArray(inputStr);
+        String operator;
+        String number1;
+        String number2;
+        for (int i = 0; i < operandAndOperatorString.length - 2; i += 2) {
+            operator = operandAndOperatorString[i + 1];
+            number1 = i == 0 ? operandAndOperatorString[i] : Integer.toString(result);
+            number2 = operandAndOperatorString[i + 2];
 
-            result = i == 0 ? Integer.parseInt(number1) : result;
-            calculateResult(operator, result, Integer.parseInt(number2));
+            calculateInOrderUsing(operator, number1, number2);
         }
-
         return result;
     }
 
-    private void calculateResult(String operator, int num1, int num2) {
+    private void calculateInOrderUsing(String operator, String number1, String number2) {
+        Validator.checkCalculateValidation(operator, number1, number2);
+
+        int num1 = Integer.parseInt(number1);
+        int num2 = Integer.parseInt(number2);
+
         if ("+".equals(operator)) {
             result = plus(num1, num2);
         }
@@ -57,7 +61,7 @@ public class Calculator {
     }
 
     public int devision(int num1, int num2) {
-        if (num1 == 0 || num2 == 0) {
+        if (num2 == 0) {
             throw new ArithmeticException("0으로는 연산이 불가합니다.");
         }
         return num1 / num2;
