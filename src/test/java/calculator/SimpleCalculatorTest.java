@@ -67,4 +67,10 @@ class SimpleCalculatorTest {
     void divideTest() {
         assertThat(sc.divide("10 / 2")).isEqualTo("5");
     }
+
+    @Test
+    @DisplayName("나눗셈의 경우 결과 값을 정수로 떨어지는 값인지 테스트")
+    void isEqualRemainderZero() {
+        
+    }
 }
