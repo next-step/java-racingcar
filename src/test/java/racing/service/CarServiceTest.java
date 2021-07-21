@@ -2,6 +2,9 @@ package racing.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,6 +24,25 @@ class CarServiceTest {
 		//then
 		assertThat(carService.carsCount()).isEqualTo(carCount);
 		assertThat(carService.getRepeatCount()).isEqualTo(repeatCount);
+	}
+
+	@Test
+	@DisplayName("생성된 모든 자동차를 10회 전진 후 상태가 변화하였는지 확인")
+	void move_car() throws Exception {
+		//given
+		int carCount = 3;
+		int repeatCount = 10;
+		CarService carService = new CarService(carCount, repeatCount);
+
+		//when
+		carService.moveCars();
+		List<Car> cars = carService.getCars();
+
+		//then
+		assertThat(cars)
+				.hasSize(3)
+				.extracting(Car::getForwardCount)
+				.isNotEqualTo(0);
 	}
 
 }
