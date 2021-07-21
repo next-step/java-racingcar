@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Car {
+public class CarRacingMain {
 
     private final Scanner scanner;
 
@@ -13,7 +13,7 @@ public class Car {
     private final String secondRequest = "시도할 회수는 몇 회 인가요?";
     private List<CarModel> carModelList;
 
-    public Car() {
+    public CarRacingMain() {
         this.scanner = new Scanner(System.in);
         this.carModelList = new ArrayList<>();
     }

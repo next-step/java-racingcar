@@ -8,13 +8,13 @@ import java.io.ByteArrayInputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CarTest {
+public class CarRacingMainTest {
 
-    private static Car car;
+    private static CarRacingMain car;
 
     void initTestSetup(String inputValue) {
         System.setIn(new ByteArrayInputStream(inputValue.getBytes()));
-        car = new Car();
+        car = new CarRacingMain();
     }
 
     @Test
