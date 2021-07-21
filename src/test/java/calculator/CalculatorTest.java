@@ -44,17 +44,9 @@ public class CalculatorTest {
     }
 
     @Test
-    @DisplayName("나눗셈 실패(0이 나눠졌을때) 테스트")
-    void devisionFailTest() {
-        assertThatThrownBy(() -> calculator.devision(0,3))
-                .isInstanceOf(ArithmeticException.class)
-                .hasMessage("0으로는 연산이 불가합니다.");
-    }
-
-    @Test
     @DisplayName("나눗셈 실패(0으로 나눴을때) 테스트")
-    void devisionByZeroTest() {
-        assertThatThrownBy(() -> calculator.devision(3,0))
+    void devisionFailTest() {
+        assertThatThrownBy(() -> calculator.devision(3, 0))
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessage("0으로는 연산이 불가합니다.");
     }
@@ -96,4 +88,5 @@ public class CalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("사칙연산 기호가 아닙니다.");
     }
+
 }
