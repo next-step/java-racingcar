@@ -1,17 +1,21 @@
 package util.calculator;
 
+import exception.InvalidFormulaException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import util.calculator.Calculator;
-import util.calculator.StringCalculator;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculationTest {
+    private static Calculator calculator;
+
+    @BeforeAll
+    public static void setUp() {
+        calculator = new StringCalculator();
+    }
     /*
         테스트할 수 있는 단위로 나누어 구현 목록을 만든다.
         덧셈
@@ -24,8 +28,7 @@ public class StringCalculationTest {
         반복적인 패턴을 찾아 반복문으로 구현한다.
     */
     public void stringCalTest(String input, int result) {
-        Calculator calculator = new StringCalculator(input);
-        int calResult = calculator.calculation();
+        int calResult = calculator.calculation(input);
         assertThat(calResult).isEqualTo(result);
     }
 
@@ -88,8 +91,8 @@ public class StringCalculationTest {
     }
 
     @ValueSource(strings = {
-            "9 / 2 * 2 ) 3",
-            "R / 3",
+            "9 % 2 * 2 ) 3",
+            "2 $ 3",
             "",
             " ",
             "  ",
@@ -97,7 +100,22 @@ public class StringCalculationTest {
     @DisplayName("IllegalArgumentException 테스트")
     @ParameterizedTest
     public void illegalArgumentExceptionTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> stringCalTest(input, -1));
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                stringCalTest(input, -1)
+        );
+    }
+
+    @ValueSource(strings = {
+            "R / 3",
+            "3 / ^",
+            "3 / 3 * 5 + -",
+    })
+    @DisplayName("InvalidFormulaException 테스트")
+    @ParameterizedTest
+    public void invalidFormulaException(String input) {
+        assertThatThrownBy(() ->
+                stringCalTest(input, -1)
+        ).isInstanceOf(InvalidFormulaException.class);
     }
 
     @ValueSource(strings = {
@@ -109,7 +127,8 @@ public class StringCalculationTest {
     @DisplayName("ArithmeticException 테스트")
     @ParameterizedTest
     public void arithmeticExceptionTest(String input) {
-        assertThatThrownBy(() -> stringCalTest(input, -1))
-                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() ->
+                stringCalTest(input, -1)
+        ).isInstanceOf(ArithmeticException.class);
     }
 }
