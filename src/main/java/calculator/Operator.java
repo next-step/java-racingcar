@@ -37,6 +37,6 @@ public enum Operator {
                 return operator;
             }
         }
-        throw new IllegalArgumentException("Invalid value : " + symbol);
+        return null;
     }
 }
