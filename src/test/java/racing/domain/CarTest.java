@@ -14,7 +14,7 @@ class CarTest {
 			"4,true",
 			"3,false"
 	})
-	void test(int randomValue, boolean expected) throws Exception {
+	void can_move_forward(int randomValue, boolean expected) throws Exception {
 		//given
 		Car car = new Car();
 
@@ -24,4 +24,5 @@ class CarTest {
 		//then
 		assertThat(b).isEqualTo(expected);
 	}
+
 }
