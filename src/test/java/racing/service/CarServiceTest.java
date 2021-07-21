@@ -6,8 +6,7 @@ import racing.domain.Car;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarServiceTest {
 
@@ -22,7 +21,7 @@ class CarServiceTest {
 		CarService carService = new CarService(carCount, repeatCount);
 
 		//then
-		assertThat(carService.carsCount()).isEqualTo(carCount);
+		assertThat(carService.getCars().size()).isEqualTo(carCount);
 		assertThat(carService.getRepeatCount()).isEqualTo(repeatCount);
 	}
 
@@ -40,7 +39,7 @@ class CarServiceTest {
 
 		//then
 		assertThat(cars)
-				.hasSize(3)
+				.hasSize(carCount)
 				.extracting(Car::getForwardCount)
 				.isNotEqualTo(0);
 	}

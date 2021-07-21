@@ -32,14 +32,8 @@ public class CarService {
 		return cars;
 	}
 
-	public int carsCount() {
-		return cars.size();
-	}
-
 	public int getRepeatCount() {
 		return repeatCount;
 	}
-
-
 
 }
