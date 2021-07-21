@@ -26,9 +26,9 @@ public class CalculatorTest {
         String numericExpression = null;
 
         // when, then
-        assertThatThrownBy(() -> Calculator.calculate(numericExpression))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("수식이 존재하지 않습니다.");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Calculator.calculate(numericExpression))
+                .withMessage("수식이 존재하지 않습니다.");
     }
 
     @DisplayName("입력 문자열이 빈 공백이면 Exception이 발생한다.")
@@ -38,9 +38,9 @@ public class CalculatorTest {
         String numericExpression = " ";
 
         // when, then
-        assertThatThrownBy(() -> Calculator.calculate(numericExpression))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("수식이 존재하지 않습니다.");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Calculator.calculate(numericExpression))
+                .withMessage("수식이 존재하지 않습니다.");
     }
 
     @DisplayName("0으로 나누면 Exception이 발생한다.")
@@ -50,9 +50,9 @@ public class CalculatorTest {
         String numericExpression = "3 / 0";
 
         // when, then
-        assertThatThrownBy(() -> Calculator.calculate(numericExpression))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("0으로 나눌 수 없습니다.");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Calculator.calculate(numericExpression))
+                .withMessage("0으로 나눌 수 없습니다.");
     }
 
     @DisplayName("사칙연산 기호가 아닐 경우 Exception이 발생한다.")
@@ -62,9 +62,9 @@ public class CalculatorTest {
         String numericExpression = "3 ^ 1";
 
         // when, then
-        assertThatThrownBy(() -> Calculator.calculate(numericExpression))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("존재하지 않는 부호입니다. (sign: ^)");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Calculator.calculate(numericExpression))
+                .withMessage("존재하지 않는 부호입니다. (sign: ^)");
     }
 
     @DisplayName("모든 사칙연산이 들어간 문자열에 대해 계산기가 정상 동작한다.")
