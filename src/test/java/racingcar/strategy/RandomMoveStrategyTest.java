@@ -49,7 +49,7 @@ class RandomMoveStrategyTest {
                     public int nextInt(int bound) {
                         return 10;
                     }
-                }, true),
+                }, false),
 
                 Arguments.of(new Random() {
                     @Override

@@ -26,8 +26,13 @@ public class RandomMoveStrategy implements MoveStrategy {
         }
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public boolean isMovable() {
-        return random.nextInt(RANDOM_LIMIT) >= MOVE_STANDARD;
+        int randomNumber = random.nextInt(RANDOM_LIMIT);
+
+        return randomNumber >= 0 &&
+                randomNumber < RANDOM_LIMIT &&
+                randomNumber >= MOVE_STANDARD;
     }
 }
