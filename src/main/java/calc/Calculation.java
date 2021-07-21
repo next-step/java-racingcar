@@ -1,5 +1,6 @@
 package calc;
 
+import calc.type.Operation;
 
 public class Calculation {
     public int calc(String formula) {
@@ -14,43 +15,16 @@ public class Calculation {
             if (i == 0) {
                 result = Integer.parseInt(formulaArr[i++]);
             }
-            String op = formulaArr[i++];
+            String operation = formulaArr[i++];
             int num = Integer.parseInt(formulaArr[i++]);
-            result = calculate(result, num, op);
+            result = calculate(result, num, operation);
         }
         System.out.println("result : "+ result);
         return result;
     }
 
-    public int calculate(int a, int b, String op) {
-        if (op.equals("+")) {
-            return add(a, b);
-        }
-        if (op.equals("-")) {
-            return sub(a, b);
-        }
-        if (op.equals("*")) {
-            return mul(a, b);
-        }
-        if (op.equals("/")) {
-            return div(a, b);
-        }
-        throw new IllegalArgumentException("not support operation");
+    public int calculate(int a, int b, String operation) {
+        return Operation.findByOperation(operation).calc(a, b);
     }
 
-    int add(int a, int b) {
-        return a + b;
-    }
-
-    int sub(int a, int b) {
-        return a - b;
-    }
-
-    int mul(int a, int b) {
-        return a * b;
-    }
-
-    int div(int a, int b) {
-        return a / b;
-    }
 }
