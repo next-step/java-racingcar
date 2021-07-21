@@ -1,80 +1,78 @@
 package study;
 
 import Calculater.*;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class stringCalTest {
-    Sum sum;
-    Sub sub;
-    Mul mul;
-    Div div;
-    CalculaterMain calMain;
+    Plus plus;
+    Subtract substract;
+    Multiply multiply;
+    Division division;
+    StringCalculaterExcuteClass calMain;
 
     @BeforeEach
     void setUp(){
-        sum = new Sum();
-        sub = new Sub();
-        mul = new Mul();
-        div = new Div();
-        calMain = new CalculaterMain();
+        plus = new Plus();
+        substract = new Subtract();
+        multiply = new Multiply();
+        division = new Division();
+        calMain = new StringCalculaterExcuteClass();
     }
 
     @Test
-    @DisplayName("빈 칸의 따라 문자나누기")
+    @DisplayName("빈 칸의 따라 문자나눈후 잘나뉘어져있는지 요소 찾기.")
     void emptySplit(){
-        String [] numberAndBuho = "2 + 3 * 4 / 2".split(" ");
-        assertThat(numberAndBuho).contains("2");
-        assertThat(numberAndBuho).contains("+");
-        assertThat(numberAndBuho).contains("3");
+        String [] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
+        assertThat(numberAndOperator).contains("2");
+        assertThat(numberAndOperator).contains("+");
+        assertThat(numberAndOperator).contains("3");
 
     }
 
     @Test
     @DisplayName("빼기 테스트")
-    void Sum(){
-        assertThat(sum.cal(1,2)).isEqualTo(3);
+    void plusTest(){
+
+        assertThat(plus.resultCalculater(1,2)).isEqualTo(3);
     }
     @Test
     @DisplayName("마이너스 테스트")
-    void Sub(){
-        assertThat(sub.cal(3,2)).isEqualTo(1);
+    void subTest(){
+        assertThat(substract.resultCalculater(3,2)).isEqualTo(1);
     }
 
     @Test
     @DisplayName("곱하기 테스트")
-    void Mul(){
-        assertThat(mul.cal(1,2)).isEqualTo(2);
+    void mulTest(){
+        assertThat(multiply.resultCalculater(1,2)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("나누기 테스트")
-    void Div(){
-        assertThat(div.cal(4,2)).isEqualTo(2);
+    void divTest(){
+        assertThat(division.resultCalculater(10,5)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("계산기 메인 더하기  테스트")
-    void sumFucTest(){
+    void plusMainTest(){
         assertThat(calMain.result("+",1,2)).isEqualTo(3);
     }
 
     @Test
     @DisplayName("문자열 반복문 계산")
     void repeatStringCal(){
-        String [] numberAndBuho = "2 + 3 * 4 / 2".split(" ");
+        String [] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
         int result =0;
-        for(int i=0 ; i<=numberAndBuho.length/2+2; i+=2){
+        for(int i=0 ; i<=numberAndOperator.length/2+2; i+=2){
             if(result == 0){
-                result = calMain.result(numberAndBuho[i+1] ,Integer.parseInt(numberAndBuho[i]),Integer.parseInt(numberAndBuho[i+2]));
+                result = calMain.result(numberAndOperator[i+1] , Integer.parseInt(numberAndOperator[i]), Integer.parseInt(numberAndOperator[i+2]));
             }else{
-                result = calMain.result(numberAndBuho[i+1] ,result,Integer.parseInt(numberAndBuho[i+2]));
+                result = calMain.result(numberAndOperator[i+1] ,result, Integer.parseInt(numberAndOperator[i+2]));
             }
         }
         assertThat(result).isEqualTo(10);
