@@ -1,36 +1,39 @@
-package calculator;
+package calculator.domain;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import utils.StringUtils;
 
 public class Calculator {
 
-    public static final String SPLIT_DELIMITER = " ";
+    public static final String SPACE = "\\s+";
 
     public static int calculate(String input) {
-        if (StringUtils.isNullOrEmpty(input)) {
+        if (StringUtils.isNullOrBlank(input)) {
             throw new IllegalArgumentException("입력값이 비어 있습니다.");
         }
         return calculate(splitTokens(input));
     }
 
     private static int calculate(List<String> tokens) {
-        int result = getElementFromTokensList(tokens, 0);
-        for (int i = 1; i < tokens.size(); i += 2) {
-            String operator = tokens.get(i);
-            int number = getElementFromTokensList(tokens, i + 1);
+        Queue<String> tokensQueue = new LinkedList<>(tokens);
+        int result = removeIntFromQueue(tokensQueue);
+        while (!tokensQueue.isEmpty()) {
+            String operator = tokensQueue.remove();
+            int number = removeIntFromQueue(tokensQueue);
             result = calculate(result, number, operator);
         }
         return result;
     }
 
-    private static int getElementFromTokensList(List<String> tokens, int i) {
-        return Integer.parseInt(tokens.get(i));
+    private static int removeIntFromQueue(Queue<String> tokensQueue) {
+        return Integer.parseInt(tokensQueue.remove());
     }
 
     private static List<String> splitTokens(String input) {
-        return Arrays.asList(input.split(SPLIT_DELIMITER));
+        return Arrays.asList(input.split(SPACE));
     }
 
     private static int calculate(int first, int second, String operator) {
@@ -48,7 +51,7 @@ public class Calculator {
     }
 
     private static void validateOperator(String operator) {
-        if (StringUtils.isNullOrEmpty(operator)) {
+        if (StringUtils.isNullOrBlank(operator)) {
             throw new IllegalArgumentException("연산자가 비어 있습니다.");
         }
         if (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator
