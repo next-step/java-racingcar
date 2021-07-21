@@ -53,4 +53,8 @@ public class Car {
             throw new IllegalArgumentException("MoveStrategy can't be null");
         }
     }
+
+    public boolean isSamePosition(int comparePosition) {
+        return currentPosition() == comparePosition;
+    }
 }

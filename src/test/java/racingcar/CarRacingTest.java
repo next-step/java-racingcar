@@ -71,48 +71,4 @@ class CarRacingTest {
 
         assertThat(carRacing.isRaceOver()).isTrue();
     }
-
-    @DisplayName("자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.")
-    @MethodSource
-    @ParameterizedTest
-    void carRacingHasWinner(int numberOfCars, int totalRound, MoveStrategy moveStrategy, List<String> winners) {
-        CarRacing carRacing = Fixture.testCarRacing(totalRound, numberOfCars);
-
-        IntStream.range(0, totalRound)
-                .forEach(i -> carRacing.race(moveStrategy));
-
-        assertThat(carRacing.leader()).isEqualTo(winners);
-    }
-
-    private static Stream<Arguments> carRacingHasWinner() {
-        return Stream.of(
-                Arguments.of(
-                        10,
-                        2,
-                        new TrueFalseStrategy(),
-                        new String[] {"0"}
-                ),
-                Arguments.of(
-                        10,
-                        3,
-                        new TrueFalseStrategy(),
-                        new String[] {"0", "1"}
-                ),
-                Arguments.of(
-                        10,
-                        10,
-                        new TrueFalseStrategy(),
-                        new String[] {"0", "2", "4", "6", "8"}
-                )
-        );
-    }
-
-    private static class TrueFalseStrategy implements MoveStrategy {
-        private int count;
-
-        @Override
-        public boolean isMovable() {
-            return ++count / 2 == 0;
-        }
-    }
 }

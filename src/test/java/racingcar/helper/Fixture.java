@@ -23,10 +23,20 @@ public class Fixture {
     }
 
     public static CarRacing testCarRacing(int totalRound, int numberOfCars) {
-        String[] names = IntStream.range(0, numberOfCars)
-                .mapToObj(String::valueOf)
-                .toArray(String[]::new);
+        String[] names = fromNumberToStringArray(numberOfCars);
 
         return CarRacing.init(RacingCarInitParam.of(totalRound, names));
+    }
+
+    public static Cars testCars(int numberOfCars) {
+        String[] names = fromNumberToStringArray(numberOfCars);
+
+        return Cars.init(names);
+    }
+
+    private static String[] fromNumberToStringArray(int number) {
+        return IntStream.range(0, number)
+                .mapToObj(String::valueOf)
+                .toArray(String[]::new);
     }
 }

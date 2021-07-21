@@ -6,9 +6,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import racingcar.CarRacing;
 import racingcar.helper.Fixture;
 import racingcar.strategy.MoveStrategy;
 
+import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,5 +51,49 @@ class CarsTest {
                 Arguments.of(Fixture.testCars(), Fixture.ALWAYS_MOVE_STRATEGY, 0, 1),
                 Arguments.of(Fixture.testCars(), Fixture.NEVER_MOVE_STRATEGY, 0, 0)
         );
+    }
+
+    @DisplayName("자동차 그룹에서 가장 앞서있는 리더를 리턴한다.")
+    @MethodSource
+    @ParameterizedTest
+    void leaderCarOfCars(int totalRound, int numberOfCars, MoveStrategy moveStrategy, List<String> winners) {
+        Cars cars = Fixture.testCars(numberOfCars);
+
+        IntStream.range(0, totalRound)
+                .forEach(i -> cars.moveCars(moveStrategy));
+
+        assertThat(cars.getLeaders()).isEqualTo(winners);
+    }
+
+    private static Stream<Arguments> leaderCarOfCars() {
+        return Stream.of(
+                Arguments.of(
+                        10,
+                        2,
+                        new TrueFalseStrategy(),
+                        new String[] {"0"}
+                ),
+                Arguments.of(
+                        10,
+                        3,
+                        new TrueFalseStrategy(),
+                        new String[] {"0", "1"}
+                ),
+                Arguments.of(
+                        10,
+                        10,
+                        new TrueFalseStrategy(),
+                        new String[] {"0", "2", "4", "6", "8"}
+                )
+        );
+    }
+
+    private static class TrueFalseStrategy implements MoveStrategy {
+        private int count;
+
+        @Override
+        public boolean isMovable() {
+            return ++count / 2 == 0;
+        }
     }
 }
