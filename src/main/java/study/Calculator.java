@@ -54,8 +54,16 @@ public class Calculator {
 	}
 
 	private void add(String str) {
-		if (isNum(str)) operands.add(Integer.valueOf(str));
-		else operators.add(str);
+		if (isNum(str)) {
+			operands.add(Integer.valueOf(str));
+		} else {
+			// 피연산자가 없이 연산자가 먼저 들어오면 예외 발생
+			if (operands.isEmpty()) {
+				throw new IllegalArgumentException("수식이 잘못되었습니다.");
+			}
+			
+			operators.add(str);
+		}
 	}
 
 	private boolean isNum(String str) {
