@@ -3,9 +3,12 @@ package util.calculator;
 import exception.InvalidFormulaException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import util.calculator.Calculator;
+import util.calculator.StringCalculator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -91,8 +94,8 @@ public class StringCalculationTest {
     }
 
     @ValueSource(strings = {
-            "9 % 2 * 2 ) 3",
-            "2 $ 3",
+            "9 / 2 * 2 ) 3",
+            "9 ^ 3",
             "",
             " ",
             "  ",
@@ -106,13 +109,14 @@ public class StringCalculationTest {
     }
 
     @ValueSource(strings = {
-            "R / 3",
-            "3 / ^",
-            "3 / 3 * 5 + -",
+            "5 / R",
+            "9 / W / 4 / 0",
+            "2 - 1 - Q / 0",
+            "2 / T + -"
     })
     @DisplayName("InvalidFormulaException 테스트")
     @ParameterizedTest
-    public void invalidFormulaException(String input) {
+    public void invalidFormulaExceptionTest(String input) {
         assertThatThrownBy(() ->
                 stringCalTest(input, -1)
         ).isInstanceOf(InvalidFormulaException.class);
