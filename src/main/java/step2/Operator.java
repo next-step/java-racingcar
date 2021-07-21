@@ -17,19 +17,19 @@ public enum Operator {
         this.operate = operate;
     }
 
+    public static Operator of(final String sign) {
+        return Arrays.stream(Operator.values())
+                .filter( operator -> operator.getSign().equals(sign))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException());
+    }
+
     public String getSign() {
         return sign;
     }
 
     public IntBinaryOperator getOperate() {
         return operate;
-    }
-
-    public static Operator of(final String sign) {
-        return Arrays.stream(Operator.values())
-                .filter( operator -> operator.getSign().equals(sign))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
     }
 
 
