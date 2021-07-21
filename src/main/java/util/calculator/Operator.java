@@ -3,8 +3,6 @@ package util.calculator;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.BiFunction;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
 
 public enum Operator {
     ADD("+", (leftNumber, rightNumber) -> leftNumber + rightNumber),
