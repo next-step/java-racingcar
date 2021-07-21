@@ -97,7 +97,9 @@ public class StringCalculationTest {
     @DisplayName("IllegalArgumentException 테스트")
     @ParameterizedTest
     public void illegalArgumentExceptionTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> stringCalTest(input, -1));
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                stringCalTest(input, -1)
+        );
     }
 
     @ValueSource(strings = {
@@ -109,7 +111,8 @@ public class StringCalculationTest {
     @DisplayName("ArithmeticException 테스트")
     @ParameterizedTest
     public void arithmeticExceptionTest(String input) {
-        assertThatThrownBy(() -> stringCalTest(input, -1))
-                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() ->
+                stringCalTest(input, -1)
+        ).isInstanceOf(ArithmeticException.class);
     }
 }
