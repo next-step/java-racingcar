@@ -39,4 +39,12 @@ class CarDtoTest {
         assertThat(carDto.getPosition()).isEqualTo(1);
     }
 
+    @DisplayName("전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.(뷰와 연관 되어있으므로 DTO가 이름을 가지고 있는지만 테스트)")
+    @Test
+    void carDtoHasName() {
+        Car car = Fixture.testCar();
+        CarDto carDto = CarDto.from(car);
+
+        assertThat(carDto.getName()).isEqualTo(car.name());
+    }
 }
