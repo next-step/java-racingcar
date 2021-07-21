@@ -14,11 +14,11 @@ public class CarRacingMain {
     public static void main(String args[]) {
         Scanner scanner = new Scanner(System.in);
         carModelList = new ArrayList<>();
-        printByRequest(firstRequest);
+        System.out.println(firstRequest);
         if (scanner.hasNext()) {
             createCarByNumber(intValueByScanner(scanner.next()));
         }
-        printByRequest(secondRequest);
+        System.out.println(secondRequest);
         if (scanner.hasNext()) {
             tryRacingByCar(intValueByScanner(scanner.next()));
         }
@@ -27,12 +27,8 @@ public class CarRacingMain {
 
     private static int intValueByScanner(String scannerValue) {
         int intValue = toInt(scannerValue);
-        printByRequest(scannerValue);
+        System.out.println(scannerValue);
         return intValue;
-    }
-
-    private static void printByRequest(String request) {
-        System.out.println(request);
     }
 
     private static int toInt(String inputValue) {
@@ -65,7 +61,7 @@ public class CarRacingMain {
         for (CarModel carModel : carModelList) {
             String carRaceResult = calculatorDistance(carModel.getRaceDistance());
             carModel.setRaceDistance(carRaceResult);
-            printByRequest(carModel.getRaceDistance());
+            System.out.println(carModel.getRaceDistance());
         }
         System.out.println();
     }
