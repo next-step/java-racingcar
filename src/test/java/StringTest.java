@@ -31,13 +31,16 @@ public class StringTest {
         요구사항 2
         "(1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현한다.
     */
+    @ValueSource(strings = { "(1,2)", "1,2", "(1,2", "1,2)" })
     @DisplayName("요구 사항 2 :: substring Test")
-    @Test
-    public void substringTest() {
-        String str = "(1,2)";
-        str = str
-                .substring(str.indexOf("(") + 1)
-                .substring(0, str.indexOf( ")") - 1);
+    @ParameterizedTest
+    public void substringTest(String str) {
+        int startIndex = str.indexOf("(");
+        int endIndex = str.indexOf( ")");
+        if (endIndex > -1)
+            str = str.substring(0, endIndex);
+        if (startIndex > -1)
+            str = str.substring(startIndex + 1);
         assertThat(str)
                 .withFailMessage("문자열 분리 실패 :: " + str)
                 .isEqualTo("1,2");
