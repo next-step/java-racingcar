@@ -8,9 +8,9 @@ import racingcar.view.ResultView;
 public class ConsoleController {
 
     public static void main(String[] args) {
-        int numberOfCars = InputView.inputNumberOfCars();
+        String[] carNames = InputView.inputCarNames();
         int totalRound = InputView.inputRound();
-        RacingCarInitParam racingCarInitParam = RacingCarInitParam.of(numberOfCars, totalRound);
+        RacingCarInitParam racingCarInitParam = RacingCarInitParam.of(totalRound, carNames);
 
         CarRacing carRacing = CarRacing.init(racingCarInitParam);
 
