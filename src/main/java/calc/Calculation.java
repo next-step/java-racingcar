@@ -2,7 +2,7 @@ package calc;
 
 
 public class Calculation {
-    public void calc (String formula) {
+    public int calc(String formula) {
         String[] formulaArr = formula.split(" ");
         if (formula == null || formula.trim().equals("") || formulaArr.length == 0) {
             throw new IllegalArgumentException("formula is blank");
@@ -19,6 +19,7 @@ public class Calculation {
             result = calculate(result, num, op);
         }
         System.out.println("result : "+ result);
+        return result;
     }
 
     public int calculate(int a, int b, String op) {

@@ -38,10 +38,16 @@ public class CalcTest {
         assertThat(calculation.calculate(3, 3, "/")).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("all operation test")
+    void allOperationTest() {
+        assertThat(calculation.calc("2 + 3 * 4 / 2")).isEqualTo(10);
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"", "  "})
     @DisplayName("formula blank test")
-    void formulaBalnkTest(String input) {
+    void formulaBlankTest(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     calculation.calc(input);
@@ -55,5 +61,4 @@ public class CalcTest {
             calculation.calculate(3, 5, "%");
         }).withMessageMatching("not support operation");
     }
-
 }
