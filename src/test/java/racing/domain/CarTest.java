@@ -1,5 +1,6 @@
 package racing.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -23,6 +24,24 @@ class CarTest {
 
 		//then
 		assertThat(b).isEqualTo(expected);
+	}
+
+	@Test
+	@DisplayName("자동차 전진 여부는 랜덤에 의해 결정되기에 10회 전진 후 상태가 변화하였는지 확인")
+	void forward() throws Exception {
+		//given
+		Car car = new Car();
+
+		//then 초기 상태는 0
+		assertThat(car.getForwardCount()).isZero();
+
+		//when
+		for (int i = 0; i < 10; i++) {
+			car.moveForward();
+		}
+
+		//then
+		assertThat(car.getForwardCount()).isNotZero();
 	}
 
 }
