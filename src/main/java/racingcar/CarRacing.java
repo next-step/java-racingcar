@@ -21,6 +21,14 @@ public class CarRacing {
         this.cars = Cars.from(numberOfCars);
     }
 
+    private CarRacing(int totalRound, String... names) {
+        validate(totalRound);
+
+        this.totalRound = totalRound;
+        this.currentRound = 0;
+        this.cars = Cars.init(names);
+    }
+
     private void validate(int totalRound) {
         if (totalRound < MINIMUM_ROUND) {
             throw new IllegalArgumentException("Total round can't be under zero");
@@ -28,7 +36,7 @@ public class CarRacing {
     }
 
     public static CarRacing init(RacingCarInitParam racingCarInitParam) {
-        return new CarRacing(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound());
+        return new CarRacing(racingCarInitParam.getTotalRound(), racingCarInitParam.getNames());
     }
 
     public void race(MoveStrategy moveStrategy) {
