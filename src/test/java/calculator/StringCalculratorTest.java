@@ -3,6 +3,8 @@ package calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -97,6 +99,15 @@ class StringCalculatorTest {
         String checkValue = "1 + 2 * 5 / 3";
         int result = stringCalculator.calculate(checkValue);
         assertThat(result).isEqualTo(5);
+    }
+
+    @DisplayName("숫자타입에 문자를 입력시 에러가 발생된다.")
+    @ParameterizedTest(name ="{displayName}")
+    @CsvSource(value = {"1 + 2 + ! + 3"})
+    public void calculator_notNumber_check(String checkValue){
+        assertThatThrownBy(() -> stringCalculator.calculate(checkValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("해당 문자는 숫자만 사용 가능합니다.");
     }
 
 }
