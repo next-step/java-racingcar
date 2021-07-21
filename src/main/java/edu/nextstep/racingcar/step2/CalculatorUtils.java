@@ -8,51 +8,65 @@ import java.util.stream.IntStream;
 
 public class CalculatorUtils {
 
+    private static final String SPACE_STRING = " ";
+    private static final String EMPTY_STRING = "";
+    private static final String CALCULATE_STRING = "[+\\-*/]";
+
     private String source;
     private Queue<Long> calculateValues = new LinkedBlockingQueue<>();
-    private Queue<String> calculateStrings = new LinkedBlockingQueue<>();
+    private Queue<CalculateCode> calculateStrings = new LinkedBlockingQueue<>();
 
     public void setSource(String source) {
+        checkValueOfNullOrEmpty(source);
+
         this.source = source;
         calculateValues = new LinkedBlockingQueue<>();
         calculateStrings = new LinkedBlockingQueue<>();
     }
 
     public Long calculate() {
-        parseSource();
+        parseSource(source);
 
         Long first = calculateValues.poll();
         Long second = calculateValues.poll();
+        Long result = 0L;
 
-        for (String calculateString : calculateStrings) {
+        for (CalculateCode calculateString : calculateStrings) {
+            result = calculateForPartial(first, second, calculateString);
 
-            switch (calculateString) {
-                case "+":
-                    first = addition(first, second);
-                    break;
-                case "-":
-                    first = subtraction(first, second);
-                    break;
-                case "*":
-                    first = multiplication(first, second);
-                    break;
-                case "/":
-                    first = division(first, second);
-                    break;
-            }
-
-            if (!calculateValues.isEmpty()) {
-                second = calculateValues.poll();
-            }
+            first = result;
+            second = getSecondValue();
         }
 
-        return first;
+        return result;
     }
 
-    private void parseSource() {
-        checkValueOfNullOrEmpty(this.source);
+    private Long getSecondValue() {
+        if (!calculateValues.isEmpty()) {
+            return calculateValues.poll();
+        }
 
-        String[] values = this.source.split(" ");
+        return 0L;
+    }
+
+    private Long calculateForPartial(Long first, Long second, CalculateCode calculateCode) {
+        switch (calculateCode) {
+            case ADD:
+                return addition(first, second);
+            case SUB:
+                return subtraction(first, second);
+            case MULTI:
+                return multiplication(first, second);
+            case DIV:
+                return division(first, second);
+            default:
+                throw new BusinessException(BusinessError.INVALID_CALCULATE_STRING);
+        }
+    }
+
+    private void parseSource(String source) {
+
+        String[] values = source.split(SPACE_STRING);
 
         IntStream.range(0, values.length).forEach(idx -> {
 
@@ -61,14 +75,15 @@ public class CalculatorUtils {
             if (idx % 2 == 0) {
                 checkNumber(values[idx]);
                 calculateValues.add(Long.valueOf(values[idx]));
-            } else {
-                checkCalculateString(values[idx]);
-                calculateStrings.add(values[idx]);
+                return;
             }
+
+            checkCalculateString(values[idx]);
+            calculateStrings.add(CalculateCode.findByValue(values[idx]));
         });
 
         if (calculateStrings.size() + 1 != calculateValues.size()) {
-            throw new IllegalArgumentException();
+            throw new BusinessException(BusinessError.INVALID_VALUE);
         }
     }
 
@@ -86,8 +101,8 @@ public class CalculatorUtils {
 
     public Long division(Long first, Long second) {
 
-        if (first == 0) {
-            throw new IllegalArgumentException();
+        if (second == 0) {
+            throw new BusinessException(BusinessError.CAN_NOT_DIVIDE_BY_ZERO);
         }
 
         return first / second;
@@ -95,15 +110,15 @@ public class CalculatorUtils {
 
     private void checkValueOfNull(Object value) {
         if (value == null) {
-            throw new IllegalArgumentException();
+            throw new BusinessException(BusinessError.INVALID_VALUE);
         }
     }
 
     private void checkValueOfNullOrEmpty(String value) {
         checkValueOfNull(value);
 
-        if (value.equals("")) {
-            throw new IllegalArgumentException();
+        if (value.equals(EMPTY_STRING)) {
+            throw new BusinessException(BusinessError.INVALID_VALUE);
         }
     }
 
@@ -111,15 +126,15 @@ public class CalculatorUtils {
         try {
             Long.valueOf(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new BusinessException(BusinessError.INVALID_VALUE);
         }
     }
 
     private void checkCalculateString(String value) {
-        Pattern pattern = Pattern.compile("[+\\-*/]");
+        Pattern pattern = Pattern.compile(CALCULATE_STRING);
         Matcher matcher = pattern.matcher(value);
         if (!matcher.matches()) {
-            throw new IllegalArgumentException();
+            throw new BusinessException(BusinessError.INVALID_CALCULATE_STRING);
         }
     }
 }

@@ -65,15 +65,17 @@ class CalculatorUtilsTest {
         assertThat(result).isEqualTo(expected);
     }
 
-    @ParameterizedTest(name = "[{index}] 곱셈 테스트, input={0}, expected={1}")
-    @CsvSource(value = {"4,2:2", "1,5:0", "5,2:2", "0,10:0"}, delimiter = ':')
+    @ParameterizedTest(name = "[{index}] 나눗셈 테스트, input={0}, expected={1}")
+    @CsvSource(value = {"4,2:2", "1,5:0", "5,2:2", "10,0:0"}, delimiter = ':')
     void division(@ConvertWith(ParamsConverter.class) Params params, Long expected) {
         CalculatorUtils calculatorUtils = new CalculatorUtils();
 
-        if (params.first == 0) {
+        if (params.second == 0) {
             assertThatThrownBy(() -> calculatorUtils.division(params.first, params.second))
-                    .isInstanceOf(IllegalArgumentException.class);
-        } else {
+                    .isInstanceOf(BusinessException.class);
+        }
+
+        if (params.second != 0) {
             Long result = calculatorUtils.division(params.first, params.second);
             assertThat(result).isEqualTo(expected);
         }
@@ -84,10 +86,8 @@ class CalculatorUtilsTest {
     void calculator_when_null_or_empty(String source) {
         CalculatorUtils calculatorUtils = new CalculatorUtils();
 
-        calculatorUtils.setSource(source);
-
-        assertThatThrownBy(calculatorUtils::calculate)
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> calculatorUtils.setSource(source))
+                .isInstanceOf(BusinessException.class);
     }
 
     @ParameterizedTest(name = "[{index}] 입력값 검증 (사칙 연산 기호가 아닌 경우), param={0}")
@@ -98,7 +98,7 @@ class CalculatorUtilsTest {
         calculatorUtils.setSource(source);
 
         assertThatThrownBy(calculatorUtils::calculate)
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(BusinessException.class);
     }
 
     @ParameterizedTest(name = "[{index}] 사칙 연산, source={0}, expected={1}")
