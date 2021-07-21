@@ -29,7 +29,7 @@ public class Cars {
     }
 
     private List<Car> initCars(Count count) {
-        int length = count.getCount();
+        int length = count.initValue();
         List<Car> list = new ArrayList<>();
         for (int i = 0; i < length; i++) {
             list.add(new Car());

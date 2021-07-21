@@ -20,7 +20,7 @@ public class RacingGame {
 
     public ResultView play() {
         MovingStrategy strategy = MovingFactory.movingStrategy();
-        int count = num.getCount();
+        int count = num.initValue();
         for (int i = 0; i < count; i++) {
             cars.race(strategy);
         }
