@@ -7,10 +7,10 @@ import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public enum Operator {
-    ADD("+", (n1, n2) -> n1 + n2),
-    MIN("-", (n1, n2) -> n1 - n2),
-    MUL("*", (n1, n2) -> n1 * n2),
-    DIV("/", (n1, n2) -> n1 / n2);
+    ADD("+", (leftNumber, rightNumber) -> leftNumber + rightNumber),
+    MIN("-", (leftNumber, rightNumber) -> leftNumber - rightNumber),
+    MUL("*", (leftNumber, rightNumber) -> leftNumber * rightNumber),
+    DIV("/", (leftNumber, rightNumber) -> leftNumber / rightNumber);
 
     private final String sign;
     private final BiFunction<Integer, Integer, Integer> handler;
@@ -26,7 +26,8 @@ public enum Operator {
 
     public static Optional<Operator> of(String input) {
         return Arrays.stream(values())
-                .filter(i -> i.sign.equals(input))
-                .findFirst();
+                .filter(
+                        i -> i.sign.equals(input)
+                ).findFirst();
     }
 }
