@@ -1,8 +1,8 @@
 package calculator;
 
-import java.util.regex.Pattern;
-
 import static java.lang.Integer.parseInt;
+
+import java.util.regex.Pattern;
 
 class Calculator {
     private static final Pattern NORMAL_PATTERN = Pattern.compile("^[\\d]+(\\s[\\d+*\\-/])*.\\d$");
@@ -24,7 +24,7 @@ class Calculator {
     }
 
     private void verify(String string) {
-        if(!isPatternMatch(NORMAL_PATTERN, string)) {
+        if (!isPatternMatch(NORMAL_PATTERN, string)) {
             throw new IllegalArgumentException("숫자와 사칙 연산자만 입력 가능하며, 모든 글자 사이에는 공백이 존재해야 합니다.");
         }
     }
@@ -37,8 +37,8 @@ class Calculator {
         init();
 
         String[] split = this.data.split(" ");
-        for(String s : split) {
-            calculate(s);
+        for (String string : split) {
+            calculate(string);
         }
 
         return reduce;
@@ -50,11 +50,11 @@ class Calculator {
         reduce = 0;
     }
 
-    private void calculate(String s) {
-        if(!isPatternMatch(OPERATOR_PATTERN, s)) {
-            this.reduce = ArithmeticCalculator.apply(operator, reduce, parseInt(s));
+    private void calculate(String string) {
+        if (!isPatternMatch(OPERATOR_PATTERN, string)) {
+            this.reduce = ArithmeticCalculator.apply(operator, reduce, parseInt(string));
             return;
         }
-        this.operator = s;
+        this.operator = string;
     }
 }
