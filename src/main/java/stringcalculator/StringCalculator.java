@@ -13,10 +13,10 @@ public class StringCalculator {
         String userInput = sc.nextLine();
         sc.close();
 
-        // 1.유저 입력이 Null이나 공백문자일 경우 예외를 던짐
+        // 1. 유저 입력이 Null이나 공백문자일 경우 예외를 던짐
         UserInputValidator.validate(userInput);
 
-        // 3. 연산
+        // 2. 연산
         int result = OperationUtil.calculate(userInput);
 
         System.out.println("결과는 : " + result);
