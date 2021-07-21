@@ -9,7 +9,7 @@ public class StringCalculatorApplication {
 
         String input = scanner.nextLine();
 
-        StringCalculator stringCalculator = new StringCalculator();
+        StringCalculator stringCalculator = new StringCalculator(input);
         String result = stringCalculator.execute(input);
 
 
