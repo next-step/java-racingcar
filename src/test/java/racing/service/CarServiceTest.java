@@ -11,18 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarServiceTest {
 
 	@Test
-	@DisplayName("자동차 대수, 반복 횟수 설정")
+	@DisplayName("자동차 대수 설정")
 	void set_up_car() throws Exception {
 		//given
 		int carCount = 3;
-		int repeatCount = 5;
 
 		//when
-		CarService carService = new CarService(carCount, repeatCount);
+		CarService carService = new CarService(carCount);
 
 		//then
 		assertThat(carService.getCars().size()).isEqualTo(carCount);
-		assertThat(carService.getRepeatCount()).isEqualTo(repeatCount);
 	}
 
 	@Test
@@ -30,11 +28,12 @@ class CarServiceTest {
 	void move_car() throws Exception {
 		//given
 		int carCount = 3;
-		int repeatCount = 10;
-		CarService carService = new CarService(carCount, repeatCount);
+		CarService carService = new CarService(carCount);
 
 		//when
-		carService.moveCars();
+		for (int i = 0; i < 10; i++) {
+			carService.moveCars();
+		}
 		List<Car> cars = carService.getCars();
 
 		//then
