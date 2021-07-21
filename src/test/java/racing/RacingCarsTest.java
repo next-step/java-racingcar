@@ -3,13 +3,14 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
 
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarsTest {
-    private final ForwardStrategy strategy = new NumberMoreThanFour();
+    private final ForwardStrategy mockStrategy = BDDMockito.mock(NumberMoreThanFour.class);
 
     private ArrayList<String> list;
 
@@ -36,16 +37,18 @@ public class RacingCarsTest {
     @Test
     @DisplayName("전진_테스트_조건은_참")
     void goForward() throws Exception {
+        BDDMockito.given(mockStrategy.condition()).willReturn(false);
         RacingCars racingCars = RacingCars.from(list);
-        racingCars.goForward(0, strategy);
+        racingCars.goForward(0, mockStrategy);
         assertThat(racingCars.get(0)).isEqualTo("--");
     }
 
     @Test
     @DisplayName("전진_테스트_조건은_거짓")
     void goForwardNot() throws Exception {
+        BDDMockito.when(mockStrategy.condition()).thenReturn(true);
         RacingCars racingCars = RacingCars.from(list);
-        racingCars.goForward(0, strategy);
+        racingCars.goForward(0, mockStrategy);
         assertThat(racingCars.get(0)).isEqualTo("-");
     }
 
