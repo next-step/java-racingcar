@@ -7,10 +7,10 @@ import racinggame.ui.ResultView;
 public class App {
 
     public static void main(String[] args) {
-        int carNumber = InputView.inputNumberOfCar();
+        String carNames = InputView.inputNameOfCar();
         int countNumber = InputView.inputNumberOfCount();
 
-        RacingGame racingGame = RacingGame.of(carNumber, countNumber);
+        RacingGame racingGame = RacingGame.of(carNames, countNumber);
         ResultView resultView = racingGame.play();
 
         resultView.printResult();
