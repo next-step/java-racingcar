@@ -13,7 +13,7 @@ class CalculatorScanner {
     }
 
     public String enter() {
-        try(Scanner scanner = new Scanner(System.in)) {
+        try (Scanner scanner = new Scanner(System.in)) {
             return scanner.nextLine().trim();
         }
     }
