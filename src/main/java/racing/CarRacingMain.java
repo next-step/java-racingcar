@@ -26,69 +26,48 @@ public class CarRacingMain {
         scanner.close();
     }
 
-    private static int intValueByScanner(String scannerValue) {
+    public static int intValueByScanner(String scannerValue) {
         int intValue = toInt(scannerValue);
         System.out.println(scannerValue);
         return intValue;
     }
 
-    private static int toInt(String inputValue) {
+    public static int toInt(String inputValue) {
         validByNumberCheck(inputValue);
         return Integer.parseInt(inputValue);
     }
 
-    private static void validByNumberCheck(String inputValue) {
+    public static void validByNumberCheck(String inputValue) {
         String regExp = "^\\d+$";
         if (!inputValue.matches(regExp)) {
             throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
         }
     }
 
-    private static void createCarByNumber(int totalCarNumber) {
+    public static void createCarByNumber(int totalCarNumber) {
         for (int i = 0; i < totalCarNumber; i++) {
             CarModel carModel = new CarModel(i + 1);
             carModelList.add(carModel);
         }
     }
 
-    private static void tryRacingByCar(int tryraceNumber) {
+    public static void tryRacingByCar(int tryraceNumber) {
         for (int i = 0; i < tryraceNumber; i++) {
             racing();
         }
     }
 
-    private static void racing() {
-        int carModelNumber = carModelList.size();
+    public static void racing() {
         for (CarModel carModel : carModelList) {
-            String carRaceResult = calculatorDistance(carModel.getRaceDistance());
-            carModel.setRaceDistance(carRaceResult);
-            System.out.println(carModel.getRaceDistance());
+            carModel.carRacingAct(getRaceDistance());
         }
         System.out.println();
     }
 
-    private static String calculatorDistance(String raceDistance) {
-        int randomNUmber = randomIntValue();
-        String result = nullToBlank(raceDistance) + getRaceDistance(randomNUmber);
-        return result.trim();
-    }
 
-    private static String nullToBlank(String raceDistance) {
-        return raceDistance == null ? "" : raceDistance;
-    }
-
-    public static String getRaceDistance(int randomNUmber) {
-        String distance = "";
-        if (randomNUmber > 3) {
-            distance = "-";
-            return distance;
-        }
-        return distance;
-    }
-
-    public static int randomIntValue() {
+    public static boolean getRaceDistance() {
         Random random = new Random();
-        return random.nextInt(randomValue);
+        return random.nextInt(randomValue) > 3 ? true : false;
     }
 
     public List<CarModel> getCarList() {
