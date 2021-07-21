@@ -1,12 +1,13 @@
 package step3.model;
 
 public class Car {
-    private String name;
+
+    private final int INIT_POSITION = 0;
+
     private int position;
-    private final int MOVE_BOUNDARY = 4;
-    public Car(int carNo) {
-        this.name = String.valueOf(carNo);
-        position = 0;
+
+    public Car() {
+        position = INIT_POSITION;
     }
 
     public int getPosition() {
@@ -17,13 +18,5 @@ public class Car {
         if(move){
             position++;
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", position='" + position + '\'' +
-                '}';
     }
 }

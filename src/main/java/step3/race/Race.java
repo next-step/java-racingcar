@@ -1,27 +1,23 @@
 package step3.race;
 
-import step3.model.Car;
-
-import java.util.ArrayList;
-import java.util.List;
+import step3.model.Cars;
 
 public class Race {
 
-    private List<Car> cars;
+    private int raceTimes;
 
-    public Race(int counts) {
-        cars = new ArrayList<>();
-        makeCars(counts);
+    private Cars cars;
+
+    public Race(int carCounts, int raceTimes) {
+        this.raceTimes = raceTimes;
+        cars = new Cars(carCounts);
     }
 
-    private void makeCars(int counts) {
-        for (int idx = 0; idx < counts; idx++) {
-            cars.add(new Car(idx));
-        }
+    public void doRace(boolean move){
+        cars.getCars().stream().forEach(car -> car.move(move));
     }
 
-    public void racing(){
-
+    public Cars getCars(){
+        return this.cars;
     }
-
 }
