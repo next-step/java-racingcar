@@ -1,6 +1,8 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class RacingGame {
     private static final String BLANK = "";
@@ -11,13 +13,11 @@ class RacingGame {
     private int stageCount;
 
     private RacingGame(ForwardStrategy strategy, int carCount, int stageCount) {
-        ArrayList<String> stringArrayList = new ArrayList<>();
-        for(int i = 0; i < carCount; i++) {
-            stringArrayList.add(BLANK);
-        }
-        this.racingCars = RacingCars.from(stringArrayList);
         this.stageCount = stageCount;
         this.strategy = strategy;
+        this.racingCars = RacingCars.from(IntStream.range(0, carCount)
+                                                   .mapToObj(i -> BLANK)
+                                                   .collect(Collectors.toCollection(ArrayList::new)));
     }
 
     public static RacingGame from(ForwardStrategy strategy, int[] condition) {
