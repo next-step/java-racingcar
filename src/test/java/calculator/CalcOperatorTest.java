@@ -10,7 +10,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CalcOperatorTest {
 
-
     @CsvSource(value = {"1:1:2", "10:1:11", "5:5:10"}, delimiter = ':')
     @ParameterizedTest(name = "{0} + {1}은 {2}이 반환되어야한다")
     void addTest(int given1, int given2, int result) {
@@ -67,6 +66,32 @@ class CalcOperatorTest {
     @Test
     void throwIllegalArgumentExceptionWhenBadSign() {
         assertThatIllegalArgumentException().isThrownBy(() -> Calculator.calc("1 + 2 = 3"));
+    }
+
+    @DisplayName("올바른 사칙기호로 find 하면 알맞은 calcOperator가 찾아진다")
+    @Test
+    void findCalcOperatorWithOperator() {
+        // Given
+        // When
+        CalcOperator addCalcOperator = CalcOperator.find("+");
+        CalcOperator minusCalcOperator = CalcOperator.find("-");
+        CalcOperator multiCalcOperator = CalcOperator.find("*");
+        CalcOperator divideCalcOperator = CalcOperator.find("/");
+        // Then
+        assertThat(addCalcOperator).isEqualTo(CalcOperator.ADD);
+        assertThat(minusCalcOperator).isEqualTo(CalcOperator.MINUS);
+        assertThat(multiCalcOperator).isEqualTo(CalcOperator.MULTI);
+        assertThat(divideCalcOperator).isEqualTo(CalcOperator.DIVIDE);
+
+    }
+
+    @DisplayName("존재하지 않는 사칙기호로 find를하면 illegalArgumentException을 던진다")
+    @Test
+    void throwIllegalArgumentExceptionWhenFindWithBadOperator() {
+        // Given
+        // When
+        // Then
+        assertThatIllegalArgumentException().isThrownBy(() -> CalcOperator.find("="));
     }
 
 }
