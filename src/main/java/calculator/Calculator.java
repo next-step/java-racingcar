@@ -13,7 +13,7 @@ class Calculator {
     private int reduce;
 
     private Calculator(String string) {
-        isValid(string);
+        verify(string);
 
         this.operator = "+";
         this.string = string;
@@ -24,7 +24,7 @@ class Calculator {
         return new Calculator(string);
     }
 
-    private void isValid(String string) {
+    private void verify(String string) {
         if(!NORMAL_PATTERN.matcher(string).find()) {
             throw new IllegalArgumentException("숫자와 사칙 연산자만 입력 가능하며, 모든 글자 사이에는 공백이 존재해야 합니다.");
         }
