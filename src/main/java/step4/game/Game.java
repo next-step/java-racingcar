@@ -1,6 +1,8 @@
 package step4.game;
 
+import step3.move.BasicMoveStrategy;
 import step4.model.Cars;
+import step4.move.MovableStrategy;
 
 public class Game {
     private final int gameCount;
@@ -15,9 +17,9 @@ public class Game {
         return new Game(count, cars);
     }
 
-    public void run() {
+    public void run(MovableStrategy movableStrategy) {
         for (int i = 0; i < gameCount; i++) {
-            cars.move();
+            cars.move(movableStrategy);
         }
     }
 
