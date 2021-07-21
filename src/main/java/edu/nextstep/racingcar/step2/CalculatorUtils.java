@@ -31,8 +31,8 @@ public class CalculatorUtils {
         Long second = calculateValues.poll();
         Long result = 0L;
 
-        for (CalculateCode calculateString : calculateStrings) {
-            result = calculateForPartial(first, second, calculateString);
+        for (CalculateCode calculateCode : calculateStrings) {
+            result = calculateCode.getCalculator().apply(first, second);
 
             first = result;
             second = getSecondValue();
@@ -47,26 +47,6 @@ public class CalculatorUtils {
         }
 
         return 0L;
-    }
-
-    private Long calculateForPartial(Long first, Long second, CalculateCode calculateCode) {
-        if (CalculateCode.ADD.equals(calculateCode)) {
-            return addition(first, second);
-        }
-
-        if (CalculateCode.SUB.equals(calculateCode)) {
-            return subtraction(first, second);
-        }
-
-        if (CalculateCode.MULTI.equals(calculateCode)) {
-            return multiplication(first, second);
-        }
-
-        if (CalculateCode.DIV.equals(calculateCode)) {
-            return division(first, second);
-        }
-
-        throw new BusinessException(BusinessError.INVALID_CALCULATE_STRING);
     }
 
     private void parseSource(String source) {
