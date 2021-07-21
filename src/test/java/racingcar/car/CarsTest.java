@@ -45,8 +45,8 @@ class CarsTest {
 
     private static Stream<Arguments> moveCars() {
         return Stream.of(
-                Arguments.of(Cars.from(10), Fixture.alwaysMoveStrategy(), 0, 1),
-                Arguments.of(Cars.from(10), Fixture.neverMoveStrategy(), 0, 0)
+                Arguments.of(Cars.from(10), Fixture.ALWAYS_MOVE_STRATEGY, 0, 1),
+                Arguments.of(Cars.from(10), Fixture.NEVER_MOVE_STRATEGY, 0, 0)
         );
     }
 }

@@ -38,7 +38,7 @@ class CarRacingTest {
         List<CarDto> carDtos = carRacing.currentState();
         carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(0));
 
-        carRacing.race(Fixture.alwaysMoveStrategy());
+        carRacing.race(Fixture.ALWAYS_MOVE_STRATEGY);
 
         carDtos = carRacing.currentState();
         carDtos.forEach(carDto -> assertThat(carDto.getPosition()).isEqualTo(1));
@@ -49,9 +49,9 @@ class CarRacingTest {
     void currentRoundCantExceedTotalRound() {
         CarRacing carRacing = CarRacing.init(RacingCarInitParam.of(10, 1));
 
-        carRacing.race(Fixture.alwaysMoveStrategy());
+        carRacing.race(Fixture.ALWAYS_MOVE_STRATEGY);
 
-        assertThatThrownBy(() -> carRacing.race(Fixture.alwaysMoveStrategy())).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> carRacing.race(Fixture.ALWAYS_MOVE_STRATEGY)).isInstanceOf(IllegalStateException.class);
     }
 
     @DisplayName("경주 종료 여부를 리턴한다.")
@@ -63,7 +63,7 @@ class CarRacingTest {
         assertThat(carRacing.isRaceOver()).isFalse();
 
         IntStream.range(0, totalRound)
-                .forEach(i -> carRacing.race(Fixture.alwaysMoveStrategy()));
+                .forEach(i -> carRacing.race(Fixture.ALWAYS_MOVE_STRATEGY));
 
         assertThat(carRacing.isRaceOver()).isTrue();
     }

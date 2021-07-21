@@ -28,11 +28,11 @@ class CarTest {
     @DisplayName("MoveStrategy 가 true 일 경우 자동차는 +1 만큼 이동한다.")
     @Test
     void carMoveWhenMoveStrategyReturnTrue() {
-        Car car = Car.newInstance();
+        Car car = Fixture.testCar();
 
         assertThat(car.currentPosition()).isEqualTo(0);
 
-        car.move(Fixture.alwaysMoveStrategy());
+        car.move(Fixture.ALWAYS_MOVE_STRATEGY);
 
         assertThat(car.currentPosition()).isEqualTo(1);
     }
@@ -40,11 +40,11 @@ class CarTest {
     @DisplayName("MoveStrategy 가 false 일 경우 움직이지 않는다.")
     @Test
     void carDoesNotMoveWhenMoveStrategyReturnFalse() {
-        Car car = Car.newInstance();
+        Car car = Fixture.testCar();
 
         assertThat(car.currentPosition()).isEqualTo(0);
 
-        car.move(Fixture.neverMoveStrategy());
+        car.move(Fixture.NEVER_MOVE_STRATEGY);
 
         assertThat(car.currentPosition()).isEqualTo(0);
     }
@@ -52,7 +52,7 @@ class CarTest {
     @DisplayName("MoveStrategy 가 null 일 경우 예외를 던진다.")
     @Test
     void moveThrowExceptionWhenMoveStrategyIsNull() {
-        Car car = Car.newInstance();
+        Car car = Fixture.testCar();
 
         assertThatThrownBy(() -> car.move(null)).isInstanceOf(IllegalArgumentException.class);
     }
@@ -62,7 +62,7 @@ class CarTest {
     @MethodSource
     void moveTestWithMoveStrategy(Random random, boolean moved) {
         boolean notMoved = !moved;
-        Car car = Car.newInstance();
+        Car car = Fixture.testCar();
         RandomMoveStrategy staticRandomNumberMoveStrategy = RandomMoveStrategy.from(random);
 
         int positionBeforeMove = car.currentPosition();
