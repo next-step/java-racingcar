@@ -1,6 +1,7 @@
 package racinggame.car;
 
-import racinggame.util.RandomNumber;
+import racinggame.strategy.MovingStrategy;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,9 +22,9 @@ public class Cars {
         return Collections.unmodifiableList(cars);
     }
 
-    public void race(RandomNumber randomNumber) {
+    public void race(MovingStrategy strategy) {
         for (Car car : cars) {
-            car.race(randomNumber.createBetweenZeroToNine());
+            car.race(strategy);
         }
     }
 

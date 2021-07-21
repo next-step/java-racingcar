@@ -1,12 +1,13 @@
 package racinggame.car;
 
+import racinggame.strategy.MovingStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
 
     private static final String RACE_STATUS_STRING = "-";
-    private static final int MOVABLE_NUMBER = 4;
     private static final int STARTING_POSITION = 0;
     private int position;
     private final List<String> status;
@@ -18,14 +19,11 @@ public class Car {
         stringBuilder = new StringBuilder();
     }
 
-    public boolean race(int num) {
-        boolean movable = isMovable(num);
-        if (movable) {
+    public void race(MovingStrategy strategy) {
+        if (strategy.isMove()) {
             position++;
         }
         recordGameHistory();
-
-        return movable;
     }
 
     public int getPosition() {
@@ -42,9 +40,5 @@ public class Car {
             stringBuilder.append(RACE_STATUS_STRING);
         }
         status.add(stringBuilder.toString());
-    }
-
-    private boolean isMovable(int num) {
-        return num >= MOVABLE_NUMBER;
     }
 }

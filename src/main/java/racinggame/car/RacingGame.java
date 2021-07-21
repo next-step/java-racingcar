@@ -1,18 +1,17 @@
 package racinggame.car;
 
+import racinggame.factory.MovingFactory;
+import racinggame.strategy.MovingStrategy;
 import racinggame.ui.ResultView;
-import racinggame.util.RandomNumber;
 
 public class RacingGame {
 
     private final Cars cars;
     private final Count num;
-    private final RandomNumber randomNumber;
 
     private RacingGame(Cars cars, Count num) {
         this.cars = cars;
         this.num = num;
-        this.randomNumber = new RandomNumber();
     }
 
     public static RacingGame of(int carNumber, int countNumber) {
@@ -20,9 +19,10 @@ public class RacingGame {
     }
 
     public ResultView play() {
+        MovingStrategy strategy = MovingFactory.movingStrategy();
         int count = this.num.getCount();
         for (int i = 0; i < count; i++) {
-            cars.race(randomNumber);
+            cars.race(strategy);
         }
 
         return new ResultView(cars, count);
