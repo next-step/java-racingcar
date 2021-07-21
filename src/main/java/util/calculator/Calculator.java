@@ -1,5 +1,5 @@
 package util.calculator;
 
 public interface Calculator {
-    int calculation();
+    int calculation(String input);
 }
