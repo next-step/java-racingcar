@@ -6,18 +6,21 @@ public class Race {
 
     private int raceTimes;
 
-    private Cars cars;
+    private Cars cars = new Cars();
 
     public Race(int carCounts, int raceTimes) {
         this.raceTimes = raceTimes;
-        cars = new Cars(carCounts);
+        cars.makeCars(carCounts);
     }
 
-    public void doRace(boolean move){
-        cars.getCars().stream().forEach(car -> car.move(move));
+    public void doRace(){
+        for (int time = 0; time < raceTimes; time++) {
+            moveCars();
+        }
     }
 
-    public Cars getCars(){
-        return this.cars;
+    private void moveCars() {
+        cars.moveCars();
     }
+
 }

@@ -25,9 +25,13 @@ class CarTest {
     @DisplayName("차 위치 변경")
     @Test
     void moveCar(){
-        car.move(true);
+        int move = 6;
+        int notMove = 3;
+
+        car.move(move);
         assertThat(car.getPosition()).isEqualTo(1);
-        car.move(false);
+
+        car.move(notMove);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
