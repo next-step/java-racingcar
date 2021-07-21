@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import racingcar.helper.Fixture;
 import racingcar.strategy.MoveStrategy;
 
@@ -23,17 +23,11 @@ class CarsTest {
         assertThat(Cars.init("nok", "cha", "x")).isNotNull();
     }
 
-    @DisplayName("자동차 수는 음수가 될 수 없다.")
+    @DisplayName("자동차 이름은 null 이거나 빈값이 될 수 없다.")
+    @NullAndEmptySource
     @ParameterizedTest
-    @ValueSource(ints = {-1, 0})
-    void numOfCarsShouldBeOverZero(int numberOfCars) {
-        assertThatThrownBy(() -> Cars.from(numberOfCars)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("자동차 이름은 null 이 되 수 없다.")
-    @Test
-    void carsNameCantBeNull() {
-        assertThatThrownBy(() -> Cars.init(null)).isInstanceOf(IllegalArgumentException.class);
+    void carsNameCantBeNull(String... names) {
+        assertThatThrownBy(() -> Cars.init(names)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 전체 움직이기 테스트")

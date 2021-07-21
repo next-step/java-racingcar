@@ -17,12 +17,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("레이싱 카 게임 테스트")
 class CarRacingTest {
 
-    @DisplayName("레이싱 카 게임은 차의 숫자와 라운드 수, MoveStrategy 를 가지고 초기화 한다.")
-    @Test
-    void init() {
-        assertThat(CarRacing.init(RacingCarInitParam.of(10, 5))).isNotNull();
-    }
-
     @DisplayName("레이싱 카 게임은 차의 이름과 라운드 수 를 가지고 초기화 한다.")
     @Test
     void init_temp() {

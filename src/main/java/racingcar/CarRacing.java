@@ -13,14 +13,6 @@ public class CarRacing {
     private final Cars cars;
     private int currentRound;
 
-    private CarRacing(int numberOfCars, int totalRound) {
-        validate(totalRound);
-
-        this.totalRound = totalRound;
-        this.currentRound = 0;
-        this.cars = Cars.from(numberOfCars);
-    }
-
     private CarRacing(int totalRound, String... names) {
         validate(totalRound);
 

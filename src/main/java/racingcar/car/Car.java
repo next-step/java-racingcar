@@ -28,10 +28,6 @@ public class Car {
         }
     }
 
-    public static Car newInstance() {
-        return new Car("mig");
-    }
-
     public static Car from(String name) {
         return new Car(name);
     }

@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Cars {
     public static final int MINIMUM_NUMBER_OF_CARS = 1;
@@ -20,24 +19,6 @@ public class Cars {
         this.cars = Arrays.stream(names)
                 .map(Car::from)
                 .collect(Collectors.toList());
-    }
-
-    private Cars(int numberOfCars) {
-        validate(numberOfCars);
-
-        this.cars = Stream.generate(Car::newInstance)
-                .limit(numberOfCars)
-                .collect(Collectors.toList());
-    }
-
-    public static Cars from(int numberOfCars) {
-        return new Cars(numberOfCars);
-    }
-
-    private void validate(int numberOfCars) {
-        if (numberOfCars < MINIMUM_NUMBER_OF_CARS) {
-            throw new IllegalArgumentException("Number of cars can't be under 1");
-        }
     }
 
     public static Cars init(String... names) {
