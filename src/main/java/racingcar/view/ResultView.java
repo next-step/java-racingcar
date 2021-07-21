@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 
 public class ResultView {
     private static final String MOVE_SYMBOL = "-";
+    private static final String JOIN_SYMBOL = ", ";
     private static final String WINNER_NOTICE_STATEMENT_FORMAT = "%s 가 최종 우승했습니다.";
     private static final String CAR_MOVEMENT_FORMAT = "%s : %s";
     private static final String EXECUTION_RESULT = "실행 결과";
@@ -26,7 +27,7 @@ public class ResultView {
 
     public static void printWinners(List<String> winners) {
         String joinedWinnerString = winners.stream()
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(JOIN_SYMBOL));
 
         printStatement(String.format(WINNER_NOTICE_STATEMENT_FORMAT, joinedWinnerString));
     }
