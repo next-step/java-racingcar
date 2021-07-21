@@ -30,6 +30,12 @@ class CarsTest {
         assertThatThrownBy(() -> Cars.from(numberOfCars)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("자동차 이름은 null 이 되 수 없다.")
+    @Test
+    void carsNameCantBeNull() {
+        assertThatThrownBy(() -> Cars.init(null)).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("자동차 전체 움직이기 테스트")
     @ParameterizedTest(name = "움직이기 전 위치 [{1}], 움직인 후 위치 [{2}]")
     @MethodSource
@@ -45,8 +51,8 @@ class CarsTest {
 
     private static Stream<Arguments> moveCars() {
         return Stream.of(
-                Arguments.of(Cars.from(10), Fixture.ALWAYS_MOVE_STRATEGY, 0, 1),
-                Arguments.of(Cars.from(10), Fixture.NEVER_MOVE_STRATEGY, 0, 0)
+                Arguments.of(Fixture.testCars(), Fixture.ALWAYS_MOVE_STRATEGY, 0, 1),
+                Arguments.of(Fixture.testCars(), Fixture.NEVER_MOVE_STRATEGY, 0, 0)
         );
     }
 }
