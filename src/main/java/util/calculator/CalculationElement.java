@@ -11,42 +11,31 @@ import java.util.regex.Pattern;
 public class CalculationElement {
     private static final String NUMBER_PATTERN = "^[0-9]+$";
     private int intValue;
-    private Operator operatorValue;
+    private String strValue;
 
     public CalculationElement(int input) {
         this.intValue = input;
     }
 
     public CalculationElement(String input) {
-        convertInput(input);
+        this.strValue = input;
     }
 
-    private void convertInput(String input) {
-        if (Pattern.matches(NUMBER_PATTERN, input)) { // 숫자로만 이루어진 문자열 이라면 intValue에 저장
-            this.intValue = Integer.parseInt(input);
-            return;
+    private Integer asIntegerValue() {
+        if (Objects.nonNull(strValue)) {
+            // 숫자로 이루어진 문자열이 아니라면 toInt 메소드가 Optional로 감쌀수 있도록 null 반환
+            return Pattern.matches(NUMBER_PATTERN, strValue) ?
+                    Integer.parseInt(strValue) : null;
         }
-        // 요구 사항 :: 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
-        this.operatorValue = Operator.of(input)
-                .orElseThrow(() ->
-                        new IllegalArgumentException(
-                                String.format("사칙연산 기호가 아닙니다. [%s]", input)
-                        ));
-    }
-
-    private boolean isOperatorElement() {
-        return Objects.isNull(operatorValue);
+        return intValue;
     }
 
     public Optional<Integer> toInt() {
-        if (isOperatorElement())
-            return Optional.empty();
-        return Optional.of(intValue);
+        return Optional.ofNullable(
+                asIntegerValue());
     }
 
     public Optional<Operator> toOperator() {
-        if (!isOperatorElement())
-            return Optional.empty();
-        return Optional.of(operatorValue);
+        return Operator.of(strValue);
     }
 }
