@@ -1,11 +1,14 @@
 package step3.view;
 
-import step3.game.GameEnv;
+import step3.game.GameDto;
 
 import java.util.Scanner;
 
 public class InputView {
-    static public GameEnv initGameEnv() {
+    private InputView() {
+    }
+
+    static public GameDto initGameEnv() {
         Scanner scanner = new Scanner(System.in);
 
         InputView.viewCarCount();
@@ -13,7 +16,7 @@ public class InputView {
         InputView.viewCount();
         int count = scanner.nextInt();
 
-        return GameEnv.of(carCount, count);
+        return GameDto.of(carCount, count);
     }
 
     static public void viewCarCount() {
