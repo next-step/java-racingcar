@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
     private final static int GO_VALUE = 4;
     private int moveSpace;
@@ -19,9 +22,17 @@ public class Car {
         return 0;
     }
 
-    public int move(int index) {
-        moveSpace += index;
+    public int move(int randomValue) {
+        moveSpace += advanceOrStop(randomValue);
         return moveSpace;
+    }
+
+    public static List<Car> createCars(int carNumber) {
+        List<Car> cars = new ArrayList<>();
+        for(int i = 0; i < carNumber; i++) {
+            cars.add(new Car(0));
+        }
+        return cars;
     }
 
 }
