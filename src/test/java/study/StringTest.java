@@ -12,7 +12,13 @@ public class StringTest {
 
         result = "1,".split(",");
         assertThat(result).containsExactly("1");
-        
+
+    }
+
+    @Test
+    void substring(){
+        String result = "(1,2)".substring(1,4);
+        assertThat(result).isEqualTo("1,2");
     }
 }
 
