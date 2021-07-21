@@ -1,44 +1,31 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public enum CalcSignEnum {
 
-    ADD("+") {
-        @Override
-        int calc(int a, int b) {
-            return a + b;
-        }
-    }, MINUS("-") {
-        @Override
-        int calc(int a, int b) {
-            return a - b;
-        }
-    }, MULTI("*") {
-        @Override
-        int calc(int a, int b) {
-            return a * b;
-        }
-    }, DIVIDE("/") {
-        @Override
-        int calc(int a, int b) {
-            return a / b;
-        }
-    };
+    ADD("+", (a, b) -> a + b),
+    MINUS("-", (a, b) -> a - b),
+    MULTI("*", (a, b) -> a * b),
+    DIVIDE("/", (a, b) -> a / b);
 
     private final String sign;
+    private final BiFunction<Integer, Integer, Integer> calcFunction;
 
-    CalcSignEnum(String sign) {
+    CalcSignEnum(String sign, BiFunction<Integer, Integer, Integer> biFunction) {
         this.sign = sign;
+        this.calcFunction = biFunction;
     }
 
-    static CalcSignEnum find(String sign) {
+    public static CalcSignEnum find(String sign) {
         return Arrays.stream(values())
             .filter(signEnum -> signEnum.sign.equals(sign))
             .findAny()
             .orElseThrow(IllegalArgumentException::new);
     }
 
-    abstract int calc(int a, int b);
-
+    public Integer calc(Integer a, Integer b) {
+        return calcFunction.apply(a, b);
+    }
 }
