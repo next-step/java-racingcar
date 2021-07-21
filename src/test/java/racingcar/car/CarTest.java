@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.helper.Fixture;
 import racingcar.strategy.RandomMoveStrategy;
@@ -25,6 +26,14 @@ class CarTest {
         Car car = Car.from(name);
         assertThat(car).isNotNull();
         assertThat(car.name()).isEqualTo(name);
+    }
+
+    @DisplayName("차 이름은 5자를 초과하거나 빈값 null 일 경우 예외를 발생한다.")
+    @NullAndEmptySource
+    @ValueSource(strings = {"123456", "overfive"})
+    @ParameterizedTest
+    void carNameLimit(String name) {
+        assertThatThrownBy(() -> Car.from(name)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("MoveStrategy 가 true 일 경우 자동차는 +1 만큼 이동한다.")
