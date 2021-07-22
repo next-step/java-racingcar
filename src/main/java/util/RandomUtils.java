@@ -8,4 +8,8 @@ public class RandomUtils {
     public static int nextInt(int maxValue) {
         return random.nextInt(maxValue);
     }
+
+    public static boolean nextBoolean(int diceCount, int diceMinValue) {
+        return nextInt(diceCount) >= diceMinValue;
+    }
 }

@@ -1,8 +1,10 @@
 package racing.car;
 
 import util.RandomUtils;
+import util.StringUtils;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class Cars implements Iterable<Car> {
     private final List<Car> values;
@@ -11,17 +13,10 @@ public class Cars implements Iterable<Car> {
         this.values = new ArrayList<>();
     }
 
-    public void moveAll(boolean movement) {
-        if (!movement)
-            return;
+    public void broadCast(Consumer<Car> callback) {
         for (Car iCar : values) {
-            iCar.move(randomDistance());
+            callback.accept(iCar);
         }
-    }
-
-    private Distance randomDistance() {
-        int randomValue = RandomUtils.nextInt(9);
-        return Distance.newInstance(randomValue);
     }
 
     public void add(Car car) {

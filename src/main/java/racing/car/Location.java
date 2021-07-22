@@ -26,6 +26,10 @@ public class Location {
         return new Location(getValue() - location.getValue());
     }
 
+    public boolean isEmpty() {
+        return value == 0;
+    }
+
     @Override
     public int hashCode() {
         return Integer.hashCode(value);
