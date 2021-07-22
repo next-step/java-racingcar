@@ -9,8 +9,8 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
 ## TODO
--[ ] 덧셈 
--[ ] 뺄셈 
+-[x] 덧셈 
+-[x] 뺄셈 
 -[ ] 곱셈
 -[ ] 나눗셈
 -[ ] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw

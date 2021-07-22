@@ -22,4 +22,19 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 - 1:1", "10 - 2:8", "2 - 8:-6"}, delimiter = ':')
+    @DisplayName("- 연산자가 있으면 뺄셈 결과가 반환되어야 한다.")
+    void subtractionTest(String input, int expected) {
+
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result = calculator.subtract(input);
+
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
 }
