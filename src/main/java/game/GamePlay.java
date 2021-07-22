@@ -9,16 +9,18 @@ public class GamePlay {
     private final List<Player> players;
     private final Validation validation;
     private final Random random;
+    private final Utils utils;
 
     public GamePlay() {
+        utils = new Utils();
         players = new ArrayList<>();
-        validation = new Validation();
+        validation = new Validation(utils);
         random = new Random();
     }
 
     public List<Player> createPlayer(String playerListValue) {
-        String[] playerArray = stringToStringArray(playerListValue);
-        validation.validStringEmpty(stringByTrim(playerListValue));
+        String[] playerArray = utils.stringToStringArray(playerListValue);
+        validation.validStringEmpty(utils.stringByTrim(playerListValue));
         return setupPlayer(playerArray);
     }
 
@@ -30,14 +32,6 @@ public class GamePlay {
             players.add(player);
         }
         return players;
-    }
-
-    public String[] stringToStringArray(String value) {
-        return value.split(",");
-    }
-
-    public String stringByTrim(String value) {
-        return value.trim();
     }
 
     public int randomValue() {
