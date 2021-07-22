@@ -1,5 +1,8 @@
 package game;
 
+import java.util.Collection;
+import java.util.Collections;
+
 public class Utils {
 
     public int stringLength(String value) {
@@ -14,7 +17,15 @@ public class Utils {
         return value.trim();
     }
 
-    public int stringToInt(String value){
+    public int stringToInt(String value) {
         return Integer.parseInt(value);
+    }
+
+    public String stringBufferToString(StringBuffer value){
+        return value.toString();
+    }
+
+    public int MapInMaxValue(Collection<Integer> collections){
+        return  (Collections.max(collections));
     }
 }
