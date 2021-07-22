@@ -95,7 +95,8 @@ public class CalculatorTest {
 
         //when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(input));
+                .isThrownBy(() -> calculator.calculate(input))
+                .withMessageMatching("Required not null or empty");
     }
 
     @ParameterizedTest
@@ -108,7 +109,8 @@ public class CalculatorTest {
 
         //when & then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(input));
+                .isThrownBy(() -> calculator.calculate(input))
+                .withMessageMatching("Required not null or empty");
     }
 
     @ParameterizedTest
