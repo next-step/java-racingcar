@@ -28,7 +28,7 @@ class RacingCarTest {
 
     @Test
     @DisplayName("난수 생성 테스트")
-    public void 난수생성() {
+     void 난수생성() {
         for (int i = 0; i < 5; i++) {
             int random = race.getRandomNumber();
             System.out.print(random + " ");
@@ -38,13 +38,13 @@ class RacingCarTest {
     @ParameterizedTest
     @DisplayName("random 값이 4이상일 때 전진하는 테스트")
     @CsvSource(value = {"3:false","4:true","2:false","6:true","1:false"},delimiter = ':')
-    public void 전진(int number , boolean move) {
+     void 전진(int number , boolean move) {
         Assertions.assertThat(race.move(number)).isEqualTo(move);
     }
 
-    @Test
-    @DisplayName("자동차의 상태 배열로 저장")
-    public void 자동차의상태() {
+//    @Test
+//    @DisplayName("자동차의 상태 배열로 저장")
+//     void 자동차의상태() {
 //        Arrays.fill(cars," ");
 //        while (attempt-- > 0) {
 //            String[] result = race.execute(count, );
@@ -53,5 +53,12 @@ class RacingCarTest {
 //            }
 //            System.out.println();
 //        }
+//    }
+
+    @Test
+    @DisplayName("자동차와 시도 회 수 입력 값이 0이하 일 때 예외 처리 하는 테스트")
+    void 입력값테스트(){
+        assertThatThrownBy(()->
+                Validation.inputValidation(0,-1)).isInstanceOf(IllegalArgumentException.class);
     }
 }
