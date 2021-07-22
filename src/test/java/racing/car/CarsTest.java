@@ -2,27 +2,41 @@ package racing.car;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.car.Car;
-import racing.car.Cars;
+import util.RandomUtils;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Random;
+import java.util.function.Predicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 class CarsTest {
-    @DisplayName("Car Add Test")
+    private static Random random;
+
+    @BeforeAll
+    public static void setUp() {
+        random = new Random();
+    }
+
+    private Cars initCars(int carSize) {
+        Cars cars = new Cars();
+        for (int i = 0; i < carSize; i++)
+            cars.add(new Car());
+        return cars;
+    }
+
     @ValueSource(ints = {
             10, 100, 1000
     })
+    @DisplayName("Car Add Test")
     @ParameterizedTest
     public void addTest(int size) {
-        Cars cars = new Cars();
-        for (int i = 0; i < size; i++)
-            cars.add(new Car());
+        Cars cars = initCars(size);
 
         assertThat(cars.size())
                 .isEqualTo(size);
@@ -33,9 +47,7 @@ class CarsTest {
     @DisplayName("Car Iterator Test")
     @ParameterizedTest
     public void carIteratorTest(int size) {
-        Cars cars = new Cars();
-        for (int i = 0; i < size; i++)
-            cars.add(new Car());
+        Cars cars = initCars(size);
 
         Iterator<Car> iterator = cars.iterator();
         for (int i = 0; i < size; i++) {
@@ -43,5 +55,36 @@ class CarsTest {
         }
         assertThat(iterator.hasNext())
                 .isEqualTo(false);
+    }
+
+    // 요구사항 "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 에 대한 테스트를 추가 해보면 어떨까요?
+    // 꼭 Cars가 아니여도 상관이 없습니다. 🤔
+
+    // "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 라는 요구 사항을 이해할 수 없어서 MoveAll 테스트를 추가 했습니다..
+    @CsvSource({
+            "100,5,false",
+            "100,100,true",
+            "100,200,true",
+            "100,1000,false"
+    })
+    @DisplayName("Car Move All Test")
+    @ParameterizedTest
+    public void moveAllTest(int carSize, int turnSize, boolean movement) {
+        Cars cars = initCars(carSize);
+
+        for (int iTurn = 0; iTurn < turnSize; iTurn++) {
+            int moveValue = movement ?
+                    RandomUtils.nextInt(Car.MovementLimitDistance.MIN_VALUE.getValue(), Car.MovementLimitDistance.MAX_VALUE.getValue()) :
+                    RandomUtils.nextInt(Car.MovementLimitDistance.MIN_VALUE.getValue());
+            cars.moveAll(moveValue);
+        }
+
+        for (Car iCar : cars) {
+            assertThat(
+                    iCar.getLocation().getValue() > 0
+            ).withFailMessage(
+                    String.format("%s 상태에서 반대로 행동함 [%d]", (movement ? "movement" : "not movement"), iCar.getLocation().getValue())
+            ).isEqualTo(movement);
+        }
     }
 }
