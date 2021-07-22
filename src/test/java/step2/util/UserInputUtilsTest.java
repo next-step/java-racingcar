@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import step2.exeption.WrongUserInputException;
 
 class UserInputUtilsTest {
 
@@ -42,7 +43,7 @@ class UserInputUtilsTest {
 
         assertThatThrownBy(() -> {
             UserInputUtils.readUserInput();
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(WrongUserInputException.class);
     }
 
     @Test
@@ -51,7 +52,7 @@ class UserInputUtilsTest {
 
         assertThatThrownBy(() -> {
             UserInputUtils.validate(null);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(WrongUserInputException.class);
     }
 
     @ParameterizedTest
