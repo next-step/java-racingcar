@@ -14,12 +14,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarsTest {
     @DisplayName("Car Add Test")
     @ValueSource(ints = {
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            10, 100, 1000
     })
     @ParameterizedTest
     public void addTest(int size) {
         Cars cars = new Cars();
-        cars.add(new Car());
+        for (int i = 0; i < size; i++)
+            cars.add(new Car());
 
         assertThat(cars.size())
                 .isEqualTo(size);
