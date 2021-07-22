@@ -1,5 +1,7 @@
 package racing;
 
+import static java.util.stream.Collectors.*;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -7,8 +9,8 @@ import java.util.stream.IntStream;
 class RacingGame {
     private static final String BLANK = "";
 
-    private final RacingCars racingCars;
     private final ForwardConditionStrategy strategy;
+    private final RacingCars racingCars;
 
     private int stageCount;
 
@@ -16,8 +18,8 @@ class RacingGame {
         this.stageCount = stageCount;
         this.strategy = strategy;
         this.racingCars = RacingCars.from(IntStream.range(0, carCount)
-                                                   .mapToObj(i -> BLANK)
-                                                   .collect(Collectors.toCollection(ArrayList::new)));
+                                                   .mapToObj(object -> BLANK)
+                                                   .collect(toCollection(ArrayList::new)));
     }
 
     public static RacingGame from(ForwardConditionStrategy strategy, int[] condition) {
@@ -36,11 +38,12 @@ class RacingGame {
     }
 
     private boolean isStageGreaterThanZero() {
-        return 0 <= stageCount--;
+        return 0 < stageCount--;
     }
 
     private void turnAround() {
-        for(int index = 0; index < racingCars.size(); index++) {
+        int bound = racingCars.size();
+        for (int index = 0; index < bound; index++) {
             racingCars.goForward(index, strategy);
             sb.append(racingCars.get(index)).append("\n");
         }
