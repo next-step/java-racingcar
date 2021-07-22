@@ -31,4 +31,12 @@ class ValidationTest {
                 .hasMessage("자동차 이름은 5글자를 초과할수 없습니다.");
     }
 
+    @Test
+    @DisplayName("문자열에 숫자이외의 문자가 포함되어 있으면 예외가 발생된다.")
+    public void validNumber_check() {
+        assertThatThrownBy(() -> validation.validNUmberChecK("12!"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("해당 문자는 숫자만 사용 가능합니다.");
+    }
+
 }
