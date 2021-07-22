@@ -86,7 +86,7 @@ public class CalculatorTest {
     }
 
     @Test
-    @DisplayName("입력 값이 null일 때 Exception이 발생해야 한다.")
+    @DisplayName("입력 값이 null일 때 IllegalArgumentException 발생해야 한다.")
     void nullInputTest() {
 
         //given
@@ -99,7 +99,20 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1 +", "1", " ", "1 & 3", "1+ + 1", "1+1", ""})
+    @ValueSource(strings = {" ", "  ", "   "})
+    @DisplayName("입력 값이 공백일 때 IllegalArgumentException 발생해야 한다.")
+    void blankInputTest(String input) {
+
+        //given
+        Calculator calculator = new Calculator();
+
+        //when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 +", "1 & 3", "1+ + 1", "1+1", ""})
     @DisplayName("잘못된 입력이 들어올 때 Exception이 발생해야 한다.")
     void invallidInputTest(String input) {
 
@@ -109,6 +122,21 @@ public class CalculatorTest {
         //when & then
         assertThatExceptionOfType(Exception.class)
                 .isThrownBy(() -> calculator.calculate(input));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1 + 3 / 2 - 3:-1", "3 - 1 * 6 + 1:13"}, delimiter = ':')
+    @DisplayName("사칙연산이 모두 포함되었을 때 결과가 반환된다.")
+    void allOperationTest(String input, int expected) {
+
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result = calculator.calculate(input);
+
+        //then
+        assertThat(result).isEqualTo(expected);
     }
 
 }

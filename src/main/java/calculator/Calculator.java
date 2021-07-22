@@ -2,19 +2,28 @@ package calculator;
 
 public class Calculator {
 
-    private static final int VALID_LENGTH = 3;
+    private static final int ZERO = 0;
 
     public int calculate(String input) {
         if (input == null) {
             throw new IllegalArgumentException("Required not null");
         }
         String[] inputs = input.split(" ");
-        validate(inputs);
-
-        String operator = inputs[1];
+        if (inputs.length == ZERO) {
+            throw new IllegalArgumentException("Required not blank");
+        }
         int first = toInt(inputs[0]);
-        int second = toInt(inputs[2]);
+        for(int index=1; index<inputs.length; index+=2) {
+            int second = toInt(inputs[index+1]);
+            String operator = inputs[index];
 
+            first = operate(operator, first, second);
+        }
+
+        return first;
+    }
+
+    private int operate(String operator, int first, int second) {
         if (operator.equals("+")) {
             return add(first, second);
         }
@@ -53,9 +62,4 @@ public class Calculator {
         return Integer.parseInt(input);
     }
 
-    private void validate(String[] inputs) {
-        if (inputs.length != VALID_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-    }
 }
