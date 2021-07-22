@@ -2,7 +2,7 @@ package game;
 
 public class Player {
 
-    private String playerName;
+    private final String playerName;
     private int raceDistance;
 
     public Player(String playerName) {
@@ -12,4 +12,9 @@ public class Player {
     public int playToMove(int value) {
         return value > 3 ? ++raceDistance : raceDistance;
     }
+
+    public String getPlayerName(){
+        return playerName;
+    }
+
 }
