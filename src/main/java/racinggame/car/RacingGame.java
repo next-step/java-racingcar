@@ -4,8 +4,8 @@ import racinggame.factory.MovingFactory;
 import racinggame.strategy.MovingStrategy;
 import racinggame.ui.ResultView;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -33,12 +33,9 @@ public class RacingGame {
     }
 
     private Cars initCars(String carNames) {
-        String[] names = carNames.split(CAR_NAME_SPLITTER);
-        List<Car> list = new ArrayList<>();
-        for (String name : names) {
-            list.add(new Car(CarName.of(name)));
-        }
-
-        return Cars.manyOf(list);
+        return Arrays.stream(carNames.split(CAR_NAME_SPLITTER))
+                .map(name -> new Car(CarName.of(name)))
+                .collect(Collectors
+                        .collectingAndThen(Collectors.toList(), Cars::manyOf));
     }
 }
