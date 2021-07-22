@@ -15,7 +15,6 @@ public class StringTest {
 
         result = "1,".split(",");
         assertThat(result).containsExactly("1");
-
     }
 
     @Test
@@ -34,7 +33,6 @@ public class StringTest {
         assertThatThrownBy(() -> { "abc".charAt(3); })
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 3");
-
     }
 }
 
