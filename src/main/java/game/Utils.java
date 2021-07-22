@@ -13,4 +13,8 @@ public class Utils {
     public String stringByTrim(String value) {
         return value.trim();
     }
+
+    public int stringToInt(String value){
+        return Integer.parseInt(value);
+    }
 }
