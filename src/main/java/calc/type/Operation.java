@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operation {
-    PLUS("+", (a, b) -> a + b),
-    MINUS("-", (a, b) -> a - b),
-    MULTIPLY("*", (a, b) -> a * b),
-    DIVIDE("/", (a, b) -> a / b);
+    PLUS("+", (operand1, operand2) -> operand1 + operand2),
+    MINUS("-", (operand1, operand2) -> operand1 - operand2),
+    MULTIPLY("*", (operand1, operand2) -> operand1 * operand2),
+    DIVIDE("/", (operand1, operand2) -> operand1 / operand2);
 
     private String operation;
     private BiFunction<Integer, Integer, Integer> resultFunction;
@@ -17,8 +17,8 @@ public enum Operation {
         this.resultFunction = resultFunction;
     }
 
-    public Integer calc(int a, int b) {
-        return this.findByOperation(this.operation).resultFunction.apply(a, b);
+    public Integer calc(int operand1, int operand2) {
+        return this.findByOperation(this.operation).resultFunction.apply(operand1, operand2);
     }
 
     public static Operation findByOperation(String operationStr) {
