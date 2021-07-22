@@ -15,7 +15,7 @@ class CarTest {
 
     @BeforeEach
     void setUpCar() {
-        car = new Car(0);
+        car = new Car("pobi", 0);
         random = new Random();
     }
 
@@ -37,8 +37,18 @@ class CarTest {
     @DisplayName("3대의 차 생성하기")
     void createCarsTest() {
         int carNumber = 3;
-        List<Car> cars = Car.createCars(3);
+        String[] carNames = "pobi,crong,honux".split(",");
+
+        List<Car> cars = Car.createCars(carNames, carNames.length);
 
         assertThat(cars.size()).isEqualTo(carNumber);
     }
+
+    @Test
+    @DisplayName("자동차 이름 부여하기")
+    void createCars() {
+        Car car = new Car("pobi", 0);
+        assertThat(car.getName()).isEqualTo("pobi");
+    }
+
 }

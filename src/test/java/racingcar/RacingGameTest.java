@@ -12,7 +12,8 @@ class RacingGameTest {
     @DisplayName("자동차 생성 테스트")
     void createCarTest() {
         int carNumber = 1;
-        List<Car> cars = Car.createCars(carNumber);
+        String[] carNames = {"pobi"};
+        List<Car> cars = Car.createCars(carNames, carNumber);
 
         assertThat(cars.get(0).getMoveSpace()).isEqualTo(0);
     }
