@@ -3,6 +3,7 @@ package game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.MessageBox;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class GamePlayTest {
 
     @BeforeEach
     void setup() {
-        gamePlay = new GamePlay();
+        MessageBox messageBox = new MessageBox();
+        gamePlay = new GamePlay(messageBox);
         utils = new Utils();
     }
 
