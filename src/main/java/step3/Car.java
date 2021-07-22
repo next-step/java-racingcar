@@ -17,4 +17,8 @@ public class Car {
 
         currentLocation += "-";
     }
+
+    public void showNowLocation() {
+        System.out.println(currentLocation);
+    }
 }
