@@ -113,4 +113,18 @@ class SimpleCalculatorTest {
         assertThatThrownBy(() -> sc.calc("1 @ 3 & 5 ^ 7 | 9"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("입력 문자열의 숫자와 사칙 연산 사이에 빈 공백 문자열이 없을 경우 IllegalArgumentException throw 테스트")
+    void throwIllegalArgumentExceptionIfNotExistSpaceBetweenNumberAndOperator() throws Exception {
+        assertThatThrownBy(() -> sc.calc("1+2"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("1+ 2"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("1 +2"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
