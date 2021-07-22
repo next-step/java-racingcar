@@ -15,9 +15,9 @@ public class RacingSolution {
         racingSolution.run();
     }
 
-    private InputView inputView;
-    private ResultView resultView;
-    private Cars cars;
+    private final InputView inputView;
+    private final ResultView resultView;
+    private final Cars cars;
     public RacingSolution(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
@@ -27,7 +27,7 @@ public class RacingSolution {
     public void run() {
         try {
             for (ActionRequest actionRequest = inputView.inputAction(); !actionRequest.isQuit(); actionRequest = inputView.inputAction()) {
-                racing(cars, actionRequest);
+                racing(actionRequest);
             }
         } catch (InvalidInputException e) {
             resultView.printException(e);
@@ -35,7 +35,7 @@ public class RacingSolution {
         }
     }
 
-    private void racing(Cars cars, ActionRequest request) {
+    private void racing(ActionRequest request) {
         resultView.printResultTitle();
         for (int i = 0; i < request.getTurnSize(); i++) {
             cars.moveAll(request.getAction() == InputAction.MOVE);

@@ -3,7 +3,7 @@ package racing.car;
 import static racing.car.DistanceRange.NOT_MOVEMENT;
 
 public class Distance extends Location {
-    private DistanceRange distanceRange;
+    private final DistanceRange distanceRange;
     private Distance(int distance, DistanceRange range) {
         super(range == NOT_MOVEMENT ? 0 : distance);
         this.distanceRange = range;

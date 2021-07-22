@@ -15,7 +15,7 @@ public class StringUtils {
     private enum RegexPattern {
         NUMBER_PATTERN("^[0-9]+$");
 
-        private String pattern;
+        private final String pattern;
 
         RegexPattern(String pattern) {
             this.pattern = pattern;

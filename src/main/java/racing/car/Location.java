@@ -36,9 +36,7 @@ public class Location {
         if (!(obj instanceof Location))
             return false;
         Location compareLocation = (Location) obj;
-        if (this.value != compareLocation.value)
-            return false;
-        return true;
+        return this.getValue() != compareLocation.getValue();
     }
 
     @Override

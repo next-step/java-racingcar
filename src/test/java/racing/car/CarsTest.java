@@ -1,28 +1,16 @@
 package racing.car;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import util.RandomUtils;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Random;
-import java.util.function.Predicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 class CarsTest {
-    private static Random random;
-
-    @BeforeAll
-    public static void setUp() {
-        random = new Random();
-    }
-
     private Cars initCars(int carSize) {
         Cars cars = new Cars();
         for (int i = 0; i < carSize; i++)

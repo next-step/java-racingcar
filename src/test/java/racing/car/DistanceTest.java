@@ -25,8 +25,8 @@ class DistanceTest {
     @DisplayName("new Instance IllegalArgumentException Test")
     @ParameterizedTest
     public void newInstanceTest_IllegalArgumentException(int value) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Distance distance = Distance.newInstance(value);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                Distance.newInstance(value)
+        );
     }
 }

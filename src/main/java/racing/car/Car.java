@@ -1,9 +1,5 @@
 package racing.car;
 
-import java.util.Arrays;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-
 public class Car {
     private Location location;
     private int moveCount;

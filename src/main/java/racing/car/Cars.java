@@ -5,8 +5,7 @@ import util.RandomUtils;
 import java.util.*;
 
 public class Cars implements Iterable<Car> {
-    private static final Random random = new Random();
-    private List<Car> values;
+    private final List<Car> values;
 
     public Cars() {
         this.values = new ArrayList<>();
@@ -23,7 +22,7 @@ public class Cars implements Iterable<Car> {
     private Distance randomDistance() {
         int randomValue = RandomUtils.nextInt(9);
         return Distance.newInstance(
-                randomValue >= 4 ? randomValue : DistanceRange.NOT_MOVEMENT.getValue()
+                randomValue >= 4 ? randomValue : DistanceRange.NOT_MOVEMENT_VALUE
         );
     }
 

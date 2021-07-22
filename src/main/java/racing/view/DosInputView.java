@@ -4,13 +4,12 @@ import racing.exception.InvalidInputException;
 import racing.view.request.ActionRequest;
 import util.StringUtils;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 import static racing.view.DosInputView.Text.*;
 
 public class DosInputView implements InputView {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public DosInputView() {
         this.scanner = new Scanner(System.in);
@@ -49,7 +48,7 @@ public class DosInputView implements InputView {
         INPUT_TURN_SIZE("시도할 회수는 몇 회 인가요?"),
         INPUT_ACTION("자동차를 움직일까요? (Y/N) (종료를 원하시면 Q를 입력 해주세요.)");
 
-        private String text;
+        private final String text;
 
         Text(String text) {
             this.text = text;

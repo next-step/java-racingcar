@@ -40,7 +40,7 @@ public class DosResultView implements ResultView {
         RESULT_TITLE("실행 결과"),
         EXCEPTION("[ERROR] %s");
 
-        private String text;
+        private final String text;
 
         Text(String text) {
             this.text = text;

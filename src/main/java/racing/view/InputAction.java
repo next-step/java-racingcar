@@ -6,7 +6,7 @@ import java.util.Optional;
 public enum InputAction {
     MOVE("Y"), SKIP("N"), QUIT("Q");
 
-    private String keyword;
+    private final String keyword;
 
     InputAction(String keyword) {
         this.keyword = keyword;

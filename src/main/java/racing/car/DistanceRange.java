@@ -2,7 +2,6 @@ package racing.car;
 
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public enum DistanceRange {
     BACK_MOVEMENT(0),
@@ -12,20 +11,17 @@ public enum DistanceRange {
 
     public static int NOT_MOVEMENT_VALUE = 0;
 
-    private int value;
+    private final int rangeMinValue;
 
-    DistanceRange(int value) {
-        this.value = value;
+    DistanceRange(int rangeMinValue) {
+        this.rangeMinValue = rangeMinValue;
     }
 
-    public int getValue() {
-        return value;
-    }
-
+    @SuppressWarnings("all")
     public static DistanceRange of(int distance) { // distance에 값에 따라 해당하는 범위의 객체 반환
         return Arrays.stream(values())
-                .filter(r -> distance < r.getValue())
+                .filter(r -> distance < r.rangeMinValue)
                 .findFirst()
-                .orElse(LIMIT_MOVEMENT);
+                .get(); // 절대 Null 아닌 Optional
     }
 }
