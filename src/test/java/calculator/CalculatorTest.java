@@ -52,4 +52,19 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"10 / 2:5", "-8 / -2:4", "5 / 2:2"}, delimiter = ':')
+    @DisplayName("/ 연산자가 있으면 나눗셈 결과가 반환되어야 한다.")
+    void divideTest(String input, int expected) {
+
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result = calculator.devide(input);
+
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
 }
