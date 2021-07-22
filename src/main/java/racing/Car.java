@@ -1,11 +1,11 @@
 package racing;
 
-public class CarModel {
+public class Car {
 
     private int carNumber;
     private String raceDistance;
 
-    public CarModel(int carNumber) {
+    public Car(int carNumber) {
         this.carNumber = carNumber;
         this.raceDistance = "";
     }

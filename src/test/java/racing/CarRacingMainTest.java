@@ -1,10 +1,8 @@
 package racing;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,7 +42,7 @@ public class CarRacingMainTest {
     @Test
     @DisplayName("경주에 참가할 자동차 대수를 입력하면 대수만큼 자동차가 생성된다.")
     public void create_carModel() {
-        List<CarModel> carModelList = CarRacingMain.createCarByNumber(4);
+        List<Car> carModelList = CarRacingMain.createCarByNumber(4);
 
         assertThat(carModelList).extracting("carNumber").containsExactly(1, 2, 3, 4);
         assertThat(carModelList.size()).isEqualTo(4);

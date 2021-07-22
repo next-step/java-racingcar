@@ -11,7 +11,7 @@ public class CarRacingMain {
     private static final String secondRequest = "시도할 회수는 몇 회 인가요?";
     private static final int randomValue = 10;
     private static final int racingConditionValue = 3;
-    private static List<CarModel> carModelList = new ArrayList<>();
+    private static List<Car> carModelList = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -44,9 +44,9 @@ public class CarRacingMain {
         }
     }
 
-    public static List<CarModel> createCarByNumber(int totalCarNumber) {
+    public static List<Car> createCarByNumber(int totalCarNumber) {
         for (int i = 0; i < totalCarNumber; i++) {
-            CarModel carModel = new CarModel(i + 1);
+            Car carModel = new Car(i + 1);
             carModelList.add(carModel);
         }
         return carModelList;
@@ -60,7 +60,7 @@ public class CarRacingMain {
     }
 
     public static void racing() {
-        for (CarModel carModel : carModelList) {
+        for (Car carModel : carModelList) {
             carModel.carRacingAct(getRaceDistance(randomValue()));
         }
         System.out.println();
