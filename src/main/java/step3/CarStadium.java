@@ -22,6 +22,10 @@ public class CarStadium {
         }
     }
 
+    public void showCarsLocation() {
+        cars.forEach(Car::showNowLocation);
+    }
+
     public int getLimitTime() {
         return limitTime;
     }
