@@ -4,16 +4,16 @@ import util.calculator.StringCalculator;
 
 import java.util.Scanner;
 
-public class Solution {
+public class CalculatorSolution {
     public static void main(String[] args) {
-        Solution solution = new Solution(
+        CalculatorSolution calculatorSolution = new CalculatorSolution(
                 new StringCalculator()
         );
-        solution.run();
+        calculatorSolution.run();
     }
 
     private Calculator calculator;
-    public Solution(Calculator calculator) {
+    public CalculatorSolution(Calculator calculator) {
         this.calculator = calculator;
     }
 
