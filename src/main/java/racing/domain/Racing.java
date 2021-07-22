@@ -7,30 +7,28 @@ import java.util.Random;
 public class Racing {
 
 	private final int carCount;
-	private final int tryCount;
 	private List<Car> cars;
 
 	private final int COMPARE_VALUE = 4;
 
-	public Racing(int carCount, int tryCount) {
+	public Racing(int carCount) {
 		this.carCount = carCount;
-		this.tryCount = tryCount;
 	}
 
-	public List<Car> start() {
+	public void init() {
 		cars = new ArrayList<>(carCount);
 
-		for (int i = 0; i < tryCount; i++) {
-			move();
+		for (int i = 0; i < carCount; i++) {
+			cars.add(new Car());
 		}
-
-		return cars;
 	}
 
-	private void move() {
+	public List<Car> move() {
 		for (Car car : cars) {
 			moveCar(car, getRandomValue());
 		}
+
+		return cars;
 	}
 
 	private void moveCar(Car car, int randomValue) {
@@ -40,7 +38,7 @@ public class Racing {
 	}
 
 	private int getRandomValue() {
-		Random random = new Random(System.currentTimeMillis());
+		Random random = new Random();
 
 		return random.nextInt(10);
 	}
