@@ -1,18 +1,17 @@
 package racingcar.vehicle;
 
-import racingcar.Distance;
 import racingcar.engine.Engine;
 
 public class Car {
 
     private final Engine engine;
-    private final String name;
+    private final CarName name;
 
     private Distance distance;
 
     public Car(Engine engine, String name, Distance distance) {
         this.engine = engine;
-        this.name = name;
+        this.name = new CarName(name);
         this.distance = distance;
     }
 
@@ -22,7 +21,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getDistance() {

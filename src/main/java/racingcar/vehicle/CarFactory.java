@@ -1,6 +1,5 @@
 package racingcar.vehicle;
 
-import racingcar.Distance;
 import racingcar.engine.CarEngine;
 import racingcar.engine.Engine;
 

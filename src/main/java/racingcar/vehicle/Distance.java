@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.vehicle;
 
 import java.util.Objects;
 import racingcar.common.ErrorMessage;
