@@ -13,7 +13,7 @@ public class Referee {
         return remainTime == limitTime;
     }
 
-    public void secondHasPassed() {
+    public void hasPassedTime() {
         this.remainTime++;
     }
 
