@@ -16,7 +16,11 @@ public class InputView {
         int attempt = sc.nextInt();
         Race race = new Race();
         while (attempt-- >0){
-            race.car(count,cars);
+            String[] result = race.car(count, cars);
+            for (String s : result){
+                System.out.println(s);
+            }
+            System.out.println();
         }
     }
 }
