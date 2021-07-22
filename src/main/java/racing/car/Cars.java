@@ -16,14 +16,11 @@ public class Cars implements Iterable<Car> {
         if (!movement)
             return;
         for (Car iCar : values) {
-            iCar.move(randomDistance(movement));
+            iCar.move(randomDistance());
         }
     }
 
-    private Location randomDistance(boolean movement) {
-        if (!movement)
-            return Location.EMPTY;
-
+    private Location randomDistance() {
         int randomValue = RandomUtils.nextInt(9);
         return new Location(
                 randomValue >= 4 ? randomValue : Car.MovementDistance.NOT_MOVEMENT_VALUE.getValue()
