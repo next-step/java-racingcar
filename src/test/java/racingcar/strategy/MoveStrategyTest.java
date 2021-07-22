@@ -23,8 +23,8 @@ class MoveStrategyTest {
 
     private static Stream<Arguments> isMovable() {
         return Stream.of(
-                Arguments.of(Fixture.neverMoveStrategy(), false),
-                Arguments.of(Fixture.alwaysMoveStrategy(), true)
+                Arguments.of(Fixture.NEVER_MOVE_STRATEGY, false),
+                Arguments.of(Fixture.ALWAYS_MOVE_STRATEGY, true)
         );
     }
 }

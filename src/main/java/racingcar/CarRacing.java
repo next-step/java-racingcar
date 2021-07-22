@@ -13,12 +13,12 @@ public class CarRacing {
     private final Cars cars;
     private int currentRound;
 
-    private CarRacing(int numberOfCars, int totalRound) {
+    private CarRacing(int totalRound, String... names) {
         validate(totalRound);
 
         this.totalRound = totalRound;
         this.currentRound = 0;
-        this.cars = Cars.from(numberOfCars);
+        this.cars = Cars.init(names);
     }
 
     private void validate(int totalRound) {
@@ -28,7 +28,7 @@ public class CarRacing {
     }
 
     public static CarRacing init(RacingCarInitParam racingCarInitParam) {
-        return new CarRacing(racingCarInitParam.getNumberOfCars(), racingCarInitParam.getTotalRound());
+        return new CarRacing(racingCarInitParam.getTotalRound(), racingCarInitParam.getNames());
     }
 
     public void race(MoveStrategy moveStrategy) {
@@ -46,5 +46,9 @@ public class CarRacing {
 
     public List<CarDto> currentState() {
         return cars.getCarDtos();
+    }
+
+    public List<String> getLeaders() {
+        return cars.getLeaders();
     }
 }

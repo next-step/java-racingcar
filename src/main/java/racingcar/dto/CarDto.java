@@ -6,11 +6,13 @@ import java.util.Objects;
 
 public class CarDto {
     private final int position;
+    private final String name;
 
     private CarDto(Car car) {
         validate(car);
 
         this.position = car.currentPosition();
+        this.name = car.name();
     }
 
     private void validate(Car car) {
@@ -25,5 +27,9 @@ public class CarDto {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

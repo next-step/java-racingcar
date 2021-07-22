@@ -14,7 +14,7 @@ class CarDtoTest {
     @DisplayName("CarDto 는 Car 객체를 가지고 초기화 한다.")
     @Test
     void initCarDto() {
-        Car car = Car.newInstance();
+        Car car = Fixture.testCar();
 
         assertThat(CarDto.from(car)).isNotNull();
     }
@@ -28,15 +28,23 @@ class CarDtoTest {
     @DisplayName("CarDto 는 Car 객체의 position 값을 그대로 리턴한다.")
     @Test
     void carDtoHasPosition() {
-        Car car = Car.newInstance();
+        Car car = Fixture.testCar();
 
         CarDto carDto = CarDto.from(car);
         assertThat(carDto.getPosition()).isEqualTo(0);
 
-        car.move(Fixture.alwaysMoveStrategy());
+        car.move(Fixture.ALWAYS_MOVE_STRATEGY);
 
         carDto = CarDto.from(car);
         assertThat(carDto.getPosition()).isEqualTo(1);
     }
 
+    @DisplayName("전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.(뷰와 연관 되어있으므로 DTO가 이름을 가지고 있는지만 테스트)")
+    @Test
+    void carDtoHasName() {
+        Car car = Fixture.testCar();
+        CarDto carDto = CarDto.from(car);
+
+        assertThat(carDto.getName()).isEqualTo(car.name());
+    }
 }

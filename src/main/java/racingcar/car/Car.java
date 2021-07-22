@@ -1,22 +1,43 @@
 package racingcar.car;
 
+import calculator.utils.StringUtils;
 import racingcar.strategy.MoveStrategy;
 
 import java.util.Objects;
 
 public class Car {
+    private static final int NAME_LIMIT = 5;
+
+    private final String name;
     private int position;
 
-    private Car() {
+    private Car(String name) {
+        validate(name);
+
         this.position = 0;
+        this.name = name;
     }
 
-    public static Car newInstance() {
-        return new Car();
+    private void validate(String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new IllegalArgumentException("Car name can't be null or empty value");
+        }
+
+        if (name.length() > NAME_LIMIT) {
+            throw new IllegalArgumentException("Car name must equal or less than " + NAME_LIMIT);
+        }
+    }
+
+    public static Car from(String name) {
+        return new Car(name);
     }
 
     public int currentPosition() {
         return position;
+    }
+
+    public String name() {
+        return name;
     }
 
     public void move(MoveStrategy moveStrategy) {
@@ -31,5 +52,9 @@ public class Car {
         if (Objects.isNull(moveStrategy)) {
             throw new IllegalArgumentException("MoveStrategy can't be null");
         }
+    }
+
+    public boolean isSamePosition(int comparePosition) {
+        return currentPosition() == comparePosition;
     }
 }
