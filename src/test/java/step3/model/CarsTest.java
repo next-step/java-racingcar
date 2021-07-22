@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -30,11 +33,11 @@ class CarsTest {
         for (int i = 0; i < 10; i++) {
             cars.moveCars();
         }
-
+        List<Integer> expectList = Arrays.asList(new Integer[]{1,1,1});
         assertThat(cars.getCars())
                 .hasSize(3)
                 .extracting(Car::getPosition)
-                .isNotEqualTo(1);
+                .isNotEqualTo(expectList);
     }
 
     @DisplayName("차 생성 안하고 주행시작")
@@ -43,5 +46,17 @@ class CarsTest {
         assertThatExceptionOfType(IllegalStateException.class).isThrownBy(
                 () -> cars.moveCars()
         ).withMessageContaining("먼저 생성");
+    }
+
+    @DisplayName("첫 주행 무조건 한칸전진")
+    @Test
+    void firstMovementTest(){
+        cars.makeCars(3);
+
+        cars.firstMovement();
+        List<Integer> expectList = Arrays.asList(new Integer[]{1,1,1});
+        assertThat(cars.getCars())
+                .extracting(Car::getPosition)
+                .isEqualTo(expectList);
     }
 }
