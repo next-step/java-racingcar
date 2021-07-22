@@ -13,6 +13,6 @@ public class Car {
 
     public void move(Fuel fuel) {
         if (fuel.isMovable())
-            this.location = location.add(Distance.DEFAULT);
+            this.location = location.add(Location.ONE_BLOCK);
     }
 }
