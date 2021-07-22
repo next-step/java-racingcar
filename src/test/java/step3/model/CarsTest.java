@@ -34,7 +34,7 @@ class CarsTest {
         assertThat(cars.getCars())
                 .hasSize(3)
                 .extracting(Car::getPosition)
-                .isNotEqualTo(0);
+                .isNotEqualTo(1);
     }
 
     @DisplayName("차 생성 안하고 주행시작")

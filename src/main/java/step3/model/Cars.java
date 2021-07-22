@@ -30,4 +30,5 @@ public class Cars {
             throw new IllegalStateException("자동차를 먼저 생성해 주세요.");
         }
     }
+
 }

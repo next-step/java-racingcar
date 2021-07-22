@@ -20,7 +20,7 @@ class CarTest {
     @DisplayName("자동차 초기값 확인")
     @Test
     void initPositionTest(){
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName("차 위치 변경")
@@ -30,10 +30,10 @@ class CarTest {
         int notMove = 3;
 
         car.move(move);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(2);
 
         car.move(notMove);
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @DisplayName("차 움직임 음수값")
