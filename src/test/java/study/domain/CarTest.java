@@ -6,14 +6,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.calculator.Common.toInt;
+import static study.common.Common.toInt;
 
 class CarTest {
 
     @Test
     void 차량기본생성테스트() {
         Car car = Car.createCar();
-        System.out.println("car = " + car.getDistance().getMove());
         assertThat(car.getDistance().getMove()).isEqualTo(0);
     }
 

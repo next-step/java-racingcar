@@ -1,22 +1,31 @@
 package study.service;
 
+import study.validation.Validation;
 import study.domain.Car;
 import study.domain.Cars;
 
 import java.util.List;
 
-import static study.calculator.Common.*;
+import static study.common.Common.*;
 
 public class Racing {
 
     private Cars cars;
 
-    public void setGameCount(int carCount, int roundCount) {
-        this.cars = new Cars(carCount);
+    public void setGameCount(String carCount, String roundCount) {
 
-        for(int i = 0; i < roundCount; i++){
+        validationValues(carCount, roundCount);
+
+        this.cars = new Cars(toInt(carCount));
+
+        for(int i = 0; i < toInt(roundCount); i++){
             movingCars(cars);
         }
+    }
+
+    private void validationValues(String carCount, String roundCount) {
+        Validation.checkValue(carCount);
+        Validation.checkValue(roundCount);
     }
 
     private void movingCars(Cars cars) {

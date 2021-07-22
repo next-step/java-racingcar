@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.calculator.Common;
+import study.common.Common;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.calculator.Common.toInt;
+import static study.common.Common.toInt;
 
 class DistanceTest {
 
