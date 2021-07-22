@@ -7,7 +7,7 @@ public class Common {
 
     private static final Random random = new Random();
 
-    private static final int LIMIT_NUMBER = 4;
+    private static final int RANDOM_MAX_NUMBER = 10;
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -16,27 +16,19 @@ public class Common {
     }
 
     public static int createRandomNumber(){
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_MAX_NUMBER);
     }
 
-    public static Boolean checkMoveableCar(int targetNumber) {
-        return targetNumber >= LIMIT_NUMBER;
+    public static int inputValueWithMessage(String message) {
+        printMessage(message);
+        return toInt(scanner.nextLine());
     }
 
-    public static void drawDisplay(int moveDistance) {
-        StringBuilder carModel = new StringBuilder();
-
-        for(int i = 0; i < moveDistance; i++){
-            carModel.append("-");
-        }
-
-        //output => start|
-        System.out.println(Message.MSG_RESULT_FORM + carModel);
-
+    public static void printMessage(String text) {
+        System.out.println(text);
     }
 
-    public static String inputValueWithMessage(String message) {
-        System.out.println(message);
-        return scanner.nextLine();
+    public static void printNewLine() {
+        System.out.print("\n");
     }
 }

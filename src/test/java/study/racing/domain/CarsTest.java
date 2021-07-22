@@ -14,7 +14,7 @@ class CarsTest {
     void 입력값만큼차량생성(String input, String expected) {
         Cars cars = new Cars(toInt(input));
 
-        assertThat(cars.getCars()).extracting(car -> car.getDistance().getMove()).containsExactly(toInt(expected));
+        assertThat(cars.getCars()).extracting(car -> car.getDistance().getMoveDistance()).containsExactly(toInt(expected));
     }
 
     @DisplayName("N개의 자동차를 랜덤한 거리만큼 각각 이동하게하여 생성 테스트.")

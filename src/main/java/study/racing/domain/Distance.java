@@ -2,19 +2,12 @@ package study.racing.domain;
 
 public class Distance {
 
-    private static final int DEFAULT_DISTANCE = 0;
-
-    int moveDistance;
-
-    public Distance(int moveDistance) {
-        this.moveDistance = moveDistance;
-    }
+    private int moveDistance;
 
     public Distance() {
-        this.moveDistance = DEFAULT_DISTANCE;
     }
 
-    public int getMove() {
+    public int getMoveDistance() {
         return moveDistance;
     }
 

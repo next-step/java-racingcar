@@ -20,4 +20,8 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public void moveTheCar(){
+        cars.forEach(car -> car.moveTheCar());
+    }
 }
