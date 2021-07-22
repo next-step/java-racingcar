@@ -11,7 +11,13 @@ public class RacingCarMain {
         String carNames = InputView.inputString(CAR_NAME_INPUT_MESSAGE);
         int driveCount = InputView.inputInteger(DRIVE_COUNT_INPUT_MESSAGE);
 
+        System.out.println();
+        System.out.println("실행 결과");
+
         Game game = new Game(carNames, driveCount);
-        game.doGame();
+        for (int i = 0; i < game.getDriveCount(); i++) {
+            game.playingDrive();
+            game.printProgress();
+        }
     }
 }

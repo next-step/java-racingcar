@@ -6,11 +6,14 @@ public class ResultView {
 
     private static final char PRINT_FLAG = '-';
 
-    public static void pirntProgressBoard(Cars cars) {
+    public static void pirntProgress(Cars cars) {
         for (int i = 0; i < cars.size(); i++) {
-            System.out.println(getDistanceString(cars.getDistance(i)));
+            String carName = cars.getCarName(i);
+            int distance = cars.getDistance(i);
+
+            System.out.println(carName + " : " + getDistanceString(distance));
         }
-        System.out.println("==========");
+        System.out.println();
     }
 
     private static String getDistanceString(int distance) {

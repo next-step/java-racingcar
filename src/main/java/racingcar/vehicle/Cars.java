@@ -20,6 +20,10 @@ public class Cars {
         return cars.size();
     }
 
+    public String getCarName(int index) {
+        return cars.get(index).getName();
+    }
+
     public int getDistance(int index) {
         return cars.get(index).getDistance();
     }

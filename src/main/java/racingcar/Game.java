@@ -13,14 +13,26 @@ public class Game {
 
     public Game(String carNames, int driveCount) {
         Arrays.stream(carNames.split(","))
-            .forEach(carName -> cars.add(CarFactory.create("test")));
+            .forEach(carName -> cars.add(CarFactory.create(carName)));
         this.driveCount = driveCount;
+    }
+
+    public void playingDrive() {
+        cars.doDrive();
+    }
+
+    public void printProgress() {
+        ResultView.pirntProgress(cars);
     }
 
     public void doGame() {
         for (int i = 0; i < driveCount; i++) {
             cars.doDrive();
-            ResultView.pirntProgressBoard(cars);
+            ResultView.pirntProgress(cars);
         }
+    }
+
+    public int getDriveCount() {
+        return driveCount;
     }
 }
