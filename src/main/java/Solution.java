@@ -22,6 +22,7 @@ public class Solution {
             try{
                 validInput(cmd);
                 Calculator cal = new Calculator(cmd);
+                cal.calc();
             } catch (Exception e){
                 System.out.println(e.getMessage());
             }
