@@ -3,6 +3,7 @@ package racingCar.domain;
 public class Distance {
 
     private final int distance;
+    private final static int ADD = 1;
 
     public Distance() {
         this.distance = 0;
@@ -13,7 +14,7 @@ public class Distance {
     }
 
     public Distance addDistance() {
-        return new Distance(this.distance + 1);
+        return new Distance(this.distance + ADD);
     }
 
     public int getDistance() {

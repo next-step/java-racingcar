@@ -1,7 +1,5 @@
 package racingCar.domain;
 
-import racingCar.util.RandomNumber;
-
 public class Car {
 
     private final Distance distance;
