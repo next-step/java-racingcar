@@ -5,16 +5,19 @@ import java.util.List;
 
 public class Car {
     private static final int GO_VALUE = 4;
+    private final String name;
+
     private int moveSpace;
 
-    public Car(int moveSpace) {
+    public Car(String name, int moveSpace) {
+        this.name = name;
         this.moveSpace = moveSpace;
     }
 
-    public static List<Car> createCars(int carNumber) {
+    public static List<Car> createCars(String[] carNames, int carNumber) {
         List<Car> cars = new ArrayList<>();
         for(int i = 0; i < carNumber; i++) {
-            cars.add(new Car(0));
+            cars.add(new Car(carNames[i], 0));
         }
         return cars;
     }
@@ -33,5 +36,9 @@ public class Car {
     public int move(int randomValue) {
         moveSpace += advanceOrStop(randomValue);
         return moveSpace;
+    }
+
+    public String getName() {
+        return name;
     }
 }
