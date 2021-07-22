@@ -1,16 +1,16 @@
 package racingcar.param;
 
-public class RacingCarInitParam {
+public class CarRacingInitParams {
     private final String[] names;
     private final int totalRound;
 
-    private RacingCarInitParam(int totalRound, String... names) {
+    private CarRacingInitParams(int totalRound, String... names) {
         this.totalRound = totalRound;
         this.names = names;
     }
 
-    public static RacingCarInitParam of(int totalRound, String... names) {
-        return new RacingCarInitParam(totalRound, names);
+    public static CarRacingInitParams of(int totalRound, String... names) {
+        return new CarRacingInitParams(totalRound, names);
     }
 
     public int getTotalRound() {

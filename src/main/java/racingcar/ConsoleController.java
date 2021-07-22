@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.param.RacingCarInitParam;
+import racingcar.param.CarRacingInitParams;
 import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -10,9 +10,9 @@ public class ConsoleController {
     public static void main(String[] args) {
         String[] carNames = InputView.inputCarNames();
         int totalRound = InputView.inputRound();
-        RacingCarInitParam racingCarInitParam = RacingCarInitParam.of(totalRound, carNames);
+        CarRacingInitParams carRacingInitParams = CarRacingInitParams.of(totalRound, carNames);
 
-        CarRacing carRacing = CarRacing.init(racingCarInitParam);
+        CarRacing carRacing = CarRacing.init(carRacingInitParams);
 
         ResultView.printResultStatement();
 

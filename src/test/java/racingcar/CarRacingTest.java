@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.dto.CarDto;
 import racingcar.helper.Fixture;
-import racingcar.param.RacingCarInitParam;
+import racingcar.param.CarRacingInitParams;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -20,7 +20,7 @@ class CarRacingTest {
     @DisplayName("레이싱 카 게임은 차의 이름과 라운드 수 를 가지고 초기화 한다.")
     @Test
     void init_temp() {
-        assertThat(CarRacing.init(RacingCarInitParam.of(5, "nok", "cha", "x"))).isNotNull();
+        assertThat(CarRacing.init(CarRacingInitParams.of(5, "nok", "cha", "x"))).isNotNull();
     }
 
     @DisplayName("총 라운드 수는 1 이상이다.")
