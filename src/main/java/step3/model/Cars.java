@@ -1,5 +1,7 @@
 package step3.model;
 
+import step3.RacingApp;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,10 @@ public class Cars {
         if(cars == null || cars.size() == 0){
             throw new IllegalStateException("자동차를 먼저 생성해 주세요.");
         }
+    }
+
+    public void firstMovement(){
+        cars.stream().forEach(car -> car.move(RacingApp.MOVE_BOUNDARY));
     }
 
 }
