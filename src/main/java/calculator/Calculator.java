@@ -6,17 +6,17 @@ import java.util.List;
 
 public class Calculator {
 
-    private final List<Integer> numberQueue = new ArrayList<>();
-    private final List<Operator> operatorQueue = new ArrayList<>();
+    private final List<Integer> numbers = new ArrayList<>();
+    private final List<Operator> operators = new ArrayList<>();
 
     public void updateExpression(String expressionString) {
         List<String> elements = Arrays.asList(expressionString.split(" "));
         try {
-            numberQueue.add(Integer.valueOf((elements.get(0))));
+            numbers.add(Integer.valueOf((elements.get(0))));
 
             for (int i = 1; i < elements.size(); i = i + 2) {
-                operatorQueue.add(Operator.find(elements.get(i)));
-                numberQueue.add(Integer.valueOf((elements.get(i + 1))));
+                operators.add(Operator.find(elements.get(i)));
+                numbers.add(Integer.valueOf((elements.get(i + 1))));
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
             throw new IllegalArgumentException("계산할 수 없는 계산식 입니다.");
@@ -28,12 +28,12 @@ public class Calculator {
     }
 
     public int calculate() {
-        int result = numberQueue.get(0);
+        int result = numbers.get(0);
         for (int operatorIndex = 0, numberIndex = 1;
-            operatorIndex < operatorQueue.size();
+            operatorIndex < operators.size();
             operatorIndex++, numberIndex++) {
-            Operator operator = operatorQueue.get(operatorIndex);
-            int number = numberQueue.get(numberIndex);
+            Operator operator = operators.get(operatorIndex);
+            int number = numbers.get(numberIndex);
             result = operator.calculate(result, number);
         }
 
@@ -41,11 +41,11 @@ public class Calculator {
     }
 
     private boolean validation() {
-        if (numberQueue.size() < 1) {
+        if (numbers.size() < 1) {
             return false;
         }
 
-        if (numberQueue.size() != operatorQueue.size() + 1) {
+        if (numbers.size() != operators.size() + 1) {
             return false;
         }
 
