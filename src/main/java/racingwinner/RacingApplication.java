@@ -1,8 +1,8 @@
-package ragingwinner;
+package racingwinner;
 
-import ragingwinner.service.CarService;
-import ragingwinner.ui.InputView;
-import ragingwinner.ui.ResultView;
+import racingwinner.service.CarService;
+import racingwinner.ui.InputView;
+import racingwinner.ui.ResultView;
 
 public class RacingApplication {
 

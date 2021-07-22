@@ -1,4 +1,4 @@
-package ragingwinner.ui;
+package racingwinner.ui;
 
 import java.util.Scanner;
 

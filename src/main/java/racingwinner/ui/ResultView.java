@@ -1,6 +1,6 @@
-package ragingwinner.ui;
+package racingwinner.ui;
 
-import ragingwinner.domain.Car;
+import racingwinner.domain.Car;
 
 import java.util.List;
 

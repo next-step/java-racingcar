@@ -1,6 +1,6 @@
-package ragingwinner.service;
+package racingwinner.service;
 
-import ragingwinner.domain.Car;
+import racingwinner.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;

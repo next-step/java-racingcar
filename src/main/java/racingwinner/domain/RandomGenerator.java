@@ -1,4 +1,4 @@
-package ragingwinner.domain;
+package racingwinner.domain;
 
 import java.util.Random;
 
