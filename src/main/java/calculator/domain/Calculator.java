@@ -4,59 +4,54 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import utils.StringUtils;
 
 public class Calculator {
 
     public static final String SPACE = "\\s+";
 
-    public static int calculate(String input) {
-        if (StringUtils.isNullOrBlank(input)) {
+    public static int calculate(String text) {
+        if (StringUtils.isNullOrBlank(text)) {
             throw new IllegalArgumentException("입력값이 비어 있습니다.");
         }
-        return calculate(splitTokens(input));
+        List<String> tokens = splitTokens(text);
+        Queue<Operation> operations = operationsFromTokens(tokens);
+        Queue<Integer> numbers = numbersFromTokens(tokens);
+        return calculate(operations, numbers);
     }
 
-    private static int calculate(List<String> tokens) {
-        Queue<String> tokensQueue = new LinkedList<>(tokens);
-        int result = removeIntFromQueue(tokensQueue);
-        while (!tokensQueue.isEmpty()) {
-            String operator = tokensQueue.remove();
-            int number = removeIntFromQueue(tokensQueue);
-            result = calculate(result, number, operator);
+    private static int calculate(Queue<Operation> operations, Queue<Integer> numbers) {
+        int result = numbers.remove();
+        while (!operations.isEmpty()) {
+            Operation op = operations.remove();
+            int number = numbers.remove();
+            result = op.apply(result, number);
         }
         return result;
     }
 
-    private static int removeIntFromQueue(Queue<String> tokensQueue) {
-        return Integer.parseInt(tokensQueue.remove());
+    private static Queue<Operation> operationsFromTokens(List<String> tokens) {
+        return IntStream
+                .range(0, tokens.size())
+                .filter(i -> i % 2 != 0)
+                .mapToObj(tokens::get)
+                .map(token -> BasicOperation.fromString(token)
+                        .orElseThrow(IllegalArgumentException::new))
+                .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    private static Queue<Integer> numbersFromTokens(List<String> tokens) {
+        return IntStream
+                .range(0, tokens.size())
+                .filter(i -> i % 2 == 0)
+                .mapToObj(tokens::get)
+                .map(Integer::parseInt)
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     private static List<String> splitTokens(String input) {
         return Arrays.asList(input.split(SPACE));
-    }
-
-    private static int calculate(int first, int second, String operator) {
-        validateOperator(operator);
-        if (operator.equals("+")) {
-            return first + second;
-        } else if (operator.equals("-")) {
-            return first - second;
-        } else if (operator.equals("*")) {
-            return first * second;
-        } else if (operator.equals("/")) {
-            return first / second;
-        }
-        return 0;
-    }
-
-    private static void validateOperator(String operator) {
-        if (StringUtils.isNullOrBlank(operator)) {
-            throw new IllegalArgumentException("연산자가 비어 있습니다.");
-        }
-        if (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator
-                .equals("/")) {
-            throw new IllegalArgumentException("사칙 연산만이 가능합니다");
-        }
     }
 }

@@ -3,6 +3,7 @@ package calculator.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -35,5 +36,11 @@ public class CalculatorTest {
     @CsvSource({"2 + 3 * 4 / 2,10", "3 * 4 / 6 - 1,1"})
     void mixed_operations(String input, int expected) {
         assertThat(Calculator.calculate(input)).isEqualTo(expected);
+    }
+
+    @Test
+    void invalid_operation() {
+        assertThatThrownBy(() -> Calculator.calculate("2 * 3 ^ 7"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
