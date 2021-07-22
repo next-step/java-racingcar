@@ -1,47 +1,47 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.IntStream;
-import racingcar.common.InputMessage;
-import racingcar.view.InputView;
+import java.util.stream.Collectors;
+import racingcar.vehicle.Car;
+import racingcar.vehicle.CarFactory;
+import racingcar.vehicle.Cars;
 import racingcar.view.ResultView;
 
 public class Game {
 
-    private final InputView inputView = new InputView();
-    private final ResultView resultView = new ResultView();
-
-    private final Random random = new Random();
-
-    private final int carCount;
     private final int driveCount;
 
-    private final List<Car> cars = new ArrayList<>();
+    private final Cars cars;
 
-    public Game() {
-        carCount = inputView.inputInteger(InputMessage.CAR_COUNT);
-        driveCount = inputView.inputInteger(InputMessage.DRIVE_COUNT);
+    public Game(String carNames, int driveCount) {
+        List<Car> cars = Arrays.stream(carNames.split(","))
+            .map(CarFactory::create)
+            .collect(Collectors.toList());
 
-        IntStream.range(0, carCount).forEach(i -> cars.add(new Car()));
-    }
-
-    public Game(int carCount, int driveCount) {
-        this.carCount = carCount;
+        this.cars = new Cars(cars);
         this.driveCount = driveCount;
-
-        IntStream.range(0, carCount).forEach(i -> cars.add(new Car()));
     }
 
-    public void doGame() {
-        for (int i = 0; i < driveCount; i++) {
-            doDrive(cars);
-            resultView.pirntProgressBoard(cars);
+    public void playingDrive() {
+        cars.doDrive();
+    }
+
+    public void printProgress() {
+        ResultView.pirntProgress(cars);
+    }
+
+    public Cars getWinners() {
+        int farthestDistance = cars.getFarthestDistance();
+
+        if (farthestDistance == 0) {
+            return cars;
         }
+
+        return cars.findByDistance(farthestDistance);
     }
 
-    private void doDrive(List<Car> cars) {
-        cars.forEach(car -> car.drive(random.nextInt(10)));
+    public int getDriveCount() {
+        return driveCount;
     }
 }

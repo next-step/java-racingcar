@@ -1,24 +1,33 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.Car;
+import racingcar.vehicle.Cars;
 
 public class ResultView {
 
-    private final char distanceFlag = '-';
+    private static final char PRINT_FLAG = '-';
 
-    public void pirntProgressBoard(List<Car> cars) {
-        cars.forEach(car -> System.out.println(getPirntDistance(car)));
-        System.out.println("==========");
+    public static void printWinners(List<String> carNames) {
+        String winnerNames = String.join(",", carNames);
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 
-    private String getPirntDistance(Car car) {
-        StringBuilder printDistance = new StringBuilder();
+    public static void pirntProgress(Cars cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            String carName = cars.getCarName(i);
+            int distance = cars.getDistance(i);
 
-        for (int i = 0; i < car.getDistance(); i++) {
-            printDistance.append(distanceFlag);
+            System.out.println(carName + " : " + getDistanceString(distance));
+        }
+    }
+
+    private static String getDistanceString(int distance) {
+        StringBuilder distanceString = new StringBuilder();
+
+        for (int i = 0; i < distance; i++) {
+            distanceString.append(PRINT_FLAG);
         }
 
-        return printDistance.toString();
+        return distanceString.toString();
     }
 }
