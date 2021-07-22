@@ -2,13 +2,23 @@ package study.domain;
 
 public class Distance {
 
-    int move;
+    private static final int DEFAULT_DISTANCE = 0;
 
-    public Distance(int move) {
-        this.move = move;
+    int moveDistance;
+
+    public Distance(int moveDistance) {
+        this.moveDistance = moveDistance;
+    }
+
+    public Distance() {
+        this.moveDistance = DEFAULT_DISTANCE;
     }
 
     public int getMove() {
-        return move;
+        return moveDistance;
+    }
+
+    public void move() {
+        moveDistance += 1;
     }
 }
