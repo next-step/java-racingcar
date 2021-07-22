@@ -11,7 +11,7 @@ public class StringCalculator {
     public enum Operator {
         ADD("+"), SUBTRACT("-"), MULTIPLY("*"), DIVIDE("/");
 
-        private String operator;
+        private final String operator;
 
         private Operator(String operator) {
             this.operator = operator;
@@ -68,7 +68,7 @@ public class StringCalculator {
                 divide(postElement);
                 continue;
             }
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(); //숫자나 사칙연산 이외의 입력값 예외처리
         }
         return answer;
     }
