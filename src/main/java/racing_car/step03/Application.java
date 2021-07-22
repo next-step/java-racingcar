@@ -11,6 +11,7 @@ public class Application {
         String[] cars = new String[carCount];
         Arrays.fill(cars, "");
         Race race = new Race();
+        ResultView.print();
         for (int i = 0; i < tryCount; i++) {
             race.execute(cars);
             ResultView.result(cars);
