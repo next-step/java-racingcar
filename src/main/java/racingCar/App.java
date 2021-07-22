@@ -6,7 +6,10 @@ import racingCar.view.ResultView;
 
 public class App {
     public static void main(String[] args) {
-        Cars cars = InputView.start();
+        int carCount = InputView.getCarCount();
+        int playCount = InputView.getPlayCount();
+
+        Cars cars = new Cars(carCount, playCount);
         ResultView.printCars(cars);
     }
 }

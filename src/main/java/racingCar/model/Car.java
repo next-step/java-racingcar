@@ -15,4 +15,10 @@ public class Car {
         }
         return location;
     }
+
+    public void printLocation(){
+        for(int i=0; i<location; i++){
+            System.out.print("-");
+        }
+    }
 }
