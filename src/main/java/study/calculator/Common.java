@@ -51,4 +51,7 @@ public class Common {
         return word;
     }
 
+    public static int toInt(String value) {
+        return Integer.parseInt(value);
+    }
 }
