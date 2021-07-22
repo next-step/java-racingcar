@@ -3,7 +3,7 @@ package stringcalculator.util;
 import stringcalculator.enumeration.Operation;
 
 public class OperationUtil {
-    
+
     public static int calculate(String[] userInputArray) {
 
         int leftNum;
