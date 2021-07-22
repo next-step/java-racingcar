@@ -1,6 +1,6 @@
 package step3.view;
 
-import step3.race.Race;
+import step3.action.Race;
 
 public class ResultView {
 

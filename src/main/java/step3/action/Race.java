@@ -1,4 +1,4 @@
-package step3.race;
+package step3.action;
 
 import step3.model.Car;
 import step3.model.Cars;
