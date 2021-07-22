@@ -34,8 +34,8 @@ public class CalcTest {
     }
 
     @Test
-    @DisplayName("divided test")
-    void dividedTest() {
+    @DisplayName("divide test")
+    void divideTest() {
         assertThat(calculation.calculate(3, 3, "/")).isEqualTo(1);
     }
 
