@@ -1,10 +1,6 @@
 package racing.car;
 
-import util.RandomUtils;
-import util.StringUtils;
-
 import java.util.*;
-import java.util.function.Consumer;
 
 public class Cars implements Iterable<Car> {
     private final List<Car> values;
