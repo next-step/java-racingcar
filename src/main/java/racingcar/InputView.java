@@ -8,9 +8,17 @@ import java.util.Scanner;
 public class InputView {
     private static final Scanner sc = new Scanner(System.in);
 
-    public int getNumberOfCars() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return sc.nextInt();
+    public String[] insertCarName() {
+        System.out.println("경주할 자동차 이름을 입력하세요");
+        String text = sc.nextLine();
+        if(!text.contains(",")){
+            throw new IllegalArgumentException("자동차 이름은 ','로 구분되어야 합니다.");
+        }
+        return getNameOfCars(text);
+    }
+
+    private String[] getNameOfCars(String text) {
+        return text.split(",");
     }
 
     public int getNumberOfTry() {
