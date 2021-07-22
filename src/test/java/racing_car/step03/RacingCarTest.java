@@ -42,18 +42,15 @@ class RacingCarTest {
         Assertions.assertThat(race.move(number)).isEqualTo(move);
     }
 
-//    @Test
-//    @DisplayName("자동차의 상태 배열로 저장")
-//     void 자동차의상태() {
-//        Arrays.fill(cars," ");
-//        while (attempt-- > 0) {
-//            String[] result = race.execute(count, );
-//            for (String s : result){
-//                System.out.println(s);
-//            }
-//            System.out.println();
-//        }
-//    }
+    @Test
+    @DisplayName("자동차의 상태 화면에 출력")
+     void 자동차의상태() {
+        Arrays.fill(cars," ");
+        race.execute(cars);
+        for (String car : cars){
+            System.out.println(car);
+        }
+    }
 
     @Test
     @DisplayName("자동차와 시도 회 수 입력 값이 0이하 일 때 예외 처리 하는 테스트")
