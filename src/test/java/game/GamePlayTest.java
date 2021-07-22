@@ -3,6 +3,7 @@ package game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,10 +12,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class GamePlayTest {
 
     private GamePlay gamePlay;
+    private Utils utils;
 
     @BeforeEach
     void setup() {
         gamePlay = new GamePlay();
+        utils = new Utils();
     }
 
     @Test
@@ -28,7 +31,7 @@ public class GamePlayTest {
     @Test
     @DisplayName("자동차는 입력된 배열에 따라 생성된다.")
     public void setupPayerByArray() {
-        String[] array = gamePlay.stringToStringArray("car1,car2,car3");
+        String[] array = utils.stringToStringArray("car1,car2,car3");
         List<Player> playerList1 = gamePlay.setupPlayer(array);
 
         assertThat(playerList1.size()).isEqualTo(3);
@@ -53,7 +56,7 @@ public class GamePlayTest {
     @Test
     @DisplayName("입력값의 , 따라 배열로 변환된다.")
     public void stringBySplit() {
-        String[] resultArray = gamePlay.stringToStringArray("a,b,c");
+        String[] resultArray = utils.stringToStringArray("a,b,c");
 
         assertThat(resultArray.length).isEqualTo(3);
         assertThat(resultArray[0]).isEqualTo("a");
@@ -62,7 +65,7 @@ public class GamePlayTest {
     @Test
     @DisplayName("여러공백이 들어가도 공백은 합쳐진다.")
     public void stringByTrim() {
-        String result = gamePlay.stringByTrim("12      ");
+        String result = utils.stringByTrim("12      ");
         System.out.println(result);
         assertThat(result).isEqualTo("12");
     }
