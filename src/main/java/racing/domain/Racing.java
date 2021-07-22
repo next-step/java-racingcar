@@ -8,7 +8,7 @@ public class Racing {
 
 	private List<Car> cars;
 
-	private final int COMPARE_VALUE = 4;
+	private static final int COMPARE_VALUE = 4;
 
 	public Racing(int carCount) {
 		initCars(carCount);
