@@ -10,7 +10,7 @@ class CarTest {
 
     @ParameterizedTest
     @CsvSource({"1,1","2,2","3,3","4,4","5,5"})
-    void 차거리입력생성테스트(String input, String expected) {
+    void 차생성및거리입력테스트(String input, String expected) {
         Car car = new Car(toInt(input));
         assertThat(car.getDistance().getMove()).isEqualTo(toInt(expected));
     }
