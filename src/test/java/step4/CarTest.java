@@ -1,13 +1,13 @@
-package step3;
+package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.game.Game;
-import step3.game.GameDto;
-import step3.model.Car;
-import step3.move.BasicMoveStrategy;
+import step4.game.Game;
+import step4.game.GameDto;
+import step4.model.Car;
+import step4.move.BasicMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,29 +32,29 @@ public class CarTest {
 
     @ParameterizedTest
     @DisplayName("Game 만들기 테스트")
-    @CsvSource(value = {"3:4", "2:5", "10:11", "4:5", "1:1"}, delimiter = ':')
-    public void makeGame(int carCount, int count) {
+    @CsvSource(value = {"a,b,c:4", "a,b:5", "a:11", "a,b,c,d,e:5", "a,b,c,d,e,f,g:1"}, delimiter = ':')
+    public void makeGame(String names, int count) {
         //given
-        GameDto gameDto = GameDto.of(carCount, count);
+        GameDto gameDto = GameDto.of(names, count);
 
         //when
         Game game = gameDto.createGame();
 
         //then
         assertThat(game.countOfGame()).isEqualTo(count);
-        assertThat(game.cars().countOfCars()).isEqualTo(carCount);
+        assertThat(game.cars().countOfCars()).isEqualTo(names.split(",").length);
     }
 
     @DisplayName("최대 한칸만 움직일 수 있는지 테스트")
     @RepeatedTest(50)
     public void mapStrategy() {
         //given
-        Car car = new Car(new BasicMoveStrategy());
+        Car car = new Car("a");
 
         //when
-        car.move();
+        car.move(new BasicMoveStrategy());
 
         //then
-        assertThat(car.getPointOfTime(1)).isLessThanOrEqualTo(1);
+        assertThat(car.getPointOfTime(1).getPoint()).isLessThanOrEqualTo(1);
     }
 }

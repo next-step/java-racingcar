@@ -1,10 +1,8 @@
 package step3.model;
 
-import step3.App;
 import step3.move.BasicMoveStrategy;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,8 +21,8 @@ public class Cars {
         );
     }
 
-    public void move(Random random) {
-        cars.forEach(car -> car.moveIf(random.nextInt(App.RANGE_MAX)));
+    public void move() {
+        cars.forEach(Car::move);
     }
 
     public int countOfCars() {

@@ -1,4 +1,4 @@
-package step3.move;
+package step4.move;
 
 public interface MovableStrategy {
     int move();
