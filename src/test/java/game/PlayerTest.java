@@ -3,7 +3,6 @@ package game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PlayerTest {
@@ -16,5 +15,15 @@ public class PlayerTest {
         int result = player.playToMove(randomValue);
 
         assertThat(result).isEqualTo(moveValue);
+    }
+
+    @ParameterizedTest
+    @DisplayName("이름을 입력하면 해당 이름이 반환된다.")
+    @CsvSource(value = {"car1","car2","car3"})
+    public void getPlayerName(String value){
+        Player player = new Player(value);
+        String playerName = player.getPlayerName();
+
+        assertThat(playerName).isEqualTo(value);
     }
 }
