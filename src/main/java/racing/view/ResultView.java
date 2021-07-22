@@ -9,4 +9,6 @@ public interface ResultView {
     void printAllCarLocation(Cars car);
 
     void printCarLocation(Car car);
+
+    void printException(Exception e);
 }

@@ -15,6 +15,10 @@ public class ActionRequest {
         return action;
     }
 
+    public boolean isQuit() {
+        return action == InputAction.QUIT;
+    }
+
     public int getTurnSize() {
         return turnSize;
     }

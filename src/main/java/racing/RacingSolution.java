@@ -2,6 +2,7 @@ package racing;
 
 import racing.car.Car;
 import racing.car.Cars;
+import racing.exception.InvalidInputException;
 import racing.view.*;
 import racing.view.request.ActionRequest;
 
@@ -16,34 +17,42 @@ public class RacingSolution {
 
     private InputView inputView;
     private ResultView resultView;
+    private Cars cars;
     public RacingSolution(InputView inputView, ResultView resultView) {
         this.inputView = inputView;
         this.resultView = resultView;
+        this.cars = inputCars();
     }
 
     public void run() {
-        Cars cars = inputCars();
-
-        ActionRequest actionRequest;
-        while((actionRequest = inputView.inputAction())
-                .getAction() != InputAction.QUIT) {
-            racing(cars, actionRequest);
+        try {
+            for (ActionRequest actionRequest = inputView.inputAction(); !actionRequest.isQuit(); actionRequest = inputView.inputAction()) {
+                racing(cars, actionRequest);
+            }
+        } catch (InvalidInputException e) {
+            resultView.printException(e);
+            run(); // 재귀 재시작
         }
     }
 
     private void racing(Cars cars, ActionRequest request) {
+        resultView.printResultTitle();
         for (int i = 0; i < request.getTurnSize(); i++) {
-            resultView.printResultTitle();
             cars.moveAll(request.getAction() == InputAction.MOVE);
             resultView.printAllCarLocation(cars);
         }
     }
 
     private Cars inputCars() {
-        Cars cars = new Cars();
-        int carSize = inputView.inputCarSize();
-        for (int i = 0; i < carSize; i++)
-            cars.add(new Car());
-        return cars;
+        try {
+            Cars cars = new Cars();
+            int carSize = inputView.inputCarSize();
+            for (int i = 0; i < carSize; i++)
+                cars.add(new Car());
+            return cars;
+        } catch (InvalidInputException e) {
+            resultView.printException(e);
+            return inputCars();  // 재귀 재입력
+        }
     }
 }
