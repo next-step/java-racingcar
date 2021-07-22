@@ -7,6 +7,7 @@ public class Referee {
 
     public Referee(int limitTime) {
         this.limitTime = limitTime;
+        remainTime = 0;
     }
 
     public boolean isOverTheTime() {
