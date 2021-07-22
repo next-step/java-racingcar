@@ -1,4 +1,4 @@
-package study.step02;
+package racing_car.step02;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,8 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing_car.Calculator;
-import racing_car.Validation;
 
 import static org.assertj.core.api.Assertions.*;
 
