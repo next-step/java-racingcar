@@ -22,7 +22,7 @@ public class CarStadium {
         }
 
         if (referee.isOverTheTime()) {
-            return;
+            throw new IllegalArgumentException("더 이상 자동차는 움직일 수 없습니다.");
         }
 
         for (Car car : cars) {
