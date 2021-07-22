@@ -1,7 +1,5 @@
-package racing;
+package racing.car;
 
-import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 
 public class Car {

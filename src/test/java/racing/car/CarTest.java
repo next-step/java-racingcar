@@ -1,14 +1,10 @@
-package racing;
+package racing.car;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.car.Car;
 
-import java.util.Random;
-
-import static com.sun.javafx.fxml.expression.Expression.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {

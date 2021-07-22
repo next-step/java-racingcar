@@ -1,6 +1,4 @@
-package racing;
-
-import java.util.Objects;
+package racing.car;
 
 public class Location {
     public static Location EMPTY = new Location();
