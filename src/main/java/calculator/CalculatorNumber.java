@@ -21,4 +21,8 @@ public class CalculatorNumber {
 	public CalculatorNumber mul(CalculatorNumber other) {
 		return new CalculatorNumber(number * other.toInteger());
 	}
+
+	public CalculatorNumber div(CalculatorNumber other) {
+		return new CalculatorNumber(number / other.toInteger());
+	}
 }

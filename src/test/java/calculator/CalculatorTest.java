@@ -42,4 +42,16 @@ public class CalculatorTest {
 
 		assertThat(result.toInteger()).isEqualTo(6);
 	}
+
+	@Test
+	@DisplayName("나눗셈")
+	void division() {
+		CalculatorNumber three = new CalculatorNumber(3);
+		CalculatorNumber two = new CalculatorNumber(2);
+		CalculatorOperator subOperator =  CalculatorOperatorFactory.create(CalculatorOperator.DIVIDE);
+
+		CalculatorNumber result = subOperator.operate(three, two);
+
+		assertThat(result.toInteger()).isEqualTo(1);
+	}
 }

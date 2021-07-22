@@ -11,6 +11,9 @@ public class CalculatorOperatorFactory {
 		if(s.equals((CalculatorOperator.MULTIPLY))) {
 			return new CalculatorMultiplyOperator();
 		}
+		if(s.equals((CalculatorOperator.DIVIDE))) {
+			return new CalculatorDivideOperator();
+		}
 		throw new IllegalArgumentException();
 	}
 }
