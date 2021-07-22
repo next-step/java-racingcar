@@ -9,4 +9,9 @@ public class Car {
         return randomNumber >= CAN_MOVE_NUMBER;
     }
 
+    public void move(int randomNumber){
+        if(canMove(randomNumber)){
+            location++;
+        }
+    }
 }

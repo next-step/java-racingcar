@@ -1,5 +1,7 @@
 package racingCar.model;
 
+import racingCar.utils.RandomUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,5 +22,8 @@ public class Cars {
     }
 
     public void move() {
+        for (Car car : carList) {
+            car.move(RandomUtil.getNumber());
+        }
     }
 }
