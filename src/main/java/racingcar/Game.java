@@ -32,6 +32,16 @@ public class Game {
         }
     }
 
+    public Cars getWinners() {
+        int farthestDistance = cars.getFarthestDistance();
+
+        if (farthestDistance == 0) {
+            return cars;
+        }
+
+        return cars.findByDistance(farthestDistance);
+    }
+
     public int getDriveCount() {
         return driveCount;
     }

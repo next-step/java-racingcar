@@ -19,5 +19,9 @@ public class RacingCarMain {
             game.playingDrive();
             game.printProgress();
         }
+
+        System.out.println();
+        String winnersName = String.join(",", game.getWinners().getCarNames());
+        System.out.println(winnersName + "가 최종 우승했습니다.");
     }
 }
