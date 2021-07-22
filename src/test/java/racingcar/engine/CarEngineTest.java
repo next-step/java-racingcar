@@ -10,8 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 @DisplayName("[Step3] 엔진")
 class CarEngineTest {
 
-    private Engine engine = new CarEngine();
-    ;
+    private final Engine engine = new CarEngine();
 
     @DisplayName("[성공] 작동 - 자동차 엔진")
     @ParameterizedTest
