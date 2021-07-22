@@ -18,6 +18,6 @@
     
 #### Set Collection에 대한 학습 테스트
 - TODO
-    - 1) Set size test
+    - ~~1) Set size test~~
     - 2) Set contains test
     - 3) charAt test
