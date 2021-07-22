@@ -75,5 +75,11 @@ class SimpleCalculatorTest {
         assertThatThrownBy(() -> sc.divide("10 / 3"))
             .isInstanceOf(NotEqualRemainderZero.class);
     }
-    
+
+    @Test
+    @DisplayName("2 + 3 * 4 / 2와 같은 문자열을 입력할 경우 실행 결과인 10을 출력하는 테스트")
+    void calcTest() throws NotEqualRemainderZero {
+        assertThat(sc.calc("2 + 3 * 4 / 2")).isEqualTo("10");
+    }
+
 }
