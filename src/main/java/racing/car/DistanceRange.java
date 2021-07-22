@@ -22,7 +22,7 @@ public enum DistanceRange {
     public static DistanceRange of(int distance) { // distance에 값에 따라 해당하는 범위의 객체 반환
         return IntStream.range(1, values().length)
                 .filter(
-                        i -> distance <= values()[i].getValue()
+                        i -> distance < values()[i].getValue()
                 ).mapToObj(
                         i -> values()[i - 1]
                 ).findFirst()
