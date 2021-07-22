@@ -13,7 +13,7 @@ class CarsTest {
         //given, when, then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Cars(new Count(-1)))
-                .withMessage("시도할 회수는 0보다 커야한다.");
+                .withMessage("0보다 큰 숫자여야 합니다.");
     }
 
     @DisplayName("입력 숫자 만큼 Car 객체를 만들 수 있다.")

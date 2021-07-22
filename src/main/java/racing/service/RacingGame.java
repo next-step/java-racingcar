@@ -21,7 +21,7 @@ public class RacingGame {
     }
 
     public GameResultView play() {
-        MovingStrategy strategy = MovingStrategyFactory.getStrategy();
+        MovingStrategy strategy = MovingStrategyFactory.getRandomStrategy();
         int count = this.count.getCount();
         for (int i = 0; i < count; i++) {
             cars.race(strategy);
