@@ -25,6 +25,6 @@ class RacingGameTest {
         List<Car> cars = racingGame.start();
 
         assertEquals(cars.size(), numberOfCars);
-        cars.forEach(r -> assertTrue(r.getNumberOfMove() == 1 || r.getNumberOfMove() == 0));
+        cars.forEach(car -> assertTrue(car.getNumberOfMove() == 1 || car.getNumberOfMove() == 0));
     }
 }

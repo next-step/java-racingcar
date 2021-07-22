@@ -4,9 +4,9 @@ import racingcar.controller.dto.CarResponseDto;
 
 import java.util.List;
 
-public class ConsoleView {
+public class ConsoleOutputView {
 
-    public ConsoleView() {
+    public ConsoleOutputView() {
         System.out.println("실행 결과");
     }
 

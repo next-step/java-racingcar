@@ -1,20 +1,25 @@
 package racingcar;
 
-import racingcar.controller.ConsoleController;
+import racingcar.controller.RacingGameController;
+import racingcar.controller.dto.CarRequestDto;
+import racingcar.controller.dto.CarResponseDto;
+import racingcar.view.ConsoleInputView;
+import racingcar.view.ConsoleOutputView;
 
-import java.util.Scanner;
+import java.util.List;
 
 public class ApplicationRunner {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        ConsoleInputView consoleInputView = new ConsoleInputView();
+        CarRequestDto carRequestDto = consoleInputView.input();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        String numberOfCars = scanner.nextLine();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        String numberOfAttempts = scanner.nextLine();
+        RacingGameController racingGameController = new RacingGameController();
+        List<List<CarResponseDto>> responses = racingGameController.racingGameStart(carRequestDto);
 
-        ConsoleController consoleController = new ConsoleController();
-        consoleController.consoleRacingGameStart(numberOfCars, numberOfAttempts);
+        ConsoleOutputView consoleOutputView = new ConsoleOutputView();
+        for (List<CarResponseDto> response : responses) {
+            consoleOutputView.print(response);
+        }
     }
 }
