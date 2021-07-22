@@ -1,33 +1,29 @@
 package step2;
 
 import java.util.Map;
-import java.util.Optional;
+import java.util.function.IntBinaryOperator;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toMap;
 
-public enum Operator {
-    ADD("+") {
-        public int apply(int num1, int num2) { return num1 + num2; }
-    },
-    SUBTRACT("-") {
-        public int apply(int num1, int num2) { return num1 - num2; }
-    },
-    MULTIPLY("*") {
-        public int apply(int num1, int num2) { return num1 * num2; }
-    },
-    DIVIDE("/") {
-        public int apply(int num1, int num2) { return num1 / num2; }
-    };
+public enum Operator implements IntBinaryOperator {
+    ADD("+", Integer::sum),
+    SUBTRACT("-", (num1, num2) -> num1 - num2),
+    MULTIPLY("*", (num1, num2) -> num1 * num2),
+    DIVIDE("/", (num1, num2) -> num1 / num2);
 
     private final String character;
+    public final IntBinaryOperator apply;
 
     private static final Map<String, Operator> stringToEnum =
             Stream.of(values()).collect(
                     toMap(Object::toString, e -> e)
             );
 
-    Operator(String character) { this.character = character; }
+    Operator(String character, IntBinaryOperator apply) {
+        this.character = character;
+        this.apply = apply;
+    }
 
     @Override public String toString() { return character; }
 
@@ -35,5 +31,6 @@ public enum Operator {
         return stringToEnum.get(character);
     }
 
-    public abstract int apply(int num1, int num2);
+    @Override
+    public int applyAsInt(int left, int right) { return apply.applyAsInt(left, right); }
 }

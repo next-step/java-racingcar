@@ -3,6 +3,7 @@ package step2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class FIFOCalculator {
     private String rawInput;
@@ -31,13 +32,16 @@ public class FIFOCalculator {
         List<String> tokens = new ArrayList<>(Arrays.asList(tokenizeInput()));
         int accumulator = Integer.parseInt(tokens.remove(0));
 
-        while (tokens.size() > 0) {
-            Operator operator = Operator.fromString(tokens.remove(0));
-            int operand = Integer.parseInt(tokens.remove(0));
+        return calculate(tokens, accumulator);
+    }
 
-            operator.apply(accumulator, operand);
-        }
+    private int calculate(List<String> tokens, int accumulator) {
+        return IntStream.range(0, tokens.size() / 2)
+                .reduce(accumulator, (acc, i) -> {
+                    Operator operator = Operator.fromString(tokens.get(i * 2));
+                    int operand = Integer.parseInt(tokens.get(i * 2 + 1));
 
-        return accumulator;
+                    return operator.applyAsInt(acc, operand);
+                });
     }
 }
