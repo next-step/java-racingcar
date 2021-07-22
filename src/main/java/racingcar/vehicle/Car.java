@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.vehicle;
 
-import racingcar.common.Properties;
-import racingcar.engine.CarEngine;
+import racingcar.Distance;
 import racingcar.engine.Engine;
 
 public class Car {
@@ -10,14 +9,9 @@ public class Car {
 
     private Distance distance;
 
-    public Car() {
-        this.engine = new CarEngine();
-        this.distance = new Distance(Properties.INIT_DISTANCE);
-    }
-
-    public Car(Engine engine) {
+    public Car(Engine engine, int distance) {
         this.engine = engine;
-        this.distance = new Distance(Properties.INIT_DISTANCE);
+        this.distance = new Distance(distance);
     }
 
     public void drive(int number) {

@@ -1,22 +1,23 @@
 package racingcar.view;
 
-import java.util.List;
-import racingcar.Car;
+import racingcar.vehicle.Cars;
 
 public class ResultView {
 
-    private final char distanceFlag = '-';
+    private final char printFlag = '-';
 
-    public void pirntProgressBoard(List<Car> cars) {
-        cars.forEach(car -> System.out.println(getPirntDistance(car)));
+    public void pirntProgressBoard(Cars cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(getDistanceString(cars.getDistance(i)));
+        }
         System.out.println("==========");
     }
 
-    private String getPirntDistance(Car car) {
+    private String getDistanceString(int distance) {
         StringBuilder printDistance = new StringBuilder();
 
-        for (int i = 0; i < car.getDistance(); i++) {
-            printDistance.append(distanceFlag);
+        for (int i = 0; i < distance; i++) {
+            printDistance.append(printFlag);
         }
 
         return printDistance.toString();
