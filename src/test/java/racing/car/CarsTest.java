@@ -70,15 +70,16 @@ class CarsTest {
     public void moveAllTest(int carSize, int turnSize, boolean movement) {
         Cars cars = initCars(carSize);
 
-        for (int i = 0; i < turnSize; i++)
+        for (int i = 0; i < turnSize; i++) {
             cars.moveAll(movement);
 
-        for (Car iCar : cars) {
-            assertThat(
-                    iCar.getLocation().getValue() > 0
-            ).withFailMessage(
-                    String.format("%s 상태에서 반대로 행동함 [%d]", (movement ? "movement" : "not movement"), iCar.getLocation().getValue())
-            ).isEqualTo(movement);
+            for (Car iCar : cars) {
+                assertThat(
+                        iCar.getLocation().getValue() > 0
+                ).withFailMessage(
+                        String.format("%s 상태에서 반대로 행동함 [%d]", (movement ? "movement" : "not movement"), iCar.getLocation().getValue())
+                ).isEqualTo(movement);
+            }
         }
     }
 }
