@@ -10,7 +10,7 @@ public class RacingApplication {
 
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
-		CarService carService = new CarService(inputView.getCarCount());
+		CarService carService = new CarService(inputView.getCarNames());
 		ResultView resultView = new ResultView();
 
 		System.out.println(RESULT_MESSAGE);

@@ -8,9 +8,9 @@ import java.util.List;
 public class CarService {
 
 	private final List<Car> cars = new ArrayList<>();
-	public CarService(int carCount) {
-		for (int i = 0; i < carCount; i++) {
-			this.cars.add(new Car());
+	public CarService(String[] carNames) {
+		for (String carName : carNames) {
+			this.cars.add(new Car(carName.trim()));
 		}
 	}
 
