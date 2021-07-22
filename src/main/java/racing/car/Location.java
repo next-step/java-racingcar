@@ -49,6 +49,7 @@ public class Location {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+        builder.append(VALUE_UNIT); // 위치가 0 이어도 - 표시가 필요함
         for (int i = 0; i < value; i++)
             builder.append(VALUE_UNIT);
         return builder.toString();
