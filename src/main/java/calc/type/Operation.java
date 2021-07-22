@@ -4,15 +4,15 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operation {
-    PLUS("+", (a, b) -> (int) a + (int) b),
-    MINUS("-", (a, b) -> (int) a - (int) b),
-    MULTIPLY("*", (a, b) -> (int) a * (int) b),
-    DIVIDE("/", (a, b) -> (int) a / (int) b);
+    PLUS("+", (a, b) -> a + b),
+    MINUS("-", (a, b) -> a - b),
+    MULTIPLY("*", (a, b) -> a * b),
+    DIVIDE("/", (a, b) -> a / b);
 
     private String operation;
     private BiFunction<Integer, Integer, Integer> resultFunction;
 
-    Operation(String operation, BiFunction resultFunction) {
+    Operation(String operation, BiFunction<Integer, Integer, Integer> resultFunction) {
         this.operation = operation;
         this.resultFunction = resultFunction;
     }
