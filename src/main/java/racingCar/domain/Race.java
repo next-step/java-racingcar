@@ -29,10 +29,14 @@ public class Race {
         }
     }
 
-    public void startRace() {
+    public void moveCar() {
         for(Car car : cars) {
             car = car.move(RandomNumber.getRandomNumber() >= FORWARD_CRITERIA);
         }
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
 }

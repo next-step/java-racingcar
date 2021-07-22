@@ -27,4 +27,11 @@ class RaceTest {
         assertThat(new Race(input)).isInstanceOf(Race.class);
     }
 
+    @DisplayName("입력값과 생성된 리스트의 길이가 같은지 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 5, 10})
+    void carsLengthTest(int input) {
+        assertThat(new Race(input).getCars().size()).isEqualTo(input);
+    }
+
 }
