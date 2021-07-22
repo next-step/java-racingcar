@@ -9,12 +9,9 @@ public class Calculation {
             throw new IllegalArgumentException("formula is blank");
         }
 
-        int result = 0;
-        int i = 0;
+        int result = Integer.parseInt(formulaArr[0]);
+        int i = 1;
         while (i < formulaArr.length) {
-            if (i == 0) {
-                result = Integer.parseInt(formulaArr[i++]);
-            }
             String operation = formulaArr[i++];
             int num = Integer.parseInt(formulaArr[i++]);
             result = calculate(result, num, operation);
