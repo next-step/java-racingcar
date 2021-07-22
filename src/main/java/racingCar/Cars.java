@@ -18,4 +18,10 @@ public class Cars {
     public void setPlayCount(int playCount) {
         this.playCount = playCount;
     }
+
+    public void go(){
+        for(Car car : carList){
+            car.canGo();
+        }
+    }
 }
