@@ -75,9 +75,9 @@ class CarsTest {
 
             for (Car iCar : cars) {
                 assertThat(
-                        iCar.getLocation().getValue() > 0
+                        iCar.getMoveCount() > 0
                 ).withFailMessage(
-                        String.format("%s 상태에서 반대로 행동함 [%d]", (movement ? "movement" : "not movement"), iCar.getLocation().getValue())
+                        String.format("%s 상태에서 반대로 행동함 [%d]", (movement ? "movement" : "not movement"), iCar.getMoveCount())
                 ).isEqualTo(movement);
             }
         }
