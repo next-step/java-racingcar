@@ -2,7 +2,7 @@ package racinggame.car;
 
 import racinggame.factory.MovingFactory;
 import racinggame.strategy.MovingStrategy;
-import racinggame.ui.ResultView;
+import racinggame.view.ResultView;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

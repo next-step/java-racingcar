@@ -1,10 +1,10 @@
 package racinggame;
 
 import racinggame.car.RacingGame;
-import racinggame.ui.InputView;
-import racinggame.ui.ResultView;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
-public class App {
+public class RacingController {
 
     public static void main(String[] args) {
         String carNames = InputView.inputNameOfCar();
