@@ -11,10 +11,9 @@
       - [x] 전진하는 조건은 4이상의 값이여야한다. #CarEngine#canGo()
     - [ ] 심판은 제한된 시간이 지나면 멈출 수 있다. #Referee#isStopMove()
   
-- [ ] 화면에 출력한다. #Tv#show()
-  - [x] 자동차의 위치를 확인 할 수 있다  #Stadium#showCarsLocation()
-      - [x] 자동차는 현재 자신의 위치를 보여줄수있어야한다 #Car#showNowLocation()
-        - 어느 시점에 출력할 것인지에 대한 제약은 없다.
+- [x] 자동차의 위치를 확인 할 수 있다  #Stadium#showCarsLocation()
+  - [x] 자동차는 현재 자신의 위치를 보여줄수있어야한다 #Car#showNowLocation()
+    - 어느 시점에 출력할 것인지에 대한 제약은 없다.
 
 
 ### 프로그래밍 요구사항
