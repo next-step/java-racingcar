@@ -24,7 +24,7 @@ public class Game {
 
     public void runOnce() {
         cars = cars.stream()
-                .map(car -> car.move(Tool.makeRandomNumber()))
+                .map(car -> car.move(RandomNumber.makeRandomNumber()))
                 .collect(Collectors.toList());
     }
 
