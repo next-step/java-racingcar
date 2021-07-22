@@ -2,38 +2,33 @@ package calculator;
 
 public class Calculator {
 
-    private static final int ZERO = 0;
+    private static final String ADD = "+";
+    private static final String SUBSTRACT = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
 
     public int calculate(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException("Required not null");
-        }
+        validate(input);
+
         String[] inputs = input.split(" ");
-        if (inputs.length == ZERO) {
-            throw new IllegalArgumentException("Required not blank");
-        }
         int first = toInt(inputs[0]);
-        for(int index=1; index<inputs.length; index+=2) {
-            int second = toInt(inputs[index+1]);
-            String operator = inputs[index];
-
-            first = operate(operator, first, second);
+        for (int index = 1; index < inputs.length; index += 2) {
+            first = operate(first, inputs[index], toInt(inputs[index + 1]));
         }
-
         return first;
     }
 
-    private int operate(String operator, int first, int second) {
-        if (operator.equals("+")) {
+    private int operate(int first, String operator, int second) {
+        if (operator.equals(ADD)) {
             return add(first, second);
         }
-        if(operator.equals("-")) {
+        if (operator.equals(SUBSTRACT)) {
             return subtract(first, second);
         }
-        if(operator.equals("*")) {
+        if (operator.equals(MULTIPLY)) {
             return multiply(first, second);
         }
-        if(operator.equals("/")) {
+        if (operator.equals(DIVIDE)) {
             return divide(first, second);
         }
         throw new IllegalArgumentException("Required correct operator!");
@@ -60,6 +55,12 @@ public class Calculator {
 
     private int toInt(String input) {
         return Integer.parseInt(input);
+    }
+
+    private void validate(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("Required not null or empty");
+        }
     }
 
 }
