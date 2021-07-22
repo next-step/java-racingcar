@@ -10,14 +10,16 @@ public class ResultView {
 
 	public void result(List<Car> cars) {
 		for (Car car : cars) {
-			print(car.getForwardCount());
+			print(car);
 		}
 		System.out.println();
 	}
 
-	private void print(int forwardCount) {
+	private void print(Car car) {
 		StringBuilder totalSign = new StringBuilder();
-		for (int i = 0; i < forwardCount; i++) {
+		totalSign.append(car.getName())
+		         .append(" : ");
+		for (int i = 0; i < car.getForwardCount(); i++) {
 			totalSign.append(MOVE_SIGN);
 		}
 		System.out.println(totalSign);
