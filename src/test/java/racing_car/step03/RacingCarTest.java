@@ -27,7 +27,7 @@ class RacingCarTest {
     @DisplayName("난수 생성 테스트")
     public void 난수생성() {
         for (int i = 0; i < 5; i++) {
-            int random = r.nextInt(10);
+            int random = race.getRandomNumber();
             System.out.print(random + " ");
         }
     }
