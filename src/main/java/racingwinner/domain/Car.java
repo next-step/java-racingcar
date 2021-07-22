@@ -4,7 +4,11 @@ public class Car {
 
 	private static final int FORWARD_STANDARD = 4;
 	private int forwardCount = 0;
+	private final String name;
 
+	public Car(String name) {
+		this.name = name;
+	}
 
 	public void moveForward() {
 		int randomValue = RandomGenerator.generate();
@@ -19,6 +23,10 @@ public class Car {
 
 	public int getForwardCount() {
 		return forwardCount;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }
