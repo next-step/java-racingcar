@@ -14,7 +14,7 @@ public class RaceManagerTest {
     @CsvSource(value = {":3", "3:", ":"}, delimiter = ':')
     public void nullInput(String carNumber, String roundNumber) {
         // given
-        String message = "";
+        String message = RaceManager.NULL_INPUT;
 
         // when
         ThrowingCallable throwingCallable = () -> raceManager.register(carNumber, roundNumber);
@@ -26,10 +26,10 @@ public class RaceManagerTest {
     }
 
     @ParameterizedTest(name = "입력값이 숫자가 아닌 경우 | {arguments}")
-    @CsvSource(value = {"2:*", "%:12", "42:1,000"}, delimiter = ':')
-    public void notNumber(String carNumber, String roundNumber) {
+    @CsvSource(value = {"2:*:\"*\"", "%:12:\"%\"", "42:1,000:\"1,000\""}, delimiter = ':')
+    public void notNumber(String carNumber, String roundNumber, String notNumber) {
         // given
-        String message = "";
+        String message = "For input string: " + notNumber;
 
         // when
         ThrowingCallable throwingCallable = () -> raceManager.register(carNumber, roundNumber);
@@ -44,7 +44,7 @@ public class RaceManagerTest {
     @CsvSource(value = {"-1:3", "0:3", "2:-3"}, delimiter = ':')
     public void lteZero(String carNumber, String roundNumber) {
         // given
-        String message = "";
+        String message = RaceManager.LESS_THAN_OR_EQUAL_ZERO;
 
         // when
         ThrowingCallable throwingCallable = () -> raceManager.register(carNumber, roundNumber);
