@@ -4,6 +4,8 @@ import racingcar.common.exception.InvalidCarNameException;
 
 public class CarName {
 
+    private static final int MIN_NAME_LENGTH = 5;
+
     private final String name;
 
     public CarName(String name) {
@@ -15,7 +17,7 @@ public class CarName {
     }
 
     private boolean nameValidation(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MIN_NAME_LENGTH) {
             return false;
         }
 

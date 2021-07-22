@@ -11,10 +11,6 @@ public class Cars {
     private static final int MAX_DRIVE_NUMBER = 10;
     private final List<Car> cars = new ArrayList<>();
 
-    public Cars() {
-
-    }
-
     public Cars(List<Car> cars) {
         cars.forEach(this::add);
     }

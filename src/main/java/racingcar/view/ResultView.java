@@ -17,12 +17,12 @@ public class ResultView {
     }
 
     private static String getDistanceString(int distance) {
-        StringBuilder printDistance = new StringBuilder();
+        StringBuilder distanceString = new StringBuilder();
 
         for (int i = 0; i < distance; i++) {
-            printDistance.append(PRINT_FLAG);
+            distanceString.append(PRINT_FLAG);
         }
 
-        return printDistance.toString();
+        return distanceString.toString();
     }
 }
