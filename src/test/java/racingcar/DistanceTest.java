@@ -12,23 +12,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 class DistanceTest {
 
     @DisplayName("[성공] 생성")
-    @Test
-    public void init() {
-        // given
-
-        // when
-        Distance distance = new Distance();
-
-        // then
-        assertThat(distance.get()).isEqualTo(0);
-    }
-
-    @DisplayName("[성공] 생성 - 초기 값 주입")
     @ParameterizedTest
     @CsvSource(value = {
         "0", "99"
     })
-    public void init_withInitDistance(int initDistance) {
+    public void init(int initDistance) {
         // given
 
         // when

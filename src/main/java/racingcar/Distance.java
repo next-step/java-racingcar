@@ -2,17 +2,12 @@ package racingcar;
 
 import java.util.Objects;
 import racingcar.common.ErrorMessage;
-import racingcar.common.Properties;
 
 public class Distance {
 
     private final int minInitInput = 0;
     private final int minMoveInput = 0;
     private final int distance;
-
-    public Distance() {
-        this.distance = Properties.INITIAL_DISTANCE;
-    }
 
     public Distance(int distance) {
         if (!initValidation(distance)) {

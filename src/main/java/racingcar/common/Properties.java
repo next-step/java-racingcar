@@ -2,5 +2,5 @@ package racingcar.common;
 
 public class Properties {
 
-    public static final int INITIAL_DISTANCE = 0;
+    public static final int INIT_DISTANCE = 0;
 }
