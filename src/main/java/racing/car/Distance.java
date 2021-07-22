@@ -1,7 +1,6 @@
 package racing.car;
 
-import static racing.car.Car.MovementDistance.MOVEMENT_MAX_VALUE;
-import static racing.car.Car.MovementDistance.MOVEMENT_MIN_VALUE;
+import static racing.car.DistanceRange.NOT_MOVEMENT;
 
 public class Distance extends Location {
     private Distance(int distance) {
@@ -9,10 +8,20 @@ public class Distance extends Location {
     }
 
     public static Distance newInstance(int distance) {
-        if (distance > MOVEMENT_MAX_VALUE.getValue())
-            throw new IllegalArgumentException("최대 이동 가능한 거리는 " + MOVEMENT_MAX_VALUE + " 입니다.");
-        if (distance < MOVEMENT_MIN_VALUE.getValue())
-            distance = 0;
-        return new Distance(distance);
+        DistanceRange range = validate(distance);
+        return new Distance(
+                range == NOT_MOVEMENT ? 0 : distance
+        );
+    }
+
+    private static DistanceRange validate(int distance) {
+        DistanceRange range = DistanceRange.of(distance);
+        switch (range) {
+            case BACK_MOVEMENT:
+                throw new IllegalArgumentException("후진할 수 없습니다.");
+            case MAX_MOVEMENT:
+                throw new IllegalArgumentException("최대 이동 가능한 거리를 초과 했습니다.");
+        }
+        return range;
     }
 }

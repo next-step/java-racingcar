@@ -20,10 +20,10 @@ public class Cars implements Iterable<Car> {
         }
     }
 
-    private Location randomDistance() {
+    private Distance randomDistance() {
         int randomValue = RandomUtils.nextInt(9);
-        return new Location(
-                randomValue >= 4 ? randomValue : Car.MovementDistance.NOT_MOVEMENT_VALUE.getValue()
+        return Distance.newInstance(
+                randomValue >= 4 ? randomValue : DistanceRange.NOT_MOVEMENT.getValue()
         );
     }
 
