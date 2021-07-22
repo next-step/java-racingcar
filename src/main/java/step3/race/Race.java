@@ -2,6 +2,7 @@ package step3.race;
 
 import step3.model.Car;
 import step3.model.Cars;
+import step3.view.Print;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,17 @@ public class Race {
 
     public void doRace(){
         for (int time = 0; time < raceTimes; time++) {
-            moveCars();
+            moveCars(time);
+            Print.print(cars.getCars());
+            System.out.println();
         }
     }
 
-    private void moveCars() {
+    private void moveCars(int time) {
+        if(time == 0){
+            cars.firstMovement();
+            return;
+        }
         cars.moveCars();
     }
 
