@@ -1,15 +1,9 @@
 package stringcalculator;
 
-import java.util.Scanner;
-import stringcalculator.util.OperationUtil;
-import stringcalculator.util.UserInputUtils;
-import stringcalculator.util.UserInputValidator;
-
 public class StringCalculator {
 
     public static void main(String[] args) {
 
-        System.out.println("".isEmpty());
       //  String userInput = UserInputUtils.readUserInput();
 //        userint
 //

@@ -5,10 +5,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class UserInputUtilsTest {
@@ -50,8 +54,29 @@ class UserInputUtilsTest {
             UserInputUtils.validate(null);
         }).isInstanceOf(IllegalArgumentException.class);
     }
-    
 
+    @ParameterizedTest
+    @MethodSource("provideSplitStringArr")
+    @DisplayName("사용자입력 문자열을 배열로 분할한다.")
+    void splitUserInput(String userInput, String[] expectedArray) {
+
+        assertThat(UserInputUtils.splitUserInput(userInput)).isEqualTo(expectedArray);
+
+    }
+
+
+    private static Stream<Arguments> provideSplitStringArr() {
+
+        String[] arr1 = {"1", "+", "1"};
+        String[] arr2 = {"1", "-", "2", "+", "3"};
+        String[] arr3 = {"1", "-", "2", "+", "3", "*", "4"};
+
+        return Stream.of(
+            Arguments.of("1 + 1", arr1),
+            Arguments.of("1 - 2 + 3", arr2),
+            Arguments.of("1 - 2 + 3 * 4", arr3)
+        );
+    }
 
 //
 //    read
