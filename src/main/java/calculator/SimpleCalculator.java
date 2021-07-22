@@ -39,6 +39,7 @@ public class SimpleCalculator {
 		splitExpressionList.clear();
 		splitExpressionList.addAll(Arrays.asList(s.split(" ")));
 		System.out.println("splitExpressionList : " + splitExpressionList);
+		checkSpaceBetweenNumberAndOperatorValidation();
 
 		while (splitExpressionList.size() != 1) {
 			String result = null;
@@ -65,6 +66,30 @@ public class SimpleCalculator {
 		if (whiteSpaceCount == s.length()) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	private void checkSpaceBetweenNumberAndOperatorValidation() {
+		for (String exp : splitExpressionList) {
+			if (isNumeric(exp)) {
+				continue;
+			}
+
+			if (exp.length() == 1 && opList.contains(exp.charAt(0))) {
+				continue;
+			}
+
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private static boolean isNumeric(String s) {
+		int len = s.length();
+		for (int i = 0 ; i < len ; i++) {
+			if (s.charAt(i) <= '0' || '9' <= s.charAt(i)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private String callFunctionByOperator(List<String> tempList) throws NotEqualRemainderZero {
