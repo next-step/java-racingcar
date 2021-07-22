@@ -17,6 +17,7 @@ public class RacingApplication {
 		for (int i = 0; i < inputView.getRepeatCount(); i++) {
 			resultView.result(carService.moveCars());
 		}
+		resultView.printWinner(carService.selectWinners());
 	}
 
 }
