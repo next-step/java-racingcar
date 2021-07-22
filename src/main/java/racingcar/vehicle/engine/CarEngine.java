@@ -1,6 +1,6 @@
 package racingcar.vehicle.engine;
 
-import racingcar.common.ErrorMessage;
+import racingcar.common.exception.InvalidCarEngineOperateInputException;
 
 public class CarEngine extends Engine {
 
@@ -10,7 +10,7 @@ public class CarEngine extends Engine {
     @Override
     public int operate(int input) {
         if (!inputValidatation(input)) {
-            throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE);
+            throw new InvalidCarEngineOperateInputException();
         }
 
         if (input >= OPERATE_FLAG) {

@@ -1,7 +1,8 @@
 package racingcar.vehicle;
 
 import java.util.Objects;
-import racingcar.common.ErrorMessage;
+import racingcar.common.exception.InvalidInitDistanceException;
+import racingcar.common.exception.InvalidMoveDistanceException;
 
 public class Distance implements Comparable<Distance> {
 
@@ -12,7 +13,7 @@ public class Distance implements Comparable<Distance> {
 
     public Distance(int distance) {
         if (!initValidation(distance)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_VALID_INIT_DISTANCE);
+            throw new InvalidInitDistanceException();
         }
 
         this.distance = distance;
@@ -20,7 +21,7 @@ public class Distance implements Comparable<Distance> {
 
     public Distance move(int moveDistance) {
         if (!moveValidation(moveDistance)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_VALID_MOVE_DISTANCE);
+            throw new InvalidMoveDistanceException();
         }
 
         return new Distance(this.get() + moveDistance);

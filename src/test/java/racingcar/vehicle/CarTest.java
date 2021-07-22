@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.common.exception.InvalidCarEngineOperateInputException;
 
 @DisplayName("[Step3] 자동차")
 class CarTest {
@@ -57,7 +58,7 @@ class CarTest {
         // given
 
         // when
-        assertThrows(IllegalArgumentException.class, () -> car.drive(distance));
+        assertThrows(InvalidCarEngineOperateInputException.class, () -> car.drive(distance));
 
         // then
     }

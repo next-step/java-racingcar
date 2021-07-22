@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.common.exception.InvalidCarNameException;
 
 @DisplayName("[Step4] 자동차 이름")
 class CarNameTest {
@@ -34,7 +35,7 @@ class CarNameTest {
         // given
 
         // when
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new CarName(name));
+        Assertions.assertThrows(InvalidCarNameException.class, () -> new CarName(name));
 
         // then
     }

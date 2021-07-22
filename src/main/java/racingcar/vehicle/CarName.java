@@ -1,6 +1,6 @@
 package racingcar.vehicle;
 
-import racingcar.common.ErrorMessage;
+import racingcar.common.exception.InvalidCarNameException;
 
 public class CarName {
 
@@ -8,7 +8,7 @@ public class CarName {
 
     public CarName(String name) {
         if (!nameValidation(name)) {
-            throw new IllegalArgumentException(ErrorMessage.TOO_LONG_CAR_NAME_LENGTH);
+            throw new InvalidCarNameException();
         }
 
         this.name = name;

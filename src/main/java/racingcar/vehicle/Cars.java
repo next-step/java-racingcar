@@ -8,6 +8,7 @@ import racingcar.common.RandomUtil;
 
 public class Cars {
 
+    private static final int MAX_DRIVE_NUMBER = 10;
     private final List<Car> cars = new ArrayList<>();
 
     public Cars() {
@@ -23,7 +24,7 @@ public class Cars {
     }
 
     public void doDrive() {
-        cars.forEach(car -> car.drive(RandomUtil.nextInt(10)));
+        cars.forEach(car -> car.drive(RandomUtil.nextInt(MAX_DRIVE_NUMBER)));
     }
 
     public int getFarthestDistance() {
