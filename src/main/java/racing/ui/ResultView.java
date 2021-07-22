@@ -1,5 +1,8 @@
 package racing.ui;
 
+import java.util.HashMap;
+import racing.service.RacingCarService;
+
 public class ResultView {
 
 
@@ -8,7 +11,11 @@ public class ResultView {
     public void result(int racingRound, int racingCar){
         System.out.println(RACING_RESULT_MESSAGE);
 
-        //play racing game
+        HashMap<Integer, StringBuffer> racingList = RacingCarService.initialRacingCar(racingCar);
+
+        for (int i = 0; i < racingRound; i++) {
+            RacingCarService.race(racingList);
+        }
     }
 
 }
