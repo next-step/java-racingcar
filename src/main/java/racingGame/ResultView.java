@@ -15,6 +15,10 @@ public class ResultView {
         System.out.println();
     }
 
+    public static void printGameStart() {
+        System.out.println("실행결과");
+    }
+
     public static String parseIntegerToBar(int value) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < value; i++) {

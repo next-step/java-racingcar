@@ -7,7 +7,8 @@ public class Main {
         int repeatCount = InputView.inputRepeatCount();
 
         Game game = new Game(carSize, repeatCount);
-        System.out.println("실행결과");
+
+        ResultView.printGameStart();
         for (int i = 0; i < repeatCount; i++) {
             game.runOnce();
             ResultView.printResult(game.getCarsStatus());
