@@ -31,6 +31,7 @@ class CarStadiumTest {
             carStadium.enterCar(new Car(new CarEngine()));
         }
 
+        // when then
         carStadium.moveCars();
         carStadium.showCarsLocation();
     }
@@ -41,6 +42,24 @@ class CarStadiumTest {
             carStadium.moveCars();
             carStadium.showCarsLocation();
         });
+    }
+
+
+    @Test
+    void 모든_시간이_지났는데_움직이면_illegalArgumentException() {
+        // given
+        for (int i = 0; i < givenCars; i++) {
+            carStadium.enterCar(new Car(new CarEngine()));
+        }
+
+        // when
+        for (int i = 0; i < givenLimitTime; i++) {
+            carStadium.moveCars();
+        }
+
+        // then
+        assertThatIllegalArgumentException().isThrownBy(() ->
+            carStadium.moveCars()).withMessage("더 이상 자동차는 움직일 수 없습니다.");
     }
 
     @Test
