@@ -88,11 +88,11 @@ class OperationUtilTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/caculateTest.csv", delimiter = ':')
+    @MethodSource("provideInputArrayAndResult")
     @DisplayName("(cacluate) 유저로부터 받은 문자열을 각종 사칙연산을 이용해 계산해 결과를 낸다.")
-    void calculate(String userInput, int expectedResult) {
+    void calculate(String[] userInputArray, int expectedResult) {
 
-        int actualResult = OperationUtil.calculate(userInput);
+        int actualResult = OperationUtil.calculate(userInputArray);
         assertThat(actualResult).isEqualTo(expectedResult);
     }
 
@@ -106,5 +106,21 @@ class OperationUtilTest {
         );
     }
 
+    private static Stream<Arguments> provideInputArrayAndResult() {
+
+        String[] arr1 = {"1", "+", "1"};
+        String[] arr2 = {"4", "-", "2"};
+        String[] arr3 = {"1", "*", "5"};
+        String[] arr4 = {"6", "/", "2"};
+        String[] arr5 = {"2", "+", "3", "*", "4", "/", "2"};
+
+        return Stream.of(
+            Arguments.of(arr1, 2),
+            Arguments.of(arr2, 2),
+            Arguments.of(arr3, 5),
+            Arguments.of(arr4, 3),
+            Arguments.of(arr5, 10)
+        );
+    }
 
 }

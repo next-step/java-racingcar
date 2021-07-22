@@ -3,28 +3,23 @@ package stringcalculator.util;
 import stringcalculator.enumeration.Operation;
 
 public class OperationUtil {
-
-    private static final String SPACE_STRING = " ";
-
-    public static int calculate(String userInput) {
-        // 빈 공백 문자열 단위로 분할하기.
-        String[] userInputArr = userInput.split(SPACE_STRING);
+    
+    public static int calculate(String[] userInputArray) {
 
         int leftNum;
         int rightNum;
         String operatorStr;
         int result;
 
-        leftNum = getInt(userInputArr[0]);
+        leftNum = getInt(userInputArray[0]);
         result = leftNum;
 
-        for (int i = 1; i < userInputArr.length; i = i + 2) {
-            operatorStr = userInputArr[i];
+        for (int i = 1; i < userInputArray.length; i = i + 2) {
+            operatorStr = userInputArray[i];
             leftNum = result;
-            rightNum = getInt(userInputArr[i + 1]);
+            rightNum = getInt(userInputArray[i + 1]);
 
             result = Operation.of(operatorStr).operate(leftNum, rightNum);
-
         }
 
         return result;

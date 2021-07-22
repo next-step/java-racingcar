@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class UserInputUtils {
 
-    public static final String WHITE_SPACE_STRING = " ";
+    private static final String WHITE_SPACE_STRING = " ";
 
 
     public static String readUserInput() {
