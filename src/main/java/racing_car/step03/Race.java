@@ -8,10 +8,15 @@ public class Race {
     public String[] car(int count, String []cars) {
         for (int j = 0; j < count; j++) {
             int random = r.nextInt(10);
-            if (random >= MIN_NUMBER) {
-                cars[j] += "-";
+            if (move(random)){
+                cars[j] +="-";
             }
         }
         return cars;
+    }
+    private boolean move(int random){
+        if(random>=MIN_NUMBER) return true;
+
+        return false;
     }
 }
