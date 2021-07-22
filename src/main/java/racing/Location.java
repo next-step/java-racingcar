@@ -3,6 +3,7 @@ package racing;
 import java.util.Objects;
 
 public class Location {
+    public static Location EMPTY = new Location();
     private static final char VALUE_UNIT = '-';
     private final int value;
 
@@ -16,6 +17,20 @@ public class Location {
 
     public int getValue() {
         return value;
+    }
+
+    public Location add(Location location) {
+        return new Location(
+                this.getValue() + location.getValue()
+        );
+    }
+
+    public Location min(Location location) {
+        return new Location(getValue() - location.getValue());
+    }
+
+    public boolean hasValue() {
+        return getValue() > 0;
     }
 
     @Override
