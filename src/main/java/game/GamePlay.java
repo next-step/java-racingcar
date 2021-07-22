@@ -1,8 +1,9 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import racing.Car;
+import racing.MessageBox;
+
+import java.util.*;
 
 public class GamePlay {
 
@@ -10,17 +11,24 @@ public class GamePlay {
     private final Validation validation;
     private final Random random;
     private final Utils utils;
+    private final HashMap<String,Integer> playingResult;
+    private final MessageBox messageBox;
+    private final StringBuffer winnerPlayList;
 
-    public GamePlay() {
+    public GamePlay(MessageBox messageBox) {
         utils = new Utils();
         players = new ArrayList<>();
         validation = new Validation(utils);
         random = new Random();
+        playingResult= new HashMap<>();
+        this.messageBox = messageBox;
+        winnerPlayList = new StringBuffer();
     }
 
     public List<Player> createPlayer(String playerListValue) {
         String[] playerArray = utils.stringToStringArray(playerListValue);
         validation.validStringEmpty(utils.stringByTrim(playerListValue));
+        winnerPlayList.setLength(playerArray.length);
         return setupPlayer(playerArray);
     }
 
@@ -34,9 +42,39 @@ public class GamePlay {
         return players;
     }
 
+    public void playingGame(String inputValue) {
+        validation.validNUmberChecK(inputValue);
+        int tryGameCount = utils.stringToInt(inputValue);
+        messageBox.commonMessageBox("실행 결과");
+        for (int i = 0; i < tryGameCount; i++) {
+            gamePlay();
+        }
+    }
+
+    private void gamePlay() {
+        for (Player player : players) {
+            int resultRacing = player.playToMove(randomValue());
+            playingResult.put(player.getPlayerName(),resultRacing);
+            messageBox.racingResultMessage(resultRacing);
+        }
+        messageBox.commonMessageBox("");
+    }
+
     public int randomValue() {
         int RANDOM_VALUE = 10;
         return random.nextInt(RANDOM_VALUE);
     }
+
+    public String winnerPlayer() {
+        for (Map.Entry<String, Integer> entry : playingResult.entrySet()) {
+            winnerPlayList.append(searchWinner(entry.getKey(),entry.getValue()));
+        }
+        return utils.stringBufferToString(winnerPlayList);
+    }
+
+    private String searchWinner(String playerName, int checkValue) {
+        return checkValue == utils.MapInMaxValue(playingResult.values()) ? playerName : "";
+    }
+    
 }
 
