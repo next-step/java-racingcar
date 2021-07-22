@@ -5,7 +5,8 @@ public class Car {
   public static final int MIN = 0;
   public static final int MAX = 9;
   public static final int BOUNDARY = 4;
-  private int location = 0;
+  public static final int INITIAL_LOCATION = 0;
+  private int location = INITIAL_LOCATION;
 
   public void move(int randomNumber) {
     validate(randomNumber);

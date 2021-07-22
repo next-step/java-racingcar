@@ -1,25 +1,29 @@
 package step3;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.List;
 
 public class RacingGame {
 
-  public void start() {
-    final Scanner scanner = new Scanner(System.in);
-    System.out.println("자동차 대수는 몇 대 인가요?");
-    final int numberOfCars = scanner.nextInt();
-    System.out.println("시도할 회수는 몇 회 인가요?");
-    final int numberOfAttempts = scanner.nextInt();
-    final Cars cars = new Cars(numberOfCars);
+  private final InputView inputView;
+  private final Racing racing;
+  private final ResultView resultView;
 
-    final StringBuilder output = new StringBuilder("실행 결과\n");
-    Random random = new Random();
-
-    for (int i = 0; i < numberOfAttempts; i++) {
-      cars.move(random, output);
-    }
-
-    System.out.println(output.toString());
+  public RacingGame() {
+    this.inputView = new InputView();
+    this.racing = new Racing();
+    this.resultView = new ResultView();
   }
+
+  public void start() {
+    inputView.render();
+    final Input input = inputView.getInput();
+    final List<Result> result = racing.race(input);
+    resultView.render(result);
+  }
+
+  public static void main(String[] args) {
+    RacingGame game = new RacingGame();
+    game.start();
+  }
+
 }

@@ -1,37 +1,45 @@
 package step3;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Cars {
 
-  public static final int BOUNDARY = 9;
-  final List<Car> carList = new ArrayList<>();
+  private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+  private final List<Car> carList = new ArrayList<>();
 
   public Cars(int numberOfCars) {
-    for (int i = 0; i < numberOfCars; i++) {
-      carList.add(new Car());
-    }
+    create(numberOfCars);
   }
 
-  public void move(Random random, StringBuilder output) {
+  public void move() {
     for (Car car : carList) {
-      car.move(random.nextInt(BOUNDARY));
-      final int location = car.getLocation();
-      log(output, location);
+      final int randomNumber = randomNumberGenerator.generate();
+      car.move(randomNumber);
     }
-    output.append("\n");
   }
 
-  private void log(StringBuilder output, int location) {
-    output.append("-");
-    output.append("-".repeat(location));
-    output.append("\n");
+  public Result getResult() {
+    return new Result(getLocationOfCars());
   }
 
   public int numberOf() {
     return carList.size();
+  }
+
+  private void create(int numberOfCars) {
+    IntStream.range(0, numberOfCars)
+        .mapToObj(i -> new Car())
+        .forEach(carList::add);
+  }
+
+  private List<Integer> getLocationOfCars() {
+    return carList.stream()
+        .map(Car::getLocation)
+        .collect(toList());
   }
 
 }
