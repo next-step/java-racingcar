@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -30,11 +32,11 @@ public class GameTest {
     @DisplayName("게임 실행")
     void run() {
         Game game1 = new Game(3, 5);
-        assertThat(game1.runOnce(new int[]{4, 4, 4})).isTrue();
+        assertThat(game1.runOnce(Arrays.asList(4, 4, 4))).isTrue();
         assertThat(game1.getCarsStatus()).containsExactly(1, 1, 1);
 
         Game game2 = new Game(4, 5);
-        assertThat(game2.runOnce(new int[]{4, 3, 6, 3})).isTrue();
+        assertThat(game2.runOnce(Arrays.asList(4, 3, 6, 3))).isTrue();
         assertThat(game2.getCarsStatus()).containsExactly(1, 0, 1, 0);
     }
 }

@@ -1,5 +1,7 @@
 package racingGame;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -10,7 +12,8 @@ public class Main {
 
         ResultView.printGameStart();
         for (int i = 0; i < repeatCount; i++) {
-            game.runOnce();
+            List<Integer> list = RandomNumber.makeRandomNumber(carSize);
+            game.runOnce(list);
             ResultView.printResult(game.getCarsStatus());
         }
     }

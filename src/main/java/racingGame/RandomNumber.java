@@ -1,13 +1,24 @@
 package racingGame;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RandomNumber {
 
     public static final int RANDOM_NUMBER_BOUND = 10;
+    public static final Random random = new Random();
 
-    public static int makeRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_NUMBER_BOUND);
+    public static List<Integer> makeRandomNumber() {
+        return makeRandomNumber(1);
     }
+
+    public static List<Integer> makeRandomNumber(int count) {
+        List<Integer> randomNumberList = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            randomNumberList.add(random.nextInt(RANDOM_NUMBER_BOUND));
+        }
+        return randomNumberList;
+    }
+
 }

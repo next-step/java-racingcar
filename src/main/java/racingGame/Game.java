@@ -22,16 +22,10 @@ public class Game {
         this.repeatCount = repeatCount;
     }
 
-    public void runOnce() {
-        cars = cars.stream()
-                .map(car -> car.move(RandomNumber.makeRandomNumber()))
-                .collect(Collectors.toList());
-    }
-
-    public boolean runOnce(int[] numbers) {
+    public boolean runOnce(List<Integer> numbers) {
         AtomicInteger index = new AtomicInteger();
         cars = cars.stream()
-                .map(car -> car.move(numbers[index.getAndIncrement()]))
+                .map(car -> car.move(numbers.get(index.getAndIncrement())))
                 .collect(Collectors.toList());
         return true;
     }
