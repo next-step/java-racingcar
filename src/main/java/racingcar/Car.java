@@ -5,10 +5,16 @@ import racingcar.engine.Engine;
 
 public class Car {
 
-    private final Engine engine = new CarEngine();
+    private final Engine engine;
     private final Distance distance;
 
     public Car() {
+        this.engine = new CarEngine();
+        this.distance = new Distance();
+    }
+
+    public Car(Engine engine) {
+        this.engine = engine;
         this.distance = new Distance();
     }
 
