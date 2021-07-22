@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +19,6 @@ public class Cars {
         this.playCount = playCount;
     }
 
-    public void go(){
-        for(Car car : carList){
-            car.canGo();
-        }
+    public void move() {
     }
 }
