@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class StringUtils {
     public static boolean isNumber(String str) {
-        return RegexPattern.NUMBER_PATTERN.matches(str);
+        return !isEmpty(str) && RegexPattern.NUMBER_PATTERN.matches(str);
     }
 
     public static boolean isEmpty(String str) {

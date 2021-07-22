@@ -24,5 +24,6 @@ public class DosResultView implements ResultView {
         for (int i = 0; i < locationValue; i++) {
             System.out.print(LOCATION_UNIT);
         }
+        System.out.println();
     }
 }

@@ -2,10 +2,8 @@ package racing;
 
 import racing.car.Car;
 import racing.car.Cars;
-import racing.view.DosInputView;
-import racing.view.DosResultView;
-import racing.view.InputView;
-import racing.view.ResultView;
+import racing.view.*;
+import racing.view.request.ActionRequest;
 
 public class RacingSolution {
     public static void main(String[] args) {
@@ -26,11 +24,17 @@ public class RacingSolution {
     public void run() {
         Cars cars = inputCars();
 
-        int turnSize = inputView.inputTurnSize();
+        ActionRequest actionRequest;
+        while((actionRequest = inputView.inputAction())
+                .getAction() != InputAction.QUIT) {
+            racing(cars, actionRequest);
+        }
+    }
 
-        resultView.printResultTitle();
-        for (int i = 0; i < turnSize; i++) {
-            cars.moveAll();
+    private void racing(Cars cars, ActionRequest request) {
+        for (int i = 0; i < request.getTurnSize(); i++) {
+            resultView.printResultTitle();
+            cars.moveAll(request.getAction() == InputAction.MOVE);
             resultView.printAllCarLocation(cars);
         }
     }

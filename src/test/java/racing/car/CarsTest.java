@@ -59,8 +59,6 @@ class CarsTest {
 
     // 요구사항 "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 에 대한 테스트를 추가 해보면 어떨까요?
     // 꼭 Cars가 아니여도 상관이 없습니다. 🤔
-
-    // "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 라는 요구 사항을 이해할 수 없어서 MoveAll 테스트를 추가 했습니다..
     @CsvSource({
             "100,5,false",
             "100,100,true",
@@ -72,12 +70,8 @@ class CarsTest {
     public void moveAllTest(int carSize, int turnSize, boolean movement) {
         Cars cars = initCars(carSize);
 
-        for (int iTurn = 0; iTurn < turnSize; iTurn++) {
-            int moveValue = movement ?
-                    RandomUtils.nextInt(Car.MovementLimitDistance.MIN_VALUE.getValue(), Car.MovementLimitDistance.MAX_VALUE.getValue()) :
-                    RandomUtils.nextInt(Car.MovementLimitDistance.MIN_VALUE.getValue());
-            cars.moveAll(moveValue);
-        }
+        for (int i = 0; i < turnSize; i++)
+            cars.moveAll(movement);
 
         for (Car iCar : cars) {
             assertThat(
