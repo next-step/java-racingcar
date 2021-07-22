@@ -1,5 +1,12 @@
 package racingcar;
 
+import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.RaceInfo;
+import racingcar.view.InputView;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingCarApplication {
@@ -16,6 +23,16 @@ public class RacingCarApplication {
 
         RaceInfo raceInfo = new RaceInfo(numberOfCar, raceTrialCount);
 
+        List<Car> racingCars = new ArrayList<Car>();
+
+        for (int i = 0; i < raceInfo.numberOfCar; i++) {
+            racingCars.add(new Car());
+        }
+        Cars cars = new Cars(racingCars);
+
+        cars.movable();
+
+        System.out.println(cars.getCarsPositions());
 
     }
 }
