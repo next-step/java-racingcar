@@ -37,4 +37,19 @@ public class CalculatorTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 * 3:6", "10 * -2:-20"}, delimiter = ':')
+    @DisplayName("* 연산자가 있으면 곱셈 결과가 반환되어야 한다.")
+    void multiplyTest(String input, int expected) {
+
+        //given
+        Calculator calculator = new Calculator();
+
+        //when
+        int result = calculator.multiply(input);
+
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
 }
