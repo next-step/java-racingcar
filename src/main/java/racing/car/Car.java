@@ -13,8 +13,8 @@ public class Car {
         return location;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public boolean isMoved() {
+        return moveCount > 0;
     }
 
     public void move(Distance distance) {
