@@ -10,8 +10,8 @@ public class Winners {
         this.winnerNames.add(name);
     }
 
-    public String getWinnerNames() {
-        return String.join(", ", winnerNames);
+    public List<String> getWinnerNames() {
+        return winnerNames;
     }
 
     public int size() {

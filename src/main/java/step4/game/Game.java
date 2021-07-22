@@ -1,6 +1,5 @@
 package step4.game;
 
-import step3.move.BasicMoveStrategy;
 import step4.model.Cars;
 import step4.move.MovableStrategy;
 
