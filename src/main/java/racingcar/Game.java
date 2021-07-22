@@ -37,9 +37,7 @@ public class Game {
     public void doGame() {
         for (int i = 0; i < driveCount; i++) {
             doDrive(cars);
-            resultView.pirntDistance(cars);
-
-            System.out.println("==========");
+            resultView.pirntProgressBoard(cars);
         }
     }
 

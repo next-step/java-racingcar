@@ -7,8 +7,9 @@ public class ResultView {
 
     private final char distanceFlag = '-';
 
-    public void pirntDistance(List<Car> cars) {
+    public void pirntProgressBoard(List<Car> cars) {
         cars.forEach(car -> System.out.println(getPirntDistance(car)));
+        System.out.println("==========");
     }
 
     private String getPirntDistance(Car car) {

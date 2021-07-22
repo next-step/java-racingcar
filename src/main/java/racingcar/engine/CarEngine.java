@@ -13,10 +13,18 @@ public class CarEngine extends Engine {
             throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE);
         }
 
-        return (input >= OPERATE_FLAG) ? MOVE_DISTANCE : 0;
+        if (input >= OPERATE_FLAG) {
+            return MOVE_DISTANCE;
+        }
+
+        return 0;
     }
 
     public boolean inputValidatation(int input) {
-        return (input >= MIN_INPUT && input <= MAX_INPUT);
+        if ((input >= MIN_INPUT && input <= MAX_INPUT)) {
+            return true;
+        }
+
+        return false;
     }
 }
