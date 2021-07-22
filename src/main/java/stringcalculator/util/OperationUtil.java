@@ -4,9 +4,11 @@ import stringcalculator.enumeration.Operation;
 
 public class OperationUtil {
 
+    private static final String SPACE_STRING = " ";
+
     public static int calculate(String userInput) {
         // 빈 공백 문자열 단위로 분할하기.
-        String[] userInputArr = userInput.split(" ");
+        String[] userInputArr = userInput.split(SPACE_STRING);
 
         int leftNum;
         int rightNum;
