@@ -9,7 +9,7 @@ public class Referee {
         this.limitTime = limitTime;
     }
 
-    public boolean isStopMove() {
+    public boolean isOverTheTime() {
         return remainTime == limitTime;
     }
 

@@ -18,7 +18,7 @@ class RefereeTest {
         }
 
         // then
-        assertThat(referee.isStopMove()).isTrue();
+        assertThat(referee.isOverTheTime()).isTrue();
     }
 
     @Test
@@ -33,7 +33,7 @@ class RefereeTest {
         }
 
         // then
-        assertThat(referee.isStopMove()).isFalse();
+        assertThat(referee.isOverTheTime()).isFalse();
     }
 
 }
