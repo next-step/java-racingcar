@@ -13,4 +13,8 @@ public class CalculatorNumber {
 	public CalculatorNumber add(CalculatorNumber other) {
 		return new CalculatorNumber(number + other.toInteger());
 	}
+
+	public CalculatorNumber sub(CalculatorNumber other) {
+		return new CalculatorNumber(number - other.toInteger());
+	}
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
+
 	@Test
 	@DisplayName("덧셈")
 	void addition() {
@@ -16,5 +17,17 @@ public class CalculatorTest {
 		CalculatorNumber result = addOperator.operate(two, three);
 
 		assertThat(result.toInteger()).isEqualTo(5);
+	}
+
+	@Test
+	@DisplayName("뺄셈")
+	void subtraction() {
+		CalculatorNumber three = new CalculatorNumber(3);
+		CalculatorNumber two = new CalculatorNumber(2);
+		CalculatorOperator subOperator =  CalculatorOperatorFactory.create(CalculatorOperator.MINUS);
+
+		CalculatorNumber result = subOperator.operate(three, two);
+
+		assertThat(result.toInteger()).isEqualTo(1);
 	}
 }
