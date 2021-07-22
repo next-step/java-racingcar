@@ -3,7 +3,6 @@ package game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -66,6 +65,26 @@ public class GamePlayTest {
         String result = gamePlay.stringByTrim("12      ");
         System.out.println(result);
         assertThat(result).isEqualTo("12");
+    }
+
+    @Test
+    @DisplayName("랜덤함수는 0~9사이의 값을 가지고 있다.")
+    public void randomValue_check() {
+        int firstValue = 0;
+        int lastValue = 10;
+
+        int result1 = gamePlay.randomValue();
+
+        betweenCheck(result1, firstValue, lastValue);
+
+        int result2 = gamePlay.randomValue();
+
+
+        betweenCheck(result2, firstValue, lastValue);
+    }
+
+    private void betweenCheck(int checkValue, int firstValue, int lastValue) {
+        assertThat(checkValue).isGreaterThan(firstValue).isLessThan(lastValue);
     }
 
 }
