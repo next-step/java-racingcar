@@ -13,8 +13,9 @@ public class StringParser {
 
     private void validate(String value) {
 
-        if (Objects.isNull(value) || value.isBlank())
+        if (Objects.isNull(value) || value.isBlank()) {
             throw new IllegalArgumentException("입력 값이 null 이거나 빈 공백 문자입니다");
+        }
     }
 
     public String[] parse() {

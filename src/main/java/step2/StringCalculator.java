@@ -1,6 +1,8 @@
 package step2;
 
 public class StringCalculator {
+    public static final int INITIAL_INDEX = 0;
+    public static final int INCREMENT_INDEX = 2;
     private final StringParser stringParser;
 
     public StringCalculator(String text) {
@@ -12,15 +14,16 @@ public class StringCalculator {
 
         int result = 0;
 
-        for (int i = 0; i < operatorsAndOperands.length; i += 2) {
+        final int size = operatorsAndOperands.length;
+        for (int i = INITIAL_INDEX; i < size; i += INCREMENT_INDEX) {
             final int value = Integer.parseInt(operatorsAndOperands[i]);
-            if (i == 0) {
+            if (i == INITIAL_INDEX) {
                 result += value;
                 continue;
             }
 
-            final Operator of = Operator.of(operatorsAndOperands[i - 1]);
-            result = of.getOperate()
+            final Operator operator = Operator.of(operatorsAndOperands[i - 1]);
+            result = operator.getOperate()
                     .applyAsInt(result, value);
         }
 
