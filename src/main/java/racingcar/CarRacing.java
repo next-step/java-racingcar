@@ -8,6 +8,7 @@ import racingcar.strategy.MoveStrategy;
 import java.util.List;
 
 public class CarRacing {
+    private static final int START_ROUND = 0;
     private static final int MINIMUM_ROUND = 1;
     private final int totalRound;
     private final Cars cars;
@@ -17,13 +18,13 @@ public class CarRacing {
         validate(totalRound);
 
         this.totalRound = totalRound;
-        this.currentRound = 0;
+        this.currentRound = START_ROUND;
         this.cars = Cars.init(names);
     }
 
     private void validate(int totalRound) {
         if (totalRound < MINIMUM_ROUND) {
-            throw new IllegalArgumentException("Total round can't be under zero");
+            throw new IllegalArgumentException("Total round can't be under " + MINIMUM_ROUND);
         }
     }
 
