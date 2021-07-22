@@ -16,10 +16,18 @@ public class Cars {
     }
 
     public List<Car> getCars() {
+        stateCheck();
         return this.cars;
     }
 
     public void moveCars() {
+        stateCheck();
         cars.stream().forEach(car -> car.move(RandomFactory.getRandomInt(RANDOM_BOUND)));
+    }
+
+    public void stateCheck(){
+        if(cars == null || cars.size() == 0){
+            throw new IllegalStateException("자동차를 먼저 생성해 주세요.");
+        }
     }
 }

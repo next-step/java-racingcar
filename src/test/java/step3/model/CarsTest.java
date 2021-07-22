@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarsTest {
 
@@ -36,5 +37,11 @@ class CarsTest {
                 .isNotEqualTo(0);
     }
 
-
+    @DisplayName("차 생성 안하고 주행시작")
+    @Test
+    void noCarsStateTest(){
+        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(
+                () -> cars.moveCars()
+        ).withMessageContaining("먼저 생성");
+    }
 }
