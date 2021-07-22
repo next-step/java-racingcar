@@ -9,9 +9,8 @@ public class StringCalculator {
 
     public static void main(String[] args) {
 
-
-
-        UserInputUtils.readUserInput();
+        System.out.println("".isEmpty());
+      //  String userInput = UserInputUtils.readUserInput();
 //        userint
 //
 //
