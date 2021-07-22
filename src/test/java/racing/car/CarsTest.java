@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racing.car.Car;
 import racing.car.Cars;
 
+import java.util.Iterator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -26,6 +28,7 @@ class CarsTest {
                 .isEqualTo(size);
     }
 
+    // cars.iterator().hasNext() 를 이용해서 테스트를 만들어보면 어떨까요? :)
     @ValueSource(ints = { 0, 1, 100, 1000 })
     @DisplayName("Car Iterator Test")
     @ParameterizedTest
@@ -34,11 +37,11 @@ class CarsTest {
         for (int i = 0; i < size; i++)
             cars.add(new Car());
 
-        int i = 0;
-        for (Car iCar : cars) {
-            ++i;
+        Iterator<Car> iterator = cars.iterator();
+        for (int i = 0; i < size; i++) {
+            iterator.next();
         }
-        assertThat(i)
-                .isEqualTo(size);
+        assertThat(iterator.hasNext())
+                .isEqualTo(false);
     }
 }
