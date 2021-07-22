@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -83,4 +84,31 @@ public class CalculatorTest {
                 .isThrownBy(() -> calculator.calculate(input))
                 .withMessageMatching("Required correct operator!");
     }
+
+    @Test
+    @DisplayName("입력 값이 null일 때 Exception이 발생해야 한다.")
+    void nullInputTest() {
+
+        //given
+        Calculator calculator = new Calculator();
+        String input = null;
+
+        //when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 +", "1", " ", "1 & 3", "1+ + 1", "1+1", ""})
+    @DisplayName("잘못된 입력이 들어올 때 Exception이 발생해야 한다.")
+    void invallidInputTest(String input) {
+
+        //given
+        Calculator calculator = new Calculator();
+
+        //when & then
+        assertThatExceptionOfType(Exception.class)
+                .isThrownBy(() -> calculator.calculate(input));
+    }
+
 }
