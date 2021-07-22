@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarTest {
     Random r;
@@ -36,7 +35,6 @@ class RacingCarTest {
     @Test
     @DisplayName("random 값이 4이상일 때 전진하는 테스트")
     public void 전진() {
-        Random r = new Random();
         int random = r.nextInt(10);
         String car = "";
         if (random >= 4) {
@@ -50,13 +48,13 @@ class RacingCarTest {
     @Test
     @DisplayName("자동차의 상태 배열로 저장")
     public void 자동차의상태() {
-        Arrays.fill(cars," ");
-        while (attempt-- > 0) {
-            String[] result = race.car(count, cars);
-            for (String s : result){
-                System.out.println(s);
-            }
-            System.out.println();
-        }
+//        Arrays.fill(cars," ");
+//        while (attempt-- > 0) {
+//            String[] result = race.execute(count, );
+//            for (String s : result){
+//                System.out.println(s);
+//            }
+//            System.out.println();
+//        }
     }
 }
