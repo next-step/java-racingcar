@@ -36,8 +36,8 @@ public class SetTest {
 	@DisplayName("특정 숫자가 존재하는지 확인하는 테스트")
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2})
-	void vertifyExistence(int param) {
-		assertTrue(numbers.contains(param));
+	void vertifyExistence(int target) {
+		assertTrue(numbers.contains(target));
 	}
 
 	@DisplayName("특정 숫자가 존재하는지 확인하는 테스트_BY_CSV")
