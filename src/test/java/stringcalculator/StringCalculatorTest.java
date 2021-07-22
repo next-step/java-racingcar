@@ -24,4 +24,15 @@ public class StringCalculatorTest {
         assertEquals(result, expected);
     }
 
+    @ParameterizedTest
+    @NullSource
+    void nullTest(String input){
+        assertThatThrownBy(() -> StringCalculator.calculate(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void emptyInputTest(){
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.calculate(""));
+        assertThatThrownBy(() -> StringCalculator.calculate("")).isInstanceOf(IllegalArgumentException.class);
+    }
 }
