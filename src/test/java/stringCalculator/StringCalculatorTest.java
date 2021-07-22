@@ -9,6 +9,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StringCalculatorTest {
 
     @Test
+    @DisplayName("입력 및 연산 메서드 단위 테스트")
+    void calculateTest(){
+        // given
+        String problem = "1 + 3 - 2 * 5 / 2";
+        // when
+        StringCalculator stringCalculator = new StringCalculator();
+        String answer = stringCalculator.calculate(problem);
+        //then
+        assertThat(answer).isEqualTo("5");
+    }
+
+    @Test
     @DisplayName("덧셈 메서드 단위 테스트")
     void sumTest() {
         // given
