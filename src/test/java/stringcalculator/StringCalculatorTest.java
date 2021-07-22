@@ -17,4 +17,11 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1 + 1 + 1:3", "1 * 2 * 3 * 4:24", "8 / 2 / 2 / 2:1", "3 * 4 - 1 * 2:22"}, delimiter = ':')
+    void 다항연산(String input, int expected) {
+        int result = StringCalculator.calculate(input);
+        assertEquals(result, expected);
+    }
+
 }
