@@ -1,5 +1,7 @@
 package racing.car;
 
+import util.RandomUtils;
+
 import java.util.*;
 
 public class Cars implements Iterable<Car> {
@@ -10,18 +12,22 @@ public class Cars implements Iterable<Car> {
         this.values = new ArrayList<>();
     }
 
-    // 요구사항 "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다."를 만족하기 위해
-    // movement 값이 false 라면 바로 return 하도록 했습니다.
-    // 제가 잘못 이해 한걸까요?
-
     public void moveAll(boolean movement) {
         if (!movement)
             return;
         for (Car iCar : values) {
-            iCar.move(
-                    new Location(random.nextInt(9))
-            );
+            iCar.move(randomDistance(movement));
         }
+    }
+
+    private Location randomDistance(boolean movement) {
+        if (!movement)
+            return Location.EMPTY;
+
+        int randomValue = RandomUtils.nextInt(9);
+        return new Location(
+                randomValue >= 4 ? randomValue : Car.MovementDistance.NOT_MOVEMENT_VALUE.getValue()
+        );
     }
 
     public void add(Car car) {

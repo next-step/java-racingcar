@@ -1,14 +1,14 @@
 package racing.car;
 
-import java.util.Objects;
-
 public class Car {
-    public enum MovementLimitDistance {
-        MIN_VALUE(4), MAX_VALUE(9);
+    public enum MovementDistance {
+        NOT_MOVEMENT_VALUE(0),
+        MOVEMENT_MIN_VALUE(4),
+        MOVEMENT_MAX_VALUE(9);
 
         private int value;
 
-        MovementLimitDistance(int value) {
+        MovementDistance(int value) {
             this.value = value;
         }
 
@@ -18,18 +18,23 @@ public class Car {
     }
 
     private Location location;
+    private int moveCount;
 
     public Car() {
         this.location = Location.EMPTY;
+        this.moveCount = 0;
     }
 
     public Location getLocation() {
         return location;
     }
 
+    public int getMoveCount() {
+        return moveCount;
+    }
+
     public void move(Location distance) {
-        if (Objects.isNull(distance) || distance.getValue() < MovementLimitDistance.MIN_VALUE.getValue())
-            return; // 4이하의 distance을 받을 경우 exception을 throw 하는게 좋을까요?
+        ++moveCount;
         this.location = location.add(distance);
     }
 }
