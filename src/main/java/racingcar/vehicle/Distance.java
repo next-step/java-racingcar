@@ -3,7 +3,7 @@ package racingcar.vehicle;
 import java.util.Objects;
 import racingcar.common.ErrorMessage;
 
-public class Distance {
+public class Distance implements Comparable<Distance> {
 
     private static final int MIN_INIT_INPUT = 0;
     private static final int MIN_MOVE_INPUT = 0;
@@ -61,5 +61,14 @@ public class Distance {
     @Override
     public int hashCode() {
         return Objects.hash(distance);
+    }
+
+    @Override
+    public int compareTo(Distance o) {
+        if (this.distance > o.distance) {
+            return 1;
+        }
+
+        return -1;
     }
 }

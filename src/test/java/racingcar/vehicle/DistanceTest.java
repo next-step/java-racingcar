@@ -40,9 +40,9 @@ class DistanceTest {
         // then
     }
 
-    @DisplayName("[성공] VO 로 비교하기")
+    @DisplayName("[성공] 비교 - 동등성")
     @Test
-    public void compare() {
+    public void compare_equality() {
         // given
         Distance sameDistance1 = new Distance(0);
         Distance sameDistance2 = new Distance(0);
@@ -50,13 +50,34 @@ class DistanceTest {
         Distance differentDistance = new Distance(5);
 
         // when
+
+        // then
         assertThat(System.identityHashCode(sameDistance1)).isNotEqualTo(System.identityHashCode(sameDistance2));
         assertThat(sameDistance1).isEqualTo(sameDistance2);
         assertThat(sameDistance1.hashCode()).isEqualTo(sameDistance2.hashCode());
 
         assertThat(sameDistance1).isNotEqualTo(differentDistance);
         assertThat(sameDistance2).isNotEqualTo(differentDistance);
+    }
+
+    @DisplayName("[성공] 비교 - 대소")
+    @Test
+    public void compare_largeAndSmall() {
+        // given
+        Distance distance0 = new Distance(0);
+        Distance distance4 = new Distance(4);
+        Distance distance15 = new Distance(15);
+        Distance distance99 = new Distance(99);
+
+        // when
 
         // then
+        assertThat(distance0).isLessThan(distance4);
+        assertThat(distance0).isLessThan(distance15);
+        assertThat(distance0).isLessThan(distance99);
+
+        assertThat(distance99).isGreaterThan(distance0);
+        assertThat(distance99).isGreaterThan(distance4);
+        assertThat(distance99).isGreaterThan(distance15);
     }
 }
