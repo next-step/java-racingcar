@@ -24,4 +24,13 @@ class StringClassTest {
 
         assertThat(arr).containsExactly("1");
     }
+
+    @DisplayName("주어진 문자열에서 ()을 제거하여 반환해야한다.")
+    @Test
+    void TEST_substring(){
+        String str = "(1,2)";
+        String result = str.substring(1,4);
+
+        assertThat(result).isEqualTo("1,2");
+    }
 }
