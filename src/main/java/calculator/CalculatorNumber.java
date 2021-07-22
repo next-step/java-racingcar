@@ -17,4 +17,8 @@ public class CalculatorNumber {
 	public CalculatorNumber sub(CalculatorNumber other) {
 		return new CalculatorNumber(number - other.toInteger());
 	}
+
+	public CalculatorNumber mul(CalculatorNumber other) {
+		return new CalculatorNumber(number * other.toInteger());
+	}
 }

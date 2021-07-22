@@ -30,4 +30,16 @@ public class CalculatorTest {
 
 		assertThat(result.toInteger()).isEqualTo(1);
 	}
+
+	@Test
+	@DisplayName("곱셈")
+	void multiplication() {
+		CalculatorNumber three = new CalculatorNumber(3);
+		CalculatorNumber two = new CalculatorNumber(2);
+		CalculatorOperator subOperator =  CalculatorOperatorFactory.create(CalculatorOperator.MULTIPLY);
+
+		CalculatorNumber result = subOperator.operate(three, two);
+
+		assertThat(result.toInteger()).isEqualTo(6);
+	}
 }

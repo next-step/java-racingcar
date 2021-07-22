@@ -8,6 +8,9 @@ public class CalculatorOperatorFactory {
 		if(s.equals(CalculatorOperator.MINUS)) {
 			return new CalculatorMinusOperator();
 		}
+		if(s.equals((CalculatorOperator.MULTIPLY))) {
+			return new CalculatorMultiplyOperator();
+		}
 		throw new IllegalArgumentException();
 	}
 }
