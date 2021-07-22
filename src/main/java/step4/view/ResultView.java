@@ -8,6 +8,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ResultView {
+    private final String NAME_SEPARATOR = ",";
+
     private final Winners winners = new Winners();
 
     static public ResultView of() {
@@ -41,7 +43,10 @@ public class ResultView {
         if (gameDidNotStarted(game)) return;
 
         List<PointOfCar> distancesOfTime = game.cars().getPointOfTime(game.countOfGame());
-        int maxPoint = distancesOfTime.stream().max(Comparator.comparingInt(PointOfCar::getPoint)).map(PointOfCar::getPoint).orElse(Integer.MAX_VALUE);
+        int maxPoint = distancesOfTime.stream()
+            .max(Comparator.comparingInt(PointOfCar::getPoint))
+            .map(PointOfCar::getPoint)
+            .orElse(Integer.MAX_VALUE);
 
         distancesOfTime.forEach(pointOfCar -> checkWinner(pointOfCar, maxPoint));
     }
@@ -51,7 +56,7 @@ public class ResultView {
     }
 
     private void printWinner() {
-        System.out.println(winners.getWinnerNames() + "가 최종 우승했습니다.");
+        System.out.println(String.join(NAME_SEPARATOR, winners.getWinnerNames()) + "가 최종 우승했습니다.");
     }
 
     public void checkWinner(PointOfCar distanceOfTime, int maxPoint) {

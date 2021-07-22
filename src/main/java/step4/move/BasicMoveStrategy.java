@@ -12,8 +12,7 @@ public class BasicMoveStrategy implements MovableStrategy {
         return makeNumber() >= CRITERION_NUMBER ? 1 : 0;
     }
 
-    @Override
-    public int makeNumber() {
+    private int makeNumber() {
         return random.nextInt(MAX_NUMBER);
     }
 }

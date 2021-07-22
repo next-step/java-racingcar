@@ -2,10 +2,11 @@ package step4.model;
 
 import step4.move.MovableStrategy;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
     private final List<Car> cars;
@@ -15,14 +16,9 @@ public class Cars {
     }
 
     static public Cars of(String names) {
-        String[] nameArr = splitNames(names);
-        AtomicInteger index = new AtomicInteger();
-
-        return new Cars(
-            Stream.generate(() -> new Car(nameArr[index.getAndIncrement()]))
-                .limit(nameArr.length)
-                .collect(Collectors.toList())
-        );
+        return Arrays.stream(splitNames(names))
+            .map(Car::new)
+            .collect(collectingAndThen(toList(), Cars::new));
     }
 
     static public String[] splitNames(String name) {
@@ -38,8 +34,6 @@ public class Cars {
     }
 
     public List<PointOfCar> getPointOfTime(int time) {
-        return cars.stream()
-            .map(car -> car.getPointOfTime(time))
-            .collect(Collectors.toList());
+        return cars.stream().map(car -> car.getPointOfTime(time)).collect(toList());
     }
 }
