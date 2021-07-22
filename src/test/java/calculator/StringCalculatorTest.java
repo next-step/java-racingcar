@@ -1,5 +1,4 @@
 package calculator;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,7 +15,6 @@ public class StringCalculatorTest {
     void isEmptyOrNull(){
         String[] emptyArr = new String[]{"","+","3"};
         String[] nullArr = new String[]{null,"+","3"};
-
         assertThatIllegalArgumentException().isThrownBy(()->
             stringCalculator.checkBeforeCalculate(emptyArr));
         assertThatIllegalArgumentException().isThrownBy(()->
