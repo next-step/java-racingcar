@@ -4,11 +4,11 @@ import java.util.List;
 
 public class CarStadium {
 
-    private final int limitTime;
+    private final Referee referee;
     private final List<Car> cars;
 
-    public CarStadium(int limitTime, List<Car> cars) {
-        this.limitTime = limitTime;
+    public CarStadium(Referee referee, List<Car> cars) {
+        this.referee = referee;
         this.cars = cars;
     }
 
@@ -24,10 +24,6 @@ public class CarStadium {
 
     public void showCarsLocation() {
         cars.forEach(Car::showNowLocation);
-    }
-
-    public int getLimitTime() {
-        return limitTime;
     }
 
     public int carsCount() {
