@@ -43,10 +43,18 @@ public class UtilsTest {
 
     @Test
     @DisplayName("문자열을 입력하면 숫자형태로 변환한다.")
-    public void StringToInt(){
+    public void stringToInt(){
         int result = utils.stringToInt("1");
 
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("선택한 구간만큼 문자열이 반환된다.")
+    public void stringToSubString(){
+        String result = utils.stringToSubString("nextstep", 0, 4);
+
+        assertThat(result).isEqualTo("next");
     }
 
 }
