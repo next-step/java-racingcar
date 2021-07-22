@@ -17,7 +17,7 @@ class DistanceTest {
         assertThat(distance.getValue())
                 .isEqualTo(
                         distance.getDistanceRange() == NOT_MOVEMENT ?
-                                NOT_MOVEMENT.getValue() :
+                                DistanceRange.NOT_MOVEMENT_VALUE :
                                 value);
     }
 

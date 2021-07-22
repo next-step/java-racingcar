@@ -10,6 +10,8 @@ public enum DistanceRange {
     MOVEMENT(10),
     LIMIT_MOVEMENT(Integer.MAX_VALUE);
 
+    public static int NOT_MOVEMENT_VALUE = 0;
+
     private int value;
 
     DistanceRange(int value) {
