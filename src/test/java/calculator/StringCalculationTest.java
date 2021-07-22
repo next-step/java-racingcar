@@ -1,14 +1,13 @@
-package util.calculator;
+package calculator;
 
-import exception.InvalidFormulaException;
+import calculator.exception.InvalidFormulaException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import util.calculator.Calculator;
-import util.calculator.StringCalculator;
+import calculator.Calculator;
+import calculator.StringCalculator;
 
 import static org.assertj.core.api.Assertions.*;
 

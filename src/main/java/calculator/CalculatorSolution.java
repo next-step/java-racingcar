@@ -1,6 +1,6 @@
-import exception.InvalidFormulaException;
-import util.calculator.Calculator;
-import util.calculator.StringCalculator;
+package calculator;
+
+import calculator.exception.InvalidFormulaException;
 
 import java.util.Scanner;
 

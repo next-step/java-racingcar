@@ -1,4 +1,4 @@
-package exception;
+package calculator.exception;
 
 public class InvalidFormulaException extends RuntimeException {
     public InvalidFormulaException() {
