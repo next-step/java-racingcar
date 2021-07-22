@@ -7,15 +7,14 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(int count, int move) {
-        for(int i=0; i < count; i++){
-            cars.add(createCar(move));
+    public Cars(int count) {
+        for(int i = 0; i < count; i++){
+            cars.add(readyToCar());
         }
     }
 
-    private Car createCar(int move) {
-        Car car = new Car(move);
-        return car;
+    private Car readyToCar() {
+        return Car.createCar();
     }
 
     public List<Car> getCars() {
