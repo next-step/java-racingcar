@@ -12,13 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
     Car car;
     Random random;
-    ResultView resultView;
 
     @BeforeEach
     void setUpCar() {
         car = new Car(0);
         random = new Random();
-        resultView = new ResultView();
     }
 
     @Test

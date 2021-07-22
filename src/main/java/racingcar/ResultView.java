@@ -26,6 +26,4 @@ public class ResultView {
             print(moveNumber);
         }
     }
-
-
 }
