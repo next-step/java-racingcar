@@ -33,9 +33,17 @@ public class RacingSolution {
         }
     }
 
+    private Cars inputCars() {
+        Cars cars = new Cars();
+        int carSize = inputView.inputCarSize();
+        for (int i = 0; i < carSize; i++)
+            cars.add(new Car());
+        return cars;
+    }
+
     private void racing(Cars cars, int turnSize) {
+        resultView.printResultTitle();
         for (int i = 0; i < turnSize; i++) {
-            resultView.printResultTitle();
             moveAll(cars, Fuel.RANDOM);
 
             resultView.printAllCarLocation(cars);
@@ -43,14 +51,7 @@ public class RacingSolution {
     }
 
     private void moveAll(Cars cars, Fuel fuel) {
-        cars.broadCast(iCar -> iCar.move(fuel) );
-    }
-
-    private Cars inputCars() {
-        Cars cars = new Cars();
-        int carSize = inputView.inputCarSize();
-        for (int i = 0; i < carSize; i++)
-            cars.add(new Car());
-        return cars;
+        for (Car iCar : cars)
+            iCar.move(fuel);
     }
 }

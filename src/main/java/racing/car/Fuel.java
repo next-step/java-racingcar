@@ -2,6 +2,8 @@ package racing.car;
 
 import util.RandomUtils;
 
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.BooleanSupplier;
 
 public enum Fuel {

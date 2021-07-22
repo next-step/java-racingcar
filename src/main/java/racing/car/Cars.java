@@ -13,12 +13,6 @@ public class Cars implements Iterable<Car> {
         this.values = new ArrayList<>();
     }
 
-    public void broadCast(Consumer<Car> callback) {
-        for (Car iCar : values) {
-            callback.accept(iCar);
-        }
-    }
-
     public void add(Car car) {
         values.add(car);
     }

@@ -2,7 +2,6 @@ package racing.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Iterator;
@@ -43,31 +42,5 @@ class CarsTest {
         }
         assertThat(iterator.hasNext())
                 .isEqualTo(false);
-    }
-
-    // 요구사항 "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 에 대한 테스트를 추가 해보면 어떨까요?
-    // 꼭 Cars가 아니여도 상관이 없습니다. 🤔
-    @CsvSource({
-            "100,5,false",
-            "100,100,true",
-            "100,200,true",
-            "100,1000,false"
-    })
-    @DisplayName("Car Move All Test")
-    @ParameterizedTest
-    public void moveAllTest(int carSize, int turnSize, boolean movement) {
-        Cars cars = initCars(carSize);
-
-        for (int i = 0; i < turnSize; i++) {
-            cars.moveAll(movement);
-
-            for (Car iCar : cars) {
-                assertThat(
-                        iCar.getMoveCount() > 0
-                ).withFailMessage(
-                        String.format("%s 상태에서 반대로 행동함 [%d]", (movement ? "movement" : "not movement"), iCar.getMoveCount())
-                ).isEqualTo(movement);
-            }
-        }
     }
 }

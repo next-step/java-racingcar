@@ -2,6 +2,7 @@ package racing.car;
 
 public class Location {
     public static Location EMPTY = new Location();
+    public static Location ONE_BLOCK = new Location(1);
     private final int value;
 
     public Location() {
@@ -24,10 +25,6 @@ public class Location {
 
     public Location min(Location location) {
         return new Location(getValue() - location.getValue());
-    }
-
-    public boolean isEmpty() {
-        return value == 0;
     }
 
     @Override
