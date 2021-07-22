@@ -1,6 +1,6 @@
 package racingcar.vehicle;
 
-import racingcar.engine.Engine;
+import racingcar.vehicle.engine.Engine;
 
 public class Car {
 

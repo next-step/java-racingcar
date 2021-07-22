@@ -1,4 +1,4 @@
-package racingcar.engine;
+package racingcar.vehicle.engine;
 
 import racingcar.common.ErrorMessage;
 
@@ -21,7 +21,7 @@ public class CarEngine extends Engine {
     }
 
     private boolean inputValidatation(int input) {
-        if (input >= MIN_INPUT && input <= MAX_INPUT) {
+        if (input >= Engine.MIN_INPUT && input <= Engine.MAX_INPUT) {
             return true;
         }
 

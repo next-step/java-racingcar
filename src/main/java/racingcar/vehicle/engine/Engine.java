@@ -1,4 +1,4 @@
-package racingcar.engine;
+package racingcar.vehicle.engine;
 
 public abstract class Engine {
 
