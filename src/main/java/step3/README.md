@@ -1,9 +1,9 @@
 ### 기능 요구사항
 - [x] 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다. #RacingCarGame#main
     - [x] 몇 대의 자동차를 입력 할 수 있어야한다. 
-        - [ ] 자동차는 경기장에 입장을 할 수 있어야한다. #CarStadium#enterCar()
+        - [x] 자동차는 경기장에 입장을 할 수 있어야한다. #CarStadium#enterCar()
     - [x] 몇 번 이동할것인지 입력 할 수 있어야한다.
-        - [ ] 모든 자동차의 움직일 수 있는 시간이 제한되어있다 #CarStadium#limiteTime()
+        - [x] 모든 자동차의 움직일 수 있는 시간이 제한되어있다 #CarStadium#limiteTime()
   
 - [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다. #Car#Move
     - [ ] 0에서 9 사이에서 random 값을 생성한다. #NumberGenerator#createRandomNumbers()
