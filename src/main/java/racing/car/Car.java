@@ -1,10 +1,21 @@
 package racing.car;
 
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
-    private static final int MIN_MOVEMENT_DISTANCE = 4;
+    public enum MovementLimitDistance {
+        MIN_VALUE(4), MAX_VALUE(9);
+
+        private int value;
+
+        MovementLimitDistance(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
 
     private Location location;
 
@@ -17,8 +28,8 @@ public class Car {
     }
 
     public void move(Location distance) {
-        if (Objects.isNull(distance) || distance.getValue() < MIN_MOVEMENT_DISTANCE)
-            return;
+        if (Objects.isNull(distance) || distance.getValue() < MovementLimitDistance.MIN_VALUE.getValue())
+            return; // 4이하의 distance을 받을 경우 exception을 throw 하는게 좋을까요?
         this.location = location.add(distance);
     }
 }
