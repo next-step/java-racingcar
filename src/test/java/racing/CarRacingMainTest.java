@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -13,15 +15,17 @@ public class CarRacingMainTest {
 
 
     private Racing racing;
+    private MessageBox messageBox;
 
     @BeforeEach
-    void setUp(){
-        racing = new Racing();
+    void setUp() {
+        messageBox = new MessageBox();
+        racing = new Racing(messageBox);
     }
 
     @Test
-    @DisplayName("스캐너로 받는 입력값이 숫자일경우 그값을 반환한다.")
-    public void scannerValueToIntValue() {
+    @DisplayName("입력값이 숫자일경우 그값을 반환한다.")
+    public void ValueToIntValue() {
         int result1 = racing.intValueByScanner("3");
         int result2 = racing.intValueByScanner("5");
 
@@ -29,11 +33,12 @@ public class CarRacingMainTest {
         assertThat(result2).isEqualTo(5);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("입력받은 문자열을 숫자형태로 반환한다.")
-    public void stringValueToIntValue() {
-        int result1 = racing.toInt("2");
-        int result2 = racing.toInt("5");
+    @CsvSource(value = {"2,5"}, delimiter = ',')
+    public void stringValueToIntValue(String value1, String value2) {
+        int result1 = racing.toInt(value1);
+        int result2 = racing.toInt(value2);
 
         assertThat(result1).isEqualTo(2);
         assertThat(result2).isEqualTo(5);
