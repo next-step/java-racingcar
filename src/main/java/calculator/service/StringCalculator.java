@@ -1,9 +1,10 @@
-package calculator;
+package calculator.service;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import calculator.operator.Operator;
 import calculator.utils.StringUtil;
 
 public class StringCalculator {
