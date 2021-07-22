@@ -6,10 +6,13 @@ public class Race {
     private Random r = new Random();
     private final int MIN_NUMBER = 4;
     private final int BORDER = 10;
+    private final String DISTANCE_SYMBOL = "-";
 
     public void execute(String [] cars){
         for (int i=0; i<cars.length; i++){
-          move(getRandomNumber());
+          if (move(getRandomNumber())){
+              cars[i] += DISTANCE_SYMBOL;
+          }
         }
     }
 

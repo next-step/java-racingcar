@@ -1,8 +1,11 @@
 package racing_car.step03;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -32,17 +35,11 @@ class RacingCarTest {
         }
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("random 값이 4이상일 때 전진하는 테스트")
-    public void 전진() {
-        int random = r.nextInt(10);
-        String car = "";
-        if (random >= 4) {
-            car += "-";
-            assertThat(car).isEqualTo("-");
-        } else {
-            assertThat(car).isEqualTo("");
-        }
+    @CsvSource(value = {"3:false","4:true","2:false","6:true","1:false"},delimiter = ':')
+    public void 전진(int number , boolean move) {
+        Assertions.assertThat(race.move(number)).isEqualTo(move);
     }
 
     @Test
