@@ -3,10 +3,10 @@ package study;
 import java.util.regex.Pattern;
 
 public class StringUtil {
-    private StringUtil() {
-    }
-
     private static final String INPUT_ERROR = "올바른 값을 입력해주세요.";
+    private static final Pattern INPUT_PATTERN = Pattern.compile("^\\([0-9]+,[0-9]+\\)$");
+
+    private StringUtil() {}
 
     public static String[] split(String input, String divider) {
         if (input.isEmpty() || divider.isEmpty() || !divider.equals(",")) {
@@ -16,7 +16,7 @@ public class StringUtil {
     }
 
     public static String deleteBracket(String input) {
-        if (!Pattern.matches("^\\([0-9]+,[0-9]+\\)$", input)) {
+        if (!INPUT_PATTERN.matcher(input).matches()) {
             throw new IllegalArgumentException(INPUT_ERROR);
         }
         return input.substring(1, input.length() - 1);
