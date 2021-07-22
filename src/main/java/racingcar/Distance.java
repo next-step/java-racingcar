@@ -5,8 +5,9 @@ import racingcar.common.ErrorMessage;
 
 public class Distance {
 
-    private final int minInitInput = 0;
-    private final int minMoveInput = 0;
+    private static final int MIN_INIT_INPUT = 0;
+    private static final int MIN_MOVE_INPUT = 0;
+
     private final int distance;
 
     public Distance(int distance) {
@@ -30,7 +31,7 @@ public class Distance {
     }
 
     private boolean initValidation(int initDistance) {
-        if (initDistance >= minInitInput) {
+        if (initDistance >= MIN_INIT_INPUT) {
             return true;
         }
 
@@ -38,7 +39,7 @@ public class Distance {
     }
 
     private boolean moveValidation(int moveDistance) {
-        if (moveDistance >= minMoveInput) {
+        if (moveDistance >= MIN_MOVE_INPUT) {
             return true;
         }
 

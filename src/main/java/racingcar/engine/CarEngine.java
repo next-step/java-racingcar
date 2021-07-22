@@ -4,8 +4,8 @@ import racingcar.common.ErrorMessage;
 
 public class CarEngine extends Engine {
 
-    private final int operateFlag = 4;
-    private final int moveDistance = 1;
+    private static final int OPERATE_FLAG = 4;
+    private static final int MOVE_DISTANCE = 1;
 
     @Override
     public int operate(int input) {
@@ -13,15 +13,15 @@ public class CarEngine extends Engine {
             throw new IllegalArgumentException(ErrorMessage.OUT_OF_RANGE);
         }
 
-        if (input >= operateFlag) {
-            return moveDistance;
+        if (input >= OPERATE_FLAG) {
+            return MOVE_DISTANCE;
         }
 
         return 0;
     }
 
     private boolean inputValidatation(int input) {
-        if (input >= minInput && input <= maxInput) {
+        if (input >= MIN_INPUT && input <= MAX_INPUT) {
             return true;
         }
 
