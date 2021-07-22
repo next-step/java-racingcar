@@ -21,9 +21,7 @@ public class Cars implements Iterable<Car> {
 
     private Distance randomDistance() {
         int randomValue = RandomUtils.nextInt(9);
-        return Distance.newInstance(
-                randomValue >= 4 ? randomValue : DistanceRange.NOT_MOVEMENT_VALUE
-        );
+        return Distance.newInstance(randomValue);
     }
 
     public void add(Car car) {
