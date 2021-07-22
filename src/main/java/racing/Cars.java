@@ -10,7 +10,16 @@ public class Cars {
         this.values = new ArrayList<>();
     }
 
-    public void addCar(Car car) {
+    public void allMove() {
+        for(Car iCar : values)
+            iCar.move();
+    }
+
+    public void add(Car car) {
         values.add(car);
+    }
+
+    public int size() {
+        return values.size();
     }
 }

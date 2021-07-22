@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Location {
     private static final char VALUE_UNIT = '-';
-    private int value = 0;
+    private final int value;
 
     public Location() {
         this(0);
