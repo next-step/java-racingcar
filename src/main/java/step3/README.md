@@ -24,4 +24,4 @@
 - [x] else 예약어는 사용하지 않는다.
     - switch/case도 허용하지 않는다.
 - [x] README.md 파일에 기능 목록 단위로 추가한다.
-- [x] commit메세지 convention을 지키면서 프로그래밍한다.
+- [ ] commit메세지 convention을 지키면서 프로그래밍한다.

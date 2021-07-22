@@ -12,14 +12,19 @@ public class RacingCarGame {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int tryCount = scanner.nextInt();
 
-        CarStadium carstadium = new CarStadium(tryCount, new ArrayList<>());
+        Referee referee = new Referee(tryCount);
+        CarStadium carstadium = new CarStadium(referee, new ArrayList<>());
 
         for (int i = 0; i < carCount; i++) {
-            carstadium.enterCar(new Car());
+            carstadium.enterCar(new Car(new CarEngine()));
         }
 
+        System.out.println("실행 결과");
 
-
-
+        for (int i = 0; i < tryCount; i++) {
+            carstadium.moveCars();
+            System.out.println("**********************");
+            carstadium.showCarsLocation();
+        }
     }
 }
