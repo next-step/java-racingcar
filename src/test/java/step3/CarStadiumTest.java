@@ -16,7 +16,7 @@ class CarStadiumTest {
         CarStadium carStadium = new CarStadium(givenLimitTime, new ArrayList<>());
 
         for (int i = 0; i < givenCars; i++) {
-            carStadium.enterCar(new Car());
+            carStadium.enterCar(new Car(new CarEngine()));
         }
 
         // when
