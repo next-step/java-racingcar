@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("사칙 연산 테스트")
 class OperatorTest {
@@ -18,9 +19,7 @@ class OperatorTest {
         assertThat(Operator.of("*")).isEqualTo(Operator.MULTIPLY);
         assertThat(Operator.of("/")).isEqualTo(Operator.DIVIDE);
 
-        assertThatThrownBy(() -> Operator.of("++"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Invalid value :");
+        assertThat(Operator.of("++")).isNull();
     }
 
     @DisplayName("PLUS")
