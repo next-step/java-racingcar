@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SimpleCalculatorTest {
     List<Character> opList = new ArrayList<>();
@@ -64,13 +65,15 @@ class SimpleCalculatorTest {
 
     @Test
     @DisplayName("나누기 테스트")
-    void divideTest() {
+    void divideTest() throws NotEqualRemainderZero {
         assertThat(sc.divide("10 / 2")).isEqualTo("5");
     }
 
     @Test
     @DisplayName("나눗셈의 경우 결과 값을 정수로 떨어지는 값인지 테스트")
     void isEqualRemainderZero() {
-        
+        assertThatThrownBy(() -> sc.divide("10 / 3"))
+            .isInstanceOf(NotEqualRemainderZero.class);
     }
+    
 }
