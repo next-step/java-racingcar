@@ -1,10 +1,16 @@
 package racingcar.view;
 
+import java.util.List;
 import racingcar.vehicle.Cars;
 
 public class ResultView {
 
     private static final char PRINT_FLAG = '-';
+
+    public static void printWinners(List<String> carNames) {
+        String winnerNames = String.join(",", carNames);
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
+    }
 
     public static void pirntProgress(Cars cars) {
         for (int i = 0; i < cars.size(); i++) {
@@ -13,7 +19,6 @@ public class ResultView {
 
             System.out.println(carName + " : " + getDistanceString(distance));
         }
-        System.out.println();
     }
 
     private static String getDistanceString(int distance) {

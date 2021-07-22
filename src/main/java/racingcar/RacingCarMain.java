@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingCarMain {
 
@@ -18,10 +19,9 @@ public class RacingCarMain {
         for (int i = 0; i < game.getDriveCount(); i++) {
             game.playingDrive();
             game.printProgress();
+            System.out.println();
         }
 
-        System.out.println();
-        String winnersName = String.join(",", game.getWinners().getCarNames());
-        System.out.println(winnersName + "가 최종 우승했습니다.");
+        ResultView.printWinners(game.getWinners().getCarNames());
     }
 }
