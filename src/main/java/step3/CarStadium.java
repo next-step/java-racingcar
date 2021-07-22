@@ -15,4 +15,18 @@ public class CarStadium {
     public void enterCar(Car car) {
         cars.add(car);
     }
+
+    public void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    public int getLimitTime() {
+        return limitTime;
+    }
+
+    public int carsCount() {
+        return cars.size();
+    }
 }
