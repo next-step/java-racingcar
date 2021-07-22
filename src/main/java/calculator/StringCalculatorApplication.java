@@ -1,4 +1,6 @@
-import calculator.StringCalculator;
+package calculator;
+
+import calculator.service.StringCalculator;
 import java.util.Scanner;
 
 public class StringCalculatorApplication {
