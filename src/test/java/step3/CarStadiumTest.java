@@ -13,14 +13,16 @@ class CarStadiumTest {
         int givenLimitTime = 10;
         int givenCars = 5;
 
-        CarStadium carStadium = new CarStadium(givenLimitTime, new ArrayList<>());
+        Referee referee = new Referee(givenLimitTime);
+
+        CarStadium carStadium = new CarStadium(referee, new ArrayList<>());
 
         for (int i = 0; i < givenCars; i++) {
             carStadium.enterCar(new Car(new CarEngine()));
         }
 
         // when
-        int actualLimitTime = carStadium.getLimitTime();
+        int actualLimitTime = referee.getLimitTime();
         int actualCarsCount = carStadium.carsCount();
 
         // then
