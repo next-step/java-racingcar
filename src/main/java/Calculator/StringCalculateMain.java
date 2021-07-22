@@ -1,8 +1,8 @@
-package Calculater;
+package Calculator;
 
 public class StringCalculateMain {
 
-    public static StringCalculaterExecuteClass stringCalculaterExecuteClass = new StringCalculaterExecuteClass();
+    public static StringCalculatorExecutor stringCalculaterExecutor = new StringCalculatorExecutor();
 
     public static void main(String[] args) {
 
@@ -10,7 +10,7 @@ public class StringCalculateMain {
 
         int result = 0;
 
-        result = stringCalculaterExecuteClass.stringCalculator(numberAndOperator);
+        result = stringCalculaterExecutor.stringCalculator(numberAndOperator);
 
         System.out.println("결과값:"+result);
     }

@@ -1,6 +1,6 @@
 package study;
 
-import Calculater.*;
+import Calculator.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,8 @@ public class stringCalTest {
     Subtract substract;
     Multiply multiply;
     Division division;
-    StringCalculaterExecuteClass calMain;
+    StringCalculationExecutor stringCalculationExecutor;
+
 
     @BeforeEach
     void setUp(){
@@ -20,7 +21,7 @@ public class stringCalTest {
         substract = new Subtract();
         multiply = new Multiply();
         division = new Division();
-        calMain = new StringCalculaterExecuteClass();
+        stringCalculationExecutor = new StringCalculationExecutor();
     }
 
     @Test
@@ -36,30 +37,30 @@ public class stringCalTest {
     @Test
     @DisplayName("더하기 테스트")
     void plusTest(){
-        assertThat(plus.resultCalculater(1,2)).isEqualTo(3);
+        assertThat(plus.resultCalculator(1,2)).isEqualTo(3);
     }
     @Test
     @DisplayName("마이너스 테스트")
     void subTest(){
-        assertThat(substract.resultCalculater(3,2)).isEqualTo(1);
+        assertThat(substract.resultCalculator(3,2)).isEqualTo(1);
     }
 
     @Test
     @DisplayName("곱하기 테스트")
     void mulTest(){
-        assertThat(multiply.resultCalculater(1,2)).isEqualTo(2);
+        assertThat(multiply.resultCalculator(1,2)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("나누기 테스트")
     void divTest(){
-        assertThat(division.resultCalculater(10,5)).isEqualTo(2);
+        assertThat(division.resultCalculator(10,5)).isEqualTo(2);
     }
 
     @Test
     @DisplayName("계산기 메인 더하기  테스트")
     void plusMainTest(){
-        assertThat(calMain.result("+",1,2)).isEqualTo(3);
+       // assertThat(stringCalculationExecutor.result("+",1,2)).isEqualTo(3);
     }
 
     @Test
@@ -69,9 +70,9 @@ public class stringCalTest {
         int result =0;
         for(int i=0 ; i<=numberAndOperator.length/2+2; i+=2){
             if(result == 0){
-                result = calMain.result(numberAndOperator[i+1] , Integer.parseInt(numberAndOperator[i]), Integer.parseInt(numberAndOperator[i+2]));
+               // result = stringCalculationExecutor.result(numberAndOperator[i+1] , Integer.parseInt(numberAndOperator[i]), Integer.parseInt(numberAndOperator[i+2]));
             }else{
-                result = calMain.result(numberAndOperator[i+1] ,result, Integer.parseInt(numberAndOperator[i+2]));
+               // result = stringCalculationExecutor.result(numberAndOperator[i+1] ,result, Integer.parseInt(numberAndOperator[i+2]));
             }
         }
         assertThat(result).isEqualTo(10);
