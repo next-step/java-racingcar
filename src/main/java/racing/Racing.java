@@ -8,9 +8,11 @@ public class Racing {
 
     private final int RANDOM_VALUE = 10;
     private List<Car> carModelList;
+    private Random random;
 
     public Racing() {
         this.carModelList = new ArrayList<>();
+        this.random = new Random();
     }
 
     public List<Car> createCarByRacing(String totalCarNumber) {
@@ -20,6 +22,21 @@ public class Racing {
             carModelList.add(carModel);
         }
         return carModelList;
+    }
+
+    public void tryRacingByCar(String tryraceNumber) {
+        int tryRacingCount = intValueByScanner(tryraceNumber);
+        System.out.println("실행 결과");
+        for (int i = 0; i < tryRacingCount; i++) {
+            racing();
+        }
+    }
+
+    public void racing() {
+        for (Car carModel : carModelList) {
+            carModel.carRacingAct(RANDOM_VALUE);
+        }
+        System.out.println();
     }
 
     public int intValueByScanner(String scannerValue) {
@@ -40,22 +57,7 @@ public class Racing {
         }
     }
 
-
-    public void tryRacingByCar(int tryraceNumber) {
-        System.out.println("실행 결과");
-        for (int i = 0; i < tryraceNumber; i++) {
-            racing();
-        }
-    }
-
-    public void racing() {
-        for (Car carModel : carModelList) {
-            carModel.carRacingAct(RANDOM_VALUE);
-        }
-        System.out.println();
-    }
-
     public int randomValue() {
-        return new Random().nextInt(RANDOM_VALUE);
+        return random.nextInt(RANDOM_VALUE);
     }
 }

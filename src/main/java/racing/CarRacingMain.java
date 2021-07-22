@@ -10,10 +10,12 @@ public class CarRacingMain {
     public static void main(String[] args) {
         Racing racing = new Racing();
         Scanner scanner = new Scanner(System.in);
+
         System.out.println(FIRST_REQUEST);
         racing.createCarByRacing(scanner.next());
+
         System.out.println(SECOND_REQUEST);
-        String secondInValue = scanner.next();
+        racing.tryRacingByCar(scanner.next());
 
         scanner.close();
     }
