@@ -38,7 +38,6 @@ public class SimpleCalculator {
 
 		splitExpressionList.clear();
 		splitExpressionList.addAll(Arrays.asList(s.split(" ")));
-		System.out.println("splitExpressionList : " + splitExpressionList);
 		checkSpaceBetweenNumberAndOperatorValidation();
 
 		while (splitExpressionList.size() != 1) {
