@@ -2,7 +2,6 @@ package racing.car;
 
 public class Location {
     public static Location EMPTY = new Location();
-    private static final char VALUE_UNIT = '-';
     private final int value;
 
     public Location() {
@@ -27,10 +26,6 @@ public class Location {
         return new Location(getValue() - location.getValue());
     }
 
-    public boolean hasValue() {
-        return getValue() > 0;
-    }
-
     @Override
     public int hashCode() {
         return Integer.hashCode(value);
@@ -48,10 +43,6 @@ public class Location {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(VALUE_UNIT); // 위치가 0 이어도 - 표시가 필요함
-        for (int i = 0; i < value; i++)
-            builder.append(VALUE_UNIT);
-        return builder.toString();
+        return String.valueOf(value);
     }
 }
