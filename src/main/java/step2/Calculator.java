@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class Calculator {
 
+
+
+
+    /////////////////////
+
     public static int plus (int num, int result) {
         return result + num;
     }
@@ -17,12 +22,16 @@ public class Calculator {
         return result / num;
     }
     public static String[] splitString (String str) {
+        if("".equals(str) || " " == null || str == null) {
+            throw new IllegalArgumentException("input 값이 NULL 또는 빈값입니다.");
+        }
         return str.split(" ");
     }
     public static int calculator (String[] strArr) {
         String regExp = "^[0-9]+$";
 
         int result = 0;
+
 
         for(int idx = 0; idx < strArr.length; idx++) {
 
@@ -45,7 +54,9 @@ public class Calculator {
                             result = divide(Integer.valueOf(strArr[idx + 1]), result);
                             break;
                         default:
-                            break;
+                            throw new IllegalArgumentException("input값이 사칙연산 기호가 아닙니다.");
+                            //break;
+
                     }
                 }
             }
@@ -63,8 +74,6 @@ public class Calculator {
         Scanner input = new Scanner(System.in);
 
         String[] splitStr = splitString(input.nextLine());
-
-
 
         System.out.println(calculator (splitStr));
 
