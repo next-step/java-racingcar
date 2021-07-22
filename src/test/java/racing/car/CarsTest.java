@@ -25,13 +25,19 @@ class CarsTest {
                 .isEqualTo(size);
     }
 
+    @ValueSource(ints = { 0, 1, 100, 1000 })
     @DisplayName("Car Iterator Test")
-    @Test
-    public void carIteratorTest() {
+    @ParameterizedTest
+    public void carIteratorTest(int size) {
         Cars cars = new Cars();
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < size; i++)
             cars.add(new Car());
 
-        for (Car iCar : cars) {}
+        int i = 0;
+        for (Car iCar : cars) {
+            ++i;
+        }
+        assertThat(i)
+                .isEqualTo(size);
     }
 }
