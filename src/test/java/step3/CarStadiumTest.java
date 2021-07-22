@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarStadiumTest {
 
@@ -20,6 +21,26 @@ class CarStadiumTest {
 
         referee = new Referee(givenLimitTime);
         carStadium = new CarStadium(referee, new ArrayList<>());
+    }
+
+
+    @Test
+    void 자동차가_움직이면_위치를_보여준다() {
+        // given
+        for (int i = 0; i < givenCars; i++) {
+            carStadium.enterCar(new Car(new CarEngine()));
+        }
+
+        carStadium.moveCars();
+        carStadium.showCarsLocation();
+    }
+
+    @Test
+    void 자동차가_없는데_움직이면_illegalArgumentException() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            carStadium.moveCars();
+            carStadium.showCarsLocation();
+        });
     }
 
     @Test
