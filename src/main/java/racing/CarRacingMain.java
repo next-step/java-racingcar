@@ -7,19 +7,18 @@ import java.util.Scanner;
 
 public class CarRacingMain {
 
-    private static final String firstRequest = "자동차 대수는 몇 대 인가요?";
-    private static final String secondRequest = "시도할 회수는 몇 회 인가요?";
-    private static final int randomValue = 10;
-    private static final int racingConditionValue = 3;
+    private static final String FIRST_REQUEST = "자동차 대수는 몇 대 인가요?";
+    private static final String SECOND_REQUEST = "시도할 회수는 몇 회 인가요?";
+    private static final int RANDOM_VALUE = 10;
     private static List<Car> carModelList = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(firstRequest);
+        System.out.println(FIRST_REQUEST);
         if (scanner.hasNext()) {
             createCarByNumber(intValueByScanner(scanner.next()));
         }
-        System.out.println(secondRequest);
+        System.out.println(SECOND_REQUEST);
         if (scanner.hasNext()) {
             tryRacingByCar(intValueByScanner(scanner.next()));
         }
@@ -61,13 +60,13 @@ public class CarRacingMain {
 
     public static void racing() {
         for (Car carModel : carModelList) {
-            carModel.carRacingAct(randomValue);
+            carModel.carRacingAct(RANDOM_VALUE);
         }
         System.out.println();
     }
 
     public static int randomValue() {
-        return new Random().nextInt(randomValue);
+        return new Random().nextInt(RANDOM_VALUE);
     }
 
 }
