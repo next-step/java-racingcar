@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Car {
 
-    private final int INIT_POSITION = 0;
+    private final int INIT_POSITION = 1;
     private final Random random = new Random();
 
     private final int MOVE_BOUNDARY = 4;
