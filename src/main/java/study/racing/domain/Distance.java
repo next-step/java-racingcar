@@ -1,4 +1,4 @@
-package study.domain;
+package study.racing.domain;
 
 public class Distance {
 

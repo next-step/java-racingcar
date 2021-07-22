@@ -1,4 +1,4 @@
-package study.service;
+package study.racing.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,6 @@ class RacingTest {
     void drawDisplay() {
         Racing racing = new Racing();
         racing.setGameCount("3","5");
-
     }
 
     @DisplayName("입력값이 null이거나 빈값인 경우 검증하여 IllegalArgumentException이 발생하는지 테스트.")

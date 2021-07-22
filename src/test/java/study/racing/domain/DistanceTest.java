@@ -1,14 +1,14 @@
-package study.domain;
+package study.racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.common.Common;
+import study.racing.common.Common;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.common.Common.toInt;
+import static study.racing.common.Common.toInt;
 
 class DistanceTest {
 
@@ -25,9 +25,9 @@ class DistanceTest {
     @ValueSource(ints = {9,1,3,5,4})
     void 선택된랜덤값이4이상인지체크테스트(int value) {
 
-        if(Common.checkMoveable(value)){
+        if(Common.checkMoveableCar(value)){
             assertThat(value).isGreaterThan(3);
-            assertThat(Common.checkMoveable(value)).isTrue();
+            assertThat(Common.checkMoveableCar(value)).isTrue();
         }
     }
 

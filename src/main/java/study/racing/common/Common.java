@@ -1,4 +1,4 @@
-package study.common;
+package study.racing.common;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class Common {
         return random.nextInt(10);
     }
 
-    public static Boolean checkMoveable(int targetNumber) {
+    public static Boolean checkMoveableCar(int targetNumber) {
         return targetNumber >= LIMIT_NUMBER;
     }
 
@@ -30,7 +30,8 @@ public class Common {
             carModel.append("-");
         }
 
-        System.out.println("start|" + carModel);
+        //output => start|
+        System.out.println(Message.MSG_RESULT_FORM + carModel);
 
     }
 

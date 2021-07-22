@@ -1,12 +1,12 @@
-package study.service;
+package study.racing.service;
 
-import study.validation.Validation;
-import study.domain.Car;
-import study.domain.Cars;
+import study.racing.validation.Validation;
+import study.racing.domain.Car;
+import study.racing.domain.Cars;
 
 import java.util.List;
 
-import static study.common.Common.*;
+import static study.racing.common.Common.*;
 
 public class Racing {
 
@@ -38,7 +38,7 @@ public class Racing {
     }
 
     private void moveProgress(Car car) {
-        if(checkMoveable(createRandomNumber())){
+        if(checkMoveableCar(createRandomNumber())){
             car.getDistance().move();
         }
     }
