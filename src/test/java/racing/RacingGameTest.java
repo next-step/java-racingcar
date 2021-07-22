@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    private final ForwardConditionStrategy strategy = new NumberMoreThanFourConditionStrategy();
+    private final ForwardConditionStrategy strategy = RandomNumberConditionStrategy.getInstance();
 
     @Test
     @DisplayName("정적_팩토리가_인스턴스를_생성하는지_확인한다")

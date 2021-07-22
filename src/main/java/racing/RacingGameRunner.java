@@ -5,6 +5,6 @@ import static racing.RacingGameScanner.*;
 
 public class RacingGameRunner {
     public static void main(String[] args) {
-        print(RacingGame.from(new NumberMoreThanFourConditionStrategy(), enter()).run());
+        print(RacingGame.from(RandomNumberConditionStrategy.getInstance(), enter()).run());
     }
 }

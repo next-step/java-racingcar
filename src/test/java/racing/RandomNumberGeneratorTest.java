@@ -10,7 +10,7 @@ public class RandomNumberGeneratorTest {
     @DisplayName("랜덤숫자는_0_9_사이의_값이다_1,000번_확인")
     void generate() throws Exception {
         for(int i = 0; i < 1_000; i++) {
-            assertThat(isNumberLessThanTen(RandomNumberGenerator.generate())).isTrue();
+            assertThat(isNumberLessThanTen(RandomNumberConditionStrategy.getInstance().generateUpToTen())).isTrue();
         }
     }
 
