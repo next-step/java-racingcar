@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 class StringCalculatorTest {
@@ -18,6 +19,34 @@ class StringCalculatorTest {
         String answer = stringCalculator.calculate(problem);
         //then
         assertThat(answer).isEqualTo("5");
+    }
+
+    @Test
+    @DisplayName("공백 문자 입력 예외 처리 단위 테스트")
+    void emptyStringTest(){
+        // given
+        String problem = "";
+        // when, then
+        StringCalculator stringCalculator = new StringCalculator();
+        assertThatThrownBy(() -> {
+            stringCalculator.calculate(problem);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("공백 문자");
+    }
+
+    @Test
+    @DisplayName("비연산자 예외 처리 단위 테스트")
+    void nonOperatorTest(){
+        // given
+        String a = "1";
+        String b = "2";
+        String nonOperator = "&";
+        // when, then
+        StringCalculator stringCalculator = new StringCalculator();
+        assertThatThrownBy(() -> {
+            stringCalculator.calculateOne(a, b, nonOperator);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("사칙연산 기호가 아닌 문자");
     }
 
     @Test

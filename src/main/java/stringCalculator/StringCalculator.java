@@ -3,25 +3,35 @@ package stringCalculator;
 public class StringCalculator {
 
     public String calculate(String problem) {
+        if (problem.equals("")) {
+            throw new IllegalArgumentException("공백 문자를 입력하였습니다.");
+        }
+
         String[] problemArr = problem.split(" ");
 
         String a = problemArr[0];
 
         for (int i = 1; i < problemArr.length; i+=2) {
-            if (problemArr[i].equals("+")) {
-                a = sum(a, problemArr[i + 1]);
-            }else if(problemArr[i].equals("-")){
-                a = diff(a, problemArr[i + 1]);
-            }else if(problemArr[i].equals("*")){
-                a = mult(a, problemArr[i + 1]);
-            }else if(problemArr[i].equals("/")){
-                a = div(a, problemArr[i + 1]);
-            }
+            String operator = problemArr[i];
+            String b = problemArr[i+1];
+            a = calculateOne(a, b, operator);
         }
 
         return a;
     }
 
+    public String calculateOne(String a, String b, String operator) {
+        if (operator.equals("+")) {
+            return sum(a, b);
+        }else if(operator.equals("-")){
+            return diff(a, b);
+        }else if(operator.equals("*")){
+            return mult(a, b);
+        }else if(operator.equals("/")){
+            return div(a, b);
+        }
+        throw new IllegalArgumentException("사칙연산 기호가 아닌 문자를 입력하였습니다.");
+    }
 
     public String sum(String a, String b) {
         int aInt = Integer.parseInt(a);
