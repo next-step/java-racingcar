@@ -9,7 +9,7 @@ public class Cars {
     private final List<Car> cars = new ArrayList<>();
 
     public void add(Car car) {
-        cars.add(CarFactory.create(car.getDistance()));
+        cars.add(CarFactory.create(car.getName(), car.getDistance()));
     }
 
     public void doDrive() {

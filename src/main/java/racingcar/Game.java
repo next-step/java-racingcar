@@ -18,14 +18,14 @@ public class Game {
         carCount = InputView.inputInteger(InputMessage.CAR_COUNT);
         driveCount = InputView.inputInteger(InputMessage.DRIVE_COUNT);
 
-        IntStream.range(0, carCount).forEach(i -> cars.add(CarFactory.create()));
+        IntStream.range(0, carCount).forEach(i -> cars.add(CarFactory.create("test")));
     }
 
     public Game(int carCount, int driveCount) {
         this.carCount = carCount;
         this.driveCount = driveCount;
 
-        IntStream.range(0, carCount).forEach(i -> cars.add(CarFactory.create()));
+        IntStream.range(0, carCount).forEach(i -> cars.add(CarFactory.create("test")));
     }
 
     public void doGame() {
