@@ -78,8 +78,39 @@ class SimpleCalculatorTest {
 
     @Test
     @DisplayName("2 + 3 * 4 / 2와 같은 문자열을 입력할 경우 실행 결과인 10을 출력하는 테스트")
-    void calcTest() throws NotEqualRemainderZero {
+    void calcTest() throws Exception {
         assertThat(sc.calc("2 + 3 * 4 / 2")).isEqualTo("10");
     }
 
+    @Test
+    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw 테스트")
+    void throwIllegalArgumentExceptionIfNullOrWhiteSpaceOfInputValueTest() {
+        assertThatThrownBy(() -> sc.calc(null))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("\t"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("\n"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("         \t           \n"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw 테스트")
+    void throwIllegalArgumentExceptionIfNotFourFundamentalOperatorTest() throws Exception {
+        assertThatThrownBy(() -> sc.calc("123+"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("!"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("1 ! 3"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> sc.calc("1 @ 3 & 5 ^ 7 | 9"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
