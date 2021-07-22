@@ -3,10 +3,6 @@ package game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ValidationTest {
@@ -15,7 +11,8 @@ class ValidationTest {
 
     @BeforeEach
     void setup() {
-        validation = new Validation();
+        Utils utils = new Utils();
+        validation = new Validation(utils);
     }
 
     @Test
@@ -24,15 +21,6 @@ class ValidationTest {
         assertThatThrownBy(() -> validation.validStringEmpty(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차는 최소 1대 이상이어야 한다.");
-    }
-
-    @ParameterizedTest
-    @DisplayName("문자열을 입력하면 길이가 반환된다.")
-    @CsvSource(value = {"nextstep,8","test,4"})
-    public void stringToIntSize(String value, int length) {
-        int result = validation.StringLength(value);
-
-        assertThat(result).isEqualTo(length);
     }
 
     @Test
