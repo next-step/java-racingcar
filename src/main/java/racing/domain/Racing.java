@@ -6,16 +6,15 @@ import java.util.Random;
 
 public class Racing {
 
-	private final int carCount;
 	private List<Car> cars;
 
 	private final int COMPARE_VALUE = 4;
 
 	public Racing(int carCount) {
-		this.carCount = carCount;
+		initCars(carCount);
 	}
 
-	public void init() {
+	public void initCars(int carCount) {
 		cars = new ArrayList<>(carCount);
 
 		for (int i = 0; i < carCount; i++) {
