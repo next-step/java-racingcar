@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SimpleCalculator {
+	private static final List<Character> opList = new ArrayList<>(Arrays.asList('+', '-', '*', '/'));
+	List<String> splitExpressionList = new ArrayList<>();
+
 	public Integer selectOperand(String s, int idx) {
 		return Integer.valueOf(s.split(" ")[idx]);
 	}
@@ -30,18 +33,38 @@ public class SimpleCalculator {
 		return (selectOperand(s, 0) / selectOperand(s, 2)) + "";
 	}
 
-	public String calc(String s) throws NotEqualRemainderZero {
-		List<String> tempList = new ArrayList<>(Arrays.asList(s.split(" ")));
+	public String calc(String s) throws Exception {
+		checkSpaceValidation(s);
 
-		while (tempList.size() != 1) {
+		splitExpressionList.clear();
+		splitExpressionList.addAll(Arrays.asList(s.split(" ")));
+		System.out.println("splitExpressionList : " + splitExpressionList);
+
+		while (splitExpressionList.size() != 1) {
 			String result = null;
-			result = callFunctionByOperator(tempList);
+			result = callFunctionByOperator(splitExpressionList);
 			for (int i = 0 ; i <= 2 ; i++) {
-				tempList.remove(0);
+				splitExpressionList.remove(0);
 			}
-			tempList.add(0, result);
+			splitExpressionList.add(0, result);
 		}
-		return tempList.get(0);
+		return splitExpressionList.get(0);
+	}
+
+	private void checkSpaceValidation(String s) throws Exception {
+		if (s == null) {
+			throw new IllegalArgumentException();
+		}
+
+		int whiteSpaceCount = 0;
+		for (int i = 0; i < s.length() ; i++) {
+			if (Character.isWhitespace(s.charAt(i))) {
+				whiteSpaceCount++;
+			}
+		}
+		if (whiteSpaceCount == s.length()) {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	private String callFunctionByOperator(List<String> tempList) throws NotEqualRemainderZero {
