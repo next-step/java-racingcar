@@ -1,6 +1,7 @@
 package clac;
 
 import calc.Calculation;
+import calc.type.Operation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,26 +16,26 @@ public class CalcTest {
     Calculation calculation = new Calculation();
 
     @Test
-    @DisplayName("add test")
-    void addTest() {
+    @DisplayName("plus Test")
+    void plusTest() {
         assertThat(calculation.calculate(3, 5, "+")).isEqualTo(8);
     }
 
     @Test
-    @DisplayName("sub test")
-    void subTest() {
+    @DisplayName("minus test")
+    void minusTest() {
         assertThat(calculation.calculate(3, 5, "-")).isEqualTo(-2);
     }
 
     @Test
-    @DisplayName("mul test")
-    void mulTest() {
+    @DisplayName("multiply test")
+    void multiplyTest() {
         assertThat(calculation.calculate(3, 1, "*")).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("div test")
-    void divTest() {
+    @DisplayName("divided test")
+    void dividedTest() {
         assertThat(calculation.calculate(3, 3, "/")).isEqualTo(1);
     }
 
@@ -61,4 +62,30 @@ public class CalcTest {
             calculation.calculate(3, 5, "%");
         }).withMessageMatching("not support operation");
     }
+
+    @Test
+    @DisplayName("Operation type PLUS test")
+    void operationAddTest() {
+        assertThat(Operation.PLUS.calc(3, 5)).isEqualTo(8);
+    }
+
+    @Test
+    @DisplayName("Operation type MINUS test")
+    void operationSubTest() {
+        assertThat(Operation.MINUS.calc(3, 5)).isEqualTo(-2);
+    }
+
+    @Test
+    @DisplayName("Operation type MULTIPLY test")
+    void operationMulTest() {
+        assertThat(Operation.MULTIPLY.calc(2, 5)).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("Operation type DIVIDE test")
+    void operationDivTest() {
+        assertThat(Operation.DIVIDE.calc(10, 5)).isEqualTo(2);
+    }
+
 }
+
