@@ -1,13 +1,14 @@
 package step3.model;
 
+import step3.RacingApp;
+import step3.view.ToDash;
+
 import java.util.Random;
 
 public class Car {
 
-    private final int INIT_POSITION = 1;
+    private final int INIT_POSITION = 0;
     private final Random random = new Random();
-
-    private final int MOVE_BOUNDARY = 4;
 
     private int position;
 
@@ -29,6 +30,11 @@ public class Car {
         if(movePoint < 0){
             throw new IllegalArgumentException("0 보다 작은수");
         }
-        return movePoint >= MOVE_BOUNDARY;
+        return movePoint >= RacingApp.MOVE_BOUNDARY;
+    }
+
+    @Override
+    public String toString() {
+        return ToDash.positionToDash(position);
     }
 }
