@@ -11,7 +11,9 @@ public class Calculator {
             return subtract(input);
         } else if(operator.equals("*")) {
             return multiply(input);
-        } return devide(input);
+        } else if(operator.equals("/")) {
+            return devide(input);
+        } throw new IllegalArgumentException("Required correct operator!");
     }
 
     private int add(String input) {

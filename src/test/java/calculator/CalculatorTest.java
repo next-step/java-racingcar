@@ -1,10 +1,12 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
 
@@ -66,5 +68,19 @@ public class CalculatorTest {
 
         //then
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("사칙연산 기호가 아닌 경우 Exception이 발생해야 한다.")
+    void incorrectOperatorTest() {
+
+        //given
+        Calculator calculator = new Calculator();
+        String input = "2 & 3";
+
+        //when & then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.calculate(input))
+                .withMessageMatching("Required correct operator!");
     }
 }
