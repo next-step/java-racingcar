@@ -14,10 +14,10 @@
 - TODO
   - ~~1) split test~~
   - ~~2) substring test~~
-  - ~~3) charAt test~~
+  - ~~3) exception test~~
     
 #### Set Collection에 대한 학습 테스트
 - TODO
     - ~~1) Set size test~~
-    - 2) Set contains test
-    - 3) charAt test
+    - ~~2) @ParameterizedTest~~
+    - 3) @CsvSource
