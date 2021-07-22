@@ -14,3 +14,4 @@
 - ~~뺄셈~~
 - ~~곱셈~~
 - ~~나눗셈~~
+- ~~사칙연산 기호가 아닌 경우 IllegalArgumentException throw~~

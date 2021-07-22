@@ -17,12 +17,14 @@ public enum ArithmeticOperation {
         this.biFunction = biFunction;
     }
 
-    static public ArithmeticOperation arithmetic(String label) throws Exception {
+    static public ArithmeticOperation arithmetic(String label) {
         System.out.println("산술연산자 : " + label);
+        System.out.println();
+
         return Arrays.stream(values())
                 .filter(operation -> operation.label.equals(label))
                 .findFirst()
-                .orElseThrow(Exception::new);
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public int calculation(int a, int b) {

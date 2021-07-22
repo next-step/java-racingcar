@@ -2,7 +2,7 @@ package stage2.stringcalculator;
 
 public class StringCalculator {
 
-    public static int calculation(String inputString) throws Exception {
+    public static int calculation(String inputString) {
 
         System.out.println("입력한 문자열 : " + inputString);
 
