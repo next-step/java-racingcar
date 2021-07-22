@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class Car {
     private static final int NAME_LIMIT = 5;
+    private static final int STARTING_POSITION = 0;
 
     private final String name;
     private int position;
@@ -14,7 +15,7 @@ public class Car {
     private Car(String name) {
         validate(name);
 
-        this.position = 0;
+        this.position = STARTING_POSITION;
         this.name = name;
     }
 

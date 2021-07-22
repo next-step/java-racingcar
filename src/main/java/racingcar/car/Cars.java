@@ -31,7 +31,7 @@ public class Cars {
         }
 
         if (names.length < MINIMUM_NUMBER_OF_CARS) {
-            throw new IllegalArgumentException("Number of cars can't be under 1");
+            throw new IllegalArgumentException("Number of cars can't be under " + MINIMUM_NUMBER_OF_CARS);
         }
     }
 
