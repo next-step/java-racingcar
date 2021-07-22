@@ -5,12 +5,14 @@
     - [x] 몇 번 이동할것인지 입력 할 수 있어야한다.
         - [x] 모든 자동차의 움직일 수 있는 시간이 제한되어있다 #CarStadium#limiteTime()
   
-- [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다. #Car#Move
-    - [ ] 0에서 9 사이에서 random 값을 생성한다. #NumberGenerator#createRandomNumbers()
-    - [ ] 전진하는 조건은 4이상의 값이여야한다. #CarEngine#canGo()
+- [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다. #Stadium#MoveCars()
+    - [ ] 자동차 전진 #Car#Move()
+      - [ ] 0에서 9 사이에서 random 값을 생성한다. #NumberGenerator#createRandomNumbers()
+      - [ ] 전진하는 조건은 4이상의 값이여야한다. #CarEngine#canGo()
   
 - [ ] 화면에 출력한다. #Tv#show()
-  - [ ] 자동차의 위치를 확인 할 수 있다  #Car#nowLocation()  
+  - [ ] 자동차의 위치를 확인 할 수 있다  #Stadium#showCarsLocation()
+        - [ ] 자동차는 현재 자신의 위치를 보여줄수있어야한다 #Car#showNowLocation()
   - 어느 시점에 출력할 것인지에 대한 제약은 없다.
 
 
