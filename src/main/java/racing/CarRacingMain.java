@@ -53,6 +53,7 @@ public class CarRacingMain {
     }
 
     public static void tryRacingByCar(int tryraceNumber) {
+        System.out.println("실행 결과");
         for (int i = 0; i < tryraceNumber; i++) {
             racing();
         }
