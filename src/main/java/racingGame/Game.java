@@ -7,16 +7,16 @@ import java.util.stream.Collectors;
 
 public class Game {
 
-    public static final int MIN_CAR_SIZE = 0;
+    public static final int MIN_CAR_COUNT = 0;
     public static final int MIN_REPEAT_COUNT = 0;
 
     private final int repeatCount;
     private List<Car> cars = new ArrayList<>();
 
-    public Game(int carSize, int repeatCount) {
-        valid(carSize, repeatCount);
+    public Game(int carCount, int repeatCount) {
+        valid(carCount, repeatCount);
 
-        for (int i = 0; i < carSize; i++) {
+        for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
         this.repeatCount = repeatCount;
@@ -40,13 +40,13 @@ public class Game {
         return repeatCount;
     }
 
-    private void valid(int carSize, int repeatCount) {
-        validCarSize(carSize);
+    private void valid(int carCount, int repeatCount) {
+        validcarCount(carCount);
         validRepeatCount(repeatCount);
     }
 
-    private void validCarSize(int carSize) {
-        if (carSize <= MIN_CAR_SIZE) {
+    private void validcarCount(int carCount) {
+        if (carCount <= MIN_CAR_COUNT) {
             throw new IllegalArgumentException("자동차 수는 0 혹은 음수가 될 수 없습니다.");
         }
     }

@@ -23,8 +23,8 @@ public class GameTest {
     @ParameterizedTest(name = "{displayName} [{index}]")
     @CsvSource(value = {"3:0", "3:-1", "0:5", "-1:5"}, delimiter = ':')
     @DisplayName("자동차 수와 반복횟수는 0 혹은 음수가 될 수 없다.")
-    void valid(int carSize, int repeatSize) {
-        assertThatThrownBy(() -> new Game(carSize, repeatSize))
+    void valid(int carCount, int repeatSize) {
+        assertThatThrownBy(() -> new Game(carCount, repeatSize))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
