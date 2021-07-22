@@ -6,14 +6,17 @@ import racingcar.engine.Engine;
 public class Car {
 
     private final Engine engine = new CarEngine();
+    private final Distance distance;
 
-    private int distance = 0;
+    public Car() {
+        this.distance = new Distance();
+    }
 
     public void drive(int number) {
-        distance += engine.operate(number);
+        distance.add(engine.operate(number));
     }
 
     public int getDistance() {
-        return distance;
+        return distance.get();
     }
 }
