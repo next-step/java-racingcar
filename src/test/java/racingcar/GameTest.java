@@ -10,12 +10,11 @@ class GameTest {
     @DisplayName("[성공] 게임 진행")
     @ParameterizedTest
     @CsvSource(value = {
-        "3,5",
-        "5,10"}
+        "pobi,crong,honux:5"}, delimiter = ':'
     )
-    public void doGame(int carCount, int driveCount) {
+    public void doGame(String carNames, int driveCount) {
         // given
-        Game game = new Game(carCount, driveCount);
+        Game game = new Game(carNames, driveCount);
 
         // when
         game.doGame();
