@@ -24,7 +24,7 @@ public class Common {
     }
 
     public static void drawDisplay(int moveDistance) {
-        StringBuffer carModel = new StringBuffer();
+        StringBuilder carModel = new StringBuilder();
 
         for(int i = 0; i < moveDistance; i++){
             carModel.append("-");
