@@ -1,0 +1,23 @@
+package step3;
+
+public class Referee {
+
+    private final int limitTime;
+    private int remainTime;
+
+    public Referee(int limitTime) {
+        this.limitTime = limitTime;
+    }
+
+    public boolean isStopMove() {
+        return remainTime == limitTime;
+    }
+
+    public void secondHasPassed() {
+        this.remainTime++;
+    }
+
+    public int getLimitTime() {
+        return limitTime;
+    }
+}
