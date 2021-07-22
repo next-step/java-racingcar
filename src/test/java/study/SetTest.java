@@ -3,11 +3,14 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
 	private Set<Integer> numbers;
@@ -28,4 +31,13 @@ public class SetTest {
 		int size = numbers.size();
 		assertThat(size).isEqualTo(number);
 	}
+
+	@DisplayName("특정 숫자가 존재하는지 확인하는 테스트")
+	@ParameterizedTest
+	@ValueSource(ints = {1, 2})
+	void vertifyExistence(int param) {
+		assertTrue(numbers.contains(param));
+	}
+
+
 }
