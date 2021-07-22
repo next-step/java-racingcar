@@ -9,20 +9,25 @@ import step4.game.GameDto;
 import step4.model.Car;
 import step4.move.BasicMoveStrategy;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
     @DisplayName("랜덤 숫자 만들기 테스트")
     @RepeatedTest(50)
-    public void makeNumber() {
+    public void makeNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
         BasicMoveStrategy basicMoveStrategy = new BasicMoveStrategy();
         int min = 0;
         int max = 9;
 
         //when
-        int number = basicMoveStrategy.makeNumber();
+        Method method = basicMoveStrategy.getClass().getDeclaredMethod("makeNumber");
+        method.setAccessible(true);
+        int number = (int) method.invoke(basicMoveStrategy);
 
         //then
         assertThat(number)
