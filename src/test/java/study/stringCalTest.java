@@ -12,7 +12,7 @@ public class stringCalTest {
     Subtract substract;
     Multiply multiply;
     Division division;
-    StringCalculaterExcuteClass calMain;
+    StringCalculaterExecuteClass calMain;
 
     @BeforeEach
     void setUp(){
@@ -20,7 +20,7 @@ public class stringCalTest {
         substract = new Subtract();
         multiply = new Multiply();
         division = new Division();
-        calMain = new StringCalculaterExcuteClass();
+        calMain = new StringCalculaterExecuteClass();
     }
 
     @Test
@@ -34,9 +34,8 @@ public class stringCalTest {
     }
 
     @Test
-    @DisplayName("빼기 테스트")
+    @DisplayName("더하기 테스트")
     void plusTest(){
-
         assertThat(plus.resultCalculater(1,2)).isEqualTo(3);
     }
     @Test

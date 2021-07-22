@@ -1,6 +1,6 @@
 package Calculater;
 
-public class Division extends Calculater {
+public class Division extends Calculator {
     @Override
     public int resultCalculater(int divisor, int dividend) {
         if(dividend == 0){

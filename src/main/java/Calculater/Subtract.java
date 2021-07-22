@@ -1,8 +1,8 @@
 package Calculater;
 
-public class Subtract extends Calculater {
+public class Subtract extends Calculator {
     @Override
-    public int resultCalculater(int divisor, int dividend) {
-        return divisor - dividend;
+    public int resultCalculater(int intValue1, int intValue2) {
+        return intValue1 - intValue2;
     }
 }
