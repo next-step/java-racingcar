@@ -8,13 +8,14 @@ public class CarRacingMain {
     private static final String SECOND_REQUEST = "시도할 회수는 몇 회 인가요?";
 
     public static void main(String[] args) {
-        Racing racing = new Racing();
+        MessageBox messageBox = new MessageBox();
+        Racing racing = new Racing(messageBox);
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(FIRST_REQUEST);
+        messageBox.commonMessageBox(FIRST_REQUEST);
         racing.createCarByRacing(scanner.next());
 
-        System.out.println(SECOND_REQUEST);
+        messageBox.commonMessageBox(SECOND_REQUEST);
         racing.tryRacingByCar(scanner.next());
 
         scanner.close();
