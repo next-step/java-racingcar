@@ -1,12 +1,12 @@
 package game;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class GamePlayTest {
@@ -23,12 +23,16 @@ public class GamePlayTest {
     public void createPayerBySplit() {
         List<Player> playerList1 = gamePlay.createPlayer("car1,car2,car3");
 
-        Assertions.assertThat(playerList1.size()).isEqualTo(3);
+        assertThat(playerList1.size()).isEqualTo(3);
+    }
 
-        List<Player> playerList2 = gamePlay.createPlayer("car1,car2,");
+    @Test
+    @DisplayName("자동차는 입력된 배열에 따라 생성된다.")
+    public void setupPayerByArray() {
+        String[] array = gamePlay.stringToStringArray("car1,car2,car3");
+        List<Player> playerList1 = gamePlay.setupPlayer(array);
 
-        Assertions.assertThat(playerList2.size()).isEqualTo(2);
-
+        assertThat(playerList1.size()).isEqualTo(3);
     }
 
     @Test
@@ -45,6 +49,23 @@ public class GamePlayTest {
         assertThatThrownBy(() -> gamePlay.createPlayer(" "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차는 최소 1대 이상이어야 한다.");
+    }
+
+    @Test
+    @DisplayName("입력값의 , 따라 배열로 변환된다.")
+    public void stringBySplit() {
+        String[] resultArray = gamePlay.stringToStringArray("a,b,c");
+
+        assertThat(resultArray.length).isEqualTo(3);
+        assertThat(resultArray[0]).isEqualTo("a");
+    }
+
+    @Test
+    @DisplayName("여러공백이 들어가도 공백은 합쳐진다.")
+    public void stringByTrim() {
+        String result = gamePlay.stringByTrim("12      ");
+        System.out.println(result);
+        assertThat(result).isEqualTo("12");
     }
 
 }
