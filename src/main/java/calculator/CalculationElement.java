@@ -1,5 +1,7 @@
 package calculator;
 
+import util.StringUtils;
+
 import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -9,7 +11,6 @@ import java.util.regex.Pattern;
     숫자와 사칙 연산 이외의 다른 문자열을 받게 되면 IllegalArgumentException 오류 발생
 */
 public class CalculationElement {
-    private static final String NUMBER_PATTERN = "^[0-9]+$";
     private int intValue;
     private String strValue;
 
@@ -24,7 +25,7 @@ public class CalculationElement {
     private Integer asIntegerValue() {
         if (Objects.nonNull(strValue)) {
             // 숫자로 이루어진 문자열이 아니라면 toInt 메소드가 Optional로 감쌀수 있도록 null 반환
-            return Pattern.matches(NUMBER_PATTERN, strValue) ?
+            return StringUtils.isNumber(strValue) ?
                     Integer.parseInt(strValue) : null;
         }
         return intValue;
