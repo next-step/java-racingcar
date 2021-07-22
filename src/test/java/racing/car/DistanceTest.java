@@ -15,7 +15,10 @@ class DistanceTest {
     public void newInstanceTest(int value) {
         Distance distance = Distance.newInstance(value);
         assertThat(distance.getValue())
-                .isEqualTo(distance.getDistanceRange() == NOT_MOVEMENT ? NOT_MOVEMENT.getValue() : distance);
+                .isEqualTo(
+                        distance.getDistanceRange() == NOT_MOVEMENT ?
+                                NOT_MOVEMENT.getValue() :
+                                value);
     }
 
     @ValueSource(ints = { -2, -100, 11, 16, 25 })

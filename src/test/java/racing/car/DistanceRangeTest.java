@@ -12,11 +12,12 @@ class DistanceRangeTest {
             "1,NOT_MOVEMENT",
             "2,NOT_MOVEMENT",
             "3,NOT_MOVEMENT",
-            "4,MIN_MOVEMENT",
-            "5,MIN_MOVEMENT",
-            "6,MIN_MOVEMENT",
-            "10,MAX_MOVEMENT",
-            "15,MAX_MOVEMENT"
+            "4,MOVEMENT",
+            "5,MOVEMENT",
+            "6,MOVEMENT",
+            "9,MOVEMENT",
+            "10,LIMIT_MOVEMENT",
+            "15,LIMIT_MOVEMENT"
     })
     @ParameterizedTest
     public void ofTest(int distance, String objName) {
