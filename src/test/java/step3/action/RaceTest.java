@@ -1,4 +1,4 @@
-package step3.race;
+package step3.action;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
