@@ -6,18 +6,19 @@ import java.util.Random;
 
 public class Racing {
 
-    private final int RANDOM_VALUE = 10;
-    private List<Car> carModelList;
-    private Random random;
+    private final List<Car> carModelList;
+    private final Random random;
+    private MessageBox messageBox;
 
-    public Racing() {
+    public Racing(MessageBox messageBox) {
         this.carModelList = new ArrayList<>();
         this.random = new Random();
+        this.messageBox = messageBox;
     }
 
     public List<Car> createCarByRacing(String totalCarNumber) {
-        int toalCarSize = intValueByScanner(totalCarNumber);
-        for (int i = 0; i < toalCarSize; i++) {
+        int totalCarSize = intValueByScanner(totalCarNumber);
+        for (int i = 0; i < totalCarSize; i++) {
             Car carModel = new Car(i + 1);
             carModelList.add(carModel);
         }
@@ -26,7 +27,7 @@ public class Racing {
 
     public void tryRacingByCar(String tryraceNumber) {
         int tryRacingCount = intValueByScanner(tryraceNumber);
-        System.out.println("실행 결과");
+        messageBox.commonMessageBox("실행 결과");
         for (int i = 0; i < tryRacingCount; i++) {
             racing();
         }
@@ -34,14 +35,15 @@ public class Racing {
 
     public void racing() {
         for (Car carModel : carModelList) {
-            carModel.carRacingAct(RANDOM_VALUE);
+            int resultRacing = carModel.carRacingAct(randomValue());
+            messageBox.racingResultMessage(resultRacing);
         }
-        System.out.println();
+        messageBox.commonMessageBox("");
     }
 
     public int intValueByScanner(String scannerValue) {
         int intValue = toInt(scannerValue);
-        System.out.println(scannerValue);
+        messageBox.commonMessageBox(scannerValue);
         return intValue;
     }
 
@@ -58,6 +60,7 @@ public class Racing {
     }
 
     public int randomValue() {
+        int RANDOM_VALUE = 10;
         return random.nextInt(RANDOM_VALUE);
     }
 }
