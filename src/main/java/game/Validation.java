@@ -2,7 +2,7 @@ package game;
 
 public class Validation {
 
-    private Utils utils;
+    private final Utils utils;
 
     public Validation(Utils utils) {
         this.utils = utils;
@@ -20,5 +20,11 @@ public class Validation {
         }
     }
 
+    public void validNUmberChecK(String value) {
+        String regExp = "^\\d+$";
+        if (!value.matches(regExp)) {
+            throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
+        }
+    }
 
 }
