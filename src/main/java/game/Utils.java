@@ -21,11 +21,15 @@ public class Utils {
         return Integer.parseInt(value);
     }
 
-    public String stringBufferToString(StringBuffer value){
+    public String stringBufferToString(StringBuffer value) {
         return value.toString();
     }
 
-    public int MapInMaxValue(Collection<Integer> collections){
-        return  (Collections.max(collections));
+    public int MapInMaxValue(Collection<Integer> collections) {
+        return (Collections.max(collections));
+    }
+
+    public String stringToSubString(String value,int firstIndex,int lastIndex){
+        return value.substring(firstIndex,lastIndex);
     }
 }
