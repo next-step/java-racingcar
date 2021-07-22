@@ -13,8 +13,8 @@
 #### String 클래스에 대한 학습 테스트 
 - TODO
   - ~~1) split test~~
-  - 2) substring test
-  - 3) charAt test
+  - ~~2) substring test~~
+  - ~~3) charAt test~~
     
 #### Set Collection에 대한 학습 테스트
 - TODO
