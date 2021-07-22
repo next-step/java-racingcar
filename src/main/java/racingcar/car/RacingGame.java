@@ -1,25 +1,21 @@
 package racingcar.car;
 
-import racingcar.util.RandomNumber;
-
 import java.util.List;
 
 public class RacingGame {
 
-    private final List<Car> cars;
+    private final Cars cars;
 
-    public RacingGame(List<Car> cars) {
+    public RacingGame(Cars cars) {
         this.cars = cars;
     }
 
     public void race() {
-        for (Car car : cars) {
-            car.move(RandomNumber.pick());
-        }
+        cars.move();
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.cars();
     }
 
 }

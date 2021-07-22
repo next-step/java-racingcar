@@ -1,12 +1,10 @@
 package racingcar;
 
-import racingcar.car.Car;
-import racingcar.car.CarFactory;
+import racingcar.car.Cars;
 import racingcar.car.RacingGame;
+import racingcar.strategy.RandomMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
-
-import java.util.List;
 
 public class RacingGameApplication {
 
@@ -14,7 +12,7 @@ public class RacingGameApplication {
         int numberOfCars = InputView.getNumberOfCars();
         int tryCount = InputView.getTryCount();
 
-        List<Car> cars = CarFactory.create(numberOfCars);
+        Cars cars = Cars.of(numberOfCars, new RandomMoveStrategy());
         RacingGame racingGame = new RacingGame(cars);
 
         ResultView.printResultMessage();

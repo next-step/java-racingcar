@@ -1,12 +1,13 @@
 package racingcar.car;
 
+import racingcar.strategy.MoveStrategy;
+
 public class Car {
 
-    private static final int MOVABLE_MINIMUM_NUMBER = 4;
     private int position;
 
-    public void move(int number) {
-        if (number >= MOVABLE_MINIMUM_NUMBER) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMovable()) {
             position++;
         }
     }
