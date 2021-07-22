@@ -17,7 +17,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         //when
-        int result = calculator.add(input);
+        int result = calculator.calculate(input);
 
         //then
         assertThat(result).isEqualTo(expected);
@@ -32,7 +32,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         //when
-        int result = calculator.subtract(input);
+        int result = calculator.calculate(input);
 
         //then
         assertThat(result).isEqualTo(expected);
@@ -47,7 +47,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         //when
-        int result = calculator.multiply(input);
+        int result = calculator.calculate(input);
 
         //then
         assertThat(result).isEqualTo(expected);
@@ -62,7 +62,7 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
 
         //when
-        int result = calculator.devide(input);
+        int result = calculator.calculate(input);
 
         //then
         assertThat(result).isEqualTo(expected);
