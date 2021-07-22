@@ -8,11 +8,11 @@ public class Race {
     private final int BORDER = 10;
     private final String DISTANCE_SYMBOL = "-";
 
-    public void execute(String [] cars){
-        for (int i=0; i<cars.length; i++){
-          if (move(getRandomNumber())){
-              cars[i] += DISTANCE_SYMBOL;
-          }
+    public void execute(String[] cars) {
+        for (int i = 0; i < cars.length; i++) {
+            if (move(getRandomNumber())) {
+                cars[i] += DISTANCE_SYMBOL;
+            }
         }
     }
 
@@ -22,7 +22,7 @@ public class Race {
         return false;
     }
 
-    public int getRandomNumber(){
+    public int getRandomNumber() {
         return r.nextInt(BORDER);
     }
 }

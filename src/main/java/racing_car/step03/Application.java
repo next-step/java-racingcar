@@ -7,11 +7,13 @@ public class Application {
         int carCount = InputView.carCount();
         int tryCount = InputView.tryCount();
 
-        String [] cars =new String[carCount];
-        Arrays.fill(cars , "");
+        Validation.inputValidation(carCount,tryCount);
+        String[] cars = new String[carCount];
+        Arrays.fill(cars, "");
         Race race = new Race();
-        for (int i=0; i<tryCount; i++){
-
+        for (int i = 0; i < tryCount; i++) {
+            race.execute(cars);
+            ResultView.result(cars);
         }
     }
 }
