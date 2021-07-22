@@ -52,12 +52,14 @@ public class Game {
     }
 
     private void validCarSize(int carSize) {
-        if (carSize <= MIN_CAR_SIZE)
+        if (carSize <= MIN_CAR_SIZE) {
             throw new IllegalArgumentException("자동차 수는 0 혹은 음수가 될 수 없습니다.");
+        }
     }
 
     private void validRepeatCount(int repeatCount) {
-        if (repeatCount <= MIN_REPEAT_COUNT)
+        if (repeatCount <= MIN_REPEAT_COUNT) {
             throw new IllegalArgumentException("반복 횟수는 0 혹은 음수가 될 수 없습니다.");
+        }
     }
 }
