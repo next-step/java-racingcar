@@ -3,19 +3,15 @@ package racing;
 public class Car {
 
     private int carNumber;
-    private String raceDistance;
+    private int raceDistance;
 
     public Car(int carNumber) {
         this.carNumber = carNumber;
-        this.raceDistance = "";
+        this.raceDistance = 0;
     }
 
-    public String carRacingAct(boolean flag) {
-        if (flag) {
-            raceDistance += "-";
-        }
-        System.out.println(raceDistance);
-        return raceDistance;
+    public int carRacingAct(int randomValue) {
+        return randomValue > 3 ? ++raceDistance : raceDistance;
     }
 
 }

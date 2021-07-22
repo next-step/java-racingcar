@@ -8,17 +8,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
 
     @Test
-    @DisplayName("Car class에 전진/정지 값을 true, false로 넣으면 전진 및 정지를 한다.")
+    @DisplayName("자동차는 랜덤함수가 4이상이면 전진하고 4미만이면 정지한다.")
     public void SetterInDataAndGetterOutData_check() {
-        Car carModel1 = new Car(1);
-        carModel1.carRacingAct(true);
-        String model1Distance = carModel1.carRacingAct(true);
+        Car car1 = new Car(1);
+        int resultRacing1 = car1.carRacingAct(3);
 
-        Car carModel2 = new Car(2);
-        carModel2.carRacingAct(true);
-        String model2Distance = carModel2.carRacingAct(false);
+        assertThat(resultRacing1).isEqualTo(0);
 
-        assertThat(model1Distance).isEqualTo("--");
-        assertThat(model2Distance).isEqualTo("-");
+        int resultRacing2 = car1.carRacingAct(6);
+
+        assertThat(resultRacing2).isEqualTo(1);
+
     }
 }

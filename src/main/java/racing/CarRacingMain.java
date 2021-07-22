@@ -61,17 +61,13 @@ public class CarRacingMain {
 
     public static void racing() {
         for (Car carModel : carModelList) {
-            carModel.carRacingAct(getRaceDistance(randomValue()));
+            carModel.carRacingAct(randomValue);
         }
         System.out.println();
     }
 
     public static int randomValue() {
         return new Random().nextInt(randomValue);
-    }
-
-    public static boolean getRaceDistance(int randomValue) {
-        return randomValue > racingConditionValue;
     }
 
 }

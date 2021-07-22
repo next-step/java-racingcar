@@ -56,15 +56,4 @@ public class CarRacingMainTest {
         assertThat(result).isGreaterThan(0).isLessThan(10);
     }
 
-    @Test
-    @DisplayName("랜덤 숫자가 4이상이면 경주에 사용되는 자동차가 전진한다.")
-    public void racing_random_number_check() {
-        boolean result1 = CarRacingMain.getRaceDistance(3);
-        boolean result2 = CarRacingMain.getRaceDistance(8);
-
-        assertThat(result1).isFalse();
-        assertThat(result2).isTrue();
-    }
-
-
 }
