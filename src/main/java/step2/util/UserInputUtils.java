@@ -1,4 +1,4 @@
-package stringcalculator.util;
+package step2.util;
 
 import java.util.Scanner;
 

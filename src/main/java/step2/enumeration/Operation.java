@@ -1,4 +1,4 @@
-package stringcalculator.enumeration;
+package step2.enumeration;
 
 import java.util.Arrays;
 

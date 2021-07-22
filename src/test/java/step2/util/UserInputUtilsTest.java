@@ -1,4 +1,4 @@
-package stringcalculator.util;
+package step2.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
