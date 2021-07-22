@@ -21,7 +21,7 @@ public class StringTest {
     @DisplayName("문자 잘라내기")
     void substring(){
         String result = "(1,2)".substring(1,4);
-        assertThat(result).isEqualTo("1,2");
+        assertThat(result).isEqualTo("1,2"); 
     }
 
     @Test
