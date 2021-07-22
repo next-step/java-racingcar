@@ -3,17 +3,16 @@ package racing;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Random;
+
+import static com.sun.javafx.fxml.expression.Expression.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    private static Car car;
-
-    @BeforeAll
-    public static void setUp() {
-        car = new Car();
-    }
-
+    /*
     @DisplayName("Move 테스트")
     @Test
     public void moveTest() {
@@ -24,5 +23,29 @@ class CarTest {
                     .isEqualTo(moveValue);
             beforeLocationValue = car.getLocation().getValue();
         }
+    }
+     */
+
+    @ValueSource(ints = {
+            100, 1000, 10000, 100000, 10000000
+    })
+    @DisplayName("Random Move 테스트")
+    @ParameterizedTest
+    public void randomMoveTest(int limitMoveCount) {
+        int emptyMoveCount = 0;
+
+        Car car = new Car();
+        for (int i = 0; i < limitMoveCount; i++) {
+            car.move();
+            if (!car.getLastMoveDistance().hasValue())
+                ++emptyMoveCount;
+        }
+        assertThat(car.getMoveCount())
+                .withFailMessage("지정한 횟수만큼 이동하지 않았습니다.")
+                .isEqualTo(limitMoveCount);
+
+        assertThat(emptyMoveCount)
+                .withFailMessage("0만큼 이동한 횟수가 없습니다.")
+                .isNotEqualTo(0);
     }
 }
