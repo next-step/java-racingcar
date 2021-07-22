@@ -5,20 +5,36 @@ import java.util.List;
 
 public class GamePlay {
 
-    public List<Player> createPlayer(String playerList) {
-        String[] playerArray = playerList.split(",");
-        System.out.println(playerArray.length);
-        if(playerList.trim().isEmpty()){
-            throw new IllegalArgumentException("자동차는 최소 1대 이상이어야 한다.");
-        }
-        List<Player> list = new ArrayList<>();
+    private final List<Player> players;
+    private final Validation validation;
+
+    public GamePlay() {
+        players = new ArrayList<>();
+        validation = new Validation();
+    }
+
+    public List<Player> createPlayer(String playerListValue) {
+        String[] playerArray = stringToStringArray(playerListValue);
+        validation.validStringEmpty(stringByTrim(playerListValue));
+        return setupPlayer(playerArray);
+    }
+
+    public List<Player> setupPlayer(String[] playerArray) {
+        int CHECK_LENGTH = 4;
         for (String playerName : playerArray) {
-            if(playerName.length() > 4){
-                throw new IllegalArgumentException("자동차 이름은 5글자를 초과할수 없습니다.");
-            }
+            validation.validStringLength(playerName, CHECK_LENGTH);
             Player player = new Player(playerName);
-            list.add(player);
+            players.add(player);
         }
-        return list;
+        return players;
+    }
+
+    public String[] stringToStringArray(String value) {
+        return value.split(",");
+    }
+
+    public String stringByTrim(String value) {
+        return value.trim();
     }
 }
+
