@@ -11,6 +11,11 @@ public class MessageBox {
         commonMessageBox(result);
     }
 
+    public void racingResultMessage(String playerName, int racingResult) {
+        String result = stringBufferToString(getRacingResultByString(racingResult));
+        commonMessageBox(playerName+result);
+    }
+
     private StringBuffer getRacingResultByString(int racingResult) {
         StringBuffer result = new StringBuffer(racingResult);
         for (int i = 0; i < racingResult; i++) {
@@ -21,5 +26,9 @@ public class MessageBox {
 
     private String stringBufferToString(StringBuffer stringBufferValue) {
         return stringBufferValue.toString();
+    }
+
+    public void commonMessageBox(String winPlayers, String winner_message) {
+        commonMessageBox(winPlayers+winner_message);
     }
 }
