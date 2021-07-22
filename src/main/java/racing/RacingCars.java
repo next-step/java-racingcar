@@ -1,11 +1,12 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class RacingCars {
     private static final String DISPLAY_MARK = "-";
 
-    private final ArrayList<String> cars;
+    private final List<String> cars;
 
     private RacingCars(ArrayList<String> cars) {
         this.cars = cars;
