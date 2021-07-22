@@ -1,6 +1,4 @@
-package racing_car;
-
-import java.util.Arrays;
+package racing_car.step02;
 
 public class Calculator {
     int result;
