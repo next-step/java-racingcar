@@ -2,6 +2,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -16,68 +17,82 @@ class StringCalculatorTest {
         stringCalculator = new StringCalculator();
     }
 
-    @Test
-    void 숫자만있을시() {
-        int output = stringCalculator.calculate("12");
-        assertThat(output).isEqualTo(12);
+    @ParameterizedTest
+    @CsvSource({
+            "12, 12",
+            "-12, -12"
+    })
+    void 숫자만있을시(String input, int answer) {
+        int output = stringCalculator.calculate(input);
+        assertThat(output).isEqualTo(answer);
+    }
 
-        output = stringCalculator.calculate("-12");
-        assertThat(output).isEqualTo(-12);
+    @ParameterizedTest
+    @CsvSource({
+            "1 + 2, 3",
+            "1 + 2 + 3, 6",
+            "1 + 2 + 3 + 4, 10",
+            "1 + -3, -2"
+    })
+    void 더하기테스트(String input, int answer) {
+        int output = stringCalculator.calculate(input);
+        assertThat(output).isEqualTo(answer);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "3 - 2, 1",
+            "1 - 2, -1",
+            "3 - 2 - 5, -4",
+            "-2 - -5 - -10, 13"
+
+    })
+    void 빼기테스트(String input, int answer) {
+        int output = stringCalculator.calculate(input);
+        assertThat(output).isEqualTo(answer);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1 / 2, 0",
+            "-7 / -2, 3",
+            "7 / -2, -3",
+            "10 / 5 / 2, 1"
+
+    })
+    void 나누기테스트(String input, int answer) {
+        int output = stringCalculator.calculate(input);
+        assertThat(output).isEqualTo(output);
     }
 
     @Test
-    void 더하기테스트() {
-        int output = stringCalculator.calculate("1 + 2");
-        assertThat(output).isEqualTo(3);
-    }
-
-    @Test
-    void 빼기테스트() {
-        int output = stringCalculator.calculate("3 - 2");
-        assertThat(output).isEqualTo(1);
-
-        output = stringCalculator.calculate("1 - 2");
-        assertThat(output).isEqualTo(-1);
-    }
-
-    @Test
-    void 나누기테스트() {
-        int output = stringCalculator.calculate("10 / 2");
-        assertThat(output).isEqualTo(5);
-
-        output = stringCalculator.calculate("1 / 2");
-        assertThat(output).isEqualTo(0);
-
-        output = stringCalculator.calculate("-7 / -2");
-        assertThat(output).isEqualTo(3);
-
-        output = stringCalculator.calculate("7 / -2");
-        assertThat(output).isEqualTo(-3);
-
+    void 나누기테스트_예외발생() {
         assertThatThrownBy(() -> stringCalculator.calculate("10 / 0"))
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessageContaining("/ by zero");
     }
 
-    @Test
-    void 곱하기테스트() {
-        int output = stringCalculator.calculate("10 * 2");
-        assertThat(output).isEqualTo(20);
-
-        output = stringCalculator.calculate("-1 * -2");
-        assertThat(output).isEqualTo(2);
-
-        output = stringCalculator.calculate("-1 * 2");
-        assertThat(output).isEqualTo(-2);
+    @ParameterizedTest
+    @CsvSource({
+            "10 * 2, 20",
+            "-1 * -2, 2",
+            "-1 * 2, -2",
+            "0 * 2, 0",
+            "1 * 2 * 3 * 5, 30"
+    })
+    void 곱하기테스트(String input, int answer) {
+        int output = stringCalculator.calculate(input);
+        assertThat(output).isEqualTo(answer);
     }
 
-    @Test
-    void 계산테스트() {
-        int output = stringCalculator.calculate("2 + 3 * 4 / 2");
-        assertThat(output).isEqualTo(10);
-
-        output = stringCalculator.calculate("-1 * -2 + 8 * 30");
-        assertThat(output).isEqualTo(480);
+    @ParameterizedTest
+    @CsvSource({
+            "2 + 3 * 4 / 2, 10",
+            "-1 * -2 + 8 * 30, 480"
+    })
+    void 계산테스트(String input, int answer) {
+        int output = stringCalculator.calculate(input);
+        assertThat(output).isEqualTo(answer);
     }
 
 
