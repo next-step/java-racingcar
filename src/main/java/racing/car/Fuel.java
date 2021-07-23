@@ -2,8 +2,6 @@ package racing.car;
 
 import util.RandomUtils;
 
-import java.util.function.BooleanSupplier;
-
 public class Fuel {
     public static Fuel EMPTY = new Fuel(0);
     public static Fuel FULL = new Fuel(9);
@@ -14,11 +12,10 @@ public class Fuel {
     private int value;
 
     private Fuel(int value) {
-        validate(value);
         this.value = value;
     }
 
-    private void validate(int value) {
+    private static void validate(int value) {
         if (value < 0)
             throw new IllegalArgumentException(UNDER_EMPTY_MESSAGE);
         if (value > FULL.value)
@@ -26,6 +23,7 @@ public class Fuel {
     }
 
     public static Fuel newInstance(int value) {
+        validate(value);
         return new Fuel(value);
     }
 
