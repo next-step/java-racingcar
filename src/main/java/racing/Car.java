@@ -24,7 +24,7 @@ public class Car {
 		if(raceDistance == winnerScore){
 			return carName;
 		}
-		return "";
+		return "fail";
 	}
 
 }

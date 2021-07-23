@@ -84,7 +84,7 @@ public class Racing {
 
 
 	private void winnerConfirm(String playerName) {
-		if(!playerName.isEmpty()){
+		if(!playerName.equals("fail")){
 			winnerPlayList.append(playerName);
 			winnerPlayList.append(",");
 		}
