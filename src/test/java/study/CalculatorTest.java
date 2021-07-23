@@ -21,5 +21,12 @@ public class CalculatorTest {
         assertThat(calcResult).isEqualTo(expectResult);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"2 * 3 = 6", "4 * 2 = 8"}, delimiter = '=')
+    public void multiplicationTest(String data, int expectResult) {
+        int calcResult = Calculator.calculate(data);
+        assertThat(calcResult).isEqualTo(expectResult);
+    }
+
 
 }

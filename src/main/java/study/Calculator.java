@@ -19,6 +19,9 @@ public class Calculator {
         if ("-".equals(operator)) {
             result = minus(firstOperand, secondOperand);
         }
+        if ("*".equals(operator)) {
+            result = multiply(firstOperand, secondOperand);
+        }
 
         return result;
     }
@@ -29,5 +32,9 @@ public class Calculator {
 
     static int minus(int firstOperand, int secondOperand) {
         return firstOperand - secondOperand;
+    }
+
+    static int multiply(int firstOperand, int secondOperand) {
+        return firstOperand * secondOperand;
     }
 }
