@@ -23,9 +23,12 @@ public class CarTest {
         IntStream.range(0, 10)
                 .forEach((i) -> {
                     int before = car.getLocation();
+
                     car.progress();
 
-                    assertThat(car.getLocation()).isEqualTo(before + 1);
+                    int after = car.getLocation();
+
+                    assertThat(after).isEqualTo(before + 1);
                 });
     }
 }
