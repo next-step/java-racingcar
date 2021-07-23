@@ -1,6 +1,8 @@
 package racing.car;
 
 public class Location {
+    private static final String UNDER_LOCATION_MESSAGE = "연료는 음수르 충전할 수 없습니다.";
+
     public static Location EMPTY = new Location();
     public static Location ONE_BLOCK = new Location(1);
     private final int value;
@@ -14,7 +16,13 @@ public class Location {
     }
 
     public int getValue() {
+        validate(value);
         return value;
+    }
+
+    private static void validate(int value) {
+        if (value < 0)
+            throw new IllegalArgumentException(UNDER_LOCATION_MESSAGE);
     }
 
     public Location add(Location location) {
