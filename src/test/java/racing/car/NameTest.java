@@ -11,17 +11,17 @@ public class NameTest {
             "A", "B", "abc", "jaewon"
     })
     @ParameterizedTest
-    public void getValueTest(String strName) {
-        new Name(strName).getValue();
+    public void valueTest(String strName) {
+        new Name(strName).value();
     }
 
     @ValueSource(strings = {
             "A1", "B2", "a a", "스포츠카"
     })
     @ParameterizedTest
-    public void getValueInvalidInputExceptionTest(String strName) {
+    public void valueInvalidInputExceptionTest(String strName) {
         assertThatThrownBy(() ->
-                        new Name(strName).getValue())
+                        new Name(strName).value())
         .isInstanceOf(InvalidInputException.class);
     }
 }

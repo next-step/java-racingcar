@@ -12,17 +12,17 @@ class LocationTest {
             0, 1, 2, 3, 4, 5, 6, 7, 8, 100000
     })
     @ParameterizedTest
-    public void getValueTest(int value) {
-        new Location(value).getValue();
+    public void valueTest(int value) {
+        new Location(value).value();
     }
 
     @ValueSource(ints = {
             -1, -10, -100
     })
     @ParameterizedTest
-    public void getValueIllegalArgumentExceptionTest(int value) {
+    public void valueIllegalArgumentExceptionTest(int value) {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                new Location(value).getValue()
+                new Location(value).value()
         );
     }
 

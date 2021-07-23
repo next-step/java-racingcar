@@ -15,7 +15,7 @@ public class Location {
         this.value = location;
     }
 
-    public int getValue() {
+    public int value() {
         validate(value);
         return value;
     }
@@ -27,7 +27,7 @@ public class Location {
 
     public Location add(Location location) {
         return new Location(
-                this.getValue() + location.getValue()
+                this.value() + location.value()
         );
     }
 
@@ -40,7 +40,7 @@ public class Location {
     public boolean equals(Object obj) {
         if (obj instanceof Location) {
             Location compareLocation = (Location) obj;
-            return this.getValue() == compareLocation.getValue();
+            return this.value() == compareLocation.value();
         }
         return false;
     }

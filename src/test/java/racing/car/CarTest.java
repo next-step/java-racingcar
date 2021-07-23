@@ -37,7 +37,7 @@ class CarTest {
         car.move(fuel);
 
         assertThat(
-                car.getLocation()
+                car.location()
         ).withFailMessage("자동차가 요청한대로 행동하지 않았습니다.")
                 .isEqualTo(location);
     }

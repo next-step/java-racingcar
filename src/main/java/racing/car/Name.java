@@ -15,7 +15,7 @@ public class Name {
             throw new InvalidInputException("자동차의 이름은 영어로만 입력 해주세요.");
     }
 
-    public String getValue() {
+    public String value() {
         validate(value);
         return value;
     }
@@ -30,7 +30,7 @@ public class Name {
         if (!(obj instanceof Name))
             return false;
         Name compareName = (Name) obj;
-        return this.getValue().equals(compareName.getValue());
+        return this.value().equals(compareName.value());
     }
 
     @Override

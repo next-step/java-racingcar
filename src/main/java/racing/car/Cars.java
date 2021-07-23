@@ -24,15 +24,15 @@ public class Cars implements Iterable<Car> {
         // 가장 많은 거리를 이동한 자동차의 Location을 구한다.
         Location bestLocation =
                 new Location(values.values().stream()
-                        .map(Car::getLocation)
-                        .mapToInt(Location::getValue)
+                        .map(Car::location)
+                        .mapToInt(Location::value)
                         .max()
                         .getAsInt()
                 );
 
         Cars cars = new Cars();
         cars.addAll(values.values().stream()
-                .filter(c -> c.getLocation().equals(bestLocation))
+                .filter(c -> c.location().equals(bestLocation))
                 .collect(Collectors.toList())
         );
         return cars;
@@ -58,9 +58,9 @@ public class Cars implements Iterable<Car> {
     }
 
     public void add(Car car) {
-        if (values.containsKey(car.getName()))
+        if (values.containsKey(car.name()))
             throw new DuplicateKeyException("중복된 자동차 이름이 존재 합니다.");
-        values.put(car.getName(), car);
+        values.put(car.name(), car);
     }
 
     public int size() {

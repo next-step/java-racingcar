@@ -10,11 +10,11 @@ public class Car {
         this.location = Location.EMPTY;
     }
 
-    public Location getLocation() {
+    public Location location() {
         return location;
     }
 
-    public Name getName() {
+    public Name name() {
         return name;
     }
 
