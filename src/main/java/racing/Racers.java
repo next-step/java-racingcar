@@ -26,8 +26,8 @@ class Racers {
         return cars.get(index);
     }
 
-    public void turnAround(ForwardConditionStrategy strategy, StringBuilder sb) {
-        range(0, size()).forEach(index -> turnAround(strategy, sb, index));
+    public void turnAround(ForwardConditionStrategy strategy, StringBuilder stringBuilder) {
+        range(0, size()).forEach(index -> turnAround(strategy, stringBuilder, index));
     }
 
     private void turnAround(ForwardConditionStrategy strategy, StringBuilder stringBuilder, int index) {
