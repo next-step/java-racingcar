@@ -10,7 +10,7 @@ public enum Operator {
 
     private String operator;
 
-    Operator(String operator){
+    Operator(String operator) {
         this.operator = operator;
     }
 
@@ -25,4 +25,16 @@ public enum Operator {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    public int execute(int a, int b) {
+        if (this.operator.equals(Operator.ADD.getOperator())) {
+            return a + b;
+        }
+        if (this.operator.equals(Operator.SUB.getOperator())) {
+            return a - b;
+        }
+        if (this.operator.equals(Operator.MUL.getOperator())) {
+            return a * b;
+        }
+        return a / b;
+    }
 }
