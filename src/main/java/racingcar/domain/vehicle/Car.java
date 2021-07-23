@@ -5,13 +5,13 @@ import racingcar.domain.engine.Engine;
 public class Car {
 
     private final Engine engine;
-    private final CarName name;
+    private final Name name;
 
     private Distance distance;
 
     public Car(Engine engine, String name, Distance distance) {
         this.engine = engine;
-        this.name = new CarName(name);
+        this.name = new Name(name);
         this.distance = distance;
     }
 

@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.common.exception.InvalidCarNameException;
 
 @DisplayName("[Step4] 자동차 이름")
-class CarNameTest {
+class NameTest {
 
     @DisplayName("[성공] 생성")
     @ParameterizedTest
@@ -20,10 +20,10 @@ class CarNameTest {
         // given
 
         // when
-        CarName carName = new CarName(name);
+        Name carName = new Name(name);
 
         // then
-        assertThat(carName.getName()).isEqualTo(name);
+        assertThat(carName).isEqualTo(new Name(name));
     }
 
     @DisplayName("[실패] 생성 - 너무 긴 자동차 이름")
@@ -35,7 +35,7 @@ class CarNameTest {
         // given
 
         // when
-        Assertions.assertThrows(InvalidCarNameException.class, () -> new CarName(name));
+        Assertions.assertThrows(InvalidCarNameException.class, () -> new Name(name));
 
         // then
     }
