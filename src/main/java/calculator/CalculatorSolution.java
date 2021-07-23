@@ -1,19 +1,19 @@
-import exception.InvalidFormulaException;
-import util.calculator.Calculator;
-import util.calculator.StringCalculator;
+package calculator;
+
+import calculator.exception.InvalidFormulaException;
 
 import java.util.Scanner;
 
-public class Solution {
+public class CalculatorSolution {
     public static void main(String[] args) {
-        Solution solution = new Solution(
+        CalculatorSolution calculatorSolution = new CalculatorSolution(
                 new StringCalculator()
         );
-        solution.run();
+        calculatorSolution.run();
     }
 
     private Calculator calculator;
-    public Solution(Calculator calculator) {
+    public CalculatorSolution(Calculator calculator) {
         this.calculator = calculator;
     }
 

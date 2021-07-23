@@ -1,7 +1,8 @@
-package util.calculator;
+package calculator;
 
 
-import exception.InvalidFormulaException;
+import calculator.exception.InvalidFormulaException;
+import util.StringUtils;
 
 import java.util.Arrays;
 import java.util.Deque;
@@ -27,7 +28,7 @@ public class StringCalculator implements Calculator {
 
     private void validate(String input) {
         // 요구 사항 :: 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-        if (Objects.isNull(input) || input.trim().length() == 0)
+        if (StringUtils.isEmpty(input))
             throw new IllegalArgumentException("공백으로 이루어진 문자열은 계산할 수 없습니다.");
     }
 
