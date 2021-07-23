@@ -30,10 +30,11 @@ public class Location {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Location))
-            return false;
-        Location compareLocation = (Location) obj;
-        return this.getValue() == compareLocation.getValue();
+        if (obj instanceof Location) {
+            Location compareLocation = (Location) obj;
+            return this.getValue() == compareLocation.getValue();
+        }
+        return false;
     }
 
     @Override

@@ -5,6 +5,7 @@ import racing.car.Cars;
 import racing.car.Fuel;
 import racing.car.RandomFuel;
 import racing.exception.DuplicateKeyException;
+import racing.exception.EmptyCarException;
 import racing.exception.InvalidInputException;
 import racing.view.*;
 
@@ -32,7 +33,9 @@ public class RacingSolution {
             int turnSize = inputView.inputTurnSize();
 
             racing(cars, turnSize);
-        } catch (DuplicateKeyException | InvalidInputException e) {
+
+            resultView.printWinners(cars);
+        } catch (EmptyCarException | DuplicateKeyException | InvalidInputException e) {
             resultView.printException(e);
         }
     }

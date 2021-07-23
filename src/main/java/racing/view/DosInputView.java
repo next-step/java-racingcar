@@ -16,6 +16,7 @@ import static racing.view.DosInputView.Text.*;
 public class DosInputView implements InputView {
     private final Scanner scanner;
     private static final String NAME_DELIMITER = ",";
+    private static final int MIN_TURN_SIZE = 1;
 
     public DosInputView() {
         this.scanner = new Scanner(System.in);
@@ -25,7 +26,11 @@ public class DosInputView implements InputView {
         String input = inputLine(guideText);
         if (!StringUtils.isNumber(input))
             throw new InvalidInputException();
-        return Integer.parseInt(input);
+
+        int intInput = Integer.parseInt(input);
+        if (intInput < MIN_TURN_SIZE)
+            throw new InvalidInputException("자동차 경주는 1회 이상 이어야 시작 됩니다.");
+        return intInput;
     }
 
     private String inputLine(Text guideText) {

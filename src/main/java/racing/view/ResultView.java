@@ -6,9 +6,11 @@ import racing.car.Cars;
 public interface ResultView {
     void printResultTitle();
 
-    void printAllCarLocation(Cars car);
+    void printAllCarLocation(Cars cars);
 
     void printCarLocation(Car car);
 
     void printException(Exception e);
+
+    void printWinners(Cars cars);
 }
