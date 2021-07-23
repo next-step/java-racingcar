@@ -28,5 +28,12 @@ public class CalculatorTest {
         assertThat(calcResult).isEqualTo(expectResult);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"6 / 3 = 2", "8 / 2 = 4"}, delimiter = '=')
+    public void divisionTest(String data, int expectResult) {
+        int calcResult = Calculator.calculate(data);
+        assertThat(calcResult).isEqualTo(expectResult);
+    }
+
 
 }
