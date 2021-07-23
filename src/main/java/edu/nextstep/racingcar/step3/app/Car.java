@@ -1,16 +1,21 @@
-package edu.nextstep.racingcar.step3;
+package edu.nextstep.racingcar.step3.app;
 
-public class Car {
+import edu.nextstep.racingcar.step3.util.RandomUtils;
+import edu.nextstep.racingcar.step3.util.Randoms;
+
+public class Car implements Vehicle {
 
     private Integer numberOfRandoms = 10;
     private Integer threshold = 4;
+    private Randoms randomUtils = new RandomUtils();;
+    private Integer distance = 1;
 
-    private Randoms randomUtils;
+    public Car() {
+    }
 
     public Car(Integer numberOfRandoms, Integer threshold) {
         this.numberOfRandoms = numberOfRandoms;
         this.threshold = threshold;
-        this.randomUtils = new RandomUtils();
     }
 
     public Car(Integer numberOfRandoms, Integer threshold, Randoms randomUtils) {
@@ -21,7 +26,14 @@ public class Car {
 
     public boolean isMove() {
         Integer randomNumber = randomUtils.getRandomNumber(numberOfRandoms);
-        System.out.println(String.format("randomNumber = %s", randomNumber));
         return randomNumber >= threshold;
+    }
+
+    public void setDistance(Integer distance) {
+        this.distance = distance;
+    }
+
+    public Integer getDistance() {
+        return distance;
     }
 }
