@@ -1,6 +1,8 @@
 package edu.nextstep.racingcar.step2;
 
-public enum CalculatorError {
+import edu.nextstep.racingcar.common.BusinessError;
+
+public enum CalculatorError implements BusinessError {
     INVALID_VALUE("잘못된 값입니다."),
     INVALID_CALCULATE_VALUE("잘못된 값입니다."),
     INVALID_CALCULATE_STRING("잘못된 연산 값입니다."),

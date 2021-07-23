@@ -7,13 +7,13 @@ public class BusinessException extends RuntimeException {
     private final String code;
     private final String message;
 
-    public BusinessException(Exception e, CalculatorError error) {
+    public BusinessException(Exception e, BusinessError error) {
         super(error.getMessage(), e);
         this.code = error.name();
         this.message = error.getMessage();
     }
 
-    public BusinessException(CalculatorError error) {
+    public BusinessException(BusinessError error) {
         this.code = error.name();
         this.message = error.getMessage();
     }

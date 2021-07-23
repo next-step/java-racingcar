@@ -1,6 +1,6 @@
 package edu.nextstep.racingcar.step2;
 
-import edu.nextstep.racingcar.common.exception.BusinessException;
+import edu.nextstep.racingcar.common.BusinessException;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
