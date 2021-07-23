@@ -1,7 +1,7 @@
 package calculator;
 
 public class StringCalculator {
-    public static int calc(String input) {
+    public static int calculateFromString(String input) {
         String[] arr = input.split(" ");
         int size = arr.length;
         if (size < 3) {
