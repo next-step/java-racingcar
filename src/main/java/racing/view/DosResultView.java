@@ -37,7 +37,6 @@ public class DosResultView implements ResultView {
         System.out.println(EXCEPTION.formatString(e.getMessage()));
     }
 
-
     protected enum Text {
         CAR_NAME("%s : "),
         RESULT_TITLE("실행 결과"),
