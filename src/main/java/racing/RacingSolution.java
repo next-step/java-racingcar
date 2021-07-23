@@ -1,15 +1,12 @@
 package racing;
 
-import racing.car.Car;
 import racing.car.Cars;
-import racing.car.Fuel;
 import racing.car.RandomFuel;
 import racing.exception.DuplicateKeyException;
 import racing.exception.EmptyCarException;
 import racing.exception.InvalidInputException;
 import racing.view.*;
 
-import java.util.Random;
 
 public class RacingSolution {
     public static void main(String[] args) {

@@ -20,6 +20,8 @@ public class Cars implements Iterable<Car> {
     public Cars bestCars() {
         if (values.isEmpty())
             throw new EmptyCarException();
+
+        // 가장 많은 거리를 이동한 자동차의 Location을 구한다.
         Location bestLocation =
                 new Location(values.values().stream()
                         .map(Car::getLocation)
@@ -36,6 +38,12 @@ public class Cars implements Iterable<Car> {
         return cars;
     }
 
+    public void moveAll(Fuel fuel) {
+        for (Car car : this)
+            car.move(fuel);
+    }
+
+    /* 아래는 Forward 메소드 */
     public Car get(Name name) {
         return values.get(name);
     }
@@ -53,11 +61,6 @@ public class Cars implements Iterable<Car> {
         if (values.containsKey(car.getName()))
             throw new DuplicateKeyException("중복된 자동차 이름이 존재 합니다.");
         values.put(car.getName(), car);
-    }
-
-    public void moveAll(Fuel fuel) {
-        for (Car car : this)
-            car.move(fuel);
     }
 
     public int size() {

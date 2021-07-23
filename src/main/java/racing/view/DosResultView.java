@@ -10,6 +10,7 @@ import static racing.view.DosResultView.Text.*;
 public class DosResultView implements ResultView {
     private static final String NAME_DELIMITER = ",";
     private static final char LOCATION_UNIT = '-';
+
     @Override
     public void printResultTitle() {
         System.out.println(RESULT_TITLE);
@@ -29,9 +30,8 @@ public class DosResultView implements ResultView {
         System.out.print(
                 CAR_NAME.formatString(car.getName())
         );
-        for (int i = 0; i < locationValue; i++) {
+        for (int i = 0; i < locationValue; i++)
             System.out.print(LOCATION_UNIT);
-        }
         System.out.println();
     }
 

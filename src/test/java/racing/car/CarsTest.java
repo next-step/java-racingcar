@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarsTest {
     private static final char NAME_WORD = 'A';
+
     /* 요구 사항은 ','를 기준으로 이름을 입력 받지만
     * @CsvSource의 기본 구분 문자가 ',' 이기 때문에
     * 테스트 에서는 이름 구분자를 '|' 로 변경

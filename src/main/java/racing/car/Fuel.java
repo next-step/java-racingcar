@@ -13,10 +13,6 @@ public class Fuel {
         this.value = value;
     }
 
-    protected Fuel() {
-        this.value = EMPTY.value;
-    }
-
     private static void validate(int value) {
         if (value < 0)
             throw new IllegalArgumentException(UNDER_EMPTY_MESSAGE);
