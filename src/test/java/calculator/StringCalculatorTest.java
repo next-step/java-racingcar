@@ -58,5 +58,16 @@ public class StringCalculatorTest {
         ).withMessage("사칙 연산 기호가 아닙니다.");
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1 + 2 / 3, 1"
+            , "4 - 2 + 10 * 2,24"
+            , "1 + 3 / 2 * 5,10"
+            , "1 - 5 * 2,-8"
+    })
+    void 사칙연산_모두_포함_기능_검증(String expression, int expected){
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
+    }
+
 
 }
