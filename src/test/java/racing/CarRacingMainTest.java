@@ -3,8 +3,6 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -14,11 +12,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarRacingMainTest {
 
     private Racing racing;
-    private MessageBox messageBox;
 
     @BeforeEach
     void setUp() {
-        messageBox = new MessageBox();
+        MessageBox messageBox = new MessageBox();
         racing = new Racing(messageBox);
     }
 
