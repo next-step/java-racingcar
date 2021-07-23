@@ -1,38 +1,24 @@
 package racingcar;
 
-import racingcar.model.Car;
+import racingcar.Service.RacingGame;
 import racingcar.model.Cars;
-import racingcar.model.RaceInfo;
+import racingcar.model.RacingInfo;
 import racingcar.view.InputView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import racingcar.view.ResultView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
+        int numberOfCar = InputView.getNumberOfCar();
+        int raceTrialCount = InputView.getRaceTrialCount();
 
-        Scanner scanner = new Scanner(System.in);
-        InputView inputView = new InputView();
+        RacingInfo racingInfo = new RacingInfo(numberOfCar, raceTrialCount);
+        Cars cars = new Cars(racingInfo.numberOfCar);
 
-        inputView.numberOfCarQuestionShow();
-        int numberOfCar = Integer.parseInt(scanner.nextLine());
+        RacingGame racingGame = new RacingGame(racingInfo, cars);
+        ResultView resultView = racingGame.gameStart();
 
-        inputView.raceTrialCountQuestionShow();
-        int raceTrialCount = Integer.parseInt(scanner.nextLine());
-
-        RaceInfo raceInfo = new RaceInfo(numberOfCar, raceTrialCount);
-
-        List<Car> racingCars = new ArrayList<Car>();
-
-        for (int i = 0; i < raceInfo.numberOfCar; i++) {
-            racingCars.add(new Car());
-        }
-        Cars cars = new Cars(racingCars);
-
-        cars.movable();
-
-        System.out.println(cars.getCarsPositions());
+        resultView.printResult();
 
     }
+
 }
