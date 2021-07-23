@@ -5,7 +5,7 @@ import racing.view.ResultView;
 
 public class RacingController {
 
-	public void start(int carCount, int tryCount) {
+	public static void start(int carCount, int tryCount) {
 		Racing racing = new Racing(carCount);
 
 		for (int i = 0; i < tryCount; i++) {
