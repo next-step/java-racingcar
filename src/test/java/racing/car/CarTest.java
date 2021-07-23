@@ -1,5 +1,6 @@
 package racing.car;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -7,6 +8,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
+    private static Name ANONYMOUS;
+
+    @BeforeAll
+    public static void setUp() {
+        ANONYMOUS = new Name("익명");
+    }
+
     @CsvSource({
             "0,0",
             "1,0",
@@ -25,7 +33,7 @@ class CarTest {
         Location location = new Location(locationValue);
         Fuel fuel = Fuel.newInstance(fuelValue);
 
-        Car car = new Car();
+        Car car = new Car(ANONYMOUS);
         car.move(fuel);
 
         assertThat(

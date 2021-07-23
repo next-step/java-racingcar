@@ -5,17 +5,34 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 class CarsTest {
-    private Cars initCars(int carSize) {
-        Cars cars = new Cars();
-        for (int i = 0; i < carSize; i++)
-            cars.add(new Car());
-        return cars;
+    private static final String NAME_DELIMITER = "\\|";
+    private Cars initCars(String strNames) {
+        String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
+
+        return new Cars(
+                Arrays.stream(strNameSplitValues)
+                        .map(Name::new)
+                        .map(Car::new)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    private String sizeToNames(int size) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            builder.append(i).append("|");
+        }
+        if (builder.length() > 0)
+            return builder.substring(0, builder.length() - 1);
+        return builder.toString();
     }
 
     @ValueSource(ints = {
@@ -24,18 +41,21 @@ class CarsTest {
     @DisplayName("Car Add Test")
     @ParameterizedTest
     public void addTest(int size) {
-        Cars cars = initCars(size);
+        Cars cars = initCars(
+                sizeToNames(size)
+        );
 
         assertThat(cars.size())
                 .isEqualTo(size);
     }
 
     // cars.iterator().hasNext() 를 이용해서 테스트를 만들어보면 어떨까요? :)
-    @ValueSource(ints = { 0, 1, 100, 1000 })
+    @ValueSource(ints = { 1, 100, 1000 })
     @DisplayName("Car Iterator Test With For")
     @ParameterizedTest
     public void carIteratorForTest(int size) {
-        Cars cars = initCars(size);
+        Cars cars = initCars(
+                sizeToNames(size));
 
         Iterator<Car> iterator = cars.iterator();
         for (int i = 0; i < size; i++) {
@@ -45,11 +65,13 @@ class CarsTest {
                 .isEqualTo(false);
     }
 
-    @ValueSource(ints = { 0, 1, 100, 1000 })
+    @ValueSource(ints = { 1, 100, 1000 })
     @DisplayName("Car Test With While")
     @ParameterizedTest
     public void carIteratorWhileTest(int size) {
-        Cars cars = initCars(size);
+        Cars cars = initCars(
+                sizeToNames(size)
+        );
 
         Iterator<Car> iterator = cars.iterator();
         while (iterator.hasNext()) {
@@ -75,7 +97,9 @@ class CarsTest {
     @ParameterizedTest
     public void moveAllTest(int carSize, int turnSize, int fuelValue, int locationValue) {
         Location location = new Location(locationValue);
-        Cars cars = initCars(carSize);
+        Cars cars = initCars(
+                sizeToNames(carSize)
+        );
         Fuel fuel = Fuel.newInstance(fuelValue);
 
         for (int i = 0; i < turnSize; i++) {
