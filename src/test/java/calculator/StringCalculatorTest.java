@@ -1,9 +1,11 @@
 package calculator;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 
 @SuppressWarnings("NonAsciiCharacters")
@@ -31,6 +33,20 @@ public class StringCalculatorTest {
     @CsvSource(value = {"4 / 2,2", "10 / 2,5", "12 / 2 / 3,2"})
     void 나눗셈_기능_확인(String expression, int expected) {
         assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
+    }
+
+    @Test
+    void 입력값이_빈공백_대한_오류검증(){
+        assertThatIllegalArgumentException().isThrownBy(
+                ()->StringCalculator.calculate("")
+        ).withMessage("입력은 공백이면 안됩니다.");
+    }
+
+    @Test
+    void 입력값이_null_대한_오류검증(){
+        assertThatIllegalArgumentException().isThrownBy(
+                ()->StringCalculator.calculate(null)
+        ).withMessage("입력은 공백이면 안됩니다.");
     }
 
 

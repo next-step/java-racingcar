@@ -4,6 +4,7 @@ import java.util.function.BiFunction;
 
 public class StringCalculator {
     public static int calculate(String expression) {
+        validateInput(expression);
         String[] splitExpression = expression.split(" ");
 
         int result = Integer.parseInt(splitExpression[0]);
@@ -16,6 +17,11 @@ public class StringCalculator {
         }
 
         return result;
+    }
+
+    private static void validateInput(String expression) {
+        if(expression==null || expression.isEmpty())
+            throw new IllegalArgumentException("입력은 공백이면 안됩니다.");
     }
 
     private static BiFunction<Integer, Integer, Integer> distinguishOperator(String operator) {
