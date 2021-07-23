@@ -23,7 +23,9 @@ public class DosResultView implements ResultView {
     @Override
     public void printCarLocation(Car car) {
         int locationValue = car.getLocation().getValue();
-        System.out.print(LOCATION_UNIT); // 자동차가 존재한다는 표시
+        System.out.print(
+                CAR_NAME.formatString(car.getName())
+        );
         for (int i = 0; i < locationValue; i++) {
             System.out.print(LOCATION_UNIT);
         }
@@ -37,6 +39,7 @@ public class DosResultView implements ResultView {
 
 
     protected enum Text {
+        CAR_NAME("%s : "),
         RESULT_TITLE("실행 결과"),
         EXCEPTION("[ERROR] %s");
 
@@ -47,7 +50,11 @@ public class DosResultView implements ResultView {
         }
 
         public String formatString(String... objs) {
-            return String.format(text, (Object[]) objs);
+            return formatString((Object[]) objs);
+        }
+
+        public String formatString(Object... objs) {
+            return String.format(text, objs);
         }
 
         @Override

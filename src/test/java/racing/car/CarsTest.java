@@ -100,7 +100,7 @@ class CarsTest {
         Cars cars = initCars(
                 sizeToNames(carSize)
         );
-        Fuel fuel = Fuel.newInstance(fuelValue);
+        Fuel fuel = new Fuel(fuelValue);
 
         for (int i = 0; i < turnSize; i++) {
             cars.moveAll(fuel);

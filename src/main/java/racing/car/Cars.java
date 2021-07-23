@@ -5,17 +5,13 @@ import java.util.*;
 public class Cars implements Iterable<Car> {
     private final List<Car> values;
 
-    public Cars() {
-        this.values = new ArrayList<>();
+    public Cars(List<Car> values) {
+        this.values = values;
     }
 
     public void moveAll(Fuel fuel) {
         for (Car iCar : values)
             iCar.move(fuel);
-    }
-
-    public void add(Car car) {
-        values.add(car);
     }
 
     public int size() {

@@ -12,7 +12,7 @@ class CarTest {
 
     @BeforeAll
     public static void setUp() {
-        ANONYMOUS = new Name("익명");
+        ANONYMOUS = new Name("ANONYMOUS");
     }
 
     @CsvSource({
@@ -31,7 +31,7 @@ class CarTest {
     @ParameterizedTest
     public void moveTest(int fuelValue, int locationValue) {
         Location location = new Location(locationValue);
-        Fuel fuel = Fuel.newInstance(fuelValue);
+        Fuel fuel = new Fuel(fuelValue);
 
         Car car = new Car(ANONYMOUS);
         car.move(fuel);
