@@ -12,6 +12,12 @@ class FuelTest {
     }
 
     @Test
+    public void minTest() {
+        assertThat(Fuel.MIN.isMovable())
+                .isEqualTo(true);
+    }
+
+    @Test
     public void fullTest() {
         assertThat(Fuel.FULL.isMovable())
                 .isEqualTo(true);

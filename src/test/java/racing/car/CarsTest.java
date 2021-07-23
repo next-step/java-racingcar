@@ -31,9 +31,9 @@ class CarsTest {
 
     // cars.iterator().hasNext() 를 이용해서 테스트를 만들어보면 어떨까요? :)
     @ValueSource(ints = { 0, 1, 100, 1000 })
-    @DisplayName("Car Iterator Test")
+    @DisplayName("Car Iterator Test With For")
     @ParameterizedTest
-    public void carIteratorTest(int size) {
+    public void carIteratorForTest(int size) {
         Cars cars = initCars(size);
 
         Iterator<Car> iterator = cars.iterator();
@@ -42,5 +42,17 @@ class CarsTest {
         }
         assertThat(iterator.hasNext())
                 .isEqualTo(false);
+    }
+
+    @ValueSource(ints = { 0, 1, 100, 1000 })
+    @DisplayName("Car Test With While")
+    @ParameterizedTest
+    public void carIteratorWhileTest(int size) {
+        Cars cars = initCars(size);
+
+        Iterator<Car> iterator = cars.iterator();
+        while (iterator.hasNext()) {
+            iterator.next();
+        }
     }
 }
