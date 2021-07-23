@@ -12,39 +12,29 @@ public class Distance implements Comparable<Distance> {
     private final int distance;
 
     public Distance(int distance) {
-        if (!initValidation(distance)) {
-            throw new InvalidInitDistanceException();
-        }
-
+        initValidation(distance);
         this.distance = distance;
     }
 
+    private void initValidation(int initDistance) {
+        if (initDistance < MIN_INIT_INPUT) {
+            throw new InvalidInitDistanceException();
+        }
+    }
+
     public Distance move(int moveDistance) {
-        if (!moveValidation(moveDistance)) {
+        moveValidation(moveDistance);
+        return new Distance(distance + moveDistance);
+    }
+
+    private void moveValidation(int moveDistance) {
+        if (moveDistance < MIN_MOVE_INPUT) {
             throw new InvalidMoveDistanceException();
         }
-
-        return new Distance(this.distance + moveDistance);
     }
 
-    public int value() {
+    public int getValue() {
         return distance;
-    }
-
-    private boolean initValidation(int initDistance) {
-        if (initDistance >= MIN_INIT_INPUT) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean moveValidation(int moveDistance) {
-        if (moveDistance >= MIN_MOVE_INPUT) {
-            return true;
-        }
-
-        return false;
     }
 
     @Override

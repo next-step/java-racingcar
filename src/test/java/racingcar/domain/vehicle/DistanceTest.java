@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.common.exception.InvalidInitDistanceException;
+import racingcar.common.exception.InvalidMoveDistanceException;
 
 @DisplayName("[Step4] 이동 거리")
 class DistanceTest {
@@ -24,7 +25,7 @@ class DistanceTest {
         Distance distance = new Distance(initDistance);
 
         // then
-        assertThat(distance.value()).isEqualTo(initDistance);
+        assertThat(distance.getValue()).isEqualTo(initDistance);
     }
 
     @DisplayName("[실패] 생성 - 최소 값 보다 작은 초기 값")
@@ -37,6 +38,36 @@ class DistanceTest {
 
         // when
         assertThrows(InvalidInitDistanceException.class, () -> new Distance(initDistance));
+
+        // then
+    }
+
+    @DisplayName("[성공] 이동")
+    @ParameterizedTest
+    @CsvSource(value = {
+        "0", "99"
+    })
+    public void move(int moveDistance) {
+        // given
+
+        // when
+        Distance distance = new Distance(0).move(moveDistance);
+
+        // then
+        assertThat(distance).isEqualTo(new Distance(moveDistance));
+    }
+
+    @DisplayName("[실패] 이동 - 최소 값 보다 입력 값")
+    @ParameterizedTest
+    @CsvSource(value = {
+        "-1"
+    })
+    public void move_tooSmallDistance(int moveDistance) {
+        // given
+        Distance distance = new Distance(0);
+
+        // when
+        assertThrows(InvalidMoveDistanceException.class, () -> distance.move(moveDistance));
 
         // then
     }
