@@ -13,7 +13,8 @@ public class Message {
     *------------------------
     *------------------------
     *Validation
-    *input Value is null or blank
+    * input Value is null or blank
+    * 입력값은 숫자만 허용됩니다.
     * -----------------------
     */
     public static final String MSG_RESULT_FORM = "start|";
@@ -21,5 +22,5 @@ public class Message {
     public static final String MSG_ASK_ROUND_COUNT = "시도할 회수는 몇 회 인가요?";
     public static final String MSG_ROUND_RESULT = "실행 결과";
     public static final String MSG_ERROR_VALUE_NULL_BLANK = "input Value is null or blank";
-
+    public static final String MSG_ERROR_VALUE_TYPE = "입력값은 숫자만 허용됩니다.";
 }

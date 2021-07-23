@@ -15,8 +15,8 @@ public class Racing {
     private Cars cars;
 
     public Racing(int carCount, int roundCount) {
-        validationValues(carCount, roundCount);
-        this.cars = getCars(carCount);
+        //validationValues(carCount, roundCount);
+        this.cars = createCars(carCount);
 
         playingRounds(roundCount);
     }
@@ -33,7 +33,7 @@ public class Racing {
         new DrawDisplay(cars.getCars());
     }
 
-    private Cars getCars(int carCount) {
+    private Cars createCars(int carCount) {
         return new Cars(carCount);
     }
 
@@ -43,16 +43,7 @@ public class Racing {
     }
 
     private void runningCars() {
-
-        for (int i = 0; i < cars.getCars().size(); i++) {
-            moveProgress();
-        }
-
-    }
-
-    private void moveProgress() {
         cars.moveTheCar();
-
     }
 
     public List<Car> getCars() {

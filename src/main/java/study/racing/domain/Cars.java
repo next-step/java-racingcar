@@ -3,6 +3,8 @@ package study.racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import static study.racing.common.Common.createRandomNumber;
+
 public class Cars {
 
     private final List<Car> cars = new ArrayList<>();
@@ -22,6 +24,6 @@ public class Cars {
     }
 
     public void moveTheCar(){
-        cars.forEach(car -> car.moveTheCar());
+        cars.forEach(car -> car.moveTheCar(createRandomNumber()));
     }
 }

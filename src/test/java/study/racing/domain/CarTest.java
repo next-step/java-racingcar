@@ -31,9 +31,11 @@ class CarTest {
     }
 
     @DisplayName("파라메터값이 4이상인지 체크 테스트")
-    @Test
-    void 선택된랜덤값이4이상인지체크테스트() {
+    @ParameterizedTest
+    @CsvSource(value = {"1,0","2,0","4,1","9,1"})
+    void 선택된랜덤값이4이상인지체크테스트(int input, int expected) {
         Car car = new Car();
-        //car.moveTheCar(car);
+        car.moveTheCar(input);
+        assertThat(car.getDistance().getMoveDistance()).isEqualTo(expected);
     }
 }

@@ -20,12 +20,12 @@ public class Car {
         return distance;
     }
 
-    public static Boolean checkMoveableCar() {
-        return createRandomNumber() >= LIMIT_NUMBER;
+    private static Boolean checkMoveableCar(int targetNumber) {
+        return targetNumber >= LIMIT_NUMBER;
     }
 
-    public void moveTheCar() {
-        if(checkMoveableCar()){
+    public void moveTheCar(int randomNumber) {
+        if(checkMoveableCar(randomNumber)){
             distance.move();
         }
     }

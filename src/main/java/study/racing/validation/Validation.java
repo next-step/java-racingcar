@@ -9,4 +9,5 @@ public class Validation {
             throw new IllegalArgumentException(Message.MSG_ERROR_VALUE_NULL_BLANK);
         }
     }
+
 }

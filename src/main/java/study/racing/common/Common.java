@@ -1,5 +1,9 @@
 package study.racing.common;
 
+import study.racing.exception.Exception;
+import study.racing.validation.Validation;
+
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,7 +25,15 @@ public class Common {
 
     public static int inputValueWithMessage(String message) {
         printMessage(message);
-        return toInt(scanner.nextLine());
+        int number = 0;
+
+        try {
+            number =  scanner.nextInt();
+        }catch (InputMismatchException ie){
+            Exception.InputMismatchException(Message.MSG_ERROR_VALUE_TYPE);
+        }
+
+        return number;
     }
 
     public static void printMessage(String text) {
