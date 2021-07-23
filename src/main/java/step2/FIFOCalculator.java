@@ -30,9 +30,8 @@ public class FIFOCalculator {
         validateInput();
 
         List<String> tokens = new ArrayList<>(Arrays.asList(tokenizeInput()));
-        int accumulator = Integer.parseInt(tokens.remove(0));
 
-        return calculate(tokens, accumulator);
+        return calculate(tokens, Integer.parseInt(tokens.remove(0)));
     }
 
     private int calculate(List<String> tokens, int accumulator) {
