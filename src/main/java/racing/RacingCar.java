@@ -1,39 +1,23 @@
 package racing;
 
 
+import racing.view.RacingView;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class RacingCar {
 
     Map<Integer, Integer> carMoveCountMap = new HashMap<>();
+    RacingView racingView = new RacingView();
     public void racing(int carNum, int count) {
-        //init
-        for (int i=0; i<carNum; i++) {
+        for (int i = 0; i < carNum; i++) {
             carMoveCountMap.put(i, 0);
         }
-        int j=0;
-        while(j < count) {
+        int j = 0;
+        while (j < count) {
             setCarMoveCount(carNum);
             j++;
-        }
-
-
-    }
-
-    void printRace(int carNum) {
-        int i=0;
-        while(i < carNum) {
-            printMoveLine(i);
-            System.out.println("");
-            i++;
-        }
-    }
-
-    void printMoveLine(int carNum) {
-        System.out.print(carNum*1+1+":");
-        for (int j=0; j<carMoveCountMap.get(carNum); j++) {
-            System.out.print("-");
         }
     }
 
@@ -41,7 +25,7 @@ public class RacingCar {
         for(int i=0; i<carNum; i++) {
             setMove(i);
         }
-        printRace(carNum);
+        racingView.printRace(carMoveCountMap, carNum);
         System.out.println("");
     }
 
