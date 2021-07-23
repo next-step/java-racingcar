@@ -42,4 +42,13 @@ class StringCalculatorTest {
             StringCalculator.calc(input);
         });
     }
+
+    @DisplayName("사칙연산 기호가 아닌 경우 에러")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 . 1", "1 1 1", "1 1"})
+    void calc_error_operator(String input){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator.calc(input);
+        });
+    }
 }

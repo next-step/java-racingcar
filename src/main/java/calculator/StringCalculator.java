@@ -7,21 +7,21 @@ public class StringCalculator {
             throw new IllegalArgumentException();
         }
         int num1 = Integer.parseInt(arr[0]);
-        String operator = arr[1];
+        Operator operator = Operator.valueOf(arr[1]);
         int num2 = Integer.parseInt(arr[2]);
         int result = 0;
 
         switch (operator){
-            case "+":
+            case ADD:
                 result = add(num1,num2);
                 break;
-            case "-":
+            case SUB:
                 result = sub(num1,num2);
                 break;
-            case "*":
+            case MUL:
                 result = mul(num1,num2);
                 break;
-            case "/":
+            case DIV:
                 result = div(num1,num2);
         }
         return result;
