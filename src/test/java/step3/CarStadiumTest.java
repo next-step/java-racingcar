@@ -25,7 +25,7 @@ class CarStadiumTest {
 
 
     @Test
-    void 자동차가_움직이면_위치를_보여준다() {
+    void 자동차가_움직이면_현재_자동차의_위치를_보여준다() {
         // given
         for (int i = 0; i < givenCars; i++) {
             carStadium.enterCar(new Car(new CarEngine()));
