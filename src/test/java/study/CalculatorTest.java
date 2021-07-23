@@ -13,4 +13,13 @@ public class CalculatorTest {
         int calcResult = Calculator.calculate(data);
         assertThat(calcResult).isEqualTo(expectResult);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 - 1 = 1", "4 - 2 = 2"}, delimiter = '=')
+    public void minusTest(String data, int expectResult) {
+        int calcResult = Calculator.calculate(data);
+        assertThat(calcResult).isEqualTo(expectResult);
+    }
+
+
 }

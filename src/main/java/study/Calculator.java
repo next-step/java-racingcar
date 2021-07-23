@@ -16,11 +16,18 @@ public class Calculator {
         if ("+".equals(operator)) {
             result = plus(firstOperand, secondOperand);
         }
+        if ("-".equals(operator)) {
+            result = minus(firstOperand, secondOperand);
+        }
 
         return result;
     }
 
     static int plus(int firstOperand, int secondOperand) {
         return firstOperand + secondOperand;
+    }
+
+    static int minus(int firstOperand, int secondOperand) {
+        return firstOperand - secondOperand;
     }
 }
