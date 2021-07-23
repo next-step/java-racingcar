@@ -42,11 +42,11 @@ public class RacingGame {
     }
 
     public int getCurrentTurn() {
-        return currentTurn;
+        return this.currentTurn;
     }
 
     public List<Car> getCars() {
-        return this.cars.subList(0, cars.size());
+        return this.cars.subList(0, this.cars.size());
     }
 
     private MOVE goOrStop() {
@@ -54,7 +54,7 @@ public class RacingGame {
     }
 
     private void nextTurn() {
-        cars.stream().filter(x -> goOrStop().equals(MOVE.GO))
+        this.cars.stream().filter(x -> goOrStop().equals(MOVE.GO))
                 .forEach(Car::progress);
 
         this.currentTurn += 1;

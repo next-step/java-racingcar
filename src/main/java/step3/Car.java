@@ -4,7 +4,7 @@ public class Car {
     private int location = 0;
 
     public int getLocation() {
-        return location;
+        return this.location;
     }
 
     public void progress() {
