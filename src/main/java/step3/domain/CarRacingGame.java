@@ -20,6 +20,18 @@ public class CarRacingGame {
     }
 
 
+    public void gameStart() {
+        for (int i = 0; i < tryCount; i++) {
+            playOneRound();
+        }
+    }
+
+    private void playOneRound() {
+        for (Car car : cars) {
+            car.run();
+        }
+    }
+
     private void prepareCars() {
         for (int i = 0; i < carCount; i++) {
             String carNumber = String.format(CAR_NUMBER_FORMAT, i);
@@ -30,7 +42,7 @@ public class CarRacingGame {
 
     private List<String> getCarNumbers() {
         List<String> carNumbers = cars.stream()
-            .map(car -> car.carNumber)
+            .map(car -> car.getCarNumber())
             .collect(Collectors.toList());
         return carNumbers;
     }

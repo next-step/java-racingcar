@@ -20,6 +20,9 @@ public class Step3Main {
         scanner.close();
 
         System.out.println(new CarRacingGame(carCount, tryCount));
+        CarRacingGame carRacingGame = new CarRacingGame(carCount, tryCount);
+        carRacingGame.gameStart();
+
 
     }
 
