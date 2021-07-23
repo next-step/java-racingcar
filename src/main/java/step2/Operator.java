@@ -19,7 +19,7 @@ public enum Operator {
 
     public static Operator of(final String sign) {
         return Arrays.stream(Operator.values())
-                .filter( operator -> operator.getSign().equals(sign))
+                .filter(operator -> operator.getSign().equals(sign))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException());
     }
