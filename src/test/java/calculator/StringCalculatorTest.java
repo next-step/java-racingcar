@@ -15,4 +15,11 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1 - 2,-1", "5 - 3,2", "10 - 1 - 4,5"})
+    void 뺄셈_기능_확인(String expression, int expected) {
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
+    }
+
+
 }
