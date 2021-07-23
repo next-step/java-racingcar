@@ -1,7 +1,7 @@
-package racingcar.vehicle;
+package racingcar.domain.vehicle;
 
-import racingcar.vehicle.engine.CarEngine;
-import racingcar.vehicle.engine.Engine;
+import racingcar.domain.engine.CarEngine;
+import racingcar.domain.engine.Engine;
 
 public class CarFactory {
 

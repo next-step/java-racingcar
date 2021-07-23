@@ -1,11 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.vehicle.Car;
-import racingcar.vehicle.CarFactory;
-import racingcar.vehicle.Cars;
+import racingcar.domain.vehicle.Car;
+import racingcar.domain.vehicle.CarFactory;
+import racingcar.domain.vehicle.Cars;
 
 public class Game {
 

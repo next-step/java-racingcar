@@ -1,4 +1,4 @@
-package racingcar.vehicle.engine;
+package racingcar.domain.engine;
 
 import racingcar.common.exception.InvalidCarEngineOperateInputException;
 

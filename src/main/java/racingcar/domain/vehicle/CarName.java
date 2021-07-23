@@ -1,4 +1,4 @@
-package racingcar.vehicle;
+package racingcar.domain.vehicle;
 
 import racingcar.common.exception.InvalidCarNameException;
 

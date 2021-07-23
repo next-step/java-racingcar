@@ -1,4 +1,4 @@
-package racingcar.vehicle;
+package racingcar.domain.vehicle;
 
 import java.util.Objects;
 import racingcar.common.exception.InvalidInitDistanceException;
