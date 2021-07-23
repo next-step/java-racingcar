@@ -5,14 +5,15 @@ import java.util.Random;
 public class RandomNumber {
     private static final int MAX_VALUE = 10;
 
-    private Random random;
+    private int randomNumber;
 
     public int producedRandomNumber() {
-        return createRandomNum();
+        randomNumber = createRandomNum();
+        return randomNumber;
     }
 
     private int createRandomNum() {
-        random = new Random();
+        Random random = new Random();
         return random.nextInt(MAX_VALUE);
     }
 }
