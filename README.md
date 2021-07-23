@@ -20,4 +20,4 @@
 - TODO
     - ~~1) Set size test~~
     - ~~2) @ParameterizedTest~~
-    - 3) @CsvSource
+    - ~~3) @CsvSource~~
