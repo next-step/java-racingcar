@@ -18,4 +18,8 @@ public class CarFactory {
     public static Car create(String name, int distance) {
         return new Car(DEFAULT_ENGINE, name, new Distance(distance));
     }
+
+    public static Car create(Engine engine, String name) {
+        return new Car(engine, name, new Distance(DEFAULT_DISTANCE));
+    }
 }

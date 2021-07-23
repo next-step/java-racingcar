@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.common.RandomUtil;
 
 public class Cars {
 
-    private static final int MAX_DRIVE_NUMBER = 10;
     private final List<Car> cars = new ArrayList<>();
 
     public Cars(List<Car> cars) {
@@ -20,7 +18,7 @@ public class Cars {
     }
 
     public void doDrive() {
-        cars.forEach(car -> car.drive(RandomUtil.nextInt(MAX_DRIVE_NUMBER)));
+        cars.forEach(Car::drive);
     }
 
     public int getFarthestDistance() {

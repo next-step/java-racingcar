@@ -4,6 +4,9 @@ import racingcar.domain.engine.Engine;
 
 public class Car {
 
+    private static final int DRIVE_FLAG = 4;
+    private static final int DRIVE_DISTANCE = 1;
+
     private final Engine engine;
     private final Name name;
 
@@ -15,9 +18,10 @@ public class Car {
         this.distance = distance;
     }
 
-    public void drive(int number) {
-        int moveDistance = engine.operate(number);
-        distance = distance.move(moveDistance);
+    public void drive() {
+        if (engine.running() >= DRIVE_FLAG) {
+            distance = distance.move(DRIVE_DISTANCE);
+        }
     }
 
     public String getName() {
