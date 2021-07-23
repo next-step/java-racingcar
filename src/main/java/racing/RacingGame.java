@@ -7,7 +7,6 @@ import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.IntStream.range;
 
 class RacingGame {
-    private static final String END_MESSAGE_FORMAT = "실행 결과";
     private static final String NEW_LINE = System.lineSeparator();
 
     private static final int LIMIT_RACER = 2;
@@ -41,7 +40,7 @@ class RacingGame {
     private StringBuilder resultDataBuilder;
 
     public String run() {
-        resultDataBuilder = new StringBuilder(END_MESSAGE_FORMAT).append(NEW_LINE);
+        resultDataBuilder = new StringBuilder();
         while (isStageGreaterThanZero()) {
             turnAround();
             resultDataBuilder.append(NEW_LINE);

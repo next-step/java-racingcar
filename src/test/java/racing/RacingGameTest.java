@@ -17,10 +17,10 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("자동차와_시도할_회수는_3회씩_결과_문자열은_5글자_이상일_것이다")
+    @DisplayName("자동차와_시도할_회수는_3회씩_결과_문자열은_1글자_이상일_것이다")
     void run() throws Exception {
         String actual = RacingGame.of(strategy, 3, 3).run();
-        assertThat(actual.length()).isGreaterThanOrEqualTo(5);
+        assertThat(actual.length()).isGreaterThanOrEqualTo(1);
     }
 
     @Test
