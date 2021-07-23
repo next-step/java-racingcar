@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Arrays;
+
 public enum Operator {
     ADD("+"),
     SUB("-"),
@@ -17,12 +19,10 @@ public enum Operator {
     }
 
     public static Operator valueOfString(String str) {
-        for (Operator i : Operator.values()) {
-            if (str.equals(i.getOperator())) {
-                return i;
-            }
-        }
-        throw new IllegalArgumentException();
+        return Arrays.stream(Operator.values())
+                .filter(i -> str.equals(i.getOperator()))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
 }
