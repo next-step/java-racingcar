@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -12,8 +15,8 @@ class FuelTest {
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9
     })
     @ParameterizedTest
-    public void newTest(int fuelValue) {
-        Fuel.newInstance(fuelValue);
+    public void ctorTest(int fuelValue) {
+        new Fuel(fuelValue);
     }
 
     @ValueSource(ints = {
@@ -23,7 +26,7 @@ class FuelTest {
     public void newIllegalArgumentExceptionTest(int fuelValue) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() ->
-                    Fuel.newInstance(fuelValue));
+                    new Fuel(fuelValue));
     }
 
     @Test
@@ -38,15 +41,21 @@ class FuelTest {
                 .isEqualTo(true);
     }
 
-    @Test
-    public void randomTest() {
-        boolean movable = false;
-        for (int i = 0; i < Integer.MAX_VALUE && !movable; i++) {
-            movable = Fuel.randomInstance().isMovable(
-                    Car.REQUIRED_FUEL_VALUE
-            );
+    @ValueSource(ints = {
+            10, 100, 1000, 10000
+    })
+    @ParameterizedTest
+    public void randomInstanceTest(int testSize) {
+        Fuel fuel = new RandomFuel();
+
+        int movableCounter = 0;
+        List<Boolean> valueList = new ArrayList<>();
+        for (int i = 0; i < testSize; i++) {
+            valueList.add(
+                    fuel.isMovable(Car.REQUIRED_FUEL_VALUE));
         }
-        assertThat(movable)
-                .isEqualTo(true);
+        assertThat(movableCounter)
+                .withFailMessage("랜덤한 수가 나오지 않습니다.")
+                .isNotEqualTo(testSize);
     }
 }
