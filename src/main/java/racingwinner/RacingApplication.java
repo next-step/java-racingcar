@@ -12,14 +12,13 @@ public class RacingApplication {
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
 		CarService carService = new CarService(inputView.getCarNames());
-		ResultView resultView = new ResultView();
 
 		System.out.println(RESULT_MESSAGE);
 		for (int i = 0; i < inputView.getRepeatCount(); i++) {
-			resultView.result(carService.moveCars());
+			ResultView.result(carService.moveCars());
 		}
 
-		resultView.printWinner(CarWinners.selectWinners(carService.getCars()));
+		ResultView.printWinner(CarWinners.selectWinners(carService.getCars()));
 	}
 
 }

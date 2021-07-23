@@ -10,14 +10,18 @@ public class ResultView {
 	private static final String MOVE_SIGN = "-";
 	private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
-	public void result(List<Car> cars) {
+	private ResultView() {
+		throw new IllegalStateException();
+	}
+
+	public static void result(List<Car> cars) {
 		for (Car car : cars) {
 			print(car);
 		}
 		System.out.println();
 	}
 
-	private void print(Car car) {
+	private static void print(Car car) {
 		StringBuilder totalSign = new StringBuilder();
 		totalSign.append(car.getName())
 		         .append(" : ");
@@ -27,7 +31,7 @@ public class ResultView {
 		System.out.println(totalSign);
 	}
 
-	public void printWinner(Set<String> winners) {
+	public static void printWinner(Set<String> winners) {
 		System.out.println(String.join(",", winners) + WINNER_MESSAGE);
 	}
 
