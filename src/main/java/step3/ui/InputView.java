@@ -2,6 +2,8 @@ package step3.ui;
 
 public class InputView {
 
+    private InputView(){}
+
     public void askHowManyCars(){
         System.out.println("자동차 대수는 몇 대 인가요?");
     }

@@ -3,6 +3,7 @@ package step3.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import step3.ui.ResultView;
 
 public class CarRacingGame {
 
@@ -30,6 +31,8 @@ public class CarRacingGame {
         for (Car car : cars) {
             car.run();
         }
+
+        ResultView.printResult(cars);
     }
 
     private void prepareCars() {
