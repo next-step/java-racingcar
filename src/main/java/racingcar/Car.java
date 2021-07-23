@@ -4,11 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    private final static int GO_VALUE = 4;
+    private static final int GO_VALUE = 4;
+
+    private final String name;
+
     private int moveSpace;
 
-    public Car(int moveSpace) {
+    private Car(String name, int moveSpace) {
+        this.name = name;
         this.moveSpace = moveSpace;
+    }
+
+    public static List<Car> createCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for(int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i], 0));
+        }
+        return cars;
     }
 
     public int getMoveSpace() {
@@ -27,12 +39,7 @@ public class Car {
         return moveSpace;
     }
 
-    public static List<Car> createCars(int carNumber) {
-        List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carNumber; i++) {
-            cars.add(new Car(0));
-        }
-        return cars;
+    public String getName() {
+        return name;
     }
-
 }
