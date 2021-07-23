@@ -3,8 +3,9 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,60 +13,59 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarRacingMainTest {
 
+    private Racing racing;
+    private MessageBox messageBox;
 
-    @Test
-    @DisplayName("스캐너로 받는 입력값이 숫자일경우 그값을 반환한다.")
-    public void scannerValueToIntValue() {
-        int result1 = CarRacingMain.intValueByScanner("3");
-        int result2 = CarRacingMain.intValueByScanner("5");
-
-        assertThat(result1).isEqualTo(3);
-        assertThat(result2).isEqualTo(5);
+    @BeforeEach
+    void setUp() {
+        messageBox = new MessageBox();
+        racing = new Racing(messageBox);
     }
 
     @Test
-    @DisplayName("입력받은 문자열을 숫자형태로 반환한다.")
-    public void stringValueToIntValue() {
-        int result1 = CarRacingMain.toInt("2");
-        int result2 = CarRacingMain.toInt("5");
+    @DisplayName("자동차는 입력값의 , 에따라 생성된다.")
+    public void createPayerBySplit() {
+        List<Car> cars = racing.createPlayer("car1,car2,car3");
 
-        assertThat(result1).isEqualTo(2);
-        assertThat(result2).isEqualTo(5);
+        assertThat(cars.size()).isEqualTo(3);
+    }
+
+
+    @Test
+    @DisplayName("자동차의 이름은 5글자를 초과하면 예외가 발생된다.")
+    public void createPayerNameLimit_check() {
+        assertThatThrownBy(() -> racing.createPlayer("naming,para,you"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("자동차 이름은 5글자를 초과할수 없습니다.");
     }
 
     @Test
-    @DisplayName("입력값에 숫자가 아닌 문자를 입력시 예외가 발생된다.")
-    public void inputValue_notNumber_check() {
-        assertThatThrownBy(() -> CarRacingMain.validByNumberCheck("D!2"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("해당 문자는 숫자만 사용 가능합니다.");
+    @DisplayName("자동차는 최소 1대이상 아니면 예외가 발생된다.")
+    public void createPayerAtListOne_check() {
+        assertThatThrownBy(() -> racing.createPlayer(" "))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("자동차는 최소 1대 이상이어야 한다.");
     }
 
-    @Test
-    @DisplayName("경주에 참가할 자동차 대수를 입력하면 대수만큼 자동차가 생성된다.")
-    public void create_carModel() {
-        List<CarModel> carModelList = CarRacingMain.createCarByNumber(4);
 
-        assertThat(carModelList).extracting("carNumber").containsExactly(1, 2, 3, 4);
-        assertThat(carModelList.size()).isEqualTo(4);
+    @Test
+    @DisplayName("랜덤함수는 0~9사이의 값을 가지고 있다.")
+    public void randomValue_check() {
+        int firstValue = 0;
+        int lastValue = 10;
+
+        int result1 = racing.randomValue();
+
+        betweenCheck(result1, firstValue, lastValue);
+
+        int result2 = racing.randomValue();
+
+
+        betweenCheck(result2, firstValue, lastValue);
     }
 
-    @Test
-    @DisplayName("랜덤 숫자 함수를 실행하면 0이상 10미만의 숫자가 생성된다.")
-    public void create_random_number() {
-        int result = CarRacingMain.randomValue();
-
-        assertThat(result).isGreaterThan(0).isLessThan(10);
-    }
-
-    @Test
-    @DisplayName("랜덤 숫자가 4이상이면 경주에 사용되는 자동차가 전진한다.")
-    public void racing_random_number_check() {
-        boolean result1 = CarRacingMain.getRaceDistance(3);
-        boolean result2 = CarRacingMain.getRaceDistance(8);
-
-        assertThat(result1).isFalse();
-        assertThat(result2).isTrue();
+    private void betweenCheck(int checkValue, int firstValue, int lastValue) {
+        assertThat(checkValue).isGreaterThan(firstValue).isLessThan(lastValue);
     }
 
 
