@@ -1,17 +1,19 @@
-package edu.nextstep.racingcar.step2;
+package edu.nextstep.racingcar.common.exception;
+
+import edu.nextstep.racingcar.step2.CalculatorError;
 
 public class BusinessException extends RuntimeException {
 
     private final String code;
     private final String message;
 
-    public BusinessException(Exception e, BusinessError error) {
+    public BusinessException(Exception e, CalculatorError error) {
         super(error.getMessage(), e);
         this.code = error.name();
         this.message = error.getMessage();
     }
 
-    public BusinessException(BusinessError error) {
+    public BusinessException(CalculatorError error) {
         this.code = error.name();
         this.message = error.getMessage();
     }

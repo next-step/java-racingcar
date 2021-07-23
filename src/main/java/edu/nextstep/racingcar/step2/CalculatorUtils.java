@@ -1,5 +1,7 @@
 package edu.nextstep.racingcar.step2;
 
+import edu.nextstep.racingcar.common.exception.BusinessException;
+
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.regex.Matcher;
@@ -61,7 +63,7 @@ public class CalculatorUtils {
         });
 
         if (calculateStrings.size() + 1 != calculateValues.size()) {
-            throw new BusinessException(BusinessError.INVALID_VALUE);
+            throw new BusinessException(CalculatorError.INVALID_VALUE);
         }
     }
 
@@ -94,7 +96,7 @@ public class CalculatorUtils {
     public Long division(Long first, Long second) {
 
         if (second == 0) {
-            throw new BusinessException(BusinessError.CAN_NOT_DIVIDE_BY_ZERO);
+            throw new BusinessException(CalculatorError.CAN_NOT_DIVIDE_BY_ZERO);
         }
 
         return first / second;
@@ -102,7 +104,7 @@ public class CalculatorUtils {
 
     private void checkValueOfNull(Object value) {
         if (value == null) {
-            throw new BusinessException(BusinessError.INVALID_VALUE);
+            throw new BusinessException(CalculatorError.INVALID_VALUE);
         }
     }
 
@@ -110,7 +112,7 @@ public class CalculatorUtils {
         checkValueOfNull(value);
 
         if (value.equals(EMPTY_STRING)) {
-            throw new BusinessException(BusinessError.INVALID_VALUE);
+            throw new BusinessException(CalculatorError.INVALID_VALUE);
         }
     }
 
@@ -118,7 +120,7 @@ public class CalculatorUtils {
         try {
             Long.valueOf(value);
         } catch (NumberFormatException e) {
-            throw new BusinessException(BusinessError.INVALID_VALUE);
+            throw new BusinessException(CalculatorError.INVALID_VALUE);
         }
     }
 
@@ -126,7 +128,7 @@ public class CalculatorUtils {
         Pattern pattern = Pattern.compile(CALCULATE_STRING);
         Matcher matcher = pattern.matcher(value);
         if (!matcher.matches()) {
-            throw new BusinessException(BusinessError.INVALID_CALCULATE_STRING);
+            throw new BusinessException(CalculatorError.INVALID_CALCULATE_STRING);
         }
     }
 }

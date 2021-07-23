@@ -1,5 +1,7 @@
 package edu.nextstep.racingcar.step2;
 
+import edu.nextstep.racingcar.common.exception.BusinessException;
+
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
@@ -26,6 +28,6 @@ public enum CalculateCode {
         return Arrays.stream(values())
                 .filter(codeValue -> codeValue.value.equals(value))
                 .findFirst()
-                .orElseThrow(() -> new BusinessException(BusinessError.INVALID_VALUE));
+                .orElseThrow(() -> new BusinessException(CalculatorError.INVALID_VALUE));
     }
 }
