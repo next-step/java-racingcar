@@ -2,16 +2,22 @@ package racing;
 
 public class Car {
 
-    private int carNumber;
-    private int raceDistance;
+	private final String carName;
+	private int raceDistance;
 
-    public Car(int carNumber) {
-        this.carNumber = carNumber;
-        this.raceDistance = 0;
-    }
+	public Car(String carName) {
+		this.carName = carName;
+	}
 
-    public int carRacingAct(int randomValue) {
-        return randomValue > 3 ? ++raceDistance : raceDistance;
-    }
+	public int carRacing(int value) {
+		if (value > 3) {
+			return ++raceDistance;
+		}
+		return raceDistance;
+	}
+
+	public String getCarName() {
+		return carName;
+	}
 
 }

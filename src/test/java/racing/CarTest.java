@@ -2,22 +2,30 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @Test
-    @DisplayName("자동차는 랜덤함수가 4이상이면 전진하고 4미만이면 정지한다.")
-    public void SetterInDataAndGetterOutData_check() {
-        Car car1 = new Car(1);
-        int resultRacing1 = car1.carRacingAct(3);
+    @ParameterizedTest
+    @DisplayName("입력받은 숫자가 4이상이면 증가하고 그렇지 않으면 정지한다.")
+    @CsvSource(value = {"4,1","3,0","7,1"})
+    public void playerMove(int randomValue, int moveValue) {
+        Car car = new Car("car");
+        int result = car.carRacing(randomValue);
 
-        assertThat(resultRacing1).isEqualTo(0);
+        assertThat(result).isEqualTo(moveValue);
+    }
 
-        int resultRacing2 = car1.carRacingAct(6);
+    @ParameterizedTest
+    @DisplayName("이름을 입력하면 해당 이름이 반환된다.")
+    @CsvSource(value = {"car1","car2","car3"})
+    public void getPlayerName(String value){
+        Car car = new Car(value);
+        String playerName = car.getCarName();
 
-        assertThat(resultRacing2).isEqualTo(1);
-
+        assertThat(playerName).isEqualTo(value);
     }
 }

@@ -1,66 +1,87 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Racing {
 
-    private final List<Car> carModelList;
-    private final Random random;
-    private MessageBox messageBox;
+	private final List<Car> cars;
+	private final Validation validation;
+	private final Random random;
+	private final HashMap<String, Integer> playingResult;
+	private final MessageBox messageBox;
+	private final StringBuffer winnerPlayList;
 
-    public Racing(MessageBox messageBox) {
-        this.carModelList = new ArrayList<>();
-        this.random = new Random();
-        this.messageBox = messageBox;
-    }
+	public Racing(MessageBox messageBox) {
+		cars = new ArrayList<>();
+		validation = new Validation();
+		random = new Random();
+		playingResult = new HashMap<>();
+		winnerPlayList = new StringBuffer();
+		this.messageBox = messageBox;
+	}
 
-    public List<Car> createCarByRacing(String totalCarNumber) {
-        int totalCarSize = intValueByScanner(totalCarNumber);
-        for (int i = 0; i < totalCarSize; i++) {
-            Car carModel = new Car(i + 1);
-            carModelList.add(carModel);
-        }
-        return carModelList;
-    }
+	public List<Car> createPlayer(String playerListValue) {
+		String[] playerArray = playerListValue.split(",");
+		validation.validStringEmpty(playerListValue.trim());
+		return setupPlayer(playerArray);
+	}
 
-    public void tryRacingByCar(String tryraceNumber) {
-        int tryRacingCount = intValueByScanner(tryraceNumber);
-        messageBox.commonMessageBox("실행 결과");
-        for (int i = 0; i < tryRacingCount; i++) {
-            racing();
-        }
-    }
+	public List<Car> setupPlayer(String[] playerArray) {
+		int CHECK_LENGTH = 4;
+		for (String playerName : playerArray) {
+			validation.validStringLength(playerName, CHECK_LENGTH);
+			Car car = new Car(playerName);
+			cars.add(car);
+		}
+		return cars;
+	}
 
-    public void racing() {
-        for (Car carModel : carModelList) {
-            int resultRacing = carModel.carRacingAct(randomValue());
-            messageBox.racingResultMessage(resultRacing);
-        }
-        messageBox.commonMessageBox("");
-    }
+	public void playingGame(String inputValue) {
+		validation.validNumberCheck(inputValue);
+		int tryGameCount = toInt(inputValue);
+		messageBox.commonMessageBox("실행 결과");
+		for (int i = 0; i < tryGameCount; i++) {
+			gamePlay();
+		}
+		String WINNER_MESSAGE = " 가 최종 우승했습니다.";
+		String winnerPlayer = winnerPlayer().trim();
+		messageBox.commonMessageBox(winnerPlayer.substring(0,winnerPlayer.length()-1), WINNER_MESSAGE);
+	}
 
-    public int intValueByScanner(String scannerValue) {
-        int intValue = toInt(scannerValue);
-        messageBox.commonMessageBox(scannerValue);
-        return intValue;
-    }
+	public int toInt(String value) {
+		return Integer.parseInt(value);
+	}
 
-    public int toInt(String inputValue) {
-        validByNumberCheck(inputValue);
-        return Integer.parseInt(inputValue);
-    }
+	private void gamePlay() {
+		for (Car car : cars) {
+			int resultRacing = car.carRacing(randomValue());
+			playingResult.put(car.getCarName(), resultRacing);
+			messageBox.racingResultMessage(car.getCarName(), resultRacing);
+		}
+		messageBox.commonMessageBox("");
+	}
 
-    public void validByNumberCheck(String inputValue) {
-        String regExp = "^\\d+$";
-        if (!inputValue.matches(regExp)) {
-            throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
-        }
-    }
+	public int randomValue() {
+		int RANDOM_VALUE = 10;
+		return random.nextInt(RANDOM_VALUE);
+	}
 
-    public int randomValue() {
-        int RANDOM_VALUE = 10;
-        return random.nextInt(RANDOM_VALUE);
-    }
+	public String winnerPlayer() {
+		for (Map.Entry<String, Integer> entry : playingResult.entrySet()) {
+			searchWinner(entry.getKey(), entry.getValue());
+		}
+		return winnerPlayList.toString();
+	}
+
+	private void searchWinner(String playerName, int checkValue) {
+		if (checkValue == (Collections.max(playingResult.values()))) {
+			winnerPlayList.append(playerName);
+			winnerPlayList.append(",");
+		}
+	}
 }
