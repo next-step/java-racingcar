@@ -1,6 +1,7 @@
 package racingcar.domain.vehicle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,42 +15,36 @@ public class Cars {
     }
 
     public void add(Car car) {
-        cars.add(CarFactory.create(car.getName(), car.getDistance()));
+        cars.add(CarFactory.create(car.getEngine(), car.getNameValue(), car.getDistanceValue()));
     }
 
     public void doDrive() {
         cars.forEach(Car::drive);
     }
 
-    public int getFarthestDistance() {
-        return cars.stream()
-            .max(Comparator.comparing(Car::getDistance))
-            .orElseGet(() -> CarFactory.create(""))
-            .getDistance();
+    public Names getWinnerNames() {
+        Distance farthestDistance = findFarthestDistance();
+        return findNamesByDistance(farthestDistance);
     }
 
-    public Cars findByDistance(int distance) {
-        return new Cars(cars.stream()
-            .filter(car -> car.getDistance() == distance)
-            .collect(Collectors.toList()));
-    }
-
-    public int size() {
-        return cars.size();
-    }
-
-    public String getCarName(int index) {
-        return cars.get(index).getName();
-    }
-
-    public List<String> getCarNames() {
-        return cars.stream()
+    private Names findNamesByDistance(Distance distance) {
+        List<Name> names = cars.stream()
+            .filter(car -> car.getDistance().equals(distance))
             .map(Car::getName)
             .collect(Collectors.toList());
+
+        return new Names(names);
     }
 
-    public int getDistance(int index) {
-        return cars.get(index).getDistance();
+    private Distance findFarthestDistance() {
+        return cars.stream()
+            .map(Car::getDistance)
+            .max(Comparator.naturalOrder())
+            .orElseGet(() -> new Distance(0));
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }
 

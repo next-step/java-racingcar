@@ -24,11 +24,23 @@ public class Car {
         }
     }
 
-    public String getName() {
-        return name.getName();
+    public Engine getEngine() {
+        return engine;
     }
 
-    public int getDistance() {
+    public Name getName() {
+        return name;
+    }
+
+    public String getNameValue() {
+        return name.toString();
+    }
+
+    public Distance getDistance() {
+        return distance;
+    }
+
+    public int getDistanceValue() {
         return distance.getValue();
     }
 }

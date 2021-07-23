@@ -25,6 +25,6 @@ public class RacingCarMain {
             ResultView.println("");
         }
 
-        ResultView.printWinners(game.getWinners().getCarNames());
+        ResultView.printWinners(game.getCars());
     }
 }

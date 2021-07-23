@@ -20,7 +20,8 @@ public class Name {
         }
     }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name;
     }
 
@@ -33,11 +34,11 @@ public class Name {
             return false;
         }
         Name name1 = (Name) o;
-        return Objects.equals(getName(), name1.getName());
+        return Objects.equals(toString(), name1.toString());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(toString());
     }
 }

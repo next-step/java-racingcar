@@ -22,8 +22,8 @@ class CarTest {
         Car car = CarFactory.create(name, distance);
 
         // then
-        assertThat(car.getDistance()).isEqualTo(distance);
-        assertThat(car.getName()).isEqualTo(name);
+        assertThat(car.getDistanceValue()).isEqualTo(distance);
+        assertThat(car.getNameValue()).isEqualTo(name);
     }
 
     @DisplayName("[성공] 주행")
@@ -44,6 +44,6 @@ class CarTest {
         car.drive();
 
         // then
-        assertThat(car.getDistance()).isEqualTo(expected);
+        assertThat(car.getDistanceValue()).isEqualTo(expected);
     }
 }
