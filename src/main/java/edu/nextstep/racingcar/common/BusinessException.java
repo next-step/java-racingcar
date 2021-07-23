@@ -1,4 +1,4 @@
-package edu.nextstep.racingcar.common.exception;
+package edu.nextstep.racingcar.common;
 
 import edu.nextstep.racingcar.step2.CalculatorError;
 

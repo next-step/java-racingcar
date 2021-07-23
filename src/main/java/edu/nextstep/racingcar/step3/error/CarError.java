@@ -1,4 +1,4 @@
-package edu.nextstep.racingcar.step3;
+package edu.nextstep.racingcar.step3.error;
 
 public enum CarError {
     INVALID_VALUE("잘못된 값입니다.");
