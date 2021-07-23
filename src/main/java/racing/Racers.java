@@ -30,12 +30,12 @@ class Racers {
         range(0, size()).forEach(index -> turnAround(strategy, sb, index));
     }
 
-    private void turnAround(ForwardConditionStrategy strategy, StringBuilder sb, int index) {
+    private void turnAround(ForwardConditionStrategy strategy, StringBuilder stringBuilder, int index) {
         if (strategy.judgeCondition()) {
-            sb.append(get(index)).append(NEW_LINE);
+            stringBuilder.append(get(index)).append(NEW_LINE);
             return;
         }
         cars.set(index, cars.get(index) + DISPLAY_MARK);
-        sb.append(get(index)).append(NEW_LINE);
+        stringBuilder.append(get(index)).append(NEW_LINE);
     }
 }
