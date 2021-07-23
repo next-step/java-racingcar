@@ -84,7 +84,7 @@ class StringCalculatorTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"1 a 1", "1 1 1"})
+    @ValueSource(strings = {" ","1 a 1", "1 1 1", "+"})
     public void 예외테스트(String input) {
         assertThatThrownBy(() -> stringCalculator.calculate(input))
                 .isInstanceOf(IllegalArgumentException.class);
