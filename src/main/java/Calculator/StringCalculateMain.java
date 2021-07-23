@@ -2,17 +2,15 @@ package Calculator;
 
 public class StringCalculateMain {
 
-    public static StringCalculatorExecutor stringCalculaterExecutor = new StringCalculatorExecutor();
+    public static StringCalculationExecutor stringCalculaterExecutor = new StringCalculationExecutor();
 
     public static void main(String[] args) {
 
         String [] numberAndOperator = "2 + 3 * 4 / 2".split(" ");
 
-        int result = 0;
+        int result = stringCalculaterExecutor.stringCalculator(numberAndOperator);
 
-        result = stringCalculaterExecutor.stringCalculator(numberAndOperator);
-
-        System.out.println("결과값:"+result);
+        System.out.println("결과값:" + result);
     }
 
 }
