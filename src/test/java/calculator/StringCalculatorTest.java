@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -47,6 +48,14 @@ public class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(
                 ()->StringCalculator.calculate(null)
         ).withMessage("입력은 공백이면 안됩니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"3 % 1", "5 & 2"})
+    void 사칙연산기호가_아닌_경우_오류검증(String expression){
+        assertThatIllegalArgumentException().isThrownBy(
+                ()->StringCalculator.calculate(expression)
+        ).withMessage("사칙 연산 기호가 아닙니다.");
     }
 
 

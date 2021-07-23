@@ -31,7 +31,9 @@ public class StringCalculator {
             return subtract();
         if(operator.equals("*"))
             return multiply();
-        return divide();
+        if(operator.equals("/"))
+            return divide();
+        throw new IllegalArgumentException("사칙 연산 기호가 아닙니다.");
     }
 
     private static BiFunction<Integer, Integer, Integer> add() {
