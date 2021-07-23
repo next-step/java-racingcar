@@ -1,48 +1,49 @@
 package racing;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.IntStream.range;
 
 class RacingGame {
+    private static final String END_MESSAGE_FORMAT = "실행 결과";
+    private static final String NEW_LINE = System.lineSeparator();
     private static final String BLANK = "";
 
-    private final RacingCars racingCars;
     private final ForwardConditionStrategy strategy;
+    private final Racers racers;
 
     private int stageCount;
 
-    private RacingGame(ForwardConditionStrategy strategy, int carCount, int stageCount) {
-        this.stageCount = stageCount;
+    private RacingGame(ForwardConditionStrategy strategy, int stageCount, int carCount) {
         this.strategy = strategy;
-        this.racingCars = RacingCars.from(IntStream.range(0, carCount)
-                                                   .mapToObj(i -> BLANK)
-                                                   .collect(Collectors.toCollection(ArrayList::new)));
+        this.stageCount = stageCount;
+        this.racers = Racers.from(range(0, carCount).mapToObj(i -> BLANK).collect(toCollection(ArrayList::new)));
     }
 
-    public static RacingGame from(ForwardConditionStrategy strategy, int[] condition) {
+    public static RacingGame of(ForwardConditionStrategy strategy, int[] condition) {
         return new RacingGame(strategy, condition[0], condition[1]);
     }
 
-    private StringBuilder sb;
+    private StringBuilder resultDataBuilder;
 
     public String run() {
-        sb = new StringBuilder();
-        while(isStageGreaterThanZero()) {
+        resultDataBuilder = new StringBuilder(END_MESSAGE_FORMAT)
+                .append(NEW_LINE);
+
+        while (isStageGreaterThanZero()) {
             turnAround();
-            sb.append("\n");
+            resultDataBuilder.append(NEW_LINE);
         }
-        return sb.toString().trim();
+
+        return resultDataBuilder.toString().trim();
     }
 
     private boolean isStageGreaterThanZero() {
-        return 0 <= stageCount--;
+        return 0 < stageCount--;
     }
 
     private void turnAround() {
-        for(int index = 0; index < racingCars.size(); index++) {
-            racingCars.goForward(index, strategy);
-            sb.append(racingCars.get(index)).append("\n");
-        }
+        racers.turnAround(strategy, resultDataBuilder);
     }
 }
