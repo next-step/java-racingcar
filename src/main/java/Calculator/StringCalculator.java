@@ -36,7 +36,7 @@ public class StringCalculator {
 
     private void prepareCalculate(String s) {
         splitedString = s.split(" ");
-        output = Integer.parseInt(splitedString[0]);
+        output = string2Int(splitedString[0]);
         splitedStringSize = splitedString.length;
     }
 
@@ -45,12 +45,7 @@ public class StringCalculator {
             throw new IllegalArgumentException("숫자가 부족합니다.");
         }
 
-        int rightNum = 0;
-        try {
-            rightNum = Integer.parseInt(splitedString[index + 1]);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닌 수를 입력받았습니다.");
-        }
+        int rightNum = string2Int(splitedString[index + 1]);
         return rightNum;
     }
 
@@ -79,6 +74,14 @@ public class StringCalculator {
         }
 
         throw new IllegalArgumentException("사칙연산이 잘 못 되었습니다..");
+    }
+
+    private int string2Int(String s){
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닌 수를 입력받았습니다.");
+        }
     }
 
     private enum Operator {
