@@ -1,4 +1,6 @@
-package edu.nextstep.racingcar.step2;
+package edu.nextstep.racingcar.common;
+
+import edu.nextstep.racingcar.step2.CalculatorError;
 
 public class BusinessException extends RuntimeException {
 
