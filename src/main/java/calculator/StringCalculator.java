@@ -17,10 +17,13 @@ public class StringCalculator {
 
         return result;
     }
-    public static BiFunction<Integer,Integer,Integer> distinguishOperator(String operator){
-        if(operator.equals("+"))
+
+    public static BiFunction<Integer, Integer, Integer> distinguishOperator(String operator) {
+        if (operator.equals("+"))
             return add();
-        return subtract();
+        if(operator.equals("-"))
+            return subtract();
+        return multiply();
     }
 
     public static BiFunction<Integer, Integer, Integer> add() {
@@ -29,6 +32,10 @@ public class StringCalculator {
 
     public static BiFunction<Integer, Integer, Integer> subtract() {
         return (a, b) -> a - b;
+    }
+
+    public static BiFunction<Integer, Integer, Integer> multiply() {
+        return (a, b) -> a * b;
     }
 
 }

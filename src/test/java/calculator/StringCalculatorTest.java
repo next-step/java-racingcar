@@ -21,5 +21,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1 * 2,2", "5 * 3,15", "10 * 2 * 3,60"})
+    void 곱셈_기능_확인(String expression, int expected) {
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
+    }
 
 }
