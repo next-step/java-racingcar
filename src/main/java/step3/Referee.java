@@ -2,20 +2,19 @@ package step3;
 
 public class Referee {
 
-    private final int limitTime;
-    private int remainTime;
+    private static final int OVER_TIME = 0;
+    private int limitTime;
 
     public Referee(int limitTime) {
         this.limitTime = limitTime;
-        remainTime = 0;
     }
 
-    public boolean isOverTheTime() {
-        return remainTime == limitTime;
+    public boolean isOverTime() {
+        return limitTime == OVER_TIME;
     }
 
-    public void hasPassedTime() {
-        this.remainTime++;
+    public void passedTime() {
+        this.limitTime--;
     }
 
     public int getLimitTime() {

@@ -7,33 +7,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RefereeTest {
 
     @Test
-    void 주어진_5초가_지나면_더_이상_움직이면_안된다() {
+    void 주어진_시간보다_시간이_지났다면_RETURN_TRUE() {
         // given
         int givenTime = 5;
         Referee referee = new Referee(givenTime);
 
         // when
         for (int i = 0; i < 5; i++) {
-            referee.hasPassedTime();
+            referee.passedTime();
         }
 
         // then
-        assertThat(referee.isOverTheTime()).isTrue();
+        assertThat(referee.isOverTime()).isTrue();
     }
 
     @Test
-    void 주어진_5초가_지나지않았다면_움직일_수_있다() {
+    void 주어진_시간보다_시간이_지나지_않았다면_RETURN_FALSE() {
         // given
         int givenTime = 5;
         Referee referee = new Referee(givenTime);
 
         // when
         for (int i = 0; i < 2; i++) {
-            referee.hasPassedTime();
+            referee.passedTime();
         }
 
         // then
-        assertThat(referee.isOverTheTime()).isFalse();
+        assertThat(referee.isOverTime()).isFalse();
     }
 
 }
