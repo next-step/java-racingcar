@@ -27,4 +27,11 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"4 / 2,2", "10 / 2,5", "12 / 2 / 3,2"})
+    void 나눗셈_기능_확인(String expression, int expected) {
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(expected);
+    }
+
+
 }

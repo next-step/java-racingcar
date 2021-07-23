@@ -23,7 +23,9 @@ public class StringCalculator {
             return add();
         if(operator.equals("-"))
             return subtract();
-        return multiply();
+        if(operator.equals("*"))
+            return multiply();
+        return divide();
     }
 
     public static BiFunction<Integer, Integer, Integer> add() {
@@ -36,6 +38,10 @@ public class StringCalculator {
 
     public static BiFunction<Integer, Integer, Integer> multiply() {
         return (a, b) -> a * b;
+    }
+
+    public static BiFunction<Integer, Integer, Integer> divide() {
+        return (a, b) -> a / b;
     }
 
 }
