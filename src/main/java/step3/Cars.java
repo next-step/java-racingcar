@@ -2,21 +2,20 @@ package step3;
 
 import static java.util.stream.Collectors.toList;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Cars {
 
   private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-  private final List<Car> carList = new ArrayList<>();
+  private List<Car> cars;
 
   public Cars(int numberOfCars) {
     create(numberOfCars);
   }
 
   public void move() {
-    for (Car car : carList) {
+    for (Car car : cars) {
       final int randomNumber = randomNumberGenerator.generate();
       car.move(randomNumber);
     }
@@ -27,17 +26,17 @@ public class Cars {
   }
 
   public int numberOf() {
-    return carList.size();
+    return cars.size();
   }
 
   private void create(int numberOfCars) {
-    IntStream.range(0, numberOfCars)
+    cars = IntStream.range(0, numberOfCars)
         .mapToObj(i -> new Car())
-        .forEach(carList::add);
+        .collect(toList());
   }
 
   private List<Integer> getLocationOfCars() {
-    return carList.stream()
+    return cars.stream()
         .map(Car::getLocation)
         .collect(toList());
   }
