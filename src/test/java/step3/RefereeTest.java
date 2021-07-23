@@ -22,7 +22,7 @@ class RefereeTest {
     }
 
     @Test
-    void 주어진_시간보다_시간이_지나지_않았다면_RETURN_FALSE() {
+    void 주어진_시간보다_시간이_안_지났다면_isOverTime_RETURN_FALSE() {
         // given
         int givenTime = 5;
         Referee referee = new Referee(givenTime);
