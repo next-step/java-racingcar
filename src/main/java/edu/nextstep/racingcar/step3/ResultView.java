@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 
 public class ResultView {
 
+    private final String DISPLAY_TOKEN = "-";
     private final List<Vehicle> vehicles;
     private final Integer numberOfAttempts;
 
@@ -29,7 +30,7 @@ public class ResultView {
     }
 
     private void printDistance(Vehicle vehicle) {
-        IntStream.range(0, vehicle.getDistance()).forEach(distanceIdx -> System.out.print("-"));
+        IntStream.range(0, vehicle.getDistance()).forEach(distanceIdx -> System.out.print(DISPLAY_TOKEN));
         System.out.print("\n");
     }
 
