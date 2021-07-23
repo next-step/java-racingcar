@@ -1,5 +1,5 @@
 package racing;
 
-public interface ForwardConditionStrategy {
+interface ForwardConditionStrategy {
     boolean judgeCondition();
 }
