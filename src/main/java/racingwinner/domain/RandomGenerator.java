@@ -15,4 +15,5 @@ public class RandomGenerator {
 	public static int generate() {
 		return random.nextInt(RANDOM_BOUND);
 	}
+
 }
