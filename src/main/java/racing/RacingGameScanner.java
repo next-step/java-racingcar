@@ -14,6 +14,6 @@ class RacingGameScanner {
         System.out.println();
 
         sc.close();
-        return new int[]{stageCount, racerCount};
+        return new int[]{racerCount, stageCount};
     }
 }
