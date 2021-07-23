@@ -53,9 +53,7 @@ class DistanceTest {
         // when
 
         // then
-        assertThat(System.identityHashCode(sameDistance1)).isNotEqualTo(System.identityHashCode(sameDistance2));
         assertThat(sameDistance1).isEqualTo(sameDistance2);
-        assertThat(sameDistance1.hashCode()).isEqualTo(sameDistance2.hashCode());
 
         assertThat(sameDistance1).isNotEqualTo(differentDistance);
         assertThat(sameDistance2).isNotEqualTo(differentDistance);
