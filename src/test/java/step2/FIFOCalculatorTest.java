@@ -19,7 +19,7 @@ public class FIFOCalculatorTest {
 
         privateMethod.setAccessible(true);
 
-        return privateMethod.invoke(calculator);
+        return privateMethod.invoke(targetObject);
     }
 
     @BeforeEach

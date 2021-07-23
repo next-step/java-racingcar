@@ -1,7 +1,7 @@
 package step3;
 
-import java.util.Random;
-
 public class Game {
-
+    private TURN goOrStop() {
+        return TURN.fromInt(LuckyNumberGenerator.getRandomInt());
+    }
 }
