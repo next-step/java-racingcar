@@ -1,5 +1,6 @@
 package step2;
 
+import helper.TestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,15 +14,6 @@ public class FIFOCalculatorTest {
 
     private FIFOCalculator calculator;
 
-    private Object invokePrivateMethod(Object targetObject, String methodName)
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method privateMethod = targetObject.getClass().getDeclaredMethod(methodName);
-
-        privateMethod.setAccessible(true);
-
-        return privateMethod.invoke(targetObject);
-    }
-
     @BeforeEach
     void init() {
         calculator = new FIFOCalculator();
@@ -34,7 +26,7 @@ public class FIFOCalculatorTest {
 
         // private 메소드를 reflection으로 호출하는 경우 예외가 InvocationTargetException으로 감싸져 있으므로 원래의 예외로 재발생시도한다.
         try {
-            invokePrivateMethod(calculator, "validateInput");
+            TestHelper.invokePrivateMethod(calculator, "validateInput");
         } catch (InvocationTargetException e) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> {
@@ -47,7 +39,7 @@ public class FIFOCalculatorTest {
         calculator.setRawInput("");
 
         try {
-            invokePrivateMethod(calculator, "validateInput");
+            TestHelper.invokePrivateMethod(calculator, "validateInput");
         } catch (InvocationTargetException e) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> {
@@ -64,7 +56,7 @@ public class FIFOCalculatorTest {
         calculator.setRawInput("1 & 1 + 1 = 1");
 
         try {
-            invokePrivateMethod(calculator, "validateInput");
+            TestHelper.invokePrivateMethod(calculator, "validateInput");
         } catch (InvocationTargetException e) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> {
@@ -81,7 +73,7 @@ public class FIFOCalculatorTest {
         calculator.setRawInput("1 + 1 - 1 * 1 / 1");
 
         try {
-            assertThat((String[])invokePrivateMethod(calculator, "tokenizeInput"))
+            assertThat((String[])TestHelper.invokePrivateMethod(calculator, "tokenizeInput"))
                     .containsExactly("1", "+", "1", "-", "1", "*", "1", "/", "1");
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
