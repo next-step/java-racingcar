@@ -14,14 +14,7 @@ public class Car {
 		}
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-
-		for (int i = 0; i < this.move; i++) {
-			builder.append('-');
-		}
-
-		return builder.toString();
+	public int getMove() {
+		return move;
 	}
 }
