@@ -13,7 +13,8 @@ class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1 + 2 = 3", "3 - 1 = 2", "2 * 2 = 4", "6 / 2 = 3", "1 + 2 * 2 = 6", "2 + 3 * 4 / 2 = 10"}, delimiter = '=')
     void calculateFromString(String input, int answer){
-        int result = StringCalculator.calculateFromString(input);
+        StringCalculator stringCalculator = new StringCalculator();
+        int result = stringCalculator.calculateFromString(input);
         assertThat(result).isEqualTo(answer);
     }
 
@@ -21,8 +22,9 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     void calculateFromString_error1(String input){
+        StringCalculator stringCalculator = new StringCalculator();
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringCalculator.calculateFromString(input);
+            stringCalculator.calculateFromString(input);
         });
     }
 
@@ -30,8 +32,9 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1 . 1", "1 1 1", "1 1"})
     void calculateFromString_error2(String input){
+        StringCalculator stringCalculator = new StringCalculator();
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringCalculator.calculateFromString(input);
+            stringCalculator.calculateFromString(input);
         });
     }
 }
