@@ -17,6 +17,6 @@ class RandomNumberGeneratorTest {
   static IntStream randomNumberProvider() {
     final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
     return IntStream.range(0, 5)
-        .map( i -> randomNumberGenerator.generate());
+        .map(i -> randomNumberGenerator.generate());
   }
 }

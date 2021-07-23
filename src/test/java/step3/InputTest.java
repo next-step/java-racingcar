@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 class InputTest {
 
-  @DisplayName("입력 값이 양수가 아닐 경우 예외가 발생한다")
+  @DisplayName("입력(시도 횟수) 값이 양수가 아닐 경우 예외가 발생한다")
   @Test
   void input() {
 
     Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
-        .isThrownBy(() -> new Input(0, 5))
+        .isThrownBy(() -> new Input("pobi,crong,honux", 0))
         .withMessageContaining("입력 값은 양의 정수여야 한다");
   }
 }
