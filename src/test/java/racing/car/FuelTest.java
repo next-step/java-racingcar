@@ -49,13 +49,15 @@ class FuelTest {
         Fuel fuel = new RandomFuel();
 
         int movableCounter = 0;
-        List<Boolean> valueList = new ArrayList<>();
         for (int i = 0; i < testSize; i++) {
-            valueList.add(
-                    fuel.isMovable(Car.REQUIRED_FUEL_VALUE));
+            if (fuel.isMovable(Car.REQUIRED_FUEL_VALUE))
+                movableCounter++;
         }
         assertThat(movableCounter)
-                .withFailMessage("랜덤한 수가 나오지 않습니다.")
+                .withFailMessage("무조건 Not Movable 입니다.")
+                .isNotEqualTo(0);
+        assertThat(movableCounter)
+                .withFailMessage("무조건 Movable 입니다.")
                 .isNotEqualTo(testSize);
     }
 }
