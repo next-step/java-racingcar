@@ -75,4 +75,36 @@ public class CalculatorTest {
 
 		assertThat(result.toInteger()).isEqualTo(8);
 	}
+
+	@Test
+	@DisplayName("계산기")
+	void calculator() {
+		String testCase = "2 + 3 * 4 / 2";
+
+		Calculator calculator = new Calculator();
+
+		int result = calculator.calculate(testCase);
+
+		assertThat(result).isEqualTo(10);
+	}
+
+	@Test
+	@DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
+	void nullAndEmpty() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			String testCase = " ";
+			Calculator calculator = new Calculator();
+			int result = calculator.calculate(testCase);
+		});
+	}
+
+	@Test
+	@DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
+	void notFourFundamentalArithmeticOperations() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			String testCase = "2 & 3";
+			Calculator calculator = new Calculator();
+			int result = calculator.calculate(testCase);
+		});
+	}
 }
