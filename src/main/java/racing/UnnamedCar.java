@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.Objects;
+
 class UnnamedCar implements Racer {
     private static final String MARK = "-";
 
@@ -10,6 +12,7 @@ class UnnamedCar implements Racer {
     }
 
     public static UnnamedCar from(String position) {
+        Objects.requireNonNull(position);
         return new UnnamedCar(position);
     }
 
