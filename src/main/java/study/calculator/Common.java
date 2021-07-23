@@ -2,9 +2,11 @@ package study.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Common {
+
     public static void checkValue(String input) {
         if (input == null || input.trim().isEmpty()) {
             System.out.println("input Value is null or blank");
@@ -50,5 +52,4 @@ public class Common {
 
         return word;
     }
-
 }
