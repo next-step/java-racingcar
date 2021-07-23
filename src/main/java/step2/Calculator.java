@@ -5,8 +5,8 @@ import static step2.Validator.*;
 
 public class Calculator {
 
-	public String[] expressionInit(String expression) {
-		validateExpression(expression);
+	public String[] splitExpression(String expression) {
+		validateEmpty(expression);
 
 		return expression.trim()
 			.split(" ");
