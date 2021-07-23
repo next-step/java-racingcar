@@ -1,4 +1,5 @@
 
+import Calculator.StringCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -95,12 +96,22 @@ class StringCalculatorTest {
         assertThat(output).isEqualTo(answer);
     }
 
-
-
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {" ","1 a 1", "1 1 1", "+"})
-    public void 예외테스트(String input) {
+    void 예외테스트_빈값입력시(String input) {
+        assertThatThrownBy(() -> stringCalculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("빈값을 입력받았습니다.");
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1 a 1, 사칙연산이 잘 못 되었습니다..",
+            "1 1 1, 사칙연산이 잘 못 되었습니다..",
+            "+, 숫자가 아닌 수를 입력받았습니다.",
+            "a + b, 숫자가 아닌 수를 입력받았습니다.",
+            "1 + a, 숫자가 아닌 수를 입력받았습니다."})
+    void 예외테스트(String input) {
         assertThatThrownBy(() -> stringCalculator.calculate(input))
                 .isInstanceOf(IllegalArgumentException.class);
 
