@@ -17,18 +17,18 @@ public enum Operation {
         this.function = function;
     }
 
-    public long calculate(long x, long y) {
-        if (operator.equals("/") && y == 0) {
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-        }
-        return function.applyAsLong(x, y);
-    }
-
     public static Operation findOperation(String operation) {
         return Arrays.stream(Operation.values())
                 .filter(op -> op.getOperator().equals(operation))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("사칙 연산 기호가 아닙니다."));
+    }
+
+    public long calculate(long x, long y) {
+        if (operator.equals("/") && y == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
+        return function.applyAsLong(x, y);
     }
 
     public String getOperator() {
