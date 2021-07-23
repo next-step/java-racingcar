@@ -21,7 +21,7 @@ public class CarStadium {
             throw new IllegalArgumentException("자동차가 아직 입장이 안되었습니다.");
         }
 
-        if (referee.isOverTheTime()) {
+        if (referee.isOverTime()) {
             throw new IllegalArgumentException("더 이상 자동차는 움직일 수 없습니다.");
         }
 
@@ -29,7 +29,7 @@ public class CarStadium {
             car.move(NumberGenerator.createRandomNumbers());
         }
 
-        referee.hasPassedTime();
+        referee.passedTime();
     }
 
     public void showCarsLocation() {
