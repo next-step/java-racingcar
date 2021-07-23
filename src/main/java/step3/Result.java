@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 public class Result {
 
-  public static final String LOCATION_VIEW_SIGN = "-";
-  public static final String NEWLINE = "\n";
+  private static final String LOCATION_VIEW_SIGN = "-";
+  private static final String NEWLINE = System.lineSeparator();
   private final List<Integer> locationOfCars;
 
   public Result(List<Integer> locationOfCars) {
@@ -15,7 +15,7 @@ public class Result {
 
   public String log() {
     return locationOfCars.stream()
-        .map(location -> LOCATION_VIEW_SIGN.repeat(location + 1))
+        .map(LOCATION_VIEW_SIGN::repeat)
         .collect(Collectors.joining(NEWLINE));
   }
 }

@@ -5,15 +5,13 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-  public static final String NEWLINE_TWICE = "\n\n";
+  private static final String NEWLINE = System.lineSeparator();
+  private static final String NEWLINE_TWICE = System.lineSeparator().repeat(2);
+  private static final String RESULT_VIEW_PREFIX = "실행 결과" + NEWLINE;
 
   public void render(List<Result> results) {
     final String text = concat(results);
-
-    final String consoleLog = new StringBuilder("실행 결과").append("\n")
-        .append(text).toString();
-
-    print(consoleLog);
+    print(text);
   }
 
   private void print(String text) {
@@ -23,6 +21,6 @@ public class ResultView {
   protected String concat(List<Result> results) {
     return results.stream()
         .map(Result::log)
-        .collect(Collectors.joining(NEWLINE_TWICE));
+        .collect(Collectors.joining(NEWLINE_TWICE, RESULT_VIEW_PREFIX, ""));
   }
 }

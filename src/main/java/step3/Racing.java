@@ -10,7 +10,6 @@ public class Racing {
   private Cars cars;
 
   public List<Result> race(final Input input) {
-    if (input.isValid())
     cars = new Cars(input.getNumberOfCars());
 
     return IntStream.range(0, input.getNumberOfAttempts())

@@ -6,7 +6,8 @@ public class InputView {
 
   public static final String NUMBER_OF_CARS_MESSAGE = "자동차 대수는 몇 대 인가요?";
   public static final String NUMBER_OF_ATTEMPTS_MESSAGE = "시도할 회수는 몇 회 인가요?";
-  private Input input = new Input();
+
+  private Input input;
 
   public void render() {
     final Scanner scanner = new Scanner(System.in);
@@ -15,7 +16,7 @@ public class InputView {
     print(NUMBER_OF_ATTEMPTS_MESSAGE);
     final int numberOfAttempts = scanner.nextInt();
 
-    input.enter(numberOfCars, numberOfAttempts);
+    input = new Input(numberOfCars, numberOfAttempts);
     scanner.close();
   }
 
@@ -24,6 +25,9 @@ public class InputView {
   }
 
   public Input getInput() {
+    if (input == null) {
+      throw new IllegalStateException("입력 된 값이 없습니다.");
+    }
     return input;
   }
 }
