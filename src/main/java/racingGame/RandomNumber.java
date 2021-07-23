@@ -9,10 +9,6 @@ public class RandomNumber {
     public static final int RANDOM_NUMBER_BOUND = 10;
     public static final Random random = new Random();
 
-    public static List<Integer> makeRandomNumber() {
-        return makeRandomNumber(1);
-    }
-
     public static List<Integer> makeRandomNumber(int count) {
         List<Integer> randomNumberList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
