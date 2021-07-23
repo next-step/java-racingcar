@@ -2,8 +2,9 @@ package racing.car;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.exception.InvalidInputException;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 public class NameTest {
     @ValueSource(strings = {
@@ -19,8 +20,8 @@ public class NameTest {
     })
     @ParameterizedTest
     public void ctorInvalidInputExceptionTest(String strName) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() ->
-                        new Name(strName));
+        assertThatThrownBy(() ->
+                        new Name(strName))
+        .isInstanceOf(InvalidInputException.class);
     }
 }

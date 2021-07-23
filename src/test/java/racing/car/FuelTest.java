@@ -2,7 +2,6 @@ package racing.car;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,10 +20,10 @@ class FuelTest {
             -1, -99, 10, 11, 15
     })
     @ParameterizedTest
-    public void newIllegalArgumentExceptionTest(int fuelValue) {
+    public void isMovableIllegalArgumentExceptionTest(int fuelValue) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() ->
-                    new Fuel(fuelValue));
+                    new Fuel(fuelValue).isMovable(Car.REQUIRED_FUEL_VALUE));
     }
 
     @Test
