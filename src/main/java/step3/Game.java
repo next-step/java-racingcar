@@ -2,6 +2,7 @@ package step3;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Game {
@@ -22,6 +23,8 @@ public class Game {
                 .collect(Collectors.toList());
     }
 
+    public int getCurrentTurn() { return currentTurn; }
+
     public List<Car> getCars() { return this.cars.subList(0, cars.size()); }
 
     private MOVE goOrStop() { return MOVE.fromInt(LuckyNumberGenerator.getRandomInt()); }
@@ -31,5 +34,9 @@ public class Game {
                 .forEach(Car::progress);
 
         this.currentTurn += 1;
+    }
+
+    public void startGame() {
+        IntStream.range(0, this.numberOfTurns).forEach(x -> nextTurn());
     }
 }

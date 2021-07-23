@@ -9,9 +9,7 @@ public enum MOVE {
 
     private final Predicate<Integer> condition;
 
-    MOVE(Predicate<Integer> condition) {
-        this.condition = condition;
-    }
+    MOVE(Predicate<Integer> condition) { this.condition = condition; }
 
     public static MOVE fromInt(int num) {
         return Stream.of(values()).filter(t -> t.condition.test(num)).findFirst().get();

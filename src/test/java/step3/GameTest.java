@@ -14,14 +14,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest {
 
+    private final int numberOfCars = 5;
+    private final int numberOfTurns = 5;
+
     private Game game;
 
     @BeforeEach
     void init() {
-        game = new Game(5, 5);
+        game = new Game(numberOfCars, numberOfTurns);
     }
-
-
 
     @Test
     @DisplayName("생성자 테스트")
@@ -67,6 +68,16 @@ public class GameTest {
         int sumOfAfterLocation = game.getCars().stream().mapToInt(Car::getLocation).sum();
 
         assertThat(sumOfStartLocation).isNotEqualTo(sumOfAfterLocation);
+
+        assertThat(game.getCurrentTurn()).isEqualTo(100);
+    }
+
+    @Test
+    @DisplayName("게임 진행 테스트")
+    void startGameTest() {
+        game.startGame();
+
+        assertThat(game.getCurrentTurn()).isEqualTo(numberOfTurns);
     }
 
 }
