@@ -1,9 +1,11 @@
-package game;
+package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import racing.Validation;
 
 class ValidationTest {
 
@@ -11,8 +13,7 @@ class ValidationTest {
 
     @BeforeEach
     void setup() {
-        Utils utils = new Utils();
-        validation = new Validation(utils);
+        validation = new Validation();
     }
 
     @Test
@@ -34,7 +35,7 @@ class ValidationTest {
     @Test
     @DisplayName("문자열에 숫자이외의 문자가 포함되어 있으면 예외가 발생된다.")
     public void validNumber_check() {
-        assertThatThrownBy(() -> validation.validNUmberChecK("12!"))
+        assertThatThrownBy(() -> validation.validNumberCheck("12!"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("해당 문자는 숫자만 사용 가능합니다.");
     }
