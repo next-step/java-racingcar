@@ -18,7 +18,7 @@ public class NameTest {
             "A1", "B2", "a a", "스포츠카"
     })
     @ParameterizedTest
-    public void ctorIllegalArgumentExceptionTest(String strName) {
+    public void ctorInvalidInputExceptionTest(String strName) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() ->
                         new Name(strName));

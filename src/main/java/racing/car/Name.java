@@ -1,5 +1,6 @@
 package racing.car;
 
+import racing.exception.InvalidInputException;
 import util.StringUtils;
 
 public class Name {
@@ -12,7 +13,7 @@ public class Name {
 
     private void validate(String value) {
         if (!StringUtils.isEng(value))
-            throw new IllegalArgumentException("자동차의 이름은 영어로만 정해주세요.");
+            throw new InvalidInputException("자동차의 이름은 영어로만 입력 해주세요.");
     }
 
     public String getValue() {
