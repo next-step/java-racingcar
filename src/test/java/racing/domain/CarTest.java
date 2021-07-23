@@ -33,16 +33,16 @@ class CarTest {
 
 
 	@Test
-	@DisplayName("move() 메서드 호출 시 move 값 확인")
+	@DisplayName("move() 메서드 호출 시 randomValue가 4이상이면 move 값 증가")
 	void move() {
-		car.move();
+		car.move(5, 4);
 		assertThat(car.toString()).isEqualTo("-");
 	}
 
 	@Test
-	@DisplayName("move() 메서드 호출 시 move 값 확인 실패 케이스")
+	@DisplayName("move() 메서드 호출 시 randomValue가 4이하면 move 값 그대로")
 	void failMove() {
-		car.move();
-		assertThat(car.toString()).isNotEqualTo("--");
+		car.move(3, 4);
+		assertThat(car.toString()).isEqualTo("");
 	}
 }

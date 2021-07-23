@@ -8,8 +8,10 @@ public class Car {
 		this.move = 0;
 	}
 
-	public void move() {
-		this.move++;
+	public void move(int randomValue, int compareValue) {
+		if (randomValue >= compareValue) {
+			this.move++;
+		}
 	}
 
 	@Override

@@ -2,7 +2,8 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import racing.utils.RandomUtils;
 
 public class Racing {
 
@@ -14,7 +15,7 @@ public class Racing {
 		initCars(carCount);
 	}
 
-	public void initCars(int carCount) {
+	private void initCars(int carCount) {
 		cars = new ArrayList<>(carCount);
 
 		for (int i = 0; i < carCount; i++) {
@@ -24,21 +25,9 @@ public class Racing {
 
 	public List<Car> move() {
 		for (Car car : cars) {
-			moveCar(car, getRandomValue());
+			car.move(RandomUtils.getRandomValue(), COMPARE_VALUE);
 		}
 
 		return cars;
-	}
-
-	private void moveCar(Car car, int randomValue) {
-		if (randomValue >= COMPARE_VALUE) {
-			car.move();
-		}
-	}
-
-	private int getRandomValue() {
-		Random random = new Random();
-
-		return random.nextInt(10);
 	}
 }
