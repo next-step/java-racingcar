@@ -1,12 +1,13 @@
 package calculator;
 
-import calculator.exception.InvalidFormulaException;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
+import calculator.exception.InvalidFormulaException;
+
 public class StringCalculator {
 
+	private static final String DELIMITER = " ";
 	private Queue<Integer> numbers;
 	private Queue<String> operators;
 
@@ -31,7 +32,7 @@ public class StringCalculator {
 	}
 
 	private void initializeNumbersAndOperators(String inputText) {
-		String[] tokens = inputText.split(" ");
+		String[] tokens = inputText.split(DELIMITER);
 		for (String token : tokens) {
 			addNumberOrOperatorBy(token);
 		}
