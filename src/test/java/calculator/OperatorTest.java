@@ -15,11 +15,11 @@ class OperatorTest {
     @DisplayName("산술 연산자 문자로 Operator 가져오기")
     void getOperatorTest() {
         assertAll(
-                () -> assertThat(Operator.of("+")).isEqualTo(Operator.PLUS),
-                () -> assertThat(Operator.of("-")).isEqualTo(Operator.MINUS),
-                () -> assertThat(Operator.of("*")).isEqualTo(Operator.MULTIPLY),
-                () -> assertThat(Operator.of("/")).isEqualTo(Operator.DIVIDE),
-                () -> assertThat(Operator.of("++")).isNull()
+                () -> assertThat(Operator.of("+").get()).isEqualTo(Operator.PLUS),
+                () -> assertThat(Operator.of("-").get()).isEqualTo(Operator.MINUS),
+                () -> assertThat(Operator.of("*").get()).isEqualTo(Operator.MULTIPLY),
+                () -> assertThat(Operator.of("/").get()).isEqualTo(Operator.DIVIDE),
+                () -> assertThat(Operator.of("++").isPresent()).isFalse()
         );
     }
 

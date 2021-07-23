@@ -48,11 +48,12 @@ public class StringCalculator {
     }
 
     private void addSymbol(String value) {
-        Operator operator = Operator.of(value);
-        if (operator == null) {
+        try {
+            Operator operator = Operator.of(value).get();
+            symbols.offer(operator);
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("invalid value - operator null exception");
         }
-        symbols.offer(operator);
     }
 
     private boolean isOdd(int num) {
