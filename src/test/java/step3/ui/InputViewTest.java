@@ -27,8 +27,7 @@ class InputViewTest {
     @Test
     @DisplayName("게임에 참여할 자동차 대수를 묻는 UI 텍스트 검증하기")
     void askHowManyCars() {
-        InputView inputView = new InputView();
-        inputView.askHowManyCars();
+        InputView.askHowManyCars();
 
         assertThat(outputStream.toString().trim()).isEqualTo("자동차 대수는 몇 대 인가요?");
     }
@@ -36,8 +35,7 @@ class InputViewTest {
     @Test
     @DisplayName("게임의 시도회수를 묻는 UI 텍스트 검증하기")
     void askHowManyTryCounts() {
-        InputView inputView = new InputView();
-        inputView.askHowManyTryCounts();
+        InputView.askHowManyTryCounts();
 
         assertThat(outputStream.toString().trim()).isEqualTo("시도할 회수는 몇 회 인가요?");
     }

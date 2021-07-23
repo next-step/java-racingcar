@@ -9,12 +9,12 @@ public class Step3Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        InputView inputView = new InputView();
 
-        inputView.askHowManyCars();
+
+        InputView.askHowManyCars();
         int carCount = scanner.nextInt();
 
-        inputView.askHowManyTryCounts();
+        InputView.askHowManyTryCounts();
         int tryCount = scanner.nextInt();
 
         scanner.close();
