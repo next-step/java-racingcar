@@ -1,8 +1,8 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,28 +10,11 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class StringCalculatorTest {
 
-    @Test
-    void calc_add(){
-        int result = StringCalculator.calc("1 + 2");
-        assertThat(result).isEqualTo(3);
-    }
-
-    @Test
-    void calc_sub(){
-        int result = StringCalculator.calc("3 - 1");
-        assertThat(result).isEqualTo(2);
-    }
-
-    @Test
-    void calc_mul(){
-        int result = StringCalculator.calc("3 * 2");
-        assertThat(result).isEqualTo(6);
-    }
-
-    @Test
-    void calc_div(){
-        int result = StringCalculator.calc("6 / 2");
-        assertThat(result).isEqualTo(3);
+    @ParameterizedTest
+    @CsvSource(value = {"1 + 2 = 3", "3 - 1 = 2", "2 * 2 = 4", "6 / 2 = 3", "1 + 2 * 2 = 6", "2 + 3 * 4 / 2 = 10"}, delimiter = '=')
+    void calc(String input, int answer){
+        int result = StringCalculator.calc(input);
+        assertThat(result).isEqualTo(answer);
     }
 
     @DisplayName("입력 값이 null 이거나 공백문자일 경우 에러")

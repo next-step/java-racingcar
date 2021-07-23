@@ -16,4 +16,13 @@ public enum Operator {
         return operator;
     }
 
+    public static Operator valueOfString(String str) {
+        for (Operator i : Operator.values()) {
+            if (str.equals(i.getOperator())) {
+                return i;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
 }

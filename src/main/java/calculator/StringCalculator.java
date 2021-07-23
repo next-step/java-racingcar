@@ -3,28 +3,32 @@ package calculator;
 public class StringCalculator {
     public static int calc(String input){
         String[] arr = input.split(" ");
-        if(arr.length == 0){
+        int size = arr.length;
+        if(size < 3){
             throw new IllegalArgumentException();
         }
-        int num1 = Integer.parseInt(arr[0]);
-        Operator operator = Operator.valueOf(arr[1]);
-        int num2 = Integer.parseInt(arr[2]);
-        int result = 0;
-
-        switch (operator){
-            case ADD:
-                result = add(num1,num2);
-                break;
-            case SUB:
-                result = sub(num1,num2);
-                break;
-            case MUL:
-                result = mul(num1,num2);
-                break;
-            case DIV:
-                result = div(num1,num2);
+        Operator operator;
+        int num2;
+        int answer = Integer.parseInt(arr[0]);
+        for(int i = 1; i < size - 1; i += 2){
+            operator = Operator.valueOfString(arr[i]);
+            num2 = Integer.parseInt(arr[i+1]);
+            answer = calcFromOperator(operator, answer, num2);
         }
-        return result;
+        return answer;
+    }
+
+    private static int calcFromOperator(Operator operator, int a, int b){
+        if(operator.equals(Operator.ADD)){
+            return add(a, b);
+        }
+        if(operator.equals(Operator.SUB)){
+            return sub(a, b);
+        }
+        if(operator.equals(Operator.MUL)){
+            return mul(a, b);
+        }
+        return div(a, b);
     }
 
     private static int add(int a, int b) {
