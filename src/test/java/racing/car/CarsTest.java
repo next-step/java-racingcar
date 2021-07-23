@@ -60,16 +60,23 @@ class CarsTest {
     // 요구사항 "주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다." 에 대한 테스트를 추가 해보면 어떨까요?
     // 꼭 Cars가 아니여도 상관이 없습니다. 🤔
     @CsvSource({
-            "5,100,FULL,100",
-            "100,100,MIN,100",
-            "100,100,EMPTY,0"
+            "5,100,0,0",
+            "5,100,1,0",
+            "5,100,2,0",
+            "5,100,3,0",
+            "5,100,4,100",
+            "5,100,5,100",
+            "5,100,6,100",
+            "5,100,7,100",
+            "5,100,8,100",
+            "5,100,9,100"
     })
     @DisplayName("주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.")
     @ParameterizedTest
-    public void moveAllTest(int carSize, int turnSize, String fuelName, int locationValue) {
+    public void moveAllTest(int carSize, int turnSize, int fuelValue, int locationValue) {
         Location location = new Location(locationValue);
         Cars cars = initCars(carSize);
-        Fuel fuel = Fuel.valueOf(fuelName);
+        Fuel fuel = Fuel.newInstance(fuelValue);
 
         for (int i = 0; i < turnSize; i++) {
             cars.moveAll(fuel);

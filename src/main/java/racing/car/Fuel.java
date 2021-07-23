@@ -4,29 +4,26 @@ import util.RandomUtils;
 
 import java.util.function.BooleanSupplier;
 
-public enum Fuel {
-    EMPTY(() -> false),
-    MIN(() -> true,
-            4),
-    FULL(() -> true,
-            9),
-    RANDOM(() -> RandomUtils.nextInt(FULL.value) >= MIN.value);
+public class Fuel {
+    public static Fuel EMPTY = new Fuel(0);
+    public static Fuel FULL = new Fuel(9);
 
-    Fuel(BooleanSupplier funcMovable, int value) {
-        this.funcMovable = funcMovable;
+    private int value;
+
+    private Fuel(int value) {
         this.value = value;
     }
 
-    Fuel(BooleanSupplier funcMovable) {
-        this(funcMovable, 0);
+    public static Fuel newInstance(int value) {
+        return new Fuel(value);
     }
 
-    private final BooleanSupplier funcMovable;
+    public static Fuel randomInstance() {
+        return new Fuel(
+                RandomUtils.nextInt(FULL.value));
+    }
 
-    private final int value;
-
-
-    public boolean isMovable() {
-        return funcMovable.getAsBoolean();
+    public boolean isMovable(int requireFuelValue) {
+        return this.value >= requireFuelValue;
     }
 }

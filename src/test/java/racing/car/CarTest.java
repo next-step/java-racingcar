@@ -8,15 +8,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
     @CsvSource({
-            "FULL,1",
-            "MIN,1",
-            "EMPTY,0"
+            "0,0",
+            "1,0",
+            "2,0",
+            "3,0",
+            "4,1",
+            "5,1",
+            "6,1",
+            "7,1",
+            "8,1",
+            "9,1"
     })
     @DisplayName("Move 테스트")
     @ParameterizedTest
-    public void moveTest(String fuelName, int locationValue) {
+    public void moveTest(int fuelValue, int locationValue) {
         Location location = new Location(locationValue);
-        Fuel fuel = Fuel.valueOf(fuelName);
+        Fuel fuel = Fuel.newInstance(fuelValue);
 
         Car car = new Car();
         car.move(fuel);
