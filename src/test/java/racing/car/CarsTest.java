@@ -8,6 +8,7 @@ import racing.exception.DuplicateKeyException;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,6 +17,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarsTest {
     private static final char NAME_WORD = 'A';
+    /* 요구 사항은 ','를 기준으로 이름을 입력 받지만
+    * @CsvSource의 기본 구분 문자가 ',' 이기 때문에
+    * 테스트 에서는 이름 구분자를 '|' 로 변경
+    */
     private static final String NAME_DELIMITER = "\\|";
     private Cars initCars(String strNames) {
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
@@ -139,5 +144,37 @@ class CarsTest {
         assertThatThrownBy(() ->
             initCars(strNames)
         ).isInstanceOf(DuplicateKeyException.class);
+    }
+
+    @CsvSource({
+            "A|B|C,A|C,100",
+            "A|B|C,A,100",
+            "A|B|C|D|E|F|G,G|B,100"
+    })
+    @ParameterizedTest
+    public void bestCarsTest(String strCarNames, String strWinnerNames, int turnSize) {
+        Cars cars = initCars(strCarNames);
+        List<Name> winnerNames = Arrays.stream(strWinnerNames.split(NAME_DELIMITER))
+                .map(Name::new)
+                .collect(Collectors.toList());
+
+        // 이동
+        for (int i = 0; i < turnSize; i++)
+            moveCar(cars, winnerNames);
+
+        Cars winners = cars.bestCars();
+        for(Name iName : winnerNames) {
+            assertThat(winners.containsName(iName))
+                    .withFailMessage("예상한 우승자가 포함되어 있지 않습니다.")
+                    .isTrue();
+        }
+        assertThat(winners.size() == winnerNames.size())
+                .withFailMessage("우승자의 수가 예상한 수와 다릅니다.")
+                .isTrue();
+    }
+
+    private void moveCar(Cars cars, List<Name> names) {
+        for(Name iName : names)
+            cars.get(iName).move(Fuel.FULL);
     }
 }
