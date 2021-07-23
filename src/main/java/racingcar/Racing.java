@@ -2,11 +2,12 @@ package racingcar;
 
 import racingcar.car.Car;
 import racingcar.car.Cars;
+import racingcar.util.Util;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class Racing {
-
+    InputView view = new InputView();
     private final Cars cars;
     private int racingTime;
 
@@ -20,24 +21,40 @@ public class Racing {
     }
 
     private void prepareRacing() {
-        InputView view = new InputView();
-        int numberOfCar = view.inputNumberOfCar();
-        cars.setCars(numberOfCar);
-        racingTime = view.inputNumberOfGame();
+        userInputNumberOfCar();
+        userInputNumberOfRacing();
     }
+
 
     private void startRacing() {
         ResultView.printResultTitle();
         for (int i = 0; i < racingTime; i++) {
-            movePosition(cars);
+            racing(cars);
         }
     }
 
-    private void movePosition(Cars cars) {
+    private void racing(Cars cars) {
         for (Car car : cars.getCars()) {
-            car.move();
+            car.move(Util.generateRandom());
+            ResultView.printCarPositionStatus(car.getPosition());
         }
-        System.out.println();
+        ResultView.printFinishedOneRacing();
     }
 
+    public void userInputNumberOfCar() {
+        int numberOfCar = view.inputNumberOfCar();
+        cars.setCars(numberOfCar);
+    }
+
+    public void userInputNumberOfRacing() {
+        racingTime = view.inputNumberOfGame();
+    }
+
+    public Cars getCars(){
+        return this.cars;
+    }
+
+    public int getRacingTime(){
+        return this.racingTime;
+    }
 }
