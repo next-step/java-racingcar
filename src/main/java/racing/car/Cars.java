@@ -9,6 +9,11 @@ public class Cars implements Iterable<Car> {
         this.values = new ArrayList<>();
     }
 
+    public void moveAll(Fuel fuel) {
+        for (Car iCar : values)
+            iCar.move(fuel);
+    }
+
     public void add(Car car) {
         values.add(car);
     }

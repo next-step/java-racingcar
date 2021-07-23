@@ -44,14 +44,9 @@ public class RacingSolution {
     private void racing(Cars cars, int turnSize) {
         resultView.printResultTitle();
         for (int i = 0; i < turnSize; i++) {
-            moveAll(cars, Fuel.RANDOM);
+            cars.moveAll(Fuel.RANDOM);
 
             resultView.printAllCarLocation(cars);
         }
-    }
-
-    private void moveAll(Cars cars, Fuel fuel) {
-        for (Car iCar : cars)
-            iCar.move(fuel);
     }
 }

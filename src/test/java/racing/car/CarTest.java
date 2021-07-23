@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
     @CsvSource({
             "FULL,true",
+            "MIN,true",
             "EMPTY,false"
     })
     @DisplayName("Move 테스트")
