@@ -12,8 +12,8 @@ class FuelTest {
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9
     })
     @ParameterizedTest
-    public void ctorTest(int fuelValue) {
-        new Fuel(fuelValue);
+    public void isMovableTest(int fuelValue) {
+        new Fuel(fuelValue).isMovable(Car.REQUIRED_FUEL_VALUE);
     }
 
     @ValueSource(ints = {
