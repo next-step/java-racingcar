@@ -2,9 +2,7 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class Racing {
@@ -12,15 +10,14 @@ public class Racing {
 	private final List<Car> cars;
 	private final Validation validation;
 	private final Random random;
-	private final HashMap<String, Integer> playingResult;
 	private final MessageBox messageBox;
 	private final StringBuffer winnerPlayList;
+	private  int MAX_VALUE = 0;
 
 	public Racing(MessageBox messageBox) {
 		cars = new ArrayList<>();
 		validation = new Validation();
 		random = new Random();
-		playingResult = new HashMap<>();
 		winnerPlayList = new StringBuffer();
 		this.messageBox = messageBox;
 	}
@@ -60,10 +57,16 @@ public class Racing {
 	private void gamePlay() {
 		for (Car car : cars) {
 			int resultRacing = car.carRacing(randomValue());
-			playingResult.put(car.getCarName(), resultRacing);
+			maxValueCheck(resultRacing);
 			messageBox.racingResultMessage(car.getCarName(), resultRacing);
 		}
 		messageBox.commonMessageBox("");
+	}
+
+	private void maxValueCheck(int resultValue){
+		if(MAX_VALUE < resultValue){
+			MAX_VALUE = resultValue;
+		}
 	}
 
 	public int randomValue() {
@@ -72,14 +75,16 @@ public class Racing {
 	}
 
 	public String winnerPlayer() {
-		for (Map.Entry<String, Integer> entry : playingResult.entrySet()) {
-			searchWinner(entry.getKey(), entry.getValue());
+		for(Car car : cars){
+			winnerConfirm(car.searchWinner(MAX_VALUE));
 		}
 		return winnerPlayList.toString();
 	}
 
-	private void searchWinner(String playerName, int checkValue) {
-		if (checkValue == (Collections.max(playingResult.values()))) {
+
+
+	private void winnerConfirm(String playerName) {
+		if(!playerName.isEmpty()){
 			winnerPlayList.append(playerName);
 			winnerPlayList.append(",");
 		}

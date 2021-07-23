@@ -20,4 +20,11 @@ public class Car {
 		return carName;
 	}
 
+	public String searchWinner(int winnerScore){
+		if(raceDistance == winnerScore){
+			return carName;
+		}
+		return "";
+	}
+
 }
