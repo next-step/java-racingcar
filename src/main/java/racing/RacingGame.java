@@ -18,7 +18,9 @@ class RacingGame {
     private RacingGame(ForwardConditionStrategy strategy, int stageCount, int carCount) {
         this.strategy = strategy;
         this.stageCount = stageCount;
-        this.racers = Racers.from(range(0, carCount).mapToObj(i -> BLANK).collect(toCollection(ArrayList::new)));
+        this.racers = Racers.from(range(0, carCount)
+                                          .mapToObj(it -> BLANK)
+                                          .collect(toCollection(ArrayList::new)));
     }
 
     public static RacingGame of(ForwardConditionStrategy strategy, int[] condition) {
@@ -36,7 +38,8 @@ class RacingGame {
             resultDataBuilder.append(NEW_LINE);
         }
 
-        return resultDataBuilder.toString().trim();
+        return resultDataBuilder.toString()
+                                .trim();
     }
 
     private boolean isStageGreaterThanZero() {
