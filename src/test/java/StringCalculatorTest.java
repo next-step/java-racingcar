@@ -17,6 +17,15 @@ class StringCalculatorTest {
     }
 
     @Test
+    void 숫자만있을시() {
+        int output = stringCalculator.calculate("12");
+        assertThat(output).isEqualTo(12);
+
+        output = stringCalculator.calculate("-12");
+        assertThat(output).isEqualTo(-12);
+    }
+
+    @Test
     void 더하기테스트() {
         int output = stringCalculator.calculate("1 + 2");
         assertThat(output).isEqualTo(3);
