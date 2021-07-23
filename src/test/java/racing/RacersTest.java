@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.IntStream.range;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacersTest {
@@ -16,11 +19,9 @@ public class RacersTest {
 
     @BeforeEach
     void setUp() {
-        ArrayList<String> list = new ArrayList<>();
-        list.add("-");
-        list.add("-");
-        list.add("-");
-        racers = Racers.from(list);
+        racers = Racers.from((List<? extends Racer>) range(0, 3)
+                .mapToObj(it -> Car.emptyCar())
+                .collect(toCollection(ArrayList::new)));
     }
 
     @Test
@@ -32,7 +33,7 @@ public class RacersTest {
     @Test
     @DisplayName("조회_테스트")
     void get() throws Exception {
-        assertThat(racers.get(0)).isEqualTo("-");
+        assertThat(racers.get(0).position()).isEqualTo("");
     }
 
     @Test
@@ -40,7 +41,7 @@ public class RacersTest {
     void goForward() throws Exception {
         BDDMockito.given(mockStrategy.judgeCondition()).willReturn(false);
         racers.turnAround(mockStrategy, new StringBuilder());
-        assertThat(racers.get(0)).isEqualTo("--");
+        assertThat(racers.get(0).position()).isEqualTo("-");
     }
 
     @Test
@@ -48,7 +49,7 @@ public class RacersTest {
     void goForwardNot() throws Exception {
         BDDMockito.when(mockStrategy.judgeCondition()).thenReturn(true);
         racers.turnAround(mockStrategy, new StringBuilder());
-        assertThat(racers.get(0)).isEqualTo("-");
+        assertThat(racers.get(0).position()).isEqualTo("");
     }
 
     @Test

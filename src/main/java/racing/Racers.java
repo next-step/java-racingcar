@@ -4,26 +4,25 @@ import java.util.List;
 
 import static java.util.stream.IntStream.range;
 
-class Racers {
+class Racers<T extends Racer> {
     private static final String NEW_LINE = System.lineSeparator();
-    private static final String DISPLAY_MARK = "-";
 
-    private final List<String> cars;
+    private final List<T> racers;
 
-    private Racers(List<String> cars) {
-        this.cars = cars;
+    private Racers(List<T> racers) {
+        this.racers = racers;
     }
 
-    public static Racers from(List<String> cars) {
+    public static Racers from(List<? extends Racer> cars) {
         return new Racers(cars);
     }
 
     public int size() {
-        return this.cars.size();
+        return this.racers.size();
     }
 
-    public String get(int index) {
-        return cars.get(index);
+    public T get(int index) {
+        return racers.get(index);
     }
 
     public void turnAround(ForwardConditionStrategy strategy, StringBuilder stringBuilder) {
@@ -32,10 +31,9 @@ class Racers {
 
     private void turnAround(ForwardConditionStrategy strategy, StringBuilder stringBuilder, int index) {
         if (strategy.judgeCondition()) {
-            stringBuilder.append(get(index)).append(NEW_LINE);
+            stringBuilder.append(get(index).position()).append(NEW_LINE);
             return;
         }
-        cars.set(index, cars.get(index) + DISPLAY_MARK);
-        stringBuilder.append(get(index)).append(NEW_LINE);
+        stringBuilder.append(get(index).go().position()).append(NEW_LINE);
     }
 }
