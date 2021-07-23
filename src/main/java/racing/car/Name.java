@@ -7,7 +7,6 @@ public class Name {
     private final String value;
 
     public Name(String value) {
-        validate(value);
         this.value = value;
     }
 
@@ -17,6 +16,7 @@ public class Name {
     }
 
     public String getValue() {
+        validate(value);
         return value;
     }
 
