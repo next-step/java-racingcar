@@ -1,32 +1,44 @@
 package step3;
 
+import static java.util.stream.Collectors.toList;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Input {
 
-  private int numberOfCars;
-  private int numberOfAttempts;
+  public static final String DELIMITER = ",";
+  private final int numberOfAttempts;
+  private final List<Name> names;
 
-  public Input(int numberOfCars, int numberOfAttempts) {
-    validate(numberOfCars, numberOfAttempts);
-    this.numberOfCars = numberOfCars;
+  public Input(String names, int numberOfAttempts) {
+    this.names = createNames(names);
+    validate(numberOfAttempts);
     this.numberOfAttempts = numberOfAttempts;
   }
 
-  private void validate(int numberOfCars, int numberOfAttempts) {
-    if (isNotPositive(numberOfCars, numberOfAttempts)) {
+  private List<Name> createNames(String names) {
+    return Arrays.stream(names.split(DELIMITER))
+        .map(Name::new)
+        .collect(toList());
+  }
+
+  private void validate(int numberOfAttempts) {
+    if (isNotPositive(numberOfAttempts)) {
       throw new IllegalArgumentException("입력 값은 양의 정수여야 한다");
     }
   }
 
-  private boolean isNotPositive(int numberOfCars, int numberOfAttempts) {
-    return numberOfCars <= 0 || numberOfAttempts <= 0;
+  private boolean isNotPositive(int numberOfCars) {
+    return numberOfCars <= 0;
   }
 
-  public int getNumberOfCars() {
-    return numberOfCars;
-  }
 
   public int getNumberOfAttempts() {
     return numberOfAttempts;
   }
 
+  public List<Name> getNames() {
+    return names;
+  }
 }

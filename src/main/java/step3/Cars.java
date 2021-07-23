@@ -3,15 +3,14 @@ package step3;
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Cars {
 
   private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-  private List<Car> cars;
+  private final List<Car> cars;
 
-  public Cars(int numberOfCars) {
-    create(numberOfCars);
+  public Cars(List<Name> names) {
+    this.cars = create(names);
   }
 
   public void move() {
@@ -21,24 +20,17 @@ public class Cars {
     }
   }
 
-  public Result getResult() {
-    return new Result(getLocationOfCars());
-  }
-
   public int numberOf() {
     return cars.size();
   }
 
-  private void create(int numberOfCars) {
-    cars = IntStream.range(0, numberOfCars)
-        .mapToObj(i -> new Car())
+  private List<Car> create(List<Name> names) {
+    return names.stream()
+        .map(Car::new)
         .collect(toList());
   }
 
-  private List<Integer> getLocationOfCars() {
-    return cars.stream()
-        .map(Car::getLocation)
-        .collect(toList());
+  public List<Car> getCars() {
+    return cars;
   }
-
 }

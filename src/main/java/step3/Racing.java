@@ -10,11 +10,11 @@ public class Racing {
   private Cars cars;
 
   public List<Result> race(final Input input) {
-    cars = new Cars(input.getNumberOfCars());
+    cars = new Cars(input.getNames());
 
     return IntStream.range(0, input.getNumberOfAttempts())
         .peek(i -> cars.move())
-        .mapToObj(i -> cars.getResult())
+        .mapToObj(i -> new Result(cars.getCars()))
         .collect(toList());
   }
 

@@ -7,7 +7,17 @@ public class Car {
   public static final int BOUNDARY = 4;
   public static final int INITIAL_LOCATION = 0;
 
+  private final Name name;
   private int location = INITIAL_LOCATION;
+
+  public Car(Name name) {
+    this.name = name;
+  }
+
+  protected Car(Name name, int location) {
+    this.name = name;
+    this.location = location;
+  }
 
   public void move(int randomNumber) {
     validate(randomNumber);
@@ -25,5 +35,9 @@ public class Car {
 
   public int getLocation() {
     return location;
+  }
+
+  public String getName() {
+    return name.getName();
   }
 }
