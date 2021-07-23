@@ -20,7 +20,7 @@ public class RacersTest {
     @BeforeEach
     void setUp() {
         racers = Racers.from((List<? extends Racer>) range(0, 3)
-                .mapToObj(it -> Car.emptyCar())
+                .mapToObj(it -> UnnamedCar.emptyCar())
                 .collect(toCollection(ArrayList::new)));
     }
 

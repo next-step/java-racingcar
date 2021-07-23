@@ -30,7 +30,7 @@ class RacingGame {
         this.strategy = strategy;
         this.stageCount = stageCount;
         this.racers = Racers.from((List<? extends Racer>) range(0, racerCount)
-                .mapToObj(it -> Car.emptyCar())
+                .mapToObj(it -> UnnamedCar.emptyCar())
                 .collect(toCollection(ArrayList::new)));
     }
 
