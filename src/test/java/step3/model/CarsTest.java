@@ -15,7 +15,7 @@ class CarsTest {
     static Cars cars;
     @BeforeAll
     static void create(){
-        cars = new Cars();
+        cars = new Cars(new CarMovement());
     }
 
     @DisplayName("Cars 객체 생성(숫자만큼 Car 객체 소유함)")
@@ -48,15 +48,5 @@ class CarsTest {
         ).withMessageContaining("먼저 생성");
     }
 
-    @DisplayName("첫 주행 무조건 한칸전진")
-    @Test
-    void firstMovementTest(){
-        cars.makeCars(3);
 
-        cars.firstMovement();
-        List<Integer> expectList = Arrays.asList(new Integer[]{1,1,1});
-        assertThat(cars.getCars())
-                .extracting(Car::getPosition)
-                .isEqualTo(expectList);
-    }
 }

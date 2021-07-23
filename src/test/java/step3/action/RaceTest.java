@@ -16,22 +16,23 @@ class RaceTest {
 
     @BeforeAll
     static void makeRace(){
-        race = Race.of(2,10);
+        race = Race.of(2);
     }
 
     @DisplayName("객체생성 테스트")
     @Test
     void create(){
-        race = Race.of(5,10);
+        race = Race.of(5);
 
         assertThat(race.getCarsSize()).isEqualTo(5);
-        assertThat(race.getRaceTimes()).isEqualTo(10);
     }
 
     @DisplayName("레이싱 시작")
     @Test
     void raceTest(){
-        race.doRace();
+        for(int i=0; i<10; i++){
+            race.doRace();
+        }
         List<Integer> expectList = Arrays.asList(new Integer[]{1,1});
         assertThat(race.getPositions()).isNotEqualTo(expectList);
 
