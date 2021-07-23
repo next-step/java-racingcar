@@ -28,8 +28,8 @@ public class PositionTest {
     }
 
     @Test
-    @DisplayName("Car 전진 실패 테스트(2칸 움직이려고 할 때)")
-    void 전진_실패_움직일수있는_거리_초과() {
+    @DisplayName("Car 전진 실패 테스트(한번에 2칸 움직이려고 할 때)")
+    void 전진_실패() {
         assertThatThrownBy(() -> position.setPosition(2))
                 .isInstanceOf(InvalidCarException.class)
                 .hasMessage("위치가 올바르지 않습니다.");
