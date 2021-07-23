@@ -1,5 +1,8 @@
 
 public class StringCalculator {
+    private int output;
+    private String[] splitedString;
+
     public int calculate(String s) {
         if(s == null) throw new IllegalArgumentException("null값을 입력받았습니다.");
         String[] splitedString = s.split(" ");
@@ -21,5 +24,27 @@ public class StringCalculator {
         }
 
         return output;
+    }
+
+    void calculateSplitedString(int index) {
+        int size = splitedString.length;
+        if (index + 1 == size) throw new IllegalArgumentException("숫자가 부족합니다.");
+        int rightNum = 0;
+        try {
+            rightNum = Integer.parseInt(splitedString[index + 1]);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닌 수를 입력받았습니다.");
+        }
+        if (splitedString[index].equals("+")) {
+            output += rightNum;
+        } else if (splitedString[index].equals("-")) {
+            output -= rightNum;
+        } else if (splitedString[index].equals("*")) {
+            output *= rightNum;
+        } else if (splitedString[index].equals("/")) {
+            output /= rightNum;
+        } else {
+            throw new IllegalArgumentException("사칙연산이 잘 못 되었습니다..");
+        }
     }
 }
