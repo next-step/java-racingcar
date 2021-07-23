@@ -23,10 +23,6 @@ public class Location {
         );
     }
 
-    public boolean hasValue() {
-        return value > 0;
-    }
-
     @Override
     public int hashCode() {
         return Integer.hashCode(value);
@@ -37,7 +33,7 @@ public class Location {
         if (!(obj instanceof Location))
             return false;
         Location compareLocation = (Location) obj;
-        return this.getValue() != compareLocation.getValue();
+        return this.getValue() == compareLocation.getValue();
     }
 
     @Override

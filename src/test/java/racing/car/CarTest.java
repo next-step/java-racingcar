@@ -8,21 +8,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
     @CsvSource({
-            "FULL,true",
-            "MIN,true",
-            "EMPTY,false"
+            "FULL,1",
+            "MIN,1",
+            "EMPTY,0"
     })
     @DisplayName("Move 테스트")
     @ParameterizedTest
-    public void moveTest(String fuelName, boolean movement) {
+    public void moveTest(String fuelName, int locationValue) {
+        Location location = new Location(locationValue);
         Fuel fuel = Fuel.valueOf(fuelName);
 
         Car car = new Car();
         car.move(fuel);
 
         assertThat(
-                car.getLocation().hasValue()
-        ).withFailMessage("지정한 횟수만큼 이동하지 않았습니다.")
-                .isEqualTo(movement);
+                car.getLocation()
+        ).withFailMessage("자동차가 요청한대로 행동하지 않았습니다.")
+                .isEqualTo(location);
     }
 }
