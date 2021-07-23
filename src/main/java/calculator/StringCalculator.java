@@ -18,7 +18,7 @@ public class StringCalculator {
         return result;
     }
 
-    public static BiFunction<Integer, Integer, Integer> distinguishOperator(String operator) {
+    private static BiFunction<Integer, Integer, Integer> distinguishOperator(String operator) {
         if (operator.equals("+"))
             return add();
         if(operator.equals("-"))
@@ -28,19 +28,19 @@ public class StringCalculator {
         return divide();
     }
 
-    public static BiFunction<Integer, Integer, Integer> add() {
+    private static BiFunction<Integer, Integer, Integer> add() {
         return (a, b) -> a + b;
     }
 
-    public static BiFunction<Integer, Integer, Integer> subtract() {
+    private static BiFunction<Integer, Integer, Integer> subtract() {
         return (a, b) -> a - b;
     }
 
-    public static BiFunction<Integer, Integer, Integer> multiply() {
+    private static BiFunction<Integer, Integer, Integer> multiply() {
         return (a, b) -> a * b;
     }
 
-    public static BiFunction<Integer, Integer, Integer> divide() {
+    private static BiFunction<Integer, Integer, Integer> divide() {
         return (a, b) -> a / b;
     }
 
