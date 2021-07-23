@@ -1,6 +1,7 @@
 package racingwinner;
 
 import racingwinner.service.CarService;
+import racingwinner.service.CarWinners;
 import racingwinner.ui.InputView;
 import racingwinner.ui.ResultView;
 
@@ -17,7 +18,8 @@ public class RacingApplication {
 		for (int i = 0; i < inputView.getRepeatCount(); i++) {
 			resultView.result(carService.moveCars());
 		}
-		resultView.printWinner(carService.selectWinners());
+
+		resultView.printWinner(CarWinners.selectWinners(carService.getCars()));
 	}
 
 }
