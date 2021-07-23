@@ -26,7 +26,7 @@ public class CarStadium {
         }
 
         for (Car car : cars) {
-            car.move();
+            car.move(NumberGenerator.createRandomNumbers());
         }
 
         referee.hasPassedTime();

@@ -3,22 +3,25 @@ package step3;
 public class Car {
 
     private CarEngine carEngine;
-    private String currentLocation;
+    private int movedCount = 0;
 
     public Car(CarEngine carEngine) {
         this.carEngine = carEngine;
-        currentLocation = "";
     }
 
-    public void move() {
-        if (!carEngine.canGo(NumberGenerator.createRandomNumbers())) {
+    public void move(int randomValue) {
+        if (!carEngine.canGo(randomValue)) {
             return;
         }
 
-        currentLocation += "-";
+        this.movedCount++;
     }
 
     public void showNowLocation() {
-        System.out.println(currentLocation);
+        ResultView.showCurrentCarLocation(this.movedCount);
+    }
+
+    public int getMovedCount() {
+        return movedCount;
     }
 }
