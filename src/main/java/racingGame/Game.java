@@ -41,11 +41,11 @@ public class Game {
     }
 
     private void valid(int carCount, int repeatCount) {
-        validcarCount(carCount);
+        validCarCount(carCount);
         validRepeatCount(repeatCount);
     }
 
-    private void validcarCount(int carCount) {
+    private void validCarCount(int carCount) {
         if (carCount <= MIN_CAR_COUNT) {
             throw new IllegalArgumentException("자동차 수는 0 혹은 음수가 될 수 없습니다.");
         }
