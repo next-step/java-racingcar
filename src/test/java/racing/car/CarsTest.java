@@ -4,31 +4,44 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.exception.DuplicateKeyException;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class CarsTest {
+    private static final char NAME_WORD = 'A';
     private static final String NAME_DELIMITER = "\\|";
     private Cars initCars(String strNames) {
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
 
-        return new Cars(
+        Cars cars = new Cars();
+        cars.addAll(
                 Arrays.stream(strNameSplitValues)
                         .map(Name::new)
                         .map(Car::new)
                         .collect(Collectors.toList())
         );
+        return cars;
+    }
+
+    private String newAnonymousName(int size) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < size + 1; i++)
+            builder.append(NAME_WORD);
+        return builder.toString();
     }
 
     private String sizeToNames(int size) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            builder.append(i).append("|");
+            builder.append(
+                    newAnonymousName(i)).append("|");
         }
         if (builder.length() > 0)
             return builder.substring(0, builder.length() - 1);
@@ -112,5 +125,19 @@ class CarsTest {
             ).withFailMessage("요청한대로 이동하지 않았습니다.")
                     .isEqualTo(location);
         }
+    }
+
+    @ValueSource(strings = "A|AA|AAA")
+    @ParameterizedTest
+    public void addAllTest(String strNames) {
+        initCars(strNames);
+    }
+
+    @ValueSource(strings = "AA|AA|AAA")
+    @ParameterizedTest
+    public void addAllTest_DuplicateKeyException(String strNames) {
+        assertThatThrownBy(() ->
+            initCars(strNames)
+        ).isInstanceOf(DuplicateKeyException.class);
     }
 }
