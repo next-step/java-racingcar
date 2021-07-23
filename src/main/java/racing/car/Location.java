@@ -23,8 +23,8 @@ public class Location {
         );
     }
 
-    public Location min(Location location) {
-        return new Location(getValue() - location.getValue());
+    public boolean hasValue() {
+        return value > 0;
     }
 
     @Override
