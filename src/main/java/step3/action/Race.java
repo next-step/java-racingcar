@@ -1,42 +1,32 @@
 package step3.action;
 
 import step3.model.Car;
+import step3.model.CarMovement;
 import step3.model.Cars;
-import step3.view.Print;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
 
-    private int raceTimes;
     private int size;
-    private Cars cars = new Cars();
+    private Cars cars = new Cars(new CarMovement());
 
-    public Race(int size, int raceTimes) {
-        this.raceTimes = raceTimes;
+    public Race(int size) {
         cars.makeCars(size);
         this.size = size;
     }
 
-    public void doRace(){
-        for (int time = 0; time < raceTimes; time++) {
-            moveCars(time);
-            Print.print(cars.getCars());
-            System.out.println();
-        }
+    public static Race of(int size) {
+        return new Race(size);
     }
 
-    private void moveCars(int time) {
-        if(time == 0){
-            cars.firstMovement();
-            return;
-        }
+    public void doRace(){
         cars.moveCars();
     }
 
-    public int getRaceTimes() {
-        return raceTimes;
+    public int getCarsSize() {
+        return this.size;
     }
 
     public List<Integer> getPositions() {
@@ -44,17 +34,9 @@ public class Race {
             throw new IllegalStateException("주행할 자동차가 없습니다.");
         }
         List<Integer> result = new ArrayList<>();
-        for(Car car : cars.getCars()){
+        for (Car car : cars.getCars()) {
             result.add(car.getPosition());
         }
         return result;
-    }
-
-    public int getCarsSize() {
-        return this.size;
-    }
-
-    public static Race of(int size, int raceTimes){
-        return new Race(size,raceTimes);
     }
 }

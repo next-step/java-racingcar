@@ -3,13 +3,8 @@ package step3.model;
 import step3.RacingApp;
 import step3.view.ToDash;
 
-import java.util.Random;
-
 public class Car {
-
-    private final int INIT_POSITION = 0;
-    private final Random random = new Random();
-
+    private final int INIT_POSITION = 1;
     private int position;
 
     public Car() {

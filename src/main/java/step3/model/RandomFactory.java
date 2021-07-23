@@ -3,6 +3,7 @@ package step3.model;
 import java.util.Random;
 
 public class RandomFactory {
+
     static final Random random = new Random();
 
     static int getRandomInt(int bound){

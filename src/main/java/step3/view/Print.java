@@ -14,4 +14,10 @@ public class Print {
         }
     }
 
+    public static void print(Integer... count){
+        for (Integer integer : count) {
+            print(ToDash.positionToDash(integer));
+        }
+    }
+
 }
