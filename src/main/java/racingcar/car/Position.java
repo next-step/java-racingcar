@@ -1,13 +1,14 @@
 package racingcar.car;
 
-import java.util.Random;
+import racingcar.util.ValidationUtil;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Position {
     private AtomicInteger position;
-    Random random = new Random();
 
+    public static int defaultDistance = 0;
     public static int forwardDistance = 1;
 
     public Position() {
@@ -18,11 +19,12 @@ public class Position {
         return position.get();
     }
 
-    public boolean isMove() {
-        return random.nextInt(10) >= 4;
+    public boolean isMove(int randomNumber) {
+        return randomNumber >= 4;
     }
 
     public void setPosition(int position) {
+        ValidationUtil.validatePosition(position);
         this.position.accumulateAndGet(position, (x, y) -> (x + y));
     }
 

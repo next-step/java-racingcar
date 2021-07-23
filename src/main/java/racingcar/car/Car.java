@@ -1,7 +1,5 @@
 package racingcar.car;
 
-import racingcar.view.ResultView;
-
 public class Car {
     private Position position;
 
@@ -9,11 +7,13 @@ public class Car {
         this.position = new Position();
     }
 
-    public void move() {
-        if (position.isMove()) {
+    public void move(int randomNumber) {
+        if (position.isMove(randomNumber)) {
             position.moveForward();
         }
+    }
 
-        ResultView.printCarPositionStatus(position);
+    public Position getPosition() {
+        return this.position;
     }
 }

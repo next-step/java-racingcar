@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> cars = new ArrayList<>();
+    public List<Car> cars = new ArrayList<>();
 
     public void setCars(int numberOfCar) {
         for (int i = 0; i < numberOfCar; i++) {
