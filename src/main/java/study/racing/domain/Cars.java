@@ -15,6 +15,16 @@ public class Cars {
         }
     }
 
+    public Cars(int count, String[] carName) {
+        for(int i = 0; i < count; i++){
+            cars.add(readyToCar(carName[i]));
+        }
+    }
+
+    private Car readyToCar(String carName) {
+        return Car.createCar(carName);
+    }
+
     private Car readyToCar() {
         return Car.createCar();
     }

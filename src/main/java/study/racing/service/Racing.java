@@ -14,10 +14,13 @@ public class Racing {
 
     private Cars cars;
 
-    public Racing(int carCount, int roundCount) {
-        //validationValues(carCount, roundCount);
-        this.cars = createCars(carCount);
+    public Racing(String[] carsName, int roundCount) {
+        this.cars = createCars(carsName.length, carsName);
+        playingRounds(roundCount);
+    }
 
+    public Racing(int carCount, int roundCount) {
+        this.cars = createCars(carCount);
         playingRounds(roundCount);
     }
 
@@ -37,9 +40,8 @@ public class Racing {
         return new Cars(carCount);
     }
 
-    private void validationValues(Integer carCount, Integer roundCount) {
-        checkValue(carCount);
-        checkValue(roundCount);
+    private Cars createCars(int carCount,String[] carsName) {
+        return new Cars(carCount,carsName);
     }
 
     private void runningCars() {

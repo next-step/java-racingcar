@@ -1,19 +1,29 @@
 package study.racing.domain;
 
-import static study.racing.common.Common.createRandomNumber;
-
 public class Car {
 
     private static final int LIMIT_NUMBER = 4;
 
     private Distance distance;
 
+    private Name name;
+
     public Car() {
         distance = new Distance();
+        name = new Name();
+    }
+
+    public Car(String carName) {
+        distance = new Distance();
+        name = new Name(carName);
     }
 
     public static Car createCar() {
         return new Car();
+    }
+
+    public static Car createCar(String carName) {
+        return new Car(carName);
     }
 
     public Distance getDistance() {
@@ -28,5 +38,9 @@ public class Car {
         if(checkMoveableCar(randomNumber)){
             distance.move();
         }
+    }
+
+    public Name getName() {
+        return name;
     }
 }

@@ -43,4 +43,13 @@ public class Common {
     public static void printNewLine() {
         System.out.print("\n");
     }
+
+    public static String inputCarsNameWithMessage(String message) {
+        printMessage(message);
+        return scanner.nextLine();
+    }
+
+    public static String[] splitCarsName(String carsName) {
+        return carsName.split(",");
+    }
 }

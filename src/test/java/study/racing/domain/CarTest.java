@@ -38,4 +38,12 @@ class CarTest {
         car.moveTheCar(input);
         assertThat(car.getDistance().getMoveDistance()).isEqualTo(expected);
     }
+
+    @DisplayName("차객체 생성시 이름주입 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"test1,test1","test!,test!","12345,12345","가나다라마,가나다라마"})
+    void 차이름입력테스트(String input, String expected) {
+        Car car = Car.createCar(input);
+        assertThat(car.getName().getCarName()).isEqualTo(expected);
+    }
 }
