@@ -1,12 +1,6 @@
-package game;
+package racing;
 
 public class Validation {
-
-    private final Utils utils;
-
-    public Validation(Utils utils) {
-        this.utils = utils;
-    }
 
     public void validStringEmpty(String value) {
         if (value.isEmpty()) {
@@ -15,12 +9,12 @@ public class Validation {
     }
 
     public void validStringLength(String value, int checkLength) {
-        if (utils.stringLength(value) > checkLength) {
+        if (value.length() > checkLength) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할수 없습니다.");
         }
     }
 
-    public void validNUmberChecK(String value) {
+    public void validNumberCheck(String value) {
         String regExp = "^\\d+$";
         if (!value.matches(regExp)) {
             throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
