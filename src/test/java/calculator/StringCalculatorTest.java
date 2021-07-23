@@ -17,4 +17,16 @@ class StringCalculatorTest {
         int result = StringCalculator.sub(3,1);
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    void mul(){
+        int result = StringCalculator.mul(3,2);
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    void div(){
+        int result = StringCalculator.div(6,2);
+        assertThat(result).isEqualTo(3);
+    }
 }
