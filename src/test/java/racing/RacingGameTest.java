@@ -16,9 +16,9 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("자동차와_시도할_회수는_3회씩_결과는_빈_문자열이_아닐것이다")
+    @DisplayName("자동차와_시도할_회수는_3회씩_결과_문자열은_5글자_이상일_것이다")
     void run() throws Exception {
         String actual = RacingGame.of(strategy, new int[]{3, 3}).run();
-        assertThat(actual).isNotEmpty();
+        assertThat(actual.length()).isGreaterThanOrEqualTo(5);
     }
 }
