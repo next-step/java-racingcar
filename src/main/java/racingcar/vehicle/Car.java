@@ -25,6 +25,6 @@ public class Car {
     }
 
     public int getDistance() {
-        return distance.get();
+        return distance.value();
     }
 }

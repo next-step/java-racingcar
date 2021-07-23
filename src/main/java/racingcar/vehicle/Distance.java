@@ -24,10 +24,10 @@ public class Distance implements Comparable<Distance> {
             throw new InvalidMoveDistanceException();
         }
 
-        return new Distance(this.get() + moveDistance);
+        return new Distance(this.distance + moveDistance);
     }
 
-    public int get() {
+    public int value() {
         return distance;
     }
 
@@ -66,10 +66,6 @@ public class Distance implements Comparable<Distance> {
 
     @Override
     public int compareTo(Distance o) {
-        if (this.distance > o.distance) {
-            return 1;
-        }
-
-        return -1;
+        return Integer.compare(this.distance, o.distance);
     }
 }
