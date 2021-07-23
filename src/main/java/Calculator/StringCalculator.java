@@ -27,6 +27,12 @@ public class StringCalculator {
         return output;
     }
 
+    private void validateString(String s){
+        if (s == null || s.trim().isEmpty()){
+            throw new IllegalArgumentException("빈값을 입력받았습니다.");
+        }
+    }
+
     void calculateSplitedString(int index) {
         int size = splitedString.length;
         if (index + 1 == size) throw new IllegalArgumentException("숫자가 부족합니다.");
