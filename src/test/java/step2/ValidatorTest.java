@@ -22,4 +22,12 @@ public class ValidatorTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("연산 기호가 잘못됐어요!");
 	}
+
+	@DisplayName(value = "숫자 형식 검증 테스트")
+	@Test
+	void validateNumberTest() {
+		assertThatThrownBy(() -> validateNumber(""))
+			.isInstanceOf(NumberFormatException.class)
+			.hasMessageContaining("숫자 형식이 잘못됐어요!");
+	}
 }
