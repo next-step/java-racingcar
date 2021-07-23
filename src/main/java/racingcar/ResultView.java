@@ -22,4 +22,5 @@ public class ResultView {
         }
         System.out.println("우승자는 " + winnerText + "입니다.");
     }
+
 }

@@ -5,18 +5,19 @@ import java.util.List;
 
 public class Car {
     private static final int GO_VALUE = 4;
+
     private final String name;
 
     private int moveSpace;
 
-    public Car(String name, int moveSpace) {
+    private Car(String name, int moveSpace) {
         this.name = name;
         this.moveSpace = moveSpace;
     }
 
-    public static List<Car> createCars(String[] carNames, int carNumber) {
+    public static List<Car> createCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carNumber; i++) {
+        for(int i = 0; i < carNames.length; i++) {
             cars.add(new Car(carNames[i], 0));
         }
         return cars;

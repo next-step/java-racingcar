@@ -3,7 +3,6 @@ package racingcar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int MAX_VALUE = 10;
@@ -12,28 +11,20 @@ public class RacingGame {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        String[] carNames = inputView.insertCarName();
-        int carNumber = carNames.length;
+        String[] carNames = inputView.insertCarNames();
         int tryNumber = inputView.getNumberOfTry();
 
-        List<Car> cars = Car.createCars(carNames, carNumber);
+        List<Car> cars = Car.createCars(carNames);
 
         for(int i = 0; i < tryNumber; i++) {
             printAll(cars);
-            System.out.println();
         }
 
         Collections.reverse(cars);
 
-        int first = cars.stream().map(Car::getMoveSpace)
-                                 .max(Integer::compareTo)
-                                 .get();
+        Winner winner = Winner.of(Winner.resultPointOfFirst(cars));
 
-        List<Car> winners = cars.stream()
-                                .filter(car -> car.getMoveSpace() == first)
-                                .collect(Collectors.toList());
-
-        resultView.getWinner(winners);
+        winner.extracted(resultView, cars, winner);
     }
 
     public static void printAll(List<Car> cars) {
@@ -46,5 +37,6 @@ public class RacingGame {
 
             resultView.print(car.getName(), moveNumber);
         }
+        System.out.println();
     }
 }

@@ -13,7 +13,7 @@ class RacingGameTest {
     void createCarTest() {
         int carNumber = 1;
         String[] carNames = {"pobi"};
-        List<Car> cars = Car.createCars(carNames, carNumber);
+        List<Car> cars = Car.createCars(carNames);
 
         assertThat(cars.get(0).getMoveSpace()).isEqualTo(0);
     }

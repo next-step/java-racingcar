@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarTest {
     Car car;
@@ -15,7 +16,9 @@ class CarTest {
 
     @BeforeEach
     void setUpCar() {
-        car = new Car("pobi", 0);
+        String[] carNames = {"pobi"};
+        List<Car> cars = Car.createCars(carNames);
+        car = cars.get(0);
         random = new Random();
     }
 
@@ -39,7 +42,7 @@ class CarTest {
         int carNumber = 3;
         String[] carNames = "pobi,crong,honux".split(",");
 
-        List<Car> cars = Car.createCars(carNames, carNames.length);
+        List<Car> cars = Car.createCars(carNames);
 
         assertThat(cars.size()).isEqualTo(carNumber);
     }
@@ -47,8 +50,17 @@ class CarTest {
     @Test
     @DisplayName("자동차 이름 부여하기")
     void createCars() {
-        Car car = new Car("pobi", 0);
         assertThat(car.getName()).isEqualTo("pobi");
     }
 
+    @Test
+    @DisplayName("자동차 이름 5글자 넘으면 예외 발생")
+    void createCarExceptionTest() {
+        InputView inputView = new InputView();
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            inputView.splitCarName("asdasd,abc");
+        });
+
+        assertThat(exception.getMessage()).contains("5글자");
+    }
 }
