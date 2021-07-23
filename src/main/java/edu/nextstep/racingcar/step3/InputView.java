@@ -1,6 +1,13 @@
 package edu.nextstep.racingcar.step3;
 
+import edu.nextstep.racingcar.step3.app.Car;
+import edu.nextstep.racingcar.step3.app.Vehicle;
+import edu.nextstep.racingcar.step3.util.RandomUtils;
+
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class InputView {
 
@@ -16,6 +23,13 @@ public class InputView {
         System.out.println(QUESTION_NUMBER_OF_ATTEMPTS);
         int numberOfAttempts = scanner.nextInt();
 
-        System.out.println(String.format("%s, %s", numberOfCars, numberOfAttempts));
+        ResultView resultView = new ResultView(make(numberOfCars), numberOfAttempts);
+        resultView.play();
+    }
+
+    private static List<Vehicle> make(Integer numberOfCars) {
+        return IntStream.range(0, numberOfCars)
+                .mapToObj(idx -> new Car(10, 4, new RandomUtils()))
+                .collect(Collectors.toList());
     }
 }
