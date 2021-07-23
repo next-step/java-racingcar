@@ -88,7 +88,7 @@ class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource({
             "2 + 3 * 4 / 2, 10",
-            "-1 * -2 + 8 * 30, 480"
+            "-1 * -2 + 8 * 30, 300"
     })
     void 계산테스트(String input, int answer) {
         int output = stringCalculator.calculate(input);
