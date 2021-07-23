@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import racingcar.vehicle.Car;
 import racingcar.vehicle.CarFactory;
 import racingcar.vehicle.Cars;
-import racingcar.view.ResultView;
 
 public class Game {
 
@@ -27,10 +26,6 @@ public class Game {
         cars.doDrive();
     }
 
-    public void printProgress() {
-        ResultView.pirntProgress(cars);
-    }
-
     public Cars getWinners() {
         int farthestDistance = cars.getFarthestDistance();
 
@@ -43,5 +38,9 @@ public class Game {
 
     public int getDriveCount() {
         return driveCount;
+    }
+
+    public Cars getCars() {
+        return cars;
     }
 }

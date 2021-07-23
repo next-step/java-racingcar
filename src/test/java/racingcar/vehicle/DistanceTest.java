@@ -24,7 +24,7 @@ class DistanceTest {
         Distance distance = new Distance(initDistance);
 
         // then
-        assertThat(distance.get()).isEqualTo(initDistance);
+        assertThat(distance.value()).isEqualTo(initDistance);
     }
 
     @DisplayName("[실패] 생성 - 최소 값 보다 작은 초기 값")
