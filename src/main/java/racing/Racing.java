@@ -23,13 +23,13 @@ public class Racing {
 		return setupPlayer(playerArray);
 	}
 
-	public void validStringEmpty(String value) {
+	private void validStringEmpty(String value) {
 		if (value.isEmpty()) {
 			throw new IllegalArgumentException("자동차는 최소 1대 이상이어야 한다.");
 		}
 	}
 
-	public List<Car> setupPlayer(String[] playerArray) {
+	private List<Car> setupPlayer(String[] playerArray) {
 		for (String playerName : playerArray) {
 			Car car = new Car(playerName);
 			cars.add(car);
@@ -40,11 +40,8 @@ public class Racing {
 	public void playingGame(String inputValue) {
 		int tryGameCount = toInt(inputValue);
 		messageBox.resultMessage();
-		for (int i = 0; i < tryGameCount; i++) {
-			carRacing();
-		}
-		String winnerPlayer = winnerPlayer().trim();
-		messageBox.winnerMessageBox(winnerPlayer.substring(0, winnerPlayer.length() - 1));
+		carRacing(tryGameCount);
+		messageBox.winnerMessageBox(winnerPlayer().substring(0, winnerPlayer().length() - 1));
 	}
 
 	public int toInt(String value) {
@@ -52,23 +49,25 @@ public class Racing {
 		return Integer.parseInt(value);
 	}
 
-	public void validNumberCheck(String value) {
+	private void validNumberCheck(String value) {
 		String regExp = "^\\d+$";
 		if (!value.matches(regExp)) {
 			throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
 		}
 	}
 
-	private void carRacing() {
-		for (Car car : cars) {
-			int resultRacing = car.carRacing(randomValue());
-			maxValueCheck(resultRacing);
-			messageBox.racingResultMessage(car.getCarName(), getRacingResultByString(resultRacing));
+	public void carRacing(int tryGameCount) {
+		for (int i = 0; i < tryGameCount; i++) {
+			for (Car car : cars) {
+				int resultRacing = car.carMove(randomValue());
+				maxValueCheck(resultRacing);
+				messageBox.racingResultMessage(car.getCarName(), getRacingResultByString(resultRacing));
+			}
+			messageBox.commonMessageBox("");
 		}
-		messageBox.commonMessageBox("");
 	}
 
-	private String getRacingResultByString(int racingResult) {
+	public String getRacingResultByString(int racingResult) {
 		StringBuilder result = new StringBuilder(racingResult);
 		for (int i = 0; i < racingResult; i++) {
 			result.append("-");
@@ -90,12 +89,12 @@ public class Racing {
 	public String winnerPlayer() {
 		StringBuilder winnerResult = new StringBuilder();
 		for (Car car : cars) {
-			winnerResult.append(searchWinner(car.resultRacing(),car.getCarName()));
+			winnerResult.append(searchWinner(car.resultRacing(), car.getCarName()));
 		}
 		return winnerResult.toString();
 	}
 
-	public String searchWinner(int carRacingResult,String carName) {
+	public String searchWinner(int carRacingResult, String carName) {
 		StringBuilder winnerName = new StringBuilder();
 		if (carRacingResult == MAX_VALUE) {
 			winnerName.append(carName);
