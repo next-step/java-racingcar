@@ -19,9 +19,9 @@ class RoundTest {
     @BeforeEach
     void setUp() {
         cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
+        cars.add(new Car(new Name("1번선수")));
+        cars.add(new Car(new Name("2번선수")));
+        cars.add(new Car(new Name("3번선수")));
     }
 
     @DisplayName("자동차 대수가 0대 이하일 경우 IllegalArgumentException throw")

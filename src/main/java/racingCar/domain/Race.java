@@ -16,16 +16,17 @@ public class Race {
     private final int MIN_VALUE_BY_CAR = 1;
     private final static String IS_NOT_DUAL_CAR_COUNT_ERROR_MESSAGE = "자동차 대수는 1대 이상이어야 합니다.";
     private final static String IS_NOT_DUAL_ROUND_COUNT_ERROR_MESSAGE = "라운드는 1라운드 이상이어야 합니다.";
+    private final String COMMA = ",";
     private final int ZERO = 0;
 
-    public Race(int carCount, int roundCount) {
-        validateInput(carCount, roundCount);
-        lineUp(carCount);
+    public Race(String names, int roundCount) {
+        validateInput(names, roundCount);
+        lineUp(names);
         startRace(roundCount);
     }
 
-    private void validateInput(int carCount, int roundCount) {
-        if(isCarCountOverZero(carCount)) {
+    private void validateInput(String names, int roundCount) {
+        if(isCarCountOverZero(names)) {
             throw new IllegalArgumentException(IS_NOT_DUAL_CAR_COUNT_ERROR_MESSAGE);
         }
         if(isRoundCountOverZero(roundCount)) {
@@ -33,20 +34,23 @@ public class Race {
         }
     }
 
-    private boolean isCarCountOverZero(int carCount) {
-        return carCount < MIN_VALUE_BY_CAR;
+    private boolean isCarCountOverZero(String names) {
+        return names.split(COMMA).length < MIN_VALUE_BY_CAR;
     }
 
     private boolean isRoundCountOverZero(int roundCount) {
         return roundCount < MIN_VALUE_BY_CAR;
     }
 
-    private void lineUp(int carCount) {
-        this.rounds.add(new Round(
-                Stream.generate(Car::new)
-                        .limit(carCount)
-                        .collect(toList())
-        ));
+    private void lineUp(String names) {
+        List<Car> cars = new ArrayList();
+        String[] strings = names.split(COMMA);
+
+        for(String name : strings) {
+            cars.add(new Car(new Name(name)));
+        }
+
+        this.rounds.add(new Round(cars));
     }
 
     private void startRace(int roundCount) {
