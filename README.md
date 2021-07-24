@@ -18,8 +18,8 @@
 - [X] 입력 클래스(InputView) 추가
   - [X] 자동차 대수 입력 기능 구현
   - [X] 이동 횟수 입력 기능 구현
-- [ ] 출력 클래스(ResultView) 추가
-  - [ ] 실행 결과 출력 기능 구현
+- [X] 출력 클래스(ResultView) 추가
+  - [X] 실행 결과 출력 기능 구현
 - [X] 유틸 클래스(Util) 추가
   - [X] 0 ~ 9 랜덤 값 생성 함수(generateForwardValue) 기능 테스트 구현  
   - [X] 0 ~ 9 랜덤 값 생성 함수 기능 구현
@@ -28,8 +28,8 @@
   - [ ] 여러 개의 차를 관리하는 ArrayList 변수(racingCars) 추가
   - [ ] 경주 진행 함수(startRace) 구현
   
-- [ ] 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분
-- [ ] UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리
+- [X] 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분
+- [X] UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리
 
 ## 🕵️‍ 제약사항
 - 모든 로직에 단위 테스트를 구현한다. 단, UI(System.out, System.in) 로직은 제외
