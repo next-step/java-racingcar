@@ -15,4 +15,8 @@ public class RacingGameResponseDto {
     public List<CarResponseDto> getCars() {
         return cars;
     }
+
+    public boolean isFinish() {
+        return finish;
+    }
 }

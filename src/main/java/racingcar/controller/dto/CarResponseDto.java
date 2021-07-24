@@ -5,7 +5,7 @@ import racingcar.domain.Car;
 public class CarResponseDto {
 
     private String name;
-    private int numberOfMove = 0;
+    private int numberOfMove;
 
     private CarResponseDto(Car car) {
         this.name = car.getName();

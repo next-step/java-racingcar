@@ -9,10 +9,6 @@ public class RacingGame {
     private List<Car> cars;
     private Random random = new Random();
 
-    private RacingGame() {
-
-    }
-
     public RacingGame(List<String> names) {
         this.cars = initialize(names);
     }
