@@ -7,3 +7,17 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+---
+### 1단계 학습 테스트
+#### String 클래스에 대한 학습 테스트 
+- TODO
+  - ~~1) split test~~
+  - ~~2) substring test~~
+  - ~~3) exception test~~
+    
+#### Set Collection에 대한 학습 테스트
+- TODO
+    - ~~1) Set size test~~
+    - ~~2) @ParameterizedTest~~
+    - ~~3) @CsvSource~~
