@@ -1,7 +1,3 @@
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
-
-import static com.sun.tools.doclint.Entity.minus;
-
 public class Calculator {
 
     public static final String ADD = "+";
@@ -11,48 +7,58 @@ public class Calculator {
 
     public static int result = 0;
 
-    private void decide(String inputStr) {
-
+    public Calculator(String inputStr)  {
+        if(inputStr.equals("") || inputStr == null) {
+            throw new IllegalArgumentException();
+        }
         String[] splitStr = inputStr.split(" ");
+        judge(splitStr);
+    }
+
+    public int judge(String[] splitStr) {
+
+
         for (int i = 0; i < splitStr.length; i++) {
-            int rightInt = Integer.parseInt(splitStr[i + 1]);
-            switch (splitStr[i]) {
-                case ADD:
-                    add(rightInt);
-                    break;
-                case MINUS:
-                    minus(rightInt);
-                    break;
-                case DIVISION:
-                    devision(rightInt);
-                    break;
-                case MULTIPLICATION:
-                    mutiplication(rightInt);
-                    break;
+            if(!Util.isNumeric(splitStr[i])) {
+                switch (splitStr[i]) {
+                    case ADD:
+                        result = add(result , Integer.parseInt(splitStr[i + 1]));
+                        break;
+                    case MINUS:
+                        result = minus(result ,Integer.parseInt(splitStr[i + 1]));
+                        break;
+                    case DIVISION:
+                        result = devision(result ,Integer.parseInt(splitStr[i + 1]));
+                        break;
+                    case MULTIPLICATION:
+                        result = mutiplication(result ,Integer.parseInt(splitStr[i + 1]));
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
             }
         }
-
-        resultPrint();
+        return result;
     }
 
-    private void resultPrint() {
-        System.out.println("결과 : " + result);
+    public int getResult() {
+        return result;
     }
 
-    private void mutiplication(int rightInt) {
-        result *= rightInt;
+    private int mutiplication(int result, int rightInt) {
+        return result *= rightInt;
     }
 
-    private void devision(int rightInt) {
-        result /= rightInt;
+    private int devision(int result, int rightInt) {
+        return result /= rightInt;
     }
 
-    private void minus(int rightInt) {
-        result -= rightInt;
+    private int minus(int result, int rightInt) {
+        return result -= rightInt;
     }
 
-    private void add(int rightInt) {
-        result += rightInt;
+    private int add(int result, int rightInt) {
+        return result += rightInt;
     }
 
     public static void main(String[] args) throws Exception {
@@ -61,10 +67,8 @@ public class Calculator {
         System.in.read(str, 0, 256);
         String readStr = new String(str);
 
-        Calculator calculator = new Calculator();
-        calculator.decide(readStr);
-
-
+        Calculator calculator = new Calculator(readStr);
+        System.out.println("결과 : " + calculator.getResult());
 
     }
 }
