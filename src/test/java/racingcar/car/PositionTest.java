@@ -3,13 +3,11 @@ package racingcar.car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.exception.InvalidCarException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PositionTest {
-    Position position;
+    private Position position;
 
     @BeforeEach
     void init() {
@@ -26,13 +24,4 @@ public class PositionTest {
 
         assertThat(position.getPosition()).isEqualTo(2);
     }
-
-    @Test
-    @DisplayName("Car 전진 실패 테스트(한번에 2칸 움직이려고 할 때)")
-    void 전진_실패() {
-        assertThatThrownBy(() -> position.setPosition(2))
-                .isInstanceOf(InvalidCarException.class)
-                .hasMessage("위치가 올바르지 않습니다.");
-    }
-
 }

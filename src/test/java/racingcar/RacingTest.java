@@ -22,7 +22,7 @@ public class RacingTest {
         InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
         System.setIn(in);
 
-        racing.userInputNumberOfCar();
+        racing.getUserInputCountOfCar();
         assertThat(racing.getCars().cars.size()).isEqualTo(input);
     }
 
@@ -33,7 +33,7 @@ public class RacingTest {
         InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> racing.userInputNumberOfCar())
+        assertThatThrownBy(() -> racing.getUserInputCountOfCar())
                 .isInstanceOf(InvalidUserInputException.class)
                 .hasMessage("2개 이상의 자동차를 입력해야 시작 가능합니다.");
     }
@@ -46,8 +46,20 @@ public class RacingTest {
         InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
         System.setIn(in);
 
-        racing.userInputNumberOfRacing();
+        racing.getUserInputCountOfRacing();
         assertThat(racing.getRacingTime()).isEqualTo(input);
+    }
+
+    @Test
+    @DisplayName("사용자 게임 회수 입력 실패 테스트(음수 입력)")
+    void 게임_회수_입력_실패_음수입력() {
+        int input = -1;
+        InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> racing.getUserInputCountOfRacing())
+                .isInstanceOf(InvalidUserInputException.class)
+                .hasMessage("1회 이상의 게임 횟수를 입력해야 시작 가능합니다.");
     }
 
     @Test
@@ -57,7 +69,7 @@ public class RacingTest {
         InputStream in = new ByteArrayInputStream(Integer.toString(input).getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> racing.userInputNumberOfRacing())
+        assertThatThrownBy(() -> racing.getUserInputCountOfRacing())
                 .isInstanceOf(InvalidUserInputException.class)
                 .hasMessage("0은 입력이 불가합니다.");
     }
