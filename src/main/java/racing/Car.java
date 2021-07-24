@@ -6,9 +6,15 @@ public class Car {
 	private final String carName;
 	private int raceDistance;
 
-	public Car(String carName, Validation validation) {
-		validation.validStringLength(carName, CHECK_LENGTH);
+	public Car(String carName) {
+		validStringLength(carName);
 		this.carName = carName;
+	}
+
+	public void validStringLength(String value) {
+		if (value.length() > CHECK_LENGTH) {
+			throw new IllegalArgumentException("자동차 이름은 5글자를 초과할수 없습니다.");
+		}
 	}
 
 	public int carRacing(int value) {
