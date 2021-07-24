@@ -4,10 +4,12 @@ import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.ui.ResultView;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.utils.StringUtils.inputStrSeperator;
 
 public class RacingCarTest {
@@ -39,7 +41,14 @@ public class RacingCarTest {
         String inputStr = "aaaaaa";
         assertThatThrownBy(() -> new Car(inputStr))
                 .isInstanceOf(RuntimeException.class);
+    }
 
+    @Test
+    @DisplayName("자동차 이름 출력")
+    void printName(){
+        String[] carStrArr = Arrays.array("pobi", "crong", "honux");
+        Cars cars = new Cars(carStrArr);
+        ResultView.printMovingCars(cars);
     }
 
     @Test
@@ -64,26 +73,26 @@ public class RacingCarTest {
         assertThat(move).isTrue();
         assertThat(stop).isFalse();
     }
-//    @Test
-//    @DisplayName("우승자 확인")
-//    void winnersTest(){
-//        Car pobi = new Car("pobi",5);
-//        Car crong = new Car("crong",5);
-//        Car honux = new Car("honux",2);
-//        List<Car> carList = new ArrayList<>();
-//        carList.add(pobi);
-//        carList.add(crong);
-//        carList.add(honux);
-//
-//        Cars cars = new Cars(carList);
-//        List<Car> winners = cars.getWinners();
-//        assertThat(winners).contains(pobi,crong);
-//    }
 
-//    @Test
-//    @DisplayName("게임 테스트")
-//    void playTest(){
-//        List<Car> winners = racingCar.play("pobi,crong,honux", 5);
-//        winners.stream().map(w -> w.getName()).forEach(System.out::println);
-//    }
+    @Test
+    @DisplayName("우승자 확인")
+    void winnersTest(){
+        String[] carStrArr = Arrays.array("pobi", "crong", "honux");
+        Cars cars = new Cars(carStrArr);
+        List<Car> carsList = cars.getCars();
+        Car winnerCar = carsList.get(0);
+        for(int i=0; i<5; i++){
+            winnerCar.move(4);
+        }
+        List<Car> winners = cars.getWinners();
+        Car pobi = new Car("pobi");
+        assertThat(winners).contains(pobi);
+    }
+
+    @Test
+    @DisplayName("게임 테스트")
+    void playTest(){
+        List<Car> winners = racingCar.play("pobi,crong,honux", 5);
+        winners.stream().map(w -> w.getName()).forEach(System.out::println);
+    }
 }

@@ -15,13 +15,13 @@ public class Car {
         this.position = 0;
     }
 
-    public Car(String name, int position) {
-        if (name.length() > 5) {
-            throw new RuntimeException();
-        }
-        this.name = name;
-        this.position = position;
-    }
+//    public Car(String name, int position) {
+//        if (name.length() > 5) {
+//            throw new RuntimeException();
+//        }
+//        this.name = name;
+//        this.position = position;
+//    }
 
     public void move(int randomNumber) {
         if(isMove(randomNumber)){
