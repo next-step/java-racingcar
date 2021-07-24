@@ -22,6 +22,7 @@ public class RacingApp {
         Race race = new Race(nameList, moveCount);
 
         start(race);
+        award(race);
     }
 
     private void start(Race race) {
@@ -40,6 +41,10 @@ public class RacingApp {
             this.resultView.printCarDistance(round.getCar(i));
         }
         this.resultView.printEnter();
+    }
+
+    private void award(Race race) {
+        resultView.printWinners(race.announceWinners());
     }
 
 }
