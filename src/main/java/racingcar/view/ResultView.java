@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.car.Position;
-
 public class ResultView {
 
     private static final StringBuilder carStatusString = new StringBuilder();
@@ -11,10 +9,10 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void printCarPositionStatus(Position position) {
+    public static void printCarPositionStatus(int position) {
         carStatusString.setLength(0);
 
-        for (int i = 0; i < position.getPosition(); i++) {
+        for (int i = 0; i < position; i++) {
             carStatusString.append("-");
         }
 
