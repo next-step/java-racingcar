@@ -52,9 +52,17 @@ public class Racing {
 		for (Car car : cars) {
 			int resultRacing = car.carRacing(randomValue());
 			maxValueCheck(resultRacing);
-			messageBox.racingResultMessage(car.getCarName(), resultRacing);
+			messageBox.racingResultMessage(car.getCarName(), getRacingResultByString(resultRacing));
 		}
 		messageBox.commonMessageBox("");
+	}
+
+	private String getRacingResultByString(int racingResult) {
+		StringBuilder result = new StringBuilder(racingResult);
+		for (int i = 0; i < racingResult; i++) {
+			result.append("-");
+		}
+		return result.toString();
 	}
 
 	private void maxValueCheck(int resultValue) {
