@@ -12,18 +12,6 @@ public class RacingGame {
     // Observable Interfaces
     private OutputInterface outputInterface;
 
-    public void attach(OutputInterface output) {
-        this.outputInterface = output;
-    }
-
-    public void detach() {
-        this.outputInterface = null;
-    }
-
-    public void send() {
-        this.outputInterface.output(this);
-    }
-
     // Class Members
     private int numberOfTurns;
     private int currentTurn = 0;
@@ -39,6 +27,20 @@ public class RacingGame {
         this.cars = Stream.generate(Car::new)
                 .limit(numberOfCars)
                 .collect(Collectors.toList());
+    }
+
+    public void attach(OutputInterface output) {
+        this.outputInterface = output;
+    }
+
+    public void detach() {
+        this.outputInterface = null;
+    }
+
+    public void send() {
+        if (this.outputInterface != null) {
+            this.outputInterface.output(this);
+        }
     }
 
     public int getCurrentTurn() {
