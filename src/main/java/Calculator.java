@@ -9,7 +9,7 @@ public class Calculator {
     public static final String DIVISION = "/";
     public static final String MULTIPLICATION = "*";
 
-    public static final int result = 0;
+    public static int result = 0;
 
     private void decide(String inputStr) {
 
@@ -45,7 +45,7 @@ public class Calculator {
     }
 
     private void add(int leftInt , int rightInt) {
-
+        result = leftInt + rightInt;
     }
 
     public static void main(String[] args) throws Exception {
