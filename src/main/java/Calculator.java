@@ -36,6 +36,7 @@ public class Calculator {
     }
 
     private void mutiplication(int leftInt, int rightInt) {
+        result *= rightInt;
     }
 
     private void devision(int leftInt, int rightInt) {
