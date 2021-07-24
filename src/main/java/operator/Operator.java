@@ -2,5 +2,6 @@ package operator;
 
 public interface Operator {
 
-    int calculate(double leftHand, double rightHand);
+    boolean isTarget(String input);
+    int calculate(int leftHand, int rightHand);
 }
