@@ -50,4 +50,7 @@ public class Racing {
         return cars.getCars();
     }
 
+    public List<Car> getWinnersName() {
+        return cars.getWinners();
+    }
 }

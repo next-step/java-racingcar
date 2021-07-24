@@ -2,8 +2,8 @@ package study.racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -47,5 +47,41 @@ class CarsTest {
     }
 
     assertThat(cars.getMaxMoveDistance()).isGreaterThan(target);
+  }
+
+  @DisplayName("우승자를 알아내기 위해 경주완료시 최대값 가져오기 테스트.")
+  @Test
+  void 경주최종거리비교() {
+
+    Cars cars = new Cars("a,b,c");
+    int randomValue = 6;
+    String winner = "b";
+    
+    for (Car car : cars.getCars()) {
+      movingCarForWinner(randomValue, car, winner);
+    }
+
+    assertThat(cars.getWinners()).extracting(car -> car.getName().getCarName()).containsExactly("b");
+  }
+
+  private void movingCarForWinner(int randomValue, Car car, String winner) {
+    if(winner.equals(car.getName().getCarName())){
+      car.moveTheCar(randomValue);
+    }
+  }
+
+  @DisplayName("우승자 이름 가져오기 테스트.")
+  @Test
+  void 경주승링자이름알기() {
+
+    Cars cars = new Cars("a,b,c");
+    int randomValue = 6;
+    String winner = "b";
+
+    for (Car car : cars.getCars()) {
+      movingCarForWinner(randomValue, car, winner);
+    }
+
+    assertThat(cars.getWinners()).extracting(car -> car.getName().getCarName()).containsExactly("b");
   }
 }

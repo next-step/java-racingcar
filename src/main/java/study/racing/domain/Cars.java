@@ -1,12 +1,12 @@
 package study.racing.domain;
 
+import static study.racing.common.Common.createRandomNumber;
+import static study.racing.common.Common.splitCarsName;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import study.racing.common.Common;
-
-import static study.racing.common.Common.createRandomNumber;
-import static study.racing.common.Common.splitCarsName;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -45,5 +45,11 @@ public class Cars {
 
     public void moveTheCar(){
         cars.forEach(car -> car.moveTheCar(createRandomNumber()));
+    }
+
+    public List<Car> getWinners() {
+        return cars.stream()
+            .filter(car -> car.isWinner(getMaxMoveDistance()))
+            .collect(Collectors.toList());
     }
 }

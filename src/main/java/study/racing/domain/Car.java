@@ -47,4 +47,8 @@ public class Car {
     public int maxDistance(int moveDistance) {
         return distance.getMaxValue(moveDistance);
     }
+
+    public boolean isWinner(int maxMoveDistance) {
+        return distance.getMoveDistance() == maxMoveDistance;
+    }
 }
