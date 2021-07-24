@@ -1,7 +1,5 @@
 package racingcar.car;
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +15,6 @@ public class Cars {
         for (int i = 0; i < countOfCar; i++) {
             addCar(new Car());
         }
-    }
-
-    public void race() {
-        for (Car car : cars) {
-            car.move();
-            ResultView.printCarPositionStatus(car.getPosition());
-        }
-        System.out.println();
     }
 
     public List<Car> getCars() {
