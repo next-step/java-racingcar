@@ -8,26 +8,26 @@ import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class WinnerCarsTest {
+class SelectingWinnerCarsTest {
 
     @DisplayName("입력된 자동차 플레이어만큼 Cars가 만들어진다")
     @Test
     public void should_select_winner_cars() throws Exception {
         //arrange
-        WinnerCars winnerCars = makeCarWinners();
+        SelectingWinnerCars selectingWinnerCars = makeCarWinners();
         Set<String> expectedWinners = new HashSet<String>(){{
             add("car3");
         }};;
 
         //act
-        Set<String> winners = winnerCars.selectWinnersName();
+        Set<String> winners = selectingWinnerCars.selectWinnersName();
 
         //assert
         assertThat(winners).isEqualTo(expectedWinners);
     }
 
     @NotNull
-    private WinnerCars makeCarWinners() {
+    private SelectingWinnerCars makeCarWinners() {
         CarPosition carPosition1 = new CarPosition();
         CarPosition carPosition2 = new CarPosition();
         CarPosition carPosition3 = new CarPosition();
@@ -38,7 +38,7 @@ class WinnerCarsTest {
         Car car2 = new Car(new Player("car2"), carPosition2);
         Car car3 = new Car(new Player("car3"), carPosition3);
 
-        return new WinnerCars(Arrays.asList(car1, car2, car3));
+        return new SelectingWinnerCars(Arrays.asList(car1, car2, car3));
     }
 
     private void moveCarPosition(CarPosition carPosition1, CarPosition carPosition2, CarPosition carPosition3) {

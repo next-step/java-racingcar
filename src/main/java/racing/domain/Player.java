@@ -7,7 +7,8 @@ public class Player {
 
     private final String name;
 
-    public Player(String name) {
+    public Player(String name) throws CarNameException {
+        validate(name);
         this.name = name;
     }
 
@@ -15,8 +16,10 @@ public class Player {
         return name;
     }
 
-    public boolean isNameAvailable() {
-        return name.length() <= getLimitValue();
+    public void validate(String name) throws CarNameException {
+        if (name.length() > getLimitValue()) {
+            throw new CarNameException();
+        }
     }
 
     protected int getLimitValue() {

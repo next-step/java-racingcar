@@ -2,11 +2,16 @@ package racing.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.CarNameException;
 import racing.domain.Players;
 import racing.domain.Player;
 import racing.view.InputCarPlayer;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 
 class InputCarPlayerTest {
@@ -28,15 +33,14 @@ class InputCarPlayerTest {
     }
 
     @Test
-    @DisplayName("경주 참가 플레이어 이름은 반드시 5자여야하는데 이를 초과할경우 빈 players값이 반환된다")
+    @DisplayName("경주 참가 플레이어 이름은 반드시 5자여야하는데 이를 초과할경우 빈 CarNameException 반환된다")
     public void must_be_five_length_below_player_name() throws Exception {
         //arrange
         String inputValue = "pobi,crong,honuxxxx";
 
-        //act
-        Players players = InputCarPlayer.createPlayers(inputValue);
-
-        //assert
-        assertThat(players.getPlayers()).isEmpty();
+        //act, assert
+        assertThatExceptionOfType(CarNameException.class).isThrownBy(() -> {
+            InputCarPlayer.createPlayers(inputValue);
+        });
     }
 }

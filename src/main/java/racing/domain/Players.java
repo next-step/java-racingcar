@@ -11,10 +11,6 @@ public class Players {
         this.players = player;
     }
 
-    public boolean isCorrectNames() {
-        return players.stream().allMatch(Player::isNameAvailable);
-    }
-
     public List<Player> getPlayers() {
         return players;
     }

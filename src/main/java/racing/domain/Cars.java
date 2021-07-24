@@ -29,7 +29,7 @@ public class Cars {
     }
 
     public Set<String> getWinnerCarsName() {
-        return new WinnerCars(cars).selectWinnersName();
+        return new SelectingWinnerCars(cars).selectWinnersName();
     }
 
 }
