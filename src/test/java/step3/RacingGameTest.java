@@ -4,7 +4,7 @@ import helper.TestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.Enum.MOVE;
+import step3.enums.MOVE;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;

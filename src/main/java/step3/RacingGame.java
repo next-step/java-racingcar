@@ -1,7 +1,7 @@
 package step3;
 
-import step3.Enum.MOVE;
-import step3.Interface.OutputInterface;
+import step3.enums.MOVE;
+import step3.interfaces.OutputInterface;
 
 import java.util.List;
 import java.util.stream.Collectors;

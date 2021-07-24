@@ -1,6 +1,6 @@
 package step3;
 
-import step3.Observer.SimpleRacingStatus;
+import step3.observers.SimpleRacingStatus;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package step3.Interface;
+package step3.interfaces;
 
 import step3.RacingGame;
 
