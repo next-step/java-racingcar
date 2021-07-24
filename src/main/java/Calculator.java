@@ -1,15 +1,35 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import operator.FourArithmeticOperation;
+import operator.Operator;
+
 import java.util.Objects;
 
 
 public class Calculator {
 
+    private FourArithmeticOperation fourArithmeticOperation = new FourArithmeticOperation();
+
     public int calculate(String input) {
         String[] inputSplitByBlank = splitByBlank(input);
         Validator.valid(inputSplitByBlank);
-        return 0;
+        return calculate(inputSplitByBlank);
+    }
+
+    private int calculate(String[] inputs) {
+        int result = Integer.parseInt(inputs[0]);
+        int length = inputs.length;
+
+        for (int i = 0; i < length; i++) {
+            String input = inputs[i];
+            if (fourArithmeticOperation.isOperationSymbol(input)) {
+                Operator operator = fourArithmeticOperation.findOperatorByString(input);
+
+                int leftHand = result;
+                int rightHand = Integer.parseInt(inputs[i + 1]);
+                int calculated = operator.calculate(leftHand, rightHand);
+                result = calculated;
+            }
+        }
+        return result;
     }
 
     private String[] splitByBlank(String input) {
@@ -19,30 +39,33 @@ public class Calculator {
         return input.split("\\s");
     }
 
+
     private static class Validator {
+        private static final FourArithmeticOperation FOUR_ARITHMETIC_OPERATION = new FourArithmeticOperation();
 
         static void valid(String[] inputs) {
             for (String input : inputs) {
-                if (Numeric.isNumeric(input))
-                    continue;
-
-                if (!OperationSymbol.isOperationSymbol(input))
+                if (!isValidInput(input))
                     throw new IllegalArgumentException();
             }
         }
-    }
 
-    private static class Numeric {
-        public static boolean isNumeric(String input) {
-            return input.matches("-?\\d+(\\.\\d+)?");
+        private static boolean isValidInput(String input) {
+            return isInteger(input) || isOperator(input);
+        }
+
+        private static boolean isInteger(String input) {
+            try {
+                Integer.parseInt(input);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+
+        private static boolean isOperator(String input) {
+            return FOUR_ARITHMETIC_OPERATION.isOperationSymbol(input);
         }
     }
 
-    private static class OperationSymbol {
-        private static final List<String> SYMBOL_LIST = Collections.unmodifiableList(Arrays.asList("+", "-", "*", "/"));
-
-        public static boolean isOperationSymbol(String input) {
-            return SYMBOL_LIST.contains(input);
-        }
-    }
 }
