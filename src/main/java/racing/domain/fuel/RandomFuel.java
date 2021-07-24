@@ -4,13 +4,11 @@ import util.RandomUtils;
 
 import java.util.Objects;
 
-public class RandomFuel extends Fuel {
+public final class RandomFuel implements Fuel {
     private static final Object syncObject = new Object();
     private static RandomFuel instance;
 
-    private RandomFuel() {
-        super(Fuel.MAX_VALUE);
-    }
+    private RandomFuel() {}
 
     public static RandomFuel getInstance() {
         if (Objects.isNull(instance)) {
@@ -24,6 +22,6 @@ public class RandomFuel extends Fuel {
 
     @Override
     public int value() {
-        return RandomUtils.nextInt(super.value());
+        return RandomUtils.nextInt(Fuel.MAX_VALUE);
     }
 }

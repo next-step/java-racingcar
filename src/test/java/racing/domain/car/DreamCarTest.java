@@ -7,10 +7,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.Fuel;
+import racing.domain.fuel.RandomFuel;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-class CarTest {
+public class DreamCarTest {
     private static Name ANONYMOUS;
 
     @BeforeAll
@@ -19,17 +20,17 @@ class CarTest {
     }
 
     @CsvSource({
-            "0,100,0",
-            "4,100,100",
-            "9,100,100"
+            "100,100",
+            "1000,1000",
+            "10000,10000"
     })
     @DisplayName("Move 테스트")
     @ParameterizedTest
-    public void moveTest(int fuelValue, int turnSize, int locationValue) {
+    public void moveTest(int turnSize, int locationValue) {
         Location location = new Location(locationValue);
-        Fuel fuel = new Fuel(fuelValue);
+        Fuel fuel = RandomFuel.getInstance();
 
-        Car car = new Car(ANONYMOUS);
+        Car car = new DreamCar(ANONYMOUS);
         for (int i = 0; i < turnSize; i++)
             car.move(fuel);
 
@@ -37,18 +38,5 @@ class CarTest {
                 car.checkLocation(location)
         ).withFailMessage("자동차가 요청한대로 행동하지 않았습니다.")
                 .isTrue();
-    }
-
-    @CsvSource({
-            "-1,100",
-            "0,100",
-            "10,100",
-    })
-    @DisplayName("Move IllegalArgumentException 테스트")
-    @ParameterizedTest
-    public void moveIllegalArgumentExceptionTest(int fuelValue, int turnSize) {
-        assertThatIllegalArgumentException().isThrownBy(() ->
-                moveTest(fuelValue, turnSize, -1)
-        );
     }
 }

@@ -11,7 +11,7 @@ class FuelTest {
     })
     @ParameterizedTest
     public void ctorTest(int fuelValue) {
-        new Fuel(fuelValue);
+        new BasicFuel(fuelValue);
     }
 
     @ValueSource(ints = {
@@ -21,7 +21,7 @@ class FuelTest {
     public void ctorIllegalArgumentExceptionTest(int fuelValue) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() ->
-                        new Fuel(fuelValue)
+                        new BasicFuel(fuelValue)
                 );
     }
 }

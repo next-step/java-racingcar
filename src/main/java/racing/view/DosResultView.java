@@ -1,6 +1,5 @@
 package racing.view;
 
-import racing.domain.Location;
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
 

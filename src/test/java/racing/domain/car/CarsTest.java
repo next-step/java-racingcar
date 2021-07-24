@@ -6,12 +6,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Location;
 import racing.domain.Name;
+import racing.domain.fuel.BasicFuel;
 import racing.domain.fuel.Fuel;
 import racing.domain.fuel.RandomFuel;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,14 +27,14 @@ class CarsTest {
     * 테스트 에서는 이름 구분자를 '|' 로 변경
     */
     private static final String NAME_DELIMITER = "\\|";
-    private Cars initCars(String strNames) {
+    private Cars initCars(String strNames, Function<Name, Car> carCtor) {
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
 
         return new Cars(
                 Arrays.stream(strNameSplitValues)
                         .map(Name::new)
                         .collect(Collectors.toMap(
-                                i -> i, Car::new
+                                i -> i, carCtor
                         ))
         );
     }
@@ -59,7 +61,7 @@ class CarsTest {
     @ParameterizedTest
     public void addTest(int size) {
         Cars cars = initCars(
-                sizeToNames(size)
+                sizeToNames(size), BasicCar::new
         );
 
         assertThat(cars.size())
@@ -72,7 +74,8 @@ class CarsTest {
     @ParameterizedTest
     public void carIteratorForTest(int size) {
         Cars cars = initCars(
-                sizeToNames(size));
+                sizeToNames(size), BasicCar::new
+        );
 
         Iterator<Car> iterator = cars.iterator();
         for (int i = 0; i < size; i++) {
@@ -87,7 +90,7 @@ class CarsTest {
     @ParameterizedTest
     public void carIteratorWhileTest(int size) {
         Cars cars = initCars(
-                sizeToNames(size)
+                sizeToNames(size), BasicCar::new
         );
 
         Iterator<Car> iterator = cars.iterator();
@@ -115,9 +118,9 @@ class CarsTest {
     public void moveAllTest(int carSize, int turnSize, int fuelValue, int locationValue) {
         Location location = new Location(locationValue);
         Cars cars = initCars(
-                sizeToNames(carSize)
+                sizeToNames(carSize), BasicCar::new
         );
-        Fuel fuel = new Fuel(fuelValue);
+        BasicFuel fuel = new BasicFuel(fuelValue);
 
         for (int i = 0; i < turnSize; i++) {
             cars.moveAll(fuel);
@@ -134,7 +137,7 @@ class CarsTest {
     @ValueSource(strings = "A|AA|AAA")
     @ParameterizedTest
     public void addTest(String strNames) {
-        initCars(strNames);
+        initCars(strNames, BasicCar::new);
     }
 
     @ValueSource(strings = "AA|AA|AAA")
@@ -145,7 +148,7 @@ class CarsTest {
             String[] splitNames = strNames.split(NAME_DELIMITER);
             List<Car> carList = Arrays.stream(splitNames)
                     .map(Name::new)
-                    .map(Car::new)
+                    .map(BasicCar::new)
                     .collect(Collectors.toList());
             for (Car iCar : carList) {
                 cars.add(iCar);
@@ -153,22 +156,26 @@ class CarsTest {
         }).isInstanceOf(IllegalStateException.class);
     }
 
-    @DisplayName("best Car 테스트")
+    @DisplayName("bestCar Test")
     @CsvSource({
-            "A|B|C,A|C,100",
-            "A|B|C,A,100",
-            "A|B|C|D|E|F|G,G|B,100"
+            "A|B|C,D,D,100000",
+            "A|B|C,D|E,D|E,100000",
+            "A|B|C|D|E|F,G|P|Q,G|P|Q,1000000"
     })
     @ParameterizedTest
-    public void bestCarsTest(String strCarNames, String strWinnerNames, int turnSize) {
-        Cars cars = initCars(strCarNames);
+    public void bestCarsTest(String strBasicCarNames, String strDreamCarNames, String strWinnerNames, int turnSize) {
+        Cars cars = initCars(strBasicCarNames, BasicCar::new);
+        // dream car 추가
+        for (Car iDreamCar : initCars(strDreamCarNames, DreamCar::new))
+            cars.add(iDreamCar);
+
         List<Name> winnerNames = Arrays.stream(strWinnerNames.split(NAME_DELIMITER))
                 .map(Name::new)
                 .collect(Collectors.toList());
 
         // 이동
         for(Car iCar : cars)
-            moveCar(iCar, turnSize, winnerNames.contains(iCar.name()));
+            moveCars(iCar, turnSize, RandomFuel.getInstance());
 
         Cars winners = cars.betCars();
         for(Name iName : winnerNames) {
@@ -180,32 +187,10 @@ class CarsTest {
                 .withFailMessage("우승자의 수가 예상한 수와 다릅니다.")
                 .isTrue();
     }
-    @DisplayName("best Car Random Fuel 테스트")
-    @CsvSource({
-            "A|B|C|D|E|F|G|H|I|J|K,10000",
-            "A|B|C|D|E|F|G|H|I|J|K,1000000",
-    })
 
-    @ParameterizedTest
-    public void bestCarsTest_Random(String strCarNames, int turnSize) {
-        Cars cars = initCars(strCarNames);
-        cars.moveAll(RandomFuel.getInstance());
-
-        Cars winners = cars.betCars();
-
-        assertThat(winners.size())
-                .withFailMessage("우승자가 0명 입니다.")
-                .isNotEqualTo(0);
-        assertThat(winners.size())
-                .withFailMessage("모두 우승자 입니다.")
-                .isNotEqualTo(cars.size());
-    }
-
-    private void moveCar(Car car, int turnSize, boolean movement) {
+    private void moveCars(Car car, int turnSize, Fuel fuel) {
         for (int i = 0; i < turnSize; i++) {
-            car.move(
-                    movement ? Fuel.full() : Fuel.empty()
-            );
+            car.move(fuel);
         }
     }
 }

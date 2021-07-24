@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.domain.car.Car;
+import racing.domain.car.BasicCar;
 import racing.domain.car.Cars;
 import racing.domain.Name;
 import racing.exception.InvalidInputException;
@@ -47,7 +47,7 @@ public class DosInputView implements InputView {
                 Arrays.stream(strNameSplitValues)
                         .map(Name::new)
                         .collect(Collectors.toMap(
-                                i -> i, Car::new
+                                i -> i, BasicCar::new
                         ))
         );
     }
