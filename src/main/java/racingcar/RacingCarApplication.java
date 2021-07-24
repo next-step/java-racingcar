@@ -13,7 +13,7 @@ public class RacingCarApplication {
         int raceTrialCount = InputView.getRaceTrialCount();
 
         RacingInfo racingInfo = new RacingInfo(numberOfCar, raceTrialCount);
-        Cars cars = new Cars(racingInfo.numberOfCar);
+        Cars cars = Cars.of(racingInfo.numberOfCar);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
         Board board = racingGame.gameStart();

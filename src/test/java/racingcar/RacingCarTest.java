@@ -22,7 +22,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @CsvSource({"3"})
     void createCarsTest(int numberOfCar) {
-        Cars cars = new Cars(numberOfCar);
+        Cars cars = Cars.of(numberOfCar);
 
         int actualSize = cars.getCarsCount();
 
@@ -33,7 +33,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @MethodSource("generateData")
     void initialPositionTest(int numberOfCar, List<Integer> expectedPositions) {
-        Cars cars = new Cars(numberOfCar);
+        Cars cars = Cars.of(numberOfCar);
 
         List<Integer> actualPositions = cars.getCarsPositions();
 

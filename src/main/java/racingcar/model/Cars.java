@@ -9,18 +9,21 @@ import java.util.stream.Collectors;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int numberOfCar) {
-        this.cars = initCars(numberOfCar);
+    private Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public List<Car> initCars(int numberOfCar) {
+    public static Cars of(List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    public static Cars of (int numberOfCar) {
         List<Car> cars = new ArrayList<Car>();
 
         for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
         }
-
-        return cars;
+        return Cars.of(cars);
     }
 
     public int getCarsCount() {
