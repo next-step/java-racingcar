@@ -18,7 +18,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarsTest {
     private static final char NAME_WORD = 'A';
 
-    /* 요구 사항은 ','를 기준으로 이름을 입력 받지만
+    /*
+    요구 사항은 ','를 기준으로 이름을 입력 받지만
     * @CsvSource의 기본 구분 문자가 ',' 이기 때문에
     * 테스트 에서는 이름 구분자를 '|' 로 변경
     */
@@ -36,11 +37,8 @@ class CarsTest {
         return cars;
     }
 
-    private String newAnonymousName(int size) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < size + 1; i++)
-            builder.append(NAME_WORD);
-        return builder.toString();
+    private String newAnonymousName(int identity) {
+        return String.valueOf(identity);
     }
 
     private String sizeToNames(int size) {
@@ -160,8 +158,8 @@ class CarsTest {
                 .collect(Collectors.toList());
 
         // 이동
-        for (int i = 0; i < turnSize; i++)
-            moveCar(cars, winnerNames);
+        for(Car iCar : cars)
+            moveCar(iCar, winnerNames.contains(iCar.name()));
 
         Cars winners = cars.bestCars();
         for(Name iName : winnerNames) {
@@ -174,8 +172,9 @@ class CarsTest {
                 .isTrue();
     }
 
-    private void moveCar(Cars cars, List<Name> names) {
-        for(Name iName : names)
-            cars.get(iName).move(Fuel.FULL);
+    private void moveCar(Car car, boolean movement) {
+        car.move(
+                movement ? Fuel.FULL : Fuel.EMPTY
+        );
     }
 }
