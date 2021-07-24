@@ -35,7 +35,7 @@ public class Racing {
 
 	public void playingGame(String inputValue) {
 		int tryGameCount = toInt(inputValue);
-		messageBox.commonMessageBox("실행 결과");
+		messageBox.resultMessage();
 		for (int i = 0; i < tryGameCount; i++) {
 			carRacing();
 		}
@@ -69,10 +69,10 @@ public class Racing {
 	}
 
 	public String winnerPlayer() {
-		String winnerResult = "";
+		StringBuilder winnerResult = new StringBuilder();
 		for (Car car : cars) {
-			winnerResult = winnerResult.concat(car.searchWinner(MAX_VALUE));
+			winnerResult.append(car.searchWinner(MAX_VALUE));
 		}
-		return winnerResult;
+		return winnerResult.toString();
 	}
 }
