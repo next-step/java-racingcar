@@ -14,6 +14,7 @@ public class Car {
     }
 
     public Car(String name, int distance) {
+        validName(name);
         this.name = name;
         this.distance = distance;
     }
@@ -31,6 +32,10 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    private void validName(String name) {
+        if (name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
     }
 
     @Override
