@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public int inputInteger(String printMessage) {
-        System.out.println(printMessage);
+    public static String inputCarNames() {
+        return scanner.nextLine();
+    }
 
+    public static int inputDriveCount() {
         return Integer.parseInt(scanner.nextLine());
     }
 }
