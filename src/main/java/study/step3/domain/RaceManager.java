@@ -1,9 +1,10 @@
-package study.step3;
+package study.step3.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RaceManager {
 
@@ -13,22 +14,21 @@ public class RaceManager {
 
     private final CarManager carManager;
     private final RoundManager roundManager;
-    private final RaceRecorder raceRecorder;
     private final List<Car> cars;
+    private final List<List<Integer>> roundRecords;
 
-    public RaceManager(CarManager carManager, RoundManager roundManager, RaceRecorder raceRecorder) {
+    public RaceManager(CarManager carManager, RoundManager roundManager) {
         this.carManager = carManager;
         this.roundManager = roundManager;
-        this.raceRecorder = raceRecorder;
         this.cars = new ArrayList<>();
+        this.roundRecords = new ArrayList<>();
     }
 
-    public String manageRace(int carNumber, int roundNumber) {
+    public List<List<Integer>> manageRace(int carNumber, int roundNumber) {
         validation(carNumber, roundNumber);
         addCars(carNumber);
-        raceRecorder.prepareRecord(cars);
         roundManager.startRace(roundNumber, getToDoList());
-        return raceRecorder.getAllRoundRecords();
+        return roundRecords;
     }
 
     private void addCars(int carNumber) {
@@ -37,7 +37,7 @@ public class RaceManager {
     }
 
     private List<Runnable> getToDoList() {
-        return Arrays.asList(moveCars(), notifyRaceRecorder());
+        return Arrays.asList(moveCars(), recorderCarPositions());
     }
 
     private Runnable moveCars() {
@@ -46,12 +46,16 @@ public class RaceManager {
                 .forEach(Car::moveForward);
     }
 
+    private Runnable recorderCarPositions() {
+        return () -> roundRecords.add(getCarPositions());
+    }
+
     private boolean canCarMoveForward() {
         return new Random().nextInt(BOUND) >= MOVE_FORWARD_BASIS;
     }
 
-    private Runnable notifyRaceRecorder() {
-        return raceRecorder::recordRound;
+    private List<Integer> getCarPositions() {
+        return cars.stream().map(Car::getPosition).collect(Collectors.toList());
     }
 
     private void validation(int carNumber, int roundNumber) {

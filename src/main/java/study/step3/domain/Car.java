@@ -1,8 +1,7 @@
-package study.step3;
+package study.step3.domain;
 
 public class Car {
 
-    private static final String CAR_SHAPE = "-";
     private int position;
 
     public Car(int position) {
@@ -11,10 +10,6 @@ public class Car {
 
     public void moveForward() {
         position++;
-    }
-
-    public String getShape() {
-        return CAR_SHAPE;
     }
 
     public int getPosition() {

@@ -1,7 +1,8 @@
-package study.step3;
+package study.step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.step3.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,13 +14,11 @@ public class CarTest {
         // given
         int startPosition = 0;
         Car car = new Car(startPosition);
-        String expectedShape = "-";
         int expectedPosition = 0;
 
         // when
 
         // then
-        assertThat(car.getShape()).isEqualTo(expectedShape);
         assertThat(car.getPosition()).isEqualTo(expectedPosition);
     }
 

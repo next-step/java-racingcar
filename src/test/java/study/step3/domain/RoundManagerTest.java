@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.domain;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.DisplayName;

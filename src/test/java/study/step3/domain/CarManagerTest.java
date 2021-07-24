@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.domain;
 
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,7 +18,7 @@ public class CarManagerTest {
     @CsvSource(value = {"3:3", "5:5"}, delimiter = ':')
     public void getCars(int carNumber, int expected) {
         // given
-        int startPosition = 1;
+        int startPosition = 0;
 
         // when
         List<Car> cars = carManager.getCars(carNumber);

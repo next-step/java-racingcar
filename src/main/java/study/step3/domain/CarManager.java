@@ -1,4 +1,4 @@
-package study.step3;
+package study.step3.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class CarManager {
 
     private static final int VALID_CAR_NUMBER = 1;
-    private static final int START_POSITION = 1;
+    private static final int START_POSITION = 0;
     public static final String ILLEGAL_CAR_NUMBER = "요구 되는 차량 숫자는 " + VALID_CAR_NUMBER + "보다 크거나 같아야 합니다 -> ";
 
     public List<Car> getCars(int carNumber) {
