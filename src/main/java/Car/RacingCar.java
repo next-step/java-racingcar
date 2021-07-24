@@ -15,7 +15,7 @@ public class RacingCar {
 
     public void gameStart() {
         Scanner scanner = new Scanner(System.in);
-        try{
+        try {
             System.out.println("자동차 대수는 몇 대 인가요?");
             carCount = scanner.nextInt();
             System.out.println("시도할 회수는 몇 회 인가요?");
@@ -23,9 +23,12 @@ public class RacingCar {
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException("숫자 값을 입력해주세요.");
         }
-        if(carCount <= 0 || gameCount <= 0){
+        if (carCount <= 0 || gameCount <= 0) {
             throw new IllegalArgumentException("0보다 큰 값을 입력해주세요.");
         }
+
+        cars = new Car[carCount];
+        gameResults = new String[gameCount];
 
 
     }
