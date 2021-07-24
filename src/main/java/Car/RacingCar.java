@@ -30,7 +30,24 @@ public class RacingCar {
         cars = new Car[carCount];
         gameResults = new String[gameCount];
 
-
+        String stringTmp = "";
+        for (int i = 0; i < carCount; i++) {
+            cars[i] = new Car();
+            stringTmp += (cars[i].getStatus()+"\n");
+        }
+        gameResults[0] = stringTmp;
+        for(int i=1;i<gameCount;i++){
+            stringTmp = "";
+            for (int j = 0; j < carCount; j++) {
+                Random r = new Random();
+                int randomNum = r.nextInt(NUMBERBOUND);
+                if(randomNum >= MINMOVENUMBER){
+                    cars[j].move();
+                }
+                stringTmp += (cars[j].getStatus()+"\n");
+            }
+            gameResults[i] = stringTmp;
+        }
     }
 
 }
