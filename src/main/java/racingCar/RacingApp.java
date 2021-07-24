@@ -1,12 +1,45 @@
 package racingCar;
 
-import racingCar.controller.RacingController;
+import racingCar.domain.Race;
+import racingCar.domain.Round;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 public class RacingApp {
 
+    InputView inputView = new InputView();
+    ResultView resultView = new ResultView();
+
     public static void main(String[] args) {
-        RacingController controller = new RacingController();
-        controller.Race();
+        RacingApp app = new RacingApp();
+        app.Race();
+    }
+
+    private void Race() {
+        int carCount = this.inputView.EnterCarNumber();
+        int moveCount = this.inputView.EnterMoveCount();
+
+        Race race = new Race(carCount, moveCount);
+
+        start(race);
+    }
+
+    private void start(Race race) {
+        this.resultView.printExecutionResultMessage();
+        int roundCount = race.getRoundCount();
+
+        for(int i = 1; i < roundCount; i++) {
+            outputCarDistance(race.getRoundResult(i));
+        }
+    }
+
+    private void outputCarDistance(Round round) {
+        int carCount = round.getCarsSize();
+
+        for(int i = 0; i < carCount; i++) {
+            this.resultView.printCarDistance(round.getCar(i).getCarDistance());
+        }
+        this.resultView.printEnter();
     }
 
 }
