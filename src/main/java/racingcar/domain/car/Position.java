@@ -17,6 +17,10 @@ public class Position {
         this.position = position;
     }
 
+    public Position move() {
+        return new Position(position + 1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -32,9 +36,5 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    public Position move() {
-        return new Position(position + 1);
     }
 }
