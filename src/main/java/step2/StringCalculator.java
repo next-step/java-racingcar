@@ -4,10 +4,13 @@ public class StringCalculator {
 
     public int calculate(String input) {
         String[] result = input.split(" ");
-        int firstOperand = toInt(result[0]);
-        int secondOperand = toInt(result[2]);
-        String operator = result[1];
-        return calculate(firstOperand, secondOperand, operator);
+
+        int rst = toInt(result[0]);
+
+        for (int i = 1; i < result.length; i+=2) {
+            rst = calculate(rst, toInt(result[i+1]), result[i]);
+        }
+        return rst;
     }
 
     private int calculate(int firstOperand, int secondOperand, String operator) {
@@ -21,6 +24,5 @@ public class StringCalculator {
     private int toInt(String s) {
         return Integer.parseInt(s);
     }
-
 
 }
