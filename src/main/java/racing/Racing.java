@@ -10,14 +10,12 @@ public class Racing {
 	private final Validation validation;
 	private final Random random;
 	private final MessageBox messageBox;
-	private final StringBuffer winnerPlayList;
 	private int MAX_VALUE = 0;
 
 	public Racing(MessageBox messageBox) {
 		cars = new ArrayList<>();
 		validation = new Validation();
 		random = new Random();
-		winnerPlayList = new StringBuffer();
 		this.messageBox = messageBox;
 	}
 
@@ -36,22 +34,21 @@ public class Racing {
 	}
 
 	public void playingGame(String inputValue) {
-		validation.validNumberCheck(inputValue);
 		int tryGameCount = toInt(inputValue);
 		messageBox.commonMessageBox("실행 결과");
 		for (int i = 0; i < tryGameCount; i++) {
-			gamePlay();
+			carRacing();
 		}
-		String WINNER_MESSAGE = " 가 최종 우승했습니다.";
 		String winnerPlayer = winnerPlayer().trim();
-		messageBox.commonMessageBox(winnerPlayer.substring(0, winnerPlayer.length() - 1), WINNER_MESSAGE);
+		messageBox.winnerMessageBox(winnerPlayer.substring(0, winnerPlayer.length() - 1));
 	}
 
 	public int toInt(String value) {
+		validation.validNumberCheck(value);
 		return Integer.parseInt(value);
 	}
 
-	private void gamePlay() {
+	private void carRacing() {
 		for (Car car : cars) {
 			int resultRacing = car.carRacing(randomValue());
 			maxValueCheck(resultRacing);
@@ -72,16 +69,10 @@ public class Racing {
 	}
 
 	public String winnerPlayer() {
+		String winnerResult = "";
 		for (Car car : cars) {
-			winnerConfirm(car.searchWinner(MAX_VALUE));
+			winnerResult = winnerResult.concat(car.searchWinner(MAX_VALUE));
 		}
-		return winnerPlayList.toString();
-	}
-
-	private void winnerConfirm(String playerName) {
-		if (!playerName.equals("fail")) {
-			winnerPlayList.append(playerName);
-			winnerPlayList.append(",");
-		}
+		return winnerResult;
 	}
 }
