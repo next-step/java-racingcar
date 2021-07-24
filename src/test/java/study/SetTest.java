@@ -21,7 +21,7 @@ public class SetTest {
 
     @BeforeEach
     void setUp() {
-        numbers = new HashSet<>(Arrays.asList(1 , 1 , 2 , 3));
+        numbers = new HashSet<>(Arrays.asList( 1 , 1 , 2 , 3 ));
     }
 
 
