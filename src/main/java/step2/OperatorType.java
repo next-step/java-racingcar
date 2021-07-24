@@ -33,7 +33,7 @@ public enum OperatorType {
 			.get();
 	}
 
-	public int calculateByOperator(int number1, int number2) {
+	public int getCalculationResult(int number1, int number2) {
 		return calculationMethod.applyAsInt(number1, number2);
 	}
 }
