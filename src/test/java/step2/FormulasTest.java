@@ -17,11 +17,10 @@ public class FormulasTest {
         assertThat(formulas.getFormulas().length).isEqualTo(5);
     }
 
-    @DisplayName("문자열 수식 값이 null일 경우 IllegalArgumentException 발생")
+    @DisplayName("문자열 수식 값이 null 또는 empty 경우 IllegalArgumentException 발생")
     @ParameterizedTest(name = "{index} {displayName}")
     @NullAndEmptySource
-    void create_ThrowsIllegalArgumentException_IfFormulasIsNull(String formulas) {
-        System.out.println(formulas);
+    void create_ThrowsIllegalArgumentException_IfFormulasIsNullOrEmpty(String formulas) {
         assertThatIllegalArgumentException().isThrownBy(
                 () -> new Formulas(formulas)
         );
