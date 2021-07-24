@@ -19,8 +19,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class CarsTest {
-    private static final char NAME_WORD = 'A';
-
     /*
     요구 사항은 ','를 기준으로 이름을 입력 받지만
     * @CsvSource의 기본 구분 문자가 ',' 이기 때문에
@@ -162,7 +160,7 @@ class CarsTest {
 
         // 이동
         for(Car iCar : cars)
-            moveCar(iCar, winnerNames.contains(iCar.name()));
+            moveCar(iCar, turnSize, winnerNames.contains(iCar.name()));
 
         Cars winners = cars.bestCars();
         for(Name iName : winnerNames) {
@@ -175,9 +173,11 @@ class CarsTest {
                 .isTrue();
     }
 
-    private void moveCar(Car car, boolean movement) {
-        car.move(
-                movement ? Fuel.FULL : Fuel.EMPTY
-        );
+    private void moveCar(Car car, int turnSize, boolean movement) {
+        for (int i = 0; i < turnSize; i++) {
+            car.move(
+                    movement ? Fuel.FULL : Fuel.EMPTY
+            );
+        }
     }
 }
