@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -62,5 +63,13 @@ public class CalculatorTest {
     public void arithmeticOperationTest(String data, int expectResult) {
         int calcResult = Calculator.calculate(data);
         assertThat(calcResult).isEqualTo(expectResult);
+    }
+
+    @DisplayName("사칙연산 기호가 아닐 경우 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"6 & 3"})
+    public void nonOperatorTest(String data) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Calculator.calculate(data));
     }
 }
