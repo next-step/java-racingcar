@@ -44,9 +44,8 @@ public class CarRacing {
 
     private static RaceManager raceManager() {
         CarManager carManager = new CarManager();
-        DriverRecruiter driverRecruiter = new DriverRecruiter();
         RoundManager roundManager = new RoundManager();
         RaceRecorder raceRecorder = new RaceRecorder();
-        return new RaceManager(carManager, driverRecruiter, roundManager, raceRecorder);
+        return new RaceManager(carManager, roundManager, raceRecorder);
     }
 }

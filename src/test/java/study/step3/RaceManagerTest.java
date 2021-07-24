@@ -9,10 +9,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class RaceManagerTest {
 
     CarManager carManager = new CarManager();
-    DriverRecruiter driverRecruiter = new DriverRecruiter();
     RoundManager roundManager = new RoundManager();
     RaceRecorder raceRecorder = new RaceRecorder();
-    RaceManager raceManager = new RaceManager(carManager, driverRecruiter, roundManager, raceRecorder);
+    RaceManager raceManager = new RaceManager(carManager, roundManager, raceRecorder);
 
     @ParameterizedTest(name = "입력값이 숫자가 0 보다 같거나 작은 경우 | {arguments}")
     @CsvSource(value = {"-1:3:-1", "0:3:0", "2:-3:-3"}, delimiter = ':')
