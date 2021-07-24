@@ -36,13 +36,4 @@ class StringCalculatorTest {
                 .hasMessageContaining("공백 문자");
     }
 
-    @DisplayName("비연산자 예외 처리 단위 테스트")
-    @ParameterizedTest // given
-    @ValueSource(strings = {"&", "r", "!", "@", "#"})
-    void nonOperatorTest(String nonOperator){
-        // when, then
-        assertThatThrownBy(() -> { FourOperation.of(nonOperator);}).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("사칙연산 기호가 아닌 문자");
-    }
-
 }

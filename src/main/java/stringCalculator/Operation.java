@@ -11,7 +11,7 @@ public interface Operation {
 enum FourOperation implements Operation {
     PLUS("+", (a,b) -> (Integer.parseInt(a)+Integer.parseInt(b))+""),
     MINUS("-", (a,b) -> (Integer.parseInt(a)-Integer.parseInt(b))+""),
-    MULT("*", (a,b) -> (Integer.parseInt(a)*Integer.parseInt(b))+""),
+    TIMES("*", (a,b) -> (Integer.parseInt(a)*Integer.parseInt(b))+""),
     DIVIDE("/",(a,b) -> (Integer.parseInt(a)/Integer.parseInt(b))+"");
 
     private final String symbol;
@@ -30,9 +30,7 @@ enum FourOperation implements Operation {
     }
 
     public static FourOperation of(String operator) throws IllegalArgumentException{
-        if(!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator.equals("/")){
-            throw new IllegalArgumentException("사칙연산 기호가 아닌 문자를 입력하였습니다.");
-        }
+        Validate.checkIsOperator(operator);
         return OP_MAP.get(operator);
     }
 

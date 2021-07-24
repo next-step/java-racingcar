@@ -3,9 +3,7 @@ package stringCalculator;
 public class StringCalculator {
 
     public String calculate(String problem) {
-        if (problem.equals("")) {
-            throw new IllegalArgumentException("공백 문자를 입력하였습니다.");
-        }
+        Validate.checkIsEmpty(problem);
 
         String[] problemArr = problem.split(" ");
 
