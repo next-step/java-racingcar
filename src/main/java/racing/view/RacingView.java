@@ -1,6 +1,6 @@
 package racing.view;
 
-import java.util.Map;
+import racing.model.RacingModel;
 
 public class RacingView {
 
@@ -10,12 +10,12 @@ public class RacingView {
         }
     }
 
-    public void printRace(Map<Integer, Integer> carMoveCountMap, int carNum) {
-        int i=0;
-        while(i < carNum) {
-            printMoveLine(carMoveCountMap.get(carNum));
+    public void printCarMove(RacingModel racingModel) {
+        for (int carNumber=0; carNumber<racingModel.getRacingModelMap().size(); carNumber++) {
+            printMoveLine(racingModel.getRacingModelMap().get(carNumber));
             System.out.println("");
-            i++;
         }
+        System.out.println("");
     }
+
 }

@@ -1,38 +1,20 @@
 package racing;
 
 
-import racing.view.RacingView;
-
-import java.util.HashMap;
-import java.util.Map;
+import racing.model.RacingModel;
 
 public class RacingCar {
 
-    Map<Integer, Integer> carMoveCountMap = new HashMap<>();
-    RacingView racingView = new RacingView();
-    public void racing(int carNum, int count) {
-        for (int i = 0; i < carNum; i++) {
-            carMoveCountMap.put(i, 0);
-        }
-        int j = 0;
-        while (j < count) {
-            setCarMoveCount(carNum);
-            j++;
+    public void move(RacingModel racingModel) {
+        for(int carNumber=0; carNumber<racingModel.getRacingModelMap().size(); carNumber++) {
+            setMove(carNumber, racingModel);
         }
     }
 
-    void setCarMoveCount(int carNum) {
-        for(int i=0; i<carNum; i++) {
-            setMove(i);
-        }
-        racingView.printRace(carMoveCountMap, carNum);
-        System.out.println("");
-    }
-
-    void setMove(int carNum) {
+    void setMove(int carNumber, RacingModel racingModel) {
         if (isMove(getRandomValue())) {
-            int moveCount = carMoveCountMap.get(carNum).intValue();
-            carMoveCountMap.put(carNum, ++moveCount);
+            int moveCount = racingModel.getRacingModelMap().get(carNumber).intValue();
+            racingModel.setRacingModelMap(carNumber, ++moveCount);
         }
     }
 
