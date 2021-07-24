@@ -31,10 +31,8 @@ public class Game {
         return true;
     }
 
-    public List<Integer> getCarsStatus() {
-        return cars.stream()
-                .map(Car::getDistance)
-                .collect(Collectors.toList());
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getRepeatCount() {

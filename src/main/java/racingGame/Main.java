@@ -14,7 +14,7 @@ public class Main {
         for (int i = 0; i < repeatCount; i++) {
             List<Integer> list = RandomNumber.makeRandomNumber(names.size());
             game.runOnce(list);
-            ResultView.printResult(game.getCarsStatus());
+            ResultView.printResult(game.getCars());
         }
     }
 }
