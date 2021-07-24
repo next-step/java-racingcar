@@ -1,6 +1,6 @@
-package racing;
+package racing.util;
 
-class RacingGamePrinter {
+public class RacingGamePrinter {
     private static final String END_MESSAGE_FORMAT = "실행 결과";
 
     public static void print(String string) {

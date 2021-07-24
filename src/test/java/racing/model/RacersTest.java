@@ -1,9 +1,12 @@
-package racing;
+package racing.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
+import racing.domain.ForwardConditionStrategy;
+import racing.model.Racer;
+import racing.model.Racers;
+import racing.model.UnnamedCar;
 
 import java.util.ArrayList;
 import java.util.List;

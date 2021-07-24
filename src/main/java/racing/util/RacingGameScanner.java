@@ -1,8 +1,8 @@
-package racing;
+package racing.util;
 
 import java.util.Scanner;
 
-class RacingGameScanner {
+public class RacingGameScanner {
     public static int[] enter() {
         Scanner sc = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대인가요?");

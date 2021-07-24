@@ -1,10 +1,12 @@
-package racing;
+package racing.model;
+
+import racing.domain.ForwardConditionStrategy;
 
 import java.util.List;
 
 import static java.util.stream.IntStream.range;
 
-class Racers<T extends Racer> {
+public class Racers<T extends Racer> {
     private static final String NEW_LINE = System.lineSeparator();
 
     private final List<T> racers;

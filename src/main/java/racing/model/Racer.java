@@ -1,6 +1,6 @@
-package racing;
+package racing.model;
 
-interface Racer {
+public interface Racer {
     <T extends Racer> T go();
 
     String position();

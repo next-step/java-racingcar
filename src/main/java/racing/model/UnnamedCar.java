@@ -1,8 +1,8 @@
-package racing;
+package racing.model;
 
 import java.util.Objects;
 
-class UnnamedCar implements Racer {
+public class UnnamedCar implements Racer {
     private static final String MARK = "-";
 
     private String position;

@@ -1,7 +1,9 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.NumberMoreThanFourConditionStrategy;
+import racing.domain.RacingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
