@@ -1,5 +1,7 @@
 package racing_car.step03;
 
+import java.util.List;
+
 public class ResultView {
     private static final String MESSAGE = "실행 결과";
 
@@ -7,10 +9,10 @@ public class ResultView {
         System.out.println(MESSAGE);
     }
 
-    public static void result(String[] cars) {
-        for (String car : cars) {
-            System.out.println(car);
-        }
+    public static void result(List<Car> cars) {
+       for (int i=0; i<cars.size(); i++){
+           cars.get(i).getDrivingDistance();
+       }
         System.out.println();
     }
 }

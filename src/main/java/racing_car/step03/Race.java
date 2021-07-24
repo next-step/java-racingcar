@@ -1,5 +1,6 @@
 package racing_car.step03;
 
+import java.util.List;
 import java.util.Random;
 
 public class Race {
@@ -8,11 +9,12 @@ public class Race {
     private static final int BORDER = 10;
     private static final String DISTANCE_SYMBOL = "-";
 
-    public void execute(String[] cars) {
-        for (int i = 0; i < cars.length; i++) {
-            if (move(getRandomNumber())) {
-                cars[i] += DISTANCE_SYMBOL;
-            }
+
+    public void execute(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+           if (generateRandomNumber()>MIN_NUMBER){
+               cars.get(i).setDrivingDistance();
+           }
         }
     }
 
@@ -20,7 +22,7 @@ public class Race {
         return number >= MIN_NUMBER;
     }
 
-    public int getRandomNumber() {
+    public int generateRandomNumber() {
         return random.nextInt(BORDER);
     }
 }
