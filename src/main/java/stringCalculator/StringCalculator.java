@@ -15,23 +15,10 @@ public class StringCalculator {
             String operator = problemArr[i];
             String b = problemArr[i+1];
 
-            a = calculateOne(a, b, operator);
+            Operation operation = FourOperation.of(operator);
+            a = operation.apply(a, b);
         }
 
         return a;
     }
-
-    public String calculateOne(String a, String b, String operator) {
-        if (operator.equals("+")) {
-            return FourOperation.PLUS.apply(a,b);
-        }else if(operator.equals("-")){
-            return FourOperation.MINUS.apply(a,b);
-        }else if(operator.equals("*")){
-            return FourOperation.MULT.apply(a,b);
-        }else if(operator.equals("/")){
-            return FourOperation.DIVIDE.apply(a,b);
-        }
-        throw new IllegalArgumentException("사칙연산 기호가 아닌 문자를 입력하였습니다.");
-    }
-
 }
