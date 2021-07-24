@@ -33,4 +33,20 @@ public class SetTest {
         assertThat(setSize).isEqualTo(3);
     }
 
+    @DisplayName("Set collection contains test")
+    @Test
+    void collection_contain_test() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
+
+    @DisplayName("Set collection contains test with Junit ParameterizedTest")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void collection_contain_test_simple(int number) {
+        assertThat(numbers.contains(number)).isTrue();
+    }
+
+
 }
