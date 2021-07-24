@@ -62,6 +62,6 @@ public class CalcTest {
             calculation.calculate(3, 5, "%");
         }).withMessageMatching("not support operation");
     }
-    
+
 }
 
