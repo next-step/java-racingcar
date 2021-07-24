@@ -16,6 +16,6 @@ public class RacingCar {
 	}
 
 	public void forward() {
-		pos = ( Util.generateForwardValue() >= 4 ) ? 1 : 0;
+		pos += ( Util.generateForwardValue() >= 4 ) ? 1 : 0;
 	}
 }
