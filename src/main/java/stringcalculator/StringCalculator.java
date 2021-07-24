@@ -1,33 +1,34 @@
 package stringcalculator;
 
+import java.text.NumberFormat;
+import java.util.Arrays;
+
 public class StringCalculator {
-    public static int calculate(String input) {
-        verifyInput(input);
-        String[] split = input.split(" ");
-        int result = Integer.parseInt(split[0]);
+
+    public static final String SPACE = " ";
+
+    public static Double calculate(String input) {
+        verify(input);
+        return calculate(input.split(SPACE));
+    }
+
+    private static void verify(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException();
+        }
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+    private static Double calculate(String[] split) {
+        Double result = Double.parseDouble(split[0]);
         for (int i = 1; i < split.length; i += 2) {
-            int firstNumber = result;
-            char operator = split[i].charAt(0);
-            int secondNumber = Integer.parseInt(split[i + 1]);
-            result = operate(firstNumber, operator, secondNumber);
+            Double firstNumber = result;
+            Double secondNumber = Double.parseDouble(split[i + 1]);
+            result = Operation.calculate(split[i], firstNumber, secondNumber);
         }
         return result;
-    }
-
-    private static void verifyInput(String input) {
-        if (input == null)
-            throw new IllegalArgumentException();
-        if (input.isEmpty())
-            throw new IllegalArgumentException();
-    }
-
-    private static int operate(int firstNumber, char operator, int secondNumber) {
-        if (operator == '-')
-            return firstNumber - secondNumber;
-        else if (operator == '*')
-            return firstNumber * secondNumber;
-        else if (operator == '/')
-            return firstNumber / secondNumber;
-        return firstNumber + secondNumber;
     }
 }
