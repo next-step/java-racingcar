@@ -49,6 +49,7 @@ class StringCalculatorTest {
                 .hasMessageContaining("사칙연산 기호가 아닌 문자");
     }
 
+
     @Test
     @DisplayName("덧셈 메서드 단위 테스트")
     void sumTest() {
@@ -56,8 +57,7 @@ class StringCalculatorTest {
         String a = "1";
         String b = "2";
         // when
-        StringCalculator stringCalculator = new StringCalculator();
-        String answer = stringCalculator.sum(a, b);
+        String answer = FourOperation.PLUS.apply(a,b);
         // then
         assertThat(answer).isEqualTo("3");
     }
@@ -69,8 +69,7 @@ class StringCalculatorTest {
         String a = "3";
         String b = "2";
         // when
-        StringCalculator stringCalculator = new StringCalculator();
-        String answer = stringCalculator.diff(a, b);
+        String answer = FourOperation.MINUS.apply(a,b);
         // then
         assertThat(answer).isEqualTo("1");
     }
@@ -82,8 +81,7 @@ class StringCalculatorTest {
         String a = "3";
         String b = "2";
         // when
-        StringCalculator stringCalculator = new StringCalculator();
-        String answer = stringCalculator.mult(a, b);
+        String answer = FourOperation.MULT.apply(a,b);
         // then
         assertThat(answer).isEqualTo("6");
     }
@@ -95,8 +93,7 @@ class StringCalculatorTest {
         String a = "6";
         String b = "4";
         // when
-        StringCalculator stringCalculator = new StringCalculator();
-        String answer = stringCalculator.div(a, b);
+        String answer = FourOperation.DIVIDE.apply(a,b);
         // then
         assertThat(answer).isEqualTo("1");
     }
