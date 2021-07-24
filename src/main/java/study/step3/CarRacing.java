@@ -22,24 +22,34 @@ public class CarRacing {
     }
 
     private static int getNumber(String question) {
+        return parseIntOrThrow(askNumber(question));
+    }
+
+    private static String askNumber(String question) {
         System.out.println(question);
-        return validation(scanner.nextLine());
+        return scanner.nextLine();
     }
 
-    private static int validation(String number) {
-        return requireNumber(requireNonNull(number));
+    private static int parseIntOrThrow(String number) {
+        validateNumber(number);
+        return Integer.parseInt(number);
     }
 
-    private static String requireNonNull(String number) {
+    private static void validateNumber(String number) {
+        requireNonNull(number);
+        requireNumber(number);
+    }
+
+    private static void requireNonNull(String number) {
         if (Objects.isNull(number)) {
             throw new IllegalArgumentException(NULL_INPUT);
         }
-        return number;
     }
 
-    private static int requireNumber(String number) {
-        return Optional.of(Integer.parseInt(number))
-                .orElseThrow(NumberFormatException::new);
+    private static void requireNumber(String number) {
+        Optional.of(number)
+                .map(Integer::parseInt)
+                .orElseThrow(() -> new IllegalArgumentException("require number : " + number));
     }
 
     private static RaceManager raceManager() {
