@@ -68,8 +68,10 @@ public class RacingGameTest {
 
         final int sumOfAfterLocation = racingGame.getCars().stream().mapToInt(Car::getLocation).sum();
 
+        // 차량이 이동했는지 확인
         assertThat(sumOfStartLocation).isNotEqualTo(sumOfAfterLocation);
 
+        // 턴이 진행되었는지 확인
         assertThat(racingGame.getCurrentTurn()).isEqualTo(testTurns);
     }
 
