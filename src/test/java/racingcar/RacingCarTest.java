@@ -90,6 +90,20 @@ public class RacingCarTest {
     }
 
     @Test
+    @DisplayName("우승자 출력")
+    void printWinners(){
+        String[] carStrArr = Arrays.array("pobi", "crong", "honux");
+        Cars cars = new Cars(carStrArr);
+        List<Car> carsList = cars.getCars();
+        Car winnerCar = carsList.get(0);
+        for(int i=0; i<5; i++){
+            winnerCar.move(4);
+        }
+        List<Car> winners = cars.getWinners();
+        ResultView.printWinners(winners);
+    }
+
+    @Test
     @DisplayName("게임 테스트")
     void playTest(){
         List<Car> winners = racingCar.play("pobi,crong,honux", 5);
