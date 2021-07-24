@@ -2,11 +2,11 @@ package racingcar.domain;
 
 public class Car {
 
-    private String name;
+    private Name name;
     private int numberOfMove = 0;
 
-    public Car(String name) {
-        this.name = name;
+    public Car(final String name) {
+        this.name = Name.from(name);
     }
 
     public void move(final int number) {
@@ -23,7 +23,7 @@ public class Car {
         return this.numberOfMove;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 }

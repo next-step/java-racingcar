@@ -14,7 +14,7 @@ public class RacingGameController {
 
     public List<RacingGameResponseDto> racingGameStart(CarRequestDto carRequestDto) {
 
-        final List<String> names = getNames(carRequestDto);
+        final List<String> names = Arrays.asList(carRequestDto.getNames().split(","));
         final int numberOfAttempts = parseInt(carRequestDto.getNumberOfAttempts());
 
         RacingGame racingGame = new RacingGame(names);
@@ -29,14 +29,6 @@ public class RacingGameController {
         return response;
     }
 
-    private List<String> getNames(CarRequestDto carRequestDto) {
-        List<String> names = Arrays.asList(carRequestDto.getNames().split(","));
-        boolean isNameLengthOver = names.stream().anyMatch(name -> name.length() > 5);
-        if (isNameLengthOver) {
-            throw new IllegalArgumentException("이름은 5글자를 넘을 수 없습니다.");
-        }
-        return names;
-    }
 
     private int parseInt(String input) {
         try {

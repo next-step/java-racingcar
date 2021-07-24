@@ -1,13 +1,14 @@
 package racingcar.controller.dto;
 
 import racingcar.domain.Car;
+import racingcar.domain.Name;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarResponseDto {
 
-    private String name;
+    private Name name;
     private int numberOfMove;
 
     private CarResponseDto(Car car) {
@@ -29,7 +30,7 @@ public class CarResponseDto {
         return numberOfMove;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 }

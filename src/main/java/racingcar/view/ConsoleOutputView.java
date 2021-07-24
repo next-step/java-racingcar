@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.controller.dto.CarResponseDto;
 import racingcar.controller.dto.RacingGameResponseDto;
+import racingcar.domain.Name;
 
 import java.util.List;
 
@@ -19,8 +20,8 @@ public class ConsoleOutputView {
         System.out.println();
 
         if (game.isFinish()) {
-            List<String> winners = game.winners();
-            System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
+            List<Name> winners = game.winners();
+            System.out.println(String.join(", ", winners.toString()) + "가 최종 우승했습니다.");
         }
     }
 

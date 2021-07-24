@@ -1,5 +1,7 @@
 package racingcar.controller.dto;
 
+import racingcar.domain.Name;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ public class RacingGameResponseDto {
         return finish;
     }
 
-    public List<String> winners() {
+    public List<Name> winners() {
         int max = this.cars.stream()
                 .mapToInt(CarResponseDto::getNumberOfMove)
                 .max()
