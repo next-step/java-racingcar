@@ -27,15 +27,8 @@ public class MessageBox {
 		System.out.println(message);
 	}
 
-	public void racingResultMessage(String playerName, int racingResult) {
-		commonMessageBox(playerName + getRacingResultByString(racingResult));
+	public void racingResultMessage(String playerName, String racingResult) {
+		commonMessageBox(playerName + racingResult);
 	}
 
-	private String getRacingResultByString(int racingResult) {
-		StringBuilder result = new StringBuilder(racingResult);
-		for (int i = 0; i < racingResult; i++) {
-			result.append("-");
-		}
-		return result.toString();
-	}
 }
