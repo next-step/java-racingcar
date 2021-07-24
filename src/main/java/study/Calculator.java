@@ -27,42 +27,15 @@ public class Calculator {
 
 
     private static int ArithmeticOperate(int firstOperand, int secondOperand, String operator) {
-        int result = 0;
-        if ("+".equals(operator)) {
-            result = plus(firstOperand, secondOperand);
-        }
-        if ("-".equals(operator)) {
-            result = minus(firstOperand, secondOperand);
-        }
-        if ("*".equals(operator)) {
-            result = multiply(firstOperand, secondOperand);
-        }
-        if ("/".equals(operator)) {
-            result = divide(firstOperand, secondOperand);
-        }
-        return result;
-    }
+        CalculatorType calculatorType = CalculatorType.findCalculatorTypeByOperator(operator);
 
-    private static int plus(int firstOperand, int secondOperand) {
-        return firstOperand + secondOperand;
-    }
-
-    private static int minus(int firstOperand, int secondOperand) {
-        return firstOperand - secondOperand;
-    }
-
-    private static int multiply(int firstOperand, int secondOperand) {
-        return firstOperand * secondOperand;
-    }
-
-    private static int divide(int firstOperand, int secondOperand) {
-        return firstOperand / secondOperand;
+        return calculatorType.calculate(firstOperand, secondOperand);
     }
 
     private static String[] parseData(String data) {
 
         if (data == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Data는 null 일 수 없습니다.");
         }
 
         String[] dataArray = data.split(" ");
