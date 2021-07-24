@@ -22,8 +22,8 @@ public class StringTest {
     @Test
     @DisplayName("서브스트링을이용해_가로안에_문자열_뽑가")
     void subStringTest() {
-        String subString = "(1 , 2)".substring(1 , 4);
-        assertThat(subString).isEqualTo("1 , 2");
+        String subString = "( 1 , 2 )".substring( 1 , 4 );
+        assertThat(subString).isEqualTo(" 1 , 2 ");
     }
 
     @Test
