@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.Fuel;
-import racing.exception.DuplicateKeyException;
+import racing.domain.fuel.RandomFuel;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -28,14 +28,13 @@ class CarsTest {
     private Cars initCars(String strNames) {
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
 
-        Cars cars = new Cars();
-        cars.addAll(
+        return new Cars(
                 Arrays.stream(strNameSplitValues)
                         .map(Name::new)
-                        .map(Car::new)
-                        .collect(Collectors.toList())
+                        .collect(Collectors.toMap(
+                                i -> i, Car::new
+                        ))
         );
-        return cars;
     }
 
     private String newAnonymousName(int identity) {
@@ -134,18 +133,27 @@ class CarsTest {
 
     @ValueSource(strings = "A|AA|AAA")
     @ParameterizedTest
-    public void addAllTest(String strNames) {
+    public void addTest(String strNames) {
         initCars(strNames);
     }
 
     @ValueSource(strings = "AA|AA|AAA")
     @ParameterizedTest
-    public void addAllTest_DuplicateKeyException(String strNames) {
-        assertThatThrownBy(() ->
-            initCars(strNames)
-        ).isInstanceOf(DuplicateKeyException.class);
+    public void addTest_IllegalStateException(String strNames) {
+        assertThatThrownBy(() -> {
+            Cars cars = new Cars();
+            String[] splitNames = strNames.split(NAME_DELIMITER);
+            List<Car> carList = Arrays.stream(splitNames)
+                    .map(Name::new)
+                    .map(Car::new)
+                    .collect(Collectors.toList());
+            for (Car iCar : carList) {
+                cars.add(iCar);
+            }
+        }).isInstanceOf(IllegalStateException.class);
     }
 
+    @DisplayName("best Car 테스트")
     @CsvSource({
             "A|B|C,A|C,100",
             "A|B|C,A,100",
@@ -162,7 +170,7 @@ class CarsTest {
         for(Car iCar : cars)
             moveCar(iCar, turnSize, winnerNames.contains(iCar.name()));
 
-        Cars winners = cars.bestCars();
+        Cars winners = cars.betCars();
         for(Name iName : winnerNames) {
             assertThat(winners.containsName(iName))
                     .withFailMessage("예상한 우승자가 포함되어 있지 않습니다.")
@@ -171,6 +179,26 @@ class CarsTest {
         assertThat(winners.size() == winnerNames.size())
                 .withFailMessage("우승자의 수가 예상한 수와 다릅니다.")
                 .isTrue();
+    }
+    @DisplayName("best Car Random Fuel 테스트")
+    @CsvSource({
+            "A|B|C|D|E|F|G|H|I|J|K,10000",
+            "A|B|C|D|E|F|G|H|I|J|K,1000000",
+    })
+
+    @ParameterizedTest
+    public void bestCarsTest_Random(String strCarNames, int turnSize) {
+        Cars cars = initCars(strCarNames);
+        cars.moveAll(RandomFuel.getInstance());
+
+        Cars winners = cars.betCars();
+
+        assertThat(winners.size())
+                .withFailMessage("우승자가 0명 입니다.")
+                .isNotEqualTo(0);
+        assertThat(winners.size())
+                .withFailMessage("모두 우승자 입니다.")
+                .isNotEqualTo(cars.size());
     }
 
     private void moveCar(Car car, int turnSize, boolean movement) {
