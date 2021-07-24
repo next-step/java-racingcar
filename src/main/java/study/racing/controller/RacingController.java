@@ -1,7 +1,7 @@
 package study.racing.controller;
 
-import static study.racing.common.Common.inputCarsNameWithMessage;
-import static study.racing.common.Common.inputValueWithMessage;
+import static study.racing.view.InsertView.inputCarsNameWithMessage;
+import static study.racing.view.InsertView.inputValueWithMessage;
 
 import study.racing.common.Message;
 import study.racing.service.Racing;

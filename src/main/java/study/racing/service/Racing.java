@@ -1,14 +1,12 @@
 package study.racing.service;
 
+import static study.racing.common.Message.MSG_ROUND_RESULT;
+import static study.racing.view.InsertView.printMessage;
+
+import java.util.List;
 import study.racing.domain.Car;
 import study.racing.domain.Cars;
 import study.racing.view.DrawDisplay;
-
-import java.util.List;
-
-import static study.racing.common.Common.printMessage;
-import static study.racing.common.Message.MSG_ROUND_RESULT;
-import static study.racing.validation.Validation.checkValue;
 
 public class Racing {
 

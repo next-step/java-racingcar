@@ -1,14 +1,16 @@
 package study.racing.domain;
 
-import study.racing.validation.Validation;
+import static study.racing.validation.Validation.checkName;
 
 public class Name {
+
+  public static final int LIMIT_LENGTH = 5;
 
   private String carName;
 
   public Name(String carName) {
-    Validation.checkName(carName);
-      this.carName = carName;
+    checkName(carName, LIMIT_LENGTH);
+    this.carName = carName;
   }
 
   public Name() {

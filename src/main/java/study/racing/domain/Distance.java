@@ -14,4 +14,9 @@ public class Distance {
     public void move() {
         moveDistance += 1;
     }
+
+    public int getMaxValue(int max) {
+        return Math.max(moveDistance,max);
+    }
+
 }

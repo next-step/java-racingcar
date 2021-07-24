@@ -2,6 +2,8 @@ package study.racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,5 +15,16 @@ class DistanceTest {
         Distance distance = new Distance();
         distance.move();
         assertThat(distance.getMoveDistance()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    void name(int input) {
+        Distance distance1 = new Distance();
+        for(int i=0; i < input+1; i++){
+            distance1.move();
+        }
+
+        assertThat(distance1.getMaxValue(input)).isGreaterThan(input);
     }
 }

@@ -4,8 +4,6 @@ import study.racing.common.Message;
 
 public class Validation {
 
-    public static final int LIMIT_LENGTH = 5;
-
     public static void checkValue(Integer input) {
         if (input == null) {
             throw new IllegalArgumentException(Message.MSG_ERROR_VALUE_NULL_BLANK);
@@ -18,14 +16,14 @@ public class Validation {
         }
     }
 
-    public static void checkValueLimitLength(String text){
-        if(LIMIT_LENGTH < text.length()){
+    public static void checkValueLimitLength(String text, int limit){
+        if(limit < text.length()){
             throw new IllegalArgumentException(Message.MSG_ERROR_VALUE_LIMIT_LENGTH);
         }
     }
 
-    public static void checkName(String text) {
+    public static void checkName(String text, int limit) {
         checkNullValue(text);
-        checkValueLimitLength(text);
+        checkValueLimitLength(text,limit);
     }
 }
