@@ -37,17 +37,19 @@
 ```
 
 ## Todo
-- [ ] 사용자로부터 입력을 받는다 #feat
-- [ ] 경주 중 자동차 상태를 출력한다 #feat
-- [ ] 경주 controller 구현: domain 객체들과 view i/o를 연결 #feat
+- [ ] 경주 controller 구현
+  - [ ] domain 객체들과 view i/o를 연결 #feat
+  - [ ] 자동차들이 횟수 만큼 이동한다 #feat
 
 ## In Progress
-- [ ] n대의 자동차를 구현
-  - [ ] 일급 컬렉션 #feat
-  - [ ] 횟수에 맞게 움직인다 #feat
+- [ ] 사용자로부터 입력을 받는다 #feat
+- [ ] 경주 중 자동차 상태를 출력한다 #feat
 
 ## Done ✓
 - [x] 자동차 클래스 구현
   - [x] 위치를 나타내는 클래 구현 #feat
   - [x] random 값을 기반 전진하거나 멈춘다 #feat
 - [x] 0에서 9 사이의 random 값을 생성한다 #feat
+- [x] n대의 자동차를 구현
+  - [x] 일급 컬렉션 #feat
+  
