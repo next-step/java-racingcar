@@ -10,7 +10,7 @@ public class Application {
         Validation.inputValidation(carCount,tryCount);
         List<Car> cars = Car.buildCarObject(carCount);
         Race race = new Race();
-        ResultView.print();
+        ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
             race.execute(cars);
             ResultView.result(cars);

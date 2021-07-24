@@ -8,21 +8,24 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
     Random random;
-    String[] cars;
+    List<Car> cars;
+    Car car;
     Race race;
 
     @BeforeEach
     void init() {
         random = new Random();
-        cars = new String[3];
         race = new Race();
+        cars = new ArrayList<>();
+        car = new Car();
     }
 
     @Test
@@ -43,15 +46,13 @@ class RacingCarTest {
         }
     }
 
-//    @Test
-//    @DisplayName("자동차의 상태 화면에 출력")
-//    void 자동차의상태() {
-//        Arrays.fill(cars, " ");
-//        race.execute(cars);
-//        for (String car : cars) {
-//            System.out.println(car);
-//        }
-//    }
+    @ParameterizedTest
+    @DisplayName("Car 객체 생성 테스트")
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7})
+    void 자동차객체생성(int number){
+        List<Car> cars = Car.buildCarObject(number);
+        Assertions.assertThat(cars.size()).isEqualTo(number);
+    }
 
     @Test
     @DisplayName("자동차와 시도 회 수 입력 값이 0이하 일 때 예외 처리 하는 테스트")
