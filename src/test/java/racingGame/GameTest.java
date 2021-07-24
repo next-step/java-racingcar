@@ -67,7 +67,7 @@ public class GameTest {
                 new Car("pobi", 5),
                 new Car("crong", 4),
                 new Car("honux", 5)), 5);
-        List<Car> winners = game.findWinner();
+        List<Car> winners = game.findWinners();
         assertThat(winners).containsExactly(new Car("pobi", 5), new Car("honux", 5));
     }
 }

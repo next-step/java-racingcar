@@ -29,7 +29,7 @@ public class Game {
         return true;
     }
 
-    public List<Car> findWinner() {
+    public List<Car> findWinners() {
         int maxDistance = getMaxCarDistance();
         return cars.stream()
                 .filter(car -> car.getDistance() == maxDistance)

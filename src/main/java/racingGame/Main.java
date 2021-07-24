@@ -16,7 +16,6 @@ public class Main {
             game.runOnce(randomNumbers);
             ResultView.printResult(game.getCars());
         }
-        List<Car> winners = game.findWinner();
-        ResultView.printWinnerMessage(winners);
+        ResultView.printWinnerMessage(game.findWinners());
     }
 }
