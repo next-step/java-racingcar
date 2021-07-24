@@ -23,10 +23,9 @@
 - [X] 유틸 클래스(Util) 추가
   - [X] 0 ~ 9 랜덤 값 생성 함수(generateForwardValue) 기능 테스트 구현  
   - [X] 0 ~ 9 랜덤 값 생성 함수 기능 구현
-- [ ] 경주 진행 관련 클래스(RaceMain) 추가
-  - [ ] 자동차 수 변수(racingCarNum) / 이동 횟수 변수(forwardCount) 추가
-  - [ ] 여러 개의 차를 관리하는 ArrayList 변수(racingCars) 추가
-  - [ ] 경주 진행 함수(startRace) 구현
+- [X] 경주 진행 관련 클래스(RaceMain) 추가
+  - [X] 자동차 수 변수(racingCarNum) / 이동 횟수 변수(forwardCount) 추가
+  - [X] 여러 개의 차를 관리하는 ArrayList 변수(racingCars) 추가
   
 - [X] 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 구분
 - [X] UI 로직을 InputView, ResultView와 같은 클래스를 추가해 분리
