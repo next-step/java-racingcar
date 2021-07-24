@@ -13,7 +13,7 @@ class CarStadiumTest {
     private int givenCars;
     private Referee referee;
     private CarStadium carStadium;
-
+    private ResultView resultView;
     @BeforeEach
     void setUp() {
         givenLimitTime = 10;
@@ -21,6 +21,7 @@ class CarStadiumTest {
 
         referee = new Referee(givenLimitTime);
         carStadium = new CarStadium(referee, new ArrayList<>());
+        resultView = new ResultView(carStadium);
     }
 
 
@@ -33,14 +34,15 @@ class CarStadiumTest {
 
         // when then
         carStadium.moveCars();
-        carStadium.showCarsLocation();
+        resultView.printResult();
+
     }
 
     @Test
     void 자동차가_없는데_움직이면_illegalArgumentException() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             carStadium.moveCars();
-            carStadium.showCarsLocation();
+            resultView.printResult();
         });
     }
 
