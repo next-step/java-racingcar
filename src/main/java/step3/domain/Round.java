@@ -12,4 +12,8 @@ public class Round {
             results.add(car.getRunDistance());
         }
     }
+
+    public ArrayList<Integer> getResults() {
+        return results;
+    }
 }

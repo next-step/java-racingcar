@@ -5,7 +5,7 @@ import java.util.List;
 public class CarRacingGame {
 
     private final RacingCars cars;
-    private List<Round> rounds;
+    private List<Round> playedRounds;
 
     private CarRacingGame(int carCount) {
         cars = new RacingCars(carCount);
@@ -23,12 +23,10 @@ public class CarRacingGame {
     }
 
     private void playOneRound(RacingCars cars) {
-
         Round round = new Round();
         round.start(cars);
 
-
-//        ResultView.printResult(this.cars);
+        playedRounds.add(round);
     }
 
 
