@@ -48,5 +48,11 @@ public class SetTest {
         assertThat(numbers.contains(number)).isTrue();
     }
 
+    @DisplayName("Set collection contains test with Junit ParameterizedTest and CsvSource")
+    @ParameterizedTest
+    @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void collection_contain_test_simple(int number, boolean isContainStr) {
+        assertThat(numbers.contains(number)).isEqualTo(isContainStr);
+    }
 
 }
