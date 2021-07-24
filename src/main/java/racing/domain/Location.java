@@ -3,11 +3,9 @@ package racing.domain;
 public class Location {
     private static final String UNDER_LOCATION_MESSAGE = "연료는 음수르 충전할 수 없습니다.";
 
-    private static final Object syncObject = new Object();
     private static final int MIN_VALUE = 0;
     private static final int ONE_BLOCK_VALUE = 1;
-    public static Location empty;
-    public static Location oneBlock;
+
     private final int value;
 
     public Location() {
@@ -24,23 +22,11 @@ public class Location {
     }
 
     public static Location empty() {
-        if (empty == null) {
-            synchronized (syncObject) {
-                if (empty == null)
-                    empty = new Location(MIN_VALUE);
-            }
-        }
-        return empty;
+        return InnerInstanceClazz.EMPTY;
     }
 
     public static Location oneBlock() {
-        if (oneBlock == null) {
-            synchronized (syncObject) {
-                if (oneBlock == null)
-                    oneBlock = new Location(ONE_BLOCK_VALUE);
-            }
-        }
-        return oneBlock;
+        return InnerInstanceClazz.ONE_BLOCK;
     }
 
     private static void validate(int value) {
@@ -71,5 +57,10 @@ public class Location {
     @Override
     public String toString() {
         return String.valueOf(value);
+    }
+
+    private static class InnerInstanceClazz {
+        private static final Location EMPTY = new Location(MIN_VALUE);
+        private static final Location ONE_BLOCK = new Location(ONE_BLOCK_VALUE);
     }
 }

@@ -1,5 +1,6 @@
 package racing.domain.car;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,6 +22,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class CarsTest {
+    private static RandomFuel randomFuel;
+
+    @BeforeAll
+    public static void setUp() {
+        randomFuel = new RandomFuel();
+    }
+
     /*
     요구 사항은 ','를 기준으로 이름을 입력 받지만
     * @CsvSource의 기본 구분 문자가 ',' 이기 때문에
@@ -120,10 +128,10 @@ class CarsTest {
         Cars cars = initCars(
                 sizeToNames(carSize), BasicCar::new
         );
-        BasicFuel fuel = new BasicFuel(fuelValue);
+        BasicFuel basicFuel = new BasicFuel(fuelValue);
 
         for (int i = 0; i < turnSize; i++) {
-            cars.moveAll(fuel);
+            cars.moveAll(basicFuel);
         }
 
         for (Car iCar : cars) {
@@ -175,7 +183,7 @@ class CarsTest {
 
         // 이동
         for(Car iCar : cars)
-            moveCars(iCar, turnSize, RandomFuel.getInstance());
+            moveCars(iCar, turnSize, randomFuel);
 
         Cars winners = cars.bestCars();
         for(Name iName : winnerNames) {
