@@ -18,12 +18,16 @@ public class ResultView {
     }
 
     private static void print(List<Integer> carsPositions) {
-        carsPositions.stream().forEach(carPosition -> {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < carPosition; i++) {
-                sb.append(CAR_POSITION);
-            }
-            System.out.println(sb);
+        carsPositions.forEach(carPosition -> {
+            appendCarPosition(carPosition);
         });
+    }
+
+    private static void appendCarPosition(Integer carPosition){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < carPosition; i++) {
+            sb.append(CAR_POSITION);
+        }
+        System.out.println(sb);
     }
 }
