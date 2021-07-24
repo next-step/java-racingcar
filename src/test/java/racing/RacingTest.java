@@ -3,6 +3,8 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -65,5 +67,14 @@ public class RacingTest {
         assertThat(checkValue).isGreaterThanOrEqualTo(firstValue).isLessThan(lastValue);
     }
 
+    @ParameterizedTest
+    @DisplayName("경주의 결과만큼 '-'로 반환된다.")
+    @CsvSource(value = {"1,-","2,--","3,---","4,----","5,-----"})
+    public void intResultToStringResult(int intResult, String stringResult){
+        racing.createPlayer("car1,car2,car3");
+        String racingResultByString = racing.getRacingResultByString(intResult);
+
+        assertThat(racingResultByString).isEqualTo(stringResult);
+    }
 
 }
