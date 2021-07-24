@@ -26,21 +26,21 @@ class SetCollectionTest {
 
     @DisplayName("size()는 set의 크기를 반환해야한다.")
     @Test
-    void TEST_size(){
+    void size(){
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @DisplayName("set에 1,2,3 값이 포함되어야한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void TEST_contains_1(int number){
+    void contains_1(int number){
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @DisplayName("set에 포함되는 경우 true, 아닌 경우 false를 반환해야한다.")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void TEST_contains_2(int number, boolean result){
+    void contains_2(int number, boolean result){
         assertThat(numbers.contains(number)).isEqualTo(result);
     }
 }
