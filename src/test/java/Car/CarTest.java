@@ -25,11 +25,11 @@ class CarTest {
 
     @ParameterizedTest
     @CsvSource({
-            "1, --",
-            "2, ---",
-            "5, ------"
+            "1, --, 2",
+            "2, ---, 3",
+            "5, ------, 6"
     })
-    void 자동차전진테스트(int moveCount, String answer) throws NoSuchFieldException, IllegalAccessException {
+    void 자동차전진테스트(int moveCount, String answer, int moveCountAnswer) throws NoSuchFieldException, IllegalAccessException {
         for(int i=0;i<moveCount;i++){
             car.move();
         }
@@ -39,7 +39,7 @@ class CarTest {
         Field field = car.getClass().getDeclaredField("moveCount");
         field.setAccessible(true);
         int moveCountByCar = (int)field.get(car);
-        assertThat(moveCountByCar).isEqualTo(moveCount);
+        assertThat(moveCountByCar).isEqualTo(moveCountAnswer);
     }
 
 }
