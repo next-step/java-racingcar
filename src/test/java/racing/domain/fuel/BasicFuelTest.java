@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class FuelTest {
+class BasicFuelTest {
     @ValueSource(ints = {
             0, 9
     })
