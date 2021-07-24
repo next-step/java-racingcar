@@ -14,6 +14,16 @@ public class RacingCar {
     private final int MINMOVENUMBER = 4;
 
     public void gameStart() {
+        getInput();
+        setCarsResult();
+        for (int i = 1; i < gameCount; i++) {
+            doGame();
+            setGameResults(i);
+        }
+        printGameResult();
+    }
+
+    private void getInput() {
         Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("자동차 대수는 몇 대 인가요?");
@@ -26,28 +36,47 @@ public class RacingCar {
         if (carCount <= 0 || gameCount <= 0) {
             throw new IllegalArgumentException("0보다 큰 값을 입력해주세요.");
         }
+    }
 
+    private void setCarsResult() {
         cars = new Car[carCount];
         gameResults = new String[gameCount];
-
-        String stringTmp = "";
         for (int i = 0; i < carCount; i++) {
             cars[i] = new Car();
-            stringTmp += (cars[i].getStatus()+"\n");
         }
-        gameResults[0] = stringTmp;
-        for(int i=1;i<gameCount;i++){
-            stringTmp = "";
-            for (int j = 0; j < carCount; j++) {
-                Random r = new Random();
-                int randomNum = r.nextInt(NUMBERBOUND);
-                if(randomNum >= MINMOVENUMBER){
-                    cars[j].move();
-                }
-                stringTmp += (cars[j].getStatus()+"\n");
+        setGameResults(0);
+    }
+
+    private void doGame() {
+        for (int j = 0; j < carCount; j++) {
+            int randomNumber = getRandomNumber();
+            if (isMove(randomNumber)) {
+                cars[j].move();
             }
-            gameResults[i] = stringTmp;
         }
     }
 
+    private int getRandomNumber() {
+        Random r = new Random();
+        return r.nextInt(NUMBERBOUND);
+    }
+
+    public boolean isMove(int randomNumber) {
+        return randomNumber >= MINMOVENUMBER;
+    }
+
+    private void setGameResults(int index) {
+        gameResults[index] = "";
+        for (int i = 0; i < carCount; i++) {
+            gameResults[index] += (cars[i].getStatus() + "\n");
+        }
+    }
+
+    private void printGameResult() {
+        System.out.println();
+        System.out.println("실행 결과");
+        for (int i = 0; i < gameCount; i++) {
+            System.out.println(gameResults[i]);
+        }
+    }
 }
