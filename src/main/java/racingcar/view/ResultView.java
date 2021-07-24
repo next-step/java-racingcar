@@ -6,14 +6,9 @@ import java.util.List;
 
 public class ResultView {
 
-    private final Board board;
     private static final String CAR_POSITION = "-";
 
-    public ResultView(Board board) {
-        this.board = board;
-    }
-
-    public void printResult() {
+    public static void printResult(Board board) {
         List<List<Integer>> allRecords = board.getAllRecords();
 
         for (int i = 0; i < allRecords.size(); i++) {
@@ -22,7 +17,7 @@ public class ResultView {
         }
     }
 
-    private void print(List<Integer> carsPositions) {
+    private static void print(List<Integer> carsPositions) {
         carsPositions.stream().forEach(carPosition -> {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < carPosition; i++) {

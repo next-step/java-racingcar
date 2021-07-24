@@ -16,11 +16,11 @@ public class RacingGame {
         this.board = new Board();
     }
 
-    public ResultView gameStart() {
+    public Board gameStart() {
         for (int i = 0; i < racingInfo.raceTrialCount; i++) {
             cars.movable();
             board.record(cars.getCarsPositions());
         }
-        return new ResultView(board);
+        return board;
     }
 }

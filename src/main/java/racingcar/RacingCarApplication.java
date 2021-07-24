@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.Service.RacingGame;
+import racingcar.model.Board;
 import racingcar.model.Cars;
 import racingcar.model.RacingInfo;
 import racingcar.view.InputView;
@@ -15,9 +16,9 @@ public class RacingCarApplication {
         Cars cars = new Cars(racingInfo.numberOfCar);
 
         RacingGame racingGame = new RacingGame(racingInfo, cars);
-        ResultView resultView = racingGame.gameStart();
+        Board board = racingGame.gameStart();
 
-        resultView.printResult();
+        ResultView.printResult(board);
 
     }
 
