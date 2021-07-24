@@ -1,5 +1,7 @@
 package racingCar.view;
 
+import racingCar.domain.Car;
+
 public class ResultView {
 
     private static final String RESULT_MESSAGE = "실행결과";
@@ -12,8 +14,9 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printCarDistance(int distance) {
-        for(int i = 0; i < distance; i++) {
+    public void printCarDistance(Car car) {
+        System.out.print(car.getCarName() + " : ");
+        for(int i = 0; i < car.getCarDistance(); i++) {
             System.out.print("-");
         }
         System.out.println();

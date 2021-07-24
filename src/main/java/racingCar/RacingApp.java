@@ -16,10 +16,10 @@ public class RacingApp {
     }
 
     private void Race() {
-        int carCount = this.inputView.EnterCarNumber();
+        String nameList = this.inputView.EnterCarName();
         int moveCount = this.inputView.EnterMoveCount();
 
-        Race race = new Race(carCount, moveCount);
+        Race race = new Race(nameList, moveCount);
 
         start(race);
     }
@@ -37,7 +37,7 @@ public class RacingApp {
         int carCount = round.getCarsSize();
 
         for(int i = 0; i < carCount; i++) {
-            this.resultView.printCarDistance(round.getCar(i).getCarDistance());
+            this.resultView.printCarDistance(round.getCar(i));
         }
         this.resultView.printEnter();
     }

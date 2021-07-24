@@ -19,14 +19,14 @@ public class Race {
     private final String COMMA = ",";
     private final int ZERO = 0;
 
-    public Race(String names, int roundCount) {
-        validateInput(names, roundCount);
-        lineUp(names);
+    public Race(String nameList, int roundCount) {
+        validateInput(nameList, roundCount);
+        lineUp(nameList);
         startRace(roundCount);
     }
 
-    private void validateInput(String names, int roundCount) {
-        if(isCarCountOverZero(names)) {
+    private void validateInput(String nameList, int roundCount) {
+        if(isCarCountOverZero(nameList)) {
             throw new IllegalArgumentException(IS_NOT_DUAL_CAR_COUNT_ERROR_MESSAGE);
         }
         if(isRoundCountOverZero(roundCount)) {
@@ -34,19 +34,19 @@ public class Race {
         }
     }
 
-    private boolean isCarCountOverZero(String names) {
-        return names.split(COMMA).length < MIN_VALUE_BY_CAR;
+    private boolean isCarCountOverZero(String nameList) {
+        return nameList.split(COMMA).length < MIN_VALUE_BY_CAR;
     }
 
     private boolean isRoundCountOverZero(int roundCount) {
         return roundCount < MIN_VALUE_BY_CAR;
     }
 
-    private void lineUp(String names) {
+    private void lineUp(String nameList) {
         List<Car> cars = new ArrayList();
-        String[] strings = names.split(COMMA);
+        String[] names = nameList.split(COMMA);
 
-        for(String name : strings) {
+        for(String name : names) {
             cars.add(new Car(new Name(name)));
         }
 
