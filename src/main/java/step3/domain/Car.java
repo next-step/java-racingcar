@@ -7,16 +7,12 @@ public class Car {
     private final String carNumber;
     private int runDistance;
 
-    private RunStrategy runStrategy;
-
-
-    public Car(String carNumber, RunStrategy runStrategy) {
+    public Car(String carNumber) {
         this.carNumber = carNumber;
-        this.runStrategy = runStrategy;
     }
 
-    public void run() {
-        runDistance += this.runStrategy.run();
+    public void run(RunStrategy runStrategy) {
+        runDistance += runStrategy.run();
     }
 
     public String getCarNumber() {

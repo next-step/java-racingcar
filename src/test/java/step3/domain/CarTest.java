@@ -15,8 +15,8 @@ class CarTest {
     void test_run() {
         String carName = String.format(RacingCars.CAR_NUMBER_FORMAT, 1);
 
-        Car testCar = new Car(carName, new TestRunStrategy());
-        testCar.run();
+        Car testCar = new Car(carName);
+        testCar.run(new TestRunStrategy());
 
         assertThat(testCar.getRunDistance()).isEqualTo(TestRunStrategy.NORMAL_PROGRESS_DISTANCE);
     }
@@ -27,8 +27,8 @@ class CarTest {
     void normal_run() {
         String carName = String.format(RacingCars.CAR_NUMBER_FORMAT, 1);
 
-        Car testCar = new Car(carName, new NormalRunStrategy());
-        testCar.run();
+        Car testCar = new Car(carName);
+        testCar.run(new NormalRunStrategy());
 
         assertThat(testCar.getRunDistance())
             .isBetween(
@@ -41,8 +41,8 @@ class CarTest {
     void high_speed_run() {
         String carName = String.format(RacingCars.CAR_NUMBER_FORMAT, 1);
 
-        Car testCar = new Car(carName, new HighSpeedRunStrategy());
-        testCar.run();
+        Car testCar = new Car(carName);
+        testCar.run(new HighSpeedRunStrategy());
 
         assertThat(testCar.getRunDistance())
             .isBetween(

@@ -1,9 +1,13 @@
 package step3.ui;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
-import step3.domain.GameSetting;
 
 public class InputView {
+
+    public static final String CAR_COUNT_KEY = "carCount";
+    public static final String ROUND_COUNT_KEY = "roundCount";
 
     private static InputView inputView = new InputView();
     private Scanner scanner = new Scanner(System.in);
@@ -11,13 +15,18 @@ public class InputView {
     private InputView() {
     }
 
-    public GameSetting readUserInputForGameSetting() {
+    public Map<String, Integer> readUserInputForGameSetting() {
+
         int carCount = askHowManyCars();
         int roundCount = askHowManyRounds();
 
         stopAskingUserByClosingScanner();
 
-        return new GameSetting(carCount, roundCount);
+        Map<String, Integer> userInputs = new HashMap<>();
+        userInputs.put(CAR_COUNT_KEY, carCount);
+        userInputs.put(ROUND_COUNT_KEY, roundCount);
+
+        return userInputs;
     }
 
 
