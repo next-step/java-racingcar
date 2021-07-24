@@ -1,10 +1,10 @@
 package racing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingGameTest {
     private NumberMoreThanFourConditionStrategy strategy = NumberMoreThanFourConditionStrategy.getInstance();
@@ -26,16 +26,16 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차는_반드시_2대_이상이어야_한다")
     void racerCountException() throws Exception {
-        Assertions.assertThatThrownBy(() -> RacingGame.of(strategy, 1, 2))
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessage("자동차는 2대 이상이어야 합니다");
+        assertThatThrownBy(() -> RacingGame.of(strategy, 1, 2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차는 2대 이상이어야 합니다");
     }
 
     @Test
     @DisplayName("스테이지는_반드시_1_이상이어야_한다")
     void stageCountException() throws Exception {
-        Assertions.assertThatThrownBy(() -> RacingGame.of(strategy, 2, 0))
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessage("시도 횟수는 1회 이상이어야 합니다");
+        assertThatThrownBy(() -> RacingGame.of(strategy, 2, 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("시도 횟수는 1회 이상이어야 합니다");
     }
 }
