@@ -6,11 +6,6 @@ public class MessageBox {
 		System.out.println(message);
 	}
 
-	public void racingResultMessage(int racingResult) {
-		String result = stringBufferToString(getRacingResultByString(racingResult));
-		commonMessageBox(result);
-	}
-
 	public void racingResultMessage(String playerName, int racingResult) {
 		String result = stringBufferToString(getRacingResultByString(racingResult));
 		commonMessageBox(playerName + result);
