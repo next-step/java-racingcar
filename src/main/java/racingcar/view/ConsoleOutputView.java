@@ -1,8 +1,7 @@
 package racingcar.view;
 
 import racingcar.controller.dto.CarResponseDto;
-
-import java.util.List;
+import racingcar.controller.dto.RacingGameResponseDto;
 
 public class ConsoleOutputView {
 
@@ -10,10 +9,10 @@ public class ConsoleOutputView {
         System.out.println("실행 결과");
     }
 
-    public void print(List<CarResponseDto> cars) {
-        for (CarResponseDto car : cars) {
+    public void print(RacingGameResponseDto game) {
+        for (CarResponseDto car : game.getCars()) {
             String progressBar = getProgressBar(car.getNumberOfMove());
-            System.out.println(progressBar);
+            System.out.println(car.getName() + " : " + progressBar);
         }
         System.out.println();
     }

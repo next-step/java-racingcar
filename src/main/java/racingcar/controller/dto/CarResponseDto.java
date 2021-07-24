@@ -4,9 +4,11 @@ import racingcar.domain.Car;
 
 public class CarResponseDto {
 
+    private String name;
     private int numberOfMove = 0;
 
     private CarResponseDto(Car car) {
+        this.name = car.getName();
         this.numberOfMove = car.getNumberOfMove();
     }
 
@@ -18,4 +20,7 @@ public class CarResponseDto {
         return numberOfMove;
     }
 
+    public String getName() {
+        return name;
+    }
 }

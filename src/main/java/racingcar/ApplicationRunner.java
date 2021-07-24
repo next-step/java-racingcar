@@ -2,7 +2,7 @@ package racingcar;
 
 import racingcar.controller.RacingGameController;
 import racingcar.controller.dto.CarRequestDto;
-import racingcar.controller.dto.CarResponseDto;
+import racingcar.controller.dto.RacingGameResponseDto;
 import racingcar.view.ConsoleInputView;
 import racingcar.view.ConsoleOutputView;
 
@@ -15,10 +15,10 @@ public class ApplicationRunner {
         CarRequestDto carRequestDto = consoleInputView.input();
 
         RacingGameController racingGameController = new RacingGameController();
-        List<List<CarResponseDto>> responses = racingGameController.racingGameStart(carRequestDto);
+        List<RacingGameResponseDto> responses = racingGameController.racingGameStart(carRequestDto);
 
         ConsoleOutputView consoleOutputView = new ConsoleOutputView();
-        for (List<CarResponseDto> response : responses) {
+        for (RacingGameResponseDto response : responses) {
             consoleOutputView.print(response);
         }
     }
