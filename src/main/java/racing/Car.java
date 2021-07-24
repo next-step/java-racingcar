@@ -11,18 +11,18 @@ public class Car {
 		this.carName = carName;
 	}
 
-	public void validStringLength(String value) {
+	private void validStringLength(String value) {
 		if (value.length() > CHECK_LENGTH) {
 			throw new IllegalArgumentException("자동차 이름은 5글자를 초과할수 없습니다.");
 		}
 	}
 
-	public int carRacing(int value) {
+	public int carMove(int value) {
 		 carMoveCheck(value);
 		 return raceDistance;
 	}
 
-	public void carMoveCheck(int value){
+	private void carMoveCheck(int value){
 		if (value > 3) {
 			++raceDistance;
 		}
