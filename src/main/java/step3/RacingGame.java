@@ -24,10 +24,7 @@ public class RacingGame {
 
     public RacingGame(RacingGameConfiguration racingGameConfiguration) {
         this.racingGameConfiguration = racingGameConfiguration;
-
-        this.cars = Stream.generate(Car::new)
-                .limit(racingGameConfiguration.getNumberOfCars())
-                .collect(Collectors.toList());
+        this.cars = createCars(racingGameConfiguration);
     }
 
     public void attach(OutputInterface output) {
@@ -50,6 +47,12 @@ public class RacingGame {
 
     public List<Car> getCars() {
         return this.cars.subList(0, this.cars.size());
+    }
+
+    private List<Car> createCars(RacingGameConfiguration racingGameConfiguration) {
+        return Stream.generate(Car::new)
+                .limit(racingGameConfiguration.getNumberOfCars())
+                .collect(Collectors.toList());
     }
 
     private void nextTurn() {
