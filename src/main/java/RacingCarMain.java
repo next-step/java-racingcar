@@ -12,7 +12,6 @@ public class RacingCarMain {
         RacingCarInput racingCarInput = new RacingCarInput();
         try {
             racingCarInput.requestInput();
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
