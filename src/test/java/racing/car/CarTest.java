@@ -12,7 +12,7 @@ class CarTest {
 
     @BeforeAll
     public static void setUp() {
-        ANONYMOUS = new Name("ANONYMOUS");
+        ANONYMOUS = new Name("AAA");
     }
 
     @CsvSource({
@@ -37,8 +37,8 @@ class CarTest {
         car.move(fuel);
 
         assertThat(
-                car.location()
+                car.checkLocation(location)
         ).withFailMessage("자동차가 요청한대로 행동하지 않았습니다.")
-                .isEqualTo(location);
+                .isTrue();
     }
 }

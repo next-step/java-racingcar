@@ -22,13 +22,11 @@ public class Cars implements Iterable<Car> {
             throw new EmptyCarException();
 
         // 가장 많은 거리를 이동한 자동차의 Location을 구한다.
-        Location bestLocation =
-                new Location(values.values().stream()
-                        .map(Car::location)
-                        .mapToInt(Location::value)
-                        .max()
-                        .getAsInt()
-                );
+        Comparator<Location> comparator = Comparator.comparing(Location::value);
+        Location bestLocation = values.values().stream()
+                .map(Car::location)
+                .max(comparator)
+                .get();
 
         Cars cars = new Cars();
         cars.addAll(values.values().stream()

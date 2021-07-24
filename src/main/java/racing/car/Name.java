@@ -8,18 +8,16 @@ public class Name {
     private final String value;
 
     public Name(String value) {
+        validate(value);
         this.value = value;
     }
 
     private void validate(String value) {
         if (value.length() > MAX_LENGTH)
-            throw new InvalidInputException("자동차의 이름은 " + MAX_LENGTH + " + 자를 초과할 수 없습니다.");
-        if (!StringUtils.isEng(value))
-            throw new InvalidInputException("자동차의 이름은 영어로만 입력 해주세요.");
+            throw new InvalidInputException("자동차의 이름은 " + MAX_LENGTH + "자를 초과할 수 없습니다.");
     }
 
     public String value() {
-        validate(value);
         return value;
     }
 

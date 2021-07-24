@@ -46,24 +46,4 @@ class StringUtilsTest {
                 StringUtils.isEmpty(str)
         ).isFalse();
     }
-
-    @ValueSource(strings = {
-            "A", "ABD", "ERG", "arw", "aaabsasAAW"
-    })
-    @ParameterizedTest
-    public void isEng_Success(String str) {
-        assertThat(
-                StringUtils.isEng(str)
-        ).isTrue();
-    }
-
-    @ValueSource(strings = {
-            " A", "A ", "A A", "a A", "jaewon1"
-    })
-    @ParameterizedTest
-    public void isEng_Fail(String str) {
-        assertThat(
-                StringUtils.isEng(str)
-        ).isFalse();
-    }
 }

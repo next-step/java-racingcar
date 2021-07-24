@@ -4,11 +4,11 @@ import util.RandomUtils;
 
 public class RandomFuel extends Fuel {
     public RandomFuel() {
-        super(Fuel.EMPTY.value);
+        super(Fuel.MAX_VALUE);
     }
 
     @Override
-    public boolean isMovable(int requireFuelValue) {
-        return RandomUtils.nextInt(Fuel.FULL.value) >= requireFuelValue;
+    public int value() {
+        return RandomUtils.nextInt(super.value());
     }
 }

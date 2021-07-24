@@ -8,17 +8,12 @@ public class StringUtils {
         return !isEmpty(str) && RegexPattern.NUMBER_PATTERN.matches(str);
     }
 
-    public static boolean isEng(String str) {
-        return !isEmpty(str) && RegexPattern.ENG_PATTERN.matches(str);
-    }
-
     public static boolean isEmpty(String str) {
         return Objects.isNull(str) || str.trim().length() == 0;
     }
 
     private enum RegexPattern {
-        NUMBER_PATTERN("^[0-9]+$"),
-        ENG_PATTERN("^[a-zA-Z]+$");
+        NUMBER_PATTERN("^[0-9]+$");
 
         private final String pattern;
 

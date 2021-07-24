@@ -1,6 +1,7 @@
 package racing.car;
 
 public class Location {
+    private static final int MIN_VALUE = 0;
     private static final String UNDER_LOCATION_MESSAGE = "연료는 음수르 충전할 수 없습니다.";
 
     public static Location EMPTY = new Location();
@@ -12,16 +13,16 @@ public class Location {
     }
 
     public Location(int location) {
+        validate(location);
         this.value = location;
     }
 
     public int value() {
-        validate(value);
         return value;
     }
 
     private static void validate(int value) {
-        if (value < 0)
+        if (value < MIN_VALUE)
             throw new IllegalArgumentException(UNDER_LOCATION_MESSAGE);
     }
 
