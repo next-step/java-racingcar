@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Calculator {
 
     public static final String ADD = "+";
@@ -5,36 +7,35 @@ public class Calculator {
     public static final String DIVISION = "/";
     public static final String MULTIPLICATION = "*";
 
+    public static final String EMPTY = " ";
+
     public static int result = 0;
 
-    public Calculator(String inputStr)  {
-        if(inputStr.equals("") || inputStr == null) {
-            throw new IllegalArgumentException();
-        }
-        String[] splitStr = inputStr.split(" ");
-        judge(splitStr);
-    }
+    public int judge(String inputStr) {
 
-    public int judge(String[] splitStr) {
+        Vaildator.vaildateInit(inputStr);
 
+        String[] splitStr = inputStr.split(EMPTY);
+        result = Integer.parseInt(splitStr[0]);
 
         for (int i = 0; i < splitStr.length; i++) {
             if(!Util.isNumeric(splitStr[i])) {
+                int rightInt = Integer.parseInt(splitStr[i + 1]);
                 switch (splitStr[i]) {
                     case ADD:
-                        result = add(result , Integer.parseInt(splitStr[i + 1]));
+                        add(rightInt);
                         break;
                     case MINUS:
-                        result = minus(result ,Integer.parseInt(splitStr[i + 1]));
+                        minus(rightInt);
                         break;
                     case DIVISION:
-                        result = devision(result ,Integer.parseInt(splitStr[i + 1]));
+                        devision(rightInt);
                         break;
                     case MULTIPLICATION:
-                        result = mutiplication(result ,Integer.parseInt(splitStr[i + 1]));
+                        mutiplication(rightInt);
                         break;
                     default:
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("사칙연산 문자가 아닙니다");
                 }
             }
         }
@@ -45,29 +46,27 @@ public class Calculator {
         return result;
     }
 
-    private int mutiplication(int result, int rightInt) {
-        return result *= rightInt;
+    private void mutiplication(int rightInt) {
+        result *= rightInt;
     }
 
-    private int devision(int result, int rightInt) {
+    private int devision(int rightInt) {
         return result /= rightInt;
     }
 
-    private int minus(int result, int rightInt) {
+    private int minus(int rightInt) {
         return result -= rightInt;
     }
 
-    private int add(int result, int rightInt) {
+    private int add(int rightInt) {
         return result += rightInt;
     }
 
     public static void main(String[] args) throws Exception {
 
-        byte[] str = new byte[256];
-        System.in.read(str, 0, 256);
-        String readStr = new String(str);
+        Scanner scanner = new Scanner(System.in);
 
-        Calculator calculator = new Calculator(readStr);
+        Calculator calculator = new Calculator();
         System.out.println("결과 : " + calculator.getResult());
 
     }
