@@ -4,6 +4,6 @@ public class TestRunStrategy implements RunStrategy {
 
     @Override
     public int run() {
-        return 0;
+        return NORMAL_PROGRESS_DISTANCE;
     }
 }

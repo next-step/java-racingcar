@@ -7,7 +7,7 @@ import step3.runType.RunStrategy;
 
 public class RacingCars {
 
-    private static final String CAR_NUMBER_FORMAT = "car_number_%d";
+    public static final String CAR_NUMBER_FORMAT = "car_number_%d";
 
     private final List<Car> cars;
 

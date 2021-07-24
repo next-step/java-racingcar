@@ -4,12 +4,8 @@ import step3.runType.RunStrategy;
 
 public class Car {
 
-    private static final int HIGH_POWER_BOUNDARY = 4;
-    private static final int ENGINE_POWER_LIMIT = 9;
-
     private final String carNumber;
     private int runDistance;
-    private int enginePower;
 
     private RunStrategy runStrategy;
 
@@ -31,7 +27,4 @@ public class Car {
         return runDistance;
     }
 
-    private void prepareEngine() {
-        enginePower = (int) (Math.random() * ENGINE_POWER_LIMIT);
-    }
 }

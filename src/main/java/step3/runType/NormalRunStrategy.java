@@ -4,6 +4,9 @@ public class NormalRunStrategy implements RunStrategy {
 
     @Override
     public int run() {
-        return 0;
+        if (canProgress()) {
+            return NORMAL_PROGRESS_DISTANCE;
+        }
+        return NO_PROGRESS_DISTANCE;
     }
 }

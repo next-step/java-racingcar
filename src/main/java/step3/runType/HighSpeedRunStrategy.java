@@ -4,6 +4,9 @@ public class HighSpeedRunStrategy implements RunStrategy {
 
     @Override
     public int run() {
-        return 0;
+        if (canProgress()) {
+            return NORMAL_PROGRESS_DISTANCE;
+        }
+        return HIGH_SPEED_PROGRESS_DISTANCE;
     }
 }
