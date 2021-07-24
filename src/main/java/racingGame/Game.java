@@ -61,5 +61,4 @@ public class Game {
             throw new IllegalArgumentException("반복 횟수는 0 혹은 음수가 될 수 없습니다.");
         }
     }
-
 }
