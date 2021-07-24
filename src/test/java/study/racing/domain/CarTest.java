@@ -1,12 +1,14 @@
 package study.racing.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static study.racing.common.Common.toInt;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static study.racing.common.Common.toInt;
 
 class CarTest {
 
@@ -45,5 +47,17 @@ class CarTest {
     void 차이름입력테스트(String input, String expected) {
         Car car = Car.createCar(input);
         assertThat(car.getName().getCarName()).isEqualTo(expected);
+    }
+
+    @DisplayName("차객체 이동거리 최대값 판별 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"test1,6,0","test1,5,0"})
+    void 차이동거리최대값테스트(String input, int move, int target) {
+        Car car = Car.createCar(input);
+        car.moveTheCar(move);
+
+        int max = car.maxDistance(car.getDistance().getMoveDistance());
+
+        assertThat(max).isGreaterThan(target);
     }
 }

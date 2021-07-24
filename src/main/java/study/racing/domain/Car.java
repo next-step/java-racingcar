@@ -43,4 +43,8 @@ public class Car {
     public Name getName() {
         return name;
     }
+
+    public int maxDistance(int moveDistance) {
+        return distance.getMaxValue(moveDistance);
+    }
 }

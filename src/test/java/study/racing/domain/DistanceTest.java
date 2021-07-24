@@ -17,6 +17,7 @@ class DistanceTest {
         assertThat(distance.getMoveDistance()).isEqualTo(1);
     }
 
+    @DisplayName("전진한 거리가 비교값과 비교하여 더 큰값인지 확인하는 테스트.")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     void name(int input) {

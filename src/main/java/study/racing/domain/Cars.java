@@ -22,6 +22,15 @@ public class Cars {
         Arrays.asList(splitCarsName(carName)).forEach(name -> cars.add(readyToCar(name)));
     }
 
+    public int getMaxMoveDistance() {
+        int max = 0;
+        for (Car car : cars) {
+            max = car.maxDistance(max);
+        }
+        
+        return max;
+    }
+
     private Car readyToCar(String carName) {
         return Car.createCar(carName);
     }
