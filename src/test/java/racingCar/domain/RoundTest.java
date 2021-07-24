@@ -52,4 +52,11 @@ class RoundTest {
         assertThat(round.getCarsSize()).isEqualTo(cars.size());
     }
 
+    @DisplayName("우승자리스트를 1개 이상 반환하는지 확인")
+    @Test
+    void testGetFirstCar() {
+        Round round = new Round(cars);
+        assertThat(round.getFirstCar().size() > 0).isTrue();
+    }
+
 }

@@ -1,6 +1,7 @@
 package racingCar.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -33,6 +34,13 @@ class RaceTest {
         Round round = race.getRoundResult(1);
         assertThat(round).isInstanceOf(Round.class);
         assertThat(round.getCarsSize()).isEqualTo(names.split(",").length);
+    }
+
+    @DisplayName("참가한 자동차 중에 우승자가 있는지 확인한다.")
+    @Test
+    void testAnnounceWinners() {
+        Race race = new Race("강아지", 10);
+        assertThat(race.announceWinners().size() > 0).isTrue();
     }
 
 }

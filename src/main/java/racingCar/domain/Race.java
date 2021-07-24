@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.reducing;
 import static java.util.stream.Collectors.toList;
 
 public class Race {
@@ -68,6 +69,11 @@ public class Race {
 
     public int getRoundCount() {
         return rounds.size();
+    }
+
+    public List<String> announceWinners() {
+        Round finalRound = rounds.get(rounds.size()-1);
+        return finalRound.getFirstCar();
     }
 
 }

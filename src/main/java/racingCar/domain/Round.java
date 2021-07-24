@@ -42,4 +42,28 @@ public class Round {
         return this.cars.get(carNumber);
     }
 
+    public List<String> getFirstCar() {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = 0;
+
+        for(Car car : cars) {
+            maxDistance = judgeFirstCar(winners, car, maxDistance);
+        }
+
+        return winners;
+    }
+
+    private int judgeFirstCar(List<String> winners, Car car, int maxDistance) {
+        if(car.getCarDistance() < maxDistance) {
+            return maxDistance;
+        }
+        if(car.getCarDistance() == maxDistance) {
+            winners.add(car.getCarName());
+            return maxDistance;
+        }
+        winners.clear();
+        winners.add(car.getCarName());
+        return car.getCarDistance();
+    }
+
 }
