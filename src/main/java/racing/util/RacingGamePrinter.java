@@ -1,10 +1,9 @@
 package racing.util;
 
 public class RacingGamePrinter {
-    private static final String END_MESSAGE_FORMAT = "실행 결과";
-
     public static void print(String string) {
-        System.out.println(END_MESSAGE_FORMAT);
+        System.out.println("실행 결과");
         System.out.print(string);
+        System.out.print("가 최종 우승했습니다.");
     }
 }

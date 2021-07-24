@@ -3,17 +3,19 @@ package racing.util;
 import java.util.Scanner;
 
 public class RacingGameScanner {
-    public static int[] enter() {
+    public static String enterNames() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대인가요?");
-        int racerCount = sc.nextInt();
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String names = sc.nextLine();
+        return names;
+    }
 
-        System.out.println("시도할 횟수는 몇 회인가요?");
+    public static int enterStageCount() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("시도할 회수는 몇회인가요?");
         int stageCount = sc.nextInt();
-
         System.out.println();
-
         sc.close();
-        return new int[]{racerCount, stageCount};
+        return stageCount;
     }
 }
