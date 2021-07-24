@@ -177,7 +177,7 @@ class CarsTest {
         for(Car iCar : cars)
             moveCars(iCar, turnSize, RandomFuel.getInstance());
 
-        Cars winners = cars.betCars();
+        Cars winners = cars.bestCars();
         for(Name iName : winnerNames) {
             assertThat(winners.containsName(iName))
                     .withFailMessage("예상한 우승자가 포함되어 있지 않습니다.")

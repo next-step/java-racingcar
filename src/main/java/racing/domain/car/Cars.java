@@ -26,7 +26,7 @@ public class Cars implements Iterable<Car> {
                 .orElse(Location.empty());
     }
 
-    public Cars betCars() {
+    public Cars bestCars() {
         if (values.isEmpty())
             throw new EmptyCarException();
 

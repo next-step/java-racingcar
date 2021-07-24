@@ -22,7 +22,6 @@ public class BasicCar implements Car{
         return name;
     }
 
-
     public void move(Fuel fuel) {
         if (isMovable(fuel))
             this.location = location.add(Location.oneBlock());

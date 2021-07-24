@@ -41,7 +41,7 @@ public class DosResultView implements ResultView {
     @Override
     public void printWinners(Cars cars) {
         StringBuilder builder = new StringBuilder();
-        for (Car iCar : cars.betCars()) {
+        for (Car iCar : cars.bestCars()) {
             builder.append(iCar.name())
                     .append(NAME_DELIMITER);
         }
