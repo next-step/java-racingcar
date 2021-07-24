@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 public class RacingCar {
     private static final int ENDNUMBER = 5;
 
-    public List<Car> play(String inputStr, int excuteNumber) {
-        Cars cars =  new Cars(createCars(seperator(inputStr)));
+    public List<Car> play(int carCount, int moveCount) {
+        Cars cars =  new Cars(carCount);
         System.out.println();
-        for(int i=1; i<excuteNumber; i++){
+        for(int i=1; i<moveCount; i++){
             cars.moveCars();
-            System.out.println();
+            ResultView.printMovingCars(cars);
         }
         return cars.getWinners();
     }

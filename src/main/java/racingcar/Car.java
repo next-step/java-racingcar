@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Objects;
 
 public class Car {
+    private final int MOVE_NUM = 4;
     private String name;
     private int position;
 
@@ -11,8 +12,7 @@ public class Car {
             throw new RuntimeException();
         }
         this.name = name;
-        this.position = 1;
-        print();
+        this.position = 0;
     }
 
     public Car(String name, int position){
@@ -21,7 +21,6 @@ public class Car {
         }
         this.name = name;
         this.position = position;
-        print();
     }
 
     public int getPosition() {
@@ -36,23 +35,10 @@ public class Car {
         if(isMove(randomNumber)){
             this.position++;
         }
-        print();
     }
 
     public boolean isMove(int randomNumber) {
-        final int MOVE_NUM = 4;
-        if(randomNumber>=MOVE_NUM){
-            return true;
-        }
-        return false;
-    }
-
-    private void print(){
-        System.out.print(name + " : ");
-        for(int i=0; i<position; i++){
-            System.out.print("-");
-        }
-        System.out.println();
+        return randomNumber>=MOVE_NUM;
     }
 
     @Override

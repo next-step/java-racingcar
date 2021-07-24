@@ -64,28 +64,28 @@ public class RacingCarTest {
         assertThat(stop).isFalse();
     }
 
-    @Test
-    @DisplayName("우승자 확인")
-    void winnersTest(){
-        Car pobi = new Car("pobi",5);
-        Car crong = new Car("crong",5);
-        Car honux = new Car("honux",2);
-        List<Car> carList = new ArrayList<>();
-        carList.add(pobi);
-        carList.add(crong);
-        carList.add(honux);
+//    @Test
+//    @DisplayName("우승자 확인")
+//    void winnersTest(){
+//        Car pobi = new Car("pobi",5);
+//        Car crong = new Car("crong",5);
+//        Car honux = new Car("honux",2);
+//        List<Car> carList = new ArrayList<>();
+//        carList.add(pobi);
+//        carList.add(crong);
+//        carList.add(honux);
+//
+//        Cars cars = new Cars(carList);
+//        List<Car> winners = cars.getWinners();
+//        assertThat(winners).contains(pobi,crong);
+//    }
 
-        Cars cars = new Cars(carList);
-        List<Car> winners = cars.getWinners();
-        assertThat(winners).contains(pobi,crong);
-    }
-
-    @Test
-    @DisplayName("게임 테스트")
-    void playTest(){
-        List<Car> winners = racingCar.play("pobi,crong,honux", 5);
-        winners.stream().map(w -> w.getName()).forEach(System.out::println);
-    }
+//    @Test
+//    @DisplayName("게임 테스트")
+//    void playTest(){
+//        List<Car> winners = racingCar.play("pobi,crong,honux", 5);
+//        winners.stream().map(w -> w.getName()).forEach(System.out::println);
+//    }
 
 
 }
