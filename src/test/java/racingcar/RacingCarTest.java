@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingcar.utils.StringUtils.inputStrSeperator;
 
 public class RacingCarTest {
     RacingCar racingCar = new RacingCar();
@@ -16,7 +17,7 @@ public class RacingCarTest {
     @DisplayName(", 구분자로 문자열 분리")
     void seperatorTest() {
         String inputStr = "pobi,crong,honux";
-        String[] names = racingCar.inputStrSeperator(inputStr);
+        String[] names = inputStrSeperator(inputStr);
         Assertions.assertArrayEquals(names, new String[]{"pobi", "crong", "honux"});
     }
 
