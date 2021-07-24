@@ -11,7 +11,6 @@ dependencies {
     testImplementation(
             'org.junit.jupiter:junit-jupiter:5.7.2',
             'org.assertj:assertj-core:3.19.0',
-            'org.mockito:mockito-core:3.11.2'
     )
 }
 

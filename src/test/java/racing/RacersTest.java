@@ -13,7 +13,8 @@ import static java.util.stream.IntStream.range;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacersTest {
-    private final ForwardConditionStrategy mockStrategy = BDDMockito.mock(NumberMoreThanFourConditionStrategy.class);
+    private final ForwardConditionStrategy stay = () -> true;
+    private final ForwardConditionStrategy move = () -> false;
 
     private Racers racers;
 
@@ -39,16 +40,14 @@ public class RacersTest {
     @Test
     @DisplayName("전진_테스트_조건은_참")
     void goForward() throws Exception {
-        BDDMockito.given(mockStrategy.judgeCondition()).willReturn(false);
-        racers.turnAround(mockStrategy, new StringBuilder());
+        racers.turnAround(move, new StringBuilder());
         assertThat(racers.get(0).position()).isEqualTo("-");
     }
 
     @Test
     @DisplayName("전진_테스트_조건은_거짓")
     void goForwardNot() throws Exception {
-        BDDMockito.when(mockStrategy.judgeCondition()).thenReturn(true);
-        racers.turnAround(mockStrategy, new StringBuilder());
+        racers.turnAround(stay, new StringBuilder());
         assertThat(racers.get(0).position()).isEqualTo("");
     }
 
