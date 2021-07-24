@@ -1,6 +1,7 @@
 package racing_car.step03;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -8,13 +9,12 @@ public class Application {
         int tryCount = InputView.tryCount();
 
         Validation.inputValidation(carCount,tryCount);
-        String[] cars = new String[carCount];
-        Arrays.fill(cars, "");
+        List<Car> car = new ArrayList<>();
         Race race = new Race();
         ResultView.print();
         for (int i = 0; i < tryCount; i++) {
-            race.execute(cars);
-            ResultView.result(cars);
+            race.execute(car);
+            ResultView.result(car);
         }
     }
 }
