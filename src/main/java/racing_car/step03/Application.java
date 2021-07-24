@@ -12,8 +12,8 @@ public class Application {
         Race race = new Race();
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {
-            race.execute(cars);
-            ResultView.result(cars);
+            race.startRacingGame(cars);
+            ResultView.showGameResult(cars);
         }
     }
 }

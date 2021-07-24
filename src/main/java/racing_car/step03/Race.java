@@ -8,7 +8,7 @@ public class Race {
     private static final int MIN_NUMBER = 4;
     private static final int BORDER = 10;
 
-    public void execute(List<Car> cars) {
+    public void startRacingGame(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
             if (generateRandomNumber() >= MIN_NUMBER) {
                 cars.get(i).setDrivingDistance();

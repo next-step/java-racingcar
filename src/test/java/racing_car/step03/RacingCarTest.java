@@ -53,8 +53,8 @@ class RacingCarTest {
 
     @Test
     @DisplayName("자동차 이동 거리 출력 테스트")
-    void 자동차이동거리출력(){
-        for (int i=0; i<5; i++){
+    void 자동차이동거리출력() {
+        for (int i = 0; i < 5; i++) {
             car.setDrivingDistance();
         }
         String printResultContents = ResultView.printResultContents(car);
