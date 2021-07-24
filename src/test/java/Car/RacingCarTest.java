@@ -7,15 +7,11 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Scanner;
-import java.util.function.Predicate;
 
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
+
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -81,8 +77,8 @@ class RacingCarTest {
             "-1 4, 0보다 큰 값을 입력해주세요.",
             "3 0, 0보다 큰 값을 입력해주세요.",
             "6 -1, 0보다 큰 값을 입력해주세요.",
-            "a 1", "숫자 값을 입력해주세요.",
-            "1 a", "숫자 값을 입력해주세요."
+            "a 1, 숫자 값을 입력해주세요.",
+            "1 a, 숫자 값을 입력해주세요."
     })
     void 자동차대수_테스트_예외발생(String input, String errMessage) throws IllegalAccessException {
         setInput(input);
