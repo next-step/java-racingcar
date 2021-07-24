@@ -3,10 +3,10 @@ package racing_car.step03;
 import java.util.Random;
 
 public class Race {
-    private Random r = new Random();
-    private final int MIN_NUMBER = 4;
-    private final int BORDER = 10;
-    private final String DISTANCE_SYMBOL = "-";
+    private Random random = new Random();
+    private static final int MIN_NUMBER = 4;
+    private static final int BORDER = 10;
+    private static final String DISTANCE_SYMBOL = "-";
 
     public void execute(String[] cars) {
         for (int i = 0; i < cars.length; i++) {
@@ -16,13 +16,11 @@ public class Race {
         }
     }
 
-    public boolean move(int random) {
-        if (random >= MIN_NUMBER) return true;
-
-        return false;
+    public boolean move(int number) {
+        return number >= MIN_NUMBER;
     }
 
     public int getRandomNumber() {
-        return r.nextInt(BORDER);
+        return random.nextInt(BORDER);
     }
 }
