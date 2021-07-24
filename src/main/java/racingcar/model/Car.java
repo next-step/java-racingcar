@@ -6,11 +6,16 @@ import java.util.Random;
 
 public class Car {
     private int position;
+
     private static int MOVABLE_BOUND = 4;
     private static int INIT_POSITION = 0;
 
-    public Car() {
-        position = INIT_POSITION;
+    public Car(int position) {
+        this.position = position;
+    }
+
+    public Car(){
+        this(INIT_POSITION);
     }
 
     public int getPosition() {
