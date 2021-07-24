@@ -15,39 +15,43 @@ public class Calculator {
 
         String[] splitStr = inputStr.split(" ");
         for (int i = 0; i < splitStr.length; i++) {
-            int leftInt = Integer.parseInt(splitStr[i - 1]);
             int rightInt = Integer.parseInt(splitStr[i + 1]);
             switch (splitStr[i]) {
                 case ADD:
-                    add(leftInt, rightInt);
+                    add(rightInt);
                     break;
                 case MINUS:
-                    minus(leftInt, rightInt);
+                    minus(rightInt);
                     break;
                 case DIVISION:
-                    devision(leftInt, rightInt);
+                    devision(rightInt);
                     break;
                 case MULTIPLICATION:
-                    mutiplication(leftInt, rightInt);
+                    mutiplication(rightInt);
                     break;
             }
-
         }
+
+        resultPrint();
     }
 
-    private void mutiplication(int leftInt, int rightInt) {
+    private void resultPrint() {
+        System.out.println("결과 : " + result);
+    }
+
+    private void mutiplication(int rightInt) {
         result *= rightInt;
     }
 
-    private void devision(int leftInt, int rightInt) {
+    private void devision(int rightInt) {
         result /= rightInt;
     }
 
-    private void minus(int leftInt, int rightInt) {
+    private void minus(int rightInt) {
         result -= rightInt;
     }
 
-    private void add(int leftInt , int rightInt) {
+    private void add(int rightInt) {
         result += rightInt;
     }
 
