@@ -23,9 +23,7 @@ class StringCalculatorTest {
     @ValueSource(strings = {"", " "})
     void calculateFromString_error1(String input){
         StringCalculator stringCalculator = new StringCalculator();
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            stringCalculator.calculateFromString(input);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculateFromString(input));
     }
 
     @DisplayName("사칙연산 기호가 아닌 경우 에러")
@@ -33,8 +31,14 @@ class StringCalculatorTest {
     @ValueSource(strings = {"1 . 1", "1 1 1", "1 1"})
     void calculateFromString_error2(String input){
         StringCalculator stringCalculator = new StringCalculator();
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            stringCalculator.calculateFromString(input);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculateFromString(input));
+    }
+
+    @DisplayName("0으로 나눌 경우 에러")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 / 0"})
+    void calculateFromString_error3(String input){
+        StringCalculator stringCalculator = new StringCalculator();
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculateFromString(input));
     }
 }

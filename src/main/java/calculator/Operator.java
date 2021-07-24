@@ -3,10 +3,33 @@ package calculator;
 import java.util.Arrays;
 
 public enum Operator {
-    ADD("+"),
-    SUB("-"),
-    MUL("*"),
-    DIV("/");
+    ADD("+"){
+        @Override
+        public int execute(int a, int b) {
+            return a + b;
+        }
+    },
+    SUB("-"){
+        @Override
+        public int execute(int a, int b) {
+            return a - b;
+        }
+    },
+    MUL("*"){
+        @Override
+        public int execute(int a, int b) {
+            return a * b;
+        }
+    },
+    DIV("/"){
+        @Override
+        public int execute(int a, int b) {
+            if(b == 0){
+                throw new IllegalArgumentException();
+            }
+            return a / b;
+        }
+    };
 
     private String operator;
 
@@ -25,16 +48,5 @@ public enum Operator {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public int execute(int a, int b) {
-        if (this.operator.equals(Operator.ADD.getOperator())) {
-            return a + b;
-        }
-        if (this.operator.equals(Operator.SUB.getOperator())) {
-            return a - b;
-        }
-        if (this.operator.equals(Operator.MUL.getOperator())) {
-            return a * b;
-        }
-        return a / b;
-    }
+    public abstract int execute(int a, int b);
 }
