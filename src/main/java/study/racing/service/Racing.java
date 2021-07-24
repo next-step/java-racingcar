@@ -14,8 +14,8 @@ public class Racing {
 
     private Cars cars;
 
-    public Racing(String[] carsName, int roundCount) {
-        this.cars = createCars(carsName.length, carsName);
+    public Racing(String carsName, int roundCount) {
+        this.cars = createCars(carsName);
         playingRounds(roundCount);
     }
 
@@ -40,8 +40,8 @@ public class Racing {
         return new Cars(carCount);
     }
 
-    private Cars createCars(int carCount,String[] carsName) {
-        return new Cars(carCount,carsName);
+    private Cars createCars(String carsName) {
+        return new Cars(carsName);
     }
 
     private void runningCars() {

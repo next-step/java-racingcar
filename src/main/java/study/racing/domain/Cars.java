@@ -1,9 +1,12 @@
 package study.racing.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import study.racing.common.Common;
 
 import static study.racing.common.Common.createRandomNumber;
+import static study.racing.common.Common.splitCarsName;
 
 public class Cars {
 
@@ -15,10 +18,8 @@ public class Cars {
         }
     }
 
-    public Cars(int count, String[] carName) {
-        for(int i = 0; i < count; i++){
-            cars.add(readyToCar(carName[i]));
-        }
+    public Cars(String carName) {
+        Arrays.asList(splitCarsName(carName)).forEach(name -> cars.add(readyToCar(name)));
     }
 
     private Car readyToCar(String carName) {
