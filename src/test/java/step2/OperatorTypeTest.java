@@ -8,8 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 public class OperatorTypeTest {
 
@@ -62,6 +61,14 @@ public class OperatorTypeTest {
         assertThat(operatorType).isEqualTo(expected);
     }
 
+    @DisplayName("없는 기호를 find 할 때 IllegalArgumentException 발생")
+    @Test
+    void find_ThrowsIllegalArgumentException_IfOperatorArgumentIsInvalid() {
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> OperatorType.find("@")
+        );
+    }
+
     static Stream<Arguments> parametersProvider() {
         return Stream.of(
                 Arguments.arguments("+", OperatorType.PLUS),
@@ -70,4 +77,6 @@ public class OperatorTypeTest {
                 Arguments.arguments("/", OperatorType.DIVIDE)
         );
     }
+
+
 }
