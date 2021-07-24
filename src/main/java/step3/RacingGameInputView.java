@@ -3,7 +3,7 @@ package step3;
 import java.util.Scanner;
 
 public class RacingGameInputView {
-    public RacingGameConfiguration getRacingGameConfigurationWithPrompt() {
+    public static RacingGameConfiguration getRacingGameConfigurationWithPrompt() {
         Scanner standardInput = new Scanner(System.in);
 
         System.out.println("자동차 대수는 몇 대 인가요?");

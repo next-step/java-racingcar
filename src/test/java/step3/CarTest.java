@@ -49,19 +49,16 @@ public class CarTest {
     @Test
     @DisplayName("Car의 위치(location)이 증가하는지 테스트")
     void progressTest() {
-        IntStream.range(0, 10)
-                .forEach((i) -> {
-                    try {
-                        int before = car.getLocation();
+        try {
+            int before = car.getLocation();
 
-                        TestHelper.invokePrivateMethod(car, "progress");
+            TestHelper.invokePrivateMethod(car, "progress");
 
-                        int after = car.getLocation();
+            int after = car.getLocation();
 
-                        assertThat(after).isEqualTo(before + 1);
-                    } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                });
+            assertThat(after).isEqualTo(before + 1);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }

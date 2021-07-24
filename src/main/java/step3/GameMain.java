@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class GameMain {
     public static void main(String[] args) {
-        RacingGameConfiguration racingGameConfiguration =
-                new RacingGameInputView().getRacingGameConfigurationWithPrompt();
+        RacingGameConfiguration racingGameConfiguration = RacingGameInputView.getRacingGameConfigurationWithPrompt();
 
         RacingGame racingGame = new RacingGame(racingGameConfiguration);
         racingGame.attach(new SimpleRacingStatusView());

@@ -2,8 +2,8 @@ package step3;
 
 public class RacingGameConfiguration {
 
-    private int numberOfCars;
-    private int numberOfTurns;
+    final private int numberOfCars;
+    final private int numberOfTurns;
 
     public RacingGameConfiguration(int numberOfCars, int numberOfTurns) {
         this.numberOfCars = numberOfCars;
@@ -11,10 +11,10 @@ public class RacingGameConfiguration {
     }
 
     public int getNumberOfCars() {
-        return numberOfCars;
+        return this.numberOfCars;
     }
 
     public int getNumberOfTurns() {
-        return numberOfTurns;
+        return this.numberOfTurns;
     }
 }

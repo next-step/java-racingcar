@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    private final int numberOfCars = 5;
-    private final int numberOfTurns = 5;
+    private final int numberOfCars = 100;
+    private final int numberOfTurns = 100;
 
     private RacingGame racingGame;
 
@@ -27,40 +27,35 @@ public class RacingGameTest {
     @Test
     @DisplayName("생성자 테스트")
     void gameTest() {
-        assertThat(racingGame.getCars().size()).isEqualTo(5);
+        assertThat(racingGame.getCars().size()).isEqualTo(100);
 
         racingGame.getCars().forEach(e -> assertThat(e).isExactlyInstanceOf(Car.class));
     }
 
     @Test
-    @DisplayName("턴이 진행될때 자동차가 움직이는지 테스트")
+    @DisplayName("턴이 진행되었는지 테스트")
     void nextTurnTest() {
-        final int testTurns = 100;
-        final int sumOfStartLocation = racingGame.getCars().stream().mapToInt(Car::getLocation).sum();
+        try {
+            TestHelper.invokePrivateMethod(racingGame, "nextTurn");
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
-        // 100번의 턴을 진행하면 최소한 하나 이상의 차량은 이동했을것이라고 가정
-        IntStream.range(0, testTurns)
-                .forEach(x -> {
-                    try {
-                        TestHelper.invokePrivateMethod(racingGame, "nextTurn");
-                    } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                });
-
-        final int sumOfAfterLocation = racingGame.getCars().stream().mapToInt(Car::getLocation).sum();
-
-        // 차량이 이동했는지 확인
-        assertThat(sumOfStartLocation).isNotEqualTo(sumOfAfterLocation);
+        // 차량이 한칸 이동 (안)했는지 확인
+        racingGame.getCars()
+                .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(1));
 
         // 턴이 진행되었는지 확인
-        assertThat(racingGame.getCurrentTurn()).isEqualTo(testTurns);
+        assertThat(racingGame.getCurrentTurn()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("게임 진행 테스트")
     void startGameTest() {
         this.racingGame.startGame();
+
+        racingGame.getCars()
+                .forEach(car -> assertThat(car.getLocation()).isLessThanOrEqualTo(numberOfTurns));
 
         assertThat(racingGame.getCurrentTurn()).isEqualTo(numberOfTurns);
     }

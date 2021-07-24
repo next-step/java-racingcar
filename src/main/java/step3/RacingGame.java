@@ -53,7 +53,6 @@ public class RacingGame {
 
     private void nextTurn() {
         this.cars.forEach(Car::goOrStop);
-
         this.currentTurn += 1;
     }
 
