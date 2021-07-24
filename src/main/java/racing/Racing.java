@@ -1,7 +1,6 @@
 package racing;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -12,7 +11,7 @@ public class Racing {
 	private final Random random;
 	private final MessageBox messageBox;
 	private final StringBuffer winnerPlayList;
-	private  int MAX_VALUE = 0;
+	private int MAX_VALUE = 0;
 
 	public Racing(MessageBox messageBox) {
 		cars = new ArrayList<>();
@@ -29,10 +28,8 @@ public class Racing {
 	}
 
 	public List<Car> setupPlayer(String[] playerArray) {
-		int CHECK_LENGTH = 4;
 		for (String playerName : playerArray) {
-			validation.validStringLength(playerName, CHECK_LENGTH);
-			Car car = new Car(playerName);
+			Car car = new Car(playerName, validation);
 			cars.add(car);
 		}
 		return cars;
@@ -47,7 +44,7 @@ public class Racing {
 		}
 		String WINNER_MESSAGE = " 가 최종 우승했습니다.";
 		String winnerPlayer = winnerPlayer().trim();
-		messageBox.commonMessageBox(winnerPlayer.substring(0,winnerPlayer.length()-1), WINNER_MESSAGE);
+		messageBox.commonMessageBox(winnerPlayer.substring(0, winnerPlayer.length() - 1), WINNER_MESSAGE);
 	}
 
 	public int toInt(String value) {
@@ -63,8 +60,8 @@ public class Racing {
 		messageBox.commonMessageBox("");
 	}
 
-	private void maxValueCheck(int resultValue){
-		if(MAX_VALUE < resultValue){
+	private void maxValueCheck(int resultValue) {
+		if (MAX_VALUE < resultValue) {
 			MAX_VALUE = resultValue;
 		}
 	}
@@ -75,16 +72,14 @@ public class Racing {
 	}
 
 	public String winnerPlayer() {
-		for(Car car : cars){
+		for (Car car : cars) {
 			winnerConfirm(car.searchWinner(MAX_VALUE));
 		}
 		return winnerPlayList.toString();
 	}
 
-
-
 	private void winnerConfirm(String playerName) {
-		if(!playerName.equals("fail")){
+		if (!playerName.equals("fail")) {
 			winnerPlayList.append(playerName);
 			winnerPlayList.append(",");
 		}
