@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.Location;
 import racing.domain.car.Car;
 import racing.domain.car.Cars;
 
@@ -41,7 +42,7 @@ public class DosResultView implements ResultView {
     @Override
     public void printWinners(Cars cars) {
         StringBuilder builder = new StringBuilder();
-        for (Car iCar : cars.bestCars()) {
+        for (Car iCar : cars.betCars()) {
             builder.append(iCar.name())
                     .append(NAME_DELIMITER);
         }

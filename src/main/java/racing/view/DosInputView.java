@@ -43,14 +43,13 @@ public class DosInputView implements InputView {
         String strNames = inputLine(INPUT_CAR_NAMES);
         String[] strNameSplitValues = strNames.split(NAME_DELIMITER);
 
-        Cars cars = new Cars();
-        cars.addAll(
+        return new Cars(
                 Arrays.stream(strNameSplitValues)
                         .map(Name::new)
-                        .map(Car::new)
-                        .collect(Collectors.toList())
+                        .collect(Collectors.toMap(
+                                i -> i, Car::new
+                        ))
         );
-        return cars;
     }
 
     @Override

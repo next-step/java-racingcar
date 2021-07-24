@@ -32,8 +32,12 @@ public class RacingSolution {
             racing(cars, turnSize);
 
             resultView.printWinners(cars);
-        } catch (EmptyCarException | DuplicateKeyException | InvalidInputException e) {
+        } catch (EmptyCarException | InvalidInputException e) {
             resultView.printException(e);
+        } catch (IllegalStateException e) {
+            resultView.printException(
+                    new DuplicateKeyException("중복된 자동차 이름이 존재 합니다.")
+            );
         }
     }
 

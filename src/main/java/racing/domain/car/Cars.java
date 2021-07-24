@@ -3,16 +3,15 @@ package racing.domain.car;
 import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.Fuel;
-import racing.exception.DuplicateKeyException;
 import racing.exception.EmptyCarException;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars implements Iterable<Car> {
-    private final HashMap<Name, Car> values;
+    private final Map<Name, Car> values;
 
-    public Cars(HashMap<Name, Car> values) {
+    public Cars(Map<Name, Car> values) {
         this.values = values;
     }
 
@@ -20,23 +19,25 @@ public class Cars implements Iterable<Car> {
         this(new HashMap<>());
     }
 
-    public Cars bestCars() {
+    private Location bestLocation() {
+        return values.values().stream()
+                .map(Car::location)
+                .max(Comparator.comparing(Location::value))
+                .orElse(Location.empty());
+    }
+
+    public Cars betCars() {
         if (values.isEmpty())
             throw new EmptyCarException();
 
-        // 가장 많은 거리를 이동한 자동차의 Location을 구한다.
-        Comparator<Location> comparator = Comparator.comparing(Location::value);
-        Location bestLocation = values.values().stream()
-                .map(Car::location)
-                .max(comparator)
-                .orElse(Location.empty());
-
-        Cars cars = new Cars();
-        cars.addAll(values.values().stream()
+        Location bestLocation = bestLocation();
+        return new Cars(
+                values.values().stream()
                 .filter(c -> c.checkLocation(bestLocation))
-                .collect(Collectors.toList())
+                .collect(Collectors.toMap(
+                        Car::name, i -> i
+                ))
         );
-        return cars;
     }
 
     public void moveAll(Fuel fuel) {
@@ -49,14 +50,9 @@ public class Cars implements Iterable<Car> {
         return this.values.containsKey(name);
     }
 
-    public void addAll(List<Car> cars) {
-        for (Car iCar : cars)
-            add(iCar);
-    }
-
     public void add(Car car) {
         if (values.containsKey(car.name()))
-            throw new DuplicateKeyException("중복된 자동차 이름이 존재 합니다.");
+            throw new IllegalStateException("중복된 자동차 이름이 존재 합니다.");
         values.put(car.name(), car);
     }
 
