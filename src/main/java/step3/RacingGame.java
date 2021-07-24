@@ -13,16 +13,17 @@ public class RacingGame {
     private OutputInterface outputInterface;
 
     // Class Members
-    private int numberOfTurns;
+    private List<Car> cars;
+
     private int currentTurn = 0;
 
-    private List<Car> cars;
+    RacingGameConfiguration racingGameConfiguration;
 
     public RacingGame() {
     }
 
     public RacingGame(RacingGameConfiguration racingGameConfiguration) {
-        this.numberOfTurns = racingGameConfiguration.getNumberOfTurns();
+        this.racingGameConfiguration = racingGameConfiguration;
 
         this.cars = Stream.generate(Car::new)
                 .limit(racingGameConfiguration.getNumberOfCars())
@@ -57,7 +58,7 @@ public class RacingGame {
     }
 
     public void startGame() {
-        IntStream.range(0, this.numberOfTurns).forEach(x -> {
+        IntStream.range(0, this.racingGameConfiguration.getNumberOfTurns()).forEach(x -> {
             nextTurn();
             send();
         });
