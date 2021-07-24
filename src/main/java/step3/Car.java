@@ -17,10 +17,6 @@ public class Car {
         this.movedCount++;
     }
 
-    public void showNowLocation() {
-        ResultView.showCurrentCarLocation(this.movedCount);
-    }
-
     public int getMovedCount() {
         return movedCount;
     }

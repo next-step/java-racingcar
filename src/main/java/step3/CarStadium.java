@@ -32,9 +32,10 @@ public class CarStadium {
         referee.passedTime();
     }
 
-    public void showCarsLocation() {
-        cars.forEach(Car::showNowLocation);
+    public List<Car> getAllCars() {
+        return cars;
     }
+
 
     public int carsCount() {
         return cars.size();
