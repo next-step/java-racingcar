@@ -1,6 +1,4 @@
-package calculator;
-
-import java.util.Arrays;
+package step2.calculator;
 
 public class Calculator {
     String cmd;
