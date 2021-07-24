@@ -1,4 +1,5 @@
 import racing.RacingCarInput;
+import racing.RacingCarOperator;
 
 import java.util.Scanner;
 
@@ -10,10 +11,14 @@ public class RacingCarMain {
 
     private void run() {
         RacingCarInput racingCarInput = new RacingCarInput();
+
         try {
-            racingCarInput.requestInput();
+            int[] racingInputInfo = racingCarInput.requestInput();
+            RacingCarOperator racingCarOperator = new RacingCarOperator(racingInputInfo);
+            racingCarOperator.Run();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("프로그램을 종료합니다.");
     }
 }
