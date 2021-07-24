@@ -4,7 +4,6 @@ import racingcar.controller.dto.CarResponseDto;
 import racingcar.controller.dto.RacingGameResponseDto;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ConsoleOutputView {
 
@@ -20,22 +19,9 @@ public class ConsoleOutputView {
         System.out.println();
 
         if (game.isFinish()) {
-            System.out.println(winners(game.getCars()));
+            List<String> winners = game.winners();
+            System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
         }
-    }
-
-    private String winners(List<CarResponseDto> cars) {
-        int max = cars.stream()
-                .mapToInt(CarResponseDto::getNumberOfMove)
-                .max()
-                .orElseThrow(IllegalArgumentException::new);
-
-        String names = cars.stream()
-                .filter(r -> r.getNumberOfMove() == max)
-                .map(CarResponseDto::getName)
-                .collect(Collectors.joining(", "));
-
-        return names + "가 최종 우승했습니다.";
     }
 
     private String getProgressBar(int numberOfMove) {
