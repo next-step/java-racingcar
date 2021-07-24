@@ -3,6 +3,8 @@ plugins {
     id 'jacoco'
 }
 
+sourceCompatibility = 11
+
 repositories {
     mavenCentral()
 }
