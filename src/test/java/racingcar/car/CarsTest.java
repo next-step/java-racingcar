@@ -12,7 +12,7 @@ class CarsTest {
 	@DisplayName("주어진 대수만큼 자동차들을 생성한다.")
 	@Test
 	void create() {
-		Cars cars = Cars.of(5, new RandomMoveStrategy());
+		Cars cars = Cars.of(5);
 		assertThat(cars.cars()).hasSize(5);
 	}
 

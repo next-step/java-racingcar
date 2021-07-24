@@ -12,8 +12,8 @@ public class RacingGameApplication {
         int numberOfCars = InputView.getNumberOfCars();
         int tryCount = InputView.getTryCount();
 
-        Cars cars = Cars.of(numberOfCars, new RandomMoveStrategy());
-        RacingGame racingGame = new RacingGame(cars);
+        Cars cars = Cars.of(numberOfCars);
+        RacingGame racingGame = new RacingGame(cars, new RandomMoveStrategy());
 
         ResultView.printResultMessage();
         for (int i = 0; i < tryCount; i++) {

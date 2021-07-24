@@ -8,22 +8,20 @@ import racingcar.strategy.MoveStrategy;
 public class Cars {
 
 	private final List<Car> cars;
-	private final MoveStrategy moveStrategy;
 
-	public Cars(List<Car> cars, MoveStrategy moveStrategy) {
+	public Cars(List<Car> cars) {
 		this.cars = cars;
-		this.moveStrategy = moveStrategy;
 	}
 
-	public static Cars of(int numberOfCars, MoveStrategy moveStrategy) {
+	public static Cars of(int numberOfCars) {
 		List<Car> cars = new ArrayList<>();
 		for (int i = 0; i < numberOfCars; i++) {
 			cars.add(new Car());
 		}
-		return new Cars(cars, moveStrategy);
+		return new Cars(cars);
 	}
 
-	public void move() {
+	public void move(MoveStrategy moveStrategy) {
 		for (Car car : cars) {
 			car.move(moveStrategy);
 		}
