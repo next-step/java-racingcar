@@ -29,12 +29,25 @@ public class Game {
         return true;
     }
 
+    public List<Car> findWinner() {
+        int maxDistance = getMaxCarDistance();
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .collect(Collectors.toList());
+    }
+
     public List<Car> getCars() {
         return cars;
     }
 
     public int getRepeatCount() {
         return repeatCount;
+    }
+
+    private int getMaxCarDistance() {
+        return cars.stream()
+                .mapToInt(Car::getDistance)
+                .max().orElse(0);
     }
 
     private void validCarCount(int carCount) {
@@ -48,4 +61,5 @@ public class Game {
             throw new IllegalArgumentException("반복 횟수는 0 혹은 음수가 될 수 없습니다.");
         }
     }
+
 }

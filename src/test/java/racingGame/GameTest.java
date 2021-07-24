@@ -60,4 +60,14 @@ public class GameTest {
                 new Car("dodo", 0));
     }
 
+    @Test
+    @DisplayName("우승자 찾기")
+    void findWinner() {
+        Game game = new Game(Arrays.asList(
+                new Car("pobi", 5),
+                new Car("crong", 4),
+                new Car("honux", 5)), 5);
+        List<Car> winners = game.findWinner();
+        assertThat(winners).containsExactly(new Car("pobi", 5), new Car("honux", 5));
+    }
 }

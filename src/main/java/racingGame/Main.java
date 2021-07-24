@@ -12,9 +12,11 @@ public class Main {
 
         ResultView.printGameStart();
         for (int i = 0; i < repeatCount; i++) {
-            List<Integer> list = RandomNumber.makeRandomNumber(cars.size());
-            game.runOnce(list);
+            List<Integer> randomNumbers = RandomNumber.makeRandomNumber(cars.size());
+            game.runOnce(randomNumbers);
             ResultView.printResult(game.getCars());
         }
+        List<Car> winners = game.findWinner();
+        ResultView.printWinnerMessage(winners);
     }
 }
