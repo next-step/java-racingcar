@@ -1,7 +1,7 @@
 package racing;
 
-import racing.car.Cars;
-import racing.car.RandomFuel;
+import racing.domain.car.Cars;
+import racing.domain.fuel.RandomFuel;
 import racing.exception.DuplicateKeyException;
 import racing.exception.EmptyCarException;
 import racing.exception.InvalidInputException;

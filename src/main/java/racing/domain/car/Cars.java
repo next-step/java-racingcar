@@ -1,5 +1,8 @@
-package racing.car;
+package racing.domain.car;
 
+import racing.domain.Location;
+import racing.domain.Name;
+import racing.domain.fuel.Fuel;
 import racing.exception.DuplicateKeyException;
 import racing.exception.EmptyCarException;
 
@@ -26,7 +29,7 @@ public class Cars implements Iterable<Car> {
         Location bestLocation = values.values().stream()
                 .map(Car::location)
                 .max(comparator)
-                .get();
+                .orElse(Location.EMPTY);
 
         Cars cars = new Cars();
         cars.addAll(values.values().stream()
@@ -42,10 +45,6 @@ public class Cars implements Iterable<Car> {
     }
 
     /* 아래는 Forward 메소드 */
-    public Car get(Name name) {
-        return values.get(name);
-    }
-
     public boolean containsName(Name name) {
         return this.values.containsKey(name);
     }

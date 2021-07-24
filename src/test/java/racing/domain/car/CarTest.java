@@ -1,9 +1,12 @@
-package racing.car;
+package racing.domain.car;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.domain.Location;
+import racing.domain.Name;
+import racing.domain.fuel.Fuel;
 
 import static org.assertj.core.api.Assertions.*;
 

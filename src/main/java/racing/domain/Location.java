@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain;
 
 public class Location {
     private static final int MIN_VALUE = 0;

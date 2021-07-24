@@ -1,9 +1,12 @@
-package racing.car;
+package racing.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.Location;
+import racing.domain.Name;
+import racing.domain.fuel.Fuel;
 import racing.exception.DuplicateKeyException;
 
 import java.util.Arrays;

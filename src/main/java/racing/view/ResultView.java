@@ -1,7 +1,7 @@
 package racing.view;
 
-import racing.car.Car;
-import racing.car.Cars;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
 
 public interface ResultView {
     void printResultTitle();

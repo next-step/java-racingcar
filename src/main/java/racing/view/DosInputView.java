@@ -1,8 +1,8 @@
 package racing.view;
 
-import racing.car.Car;
-import racing.car.Cars;
-import racing.car.Name;
+import racing.domain.car.Car;
+import racing.domain.car.Cars;
+import racing.domain.Name;
 import racing.exception.InvalidInputException;
 import util.StringUtils;
 

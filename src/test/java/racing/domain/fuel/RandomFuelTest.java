@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain.fuel;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -12,11 +12,11 @@ public class RandomFuelTest {
     @ParameterizedTest
     public void randomFuelTest(int testSize) {
         /*
-        Fuel fuel = new RandomFuel();
+        Fuel racing.domain.fuel = new RandomFuel();
 
         int movableCounter = 0;
         for (int i = 0; i < testSize; i++) {
-            if (fuel.isMovable(Car.REQUIRED_FUEL_VALUE))
+            if (racing.domain.fuel.isMovable(Car.REQUIRED_FUEL_VALUE))
                 movableCounter++;
         }
         assertThat(movableCounter)

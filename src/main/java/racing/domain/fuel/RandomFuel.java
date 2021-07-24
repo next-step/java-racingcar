@@ -1,5 +1,6 @@
-package racing.car;
+package racing.domain.fuel;
 
+import racing.domain.fuel.Fuel;
 import util.RandomUtils;
 
 public class RandomFuel extends Fuel {

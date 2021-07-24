@@ -1,4 +1,8 @@
-package racing.car;
+package racing.domain.car;
+
+import racing.domain.Location;
+import racing.domain.Name;
+import racing.domain.fuel.Fuel;
 
 public class Car {
     private static final int REQUIRED_FUEL_VALUE = 4; // 자동차가 움직이기 위한 최소 연료

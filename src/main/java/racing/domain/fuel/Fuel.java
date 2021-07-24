@@ -1,4 +1,4 @@
-package racing.car;
+package racing.domain.fuel;
 
 public class Fuel {
     protected static int MIN_VALUE = 0;

@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.car.Cars;
+import racing.domain.car.Cars;
 
 public interface InputView {
     Cars inputCars();

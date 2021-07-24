@@ -1,7 +1,6 @@
-package racing.car;
+package racing.domain;
 
 import racing.exception.InvalidInputException;
-import util.StringUtils;
 
 public class Name {
     private static final int MAX_LENGTH = 5;
