@@ -1,6 +1,6 @@
 package step3;
 
-import step3.observers.SimpleRacingStatus;
+import step3.observers.SimpleRacingStatusView;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class GameMain {
         int nTurns = standardInput.nextInt();
 
         RacingGame racingGame = new RacingGame(nCars, nTurns);
-        racingGame.attach(new SimpleRacingStatus());
+        racingGame.attach(new SimpleRacingStatusView());
 
         System.out.println("실행 결과");
         racingGame.startGame();
