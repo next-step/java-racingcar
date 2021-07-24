@@ -32,7 +32,7 @@ public class Cars {
     }
 
     public void movable() {
-        cars.stream().forEach(car -> car.movable(RandomNumberUtils.executeRandomNumber()));
+        cars.forEach(car -> car.movable(RandomNumberUtils.executeRandomNumber()));
     }
 
 }
