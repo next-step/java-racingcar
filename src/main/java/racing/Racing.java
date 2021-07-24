@@ -90,8 +90,17 @@ public class Racing {
 	public String winnerPlayer() {
 		StringBuilder winnerResult = new StringBuilder();
 		for (Car car : cars) {
-			winnerResult.append(car.searchWinner(MAX_VALUE));
+			winnerResult.append(searchWinner(car.resultRacing(),car.getCarName()));
 		}
 		return winnerResult.toString();
+	}
+
+	public String searchWinner(int carRacingResult,String carName) {
+		StringBuilder winnerName = new StringBuilder();
+		if (carRacingResult == MAX_VALUE) {
+			winnerName.append(carName);
+			winnerName.append(",");
+		}
+		return winnerName.toString();
 	}
 }
