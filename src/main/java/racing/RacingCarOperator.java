@@ -20,8 +20,8 @@ public class RacingCarOperator {
             carLocation[i] = 1;
         }
 
-        // 4-1) 시도 회수가 0일 경우 다음 단계로 이동.
-        // 4-2) 시도 회수가 1이상 일 경우 로직 1단계로 이동.
+        // 4-1) 시도 횟수가 0일 경우 다음 단계로 이동.
+        // 4-2) 시도 횟수가 1이상 일 경우 로직 1단계로 이동.
         while (numOfCycle != 0) {
             for (int i = 0; i < numOfCar; i++) {
                 // 1) 주어진 자동차의 수 만큼 랜덤값을 뽑음. (랜덤 값의 범위는 0~9)
@@ -42,7 +42,7 @@ public class RacingCarOperator {
                 System.out.println();
             }
             System.out.println();
-            // 4) 시도 회수 -= 1
+            // 4) 시도 횟수 -= 1
             numOfCycle--;
         }
     }
