@@ -22,7 +22,7 @@ public class Validator {
 
 	public static void validateNumber(String number) {
 		if (number == null || number.isEmpty()) {
-			throw new NumberFormatException("숫자 형식이 잘못됐어요!");
+			throw new NumberFormatException("피연산자 값이 비었어요!");
 		}
 
 		if (!Pattern.matches(numberRegex, number)) {
