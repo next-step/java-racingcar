@@ -3,7 +3,11 @@ package racing.domain.fuel;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class RandomFuelTest {
     @ValueSource(ints = {
@@ -11,21 +15,14 @@ public class RandomFuelTest {
     })
     @ParameterizedTest
     public void randomFuelTest(int testSize) {
-        /*
-        Fuel racing.domain.fuel = new RandomFuel();
+        Fuel fuel = new RandomFuel();
 
-        int movableCounter = 0;
+        Set<Integer> values = new HashSet<>();
         for (int i = 0; i < testSize; i++) {
-            if (racing.domain.fuel.isMovable(Car.REQUIRED_FUEL_VALUE))
-                movableCounter++;
+            values.add(fuel.value());
         }
-        assertThat(movableCounter)
-                .withFailMessage("무조건 Not Movable 입니다.")
-                .isNotEqualTo(0);
-        assertThat(movableCounter)
-                .withFailMessage("무조건 Movable 입니다.")
-                .isNotEqualTo(testSize);
-
-         */
+        assertThat(values.size())
+                .withFailMessage("무조건 하나의 결과만 반환 됩니다.")
+                .isNotEqualTo(1);
     }
 }
