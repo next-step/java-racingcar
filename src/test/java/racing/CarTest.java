@@ -13,7 +13,7 @@ class CarTest {
     @CsvSource(value = {"4,1","3,0","7,1"})
     public void carRacingConditionCheck(int randomValue, int moveValue) {
         Car car = new Car("car1");
-        int result = car.carRacing(randomValue);
+        int result = car.carMove(randomValue);
 
         assertThat(result).isEqualTo(moveValue);
     }
@@ -42,15 +42,15 @@ class CarTest {
     @CsvSource(value = {"car1,1,5,7","car2,2,4,8","car3,0,9,1"})
     public void returnCarResultRacing(String value,int race1, int race2, int race3){
         Car car = new Car(value);
-        int result1 = car.carRacing(race1);
+        int result1 = car.carMove(race1);
 
         assertThat(result1).isEqualTo(car.resultRacing());
 
-        int result2 = car.carRacing(race2);
+        int result2 = car.carMove(race2);
 
         assertThat(result2).isEqualTo(car.resultRacing());
 
-        int result3 = car.carRacing(race3);
+        int result3 = car.carMove(race3);
 
         assertThat(result3).isEqualTo(car.resultRacing());
     }
