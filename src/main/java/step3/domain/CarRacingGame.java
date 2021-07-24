@@ -12,7 +12,10 @@ public class CarRacingGame {
         int roundCount = gameSetting.getRoundCount();
 
         RacingCars cars = new RacingCars(carCount);
+        playAllRounds(roundCount, cars);
+    }
 
+    private void playAllRounds(int roundCount, RacingCars cars) {
         for (int i = 0; i < roundCount; i++) {
             playOneRound(cars);
         }
