@@ -14,7 +14,10 @@ public class InputViewTest {
     @ValueSource(strings = "pobi,crong,honux")
     @DisplayName("입력받은 String을 , 단위로 분리하여 리스트로 만든다.")
     void splitStringWithCommaToList(String input) {
-        List<String> result = InputView.splitStringWithCommaToList(input);
-        assertThat(result).containsExactly("pobi", "crong", "honux");
+        List<Car> result = InputView.splitStringWithCommaToList(input);
+        assertThat(result).containsExactly(
+                new Car("pobi"),
+                new Car("crong"),
+                new Car("honux"));
     }
 }

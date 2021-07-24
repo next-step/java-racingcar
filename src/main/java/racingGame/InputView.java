@@ -11,7 +11,7 @@ public class InputView {
     public static final String INPUT_REPEAT_COUNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private final static Scanner scanner = new Scanner(System.in);
 
-    public static List<String> inputCarNames() {
+    public static List<Car> inputCarNames() {
         System.out.println(INPUT_CAR_NAME_MESSAGE);
         return splitStringWithCommaToList(scanner.nextLine());
     }
@@ -21,8 +21,9 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static List<String> splitStringWithCommaToList(String input) {
+    public static List<Car> splitStringWithCommaToList(String input) {
         return Arrays.stream(input.split(","))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 }
