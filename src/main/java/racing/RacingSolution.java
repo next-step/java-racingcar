@@ -1,6 +1,7 @@
 package racing;
 
 import racing.domain.car.Cars;
+import racing.domain.fuel.Fuel;
 import racing.domain.fuel.RandomFuel;
 import racing.exception.DuplicateKeyException;
 import racing.exception.EmptyCarException;
@@ -43,8 +44,9 @@ public class RacingSolution {
 
     private void racing(Cars cars, int turnSize) {
         resultView.printResultTitle();
+        Fuel randomFuel = new RandomFuel();
         for (int i = 0; i < turnSize; i++) {
-            cars.moveAll(RandomFuel.getInstance());
+            cars.moveAll(randomFuel);
 
             resultView.printAllCarLocation(cars);
         }
