@@ -15,7 +15,7 @@ public class RandomFuelTest {
     })
     @ParameterizedTest
     public void randomFuelTest(int testSize) {
-        Fuel fuel = new RandomFuel();
+        Fuel fuel = RandomFuel.getInstance();
 
         Set<Integer> values = new HashSet<>();
         for (int i = 0; i < testSize; i++) {

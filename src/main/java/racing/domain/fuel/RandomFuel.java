@@ -1,11 +1,25 @@
 package racing.domain.fuel;
 
-import racing.domain.fuel.Fuel;
 import util.RandomUtils;
 
+import java.util.Objects;
+
 public class RandomFuel extends Fuel {
-    public RandomFuel() {
+    private static final Object syncObject = new Object();
+    private static RandomFuel instance;
+
+    private RandomFuel() {
         super(Fuel.MAX_VALUE);
+    }
+
+    public static RandomFuel getInstance() {
+        if (Objects.isNull(instance)) {
+            synchronized (syncObject) {
+                if (Objects.isNull(instance))
+                    instance = new RandomFuel();
+            }
+        }
+        return instance;
     }
 
     @Override
