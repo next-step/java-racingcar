@@ -4,7 +4,7 @@ import racingcar.car.Position;
 
 public class ResultView {
 
-    private final static StringBuilder carStatusString = new StringBuilder();
+    private static final StringBuilder carStatusString = new StringBuilder();
 
     public static void printResultTitle() {
         System.out.println();

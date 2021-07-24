@@ -3,8 +3,8 @@ package racingcar.car;
 public class Position {
     private int position;
 
-    public final static int defaultDistance = 0;
-    public final static int forwardDistance = 1;
+    public static final int defaultDistance = 0;
+    public static final int forwardDistance = 1;
 
     public Position() {
         this.position = 0;

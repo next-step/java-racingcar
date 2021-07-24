@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final String INPUT_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
-    private final String INPUT_RACING_TIME_MESSAGE = "시도할 회수는 몇 회 인가요?";
+    private static final String INPUT_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    private static final String INPUT_RACING_TIME_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
     private int getUserInputValue(String message) {
         System.out.println(message);

@@ -4,9 +4,9 @@ import racingcar.exception.InvalidUserInputException;
 
 public class ValidationUtil {
 
-    private final static String INPUT_STRING_ERROR_MESSAGE = "숫자만 입력 가능합니다.";
-    private final static String INPUT_CAR_COUNT_ERROR_MESSAGE = "2개 이상의 자동차를 입력해야 시작 가능합니다.";
-    private final static String INPUT_GAME_COUNT_ERROR_MESSAGE = "1회 이상의 게임 횟수를 입력해야 시작 가능합니다.";
+    private static final String INPUT_STRING_ERROR_MESSAGE = "숫자만 입력 가능합니다.";
+    private static final String INPUT_CAR_COUNT_ERROR_MESSAGE = "2개 이상의 자동차를 입력해야 시작 가능합니다.";
+    private static final String INPUT_GAME_COUNT_ERROR_MESSAGE = "1회 이상의 게임 횟수를 입력해야 시작 가능합니다.";
 
     public static void checkUserInput(String input) {
         try {
