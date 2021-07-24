@@ -4,9 +4,9 @@ import racing.domain.Location;
 import racing.domain.Name;
 import racing.domain.fuel.Fuel;
 
-// 이동할때 연료가 들지 않는 꿈의 자동차!!
-public final class DreamCar extends BasicCar {
-    public DreamCar(Name name) {
+// Fake 객체
+public final class FakeCar extends BasicCar {
+    public FakeCar(Name name) {
         super(name);
     }
 

@@ -163,10 +163,10 @@ class CarsTest {
             "A|B|C|D|E|F,G|P|Q,G|P|Q,1000000"
     })
     @ParameterizedTest
-    public void bestCarsTest(String strBasicCarNames, String strDreamCarNames, String strWinnerNames, int turnSize) {
+    public void bestCarsTest(String strBasicCarNames, String strFakeCarNames, String strWinnerNames, int turnSize) {
         Cars cars = initCars(strBasicCarNames, BasicCar::new);
-        // dream car 추가
-        for (Car iDreamCar : initCars(strDreamCarNames, DreamCar::new))
+        // fake car 추가
+        for (Car iDreamCar : initCars(strFakeCarNames, FakeCar::new))
             cars.add(iDreamCar);
 
         List<Name> winnerNames = Arrays.stream(strWinnerNames.split(NAME_DELIMITER))
