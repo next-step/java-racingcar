@@ -4,8 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -29,12 +29,17 @@ class CarTest {
             "2, ---",
             "5, ------"
     })
-    void 자동차전진테스트(int moveCount, String answer){
+    void 자동차전진테스트(int moveCount, String answer) throws NoSuchFieldException, IllegalAccessException {
         for(int i=0;i<moveCount;i++){
             car.move();
         }
         String result = car.getStatus();
         assertThat(result).isEqualTo(answer);
+
+        Field field = car.getClass().getDeclaredField("moveCount");
+        field.setAccessible(true);
+        int moveCountByCar = (int)field.get(car);
+        assertThat(moveCountByCar).isEqualTo(moveCount);
     }
 
 }
