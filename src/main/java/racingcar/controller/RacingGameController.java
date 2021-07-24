@@ -6,6 +6,7 @@ import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,10 +14,10 @@ public class RacingGameController {
 
     public List<List<CarResponseDto>> racingGameStart(CarRequestDto carRequestDto) {
 
-        final int numberOfCars = parseInt(carRequestDto.getNumberOfCars());
+        final List<String> names = Arrays.asList(carRequestDto.getNames().split(","));
         final int numberOfAttempts = parseInt(carRequestDto.getNumberOfAttempts());
 
-        RacingGame racingGame = new RacingGame(numberOfCars);
+        RacingGame racingGame = new RacingGame(names);
 
         List<List<CarResponseDto>> response = new ArrayList<>();
 

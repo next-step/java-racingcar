@@ -3,16 +3,16 @@ package racingcar.controller.dto;
 
 public class CarRequestDto {
 
-    private String numberOfCars;
+    private String names;
     private String numberOfAttempts;
 
-    public CarRequestDto(String numberOfCars, String numberOfAttempts) {
-        this.numberOfCars = numberOfCars;
+    public CarRequestDto(String names, String numberOfAttempts) {
+        this.names = names;
         this.numberOfAttempts = numberOfAttempts;
     }
 
-    public String getNumberOfCars() {
-        return numberOfCars;
+    public String getNames() {
+        return names;
     }
 
     public String getNumberOfAttempts() {

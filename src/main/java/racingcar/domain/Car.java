@@ -2,10 +2,11 @@ package racingcar.domain;
 
 public class Car {
 
+    private String name;
     private int numberOfMove = 0;
 
-    public Car() {
-
+    public Car(String name) {
+        this.name = name;
     }
 
     public void move(final int number) {

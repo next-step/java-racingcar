@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RacingGameControllerTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"1:asd", "asd:2", "asd:asd", ":"}, delimiter = ':')
-    @DisplayName("입력값이 정수가 아닌 경우")
-    void start_error(final String carInput, final String attemptInput) {
+    @CsvSource(value = {"pobi,crong,hounx:asd", "pobi:sd", "crong:"}, delimiter = ':')
+    @DisplayName("시도 회수가 정수가 아닌 경우")
+    void start_error(final String names, final String attemptInput) {
         assertThrows(IllegalArgumentException.class, () -> {
-            CarRequestDto carRequestDto = new CarRequestDto(carInput, attemptInput);
+            CarRequestDto carRequestDto = new CarRequestDto(names, attemptInput);
 
             RacingGameController racingGameController = new RacingGameController();
             racingGameController.racingGameStart(carRequestDto);
