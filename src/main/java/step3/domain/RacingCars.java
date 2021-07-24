@@ -15,7 +15,6 @@ public class RacingCars {
     }
 
     private List<Car> prepareCars(int carCount) {
-
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {

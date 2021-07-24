@@ -1,22 +1,18 @@
 package step3.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacingGame {
 
-    private final RacingCars cars;
-    private List<Round> playedRounds;
+    private List<Round> playedRounds = new ArrayList<>();
 
-    private CarRacingGame(int carCount) {
-        cars = new RacingCars(carCount);
-    }
+    public void gameStart(GameSetting gameSetting) {
+        int carCount = gameSetting.getCarCount();
+        int roundCount = gameSetting.getRoundCount();
 
-    public static CarRacingGame createRacingGameWithCarCount(int carCount) {
-        return new CarRacingGame(carCount);
-    }
+        RacingCars cars = new RacingCars(carCount);
 
-
-    public void gameStart(int roundCount) {
         for (int i = 0; i < roundCount; i++) {
             playOneRound(cars);
         }
@@ -28,6 +24,4 @@ public class CarRacingGame {
 
         playedRounds.add(round);
     }
-
-
 }
