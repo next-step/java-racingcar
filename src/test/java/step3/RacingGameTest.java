@@ -76,7 +76,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("게임 진행 테스트")
     void startGameTest() {
-        racingGame.startGame();
+        this.racingGame.startGame();
 
         assertThat(racingGame.getCurrentTurn()).isEqualTo(numberOfTurns);
     }

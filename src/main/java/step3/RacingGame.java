@@ -52,7 +52,7 @@ public class RacingGame {
     }
 
     private MOVE goOrStop() {
-        return MOVE.fromInt(RandomNumberGenerator.getRandomInt());
+        return MOVE.fromInt(RandomNumberGenerator.getRandomNumberGenerator().getRandomInt());
     }
 
     private void nextTurn() {
