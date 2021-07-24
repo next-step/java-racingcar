@@ -20,7 +20,7 @@ public class RacingApplication {
         RacingCar racingCar = new RacingCar();
         int count = 0;
         while (count < racingModel.getCount()) {
-            racingCar.move(racingModel);
+            racingCar.race(racingModel);
             racingView.printCarMove(racingModel);
             count++;
         }

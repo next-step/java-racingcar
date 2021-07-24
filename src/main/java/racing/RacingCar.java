@@ -5,13 +5,13 @@ import racing.model.RacingModel;
 
 public class RacingCar {
 
-    public void move(RacingModel racingModel) {
+    public void race(RacingModel racingModel) {
         for(int carNumber=0; carNumber<racingModel.getRacingModelMap().size(); carNumber++) {
             setMove(carNumber, racingModel);
         }
     }
 
-    void setMove(int carNumber, RacingModel racingModel) {
+    public void setMove(int carNumber, RacingModel racingModel) {
         if (isMove(getRandomValue())) {
             int moveCount = racingModel.getRacingModelMap().get(carNumber).intValue();
             racingModel.setRacingModelMap(carNumber, ++moveCount);
