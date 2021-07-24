@@ -10,7 +10,7 @@ public class Race {
 
     public void execute(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-            if (generateRandomNumber() > MIN_NUMBER) {
+            if (generateRandomNumber() >= MIN_NUMBER) {
                 cars.get(i).setDrivingDistance();
             }
         }

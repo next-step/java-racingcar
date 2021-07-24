@@ -18,9 +18,12 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void printResultContents(Car car){
+    public static String printResultContents(Car car){
+        StringBuilder sb = new StringBuilder();
         for (int i=0; i<car.getDrivingDistance(); i++){
-            System.out.print(DISTANCE_SYMBOL);
+            sb.append(DISTANCE_SYMBOL);
         }
+        System.out.println(sb);
+        return sb.toString();
     }
 }

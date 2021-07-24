@@ -36,22 +36,30 @@ class RacingCarTest {
         }
     }
 
-    @ParameterizedTest
-    @DisplayName("random 값이 4이상일 때 전진하는 테스트")
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7})
-    void 전진(int number) {
-        for (int i=0; i<7; i++){
-            Car car = new Car();
-            Assertions.assertThat(number).isEqualTo(car.getDrivingDistance());
-        }
+    @Test
+    @DisplayName("Car 전진 테스트 ")
+    void 자동차전진() {
+        car.setDrivingDistance();
+        Assertions.assertThat(car.getDrivingDistance()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @DisplayName("Car 객체 생성 테스트")
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7})
-    void 자동차객체생성(int number){
+    void 자동차객체생성(int number) {
         List<Car> cars = Car.buildCarObject(number);
         Assertions.assertThat(cars.size()).isEqualTo(number);
+    }
+
+    @Test
+    @DisplayName("자동차 이동 거리 출력 테스트")
+    void 자동차이동거리출력(){
+        for (int i=0; i<5; i++){
+            car.setDrivingDistance();
+        }
+        String printResultContents = ResultView.printResultContents(car);
+        Assertions.assertThat(printResultContents).isEqualTo("-----");
+
     }
 
     @Test
