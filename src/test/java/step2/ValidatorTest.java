@@ -18,7 +18,7 @@ public class ValidatorTest {
 	@DisplayName(value = "연산 기호 검증 테스트")
 	@Test
 	void validateOperatorTest() {
-		assertThatThrownBy(() -> validateOperator("&"))
+		assertThatThrownBy(() -> OperatorType.getByOperator("&"))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("연산 기호가 잘못됐어요!");
 	}
@@ -28,6 +28,6 @@ public class ValidatorTest {
 	void validateNumberTest() {
 		assertThatThrownBy(() -> validateNumber(""))
 			.isInstanceOf(NumberFormatException.class)
-			.hasMessageContaining("숫자 형식이 잘못됐어요!");
+			.hasMessageContaining("피연산자 값이 비었어요!");
 	}
 }

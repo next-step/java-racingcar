@@ -1,8 +1,7 @@
 package step2;
 
-import static step2.Validator.*;
-
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.IntBinaryOperator;
 
 public enum OperatorType {
@@ -25,12 +24,15 @@ public enum OperatorType {
 	}
 
 	public static OperatorType getByOperator(String operator) {
-		validateOperator(operator);
+		Optional<OperatorType> operatorType = Arrays.stream(values())
+			.filter(type -> type.operator.equals(operator))
+			.findFirst();
 
-		return Arrays.stream(values())
-			.filter(operatorType -> operatorType.operator.equals(operator))
-			.findFirst()
-			.get();
+		if (!operatorType.isPresent()) {
+			throw new IllegalArgumentException("연산 기호가 잘못됐어요!");
+		}
+
+		return operatorType.get();
 	}
 
 	public int getCalculationResult(int number1, int number2) {
