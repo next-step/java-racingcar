@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.strategy;
 
 public interface ForwardConditionStrategy {
     boolean judgeCondition();

@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.strategy;
 
 import racing.util.RandomNumberGenerator;
 
