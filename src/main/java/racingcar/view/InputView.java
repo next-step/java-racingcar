@@ -25,9 +25,11 @@ public class InputView {
     private String[] createNameOfCarsArray(String text) {
         String[] cars = text.split(",");
         for (int i = 0; i < cars.length; i++) {
-            Name.validateByName(cars[i]);
+            Name name = Name.createName(cars[i]);
+            cars[i] = name.getCarName();
         }
-        return text.split(",");
+
+        return cars;
     }
 
     public int getNumberOfTry() {

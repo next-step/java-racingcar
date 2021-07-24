@@ -30,11 +30,11 @@ public class Winner {
         return firstResultPoint;
     }
 
-    public void winnerSelection(ResultView resultView, List<Car> cars) {
+    public List<Car> winnerSelection(List<Car> cars) {
         List<Car> winners = cars.stream()
                 .filter(car -> car.getMoveSpace() == firstResultPoint())
                 .collect(Collectors.toList());
 
-        resultView.getWinner(winners);
+        return winners;
     }
 }

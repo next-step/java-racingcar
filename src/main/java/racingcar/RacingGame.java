@@ -28,7 +28,8 @@ public class RacingGame {
         Winner winner = Winner.of(Winner.resultPointOfFirst(cars));
         System.out.println(winner.firstResultPoint());
 
-        winner.winnerSelection(resultView, cars);
+        List<Car> winners = winner.winnerSelection(cars);
+        resultView.getWinner(winners);
     }
 
     public static void printAll(List<Car> cars) {
