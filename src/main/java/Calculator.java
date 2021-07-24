@@ -39,6 +39,7 @@ public class Calculator {
     }
 
     private void devision(int leftInt, int rightInt) {
+        result /= rightInt;
     }
 
     private void minus(int leftInt, int rightInt) {
