@@ -1,24 +1,12 @@
 package step2;
 
 public class StringCalculator {
-    public static int calculate(String input) {
-        String[] formulas = input.split(" ");
+    public static int calculate(Formulas input) {
+        String[] formulas = input.getFormulas();
         String operator = formulas[1];
+        OperatorType operatorType = OperatorType.find(operator);
 
-        if("+".equals(operator)) {
-            return getInt(formulas[0]) + getInt(formulas[2]);
-        }
-        if("-".equals(operator)) {
-            return getInt(formulas[0]) - getInt(formulas[2]);
-        }
-        if("*".equals(operator)) {
-            return getInt(formulas[0]) * getInt(formulas[2]);
-        }
-        if("/".equals(operator)) {
-            return getInt(formulas[0]) / getInt(formulas[2]);
-        }
-
-        throw new IllegalArgumentException();
+        return operatorType.operate(getInt(formulas[0]), getInt(formulas[2]));
 
     }
 
