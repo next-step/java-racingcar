@@ -28,8 +28,9 @@ public class StringCalculator {
     }
 
     private void validateInput(String expression) {
-        if (expression == null || expression.isEmpty())
+        if (expression == null || expression.isEmpty()) {
             throw new IllegalArgumentException("입력은 공백이면 안됩니다.");
+        }
     }
 
     private BinaryOperator<Integer> distinguishOperator(String operator) {
