@@ -1,34 +1,24 @@
 package racingcar.car;
 
-import racingcar.util.ValidationUtil;
-
-import java.util.concurrent.atomic.AtomicInteger;
-
-
 public class Position {
-    private AtomicInteger position;
+    private int position;
 
-    public static int defaultDistance = 0;
-    public static int forwardDistance = 1;
+    public final static int defaultDistance = 0;
+    public final static int forwardDistance = 1;
 
     public Position() {
-        this.position = new AtomicInteger();
+        this.position = 0;
     }
 
     public int getPosition() {
-        return position.get();
+        return position;
     }
 
-    public boolean isMove(int randomNumber) {
-        return randomNumber >= 4;
-    }
-
-    public void setPosition(int position) {
-        ValidationUtil.validatePosition(position);
-        this.position.accumulateAndGet(position, (x, y) -> (x + y));
+    public boolean canMove(int number) {
+        return number >= 4;
     }
 
     public void moveForward() {
-        setPosition(forwardDistance);
+        this.position += forwardDistance;
     }
 }

@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final String CAR_NUMBER_MESSAGE = "자동차 대수는 몇 대 인가요?";
-    private final String RACING_TIME_MESSAGE = "시도할 회수는 몇회인가요?";
+    private final String INPUT_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    private final String INPUT_RACING_TIME_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
     private int getUserInputValue(String message) {
         System.out.println(message);
@@ -19,15 +19,17 @@ public class InputView {
         return Integer.parseInt(userInputValue);
     }
 
-    public int inputNumberOfCar() {
-        int numberOfCar = getUserInputValue(CAR_NUMBER_MESSAGE);
-        ValidationUtil.checkNumberOfCar(numberOfCar);
+    public int inputCountOfCar() {
+        int countOfCar = getUserInputValue(INPUT_CAR_COUNT_MESSAGE);
+        ValidationUtil.checkCountOfCar(countOfCar);
 
-        return numberOfCar;
+        return countOfCar;
     }
 
-    public int inputNumberOfGame() {
-        return getUserInputValue(RACING_TIME_MESSAGE);
+    public int inputCountOfGame() {
+        int countOfGame = getUserInputValue(INPUT_RACING_TIME_MESSAGE);
+        ValidationUtil.checkCountOfGame(countOfGame);
+        return countOfGame;
     }
 
 }

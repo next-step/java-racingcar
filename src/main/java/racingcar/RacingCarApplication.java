@@ -1,6 +1,6 @@
 package racingcar;
 
-public class RacingcarApplication {
+public class RacingCarApplication {
 
     public static void main(String[] args) {
         Racing racing = new Racing();
