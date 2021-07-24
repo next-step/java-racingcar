@@ -57,7 +57,6 @@ public class OperatorTypeTest {
     @MethodSource("parametersProvider")
     void find_OperatorType(String operator, OperatorType expected) {
         OperatorType operatorType = OperatorType.find(operator);
-        System.out.println(operatorType);
         assertThat(operatorType).isEqualTo(expected);
     }
 
