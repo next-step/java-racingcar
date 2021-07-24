@@ -3,6 +3,7 @@ package step3.domain;
 public class Car {
 
     private static final int HIGH_POWER_BOUNDARY = 4;
+    private static final int ENGINE_POWER_LIMIT = 9;
 
     private final String carNumber;
     private int runDistance;
@@ -29,6 +30,6 @@ public class Car {
     }
 
     private void prepareEngine() {
-        enginePower = (int) (Math.random() * 9);
+        enginePower = (int) (Math.random() * ENGINE_POWER_LIMIT);
     }
 }

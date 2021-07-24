@@ -1,27 +1,28 @@
 package step3;
 
-import java.util.Scanner;
 import step3.domain.CarRacingGame;
+import step3.domain.GameSetting;
 import step3.ui.InputView;
 
 public class Step3Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        InputView inputView = InputView.getInstance();
 
+        GameSetting gameSetting = inputView.readUserInputForGameSetting();
 
-        InputView.askHowManyCars();
-        int carCount = scanner.nextInt();
+        playGame(gameSetting);
 
-        InputView.askHowManyTryCounts();
-        int tryCount = scanner.nextInt();
+    }
 
-        scanner.close();
+    private static void playGame(GameSetting gameSetting) {
+        int carCount = gameSetting.getCarCount();
+        int roundCount = gameSetting.getRoundCount();
 
-        CarRacingGame carRacingGame = new CarRacingGame(carCount, tryCount);
-        carRacingGame.gameStart();
+        CarRacingGame racingGame = CarRacingGame.createRacingGameWithCarCount(carCount);
 
+        racingGame.gameStart(roundCount);
     }
 
 }

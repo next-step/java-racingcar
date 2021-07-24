@@ -1,59 +1,35 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import step3.ui.ResultView;
 
 public class CarRacingGame {
 
-    private static final String CAR_NUMBER_FORMAT = "car_number_%d";
+    private final RacingCars cars;
+    private List<Round> rounds;
 
-    private final int carCount;
-    private final int tryCount;
-    private List<Car> cars = new ArrayList<>();
+    private CarRacingGame(int carCount) {
+        cars = new RacingCars(carCount);
+    }
 
-
-    public CarRacingGame(int carCount, int tryCount) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
-        prepareCars();
+    public static CarRacingGame createRacingGameWithCarCount(int carCount) {
+        return new CarRacingGame(carCount);
     }
 
 
-    public void gameStart() {
-        for (int i = 0; i < tryCount; i++) {
-            playOneRound();
+    public void gameStart(int roundCount) {
+        for (int i = 0; i < roundCount; i++) {
+            playOneRound(cars);
         }
     }
 
-    private void playOneRound() {
-        for (Car car : cars) {
-            car.run();
-        }
+    private void playOneRound(RacingCars cars) {
 
-        ResultView.printResult(cars);
-    }
+        Round round = new Round();
+        round.start(cars);
 
-    private void prepareCars() {
-        for (int i = 0; i < carCount; i++) {
-            String carNumber = String.format(CAR_NUMBER_FORMAT, i);
-            cars.add(new Car(carNumber));
-        }
+
+//        ResultView.printResult(this.cars);
     }
 
 
-    private List<String> getCarNumbers() {
-        List<String> carNumbers = cars.stream()
-            .map(car -> car.getCarNumber())
-            .collect(Collectors.toList());
-        return carNumbers;
-    }
-
-    @Override
-    public String toString() {
-        return String
-            .format("(자동차 게임)\n 자동차수: %d \n 시도회수: %d \n 생성된 차량 번호 리스트: %s",
-                this.carCount, this.tryCount, getCarNumbers());
-    }
 }
