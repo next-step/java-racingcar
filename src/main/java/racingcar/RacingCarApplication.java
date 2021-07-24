@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.Service.RacingGame;
-import racingcar.model.Board;
+import racingcar.service.RacingGame;
+import racingcar.dto.Board;
 import racingcar.model.Cars;
-import racingcar.model.RacingInfo;
+import racingcar.dto.RacingInfo;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 

@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.dto;
 
 public class RacingInfo {
     public final int numberOfCar;

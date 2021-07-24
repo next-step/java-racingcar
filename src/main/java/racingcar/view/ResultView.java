@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.Board;
+import racingcar.dto.Board;
 
 import java.util.List;
 

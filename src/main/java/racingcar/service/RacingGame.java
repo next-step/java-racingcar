@@ -1,9 +1,8 @@
-package racingcar.Service;
+package racingcar.service;
 
-import racingcar.model.Board;
+import racingcar.dto.Board;
 import racingcar.model.Cars;
-import racingcar.model.RacingInfo;
-import racingcar.view.ResultView;
+import racingcar.dto.RacingInfo;
 
 public class RacingGame {
     private final RacingInfo racingInfo;
