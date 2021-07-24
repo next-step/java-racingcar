@@ -3,10 +3,7 @@ package racing.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.domain.ForwardConditionStrategy;
-import racing.model.Racer;
-import racing.model.Racers;
-import racing.model.UnnamedCar;
+import racing.strategy.ForwardConditionStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +21,7 @@ public class RacersTest {
     @BeforeEach
     void setUp() {
         racers = Racers.from((List<? extends Racer>) range(0, 3)
-                .mapToObj(it -> UnnamedCar.emptyCar())
+                .mapToObj(it -> Car.of("pobi", ""))
                 .collect(toCollection(ArrayList::new)));
     }
 
@@ -58,5 +55,11 @@ public class RacersTest {
     @DisplayName("사이즈_조회_테스트")
     void size() throws Exception {
         assertThat(racers.size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("우승자를_반환한다")
+    void winner() throws Exception {
+        assertThat(racers.winner()).isEqualTo("pobi, pobi, pobi");
     }
 }
