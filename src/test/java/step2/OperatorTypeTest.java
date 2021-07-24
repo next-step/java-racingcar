@@ -2,6 +2,11 @@ package step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -46,5 +51,23 @@ public class OperatorTypeTest {
         OperatorType divide = OperatorType.DIVIDE;
         assertThatExceptionOfType(ArithmeticException.class)
                 .isThrownBy(() -> divide.operate(6, 0));
+    }
+
+    @DisplayName("기호에 따라 Operator Type을 찾기")
+    @ParameterizedTest(name = "{index} {displayName}")
+    @MethodSource("parametersProvider")
+    void find_OperatorType(String operator, OperatorType expected) {
+        OperatorType operatorType = OperatorType.find(operator);
+        System.out.println(operatorType);
+        assertThat(operatorType).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> parametersProvider() {
+        return Stream.of(
+                Arguments.arguments("+", OperatorType.PLUS),
+                Arguments.arguments("-", OperatorType.MINUS),
+                Arguments.arguments("*", OperatorType.MULTIPLY),
+                Arguments.arguments("/", OperatorType.DIVIDE)
+        );
     }
 }
