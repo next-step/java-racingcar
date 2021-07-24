@@ -1,21 +1,14 @@
 package racingcar.domain;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
     private List<Car> cars;
-    private Random random = new Random();
 
-    private RacingGame() {
-
-    }
-
-    public RacingGame(int numberOfCars) {
-        this.cars = initialize(numberOfCars);
+    public RacingGame(List<String> names) {
+        this.cars = initialize(names);
     }
 
     public List<Car> start() {
@@ -23,15 +16,15 @@ public class RacingGame {
         return cars;
     }
 
-    private List<Car> initialize(int numberOfCars) {
-        return IntStream.range(0, numberOfCars)
-                .mapToObj(i -> new Car())
+    private List<Car> initialize(final List<String> names) {
+        return names.stream()
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
     private void move() {
         for (Car car : this.cars) {
-            car.move(this.random.nextInt(10));
+            car.move((int) (Math.random() * 10));
         }
     }
 }
