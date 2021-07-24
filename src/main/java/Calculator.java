@@ -1,12 +1,9 @@
-import operator.FourArithmeticOperation;
-import operator.Operator;
+import enums.Operator;
 
 import java.util.Objects;
 
 
 public class Calculator {
-
-    private FourArithmeticOperation fourArithmeticOperation = new FourArithmeticOperation();
 
     public int calculate(String input) {
         String[] inputSplitByBlank = splitByBlank(input);
@@ -15,21 +12,31 @@ public class Calculator {
     }
 
     private int calculate(String[] inputs) {
-        int result = Integer.parseInt(inputs[0]);
+        int calculated = Integer.parseInt(inputs[0]);
         int length = inputs.length;
 
-        for (int i = 0; i < length; i++) {
-            String input = inputs[i];
-            if (fourArithmeticOperation.isOperationSymbol(input)) {
-                Operator operator = fourArithmeticOperation.findOperatorByString(input);
+        for (int i = 0; i < length; i++)
+            calculated = calculate(calculated, inputs, i);
 
-                int leftHand = result;
-                int rightHand = Integer.parseInt(inputs[i + 1]);
-                int calculated = operator.calculate(leftHand, rightHand);
-                result = calculated;
-            }
+        return calculated;
+    }
+
+    private int calculate(int calculated, String[] inputs, int idx) {
+        if (isLastIdx(inputs, idx))
+            return calculated;
+
+        String input = inputs[idx];
+        String nextValue = inputs[idx + 1];
+
+        if (Operator.isOperator(input)) {
+            Operator operator = Operator.findOperatorByString(input);
+            return operator.calculate(calculated, Integer.parseInt(nextValue));
         }
-        return result;
+        return calculated;
+    }
+
+    private boolean isLastIdx(String[] inputs, int idx) {
+        return inputs.length == idx + 1;
     }
 
     private String[] splitByBlank(String input) {
@@ -39,9 +46,7 @@ public class Calculator {
         return input.split("\\s");
     }
 
-
     private static class Validator {
-        private static final FourArithmeticOperation FOUR_ARITHMETIC_OPERATION = new FourArithmeticOperation();
 
         static void valid(String[] inputs) {
             for (String input : inputs) {
@@ -51,7 +56,7 @@ public class Calculator {
         }
 
         private static boolean isValidInput(String input) {
-            return isInteger(input) || isOperator(input);
+            return isInteger(input) || Operator.isOperator(input);
         }
 
         private static boolean isInteger(String input) {
@@ -61,10 +66,6 @@ public class Calculator {
             } catch (Exception e) {
                 return false;
             }
-        }
-
-        private static boolean isOperator(String input) {
-            return FOUR_ARITHMETIC_OPERATION.isOperationSymbol(input);
         }
     }
 
