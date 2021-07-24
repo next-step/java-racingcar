@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.controller.dto.CarResponseDto;
 import racingcar.controller.dto.RacingGameResponseDto;
+import racingcar.domain.Distance;
 import racingcar.domain.Name;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class ConsoleOutputView {
 
     public void print(RacingGameResponseDto game) {
         for (CarResponseDto car : game.getCars()) {
-            String progressBar = getProgressBar(car.getNumberOfMove());
+            String progressBar = getProgressBar(car.getDistance());
             System.out.println(car.getName() + " : " + progressBar);
         }
         System.out.println();
@@ -25,9 +26,9 @@ public class ConsoleOutputView {
         }
     }
 
-    private String getProgressBar(int numberOfMove) {
+    private String getProgressBar(Distance distance) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < numberOfMove; i++) {
+        for (int i = 0; i < distance.getValue(); i++) {
             sb.append("-");
         }
         return sb.toString();

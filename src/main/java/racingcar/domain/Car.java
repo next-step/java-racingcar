@@ -3,27 +3,22 @@ package racingcar.domain;
 public class Car {
 
     private Name name;
-    private int numberOfMove = 0;
+    private Distance distance;
 
     public Car(final String name) {
         this.name = Name.from(name);
+        this.distance = Distance.from();
     }
 
     public void move(final int number) {
-        if (isRange(number)) {
-            this.numberOfMove++;
-        }
+        distance.move(number);
     }
 
-    private boolean isRange(final int random) {
-        return random >= 4 && random < 10;
-    }
-
-    public int getNumberOfMove() {
-        return this.numberOfMove;
+    public Distance getDistance() {
+        return this.distance;
     }
 
     public Name getName() {
-        return name;
+        return this.name;
     }
 }

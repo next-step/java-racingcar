@@ -1,6 +1,7 @@
 package racingcar.controller.dto;
 
 import racingcar.domain.Car;
+import racingcar.domain.Distance;
 import racingcar.domain.Name;
 
 import java.util.List;
@@ -9,11 +10,11 @@ import java.util.stream.Collectors;
 public class CarResponseDto {
 
     private Name name;
-    private int numberOfMove;
+    private Distance numberOfMove;
 
     private CarResponseDto(Car car) {
         this.name = car.getName();
-        this.numberOfMove = car.getNumberOfMove();
+        this.numberOfMove = car.getDistance();
     }
 
     public static CarResponseDto toDto(Car car) {
@@ -26,11 +27,11 @@ public class CarResponseDto {
                 .collect(Collectors.toList());
     }
 
-    public int getNumberOfMove() {
-        return numberOfMove;
+    public Distance getDistance() {
+        return this.numberOfMove;
     }
 
     public Name getName() {
-        return name;
+        return this.name;
     }
 }

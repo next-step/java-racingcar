@@ -23,7 +23,7 @@ class CarTest {
     void moveRangeCheckSuccess(int number) {
         Car car = new Car("name");
         car.move(number);
-        assertEquals(car.getNumberOfMove(), 1);
+        assertEquals(car.getDistance().getValue(), 1);
     }
 
     @ParameterizedTest
@@ -32,6 +32,6 @@ class CarTest {
     void moveRangeCheckFail(int number) {
         Car car = new Car("name");
         car.move(number);
-        assertEquals(car.getNumberOfMove(), 0);
+        assertEquals(car.getDistance().getValue(), 0);
     }
 }

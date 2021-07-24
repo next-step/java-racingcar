@@ -1,5 +1,6 @@
 package racingcar.controller.dto;
 
+import racingcar.domain.Distance;
 import racingcar.domain.Name;
 
 import java.util.List;
@@ -25,12 +26,13 @@ public class RacingGameResponseDto {
 
     public List<Name> winners() {
         int max = this.cars.stream()
-                .mapToInt(CarResponseDto::getNumberOfMove)
+                .map(CarResponseDto::getDistance)
+                .mapToInt(Distance::getValue)
                 .max()
                 .orElseThrow(IllegalArgumentException::new);
 
         return cars.stream()
-                .filter(car -> car.getNumberOfMove() == max)
+                .filter(car -> car.getDistance().getValue() == max)
                 .map(CarResponseDto::getName)
                 .collect(Collectors.toList());
     }
