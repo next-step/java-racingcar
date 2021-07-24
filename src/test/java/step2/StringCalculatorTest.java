@@ -65,4 +65,14 @@ class StringCalculatorTest {
         int result = stringCalculator.calculate(input);
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName("0으로 나눌 경우 예외처리를 한다.")
+    void divide_by_zero_test() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    String input = "6 / 0";
+                    int result = stringCalculator.calculate(input);
+                }).withMessageMatching("0으로 나눌 수 없습니다.");
+    }
 }

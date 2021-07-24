@@ -7,7 +7,12 @@ public enum Operator {
     ADD("+", (first, second) -> first + second),
     MINUS("-", (first, second) -> first - second),
     MULTIPLY("*", (first, second) -> first * second),
-    DIVIDE("/", (first, second) -> first / second),
+    DIVIDE("/", (first, second) -> {
+        if (second == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
+        return first / second;
+    }),
     ;
 
     private String operator;
