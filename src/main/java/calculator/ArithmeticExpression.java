@@ -10,7 +10,7 @@ public class ArithmeticExpression {
     private static final String EXPRESSION_DELIMITER = " ";
     private static final int ONLY_ONE_OPERATOR_EXPRESSION_LENGTH = 3;
     private static final int FIRST_NUMBER_INDEX = 0;
-    public static final int EXPRESSION_START_INDEX = 0;
+    private static final int EXPRESSION_START_INDEX = 0;
 
     private final List<String> expressions;
 
@@ -45,7 +45,7 @@ public class ArithmeticExpression {
         return Operator.of(this.expressions.get(this.expressions.size() - 2));
     }
 
-    public ArithmeticExpression exceptLastOperation() {
-        return new ArithmeticExpression(this.expressions.subList(EXPRESSION_START_INDEX, this.expressions.size() - 2));
+    public String exceptLastOperation() {
+        return String.join(EXPRESSION_DELIMITER, this.expressions.subList(EXPRESSION_START_INDEX, this.expressions.size() - 2));
     }
 }
