@@ -7,27 +7,31 @@ import java.util.Random;
 public class Racing {
 
 	private final List<Car> cars;
-	private final Validation validation;
 	private final Random random;
 	private final MessageBox messageBox;
 	private int MAX_VALUE = 0;
 
 	public Racing(MessageBox messageBox) {
 		cars = new ArrayList<>();
-		validation = new Validation();
 		random = new Random();
 		this.messageBox = messageBox;
 	}
 
 	public List<Car> createPlayer(String playerListValue) {
 		String[] playerArray = playerListValue.split(",");
-		validation.validStringEmpty(playerListValue.trim());
+		validStringEmpty(playerListValue.trim());
 		return setupPlayer(playerArray);
+	}
+
+	public void validStringEmpty(String value) {
+		if (value.isEmpty()) {
+			throw new IllegalArgumentException("자동차는 최소 1대 이상이어야 한다.");
+		}
 	}
 
 	public List<Car> setupPlayer(String[] playerArray) {
 		for (String playerName : playerArray) {
-			Car car = new Car(playerName, validation);
+			Car car = new Car(playerName);
 			cars.add(car);
 		}
 		return cars;
@@ -44,8 +48,15 @@ public class Racing {
 	}
 
 	public int toInt(String value) {
-		validation.validNumberCheck(value);
+		validNumberCheck(value);
 		return Integer.parseInt(value);
+	}
+
+	public void validNumberCheck(String value) {
+		String regExp = "^\\d+$";
+		if (!value.matches(regExp)) {
+			throw new IllegalArgumentException("해당 문자는 숫자만 사용 가능합니다.");
+		}
 	}
 
 	private void carRacing() {

@@ -62,7 +62,7 @@ public class RacingTest {
     }
 
     private void betweenCheck(int checkValue, int firstValue, int lastValue) {
-        assertThat(checkValue).isGreaterThan(firstValue).isLessThan(lastValue);
+        assertThat(checkValue).isGreaterThanOrEqualTo(firstValue).isLessThan(lastValue);
     }
 
 
