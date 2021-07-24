@@ -4,6 +4,7 @@ import racing.exception.InvalidInputException;
 import util.StringUtils;
 
 public class Name {
+    private static final int MAX_LENGTH = 5;
     private final String value;
 
     public Name(String value) {
@@ -11,6 +12,8 @@ public class Name {
     }
 
     private void validate(String value) {
+        if (value.length() > MAX_LENGTH)
+            throw new InvalidInputException("자동차의 이름은 " + MAX_LENGTH + " + 자를 초과할 수 없습니다.");
         if (!StringUtils.isEng(value))
             throw new InvalidInputException("자동차의 이름은 영어로만 입력 해주세요.");
     }
