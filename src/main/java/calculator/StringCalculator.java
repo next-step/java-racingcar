@@ -34,14 +34,18 @@ public class StringCalculator {
     }
 
     private BinaryOperator<Integer> distinguishOperator(String operator) {
-        if (operator.equals("+"))
+        if (operator.equals("+")) {
             return add();
-        if (operator.equals("-"))
+        }
+        if (operator.equals("-")) {
             return subtract();
-        if (operator.equals("*"))
+        }
+        if (operator.equals("*")) {
             return multiply();
-        if (operator.equals("/"))
+        }
+        if (operator.equals("/")) {
             return divide();
+        }
         throw new IllegalArgumentException("사칙 연산 기호가 아닙니다.");
     }
 
@@ -58,7 +62,16 @@ public class StringCalculator {
     }
 
     private BinaryOperator<Integer> divide() {
-        return (a, b) -> a / b;
+        return (a, b) -> {
+            validateDenominator(a, b);
+            return a / b;
+        };
+    }
+
+    private void validateDenominator(Integer a, Integer b) {
+        if (b == 0) {
+            throw new ArithmeticException("나눗셈의 분모는 0이면 안됩니다.");
+        }
     }
 
 }

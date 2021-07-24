@@ -6,8 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 
 @SuppressWarnings("NonAsciiCharacters")
@@ -42,6 +41,13 @@ public class StringCalculatorTest {
     @CsvSource(value = {"4 / 2,2", "10 / 2,5", "12 / 2 / 3,2"})
     void 나눗셈_기능_확인(String expression, int expected) {
         assertThat(stringCalculator.calculate(expression)).isEqualTo(expected);
+    }
+
+    @Test
+    void 나눗셈_분모가_0인경우_오류발생(){
+        assertThatThrownBy(()->stringCalculator.calculate("4 / 0"))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessageContaining("나눗셈의 분모는 0이면 안됩니다.");
     }
 
     @Test
