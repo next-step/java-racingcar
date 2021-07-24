@@ -3,7 +3,6 @@ package racing.domain;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.domain.Location;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -13,17 +12,17 @@ class LocationTest {
             0, 1, 2, 3, 4, 5, 6, 7, 8, 100000
     })
     @ParameterizedTest
-    public void valueTest(int value) {
-        new Location(value).value();
+    public void ctorTest(int value) {
+        new Location(value);
     }
 
     @ValueSource(ints = {
             -1, -10, -100
     })
     @ParameterizedTest
-    public void valueIllegalArgumentExceptionTest(int value) {
+    public void ctorIllegalArgumentExceptionTest(int value) {
         assertThatIllegalArgumentException().isThrownBy(() ->
-                new Location(value).value()
+                new Location(value)
         );
     }
 
