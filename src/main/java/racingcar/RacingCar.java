@@ -1,16 +1,17 @@
 package racingcar;
 
+import racingcar.ui.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingCar {
     private static final int ENDNUMBER = 5;
 
-    public List<Car> play(int carCount, int moveCount) {
-        Cars cars =  new Cars(carCount);
-        System.out.println();
+    public static List<Car> play(String carNames, int moveCount) {
+        String[] carNamesArray = inputStrSeperator(carNames);
+        Cars cars =  new Cars(carNamesArray);
         for(int i=1; i<moveCount; i++){
             cars.moveCars();
             ResultView.printMovingCars(cars);
@@ -26,12 +27,11 @@ public class RacingCar {
         return carList;
     }
 
-    public String[] seperator(String inputStr) {
+    public static String[] inputStrSeperator(String inputStr) {
         return inputStr.split(",");
     }
 
     private List<Car> isEndGame(List<Car> carList) {
         return carList.stream().filter(car -> car.getPosition()==ENDNUMBER).collect(Collectors.toList());
     }
-
 }

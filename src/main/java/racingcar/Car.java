@@ -8,19 +8,25 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        if(name.length()>5){
+        if (name.length() > 5) {
             throw new RuntimeException();
         }
         this.name = name;
         this.position = 0;
     }
 
-    public Car(String name, int position){
-        if(name.length()>5){
+    public Car(String name, int position) {
+        if (name.length() > 5) {
             throw new RuntimeException();
         }
         this.name = name;
         this.position = position;
+    }
+
+    public void move(int randomNumber) {
+        if(isMove(randomNumber)){
+            this.position++;
+        }
     }
 
     public int getPosition() {
@@ -31,14 +37,8 @@ public class Car {
         return name;
     }
 
-    public void move(int randomNumber) {
-        if(isMove(randomNumber)){
-            this.position++;
-        }
-    }
-
     public boolean isMove(int randomNumber) {
-        return randomNumber>=MOVE_NUM;
+        return randomNumber >= MOVE_NUM;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Car {
 
     public boolean isWinner() {
         final int WINNER_POSITION = 5;
-        if(this.position == WINNER_POSITION){
+        if (this.position == WINNER_POSITION) {
             return true;
         }
         return false;

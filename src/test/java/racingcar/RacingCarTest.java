@@ -5,55 +5,55 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
-    private RacingCar racingCar = new RacingCar();
+    RacingCar racingCar = new RacingCar();
 
     @Test
     @DisplayName(", 구분자로 문자열 분리")
-    void seperatorTest(){
+    void seperatorTest() {
         String inputStr = "pobi,crong,honux";
-        String[] names = racingCar.seperator(inputStr);
-        Assertions.assertArrayEquals(names, new String[]{"pobi","crong","honux"});
+        String[] names = racingCar.inputStrSeperator(inputStr);
+        Assertions.assertArrayEquals(names, new String[]{"pobi", "crong", "honux"});
     }
 
     @Test
     @DisplayName("차 생성")
-    void createCarTest(){
-        String[] carStrArr = Arrays.array("pobi","crong","honux");
-        List<Car> cars = racingCar.createCars(carStrArr);
+    void createCarTest() {
+        String[] carStrArr = Arrays.array("pobi", "crong", "honux");
+        Cars cars = new Cars(carStrArr);
+        List<Car> carList = cars.getCars();
         Car pobi = new Car("pobi");
         Car crong = new Car("crong");
         Car honux = new Car("honux");
-        assertThat(cars).contains(pobi,crong,honux);
+        assertThat(carList).contains(pobi, crong, honux);
     }
 
     @Test
     @DisplayName("차 생성시, 5자 이상일 경우 에러")
-    void checkMaximumTest(){
+    void checkMaximumTest() {
         String inputStr = "aaaaaa";
-        assertThatThrownBy(()->new Car(inputStr))
+        assertThatThrownBy(() -> new Car(inputStr))
                 .isInstanceOf(RuntimeException.class);
+
     }
 
     @Test
     @DisplayName("자동차 전진 또는 멈춤")
-    void moveCarTest(){
+    void moveCarTest() {
         Car car = new Car("pobi");
         car.move(4);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(1);
         car.move(3);
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("random값에 의한 전진 테스트")
-    void randomTest(){
+    void randomTest() {
         Car car = new Car("pobi");
         int randomNumber = 4;
         boolean move = car.isMove(randomNumber);
@@ -63,7 +63,6 @@ public class RacingCarTest {
         assertThat(move).isTrue();
         assertThat(stop).isFalse();
     }
-
 //    @Test
 //    @DisplayName("우승자 확인")
 //    void winnersTest(){
@@ -86,6 +85,4 @@ public class RacingCarTest {
 //        List<Car> winners = racingCar.play("pobi,crong,honux", 5);
 //        winners.stream().map(w -> w.getName()).forEach(System.out::println);
 //    }
-
-
 }
