@@ -10,6 +10,10 @@ public class Car {
         this.location = Location.EMPTY;
     }
 
+    public boolean checkLocation(Location location) {
+        return location().equals(location);
+    }
+
     public Location location() {
         return location;
     }
@@ -17,6 +21,7 @@ public class Car {
     public Name name() {
         return name;
     }
+
 
     public void move(Fuel fuel) {
         if (fuel.isMovable(REQUIRED_FUEL_VALUE))

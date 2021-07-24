@@ -32,7 +32,7 @@ public class Cars implements Iterable<Car> {
 
         Cars cars = new Cars();
         cars.addAll(values.values().stream()
-                .filter(c -> c.location().equals(bestLocation))
+                .filter(c -> c.checkLocation(bestLocation))
                 .collect(Collectors.toList())
         );
         return cars;

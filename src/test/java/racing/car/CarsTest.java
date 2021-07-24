@@ -127,9 +127,9 @@ class CarsTest {
 
         for (Car iCar : cars) {
             assertThat(
-                    iCar.location()
+                    iCar.checkLocation(location)
             ).withFailMessage("요청한대로 이동하지 않았습니다.")
-                    .isEqualTo(location);
+                    .isTrue();
         }
     }
 
