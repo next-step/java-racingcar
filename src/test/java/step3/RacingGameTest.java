@@ -33,24 +33,6 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("go, stop 케이스 모두 발생하는지 테스트")
-    void goOrStop() {
-        HashSet<MOVE> set = new HashSet<>();
-
-        // 100번의 메소드 호출을 하면 GO, STOP 케이스 모두 나올것으로 가정
-        IntStream.range(0, 100)
-                .forEach(x -> {
-                    try {
-                        set.add((MOVE) TestHelper.invokePrivateMethod(racingGame, "goOrStop"));
-                    } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                });
-
-        assertThat(set.size()).isEqualTo(2);
-    }
-
-    @Test
     @DisplayName("턴이 진행될때 자동차가 움직이는지 테스트")
     void nextTurnTest() {
         final int testTurns = 100;

@@ -51,13 +51,8 @@ public class RacingGame {
         return this.cars.subList(0, this.cars.size());
     }
 
-    private MOVE goOrStop() {
-        return MOVE.fromInt(RandomNumberGenerator.getRandomNumberGenerator().getRandomInt());
-    }
-
     private void nextTurn() {
-        this.cars.stream().filter(x -> goOrStop().equals(MOVE.GO))
-                .forEach(Car::progress);
+        this.cars.forEach(Car::goOrStop);
 
         this.currentTurn += 1;
     }
