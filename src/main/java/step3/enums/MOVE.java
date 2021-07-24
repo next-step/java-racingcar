@@ -15,6 +15,6 @@ public enum MOVE {
 
     public static MOVE fromInt(int num) {
         return Stream.of(values()).filter(t -> t.condition.test(num))
-                .findFirst().get();
+                .findFirst().orElse(MOVE.GO);
     }
 }

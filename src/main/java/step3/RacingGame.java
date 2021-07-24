@@ -21,11 +21,11 @@ public class RacingGame {
     public RacingGame() {
     }
 
-    public RacingGame(int numberOfCars, int numberOfTurns) {
-        this.numberOfTurns = numberOfTurns;
+    public RacingGame(RacingGameConfiguration racingGameConfiguration) {
+        this.numberOfTurns = racingGameConfiguration.getNumberOfTurns();
 
         this.cars = Stream.generate(Car::new)
-                .limit(numberOfCars)
+                .limit(racingGameConfiguration.getNumberOfCars())
                 .collect(Collectors.toList());
     }
 

@@ -14,6 +14,10 @@ public class SimpleRacingStatusView implements OutputInterface {
                 .map(s -> s + "\n")
                 .collect(Collectors.joining());
 
+        if (racingGame.getCurrentTurn() == 0) {
+            System.out.println("실행 결과");
+        }
+
         System.out.println(outputString);
     }
 }

@@ -8,7 +8,7 @@ public class RandomNumberGenerator {
 
     private static RandomNumberGenerator randomNumberGenerator = null;
 
-    private static Random random;
+    private Random random;
 
     private RandomNumberGenerator() {
         this.random = new Random();
@@ -22,7 +22,7 @@ public class RandomNumberGenerator {
         return randomNumberGenerator;
     }
 
-    static public int getRandomInt() {
+    public int getRandomInt() {
         return random.nextInt(randomIntBound);
     }
 }

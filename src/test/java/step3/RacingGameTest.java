@@ -21,7 +21,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void init() {
-        this.racingGame = new RacingGame(numberOfCars, numberOfTurns);
+        this.racingGame = new RacingGame(new RacingGameConfiguration(numberOfCars, numberOfTurns));
     }
 
     @Test
