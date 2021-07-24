@@ -12,6 +12,10 @@ public class Car {
 	}
 
 	public int carRacing(int value) {
+		return carMoveCheck(value);
+	}
+
+	public int carMoveCheck(int value){
 		if (value > 3) {
 			return ++raceDistance;
 		}
@@ -23,10 +27,11 @@ public class Car {
 	}
 
 	public String searchWinner(int winnerScore) {
+		String winnerName = "";
 		if (raceDistance == winnerScore) {
-			return carName;
+			winnerName = winnerName.concat(carName+",");
 		}
-		return "fail";
+		return winnerName;
 	}
 
 }
