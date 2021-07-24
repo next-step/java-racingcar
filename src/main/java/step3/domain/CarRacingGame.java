@@ -24,4 +24,8 @@ public class CarRacingGame {
 
         playedRounds.add(round);
     }
+
+    public List<Round> getPlayedRounds() {
+        return playedRounds;
+    }
 }
