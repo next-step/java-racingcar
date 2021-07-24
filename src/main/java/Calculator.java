@@ -42,10 +42,11 @@ public class Calculator {
     }
 
     private void minus(int leftInt, int rightInt) {
+        result -= rightInt;
     }
 
     private void add(int leftInt , int rightInt) {
-        result = leftInt + rightInt;
+        result += rightInt;
     }
 
     public static void main(String[] args) throws Exception {
