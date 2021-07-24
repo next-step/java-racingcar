@@ -3,11 +3,9 @@ package step3.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import step3.runType.HighSpeedRunStrategy;
 import step3.runType.NormalRunStrategy;
-import step3.runType.RunStrategy;
 import step3.runType.TestRunStrategy;
 
 class CarTest {
@@ -20,7 +18,7 @@ class CarTest {
         Car testCar = new Car(carName, new TestRunStrategy());
         testCar.run();
 
-        assertThat(testCar.getRunDistance()).isEqualTo(RunStrategy.NORMAL_PROGRESS_DISTANCE);
+        assertThat(testCar.getRunDistance()).isEqualTo(TestRunStrategy.NORMAL_PROGRESS_DISTANCE);
     }
 
 
@@ -33,7 +31,9 @@ class CarTest {
         testCar.run();
 
         assertThat(testCar.getRunDistance())
-            .isBetween(RunStrategy.NO_PROGRESS_DISTANCE, RunStrategy.NORMAL_PROGRESS_DISTANCE);
+            .isBetween(
+                NormalRunStrategy.NO_PROGRESS_DISTANCE,
+                NormalRunStrategy.NORMAL_PROGRESS_DISTANCE);
     }
 
     @Test
@@ -45,7 +45,9 @@ class CarTest {
         testCar.run();
 
         assertThat(testCar.getRunDistance())
-            .isBetween(RunStrategy.NO_PROGRESS_DISTANCE, RunStrategy.HIGH_SPEED_PROGRESS_DISTANCE);
+            .isBetween(
+                HighSpeedRunStrategy.NO_PROGRESS_DISTANCE,
+                HighSpeedRunStrategy.HIGH_SPEED_PROGRESS_DISTANCE);
     }
 
 }

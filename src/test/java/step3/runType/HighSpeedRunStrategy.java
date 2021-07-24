@@ -1,9 +1,9 @@
 package step3.runType;
 
-public class NormalRunStrategy implements RunStrategy {
+public class HighSpeedRunStrategy implements RunStrategy {
 
     public static int NO_PROGRESS_DISTANCE = 0;
-    public static int NORMAL_PROGRESS_DISTANCE = 1;
+    public static int HIGH_SPEED_PROGRESS_DISTANCE = 2;
     private static int ENGINE_POWER_LIMIT = 9;
     private static int HIGH_POWER_BOUNDARY = 4;
 
@@ -11,8 +11,9 @@ public class NormalRunStrategy implements RunStrategy {
     public int run() {
         int enginePower = (int) (Math.random() * ENGINE_POWER_LIMIT);
         if (enginePower >= HIGH_POWER_BOUNDARY) {
-            return NORMAL_PROGRESS_DISTANCE;
+            return HIGH_SPEED_PROGRESS_DISTANCE;
         }
         return NO_PROGRESS_DISTANCE;
     }
+
 }

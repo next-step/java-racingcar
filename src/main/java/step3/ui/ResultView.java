@@ -28,7 +28,7 @@ public class ResultView {
     }
 
     private void printRoundResult(Round playedRound) {
-        ArrayList<Integer> results = playedRound.getResults();
+        List<Integer> results = playedRound.getResults();
         for (int runDistance : results) {
             System.out.println(generateProgressString(runDistance));
         }
