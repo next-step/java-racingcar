@@ -27,11 +27,12 @@ public class Car {
 	}
 
 	public String searchWinner(int winnerScore) {
-		String winnerName = "";
+		StringBuilder winnerName = new StringBuilder();
 		if (raceDistance == winnerScore) {
-			winnerName = winnerName.concat(carName+",");
+			winnerName.append(carName);
+			winnerName.append(",");
 		}
-		return winnerName;
+		return winnerName.toString();
 	}
 
 }
