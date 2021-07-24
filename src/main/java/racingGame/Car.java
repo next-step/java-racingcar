@@ -6,19 +6,21 @@ public class Car {
 
     public static final int MOVABLE_LIMIT_NUMBER = 4;
 
+    private final String name;
     private final int distance;
 
-    public Car() {
-        this(0);
+    public Car(String name) {
+        this(name, 0);
     }
 
-    public Car(int distance) {
+    public Car(String name, int distance) {
+        this.name = name;
         this.distance = distance;
     }
 
     public Car move(int random) {
         if (random >= MOVABLE_LIMIT_NUMBER) {
-            return new Car(distance + 1);
+            return new Car(name, distance + 1);
         }
         return this;
     }

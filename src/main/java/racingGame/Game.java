@@ -13,11 +13,12 @@ public class Game {
     private final int repeatCount;
     private List<Car> cars = new ArrayList<>();
 
-    public Game(int carCount, int repeatCount) {
-        valid(carCount, repeatCount);
+    public Game(List<String> names, int repeatCount) {
+        validCarCount(names.size());
+        validRepeatCount(repeatCount);
 
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
         this.repeatCount = repeatCount;
     }
@@ -38,11 +39,6 @@ public class Game {
 
     public int getRepeatCount() {
         return repeatCount;
-    }
-
-    private void valid(int carCount, int repeatCount) {
-        validCarCount(carCount);
-        validRepeatCount(repeatCount);
     }
 
     private void validCarCount(int carCount) {
