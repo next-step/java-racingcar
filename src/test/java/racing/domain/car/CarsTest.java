@@ -176,7 +176,7 @@ class CarsTest {
     private void moveCar(Car car, int turnSize, boolean movement) {
         for (int i = 0; i < turnSize; i++) {
             car.move(
-                    movement ? Fuel.FULL : Fuel.EMPTY
+                    movement ? Fuel.full() : Fuel.empty()
             );
         }
     }

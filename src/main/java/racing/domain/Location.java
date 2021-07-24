@@ -1,11 +1,13 @@
 package racing.domain;
 
 public class Location {
-    private static final int MIN_VALUE = 0;
     private static final String UNDER_LOCATION_MESSAGE = "연료는 음수르 충전할 수 없습니다.";
 
-    public static Location EMPTY = new Location();
-    public static Location ONE_BLOCK = new Location(1);
+    private static final Object syncObject = new Object();
+    private static final int MIN_VALUE = 0;
+    private static final int ONE_BLOCK_VALUE = 1;
+    public static Location empty;
+    public static Location oneBlock;
     private final int value;
 
     public Location() {
@@ -19,6 +21,26 @@ public class Location {
 
     public int value() {
         return value;
+    }
+
+    public static Location empty() {
+        if (empty == null) {
+            synchronized (syncObject) {
+                if (empty == null)
+                    empty = new Location(MIN_VALUE);
+            }
+        }
+        return empty;
+    }
+
+    public static Location oneBlock() {
+        if (oneBlock == null) {
+            synchronized (syncObject) {
+                if (oneBlock == null)
+                    oneBlock = new Location(ONE_BLOCK_VALUE);
+            }
+        }
+        return oneBlock;
     }
 
     private static void validate(int value) {

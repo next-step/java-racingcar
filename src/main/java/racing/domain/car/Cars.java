@@ -29,7 +29,7 @@ public class Cars implements Iterable<Car> {
         Location bestLocation = values.values().stream()
                 .map(Car::location)
                 .max(comparator)
-                .orElse(Location.EMPTY);
+                .orElse(Location.empty());
 
         Cars cars = new Cars();
         cars.addAll(values.values().stream()

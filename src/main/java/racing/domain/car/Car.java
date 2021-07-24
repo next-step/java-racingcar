@@ -11,7 +11,7 @@ public class Car {
 
     public Car(Name name) {
         this.name = name;
-        this.location = Location.EMPTY;
+        this.location = Location.empty();
     }
 
     public boolean checkLocation(Location location) {
@@ -29,7 +29,7 @@ public class Car {
 
     public void move(Fuel fuel) {
         if (isMovable(fuel))
-            this.location = location.add(Location.ONE_BLOCK);
+            this.location = location.add(Location.oneBlock());
     }
 
     private boolean isMovable(Fuel fuel) {
