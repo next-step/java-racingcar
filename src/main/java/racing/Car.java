@@ -18,27 +18,22 @@ public class Car {
 	}
 
 	public int carRacing(int value) {
-		return carMoveCheck(value);
+		 carMoveCheck(value);
+		 return raceDistance;
 	}
 
-	public int carMoveCheck(int value){
+	public void carMoveCheck(int value){
 		if (value > 3) {
-			return ++raceDistance;
+			++raceDistance;
 		}
-		return raceDistance;
 	}
 
 	public String getCarName() {
 		return carName;
 	}
 
-	public String searchWinner(int winnerScore) {
-		StringBuilder winnerName = new StringBuilder();
-		if (raceDistance == winnerScore) {
-			winnerName.append(carName);
-			winnerName.append(",");
-		}
-		return winnerName.toString();
+	public int resultRacing(){
+		return raceDistance;
 	}
 
 }
